@@ -901,7 +901,7 @@
     <script>
     $(document).ready(function() {
 
-      $('.wednesday').hide();
+      $('.thursday').hide();
 
         $(document).on('click', '#wednesday', function() {
 
