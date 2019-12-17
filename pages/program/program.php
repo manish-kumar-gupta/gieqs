@@ -13,11 +13,43 @@
     <!-- Favicon -->
     <link rel="icon" href="<?php echo BASE_URL;?>/assets/img/brand/favicongieqs.png" type="image/png">
     <!-- Font Awesome 5 -->
-    <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/@fortawesome/fontawesome-free/css/all.min.css"><!-- Page CSS -->
+    <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/@fortawesome/fontawesome-free/css/all.min.css">
+    <!-- Page CSS -->
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/swiper/dist/css/swiper.min.css">
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
     <!-- Purpose CSS -->
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/css/purpose.css" id="stylesheet">
+
+    <style>
+
+      @media screen and (max-width: 400px) {
+        
+        
+        .scroll{
+
+          font-size: 1em;
+
+          }
+
+          .h5{
+
+          font-size: 1em;
+          }
+
+          .tiny {
+          font-size: 0.75em;
+
+          }
+
+          .btn {
+
+            padding: 0.25rem 1.00rem;
+            margin-bottom: 0.75rem;
+          }
+      }
+    
+
+    </style>
 </head>
 
 <body>
@@ -87,408 +119,407 @@
         </div>
     </div>
     <div class="main-content">
-        
+
         <!-- Header (v1) -->
         <section class="header-1 bg-section-dark" data-offset-top="#header-main">
-            
-           
+
+
         </section>
 
         <!-- PROGRAM TABLE -->
 
         <section class="slice slice-lg">
-          <div class="container">
-            <div class="row text-center">
-             
-              <div class="col-12 p-3 pb-5">
-                <span class="h1" style="color: rgb(238, 194, 120);">Ghent International Endoscopy Quality Symposium <br/> Edition I. Draft Programme</span>
-              </div>
-              
+            <div class="container">
+                <div class="row text-center">
+
+                    <div class="col-12 p-3 pb-5">
+                        <span class="h1" style="color: rgb(238, 194, 120);">Ghent International Endoscopy Quality
+                            Symposium <br /> Edition I. Draft Programme</span>
+                    </div>
+
+                </div>
+                <div class="row text-center">
+
+                    <div class="col-12 p-3 pb-4">
+                        <a href="#" class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
+                            <span class="btn-inner--text">Overview</span>
+                            <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+                        </a>
+                        <a href="#" id="wednesday"
+                            class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
+                            <span class="btn-inner--text">Wed 7 Oct</span>
+                            <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+                        </a>
+                        <a href="#" class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
+                            <span class="btn-inner--text">Thurs 8 Oct</span>
+                            <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+                        </a>
+                    </div>
+
+                </div>
+
+                <hr class="divider divider-fade" />
+
+
+                <!--Wednesday Programme-->
+
+                <div class="wednesday">
+
+                    <div class="row text-left">
+                        <div class="col-12 p-1 pb-3 pt-3">
+                            <span class="h5">Wednesday 7 October 2020</span>
+
+                        </div>
+                    </div>
+
+                    <div class="row text-center border">
+
+                        <div class="col-1 p-1 pb-3 pt-3 border-right">
+
+                        </div>
+
+                        <div class="col-4 p-1 pb-3 pt-3 border-right">
+                            <span class="h4">Plenary</span>
+                        </div>
+
+                        <div class="col-4 p-1 pb-3 pt-3 border-right">
+                            <span class="h4">Complex</span>
+                        </div>
+
+                        <div class="col-3 p-1 pb-3 pt-3">
+                            <span class="h4">Live</span>
+                        </div>
+
+
+
+
+
+                    </div>
+
+                    <div class="row text-center border-left border-right border-bottom bg-dark">
+
+                        <div class="col-1 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny" style="color: rgb(238, 194, 120);">0845-0900</span>
+                        </div>
+
+                        <div class="col-4 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">Introduction to GIEQS</span><br />
+                            <span class="sessionSubtitle">Introduction to Quality in Endoscopy</span>
+                        </div>
+
+                        <div class="col-4 p-1 pb-3 pt-3 border-right">
+                            <span class=" h5"></span><br />
+                            <span></span>
+                        </div>
+
+                        <div class="col-3 p-1 pb-3 pt-3">
+                            <span class="h5"></span><br />
+                            <span></span>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="row text-center border-left border-right border-bottom bg-dark">
+
+                        <div class="col-1 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny" style="color: rgb(238, 194, 120);">0900-1000</span>
+                        </div>
+
+                        <div class="col-4 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">Optimal Colonoscopy Technique</span><br />
+                            <span class="sessionSubtitle">Intubation, withdrawal and diminutive polyps</span>
+                        </div>
+
+                        <div class="col-4 p-1 pb-3 pt-3 border-right">
+                            <span class="h5"></span><br />
+                            <span></span>
+                        </div>
+
+                        <div class="col-3 p-1 pb-3 pt-3">
+                            <span class="h5"></span><br />
+                            <span></span>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
+
+                        <div class="col-1 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1000-1045</span>
+                        </div>
+
+                        <div class="col-4 p-1 pb-3 pt-3 border-right">
+                            <span class="h5"></span><br />
+                            <span></span>
+                        </div>
+
+                        <div class="col-4 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">Live ERCP technique</span><br />
+                            <span class="sessionSubtitle">Papillary morphology versus technique</span>
+                        </div>
+
+                        <div class="col-3 p-1 pb-3 pt-3">
+                            <span class="sessionTitle h5">Live Colonoscopy technique</span><br />
+                            <span class="sessionSubtitle">Quicker, painless intubation</span>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="row text-center align-middle border-left border-right border-bottom">
+
+                        <div class="col-12 p-2 pb-3 pt-3">
+                            <span class="h5" style="color: rgb(238, 194, 120);">Morning Tea</span>
+                        </div>
+
+
+
+
+                    </div>
+
+                    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
+
+                        <div class="col-1 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1100-1200</span>
+                        </div>
+
+                        <div class="col-4 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">GI bleeding symposium</span><br />
+                            <span class="sessionSubtitle">Techniques for effective hemostasis</span>
+                        </div>
+
+                        <div class="col-4 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">Basic ERCP symposium</span><br />
+                            <span class="sessionSubtitle">Stones, stents and strictures</span>
+                        </div>
+
+                        <div class="col-3 p-1 pb-3 pt-3">
+                            <span class="sessionTitle h5">Live GIB / ERCP</span><br />
+                            <span class="sessionSubtitle">Best practice techniques</span>
+                        </div>
+
+
+
+                    </div>
+                    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
+
+                        <div class="col-1 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1200-1245</span>
+                        </div>
+
+                        <div class="col-4 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">Difficult GI bleeding</span><br />
+                            <span class="sessionSubtitle">Use of new techniques as first line</span>
+                        </div>
+
+                        <div class="col-4 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">Difficult Cannulation</span><br />
+                            <span class="sessionSubtitle">Prediction, preparation and when to refer</span>
+                        </div>
+
+                        <div class="col-3 p-1 pb-3 pt-3">
+                            <span class="h5"></span><br />
+                            <span></span>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="row text-center align-middle border-left border-right border-bottom">
+
+                        <div class="col-12 p-2 pb-3 pt-3">
+                            <span class="h5" style="color: rgb(238, 194, 120);">Lunch</span>
+                        </div>
+
+
+
+
+                    </div>
+
+                    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
+
+                        <div class="col-1 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1345-1415</span>
+                        </div>
+
+                        <div class="col-4 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">Principles of Endoscopic Imaging<br /> in the GI
+                                tract</span><br />
+                            <span class="sessionSubtitle">The 'Demarcated area' - a predictor of invasion</span>
+                        </div>
+
+                        <div class="col-4 p-1 pb-3 pt-3 border-right">
+
+                        </div>
+
+                        <div class="col-3 p-1 pb-3 pt-3">
+                            <span class="h5"></span><br />
+                            <span></span>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
+
+                        <div class="col-1 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1415-1515</span>
+                        </div>
+
+                        <div class="col-4 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">Principles of Endoscopy Unit Design</br> and
+                                management</span><br />
+                            <span class="sessionSubtitle">The Global Rating Scale and exportability</span>
+                        </div>
+
+                        <div class="col-4 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">Management of adverse events <br /> at ERCP</span><br />
+                            <span class="sessionSubtitle">Pancreatitis, bleeding and perforation</span>
+                        </div>
+
+                        <div class="col-3 p-1 pb-3 pt-3">
+                            <span class="h5"></span><br />
+                            <span></span>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="row text-center align-middle border-left border-right border-bottom">
+
+                        <div class="col-12 p-2 pb-3 pt-3">
+                            <span class="h5" style="color: rgb(238, 194, 120);">Afternoon Tea</span>
+                        </div>
+
+
+
+
+                    </div>
+
+                    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
+
+                        <div class="col-1 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1530-1630</span>
+                        </div>
+
+                        <div class="col-4 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">IBD in Endoscopy Symposium</span><br />
+                            <span class="sessionSubtitle">Comprehensive endoscopic assessment of activity</span>
+                        </div>
+
+                        <div class="col-4 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">Basic EUS</span><br />
+                            <span class="sessionSubtitle">Quality standardised examination</span>
+                        </div>
+
+                        <div class="col-3 p-1 pb-3 pt-3">
+                            <span class="sessionTitle h5">Live IBD / EUS</span><br />
+                            <span class="sessionSubtitle">Chromoendoscopy and technique</span>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
+
+                        <div class="col-1 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1630-1700</span>
+                        </div>
+
+                        <div class="col-4 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">Endoscopic Management of strictures <br />in IBD</span><br />
+                            <span class="sessionSubtitle">Balloon, incision or surgery</span>
+                        </div>
+
+                        <div class="col-4 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">Unit setup for EUS / ERCP</span><br />
+                            <span class="sessionSubtitle">Equipment, settings and personnel</span>
+                        </div>
+
+                        <div class="col-3 p-1 pb-3 pt-3">
+                            <span class="h5"></span><br />
+                            <span></span>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="row text-center align-middle border-left border-right border-bottom">
+
+                        <div class="col-12 p-2 pb-3 pt-3">
+                            <span class="h5" style="color: rgb(238, 194, 120);">Break</span>
+                        </div>
+
+
+
+
+                    </div>
+
+                    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
+
+                        <div class="col-1 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1715-1800</span>
+                        </div>
+
+                        <div class="col-4 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">Artificial Intelligence in Endoscopy</span><br />
+                            <span class="sessionSubtitle">Implications, Ethics and Future Directions</span>
+                        </div>
+
+                        <div class="col-4 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">Interventional EUS symposium</span><br />
+                            <span class="sessionSubtitle">Role in everyday practice, referral criteria</span>
+                        </div>
+
+                        <div class="col-3 p-1 pb-3 pt-3">
+                            <span class="sessionTitle h5">AI Live</span><br />
+                            <span class="sessionSubtitle">current state of the tech</span>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="row text-center align-middle border-left border-right border-bottom">
+
+                        <div class="col-12 p-2 pb-3 pt-3">
+                            <span class="h5" style="color: rgb(238, 194, 120);">1930 - Conference Dinner</span>
+                        </div>
+
+
+
+
+                    </div>
+
+                    <div class="row text-left">
+
+                        <div class="col-12 p-2 pb-3 pt-3">
+                            <span class="text-sm">Programme contents subject to change without notice.</span>
+                        </div>
+
+
+
+
+                    </div>
+
+                </div>
+
             </div>
-            <div class="row text-center">
-              
-              <div class="col-12 p-3 pb-4">
-                <a href="#" class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me"
-                   >
-                  <span class="btn-inner--text">Overview</span>
-                  <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
-                </a>
-                <a href="#" class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me"
-                   >
-                  <span class="btn-inner--text">Wed 7 Oct</span>
-                  <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
-                </a>
-                <a href="#" class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me"
-                   >
-                  <span class="btn-inner--text">Thurs 8 Oct</span>
-                  <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
-                </a>
-              </div>
-             
-            </div>
-
-            <hr class="divider divider-fade" />
-
-
-            <!--Wednesday Programme-->
-
-            <div class="wednesday">
-
-            <div class="row text-center border">
-              
-              <div class="col-1 p-1 pb-3 pt-3 border-right">
-                
-              </div>
-
-              <div class="col-4 p-1 pb-3 pt-3 border-right">
-                <span class="h4">Plenary</span>
-              </div>
-
-              <div class="col-4 p-1 pb-3 pt-3 border-right">
-                <span class="h4">Complex</span>
-              </div>
-
-              <div class="col-3 p-1 pb-3 pt-3">
-                <span class="h4">Live</span>
-              </div>
-
-             
-
-
-             
-            </div>
-
-            <div class="row text-center border-left border-right border-bottom bg-dark">
-              
-              <div class="col-1 p-1 pb-3 pt-3 border-right">
-                <span style="color: rgb(238, 194, 120);">0845-0900</span>
-              </div>
-
-              <div class="col-4 p-1 pb-3 pt-3 border-right">
-                <span class="sessionTitle h5">Introduction to GIEQS</span><br/>
-                <span class="sessionSubtitle">Introduction to Quality in Endoscopy</span>
-              </div>
-
-              <div class="col-4 p-1 pb-3 pt-3 border-right">
-                <span class=" h5"></span><br/>
-                <span></span>
-              </div>
-
-              <div class="col-3 p-1 pb-3 pt-3">
-                <span class="h5"></span><br/>
-                <span></span>
-              </div>
-
-            
-             
-            </div>
-
-            <div class="row text-center border-left border-right border-bottom bg-dark">
-              
-              <div class="col-1 p-1 pb-3 pt-3 border-right">
-                <span style="color: rgb(238, 194, 120);">0900-1000</span>
-              </div>
-
-              <div class="col-4 p-1 pb-3 pt-3 border-right">
-              <span class="sessionTitle h5">Optimal Colonoscopy Technique</span><br/>
-              <span class="sessionSubtitle">Intubation, withdrawal and diminutive polyps</span>
-              </div>
-
-              <div class="col-4 p-1 pb-3 pt-3 border-right">
-                <span class="h5"></span><br/>
-                <span></span>
-              </div>
-
-              <div class="col-3 p-1 pb-3 pt-3">
-                <span class="h5"></span><br/>
-                <span></span>
-              </div>
-
-            
-             
-            </div>
-
-            <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
-              
-              <div class="col-1 p-1 pb-3 pt-3 border-right">
-                <span style="color: rgb(238, 194, 120);">1000-1045</span>
-              </div>
-
-              <div class="col-4 p-1 pb-3 pt-3 border-right">
-                <span class="h5"></span><br/>
-                <span></span>
-              </div>
-
-              <div class="col-4 p-1 pb-3 pt-3 border-right">
-                <span class="sessionTitle h5">Live ERCP technique</span><br/>
-                <span class="sessionSubtitle">Papillary morphology versus technique</span>
-              </div>
-
-              <div class="col-3 p-1 pb-3 pt-3">
-                <span class="sessionTitle h5">Live Colonoscopy technique</span><br/>
-                <span class="sessionSubtitle">Quicker, painless intubation</span>
-              </div>
-
-            
-             
-            </div>
-
-            <div class="row text-center align-middle border-left border-right border-bottom">
-              
-              <div class="col-12 p-2 pb-3 pt-3">
-                <span class="h5" style="color: rgb(238, 194, 120);">Morning Tea</span>
-              </div>
-
-
-            
-             
-            </div>
-
-            <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
-              
-              <div class="col-1 p-1 pb-3 pt-3 border-right">
-                <span style="color: rgb(238, 194, 120);">1100-1200</span>
-              </div>
-
-              <div class="col-4 p-1 pb-3 pt-3 border-right">
-                <span class="sessionTitle h5">GI bleeding symposium</span><br/>
-                <span class="sessionSubtitle">Techniques for effective hemostasis</span>
-              </div>
-
-              <div class="col-4 p-1 pb-3 pt-3 border-right">
-                <span class="sessionTitle h5">Basic ERCP symposium</span><br/>
-                <span class="sessionSubtitle">Stones, stents and strictures</span>
-              </div>
-
-              <div class="col-3 p-1 pb-3 pt-3">
-                <span class="sessionTitle h5">Live GIB / ERCP</span><br/>
-                <span class="sessionSubtitle">Best practice techniques</span>
-              </div>
-
-            
-             
-            </div>
-            <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
-              
-              <div class="col-1 p-1 pb-3 pt-3 border-right">
-                <span style="color: rgb(238, 194, 120);">1200-1245</span>
-              </div>
-
-              <div class="col-4 p-1 pb-3 pt-3 border-right">
-              <span class="sessionTitle h5">Difficult GI bleeding</span><br/>
-                <span class="sessionSubtitle">Use of new techniques as first line</span>
-              </div>
-
-              <div class="col-4 p-1 pb-3 pt-3 border-right">
-                <span class="sessionTitle h5">Difficult Cannulation</span><br/>
-                <span class="sessionSubtitle">Prediction, preparation and when to refer</span>
-              </div>
-
-              <div class="col-3 p-1 pb-3 pt-3">
-                <span class="h5"></span><br/>
-                <span></span>
-              </div>
-
-            
-             
-            </div>
-
-            <div class="row text-center align-middle border-left border-right border-bottom">
-              
-              <div class="col-12 p-2 pb-3 pt-3">
-                <span class="h5" style="color: rgb(238, 194, 120);">Lunch</span>
-              </div>
-
-
-            
-             
-            </div>
-
-            <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
-              
-              <div class="col-1 p-1 pb-3 pt-3 border-right">
-                <span style="color: rgb(238, 194, 120);">1345-1415</span>
-              </div>
-
-              <div class="col-4 p-1 pb-3 pt-3 border-right">
-              <span class="sessionTitle h5">Principles of Endoscopic Imaging<br/> in the GI tract</span><br/>
-                <span class="sessionSubtitle">The 'Demarcated area' - a predictor of invasion</span>
-              </div>
-
-              <div class="col-4 p-1 pb-3 pt-3 border-right">
-                
-              </div>
-
-              <div class="col-3 p-1 pb-3 pt-3">
-                <span class="h5"></span><br/>
-                <span></span>
-              </div>
-
-            
-             
-            </div>
-
-            <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
-              
-              <div class="col-1 p-1 pb-3 pt-3 border-right">
-                <span style="color: rgb(238, 194, 120);">1415-1515</span>
-              </div>
-
-              <div class="col-4 p-1 pb-3 pt-3 border-right">
-                <span class="sessionTitle h5">Principles of Endoscopy Unit Design</br> and management</span><br/>
-                <span class="sessionSubtitle">The Global Rating Scale and exportability</span>
-              </div>
-
-              <div class="col-4 p-1 pb-3 pt-3 border-right">
-                <span class="sessionTitle h5">Management of adverse events <br/> at ERCP</span><br/>
-                <span class="sessionSubtitle">Pancreatitis, bleeding and perforation</span>
-              </div>
-
-              <div class="col-3 p-1 pb-3 pt-3">
-                <span class="h5"></span><br/>
-                <span></span>
-              </div>
-
-            
-             
-            </div>
-
-            <div class="row text-center align-middle border-left border-right border-bottom">
-              
-              <div class="col-12 p-2 pb-3 pt-3">
-                <span class="h5" style="color: rgb(238, 194, 120);">Afternoon Tea</span>
-              </div>
-
-
-            
-             
-            </div>
-
-            <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
-              
-              <div class="col-1 p-1 pb-3 pt-3 border-right">
-                <span style="color: rgb(238, 194, 120);">1530-1630</span>
-              </div>
-
-              <div class="col-4 p-1 pb-3 pt-3 border-right">
-                <span class="sessionTitle h5">IBD in Endoscopy Symposium</span><br/>
-                <span class="sessionSubtitle">Comprehensive endoscopic assessment of activity</span>
-              </div>
-
-              <div class="col-4 p-1 pb-3 pt-3 border-right">
-              <span class="sessionTitle h5">Basic EUS</span><br/>
-                <span class="sessionSubtitle">Quality standardised examination</span>
-              </div>
-
-              <div class="col-3 p-1 pb-3 pt-3">
-                <span class="sessionTitle h5">Live IBD / EUS</span><br/>
-                <span class="sessionSubtitle">Chromoendoscopy and technique</span>
-              </div>
-
-            
-             
-            </div>
-
-            <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
-              
-              <div class="col-1 p-1 pb-3 pt-3 border-right">
-                <span style="color: rgb(238, 194, 120);">1630-1700</span>
-              </div>
-
-              <div class="col-4 p-1 pb-3 pt-3 border-right">
-                <span class="sessionTitle h5">Endoscopic Management of strictures <br/>in IBD</span><br/>
-                <span class="sessionSubtitle">Balloon, incision or surgery</span>
-              </div>
-
-              <div class="col-4 p-1 pb-3 pt-3 border-right">
-                <span class="sessionTitle h5">Unit setup for EUS / ERCP</span><br/>
-                <span class="sessionSubtitle">Equipment, settings and personnel</span>
-              </div>
-
-              <div class="col-3 p-1 pb-3 pt-3">
-                <span class="h5"></span><br/>
-                <span></span>
-              </div>
-
-            
-             
-            </div>
-
-            <div class="row text-center align-middle border-left border-right border-bottom">
-              
-              <div class="col-12 p-2 pb-3 pt-3">
-                <span class="h5" style="color: rgb(238, 194, 120);">Break</span>
-              </div>
-
-
-            
-             
-            </div>
-
-            <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
-              
-              <div class="col-1 p-1 pb-3 pt-3 border-right">
-                <span style="color: rgb(238, 194, 120);">1715-1800</span>
-              </div>
-
-              <div class="col-4 p-1 pb-3 pt-3 border-right">
-                <span class="sessionTitle h5">Artificial Intelligence in Endoscopy</span><br/>
-                <span class="sessionSubtitle">Implications, Ethics and Future Directions</span>
-              </div>
-
-              <div class="col-4 p-1 pb-3 pt-3 border-right">
-                <span class="sessionTitle h5">Interventional EUS symposium</span><br/>
-                <span class="sessionSubtitle">Role in everyday practice, referral criteria</span>
-              </div>
-
-              <div class="col-3 p-1 pb-3 pt-3">
-              <span class="sessionTitle h5">AI Live</span><br/>
-                <span class="sessionSubtitle">current state of the tech</span>
-              </div>
-
-            
-             
-            </div>
-
-            <div class="row text-center align-middle border-left border-right border-bottom">
-              
-              <div class="col-12 p-2 pb-3 pt-3">
-                <span class="h5" style="color: rgb(238, 194, 120);">1930 - Conference Dinner</span>
-              </div>
-
-
-            
-             
-            </div>
-
-            <div class="row text-left">
-              
-              <div class="col-12 p-2 pb-3 pt-3">
-                <span class="text-sm">Programme contents subject to change without notice.</span>
-              </div>
-
-
-            
-             
-            </div>
-
-            </div>
-
-          </div>
 
 
 
         </section>
 
-
-
-
-
-
-
-        
-
-       
     </div>
 
     <?php require BASE_URI . '/footer.php';?>
@@ -507,6 +538,18 @@
     <script src="../../assets/js/purpose.js"></script>
     <!-- Demo JS - remove it when starting your project -->
     <script src="../../assets/js/demo.js"></script>
+
+    <script>
+    $(document).ready(function() {
+
+        $(document).on('click', '#wednesday', function() {
+
+            $('.wednesday').show();
+
+        })
+
+    })
+    </script>
 </body>
 
 </html>
