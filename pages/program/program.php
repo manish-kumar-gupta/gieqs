@@ -653,7 +653,7 @@
                         </div>
 
                         <div class="col-3 p-1 pb-3 pt-3">
-                            <span class="sessionTitle h5">Live hepatology / EMR</span><br />
+                            <span class="sessionTitle h5">Live hepatology cases</span><br />
                             <span class="sessionSubtitle">Best practice techniques</span>
                         </div>
 
@@ -667,18 +667,18 @@
                         </div>
 
                         <div class="col-4 p-1 pb-3 pt-3 border-right">
-                            <span class="sessionTitle h5">Difficult GI bleeding</span><br />
-                            <span class="sessionSubtitle">Use of new techniques as first line</span>
+                            <span class="sessionTitle h5">Malignancy</span><br />
+                            <span class="sessionSubtitle">Detection, description and marking</span>
                         </div>
 
                         <div class="col-4 p-1 pb-3 pt-3 border-right">
-                            <span class="sessionTitle h5">Difficult Cannulation</span><br />
-                            <span class="sessionSubtitle">Prediction, preparation and when to refer</span>
+                            <span class="sessionTitle h5">Complex polypectomy [EMR&nbsp;&ge;&nbsp;20mm]</span><br />
+                            <span class="sessionSubtitle">Evidence & where does it fit into my practice?<br/>To include piecemeal cold snare</span>
                         </div>
 
                         <div class="col-3 p-1 pb-3 pt-3">
-                            <span class="h5"></span><br />
-                            <span></span>
+                        <span class="sessionTitle h5">Live big polyp</span><br />
+                            <span class="sessionSubtitle">Best practice techniques</span>
                         </div>
 
 
@@ -703,13 +703,37 @@
                         </div>
 
                         <div class="col-4 p-1 pb-3 pt-3 border-right">
-                            <span class="sessionTitle h5">Principles of Endoscopic Imaging<br /> in the GI
-                                tract</span><br />
-                            <span class="sessionSubtitle">The 'Demarcated area' - a predictor of invasion</span>
+                            <span class="sessionTitle h5">Barrett's oesophagus</span><br />
+                            <span class="sessionSubtitle">Assessment, description, dysplasia and referral</span>
                         </div>
 
                         <div class="col-4 p-1 pb-3 pt-3 border-right">
 
+                        </div>
+
+                        <div class="col-3 p-1 pb-3 pt-3">
+                         <span class="sessionTitle h5">Live Barrett's</span><br />
+                            <span class="sessionSubtitle">Focus on detection of dysplasia</span>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
+
+                        <div class="col-1 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1415-1445</span>
+                        </div>
+
+                        <div class="col-4 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">How to improve your ADR</span><br />
+                            <span class="sessionSubtitle">Preparation, caps, light and timing</span>
+                        </div>
+
+                        <div class="col-4 p-1 pb-3 pt-3 border-right">
+                        <span class="sessionTitle h5">The role of <br/>endoscopic submucosal dissection (ESD)</span><br />
+                            <span class="sessionSubtitle">Throughout the GI tract, where it fits my practice</span>
                         </div>
 
                         <div class="col-3 p-1 pb-3 pt-3">
@@ -724,23 +748,22 @@
                     <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
 
                         <div class="col-1 p-1 pb-3 pt-3 border-right">
-                            <span class="tiny" style="color: rgb(238, 194, 120);">1415-1515</span>
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1445-1515</span>
                         </div>
 
                         <div class="col-4 p-1 pb-3 pt-3 border-right">
-                            <span class="sessionTitle h5">Principles of Endoscopy Unit Design</br> and
-                                management</span><br />
-                            <span class="sessionSubtitle">The Global Rating Scale and exportability</span>
+                            <span class="sessionTitle h5">Informatics in the drive for quality</span><br />
+                            <span class="sessionSubtitle">Structured reporting, national datasets and AI</span>
                         </div>
 
                         <div class="col-4 p-1 pb-3 pt-3 border-right">
-                            <span class="sessionTitle h5">Management of adverse events <br /> at ERCP</span><br />
-                            <span class="sessionSubtitle">Pancreatitis, bleeding and perforation</span>
+                            <span class="sessionTitle h5">Bringing it together in the colon</span><br />
+                            <span class="sessionSubtitle">Which technique, rectum specific, when to refer</span>
                         </div>
 
                         <div class="col-3 p-1 pb-3 pt-3">
-                            <span class="h5"></span><br />
-                            <span></span>
+                        <span class="sessionTitle h5">Live ESD</span><br />
+                            <span class="sessionSubtitle">Focus on lesion assessment</span>
                         </div>
 
 
@@ -765,18 +788,18 @@
                         </div>
 
                         <div class="col-4 p-1 pb-3 pt-3 border-right">
-                            <span class="sessionTitle h5">IBD in Endoscopy Symposium</span><br />
-                            <span class="sessionSubtitle">Comprehensive endoscopic assessment of activity</span>
+                            <span class="sessionTitle h5">Room & Generator setup for polypectomy</span><br />
+                            <span class="sessionSubtitle">Which personel, which kit, which settings, </span>
                         </div>
 
                         <div class="col-4 p-1 pb-3 pt-3 border-right">
-                            <span class="sessionTitle h5">Basic EUS</span><br />
-                            <span class="sessionSubtitle">Quality standardised examination</span>
+                            <span class="sessionTitle h5">Assessment + treatment of sphincters </span><br />
+                            <span class="sessionSubtitle">EndoFlip, manometry and POEM</span>
                         </div>
 
                         <div class="col-3 p-1 pb-3 pt-3">
-                            <span class="sessionTitle h5">Live IBD / EUS</span><br />
-                            <span class="sessionSubtitle">Chromoendoscopy and technique</span>
+                            <span class="sessionTitle h5">Live sphincter assessment</span><br />
+                            <span class="sessionSubtitle">How does it fit into everyday practice?</span>
                         </div>
 
 
@@ -790,70 +813,52 @@
                         </div>
 
                         <div class="col-4 p-1 pb-3 pt-3 border-right">
-                            <span class="sessionTitle h5">Endoscopic Management of strictures <br />in IBD</span><br />
-                            <span class="sessionSubtitle">Balloon, incision or surgery</span>
+                            <span class="sessionTitle h5">Endoscopic dilatation and stents</span><br />
+                            <span class="sessionSubtitle">Quality in established techniques, new technology</span>
                         </div>
 
                         <div class="col-4 p-1 pb-3 pt-3 border-right">
-                            <span class="sessionTitle h5">Unit setup for EUS / ERCP</span><br />
-                            <span class="sessionSubtitle">Equipment, settings and personnel</span>
+                            <span class="sessionTitle h5">Serrated polyps + polyposis</span><br />
+                            <span class="sessionSubtitle">How to detect, characterise and resect</span>
                         </div>
 
                         <div class="col-3 p-1 pb-3 pt-3">
-                            <span class="h5"></span><br />
-                            <span></span>
+                          <span class="sessionTitle h5">Live serrated polyposis case</span><br />
+                            <span class="sessionSubtitle">Safe and complete resection</span>
                         </div>
 
 
 
                     </div>
 
-                    <div class="row text-center align-middle border-left border-right border-bottom">
-
-                        <div class="col-12 p-2 pb-3 pt-3">
-                            <span class="h5" style="color: rgb(238, 194, 120);">Break</span>
-                        </div>
-
-
-
-
-                    </div>
+                    
 
                     <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
 
                         <div class="col-1 p-1 pb-3 pt-3 border-right">
-                            <span class="tiny" style="color: rgb(238, 194, 120);">1715-1800</span>
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1645-1700</span>
                         </div>
 
                         <div class="col-4 p-1 pb-3 pt-3 border-right">
-                            <span class="sessionTitle h5">Artificial Intelligence in Endoscopy</span><br />
-                            <span class="sessionSubtitle">Implications, Ethics and Future Directions</span>
+                            <span class="sessionTitle h5">Conclusions and Wrap-up</span><br />
+                            <span class="sessionSubtitle">GIEQs</span>
                         </div>
 
                         <div class="col-4 p-1 pb-3 pt-3 border-right">
-                            <span class="sessionTitle h5">Interventional EUS symposium</span><br />
-                            <span class="sessionSubtitle">Role in everyday practice, referral criteria</span>
+                            <span class="sessionTitle h5"></span><br />
+                            <span class="sessionSubtitle"></span>
                         </div>
 
                         <div class="col-3 p-1 pb-3 pt-3">
-                            <span class="sessionTitle h5">AI Live</span><br />
-                            <span class="sessionSubtitle">current state of the tech</span>
+                            <span class="sessionTitle h5"></span><br />
+                            <span class="sessionSubtitle"></span>
                         </div>
 
 
 
                     </div>
 
-                    <div class="row text-center align-middle border-left border-right border-bottom">
-
-                        <div class="col-12 p-2 pb-3 pt-3">
-                            <span class="h5" style="color: rgb(238, 194, 120);">1930 - Conference Dinner</span>
-                        </div>
-
-
-
-
-                    </div>
+                    
 
                     <div class="row text-left">
 
@@ -896,7 +901,7 @@
     <script>
     $(document).ready(function() {
 
-      $('.thursday').hide();
+      $('.wednesday').hide();
 
         $(document).on('click', '#wednesday', function() {
 
