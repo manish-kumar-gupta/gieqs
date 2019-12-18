@@ -54,7 +54,7 @@
             </li>
             
             <li class="nav-item">
-              <a class="nav-link" href="https://www.twitter.com/" target="_blank">
+              <a class="nav-link" href="https://www.twitter.com/GIEQS2" target="_blank">
                 <i class="fab fa-twitter"></i>
               </a>
             </li>
