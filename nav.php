@@ -29,7 +29,7 @@
 
             <!-- Nursing congress -->
             <li class="nav-item active">
-              <a class="nav-link" href="#">Nursing</a>
+              <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/nursing.php">Nursing</a>
             </li>
 
             <!-- Registration-basic -->
