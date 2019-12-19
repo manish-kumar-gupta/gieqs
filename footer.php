@@ -1,6 +1,6 @@
 <!--Footer-->
 <footer id="footer-main">
-  <div class="footer footer-dark bg-gradient-dark">
+  <div class="footer footer-dark bg-gradient-dark mt-8">
     <div class="container">
       <div class="row pt-md">
         <div class="col-lg-4 mb-5 mb-lg-0">
@@ -58,7 +58,7 @@
                 <i class="fab fa-twitter"></i>
               </a>
             </li>
-            
+            <!--
             <li class="nav-item">
               <a class="nav-link" href="https://www.instagram.com/" target="_blank">
                 <i class="fab fa-instagram"></i>
@@ -70,6 +70,7 @@
                 <i class="fab fa-facebook"></i>
               </a>
             </li>
+-->
           </ul>
         </div>
       </div>

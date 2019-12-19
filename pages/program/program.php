@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description"
-        content="Purpose is a unique and beautiful collection of UI elements that are all flexible and modular. A complete and customizable solution to building the website of your dreams.">
+        content="At GIEQs we aim to make everyday endoscopy better.  Endoscopy is performed by a team of doctors and nurses.  Both parts of the team are important and so a nursing symposium is part of GIEQs.">
     <meta name="author" content="gieqs">
     <title>Ghent International Endoscopy Symposium</title>
     <!-- Favicon -->
@@ -758,7 +758,7 @@
 
                         <div class="col-4 p-1 pb-3 pt-3 border-right">
                             <span class="sessionTitle h5">Bringing it together in the colon</span><br />
-                            <span class="sessionSubtitle">Which technique, rectum specific, when to refer</span>
+                            <span class="sessionSubtitle">Specific polyp - which technique, rectum specific algorithm, when to refer</span>
                         </div>
 
                         <div class="col-3 p-1 pb-3 pt-3">

@@ -24,7 +24,7 @@
             </li>
             <!-- Faculty Cards-basic -->
             <li class="nav-item active">
-              <a class="nav-link" href="#">Faculty</a>
+              <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/faculty.php">Faculty</a>
             </li>
 
             <!-- Nursing congress -->
@@ -32,9 +32,14 @@
               <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/nursing.php">Nursing</a>
             </li>
 
+            <!-- Sponsors -->
+            <li class="nav-item active">
+              <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/sponsors.php">Sponsors</a>
+            </li>
+
             <!-- Registration-basic -->
             <li class="nav-item active">
-              <a class="nav-link" href="#" style="color: rgb(238, 194, 120);" data-toggle="popover" data-color="dark" data-placement="bottom" data-content="Thank-you for your interest.  Please come back in early 2020 for registration!">Register</a>
+              <a class="nav-link" href="#" data-toggle="popover" data-color="dark" data-placement="bottom" data-content="Thank-you for your interest.  Please come back in early 2020 for registration!">Register</a>
             </li>
 
             
