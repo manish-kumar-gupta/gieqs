@@ -58,6 +58,12 @@
                 <i class="fab fa-twitter"></i>
               </a>
             </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="http://www.uzgent.be" target="_blank">
+              <img style="max-width:80px;" src="<?php echo BASE_URL;?>/assets/img/brand/uzggold.png">
+              </a>
+            </li>
             <!--
             <li class="nav-item">
               <a class="nav-link" href="https://www.instagram.com/" target="_blank">
