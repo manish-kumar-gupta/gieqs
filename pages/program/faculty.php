@@ -162,7 +162,7 @@ width: 100%;
                   <div data-animate-hover="2">
                     <div class="animate-this">
                       <a href="#">
-                        <img alt="Michael Bourke" class="img-fluid rounded shadow" src="../../assets/img/faculty/mb.png">
+                        <img alt="Michael Bourke" class="img-fluid rounded shadow" src="../../assets/img/faculty/MB.png">
                       </a>
                     </div>
                     <div class="mt-3">
@@ -177,7 +177,7 @@ width: 100%;
                   <div data-animate-hover="2">
                     <div class="animate-this">
                       <a href="#">
-                        <img alt="Steven Heitman" class="img-fluid rounded shadow" src="../../assets/img/faculty/sh.png">
+                        <img alt="Steven Heitman" class="img-fluid rounded shadow" src="../../assets/img/faculty/SH.png">
                       </a>
                     </div>
                     <div class="mt-3">
@@ -192,7 +192,7 @@ width: 100%;
                   <div data-animate-hover="2">
                     <div class="animate-this">
                       <a href="#">
-                        <img alt="Roland Valori" class="img-fluid rounded shadow" src="../../assets/img/faculty/rmv.png">
+                        <img alt="Roland Valori" class="img-fluid rounded shadow" src="../../assets/img/faculty/RMV.png">
                       </a>
                     </div>
                     <div class="mt-3">
@@ -207,7 +207,7 @@ width: 100%;
                   <div data-animate-hover="2">
                     <div class="animate-this">
                       <a href="#">
-                        <img alt="John Anderson" class="img-fluid rounded shadow" src="../../assets/img/faculty/ja.png">
+                        <img alt="John Anderson" class="img-fluid rounded shadow" src="../../assets/img/faculty/JA.png">
                       </a>
                     </div>
                     <div class="mt-3">
