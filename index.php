@@ -134,8 +134,81 @@
                 </div>
             </div>
         </section>
+        <!-- <hr class="divider divider-fade" /> -->
 
-        </section>
+        <section class="slice slice-lg mt-5">
+      <div class="container">
+        <div class="row no-gutters align-items-md-center text-center text-md-left">
+          <div class="card hover-shadow-lg order-2 col-lg-7 ml--100">
+            <div class="card-body p-5">
+              <h6 class="text-muted">Quality means evidence-based practice.</h6>
+              <p class="h4 lh-150">
+                Quality in endoscopy means applying technical competence and published evidence to everything from a diagnostic gastroscopy to a circumferential ESD 
+              </p>
+              <a href="https://www.youtube.com/watch?v=I9Y8gC6wtKg"
+                                        class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
+                                        style="background-color: rgb(238, 194, 120);" data-fancybox>
+                                        <span class="btn-inner--text">Read our mission statement</span>
+                                        <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
+
+                                    </a>
+            </div>
+          </div>
+          <div class="order-1 col-lg-6 mb-4 mb-lg-0">
+            <img alt="Image placeholder" src="assets/img/backgrounds/hyperplasticTransBack.png" class="img-fluid rounded shadow">
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- <hr class="divider divider-fade" /> -->
+
+    <section class="section-rotate bg-section-dark slice slice-lg mt-6" id="sct-what-we-do">
+      <div class="container">
+        <div class="row row-grid">
+          <div class="col-lg-4">
+            <div class="">
+              <div class="pb-5">
+                <div class="icon text-white rounded-circle icon-xl hover-rotate icon-shape shadow" style="background:rgb(238, 194, 120);">
+                <i class="fas fa-search"></i>
+                </div>
+              </div>
+              <h5 class="font-weight-bold">Focussed on the everyday</h5>
+              <p class="mt-2 mb-0">A symposium dedicated to promoting quality in techniques we perform everyday. <br/> <ul>Colonoscopy.</ul>  <ul>Polypectomy.</ul>  <ul>Lesion detection at gastroscopy.</ul>  <ul>GI bleeding.</ul></p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="">
+              <div class="pb-5">
+              <div class="icon text-white rounded-circle icon-xl hover-rotate icon-shape shadow" style="background:rgb(238, 194, 120);">
+                <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+              </div>
+              <h5 class="font-weight-bold">Unique stream for trainees</h5>
+              <p class="mt-2 mb-0">Trainees are future endoscopists.  Endoscopy is an apprenticeship.  The better we train, the higher the quality of future everyday examinations.</p>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="">
+              <div class="pb-5">
+              <div class="icon text-white rounded-circle icon-xl hover-rotate icon-shape shadow" style="background:rgb(238, 194, 120);">
+              <i class="fas fa-user-nurse"></i>
+                </div>
+              </div>
+              <h5 class="font-weight-bold">Separate nursing symposium</h5>
+              <p class="mt-2 mb-0">Endoscopy is performed in a team.  Here's to the other half of that team.  Your own half-day symposium</p>
+            </div>
+          </div>
+        </div>
+        <a href="<?php echo BASE_URL;?>/pages/program/program.php"
+                                        class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me mt-3"
+                                        style="background-color: rgb(238, 194, 120);">
+                                        <span class="btn-inner--text">Explore the draft programme</span>
+                                        <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
+
+                                    </a>
+      </div>
+    </section>
+     
     </div>
 
     <?php require 'footer.php';?>
