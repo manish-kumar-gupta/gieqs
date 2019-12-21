@@ -21,49 +21,46 @@
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/css/purpose.css" id="stylesheet">
 
     <style>
+    .logo {
 
-.logo { 
-
-width: 100%;
+        width: 100%;
 
 
-}
+    }
 
-.gieqsGold {
+    .gieqsGold {
 
-    color: rgb(238, 194, 120);
+        color: rgb(238, 194, 120);
 
-}
+    }
 
-      @media screen and (max-width: 400px) {
-        
-        
-        .scroll{
+    @media screen and (max-width: 400px) {
 
-          font-size: 1em;
 
-          }
+        .scroll {
 
-          .h5{
+            font-size: 1em;
 
-          font-size: 1em;
-          }
+        }
 
-          .tiny {
-          font-size: 0.75em;
+        .h5 {
 
-          }
+            font-size: 1em;
+        }
 
-          .btn {
+        .tiny {
+            font-size: 0.75em;
+
+        }
+
+        .btn {
 
             padding: 0.25rem 1.00rem;
             margin-bottom: 0.75rem;
-          }
+        }
 
-          
-      }
-    
 
+    }
     </style>
 </head>
 
@@ -137,93 +134,243 @@ width: 100%;
 
         <!-- Header (v1) -->
         <section class="header-1 bg-section-dark" data-offset-top="#header-main">
+        </section>
 
 
-        
+
 
         <!-- Sponsors -->
 
         <!-- Team 1 -->
         <div id="team-team-1" title="the GIEQs faculty">
-          <section class="slice slice-lg">
-            <div class="container">
-              <div class="mb-5 text-center">
-                <h2 class="mt-4" style="color: rgb(238, 194, 120);">The GIEQs faculty</h2>
-                <div class="fluid-paragraph mt-3">
-                  <p class="lead lh-180">With a stellar international faculty the first edition of GIEQs promises to be a launch-pad for innovative thinking in everyday endoscopic practice.</p>
-                </div>
-              </div>
-              <div class="mb-5 text-left">
-              <h3 class=" mt-4" style="color: rgb(238, 194, 120);">International Faculty</h3>
+            <section class="slice bg-gradient-dark slice-lg">
+                <div class="container">
+                    <div class="mb-5 text-center">
+                        <h2 class="mt-4" style="color: rgb(238, 194, 120);">The GIEQs faculty</h2>
+                        <div class="fluid-paragraph mt-3">
+                            <p class="lead lh-180">With a stellar international faculty the first edition of GIEQs
+                                promises to be a launch-pad for innovative thinking in everyday endoscopic practice.</p>
+                        </div>
+                    </div>
+                    <div class="mb-5 text-left">
+                        <h3 class=" mt-4" style="color: rgb(238, 194, 120);">International Faculty</h3>
 
-             </div>
-              <div class="row row-grid">
-                <div class="col-lg-3">
-                  <div data-animate-hover="2">
-                    <div class="animate-this">
-                      <a href="#">
-                        <img alt="Michael Bourke" class="img-fluid rounded shadow" src="../../assets/img/faculty/MB.png">
-                      </a>
                     </div>
-                    <div class="mt-3">
-                      <h5 class="gieqsGold card-title mb-0">Prof. Michael J Bourke</h5>
-                      <p class="text-muted mb-0">Clinical Professor of Medicine</p>
-                      <p class="text-muted mb-0">University of Sydney, Australia</p>
-                      <p class="text mb-0">Focus: polypectomy, ERCP</p>
+                    <div class="row row-grid">
+                        <div class="col-lg-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="#">
+                                        <img alt="Michael Bourke" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/MB.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Prof. Michael J Bourke</h5>
+                                    <p class="text-muted mb-0">Clinical Professor of Medicine</p>
+                                    <p class="text-muted mb-0">University of Sydney, Australia</p>
+                                    <p class="text mb-0">Focus: polypectomy, ERCP</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="#">
+                                        <img alt="Steven Heitman" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/SH.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">A/Prof. Steven J Heitman</h5>
+                                    <p class="text-muted mb-0">Herschfield Professor of Medicine</p>
+                                    <p class="text-muted mb-0">University of Calgary, Canada</p>
+                                    <p class="text mb-0">Focus: quality, polypectomy</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="#">
+                                        <img alt="Roland Valori" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/RMV.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr Roland Valori</h5>
+                                    <p class="text-muted mb-0">Consultant Gastroenterologist</p>
+                                    <p class="text-muted mb-0">Gloucestershire Royal Hospital, UK</p>
+                                    <p class="text mb-0">Focus: quality, colonoscopy training</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="#">
+                                        <img alt="John Anderson" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/JA.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr John Anderson</h5>
+                                    <p class="text-muted mb-0">Consultant Gastroenterologist</p>
+                                    <p class="text-muted mb-0">Cheltenham General Hospital, UK</p>
+                                    <p class="text mb-0">Focus: polypectomy, colonoscopy training</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                </div>
-                <div class="col-lg-3">
-                  <div data-animate-hover="2">
-                    <div class="animate-this">
-                      <a href="#">
-                        <img alt="Steven Heitman" class="img-fluid rounded shadow" src="../../assets/img/faculty/SH.png">
-                      </a>
-                    </div>
-                    <div class="mt-3">
-                    <h5 class="gieqsGold card-title mb-0">A/Prof. Steven J Heitman</h5>
-                      <p class="text-muted mb-0">Herschfield Professor of Medicine</p>
-                      <p class="text-muted mb-0">University of Calgary, Canada</p>
-                      <p class="text mb-0">Focus: quality, polypectomy</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3">
-                  <div data-animate-hover="2">
-                    <div class="animate-this">
-                      <a href="#">
-                        <img alt="Roland Valori" class="img-fluid rounded shadow" src="../../assets/img/faculty/RMV.png">
-                      </a>
-                    </div>
-                    <div class="mt-3">
-                    <h5 class="gieqsGold card-title mb-0">Dr Roland Valori</h5>
-                      <p class="text-muted mb-0">Consultant Gastroenterologist</p>
-                      <p class="text-muted mb-0">Gloucestershire Royal Hospital, UK</p>
-                      <p class="text mb-0">Focus: quality, colonoscopy training</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3">
-                  <div data-animate-hover="2">
-                    <div class="animate-this">
-                      <a href="#">
-                        <img alt="John Anderson" class="img-fluid rounded shadow" src="../../assets/img/faculty/JA.png">
-                      </a>
-                    </div>
-                    <div class="mt-3">
-                    <h5 class="gieqsGold card-title mb-0">Dr John Anderson</h5>
-                      <p class="text-muted mb-0">Consultant Gastroenterologist</p>
-                      <p class="text-muted mb-0">Cheltenham General Hospital, UK</p>
-                      <p class="text mb-0">Focus: polypectomy, colonoscopy training</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="mb-4 text-left">
-              <h3 class="mt-6" style="color: rgb(238, 194, 120);">Local faculty</h3>
+                    <!-- <div class="row row-grid"> -->
 
-             </div>
-    </div>
-              <!--<div class="row row-grid">
+                        <div class="mb-4 text-left">
+                            <h3 class="mt-6" style="color: rgb(238, 194, 120);">National faculty</h3>
+                        </div>
+
+                    <!-- </div> -->
+                    <div class="row row-grid">
+                        <div class="col-lg-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="#">
+                                        <img alt="Raf Bisscops" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/RB.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Prof. Raf Biscchops</h5>
+                                    <p class="text-muted mb-0">Professor of Medicine</p>
+                                    <p class="text-muted mb-0">University Hospital Leuven</p>
+                                    <p class="text mb-0">Focus: Endoscopic imaging, Barrett's oesophagus</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-lg-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="#">
+                                        <img alt="Steven Heitman" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/SH.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">A/Prof. Steven J Heitman</h5>
+                                    <p class="text-muted mb-0">Herschfield Professor of Medicine</p>
+                                    <p class="text-muted mb-0">University of Calgary, Canada</p>
+                                    <p class="text mb-0">Focus: quality, polypectomy</p>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- <div class="col-lg-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="#">
+                                        <img alt="Roland Valori" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/RMV.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr Roland Valori</h5>
+                                    <p class="text-muted mb-0">Consultant Gastroenterologist</p>
+                                    <p class="text-muted mb-0">Gloucestershire Royal Hospital, UK</p>
+                                    <p class="text mb-0">Focus: quality, colonoscopy training</p>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- <div class="col-lg-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="#">
+                                        <img alt="John Anderson" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/JA.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr John Anderson</h5>
+                                    <p class="text-muted mb-0">Consultant Gastroenterologist</p>
+                                    <p class="text-muted mb-0">Cheltenham General Hospital, UK</p>
+                                    <p class="text mb-0">Focus: polypectomy, colonoscopy training</p>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                    <!-- <div class="row row-grid"> -->
+
+                        <div class="mb-4 text-left">
+                            <h3 class="mt-6" style="color: rgb(238, 194, 120);">Local faculty</h3>
+                        </div>
+
+                        <div class="row row-grid">
+                        <div class="col-lg-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="#">
+                                        <img alt="David Tate" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/DT.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr David Tate</h5>
+                                    <p class="text-muted mb-0">Interventional Endoscopist</p>
+                                    <p class="text-muted mb-0">University Hospital of Ghent</p>
+                                    <p class="text mb-0">Focus: endoscopy quality, tissue resection, training</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="#">
+                                        <img alt="Pieter Hindryckx" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/PH.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Prof. Dr. Pieter Hindryckx</h5>
+                                    <p class="text-muted mb-0">Interventional Endoscopist</p>
+                                    <p class="text-muted mb-0">University Hospital of Ghent</p>
+                                    <p class="text mb-0">Focus: ERCP, interventional EUS</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="#">
+                                        <img alt="Lobke Desomer" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/LD.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr Lobke Desomer</h5>
+                                    <p class="text-muted mb-0">Interventional Endoscopist</p>
+                                    <p class="text-muted mb-0">AZ Delta Hospital, Roeselare</p>
+                                    <p class="text mb-0">Focus: endoscopy quality, polypectomy, training</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="col-lg-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="#">
+                                        <img alt="John Anderson" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/JA.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr John Anderson</h5>
+                                    <p class="text-muted mb-0">Consultant Gastroenterologist</p>
+                                    <p class="text-muted mb-0">Cheltenham General Hospital, UK</p>
+                                    <p class="text mb-0">Focus: polypectomy, colonoscopy training</p>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+
+                    <!-- </div> -->
+                </div>
+                <!--<div class="row row-grid">
                 <div class="col-lg-3">
                   <div data-animate-hover="2">
                     <div class="animate-this">
@@ -277,9 +424,9 @@ width: 100%;
                   </div>
                 </div>
               </div>-->
-            </div>
-          </section>
         </div>
+        </section>
+    </div>
 
     </div>
 
@@ -303,7 +450,7 @@ width: 100%;
     <script>
     $(document).ready(function() {
 
-      
+
 
     })
     </script>

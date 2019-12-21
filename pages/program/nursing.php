@@ -128,7 +128,7 @@
 
         <!-- PROGRAM TABLE -->
 
-        <section class="slice slice-lg">
+        <section class="slice bg-gradient-dark slice-lg">
             <div class="container">
                 <div class="row text-center">
 

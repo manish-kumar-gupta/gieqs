@@ -32,10 +32,10 @@
               <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/nursing.php">Nursing</a>
             </li>
 
-            <!-- Sponsors -->
-            <li class="nav-item active">
-              <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/sponsors.php">Sponsors</a>
-            </li>
+            <!-- Sponsors --><!--currently not active-->
+            <!-- <li class="nav-item active">
+              <a class="nav-link" href="<?php //echo BASE_URL;?>/pages/program/sponsors.php">Sponsors</a>
+            </li> -->
 
             <!-- Registration-basic -->
             <li class="nav-item active">

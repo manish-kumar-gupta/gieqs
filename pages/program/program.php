@@ -121,14 +121,14 @@
     <div class="main-content">
 
         <!-- Header (v1) -->
-        <section class="header-1 bg-section-dark" data-offset-top="#header-main">
+        <section class="header-1 bg-gradient-dark" data-offset-top="#header-main">
 
 
         </section>
 
         <!-- PROGRAM TABLE -->
 
-        <section class="slice slice-lg">
+        <section class="slice bg-gradient-dark slice-lg">
             <div class="container">
                 <div class="row text-center">
 
