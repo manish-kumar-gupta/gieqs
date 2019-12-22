@@ -21,7 +21,10 @@
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/css/purpose.css" id="stylesheet">
 
     <style>
-
+      .modal-backdrop
+      {
+          opacity:0.75 !important;
+      }
       @media screen and (max-width: 400px) {
         
         
@@ -557,10 +560,110 @@
                             <span class="tiny" style="color: rgb(238, 194, 120);">0900-0940</span>
                         </div>
 
-                        <div class="col-4 p-1 pb-3 pt-3 border-right">
+                        <div class="col-4 p-1 pb-3 pt-3 border-right" data-toggle="modal" data-target="#modal-thursday-0900">
                             <span class="sessionTitle h5">Optimal Gastroscopy Technique</span><br />
                             <span class="sessionSubtitle">Intubation, withdrawal and lesion detection</span>
+                            <!-- <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-change-username">Change username</button> -->
+
                         </div>
+
+                        <!-- Modal -->
+                            <div class="modal fade" id="modal-thursday-0900" tabindex="-1" role="dialog" aria-labelledby="modal-change-username" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <form>
+                                        <div class="modal-content bg-dark border" style="border-color:rgb(238, 194, 120) !important;">
+                                            <div class="modal-header">
+                                                <div class="modal-title d-flex align-items-left" id="modal-title-change-username">
+                                                    <div>
+                                                        <div class="icon bg-dark icon-sm icon-shape icon-info rounded-circle shadow mr-3">
+                                                        <!-- <i class="fa fa-calendar" aria-hidden="true" ></i> -->
+                                                        <img src="../../assets/img/icons/gieqsicon.png">
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-left">
+                                                        <h5 class="mb-0">Optimal Gastroscopy Technique</h5>
+                                                        <span class="mb-0">Thursday 0900-0940</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span="text-white" aria-hidden="true">&times;</span>
+                                                </button>
+                                                
+                                            </div>
+                                            <div class="modal-subheader px-3 mt-2 mb-2 border-bottom">
+                                             <div class="row">
+                                                   <div class="col-sm-12 text-left">
+                                                        <div>
+                                                            <h6 class="mb-0">Moderators</h6>
+                                                            <span class="mb-0">LD, PH, RMV</span>
+                                                      
+                                                        </div>
+                                                     </div>
+                                                </div>
+                                            </div>  
+                                            <div class="modal-body">
+                                               
+                                                <!-- <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">Old username</label>
+                                                            <input class="form-control" type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <label class="form-control-label">New username</label>
+                                                            <input class="form-control" type="text">
+                                                        </div>
+                                                    </div>
+                                                </div> -->
+                                                <div class="programme-body">
+                                                  <div class="row d-flex align-items-left text-left align-middle">
+                                                    <div class="pl-2 pr-1 pb-0 pt-1 time">
+                                                      <h6>0900 - 0915 : </h5>
+                                                    </div>
+                                                    <div class="pr-2 pb-0 pt-1 title">
+                                                      <h6>How I Perform Gastroscopy</h5>
+                                                    </div>
+
+                                                  </div>
+                                                  <div class="row d-flex align-items-left text-left align-middle">
+                                                    <div class="pl-3 pr-1 pb-0 pt-0 time">
+                                                      <span class="author">Michael J Bourke</h5>
+                                                    </div>
+                              
+
+                                                  </div>
+                                                  <div class="row d-flex align-items-left text-left align-middle mt-4">
+                                                    <div class="pl-2 pr-1 pb-0 pt-1">
+                                                      <h6>0900 - 0915 : </h5>
+                                                    </div>
+                                                    <div class="pr-2 pb-1 pt-1">
+                                                      <h6>How I Perform Gastroscopy</h5>
+                                                    </div>
+
+                                                  </div>
+                                                  <div class="row d-flex align-items-left text-left align-middle">
+                                                    <div class="pl-3 pr-1 pb-0 pt-0 time">
+                                                      <span class="author">Michael J Bourke</h5>
+                                                    </div>
+                              
+
+                                                  </div>
+                                                </div>
+                                                
+                                                <div class="px-5 pt-2 mt-2 mb-2 pb-2 text-center">
+                                                    <p class="text-muted text-sm">Programme subject to change without notice.</p>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Back to programme &nbsp; &nbsp;<i class="fas fa-arrow-right"></i></button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
 
                         <div class="col-4 p-1 pb-3 pt-3 border-right">
                             <span class="h5"></span><br />
