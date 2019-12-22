@@ -136,13 +136,13 @@
         </section>
         <!-- <hr class="divider divider-fade" /> -->
 
-        <section class="slice slice-lg mt-5">
+        <section class="slice slice-lg mt-1">
       <div class="container">
         <div class="row no-gutters align-items-md-center text-center text-md-left">
           <div class="card hover-shadow-lg order-2 col-lg-7 ml--100">
             <div class="card-body p-5">
-              <h6 class="text-muted">Quality means evidence-based practice.</h6>
-              <p class="h4 lh-150">
+              <h4 class="">Quality means evidence-based practice.</h4>
+              <p class="h6 text-muted lh-150">
                 Quality in endoscopy means applying technical competence and published evidence to everything from a diagnostic gastroscopy to a circumferential ESD 
               </p>
               <a href="https://www.youtube.com/watch?v=I9Y8gC6wtKg"
@@ -154,7 +154,7 @@
                                     </a>
             </div>
           </div>
-          <div class="order-1 col-lg-6 mb-4 mb-lg-0">
+          <div class="order-1 col-lg-6 mb-1 mb-lg-0">
             <img alt="Image placeholder" src="assets/img/backgrounds/hyperplasticTransBack.png" class="img-fluid rounded shadow">
           </div>
         </div>
@@ -162,7 +162,7 @@
     </section>
     <!-- <hr class="divider divider-fade" /> -->
 
-    <section class="section-rotate bg-section-dark slice slice-lg mt-6" id="sct-what-we-do">
+    <section class="section-rotate bg-section-dark slice slice-lg mt-1" id="sct-what-we-do">
       <div class="container">
         <div class="row row-grid">
           <div class="col-lg-4">

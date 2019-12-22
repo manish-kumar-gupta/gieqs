@@ -1,6 +1,6 @@
 <!--Footer-->
 <footer id="footer-main">
-  <div class="footer footer-dark bg-gradient-dark mt-8">
+  <div class="footer footer-dark bg-gradient-dark mt-0">
     <div class="container">
       <div class="row pt-md">
         <div class="col-lg-4 mb-5 mb-lg-0">
