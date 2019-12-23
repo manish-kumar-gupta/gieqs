@@ -148,12 +148,12 @@
                             <!-- <span class="btn-inner--text">Overview</span> -->
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         <!-- </a> -->
-                        <a href="#" id="wednesday"
+                        <a id="wednesday"
                             class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
                             <span class="btn-inner--text">Wed 7 Oct</span>
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         </a>
-                        <a href="#" id="thursday" class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
+                        <a id="thursday" class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
                             <span class="btn-inner--text">Thurs 8 Oct</span>
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         </a>

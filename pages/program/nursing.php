@@ -146,16 +146,16 @@
                             <!-- <span class="btn-inner--text">Overview</span> -->
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         <!-- </a> -->
-                        <a href="#" id="English"
+                        <a id="English"
                             class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
                             <span class="btn-inner--text">English</span>
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         </a>
-                        <a href="#" id="Dutch" class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
+                        <a id="Dutch" class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
                             <span class="btn-inner--text">Nederlands</span>
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         </a>
-                        <a href="#" id="French" class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
+                        <a id="French" class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
                             <span class="btn-inner--text">Fran&ccedil;ais</span>
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         </a>

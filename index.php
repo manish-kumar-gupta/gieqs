@@ -173,7 +173,7 @@
                 </div>
               </div>
               <h5 class="font-weight-bold">Focussed on the everyday</h5>
-              <p class="mt-2 mb-0">A symposium dedicated to promoting quality in techniques we perform everyday. <br/> <ul>Colonoscopy.</ul>  <ul>Polypectomy.</ul>  <ul>Lesion detection at gastroscopy.</ul>  <ul>GI bleeding.</ul></p>
+              <p class="mt-2 mb-0">A symposium dedicated to promoting quality in techniques we perform everyday. <br/> <ul>Colonoscopy</ul>  <ul>Small polypectomy </ul>  <ul>Lesion detection at gastroscopy</ul>  <ul>Gastrointestinal bleeding</ul> <ul>ERCP</ul></p>
             </div>
           </div>
           <div class="col-lg-4">
