@@ -141,13 +141,13 @@
         <div class="row no-gutters align-items-md-center text-center text-md-left">
           <div class="card hover-shadow-lg order-2 col-lg-7 ml--100">
             <div class="card-body p-5">
-              <h4 class="">Quality means evidence-based practice.</h4>
+              <h4 class="">At GIEQs we believe in quality in endoscopy.</h4>
               <p class="h6 text-muted lh-150">
                 Quality in endoscopy means applying technical competence and published evidence to everything from a diagnostic gastroscopy to a circumferential ESD 
               </p>
-              <a href="https://www.youtube.com/watch?v=I9Y8gC6wtKg"
-                                        class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
-                                        style="background-color: rgb(238, 194, 120);" data-fancybox>
+              <a href="pages/program/mission.php"
+                                        class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 mt-2 scroll-me"
+                                        style="background-color: rgb(238, 194, 120);">
                                         <span class="btn-inner--text">Read our mission statement</span>
                                         <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
 
@@ -162,7 +162,7 @@
     </section>
     <!-- <hr class="divider divider-fade" /> -->
 
-    <section class="section-rotate bg-section-dark slice slice-lg mt-1" id="sct-what-we-do">
+    <section class="bg-section-dark slice slice-lg mt-1" id="sct-what-we-do">
       <div class="container">
         <div class="row row-grid">
           <div class="col-lg-4">

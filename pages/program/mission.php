@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/@fortawesome/fontawesome-free/css/all.min.css">
     <!-- Page CSS -->
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/swiper/dist/css/swiper.min.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
+
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
     <!-- Purpose CSS -->
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/css/purpose.css" id="stylesheet">
@@ -140,8 +142,9 @@
       <div class="container pt-6">
         <div class="row justify-content-center">
           <div class="col-md-9">
-            <h1 class="lh-150 mb-3">Quality in endoscopy is about technical competence and evidence-based practice.</h1>
+            <h1 class="lh-150 mb-3">"Quality in endoscopy is about technical competence and evidence-based practice."</h1>
             <p class="lead text-muted mb-0">Whether a diagnostic colonoscopy or placing a self-expanding metal stent for biliary drainage, the principles are the same.</p>
+            
             
           </div>
 
@@ -152,7 +155,7 @@
     <section class="slice">
       <div class="container">
     
-        <div class="row justify-content-center">
+        <div class="row justify-content-center text-justify">
             
           <div class="col-lg-9">
               <hr>
@@ -160,20 +163,31 @@
             <article>
               <p class="lead">As you will be aware, most Endoscopy symposia focus on visually appealing, resource intensive techniques that are never performed by the majority of endoscopists. As an example, most gastroenterologists may only diagnose a handful of patients with achalasia in their career yet per oral endoscopic myotomy – the novel endoscopic technique to treat achalasia – is demonstrated in most endoscopy symposia [despite the fact that there are fewer than 150 procedures performed per year in Belgium and most gastroenterologists will never see or be involved in one outside of a symposium!].</p>
               <p class="lead">There are many reasons for this discrepancy. Complex techniques are also often visually appealing and the significant endoscopic skill required to perform them may be inspiring to colleagues. It is also true to say that the evidence for many of the strategies we are now beginning to apply to everyday endoscopic practice originated from such complex procedures.</p>
-              <h5>First thing you need to do</h5>
+              <h5>'Everyday' endoscopy may present unique challenges</h5>
               <figure class="figure">
-                <img alt="Image placeholder" src="../../assets/img/theme/light/img-3-800x600.jpg" class="img-fluid rounded">
-                <figcaption class="mt-3 text-muted">Figure one: Type here your description</figcaption>
+                <a href="https://vimeo.com/370720520" data-fancybox>     
+                <img alt="Image placeholder" src="../../assets/img/bleeding/spurtingVessel.png" class="img-fluid rounded" >
+                </a>
+                <figcaption class="mt-3 text-muted"><strong>Upper gastrointestinal bleeding:</strong> large perforating vessel in a gastric ulcer continuously spurting blood, seen through the lens of the over-the-scope clip. Recent <a href="javascript:;" data-fancybox data-type="iframe" data-src="https://www.ncbi.nlm.nih.gov/pubmed/?term=29803838">evidence</a> suggests that the over-the-scope clip has impressive rates of haemostasis in such difficult cases.  Press the image to view the entire procedure</figcaption>
               </figure>
-              <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              <h5>Second thing you need to do</h5>
+              <p class="lead">At GIEQs we believe that there is a need for an international endoscopy congress focused on the techniques that are performed by all endoscopists, every day of their working lives. These include, but are not limited to, painless colonoscopy, small polypectomy, gastroscopy and the detection of early-stage precursors of upper GI cancer, the treatment of gastrointestinal bleeding, etc. An increasing body of evidence underpins both how to perform these techniques and in which situation to apply a particular technique; indeed applying an evidence-based approach may have a long-lasting impact on patient care.</p>
+              <p class="lead h6">This is what we mean by quality in Endoscopy – the application of the best available evidence to all endoscopic procedures.</p>
+              
+              <p class="lead">Unfortunately, around Europe and internationally, common endoscopic techniques are often performed by practitioners who are unaware of this evidence-base and practice non evidence-based techniques, primarily since these were demonstrated during their training. GIEQs aims to address this problem.</p>
+              <h5>Patients can be adversely impacted by inadequate training or non-evidence based practice</h5>
               <figure class="figure">
-                <img alt="Image placeholder" src="../../assets/img/theme/light/img-4-800x600.jpg" class="img-fluid rounded">
-                <figcaption class="mt-3 text-muted">Figure two: Type here your description</figcaption>
+                <a href="https://vimeo.com/370720520" data-fancybox>     
+                <img alt="Image placeholder" src="../../assets/img/polyps/panl.png" class="img-fluid rounded" >
+                </a>
+                <figcaption class="mt-3 text-muted"><strong>Large non-granular colonic laterally spreading tumor:</strong> a huge evidence base now underpins the treatment of such lesions.  This lesion has been previously attempted but incompletely resected.  This risks the patient being referred unnecessarily for surgery or an adverse event since the endoscopic approach is now more complicated</figcaption>
               </figure>
-              <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+              <p class="lead">We believe that by holding a 2-day international symposium with a world-class faculty, focused on everyday techniques in Endoscopy, we can start a renewed drive towards quality in endoscopic procedures in Belgium and throughout Europe. Of course, endoscopy is also a practical discipline, and there is a need for live demonstration of the techniques under discussion in addition to the presentation of evidence.</p>
+              <p class="lead">In addition, traditional endoscopy symposia do not commonly encompass specific sessions for trainees. We believe that building quality in a practical discipline such as Endoscopy must focus on training and the evidence behind how to train effectively. At GIEqS we will introduce specific sessions for trainees on the practice and theory behind everyday endoscopy. Furthermore, we will introduce a separate nursing congress for a half day during GIEqS; talks will be focused on the issues relevant to nurses and be given by national and international nursing leaders, in addition to the medical faculty. At GIEqS we believe that quality in endoscopy can only be delivered by education of the whole team delivering the procedure.</p>
+              <p class="lead">We are confident that the success of the first edition of this symposium can be the start of an ongoing brand to promote quality in Endoscopy. We do not want to compete with traditional Endoscopy symposia (cf. GEEW) or produce an evidence-base for endoscopic practice (ably performed already by the ESGE and national endoscopy societies). Instead we aim to promote the presentation of practical educational materials [face to face, live demonstrations and, in the future, online] enabling practitioners of endoscopy to perform their everyday endoscopy better. We envisage that GIEqS will become a yearly occurrence with the above aims in mind.
+We look forward to welcome independent endoscopists [predominantly gastroenterologists], trainees and endoscopy nurses in the field of gastrointestinal endoscopy!.</p>
+<p class="lead h6 mb-0 text-right">the GIEQs Organising Committee, 2019</p>
             </article>
-            <hr>
+            <!-- <hr>
             <h5 class="mb-4">Comments</h5>
             <div class="mb-3">
               <div class="media media-comment">
@@ -234,7 +248,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </section>
 
     </div>

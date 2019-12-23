@@ -18,6 +18,10 @@
             <!--<li class="nav-item active">
               <a class="nav-link" href="<?php echo BASE_URL;?>/index.php">Overview</a>
             </li>-->
+            <!-- Mission -->
+            <li class="nav-item active">
+              <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/mission.php">Mission</a>
+            </li>
             <!-- Program-basic, later to add dropdown with options -->
             <li class="nav-item active">
               <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/program.php">Programme</a>
