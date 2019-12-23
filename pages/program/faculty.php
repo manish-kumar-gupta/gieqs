@@ -234,12 +234,12 @@
                             <div data-animate-hover="2">
                                 <div class="animate-this">
                                     <a href="#">
-                                        <img alt="Raf Bisscops" class="img-fluid rounded shadow"
+                                        <img alt="Raf Bisschops" class="img-fluid rounded shadow"
                                             src="../../assets/img/faculty/RB.png">
                                     </a>
                                 </div>
                                 <div class="mt-3">
-                                    <h5 class="gieqsGold card-title mb-0">Prof. Raf Biscchops</h5>
+                                    <h5 class="gieqsGold card-title mb-0">Prof. Raf Bisschops</h5>
                                     <p class="text-muted mb-0">Professor of Medicine</p>
                                     <p class="text-muted mb-0">University Hospital Leuven</p>
                                     <p class="text mb-0">Focus: Endoscopic imaging, Barrett's oesophagus</p>
