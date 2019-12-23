@@ -142,8 +142,8 @@
           <div class="card hover-shadow-lg order-2 col-lg-7 ml--100">
             <div class="card-body p-5">
               <h4 class="">At GIEQs we believe in quality in endoscopy.</h4>
-              <p class="h6 text-muted lh-150">
-                Quality in endoscopy means applying technical competence and published evidence to everything from a diagnostic gastroscopy to a circumferential ESD 
+              <p class="h6 text-muted text-justified lh-150">
+              Pronounced 'geeks', <i>English definition "someone who is very interested in a particular subject and knows a lot about it"</i> , GIEQs is dedicated to applying technical competence and published evidence to everything from a diagnostic gastroscopy to a circumferential ESD 
               </p>
               <a href="pages/program/mission.php"
                                         class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 mt-2 scroll-me"
