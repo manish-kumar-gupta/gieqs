@@ -49,7 +49,7 @@ if ($local) {
     
     function class_loader($class) {
 		
-			require($_SERVER['DOCUMENT_ROOT'].'/dashboard/esd/classes/'.$class.'.class.php');
+			require($_SERVER['DOCUMENT_ROOT'].'/dashboard/gieqs/assets/scripts/classes/'.$class.'.class.php');
 		 	
 	}
 	
