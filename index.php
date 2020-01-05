@@ -145,7 +145,7 @@
               <p class="h6 text-muted text-justify lh-150">
               Pronounced 'geeks' <sup>1</sup>, GIEQs is dedicated to applying technical competence and published evidence to everything from a diagnostic gastroscopy to a circumferential ESD 
               </p>
-              <small class="text-muted"><sup>1</sup> someone who is very interested in a particular subject and knows a lot about it</small>
+              <p><small class="text-muted"><sup>1</sup> someone who is very interested in a particular subject and knows a lot about it</small></p>
               <a href="pages/program/mission.php"
                                         class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 mt-2 scroll-me"
                                         style="background-color: rgb(238, 194, 120);">
