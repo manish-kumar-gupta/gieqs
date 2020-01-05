@@ -22,7 +22,19 @@
 
     <style>
 
+.text-gieqsGold {
+
+color: rgb(238, 194, 120);
+
+               }
+               .bg-gieqsGold {
+
+background-color: rgb(238, 194, 120);
+
+}
+
       @media screen and (max-width: 400px) {
+        
         
         
         .scroll{
@@ -135,6 +147,7 @@
                     <div class="col-12 p-3 pb-5">
                         <span class="h1" style="color: rgb(238, 194, 120);">Ghent International Endoscopy Quality
                             Symposium <br /> Edition I. <br/>Nursing Symposium Programme</span>
+                            
                     </div>
 
                 </div>
@@ -146,29 +159,30 @@
                             <!-- <span class="btn-inner--text">Overview</span> -->
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         <!-- </a> -->
-                        <a id="English"
-                            class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
-                            <span class="btn-inner--text">English</span>
+                        <a id="english"
+                            href="#targetScrollProgramme" class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
+                            <span class="btn-inner--text text-dark">English</span>
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         </a>
-                        <a id="Dutch" class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
-                            <span class="btn-inner--text">Nederlands</span>
+                        <a href="#targetScrollProgramme" id="dutch" class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
+                            <span class="btn-inner--text text-dark">Nederlands</span>
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         </a>
-                        <a id="French" class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
-                            <span class="btn-inner--text">Fran&ccedil;ais</span>
+                        <a id="french" class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
+                            <span class="btn-inner--text text-dark">Fran&ccedil;ais [coming soon]</span>
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         </a>
+                        <p class="h6 mt-3">Programme delivered in all 3 languages</p>
                     </div>
 
                 </div>
 
-                <hr class="divider divider-fade" />
+                <hr id="targetScrollProgramme" class="divider divider-fade" />
 
 
                 <!--Thursday Nursing Programme-->
 
-                <div class="English">
+                <div class="english">
 
                     <div class="row text-left">
                         <div class="col-12 p-1 pb-3 pt-3">
@@ -236,7 +250,7 @@
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
-                        <span class="sessionTitle h5">Endoscopy Nursing 101 - Preparation</span><br />
+                        <span class="sessionTitle h5">Best practice endoscopy nursing - Preparation</span><br />
                             <span class="sessionSubtitle">Preparation is the key - Routine, complex and surviving on call
     </span>
                         </div>
@@ -271,7 +285,7 @@
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
-                            <span class="sessionTitle h5">Endoscopy Nursing 101 - Techniques</span><br />
+                            <span class="sessionTitle h5">Best practice endoscopy nursing - Techniques</span><br />
                             <span class="sessionSubtitle">Clips, using the snare and the endoloop</span>
                         </div>
 
@@ -402,7 +416,244 @@
 
                 </div>
 
-                <!--Thursday Programme-->
+                <!--Thursday Programme Nederlands-->
+                <!--Thursday Nursing Programme-->
+
+                <div class="dutch d-none">
+
+                    <div class="row text-left">
+                        <div class="col-12 p-1 pb-3 pt-3">
+                            <span class="h5">Donderdag 8 oktober 2020</span>
+
+                        </div>
+                    </div>
+
+                    <div class="row text-center border">
+
+                        <div class="col-3 p-1 pb-3 pt-3 border-right">
+
+                        </div>
+
+                        <div class="col-9 p-1 pb-3 pt-3 border-right">
+                            <span class="h4">Sessie</span>
+                        </div>
+
+                        
+
+
+
+
+
+                    </div>
+
+                    <div class="row text-center border-left border-right border-bottom bg-dark">
+
+                        <div class="col-3 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny" style="color: rgb(238, 194, 120);">0845-0900</span>
+                        </div>
+
+                        <div class="col-9 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">Introductie verpleegkundig symposium</span><br />
+                            <span class="sessionSubtitle"></span>
+                        </div>
+
+                        
+
+
+
+                    </div>
+
+                    <div class="row text-center border-left border-right border-bottom bg-dark">
+
+                        <div class="col-3 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny" style="color: rgb(238, 194, 120);">0900-0920</span>
+                        </div>
+
+                        <div class="col-9 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">Endoscopy State of the Art</span><br />
+                            <span class="sessionSubtitle">Nieuwste en belangrijkste technieken in 2020</span>
+                        </div>
+
+                        
+
+
+
+                    </div>
+
+                    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
+
+                        <div class="col-3 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny" style="color: rgb(238, 194, 120);">0920-1000</span>
+                        </div>
+
+                        <div class="col-9 p-1 pb-3 pt-3 border-right">
+                        <span class="sessionTitle h5">Best practice endoscopy nursing - voorbereiding</span><br />
+                            <span class="sessionSubtitle">Voorbereiding is alles - Routine, complex en het overleven van de wacht
+    </span>
+                        </div>
+
+                        
+
+
+
+                    </div>
+
+                    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
+
+                        <div class="col-3 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1000-1015</span>
+                        </div>
+
+                        <div class="col-9 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">De endoscopische eenheid van 2020</span><br />
+                            <span class="sessionSubtitle">Opzet, materiaal, desinfectie en personeel</span>
+                        </div>
+
+                        
+
+
+
+                    </div>
+
+                    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
+
+                        <div class="col-3 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1015-1045</span>
+                        </div>
+
+                        <div class="col-9 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">Best practice endoscopy nursing - technieken</span><br />
+                            <span class="sessionSubtitle">Clips, gebruik van de lus en de endoloop</span>
+                        </div>
+
+                        
+
+
+
+                    </div>
+
+                    <div class="row text-center align-middle border-left border-right border-bottom">
+
+                        <div class="col-12 p-2 pb-3 pt-3">
+                            <span class="h5" style="color: rgb(238, 194, 120);">Ochtend pauze</span>
+                        </div>
+
+
+
+
+                    </div>
+
+                    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
+
+                        <div class="col-3 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1100-1110</span>
+                        </div>
+
+                        <div class="col-9 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">Huidige situatie endoscopische verpleegkundigen in Belgi&euml;</span><br />
+                            <span class="sessionSubtitle">Cijfers, verpleegkundige postgraduaat</span>
+                        </div>
+
+                        
+
+
+
+                    </div>
+
+                    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
+
+                        <div class="col-3 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1110-1120</span>
+                        </div>
+
+                        <div class="col-9 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">Verpleegkundige consultaties</span><br />
+                            <span class="sessionSubtitle">Voorbereiding, verbetering van aanwezigheid en aanpassing van bloedverdunners</span>
+                        </div>
+
+                        
+
+
+
+                    </div>
+
+                    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
+
+                        <div class="col-3 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1120-1145</span>
+                        </div>
+
+                        <div class="col-9 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">Bedenkingen van een verpleegkundig endoscopist</span><br />
+                            <span class="sessionSubtitle">de weg naar endoscopisch verpleegkundige, tricks, uitdagingen</span>
+                        </div>
+
+                        
+
+
+
+                    </div>
+
+                    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
+
+                        <div class="col-3 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1145-1215</span>
+                        </div>
+
+                        <div class="col-9 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">Tips and tricks bij colonoscopie en poliepen</span><br />
+                            <span class="sessionSubtitle">Conscious competence, welke techniek bij welke poliep</span>
+                        </div>
+
+                        
+
+
+
+                    </div>
+                    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
+
+                        <div class="col-3 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1214-1245</span>
+                        </div>
+
+                        <div class="col-9 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">Overzicht gastro-intestinale bloedingen</span><br />
+                            <span class="sessionSubtitle">Technieken, hoe voor te bereiden tijdens de wacht op een bloeding</span>
+                        </div>
+
+                        
+
+
+
+                    </div>
+                    
+
+                    <div class="row text-center align-middle border-left border-right border-bottom">
+
+                        <div class="col-12 p-2 pb-3 pt-3">
+                            <span class="h5" style="color: rgb(238, 194, 120);">Close</span>
+                        </div>
+
+
+
+
+                    </div>
+
+
+                    <div class="row text-left">
+
+                        <div class="col-12 p-2 pb-3 pt-3">
+                            <span class="text-sm">Programme contents subject to change without notice.</span>
+                        </div>
+
+
+
+
+                    </div>
+
+                </div>
+
+                <!--Old-->
 
                 <div class="thursday">
 
@@ -791,19 +1042,29 @@
 
       $('.thursday').hide();
 
-        $(document).on('click', '#wednesday', function() {
+        $(document).on('click', '#english', function() {
 
-            $('.wednesday').show();
-            $('.thursday').hide();
+            $('.english').removeClass('d-none');
+            $('.french').addClass('d-none');
+            $('.dutch').addClass('d-none');
+
+        })
+
+        $(document).on('click', '#dutch', function() {
+
+            $('.dutch').removeClass('d-none');
+            $('.french').addClass('d-none');
+            $('.english').addClass('d-none');
 
         })
 
-        $(document).on('click', '#thursday', function() {
+        $(document).on('click', '#french', function() {
 
-            $('.thursday').show();
-            $('.wednesday').hide();
+           /*  $('.french').removeClass('d-none');
+            $('.dutch').addClass('d-none');
+            $('.english').addClass('d-none'); */
 
-        })
+            })
 
     })
     </script>

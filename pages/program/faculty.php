@@ -221,6 +221,22 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-lg-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="">
+                                        <img alt="Jan-Warner Poley" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/JP.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr Jan-Warner Poley</h5>
+                                    <p class="text-muted mb-0">Interventional Endoscopist</p>
+                                    <p class="text-muted mb-0">Erasmus MC, University Medical Center Rotterdam</p>
+                                    <p class="text mb-0">Focus: quality in ERCP and endoscopic ultrasound</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- <div class="row row-grid"> -->
 
@@ -331,6 +347,38 @@
                                     <p class="text-muted mb-0">Interventional Endoscopist</p>
                                     <p class="text-muted mb-0">University Hospital of Ghent</p>
                                     <p class="text mb-0">Focus: ERCP, interventional EUS</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="#">
+                                        <img alt="Hans Van Vlierberghe" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/HVV.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Prof. Hans Van Vlierberghe</h5>
+                                    <p class="text-muted mb-0">Hepatologist</p>
+                                    <p class="text-muted mb-0">University Hospital of Ghent</p>
+                                    <p class="text mb-0">Focus: hepatology and endoscopy</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="#">
+                                        <img alt="Danny Delooze" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/DDL.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Prof. Danny Delooze</h5>
+                                    <p class="text-muted mb-0">Interventional Endoscopist</p>
+                                    <p class="text-muted mb-0">University Hospital of Ghent</p>
+                                    <p class="text mb-0">Focus: Barrett's, proctology, general gastroenterology</p>
                                 </div>
                             </div>
                         </div>

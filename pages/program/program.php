@@ -21,6 +21,16 @@
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/css/purpose.css" id="stylesheet">
 
     <style>
+        .text-gieqsGold {
+
+color: rgb(238, 194, 120);
+
+               }
+               .bg-gieqsGold {
+
+background-color: rgb(238, 194, 120);
+
+}
       .modal-backdrop
       {
           opacity:0.75 !important;
@@ -148,25 +158,25 @@
                             <!-- <span class="btn-inner--text">Overview</span> -->
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         <!-- </a> -->
-                        <a id="wednesday"
-                            class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
-                            <span class="btn-inner--text">Wed 7 Oct</span>
+                        <a href="#targetScrollProgramme" id="wednesday"
+                            class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
+                            <span class="btn-inner--text text-dark">Wed 7 Oct</span>
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         </a>
-                        <a id="thursday" class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
-                            <span class="btn-inner--text">Thurs 8 Oct</span>
+                        <a href="#targetScrollProgramme" id="thursday" class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
+                            <span class="btn-inner--text text-dark">Thurs 8 Oct</span>
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         </a>
                     </div>
 
                 </div>
 
-                <hr class="divider divider-fade" />
+                <hr id="targetScrollProgramme" class="divider divider-fade" />
 
 
                 <!--Wednesday Programme-->
 
-                <div class="wednesday">
+                <div id="wednesdayProgramme" class="wednesday">
 
                     <div class="row text-left">
                         <div class="col-12 p-1 pb-3 pt-3">
@@ -519,7 +529,7 @@
 
                 <!--Thursday Programme-->
 
-                <div class="thursday">
+                <div id="thursdayProgramme" class="thursday">
 
                     <div class="row text-left">
                         <div class="col-12 p-1 pb-3 pt-3">

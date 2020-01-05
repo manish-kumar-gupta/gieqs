@@ -34,6 +34,7 @@ error_reporting(E_ALL);
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/swiper/dist/css/swiper.min.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/datatables/dataTables.min.css">
     <!-- Purpose CSS -->
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/purpose.css" id="stylesheet">
 
@@ -177,12 +178,18 @@ $programme = new programme;
                       }
                   }
 
-                  
+                  ?>
+
+                  <div id="data" style="display:none;">
+                  <?php
 
                   //get an array of the known programmes [first 50]
 
-                  $hello = $programme->Load_records_limit(50);
-                  print_r($hello);
+                  echo $programme->Load_records_limit_json(50);
+                  ?>
+                  </div>
+                  <?php
+                  
                   
                   //create a standard form based on the database to be included in modals
 
@@ -194,19 +201,7 @@ $programme = new programme;
 
                 <!-- Section title -->
                 <div class="actions-toolbar py-2 mb-4">
-                    <div class="actions-search show" id="actions-search">
-                        <div class="input-group input-group-merge input-group-flush">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text bg-transparent"><i class="fas fa-search"></i></span>
-                            </div>
-                            <input type="text" class="form-control form-control-flush"
-                                placeholder="Type and hit enter ...">
-                            <div class="input-group-append">
-                                <a href="#" class="input-group-text bg-transparent" data-action="search-close"
-                                    data-target="#actions-search"><i class="fas fa-times"></i></a>
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div class="row justify-content-between align-items-center">
                         <div class="col">
                             <h5 class="mb-1">Programmes</h5>
@@ -254,72 +249,18 @@ $programme = new programme;
                 </div>
                 <!-- Orders table -->
                 <div class="table-responsive">
-                    <table class="table table-cards align-items-center">
-                        <thead>
-                            <tr>
-                                <th scope="col">id</th>
-                                <th scope="col" class="sort">Date</th>
-                                <th scope="col" class="sort">Title</th>
-                                <th scope="col" class="sort">Subtitle</th>
-                                <th scope="col" class="sort">Description</th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td scope="row">
-                                    <span class="id">Apple Inc</span>
-                                </td>
-                                <td class="order">
-                                    <span class="date d-block text-sm text-muted">ABC 00023</span>
-                                </td>
-                                <td>
-                                    <span class="title">Apple Inc</span>
-                                </td>
-                                <td>
-                                    <span class="subtitle text-sm mb-0">bla bla bla </span>
-                                </td>
-                                <td>
-                                    <span class="description text-sm mb-0">bla bla bla </span>
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center justify-content-end">
-
-                                        <!-- Actions -->
-                                        <div class="actions ml-3">
-                                            <a href="#" class="action-item mr-2" data-toggle="modal"
-                                                data-target="#modal-row-1" data-toggle="tooltip" title=""
-                                                data-original-title="Edit">
-                                                <i class="fas fa-pencil-alt"></i>
-                                            </a>
-                                            <a href="#" class="action-item mr-2" data-toggle="tooltip" title=""
-                                                data-original-title="see enclosed items">
-                                                <i class="fas fa-level-down-alt"></i>
-                                            </a>
-                                            <div class="dropdown">
-                                                <a href="#" class="action-item" role="button" data-toggle="dropdown"
-                                                    aria-haspopup="true" data-expanded="false">
-                                                    <i class="fas fa-ellipsis-v"></i>
-                                                </a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a href="#!" class="dropdown-item">
-                                                        Delete
-                                                    </a>
-                                                    <!-- <a href="#!" class="dropdown-item">
-                            Another action
-                          </a>
-                          <a href="#!" class="dropdown-item">
-                            Something else here
-                          </a> -->
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="table-divider"></tr>
-
-                        </tbody>
+                    <table id="dataTable" class="table text-center table-cards align-items-center">
+                    <thead>    
+                    <tr>
+                            <th>id</th>
+                            <th>title</th>
+                            <th>subtitle</th>
+                            <th>description</th>
+                            <th></th>
+                            
+                </tr>
+                </thead>
+                        
                     </table>
                 </div>
                 <!-- Load more -->
@@ -428,8 +369,44 @@ $programme = new programme;
 <script src="<?php echo BASE_URL; ?>/assets/js/purpose.js"></script>
 <!-- Site Location JS -->
 <script src="<?php echo BASE_URL; ?>/assets/js/siteLocation.js"></script>
+<!-- Datatables -->
+<script src="<?php echo BASE_URL; ?>/node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo BASE_URL; ?>/assets/libs/datatables/dataTables.min.js"></script>
+
+<script>
+
+var data = $('#data').text();
+var dataSet = $.parseJSON($('#data').text());
+
+$(document).ready(function(){
+
+  $('#dataTable').DataTable( {
+       
+    data: dataSet,
+    columns: [
+        { data: 'id' },
+        { data: 'title' },
+        { data: 'subtitle' },
+        { data: 'description' },
+        {
+        data: null,
+        render: function ( data, type, row ) {
+            return '<div class="d-flex align-items-center justify-content-end"><div class="actions ml-3"><a href="#" class="action-item mr-2" data-toggle="modal" data-target="#modal-row-1" data-toggle="tooltip" title="" data-original-title="Edit"> <i class="fas fa-pencil-alt"></i> </a> <a href="#" class="action-item mr-2" data-toggle="tooltip" title="" data-original-title="see enclosed items"> <i class="fas fa-level-down-alt"></i> </a> <div class="dropdown"> <a href="#" class="action-item" role="button" data-toggle="dropdown" aria-haspopup="true" data-expanded="false"> <i class="fas fa-ellipsis-v"></i> </a> <div class="dropdown-menu dropdown-menu-right"> <a href="#!" class="dropdown-item"> Delete </a> </div> </div> </div> </div>';
+        }
+        }
+    ],
+    
+    
+
+          
+    } );
 
 
+})
+
+
+
+</script>
 
 <?php require BASE_URI . '/footer.php';?>
 
