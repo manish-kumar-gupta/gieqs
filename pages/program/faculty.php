@@ -230,7 +230,7 @@
                                     </a>
                                 </div>
                                 <div class="mt-3">
-                                    <h5 class="gieqsGold card-title mb-0">Dr Jan-Warner Poley</h5>
+                                    <h5 class="gieqsGold card-title mb-0">Dr Jan-Werner Poley</h5>
                                     <p class="text-muted mb-0">Interventional Endoscopist</p>
                                     <p class="text-muted mb-0">Erasmus MC, University Medical Center Rotterdam</p>
                                     <p class="text mb-0">Focus: quality in ERCP and endoscopic ultrasound</p>
