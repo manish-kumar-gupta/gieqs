@@ -149,10 +149,12 @@ function Mailer ($email, $subject, $filename){
 
 $subject = "Ghent International Endoscopy Quality Symposium, October 2020";
 
-
+$emailString = "";
+$myArray = explode(',', $myString);
+//print_r($myArray);
 
 Mailer(array(0 => 'nele.coulier@seauton-international.com', 1 => 'david.tate@uzgent.be'), $subject, '/assets/email/emailTemplateInline.html');
-
+//then can use myArray here
 
 
 

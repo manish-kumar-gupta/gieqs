@@ -151,7 +151,7 @@ $subject = "Ghent International Endoscopy Quality Symposium, October 2020";
 
 
 
-Mailer(array(0 => 'nele.coulier@seauton-international.com', 1 => 'david.tate@uzgent.be'), $subject, '/assets/email/emailTemplateSponsorsJan.html');
+Mailer(array(0 => 'david.tate@uzgent.be'), $subject, '/assets/email/emailTemplateSponsorsJan.html');
 
 
 
