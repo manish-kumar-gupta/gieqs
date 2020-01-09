@@ -61,7 +61,7 @@ if ($local) {
 
     define('BASE_URI', $_SERVER['DOCUMENT_ROOT']);
     //echo BASE_URI;
-    define('BASE_URL', 'http://www.gieqs.com');
+    define('BASE_URL', 'https://www.gieqs.com');
     //echo BASE_URL;
     define('DB', '/home/u8l2e829uoi9/mysqli_connect_gieqs.inc.php');
     //echo DB;
