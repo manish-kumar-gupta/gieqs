@@ -105,10 +105,10 @@ function Mailer ($email, $subject, $filename){
 
 					//Recipients
 					$mail->setFrom('admin@gieqs.com', 'Ghent International Endoscopy Quality Symposium');
-					
+					$mail->addAddress('admin@gieqs.com');
 					foreach ($email as $key=>$value){
 						
-						$mail->addAddress($value);
+						$mail->addBCC($value);
 						
 					}
 					
@@ -149,11 +149,12 @@ function Mailer ($email, $subject, $filename){
 
 $subject = "Ghent International Endoscopy Quality Symposium, October 2020";
 
-$emailString = "";
-$myArray = explode(',', $myString);
+$emailString = "Hans Van Vlierberghe <hans.vanvlierberghe@uzgent.be>, Lobke Desomer <lobkedesomer@gmail.com>, Pieter Hindryckx <pieter.hindryckx@uzgent.be>, Tania Helleputte <tania.helleputte@uzgent.be>, Helena Degroote <helena.degroote@ugent.be>, Danny De Looze <danny.delooze@uzgent.be>, Ewoud <edemunter@hotmail.com>";
+$emailArray = explode(',', $emailString);
 //print_r($myArray);
 
-Mailer(array(0 => 'nele.coulier@seauton-international.com', 1 => 'david.tate@uzgent.be'), $subject, '/assets/email/emailTemplateInline.html');
+//Mailer(array(0 => 'david.tate@uzgent.be'), $subject, '/assets/email/emailTemplateInline.html');
+Mailer($emailArray, $subject, '/assets/email/emailTemplateInline.html');
 //then can use myArray here
 
 
