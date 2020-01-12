@@ -1,16 +1,16 @@
 <?php
-error_reporting(E_ALL);
+error_reporting(0);
 //;
 $openaccess = 1;
-echo 'hello';
+//echo 'hello';
 //$requiredUserLevel = 4;
 require ('../../assets/includes/config.inc.php');		
-echo 'hello2';
+//echo 'hello2';
 require (BASE_URI.'/assets/scripts/headerScript.php');
 
-echo 'hello3';
+//echo 'hello3';
 $general = new general;
-echo 'hello4';
+//echo 'hello4';
 
 
 
@@ -49,8 +49,8 @@ if (count($_GET) > 0){
 		
 	}
 	
-	print_r($GLOBALS);
-	print_r($data);
+	// print_r($GLOBALS);
+	// print_r($data);
 	
 	if (!isset($table)){
 		
@@ -113,7 +113,7 @@ if (count($_GET) > 0){
 	//print_r($keys);
 	//print_r($values);
 	
-	echo $hello;
+	//echo $hello;
 	
 	
 	function rempty ($var)
@@ -144,7 +144,7 @@ if (count($_GET) > 0){
 
 		
 
-		print_r($data);
+		// print_r($data);
 
 		$data = array_filter($data, 'rempty');
 
@@ -158,7 +158,7 @@ if (count($_GET) > 0){
 			}
 		}*/
 
-		print_r($keys);
+		// print_r($keys);
 
         
         //interact with the class
@@ -170,7 +170,7 @@ if (count($_GET) > 0){
         foreach ($data as $key=>$value){
 
             $targetStatement = '$esdLesion->set' . $key . '("' . $value . '");';
-            echo $targetStatement;
+            //echo $targetStatement;
             
             try {
               

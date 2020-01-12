@@ -123,7 +123,7 @@ if (isset($requiredUserLevel)){
                     redirect_login($location);
 
                 }
-             }
+            }
 
             mysqli_free_result($result);
             mysqli_close($dbc);
@@ -246,7 +246,11 @@ b:{
                         redirect_login($location);
 
                     }
-                }
+                }else{
+
+                    $databaseUserAccessLevel = NULL;
+    
+                 }
 
                 mysqli_free_result($result);
                 mysqli_close($dbc);
