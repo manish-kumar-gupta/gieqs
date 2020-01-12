@@ -19,9 +19,10 @@ Class DataBaseMysql {
 		$host = substr($_SERVER['HTTP_HOST'], 0, 5);
 		if (in_array($host, array('local', '127.0', '192.1'))) {
 			$local = TRUE;
-			echo 'local';
+			//echo 'local';
 		} else {
-		    $local = FALSE;
+			$local = FALSE;
+			echo 'not local';
 		}
 		
 		if ($local){
