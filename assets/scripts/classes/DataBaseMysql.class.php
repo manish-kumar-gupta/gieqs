@@ -33,6 +33,9 @@ Class DataBaseMysql {
 			$this->conn = new mysqli("localhost", "djt35", "nevira1pine", "gieqs");
 				if($this->conn->connect_error){
 					echo "Error connect to mysql";die;
+				}else{
+
+					echo "connected to SQL";
 				}
 			
 			

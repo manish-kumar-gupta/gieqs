@@ -2,7 +2,7 @@
 
 require_once 'DataBaseMysql.class.php';
 
-
+//echo 'class loading';
 
 //spl_autoload_unregister ('class_loader');
 		
