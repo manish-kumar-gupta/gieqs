@@ -22,7 +22,7 @@ Class DataBaseMysql {
 			//echo 'local';
 		} else {
 			$local = FALSE;
-			echo 'not local';
+			//echo 'not local';
 		}
 		
 		if ($local){
