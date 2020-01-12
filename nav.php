@@ -43,7 +43,7 @@
 
             <!-- Registration-basic -->
             <li class="nav-item active">
-              <a class="nav-link" href="#" data-toggle="popover" data-color="dark" data-placement="bottom" data-content="Thank-you for your interest.  Please come back in early 2020 for registration!">Register</a>
+              <a class="nav-link" data-toggle="modal" data-target="#registerInterest">Register</a>
             </li>
 
             

@@ -107,7 +107,7 @@
 
                             </div>
                             <div>
-                                <h2 class="text-white mb-4">
+                                <h2 class="text-white mb-4 mt-8 mt-lg-0">
                                     <span class="display-4 font-weight-light">We can do everyday endoscopy
                                         better.</span>
                                     <span class="d-block" style="color: rgb(238, 194, 120);"><strong
@@ -211,6 +211,41 @@
     </section>
      
     </div>
+     <!-- Modal -->
+<div class="modal fade" id="registerInterest" tabindex="-1" role="dialog" aria-labelledby="registerInterestLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="registerInterestLabel" style="color: rgb(238, 194, 120);">Thank-you for your interest in GIEQs</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span class="text-white" aria-hidden="false">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <span class="h6">Registration will open in late January 2020.  <br/> </span><span>Prior to this you can register your interest below and we will keep you updated on everything GIEQs.</span>
+        <hr>
+        <form id='pre-register'>
+        <div class="form-group">
+                              <label for="name">Name:</label>
+                                    <div class="input-group mb-3">
+                                        <input type="text" name="name" id="name" class="form-control" placeholder="please enter your name">
+                                    </div>
+                                    <label for="email">Email address:</label>
+                                    <div class="input-group mb-3">
+                                        <input type="email" name="email" id="email" class="form-control" placeholder="please enter your email address">
+                                    </div>
+</div>
+</form>
+        <hr>
+        <span>Your email address will only be used to update you on GIEQs</span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-small btn-secondary" data-dismiss="modal">Close</button>
+        <button id="submitPreRegister" type="button" class="btn-small text-black" style="background-color: rgb(238, 194, 120);">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
 
     <?php require 'footer.php';?>
 
@@ -227,6 +262,7 @@
     <!-- Purpose JS -->
     <!-- <script src="assets/js/purpose.js"></script> -->
     <!-- <script src="assets/js/generaljs.js"></script> -->
+    <script src="assets/js/demo.js"></script>
     
 
     <script>
