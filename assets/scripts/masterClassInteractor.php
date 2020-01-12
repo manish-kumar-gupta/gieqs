@@ -1,7 +1,8 @@
 <?php
-//error_reporting(E_ALL);
+error_reporting(E_ALL);
 //;
 $openaccess = 1;
+echo 'hello';
 //$requiredUserLevel = 4;
 require ('../../assets/includes/config.inc.php');		
 
@@ -47,8 +48,8 @@ if (count($_GET) > 0){
 		
 	}
 	
-	//print_r($GLOBALS);
-	//print_r($data);
+	print_r($GLOBALS);
+	print_r($data);
 	
 	if (!isset($table)){
 		
@@ -111,8 +112,7 @@ if (count($_GET) > 0){
 	//print_r($keys);
 	//print_r($values);
 	
-	
-	//echo $hello;
+	echo $hello;
 	
 	
 	function rempty ($var)
@@ -143,7 +143,7 @@ if (count($_GET) > 0){
 
 		
 
-		//print_r($data);
+		print_r($data);
 
 		$data = array_filter($data, 'rempty');
 
@@ -157,7 +157,7 @@ if (count($_GET) > 0){
 			}
 		}*/
 
-		//print_r($keys);
+		print_r($keys);
 
         
         //interact with the class
@@ -169,7 +169,7 @@ if (count($_GET) > 0){
         foreach ($data as $key=>$value){
 
             $targetStatement = '$esdLesion->set' . $key . '("' . $value . '");';
-            //echo $targetStatement;
+            echo $targetStatement;
             
             try {
               
@@ -297,6 +297,7 @@ if (count($_GET) > 0){
 }else{
 	
 	echo 'No variables passed';
+	exit();
 	
 }
 
