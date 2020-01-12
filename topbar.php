@@ -1,3 +1,10 @@
+<style>
+.modal-backdrop
+{
+    opacity:0.7 !important;
+}
+</style>
+
 <!--Topbar-->
 <div id="navbar-top-main" class="navbar-top  navbar-dark bg-dark border-bottom">
       <div class="container px-0">
@@ -34,7 +41,7 @@
               </li>
             -->
               <li class="nav-item">
-                <a class="nav-link" title="Registration" href="#" data-toggle="popover" data-color="dark" data-placement="bottom" data-content="Thank-you for your interest.  Please come back in early 2020 for registration!"><i class="fas fa-user-plus"></i></a>
+                <a class="nav-link" title="Registration" href="#" data-toggle="modal" data-target="#registerInterest"><i class="fas fa-user-plus"></i></a>
               </li>
             <!--
               <li class="nav-item dropdown">
@@ -66,3 +73,39 @@
         </div>
       </div>
     </div>
+
+    <!-- Modal -->
+<div class="modal fade" id="registerInterest" tabindex="-1" role="dialog" aria-labelledby="registerInterestLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="registerInterestLabel" style="color: rgb(238, 194, 120);">Thank-you for your interest in GIEQs</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span class="text-white" aria-hidden="false">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <span class="h6">Registration will open in late January 2020.  <br/> </span><span>Prior to this you can register your interest below and we will keep you updated on everything GIEQs.</span>
+        <hr>
+        <form id='pre-register'>
+        <div class="form-group">
+                              <label for="name">Name:</label>
+                                    <div class="input-group mb-3">
+                                        <input type="text" name="name" id="name" class="form-control" placeholder="please enter your name">
+                                    </div>
+                                    <label for="email">Email address:</label>
+                                    <div class="input-group mb-3">
+                                        <input type="email" name="email" id="email" class="form-control" placeholder="please enter your email address">
+                                    </div>
+</div>
+</form>
+        <hr>
+        <span>Your email address will only be used to update you on GIEQs</span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-small btn-secondary" data-dismiss="modal">Close</button>
+        <button id="submitPreRegister" type="button" class="btn-small text-black" style="background-color: rgb(238, 194, 120);">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>

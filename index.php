@@ -215,7 +215,7 @@
     <?php require 'footer.php';?>
 
     <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
-    <script src="assets/js/purpose.core.js"></script>
+    <!-- <script src="assets/js/purpose.core.js"></script> -->
     <!-- Page JS -->
     <script src="assets/libs/swiper/dist/js/swiper.min.js"></script>
     <script src="assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
@@ -225,9 +225,125 @@
     <!-- Google maps -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBuyKngB9VC3zgY_uEB-DKL9BKYMekbeY"></script>
     <!-- Purpose JS -->
-    <script src="assets/js/purpose.js"></script>
-    <!-- Demo JS - remove it when starting your project -->
-    <script src="assets/js/demo.js"></script>
+    <!-- <script src="assets/js/purpose.js"></script> -->
+    <!-- <script src="assets/js/generaljs.js"></script> -->
+    
+
+    <script>
+
+    
+function submitPreRegisterForm(){
+
+  var esdLesionObject = pushDataFromFormAJAX("pre-register", "preRegister", "id", null, "0"); //insert new object
+		
+    esdLesionObject.done(function (data){
+
+      console.log(data);
+
+      var dataTrim = data.trim();
+
+      console.log(dataTrim);
+
+      if (dataTrim){
+
+        try {
+
+          dataTrim = parseInt(dataTrim);
+
+          if (dataTrim > 0){
+
+            alert ("Thank you for your details.  We will keep you updated on everything GIEQs.");
+            $("[data-dismiss=modal]").trigger({ type: "click" });
+
+          }
+          
+        } catch (error) {
+
+          //data not entered
+          console.log('error parsing integer');
+          $("[data-dismiss=modal]").trigger({ type: "click" });
+
+          
+        }
+                      
+                      //$('#success').text("New esdLesion no "+data+" created");
+                //$('#successWrapper').show();
+        /* $("#successWrapper").fadeTo(4000, 500).slideUp(500, function() {
+          $("#successWrapper").slideUp(500);
+        });
+        edit = 1;
+        $("#id").text(data);
+        esdLesionPassed = data;
+        fillForm(data); */
+
+
+
+
+      }else {
+
+        alert("No data inserted, try again");
+
+      }
+
+
+    });
+}
+
+$(document).ready(function(){
+
+
+$(document).on('click', '#submitPreRegister', function(){
+
+  event.preventDefault();
+	$('#pre-register').submit();
+
+})
+
+$("#pre-register").validate({
+		
+    invalidHandler: function(event, validator) {
+        var errors = validator.numberOfInvalids();
+        console.log("there were " + errors + " errors");
+        if (errors) {
+            var message = errors == 1 ?
+                "1 field contains errors. It has been highlighted" :
+                      + errors + " fields contain errors. They have been highlighted";
+                      
+                  
+                  $('#error').text(message);
+                  //$('div.error span').addClass('form-text text-danger');
+            //$('#errorWrapper').show();
+    
+     $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function() {
+      $("#errorWrapper").slideUp(500);
+    }); 
+        } else {
+            $('#errorWrapper').hide();
+        }
+    },rules: {
+          name: { required: true, },
+          email: { required: true, email: true,},   
+  
+},
+    submitHandler: function(form) {
+
+      submitPreRegisterForm();
+
+        //console.log("submitted form");
+
+
+
+}
+
+
+
+
+});
+
+
+})
+
+    </script>
 </body>
 
 </html>

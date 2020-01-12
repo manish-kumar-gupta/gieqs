@@ -6,3 +6,12 @@
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
     <!-- Purpose CSS -->
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/css/purpose.css" id="stylesheet">
+    <!--Extra CSS -->
+    <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/css/gieqs.css" id="stylesheet">
+
+<!-- Global JS -->
+<script src="<?php echo BASE_URL;?>/assets/js/purpose.core.js"></script>
+<script src="<?php echo BASE_URL;?>/assets/js/purpose.js"></script>
+
+<script src="<?php echo BASE_URL;?>/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+<script src="<?php echo BASE_URL;?>/assets/js/generaljs.js"></script>
