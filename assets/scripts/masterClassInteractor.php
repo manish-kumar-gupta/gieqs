@@ -5,11 +5,12 @@ $openaccess = 1;
 echo 'hello';
 //$requiredUserLevel = 4;
 require ('../../assets/includes/config.inc.php');		
-
+echo 'hello2';
 require (BASE_URI.'/assets/scripts/headerScript.php');
 
-
+echo 'hello3';
 $general = new general;
+echo 'hello4';
 
 
 
