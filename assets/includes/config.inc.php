@@ -68,7 +68,8 @@ if ($local) {
     
     function class_loader($class) {
 		
-			require($_SERVER['DOCUMENT_ROOT'].'/classes/'.$class.'.class.php');
+        require($_SERVER['DOCUMENT_ROOT'].'/gieqs/assets/scripts/classes/'.$class.'.class.php');
+		 	
 		 	
 	}
 	
