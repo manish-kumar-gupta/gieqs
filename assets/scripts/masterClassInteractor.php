@@ -1,10 +1,11 @@
 <?php
+error_reporting(E_ALL);
 //;
-			$openaccess = 1;
-			//$requiredUserLevel = 4;
-			require ('../../assets/includes/config.inc.php');		
-			
-			require (BASE_URI.'/assets/scripts/headerScript.php');
+$openaccess = 1;
+//$requiredUserLevel = 4;
+require ('../../assets/includes/config.inc.php');		
+
+require (BASE_URI.'/assets/scripts/headerScript.php');
 
 
 $general = new general;
