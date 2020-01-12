@@ -5,7 +5,7 @@
 			$openaccess = 0;
 			$requiredUserLevel = 2;
 
-			$formv1 = new formGenerator;
+			//$formv1 = new formGenerator;
 			//$general = new general;
 			//$video = new video;
 			//$tagCategories = new tagCategories;
