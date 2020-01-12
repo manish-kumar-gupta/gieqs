@@ -18,7 +18,8 @@ Class DataBaseMysql {
 	public function __construct(){
 		$host = substr($_SERVER['HTTP_HOST'], 0, 5);
 		if (in_array($host, array('local', '127.0', '192.1'))) {
-		    $local = TRUE;
+			$local = TRUE;
+			echo 'local';
 		} else {
 		    $local = FALSE;
 		}
@@ -35,7 +36,7 @@ Class DataBaseMysql {
 					echo "Error connect to mysql";die;
 				}else{
 
-					echo "connected to SQL";
+					//echo "connected to SQL";
 				}
 			
 			
