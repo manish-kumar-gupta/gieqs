@@ -1,5 +1,5 @@
 <?php
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 //;
 $openaccess = 1;
 //$requiredUserLevel = 4;
