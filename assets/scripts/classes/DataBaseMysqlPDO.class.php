@@ -39,7 +39,7 @@ Class DataBaseMysqlPDO {
 			try{
 
 				//edit remote database name, password and port here
-				$this->conn = new PDO('mysql:host=localhost;dbname=gieqs;charset=utf8','djt35','nevira1pine',array(
+				$this->conn = new PDO('mysql:host=localhost;port=3306;dbname=gieqs;charset=utf8','djt35','nevira1pine',array(
 					PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
 				));
 			}catch(PDOException $pe){

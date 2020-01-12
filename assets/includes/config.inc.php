@@ -108,7 +108,7 @@ if (!isset($debug)) {
 # ***** SETTINGS ***** #
 # ******************** #
 
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 
 # **************************** #
 # ***** ERROR MANAGEMENT ***** #
@@ -149,4 +149,5 @@ function my_error_handler($e_number, $e_message, $e_file, $e_line, $e_vars) {
 # ***** ERROR MANAGEMENT ***** #
 # **************************** #
 
-error_reporting(E_ERROR | E_WARNING | E_PARSE);
+//error_reporting(E_ERROR | E_WARNING | E_PARSE);
+error_reporting(E_ALL);
