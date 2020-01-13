@@ -24,6 +24,22 @@
 
         <?php require 'nav.php';?>
 
+        <?php
+          //set the variable to launch the registration pop-up
+
+          //print_r($_GET);
+
+          if (isset($_GET['signup'])){
+
+            $signup = $_GET['signup'];
+
+          }
+
+          echo '<div id="signup" style="display:none;">' . $signup . '</div>';
+
+        ?>
+        
+
     </header>
     
     <!-- Omnisearch -->
@@ -82,6 +98,9 @@
         </div>
     </div>
     <div class="main-content">
+
+    
+
         <!-- Header (v1) -->
         <section class="header-1 section-rotate bg-section-dark" data-offset-top="#header-main">
             <div class="section-inner bg-gradient-dark"></div>
@@ -268,6 +287,8 @@
     <script>
 
     
+var signup = $('#signup').text();
+
 function submitPreRegisterForm(){
 
   var esdLesionObject = pushDataFromFormAJAX("pre-register", "preRegister", "id", null, "0"); //insert new object
@@ -327,6 +348,11 @@ function submitPreRegisterForm(){
 
 $(document).ready(function(){
 
+if (signup == '2456'){
+
+  $('#registerInterest').modal('show');
+
+}
 
 $(document).on('click', '#submitPreRegister', function(){
 
