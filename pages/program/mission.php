@@ -4,23 +4,20 @@
 <?php require '../../assets/includes/config.inc.php';?>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description"
-        content="At GIEQs we aim to make everyday endoscopy better.  Endoscopy is performed by a team of doctors and nurses.  Both parts of the team are important and so a nursing symposium is part of GIEQs.">
-    <meta name="author" content="gieqs">
-    <title>GIEQs faculty</title>
-    <!-- Favicon -->
-    <link rel="icon" href="<?php echo BASE_URL;?>/assets/img/brand/favicongieqs.png" type="image/png">
-    <!-- Font Awesome 5 -->
-    <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/@fortawesome/fontawesome-free/css/all.min.css">
-    <!-- Page CSS -->
-    <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/swiper/dist/css/swiper.min.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
+<?php
 
-    <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
-    <!-- Purpose CSS -->
-    <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/css/purpose.css" id="stylesheet">
+//define user access level
+
+$openaccess = 1;
+
+require BASE_URI . '/head.php';
+
+?>
+
+    <title>GIEQs mission statement</title>
+    
+    <!-- Page CSS -->
+    <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
 
     <style>
     .logo {
@@ -35,6 +32,31 @@
         color: rgb(238, 194, 120);
 
     }
+
+    .video-thumbnail {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  margin: 30px;
+    }
+
+    .video-thumbnail::before {
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    content: "&#9658;";
+    font-family: FontAwesome;
+    font-size: 100px;
+    color: #fff;
+    opacity: .8;
+    text-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
+  }
+  .video-thumbnail:hover::before {
+    color: ;
+  }
+
 
     @media screen and (max-width: 400px) {
 
@@ -165,9 +187,11 @@
               <p class="lead">There are many reasons for this discrepancy. Complex techniques are also often visually appealing and the significant endoscopic skill required to perform them may be inspiring to colleagues. It is also true to say that the evidence for many of the strategies we are now beginning to apply to everyday endoscopic practice originated from such complex procedures.</p>
               <h5>'Everyday' endoscopy may present unique challenges</h5>
               <figure class="figure" >
-                <a href="https://vimeo.com/370720520" data-fancybox>     
+              <!-- <div class="video-thumbnail">   -->
+              <a href="https://vimeo.com/370720520" data-fancybox>     
                 <img alt="Image placeholder" src="../../assets/img/bleeding/spurtingVessel.png" class="img-fluid rounded">
                 </a>
+  <!-- </div> -->
                 <figcaption class="mt-3 text-muted"><strong>Upper gastrointestinal bleeding:</strong> large perforating vessel in a gastric ulcer continuously spurting blood, seen through the lens of the over-the-scope clip. Recent <a href="javascript:;" data-fancybox data-type="iframe" data-src="https://www.ncbi.nlm.nih.gov/pubmed/?term=29803838">evidence</a> suggests that the over-the-scope clip has impressive rates of haemostasis in such difficult cases.  Press the image to view the entire procedure</figcaption>
               </figure>
               <p class="lead">At GIEQs we believe that there is a need for an international endoscopy congress focused on the techniques that are performed by all endoscopists, every day of their working lives. These include, but are not limited to, painless colonoscopy, small polypectomy, gastroscopy and the detection of early-stage precursors of upper GI cancer, the treatment of gastrointestinal bleeding, etc. An increasing body of evidence underpins both how to perform these techniques and in which situation to apply a particular technique; indeed applying an evidence-based approach may have a long-lasting impact on patient care.</p>
@@ -179,7 +203,7 @@
                 <!-- <a href="https://vimeo.com/370720520" data-fancybox>      -->
                 <img alt="Image placeholder" src="../../assets/img/polyps/panl.png" class="img-fluid rounded" >
                 <!-- </a> -->
-                <figcaption class="mt-3 text-muted"><strong>Large non-granular colonic laterally spreading tumor:</strong> a huge evidence base now underpins the treatment of such lesions.  This lesion has been previously attempted but incompletely resected.  This risks the patient being referred unnecessarily for surgery or an adverse event since the endoscopic approach is now more complicated</figcaption>
+                <figcaption class="mt-3 text-muted"><strong>Large non-granular colonic laterally spreading tumor:</strong> a huge <a href="javascript:;" data-fancybox data-type="iframe" data-src="https://www.gastrojournal.org/article/S0016-5085(16)35557-3/fulltext">evidence base</a> now underpins the treatment of such lesions.  This lesion has been previously attempted but incompletely resected.  This risks the patient being referred unnecessarily for surgery or an adverse event since the endoscopic approach is now more complicated</figcaption>
               </figure>
               <p class="lead">We believe that by holding a 2-day international symposium with a world-class faculty, focused on everyday techniques in Endoscopy, we can start a renewed drive towards quality in endoscopic procedures in Belgium and throughout Europe. Of course, endoscopy is also a practical discipline, and there is a need for live demonstration of the techniques under discussion in addition to the presentation of evidence.</p>
               <p class="lead">In addition, traditional endoscopy symposia do not commonly encompass specific sessions for trainees. We believe that building quality in a practical discipline such as Endoscopy must focus on training and the evidence behind how to train effectively. At GIEQs we will introduce specific sessions for trainees on the practice and theory behind everyday endoscopy. Furthermore, we will introduce a separate nursing congress for a half day during GIEQs; talks will be focused on the issues relevant to nurses and be given by national and international nursing leaders, in addition to the medical faculty. At GIEQs we believe that quality in endoscopy can only be delivered by education of the whole team delivering the procedure.</p>

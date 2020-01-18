@@ -17,9 +17,9 @@ session_start();
 // Errors are emailed here:
 $contact_email = 'djtate@gmail.com'; 
 
-$active = 0;
+$active = 1;
 
-if ($active == 1){
+if ($active == 0){
 	
 	echo 'Site closed for maintenance, please check back later';
 	exit();	
@@ -151,4 +151,4 @@ function my_error_handler($e_number, $e_message, $e_file, $e_line, $e_vars) {
 # **************************** #
 
 //error_reporting(E_ERROR | E_WARNING | E_PARSE);
-error_reporting(E_ALL);
+error_reporting(0);

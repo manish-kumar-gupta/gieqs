@@ -1,66 +1,96 @@
 <!--Main Navbar-->
 
 
-    <nav class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-dark bg-dark" id="navbar-main">
-      <div class="container px-lg-0">
+<nav class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-dark bg-dark" id="navbar-main">
+    <div class="container px-lg-0">
         <!-- Logo -->
         <a class="navbar-brand mr-lg-5" href="<?php echo BASE_URL;?>/index.php">
-          <img alt="Image placeholder" src="<?php echo BASE_URL;?>/assets/img/brand/gieqs.svg" id="navbar-logo" style="height: 50px;">
+            <img alt="Image placeholder" src="<?php echo BASE_URL;?>/assets/img/brand/gieqs.svg" id="navbar-logo"
+                style="height: 50px;">
         </a>
         <!-- Navbar collapse trigger -->
-        <button class="navbar-toggler pr-0" type="button" data-toggle="collapse" data-target="#navbar-main-collapse" aria-controls="navbar-main-collapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler pr-0" type="button" data-toggle="collapse" data-target="#navbar-main-collapse"
+            aria-controls="navbar-main-collapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Navbar nav -->
         <div class="collapse navbar-collapse" id="navbar-main-collapse">
-          <ul class="navbar-nav align-items-lg-center">
-            <!-- Home - Overview  -->
-            <!--<li class="nav-item active">
+            <ul class="navbar-nav align-items-lg-center">
+                <!-- Home - Overview  -->
+                <!--<li class="nav-item active">
               <a class="nav-link" href="<?php echo BASE_URL;?>/index.php">Overview</a>
             </li>-->
-            <!-- Mission -->
-            <li class="nav-item active">
-              <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/mission.php">Mission</a>
-            </li>
-            <!-- Program-basic, later to add dropdown with options -->
-            <li class="nav-item active">
-              <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/program.php">Programme</a>
-            </li>
-            <!-- Faculty Cards-basic -->
-            <li class="nav-item active">
-              <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/faculty.php">Faculty</a>
-            </li>
+                <!-- Mission -->
+                <li class="nav-item active">
+                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/mission.php">Mission</a>
+                </li>
+                <!-- Program-basic, later to add dropdown with options -->
+                <li class="nav-item active">
+                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/program.php">Programme</a>
+                </li>
+                <!-- Faculty Cards-basic -->
+                <li class="nav-item active">
+                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/faculty.php">Faculty</a>
+                </li>
 
-            <!-- Nursing congress -->
-            <li class="nav-item active">
-              <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/nursing.php">Nursing</a>
-            </li>
+                <!-- Nursing congress -->
+                <li class="nav-item active">
+                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/nursing.php">Nursing</a>
+                </li>
 
-            <!-- Sponsors --><!--currently not active-->
-            <!-- <li class="nav-item active">
+                <!-- Sponsors -->
+                <!--currently not active-->
+                <!-- <li class="nav-item active">
               <a class="nav-link" href="<?php //echo BASE_URL;?>/pages/program/sponsors.php">Sponsors</a>
             </li> -->
 
-            <!-- Registration-basic -->
+                <!-- Registration-basic -->
+                <?php
+
+            //check page we are on
+
+            $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+            //if contains index.html
+
+            if (strpos($actual_link, 'index.php') !== false) {
+              echo '
             <li class="nav-item active">
               <a class="nav-link" data-toggle="modal" data-target="#registerInterest">Register</a>
-            </li>
+            </li>';
+            }else{
+              //otherwise
+              echo '
+              <li class="nav-item active">
+                <a class="nav-link" href="' . BASE_URL . '/index.php?signup=2456">Register</a>
+              </li>';
+              
+
+            }
 
             
-            <!-- Pages menu -->
-            <!-- <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+
+            
+
+
+
+            ?>
+
+
+                <!-- Pages menu -->
+                <!-- <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
               <div class="dropdown-menu dropdown-menu-lg dropdown-menu-arrow p-0">
                 <ul class="list-group list-group-flush">
                   <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
                     <a href="#" class="list-group-item list-group-item-action dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <div class="media d-flex align-items-center"> -->
-                        <!-- SVG icon -->
-                        <!-- <figure style="width: 50px;">
+                <!-- SVG icon -->
+                <!-- <figure style="width: 50px;">
                           <img alt="Image placeholder" src="assets/img/icons/essential/detailed/Code_2.svg" class="svg-inject img-fluid" style="height: 50px;">
                         </figure> -->
-                        <!-- Media body -->
-                        <!-- <div class="media-body ml-3">
+                <!-- Media body -->
+                <!-- <div class="media-body ml-3">
                           <h6 class="mb-1">Landing</h6>
                           <p class="mb-0">A great point to start from.</p>
                         </div>
@@ -137,12 +167,12 @@
                   <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
                     <a href="#" class="list-group-item list-group-item-action dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <div class="media d-flex align-items-center"> -->
-                        <!-- SVG icon -->
-                        <!-- <figure style="width: 50px;">
+                <!-- SVG icon -->
+                <!-- <figure style="width: 50px;">
                           <img alt="Image placeholder" src="assets/img/icons/essential/detailed/Code.svg" class="svg-inject img-fluid" style="height: 50px;">
                         </figure> -->
-                        <!-- Media body -->
-                        <!-- <div class="media-body ml-3">
+                <!-- Media body -->
+                <!-- <div class="media-body ml-3">
                           <h6 class="mb-1">Secondary</h6>
                           <p class="mb-0">Examples for any scenario.</p>
                         </div>
@@ -239,12 +269,12 @@
                   <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
                     <a href="#" class="list-group-item list-group-item-action dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <div class="media d-flex align-items-center"> -->
-                        <!-- SVG icon -->
-                        <!-- <figure style="width: 50px;">
+                <!-- SVG icon -->
+                <!-- <figure style="width: 50px;">
                           <img alt="Image placeholder" src="assets/img/icons/essential/detailed/Secure_Files.svg" class="svg-inject img-fluid" style="height: 50px;">
                         </figure> -->
-                        <!-- Media body -->
-                        <!-- <div class="media-body ml-3">
+                <!-- Media body -->
+                <!-- <div class="media-body ml-3">
                           <h6 class="mb-1">Authentication</h6>
                           <p class="mb-0">Examples for any scenario.</p>
                         </div>
@@ -306,12 +336,12 @@
                   <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
                     <a href="#" class="list-group-item list-group-item-action dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <div class="media d-flex align-items-center"> -->
-                        <!-- SVG icon -->
-                        <!-- <figure style="width: 50px;">
+                <!-- SVG icon -->
+                <!-- <figure style="width: 50px;">
                           <img alt="Image placeholder" src="assets/img/icons/essential/detailed/Task.svg" class="svg-inject img-fluid" style="height: 50px;">
                         </figure> -->
-                        <!-- Media body -->
-                        <!-- <div class="media-body ml-3">
+                <!-- Media body -->
+                <!-- <div class="media-body ml-3">
                           <h6 class="mb-1">Account</h6>
                           <p class="mb-0">Account management made cool.</p>
                         </div>
@@ -388,12 +418,12 @@
                   <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
                     <a href="#" class="list-group-item list-group-item-action dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <div class="media d-flex align-items-center"> -->
-                        <!-- SVG icon -->
-                        <!-- <figure style="width: 50px;">
+                <!-- SVG icon -->
+                <!-- <figure style="width: 50px;">
                           <img alt="Image placeholder" src="assets/img/icons/essential/detailed/Cart_Add_2.svg" class="svg-inject img-fluid" style="height: 50px;">
                         </figure> -->
-                        <!-- Media body -->
-                        <!-- <div class="media-body ml-3">
+                <!-- Media body -->
+                <!-- <div class="media-body ml-3">
                           <h6 class="mb-1">Shop</h6>
                           <p class="mb-0">Complete flow for online shops.</p>
                         </div>
@@ -448,12 +478,12 @@
                   <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
                     <a href="#" class="list-group-item list-group-item-action dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <div class="media d-flex align-items-center">-->
-                        <!-- SVG icon -->
-                        <!-- <figure style="width: 50px;">
+                <!-- SVG icon -->
+                <!-- <figure style="width: 50px;">
                           <img alt="Image placeholder" src="assets/img/icons/essential/detailed/Cog_Wheels.svg" class="svg-inject img-fluid" style="height: 50px;">
                         </figure> -->
-                        <!-- Media body -->
-                        <!-- <div class="media-body ml-3">
+                <!-- Media body -->
+                <!-- <div class="media-body ml-3">
                           <h6 class="mb-1">Utility</h6>
                           <p class="mb-0">Error pages and everything else.</p>
                         </div>
@@ -495,8 +525,8 @@
                 </ul>
               </div>
             </li> -->
-            <!-- Sections menu -->
-            <!-- <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                <!-- Sections menu -->
+                <!-- <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sections</a>
               <div class="dropdown-menu dropdown-menu-xl dropdown-menu-arrow p-0">
                 <ul class="list-group list-group-flush">
@@ -550,7 +580,7 @@
               </div>
             </li>
           </ul> -->
-          <!--
+                <!--
           <ul class="navbar-nav align-items-lg-center ml-lg-auto">
             <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Docs</a>
@@ -559,11 +589,12 @@
                   <li>
                     <a href="docs/index.php" class="list-group-item list-group-item-action" role="button">
                       <div class="media d-flex align-items-center">-->
-                        <!-- SVG icon -->
-                        <!--<figure style="width: 50px;">
+                <!-- SVG icon -->
+                <!--<figure style="width: 50px;">
                           <img alt="Image placeholder" src="assets/img/icons/essential/detailed/DOC_File.svg" class="svg-inject img-fluid" style="height: 50px;">
                         </figure>-->
-                        <!-- Media body --><!--
+                <!-- Media body -->
+                <!--
                         <div class="media-body ml-3">
                           <h6 class="mb-1">Documentation</h6>
                           <p class="mb-0">Awesome section examples for any scenario.</p>
@@ -574,11 +605,13 @@
                   <li>
                     <a href="docs/components/index.php" class="list-group-item list-group-item-action" role="button">
                       <div class="media d-flex align-items-center">-->
-                        <!-- SVG icon --><!--
+                <!-- SVG icon -->
+                <!--
                         <figure style="width: 50px;">
                           <img alt="Image placeholder" src="assets/img/icons/essential/detailed/Mobile_UI.svg" class="svg-inject img-fluid" style="height: 50px;">
                         </figure>-->
-                        <!-- Media body --><!--
+                <!-- Media body -->
+                <!--
                         <div class="media-body ml-3">
                           <h6 class="mb-1">Components</h6>
                           <p class="mb-0">Awesome section examples for any scenario.</p>
@@ -614,8 +647,8 @@
                 <span class="btn-inner--icon"><i class="fas fa-shopping-cart"></i></span>
                 <span class="btn-inner--text">Purchase now</span>
               </a>
-            </li>
-          </ul>-->
+            </li>-->
+          </ul>
         </div>
-      </div>
-    </nav>
+    </div>
+</nav>

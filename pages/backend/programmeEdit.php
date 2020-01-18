@@ -1,18 +1,7 @@
 <?php require '../../assets/includes/config.inc.php';?>
 
-<?php
 
-$openaccess = 0;
-$requiredUserLevel = 2;
 
-$formv1 = new formGenerator;
-//$general = new general;
-//$video = new video;
-//$tagCategories = new tagCategories;
-
-error_reporting(E_ALL);
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,23 +9,27 @@ error_reporting(E_ALL);
 
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description"
-        content="At GIEQs we aim to make everyday endoscopy better.  Endoscopy is performed by a team of doctors and nurses.  Both parts of the team are important and so a nursing symposium is part of GIEQs.">
-    <meta name="author" content="gieqs">
+
+<?php
+
+//define user access level
+
+$openaccess = 0;
+$requiredUserLevel = 2;
+
+require BASE_URI . '/head.php';
+
+$formv1 = new formGenerator;
+
+?>
+
     <title>Ghent International Endoscopy Symposium - Backend</title>
-    <!-- Favicon -->
-    <link rel="icon" href="<?php echo BASE_URL; ?>/assets/img/brand/favicongieqs.png" type="image/png">
-    <!-- Font Awesome 5 -->
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/@fortawesome/fontawesome-free/css/all.min.css">
+
     <!-- Page CSS -->
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/swiper/dist/css/swiper.min.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/datatables/dataTables.min.css">
     <!-- Purpose CSS -->
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/purpose.css" id="stylesheet">
+    <!-- <link rel="stylesheet" href="<?php //echo BASE_URL; ?>/assets/css/purpose.css" id="stylesheet"> -->
 
     <style>
     .modal-backdrop {
@@ -253,6 +246,7 @@ $programme = new programme;
                     <thead>    
                     <tr>
                             <th>id</th>
+                            <th>date</th>
                             <th>title</th>
                             <th>subtitle</th>
                             <th>description</th>
@@ -264,10 +258,10 @@ $programme = new programme;
                     </table>
                 </div>
                 <!-- Load more -->
-                <div class="mt-4 text-center">
+                <!-- <div class="mt-4 text-center">
                     <a href="#" class="btn btn-sm btn-neutral rounded-pill shadow hover-translate-y-n3">Load more
                         ...</a>
-                </div>
+                </div> -->
             </div>
         </section>
 
@@ -275,7 +269,7 @@ $programme = new programme;
         <div class="modal fade" id="modal-row-1" tabindex="-1" role="dialog" aria-labelledby="modal-change-username"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
-                <form>
+               
                     <div class="modal-content bg-dark border" style="border-color:rgb(238, 194, 120) !important;">
                         <div class="modal-header">
                             <div class="modal-title d-flex align-items-left" id="modal-title-change-username">
@@ -291,7 +285,7 @@ $programme = new programme;
 
                             </div>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span="text-white" aria-hidden="true">&times;</span>
+                                <span class="text-white" aria-hidden="true">&times;</span>
                             </button>
 
                         </div>
@@ -310,45 +304,46 @@ $programme = new programme;
                         <div class="modal-body">
 
                             <div class="programme-body">
+                                <form id="programme-form">
                                 <div class="form-group">
                                     <label for="date">Date of programme</label>
                                     <div class="input-group mb-3">
                                         <input type="text" data-toggle="date" class="form-control" id="date"
-                                            placeholder="choose date">
+                                            name="date" placeholder="choose date">
                                     </div>
 
                                     <label for="title">Title</label>
                                     <div class="input-group mb-3">
-                                        <input type="text" id="title" class="form-control" placeholder="Title">
+                                        <input type="text" id="title" name="title" class="form-control" placeholder="Title">
                                     </div>
 
                                     <label for="subtitle">Subtitle</label>
                                     <div class="input-group mb-3">
-                                        <textarea id="subtitle" data-toggle="autosize" class="form-control"
+                                        <textarea id="subtitle" name="subtitle" data-toggle="autosize" class="form-control"
                                             placeholder="Subtitle"></textarea>
                                     </div>
 
                                     <label for="description">Description</label>
                                     <div class="input-group">
-                                        <textarea id="description" data-toggle="autosize" class="form-control"
+                                        <textarea id="description" name="description" data-toggle="autosize" class="form-control"
                                             placeholder="Description"></textarea>
                                     </div>
                                 </div>
+                                </form>
 
                                 <div class="px-5 pt-2 mt-2 mb-2 pb-2 text-center">
                                     <p class="text-muted text-sm">Data entered here will change the live site</p>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-sm btn-success"
-                                    data-dismiss="modal">Save</i></button>
+                                <button type="button" class="submit-programme-form btn btn-sm btn-success">Save</button>
                                 <button type="button" class="btn btn-sm btn-danger"
-                                    data-dismiss="modal">Cancel</i></button>
+                                    data-dismiss="modal">Cancel</button>
                             </div>
                         </div>
                     </div>
             </div>
-            </form>
+            
         </div>
     </div>
 
@@ -356,27 +351,120 @@ $programme = new programme;
 
 
 
-</body>
+
 
 
 
 
 <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
-<script src="../../assets/js/purpose.core.js"></script>
-<script src="<?php echo BASE_URL; ?>/assets/libs/flatpickr/dist/flatpickr.min.js"></script>
+<!-- <script src="../../assets/js/purpose.core.js"></script> -->
+
 <script src="<?php echo BASE_URL; ?>/assets/libs/autosize/dist/autosize.min.js"></script>
-<!-- Purpose JS -->
-<script src="<?php echo BASE_URL; ?>/assets/js/purpose.js"></script>
-<!-- Site Location JS -->
-<script src="<?php echo BASE_URL; ?>/assets/js/siteLocation.js"></script>
+
 <!-- Datatables -->
 <script src="<?php echo BASE_URL; ?>/node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo BASE_URL; ?>/assets/libs/datatables/dataTables.min.js"></script>
+<script src="<?php echo BASE_URL; ?>/assets/libs/flatpickr/dist/flatpickr.min.js"></script>
 
 <script>
 
 var data = $('#data').text();
 var dataSet = $.parseJSON($('#data').text());
+
+function fillForm (idPassed){
+        
+        disableFormInputs("programme-form");
+
+        esdLesionRequired = new Object;
+
+        esdLesionRequired = getNamesFormElements("programme-form");
+
+        esdLesionString = '`id`=\''+idPassed+'\'';
+
+        var selectorObject = getDataQuery ("programme", esdLesionString, getNamesFormElements("programme-form"), 1);
+
+        //console.log(selectorObject);
+
+        selectorObject.done(function (data){
+
+            console.log(data);
+
+            var formData = $.parseJSON(data);
+
+
+            $(formData).each(function(i,val){
+                $.each(val,function(k,v){
+                    $("#"+k).val(v);
+                    //console.log(k+' : '+ v);
+                });
+
+            });
+            
+            //$("#messageBox").text("Editing ESD lesion ID "+idPassed);
+
+            enableFormInputs("programme-form");
+
+        });
+
+
+        
+
+    }
+
+    //delete behaviour
+		
+		function deleteRow (id){
+		
+        //esdLesionPassed is the current record, some security to check its also that in the id field
+
+        /* if (esdLesionPassed != $("#id").text()){
+
+            return;
+
+        } */
+
+
+        if (confirm("Do you wish to delete this programme?")) {
+
+            disableFormInputs("programme-form");
+
+            var esdLesionObject = pushDataFromFormAJAX("programme-form", "programme", "id", id, "2"); //delete esdLesion
+
+            esdLesionObject.done(function (data){
+
+                console.log(data);
+
+                if (data){
+
+                    if (data == 1){
+
+                        alert ("programme deleted");
+                        //TODO refresh the table from AJAX
+                        //esdLesionPassed = null;
+                        //window.location.href = siteRoot + "scripts/forms/esdLesionTable.php";
+                        location.reload();
+
+                        //go to esdLesion list
+
+                    }else {
+
+                    alert("Error, could not delete.  Please try again");
+
+                    enableFormInputs("programme-form");
+
+                    }
+
+
+
+                }
+
+
+            });
+
+        }
+
+
+    }
 
 $(document).ready(function(){
 
@@ -385,13 +473,14 @@ $(document).ready(function(){
     data: dataSet,
     columns: [
         { data: 'id' },
+        { data: 'date' },
         { data: 'title' },
         { data: 'subtitle' },
         { data: 'description' },
         {
         data: null,
         render: function ( data, type, row ) {
-            return '<div class="d-flex align-items-center justify-content-end"><div class="actions ml-3"><a href="#" class="action-item mr-2" data-toggle="modal" data-target="#modal-row-1" data-toggle="tooltip" title="" data-original-title="Edit"> <i class="fas fa-pencil-alt"></i> </a> <a href="#" class="action-item mr-2" data-toggle="tooltip" title="" data-original-title="see enclosed items"> <i class="fas fa-level-down-alt"></i> </a> <div class="dropdown"> <a href="#" class="action-item" role="button" data-toggle="dropdown" aria-haspopup="true" data-expanded="false"> <i class="fas fa-ellipsis-v"></i> </a> <div class="dropdown-menu dropdown-menu-right"> <a href="#!" class="dropdown-item"> Delete </a> </div> </div> </div> </div>';
+            return '<div class="d-flex align-items-center justify-content-end"><div class="actions ml-3"><a class="fill-modal action-item mr-2"  data-toggle="tooltip" title="edit this row" data-original-title="Edit"> <i class="fas fa-pencil-alt"></i> </a> <a href="#" class="action-item mr-2" data-toggle="tooltip" title="" data-original-title="see enclosed items"> <i class="fas fa-level-down-alt"></i> </a> <div class="dropdown"> <a href="#" class="action-item" role="button" data-toggle="dropdown" aria-haspopup="true" data-expanded="false"> <i class="fas fa-ellipsis-v"></i> </a> <div class="dropdown-menu dropdown-menu-right"> <a class="delete-row dropdown-item"> Delete </a> </div> </div> </div> </div>';
         }
         }
     ],
@@ -401,12 +490,91 @@ $(document).ready(function(){
           
     } );
 
+    $(document).on('click', '.fill-modal', function() {
+
+    var targettd = $(this).parent().parent().parent().parent().find('td').first().text();
+    //console.log(targettd);
+    $('#modal-row-1').modal('show');
+    fillForm(targettd);
+
+    })
+
+    $(document).on('click', '.delete-row', function() {
+
+    var targettd = $(this).parent().parent().parent().parent().parent().parent().find('td').first().text();
+    console.log(targettd);
+    //$('#modal-row-1').modal('show');
+    deleteRow(targettd);
+
+    })
+
+    $(document).on('click', '.submit-programme-form', function() {
+
+    event.preventDefault();
+    console.log('clicked');
+    console.log($('#programme-form').closest());
+    $('#programme-form').submit();
+
+    })
+
+$("#programme-form").validate({
+
+invalidHandler: function(event, validator) {
+    var errors = validator.numberOfInvalids();
+    console.log("there were " + errors + " errors");
+    if (errors) {
+        var message = errors == 1 ?
+            "1 field contains errors. It has been highlighted" :
+            +errors + " fields contain errors. They have been highlighted";
+
+
+        $('#error').text(message);
+        //$('div.error span').addClass('form-text text-danger');
+        //$('#errorWrapper').show();
+
+        $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function() {
+            $("#errorWrapper").slideUp(500);
+        });
+    } else {
+        $('#errorWrapper').hide();
+    }
+},
+rules: {
+    title: {
+        required: true,
+    },
+    subtitle: {
+        required: true,
+        
+    },
+
+},
+submitHandler: function(form) {
+
+    //submitPreRegisterForm();
+
+    console.log("submitted form");
+
+    //TODO submit changes
+    //TODO reimport the array at the top
+    //TODO redraw the table
+
+
+
+}
+
+
+
+
+});
+
 
 })
 
 
 
 </script>
+</body>
 
 <?php require BASE_URI . '/footer.php';?>
 

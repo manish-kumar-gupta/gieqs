@@ -40,9 +40,40 @@
                 <a class="nav-link" href="pages/shop/checkout-cart.html"><i class="fas fa-shopping-cart"></i></a>
               </li>
             -->
+              
+            <?php
+
+            //check page we are on
+
+            $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+            //if contains index.html
+
+            if (strpos($actual_link, 'index.php') !== false) {
+              echo '
               <li class="nav-item">
-                <a class="nav-link" title="Registration" href="#" data-toggle="modal" data-target="#registerInterest"><i class="fas fa-user-plus"></i></a>
-              </li>
+              <a class="nav-link" title="Registration" href="#" data-toggle="modal" data-target="#registerInterest"><i class="fas fa-user-plus"></i></a>
+            </li>';
+            }else{
+              //otherwise
+              echo '
+              <li class="nav-item">
+              <a class="nav-link" title="Registration" href="' . BASE_URL . '/index.php?signup=2456"><i class="fas fa-user-plus"></i></a>
+            </li>';
+              
+
+            }
+
+            
+
+            
+
+
+
+            ?>
+            
+            
+            
             <!--
               <li class="nav-item dropdown">
                 <a class="nav-link pr-0" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

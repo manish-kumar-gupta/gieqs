@@ -66,9 +66,11 @@ $folder = 'https://' . $_SERVER['HTTP_HOST'] . '/studyserver/PROSPER/';
 
 $page_title='Administration GIEQs';
 
+$sponsors = new sponsors;
+
 ?>
 
-<p class="h5">iACE - Admin - Dashboard Data Mail Generator</p>
+<p class="h5">Sponsors MAILER</p>
 
 <?php
 // include ($_SERVER['DOCUMENT_ROOT'].'/studyserver/PROSPER/simple_header.php');
@@ -89,7 +91,36 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 //require($_SERVER['DOCUMENT_ROOT'].'/studyserver/PROSPER/scripts/phpmailer/SMTP.php');
 
-function Mailer ($email, $subject, $filename){
+//TODO get the array from the server
+//NAME the array and put in correct format for emails
+
+//FOREACH of the emails perform the mailer function
+//PRIOR include this
+
+function get_include_contents($filename, $variablesToMakeLocal) {
+    extract($variablesToMakeLocal);
+    if (is_file($filename)) {
+        ob_start();
+        include $filename;
+        return ob_get_clean();
+    }
+    return false;
+}
+
+//ARRAY of addresses
+
+//$sponsorsArray = $sponsors->get_sponsor_emails();
+$sponsorsArray = $sponsors->get_sponsor_emails_optouts_removed();
+
+print_r($sponsorsArray);
+
+echo '<br/><br/>';
+
+
+
+
+
+function Mailer ($email, $subject, $filename, $emailVaryarray){
 		
 		$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 				try {
@@ -105,7 +136,7 @@ function Mailer ($email, $subject, $filename){
 
 					//Recipients
 					$mail->setFrom('admin@gieqs.com', 'Ghent International Endoscopy Quality Symposium');
-					$mail->addAddress('admin@gieqs.com');
+					
 					foreach ($email as $key=>$value){
 						
 						$mail->addBCC($value);
@@ -114,7 +145,7 @@ function Mailer ($email, $subject, $filename){
 					
 					     // Add a recipient
 					//$mail->addAddress('ellen@example.com');               // Name is optional
-					$mail->addReplyTo('admin@gieqs.com', 'Ghent International Endoscopy Quality Symposium');
+					//$mail->addReplyTo('nele.coulier@seauton-international.com', 'Ghent International Endoscopy Quality Symposium');
 					//$mail->addCC('cc@example.com');
 					//$mail->addBCC('bcc@example.com');
 
@@ -126,15 +157,20 @@ function Mailer ($email, $subject, $filename){
 					$mail->isHTML(true);                                  // Set email format to HTML
 					$mail->Subject = $subject;
                     
-                    $mail->msgHTML(file_get_contents(BASE_URI . $filename), __DIR__);
+                    $mail->msgHTML(get_include_contents(BASE_URI . $filename, $emailVaryarray));
+                    $mail->AltBody = strip_tags((get_include_contents(BASE_URI . $filename, $emailVaryarray)));
+                    
+                    //$mail->msgHTML(file_get_contents(BASE_URI . $filename), __DIR__);
                     // $mail->Body    = $txt;
 					//$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
 					$mail->send();
-					echo 'Message has been sent';
+					echo '<br/> Message to ' . $emailVaryarray['firstname'] . $emailVaryarray['surname'] . ' has been sent<br/>';
 					//$this->setAccommodationUpdateDone($guestid);
 				} catch (Exception $e) {
-					echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+                    
+                    echo '<br/> Message to ' . $emailVaryarray['firstname'] . $emailVaryarray['surname'] . ' could not be sent. Mailer Error: ', $mail->ErrorInfo;
+
 				}
 
 		
@@ -149,18 +185,40 @@ function Mailer ($email, $subject, $filename){
 
 $subject = "Ghent International Endoscopy Quality Symposium, October 2020";
 
-$emailString = "Hans Van Vlierberghe <hans.vanvlierberghe@uzgent.be>, Lobke Desomer <lobkedesomer@gmail.com>, Pieter Hindryckx <pieter.hindryckx@uzgent.be>, Tania Helleputte <tania.helleputte@uzgent.be>, Helena Degroote <helena.degroote@ugent.be>, Danny De Looze <danny.delooze@uzgent.be>, Ewoud <edemunter@hotmail.com>";
-$emailArray = explode(',', $emailString);
-//print_r($myArray);
+$x=0;
 
-Mailer(array(0 => 'david.tate@uzgent.be'), $subject, '/assets/email/emailTemplateInline.html');
+foreach ($sponsorsArray AS $key=>$value){
+
+    $firstname = $value['firstname'];
+    $surname = $value['surname'];
+    $email = $value['email'];
+
+    $emailVaryarray['firstname'] = $firstname;
+    $emailVaryarray['surname'] = $surname;
+    $emailVaryarray['email'] = $email;
+
+
+    //ACTIVE MAILER FROM THE DATABASE
+    Mailer(array(0 => $email), $subject, '/assets/email/emailTemplateSponsorsJan.php', $emailVaryarray);
+
+    //TEST MAILER
+    //Mailer(array(0 => 'david.tate@uzgent.be'), $subject, '/assets/email/emailTemplateSponsorsJan.php', $emailVaryarray);  //TEST MAIL
+    
+    //TODO change the reply to mail address
+    //TODO work on dutch characters
+    //TODO repeat if fails
+    //TODO
+
+    $x++;
+
+}
+
+//LOOP through mails
 
 
 
+//
 
-
-//Mailer($emailArray, $subject, '/assets/email/emailTemplateInline.html');
-//then can use myArray here
 
 
 

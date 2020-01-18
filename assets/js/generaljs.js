@@ -16,7 +16,7 @@ switch (true) {
 
 var siteRoot = rootFolder;
 
-function ensureMenuBarColorCorrect () {
+/* function ensureMenuBarColorCorrect () {
 	
 	var colorMenuBar = $('.title').css('color');
 	
@@ -30,7 +30,7 @@ function ensureMenuBarColorCorrect () {
 		
 	}
 	
-}
+} */
 
 
 //function for getting bulk data with an optional query string used as the where clause and output as json or a html table
@@ -507,7 +507,7 @@ function getNamesFormElements(formName) {
 
     var formString = 'form#' + formName + ' :input';
 
-    $(formString).not('button').each(function() {
+    $(document).find(formString).not('button').each(function() {
 
         name = $(this).attr("name");
 
@@ -576,7 +576,7 @@ function disableFormInputs(formName) {
 
     var formString = 'form#' + formName + ' :input';
 
-    $(formString).each(function() {
+    $(document).find(formString).each(function() {
         
         $(this).prop('disabled', true);
 
@@ -608,7 +608,7 @@ function enableFormInputs(formName) {
 
 }
 
-var waitForFinalEvent = (function () {
+/* var waitForFinalEvent = (function () {
 	  var timers = {};
 	  return function (callback, ms, uniqueId) {
 	    if (!uniqueId) {
@@ -619,7 +619,7 @@ var waitForFinalEvent = (function () {
 	    }
 	    timers[uniqueId] = setTimeout(callback, ms);
 	  };
-	})();	
+	})();	 */
 	
 	
 function isNormalInteger(str) {
@@ -796,7 +796,7 @@ function login(){
 	
 }
 
-function mobileMenuShow(){
+/* function mobileMenuShow(){
 	
 	//check if already clicked
 	
@@ -865,12 +865,12 @@ function mobileMenuShow(){
 	//that way is responsive
 	
 	
-}
+} */
 
 
 $(document).ready(function() {
 
-	$('#userDisplay').on('click', '.logout', function(e){
+	/* $('#userDisplay').on('click', '.logout', function(e){
 		
 		e.preventDefault(); 
 		logout();
@@ -894,9 +894,9 @@ $(document).ready(function() {
 		
 	})
 	
-	ensureMenuBarColorCorrect ();
+	ensureMenuBarColorCorrect (); */
 	
-$('.tooltip').on('click', function() {	
+/* $('.tooltip').on('click', function() {	
 	
 	var tooltip = $(this).closest('tr').find('td:eq(0)').attr('title');
 	
@@ -917,7 +917,7 @@ $('.tooltip').on('click', function() {
 
 		
 	});
-});
+}); */
 
 
 

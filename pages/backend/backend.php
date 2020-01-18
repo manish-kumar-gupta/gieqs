@@ -2,15 +2,15 @@
 
 <?php
 
-			$openaccess = 0;
-			$requiredUserLevel = 2;
+			//$openaccess = 0;
+			
 
-			$formv1 = new formGenerator;
+			
 			//$general = new general;
 			//$video = new video;
 			//$tagCategories = new tagCategories;
 
-			error_reporting(0);
+			//error_reporting(0);
 
 			?>
 
@@ -20,21 +20,23 @@
 
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description"
-		content="At GIEQs we aim to make everyday endoscopy better.  Endoscopy is performed by a team of doctors and nurses.  Both parts of the team are important and so a nursing symposium is part of GIEQs.">
-	<meta name="author" content="gieqs">
-	<title>Ghent International Endoscopy Symposium - Backend</title>
-	<!-- Favicon -->
-	<link rel="icon" href="<?php echo BASE_URL;?>/assets/img/brand/favicongieqs.png" type="image/png">
-	<!-- Font Awesome 5 -->
-	<link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/@fortawesome/fontawesome-free/css/all.min.css">
-	<!-- Page CSS -->
-	<link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/swiper/dist/css/swiper.min.css">
-	<link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
-	<!-- Purpose CSS -->
-	<link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/css/purpose.css" id="stylesheet">
+
+<?php
+
+//define user access level
+
+$openaccess = 0;
+$requiredUserLevel = 2;
+
+require BASE_URI . '/head.php';
+
+$formv1 = new formGenerator;
+
+?>
+
+	<title>Ghent International Endoscopy Symposium - Backend - Main</title>
+  
+  
 
 	<style>
 		.modal-backdrop {

@@ -4,18 +4,28 @@
 <?php require 'assets/includes/config.inc.php';?>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description"
-        content="Purpose is a unique and beautiful collection of UI elements that are all flexible and modular. A complete and customizable solution to building the website of your dreams.">
-    <meta name="author" content="Webpixels">
-    <title>Ghent International Endoscopy Symposium</title>
-    <?php require 'head.php';?>
+
+      <?php
+
+      //define user access level
+
+      $openaccess = 1;
+
+      require BASE_URI . '/head.php';
+
+      ?>
+
+    <!--Page title-->
+    <title>Ghent International Endoscopy Quality Symposium</title>
+
+    
+
+
 </head>
 
 <body>
     <header class="header header-transparent" id="header-main">
-        
+
         <!-- Topbar -->
 
         <?php require 'topbar.php';?>
@@ -25,23 +35,23 @@
         <?php require 'nav.php';?>
 
         <?php
-          //set the variable to launch the registration pop-up
+//set the variable to launch the registration pop-up
 
-          //print_r($_GET);
+//print_r($_GET);
 
-          if (isset($_GET['signup'])){
+if (isset($_GET['signup'])) {
 
-            $signup = $_GET['signup'];
+    $signup = $_GET['signup'];
 
-          }
+}
 
-          echo '<div id="signup" style="display:none;">' . $signup . '</div>';
+echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 
-        ?>
-        
+?>
+
 
     </header>
-    
+
     <!-- Omnisearch -->
     <div id="omnisearch" class="omnisearch">
         <div class="container">
@@ -99,7 +109,7 @@
     </div>
     <div class="main-content">
 
-    
+
 
         <!-- Header (v1) -->
         <section class="header-1 section-rotate bg-section-dark" data-offset-top="#header-main">
@@ -130,7 +140,8 @@
                                     <span class="display-4 font-weight-light">We can do everyday endoscopy
                                         better.</span>
                                     <span class="d-block" style="color: rgb(238, 194, 120);"><strong
-                                            class="font-weight-light">Edition I<br/>October 7 & 8 2020</strong><br/>Ghent, Belgium </span>
+                                            class="font-weight-light">Edition I<br />October 7 & 8
+                                            2020</strong><br />Ghent, Belgium </span>
                                 </h2>
                                 <p class="lead text-white">An endoscopy symposium focussed on promoting quality in the
                                     endoscopic interventions we perform everyday</p>
@@ -156,115 +167,136 @@
         <!-- <hr class="divider divider-fade" /> -->
 
         <section class="slice slice-lg mt-1">
-      <div class="container">
-        <div class="row no-gutters align-items-md-center text-center text-md-left">
-          <div class="card hover-shadow-lg order-2 col-lg-7 ml--100">
-            <div class="card-body p-5">
-              <h4 class="">At GIEQs we believe in quality in endoscopy.</h4>
-              <p class="h6 text-muted text-justify lh-150">
-              Pronounced 'geeks' <sup>1</sup>, GIEQs is dedicated to applying technical competence and published evidence to everything from a diagnostic gastroscopy to a circumferential ESD 
-              </p>
-              <p><small class="text-muted"><sup>1</sup> someone who is very interested in a particular subject and knows a lot about it</small></p>
-              <a href="pages/program/mission.php"
-                                        class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 mt-2 scroll-me"
-                                        style="background-color: rgb(238, 194, 120);">
-                                        <span class="btn-inner--text">Read our mission statement</span>
-                                        <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
+            <div class="container">
+                <div class="row no-gutters align-items-md-center text-center text-md-left">
+                    <div class="card hover-shadow-lg order-2 col-lg-7 ml--100">
+                        <div class="card-body p-5">
+                            <h4 class="">At GIEQs we believe in quality in endoscopy.</h4>
+                            <p class="h6 text-muted text-justify lh-150">
+                                Pronounced 'geeks' <sup>1</sup>, GIEQs is dedicated to applying technical competence and
+                                published evidence to everything from a diagnostic gastroscopy to a circumferential ESD
+                            </p>
+                            <p><small class="text-muted"><sup>1</sup> someone who is very interested in a particular
+                                    subject and knows a lot about it</small></p>
+                            <a href="pages/program/mission.php"
+                                class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 mt-2 scroll-me"
+                                style="background-color: rgb(238, 194, 120);">
+                                <span class="btn-inner--text">Read our mission statement</span>
+                                <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
 
-                                    </a>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="order-1 col-lg-6 mb-1 mb-lg-0">
+                        <img alt="Image placeholder" src="assets/img/backgrounds/hyperplasticTransBack.png"
+                            class="img-fluid rounded shadow">
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="order-1 col-lg-6 mb-1 mb-lg-0">
-            <img alt="Image placeholder" src="assets/img/backgrounds/hyperplasticTransBack.png" class="img-fluid rounded shadow">
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- <hr class="divider divider-fade" /> -->
+        </section>
+        <!-- <hr class="divider divider-fade" /> -->
 
-    <section class="bg-section-dark slice slice-lg mt-1" id="sct-what-we-do">
-      <div class="container">
-        <div class="row row-grid">
-          <div class="col-lg-4">
-            <div class="">
-              <div class="pb-5">
-                <div class="icon text-white rounded-circle icon-xl hover-rotate icon-shape shadow" style="background:rgb(238, 194, 120);">
-                <i class="fas fa-search"></i>
+        <section class="bg-section-dark slice slice-lg mt-1" id="sct-what-we-do">
+            <div class="container">
+                <div class="row row-grid">
+                    <div class="col-lg-4">
+                        <div class="">
+                            <div class="pb-5">
+                                <div class="icon text-white rounded-circle icon-xl hover-rotate icon-shape shadow"
+                                    style="background:rgb(238, 194, 120);">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                            </div>
+                            <h5 class="font-weight-bold">Focussed on the everyday</h5>
+                            <p class="mt-2 mb-0">A symposium dedicated to promoting quality in techniques we perform
+                                everyday. <br />
+                                <ul>Colonoscopy</ul>
+                                <ul>Small polypectomy </ul>
+                                <ul>Lesion detection at gastroscopy</ul>
+                                <ul>Gastrointestinal bleeding</ul>
+                                <ul>ERCP</ul>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="">
+                            <div class="pb-5">
+                                <div class="icon text-white rounded-circle icon-xl hover-rotate icon-shape shadow"
+                                    style="background:rgb(238, 194, 120);">
+                                    <i class="fas fa-chalkboard-teacher"></i>
+                                </div>
+                            </div>
+                            <h5 class="font-weight-bold">Unique stream for trainees</h5>
+                            <p class="mt-2 mb-0">Trainees are future endoscopists. Endoscopy is an apprenticeship. The
+                                better we train, the higher the quality of future everyday examinations.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="">
+                            <div class="pb-5">
+                                <div class="icon text-white rounded-circle icon-xl hover-rotate icon-shape shadow"
+                                    style="background:rgb(238, 194, 120);">
+                                    <i class="fas fa-user-nurse"></i>
+                                </div>
+                            </div>
+                            <h5 class="font-weight-bold">Separate nursing symposium</h5>
+                            <p class="mt-2 mb-0">Endoscopy is performed in a team. Here's to the other half of that
+                                team. Your own half-day symposium</p>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              <h5 class="font-weight-bold">Focussed on the everyday</h5>
-              <p class="mt-2 mb-0">A symposium dedicated to promoting quality in techniques we perform everyday. <br/> <ul>Colonoscopy</ul>  <ul>Small polypectomy </ul>  <ul>Lesion detection at gastroscopy</ul>  <ul>Gastrointestinal bleeding</ul> <ul>ERCP</ul></p>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="">
-              <div class="pb-5">
-              <div class="icon text-white rounded-circle icon-xl hover-rotate icon-shape shadow" style="background:rgb(238, 194, 120);">
-                <i class="fas fa-chalkboard-teacher"></i>
-                </div>
-              </div>
-              <h5 class="font-weight-bold">Unique stream for trainees</h5>
-              <p class="mt-2 mb-0">Trainees are future endoscopists.  Endoscopy is an apprenticeship.  The better we train, the higher the quality of future everyday examinations.</p>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="">
-              <div class="pb-5">
-              <div class="icon text-white rounded-circle icon-xl hover-rotate icon-shape shadow" style="background:rgb(238, 194, 120);">
-              <i class="fas fa-user-nurse"></i>
-                </div>
-              </div>
-              <h5 class="font-weight-bold">Separate nursing symposium</h5>
-              <p class="mt-2 mb-0">Endoscopy is performed in a team.  Here's to the other half of that team.  Your own half-day symposium</p>
-            </div>
-          </div>
-        </div>
-        <a href="<?php echo BASE_URL;?>/pages/program/program.php"
-                                        class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me mt-3"
-                                        style="background-color: rgb(238, 194, 120);">
-                                        <span class="btn-inner--text">Explore the draft programme</span>
-                                        <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
+                <a href="<?php echo BASE_URL; ?>/pages/program/program.php"
+                    class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me mt-3"
+                    style="background-color: rgb(238, 194, 120);">
+                    <span class="btn-inner--text">Explore the draft programme</span>
+                    <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
 
-                                    </a>
-      </div>
-    </section>
-     
+                </a>
+            </div>
+        </section>
+
     </div>
-     <!-- Modal -->
-<div class="modal fade" id="registerInterest" tabindex="-1" role="dialog" aria-labelledby="registerInterestLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="registerInterestLabel" style="color: rgb(238, 194, 120);">Thank-you for your interest in GIEQs</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span class="text-white" aria-hidden="false">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <span class="h6">Registration will open in late January 2020.  <br/> </span><span>Prior to this you can register your interest below and we will keep you updated on everything GIEQs.</span>
-        <hr>
-        <form id='pre-register'>
-        <div class="form-group">
-                              <label for="name">Name:</label>
-                                    <div class="input-group mb-3">
-                                        <input type="text" name="name" id="name" class="form-control" placeholder="please enter your name">
-                                    </div>
-                                    <label for="email">Email address:</label>
-                                    <div class="input-group mb-3">
-                                        <input type="email" name="email" id="email" class="form-control" placeholder="please enter your email address">
-                                    </div>
-</div>
-</form>
-        <hr>
-        <span>Your email address will only be used to update you on GIEQs</span>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn-small btn-secondary" data-dismiss="modal">Close</button>
-        <button id="submitPreRegister" type="button" class="btn-small text-black" style="background-color: rgb(238, 194, 120);">Submit</button>
-      </div>
+    <!-- Modal -->
+    <div class="modal fade" id="registerInterest" tabindex="-1" role="dialog" aria-labelledby="registerInterestLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerInterestLabel" style="color: rgb(238, 194, 120);">Thank-you for
+                        your interest in GIEQs</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="text-white" aria-hidden="false">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span class="h6">Registration will open in late January 2020. <br /> </span><span>Prior to this you
+                        can register your interest below and we will keep you updated on everything GIEQs.</span>
+                    <hr>
+                    <form id='pre-register'>
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <div class="input-group mb-3">
+                                <input type="text" name="name" id="name" class="form-control"
+                                    placeholder="please enter your name">
+                            </div>
+                            <label for="email">Email address:</label>
+                            <div class="input-group mb-3">
+                                <input type="email" name="email" id="email" class="form-control"
+                                    placeholder="please enter your email address">
+                            </div>
+                        </div>
+                    </form>
+                    <hr>
+                    <span>Your email address will only be used to update you on GIEQs</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-small btn-secondary" data-dismiss="modal">Close</button>
+                    <button id="submitPreRegister" type="button" class="btn-small text-black"
+                        style="background-color: rgb(238, 194, 120);">Submit</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
     <?php require 'footer.php';?>
 
@@ -282,129 +314,136 @@
     <!-- <script src="assets/js/purpose.js"></script> -->
     <!-- <script src="assets/js/generaljs.js"></script> -->
     <script src="assets/js/demo.js"></script>
-    
+
 
     <script>
+    var signup = $('#signup').text();
 
-    
-var signup = $('#signup').text();
+    function submitPreRegisterForm() {
 
-function submitPreRegisterForm(){
+        var esdLesionObject = pushDataFromFormAJAX("pre-register", "preRegister", "id", null, "0"); //insert new object
 
-  var esdLesionObject = pushDataFromFormAJAX("pre-register", "preRegister", "id", null, "0"); //insert new object
-		
-    esdLesionObject.done(function (data){
+        esdLesionObject.done(function(data) {
 
-      console.log(data);
+            console.log(data);
 
-      var dataTrim = data.trim();
+            var dataTrim = data.trim();
 
-      console.log(dataTrim);
+            console.log(dataTrim);
 
-      if (dataTrim){
+            if (dataTrim) {
 
-        try {
+                try {
 
-          dataTrim = parseInt(dataTrim);
+                    dataTrim = parseInt(dataTrim);
 
-          if (dataTrim > 0){
+                    if (dataTrim > 0) {
 
-            alert ("Thank you for your details.  We will keep you updated on everything GIEQs.");
-            $("[data-dismiss=modal]").trigger({ type: "click" });
+                        alert("Thank you for your details.  We will keep you updated on everything GIEQs.");
+                        $("[data-dismiss=modal]").trigger({
+                            type: "click"
+                        });
 
-          }
-          
-        } catch (error) {
+                    }
 
-          //data not entered
-          console.log('error parsing integer');
-          $("[data-dismiss=modal]").trigger({ type: "click" });
+                } catch (error) {
 
-          
-        }
-                      
-                      //$('#success').text("New esdLesion no "+data+" created");
+                    //data not entered
+                    console.log('error parsing integer');
+                    $("[data-dismiss=modal]").trigger({
+                        type: "click"
+                    });
+
+
+                }
+
+                //$('#success').text("New esdLesion no "+data+" created");
                 //$('#successWrapper').show();
-        /* $("#successWrapper").fadeTo(4000, 500).slideUp(500, function() {
-          $("#successWrapper").slideUp(500);
+                /* $("#successWrapper").fadeTo(4000, 500).slideUp(500, function() {
+                  $("#successWrapper").slideUp(500);
+                });
+                edit = 1;
+                $("#id").text(data);
+                esdLesionPassed = data;
+                fillForm(data); */
+
+
+
+
+            } else {
+
+                alert("No data inserted, try again");
+
+            }
+
+
         });
-        edit = 1;
-        $("#id").text(data);
-        esdLesionPassed = data;
-        fillForm(data); */
+    }
 
+    $(document).ready(function() {
 
+        if (signup == '2456') {
 
+            $('#registerInterest').modal('show');
 
-      }else {
-
-        alert("No data inserted, try again");
-
-      }
-
-
-    });
-}
-
-$(document).ready(function(){
-
-if (signup == '2456'){
-
-  $('#registerInterest').modal('show');
-
-}
-
-$(document).on('click', '#submitPreRegister', function(){
-
-  event.preventDefault();
-	$('#pre-register').submit();
-
-})
-
-$("#pre-register").validate({
-		
-    invalidHandler: function(event, validator) {
-        var errors = validator.numberOfInvalids();
-        console.log("there were " + errors + " errors");
-        if (errors) {
-            var message = errors == 1 ?
-                "1 field contains errors. It has been highlighted" :
-                      + errors + " fields contain errors. They have been highlighted";
-                      
-                  
-                  $('#error').text(message);
-                  //$('div.error span').addClass('form-text text-danger');
-            //$('#errorWrapper').show();
-    
-     $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function() {
-      $("#errorWrapper").slideUp(500);
-    }); 
-        } else {
-            $('#errorWrapper').hide();
         }
-    },rules: {
-          name: { required: true, },
-          email: { required: true, email: true,},   
-  
-},
-    submitHandler: function(form) {
 
-      submitPreRegisterForm();
+        $(document).on('click', '#submitPreRegister', function() {
 
-        //console.log("submitted form");
+            event.preventDefault();
+            $('#pre-register').submit();
 
+        })
 
+        $("#pre-register").validate({
 
-}
-
-
-
-
-});
+            invalidHandler: function(event, validator) {
+                var errors = validator.numberOfInvalids();
+                console.log("there were " + errors + " errors");
+                if (errors) {
+                    var message = errors == 1 ?
+                        "1 field contains errors. It has been highlighted" :
+                        +errors + " fields contain errors. They have been highlighted";
 
 
-})
+                    $('#error').text(message);
+                    //$('div.error span').addClass('form-text text-danger');
+                    //$('#errorWrapper').show();
 
+                    $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function() {
+                        $("#errorWrapper").slideUp(500);
+                    });
+                } else {
+                    $('#errorWrapper').hide();
+                }
+            },
+            rules: {
+                name: {
+                    required: true,
+                },
+                email: {
+                    required: true,
+                    email: true,
+                },
+
+            },
+            submitHandler: function(form) {
+
+                submitPreRegisterForm();
+
+                //console.log("submitted form");
+
+
+
+            }
+
+
+
+
+        });
+
+
+    })
     </script>
 </body>
 
