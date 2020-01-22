@@ -608,6 +608,9 @@ function enableFormInputs(formName) {
 
 }
 
+
+
+
 /* var waitForFinalEvent = (function () {
 	  var timers = {};
 	  return function (callback, ms, uniqueId) {
@@ -870,6 +873,8 @@ function login(){
 
 $(document).ready(function() {
 
+	
+	
 	/* $('#userDisplay').on('click', '.logout', function(e){
 		
 		e.preventDefault(); 

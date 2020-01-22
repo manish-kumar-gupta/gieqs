@@ -80,6 +80,31 @@ $q = "Select * from `programme` LIMIT " . $x . ", " . $y;
 			
 	}
 
+	public function Load_records_limit_json_datatables($y, $x=0){
+		$q = "Select * from `programme` LIMIT " . $x . ", " . $y;
+				$result = $this->connection->RunQuery($q);
+									$rowReturn = array();
+								$x = 0;
+								$nRows = $result->rowCount();
+								if ($nRows > 0){
+		
+							while($row = $result->fetch(PDO::FETCH_ASSOC)){
+		
+								$rowReturn['data'][] = array_map('utf8_encode', $row);
+					/* $rowReturn[$x]["id"] = $row["id"];
+					$rowReturn[$x]["date"] = $row["date"];
+					$rowReturn[$x]["title"] = $row["title"];
+					$rowReturn[$x]["subtitle"] = $row["subtitle"];
+					$rowReturn[$x]["description"] = $row["description"];
+				$x++; */		}return json_encode($rowReturn);}
+		
+					else{
+						$rowReturn['data'] = [];
+						return json_encode($rowReturn); 
+					}
+					
+			}
+
     /**
      * Checks if the specified record exists
      *

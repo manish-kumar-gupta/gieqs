@@ -199,7 +199,7 @@ foreach ($sponsorsArray AS $key=>$value){
 
 
     //ACTIVE MAILER FROM THE DATABASE
-    Mailer(array(0 => $email), $subject, '/assets/email/emailTemplateSponsorsJan.php', $emailVaryarray);
+    //Mailer(array(0 => $email, 1 => 'david.tate@uzgent.be', 2 => 'pieter.hindryckx@uzgent.be', 3 => 'triana.lobaton@uzgent.be', 4 => 'admin@gieqs.com', 5 => 'nele@seauton-international.com'), $subject, '/assets/email/emailTemplateSponsorsJanIBD.php', $emailVaryarray);
 
     //TEST MAILER
     //Mailer(array(0 => 'david.tate@uzgent.be'), $subject, '/assets/email/emailTemplateSponsorsJan.php', $emailVaryarray);  //TEST MAIL

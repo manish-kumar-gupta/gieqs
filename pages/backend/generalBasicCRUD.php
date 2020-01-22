@@ -1,6 +1,28 @@
 <?php require '../../assets/includes/config.inc.php';?>
 
+<?php
 
+//php general variables
+
+//form name
+
+$formName = 'programme-form';
+
+//database name
+
+$databaseName = 'programme';
+
+//identifier
+
+$identifier = 'id';
+
+
+
+//javascript general variables
+//to be passed via divs on page
+
+
+?>
 
 
 <!DOCTYPE html>

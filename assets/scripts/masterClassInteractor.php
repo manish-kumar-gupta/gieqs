@@ -1,5 +1,5 @@
 <?php
-error_reporting(0);
+//error_reporting(0);
 //;
 $openaccess = 1;
 //echo 'hello';

@@ -1532,14 +1532,14 @@
                 <p class="text-justify"
                     style="box-sizing: border-box; margin-top: 0; margin-bottom: 1rem; text-align: justify;">
                     Het Ghent International Endoscopy Quality Symposium (GIEQS), dat voor 7 en 8 oktober dit jaar
-                    gepland staat, ziet er veelbelovend uit. <a href="http://www.gieqs.com"
-                        style="box-sizing: border-box; text-decoration: none; color: #eec278; background-color: transparent;">www.gieqs.com</a>
+                    gepland staat, ziet er veelbelovend uit. Graag ons website bekijkgen - <a href="http://www.gieqs.com"
+                        style="box-sizing: border-box; text-decoration: none; color: #eec278; background-color: transparent;">www.gieqs.com</a>.
 
                 </p>
 
                 <p class="text-justify"
                     style="box-sizing: border-box; margin-top: 0; margin-bottom: 1rem; text-align: justify;">
-                    De eerste versie van het programma is ondertussen beschikbaar
+                    De eerste versie van het programma is beschikbaar
                     (klik hier voor het <a href="http://www.gieqs.com/pages/program/program.php"
                         style="box-sizing: border-box; text-decoration: none; color: #eec278; background-color: transparent;">medical
                         programme</a> en voor het <a href="http://www.gieqs.com/pages/program/nursing.php"
@@ -1552,23 +1552,15 @@
 
                 <p class="text-justify"
                     style="box-sizing: border-box; margin-top: 0; margin-bottom: 1rem; text-align: justify;">
-                    De hosts van het Symposium willen graag rekenen op de medewerking van (potenti&‌euml;le) sponsors in het
-                    verspreiden van de info naar geïnteresseerde deelnemers. Mogen wij je daarom vragen om de teaser
-                    video te bezorgen aan de contacten van je netwerk? In een volgende mail  bezorg ik je ook een save the date
-                    mail die doorgestuurd zou kunnen worden.
-
-                </p>
-                <p class="text-justify"
-                    style="box-sizing: border-box; margin-top: 0; margin-bottom: 1rem; text-align: justify;">
-                    Bedankt voor je medewerking! En ik kijk er naar uit je binnenkort nogmaals te spreken over mogelijke deelname als sponsor! <br/><br /> Met vriendelijke groeten,
+                    Ik zal je binnenkort contacteren over mogelijke deelname als sponsor! <br/><br /> Met vriendelijke groeten,
 
 
                 </p>
                 <p class="text-justify"
                     style="box-sizing: border-box; margin-top: 0; margin-bottom: 1rem; text-align: justify;">
-                     Nele Coulier<br /><br/>
+                     <a href="mailto:nele.coulier@seauton-international.com" style="box-sizing: border-box; text-decoration: none; color: #eec278; background-color: transparent;"> Nele Coulier</a><br /><br/>
 
-                    In naam van de hosts van het Symposium
+                    <span style="color: #eec278;">In naam van de hosts van het Symposium</span>
                 </p>
 
                 <div class="text-left" style="box-sizing: border-box; text-align: left;">
