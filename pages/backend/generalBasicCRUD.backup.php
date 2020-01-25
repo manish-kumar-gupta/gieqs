@@ -6,11 +6,11 @@
 
 //form name
 
-//$formName = 'programme-form';
+$formName = 'programme-form';
 
 //database name
 
-$databaseName = 'Delegate';
+$databaseName = 'programme';
 
 //identifier
 
@@ -190,7 +190,7 @@ if (isset($_GET[$identifier]) && is_numeric($_GET[$identifier])) {
 
 }
 
-if ($identifierValue) {
+if ($id) {
 
     if (${$databaseName}->matchRecord($identifierValue) === false) {
         echo "No programme with that id exists";
@@ -206,7 +206,7 @@ if ($identifierValue) {
 
 //get an array of the known programmes [first 50]
 
-//echo ${$databaseName}->Load_records_limit_json(50);
+echo ${$databaseName}->Load_records_limit_json(50);
 ?>
                   </div>
                   <?php
@@ -275,11 +275,11 @@ if ($identifierValue) {
                     <table id="dataTable" class="table text-center table-cards align-items-center">
                     <thead>
                     <tr>
-                    <!-- EDIT -->
                             <th>id</th>
+                            <th>date</th>
                             <th>title</th>
-                            <th>firstname</th>
-                            <th>surname</th>
+                            <th>subtitle</th>
+                            <th>description</th>
                             <th></th>
 
                 </tr>
@@ -342,18 +342,26 @@ if ($identifierValue) {
                             <div class="<?php echo $databaseName;?>-body">
                                 <form id="<?php echo $databaseName;?>-form">
                                     <div class="form-group">
-                                    <!-- EDIT -->
-                                    <label for="title">title</label>
+                                        <label for="date">Date of programme</label>
                                         <div class="input-group mb-3">
-                                            <input id="title" type="text" class="form-control" name="title">
+                                            <input id="date" type="text" class="form-control" name="date">
                                         </div>
-<label for="firstname">firstname</label>
+
+                                        <label for="title">Title</label>
                                         <div class="input-group mb-3">
-                                            <input id="firstname" type="text" class="form-control" name="firstname">
+                                            <input type="text" id="title" name="title" class="form-control" placeholder="Title">
                                         </div>
-<label for="surname">surname</label>
+
+                                        <label for="subtitle">Subtitle</label>
                                         <div class="input-group mb-3">
-                                            <input id="surname" type="text" class="form-control" name="surname">
+                                            <textarea id="subtitle" name="subtitle" data-toggle="autosize" class="form-control"
+                                                placeholder="Subtitle"></textarea>
+                                        </div>
+
+                                        <label for="description">Description</label>
+                                        <div class="input-group">
+                                            <textarea id="description" name="description" data-toggle="autosize" class="form-control"
+                                                placeholder="Description"></textarea>
                                         </div>
                                     </div>
                                 </form>
@@ -626,15 +634,14 @@ $(document).ready(function(){
 
 
        ajax: siteRoot + 'assets/scripts/tableInteractors/refresh<?php echo $databaseName;?>Table.php',
-        //TODO all classes need this function
 
 
-        //EDIT
        columns: [
            { data: 'id' },
+           { data: 'date' },
            { data: 'title' },
-           { data: 'firstname' },
-           { data: 'surname' },
+           { data: 'subtitle' },
+           { data: 'description' },
            {
            data: null,
            render: function ( data, type, row ) {
@@ -736,20 +743,17 @@ invalidHandler: function(event, validator) {
     }
 },
 rules: {
+    date: {
 
-    //EDIT
+        required: true,
+        date: true,
+
+    },
 
     title: {
-
-        required: true,
-    
-
-    },
-
-    firstname: {
         required: true,
     },
-    surname: {
+    subtitle: {
         required: true,
 
     },

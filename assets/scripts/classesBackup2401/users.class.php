@@ -1,13 +1,13 @@
 <?php
 /*
- * Author: David Tate  - www.gieqs.com
- *
- * Create Date: 24-01-2020
- *
+ * Author: David Tate  - www.endoscopy.wiki 
+ * 
+ * Create Date: 27-12-2019
+ * 
  * DJT 2019
- *
- * License: LGPL
- *
+ * 
+ * License: LGPL 
+ * 
  */
 require_once 'DataBaseMysqlPDO.class.php';
 
@@ -42,7 +42,7 @@ Class users {
 	}
 
     /**
-     * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
+     * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New(); 
      *
      */
 	public function New_users($firstname,$surname,$email,$password,$centre,$centreName,$registered_date,$last_login,$previous_login,$timezone,$access_level,$contactPhone,$key,$centreCity,$centreCountry,$trainee,$yearsIndependent,$endoscopyTrainingProgramme,$yearsEndoscopy,$specialistInterest,$emailPreferences){
@@ -70,10 +70,10 @@ Class users {
 	}
 
     /**
-     * Load one row into var_class. To use the vars use for exemple echo $class->getVar_name;
+     * Load one row into var_class. To use the vars use for exemple echo $class->getVar_name; 
      *
      * @param key_table_type $key_row
-     *
+     * 
      */
 	public function Load_from_key($key_row){
 		$result = $this->connection->RunQuery("Select * from users where user_id = \"$key_row\" ");
@@ -102,77 +102,6 @@ Class users {
 			$this->emailPreferences = $row["emailPreferences"];
 		}
 	}
-    /**
- * Load specified number of rows and output to JSON. To use the vars use for exemple echo $class->getVar_name;
- *
- * @param key_table_type $key_row
- *
- */
-	public function Load_records_limit_json($y, $x=0){
-$q = "Select * from `users` LIMIT " . $x . ", " . $y;
-		$result = $this->connection->RunQuery($q);
-							$rowReturn = array();
-						$x = 0;
-						$nRows = $result->rowCount();
-						if ($nRows > 0){
-
-					while($row = $result->fetch(PDO::FETCH_ASSOC)){
-			$rowReturn[$x]["user_id"] = $row["user_id"];
-			$rowReturn[$x]["firstname"] = $row["firstname"];
-			$rowReturn[$x]["surname"] = $row["surname"];
-			$rowReturn[$x]["email"] = $row["email"];
-			$rowReturn[$x]["password"] = $row["password"];
-			$rowReturn[$x]["centre"] = $row["centre"];
-			$rowReturn[$x]["centreName"] = $row["centreName"];
-			$rowReturn[$x]["registered_date"] = $row["registered_date"];
-			$rowReturn[$x]["last_login"] = $row["last_login"];
-			$rowReturn[$x]["previous_login"] = $row["previous_login"];
-			$rowReturn[$x]["timezone"] = $row["timezone"];
-			$rowReturn[$x]["access_level"] = $row["access_level"];
-			$rowReturn[$x]["contactPhone"] = $row["contactPhone"];
-			$rowReturn[$x]["key"] = $row["key"];
-			$rowReturn[$x]["centreCity"] = $row["centreCity"];
-			$rowReturn[$x]["centreCountry"] = $row["centreCountry"];
-			$rowReturn[$x]["trainee"] = $row["trainee"];
-			$rowReturn[$x]["yearsIndependent"] = $row["yearsIndependent"];
-			$rowReturn[$x]["endoscopyTrainingProgramme"] = $row["endoscopyTrainingProgramme"];
-			$rowReturn[$x]["yearsEndoscopy"] = $row["yearsEndoscopy"];
-			$rowReturn[$x]["specialistInterest"] = $row["specialistInterest"];
-			$rowReturn[$x]["emailPreferences"] = $row["emailPreferences"];
-		$x++;		}return json_encode($rowReturn);}
-
-			else{return FALSE;
-			}
-			
-	}
-    
-
-        public function Load_records_limit_json_datatables($y, $x = 0)
-            {
-            $q = "Select * from `users` LIMIT $x, $y";
-            $result = $this->connection->RunQuery($q);
-            $rowReturn = array();
-            $x = 0;
-            $nRows = $result->rowCount();
-            if ($nRows > 0) {
-
-                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-
-                    $rowReturn['data'][] = array_map('utf8_encode', $row);
-                }
-            
-                return json_encode($rowReturn);
-
-            } else {
-                
-
-                //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
-                $rowReturn['data'] = [];
-                
-                return json_encode($rowReturn);
-            }
-
-        }
 
     /**
      * Checks if the specified record exists
@@ -181,7 +110,7 @@ $q = "Select * from `users` LIMIT " . $x . ", " . $y;
      *
      */
 	public function matchRecord($key_row){
-		$result = $this->connection->RunQuery("Select * from `users` where `user_id` = '$key_row' ");
+		$result = $this->connection->RunQuery("Select * from users where user_id = \'$key_row\' ");
 		$nRows = $result->rowCount();
 			if ($nRows == 1){
 				return TRUE;
@@ -250,7 +179,7 @@ foreach ($ovMod as $key => $value) {
 		} 
 $implodeArray = implode(', ', $updates); 
 //get number of terms in update
-					//need only the keys first
+					//need only the keys first		
 
 					$keys = implode(", ", array_keys($ovMod));
 					$keys2 = implode(", ", array_keys($ovMod3));
@@ -263,7 +192,7 @@ $implodeArray = implode(', ', $updates);
 
 		$termsToInsert = ''; 
 $x=0;
-
+		
 		foreach ($ovMod as $key=>$value){
 
 			$termsToInsert .= ( $x !== ($numberOfTerms -1) ) ? "? ," : " ?";
@@ -334,7 +263,7 @@ foreach ($ovMod as $key => $value) {
 		} 
 $implodeArray = implode(', ', $updates); 
 //get number of terms in update
-					//need only the keys first
+					//need only the keys first		
 
 					$keys = implode(", ", array_keys($ovMod));
 					$keys2 = implode(", ", array_keys($ovMod3));
@@ -347,7 +276,7 @@ $implodeArray = implode(', ', $updates);
 
 		$termsToInsert = ''; 
 $x=0;
-
+		
 		foreach ($ovMod as $key=>$value){
 
 			$termsToInsert .= ( $x !== ($numberOfTerms -1) ) ? "? ," : " ?";
@@ -370,7 +299,7 @@ $q = "UPDATE `users` SET $implodeArray WHERE `user_id` = '$this->user_id'";
      *
      */
 	public function Delete_row_from_key($key_row){
-		$this->connection->RunQuery("DELETE FROM `users` WHERE `user_id` = $key_row");
+		$this->connection->RunQuery("DELETE FROM users WHERE user_id = $key_row");
 		$result->rowCount();
 	}
 

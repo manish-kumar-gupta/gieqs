@@ -1,26 +1,22 @@
 <?php
 /*
- * Author: David Tate  - www.gieqs.com
- *
- * Create Date: 24-01-2020
- *
+ * Author: David Tate  - www.endoscopy.wiki 
+ * 
+ * Create Date: 27-12-2019
+ * 
  * DJT 2019
- *
- * License: LGPL
- *
+ * 
+ * License: LGPL 
+ * 
  */
 require_once 'DataBaseMysqlPDO.class.php';
 
-Class sponsors {
+Class emailList {
 
 	private $id; //int(11)
-	private $title; //varchar(100)
 	private $firstname; //varchar(200)
 	private $surname; //varchar(200)
 	private $email; //varchar(200)
-	private $phone; //varchar(200)
-	private $company; //varchar(200)
-	private $optOut; //int(11)
 	private $connection;
 
 	public function __construct(){
@@ -28,95 +24,30 @@ Class sponsors {
 	}
 
     /**
-     * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
+     * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New(); 
      *
      */
-	public function New_sponsors($title,$firstname,$surname,$email,$phone,$company,$optOut){
-		$this->title = $title;
+	public function New_emailList($firstname,$surname,$email){
 		$this->firstname = $firstname;
 		$this->surname = $surname;
 		$this->email = $email;
-		$this->phone = $phone;
-		$this->company = $company;
-		$this->optOut = $optOut;
 	}
 
     /**
-     * Load one row into var_class. To use the vars use for exemple echo $class->getVar_name;
+     * Load one row into var_class. To use the vars use for exemple echo $class->getVar_name; 
      *
      * @param key_table_type $key_row
-     *
+     * 
      */
 	public function Load_from_key($key_row){
-		$result = $this->connection->RunQuery("Select * from sponsors where id = \"$key_row\" ");
+		$result = $this->connection->RunQuery("Select * from emailList where id = \"$key_row\" ");
 		while($row = $result->fetch(PDO::FETCH_ASSOC)){
 			$this->id = $row["id"];
-			$this->title = $row["title"];
 			$this->firstname = $row["firstname"];
 			$this->surname = $row["surname"];
 			$this->email = $row["email"];
-			$this->phone = $row["phone"];
-			$this->company = $row["company"];
-			$this->optOut = $row["optOut"];
 		}
 	}
-    /**
- * Load specified number of rows and output to JSON. To use the vars use for exemple echo $class->getVar_name;
- *
- * @param key_table_type $key_row
- *
- */
-	public function Load_records_limit_json($y, $x=0){
-$q = "Select * from `sponsors` LIMIT " . $x . ", " . $y;
-		$result = $this->connection->RunQuery($q);
-							$rowReturn = array();
-						$x = 0;
-						$nRows = $result->rowCount();
-						if ($nRows > 0){
-
-					while($row = $result->fetch(PDO::FETCH_ASSOC)){
-			$rowReturn[$x]["id"] = $row["id"];
-			$rowReturn[$x]["title"] = $row["title"];
-			$rowReturn[$x]["firstname"] = $row["firstname"];
-			$rowReturn[$x]["surname"] = $row["surname"];
-			$rowReturn[$x]["email"] = $row["email"];
-			$rowReturn[$x]["phone"] = $row["phone"];
-			$rowReturn[$x]["company"] = $row["company"];
-			$rowReturn[$x]["optOut"] = $row["optOut"];
-		$x++;		}return json_encode($rowReturn);}
-
-			else{return FALSE;
-			}
-			
-	}
-    
-
-        public function Load_records_limit_json_datatables($y, $x = 0)
-            {
-            $q = "Select * from `sponsors` LIMIT $x, $y";
-            $result = $this->connection->RunQuery($q);
-            $rowReturn = array();
-            $x = 0;
-            $nRows = $result->rowCount();
-            if ($nRows > 0) {
-
-                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-
-                    $rowReturn['data'][] = array_map('utf8_encode', $row);
-                }
-            
-                return json_encode($rowReturn);
-
-            } else {
-                
-
-                //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
-                $rowReturn['data'] = [];
-                
-                return json_encode($rowReturn);
-            }
-
-        }
 
     /**
      * Checks if the specified record exists
@@ -125,7 +56,7 @@ $q = "Select * from `sponsors` LIMIT " . $x . ", " . $y;
      *
      */
 	public function matchRecord($key_row){
-		$result = $this->connection->RunQuery("Select * from `sponsors` where `id` = '$key_row' ");
+		$result = $this->connection->RunQuery("Select * from emailList where id = \'$key_row\' ");
 		$nRows = $result->rowCount();
 			if ($nRows == 1){
 				return TRUE;
@@ -138,7 +69,7 @@ $q = "Select * from `sponsors` LIMIT " . $x . ", " . $y;
 		* Return the number of rows
 		*/
 	public function numberOfRows(){
-		return $this->connection->TotalOfRows('sponsors');
+		return $this->connection->TotalOfRows('emailList');
 	}
 
     /**
@@ -194,7 +125,7 @@ foreach ($ovMod as $key => $value) {
 		} 
 $implodeArray = implode(', ', $updates); 
 //get number of terms in update
-					//need only the keys first
+					//need only the keys first		
 
 					$keys = implode(", ", array_keys($ovMod));
 					$keys2 = implode(", ", array_keys($ovMod3));
@@ -207,7 +138,7 @@ $implodeArray = implode(', ', $updates);
 
 		$termsToInsert = ''; 
 $x=0;
-
+		
 		foreach ($ovMod as $key=>$value){
 
 			$termsToInsert .= ( $x !== ($numberOfTerms -1) ) ? "? ," : " ?";
@@ -215,7 +146,7 @@ $x=0;
 			$x++;
 
 		} 
-$q = "INSERT INTO `sponsors` ($keys) VALUES ($keys2)";
+$q = "INSERT INTO `emailList` ($keys) VALUES ($keys2)";
 		
  $stmt = $this->connection->prepare($q); 
 $stmt->execute($ovMod3); 
@@ -278,7 +209,7 @@ foreach ($ovMod as $key => $value) {
 		} 
 $implodeArray = implode(', ', $updates); 
 //get number of terms in update
-					//need only the keys first
+					//need only the keys first		
 
 					$keys = implode(", ", array_keys($ovMod));
 					$keys2 = implode(", ", array_keys($ovMod3));
@@ -291,7 +222,7 @@ $implodeArray = implode(', ', $updates);
 
 		$termsToInsert = ''; 
 $x=0;
-
+		
 		foreach ($ovMod as $key=>$value){
 
 			$termsToInsert .= ( $x !== ($numberOfTerms -1) ) ? "? ," : " ?";
@@ -299,7 +230,7 @@ $x=0;
 			$x++;
 
 		} 
-$q = "UPDATE `sponsors` SET $implodeArray WHERE `id` = '$this->id'";
+$q = "UPDATE `emailList` SET $implodeArray WHERE `id` = '$this->id'";
 
 		
  $stmt = $this->connection->RunQuery($q); 
@@ -314,7 +245,7 @@ $q = "UPDATE `sponsors` SET $implodeArray WHERE `id` = '$this->id'";
      *
      */
 	public function Delete_row_from_key($key_row){
-		$this->connection->RunQuery("DELETE FROM `sponsors` WHERE `id` = $key_row");
+		$this->connection->RunQuery("DELETE FROM emailList WHERE id = $key_row");
 		$result->rowCount();
 	}
 
@@ -326,7 +257,7 @@ $q = "UPDATE `sponsors` SET $implodeArray WHERE `id` = '$this->id'";
      */
 	public function GetKeysOrderBy($column, $order){
 		$keys = array(); $i = 0;
-		$result = $this->connection->RunQuery("SELECT id from sponsors order by $column $order");
+		$result = $this->connection->RunQuery("SELECT id from emailList order by $column $order");
 			while($row = $result->fetch_array(MYSQLI_ASSOC)){
 				$keys[$i] = $row["id"];
 				$i++;
@@ -339,13 +270,6 @@ $q = "UPDATE `sponsors` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function getid(){
 		return $this->id;
-	}
-
-	/**
-	 * @return title - varchar(100)
-	 */
-	public function gettitle(){
-		return $this->title;
 	}
 
 	/**
@@ -370,38 +294,10 @@ $q = "UPDATE `sponsors` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
-	 * @return phone - varchar(200)
-	 */
-	public function getphone(){
-		return $this->phone;
-	}
-
-	/**
-	 * @return company - varchar(200)
-	 */
-	public function getcompany(){
-		return $this->company;
-	}
-
-	/**
-	 * @return optOut - int(11)
-	 */
-	public function getoptOut(){
-		return $this->optOut;
-	}
-
-	/**
 	 * @param Type: int(11)
 	 */
 	public function setid($id){
 		$this->id = $id;
-	}
-
-	/**
-	 * @param Type: varchar(100)
-	 */
-	public function settitle($title){
-		$this->title = $title;
 	}
 
 	/**
@@ -425,31 +321,10 @@ $q = "UPDATE `sponsors` SET $implodeArray WHERE `id` = '$this->id'";
 		$this->email = $email;
 	}
 
-	/**
-	 * @param Type: varchar(200)
-	 */
-	public function setphone($phone){
-		$this->phone = $phone;
-	}
-
-	/**
-	 * @param Type: varchar(200)
-	 */
-	public function setcompany($company){
-		$this->company = $company;
-	}
-
-	/**
-	 * @param Type: int(11)
-	 */
-	public function setoptOut($optOut){
-		$this->optOut = $optOut;
-	}
-
     /**
      * Close mysql connection
      */
-	public function endsponsors(){
+	public function endemailList(){
 		$this->connection->CloseMysql();
 	}
 

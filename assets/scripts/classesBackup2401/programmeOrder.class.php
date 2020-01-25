@@ -1,13 +1,13 @@
 <?php
 /*
- * Author: David Tate  - www.gieqs.com
- *
- * Create Date: 24-01-2020
- *
+ * Author: David Tate  - www.endoscopy.wiki 
+ * 
+ * Create Date: 27-12-2019
+ * 
  * DJT 2019
- *
- * License: LGPL
- *
+ * 
+ * License: LGPL 
+ * 
  */
 require_once 'DataBaseMysqlPDO.class.php';
 
@@ -24,7 +24,7 @@ Class programmeOrder {
 	}
 
     /**
-     * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
+     * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New(); 
      *
      */
 	public function New_programmeOrder($programmeid,$sessionid,$programmeOrder){
@@ -34,10 +34,10 @@ Class programmeOrder {
 	}
 
     /**
-     * Load one row into var_class. To use the vars use for exemple echo $class->getVar_name;
+     * Load one row into var_class. To use the vars use for exemple echo $class->getVar_name; 
      *
      * @param key_table_type $key_row
-     *
+     * 
      */
 	public function Load_from_key($key_row){
 		$result = $this->connection->RunQuery("Select * from programmeOrder where id = \"$key_row\" ");
@@ -48,59 +48,6 @@ Class programmeOrder {
 			$this->programmeOrder = $row["programmeOrder"];
 		}
 	}
-    /**
- * Load specified number of rows and output to JSON. To use the vars use for exemple echo $class->getVar_name;
- *
- * @param key_table_type $key_row
- *
- */
-	public function Load_records_limit_json($y, $x=0){
-$q = "Select * from `programmeOrder` LIMIT " . $x . ", " . $y;
-		$result = $this->connection->RunQuery($q);
-							$rowReturn = array();
-						$x = 0;
-						$nRows = $result->rowCount();
-						if ($nRows > 0){
-
-					while($row = $result->fetch(PDO::FETCH_ASSOC)){
-			$rowReturn[$x]["id"] = $row["id"];
-			$rowReturn[$x]["programmeid"] = $row["programmeid"];
-			$rowReturn[$x]["sessionid"] = $row["sessionid"];
-			$rowReturn[$x]["programmeOrder"] = $row["programmeOrder"];
-		$x++;		}return json_encode($rowReturn);}
-
-			else{return FALSE;
-			}
-			
-	}
-    
-
-        public function Load_records_limit_json_datatables($y, $x = 0)
-            {
-            $q = "Select * from `programmeOrder` LIMIT $x, $y";
-            $result = $this->connection->RunQuery($q);
-            $rowReturn = array();
-            $x = 0;
-            $nRows = $result->rowCount();
-            if ($nRows > 0) {
-
-                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-
-                    $rowReturn['data'][] = array_map('utf8_encode', $row);
-                }
-            
-                return json_encode($rowReturn);
-
-            } else {
-                
-
-                //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
-                $rowReturn['data'] = [];
-                
-                return json_encode($rowReturn);
-            }
-
-        }
 
     /**
      * Checks if the specified record exists
@@ -109,7 +56,7 @@ $q = "Select * from `programmeOrder` LIMIT " . $x . ", " . $y;
      *
      */
 	public function matchRecord($key_row){
-		$result = $this->connection->RunQuery("Select * from `programmeOrder` where `id` = '$key_row' ");
+		$result = $this->connection->RunQuery("Select * from programmeOrder where id = \'$key_row\' ");
 		$nRows = $result->rowCount();
 			if ($nRows == 1){
 				return TRUE;
@@ -178,7 +125,7 @@ foreach ($ovMod as $key => $value) {
 		} 
 $implodeArray = implode(', ', $updates); 
 //get number of terms in update
-					//need only the keys first
+					//need only the keys first		
 
 					$keys = implode(", ", array_keys($ovMod));
 					$keys2 = implode(", ", array_keys($ovMod3));
@@ -191,7 +138,7 @@ $implodeArray = implode(', ', $updates);
 
 		$termsToInsert = ''; 
 $x=0;
-
+		
 		foreach ($ovMod as $key=>$value){
 
 			$termsToInsert .= ( $x !== ($numberOfTerms -1) ) ? "? ," : " ?";
@@ -262,7 +209,7 @@ foreach ($ovMod as $key => $value) {
 		} 
 $implodeArray = implode(', ', $updates); 
 //get number of terms in update
-					//need only the keys first
+					//need only the keys first		
 
 					$keys = implode(", ", array_keys($ovMod));
 					$keys2 = implode(", ", array_keys($ovMod3));
@@ -275,7 +222,7 @@ $implodeArray = implode(', ', $updates);
 
 		$termsToInsert = ''; 
 $x=0;
-
+		
 		foreach ($ovMod as $key=>$value){
 
 			$termsToInsert .= ( $x !== ($numberOfTerms -1) ) ? "? ," : " ?";
@@ -298,7 +245,7 @@ $q = "UPDATE `programmeOrder` SET $implodeArray WHERE `id` = '$this->id'";
      *
      */
 	public function Delete_row_from_key($key_row){
-		$this->connection->RunQuery("DELETE FROM `programmeOrder` WHERE `id` = $key_row");
+		$this->connection->RunQuery("DELETE FROM programmeOrder WHERE id = $key_row");
 		$result->rowCount();
 	}
 
