@@ -2,7 +2,7 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 24-01-2020
+ * Create Date: 25-01-2020
  *
  * DJT 2019
  *
@@ -14,9 +14,27 @@ require_once 'DataBaseMysqlPDO.class.php';
 Class Delegate {
 
 	private $id; //int(11)
-	private $title; //varchar(100)
-	private $firstname; //varchar(200)
-	private $surname; //varchar(200)
+	private $firstname; //varchar(30)
+	private $surname; //varchar(30)
+	private $user_id; //int(11)
+	private $email; //varchar(70)
+	private $centre; //int(10)
+	private $centreName; //varchar(200)
+	private $registered_date; //date
+	private $last_login; //timestamp(6)
+	private $previous_login; //timestamp(6)
+	private $timezone; //varchar(50)
+	private $access_level; //int(3)
+	private $contactPhone; //varchar(40)
+	private $key; //varchar(200)
+	private $centreCity; //varchar(200)
+	private $centreCountry; //varchar(200)
+	private $trainee; //int(10)
+	private $yearsIndependent; //int(10)
+	private $endoscopyTrainingProgramme; //int(10)
+	private $yearsEndoscopy; //int(11)
+	private $specialistInterest; //int(11)
+	private $emailPreferences; //int(11)
 	private $connection;
 
 	public function __construct(){
@@ -27,10 +45,28 @@ Class Delegate {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_Delegate($title,$firstname,$surname){
-		$this->title = $title;
+	public function New_Delegate($firstname,$surname,$user_id,$email,$centre,$centreName,$registered_date,$last_login,$previous_login,$timezone,$access_level,$contactPhone,$key,$centreCity,$centreCountry,$trainee,$yearsIndependent,$endoscopyTrainingProgramme,$yearsEndoscopy,$specialistInterest,$emailPreferences){
 		$this->firstname = $firstname;
 		$this->surname = $surname;
+		$this->user_id = $user_id;
+		$this->email = $email;
+		$this->centre = $centre;
+		$this->centreName = $centreName;
+		$this->registered_date = $registered_date;
+		$this->last_login = $last_login;
+		$this->previous_login = $previous_login;
+		$this->timezone = $timezone;
+		$this->access_level = $access_level;
+		$this->contactPhone = $contactPhone;
+		$this->key = $key;
+		$this->centreCity = $centreCity;
+		$this->centreCountry = $centreCountry;
+		$this->trainee = $trainee;
+		$this->yearsIndependent = $yearsIndependent;
+		$this->endoscopyTrainingProgramme = $endoscopyTrainingProgramme;
+		$this->yearsEndoscopy = $yearsEndoscopy;
+		$this->specialistInterest = $specialistInterest;
+		$this->emailPreferences = $emailPreferences;
 	}
 
     /**
@@ -43,9 +79,27 @@ Class Delegate {
 		$result = $this->connection->RunQuery("Select * from Delegate where id = \"$key_row\" ");
 		while($row = $result->fetch(PDO::FETCH_ASSOC)){
 			$this->id = $row["id"];
-			$this->title = $row["title"];
 			$this->firstname = $row["firstname"];
 			$this->surname = $row["surname"];
+			$this->user_id = $row["user_id"];
+			$this->email = $row["email"];
+			$this->centre = $row["centre"];
+			$this->centreName = $row["centreName"];
+			$this->registered_date = $row["registered_date"];
+			$this->last_login = $row["last_login"];
+			$this->previous_login = $row["previous_login"];
+			$this->timezone = $row["timezone"];
+			$this->access_level = $row["access_level"];
+			$this->contactPhone = $row["contactPhone"];
+			$this->key = $row["key"];
+			$this->centreCity = $row["centreCity"];
+			$this->centreCountry = $row["centreCountry"];
+			$this->trainee = $row["trainee"];
+			$this->yearsIndependent = $row["yearsIndependent"];
+			$this->endoscopyTrainingProgramme = $row["endoscopyTrainingProgramme"];
+			$this->yearsEndoscopy = $row["yearsEndoscopy"];
+			$this->specialistInterest = $row["specialistInterest"];
+			$this->emailPreferences = $row["emailPreferences"];
 		}
 	}
     /**
@@ -64,9 +118,27 @@ $q = "Select * from `Delegate` LIMIT " . $x . ", " . $y;
 
 					while($row = $result->fetch(PDO::FETCH_ASSOC)){
 			$rowReturn[$x]["id"] = $row["id"];
-			$rowReturn[$x]["title"] = $row["title"];
 			$rowReturn[$x]["firstname"] = $row["firstname"];
 			$rowReturn[$x]["surname"] = $row["surname"];
+			$rowReturn[$x]["user_id"] = $row["user_id"];
+			$rowReturn[$x]["email"] = $row["email"];
+			$rowReturn[$x]["centre"] = $row["centre"];
+			$rowReturn[$x]["centreName"] = $row["centreName"];
+			$rowReturn[$x]["registered_date"] = $row["registered_date"];
+			$rowReturn[$x]["last_login"] = $row["last_login"];
+			$rowReturn[$x]["previous_login"] = $row["previous_login"];
+			$rowReturn[$x]["timezone"] = $row["timezone"];
+			$rowReturn[$x]["access_level"] = $row["access_level"];
+			$rowReturn[$x]["contactPhone"] = $row["contactPhone"];
+			$rowReturn[$x]["key"] = $row["key"];
+			$rowReturn[$x]["centreCity"] = $row["centreCity"];
+			$rowReturn[$x]["centreCountry"] = $row["centreCountry"];
+			$rowReturn[$x]["trainee"] = $row["trainee"];
+			$rowReturn[$x]["yearsIndependent"] = $row["yearsIndependent"];
+			$rowReturn[$x]["endoscopyTrainingProgramme"] = $row["endoscopyTrainingProgramme"];
+			$rowReturn[$x]["yearsEndoscopy"] = $row["yearsEndoscopy"];
+			$rowReturn[$x]["specialistInterest"] = $row["specialistInterest"];
+			$rowReturn[$x]["emailPreferences"] = $row["emailPreferences"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -326,24 +398,150 @@ $q = "UPDATE `Delegate` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
-	 * @return title - varchar(100)
-	 */
-	public function gettitle(){
-		return $this->title;
-	}
-
-	/**
-	 * @return firstname - varchar(200)
+	 * @return firstname - varchar(30)
 	 */
 	public function getfirstname(){
 		return $this->firstname;
 	}
 
 	/**
-	 * @return surname - varchar(200)
+	 * @return surname - varchar(30)
 	 */
 	public function getsurname(){
 		return $this->surname;
+	}
+
+	/**
+	 * @return user_id - int(11)
+	 */
+	public function getuser_id(){
+		return $this->user_id;
+	}
+
+	/**
+	 * @return email - varchar(70)
+	 */
+	public function getemail(){
+		return $this->email;
+	}
+
+	/**
+	 * @return centre - int(10)
+	 */
+	public function getcentre(){
+		return $this->centre;
+	}
+
+	/**
+	 * @return centreName - varchar(200)
+	 */
+	public function getcentreName(){
+		return $this->centreName;
+	}
+
+	/**
+	 * @return registered_date - date
+	 */
+	public function getregistered_date(){
+		return $this->registered_date;
+	}
+
+	/**
+	 * @return last_login - timestamp(6)
+	 */
+	public function getlast_login(){
+		return $this->last_login;
+	}
+
+	/**
+	 * @return previous_login - timestamp(6)
+	 */
+	public function getprevious_login(){
+		return $this->previous_login;
+	}
+
+	/**
+	 * @return timezone - varchar(50)
+	 */
+	public function gettimezone(){
+		return $this->timezone;
+	}
+
+	/**
+	 * @return access_level - int(3)
+	 */
+	public function getaccess_level(){
+		return $this->access_level;
+	}
+
+	/**
+	 * @return contactPhone - varchar(40)
+	 */
+	public function getcontactPhone(){
+		return $this->contactPhone;
+	}
+
+	/**
+	 * @return key - varchar(200)
+	 */
+	public function getkey(){
+		return $this->key;
+	}
+
+	/**
+	 * @return centreCity - varchar(200)
+	 */
+	public function getcentreCity(){
+		return $this->centreCity;
+	}
+
+	/**
+	 * @return centreCountry - varchar(200)
+	 */
+	public function getcentreCountry(){
+		return $this->centreCountry;
+	}
+
+	/**
+	 * @return trainee - int(10)
+	 */
+	public function gettrainee(){
+		return $this->trainee;
+	}
+
+	/**
+	 * @return yearsIndependent - int(10)
+	 */
+	public function getyearsIndependent(){
+		return $this->yearsIndependent;
+	}
+
+	/**
+	 * @return endoscopyTrainingProgramme - int(10)
+	 */
+	public function getendoscopyTrainingProgramme(){
+		return $this->endoscopyTrainingProgramme;
+	}
+
+	/**
+	 * @return yearsEndoscopy - int(11)
+	 */
+	public function getyearsEndoscopy(){
+		return $this->yearsEndoscopy;
+	}
+
+	/**
+	 * @return specialistInterest - int(11)
+	 */
+	public function getspecialistInterest(){
+		return $this->specialistInterest;
+	}
+
+	/**
+	 * @return emailPreferences - int(11)
+	 */
+	public function getemailPreferences(){
+		return $this->emailPreferences;
 	}
 
 	/**
@@ -354,24 +552,150 @@ $q = "UPDATE `Delegate` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
-	 * @param Type: varchar(100)
-	 */
-	public function settitle($title){
-		$this->title = $title;
-	}
-
-	/**
-	 * @param Type: varchar(200)
+	 * @param Type: varchar(30)
 	 */
 	public function setfirstname($firstname){
 		$this->firstname = $firstname;
 	}
 
 	/**
-	 * @param Type: varchar(200)
+	 * @param Type: varchar(30)
 	 */
 	public function setsurname($surname){
 		$this->surname = $surname;
+	}
+
+	/**
+	 * @param Type: int(11)
+	 */
+	public function setuser_id($user_id){
+		$this->user_id = $user_id;
+	}
+
+	/**
+	 * @param Type: varchar(70)
+	 */
+	public function setemail($email){
+		$this->email = $email;
+	}
+
+	/**
+	 * @param Type: int(10)
+	 */
+	public function setcentre($centre){
+		$this->centre = $centre;
+	}
+
+	/**
+	 * @param Type: varchar(200)
+	 */
+	public function setcentreName($centreName){
+		$this->centreName = $centreName;
+	}
+
+	/**
+	 * @param Type: date
+	 */
+	public function setregistered_date($registered_date){
+		$this->registered_date = $registered_date;
+	}
+
+	/**
+	 * @param Type: timestamp(6)
+	 */
+	public function setlast_login($last_login){
+		$this->last_login = $last_login;
+	}
+
+	/**
+	 * @param Type: timestamp(6)
+	 */
+	public function setprevious_login($previous_login){
+		$this->previous_login = $previous_login;
+	}
+
+	/**
+	 * @param Type: varchar(50)
+	 */
+	public function settimezone($timezone){
+		$this->timezone = $timezone;
+	}
+
+	/**
+	 * @param Type: int(3)
+	 */
+	public function setaccess_level($access_level){
+		$this->access_level = $access_level;
+	}
+
+	/**
+	 * @param Type: varchar(40)
+	 */
+	public function setcontactPhone($contactPhone){
+		$this->contactPhone = $contactPhone;
+	}
+
+	/**
+	 * @param Type: varchar(200)
+	 */
+	public function setkey($key){
+		$this->key = $key;
+	}
+
+	/**
+	 * @param Type: varchar(200)
+	 */
+	public function setcentreCity($centreCity){
+		$this->centreCity = $centreCity;
+	}
+
+	/**
+	 * @param Type: varchar(200)
+	 */
+	public function setcentreCountry($centreCountry){
+		$this->centreCountry = $centreCountry;
+	}
+
+	/**
+	 * @param Type: int(10)
+	 */
+	public function settrainee($trainee){
+		$this->trainee = $trainee;
+	}
+
+	/**
+	 * @param Type: int(10)
+	 */
+	public function setyearsIndependent($yearsIndependent){
+		$this->yearsIndependent = $yearsIndependent;
+	}
+
+	/**
+	 * @param Type: int(10)
+	 */
+	public function setendoscopyTrainingProgramme($endoscopyTrainingProgramme){
+		$this->endoscopyTrainingProgramme = $endoscopyTrainingProgramme;
+	}
+
+	/**
+	 * @param Type: int(11)
+	 */
+	public function setyearsEndoscopy($yearsEndoscopy){
+		$this->yearsEndoscopy = $yearsEndoscopy;
+	}
+
+	/**
+	 * @param Type: int(11)
+	 */
+	public function setspecialistInterest($specialistInterest){
+		$this->specialistInterest = $specialistInterest;
+	}
+
+	/**
+	 * @param Type: int(11)
+	 */
+	public function setemailPreferences($emailPreferences){
+		$this->emailPreferences = $emailPreferences;
 	}
 
     /**

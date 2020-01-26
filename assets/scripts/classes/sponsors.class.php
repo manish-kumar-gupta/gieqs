@@ -2,7 +2,7 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 24-01-2020
+ * Create Date: 26-01-2020
  *
  * DJT 2019
  *
@@ -188,6 +188,7 @@ foreach ($ov as $key=>$value){
 		} 
 foreach ($ovMod as $key => $value) {
 
+            $value = addslashes($value);
 			$value = "'$value'";
 			$updates[] = "$value";
 
@@ -272,6 +273,7 @@ foreach ($ov as $key=>$value){
 		} 
 foreach ($ovMod as $key => $value) {
 
+            $value = addslashes($value);
 			$value = "'$value'";
 			$updates[] = "$key=$value";
 
@@ -314,8 +316,8 @@ $q = "UPDATE `sponsors` SET $implodeArray WHERE `id` = '$this->id'";
      *
      */
 	public function Delete_row_from_key($key_row){
-		$this->connection->RunQuery("DELETE FROM `sponsors` WHERE `id` = $key_row");
-		$result->rowCount();
+		$result = $this->connection->RunQuery("DELETE FROM `sponsors` WHERE `id` = $key_row");
+		return $result->rowCount();
 	}
 
     /**

@@ -2,7 +2,7 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 24-01-2020
+ * Create Date: 26-01-2020
  *
  * DJT 2019
  *
@@ -16,7 +16,9 @@ Class session {
 	private $id; //int(11)
 	private $timeFrom; //varchar(100)
 	private $timeTo; //varchar(100)
-	private $sessionName; //varchar(400)
+	private $title; //varchar(400)
+	private $subtitle; //varchar(400)
+	private $description; //varchar(800)
 	private $connection;
 
 	public function __construct(){
@@ -27,10 +29,12 @@ Class session {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_session($timeFrom,$timeTo,$sessionName){
+	public function New_session($timeFrom,$timeTo,$title,$subtitle,$description){
 		$this->timeFrom = $timeFrom;
 		$this->timeTo = $timeTo;
-		$this->sessionName = $sessionName;
+		$this->title = $title;
+		$this->subtitle = $subtitle;
+		$this->description = $description;
 	}
 
     /**
@@ -45,7 +49,9 @@ Class session {
 			$this->id = $row["id"];
 			$this->timeFrom = $row["timeFrom"];
 			$this->timeTo = $row["timeTo"];
-			$this->sessionName = $row["sessionName"];
+			$this->title = $row["title"];
+			$this->subtitle = $row["subtitle"];
+			$this->description = $row["description"];
 		}
 	}
     /**
@@ -66,7 +72,9 @@ $q = "Select * from `session` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["id"] = $row["id"];
 			$rowReturn[$x]["timeFrom"] = $row["timeFrom"];
 			$rowReturn[$x]["timeTo"] = $row["timeTo"];
-			$rowReturn[$x]["sessionName"] = $row["sessionName"];
+			$rowReturn[$x]["title"] = $row["title"];
+			$rowReturn[$x]["subtitle"] = $row["subtitle"];
+			$rowReturn[$x]["description"] = $row["description"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -172,6 +180,7 @@ foreach ($ov as $key=>$value){
 		} 
 foreach ($ovMod as $key => $value) {
 
+            $value = addslashes($value);
 			$value = "'$value'";
 			$updates[] = "$value";
 
@@ -256,6 +265,7 @@ foreach ($ov as $key=>$value){
 		} 
 foreach ($ovMod as $key => $value) {
 
+            $value = addslashes($value);
 			$value = "'$value'";
 			$updates[] = "$key=$value";
 
@@ -298,8 +308,8 @@ $q = "UPDATE `session` SET $implodeArray WHERE `id` = '$this->id'";
      *
      */
 	public function Delete_row_from_key($key_row){
-		$this->connection->RunQuery("DELETE FROM `session` WHERE `id` = $key_row");
-		$result->rowCount();
+		$result = $this->connection->RunQuery("DELETE FROM `session` WHERE `id` = $key_row");
+		return $result->rowCount();
 	}
 
     /**
@@ -340,10 +350,24 @@ $q = "UPDATE `session` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
-	 * @return sessionName - varchar(400)
+	 * @return title - varchar(400)
 	 */
-	public function getsessionName(){
-		return $this->sessionName;
+	public function gettitle(){
+		return $this->title;
+	}
+
+	/**
+	 * @return subtitle - varchar(400)
+	 */
+	public function getsubtitle(){
+		return $this->subtitle;
+	}
+
+	/**
+	 * @return description - varchar(800)
+	 */
+	public function getdescription(){
+		return $this->description;
 	}
 
 	/**
@@ -370,8 +394,22 @@ $q = "UPDATE `session` SET $implodeArray WHERE `id` = '$this->id'";
 	/**
 	 * @param Type: varchar(400)
 	 */
-	public function setsessionName($sessionName){
-		$this->sessionName = $sessionName;
+	public function settitle($title){
+		$this->title = $title;
+	}
+
+	/**
+	 * @param Type: varchar(400)
+	 */
+	public function setsubtitle($subtitle){
+		$this->subtitle = $subtitle;
+	}
+
+	/**
+	 * @param Type: varchar(800)
+	 */
+	public function setdescription($description){
+		$this->description = $description;
 	}
 
     /**

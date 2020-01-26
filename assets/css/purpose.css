@@ -30323,7 +30323,7 @@ html:not([dir='rtl']) .noUi-horizontal .noUi-handle
 
 .select2-selection__arrow
 {
-    display: none;
+    /*display: none;*/
 }
 
 .select2.select2-container

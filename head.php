@@ -31,14 +31,19 @@
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/@fortawesome/fontawesome-free/css/all.min.css"><!-- Page CSS -->
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/swiper/dist/css/swiper.min.css">
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
+    <!--Extra CSS -->
+    <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/select2/dist/css/select2.min.css">
+    <!-- <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/select2/dist/css/select2bootstrap.min.css">
+     -->
     <!-- Purpose CSS -->
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/css/purpose.css" id="stylesheet">
-    <!--Extra CSS -->
+   
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/css/gieqs.css">
 
 <!-- Global JS -->
 
 <script src="<?php echo BASE_URL;?>/assets/js/purpose.core.js"></script>
+<script src="<?php echo BASE_URL;?>/assets/libs/select2/dist/js/select2.min.js"></script>
 <script src="<?php echo BASE_URL;?>/assets/js/purpose.js"></script>
 <script src="<?php echo BASE_URL;?>/assets/js/generaljs.js"></script>
 <script src="<?php echo BASE_URL;?>/node_modules/jquery-validation/dist/jquery.validate.js"></script>

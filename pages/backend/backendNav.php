@@ -2,7 +2,7 @@
 <div class="d-flex">
               <a href="account-profile-public.html" class="btn btn-icon btn-group-nav shadow btn-neutral">
                 <span class="btn-inner--icon"><i class="fas fa-user"></i></span>
-                <span class="btn-inner--text d-none d-md-inline-block">Backend User</span>
+                <span class="btn-inner--text d-none d-md-inline-block"><?php echo $_SESSION['firstname'] . ' ' . $_SESSION['surname'];?></span>
               </a>
               <div class="btn-group btn-group-nav shadow ml-auto" role="group" aria-label="Basic example">
                 <div class="btn-group" role="group">
@@ -41,7 +41,7 @@
                     <span class="dropdown-header">Overview</span>
                     <a class="dropdown-item" href="listing-orders.html">Programmes</a>
                     <a class="dropdown-item" href="listing-projects.html">Sessions</a>
-                    <span class="dropdown-header">Flex</span>
+                    <span class="dropdown-header">Individual Items</span>
                     <a class="dropdown-item" href="listing-users.html">Session Items</a>
                   </div>
                 </div>

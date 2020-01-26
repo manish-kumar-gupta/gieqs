@@ -2,7 +2,7 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 24-01-2020
+ * Create Date: 26-01-2020
  *
  * DJT 2019
  *
@@ -14,9 +14,10 @@ require_once 'DataBaseMysqlPDO.class.php';
 Class sessionItem {
 
 	private $id; //int(11)
-	private $timeFrom; //varchar(100)
-	private $timeTo; //varchar(100)
-	private $sessionItemName; //varchar(400)
+	private $timeFrom; //time(6)
+	private $timeTo; //time(6)
+	private $title; //varchar(400)
+	private $description; //varchar(800)
 	private $faculty; //int(11)
 	private $connection;
 
@@ -28,10 +29,11 @@ Class sessionItem {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_sessionItem($timeFrom,$timeTo,$sessionItemName,$faculty){
+	public function New_sessionItem($timeFrom,$timeTo,$title,$description,$faculty){
 		$this->timeFrom = $timeFrom;
 		$this->timeTo = $timeTo;
-		$this->sessionItemName = $sessionItemName;
+		$this->title = $title;
+		$this->description = $description;
 		$this->faculty = $faculty;
 	}
 
@@ -47,7 +49,8 @@ Class sessionItem {
 			$this->id = $row["id"];
 			$this->timeFrom = $row["timeFrom"];
 			$this->timeTo = $row["timeTo"];
-			$this->sessionItemName = $row["sessionItemName"];
+			$this->title = $row["title"];
+			$this->description = $row["description"];
 			$this->faculty = $row["faculty"];
 		}
 	}
@@ -69,7 +72,8 @@ $q = "Select * from `sessionItem` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["id"] = $row["id"];
 			$rowReturn[$x]["timeFrom"] = $row["timeFrom"];
 			$rowReturn[$x]["timeTo"] = $row["timeTo"];
-			$rowReturn[$x]["sessionItemName"] = $row["sessionItemName"];
+			$rowReturn[$x]["title"] = $row["title"];
+			$rowReturn[$x]["description"] = $row["description"];
 			$rowReturn[$x]["faculty"] = $row["faculty"];
 		$x++;		}return json_encode($rowReturn);}
 
@@ -176,6 +180,7 @@ foreach ($ov as $key=>$value){
 		} 
 foreach ($ovMod as $key => $value) {
 
+            $value = addslashes($value);
 			$value = "'$value'";
 			$updates[] = "$value";
 
@@ -260,6 +265,7 @@ foreach ($ov as $key=>$value){
 		} 
 foreach ($ovMod as $key => $value) {
 
+            $value = addslashes($value);
 			$value = "'$value'";
 			$updates[] = "$key=$value";
 
@@ -302,8 +308,8 @@ $q = "UPDATE `sessionItem` SET $implodeArray WHERE `id` = '$this->id'";
      *
      */
 	public function Delete_row_from_key($key_row){
-		$this->connection->RunQuery("DELETE FROM `sessionItem` WHERE `id` = $key_row");
-		$result->rowCount();
+		$result = $this->connection->RunQuery("DELETE FROM `sessionItem` WHERE `id` = $key_row");
+		return $result->rowCount();
 	}
 
     /**
@@ -330,24 +336,31 @@ $q = "UPDATE `sessionItem` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
-	 * @return timeFrom - varchar(100)
+	 * @return timeFrom - time(6)
 	 */
 	public function gettimeFrom(){
 		return $this->timeFrom;
 	}
 
 	/**
-	 * @return timeTo - varchar(100)
+	 * @return timeTo - time(6)
 	 */
 	public function gettimeTo(){
 		return $this->timeTo;
 	}
 
 	/**
-	 * @return sessionItemName - varchar(400)
+	 * @return title - varchar(400)
 	 */
-	public function getsessionItemName(){
-		return $this->sessionItemName;
+	public function gettitle(){
+		return $this->title;
+	}
+
+	/**
+	 * @return description - varchar(800)
+	 */
+	public function getdescription(){
+		return $this->description;
 	}
 
 	/**
@@ -365,14 +378,14 @@ $q = "UPDATE `sessionItem` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
-	 * @param Type: varchar(100)
+	 * @param Type: time(6)
 	 */
 	public function settimeFrom($timeFrom){
 		$this->timeFrom = $timeFrom;
 	}
 
 	/**
-	 * @param Type: varchar(100)
+	 * @param Type: time(6)
 	 */
 	public function settimeTo($timeTo){
 		$this->timeTo = $timeTo;
@@ -381,8 +394,15 @@ $q = "UPDATE `sessionItem` SET $implodeArray WHERE `id` = '$this->id'";
 	/**
 	 * @param Type: varchar(400)
 	 */
-	public function setsessionItemName($sessionItemName){
-		$this->sessionItemName = $sessionItemName;
+	public function settitle($title){
+		$this->title = $title;
+	}
+
+	/**
+	 * @param Type: varchar(800)
+	 */
+	public function setdescription($description){
+		$this->description = $description;
 	}
 
 	/**

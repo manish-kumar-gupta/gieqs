@@ -77,6 +77,55 @@ function getDataQuery (table, query, fieldsToGetObject, outputFormat){
 
 }
 
+function getFormData($form){
+    var unindexed_array = $form.serializeArray();
+    var indexed_array = {};
+
+    $.map(unindexed_array, function(n, i){
+        indexed_array[n['name']] = n['value'];
+    });
+
+    return indexed_array;
+}
+
+function getFormDatav2($form, table, identifier, identifierKey, update){
+    var unindexed_array = $form.serializeArray();
+    var indexed_array = {};
+
+	indexed_array['table'] = table;
+	indexed_array['identifier'] = identifier;
+	indexed_array['identifierKey'] = identifierKey;
+	indexed_array['update'] = update;
+
+    $.map(unindexed_array, function(n, i){
+        indexed_array[n['name']] = n['value'];
+    });
+
+    return indexed_array;
+}
+
+function pushFormDataJSON ($form, table, identifierKey, identifier, update){
+
+	//var $form = $(form);
+	var data = getFormDatav2($form, table, identifier, identifierKey, update);	
+
+	//TODO add identifier and identifierKey
+
+	console.log(data);
+
+	data = JSON.stringify(data);
+
+	console.log(data);
+
+	return $.ajax({
+		url: siteRoot + "assets/scripts/masterAjaxDataReturnQueryJSONv2.php",
+		type: "POST",
+		contentType: "application/json",
+		data: data,
+	    });
+
+}
+
 function JSONDataQuery (table, dataObject, outputFormat){
 
 	
@@ -97,7 +146,7 @@ function JSONDataQuery (table, dataObject, outputFormat){
 	
 	var datastring = JSON.stringify(dataObject);
 	
-	//console.log('Requested data was '+datastring);
+	console.log('Requested data was '+datastring);
 	
 	return $.ajax({
 		url: siteRoot + "assets/scripts/masterAjaxDataReturnQueryJSON.php",
@@ -957,6 +1006,15 @@ $('.reset').click(function(){
 		}
 	}
 });
+
+$.validator.addMethod(
+	"regex",
+	function(value, element, regexp) {
+		var re = new RegExp(regexp);
+		return this.optional(element) || re.test(value);
+	},
+	"Please check your input."
+);
 
 
 
