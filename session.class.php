@@ -117,7 +117,9 @@ $q = "Select * from `session` LIMIT " . $x . ", " . $y;
      *
      */
 	public function matchRecord($key_row){
-		$result = $this->connection->RunQuery("Select * from `session` where `id` = '$key_row' ");
+		$q = "Select * from `session` where `id` = '$key_row'";
+		//echo $q;
+		$result = $this->connection->RunQuery($q);
 		$nRows = $result->rowCount();
 			if ($nRows == 1){
 				return TRUE;

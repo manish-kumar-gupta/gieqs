@@ -129,6 +129,8 @@ class queries
 
 
 
+
+
     /**
      * Close mysql connection
      */

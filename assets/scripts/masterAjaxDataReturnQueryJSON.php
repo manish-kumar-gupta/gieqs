@@ -1,7 +1,7 @@
 <?php
 
-$openaccess = 0;
-			$requiredUserLevel = 4;
+$openaccess =1;
+			//$requiredUserLevel = 4;
 			require ('../../assets/includes/config.inc.php');		
 			
 			require (BASE_URI.'/assets/scripts/headerScript.php');
