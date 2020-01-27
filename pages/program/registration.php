@@ -189,8 +189,9 @@ require BASE_URI . '/head.php';
                                                     <li>Invitation to conference dinner <sup>*</sup></li>
                                                     <li>Catering included</li>
                                                 </ul>
-                                                <button type="button"
-                                                    class="btn btn-sm gieqsGold btn-neutral mb-3">Register</button>
+                                                <a href="https://eu.eventscloud.com/200200203" target="_blank"
+      
+                                                    class="btn btn-sm gieqsGold btn-neutral mb-3">Register</a>
                                             </div>
                                         </div>
                                         <div class="card card-pricing text-center mb-3">
@@ -211,8 +212,9 @@ require BASE_URI . '/head.php';
                                                     <li>Invitation to conference dinner <sup>*</sup></li>
                                                     <li>Catering included</li>
                                                 </ul>
-                                                <button type="button"
-                                                    class="btn btn-sm gieqsGold btn-neutral mb-3">Register</button>
+                                                <a href="https://eu.eventscloud.com/200200203" target="_blank"
+      
+                                                    class="btn btn-sm gieqsGold btn-neutral mb-3">Register</a>
                                             </div>
                                         </div>
                                         <div class="card card-pricing text-center border shadow-none hover-shadow mb-3">
@@ -233,8 +235,9 @@ require BASE_URI . '/head.php';
                                                     <li>Invitation to conference dinner <sup>*</sup></li>
                                                     <li>Catering included</li>
                                                 </ul>
-                                                <button type="button"
-                                                    class="btn btn-sm gieqsGold btn-neutral mb-3">Register</button>
+                                                <a href="https://eu.eventscloud.com/200200203" target="_blank"
+      
+                                                    class="btn btn-sm gieqsGold btn-neutral mb-3">Register</a>
                                             </div>
                                         </div>
                                     </div>
@@ -268,8 +271,9 @@ require BASE_URI . '/head.php';
                                                 <li>Invitation to conference dinner <sup>*</sup></li>
                                                 <li>Catering included</li>
                                             </ul>
-                                            <button type="button"
-                                                class="btn btn-sm gieqsGold btn-neutral mb-3">Register</button>
+                                            <a href="https://eu.eventscloud.com/200200203" target="_blank"
+      
+                                                    class="btn btn-sm gieqsGold btn-neutral mb-3">Register</a>
                                         </div>
                                     </div>
                                     <div class="card card-pricing text-center mb-3">
@@ -289,8 +293,9 @@ require BASE_URI . '/head.php';
                                                 <li>Invitation to conference dinner <sup>*</sup></li>
                                                 <li>Catering included</li>
                                             </ul>
-                                            <button type="button"
-                                                class="btn btn-sm gieqsGold btn-neutral mb-3">Register</button>
+                                            <a href="https://eu.eventscloud.com/200200203" target="_blank"
+      
+                                                    class="btn btn-sm gieqsGold btn-neutral mb-3">Register</a>
                                         </div>
                                     </div>
                                     <div class="card card-pricing text-center border shadow-none hover-shadow mb-3">
@@ -310,8 +315,9 @@ require BASE_URI . '/head.php';
                                                 <li>Invitation to conference dinner <sup>*</sup></li>
                                                 <li>Catering included</li>
                                             </ul>
-                                            <button type="button"
-                                                class="btn btn-sm gieqsGold btn-neutral mb-3">Register</button>
+                                            <a href="https://eu.eventscloud.com/200200203" target="_blank"
+      
+                                                    class="btn btn-sm gieqsGold btn-neutral mb-3">Register</a>
                                         </div>
                                     </div>
                                 </div>
@@ -343,8 +349,9 @@ require BASE_URI . '/head.php';
                                                 <li>Invitation to conference dinner <sup>*</sup></li>
                                                 <li>Catering included</li>
                                             </ul>
-                                            <button type="button"
-                                                class="btn btn-sm gieqsGold btn-neutral mb-3">Register</button>
+                                            <a href="https://eu.eventscloud.com/200200203" target="_blank"
+      
+                                                    class="btn btn-sm gieqsGold btn-neutral mb-3">Register</a>
                                         </div>
                                     </div>
                                     <div class="card card-pricing text-center mb-3">
@@ -364,8 +371,9 @@ require BASE_URI . '/head.php';
                                                 <li>Invitation to conference dinner <sup>*</sup></li>
                                                 <li>Catering included</li>
                                             </ul>
-                                            <button type="button"
-                                                class="btn btn-sm gieqsGold btn-neutral mb-3">Register</button>
+                                            <a href="https://eu.eventscloud.com/200200203" target="_blank"
+      
+                                                    class="btn btn-sm gieqsGold btn-neutral mb-3">Register</a>
                                         </div>
                                     </div>
                                     <div class="card card-pricing text-center border shadow-none hover-shadow mb-3">
@@ -385,8 +393,9 @@ require BASE_URI . '/head.php';
                                                 <li>Invitation to conference dinner <sup>*</sup></li>
                                                 <li>Catering included</li>
                                             </ul>
-                                            <button type="button"
-                                                class="btn btn-sm gieqsGold btn-neutral mb-3">Register</button>
+                                            <a href="https://eu.eventscloud.com/200200203" target="_blank"
+      
+                                                    class="btn btn-sm gieqsGold btn-neutral mb-3">Register</a>
                                         </div>
                                     </div>
                                 </div>
@@ -418,8 +427,9 @@ require BASE_URI . '/head.php';
                                                 <li>Invitation to conference dinner <sup>*</sup></li>
                                                 <li>Catering included</li>
                                             </ul>
-                                            <button type="button"
-                                                class="btn btn-sm gieqsGold btn-neutral mb-3">Register</button>
+                                            <a href="https://eu.eventscloud.com/200200203" target="_blank"
+      
+                                                    class="btn btn-sm gieqsGold btn-neutral mb-3">Register</a>
                                         </div>
                                     </div>
                                     <div class="card card-pricing text-center mb-3">
@@ -439,8 +449,9 @@ require BASE_URI . '/head.php';
                                                 <li>Invitation to conference dinner <sup>*</sup></li>
                                                 <li>Catering included</li>
                                             </ul>
-                                            <button type="button"
-                                                class="btn btn-sm gieqsGold btn-neutral mb-3">Register</button>
+                                            <a href="https://eu.eventscloud.com/200200203" target="_blank"
+      
+                                                    class="btn btn-sm gieqsGold btn-neutral mb-3">Register</a>
                                         </div>
                                     </div>
                                     <div class="card card-pricing text-center border shadow-none hover-shadow mb-3">
@@ -460,8 +471,9 @@ require BASE_URI . '/head.php';
                                                 <li>Invitation to conference dinner <sup>*</sup></li>
                                                 <li>Catering included</li>
                                             </ul>
-                                            <button type="button"
-                                                class="btn btn-sm gieqsGold btn-neutral mb-3">Register</button>
+                                            <a href="https://eu.eventscloud.com/200200203" target="_blank"
+      
+                                                    class="btn btn-sm gieqsGold btn-neutral mb-3">Register</a>
                                         </div>
                                     </div>
                                 </div>
