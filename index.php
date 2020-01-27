@@ -18,7 +18,15 @@
     <!--Page title-->
     <title>Ghent International Endoscopy Quality Symposium</title>
 
-    
+    <style>
+
+.gieqsGold {
+
+color: rgb(238, 194, 120);
+
+}
+
+    </style>
 
 
 </head>
@@ -136,6 +144,12 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 
                             </div>
                             <div>
+                            <div class="alert alert-modern alert-dark">
+                                <span class="badge gieqsGold badge-pill">
+                                    New
+                                    </span>
+                                <span class="alert-content">Registration now open!</span>
+                             </div>
                                 <h2 class="text-white mb-4 mt-8 mt-lg-0">
                                     <span class="display-4 font-weight-light">We can do everyday endoscopy
                                         better.</span>
@@ -188,6 +202,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                         </div>
                     </div>
                     <div class="order-1 col-lg-6 mb-1 mb-lg-0">
+                        
                         <img alt="Image placeholder" src="assets/img/backgrounds/hyperplasticTransBack.png"
                             class="img-fluid rounded shadow">
                     </div>

@@ -38,6 +38,11 @@
                     <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/nursing.php">Nursing</a>
                 </li>
 
+                <!-- Venue -->
+                <li class="nav-item active">
+                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/venue.php">Venue</a>
+                </li>
+
                 <!-- Sponsors -->
                 <!--currently not active-->
                 <!-- <li class="nav-item active">
