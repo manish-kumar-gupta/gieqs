@@ -213,6 +213,107 @@ class sessionView
 
         }
 
+        public function checkCombination($sessionid, $moderatorid)
+            {
+            
+
+            $q = "Select a.`id`
+            FROM `sessionModerator` as a
+            WHERE `sessionid` = '$sessionid' AND `facultyid` = '$moderatorid'
+            ";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                return true;
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
+
+        public function checkSessionModeratorid($sessionid, $moderatorid)
+            {
+            
+
+            $q = "Select a.`id`
+            FROM `sessionModerator` as a
+            WHERE `sessionid` = '$sessionid' AND `facultyid` = '$moderatorid'
+            ";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                    return $row['id'];
+                }
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
+        
+        public function getSessionProgramme($sessionid)
+            {
+            
+
+                $q = "Select 
+            
+                a.`id` as `programmeid`, a.`date`,
+                c.`id` as `sessionid`, 
+                from `programme` as a
+                INNER JOIN `programmeOrder` as b on a.`id` = b.`programmeid` 
+                INNER JOIN `session` as c on b.`sessionid` = c.`id`
+                WHERE c.`id` = '$sessionid'
+                ";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                    return $row['programmeid'];
+                }
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
+
         
 
 

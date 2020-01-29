@@ -74,7 +74,7 @@ $openaccess =1;
                 <span class="h5 mb-0"><?php echo $response[0]['sessionTitle']?></span>
                 <?php
                     if ($edit == 1){
-                        echo '<span class="ml-3 editSession"><i class="fas fa-edit"></i></span>';
+                        echo '<span class="ml-3 editSession" data="' . $response[0]['sessionid'] . '"><i class="fas fa-edit"></i></span>';
 
                     }
                 
@@ -109,13 +109,13 @@ $openaccess =1;
                     <?php
 
                     foreach ($moderators as $key=>$value){
-                        echo '<span class="faculty mb-0 mr-1">';
+                        echo '<span class="faculty mb-0 mr-1" data="' . $value['facultyid'] . '">';
                         echo $value['title'] . ' ' . $value['firstname'] . ' ' . $value['surname'];
                         echo '</span>';
                         
                     if ($edit == 1){
                         
-                        echo '<span class="ml-3 removeModerators"><i class="fas fa-minus"></i></span>';
+                        echo '<span class="ml-1 mr-3 removeModerators"><i class="fas fa-minus"></i></span>';
 
                     }
                 
@@ -156,6 +156,7 @@ $openaccess =1;
                     if ($edit == 1){
                         echo '<span class="ml-3 editSessionItem"><i class="fas fa-edit"></i></span>';
                         echo '<span class="ml-3 addSessionItem"><i class="fas fa-plus"></i></span>';
+                        echo '<span class="ml-3 deleteSessionItem"><i class="fas fa-times"></i></span>';
 
                     }
                     ?>

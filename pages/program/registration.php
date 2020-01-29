@@ -142,7 +142,7 @@ require BASE_URI . '/head.php';
                     <div class="row justify-content-center">
                         <div class="col-lg-10">
                             <div class="mb-5 text-center">
-                                <h3 class="mt-8">Register for GIEQs</h3>
+                                <h3 class="mt-8">Registration</h3>
                                 <div class="fluid-paragraph mt-3">
                                     <p class="lead lh-180">high quality endoscopic education. for a fair price,</p>
                                 </div>
@@ -161,7 +161,7 @@ require BASE_URI . '/head.php';
                                         <button type="button" class="btn selectorRole btn-secondary"
                                             data-pricing="ST">Specialist in Training</button>
                                         <button type="button" class="btn selectorRole btn-secondary"
-                                            data-pricing="AHP">Allied Healthcare Professional</button>
+                                            data-pricing="AHP">Nurse</button>
                                         <button type="button" class="btn selectorRole btn-secondary"
                                             data-pricing="MS">Medical Student</button>
 

@@ -145,9 +145,9 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                             </div>
                             <div>
                             <div class="alert alert-modern alert-dark">
-                                <span class="badge gieqsGold badge-pill">
+                                <a href="https://eu.eventscloud.com/200200203"><span class="badge gieqsGold badge-pill">
                                     New
-                                    </span>
+                                    </span></a>
                                 <span class="alert-content">Registration now open!</span>
                              </div>
                                 <h2 class="text-white mb-4 mt-8 mt-lg-0">

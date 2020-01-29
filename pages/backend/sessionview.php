@@ -84,6 +84,9 @@ $formv1 = new formGenerator;
         }
     }
     </style>
+    <script>
+        $.fn.modal.Constructor.prototype.enforceFocus = function() {};
+    </script>
 </head>
 
 <body>
@@ -306,11 +309,11 @@ if ($identifierValue) {
     </div>
 
    <!-- Modal -->
-   <div class="modal fade" id="modal-row-1" tabindex="-1" role="dialog" aria-labelledby="modal-change-username"
+   <div class="modal fade" id="modal-session" tabindex="-1" role="dialog" aria-labelledby="modal-change-username"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
 
-                    <div class="modal-content bg-dark border" style="border-color:rgb(238, 194, 120) !important;">
+                    <div class="modal-content mc1 bg-dark border" style="border-color:rgb(238, 194, 120) !important;">
                         <div class="modal-header">
                             <div class="modal-title d-flex align-items-left" id="modal-title-change-username">
                                 <div>
@@ -319,7 +322,7 @@ if ($identifierValue) {
                                     </div>
                                 </div>
                                 <div class="text-left">
-                                    <h5 class="mb-0">Edit <?php echo $databaseName;?></h5>
+                                    <h5 class="mb-0">Edit Session Details</h5>
                                     <span class="mb-0"></span>
                                 </div>
 
@@ -346,102 +349,44 @@ if ($identifierValue) {
 
                         <div class="modal-body">
 
-                            <div class="<?php echo $databaseName;?>-body">
-                                <form id="<?php echo $databaseName;?>-form">
+                            <div class="session-body">
+                                <form id="session-form">
                                     <div class="form-group">
                                     <!-- EDIT -->
+
+                                    <label for="programmeid">Select programme</label>
+                                        <div class="input-group mb-3">
+                                            <select id="programmeid" type="text" data-toggle="select" class="form-control" name="programmeid">
+                                            <option value="" selected disabled hidden>please select an option</option>
+        
+                                            </select>
+                                        </div>
                                     
-                                    <label for="firstname">firstname</label>
+                                    <label for="timeFrom">Start Time</label>
                                         <div class="input-group mb-3">
-                                            <input id="firstname" type="text" class="form-control" name="firstname">
+                                            <input id="timeFrom" type="text" placeholder="hh:mm" data-toggle="time" class="form-control" name="timeFrom">
                                         </div>
 
-                                    <label for="surname">surname</label>
-                                    <div class="input-group mb-3">
-                                        <input id="surname" type="text" class="form-control" name="surname">
-                                    </div>
-
-                                    <label for="user_id">user_id</label>
+                                        <label for="timeTo">End Time</label>
                                         <div class="input-group mb-3">
-                                            <select id="user_id" type="text" data-toggle="select" class="form-control" name="user_id">
-                                            <!--TODO get the users from AJAX-->
-                                            </select>
+                                            <input id="timeTo" type="text" placeholder="hh:mm" data-toggle="time" class="form-control" name="timeTo">
                                         </div>
 
-                                    <label for="email">email</label>
-                                    <div class="input-group mb-3">
-                                        <input id="email" type="text" class="form-control" name="email">
-                                    </div>
-
-                                    <label for="centre">centre</label>
+                                        <label for="title">Session Title</label>
                                         <div class="input-group mb-3">
-                                            <select id="centre" type="text" data-toggle="select" class="form-control" name="centre">
-                                            <!--TODO get centres from AJAX-->
-                                            </select>
+                                            <textarea id="title" type="text" data-toggle="autosize" class="form-control" name="title"></textarea>
                                         </div>
 
-                                        <label for="centreName">centreName</label>
+                                        <label for="subtitle">Session Subtitle</label>
                                         <div class="input-group mb-3">
-                                            <input id="centreName" type="text" class="form-control" name="centreName">
+                                            <textarea id="subtitle" type="text" data-toggle="autosize" class="form-control" name="subtitle"></textarea>
+                                        </div>
+                                        <label for="description">Session description</label>
+                                        <div class="input-group mb-3">
+                                            <textarea id="description" type="text" data-toggle="autosize" class="form-control" name="description"></textarea>
                                         </div>
 
-                                        <label for="registered_date">registered_date</label>
-                                        <div class="input-group mb-3">
-                                            <input id="registered_date" data-toggle = "date" type="text" class="form-control" name="registered_date">
-                                        </div>
-
-                                        <label for="timezone">timezone</label>
-                                        <div class="input-group mb-3">
-                                            <select id="timezone" type="text" data-toggle="select" class="form-control" name="timezone">
-                                            <!--TODO get timezone list from AJAX-->
-                                            </select>
-                                        </div>
-
-                                        <label for="access_level">access_level</label>
-                                        <div class="input-group mb-3">
-                                            <select id="access_level" type="text" data-toggle="select" class="form-control" name="access_level">
-                                            <option value="" selected disabled hidden>select</option>
-                                            <option value="1">1 - Superuser</option>
-                                            <option value="2">2 - Content Creator</option>
-                                            <option value="3"></option>
-                                            <option value="4">4 - Regular User</option>
-                                            <option value="5">5 - View only</option>
-                                            </select>
-                                        </div>
-
-                                        <label for="contactPhone">contactPhone</label>
-                                        <div class="input-group mb-3">
-                                            <input id="contactPhone" type="text" class="form-control" name="contactPhone">
-                                        </div>
-
-                                        <label for="centreCity">centreCity</label>
-                                        <div class="input-group mb-3">
-                                            <input id="centreCity" type="text" class="form-control" name="centreCity">
-                                        </div>
-
-                                        <label for="centreCountry">centreCountry</label>
-                                        <div class="input-group mb-3">
-                                            <input id="centreCountry" type="text" class="form-control" name="centreCountry">
-                                        </div>
-
-                                        <label for="trainee">trainee</label>
-                                        <div class="input-group mb-3">
-                                            <select id="trainee" type="text" data-toggle="select" class="form-control" name="trainee">
-                                            <option value="no">No</option>
-                                            <option value="yes">Yes</option>
-                
-                                            </select>
-                                        </div>
-
-                                        <label for="emailPreferences">emailPreferences</label>
-                                        <div class="input-group mb-3">
-                                            <select id="emailPreferences" type="text" data-toggle="select" class="form-control" name="emailPreferences">
-                                            <option value="" selected disabled hidden>select</option>
-                                            <option value="1">All email ok</option>
-                                            <option value="2">Only regarding activities on the site</option>
-                                            <option value="3">No email contact</option>
-                                            </select>
-                                        </div>
+                                        
 
 
 
@@ -454,6 +399,84 @@ if ($identifierValue) {
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="submit-<?php echo $databaseName;?>-form btn btn-sm btn-success">Save</button>
+                                <button type="button" class="btn btn-sm btn-danger"
+                                    data-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+        </div>
+
+        <!-- Modal 2, moderator -->
+   <div class="modal fade" id="modal-moderator" tabindex="-1" role="dialog" aria-labelledby="modal-change-username"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+
+                    <div class="modal-content mc2 bg-dark border" style="border-color:rgb(238, 194, 120) !important;">
+                        <div class="modal-header">
+                            <div class="modal-title d-flex align-items-left" id="modal-title-change-username">
+                                <div>
+                                    <div class="icon bg-dark icon-sm icon-shape icon-info rounded-circle shadow mr-3">
+                                        <img src="../../assets/img/icons/gieqsicon.png">
+                                    </div>
+                                </div>
+                                <div class="text-left">
+                                    <h5 class="mb-0">Add a Moderator</h5>
+                                    <span class="mb-0"></span>
+                                </div>
+
+                            </div>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span class="text-white" aria-hidden="true">&times;</span>
+                            </button>
+
+                        </div>
+                        <div class="modal-subheader px-3 mt-2 mb-2 border-bottom">
+                            <div class="row">
+                                <div class="col-sm-12 text-left">
+                                    <div>
+                                        <h6 class="mb-0"></h6>
+                                        <span id = "modalMessageArea" class="mb-0"></span>
+
+                                    </div>
+                                    <div id="topModalAlert" class="alert alert-warning alert-flush collapse" role="alert">
+    <span id="topModalSuccess"></span>
+</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="modal-body">
+
+                            <div class="moderator-body">
+                                <form id="moderator-form">
+                                    <div class="form-group">
+                                    <!-- EDIT -->
+
+                                    <label for="moderatorid">Select moderator</label>
+                                        <div class="input-group mb-3">
+                                            <select id="moderatorid" data-toggle="select" class="form-control" name="moderatorid">
+                                            <option value="" selected disabled hidden>please select an option</option>
+        
+                                            </select>
+                                        </div>
+                                    
+                                    
+
+                                        
+
+
+
+                                    </div>
+                                </form>
+
+                                <div class="px-5 pt-2 mt-2 mb-2 pb-2 text-center">
+                                    <p class="text-muted text-sm">Data entered here will change the live site</p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="submit-moderator-form btn btn-sm btn-success">Save</button>
                                 <button type="button" class="btn btn-sm btn-danger"
                                     data-dismiss="modal">Cancel</button>
                             </div>
@@ -499,25 +522,31 @@ function tableRefresh (){
 
 }
 
-function fillForm (idPassed){
+function fillFormSession (idPassed){
 
-        disableFormInputs("<?php echo $databaseName;?>-form");
+        disableFormInputs("session-form");
 
-        esdLesionRequired = new Object;
+        var formString = $('#session-form').serializeFormJSON();
 
-        esdLesionRequired = getNamesFormElements("<?php echo $databaseName;?>-form");
+        formString["sessionid"] = idPassed;
 
-        esdLesionString = '`id`=\''+idPassed+'\'';
+        const jsonString = JSON.stringify(formString);
+        console.log(jsonString);
 
-        var selectorObject = getDataQuery ("<?php echo $databaseName;?>", esdLesionString, getNamesFormElements("<?php echo $databaseName;?>-form"), 1);
+        var request = $.ajax({
+        url: siteRoot + "assets/scripts/getSession.php",
+        type: "POST",
+        contentType: "application/json",
+        data: jsonString,
+        });
 
-        //console.log(selectorObject);
 
-        selectorObject.done(function (data){
 
-            console.log(data);
+        request.done(function(data) {
+        // alert( "success" );
 
-            var formData = $.parseJSON(data);
+            if (data){
+                var formData = $.parseJSON(data);
 
 
             $(formData).each(function(i,val){
@@ -528,11 +557,16 @@ function fillForm (idPassed){
 
             });
 
-            //$("#messageBox").text("Editing ESD lesion ID "+idPassed);
+            enableFormInputs("session-form");
 
-            enableFormInputs("<?php echo $databaseName;?>-form");
 
-        });
+            } else{
+
+                alert('please try again');
+
+            }
+        })
+
 
 
 
@@ -643,6 +677,53 @@ function fillForm (idPassed){
 
     }
 
+    function submitModeratorForm(){
+
+        //get id of moderator from form
+
+        var id = $('#modal-moderator').find('#moderatorid').val()
+
+        //refresh the ajax
+
+        const dataToSend = {
+
+        moderatorid : $('#modal-moderator').find('#moderatorid').val(),
+        sessionid : <?php echo $sessionIdentifier;?>,
+
+        }
+
+        const jsonString = JSON.stringify(dataToSend);
+        console.log(jsonString);
+
+
+
+        var request = $.ajax({
+        url: siteRoot + "assets/scripts/addModerator.php",
+        type: "POST",
+        contentType: "application/json",
+        data: jsonString,
+        });
+
+
+
+        request.done(function(data) {
+        // alert( "success" );
+
+            if (data){
+                $('#modal-moderator').modal('hide');
+                refreshSessionView();
+            } else{
+
+                alert('please try again');
+
+            }
+        })
+
+        
+
+
+    }
+
     //delete behaviour
 
 		function deleteRow (id){
@@ -706,38 +787,88 @@ function fillForm (idPassed){
 
     }
 
-$(document).ready(function(){
+    function refreshSessionView(){
+
+        
+
+const dataToSend = {
+
+    sessionid : <?php echo $sessionIdentifier;?>,
+
+}
+
+const jsonString = JSON.stringify(dataToSend);
+console.log(jsonString);
+                    
+                    var request2 = $.ajax({
+                    url: siteRoot + "assets/scripts/classes/generateSessionView.php",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: jsonString,
+                    });
+
+
+
+                    request2.done(function(data) {
+                    // alert( "success" );
+                    $('#sessionView').html(data);
+                    })
+    }
+
+
+
+    $(document).ready(function(){
 
     //add those which require date pickr
     
+    $.fn.serializeFormJSON = function () {
+
+var o = {};
+var a = this.serializeArray();
+$.each(a, function () {
+    if (o[this.name]) {
+        if (!o[this.name].push) {
+            o[this.name] = [o[this.name]];
+        }
+        o[this.name].push(this.value || '');
+    } else {
+        o[this.name] = this.value || '';
+    }
+});
+return o;
+};
+    
     var options = {
-			enableTime: false,
+        
+    enableTime: true,
+    noCalendar: true,
+    dateFormat: "H:i",
 			allowInput: true
 		};
     
-    $('[data-toggle="date"]').flatpickr(options);
+    $('[data-toggle="time"]').flatpickr(options);
 
     // add those which require select2 box
 
     $('[data-toggle="select"]').select2({
 
-        dropdownParent: $(".modal-content"),
+        //dropdownParent: $(".modal-content"),
         //theme: "bootstrap",
 
     });
 
-    $('#title').select2({
+    $('#programmeid').select2({
 
-        dropdownParent: $(".modal-content"),
+        dropdownParent: $("#modal-session"),
 
         ajax: {
         //url: siteRoot + 'assets/scripts/select2simple.php?table=Delegate&field=firstname',
-        url: siteRoot + 'assets/scripts/select2query.php',
+        url: siteRoot + 'assets/scripts/classes/queryProgrammeSelect.php',
         data: function (params) {
             var query = {
                 search: params.term,
-                query: '`id`, `firstname` FROM `Delegate`',
-                fieldRequired: 'firstname',
+                query: '`id`, `date`, `title` FROM `Programme`',
+                fieldRequired: 'date',
             }
 
             // Query parameters will be 
@@ -751,6 +882,30 @@ $(document).ready(function(){
         
 
     });
+
+    $('#moderatorid').select2({
+
+        dropdownParent: $("#modal-moderator"),
+
+        ajax: {
+        //url: siteRoot + 'assets/scripts/select2simple.php?table=Delegate&field=firstname',
+        url: siteRoot + 'assets/scripts/classes/queryModeratorSelect.php',
+        data: function (params) {
+            var query = {
+                search: params.term,
+            }
+
+            // Query parameters will be 
+            console.log(query);
+            return query;
+        },
+        dataType: 'json'
+        // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
+        }
+
+
+
+        });
 
     <?php
 
@@ -845,6 +1000,111 @@ $(document).ready(function(){
 
     } ); */
 
+    $(document).on('click', '.editSession', function() {
+
+        //define session id
+
+        var sessionid = $(this).attr('data');
+
+        console.log(sessionid);
+
+        $('#modal-session').modal('show');
+
+        fillFormSession(sessionid);
+
+    })
+
+    $(document).on('click', '.addModerators', function() {
+
+
+    $('#modal-moderator').modal('show');
+
+    })
+    
+    $(document).on('click', '.removeModerators', function() {
+
+        var moderatorid = $(this).prev().attr('data');
+        console.log(moderatorid);
+        const dataToSend = {
+
+        moderatorid : $(this).prev().attr('data'),
+        sessionid : <?php echo $sessionIdentifier;?>,
+
+        }
+
+        const jsonString = JSON.stringify(dataToSend);
+        console.log(jsonString);
+
+
+
+        var request = $.ajax({
+        url: siteRoot + "assets/scripts/deleteModerator.php",
+        type: "POST",
+        contentType: "application/json",
+        data: jsonString,
+        });
+
+
+
+        request.done(function(data) {
+        // alert( "success" );
+
+            if (data == 1){
+                refreshSessionView();
+            } else if (data == 4){
+
+                alert('This record does not exist.  Try again');
+
+            }
+        })
+        //TODO get moderator id
+        //modify delete function for this moderator joined to the session
+
+    })
+
+    $(document).on('click', '.submit-moderator-form', function() {
+
+    event.preventDefault();
+    console.log('clicked moderator submit');
+    console.log($('#moderator-form').closest());
+    $('#moderator-form').submit();
+
+    })
+    
+    $(document).on('click', '.addSessionItem', function() {
+
+
+        //TODO add a sessionItem form
+        //create, read and update this from here via a template form
+        //use the tempate form for the table later
+        //refresh the table
+
+    })
+
+    $(document).on('click', '.editSessionItem', function() {
+
+
+    //TODO add a sessionItem form
+    //GET the ID of the sessionItem required to edit
+    //update this from here via a template form
+    //use the tempate form for the table later
+
+    })
+    
+    $(document).on('click', '.deleteSessionItem', function() {
+
+
+    //TODO add a sessionItem form
+    //GET the ID of the sessionItem required to edit
+    //update this from here via a template form
+    //use the tempate form for the table later
+
+    })
+
+
+
+
+    
     $(document).on('click', '#add<?php echo $databaseName;?>', function() {
 
 
@@ -915,113 +1175,63 @@ rules: {
 
     
               
-   
 
-    
+        programmeid: {
+
+            required: true,
+        },        
+
               
-           firstname:{
+           timeFrom:{
+                        required : true,
+                        regex: '^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$',
+
+
+            },
+
+            
+              
+           timeTo:{
+                        required : true,
+                        regex: '^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$',
+
+            },
+
+            
+              
+           title:{
                         required : true,
 
             },
 
             
               
-           surname:{
-                        required : true,
-
-            },
-
-            
-            
-
-            
-              
-           email:{
-                        required : true,
-                        email : true,
-
-            },
-
-            
-           
-
-            
-              
-           centreName:{
+           subtitle:{
                         required : true,
 
             },
 
             
               
-           registered_date:{
-                        required : true,
-                        date : true,
-
-            },
-
-            
-              
-            
-              
-    
-
-            
-              
-           access_level:{
+           description:{
                         required : true,
 
             },
 
-            
-              
-           contactPhone:{
-                        required : true,
-                        regex : '[0-9\-\(\)\s]+',
+},
+messages : {
 
-            },
+    timeTo: {
 
-            
-              
+        regex: 'Enter a valid time [hh:mm]',
 
-            
-              
-           centreCity:{
-                        required : true,
+    },
 
-            },
+    timeFrom: {
 
-            
-              
-           centreCountry:{
-                        required : true,
+regex: 'Enter a valid time [hh:mm]',
 
-            },
-
-            
-              
-           trainee:{
-                        required : true,
-
-            },
-
-            
-              
-           yearsIndependent:{
-                        required : true,
-
-            },
-
-            
-              
-           
-
-            
-              
-           emailPreferences:{
-                        required : true,
-
-            },
+},
 
 },
 submitHandler: function(form) {
@@ -1029,6 +1239,71 @@ submitHandler: function(form) {
     //submitPreRegisterForm();
 
     submit<?php echo $databaseName;?>Form();
+
+    //TODO submit changes
+    //TODO reimport the array at the top
+    //TODO redraw the table
+
+
+
+}
+
+
+
+
+});
+
+$("#moderator-form").validate({
+
+invalidHandler: function(event, validator) {
+    var errors = validator.numberOfInvalids();
+    console.log("there were " + errors + " errors");
+    if (errors) {
+        var message = errors == 1 ?
+            "1 field contains errors. It has been highlighted" :
+            +errors + " fields contain errors. They have been highlighted";
+
+
+        $('#error').text(message);
+        //$('div.error span').addClass('form-text text-danger');
+        //$('#errorWrapper').show();
+
+        $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function() {
+            $("#errorWrapper").slideUp(500);
+        });
+    } else {
+        $('#errorWrapper').hide();
+    }
+},
+ignore: [],
+rules: {
+
+    //EDIT
+
+    
+              
+
+        moderatorid: {
+
+            required: true,
+        },        
+
+              
+           
+
+},
+messages : {
+
+    
+
+},
+
+
+submitHandler: function(form) {
+
+    //submitPreRegisterForm();
+
+    submitModeratorForm();
 
     //TODO submit changes
     //TODO reimport the array at the top

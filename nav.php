@@ -50,10 +50,15 @@
             </li> -->
 
                 <!-- Registration-basic -->
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/registration.php">Registration</a>
+                </li>
+
                 <?php
 
             //check page we are on
-
+/* 
             $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
             //if contains index.html
@@ -71,7 +76,7 @@
               </li>';
               
 
-            }
+            } */
 
             
 
