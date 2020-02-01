@@ -283,7 +283,7 @@ class sessionView
                 $q = "Select 
             
                 a.`id` as `programmeid`, a.`date`,
-                c.`id` as `sessionid`, 
+                c.`id` as `sessionid` 
                 from `programme` as a
                 INNER JOIN `programmeOrder` as b on a.`id` = b.`programmeid` 
                 INNER JOIN `session` as c on b.`sessionid` = c.`id`

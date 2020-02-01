@@ -223,6 +223,42 @@ class queries
 
   }
 
+  public function select2_programme_match($search)
+      {
+      
+      $q = "Select 
+            
+      `id`, `date`, `title` FROM `Programme`
+      WHERE `id` = '$search'";
+
+      $result = $this->connection->RunQuery($q);
+      $rowReturn = array();
+      $x = 0;
+      $nRows = $result->rowCount();
+      if ($nRows > 0) {
+
+          while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+            $programmeDate = new DateTime($row['date']);
+            $programmeDateText = $programmeDate->format('D d M Y');
+                //note here returning an option only
+              $rowReturn = array('id' => $row['id'], 'text' => $programmeDateText . ' ' . $row['title']);
+              //print_r($row);
+          }
+      
+          return json_encode($rowReturn);
+
+      } else {
+          
+
+          //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+          $rowReturn['result'] = [];
+          
+          return json_encode($rowReturn);
+      }
+
+  }
+
 
 
 

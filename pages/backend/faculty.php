@@ -10,7 +10,7 @@
 
 //database name
 
-$databaseName = 'session';
+$databaseName = 'faculty';
 
 //identifier
 
@@ -84,9 +84,6 @@ $formv1 = new formGenerator;
         }
     }
     </style>
-    <script>
-        $.fn.modal.Constructor.prototype.enforceFocus = function() {};
-    </script>
 </head>
 
 <body>
@@ -178,17 +175,11 @@ $general = new general;
 
 error_reporting(E_ALL);
 
-//$session = new session;
-
 ${$databaseName} = new $databaseName;
 
 //eval("\$" . $databaseName . " = new " . $databaseName . ";");
 
 //$programme = new programme;
-
-//print_r($_GET);
-
-//TODO update all top of files like this
 
 if (isset($_GET['identifier']) && is_numeric($_GET['identifier'])) {
     $identifierValue = $_GET['identifier'];
@@ -240,8 +231,8 @@ if ($identifierValue) {
 
                     <div class="row justify-content-between align-items-center">
                         <div class="col">
-                            <h5 class="mb-1"><?php echo 'Edit session'?></h5>
-                            <p class="text-sm text-muted mb-0 d-none d-md-block"></p>
+                            <h5 class="mb-1"><?php echo $databaseName;?></h5>
+                            <p class="text-sm text-muted mb-0 d-none d-md-block">Manage <?php echo $databaseName;?>.</p>
                         </div>
                         <div class="col text-right">
                             <div class="actions"><!-- <a href="#" class="action-item mr-2 active" data-action="search-open"
@@ -285,18 +276,22 @@ if ($identifierValue) {
                     </div>
                 </div>
                 <!-- Orders table -->
-                
-                                    <form>
-                                     <div id="sessionView">
+                <div class="table-responsive">
+                    <table id="dataTable" class="table text-center table-cards align-items-center">
+                    <thead>
+                    <tr>
+                    <!-- EDIT -->
+                    <th>id</th>
+                    <th>title</th>
+                    <th>firstname</th>
+                    <th>surname</th>		
+                        <th></th>
 
+                    </tr>
+                    </thead>
 
-
-
-
-
-                                     </div>
-                                    </form>
-                                
+                        </table>
+                </div>
                 <!-- Load more -->
                 <!-- <div class="mt-4 text-center">
                     <a href="#" class="btn btn-sm btn-neutral rounded-pill shadow hover-translate-y-n3">Load more
@@ -309,85 +304,8 @@ if ($identifierValue) {
     </div>
 
    <!-- Modal -->
-   <!--diverged to external file sessionForm.html-->
-   <?php require(BASE_URI . '/pages/backend/forms/sessionForm.html');?>
-   
+   <?php require(BASE_URI . '/pages/backend/forms/facultyForm.php');?>
 
-        <!-- Modal 2, moderator -->
-   <div class="modal fade" id="modal-moderator" tabindex="-1" role="dialog" aria-labelledby="modal-change-username"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-
-                    <div class="modal-content mc2 bg-dark border" style="border-color:rgb(238, 194, 120) !important;">
-                        <div class="modal-header">
-                            <div class="modal-title d-flex align-items-left" id="modal-title-change-username">
-                                <div>
-                                    <div class="icon bg-dark icon-sm icon-shape icon-info rounded-circle shadow mr-3">
-                                        <img src="../../assets/img/icons/gieqsicon.png">
-                                    </div>
-                                </div>
-                                <div class="text-left">
-                                    <h5 class="mb-0">Add a Moderator</h5>
-                                    <span class="mb-0"></span>
-                                </div>
-
-                            </div>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span class="text-white" aria-hidden="true">&times;</span>
-                            </button>
-
-                        </div>
-                        <div class="modal-subheader px-3 mt-2 mb-2 border-bottom">
-                            <div class="row">
-                                <div class="col-sm-12 text-left">
-                                    <div>
-                                        <h6 class="mb-0"></h6>
-                                        <span id = "modalMessageArea" class="mb-0"></span>
-
-                                    </div>
-                                    <div id="topModalAlert" class="alert alert-warning alert-flush collapse" role="alert">
-    <span id="topModalSuccess"></span>
-</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="modal-body">
-
-                            <div class="moderator-body">
-                                <form id="moderator-form">
-                                    <div class="form-group">
-                                    <!-- EDIT -->
-
-                                    <label for="moderatorid">Select moderator</label>
-                                        <div class="input-group mb-3">
-                                            <select id="moderatorid" data-toggle="select" class="form-control" name="moderatorid">
-                                            <option value="" selected disabled hidden>please select an option</option>
-        
-                                            </select>
-                                        </div>
-                                    
-                                    
-
-                                        
-
-
-
-                                    </div>
-                                </form>
-
-                                <div class="px-5 pt-2 mt-2 mb-2 pb-2 text-center">
-                                    <p class="text-muted text-sm">Data entered here will change the live site</p>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="submit-moderator-form btn btn-sm btn-success">Save</button>
-                                <button type="button" class="btn btn-sm btn-danger"
-                                    data-dismiss="modal">Cancel</button>
-                            </div>
-                        </div>
-                    </div>
-            </div>
 
         </div>
 
@@ -427,84 +345,40 @@ function tableRefresh (){
 
 }
 
-function fillFormSession (idPassed){
+function fillForm (idPassed){
 
-        disableFormInputs("session-form");
+        disableFormInputs("<?php echo $databaseName;?>-form");
 
-        var formString = $('#session-form').serializeFormJSON();
+        esdLesionRequired = new Object;
 
-        formString["sessionid"] = idPassed;
+        esdLesionRequired = getNamesFormElements("<?php echo $databaseName;?>-form");
 
-        const jsonString = JSON.stringify(formString);
-        console.log(jsonString);
+        esdLesionString = '`id`=\''+idPassed+'\'';
 
-        var request = $.ajax({
-        url: siteRoot + "assets/scripts/getSession.php",
-        type: "POST",
-        contentType: "application/json",
-        data: jsonString,
-        });
+        var selectorObject = getDataQuery ("<?php echo $databaseName;?>", esdLesionString, getNamesFormElements("<?php echo $databaseName;?>-form"), 1);
 
+        //console.log(selectorObject);
 
+        selectorObject.done(function (data){
 
-        request.done(function(data) {
-        // alert( "success" );
+            console.log(data);
 
-            if (data){
-                var formData = $.parseJSON(data);
+            var formData = $.parseJSON(data);
 
 
-            //do something with the select2
-
-            
-
-                
-            var requiredProgramme = (formData[0]['programmeid']);
-            
-                $.ajax ({
-                //url: siteRoot + 'assets/scripts/select2simple.php?table=Delegate&field=firstname',
-                
-                url: siteRoot + 'assets/scripts/classes/querySelectProgrammeSingleOption.php?search='+requiredProgramme,
-                
-                }).then(function (data) {
-                // create the option and append to Select2
-                var retrievedProgramme = $.parseJSON(data);
-                //console.log(retrievedProgramme);
-                var option = new Option(retrievedProgramme.text, retrievedProgramme.id, true, true);
-                $('#programmeid').append(option).trigger('change');
-
-                // manually trigger the `select2:select` event
-                $('#programmeid').trigger({
-                    type: 'select2:select',
-                    params: {
-                        data: data
-                    }
-                });
-            });
-
-               
-
-
-
-                
             $(formData).each(function(i,val){
                 $.each(val,function(k,v){
-                    $("#"+k).val(v).trigger('change');
+                    $("#"+k).val(v);
                     //console.log(k+' : '+ v);
                 });
 
             });
 
-            enableFormInputs("session-form");
+            //$("#messageBox").text("Editing ESD lesion ID "+idPassed);
 
+            enableFormInputs("<?php echo $databaseName;?>-form");
 
-            } else{
-
-                alert('please try again');
-
-            }
-        })
-
+        });
 
 
 
@@ -514,8 +388,6 @@ function fillFormSession (idPassed){
     function submit<?php echo $databaseName;?>Form (){
 
         //pushDataFromFormAJAX (form, table, identifierKey, identifier, updateType)
-
-        var idPassed = $('.editSession').attr('data');
 
         console.log('got to the submit function');
 
@@ -532,7 +404,7 @@ function fillFormSession (idPassed){
                     //alert ("New esdLesion no "+data+" created");
                     $('#topTableSuccess').text("New <?php echo $databaseName;?> no "+data+" created");
 
-                    $('#modal-row-1').animate({ scrollTop: 0 }, 'slow');
+                    $('#modal-faculty').animate({ scrollTop: 0 }, 'slow');
                     
 
                      $("#topTableAlert").fadeTo(4000, 500).slideUp(500, function() {
@@ -545,7 +417,7 @@ function fillFormSession (idPassed){
                     datatable.ajax.reload();
 
                     //close modal
-                    $('#modal-row-1').modal('hide');
+                    $('#modal-faculty').modal('hide');
 
 
 
@@ -562,124 +434,57 @@ function fillFormSession (idPassed){
 
         } else if (edit == 1){
 
-            //
 
-            var formString = $('#session-form').serializeFormJSON();
+            if (lesionUnderEdit){
 
-            disableFormInputs("session-form");
-            //get session id
+                var esdLesionObject = pushFormDataJSON($("#<?php echo $databaseName;?>-form"), "<?php echo $databaseName;?>", "id", lesionUnderEdit, "1"); //insert new object
 
-            console.log(formString);
+                    esdLesionObject.done(function (data){
 
-            formString["sessionid"] = idPassed;
-            formString["update"] = 1;
-            //formString["programmeid"] = ; get from the form
+                        console.log(data);
 
-            const jsonString = JSON.stringify(formString);
-            console.log(jsonString);
+                        if (data){
 
-            var request = $.ajax({
-            url: siteRoot + "assets/scripts/createUpdateSession.php",
-            type: "POST",
-            contentType: "application/json",
-            data: jsonString,
-            });
+                            if (data == 1){
 
+                                $('#topModalSuccess').text("Data for <?php echo $databaseName;?> " + lesionUnderEdit + " saved");
 
-
-        request.done(function(data) {
-        // alert( "success" );
-
-            if (data){
-
-                //decode data
-                var returnedData = $.parseJSON(data);
-
-                console.dir(returnedData);
-
-                var wasProgrammeUpdated = returnedData.updatedProgramme;
-                console.log(wasProgrammeUpdated);
-                var wasSessionUpdated = returnedData.updatedSession;
-                //check it for 1's
-
-                if (wasProgrammeUpdated == 1 || wasSessionUpdated == 1){
-
-                    console.log('we know data was updated / saved');
-                }
-                
-            //console.log(data);
-            enableFormInputs("session-form");
-            $('#topModalSuccess').text("Data for <?php echo $databaseName;?> " + idPassed + " saved");
-
-                                $('#modal-session').animate({ scrollTop: 0 }, 'slow');
+                                $('#modal-faculty').animate({ scrollTop: 0 }, 'slow');
 
                                 $("#topModalAlert").fadeTo(4000, 500).slideUp(500, function() {
                                     $("#topTableAlert").slideUp(500);
                                 });
 
                                 
-                refreshSessionView();
+
+                                //refresh table
+                                 datatable.ajax.reload();
+                                //edit = 1;
+
+
+                                //edit = 1;
+
+                            } else if (data == 0) {
+
+                            alert("No change in data detected");
+
+                            } else if (data == 2) {
+
+                            alert("Error, try again");
+
+                            }
 
 
 
-            } else{
+                        }
 
-                alert('please try again');
 
-            }
-        })
+                    });
 
-            
+                }
 
 
         }
-
-
-    }
-
-    function submitModeratorForm(){
-
-        //get id of moderator from form
-
-        var id = $('#modal-moderator').find('#moderatorid').val()
-
-        //refresh the ajax
-
-        const dataToSend = {
-
-        moderatorid : $('#modal-moderator').find('#moderatorid').val(),
-        sessionid : <?php echo $sessionIdentifier;?>,
-
-        }
-
-        const jsonString = JSON.stringify(dataToSend);
-        console.log(jsonString);
-
-
-
-        var request = $.ajax({
-        url: siteRoot + "assets/scripts/addModerator.php",
-        type: "POST",
-        contentType: "application/json",
-        data: jsonString,
-        });
-
-
-
-        request.done(function(data) {
-        // alert( "success" );
-
-            if (data){
-                $('#modal-moderator').modal('hide');
-                refreshSessionView();
-            } else{
-
-                alert('please try again');
-
-            }
-        })
-
-        
 
 
     }
@@ -747,158 +552,26 @@ function fillFormSession (idPassed){
 
     }
 
-    function refreshSessionView(){
-
-        
-
-const dataToSend = {
-
-    sessionid : <?php echo $sessionIdentifier;?>,
-
-}
-
-const jsonString = JSON.stringify(dataToSend);
-console.log(jsonString);
-                    
-                    var request2 = $.ajax({
-                    url: siteRoot + "assets/scripts/classes/generateSessionView.php",
-                    type: "POST",
-                    contentType: "application/json",
-                    data: jsonString,
-                    });
-
-
-
-                    request2.done(function(data) {
-                    // alert( "success" );
-                    $('#sessionView').html(data);
-                    })
-    }
-
-
-
-    $(document).ready(function(){
+$(document).ready(function(){
 
     //add those which require date pickr
     
-    $.fn.serializeFormJSON = function () {
-
-var o = {};
-var a = this.serializeArray();
-$.each(a, function () {
-    if (o[this.name]) {
-        if (!o[this.name].push) {
-            o[this.name] = [o[this.name]];
-        }
-        o[this.name].push(this.value || '');
-    } else {
-        o[this.name] = this.value || '';
-    }
-});
-return o;
-};
-    
     var options = {
-        
-    enableTime: true,
-    noCalendar: true,
-    dateFormat: "H:i",
+			enableTime: false,
 			allowInput: true
 		};
     
-    $('[data-toggle="time"]').flatpickr(options);
+    $('[data-toggle="date"]').flatpickr(options);
 
     // add those which require select2 box
 
     $('[data-toggle="select"]').select2({
 
-        //dropdownParent: $(".modal-content"),
+        dropdownParent: $(".modal-content"),
         //theme: "bootstrap",
 
     });
 
-    $('#programmeid').select2({
-
-        dropdownParent: $("#modal-session"),
-
-        ajax: {
-        //url: siteRoot + 'assets/scripts/select2simple.php?table=Delegate&field=firstname',
-        url: siteRoot + 'assets/scripts/classes/queryProgrammeSelect.php',
-        data: function (params) {
-            var query = {
-                search: params.term,
-                query: '`id`, `date`, `title` FROM `Programme`',
-                fieldRequired: 'date',
-            }
-
-            // Query parameters will be 
-            console.log(query);
-            return query;
-        },
-        dataType: 'json'
-    // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
-        }
-       
-        
-
-    });
-
-    $('#moderatorid').select2({
-
-        dropdownParent: $("#modal-moderator"),
-
-        ajax: {
-        //url: siteRoot + 'assets/scripts/select2simple.php?table=Delegate&field=firstname',
-        url: siteRoot + 'assets/scripts/classes/queryModeratorSelect.php',
-        data: function (params) {
-            var query = {
-                search: params.term,
-            }
-
-            // Query parameters will be 
-            console.log(query);
-            return query;
-        },
-        dataType: 'json'
-        // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
-        }
-
-
-
-        });
-
-    <?php
-
-    if ($sessionIdentifier){?>
-
-    const dataToSend = {
-
-        sessionid : <?php echo $sessionIdentifier;?>,
-
-    }
-
-    const jsonString = JSON.stringify(dataToSend);
-    console.log(jsonString);
-
-
-
-    var request = $.ajax({
-		url: siteRoot + "assets/scripts/classes/generateSessionView.php",
-		type: "POST",
-		contentType: "application/json",
-		data: jsonString,
-	    });
-
-    
-
-    request.done(function(data) {
-       // alert( "success" );
-        $('#sessionView').html(data);
-    })
-<?php }else{
-    
-    //TODO echo blank form
-}?>
     
 
 
@@ -909,7 +582,7 @@ return o;
                 emptyTable: "There are currently no active <?php echo $databaseName;?>s.",
                 zeroRecords: "There are currently no active <?php echo $databaseName;?>s.",
         },
-        autowidth : true,
+        autowidth : false,
 
 
        ajax: siteRoot + 'assets/scripts/tableInteractors/refresh<?php echo $databaseName;?>Table.php',
@@ -919,10 +592,9 @@ return o;
         //EDIT
        columns: [
         {data: 'id' },
+       {data: 'title' },
        {data: 'firstname' },
        {data: 'surname' },
-       {data: 'user_id' },
-       {data: 'email' },
            {
            data: null,
            render: function ( data, type, row ) {
@@ -960,118 +632,11 @@ return o;
 
     } ); */
 
-    $(document).on('click', '.editSession', function() {
-
-        //define session id
-
-        var sessionid = $(this).attr('data');
-
-        console.log(sessionid);
-
-        $('#modal-session').modal('show');
-
-        fillFormSession(sessionid);
-
-        edit = 1;
-
-    })
-
-    $(document).on('click', '.addModerators', function() {
-
-
-    $('#modal-moderator').modal('show');
-
-    })
-    
-    $(document).on('click', '.removeModerators', function() {
-
-        var moderatorid = $(this).prev().attr('data');
-        console.log(moderatorid);
-        const dataToSend = {
-
-        moderatorid : $(this).prev().attr('data'),
-        sessionid : <?php echo $sessionIdentifier;?>,
-
-        }
-
-        const jsonString = JSON.stringify(dataToSend);
-        console.log(jsonString);
-
-
-
-        var request = $.ajax({
-        url: siteRoot + "assets/scripts/deleteModerator.php",
-        type: "POST",
-        contentType: "application/json",
-        data: jsonString,
-        });
-
-
-
-        request.done(function(data) {
-        // alert( "success" );
-
-            if (data == 1){
-                refreshSessionView();
-            } else if (data == 4){
-
-                alert('This record does not exist.  Try again');
-
-            }
-        })
-        //TODO get moderator id
-        //modify delete function for this moderator joined to the session
-
-    })
-
-    $(document).on('click', '.submit-moderator-form', function() {
-
-    event.preventDefault();
-    console.log('clicked moderator submit');
-    console.log($('#moderator-form').closest());
-    $('#moderator-form').submit();
-
-    })
-    
-    $(document).on('click', '.addSessionItem', function() {
-
-
-        //TODO add a sessionItem form
-        //create, read and update this from here via a template form
-        //use the tempate form for the table later
-        //refresh the table
-
-    })
-
-    $(document).on('click', '.editSessionItem', function() {
-
-
-    //TODO add a sessionItem form
-    //GET the ID of the sessionItem required to edit
-    //update this from here via a template form
-    //use the tempate form for the table later
-
-    })
-    
-    $(document).on('click', '.deleteSessionItem', function() {
-
-
-    //TODO add a sessionItem form
-    //GET the ID of the sessionItem required to edit
-    //update this from here via a template form
-    //use the tempate form for the table later
-
-    })
-
-
-
-
-    
     $(document).on('click', '#add<?php echo $databaseName;?>', function() {
 
 
         $('#modalMessageArea').text('New <?php echo $databaseName;?>');
-        $('#modal-row-1').modal('show');
+        $('#modal-faculty').modal('show');
         $(document).find('#<?php echo $databaseName;?>-form').find(':input').val('');
         $(document).find('#<?php echo $databaseName;?>-form').find(':checkbox, :radio').prop('checked', false);
         edit = 0;
@@ -1084,7 +649,7 @@ return o;
     //console.log(targettd);
     lesionUnderEdit = targettd;
     $('#modalMessageArea').text('Editing <?php echo $databaseName;?> ' + lesionUnderEdit);
-    $('#modal-row-1').modal('show');
+    $('#modal-faculty').modal('show');
     fillForm(targettd);
     edit = 1;
 
@@ -1094,7 +659,7 @@ return o;
 
     var targettd = $(this).parent().parent().parent().parent().parent().parent().find('td').first().text();
     console.log(targettd);
-    //$('#modal-row-1').modal('show');
+    //$('#modal-faculty').modal('show');
     deleteRow(targettd);
 
     })
@@ -1136,64 +701,27 @@ rules: {
     //EDIT
 
     
-              
-
-        programmeid: {
-
-            required: true,
-        },        
-
-              
-           timeFrom:{
-                        required : true,
-                        regex: '^([0-1]?[0-9]|2[0-3]):[0-5][0-9]:?[0-5]?[0-9]?$',
-
-
-            },
 
             
               
-           timeTo:{
-                        required : true,
-                        regex: '^([0-1]?[0-9]|2[0-3]):[0-5][0-9]:?[0-5]?[0-9]?$',
-
-            },
-
-            
-              
-           title:{
+    title:{
                         required : true,
 
             },
 
             
               
-           subtitle:{
+           firstname:{
                         required : true,
 
             },
 
             
               
-           description:{
+           surname:{
                         required : true,
 
             },
-
-},
-messages : {
-
-    timeTo: {
-
-        regex: 'Enter a valid time [hh:mm]',
-
-    },
-
-    timeFrom: {
-
-regex: 'Enter a valid time [hh:mm]',
-
-},
 
 },
 submitHandler: function(form) {
@@ -1201,71 +729,6 @@ submitHandler: function(form) {
     //submitPreRegisterForm();
 
     submit<?php echo $databaseName;?>Form();
-
-    //TODO submit changes
-    //TODO reimport the array at the top
-    //TODO redraw the table
-
-
-
-}
-
-
-
-
-});
-
-$("#moderator-form").validate({
-
-invalidHandler: function(event, validator) {
-    var errors = validator.numberOfInvalids();
-    console.log("there were " + errors + " errors");
-    if (errors) {
-        var message = errors == 1 ?
-            "1 field contains errors. It has been highlighted" :
-            +errors + " fields contain errors. They have been highlighted";
-
-
-        $('#error').text(message);
-        //$('div.error span').addClass('form-text text-danger');
-        //$('#errorWrapper').show();
-
-        $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function() {
-            $("#errorWrapper").slideUp(500);
-        });
-    } else {
-        $('#errorWrapper').hide();
-    }
-},
-ignore: [],
-rules: {
-
-    //EDIT
-
-    
-              
-
-        moderatorid: {
-
-            required: true,
-        },        
-
-              
-           
-
-},
-messages : {
-
-    
-
-},
-
-
-submitHandler: function(form) {
-
-    //submitPreRegisterForm();
-
-    submitModeratorForm();
 
     //TODO submit changes
     //TODO reimport the array at the top

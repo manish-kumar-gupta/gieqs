@@ -26,13 +26,29 @@ $openaccess =1;
              $sessionid = $data['sessionid'];
              
 
-             echo $sessionarray = $session->Load_records_limit_json(500);
+            //$sessionarray = $session->Load_records_limit_json(500);
+            $sessionarray = $session->Return_row($sessionid);
+
+             //decode the json
+
+            
+            $decode = json_decode($sessionarray, true);
 
              //push programmeid into the sessionarray
 
-             //$programmeid = $sessionView->getSessionProgramme($sessionid);
+            //print_r($sessionarray);
+
+            $programmeid = $sessionView->getSessionProgramme($sessionid);
+
+             $decode[0]['programmeid'] = $programmeid;
+             //print_r($decode);
+
+             //recode the json
 
              //return sessionarray
+
+             echo json_encode($decode);
+
 
              
 

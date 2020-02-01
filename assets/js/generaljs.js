@@ -32,6 +32,10 @@ var siteRoot = rootFolder;
 	
 } */
 
+function openInNewTab(url) {
+	var win = window.open(url, '_blank');
+	win.focus();
+  }
 
 //function for getting bulk data with an optional query string used as the where clause and output as json or a html table
 function getDataQuery (table, query, fieldsToGetObject, outputFormat){

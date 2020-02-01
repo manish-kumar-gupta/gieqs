@@ -25,6 +25,11 @@ $openaccess =1;
  
              $sessionid = $data['sessionid'];
              $programmeid = $data['programmeid'];
+             $update = $data['update'];
+
+             unset($data['update']);
+                unset($data['programmeid']);
+                unset($data['sessionid']);
 
              
 
@@ -37,8 +42,7 @@ $openaccess =1;
 
                 //new form
 
-                unset($data['update']);
-                unset($data['programmeid']);
+                
 
                 $data = array_filter($data, 'rempty');
 
@@ -66,13 +70,22 @@ $openaccess =1;
 
                 }
 
-                echo $esdLesion->prepareStatementPDO();
+                $updatedSession = $esdLesion->prepareStatementPDO();
 
-                //also insert the programme id
+                //also insert the programme id, other data on the form not session
 
                 $programmeOrder->setsessionid($sessionid);
                 $programmeOrder->setprogrammeid($programmeid);
-                echo $programmeOrder->prepareStatementPDO();
+                $updatedProgramme = $programmeOrder->prepareStatementPDO();
+
+                $returnArray = array();
+
+                $returnArray['updatedProgramme'] = $updatedProgramme;
+                $returnArray['updatedSession'] = $updatedSession;
+
+                echo json_encode($returnArray);
+
+
 
 
 
@@ -81,8 +94,67 @@ $openaccess =1;
             }else{
 
                 //update
-                unset($data['update']);
-                unset($data['sessionid']);
+
+                //check the record exists
+
+                $targetStatement = '$esdLesion->Load_from_key("' . $sessionid . '");';
+                    //echo $targetStatement;
+                    
+                    try {
+                    
+                        eval($targetStatement);
+                    
+                    }
+                    catch(Exception $e){
+
+                        $log[] = $e . 'could not load the required key';
+
+                    }
+                
+
+                $data = array_filter($data, 'rempty');
+
+                $values = implode('\', \'', $data);
+                $keys = array_keys($data);
+
+                $log = array();
+
+                foreach ($data as $key=>$value){
+
+                    $targetStatement = '$esdLesion->set' . $key . '("' . $value . '");';
+                    //echo $targetStatement;
+                    
+                    try {
+                    
+                        eval($targetStatement);
+                    
+                    }
+                    catch(Exception $e){
+
+                        $log[] = $e . 'could not be evaluated';
+
+                    }
+                    
+
+                }
+
+                //print_r($log);
+
+                $updatedSession = $esdLesion->prepareStatementPDOUpdate();
+
+                //also insert the programme id, other data on the form not session
+
+                $programmeOrder->setsessionid($sessionid);
+                $programmeOrder->setprogrammeid($programmeid);
+                $updatedProgramme = $programmeOrder->prepareStatementPDOUpdate();
+
+                $returnArray = array();
+
+                $returnArray['updatedProgramme'] = $updatedProgramme;
+                
+                $returnArray['updatedSession'] = $updatedSession;
+
+                echo json_encode($returnArray);
 
 
                 
@@ -98,31 +170,7 @@ $openaccess =1;
 
             
 
-            //check this combination does not already exist
-
-            if (($sessionView->checkCombination($sessionid, $moderatorid)) === true){
-
-                //if above true
-                //get the id of sessionModerator
-
-                $sessionModid = $sessionView->checkSessionModeratorid($sessionid, $moderatorid);
-
-                if ($sessionModid){
-
-                    $sessionModerator->Load_from_key($sessionModid);
-                    echo $sessionModerator->Delete_row_from_key($sessionModid);
-
-                }else{
-
-                    echo '0';
-                }
-
-           
-
-            }else{
-
-                echo '4';
-            }
+            
 
             
              

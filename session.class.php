@@ -54,6 +54,36 @@ Class session {
 			$this->description = $row["description"];
 		}
 	}
+
+	/**
+     * Load one row into var_class. To use the vars use for exemple echo $class->getVar_name;
+     *
+     * @param key_table_type $key_row
+     *
+     */
+	public function Return_row($key_row){
+		$q = "Select * from session where id = \"$key_row\" ";
+		echo $q;
+		$result = $this->connection->RunQuery($q);
+							$rowReturn = array();
+						$x = 0;
+						$nRows = $result->rowCount();
+						if ($nRows > 0){
+
+					while($row = $result->fetch(PDO::FETCH_ASSOC)){
+			$rowReturn[$x]["id"] = $row["id"];
+			$rowReturn[$x]["timeFrom"] = $row["timeFrom"];
+			$rowReturn[$x]["timeTo"] = $row["timeTo"];
+			$rowReturn[$x]["title"] = $row["title"];
+			$rowReturn[$x]["subtitle"] = $row["subtitle"];
+			$rowReturn[$x]["description"] = $row["description"];
+		$x++;		}return json_encode($rowReturn);}
+
+			else{return FALSE;
+			}
+			
+	}
+	
     /**
  * Load specified number of rows and output to JSON. To use the vars use for exemple echo $class->getVar_name;
  *
@@ -81,6 +111,28 @@ $q = "Select * from `session` LIMIT " . $x . ", " . $y;
 			}
 			
 	}
+
+	public function Load_records_limit($y, $x=0){
+		$q = "Select * from `session` LIMIT " . $x . ", " . $y;
+				$result = $this->connection->RunQuery($q);
+									$rowReturn = array();
+								$x = 0;
+								$nRows = $result->rowCount();
+								if ($nRows > 0){
+		
+							while($row = $result->fetch(PDO::FETCH_ASSOC)){
+					$rowReturn[$x]["id"] = $row["id"];
+					$rowReturn[$x]["timeFrom"] = $row["timeFrom"];
+					$rowReturn[$x]["timeTo"] = $row["timeTo"];
+					$rowReturn[$x]["title"] = $row["title"];
+					$rowReturn[$x]["subtitle"] = $row["subtitle"];
+					$rowReturn[$x]["description"] = $row["description"];
+				$x++;		}return json_encode($rowReturn);}
+		
+					else{return FALSE;
+					}
+					
+			}
     
 
         public function Load_records_limit_json_datatables($y, $x = 0)
