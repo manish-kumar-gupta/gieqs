@@ -310,7 +310,10 @@ if ($identifierValue) {
 
    <!-- Modal -->
    <!--diverged to external file sessionForm.html-->
-   <?php require(BASE_URI . '/pages/backend/forms/sessionForm.html');?>
+   <?php require(BASE_URI . '/pages/backend/forms/sessionForm.php');?>
+
+   <!-- modal 1,5 sessionItem -->
+   <?php require(BASE_URI . '/pages/backend/forms/sessionItemForm.php');?>
    
 
         <!-- Modal 2, moderator -->
@@ -411,14 +414,13 @@ if ($identifierValue) {
 <script src="<?php echo BASE_URL; ?>/assets/libs/flatpickr/dist/flatpickr.min.js"></script>
 
 <script>
-
 //var data = $('#data').text();
 //var dataSet = $.parseJSON($('#data').text());
 var datatable;
 var edit = 0;
 var lesionUnderEdit = null;
 
-function tableRefresh (){
+function tableRefresh() {
 
     //update the div at the top with AJAX
 
@@ -427,46 +429,46 @@ function tableRefresh (){
 
 }
 
-function fillFormSession (idPassed){
+function fillFormSession(idPassed) {
 
-        disableFormInputs("session-form");
+    disableFormInputs("session-form");
 
-        var formString = $('#session-form').serializeFormJSON();
+    var formString = $('#session-form').serializeFormJSON();
 
-        formString["sessionid"] = idPassed;
+    formString["sessionid"] = idPassed;
 
-        const jsonString = JSON.stringify(formString);
-        console.log(jsonString);
+    const jsonString = JSON.stringify(formString);
+    console.log(jsonString);
 
-        var request = $.ajax({
+    var request = $.ajax({
         url: siteRoot + "assets/scripts/getSession.php",
         type: "POST",
         contentType: "application/json",
         data: jsonString,
-        });
+    });
 
 
 
-        request.done(function(data) {
+    request.done(function (data) {
         // alert( "success" );
 
-            if (data){
-                var formData = $.parseJSON(data);
+        if (data) {
+            var formData = $.parseJSON(data);
 
 
             //do something with the select2
 
-            
 
-                
+
+
             var requiredProgramme = (formData[0]['programmeid']);
-            
-                $.ajax ({
+
+            $.ajax({
                 //url: siteRoot + 'assets/scripts/select2simple.php?table=Delegate&field=firstname',
-                
-                url: siteRoot + 'assets/scripts/classes/querySelectProgrammeSingleOption.php?search='+requiredProgramme,
-                
-                }).then(function (data) {
+
+                url: siteRoot + 'assets/scripts/classes/querySelectProgrammeSingleOption.php?search=' + requiredProgramme,
+
+            }).then(function (data) {
                 // create the option and append to Select2
                 var retrievedProgramme = $.parseJSON(data);
                 //console.log(retrievedProgramme);
@@ -482,14 +484,14 @@ function fillFormSession (idPassed){
                 });
             });
 
-               
 
 
 
-                
-            $(formData).each(function(i,val){
-                $.each(val,function(k,v){
-                    $("#"+k).val(v).trigger('change');
+
+
+            $(formData).each(function (i, val) {
+                $.each(val, function (k, v) {
+                    $("#" + k).val(v).trigger('change');
                     //console.log(k+' : '+ v);
                 });
 
@@ -498,99 +500,185 @@ function fillFormSession (idPassed){
             enableFormInputs("session-form");
 
 
-            } else{
+        } else {
 
-                alert('please try again');
+            alert('please try again');
 
-            }
-        })
-
-
-
-
-
-    }
-
-    function submit<?php echo $databaseName;?>Form (){
-
-        //pushDataFromFormAJAX (form, table, identifierKey, identifier, updateType)
-
-        var idPassed = $('.editSession').attr('data');
-
-        console.log('got to the submit function');
-
-        if (edit == 0){
-
-            var esdLesionObject = pushFormDataJSON($("#<?php echo $databaseName;?>-form"), "<?php echo $databaseName;?>", "id", null, "0"); //insert new object
-
-            esdLesionObject.done(function (data){
-
-                console.log(data);
-
-                if (data){
-
-                    //alert ("New esdLesion no "+data+" created");
-                    $('#topTableSuccess').text("New <?php echo $databaseName;?> no "+data+" created");
-
-                    $('#modal-row-1').animate({ scrollTop: 0 }, 'slow');
-                    
-
-                     $("#topTableAlert").fadeTo(4000, 500).slideUp(500, function() {
-                        $("#topTableAlert").slideUp(500);
-                    });
-
-                    //edit = 1;
-
-                    //refresh table
-                    datatable.ajax.reload();
-
-                    //close modal
-                    $('#modal-row-1').modal('hide');
+        }
+    })
 
 
 
 
 
-                }else {
+}
 
-                    alert("No data inserted, try again");
+function fillFormSessionItem(idPassed) {
 
+disableFormInputs("sessionItem-form");
+
+var formString = $('#sessionItem-form').serializeFormJSON();
+
+formString["sessionItemid"] = idPassed;
+
+const jsonString = JSON.stringify(formString);
+console.log(jsonString);
+
+var request = $.ajax({
+    url: siteRoot + "assets/scripts/getSessionItem.php", //TODO make this file
+    type: "POST",
+    contentType: "application/json",
+    data: jsonString,
+});
+
+
+
+request.done(function (data) {
+    // alert( "success" );
+
+    if (data) {
+        var formData = $.parseJSON(data);
+
+
+        //do something with the select2
+
+
+
+        //TODO required for faculty
+        var requiredProgramme = (formData[0]['programmeid']);
+
+        $.ajax({
+            //url: siteRoot + 'assets/scripts/select2simple.php?table=Delegate&field=firstname',
+
+            url: siteRoot + 'assets/scripts/classes/querySelectProgrammeSingleOption.php?search=' + requiredProgramme,
+
+        }).then(function (data) {
+            // create the option and append to Select2
+            var retrievedProgramme = $.parseJSON(data);
+            //console.log(retrievedProgramme);
+            var option = new Option(retrievedProgramme.text, retrievedProgramme.id, true, true);
+            $('#programmeid').append(option).trigger('change');
+
+            // manually trigger the `select2:select` event
+            $('#programmeid').trigger({
+                type: 'select2:select',
+                params: {
+                    data: data
                 }
+            });
+        });
 
 
+
+
+
+
+        $(formData).each(function (i, val) {
+            $.each(val, function (k, v) {
+                $("#" + k).val(v).trigger('change');
+                //console.log(k+' : '+ v);
             });
 
-        } else if (edit == 1){
+        });
 
-            //
+        enableFormInputs("sessionItem-form");
 
-            var formString = $('#session-form').serializeFormJSON();
 
-            disableFormInputs("session-form");
-            //get session id
+    } else {
 
-            console.log(formString);
+        alert('please try again');
 
-            formString["sessionid"] = idPassed;
-            formString["update"] = 1;
-            //formString["programmeid"] = ; get from the form
+    }
+})
 
-            const jsonString = JSON.stringify(formString);
-            console.log(jsonString);
 
-            var request = $.ajax({
+
+
+
+}
+
+function submit<?php echo $databaseName; ?>Form(){
+
+    //pushDataFromFormAJAX (form, table, identifierKey, identifier, updateType)
+
+    var idPassed = $('.editSession').attr('data');
+
+    console.log('got to the submit function');
+
+    if (edit == 0) {
+
+        var esdLesionObject = pushFormDataJSON($("#<?php echo $databaseName;?>-form"), "<?php echo $databaseName;?>", "id", null, "0"); //insert new object
+
+        esdLesionObject.done(function (data) {
+
+            console.log(data);
+
+            if (data) {
+
+                //alert ("New esdLesion no "+data+" created");
+                $('#topTableSuccess').text("New <?php echo $databaseName;?> no " + data + " created");
+
+                $('#modal-row-1').animate({
+                    scrollTop: 0
+                }, 'slow');
+
+
+                $("#topTableAlert").fadeTo(4000, 500).slideUp(500, function () {
+                    $("#topTableAlert").slideUp(500);
+                });
+
+                //edit = 1;
+
+                //refresh table
+                datatable.ajax.reload();
+
+                //close modal
+                $('#modal-row-1').modal('hide');
+
+
+
+
+
+            } else {
+
+                alert("No data inserted, try again");
+
+            }
+
+
+        });
+
+    } else if (edit == 1) {
+
+        //
+
+        var formString = $('#session-form').serializeFormJSON();
+
+        disableFormInputs("session-form");
+        //get session id
+
+        console.log(formString);
+
+        formString["sessionid"] = idPassed;
+        formString["update"] = 1;
+        //formString["programmeid"] = ; get from the form
+
+        const jsonString = JSON.stringify(formString);
+        console.log(jsonString);
+
+        var request = $.ajax({
             url: siteRoot + "assets/scripts/createUpdateSession.php",
             type: "POST",
             contentType: "application/json",
             data: jsonString,
-            });
+        });
 
 
 
-        request.done(function(data) {
-        // alert( "success" );
+        request.done(function (data) {
+            // alert( "success" );
 
-            if (data){
+            if (data) {
 
                 //decode data
                 var returnedData = $.parseJSON(data);
@@ -602,210 +690,212 @@ function fillFormSession (idPassed){
                 var wasSessionUpdated = returnedData.updatedSession;
                 //check it for 1's
 
-                if (wasProgrammeUpdated == 1 || wasSessionUpdated == 1){
+                if (wasProgrammeUpdated == 1 || wasSessionUpdated == 1) {
 
                     console.log('we know data was updated / saved');
                 }
-                
-            //console.log(data);
-            enableFormInputs("session-form");
-            $('#topModalSuccess').text("Data for <?php echo $databaseName;?> " + idPassed + " saved");
 
-                                $('#modal-session').animate({ scrollTop: 0 }, 'slow');
+                //console.log(data);
+                enableFormInputs("session-form");
+                $('#topModalSuccess').text("Data for <?php echo $databaseName;?> " + idPassed + " saved");
 
-                                $("#topModalAlert").fadeTo(4000, 500).slideUp(500, function() {
-                                    $("#topTableAlert").slideUp(500);
-                                });
+                $('#modal-session').animate({
+                    scrollTop: 0
+                }, 'slow');
 
-                                
+                $("#topModalAlert").fadeTo(4000, 500).slideUp(500, function () {
+                    $("#topTableAlert").slideUp(500);
+                });
+
+
                 refreshSessionView();
 
 
 
-            } else{
+            } else {
 
                 alert('please try again');
 
             }
         })
 
-            
 
-
-        }
 
 
     }
 
-    function submitModeratorForm(){
 
-        //get id of moderator from form
+}
 
-        var id = $('#modal-moderator').find('#moderatorid').val()
+function submitModeratorForm() {
 
-        //refresh the ajax
+    //get id of moderator from form
 
-        const dataToSend = {
+    var id = $('#modal-moderator').find('#moderatorid').val()
 
-        moderatorid : $('#modal-moderator').find('#moderatorid').val(),
-        sessionid : <?php echo $sessionIdentifier;?>,
+    //refresh the ajax
 
-        }
+    const dataToSend = {
 
-        const jsonString = JSON.stringify(dataToSend);
-        console.log(jsonString);
+        moderatorid: $('#modal-moderator').find('#moderatorid').val(),
+        sessionid: <?php echo $sessionIdentifier; ?> ,
+
+    }
+
+    const jsonString = JSON.stringify(dataToSend);
+    console.log(jsonString);
 
 
 
-        var request = $.ajax({
+    var request = $.ajax({
         url: siteRoot + "assets/scripts/addModerator.php",
         type: "POST",
         contentType: "application/json",
         data: jsonString,
-        });
+    });
 
 
 
-        request.done(function(data) {
+    request.done(function (data) {
         // alert( "success" );
 
-            if (data){
-                $('#modal-moderator').modal('hide');
-                refreshSessionView();
-            } else{
+        if (data) {
+            $('#modal-moderator').modal('hide');
+            refreshSessionView();
+        } else {
 
-                alert('please try again');
+            alert('please try again');
 
-            }
-        })
-
-        
+        }
+    })
 
 
-    }
-
-    //delete behaviour
-
-		function deleteRow (id){
-
-        //esdLesionPassed is the current record, some security to check its also that in the id field
-
-        /* if (esdLesionPassed != $("#id").text()){
-
-            return;
-
-        } */
 
 
-        if (confirm("Do you wish to delete this <?php echo $databaseName;?>?")) {
+}
 
-            disableFormInputs("<?php echo $databaseName;?>-form");
+//delete behaviour
 
-            var esdLesionObject = pushFormDataJSON($("#<?php echo $databaseName;?>-form"), "<?php echo $databaseName;?>", "id", id, "2"); //delete esdLesion
+function deleteRow(id) {
 
-            esdLesionObject.done(function (data){
+    //esdLesionPassed is the current record, some security to check its also that in the id field
 
-                console.log(data);
+    /* if (esdLesionPassed != $("#id").text()){
 
-                if (data){
+        return;
 
-                    if (data == 1){
-
-                        $('#topTableSuccess').text("<?php echo $databaseName;?> deleted");
-
-                        $("#topTableAlert").removeClass("alert-success").addClass("alert-danger").fadeTo(4000, 500).slideUp(500, function() {
-                            $("#topTableAlert").slideUp(500);
-                        });
-                        //TODO refresh the table from AJAX
-                        //esdLesionPassed = null;
-                        //window.location.href = siteRoot + "scripts/forms/esdLesionTable.php";
-                        //location.reload();
-                        datatable.ajax.reload();
+    } */
 
 
-                        enableFormInputs("<?php echo $databaseName;?>-form");
+    if (confirm("Do you wish to delete this <?php echo $databaseName;?>?")) {
 
-                        //go to esdLesion list
+        disableFormInputs("<?php echo $databaseName;?>-form");
 
-                    }else {
+        var esdLesionObject = pushFormDataJSON($("#<?php echo $databaseName;?>-form"), "<?php echo $databaseName;?>", "id", id, "2"); //delete esdLesion
+
+        esdLesionObject.done(function (data) {
+
+            console.log(data);
+
+            if (data) {
+
+                if (data == 1) {
+
+                    $('#topTableSuccess').text("<?php echo $databaseName;?> deleted");
+
+                    $("#topTableAlert").removeClass("alert-success").addClass("alert-danger").fadeTo(4000, 500).slideUp(500, function () {
+                        $("#topTableAlert").slideUp(500);
+                    });
+                    //TODO refresh the table from AJAX
+                    //esdLesionPassed = null;
+                    //window.location.href = siteRoot + "scripts/forms/esdLesionTable.php";
+                    //location.reload();
+                    datatable.ajax.reload();
+
+
+                    enableFormInputs("<?php echo $databaseName;?>-form");
+
+                    //go to esdLesion list
+
+                } else {
 
                     alert("Error, could not delete.  Please try again");
 
                     enableFormInputs("<?php echo $databaseName;?>-form");
 
-                    }
-
-
-
                 }
 
 
-            });
 
-        }
+            }
 
+
+        });
 
     }
 
-    function refreshSessionView(){
-
-        
-
-const dataToSend = {
-
-    sessionid : <?php echo $sessionIdentifier;?>,
 
 }
 
-const jsonString = JSON.stringify(dataToSend);
-console.log(jsonString);
-                    
-                    var request2 = $.ajax({
-                    url: siteRoot + "assets/scripts/classes/generateSessionView.php",
-                    type: "POST",
-                    contentType: "application/json",
-                    data: jsonString,
-                    });
+function refreshSessionView() {
 
 
 
-                    request2.done(function(data) {
-                    // alert( "success" );
-                    $('#sessionView').html(data);
-                    })
+    const dataToSend = {
+
+        sessionid: <?php echo $sessionIdentifier; ?> ,
+
     }
 
+    const jsonString = JSON.stringify(dataToSend);
+    console.log(jsonString);
+
+    var request2 = $.ajax({
+        url: siteRoot + "assets/scripts/classes/generateSessionView.php",
+        type: "POST",
+        contentType: "application/json",
+        data: jsonString,
+    });
 
 
-    $(document).ready(function(){
+
+    request2.done(function (data) {
+        // alert( "success" );
+        $('#sessionView').html(data);
+    })
+}
+
+
+
+$(document).ready(function () {
 
     //add those which require date pickr
-    
+
     $.fn.serializeFormJSON = function () {
 
-var o = {};
-var a = this.serializeArray();
-$.each(a, function () {
-    if (o[this.name]) {
-        if (!o[this.name].push) {
-            o[this.name] = [o[this.name]];
-        }
-        o[this.name].push(this.value || '');
-    } else {
-        o[this.name] = this.value || '';
-    }
-});
-return o;
-};
-    
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function () {
+            if (o[this.name]) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+    };
+
     var options = {
-        
-    enableTime: true,
-    noCalendar: true,
-    dateFormat: "H:i",
-			allowInput: true
-		};
-    
+
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "H:i",
+        allowInput: true
+    };
+
     $('[data-toggle="time"]').flatpickr(options);
 
     // add those which require select2 box
@@ -822,24 +912,24 @@ return o;
         dropdownParent: $("#modal-session"),
 
         ajax: {
-        //url: siteRoot + 'assets/scripts/select2simple.php?table=Delegate&field=firstname',
-        url: siteRoot + 'assets/scripts/classes/queryProgrammeSelect.php',
-        data: function (params) {
-            var query = {
-                search: params.term,
-                query: '`id`, `date`, `title` FROM `Programme`',
-                fieldRequired: 'date',
-            }
+            //url: siteRoot + 'assets/scripts/select2simple.php?table=Delegate&field=firstname',
+            url: siteRoot + 'assets/scripts/classes/queryProgrammeSelect.php',
+            data: function (params) {
+                var query = {
+                    search: params.term,
+                    query: '`id`, `date`, `title` FROM `Programme`',
+                    fieldRequired: 'date',
+                }
 
-            // Query parameters will be 
-            console.log(query);
-            return query;
-        },
-        dataType: 'json'
-    // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
+                // Query parameters will be 
+                console.log(query);
+                return query;
+            },
+            dataType: 'json'
+            // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
         }
-       
-        
+
+
 
     });
 
@@ -848,93 +938,105 @@ return o;
         dropdownParent: $("#modal-moderator"),
 
         ajax: {
-        //url: siteRoot + 'assets/scripts/select2simple.php?table=Delegate&field=firstname',
-        url: siteRoot + 'assets/scripts/classes/queryModeratorSelect.php',
-        data: function (params) {
-            var query = {
-                search: params.term,
-            }
+            //url: siteRoot + 'assets/scripts/select2simple.php?table=Delegate&field=firstname',
+            url: siteRoot + 'assets/scripts/classes/queryModeratorSelect.php',
+            data: function (params) {
+                var query = {
+                    search: params.term,
+                }
 
-            // Query parameters will be 
-            console.log(query);
-            return query;
-        },
-        dataType: 'json'
-        // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
+                // Query parameters will be 
+                console.log(query);
+                return query;
+            },
+            dataType: 'json'
+            // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
         }
 
 
 
-        });
+    });
 
     <?php
 
-    if ($sessionIdentifier){?>
+    if ($sessionIdentifier) {
+        ?>
 
-    const dataToSend = {
+        const dataToSend = {
 
-        sessionid : <?php echo $sessionIdentifier;?>,
+            sessionid: <?php echo $sessionIdentifier; ?> ,
 
-    }
+        }
 
-    const jsonString = JSON.stringify(dataToSend);
-    console.log(jsonString);
-
-
-
-    var request = $.ajax({
-		url: siteRoot + "assets/scripts/classes/generateSessionView.php",
-		type: "POST",
-		contentType: "application/json",
-		data: jsonString,
-	    });
-
-    
-
-    request.done(function(data) {
-       // alert( "success" );
-        $('#sessionView').html(data);
-    })
-<?php }else{
-    
-    //TODO echo blank form
-}?>
-    
+        const jsonString = JSON.stringify(dataToSend);
+        console.log(jsonString);
 
 
 
-    datatable = $('#dataTable').DataTable( {
+        var request = $.ajax({
+            url: siteRoot + "assets/scripts/classes/generateSessionView.php",
+            type: "POST",
+            contentType: "application/json",
+            data: jsonString,
+        });
 
-        language: { infoEmpty: "There are currently no active <?php echo $databaseName;?>s.",
-                emptyTable: "There are currently no active <?php echo $databaseName;?>s.",
-                zeroRecords: "There are currently no active <?php echo $databaseName;?>s.",
+
+
+        request.done(function (data) {
+                // alert( "success" );
+                $('#sessionView').html(data);
+            }) 
+            <?php
+    } else {
+
+        //TODO echo blank form
+    } ?>
+
+
+
+
+    datatable = $('#dataTable').DataTable({
+
+        language: {
+            infoEmpty: "There are currently no active <?php echo $databaseName;?>s.",
+            emptyTable: "There are currently no active <?php echo $databaseName;?>s.",
+            zeroRecords: "There are currently no active <?php echo $databaseName;?>s.",
         },
-        autowidth : true,
+        autowidth: true,
 
 
-       ajax: siteRoot + 'assets/scripts/tableInteractors/refresh<?php echo $databaseName;?>Table.php',
+        ajax: siteRoot + 'assets/scripts/tableInteractors/refresh<?php echo $databaseName;?>Table.php',
         //TODO all classes need this function
 
 
         //EDIT
-       columns: [
-        {data: 'id' },
-       {data: 'firstname' },
-       {data: 'surname' },
-       {data: 'user_id' },
-       {data: 'email' },
-           {
-           data: null,
-           render: function ( data, type, row ) {
-               return '<div class="d-flex align-items-center justify-content-end"><div class="actions ml-3"><a class="fill-modal action-item mr-2"  data-toggle="tooltip" title="edit this row" data-original-title="Edit"> <i class="fas fa-pencil-alt"></i> </a> <a href="#" class="action-item mr-2" data-toggle="tooltip" title="" data-original-title="see enclosed items"> <i class="fas fa-level-down-alt"></i> </a> <div class="dropdown"> <a href="#" class="action-item" role="button" data-toggle="dropdown" aria-haspopup="true" data-expanded="false"> <i class="fas fa-ellipsis-v"></i> </a> <div class="dropdown-menu dropdown-menu-right"> <a class="delete-row dropdown-item"> Delete </a> </div> </div> </div> </div>';
-           }
-           }
-       ],
+        columns: [{
+                data: 'id'
+            },
+            {
+                data: 'firstname'
+            },
+            {
+                data: 'surname'
+            },
+            {
+                data: 'user_id'
+            },
+            {
+                data: 'email'
+            },
+            {
+                data: null,
+                render: function (data, type, row) {
+                    return '<div class="d-flex align-items-center justify-content-end"><div class="actions ml-3"><a class="fill-modal action-item mr-2"  data-toggle="tooltip" title="edit this row" data-original-title="Edit"> <i class="fas fa-pencil-alt"></i> </a> <a href="#" class="action-item mr-2" data-toggle="tooltip" title="" data-original-title="see enclosed items"> <i class="fas fa-level-down-alt"></i> </a> <div class="dropdown"> <a href="#" class="action-item" role="button" data-toggle="dropdown" aria-haspopup="true" data-expanded="false"> <i class="fas fa-ellipsis-v"></i> </a> <div class="dropdown-menu dropdown-menu-right"> <a class="delete-row dropdown-item"> Delete </a> </div> </div> </div> </div>';
+                }
+            }
+        ],
 
 
 
 
-       } );
+    });
 
 
 
@@ -960,7 +1062,7 @@ return o;
 
     } ); */
 
-    $(document).on('click', '.editSession', function() {
+    $(document).on('click', '.editSession', function () {
 
         //define session id
 
@@ -976,21 +1078,21 @@ return o;
 
     })
 
-    $(document).on('click', '.addModerators', function() {
+    $(document).on('click', '.addModerators', function () {
 
 
-    $('#modal-moderator').modal('show');
+        $('#modal-moderator').modal('show');
 
     })
-    
-    $(document).on('click', '.removeModerators', function() {
+
+    $(document).on('click', '.removeModerators', function () {
 
         var moderatorid = $(this).prev().attr('data');
         console.log(moderatorid);
         const dataToSend = {
 
-        moderatorid : $(this).prev().attr('data'),
-        sessionid : <?php echo $sessionIdentifier;?>,
+            moderatorid: $(this).prev().attr('data'),
+            sessionid: <?php echo $sessionIdentifier; ?> ,
 
         }
 
@@ -1000,20 +1102,20 @@ return o;
 
 
         var request = $.ajax({
-        url: siteRoot + "assets/scripts/deleteModerator.php",
-        type: "POST",
-        contentType: "application/json",
-        data: jsonString,
+            url: siteRoot + "assets/scripts/deleteModerator.php",
+            type: "POST",
+            contentType: "application/json",
+            data: jsonString,
         });
 
 
 
-        request.done(function(data) {
-        // alert( "success" );
+        request.done(function (data) {
+            // alert( "success" );
 
-            if (data == 1){
+            if (data == 1) {
                 refreshSessionView();
-            } else if (data == 4){
+            } else if (data == 4) {
 
                 alert('This record does not exist.  Try again');
 
@@ -1024,50 +1126,54 @@ return o;
 
     })
 
-    $(document).on('click', '.submit-moderator-form', function() {
+    $(document).on('click', '.submit-moderator-form', function () {
 
-    event.preventDefault();
-    console.log('clicked moderator submit');
-    console.log($('#moderator-form').closest());
-    $('#moderator-form').submit();
+        event.preventDefault();
+        console.log('clicked moderator submit');
+        console.log($('#moderator-form').closest());
+        $('#moderator-form').submit();
 
     })
-    
-    $(document).on('click', '.addSessionItem', function() {
+
+    $(document).on('click', '.addSessionItem', function () {
 
 
         //TODO add a sessionItem form
+
+        $('#modal-sessionItem').modal('show');
+        //ensure it is blank
+
         //create, read and update this from here via a template form
         //use the tempate form for the table later
         //refresh the table
 
     })
 
-    $(document).on('click', '.editSessionItem', function() {
+    $(document).on('click', '.editSessionItem', function () {
 
 
-    //TODO add a sessionItem form
-    //GET the ID of the sessionItem required to edit
-    //update this from here via a template form
-    //use the tempate form for the table later
-
-    })
-    
-    $(document).on('click', '.deleteSessionItem', function() {
-
-
-    //TODO add a sessionItem form
-    //GET the ID of the sessionItem required to edit
-    //update this from here via a template form
-    //use the tempate form for the table later
+        //TODO add a sessionItem form
+        //GET the ID of the sessionItem required to edit
+        //update this from here via a template form
+        //use the tempate form for the table later
 
     })
 
+    $(document).on('click', '.deleteSessionItem', function () {
+
+
+        //TODO add a sessionItem form
+        //GET the ID of the sessionItem required to edit
+        //update this from here via a template form
+        //use the tempate form for the table later
+
+    })
 
 
 
-    
-    $(document).on('click', '#add<?php echo $databaseName;?>', function() {
+
+
+    $(document).on('click', '#add<?php echo $databaseName;?>', function () {
 
 
         $('#modalMessageArea').text('New <?php echo $databaseName;?>');
@@ -1078,207 +1184,307 @@ return o;
 
     })
 
-    $(document).on('click', '.fill-modal', function() {
+    $(document).on('click', '.fill-modal', function () {
 
-    var targettd = $(this).parent().parent().parent().parent().find('td').first().text();
-    //console.log(targettd);
-    lesionUnderEdit = targettd;
-    $('#modalMessageArea').text('Editing <?php echo $databaseName;?> ' + lesionUnderEdit);
-    $('#modal-row-1').modal('show');
-    fillForm(targettd);
-    edit = 1;
-
-    })
-
-    $(document).on('click', '.delete-row', function() {
-
-    var targettd = $(this).parent().parent().parent().parent().parent().parent().find('td').first().text();
-    console.log(targettd);
-    //$('#modal-row-1').modal('show');
-    deleteRow(targettd);
+        var targettd = $(this).parent().parent().parent().parent().find('td').first().text();
+        //console.log(targettd);
+        lesionUnderEdit = targettd;
+        $('#modalMessageArea').text('Editing <?php echo $databaseName;?> ' + lesionUnderEdit);
+        $('#modal-row-1').modal('show');
+        fillForm(targettd);
+        edit = 1;
 
     })
 
-    $(document).on('click', '.submit-<?php echo $databaseName;?>-form', function() {
+    $(document).on('click', '.delete-row', function () {
 
-    event.preventDefault();
-    console.log('clicked');
-    console.log($('#<?php echo $databaseName;?>-form').closest());
-    $('#<?php echo $databaseName;?>-form').submit();
+        var targettd = $(this).parent().parent().parent().parent().parent().parent().find('td').first().text();
+        console.log(targettd);
+        //$('#modal-row-1').modal('show');
+        deleteRow(targettd);
 
     })
 
-$("#<?php echo $databaseName;?>-form").validate({
+    $(document).on('click', '.submit-<?php echo $databaseName;?>-form', function () {
 
-invalidHandler: function(event, validator) {
-    var errors = validator.numberOfInvalids();
-    console.log("there were " + errors + " errors");
-    if (errors) {
-        var message = errors == 1 ?
-            "1 field contains errors. It has been highlighted" :
-            +errors + " fields contain errors. They have been highlighted";
+        event.preventDefault();
+        console.log('clicked');
+        console.log($('#<?php echo $databaseName;?>-form').closest());
+        $('#<?php echo $databaseName;?>-form').submit();
+
+    })
+
+    $("#<?php echo $databaseName;?>-form").validate({
+
+        invalidHandler: function (event, validator) {
+            var errors = validator.numberOfInvalids();
+            console.log("there were " + errors + " errors");
+            if (errors) {
+                var message = errors == 1 ?
+                    "1 field contains errors. It has been highlighted" :
+                    +errors + " fields contain errors. They have been highlighted";
 
 
-        $('#error').text(message);
-        //$('div.error span').addClass('form-text text-danger');
-        //$('#errorWrapper').show();
+                $('#error').text(message);
+                //$('div.error span').addClass('form-text text-danger');
+                //$('#errorWrapper').show();
 
-        $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function() {
-            $("#errorWrapper").slideUp(500);
-        });
-    } else {
-        $('#errorWrapper').hide();
-    }
-},
-ignore: [],
-rules: {
+                $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function () {
+                    $("#errorWrapper").slideUp(500);
+                });
+            } else {
+                $('#errorWrapper').hide();
+            }
+        },
+        ignore: [],
+        rules: {
 
-    //EDIT
+            //EDIT
 
-    
-              
 
-        programmeid: {
 
-            required: true,
-        },        
 
-              
-           timeFrom:{
-                        required : true,
-                        regex: '^([0-1]?[0-9]|2[0-3]):[0-5][0-9]:?[0-5]?[0-9]?$',
+            programmeid: {
+
+                required: true,
+            },
+
+
+            timeFrom: {
+                required: true,
+                regex: '^([0-1]?[0-9]|2[0-3]):[0-5][0-9]:?[0-5]?[0-9]?$',
 
 
             },
 
-            
-              
-           timeTo:{
-                        required : true,
-                        regex: '^([0-1]?[0-9]|2[0-3]):[0-5][0-9]:?[0-5]?[0-9]?$',
+
+
+            timeTo: {
+                required: true,
+                regex: '^([0-1]?[0-9]|2[0-3]):[0-5][0-9]:?[0-5]?[0-9]?$',
 
             },
 
-            
-              
-           title:{
-                        required : true,
+
+
+            title: {
+                required: true,
 
             },
 
-            
-              
-           subtitle:{
-                        required : true,
+
+
+            subtitle: {
+                required: true,
 
             },
 
-            
-              
-           description:{
-                        required : true,
+
+
+            description: {
+                required: true,
 
             },
 
-},
-messages : {
+        },
+        messages: {
 
-    timeTo: {
+            timeTo: {
 
-        regex: 'Enter a valid time [hh:mm]',
+                regex: 'Enter a valid time [hh:mm]',
 
-    },
+            },
 
-    timeFrom: {
+            timeFrom: {
 
-regex: 'Enter a valid time [hh:mm]',
+                regex: 'Enter a valid time [hh:mm]',
 
-},
+            },
 
-},
-submitHandler: function(form) {
+        },
+        submitHandler: function (form) {
 
-    //submitPreRegisterForm();
+            //submitPreRegisterForm();
 
-    submit<?php echo $databaseName;?>Form();
+            submit<?php echo $databaseName; ?>Form();
 
-    //TODO submit changes
-    //TODO reimport the array at the top
-    //TODO redraw the table
-
-
-
-}
+            //TODO submit changes
+            //TODO reimport the array at the top
+            //TODO redraw the table
 
 
 
-
-});
-
-$("#moderator-form").validate({
-
-invalidHandler: function(event, validator) {
-    var errors = validator.numberOfInvalids();
-    console.log("there were " + errors + " errors");
-    if (errors) {
-        var message = errors == 1 ?
-            "1 field contains errors. It has been highlighted" :
-            +errors + " fields contain errors. They have been highlighted";
-
-
-        $('#error').text(message);
-        //$('div.error span').addClass('form-text text-danger');
-        //$('#errorWrapper').show();
-
-        $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function() {
-            $("#errorWrapper").slideUp(500);
-        });
-    } else {
-        $('#errorWrapper').hide();
-    }
-},
-ignore: [],
-rules: {
-
-    //EDIT
-
-    
-              
-
-        moderatorid: {
-
-            required: true,
-        },        
-
-              
-           
-
-},
-messages : {
-
-    
-
-},
-
-
-submitHandler: function(form) {
-
-    //submitPreRegisterForm();
-
-    submitModeratorForm();
-
-    //TODO submit changes
-    //TODO reimport the array at the top
-    //TODO redraw the table
-
-
-
-}
+        }
 
 
 
 
-});
+    });
+
+    $("#moderator-form").validate({
+
+        invalidHandler: function (event, validator) {
+            var errors = validator.numberOfInvalids();
+            console.log("there were " + errors + " errors");
+            if (errors) {
+                var message = errors == 1 ?
+                    "1 field contains errors. It has been highlighted" :
+                    +errors + " fields contain errors. They have been highlighted";
+
+
+                $('#error').text(message);
+                //$('div.error span').addClass('form-text text-danger');
+                //$('#errorWrapper').show();
+
+                $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function () {
+                    $("#errorWrapper").slideUp(500);
+                });
+            } else {
+                $('#errorWrapper').hide();
+            }
+        },
+        ignore: [],
+        rules: {
+
+            //EDIT
+
+
+
+
+            moderatorid: {
+
+                required: true,
+            },
+
+
+
+
+        },
+        messages: {
+
+
+
+        },
+
+
+        submitHandler: function (form) {
+
+            //submitPreRegisterForm();
+
+            submitModeratorForm();
+
+            //TODO submit changes
+            //TODO reimport the array at the top
+            //TODO redraw the table
+
+
+
+        }
+
+
+
+
+    });
+
+    $("#sessionItem-form").validate({
+
+        invalidHandler: function (event, validator) {
+            var errors = validator.numberOfInvalids();
+            console.log("there were " + errors + " errors");
+            if (errors) {
+                var message = errors == 1 ?
+                    "1 field contains errors. It has been highlighted" :
+                    +errors + " fields contain errors. They have been highlighted";
+
+
+                $('#error').text(message);
+                //$('div.error span').addClass('form-text text-danger');
+                //$('#errorWrapper').show();
+
+                $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function () {
+                    $("#errorWrapper").slideUp(500);
+                });
+            } else {
+                $('#errorWrapper').hide();
+            }
+        },
+        ignore: [],
+        rules: {
+
+            //EDIT
+
+
+
+
+            timeFrom: {
+                required: true,
+
+            },
+
+
+
+            timeTo: {
+                required: true,
+
+            },
+
+
+
+            title: {
+                required: true,
+
+            },
+
+
+
+            description: {
+                required: true,
+
+            },
+
+
+
+            faculty: {
+                required: true,
+
+            },
+
+
+
+            live: {
+                required: true,
+
+            },
+
+
+
+
+        },
+        messages: {
+
+
+
+        },
+
+
+        submitHandler: function (form) {
+
+            //submitPreRegisterForm();
+
+            submitModeratorForm();
+
+            //TODO submit changes
+            //TODO reimport the array at the top
+            //TODO redraw the table
+
+
+
+        }
+
+
+
+
+    });
 
 
 })

@@ -1,4 +1,4 @@
-<div class="modal fade" id="modal-sessionItem" tabindex="-1" role="dialog" aria-labelledby="modal-change-username"
+<div class="modal fade" id="modal-session" tabindex="-1" role="dialog" aria-labelledby="modal-change-username"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
 
@@ -11,7 +11,7 @@
                                     </div>
                                 </div>
                                 <div class="text-left">
-                                    <h5 class="mb-0">Edit Session Item Details</h5>
+                                    <h5 class="mb-0">Edit Session Details</h5>
                                     <span class="mb-0"></span>
                                 </div>
 
@@ -38,11 +38,18 @@
 
                         <div class="modal-body">
 
-                            <div class="sessionItem-body">
-                                <form id="sessionItem-form">
+                            <div class="session-body">
+                                <form id="session-form">
                                     <div class="form-group">
                                     <!-- EDIT -->
 
+                                    <label for="programmeid">Select programme</label>
+                                        <div class="input-group mb-3">
+                                            <select id="programmeid" type="text" data-toggle="select" class="form-control" name="programmeid">
+                                            <option value="" selected disabled hidden>please select an option</option>
+        
+                                            </select>
+                                        </div>
                                     
                                     <label for="timeFrom">Start Time</label>
                                         <div class="input-group mb-3">
@@ -53,33 +60,22 @@
                                         <div class="input-group mb-3">
                                             <input id="timeTo" type="text" placeholder="hh:mm" data-toggle="time" class="form-control" name="timeTo">
                                         </div>
-                                        
-                                        <label for="title">Title</label>
+
+                                        <label for="title">Session Title</label>
                                         <div class="input-group mb-3">
                                             <textarea id="title" type="text" data-toggle="autosize" class="form-control" name="title"></textarea>
                                         </div>
 
-                                        <label for="description">Description</label>
+                                        <label for="subtitle">Session Subtitle</label>
+                                        <div class="input-group mb-3">
+                                            <textarea id="subtitle" type="text" data-toggle="autosize" class="form-control" name="subtitle"></textarea>
+                                        </div>
+                                        <label for="description">Session description</label>
                                         <div class="input-group mb-3">
                                             <textarea id="description" type="text" data-toggle="autosize" class="form-control" name="description"></textarea>
                                         </div>
-                                        
-                                        <label for="faculty">faculty</label>
-                                        <div class="input-group mb-3">
-                                            <select id="faculty" type="text" data-toggle="select" class="form-control" name="faculty">
-                                            <option value="" selected disabled hidden>please select an option</option>
-                                            
-                                            </select>
-                                        </div>
 
-                                        <label for="live">live</label>
-                                        <div class="input-group mb-3">
-                                            <select id="live" type="text" data-toggle="select" class="form-control" name="live">
-                                            <option value="" selected disabled hidden>please select an option</option>
-                                            <option value="0">No</option>
-                                            <option value="1">Yes</option>
-                                            </select>
-                                        </div>
+                                        
 
 
 
