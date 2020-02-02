@@ -26,7 +26,7 @@
                                 <div class="col-sm-12 text-left">
                                     <div>
                                         <h6 class="mb-0"></h6>
-                                        <span id = "modalMessageArea" class="mb-0"></span>
+                                        <span id = "modalMessageArea-session" class="mb-0"></span>
 
                                     </div>
                                     <div id="topModalAlert" class="alert alert-warning alert-flush collapse" role="alert">

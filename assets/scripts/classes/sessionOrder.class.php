@@ -131,6 +131,7 @@ $q = "Select * from `sessionOrder` LIMIT " . $x . ", " . $y;
  public function prepareStatementPDO (){ 
  //need to only update those which are set 
  $ov = get_object_vars($this); 
+ 
 if ($ov['connection'] != ''){
 			unset($ov['connection']);
 		} 
@@ -177,6 +178,8 @@ foreach ($ovMod as $key => $value) {
 			$updates[] = "$value";
 
 		} 
+
+		//print_r($ovMod3);
 $implodeArray = implode(', ', $updates); 
 //get number of terms in update
 					//need only the keys first
@@ -202,7 +205,8 @@ $x=0;
 		} 
 $q = "INSERT INTO `sessionOrder` ($keys) VALUES ($keys2)";
 		
- $stmt = $this->connection->prepare($q); 
+$stmt = $this->connection->prepare($q); 
+
 $stmt->execute($ovMod3); 
 return $this->connection->conn->lastInsertId(); 
 	}
@@ -286,7 +290,7 @@ $x=0;
 
 		} 
 $q = "UPDATE `sessionOrder` SET $implodeArray WHERE `id` = '$this->id'";
-
+echo $q;
 		
  $stmt = $this->connection->RunQuery($q); 
  return $stmt->rowCount(); 

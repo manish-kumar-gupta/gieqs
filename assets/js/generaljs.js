@@ -108,10 +108,49 @@ function getFormDatav2($form, table, identifier, identifierKey, update){
     return indexed_array;
 }
 
+function getFormDatav2Modifier($form, table, identifier, identifierKey, update, modifier){
+    var unindexed_array = $form.serializeArray();
+    var indexed_array = {};
+
+	indexed_array['table'] = table;
+	indexed_array['identifier'] = identifier;
+	indexed_array['identifierKey'] = identifierKey;
+	indexed_array['update'] = update;
+
+    $.map(unindexed_array, function(n, i){
+		var modifiedName = n['name'].replace('SI','');
+        indexed_array[modifiedName] = n['value'];
+    });
+
+    return indexed_array;
+}
+
 function pushFormDataJSON ($form, table, identifierKey, identifier, update){
 
 	//var $form = $(form);
 	var data = getFormDatav2($form, table, identifier, identifierKey, update);	
+
+	//TODO add identifier and identifierKey
+
+	console.log(data);
+
+	data = JSON.stringify(data);
+
+	console.log(data);
+
+	return $.ajax({
+		url: siteRoot + "assets/scripts/masterAjaxDataReturnQueryJSONv2.php",
+		type: "POST",
+		contentType: "application/json",
+		data: data,
+	    });
+
+}
+
+function pushFormDataJSONModifier ($form, table, identifierKey, identifier, update, modifier){
+
+	//var $form = $(form);
+	var data = getFormDatav2Modifier($form, table, identifier, identifierKey, update, modifier);	
 
 	//TODO add identifier and identifierKey
 
@@ -370,6 +409,52 @@ function pushDataFromForm (form, table, identifierKey, identifier, updateType){
 	
 }
 
+function pushDataFromFormModifier (form, table, identifierKey, identifier, updateType, modifier){
+	
+	//form is jquery array of form elements
+	//need to do the validation prior to this
+	//update types 
+	// update 0 INSERT INTO
+
+	// update 1 UPDATE
+
+	// update 2 DELETE
+	
+	var formString = 'form#' + form + ' :input';
+	
+	var responseVariable = null;
+
+    formElements = $(formString).not('button');
+	
+	var formElementsReadable = getDataFormElementsModifier(form);
+	
+	//console.log(formElementsReadable);
+	
+	//now need the contents not the names of these elements
+	
+	
+	var formData = new Object;
+	
+	//here provide the form elements as jquery array
+	
+	//update form elements to readable array
+	
+	var data = 'table=' + table + '&identifierKey=' + identifierKey + '&identifier=' + identifier + '&update=' + updateType + '&' + jQuery.param(formElementsReadable);
+	
+	//console.log(data);
+	
+	//disable form elements
+	
+	//pass this data to a standard ajax
+	
+	
+	return data;
+
+	
+
+	
+}
+
 function pushDataFromFormAJAX (form, table, identifierKey, identifier, updateType){
 	
 	//form is jquery array of form elements
@@ -586,6 +671,32 @@ function getDataFormElements(formName) {
     $(formString).not('button').each(function() {
 
         name = $(this).attr("name");
+        
+        value = $(this).val();
+
+
+        names[name] = value;
+
+        x++;
+
+    });
+
+    return names;
+
+
+}
+
+function getDataFormElementsModifier(formName, modifier) {
+
+    var names = {};
+
+    var x = 0;
+
+    var formString = 'form#' + formName + ' :input';
+
+    $(formString).not('button').each(function() {
+
+        name = modifier + $(this).attr("name");
         
         value = $(this).val();
 

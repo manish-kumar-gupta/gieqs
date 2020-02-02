@@ -136,7 +136,7 @@ $openaccess =1;
 
                     
             <div class="sessionItem row d-flex align-items-left text-left align-middle">
-                <span id="sessionItemid" style="display:none;"><?php echo $value['sessionItemid'];?></span>
+                <span class="sessionItemid" style="display:none;"><?php echo $value['sessionItemid'];?></span>
                 <div class="pl-2 pr-1 pb-0 pt-1 time">
                     <span class="timeFrom"><?php echo $value['sessionItemTimeFrom'];?></span> - <span class="timeTo"><?php echo $value['sessionItemTimeTo'];?></span>
                     : </span>

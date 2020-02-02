@@ -1,5 +1,5 @@
 <?php
-//error_reporting(E_ALL);
+error_reporting(E_ALL);
 //;
 $openaccess = 1;
 //echo 'hello';
@@ -18,6 +18,8 @@ $general = new general;
 function ne($v) {
     return $v != '';
 }
+
+//$debug = true;
 
 //$connection = new DataBaseMysql();
 
@@ -40,7 +42,11 @@ function ne($v) {
 
 $data = json_decode(file_get_contents('php://input'), true);
 
-//print_r($data);
+if ($debug){
+
+print_r($data);
+
+}
 
 //check count of get variables
 
@@ -54,8 +60,10 @@ if (count($data) > 0){
 
 	}*/
 
-	//print_r($GLOBALS);
-	//print_r($data);
+	if ($debug){
+	print_r($GLOBALS);
+	print_r($data);
+	}
 
 	if (!isset($data['table'])){
 
@@ -183,7 +191,10 @@ if (count($data) > 0){
         foreach ($data as $key=>$value){
 
             $targetStatement = '$esdLesion->set' . $key . '("' . $value . '");';
-            //echo $targetStatement;
+			
+			if ($debug){
+			echo $targetStatement;
+			}
             
             try {
               
@@ -201,7 +212,11 @@ if (count($data) > 0){
 
         echo $esdLesion->prepareStatementPDO();
 
+		if ($debug){
 
+			print_r($log);
+
+		}
 
 	
 		

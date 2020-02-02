@@ -29,7 +29,7 @@
                                         <span id = "modalMessageArea-sessionItem" class="mb-0"></span>
 
                                     </div>
-                                    <div id="topModalAlert-sessionItem" class="alert alert-warning alert-flush collapse" role="alert">
+                                    <div id="topModalAlert" class="alert alert-warning alert-flush collapse" role="alert">
     <span id="topModalSuccess"></span>
 </div>
                                 </div>

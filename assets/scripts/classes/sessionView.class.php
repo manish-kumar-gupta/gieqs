@@ -243,6 +243,36 @@ class sessionView
 
         }
 
+        public function checkCombinationSessionSessionItem($sessionid, $sessionItemid)
+            {
+            
+
+            $q = "Select `id`
+            FROM `sessionOrder`
+            WHERE `sessionid` = '$sessionid' AND `sessionItemid` = '$sessionItemid'
+            ";
+
+            echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                return true;
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
+
         public function checkSessionModeratorid($sessionid, $moderatorid)
             {
             

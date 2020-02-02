@@ -313,7 +313,7 @@ if ($identifierValue) {
    <?php require(BASE_URI . '/pages/backend/forms/sessionForm.php');?>
 
    <!-- modal 1,5 sessionItem -->
-   <?php require(BASE_URI . '/pages/backend/forms/sessionItemForm.php');?>
+   <?php require(BASE_URI . '/pages/backend/forms/sessionItemFormMultiple.php');?>
    
 
         <!-- Modal 2, moderator -->
@@ -419,6 +419,10 @@ if ($identifierValue) {
 var datatable;
 var edit = 0;
 var lesionUnderEdit = null;
+var editSessionItem = 0;
+var editModerator = 0;
+var sessionItemUnderEdit = null;
+var moderatorUnderEdit = null;
 
 function tableRefresh() {
 
@@ -454,7 +458,7 @@ function fillFormSession(idPassed) {
 
         if (data) {
             var formData = $.parseJSON(data);
-
+            console.log(formData);
 
             //do something with the select2
 
@@ -538,6 +542,7 @@ request.done(function (data) {
 
     if (data) {
         var formData = $.parseJSON(data);
+        console.dir(formData);
 
 
         //do something with the select2
@@ -545,22 +550,22 @@ request.done(function (data) {
 
 
         //TODO required for faculty
-        var requiredProgramme = (formData[0]['programmeid']);
+        var faculty = (formData[0]['faculty']);
 
         $.ajax({
             //url: siteRoot + 'assets/scripts/select2simple.php?table=Delegate&field=firstname',
 
-            url: siteRoot + 'assets/scripts/classes/querySelectProgrammeSingleOption.php?search=' + requiredProgramme,
+            url: siteRoot + 'assets/scripts/classes/querySelectFacultySingleOption.php?search=' + faculty,
 
         }).then(function (data) {
             // create the option and append to Select2
             var retrievedProgramme = $.parseJSON(data);
             //console.log(retrievedProgramme);
             var option = new Option(retrievedProgramme.text, retrievedProgramme.id, true, true);
-            $('#programmeid').append(option).trigger('change');
+            $('#SIfaculty').append(option).trigger('change');
 
             // manually trigger the `select2:select` event
-            $('#programmeid').trigger({
+            $('#SIfaculty').trigger({
                 type: 'select2:select',
                 params: {
                     data: data
@@ -575,7 +580,7 @@ request.done(function (data) {
 
         $(formData).each(function (i, val) {
             $.each(val, function (k, v) {
-                $("#" + k).val(v).trigger('change');
+                $("#SI" + k).val(v).trigger('change');
                 //console.log(k+' : '+ v);
             });
 
@@ -723,6 +728,173 @@ function submit<?php echo $databaseName; ?>Form(){
 
 
     }
+
+
+}
+
+function submitSessionItemForm(){
+
+//pushDataFromFormAJAX (form, table, identifierKey, identifier, updateType)
+
+var idPassed = sessionItemUnderEdit;
+
+console.log('got to the submit function for session item' + sessionItemUnderEdit);
+
+if (editSessionItem == 0) {
+
+    var esdLesionObject = pushFormDataJSONModifier($("#sessionItem-form"), "sessionItem", "id", null, "0"); //insert new object
+
+    esdLesionObject.done(function (data) {
+
+        console.log(data);
+
+        if (data) {
+
+            //INSERT THE ITEM TO MATCH DATA TO THE 
+
+            data = data.trim();
+
+            const dataToSend = {
+
+            sessionItemid: data,
+            sessionid: <?php echo $sessionIdentifier; ?> ,
+
+            }
+
+            const jsonString = JSON.stringify(dataToSend);
+            console.log(jsonString);
+
+
+
+            var request = $.ajax({
+                url: siteRoot + "assets/scripts/addSessionItemJoin.php",
+                type: "POST",
+                contentType: "application/json",
+                data: jsonString,
+            });
+
+
+
+            request.done(function (data) {
+            // alert( "success" );
+
+            if (data == 1) {
+                refreshSessionView();
+            } else if (data == 4) {
+
+                alert('This link already exists.  Try again');
+
+            }
+            })
+            
+            
+            //alert ("New esdLesion no "+data+" created");
+            $('#topTableSuccess').text("New sessionItem no " + data + " created");
+
+            $('#modal-sessionItem').animate({
+                scrollTop: 0
+            }, 'slow');
+
+
+            $("#topTableAlert").fadeTo(4000, 500).slideUp(500, function () {
+                $("#topTableAlert").slideUp(500);
+            });
+
+            //edit = 1;
+
+            //refresh table
+            refreshSessionView();
+
+            //close modal
+            $('#modal-sessionItem').modal('hide');
+
+
+
+
+
+        } else {
+
+            alert("No data inserted, try again");
+
+        }
+
+
+    });
+
+} else if (editSessionItem == 1) {
+
+    //
+
+    var formString = $('#sessionItem-form').serializeFormJSONModifier();
+
+    disableFormInputs("sessionItem-form");
+    //get session id
+
+    console.dir(formString);
+
+    formString["sessionItemid"] = idPassed;
+    formString["update"] = 1;
+    //formString["programmeid"] = ; get from the form
+
+    const jsonString = JSON.stringify(formString);
+    console.log(jsonString);
+
+    var request = $.ajax({
+        url: siteRoot + "assets/scripts/createUpdateSessionItem.php",
+        type: "POST",
+        contentType: "application/json",
+        data: jsonString,
+    });
+
+
+
+    request.done(function (data) {
+        // alert( "success" );
+
+        if (data) {
+
+            //decode data
+            var returnedData = $.parseJSON(data);
+
+            console.dir(returnedData);
+
+            
+            var wasSessionItemUpdated = returnedData.updatedSessionItem;
+            //check it for 1's
+
+            if (wasSessionItemUpdated == 1) {
+
+                console.log('we know data was updated / saved');
+            }
+
+            //console.log(data);
+            enableFormInputs("sessionItem-form");
+            $('#topModalSuccess').text("Data for <?php echo $databaseName;?> " + idPassed + " saved");
+
+            $('#modal-sessionItem').animate({
+                scrollTop: 0
+            }, 'slow');
+
+            $("#topModalAlert-sessionItem").fadeTo(4000, 500).slideUp(500, function () {
+                $("#topTableAlert").slideUp(500);
+            });
+
+
+            refreshSessionView();
+
+
+
+        } else {
+
+            alert('please try again');
+
+        }
+    })
+
+
+
+
+}
 
 
 }
@@ -888,9 +1060,39 @@ $(document).ready(function () {
         return o;
     };
 
+    $.fn.serializeFormJSONModifier = function () {
+
+    var o = {};
+    var p = {};
+    var a = this.serializeArray();
+    $.each(a, function () {
+        if (o[this.name]) {
+            if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    console.dir(o);
+    $.each(o, function (k,v) {
+        
+        var modifiedName1 = k;
+        
+        var modifiedName = modifiedName1.replace('SI','');
+        console.log(modifiedName);
+        p[modifiedName] = v;
+        
+    });
+    return p;
+    };
+
+    
+
     var options = {
 
-        enableTime: true,
+        enableTime: false,
         noCalendar: true,
         dateFormat: "H:i",
         allowInput: true
@@ -952,6 +1154,30 @@ $(document).ready(function () {
             dataType: 'json'
             // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
         }
+
+
+
+    });
+
+    $('#SIfaculty').select2({
+
+    dropdownParent: $("#modal-sessionItem"),
+
+    ajax: {
+        //url: siteRoot + 'assets/scripts/select2simple.php?table=Delegate&field=firstname',
+        url: siteRoot + 'assets/scripts/classes/queryModeratorSelect.php',
+        data: function (params) {
+            var query = {
+                search: params.term,
+            }
+
+            // Query parameters will be 
+            console.log(query);
+            return query;
+        },
+        dataType: 'json'
+        // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
+    }
 
 
 
@@ -1082,6 +1308,7 @@ $(document).ready(function () {
 
 
         $('#modal-moderator').modal('show');
+        //TODO make sure blank
 
     })
 
@@ -1134,6 +1361,15 @@ $(document).ready(function () {
         $('#moderator-form').submit();
 
     })
+    
+    $(document).on('click', '.submit-sessionItem-form', function () {
+
+        event.preventDefault();
+        console.log('clicked sessionItem submit');
+        console.log($('#sessionItem-form').closest());
+        $('#sessionItem-form').submit();
+
+    })
 
     $(document).on('click', '.addSessionItem', function () {
 
@@ -1142,6 +1378,9 @@ $(document).ready(function () {
 
         $('#modal-sessionItem').modal('show');
         //ensure it is blank
+        $(document).find('#sessionItem-form').find(':input').val('');
+        $(document).find('#sessionItem-form').find(':checkbox, :radio').prop('checked', false);
+        editSessionItem = 0;
 
         //create, read and update this from here via a template form
         //use the tempate form for the table later
@@ -1153,9 +1392,17 @@ $(document).ready(function () {
 
 
         //TODO add a sessionItem form
+        $('#modal-sessionItem').modal('show');
+        var targettd = $(this).parent().prev().prev().text();
+        console.dir(targettd);
+        sessionItemUnderEdit = targettd;
+        $('#modalMessageArea-sessionItem').text('Editing Session Item' + sessionItemUnderEdit);
+        
         //GET the ID of the sessionItem required to edit
         //update this from here via a template form
         //use the tempate form for the table later
+        fillFormSessionItem(targettd);
+        editSessionItem = 1;
 
     })
 
@@ -1416,28 +1663,30 @@ $(document).ready(function () {
 
 
 
-            timeFrom: {
+            SItimeFrom: {
+                required: true,
+                regex: '^([0-1]?[0-9]|2[0-3]):[0-5][0-9]:?[0-5]?[0-9]?$',
+
+            },
+
+
+
+            SItimeTo: {
+                required: true,
+                regex: '^([0-1]?[0-9]|2[0-3]):[0-5][0-9]:?[0-5]?[0-9]?$',
+
+            },
+
+
+
+            SItitle: {
                 required: true,
 
             },
 
 
 
-            timeTo: {
-                required: true,
-
-            },
-
-
-
-            title: {
-                required: true,
-
-            },
-
-
-
-            description: {
+            SIdescription: {
                 required: true,
 
             },
@@ -1451,7 +1700,7 @@ $(document).ready(function () {
 
 
 
-            live: {
+            SIlive: {
                 required: true,
 
             },
@@ -1471,7 +1720,7 @@ $(document).ready(function () {
 
             //submitPreRegisterForm();
 
-            submitModeratorForm();
+            submitSessionItemForm();
 
             //TODO submit changes
             //TODO reimport the array at the top

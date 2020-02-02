@@ -2,7 +2,7 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 26-01-2020
+ * Create Date: 1-02-2020
  *
  * DJT 2019
  *
@@ -14,11 +14,12 @@ require_once 'DataBaseMysqlPDO.class.php';
 Class sessionItem {
 
 	private $id; //int(11)
-	private $timeFrom; //time(6)
-	private $timeTo; //time(6)
+	private $timeFrom; //time
+	private $timeTo; //time
 	private $title; //varchar(400)
 	private $description; //varchar(800)
 	private $faculty; //int(11)
+	private $live; //int(11)
 	private $connection;
 
 	public function __construct(){
@@ -29,12 +30,13 @@ Class sessionItem {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_sessionItem($timeFrom,$timeTo,$title,$description,$faculty){
+	public function New_sessionItem($timeFrom,$timeTo,$title,$description,$faculty,$live){
 		$this->timeFrom = $timeFrom;
 		$this->timeTo = $timeTo;
 		$this->title = $title;
 		$this->description = $description;
 		$this->faculty = $faculty;
+		$this->live = $live;
 	}
 
     /**
@@ -52,6 +54,7 @@ Class sessionItem {
 			$this->title = $row["title"];
 			$this->description = $row["description"];
 			$this->faculty = $row["faculty"];
+			$this->live = $row["live"];
 		}
 	}
     /**
@@ -75,6 +78,35 @@ $q = "Select * from `sessionItem` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["title"] = $row["title"];
 			$rowReturn[$x]["description"] = $row["description"];
 			$rowReturn[$x]["faculty"] = $row["faculty"];
+			$rowReturn[$x]["live"] = $row["live"];
+		$x++;		}return json_encode($rowReturn);}
+
+			else{return FALSE;
+			}
+			
+	}
+    /**
+ * Load specified number of rows and output to JSON. To use the vars use for exemple echo $class->getVar_name;
+ *
+ * @param key_table_type $key_row
+ *
+ */
+	public function Return_row($key){
+$q = "Select * from `sessionItem` WHERE `id` = $key";
+		$result = $this->connection->RunQuery($q);
+							$rowReturn = array();
+						$x = 0;
+						$nRows = $result->rowCount();
+						if ($nRows > 0){
+
+					while($row = $result->fetch(PDO::FETCH_ASSOC)){
+			$rowReturn[$x]["id"] = $row["id"];
+			$rowReturn[$x]["timeFrom"] = $row["timeFrom"];
+			$rowReturn[$x]["timeTo"] = $row["timeTo"];
+			$rowReturn[$x]["title"] = $row["title"];
+			$rowReturn[$x]["description"] = $row["description"];
+			$rowReturn[$x]["faculty"] = $row["faculty"];
+			$rowReturn[$x]["live"] = $row["live"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -336,14 +368,14 @@ $q = "UPDATE `sessionItem` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
-	 * @return timeFrom - time(6)
+	 * @return timeFrom - time
 	 */
 	public function gettimeFrom(){
 		return $this->timeFrom;
 	}
 
 	/**
-	 * @return timeTo - time(6)
+	 * @return timeTo - time
 	 */
 	public function gettimeTo(){
 		return $this->timeTo;
@@ -371,6 +403,13 @@ $q = "UPDATE `sessionItem` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return live - int(11)
+	 */
+	public function getlive(){
+		return $this->live;
+	}
+
+	/**
 	 * @param Type: int(11)
 	 */
 	public function setid($id){
@@ -378,14 +417,14 @@ $q = "UPDATE `sessionItem` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
-	 * @param Type: time(6)
+	 * @param Type: time
 	 */
 	public function settimeFrom($timeFrom){
 		$this->timeFrom = $timeFrom;
 	}
 
 	/**
-	 * @param Type: time(6)
+	 * @param Type: time
 	 */
 	public function settimeTo($timeTo){
 		$this->timeTo = $timeTo;
@@ -410,6 +449,13 @@ $q = "UPDATE `sessionItem` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function setfaculty($faculty){
 		$this->faculty = $faculty;
+	}
+
+	/**
+	 * @param Type: int(11)
+	 */
+	public function setlive($live){
+		$this->live = $live;
 	}
 
     /**
