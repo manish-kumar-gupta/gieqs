@@ -9,46 +9,51 @@ $openaccess =1;
             $general = new general;
             $programme = new programme;
             $session = new session;
-            
+            $faculty = new faculty;
             $sessionItem = new sessionItem;
             $queries = new queries;
             $sessionView = new sessionView;
-           
             $sessionOrder = new sessionOrder;
+            $sessionModerator = new sessionModerator;
 
 
             //$print_r()
 
             $data = json_decode(file_get_contents('php://input'), true);
 
-            print_r($data);
+            //print_r($data);
 
             $sessionid = $data['sessionid'];
-            $sessionItemid = $data['sessionItemid'];
+            $sessionItemID = $data['sessionItemID'];
 
             //check this combination does not already exist
 
-            if (($sessionView->checkCombinationSessionSessionItem($sessionid, $sessionItemid)) === false){
+            if (($sessionView->checkCombinationSessionSessionItem($sessionid, $sessionItemID)) === true){
 
-                //if above false
-                //insert a new link
+                //if above true
+                //echo 'true';
+                //get the id of sessionModerator
+
+            
+                    $sessionItem->Load_from_key($sessionItemID);
+                    echo $sessionItem->Delete_row_from_key($sessionItemID);
+
+                    //also delete the link
+
+                    //get sessionOrder id
+
+                    $sessionOrderID = $sessionView->checkCombinationSessionOrderReturn($sessionid, $sessionItemID);
+                    $sessionOrder->Load_from_key($sessionOrderID);
+                    $sessionOrder->Delete_row_from_key($sessionOrderID);
+
+
+
+
                 
-                
-
-                $sessionOrder->setsessionid($sessionid);
-                $sessionOrder->setsessionItemid($sessionItemid);
-
-                
-
-                echo $sessionOrder->prepareStatementPDO();
-
-                //echo 'false';
 
            
 
             }else{
-
-                //suggest the link already exists
 
                 echo '4';
             }

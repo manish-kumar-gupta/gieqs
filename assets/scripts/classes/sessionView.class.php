@@ -85,7 +85,7 @@ class sessionView
         public function generateView($sessionid)
             {
             
-
+                //EDITED TODO CHECK LEFT OUTER JOIN
             $q = "Select 
             
             a.`id` as `programmeid`, a.`date`,
@@ -94,8 +94,8 @@ class sessionView
             from `programme` as a
             INNER JOIN `programmeOrder` as b on a.`id` = b.`programmeid` 
             INNER JOIN `session` as c on b.`sessionid` = c.`id`
-            INNER JOIN `sessionOrder` as d on c.`id` = d.`sessionid`
-            INNER JOIN `sessionItem` as e on d.`sessionItemid` = e.`id`
+            LEFT OUTER JOIN `sessionOrder` as d on c.`id` = d.`sessionid`
+            LEFT OUTER JOIN `sessionItem` as e on d.`sessionItemid` = e.`id`
             
 
             WHERE c.`id` = '$sessionid'
@@ -252,7 +252,7 @@ class sessionView
             WHERE `sessionid` = '$sessionid' AND `sessionItemid` = '$sessionItemid'
             ";
 
-            echo $q . '<br><br>';
+            //echo $q . '<br><br>';
 
 
 
@@ -264,6 +264,69 @@ class sessionView
             if ($nRows > 0) {
 
                 return true;
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
+
+        public function checkCombinationProgrammeOrder($sessionid, $programmeOrder)
+            {
+            
+
+            $q = "Select `id`
+            FROM `programmeOrder`
+            WHERE `sessionid` = '$sessionid' AND `programmeid` = '$programmeOrder'
+            ";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                return true;
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
+
+        public function checkCombinationSessionOrderReturn($sessionid, $sessionItemID)
+            {
+            
+
+            $q = "Select `id`
+            FROM `sessionOrder`
+            WHERE `sessionid` = '$sessionid' AND `sessionItemid` = '$sessionItemID'
+            ";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                    return $row['id'];
+                }
 
             } else {
                 

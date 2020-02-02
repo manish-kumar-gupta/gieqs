@@ -231,13 +231,21 @@ if ($identifierValue) {
 
                     <div class="row justify-content-between align-items-center">
                         <div class="col">
-                            <h5 class="mb-1"><?php echo $databaseName;?></h5>
+                            <h5 class="mb-1">Session Manager</h5>
                             <p class="text-sm text-muted mb-0 d-none d-md-block">Manage <?php echo $databaseName;?>.</p>
                         </div>
                         <div class="col text-right">
                             <div class="actions"><!-- <a href="#" class="action-item mr-2 active" data-action="search-open"
                                     data-target="#actions-search"><i class="fas fa-search"></i></a> -->
-                                    <a href="#" id="add<?php echo $databaseName;?>" class="action-item mr-2 active"><i class="fas fa-plus"></i></a>
+                                    <a href="#" id="add<?php echo $databaseName;?>" class="action-item mr-2 active"><i class="fas fa-plus"></i></a><br/>
+                                    <label for="programmeIdentifier">Programme</label>
+                                        <div class="input-group mb-3">
+                                            <select id="programmeIdentifier" type="text" data-toggle="select" class="form-control" name="programmeIdentifier">
+                                            <option value="" selected disabled hidden>please select an option</option>
+        
+                                            </select>
+                                        </div>
+                                    
                                 <!-- <div class="dropdown mr-2">
                                     <a href="#" class="action-item" role="button" data-toggle="dropdown"
                                         aria-haspopup="true" aria-expanded="false">
@@ -402,6 +410,44 @@ function fillForm (idPassed){
                 console.log(data);
 
                 if (data){
+
+                    data = data.trim();
+
+                    var programmeID = $('#programmeIdentifier').val();
+
+
+                    const dataToSend = {
+
+                    sessionid: data,
+                    programmeid: programmeID,
+
+                    }
+
+                    const jsonString = JSON.stringify(dataToSend);
+                    console.log(jsonString);
+
+
+
+                    var request = $.ajax({
+                        url: siteRoot + "assets/scripts/addProgrammeOrderJoin.php",
+                        type: "POST",
+                        contentType: "application/json",
+                        data: jsonString,
+                    });
+
+
+
+                    request.done(function (data) {
+                    // alert( "success" );
+
+                    if (data == 1) {
+                        //do nothing
+                    } else if (data == 4) {
+
+                        alert('This link already exists.  Try again');
+
+                    }
+                    })
 
                     //alert ("New esdLesion no "+data+" created");
                     $('#topTableSuccess').text("New <?php echo $databaseName;?> no "+data+" created");
@@ -569,11 +615,38 @@ $(document).ready(function(){
 
     $('[data-toggle="select"]').select2({
 
-        dropdownParent: $(".modal-content"),
+        //dropdownParent: $(".modal-content"),
         //theme: "bootstrap",
 
     });
 
+    
+
+    $('#programmeIdentifier').select2({
+
+    //dropdownParent: $("#modal-session"),
+
+    ajax: {
+        //url: siteRoot + 'assets/scripts/select2simple.php?table=Delegate&field=firstname',
+        url: siteRoot + 'assets/scripts/classes/queryProgrammeSelect.php',
+        data: function (params) {
+            var query = {
+                search: params.term,
+                query: '`id`, `date`, `title` FROM `Programme`',
+                fieldRequired: 'date',
+            }
+
+            // Query parameters will be 
+            console.log(query);
+            return query;
+        },
+        dataType: 'json'
+        // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
+    }
+
+
+
+    });
     
 
 
@@ -641,10 +714,23 @@ $(document).ready(function(){
 
 
         $('#modalMessageArea').text('New <?php echo $databaseName;?>');
+
+        //check if there is a programmeIdentifier
+
+        var programmeID = $('#programmeIdentifier').val();
+
+        if (programmeID){
+
+
         $('#modal-session').modal('show');
         $(document).find('#<?php echo $databaseName;?>-form').find(':input').val('');
         $(document).find('#<?php echo $databaseName;?>-form').find(':checkbox, :radio').prop('checked', false);
         edit = 0;
+
+        }else{
+
+            alert('fill programme dropdown first');
+        }
 
     })
 

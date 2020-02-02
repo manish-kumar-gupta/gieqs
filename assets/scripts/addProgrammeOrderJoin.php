@@ -15,32 +15,34 @@ $openaccess =1;
             $sessionView = new sessionView;
            
             $sessionOrder = new sessionOrder;
+            $programmeOrder = new programmeOrder;
 
 
             //$print_r()
 
             $data = json_decode(file_get_contents('php://input'), true);
 
-            print_r($data);
+            //print_r($data);
 
             $sessionid = $data['sessionid'];
-            $sessionItemid = $data['sessionItemid'];
+            $programmeid = $data['programmeid'];
 
             //check this combination does not already exist
 
-            if (($sessionView->checkCombinationSessionSessionItem($sessionid, $sessionItemid)) === false){
+            if (($sessionView->checkCombinationProgrammeOrder($sessionid, $programmeid)) === false){
 
                 //if above false
                 //insert a new link
+                //echo 'false';
                 
                 
 
-                $sessionOrder->setsessionid($sessionid);
-                $sessionOrder->setsessionItemid($sessionItemid);
+                $programmeOrder->setsessionid($sessionid);
+                $programmeOrder->setprogrammeid($programmeid);
 
                 
 
-                echo $sessionOrder->prepareStatementPDO();
+                echo $programmeOrder->prepareStatementPDO();
 
                 //echo 'false';
 

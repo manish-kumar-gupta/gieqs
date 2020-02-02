@@ -1414,6 +1414,43 @@ $(document).ready(function () {
         //update this from here via a template form
         //use the tempate form for the table later
 
+        var sessionItemID = $(this).parent().prev().prev().text();
+        console.log(sessionItemID);
+        const dataToSend = {
+
+            sessionItemID: sessionItemID,
+            sessionid: <?php echo $sessionIdentifier; ?> ,
+
+        }
+
+        const jsonString = JSON.stringify(dataToSend);
+        console.log(jsonString);
+
+
+
+        var request = $.ajax({
+            url: siteRoot + "assets/scripts/deleteSessionItem.php",
+            type: "POST",
+            contentType: "application/json",
+            data: jsonString,
+        });
+
+
+
+        request.done(function (data) {
+            // alert( "success" );
+
+            if (data == 1) {
+                refreshSessionView();
+            } else if (data == 4) {
+
+                alert('This record does not exist.  Try again');
+
+            }
+        })
+
+        
+
     })
 
 
