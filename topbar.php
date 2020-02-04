@@ -41,11 +41,15 @@
               </li>
             -->
               
+            <li class="nav-item">
+              <a class="nav-link" title="Registration" href="https://eu.eventscloud.com/200200203" target="_blank"><i class="fas fa-user-plus"></i></a>
+            </li>
+
             <?php
 
             //check page we are on
 
-            $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+            /* $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
             //if contains index.html
 
@@ -59,10 +63,10 @@
               echo '
               <li class="nav-item">
               <a class="nav-link" title="Registration" href="' . BASE_URL . '/index.php?signup=2456"><i class="fas fa-user-plus"></i></a>
-            </li>';
+            </li>'; 
               
 
-            }
+            }*/
 
             
 

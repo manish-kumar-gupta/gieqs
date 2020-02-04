@@ -143,13 +143,13 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                             <div class="d-none d-lg-block mb-4">
 
                             </div>
-                            <div>
+                            <div><a href="https://eu.eventscloud.com/200200203" target="_blank">
                             <div class="alert alert-modern alert-dark">
-                                <a href="https://eu.eventscloud.com/200200203"><span class="badge gieqsGold badge-pill">
+                                <span class="badge gieqsGold badge-pill">
                                     New
-                                    </span></a>
+                                    </span>
                                 <span class="alert-content">Registration now open!</span>
-                             </div>
+                             </div></a>
                                 <h2 class="text-white mb-4 mt-8 mt-lg-0">
                                     <span class="display-4 font-weight-light">We can do everyday endoscopy
                                         better.</span>

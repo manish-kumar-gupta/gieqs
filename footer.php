@@ -41,7 +41,7 @@
       <div class="row align-items-center justify-content-md-between py-4 mt-4 delimiter-top">
         <div class="col-md-6">
           <div class="copyright text-sm font-weight-bold text-center text-md-left">
-            &copy; 2019 <a href="https://www.gieqs.com" class="font-weight-bold" target="_blank">GIEQS Organising Committee</a>. All rights reserved. <br/><span class="text-secondary">No cookies or personal data of any kind are collected by this site</span>
+            &copy; 2020 <a href="https://www.gieqs.com" class="font-weight-bold" target="_blank">GIEQS Organising Committee</a>. All rights reserved. <br/><span class="text-secondary">No cookies or personal data of any kind are collected by this site</span>
           </div>
         </div>
         <div class="col-md-6">

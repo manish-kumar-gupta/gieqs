@@ -96,9 +96,8 @@ class sessionView
             INNER JOIN `session` as c on b.`sessionid` = c.`id`
             LEFT OUTER JOIN `sessionOrder` as d on c.`id` = d.`sessionid`
             LEFT OUTER JOIN `sessionItem` as e on d.`sessionItemid` = e.`id`
-            
-
             WHERE c.`id` = '$sessionid'
+            ORDER BY e.`timeFrom` ASC
             ";
 
             //echo $q . '<br><br>';

@@ -140,15 +140,18 @@ color: rgb(238, 194, 120);
             <div class="container py-5 pt-lg-2 position-relative zindex-100">
               <div class="row">
                 <div class="col-lg-8 text-center text-lg-left">
-                  <div class="alert alert-modern alert-dark">
+                <a href="https://eu.eventscloud.com/200200203" target="_blank">
+
+                <div class="alert alert-modern alert-dark">
                     <span class="badge gieqsGold badge-pill">
                       New
                     </span>
                     <span class="alert-content">Registration now open!</span>
                   </div>
+                  </a>  
                   <div class="">
                     <h2 class="text-white my-4">
-                      <span class="display-5 font-weight-light">the Ghalemco Arena. Ghent. Belgium.</span>
+                      <span class="display-5 font-weight-light">the Ghelamco Arena. Ghent. Belgium.</span>
                       
                     </h2>
                     <p class="lead text-white"></p>
@@ -169,9 +172,9 @@ color: rgb(238, 194, 120);
           <section class="slice slice-lg">
             <div class="container no-padding">
               <div class="mb-5 text-center">
-                <h3 class=" mt-4">The main features of Purpose</h3>
+                <h3 class=" mt-4">GIEQs at the Ghelamco</h3>
                 <div class="fluid-paragraph mt-3">
-                  <p class="lead lh-180">Start building fast, beautiful and modern looking websites in no time using our theme.</p>
+                  <p class="lead lh-180">At the MeetDistrict venue within the Ghelamco arena is a modern venue that will make a spectacular meeting</p>
                 </div>
               </div>
               <div class="card-deck">
@@ -218,9 +221,9 @@ color: rgb(238, 194, 120);
         </g>
     </g>
 </svg>
-                      <h5 class="mt-4">Responsive design</h5>
+                      <h5 class="mt-4">Networking area (with table tennis!)</h5>
                     </div>
-                    <p class="">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p class="">With beautiful, modern open spaces this venue allows for professional networking and mingling with the faculty.</p>
                   </div>
                   <div class="card-footer px-0 py-0 border-0 overflow-hidden">
                     <a href="#" class="btn btn-block btn-primary rounded-0">Learn more</a>
@@ -265,9 +268,9 @@ color: rgb(238, 194, 120);
         </g>
     </g>
 </svg>
-                      <h5 class="mt-4">Clever markup</h5>
+                      <h5 class="mt-4">2 bespoke lecture theatres</h5>
                     </div>
-                    <p class="">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p class="">With beautiful, modern open spaces this venue allows for professional networking and mingling with the faculty.</p>
                   </div>
                   <div class="card-footer px-0 py-0 border-0 overflow-hidden">
                     <a href="#" class="btn btn-block btn-primary rounded-0">Learn more</a>
@@ -295,7 +298,7 @@ color: rgb(238, 194, 120);
         </g>
     </g>
 </svg>
-                      <h5 class="mt-4">Unlimited colors</h5>
+                      <h5 class="mt-4">Multiple meeting boxes for satellite / spin-off meetings</h5>
                     </div>
                     <p class="">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                   </div>
@@ -307,6 +310,169 @@ color: rgb(238, 194, 120);
             </div>
           </section>
 
+          <section class="slice slice-lg delimiter-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="card card-overlay card-hover-overlay">
+              <figure class="figure">
+                <img alt="Image placeholder" src="../../assets/img/venue/venue1.jpg" class="img-fluid">
+              </figure>
+              <div class="card-img-overlay d-flex flex-column align-items-center p-0">
+                <div class="overlay-text w-75 mt-auto p-4">
+                  <p class="lead">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                  <a href="#!" class="link link-underline-white font-weight-bold">Branding</a>
+                </div>
+                <div class="overlay-actions w-100 card-footer mt-auto d-flex justify-content-between align-items-center">
+                  <div>
+                    <a href="#!" class="h6 mb-0">The Pineapple's story</a>
+                  </div>
+                  <div>
+                    <div class="actions">
+                      <a href="#!" class="action-item mr-3"><i class="fas fa-paperclip"></i></a>
+                      <a href="#!" class="action-item mr-3"><i class="fas fa-eye"></i></a>
+                      <a href="#!" class="action-item"><i class="fas fa-heart"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card card-overlay card-hover-overlay">
+              <figure class="figure">
+                <img alt="Image placeholder" src="../../assets/img/venue/venue2.jpg" class="img-fluid">
+              </figure>
+              <div class="card-img-overlay d-flex flex-column align-items-center p-0">
+                <div class="overlay-text w-75 mt-auto p-4">
+                  <p class="lead">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                  <a href="#!" class="link link-underline-white font-weight-bold">Design</a>
+                </div>
+                <div class="overlay-actions w-100 card-footer mt-auto d-flex justify-content-between align-items-center">
+                  <div>
+                    <a href="#!" class="h6 mb-0">Colors from nature</a>
+                  </div>
+                  <div>
+                    <div class="actions">
+                      <a href="#!" class="action-item mr-3"><i class="fas fa-paperclip"></i></a>
+                      <a href="#!" class="action-item mr-3"><i class="fas fa-eye"></i></a>
+                      <a href="#!" class="action-item"><i class="fas fa-heart"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="card card-overlay card-hover-overlay">
+              <figure class="figure">
+                <img alt="Image placeholder" src="../../assets/img/venue/venue3.jpg" class="img-fluid">
+              </figure>
+              <div class="card-img-overlay d-flex flex-column align-items-center p-0">
+                <div class="overlay-text w-75 mt-auto p-4">
+                  <p class="lead">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                  <a href="#!" class="link link-underline-white font-weight-bold">Identity</a>
+                </div>
+                <div class="overlay-actions w-100 card-footer mt-auto d-flex justify-content-between align-items-center">
+                  <div>
+                    <a href="#!" class="h6 mb-0">Golden beauty</a>
+                  </div>
+                  <div>
+                    <div class="actions">
+                      <a href="#!" class="action-item mr-3"><i class="fas fa-paperclip"></i></a>
+                      <a href="#!" class="action-item mr-3"><i class="fas fa-eye"></i></a>
+                      <a href="#!" class="action-item"><i class="fas fa-heart"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card card-overlay card-hover-overlay">
+              <figure class="figure">
+                <img alt="Image placeholder" src="../../assets/img/venue/venue4.jpg" class="img-fluid">
+              </figure>
+              <div class="card-img-overlay d-flex flex-column align-items-center p-0">
+                <div class="overlay-text w-75 mt-auto p-4">
+                  <p class="lead">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                  <a href="#!" class="link link-underline-white font-weight-bold">Marketing</a>
+                </div>
+                <div class="overlay-actions w-100 card-footer mt-auto d-flex justify-content-between align-items-center">
+                  <div>
+                    <a href="#!" class="h6 mb-0">Living dangerously</a>
+                  </div>
+                  <div>
+                    <div class="actions">
+                      <a href="#!" class="action-item mr-3"><i class="fas fa-paperclip"></i></a>
+                      <a href="#!" class="action-item mr-3"><i class="fas fa-eye"></i></a>
+                      <a href="#!" class="action-item"><i class="fas fa-heart"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="card card-overlay card-hover-overlay">
+              <figure class="figure">
+                <img alt="Image placeholder" src="../../assets/img/venue/venue5.jpg" class="img-fluid">
+              </figure>
+              <div class="card-img-overlay d-flex flex-column align-items-center p-0">
+                <div class="overlay-text w-75 mt-auto p-4">
+                  <p class="lead">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                  <a href="#!" class="link link-underline-white font-weight-bold">Web design</a>
+                </div>
+                <div class="overlay-actions w-100 card-footer mt-auto d-flex justify-content-between align-items-center">
+                  <div>
+                    <a href="#!" class="h6 mb-0">Bear with me</a>
+                  </div>
+                  <div>
+                    <div class="actions">
+                      <a href="#!" class="action-item mr-3"><i class="fas fa-paperclip"></i></a>
+                      <a href="#!" class="action-item mr-3"><i class="fas fa-eye"></i></a>
+                      <a href="#!" class="action-item"><i class="fas fa-heart"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card card-overlay card-hover-overlay">
+              <figure class="figure">
+                <img alt="Image placeholder" src="../../assets/img/venue/venue6.jpg" class="img-fluid">
+              </figure>
+              <div class="card-img-overlay d-flex flex-column align-items-center p-0">
+                <div class="overlay-text w-75 mt-auto p-4">
+                  <p class="lead">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                  <a href="#!" class="link link-underline-white font-weight-bold">Marketing</a>
+                </div>
+                <div class="overlay-actions w-100 card-footer mt-auto d-flex justify-content-between align-items-center">
+                  <div>
+                    <a href="#!" class="h6 mb-0">Attitude is everything</a>
+                  </div>
+                  <div>
+                    <div class="actions">
+                      <a href="#!" class="action-item mr-3"><i class="fas fa-paperclip"></i></a>
+                      <a href="#!" class="action-item mr-3"><i class="fas fa-eye"></i></a>
+                      <a href="#!" class="action-item"><i class="fas fa-heart"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Load more -->
+        
+      </div>
+    </section>
+<!--
           <section class="slice slice-xl bg-cover bg-size--cover" data-offset-top="#header-main">
             <span class="mask bg-dark opacity-3"></span>
             <div class="container py-5 pt-lg-2 position-relative zindex-100">
@@ -329,7 +495,7 @@ color: rgb(238, 194, 120);
             </div>
             
           </section>
-
+    -->
        
 
     </div>

@@ -178,6 +178,7 @@ $openaccess =1;
                     ?></p>
                 </div>
             </div>
+            <hr>
 
             <?php }?>
 
