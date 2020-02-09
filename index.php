@@ -163,14 +163,21 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                     <a href="https://www.youtube.com/watch?v=I9Y8gC6wtKg"
                                         class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
                                         style="background-color: rgb(238, 194, 120);" data-fancybox>
-                                        <span class="btn-inner--text">Watch the teaser video</span>
+                                        <span class="btn-inner--text">Watch the concept video</span>
                                         <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
 
                                     </a>
-                                    <!--<a href="#sct-features" class="btn btn-outline-white rounded-pill hover-translate-y-n3 btn-icon d-none d-xl-inline-block scroll-me">
-                    <span class="btn-inner--icon"><i class="fas fa-file-alt"></i></span>
-                    <span class="btn-inner--text">More Features</span>
-                  </a>-->
+                                    <a href="https://www.youtube.com/watch?v=zRy1xwGsagc"
+                                        class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mt-2 mr-sm-4 scroll-me"
+                                        style="background-color: rgb(238, 194, 120);" data-fancybox>
+                                        <span class="badge bg-dark gieqsGold badge-pill">
+                                    New
+                                    </span>
+                                        <span class="btn-inner--text">Watch the latest teaser video</span>
+                                        <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
+
+                                    </a>
+                                    
                                 </div>
                             </div>
                         </div>

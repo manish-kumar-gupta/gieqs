@@ -252,7 +252,7 @@ $openaccess =1;
                                     $programmeDate = new DateTime($response[0]['date']);
 
 
-                                    echo '<div class="col-5 p-1 pb-3 pt-3 border-right" data-toggle="modal" data-target="#modal-' . $programmeDate->format('l') . '-' . $session1data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
+                                    echo '<div class="col-5 p-1 pb-3 pt-3 border-right" style="cursor:pointer !important;" data-toggle="modal" data-target="#modal-' . $programmeDate->format('l') . '-' . $session1data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
                                     <span class="sessionTitle h5">' . $session1data[0]['sessionTitle'] . '</span><br>
                                     <span class="sessionSubtitle">' . $session1data[0]['sessionSubtitle'] . '</span>
                                     </div>';
@@ -288,8 +288,17 @@ $openaccess =1;
                                                                                 
                                                                                 ?>
                                                     <p class="mb-0"><?php echo $programmeDate->format('D d M Y');?>
-                                                        <?php echo ' ' . $response[0]['timeFrom']?> -
-                                                        <?php echo $response[array_key_last($response)]['timeTo']?></p>
+
+                                                            <?php 
+                                                            
+                                                            $sessionItemTimeFrom = new DateTime($response[0]['timeFrom']);
+                                                            $sessionItemTimeTo = new DateTime($response[array_key_last($response)]['timeTo']);
+                                                            
+                                                            
+                                                            ?>                           
+
+                                                        <?php echo ' ' . $sessionItemTimeFrom->format('H:i')?> -
+                                                        <?php echo $sessionItemTimeTo->format('H:i')?></p>
                                                     <p class="mb-0"><?php echo $response[0]['sessionSubtitle']?></p>
                                                     <p class="mb-0"><?php echo $response[0]['sessionDescription']?></p>
                                                 </div>
@@ -321,7 +330,7 @@ $openaccess =1;
                                                                                     foreach ($moderators as $key=>$value){
                                                                                         echo '<span class="faculty mb-0 mr-1" data="' . $value['facultyid'] . '">';
                                                                                         echo $value['title'] . ' ' . $value['firstname'] . ' ' . $value['surname'];
-                                                                                        echo '</span>';
+                                                                                        echo '</span><br/>';
                                                                                         
                                                                                     if ($edit == 1){
                                                                                         
@@ -348,12 +357,21 @@ $openaccess =1;
                                                 <div class="sessionItem row d-flex align-items-left text-left align-middle">
                                                     <span class="sessionItemid" style="display:none;"><?php echo $value['sessionItemid'];?></span>
                                                     <div class="pl-2 pr-1 pb-0 pt-1 time">
-                                                        <span class="timeFrom"><?php echo $value['sessionItemTimeFrom'];?></span> - <span
-                                                            class="timeTo"><?php echo $value['sessionItemTimeTo'];?></span>
+                                                    <?php 
+                                                            
+                                                            $sessionItemTimeFrom = new DateTime($value['sessionItemTimeFrom']);
+                                                            $sessionItemTimeTo = new DateTime($value['sessionItemTimeTo']);
+                                                            
+                                                            
+                                                            ?>                           
+
+                                                        
+
+                                                        <span class="timeFrom"><?php echo $sessionItemTimeFrom->format('H:i');?></span> - <span
+                                                            class="timeTo"><?php echo $sessionItemTimeTo->format('H:i');?></span>
                                                         : </span>
 
-                                                    </div>
-                                                    <div class="pr-2 pb-0 pt-1">
+                                                    
                                                         <span class="h6 sessionTitle"><?php echo $value['sessionItemTitle'];?></span>
 
                                                         <!--if live stream-->
@@ -389,7 +407,7 @@ $openaccess =1;
                                                                                     ?></p>
                                                     </div>
                                                 </div>
-                                                <hr>
+                                                <hr class="m-2">
 
                                                 <?php }?>
 
@@ -455,7 +473,7 @@ $openaccess =1;
 
                                 $programmeDate = new DateTime($response[0]['date']);
                                 
-                            echo '<div class="col-5 p-1 pb-3 pt-3 border-right" data-toggle="modal" data-target="#modal-' . $programmeDate->format('l') . '-' . $session2data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
+                            echo '<div class="col-5 p-1 pb-3 pt-3 border-right" style="cursor:pointer !important;" data-toggle="modal" data-target="#modal-' . $programmeDate->format('l') . '-' . $session2data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
                                     <span class="sessionTitle h5">' . $session2data[0]['sessionTitle'] . '</span><br>
                                     <span class="sessionSubtitle">' . $session2data[0]['sessionSubtitle'] . '</span>
                                     </div>';
@@ -490,8 +508,16 @@ $openaccess =1;
                                                                                 
                                                                                 ?>
                                                     <p class="mb-0"><?php echo $programmeDate->format('D d M Y');?>
-                                                        <?php echo ' ' . $response[0]['timeFrom']?> -
-                                                        <?php echo $response[array_key_last($response)]['timeTo']?></p>
+                                                    <?php 
+                                                            
+                                                            $sessionItemTimeFrom = new DateTime($response[0]['timeFrom']);
+                                                            $sessionItemTimeTo = new DateTime($response[array_key_last($response)]['timeTo']);
+                                                            
+                                                            
+                                                            ?>                           
+
+                                                        <?php echo ' ' . $sessionItemTimeFrom->format('H:i')?> -
+                                                        <?php echo $sessionItemTimeTo->format('H:i')?></p>
                                                     <p class="mb-0"><?php echo $response[0]['sessionSubtitle']?></p>
                                                     <p class="mb-0"><?php echo $response[0]['sessionDescription']?></p>
                                                 </div>
@@ -523,7 +549,7 @@ $openaccess =1;
                                                                                     foreach ($moderators as $key=>$value){
                                                                                         echo '<span class="faculty mb-0 mr-1" data="' . $value['facultyid'] . '">';
                                                                                         echo $value['title'] . ' ' . $value['firstname'] . ' ' . $value['surname'];
-                                                                                        echo '</span>';
+                                                                                        echo '</span><br/>';
                                                                                         
                                                                                     if ($edit == 1){
                                                                                         
@@ -550,12 +576,21 @@ $openaccess =1;
                                                 <div class="sessionItem row d-flex align-items-left text-left align-middle">
                                                     <span class="sessionItemid" style="display:none;"><?php echo $value['sessionItemid'];?></span>
                                                     <div class="pl-2 pr-1 pb-0 pt-1 time">
-                                                        <span class="timeFrom"><?php echo $value['sessionItemTimeFrom'];?></span> - <span
-                                                            class="timeTo"><?php echo $value['sessionItemTimeTo'];?></span>
+                                                    <?php 
+                                                            
+                                                            $sessionItemTimeFrom = new DateTime($value['sessionItemTimeFrom']);
+                                                            $sessionItemTimeTo = new DateTime($value['sessionItemTimeTo']);
+                                                            
+                                                            
+                                                            ?>                           
+
+                                                        
+
+                                                        <span class="timeFrom"><?php echo $sessionItemTimeFrom->format('H:i');?></span> - <span
+                                                            class="timeTo"><?php echo $sessionItemTimeTo->format('H:i');?></span>
                                                         : </span>
 
-                                                    </div>
-                                                    <div class="pr-2 pb-0 pt-1">
+                                                    
                                                         <span class="h6 sessionTitle"><?php echo $value['sessionItemTitle'];?></span>
 
                                                         <!--if live stream-->
@@ -591,7 +626,7 @@ $openaccess =1;
                                                                                     ?></p>
                                                     </div>
                                                 </div>
-                                                <hr>
+                                                <hr class="m-2">
 
                                                 <?php }?>
 
@@ -602,7 +637,7 @@ $openaccess =1;
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-sm btn-secondary">Back to programme &nbsp; &nbsp;<i
+                                            <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Back to programme &nbsp; &nbsp;<i
                                                     class="fas fa-arrow-right"></i></button>
                                         </div>
                                     </div>
@@ -838,7 +873,7 @@ $openaccess =1;
 
                                     $programmeDate = new DateTime($response[0]['date']);
                                     
-                                    echo '<div class="col-5 p-1 pb-3 pt-3 border-right" data-toggle="modal" data-target="#modal-' . $programmeDate->format('l') . '-' . $session1data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
+                                    echo '<div class="col-5 p-1 pb-3 pt-3 border-right" style="cursor:pointer !important;" data-toggle="modal" data-target="#modal-' . $programmeDate->format('l') . '-' . $session1data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
                                     <span class="sessionTitle h5">' . $session1data[0]['sessionTitle'] . '</span><br>
                                     <span class="sessionSubtitle">' . $session1data[0]['sessionSubtitle'] . '</span>
                                     </div>';
@@ -874,8 +909,16 @@ $openaccess =1;
                                                                                 
                                                                                 ?>
                                                     <p class="mb-0"><?php echo $programmeDate->format('D d M Y');?>
-                                                        <?php echo ' ' . $response[0]['timeFrom']?> -
-                                                        <?php echo $response[array_key_last($response)]['timeTo']?></p>
+                                                    <?php 
+                                                            
+                                                            $sessionItemTimeFrom = new DateTime($response[0]['timeFrom']);
+                                                            $sessionItemTimeTo = new DateTime($response[array_key_last($response)]['timeTo']);
+                                                            
+                                                            
+                                                            ?>                           
+
+                                                        <?php echo ' ' . $sessionItemTimeFrom->format('H:i')?> -
+                                                        <?php echo $sessionItemTimeTo->format('H:i')?></p>
                                                     <p class="mb-0"><?php echo $response[0]['sessionSubtitle']?></p>
                                                     <p class="mb-0"><?php echo $response[0]['sessionDescription']?></p>
                                                 </div>
@@ -907,7 +950,7 @@ $openaccess =1;
                                                                                     foreach ($moderators as $key=>$value){
                                                                                         echo '<span class="faculty mb-0 mr-1" data="' . $value['facultyid'] . '">';
                                                                                         echo $value['title'] . ' ' . $value['firstname'] . ' ' . $value['surname'];
-                                                                                        echo '</span>';
+                                                                                        echo '</span><br/>';
                                                                                         
                                                                                     if ($edit == 1){
                                                                                         
@@ -934,12 +977,20 @@ $openaccess =1;
                                                 <div class="sessionItem row d-flex align-items-left text-left align-middle">
                                                     <span class="sessionItemid" style="display:none;"><?php echo $value['sessionItemid'];?></span>
                                                     <div class="pl-2 pr-1 pb-0 pt-1 time">
-                                                        <span class="timeFrom"><?php echo $value['sessionItemTimeFrom'];?></span> - <span
-                                                            class="timeTo"><?php echo $value['sessionItemTimeTo'];?></span>
-                                                        : </span>
+                                                    <?php 
+                                                            
+                                                            $sessionItemTimeFrom = new DateTime($value['sessionItemTimeFrom']);
+                                                            $sessionItemTimeTo = new DateTime($value['sessionItemTimeTo']);
+                                                            
+                                                            
+                                                            ?>                           
 
-                                                    </div>
-                                                    <div class="pr-2 pb-0 pt-1">
+                                                        
+
+                                                        <span class="timeFrom"><?php echo $sessionItemTimeFrom->format('H:i');?></span> - <span
+                                                            class="timeTo"><?php echo $sessionItemTimeTo->format('H:i');?></span>
+                                                        : </span>
+                                                    
                                                         <span class="h6 sessionTitle"><?php echo $value['sessionItemTitle'];?></span>
 
                                                         <!--if live stream-->
@@ -975,7 +1026,7 @@ $openaccess =1;
                                                                                     ?></p>
                                                     </div>
                                                 </div>
-                                                <hr>
+                                                <hr class="m-2">
 
                                                 <?php }?>
 
@@ -986,7 +1037,7 @@ $openaccess =1;
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-sm btn-secondary">Back to programme &nbsp; &nbsp;<i
+                                            <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Back to programme &nbsp; &nbsp;<i
                                                     class="fas fa-arrow-right"></i></button>
                                         </div>
                                     </div>
@@ -1041,7 +1092,7 @@ $openaccess =1;
 
                                 $programmeDate = new DateTime($response[0]['date']);
 
-                            echo '<div class="col-5 p-1 pb-3 pt-3 border-right" data-toggle="modal" data-target="#modal-' . $programmeDate->format('l') . '-' . $session2data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
+                            echo '<div class="col-5 p-1 pb-3 pt-3 border-right" style="cursor:pointer !important;" data-toggle="modal" data-target="#modal-' . $programmeDate->format('l') . '-' . $session2data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
                                     <span class="sessionTitle h5">' . $session2data[0]['sessionTitle'] . '</span><br>
                                     <span class="sessionSubtitle">' . $session2data[0]['sessionSubtitle'] . '</span>
                                     </div>';
@@ -1075,8 +1126,16 @@ $openaccess =1;
                                                                                 
                                                                                 ?>
                                                     <p class="mb-0"><?php echo $programmeDate->format('D d M Y');?>
-                                                        <?php echo ' ' . $response[0]['timeFrom']?> -
-                                                        <?php echo $response[array_key_last($response)]['timeTo']?></p>
+                                                    <?php 
+                                                            
+                                                            $sessionItemTimeFrom = new DateTime($response[0]['timeFrom']);
+                                                            $sessionItemTimeTo = new DateTime($response[array_key_last($response)]['timeTo']);
+                                                            
+                                                            
+                                                            ?>                           
+
+                                                        <?php echo ' ' . $sessionItemTimeFrom->format('H:i')?> -
+                                                        <?php echo $sessionItemTimeTo->format('H:i')?></p>
                                                     <p class="mb-0"><?php echo $response[0]['sessionSubtitle']?></p>
                                                     <p class="mb-0"><?php echo $response[0]['sessionDescription']?></p>
                                                 </div>
@@ -1108,7 +1167,7 @@ $openaccess =1;
                                                                                     foreach ($moderators as $key=>$value){
                                                                                         echo '<span class="faculty mb-0 mr-1" data="' . $value['facultyid'] . '">';
                                                                                         echo $value['title'] . ' ' . $value['firstname'] . ' ' . $value['surname'];
-                                                                                        echo '</span>';
+                                                                                        echo '</span><br/>';
                                                                                         
                                                                                     if ($edit == 1){
                                                                                         
@@ -1135,12 +1194,22 @@ $openaccess =1;
                                                 <div class="sessionItem row d-flex align-items-left text-left align-middle">
                                                     <span class="sessionItemid" style="display:none;"><?php echo $value['sessionItemid'];?></span>
                                                     <div class="pl-2 pr-1 pb-0 pt-1 time">
-                                                        <span class="timeFrom"><?php echo $value['sessionItemTimeFrom'];?></span> - <span
-                                                            class="timeTo"><?php echo $value['sessionItemTimeTo'];?></span>
+
+                                                    <?php 
+                                                            
+                                                            $sessionItemTimeFrom = new DateTime($value['sessionItemTimeFrom']);
+                                                            $sessionItemTimeTo = new DateTime($value['sessionItemTimeTo']);
+                                                            
+                                                            
+                                                            ?>                           
+
+                                                        
+
+                                                        <span class="timeFrom"><?php echo $sessionItemTimeFrom->format('H:i');?></span> - <span
+                                                            class="timeTo"><?php echo $sessionItemTimeTo->format('H:i');?></span>
                                                         : </span>
 
-                                                    </div>
-                                                    <div class="pr-2 pb-0 pt-1">
+                                                    
                                                         <span class="h6 sessionTitle"><?php echo $value['sessionItemTitle'];?></span>
 
                                                         <!--if live stream-->
@@ -1176,7 +1245,7 @@ $openaccess =1;
                                                                                     ?></p>
                                                     </div>
                                                 </div>
-                                                <hr>
+                                                <hr class="m-2">
 
                                                 <?php }?>
 
@@ -1187,7 +1256,7 @@ $openaccess =1;
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-sm btn-secondary">Back to programme &nbsp; &nbsp;<i
+                                            <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Back to programme &nbsp; &nbsp;<i
                                                     class="fas fa-arrow-right"></i></button>
                                         </div>
                                     </div>
