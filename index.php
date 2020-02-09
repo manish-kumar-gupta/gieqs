@@ -143,7 +143,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                             <div class="d-none d-lg-block mb-4">
 
                             </div>
-                            <div><a href="https://eu.eventscloud.com/200200203" target="_blank">
+                            <div><a href="<?php echo $registrationURL;?>" target="_blank">
                             <div class="alert alert-modern alert-dark">
                                 <span class="badge gieqsGold badge-pill">
                                     New

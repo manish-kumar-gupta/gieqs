@@ -940,9 +940,9 @@ $formv1 = new formGenerator;
 
 
 <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
-<script src="../../assets/js/purpose.core.js"></script>
+
 <!-- Purpose JS -->
-<script src="../../assets/js/purpose.js"></script>
+
 <?php require BASE_URI . '/footer.php';?>
 
 

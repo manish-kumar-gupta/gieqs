@@ -15,6 +15,8 @@
     
      
      require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
+
+     $registrationURL = 'https://eu.eventscloud.com/200200203';
  ?>
 
  <!--META DATA-->

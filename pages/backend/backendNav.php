@@ -26,8 +26,8 @@
                     <span class="btn-inner--text d-none d-sm-inline-block">Management</span>
                   </button>
                   <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow" aria-labelledby="btn-group-boards">
-                    <a class="dropdown-item" href="board-overview.html">Overview</a>
-                    <a class="dropdown-item" href="board-projects.html">Projects</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/backend.php">Overview</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/socialGenerator.php">Social contact</a>
                     <a class="dropdown-item" href="board-tasks.html">Tasks</a>
                     <a class="dropdown-item" href="board-connections.html">Connections</a>
                   </div>

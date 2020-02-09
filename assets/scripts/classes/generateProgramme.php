@@ -1,6 +1,7 @@
 <?php
 
 $openaccess =1;
+
 			//$requiredUserLevel = 4;
 			require ('../../../assets/includes/config.inc.php');		
 			
@@ -20,691 +21,1205 @@ $openaccess =1;
 
             $data = json_decode(file_get_contents('php://input'), true);
 
-            //print_r($data);
+            
 
             //$sessionid = $data['sessionid'];
 
             //$edit ability; display icons next to editable segments.
 
-            $edit = 1;
+            $edit = FALSE;
+
+            $debug = FALSE;
             
+            if ($debug){
+                echo '<br/><br/>Data Array contains </br></br>';
+                print_r($data);
+
+            }
             
 
 
-                //get session data    
-
-                $response =  $programmeView->generateViewGIEQSmedical();
-
-                print_r($response);
-
-                //get moderators
-
-                $moderators = $sessionView->getModerators($sessionid);
-
-                //print_r($moderators);
-
-                
-
-                //for the first iteration of the array will contain the static programme and session details
-
-                //work on the date
-
-                $programmeDate = new DateTime($response[0]['date']);
-
-                //echo $programmeDate->format('D d M Y');
-
-                //further iterations the same with the sessionItem data
-
-                //generate the HTML
-
-
-
-                ?>
-
-
-<!-- <section class="slice bg-gradient-dark slice-lg">
-            <div class="container"> -->
-<!--  <div class="row text-center">
-
-                    <div class="col-12 p-3 pb-5">
-                        <span class="h1" style="color: rgb(238, 194, 120);">Ghent International Endoscopy Quality
-                            Symposium <br> Edition I. <br>Draft Programme</span>
-                    </div>
-
-                </div> -->
-<!-- <div class="row text-center">
-
-                    <div class="col-12 p-3 pb-4">
-                        
-                        <a href="#targetScrollProgramme" id="wednesday" class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
-                            <span class="btn-inner--text text-dark">Wed 7 Oct</span>
-                        </a>
-                        <a href="#targetScrollProgramme" id="thursday" class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
-                            <span class="btn-inner--text text-dark">Thurs 8 Oct</span>
-                        </a>
-                    </div>
-
-                </div>
-
-                <hr id="targetScrollProgramme" class="divider divider-fade"> -->
-
-
-<!--Wednesday Programme-->
+            ?>
 
 <?php
 
                 //get all programmes [first 4]
 
-                $programmes = $programmeView->getProgrammes();
-                print_r($programmes);
-
-                //foreach programme [first 4]
-
-                $x=0;
-
-                foreach ($programmes as $key=>$value){
-
-                    $programmeDate = new DateTime($value['date']);
-
-                    if ($x<1){
-                ?>
-
-//get day name
-
-//generate date
-
-<div id="<?php echo $programmeDate->format('l');?>Programme" class="<?php echo $programmeDate->format('l');?>">
-    <!--container-->
-
-    <div class="row text-left">
-        <div class="col-12 p-1 pb-3 pt-3">
-            <span class="h5"><?php echo $programmeDate->format('l d M Y');?></span>
-
-        </div>
-    </div>
-
-
-    <?php
-
-                    } //close if x <1
-                    else{
-
-                        continue;
-
-                    }
-
-                    $x++;
-                }  //close foreach prograamme as key value
                 
-            
-                ?>
-
-    <div class="row text-center border">
-
-        <div class="col-2 p-1 pb-3 pt-3 border-right">
-
-        </div>
-
-        <?php
-
-                    $x=0;
-
-                    foreach ($programmes as $key=>$value){
-
-                    //$programmeDate = new DateTime($value['date']);
-                         if ($x<2){
-                        
-                    ?>
 
 
 
+    
 
+//EDIT variable programmes to get MAX 2
 
-        <div class="col-5 p-1 pb-3 pt-3 border-right">
-            <span class="h4"><?php echo $value['programmeTitle'];?></span>
-        </div>
+                        $programme1 = 23;
+                        $programme2 = 25;
 
-
-
-        <?php
-                         } //close if x < 2 if
-                         else{
-
-                            continue;
-                         }
-
-                         $x++;
-
-                    }  //close foreach programme as key value
-                
-            
-                    ?>
-
-
-
-    </div>
-
-
-    <div class="row text-center border-left border-right border-bottom bg-dark">
-        <?php
 
                         $x=0;
                         $y=0;
 
+                        //per day (2 programmes)
+
+                        //echo the title first
+
+                        $programmes = $programmeView->getProgrammes($programme1);
+                        if ($debug){
+
+                            echo '<br/><br/>programmes Array contains </br></br>';
+                             print_r($programmes);
+
+                        }
+                        $programmeDate = new DateTime($programmes[0]['date']);
+                        ?>
+                        <div id="<?php echo $programmeDate->format('l');?>Programme" class="<?php echo $programmeDate->format('l');?>">
+                        <!--container-->
+
+                        <div class="row text-left">
+                            <div class="col-12 p-1 pb-3 pt-3">
+                                <span class="h5"><?php echo $programmeDate->format('l d M Y');?></span>
+
+                            </div>
+                        </div>
+
+                        <div class="row text-center border">
+
+                        <div class="col-2 p-1 pb-3 pt-3 border-right">
+
+                        </div>
+                        <div class="col-5 p-1 pb-3 pt-3 border-right">
+                        <span class="h4"><?php echo $programmes[0]['programmeTitle'];?></span>
+                          </div>
+
+                        </div>
+
+                        <?php
+
+
+                        //rigid time structure
+
+                        $times = array(1=>'08:45:00', 2=>'09:00:00', 3=>'10:00:00', 4=>'10:45:00', 5=>'11:00:00', 6=>'12:00:00', 7=>'12:45:00', 8=>'13:45:00', 9=>'14:15:00', 10=>'15:15:00', 11=>'15:30:00', 12=>'16:30:00', 13=>'17:00:00', 14=>'17:15:00', 15=>'19:30:00');
+                        if ($debug){
+                            echo '<br/><br/>times Array contains </br></br>';
+                            print_r($times);}
+
                         //get array of sessions for first programme
+
+                        /* $sessions1 = $programmeView->getSessions('23');
                         //get array of sessions for second programme
+                        if ($debug){
+                            echo '<br/><br/>sessions1 Array contains </br></br>';
+                            print_r($sessions1);}
 
 
+                        $sessions2 = $programmeView->getSessions('25');
+                        if ($debug){
+                            echo '<br/><br/>sessions2 Array contains </br></br>';
+                            print_r($sessions2);}
+ */
                         //track which ones used in variables
+
+                        foreach ($times as $timeKey=>$timeValue){
+
+                            //query the database for each programme for the details matching that time
+
+                            //get first and second session data //EDIT CHANGE HERE FOR DIFFERENT PROGRAMMES
+                            
+                            $session1data = $programmeView->getSessionTimeSpecific($programme1, $timeValue);
+                            $session2data = $programmeView->getSessionTimeSpecific($programme2, $timeValue);
+
+                            //display the time anyway
+                            
+                            $sessionTimeFrom = new DateTime($timeValue);
+
+                            if ($session1data){
+                            $sessionTimeTo = new DateTime($session1data[0]['timeTo']);
+                            }elseif ($session2data){
+
+                             $sessionTimeTo = new DateTime($session2data[0]['timeTo']);
+                            }
+
+
+                            //IF A BREAK MODIFY EDIT BREAKS HERE
+
+                            if ($timeValue == '10:45:00'){
+                                ?>
+                                <div class="row text-center align-middle border-left border-right border-bottom">
+
+                                    <div class="col-12 p-2 pb-3 pt-3">
+                                        <span class="h5" style="color: rgb(238, 194, 120);">Morning Tea | 15 minutes</span>
+                                    </div>
+
+                                </div>
+                                <?php
+                                continue;
+                            }
+
+                            if ($timeValue == '12:45:00'){
+                                ?>
+                                <div class="row text-center align-middle border-left border-right border-bottom">
+
+                                    
+                                    <div class="col-12 p-2 pb-3 pt-3">
+                                        <span class="h5" style="color: rgb(238, 194, 120);">Lunch | 1 hour</span>
+                                    </div>
+
+                                </div>
+                                <?php
+                                continue;
+                            }
+                            if ($timeValue == '15:15:00'){
+                                ?>
+                                <div class="row text-center align-middle border-left border-right border-bottom">
+
+                                    
+                                    <div class="col-12 p-2 pb-3 pt-3">
+                                        <span class="h5" style="color: rgb(238, 194, 120);">Afternoon Tea | 15 minutes</span>
+                                    </div>
+
+                                </div>
+                                <?php
+                                continue;
+                            }
+                            if ($timeValue == '17:00:00'){
+                                ?>
+                                <div class="row text-center align-middle border-left border-right border-bottom">
+
+                                    
+                                    <div class="col-12 p-2 pb-3 pt-3">
+                                        <span class="h5" style="color: rgb(238, 194, 120);">Break | 15 minutes</span>
+                                    </div>
+
+                                </div>
+                                <?php
+                                continue;
+                            }
+                            if ($timeValue == '19:30:00'){
+                                ?>
+                                <div class="row text-center align-middle border-left border-right border-bottom">
+
+                                    
+                                    <div class="col-12 p-2 pb-3 pt-3">
+                                        <span class="h5" style="color: rgb(238, 194, 120);">1930 - Conference Dinner | Oude Vismijn, Ghent</span>
+                                    </div>
+
+                                </div>
+                                <?php
+                                continue;
+                            }
+
+
+                            //start row
+                            echo '<div class="row text-center align-middle border-left border-right border-bottom bg-dark">';
+                            
+                            echo ' <div class="col-2 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny"
+                                style="color: rgb(238, 194, 120);">' . $sessionTimeFrom->format('H:i'). ' - ' . $sessionTimeTo->format('H:i') . '</span>
+                            </div>';
+
+                            
+
+                            if ($debug){
+                                echo '<br/><br/>session1data Array contains </br></br>';
+                                print_r($session1data);
+                            
+                            }
+
+
+                                if ($session1data){
+                                    //only display data if there is a session in the required programme matching that time
+                                    //if not go to else
+                
+                                    //GET DATA
+
+                                    $response =  $sessionView->generateView($session1data[0]['sessionid']);
+
+                                    if ($debug){
+                                        echo '<br/><br/>response Array contains </br></br>';
+                                        print_r($response);
+
+                                    }
+
+                                    $moderators = $sessionView->getModerators($session1data[0]['sessionid']);
+
+                                    if ($debug){
+                                        echo '<br/><br/>moderators Array contains </br></br>';
+                                        print_r($moderators);
+
+                                    }
+
+                                    $programmeDate = new DateTime($response[0]['date']);
+
+
+                                    echo '<div class="col-5 p-1 pb-3 pt-3 border-right" data-toggle="modal" data-target="#modal-' . $programmeDate->format('l') . '-' . $session1data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
+                                    <span class="sessionTitle h5">' . $session1data[0]['sessionTitle'] . '</span><br>
+                                    <span class="sessionSubtitle">' . $session1data[0]['sessionSubtitle'] . '</span>
+                                    </div>';
+
+                                    //echo the modal for the session
+
+                                    
+
+                                
+
+                                   echo '
+                            <div class="modal fade" id="modal-' . $programmeDate->format('l') . '-' . $session1data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '" tabindex="-1" role="dialog" aria-labelledby="modal-change-username" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <form>';
+                                    ?>
+                                    <div class="modal-content bg-dark border" style="border-color:rgb(238, 194, 120) !important;">
+                                        <div class="modal-header">
+
+                                            <div class="modal-title d-flex align-items-left" id="modal-title-change-username">
+                                                <div>
+                                                    <div class="icon bg-dark icon-sm icon-shape icon-info rounded-circle shadow mr-3">
+                                                        <img src="../../assets/img/icons/gieqsicon.png">
+                                                    </div>
+                                                </div>
+                                                <div class="text-left">
+                                                    <span class="h5 mb-0"><?php echo $response[0]['sessionTitle']?></span>
+                                                    <?php
+                                                                                //$edit=1;
+                                                                                    if ($edit == 1){
+                                                                                        echo '<span class="ml-3 editSession" data="' . $response[0]['sessionid'] . '"><i class="fas fa-edit"></i></span>';
+                                                                
+                                                                                    }
+                                                                                
+                                                                                ?>
+                                                    <p class="mb-0"><?php echo $programmeDate->format('D d M Y');?>
+                                                        <?php echo ' ' . $response[0]['timeFrom']?> -
+                                                        <?php echo $response[array_key_last($response)]['timeTo']?></p>
+                                                    <p class="mb-0"><?php echo $response[0]['sessionSubtitle']?></p>
+                                                    <p class="mb-0"><?php echo $response[0]['sessionDescription']?></p>
+                                                </div>
+
+                                            </div>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span="text-white" aria-hidden="true">&times;</span>
+                                            </button>
+
+                                        </div>
+                                        <div class="modal-subheader px-3 mt-2 mb-2 border-bottom">
+                                            <div class="row">
+                                                <div class="col-sm-12 text-left">
+                                                    <div>
+                                                        <span class="h6 mb-0">Moderators</span>
+                                                        <?php
+                                                                                    if ($edit == 1){
+                                                                                        
+                                                                                        echo '<span class="ml-1 addModerators"><i class="fas fa-plus"></i></span>';
+                                                                
+                                                                                    }
+                                                                                
+                                                                                    
+                                                                                ?>
+                                                        <br />
+
+                                                        <?php
+                                                                
+                                                                                    foreach ($moderators as $key=>$value){
+                                                                                        echo '<span class="faculty mb-0 mr-1" data="' . $value['facultyid'] . '">';
+                                                                                        echo $value['title'] . ' ' . $value['firstname'] . ' ' . $value['surname'];
+                                                                                        echo '</span>';
+                                                                                        
+                                                                                    if ($edit == 1){
+                                                                                        
+                                                                                        echo '<span class="ml-1 mr-3 removeModerators"><i class="fas fa-minus"></i></span>';
+                                                                
+                                                                                    }
+                                                                                
+                                                                            
+                                                                
+                                                                                    }
+                                                                                    
+                                                                                    ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <div class="programme-body">
+                                                <?php foreach ($response as $key=>$value){
+                                                                                        ?>
+
+
+                                                <div class="sessionItem row d-flex align-items-left text-left align-middle">
+                                                    <span class="sessionItemid" style="display:none;"><?php echo $value['sessionItemid'];?></span>
+                                                    <div class="pl-2 pr-1 pb-0 pt-1 time">
+                                                        <span class="timeFrom"><?php echo $value['sessionItemTimeFrom'];?></span> - <span
+                                                            class="timeTo"><?php echo $value['sessionItemTimeTo'];?></span>
+                                                        : </span>
+
+                                                    </div>
+                                                    <div class="pr-2 pb-0 pt-1">
+                                                        <span class="h6 sessionTitle"><?php echo $value['sessionItemTitle'];?></span>
+
+                                                        <!--if live stream-->
+                                                        <!--if sessionItem.live == 1-->
+                                                        <?php if ($value['live'] == 1){?>
+                                                        <span class="badge text-white ml-3" style="background-color:rgb(238, 194, 120) !important;">Live
+                                                            </span>
+
+                                                        <?php }
+                                                                
+                                                                                    if ($edit == 1){
+                                                                                        echo '<span class="ml-3 editSessionItem"><i class="fas fa-edit"></i></span>';
+                                                                                        echo '<span class="ml-3 addSessionItem"><i class="fas fa-plus"></i></span>';
+                                                                                        echo '<span class="ml-3 deleteSessionItem"><i class="fas fa-times"></i></span>';
+                                                                
+                                                                                    }
+                                                                                    ?>
+
+                                                    </div>
+
+                                                </div>
+                                                <div class="row d-flex align-items-left text-left align-middle">
+                                                    <div class="pl-3 pr-1 pb-0 pt-0 time">
+                                                        <span class="sessionDescription"><?php echo $value['sessionItemDescription'];?></span>
+
+                                                        <p class="pt-2 h6 faculty"><?php 
+                                                                                    
+                                                                                    $faculty = $sessionView->getFacultyName($value['faculty']);
+                                                                
+                                                                                    echo $faculty['title'] . ' ' . $faculty['firstname'] . ' ' . $faculty['surname'];
+                                                                                    
+                                                                                    
+                                                                                    ?></p>
+                                                    </div>
+                                                </div>
+                                                <hr>
+
+                                                <?php }?>
+
+                                            </div>
+
+                                            <div class="px-5 pt-2 mt-2 mb-2 pb-2 text-center">
+                                                <p class="text-muted text-sm">Programme subject to change without notice.</p>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Back to programme &nbsp; &nbsp;<i
+                                                    class="fas fa-arrow-right"></i></button>
+                                        </div>
+                                    </div>
+
+                                    </form>
+                                </div>
+                                </div>
+
+
+                                <?php
+
+                                }else{
+
+                                    echo '<div class="col-5 p-1 pb-3 pt-3 border-right">
+                                    <span class="sessionTitle h5"></span><br>
+                                    <span class="sessionSubtitle"></span>
+                                    </div>';
+
+                                }
+
+                                //check the second session
+
+                            
+
+                            if ($debug){
+                                echo '<br/><br/>session2data Array contains </br></br>';
+                                print_r($session2data);
+                            
+                            }
+
+                            //insert a new div
+
+                            if ($session2data){
+
+
+                                
+                                $response =  $sessionView->generateView($session2data[0]['sessionid']);
+
+                                if ($debug){
+                                    echo '<br/><br/>response Array contains </br></br>';
+                                    print_r($response);
+
+                                }
+
+                                $moderators = $sessionView->getModerators($session2data[0]['sessionid']);
+
+                                if ($debug){
+                                    echo '<br/><br/>moderators Array contains </br></br>';
+                                    print_r($moderators);
+
+                                }
+
+                                $programmeDate = new DateTime($response[0]['date']);
+                                
+                            echo '<div class="col-5 p-1 pb-3 pt-3 border-right" data-toggle="modal" data-target="#modal-' . $programmeDate->format('l') . '-' . $session2data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
+                                    <span class="sessionTitle h5">' . $session2data[0]['sessionTitle'] . '</span><br>
+                                    <span class="sessionSubtitle">' . $session2data[0]['sessionSubtitle'] . '</span>
+                                    </div>';
+
+                                    //echo the modal for the session
+
+
+                                
+
+                                   echo '
+                            <div class="modal fade" id="modal-' . $programmeDate->format('l') . '-' . $session2data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '" tabindex="-1" role="dialog" aria-labelledby="modal-change-username" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <form>';
+                                    ?>
+                                    <div class="modal-content bg-dark border" style="border-color:rgb(238, 194, 120) !important;">
+                                        <div class="modal-header">
+
+                                            <div class="modal-title d-flex align-items-left" id="modal-title-change-username">
+                                                <div>
+                                                    <div class="icon bg-dark icon-sm icon-shape icon-info rounded-circle shadow mr-3">
+                                                        <img src="../../assets/img/icons/gieqsicon.png">
+                                                    </div>
+                                                </div>
+                                                <div class="text-left">
+                                                    <span class="h5 mb-0"><?php echo $response[0]['sessionTitle']?></span>
+                                                    <?php
+                                                                                //$edit=1;
+                                                                                    if ($edit == 1){
+                                                                                        echo '<span class="ml-3 editSession" data="' . $response[0]['sessionid'] . '"><i class="fas fa-edit"></i></span>';
+                                                                
+                                                                                    }
+                                                                                
+                                                                                ?>
+                                                    <p class="mb-0"><?php echo $programmeDate->format('D d M Y');?>
+                                                        <?php echo ' ' . $response[0]['timeFrom']?> -
+                                                        <?php echo $response[array_key_last($response)]['timeTo']?></p>
+                                                    <p class="mb-0"><?php echo $response[0]['sessionSubtitle']?></p>
+                                                    <p class="mb-0"><?php echo $response[0]['sessionDescription']?></p>
+                                                </div>
+
+                                            </div>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span="text-white" aria-hidden="true">&times;</span>
+                                            </button>
+
+                                        </div>
+                                        <div class="modal-subheader px-3 mt-2 mb-2 border-bottom">
+                                            <div class="row">
+                                                <div class="col-sm-12 text-left">
+                                                    <div>
+                                                        <span class="h6 mb-0">Moderators</span>
+                                                        <?php
+                                                                                    if ($edit == 1){
+                                                                                        
+                                                                                        echo '<span class="ml-1 addModerators"><i class="fas fa-plus"></i></span>';
+                                                                
+                                                                                    }
+                                                                                
+                                                                                    
+                                                                                ?>
+                                                        <br />
+
+                                                        <?php
+                                                                
+                                                                                    foreach ($moderators as $key=>$value){
+                                                                                        echo '<span class="faculty mb-0 mr-1" data="' . $value['facultyid'] . '">';
+                                                                                        echo $value['title'] . ' ' . $value['firstname'] . ' ' . $value['surname'];
+                                                                                        echo '</span>';
+                                                                                        
+                                                                                    if ($edit == 1){
+                                                                                        
+                                                                                        echo '<span class="ml-1 mr-3 removeModerators"><i class="fas fa-minus"></i></span>';
+                                                                
+                                                                                    }
+                                                                                
+                                                                            
+                                                                
+                                                                                    }
+                                                                                    
+                                                                                    ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <div class="programme-body">
+                                                <?php foreach ($response as $key=>$value){
+                                                                                        ?>
+
+
+                                                <div class="sessionItem row d-flex align-items-left text-left align-middle">
+                                                    <span class="sessionItemid" style="display:none;"><?php echo $value['sessionItemid'];?></span>
+                                                    <div class="pl-2 pr-1 pb-0 pt-1 time">
+                                                        <span class="timeFrom"><?php echo $value['sessionItemTimeFrom'];?></span> - <span
+                                                            class="timeTo"><?php echo $value['sessionItemTimeTo'];?></span>
+                                                        : </span>
+
+                                                    </div>
+                                                    <div class="pr-2 pb-0 pt-1">
+                                                        <span class="h6 sessionTitle"><?php echo $value['sessionItemTitle'];?></span>
+
+                                                        <!--if live stream-->
+                                                        <!--if sessionItem.live == 1-->
+                                                        <?php if ($value['live'] == 1){?>
+                                                        <span class="badge text-white ml-3" style="background-color:rgb(238, 194, 120) !important;">Live
+                                                            </span>
+
+                                                        <?php }
+                                                                
+                                                                                    if ($edit == 1){
+                                                                                        echo '<span class="ml-3 editSessionItem"><i class="fas fa-edit"></i></span>';
+                                                                                        echo '<span class="ml-3 addSessionItem"><i class="fas fa-plus"></i></span>';
+                                                                                        echo '<span class="ml-3 deleteSessionItem"><i class="fas fa-times"></i></span>';
+                                                                
+                                                                                    }
+                                                                                    ?>
+
+                                                    </div>
+
+                                                </div>
+                                                <div class="row d-flex align-items-left text-left align-middle">
+                                                    <div class="pl-3 pr-1 pb-0 pt-0 time">
+                                                        <span class="sessionDescription"><?php echo $value['sessionItemDescription'];?></span>
+
+                                                        <p class="pt-2 h6 faculty"><?php 
+                                                                                    
+                                                                                    $faculty = $sessionView->getFacultyName($value['faculty']);
+                                                                
+                                                                                    echo $faculty['title'] . ' ' . $faculty['firstname'] . ' ' . $faculty['surname'];
+                                                                                    
+                                                                                    
+                                                                                    ?></p>
+                                                    </div>
+                                                </div>
+                                                <hr>
+
+                                                <?php }?>
+
+                                            </div>
+
+                                            <div class="px-5 pt-2 mt-2 mb-2 pb-2 text-center">
+                                                <p class="text-muted text-sm">Programme subject to change without notice.</p>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-sm btn-secondary">Back to programme &nbsp; &nbsp;<i
+                                                    class="fas fa-arrow-right"></i></button>
+                                        </div>
+                                    </div>
+
+                                    </form>
+                                </div>
+                                </div>
+
+
+                                <?php
+                            
+                           
+                            }else{
+
+                                echo '<div class="col-5 p-1 pb-3 pt-3 border-right">
+                                <span class="sessionTitle h5"></span><br>
+                                <span class="sessionSubtitle"></span>
+                                </div>';
+
+                            }
+                                    
+                            //end row
+                            echo '</div>';
+
+                        } //close times foreach
 
                         //for [0] get first, then check [matches] if not do not add to counter and insert blank column
                         //if yes add another column
 
-                        foreach ($programmes as $key=>$value){
-
-                            $programmeDate = new DateTime($value['date']);
-
-                            if ($x<2){
-
-                            //get session items for programme id [1-2]
-                            $sessions = $programmeView->getSessions($value['programmeid']);
-
-                            print_r($sessions);
-
-                             
                         ?>
 
-        <div class="col-1 p-1 pb-3 pt-3 border-right">
-            <span class="tiny"
-                style="color: rgb(238, 194, 120);"><?php echo $sessions[0]['timeFrom'] . ' - ' . $sessions[0]['timeTo']?></span>
-        </div>
+</div> <!--CLOSE CONTAINER DIV-->
+
+<?php
+
+//EDIT variable programmes to get MAX 2
 
 
-        <?php
+                        //THURSDAY PROGRAMME MEDICAL
+                        $programme1 = 29;
+                        $programme2 = 30;
+
+
+                        $x=0;
+                        $y=0;
+
+                        //per day (2 programmes)
+
+                        //echo the title first
+
+                        $programmes = $programmeView->getProgrammes($programme1);
+                        if ($debug){
+
+                            echo '<br/><br/>programmes Array contains </br></br>';
+                             print_r($programmes);
+
+                        }
+                        $programmeDate = new DateTime($programmes[0]['date']);
+                        ?>
+                        <div id="<?php echo $programmeDate->format('l');?>Programme" class="<?php echo $programmeDate->format('l');?>">
+                        <!--container-->
+
+                        <div class="row text-left">
+                            <div class="col-12 p-1 pb-3 pt-3">
+                                <span class="h5"><?php echo $programmeDate->format('l d M Y');?></span>
+
+                            </div>
+                        </div>
+
+                        <div class="row text-center border">
+
+                        <div class="col-2 p-1 pb-3 pt-3 border-right">
+
+                        </div>
+                        <div class="col-5 p-1 pb-3 pt-3 border-right">
+                        <span class="h4"><?php echo $programmes[0]['programmeTitle'];?></span>
+                          </div>
+
+                        </div>
+
+                        <?php
+
+
+                        //rigid time structure
+
+                        $times = array(1=>'08:45:00', 2=>'09:00:00', 3=>'10:00:00', 4=>'10:45:00', 5=>'11:00:00', 6=>'12:00:00', 7=>'12:45:00', 8=>'13:45:00', 9=>'14:15:00', 10=>'15:15:00', 11=>'15:30:00', 12=>'16:30:00', 13=>'17:00:00', 14=>'17:15:00');
+                        if ($debug){
+                            echo '<br/><br/>times Array contains </br></br>';
+                            print_r($times);}
+
+                        //get array of sessions for first programme
+
+                        /* $sessions1 = $programmeView->getSessions('23');
+                        //get array of sessions for second programme
+                        if ($debug){
+                            echo '<br/><br/>sessions1 Array contains </br></br>';
+                            print_r($sessions1);}
+
+
+                        $sessions2 = $programmeView->getSessions('25');
+                        if ($debug){
+                            echo '<br/><br/>sessions2 Array contains </br></br>';
+                            print_r($sessions2);}
+ */
+                        //track which ones used in variables
+
+                        foreach ($times as $timeKey=>$timeValue){
+
+                            //query the database for each programme for the details matching that time
+
+                            //get first and second session data //EDIT CHANGE HERE FOR DIFFERENT PROGRAMMES
                             
-                                foreach ($sessions as $key=>$value){  //TODO first 1
-                                    ?>
+                            $session1data = $programmeView->getSessionTimeSpecific($programme1, $timeValue);
+                            $session2data = $programmeView->getSessionTimeSpecific($programme2, $timeValue);
 
-                                    <div class="col-4 p-1 pb-3 pt-3 border-right">
-                                    <span class="sessionTitle h5"><?php echo $value['sessionTitle']?></span><br>
-                                    <span class="sessionSubtitle"><?php echo $value['sessionSubtitle']?></span>
+                            //display the time anyway
+                            
+                            $sessionTimeFrom = new DateTime($timeValue);
+
+                            if ($session1data){
+                            $sessionTimeTo = new DateTime($session1data[0]['timeTo']);
+                            }elseif ($session2data){
+
+                             $sessionTimeTo = new DateTime($session2data[0]['timeTo']);
+                            }
+
+
+                            //IF A BREAK MODIFY EDIT BREAKS HERE
+
+                            if ($timeValue == '10:45:00'){
+                                ?>
+                                <div class="row text-center align-middle border-left border-right border-bottom">
+
+                                    <div class="col-12 p-2 pb-3 pt-3">
+                                        <span class="h5" style="color: rgb(238, 194, 120);">Morning Tea | 15 minutes</span>
                                     </div>
-                        
-                               
+
+                                </div>
+                                <?php
+                                continue;
+                            }
+
+                            if ($timeValue == '12:45:00'){
+                                ?>
+                                <div class="row text-center align-middle border-left border-right border-bottom">
+
+                                    
+                                    <div class="col-12 p-2 pb-3 pt-3">
+                                        <span class="h5" style="color: rgb(238, 194, 120);">Lunch | 1 hour</span>
+                                    </div>
+
+                                </div>
+                                <?php
+                                continue;
+                            }
+                            if ($timeValue == '15:15:00'){
+                                ?>
+                                <div class="row text-center align-middle border-left border-right border-bottom">
+
+                                    
+                                    <div class="col-12 p-2 pb-3 pt-3">
+                                        <span class="h5" style="color: rgb(238, 194, 120);">Afternoon Tea | 15 minutes</span>
+                                    </div>
+
+                                </div>
+                                <?php
+                                continue;
+                            }
+                            if ($timeValue == '17:00:00'){
+                                ?>
+                                <div class="row text-center align-middle border-left border-right border-bottom">
+
+                                    
+                                    <div class="col-12 p-2 pb-3 pt-3">
+                                        <span class="h5" style="color: rgb(238, 194, 120);">Break | 15 minutes</span>
+                                    </div>
+
+                                </div>
+                                <?php
+                                continue;
+                            }
+                            if ($timeValue == '19:30:00'){
+                                ?>
+                                <div class="row text-center align-middle border-left border-right border-bottom">
+
+                                    
+                                    <div class="col-12 p-2 pb-3 pt-3">
+                                        <span class="h5" style="color: rgb(238, 194, 120);">1930 - Conference Dinner | Oude Vismijn, Ghent</span>
+                                    </div>
+
+                                </div>
+                                <?php
+                                continue;
+                            }
+
+
+                            //start row
+                            echo '<div class="row text-center align-middle border-left border-right border-bottom bg-dark">';
+                            
+                            echo ' <div class="col-2 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny"
+                                style="color: rgb(238, 194, 120);">' . $sessionTimeFrom->format('H:i'). ' - ' . $sessionTimeTo->format('H:i') . '</span>
+                            </div>';
+
+                            
+
+                            if ($debug){
+                                echo '<br/><br/>session1data Array contains </br></br>';
+                                print_r($session1data);
+                            
+                            }
+
+
+                                if ($session1data){
+                                    //only display data if there is a session in the required programme matching that time
+                                    //if not go to else
+                
+                                    $response =  $sessionView->generateView($session1data[0]['sessionid']);
+
+                                    if ($debug){
+                                        echo '<br/><br/>response Array contains </br></br>';
+                                        print_r($response);
+
+                                    }
+
+                                    $moderators = $sessionView->getModerators($session1data[0]['sessionid']);
+
+                                    if ($debug){
+                                        echo '<br/><br/>moderators Array contains </br></br>';
+                                        print_r($moderators);
+
+                                    }
+
+                                    $programmeDate = new DateTime($response[0]['date']);
+                                    
+                                    echo '<div class="col-5 p-1 pb-3 pt-3 border-right" data-toggle="modal" data-target="#modal-' . $programmeDate->format('l') . '-' . $session1data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
+                                    <span class="sessionTitle h5">' . $session1data[0]['sessionTitle'] . '</span><br>
+                                    <span class="sessionSubtitle">' . $session1data[0]['sessionSubtitle'] . '</span>
+                                    </div>';
+
+                                    //echo the modal for the session
+
                                     
 
+                                
+
+                                   echo '
+                            <div class="modal fade" id="modal-' . $programmeDate->format('l') . '-' . $session1data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '" tabindex="-1" role="dialog" aria-labelledby="modal-change-username" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <form>';
+                                    ?>
+                                    <div class="modal-content bg-dark border" style="border-color:rgb(238, 194, 120) !important;">
+                                        <div class="modal-header">
+
+                                            <div class="modal-title d-flex align-items-left" id="modal-title-change-username">
+                                                <div>
+                                                    <div class="icon bg-dark icon-sm icon-shape icon-info rounded-circle shadow mr-3">
+                                                        <img src="../../assets/img/icons/gieqsicon.png">
+                                                    </div>
+                                                </div>
+                                                <div class="text-left">
+                                                    <span class="h5 mb-0"><?php echo $response[0]['sessionTitle']?></span>
+                                                    <?php
+                                                                                //$edit=1;
+                                                                                    if ($edit == 1){
+                                                                                        echo '<span class="ml-3 editSession" data="' . $response[0]['sessionid'] . '"><i class="fas fa-edit"></i></span>';
+                                                                
+                                                                                    }
+                                                                                
+                                                                                ?>
+                                                    <p class="mb-0"><?php echo $programmeDate->format('D d M Y');?>
+                                                        <?php echo ' ' . $response[0]['timeFrom']?> -
+                                                        <?php echo $response[array_key_last($response)]['timeTo']?></p>
+                                                    <p class="mb-0"><?php echo $response[0]['sessionSubtitle']?></p>
+                                                    <p class="mb-0"><?php echo $response[0]['sessionDescription']?></p>
+                                                </div>
+
+                                            </div>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span="text-white" aria-hidden="true">&times;</span>
+                                            </button>
+
+                                        </div>
+                                        <div class="modal-subheader px-3 mt-2 mb-2 border-bottom">
+                                            <div class="row">
+                                                <div class="col-sm-12 text-left">
+                                                    <div>
+                                                        <span class="h6 mb-0">Moderators</span>
+                                                        <?php
+                                                                                    if ($edit == 1){
+                                                                                        
+                                                                                        echo '<span class="ml-1 addModerators"><i class="fas fa-plus"></i></span>';
+                                                                
+                                                                                    }
+                                                                                
+                                                                                    
+                                                                                ?>
+                                                        <br />
+
+                                                        <?php
+                                                                
+                                                                                    foreach ($moderators as $key=>$value){
+                                                                                        echo '<span class="faculty mb-0 mr-1" data="' . $value['facultyid'] . '">';
+                                                                                        echo $value['title'] . ' ' . $value['firstname'] . ' ' . $value['surname'];
+                                                                                        echo '</span>';
+                                                                                        
+                                                                                    if ($edit == 1){
+                                                                                        
+                                                                                        echo '<span class="ml-1 mr-3 removeModerators"><i class="fas fa-minus"></i></span>';
+                                                                
+                                                                                    }
+                                                                                
+                                                                            
+                                                                
+                                                                                    }
+                                                                                    
+                                                                                    ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <div class="programme-body">
+                                                <?php foreach ($response as $key=>$value){
+                                                                                        ?>
+
+
+                                                <div class="sessionItem row d-flex align-items-left text-left align-middle">
+                                                    <span class="sessionItemid" style="display:none;"><?php echo $value['sessionItemid'];?></span>
+                                                    <div class="pl-2 pr-1 pb-0 pt-1 time">
+                                                        <span class="timeFrom"><?php echo $value['sessionItemTimeFrom'];?></span> - <span
+                                                            class="timeTo"><?php echo $value['sessionItemTimeTo'];?></span>
+                                                        : </span>
+
+                                                    </div>
+                                                    <div class="pr-2 pb-0 pt-1">
+                                                        <span class="h6 sessionTitle"><?php echo $value['sessionItemTitle'];?></span>
+
+                                                        <!--if live stream-->
+                                                        <!--if sessionItem.live == 1-->
+                                                        <?php if ($value['live'] == 1){?>
+                                                        <span class="badge text-white ml-3" style="background-color:rgb(238, 194, 120) !important;">Live
+                                                            Stream</span>
+
+                                                        <?php }
+                                                                
+                                                                                    if ($edit == 1){
+                                                                                        echo '<span class="ml-3 editSessionItem"><i class="fas fa-edit"></i></span>';
+                                                                                        echo '<span class="ml-3 addSessionItem"><i class="fas fa-plus"></i></span>';
+                                                                                        echo '<span class="ml-3 deleteSessionItem"><i class="fas fa-times"></i></span>';
+                                                                
+                                                                                    }
+                                                                                    ?>
 
-                               <?php     
+                                                    </div>
 
-                                    //if timeFrom not the same insert a blank column
+                                                </div>
+                                                <div class="row d-flex align-items-left text-left align-middle">
+                                                    <div class="pl-3 pr-1 pb-0 pt-0 time">
+                                                        <span class="sessionDescription"><?php echo $value['sessionItemDescription'];?></span>
 
+                                                        <p class="pt-2 h6 faculty"><?php 
+                                                                                    
+                                                                                    $faculty = $sessionView->getFacultyName($value['faculty']);
+                                                                
+                                                                                    echo $faculty['title'] . ' ' . $faculty['firstname'] . ' ' . $faculty['surname'];
+                                                                                    
+                                                                                    
+                                                                                    ?></p>
+                                                    </div>
+                                                </div>
+                                                <hr>
+
+                                                <?php }?>
+
+                                            </div>
+
+                                            <div class="px-5 pt-2 mt-2 mb-2 pb-2 text-center">
+                                                <p class="text-muted text-sm">Programme subject to change without notice.</p>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-sm btn-secondary">Back to programme &nbsp; &nbsp;<i
+                                                    class="fas fa-arrow-right"></i></button>
+                                        </div>
+                                    </div>
+
+                                    </form>
+                                </div>
+                                </div>
+
+
+                                <?php
+
+                                }else{
+
+                                    echo '<div class="col-5 p-1 pb-3 pt-3 border-right">
+                                    <span class="sessionTitle h5"></span><br>
+                                    <span class="sessionSubtitle"></span>
+                                    </div>';
+
+                                }
+
+                                //check the second session
+
+                            
+
+                            if ($debug){
+                                echo '<br/><br/>session2data Array contains </br></br>';
+                                print_r($session2data);
+                            
+                            }
+
+                            //insert a new div
+
+                            if ($session2data){
+
+                                //echo the modal for the session
+
+                                $response =  $sessionView->generateView($session2data[0]['sessionid']);
+
+                                if ($debug){
+                                    echo '<br/><br/>response Array contains </br></br>';
+                                    print_r($response);
+
+                                }
+
+                                $moderators = $sessionView->getModerators($session2data[0]['sessionid']);
+
+                                if ($debug){
+                                    echo '<br/><br/>moderators Array contains </br></br>';
+                                    print_r($moderators);
+
+                                }
+
+                                $programmeDate = new DateTime($response[0]['date']);
+
+                            echo '<div class="col-5 p-1 pb-3 pt-3 border-right" data-toggle="modal" data-target="#modal-' . $programmeDate->format('l') . '-' . $session2data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
+                                    <span class="sessionTitle h5">' . $session2data[0]['sessionTitle'] . '</span><br>
+                                    <span class="sessionSubtitle">' . $session2data[0]['sessionSubtitle'] . '</span>
+                                    </div>';
+
+                                    
+
+                                
+
+                                   echo '
+                            <div class="modal fade" id="modal-' . $programmeDate->format('l') . '-' . $session2data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '" tabindex="-1" role="dialog" aria-labelledby="modal-change-username" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <form>';
+                                    ?>
+                                    <div class="modal-content bg-dark border" style="border-color:rgb(238, 194, 120) !important;">
+                                        <div class="modal-header">
+
+                                            <div class="modal-title d-flex align-items-left" id="modal-title-change-username">
+                                                <div>
+                                                    <div class="icon bg-dark icon-sm icon-shape icon-info rounded-circle shadow mr-3">
+                                                        <img src="../../assets/img/icons/gieqsicon.png">
+                                                    </div>
+                                                </div>
+                                                <div class="text-left">
+                                                    <span class="h5 mb-0"><?php echo $response[0]['sessionTitle']?></span>
+                                                    <?php
+                                                                                //$edit=1;
+                                                                                    if ($edit == 1){
+                                                                                        echo '<span class="ml-3 editSession" data="' . $response[0]['sessionid'] . '"><i class="fas fa-edit"></i></span>';
+                                                                
+                                                                                    }
+                                                                                
+                                                                                ?>
+                                                    <p class="mb-0"><?php echo $programmeDate->format('D d M Y');?>
+                                                        <?php echo ' ' . $response[0]['timeFrom']?> -
+                                                        <?php echo $response[array_key_last($response)]['timeTo']?></p>
+                                                    <p class="mb-0"><?php echo $response[0]['sessionSubtitle']?></p>
+                                                    <p class="mb-0"><?php echo $response[0]['sessionDescription']?></p>
+                                                </div>
+
+                                            </div>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span="text-white" aria-hidden="true">&times;</span>
+                                            </button>
+
+                                        </div>
+                                        <div class="modal-subheader px-3 mt-2 mb-2 border-bottom">
+                                            <div class="row">
+                                                <div class="col-sm-12 text-left">
+                                                    <div>
+                                                        <span class="h6 mb-0">Moderators</span>
+                                                        <?php
+                                                                                    if ($edit == 1){
+                                                                                        
+                                                                                        echo '<span class="ml-1 addModerators"><i class="fas fa-plus"></i></span>';
+                                                                
+                                                                                    }
+                                                                                
+                                                                                    
+                                                                                ?>
+                                                        <br />
+
+                                                        <?php
+                                                                
+                                                                                    foreach ($moderators as $key=>$value){
+                                                                                        echo '<span class="faculty mb-0 mr-1" data="' . $value['facultyid'] . '">';
+                                                                                        echo $value['title'] . ' ' . $value['firstname'] . ' ' . $value['surname'];
+                                                                                        echo '</span>';
+                                                                                        
+                                                                                    if ($edit == 1){
+                                                                                        
+                                                                                        echo '<span class="ml-1 mr-3 removeModerators"><i class="fas fa-minus"></i></span>';
+                                                                
+                                                                                    }
+                                                                                
+                                                                            
+                                                                
+                                                                                    }
+                                                                                    
+                                                                                    ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <div class="programme-body">
+                                                <?php foreach ($response as $key=>$value){
+                                                                                        ?>
+
+
+                                                <div class="sessionItem row d-flex align-items-left text-left align-middle">
+                                                    <span class="sessionItemid" style="display:none;"><?php echo $value['sessionItemid'];?></span>
+                                                    <div class="pl-2 pr-1 pb-0 pt-1 time">
+                                                        <span class="timeFrom"><?php echo $value['sessionItemTimeFrom'];?></span> - <span
+                                                            class="timeTo"><?php echo $value['sessionItemTimeTo'];?></span>
+                                                        : </span>
+
+                                                    </div>
+                                                    <div class="pr-2 pb-0 pt-1">
+                                                        <span class="h6 sessionTitle"><?php echo $value['sessionItemTitle'];?></span>
+
+                                                        <!--if live stream-->
+                                                        <!--if sessionItem.live == 1-->
+                                                        <?php if ($value['live'] == 1){?>
+                                                        <span class="badge text-white ml-3" style="background-color:rgb(238, 194, 120) !important;">Live
+                                                            Stream</span>
+
+                                                        <?php }
+                                                                
+                                                                                    if ($edit == 1){
+                                                                                        echo '<span class="ml-3 editSessionItem"><i class="fas fa-edit"></i></span>';
+                                                                                        echo '<span class="ml-3 addSessionItem"><i class="fas fa-plus"></i></span>';
+                                                                                        echo '<span class="ml-3 deleteSessionItem"><i class="fas fa-times"></i></span>';
+                                                                
+                                                                                    }
+                                                                                    ?>
+
+                                                    </div>
+
+                                                </div>
+                                                <div class="row d-flex align-items-left text-left align-middle">
+                                                    <div class="pl-3 pr-1 pb-0 pt-0 time">
+                                                        <span class="sessionDescription"><?php echo $value['sessionItemDescription'];?></span>
+
+                                                        <p class="pt-2 h6 faculty"><?php 
+                                                                                    
+                                                                                    $faculty = $sessionView->getFacultyName($value['faculty']);
+                                                                
+                                                                                    echo $faculty['title'] . ' ' . $faculty['firstname'] . ' ' . $faculty['surname'];
+                                                                                    
+                                                                                    
+                                                                                    ?></p>
+                                                    </div>
+                                                </div>
+                                                <hr>
+
+                                                <?php }?>
+
+                                            </div>
+
+                                            <div class="px-5 pt-2 mt-2 mb-2 pb-2 text-center">
+                                                <p class="text-muted text-sm">Programme subject to change without notice.</p>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-sm btn-secondary">Back to programme &nbsp; &nbsp;<i
+                                                    class="fas fa-arrow-right"></i></button>
+                                        </div>
+                                    </div>
+
+                                    </form>
+                                </div>
+                                </div>
+
+
+                                <?php
+                            
+                           
+                            }else{
+
+                                echo '<div class="col-5 p-1 pb-3 pt-3 border-right">
+                                <span class="sessionTitle h5"></span><br>
+                                <span class="sessionSubtitle"></span>
+                                </div>';
+
+                            }
+                                    
+                            //end row
+                            echo '</div>';
+
+                        } //close times foreach
+
+                        //for [0] get first, then check [matches] if not do not add to counter and insert blank column
+                        //if yes add another column
 
-                                }  // close sessions loop
-
-                            }//close if
-
-                            $x++;
-                        
-                        } //close foreach programme loop
-
-                    ?>
-
-
-
-
-
-       
-
-        
-
-
-
-    </div>
-
-    <div class="row text-center border-left border-right border-bottom bg-dark">
-
-        <div class="col-1 p-1 pb-3 pt-3 border-right">
-            <span class="tiny" style="color: rgb(238, 194, 120);">0900-1000</span>
-        </div>
-
-        <div class="col-4 p-1 pb-3 pt-3 border-right">
-            <span class="sessionTitle h5">Optimal Colonoscopy Technique</span><br>
-            <span class="sessionSubtitle">Intubation, withdrawal and diminutive polyps</span>
-        </div>
-
-        <div class="col-4 p-1 pb-3 pt-3 border-right">
-            <span class="h5"></span><br>
-            <span></span>
-        </div>
-
-        <div class="col-3 p-1 pb-3 pt-3">
-            <span class="h5"></span><br>
-            <span></span>
-        </div>
-
-
-
-    </div>
-
-    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
-
-        <div class="col-1 p-1 pb-3 pt-3 border-right">
-            <span class="tiny" style="color: rgb(238, 194, 120);">1000-1045</span>
-        </div>
-
-        <div class="col-4 p-1 pb-3 pt-3 border-right">
-            <span class="h5"></span><br>
-            <span></span>
-        </div>
-
-        <div class="col-4 p-1 pb-3 pt-3 border-right">
-            <span class="sessionTitle h5">Live ERCP technique</span><br>
-            <span class="sessionSubtitle">Papillary morphology versus technique</span>
-        </div>
-
-        <div class="col-3 p-1 pb-3 pt-3">
-            <span class="sessionTitle h5">Live Colonoscopy technique</span><br>
-            <span class="sessionSubtitle">Quicker, painless intubation</span>
-        </div>
-
-
-
-    </div>
-
-    <div class="row text-center align-middle border-left border-right border-bottom">
-
-        <div class="col-12 p-2 pb-3 pt-3">
-            <span class="h5" style="color: rgb(238, 194, 120);">Morning Tea</span>
-        </div>
-
-
-
-
-    </div>
-
-    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
-
-        <div class="col-1 p-1 pb-3 pt-3 border-right">
-            <span class="tiny" style="color: rgb(238, 194, 120);">1100-1200</span>
-        </div>
-
-        <div class="col-4 p-1 pb-3 pt-3 border-right">
-            <span class="sessionTitle h5">GI bleeding symposium</span><br>
-            <span class="sessionSubtitle">Techniques for effective hemostasis</span>
-        </div>
-
-        <div class="col-4 p-1 pb-3 pt-3 border-right">
-            <span class="sessionTitle h5">Basic ERCP symposium</span><br>
-            <span class="sessionSubtitle">Stones, stents and strictures</span>
-        </div>
-
-        <div class="col-3 p-1 pb-3 pt-3">
-            <span class="sessionTitle h5">Live GIB / ERCP</span><br>
-            <span class="sessionSubtitle">Best practice techniques</span>
-        </div>
-
-
-
-    </div>
-    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
-
-        <div class="col-1 p-1 pb-3 pt-3 border-right">
-            <span class="tiny" style="color: rgb(238, 194, 120);">1200-1245</span>
-        </div>
-
-        <div class="col-4 p-1 pb-3 pt-3 border-right">
-            <span class="sessionTitle h5">Difficult GI bleeding</span><br>
-            <span class="sessionSubtitle">Use of new techniques as first line</span>
-        </div>
-
-        <div class="col-4 p-1 pb-3 pt-3 border-right">
-            <span class="sessionTitle h5">Difficult Cannulation</span><br>
-            <span class="sessionSubtitle">Prediction, preparation and when to refer</span>
-        </div>
-
-        <div class="col-3 p-1 pb-3 pt-3">
-            <span class="h5"></span><br>
-            <span></span>
-        </div>
-
-
-
-    </div>
-
-    <div class="row text-center align-middle border-left border-right border-bottom">
-
-        <div class="col-12 p-2 pb-3 pt-3">
-            <span class="h5" style="color: rgb(238, 194, 120);">Lunch</span>
-        </div>
-
-
-
-
-    </div>
-
-    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
-
-        <div class="col-1 p-1 pb-3 pt-3 border-right">
-            <span class="tiny" style="color: rgb(238, 194, 120);">1345-1415</span>
-        </div>
-
-        <div class="col-4 p-1 pb-3 pt-3 border-right">
-            <span class="sessionTitle h5">Principles of Endoscopic Imaging<br> in the GI
-                tract</span><br>
-            <span class="sessionSubtitle">The 'Demarcated area' - a predictor of invasion</span>
-        </div>
-
-        <div class="col-4 p-1 pb-3 pt-3 border-right">
-
-        </div>
-
-        <div class="col-3 p-1 pb-3 pt-3">
-            <span class="h5"></span><br>
-            <span></span>
-        </div>
-
-
-
-    </div>
-
-    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
-
-        <div class="col-1 p-1 pb-3 pt-3 border-right">
-            <span class="tiny" style="color: rgb(238, 194, 120);">1415-1515</span>
-        </div>
-
-        <div class="col-4 p-1 pb-3 pt-3 border-right">
-            <span class="sessionTitle h5">Principles of Endoscopy Unit Design<br> and
-                management</span><br>
-            <span class="sessionSubtitle">The Global Rating Scale and exportability</span>
-        </div>
-
-        <div class="col-4 p-1 pb-3 pt-3 border-right">
-            <span class="sessionTitle h5">Management of adverse events <br> at ERCP</span><br>
-            <span class="sessionSubtitle">Pancreatitis, bleeding and perforation</span>
-        </div>
-
-        <div class="col-3 p-1 pb-3 pt-3">
-            <span class="h5"></span><br>
-            <span></span>
-        </div>
-
-
-
-    </div>
-
-    <div class="row text-center align-middle border-left border-right border-bottom">
-
-        <div class="col-12 p-2 pb-3 pt-3">
-            <span class="h5" style="color: rgb(238, 194, 120);">Afternoon Tea</span>
-        </div>
-
-
-
-
-    </div>
-
-    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
-
-        <div class="col-1 p-1 pb-3 pt-3 border-right">
-            <span class="tiny" style="color: rgb(238, 194, 120);">1530-1630</span>
-        </div>
-
-        <div class="col-4 p-1 pb-3 pt-3 border-right">
-            <span class="sessionTitle h5">IBD in Endoscopy Symposium</span><br>
-            <span class="sessionSubtitle">Comprehensive endoscopic assessment of activity</span>
-        </div>
-
-        <div class="col-4 p-1 pb-3 pt-3 border-right">
-            <span class="sessionTitle h5">Basic EUS</span><br>
-            <span class="sessionSubtitle">Quality standardised examination</span>
-        </div>
-
-        <div class="col-3 p-1 pb-3 pt-3">
-            <span class="sessionTitle h5">Live IBD / EUS</span><br>
-            <span class="sessionSubtitle">Chromoendoscopy and technique</span>
-        </div>
-
-
-
-    </div>
-
-    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
-
-        <div class="col-1 p-1 pb-3 pt-3 border-right">
-            <span class="tiny" style="color: rgb(238, 194, 120);">1630-1700</span>
-        </div>
-
-        <div class="col-4 p-1 pb-3 pt-3 border-right">
-            <span class="sessionTitle h5">Endoscopic Management of strictures <br>in IBD</span><br>
-            <span class="sessionSubtitle">Balloon, incision or surgery</span>
-        </div>
-
-        <div class="col-4 p-1 pb-3 pt-3 border-right">
-            <span class="sessionTitle h5">Unit setup for EUS / ERCP</span><br>
-            <span class="sessionSubtitle">Equipment, settings and personnel</span>
-        </div>
-
-        <div class="col-3 p-1 pb-3 pt-3">
-            <span class="h5"></span><br>
-            <span></span>
-        </div>
-
-
-
-    </div>
-
-    <div class="row text-center align-middle border-left border-right border-bottom">
-
-        <div class="col-12 p-2 pb-3 pt-3">
-            <span class="h5" style="color: rgb(238, 194, 120);">Break</span>
-        </div>
-
-
-
-
-    </div>
-
-    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
-
-        <div class="col-1 p-1 pb-3 pt-3 border-right">
-            <span class="tiny" style="color: rgb(238, 194, 120);">1715-1800</span>
-        </div>
-
-        <div class="col-4 p-1 pb-3 pt-3 border-right">
-            <span class="sessionTitle h5">Artificial Intelligence in Endoscopy</span><br>
-            <span class="sessionSubtitle">Implications, Ethics and Future Directions</span>
-        </div>
-
-        <div class="col-4 p-1 pb-3 pt-3 border-right">
-            <span class="sessionTitle h5">Interventional EUS symposium</span><br>
-            <span class="sessionSubtitle">Role in everyday practice, referral criteria</span>
-        </div>
-
-        <div class="col-3 p-1 pb-3 pt-3">
-            <span class="sessionTitle h5">AI Live</span><br>
-            <span class="sessionSubtitle">current state of the tech</span>
-        </div>
-
-
-
-    </div>
-
-    <div class="row text-center align-middle border-left border-right border-bottom">
-
-        <div class="col-12 p-2 pb-3 pt-3">
-            <span class="h5" style="color: rgb(238, 194, 120);">1930 - Conference Dinner</span>
-        </div>
-
-
-
-
-    </div>
-
-    <div class="row text-left">
-
-        <div class="col-12 p-2 pb-3 pt-3">
-            <span class="text-sm">Programme contents subject to change without notice.</span>
-        </div>
-
-
-
-
-    </div>
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="modal-content bg-dark border" style="border-color:rgb(238, 194, 120) !important;">
-    <div class="modal-header">
-
-        <div class="modal-title d-flex align-items-left" id="modal-title-change-username">
-            <div>
-                <div class="icon bg-dark icon-sm icon-shape icon-info rounded-circle shadow mr-3">
-                    <img src="../../assets/img/icons/gieqsicon.png">
-                </div>
-            </div>
-            <div class="text-left">
-                <span class="h5 mb-0"><?php echo $response[0]['sessionTitle']?></span>
-                <?php
-                    if ($edit == 1){
-                        echo '<span class="ml-3 editSession" data="' . $response[0]['sessionid'] . '"><i class="fas fa-edit"></i></span>';
-
-                    }
-                
-                ?>
-                <p class="mb-0"><?php echo $programmeDate->format('D d M Y');?>
-                    <?php echo ' ' . $response[0]['timeFrom']?> -
-                    <?php echo $response[array_key_last($response)]['timeTo']?></p>
-                <p class="mb-0"><?php echo $response[0]['sessionSubtitle']?></p>
-                <p class="mb-0"><?php echo $response[0]['sessionDescription']?></p>
-            </div>
-
-        </div>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span="text-white" aria-hidden="true">&times;</span>
-        </button>
-
-    </div>
-    <div class="modal-subheader px-3 mt-2 mb-2 border-bottom">
-        <div class="row">
-            <div class="col-sm-12 text-left">
-                <div>
-                    <span class="h6 mb-0">Moderators</span>
-                    <?php
-                    if ($edit == 1){
-                        
-                        echo '<span class="ml-1 addModerators"><i class="fas fa-plus"></i></span>';
-
-                    }
-                
-                    
-                ?>
-                    <br />
-
-                    <?php
-
-                    foreach ($moderators as $key=>$value){
-                        echo '<span class="faculty mb-0 mr-1" data="' . $value['facultyid'] . '">';
-                        echo $value['title'] . ' ' . $value['firstname'] . ' ' . $value['surname'];
-                        echo '</span>';
-                        
-                    if ($edit == 1){
-                        
-                        echo '<span class="ml-1 mr-3 removeModerators"><i class="fas fa-minus"></i></span>';
-
-                    }
-                
-            
-
-                    }
-                    
-                    ?>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal-body">
-
-        <div class="programme-body">
-            <?php foreach ($response as $key=>$value){
                         ?>
 
-
-            <div class="sessionItem row d-flex align-items-left text-left align-middle">
-                <span class="sessionItemid" style="display:none;"><?php echo $value['sessionItemid'];?></span>
-                <div class="pl-2 pr-1 pb-0 pt-1 time">
-                    <span class="timeFrom"><?php echo $value['sessionItemTimeFrom'];?></span> - <span
-                        class="timeTo"><?php echo $value['sessionItemTimeTo'];?></span>
-                    : </span>
-
-                </div>
-                <div class="pr-2 pb-0 pt-1">
-                    <span class="h6 sessionTitle"><?php echo $value['sessionItemTitle'];?></span>
-
-                    <!--if live stream-->
-                    <!--if sessionItem.live == 1-->
-                    <?php if ($value['live'] == 1){?>
-                    <span class="badge text-white ml-3" style="background-color:rgb(238, 194, 120) !important;">Live
-                        Stream</span>
-
-                    <?php }
-
-                    if ($edit == 1){
-                        echo '<span class="ml-3 editSessionItem"><i class="fas fa-edit"></i></span>';
-                        echo '<span class="ml-3 addSessionItem"><i class="fas fa-plus"></i></span>';
-                        echo '<span class="ml-3 deleteSessionItem"><i class="fas fa-times"></i></span>';
-
-                    }
-                    ?>
-
-                </div>
-
-            </div>
-            <div class="row d-flex align-items-left text-left align-middle">
-                <div class="pl-3 pr-1 pb-0 pt-0 time">
-                    <span class="sessionDescription"><?php echo $value['sessionItemDescription'];?></span>
-
-                    <p class="pt-2 h6 faculty"><?php 
-                    
-                    $faculty = $sessionView->getFacultyName($value['faculty']);
-
-                    echo $faculty['title'] . ' ' . $faculty['firstname'] . ' ' . $faculty['surname'];
-                    
-                    
-                    ?></p>
-                </div>
-            </div>
-            <hr>
-
-            <?php }?>
-
-        </div>
-
-        <div class="px-5 pt-2 mt-2 mb-2 pb-2 text-center">
-            <p class="text-muted text-sm">Programme subject to change without notice.</p>
-        </div>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-sm btn-secondary">Back to programme &nbsp; &nbsp;<i
-                class="fas fa-arrow-right"></i></button>
-    </div>
-</div>
+</div> <!--CLOSE CONTAINER DIV-->
 
 
 

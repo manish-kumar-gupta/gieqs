@@ -32,6 +32,12 @@ color: rgb(238, 194, 120);
 
 }
 
+.background-gieqsGold {
+
+background-color: rgb(238, 194, 120);
+
+}
+
 
       @media screen and (max-width: 400px) {
         
@@ -140,7 +146,7 @@ color: rgb(238, 194, 120);
             <div class="container py-5 pt-lg-2 position-relative zindex-100">
               <div class="row">
                 <div class="col-lg-8 text-center text-lg-left">
-                <a href="https://eu.eventscloud.com/200200203" target="_blank">
+                <a href="<?php echo $registrationURL;?>" target="_blank">
 
                 <div class="alert alert-modern alert-dark">
                     <span class="badge gieqsGold badge-pill">
@@ -172,138 +178,48 @@ color: rgb(238, 194, 120);
           <section class="slice slice-lg">
             <div class="container no-padding">
               <div class="mb-5 text-center">
-                <h3 class=" mt-4">GIEQs at the Ghelamco</h3>
+                <h3 class=" mt-4">GIEQs will be held at the Ghelamco Arena, Ghent, Belgium.</h3>
                 <div class="fluid-paragraph mt-3">
-                  <p class="lead lh-180">At the MeetDistrict venue within the Ghelamco arena is a modern venue that will make a spectacular meeting</p>
+                  <p class="lead lh-180">within the Ghelamco arena is a modern conference venue which will make for a spectacular meeting</p>
                 </div>
               </div>
               <div class="card-deck">
                 <div class="card hover-shadow-lg">
                   <div class="card-body">
                     <div class="delimiter-bottom pb-3 mb-4">
-                      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="152px" height="92px" viewBox="0 0 152 92" version="1.1" class="injected-svg svg-inject" style="height: 60px; width: auto">
-    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
-    <title>Desktop</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Desktop" transform="translate(2.000000, 2.000000)">
-            <polyline id="Shape" fill="#8ABEFF" fill-rule="nonzero" points="35.8 84.9 35.8 73.2 63.1 73.2 63.1 84.9 49.5 84.9"></polyline>
-            <polyline id="Shape" class="fill-primary-500" fill-rule="nonzero" points="35.8 79.4 35.8 72.6 63.1 72.6 63.1 79.4 49.5 79.4"></polyline>
-            <polyline id="Shape" class="stroke-primary" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="35.8 84.9 35.8 73.2 63.1 73.2 63.1 84.9 49.5 84.9"></polyline>
-            <path d="M39,83.7 L37.4,83.7" id="Shape" stroke-width="3" class="stroke-primary fill-primary-100" fill-rule="nonzero" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M39.3,83.7 L34.9,83.7 C32.2,83.7 30.1,85.9 30.1,88.5 L68.9,88.5 C68.9,85.8 66.7,83.7 64.1,83.7 L53.8,83.7" id="Shape" stroke-width="3" class="stroke-primary fill-primary-100" fill-rule="nonzero" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M98.5,10.1 L98.5,73.4 C98.5,75.6 96.7,77.3 94.6,77.3 L4,77.3 C1.8,77.3 0.1,75.5 0.1,73.4 L0.1,10.1 C0.1,7.9 1.9,6.2 4,6.2 L94.6,6.2 C96.7,6.2 98.4,7.8 98.5,9.9 C98.5,9.9 98.5,10 98.5,10.1 Z" id="Shape" class="fill-neutral" fill-rule="nonzero"></path>
-            <path d="M98.5,73.1 C98.5,75.4 96.7,77.2 94.6,77.2 L4.5,77.2 L4.5,13.6 C4.5,12.2 5.6,11.7 6.9,11.7 L98.5,11.7 L98.5,73.1 Z" id="Shape" class="fill-primary-100" fill-rule="nonzero"></path>
-            <path d="M70.1,77.2 L4.1,77.2 C1.9,77.2 0.2,75.4 0.2,73.3 L0.2,10 C0.2,7.8 2,6.1 4.1,6.1 L12.5,6.1" id="Shape" class="stroke-primary" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M39.2,6.1 L94.7,6.1 C96.9,6.1 98.6,7.9 98.6,10 L98.6,73.3 C98.6,75.5 96.8,77.2 94.7,77.2 L82,77.2" id="Shape" class="stroke-primary" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M18.5,6.1 L19.1,6.1" id="Shape" class="stroke-primary" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <polyline id="Shape" class="fill-neutral" fill-rule="nonzero" points="92.8 58.5 92.8 68.8 6.1 68.8 6.1 11.5 92.8 11.5 92.8 47.8"></polyline>
-            <polyline id="Shape" class="stroke-primary" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="71.2 68.8 6.1 68.8 6.1 11.5 92.8 11.5 92.8 47.8"></polyline>
-            <path d="M80.3,68.8 L78.6,68.8" id="Shape" class="stroke-primary" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <polyline id="Shape" class="stroke-primary" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="92.8 58.5 92.8 68.8 83.4 68.8"></polyline>
-            <path d="M46.9,83.7 L43.4,83.7" id="Shape" stroke-width="3" class="stroke-primary fill-primary-100" fill-rule="nonzero" stroke-linecap="round" stroke-linejoin="round"></path>
-            <g id="Group" transform="translate(105.000000, 0.000000)">
-                <path d="M38.1,88.2 L5.3,88.2 C2.6,88.2 0.4,86 0.4,83.3 L0.4,5.3 C0.4,2.6 2.6,0.4 5.3,0.4 L38.1,0.4 C40.8,0.4 43,2.6 43,5.3 L43,83.3 C43,86 40.8,88.2 38.1,88.2 Z" id="Shape" class="fill-neutral" fill-rule="nonzero"></path>
-                <path d="M43,9.1 L43,83.6 C43,86.1 40.9,88.2 38.4,88.2 L8.5,88.2 C6,88.2 3.9,86.1 3.9,83.6 L3.9,9.1 C3.9,6.6 6,4.5 8.5,4.5 L38.4,4.5 C40.9,4.5 43,6.5 43,9.1 Z" id="Shape" fill="#BAD8FF" fill-rule="nonzero"></path>
-                <path d="M43,9.1 L43,76.1 C43,78.6 40.9,80.7 38.4,80.7 L8.5,80.7 C6,80.7 3.9,78.6 3.9,76.1 L3.9,9.1 C3.9,6.6 6,4.5 8.5,4.5 L38.4,4.5 C40.9,4.5 43,6.5 43,9.1 Z" id="Shape" class="fill-primary-100" fill-rule="nonzero"></path>
-                <path d="M0.3,25.3 L0.3,5.2 C0.3,2.5 2.5,0.3 5.2,0.3 L6.5,0.3" id="Shape" class="stroke-primary" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-                <path d="M0.3,42 L0.3,32.7" id="Shape" class="stroke-primary" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-                <path d="M16.2,0.3 L38,0.3 C40.7,0.3 42.9,2.5 42.9,5.2 L42.9,83.2 C42.9,85.9 40.7,88.1 38,88.1 L5.2,88.1 C2.5,88.1 0.3,85.9 0.3,83.2 L0.3,52.7" id="Shape" class="stroke-primary" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-                <path d="M10.7,0.3 L11.4,0.3" id="Shape" class="stroke-primary" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-                <path d="M9.3,9.9 L34,9.9" id="Shape" class="stroke-primary" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-                <path d="M9.3,19.9 L34,19.9" id="Shape" class="stroke-primary" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-                <path d="M26.2,70.2 L17.2,70.2" id="Shape" class="stroke-primary" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-                <circle id="Oval" class="fill-neutral" fill-rule="nonzero" cx="21.7" cy="57.6" r="5.9"></circle>
-                <circle id="Oval" class="fill-primary-300" fill-rule="nonzero" cx="22.8" cy="58.8" r="4.7"></circle>
-                <path d="M20.3,51.9 C20.7,51.8 21.2,51.7 21.7,51.7 C24.9,51.7 27.6,54.3 27.6,57.6 C27.6,60.9 25,63.5 21.7,63.5 C18.5,63.5 15.8,60.9 15.8,57.6 C15.8,56.9 15.9,56.2 16.2,55.5" id="Shape" class="stroke-primary" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            </g>
-        </g>
-    </g>
-</svg>
-                      <h5 class="mt-4">Networking area (with table tennis!)</h5>
+                      
+                      <h5 class="text-center mt-4">2 bespoke lecture theatres</h5>
                     </div>
-                    <p class="">With beautiful, modern open spaces this venue allows for professional networking and mingling with the faculty.</p>
+                    <p class="text-center">A large auditorium and an up-close and personal 'pitch arena' for 70 people allows for unparalleled interaction with the faculty.</p>
                   </div>
                   <div class="card-footer px-0 py-0 border-0 overflow-hidden">
-                    <a href="#" class="btn btn-block btn-primary rounded-0">Learn more</a>
+                    <a href="<?php echo $registrationURL;?>" target="_blank" class="btn btn-block btn-dark gieqsGold rounded-0">Register now!</a>
                   </div>
                 </div>
                 <div class="card hover-shadow-lg">
                   <div class="card-body">
                     <div class="delimiter-bottom pb-3 mb-4">
-                      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="147px" height="109px" viewBox="0 0 147 109" version="1.1" class="injected-svg svg-inject" style="height: 60px; width: auto">
-    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
-    <title>Code_2</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Code_2" transform="translate(1.000000, 1.000000)">
-            <path d="M144.1,8.5 L144.1,98.1 C144.1,102.2 140.8,105.6 136.6,105.6 L8.1,105.6 C4,105.6 0.6,102.3 0.6,98.1 L0.6,0.6 L136.1,0.6 C140.6,0.6 144.1,4.2 144.1,8.5 Z" id="Shape" class="fill-neutral" fill-rule="nonzero"></path>
-            <path d="M133.7,0.6 C139.4,0.6 144.1,5.3 144.1,11 L144.1,98.1 C144.1,102.2 140.9,105.6 137,105.6 L14.3,105.6 C10.4,105.6 7.2,102.3 7.2,98.1 L7.2,0.6 L133.7,0.6 Z" id="Shape" class="fill-primary-300" fill-rule="nonzero"></path>
-            <path d="M95.9,19.5 L0.7,19.5 L0.7,8.1 C0.7,4 4,0.6 8.2,0.6 L136.7,0.6 C140.8,0.6 144.2,3.9 144.2,8.1 L144.2,19.5 L119.2,19.5" id="Shape" class="fill-neutral" fill-rule="nonzero"></path>
-            <path d="M134.9,19.2 L143,19.2" id="Shape" class="stroke-primary" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M124.4,19.2 L125.4,19.2" id="Shape" class="stroke-primary" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M1.3,19.2 L87.5,19.2" id="Shape" class="stroke-primary" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <circle id="Oval" class="fill-primary-300" fill-rule="nonzero" cx="13.5" cy="10.2" r="3.2"></circle>
-            <circle id="Oval" class="fill-primary-200" fill-rule="nonzero" cx="24.1" cy="10.2" r="3.2"></circle>
-            <circle id="Oval" class="fill-primary-200" fill-rule="nonzero" cx="34.7" cy="10.2" r="3.2"></circle>
-            <path d="M0.7,62.6 L0.7,61.4" id="Shape" class="stroke-primary" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M0.7,55.2 L0.7,8 C0.7,3.9 4,0.5 8.2,0.5 L136.7,0.5 C140.8,0.5 144.2,3.8 144.2,8 L144.2,98.1 C144.2,102.2 140.9,105.6 136.7,105.6 L8.2,105.6 C4.1,105.6 0.7,102.3 0.7,98.1 L0.7,77" id="Shape" class="stroke-primary" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
-            <g id="Group" transform="translate(18.000000, 31.000000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
-                <path d="M22.1,20.1 L48.5,20.2" id="Shape" class="stroke-neutral"></path>
-                <path d="M80.9,20.1 L111.3,20.3" id="Shape" class="stroke-neutral"></path>
-                <path d="M60.5,58.3 L91,58.5" id="Shape" class="stroke-primary"></path>
-                <path d="M57.5,20.1 L72.3,20.2" id="Shape" class="stroke-primary"></path>
-                <path d="M0.6,19.9 L11.4,20" id="Shape" class="stroke-neutral"></path>
-                <path d="M37.8,32.8 L53.7,33" id="Shape" class="stroke-primary"></path>
-                <path d="M62.5,32.8 L103,33.3" id="Shape" class="stroke-neutral"></path>
-                <path d="M0.6,32.7 L27.2,32.8" id="Shape" class="stroke-neutral"></path>
-                <path d="M37.8,45.5 L74.7,45.7" id="Shape" class="stroke-primary"></path>
-                <path d="M0.6,45.4 L27.2,45.5" id="Shape" class="stroke-neutral"></path>
-                <path d="M29.9,58.3 L50.3,58.4" id="Shape" class="stroke-neutral"></path>
-                <path d="M0.6,58.1 L17,58.2" id="Shape" class="stroke-primary"></path>
-                <path d="M0.5,0.4 L75.3,0.7" id="Shape" class="stroke-neutral"></path>
-            </g>
-        </g>
-    </g>
-</svg>
-                      <h5 class="mt-4">2 bespoke lecture theatres</h5>
+                      
+    
+                      <h5 class="text-center mt-4">Modern networking space</h5>
                     </div>
-                    <p class="">With beautiful, modern open spaces this venue allows for professional networking and mingling with the faculty.</p>
+                    <p class="text-center">With beautiful, modern open spaces this venue allows for professional networking and mingling with the faculty.</p>
                   </div>
                   <div class="card-footer px-0 py-0 border-0 overflow-hidden">
-                    <a href="#" class="btn btn-block btn-primary rounded-0">Learn more</a>
+                    <a href="<?php echo $registrationURL;?>" target="_blank" class="btn btn-block btn-dark gieqsGold rounded-0">Register now!</a>
                   </div>
                 </div>
                 <div class="card hover-shadow-lg">
                   <div class="card-body">
                     <div class="delimiter-bottom pb-3 mb-4">
-                      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="91px" height="154px" viewBox="0 0 91 154" version="1.1" class="injected-svg svg-inject" style="height: 60px; width: auto">
-    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
-    <title>Mouse</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Mouse" transform="translate(1.000000, 2.000000)">
-            <path d="M42.6,150 C19.5,150 0.7,131.2 0.7,108.1 L0.7,67 C0.7,43.9 19.5,25.1 42.6,25.1 C65.7,25.1 84.5,43.9 84.5,67 L84.5,108.1 C84.5,131.2 65.7,150 42.6,150 Z" id="Shape" class="fill-neutral" fill-rule="nonzero"></path>
-            <path d="M45,150 L44.6,150 C22.8,150 5.1,132.3 5.1,110.5 L5.1,72.4 C5.1,50.6 22.8,32.9 44.6,32.9 L45,32.9 C66.8,32.9 84.5,50.6 84.5,72.4 L84.5,110.5 C84.5,132.3 66.8,150 45,150 Z" id="Shape" class="fill-primary-100" fill-rule="nonzero"></path>
-            <path d="M23.8,29.5 C29.4,26.7 35.8,25.1 42.5,25.1 C65.6,25.1 84.4,43.9 84.4,67 L84.4,108.1 C84.4,131.2 65.6,150 42.5,150 C19.4,150 0.6,131.2 0.6,108.1 L0.6,67 C0.6,57.3 3.9,48.3 9.5,41.2" id="Shape" class="stroke-primary" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M13.2,37.1 C13.4,37 13.5,36.8 13.7,36.7" id="Shape" class="stroke-primary" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M42.6,61.3 L42.6,73.6" id="Shape" class="stroke-primary" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M42.6,40.4 L42.6,25.6 L42.6,11.5 C42.6,5.1 47.7,-9.09494702e-13 54.1,-9.09494702e-13 C60.5,-9.09494702e-13 65.7,5.2 65.7,11.5 L65.7,14.3 C65.7,20.3 70.6,25.2 76.6,25.2 C82.6,25.2 87.5,20.3 87.5,14.3 L87.5,14.1" id="Shape" class="stroke-primary" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M48.4,51.1 L48.4,55.6 C48.4,58.8 45.8,61.4 42.6,61.4 C39.4,61.4 36.8,58.8 36.8,55.6 L36.8,46.2 C36.8,43 39.4,40.4 42.6,40.4 C45.8,40.4 48.4,43 48.4,46.2 L48.4,51.1" id="Shape" class="fill-neutral" fill-rule="nonzero"></path>
-            <path d="M36.8,46.2 C36.8,43 39.4,40.4 42.6,40.4 C45.8,40.4 48.4,43 48.4,46.2 L48.4,51.1" id="Shape" class="stroke-primary" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M48.4,51.1 L48.4,55.6 C48.4,58.8 45.8,61.4 42.6,61.4 C39.4,61.4 36.8,58.8 36.8,55.6 L36.8,53.3" id="Shape" class="stroke-primary" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path>
-        </g>
-    </g>
-</svg>
-                      <h5 class="mt-4">Multiple meeting boxes for satellite / spin-off meetings</h5>
+                     
+    
+                      <h5 class="text-center mt-4">Beautiful satellite rooms</h5>
                     </div>
-                    <p class="">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <p class="text-center">The venue contains multiple modern meeting rooms for spin-off sessions and up-close interaction with the faculty.</p>
                   </div>
                   <div class="card-footer px-0 py-0 border-0 overflow-hidden">
-                    <a href="#" class="btn btn-block btn-primary rounded-0">Learn more</a>
+                    <a href="<?php echo $registrationURL;?>" target="_blank" class="btn btn-block btn-dark gieqsGold rounded-0">Register now!</a>
                   </div>
                 </div>
               </div>
@@ -320,18 +236,17 @@ color: rgb(238, 194, 120);
               </figure>
               <div class="card-img-overlay d-flex flex-column align-items-center p-0">
                 <div class="overlay-text w-75 mt-auto p-4">
-                  <p class="lead">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                  <a href="#!" class="link link-underline-white font-weight-bold">Branding</a>
+                  <p class="lead">Large open reception area for catering and networking.</p>
+                  
                 </div>
                 <div class="overlay-actions w-100 card-footer mt-auto d-flex justify-content-between align-items-center">
                   <div>
-                    <a href="#!" class="h6 mb-0">The Pineapple's story</a>
+                  <p class="h6 mb-0">Reception and Catering Area</p>
                   </div>
                   <div>
                     <div class="actions">
-                      <a href="#!" class="action-item mr-3"><i class="fas fa-paperclip"></i></a>
-                      <a href="#!" class="action-item mr-3"><i class="fas fa-eye"></i></a>
-                      <a href="#!" class="action-item"><i class="fas fa-heart"></i></a>
+                      
+                      <a href="<?php echo $registrationURL;?>" target="_blank" class="action-item"><i class="fas fa-user-plus"></i></a>
                     </div>
                   </div>
                 </div>
@@ -339,29 +254,12 @@ color: rgb(238, 194, 120);
             </div>
           </div>
           <div class="col-lg-6">
-            <div class="card card-overlay card-hover-overlay">
+            
               <figure class="figure">
                 <img alt="Image placeholder" src="../../assets/img/venue/venue2.jpg" class="img-fluid">
               </figure>
-              <div class="card-img-overlay d-flex flex-column align-items-center p-0">
-                <div class="overlay-text w-75 mt-auto p-4">
-                  <p class="lead">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                  <a href="#!" class="link link-underline-white font-weight-bold">Design</a>
-                </div>
-                <div class="overlay-actions w-100 card-footer mt-auto d-flex justify-content-between align-items-center">
-                  <div>
-                    <a href="#!" class="h6 mb-0">Colors from nature</a>
-                  </div>
-                  <div>
-                    <div class="actions">
-                      <a href="#!" class="action-item mr-3"><i class="fas fa-paperclip"></i></a>
-                      <a href="#!" class="action-item mr-3"><i class="fas fa-eye"></i></a>
-                      <a href="#!" class="action-item"><i class="fas fa-heart"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+              
+              
           </div>
         </div>
         <div class="row">
@@ -372,18 +270,16 @@ color: rgb(238, 194, 120);
               </figure>
               <div class="card-img-overlay d-flex flex-column align-items-center p-0">
                 <div class="overlay-text w-75 mt-auto p-4">
-                  <p class="lead">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                  <a href="#!" class="link link-underline-white font-weight-bold">Identity</a>
+                  <p class="lead">The Pitch Arena.  A space for up to 70 people allowing unparalleled interaction with the faculty</p>
+                  
                 </div>
                 <div class="overlay-actions w-100 card-footer mt-auto d-flex justify-content-between align-items-center">
                   <div>
-                    <a href="#!" class="h6 mb-0">Golden beauty</a>
+                  <p class="h6 mb-0">Pitch Arena</p>
                   </div>
                   <div>
                     <div class="actions">
-                      <a href="#!" class="action-item mr-3"><i class="fas fa-paperclip"></i></a>
-                      <a href="#!" class="action-item mr-3"><i class="fas fa-eye"></i></a>
-                      <a href="#!" class="action-item"><i class="fas fa-heart"></i></a>
+                    <a href="<?php echo $registrationURL;?>" target="_blank" class="action-item"><i class="fas fa-user-plus"></i></a>
                     </div>
                   </div>
                 </div>
@@ -397,18 +293,16 @@ color: rgb(238, 194, 120);
               </figure>
               <div class="card-img-overlay d-flex flex-column align-items-center p-0">
                 <div class="overlay-text w-75 mt-auto p-4">
-                  <p class="lead">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                  <a href="#!" class="link link-underline-white font-weight-bold">Marketing</a>
+                  <p class="lead">A brand new lecture theatre with state of the art projection and audio facilities.  Direct streaming from the University Hospital of Ghent</p>
+                  
                 </div>
                 <div class="overlay-actions w-100 card-footer mt-auto d-flex justify-content-between align-items-center">
                   <div>
-                    <a href="#!" class="h6 mb-0">Living dangerously</a>
+                  <p class="h6 mb-0">Main Auditorium</p>
                   </div>
                   <div>
                     <div class="actions">
-                      <a href="#!" class="action-item mr-3"><i class="fas fa-paperclip"></i></a>
-                      <a href="#!" class="action-item mr-3"><i class="fas fa-eye"></i></a>
-                      <a href="#!" class="action-item"><i class="fas fa-heart"></i></a>
+                    <a href="<?php echo $registrationURL;?>" target="_blank" class="action-item"><i class="fas fa-user-plus"></i></a>
                     </div>
                   </div>
                 </div>
@@ -424,18 +318,16 @@ color: rgb(238, 194, 120);
               </figure>
               <div class="card-img-overlay d-flex flex-column align-items-center p-0">
                 <div class="overlay-text w-75 mt-auto p-4">
-                  <p class="lead">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                  <a href="#!" class="link link-underline-white font-weight-bold">Web design</a>
+                  <p class="lead">Large area full of light for interactions with industry sponsors.</p>
+          
                 </div>
                 <div class="overlay-actions w-100 card-footer mt-auto d-flex justify-content-between align-items-center">
                   <div>
-                    <a href="#!" class="h6 mb-0">Bear with me</a>
+                    <p class="h6 mb-0">Industry interaction area</p>
                   </div>
                   <div>
                     <div class="actions">
-                      <a href="#!" class="action-item mr-3"><i class="fas fa-paperclip"></i></a>
-                      <a href="#!" class="action-item mr-3"><i class="fas fa-eye"></i></a>
-                      <a href="#!" class="action-item"><i class="fas fa-heart"></i></a>
+                    <a href="<?php echo $registrationURL;?>" target="_blank" class="action-item"><i class="fas fa-user-plus"></i></a>
                     </div>
                   </div>
                 </div>
@@ -449,18 +341,16 @@ color: rgb(238, 194, 120);
               </figure>
               <div class="card-img-overlay d-flex flex-column align-items-center p-0">
                 <div class="overlay-text w-75 mt-auto p-4">
-                  <p class="lead">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                  <a href="#!" class="link link-underline-white font-weight-bold">Marketing</a>
+                  <p class="lead">Interaction area with smaller meeting rooms visible to the right.  Allows for up-close faculty interaction.</p>
+                
                 </div>
                 <div class="overlay-actions w-100 card-footer mt-auto d-flex justify-content-between align-items-center">
                   <div>
-                    <a href="#!" class="h6 mb-0">Attitude is everything</a>
+                    <p class="h6 mb-0">Up-close faculty interaction</p>
                   </div>
                   <div>
                     <div class="actions">
-                      <a href="#!" class="action-item mr-3"><i class="fas fa-paperclip"></i></a>
-                      <a href="#!" class="action-item mr-3"><i class="fas fa-eye"></i></a>
-                      <a href="#!" class="action-item"><i class="fas fa-heart"></i></a>
+                    <a href="<?php echo $registrationURL;?>" target="_blank" class="action-item"><i class="fas fa-user-plus"></i></a>
                     </div>
                   </div>
                 </div>
@@ -471,6 +361,26 @@ color: rgb(238, 194, 120);
         <!-- Load more -->
         
       </div>
+    </section>
+    <section class="slice slice-lg bg-section-secondary" id="sct-call-to-action"><a href="#sct-call-to-action"
+            class="tongue tongue-up tongue-section-primary" data-scroll-to="">
+            <i class="fas fa-angle-up"></i>
+        </a>
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-8 text-center">
+                    <h3 class="font-weight-400">Register now to improve the quality of your <span
+                            class="font-weight-700">every-day </span> endoscopy.</h3>
+                    <div class="mt-5">
+                        <a href="<?php echo $registrationURL;?>" target="_blank"
+                            class="btn btn-dark gieqsGold rounded-pill hover-translate-y-n3">
+                            Register now
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 <!--
           <section class="slice slice-xl bg-cover bg-size--cover" data-offset-top="#header-main">

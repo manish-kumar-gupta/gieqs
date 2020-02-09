@@ -146,7 +146,7 @@ require BASE_URI . '/head.php';
                                 <div class="fluid-paragraph mt-3">
                                     <p class="lead lh-180">high quality endoscopic education. for a fair price,</p>
                                 </div>
-                                <a href="https://eu.eventscloud.com/200200203" target="_blank"
+                                <a href="<?php echo $registrationURL;?>" target="_blank"
                                     class="btn btn-dark gieqsGold mt-2 rounded-pill hover-translate-y-n3">
                                     Register now ->
                                 </a>
@@ -189,7 +189,7 @@ require BASE_URI . '/head.php';
                                                     <li>Invitation to conference dinner <sup>*</sup></li>
                                                     <li>Catering included</li>
                                                 </ul>
-                                                <a href="https://eu.eventscloud.com/200200203" target="_blank"
+                                                <a href="<?php echo $registrationURL;?>" target="_blank"
       
                                                     class="btn btn-sm gieqsGold btn-neutral mb-3">Register</a>
                                             </div>
@@ -212,7 +212,7 @@ require BASE_URI . '/head.php';
                                                     <li>Invitation to conference dinner <sup>*</sup></li>
                                                     <li>Catering included</li>
                                                 </ul>
-                                                <a href="https://eu.eventscloud.com/200200203" target="_blank"
+                                                <a href="<?php echo $registrationURL;?>" target="_blank"
       
                                                     class="btn btn-sm gieqsGold btn-neutral mb-3">Register</a>
                                             </div>
@@ -235,7 +235,7 @@ require BASE_URI . '/head.php';
                                                     <li>Invitation to conference dinner <sup>*</sup></li>
                                                     <li>Catering included</li>
                                                 </ul>
-                                                <a href="https://eu.eventscloud.com/200200203" target="_blank"
+                                                <a href="<?php echo $registrationURL;?>" target="_blank"
       
                                                     class="btn btn-sm gieqsGold btn-neutral mb-3">Register</a>
                                             </div>
@@ -271,7 +271,7 @@ require BASE_URI . '/head.php';
                                                 <li>Invitation to conference dinner <sup>*</sup></li>
                                                 <li>Catering included</li>
                                             </ul>
-                                            <a href="https://eu.eventscloud.com/200200203" target="_blank"
+                                            <a href="<?php echo $registrationURL;?>" target="_blank"
       
                                                     class="btn btn-sm gieqsGold btn-neutral mb-3">Register</a>
                                         </div>
@@ -293,7 +293,7 @@ require BASE_URI . '/head.php';
                                                 <li>Invitation to conference dinner <sup>*</sup></li>
                                                 <li>Catering included</li>
                                             </ul>
-                                            <a href="https://eu.eventscloud.com/200200203" target="_blank"
+                                            <a href="<?php echo $registrationURL;?>" target="_blank"
       
                                                     class="btn btn-sm gieqsGold btn-neutral mb-3">Register</a>
                                         </div>
@@ -315,7 +315,7 @@ require BASE_URI . '/head.php';
                                                 <li>Invitation to conference dinner <sup>*</sup></li>
                                                 <li>Catering included</li>
                                             </ul>
-                                            <a href="https://eu.eventscloud.com/200200203" target="_blank"
+                                            <a href="<?php echo $registrationURL;?>" target="_blank"
       
                                                     class="btn btn-sm gieqsGold btn-neutral mb-3">Register</a>
                                         </div>
@@ -349,7 +349,7 @@ require BASE_URI . '/head.php';
                                                 <li>Invitation to conference dinner <sup>*</sup></li>
                                                 <li>Catering included</li>
                                             </ul>
-                                            <a href="https://eu.eventscloud.com/200200203" target="_blank"
+                                            <a href="<?php echo $registrationURL;?>" target="_blank"
       
                                                     class="btn btn-sm gieqsGold btn-neutral mb-3">Register</a>
                                         </div>
@@ -371,7 +371,7 @@ require BASE_URI . '/head.php';
                                                 <li>Invitation to conference dinner <sup>*</sup></li>
                                                 <li>Catering included</li>
                                             </ul>
-                                            <a href="https://eu.eventscloud.com/200200203" target="_blank"
+                                            <a href="<?php echo $registrationURL;?>" target="_blank"
       
                                                     class="btn btn-sm gieqsGold btn-neutral mb-3">Register</a>
                                         </div>
@@ -393,7 +393,7 @@ require BASE_URI . '/head.php';
                                                 <li>Invitation to conference dinner <sup>*</sup></li>
                                                 <li>Catering included</li>
                                             </ul>
-                                            <a href="https://eu.eventscloud.com/200200203" target="_blank"
+                                            <a href="<?php echo $registrationURL;?>" target="_blank"
       
                                                     class="btn btn-sm gieqsGold btn-neutral mb-3">Register</a>
                                         </div>
@@ -427,7 +427,7 @@ require BASE_URI . '/head.php';
                                                 <li>Invitation to conference dinner <sup>*</sup></li>
                                                 <li>Catering included</li>
                                             </ul>
-                                            <a href="https://eu.eventscloud.com/200200203" target="_blank"
+                                            <a href="<?php echo $registrationURL;?>" target="_blank"
       
                                                     class="btn btn-sm gieqsGold btn-neutral mb-3">Register</a>
                                         </div>
@@ -449,7 +449,7 @@ require BASE_URI . '/head.php';
                                                 <li>Invitation to conference dinner <sup>*</sup></li>
                                                 <li>Catering included</li>
                                             </ul>
-                                            <a href="https://eu.eventscloud.com/200200203" target="_blank"
+                                            <a href="<?php echo $registrationURL;?>" target="_blank"
       
                                                     class="btn btn-sm gieqsGold btn-neutral mb-3">Register</a>
                                         </div>
@@ -471,7 +471,7 @@ require BASE_URI . '/head.php';
                                                 <li>Invitation to conference dinner <sup>*</sup></li>
                                                 <li>Catering included</li>
                                             </ul>
-                                            <a href="https://eu.eventscloud.com/200200203" target="_blank"
+                                            <a href="<?php echo $registrationURL;?>" target="_blank"
       
                                                     class="btn btn-sm gieqsGold btn-neutral mb-3">Register</a>
                                         </div>
@@ -502,7 +502,7 @@ require BASE_URI . '/head.php';
                     <h3 class="font-weight-400">Register now to improve the quality of your <span
                             class="font-weight-700">every-day </span> endoscopy.</h3>
                     <div class="mt-5">
-                        <a href="https://eu.eventscloud.com/200200203" target="_blank"
+                        <a href="<?php echo $registrationURL;?>" target="_blank"
                             class="btn btn-dark gieqsGold rounded-pill hover-translate-y-n3">
                             Register now
                         </a>
