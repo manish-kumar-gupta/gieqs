@@ -45,17 +45,29 @@
 
                 <!-- Sponsors -->
                 <!--currently not active-->
-                <!-- <li class="nav-item active">
-              <a class="nav-link" href="<?php //echo BASE_URL;?>/pages/program/sponsors.php">Sponsors</a>
-            </li> -->
+                <li class="nav-item active">
+              <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/sponsors.php">Sponsors</a>
+            </li>
 
                 <!-- Registration-basic -->
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/registration.php">Registration</a>
+                    <a style="color: rgb(238, 194, 120);" class="nav-link" href="<?php echo BASE_URL;?>/pages/program/registration.php">Registration</a>
+                </li>
+
+                <!-- Backend -->
+
+                <?php
+                
+                if (isset($_SESSION['user_id']) && ($_SESSION['siteKey'] == 'TxsvAb6KDYpmdNk') && ($_SESSION['access_level'] == '1' || $_SESSION['access_level'] == '2') ){
+                ?>
+
+                <li class="nav-item">
+                    <a class="nav-link text-muted" href="<?php echo BASE_URL;?>/pages/backend/backend.php">Administration</a>
                 </li>
 
                 <?php
+                }
 
             //check page we are on
 /* 

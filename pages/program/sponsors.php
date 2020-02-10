@@ -131,13 +131,13 @@ width: 100%;
 
 
         </section>
-        <section class="slice slice-lg">
+        <section class="slice slice-lg mt-2">
             <div class="container">
                 <div class="row text-center">
 
                     <div class="col-12 p-3 pb-2">
-                        <span class="h1" style="color: rgb(238, 194, 120);">GIEQs would like to thank our sponsors</span><br/>
-                        <span class="h4">This would not be possible without their financial support</span>
+                        <span class="h1" style="color: rgb(238, 194, 120);">GIEQs would like to thank our sponsors</span><br/><br/>
+                        <span class="h4">Our mission to improve everyday endoscopy without their financial support</span>
                         <span class=""><br/>Sponsors have given funding as a contribution to medical education without input or influence over the medical or nursing programme.</span>
                             
                     </div>
@@ -150,7 +150,7 @@ width: 100%;
 
         <div id="clients-clients-1">
           <section class="clients">
-            <div class="container">
+            <div class="container mb-4">
                 
                 <!--Gold Sponsors-->
                 <div class="row text-left">
@@ -220,7 +220,38 @@ width: 100%;
                     </div>
                     <div class="col-lg-2 col-md-4 col-4 py-1">
 
-</div>
+                </div>
+
+                </div>
+
+                <!--Other Sponsors-->
+                <div class="row text-left">
+                    <div class="col-12 p-3 pb-2 mb-4">
+                        <span class="h2" style="color: rgb(238, 194, 120);">Additional Sponsors</span><br />
+                    </div>
+                </div>
+
+                <div class="client-group row justify-content-left">
+                    <div class="col-lg-1 col-md-4 col-4 py-1">
+                        <img class="logo" alt="Prion Medical" src="../../assets/img/brand/prion.jpg">
+                    </div>
+                    <div class="col-lg-1 col-md-4 col-4 py-1">
+                    
+                    <img class="logo" alt="Cook Medical" src="../../assets/img/brand/cook.jpg">
+
+                    </div>
+                    <div class="col-lg-1 col-md-4 col-4 py-1">
+
+                    </div>
+                    <div class="col-lg-1 col-md-4 col-4 py-1">
+
+                    </div>
+                    <div class="col-lg-1 col-md-4 col-4 py-1">
+
+                    </div>
+                    <div class="col-lg-1 col-md-4 col-4 py-1">
+
+                </div>
 
                 </div>
 
@@ -231,13 +262,13 @@ width: 100%;
 
 
 
-            </div>
+            
 
 
 
-
+</div>
           </section>
-        </div>
+        
 
     </div>
 

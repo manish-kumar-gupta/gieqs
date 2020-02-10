@@ -146,16 +146,17 @@ background-color: rgb(238, 194, 120);
                   <div class="mb-5">
                     <h6 class="h3">Login</h6>
                     <p class="text-muted mb-0">Sign in to your account to continue.</p>
+                    <p class="text-danger mb-0 position-absolute"><span id="loginError"></span></p>
                   </div>
                   <span class="clearfix"></span>
-                  <form role="form">
+                  <form id="login" role="form">
                     <div class="form-group">
                       <label class="form-control-label">Email address</label>
                       <div class="input-group input-group-merge">
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
-                        <input type="email" class="form-control" id="input-email" placeholder="name@example.com">
+                        <input type="email" name="username" class="form-control" id="input-email" placeholder="name@example.com">
                       </div>
                     </div>
                     <div class="form-group mb-4">
@@ -171,7 +172,7 @@ background-color: rgb(238, 194, 120);
                         <div class="input-group-prepend">
                           <span class="input-group-text"><i class="fas fa-key"></i></span>
                         </div>
-                        <input type="password" class="form-control" id="input-password" placeholder="Password">
+                        <input type="password" class="form-control" name="password" id="input-password" placeholder="Password">
                         <div class="input-group-append">
                           <span class="input-group-text">
                             <i class="fas fa-eye"></i>
@@ -179,7 +180,7 @@ background-color: rgb(238, 194, 120);
                         </div>
                       </div>
                     </div>
-                    <div class="mt-4"><button type="button" class="btn btn-sm btn-primary btn-icon rounded-pill">
+                    <div class="mt-4"><button id="loginButton" type="button" class="btn btn-sm btn-primary btn-icon rounded-pill">
                         <span class="btn-inner--text">Sign in</span>
                         <span class="btn-inner--icon"><i class="fas fa-long-arrow-alt-right"></i></span>
                       </button></div>
@@ -218,6 +219,62 @@ background-color: rgb(238, 194, 120);
 <script src="../../assets/js/demo.js"></script>
 
 <script>
+
+
+
+function login(){
+	
+	//validate both boxes filled
+	//check the login against the databse as per the elearn script
+	//reload the page for logged in
+	
+	request = $.ajax({
+	        url: siteRoot + "assets/scripts/login.php",
+	        type: "POST",
+	        data: $('#login').serialize(),
+
+		   });
+
+	request.done(function(data){
+			   
+			   //console.log(data);
+			   
+			   if (data == 1){
+					
+					   
+				  $('#loginError').addClass('text-success').show().text('Successful Login');
+				   setTimeout(
+				   function() 
+				   { window.location.href = siteRoot + "index.php";  }, 1000);
+
+				   
+			   }else {
+				   
+				   $('#loginError').show().html('Unsuccessful Login, try again');
+				   setTimeout(
+				   function() 
+				   {  $('#loginError').hide();  }, 2000);
+			   }
+			   
+			   //alert(data);
+			   
+		   });
+	
+	
+}
+
+$(document).ready(function(){
+
+    $('#loginButton').click(function(){
+
+        login();
+
+    })
+
+
+
+})
+
 
 </script>
 </body>

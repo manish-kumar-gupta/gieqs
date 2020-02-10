@@ -40,12 +40,21 @@
                 <a class="nav-link" href="pages/shop/checkout-cart.html"><i class="fas fa-shopping-cart"></i></a>
               </li>
             -->
-              
+            
+            <?php
+
+              if (!isset($_SESSION['user_id']) || ($_SESSION['siteKey'] != 'TxsvAb6KDYpmdNk')){
+
+            ?>
+
             <li class="nav-item">
-              <a class="nav-link" title="Registration" href="https://eu.eventscloud.com/200200203" target="_blank"><i class="fas fa-user-plus"></i></a>
+              <a class="nav-link" title="Login" href="<?php echo BASE_URL . '/pages/authentication/login.php'?>"><i class="fas fa-user-plus"></i></a>
             </li>
 
+            
+
             <?php
+              }
 
             //check page we are on
 
@@ -77,31 +86,51 @@
             ?>
             
             
+            <?php
+              //$debug = true;
+              if ($debug){
+
+                echo 'Session user id is ' . $_SESSION['user_id'];
+                echo 'Session site key is ' . $_SESSION['siteKey'];
+
+              }
+
+              if (isset($_SESSION['user_id']) && ($_SESSION['siteKey'] == 'TxsvAb6KDYpmdNk') ){
+
+
+
+              
+
+            ?>
             
-            <!--
               <li class="nav-item dropdown">
                 <a class="nav-link pr-0" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="fas fa-user-circle"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                  <h6 class="dropdown-header">User menu</h6>
+                  
+                  <h6 class="dropdown-header"><?php echo $_SESSION['firstname'] . ' ' . $_SESSION['surname']?></h6>
                   <a class="dropdown-item" href="#">
                     <i class="fas fa-user"></i>Account
                   </a>
                   <a class="dropdown-item" href="#">
-                    <span class="float-right badge badge-primary">4</span>
+                    <span class="float-right badge badge-primary">0</span>
                     <i class="fas fa-envelope"></i>Messages
                   </a>
                   <a class="dropdown-item" href="#">
                     <i class="fas fa-cog"></i>Settings
                   </a>
                   <div class="dropdown-divider" role="presentation"></div>
-                  <a class="dropdown-item" href="#">
+                  <a id="logout" class="dropdown-item" href="#">
                     <i class="fas fa-sign-out-alt"></i>Sign out
                   </a>
                 </div>
               </li>
-            -->
+            
+              <?php
+
+              }
+?>
               
             </ul>
           </div>

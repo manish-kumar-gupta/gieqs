@@ -172,10 +172,30 @@ $formv1 = new formGenerator;
 											</div>
 										</div>
 										<div class="pl-4">
-											<span class="d-block h5 text-white mr-2 mb-1">$125.000</span>
-											<span class="text-white">Target sponsorship</span>
-										</div>
-									</div>
+                      <span class="text-white">Target sponsorship</span>
+                      <span class="d-block h5 text-white mr-2 mb-1">&euro; 130,000</span>
+                    </div>
+                    <div class="pl-4">
+                      <span class="text-white">Current sponsorship</span>
+                      <span class="d-block h5 text-white mr-2 mb-1">&euro; 59,500</span>
+                      </div>
+                      </div>
+                      <div class="d-flex p-2">
+										<div>
+                    <div class="pl-4">
+                      <span class="text-white ">Confirmed sponsors</span>
+                      <ul class="p-0 m-0">Boston</ul>
+                      <ul class="p-0 m-0">Boucart</ul>
+                      <ul class="p-0 m-0">Cook</ul>
+                      <ul class="p-0 m-0">Mundipharma</ul>
+                      <ul class="p-0 m-0">Prion</ul>
+                      <ul class="p-0 m-0">Medtronic</ul>
+  </div>
+  </div>
+  </div>
+
+										
+									
 								</div>
 							</div>
 						</div>
@@ -204,7 +224,7 @@ $formv1 = new formGenerator;
 											</div>
 										</div>
 										<div class="pl-4">
-											<span class="d-block h5 text-white mr-2 mb-1">xxx so far</span>
+											<span class="d-block h5 text-white mr-2 mb-1">0 so far</span>
 											<span class="text-white">Attendees</span>
 										</div>
 									</div>
@@ -932,7 +952,8 @@ $formv1 = new formGenerator;
 
 
 
-
+    
+    <!--<script src="<?php echo BASE_URL;?>/resources/js/purpose/libs/countdown.js"></script>  //TODO make countdown work--> 
 
 </body>
 
