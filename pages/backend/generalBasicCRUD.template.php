@@ -49,7 +49,7 @@ $formv1 = new formGenerator;
 
     <!-- Page CSS -->
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/datatables/dataTables.min.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/datatables/datatables.min.css">
     <!-- Purpose CSS -->
     <!-- <link rel="stylesheet" href="<?php //echo BASE_URL; ?>/assets/css/purpose.css" id="stylesheet"> -->
 
@@ -392,8 +392,8 @@ if ($identifierValue) {
 <script src="<?php echo BASE_URL; ?>/assets/libs/autosize/dist/autosize.min.js"></script>
 
 <!-- Datatables -->
-<script src="<?php echo BASE_URL; ?>/node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="<?php echo BASE_URL; ?>/assets/libs/datatables/dataTables.min.js"></script>
+<script src="<?php echo BASE_URL; ?>/node_modules/datatables.net/js/jquery.datatables.min.js"></script>
+<script src="<?php echo BASE_URL; ?>/assets/libs/datatables/datatables.min.js"></script>
 <script src="<?php echo BASE_URL; ?>/assets/libs/flatpickr/dist/flatpickr.min.js"></script>
 
 <script>

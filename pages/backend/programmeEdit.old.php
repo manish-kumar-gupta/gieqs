@@ -34,7 +34,7 @@ error_reporting(E_ALL);
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/swiper/dist/css/swiper.min.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/flatpickr/dist/flatpickr.min.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/datatables/dataTables.min.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/datatables/datatables.min.css">
     <!-- Purpose CSS -->
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/css/purpose.css" id="stylesheet">
 
@@ -436,8 +436,8 @@ $programme = new programme;
 <!-- Site Location JS -->
 <script src="<?php echo BASE_URL; ?>/assets/js/siteLocation.js"></script>
 <!-- Datatables -->
-<script src="<?php echo BASE_URL; ?>/node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="<?php echo BASE_URL; ?>/assets/libs/datatables/dataTables.min.js"></script>
+<script src="<?php echo BASE_URL; ?>/node_modules/datatables.net/js/jquery.datatables.min.js"></script>
+<script src="<?php echo BASE_URL; ?>/assets/libs/datatables/datatables.min.js"></script>
 
 <script>
 
