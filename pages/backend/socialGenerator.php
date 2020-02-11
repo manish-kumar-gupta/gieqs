@@ -806,7 +806,7 @@ $(document).ready(function(){
     
     //load edit form in new window
 
-    openInNewTab(siteRoot + 'pages/backend/sessionView.php?identifier='+targettd);
+    openInNewTab(siteRoot + 'pages/backend/sessionview.php?identifier='+targettd);
     
 
     })
