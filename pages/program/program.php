@@ -892,7 +892,7 @@ background-color: rgb(238, 194, 120);
                     <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
 
                         <div class="col-1 p-1 pb-3 pt-3 border-right">
-                            <span class="tiny" style="color: rgb(238, 194, 120);">1530-1630</span>
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1530-1615</span>
                         </div>
 
                         <div class="col-4 p-1 pb-3 pt-3 border-right">
@@ -917,7 +917,7 @@ background-color: rgb(238, 194, 120);
                     <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
 
                         <div class="col-1 p-1 pb-3 pt-3 border-right">
-                            <span class="tiny" style="color: rgb(238, 194, 120);">1630-1700</span>
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1615-1700</span>
                         </div>
 
                         <div class="col-4 p-1 pb-3 pt-3 border-right">
@@ -944,7 +944,7 @@ background-color: rgb(238, 194, 120);
                     <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
 
                         <div class="col-1 p-1 pb-3 pt-3 border-right">
-                            <span class="tiny" style="color: rgb(238, 194, 120);">1645-1700</span>
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1700-1715</span>
                         </div>
 
                         <div class="col-4 p-1 pb-3 pt-3 border-right">
