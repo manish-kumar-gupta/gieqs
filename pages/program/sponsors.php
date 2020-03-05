@@ -207,7 +207,7 @@ width: 100%;
                         <img class="logo" alt="Mundipharma" src="../../assets/img/brand/mundipharma.jpg">
                     </div>
                     <div class="col-lg-2 col-md-4 col-4 py-1">
-
+                        <img class="logo" alt="Norgine" src="../../assets/img/brand/norgine.jpg">
                     </div>
                     <div class="col-lg-2 col-md-4 col-4 py-1">
 
@@ -240,7 +240,9 @@ width: 100%;
                     <img class="logo" alt="Cook Medical" src="../../assets/img/brand/cook.jpg">
 
                     </div>
-                    <div class="col-lg-1 col-md-4 col-4 py-1">
+                    <div class="col-lg-2 col-md-4 col-4 py-1">
+                    
+                    <img class="logo" alt="Boucart Medical" src="../../assets/img/brand/boucart.jpg">
 
                     </div>
                     <div class="col-lg-1 col-md-4 col-4 py-1">
