@@ -16,6 +16,7 @@
                                 </div>
 
                             </div>
+                            
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span class="text-white" aria-hidden="true">&times;</span>
                             </button>
@@ -64,6 +65,19 @@
                                         <label for="surname">surname</label>
                                         <div class="input-group mb-3">
                                             <input id="surname" type="text" class="form-control" name="surname">
+                                        </div>
+
+                                        <label for="type">faculty type</label>
+                                        <div class="input-group mb-3">
+                                            <select id="type" type="text" data-toggle="select" class="form-control" name="type">
+                                            <option value="" selected disabled hidden>please select an option</option>
+                                            <option value="1">International</option>
+                                            <option value="2">National</option>
+                                            <option value="3">Moderator</option>
+                                            <option value="4">Speaker</option>
+                                            <option value="5">UZ Gent Staf</option>
+                                            <option value="6">UZ Gent Assistant</option>
+                                            </select>
                                         </div>
 
                                         
