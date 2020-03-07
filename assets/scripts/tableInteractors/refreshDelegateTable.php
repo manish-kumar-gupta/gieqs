@@ -17,4 +17,4 @@ echo $response;
 
 //echo ltrim($response);
 
-$Delegate->endDeleegate();
+$Delegate->endDelegate();
