@@ -17,4 +17,4 @@ echo $response;
 
 //echo ltrim($response);
 
-$faculty->endfaculty();
+//$faculty->endfaculty();
