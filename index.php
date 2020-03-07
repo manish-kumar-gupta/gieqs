@@ -150,7 +150,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                     </span>
                                 <span class="alert-content">Registration now open!</span>
                              </div></a>
-                                <h2 class="text-white mb-4 mt-8 mt-lg-0">
+                                <h2 class="text-white mb-4 mt-4 mt-lg-0">
                                     <span class="display-4 font-weight-light">We can do everyday endoscopy
                                         better.</span>
                                     <span class="d-block" style="color: rgb(238, 194, 120);"><strong

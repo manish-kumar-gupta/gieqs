@@ -153,7 +153,7 @@ require BASE_URI . '/head.php';
                             </div>
 
 
-                            <div class="pricing-container">
+                            <div class="pricing-container px-2">
                                 <div class="text-center mb-7">
                                     <div class="btn-group" role="group" aria-label="Basic example">
                                         <button type="button" class="btn selectorRole btn-secondary active"
@@ -530,6 +530,7 @@ require BASE_URI . '/head.php';
     <!-- Google maps -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBuyKngB9VC3zgY_uEB-DKL9BKYMekbeY"></script>
     <!-- Purpose JS -->
+    <script src="../../assets/js/purpose.js"></script>
 
 
     <script>

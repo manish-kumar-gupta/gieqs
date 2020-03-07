@@ -16,7 +16,8 @@
      
      require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
 
-     $registrationURL = 'https://eu.eventscloud.com/200200203';
+     $registrationURL = 'https://www.gieqs.com/pages/program/registration.php';
+     //$registrationURL = 'https://eu.eventscloud.com/200200203';
  ?>
 
  <!--META DATA-->
