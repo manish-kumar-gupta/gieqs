@@ -287,7 +287,7 @@
 
                                    echo '
                             <div class="modal fade" id="modal-' . $programmeDate->format('l') . '-' . $session1data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '" tabindex="-1" role="dialog" aria-labelledby="modal-change-username" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                                     <form>';
                                     ?>
                                     <div class="modal-content bg-dark border" style="border-color:rgb(238, 194, 120) !important;">
@@ -507,7 +507,7 @@
 
                                    echo '
                             <div class="modal fade" id="modal-' . $programmeDate->format('l') . '-' . $session2data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '" tabindex="-1" role="dialog" aria-labelledby="modal-change-username" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                                     <form>';
                                     ?>
                                     <div class="modal-content bg-dark border" style="border-color:rgb(238, 194, 120) !important;">
@@ -908,7 +908,7 @@
 
                                    echo '
                             <div class="modal fade" id="modal-' . $programmeDate->format('l') . '-' . $session1data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '" tabindex="-1" role="dialog" aria-labelledby="modal-change-username" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                                     <form>';
                                     ?>
                                     <div class="modal-content bg-dark border" style="border-color:rgb(238, 194, 120) !important;">
@@ -1125,7 +1125,7 @@
 
                                    echo '
                             <div class="modal fade" id="modal-' . $programmeDate->format('l') . '-' . $session2data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '" tabindex="-1" role="dialog" aria-labelledby="modal-change-username" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                                     <form>';
                                     ?>
                                     <div class="modal-content bg-dark border" style="border-color:rgb(238, 194, 120) !important;">

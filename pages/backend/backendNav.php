@@ -14,6 +14,8 @@
                   <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow" aria-labelledby="btn-group-settings">
                     <span class="dropdown-header">Overview</span>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/programv2.php" target="_blank">Programme Overview</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/programv2editor.php" target="_blank">Programme Overview [editable]</a>
+<hr>
                     <span class="dropdown-header">Individual Items</span>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/programmeEdit.php">Programmes</a>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/session.php">Sessions</a>
