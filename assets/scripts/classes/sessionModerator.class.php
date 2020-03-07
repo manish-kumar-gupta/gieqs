@@ -2,7 +2,7 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 26-01-2020
+ * Create Date: 7-03-2020
  *
  * DJT 2019
  *
@@ -56,6 +56,31 @@ Class sessionModerator {
  */
 	public function Load_records_limit_json($y, $x=0){
 $q = "Select * from `sessionModerator` LIMIT " . $x . ", " . $y;
+		$result = $this->connection->RunQuery($q);
+							$rowReturn = array();
+						$x = 0;
+						$nRows = $result->rowCount();
+						if ($nRows > 0){
+
+					while($row = $result->fetch(PDO::FETCH_ASSOC)){
+			$rowReturn[$x]["id"] = $row["id"];
+			$rowReturn[$x]["sessionid"] = $row["sessionid"];
+			$rowReturn[$x]["facultyid"] = $row["facultyid"];
+			$rowReturn[$x]["facultyType"] = $row["facultyType"];
+		$x++;		}return json_encode($rowReturn);}
+
+			else{return FALSE;
+			}
+			
+	}
+    /**
+ * Load specified number of rows and output to JSON. To use the vars use for exemple echo $class->getVar_name;
+ *
+ * @param key_table_type $key_row
+ *
+ */
+	public function Return_row($key){
+$q = "Select * from `sessionModerator` WHERE `id` = $key";
 		$result = $this->connection->RunQuery($q);
 							$rowReturn = array();
 						$x = 0;

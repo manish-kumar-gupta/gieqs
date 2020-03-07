@@ -2,7 +2,7 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 26-01-2020
+ * Create Date: 7-03-2020
  *
  * DJT 2019
  *
@@ -56,6 +56,31 @@ Class sessionOrder {
  */
 	public function Load_records_limit_json($y, $x=0){
 $q = "Select * from `sessionOrder` LIMIT " . $x . ", " . $y;
+		$result = $this->connection->RunQuery($q);
+							$rowReturn = array();
+						$x = 0;
+						$nRows = $result->rowCount();
+						if ($nRows > 0){
+
+					while($row = $result->fetch(PDO::FETCH_ASSOC)){
+			$rowReturn[$x]["id"] = $row["id"];
+			$rowReturn[$x]["sessionid"] = $row["sessionid"];
+			$rowReturn[$x]["sessionItemid"] = $row["sessionItemid"];
+			$rowReturn[$x]["sessionOrder"] = $row["sessionOrder"];
+		$x++;		}return json_encode($rowReturn);}
+
+			else{return FALSE;
+			}
+			
+	}
+    /**
+ * Load specified number of rows and output to JSON. To use the vars use for exemple echo $class->getVar_name;
+ *
+ * @param key_table_type $key_row
+ *
+ */
+	public function Return_row($key){
+$q = "Select * from `sessionOrder` WHERE `id` = $key";
 		$result = $this->connection->RunQuery($q);
 							$rowReturn = array();
 						$x = 0;
@@ -131,7 +156,6 @@ $q = "Select * from `sessionOrder` LIMIT " . $x . ", " . $y;
  public function prepareStatementPDO (){ 
  //need to only update those which are set 
  $ov = get_object_vars($this); 
- 
 if ($ov['connection'] != ''){
 			unset($ov['connection']);
 		} 
@@ -178,8 +202,6 @@ foreach ($ovMod as $key => $value) {
 			$updates[] = "$value";
 
 		} 
-
-		//print_r($ovMod3);
 $implodeArray = implode(', ', $updates); 
 //get number of terms in update
 					//need only the keys first
@@ -205,8 +227,7 @@ $x=0;
 		} 
 $q = "INSERT INTO `sessionOrder` ($keys) VALUES ($keys2)";
 		
-$stmt = $this->connection->prepare($q); 
-
+ $stmt = $this->connection->prepare($q); 
 $stmt->execute($ovMod3); 
 return $this->connection->conn->lastInsertId(); 
 	}
@@ -290,7 +311,7 @@ $x=0;
 
 		} 
 $q = "UPDATE `sessionOrder` SET $implodeArray WHERE `id` = '$this->id'";
-echo $q;
+
 		
  $stmt = $this->connection->RunQuery($q); 
  return $stmt->rowCount(); 

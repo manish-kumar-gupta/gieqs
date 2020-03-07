@@ -2,7 +2,7 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 26-01-2020
+ * Create Date: 7-03-2020
  *
  * DJT 2019
  *
@@ -17,6 +17,11 @@ Class faculty {
 	private $title; //varchar(100)
 	private $firstname; //varchar(200)
 	private $surname; //varchar(200)
+	private $type; //varchar(20)
+	private $replyInvolved; //varchar(11)
+	private $confirmInvolved; //varchar(11)
+	private $confirmGuidelines; //varchar(11)
+	private $user_id; //int(11)
 	private $connection;
 
 	public function __construct(){
@@ -27,10 +32,15 @@ Class faculty {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_faculty($title,$firstname,$surname){
+	public function New_faculty($title,$firstname,$surname,$type,$replyInvolved,$confirmInvolved,$confirmGuidelines,$user_id){
 		$this->title = $title;
 		$this->firstname = $firstname;
 		$this->surname = $surname;
+		$this->type = $type;
+		$this->replyInvolved = $replyInvolved;
+		$this->confirmInvolved = $confirmInvolved;
+		$this->confirmGuidelines = $confirmGuidelines;
+		$this->user_id = $user_id;
 	}
 
     /**
@@ -46,6 +56,11 @@ Class faculty {
 			$this->title = $row["title"];
 			$this->firstname = $row["firstname"];
 			$this->surname = $row["surname"];
+			$this->type = $row["type"];
+			$this->replyInvolved = $row["replyInvolved"];
+			$this->confirmInvolved = $row["confirmInvolved"];
+			$this->confirmGuidelines = $row["confirmGuidelines"];
+			$this->user_id = $row["user_id"];
 		}
 	}
     /**
@@ -67,6 +82,41 @@ $q = "Select * from `faculty` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["title"] = $row["title"];
 			$rowReturn[$x]["firstname"] = $row["firstname"];
 			$rowReturn[$x]["surname"] = $row["surname"];
+			$rowReturn[$x]["type"] = $row["type"];
+			$rowReturn[$x]["replyInvolved"] = $row["replyInvolved"];
+			$rowReturn[$x]["confirmInvolved"] = $row["confirmInvolved"];
+			$rowReturn[$x]["confirmGuidelines"] = $row["confirmGuidelines"];
+			$rowReturn[$x]["user_id"] = $row["user_id"];
+		$x++;		}return json_encode($rowReturn);}
+
+			else{return FALSE;
+			}
+			
+	}
+    /**
+ * Load specified number of rows and output to JSON. To use the vars use for exemple echo $class->getVar_name;
+ *
+ * @param key_table_type $key_row
+ *
+ */
+	public function Return_row($key){
+$q = "Select * from `faculty` WHERE `id` = $key";
+		$result = $this->connection->RunQuery($q);
+							$rowReturn = array();
+						$x = 0;
+						$nRows = $result->rowCount();
+						if ($nRows > 0){
+
+					while($row = $result->fetch(PDO::FETCH_ASSOC)){
+			$rowReturn[$x]["id"] = $row["id"];
+			$rowReturn[$x]["title"] = $row["title"];
+			$rowReturn[$x]["firstname"] = $row["firstname"];
+			$rowReturn[$x]["surname"] = $row["surname"];
+			$rowReturn[$x]["type"] = $row["type"];
+			$rowReturn[$x]["replyInvolved"] = $row["replyInvolved"];
+			$rowReturn[$x]["confirmInvolved"] = $row["confirmInvolved"];
+			$rowReturn[$x]["confirmGuidelines"] = $row["confirmGuidelines"];
+			$rowReturn[$x]["user_id"] = $row["user_id"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -349,6 +399,41 @@ $q = "UPDATE `faculty` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return type - varchar(20)
+	 */
+	public function gettype(){
+		return $this->type;
+	}
+
+	/**
+	 * @return replyInvolved - varchar(11)
+	 */
+	public function getreplyInvolved(){
+		return $this->replyInvolved;
+	}
+
+	/**
+	 * @return confirmInvolved - varchar(11)
+	 */
+	public function getconfirmInvolved(){
+		return $this->confirmInvolved;
+	}
+
+	/**
+	 * @return confirmGuidelines - varchar(11)
+	 */
+	public function getconfirmGuidelines(){
+		return $this->confirmGuidelines;
+	}
+
+	/**
+	 * @return user_id - int(11)
+	 */
+	public function getuser_id(){
+		return $this->user_id;
+	}
+
+	/**
 	 * @param Type: int(11)
 	 */
 	public function setid($id){
@@ -374,6 +459,41 @@ $q = "UPDATE `faculty` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function setsurname($surname){
 		$this->surname = $surname;
+	}
+
+	/**
+	 * @param Type: varchar(20)
+	 */
+	public function settype($type){
+		$this->type = $type;
+	}
+
+	/**
+	 * @param Type: varchar(11)
+	 */
+	public function setreplyInvolved($replyInvolved){
+		$this->replyInvolved = $replyInvolved;
+	}
+
+	/**
+	 * @param Type: varchar(11)
+	 */
+	public function setconfirmInvolved($confirmInvolved){
+		$this->confirmInvolved = $confirmInvolved;
+	}
+
+	/**
+	 * @param Type: varchar(11)
+	 */
+	public function setconfirmGuidelines($confirmGuidelines){
+		$this->confirmGuidelines = $confirmGuidelines;
+	}
+
+	/**
+	 * @param Type: int(11)
+	 */
+	public function setuser_id($user_id){
+		$this->user_id = $user_id;
 	}
 
     /**

@@ -2,7 +2,7 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 7-03-2020
+ * Create Date: 26-01-2020
  *
  * DJT 2019
  *
@@ -11,13 +11,13 @@
  */
 require_once 'DataBaseMysqlPDO.class.php';
 
-Class preRegister {
+Class programme {
 
 	private $id; //int(11)
-	private $name; //varchar(200)
-	private $email; //varchar(200)
-	private $created; //timestamp
-	private $updated; //timestamp
+	private $date; //date
+	private $title; //varchar(200)
+	private $subtitle; //varchar(400)
+	private $description; //varchar(800)
 	private $connection;
 
 	public function __construct(){
@@ -28,11 +28,11 @@ Class preRegister {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_preRegister($name,$email,$created,$updated){
-		$this->name = $name;
-		$this->email = $email;
-		$this->created = $created;
-		$this->updated = $updated;
+	public function New_programme($date,$title,$subtitle,$description){
+		$this->date = $date;
+		$this->title = $title;
+		$this->subtitle = $subtitle;
+		$this->description = $description;
 	}
 
     /**
@@ -42,13 +42,13 @@ Class preRegister {
      *
      */
 	public function Load_from_key($key_row){
-		$result = $this->connection->RunQuery("Select * from preRegister where id = \"$key_row\" ");
+		$result = $this->connection->RunQuery("Select * from programme where id = \"$key_row\" ");
 		while($row = $result->fetch(PDO::FETCH_ASSOC)){
 			$this->id = $row["id"];
-			$this->name = $row["name"];
-			$this->email = $row["email"];
-			$this->created = $row["created"];
-			$this->updated = $row["updated"];
+			$this->date = $row["date"];
+			$this->title = $row["title"];
+			$this->subtitle = $row["subtitle"];
+			$this->description = $row["description"];
 		}
 	}
     /**
@@ -58,7 +58,7 @@ Class preRegister {
  *
  */
 	public function Load_records_limit_json($y, $x=0){
-$q = "Select * from `preRegister` LIMIT " . $x . ", " . $y;
+$q = "Select * from `programme` LIMIT " . $x . ", " . $y;
 		$result = $this->connection->RunQuery($q);
 							$rowReturn = array();
 						$x = 0;
@@ -67,36 +67,10 @@ $q = "Select * from `preRegister` LIMIT " . $x . ", " . $y;
 
 					while($row = $result->fetch(PDO::FETCH_ASSOC)){
 			$rowReturn[$x]["id"] = $row["id"];
-			$rowReturn[$x]["name"] = $row["name"];
-			$rowReturn[$x]["email"] = $row["email"];
-			$rowReturn[$x]["created"] = $row["created"];
-			$rowReturn[$x]["updated"] = $row["updated"];
-		$x++;		}return json_encode($rowReturn);}
-
-			else{return FALSE;
-			}
-			
-	}
-    /**
- * Load specified number of rows and output to JSON. To use the vars use for exemple echo $class->getVar_name;
- *
- * @param key_table_type $key_row
- *
- */
-	public function Return_row($key){
-$q = "Select * from `preRegister` WHERE `id` = $key";
-		$result = $this->connection->RunQuery($q);
-							$rowReturn = array();
-						$x = 0;
-						$nRows = $result->rowCount();
-						if ($nRows > 0){
-
-					while($row = $result->fetch(PDO::FETCH_ASSOC)){
-			$rowReturn[$x]["id"] = $row["id"];
-			$rowReturn[$x]["name"] = $row["name"];
-			$rowReturn[$x]["email"] = $row["email"];
-			$rowReturn[$x]["created"] = $row["created"];
-			$rowReturn[$x]["updated"] = $row["updated"];
+			$rowReturn[$x]["date"] = $row["date"];
+			$rowReturn[$x]["title"] = $row["title"];
+			$rowReturn[$x]["subtitle"] = $row["subtitle"];
+			$rowReturn[$x]["description"] = $row["description"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -107,7 +81,7 @@ $q = "Select * from `preRegister` WHERE `id` = $key";
 
         public function Load_records_limit_json_datatables($y, $x = 0)
             {
-            $q = "Select * from `preRegister` LIMIT $x, $y";
+            $q = "Select * from `programme` LIMIT $x, $y";
             $result = $this->connection->RunQuery($q);
             $rowReturn = array();
             $x = 0;
@@ -139,7 +113,7 @@ $q = "Select * from `preRegister` WHERE `id` = $key";
      *
      */
 	public function matchRecord($key_row){
-		$result = $this->connection->RunQuery("Select * from `preRegister` where `id` = '$key_row' ");
+		$result = $this->connection->RunQuery("Select * from `programme` where `id` = '$key_row' ");
 		$nRows = $result->rowCount();
 			if ($nRows == 1){
 				return TRUE;
@@ -152,7 +126,7 @@ $q = "Select * from `preRegister` WHERE `id` = $key";
 		* Return the number of rows
 		*/
 	public function numberOfRows(){
-		return $this->connection->TotalOfRows('preRegister');
+		return $this->connection->TotalOfRows('programme');
 	}
 
     /**
@@ -230,7 +204,7 @@ $x=0;
 			$x++;
 
 		} 
-$q = "INSERT INTO `preRegister` ($keys) VALUES ($keys2)";
+$q = "INSERT INTO `programme` ($keys) VALUES ($keys2)";
 		
  $stmt = $this->connection->prepare($q); 
 $stmt->execute($ovMod3); 
@@ -315,7 +289,7 @@ $x=0;
 			$x++;
 
 		} 
-$q = "UPDATE `preRegister` SET $implodeArray WHERE `id` = '$this->id'";
+$q = "UPDATE `programme` SET $implodeArray WHERE `id` = '$this->id'";
 
 		
  $stmt = $this->connection->RunQuery($q); 
@@ -330,7 +304,7 @@ $q = "UPDATE `preRegister` SET $implodeArray WHERE `id` = '$this->id'";
      *
      */
 	public function Delete_row_from_key($key_row){
-		$result = $this->connection->RunQuery("DELETE FROM `preRegister` WHERE `id` = $key_row");
+		$result = $this->connection->RunQuery("DELETE FROM `programme` WHERE `id` = $key_row");
 		return $result->rowCount();
 	}
 
@@ -342,7 +316,7 @@ $q = "UPDATE `preRegister` SET $implodeArray WHERE `id` = '$this->id'";
      */
 	public function GetKeysOrderBy($column, $order){
 		$keys = array(); $i = 0;
-		$result = $this->connection->RunQuery("SELECT id from preRegister order by $column $order");
+		$result = $this->connection->RunQuery("SELECT id from programme order by $column $order");
 			while($row = $result->fetch_array(MYSQLI_ASSOC)){
 				$keys[$i] = $row["id"];
 				$i++;
@@ -358,31 +332,31 @@ $q = "UPDATE `preRegister` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
-	 * @return name - varchar(200)
+	 * @return date - date
 	 */
-	public function getname(){
-		return $this->name;
+	public function getdate(){
+		return $this->date;
 	}
 
 	/**
-	 * @return email - varchar(200)
+	 * @return title - varchar(200)
 	 */
-	public function getemail(){
-		return $this->email;
+	public function gettitle(){
+		return $this->title;
 	}
 
 	/**
-	 * @return created - timestamp
+	 * @return subtitle - varchar(400)
 	 */
-	public function getcreated(){
-		return $this->created;
+	public function getsubtitle(){
+		return $this->subtitle;
 	}
 
 	/**
-	 * @return updated - timestamp
+	 * @return description - varchar(800)
 	 */
-	public function getupdated(){
-		return $this->updated;
+	public function getdescription(){
+		return $this->description;
 	}
 
 	/**
@@ -393,37 +367,37 @@ $q = "UPDATE `preRegister` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
-	 * @param Type: varchar(200)
+	 * @param Type: date
 	 */
-	public function setname($name){
-		$this->name = $name;
+	public function setdate($date){
+		$this->date = $date;
 	}
 
 	/**
 	 * @param Type: varchar(200)
 	 */
-	public function setemail($email){
-		$this->email = $email;
+	public function settitle($title){
+		$this->title = $title;
 	}
 
 	/**
-	 * @param Type: timestamp
+	 * @param Type: varchar(400)
 	 */
-	public function setcreated($created){
-		$this->created = $created;
+	public function setsubtitle($subtitle){
+		$this->subtitle = $subtitle;
 	}
 
 	/**
-	 * @param Type: timestamp
+	 * @param Type: varchar(800)
 	 */
-	public function setupdated($updated){
-		$this->updated = $updated;
+	public function setdescription($description){
+		$this->description = $description;
 	}
 
     /**
      * Close mysql connection
      */
-	public function endpreRegister(){
+	public function endprogramme(){
 		$this->connection->CloseMysql();
 	}
 

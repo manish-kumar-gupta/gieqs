@@ -2,7 +2,7 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 26-01-2020
+ * Create Date: 7-03-2020
  *
  * DJT 2019
  *
@@ -17,6 +17,7 @@ Class sessionItemFaculty {
 	private $sessionItemid; //int(11)
 	private $facultyid; //int(11)
 	private $appearanceOrder; //varchar(11)
+	private $live; //varchar(11)
 	private $connection;
 
 	public function __construct(){
@@ -27,10 +28,11 @@ Class sessionItemFaculty {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_sessionItemFaculty($sessionItemid,$facultyid,$appearanceOrder){
+	public function New_sessionItemFaculty($sessionItemid,$facultyid,$appearanceOrder,$live){
 		$this->sessionItemid = $sessionItemid;
 		$this->facultyid = $facultyid;
 		$this->appearanceOrder = $appearanceOrder;
+		$this->live = $live;
 	}
 
     /**
@@ -46,6 +48,7 @@ Class sessionItemFaculty {
 			$this->sessionItemid = $row["sessionItemid"];
 			$this->facultyid = $row["facultyid"];
 			$this->appearanceOrder = $row["appearanceOrder"];
+			$this->live = $row["live"];
 		}
 	}
     /**
@@ -67,6 +70,33 @@ $q = "Select * from `sessionItemFaculty` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["sessionItemid"] = $row["sessionItemid"];
 			$rowReturn[$x]["facultyid"] = $row["facultyid"];
 			$rowReturn[$x]["appearanceOrder"] = $row["appearanceOrder"];
+			$rowReturn[$x]["live"] = $row["live"];
+		$x++;		}return json_encode($rowReturn);}
+
+			else{return FALSE;
+			}
+			
+	}
+    /**
+ * Load specified number of rows and output to JSON. To use the vars use for exemple echo $class->getVar_name;
+ *
+ * @param key_table_type $key_row
+ *
+ */
+	public function Return_row($key){
+$q = "Select * from `sessionItemFaculty` WHERE `id` = $key";
+		$result = $this->connection->RunQuery($q);
+							$rowReturn = array();
+						$x = 0;
+						$nRows = $result->rowCount();
+						if ($nRows > 0){
+
+					while($row = $result->fetch(PDO::FETCH_ASSOC)){
+			$rowReturn[$x]["id"] = $row["id"];
+			$rowReturn[$x]["sessionItemid"] = $row["sessionItemid"];
+			$rowReturn[$x]["facultyid"] = $row["facultyid"];
+			$rowReturn[$x]["appearanceOrder"] = $row["appearanceOrder"];
+			$rowReturn[$x]["live"] = $row["live"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -349,6 +379,13 @@ $q = "UPDATE `sessionItemFaculty` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return live - varchar(11)
+	 */
+	public function getlive(){
+		return $this->live;
+	}
+
+	/**
 	 * @param Type: int(11)
 	 */
 	public function setid($id){
@@ -374,6 +411,13 @@ $q = "UPDATE `sessionItemFaculty` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function setappearanceOrder($appearanceOrder){
 		$this->appearanceOrder = $appearanceOrder;
+	}
+
+	/**
+	 * @param Type: varchar(11)
+	 */
+	public function setlive($live){
+		$this->live = $live;
 	}
 
     /**

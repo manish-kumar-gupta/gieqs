@@ -2,7 +2,7 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 26-01-2020
+ * Create Date: 7-03-2020
  *
  * DJT 2019
  *
@@ -14,8 +14,8 @@ require_once 'DataBaseMysqlPDO.class.php';
 Class session {
 
 	private $id; //int(11)
-	private $timeFrom; //varchar(100)
-	private $timeTo; //varchar(100)
+	private $timeFrom; //time
+	private $timeTo; //time
 	private $title; //varchar(400)
 	private $subtitle; //varchar(400)
 	private $description; //varchar(800)
@@ -54,11 +54,14 @@ Class session {
 			$this->description = $row["description"];
 		}
 	}
-
-	//TODO make this a general function in the classes 01-02-2020
-	public function Return_row($key_row){
-		$q = "Select * from session where id = \"$key_row\" ";
-		//echo $q;
+    /**
+ * Load specified number of rows and output to JSON. To use the vars use for exemple echo $class->getVar_name;
+ *
+ * @param key_table_type $key_row
+ *
+ */
+	public function Load_records_limit_json($y, $x=0){
+$q = "Select * from `session` LIMIT " . $x . ", " . $y;
 		$result = $this->connection->RunQuery($q);
 							$rowReturn = array();
 						$x = 0;
@@ -84,8 +87,8 @@ Class session {
  * @param key_table_type $key_row
  *
  */
-	public function Load_records_limit_json($y, $x=0){
-$q = "Select * from `session` LIMIT " . $x . ", " . $y;
+	public function Return_row($key){
+$q = "Select * from `session` WHERE `id` = $key";
 		$result = $this->connection->RunQuery($q);
 							$rowReturn = array();
 						$x = 0;
@@ -360,14 +363,14 @@ $q = "UPDATE `session` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
-	 * @return timeFrom - varchar(100)
+	 * @return timeFrom - time
 	 */
 	public function gettimeFrom(){
 		return $this->timeFrom;
 	}
 
 	/**
-	 * @return timeTo - varchar(100)
+	 * @return timeTo - time
 	 */
 	public function gettimeTo(){
 		return $this->timeTo;
@@ -402,14 +405,14 @@ $q = "UPDATE `session` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
-	 * @param Type: varchar(100)
+	 * @param Type: time
 	 */
 	public function settimeFrom($timeFrom){
 		$this->timeFrom = $timeFrom;
 	}
 
 	/**
-	 * @param Type: varchar(100)
+	 * @param Type: time
 	 */
 	public function settimeTo($timeTo){
 		$this->timeTo = $timeTo;

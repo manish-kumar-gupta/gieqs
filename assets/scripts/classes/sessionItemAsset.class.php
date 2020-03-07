@@ -11,13 +11,13 @@
  */
 require_once 'DataBaseMysqlPDO.class.php';
 
-Class preRegister {
+Class sessionItemAsset {
 
 	private $id; //int(11)
-	private $name; //varchar(200)
-	private $email; //varchar(200)
-	private $created; //timestamp
-	private $updated; //timestamp
+	private $sessionItemid; //int(11)
+	private $assetid; //int(11)
+	private $appearanceOrder; //varchar(11)
+	private $live; //varchar(11)
 	private $connection;
 
 	public function __construct(){
@@ -28,11 +28,11 @@ Class preRegister {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_preRegister($name,$email,$created,$updated){
-		$this->name = $name;
-		$this->email = $email;
-		$this->created = $created;
-		$this->updated = $updated;
+	public function New_sessionItemAsset($sessionItemid,$assetid,$appearanceOrder,$live){
+		$this->sessionItemid = $sessionItemid;
+		$this->assetid = $assetid;
+		$this->appearanceOrder = $appearanceOrder;
+		$this->live = $live;
 	}
 
     /**
@@ -42,13 +42,13 @@ Class preRegister {
      *
      */
 	public function Load_from_key($key_row){
-		$result = $this->connection->RunQuery("Select * from preRegister where id = \"$key_row\" ");
+		$result = $this->connection->RunQuery("Select * from sessionItemAsset where id = \"$key_row\" ");
 		while($row = $result->fetch(PDO::FETCH_ASSOC)){
 			$this->id = $row["id"];
-			$this->name = $row["name"];
-			$this->email = $row["email"];
-			$this->created = $row["created"];
-			$this->updated = $row["updated"];
+			$this->sessionItemid = $row["sessionItemid"];
+			$this->assetid = $row["assetid"];
+			$this->appearanceOrder = $row["appearanceOrder"];
+			$this->live = $row["live"];
 		}
 	}
     /**
@@ -58,7 +58,7 @@ Class preRegister {
  *
  */
 	public function Load_records_limit_json($y, $x=0){
-$q = "Select * from `preRegister` LIMIT " . $x . ", " . $y;
+$q = "Select * from `sessionItemAsset` LIMIT " . $x . ", " . $y;
 		$result = $this->connection->RunQuery($q);
 							$rowReturn = array();
 						$x = 0;
@@ -67,10 +67,10 @@ $q = "Select * from `preRegister` LIMIT " . $x . ", " . $y;
 
 					while($row = $result->fetch(PDO::FETCH_ASSOC)){
 			$rowReturn[$x]["id"] = $row["id"];
-			$rowReturn[$x]["name"] = $row["name"];
-			$rowReturn[$x]["email"] = $row["email"];
-			$rowReturn[$x]["created"] = $row["created"];
-			$rowReturn[$x]["updated"] = $row["updated"];
+			$rowReturn[$x]["sessionItemid"] = $row["sessionItemid"];
+			$rowReturn[$x]["assetid"] = $row["assetid"];
+			$rowReturn[$x]["appearanceOrder"] = $row["appearanceOrder"];
+			$rowReturn[$x]["live"] = $row["live"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -84,7 +84,7 @@ $q = "Select * from `preRegister` LIMIT " . $x . ", " . $y;
  *
  */
 	public function Return_row($key){
-$q = "Select * from `preRegister` WHERE `id` = $key";
+$q = "Select * from `sessionItemAsset` WHERE `id` = $key";
 		$result = $this->connection->RunQuery($q);
 							$rowReturn = array();
 						$x = 0;
@@ -93,10 +93,10 @@ $q = "Select * from `preRegister` WHERE `id` = $key";
 
 					while($row = $result->fetch(PDO::FETCH_ASSOC)){
 			$rowReturn[$x]["id"] = $row["id"];
-			$rowReturn[$x]["name"] = $row["name"];
-			$rowReturn[$x]["email"] = $row["email"];
-			$rowReturn[$x]["created"] = $row["created"];
-			$rowReturn[$x]["updated"] = $row["updated"];
+			$rowReturn[$x]["sessionItemid"] = $row["sessionItemid"];
+			$rowReturn[$x]["assetid"] = $row["assetid"];
+			$rowReturn[$x]["appearanceOrder"] = $row["appearanceOrder"];
+			$rowReturn[$x]["live"] = $row["live"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -107,7 +107,7 @@ $q = "Select * from `preRegister` WHERE `id` = $key";
 
         public function Load_records_limit_json_datatables($y, $x = 0)
             {
-            $q = "Select * from `preRegister` LIMIT $x, $y";
+            $q = "Select * from `sessionItemAsset` LIMIT $x, $y";
             $result = $this->connection->RunQuery($q);
             $rowReturn = array();
             $x = 0;
@@ -139,7 +139,7 @@ $q = "Select * from `preRegister` WHERE `id` = $key";
      *
      */
 	public function matchRecord($key_row){
-		$result = $this->connection->RunQuery("Select * from `preRegister` where `id` = '$key_row' ");
+		$result = $this->connection->RunQuery("Select * from `sessionItemAsset` where `id` = '$key_row' ");
 		$nRows = $result->rowCount();
 			if ($nRows == 1){
 				return TRUE;
@@ -152,7 +152,7 @@ $q = "Select * from `preRegister` WHERE `id` = $key";
 		* Return the number of rows
 		*/
 	public function numberOfRows(){
-		return $this->connection->TotalOfRows('preRegister');
+		return $this->connection->TotalOfRows('sessionItemAsset');
 	}
 
     /**
@@ -230,7 +230,7 @@ $x=0;
 			$x++;
 
 		} 
-$q = "INSERT INTO `preRegister` ($keys) VALUES ($keys2)";
+$q = "INSERT INTO `sessionItemAsset` ($keys) VALUES ($keys2)";
 		
  $stmt = $this->connection->prepare($q); 
 $stmt->execute($ovMod3); 
@@ -315,7 +315,7 @@ $x=0;
 			$x++;
 
 		} 
-$q = "UPDATE `preRegister` SET $implodeArray WHERE `id` = '$this->id'";
+$q = "UPDATE `sessionItemAsset` SET $implodeArray WHERE `id` = '$this->id'";
 
 		
  $stmt = $this->connection->RunQuery($q); 
@@ -330,7 +330,7 @@ $q = "UPDATE `preRegister` SET $implodeArray WHERE `id` = '$this->id'";
      *
      */
 	public function Delete_row_from_key($key_row){
-		$result = $this->connection->RunQuery("DELETE FROM `preRegister` WHERE `id` = $key_row");
+		$result = $this->connection->RunQuery("DELETE FROM `sessionItemAsset` WHERE `id` = $key_row");
 		return $result->rowCount();
 	}
 
@@ -342,7 +342,7 @@ $q = "UPDATE `preRegister` SET $implodeArray WHERE `id` = '$this->id'";
      */
 	public function GetKeysOrderBy($column, $order){
 		$keys = array(); $i = 0;
-		$result = $this->connection->RunQuery("SELECT id from preRegister order by $column $order");
+		$result = $this->connection->RunQuery("SELECT id from sessionItemAsset order by $column $order");
 			while($row = $result->fetch_array(MYSQLI_ASSOC)){
 				$keys[$i] = $row["id"];
 				$i++;
@@ -358,31 +358,31 @@ $q = "UPDATE `preRegister` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
-	 * @return name - varchar(200)
+	 * @return sessionItemid - int(11)
 	 */
-	public function getname(){
-		return $this->name;
+	public function getsessionItemid(){
+		return $this->sessionItemid;
 	}
 
 	/**
-	 * @return email - varchar(200)
+	 * @return assetid - int(11)
 	 */
-	public function getemail(){
-		return $this->email;
+	public function getassetid(){
+		return $this->assetid;
 	}
 
 	/**
-	 * @return created - timestamp
+	 * @return appearanceOrder - varchar(11)
 	 */
-	public function getcreated(){
-		return $this->created;
+	public function getappearanceOrder(){
+		return $this->appearanceOrder;
 	}
 
 	/**
-	 * @return updated - timestamp
+	 * @return live - varchar(11)
 	 */
-	public function getupdated(){
-		return $this->updated;
+	public function getlive(){
+		return $this->live;
 	}
 
 	/**
@@ -393,37 +393,37 @@ $q = "UPDATE `preRegister` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
-	 * @param Type: varchar(200)
+	 * @param Type: int(11)
 	 */
-	public function setname($name){
-		$this->name = $name;
+	public function setsessionItemid($sessionItemid){
+		$this->sessionItemid = $sessionItemid;
 	}
 
 	/**
-	 * @param Type: varchar(200)
+	 * @param Type: int(11)
 	 */
-	public function setemail($email){
-		$this->email = $email;
+	public function setassetid($assetid){
+		$this->assetid = $assetid;
 	}
 
 	/**
-	 * @param Type: timestamp
+	 * @param Type: varchar(11)
 	 */
-	public function setcreated($created){
-		$this->created = $created;
+	public function setappearanceOrder($appearanceOrder){
+		$this->appearanceOrder = $appearanceOrder;
 	}
 
 	/**
-	 * @param Type: timestamp
+	 * @param Type: varchar(11)
 	 */
-	public function setupdated($updated){
-		$this->updated = $updated;
+	public function setlive($live){
+		$this->live = $live;
 	}
 
     /**
      * Close mysql connection
      */
-	public function endpreRegister(){
+	public function endsessionItemAsset(){
 		$this->connection->CloseMysql();
 	}
 

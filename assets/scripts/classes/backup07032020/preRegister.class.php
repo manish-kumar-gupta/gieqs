@@ -2,7 +2,7 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 7-03-2020
+ * Create Date: 26-01-2020
  *
  * DJT 2019
  *
@@ -16,8 +16,6 @@ Class preRegister {
 	private $id; //int(11)
 	private $name; //varchar(200)
 	private $email; //varchar(200)
-	private $created; //timestamp
-	private $updated; //timestamp
 	private $connection;
 
 	public function __construct(){
@@ -28,11 +26,9 @@ Class preRegister {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_preRegister($name,$email,$created,$updated){
+	public function New_preRegister($name,$email){
 		$this->name = $name;
 		$this->email = $email;
-		$this->created = $created;
-		$this->updated = $updated;
 	}
 
     /**
@@ -47,8 +43,6 @@ Class preRegister {
 			$this->id = $row["id"];
 			$this->name = $row["name"];
 			$this->email = $row["email"];
-			$this->created = $row["created"];
-			$this->updated = $row["updated"];
 		}
 	}
     /**
@@ -69,40 +63,31 @@ $q = "Select * from `preRegister` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["id"] = $row["id"];
 			$rowReturn[$x]["name"] = $row["name"];
 			$rowReturn[$x]["email"] = $row["email"];
-			$rowReturn[$x]["created"] = $row["created"];
-			$rowReturn[$x]["updated"] = $row["updated"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
 			}
 			
 	}
-    /**
- * Load specified number of rows and output to JSON. To use the vars use for exemple echo $class->getVar_name;
- *
- * @param key_table_type $key_row
- *
- */
-	public function Return_row($key){
-$q = "Select * from `preRegister` WHERE `id` = $key";
-		$result = $this->connection->RunQuery($q);
-							$rowReturn = array();
-						$x = 0;
-						$nRows = $result->rowCount();
-						if ($nRows > 0){
 
-					while($row = $result->fetch(PDO::FETCH_ASSOC)){
-			$rowReturn[$x]["id"] = $row["id"];
-			$rowReturn[$x]["name"] = $row["name"];
-			$rowReturn[$x]["email"] = $row["email"];
-			$rowReturn[$x]["created"] = $row["created"];
-			$rowReturn[$x]["updated"] = $row["updated"];
-		$x++;		}return json_encode($rowReturn);}
-
-			else{return FALSE;
+	public function Load_records_limit($y, $x=0){
+		$q = "Select * from `preRegister` LIMIT " . $x . ", " . $y;
+				$result = $this->connection->RunQuery($q);
+									$rowReturn = array();
+								$x = 0;
+								$nRows = $result->rowCount();
+								if ($nRows > 0){
+		
+							while($row = $result->fetch(PDO::FETCH_ASSOC)){
+					$rowReturn[$x]["id"] = $row["id"];
+					$rowReturn[$x]["name"] = $row["name"];
+					$rowReturn[$x]["email"] = $row["email"];
+				$x++;		}return $rowReturn;}
+		
+					else{return FALSE;
+					}
+					
 			}
-			
-	}
     
 
         public function Load_records_limit_json_datatables($y, $x = 0)
@@ -372,20 +357,6 @@ $q = "UPDATE `preRegister` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
-	 * @return created - timestamp
-	 */
-	public function getcreated(){
-		return $this->created;
-	}
-
-	/**
-	 * @return updated - timestamp
-	 */
-	public function getupdated(){
-		return $this->updated;
-	}
-
-	/**
 	 * @param Type: int(11)
 	 */
 	public function setid($id){
@@ -404,20 +375,6 @@ $q = "UPDATE `preRegister` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function setemail($email){
 		$this->email = $email;
-	}
-
-	/**
-	 * @param Type: timestamp
-	 */
-	public function setcreated($created){
-		$this->created = $created;
-	}
-
-	/**
-	 * @param Type: timestamp
-	 */
-	public function setupdated($updated){
-		$this->updated = $updated;
 	}
 
     /**

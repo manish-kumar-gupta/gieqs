@@ -2,7 +2,7 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 1-02-2020
+ * Create Date: 7-03-2020
  *
  * DJT 2019
  *
@@ -46,9 +46,7 @@ Class sessionItem {
      *
      */
 	public function Load_from_key($key_row){
-		$q = "Select * from sessionItem where id = \"$key_row\" ";
-		//echo $q;
-		$result = $this->connection->RunQuery($q);
+		$result = $this->connection->RunQuery("Select * from sessionItem where id = \"$key_row\" ");
 		while($row = $result->fetch(PDO::FETCH_ASSOC)){
 			$this->id = $row["id"];
 			$this->timeFrom = $row["timeFrom"];
@@ -342,9 +340,7 @@ $q = "UPDATE `sessionItem` SET $implodeArray WHERE `id` = '$this->id'";
      *
      */
 	public function Delete_row_from_key($key_row){
-		$q = "DELETE FROM `sessionItem` WHERE `id` = $key_row";
-		//echo $q;
-		$result = $this->connection->RunQuery($q);
+		$result = $this->connection->RunQuery("DELETE FROM `sessionItem` WHERE `id` = $key_row");
 		return $result->rowCount();
 	}
 

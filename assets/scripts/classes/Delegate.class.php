@@ -2,7 +2,7 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 26-01-2020
+ * Create Date: 7-03-2020
  *
  * DJT 2019
  *
@@ -110,6 +110,49 @@ Class Delegate {
  */
 	public function Load_records_limit_json($y, $x=0){
 $q = "Select * from `Delegate` LIMIT " . $x . ", " . $y;
+		$result = $this->connection->RunQuery($q);
+							$rowReturn = array();
+						$x = 0;
+						$nRows = $result->rowCount();
+						if ($nRows > 0){
+
+					while($row = $result->fetch(PDO::FETCH_ASSOC)){
+			$rowReturn[$x]["id"] = $row["id"];
+			$rowReturn[$x]["firstname"] = $row["firstname"];
+			$rowReturn[$x]["surname"] = $row["surname"];
+			$rowReturn[$x]["user_id"] = $row["user_id"];
+			$rowReturn[$x]["email"] = $row["email"];
+			$rowReturn[$x]["centre"] = $row["centre"];
+			$rowReturn[$x]["centreName"] = $row["centreName"];
+			$rowReturn[$x]["registered_date"] = $row["registered_date"];
+			$rowReturn[$x]["last_login"] = $row["last_login"];
+			$rowReturn[$x]["previous_login"] = $row["previous_login"];
+			$rowReturn[$x]["timezone"] = $row["timezone"];
+			$rowReturn[$x]["access_level"] = $row["access_level"];
+			$rowReturn[$x]["contactPhone"] = $row["contactPhone"];
+			$rowReturn[$x]["key"] = $row["key"];
+			$rowReturn[$x]["centreCity"] = $row["centreCity"];
+			$rowReturn[$x]["centreCountry"] = $row["centreCountry"];
+			$rowReturn[$x]["trainee"] = $row["trainee"];
+			$rowReturn[$x]["yearsIndependent"] = $row["yearsIndependent"];
+			$rowReturn[$x]["endoscopyTrainingProgramme"] = $row["endoscopyTrainingProgramme"];
+			$rowReturn[$x]["yearsEndoscopy"] = $row["yearsEndoscopy"];
+			$rowReturn[$x]["specialistInterest"] = $row["specialistInterest"];
+			$rowReturn[$x]["emailPreferences"] = $row["emailPreferences"];
+		$x++;		}return json_encode($rowReturn);}
+
+			else{return FALSE;
+			}
+			
+	}
+    /**
+ * Load specified number of rows and output to JSON. To use the vars use for exemple echo $class->getVar_name;
+ *
+ * @param key_table_type $key_row
+ *
+ */
+	public function Return_row($key){
+$q = "Select * from `Delegate` WHERE `id` = $key";
 		$result = $this->connection->RunQuery($q);
 							$rowReturn = array();
 						$x = 0;

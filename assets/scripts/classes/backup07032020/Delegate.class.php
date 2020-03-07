@@ -2,7 +2,7 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 7-03-2020
+ * Create Date: 26-01-2020
  *
  * DJT 2019
  *
@@ -11,13 +11,13 @@
  */
 require_once 'DataBaseMysqlPDO.class.php';
 
-Class users {
+Class Delegate {
 
-	private $user_id; //int(10)
+	private $id; //int(11)
 	private $firstname; //varchar(30)
 	private $surname; //varchar(30)
+	private $user_id; //int(11)
 	private $email; //varchar(70)
-	private $password; //varchar(200)
 	private $centre; //int(10)
 	private $centreName; //varchar(200)
 	private $registered_date; //date
@@ -29,7 +29,7 @@ Class users {
 	private $key; //varchar(200)
 	private $centreCity; //varchar(200)
 	private $centreCountry; //varchar(200)
-	private $trainee; //int(10)
+	private $trainee; //varchar(10)
 	private $yearsIndependent; //int(10)
 	private $endoscopyTrainingProgramme; //int(10)
 	private $yearsEndoscopy; //int(11)
@@ -45,11 +45,11 @@ Class users {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_users($firstname,$surname,$email,$password,$centre,$centreName,$registered_date,$last_login,$previous_login,$timezone,$access_level,$contactPhone,$key,$centreCity,$centreCountry,$trainee,$yearsIndependent,$endoscopyTrainingProgramme,$yearsEndoscopy,$specialistInterest,$emailPreferences){
+	public function New_Delegate($firstname,$surname,$user_id,$email,$centre,$centreName,$registered_date,$last_login,$previous_login,$timezone,$access_level,$contactPhone,$key,$centreCity,$centreCountry,$trainee,$yearsIndependent,$endoscopyTrainingProgramme,$yearsEndoscopy,$specialistInterest,$emailPreferences){
 		$this->firstname = $firstname;
 		$this->surname = $surname;
+		$this->user_id = $user_id;
 		$this->email = $email;
-		$this->password = $password;
 		$this->centre = $centre;
 		$this->centreName = $centreName;
 		$this->registered_date = $registered_date;
@@ -76,13 +76,13 @@ Class users {
      *
      */
 	public function Load_from_key($key_row){
-		$result = $this->connection->RunQuery("Select * from users where user_id = \"$key_row\" ");
+		$result = $this->connection->RunQuery("Select * from Delegate where id = \"$key_row\" ");
 		while($row = $result->fetch(PDO::FETCH_ASSOC)){
-			$this->user_id = $row["user_id"];
+			$this->id = $row["id"];
 			$this->firstname = $row["firstname"];
 			$this->surname = $row["surname"];
+			$this->user_id = $row["user_id"];
 			$this->email = $row["email"];
-			$this->password = $row["password"];
 			$this->centre = $row["centre"];
 			$this->centreName = $row["centreName"];
 			$this->registered_date = $row["registered_date"];
@@ -109,7 +109,7 @@ Class users {
  *
  */
 	public function Load_records_limit_json($y, $x=0){
-$q = "Select * from `users` LIMIT " . $x . ", " . $y;
+$q = "Select * from `Delegate` LIMIT " . $x . ", " . $y;
 		$result = $this->connection->RunQuery($q);
 							$rowReturn = array();
 						$x = 0;
@@ -117,54 +117,11 @@ $q = "Select * from `users` LIMIT " . $x . ", " . $y;
 						if ($nRows > 0){
 
 					while($row = $result->fetch(PDO::FETCH_ASSOC)){
-			$rowReturn[$x]["user_id"] = $row["user_id"];
+			$rowReturn[$x]["id"] = $row["id"];
 			$rowReturn[$x]["firstname"] = $row["firstname"];
 			$rowReturn[$x]["surname"] = $row["surname"];
-			$rowReturn[$x]["email"] = $row["email"];
-			$rowReturn[$x]["password"] = $row["password"];
-			$rowReturn[$x]["centre"] = $row["centre"];
-			$rowReturn[$x]["centreName"] = $row["centreName"];
-			$rowReturn[$x]["registered_date"] = $row["registered_date"];
-			$rowReturn[$x]["last_login"] = $row["last_login"];
-			$rowReturn[$x]["previous_login"] = $row["previous_login"];
-			$rowReturn[$x]["timezone"] = $row["timezone"];
-			$rowReturn[$x]["access_level"] = $row["access_level"];
-			$rowReturn[$x]["contactPhone"] = $row["contactPhone"];
-			$rowReturn[$x]["key"] = $row["key"];
-			$rowReturn[$x]["centreCity"] = $row["centreCity"];
-			$rowReturn[$x]["centreCountry"] = $row["centreCountry"];
-			$rowReturn[$x]["trainee"] = $row["trainee"];
-			$rowReturn[$x]["yearsIndependent"] = $row["yearsIndependent"];
-			$rowReturn[$x]["endoscopyTrainingProgramme"] = $row["endoscopyTrainingProgramme"];
-			$rowReturn[$x]["yearsEndoscopy"] = $row["yearsEndoscopy"];
-			$rowReturn[$x]["specialistInterest"] = $row["specialistInterest"];
-			$rowReturn[$x]["emailPreferences"] = $row["emailPreferences"];
-		$x++;		}return json_encode($rowReturn);}
-
-			else{return FALSE;
-			}
-			
-	}
-    /**
- * Load specified number of rows and output to JSON. To use the vars use for exemple echo $class->getVar_name;
- *
- * @param key_table_type $key_row
- *
- */
-	public function Return_row($key){
-$q = "Select * from `users` WHERE `id` = $key";
-		$result = $this->connection->RunQuery($q);
-							$rowReturn = array();
-						$x = 0;
-						$nRows = $result->rowCount();
-						if ($nRows > 0){
-
-					while($row = $result->fetch(PDO::FETCH_ASSOC)){
 			$rowReturn[$x]["user_id"] = $row["user_id"];
-			$rowReturn[$x]["firstname"] = $row["firstname"];
-			$rowReturn[$x]["surname"] = $row["surname"];
 			$rowReturn[$x]["email"] = $row["email"];
-			$rowReturn[$x]["password"] = $row["password"];
 			$rowReturn[$x]["centre"] = $row["centre"];
 			$rowReturn[$x]["centreName"] = $row["centreName"];
 			$rowReturn[$x]["registered_date"] = $row["registered_date"];
@@ -192,7 +149,7 @@ $q = "Select * from `users` WHERE `id` = $key";
 
         public function Load_records_limit_json_datatables($y, $x = 0)
             {
-            $q = "Select * from `users` LIMIT $x, $y";
+            $q = "Select * from `Delegate` LIMIT $x, $y";
             $result = $this->connection->RunQuery($q);
             $rowReturn = array();
             $x = 0;
@@ -224,7 +181,7 @@ $q = "Select * from `users` WHERE `id` = $key";
      *
      */
 	public function matchRecord($key_row){
-		$result = $this->connection->RunQuery("Select * from `users` where `user_id` = '$key_row' ");
+		$result = $this->connection->RunQuery("Select * from `Delegate` where `id` = '$key_row' ");
 		$nRows = $result->rowCount();
 			if ($nRows == 1){
 				return TRUE;
@@ -237,7 +194,7 @@ $q = "Select * from `users` WHERE `id` = $key";
 		* Return the number of rows
 		*/
 	public function numberOfRows(){
-		return $this->connection->TotalOfRows('users');
+		return $this->connection->TotalOfRows('Delegate');
 	}
 
     /**
@@ -249,8 +206,8 @@ $q = "Select * from `users` WHERE `id` = $key";
 if ($ov['connection'] != ''){
 			unset($ov['connection']);
 		} 
-if ($ov['user_id'] != ''){
-			unset($ov['user_id']);
+if ($ov['id'] != ''){
+			unset($ov['id']);
 		} 
 $ovMod = array(); 
 foreach ($ov as $key=>$value){
@@ -315,7 +272,7 @@ $x=0;
 			$x++;
 
 		} 
-$q = "INSERT INTO `users` ($keys) VALUES ($keys2)";
+$q = "INSERT INTO `Delegate` ($keys) VALUES ($keys2)";
 		
  $stmt = $this->connection->prepare($q); 
 $stmt->execute($ovMod3); 
@@ -331,8 +288,8 @@ return $this->connection->conn->lastInsertId();
 if ($ov['connection'] != ''){
 			unset($ov['connection']);
 		} 
-if ($ov['user_id'] != ''){
-			unset($ov['user_id']);
+if ($ov['id'] != ''){
+			unset($ov['id']);
 		} 
 if ($ov['updated'] != ''){
 			unset($ov['updated']);
@@ -400,7 +357,7 @@ $x=0;
 			$x++;
 
 		} 
-$q = "UPDATE `users` SET $implodeArray WHERE `user_id` = '$this->user_id'";
+$q = "UPDATE `Delegate` SET $implodeArray WHERE `id` = '$this->id'";
 
 		
  $stmt = $this->connection->RunQuery($q); 
@@ -415,7 +372,7 @@ $q = "UPDATE `users` SET $implodeArray WHERE `user_id` = '$this->user_id'";
      *
      */
 	public function Delete_row_from_key($key_row){
-		$result = $this->connection->RunQuery("DELETE FROM `users` WHERE `user_id` = $key_row");
+		$result = $this->connection->RunQuery("DELETE FROM `Delegate` WHERE `id` = $key_row");
 		return $result->rowCount();
 	}
 
@@ -427,19 +384,19 @@ $q = "UPDATE `users` SET $implodeArray WHERE `user_id` = '$this->user_id'";
      */
 	public function GetKeysOrderBy($column, $order){
 		$keys = array(); $i = 0;
-		$result = $this->connection->RunQuery("SELECT user_id from users order by $column $order");
+		$result = $this->connection->RunQuery("SELECT id from Delegate order by $column $order");
 			while($row = $result->fetch_array(MYSQLI_ASSOC)){
-				$keys[$i] = $row["user_id"];
+				$keys[$i] = $row["id"];
 				$i++;
 			}
 	return $keys;
 	}
 
 	/**
-	 * @return user_id - int(10)
+	 * @return id - int(11)
 	 */
-	public function getuser_id(){
-		return $this->user_id;
+	public function getid(){
+		return $this->id;
 	}
 
 	/**
@@ -457,17 +414,17 @@ $q = "UPDATE `users` SET $implodeArray WHERE `user_id` = '$this->user_id'";
 	}
 
 	/**
+	 * @return user_id - int(11)
+	 */
+	public function getuser_id(){
+		return $this->user_id;
+	}
+
+	/**
 	 * @return email - varchar(70)
 	 */
 	public function getemail(){
 		return $this->email;
-	}
-
-	/**
-	 * @return password - varchar(200)
-	 */
-	public function getpassword(){
-		return $this->password;
 	}
 
 	/**
@@ -548,7 +505,7 @@ $q = "UPDATE `users` SET $implodeArray WHERE `user_id` = '$this->user_id'";
 	}
 
 	/**
-	 * @return trainee - int(10)
+	 * @return trainee - varchar(10)
 	 */
 	public function gettrainee(){
 		return $this->trainee;
@@ -590,10 +547,10 @@ $q = "UPDATE `users` SET $implodeArray WHERE `user_id` = '$this->user_id'";
 	}
 
 	/**
-	 * @param Type: int(10)
+	 * @param Type: int(11)
 	 */
-	public function setuser_id($user_id){
-		$this->user_id = $user_id;
+	public function setid($id){
+		$this->id = $id;
 	}
 
 	/**
@@ -611,17 +568,17 @@ $q = "UPDATE `users` SET $implodeArray WHERE `user_id` = '$this->user_id'";
 	}
 
 	/**
+	 * @param Type: int(11)
+	 */
+	public function setuser_id($user_id){
+		$this->user_id = $user_id;
+	}
+
+	/**
 	 * @param Type: varchar(70)
 	 */
 	public function setemail($email){
 		$this->email = $email;
-	}
-
-	/**
-	 * @param Type: varchar(200)
-	 */
-	public function setpassword($password){
-		$this->password = $password;
 	}
 
 	/**
@@ -702,7 +659,7 @@ $q = "UPDATE `users` SET $implodeArray WHERE `user_id` = '$this->user_id'";
 	}
 
 	/**
-	 * @param Type: int(10)
+	 * @param Type: varchar(10)
 	 */
 	public function settrainee($trainee){
 		$this->trainee = $trainee;
@@ -746,7 +703,7 @@ $q = "UPDATE `users` SET $implodeArray WHERE `user_id` = '$this->user_id'";
     /**
      * Close mysql connection
      */
-	public function endusers(){
+	public function endDelegate(){
 		$this->connection->CloseMysql();
 	}
 
