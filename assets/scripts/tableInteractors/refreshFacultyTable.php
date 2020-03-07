@@ -11,10 +11,10 @@ require ('../../../assets/includes/config.inc.php');
 
 $faculty = new faculty;
 
-$response =  $faculty->Load_records_limit_json_datatables(200);
+$response =  $faculty->Load_records_limit_json_datatables(50);
 
 echo $response;
 
 //echo ltrim($response);
 
-//$faculty->endfaculty();
+$faculty->endfaculty();
