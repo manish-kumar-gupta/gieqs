@@ -1,6 +1,6 @@
 <?php
 
-            $openaccess =1;
+            $openaccess = 1;
             
 			//$requiredUserLevel = 4;
 			require ('../../assets/includes/config.inc.php');		
@@ -21,7 +21,7 @@
 
             $data = json_decode(file_get_contents('php://input'), true);
 
-            //print_r($data);
+            print_r($data);
 
             $sessionid = $data['sessionid'];
             $moderatorid = $data['moderatorid'];

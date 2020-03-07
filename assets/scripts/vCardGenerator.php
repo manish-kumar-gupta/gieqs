@@ -466,16 +466,39 @@ preg_match_all("(\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}\b)",
 
 //print_r($out[0]);
 
+$emailList = new emailList;
+
 $emails = $out[0];
 
-print_r($emails);
+//print_r($emails);
 
-foreach ($emails as $key=>$value){
+
+
+//preregister add
+
+$preRegister = new preRegister;
+
+$preRegisterOutput = $preRegister->Load_records_limit(70, $x=0);
+
+print_r($preRegisterOutput);
+
+foreach ($preRegisterOutput as $key=>$value){
+
 
   
+  
+
+    //echo $value;
+    //$emailList->New_emailList($value['name'],null,$value['email']);
+  echo $emailList->prepareStatementPDO();
+
+  
+  //$emailList->New_emailList(null,null,$value);
+  //echo $emailList->prepareStatementPDO();
 
 
 }
+
 
 //foreach loop to add to database //TODO
 

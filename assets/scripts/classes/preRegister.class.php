@@ -69,6 +69,25 @@ $q = "Select * from `preRegister` LIMIT " . $x . ", " . $y;
 			}
 			
 	}
+
+	public function Load_records_limit($y, $x=0){
+		$q = "Select * from `preRegister` LIMIT " . $x . ", " . $y;
+				$result = $this->connection->RunQuery($q);
+									$rowReturn = array();
+								$x = 0;
+								$nRows = $result->rowCount();
+								if ($nRows > 0){
+		
+							while($row = $result->fetch(PDO::FETCH_ASSOC)){
+					$rowReturn[$x]["id"] = $row["id"];
+					$rowReturn[$x]["name"] = $row["name"];
+					$rowReturn[$x]["email"] = $row["email"];
+				$x++;		}return $rowReturn;}
+		
+					else{return FALSE;
+					}
+					
+			}
     
 
         public function Load_records_limit_json_datatables($y, $x = 0)
