@@ -30,6 +30,7 @@
 
             if (($sessionView->checkCombination($sessionid, $moderatorid)) === false){
 
+                echo 'into here';
                 //if above false
             $sessionModerator->setsessionid($sessionid);
             $sessionModerator->setfacultyid($moderatorid);
