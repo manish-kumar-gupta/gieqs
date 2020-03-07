@@ -13,6 +13,9 @@ $openaccess = 1;
 
 require BASE_URI . '/head.php';
 
+$registrationURL = 'https://eu.eventscloud.com/200200203';
+
+
 ?>
 
     <title>Ghent International Endoscopy Symposium - Registration</title>
