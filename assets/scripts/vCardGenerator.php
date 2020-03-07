@@ -469,6 +469,14 @@ preg_match_all("(\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}\b)",
 $emails = $out[0];
 
 print_r($emails);
+
+foreach ($emails as $key=>$value){
+
+  
+
+
+}
+
 //foreach loop to add to database //TODO
 
 //UZG Mail list as array below
