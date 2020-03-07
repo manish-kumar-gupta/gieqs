@@ -161,7 +161,7 @@ width: 100%;
 
                 <div class="client-group row justify-content-center mb-4">
                     <div class="col-lg-4 col-md-6 col-12 py-3">
-                        <img class="logo" alt="Boston Scientific" src="../../assets/img/brand/boston.jpg">
+                        <img class="logo" alt="Boston Scientific" src="<?php echo BASE_URL . '/assets/img/brand/boston.jpg';?>">
                     </div>
                     <div class="col-lg-4 col-md-6 col-12 py-3">
 
@@ -194,7 +194,7 @@ width: 100%;
                     </div>
 
                 </div>
-
+    
                 <!--Bronze Sponsors-->
                 <div class="row text-left">
                     <div class="col-12 p-3 pb-2">
@@ -204,10 +204,10 @@ width: 100%;
 
                 <div class="client-group row justify-content-center mb-4">
                     <div class="col-lg-2 col-md-4 col-4 py-1">
-                        <img class="logo" alt="Mundipharma" src="../../assets/img/brand/mundipharma.jpg">
+                        <img class="logo" alt="Mundipharma" src="<?php echo BASE_URL . '/assets/img/brand/mundipharma.jpg';?>">
                     </div>
                     <div class="col-lg-2 col-md-4 col-4 py-1">
-                        <img class="logo" alt="Norgine" src="../../assets/img/brand/norgine.jpg">
+                        <img class="logo" alt="Norgine" src="<?php echo BASE_URL . '/assets/img/brand/norgine.jpg';?>">
                     </div>
                     <div class="col-lg-2 col-md-4 col-4 py-1">
 
@@ -233,16 +233,16 @@ width: 100%;
 
                 <div class="client-group row justify-content-left">
                     <div class="col-lg-1 col-md-4 col-4 py-1">
-                        <img class="logo" alt="Prion Medical" src="../../assets/img/brand/prion.jpg">
+                        <img class="logo" alt="Prion Medical" src="<?php echo BASE_URL . '/assets/img/brand/prion.jpg';?>">
                     </div>
                     <div class="col-lg-1 col-md-4 col-4 py-1">
                     
-                    <img class="logo" alt="Cook Medical" src="../../assets/img/brand/cook.jpg">
+                    <img class="logo" alt="Cook Medical" src="<?php echo BASE_URL . '/assets/img/brand/cook.jpg';?>">
 
                     </div>
                     <div class="col-lg-2 col-md-4 col-4 py-1">
                     
-                    <img class="logo" alt="Boucart Medical" src="../../assets/img/brand/boucart.jpg">
+                    <img class="logo" alt="Boucart Medical" src="<?php echo BASE_URL . '/assets/img/brand/boucart.jpg';?>">
 
                     </div>
                     <div class="col-lg-1 col-md-4 col-4 py-1">
@@ -277,19 +277,19 @@ width: 100%;
     <?php require BASE_URI . '/footer.php';?>
 
     <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
-    <script src="../../assets/js/purpose.core.js"></script>
+    <script src="<?php echo BASE_URL . '/assets/js/purpose.core.js';?>"></script>
     <!-- Page JS -->
-    <script src="../../assets/libs/swiper/dist/js/swiper.min.js"></script>
-    <script src="../../assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
-    <script src="../../assets/libs/typed.js/lib/typed.min.js"></script>
-    <script src="../../assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script>
-    <script src="../../assets/libs/jquery-countdown/dist/jquery.countdown.min.js"></script>
+    <script src="<?php echo BASE_URL . '/assets/libs/swiper/dist/js/swiper.min.js';?>"></script>
+    <script src="<?php echo BASE_URL . '/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js';?>"></script>
+    <script src="<?php echo BASE_URL . '/assets/libs/typed.js/lib/typed.min.js';?>"></script>
+    <script src="<?php echo BASE_URL . '/assets/libs/isotope-layout/dist/isotope.pkgd.min.js';?>"></script>
+    <script src="<?php echo BASE_URL . '/assets/libs/jquery-countdown/dist/jquery.countdown.min.js';?>"></script>
     <!-- Google maps -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBuyKngB9VC3zgY_uEB-DKL9BKYMekbeY"></script>
     <!-- Purpose JS -->
-    <script src="../../assets/js/purpose.js"></script>
+    <script src="<?php echo BASE_URL . '/assets/js/purpose.js';?>"></script>
     <!-- Demo JS - remove it when starting your project -->
-    <script src="../../assets/js/demo.js"></script>
+    <script src="<?php echo BASE_URL . '/assets/js/demo.js';?>"></script>
 
     <script>
     $(document).ready(function() {
