@@ -521,8 +521,15 @@ function fillForm (idPassed){
 
             $(formData).each(function(i,val){
                 $.each(val,function(k,v){
-                    $("#"+k).val(v);
-                    //console.log(k+' : '+ v);
+                    $(document).find("#"+k).val(v);
+
+                    //if a select2, trigger change also required to display the change
+                    if ($(document).find("#"+k).hasClass('select2-hidden-accessible') === true){
+                        
+                        $(document).find("#"+k).trigger('change');
+
+                    }
+
                 });
 
             });
