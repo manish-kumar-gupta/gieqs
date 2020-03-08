@@ -90,12 +90,15 @@ class sessionView
             
             a.`id` as `programmeid`, a.`date`,
             c.`id` as `sessionid`, c.`timeFrom`, c.`timeTo`, c.`title` as `sessionTitle`, c.`subtitle` as `sessionSubtitle`, c.`description` as `sessionDescription`,
-            e.`id` as `sessionItemid`, e.`timeFrom` as `sessionItemTimeFrom`, e.`timeTo` as `sessionItemTimeTo`, e.`title` as `sessionItemTitle`, e.`description` as `sessionItemDescription`, e.`faculty`, e.`live`
+            e.`id` as `sessionItemid`, e.`timeFrom` as `sessionItemTimeFrom`, e.`timeTo` as `sessionItemTimeTo`, e.`title` as `sessionItemTitle`, e.`description` as `sessionItemDescription`, e.`faculty`, e.`live`,
+            g.`id` as `assetId`, g.`type`, g.`location`, g.`href`, g.`endoscopy_wiki_id`
             from `programme` as a
             INNER JOIN `programmeOrder` as b on a.`id` = b.`programmeid` 
             INNER JOIN `session` as c on b.`sessionid` = c.`id`
             LEFT OUTER JOIN `sessionOrder` as d on c.`id` = d.`sessionid`
             LEFT OUTER JOIN `sessionItem` as e on d.`sessionItemid` = e.`id`
+            LEFT OUTER JOIN `sessionItemAsset` as f on f.`sessionItemid` = e.`id`
+            LEFT OUTER JOIN `assets` as g on f.`assetId` = g.`id`
             WHERE c.`id` = '$sessionid'
             ORDER BY e.`timeFrom` ASC
             ";
@@ -143,6 +146,52 @@ class sessionView
             INNER JOIN `sessionModerator` as b on a.`id` = b.`sessionid`
             INNER JOIN `faculty` as c on b.`facultyid` = c.`id`
             WHERE a.`id` = '$sessionid'
+            ";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                    $rowReturn[] = array_map('utf8_encode', $row);
+                }
+            
+                return $rowReturn;
+
+            } else {
+                
+
+                //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+                $rowReturn = [];
+                
+                return $rowReturn;
+            }
+
+        }
+
+        public function getAssets($sessonItemID)
+            {
+            
+
+            $q = "Select 
+            g.`id` as `assetId`, g.`type`, g.`location`, g.`href`, g.`endoscopy_wiki_id`
+            from `programme` as a
+            INNER JOIN `programmeOrder` as b on a.`id` = b.`programmeid` 
+            INNER JOIN `session` as c on b.`sessionid` = c.`id`
+            LEFT OUTER JOIN `sessionOrder` as d on c.`id` = d.`sessionid`
+            LEFT OUTER JOIN `sessionItem` as e on d.`sessionItemid` = e.`id`
+            LEFT OUTER JOIN `sessionItemAsset` as f on f.`sessionItemid` = e.`id`
+            LEFT OUTER JOIN `assets` as g on f.`assetId` = g.`id`
+            WHERE e.`id` = '$sessonItemID'
+            ORDER BY e.`timeFrom` ASC
             ";
 
             //echo $q . '<br><br>';

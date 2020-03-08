@@ -67,6 +67,7 @@ $openaccess =1;
                 //print_r($moderators);
 
                 
+                
 
                 //for the first iteration of the array will contain the static programme and session details
 
@@ -156,6 +157,11 @@ $openaccess =1;
 
         <div class="programme-body">
             <?php foreach ($response as $key=>$value){
+                        
+                        
+                       
+
+                        
                         ?>
 
                     
@@ -200,6 +206,43 @@ $openaccess =1;
                     
                     
                     ?></p>
+
+                    <?php  $assets = $sessionView->getAssets($value['sessionItemid']);
+
+                    //print_r($assets); 
+                    
+                    if ($assets){
+                    
+                    ?>
+
+                    <p class="pt-3 pl-6 assets"><span class="h6">Session Assets</span>
+
+
+                        
+                        <?php
+
+                        foreach ($assets as $key=>$value){
+
+
+
+                            if ($edit == 1){
+                                echo '<span class="ml-3 editAsset"><i class="fas fa-edit"></i></span>';
+                                echo '<span class="ml-3 deleteAsset"><i class="fas fa-times"></i></span>';
+
+                            }
+
+                        }
+                        
+                        
+                        if ($edit == 1){
+                            //because we only want one plus button
+                        echo '<span class="ml-3 addAsset"><i class="fas fa-plus"></i></span>';
+                        }
+
+                    }
+
+                    ?>
+                    </p>
                 </div>
             </div>
             <hr>

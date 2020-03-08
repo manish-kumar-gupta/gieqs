@@ -314,6 +314,9 @@ if ($identifierValue) {
 
    <!-- modal 1,5 sessionItem -->
    <?php require(BASE_URI . '/pages/backend/forms/sessionItemFormMultiple.php');?>
+
+    <!-- modal 2,5 asset -->
+    <?php require(BASE_URI . '/pages/backend/forms/assetForm.php');?>
    
 
         <!-- Modal 2, moderator -->
@@ -1312,6 +1315,7 @@ $(document).ready(function () {
 
     })
 
+
     $(document).on('click', '.removeModerators', function () {
 
         var moderatorid = $(this).prev().attr('data');
@@ -1350,6 +1354,37 @@ $(document).ready(function () {
         })
         //TODO get moderator id
         //modify delete function for this moderator joined to the session
+
+    })
+
+    $(document).on('click', '.addAsset', function () {
+
+
+        $('#modal-asset').modal('show');
+        //TODO make sure blank
+
+    })
+    
+    $(document).on('click', '#assetCheck', function () {
+
+        var assetToFind = ($(this).parent().find('input').val());
+
+        var assetTypeToFind = $(document).find('#Assettype').val();
+
+        if (assetTypeToFind == 1){
+        
+            if (assetToFind != ''){
+            window.open('http://www.endoscopy.wiki/scripts/display/displayVideo.php?id='+assetToFind,'_blank');
+            }
+
+        }else if (assetTypeToFind == 2){
+        
+        if (assetToFind != ''){
+        window.open('http://www.endoscopy.wiki/scripts/display/atlasImageset.php?id='+assetToFind,'_blank');
+        }
+
+        }
+        //TODO make sure blank
 
     })
 
