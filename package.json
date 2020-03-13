@@ -63,7 +63,7 @@
         "datatables.net-bs4": "^1.10.20",
         "datatables.net-fixedheader-bs4": "^3.1.6",
         "datatables.net-responsive-bs4": "^2.2.3",
-        "dropzone": "^5.5.1",
+        "dropzone": "^5.7.0",
         "flatpickr": "^4.5.2",
         "highlight.js": "^9.14.2",
         "highlightjs": "^9.10.0",

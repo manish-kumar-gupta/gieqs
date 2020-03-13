@@ -50,6 +50,8 @@ $formv1 = new formGenerator;
     <!-- Page CSS -->
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/datatables/datatables.min.css">
+    <!--<link rel="stylesheet" href="<?php //echo BASE_URL; ?>/node_modules/dropzone/dist/dropzone.js">-->
+    
     <!-- Purpose CSS -->
     <!-- <link rel="stylesheet" href="<?php //echo BASE_URL; ?>/assets/css/purpose.css" id="stylesheet"> -->
 
@@ -415,6 +417,10 @@ if ($identifierValue) {
 <script src="<?php echo BASE_URL; ?>/node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo BASE_URL; ?>/assets/libs/datatables/datatables.min.js"></script>
 <script src="<?php echo BASE_URL; ?>/assets/libs/flatpickr/dist/flatpickr.min.js"></script>
+<script src="<?php echo BASE_URL; ?>/node_modules/dropzone/dist/dropzone.js"></script>
+
+
+
 
 <script>
 //var data = $('#data').text();
@@ -426,6 +432,7 @@ var editSessionItem = 0;
 var editModerator = 0;
 var sessionItemUnderEdit = null;
 var moderatorUnderEdit = null;
+Dropzone.autoDiscover = false;
 
 function tableRefresh() {
 
@@ -1043,6 +1050,16 @@ function refreshSessionView() {
 
 
 $(document).ready(function () {
+
+
+    $("#id_dropzone").dropzone({
+            maxFiles: 2000,
+            url: siteRoot + "/pages/backend/uploadFileAsset.php",
+            success: function (file, response) {
+                console.log(response);
+            }
+        });
+
 
     //add those which require date pickr
 

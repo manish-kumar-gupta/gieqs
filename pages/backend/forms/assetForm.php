@@ -81,6 +81,9 @@
                                             <textarea id="Assetdescription" type="text" data-toggle="autosize" class="form-control" name="SIdescription"></textarea>
                                         </div>
                                         
+                                        <div class="dropzone" id="id_dropzone"></div>
+
+                                        
 
 
 
