@@ -50,7 +50,7 @@ $formv1 = new formGenerator;
     <!-- Page CSS -->
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/datatables/datatables.min.css">
-    <!--<link rel="stylesheet" href="<?php //echo BASE_URL; ?>/node_modules/dropzone/dist/dropzone.js">-->
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/node_modules/dropzone/dist/dropzone.css">
     
     <!-- Purpose CSS -->
     <!-- <link rel="stylesheet" href="<?php //echo BASE_URL; ?>/assets/css/purpose.css" id="stylesheet"> -->
@@ -433,6 +433,7 @@ var editModerator = 0;
 var sessionItemUnderEdit = null;
 var moderatorUnderEdit = null;
 Dropzone.autoDiscover = false;
+var assetUnderEdit = null;
 
 function tableRefresh() {
 
@@ -1047,17 +1048,40 @@ function refreshSessionView() {
     })
 }
 
-
+var file_up_names = [];
 
 $(document).ready(function () {
 
 
     $("#id_dropzone").dropzone({
-            maxFiles: 2000,
+            maxFiles: 1,
+            acceptedFiles: 'image/jpeg, image/png, image/gif, video/*, application/pdf, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+            createImageThumbnails: true,
+            addRemoveLinks: true,
             url: siteRoot + "/pages/backend/uploadFileAsset.php",
             success: function (file, response) {
                 console.log(response);
+                file_up_names.push(response);
+
+                //the file is stored at pages/backend/uploads/response
+            },
+            removedfile: function(file) {
+
+            x = confirm('Do you want to delete?');
+            if(!x)  return false;
+                for(var i=0;i<file_up_names.length;++i){
+
+                    if(file_up_names[i]==file.name) {
+
+                        $.post('delete_file.php', 
+                            {file_name:file_up_names[i]},
+                        function(data,status){
+                            alert('file deleted');
+                            });
+                    }
+                }
             }
+
         });
 
 
@@ -1329,6 +1353,16 @@ $(document).ready(function () {
 
         $('#modal-moderator').modal('show');
         //TODO make sure blank
+        $(document).find('#moderator-form').find(':input').each(function(){
+            
+            $(this).val('');
+            if ($(this).hasClass('select2-hidden-accessible') === true){
+                        
+                        $(this).trigger('change');
+
+            }
+            
+        })
 
     })
 
@@ -1379,6 +1413,53 @@ $(document).ready(function () {
 
         $('#modal-asset').modal('show');
         //TODO make sure blank
+        $(document).find('#asset-form').find(':input').each(function(){
+            
+            $(this).val('');
+            if ($(this).hasClass('select2-hidden-accessible') === true){
+                        
+                        $(this).trigger('change');
+
+            }
+
+        })
+
+        var myDropzone = Dropzone.forElement("#id_dropzone");
+        myDropzone.destroy();
+        $("#id_dropzone").dropzone({
+            maxFiles: 1,
+            acceptedFiles: 'image/jpeg, image/png, image/gif, video/*, application/pdf, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+            createImageThumbnails: true,
+            addRemoveLinks: true,
+            url: siteRoot + "/pages/backend/uploadFileAsset.php",
+            success: function (file, response) {
+                console.log(response);
+                file_up_names.push(response);
+
+                //the file is stored at pages/backend/uploads/response
+            },
+            removedfile: function(file) {
+
+            x = confirm('Do you want to delete?');
+            if(!x)  return false;
+                for(var i=0;i<file_up_names.length;++i){
+
+                    if(file_up_names[i]==file.name) {
+
+                        $.post('delete_file.php', 
+                            {file_name:file_up_names[i]},
+                        function(data,status){
+                            alert('file deleted');
+                            });
+                    }
+                }
+            }
+
+        });
+
+
+        //$(document).find('#asset-form').find(':checkbox, :radio').prop('checked', false);
+        assetUnderEdit = 0;
 
     })
     
@@ -1402,6 +1483,15 @@ $(document).ready(function () {
 
         }
         //TODO make sure blank
+
+    })
+
+    $(document).on('click', '.submit-asset-form', function (event) {
+
+        event.preventDefault();
+        console.log('clicked asset submit');
+        console.log($('#asset-form').closest());
+        $('#asset-form').submit();
 
     })
 
@@ -1430,8 +1520,16 @@ $(document).ready(function () {
 
         $('#modal-sessionItem').modal('show');
         //ensure it is blank
-        $(document).find('#sessionItem-form').find(':input').val('');
-        $(document).find('#sessionItem-form').find(':checkbox, :radio').prop('checked', false);
+        $(document).find('#sessionItem-form').find(':input').each(function(){
+            
+            $(this).val('');
+            if ($(this).hasClass('select2-hidden-accessible') === true){
+                        
+                        $(this).trigger('change');
+
+            }
+            
+        })
         editSessionItem = 0;
 
         //create, read and update this from here via a template form
@@ -1721,6 +1819,76 @@ $(document).ready(function () {
 
 
     });
+
+    $("#asset-form").validate({
+
+invalidHandler: function (event, validator) {
+    var errors = validator.numberOfInvalids();
+    console.log("there were " + errors + " errors");
+    if (errors) {
+        var message = errors == 1 ?
+            "1 field contains errors. It has been highlighted" :
+            +errors + " fields contain errors. They have been highlighted";
+
+
+        $('#error').text(message);
+        //$('div.error span').addClass('form-text text-danger');
+        //$('#errorWrapper').show();
+
+        $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function () {
+            $("#errorWrapper").slideUp(500);
+        });
+    } else {
+        $('#errorWrapper').hide();
+    }
+},
+ignore: [],
+rules: {
+
+    //EDIT
+
+
+
+
+    Assettype: {
+
+        required: true,
+    },
+
+    Assetdescription: {
+
+required: true,
+},
+
+
+
+
+},
+messages: {
+
+
+
+},
+
+
+submitHandler: function (form) {
+
+    //submitPreRegisterForm();
+
+    submitAssetForm();
+
+    //TODO submit changes
+    //TODO reimport the array at the top
+    //TODO redraw the table
+
+
+
+}
+
+
+
+
+});
 
     $("#sessionItem-form").validate({
 

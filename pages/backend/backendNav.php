@@ -12,11 +12,11 @@
                     <span class="btn-inner--text d-none d-sm-inline-block">Programme</span>
                   </button>
                   <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow" aria-labelledby="btn-group-settings">
-                    <span class="dropdown-header">Overview</span>
+                    <h6 class="dropdown-header">Overview</h6>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/programv2.php" target="_blank">Programme Overview</a>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/programv2editor.php" target="_blank">Programme Overview [editable]</a>
-<hr>
-                    <span class="dropdown-header">Individual Items</span>
+                    <div class="dropdown-divider"></div>
+                    <h6 class="dropdown-header">Individual Items</h6>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/programmeEdit.php">Programmes</a>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/session.php">Sessions</a>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/faculty.php">Faculty</a>

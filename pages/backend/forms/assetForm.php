@@ -52,6 +52,7 @@
                                             <option value="2">Set of Images</option>
                                             <option value="3">Patient</option>
                                             <option value="4">Academic Reference</option>
+                                            <option value="5">Presentation</option>
                                             </select>
                                         </div>
                                     
@@ -82,7 +83,7 @@
                                         </div>
                                         
                                         <div class="dropzone" id="id_dropzone"></div>
-
+                                        
                                         
 
 
@@ -95,7 +96,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="submit-sessionItem-form btn btn-sm btn-success">Save</button>
+                                <button type="button" class="submit-asset-form btn btn-sm btn-success">Save</button>
                                 <button type="button" class="btn btn-sm btn-danger"
                                     data-dismiss="modal">Cancel</button>
                             </div>

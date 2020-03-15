@@ -25,19 +25,24 @@
                     <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/mission.php">Mission</a>
                 </li>
                 <!-- Program-basic, later to add dropdown with options -->
-                <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/program.php">Programme</a>
-                </li>
-                <!-- Faculty Cards-basic -->
-                <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/faculty.php">Faculty</a>
+                <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                    <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Programme</a>
+                    
+                    <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Programme</span>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program.php"><i class="fas fa-columns"></i>Draft Medical Programme</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/nursing.php"><i class="fas fa-columns"></i>Draft Nursing Programme</a>
+                    
+                    <div class="dropdown-divider"></div>
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Faculty</span>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/faculty.php"><i class="fas fa-user"></i>Faculty</a>
+                    
+                    
+                  </div>
                 </li>
 
-                <!-- Nursing congress -->
-                <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/nursing.php">Nursing</a>
-                </li>
-
+              
                 <!-- Venue -->
                 <li class="nav-item active">
                     <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/venue.php">Venue</a>
@@ -46,14 +51,45 @@
                 <!-- Sponsors -->
                 <!--currently not active-->
                 <li class="nav-item active">
-              <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/sponsors.php">Sponsors</a>
-            </li>
+                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/sponsors.php">Sponsors</a>
+                </li>
 
                 <!-- Registration-basic -->
-
-                <li class="nav-item active">
-                    <a style="color: rgb(238, 194, 120);" class="nav-link" href="<?php echo BASE_URL;?>/pages/program/registration.php">Registration</a>
+                <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                    <a style="color: rgb(238, 194, 120);" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Registration</a>
+                    
+                    <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Registration</span>
+                    <a class="dropdown-item" href="https://eu.eventscloud.com/ereg/index.php?eventid=200200203&" target="_blank"><i class="fas fa-registered"></i>Register now!</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/registration.php"><i class="fas fa-shapes"></i>Registration options</a>
+                    
+                    <div class="dropdown-divider"></div>
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Practical</span>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/practical/accommodation.php"><i class="fas fa-igloo"></i>Accommodation</a>
+                    <a class="dropdown-item" href="https://visit.gent.be/en/good-know/practical-information/how-get-ghent" target="_blank"><i class="fas fa-train"></i></i>Getting here</a>
+                    <div class="dropdown-divider"></div>
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Why Ghent?</span>
+                    <a class="dropdown-item" href="https://visit.gent.be/en"><i class="fas fa-city" target="_blank"></i>Because it's the most beautiful<br/> medieval city in Europe</a>
+                    <a class="dropdown-item" href="https://goo.gl/maps/PLsJXm86oGUPjQ7i7" target="_blank"><i class="fas fa-search-location"></i>Where is Ghent?</a>
+                    <a class="dropdown-item" href="http://www.flickr.com/photos/visit_gent/albums" target="_blank"><i class="fas fa-images"></i>Ghent in pictures</a>
+                    <a class="dropdown-item" href="https://visit.gent.be/en/top-10-tips" target="_blank"><i class="fas fa-university"></i>Top 10 Ghent</a>
+                    
+                  </div>
                 </li>
+
+                <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                    <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">GIEQs Online</a>
+                    
+                    <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Online learning</span>
+                    <a class="dropdown-item" target="_blank"><i class="fas fa-graduation-cap"></i>Coming soon!</a>
+                    
+                    
+                  </div>
+                </li>
+                
 
                 <!-- Backend -->
 
@@ -63,7 +99,8 @@
                 ?>
 
                 <li class="nav-item">
-                    <a class="nav-link text-muted" href="<?php echo BASE_URL;?>/pages/backend/backend.php">Administration</a>
+                    <a class="nav-link text-muted"
+                        href="<?php echo BASE_URL;?>/pages/backend/backend.php">Administration</a>
                 </li>
 
                 <?php
@@ -670,7 +707,7 @@
                 <span class="btn-inner--text">Purchase now</span>
               </a>
             </li>-->
-          </ul>
+            </ul>
         </div>
     </div>
 </nav>
