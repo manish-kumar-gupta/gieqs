@@ -209,8 +209,8 @@ background-color: rgb(238, 194, 120);
                       <h5 class="text-center mt-4">Hotels near the conference centre</h5>
                     </div>
                     <ul class="list-group">
-                    <li class="list-group-item"><i class="fas fa-hotel mr-2"></i><span class="gieqsGold"><a href="https://www.hiexpress.com/redirect?path=hd&brandCode=EX&localeCode=en&regionCode=925&hotelCode=GNTBE&_PMID=99801505&GPC=SEA&cn=no&viewfullsite=true">Holiday Inn Express Ghent</span>, 3*, Akkerhage 2, 9000 Gent</a></li>
-                    <li class="list-group-item"><i class="fas fa-hotel mr-2"></i><span class="gieqsGold"><a href="https://www.marriott.com/event-reservations/reservation-link.mi?id=1580810630049&key=GRP&app=resvlink">Residence Inn by Marriott Ghent</span>, 4*, Akkerhage 2a, 9000 Ghent</a></li>
+                    <li class="list-group-item"><i class="fas fa-hotel mr-2"></i><span class="gieqsGold"><a class="gieqsGold" href="https://www.hiexpress.com/redirect?path=hd&brandCode=EX&localeCode=en&regionCode=925&hotelCode=GNTBE&_PMID=99801505&GPC=SEA&cn=no&viewfullsite=true">Holiday Inn Express Ghent</span></a>, 3*, Akkerhage 2, 9000 Gent</li>
+                    <li class="list-group-item"><i class="fas fa-hotel mr-2"></i><span class="gieqsGold"><a class="gieqsGold" href="https://www.marriott.com/event-reservations/reservation-link.mi?id=1580810630049&key=GRP&app=resvlink">Residence Inn by Marriott Ghent</span></a>, 4*, Akkerhage 2a, 9000 Ghent</li>
                     <li class="list-group-item"><i class="fas fa-hotel mr-2"></i><span class="gieqsGold">Campanile</span>, 2*</li>
                     
                     </ul>

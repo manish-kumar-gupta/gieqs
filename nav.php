@@ -83,7 +83,7 @@
                         aria-haspopup="true" aria-expanded="false">GIEQs Online</a>
                     
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Online learning</span>
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Online tools for promoting<br/> quality in endoscopy</span>
                     <a class="dropdown-item" target="_blank"><i class="fas fa-graduation-cap"></i>Coming soon!</a>
                     
                     

@@ -6,7 +6,7 @@
 </style>
 
 <!--Topbar-->
-<div id="navbar-top-main" class="navbar-top  navbar-dark bg-dark border-bottom">
+<div id="navbar-top-main" class="navbar-top navbar-dark bg-dark border-bottom navbar-collapsed">
       <div class="container px-0">
         <div class="navbar-nav align-items-center">
           <div class="d-none d-lg-inline-block">
