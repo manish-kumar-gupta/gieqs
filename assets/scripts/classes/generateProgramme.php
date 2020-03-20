@@ -223,7 +223,7 @@
 
                                     
                                     <div class="col-12 p-2 pb-3 pt-3">
-                                        <span class="h5" style="color: rgb(238, 194, 120);">1930 - Conference Dinner | Oude Vismijn, Ghent</span>
+                                        <span class="h5" style="color: rgb(238, 194, 120);">1930 - Conference Dinner | Monasterium Poortackere, Ghent</span>
                                     </div>
 
                                 </div>
@@ -436,7 +436,7 @@
                                             </div>
 
                                             <div class="px-5 pt-2 mt-2 mb-2 pb-2 text-center">
-                                                <p class="text-muted text-sm">Programme subject to change without notice.</p>
+                                                <p class="text-muted text-sm">Programme subject to variation and change without notice.</p>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
