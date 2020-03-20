@@ -265,9 +265,19 @@ function login(){
 
 $(document).ready(function(){
 
+
+  $( "#input-password" ).on( "keydown", function(event) {
+      if(event.which == 13) {
+         login();
+      }
+    });
+  
+
+    //detect enter keypress
+
     $('#loginButton').click(function(){
 
-        login();
+    login();
 
     })
 
