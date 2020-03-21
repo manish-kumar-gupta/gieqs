@@ -321,8 +321,8 @@
 
                                                         <?php echo ' ' . $sessionItemTimeFrom->format('H:i')?> -
                                                         <?php echo $sessionItemTimeTo->format('H:i')?></p>
-                                                    <p class="mb-0"><?php echo $response[0]['sessionSubtitle']?></p>
-                                                    <p class="mb-0"><?php echo $response[0]['sessionDescription']?></p>
+                                                    <p class="mb-0 h6"><?php echo $response[0]['sessionSubtitle']?></p>
+                                                    <p class="mb-0 ml-1"></i><?php echo $response[0]['sessionDescription']?></p>
                                                 </div>
 
                                             </div>
@@ -540,8 +540,8 @@
 
                                                         <?php echo ' ' . $sessionItemTimeFrom->format('H:i')?> -
                                                         <?php echo $sessionItemTimeTo->format('H:i')?></p>
-                                                    <p class="mb-0"><?php echo $response[0]['sessionSubtitle']?></p>
-                                                    <p class="mb-0"><?php echo $response[0]['sessionDescription']?></p>
+                                                    <p class="mb-0 h6"><?php echo $response[0]['sessionSubtitle']?></p>
+                                                    <p class="mb-0 ml-1"><?php echo $response[0]['sessionDescription']?></p>
                                                 </div>
 
                                             </div>
@@ -941,8 +941,8 @@
 
                                                         <?php echo ' ' . $sessionItemTimeFrom->format('H:i')?> -
                                                         <?php echo $sessionItemTimeTo->format('H:i')?></p>
-                                                    <p class="mb-0"><?php echo $response[0]['sessionSubtitle']?></p>
-                                                    <p class="mb-0"><?php echo $response[0]['sessionDescription']?></p>
+                                                    <p class="mb-0 h6"><?php echo $response[0]['sessionSubtitle']?></p>
+                                                    <p class="mb-0 ml-1"><?php echo $response[0]['sessionDescription']?></p>
                                                 </div>
 
                                             </div>
@@ -1158,8 +1158,8 @@
 
                                                         <?php echo ' ' . $sessionItemTimeFrom->format('H:i')?> -
                                                         <?php echo $sessionItemTimeTo->format('H:i')?></p>
-                                                    <p class="mb-0"><?php echo $response[0]['sessionSubtitle']?></p>
-                                                    <p class="mb-0"><?php echo $response[0]['sessionDescription']?></p>
+                                                    <p class="mb-0 h6"><?php echo $response[0]['sessionSubtitle']?></p>
+                                                    <p class="mb-0 ml-1"><?php echo $response[0]['sessionDescription']?></p>
                                                 </div>
 
                                             </div>

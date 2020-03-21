@@ -223,7 +223,7 @@
 
                                     
                                     <div class="col-12 p-2 pb-3 pt-3">
-                                        <span class="h5" style="color: rgb(238, 194, 120);">1930 - Conference Dinner | Oude Vismijn, Ghent</span>
+                                    <span class="h5" style="color: rgb(238, 194, 120);">1930 - Conference Dinner | Monasterium Poortackere, Ghent</span>
                                     </div>
 
                                 </div>
@@ -288,8 +288,8 @@
 
                                    echo '
                             <div class="modal fade" id="modal-' . $programmeDate->format('l') . '-' . $session1data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '" tabindex="-1" role="dialog" aria-labelledby="modal-change-username" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <form>';
+                            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                            <form>';
                                     ?>
                                     <div class="modal-content bg-dark border" style="border-color:rgb(238, 194, 120) !important;">
                                         <div class="modal-header">
@@ -322,8 +322,8 @@
 
                                                         <?php echo ' ' . $sessionItemTimeFrom->format('H:i')?> -
                                                         <?php echo $sessionItemTimeTo->format('H:i')?></p>
-                                                    <p class="mb-0"><?php echo $response[0]['sessionSubtitle']?></p>
-                                                    <p class="mb-0"><?php echo $response[0]['sessionDescription']?></p>
+                                                        <p class="mb-0 h6"><?php echo $response[0]['sessionSubtitle']?></p>
+                                                    <p class="mb-0 ml-1"></i><?php echo $response[0]['sessionDescription']?></p>
                                                 </div>
 
                                             </div>
@@ -437,7 +437,7 @@
                                             </div>
 
                                             <div class="px-5 pt-2 mt-2 mb-2 pb-2 text-center">
-                                                <p class="text-muted text-sm">Programme subject to change without notice.</p>
+                                            <p class="text-muted text-sm">Programme subject to variation and change without notice.</p>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -509,8 +509,8 @@
 
                                    echo '
                             <div class="modal fade" id="modal-' . $programmeDate->format('l') . '-' . $session2data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '" tabindex="-1" role="dialog" aria-labelledby="modal-change-username" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <form>';
+                            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                            <form>';
                                     ?>
                                     <div class="modal-content bg-dark border" style="border-color:rgb(238, 194, 120) !important;">
                                         <div class="modal-header">
@@ -542,8 +542,8 @@
 
                                                         <?php echo ' ' . $sessionItemTimeFrom->format('H:i')?> -
                                                         <?php echo $sessionItemTimeTo->format('H:i')?></p>
-                                                    <p class="mb-0"><?php echo $response[0]['sessionSubtitle']?></p>
-                                                    <p class="mb-0"><?php echo $response[0]['sessionDescription']?></p>
+                                                        <p class="mb-0 h6"><?php echo $response[0]['sessionSubtitle']?></p>
+                                                    <p class="mb-0 ml-1"><?php echo $response[0]['sessionDescription']?></p>
                                                 </div>
 
                                             </div>
@@ -911,8 +911,8 @@
 
                                    echo '
                             <div class="modal fade" id="modal-' . $programmeDate->format('l') . '-' . $session1data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '" tabindex="-1" role="dialog" aria-labelledby="modal-change-username" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <form>';
+                            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                            <form>';
                                     ?>
                                     <div class="modal-content bg-dark border" style="border-color:rgb(238, 194, 120) !important;">
                                         <div class="modal-header">
@@ -944,8 +944,8 @@
 
                                                         <?php echo ' ' . $sessionItemTimeFrom->format('H:i')?> -
                                                         <?php echo $sessionItemTimeTo->format('H:i')?></p>
-                                                    <p class="mb-0"><?php echo $response[0]['sessionSubtitle']?></p>
-                                                    <p class="mb-0"><?php echo $response[0]['sessionDescription']?></p>
+                                                        <p class="mb-0 h6"><?php echo $response[0]['sessionSubtitle']?></p>
+                                                    <p class="mb-0 ml-1"><?php echo $response[0]['sessionDescription']?></p>
                                                 </div>
 
                                             </div>
@@ -1129,8 +1129,8 @@
 
                                    echo '
                             <div class="modal fade" id="modal-' . $programmeDate->format('l') . '-' . $session2data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '" tabindex="-1" role="dialog" aria-labelledby="modal-change-username" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <form>';
+                            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                            <form>';
                                     ?>
                                     <div class="modal-content bg-dark border" style="border-color:rgb(238, 194, 120) !important;">
                                         <div class="modal-header">
@@ -1162,8 +1162,8 @@
 
                                                         <?php echo ' ' . $sessionItemTimeFrom->format('H:i')?> -
                                                         <?php echo $sessionItemTimeTo->format('H:i')?></p>
-                                                    <p class="mb-0"><?php echo $response[0]['sessionSubtitle']?></p>
-                                                    <p class="mb-0"><?php echo $response[0]['sessionDescription']?></p>
+                                                        <p class="mb-0 h6"><?php echo $response[0]['sessionSubtitle']?></p>
+                                                    <p class="mb-0 ml-1"><?php echo $response[0]['sessionDescription']?></p>
                                                 </div>
 
                                             </div>

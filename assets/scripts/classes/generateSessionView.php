@@ -105,8 +105,8 @@ $openaccess =1;
                 
                 ?>
                 <p class="mb-0"><?php echo $programmeDate->format('D d M Y');?> <?php echo ' ' . $response[0]['timeFrom']?> - <?php echo $response[array_key_last($response)]['timeTo']?></p>
-                <p class="mb-0"><?php echo $response[0]['sessionSubtitle']?></p>
-                <p class="mb-0"><?php echo $response[0]['sessionDescription']?></p>
+                <p class="mb-0 h6"><?php echo $response[0]['sessionSubtitle']?></p>
+                <p class="mb-0 ml-1"><?php echo $response[0]['sessionDescription']?></p>
             </div>
 
         </div>
