@@ -745,7 +745,7 @@
 
                         //rigid time structure
 
-                        $times = array(1=>'08:45:00', 2=>'09:00:00', 3=>'09:40:00', 4=>'10:10:00', 5=>'10:45:00', 6=>'11:00:00', 7=>'12:00:00', 8=>'12:45:00', 9=>'13:45:00', 10=>'14:15:00', 11=>'15:15:00', 12=>'15:30:00', 13=>'16:30:00', 14=>'17:00:00', 15=>'17:15:00');
+                        $times = array(1=>'08:45:00', 2=>'09:00:00', 3=>'09:40:00', 4=>'10:10:00', 5=>'10:45:00', 6=>'11:00:00', 7=>'12:00:00', 8=>'12:45:00', 9=>'13:45:00', 10=>'14:15:00', 11=>'15:15:00', 12=>'15:30:00', 13=>'16:15:00', 14=>'17:00:00');
                         if ($debug){
                             echo '<br/><br/>times Array contains </br></br>';
                             print_r($times);}
@@ -828,19 +828,19 @@
                                 <?php
                                 continue;
                             }
-                            if ($timeValue == '17:00:00'){
+                            //if ($timeValue == '17:00:00'){
                                 ?>
-                                <div class="row text-center align-middle border-left border-right border-bottom">
+                                <!-- <div class="row text-center align-middle border-left border-right border-bottom">
 
                                     
                                     <div class="col-12 p-2 pb-3 pt-3">
                                         <span class="h5" style="color: rgb(238, 194, 120);">Break | 15 minutes</span>
                                     </div>
 
-                                </div>
+                                </div> -->
                                 <?php
-                                continue;
-                            }
+                                //continue;
+                            //}
                             if ($timeValue == '19:30:00'){
                                 ?>
                                 <div class="row text-center align-middle border-left border-right border-bottom">
