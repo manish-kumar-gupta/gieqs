@@ -153,7 +153,7 @@ $emailString = "Hans Van Vlierberghe <hans.vanvlierberghe@uzgent.be>, Lobke Deso
 $emailArray = explode(',', $emailString);
 //print_r($myArray);
 
-Mailer(array(0 => 'djtate@gmail.com'), $subject, '/assets/email/MarchInlinev2.html');
+Mailer(array(0 => 'djtate@me.com'), $subject, '/assets/email/MarchInlinev2.html');
 
 
 
