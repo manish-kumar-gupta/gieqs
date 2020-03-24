@@ -98,14 +98,14 @@ function Mailer ($email, $subject, $filename){
 					$mail->isSMTP();                                      // Set mailer to use SMTP
 					$mail->Host = 'n3plcpnl0016.prod.ams3.secureserver.net';  // Specify main and backup SMTP servers
 					$mail->SMTPAuth = true;                               // Enable SMTP authentication
-					$mail->Username = 'admin@gieqs.com';                 // SMTP username
+					$mail->Username = 'info@gieqs.com';                 // SMTP username
 					$mail->Password = 'Nel67fnvr2';                           // SMTP password
 					$mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
 					$mail->Port = 465;                                    // TCP port to connect to
 
 					//Recipients
-					$mail->setFrom('admin@gieqs.com', 'Ghent International Endoscopy Quality Symposium');
-					$mail->addAddress('admin@gieqs.com');
+					$mail->setFrom('info@gieqs.com', 'Ghent International Endoscopy Quality Symposium');
+					$mail->addAddress('info@gieqs.com');
 					foreach ($email as $key=>$value){
 						
 						$mail->addBCC($value);
@@ -114,7 +114,7 @@ function Mailer ($email, $subject, $filename){
 					
 					     // Add a recipient
 					//$mail->addAddress('ellen@example.com');               // Name is optional
-					$mail->addReplyTo('admin@gieqs.com', 'Ghent International Endoscopy Quality Symposium');
+					$mail->addReplyTo('info@gieqs.com', 'Ghent International Endoscopy Quality Symposium');
 					//$mail->addCC('cc@example.com');
 					//$mail->addBCC('bcc@example.com');
 
@@ -153,7 +153,7 @@ $emailString = "Hans Van Vlierberghe <hans.vanvlierberghe@uzgent.be>, Lobke Deso
 $emailArray = explode(',', $emailString);
 //print_r($myArray);
 
-Mailer(array(0 => 'david.tate@uzgent.be'), $subject, '/assets/email/emailTemplateInline.html');
+Mailer(array(0 => 'djtate@gmail.com'), $subject, '/assets/email/emailTemplateMarchAnnounceInline.html');
 
 
 
