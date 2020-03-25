@@ -308,6 +308,21 @@ if ($identifierValue) {
     <!-- Modal -->
     <?php require BASE_URI . '/pages/backend/forms/facultyForm.php';?>
 
+    <!-- Info Modal Faculty Tasks -->
+
+<div class="modal fade" id="modal-faculty-report" tabindex="-1" role="dialog" aria-labelledby="modal-change-username" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div id="facultyReport">
+
+</div>
+                    
+            </div>
+
+        </div>
+    
+    <!-- give an array per faculty -->
+
+
 
     </div>
 
@@ -571,6 +586,35 @@ if ($identifierValue) {
 
     }
 
+    function getFacultyReport(facultyid) {
+
+
+
+const dataToSend = {
+
+    facultyid: facultyid ,
+
+}
+
+const jsonString = JSON.stringify(dataToSend);
+console.log(jsonString);
+
+var request2 = $.ajax({
+    url: siteRoot + "assets/scripts/viewGenerators/generateFacultyIndividual.php",
+    type: "POST",
+    contentType: "application/json",
+    data: jsonString,
+});
+
+
+
+request2.done(function (data) {
+    // alert( "success" );
+    $('#facultyReport').html(data);
+    $('#modal-faculty-report').modal('show');
+})
+}
+
     $(document).ready(function() {
 
         //add those which require date pickr
@@ -666,6 +710,8 @@ if ($identifierValue) {
 
         } ); */
 
+        
+
         $(document).on('click', '#add<?php echo $databaseName; ?>', function() {
 
 
@@ -687,6 +733,16 @@ if ($identifierValue) {
             $('#modal-faculty').modal('show');
             fillForm(targettd);
             edit = 1;
+
+        })
+
+        $(document).on('click', '.action-item', function() {
+
+        var targettd = $(this).parent().parent().parent().parent().find('td').first().text();
+        //console.log(targettd);
+        lesionUnderEdit = targettd;
+        getFacultyReport(lesionUnderEdit);
+        
 
         })
 

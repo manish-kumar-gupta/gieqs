@@ -261,6 +261,44 @@ class sessionView
 
         }
 
+        public function getFacultyNamePrint($facultyid)
+            {
+            
+
+            $q = "Select `title`, `firstname`, `surname`
+            FROM `faculty` 
+            WHERE `id` = '$facultyid'
+            ";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            //$rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                    $rowReturn = $row['title'] . ' ' . $row['firstname'] . ' ' . $row['surname'];
+                }
+            
+                return $rowReturn;
+
+            } else {
+                
+
+                //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+                $rowReturn = [];
+                
+                return $rowReturn;
+            }
+
+        }
+
         public function checkCombination($sessionid, $moderatorid)
             {
             

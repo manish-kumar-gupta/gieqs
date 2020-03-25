@@ -84,9 +84,19 @@ class programmeReports
         public function generateReport($facultyid)
             {
             
-                //EDITED TODO CHECK LEFT OUTER JOIN
-                $q = "Select a.`id` as `programmeid`, a.`date`, c.`id` as `sessionid`, c.`timeFrom`, c.`timeTo`, c.`title` as `sessionTitle`, c.`subtitle` as `sessionSubtitle`, c.`description` as `sessionDescription`, e.`id` as `sessionItemid`, e.`title` as `sessionItemTitle`, e.`description` as `sessionItemDescription`, e.`faculty`, e.`live` from `programme` as a INNER JOIN `programmeOrder` as b on a.`id` = b.`programmeid` INNER JOIN `session` as c on b.`sessionid` = c.`id` INNER JOIN `sessionOrder` as d on c.`id` = d.`sessionid` INNER JOIN `sessionItem` as e on d.`sessionItemid` = e.`id` INNER JOIN `sessionModerator` as f on c.`id` = f. `sessionid` WHERE e.`faculty` = $facultyid GROUP BY c.`id` ORDER BY a.`date` ASC, c.`timeFrom` ASC
-                ";
+                //report card per faculty
+                $q = "Select a.`id` as `programmeid`, a.`date`, 
+                c.`timeFrom`, c.`timeTo`, c.`title` as `sessionTitle`,
+                e.`title` as `sessionItemTitle`, e.`description` as `sessionItemDescription`, e.`timeFrom` as `sessiontimeFrom`, e.`timeTo` as `sessiontimeTo`, e.`live` 
+                from `programme` as a 
+                INNER JOIN `programmeOrder` as b on a.`id` = b.`programmeid` 
+                INNER JOIN `session` as c on b.`sessionid` = c.`id` 
+                INNER JOIN `sessionOrder` as d on c.`id` = d.`sessionid` 
+                INNER JOIN `sessionItem` as e on d.`sessionItemid` = e.`id` 
+                INNER JOIN `sessionModerator` as f on c.`id` = f. `sessionid` 
+                WHERE e.`faculty` = $facultyid 
+                GROUP BY c.`id` 
+                ORDER BY a.`date` ASC, c.`timeFrom` ASC";
 
             //echo $q . '<br><br>';
 
