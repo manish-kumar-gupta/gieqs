@@ -16,6 +16,9 @@
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/programv2.php" target="_blank">Programme Overview</a>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/programv2editor.php" target="_blank">Programme Overview [editable]</a>
                     <div class="dropdown-divider"></div>
+                    <h6 class="dropdown-header">Session Planning</h6>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/programFaculty.php">Faculty per program</a>
+                    <div class="dropdown-divider"></div>
                     <h6 class="dropdown-header">Individual Items</h6>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/programmeEdit.php">Programmes</a>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/session.php">Sessions</a>
