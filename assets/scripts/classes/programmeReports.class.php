@@ -283,6 +283,163 @@ class programmeReports
             }
 
         }
+        public function generateLectureCount($facultyid)
+            {
+            
+                
+                $q = "Select COUNT(c.`id`) as lectureCount
+                from `session` as a 
+                INNER JOIN `sessionOrder` as b on a.`id` = b.`sessionid` 
+                INNER JOIN `sessionItem` as c on b.`sessionItemid` = c.`id` 
+                INNER JOIN `faculty` as d on c.`faculty` = d.`id`
+                WHERE d.`id` = $facultyid AND c.`live` <> 1
+            ";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                    $count = $row['lectureCount'];
+                }
+            
+                return $count;
+
+            } else {
+                
+
+                //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+                $rowReturn = [];
+                
+                return $rowReturn;
+            }
+
+        }
+
+        public function generateLiveCount($facultyid)
+            {
+            
+                
+                $q = "Select COUNT(c.`id`) as lectureCount
+                from `session` as a 
+                INNER JOIN `sessionOrder` as b on a.`id` = b.`sessionid` 
+                INNER JOIN `sessionItem` as c on b.`sessionItemid` = c.`id` 
+                INNER JOIN `faculty` as d on c.`faculty` = d.`id`
+                WHERE d.`id` = $facultyid AND c.`live` = 1
+            ";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                    $count = $row['lectureCount'];
+                }
+            
+                return $count;
+
+            } else {
+                
+
+                //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+                $rowReturn = [];
+                
+                return $rowReturn;
+            }
+
+        }
+
+        public function generateModeratorCount($facultyid)
+            {
+            
+                
+                $q = "Select COUNT(a.`id`) as ModeratorCount
+            from `session` as a 
+            INNER JOIN `sessionModerator` as b on a.`id` = b.`sessionid` 
+            INNER JOIN `faculty` as c on b.`facultyid` = c.`id`
+            WHERE c.`id` = $facultyid 
+            ";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                    $count = $row['ModeratorCount'];
+                }
+            
+                return $count;
+
+            } else {
+                
+
+                //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+                $rowReturn = [];
+                
+                return $rowReturn;
+            }
+
+        }
+
+        public function Load_records_faculty_tasks_limit_json_datatables($y, $x = 0)
+            {
+
+                //execute the three queries
+
+            $q = "Select * from `faculty` LIMIT $x, $y";
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+
+            $x = 0;
+            $nRows = $result->rowCount();
+            if ($nRows > 0) {
+
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                    $start = array_map('utf8_encode', $row);
+                    $start['countModerator'] = $this->generateModeratorCount($row['id']);
+                    $start['countLive'] = $this->generateLiveCount($row['id']);
+                    $start['countLecture'] = $this->generateLectureCount($row['id']);
+
+                    $rowReturn['data'][] = $start;
+                }
+            
+                return json_encode($rowReturn);
+
+            } else {
+                
+
+                //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+                $rowReturn['data'] = [];
+                
+                return json_encode($rowReturn);
+            }
+
+        }
         
         
         

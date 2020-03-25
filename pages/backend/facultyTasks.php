@@ -228,8 +228,8 @@ if ($identifierValue) {
 
                     <div class="row justify-content-between align-items-center">
                         <div class="col">
-                            <h5 class="mb-1"><?php echo $databaseName; ?></h5>
-                            <p class="text-sm text-muted mb-0 d-none d-md-block">Manage <?php echo $databaseName; ?>.</p>
+                            <h5 class="mb-1">Faculty Tasks</h5>
+                            <p class="text-sm text-muted mb-0 d-none d-md-block">Moderator, Speaker and Live sessions</p>
                         </div>
                         <div class="col text-right">
                             <div class="actions">
@@ -282,9 +282,11 @@ if ($identifierValue) {
                             <tr>
                                 <!-- EDIT -->
                                 <th>id</th>
-                                <th>title</th>
                                 <th>firstname</th>
                                 <th>surname</th>
+                                <th>Moderator</th>
+                                <th>Live</th>
+                                <th>Lecture</th>
                                 <th></th>
 
                             </tr>
@@ -393,7 +395,7 @@ if ($identifierValue) {
 
     }
 
-    function submit < ? php echo $databaseName; ? > Form() {
+    function submit<?php echo $databaseName; ?>Form() {
 
         //pushDataFromFormAJAX (form, table, identifierKey, identifier, updateType)
 
@@ -604,7 +606,7 @@ if ($identifierValue) {
 
 
             ajax: siteRoot +
-                'assets/scripts/tableInteractors/refresh<?php echo $databaseName; ?>Table.php',
+                'assets/scripts/tableInteractors/refresh<?php echo $databaseName; ?>TableTasks.php',
             //TODO all classes need this function
 
 
@@ -613,13 +615,19 @@ if ($identifierValue) {
                     data: 'id'
                 },
                 {
-                    data: 'title'
-                },
-                {
                     data: 'firstname'
                 },
                 {
                     data: 'surname'
+                },
+                {
+                    data: 'countModerator'
+                },
+                {
+                    data: 'countLive'
+                },
+                {
+                    data: 'countLecture'
                 },
                 {
                     data: null,
@@ -756,7 +764,7 @@ if ($identifierValue) {
 
                 //submitPreRegisterForm();
 
-                submit < ? php echo $databaseName; ? > Form();
+                submit<?php echo $databaseName; ?>Form();
 
                 //TODO submit changes
                 //TODO reimport the array at the top

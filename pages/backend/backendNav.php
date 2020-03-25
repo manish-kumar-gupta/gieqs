@@ -18,6 +18,8 @@
                     <div class="dropdown-divider"></div>
                     <h6 class="dropdown-header">Session Planning</h6>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/programFaculty.php">Faculty per program</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/facultyTasks.php">Faculty tasks</a>
+
                     <div class="dropdown-divider"></div>
                     <h6 class="dropdown-header">Individual Items</h6>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/programmeEdit.php">Programmes</a>
