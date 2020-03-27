@@ -318,7 +318,7 @@ if ($identifierValue) {
     <!-- Info Modal Faculty Tasks -->
 
 <div class="modal fade" id="modal-faculty-report" tabindex="-1" role="dialog" aria-labelledby="modal-change-username" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div id="facultyReport">
 
 </div>
