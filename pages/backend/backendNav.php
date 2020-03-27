@@ -14,7 +14,10 @@
                   <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow" aria-labelledby="btn-group-settings">
                     <h6 class="dropdown-header">Overview</h6>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/programv2.php" target="_blank">Programme Overview</a>
+                    
+                    <?php if ($currentUserLevel < 3){?>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/programv2editor.php" target="_blank">Programme Overview [editable]</a>
+                    <?php }?>
                     <div class="dropdown-divider"></div>
                     <h6 class="dropdown-header">Session Planning</h6>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/programFaculty.php">Faculty per program</a>

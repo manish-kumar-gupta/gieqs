@@ -236,8 +236,14 @@ if ($identifierValue) {
                             <div class="actions">
                                 <!-- <a href="#" class="action-item mr-2 active" data-action="search-open"
                                     data-target="#actions-search"><i class="fas fa-search"></i></a> -->
+                                    <?php if ($currentUserLevel < 3){
+                            
+                            
+                            ?>
                                 <a href="#" id="add<?php echo $databaseName; ?>" class="action-item mr-2 active"><i
                                         class="fas fa-plus"></i></a>
+
+                                    <?php }?>
                                 <!-- <div class="dropdown mr-2">
                                     <a href="#" class="action-item" role="button" data-toggle="dropdown"
                                         aria-haspopup="true" aria-expanded="false">
