@@ -170,26 +170,35 @@ $formv1 = new formGenerator;
 											<div class="icon text-white icon-sm">
 												<i class="fas fa-credit-card"></i>
 											</div>
-										</div>
+                    </div>
+                    <div class="pl-4">
+											<span class="d-block h5 text-white mr-2 mb-1">Sponsorship</span>
+											<span class="text-white"></span>
+                    </div>
+  </div>
+  <div class="d-flex">
 										<div class="pl-4">
                       <span class="text-white">Target sponsorship</span>
-                      <span class="d-block h5 text-white mr-2 mb-1">&euro; 130,000</span>
+                      <span class="d-block h5 text-white mr-2 mb-1">&euro; 149,232.88</span>
                     </div>
                     <div class="pl-4">
                       <span class="text-white">Current sponsorship</span>
-                      <span class="d-block h5 text-white mr-2 mb-1">&euro; 59,500</span>
+                      <span class="d-block h5 text-white mr-2 mb-1">&euro; 135,750.00</span>
                       </div>
                       </div>
                       <div class="d-flex p-2">
 										<div>
                     <div class="pl-4">
                       <span class="text-white ">Confirmed sponsors</span>
-                      <ul class="p-0 m-0">Boston</ul>
-                      <ul class="p-0 m-0">Boucart</ul>
-                      <ul class="p-0 m-0">Cook</ul>
-                      <ul class="p-0 m-0">Mundipharma</ul>
-                      <ul class="p-0 m-0">Prion</ul>
-                      <ul class="p-0 m-0">Medtronic</ul>
+                      <ul class="p-0 m-0">Boston (&euro; 25,000)</ul>
+                      <ul class="p-0 m-0">Olympus <br/>(&euro; target 25,000 [15,000 given])</ul>
+                      <ul class="p-0 m-0">Fujifilm <br/>(&euro; target 25,000 [15,000 given])</ul>
+                      <ul class="p-0 m-0">Boucart (&euro; 5,000)</ul>
+                      <ul class="p-0 m-0">Cook (&euro; 4,000)</ul>
+                      <ul class="p-0 m-0">Mundipharmam (&euro; 7,500)</ul>
+                      <ul class="p-0 m-0">Prion (&euro; 3,000)</ul>
+                      <ul class="p-0 m-0">Medtronic (&euro; 15,000)</ul>
+                      <ul class="p-0 m-0">Norgine (&euro; 7,500)</ul>
   </div>
   </div>
   </div>
@@ -224,8 +233,8 @@ $formv1 = new formGenerator;
 											</div>
 										</div>
 										<div class="pl-4">
-											<span class="d-block h5 text-white mr-2 mb-1">0 so far</span>
-											<span class="text-white">Attendees</span>
+											<span class="d-block h5 text-white mr-2 mb-1">Attendees</span>
+											<span class="text-white">3</span>
 										</div>
 									</div>
 								</div>
@@ -257,12 +266,19 @@ $formv1 = new formGenerator;
 										</div>
 										<div class="pl-4">
 											<span class="d-block h5 text-white mr-2 mb-1">
-												<div class="countdown" data-countdown-date="7/10/2020"
-													data-countdown-label="hide"></div>
+												Target Timeline
 											</span>
 											<span class="text-white"></span>
 										</div>
-									</div>
+                  </div>
+                  <div class="d-flex">
+                  <div class="pl-4">
+											<span class="d-block h5 text-white mr-2 mb-1">
+												programme complete
+											</span>
+											<span class="text-white">3 April 2020</span>
+										</div>
+  </div>
 								</div>
 							</div>
 						</div>
