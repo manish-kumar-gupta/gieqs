@@ -34,7 +34,7 @@ $identifier = 'id';
 //define user access level
 
 $openaccess = 0;
-$requiredUserLevel = 2;
+$requiredUserLevel = 3;
 
 require BASE_URI . '/head.php';
 
@@ -54,6 +54,7 @@ $formv1 = new formGenerator;
     .modal-backdrop {
         opacity: 0.75 !important;
     }
+    .text-muted-inactive { opacity: 0.25; }
 
     @media screen and (max-width: 400px) {
 
@@ -676,7 +677,16 @@ request2.done(function (data) {
                 {
                     data: null,
                     render: function(data, type, row) {
-                        return '<div class="d-flex align-items-center justify-content-end"><div class="actions ml-3"><a class="fill-modal action-item mr-2"  data-toggle="tooltip" title="edit this row" data-original-title="Edit"> <i class="fas fa-pencil-alt"></i> </a> <a href="#" class="action-item mr-2" data-toggle="tooltip" title="" data-original-title="see enclosed items"> <i class="fas fa-level-down-alt"></i> </a> <div class="dropdown"> <a href="#" class="action-item" role="button" data-toggle="dropdown" aria-haspopup="true" data-expanded="false"> <i class="fas fa-ellipsis-v"></i> </a> <div class="dropdown-menu dropdown-menu-right"> <a class="delete-row dropdown-item"> Delete </a> </div> </div> </div> </div>';
+                        <?php if ($currentUserLevel < 3){
+                            
+                            
+                            ?>
+                        return '<div class="d-flex align-items-center justify-content-end"><div class="actions ml-3"><a class="fill-modal action-item mr-2"  data-toggle="tooltip" title="edit this row" data-original-title="Edit"> <span class="text-muted"><i class="fas fa-pencil-alt"></i></span> </a> <a class="action-item action-item-individual mr-2" data-toggle="tooltip" title="view individual program" data-original-title="see enclosed items"> <i class="fas fa-user"></i> </a> <div class="dropdown"> <a href="#" class="action-item" role="button" data-toggle="dropdown" aria-haspopup="true" data-expanded="false"> <i class="fas fa-times"></i> </a> <div class="dropdown-menu dropdown-menu-right"> <a class="delete-row dropdown-item"> Delete </a> </div> </div> </div> </div>';
+                        <?php }else{?>
+                        
+                        return '<div class="d-flex align-items-center justify-content-end"><div class="actions ml-3"><a class="action-item mr-2"  data-toggle="tooltip" title="edit this row" data-original-title="Edit"> <span class="text-muted-inactive"><i class="fas fa-pencil-alt"></i></span> </a> <a class="action-item action-item-individual mr-2" data-toggle="tooltip" title="view individual program" data-original-title="see enclosed items"> <i class="fas fa-user"></i> </a> <div class="dropdown"> <a class="action-item" role="button" data-toggle="dropdown" aria-haspopup="true" data-expanded="false"> <span class="text-muted-inactive"><i class="fas fa-times"></i></span> </a> <div class="dropdown-menu dropdown-menu-right"> <a class="dropdown-item"> Delete </a> </div> </div> </div> </div>';
+
+                        <?php } ?>
                     }
                 }
             ],
@@ -736,7 +746,7 @@ request2.done(function (data) {
 
         })
 
-        $(document).on('click', '.action-item', function() {
+        $(document).on('click', '.action-item-individual', function() {
 
         var targettd = $(this).parent().parent().parent().parent().find('td').first().text();
         //console.log(targettd);

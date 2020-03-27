@@ -9,7 +9,7 @@
 //define user access level
 
 $openaccess = 0;
-$requiredUserLevel = 1;
+$requiredUserLevel = 3;
 
 require BASE_URI . '/head.php';
 
