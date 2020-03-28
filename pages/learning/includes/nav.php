@@ -84,21 +84,7 @@
                     
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">Online tools for promoting<br/> quality in endoscopy</span>
-                    
-                    <?php
-                
-                if (isset($_SESSION['user_id']) && ($_SESSION['siteKey'] == 'TxsvAb6KDYpmdNk') && ($_SESSION['access_level'] == '1')){
-                ?>
-                    
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/index.php"><i class="fas fa-graduation-cap"></i>GIEQs Online BETA</a>
-
-
-                <?php }else{ ?>
-
-                  <a class="dropdown-item"><i class="fas fa-graduation-cap"></i>Coming soon!</a>
-
-
-                <?php }?>
+                    <a class="dropdown-item" target="_blank"><i class="fas fa-graduation-cap"></i>Coming soon!</a>
                     
                     
                   </div>

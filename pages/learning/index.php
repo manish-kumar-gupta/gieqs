@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<?php require '../../assets/includes/config.inc.php';?>
+
+<head>
+
+      <?php
+
+      //define user access level
+
+      $openaccess = 1;
+
+      require BASE_URI . '/head.php';
+
+      ?>
+
+    <!--Page title-->
+    <title>GIEQs Online Endoscopy Trainer</title>
+
+    <style>
+
+.gieqsGold {
+
+color: rgb(238, 194, 120);
+
+}
+
+    </style>
+
+
+</head>
+
+<body>
+    <header class="header header-transparent" id="header-main">
+
+        <!-- Topbar -->
+
+        <?php require BASE_URI . '/pages/learning/includes/topbar.php';?>
+
+        <!-- Main navbar -->
+
+        <?php require BASE_URI . '/pages/learning/includes/nav.php';?>
+
+        <?php
+//set the variable to launch the registration pop-up
+
+//print_r($_GET);
+
+if (isset($_GET['signup'])) {
+
+    $signup = $_GET['signup'];
+
+}
+
+echo '<div id="signup" style="display:none;">' . $signup . '</div>';
+
+?>
+
+
+    </header>
+
+    <!-- Omnisearch -->
+    <div id="omnisearch" class="omnisearch">
+        <div class="container">
+            <!-- Search form -->
+            <form class="omnisearch-form">
+                <div class="form-group">
+                    <div class="input-group input-group-merge input-group-flush">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-search"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Type and hit enter ...">
+                    </div>
+                </div>
+            </form>
+            <div class="omnisearch-suggestions">
+                <h6 class="heading">Search Suggestions</h6>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a class="list-link" href="#">
+                                    <i class="fas fa-search"></i>
+                                    <span>macbook pro</span> in Laptops
+                                </a>
+                            </li>
+                            <li>
+                                <a class="list-link" href="#">
+                                    <i class="fas fa-search"></i>
+                                    <span>iphone 8</span> in Smartphones
+                                </a>
+                            </li>
+                            <li>
+                                <a class="list-link" href="#">
+                                    <i class="fas fa-search"></i>
+                                    <span>macbook pro</span> in Laptops
+                                </a>
+                            </li>
+                            <li>
+                                <a class="list-link" href="#">
+                                    <i class="fas fa-search"></i>
+                                    <span>beats pro solo 3</span> in Headphones
+                                </a>
+                            </li>
+                            <li>
+                                <a class="list-link" href="#">
+                                    <i class="fas fa-search"></i>
+                                    <span>smasung galaxy 10</span> in Phones
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-content">
+
+        <div class="d-flex align-items-end bg-gradient-dark">
+            <div class="container mt-10 pt-4 pt-lg-4">
+                <div class="row">
+                    <div class="col-md-9 mb-0 mb-md-0">
+                        <span class="h2 mb-0 text-white d-block">Video name</span>
+                        <span class="text-white">Video subtitle</span>
+
+                    </div>
+                    <div class="col-md-3 mb-0 mb-md-0 mt-2 bg-dark p-2 text-center vertical-align-center">
+                        <span class="h6 mb-0 text-white d-block">Chapter Navigation</span>
+                        <span class="text-white">subtitle</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex align-items-end bg-gradient-dark">
+            <div class="container mt-2 pt-0 pt-lg-0">
+                <div class="row">
+                    <div class="col-md-9 mb-0 mb-md-0">
+                        <p class="text-right">
+                            <a class="dropdown-item" data-toggle="collapse" href="#collapseExample"
+                                aria-expanded="false" aria-controls="collapseExample">
+                                <i class="fas fa-chevron-circle-up"></i> show tags
+                            </a>
+
+                        </p>
+                        <div class="collapse" id="collapseExample">
+                            <dic class="card">
+                                <div class="card-footer">
+                                    <div class="row align-items-left">
+                                        <div class="col">
+                                            <span class="badge badge-primary mx-2">
+                                                tags 1
+                                            </span>
+                                            <span class="badge badge-primary mx-2">
+                                                tags 2
+                                            </span>
+                                        </div>
+                                        <div class="col text-right text-right">
+                                            <div class="actions">
+                                                <a href="#" class="action-item"><i class="fas fa-heart mr-1"></i> 50</a>
+                                                <a href="#" class="action-item"><i class="fas fa-eye mr-1"></i> 250</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="d-flex align-items-end bg-gradient-dark">
+        <div class="container mt-2 pt-4 pt-lg-4">
+            <div class="row" style="height:50vh; max-height:50vh;">
+                <div class="col-md-9 mb-0 mb-md-0 pr-3">
+                    <iframe style="height:100%; width:100%;" id='videoChapter'
+                        src='https://player.vimeo.com/video/398791515' frameborder='0' allow='autoplay'
+                        webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                </div>
+                <div class="col-md-3 bg-dark mb-0 mb-md-0 p-4 text-center vertical-align-center">
+                    <span class="h6 mb-0 text-white d-block">Chapter Description Title</span>
+                    <span class="mt-2 pt-3 text-muted d-block text-left ">Uw projectaanvraag zal door twee onafhankelijke  commissies beoordeeld worden, <br/> namelijk door de patiëntencommissie van Kom op tegen Kanker en door een wetenschappelijkee</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex align-items-end bg-gradient-dark">
+            <div class="container mt-2 pt-0 pt-lg-0">
+                <div class="row">
+                    <div class="col-md-9 mb-0 mb-md-0">
+                        <p class="text-left d-flex align-items-left">
+                            <a class="dropdown-item" data-toggle="collapse" href="#collapseExample2"
+                                aria-expanded="false" aria-controls="collapseExample2">
+                                <i class="fas fa-chevron-circle-up"></i> show references
+                            </a>
+                            <a class="dropdown-item" data-toggle="collapse" href="#collapseExample3"
+                                aria-expanded="false" aria-controls="collapseExample3">
+                                <i class="fas fa-chevron-circle-up"></i> show comments
+                            </a>
+
+                        </p>
+                        <div class="collapse" id="collapseExample2">
+                            <dic class="card">
+                                <div class="card-footer">
+                                    <div class="row align-items-left">
+                                        <div class="col">
+                                            <span class="badge badge-primary mx-2">
+                                                tags 1
+                                            </span>
+                                            <span class="badge badge-primary mx-2">
+                                                tags 2
+                                            </span>
+                                        </div>
+                                        <div class="col text-right text-right">
+                                            <div class="actions">
+                                                <a href="#" class="action-item"><i class="fas fa-heart mr-1"></i> 50</a>
+                                                <a href="#" class="action-item"><i class="fas fa-eye mr-1"></i> 250</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="collapse" id="collapseExample3">
+                            <dic class="card">
+                                <div class="card-footer">
+                                    <div class="row align-items-left">
+                                        <div class="col">
+                                            <span class="badge badge-primary mx-2">
+                                                comment 1
+                                            </span>
+                                            <span class="badge badge-primary mx-2">
+                                                comment 2
+                                            </span>
+                                        </div>
+                                        <div class="col text-right text-right">
+                                            <div class="actions">
+                                                <a href="#" class="action-item"><i class="fas fa-heart mr-1"></i> 50</a>
+                                                <a href="#" class="action-item"><i class="fas fa-eye mr-1"></i> 250</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="registerInterest" tabindex="-1" role="dialog" aria-labelledby="registerInterestLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerInterestLabel" style="color: rgb(238, 194, 120);">Thank-you for
+                        your interest in GIEQs</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="text-white" aria-hidden="false">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <span class="h6">Registration will open in late January 2020. <br /> </span><span>Prior to this you
+                        can register your interest below and we will keep you updated on everything GIEQs.</span>
+                    <hr>
+                    <form id='pre-register'>
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <div class="input-group mb-3">
+                                <input type="text" name="name" id="name" class="form-control"
+                                    placeholder="please enter your name">
+                            </div>
+                            <label for="email">Email address:</label>
+                            <div class="input-group mb-3">
+                                <input type="email" name="email" id="email" class="form-control"
+                                    placeholder="please enter your email address">
+                            </div>
+                        </div>
+                    </form>
+                    <hr>
+                    <span>Your email address will only be used to update you on GIEQs</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-small btn-secondary" data-dismiss="modal">Close</button>
+                    <button id="submitPreRegister" type="button" class="btn-small text-black"
+                        style="background-color: rgb(238, 194, 120);">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <?php require BASE_URI . '/footer.php';?>
+
+    <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
+    <!-- <script src="assets/js/purpose.core.js"></script> -->
+    <!-- Page JS -->
+    <script src="assets/libs/swiper/dist/js/swiper.min.js"></script>
+    <script src="assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+    <script src="assets/libs/typed.js/lib/typed.min.js"></script>
+    <script src="assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script>
+    <script src="assets/libs/jquery-countdown/dist/jquery.countdown.min.js"></script>
+    <!-- Google maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBuyKngB9VC3zgY_uEB-DKL9BKYMekbeY"></script>
+    <!-- Purpose JS -->
+    <script src="assets/js/purpose.js"></script>
+    <!-- <script src="assets/js/generaljs.js"></script> -->
+    <script src="assets/js/demo.js"></script>
+
+
+    <script>
+    var signup = $('#signup').text();
+
+    function submitPreRegisterForm() {
+
+        var esdLesionObject = pushDataFromFormAJAX("pre-register", "preRegister", "id", null, "0"); //insert new object
+
+        esdLesionObject.done(function(data) {
+
+            console.log(data);
+
+            var dataTrim = data.trim();
+
+            console.log(dataTrim);
+
+            if (dataTrim) {
+
+                try {
+
+                    dataTrim = parseInt(dataTrim);
+
+                    if (dataTrim > 0) {
+
+                        alert("Thank you for your details.  We will keep you updated on everything GIEQs.");
+                        $("[data-dismiss=modal]").trigger({
+                            type: "click"
+                        });
+
+                    }
+
+                } catch (error) {
+
+                    //data not entered
+                    console.log('error parsing integer');
+                    $("[data-dismiss=modal]").trigger({
+                        type: "click"
+                    });
+
+
+                }
+
+                //$('#success').text("New esdLesion no "+data+" created");
+                //$('#successWrapper').show();
+                /* $("#successWrapper").fadeTo(4000, 500).slideUp(500, function() {
+                  $("#successWrapper").slideUp(500);
+                });
+                edit = 1;
+                $("#id").text(data);
+                esdLesionPassed = data;
+                fillForm(data); */
+
+
+
+
+            } else {
+
+                alert("No data inserted, try again");
+
+            }
+
+
+        });
+    }
+
+    $(document).ready(function() {
+
+        if (signup == '2456') {
+
+            $('#registerInterest').modal('show');
+
+        }
+
+        $(document).on('click', '#submitPreRegister', function() {
+
+            event.preventDefault();
+            $('#pre-register').submit();
+
+        })
+
+        $("#pre-register").validate({
+
+            invalidHandler: function(event, validator) {
+                var errors = validator.numberOfInvalids();
+                console.log("there were " + errors + " errors");
+                if (errors) {
+                    var message = errors == 1 ?
+                        "1 field contains errors. It has been highlighted" :
+                        +errors + " fields contain errors. They have been highlighted";
+
+
+                    $('#error').text(message);
+                    //$('div.error span').addClass('form-text text-danger');
+                    //$('#errorWrapper').show();
+
+                    $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function() {
+                        $("#errorWrapper").slideUp(500);
+                    });
+                } else {
+                    $('#errorWrapper').hide();
+                }
+            },
+            rules: {
+                name: {
+                    required: true,
+                },
+                email: {
+                    required: true,
+                    email: true,
+                },
+
+            },
+            submitHandler: function(form) {
+
+                submitPreRegisterForm();
+
+                //console.log("submitted form");
+
+
+
+            }
+
+
+
+
+        });
+
+
+    })
+    </script>
+</body>
+
+</html>
