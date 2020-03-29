@@ -5,7 +5,7 @@
 
 <head>
 
-      <?php
+    <?php
 
       //define user access level
 
@@ -19,13 +19,11 @@
     <title>GIEQs Online Endoscopy Trainer</title>
 
     <style>
+        .gieqsGold {
 
-.gieqsGold {
+            color: rgb(238, 194, 120);
 
-color: rgb(238, 194, 120);
-
-}
-
+        }
     </style>
 
 
@@ -120,205 +118,227 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
         <div class="d-flex align-items-end bg-gradient-dark">
             <div class="container mt-10 pt-4 pt-lg-4">
                 <div class="row">
-                    <div class="col-md-9 mb-0 mb-md-0">
+                    <div class="col-md-3 mb-0 mb-md-0">
                         <span class="h2 mb-0 text-white d-block">Video name</span>
                         <span class="text-white">Video subtitle</span>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-links p-0 m-0">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#">Video</a></li>
                                 <li class="breadcrumb-item"><a href="#">Library</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Data</li>
                             </ol>
                         </nav>
-                        <div class="row">
-                    <div class="col-md-9 mb-0 mb-md-0">
-                        <p class="text-right">
-                            <a class="dropdown-item" data-toggle="collapse" href="#collapseExample"
-                                aria-expanded="false" aria-controls="collapseExample">
-                                <i class="fas fa-chevron-circle-up"></i> show tags
-                            </a>
+                        <div class="col text-left">
+                                                    <div class="actions">
+                                                        <a class="action-item p-0 m-0 pr-1"><i
+                                                                class="fas fa-heart mr-1 pr-1"></i> 50</a>
+                                                        <a class="action-item p-0 m-0"><i class="fas fa-eye mr-1"></i>
+                                                            250</a>
+                                                            <a class="action-item p-0 m-0 pr-1"><i class="fas fa-user mr-1"></i>
+                                                            David James Tate</a>
+                                                    </div>
+                                                </div>
+</div>
+                            <div class="col-md-6 mb-0 mb-md-0 align-self-center">
+                                <div class="text-right ">
+                                
+                                                        
+                                                    
+                                    <a class="dropdown-item" data-toggle="collapse" href="#collapseExample"
+                                        aria-expanded="false" aria-controls="collapseExample">
+                                        <i class="fas fa-chevron-circle-up"></i> show tags
+                                    </a>
+                                    
 
-                        </p>
-                        <div class="collapse" id="collapseExample">
-                            <div class="card">
-                                <div class="card-footer">
-                                    <div class="row align-items-left">
-                                        <div class="col">
-                                            <span class="badge badge-primary mx-2">
-                                                tags 1
-                                            </span>
-                                            <span class="badge badge-primary mx-2">
-                                                tags 2
-                                            </span>
-                                        </div>
-                                        <div class="col text-right text-right">
-                                            <div class="actions">
-                                                <a href="#" class="action-item"><i class="fas fa-heart mr-1"></i> 50</a>
-                                                <a href="#" class="action-item"><i class="fas fa-eye mr-1"></i> 250</a>
+</div>
+                                <div class="collapse" id="collapseExample">
+                                    <div class="card">
+                                        <div class="card-footer">
+                                            <div class="row align-items-left">
+                                                <div class="col">
+                                                    <span class="badge badge-primary mx-2">
+                                                        tags 1
+                                                    </span>
+                                                    <span class="badge badge-primary mx-2">
+                                                        tags 2
+                                                    </span>
+                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
+
+
                                 </div>
-                        </div>
+                                <div class="card collapse mb-0" id="selectDropdown">
+                                <span class="h6 mb-1 pl-2 pt-2">Choose chapter</span>
+                                <select class="custom-select custom-select-sm">
+                                    <option selected>Open this select menu</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
 
+                            </div>
 
-                    </div>
-
-                </div>
-
-            </div>
                         
-                    </div>
+
+                    
                     <div class="col-md-3 mb-0 mb-md-0 mt-2 p-0 text-center vertical-align-center">
-                        
-                    <div class="card">
-                        <div class="card-header" style="    padding-right: 0.5em;
+
+                        <div class="card mb-0">
+                            <div class="card-header" style="    padding-right: 0.5em;
     padding-left: 1.5em;
     padding-bottom: 0.5em;
     padding-top: 0.5em;">
-                            <div class="d-flex justify-content-between align-items-center p-0">
-                                <div>
-                                    <h6 class="mb-0">Chapter Navigation</h6>
-                                </div>
-                                <div class="text-right">
-                                    <div class="actions">
-                                        <a href="#" class="action-item"><i class="fas fa-sync"></i></a>
-                                        
-                                            <a class="action-item" data-toggle="collapse" href="#selectDropdown"><i class="fas fa-ellipsis-h"></i></a>
-                                            
+                                <div class="d-flex justify-content-between align-items-center p-0">
+                                    <div>
+                                        <h6 class="mb-0">Chapter Navigation</h6>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="actions">
+                                            <a href="#" class="action-item"><i class="fas fa-sync"></i></a>
+
+                                            <a class="action-item" data-toggle="collapse" href="#selectDropdown"><i
+                                                    class="fas fa-ellipsis-h"></i></a>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        
-                        <div class="card-body collapse" id="selectDropdown">
-                            <select class="custom-select custom-select-sm">
-                                <option selected>Open this select menu</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </div>
-                        <div class="list-group">
+
+                            
+                            <div class="list-group">
 
 
-                            <a href="#" class="list-group-item list-group-item-action">
+                                <a href="#" class="list-group-item list-group-item-action p-0">
 
-                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="d-flex align-items-center justify-content-between">
 
-                                    <div class="flex-fill p-2 text-limit">
-                                        <h6 class="progress-text mb-1 text-sm d-block text-limit text-left">Chapter name
-                                        </h6>
-                                        <div class="progress progress-xs mb-0">
-                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 60%;"
-                                                aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                        </div>
-                                        <div class="d-flex justify-content-between text-xs text-muted text-right mt-1">
-                                            <div>
-                                                <span class="font-weight-bold text-warning">xx:xx / yy:yy</span>
+                                        <div class="flex-fill p-2 text-limit">
+                                            <h6 class="progress-text mb-1 text-sm d-block text-limit text-left">Chapter
+                                                name
+                                            </h6>
+                                            <div class="progress progress-xs mb-0">
+                                                <div class="progress-bar bg-warning" role="progressbar"
+                                                    style="width: 60%;" aria-valuenow="60" aria-valuemin="0"
+                                                    aria-valuemax="100"></div>
                                             </div>
-                                            <div>
-                                                x / y
+                                            <div
+                                                class="d-flex justify-content-between text-xs text-muted text-right mt-1">
+                                                <div>
+                                                    <span class="font-weight-bold text-warning">xx:xx / yy:yy</span>
+                                                </div>
+                                                <div>
+                                                    x / y
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                            </a>
+                                </a>
+                            </div>
                         </div>
-                </div>
                     </div>
                 </div>
             </div>
         </div>
-       
-        
+
+
     </div>
 
-    
-    
+
+
 
     <div class="d-flex align-items-end bg-gradient-dark">
         <div class="container mt-2 pt-4 pt-lg-4">
             <div class="row" style="height:50vh; max-height:50vh;">
-                <div class="col-md-9 mb-0 mb-md-0 pr-3">
+                <div class="col-md-9 mb-0 mb-md-0 pr-md-3">
                     <iframe style="height:100%; width:100%;" id='videoChapter'
                         src='https://player.vimeo.com/video/398791515' frameborder='0' allow='autoplay'
                         webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
-                <div class="col-md-3 bg-dark mb-0 mb-md-0 p-4 text-center vertical-align-center">
+                <div class="card col-md-3 bg-dark mt-2 mb-0 mb-md-0 text-center vertical-align-center">
+                <div class="card-header" style="padding-right: 0.5em;
+    padding-left: 1.5em;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;">
                     <span class="h6 mb-0 text-white d-block">Chapter Description Title</span>
-                    <span class="mt-2 pt-3 text-muted d-block text-left ">Uw projectaanvraag zal door twee onafhankelijke  commissies beoordeeld worden, <br/> namelijk door de patiëntencommissie van Kom op tegen Kanker en door een wetenschappelijkee</span>
+</div>
+                    <span class="mt-2 pt-3 text-muted d-block text-left ">Uw projectaanvraag zal door twee
+                        onafhankelijke commissies beoordeeld worden, <br /> namelijk door de patiëntencommissie van Kom
+                        op tegen Kanker en door een wetenschappelijkee</span>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="d-flex align-items-end bg-gradient-dark">
-            <div class="container mt-2 pt-0 pt-lg-0">
-                <div class="row">
-                    <div class="col-md-9 mb-0 mb-md-0">
-                        <p class="text-left d-flex align-items-left">
-                            <a class="dropdown-item" data-toggle="collapse" href="#collapseExample2"
-                                aria-expanded="false" aria-controls="collapseExample2">
-                                <i class="fas fa-chevron-circle-up"></i> show references
-                            </a>
-                            <a class="dropdown-item" data-toggle="collapse" href="#collapseExample3"
-                                aria-expanded="false" aria-controls="collapseExample3">
-                                <i class="fas fa-chevron-circle-up"></i> show comments
-                            </a>
+        <div class="container mt-4 pt-0 pt-lg-0">
+            <div class="row">
+                <div class="col-md-9 mb-0 mb-md-0">
+                    <p class="text-left d-flex align-items-left">
+                        <a class="dropdown-item" data-toggle="collapse" href="#collapseExample2" aria-expanded="false"
+                            aria-controls="collapseExample2">
+                            <i class="fas fa-chevron-circle-up"></i> show references
+                        </a>
+                        <a class="dropdown-item" data-toggle="collapse" href="#collapseExample3" aria-expanded="false"
+                            aria-controls="collapseExample3">
+                            <i class="fas fa-chevron-circle-up"></i> show comments
+                        </a>
 
-                        </p>
-                        <div class="collapse" id="collapseExample2">
-                            <dic class="card">
-                                <div class="card-footer">
-                                    <div class="row align-items-left">
-                                        <div class="col">
-                                            <span class="badge badge-primary mx-2">
-                                                tags 1
-                                            </span>
-                                            <span class="badge badge-primary mx-2">
-                                                tags 2
-                                            </span>
-                                        </div>
-                                        <div class="col text-right text-right">
-                                            <div class="actions">
-                                                <a href="#" class="action-item"><i class="fas fa-heart mr-1"></i> 50</a>
-                                                <a href="#" class="action-item"><i class="fas fa-eye mr-1"></i> 250</a>
-                                            </div>
+                    </p>
+                    <div class="collapse" id="collapseExample2">
+                        <dic class="card">
+                            <div class="card-footer">
+                                <div class="row align-items-left">
+                                    <div class="col">
+                                        <span class="badge badge-primary mx-2">
+                                            ref 1
+                                        </span>
+                                        <span class="badge badge-primary mx-2">
+                                            ref 2
+                                        </span>
+                                    </div>
+                                    <div class="col text-right text-right">
+                                        <div class="actions">
+                                            
+                                            <a href="#" class="action-item"><i class="fas fa-info mr-1"></i></a>
                                         </div>
                                     </div>
                                 </div>
-                        </div>
-                        <div class="collapse" id="collapseExample3">
-                            <dic class="card">
-                                <div class="card-footer">
-                                    <div class="row align-items-left">
-                                        <div class="col">
-                                            <span class="badge badge-primary mx-2">
-                                                comment 1
-                                            </span>
-                                            <span class="badge badge-primary mx-2">
-                                                comment 2
-                                            </span>
-                                        </div>
-                                        <div class="col text-right text-right">
-                                            <div class="actions">
-                                                <a href="#" class="action-item"><i class="fas fa-heart mr-1"></i> 50</a>
-                                                <a href="#" class="action-item"><i class="fas fa-eye mr-1"></i> 250</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-
-
+                            </div>
                     </div>
+                    <div class="collapse" id="collapseExample3">
+                        <dic class="card">
+                            <div class="card-footer">
+                                <div class="row align-items-left">
+                                    <div class="col">
+                                        <span class="badge badge-primary mx-2">
+                                            comment 1
+                                        </span>
+                                        <span class="badge badge-primary mx-2">
+                                            comment 2
+                                        </span>
+                                    </div>
+                                    <div class="col text-right text-right">
+                                        <div class="actions">
+                                            <a href="#" class="action-item"><i class="fas fa-info mr-1"></i></a>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
 
                 </div>
 
             </div>
+
         </div>
+    </div>
     </div>
 
 
@@ -385,133 +405,134 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 
 
     <script>
-    var signup = $('#signup').text();
+        var signup = $('#signup').text();
 
-    function submitPreRegisterForm() {
+        function submitPreRegisterForm() {
 
-        var esdLesionObject = pushDataFromFormAJAX("pre-register", "preRegister", "id", null, "0"); //insert new object
+            var esdLesionObject = pushDataFromFormAJAX("pre-register", "preRegister", "id", null,
+            "0"); //insert new object
 
-        esdLesionObject.done(function(data) {
+            esdLesionObject.done(function (data) {
 
-            console.log(data);
+                console.log(data);
 
-            var dataTrim = data.trim();
+                var dataTrim = data.trim();
 
-            console.log(dataTrim);
+                console.log(dataTrim);
 
-            if (dataTrim) {
+                if (dataTrim) {
 
-                try {
+                    try {
 
-                    dataTrim = parseInt(dataTrim);
+                        dataTrim = parseInt(dataTrim);
 
-                    if (dataTrim > 0) {
+                        if (dataTrim > 0) {
 
-                        alert("Thank you for your details.  We will keep you updated on everything GIEQs.");
+                            alert("Thank you for your details.  We will keep you updated on everything GIEQs.");
+                            $("[data-dismiss=modal]").trigger({
+                                type: "click"
+                            });
+
+                        }
+
+                    } catch (error) {
+
+                        //data not entered
+                        console.log('error parsing integer');
                         $("[data-dismiss=modal]").trigger({
                             type: "click"
                         });
 
+
                     }
 
-                } catch (error) {
-
-                    //data not entered
-                    console.log('error parsing integer');
-                    $("[data-dismiss=modal]").trigger({
-                        type: "click"
+                    //$('#success').text("New esdLesion no "+data+" created");
+                    //$('#successWrapper').show();
+                    /* $("#successWrapper").fadeTo(4000, 500).slideUp(500, function() {
+                      $("#successWrapper").slideUp(500);
                     });
+                    edit = 1;
+                    $("#id").text(data);
+                    esdLesionPassed = data;
+                    fillForm(data); */
 
+
+
+
+                } else {
+
+                    alert("No data inserted, try again");
 
                 }
 
-                //$('#success').text("New esdLesion no "+data+" created");
-                //$('#successWrapper').show();
-                /* $("#successWrapper").fadeTo(4000, 500).slideUp(500, function() {
-                  $("#successWrapper").slideUp(500);
-                });
-                edit = 1;
-                $("#id").text(data);
-                esdLesionPassed = data;
-                fillForm(data); */
 
-
-
-
-            } else {
-
-                alert("No data inserted, try again");
-
-            }
-
-
-        });
-    }
-
-    $(document).ready(function() {
-
-        if (signup == '2456') {
-
-            $('#registerInterest').modal('show');
-
+            });
         }
 
-        $(document).on('click', '#submitPreRegister', function() {
+        $(document).ready(function () {
 
-            event.preventDefault();
-            $('#pre-register').submit();
+            if (signup == '2456') {
 
-        })
-
-        $("#pre-register").validate({
-
-            invalidHandler: function(event, validator) {
-                var errors = validator.numberOfInvalids();
-                console.log("there were " + errors + " errors");
-                if (errors) {
-                    var message = errors == 1 ?
-                        "1 field contains errors. It has been highlighted" :
-                        +errors + " fields contain errors. They have been highlighted";
-
-
-                    $('#error').text(message);
-                    //$('div.error span').addClass('form-text text-danger');
-                    //$('#errorWrapper').show();
-
-                    $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function() {
-                        $("#errorWrapper").slideUp(500);
-                    });
-                } else {
-                    $('#errorWrapper').hide();
-                }
-            },
-            rules: {
-                name: {
-                    required: true,
-                },
-                email: {
-                    required: true,
-                    email: true,
-                },
-
-            },
-            submitHandler: function(form) {
-
-                submitPreRegisterForm();
-
-                //console.log("submitted form");
-
-
+                $('#registerInterest').modal('show');
 
             }
 
+            $(document).on('click', '#submitPreRegister', function () {
+
+                event.preventDefault();
+                $('#pre-register').submit();
+
+            })
+
+            $("#pre-register").validate({
+
+                invalidHandler: function (event, validator) {
+                    var errors = validator.numberOfInvalids();
+                    console.log("there were " + errors + " errors");
+                    if (errors) {
+                        var message = errors == 1 ?
+                            "1 field contains errors. It has been highlighted" :
+                            +errors + " fields contain errors. They have been highlighted";
+
+
+                        $('#error').text(message);
+                        //$('div.error span').addClass('form-text text-danger');
+                        //$('#errorWrapper').show();
+
+                        $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function () {
+                            $("#errorWrapper").slideUp(500);
+                        });
+                    } else {
+                        $('#errorWrapper').hide();
+                    }
+                },
+                rules: {
+                    name: {
+                        required: true,
+                    },
+                    email: {
+                        required: true,
+                        email: true,
+                    },
+
+                },
+                submitHandler: function (form) {
+
+                    submitPreRegisterForm();
+
+                    //console.log("submitted form");
 
 
 
-        });
+                }
 
 
-    })
+
+
+            });
+
+
+        })
     </script>
 </body>
 
