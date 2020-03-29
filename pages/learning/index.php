@@ -123,18 +123,14 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                     <div class="col-md-9 mb-0 mb-md-0">
                         <span class="h2 mb-0 text-white d-block">Video name</span>
                         <span class="text-white">Video subtitle</span>
-
-                    </div>
-                    <div class="col-md-3 mb-0 mb-md-0 mt-2 bg-dark p-2 text-center vertical-align-center">
-                        <span class="h6 mb-0 text-white d-block">Chapter Navigation</span>
-                        <span class="text-white">subtitle</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="d-flex align-items-end bg-gradient-dark">
-            <div class="container mt-2 pt-0 pt-lg-0">
-                <div class="row">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb breadcrumb-links p-0 m-0">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#">Library</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Data</li>
+                            </ol>
+                        </nav>
+                        <div class="row">
                     <div class="col-md-9 mb-0 mb-md-0">
                         <p class="text-right">
                             <a class="dropdown-item" data-toggle="collapse" href="#collapseExample"
@@ -144,7 +140,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 
                         </p>
                         <div class="collapse" id="collapseExample">
-                            <dic class="card">
+                            <div class="card">
                                 <div class="card-footer">
                                     <div class="row align-items-left">
                                         <div class="col">
@@ -171,11 +167,76 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                 </div>
 
             </div>
+                        
+                    </div>
+                    <div class="col-md-3 mb-0 mb-md-0 mt-2 p-0 text-center vertical-align-center">
+                        
+                    <div class="card">
+                        <div class="card-header" style="    padding-right: 0.5em;
+    padding-left: 1.5em;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;">
+                            <div class="d-flex justify-content-between align-items-center p-0">
+                                <div>
+                                    <h6 class="mb-0">Chapter Navigation</h6>
+                                </div>
+                                <div class="text-right">
+                                    <div class="actions">
+                                        <a href="#" class="action-item"><i class="fas fa-sync"></i></a>
+                                        
+                                            <a class="action-item" data-toggle="collapse" href="#selectDropdown"><i class="fas fa-ellipsis-h"></i></a>
+                                            
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card-body collapse" id="selectDropdown">
+                            <select class="custom-select custom-select-sm">
+                                <option selected>Open this select menu</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                        <div class="list-group">
+
+
+                            <a href="#" class="list-group-item list-group-item-action">
+
+                                <div class="d-flex align-items-center justify-content-between">
+
+                                    <div class="flex-fill p-2 text-limit">
+                                        <h6 class="progress-text mb-1 text-sm d-block text-limit text-left">Chapter name
+                                        </h6>
+                                        <div class="progress progress-xs mb-0">
+                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 60%;"
+                                                aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                        <div class="d-flex justify-content-between text-xs text-muted text-right mt-1">
+                                            <div>
+                                                <span class="font-weight-bold text-warning">xx:xx / yy:yy</span>
+                                            </div>
+                                            <div>
+                                                x / y
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </a>
+                        </div>
+                </div>
+                    </div>
+                </div>
+            </div>
         </div>
+       
+        
     </div>
 
-
-
+    
+    
 
     <div class="d-flex align-items-end bg-gradient-dark">
         <div class="container mt-2 pt-4 pt-lg-4">
