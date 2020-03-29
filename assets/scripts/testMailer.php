@@ -79,6 +79,10 @@ $page_title='Administration GIEQs';
 
 //require($_SERVER['DOCUMENT_ROOT'].'/studyserver/PROSPER/scripts/sendgrid-php.php');
 
+
+
+echo 'hello';
+
 require(BASE_URI.'/vendor/autoload.php');
 
 //require($_SERVER['DOCUMENT_ROOT'].'/studyserver/PROSPER/scripts/phpmailer/PHPMailer.php');
@@ -147,13 +151,27 @@ function Mailer ($email, $subject, $filename){
 	
  <?php
 
-$subject = "Ghent International Endoscopy Quality Symposium, October 2020";
+ error_reporting(E_ALL);
+
+$emailList = new emailList;
+
+$subject = "Registration is Open! Ghent International Endoscopy Quality Symposium, October 2020";
 
 $emailString = "Hans Van Vlierberghe <hans.vanvlierberghe@uzgent.be>, Lobke Desomer <lobkedesomer@gmail.com>, Pieter Hindryckx <pieter.hindryckx@uzgent.be>, Tania Helleputte <tania.helleputte@uzgent.be>, Helena Degroote <helena.degroote@ugent.be>, Danny De Looze <danny.delooze@uzgent.be>, Ewoud <edemunter@hotmail.com>";
 $emailArray = explode(',', $emailString);
+
+
+print_r($emailList);
 //print_r($myArray);
 
-Mailer(array(0 => 'lobkedesomer@gmail.com'), $subject, '/assets/email/MarchInlinev2.html');
+
+//get all emails from the emailList database ; specific function written into the emailList class
+
+$emailArray = $emailList->getAllEmails();
+
+//print_r($emailArray);
+
+Mailer(array(0 => 'djtate@gmail.com'), $subject, '/assets/email/MarchInlinev2.html');
 
 
 

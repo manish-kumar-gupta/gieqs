@@ -77,6 +77,24 @@ $q = "Select * from `emailList` LIMIT " . $x . ", " . $y;
 			}
 			
 	}
+
+	public function getAllEmails(){
+		$q = "Select `email` from `emailList` WHERE `optOut` IS NULL";
+				$result = $this->connection->RunQuery($q);
+									$rowReturn = array();
+								$x = 0;
+								$nRows = $result->rowCount();
+								if ($nRows > 0){
+		
+							while($row = $result->fetch(PDO::FETCH_ASSOC)){
+					
+					$rowReturn[$x] = $row["email"];
+				$x++;		}return $rowReturn;}
+		
+					else{return FALSE;
+					}
+					
+			}
     /**
  * Load specified number of rows and output to JSON. To use the vars use for exemple echo $class->getVar_name;
  *
