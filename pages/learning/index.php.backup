@@ -130,7 +130,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
         <div class="d-flex align-items-end bg-gradient-dark">
             <div class="container mt-10 pt-4 pt-lg-4">
                 <div class="row">
-                    <div class="col-md-3 mb-0 mb-md-0">
+                    <div class="col-sm-3 mb-0 mb-sm-0">
                         <span class="h2 mb-0 text-white d-block">Video name</span>
                         <span class="text-white">Video subtitle</span>
                         <nav aria-label="breadcrumb">
@@ -151,7 +151,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                                     </div>
                                                 </div>
 </div>
-                            <div class="col-md-6 mb-0 mb-md-0 align-self-center">
+                            <div class="col-sm-6 mb-0 mb-sm-0 align-self-center">
                                 <div class="text-right ">
                                 
                                                         
@@ -197,7 +197,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                         
 
                     
-                    <div class="col-md-3 mb-0 mb-md-0 mt-2 py-0 text-center vertical-align-center">
+                    <div class="col-sm-3 mb-0 mb-sm-0 mt-2 py-0 text-center vertical-align-center">
 
                         <div class="card mb-0">
                             <div class="card-header" style="    padding-right: 0.5em;
@@ -266,34 +266,24 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
     <div class="d-flex align-items-end" style="padding-left:15px; padding-right:15px;">
         <div class="container mt-2 mb-2 py-0">
             <div class="row">
-                <div class="col-md-9 mb-0 mb-md-0 pr-md-3">
-
-
-               
-            <div style="container">
-            <div class="embed-responsive embed-responsive-16by9">
-                    <iframe  id='videoChapter' class="embed-responsive-item" style="left:50%; top:50%;"
-                        src='https://player.vimeo.com/video/398791515' allow='autoplay'
+                <div class="col-sm-9 mb-0 mb-sm-0 pr-sm-3" style="margin:0px;padding:0px;overflow:hidden;min-height: 40vh;
+    width: 100%;">
+                    <iframe  id='videoChapter'
+                        src='https://player.vimeo.com/video/398791515' style="overflow:hidden;height:100%;width:100%" height="100%" width="100%" frameborder='0' allow='autoplay'
                         webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                        </div>
                 </div>
-</div>
-                <div class="card col-md-3 bg-dark mt-2 mb-0 mb-md-0 text-center vertical-align-center">
+                <div class="card col-sm-3 bg-dark mt-2 mb-0 mb-sm-0 text-center vertical-align-center">
                 <div class="card-header" style="padding-right: 0.5em;
     padding-left: 1.5em;
     padding-bottom: 0.5em;
     padding-top: 0.5em;">
                     <span class="h6 mb-0 text-white d-block">Chapter Description Title</span>
 </div>
-<div class="card-body" style="padding-right: 0.5em;
-    padding-left: 0.5em;
-    padding-bottom: 0.5em;
-    padding-bottom: 0.5em;
-    padding-top: 0.5em; overflow-y:scroll;">
+
                     <span class="mt-2 pt-3 text-muted d-block text-left">Uw projectaanvraag zal door twee
                         onafhankelijke commissies beoordeeld worden, <br /> namelijk door de patiëntencommissie van Kom
-                        op tegen Kanker en door een wetenschappelijkee  </span>
-</div>
+                        op tegen Kanker en door een wetenschappelijkee  op tegen Kanker en door een wetenschappelijkee  op tegen Kanker en door een wetenschappelijkee  op tegen Kanker en door een wetenschappelijkee</span>
+
                 </div>
             </div>
         </div>
@@ -302,9 +292,9 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
     <div class="d-flex align-items-end bg-gradient-dark">
         <div class="container mt-4 pt-0 pt-lg-0">
             <div class="row">
-                <div class="col-md-9 mb-0 mb-md-0">
+                <div class="col-sm-9 mb-0 mb-sm-0">
                     <p class="text-left d-flex align-items-left">
-                    <a class="dropdown-item" data-toggle="collapse" href="#collapseExamplenotyet" aria-expanded="false"
+                        <a class="dropdown-item" data-toggle="collapse" href="#collapseExamplenotyet" aria-expanded="false"
                             aria-controls="collapseExample2">
                             <i class="fas fa-chevron-circle-up"></i> show histopathology result
                         </a>
@@ -316,6 +306,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                             aria-controls="collapseExample3">
                             <i class="fas fa-chevron-circle-up"></i> show comments
                         </a>
+
                     </p>
                     <div class="collapse" id="collapseExample2">
                         <dic class="card">
