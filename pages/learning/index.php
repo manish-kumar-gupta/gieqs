@@ -278,9 +278,11 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
     padding-top: 0.5em;">
                     <span class="h6 mb-0 text-white d-block">Chapter Description Title</span>
 </div>
-                    <span class="mt-2 pt-3 text-muted d-block text-left ">Uw projectaanvraag zal door twee
+
+                    <span class="mt-2 pt-3 text-muted d-block text-left">Uw projectaanvraag zal door twee
                         onafhankelijke commissies beoordeeld worden, <br /> namelijk door de patiëntencommissie van Kom
-                        op tegen Kanker en door een wetenschappelijkee</span>
+                        op tegen Kanker en door een wetenschappelijkee  op tegen Kanker en door een wetenschappelijkee  op tegen Kanker en door een wetenschappelijkee  op tegen Kanker en door een wetenschappelijkee</span>
+
                 </div>
             </div>
         </div>
