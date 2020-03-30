@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php require '../../assets/includes/config.inc.php';?>
+<?php require 'includes/config.inc.php';?>
+
 
 <head>
 
     <?php
+
+error_reporting(E_ALL);
+
 
       //define user access level
 
@@ -13,10 +17,14 @@
 
       require BASE_URI . '/head.php';
 
+      $general = new general;
+
       ?>
 
     <!--Page title-->
     <title>GIEQs Online Endoscopy Trainer</title>
+
+    <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
 
     <style>
         .gieqsGold {
@@ -52,23 +60,41 @@
 
         <?php require BASE_URI . '/pages/learning/includes/nav.php';?>
 
-        <?php
-//set the variable to launch the registration pop-up
-
-//print_r($_GET);
-
-if (isset($_GET['signup'])) {
-
-    $signup = $_GET['signup'];
-
-}
-
-echo '<div id="signup" style="display:none;">' . $signup . '</div>';
-
-?>
+        
 
 
     </header>
+
+    <?php
+		if (isset($_GET["id"]) && is_numeric($_GET["id"])){
+			$id = $_GET["id"];
+		
+		}else{
+		
+			$id = null;
+		
+		}
+				        if ($id){
+		
+							$q = "SELECT  `id`  FROM  `video`  WHERE  `id`  = $id";
+							if ($general->returnYesNoDBQuery($q) != 1){
+                                echo '<div class="container mt-10 mb-10">';
+                                echo "Passed id does not exist in the database";
+								echo '</div>';
+								include(BASE_URI . "/footer.php");
+								exit();
+		
+							}
+						}else {
+							echo '<div class="container mt-10 mb-10">';
+							echo "This page requires the id of a video existing in the database to be passed";
+							echo '</div>';
+							include(BASE_URI . "/footer.php");
+							exit();
+							
+						}
+		
+		?>
 
     <!-- Omnisearch -->
     <div id="omnisearch" class="omnisearch">
@@ -130,7 +156,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
         <div class="d-flex align-items-end bg-gradient-dark">
             <div class="container mt-10 pt-4 pt-lg-4">
                 <div class="row">
-                    <div class="col-sm-3 mb-0 mb-sm-0">
+                    <div class="col-lg-3 mb-0 mb-lg-0">
                         <span class="h2 mb-0 text-white d-block">Video name</span>
                         <span class="text-white">Video subtitle</span>
                         <nav aria-label="breadcrumb">
@@ -151,7 +177,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                                     </div>
                                                 </div>
 </div>
-                            <div class="col-sm-6 mb-0 mb-sm-0 align-self-center">
+                            <div class="col-lg-6 mb-0 mb-lg-0 align-self-center">
                                 <div class="text-right ">
                                 
                                                         
@@ -197,7 +223,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                         
 
                     
-                    <div class="col-sm-3 mb-0 mb-sm-0 mt-2 py-0 text-center vertical-align-center">
+                    <div class="col-lg-3 mb-0 mb-lg-0 mt-2 py-0 text-center vertical-align-center">
 
                         <div class="card mb-0">
                             <div class="card-header" style="    padding-right: 0.5em;
@@ -263,27 +289,37 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 
 
 
-    <div class="d-flex align-items-end" style="padding-left:15px; padding-right:15px;">
+    <div class="d-flex align-items-end bg-gradient-dark" style="padding-left:15px; padding-right:15px;">
         <div class="container mt-2 mb-2 py-0">
             <div class="row">
-                <div class="col-sm-9 mb-0 mb-sm-0 pr-sm-3" style="margin:0px;padding:0px;overflow:hidden;min-height: 40vh;
-    width: 100%;">
-                    <iframe  id='videoChapter'
-                        src='https://player.vimeo.com/video/398791515' style="overflow:hidden;height:100%;width:100%" height="100%" width="100%" frameborder='0' allow='autoplay'
+                <div class="col-lg-9 mb-0 mb-lg-0 pr-lg-3">
+
+
+               
+            <div style="container">
+            <div class="embed-responsive embed-responsive-16by9">
+                    <iframe  id='videoChapter' class="embed-responsive-item" style="left:50%; top:50%;"
+                        src='https://player.vimeo.com/video/398791515' allow='autoplay'
                         webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        </div>
                 </div>
-                <div class="card col-sm-3 bg-dark mt-2 mb-0 mb-sm-0 text-center vertical-align-center">
+</div>
+                <div class="card col-lg-3 bg-dark mt-2 mb-0 mb-lg-0 text-center vertical-align-center">
                 <div class="card-header" style="padding-right: 0.5em;
     padding-left: 1.5em;
     padding-bottom: 0.5em;
     padding-top: 0.5em;">
                     <span class="h6 mb-0 text-white d-block">Chapter Description Title</span>
 </div>
-
+<div class="card-body" style="padding-right: 0.5em;
+    padding-left: 0.5em;
+    padding-bottom: 0.5em;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em; max-height: 40vh; overflow-y: scroll;">
                     <span class="mt-2 pt-3 text-muted d-block text-left">Uw projectaanvraag zal door twee
                         onafhankelijke commissies beoordeeld worden, <br /> namelijk door de patiëntencommissie van Kom
-                        op tegen Kanker en door een wetenschappelijkee  op tegen Kanker en door een wetenschappelijkee  op tegen Kanker en door een wetenschappelijkee  op tegen Kanker en door een wetenschappelijkee</span>
-
+                        op tegen Kanker en door een wetenschappelijkee  </span>
+</div>
                 </div>
             </div>
         </div>
@@ -292,9 +328,9 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
     <div class="d-flex align-items-end bg-gradient-dark">
         <div class="container mt-4 pt-0 pt-lg-0">
             <div class="row">
-                <div class="col-sm-9 mb-0 mb-sm-0">
+                <div class="col-lg-9 mb-0 mb-lg-0">
                     <p class="text-left d-flex align-items-left">
-                        <a class="dropdown-item" data-toggle="collapse" href="#collapseExamplenotyet" aria-expanded="false"
+                    <a class="dropdown-item" data-toggle="collapse" href="#collapseExamplenotyet" aria-expanded="false"
                             aria-controls="collapseExample2">
                             <i class="fas fa-chevron-circle-up"></i> show histopathology result
                         </a>
@@ -306,7 +342,6 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                             aria-controls="collapseExample3">
                             <i class="fas fa-chevron-circle-up"></i> show comments
                         </a>
-
                     </p>
                     <div class="collapse" id="collapseExample2">
                         <dic class="card">
@@ -419,7 +454,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
     <!-- Google maps -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBuyKngB9VC3zgY_uEB-DKL9BKYMekbeY"></script>
     <!-- Purpose JS -->
-    <script src="assets/js/purpose.js"></script>
+    <script src="../../assets/js/purpose.js"></script>
     <!-- <script src="assets/js/generaljs.js"></script> -->
     <script src="assets/js/demo.js"></script>
 

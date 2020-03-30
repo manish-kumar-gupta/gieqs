@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php require '../../assets/includes/config.inc.php';?>
+<?php require 'includes/config.inc.php';?>
+
 
 <head>
 
     <?php
+
+error_reporting(E_ALL);
+
 
       //define user access level
 
@@ -13,10 +17,14 @@
 
       require BASE_URI . '/head.php';
 
+      $general = new general;
+
       ?>
 
     <!--Page title-->
     <title>GIEQs Online Endoscopy Trainer</title>
+
+    <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
 
     <style>
         .gieqsGold {
@@ -52,23 +60,41 @@
 
         <?php require BASE_URI . '/pages/learning/includes/nav.php';?>
 
-        <?php
-//set the variable to launch the registration pop-up
-
-//print_r($_GET);
-
-if (isset($_GET['signup'])) {
-
-    $signup = $_GET['signup'];
-
-}
-
-echo '<div id="signup" style="display:none;">' . $signup . '</div>';
-
-?>
+        
 
 
     </header>
+
+    <?php
+		if (isset($_GET["id"]) && is_numeric($_GET["id"])){
+			$id = $_GET["id"];
+		
+		}else{
+		
+			$id = null;
+		
+		}
+				        if ($id){
+		
+							$q = "SELECT  `id`  FROM  `video`  WHERE  `id`  = $id";
+							if ($general->returnYesNoDBQuery($q) != 1){
+                                echo '<div class="container mt-10 mb-10">';
+                                echo "Passed id does not exist in the database";
+								echo '</div>';
+								include(BASE_URI . "/footer.php");
+								exit();
+		
+							}
+						}else {
+							echo '<div class="container mt-10 mb-10">';
+							echo "This page requires the id of a video existing in the database to be passed";
+							echo '</div>';
+							include(BASE_URI . "/footer.php");
+							exit();
+							
+						}
+		
+		?>
 
     <!-- Omnisearch -->
     <div id="omnisearch" class="omnisearch">
@@ -130,8 +156,8 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
         <div class="d-flex align-items-end bg-gradient-dark">
             <div class="container mt-10 pt-4 pt-lg-4">
                 <div class="row">
-                    <div class="col-lg-3 mb-0 mb-lg-0">
-                        <span class="h2 mb-0 text-white d-block">Video name</span>
+                    <div class="col-lg-4 mb-0 mb-lg-0">
+                        <span class="h2 mb-0 text-white d-block"><?php echo $general->getVideoTitle($id)?></span>
                         <span class="text-white">Video subtitle</span>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-links p-0 m-0">
@@ -151,7 +177,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                                     </div>
                                                 </div>
 </div>
-                            <div class="col-lg-6 mb-0 mb-lg-0 align-self-center">
+                            <div class="col-lg-5 mb-0 mb-lg-0 align-self-center">
                                 <div class="text-right ">
                                 
                                                         
@@ -167,7 +193,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                     <div class="card">
                                         <div class="card-footer">
                                             <div class="row align-items-left">
-                                                <div class="col">
+                                                <div class="col" id="tagsDisplay">
                                                     <span class="badge badge-primary mx-2">
                                                         tags 1
                                                     </span>
@@ -184,12 +210,27 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                 </div>
                                 <div class="card collapse mb-0" id="selectDropdown">
                                 <span class="h6 mb-1 pl-2 pt-2">Choose chapter</span>
-                                <select class="custom-select custom-select-sm">
+                                <?php echo $general->getChapterSelector($id);
+
+                                if ($currentUserLevel == 1){
+							
+							echo '<div class="row">';
+							echo '<div id="chapterEdit" style="text-align:right;">';
+                            echo '<span style="font-size: 1em;">';
+                            echo '<i id="editSuper" class="fas fa-edit"></i>';
+							echo '</span>';
+							echo '</div>';
+                            echo '</div>';
+                            
+                            
+                            }
+                            ?>
+                                <!-- <select class="custom-select custom-select-sm">
                                     <option selected>Open this select menu</option>
                                     <option value="1">One</option>
                                     <option value="2">Two</option>
                                     <option value="3">Three</option>
-                                </select>
+                                </select> -->
                             </div>
 
                             </div>
