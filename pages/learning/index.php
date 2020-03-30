@@ -130,7 +130,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
         <div class="d-flex align-items-end bg-gradient-dark">
             <div class="container mt-10 pt-4 pt-lg-4">
                 <div class="row">
-                    <div class="col-md-3 mb-0 mb-md-0">
+                    <div class="col-lg-3 mb-0 mb-lg-0">
                         <span class="h2 mb-0 text-white d-block">Video name</span>
                         <span class="text-white">Video subtitle</span>
                         <nav aria-label="breadcrumb">
@@ -151,7 +151,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                                     </div>
                                                 </div>
 </div>
-                            <div class="col-md-6 mb-0 mb-md-0 align-self-center">
+                            <div class="col-lg-6 mb-0 mb-lg-0 align-self-center">
                                 <div class="text-right ">
                                 
                                                         
@@ -197,7 +197,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                         
 
                     
-                    <div class="col-md-3 mb-0 mb-md-0 mt-2 py-0 text-center vertical-align-center">
+                    <div class="col-lg-3 mb-0 mb-lg-0 mt-2 py-0 text-center vertical-align-center">
 
                         <div class="card mb-0">
                             <div class="card-header" style="    padding-right: 0.5em;
@@ -263,10 +263,10 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 
 
 
-    <div class="d-flex align-items-end" style="padding-left:15px; padding-right:15px;">
+    <div class="d-flex align-items-end bg-gradient-dark" style="padding-left:15px; padding-right:15px;">
         <div class="container mt-2 mb-2 py-0">
             <div class="row">
-                <div class="col-md-9 mb-0 mb-md-0 pr-md-3">
+                <div class="col-lg-9 mb-0 mb-lg-0 pr-lg-3">
 
 
                
@@ -278,7 +278,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                         </div>
                 </div>
 </div>
-                <div class="card col-md-3 bg-dark mt-2 mb-0 mb-md-0 text-center vertical-align-center">
+                <div class="card col-lg-3 bg-dark mt-2 mb-0 mb-lg-0 text-center vertical-align-center">
                 <div class="card-header" style="padding-right: 0.5em;
     padding-left: 1.5em;
     padding-bottom: 0.5em;
@@ -289,7 +289,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
     padding-left: 0.5em;
     padding-bottom: 0.5em;
     padding-bottom: 0.5em;
-    padding-top: 0.5em; overflow-y:scroll;">
+    padding-top: 0.5em; max-height: 40vh; overflow-y: scroll;">
                     <span class="mt-2 pt-3 text-muted d-block text-left">Uw projectaanvraag zal door twee
                         onafhankelijke commissies beoordeeld worden, <br /> namelijk door de patiëntencommissie van Kom
                         op tegen Kanker en door een wetenschappelijkee  </span>
@@ -302,7 +302,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
     <div class="d-flex align-items-end bg-gradient-dark">
         <div class="container mt-4 pt-0 pt-lg-0">
             <div class="row">
-                <div class="col-md-9 mb-0 mb-md-0">
+                <div class="col-lg-9 mb-0 mb-lg-0">
                     <p class="text-left d-flex align-items-left">
                     <a class="dropdown-item" data-toggle="collapse" href="#collapseExamplenotyet" aria-expanded="false"
                             aria-controls="collapseExample2">
