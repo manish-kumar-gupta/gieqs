@@ -23,7 +23,19 @@
 
             color: rgb(238, 194, 120);
 
+
         }
+        iframe {
+  box-sizing: border-box;
+    height: 25.25vw;
+    left: 50%;
+    min-height: 100%;
+    min-width: 100%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    width: 100.77777778vh;
+}
     </style>
 
 
@@ -185,7 +197,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                         
 
                     
-                    <div class="col-md-3 mb-0 mb-md-0 mt-2 p-0 text-center vertical-align-center">
+                    <div class="col-md-3 mb-0 mb-md-0 mt-2 py-0 text-center vertical-align-center">
 
                         <div class="card mb-0">
                             <div class="card-header" style="    padding-right: 0.5em;
@@ -246,17 +258,17 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
         </div>
 
 
-    </div>
+    
 
 
 
 
-    <div class="d-flex align-items-end bg-gradient-dark">
-        <div class="container mt-2 pt-4 pt-lg-4">
+    <div class="d-flex align-items-end" style="padding-left:15px; padding-right:15px;">
+        <div class="container mt-2 mb-2 py-0">
             <div class="row" style="height:50vh; max-height:50vh;">
-                <div class="col-md-9 mb-0 mb-md-0 pr-md-3">
-                    <iframe style="height:100%; width:100%;" id='videoChapter'
-                        src='https://player.vimeo.com/video/398791515' frameborder='0' allow='autoplay'
+                <div class="col-md-9 mb-0 mb-md-0 pr-md-3" style="margin:0px;padding:0px;overflow:hidden">
+                    <iframe  id='videoChapter'
+                        src='https://player.vimeo.com/video/398791515' style="overflow:hidden;height:100%;width:100%" height="100%" width="100%" frameborder='0' allow='autoplay'
                         webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
                 <div class="card col-md-3 bg-dark mt-2 mb-0 mb-md-0 text-center vertical-align-center">
@@ -343,6 +355,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 
 
 
+    </div>
     </div>
     <!-- Modal -->
     <div class="modal fade" id="registerInterest" tabindex="-1" role="dialog" aria-labelledby="registerInterestLabel"
