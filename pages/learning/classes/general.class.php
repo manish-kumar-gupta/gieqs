@@ -362,12 +362,12 @@ class general {
 	public function returnYesNoDBQuery ($q){
 
 
-		//print_r($q);
+		print_r($q);
 
 
 		$result = $this->connection->RunQuery($q);
 
-		//print_r($result);
+		print_r($result);
 
 		//IF THERE is a database error return 2
 
