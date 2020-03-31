@@ -393,7 +393,7 @@ if ($identifierValue) {
 
     }
 
-    function submit < ? php echo $databaseName; ? > Form() {
+    function submit<?php echo $databaseName; ?>Form() {
 
         //pushDataFromFormAJAX (form, table, identifierKey, identifier, updateType)
 
@@ -675,7 +675,7 @@ if ($identifierValue) {
             var targettd = $(this).parent().parent().parent().parent().find('td').first().text();
             //console.log(targettd);
             lesionUnderEdit = targettd;
-            $('#modalMessageArea').text('Editing <?php echo $databaseName; ?> ' + lesionUnderEdit);
+            $('#modalMessageArea').text('Editing <?php echo $databaseName;?>' + lesionUnderEdit);
             $('#modal-faculty').modal('show');
             fillForm(targettd);
             edit = 1;
@@ -756,7 +756,7 @@ if ($identifierValue) {
 
                 //submitPreRegisterForm();
 
-                submit < ? php echo $databaseName; ? > Form();
+                submit<?php echo $databaseName;?>Form();
 
                 //TODO submit changes
                 //TODO reimport the array at the top
