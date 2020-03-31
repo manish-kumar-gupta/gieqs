@@ -81,20 +81,33 @@ class programmeReports
 
         }
 
+        public function returnLectures ($facultyid){
+
+            $q = "c.`timeFrom`, c.`timeTo`, c.`title` as `sessionTitle`,
+                e.`title` as `sessionItemTitle`, e.`description` as `sessionItemDescription`, e.`timeFrom` as `sessiontimeFrom`, e.`timeTo` as `sessiontimeTo`, e.`live`
+                `session` as c
+                INNER JOIN `sessionOrder` as d on c.`id` = d.`sessionid` 
+                INNER JOIN `sessionItem` as e on d.`sessionItemid` = e.`id` 
+                WHERE (e.`faculty` = $facultyid) AND (e.`live` = 0)
+                GROUP BY c.`id` 
+                ORDER BY a.`date` ASC, c.`timeFrom` ASC";
+
+        }
+
         public function generateReport($facultyid)
             {
             
                 //report card per faculty
                 $q = "Select a.`id` as `programmeid`, a.`date`, 
-                c.`timeFrom`, c.`timeTo`, c.`title` as `sessionTitle`,
-                e.`title` as `sessionItemTitle`, e.`description` as `sessionItemDescription`, e.`timeFrom` as `sessiontimeFrom`, e.`timeTo` as `sessiontimeTo`, e.`live` 
+                c.`timeFrom`, c.`timeTo`, c.`title` as `sessionTitle`, c.`description` as `sessionDescription`,
+                e.`title` as `sessionItemTitle`, e.`description` as `sessionItemDescription`, e.`timeFrom` as `sessiontimeFrom`, e.`timeTo` as `sessiontimeTo`, e.`live`, f.`facultyid` 
                 from `programme` as a 
                 INNER JOIN `programmeOrder` as b on a.`id` = b.`programmeid` 
                 INNER JOIN `session` as c on b.`sessionid` = c.`id` 
                 INNER JOIN `sessionOrder` as d on c.`id` = d.`sessionid` 
                 INNER JOIN `sessionItem` as e on d.`sessionItemid` = e.`id` 
-                INNER JOIN `sessionModerator` as f on c.`id` = f. `sessionid` 
-                WHERE (e.`faculty` = $facultyid) OR (f.`facultyid` = $facultyid)
+                INNER JOIN `sessionModerator` as f on c.`id` = f.`sessionid` 
+                WHERE ((e.`faculty` = $facultyid) OR (f.`facultyid` = $facultyid))
                 GROUP BY c.`id` 
                 ORDER BY a.`date` ASC, c.`timeFrom` ASC";
 
@@ -450,6 +463,25 @@ class programmeReports
             }
 
         }
+
+        public function LoadAllFaculty(){
+            $q = "Select * from `faculty` ORDER BY `surname` ASC";
+            //echo $q;
+                    $result = $this->connection->RunQuery($q);
+                                        $rowReturn = array();
+                                    $x = 0;
+                                    $nRows = $result->rowCount();
+                                    if ($nRows > 0){
+            
+                                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+                        $rowReturn[$x] = $row["id"];
+                        
+                    $x++;		}return $rowReturn;}
+            
+                        else{return FALSE;
+                        }
+                        
+                }
         
         
         

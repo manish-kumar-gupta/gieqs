@@ -81,6 +81,21 @@ $formv1 = new formGenerator;
             margin-bottom: 0.75rem;
         }
     }
+    @media print {
+
+body {
+  margin: 0;
+  color: #000;
+  background-color: #fff;
+  
+
+}
+header, footer, aside, nav, form, iframe, .menu, .hero, .adslot {
+  display: none;
+
+
+}
+}
     </style>
 </head>
 
