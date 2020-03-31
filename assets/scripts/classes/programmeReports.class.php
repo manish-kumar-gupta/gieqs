@@ -94,7 +94,7 @@ class programmeReports
                 INNER JOIN `sessionOrder` as d on c.`id` = d.`sessionid` 
                 INNER JOIN `sessionItem` as e on d.`sessionItemid` = e.`id` 
                 INNER JOIN `sessionModerator` as f on c.`id` = f. `sessionid` 
-                WHERE e.`faculty` = $facultyid 
+                WHERE (e.`faculty` = $facultyid) OR (f.`facultyid` = $facultyid)
                 GROUP BY c.`id` 
                 ORDER BY a.`date` ASC, c.`timeFrom` ASC";
 
