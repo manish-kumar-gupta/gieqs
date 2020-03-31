@@ -101,7 +101,7 @@ class general {
 
 		if ($result){
 
-			$html = "<br><select id='chapterSelectorVideo{$id}' class='chapterSelector' style='width:100%;'>";
+			$html = "<br><select class='custom-select custom-select-sm mt-0 chapterSelector' id='chapterSelectorVideo{$id}' data-toggle='select' >";
 
 			while($row = $result->fetch_array(MYSQLI_ASSOC)){
 
@@ -1434,6 +1434,23 @@ class general {
 		//$q = "SELECT `authors`, `formatted`, `DOI` from `references` WHERE `id` = $id";
 
 		//echo $q;
+		/*
+		<div class="col">
+                                        <span class="badge badge-primary mx-2">
+                                            ref 1
+                                        </span>
+                                        <span class="badge badge-primary mx-2">
+                                            ref 2
+                                        </span>
+                                    </div>
+                                    <div class="col text-right text-right">
+                                        <div class="actions">
+                                            
+                                            <a href="#" class="action-item"><i class="fas fa-info mr-1"></i></a>
+                                        </div>
+                                    </div>
+
+		*/
 
 		$references = '';
 		$x = 1;
@@ -1443,7 +1460,8 @@ class general {
 
 			while($row = $result->fetch_array(MYSQLI_ASSOC)){
 				$PMID = $row['PMID'];
-				$references .= '<p class="referencelist" data="' . $PMID . '" style="text-align:left;" >' . $x . ' - ';
+				
+				$references .= '<span class="referencelist" data="' . $PMID . '" style="text-align:left;" >' . $x . ' - ';
 				$references .= $row['authors'];
 				$references .= '. ';
 				$references .= $row['formatted'];
@@ -1455,7 +1473,8 @@ class general {
 					$references .= $row['DOI'];
 					$references .= '.';
 				}
-				$references .= '</p>';
+				$references .= '</span>';
+				
 				
 				$x++;
 			}

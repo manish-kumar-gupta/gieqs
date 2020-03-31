@@ -192,7 +192,7 @@ error_reporting(E_ALL);
                                 <div class="collapse" id="collapseExample">
                                     <div class="card">
                                         <div class="card-footer">
-                                            <div class="row align-items-left">
+                                            <div id="tagsDisplay" class="row align-items-left">
                                                 <div class="col">
                                                     <span class="badge badge-primary mx-2">
                                                         tags 1
@@ -526,65 +526,34 @@ error_reporting(E_ALL);
 
         $(document).ready(function () {
 
-            if (signup == '2456') {
+            $('#editSuper').on('click', function () {
 
-                $('#registerInterest').modal('show');
+                //todo
 
-            }
+                //to allow the superuser to edit the identity on the page
 
-            $(document).on('click', '#submitPreRegister', function () {
+                //get the tag name
 
-                event.preventDefault();
-                $('#pre-register').submit();
+                var searchTerm = $('#id').text();
 
-            })
+                var width = $(document).width();
 
-            $("#pre-register").validate({
+                var height = $(document).height();
 
-                invalidHandler: function (event, validator) {
-                    var errors = validator.numberOfInvalids();
-                    console.log("there were " + errors + " errors");
-                    if (errors) {
-                        var message = errors == 1 ?
-                            "1 field contains errors. It has been highlighted" :
-                            +errors + " fields contain errors. They have been highlighted";
+                //console.log(searchTerm);
 
+                //console.log(width);
+                //console.log(height);
 
-                        $('#error').text(message);
-                        //$('div.error span').addClass('form-text text-danger');
-                        //$('#errorWrapper').show();
-
-                        $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function () {
-                            $("#errorWrapper").slideUp(500);
-                        });
-                    } else {
-                        $('#errorWrapper').hide();
-                    }
-                },
-                rules: {
-                    name: {
-                        required: true,
-                    },
-                    email: {
-                        required: true,
-                        email: true,
-                    },
-
-                },
-                submitHandler: function (form) {
-
-                    submitPreRegisterForm();
-
-                    //console.log("submitted form");
-
-
-
-                }
+                PopupCenter(siteRoot + '/scripts/forms/videoChapterForm.php?id=' + searchTerm, 'Editing imageSet', ((width / 5) * 4), ((height / 5) * 4));
 
 
 
 
-            });
+
+                })
+            
+            
 
 
         })

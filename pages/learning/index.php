@@ -25,6 +25,7 @@ error_reporting(E_ALL);
     <title>GIEQs Online Endoscopy Trainer</title>
 
     <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
+    
 
     <style>
         .gieqsGold {
@@ -43,6 +44,11 @@ error_reporting(E_ALL);
     position: absolute;
     top: 50%;
     width: 100.77777778vh;
+}
+.cursor-pointer {
+
+    cursor: pointer;
+
 }
     </style>
 
@@ -92,9 +98,24 @@ error_reporting(E_ALL);
 							include(BASE_URI . "/footer.php");
 							exit();
 							
-						}
+                        }
+                        
+                        
 		
-		?>
+        ?>
+        
+        <!-- load all video data -->
+
+        <div id="vimeoid" style="display:none;"><?php echo $general->getVimeoID($id);?></div>
+
+					<div id="videoChapterData" style="display:none;"><?php echo $general->getVideoAndChapterDatav1($id);?>
+					</div>
+
+					<div id="videoChapterTagData" style="display:none;"><?php echo $general->getVideoAndChapterData($id);?>
+					</div>
+
+					<div id="videoData" style="display:none;"><?php echo $general->getVideoData($id);?></div>
+
 
     <!-- Omnisearch -->
     <div id="omnisearch" class="omnisearch">
@@ -161,9 +182,9 @@ error_reporting(E_ALL);
                         <span class="text-white">Video subtitle</span>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-links p-0 m-0">
-                                <li class="breadcrumb-item"><a href="#">Video</a></li>
-                                <li class="breadcrumb-item"><a href="#">Library</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Data</li>
+                                <li class="breadcrumb-item"><a href="#">Videos</a></li>
+                                <li class="breadcrumb-item"><a href="#">Referring Page</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Referring tag</li>
                             </ol>
                         </nav>
                         <div class="col text-left">
@@ -208,36 +229,22 @@ error_reporting(E_ALL);
 
 
                                 </div>
-                                <div class="card collapse mb-0" id="selectDropdown">
-                                <span class="h6 mb-1 pl-2 pt-2">Choose chapter</span>
-                                <?php echo $general->getChapterSelector($id);
-
-                                if ($currentUserLevel == 1){
-							
-							echo '<div class="row">';
-							echo '<div id="chapterEdit" style="text-align:right;">';
-                            echo '<span style="font-size: 1em;">';
-                            echo '<i id="editSuper" class="fas fa-edit"></i>';
-							echo '</span>';
-							echo '</div>';
-                            echo '</div>';
-                            
-                            
-                            }
-                            ?>
-                                <!-- <select class="custom-select custom-select-sm">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select> -->
+                                <div class="collapse card mb-0 p-2 flex-row" id="selectDropdown">
+                            <div class="container">
+                                <div class="row">
+                                <span class="mb-0 pl-2 pt-2 flex-grow-1">Choose chapter</span>
+                                <button type="button" class="close text-right" data-toggle="collapse" href="#selectDropdown" aria-label="Close">
+                              <span>&times;</span>
+                            </button>
+                    </div>
+                    <div class="row">
+                                <?php
+                                if ($currentUserLevel == 1){}?>
+                                <?php echo $general->getChapterSelector($id);?>
+                    </div>
+                    </div>
                             </div>
-
-                            </div>
-
-                        
-
-                    
+                    </div>
                     <div class="col-lg-3 mb-0 mb-lg-0 mt-2 py-0 text-center vertical-align-center">
 
                         <div class="card mb-0">
@@ -251,10 +258,10 @@ error_reporting(E_ALL);
                                     </div>
                                     <div class="text-right">
                                         <div class="actions">
-                                            <a href="#" class="action-item"><i class="fas fa-sync"></i></a>
+                                            <a href="#" class="action-item"><i class="fas fa-sync" data-toggle="tooltip" data-placement="bottom" title="restart video"></i></a>
 
                                             <a class="action-item" data-toggle="collapse" href="#selectDropdown"><i
-                                                    class="fas fa-ellipsis-h"></i></a>
+                                                    class="fas fa-ellipsis-h" data-toggle="tooltip" data-placement="bottom" title="show chapters"></i></a>
 
                                         </div>
                                     </div>
@@ -265,7 +272,7 @@ error_reporting(E_ALL);
                             <div class="list-group">
 
 
-                                <a href="#" class="list-group-item list-group-item-action p-0">
+                                <a class="list-group-item p-0">
 
                                     <div class="d-flex align-items-center justify-content-between">
 
@@ -273,8 +280,8 @@ error_reporting(E_ALL);
                                             <h6 class="progress-text mb-1 text-sm d-block text-limit text-left">Chapter
                                                 name
                                             </h6>
-                                            <div class="progress progress-xs mb-0">
-                                                <div class="progress-bar bg-warning" role="progressbar"
+                                            <div id="myProgress" class="progress progress-xs mb-0">
+                                                <div id="myBar" class="progress-bar bg-warning" role="progressbar"
                                                     style="width: 60%;" aria-valuenow="60" aria-valuemin="0"
                                                     aria-valuemax="100"></div>
                                             </div>
@@ -282,6 +289,19 @@ error_reporting(E_ALL);
                                                 class="d-flex justify-content-between text-xs text-muted text-right mt-1">
                                                 <div>
                                                     <span class="font-weight-bold text-warning">xx:xx / yy:yy</span>
+
+                                                </div>
+                                                <div>
+                                                    <i id='video-back' class="fas fa-step-backward cursor-pointer"></i>
+                                                </div>
+                                                <div>
+                                                    <i id='video-start-pause' class="fas fa-play cursor-pointer"></i>
+                                                </div>
+                                                <div>
+                                                    <i id='video-stop' class="fas fa-stop cursor-pointer"></i>
+                                              </div>
+                                                <div>
+                                                <i id='video-forward' class="fas fa-step-forward cursor-pointer"></i>
                                                 </div>
                                                 <div>
                                                     x / y
@@ -312,7 +332,7 @@ error_reporting(E_ALL);
 
                
             <div style="container">
-            <div class="embed-responsive embed-responsive-16by9">
+            <div id="videoDisplay" class="embed-responsive embed-responsive-16by9">
                     <iframe  id='videoChapter' class="embed-responsive-item" style="left:50%; top:50%;"
                         src='https://player.vimeo.com/video/398791515' allow='autoplay'
                         webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
@@ -321,7 +341,7 @@ error_reporting(E_ALL);
 </div>
                 <div class="card col-lg-3 bg-dark mt-2 mb-0 mb-lg-0 text-center vertical-align-center">
                 <div class="card-header" style="padding-right: 0.5em;
-    padding-left: 1.5em;
+    padding-left: 0.5em;
     padding-bottom: 0.5em;
     padding-top: 0.5em;">
                     <span class="h6 mb-0 text-white d-block">Chapter Description Title</span>
@@ -359,25 +379,33 @@ error_reporting(E_ALL);
                         </a>
                     </p>
                     <div class="collapse" id="collapseExample2">
-                        <dic class="card">
+                        <div class="card">
                             <div class="card-footer">
-                                <div class="row align-items-left">
-                                    <div class="col">
+                                <div class="flex-row">
+                                    
+                                    <div>
+                                        <?php echo $general->getFullReferenceListVideo($id);?>
+                                        <!-- 
                                         <span class="badge badge-primary mx-2">
                                             ref 1
                                         </span>
                                         <span class="badge badge-primary mx-2">
                                             ref 2
                                         </span>
+                                    
+                                    
+                                    -->
                                     </div>
-                                    <div class="col text-right text-right">
+                                    <div class="text-right text-right">
                                         <div class="actions">
-                                            
+
                                             <a href="#" class="action-item"><i class="fas fa-info mr-1"></i></a>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
+                        </div>
                     </div>
                     <div class="collapse" id="collapseExample3">
                         <dic class="card">
@@ -472,8 +500,11 @@ error_reporting(E_ALL);
     <script src="../../assets/js/purpose.js"></script>
     <!-- <script src="assets/js/generaljs.js"></script> -->
     <script src="assets/js/demo.js"></script>
+    <script>
+    var videoPassed = $("#id").text();
+                    </script>
 
-
+    <script src=<?php echo BASE_URL . "/pages/learning/includes/endowiki-player.js"?>></script>
     <script>
         var signup = $('#signup').text();
 
