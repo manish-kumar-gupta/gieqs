@@ -1239,13 +1239,17 @@ $(document).ready(function () {
 
 				$('#myBar').css('width', chapterPercent + '%');
 
-				$('#myBar').text(Math.round(chapterPercent) * 1 + '%');
+				//$('#myBar').text(Math.round(chapterPercent) * 1 + '%');
 
 				chapterLength = chapterTime;
 
 				chapterPosition = currentTime - val.timeFrom;
 
 				chapterStartTime = val.timeFrom;
+
+				$('#currentChapterTime').text(Math.round(chapterPercent) * 1 + '%');
+
+				//$('#totalChapterTime').text(Math.round(chapterTime));
 
 				//console.log(chapterStartTime);
 

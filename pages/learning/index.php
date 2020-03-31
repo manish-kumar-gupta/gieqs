@@ -287,10 +287,7 @@ error_reporting(E_ALL);
                                             </div>
                                             <div
                                                 class="d-flex justify-content-between text-xs text-muted text-right mt-1">
-                                                <div>
-                                                    <span class="font-weight-bold text-warning">xx:xx / yy:yy</span>
-
-                                                </div>
+                                                
                                                 <div>
                                                     <i id='video-back' class="fas fa-step-backward cursor-pointer"></i>
                                                 </div>
@@ -304,6 +301,17 @@ error_reporting(E_ALL);
                                                 <i id='video-forward' class="fas fa-step-forward cursor-pointer"></i>
                                                 </div>
                                                 <div>
+                                                    <span id='currentChapterTime'></span>
+
+                                                </div>
+                                            
+                                                
+                                               <!--  <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                                    <label class="custom-control-label" for="customCheck1"></label>
+                                                </div> -->
+                                                
+                                                <div class="font-weight-bold text-warning">
                                                     x / y
                                                 </div>
                                             </div>
