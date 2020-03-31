@@ -68,7 +68,7 @@ if ($local) {
     
     function class_loader($class) {
 		
-        require($_SERVER['DOCUMENT_ROOT'].'/assets/scripts/classes/'.$class.'.class.php');
+        require($_SERVER['DOCUMENT_ROOT'].'/pages/learning/classes/'.$class.'.class.php');
 		 	
 		 	
 	}
