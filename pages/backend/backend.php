@@ -183,7 +183,7 @@ $formv1 = new formGenerator;
                     </div>
                     <div class="pl-4">
                       <span class="text-white">Current sponsorship</span>
-                      <span class="d-block h5 text-white mr-2 mb-1">&euro; 135,750.00</span>
+                      <span class="d-block h5 text-white mr-2 mb-1">&euro; 143,250.00</span>
                       </div>
                       </div>
                       <div class="d-flex p-2">
@@ -199,6 +199,7 @@ $formv1 = new formGenerator;
                       <ul class="p-0 m-0">Prion (&euro; 3,000)</ul>
                       <ul class="p-0 m-0">Medtronic (&euro; 15,000)</ul>
                       <ul class="p-0 m-0">Norgine (&euro; 7,500)</ul>
+                      <ul class="p-0 m-0">Takeda (&euro; 7,500)</ul>
   </div>
   </div>
   </div>

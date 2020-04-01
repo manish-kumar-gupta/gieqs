@@ -228,8 +228,10 @@ background-color: rgb(238, 194, 120);
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
-                            <span class="sessionTitle h5">Endoscopy State of the Art</span><br />
-                            <span class="sessionSubtitle">Newest and most important techniques in 2020</span>
+                        <span class="sessionTitle h5">Best practice endoscopy nursing - Preparation</span><br />
+                            <span class="sessionSubtitle">Preparation is the key - Routine, complex and surviving on call
+    </span>
+                            
                         </div>
 
                         
@@ -245,9 +247,9 @@ background-color: rgb(238, 194, 120);
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
-                        <span class="sessionTitle h5">Best practice endoscopy nursing - Preparation</span><br />
-                            <span class="sessionSubtitle">Preparation is the key - Routine, complex and surviving on call
-    </span>
+                        
+    <span class="sessionTitle h5">GI bleeding overview</span><br />
+                            <span class="sessionSubtitle">Techniques, how to prepare best for on call bleeding</span>
                         </div>
 
                         
@@ -371,12 +373,13 @@ background-color: rgb(238, 194, 120);
                     <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
 
                         <div class="col-3 p-1 pb-3 pt-3 border-right">
-                            <span class="tiny" style="color: rgb(238, 194, 120);">1214-1245</span>
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1215-1245</span>
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
-                            <span class="sessionTitle h5">GI bleeding overview</span><br />
-                            <span class="sessionSubtitle">Techniques, how to prepare best for on call bleeding</span>
+                            <!--TODO-->
+                            <span class="sessionTitle h5">Endoscopy State of the Art</span><br />
+                            <span class="sessionSubtitle">Newest and most important techniques in 2020</span>
                         </div>
 
                         
@@ -465,8 +468,10 @@ background-color: rgb(238, 194, 120);
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
-                            <span class="sessionTitle h5">Endoscopy State of the Art</span><br />
-                            <span class="sessionSubtitle">Nieuwste en belangrijkste technieken in 2020</span>
+                        <span class="sessionTitle h5">Best practice endoscopy nursing - voorbereiding</span><br />
+                            <span class="sessionSubtitle">Voorbereiding is alles - Routine, complex en het overleven van de wacht
+    </span>
+                           
                         </div>
 
                         
@@ -482,9 +487,10 @@ background-color: rgb(238, 194, 120);
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
-                        <span class="sessionTitle h5">Best practice endoscopy nursing - voorbereiding</span><br />
-                            <span class="sessionSubtitle">Voorbereiding is alles - Routine, complex en het overleven van de wacht
-    </span>
+                        <span class="sessionTitle h5">Overzicht gastro-intestinale bloedingen</span><br />
+                            <span class="sessionSubtitle">Technieken, hoe voor te bereiden tijdens de wacht op een bloeding</span>
+                        
+                        
                         </div>
 
                         
@@ -608,12 +614,13 @@ background-color: rgb(238, 194, 120);
                     <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
 
                         <div class="col-3 p-1 pb-3 pt-3 border-right">
-                            <span class="tiny" style="color: rgb(238, 194, 120);">1214-1245</span>
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1215-1245</span>
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
-                            <span class="sessionTitle h5">Overzicht gastro-intestinale bloedingen</span><br />
-                            <span class="sessionSubtitle">Technieken, hoe voor te bereiden tijdens de wacht op een bloeding</span>
+                        <span class="sessionTitle h5">Endoscopy State of the Art</span><br />
+                            <span class="sessionSubtitle">Nieuwste en belangrijkste technieken in 2020</span>
+                            
                         </div>
 
                         
