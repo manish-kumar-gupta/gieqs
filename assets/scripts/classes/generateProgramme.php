@@ -223,7 +223,7 @@
 
                                     
                                     <div class="col-12 p-2 pb-3 pt-3">
-                                        <span class="h5" style="color: rgb(238, 194, 120);">1930 - Conference Dinner | Monasterium Poortackere, Ghent</span>
+                                        <span class="h5" style="color: rgb(238, 194, 120);">1930 - Conference Dinner <!-- | Monasterium Poortackere, Ghent --></span>
                                     </div>
 
                                 </div>
