@@ -171,7 +171,7 @@ $emailArray = $emailList->getAllEmails();
 
 //print_r($emailArray);
 
-Mailer(array(0 => 'djtate@gmail.com', 1=> 'david.tate@uzgent.be'), $subject, '/assets/email/MarchInlinev2.html');
+Mailer(array(0 => 'djtate@gmail.com', 1=> 'david.tate@uzgent.be'), $subject, '/assets/email/teaser_april.html');
 
 
 
