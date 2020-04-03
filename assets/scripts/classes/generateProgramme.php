@@ -99,8 +99,10 @@
                         <!--container-->
 
                         <div class="row text-left">
-                            <div class="col-12 p-1 pb-3 pt-3">
-                                <span class="h5"><?php echo $programmeDate->format('l d M Y');?></span>
+                            <div class="d-flex col-lg-12 p-1 pb-3 pt-3">
+                                <span class="h5 mr-auto"><?php echo $programmeDate->format('l d M Y');?></span>
+                                
+                                <span class="ml-3 align-self-baseline" style="font-size:0.75em">click on a program item to see session details</span>
 
                             </div>
                         </div>
@@ -723,8 +725,10 @@
                         <!--container-->
 
                         <div class="row text-left">
-                            <div class="col-12 p-1 pb-3 pt-3">
-                                <span class="h5"><?php echo $programmeDate->format('l d M Y');?></span>
+                        <div class="d-flex col-lg-12 p-1 pb-3 pt-3">
+                                <span class="h5 mr-auto"><?php echo $programmeDate->format('l d M Y');?></span>
+                                
+                                <span class="ml-3 align-self-baseline" style="font-size:0.75em">click on a program item to see session details</span>
 
                             </div>
                         </div>
