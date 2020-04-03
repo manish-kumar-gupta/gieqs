@@ -11,6 +11,8 @@ RewriteRule ^sponsors$ pages/program/sponsors.php
 RewriteRule ^registration$ pages/program/registration.php
 RewriteRule ^login$ pages/authentication/login.php
 RewriteRule ^logmein$ pages/authentication/login.php
+RewriteRule ^proposedprogram$ pages/program/programv2.php
+
 
 RewriteCond %{SERVER_PORT} 80
 RewriteCond %{HTTP_HOST} ^(www\.)?gieqs\.com
