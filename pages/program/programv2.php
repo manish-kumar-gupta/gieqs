@@ -142,7 +142,7 @@ background-color: rgb(238, 194, 120);
 
                     <div class="col-12 p-3 pb-5">
                         <span class="h1" style="color: rgb(238, 194, 120);">Ghent International Endoscopy Quality
-                            Symposium <br /> Edition I. <br/>Draft Programme</span>
+                            Symposium <br /> Edition I. <br/>Scientific Programme</span>
                     </div>
 
                 </div>

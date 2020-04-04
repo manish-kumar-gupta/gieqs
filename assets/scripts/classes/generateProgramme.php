@@ -688,10 +688,16 @@
 
                         } //close times foreach
 
+                        
+
                         //for [0] get first, then check [matches] if not do not add to counter and insert blank column
                         //if yes add another column
 
                         ?>
+
+<div class="px-5 pt-2 mt-2 mb-2 pb-2 text-center">
+                                                <p class="text-muted text-sm">Programme subject to change without notice.</p>
+                                            </div>
 
 </div> <!--CLOSE CONTAINER DIV-->
 
@@ -1313,6 +1319,10 @@
                         //if yes add another column
 
                         ?>
+
+<div class="px-5 pt-2 mt-2 mb-2 pb-2 text-center">
+                                                <p class="text-muted text-sm">Programme subject to change without notice.</p>
+                                            </div>
 
 </div> <!--CLOSE CONTAINER DIV-->
 

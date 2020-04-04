@@ -137,7 +137,7 @@ width: 100%;
 
                     <div class="col-12 p-3 pb-2">
                         <span class="h1" style="color: rgb(238, 194, 120);">GIEQs would like to thank our sponsors</span><br/><br/>
-                        <span class="h4">Our mission to improve everyday endoscopy without their financial support</span>
+                        <span class="h4">Our mission to improve everyday endoscopy would not be possible without their financial support</span>
                         <span class=""><br/>Sponsors have given funding as a contribution to medical education without input or influence over the medical or nursing programme.</span>
                             
                     </div>
@@ -150,12 +150,12 @@ width: 100%;
 
         <div id="clients-clients-1">
           <section class="clients">
-            <div class="container mb-4">
+            <div class="container mb-4 bg-white">
                 
                 <!--Gold Sponsors-->
                 <div class="row text-left">
                     <div class="col-12 p-3 pb-2">
-                        <span class="h2" style="color: rgb(238, 194, 120);">Gold Sponsors</span><br />
+                        <span class="h2" style="color: black;">Gold Sponsors</span><br />
                     </div>
                 </div>
 
@@ -175,16 +175,16 @@ width: 100%;
                 <!--Silver Sponsors-->
                 <div class="row text-left">
                     <div class="col-12 p-3 pb-2">
-                        <span class="h2" style="color: rgb(238, 194, 120);">Silver Sponsors</span><br />
+                        <span class="h2" style="color: black;">Silver Sponsors</span><br />
                     </div>
                 </div>
 
                 <div class="client-group row justify-content-center mb-4">
                     <div class="col-lg-3 col-md-4 col-6 py-3">
-                        
+                    <img class="logo" alt="Fujinon" src="<?php echo BASE_URL . '/assets/img/icons/fujifilm.png';?>">
                     </div>
                     <div class="col-lg-3 col-md-4 col-6 py-3">
-
+                    <img class="logo" alt="Onis" src="<?php echo BASE_URL . '/assets/img/icons/onis.png';?>">
                     </div>
                     <div class="col-lg-3 col-md-4 col-6 py-3">
 
@@ -198,7 +198,7 @@ width: 100%;
                 <!--Bronze Sponsors-->
                 <div class="row text-left">
                     <div class="col-12 p-3 pb-2">
-                        <span class="h2" style="color: rgb(238, 194, 120);">Bronze Sponsors</span><br />
+                        <span class="h2" style="color: black;">Bronze Sponsors</span><br />
                     </div>
                 </div>
 
@@ -220,14 +220,14 @@ width: 100%;
                     </div>
                     <div class="col-lg-2 col-md-4 col-4 py-1">
 
-                </div>
+                    </div>
 
                 </div>
 
                 <!--Other Sponsors-->
                 <div class="row text-left">
                     <div class="col-12 p-3 pb-2 mb-4">
-                        <span class="h2" style="color: rgb(238, 194, 120);">Additional Sponsors</span><br />
+                        <span class="h2" style="color: black;">Additional Sponsors</span><br />
                     </div>
                 </div>
 
@@ -253,7 +253,38 @@ width: 100%;
                     </div>
                     <div class="col-lg-1 col-md-4 col-4 py-1">
 
+                    </div>
+
                 </div>
+
+                <!--Society Endorsements-->
+                <div class="row text-left mt-4">
+                    <div class="col-12 p-3 pb-2 mb-1">
+                        <span class="h2" style="color: black;">Endorsing societies</span><br />
+                    </div>
+                </div>
+
+                <div class="client-group row justify-content-left">
+                <div class="col-lg-2 col-md-4 col-4 py-1">
+                        <img class="logo" alt="ESGE" src="<?php echo BASE_URL . '/assets/img/icons/esge.png';?>">
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-6 py-3">
+                    
+
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-4 py-1">
+                    
+
+                    </div>
+                    <div class="col-lg-1 col-md-4 col-4 py-1">
+
+                    </div>
+                    <div class="col-lg-1 col-md-4 col-4 py-1">
+
+                    </div>
+                    <div class="col-lg-1 col-md-4 col-4 py-1">
+
+                    </div>
 
                 </div>
 
