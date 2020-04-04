@@ -3,7 +3,15 @@
     xmlns:o="urn:schemas-microsoft-com:office:office">
 
 <head>
-   
+    <!-- NAME:ANNOUNCE -->
+    <!--[if gte mso 15]>
+        <xml>
+            <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+            </o:OfficeDocumentSettings>
+        </xml>
+        <![endif]-->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width  initial-scale=1">
@@ -461,25 +469,25 @@
 </head>
 
 <body style="height:100%;margin:0;padding:0;width:100%;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-    <style type="text/css">
-        div.preheader {
-            display: none !important;
-        }
-    </style>
-    <div class="preheader" style="font-size: 1px; display: none !important;">Registration open now! Visit Ghent in October 2020 for a new kind of endoscopy meeting.</div>
+    <!--
+-->
     <center>
         <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable"
             style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;height:100%;margin:0;padding:0;width:100%;">
             <tr>
                 <td align="center" valign="top" id="bodyCell"
                     style="mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;height:100%;margin:0;padding:0;width:100%;">
-                    
+                    <!-- BEGIN TEMPLATE // -->
                     <table border="0" cellpadding="0" cellspacing="0" width="100%"
                         style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
                         <tr>
                             <td align="center" valign="top" id="templateHeader" data-template-container=""
                                 style="background:#162e4d none no-repeat center/cover;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;background-color:#162e4d;background-image:none;background-repeat:no-repeat;background-position:center;background-size:cover;border-top:0;border-bottom:0;padding-top:24px;padding-bottom:24px;">
-                               
+                                <!--[if (gte mso 9)|(IE)]>
+                                    <table align="center" border="0" cellspacing="0" cellpadding="0" width="600" style="width:600px;">
+                                    <tr>
+                                    <td align="center" valign="top" width="600" style="width:600px;">
+                                    <![endif]-->
 
 
                                 <!--GIEQS HEADER-->
@@ -584,7 +592,23 @@
                                                                 </tbody>
                                                             </table>
 
-                                                            
+                                                            <table align="left" border="0" cellpadding="0"
+                                                                cellspacing="0"
+                                                                style="max-width:100%;min-width:100%;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;"
+                                                                width="100%" class="mcnTextContentContainer">
+                                                                <tbody>
+                                                                    <tr>
+
+                                                                        <td valign="top" class="mcnTextContent"
+                                                                            style="padding-top:0;padding-right:18px;padding-bottom:9px;padding-left:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;word-break:break-word;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
+
+                                                                            <h3
+                                                                                style="display:block;margin:0;padding: 0;color:#444444;font-family:Helvetica;font-size:22px;font-style:normal;font-weight:bold;line-height:150%;letter-spacing:normal;text-align:left;">
+                                                                                Dear Endoscopists and Endoscopy Nurses,</h3>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
 
                                                             <table border="0" cellpadding="0" cellspacing="0" width="100%"
                                                 class="mcnImageGroupBlock"
@@ -603,12 +627,12 @@
                                                                 <tbody>
                                                                     <tr>
                                                                         <td class="mcnImageGroupContent" valign="top"
-                                                                            style="padding-left:9px;padding-top:0;padding-bottom:40px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;text-align:center;">
+                                                                            style="padding-left:9px;padding-top:0;padding-bottom:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;text-align:center;">
 
 
                                                                             <a href="https://youtu.be/I9Y8gC6wtKg"
                                                                                 target="_blank"><img alt=""
-                                                                                    src="http://www.gieqs.com/assets/img/backgrounds/ChromoPolypTransBack.png"
+                                                                                    src="http://www.gieqs.com/assets/img/polyps/watchChromo.png"
                                                                                     width="250"
                                                                                     style="max-width:250px;padding-bottom:0;border:0;height:auto;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;vertical-align:bottom;text-align:center;"
                                                                                     class="mcnImage"></a>
@@ -626,24 +650,6 @@
 
                                                 </tbody>
                                             </table>
-
-                                            <table align="left" border="0" cellpadding="0"
-                                                                cellspacing="0"
-                                                                style="max-width:100%;min-width:100%;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;"
-                                                                width="100%" class="mcnTextContentContainer">
-                                                                <tbody>
-                                                                    <tr>
-
-                                                                        <td valign="top" class="mcnTextContent"
-                                                                            style="padding-top:0;padding-right:18px;padding-bottom:9px;padding-left:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;word-break:break-word;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-
-                                                                            <h3
-                                                                                style="display:block;margin:0;padding: 0;color:#444444;font-family:Helvetica;font-size:22px;font-style:normal;font-weight:bold;line-height:150%;letter-spacing:normal;text-align:left;">
-                                                                                Dear Endoscopists and Endoscopy Nurses,</h3>
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
 
                                                             <table align="left" border="0" cellpadding="0"
                                                                 cellspacing="0"
@@ -666,44 +672,10 @@
                     endoscopy. Better.</p>
                                                                             <p
                                                                                 style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                We have been working hard on a novel and fundamental programme, relevant to all endoscopists - whether in training or having practised for 20 years. We are pleased to announce it is ready for you to view.</p>
-
-
-                                                                                <!--GIEQS BUTTON -->
-
-                                                            <table border="0" cellpadding="0" cellspacing="0"
-                                                            width="100%" class="mcnButtonBlock"
-                                                            style="min-width:100%;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                            <tbody class="mcnButtonBlockOuter">
-                                                                <tr>
-                                                                    <td style="padding-top:25px;padding-right:18px;padding-bottom:18px;padding-left:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;"
-                                                                        valign="top" align="center"
-                                                                        class="mcnButtonBlockInner">
-                                                                        <table border="0" cellpadding="0"
-                                                                            cellspacing="0"
-                                                                            class="mcnButtonContentContainer"
-                                                                            style="border-collapse:separate !important;border-radius:3px;background-color:#1b385d;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust: 100%;">
-                                                                            <tbody>
-                                                                                <tr>
-                                                                                    <td align="center"
-                                                                                        valign="middle"
-                                                                                        class="mcnButtonContent"
-                                                                                        style="font-family:Helvetica;font-size:18px;padding:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                                                        <a class="mcnButton "
-                                                                                            title="Find Out More"
-                                                                                            href="https://www.gieqs.com/proposedprogram"
-                                                                                            target="_blank"
-                                                                                            style="font-weight:bold;letter-spacing:-0.5px;line-height:100%;text-align:center;text-decoration:none;color:#e3ebf6;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;display:block;">view the programme
-                                                                                            </a>
-                                                                                    </td>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-
+                                                                                We have been working hard on a novel and fundamental programme, relevant to all endoscopists - whether in training or having practised for 20 years. We are pleased to announce it is ready and you can view it <a href="https://www.gieqs.com/proposedprogram"
+                                                                                    class="mc-template-link"
+                                                                                    target="parent"
+                                                                                    style="mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#007C89;font-weight:normal;text-decoration:underline;">here</a>.</p>
                                                                             <p
                                                                                 style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
                                                                                 Practical
@@ -718,7 +690,7 @@
                                                                                     Prof Steven J Heitman (Calgary, Canada)</li>
                                                                                 <li
                                                                                     style="mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                                                    Prof Raf Bisschops (Leuven, Belgium)</li>
+                                                                                    Prof Raf Biscchops (Leuven, Belgium)</li>
 
                                                                                     <li
                                                                                     style="mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
@@ -811,7 +783,7 @@
                                                                 <tbody class="mcnDividerBlockOuter">
                                                                     <tr>
                                                                         <td class="mcnDividerBlockInner"
-                                                                            style="min-width:100%;padding:30px 30px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
+                                                                            style="min-width:100%;padding:60px 30px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
                                                                             <table class="mcnDividerContent" border="0"
                                                                                 cellpadding="0" cellspacing="0"
                                                                                 width="100%"
@@ -962,7 +934,7 @@
                                                                 <tbody>
                                                                     <tr>
                                                                         <td class="mcnImageGroupContent" valign="top"
-                                                                            style="padding-left:9px;padding-top:30px;padding-bottom:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;text-align:center;">
+                                                                            style="padding-left:9px;padding-top:0;padding-bottom:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;text-align:center;">
 
 
                                                                             <a href="https://www.youtube.com/watch?v=zRy1xwGsagc&t=27s"
@@ -1439,175 +1411,6 @@
                                                     </tr>
                                                 </tbody>
                                             </table>
-
-
-                                            <!--UZG container-->
-
-                                            <table border="0" cellpadding="0" cellspacing="0" width="100%"
-                                                class="mcnFollowBlock"
-                                                style="min-width:100%;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                <tbody class="mcnFollowBlockOuter">
-                                                    <tr>
-                                                        <td align="center" valign="top"
-                                                            style="padding:9px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;"
-                                                            class="mcnFollowBlockInner">
-                                                            <table border="0" cellpadding="0" cellspacing="0"
-                                                                width="100%" class="mcnFollowContentContainer"
-                                                                style="min-width:100%;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td align="center"
-                                                                            style="padding-left:9px;padding-right:9px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                                            <table border="0" cellpadding="0"
-                                                                                cellspacing="0" width="100%"
-                                                                                style="min-width:100%;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;"
-                                                                                class="mcnFollowContent">
-                                                                                <tbody>
-                                                                                    <tr>
-                                                                                        <td align="center" valign="top"
-                                                                                            style="padding-top:9px;padding-right:9px;padding-left:9px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                                                            <table align="center"
-                                                                                                border="0"
-                                                                                                cellpadding="0"
-                                                                                                cellspacing="0"
-                                                                                                style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                                                                <tbody>
-                                                                                                    <tr>
-                                                                                                        <td align="center"
-                                                                                                            valign="top"
-                                                                                                            style="mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                                                                            <!--[if mso]>
-                                    <table align="center" border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                    <![endif]-->
-
-                                                                                                            <!--[if mso]>
-                                        <td align="center" valign="top">
-                                        <![endif]-->
-                                                                                                            <!--UZG logo-->
-
-                                                                                                            <table
-                                                                                                                align="left"
-                                                                                                                border="0"
-                                                                                                                cellpadding="0"
-                                                                                                                cellspacing="0"
-                                                                                                                style="display:inline;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                                                                                <tbody>
-                                                                                                                    <tr>
-                                                                                                                        <td valign="top"
-                                                                                                                            style="padding-right:10px;padding-bottom:9px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;"
-                                                                                                                            class="mcnFollowContentItemContainer">
-                                                                                                                            <table
-                                                                                                                                border="0"
-                                                                                                                                cellpadding="0"
-                                                                                                                                cellspacing="0"
-                                                                                                                                width="100%"
-                                                                                                                                class="mcnFollowContentItem"
-                                                                                                                                style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                                                                                                <tbody>
-                                                                                                                                    <tr>
-                                                                                                                                        <td align="left"
-                                                                                                                                            valign="middle"
-                                                                                                                                            style="padding-top:5px;padding-right:10px;padding-bottom:5px;padding-left:9px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                                                                                                            <table
-                                                                                                                                                align="left"
-                                                                                                                                                border="0"
-                                                                                                                                                cellpadding="0"
-                                                                                                                                                cellspacing="0"
-                                                                                                                                                width=""
-                                                                                                                                                style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                                                                                                                <tbody>
-                                                                                                                                                    <tr>
-
-                                                                                                                                                        <td align="center"
-                                                                                                                                                            valign="middle"
-                                                                                                                                                            width="125"
-                                                                                                                                                            class="mcnFollowIconContent"
-                                                                                                                                                            style="mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                                                                                                                            <a href="http://www.uzgent.be"
-                                                                                                                                                                target="_blank"
-                                                                                                                                                                style="mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;"><img
-                                                                                                                                                                    src="https://www.gieqs.com/assets/img/brand/uzggold.png"
-                                                                                                                                                                    alt="UZ Gent"
-                                                                                                                                                                    style="display: block;border:0;height:auto;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;"
-                                                                                                                                                                    height="125"
-                                                                                                                                                                    width="125"
-                                                                                                                                                                    class=""></a>
-                                                                                                                                                        </td>
-
-
-                                                                                                                                                    </tr>
-                                                                                                                                                </tbody>
-                                                                                                                                            </table>
-                                                                                                                                        </td>
-                                                                                                                                    </tr>
-                                                                                                                                </tbody>
-                                                                                                                            </table>
-                                                                                                                        </td>
-                                                                                                                    </tr>
-                                                                                                                </tbody>
-                                                                                                            </table>
-
-                                                                                                            <!--[if mso]>
-                                        </td>
-                                        <![endif]-->
-
-                                                                                                            <!--[if mso]>
-                                        <td align="center" valign="top">
-                                        <![endif]-->
-
-
-                                                                                                            
-
-                                                                                                            <!--[if mso]>
-                                        </td>
-                                        <![endif]-->
-
-                                                                                                            <!--[if mso]>
-                                        <td align="center" valign="top">
-                                        <![endif]-->
-
-
-                                                                                                           
-
-                                                                                                            <!--[if mso]>
-                                        </td>
-                                        <![endif]-->
-
-                                                                                                            <!--[if mso]>
-                                        <td align="center" valign="top">
-                                        <![endif]-->
-
-
-
-                                                                                                            <!--[if mso]>
-                                        </td>
-                                        <![endif]-->
-
-                                                                                                            <!--[if mso]>
-                                    </tr>
-                                    </table>
-                                    <![endif]-->
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                </tbody>
-                                                                                            </table>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
-                                                                        </td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-
-
-                                            <!--Footer divider-->
                                             <table border="0" cellpadding="0" cellspacing="0" width="100%"
                                                 class="mcnDividerBlock"
                                                 style="min-width:100%;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust:100%;table-layout:fixed !important;">
@@ -1660,12 +1463,17 @@
                                                                         <td valign="top" class="mcnTextContent"
                                                                             style="padding-top:0;padding-right:18px;padding-bottom:9px;padding-left:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;word-break:break-word;color:#FFFFFF;font-family:Helvetica;font-size:12px;line-height:150%;text-align:center;">
 
-                                                                            <em>&#169; GIEQs organising committee 2020.</em>
+                                                                            <em>Copyright GIEQs 2020. All rights
+                                                                                reserved.</em>
                                                                             <br>
                                                                             Our privacy policy is available on request.
                                                                             <br>
                                                                             <br>
-                                                                            
+                                                                            <strong>Our mailing address is:</strong>
+                                                                            <br>
+                                                                            Department of Gastroenterology and
+                                                                            Hepatology
+                                                                            <br>
                                                                             University Hospital of Ghent
                                                                             <br>
                                                                             C Heymanslaan 10
@@ -1674,7 +1482,8 @@
                                                                             9000 Ghent, Belgium
                                                                             <br>
                                                                             <br>
-                                                                            Don't want any more emails from us?<br>
+                                                                            Want to change how you receive these
+                                                                            emails?<br>
                                                                             You can <a
                                                                                 href="mailto:gieqs@seaton-international.com"
                                                                                 style="mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#FFFFFF;font-weight:normal;text-decoration:underline;">contact
