@@ -171,7 +171,7 @@ $emailArray = $emailList->getAllEmails();
 
 //print_r($emailArray);
 
-Mailer(array(0 => 'djtate@gmail.com', 1=> 'david.tate@uzgent.be'), $subject, '/assets/email/teaser_april.html');
+Mailer(array(0 => 'djtate@gmail.com', 1=> 'david.tate@uzgent.be', 2=> 'lobke.desomer@azdelta.be', 3=>'lobkedesomer@gmail.com'), $subject, '/assets/email/teaser_april.html');
 
 
 
