@@ -258,7 +258,7 @@ function videoDisplay(url) {
 
 	if (isNormalInteger(url) === true) {
 
-		$('#videoDisplay').html("<div class='videoWrapper' style='text-align: centre'><iframe id='videoChapter' src='https://player.vimeo.com/video/" + url + "' width='400' height='288' frameborder='0' allow='autoplay' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>");
+		$('#videoDisplay').html("<iframe id='videoChapter' class='embed-responsive-item' style='left:50%; top:50%;' src='https://player.vimeo.com/video/" + url + "' frameborder='0' allow='autoplay' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>");
 
 		$('#submitimagefiles').prop('disabled', true);
 		$('#video').prop('disabled', true);
@@ -409,27 +409,15 @@ function getVideoTags(videoPassed) {
 
 	//event.preventDefault();
 	//check videopassed is integer
-	if (isNormalInteger(videoPassed) === true) {
-
+	
 		//get the video start time for this option
 
-		var imagesObject = JSONStraightDataQuery(videoPassed, 'getTags', 9);
-
-		imagesObject.done(function (data) {
-
-			//console.log(data);
-
-			if (data) {
-
-				if (data) {
-
-					//do the tag thing foreach data
-
-					//console.log(data);
+		
 
 					try {
 
-						var formData = $.parseJSON(data);
+						var JSONtoParse = $('#tagsData').text();
+						var formData = $.parseJSON(JSONtoParse);
 
 					} catch (error) {
 
@@ -442,32 +430,26 @@ function getVideoTags(videoPassed) {
 						var id = val.id;
 						var tagName = val.tagName;
 
-						$('#tagsDisplay').append('<button id="tag' + id + '" class="tagButton">' + tagName + '</button>');
+						$('#tagsDisplay').append('<span class="badge badge-info mx-2 my-2 tagButton" id="tag' + id + '">' + tagName + '</span>');
 
 					})
 					//
 
 
-				} else {
-
-					alert("Error, try again");
-
-					//enableFormInputs("images");
-
-				}
+				
 
 
 
-			}
+			
 
 
-		});
+		
 
 	}
 
 
 
-} //no still used
+ //no still used
 
 function getChapterSelectorv2(idSelector, ChapteridSelector) {
 
@@ -528,7 +510,7 @@ function getChapterSelectorv2(idSelector, ChapteridSelector) {
 
 				$ //(".chapterSelector").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
 
-				$('#content').find("#chapterSelectorVideo" + idSelector + " option[value='" + ChapteridSelector + "']").prop('selected', true);
+				$('body').find("#chapterSelectorVideo" + idSelector + " option[value='" + ChapteridSelector + "']").prop('selected', true);
 
 			} else {
 
@@ -581,7 +563,7 @@ function getChapterSelector(idSelector, ChapteridSelector) {
 
 	$ //(".chapterSelector").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
 
-	$('#content').find("#chapterSelectorVideo" + idSelector + " option[value='" + ChapteridSelector + "']").prop('selected', true);
+	$('body').find("#chapterSelectorVideo" + idSelector + " option[value='" + ChapteridSelector + "']").prop('selected', true);
 
 
 
@@ -596,18 +578,18 @@ function undoFilterByTag() {
 
 	playSelectedChapters = null;
 
-	$('.content').find('.greenButton .tagButton').each(function () {
+	$('body').find('.greenButton .tagButton').each(function () {
 
 		$(this).removeClass('selectiveTag');
 
-		$(this).removeClass('greenButton').addClass('tagButton');
+		$(this).removeClass('greenButton').removeClass('bg-warning').addClass('tagButton').addClass('bg-info');
 
 
 	})
 
 	$('#titleBar').css('background-color', '#2670DD'); //remove and add gentBlue
 
-	$('.content').find('#titleBar').find('#taggedChapterDisplay').html('');
+	$('body').find('#titleBar').find('#taggedChapterDisplay').html('');
 
 	$('.chapterSelector').find('option').each(function () {
 
@@ -639,20 +621,20 @@ function undoFilterByTag() {
 
 $(document).ready(function () {
 
-    getVideoTags(videoPassed);
+    //getVideoTags(videoPassed);
 
     //writes the chapter heading, description and author information
     $(videoData).each(function (i, val) {
 
 		//$('#videoTitle').html('<p class="veryNarrow" style="font-size:20px;"><b>'+val.name+'</b></p>');
 
-		$('#videoDescription').html('<p>' + val.description + '</p>');
+		$('#videoDescription').html('' + val.description + '');
 
-		$('#videoAuthor').html('<p>Author : ' + val.author + '</p>');
+		$('#videoAuthor').html(val.author);
 
 	})
 
-    $("#content").on('click', '.fa-remove', function () {
+    $("body").on('click', '.fa-remove', function () {
 
 
 		undoFilterByTag();
@@ -660,12 +642,13 @@ $(document).ready(function () {
 
     })
     
-    $("#content").on('click', '.greenButton, .tagButton', (function (event) {
+    $("body").on('click', '.greenButton, .tagButton', (function (event) {
 
 		if ($(this).hasClass('selectiveTag') === true) {
 
 			undoFilterByTag();
-			$(this).removeClass('greenButton').addClass('tagButton');
+			$(this).removeClass('greenButton').removeClass('bg-warning').addClass('tagButton').addClass('bg-info');
+
 
 		}
 
@@ -704,7 +687,7 @@ $(document).ready(function () {
 
 			if ($(this).hasClass('tagButton') == true) {
 
-				$(this).removeClass('tagButton').addClass('greenButton');
+				$(this).removeClass('tagButton').addClass('greenButton').addClass('bg-warning');
 
 			}
 
@@ -712,7 +695,8 @@ $(document).ready(function () {
 
 				//console.log($(this));
 
-				$(this).removeClass('greenButton').addClass('tagButton');
+				$(this).removeClass('greenButton').removeClass('bg-warning').addClass('tagButton').addClass('bg-info');
+
 
 			})
 
@@ -758,7 +742,7 @@ $(document).ready(function () {
 
 			$('#titleBar').css('background-color', '#4CAF50');
 
-			if ($('.content').find('#titleBar').find('#taggedChapterDisplay').length == 0) {
+			if ($('body').find('#titleBar').find('#taggedChapterDisplay').length == 0) {
 
 				var tagName = getTagName(selectedTag);
 
@@ -772,7 +756,7 @@ $(document).ready(function () {
 
 				tagName = tagName.toString().toLowerCase();
 
-				$('.content').find('#titleBar').find('#taggedChapterDisplay').html('(Showing chapters tagged ' + tagName + ') <i class="fa fa-remove" style="font-size:12px"></i>');
+				$('body').find('#titleBar').find('#taggedChapterDisplay').html('(Showing chapters tagged ' + tagName + ') <i class="fa fa-remove" style="font-size:12px"></i>');
 			}
 
 			//skip the video to the start of the first chapter in the array
@@ -815,7 +799,7 @@ $(document).ready(function () {
 
     });
     
-    $('.content').on("click", ".title-fold", (function (event) {
+    $('body').on("click", ".title-fold", (function (event) {
 
 		if ($(this).hasClass('clicked') === false) {
 
@@ -1160,12 +1144,22 @@ $(document).ready(function () {
 
 				var description = val.description;
 
-				var stripped = description.replace(/\n/g, '<br><br>');
+				var stripped = description.replace(/\n/g, '<br>');
 
 				//////console.log(stripped);
 
 
-				$('#chapterHeading').html("<p style='text-align:left;'><b>Chapter " + val.number + "</b></p><p style='text-align:left;'><b>" + val.chaptername + "</b></p><br><p style='text-align:justify;'>" + stripped + "</p>");
+				$('#chapterHeading').html(val.chaptername);
+
+				$('#chapterHeadingControl').html('Chapter '+val.number);
+				
+				$('#chapterDescription').html(stripped);
+
+				$('#currentChapter').html(val.number);
+				
+				$('#totalChapters').html(numberofChapters);
+
+				
 
 				/*
 			    	
@@ -1196,7 +1190,7 @@ $(document).ready(function () {
 
 							//console.log(desiredTag);
 
-							$('.content').find(desiredTag).addClass('greenButton').removeClass('tagButton');
+							$('body').find(desiredTag).addClass('greenButton').addClass('bg-warning').removeClass('tagButton').removeClass('bg-info');
 
 
 
@@ -1206,7 +1200,8 @@ $(document).ready(function () {
 
 							var desiredTag = '#tag' + val2.tagid;
 
-							$('.content').find(desiredTag).addClass('tagButton').removeClass('greenButton');
+							$('body').find(desiredTag).removeClass('greenButton').removeClass('bg-warning').addClass('tagButton').addClass('bg-info');
+							;
 
 						}
 
@@ -1227,7 +1222,7 @@ $(document).ready(function () {
 			    	
 			    	}*/
 
-				//$('#content').find("#chapterSelectorVideo"+val.id+" option:selected").prop("selected",false);
+				//$('body').find("#chapterSelectorVideo"+val.id+" option:selected").prop("selected",false);
 
 				//check the selector shows the data for the chapter being displayed
 
@@ -1253,7 +1248,7 @@ $(document).ready(function () {
 
 				//console.log(chapterStartTime);
 
-				var chapterExists = $('#content').find("#chapterSelectorVideo" + val.id + " option[value='" + val.chapterid + "']").length;
+				var chapterExists = $('body').find("#chapterSelectorVideo" + val.id + " option[value='" + val.chapterid + "']").length;
 
 				////console.log('chapter exists is' +chapterExists);
 
@@ -1262,14 +1257,15 @@ $(document).ready(function () {
 
 					//$('.tagButton').removeClass('tagbutton').addClass('greenButton');
 
-					$('.tagButton').removeClass('greenButton').addClass('tagButton');
+					$('.tagButton').removeClass('greenButton').removeClass('bg-warning').addClass('tagButton').addClass('bg-info');
+
 
 					//getChapterSelector(val.id, val.chapterid);
 
 				} else {
 
 
-					$('#content').find("#chapterSelectorVideo" + val.id + " option[value='" + val.chapterid + "']").prop('selected', true);
+					$('body').find("#chapterSelectorVideo" + val.id + " option[value='" + val.chapterid + "']").prop('selected', true);
 
 					chapterSelected = val.chapterid;
 
@@ -1356,7 +1352,7 @@ $(document).ready(function () {
 
 			//is there a blank line at the top of the chapter selector		
 
-			$('#content').find(chapterselector).find('option').each(function () {
+			$('body').find(chapterselector).find('option').each(function () {
 
 				//console.log($(this).text());
 
@@ -1389,10 +1385,10 @@ $(document).ready(function () {
 				//console.log(chapterselector);
 				//console.log("xyz is " + xyz);
 				if (xyz == 0) {
-					$('#content').find(chapterselector).prepend("<option value='(not in a chapter)' selected='selected'>(not in a chapter)</option>");
+					$('body').find(chapterselector).prepend("<option value='(not in a chapter)' selected='selected'>(not in a chapter)</option>");
 				} else {
 
-					$('#content').find(chapterselector).prop('selectedIndex', 0);
+					$('body').find(chapterselector).prop('selectedIndex', 0);
 				}
 
 			}
@@ -1608,7 +1604,7 @@ $(document).ready(function () {
 
     })
     
-    $('.content').find('.equalHeight').each(function () {
+    $('body').find('.equalHeight').each(function () {
 
 		var height = $(this).siblings().first().height();
 		//console.log(height);
@@ -1617,7 +1613,7 @@ $(document).ready(function () {
 
     })
 
-    $('.content').on("change", ".chapterSelector", (function (event) {
+    $('body').on("change", ".chapterSelector", (function (event) {
 
 		//event.preventDefault();
 

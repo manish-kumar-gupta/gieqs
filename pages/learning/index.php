@@ -34,6 +34,15 @@ error_reporting(E_ALL);
 
 
         }
+
+        .tagButton {
+
+            cursor: pointer;
+
+        }
+
+        
+
         iframe {
   box-sizing: border-box;
     height: 25.25vw;
@@ -48,6 +57,29 @@ error_reporting(E_ALL);
 .cursor-pointer {
 
     cursor: pointer;
+
+}
+
+@media (min-width: 1200px) {
+        #chapterSelectorDiv{
+
+            
+                
+                top:-3vh;
+            
+
+        }
+        #playerContainer{
+
+                margin-top:-20px;
+
+        }
+        #collapseExample {
+
+            position: absolute; 
+            max-width: 50vh; 
+            z-index: 25;
+        }
 
 }
     </style>
@@ -106,6 +138,10 @@ error_reporting(E_ALL);
         
         <!-- load all video data -->
 
+        <div id="id" style="display:none;"><?php if ($id){echo $id;}?></div>
+
+
+
         <div id="vimeoid" style="display:none;"><?php echo $general->getVimeoID($id);?></div>
 
 					<div id="videoChapterData" style="display:none;"><?php echo $general->getVideoAndChapterDatav1($id);?>
@@ -114,7 +150,81 @@ error_reporting(E_ALL);
 					<div id="videoChapterTagData" style="display:none;"><?php echo $general->getVideoAndChapterData($id);?>
 					</div>
 
-					<div id="videoData" style="display:none;"><?php echo $general->getVideoData($id);?></div>
+                    <div id="videoData" style="display:none;"><?php echo $general->getVideoData($id);?></div>
+                    
+                    <div id="tagsData" style="display:none;"><?php echo $general->getTagsVideo($id);?></div>
+
+                    <div id="tagCategories" style="display:none;"><?php $allCategories = $general->getAllTagCategories(); print_r($allCategories);?></div>
+
+
+                    <!--CONSTRUCT TAG DISPLAY-->
+
+                    <!--GET TAG CATEGORY NAME 
+                    
+                    <?php
+
+                        $tagBox = null;
+
+                        foreach ($allCategories as $key=>$value){
+
+                            //display the header only if a match
+
+                            //database query, is there a tag in this category associated with this video
+
+                            if ($general->isThisTagCategoryRepresentedInVideo($id, $value['id'])){
+
+                                $tagBox .= '<div class="row align-items-left">';
+                                    
+                                    $tagBox .= '<span class="h6 mt-2"> ' . $value['tagCategoryName'] . '</span>';
+
+                                    $tagsRequired = $general->getTagsVideoWithCategoryNonJSON($id);
+
+                                    //print_r($tagsRequired);
+
+                                    $tagBox .=  '</div>';
+                                    
+                                    $tagBox .= '<div class="row align-items-left">';
+
+                                    foreach ($tagsRequired as $key1=>$value1){
+
+                                        if ($value1['tagCategories_id'] == $value['id']){
+
+                                           $tagBox .= '<span class="badge badge-info mx-2 my-2 tagButton" id="tag' . $value1['id'] . '">' . $value1['tagName'] . '</span>'; 
+
+                                        }
+
+                                    }
+
+                                    
+
+                                $tagBox .=  '</div>';
+
+                                //$('#tagsDisplay').append('<span class="badge badge-info mx-2 my-2 tagButton" id="tag' + id + '">' + tagName + '</span>');
+
+                                //echo $tagBox;
+
+                            }else{
+
+                                continue;
+                            }
+                            //if so display the card section
+
+                            //if not continue
+                            //look in the tagsVideo array
+                            //check if any match 
+
+                            
+
+
+                        }
+
+
+?>
+                    
+                TODO see other videos with similar tags, see videos with this tag, tag jump the video,
+                list of chapters with associated tags [toggle view by category, chapter]
+                
+                -->
 
 
     <!-- Omnisearch -->
@@ -174,12 +284,18 @@ error_reporting(E_ALL);
     </div>
     <div class="main-content">
 
+    <
+
         <div class="d-flex align-items-end bg-gradient-dark">
             <div class="container mt-10 pt-4 pt-lg-4">
-                <div class="row">
-                    <div class="col-lg-4 mb-0 mb-lg-0">
+                        <div class="row" style="margin-right:15px; margin-left:15px;">
                         <span class="h2 mb-0 text-white d-block"><?php echo $general->getVideoTitle($id)?></span>
-                        <span class="text-white">Video subtitle</span>
+                        <span class="col-xl-8 text-white" id="videoDescription">Video subtitle</span>
+                    </div>
+
+                <div class="row">
+                    <div class="col-lg-4 mb-0 mb-lg-0 pl-5">
+                        
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-links p-0 m-0">
                                 <li class="breadcrumb-item"><a href="#">Videos</a></li>
@@ -187,14 +303,14 @@ error_reporting(E_ALL);
                                 <li class="breadcrumb-item active" aria-current="page">Referring tag</li>
                             </ol>
                         </nav>
-                        <div class="col text-left">
+                        <div class="col text-left mt-0">
                                                     <div class="actions">
-                                                        <a class="action-item p-0 m-0 pr-1"><i
+                                                        <a class="action-item p-0 m-0 pr-4"><i
                                                                 class="fas fa-heart mr-1 pr-1"></i> 50</a>
-                                                        <a class="action-item p-0 m-0"><i class="fas fa-eye mr-1"></i>
+                                                        <a class="action-item p-0 m-0 pr-4"><i class="fas fa-eye mr-1"></i>
                                                             250</a>
-                                                            <a class="action-item p-0 m-0 pr-1"><i class="fas fa-user mr-1"></i>
-                                                            David James Tate</a>
+                                                            <a class="action-item p-0 m-0 pr-4"><i class="fas fa-user mr-1"></i>
+                                                            <span id="videoAuthor"></span></a>
                                                     </div>
                                                 </div>
 </div>
@@ -210,26 +326,24 @@ error_reporting(E_ALL);
                                     
 
 </div>
-                                <div class="collapse" id="collapseExample">
-                                    <div class="card">
-                                        <div class="card-footer">
-                                            <div class="row align-items-left">
-                                                <div class="col" id="tagsDisplay">
-                                                    <span class="badge badge-primary mx-2">
-                                                        tags 1
-                                                    </span>
-                                                    <span class="badge badge-primary mx-2">
-                                                        tags 2
-                                                    </span>
+                                <div class="collapse border mb-0" id="collapseExample" style="border-color:rgb(238, 194, 120) !important;">
+                                    <div class="card mb-0">
+                                    <div class="card-header mb-0">
+                        <span class="h6">Tags (click to filter)</span>
+                    </div>
+                                        <div class="card-body mt-0 pt-0">
+                                            
+                                                <div id="tagsDisplay">
+                                                <?php echo $tagBox;?>
                                                 </div>
                                                 
-                                            </div>
+                                            
                                         </div>
                                     </div>
 
 
                                 </div>
-                                <div class="collapse card mb-0 p-2 flex-row" id="selectDropdown">
+                                <div class="collapse card mb-0 p-2 flex-row"  id="selectDropdown">
                             <div class="container">
                                 <div class="row">
                                 <span class="mb-0 pl-2 pt-2 flex-grow-1">Choose chapter</span>
@@ -245,7 +359,7 @@ error_reporting(E_ALL);
                     </div>
                             </div>
                     </div>
-                    <div class="col-lg-3 mb-0 mb-lg-0 mt-2 py-0 text-center vertical-align-center">
+                    <div id='chapterSelectorDiv' class="col-xl-3 mb-0 mb-lg-0 mt-2 py-0 text-center vertical-align-top">
 
                         <div class="card mb-0">
                             <div class="card-header" style="    padding-right: 0.5em;
@@ -277,8 +391,7 @@ error_reporting(E_ALL);
                                     <div class="d-flex align-items-center justify-content-between">
 
                                         <div class="flex-fill p-2 text-limit">
-                                            <h6 class="progress-text mb-1 text-sm d-block text-limit text-left">Chapter
-                                                name
+                                            <h6 id="chapterHeadingControl" class="progress-text mb-1 text-sm d-block text-limit text-left">No chapter selected
                                             </h6>
                                             <div id="myProgress" class="progress progress-xs mb-0">
                                                 <div id="myBar" class="progress-bar bg-warning" role="progressbar"
@@ -312,7 +425,7 @@ error_reporting(E_ALL);
                                                 </div> -->
                                                 
                                                 <div class="font-weight-bold text-warning">
-                                                    x / y
+                                                    <span id="currentChapter">x</span> / <span id="totalChapters">y</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -332,7 +445,7 @@ error_reporting(E_ALL);
 
 
 
-    <div class="d-flex align-items-end bg-gradient-dark" style="padding-left:15px; padding-right:15px;">
+    <div id="playerContainer" class="d-flex align-items-end bg-gradient-dark" style="padding-left:15px; padding-right:15px;">
         <div class="container mt-2 mb-2 py-0">
             <div class="row">
                 <div class="col-lg-9 mb-0 mb-lg-0 pr-lg-3">
@@ -347,21 +460,19 @@ error_reporting(E_ALL);
                         </div>
                 </div>
 </div>
-                <div class="card col-lg-3 bg-dark mt-2 mb-0 mb-lg-0 text-center vertical-align-center">
+                <div class="card p-0 col-lg-3 bg-dark mt-2 mb-0 mb-lg-0 text-center vertical-align-center">
                 <div class="card-header" style="padding-right: 0.5em;
     padding-left: 0.5em;
     padding-bottom: 0.5em;
     padding-top: 0.5em;">
-                    <span class="h6 mb-0 text-white d-block">Chapter Description Title</span>
+                    <span id="chapterHeading" class="h6 mb-0 text-white d-block">No chapter selected</span>
 </div>
-<div class="card-body" style="padding-right: 0.5em;
-    padding-left: 0.5em;
-    padding-bottom: 0.5em;
-    padding-bottom: 0.5em;
+<div class="card-body" style="padding-right: 0.2em;
+    padding-left: 0.2em;
+    padding-bottom: 0.2em;
+  
     padding-top: 0.5em; max-height: 40vh; overflow-y: scroll;">
-                    <span class="mt-2 pt-3 text-muted d-block text-left">Uw projectaanvraag zal door twee
-                        onafhankelijke commissies beoordeeld worden, <br /> namelijk door de patiëntencommissie van Kom
-                        op tegen Kanker en door een wetenschappelijkee  </span>
+                    <span id="chapterDescription" class="mt-2 p-2 d-block text-left"></span>
 </div>
                 </div>
             </div>

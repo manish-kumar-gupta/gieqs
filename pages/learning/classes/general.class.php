@@ -3537,6 +3537,125 @@ return $arr;
 
 	}
 
+	public function getTagsVideo($videoid){
+
+		$q = "SELECT c.`id` AS `chapterTagid`, d.`tagName`, d.`id` FROM `video` as a INNER JOIN `chapter` as b ON a.`id` = b.`video_id` INNER JOIN `chapterTag` as c ON b.`id` = c.`chapter_id` INNER JOIN `tags` as d ON d.`id` = c.`tags_id` WHERE a.`id` = " . $videoid . ' GROUP BY d.`id` ORDER BY d.`tagName` ASC';
+			
+			//$q = "SELECT b.`image_id`, c.`url`, c.`name`, c.`type`, e.`tagName`, d.`id` as imagesTagid, d.`tags_id` FROM `imageSet` as a INNER JOIN `imageImageSet` as b ON a.`id` = b.`imageSet_id` INNER JOIN `images` as c on b.`image_id` = c.`id` INNER JOIN `imagesTag` as d ON c.`id` = d.`images_id` INNER JOIN `tags` as e ON d.`tags_id` = e.`id` WHERE a.`id` = "+idPassed;
+			
+			
+			$result = $this->connection->RunQuery($q);
+
+			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+				$rows[] = array_map('utf8_encode', $row);
+			}
+
+
+			return json_encode($rows);
+
+
+	}
+
+	public function getTagsVideoWithCategory($videoid){
+
+		$q = "SELECT c.`id` AS `chapterTagid`, d.`tagName`, d.`id`, d.`tagCategories_id` FROM `video` as a INNER JOIN `chapter` as b ON a.`id` = b.`video_id` INNER JOIN `chapterTag` as c ON b.`id` = c.`chapter_id` INNER JOIN `tags` as d ON d.`id` = c.`tags_id` WHERE a.`id` = " . $videoid . ' ORDER BY d.`tagCategories_id` ASC, d.`tagName` ASC';
+			
+			//$q = "SELECT b.`image_id`, c.`url`, c.`name`, c.`type`, e.`tagName`, d.`id` as imagesTagid, d.`tags_id` FROM `imageSet` as a INNER JOIN `imageImageSet` as b ON a.`id` = b.`imageSet_id` INNER JOIN `images` as c on b.`image_id` = c.`id` INNER JOIN `imagesTag` as d ON c.`id` = d.`images_id` INNER JOIN `tags` as e ON d.`tags_id` = e.`id` WHERE a.`id` = "+idPassed;
+			
+			
+			$result = $this->connection->RunQuery($q);
+
+			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+				$rows[] = array_map('utf8_encode', $row);
+			}
+
+
+			return json_encode($rows);
+
+
+	}
+
+	public function getTagsVideoWithCategoryNonJSON($videoid){
+
+		$q = "SELECT c.`id` AS `chapterTagid`, d.`tagName`, d.`id`, d.`tagCategories_id` FROM `video` as a INNER JOIN `chapter` as b ON a.`id` = b.`video_id` INNER JOIN `chapterTag` as c ON b.`id` = c.`chapter_id` INNER JOIN `tags` as d ON d.`id` = c.`tags_id` WHERE a.`id` = " . $videoid . ' GROUP BY d.`id` ORDER BY d.`tagCategories_id` ASC, d.`tagName` ASC';
+			
+			//$q = "SELECT b.`image_id`, c.`url`, c.`name`, c.`type`, e.`tagName`, d.`id` as imagesTagid, d.`tags_id` FROM `imageSet` as a INNER JOIN `imageImageSet` as b ON a.`id` = b.`imageSet_id` INNER JOIN `images` as c on b.`image_id` = c.`id` INNER JOIN `imagesTag` as d ON c.`id` = d.`images_id` INNER JOIN `tags` as e ON d.`tags_id` = e.`id` WHERE a.`id` = "+idPassed;
+			
+			
+			$result = $this->connection->RunQuery($q);
+
+			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+				$rows[] = array_map('utf8_encode', $row);
+			}
+
+
+			return $rows;
+
+
+	}
+
+	public function isThisTagCategoryRepresentedInVideo($videoid, $tagCategories){
+
+		$q = "SELECT c.`id` AS `chapterTagid`, d.`tagName`, d.`id`, d.`tagCategories_id` FROM `video` as a INNER JOIN `chapter` as b ON a.`id` = b.`video_id` INNER JOIN `chapterTag` as c ON b.`id` = c.`chapter_id` INNER JOIN `tags` as d ON d.`id` = c.`tags_id` WHERE a.`id` = " . $videoid . ' AND d.`tagCategories_id` = ' . $tagCategories .  '  ORDER BY d.`tagCategories_id` ASC, d.`tagName` ASC';
+			
+			//echo $q = "SELECT b.`image_id`, c.`url`, c.`name`, c.`type`, e.`tagName`, d.`id` as imagesTagid, d.`tags_id` FROM `imageSet` as a INNER JOIN `imageImageSet` as b ON a.`id` = b.`imageSet_id` INNER JOIN `images` as c on b.`image_id` = c.`id` INNER JOIN `imagesTag` as d ON c.`id` = d.`images_id` INNER JOIN `tags` as e ON d.`tags_id` = e.`id` WHERE a.`id` = "+idPassed;
+			
+			
+			$result = $this->connection->RunQuery($q);
+
+			if ($result->num_rows > 0){
+
+			return true;
+
+			}else{
+
+				return false;
+			}
+
+
+			
+			
+			//return json_encode($rows);
+	}
+
+	public function getCategoryName($tagCategoriesid){
+
+		$q = "SELECT `tagCategoryName` FROM `tagCategories` WHERE `id` = " . $tagCategoriesid;
+			
+			//$q = "SELECT b.`image_id`, c.`url`, c.`name`, c.`type`, e.`tagName`, d.`id` as imagesTagid, d.`tags_id` FROM `imageSet` as a INNER JOIN `imageImageSet` as b ON a.`id` = b.`imageSet_id` INNER JOIN `images` as c on b.`image_id` = c.`id` INNER JOIN `imagesTag` as d ON c.`id` = d.`images_id` INNER JOIN `tags` as e ON d.`tags_id` = e.`id` WHERE a.`id` = "+idPassed;
+			
+			
+			$result = $this->connection->RunQuery($q);
+
+			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+				$tagCategoryName = $rows['tagCategoryName'];
+			}
+
+
+			return $tagCategoryName;
+
+
+	}
+
+	public function getAllTagCategories(){
+
+		$q = "SELECT `id`, `tagCategoryName` FROM `tagCategories` ORDER BY `tagCategoryName` ASC";
+			
+			//$q = "SELECT b.`image_id`, c.`url`, c.`name`, c.`type`, e.`tagName`, d.`id` as imagesTagid, d.`tags_id` FROM `imageSet` as a INNER JOIN `imageImageSet` as b ON a.`id` = b.`imageSet_id` INNER JOIN `images` as c on b.`image_id` = c.`id` INNER JOIN `imagesTag` as d ON c.`id` = d.`images_id` INNER JOIN `tags` as e ON d.`tags_id` = e.`id` WHERE a.`id` = "+idPassed;
+			
+			
+			$result = $this->connection->RunQuery($q);
+
+			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+				$rows[] = array_map('utf8_encode', $row);
+			}
+
+
+			return $rows;
+
+
+	}
+
 	public function getAllTagsNavi($roothttp) {
 
 
