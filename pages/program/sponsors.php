@@ -184,6 +184,9 @@ width: 100%;
                     <img class="logo" alt="Fujinon" src="<?php echo BASE_URL . '/assets/img/icons/fujifilm.png';?>">
                     </div>
                     <div class="col-lg-3 col-md-4 col-6 py-3">
+                    <img class="logo" alt="Olympus" src="<?php echo BASE_URL . '/assets/img/icons/olympus.png';?>">
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-6 py-3">
                     <img class="logo" alt="Onis" src="<?php echo BASE_URL . '/assets/img/icons/onis.png';?>">
                     </div>
                     <div class="col-lg-3 col-md-4 col-6 py-3">
@@ -200,6 +203,7 @@ width: 100%;
                     <div class="col-12 p-3 pb-2">
                         <span class="h2" style="color: black;">Bronze Sponsors</span><br />
                     </div>
+                    
                 </div>
 
                 <div class="client-group row justify-content-center mb-4">
@@ -210,6 +214,7 @@ width: 100%;
                         <img class="logo" alt="Norgine" src="<?php echo BASE_URL . '/assets/img/brand/norgine.jpg';?>">
                     </div>
                     <div class="col-lg-2 col-md-4 col-4 py-1">
+                     <img class="logo" alt="Dr Falk" src="<?php echo BASE_URL . '/assets/img/icons/drfalk.png';?>">
 
                     </div>
                     <div class="col-lg-2 col-md-4 col-4 py-1">
