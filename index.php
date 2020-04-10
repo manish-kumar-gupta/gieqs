@@ -26,6 +26,12 @@ color: rgb(238, 194, 120);
 
 }
 
+.pointer {
+
+cursor: pointer;
+
+}
+
     </style>
 
 
@@ -143,12 +149,19 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                             <div class="d-none d-lg-block mb-4">
 
                             </div>
-                            <div><a href="<?php echo $registrationURL;?>" target="_blank">
+                            <a href="<?php echo $registrationURL;?>">
                             <div class="alert alert-modern alert-dark">
                                 <span class="badge gieqsGold badge-pill">
                                     New
                                     </span>
                                 <span class="alert-content">Registration now open!</span>
+                             </div></a>
+                             <a class="ml-3 pointer" data-toggle="modal" data-target="#registerInterest">
+                            <div class="alert alert-modern alert-dark">
+                                <span class="badge gieqsGold badge-pill">
+                                <i class="fas fa-notes-medical"></i>
+                                    </span>
+                                <span class="alert-content">COVID-19 statement</span>
                              </div></a>
                                 <h2 class="text-white mb-4 mt-4 mt-lg-0">
                                     <span class="display-4 font-weight-light">We can do everyday endoscopy
@@ -284,37 +297,19 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="registerInterestLabel" style="color: rgb(238, 194, 120);">Thank-you for
-                        your interest in GIEQs</h5>
+                    <h5 class="modal-title" id="registerInterestLabel" style="color: rgb(238, 194, 120);">COVID-19 Statement</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span class="text-white" aria-hidden="false">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <span class="h6">Registration will open in late January 2020. <br /> </span><span>Prior to this you
-                        can register your interest below and we will keep you updated on everything GIEQs.</span>
-                    <hr>
-                    <form id='pre-register'>
-                        <div class="form-group">
-                            <label for="name">Name:</label>
-                            <div class="input-group mb-3">
-                                <input type="text" name="name" id="name" class="form-control"
-                                    placeholder="please enter your name">
-                            </div>
-                            <label for="email">Email address:</label>
-                            <div class="input-group mb-3">
-                                <input type="email" name="email" id="email" class="form-control"
-                                    placeholder="please enter your email address">
-                            </div>
-                        </div>
-                    </form>
-                    <hr>
-                    <span>Your email address will only be used to update you on GIEQs</span>
+                    <span class="h6">Everybody knows that COVID-19 has changed everything about our society. <br /> <br/></span><span>We are working full steam ahead to deliver GIEQs as a traditional face-to-face event and are closely monitoring the further developments related to the outbreak of the COVID-19 virus. 
+                    <br/><br/>Of course as this unprecedented situation is constantly evolving, we remain watchful and will react to any official advice in the appropriate way.</span>
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn-small btn-secondary" data-dismiss="modal">Close</button>
-                    <button id="submitPreRegister" type="button" class="btn-small text-black"
-                        style="background-color: rgb(238, 194, 120);">Submit</button>
+                   
                 </div>
             </div>
         </div>
