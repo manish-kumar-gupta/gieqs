@@ -8,8 +8,10 @@
 
 //define token from url
 
-$debug = false;
+$debugUserAccess = false;
 $info = [];
+
+$info[] = 'the redirect location is set as ' . $location;
 
 if (count($_GET) > 0){
 
@@ -37,7 +39,7 @@ if (count($_GET) > 0){
 }
 
 
-if ($debug){
+if ($debugUserAccess){
 echo 'in interpretuserAccess';
 echo '<br>DB data is <br>';
 echo 'DB : ' . print_r(DB);
@@ -119,8 +121,11 @@ if ($openaccess == 1){
 
 
 if (!isset($_SESSION['user_id']) || !isset($_SESSION['access_level'])) {
-    $info[] = 'ONE OF user_id and access_level are NOT set in the session';
-    redirect_login($location);
+    $info[] = 'ONE OF user_id and access_level are NOT set in the session.  ACCESS DENIED';
+    
+    if (!$debugUserAccess){
+                        redirect_login($location);
+                    }
 }else{
 
     $info[] = 'user_id and access_level are both set in the session';
@@ -169,7 +174,9 @@ if (isset($requiredUserLevel)){
 
                 if ($databaseUserAccessLevel != $currentUserLevel){
 
-                    redirect_login($location);
+                    if (!$debugUserAccess){
+                        redirect_login($location);
+                    }
 
                 }else{
 
@@ -187,7 +194,9 @@ if (isset($requiredUserLevel)){
     if ($currentUserLevel == 9){
 
        
-        redirect_login($location);
+        if (!$debugUserAccess){
+                        redirect_login($location);
+                    }
 
     }
     
@@ -198,7 +207,9 @@ if (isset($requiredUserLevel)){
     if ($currentUserLevel > $requiredUserLevel){
 
        
-        redirect_login($location);
+        if (!$debugUserAccess){
+                        redirect_login($location);
+                    }
 
     }
 
@@ -306,7 +317,9 @@ b:{
 
                     if ($databaseUserAccessLevel != $currentUserLevel){
 
+                        if (!$debugUserAccess){
                         redirect_login($location);
+                    }
 
                     }
                 }else{
@@ -331,6 +344,19 @@ b:{
         }
     
     
+    if ($onlySuperuser){
+
+        $info[] = 'only super user can access the site set in config.inc.php';
+
+        if ($isSuperuser != 1){
+
+            if (!$debugUserAccess){
+                        redirect_login($location);
+                    }
+
+        }
+
+    }
     
     
     }
@@ -344,7 +370,7 @@ c:{
 
 }
 
-if ($debug){
+if ($debugUserAccess){
 print_r($info);
 
 }

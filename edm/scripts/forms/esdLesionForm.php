@@ -8,7 +8,7 @@
 			
 			require ('../../includes/config.inc.php');		
 			
-			require (BASE_URI.'/scripts/headerCreator.php');
+			require (BASE_URI.'/scripts/headerCreatorV2.php');
 		
 			//(1);
 			//require ('/Applications/XAMPP/xamppfiles/htdocs/dashboard/esd/scripts/headerCreator.php');

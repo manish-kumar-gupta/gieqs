@@ -17,6 +17,8 @@ session_start();
 // Errors are emailed here:
 $contact_email = 'djtate@gmail.com'; 
 
+//turn off whole site
+
 $active = 1;
 
 if ($active == 0){
@@ -24,6 +26,11 @@ if ($active == 0){
 	echo 'Site closed for maintenance, please check back later';
 	exit();	
 }
+
+//active superuser only, executed in interpretuseraccess
+
+$onlySuperuser = false;
+
 
 
 // Determine whether we're working on a local server
@@ -151,4 +158,11 @@ function my_error_handler($e_number, $e_message, $e_file, $e_line, $e_vars) {
 # **************************** #
 
 //error_reporting(E_ERROR | E_WARNING | E_PARSE);
-error_reporting(E_ALL);
+if ($debug){
+    
+    error_reporting(E_ALL);
+
+}else{
+
+    error_reporting(0);
+}

@@ -151,4 +151,11 @@ function my_error_handler($e_number, $e_message, $e_file, $e_line, $e_vars) {
 # **************************** #
 
 //error_reporting(E_ERROR | E_WARNING | E_PARSE);
-error_reporting(0);
+if ($debug){
+    
+    error_reporting(E_ALL);
+
+}else{
+
+    error_reporting(0);
+}

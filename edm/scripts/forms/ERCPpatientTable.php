@@ -10,7 +10,7 @@
 		
 		require ('../../includes/config.inc.php');		
 		
-		require (BASE_URI.'/scripts/headerCreator.php');
+		require (BASE_URI.'/scripts/headerCreatorV2.php');
 
 		
 		$formv1 = new formGenerator;
@@ -67,15 +67,20 @@
 		        
 		    </div>
 		<script>
-			switch (document.location.hostname)
-{
-        case 'www.endoscopy.wiki':
-                          
-                         var rootFolder = 'http://www.endoscopy.wiki/esd/'; break;
-        case 'localhost' :
-                           var rootFolder = 'http://localhost:90/dashboard/esd/'; break;
-        default :  // set whatever you want
-}
+			switch (true) {
+			case winLocation('gieqs.com'):
+
+				var rootFolder = 'https://www.gieqs.com/edm/';
+				break;
+
+			case winLocation('localhost'):
+				var rootFolder = 'http://localhost:90/dashboard/gieqs/edm/';
+				break;
+
+			default: // set whatever you want
+				var rootFolder = 'https://www.gieqs.com/edm/';
+				break;
+		}
 			
 var siteRoot = rootFolder;
 		

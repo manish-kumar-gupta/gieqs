@@ -1,6 +1,6 @@
 <?php
 	
-error_reporting(E_ALL);
+
 
 
 require(BASE_URI1 . '/assets/scripts/login_functions.php');
@@ -9,7 +9,9 @@ require(BASE_URI1 . '/assets/scripts/login_functions.php');
 
 //place to redirect the user if not allowed access
 if (!isset($location)){
-    $location = BASE_URL . '/index.php';
+    //$location = BASE_URL1 . '/index.php';
+    $location = BASE_URL1 . '/pages/authentication/login.php';
+
 }
 
 
