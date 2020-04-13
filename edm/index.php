@@ -5,7 +5,7 @@
 			
 		require ('includes/config.inc.php');
 		
-		require (BASE_URI . '/scripts/headerIndex.php');
+		require (BASE_URI.'/scripts/headerCreatorv2.php');
 		
 		/*
 		$host = substr($_SERVER['HTTP_HOST'], 0, 5);
