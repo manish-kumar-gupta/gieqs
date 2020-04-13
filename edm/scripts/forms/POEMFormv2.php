@@ -3,6 +3,8 @@
 		
 			<?php
 
+			error_reporting(E_ALL);
+
 			$openaccess = 0;
 			$requiredUserLevel = 2;
 			
