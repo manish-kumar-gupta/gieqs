@@ -5,7 +5,7 @@
 
 			error_reporting(E_ALL);
 
-			$openaccess = 0;
+			$openaccess = 1;
 			$requiredUserLevel = 2;
 			
 			require ('../../includes/config.inc.php');		
