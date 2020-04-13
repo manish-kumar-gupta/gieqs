@@ -1,9 +1,9 @@
 <?php
 	
-//error_reporting(E_ALL);
+error_reporting(E_ALL);
 
 
-require(BASE_URI1 . '/includes/login_functions.php');
+require(BASE_URI1 . '/assets/scripts/login_functions.php');
 
 
 
@@ -20,7 +20,7 @@ if (!($dbc)){
 
 
 
-require(BASE_URI1 . '/scripts/interpretUserAccess.php');
+require(BASE_URI1 . '/assets/scripts/interpretUserAccess.php');
 
 
 ?>

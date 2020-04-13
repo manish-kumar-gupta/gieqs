@@ -111,7 +111,7 @@ if (!isset($debug)) {
 # ***** SETTINGS ***** #
 # ******************** #
 
-(0);
+error_reporting(E_ALL);
 
 # **************************** #
 # ***** ERROR MANAGEMENT ***** #
