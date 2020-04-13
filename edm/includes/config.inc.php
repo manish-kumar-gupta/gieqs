@@ -43,13 +43,15 @@ if ($local) {
    // $debug = TRUE;
     
     // Define the constants:
-    define('BASE_URI', '/Applications/XAMPP/xamppfiles/htdocs/dashboard/esd');
-    define('BASE_URL', 'http://localhost:90/dashboard/esd');
+    define('BASE_URI', '/Applications/XAMPP/xamppfiles/htdocs/dashboard/gieqs/edm');
+    define('BASE_URL', 'http://localhost:90/dashboard/gieqs/edm');
+    define('BASE_URI1', '/Applications/XAMPP/xamppfiles/htdocs/dashboard/gieqs');
+    define('BASE_URL1', 'http://localhost:90/dashboard/gieqs');
     define('DB', '/Applications/XAMPP/xamppfiles/htdocs/dashboard/mysqli_connect_POEM.inc.php');
     
     function class_loader($class) {
 		
-			require($_SERVER['DOCUMENT_ROOT'].'/dashboard/esd/classes/'.$class.'.class.php');
+			require($_SERVER['DOCUMENT_ROOT'].'/dashboard/gieqs/edm/classes/'.$class.'.class.php');
 		 	
 	}
 	
@@ -59,16 +61,17 @@ if ($local) {
     
 } else {
 
-    define('BASE_URI', $_SERVER['DOCUMENT_ROOT'].'/esd');
-    //echo BASE_URI;
-    define('BASE_URL', 'https://www.endoscopy.wiki/esd');
-    //echo BASE_URL;
-    define('DB', '/home/k8qbphyrx50v/mysqli_connect_poem.inc.php');
+    define('BASE_URI', $_SERVER['DOCUMENT_ROOT'].'/edm'); 
+    define('BASE_URI1', $_SERVER['DOCUMENT_ROOT']); 
+    define('BASE_URL', 'https://www.gieqs.com/edm');
+    define('BASE_URL1', 'https://www.gieqs.com');
+    
+    define('DB', '/home/u8l2e829uoi9/mysqli_connect_gieqs.inc.php');
     //echo DB;
     
     function class_loader($class) {
 		
-			require($_SERVER['DOCUMENT_ROOT'].'/esd/classes/'.$class.'.class.php');
+			require($_SERVER['DOCUMENT_ROOT'].'/edm/classes/'.$class.'.class.php');
 		 	
 	}
 	

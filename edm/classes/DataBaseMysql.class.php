@@ -30,7 +30,7 @@ Class DataBaseMysql {
 				}
 		}else{
 			
-			$this->conn = new mysqli("localhost", "djt", "nevira1pine", "esdv1");
+			$this->conn = new mysqli("localhost", "djt35", "nevira1pine", "esdv2");
 				if($this->conn->connect_error){
 					echo "Error connect to mysql";die;
 				}

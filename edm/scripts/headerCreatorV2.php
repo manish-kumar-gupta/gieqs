@@ -34,7 +34,7 @@ require(BASE_URI . '/scripts/interpretUserAccess.php');
     You don't have javascript enabled. It is required to view this site.
     </div>
 </noscript>
-<?php define('BASE_URL1', 'http://localhost:90/dashboard/gieqs');?>
+<?php //define('BASE_URL1', 'http://localhost:90/dashboard/gieqs');?>
 
  
 <script src="<?php echo BASE_URL1 . '/assets/js/purpose.core.js';?>"></script>
