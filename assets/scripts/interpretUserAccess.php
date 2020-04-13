@@ -8,6 +8,8 @@
 
 //define token from url
 
+$debug = true;
+$info = [];
 
 if (count($_GET) > 0){
 
@@ -15,12 +17,43 @@ if (count($_GET) > 0){
 
         $token = $_GET['token'];
 
+        if ($token){
+
+            $info[] = 'token detected';
+            
+        }
+
+    }else{
+
+        $info[] = 'no token detected';
+
     }
+
+}else{
+
+
+    $info[] = 'no GET parameters detected';
 
 }
 
+
+if ($debug){
+echo 'in interpretuserAccess';
+echo '<br>DB data is <br>';
+echo 'DB : ' . print_r(DB);
+echo '<br>DB_HOST : ' . print_r(DB_HOST);
+echo '<br>DB_USER : ' . print_r(DB_USER);
+echo '<br>DB_HOST : ' . print_r(DB_HOST);
+echo '<br>DB_NAME : ' . print_r(DB_NAME);
+
+
+}
+
+
 //script for detection of page related variables in header
 if ($openaccess == 1){
+
+    $info[] = 'page is open access';
 
         goto b;
 
@@ -45,7 +78,7 @@ if ($openaccess == 1){
 
                 while($row = mysqli_fetch_array($result)) {
                     $userid = $row['user_id'];
-                
+                    $info[] = 'token access allowed for user id ' . $row['user_id'];
                     
                 }
 
@@ -55,6 +88,7 @@ if ($openaccess == 1){
             }else{
                     echo 'token did not match any userid';
                     unset($token);
+                    $info[] = 'token access checked and denied';
                     goto a;
                     
     
@@ -82,12 +116,21 @@ if ($openaccess == 1){
     a:{
 //echo 'made it to a';
 
-if (!isset($_SESSION['user_id']) || !isset($_SESSION['access_level'])) {
 
+
+if (!isset($_SESSION['user_id']) || !isset($_SESSION['access_level'])) {
+    $info[] = 'ONE OF user_id and access_level are NOT set in the session';
     redirect_login($location);
+}else{
+
+    $info[] = 'user_id and access_level are both set in the session';
 }
 
 $userid = $_SESSION['user_id'];
+
+if ($userid){
+$info[] = 'user_id set as ' . $userid;
+}
 
 
 //IF USER LEVEL REQUIRED NOT SET ASSUME 2
@@ -95,6 +138,11 @@ $userid = $_SESSION['user_id'];
 if (!isset($requiredUserLevel)){
 
     $requiredUserLevel = 2;
+    $info[] = 'requiredUserLevel was not set so was set at default of 2 since the user is logged in';
+
+}else{
+
+    $info[] = 'requiredUserLevel was set on the page as ' . $requiredUserLevel;
 
 }
 
@@ -116,12 +164,16 @@ if (isset($requiredUserLevel)){
             if(mysqli_num_rows($result)>0){
                 while($row = mysqli_fetch_array($result)) {
                     $databaseUserAccessLevel = $row['access_level'];
+                    
                 }
 
                 if ($databaseUserAccessLevel != $currentUserLevel){
 
                     redirect_login($location);
 
+                }else{
+
+                    $info[] = 'access level for this user as set in the session (' . $currentUserLevel . ') was checked against the database ('. $databaseUserAccessLevel .') and is the same)';
                 }
             }
 
@@ -130,6 +182,8 @@ if (isset($requiredUserLevel)){
 
     //reject an inactive user with level 9
 
+
+    
     if ($currentUserLevel == 9){
 
        
@@ -139,6 +193,8 @@ if (isset($requiredUserLevel)){
     
             //reject any user that does not have access higher or equal to that specified
 
+    $info[] = 'current user has following rights (current user level is ' . $currentUserLevel . ') versus (required user level is '. $requiredUserLevel .')';
+    
     if ($currentUserLevel > $requiredUserLevel){
 
        
@@ -152,9 +208,14 @@ if (isset($requiredUserLevel)){
 
         $isSuperuser = 1;
 
+        $info[] = 'user is a superuser';
+
+
     }else{
 
         $isSuperuser = 0;
+
+        $info[] = 'user is not a superuser';
     }
 
     //determine subscription to all videos and/or images, variables $subscriptionVideo, $subscriptionImage
@@ -222,6 +283,8 @@ b:{
         if (isset($_SESSION['user_id'])) {
 
             $userid = $_SESSION['user_id'];
+
+            $info[] = 'page was open access but a user id was found in the session so was assigned (' . $userid . ')';
         }
 
         //set user access level
@@ -278,5 +341,10 @@ b:{
 c:{
 //echo 'made it to c';
 //do things for token access
+
+}
+
+if ($debug){
+print_r($info);
 
 }
