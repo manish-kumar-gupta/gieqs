@@ -8,7 +8,7 @@
 
 //define token from url
 
-$debug = true;
+$debug = false;
 $info = [];
 
 if (count($_GET) > 0){

@@ -160,7 +160,7 @@ $userid = $_SESSION['user_id'];
                         </a>
                       </li>
                       <li>
-                        <a class="dropdown-item" href="' . $roothttp . 'scripts/forms/poemTablev2.php">
+                        <a class="dropdown-item" href="' . $roothttp . 'scripts/forms/POEMTablev2.php">
                           Table of Lesions
                         </a>
                       </li>
