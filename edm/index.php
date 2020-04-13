@@ -214,7 +214,7 @@
 							if ($general->returnYesNoDBQuery($q) != 1){
 								echo "Passed id does not exist in the database";
 								echo '</div></div>';
-								include(BASE_URI ."/includes/footer.html");
+								include(BASE_URI ."/includes/footer.php");
 								exit();
 		
 							}
@@ -222,7 +222,7 @@
 							
 							echo "This page requires the id of a video existing in the database to be passed";
 							echo '</div></div>';
-							include($root ."/includes/footer.html");
+							include($root ."/includes/footer.php");
 							exit();
 							
 						}*/
@@ -574,8 +574,8 @@ $(document).ready(function() {
 		<?php
 		
 		    // Include the footer file to complete the template:
-		    include(BASE_URI ."/includes/footer.html");
-		    // $root ."esd/includes/footer.html";
+		    include(BASE_URI ."/includes/footer.php");
+		    // $root ."esd/includes/footer.php";
 		
 		
 		

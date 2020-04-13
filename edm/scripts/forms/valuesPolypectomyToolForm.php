@@ -639,7 +639,7 @@ echo $formv1->generateText('Yes_no_addweight_denominator', 'Yes_no_addweight_den
 		<?php
 		
 		    // Include the footer file to complete the template:
-		    include($root ."/includes/footer.html");
+		    include($root ."/includes/footer.php");
 		
 		
 		

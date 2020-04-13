@@ -589,7 +589,7 @@ switch (true) {
 		<?php
 		
 		    // Include the footer file to complete the template:
-		    include(BASE_URI ."/includes/footer.html");
+		    include(BASE_URI ."/includes/footer.php");
 		
 		
 		

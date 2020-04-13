@@ -469,7 +469,7 @@ echo $formv1->generateText('updated', 'updated', '', 'tooltip here');
 		<?php
 		
 		    // Include the footer file to complete the template:
-		    include($root ."/includes/footer.html");
+		    include($root ."/includes/footer.php");
 		
 		
 		

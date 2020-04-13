@@ -454,7 +454,7 @@ echo $formv1->generateText('Yes_no_t', 'Yes_no_t', '', 'tooltip here');
 		<?php
 		
 		    // Include the footer file to complete the template:
-		    include($root ."/includes/footer.html");
+		    include($root ."/includes/footer.php");
 		
 		
 		

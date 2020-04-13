@@ -172,7 +172,7 @@ background-color: rgb(238, 194, 120);
 		<?php
 		
 		    // Include the footer file to complete the template:
-		    include(BASE_URI ."/includes/footer.html");
+		    include(BASE_URI ."/includes/footer.php");
 		
 		
 		

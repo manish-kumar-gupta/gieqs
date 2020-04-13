@@ -397,7 +397,7 @@ echo $formv1->generateText('Required4weeks', 'Required4weeks', '', 'tooltip here
 		<?php
 		
 		    // Include the footer file to complete the template:
-		    include($root ."/includes/footer.html");
+		    include($root ."/includes/footer.php");
 		
 		
 		

@@ -396,7 +396,7 @@ echo $formv1->generateText('Age_2_FH', 'Age_2_FH', '', 'tooltip here');
 		<?php
 		
 		    // Include the footer file to complete the template:
-		    include($root ."/includes/footer.html");
+		    include($root ."/includes/footer.php");
 		
 		
 		

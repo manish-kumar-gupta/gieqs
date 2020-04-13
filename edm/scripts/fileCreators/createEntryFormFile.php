@@ -510,7 +510,7 @@ $file_in .= '
 <?php
 
     // Include the footer file to complete the template:
-    include($root .\'/includes/footer.html\');
+    include($root .\'/includes/footer.php\');
 
 
 
