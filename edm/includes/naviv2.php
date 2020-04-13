@@ -155,7 +155,7 @@ $userid = $_SESSION['user_id'];
                     </a>
                     <ul class="dropdown-menu">
                       <li>
-                        <a class="dropdown-item" href="' . $roothttp . 'scripts/forms/POEMFormV2.php">
+                        <a class="dropdown-item" href="' . $roothttp . 'scripts/forms/POEMFormv2.php">
                           Enter new POEM
                         </a>
                       </li>

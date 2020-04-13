@@ -128,7 +128,7 @@ background-color: rgb(238, 194, 120);
 					
 					//console.log(id);
 					
-					window.location.href = siteRoot + 'scripts/forms/POEMFormV2.php?id=' + id;  //CHANGE
+					window.location.href = siteRoot + 'scripts/forms/POEMFormv2.php?id=' + id;  //CHANGE
 		
 					
 				})

@@ -66,7 +66,7 @@ if ($local) {
     define('BASE_URL', 'https://www.gieqs.com/edm');
     define('BASE_URL1', 'https://www.gieqs.com');
     
-    define('DB', '/home/u8l2e829uoi9/mysqli_connect_gieqs.inc.php');
+    define('DB', '/home/u8l2e829uoi9/mysqli_connect_edm.inc.php');
     //echo DB;
     
     function class_loader($class) {
