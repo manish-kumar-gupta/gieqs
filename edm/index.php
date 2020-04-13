@@ -452,19 +452,20 @@
 			
 		
 
-switch (true) {
-	case winLocation('endoscopy.wiki'):
+			switch (true) {
+			case winLocation('gieqs.com'):
 
-		var rootFolder = 'https://www.endoscopy.wiki/esd/';
-		break;
-	case winLocation('localhost'):
-		var rootFolder = 'http://localhost:90/dashboard/esd/';
-		break;
-	default: // set whatever you want
-		var rootFolder = 'https://www.endoscopy.wiki/esd/';
-		break;
-}
+				var rootFolder = 'https://www.gieqs.com/edm/';
+				break;
 
+			case winLocation('localhost'):
+				var rootFolder = 'http://localhost:90/dashboard/gieqs/edm/';
+				break;
+
+			default: // set whatever you want
+				var rootFolder = 'https://www.gieqs.com/edm/';
+				break;
+		}
 var siteRoot = rootFolder;
 
 /*function mobileMenuShow(){
