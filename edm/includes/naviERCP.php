@@ -49,7 +49,10 @@ if ($userid) {
 	<div class="dropdown-content">
 
 		
-		<a href="' . $roothttp . 'scripts/forms/esdLesionTablev2.php">Edit</a>
+		<a href="' . $roothttp . 'scripts/forms/POEMFormv2.php">Add POEM</a>
+		<a href="' . $roothttp . 'scripts/forms/POEMTablev2.php">Edit POEM</a>
+		<a href="' . $roothttp . 'scripts/forms/esdLesionForm.php">Add ESD</a>
+		<a href="' . $roothttp . 'scripts/forms/esdLesionTablev2.php">Edit ESD</a>
 
 
 	</div>
