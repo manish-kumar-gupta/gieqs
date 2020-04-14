@@ -2,7 +2,7 @@
 		
 		<?php
 		$openaccess = 0;
-		$requiredUserLevel = 4;
+		$requiredUserLevel = 2;
 		
 		require ('../../includes/config.inc.php');		
 		

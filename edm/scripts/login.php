@@ -17,7 +17,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	require (BASE_URI.'/includes/login_functions.php');
 	
-	require (DB);
+	
+	// set specifically that this is to login via GIEQs, but this is not used anyway...
+
+	require (DB1);
 
 	// Check the login:
 	//print_r($_POST);
