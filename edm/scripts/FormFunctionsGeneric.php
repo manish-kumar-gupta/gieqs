@@ -128,12 +128,15 @@ function generateText($stext, $sname, $stype, $post, $message)
 }
 function generateHidden($stext, $sname, $stype, $post)
 {
-    echo "<tr><td id=" . $sname . "Tag\" style=\"max-width:30%;\"></td><td><input type=" . $stype . " name=" . $sname . " id=" . $sname . " value=";
-    if (isset($post)) {
-        echo $post;
-    }
+    //echo '<label for="' . $sname . '">' . $stext . '</label>';
+        echo '<div class="input-group mb-3">';
+        
+       
+       
+        echo '<input type="hidden" class="form-control formInputs" id="' . $sname . '" name="' . $sname . '" placeholder="' . $stext . '">';
 
-    echo "></td>\n";
+        
+        echo '</div>';
 }
 
 function generateTextAreaOld($stext, $sname, $post, $message)

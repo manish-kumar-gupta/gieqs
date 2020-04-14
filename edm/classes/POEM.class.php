@@ -2,7 +2,7 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 11-04-2020
+ * Create Date: 13-04-2020
  *
  * DJT 2019
  *
@@ -16,8 +16,9 @@ Class POEM {
 	private $id; //int(11)
 	private $MRN; //int(8)
 	private $DOB; //varchar(10)
+	private $sex; //varchar(11)
 	private $comorbidity; //int(1)
-	private $comorbidity_other; //varchar(35)
+	private $comorbidity_other; //varchar(300)
 	private $weight; //decimal(4,1)
 	private $medication_aspirin; //int(1)
 	private $medication_clopidogrel; //int(1)
@@ -29,20 +30,24 @@ Class POEM {
 	private $previous_treatment_SSRI; //int(1)
 	private $previous_treatment_Dilatation; //int(1)
 	private $previous_treatment_botulinum; //int(1)
+	private $previous_treatment_heller; //varchar(11)
+	private $previous_treatment_POEM; //varchar(11)
+	private $previous_treatment_notes; //varchar(800)
 	private $weight_loss; //int(2)
 	private $symptoms_regurg; //int(1)
 	private $symptoms_dysphagia; //int(1)
 	private $symptoms_chestpain; //int(1)
 	private $symptoms_heartburn; //int(1)
 	private $symptoms_other; //varchar(10)
+	private $current_weight_pre; //varchar(11)
 	private $Eckart_prior; //int(2)
 	private $prev_hrm; //int(1)
 	private $prev_hrm_rp; //decimal(4,1)
 	private $prev_hrm_relaxLES; //decimal(4,1)
-	private $prev_hrm_UES; //int(1)
+	private $prev_hrm_UES; //int(5)
 	private $prev_hrm_diagnosis; //int(1)
 	private $barium_swallow_date; //varchar(10)
-	private $barium_swallow_result; //int(1)
+	private $barium_swallow_result; //varchar(800)
 	private $gastroscopy_prev; //int(1)
 	private $POEM_duration_total; //int(3)
 	private $POEM_duration_tunnel; //int(3)
@@ -59,6 +64,7 @@ Class POEM {
 	private $IPB_solution; //varchar(100)
 	private $tunnel_exit; //varchar(11)
 	private $tunnel_exit_solution; //varchar(100)
+	private $POEM_knife; //varchar(11)
 	private $POEM_current; //int(1)
 	private $POEM_number_clips; //int(1)
 	private $POEM_glucagon; //int(1)
@@ -66,7 +72,7 @@ Class POEM {
 	private $POEM_antibiotics; //int(1)
 	private $POEM_complication; //int(1)
 	private $POEM_complication_type; //int(1)
-	private $POEM_admission_days; //int(1)
+	private $POEM_admission_days; //int(3)
 	private $post_symptoms; //int(1)
 	private $post_Eckart; //int(1)
 	private $post_HRM_resting; //int(3)
@@ -86,18 +92,18 @@ Class POEM {
 	private $ComplicationDetails; //varchar(91)
 	private $ProcedureDate; //varchar(10)
 	private $CompleteFUCheck; //int(1)
-	private $Referrer; //varchar(20)
-	private $ReferrerFax; //decimal(10,9)
-	private $ReferrerEmail; //varchar(10)
-	private $Firstname; //varchar(9)
-	private $Surname; //varchar(10)
-	private $IPSubcutEmphysema; //int(1)
+	private $Referrer; //varchar(100)
+	private $ReferrerFax; //varchar(100)
+	private $ReferrerEmail; //varchar(100)
+	private $Firstname; //varchar(100)
+	private $Surname; //varchar(100)
+	private $IPSubcutEmphysema; //varchar(30)
 	private $IPSubcutEmphysemaMx; //int(1)
 	private $gastroscopy_prevdilated; //int(1)
 	private $gastroscopy_prevresistance; //int(1)
 	private $gastroscopy_prevopenCOJ; //int(1)
 	private $gastroscopy_prevspasm; //int(1)
-	private $gastroscopy_prevother; //varchar(33)
+	private $gastroscopy_prevother; //varchar(800)
 	private $post_Eckart_dysphagia; //varchar(10)
 	private $post_Eckart_regurgitation; //varchar(10)
 	private $post_Eckart_pain; //varchar(10)
@@ -106,6 +112,7 @@ Class POEM {
 	private $pre_Eckart_regurgitation; //varchar(10)
 	private $pre_Eckart_wtloss; //varchar(10)
 	private $pre_Eckart_pain; //varchar(10)
+	private $validated; //varchar(2)
 	private $connection;
 
 	public function __construct(){
@@ -116,9 +123,10 @@ Class POEM {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_POEM($MRN,$DOB,$comorbidity,$comorbidity_other,$weight,$medication_aspirin,$medication_clopidogrel,$medication_warfarin,$medication_other,$previous_treatment_PPI,$previous_treatment_CACB,$previous_treatment_NITR,$previous_treatment_SSRI,$previous_treatment_Dilatation,$previous_treatment_botulinum,$weight_loss,$symptoms_regurg,$symptoms_dysphagia,$symptoms_chestpain,$symptoms_heartburn,$symptoms_other,$Eckart_prior,$prev_hrm,$prev_hrm_rp,$prev_hrm_relaxLES,$prev_hrm_UES,$prev_hrm_diagnosis,$barium_swallow_date,$barium_swallow_result,$gastroscopy_prev,$POEM_duration_total,$POEM_duration_tunnel,$POEM_GOJ_distance,$POEM_incision_distance,$POEM_incision_position,$submucosal_tunnel_bottom,$myotomy_top,$myotomy_bottom,$myotomy_full_thickness_length_distal,$POEM_myotomy_length,$POEM_perforation,$POEM_IPB,$IPB_solution,$tunnel_exit,$tunnel_exit_solution,$POEM_current,$POEM_number_clips,$POEM_glucagon,$POEM_buscopan,$POEM_antibiotics,$POEM_complication,$POEM_complication_type,$POEM_admission_days,$post_symptoms,$post_Eckart,$post_HRM_resting,$post_HRM_GOJ,$_k_patient,$post_HRM_relaxLOS,$post_HRM_UESnormal,$post_HRM_diagnosis,$post_bariumswallow_date,$post_bariumswallow_diagnosis,$post_gastroscopy,$post_gastroscopy_result,$post_datecollected,$current_weight,$diagnosis,$barium_swallow_done,$ComplicationDetails,$ProcedureDate,$CompleteFUCheck,$Referrer,$ReferrerFax,$ReferrerEmail,$Firstname,$Surname,$IPSubcutEmphysema,$IPSubcutEmphysemaMx,$gastroscopy_prevdilated,$gastroscopy_prevresistance,$gastroscopy_prevopenCOJ,$gastroscopy_prevspasm,$gastroscopy_prevother,$post_Eckart_dysphagia,$post_Eckart_regurgitation,$post_Eckart_pain,$post_Eckart_wtloss,$pre_Eckart_dysphagia,$pre_Eckart_regurgitation,$pre_Eckart_wtloss,$pre_Eckart_pain){
+	public function New_POEM($MRN,$DOB,$sex,$comorbidity,$comorbidity_other,$weight,$medication_aspirin,$medication_clopidogrel,$medication_warfarin,$medication_other,$previous_treatment_PPI,$previous_treatment_CACB,$previous_treatment_NITR,$previous_treatment_SSRI,$previous_treatment_Dilatation,$previous_treatment_botulinum,$previous_treatment_heller,$previous_treatment_POEM,$previous_treatment_notes,$weight_loss,$symptoms_regurg,$symptoms_dysphagia,$symptoms_chestpain,$symptoms_heartburn,$symptoms_other,$current_weight_pre,$Eckart_prior,$prev_hrm,$prev_hrm_rp,$prev_hrm_relaxLES,$prev_hrm_UES,$prev_hrm_diagnosis,$barium_swallow_date,$barium_swallow_result,$gastroscopy_prev,$POEM_duration_total,$POEM_duration_tunnel,$POEM_GOJ_distance,$POEM_incision_distance,$POEM_incision_position,$submucosal_tunnel_bottom,$myotomy_top,$myotomy_bottom,$myotomy_full_thickness_length_distal,$POEM_myotomy_length,$POEM_perforation,$POEM_IPB,$IPB_solution,$tunnel_exit,$tunnel_exit_solution,$POEM_knife,$POEM_current,$POEM_number_clips,$POEM_glucagon,$POEM_buscopan,$POEM_antibiotics,$POEM_complication,$POEM_complication_type,$POEM_admission_days,$post_symptoms,$post_Eckart,$post_HRM_resting,$post_HRM_GOJ,$_k_patient,$post_HRM_relaxLOS,$post_HRM_UESnormal,$post_HRM_diagnosis,$post_bariumswallow_date,$post_bariumswallow_diagnosis,$post_gastroscopy,$post_gastroscopy_result,$post_datecollected,$current_weight,$diagnosis,$barium_swallow_done,$ComplicationDetails,$ProcedureDate,$CompleteFUCheck,$Referrer,$ReferrerFax,$ReferrerEmail,$Firstname,$Surname,$IPSubcutEmphysema,$IPSubcutEmphysemaMx,$gastroscopy_prevdilated,$gastroscopy_prevresistance,$gastroscopy_prevopenCOJ,$gastroscopy_prevspasm,$gastroscopy_prevother,$post_Eckart_dysphagia,$post_Eckart_regurgitation,$post_Eckart_pain,$post_Eckart_wtloss,$pre_Eckart_dysphagia,$pre_Eckart_regurgitation,$pre_Eckart_wtloss,$pre_Eckart_pain,$validated){
 		$this->MRN = $MRN;
 		$this->DOB = $DOB;
+		$this->sex = $sex;
 		$this->comorbidity = $comorbidity;
 		$this->comorbidity_other = $comorbidity_other;
 		$this->weight = $weight;
@@ -132,12 +140,16 @@ Class POEM {
 		$this->previous_treatment_SSRI = $previous_treatment_SSRI;
 		$this->previous_treatment_Dilatation = $previous_treatment_Dilatation;
 		$this->previous_treatment_botulinum = $previous_treatment_botulinum;
+		$this->previous_treatment_heller = $previous_treatment_heller;
+		$this->previous_treatment_POEM = $previous_treatment_POEM;
+		$this->previous_treatment_notes = $previous_treatment_notes;
 		$this->weight_loss = $weight_loss;
 		$this->symptoms_regurg = $symptoms_regurg;
 		$this->symptoms_dysphagia = $symptoms_dysphagia;
 		$this->symptoms_chestpain = $symptoms_chestpain;
 		$this->symptoms_heartburn = $symptoms_heartburn;
 		$this->symptoms_other = $symptoms_other;
+		$this->current_weight_pre = $current_weight_pre;
 		$this->Eckart_prior = $Eckart_prior;
 		$this->prev_hrm = $prev_hrm;
 		$this->prev_hrm_rp = $prev_hrm_rp;
@@ -162,6 +174,7 @@ Class POEM {
 		$this->IPB_solution = $IPB_solution;
 		$this->tunnel_exit = $tunnel_exit;
 		$this->tunnel_exit_solution = $tunnel_exit_solution;
+		$this->POEM_knife = $POEM_knife;
 		$this->POEM_current = $POEM_current;
 		$this->POEM_number_clips = $POEM_number_clips;
 		$this->POEM_glucagon = $POEM_glucagon;
@@ -209,6 +222,7 @@ Class POEM {
 		$this->pre_Eckart_regurgitation = $pre_Eckart_regurgitation;
 		$this->pre_Eckart_wtloss = $pre_Eckart_wtloss;
 		$this->pre_Eckart_pain = $pre_Eckart_pain;
+		$this->validated = $validated;
 	}
 
     /**
@@ -223,6 +237,7 @@ Class POEM {
 			$this->id = $row["id"];
 			$this->MRN = $row["MRN"];
 			$this->DOB = $row["DOB"];
+			$this->sex = $row["sex"];
 			$this->comorbidity = $row["comorbidity"];
 			$this->comorbidity_other = $row["comorbidity_other"];
 			$this->weight = $row["weight"];
@@ -236,12 +251,16 @@ Class POEM {
 			$this->previous_treatment_SSRI = $row["previous_treatment_SSRI"];
 			$this->previous_treatment_Dilatation = $row["previous_treatment_Dilatation"];
 			$this->previous_treatment_botulinum = $row["previous_treatment_botulinum"];
+			$this->previous_treatment_heller = $row["previous_treatment_heller"];
+			$this->previous_treatment_POEM = $row["previous_treatment_POEM"];
+			$this->previous_treatment_notes = $row["previous_treatment_notes"];
 			$this->weight_loss = $row["weight_loss"];
 			$this->symptoms_regurg = $row["symptoms_regurg"];
 			$this->symptoms_dysphagia = $row["symptoms_dysphagia"];
 			$this->symptoms_chestpain = $row["symptoms_chestpain"];
 			$this->symptoms_heartburn = $row["symptoms_heartburn"];
 			$this->symptoms_other = $row["symptoms_other"];
+			$this->current_weight_pre = $row["current_weight_pre"];
 			$this->Eckart_prior = $row["Eckart_prior"];
 			$this->prev_hrm = $row["prev_hrm"];
 			$this->prev_hrm_rp = $row["prev_hrm_rp"];
@@ -266,6 +285,7 @@ Class POEM {
 			$this->IPB_solution = $row["IPB_solution"];
 			$this->tunnel_exit = $row["tunnel_exit"];
 			$this->tunnel_exit_solution = $row["tunnel_exit_solution"];
+			$this->POEM_knife = $row["POEM_knife"];
 			$this->POEM_current = $row["POEM_current"];
 			$this->POEM_number_clips = $row["POEM_number_clips"];
 			$this->POEM_glucagon = $row["POEM_glucagon"];
@@ -313,6 +333,7 @@ Class POEM {
 			$this->pre_Eckart_regurgitation = $row["pre_Eckart_regurgitation"];
 			$this->pre_Eckart_wtloss = $row["pre_Eckart_wtloss"];
 			$this->pre_Eckart_pain = $row["pre_Eckart_pain"];
+			$this->validated = $row["validated"];
 		}
 	}
     /**
@@ -333,6 +354,7 @@ $q = "Select * from `POEM` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["id"] = $row["id"];
 			$rowReturn[$x]["MRN"] = $row["MRN"];
 			$rowReturn[$x]["DOB"] = $row["DOB"];
+			$rowReturn[$x]["sex"] = $row["sex"];
 			$rowReturn[$x]["comorbidity"] = $row["comorbidity"];
 			$rowReturn[$x]["comorbidity_other"] = $row["comorbidity_other"];
 			$rowReturn[$x]["weight"] = $row["weight"];
@@ -346,12 +368,16 @@ $q = "Select * from `POEM` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["previous_treatment_SSRI"] = $row["previous_treatment_SSRI"];
 			$rowReturn[$x]["previous_treatment_Dilatation"] = $row["previous_treatment_Dilatation"];
 			$rowReturn[$x]["previous_treatment_botulinum"] = $row["previous_treatment_botulinum"];
+			$rowReturn[$x]["previous_treatment_heller"] = $row["previous_treatment_heller"];
+			$rowReturn[$x]["previous_treatment_POEM"] = $row["previous_treatment_POEM"];
+			$rowReturn[$x]["previous_treatment_notes"] = $row["previous_treatment_notes"];
 			$rowReturn[$x]["weight_loss"] = $row["weight_loss"];
 			$rowReturn[$x]["symptoms_regurg"] = $row["symptoms_regurg"];
 			$rowReturn[$x]["symptoms_dysphagia"] = $row["symptoms_dysphagia"];
 			$rowReturn[$x]["symptoms_chestpain"] = $row["symptoms_chestpain"];
 			$rowReturn[$x]["symptoms_heartburn"] = $row["symptoms_heartburn"];
 			$rowReturn[$x]["symptoms_other"] = $row["symptoms_other"];
+			$rowReturn[$x]["current_weight_pre"] = $row["current_weight_pre"];
 			$rowReturn[$x]["Eckart_prior"] = $row["Eckart_prior"];
 			$rowReturn[$x]["prev_hrm"] = $row["prev_hrm"];
 			$rowReturn[$x]["prev_hrm_rp"] = $row["prev_hrm_rp"];
@@ -376,6 +402,7 @@ $q = "Select * from `POEM` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["IPB_solution"] = $row["IPB_solution"];
 			$rowReturn[$x]["tunnel_exit"] = $row["tunnel_exit"];
 			$rowReturn[$x]["tunnel_exit_solution"] = $row["tunnel_exit_solution"];
+			$rowReturn[$x]["POEM_knife"] = $row["POEM_knife"];
 			$rowReturn[$x]["POEM_current"] = $row["POEM_current"];
 			$rowReturn[$x]["POEM_number_clips"] = $row["POEM_number_clips"];
 			$rowReturn[$x]["POEM_glucagon"] = $row["POEM_glucagon"];
@@ -423,6 +450,7 @@ $q = "Select * from `POEM` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["pre_Eckart_regurgitation"] = $row["pre_Eckart_regurgitation"];
 			$rowReturn[$x]["pre_Eckart_wtloss"] = $row["pre_Eckart_wtloss"];
 			$rowReturn[$x]["pre_Eckart_pain"] = $row["pre_Eckart_pain"];
+			$rowReturn[$x]["validated"] = $row["validated"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -447,6 +475,7 @@ $q = "Select * from `POEM` WHERE `id` = $key";
 			$rowReturn[$x]["id"] = $row["id"];
 			$rowReturn[$x]["MRN"] = $row["MRN"];
 			$rowReturn[$x]["DOB"] = $row["DOB"];
+			$rowReturn[$x]["sex"] = $row["sex"];
 			$rowReturn[$x]["comorbidity"] = $row["comorbidity"];
 			$rowReturn[$x]["comorbidity_other"] = $row["comorbidity_other"];
 			$rowReturn[$x]["weight"] = $row["weight"];
@@ -460,12 +489,16 @@ $q = "Select * from `POEM` WHERE `id` = $key";
 			$rowReturn[$x]["previous_treatment_SSRI"] = $row["previous_treatment_SSRI"];
 			$rowReturn[$x]["previous_treatment_Dilatation"] = $row["previous_treatment_Dilatation"];
 			$rowReturn[$x]["previous_treatment_botulinum"] = $row["previous_treatment_botulinum"];
+			$rowReturn[$x]["previous_treatment_heller"] = $row["previous_treatment_heller"];
+			$rowReturn[$x]["previous_treatment_POEM"] = $row["previous_treatment_POEM"];
+			$rowReturn[$x]["previous_treatment_notes"] = $row["previous_treatment_notes"];
 			$rowReturn[$x]["weight_loss"] = $row["weight_loss"];
 			$rowReturn[$x]["symptoms_regurg"] = $row["symptoms_regurg"];
 			$rowReturn[$x]["symptoms_dysphagia"] = $row["symptoms_dysphagia"];
 			$rowReturn[$x]["symptoms_chestpain"] = $row["symptoms_chestpain"];
 			$rowReturn[$x]["symptoms_heartburn"] = $row["symptoms_heartburn"];
 			$rowReturn[$x]["symptoms_other"] = $row["symptoms_other"];
+			$rowReturn[$x]["current_weight_pre"] = $row["current_weight_pre"];
 			$rowReturn[$x]["Eckart_prior"] = $row["Eckart_prior"];
 			$rowReturn[$x]["prev_hrm"] = $row["prev_hrm"];
 			$rowReturn[$x]["prev_hrm_rp"] = $row["prev_hrm_rp"];
@@ -490,6 +523,7 @@ $q = "Select * from `POEM` WHERE `id` = $key";
 			$rowReturn[$x]["IPB_solution"] = $row["IPB_solution"];
 			$rowReturn[$x]["tunnel_exit"] = $row["tunnel_exit"];
 			$rowReturn[$x]["tunnel_exit_solution"] = $row["tunnel_exit_solution"];
+			$rowReturn[$x]["POEM_knife"] = $row["POEM_knife"];
 			$rowReturn[$x]["POEM_current"] = $row["POEM_current"];
 			$rowReturn[$x]["POEM_number_clips"] = $row["POEM_number_clips"];
 			$rowReturn[$x]["POEM_glucagon"] = $row["POEM_glucagon"];
@@ -537,6 +571,7 @@ $q = "Select * from `POEM` WHERE `id` = $key";
 			$rowReturn[$x]["pre_Eckart_regurgitation"] = $row["pre_Eckart_regurgitation"];
 			$rowReturn[$x]["pre_Eckart_wtloss"] = $row["pre_Eckart_wtloss"];
 			$rowReturn[$x]["pre_Eckart_pain"] = $row["pre_Eckart_pain"];
+			$rowReturn[$x]["validated"] = $row["validated"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -812,6 +847,13 @@ $q = "UPDATE `POEM` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return sex - varchar(11)
+	 */
+	public function getsex(){
+		return $this->sex;
+	}
+
+	/**
 	 * @return comorbidity - int(1)
 	 */
 	public function getcomorbidity(){
@@ -819,7 +861,7 @@ $q = "UPDATE `POEM` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
-	 * @return comorbidity_other - varchar(35)
+	 * @return comorbidity_other - varchar(300)
 	 */
 	public function getcomorbidity_other(){
 		return $this->comorbidity_other;
@@ -903,6 +945,27 @@ $q = "UPDATE `POEM` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return previous_treatment_heller - varchar(11)
+	 */
+	public function getprevious_treatment_heller(){
+		return $this->previous_treatment_heller;
+	}
+
+	/**
+	 * @return previous_treatment_POEM - varchar(11)
+	 */
+	public function getprevious_treatment_POEM(){
+		return $this->previous_treatment_POEM;
+	}
+
+	/**
+	 * @return previous_treatment_notes - varchar(800)
+	 */
+	public function getprevious_treatment_notes(){
+		return $this->previous_treatment_notes;
+	}
+
+	/**
 	 * @return weight_loss - int(2)
 	 */
 	public function getweight_loss(){
@@ -945,6 +1008,13 @@ $q = "UPDATE `POEM` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return current_weight_pre - varchar(11)
+	 */
+	public function getcurrent_weight_pre(){
+		return $this->current_weight_pre;
+	}
+
+	/**
 	 * @return Eckart_prior - int(2)
 	 */
 	public function getEckart_prior(){
@@ -973,7 +1043,7 @@ $q = "UPDATE `POEM` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
-	 * @return prev_hrm_UES - int(1)
+	 * @return prev_hrm_UES - int(5)
 	 */
 	public function getprev_hrm_UES(){
 		return $this->prev_hrm_UES;
@@ -994,7 +1064,7 @@ $q = "UPDATE `POEM` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
-	 * @return barium_swallow_result - int(1)
+	 * @return barium_swallow_result - varchar(800)
 	 */
 	public function getbarium_swallow_result(){
 		return $this->barium_swallow_result;
@@ -1113,6 +1183,13 @@ $q = "UPDATE `POEM` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return POEM_knife - varchar(11)
+	 */
+	public function getPOEM_knife(){
+		return $this->POEM_knife;
+	}
+
+	/**
 	 * @return POEM_current - int(1)
 	 */
 	public function getPOEM_current(){
@@ -1162,7 +1239,7 @@ $q = "UPDATE `POEM` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
-	 * @return POEM_admission_days - int(1)
+	 * @return POEM_admission_days - int(3)
 	 */
 	public function getPOEM_admission_days(){
 		return $this->POEM_admission_days;
@@ -1302,42 +1379,42 @@ $q = "UPDATE `POEM` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
-	 * @return Referrer - varchar(20)
+	 * @return Referrer - varchar(100)
 	 */
 	public function getReferrer(){
 		return $this->Referrer;
 	}
 
 	/**
-	 * @return ReferrerFax - decimal(10,9)
+	 * @return ReferrerFax - varchar(100)
 	 */
 	public function getReferrerFax(){
 		return $this->ReferrerFax;
 	}
 
 	/**
-	 * @return ReferrerEmail - varchar(10)
+	 * @return ReferrerEmail - varchar(100)
 	 */
 	public function getReferrerEmail(){
 		return $this->ReferrerEmail;
 	}
 
 	/**
-	 * @return Firstname - varchar(9)
+	 * @return Firstname - varchar(100)
 	 */
 	public function getFirstname(){
 		return $this->Firstname;
 	}
 
 	/**
-	 * @return Surname - varchar(10)
+	 * @return Surname - varchar(100)
 	 */
 	public function getSurname(){
 		return $this->Surname;
 	}
 
 	/**
-	 * @return IPSubcutEmphysema - int(1)
+	 * @return IPSubcutEmphysema - varchar(30)
 	 */
 	public function getIPSubcutEmphysema(){
 		return $this->IPSubcutEmphysema;
@@ -1379,7 +1456,7 @@ $q = "UPDATE `POEM` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
-	 * @return gastroscopy_prevother - varchar(33)
+	 * @return gastroscopy_prevother - varchar(800)
 	 */
 	public function getgastroscopy_prevother(){
 		return $this->gastroscopy_prevother;
@@ -1442,6 +1519,13 @@ $q = "UPDATE `POEM` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return validated - varchar(2)
+	 */
+	public function getvalidated(){
+		return $this->validated;
+	}
+
+	/**
 	 * @param Type: int(11)
 	 */
 	public function setid($id){
@@ -1463,6 +1547,13 @@ $q = "UPDATE `POEM` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @param Type: varchar(11)
+	 */
+	public function setsex($sex){
+		$this->sex = $sex;
+	}
+
+	/**
 	 * @param Type: int(1)
 	 */
 	public function setcomorbidity($comorbidity){
@@ -1470,7 +1561,7 @@ $q = "UPDATE `POEM` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
-	 * @param Type: varchar(35)
+	 * @param Type: varchar(300)
 	 */
 	public function setcomorbidity_other($comorbidity_other){
 		$this->comorbidity_other = $comorbidity_other;
@@ -1554,6 +1645,27 @@ $q = "UPDATE `POEM` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @param Type: varchar(11)
+	 */
+	public function setprevious_treatment_heller($previous_treatment_heller){
+		$this->previous_treatment_heller = $previous_treatment_heller;
+	}
+
+	/**
+	 * @param Type: varchar(11)
+	 */
+	public function setprevious_treatment_POEM($previous_treatment_POEM){
+		$this->previous_treatment_POEM = $previous_treatment_POEM;
+	}
+
+	/**
+	 * @param Type: varchar(800)
+	 */
+	public function setprevious_treatment_notes($previous_treatment_notes){
+		$this->previous_treatment_notes = $previous_treatment_notes;
+	}
+
+	/**
 	 * @param Type: int(2)
 	 */
 	public function setweight_loss($weight_loss){
@@ -1596,6 +1708,13 @@ $q = "UPDATE `POEM` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @param Type: varchar(11)
+	 */
+	public function setcurrent_weight_pre($current_weight_pre){
+		$this->current_weight_pre = $current_weight_pre;
+	}
+
+	/**
 	 * @param Type: int(2)
 	 */
 	public function setEckart_prior($Eckart_prior){
@@ -1624,7 +1743,7 @@ $q = "UPDATE `POEM` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
-	 * @param Type: int(1)
+	 * @param Type: int(5)
 	 */
 	public function setprev_hrm_UES($prev_hrm_UES){
 		$this->prev_hrm_UES = $prev_hrm_UES;
@@ -1645,7 +1764,7 @@ $q = "UPDATE `POEM` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
-	 * @param Type: int(1)
+	 * @param Type: varchar(800)
 	 */
 	public function setbarium_swallow_result($barium_swallow_result){
 		$this->barium_swallow_result = $barium_swallow_result;
@@ -1764,6 +1883,13 @@ $q = "UPDATE `POEM` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @param Type: varchar(11)
+	 */
+	public function setPOEM_knife($POEM_knife){
+		$this->POEM_knife = $POEM_knife;
+	}
+
+	/**
 	 * @param Type: int(1)
 	 */
 	public function setPOEM_current($POEM_current){
@@ -1813,7 +1939,7 @@ $q = "UPDATE `POEM` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
-	 * @param Type: int(1)
+	 * @param Type: int(3)
 	 */
 	public function setPOEM_admission_days($POEM_admission_days){
 		$this->POEM_admission_days = $POEM_admission_days;
@@ -1953,42 +2079,42 @@ $q = "UPDATE `POEM` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
-	 * @param Type: varchar(20)
+	 * @param Type: varchar(100)
 	 */
 	public function setReferrer($Referrer){
 		$this->Referrer = $Referrer;
 	}
 
 	/**
-	 * @param Type: decimal(10,9)
+	 * @param Type: varchar(100)
 	 */
 	public function setReferrerFax($ReferrerFax){
 		$this->ReferrerFax = $ReferrerFax;
 	}
 
 	/**
-	 * @param Type: varchar(10)
+	 * @param Type: varchar(100)
 	 */
 	public function setReferrerEmail($ReferrerEmail){
 		$this->ReferrerEmail = $ReferrerEmail;
 	}
 
 	/**
-	 * @param Type: varchar(9)
+	 * @param Type: varchar(100)
 	 */
 	public function setFirstname($Firstname){
 		$this->Firstname = $Firstname;
 	}
 
 	/**
-	 * @param Type: varchar(10)
+	 * @param Type: varchar(100)
 	 */
 	public function setSurname($Surname){
 		$this->Surname = $Surname;
 	}
 
 	/**
-	 * @param Type: int(1)
+	 * @param Type: varchar(30)
 	 */
 	public function setIPSubcutEmphysema($IPSubcutEmphysema){
 		$this->IPSubcutEmphysema = $IPSubcutEmphysema;
@@ -2030,7 +2156,7 @@ $q = "UPDATE `POEM` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
-	 * @param Type: varchar(33)
+	 * @param Type: varchar(800)
 	 */
 	public function setgastroscopy_prevother($gastroscopy_prevother){
 		$this->gastroscopy_prevother = $gastroscopy_prevother;
@@ -2090,6 +2216,13 @@ $q = "UPDATE `POEM` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function setpre_Eckart_pain($pre_Eckart_pain){
 		$this->pre_Eckart_pain = $pre_Eckart_pain;
+	}
+
+	/**
+	 * @param Type: varchar(2)
+	 */
+	public function setvalidated($validated){
+		$this->validated = $validated;
 	}
 
     /**

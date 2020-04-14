@@ -2145,6 +2145,70 @@ INNER JOIN `imagesDraft` as c on b.`image_id` = c.`id` WHERE a.`approved` IS NUL
 		//return $returnString;
 
 	 }	
+	 
+	 public function insert_a_space($database, $position, $insert_at){
+
+		//GET ARRAY OF THE ORDERRS AT THAT POSITION
+
+		$q = "SELECT `Order` FROM `$database` WHERE `position`='$position' ORDER BY `Order` ASC";
+		//echo $q;
+		$result = $this->connection->RunQuery($q);
+		//print_r($result);
+
+		
+		$returnArray = array();
+
+		if ($result){
+			while ($row = $result->fetch_array(MYSQLI_ASSOC)){
+
+				$returnArray[] = $row['Order'];
+
+			}
+			
+		}
+
+		//GET THE LAST VALUE OF THE ARRAY
+
+		print_r($returnArray);
+
+		echo $lastValue = end($returnArray);
+
+		//echo 'hello';
+
+		//USE IT BELOW
+
+		
+
+		for($x = $lastValue; $x >= $insert_at; $x=$x-1) {
+
+			$y = $x + 1;
+
+			//echo $y;
+
+			$q = "UPDATE `$database` SET `Order` = '$y' WHERE `Position` = '$position' AND `Order` = $x";
+
+			//echo $q;
+
+			$result = $this->connection->RunQuery($q);
+		
+			//print_r($result);
+
+			if ($result){
+				
+				echo $q . ' update performed <br/><br/>';
+
+			}
+			
+		
+		}
+
+		
+		
+		
+
+		//return $returnString;
+
+	 }	
 
 	 public function updateToVARCHAR($arrayFieldNames){
 

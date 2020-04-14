@@ -138,7 +138,16 @@ background-color: rgb(238, 194, 120);
 				
 				$arrayFieldNames = ['ReferrerEmail'];
 				
-				$general->updateToVARCHAR($arrayFieldNames);?>
+				//$general->updateToVARCHAR($arrayFieldNames);
+
+				//USE TO INSERT a space in the order for a new field
+				//USAGE insert_a_space($database, $position, $insert_at)
+				
+				//$general->insert_a_space('pageLayoutPOEM', '6', '10');
+				
+				
+				
+				?>
                 
 			        
         </div> <!--close container-->
