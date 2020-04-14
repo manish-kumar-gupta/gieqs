@@ -78,6 +78,11 @@ cursor: pointer;
 
 }
 
+.form-control:disabled, .form-control[readonly] {
+    opacity: 0.10; 
+    /*background-color: #edf2f9;*/
+}
+
             @media only screen and (max-width: 992px) {
 
             	.pointer {
@@ -405,7 +410,6 @@ display:block;
 
 			function showAll() {
 
-				var required = ["MRN", "DOB", "diagnosis", "ProcedureDate", "POEM_complication"];
 
 				$('#content').find(':input').not('button').each(function () {
 
@@ -458,7 +462,7 @@ display:block;
 
 			function hideNotRequired() {
 
-				var required = ["MRN", "DOB", "diagnosis", "ProcedureDate", "POEM_complication"];
+				var required = ["MRN", "DOB", "diagnosis", "ProcedureDate", "POEM_complication", "POEM_knife", "myotomy_bottom", "myotomy_top", "POEM_incision_distance", "POEM_incision_position", "submucosal_tunnel_bottom", "myotomy_top", "myotomy_full_thickness_length_distal", "POEM_number_clips", "POEM_duration_total"];
 
 				$('#content').find(':input').not('button').each(function () {
 
@@ -1050,6 +1054,23 @@ display:block;
 
 						},
 
+						POEM_knife:{
+
+							required : true,
+
+						},
+
+						myotomy_bottom:{
+
+							required : true,
+
+						},
+
+						myotomy_top : {
+
+							required: true,
+						},
+
 
 
 						comorbidity_other: {
@@ -1279,6 +1300,7 @@ display:block;
 
 						POEM_duration_total: {
 
+							required: true,
 							number: true,
 							maxlength: 3,
 
@@ -1304,8 +1326,15 @@ display:block;
 
 						POEM_incision_distance: {
 
+							required: true,
 							number: true,
 							maxlength: 3,
+						},
+
+						submucosal_tunnel_bottom: {
+
+							required: true,
+
 						},
 
 
@@ -1321,6 +1350,12 @@ display:block;
 						POEM_myotomy_length: {
 							number: true,
 							maxlength: 3,
+
+						},
+
+						myotomy_full_thickness_length_distal: {
+
+							required: true,
 
 						},
 
@@ -1350,7 +1385,7 @@ display:block;
 
 						POEM_number_clips: {
 
-
+							required: true,
 						},
 
 

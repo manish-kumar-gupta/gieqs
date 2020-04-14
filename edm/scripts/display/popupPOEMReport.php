@@ -124,7 +124,7 @@ $POEM->Load_from_key($key); //load the correct patient record?>
                                     ?>
 
                                     <p class="">The gastro-oesophageal junction was located at <?php echo $POEM->getPOEM_incision_distance();?> cm from the incisors </p>
-                                    <p class="">A submucosal tunnel was created in the <?php echo $POEM->getPOEM_incision_position();?> o'clock orientation at <?php echo $POEM->getPOEM_incision_distance();?> cm using submucosal injection and the (xx) knife</p>
+                                    <p class="">A submucosal tunnel was created in the <?php echo $POEM->getPOEM_incision_position();?> o'clock orientation at <?php echo $POEM->getPOEM_incision_distance();?> cm using submucosal injection and the  <?php echo $general->getValueText('knife', $POEM->getPOEM_knife(), 'valuesPOEM');?> knife</p>
                                     <p class="">Submucosal tunneling was performed to <?php echo $POEM->getsubmucosal_tunnel_bottom();?>  cm </p>
                                     <p class="">A <?php echo $myotomy_length?> cm myotomy was perfomed from <?php echo $POEM->getmyotomy_top();?> cm (full thickness for the distal <?php echo $POEM->getmyotomy_full_thickness_length_distal();?> cm)</p>
                                     <?php if ($POEM->getPOEM_complication() == 0){?>
