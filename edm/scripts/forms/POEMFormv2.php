@@ -1030,8 +1030,8 @@ display:block;
 					rules: {
 						MRN: {
 							required: true,
-							number: true,
-							maxlength: 8,
+							//number: true,
+							maxlength: 13,
 						}, //OF COURSE CHANGE
 
 
