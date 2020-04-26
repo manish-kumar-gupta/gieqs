@@ -17,9 +17,40 @@ function array_not_unique($a = array())
     return array_diff_key($a, array_unique($a));
 }
 
+function time_elapsed_string($datetime, $full = false) {
+    $now = new DateTime;
+    $ago = new DateTime($datetime);
+    $diff = $now->diff($ago);
+
+    $diff->w = floor($diff->d / 7);
+    $diff->d -= $diff->w * 7;
+
+    $string = array(
+        'y' => 'year',
+        'm' => 'month',
+        'w' => 'week',
+        'd' => 'day',
+        'h' => 'hour',
+        'i' => 'minute',
+        's' => 'second',
+    );
+    foreach ($string as $k => &$v) {
+        if ($diff->$k) {
+            $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
+        } else {
+            unset($string[$k]);
+        }
+    }
+
+    if (!$full) $string = array_slice($string, 0, 1);
+    return $string ? implode(', ', $string) . ' ago' : 'just now';
+}
+
 $general = new general;
 
 $navigator = new navigator;
+
+$user = new users;
 
 $tagsToMatch = json_decode(file_get_contents('php://input'), true);
 if ($debug) {
@@ -159,7 +190,7 @@ if ($debug) {
 
                         ?>
 
-                        <div class="d-flex flex-row align-content-center mt-1 pt-0 px-0 text-white">
+                        <div class="d-flex flex-row flex-wrap align-items-stretch mt-1 pt-0 px-0 text-white">
                     <?php }
                     if ($a < 10){
 
@@ -167,8 +198,8 @@ if ($debug) {
                     
 ?>          
                 
-                <div class="card mr-md-4">
-                <div class="card-header" style="height:150px;">
+                <div class="card mr-md-4 individualVideo flex-even">
+                <div class="card-header" style="height:175px;">
                     <div class="row align-items-right my-0">
                         <div class="col-12 my-0 pr-0">
                             <div class="actions text-right">
@@ -185,15 +216,16 @@ if ($debug) {
                     </div>
                     <div class="row align-items-center text-break">
                         <div class="col-12 text-break">
-                            <h5 class="card-title mb-0"><?php echo $value['name']; ?></h5>
-                            <p class="text-muted mb-0"><?php echo $value['author']; ?></p>
+                            <h5 class="card-title mb-0 w-100"><?php echo $value['name']; ?></h5>
+                            <p class=" text-muted text-sm mt-1 mb-0 w-100 align-self-baseline">Author : <?php echo $user->getUserName($value['author']); ?></p>
+                            
 
                         </div>
                     </div>
                     
                 </div>
                 <a href="<?php echo BASE_URL . '/pages/learning/index.php?id=' . $value['id']; ?>">
-                <img alt="Image placeholder" src="<?php echo $value['thumbnail']; ?>" class="img-fluid mt-2">
+                <img alt="video image" src="<?php echo $value['thumbnail']; ?>" class="img-fluid mt-2">
             </a>
 
                 <div class="card-body">
@@ -205,7 +237,7 @@ if ($debug) {
                             <a href="<?php echo BASE_URL . '/pages/learning/index.php?id=' . $value['id']; ?>" class="btn btn-sm text-white gieqsGoldBackground">View</a>
                         </div>
                         <div class="col-6 text-right">
-                            <span class="text-muted text-sm">time uploaded</span>
+                            <span class="text-muted text-sm"><?php echo time_elapsed_string($value['created']);?></span>
                         </div>
                     </div>
                 </div>
@@ -223,7 +255,7 @@ if ($debug) {
                     if ($a % 3 == 0){
                         ?>
                         </div>
-                        <div class="d-flex flex-row align-content-center mt-1 pt-0 px-0 text-white">
+                        <div class="d-flex flex-row flex-wrap align-items-stretch mt-1 pt-0 px-0 text-white">
 
                         <?php
                     }
@@ -237,11 +269,31 @@ if ($debug) {
                     ?>
 
                 </div>
-                <div class="d-flex flex-row align-items-end mt-1 pb-6 pt-0 px-0 text-white">
+                <div class="d-flex flex-row-reverse flex-wrap mt-1 pb-6 pt-0 px-0 text-white">
 
                             <a href="<?php echo BASE_URL . '/pages/learning/index.php?id=' . $value['id']; ?>" class="align-self-end btn btn-sm text-white gieqsGoldBackground">Load more videos..</a>
 
 
+                    <?php
+
+                }
+
+                if ($b == 1){
+
+                    ?>
+                    <div class="d-flex flex-row flex-wrap card-placeholder align-items-stretch mt-1 pt-0 px-0 text-white">
+                    </div>
+                    <div class="d-flex flex-row flex-wrap card-placeholder align-items-stretch mt-1 pt-0 px-0 text-white">
+                    </div>
+                    <?php
+
+                }
+
+                if ($b == 2){
+
+                    ?>
+                    <div class="d-flex flex-row flex-wrap card-placeholder align-items-stretch mt-1 pt-0 px-0 text-white">
+                    </div>
                     <?php
 
                 }

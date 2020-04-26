@@ -481,7 +481,7 @@ class general {
 	}
 
 
-	public function makeTable ($q){
+	public function makeTableOld ($q){
 
 		//echo $q;
 
@@ -497,7 +497,7 @@ class general {
 
 
 
-			echo '<table id="dataTable">';
+			echo '<table id="dataTable" class="table">';
 
 			echo '<tr>';
 
@@ -531,6 +531,72 @@ class general {
 
 			}
 
+
+
+			echo '</table>';
+
+		}else{
+
+			echo '<p>Error</p>';
+			print_r($this->connection->conn);
+
+		}
+
+	}
+
+	public function makeTable ($q){
+
+		//echo $q;
+
+		$result = $this->connection->RunQuery($q);
+
+
+		if ($result->num_rows > 0){
+
+
+			$data = array();
+
+			while($data[] = $result->fetch_array(MYSQLI_ASSOC));
+
+
+
+			echo '<table id="dataTable" class="table table-cards">';
+
+			echo '<thead>';
+			echo '<tr class="table-divider">';
+
+			foreach ($data as $key=>$value){
+
+				foreach ($value as $k=>$v){
+					echo '<th>' . $k . '</th>';
+				}
+
+				break;
+			}
+
+			echo '</tr>';
+			echo '</thead>';
+			echo '<tbody>';
+
+			foreach ($data as $k=>$v){
+
+				if ($v){
+					echo '<tr class="datarow">';
+
+					foreach($v as $key=>$value){
+
+
+						echo '<td>';
+						echo $value;
+						echo '</td>';
+
+					}
+
+					echo '</tr>';
+				}
+
+			}
+			echo '</tbody>';
 
 
 			echo '</table>';

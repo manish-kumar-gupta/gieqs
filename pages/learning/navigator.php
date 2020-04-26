@@ -38,9 +38,19 @@
 
         }
 
+        .card-placeholder{
+
+            width: 344px;
+
+        }
+
         .break {
   flex-basis: 100%;
   height: 0;
+}
+
+.flex-even {
+  flex: 1;
 }
 
 
@@ -60,6 +70,8 @@ background-color: rgb(238, 194, 120);
 
         
 
+        
+
         iframe {
   box-sizing: border-box;
     height: 25.25vw;
@@ -74,6 +86,28 @@ background-color: rgb(238, 194, 120);
 .cursor-pointer {
 
     cursor: pointer;
+
+}
+
+@media (max-width: 768px) {
+
+    .flex-even {
+  flex-basis: 100%;
+}
+}
+
+@media (max-width: 768px) {
+
+.card-header {
+    height:250px;
+}
+
+.card-placeholder{
+
+    width: 204px;
+
+}
+
 
 }
 
@@ -97,6 +131,8 @@ background-color: rgb(238, 194, 120);
             max-width: 50vh; 
             z-index: 25;
         }
+
+        
 
 }
     </style>
@@ -183,7 +219,7 @@ background-color: rgb(238, 194, 120);
 
 
     <div class="container mt-6">
-        <div id="videoCards">
+        <div id="videoCards" class="flex-wrap">
             
 
             <div class="d-flex align-items-center">
@@ -377,6 +413,8 @@ background-color: rgb(238, 194, 120);
 
                 })
 
+                
+
                 //push how many loaded, use loaded variable
 
                 console.dir(tags);
@@ -396,6 +434,7 @@ background-color: rgb(238, 194, 120);
 				var request2 = $.ajax({
 					beforeSend: function () {
 
+                        $('#videoCards').html("<div class=\"d-flex align-items-center\"><strong>Loading...</strong><div class=\"spinner-border ml-auto\" role=\"status\" aria-hidden=\"true\"></div></div>");
 
 					},
 					url: siteRoot + "/pages/learning/scripts/getNavv2.php",
@@ -435,7 +474,25 @@ background-color: rgb(238, 194, 120);
                 })
                 
                 request2.then(function (data) {
+                    var tags = [];
+
+                    $('.tag').each(function(){
+
+                        if ($(this).is(":checked")){
+                            tags.push($(this).attr('data'));
+                        }
+
+
+                    })
+
+                    //TODO ADD ABILITY TO PASS A PARAMETER HERE INDICATING NUMBER LOADED
+                    //THEN MODIFY LAYOUT AND NUMBER LOADED
+
+                    console.dir(tags);
                     
+                    const jsonString = JSON.stringify(tags);
+
+
                     var request3 = $.ajax({
 					beforeSend: function () {
 
@@ -454,6 +511,13 @@ background-color: rgb(238, 194, 120);
                         //console.dir(toKeep);
 
                         $('#videoCards').html(data);
+                        $('body').find('#itemCount').each(function(){
+
+                            var count = $('body').find('.individualVideo').length;
+                            $(this).text(count);
+
+
+                        })
                         
                              
                                
@@ -476,6 +540,22 @@ background-color: rgb(238, 194, 120);
                     });
 
             refreshNavAndTags();
+
+            $('#refreshNavigation').click(function(){
+
+                $('.tag').each(function(){
+
+                    if ($(this).is(":checked")){
+                        
+                        $(this).prop('checked', false);
+                    }
+
+
+                })
+
+                refreshNavAndTags();
+
+            })
 
             //on load check if any are checked, if so load the videos
 
