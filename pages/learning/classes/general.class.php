@@ -3621,14 +3621,14 @@ return $arr;
 	public function getCategoryName($tagCategoriesid){
 
 		$q = "SELECT `tagCategoryName` FROM `tagCategories` WHERE `id` = " . $tagCategoriesid;
-			
+			//echo $q;
 			//$q = "SELECT b.`image_id`, c.`url`, c.`name`, c.`type`, e.`tagName`, d.`id` as imagesTagid, d.`tags_id` FROM `imageSet` as a INNER JOIN `imageImageSet` as b ON a.`id` = b.`imageSet_id` INNER JOIN `images` as c on b.`image_id` = c.`id` INNER JOIN `imagesTag` as d ON c.`id` = d.`images_id` INNER JOIN `tags` as e ON d.`tags_id` = e.`id` WHERE a.`id` = "+idPassed;
 			
 			
 			$result = $this->connection->RunQuery($q);
 
 			while($row = $result->fetch_array(MYSQLI_ASSOC)){
-				$tagCategoryName = $rows['tagCategoryName'];
+				$tagCategoryName = $row['tagCategoryName'];
 			}
 
 

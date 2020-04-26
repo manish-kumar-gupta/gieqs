@@ -409,7 +409,7 @@ var FormControl = (function() {
 		$indeterminateCheckbox = $('[data-toggle="indeterminate"]');
 
 
-	// Methods
+	// Methods //TODO fix this 
 
 	function init($this) {
 		$this.on('focus blur', function(e) {

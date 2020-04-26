@@ -284,7 +284,7 @@ error_reporting(E_ALL);
     </div>
     <div class="main-content">
 
-    <
+    
 
         <div class="d-flex align-items-end bg-gradient-dark">
             <div class="container mt-10 pt-4 pt-lg-4">

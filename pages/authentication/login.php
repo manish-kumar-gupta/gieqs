@@ -16,6 +16,15 @@ require BASE_URI . '/head.php';
     <title>Ghent International Endoscopy Symposium - Login </title>
   
     <style>
+
+      /* Change the white to any color ;) */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px blue inset !important;
+}
+
         .text-gieqsGold {
 
 color: rgb(238, 194, 120);
@@ -32,7 +41,11 @@ background-color: rgb(238, 194, 120);
       }
       @media screen and (max-width: 400px) {
         
-        
+        input {
+
+          padding-left: 10px !important;
+
+        }
         .scroll{
 
           font-size: 1em;
