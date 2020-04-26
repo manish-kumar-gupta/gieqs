@@ -298,8 +298,8 @@ error_reporting(E_ALL);
                         
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb breadcrumb-links p-0 m-0">
-                                <li class="breadcrumb-item"><a href="#">Videos</a></li>
-                                <li class="breadcrumb-item"><a href="#">Referring Page</a></li>
+                                <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/navigator.php'?>">Trainer</a></li>
+                                <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/navigator.php'?>">Referring Page</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Referring tag</li>
                             </ol>
                         </nav>

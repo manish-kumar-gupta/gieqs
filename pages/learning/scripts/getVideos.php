@@ -5,7 +5,7 @@ $openaccess = 1;
 
 require '../includes/config.inc.php';
 
-$debug = true;
+$debug = false;
 
 //require (BASE_URI.'/scripts/headerCreatorV2.php');
 
@@ -23,6 +23,7 @@ $navigator = new navigator;
 
 $tagsToMatch = json_decode(file_get_contents('php://input'), true);
 if ($debug) {
+    
     print_r($tagsToMatch);
 }
 
@@ -38,16 +39,13 @@ if ($debug) {
     print_r('number of tags to match' . $numberOfTagsToMatch);
 }
 
-//$key = $data['key'];
-
-//error_reporting(E_ALL);
-
-//define user access level
 
 ?>
 
 
         <?php
+
+        //CHANGE ME FOR NEW PAGES
 
 $requiredTagCategories = ['39', '40', '41', '42'];
 
@@ -55,7 +53,7 @@ $requiredTagCategories = ['39', '40', '41', '42'];
 
         <?php
 
-$tags = [];
+$videos = [];
 $x = 0;
 
 foreach ($requiredTagCategories as $key => $value) {
@@ -70,16 +68,7 @@ foreach ($requiredTagCategories as $key => $value) {
 
     }
 
-    /* $data = $navigator->generateNavigationSingle($value);
-
-    if ($debug){
-
-    print_r($data);
-    }
-     */
-
-    //get all tags where the navigation should be enabled
-    //these are tags which remain in videos that match the tag(s) clicked
+    
 
     $data2 = $navigator->getVideoData($value, $tagsToMatch, $debug);
 
@@ -89,30 +78,24 @@ foreach ($requiredTagCategories as $key => $value) {
         echo PHP_EOL . print_r($data2);
     }
 
-    //WORK AROUND DUE TO NO JOIN IN TAGS VERSUS TAG CATEGORIES
+
+    //add data2 to tags array in this loop
+
 
     $videos1 = [];
-    $y = 0;
-    foreach ($data2 as $key => $value) {
-
-        $videos1[$y] = $value['id'];
-        $y++;
-
-        //get all tags associated with this video
-
-    }
-
-    //only if count of array higher than 1
+    $y=0;
 
     
 
-    foreach ($data2 as $key => $value) {
+    if ($data2){
 
-        $tags[$x] = $value['id'];
+    foreach ($data2 as $key=>$value){
+        $videos[$x] = $value;
         $x++;
-
     }
 
+    }
+   
     //print_r($data1);
 
     // print_r($data2);
@@ -131,11 +114,27 @@ foreach ($requiredTagCategories as $key => $value) {
             <?php
 }
 
-if ($debug) {
+//REALLY HELPFUL CODE
+foreach($videos as $key=>$value)
+{
 
-    print_r($tags);
+    if(empty( $value ))
+        unset($videos[$key]);
+    
+    /* 
+    foreach ($value as $key1=>$value1){
+    if(empty( $value1 ))
+        unset($myarray[$key][$key1]);
+    } */
 }
-echo json_encode($tags);
+
+if ($debug) {
+    echo PHP_EOL . 'html build array contains:::' . PHP_EOL;
+    print_r($videos);
+
+    echo json_encode($videos);
+}
+
 
 ?>
 
@@ -146,18 +145,30 @@ echo json_encode($tags);
 
                 //using data2
 
-                $a = 0;
+                $a = 1;
 
-                foreach ($data2 as $key=>$value){
+                $b = count($videos);
 
+                foreach ($videos as $key=>$value){
 
+                    
 
                     //make the html for the cards (in groups of +10)
+
+                    if ($a == 1){
+
+                        ?>
+
+                        <div class="d-flex flex-row align-content-center mt-1 pt-0 px-0 text-white">
+                    <?php }
                     if ($a < 10){
 
-?>
+                    
+                    
+?>          
+                
                 <div class="card mr-md-4">
-                <div class="card-header">
+                <div class="card-header" style="height:150px;">
                     <div class="row align-items-right my-0">
                         <div class="col-12 my-0 pr-0">
                             <div class="actions text-right">
@@ -172,32 +183,34 @@ echo json_encode($tags);
                             </div>
                         </div>
                     </div>
-                    <div class="row align-items-center">
-                        <div class="col-12">
-                            <h5 class="card-title mb-0">Resection of a sigmoid LSL with evidence of submucosal invasive cancer</h5>
-                            <p class="text-muted mb-0">Author Name</p>
+                    <div class="row align-items-center text-break">
+                        <div class="col-12 text-break">
+                            <h5 class="card-title mb-0"><?php echo $value['name']; ?></h5>
+                            <p class="text-muted mb-0"><?php echo $value['author']; ?></p>
 
                         </div>
                     </div>
                     
                 </div>
-                <img alt="Image placeholder" src="https://i.vimeocdn.com/video/815721948_1280x720.jpg?r=pad" class="img-fluid mt-2">
+                <a href="<?php echo BASE_URL . '/pages/learning/index.php?id=' . $value['id']; ?>">
+                <img alt="Image placeholder" src="<?php echo $value['thumbnail']; ?>" class="img-fluid mt-2">
+            </a>
 
                 <div class="card-body">
-                    <p class="card-text">Hybrid ESD / EMR technique using water immersion for the resection of a sigmoid LSL with evidence of underlying submucosal invasive cancer using endoscopic imaging.</p>
+                    <p class="card-text"><?php echo $value['description']; ?></p>
                 </div>
                 <div class="card-footer">
                     <div class="row align-items-center">
                         <div class="col-6">
-                            <a href="#" class="btn btn-sm text-white gieqsGoldBackground">View</a>
+                            <a href="<?php echo BASE_URL . '/pages/learning/index.php?id=' . $value['id']; ?>" class="btn btn-sm text-white gieqsGoldBackground">View</a>
                         </div>
                         <div class="col-6 text-right">
                             <span class="text-muted text-sm">time uploaded</span>
                         </div>
                     </div>
                 </div>
-            </div>
-
+                </div>
+                   
 
 
 
@@ -207,9 +220,29 @@ echo json_encode($tags);
 <?php
                     }
 
+                    if ($a % 3 == 0){
+                        ?>
+                        </div>
+                        <div class="d-flex flex-row align-content-center mt-1 pt-0 px-0 text-white">
 
+                        <?php
+                    }
 
                     $a++;
+
+                }
+
+                if ($b > 9){
+
+                    ?>
+
+                </div>
+                <div class="d-flex flex-row align-items-end mt-1 pb-6 pt-0 px-0 text-white">
+
+                            <a href="<?php echo BASE_URL . '/pages/learning/index.php?id=' . $value['id']; ?>" class="align-self-end btn btn-sm text-white gieqsGoldBackground">Load more videos..</a>
+
+
+                    <?php
 
                 }
 

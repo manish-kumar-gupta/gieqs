@@ -21,7 +21,7 @@
             <span class='mr-auto p-2'>Navigator</span>
 
             <span class='p-2 bd-highlight text-muted'>xx items shown</span>
-            <span class='p-2 bd-highlight'><i class="cursor-pointer fas fa-search"></i></span>
+            <span class='p-2 bd-highlight' data-toggle="tooltip" data-placement="bottom" title="search"><i class="cursor-pointer fas fa-search"></i></span>
             
                     <span class='p-2 bd-highlight'><i id="navigatorCollapseButton" class="cursor-pointer fas fa-chevron-down"
                     data-toggle="collapse" data-target="#navigatorCollapse"></i></span>

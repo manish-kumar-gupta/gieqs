@@ -286,7 +286,9 @@ class navigator {
 
 		}
 
-		$q = "SELECT DISTINCT a.* FROM `video` as a INNER JOIN `chapter` as b ON a.`id` = b.`video_id` INNER JOIN `chapterTag` as c ON b.`id` = c.`chapter_id` INNER JOIN `tags` as d ON d.`id` = c.`tags_id` INNER JOIN `tagCategories` as e ON d.`tagCategories_id` = e.`id` $query_where";
+		//currently order by most recent
+
+		$q = "SELECT DISTINCT a.* FROM `video` as a INNER JOIN `chapter` as b ON a.`id` = b.`video_id` INNER JOIN `chapterTag` as c ON b.`id` = c.`chapter_id` INNER JOIN `tags` as d ON d.`id` = c.`tags_id` INNER JOIN `tagCategories` as e ON d.`tagCategories_id` = e.`id` $query_where ORDER BY a.`created` DESC";
 
 		$result = $this->connection->RunQuery($q);
 	
