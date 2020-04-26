@@ -286,8 +286,8 @@ error_reporting(E_ALL);
 
     
 
-        <div class="d-flex align-items-end bg-gradient-dark">
-            <div class="container mt-10 pt-4 pt-lg-4">
+        <div class="d-flex align-items-end">
+            <div class="container mt-8 pt-4 pt-lg-4">
                         <div class="row" style="margin-right:15px; margin-left:15px;">
                         <span class="h2 mb-0 text-white d-block"><?php echo $general->getVideoTitle($id)?></span>
                         <span class="col-xl-8 text-white" id="videoDescription">Video subtitle</span>
