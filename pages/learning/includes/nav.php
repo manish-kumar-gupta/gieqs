@@ -85,8 +85,8 @@
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/scripts/forms/videoTable.php"><i class="fas fa-columns"></i>Video Table</a>
                     
                     <div class="dropdown-divider"></div>
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Faculty</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/faculty.php"><i class="fas fa-user"></i>Faculty</a>
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Maintenance</span>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/scripts/getThumbnailsVideo.php"><i class="fas fa-user"></i>Update / generate Thumbnails</a>
                     
                     
                   </div>

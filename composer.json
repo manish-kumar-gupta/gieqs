@@ -2,6 +2,7 @@
     "require": {
         "phpmailer/phpmailer": "^6.1",
         "facebook/php-sdk": "^3.2",
-        "facebook/graph-sdk": "^5.7"
+        "facebook/graph-sdk": "^5.7",
+        "vimeo/vimeo-api": "^3.0"
     }
 }
