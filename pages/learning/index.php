@@ -282,15 +282,15 @@ error_reporting(E_ALL);
             </div>
         </div>
     </div>
-    <div class="main-content">
+    <div class="main-content bg-gradient-dark">
 
     
 
         <div class="d-flex align-items-end">
             <div class="container mt-8 pt-4 pt-lg-4">
                         <div class="row" style="margin-right:15px; margin-left:15px;">
-                        <span class="h2 mb-0 text-white d-block"><?php echo $general->getVideoTitle($id)?></span>
-                        <span class="col-xl-8 text-white" id="videoDescription">Video subtitle</span>
+                        <span class="h3 mb-0 text-white d-block w-75"><?php echo $general->getVideoTitle($id)?></span>
+                        <span class="col-xl-8 text-muted text-sm d-block" id="videoDescription">Video subtitle</span>
                     </div>
 
                 <div class="row">
@@ -303,7 +303,7 @@ error_reporting(E_ALL);
                                 <li class="breadcrumb-item active" aria-current="page">Referring tag</li>
                             </ol>
                         </nav>
-                        <div class="col text-left mt-0">
+                        <div class="col text-left mt-0 align-items-center">
                                                     <div class="actions">
                                                         <a class="action-item p-0 m-0 pr-4"><i
                                                                 class="fas fa-heart mr-1 pr-1"></i> 50</a>
@@ -445,7 +445,7 @@ error_reporting(E_ALL);
 
 
 
-    <div id="playerContainer" class="d-flex align-items-end bg-gradient-dark" style="padding-left:15px; padding-right:15px;">
+    <div id="playerContainer" class="d-flex align-items-end" style="padding-left:15px; padding-right:15px;">
         <div class="container mt-2 mb-2 py-0">
             <div class="row">
                 <div class="col-lg-9 mb-0 mb-lg-0 pr-lg-3">
@@ -460,7 +460,7 @@ error_reporting(E_ALL);
                         </div>
                 </div>
 </div>
-                <div class="card p-0 col-lg-3 bg-dark mt-2 mb-0 mb-lg-0 text-center vertical-align-center">
+                <div class="card p-0 col-lg-3 bg-dark mt-0 mb-0 mb-lg-0 text-center vertical-align-center">
                 <div class="card-header" style="padding-right: 0.5em;
     padding-left: 0.5em;
     padding-bottom: 0.5em;

@@ -361,7 +361,7 @@ echo $formv1->generateText('type', 'type', '', 'tooltip here');*/
 
 //!global variables
         
-switch (document.location.hostname)
+/* switch (document.location.hostname)
 {
     case 'gieqs.com':
                       
@@ -370,9 +370,9 @@ switch (document.location.hostname)
                        var rootFolder = 'http://localhost:90/dashboard/gieqs/pages/learning/'; break;
     default :  // set whatever you want
     var rootFolder = 'http://www.gieqs.com/pages/learning/'; break;
-}
+} */
         
-var siteRoot = rootFolder;
+/* var siteRoot = rootFolder; */
 
 var imagesPassed = "";
 
