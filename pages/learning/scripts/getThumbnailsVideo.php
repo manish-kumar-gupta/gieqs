@@ -15,6 +15,7 @@
 
 
       //define user access level
+      $requiredUserLevel = 2;
 
       
 
