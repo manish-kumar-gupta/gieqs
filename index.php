@@ -304,7 +304,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                 </div>
                 <div class="modal-body">
                     <span class="h6">Everybody knows that COVID-19 has changed everything about our society. <br /> <br/></span><span>We are working full steam ahead to deliver GIEQs as a traditional face-to-face event and are closely monitoring the further developments related to the outbreak of the COVID-19 virus. 
-                    <br/><br/>Of course as this unprecedented situation is constantly evolving, we remain watchful and will react to any official advice in the appropriate way.</span>
+                    <br/><br/>Of course as this unprecedented situation is constantly evolving, we remain watchful and will react to any official advice in the appropriate way.</span><br/><br/><span>Rest assured a GIEQs event in some form will take place in October 2020!</span>
                     
                 </div>
                 <div class="modal-footer">
