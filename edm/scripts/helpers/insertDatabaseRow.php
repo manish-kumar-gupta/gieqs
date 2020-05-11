@@ -267,6 +267,8 @@ background-color: rgb(238, 194, 120);
 
             })
 
+            $(this).prop('disabled', true);
+
         })
 
         $('#addValueList').click(function(e){
@@ -284,7 +286,7 @@ background-color: rgb(238, 194, 120);
             }else{
 
                 $('#removeValueList').prop('disabled', false);
-                
+
                 $(this).parent().after("<div class='form-row'><div class='col-md-1 mb-1'><label for='valueListFieldNumber1'>number</label><input type='text' class='form-control valueListFieldNumber' id='valueListFieldNumber1' name='valueListFieldNumber1'></div><div class='col-md-6 mb-1'><label for='valueListField1'>value list text</label><input type='text' class='form-control valueListField' id='valueListField1' name='valueListField1'></div></div>");
             }
 
