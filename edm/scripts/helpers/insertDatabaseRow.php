@@ -189,6 +189,7 @@ background-color: rgb(238, 194, 120);
 
                                         <div class="input-group mb-3">
                                         <button id="addValueList" class="btn bg-dark text-white">Add Value List Field</button>
+                                        <button id="removeValueList" class="btn bg-danger text-white">Remove All</button>
                                         </div>
                                         
                                        
@@ -236,6 +237,7 @@ background-color: rgb(238, 194, 120);
 	$(document).ready(function(){
 
         $('#addValueList').prop('disabled', true);
+        $('#removeValueList').prop('disabled', true);
 
 
 
@@ -255,11 +257,25 @@ background-color: rgb(238, 194, 120);
 
         })
 
+        $('#removeValueList').click(function(e){
+
+            e.preventDefault();
+
+            $('#rowInsert').find('.valueListField').each(function(){
+
+                $(this).parent().parent().remove();
+
+            })
+
+        })
+
         $('#addValueList').click(function(e){
 
             e.preventDefault();
 
             if ($(this).parent().parent().find('.valueListField').length > 0){
+
+                $('#removeValueList').prop('disabled', false);
 
                 var x = $(this).parent().parent().find('.valueListField').length + 1;
                 
@@ -267,6 +283,7 @@ background-color: rgb(238, 194, 120);
 
             }else{
 
+                $('#removeValueList').prop('disabled', false);
                 
                 $(this).parent().after("<div class='form-row'><div class='col-md-1 mb-1'><label for='valueListFieldNumber1'>number</label><input type='text' class='form-control valueListFieldNumber' id='valueListFieldNumber1' name='valueListFieldNumber1'></div><div class='col-md-6 mb-1'><label for='valueListField1'>value list text</label><input type='text' class='form-control valueListField' id='valueListField1' name='valueListField1'></div></div>");
             }
