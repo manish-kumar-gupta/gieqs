@@ -235,6 +235,26 @@ background-color: rgb(238, 194, 120);
 		
 	$(document).ready(function(){
 
+        $('#addValueList').prop('disabled', true);
+
+
+
+        $('#field_type').on('change', function(e){
+
+            //alert($(this).val());
+
+            if ($(this).val() == 1){
+
+                $('#addValueList').prop('disabled', false);
+
+            }else{
+
+                $('#addValueList').prop('disabled', true);
+
+            }
+
+        })
+
         $('#addValueList').click(function(e){
 
             e.preventDefault();
