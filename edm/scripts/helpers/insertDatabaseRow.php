@@ -230,7 +230,21 @@ background-color: rgb(238, 194, 120);
 
 			
 
-
+$.fn.serializeObject = function() {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function() {
+            if (o[this.name]) {
+                if (!o[this.name].push) {
+                    o[this.name] = [o[this.name]];
+                }
+                o[this.name].push(this.value || '');
+            } else {
+                o[this.name] = this.value || '';
+            }
+        });
+        return o;
+    };
 
     var siteRoot = rootFolder;
 		
@@ -281,13 +295,13 @@ background-color: rgb(238, 194, 120);
 
                 var x = $(this).parent().parent().find('.valueListField').length + 1;
                 
-                $(this).parent().parent().find('.valueListField').last().parent().parent().after("<div class='form-row'><div class='col-md-1 mb-1'><label for='valueListFieldNumber"+x+"'>number</label><input type='text' class='form-control valueListFieldNumber' id='valueListFieldNumber"+x+"' name='valueListFieldNumber"+x+"'></div><div class='col-md-6 mb-1'><label for='valueListField"+x+"'>value list text</label><input type='text' class='form-control valueListField' id='valueListField"+x+"' name='valueListField"+x+"'></div></div>");
+                $(this).parent().parent().find('.valueListField').last().parent().parent().after("<div class='form-row'><div class='col-md-1 mb-1'><label for='valueListFieldNumber"+x+"'>number</label><input type='text' class='form-control valueListFieldNumber noserialize' id='valueListFieldNumber"+x+"' name='valueListFieldNumber"+x+"'></div><div class='col-md-6 mb-1'><label for='valueListField"+x+"'>value list text</label><input type='text' class='form-control valueListField noserialize' id='valueListField"+x+"' name='valueListField"+x+"'></div></div>");
 
             }else{
 
                 $('#removeValueList').prop('disabled', false);
 
-                $(this).parent().after("<div class='form-row'><div class='col-md-1 mb-1'><label for='valueListFieldNumber1'>number</label><input type='text' class='form-control valueListFieldNumber' id='valueListFieldNumber1' name='valueListFieldNumber1'></div><div class='col-md-6 mb-1'><label for='valueListField1'>value list text</label><input type='text' class='form-control valueListField' id='valueListField1' name='valueListField1'></div></div>");
+                $(this).parent().after("<div class='form-row'><div class='col-md-1 mb-1'><label for='valueListFieldNumber1'>number</label><input type='text' class='form-control valueListFieldNumber noserialize' id='valueListFieldNumber1' name='valueListFieldNumber1'></div><div class='col-md-6 mb-1'><label for='valueListField1'>value list text</label><input type='text' class='form-control valueListField noserialize' id='valueListField1' name='valueListField1'></div></div>");
             }
 
 
@@ -303,7 +317,7 @@ background-color: rgb(238, 194, 120);
             url: siteRoot + "scripts/helpers/insertCommand.php",
             type: "POST",
             contentType: "application/json",
-            data: $('#rowInsert').find(":input:not('.no-serialize')").serialize(),
+            data: $('#rowInsert').find(":input:not('.noserialize')").serializeObject(),
             });
 
 

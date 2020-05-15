@@ -5,7 +5,7 @@
 			
 			require ('../../includes/config.inc.php');		
 			
-            require (BASE_URI.'/scripts/headerCreatorV2.php');
+            //require (BASE_URI.'/scripts/headerCreatorV2.php');
             
   
 
@@ -15,7 +15,7 @@
 
             $data = json_decode(file_get_contents('php://input'), true);
 
-            print_r($data);
+            
 
             $containerDatabase = "esdv1";
 
@@ -28,6 +28,8 @@
                 print_r($databasesToBackup);
 
                 //backup databases
+
+                print_r($data);
 
 
                 ini_set('display_errors', 1);
