@@ -132,7 +132,7 @@ class navigator {
 				$query_where .= "(e.`id` = '$categories' AND d.`id` = '$value')";
 				
 				if ($x < $howManyCategories){
-				$query_where .= " OR ";
+				$query_where .= " AND ";
 				}
 	
 				$x++;
@@ -144,7 +144,7 @@ class navigator {
 			//echo query_where;;
 		}else{
 
-			$query_where = null;
+			$query_where = "WHERE e.`id` = '$categories'";
 
 		}
 
@@ -282,7 +282,7 @@ class navigator {
 			//echo query_where;;
 		}else{
 
-			$query_where = null;
+			$query_where = "WHERE e.`id` = '$categories'";
 
 		}
 

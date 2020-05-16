@@ -8,7 +8,7 @@
 
     <?php
 
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 
 
       //define user access level
@@ -80,6 +80,12 @@ error_reporting(E_ALL);
             max-width: 50vh; 
             z-index: 25;
         }
+
+        #selectDropdown {
+
+            
+            z-index: 25;
+            }
 
 }
     </style>
@@ -287,22 +293,23 @@ error_reporting(E_ALL);
     
 
         <div class="d-flex align-items-end">
-            <div class="container mt-8 pt-4 pt-lg-4">
+            <div class="container mt-10 mt-lg-10 pt-4 pt-lg-4">
+            <nav aria-label="breadcrumb" class="mb-3">
+                            <ol class="breadcrumb breadcrumb-links p-0 m-0">
+                                <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/navigator.php'?>">GIEQs online</a></li>
+                                <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/navigator.php'?>">Referring Search Page</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Video Viewer</li>
+                            </ol>
+                        </nav>
                         <div class="row" style="margin-right:15px; margin-left:15px;">
-                        <span class="h3 mb-0 text-white d-block w-75"><?php echo $general->getVideoTitle($id)?></span>
-                        <span class="col-xl-8 text-muted text-sm d-block" id="videoDescription">Video subtitle</span>
+                        <span class="h3 mb-0 text-white d-block w-lg-75"><?php echo $general->getVideoTitle($id)?></span>
+                        <span class="col-xl-8 text-muted text-md d-block my-2" id="videoDescription">Video subtitle</span>
                     </div>
 
                 <div class="row">
-                    <div class="col-lg-4 mb-0 mb-lg-0 pl-5">
+                    <div class="col-lg-6 mb-0 mb-lg-0 pl-lg-5">
                         
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb breadcrumb-links p-0 m-0">
-                                <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/navigator.php'?>">Trainer</a></li>
-                                <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/navigator.php'?>">Referring Page</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Referring tag</li>
-                            </ol>
-                        </nav>
+                       
                         <div class="col text-left mt-0 align-items-center">
                                                     <div class="actions">
                                                         <a class="action-item p-0 m-0 pr-4"><i
@@ -314,7 +321,7 @@ error_reporting(E_ALL);
                                                     </div>
                                                 </div>
 </div>
-                            <div class="col-lg-5 mb-0 mb-lg-0 align-self-center">
+                            <div class="col-lg-3 mb-0 mb-lg-0 align-self-center">
                                 <div class="text-right ">
                                 
                                                         
@@ -460,7 +467,7 @@ error_reporting(E_ALL);
                         </div>
                 </div>
 </div>
-                <div class="card p-0 col-lg-3 bg-dark mt-0 mb-0 mb-lg-0 text-center vertical-align-center">
+                <div class="card p-0 col-lg-3 bg-dark mt-2 mt-lg-0 mb-0 mb-lg-0 text-center vertical-align-center">
                 <div class="card-header" style="padding-right: 0.5em;
     padding-left: 0.5em;
     padding-bottom: 0.5em;
@@ -691,64 +698,43 @@ error_reporting(E_ALL);
 
         $(document).ready(function () {
 
-            if (signup == '2456') {
-
-                $('#registerInterest').modal('show');
-
-            }
-
-            $(document).on('click', '#submitPreRegister', function () {
-
-                event.preventDefault();
-                $('#pre-register').submit();
-
-            })
-
-            $("#pre-register").validate({
-
-                invalidHandler: function (event, validator) {
-                    var errors = validator.numberOfInvalids();
-                    console.log("there were " + errors + " errors");
-                    if (errors) {
-                        var message = errors == 1 ?
-                            "1 field contains errors. It has been highlighted" :
-                            +errors + " fields contain errors. They have been highlighted";
+            
 
 
-                        $('#error').text(message);
-                        //$('div.error span').addClass('form-text text-danger');
-                        //$('#errorWrapper').show();
+            $(document).click(function(event) { 
+                $target = $(event.target);
+                
+                if(!$target.closest('#collapseExample').length && 
+                    $('#collapseExample').is(":visible")) {
+                        $('#collapseExample').collapse('hide');
+                    }        
+            });
 
-                        $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function () {
-                            $("#errorWrapper").slideUp(500);
-                        });
-                    } else {
-                        $('#errorWrapper').hide();
-                    }
-                },
-                rules: {
-                    name: {
-                        required: true,
-                    },
-                    email: {
-                        required: true,
-                        email: true,
-                    },
+            $(document).click(function(event) { 
+                $target = $(event.target);
+                
+                if(!$target.closest('#selectDropdown').length && 
+                    $('#selectDropdown').is(":visible")) {
+                        $('#selectDropdown').collapse('hide');
+                    }        
+            });
 
-                },
-                submitHandler: function (form) {
+            $(document).click(function(event) { 
+                $target = $(event.target);
+                
+                if(!$target.closest('#collapseExample2').length && 
+                    $('#collapseExample2').is(":visible")) {
+                        $('#collapseExample2').collapse('hide');
+                    }        
+            });
 
-                    submitPreRegisterForm();
-
-                    //console.log("submitted form");
-
-
-
-                }
-
-
-
-
+            $(document).click(function(event) { 
+                $target = $(event.target);
+                
+                if(!$target.closest('#collapseExample3').length && 
+                    $('#collapseExample3').is(":visible")) {
+                        $('#collapseExample3').collapse('hide');
+                    }        
             });
 
 

@@ -175,7 +175,14 @@ background-color: rgb(238, 194, 120);
 
         <div id="id" style="display:none;"><?php if ($id){echo $id;}?></div>
 
+        <!--- specifiy the tag Categories required for display  CHANGEME-->
 
+        <?php
+        $requiredTagCategories = ['39'];
+
+        ?>
+
+        <div id="requiredTagCategories" style="display:none;"><?php echo json_encode($requiredTagCategories);?></div>
 
        
 
@@ -199,10 +206,10 @@ background-color: rgb(238, 194, 120);
    
     <div class="main-content bg-gradient-dark">
 
-        <!--Header-->
+        <!--Header CHANGEME-->
 
     <div class="d-flex align-items-end container">
-        <p class="h1 mt-10">yyy video</p>
+        <p class="h1 mt-10">All video</p>
 
     </div>
 
@@ -226,132 +233,7 @@ background-color: rgb(238, 194, 120);
                 <strong>Loading...</strong>
                 <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
               </div>
-            <!-- <div class="card mr-md-4">
-                <div class="card-header">
-                    <div class="row align-items-right my-0">
-                        <div class="col-12 my-0 pr-0">
-                            <div class="actions text-right">
-                                <a href="#" class="action-item action-favorite" data-toggle="tooltip" data-original-title="Mark as favorite">
-                                    <i class="fas fa-star gieqsGold"></i>
-                                </a>
-                               
-                            
-                                <a href="#" class="action-item action-like active" data-toggle="tooltip" data-original-title="Like">
-                                    <i class="fas fa-thumbs-up text-muted"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row align-items-center">
-                        <div class="col-12">
-                            <h5 class="card-title mb-0">Resection of a sigmoid LSL with evidence of submucosal invasive cancer</h5>
-                            <p class="text-muted mb-0">Author Name</p>
-
-                        </div>
-                    </div>
-                    
-                </div>
-                <img alt="Image placeholder" src="https://i.vimeocdn.com/video/815721948_1280x720.jpg?r=pad" class="img-fluid mt-2">
-
-                <div class="card-body">
-                    <p class="card-text">Hybrid ESD / EMR technique using water immersion for the resection of a sigmoid LSL with evidence of underlying submucosal invasive cancer using endoscopic imaging.</p>
-                </div>
-                <div class="card-footer">
-                    <div class="row align-items-center">
-                        <div class="col-6">
-                            <a href="#" class="btn btn-sm text-white gieqsGoldBackground">View</a>
-                        </div>
-                        <div class="col-6 text-right">
-                            <span class="text-muted text-sm">time uploaded</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card ml-0 mr-md-4">
-                <div class="card-header">
-                    <div class="row align-items-right my-0">
-                        <div class="col-12 my-0 pr-0">
-                            <div class="actions text-right">
-                                <a href="#" class="action-item action-favorite" data-toggle="tooltip" data-original-title="Mark as favorite">
-                                    <i class="fas fa-star gieqsGold"></i>
-                                </a>
-                               
-                            
-                                <a href="#" class="action-item action-like active" data-toggle="tooltip" data-original-title="Like">
-                                    <i class="fas fa-thumbs-up text-muted"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row align-items-center">
-                        <div class="col-12">
-                            <h5 class="card-title mb-0">Resection of a sigmoid LSL with evidence of submucosal invasive cancer</h5>
-                            <p class="text-muted mb-0">Author Name</p>
-
-                        </div>
-                    </div>
-                    
-                </div>
-                <img alt="Image placeholder" src="https://i.vimeocdn.com/video/815721948_1280x720.jpg?r=pad" class="img-fluid mt-2">
-
-                <div class="card-body">
-                    <p class="card-text">Hybrid ESD / EMR technique using water immersion for the resection of a sigmoid LSL with evidence of underlying submucosal invasive cancer using endoscopic imaging.</p>
-                </div>
-                <div class="card-footer">
-                    <div class="row align-items-center">
-                        <div class="col-6">
-                            <a href="#" class="btn btn-sm text-white gieqsGoldBackground">View</a>
-                        </div>
-                        <div class="col-6 text-right">
-                            <span class="text-muted text-sm">time uploaded</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card ml-0 mr-md-3">
-                <div class="card-header">
-                    <div class="row align-items-right my-0">
-                        <div class="col-12 my-0 pr-0">
-                            <div class="actions text-right">
-                                <a href="#" class="action-item action-favorite" data-toggle="tooltip" data-original-title="Mark as favorite">
-                                    <i class="fas fa-star gieqsGold"></i>
-                                </a>
-                               
-                            
-                                <a href="#" class="action-item action-like active" data-toggle="tooltip" data-original-title="Like">
-                                    <i class="fas fa-thumbs-up text-muted"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row align-items-center">
-                        <div class="col-12">
-                            <h5 class="card-title mb-0">Resection of a sigmoid LSL with evidence of submucosal invasive cancer</h5>
-                            <p class="text-muted mb-0">Author Name</p>
-
-                        </div>
-                    </div>
-                    
-                </div>
-                <img alt="Image placeholder" src="https://i.vimeocdn.com/video/815721948_1280x720.jpg?r=pad" class="img-fluid mt-2">
-
-                <div class="card-body">
-                    <p class="card-text">Hybrid ESD / EMR technique using water immersion for the resection of a sigmoid LSL with evidence of underlying submucosal invasive cancer using endoscopic imaging.</p>
-                </div>
-                <div class="card-footer">
-                    <div class="row align-items-center">
-                        <div class="col-6">
-                            <a href="#" class="btn btn-sm text-white gieqsGoldBackground">View</a>
-                        </div>
-                        <div class="col-6 text-right">
-                            <span class="text-muted text-sm">time uploaded</span>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
+            
   
 
 
@@ -397,10 +279,24 @@ background-color: rgb(238, 194, 120);
     <script src=<?php echo BASE_URL . "/pages/learning/includes/endowiki-player.js"?>></script>
     <script>
         
+        //the number that are actually loaded
         var loaded = 1;
+
+        //the number the user wants
+        var loadedRequired = 1;
+
+        var firstTime = 1;
+
+        var requiredTagCategoriesText = $("#requiredTagCategories").text();
+
+        var requiredTagCategories = JSON.parse(requiredTagCategoriesText);
         
 
         function refreshNavAndTags(){
+
+            var screenTop = $(document).scrollTop();
+
+            console.log(top);
 
             var tags = [];
 
@@ -425,10 +321,17 @@ background-color: rgb(238, 194, 120);
 
 					key: key,
 
-				}*/
+				}*/var dataToSend = {
 
-				const jsonString = JSON.stringify(tags);
-				console.log(jsonString);
+                    tags: tags,
+                    requiredTagCategories: requiredTagCategories
+
+                    }
+
+                    //const jsonString2 = JSON.stringify(dataToSend);
+
+				const jsonString = JSON.stringify(dataToSend);
+				//console.log(jsonString);
 				console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
 
 				var request2 = $.ajax({
@@ -450,7 +353,7 @@ background-color: rgb(238, 194, 120);
                     if (data != '[]'){
                         var toKeep = $.parseJSON(data.trim());
                         //alert(data.trim());
-                        //console.dir(toKeep);
+                        console.dir(toKeep);
                         
                              
                             $('.tag').each(function(){
@@ -489,8 +392,24 @@ background-color: rgb(238, 194, 120);
                     //THEN MODIFY LAYOUT AND NUMBER LOADED
 
                     console.dir(tags);
+
+                    var dataToSend = {
+
+                        tags: tags,
+                        loaded: loaded,
+                        loadedRequired: loadedRequired,
+                        requiredTagCategories: requiredTagCategories
+
+                    }
+
+                    const jsonString2 = JSON.stringify(dataToSend);
+
+                  
+
                     
                     const jsonString = JSON.stringify(tags);
+
+                    console.dir(jsonString2);
 
 
                     var request3 = $.ajax({
@@ -501,7 +420,7 @@ background-color: rgb(238, 194, 120);
 					url: siteRoot + "/pages/learning/scripts/getVideos.php",
 					type: "POST",
 					contentType: "application/json",
-					data: jsonString,
+					data: jsonString2,
                     });
                     request3.done(function (data) {
                     // alert( "success" );
@@ -518,8 +437,43 @@ background-color: rgb(238, 194, 120);
 
 
                         })
+
+
+                        if (firstTime == 1){
+                        $('body').on('click', '#loadMore', function () {
+
+                        loadedRequired = loadedRequired + 1;
+
+            
+                        refreshNavAndTags();
+
+                        })
+                        }
+
                         
-                             
+
+                        if (firstTime > 1 && loadedRequired > 1){
+
+                                var loadedRequiredMultiple = ((loadedRequired-1) * 10)-3;
+
+                                console.log(loadedRequiredMultiple);
+
+                                //scroll to current level
+
+                            
+                                $("body,html").animate(
+                                {
+                                    scrollTop: $('body').find('.individualVideo:eq('+loadedRequiredMultiple +')').offset().top
+                                },
+                                2 //speed
+                                );
+                        }
+                       
+                        
+                        firstTime = firstTime + 1;
+                        //$('body').find('.individualVideo:eq('+loadedRequiredMultiple +')').scrollTop(300);
+                        
+                        
                                
 
                       
@@ -543,6 +497,14 @@ background-color: rgb(238, 194, 120);
 
             $('#refreshNavigation').click(function(){
 
+
+                firstTime = 1;
+                 //the number that are actually loaded
+                loaded = 1;
+
+                //the number the user wants
+                loadedRequired = 1;
+                
                 $('.tag').each(function(){
 
                     if ($(this).is(":checked")){
@@ -575,59 +537,10 @@ background-color: rgb(238, 194, 120);
 
             }
 
-            $(document).on('click', '#submitPreRegister', function () {
+           
+           
 
-                event.preventDefault();
-                $('#pre-register').submit();
-
-            })
-
-            $("#pre-register").validate({
-
-                invalidHandler: function (event, validator) {
-                    var errors = validator.numberOfInvalids();
-                    console.log("there were " + errors + " errors");
-                    if (errors) {
-                        var message = errors == 1 ?
-                            "1 field contains errors. It has been highlighted" :
-                            +errors + " fields contain errors. They have been highlighted";
-
-
-                        $('#error').text(message);
-                        //$('div.error span').addClass('form-text text-danger');
-                        //$('#errorWrapper').show();
-
-                        $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function () {
-                            $("#errorWrapper").slideUp(500);
-                        });
-                    } else {
-                        $('#errorWrapper').hide();
-                    }
-                },
-                rules: {
-                    name: {
-                        required: true,
-                    },
-                    email: {
-                        required: true,
-                        email: true,
-                    },
-
-                },
-                submitHandler: function (form) {
-
-                    submitPreRegisterForm();
-
-                    //console.log("submitted form");
-
-
-
-                }
-
-
-
-
-            });
+         
 
 
         })

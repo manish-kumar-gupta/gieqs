@@ -52,7 +52,16 @@ $navigator = new navigator;
 
 $user = new users;
 
-$tagsToMatch = json_decode(file_get_contents('php://input'), true);
+$data = json_decode(file_get_contents('php://input'), true);
+
+$tagsToMatch = $data['tags'];
+
+$loaded = $data['loaded'];
+
+$loadedRequired = $data['loadedRequired'];
+
+$loadedRequiredProduct = 10 * $loadedRequired;
+
 if ($debug) {
     
     print_r($tagsToMatch);
@@ -78,7 +87,9 @@ if ($debug) {
 
         //CHANGE ME FOR NEW PAGES
 
-$requiredTagCategories = ['39', '40', '41', '42'];
+$requiredTagCategories = $data['requiredTagCategories'];
+
+//$requiredTagCategories = ['39', '40', '41', '42'];
 
 ?>
 
@@ -159,6 +170,21 @@ foreach($videos as $key=>$value)
     } */
 }
 
+//WE NEED TO EMPTY THE DUPLICATE VIDEO ID'S
+//MORE REALLY USEFUL CODE TO REMOVE DUPLICATES FROM AN ARRAY
+
+$_data = array();
+foreach ($videos as $v) {
+  if (isset($_data[$v['id']])) {
+    // found duplicate
+    continue;
+  }
+  // remember unique item
+  $_data[$v['id']] = $v;
+}
+
+$videos = $_data;
+
 if ($debug) {
     echo PHP_EOL . 'html build array contains:::' . PHP_EOL;
     print_r($videos);
@@ -192,7 +218,7 @@ if ($debug) {
 
                         <div class="d-flex flex-row flex-wrap align-items-stretch mt-1 pt-0 px-0 text-white">
                     <?php }
-                    if ($a < 10){
+                    if ($a < $loadedRequiredProduct){
 
                     
                     
@@ -264,14 +290,14 @@ if ($debug) {
 
                 }
 
-                if ($b > 9){
+                if ($b > $loadedRequiredProduct - 1){
 
                     ?>
 
                 </div>
                 <div class="d-flex flex-row-reverse flex-wrap mt-1 pb-6 pt-0 px-0 text-white">
 
-                            <a href="<?php echo BASE_URL . '/pages/learning/index.php?id=' . $value['id']; ?>" class="align-self-end btn btn-sm text-white gieqsGoldBackground">Load more videos..</a>
+                            <button class="align-self-end btn btn-sm text-white gieqsGoldBackground" id="loadMore">Load more videos..</button>
 
 
                     <?php

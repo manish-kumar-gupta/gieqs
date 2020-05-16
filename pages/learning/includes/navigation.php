@@ -13,14 +13,14 @@
 <div class="d-flex align-items-end">
         <?php
 
-        $requiredTagCategories = ['39', '40', '41', '42'];
+        //$requiredTagCategories = ['39', '40', '41', '42'];
 
         ?>
         <div class="container mt-4 pt-0 bg-dark text-white" style="border: 1px solid #1b385d;">
         <div class="d-flex">
             <span class='mr-auto p-2'>Navigator</span>
 
-            <span class='p-2 bd-highlight text-muted'><span id='itemCount'></span> videos shown</span>
+            <span class='p-2 bd-highlight text-muted'><span id='itemCount'></span> video(s) shown</span>
             
             <span id='refreshNavigation' class='p-2 bd-highlight' data-toggle="tooltip" data-placement="bottom" title="refresh"><i class="cursor-pointer fas fa-redo"></i></span>
             <span class='p-2 bd-highlight' data-toggle="tooltip" data-placement="bottom" title="search"><i class="cursor-pointer fas fa-search"></i></span>

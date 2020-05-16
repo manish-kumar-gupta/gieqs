@@ -1,6 +1,7 @@
 <?php
 
-$openaccess = 1;
+            $openaccess = 1;
+
 			//$requiredUserLevel = 4;
 			
             require ('../includes/config.inc.php');		
@@ -13,15 +14,18 @@ $openaccess = 1;
 			//require ('/Applications/XAMPP/xamppfiles/htdocs/dashboard/esd/scripts/headerCreator.php');
         
             function array_not_unique( $a = array() )
-{
-  return array_diff_key( $a , array_unique( $a ) );
-}
+            {
+            return array_diff_key( $a , array_unique( $a ) );
+            }
 			
 			$general = new general;
 			
             $navigator = new navigator;
             
-            $tagsToMatch = json_decode(file_get_contents('php://input'), true);
+            $data = json_decode(file_get_contents('php://input'), true);
+
+            $tagsToMatch = $data['tags'];
+
             if ($debug){
             print_r($tagsToMatch);
             }
@@ -53,7 +57,10 @@ $openaccess = 1;
 
         <?php
 
-        $requiredTagCategories = ['39', '40', '41', '42'];
+        $requiredTagCategories = $data['requiredTagCategories'];
+
+
+        //$requiredTagCategories = ['39', '40', '41', '42'];
 
         
 

@@ -246,7 +246,7 @@ class general {
 			
 			
 			$author = $rows[0]['author'];
-			$authorName = $this->getUserName($author);
+			$authorName = $this->getUserNameCentreCountry($author);
 			$rows[0]['author'] = $authorName;
 
 			return json_encode($rows);
