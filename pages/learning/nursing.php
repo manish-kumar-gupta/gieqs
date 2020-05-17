@@ -13,7 +13,7 @@
 
       //define user access level
 
-      $openaccess = 1;
+      $openaccess = 1;a
 
       require BASE_URI . '/head.php';
 
@@ -24,7 +24,7 @@
       ?>
 
     <!--Page title-->
-    <title>GIEQs Online Endoscopy Trainer</title>
+    <title>GIEQs Online Endoscopy Trainer - Nursing</title>
 
     <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
     
