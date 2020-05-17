@@ -285,7 +285,7 @@ if ($identifierValue) {
                 </div>
                 <!-- Orders table -->
                 <div class="table-responsive">
-                    <table id="dataTable" class="table w-100 text-center table-cards align-items-center">
+                    <table id="dataTable" class="table text-center table-cards align-items-center">
                     <thead>
                     <tr>
                     <!-- EDIT -->
@@ -664,7 +664,7 @@ $(document).ready(function(){
                 emptyTable: "There are currently no active <?php echo $databaseName;?>s.",
                 zeroRecords: "There are currently no active <?php echo $databaseName;?>s.",
         },
-        autowidth : false,
+        autowidth : true,
         //"oSearch": {"sSearch": "1" }, //TODO implement filter on page load
 
 

@@ -1094,6 +1094,138 @@ class general {
 
 			$data = array();
 			
+			echo '<table id="dataTable" class="table table-cards w-100">';
+			echo '<thead>';
+			echo '<tr class="header">';
+
+			while($data[] = $result->fetch_array(MYSQLI_ASSOC));
+			
+			foreach ($data as $key=>$value){
+				//echo '<th></th>';
+				
+				foreach ($value as $k=>$v){
+					
+					
+					
+					echo '<th data="'.$k.'">' . $k . '</th>';
+				
+					
+				
+				
+				}
+				echo '<th data="references">References</th>';
+				echo '<th></th>';
+				echo '<th></th>';
+				
+
+				break;
+			}
+
+			//echo '<th></th>';
+			echo '</tr>';
+			echo '</thead>';
+
+			$x = 0;
+
+			foreach ($data as $k=>$v){
+
+				
+				
+				if ($id) {	
+					if ($id <> $v['id']){
+						
+						
+							echo '<td>';
+							echo $this->getBriefReference($id);
+							echo '</td>';
+							
+							
+						
+						echo '<td>';
+								echo "<button class='reference btn btn-small bg-dark py-0'>Add reference</button>";
+								echo '</td>';
+						
+						echo '<td>';
+								echo "<button class='deleteTag btn btn-small bg-dark py-0'>Delete</button>";
+								echo '</td>';
+						
+						
+						
+						echo '</tr>';
+						//echo '<tr>';
+						$x = 0;
+	
+					}
+					
+				}
+
+				$id = $v['id'];
+				$id = trim($id);
+
+
+
+				foreach($v as $key=>$value){
+
+
+
+					if ($key == 'url'){
+						echo '<td class="datarow">';
+						echo "<img class='lslimage' style='max-width:100px;' src='$roothttp/$value'>";
+						echo '</td>';
+					}else if ($key == 'tagCategories_id'){
+						
+						echo '<td class="datarow">';
+						echo $this->getTagCategoryName($value);
+						echo '</td>';
+						
+						
+					}else{
+
+						
+						
+						echo '<td class="datarow">';
+							echo trim($value);
+							echo '</td>';
+						
+						
+
+					}
+
+					$x++;
+
+
+				}
+
+
+
+
+			}
+
+
+
+			echo '</table>';
+
+		}else{
+			
+			echo '<p>There are no user submissions pending approval</p>';
+			
+		}
+
+	}
+
+	public function makeTableTagManagerOld ($q, $roothttp){
+
+		//echo $q;
+		//$result = $this->connection->RunQuery('USE ESD');
+		$result = $this->connection->RunQuery($q);
+
+		//print_r($result);
+
+		if ($result->num_rows > 0){
+
+
+			$data = array();
+			
 			echo '<table id="dataTable">';
 			
 			echo '<tr class="header">';

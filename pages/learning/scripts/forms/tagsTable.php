@@ -220,33 +220,30 @@ background-color: rgb(238, 194, 120);
 		<body>
 			
 				
-		    <div id='content' class='content container mt-10'>
+		    <div id='content' class='content container-fluid mt-10'>
 			    
-		        <div class='responsiveContainer white'>
+		        <div class='white'>
 			        
 			        <div class='row'>
-		                <div class='col-12'>
-		                    <h2 style="text-align:left;">Tag and Reference Manager</h2>
+		                <div class='col-6'>
+		                    <h2 class="ml-5" style="text-align:left;">Tag and Reference Manager</h2>
 		                </div>
 		
 		                <div id="messageBox" class='col-3 yellow-light narrow center'>
-		                    <p><button id="newtags" onclick="window.location.href = '<?php echo BASE_URL;?>/scripts/forms/tagsForm.php';">New tags</button></p>
+		                    <p><button id="newtags" class="btn btn-small bg-dark" onclick="window.location.href = '<?php echo BASE_URL;?>/scripts/forms/tagsForm.php';">New tags</button></p>
 		                </div>
 					</div>
 					
 					<div class='row'>
+					<div class='col-6'>
+		                    
+							</div>
 		                <div class='col-3'>
-		                    <p style="text-align:right;">Search:</p>
-		                </div>
-		
-		                <div id="searchBox" class='col-6 yellow-light narrow left'>
-							<p></p>
-							<div><button type="button" id="resetTable">Reset Table</button>&nbsp;&nbsp;<button type="button" id="hideSearch">Hide Search Box</button></div>
+		                  
+							<div><button class="btn btn-small bg-dark" type="button" id="resetTable">Reset Table</button>
 						</div>
 						
-						<div class='col-3'>
-		                    
-		                </div>
+						
 		            </div>
 			        
 			        <div class='row'>
@@ -309,7 +306,7 @@ background-color: rgb(238, 194, 120);
 				$('#dataTable').DataTable();
 
 				//for each .header find th . data 
-				makeSearchBox();
+				//makeSearchBox();
 				//make a searchBox
 				//search to find like
 

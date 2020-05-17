@@ -88,7 +88,7 @@
                     
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">Tags</span>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/scripts/forms/tagsForm.php"><i class="fas fa-columns"></i>New Tag</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/scripts/forms/tagCategoriesTable.php"><i class="fas fa-columns"></i>Tag Category Table</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/scripts/forms/tagsTable.php"><i class="fas fa-columns"></i>Tag / Reference Table</a>
                     
 
                     <div class="dropdown-divider"></div>
