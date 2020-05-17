@@ -148,8 +148,9 @@ if (count($_GET) > 0){
 
 		}else if ($outputFormat == 2){
 
-				echo '<table id="dataTable">';
+				echo '<table id="dataTable2" class="table" style="table-layout:fixed;">';
 
+				echo '<thead>';
 				echo '<tr>';
 
 				foreach ($data as $key=>$value){
@@ -163,6 +164,7 @@ if (count($_GET) > 0){
 				}
 
 				echo '</tr>';
+				echo '</thead>';
 
 				while($row = $result->fetch_array(MYSQLI_ASSOC)){
 

@@ -42,6 +42,11 @@
 
         }
 
+        
+
+
+        
+
         .card-placeholder{
 
             width: 344px;
@@ -220,20 +225,17 @@ background-color: rgb(238, 194, 120);
 		
 		
 		
-		<div class="darkClass">
 		
-		</div>
-		
-		<div class="modal" style="display:none;">
-			
-			<div class='modalContent'>
+		<div class="modal fade docs-example-modal-xl" tabindex="-1" role="dialog">
+				<div class="modal-dialog modal-xl modal-dialog-centered">
+					<div class='modalContent modal-content p-3'>
 				
+					</div>
+					<div class='modalClose modal-footer'>
+						<p><br><button class="py-0 my-2 btn btn-small bg-dark" onclick="$('.modal, .darkClass').hide();">Close this window</button></p>
+					</div>
+				</div>
 			</div>
-			<div class='modalClose'>
-				<p><br><button onclick="$('.modal, .darkClass').hide();">Close this window</button></p>
-			</div>
-			
-		</div>
 		
 		<body>
 		
@@ -241,18 +243,17 @@ background-color: rgb(238, 194, 120);
 			
 			
 		
-		    <div id='content' class='content container mt-10'>
+		    <div id='content' class='content mt-10'>
 		
-		        <div class='responsiveContainer white'>
+		        <div class='responsiveContainer container white'>
 		
 			        <div class='row'>
 		                <div class='col-12'>
 		                    <h2 style="text-align:left;">Video Chapter, Tag Form</h2>
 		                </div>
-		
-		                <div id="messageBox" class='col-3 yellow-light narrow center'>
-		                    <p></p>
-		                </div>
+        
+                        
+		                
 		            </div>
 		
 		
@@ -292,9 +293,12 @@ background-color: rgb(238, 194, 120);
 					
 					</div>
 				  
-				</div>
+                </div>
+            </div>
+        
 				
-				<div class='row'>
+				<div class='container-fluid'>
+                    <div class='row'>
 					<!--<div class='col-1'>
 					</div>-->
 					<div class='col-12'>
@@ -315,8 +319,11 @@ background-color: rgb(238, 194, 120);
 				</div>
 		
 		        </div>
-		
-		    </div>
+                <div id="messageBox" class="alert alert-warning alert-flush" role="alert">
+                    <strong>Heads up!</strong> This is a info alert with <a href="#" class="alert-link">an example link</a> — check it out!
+                </div>
+            </div>
+            
 		<script>
 			
 
@@ -443,7 +450,7 @@ function constructEditTable(idPassed){
         
         if (formData == null){
 	        
-	        $("#images").html('<p>No chapter yet defined for this video</p><br><button id="newChapter" type="button" onclick="newChapterRow();"	>New Chapter</button>');
+	        $("#images").html('<p>No chapter yet defined for this video</p><br><button class="py-0 my-2 btn btn-small bg-dark" id="newChapter" type="button" onclick="newChapterRow();"	>New Chapter</button>');
 	        return;
 	        
         }
@@ -495,14 +502,14 @@ function constructEditTable(idPassed){
 			
 			
 			
-			html += "<td><input id='chaptertimefrom"+chapterid+"' type='text' class='form-control form-control-sm w-100 px-1 py-0'></input><br><button class='m-2' type='button' onclick='getVideoTime("+chapterid+", 0)'> + video time</button><br><button type='button' class='jumpToTime'>seek video</button></td>";
-			html += "<td><input id='chaptertimeto"+chapterid+"' type='text' class='form-control form-control-sm w-100 px-1 py-0'><br><button class='m-2' type='button' onclick='getVideoTime("+chapterid+", 1)'> + video time</button></input><br><button type='button' class='jumpToTime'>seek video</button></td>";
+			html += "<td><input id='chaptertimefrom"+chapterid+"' type='text' class='form-control form-control-sm w-100 px-1 py-0'></input><br><button class='py-0 my-2 btn btn-small bg-dark' type='button' onclick='getVideoTime("+chapterid+", 0)'> + video time</button><br><button type='button' class='jumpToTime py-0 my-2 btn btn-small bg-dark'>seek video</button></td>";
+			html += "<td><input id='chaptertimeto"+chapterid+"' type='text' class='form-control form-control-sm w-100 px-1 py-0'><br><button class='m-2 py-0 my-2 btn btn-small bg-dark' type='button' onclick='getVideoTime("+chapterid+", 1)'> + video time</button></input><br><button type='button' class='jumpToTime py-0 my-2 btn btn-small bg-dark'>seek video</button></td>";
 			
 			html += "<td class='chapterDesc' style='width:50%'><input id='chaptername"+chapterid+"' class='form-control form-control-sm w-100 px-1 py-0'></input></td>";
 			
-			html += "<td class='chapterDesc' style='width:50%'><textarea id='chapterdescription"+chapterid+"' class='name form-control form-control-sm w-100 px-1 py-0' rows='2' cols='70'></textarea></td>";
+			html += "<td class='chapterDesc' style='width:50%'><textarea id='chapterdescription"+chapterid+"' class='name form-control form-control-sm w-100 px-1 py-0' rows='3' cols='70'></textarea></td>";
 			
-			html += "<td><button class='addTag m-2'>Add Tag</button></td>";
+			html += "<td><button class='addTag m-2 py-0 my-2 btn btn-small bg-dark'>Add Tag</button></td>";
 			html += "<td class='chapterTag' id='tag"+chapterid+"'></td>";
 
 			//html += "<td><select name='imageorder"+image_id+"' id='imageorder"+image_id+"' class='order'><option hidden selected>";
@@ -523,9 +530,9 @@ function constructEditTable(idPassed){
         
         html += '</table>';
 		html += '<p>';
-		html += '<button id="newChapter" class="m-2" type="button" onclick="newChapterRow();">New Chapter</button>&nbsp;&nbsp;';
-		html += "<button class='addTagAll m-2'> Add tag to all images</button>&nbsp;&nbsp;";
-		html += "<button class='save m-2' onclick='fn60sec();'> Save data </button>";
+		html += '<button id="newChapter" class="m-2 py-0 my-2 btn btn-small bg-dark" type="button" onclick="newChapterRow();">New Chapter</button>&nbsp;&nbsp;';
+		html += "<button class='addTagAll m-2 py-0 my-2 btn btn-small bg-dark'> Add tag to all images</button>&nbsp;&nbsp;";
+		html += "<button class='save m-2 py-0 my-2 btn btn-small bg-dark' onclick='fn60sec();'> Save data </button>";
 		html += '</p>';
 
         $("#messageBox").text("Editing video with video id " + idPassed);
@@ -599,7 +606,7 @@ function constructEditTable(idPassed){
 	            var type = val.type;
 
 	            
-	            $("#tag"+image_id+"").append('<button id="' + imagesTagid + '" class="tagButton m-2">'+tagName+'</button>');
+	            $("#tag"+image_id+"").append('<button id="' + imagesTagid + '" class="tagButton py-0 my-2 btn btn-small bg-dark">'+tagName+'</button>');
 				
 				
 				
@@ -948,8 +955,8 @@ function newChapterRow (){
 			
 			
 			
-			html += "<td><input id='chaptertimefrom"+data+"' type='text'></input><br><button type='button' onclick='getVideoTime("+data+", 0)'> + video time</button><br><button type='button' class='jumpToTime'>seek video</button></td>";
-			html += "<td><input id='chaptertimeto"+data+"' type='text'><br><button type='button' onclick='getVideoTime("+data+", 1)'> + video time</button></input><br><button type='button' class='jumpToTime'>seek video</button></td>";
+			html += "<td><input id='chaptertimefrom"+data+"' type='text'></input><br><button class='py-0 my-2 btn btn-small bg-dark' type='button' onclick='getVideoTime("+data+", 0)'> + video time</button><br><button type='button' class='jumpToTime py-0 my-2 btn btn-small bg-dark'>seek video</button></td>";
+			html += "<td><input id='chaptertimeto"+data+"' type='text'><br><button class='py-0 my-2 btn btn-small bg-dark' type='button' onclick='getVideoTime("+data+", 1)'> + video time</button></input><br><button type='button' class='jumpToTime py-0 my-2 btn btn-small bg-dark'>seek video</button></td>";
 			
 			html += "<td class='chapterDesc'><input id='chapterdescription"+data+"'></input></td>";
 			
@@ -1287,6 +1294,34 @@ function getVideoTime(chapterid, type){
 	
 }
 
+function enterPreviousEndTime(chapterid, type){
+
+    //if chapter 1 say so // PICKUP HERE
+
+    var chapterid = $(this).parent().find('td:eq(0)').find('select').val();
+
+    if (chapterid == 1){
+
+        alert('no previous chapter');
+
+    }else{
+
+        //look through cells to find where chapter id + 1 is, then modify timeFrom field.
+
+
+
+    }
+
+    //else get timeto from previous row
+	
+	
+	
+	
+	
+	
+	
+}
+
 function jumpToTime (time){
 	
 	
@@ -1380,7 +1415,7 @@ $(document).ready(function() {
 
         singleTag = 1;
 
-        $('.darkClass').show();
+        //$('.darkClass').show();
 
 
 
@@ -1395,12 +1430,10 @@ $(document).ready(function() {
 
             //console.log(data);
 
-            $('.modal').show();
+            $('.modal').modal('show');
 
-            $('.modal').show();
-            $('.modal').css('max-height', 800);
-            $('.modal').css('max-width', 800);
-            $('.modal').css('overflow', 'scroll');
+            //$('.modal').show();
+            
 
 
 
@@ -1409,7 +1442,10 @@ $(document).ready(function() {
 
             $('.modal').find('.modalContent').append('<p>' + data + '</p>');
 
-            $('.modal').find('.modalContent').append('<button id="newTagCategory">Add new tag category</button>');
+            $('.modal').find('.modalContent').append('<button class="btn btn-sm bg-primary py-0" id="newTagCategory">Add new tag category</button>');
+
+
+            $('.modal').find('#dataTable2').DataTable();
 
             return;
 
@@ -1429,7 +1465,7 @@ $(document).ready(function() {
 
         //console.log('File id is'+fileID);
 
-        $('.darkClass').show();
+        //$('.darkClass').show();
 
 
 
@@ -1444,12 +1480,9 @@ $(document).ready(function() {
 
             //console.log(data);
 
-            $('.modal').show();
+            $('.modal').modal('show');
 
-            $('.modal').show();
-            $('.modal').css('max-height', 800);
-            $('.modal').css('max-width', 800);
-            $('.modal').css('overflow', 'scroll');
+            
 
 
 
@@ -1481,7 +1514,7 @@ $(document).ready(function() {
 
         //console.log('File id is'+fileID);
 
-        $('.darkClass').show();
+        //$('.darkClass').show();
 
         //collect objects imageID, tagID and insert into imageTags
 
@@ -1513,9 +1546,9 @@ $(document).ready(function() {
 
                         alert('This image tag combination already exists');
                         alreadyExists = 1;
-                        $('.modal').hide();
+                        $('.modal').modal('hide');
 
-                        $('.darkClass').hide();
+                       // $('.darkClass').hide();
 
                     } else {
 
@@ -1543,11 +1576,11 @@ $(document).ready(function() {
 
                                 //add the tag to the table
 
-                                $('.file').find('td[id=' + imageID + ']').closest('tr').find('td:eq(6)').append('<button id="' + data + '" class="tagButton">' + $(cellClicked).closest('tr').find('td:eq(1)').text() + '</button>');
+                                $('.file').find('td[id=' + imageID + ']').closest('tr').find('td:eq(7)').append('<button class="tagButton py-0 my-2 btn btn-small bg-dark" id="' + data + '">' + $(cellClicked).closest('tr').find('td:eq(1)').text() + '</button>');
 
-                                $('.modal').hide();
+                                $('.modal').modal('hide');
 
-                                $('.darkClass').hide();
+                                //$('.darkClass').hide();
 
                                 return;
 
@@ -1651,10 +1684,10 @@ $(document).ready(function() {
 
                                 var xy = 0;
 
-                                $('#imagesTable').find('tr').find('td:eq(6)').each(function() {
+                                $('#imagesTable').find('tr').find('td:eq(7)').each(function() {
 
 
-                                    $(this).append('<button id="' + returnedData[xy] + '" class="tagButton">' + $(cellClicked).closest('tr').find('td:eq(1)').text() + '</button>');
+                                    $(this).append('<button id="' + returnedData[xy] + '" class="tagButton py-0 my-2 btn btn-small bg-dark">' + $(cellClicked).closest('tr').find('td:eq(1)').text() + '</button>');
 
                                     xy++;
 
@@ -1751,7 +1784,7 @@ $(document).ready(function() {
 
             $('.modal').find('.modalContent').append('<p>' + data + '</p>');
 
-            $('.modal').find('.modalContent').append('<button id="newTagCategory">Add new tag category</button>');
+            $('.modal').find('.modalContent').append('<button class="py-0 my-2 btn btn-small bg-dark" id="newTagCategory">Add new tag category</button>');
 
             return;
 
@@ -1787,7 +1820,7 @@ $(document).ready(function() {
 
          console.log(tagImageid);
 
-        if (confirm("Do you wish to delete this tag from the image?")) {
+        if (confirm("Do you wish to delete this tag from the video/chapter?")) {
 
             //disableFormInputs("images");
 
@@ -1831,9 +1864,9 @@ $(document).ready(function() {
 
     $('.modal').on('click', '#newTagCategory', function() {
 
-        $('.modal').hide();
+        $('.modal').modal('hide');
 
-        $('.darkClass').hide();
+       // $('.darkClass').hide();
 
         PopupCenter(siteRoot + "scripts/forms/tagCategoriesForm.php", 'New Tag Category', 600, 700);
 
@@ -1845,9 +1878,9 @@ $(document).ready(function() {
 
     $('.modal').on('click', '#newTag', function() {
 
-        $('.modal').hide();
+        $('.modal').modal('hide');
 
-        $('.darkClass').hide();
+       // $('.darkClass').hide();
 
         PopupCenter(siteRoot + "scripts/forms/tagsForm.php", 'New Tag', 600, 700);
 

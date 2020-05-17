@@ -45,6 +45,11 @@
 
         }
 
+		.modal td {
+
+			white-space:normal !important;
+		}
+
         .card-placeholder{
 
             width: 344px;
@@ -197,26 +202,15 @@ background-color: rgb(238, 194, 120);
 		<?php
 		//include(BASE_URI . "/scripts/logobar.php");
 		
-		include(BASE_URI . "/includes/naviCreator.php");
+		//include(BASE_URI . "/includes/naviCreator.php");
 		?>
 		
 		
-		<body>
 		
-		<div class="darkClass">
 		
-		</div>
 		
-		<div class="modal" style="display:none;">
-			
-			<div class='modalContent'>
-				
-			</div>
-			<div class='modalClose'>
-				<p><br><button onclick="$('.modal, .darkClass').hide();">Close this window</button></p>
-			</div>
-			
-		</div>
+		
+		
 		<body>
 			
 				
@@ -259,7 +253,20 @@ background-color: rgb(238, 194, 120);
 			        
 		        </div>
 		        
-		    </div>
+			</div>
+
+		</div>
+			
+			<div class="modal fade docs-example-modal-xl" tabindex="-1" role="dialog">
+				<div class="modal-dialog modal-xl modal-dialog-centered">
+					<div class='modalContent modal-content p-3'>
+				
+					</div>
+					<div class='modalClose modal-footer'>
+						<p><br><button onclick="$('.modal, .darkClass').hide();">Close this window</button></p>
+					</div>
+				</div>
+			</div>
 		<script>
 			
 
@@ -427,9 +434,9 @@ background-color: rgb(238, 194, 120);
 
 															//$('.file').find('td[id=' + imageID + ']').closest('tr').find('td:eq(6)').append('<button id="' + data + '" class="tagButton">' + $(cellClicked).closest('tr').find('td:eq(1)').text() + '</button>');
 
-															$('.modal').hide();
+															$('.modal').modal('hide');
 
-															$('.darkClass').hide();
+															//$('.darkClass').hide();
 
 															location.reload();
 
@@ -518,7 +525,7 @@ background-color: rgb(238, 194, 120);
 
 					singleTag = 1;
 
-					$('.darkClass').show();
+					//$('.darkClass').show();
 
 
 
@@ -537,12 +544,12 @@ background-color: rgb(238, 194, 120);
 
 						//console.log(data);
 
-						$('.modal').show();
+						$('.modal').modal('show');
 
-						$('.modal').show();
-						$('.modal').css('max-height', 800);
+						//$('.modal').show();
+						/* $('.modal').css('max-height', 800);
 						$('.modal').css('max-width', 800);
-						$('.modal').css('overflow', 'scroll');
+						$('.modal').css('overflow', 'scroll'); */
 
 
 
@@ -554,7 +561,9 @@ background-color: rgb(238, 194, 120);
 
 						$('.modal').find('.modalContent').append('<button id="newReference">Add new reference</button>');
 
-						makeSearchBoxModal();
+						$('.modal').find('#dataTable2').DataTable();
+
+						//makeSearchBoxModal();
 
 						return;
 
