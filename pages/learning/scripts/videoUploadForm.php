@@ -293,7 +293,11 @@ background-color: rgb(238, 194, 120);
                 
                     <form id="imageUpload">
                     
-                    <p>Enter URL of Vimeo video to chapter and tag : <input type='text' name='video' id='video' size='80'></p>
+                    <p>Enter URL of Vimeo video to chapter and tag : 
+                        
+                    <div class="formRow mb-3">
+                    <input type='text' name='video' class="formInputs form-control" id='video' size='80'></p>
+                </div>
                     
                     <!--<input name="files[]" type="file" multiple="multiple" accept=".jpg, .jpeg, .bmp"/>-->
                     

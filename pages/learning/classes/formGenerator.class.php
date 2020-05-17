@@ -68,13 +68,14 @@ Class formGenerator {
 		$values = $this->GetValues($options);
 		//echo "<div id='".$id."row' class='row'>";
 		echo "<label for='$id' id='".$id."label' title='$tooltip'>$label&nbsp&nbsp</label>";
-	
-		echo "<select name='$id' id='$id' class='$class'>";
+		echo '<div class="input-group mb-3">';
+		echo "<select name='$id' id='$id' class='$class formInputs form-control'>";
 		echo "<option hidden disabled selected>please select</option>";
 		foreach ($values as $key=>$value){
 			echo "<option value='$key'>$value</option>";	
 		}
 		echo "</select><br>";
+		echo '</div>';
 		//echo "</div>";	
 	}
 	
@@ -83,13 +84,14 @@ Class formGenerator {
 		$values = $this->GetTagCategories();
 		//echo "<div id='".$id."row' class='row'>";
 		echo "<label for='$id' id='".$id."label' title='$tooltip'>$label&nbsp&nbsp</label>";
-	
-		echo "<select name='$id' id='$id' class='$class'>";
+		echo '<div class="input-group mb-3">';
+		echo "<select name='$id' id='$id' class='$class formInputs form-control'>";
 		echo "<option hidden disabled selected>please select</option>";
 		foreach ($values as $key=>$value){
 			echo "<option value='$key'>$key - $value</option>";	
 		}
 		echo "</select><br>";
+		echo '</div>';
 		//echo "</div>";	
 	}
 	
@@ -97,9 +99,10 @@ Class formGenerator {
 	//does not use the values table, uses array passed in the $options value
 	public function generateSelectCustom ($label, $id, $class, $options, $tooltip){
 		
-		echo "<div id='".$id."row' class='row'>";
+		//echo "<div id='".$id."row' class='row'>";
 		echo "<label for='$id' id='".$id."label' title='$tooltip'>$label&nbsp&nbsp</label>";
-		echo "<select name='$id' id='$id' class='$class'>";
+		echo '<div class="input-group mb-3">';
+		echo "<select name='$id' id='$id' class='$class formInputs form-control'>";
 		echo "<option hidden disabled selected>please select</option>";
 		foreach ($options as $key=>$value){
 			echo "<option value='$key'>$value</option>";	
@@ -138,19 +141,22 @@ Class formGenerator {
 	public function generateText ($label, $id, $class, $tooltip){
 		
 		//echo "<div id='".$id."row' class='row'>";
-		echo "<p class='formRow'>";
+		
 		echo "<label for='$id' id='".$id."label' title='$tooltip'>$label&nbsp&nbsp</label>";
-		echo "<input name='$id' id='$id' class='$class' type='text' size ='55'>";
-		echo "</p>";
+		echo '<div class="input-group mb-3">';
+		echo "<input name='$id' id='$id' class='$class formInputs form-control' type='text' size ='55'>";
+		echo '</div>';
+	
 		//echo "</div>";	
 		
 	}
 	
 	public function generatePassword ($label, $id, $class, $tooltip){
 		
-		echo "<div id='".$id."row' class='row'>";
+		
 		echo "<label for='$id' id='".$id."label' title='$tooltip'>$label&nbsp&nbsp</label>";
-		echo "<input name='$id' id='$id' class='$class' type='password' size ='50'>";
+		echo '<div class="input-group mb-3">';
+		echo "<input name='$id' id='$id' class='$class formInputs form-control' type='password' size ='50'>";
 		echo "</div>";	
 		
 	}
@@ -169,26 +175,33 @@ Class formGenerator {
 		
 		//echo "<div id='".$id."row' class='row'>";
 		//echo "<label for='$id' id='".$id."label' title='$tooltip'>$label&nbsp&nbsp</label>";
-		echo "<textarea name='$id' id='$id' class='$class' rows='4' cols='30'></textarea>";
+		echo "<label for='$id' id='".$id."label' title='$tooltip'>$label&nbsp&nbsp</label>";
+		echo '<div class="input-group mb-3">';
+		echo "<textarea name='$id' id='$id' class='$class formInputs form-control' rows='4' cols='30'></textarea>";
+		echo "</div>";
+
 		//echo "</div>";	
 		
 	}
 	
 	public function generateTextAreav2 ($label, $id, $class, $tooltip){
 		
-		echo "<p class='formRow'>";
+		
+		echo '<div class="input-group mb-3">';
 		echo "<label for='$id' id='".$id."label' title='$tooltip'>$label&nbsp&nbsp</label>";
-		echo "<textarea name='$id' id='$id' class='$class' rows='4' cols='30'></textarea>";
-		echo "</p>";	
+		echo "<textarea name='$id' id='$id' class='$class formInputs form-control' rows='4' cols='30'></textarea>";
+		echo "</div>";
 		
 	}
 
 	public function generateTextAreav3 ($label, $id, $class, $tooltip, $cols){
 		
-		echo "<p class='formRow'>";
+		
 		echo "<label for='$id' id='".$id."label' title='$tooltip'>$label&nbsp&nbsp</label>";
+		echo '<div class="input-group mb-3">';
 		echo "<textarea name='$id' id='$id' class='$class' rows='4' cols=$cols></textarea>";
-		echo "</p>";	
+		echo "</div>";
+		
 		
 	}
 	

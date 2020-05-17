@@ -1,10 +1,175 @@
 
 		
+			<!DOCTYPE html>
+<html lang="en">
+
+<?php require '../../includes/config.inc.php';?>
+
+
+<head>
+		
+<?php
+
+//error_reporting(E_ALL);
+
+
+      //define user access level
+
+      $requiredUserLevel = 2;
+
+      require BASE_URI . '/pages/learning/includes/head.php';
+
+      $general = new general;
+
+      $navigator = new navigator;
+
+      ?>
+
+    <!--Page title-->
+    <title>GIEQs Online Backend - Tag Categories Table</title>
+
+	<script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
+	<!-- Datatables -->
+<script src="<?php echo BASE_URL; ?>/node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo BASE_URL; ?>/assets/libs/datatables/dataTables.min.js"></script>
+    
+<link rel="stylesheet" href="<?php echo BASE_URL1; ?>/assets/libs/datatables/dataTables.min.css">
+    <style>
+       
+        .gieqsGold {
+
+            color: rgb(238, 194, 120);
+
+
+        }
+
+        .card-placeholder{
+
+            width: 344px;
+
+        }
+
+        .break {
+  flex-basis: 100%;
+  height: 0;
+}
+
+.flex-even {
+  flex: 1;
+}
+
+
+        
+        .gieqsGoldBackground {
+
+background-color: rgb(238, 194, 120);
+
+
+}
+
+        .tagButton {
+
+            cursor: pointer;
+
+        }
+
+        
+
+        
+
+        iframe {
+  box-sizing: border-box;
+    height: 25.25vw;
+    left: 50%;
+    min-height: 100%;
+    min-width: 100%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    width: 100.77777778vh;
+}
+.cursor-pointer {
+
+    cursor: pointer;
+
+}
+
+@media (max-width: 768px) {
+
+    .flex-even {
+  flex-basis: 100%;
+}
+}
+
+@media (max-width: 768px) {
+
+.card-header {
+    height:250px;
+}
+
+.card-placeholder{
+
+    width: 204px;
+
+}
+
+
+}
+
+@media (min-width: 1200px) {
+        #chapterSelectorDiv{
+
+            
+                
+                top:-3vh;
+            
+
+        }
+        #playerContainer{
+
+                margin-top:-20px;
+
+        }
+        #collapseExample {
+
+            position: absolute; 
+            max-width: 50vh; 
+            z-index: 25;
+        }
+
+        
+
+}
+    </style>
+
+
+</head>
+
+<body>
+    <header class="header header-transparent" id="header-main">
+
+        <!-- Topbar -->
+
+        <?php require BASE_URI . '/pages/learning/includes/topbar.php';?>
+
+        <!-- Main navbar -->
+
+        <?php require BASE_URI . '/pages/learning/includes/nav.php';?>
+
+        
+
+
+    </header>
 		
 			<?php
-		
-			require ('../../includes/config.inc.php'); require (BASE_URI.'/scripts/headerCreator.php');
-		
+if (isset($_GET["id"]) && is_numeric($_GET["id"])){
+	$id = $_GET["id"];
+
+}else{
+
+	$id = null;
+
+}		
 			$formv1 = new formGenerator;
 			$general = new general;
 			$video = new video;
@@ -47,24 +212,25 @@
 		<?php
 		//include(BASE_URI . "/scripts/logobar.php");
 		
-		include(BASE_URI . "/includes/naviCreator.php");
+		//..include(BASE_URI . "/includes/naviCreator.php");
 		?>
 		
 		<body>
 		
 			<div id="id" style="display:none;"><?php if ($id){echo $id;}?></div>
 		
-		    <div id='content' class='content'>
+		    <div id='content' class='content container mt-10 mb-6'>
 		
 		        <div class='responsiveContainer white'>
 		
 			        <div class='row'>
 		                <div class='col-9'>
-		                    <h2 style="text-align:left;">tags Form</h2>
+		                    <h2 style="text-align:left;">Tag Entry Form</h2>
 		                </div>
-		
+						<div class='col-3'>
+						<a href="<?php echo BASE_URL; ?>/pages/learning/scripts/forms/tagsTable.php"><i class="fas fa-table cursor-pointer"></i></a>
+		                </div>
 		                <div id="messageBox" class='col-3 yellow-light narrow center'>
-							<p><button id="tableTags" onclick="window.location.href = '<?php echo BASE_URL;?>/scripts/forms/tagsTable.php';">Table of tags</button></p>
 		               
 		                </div>
 		            </div>
@@ -74,9 +240,11 @@
 		
 				        if ($id){
 		
-							$q = "SELECT  id  FROM  tags  WHERE  id  = $id";
+							$q = "SELECT  `id`  FROM  `tags`  WHERE  `id`  = $id";
 							if ($general->returnYesNoDBQuery($q) != 1){
 								echo "Passed id does not exist in the database";
+								echo '</div></div>';
+								include(BASE_URI . "/footer.php");
 								exit();
 		
 							}
@@ -87,11 +255,11 @@
 		
 			        <p>
 		
-					    <form id="tags">
+					    <form id="tags" class="m-3">
 					    <?php echo $formv1->generateText('tagName', 'tagName', '', 'tooltip here');
 							echo $formv1->generateSelectTagCategories('tagCategories_id', 'tagCategories_id', '', 'tooltip here');
 ?>
-						    <button id="submittags">Submit</button>
+						    <button id="submittags" class="btn btn-sm bg-dark">Submit</button>
 		
 					    </form>
 		
@@ -103,15 +271,7 @@
 		
 		    </div>
 		<script>
-			switch (document.location.hostname)
-{
-        case 'www.endoscopy.wiki':
-                          
-                         var rootFolder = 'http://www.endoscopy.wiki/'; break;
-        case 'localhost' :
-                           var rootFolder = 'http://localhost:90/dashboard/learning/'; break;
-        default :  // set whatever you want
-}
+			
 			
 var siteRoot = rootFolder;
 		
@@ -172,7 +332,7 @@ var siteRoot = rootFolder;
 		
 				}catch(error){
 		
-					$("form#tags").find("button").after("<button id='deletetags'>Delete</button>");
+					$("form#tags").find("button").after("<button id='deletetags' class='btn btn-sm bg-dark'>Delete</button>");
 		
 				}
 		
@@ -318,20 +478,7 @@ var siteRoot = rootFolder;
 		
 				
 		
-			  	var titleGraphic = $(".title").height();
-				var titleBar = $("#menu").height();
-				$(".title").css('height',(titleBar));
 		
-		
-				$(window).resize(function () {
-			    waitForFinalEvent(function(){
-			      //alert("Resize...");
-			      var titleGraphic = $(".title").height();
-				  var titleBar = $("#menu").height();
-				  $(".title").css('height',(titleBar));
-		
-			    }, 100, 'Resize header');
-					});
 		
 		
 				$("#content").on('click', '#submittags', (function(event) {
@@ -390,8 +537,7 @@ tagCategories_id: { required: 'message' },
 		<?php
 		
 		    // Include the footer file to complete the template:
-		    include(BASE_URI . "/includes/footer.html");
-		
+			require BASE_URI . '/footer.php';		
 		
 		
 		

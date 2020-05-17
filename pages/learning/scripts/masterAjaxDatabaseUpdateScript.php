@@ -224,7 +224,7 @@ if (count($_GET) > 0){
 			foreach ($data as $key => $value) {
 				
 				$value = addslashes($value);
-				echo $value;
+				//echo $value;
 				$value = "'$value'";
 	        	$key = "`$key`";
 				$updates[] = "$key = $value";      
@@ -233,7 +233,7 @@ if (count($_GET) > 0){
 			$set = implode(', ', $updates);
 
 			//$set = addslashes($set);
-			echo $set;
+			//echo $set;
 			
 			$q = "UPDATE `$table` SET $set WHERE `$identifierKey` = $identifier" ;
 			
