@@ -263,7 +263,7 @@ background-color: rgb(238, 194, 120);
 				
 					</div>
 					<div class='modalClose modal-footer'>
-						<p><br><button onclick="$('.modal, .darkClass').hide();">Close this window</button></p>
+						<p><br><button onclick="$('.modal, .darkClass').modal('hide');">Close this window</button></p>
 					</div>
 				</div>
 			</div>
@@ -297,9 +297,9 @@ background-color: rgb(238, 194, 120);
 
 				$('.modal').on('click', '#newReference', function() {
 
-					$('.modal').hide();
+					$('.modal').modal('hide');
 
-					$('.darkClass').hide();
+					
 
 					PopupCenter(siteRoot + "scripts/forms/referencesForm.php", 'New Reference', 600, 700);
 
@@ -402,9 +402,9 @@ background-color: rgb(238, 194, 120);
 
 												alert('This reference tag combination already exists');
 												alreadyExists = 1;
-												$('.modal').hide();
+												$('.modal').modal('hide');
 
-												$('.darkClass').hide();
+												
 
 											} else {
 

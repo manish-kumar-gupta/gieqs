@@ -97,7 +97,9 @@
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/scripts/forms/tagCategoriesForm.php"><i class="fas fa-columns"></i>New Tag Category</a>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/scripts/forms/tagCategoriesTable.php"><i class="fas fa-columns"></i>Tag Category Table</a>
                     
-                    
+                    <div class="dropdown-divider"></div>
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">References</span>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/scripts/forms/referencesForm.php"><i class="fas fa-columns"></i>New Reference</a>
                     
                     <div class="dropdown-divider"></div>
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">Maintenance</span>

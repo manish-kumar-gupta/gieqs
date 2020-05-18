@@ -198,7 +198,7 @@ background-color: rgb(238, 194, 120);
 		<body>
 			
 				
-		    <div id='content' class='content container mt-10'>
+		    <div id='content' class='content container-flush mt-10 mb-5 mx-5'>
 			    
 		        <div class='responsiveContainer white'>
 			        
@@ -241,6 +241,8 @@ background-color: rgb(238, 194, 120);
 				$("#dataTable").find("tr");
 				
 				$("#dataTable").find("tr").each(function(){
+
+					$(this).find('th').last().after('<th></th>');
 					
 					var id = $(this).find("td:first").text();
 					
@@ -254,6 +256,10 @@ background-color: rgb(238, 194, 120);
 				
 					$(this).find("td:last").after('<td><a href=\''+ siteRoot + 'scripts/forms/videoChapterForm.php?id=' + id+'\'>Edit Chapters</a></td>');
 					
+					}else{
+
+						$(this).find("td:last").after('<td>Not chaptered</td>');
+
 					}
 				
 				});
@@ -269,7 +275,9 @@ background-color: rgb(238, 194, 120);
 					
 				})
 
-				$('#dataTable').DataTable();
+				$('#dataTable').DataTable({
+        "order": [[ 0, "desc" ]]
+    });
 				
 				
 			  	var titleGraphic = $(".title").height();

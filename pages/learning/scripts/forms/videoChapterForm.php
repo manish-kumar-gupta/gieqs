@@ -32,7 +32,7 @@
 <script src="<?php echo BASE_URL; ?>/node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo BASE_URL; ?>/assets/libs/datatables/dataTables.min.js"></script>
     
-<link rel="stylesheet" href="<?php echo BASE_URL1; ?>/assets/libs/datatables/dataTables.min.css">
+<link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/datatables/dataTables.min.css">
     <style>
        
         .gieqsGold {
@@ -143,6 +143,41 @@ background-color: rgb(238, 194, 120);
 
         
 
+}
+@keyframes fade-in-up {
+  0% { opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+.video-wrap {
+  text-align: center;
+}
+
+.video iframe {
+  max-width: 100%;
+  max-height: 100%;
+}
+.video.stuck {
+  z-index: 25;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  width: 400px;
+  
+  -webkit-animation: fade-in-up .25s ease forwards;
+          animation: fade-in-up .25s ease forwards;
 }
     </style>
 
@@ -287,7 +322,7 @@ background-color: rgb(238, 194, 120);
 				<div class='row'>
 				
 					<div class='col-12'>
-						<div id='videoDisplay'>
+						<div id='videoDisplay' class='video-wrap'>
 							
 						</div>
 					
@@ -298,6 +333,9 @@ background-color: rgb(238, 194, 120);
         
 				
 				<div class='container-fluid'>
+                <div id="messageBox" class="alert alert-info alert-dismissible alert-flush mt-3" role="alert">
+                    <strong>Heads up!</strong> This is a info alert with <a href="#" class="alert-link">an example link</a> — check it out!
+                </div>
                     <div class='row'>
 					<!--<div class='col-1'>
 					</div>-->
@@ -319,9 +357,7 @@ background-color: rgb(238, 194, 120);
 				</div>
 		
 		        </div>
-                <div id="messageBox" class="alert alert-warning alert-flush" role="alert">
-                    <strong>Heads up!</strong> This is a info alert with <a href="#" class="alert-link">an example link</a> — check it out!
-                </div>
+                
             </div>
             
 		<script>
@@ -381,6 +417,8 @@ var selects2 = new Object();
 
 var selects3 = new Object();
 
+
+
 function videoDisplay (url){
 	
 	
@@ -388,7 +426,7 @@ function videoDisplay (url){
         if (isNormalInteger(url) === true){
         
 	        //$('#videoDisplay').html("<div class='videoWrapper' style='text-align: centre'><iframe id='videoChapter' src='https://player.vimeo.com/video/"+url+"' width='400' height='288' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>");
-            $('#videoDisplay').html(" <div id=\"videoWrapper\" class=\"embed-responsive embed-responsive-16by9\"><iframe id='videoChapter' class=\"embed-responsive-item\" style=\"left:50%; top:50%;\" src='https://player.vimeo.com/video/"+url+"' allow='autoplay' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>");
+            $('#videoDisplay').html(" <div id=\"videoWrapper\" class=\"embed-responsive video embed-responsive-16by9\"><iframe id='videoChapter' class=\"embed-responsive-item\" style=\"left:50%; top:50%;\" src='https://player.vimeo.com/video/"+url+"' allow='autoplay' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>");
 
                 
 			$('#submitimagefiles').prop('disabled', true);
@@ -396,6 +434,32 @@ function videoDisplay (url){
 			$('#resetVideoSubmit').show();
 			$('#videoForm').show();
 			$('#url').val(url);
+
+            waitForFinalEvent(function() {
+            //alert("Resize...");
+                var $window = $(window);
+                var $videoWrap = $('#content').find('.video-wrap');
+                console.log($videoWrap);
+                var $video = $('#content').find('.video');
+                console.log($video);
+                var videoHeight = $video.outerHeight();
+
+                $window.on('scroll',  function() {
+                var windowScrollTop = $window.scrollTop();
+                var videoBottom = videoHeight + $videoWrap.offset().top - 200;
+                
+                if (windowScrollTop > videoBottom) {
+                    $videoWrap.height(videoHeight);
+                    $video.addClass('stuck');
+                } else {
+                    $videoWrap.height('auto');
+                    $video.removeClass('stuck');
+                }
+                });
+
+            }, 100, 'Wrapper Video');
+            
+
 			
 			
 		
@@ -455,7 +519,7 @@ function constructEditTable(idPassed){
 	        
         }
 
-		var html = "<table id=\"imagesTable\" class=\"table imageTable\">";
+		var html = "<table id=\"imagesTable\" class=\"table imageTable\" style=\"table-layout: fixed;\">";
 		html += "<tr>";
 					html += '<th>Chapter Number</th>';
 			html += '<th>Time from:</th>';
@@ -502,7 +566,7 @@ function constructEditTable(idPassed){
 			
 			
 			
-			html += "<td><input id='chaptertimefrom"+chapterid+"' type='text' class='form-control form-control-sm w-100 px-1 py-0'></input><br><button class='py-0 my-2 btn btn-small bg-dark' type='button' onclick='getVideoTime("+chapterid+", 0)'> + video time</button><br><button type='button' class='jumpToTime py-0 my-2 btn btn-small bg-dark'>seek video</button></td>";
+			html += "<td><input id='chaptertimefrom"+chapterid+"' type='text' class='form-control form-control-sm w-100 px-1 py-0'></input><br><button class='py-0 my-2 btn btn-small bg-dark' type='button' onclick='getVideoTime("+chapterid+", 0)'> + video time</button><br><button type='button' class='jumpToTime py-0 my-2 btn btn-small bg-dark'>seek video</button><br><button id='previousButton"+chapterid+"' class='py-0 my-2 btn btn-small bg-dark' type='button' onclick='enterPreviousEndTime("+chapterid+", this.id)'> + previous chapter end time</button></td>";
 			html += "<td><input id='chaptertimeto"+chapterid+"' type='text' class='form-control form-control-sm w-100 px-1 py-0'><br><button class='m-2 py-0 my-2 btn btn-small bg-dark' type='button' onclick='getVideoTime("+chapterid+", 1)'> + video time</button></input><br><button type='button' class='jumpToTime py-0 my-2 btn btn-small bg-dark'>seek video</button></td>";
 			
 			html += "<td class='chapterDesc' style='width:50%'><input id='chaptername"+chapterid+"' class='form-control form-control-sm w-100 px-1 py-0'></input></td>";
@@ -531,7 +595,7 @@ function constructEditTable(idPassed){
         html += '</table>';
 		html += '<p>';
 		html += '<button id="newChapter" class="m-2 py-0 my-2 btn btn-small bg-dark" type="button" onclick="newChapterRow();">New Chapter</button>&nbsp;&nbsp;';
-		html += "<button class='addTagAll m-2 py-0 my-2 btn btn-small bg-dark'> Add tag to all images</button>&nbsp;&nbsp;";
+		html += "<button class='addTagAll m-2 py-0 my-2 btn btn-small bg-dark'> Add tag to all chapters</button>&nbsp;&nbsp;";
 		html += "<button class='save m-2 py-0 my-2 btn btn-small bg-dark' onclick='fn60sec();'> Save data </button>";
 		html += '</p>';
 
@@ -595,7 +659,9 @@ function constructEditTable(idPassed){
 			       console.log('No ajax data received'); 
 			        
 		        }
-		        
+                
+                var ab = 0;
+
 		        $(formData).each(function(i, val) {
             
 	            var id = val.id;
@@ -605,10 +671,16 @@ function constructEditTable(idPassed){
 	            var tagName = val.tagName;
 	            var type = val.type;
 
-	            
-	            $("#tag"+image_id+"").append('<button id="' + imagesTagid + '" class="tagButton py-0 my-2 btn btn-small bg-dark">'+tagName+'</button>');
+	            /* if (ab % 2 === true){
+
+                    $("#tag"+image_id+"").append('<br/>');
+
+                } */
+	            $("#tag"+image_id+"").append('<button id="' + imagesTagid + '" class="tagButton py-0 my-2 btn btn-small bg-dark">'+tagName+'</button><br/>');
 				
-				
+               /*  ab = ab + 1; */
+                
+                //console.log('ab is ' + ab);
 				
 				});
 		        
@@ -658,7 +730,7 @@ function constructEditTable(idPassed){
 		}
 		echo '</table>';
 		echo '<p>';
-		echo "<button class='addTagAll'> Add tag to all images</button>&nbsp;&nbsp;";
+		echo "<button class='addTagAll'> Add tag to all chapters</button>&nbsp;&nbsp;";
 		echo "<button class='save' onclick='fn60sec();'> Save data </button>";
 		echo '</p>';*/
 	
@@ -933,7 +1005,9 @@ function newChapterRow (){
 	//insert into command for database
 	
 	selectorObject.done(function(data) {
-		
+        
+            location.reload();
+/* 
 			console.log(data);
 		
 			var html = '<tr class="file" id="chapter'+data+'">';
@@ -941,7 +1015,7 @@ function newChapterRow (){
 			//html += "<td><img src='"+siteRoot+"/"+url+"' style=\"width:240px;\"></td>";
 			
 			
-			html += "<td><select name='chapternumber"+data+"' id='chapternumber"+data+"' class='order'><option hidden selected>";
+			html += "<td><select name='chapternumber"+data+"' id='chapternumber"+data+"' class='order form-control form-control-sm w-100 px-1 py-0'><option hidden selected>";
 			
 			var i;
 			var notrs = $('#imagesTable').find('tr').length;
@@ -955,14 +1029,14 @@ function newChapterRow (){
 			
 			
 			
-			html += "<td><input id='chaptertimefrom"+data+"' type='text'></input><br><button class='py-0 my-2 btn btn-small bg-dark' type='button' onclick='getVideoTime("+data+", 0)'> + video time</button><br><button type='button' class='jumpToTime py-0 my-2 btn btn-small bg-dark'>seek video</button></td>";
-			html += "<td><input id='chaptertimeto"+data+"' type='text'><br><button class='py-0 my-2 btn btn-small bg-dark' type='button' onclick='getVideoTime("+data+", 1)'> + video time</button></input><br><button type='button' class='jumpToTime py-0 my-2 btn btn-small bg-dark'>seek video</button></td>";
+			html += "<td><input class='form-control form-control-sm w-100 px-1 py-0' id='chaptertimefrom"+data+"' type='text'></input><br><button class='py-0 my-2 btn btn-small bg-dark' type='button' onclick='getVideoTime("+data+", 0)'> + video time</button><br><button type='button' class='jumpToTime py-0 my-2 btn btn-small bg-dark'>seek video</button><br><button id='previousButton"+data+"' class='py-0 my-2 btn btn-small bg-dark' type='button' onclick='enterPreviousEndTime("+data+", this.id)'> + previous chapter end time</button></td>";
+			html += "<td><input class='form-control form-control-sm w-100 px-1 py-0' id='chaptertimeto"+data+"' type='text'><br><button class='py-0 my-2 btn btn-small bg-dark' type='button' onclick='getVideoTime("+data+", 1)'> + video time</button></input><br><button type='button' class='jumpToTime py-0 my-2 btn btn-small bg-dark'>seek video</button></td>";
 			
-			html += "<td class='chapterDesc'><input id='chapterdescription"+data+"'></input></td>";
+			html += "<td class='chapterDesc'><input class='form-control form-control-sm w-100 px-1 py-0' id='chapterdescription"+data+"'></input></td>";
 			
-			html += "<td class='chapterDesc'><textarea name='chaptername' id='chaptername"+data+"' class='name' rows='2' cols='70'></textarea></td>";
+			html += "<td class='chapterDesc'><textarea name='chaptername' id='chaptername"+data+"' class='form-control form-control-sm w-100 px-1 py-0 name' rows='2' cols='70'></textarea></td>";
 			
-			html += "<td><button class='addTag'>Add Tag</button></td>";
+			html += "<td><button class='addTag py-0 my-2 btn btn-small bg-dark'>Add Tag</button></td>";
 			html += "<td class='chapterTag' id='tag"+data+"'></td>";
 
 			//html += "<td><select name='imageorder"+image_id+"' id='imageorder"+image_id+"' class='order'><option hidden selected>";
@@ -974,7 +1048,7 @@ function newChapterRow (){
 			
 			
 			html += "</select></td>";
-			*/
+			*//*
 			html += "<td class='deleteImage'>&#x2718;</td>";
 			html += '</tr>';
 			
@@ -1008,7 +1082,7 @@ function newChapterRow (){
 				$('#content').find("#chapternumber"+data+" option[value='"+notrs+"']").attr('selected', 'selected');
 				
 				
-			}
+			} */
 		
 	})
 	
@@ -1294,28 +1368,47 @@ function getVideoTime(chapterid, type){
 	
 }
 
-function enterPreviousEndTime(chapterid, type){
+function enterPreviousEndTime(chapterid, thisObj){
 
     //if chapter 1 say so // PICKUP HERE
 
-    var chapterid = $(this).parent().find('td:eq(0)').find('select').val();
+    console.log(thisObj);
 
-    if (chapterid == 1){
+    //var chapterid = $('#'+thisObj).parent().parent().find('td:eq(0)').attr('id');
 
-        alert('no previous chapter');
+    var thisRow = $('#'+thisObj).parent().parent();
+    
+    var previousRow = $('#'+thisObj).parent().parent().prev();
+
+    if ($(previousRow).hasClass('file') === true){
+
+
 
     }else{
 
-        //look through cells to find where chapter id + 1 is, then modify timeFrom field.
+        alert('No previous chapter');
+        return;
+        
+    }
 
+    var time = $(previousRow).find('td:eq(3)').find('input').val();
 
+    console.log(time);
+
+    var intTime = parseFloat(time, 10);
+
+    var newTime = intTime + 0.001;
+
+    if (newTime == NaN){
+
+        newTime = null;
 
     }
 
-    //else get timeto from previous row
-	
-	
-	
+    $(thisRow).find('td:eq(2)').find('input').val(newTime);
+
+
+    
 	
 	
 	
@@ -1358,29 +1451,11 @@ $(document).ready(function() {
         $(this).hide();
     });
 
-    var titleGraphic = $(".title").height();
-    var titleBar = $("#menu").height();
-    $(".title").css('height', (titleBar));
 
 
-    $(window).resize(function() {
-        waitForFinalEvent(function() {
-            //alert("Resize...");
-            var titleGraphic = $(".title").height();
-            var titleBar = $("#menu").height();
-            $(".title").css('height', (titleBar));
-
-        }, 100, 'Resize header');
-    });
     
-    /*
-    $(document).click(function(event) {
-	  //if you click on anything except the modal itself or the "open modal" link, close the modal
-	  if (!$(event.target).closest(".modal").length) {
-	    $(".content").find(".modal").removeClass("visible");
-	  }
-	});
-	*/
+    
+   
 
     $("#content").on('click', '#submitimages', (function(event) {
         event.preventDefault();
@@ -1445,7 +1520,29 @@ $(document).ready(function() {
             $('.modal').find('.modalContent').append('<button class="btn btn-sm bg-primary py-0" id="newTagCategory">Add new tag category</button>');
 
 
-            $('.modal').find('#dataTable2').DataTable();
+            var $table = $('.modal').find('#dataTable2');
+
+            //var $table = $("#demo table");
+$table.DataTable({
+"sScrollY": "600px",
+"fnDrawCallback" : function(oSettings) {
+var total_count = oSettings.fnRecordsTotal();
+var columns_in_row = $(this).children('thead').children('tr').children('th').length;
+var show_num = oSettings._iDisplayLength;
+var tr_count = $(this).children('tbody').children('tr').length;
+var missing = show_num - tr_count;
+if (show_num < total_count && missing > 0){
+for(var i = 0; i < missing; i++){
+$(this).append(' ');
+}
+}
+if (show_num > total_count) {
+for(var i = 0; i < (total_count - tr_count); i++) {
+$(this).append(' ');
+}
+}
+}
+});
 
             return;
 
@@ -1492,6 +1589,30 @@ $(document).ready(function() {
             $('.modal').find('.modalContent').append('<p>' + data + '</p>');
 
             $('.modal').find('.modalContent').append('<button id="newTag">Add new tag </button>');
+
+            var $table = $('.modal').find('#dataTable2');
+
+            //var $table = $("#demo table");
+$table.DataTable({
+"sScrollY": "600px",
+"fnDrawCallback" : function(oSettings) {
+var total_count = oSettings.fnRecordsTotal();
+var columns_in_row = $(this).children('thead').children('tr').children('th').length;
+var show_num = oSettings._iDisplayLength;
+var tr_count = $(this).children('tbody').children('tr').length;
+var missing = show_num - tr_count;
+if (show_num < total_count && missing > 0){
+for(var i = 0; i < missing; i++){
+$(this).append(' ');
+}
+}
+if (show_num > total_count) {
+for(var i = 0; i < (total_count - tr_count); i++) {
+$(this).append(' ');
+}
+}
+}
+});
 
 
             return;
@@ -1651,9 +1772,9 @@ $(document).ready(function() {
 
                         alert('One of these chapters is already tagged with this tag, select individually');
                         alreadyExists = 1;
-                        $('.modal').hide();
+                        $('.modal').modal('hide');
 
-                        $('.darkClass').hide();
+                        
 
                     } else {
 
@@ -1693,9 +1814,9 @@ $(document).ready(function() {
 
                                 })
 
-                                $('.modal').hide();
+                                
 
-                                $('.darkClass').hide();
+                                $('.modal').modal('hide');
 
                                 return;
 
@@ -1770,12 +1891,9 @@ $(document).ready(function() {
 
             //console.log(data);
 
-            $('.modal').show();
+            $('.modal').modal('show');
 
-            $('.modal').show();
-            $('.modal').css('max-height', 800);
-            $('.modal').css('max-width', 800);
-            $('.modal').css('overflow', 'scroll');
+            
 
 
 
@@ -2005,6 +2123,10 @@ $(document).ready(function() {
 			 
 			 
 		 }
+
+         //scrolling video code
+
+         
 
     
 
