@@ -281,7 +281,20 @@ background-color: rgb(238, 194, 120);
 		    <div id='content' class='content mt-10'>
 		
 		        <div class='responsiveContainer container white'>
-		
+                <div class="text-right">
+                                        <div class="actions">
+                                            
+                                            <?php if ($isSuperuser == 1){?>
+
+                                            <a href="" class="action-item exportChapterSummary"><i class="fas fa-file-export"  data-toggle="tooltip" data-placement="bottom" title="export video chapters Vimeo"></i></a>
+
+                                            
+                                            <a href="<?php echo BASE_URL; ?>/pages/learning/index.php?id=<?php echo $id;?>" class="action-item"><i class="fas fa-eye" data-toggle="tooltip" data-placement="bottom" title="edit video"></i></a>
+
+                                            <?php }?>
+
+                                        </div>
+                                    </div>
 			        <div class='row'>
 		                <div class='col-12'>
 		                    <h2 style="text-align:left;">Video Chapter, Tag Form</h2>
@@ -2122,7 +2135,73 @@ $(this).append(' ');
 			 jumpToTime(startTime, '#videoTag');
 			 
 			 
-		 }
+         }
+         
+         $('.content').on('click', '.exportChapterSummary', function () {
+
+
+            event.preventDefault();
+
+            //get, in the modal, a summary of all chapters time (mm:ss, name) on each new line
+            //use ajax
+
+            var cellClicked = $(this);
+
+            imageID = $(this).closest('tr').find("td:eq(0)").text();;
+
+            console.log('tag id is' + imageID);
+
+            tagsid = imageID;
+
+            singleTag = 1;
+
+            //$('.darkClass').show();
+
+
+
+            var selectorObject = getDataQuery('references', '', {
+                'id': 'id',
+                'authors': 'authors',
+                'reference': 'formatted',
+                'DOI': 'DOI',
+                'journal': 'journal',
+
+            }, 2);
+
+            //console.log(selectorObject);
+
+            selectorObject.done(function (data) {
+
+                //console.log(data);
+
+                $('.modal').modal('show');
+
+                //$('.modal').show();
+                /* $('.modal').css('max-height', 800);
+                $('.modal').css('max-width', 800);
+                $('.modal').css('overflow', 'scroll'); */
+
+
+
+                $('.modal').find('.modalContent').html('<h3>Choose Reference</h3>');
+
+                $('.modal').find('.modalContent').append('<div class="modalMessageBox"></div>');
+
+                $('.modal').find('.modalContent').append('<p>' + data + '</p>');
+
+                $('.modal').find('.modalContent').append('<button id="newReference">Add new reference</button>');
+
+                $('.modal').find('#dataTable2').DataTable();
+
+                //makeSearchBoxModal();
+
+                return;
+
+
+
+            })
+
+            })
 
          //scrolling video code
 
