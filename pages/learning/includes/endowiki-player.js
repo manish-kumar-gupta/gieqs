@@ -1202,6 +1202,9 @@ $(document).ready(function () {
 
 							if (val2.tagid == '254'){
 
+								//skip detected
+
+								console.log('tag 254 detected');
 								//get the current chapter, skip to the next
 
 								var targetChapterSkip = positionOfChapter + 1;
