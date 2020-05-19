@@ -1082,8 +1082,18 @@ function addImageTagAll(event) {
 function newChapterRow (){
 	
     //video id
+
+    query = 'newChapterRow';
+	
+    var selectorObject = JSONStraightDataQuery(videoPassed, query, 9);
+    
+    selectorObject.done(function(data) {
+
     
     location.reload();
+
+
+    })
     
     
     //TODO FIX
