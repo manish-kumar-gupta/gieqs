@@ -336,7 +336,7 @@
                                 <div class="collapse border mb-0" id="collapseExample" style="border-color:rgb(238, 194, 120) !important;">
                                     <div class="card mb-0">
                                     <div class="card-header mb-0">
-                        <span class="h6">Tags (click to filter)</span>
+                        <span class="h6">Tags <br/></span><span class="text-sm">(click to filter)</span><span class="text-sm text-right"> <a style="float:right;" class="cursor-pointer" onclick="undoFilterByTag();"><i class="fas fa-undo"></i> Undo</a></span>
                     </div>
                                         <div class="card-body mt-0 pt-0">
                                             
@@ -486,6 +486,8 @@
   
     padding-top: 0.5em; max-height: 40vh; overflow-y: scroll;">
                     <span id="chapterDescription" class="mt-2 p-2 d-block text-left"></span>
+</div>
+<div class="card-footer tagFilterDisplayArea">
 </div>
                 </div>
             </div>

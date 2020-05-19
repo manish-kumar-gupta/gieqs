@@ -272,7 +272,7 @@ background-color: rgb(238, 194, 120);
 				</div>
 			</div>
 		
-		<body>
+
 		
 			<div id="id" style="display:none;"><?php if ($id){echo $id;}?></div>
 			
@@ -723,7 +723,7 @@ function constructEditTable(idPassed){
                     $("#tag"+image_id+"").append('<br/>');
 
                 } */
-	            $("#tag"+image_id+"").append('<button id="' + imagesTagid + '" class="tagButton py-0 my-2 btn btn-small bg-dark">'+tagName+'</button><br/>');
+	            $("#tag"+image_id+"").append('<button data="' + tags_id + '" class="tagButton py-0 my-2 btn btn-small bg-dark">'+tagName+'</button><br/>');
 				
                /*  ab = ab + 1; */
                 
@@ -829,7 +829,7 @@ function deleteImage(imageRowClicked){
 
 function fn60sec() {
 
-    console.log('fired');
+    //console.log('fired');
 
     //!get imageids
     
@@ -839,6 +839,57 @@ function fn60sec() {
     //timeTo
 
     var overallObject = new Object();
+
+    var detectedNull = null;
+
+    x = 0;
+
+    var xy = 1;
+
+    $('#imagesTable').find('tr').find('td:eq(1)').find('select').each(function() {
+
+        var xy = 1;
+
+        console.log(this);
+
+        var selectValue = $(this).val();
+
+        //enter null if there is a skip tag
+
+        
+/* 
+        $(this).parent().parent().find('td:eq(7)').find('button').each(function(){
+
+            console.log($(this).attr('data'));
+
+            if ($(this).attr('data') == '90'){
+
+                xy = null;
+
+                detectedNull = 1;
+
+            }
+
+        })
+
+        if (xy != null){ */
+
+
+        selects[x] = selectValue;
+
+        x++;
+
+        /* }else{
+
+            selects[x] = '';
+
+            x++;
+        } */
+
+
+    })
+
+    console.dir(selects);
 
     x = 0;
 
@@ -889,20 +940,7 @@ function fn60sec() {
 
     })
 
-    x = 0;
-
-    $('#imagesTable').find('tr').find('td:eq(1)').find('select').each(function() {
-
-        console.log(this);
-
-        var selectValue = $(this).val();
-
-        selects[x] = selectValue;
-
-        x++;
-
-
-    })
+    
     
     x = 0;
 

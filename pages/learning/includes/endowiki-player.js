@@ -492,9 +492,14 @@ function getChapterSelectorv2(idSelector, ChapteridSelector) {
 					var chapterid = val.chapterid;
 					var name = val.chaptername;
 					var number = val.number;
+					console.log(number + 'is number');
 					//var tagName = val.tagName;
 
+					
+
 					html += "<option value='" + chapterid + "'>" + number + " - " + name + "</option>";
+
+					
 
 
 				})
@@ -510,7 +515,7 @@ function getChapterSelectorv2(idSelector, ChapteridSelector) {
 
 				$ //(".chapterSelector").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
 
-				$('body').find("#chapterSelectorVideo" + idSelector + " option[value='" + ChapteridSelector + "']").prop('selected', true);
+				$('body').find("#chapterSelectorVideo" + idSelector + " option[value='" + ChapteridSelector + "']").prop('selected', true).trigger('change');
 
 			} else {
 
@@ -578,7 +583,7 @@ function undoFilterByTag() {
 
 	playSelectedChapters = null;
 
-	$('body').find('.greenButton .tagButton').each(function () {
+	$('body').find('.greenButton, .tagButton').each(function () {
 
 		$(this).removeClass('selectiveTag');
 
@@ -587,9 +592,9 @@ function undoFilterByTag() {
 
 	})
 
-	$('#titleBar').css('background-color', '#2670DD'); //remove and add gentBlue
+	$('.tagFilterDisplayArea').removeClass('bg-gieqsGold').removeClass('text-dark').removeClass('text-sm'); //remove and add gentBlue
 
-	$('body').find('#titleBar').find('#taggedChapterDisplay').html('');
+	$('body').find('.tagFilterDisplayArea').html('');
 
 	$('.chapterSelector').find('option').each(function () {
 
@@ -634,7 +639,7 @@ $(document).ready(function () {
 
 	})
 
-    $("body").on('click', '.fa-remove', function () {
+    $("body").on('click', '.remove', function () {
 
 
 		undoFilterByTag();
@@ -740,15 +745,16 @@ $(document).ready(function () {
 
 			//some alert to the user that this has happened
 
-			$('#titleBar').css('background-color', '#4CAF50');
+			//$('.tagFilterDisplayArea').css('background-color', '#4CAF50');
+			$('.tagFilterDisplayArea').addClass('bg-gieqsGold').addClass('text-dark').addClass('text-sm');
 
-			if ($('body').find('#titleBar').find('#taggedChapterDisplay').length == 0) {
+			if ($('body').find('.tagFilterDisplayArea').find('#taggedChapterDisplay').length == 0) {
 
 				var tagName = getTagName(selectedTag);
 
 				tagName = tagName.toString().toLowerCase();
 
-				$('#titleBar').append('<p style="font-size:8px;" id="taggedChapterDisplay">(Showing chapters tagged ' + tagName + ') <i class="fa fa-remove" style="font-size:12px"></i></p>');
+				$('.tagFilterDisplayArea').append('#taggedChapterDisplay').html('<i style="float:right;" class="fas fa-times remove cursor-pointer"></i><span>Showing chapters tagged <br/>' + tagName + '</span>');
 
 			} else {
 
@@ -756,7 +762,7 @@ $(document).ready(function () {
 
 				tagName = tagName.toString().toLowerCase();
 
-				$('body').find('#titleBar').find('#taggedChapterDisplay').html('(Showing chapters tagged ' + tagName + ') <i class="fa fa-remove" style="font-size:12px"></i>');
+				$('body').find('.tagFilterDisplayArea').append('#taggedChapterDisplay').html('<i style="float:right;" class="cursor-pointer fas fa-times remove"></i><span>Showing chapters tagged <br/>' + tagName + '</span>');
 			}
 
 			//skip the video to the start of the first chapter in the array
@@ -1195,7 +1201,7 @@ $(document).ready(function () {
 							//console.log('chapters matched');
 
 							
-
+							//console.log(val);
 							////console.log('tag id'+val2.tagid+' matched and being shown');
 
 							//skip any tag id 254
@@ -1204,14 +1210,16 @@ $(document).ready(function () {
 
 								//skip detected
 
-								console.log('tag 254 detected');
+								//console.log('tag 90 detected');
 								//get the current chapter, skip to the next
 
-								var targetChapterSkip = positionOfChapter + 1;
+								//var targetChapterSkip = positionOfChapter + 1;
 
-								var targetChapterKeySkip = getKeyForChapterid(targetChapterSkip);
+								//val contains current chapter data		
 
-								var targetTimeSkip = videoChapterData[targetChapterKeySkip].timeFrom;;
+								//var targetChapterKeySkip = getKeyForChapterid(targetChapterSkip);
+
+								var targetTimeSkip = videoChapterData[i+1].timeFrom;
 
 								//get time of targetSkip
 
@@ -1305,6 +1313,7 @@ $(document).ready(function () {
 
 
 					$('body').find("#chapterSelectorVideo" + val.id + " option[value='" + val.chapterid + "']").prop('selected', true);
+					//$('body').find("#chapterSelectorVideo" + val.id).trigger('change');
 
 					chapterSelected = val.chapterid;
 
@@ -1659,6 +1668,8 @@ $(document).ready(function () {
 		////console.log('changed');
 
 		var option = $(this).val();
+
+		undoFilterByTag();
 
 		if (option != '(not in a chapter)') {
 

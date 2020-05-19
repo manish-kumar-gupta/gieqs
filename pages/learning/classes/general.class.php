@@ -101,7 +101,7 @@ class general {
 
 		if ($result){
 
-			$html = "<br><select class='custom-select custom-select-sm mt-0 chapterSelector' id='chapterSelectorVideo{$id}' data-toggle='select' >";
+			$html = "<br><select class='custom-select custom-select-sm mt-0 chapterSelector' id='chapterSelectorVideo{$id}'>";
 
 			while($row = $result->fetch_array(MYSQLI_ASSOC)){
 
@@ -109,7 +109,9 @@ class general {
 				$name = $row['chaptername'];
 				$number = $row['number'];
 
+				if ($number != 0){
 				$html .= "<option value='{$chapterid}'>{$number} - {$name}</option>";
+				}
 
 			}
 
