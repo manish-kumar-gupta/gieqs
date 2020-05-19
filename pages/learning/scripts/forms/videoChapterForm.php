@@ -284,12 +284,30 @@ background-color: rgb(238, 194, 120);
                 <div class="text-right">
                                         <div class="actions">
                                             
-                                            <?php if ($isSuperuser == 1){?>
+                                            <?php if ($currentUserLevel < 3){?>
 
-                                            <a href="" class="action-item exportChapterSummary"><i class="fas fa-file-export"  data-toggle="tooltip" data-placement="bottom" title="export video chapters Vimeo"></i></a>
+                                                <a href="<?php echo BASE_URL; ?>/pages/learning/index.php?id=<?php echo $id;?>" class="action-item"><i class="fas fa-eye" data-toggle="tooltip" data-placement="bottom" title="watch video in viewer"></i> View in player</a>
+
+
 
                                             
-                                            <a href="<?php echo BASE_URL; ?>/pages/learning/index.php?id=<?php echo $id;?>" class="action-item"><i class="fas fa-eye" data-toggle="tooltip" data-placement="bottom" title="edit video"></i></a>
+
+                                            <?php }?>
+
+                                        </div>
+                                        <div class="actions">
+                                            
+                                            <?php if ($currentUserLevel < 3){?>
+
+                                            <a href="" class="action-item exportChapterSummary"><i class="fas fa-file-export" data-toggle="tooltip" data-placement="bottom" title="open window chapter data"></i> Display Chapter Data</a>
+
+                                            <a href="https://vimeo.com/manage/<?php echo $general->getVimeoID($id);?>/general" target="_blank" class="action-item"><i class="fab fa-vimeo" data-toggle="tooltip" data-placement="bottom" title="open vimeo chapter page"></i> Vimeo Profile</a>
+
+
+                                            <a href="https://vimeo.com/manage/<?php echo $general->getVimeoID($id);?>/interaction-tools#chapters" target="_blank" class="action-item"><i class="fab fa-vimeo" data-toggle="tooltip" data-placement="bottom" title="open vimeo chapter page"></i> Edit Chapter Data</a>
+
+
+                                            
 
                                             <?php }?>
 
@@ -372,8 +390,24 @@ background-color: rgb(238, 194, 120);
 		        </div>
                 
             </div>
+
+            <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
+    <!-- <script src="assets/js/purpose.core.js"></script> -->
+    <!-- Page JS -->
+    <script src=<?php echo BASE_URL . "/assets/libs/swiper/dist/js/swiper.min.js"?>></script>
+    <script src=<?php echo BASE_URL . "/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"?>></script>
+    <script src=<?php echo BASE_URL . "/assets/libs/typed.js/lib/typed.min.js"?>></script>
+    <script src=<?php echo BASE_URL . "/assets/libs/isotope-layout/dist/isotope.pkgd.min.js"?>></script>
+    <script src=<?php echo BASE_URL . "/assets/libs/jquery-countdown/dist/jquery.countdown.min.js"?>></script>
+    <!-- Google maps -->
+    
+    <!-- Purpose JS -->
+    <script src=<?php echo BASE_URL . "/assets/js/purpose.js"?>></script>
+    <!-- <script src=<?php echo BASE_URL . "/assets/js/generaljs.js"?>></script> -->
+    <!-- <script src=<?php echo BASE_URL . "/assets/js/demo.js"?>></script> -->
+    <script>
             
-		<script>
+
 			
 
 			
@@ -532,7 +566,7 @@ function constructEditTable(idPassed){
 	        
         }
 
-		var html = "<table id=\"imagesTable\" class=\"table imageTable\" style=\"table-layout: fixed;\">";
+		var html = "<table id=\"imagesTable\" class=\"table imageTable\">";
 		html += "<tr>";
 					html += '<th>Chapter Number</th>';
 			html += '<th>Time from:</th>';
@@ -2145,65 +2179,111 @@ $(this).append(' ');
             //get, in the modal, a summary of all chapters time (mm:ss, name) on each new line
             //use ajax
 
-            var cellClicked = $(this);
+            //can just get from page
 
-            imageID = $(this).closest('tr').find("td:eq(0)").text();;
+            //get all tr
 
-            console.log('tag id is' + imageID);
+            var chapters = [];
+            
+            $('#content').find('.file').each(function(){
 
-            tagsid = imageID;
+                var chapterNumber = $(this).find('td:eq(1)').find('.order option:selected').val();
+                var chapterTimeFrom = $(this).find('td:eq(2)').find('input').val();
 
-            singleTag = 1;
+                //console.log(chapterNumber);
 
-            //$('.darkClass').show();
+                var minutes = Math.floor(chapterTimeFrom / 60);
 
+                var seconds = chapterTimeFrom - minutes * 60;
 
+                function str_pad_left(string,pad,length) {
+                    return (new Array(length+1).join(pad)+string).slice(-length);
+                }
 
-            var selectorObject = getDataQuery('references', '', {
-                'id': 'id',
-                'authors': 'authors',
-                'reference': 'formatted',
-                'DOI': 'DOI',
-                'journal': 'journal',
-
-            }, 2);
-
-            //console.log(selectorObject);
-
-            selectorObject.done(function (data) {
-
-                //console.log(data);
-
-                $('.modal').modal('show');
-
-                //$('.modal').show();
-                /* $('.modal').css('max-height', 800);
-                $('.modal').css('max-width', 800);
-                $('.modal').css('overflow', 'scroll'); */
+                var finalTime = str_pad_left(minutes,'0',2)+':'+str_pad_left(seconds,'0',2);
 
 
+                chapters[chapterNumber] = {"timeFrom" : finalTime};
 
-                $('.modal').find('.modalContent').html('<h3>Choose Reference</h3>');
+            });
 
-                $('.modal').find('.modalContent').append('<div class="modalMessageBox"></div>');
+            //for each find start time and end time
+            //add to an object
 
-                $('.modal').find('.modalContent').append('<p>' + data + '</p>');
+            $('.modal').modal('show');
 
-                $('.modal').find('.modalContent').append('<button id="newReference">Add new reference</button>');
-
-                $('.modal').find('#dataTable2').DataTable();
-
-                //makeSearchBoxModal();
-
-                return;
+            
 
 
 
-            })
+            $('.modal').find('.modalContent').html('<h3>Chapter Data for Vimeo</h3>');
 
-            })
+            $('.modal').addClass('text-center');
+
+
+            $('.modal').find('.modalContent').append('<p style="text-align:center;">');
+
+            // VERY USEFUL ARRAY ITERATION CODE JAVASCIPT USEFUL
+
+            //THIS TO GET KEYS FROM SECOND ARRAY
+
+            /* for (i=0; i<chapters.length; i++) {
+                for (var key in chapters[i]) {
+                    if (chapters[i].hasOwnProperty(key)){
+                        console.log(chapters[i][key]);
+
+                        $('.modal').find('.modalContent').append(key + ' ' + chapters[i][key]);
+
+                    }
+                 }
+                //$('.modal').find('.modalContent').append('chapters[i]');
+                
+            } */
+
+            //THIS TO GET KEYS FROM FIRST ARRAY
+
+            for (i=0; i<chapters.length; i++) {
+                for (var key in chapters[i]) {
+                    if (chapters[i].hasOwnProperty(key)){
+                        console.log(chapters[i][key]);
+
+                        $('.modal').find('.modalContent').append('Chapter ' + i + ' ' + chapters[i][key] + '<br/>');
+
+                    }
+                 }
+                //$('.modal').find('.modalContent').append('chapters[i]');
+                
+            }
+
+            $('.modal').find('.modalContent').append('</p>');
+
+            //$('.modal').find('.modalContent').append('<button class="py-0 my-2 btn btn-small bg-dark" id="newTagCategory">Add new tag category</button>');
+
+           console.log(chapters);
+
+           
+
+
+            
+
+         })
 
          //scrolling video code
+
+
+        //TODO code to fix table width for large columns 
+         /* $('#content').find('tr').each(function(){
+             
+          $(this).find('td:eq(1)').each(function(){
+
+            $(this).css('width', '5%');
+
+          })  
+            
+            
+         }) */
+
+
 
          
 
