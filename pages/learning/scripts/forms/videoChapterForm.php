@@ -723,7 +723,7 @@ function constructEditTable(idPassed){
                     $("#tag"+image_id+"").append('<br/>');
 
                 } */
-	            $("#tag"+image_id+"").append('<button data="' + tags_id + '" class="tagButton py-0 my-2 btn btn-small bg-dark">'+tagName+'</button><br/>');
+	            $("#tag"+image_id+"").append('<button id="' + imagesTagid + '" data="' + tags_id + '" class="tagButton py-0 my-2 btn btn-small bg-dark">'+tagName+'</button><br/>');
 				
                /*  ab = ab + 1; */
                 
