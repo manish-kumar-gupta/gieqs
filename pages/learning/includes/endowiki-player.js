@@ -587,7 +587,7 @@ function undoFilterByTag() {
 
 		$(this).removeClass('selectiveTag');
 
-		$(this).removeClass('greenButton').removeClass('bg-warning').addClass('tagButton').addClass('bg-info');
+		$(this).removeClass('greenButton').removeClass('bg-gieqsGold').removeClass('text-dark').addClass('tagButton').addClass('bg-info');
 
 
 	})
@@ -652,7 +652,7 @@ $(document).ready(function () {
 		if ($(this).hasClass('selectiveTag') === true) {
 
 			undoFilterByTag();
-			$(this).removeClass('greenButton').removeClass('bg-warning').addClass('tagButton').addClass('bg-info');
+			$(this).removeClass('greenButton').removeClass('bg-gieqsGold').removeClass('text-dark').addClass('tagButton').addClass('bg-info');
 
 
 		}
@@ -692,7 +692,7 @@ $(document).ready(function () {
 
 			if ($(this).hasClass('tagButton') == true) {
 
-				$(this).removeClass('tagButton').addClass('greenButton').addClass('bg-warning');
+				$(this).removeClass('tagButton').addClass('greenButton').addClass('bg-gieqsGold').addClass('text-dark').removeClass('bg-info');
 
 			}
 
@@ -700,7 +700,7 @@ $(document).ready(function () {
 
 				//console.log($(this));
 
-				$(this).removeClass('greenButton').removeClass('bg-warning').addClass('tagButton').addClass('bg-info');
+				$(this).removeClass('greenButton').removeClass('bg-gieqsGold').removeClass('text-dark').addClass('tagButton').addClass('bg-info');
 
 
 			})
@@ -1237,7 +1237,7 @@ $(document).ready(function () {
 
 							//console.log(desiredTag);
 
-							$('body').find(desiredTag).addClass('greenButton').addClass('bg-warning').removeClass('tagButton').removeClass('bg-info');
+							$('body').find(desiredTag).addClass('greenButton').addClass('bg-gieqsGold').addClass('text-dark').removeClass('tagButton').removeClass('bg-info');
 
 
 
@@ -1247,7 +1247,7 @@ $(document).ready(function () {
 
 							var desiredTag = '#tag' + val2.tagid;
 
-							$('body').find(desiredTag).removeClass('greenButton').removeClass('bg-warning').addClass('tagButton').addClass('bg-info');
+							$('body').find(desiredTag).removeClass('greenButton').removeClass('bg-gieqsGold').removeClass('text-dark').addClass('tagButton').addClass('bg-info');
 							;
 
 						}
@@ -1304,7 +1304,7 @@ $(document).ready(function () {
 
 					//$('.tagButton').removeClass('tagbutton').addClass('greenButton');
 
-					$('.tagButton').removeClass('greenButton').removeClass('bg-warning').addClass('tagButton').addClass('bg-info');
+					$('.tagButton').removeClass('greenButton').removeClass('bg-gieqsGold').removeClass('text-dark').removeClass('text-dark').addClass('tagButton').addClass('bg-info');
 
 
 					//getChapterSelector(val.id, val.chapterid);
