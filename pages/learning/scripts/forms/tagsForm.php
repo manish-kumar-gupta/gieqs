@@ -229,6 +229,8 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
 		                </div>
 						<div class='col-3'>
 						<a href="<?php echo BASE_URL; ?>/pages/learning/scripts/forms/tagsTable.php"><i class="fas fa-table cursor-pointer"></i></a>
+						<a href="<?php echo BASE_URL; ?>/pages/learning/scripts/forms/tagsForm.php"><i class="fas fa-plus cursor-pointer ml-3"></i></a>
+
 		                </div>
 		                <div id="messageBox" class='col-3 yellow-light narrow center'>
 		               
