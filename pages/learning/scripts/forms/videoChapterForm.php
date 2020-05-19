@@ -1043,8 +1043,14 @@ function addImageTagAll(event) {
 
 function newChapterRow (){
 	
-	//video id
-	
+    //video id
+    
+    location.reload();
+    
+    
+    //TODO FIX
+
+    /*
 	query = 'newChapterRow';
 	
 	var selectorObject = JSONStraightDataQuery(videoPassed, query, 9);
@@ -1053,8 +1059,20 @@ function newChapterRow (){
 	
 	selectorObject.done(function(data) {
         
-            location.reload();
-/* 
+            
+
+            //TODO IF THERE IS ONLY ONE ROW DO THE ABOVE
+
+            var noTrs = $('#content').find('tr').length;
+
+            if (noTrs < 2){
+
+                location.reload();
+
+            }else{
+
+ //OTHERWISE
+
 			console.log(data);
 		
 			var html = '<tr class="file" id="chapter'+data+'">';
@@ -1087,7 +1105,7 @@ function newChapterRow (){
 			html += "<td class='chapterTag' id='tag"+data+"'></td>";
 
 			//html += "<td><select name='imageorder"+image_id+"' id='imageorder"+image_id+"' class='order'><option hidden selected>";
-			/*
+			
 			var i;
 			for (i = 1; i <= Object.keys(formData).length; i++) { 
 			    html += "<option value='"+i+"'>"+i+"</option>";
@@ -1095,7 +1113,7 @@ function newChapterRow (){
 			
 			
 			html += "</select></td>";
-			*//*
+			//*
 			html += "<td class='deleteImage'>&#x2718;</td>";
 			html += '</tr>';
 			
@@ -1129,13 +1147,17 @@ function newChapterRow (){
 				$('#content').find("#chapternumber"+data+" option[value='"+notrs+"']").attr('selected', 'selected');
 				
 				
-			} */
+			} 
+
+            }
+
+           
 		
 	})
 	
 	//use the insert id to 
 	
-	
+	*/
 	
 	
 }

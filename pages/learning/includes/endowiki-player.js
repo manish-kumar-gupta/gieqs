@@ -937,6 +937,8 @@ $(document).ready(function () {
 
 			//detect if outside a chapter displayed, small function
 
+			//TODO add here is skip tag applied to the chapter move to next chapter
+
 
 			//skip the rest
 
@@ -962,10 +964,22 @@ $(document).ready(function () {
 
 				inChapter = 1;
 
+				
+
+
+
 
 				//if playSelectedChapters == null
 				//index of this chapter, this chapter + 1 in array of requiredChapters
 				if (i > 0) {
+
+					//if the chapter is a skip, skip to next chapter
+
+					//var positionOfChapter = requiredChapters.indexOf(val.chapterid);
+
+
+
+
 
 					if (playSelectedChapters == 1) {
 
@@ -1180,9 +1194,31 @@ $(document).ready(function () {
 
 							//console.log('chapters matched');
 
+							
+
 							////console.log('tag id'+val2.tagid+' matched and being shown');
 
+							//skip any tag id 254
 
+							if (val2.tagid == '254'){
+
+								//get the current chapter, skip to the next
+
+								var targetChapterSkip = positionOfChapter + 1;
+
+								var targetChapterKeySkip = getKeyForChapterid(targetChapterSkip);
+
+								var targetTimeSkip = videoChapterData[targetChapterKeySkip].timeFrom;;
+
+								//get time of targetSkip
+
+								jumpToTime(targetTimeSkip);
+
+								//		
+
+							}
+
+							
 
 							//console.log('tag id'+val2.tagid+' matched and being shown');
 
