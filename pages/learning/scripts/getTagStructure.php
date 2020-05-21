@@ -96,7 +96,7 @@ $requiredTagCategories = $data['requiredTagCategories'];
 //$requiredTagCategories = ['39', '40', '41', '42'];
 
 
-$q = "SELECT a.`tagCategories_id` as `Category id`, a.`tagCategories_id`, a.`id`, a.`tagName` as `Tag` from `tags` as a ORDER BY tagCategories_id, tagName ASC";
+$q = "SELECT a.`tagCategories_id` as `Category id`, a.`tagCategories_id`, a.`id`, a.`tagName` as `Tag` from `tags` as a ORDER BY tagCategories_id, a.`id` ASC";
 
 
 ?>
