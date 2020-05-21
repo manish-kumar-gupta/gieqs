@@ -41,7 +41,7 @@
         .gieqsGold {
 
             color: rgb(238, 194, 120);
-
+</span>
 
         }
 
@@ -213,9 +213,25 @@ background-color: rgb(238, 194, 120);
 		
 		<body>
 			
-				
-		    <div id='content' class='content container-fluid mt-10'>
-			    
+		<div class="text-right container mt-10">
+	
+                                        <div class="actions" id="messageBox">
+                                            
+                                            <?php if ($currentUserLevel < 3){?>
+
+												<a href="<?php echo BASE_URL; ?>/pages/learning/scripts/forms/tagsForm.php" class="action-item"><i class="fas fa-plus" data-toggle="tooltip" data-placement="bottom" title="new Tag"></i> New Tag</a>
+												<a id="showStructureButton" class="action-item"><i class="fas fa-table" title="show tag structure"></i> Show Tag Structure</a>
+
+
+
+                                            
+
+                                            <?php }?>
+
+										</div>
+											</div>
+		    <div id='content' class='content container-fluid mt-2'>
+			
 		        <div class='white'>
 			        
 			        <div class='row'>
@@ -223,9 +239,7 @@ background-color: rgb(238, 194, 120);
 		                    <h2 class="ml-5" style="text-align:left;">Tag and Reference Manager</h2>
 		                </div>
 		
-		                <div id="messageBox" class='col-3 yellow-light narrow center'>
-		                    <p><button id="newtags" class="btn btn-small bg-dark" onclick="window.location.href = '<?php echo BASE_URL;?>/scripts/forms/tagsForm.php';">New tags</button></p>
-		                </div>
+		                
 					</div>
 					
 					<div class='row'>
@@ -234,7 +248,7 @@ background-color: rgb(238, 194, 120);
 							</div>
 		                <div class='col-3'>
 		                  
-							<div><button class="btn btn-small bg-dark" type="button" id="resetTable">Reset Table</button>
+							
 						</div>
 						
 						
@@ -570,6 +584,79 @@ background-color: rgb(238, 194, 120);
 
 
 					})
+
+				})
+
+				$('body').on('click', '#showStructureButton', function () {
+
+
+					var dataToSend = {
+
+						requiredTagCategories: null
+
+					}
+
+					const jsonString = JSON.stringify(dataToSend);
+
+
+
+					var request2 = $.ajax({
+						beforeSend: function () {
+
+							//$('#videoCards').html("<div class=\"d-flex align-items-center\"><strong>Loading...</strong><div class=\"spinner-border ml-auto\" role=\"status\" aria-hidden=\"true\"></div></div>");
+
+						},
+						url: siteRoot + "scripts/getTagStructure.php",
+						type: "POST",
+						contentType: "application/json",
+						data: jsonString,
+					});
+
+
+
+					request2.done(function (data) {
+						// alert( "success" );
+						if (data) {
+							//var toKeep = $.parseJSON(data.trim());
+							//alert(data.trim());
+							//console.dir(toKeep);
+
+
+							//console.log(data);
+
+							$('.modal').modal('show');
+
+							//$('.modal').show();
+							/* $('.modal').css('max-height', 800);
+							$('.modal').css('max-width', 800);
+							$('.modal').css('overflow', 'scroll'); */
+
+
+
+							$('.modal').find('.modalContent').html('<h3>Data Structure</h3>');
+
+							$('.modal').find('.modalContent').append('<div class="modalMessageBox"></div>');
+
+							$('.modal').find('.modalContent').append('<p>' + data + '</p>');
+
+							$('.modal').find('.modalContent').append('<button id="newReference">Add new reference</button>');
+
+							$('.modal').find('#dataTable2').DataTable();
+
+							//makeSearchBoxModal();
+
+							return;
+
+
+						}
+						//$(document).find('.Thursday').hide();
+					})
+
+
+
+
+
+
 
 				})
 
