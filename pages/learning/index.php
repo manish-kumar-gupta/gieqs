@@ -407,7 +407,7 @@
                                             <h6 id="chapterHeadingControl" class="progress-text mb-1 text-sm d-block text-limit text-left">No chapter selected
                                             </h6>
                                             <div id="myProgress" class="progress progress-xs mb-0">
-                                                <div id="myBar" class="progress-bar bg-warning" role="progressbar"
+                                                <div id="myBar" class="progress-bar bg-gieqsGold" role="progressbar"
                                                     style="width: 60%;" aria-valuenow="60" aria-valuemin="0"
                                                     aria-valuemax="100"></div>
                                             </div>
@@ -437,7 +437,7 @@
                                                     <label class="custom-control-label" for="customCheck1"></label>
                                                 </div> -->
                                                 
-                                                <div class="font-weight-bold text-warning">
+                                                <div class="font-weight-bold gieqsGold">
                                                     <span id="currentChapter">x</span> / <span id="totalChapters">y</span>
                                                 </div>
                                             </div>
