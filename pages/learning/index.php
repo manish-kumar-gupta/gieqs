@@ -302,7 +302,7 @@
                             </ol>
                         </nav>
                         <div class="row" style="margin-right:15px; margin-left:15px;">
-                        <span class="h3 mb-0 text-white d-block w-lg-75"><?php echo $general->getVideoTitle($id)?></span>
+                        <span class="h3 mb-0 text-white d-block w-lg-75 w-xl-75"><?php echo $general->getVideoTitle($id)?></span>
                         <span class="col-xl-8 text-muted text-md d-block my-2" id="videoDescription">Video subtitle</span>
                     </div>
 
@@ -312,10 +312,9 @@
                        
                         <div class="col text-left mt-0 align-items-center">
                                                     <div class="actions">
-                                                        <a class="action-item p-0 m-0 pr-4"><i
-                                                                class="fas fa-heart mr-1 pr-1"></i> 50</a>
-                                                        <a class="action-item p-0 m-0 pr-4"><i class="fas fa-eye mr-1"></i>
-                                                            250</a>
+                                                        <a class="action-item p-0 m-0 pr-4 likes"><i
+                                                                class="fas fa-heart mr-1 pr-1"></i> <span id="likesNumber">50</span></a>
+                                                        <a class="action-item p-0 m-0 pr-4 views"><i class="fas fa-eye mr-1"></i> <span id="viewsNumber">250</span></a>
                                                             <a class="action-item p-0 m-0 pr-4"><i class="fas fa-user mr-1"></i>
                                                             <span id="videoAuthor"></span></a>
                                                     </div>
