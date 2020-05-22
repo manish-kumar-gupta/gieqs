@@ -363,7 +363,7 @@ background-color: rgb(238, 194, 120);
             </div>
         
 				
-				<div class='container-fluid'>
+				<div class='container-fluid mb-10'>
                 <div id="messageBox" class="alert alert-info alert-dismissible alert-flush mt-3" role="alert">
                     <strong>Heads up!</strong> This is a info alert with <a href="#" class="alert-link">an example link</a> — check it out!
                 </div>
@@ -389,6 +389,8 @@ background-color: rgb(238, 194, 120);
 		
 		        </div>
                 
+
+<?php require BASE_URI . '/footer.php';	?>
             </div>
 
             <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
