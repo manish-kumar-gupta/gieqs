@@ -430,7 +430,7 @@ function getVideoTags(videoPassed) {
 						var id = val.id;
 						var tagName = val.tagName;
 
-						$('#tagsDisplay').append('<span class="badge badge-info mx-2 my-2 tagButton" id="tag' + id + '">' + tagName + '</span>');
+						$('#tagsDisplay').append('<span class="badge badge-info mx-2 my-0 tagButton" id="tag' + id + '">' + tagName + '</span>');
 
 					})
 					//

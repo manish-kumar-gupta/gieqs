@@ -1083,7 +1083,9 @@ function addImageTagAll(event) {
 
 function newChapterRow (){
 	
-    //video id
+    //video id]]
+
+    fn60sec();
 
     query = 'newChapterRow';
 	
@@ -2261,6 +2263,7 @@ $(this).append(' ');
 
                 var chapterNumber = $(this).find('td:eq(1)').find('.order option:selected').val();
                 var chapterTimeFrom = $(this).find('td:eq(2)').find('input').val();
+                var chapterName = $(this).find('td:eq(4)').find('input').val();
 
                 //console.log(chapterNumber);
 
@@ -2275,9 +2278,11 @@ $(this).append(' ');
                 var finalTime = str_pad_left(minutes,'0',2)+':'+str_pad_left(seconds,'0',2);
 
 
-                chapters[chapterNumber] = {"timeFrom" : finalTime};
+                chapters[chapterNumber] = {"name" : chapterName, "timeFrom" : finalTime, };
 
             });
+
+            console.dir(chapters);
 
             //for each find start time and end time
             //add to an object
