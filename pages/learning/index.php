@@ -41,6 +41,14 @@
 
         }
 
+        .tagCard {
+
+background-color: #1b385d75; 
+
+
+
+}
+
         
 
         iframe {
@@ -58,6 +66,16 @@
 
     cursor: pointer;
 
+}
+
+@media (min-width: 992px) {
+    .tagCard {
+
+            
+left: -50vw;
+
+
+}
 }
 
 @media (min-width: 1200px) {
@@ -86,6 +104,8 @@
             
             z-index: 25;
             }
+
+            
 
 }
     </style>
@@ -332,8 +352,8 @@
                                     
 
 </div>
-                                <div class="collapse border mb-0" id="collapseExample" style="border-color:rgb(238, 194, 120) !important;">
-                                    <div class="card mb-0">
+                                <div class="collapse mb-0" id="collapseExample">
+                                    <div class="card mb-0 tagCard">
                                     <div class="card-header mb-0">
                         <span class="h6">Tags <br/></span><span class="text-sm">(click to filter)</span><span class="text-sm text-right"> <a style="float:right;" class="cursor-pointer" onclick="undoFilterByTag();"><i class="fas fa-undo"></i> Undo</a></span>
                     </div>
