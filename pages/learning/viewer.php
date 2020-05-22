@@ -198,10 +198,10 @@ left: -50vw;
                             //database query, is there a tag in this category associated with this video
 
                             if ($general->isThisTagCategoryRepresentedInVideo($id, $value['id'])){
-                                
+
                                 $tagBox .= '<div class="row align-items-left">';
                                     
-                                    $tagBox .= '<span class="h6 mt-1"> ' . $value['tagCategoryName'] . '</span>';
+                                    $tagBox .= '<span class="h6 mt-2"> ' . $value['tagCategoryName'] . '</span>';
 
                                     $tagsRequired = $general->getTagsVideoWithCategoryNonJSON($id);
 
@@ -215,7 +215,7 @@ left: -50vw;
 
                                         if ($value1['tagCategories_id'] == $value['id']){
 
-                                           $tagBox .= '<span class="badge badge-primary mx-2 mb-1 tagButton" id="tag' . $value1['id'] . '">' . $value1['tagName'] . '</span>'; 
+                                           $tagBox .= '<span class="badge badge-info mx-2 my-2 tagButton" id="tag' . $value1['id'] . '">' . $value1['tagName'] . '</span>'; 
 
                                         }
 
@@ -313,7 +313,7 @@ left: -50vw;
     
 
         <div class="d-flex align-items-end">
-            <div class="container mt-10 mt-lg-10 pt-4 pt-lg-4">
+            <div class="container-flush mt-10 mt-lg-10 pt-4 pt-lg-4 pl-2 pr-2">
             <nav aria-label="breadcrumb" class="mb-3">
                             <ol class="breadcrumb breadcrumb-links p-0 m-0">
                                 <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/navigator.php'?>">GIEQs online</a></li>
@@ -322,8 +322,15 @@ left: -50vw;
                             </ol>
                         </nav>
                         <div class="row" style="margin-right:15px; margin-left:15px;">
-                        <span class="h3 mb-0 text-white d-block w-lg-75 w-xl-75"><?php echo $general->getVideoTitle($id)?></span>
-                        <span class="col-xl-8 text-muted text-md d-block my-2" id="videoDescription">Video subtitle</span>
+                        <div class="col-3"></div>
+                        <span class="h3 mb-0 text-white col-9"><?php echo $general->getVideoTitle($id)?></span>
+                        <div class="col-3"></div>
+                        <div>
+                        <div class="row" style="margin-right:15px; margin-left:15px;">
+                        <div class="col-3"></div>
+                        <span class="text-muted text-md d-block my-2 col-9" id="videoDescription">Video subtitle</span>
+                        <div class="col-3"></div>
+                   
                     </div>
 
                 <div class="row">
@@ -355,7 +362,6 @@ left: -50vw;
                                 <div class="collapse mb-0" id="collapseExample">
                                     <div class="card mb-0 tagCard">
                                     <div class="card-header mb-0">
-                                    <i style="float:right;" class="fas fa-times tagsClose cursor-pointer"></i>
                         <span class="h6">Tags <br/></span><span class="text-sm">(click to filter)</span><span class="text-sm text-right"> <a style="float:right;" class="cursor-pointer" onclick="undoFilterByTag();"><i class="fas fa-undo"></i> Undo</a></span>
                     </div>
                                         <div class="card-body mt-0 pt-0">
@@ -374,7 +380,7 @@ left: -50vw;
                             <div class="container">
                                 <div class="row">
                                 <span class="mb-0 pl-2 pt-2 flex-grow-1">Choose chapter</span>
-                                <button type="button" class="close text-right text-white" data-toggle="collapse" href="#selectDropdown" aria-label="Close">
+                                <button type="button" class="close text-right" data-toggle="collapse" href="#selectDropdown" aria-label="Close">
                               <span>&times;</span>
                             </button>
                     </div>
@@ -485,7 +491,7 @@ left: -50vw;
 
 
                
-            <div class="container">
+            <div style="container">
             <div id="videoDisplay" class="embed-responsive embed-responsive-16by9">
                     <iframe  id='videoChapter' class="embed-responsive-item" style="left:50%; top:50%;"
                         src='https://player.vimeo.com/video/398791515' allow='autoplay'
@@ -729,14 +735,14 @@ left: -50vw;
             
 
 
-            /* $(document).click(function(event) { 
+            $(document).click(function(event) { 
                 $target = $(event.target);
                 
                 if(!$target.closest('#collapseExample').length && 
                     $('#collapseExample').is(":visible")) {
                         $('#collapseExample').collapse('hide');
                     }        
-            }); */
+            });
 
             $(document).click(function(event) { 
                 $target = $(event.target);
@@ -764,43 +770,6 @@ left: -50vw;
                         $('#collapseExample3').collapse('hide');
                     }        
             });
-
-            $(document).on('click', '.tagsClose', function(){
-
-                $('#collapseExample').collapse('hide');
-
-            })
-
-            $('.referencelist').on('click', function (){
-		
-		
-		//get the tag name
-		
-		var searchTerm = $(this).attr('data');
-		
-		console.log("https://www.ncbi.nlm.nih.gov/pubmed/?term="+searchTerm);
-		
-		PopupCenter("https://www.ncbi.nlm.nih.gov/pubmed/?term="+searchTerm, 'PubMed Search (endoWiki)', 800, 700);
-
-		
-		
-		
-		
-	})
-
-	$('.referencelist').on('mouseenter', function (){
-
-		$(this).css('color', 'rgb(238, 194, 120)');
-		$(this).css('cursor', 'pointer');
-
-	})
-
-	$('.referencelist').on('mouseleave', function (){
-
-		$(this).css('color', 'white');
-		$(this).css('cursor', 'default');
-
-	})
 
 
         })

@@ -1661,7 +1661,7 @@ class general {
 			while($row = $result->fetch_array(MYSQLI_ASSOC)){
 				$PMID = $row['PMID'];
 				
-				$references .= '<span class="referencelist" data="' . $PMID . '" style="text-align:left;" >' . $x . ' - ';
+				$references .= '<p class="referencelist" data="' . $PMID . '" style="text-align:left;" >' . $x . ' - ';
 				$references .= $row['authors'];
 				$references .= '. ';
 				$references .= $row['formatted'];
@@ -1673,7 +1673,7 @@ class general {
 					$references .= $row['DOI'];
 					$references .= '.';
 				}
-				$references .= '</span>';
+				$references .= '</p>';
 				
 				
 				$x++;
