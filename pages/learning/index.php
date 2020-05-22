@@ -49,6 +49,12 @@ background-color: #1b385d75;
 
 }
 
+.tagCardHeader{
+
+    background-color: #162e4d;
+
+}
+
         
 
         iframe {
@@ -73,6 +79,7 @@ background-color: #1b385d75;
 
             
 left: -50vw;
+top: -20vh;
 
 
 }
@@ -354,7 +361,7 @@ left: -50vw;
 </div>
                                 <div class="collapse mb-0" id="collapseExample">
                                     <div class="card mb-0 tagCard">
-                                    <div class="card-header mb-0">
+                                    <div class="card-header tagCardHeader mb-0">
                                     <i style="float:right;" class="fas fa-times tagsClose cursor-pointer"></i>
                         <span class="h6">Tags <br/></span><span class="text-sm">(click to filter)</span><span class="text-sm text-right"> <a style="float:right;" class="cursor-pointer" onclick="undoFilterByTag();"><i class="fas fa-undo"></i> Undo</a></span>
                     </div>
