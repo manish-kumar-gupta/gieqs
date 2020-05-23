@@ -222,7 +222,7 @@ top: -20vh;
 
                                         if ($value1['tagCategories_id'] == $value['id']){
 
-                                           $tagBox .= '<span class="badge badge-primary mx-2 mb-1 tagButton" id="tag' . $value1['id'] . '">' . $value1['tagName'] . '</span>'; 
+                                           $tagBox .= '<span class="badge bg-gray-800 mx-2 mb-1 tagButton" id="tag' . $value1['id'] . '">' . $value1['tagName'] . '</span>'; 
 
                                         }
 
@@ -785,7 +785,7 @@ top: -20vh;
 		
 		var searchTerm = $(this).attr('data');
 		
-		console.log("https://www.ncbi.nlm.nih.gov/pubmed/?term="+searchTerm);
+		//console.log("https://www.ncbi.nlm.nih.gov/pubmed/?term="+searchTerm);
 		
 		PopupCenter("https://www.ncbi.nlm.nih.gov/pubmed/?term="+searchTerm, 'PubMed Search (endoWiki)', 800, 700);
 
