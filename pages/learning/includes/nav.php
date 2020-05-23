@@ -46,9 +46,9 @@
                         aria-haspopup="true" aria-expanded="false">Learning Tools</a>
                     
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Programme</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program.php"><i class="fas fa-columns"></i>Draft Medical Programme</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/nursing.php"><i class="fas fa-columns"></i>Draft Nursing Programme</a>
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Colonoscopy Tutor</span>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/all.php"><i class="fas fa-columns"></i>Colonoscopy Tutor</a>
+    
                     
                     <div class="dropdown-divider"></div>
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">Faculty</span>
