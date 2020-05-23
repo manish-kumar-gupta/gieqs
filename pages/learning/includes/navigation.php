@@ -45,7 +45,7 @@
             
             ?>
 
-            <div class="d-flex m-2 pt-0 bg-dark-light text-white flex-fill">
+            <div class="d-flex m-2 pt-0 bg-dark-light text-white text-sm flex-nav">
             
             <a class='p-2 bd-highlight' data-toggle="dropdown" data-flip="false"><i class="cursor-pointer fas fa-chevron-down"></i></a>
 
@@ -73,7 +73,7 @@
 
             ?>
                     </div>
-                    <span class='mr-auto p-2'><?php echo $general->getCategoryName($tagCategory);?></span>
+                    <span class='mr-auto p-2 cursor-pointer' data-toggle="dropdown"><?php echo $general->getCategoryName($tagCategory);?></span>
                     <!--<span class='p-2 bd-highlight'>x</span>-->
 
                 </div>
@@ -90,7 +90,8 @@
 
         ?>
             </div>
-
+            <div id="shown-tags" class="d-flex flex-wrap justify-content-start mt-4 mb-4 pt-0 bg-dark text-white">
+            </div>
 
         </div>
     </div>

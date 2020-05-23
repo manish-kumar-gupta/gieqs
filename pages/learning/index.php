@@ -30,7 +30,7 @@
     <style>
         .gieqsGold {
 
-            color: rgb(238, 194, 120);
+            color: rgba(238, 195, 120, 0.516);
 
 
         }
@@ -57,17 +57,6 @@ background-color: #1b385d75;
 
         
 
-        iframe {
-  box-sizing: border-box;
-    height: 25.25vw;
-    left: 50%;
-    min-height: 100%;
-    min-width: 100%;
-    transform: translate(-50%, -50%);
-    position: absolute;
-    top: 50%;
-    width: 100.77777778vh;
-}
 .cursor-pointer {
 
     cursor: pointer;
@@ -145,25 +134,7 @@ top: -20vh;
 			$id = null;
 		
 		}
-				        if ($id){
-		
-							$q = "SELECT  `id`  FROM  `video`  WHERE  `id`  = $id";
-							if ($general->returnYesNoDBQuery($q) != 1){
-                                echo '<div class="container mt-10 mb-10">';
-                                echo "Passed id does not exist in the database";
-								echo '</div>';
-								include(BASE_URI . "/footer.php");
-								exit();
-		
-							}
-						}else {
-							echo '<div class="container mt-10 mb-10">';
-							echo "This page requires the id of a video existing in the database to be passed";
-							echo '</div>';
-							include(BASE_URI . "/footer.php");
-							exit();
-							
-                        }
+				        
                         
                         
 		
@@ -171,479 +142,711 @@ top: -20vh;
         
         <!-- load all video data -->
 
-        <div id="id" style="display:none;"><?php if ($id){echo $id;}?></div>
+        <body>
 
+<div id="id" style="display:none;"><?php if ($id){echo $id;}?></div>
 
+<div class="main-content">
+    <!-- Header (account) -->
+    <!--<section class="page-header bg-dark-dark d-flex align-items-end pt-8 mt-10" style="background-image: url('http://localhost:90/dashboard/gieqs/assets/img/polyps/coverChromo.png'); background-repeat: no-repeat; background-size: auto; background-position: center center;" data-offset-top="#header-main">-->
 
-        <div id="vimeoid" style="display:none;"><?php echo $general->getVimeoID($id);?></div>
-
-					<div id="videoChapterData" style="display:none;"><?php echo $general->getVideoAndChapterDatav1($id);?>
-					</div>
-
-					<div id="videoChapterTagData" style="display:none;"><?php echo $general->getVideoAndChapterData($id);?>
-					</div>
-
-                    <div id="videoData" style="display:none;"><?php echo $general->getVideoData($id);?></div>
-                    
-                    <div id="tagsData" style="display:none;"><?php echo $general->getTagsVideo($id);?></div>
-
-                    <div id="tagCategories" style="display:none;"><?php $allCategories = $general->getAllTagCategories(); print_r($allCategories);?></div>
-
-
-                    <!--CONSTRUCT TAG DISPLAY-->
-
-                    <!--GET TAG CATEGORY NAME 
-                    
-                    <?php
-
-                        $tagBox = null;
-
-                        foreach ($allCategories as $key=>$value){
-
-                            //display the header only if a match
-
-                            //database query, is there a tag in this category associated with this video
-
-                            if ($general->isThisTagCategoryRepresentedInVideo($id, $value['id'])){
-                                
-                                $tagBox .= '<div class="row align-items-left">';
-                                    
-                                    $tagBox .= '<span class="h6 mt-1"> ' . $value['tagCategoryName'] . '</span>';
-
-                                    $tagsRequired = $general->getTagsVideoWithCategoryNonJSON($id);
-
-                                    //print_r($tagsRequired);
-
-                                    $tagBox .=  '</div>';
-                                    
-                                    $tagBox .= '<div class="row align-items-left">';
-
-                                    foreach ($tagsRequired as $key1=>$value1){
-
-                                        if ($value1['tagCategories_id'] == $value['id']){
-
-                                           $tagBox .= '<span class="badge bg-gray-800 mx-2 mb-1 tagButton" id="tag' . $value1['id'] . '">' . $value1['tagName'] . '</span>'; 
-
-                                        }
-
-                                    }
-
-                                    
-
-                                $tagBox .=  '</div>';
-
-                                //$('#tagsDisplay').append('<span class="badge badge-info mx-2 my-2 tagButton" id="tag' + id + '">' + tagName + '</span>');
-
-                                //echo $tagBox;
-
-                            }else{
-
-                                continue;
-                            }
-                            //if so display the card section
-
-                            //if not continue
-                            //look in the tagsVideo array
-                            //check if any match 
-
-                            
-
-
-                        }
-
-
-?>
-                    
-                TODO see other videos with similar tags, see videos with this tag, tag jump the video,
-                list of chapters with associated tags [toggle view by category, chapter]
-                
-                -->
-
-
-    <!-- Omnisearch -->
-    <div id="omnisearch" class="omnisearch">
-        <div class="container">
-            <!-- Search form -->
-            <form class="omnisearch-form">
-                <div class="form-group">
-                    <div class="input-group input-group-merge input-group-flush">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-search"></i></span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Type and hit enter ...">
-                    </div>
-                </div>
-            </form>
-            <div class="omnisearch-suggestions">
-                <h6 class="heading">Search Suggestions</h6>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <ul class="list-unstyled mb-0">
-                            <li>
-                                <a class="list-link" href="#">
-                                    <i class="fas fa-search"></i>
-                                    <span>macbook pro</span> in Laptops
-                                </a>
-                            </li>
-                            <li>
-                                <a class="list-link" href="#">
-                                    <i class="fas fa-search"></i>
-                                    <span>iphone 8</span> in Smartphones
-                                </a>
-                            </li>
-                            <li>
-                                <a class="list-link" href="#">
-                                    <i class="fas fa-search"></i>
-                                    <span>macbook pro</span> in Laptops
-                                </a>
-                            </li>
-                            <li>
-                                <a class="list-link" href="#">
-                                    <i class="fas fa-search"></i>
-                                    <span>beats pro solo 3</span> in Headphones
-                                </a>
-                            </li>
-                            <li>
-                                <a class="list-link" href="#">
-                                    <i class="fas fa-search"></i>
-                                    <span>smasung galaxy 10</span> in Phones
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+    <section class="page-header bg-gieqsGold d-flex align-items-end pt-8 mt-10" data-offset-top="#header-main">
+      <!-- Header container -->
+      <div class="container pt-0 pt-lg-0" >
+        <div class="row" >
+          <div class=" col-lg-12">
+            <!-- Salute + Small stats -->
+            <div class="row align-items-center mb-4">
+              <div class="col-md-8 mb-4 mb-md-0">
+                <span class="h2 mb-0 text-dark text-bold d-block">Welcome to the GIEQs Learning Dashboard. <?php //echo $_SESSION['firstname'] . ' ' . $_SESSION['surname']?></span>
+                <span class="text-dark">Your home for evidence-based endoscopy education.</span>
+              </div>
+              <!-- video -->
+              <div class="col-auto flex-fill d-none d-xl-block">
+              <!-- <div id="videoDisplay" class="embed-responsive embed-responsive-16by9">
+                <iframe  id='videoChapter' class="embed-responsive-item"
+                    src='https://player.vimeo.com/video/398791515' allow='autoplay'
+                    webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                    </div> -->
             </div>
-        </div>
-    </div>
-    <div class="main-content bg-gradient-dark">
-
-    
-
-        <div class="d-flex align-items-end">
-            <div class="container mt-10 mt-lg-10 pt-4 pt-lg-4">
-            <nav aria-label="breadcrumb" class="mb-3">
-                            <ol class="breadcrumb breadcrumb-links p-0 m-0">
-                                <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/navigator.php'?>">GIEQs online</a></li>
-                                <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/navigator.php'?>">Referring Search Page</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Video Viewer</li>
-                            </ol>
-                        </nav>
-                        <div class="row" style="margin-right:15px; margin-left:15px;">
-                        <span class="h3 mb-0 text-white d-block w-lg-75 w-xl-75"><?php echo $general->getVideoTitle($id)?></span>
-                        <span class="col-xl-8 text-muted text-md d-block my-2" id="videoDescription">Video subtitle</span>
-                    </div>
-
-                <div class="row">
-                    <div class="col-lg-6 mb-0 mb-lg-0 pl-lg-5">
-                        
-                       
-                        <div class="col text-left mt-0 align-items-center">
-                                                    <div class="actions">
-                                                        <a class="action-item p-0 m-0 pr-4 likes"><i
-                                                                class="fas fa-heart mr-1 pr-1"></i> <span id="likesNumber">50</span></a>
-                                                        <a class="action-item p-0 m-0 pr-4 views"><i class="fas fa-eye mr-1"></i> <span id="viewsNumber">250</span></a>
-                                                            <a class="action-item p-0 m-0 pr-4"><i class="fas fa-user mr-1"></i>
-                                                            <span id="videoAuthor"></span></a>
-                                                    </div>
-                                                </div>
-</div>
-                            <div class="col-lg-3 mb-0 mb-lg-0 align-self-center">
-                                <div class="text-right ">
-                                
-                                                        
-                                                    
-                                    <a class="dropdown-item" data-toggle="collapse" href="#collapseExample"
-                                        aria-expanded="false" aria-controls="collapseExample">
-                                        <i class="fas fa-chevron-circle-up"></i> show tags
-                                    </a>
-                                    
-
-</div>
-                                <div class="collapse mb-0" id="collapseExample">
-                                    <div class="card mb-0 tagCard">
-                                    <div class="card-header tagCardHeader mb-0">
-                                    <i style="float:right;" class="fas fa-times tagsClose cursor-pointer"></i>
-                        <span class="h6">Tags <br/></span><span class="text-sm">(click to filter)</span><span class="text-sm text-right"> <a style="float:right;" class="cursor-pointer" onclick="undoFilterByTag();"><i class="fas fa-undo"></i> Undo</a></span>
-                    </div>
-                                        <div class="card-body mt-0 pt-0">
-                                            
-                                                <div id="tagsDisplay">
-                                                <?php echo $tagBox;?>
-                                                </div>
-                                                
-                                            
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                                <div class="collapse card mb-0 p-2 flex-row"  id="selectDropdown">
-                            <div class="container">
-                                <div class="row">
-                                <span class="mb-0 pl-2 pt-2 flex-grow-1">Choose chapter</span>
-                                <button type="button" class="close text-right text-white" data-toggle="collapse" href="#selectDropdown" aria-label="Close">
-                              <span>&times;</span>
-                            </button>
-                    </div>
-                    <div class="row">
-                                <?php
-                                if ($currentUserLevel == 1){}?>
-                                <?php echo $general->getChapterSelector($id);?>
-                    </div>
-                    </div>
-                            </div>
-                    </div>
-                    <div id='chapterSelectorDiv' class="col-xl-3 mb-0 mb-lg-0 mt-2 py-0 text-center vertical-align-top">
-
-                        <div class="card mb-0">
-                            <div class="card-header" style="    padding-right: 0.5em;
-    padding-left: 1.5em;
-    padding-bottom: 0.5em;
-    padding-top: 0.5em;">
-                                <div class="d-flex justify-content-between align-items-center p-0">
-                                    <div>
-                                        <h6 class="mb-0">Chapter Navigation</h6>
-                                    </div>
-                                    <div class="text-right">
-                                        <div class="actions">
-                                            <a href="#" class="action-item"><i class="fas fa-sync" data-toggle="tooltip" data-placement="bottom" title="restart video"></i></a>
-
-                                            <a class="action-item" data-toggle="collapse" href="#selectDropdown"><i
-                                                    class="fas fa-ellipsis-h" data-toggle="tooltip" data-placement="bottom" title="show chapters"></i></a>
-
-                                            <?php if ($isSuperuser == 1){?>
-                                            
-                                            <a href="<?php echo BASE_URL; ?>/pages/learning/scripts/forms/videoChapterForm.php?id=<?php echo $id;?>" class="action-item"><i class="fas fa-edit" data-toggle="tooltip" data-placement="bottom" title="edit video"></i></a>
-
-                                            <?php }?>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            
-                            <div class="list-group">
-
-
-                                <a class="list-group-item p-0">
-
-                                    <div class="d-flex align-items-center justify-content-between">
-
-                                        <div class="flex-fill p-2 text-limit">
-                                            <h6 id="chapterHeadingControl" class="progress-text mb-1 text-sm d-block text-limit text-left">No chapter selected
-                                            </h6>
-                                            <div id="myProgress" class="progress progress-xs mb-0">
-                                                <div id="myBar" class="progress-bar bg-gieqsGold" role="progressbar"
-                                                    style="width: 60%;" aria-valuenow="60" aria-valuemin="0"
-                                                    aria-valuemax="100"></div>
-                                            </div>
-                                            <div
-                                                class="d-flex justify-content-between text-xs text-muted text-right mt-1">
-                                                
-                                                <div>
-                                                    <i id='video-back' class="fas fa-step-backward cursor-pointer"></i>
-                                                </div>
-                                                <div>
-                                                    <i id='video-start-pause' class="fas fa-play cursor-pointer"></i>
-                                                </div>
-                                                <div>
-                                                    <i id='video-stop' class="fas fa-stop cursor-pointer"></i>
-                                              </div>
-                                                <div>
-                                                <i id='video-forward' class="fas fa-step-forward cursor-pointer"></i>
-                                                </div>
-                                                <div>
-                                                    <span id='currentChapterTime'></span>
-
-                                                </div>
-                                            
-                                                
-                                               <!--  <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                                    <label class="custom-control-label" for="customCheck1"></label>
-                                                </div> -->
-                                                
-                                                <div class="font-weight-bold gieqsGold">
-                                                    <span id="currentChapter">x</span> / <span id="totalChapters">y</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
+            <!-- Account navigation -->
+           
+            
+          </div>
         </div>
+      </div>
+    </section>
+    <section class="slice bg-section-secondary">
+      <div class="container">
+        <div class="d-flex flex-row-reverse mt-1 align-items-end">
+            <a href="account-profile-public.html" class="btn btn-icon btn-group-nav shadow btn-neutral">
+              <span class="btn-inner--icon"><i class="fas fa-user"></i></span>
+              <span class="btn-inner--text d-none d-md-inline-block">My Learning Profile</span>
+            </a>
+            
+        </div>
+        <!-- Current studies -->
+        <div class="actions-toolbar py-2 mb-4 mt-2">
+          <h5 class="mb-1">What's New</h5>
+          <p class="text-sm text-muted mb-0">Check out our latest and most popular content.</p>
+        </div>
+        <!--
+        <div class="col-auto flex-fill d-none d-xl-block">
+            <ul class="list-inline row justify-content-lg-end mb-0">
+              <li class="list-inline-item col-sm-4 col-md-auto px-3 my-2 mx-0">
+                <span class="badge badge-dot text-white">
+                  <i class="bg-success"></i>Percentage complete
+                </span>
+                <a class="d-sm-block h5 text-white font-weight-bold pl-2" href="#">
+                  20.5%
+                  <small class="fas fa-angle-up text-success"></small>
+                </a>
+              </li>
+              <li class="list-inline-item col-sm-4 col-md-auto px-3 my-2 mx-0">
+                <span class="badge badge-dot text-white">
+                  <i class="bg-warning"></i>Incomplete learning
+                </span>
+                <a class="d-sm-block h5 text-white font-weight-bold pl-2" href="#">
+                  5.7%
+                  <small class="fas fa-angle-up text-warning"></small>
+                </a>
+              </li>
+              <li class="list-inline-item col-sm-4 col-md-auto px-3 my-2 mx-0">
+                <span class="badge badge-dot text-white">
+                  <i class="bg-danger"></i>Learning not started
+                </span>
+                <a class="d-sm-block h5 text-white font-weight-bold pl-2" href="#">
+                  -3.24%
+                  <small class="fas fa-angle-down text-danger"></small>
+                </a>
+              </li>
+            </ul>
+          </div>-->
+        <div class="card-deck flex-column flex-lg-row mb-5">
+          <div class="card">
+            <div class="card-header">
+              <div class="d-flex align-items-center">
+                <span class="avatar bg-primary text-white rounded-circle avatar-lg">W</span>
+                <div class="avatar-content ml-3">
+                    <a href="https://vimeo.com/417539867" data-fancybox>
+                  
 
-
-    
-
-
-
-
-    <div id="playerContainer" class="d-flex align-items-end" style="padding-left:15px; padding-right:15px;">
-        <div class="container mt-2 mb-2 py-0">
-            <div class="row">
-                <div class="col-lg-9 mb-0 mb-lg-0 pr-lg-3">
-
-
-               
-            <div class="container">
-            <div id="videoDisplay" class="embed-responsive embed-responsive-16by9">
-                    <iframe  id='videoChapter' class="embed-responsive-item" style="left:50%; top:50%;"
-                        src='https://player.vimeo.com/video/398791515' allow='autoplay'
-                        webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                        </div>
+                <h6 class="mb-0">Welcome to GIEQs learning</h6> </a>
+                 
                 </div>
-</div>
-                <div class="card p-0 col-lg-3 bg-dark mt-2 mt-lg-0 mb-0 mb-lg-0 text-center vertical-align-center">
-                <div class="card-header" style="padding-right: 0.5em;
-    padding-left: 0.5em;
-    padding-bottom: 0.5em;
-    padding-top: 0.5em;">
-                    <span id="chapterHeading" class="h6 mb-0 text-white d-block">No chapter selected</span>
-</div>
-<div class="card-body" style="padding-right: 0.2em;
-    padding-left: 0.2em;
-    padding-bottom: 0.2em;
-  
-    padding-top: 0.5em; max-height: 40vh; overflow-y: scroll;">
-                    <span id="chapterDescription" class="mt-2 p-2 d-block text-left"></span>
-</div>
-<div class="card-footer tagFilterDisplayArea">
-</div>
-                </div>
+              </div>
             </div>
+            <div class="card-body">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <a href="#" class="text-sm font-weight-bold d-block"></a>
+                </div>
+                <div>
+                  <a href="#" class="text-sm font-weight-bold d-block">Dr David Tate</a>
+                </div>
+              </div>
+              <div class="mt-3 mb-2">
+                <!--<div class="avatar-group">
+                  <a href="#" class="avatar rounded-circle avatar-sm">
+                    <img alt="Image placeholder" src="../../assets/img/theme/light/team-1-800x800.jpg" class="">
+                  </a>
+                  <a href="#" class="avatar rounded-circle avatar-sm">
+                    <img alt="Image placeholder" src="../../assets/img/theme/light/team-2-800x800.jpg" class="">
+                  </a>
+                  <a href="#" class="avatar rounded-circle avatar-sm">
+                    <img alt="Image placeholder" src="../../assets/img/theme/light/team-3-800x800.jpg" class="">
+                  </a>
+                </div>-->
+              </div>
+              <!--<small class="h6 text-sm font-weight-bold">Reminder:</small>
+              <p class="text-sm lh-160 mb-0">When we strive to become better than we are everything around us becomes better too.</p>-->
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              
+            </div>
+            <div class="card-body">
+              
+              
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              
+            </div>
+            <div class="card-body">
+              
+              
+            </div>
+          </div>
+         
         </div>
-    </div>
-
-    <div class="d-flex align-items-end bg-gradient-dark">
-        <div class="container mt-4 pt-0 pt-lg-0">
-            <div class="row">
-                <div class="col-lg-9 mb-0 mb-lg-0">
-                    <p class="text-left d-flex align-items-left">
-                    <a class="dropdown-item" data-toggle="collapse" href="#collapseExamplenotyet" aria-expanded="false"
-                            aria-controls="collapseExample2">
-                            <i class="fas fa-chevron-circle-up"></i> show histopathology result
-                        </a>
-                        <a class="dropdown-item" data-toggle="collapse" href="#collapseExample2" aria-expanded="false"
-                            aria-controls="collapseExample3">
-                            <i class="fas fa-chevron-circle-up"></i> show references
-                        </a>
-                        <a class="dropdown-item" data-toggle="collapse" href="#collapseExample3" aria-expanded="false"
-                            aria-controls="collapseExample3">
-                            <i class="fas fa-chevron-circle-up"></i> show comments
-                        </a>
-                    </p>
-                    <div class="collapse" id="collapseExample2">
-                        <div class="card">
-                            <div class="card-footer">
-                                <div class="flex-row">
-                                    
-                                    <div>
-                                        <?php echo $general->getFullReferenceListVideo($id);?>
-                                        <!-- 
-                                        <span class="badge badge-primary mx-2">
-                                            ref 1
-                                        </span>
-                                        <span class="badge badge-primary mx-2">
-                                            ref 2
-                                        </span>
-                                    
-                                    
-                                    -->
-                                    </div>
-                                    <div class="text-right text-right">
-                                        <div class="actions">
-
-                                            <a href="#" class="action-item"><i class="fas fa-info mr-1"></i></a>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
+        <!-- Further to add later Latest projects
+        <div class="mb-5">
+          <div class="actions-toolbar py-2 mb-4">
+            <h5 class="mb-1">Latest projects</h5>
+            <p class="text-sm text-muted mb-0">Manage pending orders and track invoices.</p>
+          </div>
+          <div>
+            <table class="table table-cards align-items-center">
+              <thead>
+                <tr>
+                  <th scope="col" class="sort" data-sort="name">Project</th>
+                  <th scope="col" class="sort" data-sort="budget">Budget</th>
+                  <th scope="col" class="sort" data-sort="status">Status</th>
+                  <th scope="col">Users</th>
+                  <th scope="col" class="sort" data-sort="completion">Completion</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody class="list">
+                <tr>
+                  <th scope="row">
+                    <div class="media align-items-center">
+                      <div>
+                        <img alt="Image placeholder" src="../../assets/img/theme/light/brand-avatar-1.png" class="avatar  rounded-circle">
+                      </div>
+                      <div class="media-body ml-4">
+                        <span class="name mb-0 text-sm">Purpose Design System</span>
+                      </div>
                     </div>
-                    <div class="collapse" id="collapseExample3">
-                        <dic class="card">
-                            <div class="card-footer">
-                                <div class="row align-items-left">
-                                    <div class="col">
-                                        <span class="badge badge-primary mx-2">
-                                            comment 1
-                                        </span>
-                                        <span class="badge badge-primary mx-2">
-                                            comment 2
-                                        </span>
-                                    </div>
-                                    <div class="col text-right text-right">
-                                        <div class="actions">
-                                            <a href="#" class="action-item"><i class="fas fa-info mr-1"></i></a>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                  </th>
+                  <td class="budget">
+                    $2500 USD
+                  </td>
+                  <td>
+                    <span class="badge badge-dot mr-4">
+                      <i class="bg-warning"></i>
+                      <span class="status">pending</span>
+                    </span>
+                  </td>
+                  <td>
+                    <div class="avatar-group">
+                      <a href="#" class="avatar rounded-circle avatar-sm">
+                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-1-800x800.jpg" class="">
+                      </a>
+                      <a href="#" class="avatar rounded-circle avatar-sm">
+                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-2-800x800.jpg" class="">
+                      </a>
+                      <a href="#" class="avatar rounded-circle avatar-sm">
+                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-3-800x800.jpg" class="">
+                      </a>
                     </div>
-
-
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-    </div>
-
-
-
-    </div>
-    </div>
-    <!-- Modal -->
-    <div class="modal fade" id="registerInterest" tabindex="-1" role="dialog" aria-labelledby="registerInterestLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="registerInterestLabel" style="color: rgb(238, 194, 120);">Thank-you for
-                        your interest in GIEQs</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span class="text-white" aria-hidden="false">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <span class="h6">Registration will open in late January 2020. <br /> </span><span>Prior to this you
-                        can register your interest below and we will keep you updated on everything GIEQs.</span>
-                    <hr>
-                    <form id='pre-register'>
-                        <div class="form-group">
-                            <label for="name">Name:</label>
-                            <div class="input-group mb-3">
-                                <input type="text" name="name" id="name" class="form-control"
-                                    placeholder="please enter your name">
-                            </div>
-                            <label for="email">Email address:</label>
-                            <div class="input-group mb-3">
-                                <input type="email" name="email" id="email" class="form-control"
-                                    placeholder="please enter your email address">
-                            </div>
+                  </td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <span class="completion mr-2">60%</span>
+                      <div>
+                        <div class="progress">
+                          <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
                         </div>
-                    </form>
-                    <hr>
-                    <span>Your email address will only be used to update you on GIEQs</span>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn-small btn-secondary" data-dismiss="modal">Close</button>
-                    <button id="submitPreRegister" type="button" class="btn-small text-black"
-                        style="background-color: rgb(238, 194, 120);">Submit</button>
-                </div>
-            </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="text-right">
+                    <!-- Actions 
+                    <div class="actions ml-3">
+                      <a href="#" class="action-item mr-2" data-toggle="tooltip" title="Quick view">
+                        <i class="fas fa-external-link-alt"></i>
+                      </a>
+                      <a href="#" class="action-item mr-2" data-toggle="tooltip" title="Edit">
+                        <i class="fas fa-pencil-alt"></i>
+                      </a>
+                      <a href="#" class="action-item text-danger mr-2" data-toggle="tooltip" title="Move to trash">
+                        <i class="fas fa-trash"></i>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="table-divider"></tr>
+                <tr>
+                  <th scope="row">
+                    <div class="media align-items-center">
+                      <div>
+                        <img alt="Image placeholder" src="../../assets/img/theme/light/brand-avatar-2.png" class="avatar  rounded-circle">
+                      </div>
+                      <div class="media-body ml-4">
+                        <span class="name mb-0 text-sm">Website redesign</span>
+                      </div>
+                    </div>
+                  </th>
+                  <td class="budget">
+                    $1800 USD
+                  </td>
+                  <td>
+                    <span class="badge badge-dot mr-4">
+                      <i class="bg-success"></i>
+                      <span class="status">completed</span>
+                    </span>
+                  </td>
+                  <td>
+                    <div class="avatar-group">
+                      <a href="#" class="avatar rounded-circle avatar-sm">
+                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-1-800x800.jpg" class="">
+                      </a>
+                      <a href="#" class="avatar rounded-circle avatar-sm">
+                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-2-800x800.jpg" class="">
+                      </a>
+                      <a href="#" class="avatar rounded-circle avatar-sm">
+                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-3-800x800.jpg" class="">
+                      </a>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <span class="completion mr-2">100%</span>
+                      <div>
+                        <div class="progress">
+                          <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="text-right">
+                    <!-- Actions 
+                    <div class="actions ml-3">
+                      <a href="#" class="action-item mr-2" data-toggle="tooltip" title="Quick view">
+                        <i class="fas fa-external-link-alt"></i>
+                      </a>
+                      <a href="#" class="action-item mr-2" data-toggle="tooltip" title="Edit">
+                        <i class="fas fa-pencil-alt"></i>
+                      </a>
+                      <a href="#" class="action-item text-danger mr-2" data-toggle="tooltip" title="Move to trash">
+                        <i class="fas fa-trash"></i>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="table-divider"></tr>
+                <tr>
+                  <th scope="row">
+                    <div class="media align-items-center">
+                      <div>
+                        <img alt="Image placeholder" src="../../assets/img/theme/light/brand-avatar-3.png" class="avatar  rounded-circle">
+                      </div>
+                      <div class="media-body ml-4">
+                        <span class="name mb-0 text-sm">Webpixels website launch</span>
+                      </div>
+                    </div>
+                  </th>
+                  <td class="budget">
+                    $3150 USD
+                  </td>
+                  <td>
+                    <span class="badge badge-dot mr-4">
+                      <i class="bg-danger"></i>
+                      <span class="status">delayed</span>
+                    </span>
+                  </td>
+                  <td>
+                    <div class="avatar-group">
+                      <a href="#" class="avatar rounded-circle avatar-sm">
+                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-1-800x800.jpg" class="">
+                      </a>
+                      <a href="#" class="avatar rounded-circle avatar-sm">
+                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-2-800x800.jpg" class="">
+                      </a>
+                      <a href="#" class="avatar rounded-circle avatar-sm">
+                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-3-800x800.jpg" class="">
+                      </a>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <span class="completion mr-2">72%</span>
+                      <div>
+                        <div class="progress">
+                          <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 72%;"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="text-right">
+                    <!-- Actions 
+                    <div class="actions ml-3">
+                      <a href="#" class="action-item mr-2" data-toggle="tooltip" title="Quick view">
+                        <i class="fas fa-external-link-alt"></i>
+                      </a>
+                      <a href="#" class="action-item mr-2" data-toggle="tooltip" title="Edit">
+                        <i class="fas fa-pencil-alt"></i>
+                      </a>
+                      <a href="#" class="action-item text-danger mr-2" data-toggle="tooltip" title="Move to trash">
+                        <i class="fas fa-trash"></i>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="table-divider"></tr>
+                <tr>
+                  <th scope="row">
+                    <div class="media align-items-center">
+                      <div>
+                        <img alt="Image placeholder" src="../../assets/img/theme/light/brand-avatar-4.png" class="avatar  rounded-circle">
+                      </div>
+                      <div class="media-body ml-4">
+                        <span class="name mb-0 text-sm">Purpose Website UI Kit</span>
+                      </div>
+                    </div>
+                  </th>
+                  <td class="budget">
+                    $4400 USD
+                  </td>
+                  <td>
+                    <span class="badge badge-dot mr-4">
+                      <i class="bg-info"></i>
+                      <span class="status">on schedule</span>
+                    </span>
+                  </td>
+                  <td>
+                    <div class="avatar-group">
+                      <a href="#" class="avatar rounded-circle avatar-sm">
+                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-1-800x800.jpg" class="">
+                      </a>
+                      <a href="#" class="avatar rounded-circle avatar-sm">
+                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-2-800x800.jpg" class="">
+                      </a>
+                      <a href="#" class="avatar rounded-circle avatar-sm">
+                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-3-800x800.jpg" class="">
+                      </a>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <span class="completion mr-2">90%</span>
+                      <div>
+                        <div class="progress">
+                          <div class="progress-bar bg-info" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="text-right">
+                    <!-- Actions 
+                    <div class="actions ml-3">
+                      <a href="#" class="action-item mr-2" data-toggle="tooltip" title="Quick view">
+                        <i class="fas fa-external-link-alt"></i>
+                      </a>
+                      <a href="#" class="action-item mr-2" data-toggle="tooltip" title="Edit">
+                        <i class="fas fa-pencil-alt"></i>
+                      </a>
+                      <a href="#" class="action-item text-danger mr-2" data-toggle="tooltip" title="Move to trash">
+                        <i class="fas fa-trash"></i>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+                <tr class="table-divider"></tr>
+                <tr>
+                  <th scope="row">
+                    <div class="media align-items-center">
+                      <div>
+                        <img alt="Image placeholder" src="../../assets/img/theme/light/brand-avatar-5.png" class="avatar  rounded-circle">
+                      </div>
+                      <div class="media-body ml-4">
+                        <span class="name mb-0 text-sm">Prototype Purpose Dashboard</span>
+                      </div>
+                    </div>
+                  </th>
+                  <td class="budget">
+                    $2200 USD
+                  </td>
+                  <td>
+                    <span class="badge badge-dot mr-4">
+                      <i class="bg-success"></i>
+                      <span class="status">completed</span>
+                    </span>
+                  </td>
+                  <td>
+                    <div class="avatar-group">
+                      <a href="#" class="avatar rounded-circle avatar-sm">
+                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-1-800x800.jpg" class="">
+                      </a>
+                      <a href="#" class="avatar rounded-circle avatar-sm">
+                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-2-800x800.jpg" class="">
+                      </a>
+                      <a href="#" class="avatar rounded-circle avatar-sm">
+                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-3-800x800.jpg" class="">
+                      </a>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <span class="completion mr-2">100%</span>
+                      <div>
+                        <div class="progress">
+                          <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="text-right">
+                    <!-- Actions
+                    <div class="actions ml-3">
+                      <a href="#" class="action-item mr-2" data-toggle="tooltip" title="Quick view">
+                        <i class="fas fa-external-link-alt"></i>
+                      </a>
+                      <a href="#" class="action-item mr-2" data-toggle="tooltip" title="Edit">
+                        <i class="fas fa-pencil-alt"></i>
+                      </a>
+                      <a href="#" class="action-item text-danger mr-2" data-toggle="tooltip" title="Move to trash">
+                        <i class="fas fa-trash"></i>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-    </div>
+        <!-- Project stats
+        <div class="actions-toolbar py-2 mb-4">
+          <h5 class="mb-1">Project stats</h5>
+          <p class="text-sm text-muted mb-0">Manage pending orders and track invoices.</p>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="card mb-0">
+              <div class="card-header">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <h6 class="mb-0">Project progress</h6>
+                  </div>
+                  <div class="text-right">
+                    <div class="actions">
+                      <a href="#" class="action-item"><i class="fas fa-sync"></i></a>
+                      <div class="dropdown action-item" data-toggle="dropdown">
+                        <a href="#" class="action-item"><i class="fas fa-ellipsis-h"></i></a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                          <a href="#" class="dropdown-item">Refresh</a>
+                          <a href="#" class="dropdown-item">Manage Widgets</a>
+                          <a href="#" class="dropdown-item">Settings</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action">
+                  <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                      <img alt="Image placeholder" src="../../assets/img/theme/light/brand-avatar-1.png" class="avatar  rounded-circle">
+                    </div>
+                    <div class="flex-fill pl-3 text-limit">
+                      <h6 class="progress-text mb-1 text-sm d-block text-limit">Purpose Design System</h6>
+                      <div class="progress progress-xs mb-0">
+                        <div class="progress-bar bg-warning" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <div class="d-flex justify-content-between text-xs text-muted text-right mt-1">
+                        <div>
+                          <span class="font-weight-bold text-warning">Pending</span>
+                        </div>
+                        <div>
+                          20 Aug 2018
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                  <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                      <img alt="Image placeholder" src="../../assets/img/theme/light/brand-avatar-2.png" class="avatar  rounded-circle">
+                    </div>
+                    <div class="flex-fill pl-3 text-limit">
+                      <h6 class="progress-text mb-1 text-sm d-block text-limit">Website redesign</h6>
+                      <div class="progress progress-xs mb-0">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <div class="d-flex justify-content-between text-xs text-muted text-right mt-1">
+                        <div>
+                          <span class="font-weight-bold text-success">Completed</span>
+                        </div>
+                        <div>
+                          20 Aug 2018
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                  <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                      <img alt="Image placeholder" src="../../assets/img/theme/light/brand-avatar-3.png" class="avatar  rounded-circle">
+                    </div>
+                    <div class="flex-fill pl-3 text-limit">
+                      <h6 class="progress-text mb-1 text-sm d-block text-limit">Webpixels website launch</h6>
+                      <div class="progress progress-xs mb-0">
+                        <div class="progress-bar bg-danger" role="progressbar" style="width: 72%;" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <div class="d-flex justify-content-between text-xs text-muted text-right mt-1">
+                        <div>
+                          <span class="font-weight-bold text-danger">Delayed</span>
+                        </div>
+                        <div>
+                          20 Aug 2018
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                  <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                      <img alt="Image placeholder" src="../../assets/img/theme/light/brand-avatar-4.png" class="avatar  rounded-circle">
+                    </div>
+                    <div class="flex-fill pl-3 text-limit">
+                      <h6 class="progress-text mb-1 text-sm d-block text-limit">Purpose Website UI Kit</h6>
+                      <div class="progress progress-xs mb-0">
+                        <div class="progress-bar bg-info" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <div class="d-flex justify-content-between text-xs text-muted text-right mt-1">
+                        <div>
+                          <span class="font-weight-bold text-info">On schedule</span>
+                        </div>
+                        <div>
+                          20 Aug 2018
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                  <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                      <img alt="Image placeholder" src="../../assets/img/theme/light/brand-avatar-5.png" class="avatar  rounded-circle">
+                    </div>
+                    <div class="flex-fill pl-3 text-limit">
+                      <h6 class="progress-text mb-1 text-sm d-block text-limit">Prototype Purpose Dashboard</h6>
+                      <div class="progress progress-xs mb-0">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                      <div class="d-flex justify-content-between text-xs text-muted text-right mt-1">
+                        <div>
+                          <span class="font-weight-bold text-success">Completed</span>
+                        </div>
+                        <div>
+                          20 Aug 2018
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card mb-0">
+              <div class="card-header">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div>
+                    <h6 class="mb-0">Project budgets</h6>
+                  </div>
+                  <div class="text-right">
+                    <div class="actions">
+                      <a href="#" class="action-item"><i class="fas fa-sync"></i></a>
+                      <div class="dropdown action-item" data-toggle="dropdown">
+                        <a href="#" class="action-item"><i class="fas fa-ellipsis-h"></i></a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                          <a href="#" class="dropdown-item">Refresh</a>
+                          <a href="#" class="dropdown-item">Manage Widgets</a>
+                          <a href="#" class="dropdown-item">Settings</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action">
+                  <div class="media align-items-center">
+                    <div class="mr-3">
+                      <img alt="Image placeholder" src="../../assets/img/theme/light/brand-avatar-1.png" class="avatar  rounded-circle">
+                    </div>
+                    <div class="media-body">
+                      <h6 class="text-sm d-block text-limit mb-0">Purpose Design System</h6>
+                      <span class="d-block text-sm text-muted">Development</span>
+                    </div>
+                    <div class="media-body text-right">
+                      <span class="text-sm text-dark font-weight-bold ml-3">
+                        $2500
+                      </span>
+                    </div>
+                  </div>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                  <div class="media align-items-center">
+                    <div class="mr-3">
+                      <img alt="Image placeholder" src="../../assets/img/theme/light/brand-avatar-2.png" class="avatar  rounded-circle">
+                    </div>
+                    <div class="media-body">
+                      <h6 class="text-sm d-block text-limit mb-0">Website redesign</h6>
+                      <span class="d-block text-sm text-muted">Identity</span>
+                    </div>
+                    <div class="media-body text-right">
+                      <span class="text-sm text-dark font-weight-bold ml-3">
+                        $1800
+                      </span>
+                    </div>
+                  </div>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                  <div class="media align-items-center">
+                    <div class="mr-3">
+                      <img alt="Image placeholder" src="../../assets/img/theme/light/brand-avatar-3.png" class="avatar  rounded-circle">
+                    </div>
+                    <div class="media-body">
+                      <h6 class="text-sm d-block text-limit mb-0">Webpixels website launch</h6>
+                      <span class="d-block text-sm text-muted">Branding</span>
+                    </div>
+                    <div class="media-body text-right">
+                      <span class="text-sm text-dark font-weight-bold ml-3">
+                        $3150
+                      </span>
+                    </div>
+                  </div>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                  <div class="media align-items-center">
+                    <div class="mr-3">
+                      <img alt="Image placeholder" src="../../assets/img/theme/light/brand-avatar-4.png" class="avatar  rounded-circle">
+                    </div>
+                    <div class="media-body">
+                      <h6 class="text-sm d-block text-limit mb-0">Purpose Website UI Kit</h6>
+                      <span class="d-block text-sm text-muted">Marketing</span>
+                    </div>
+                    <div class="media-body text-right">
+                      <span class="text-sm text-dark font-weight-bold ml-3">
+                        $4400
+                      </span>
+                    </div>
+                  </div>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                  <div class="media align-items-center">
+                    <div class="mr-3">
+                      <img alt="Image placeholder" src="../../assets/img/theme/light/brand-avatar-5.png" class="avatar  rounded-circle">
+                    </div>
+                    <div class="media-body">
+                      <h6 class="text-sm d-block text-limit mb-0">Prototype Purpose Dashboard</h6>
+                      <span class="d-block text-sm text-muted">Frameworks</span>
+                    </div>
+                    <div class="media-body text-right">
+                      <span class="text-sm text-dark font-weight-bold ml-3">
+                        $2200
+                      </span>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </section>
+  </div>
 
     <?php require BASE_URI . '/footer.php';?>
 
@@ -651,7 +854,7 @@ top: -20vh;
     <!-- <script src="assets/js/purpose.core.js"></script> -->
     <!-- Page JS -->
     <script src="assets/libs/swiper/dist/js/swiper.min.js"></script>
-    <script src="assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+    <script src="<?php echo BASE_URL;?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
     <script src="assets/libs/typed.js/lib/typed.min.js"></script>
     <script src="assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script>
     <script src="assets/libs/jquery-countdown/dist/jquery.countdown.min.js"></script>

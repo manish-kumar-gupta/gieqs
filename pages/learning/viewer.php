@@ -35,6 +35,12 @@
 
         }
 
+        .collapsing {
+    -webkit-transition: none;
+    transition: none;
+    display: none;
+}
+
         .tagButton {
 
             cursor: pointer;
@@ -43,9 +49,15 @@
 
         .tagCard {
 
-background-color: #1b385d75; 
+background-color: #1b385dde;
 
 
+
+}
+
+.tagCardHeader{
+
+    background-color: #162e4d;
 
 }
 
@@ -73,6 +85,8 @@ background-color: #1b385d75;
 
             
 left: -50vw;
+top: -20vh;
+min-width:30vw;
 
 
 }
@@ -157,6 +171,16 @@ left: -50vw;
 							exit();
 							
                         }
+
+        
+                        if (isset($_GET["referid"])){
+                            $referid = $_GET["referid"];
+                        
+                        }else{
+                        
+                            $referid = null;
+                        
+                        }
                         
                         
 		
@@ -198,10 +222,10 @@ left: -50vw;
                             //database query, is there a tag in this category associated with this video
 
                             if ($general->isThisTagCategoryRepresentedInVideo($id, $value['id'])){
-
+                                
                                 $tagBox .= '<div class="row align-items-left">';
                                     
-                                    $tagBox .= '<span class="h6 mt-2"> ' . $value['tagCategoryName'] . '</span>';
+                                    $tagBox .= '<span class="h6 mt-1"> ' . $value['tagCategoryName'] . '</span>';
 
                                     $tagsRequired = $general->getTagsVideoWithCategoryNonJSON($id);
 
@@ -215,7 +239,7 @@ left: -50vw;
 
                                         if ($value1['tagCategories_id'] == $value['id']){
 
-                                           $tagBox .= '<span class="badge badge-info mx-2 my-2 tagButton" id="tag' . $value1['id'] . '">' . $value1['tagName'] . '</span>'; 
+                                           $tagBox .= '<span class="badge bg-gray-800 mx-2 mb-1 tagButton" id="tag' . $value1['id'] . '">' . $value1['tagName'] . '</span>'; 
 
                                         }
 
@@ -313,28 +337,23 @@ left: -50vw;
     
 
         <div class="d-flex align-items-end">
-            <div class="container-flush mt-10 mt-lg-10 pt-4 pt-lg-4 pl-2 pr-2">
+            <div class="container mt-10 mt-lg-10 pt-4 pt-lg-4">
             <nav aria-label="breadcrumb" class="mb-3">
                             <ol class="breadcrumb breadcrumb-links p-0 m-0">
-                                <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/navigator.php'?>">GIEQs online</a></li>
-                                <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/navigator.php'?>">Referring Search Page</a></li>
+                                <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/index.php'?>">GIEQs online</a></li>
+                                <li class="breadcrumb-item"><a href="<?php echo 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . "{$_SERVER['HTTP_HOST']}" . $referid?>">Video Search</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">Video Viewer</li>
                             </ol>
                         </nav>
                         <div class="row" style="margin-right:15px; margin-left:15px;">
-                        <div class="col-3"></div>
-                        <span class="h3 mb-0 text-white col-9"><?php echo $general->getVideoTitle($id)?></span>
-                        <div class="col-3"></div>
-                        <div>
+                        <span class="h3 mb-0 text-white d-block w-lg-75 w-xl-75"><?php echo $general->getVideoTitle($id)?></span>
+                        </div>
                         <div class="row" style="margin-right:15px; margin-left:15px;">
-                        <div class="col-3"></div>
-                        <span class="text-muted text-md d-block my-2 col-9" id="videoDescription">Video subtitle</span>
-                        <div class="col-3"></div>
-                   
+                        <span class="col-xl-8 text-muted text-md d-block my-2" id="videoDescription">Video subtitle</span>
                     </div>
 
                 <div class="row">
-                    <div class="col-lg-6 mb-0 mb-lg-0 pl-lg-5">
+                    <div class="col-lg-7 mb-0 mb-lg-0 pl-lg-5">
                         
                        
                         <div class="col text-left mt-0 align-items-center">
@@ -342,12 +361,12 @@ left: -50vw;
                                                         <a class="action-item p-0 m-0 pr-4 likes"><i
                                                                 class="fas fa-heart mr-1 pr-1"></i> <span id="likesNumber">50</span></a>
                                                         <a class="action-item p-0 m-0 pr-4 views"><i class="fas fa-eye mr-1"></i> <span id="viewsNumber">250</span></a>
-                                                            <a class="action-item p-0 m-0 pr-4"><i class="fas fa-user mr-1"></i>
-                                                            <span id="videoAuthor"></span></a>
+                                                            <a class="action-item p-0 m-0 pr-1 text-wrap"><i class="fas fa-user mr-1"></i>
+                                                            <span id="videoAuthor" class="flex-grow"></span></a>
                                                     </div>
                                                 </div>
 </div>
-                            <div class="col-lg-3 mb-0 mb-lg-0 align-self-center">
+                            <div class="col-lg-2 mb-0 mb-lg-0 align-self-center">
                                 <div class="text-right ">
                                 
                                                         
@@ -361,8 +380,9 @@ left: -50vw;
 </div>
                                 <div class="collapse mb-0" id="collapseExample">
                                     <div class="card mb-0 tagCard">
-                                    <div class="card-header mb-0">
-                        <span class="h6">Tags <br/></span><span class="text-sm">(click to filter)</span><span class="text-sm text-right"> <a style="float:right;" class="cursor-pointer" onclick="undoFilterByTag();"><i class="fas fa-undo"></i> Undo</a></span>
+                                    <div class="card-header tagCardHeader mb-0">
+                                    <i style="float:right;" class="fas fa-times tagsClose cursor-pointer"></i>
+                        <span class="h6">Tags <br/></span><span class="text-sm">(click to filter)</span><span class="text-sm text-right"> <a style="float:right;" class="cursor-pointer" onclick="undoFilterByTag();"><i class="fas fa-undo"></i>  Undo Filter</a></span>
                     </div>
                                         <div class="card-body mt-0 pt-0">
                                             
@@ -380,7 +400,7 @@ left: -50vw;
                             <div class="container">
                                 <div class="row">
                                 <span class="mb-0 pl-2 pt-2 flex-grow-1">Choose chapter</span>
-                                <button type="button" class="close text-right" data-toggle="collapse" href="#selectDropdown" aria-label="Close">
+                                <button type="button" class="close text-right text-white" data-toggle="collapse" href="#selectDropdown" aria-label="Close">
                               <span>&times;</span>
                             </button>
                     </div>
@@ -491,7 +511,7 @@ left: -50vw;
 
 
                
-            <div style="container">
+            <div class="container">
             <div id="videoDisplay" class="embed-responsive embed-responsive-16by9">
                     <iframe  id='videoChapter' class="embed-responsive-item" style="left:50%; top:50%;"
                         src='https://player.vimeo.com/video/398791515' allow='autoplay'
@@ -735,14 +755,14 @@ left: -50vw;
             
 
 
-            $(document).click(function(event) { 
+            /* $(document).click(function(event) { 
                 $target = $(event.target);
                 
                 if(!$target.closest('#collapseExample').length && 
                     $('#collapseExample').is(":visible")) {
                         $('#collapseExample').collapse('hide');
                     }        
-            });
+            }); */
 
             $(document).click(function(event) { 
                 $target = $(event.target);
@@ -770,6 +790,43 @@ left: -50vw;
                         $('#collapseExample3').collapse('hide');
                     }        
             });
+
+            $(document).on('click', '.tagsClose', function(){
+
+                $('#collapseExample').collapse('hide');
+
+            })
+
+            $('.referencelist').on('click', function (){
+		
+		
+		//get the tag name
+		
+		var searchTerm = $(this).attr('data');
+		
+		//console.log("https://www.ncbi.nlm.nih.gov/pubmed/?term="+searchTerm);
+		
+		PopupCenter("https://www.ncbi.nlm.nih.gov/pubmed/?term="+searchTerm, 'PubMed Search (endoWiki)', 800, 700);
+
+		
+		
+		
+		
+	})
+
+	$('.referencelist').on('mouseenter', function (){
+
+		$(this).css('color', 'rgb(238, 194, 120)');
+		$(this).css('cursor', 'pointer');
+
+	})
+
+	$('.referencelist').on('mouseleave', function (){
+
+		$(this).css('color', 'white');
+		$(this).css('cursor', 'default');
+
+	})
 
 
         })

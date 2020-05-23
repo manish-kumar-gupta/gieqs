@@ -1,5 +1,17 @@
 <!--Main Navbar-->
+<?php
 
+function endsWith($haystack, $needle)
+{
+    $length = strlen($needle);
+    if ($length == 0) {
+        return true;
+    }
+
+    return (substr($haystack, -$length) === $needle);
+}
+
+?>
 
 <nav class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-dark bg-dark" id="navbar-main">
     <div class="container px-lg-0">
@@ -22,24 +34,24 @@
             </li>-->
                 <!-- Mission -->
                 <li class="nav-item active">
-                    <a class="nav-link" href="">Image</a>
+                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/learning/index.php">Learning Home</a>
                 </li>
                 <!-- Program-basic, later to add dropdown with options -->
-                <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+               <!--  <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
                     <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Video</a>
                     
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">Beta</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/navigator.php"><i class="fas fa-columns"></i>Video Explorer</a>
+                    <a class="dropdown-item" href="<?php //echo BASE_URL;?>/pages/learning/navigator.php"><i class="fas fa-columns"></i>Video Explorer</a>
                     
                     <div class="dropdown-divider"></div>
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">Later</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/faculty.php"><i class="fas fa-user"></i>Faculty</a>
+                    <a class="dropdown-item" href="<?php //echo BASE_URL;?>/pages/program/faculty.php"><i class="fas fa-user"></i>Faculty</a>
                     
                     
                   </div>
-                </li>
+                </li> -->
 
                 <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
                     <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
@@ -48,16 +60,66 @@
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">Colonoscopy Tutor</span>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/all.php"><i class="fas fa-columns"></i>Colonoscopy Tutor</a>
-    
+                
+
+                  </div>
+</li>
+                <!-- if on main page -->
+
+                <!--show nothing -->
+
+                <?php
+                    $url =  "{$_SERVER['REQUEST_URI']}";
+                    $inColonTutor = preg_match (  '/colontutor/' ,  $url);
+                    if ($inColonTutor){?>
+               
+               <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                    <a class="nav-link dropdown-toggle" style="color: rgb(238, 194, 120);" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Colonoscopy Tutor</a>
+                    
+                    <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
+                    
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Start here</span>
+
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/all.php"><i class="fas fa-columns"></i>Introduction to Colonoscopy Theory</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/all.php"><i class="fas fa-columns"></i>Simple cases</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/all.php"><i class="fas fa-columns"></i>Introduction to managing pathology</a>
+
+                    <div class="dropdown-divider"></div>
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Progress your technique</span>
+                    
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/all.php"><i class="fas fa-columns"></i>Loop resolution</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/all.php"><i class="fas fa-columns"></i>Mucosal visualisation</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/all.php"><i class="fas fa-columns"></i>Insertion techniques</a>
+                    <div class="dropdown-divider"></div>
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Learning Theory</span>
+
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/all.php"><i class="fas fa-columns"></i>Conceptual lectures</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/all.php"><i class="fas fa-columns"></i>Training theory</a>
+                    <div class="dropdown-divider"></div>
+                    
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Pathology</span>
+
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/all.php"><i class="fas fa-columns"></i>Management of pathology</a>
                     
                     <div class="dropdown-divider"></div>
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Faculty</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/faculty.php"><i class="fas fa-user"></i>Faculty</a>
+
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/all.php"><i class="fas fa-columns"></i>View All Videos</a>
                     
-                    
-                  </div>
+
+                    </div>
                 </li>
 
+                    
+                    <!--do colontutor links here and colour menu gold-->
+
+                    <?php }else{?>
+                     
+                    <?php } ?>
+                    
+                    
+                    
+               
                 <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
                     <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Nursing</a>

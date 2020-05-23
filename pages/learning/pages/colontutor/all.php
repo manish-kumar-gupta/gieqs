@@ -53,6 +53,10 @@
   flex: 1;
 }
 
+.flex-nav {
+  flex: 1 0 18%;
+}
+
 
         
         .gieqsGoldBackground {
@@ -178,7 +182,7 @@ background-color: rgb(238, 194, 120);
         <!--- specifiy the tag Categories required for display  CHANGEME-->
 
         <?php
-        $requiredTagCategories = ['47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60'];
+        $requiredTagCategories = ['47', '48', '49', '50', '51', '52', '53', '54', '55', '56'];
 
         ?>
 
@@ -192,9 +196,19 @@ background-color: rgb(238, 194, 120);
                     
                     <?php
 
+                    //define the page for referral info
 
+                    //$url =  "//{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
+                    $url =  "{$_SERVER['REQUEST_URI']}";
 
-?>
+                    $escaped_url = htmlspecialchars( $url, ENT_QUOTES, 'UTF-8' );
+
+                    ?>
+-->
+
+        <div id="escaped_url" style="display:none;"><?php echo $escaped_url;?></div>
+
+<!--
                     
                 TODO see other videos with similar tags, see videos with this tag, tag jump the video,
                 list of chapters with associated tags [toggle view by category, chapter]
@@ -338,6 +352,24 @@ background-color: rgb(238, 194, 120);
 					beforeSend: function () {
 
                         $('#videoCards').html("<div class=\"d-flex align-items-center\"><strong>Loading...</strong><div class=\"spinner-border ml-auto\" role=\"status\" aria-hidden=\"true\"></div></div>");
+                        //for each tags array push the badges to the tags shown area
+                        var html = '';
+                        $.each(tags, function(k,v){
+
+                            //HERE WE HAVE THE TAGID
+                            
+                            var tagid = v;
+
+                            //get the name and category
+
+                            var tagName = $('body').find('#navigationZone').find('#tag'+v).siblings().text();
+
+                            var tagCategory = $('body').find('#navigationZone').find('#tag'+v).parent().parent().parent().parent().find('span').text();
+
+                            html += '<span class="badge bg-gieqsGold text-dark mx-2 my-0 tagButton" data="'+v+'">'+tagCategory+ ' / ' +tagName+' <i style="float:right;" class="fas fa-times removeTag cursor-pointer ml-1" data="'+v+'"></i></span>';
+
+                        });
+                        $('body').find('#navigationZone').find('#shown-tags').html(html);
 
 					},
 					url: siteRoot + "/pages/learning/scripts/getNavv2.php",
@@ -398,7 +430,9 @@ background-color: rgb(238, 194, 120);
                         tags: tags,
                         loaded: loaded,
                         loadedRequired: loadedRequired,
-                        requiredTagCategories: requiredTagCategories
+                        requiredTagCategories: requiredTagCategories,
+                        referringUrl: $('#escaped_url').text(),
+
 
                     }
 
@@ -524,6 +558,27 @@ background-color: rgb(238, 194, 120);
             //if none are checked load 10 most recent videos for these categories
 
             $('.tag').click(function(){
+
+                refreshNavAndTags();
+
+            })
+
+            $('body').on('click', '.removeTag', function(){
+
+                var tagToRemove = $(this).attr('data');
+                //remove the check from the tag removed
+
+                $('.tag').each(function(){
+
+                if ($(this).attr("data") == tagToRemove){
+                    
+                    $(this).prop('checked', false);
+
+                }
+
+
+                })
+
 
                 refreshNavAndTags();
 

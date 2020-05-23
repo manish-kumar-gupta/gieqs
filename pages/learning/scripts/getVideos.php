@@ -250,7 +250,7 @@ if ($debug) {
                     </div>
                     
                 </div>
-                <a href="<?php echo BASE_URL . '/pages/learning/index.php?id=' . $value['id']; ?>">
+                <a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $value['id'] . '&referid=' . $data['referringUrl']; ?>">
                 <img alt="video image" src="<?php echo $value['thumbnail']; ?>" class="img-fluid mt-2">
             </a>
 
@@ -260,7 +260,7 @@ if ($debug) {
                 <div class="card-footer">
                     <div class="row align-items-center">
                         <div class="col-6">
-                            <a href="<?php echo BASE_URL . '/pages/learning/index.php?id=' . $value['id']; ?>" class="btn btn-sm text-white gieqsGoldBackground">View</a>
+                            <a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $value['id'] . '&referid=' . $data['referringUrl']; ?>" class="btn btn-sm text-white gieqsGoldBackground">View</a>
                         </div>
                         <div class="col-6 text-right">
                             <span class="text-muted text-sm"><?php echo time_elapsed_string($value['created']);?></span>

@@ -286,7 +286,7 @@ background-color: rgb(238, 194, 120);
                                             
                                             <?php if ($currentUserLevel < 3){?>
 
-                                                <a href="<?php echo BASE_URL; ?>/pages/learning/index.php?id=<?php echo $id;?>" class="action-item"><i class="fas fa-eye" data-toggle="tooltip" data-placement="bottom" title="watch video in viewer"></i> View in player</a>
+                                                <a href="<?php echo BASE_URL; ?>/pages/learning/viewer.php?id=<?php echo $id;?>" class="action-item"><i class="fas fa-eye" data-toggle="tooltip" data-placement="bottom" title="watch video in viewer"></i> View in player</a>
 
 
 
