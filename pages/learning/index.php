@@ -25,12 +25,14 @@
     <title>GIEQs Online Endoscopy Trainer</title>
 
     <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
+    <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
+
     
 
     <style>
         .gieqsGold {
 
-            color: rgba(238, 195, 120, 0.516);
+            color: rgb(238, 195, 120);
 
 
         }
@@ -148,18 +150,18 @@ top: -20vh;
 
 <div class="main-content">
     <!-- Header (account) -->
-    <!--<section class="page-header bg-dark-dark d-flex align-items-end pt-8 mt-10" style="background-image: url('http://localhost:90/dashboard/gieqs/assets/img/polyps/coverChromo.png'); background-repeat: no-repeat; background-size: auto; background-position: center center;" data-offset-top="#header-main">-->
+    <section class="page-header bg-dark-dark d-flex align-items-end pt-8 mt-10" style="background-image: url('<?php echo BASE_URL;?>/assets/img/covers/learning/1v2.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;" data-offset-top="#header-main">
 
-    <section class="page-header bg-gieqsGold d-flex align-items-end pt-8 mt-10" data-offset-top="#header-main">
+   
       <!-- Header container -->
       <div class="container pt-0 pt-lg-0" >
         <div class="row" >
           <div class=" col-lg-12">
             <!-- Salute + Small stats -->
             <div class="row align-items-center mb-4">
-              <div class="col-md-8 mb-4 mb-md-0">
-                <span class="h2 mb-0 text-dark text-bold d-block">Welcome to the GIEQs Learning Dashboard. <?php //echo $_SESSION['firstname'] . ' ' . $_SESSION['surname']?></span>
-                <span class="text-dark">Your home for evidence-based endoscopy education.</span>
+              <div class="col-auto mb-4 mb-md-0">
+                <span class="h2 mb-0 text-white text-bold d-block">Welcome to GIEQs Learning. <?php //echo $_SESSION['firstname'] . ' ' . $_SESSION['surname']?></span>
+                <span class="text-white">Your home for evidence-based endoscopy education.</span>
               </div>
               <!-- video -->
               <div class="col-auto flex-fill d-none d-xl-block">
@@ -180,10 +182,14 @@ top: -20vh;
     <section class="slice bg-section-secondary">
       <div class="container">
         <div class="d-flex flex-row-reverse mt-1 align-items-end">
-            <a href="account-profile-public.html" class="btn btn-icon btn-group-nav shadow btn-neutral">
+            <a href="account-profile-public.html" class="btn btn-icon btn-group-nav shadow btn-neutral mx-2">
               <span class="btn-inner--icon"><i class="fas fa-user"></i></span>
               <span class="btn-inner--text d-none d-md-inline-block">My Learning Profile</span>
             </a>
+            <a href="account-profile-public.html" class="btn btn-icon btn-group-nav bg-gieqsGold shadow btn-neutral mx-2">
+                <span class="btn-inner--icon text-dark"><i class="fas fa-user"></i></span>
+                <span class="animated bounce delay-2s btn-inner--text text-dark d-none d-md-inline-block">Take a Tour!</span>
+              </a>
             
         </div>
         <!-- Current studies -->
