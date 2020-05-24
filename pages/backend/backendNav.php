@@ -32,6 +32,7 @@
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/session.php">Sessions</a>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/faculty.php">Faculty</a>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/delegate.php">Delegates</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/users.php">Delegates</a>
                     
                   </div>
                 </div>
