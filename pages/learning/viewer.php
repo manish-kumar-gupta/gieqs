@@ -776,6 +776,15 @@ min-width:30vw;
             $(document).click(function(event) { 
                 $target = $(event.target);
                 
+                if(!$target.closest('#collapseExample').length && 
+                    $('#collapseExample').is(":visible")) {
+                        $('#collapseExample').collapse('hide');
+                    }        
+            });
+            
+            $(document).click(function(event) { 
+                $target = $(event.target);
+                
                 if(!$target.closest('#collapseExample2').length && 
                     $('#collapseExample2').is(":visible")) {
                         $('#collapseExample2').collapse('hide');
