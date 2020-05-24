@@ -178,12 +178,7 @@ background-color: rgb(238, 194, 120);
     $user = new users;
     
     
-    if ($user->getUserAccessLevel($_SESSION['user_id']) > 2){
-
-        redirect_login($location);
-
-
-    }
+    
     
     foreach ($_GET as $k=>$v){
     
