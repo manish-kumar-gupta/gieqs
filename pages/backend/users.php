@@ -14,7 +14,7 @@ $databaseName = 'users';
 
 //identifier
 
-$identifier = 'id';
+$identifier = 'user_id';
 
 
 
@@ -281,12 +281,12 @@ if ($identifierValue) {
                     <thead>
                     <tr>
                     <!-- EDIT -->
-                    <th>id</th>
+                    <th>user_id</th>
                     <th>firstname</th>
                     <th>surname</th>
-                    <th>user_id</th>
                     <th>email</th>
-                            <th></th>
+                    <th>centre</th>
+                    <th></th>
 
                 </tr>
                 </thead>
@@ -372,6 +372,11 @@ if ($identifierValue) {
                                         <input id="email" type="text" class="form-control" name="email">
                                     </div>
 
+                                    <label for="password">password</label>
+                                        <div class="input-group mb-3">
+                                            <input id="password" type="text" class="form-control" name="password">
+                                        </div>
+
                                     <label for="centre">centre</label>
                                         <div class="input-group mb-3">
                                             <select id="centre" type="text" data-toggle="select" class="form-control" name="centre">
@@ -402,7 +407,7 @@ if ($identifierValue) {
                                             <option value="" selected disabled hidden>select</option>
                                             <option value="1">1 - Superuser</option>
                                             <option value="2">2 - Content Creator</option>
-                                            <option value="3"></option>
+                                            <option value="3">3 - Unused Option</option>
                                             <option value="4">4 - Regular User</option>
                                             <option value="5">5 - View only</option>
                                             </select>
@@ -426,8 +431,8 @@ if ($identifierValue) {
                                         <label for="trainee">trainee</label>
                                         <div class="input-group mb-3">
                                             <select id="trainee" type="text" data-toggle="select" class="form-control" name="trainee">
-                                            <option value="no">No</option>
-                                            <option value="yes">Yes</option>
+                                            <option value="0">No</option>
+                                            <option value="1">Yes</option>
                 
                                             </select>
                                         </div>
@@ -440,6 +445,11 @@ if ($identifierValue) {
                                             <option value="2">Only regarding activities on the site</option>
                                             <option value="3">No email contact</option>
                                             </select>
+                                        </div>
+
+                                        <label for="key">key</label>
+                                        <div class="input-group mb-3">
+                                            <input id="key" type="text" class="form-control" name="key">
                                         </div>
 
 
@@ -506,7 +516,7 @@ function fillForm (idPassed){
 
         esdLesionRequired = getNamesFormElements("<?php echo $databaseName;?>-form");
 
-        esdLesionString = '`id`=\''+idPassed+'\'';
+        esdLesionString = '`user_id`=\''+idPassed+'\'';
 
         var selectorObject = getDataQuery ("<?php echo $databaseName;?>", esdLesionString, getNamesFormElements("<?php echo $databaseName;?>-form"), 1);
 
@@ -553,7 +563,7 @@ function fillForm (idPassed){
 
         if (edit == 0){
 
-            var esdLesionObject = pushFormDataJSON($("#<?php echo $databaseName;?>-form"), "<?php echo $databaseName;?>", "id", null, "0"); //insert new object
+            var esdLesionObject = pushFormDataJSON($("#<?php echo $databaseName;?>-form"), "<?php echo $databaseName;?>", "user_id", null, "0"); //insert new object
 
             esdLesionObject.done(function (data){
 
@@ -597,7 +607,7 @@ function fillForm (idPassed){
 
             if (lesionUnderEdit){
 
-                var esdLesionObject = pushFormDataJSON($("#<?php echo $databaseName;?>-form"), "<?php echo $databaseName;?>", "id", lesionUnderEdit, "1"); //insert new object
+                var esdLesionObject = pushFormDataJSON($("#<?php echo $databaseName;?>-form"), "<?php echo $databaseName;?>", "user_id", lesionUnderEdit, "1"); //insert new object
 
                     esdLesionObject.done(function (data){
 
@@ -666,7 +676,7 @@ function fillForm (idPassed){
 
             disableFormInputs("<?php echo $databaseName;?>-form");
 
-            var esdLesionObject = pushFormDataJSON($("#<?php echo $databaseName;?>-form"), "<?php echo $databaseName;?>", "id", id, "2"); //delete esdLesion
+            var esdLesionObject = pushFormDataJSON($("#<?php echo $databaseName;?>-form"), "<?php echo $databaseName;?>", "user_id", id, "2"); //delete esdLesion
 
             esdLesionObject.done(function (data){
 
@@ -742,7 +752,7 @@ $(document).ready(function(){
         data: function (params) {
             var query = {
                 search: params.term,
-                query: '`id`, `firstname` FROM `users`',
+                query: '`user_id`, `firstname` FROM `users`',
                 fieldRequired: 'firstname',
             }
 
@@ -775,11 +785,11 @@ $(document).ready(function(){
 
         //EDIT
        columns: [
-        {data: 'id' },
+        {data: 'user_id' },
        {data: 'firstname' },
        {data: 'surname' },
-       {data: 'user_id' },
        {data: 'email' },
+       {data: 'centre' },
            {
            data: null,
            render: function ( data, type, row ) {
