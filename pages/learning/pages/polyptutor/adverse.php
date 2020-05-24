@@ -184,7 +184,7 @@ background-color: rgb(238, 194, 120);
         <!--- specifiy the tag Categories required for display  CHANGEME-->
 
         <?php
-        $requiredTagCategories = ['47', '48', '49', '50', '51', '52', '53', '54', '55', '56'];
+        $requiredTagCategories = ['66', '99'];
 
         ?>
 
@@ -225,7 +225,11 @@ background-color: rgb(238, 194, 120);
         <!--Header CHANGEME-->
 
     <div class="d-flex align-items-end container">
-        <p class="h1 mt-10">Colonoscopy Tutor Videos</p>
+        <p class="h1 mt-10">Adverse Events in Polypectomy</p>
+
+    </div>
+    <div class="d-flex align-items-end container">
+        <p class="text-muted pl-4 mt-2">Ability to manage adverse events is a necessary pre-requisite to performing polypectomy.</p>
 
     </div>
 

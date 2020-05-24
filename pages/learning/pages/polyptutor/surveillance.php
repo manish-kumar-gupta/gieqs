@@ -184,7 +184,7 @@ background-color: rgb(238, 194, 120);
         <!--- specifiy the tag Categories required for display  CHANGEME-->
 
         <?php
-        $requiredTagCategories = ['47', '48', '49', '50', '51', '52', '53', '54', '55', '56'];
+        $requiredTagCategories = ['79', '80'];
 
         ?>
 
@@ -225,7 +225,11 @@ background-color: rgb(238, 194, 120);
         <!--Header CHANGEME-->
 
     <div class="d-flex align-items-end container">
-        <p class="h1 mt-10">Colonoscopy Tutor Videos</p>
+        <p class="h1 mt-10">Surveillance After Polypectomy</p>
+
+    </div>
+    <div class="d-flex align-items-end container">
+        <p class="text-muted pl-4 mt-2">Detection and interrogation of the scar is an essential part of polypectomy.</p>
 
     </div>
 

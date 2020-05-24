@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php require '../../includes/config.inc.php';?>
+<?php require 'includes/config.inc.php';?>
 
 
 <head>
@@ -13,9 +13,7 @@
 
       //define user access level
 
-      //$openaccess = 1;
-      $requiredUserLevel = 4;
-
+      $openaccess = 1;
 
       require BASE_URI . '/head.php';
 
@@ -26,7 +24,7 @@
       ?>
 
     <!--Page title-->
-    <title>GIEQs Online Endoscopy Trainer - Polypectomy Videos</title>
+    <title>GIEQs Online Endoscopy Trainer</title>
 
     <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
     
@@ -184,7 +182,7 @@ background-color: rgb(238, 194, 120);
         <!--- specifiy the tag Categories required for display  CHANGEME-->
 
         <?php
-        $requiredTagCategories = ['47', '48', '49', '50', '51', '52', '53', '54', '55', '56'];
+        $requiredTagCategories = ['40', '41'];
 
         ?>
 

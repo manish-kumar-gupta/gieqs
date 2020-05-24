@@ -130,7 +130,7 @@ if ($debug) {
                     ?>
 
                     <div class="d-flex flex-row flex-wrap align-items-stretch mt-1 pt-0 px-0 text-white">
-                        <span class=" m-4 h6">No videos match your criteria.  Please reset your filters above.</span>
+                        <span class=" mt-3 mb-6 h6">No videos match your criteria.  Please reset your filters above.</span>
                 </div>
 <?php
                 }

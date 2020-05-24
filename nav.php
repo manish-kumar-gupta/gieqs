@@ -90,7 +90,7 @@
                 if (isset($_SESSION['user_id']) && ($_SESSION['siteKey'] == 'TxsvAb6KDYpmdNk') && ($_SESSION['access_level'] == '1' || $_SESSION['access_level'] == '2')){
                 ?>
                     
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/navigator.php"><i class="fas fa-graduation-cap"></i>GIEQs Online BETA</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/index.php"><i class="fas fa-graduation-cap"></i>GIEQs Online BETA</a>
 
 
                 <?php }else{ ?>

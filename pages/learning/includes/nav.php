@@ -58,8 +58,13 @@ function endsWith($haystack, $needle)
                         aria-haspopup="true" aria-expanded="false">Learning Tools</a>
                     
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Colonoscopy Tutor</span>
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Colonoscopy</span>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/all.php"><i class="fas fa-columns"></i>Colonoscopy Tutor</a>
+                
+                    <div class="dropdown-divider"></div>
+
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Polypectomy</span>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/start.php"><i class="fas fa-columns"></i>Polypectomy Tutor</a>
                 
 
                   </div>
@@ -71,6 +76,8 @@ function endsWith($haystack, $needle)
                 <?php
                     $url =  "{$_SERVER['REQUEST_URI']}";
                     $inColonTutor = preg_match (  '/colontutor/' ,  $url);
+                    $inPolypectomyTutor = preg_match (  '/polyptutor/' ,  $url);
+                    $inNursing = preg_match (  '/nursing/' ,  $url);
                     if ($inColonTutor){?>
                
                <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
@@ -106,6 +113,7 @@ function endsWith($haystack, $needle)
 
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/all.php"><i class="fas fa-columns"></i>View All Videos</a>
                     
+                    
 
                     </div>
                 </li>
@@ -113,7 +121,81 @@ function endsWith($haystack, $needle)
                     
                     <!--do colontutor links here and colour menu gold-->
 
-                    <?php }else{?>
+                    <?php }elseif ($inPolypectomyTutor) {?>
+
+                      <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                    <a class="nav-link dropdown-toggle" style="color: rgb(238, 194, 120);" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Polypectomy Tutor</a>
+                    
+                    <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
+                    
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Start here</span>
+
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/start.php"><i class="fas fa-columns"></i>Introduction to Polypectomy Theory</a>
+            
+                    <div class="dropdown-divider"></div>
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Imaging</span>
+                    
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/imaging.php"><i class="fas fa-columns"></i>Colorectal Polyp Imaging</a>
+
+                    <div class="dropdown-divider"></div>
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Techniques</span>
+
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/csp.php"><i class="fas fa-columns"></i>Cold Snare Polypectomy</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/emr.php"><i class="fas fa-columns"></i>Endoscopic Mucosal Resection</a>
+                    <div class="dropdown-divider"></div>
+                    
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Adverse Events</span>
+
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/adverse.php"><i class="fas fa-columns"></i>Adverse Events</a>
+                    
+                    <div class="dropdown-divider"></div>
+
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Surveillance</span>
+
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/surveillance.php"><i class="fas fa-columns"></i>Surveillance after Polypectomy</a>
+                    
+                    <div class="dropdown-divider"></div>
+
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/all.php"><i class="fas fa-columns"></i>View All Videos</a>
+                    
+
+                    </div>
+                </li>
+
+
+
+                     
+                     <?php } elseif ($inNursing) {?>
+
+<li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+<a class="nav-link dropdown-toggle" style="color: rgb(238, 194, 120);" role="button" data-toggle="dropdown"
+  aria-haspopup="true" aria-expanded="false">Nursing Tutor</a>
+
+<div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
+
+<span style="color: rgb(238, 194, 120);" class="dropdown-header">Start here</span>
+
+<a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/nursing/start.php"><i class="fas fa-columns"></i>Introduction to Endoscopy Nursing Theory</a>
+
+<div class="dropdown-divider"></div>
+<span style="color: rgb(238, 194, 120);" class="dropdown-header">Nursing techniques</span>
+
+<a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/nursing/techniques.php"><i class="fas fa-columns"></i>Techniques</a>
+
+<div class="dropdown-divider"></div>
+
+
+<a class="dropdown-item" href=""><i class="fas fa-columns"></i>View All Videos</a>
+
+
+</div>
+</li>
+
+
+
+
+<?php } else{?>
                      
                     <?php } ?>
                     
@@ -125,13 +207,9 @@ function endsWith($haystack, $needle)
                         aria-haspopup="true" aria-expanded="false">Nursing</a>
                     
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Programme</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program.php"><i class="fas fa-columns"></i>Draft Medical Programme</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/nursing.php"><i class="fas fa-columns"></i>Draft Nursing Programme</a>
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Nursing Techniques</span>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/nursing/techniques.php"><i class="fas fa-columns"></i>Techniques Videos</a>
                     
-                    <div class="dropdown-divider"></div>
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Faculty</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/faculty.php"><i class="fas fa-user"></i>Faculty</a>
                     
                     
                   </div>
