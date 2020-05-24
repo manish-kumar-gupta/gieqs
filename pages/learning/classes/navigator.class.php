@@ -116,7 +116,195 @@ class navigator {
 
 	public function generateNavigationSingleDisabledQuery($categories, $tagsRequired, $debug){
 
+		if ($debug){
+			echo '<br/><br/>';
+			echo 'Function getVideoData inputs:';
+			
+			echo '<br/><br/>tagsRequired : ';
+			print_r($tagsRequired);
+			echo '<br/><br/> Categories : ';
+			print_r($categories);
+			echo '<br/><br/>';
+		}
+
+		//get the tags from the required categories
+		if ($tagsRequired){
+			
+			$howManyCategories = count($tagsRequired);
+
+			$howManyTagCategories = count($categories);
+	
+			$x=1;
+			$y=1;
+
+			$query_where .= 'WHERE ';
+
+			foreach ($categories as $key=>$value){
+
+				if ($y == 1 AND $y == $howManyTagCategories){
+
+					$query_where .= "(e.`id` = '$value') ";
+
+				}
+				
+				else if ($y == 1 AND $y < $howManyTagCategories){
+
+				$query_where .= "(e.`id` = '$value' OR ";
+
+				}else if ($y == $howManyTagCategories){
+
+					$query_where .= "e.`id` = '$value') ";
+					
+				}else{
+
+					$query_where .= "e.`id` = '$value' OR ";
+
+				}
+
+				$y++;
+
+			}
+
+			$query_where .= ' AND ';
+	
+			foreach ($tagsRequired as $key=>$value){
+	
+				if ($x == 1 AND $x == $howManyCategories){
+
+					$query_where .= "(d.`id` = '$value') ";
+					
+
+				}
+
+				else if ($x == 1){
+
+					$query_where .= "(d.`id` = '$value' OR ";
+	
+					}else if ($x == $howManyCategories){
+	
+						$query_where .= "d.`id` = '$value') ";
+						
+					}else{
+	
+						$query_where .= "d.`id` = '$value' OR ";
+	
+					}
+	
+					$x++;
+	
+			}
+
+			$query_where .= "GROUP BY a.`id` HAVING COUNT(DISTINCT d.`id`) = $howManyCategories ORDER BY a.`created` DESC";
+
+			//$query_where .= ')';
+	
+			//echo query_where;
+
+		}else{
+
+
+			$howManyTagCategories = count($categories);
+	
+			$y=1;
+
+			$query_where .= 'WHERE ';
+
+			foreach ($categories as $key=>$value){
+
+				if ($y == 1){
+
+				$query_where .= "(e.`id` = '$value' OR ";
+
+				}else if ($y == $howManyTagCategories){
+
+					$query_where .= "e.`id` = '$value') ";
+					
+				}else{
+
+					$query_where .= "e.`id` = '$value' OR ";
+
+				}
+
+				$y++;
+
+			}
+
+			$query_where .= "GROUP BY a.`id` ORDER BY a.`created` DESC";
+
+			
+
+		}
+
+		//currently order by most recent
+
+		$r = "SELECT DISTINCT a.* FROM `video` as a INNER JOIN `chapter` as b ON a.`id` = b.`video_id` INNER JOIN `chapterTag` as c ON b.`id` = c.`chapter_id` INNER JOIN `tags` as d ON d.`id` = c.`tags_id` INNER JOIN `tagCategories` as e ON d.`tagCategories_id` = e.`id` $query_where ORDER BY a.`created` DESC";
+
+		$q = "SELECT DISTINCT
+		a.*,
+		d.`id` AS `tagid`,
+		e.`id` AS `tagCategories_id`
+			FROM
+				`video` AS a
+			INNER JOIN `chapter` AS b
+			ON
+				a.`id` = b.`video_id`
+			INNER JOIN `chapterTag` AS c
+			ON
+				b.`id` = c.`chapter_id`
+			INNER JOIN `tags` AS d
+			ON
+				d.`id` = c.`tags_id`
+			INNER JOIN `tagCategories` AS e
+			ON
+				d.`tagCategories_id` = e.`id` $query_where";
+
+
+		$result = $this->connection->RunQuery($q);
+	
+		if ($debug){
+			echo $q;
+			echo '<br/><br/>';
+		}
+
+		$tags = [];
+		$y=0;
+
+		if ($result){
+
+
+			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+				
+				//echo '<a href="' . $roothttp . '/scripts/display/colontutor/video.php?id=' . $row['tagid'] . '">' . $row['tagName'] . '</a>';
+
+				$tags[$y] = $row['id'];
+				$y++;
+
+			}
+
+			
+
+
+		}
+
 		
+
+		return $tags; //this gives videos matching the requested tags 
+		//but we want other tags in the remaining videos
+
+	}
+
+	public function generateNavigationSingleDisabledQueryold($categories, $tagsRequired, $debug){
+
+		if ($debug){
+			echo '<br/><br/>';
+			echo 'Function getVideoData inputs:';
+			
+			echo '<br/><br/>tagsRequired : ';
+			print_r($tagsRequired);
+			echo '<br/><br/> Categories : ';
+			print_r($categories);
+			echo '<br/><br/>';
+		}
 
 		//get the tags from the required categories
 		if ($tagsRequired){
@@ -132,7 +320,7 @@ class navigator {
 				$query_where .= "(e.`id` = '$categories' AND d.`id` = '$value')";
 				
 				if ($x < $howManyCategories){
-				$query_where .= " AND ";
+				$query_where .= " OR ";
 				}
 	
 				$x++;
@@ -154,6 +342,7 @@ class navigator {
 	
 		if ($debug){
 			echo $q;
+
 		}
 
 		$tags = [];
@@ -200,6 +389,16 @@ class navigator {
 
 		//print_r($videos1);
 
+		if ($debug){
+			echo '<br/><br/>';
+			echo 'Function getVideoTagsBasedOnVideosShown inputs:';
+			
+			echo '<br/><br/>videos1 : ';
+			print_r($videos1);
+			
+			echo '<br/><br/>';
+		}
+
 		$query_where = "";
 			$howManyCategories = count($videos1);
 	
@@ -217,7 +416,13 @@ class navigator {
 	
 			}
 	
-			//echo $query_where;
+			if ($debug){
+				
+				echo PHP_EOL;
+				echo $query_where;
+				echo PHP_EOL;
+
+			}
 
 		$q = "SELECT d.`id` as `tagid`, d.`tagName` FROM `video` as a INNER JOIN `chapter` as b ON a.`id` = b.`video_id` INNER JOIN `chapterTag` as c ON b.`id` = c.`chapter_id` INNER JOIN `tags` as d ON d.`id` = c.`tags_id` INNER JOIN `tagCategories` as e ON d.`tagCategories_id` = e.`id` WHERE ($query_where) GROUP BY d.`id` ORDER BY d.`tagName` ASC ";
 
@@ -227,6 +432,7 @@ class navigator {
 			}
 
 		$tags = [];
+		$y=1;
 
 		if ($result){
 
@@ -235,7 +441,8 @@ class navigator {
 				
 				//echo '<a href="' . $roothttp . '/scripts/display/colontutor/video.php?id=' . $row['tagid'] . '">' . $row['tagName'] . '</a>';
 
-				$tags[] = ['id' => $row['tagid'], 'name' => $row['tagName']];
+				$tags[] = $row['tagid'];
+				
 
 
 			}
@@ -253,6 +460,184 @@ class navigator {
 	}
 
 	public function getVideoData($categories, $tagsRequired, $debug){
+
+		if ($debug){
+			echo '<br/><br/>';
+			echo 'Function getVideoData inputs:';
+			
+			echo '<br/><br/>tagsRequired : ';
+			print_r($tagsRequired);
+			echo '<br/><br/> Categories : ';
+			print_r($categories);
+			echo '<br/><br/>';
+		}
+
+		//get the tags from the required categories
+		if ($tagsRequired){
+			
+			$howManyCategories = count($tagsRequired);
+
+			$howManyTagCategories = count($categories);
+	
+			$x=1;
+			$y=1;
+
+			$query_where .= 'WHERE ';
+
+			foreach ($categories as $key=>$value){
+
+				if ($y == 1 AND $y == $howManyTagCategories){
+
+					$query_where .= "(e.`id` = '$value') ";
+
+				}
+				
+				else if ($y == 1 AND $y < $howManyTagCategories){
+
+				$query_where .= "(e.`id` = '$value' OR ";
+
+				}else if ($y == $howManyTagCategories){
+
+					$query_where .= "e.`id` = '$value') ";
+					
+				}else{
+
+					$query_where .= "e.`id` = '$value' OR ";
+
+				}
+
+				$y++;
+
+			}
+
+			$query_where .= ' AND ';
+	
+			foreach ($tagsRequired as $key=>$value){
+	
+				if ($x == 1 AND $x == $howManyCategories){
+
+					$query_where .= "(d.`id` = '$value') ";
+					
+
+				}
+
+				else if ($x == 1){
+
+					$query_where .= "(d.`id` = '$value' OR ";
+	
+					}else if ($x == $howManyCategories){
+	
+						$query_where .= "d.`id` = '$value') ";
+						
+					}else{
+	
+						$query_where .= "d.`id` = '$value' OR ";
+	
+					}
+	
+					$x++;
+	
+			}
+
+			$query_where .= "GROUP BY a.`id` HAVING COUNT(DISTINCT d.`id`) = $howManyCategories ORDER BY a.`created` DESC";
+
+			//$query_where .= ')';
+	
+			//echo query_where;
+
+		}else{
+
+
+			$howManyTagCategories = count($categories);
+	
+			$y=1;
+
+			$query_where .= 'WHERE ';
+
+			foreach ($categories as $key=>$value){
+
+				if ($y == 1){
+
+				$query_where .= "(e.`id` = '$value' OR ";
+
+				}else if ($y == $howManyTagCategories){
+
+					$query_where .= "e.`id` = '$value') ";
+					
+				}else{
+
+					$query_where .= "e.`id` = '$value' OR ";
+
+				}
+
+				$y++;
+
+			}
+
+			$query_where .= "GROUP BY a.`id` ORDER BY a.`created` DESC";
+
+			
+
+		}
+
+		//currently order by most recent
+
+		$r = "SELECT DISTINCT a.* FROM `video` as a INNER JOIN `chapter` as b ON a.`id` = b.`video_id` INNER JOIN `chapterTag` as c ON b.`id` = c.`chapter_id` INNER JOIN `tags` as d ON d.`id` = c.`tags_id` INNER JOIN `tagCategories` as e ON d.`tagCategories_id` = e.`id` $query_where ORDER BY a.`created` DESC";
+
+		$q = "SELECT DISTINCT
+		a.*,
+		d.`id` AS `tagid`,
+		e.`id` AS `tagCategories_id`
+			FROM
+				`video` AS a
+			INNER JOIN `chapter` AS b
+			ON
+				a.`id` = b.`video_id`
+			INNER JOIN `chapterTag` AS c
+			ON
+				b.`id` = c.`chapter_id`
+			INNER JOIN `tags` AS d
+			ON
+				d.`id` = c.`tags_id`
+			INNER JOIN `tagCategories` AS e
+			ON
+				d.`tagCategories_id` = e.`id` $query_where";
+
+
+		$result = $this->connection->RunQuery($q);
+	
+		if ($debug){
+			echo $q;
+			echo '<br/><br/>';
+		}
+
+		$tags = [];
+
+		if ($result){
+
+
+			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+				
+				//echo '<a href="' . $roothttp . '/scripts/display/colontutor/video.php?id=' . $row['tagid'] . '">' . $row['tagName'] . '</a>';
+
+				$tags[] = $row;
+
+
+			}
+
+			
+
+
+		}
+
+		
+
+		return $tags; //this gives videos matching the requested tags 
+		//but we want other tags in the remaining videos
+
+	}
+
+	public function getVideoDataOLD($categories, $tagsRequired, $debug){
 
 		
 
@@ -294,6 +679,7 @@ class navigator {
 	
 		if ($debug){
 			echo $q;
+			echo '<br/><br/>';
 		}
 
 		$tags = [];

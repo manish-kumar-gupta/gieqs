@@ -366,7 +366,7 @@ background-color: rgb(238, 194, 120);
 
                             var tagCategory = $('body').find('#navigationZone').find('#tag'+v).parent().parent().parent().parent().find('span').text();
 
-                            html += '<span class="badge bg-gieqsGold text-dark mx-2 my-0 tagButton" data="'+v+'">'+tagCategory+ ' / ' +tagName+' <i style="float:right;" class="fas fa-times removeTag cursor-pointer ml-1" data="'+v+'"></i></span>';
+                            html += '<span class="badge bg-gieqsGold text-dark mx-2 my-2 tagButton" data="'+v+'">'+tagCategory+ ' / ' +tagName+' <i style="float:right;" class="fas fa-times removeTag cursor-pointer ml-1" data="'+v+'"></i></span>';
 
                         });
                         $('body').find('#navigationZone').find('#shown-tags').html(html);

@@ -5,7 +5,7 @@ $openaccess = 1;
 
 require '../includes/config.inc.php';
 
-$debug = false;
+$debug = true;
 
 //require (BASE_URI.'/scripts/headerCreatorV2.php');
 
@@ -98,11 +98,94 @@ $requiredTagCategories = $data['requiredTagCategories'];
 $videos = [];
 $x = 0;
 
-$data2 = $navigator->getVideoData($requiredTagCategories, $tagsToMatch, $debug);
+
+
+foreach ($requiredTagCategories as $key => $value) {
+
+    //echo $value;
+
+    $tagCategory = $value;
+    if ($debug) {
+
+        echo 'checking category ' . $tagCategory;
+        echo PHP_EOL;
+
+    }
+
+    
+
+    $data2 = $navigator->getVideoData($value, $tagsToMatch, $debug);
+
+    if ($debug) {
+
+        echo 'full video data for ' . print_r($tagsToMatch) . 'and tagCategory ' . $value;
+        echo PHP_EOL . print_r($data2);
+    }
+
+
+    //add data2 to tags array in this loop
+
+
+    $videos1 = [];
+    $y=0;
+
+    
+
+    if ($data2){
+
+    foreach ($data2 as $key=>$value){
+        $videos[$x] = $value;
+        $x++;
+    }
+
+    }
+   
+    //print_r($data1);
+
+    // print_r($data2);
+
+    //print_r($data3); //gives the tags that can be enabled rest disabled
+
+    ?>
 
 
 
-$videos = $data2;
+
+
+
+
+
+<?php
+}
+
+//REALLY HELPFUL CODE
+foreach($videos as $key=>$value)
+{
+
+    if(empty( $value ))
+        unset($videos[$key]);
+    
+    /* 
+    foreach ($value as $key1=>$value1){
+    if(empty( $value1 ))
+        unset($myarray[$key][$key1]);
+    } */
+}
+
+//WE NEED TO EMPTY THE DUPLICATE VIDEO ID'S
+//MORE REALLY USEFUL CODE TO REMOVE DUPLICATES FROM AN ARRAY
+
+$_data = array();
+foreach ($videos as $v) {
+  if (isset($_data[$v['id']])) {
+    // found duplicate
+    continue;
+  }
+  // remember unique item
+  $_data[$v['id']] = $v;
+}
+
+$videos = $_data;
 
 if ($debug) {
     echo PHP_EOL . 'html build array contains:::' . PHP_EOL;
@@ -124,16 +207,6 @@ if ($debug) {
                 $a = 1;
 
                 $b = count($videos);
-
-                if ($b == 0){
-
-                    ?>
-
-                    <div class="d-flex flex-row flex-wrap align-items-stretch mt-1 pt-0 px-0 text-white">
-                        <span class=" m-4 h6">No videos match your criteria.  Please reset your filters above.</span>
-                </div>
-<?php
-                }
 
                 foreach ($videos as $key=>$value){
 
