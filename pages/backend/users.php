@@ -742,7 +742,7 @@ $(document).ready(function(){
 
     });
 
-    $('#title').select2({
+    $('#centre').select2({
 
         dropdownParent: $(".modal-content"),
 

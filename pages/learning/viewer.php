@@ -80,6 +80,17 @@ background-color: #1b385dde;
 
 }
 
+.card-body ::-webkit-scrollbar{
+
+    display: none;
+
+}
+
+.card-body {
+
+    -ms-overflow-style : none;
+}
+
 @media (min-width: 992px) {
     .tagCard {
 

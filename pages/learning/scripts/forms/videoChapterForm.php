@@ -2266,6 +2266,7 @@ $(this).append(' ');
                 var chapterName = $(this).find('td:eq(4)').find('input').val();
 
                 //console.log(chapterNumber);
+                //TODO FIX TIMINGS HERE
 
                 var minutes = Math.floor(chapterTimeFrom / 60);
 

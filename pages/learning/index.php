@@ -185,7 +185,7 @@ top: -20vh;
     <section class="slice bg-section-secondary">
       <div class="container">
         <div class="d-flex flex-row-reverse mt-1 align-items-end">
-            <a href="account-profile-public.html" class="btn btn-icon btn-group-nav shadow btn-neutral mx-2">
+            <a href="<?php echo BASE_URL;?>/pages/learning/pages/account/profile.php" class="btn btn-icon btn-group-nav shadow btn-neutral mx-2">
               <span class="btn-inner--icon"><i class="fas fa-user"></i></span>
               <span class="btn-inner--text d-none d-md-inline-block">My Learning Profile</span>
             </a>

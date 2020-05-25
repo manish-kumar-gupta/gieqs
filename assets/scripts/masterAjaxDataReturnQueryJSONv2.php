@@ -19,6 +19,8 @@ function ne($v) {
     return $v != '';
 }
 
+
+
 //$debug = true;
 
 //$connection = new DataBaseMysql();
@@ -148,6 +150,7 @@ if (count($data) > 0){
 	
 	if ($update == 0){
 		
+
 		unset($data['update']);
 		unset($data['table']);
 		unset($data['identifierKey']);
@@ -179,8 +182,19 @@ if (count($data) > 0){
 			}
 		}*/
 
-		// print_r($keys);
+		// print_r($keys); TODO make hashing work here
 
+		/* function hash_password($password, $salt) {
+			$salted_password = substr($password, 0, 4) . $salt . substr($password, 4);
+			return hash('sha512', $salted_password);} */
+
+		//transform a password field
+
+		/* if ($table == 'users'){
+
+			$data['password'] = hash_password($data['password'], 'westmead');
+
+		} */
         
         //interact with the class
 
