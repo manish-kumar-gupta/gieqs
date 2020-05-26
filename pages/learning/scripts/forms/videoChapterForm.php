@@ -282,13 +282,31 @@ background-color: rgb(238, 194, 120);
 		
 		        <div class='responsiveContainer container white'>
                 <div class="text-right">
+                    
                                         <div class="actions">
                                             
                                             <?php if ($currentUserLevel < 3){?>
-
+                                                <form class="d-flex">
+                                                    
+                                                    <div class="form-group ml-auto">
+                                                        <label class="form-control-label">Video Status</label>
+                                                        <div class="input-group input-group-merge">
+                                                          <select name="active" id="active" class="form-control form-control-sm">
+                                                            <option hidden inactive>choose status</option>
+                                                            <option value="0">Not shown, not tagged, inactive video</option>
+                                                            <option value="1">Shown on Live site</option>
+                                                            <option value="2">Needs tagging</option>
+                                                            </select>
+                                                         
+                                                        </div>
+                                                      </div>
+                                                   
+                            
+                                                </form>
                                                 <a href="<?php echo BASE_URL; ?>/pages/learning/viewer.php?id=<?php echo $id;?>" class="action-item"><i class="fas fa-eye" data-toggle="tooltip" data-placement="bottom" title="watch video in viewer"></i> View in player</a>
+                                                <a href="<?php echo BASE_URL; ?>/pages/learning/scripts/videoUploadForm.php?id=<?php echo $id;?>" class="action-item"><i class="fas fa-eye" data-toggle="tooltip" data-placement="bottom" title="watch video in viewer"></i> View/edit video data</a>
 
-
+                                                
 
                                             
 
@@ -296,6 +314,8 @@ background-color: rgb(238, 194, 120);
 
                                         </div>
                                         <div class="actions">
+
+                                           
                                             
                                             <?php if ($currentUserLevel < 3){?>
 
@@ -541,7 +561,7 @@ function constructEditTable(idPassed){
 
     imagesString = '`id`=\'' + idPassed + '\'';
     
-    query = "SELECT a.`id`, a.`split`, b.`id` as `chapterid`, b.`name`, b.`timeFrom`, b.`timeTo`, b.`number`, b.`name` AS `chaptername`, b.`description` FROM `video` as a INNER JOIN `chapter` as b ON a.`id` = b.`video_id` WHERE a.`id` = "+idPassed;
+    query = "SELECT a.`id`, a.`split`, a.`active`, b.`id` as `chapterid`, b.`name`, b.`timeFrom`, b.`timeTo`, b.`number`, b.`name` AS `chaptername`, b.`description` FROM `video` as a INNER JOIN `chapter` as b ON a.`id` = b.`video_id` WHERE a.`id` = "+idPassed;
 
     var selectorObject = JSONStraightDataQuery("video", query, 7); //to here
 
@@ -549,7 +569,7 @@ function constructEditTable(idPassed){
 
     selectorObject.done(function(data) {
 
-        console.log(data);
+        
 		
 		try{
 		
@@ -568,6 +588,13 @@ function constructEditTable(idPassed){
 	        
         }
 
+        //console.log(formData);
+
+        var active = formData[0]['active'];
+        console.log(active);
+        $('#active').val(active);
+
+
 		var html = "<table id=\"imagesTable\" class=\"table imageTable\">";
 		html += "<tr>";
 					html += '<th>Chapter Number</th>';
@@ -584,6 +611,7 @@ function constructEditTable(idPassed){
 
         $(formData).each(function(i, val) { //FOR EACH EXISTING CHAPTER
             
+            
             var id = val.id;
             var chapterid = val.chapterid;
             var number = val.number;
@@ -592,6 +620,9 @@ function constructEditTable(idPassed){
             var name = val.chaptername;
             var description = val.description;
             console.log('Description is ' + val.description);
+            console.log('Description is ' + val.active);
+
+
             
             
             
@@ -2360,6 +2391,63 @@ $(this).append(' ');
             
             
          }) */
+
+         //2020-05-26 code to enable video status box
+
+         $('#active').change(function(){
+
+            //ajax to a script to update
+
+            var active = $(this);
+
+            var selectedStatus = $(this).children("option:selected").val();
+
+
+            var dataToSend = {
+
+                active: selectedStatus,
+                videoid: videoPassed,
+                
+
+            }
+
+//const jsonString2 = JSON.stringify(dataToSend);
+
+            const jsonString = JSON.stringify(dataToSend);
+            console.log(jsonString);
+            //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
+
+            var request2 = $.ajax({
+            beforeSend: function () {
+
+                $('#active').removeClass('is-valid');
+
+            },
+            url: siteRoot + "scripts/updateActive.php",
+            type: "POST",
+            contentType: "application/json",
+            data: jsonString,
+            });
+
+
+
+            request2.done(function (data) {
+            // alert( "success" );
+            if (data == '1'){
+                //show green tick
+
+                
+               $('#active').delay('1000').addClass('is-valid');
+                
+                    
+                    
+            
+            }
+            //$(document).find('.Thursday').hide();
+            })
+
+
+         })
 
 
 

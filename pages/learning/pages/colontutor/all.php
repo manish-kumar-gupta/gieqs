@@ -303,6 +303,8 @@ background-color: rgb(238, 194, 120);
 
         var firstTime = 1;
 
+        var activeStatus = 1;
+
         var requiredTagCategoriesText = $("#requiredTagCategories").text();
 
         var requiredTagCategories = JSON.parse(requiredTagCategoriesText);
@@ -340,7 +342,8 @@ background-color: rgb(238, 194, 120);
 				}*/var dataToSend = {
 
                     tags: tags,
-                    requiredTagCategories: requiredTagCategories
+                    requiredTagCategories: requiredTagCategories,
+                    active: activeStatus,
 
                     }
 
@@ -434,6 +437,7 @@ background-color: rgb(238, 194, 120);
                         loadedRequired: loadedRequired,
                         requiredTagCategories: requiredTagCategories,
                         referringUrl: $('#escaped_url').text(),
+                        active: activeStatus,
 
 
                     }
@@ -581,6 +585,19 @@ background-color: rgb(238, 194, 120);
 
                 })
 
+
+                refreshNavAndTags();
+
+            })
+
+            //active behaviour
+
+            $('body').on('change', '#active', function(){
+
+                var active = $(this).children("option:selected").val();
+                //remove the check from the tag removed
+
+                activeStatus = active;
 
                 refreshNavAndTags();
 

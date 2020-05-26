@@ -21,6 +21,8 @@
 
       $navigator = new navigator;
 
+      //$video = new video;
+
       ?>
 
     <!--Page title-->
@@ -253,6 +255,57 @@ background-color: rgb(238, 194, 120);
     
         <div id='content' class='content container mt-10 mb-10'>
             <div class='responsiveContainer white'>
+            <div class="text-right">
+                    
+                    <div class="actions">
+                        
+                        <?php if ($currentUserLevel < 3){?>
+                            <form class="d-flex">
+                                
+                                <div class="form-group ml-auto">
+                                    <label class="form-control-label">Video Status</label>
+                                    <div class="input-group input-group-merge">
+                                      <select name="active" id="active" class="form-control form-control-sm">
+                                        <option hidden inactive>choose status</option>
+                                        <option value="0">Not shown, not tagged, inactive video</option>
+                                        <option value="1">Shown on Live site</option>
+                                        <option value="2">Needs tagging</option>
+                                        </select>
+                                     
+                                    </div>
+                                  </div>
+                               
+        
+                            </form>
+                            <a href="<?php echo BASE_URL; ?>/pages/learning/viewer.php?id=<?php echo $id;?>" class="action-item"><i class="fas fa-eye" data-toggle="tooltip" data-placement="bottom" title="watch video in viewer"></i> View in player</a>
+                            <a href="<?php echo BASE_URL; ?>/pages/learning/scripts/forms/videoChapterForm.php?id=<?php echo $id;?>" class="action-item"><i class="fas fa-eye" data-toggle="tooltip" data-placement="bottom" title="chapter video"></i> View/edit chapters data</a>
+
+                            
+
+                        
+
+                        <?php }?>
+
+                    </div>
+                    <div class="actions">
+
+                       
+                        
+                        <?php if ($currentUserLevel < 3){?>
+
+
+                        <a href="https://vimeo.com/manage/<?php echo $general->getVimeoID($id);?>/general" target="_blank" class="action-item"><i class="fab fa-vimeo" data-toggle="tooltip" data-placement="bottom" title="open vimeo chapter page"></i> Vimeo Profile</a>
+
+
+                        <a href="https://vimeo.com/manage/<?php echo $general->getVimeoID($id);?>/interaction-tools#chapters" target="_blank" class="action-item"><i class="fab fa-vimeo" data-toggle="tooltip" data-placement="bottom" title="open vimeo chapter page"></i> Edit Chapter Data</a>
+
+
+                        
+
+                        <?php }?>
+
+                    </div>
+                </div>
     
                 <div class='row'>
                     <div class='col-9'>
@@ -276,9 +329,17 @@ background-color: rgb(238, 194, 120);
                             exit();
     
                         }
+
+                        //get video status
+
+                        $video->Load_from_key($id);
+                        $active = $video->getactive();
+
                     }
     
     ?></p>
+
+<div id="activeData" style="display:none;"><?php if ($active){echo $active;}?></div>
     
             <div class='row'>
                 <div class='col-2'>
@@ -325,8 +386,8 @@ background-color: rgb(238, 194, 120);
                 //author as dropdown of users
                 //print_r($user->getUsers());
                 echo $formv1->generateSelectCustom('Author', 'author', '', $user->getUsers(), 'select the author from the list of users');
-                echo $formv1->generateSelectCustom('Active on site?', 'active', '', array(0=>'No', 1=>'Yes'), 'is the video to be active on the learning site?');
-                echo $formv1->generateSelectCustom('Split into chapters?', 'split', '', array(0=>'No', 1=>'Yes'), 'should the video be split into chapters or available as is');
+/*                 echo $formv1->generateSelectCustom('Active on site?', 'active', '', array(0=>'No', 1=>'Yes'), 'is the video to be active on the learning site?');
+ */                echo $formv1->generateSelectCustom('Split into chapters?', 'split', '', array(0=>'No', 1=>'Yes'), 'should the video be split into chapters or available as is');
                 //duration and thumbnail to be added separately
                     
                     
@@ -475,7 +536,7 @@ videoString = '`id`=\'' + idPassed + '\'';
 
 //get the video and chapter data
 
-query = "SELECT a.`id`, b.`image_id`, c.`url`, c.`name`, c.`type`, c.`order` FROM `imageSet` as a INNER JOIN `imageImageSet` as b ON a.`id` = b.`imageSet_id` INNER JOIN `images` as c on b.`image_id` = c.`id` WHERE a.`id` = "+idPassed;
+query = "SELECT a.`id`, a.`active`, b.`image_id`, c.`url`, c.`name`, c.`type`, c.`order` FROM `imageSet` as a INNER JOIN `imageImageSet` as b ON a.`id` = b.`imageSet_id` INNER JOIN `images` as c on b.`image_id` = c.`id` WHERE a.`id` = "+idPassed;
 
 var selectorObject = JSONStraightDataQuery("imageSet", query, 7);
 
@@ -492,8 +553,13 @@ selectorObject.done(function(data) {
     } catch (error) {
         
        console.log('No ajax data received'); 
+       return;
         
     }
+
+    var active = formData[0]['active'];
+        console.log(active);
+        $('#active').val(active);
 
     var html = "<table id=\"imagesTable\" class=\"imageTable\">";
     html += "<tr>";
@@ -1023,10 +1089,11 @@ var selectorObject = getDataQuery("video", imagesString, getNamesFormElements("v
 
 selectorObject.done(function(data) {
 
-    console.log(data);
+    
 
     var formData = $.parseJSON(data);
 
+    console.log(formData);
 
     $(formData).each(function(i, val) {
         $.each(val, function(k, v) {
@@ -1232,6 +1299,10 @@ if (edit == 1) {
 
 }
 
+var active = $('#activeData').text();
+
+$('#active').val(active);
+
 /* var navBarEntry = '<div class="dropdown"><button class="dropbtn activeButton">Video Creators&#9660;</button><div class="dropdown-content"><a href="' + siteRoot + 'scripts/forms/videoUploadForm.php">New Video</a><hr><a href="' + siteRoot + 'scripts/forms/videoTable.php">Video Table</a></div></div>';
  */
 /* $('.navbar').find('.dropdown:eq(3)').after(navBarEntry);
@@ -1287,12 +1358,12 @@ $("#videoForm").validate({
                 },rules: {
 name: { required: true },   
 url: { required: true },   
-active: { required: true },   
+/* active: { required: true },  */  
 split: { required: true },   
 },messages: {
 name: { required: 'required' },   
 url: { required: 'required' },   
-active: { required: 'required' },   
+/* active: { required: 'required' }, */   
 split: { required: 'required' },   
 },
                 submitHandler: function(form) {
@@ -1873,6 +1944,61 @@ $('#content').on('change', '.order', function() {
     $(this).data('pre', $(this).val());
    
 
+
+
+})
+
+$('#active').change(function(){
+
+//ajax to a script to update
+
+var active = $(this);
+
+var selectedStatus = $(this).children("option:selected").val();
+
+
+var dataToSend = {
+
+    active: selectedStatus,
+    videoid: videoPassed,
+    
+
+}
+
+//const jsonString2 = JSON.stringify(dataToSend);
+
+const jsonString = JSON.stringify(dataToSend);
+console.log(jsonString);
+//console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
+
+var request2 = $.ajax({
+beforeSend: function () {
+
+    $('#active').removeClass('is-valid');
+
+},
+url: siteRoot + "scripts/updateActive.php",
+type: "POST",
+contentType: "application/json",
+data: jsonString,
+});
+
+
+
+request2.done(function (data) {
+// alert( "success" );
+if (data == '1'){
+    //show green tick
+
+    
+   $('#active').delay('1000').addClass('is-valid');
+    
+        
+        
+
+}
+//$(document).find('.Thursday').hide();
+})
 
 
 })

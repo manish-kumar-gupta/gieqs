@@ -301,7 +301,7 @@ background-color: rgb(238, 194, 120);
         //the number the user wants
         var loadedRequired = 1;
 
-        var firstTime = 1;
+        var firstTime = 1; var activeStatus = 1;
 
         var requiredTagCategoriesText = $("#requiredTagCategories").text();
 
@@ -433,7 +433,7 @@ background-color: rgb(238, 194, 120);
                         loaded: loaded,
                         loadedRequired: loadedRequired,
                         requiredTagCategories: requiredTagCategories,
-                        referringUrl: $('#escaped_url').text(),
+                        referringUrl: $('#escaped_url').text(), active: activeStatus,
 
 
                     }
@@ -581,6 +581,18 @@ background-color: rgb(238, 194, 120);
 
                 })
 
+
+                refreshNavAndTags();
+
+            })
+            //active behaviour
+
+            $('body').on('change', '#active', function(){
+
+                var active = $(this).children("option:selected").val();
+                //remove the check from the tag removed
+
+                activeStatus = active;
 
                 refreshNavAndTags();
 

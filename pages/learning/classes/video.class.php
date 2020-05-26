@@ -40,7 +40,9 @@ Class video {
      * 
      */
 	public function Load_from_key($key_row){
-		$result = $this->connection->RunQuery("Select * from video where id = \"$key_row\" ");
+		$q= "Select * from video where `id` = \"$key_row\"";
+		//echo $q;
+		$result = $this->connection->RunQuery($q);
 		while($row = $result->fetch_array(MYSQLI_ASSOC)){
 			$this->id = $row["id"];
 			$this->name = $row["name"];
@@ -97,7 +99,9 @@ return $result; 	}
 				 $implodeArray = implode(', ', $updates);
 				
 		
-			$q = "UPDATE video SET $implodeArray WHERE id = \"$this->id\"";
+			//$q = "UPDATE video SET $implodeArray WHERE id = \"$this->id\"";
+			$q = "UPDATE `video` SET $implodeArray WHERE `id` = {$this->id}";
+			//echo $q;
 	$result = $this->connection->RunQuery($q); 
 	return $result; 
 	}

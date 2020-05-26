@@ -195,11 +195,117 @@ top: -20vh;
               </a>
             
         </div>
-        <!-- Current studies -->
-        <div class="actions-toolbar py-2 mb-4 mt-2">
-          <h5 class="mb-1">What's New</h5>
-          <p class="text-sm text-muted mb-0">Check out our latest and most popular content.</p>
+      </section>
+      <section class="slice slice-lg">
+        <div class="container">
+          <div class="row row-grid align-items-center justify-content-around">
+            <div class="col-lg-5 order-lg-2">
+              <div class="pr-md-4">
+                <h5 class="h3">Change the way you think about Endoscopy training. Forever.</h5>
+                <p class="text-muted lead my-4">GIEQs learning uses our original tagged based approach throughout to connect you with cases relevant to what you want to discover, fast.</p>
+                <a href="" target="_blank" class="btn bg-gieqsGold text-dark rounded-pill btn-icon mt-4">
+                  <span class="btn-inner--icon"><i class="fas fa-binoculars"></i></span>
+                  <span class="btn-inner--text">Discover</span>
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+              <div class="position-relative" style="z-index: 10;">
+                <img alt="Image placeholder" src="<?php echo BASE_URL;?>/assets/img/learning/advertising/tagsv2.png" class="img-center img-fluid">
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
+      <section class="slice slice-lg bg-cover bg-size--cover" style="background-image: url('<?php echo BASE_URL;?>/assets/img/covers/learning/roomview1.png'); background-position: center bottom;">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="card py-5 px-4 box-shadow-3">
+                <div class="card-body">
+                  <h6 class="h2">
+                    <strong>Privacy Respecting in-room view</strong> allows rapid visual learning.
+                  </h6>
+                  <p class="lead lh-180 mt-4">Our videos combine in-room audio and visuals with the endoscopic image, respecting the privacy of the patient at all times.</p>
+                  <p class="lead lh-180 mt-4">Feel like you're in the room 1:1 with the endoscopist teaching you the technique.</p>
+
+                  <div class="btn-container mt-5">
+                    <a href="#" class="btn btn-primary rounded-pill">Our mission</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="slice slice-lg">
+        <div class="container">
+          <div class="row row-grid align-items-center justify-content-around">
+            <div class="col-lg-5 order-lg-2">
+              <div class="pr-md-4">
+                <h5 class="h3">Use tags to see multiple examples of complex ideas. Fast.  And back to back.</h5>
+                <p class="text-muted lead my-4">Real life training is ad hoc and dependent on luck and opportunity.  Why wait when all the experiences are collected on GIEQs online, and categorised for your convenience.</p>
+                <a href="" target="_blank" class="btn bg-gieqsGold text-dark rounded-pill btn-icon mt-4">
+                  <span class="btn-inner--icon"><i class="fas fa-binoculars"></i></span>
+                  <span class="btn-inner--text">Discover</span>
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+              <div class="position-relative" style="z-index: 10;">
+                <img alt="Image placeholder" src="<?php echo BASE_URL;?>/assets/img/learning/advertising/tagscomplex.png" class="img-center img-fluid">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="slice slice-lg bg-gradient-dark">
+        <div class="container">
+          <div class="mb-5 text-center">
+            <h3 class=" mt-4">GIEQs is an idea.  That we can do everyday endoscopy better.</h3>
+            <div class="fluid-paragraph mt-3">
+              <p class="lead lh-180"></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-3"></div>
+              
+            <div class="col-lg-6">
+              <div class="card" data-animate-hover="1">
+                <div class="animate-this">
+                  <img alt="Image placeholder" src="<?php echo BASE_URL;?>/assets/img/learning/advertising/dt.png" class="card-img-top">
+                  <a href="https://vimeo.com/417539867" class="btn btn-lg btn-white btn-icon-only rounded-circle shadow-sm position-absolute right-4 top-4 hover-scale-110" data-fancybox="">
+                    <span class="btn-inner--icon">
+                      <i class="fas fa-play"></i>
+                    </span>
+                  </a>
+                </div>
+                <div class="card-body">
+                  <blockquote class="blockquote">
+                    <span class="quote"></span>
+                    <div class="quote-text">
+                      <p class="font-italic lh-170">GIEQs is an idea.  That we can learn lessons from complex endoscopic practice and apply them to everyday procedures.  To make everyday endoscopy better for our patients.</p>
+                      <footer class="blockquote-footer">
+                        Dr David Tate<cite title="Source Title"><br/>Endoscopist and member of the GIEQs Online Creator Team</cite>
+                      </footer>
+                    </div>
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3"></div>
+            </div>
+          </div>
+          <div class="mt-5 text-center">
+            <a href="" target="_blank" class="btn bg-gieqsGold text-dark rounded-pill btn-icon mt-4">
+              <span class="btn-inner--icon"><i class="fas fa-binoculars"></i></span>
+              <span class="btn-inner--text">Discover</span>
+            </a>
+          </div>
+        </div>
+      </section>
+        <!-- Current studies -->
+   
         <!--
         <div class="col-auto flex-fill d-none d-xl-block">
             <ul class="list-inline row justify-content-lg-end mb-0">
@@ -232,66 +338,7 @@ top: -20vh;
               </li>
             </ul>
           </div>-->
-        <div class="card-deck flex-column flex-lg-row mb-5">
-          <div class="card">
-            <div class="card-header">
-              <div class="d-flex align-items-center">
-                <span class="avatar bg-primary text-white rounded-circle avatar-lg">W</span>
-                <div class="avatar-content ml-3">
-                    <a href="https://vimeo.com/417539867" data-fancybox>
-                  
-
-                <h6 class="mb-0">Welcome to GIEQs learning</h6> </a>
-                 
-                </div>
-              </div>
-            </div>
-            <div class="card-body">
-              <div class="d-flex justify-content-between">
-                <div>
-                  <a href="#" class="text-sm font-weight-bold d-block"></a>
-                </div>
-                <div>
-                  <a href="#" class="text-sm font-weight-bold d-block">Dr David Tate</a>
-                </div>
-              </div>
-              <div class="mt-3 mb-2">
-                <!--<div class="avatar-group">
-                  <a href="#" class="avatar rounded-circle avatar-sm">
-                    <img alt="Image placeholder" src="../../assets/img/theme/light/team-1-800x800.jpg" class="">
-                  </a>
-                  <a href="#" class="avatar rounded-circle avatar-sm">
-                    <img alt="Image placeholder" src="../../assets/img/theme/light/team-2-800x800.jpg" class="">
-                  </a>
-                  <a href="#" class="avatar rounded-circle avatar-sm">
-                    <img alt="Image placeholder" src="../../assets/img/theme/light/team-3-800x800.jpg" class="">
-                  </a>
-                </div>-->
-              </div>
-              <!--<small class="h6 text-sm font-weight-bold">Reminder:</small>
-              <p class="text-sm lh-160 mb-0">When we strive to become better than we are everything around us becomes better too.</p>-->
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header">
-              
-            </div>
-            <div class="card-body">
-              
-              
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header">
-              
-            </div>
-            <div class="card-body">
-              
-              
-            </div>
-          </div>
-         
-        </div>
+        
         <!-- Further to add later Latest projects
         <div class="mb-5">
           <div class="actions-toolbar py-2 mb-4">

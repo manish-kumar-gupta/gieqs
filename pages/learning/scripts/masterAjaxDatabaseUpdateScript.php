@@ -1,11 +1,9 @@
 <?php
+
+
 	
 	require ('../includes/config.inc.php');
 
-$location = BASE_URL . '/elearn.php';
-
-
-session_start( );
 
 function hash_password($password, $salt) {
     $salted_password = substr($password, 0, 4) . $salt . substr($password, 4);
@@ -13,12 +11,12 @@ function hash_password($password, $salt) {
 }
 
 
-if (!isset($_SESSION['user_id'])) {
+/* if (!isset($_SESSION['user_id'])) {
 			 		
 				    // Need the functions:
 				     require (BASE_URI . '/includes/login_functions.php');
 				     redirect_login($location);
-			 }
+			 } */
 
 
 
@@ -132,6 +130,8 @@ if (count($_GET) > 0){
 	if ($update == 0){
 		
 		//check if new user form
+		
+
 		
 		if ($data['table'] == 'users'){
 			

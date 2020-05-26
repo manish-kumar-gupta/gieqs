@@ -19,6 +19,25 @@
         <div class="container mt-4 pt-0 bg-dark text-white" style="border: 1px solid #1b385d;">
         <div class="d-flex">
             <span class='mr-auto p-2'>Navigator</span>
+            <?php if ($currentUserLevel < 3){?>
+            <form class="d-flex">
+                                                    
+                                                    <div class="form-group mt-1 ml-auto">
+                                                        
+                                                        <div class="input-group input-group-merge">
+                                                          <select name="active" id="active" class="form-control form-control-sm">
+                                                            <option hidden inactive>choose status</option>
+                                                            <option value="0">Not shown, not tagged, inactive video</option>
+                                                            <option value="1" selected>Shown on Live site</option>
+                                                            <option value="2">Needs tagging</option>
+                                                            </select>
+                                                         
+                                                        </div>
+                                                      </div>
+                                                   
+                            
+                                                </form>
+                                                <?php }?>
 
             <span class='p-2 bd-highlight text-muted'><span id='itemCount'></span> video(s) shown</span>
             

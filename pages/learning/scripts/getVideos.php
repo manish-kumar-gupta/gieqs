@@ -5,7 +5,7 @@ $openaccess = 1;
 
 require '../includes/config.inc.php';
 
-$debug = false;
+$debug = FALSE;
 
 //require (BASE_URI.'/scripts/headerCreatorV2.php');
 
@@ -60,6 +60,8 @@ $loaded = $data['loaded'];
 
 $loadedRequired = $data['loadedRequired'];
 
+$active = $data['active'];
+
 $loadedRequiredProduct = 10 * $loadedRequired;
 
 if ($debug) {
@@ -98,7 +100,7 @@ $requiredTagCategories = $data['requiredTagCategories'];
 $videos = [];
 $x = 0;
 
-$data2 = $navigator->getVideoData($requiredTagCategories, $tagsToMatch, $debug);
+$data2 = $navigator->getVideoData($requiredTagCategories, $tagsToMatch, $debug, $active);
 
 
 

@@ -26,6 +26,8 @@
 
             $tagsToMatch = $data['tags'];
 
+            $active = $data['active'];
+
             if ($debug){
             print_r($tagsToMatch);
             }
@@ -73,7 +75,7 @@
 
         //gets all videos in the required tag categories that match the selected tags
 
-        $data2 = $navigator->generateNavigationSingleDisabledQuery($requiredTagCategories, $tagsToMatch, $debug);
+        $data2 = $navigator->generateNavigationSingleDisabledQuery($requiredTagCategories, $tagsToMatch, $debug, $active);
 
         //use this to obtain the tags which match the video[s] still displayed so the user cannot unfilter all videos
 
