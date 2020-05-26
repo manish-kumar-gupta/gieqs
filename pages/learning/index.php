@@ -189,7 +189,8 @@ top: -20vh;
               <span class="btn-inner--icon"><i class="fas fa-user"></i></span>
               <span class="btn-inner--text d-none d-md-inline-block">My Learning Profile</span>
             </a>
-            <a href="account-profile-public.html" class="btn btn-icon btn-group-nav bg-gieqsGold shadow btn-neutral mx-2">
+
+            <a href="https://vimeo.com/422871506" class="btn btn-icon btn-group-nav bg-gieqsGold shadow btn-neutral mx-2" data-fancybox>
                 <span class="btn-inner--icon text-dark"><i class="fas fa-user"></i></span>
                 <span class="animated bounce delay-2s btn-inner--text text-dark d-none d-md-inline-block">Take a Tour!</span>
               </a>
@@ -203,7 +204,7 @@ top: -20vh;
               <div class="pr-md-4">
                 <h5 class="h3">Change the way you think about Endoscopy training. Forever.</h5>
                 <p class="text-muted lead my-4">GIEQs learning uses our original tagged based approach throughout to connect you with cases relevant to what you want to discover, fast.</p>
-                <a href="" target="_blank" class="btn bg-gieqsGold text-dark rounded-pill btn-icon mt-4">
+                <a href="https://vimeo.com/422871506" class="btn bg-gieqsGold text-dark rounded-pill btn-icon mt-4" data-fancybox>
                   <span class="btn-inner--icon"><i class="fas fa-binoculars"></i></span>
                   <span class="btn-inner--text">Discover</span>
                 </a>
