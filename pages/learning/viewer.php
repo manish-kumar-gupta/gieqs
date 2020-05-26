@@ -8,7 +8,7 @@
 
     <?php
 
-//error_reporting(E_ALL);
+error_reporting(E_ALL);
 
 
       //define user access level
@@ -18,6 +18,8 @@
       require BASE_URI . '/head.php';
 
       $general = new general;
+
+      $users = new users;
 
       ?>
 
@@ -211,7 +213,22 @@ min-width:30vw;
 					<div id="videoChapterTagData" style="display:none;"><?php echo $general->getVideoAndChapterData($id);?>
 					</div>
 
-                    <div id="videoData" style="display:none;"><?php echo $general->getVideoData($id);?></div>
+                    <div id="videoData" style="display:none;"><?php $videoDataMod = $general->getVideoDataMod($id);
+                        
+                        //print_r($videoDataMod);
+                        
+                        $author = $videoDataMod[0]['author'];
+
+                        //echo $author;
+
+                        $authorText = $users->getUserName($author);
+
+                        $videoDataMod[0]['author'] = $authorText;
+
+                        echo json_encode($videoDataMod);
+
+                        
+                        ?></div>
                     
                     <div id="tagsData" style="display:none;"><?php echo $general->getTagsVideo($id);?></div>
 

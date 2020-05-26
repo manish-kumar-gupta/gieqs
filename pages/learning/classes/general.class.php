@@ -261,6 +261,32 @@ class general {
 
 
 	}
+
+	public function getVideoDataMod ($id) {
+
+		$q = "SELECT `name`, `description`, `author` FROM `video` WHERE `id` = $id";
+
+		$result = $this->connection->RunQuery($q);
+
+		if ($result){
+
+
+			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+				$rows[] = array_map('utf8_encode', $row);
+			}
+			
+			
+
+
+		}
+
+		return $rows;
+		
+		
+
+
+
+	}
 	
 	public function getUserName ($id){
 		
