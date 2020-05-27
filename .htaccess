@@ -12,6 +12,7 @@ RewriteRule ^registration$ pages/program/registration.php
 RewriteRule ^login$ pages/authentication/login.php
 RewriteRule ^logmein$ pages/authentication/login.php
 RewriteRule ^proposedprogram$ pages/program/programv2.php
+RewriteRule ^learning$ pages/program/online.php
 
 
 RewriteCond %{SERVER_PORT} 80
