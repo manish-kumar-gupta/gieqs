@@ -56,7 +56,7 @@
 
                 <!-- Registration-basic -->
                 <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-                    <a style="color: rgb(238, 194, 120);" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
+                    <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Registration</a>
                     
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
@@ -77,7 +77,9 @@
                     
                   </div>
                 </li>
-
+                <?php
+                if (isset($_SESSION['user_id']) && ($_SESSION['siteKey'] == 'TxsvAb6KDYpmdNk') && ($_SESSION['access_level'] == '1' || $_SESSION['access_level'] == '2')){
+                ?>
                 <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
                     <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">GIEQs Online</a>
@@ -85,17 +87,20 @@
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">Online tools for promoting<br/> quality in endoscopy</span>
                     
-                    <?php
+                    
                 
-                if (isset($_SESSION['user_id']) && ($_SESSION['siteKey'] == 'TxsvAb6KDYpmdNk') && ($_SESSION['access_level'] == '1' || $_SESSION['access_level'] == '2')){
-                ?>
+                
                     
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/index.php"><i class="fas fa-graduation-cap"></i>GIEQs Online BETA</a>
 
 
                 <?php }else{ ?>
 
-                  <a class="dropdown-item"><i class="fas fa-graduation-cap"></i>Coming soon!</a>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/online.php">GIEQs Online<span class="badge bg-gieqsGold text-dark badge-pill badge-floating ml-1 p-1">
+                                    New
+                                    </span></a>
+                </li>
 
 
                 <?php }?>
