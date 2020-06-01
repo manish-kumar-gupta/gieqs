@@ -317,7 +317,7 @@ top: -20vh;
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="form-control-label">Institution name</label>
-                      <input name="centreName" class="form-control" type="text"
+                      <input id="centreName" name="centreName" class="form-control" type="text"
                         placeholder="Enter your institution name" value="<?php echo $users->getcentreName();?>">
                     </div>
                   </div>
@@ -342,7 +342,7 @@ top: -20vh;
                       <label class="form-control-label">Institution Type</label>
                       <select name="centreType" class="form-control" tabindex="-1" aria-hidden="true"
                         placeholder="Select the description that best matches your institution">
-                        <option hidden selected>Please select your institution type</option>
+                        <option hidden selected disabled>Please select your institution type</option>
                         <option value="1" <?php if ($users->getcentreType() == 1){echo "selected";}?>>Public Academic</option>
                         <option value="2" <?php if ($users->getcentreType() == 2){echo "selected";}?>>Private Academic</option>
                         <option value="3" <?php if ($users->getcentreType() == 3){echo "selected";}?>>Public Non-Academic</option>
@@ -363,7 +363,7 @@ top: -20vh;
                   <div class="col-md-6">
                     <div class="form-group focused">
                       <label class="form-control-label">Are you a trainee?</label>
-                      <select name="trainee" class="form-control" tabindex="-1" aria-hidden="true">
+                      <select id="trainee" name="trainee" class="form-control" tabindex="-1" aria-hidden="true">
                         <option hidden disabled selected>Are you a trainee?</option>
                         <option value="0" <?php if ($users->gettrainee() == 0){echo "selected";}?>>No</option>
                         <option value="1" <?php if ($users->gettrainee() == 1){echo "selected";}?>>Yes</option>
@@ -378,7 +378,7 @@ top: -20vh;
                     <div class="form-group focused">
                       <label class="form-control-label">Which of the following best describes you?</label>
                       <select name="endoscopistType" class="form-control" tabindex="-1" aria-hidden="true">
-                        <option hidden selected>Select the option which best describes you</option>
+                        <option hidden selected disabled>Select the option which best describes you</option>
                         <option value="1" <?php if ($users->getendoscopistType() == 1){echo "selected";}?>>Medical Endoscopist</option> 
                         <option value="2" <?php if ($users->getendoscopistType() == 2){echo "selected";}?>>Surgical Endoscopist</option>
                         <option value="3" <?php if ($users->getendoscopistType() == 3){echo "selected";}?>>Nurse Endoscopist</option>
@@ -408,7 +408,7 @@ top: -20vh;
                   <div class="form-group focused">
                       <label class="form-control-label">Training programme?</label>
                       <select name="endoscopyTrainingProgramme" class="form-control" tabindex="-1" aria-hidden="true">
-                        <option hidden selected>Did you complete extra endoscopy training?</option>
+                        <option hidden selected disabled>Did you complete extra endoscopy training?</option>
                         <option value="0"  <?php if ($users->getendoscopyTrainingProgramme() == 0){echo "selected";}?>>No</option>
                         <option value="1" <?php if ($users->getendoscopyTrainingProgramme() == 1){echo "selected";}?>>Dedicated Endoscopy Training programme < 6 months</option>
                         <option value="2" <?php if ($users->getendoscopyTrainingProgramme() == 2){echo "selected";}?>>Dedicated Endoscopy Training programme > 6 months < 1 year</option>
@@ -422,7 +422,7 @@ top: -20vh;
                     <div class="form-group focused">
                       <label class="form-control-label">Specialist interest</label>
                       <select name="specialistInterest" class="form-control" tabindex="-1" aria-hidden="true">
-                        <option hidden selected>Select one specialist interest</option>
+                        <option hidden selected disabled>Select one specialist interest</option>
                         <option value="1" <?php if ($users->getspecialistInterest() == 1){echo "selected";}?>>General Endoscopy</option>
                         <option value="2" <?php if ($users->getspecialistInterest() == 2){echo "selected";}?>>Endoscopic Resection</option>
                         <option value="3" <?php if ($users->getspecialistInterest() == 3){echo "selected";}?>>Endoscopic imaging</option>
@@ -488,298 +488,315 @@ top: -20vh;
     <!-- <script src="assets/js/generaljs.js"></script> -->
     <script src="assets/js/demo.js"></script>
     <script>
-    var videoPassed = $("#id").text();
-                    </script>
+    var videoPassed = $("#id").text(); 
+ 
 
-    <script src=<?php echo BASE_URL . "/pages/learning/includes/endowiki-player.js"?>></script>
-    <script>
-        var signup = $('#signup').text();
-        var edit = 1;
-        var lesionUnderEdit = <?php echo $userid;?>;
-
-
-
-        function submituserForm() {
-
-          //pushDataFromFormAJAX (form, table, identifierKey, identifier, updateType)
-
-          console.log('got to the submit function');
-
-          if (edit == 0) {
-
-            var esdLesionObject = pushFormDataJSON($("#userForm"), "users", "user_id", null, "0"); //insert new object
-
-            esdLesionObject.done(function (data) {
-
-              console.log(data);
-
-              if (data) {
-
-                //alert ("New esdLesion no "+data+" created");
-                $('#topTableSuccess').text("New <?php echo $databaseName;?> no " + data + " created");
-
-                $('#modal-row-1').animate({
-                  scrollTop: 0
-                }, 'slow');
-
-
-                $("#topTableAlert").fadeTo(4000, 500).slideUp(500, function () {
-                  $("#topTableAlert").slideUp(500);
-                });
-
-                //edit = 1;
-
-                //refresh table
-                datatable.ajax.reload();
-
-                //close modal
-                $('#modal-row-1').modal('hide');
+  
+      var signup = $('#signup').text();
+    var edit = 1;
+    var lesionUnderEdit = <?php echo $userid; ?>;
 
 
 
+    function submituserForm() {
+
+      //pushDataFromFormAJAX (form, table, identifierKey, identifier, updateType)
+
+      console.log('got to the submit function');
+
+      if (edit == 0) {
+
+        var esdLesionObject = pushFormDataJSON($("#userForm"), "users", "user_id", null, "0"); //insert new object
+
+        esdLesionObject.done(function (data) {
+
+          console.log(data);
+
+          if (data) {
+
+            //alert ("New esdLesion no "+data+" created");
+            $('#topTableSuccess').text("New <?php echo $databaseName;?> no " + data + " created");
+
+            $('#modal-row-1').animate({
+              scrollTop: 0
+            }, 'slow');
 
 
-              } else {
-
-                alert("No data inserted, try again");
-
-              }
-
-
+            $("#topTableAlert").fadeTo(4000, 500).slideUp(500, function () {
+              $("#topTableAlert").slideUp(500);
             });
 
-          } else if (edit == 1) {
+            //edit = 1;
 
+            //refresh table
+            datatable.ajax.reload();
 
-            if (lesionUnderEdit) {
-
-              var esdLesionObject = pushFormDataJSON($("#userForm"), "users", "user_id", lesionUnderEdit, "1"); //insert new object
-
-              esdLesionObject.done(function (data) {
-
-                console.log(data);
-
-                if (data) {
-
-                  if (data == 1 || data == 0) {
-
-                    Swal.fire({
-  title: 'Updated',
-  text: 'Your user profile was updated successfully',
-  icon: 'error',
-  background: '#162e4d',
-  confirmButtonText: 'ok', 
-  confirmButtonColor: 'rgb(238, 194, 120)', 
-  
-})
-
-
-                    
+            //close modal
+            $('#modal-row-1').modal('hide');
 
 
 
-                    //refresh table
-                    //datatable.ajax.reload();
-                    //edit = 1;
 
 
-                    //edit = 1;
+          } else {
 
-                  
-
-                  } else if (data == 2) {
-
-                    alert("Error, try again");
-
-                  }
-
-
-
-                }
-
-
-              });
-
-            }
-
+            alert("No data inserted, try again");
 
           }
 
 
-        }
+        });
 
-        $(document).ready(function () {
-
-
-
-          $(document).on('click', '#submit-userForm', function () {
-
-            event.preventDefault();
-
-            $('#userForm').submit();
-
-          })
-
-          $("#userForm").validate({
-
-            invalidHandler: function (event, validator) {
-              var errors = validator.numberOfInvalids();
-              console.log("there were " + errors + " errors");
-              if (errors) {
-                var message = errors == 1 ?
-                  "1 field contains errors. It has been highlighted" :
-                  +errors + " fields contain errors. They have been highlighted";
+      } else if (edit == 1) {
 
 
-                $('#error').text(message);
-                //$('div.error span').addClass('form-text text-danger');
-                //$('#errorWrapper').show();
+        if (lesionUnderEdit) {
 
-                $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function () {
-                  $("#errorWrapper").slideUp(500);
-                });
-              } else {
-                $('#errorWrapper').hide();
+          var esdLesionObject = pushFormDataJSON($("#userForm"), "users", "user_id", lesionUnderEdit, "1"); //insert new object
+
+          esdLesionObject.done(function (data) {
+
+            console.log(data);
+
+            if (data) {
+
+              if (data == 1 || data == 0) {
+
+                Swal.fire({
+                  title: 'Updated',
+                  text: 'Your user profile was updated successfully',
+                  type: 'success',
+                  background: '#162e4d',
+                  confirmButtonText: 'ok',
+                  confirmButtonColor: 'rgb(238, 194, 120)',
+
+                })
+
+
+
+
+
+
+                //refresh table
+                //datatable.ajax.reload();
+                //edit = 1;
+
+
+                //edit = 1;
+
+
+
+              } else if (data == 2) {
+
+                alert("Error, try again");
+
               }
-            },
-            ignore: [],
-            rules: {
-
-              //EDIT
-
-
-
-
-
-
-
-              firstname: {
-                required: true,
-
-              },
-
-
-
-              surname: {
-                required: true,
-
-              },
-
-
-
-
-
-
-              email: {
-                required: true,
-                email: true,
-
-              },
-
-
-
-
-
-
-              centreName: {
-                required: true,
-
-              },
-
-
-
-              registered_date: {
-                required: true,
-                date: true,
-
-              },
-
-
-
-
-
-
-
-
-
-              access_level: {
-                required: true,
-
-              },
-
-
-
-              contactPhone: {
-                required: true,
-                regex: '[0-9\-\(\)\s]+',
-
-              },
-
-
-
-
-
-
-              centreCity: {
-                required: true,
-
-              },
-
-
-
-              centreCountry: {
-                required: true,
-
-              },
-
-
-
-              trainee: {
-                required: true,
-
-              },
-
-
-
-              yearsIndependent: {
-                required: true,
-
-              },
-
-
-
-
-
-
-
-              emailPreferences: {
-                required: true,
-
-              },
-
-            },
-            submitHandler: function (form) {
-
-              //submitPreRegisterForm();
-
-              submituserForm();
-
-              //TODO submit changes
-              //TODO reimport the array at the top
-              //TODO redraw the table
 
 
 
             }
 
 
-
-
           });
 
+        }
 
 
-        })
+      }
+
+
+    }
+
+    $(document).ready(function () {
+
+
+
+      $(document).on('click', '#submit-userForm', function () {
+
+        event.preventDefault();
+
+        $('#userForm').submit();
+
+      })
+
+      $("#userForm").validate({
+
+        invalidHandler: function (event, validator) {
+          var errors = validator.numberOfInvalids();
+          console.log("there were " + errors + " errors");
+          if (errors) {
+            var message = errors == 1 ?
+              "1 field contains errors. It has been highlighted" :
+              +errors + " fields contain errors. They have been highlighted";
+
+
+            $('#error').text(message);
+            //$('div.error span').addClass('form-text text-danger');
+            //$('#errorWrapper').show();
+
+            $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function () {
+              $("#errorWrapper").slideUp(500);
+            });
+          } else {
+            $('#errorWrapper').hide();
+          }
+        },
+        ignore: [],
+        rules: {
+
+          //EDIT
+
+
+
+
+
+
+
+          firstname: {
+            required: true,
+
+          },
+
+
+
+          surname: {
+            required: true,
+
+          },
+
+          gender: {
+            required: true,
+
+          },
+
+
+          email: {
+            required: true,
+            email: true,
+
+          },
+
+
+
+
+
+
+          centreName: {
+
+
+          },
+
+          centreCity: {
+
+            required: function (element) {
+              return $("#centreName").val() != "";
+
+            }
+          },
+
+          centreType: {
+
+            required: function (element) {
+              return $("#centreName").val() != "";
+
+            }
+          },
+
+          endoscopistType: {
+
+            required: function (element) {
+              return $("#trainee").val() != "";
+
+            }
+          },
+
+          yearsEndoscopy: {
+
+            required: function (element) {
+              return $("#trainee").val() != "";
+
+            }
+          },
+
+          endoscopyTrainingProgramme: {
+
+            required: function (element) {
+              return $("#trainee").val() != "";
+
+            }
+          },
+
+          specialistInterest: {
+
+            required: function (element) {
+              return $("#trainee").val() != "";
+
+            },
+            regex: '[0-9\-\(\)\s]+',
+          },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          contactPhone: {
+
+            regex: '[0-9\-\(\)\s]+',
+
+          },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        },
+        submitHandler: function (form) {
+
+          //submitPreRegisterForm();
+
+          submituserForm();
+
+          //TODO submit changes
+          //TODO reimport the array at the top
+          //TODO redraw the table
+
+
+
+        }
+
+
+
+
+      });
+
+
+
+    })
     </script>
 </body>
 

@@ -21,7 +21,7 @@ function ne($v) {
 
 
 
-//$debug = true;
+$debug = false;
 //echo 'hello';
 
 //$connection = new DataBaseMysql();
@@ -82,6 +82,12 @@ if (count($data) > 0){
 
 
 	eval('$esdLesion = new ' . $table . ';');
+
+	if ($debug){
+
+		echo '$esdLesion = new ' . $table . ';';
+
+	}
 
 	if (!isset($data['update'])){
 
@@ -320,8 +326,41 @@ if (count($data) > 0){
 		}
 		
 		
+	}else if ($update == 3){
+		
+		//if this is a delete check the id field exists
+		//then copy to historical database
+		
+		//echo 'delete entererd';
+		//$q = "SELECT `$identifierKey` FROM `$table` WHERE `$identifierKey` = $identifier";
+		
+		//echo $q;
+		
+		if ($esdLesion->matchRecord($identifier)){
+
+			if ($general->check_login($data['email'], $data['password'])){
+			
+			//archive the table //TODO future make this explicit per class
+			
+			$general->archiveTableRow($table, $identifier);
+
+
+            echo $esdLesion->Delete_row_from_key($identifier);
+			
+			}else{
+
+				echo '3';
+			}
+			
+			
+		}else{
+			
+			echo 'Invalid identifier or identifier key passed';
+			
+		}
+		
+		
 	}
-	
 	
 	
 	

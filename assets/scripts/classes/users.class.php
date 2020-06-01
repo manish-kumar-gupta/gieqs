@@ -259,6 +259,8 @@ $q = "Select * from `users` WHERE `id` = $key";
      *
      */
 	public function matchRecord($key_row){
+		//ewfecho "Select * from `users` where `user_id` = '$key_row' ";
+
 		$result = $this->connection->RunQuery("Select * from `users` where `user_id` = '$key_row' ");
 		$nRows = $result->rowCount();
 			if ($nRows == 1){

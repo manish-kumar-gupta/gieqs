@@ -29,6 +29,8 @@
 
     <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.css">
+    <script src="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.js"></script>
 
     
 
@@ -43,6 +45,12 @@
         .tagButton {
 
             cursor: pointer;
+
+        }
+
+        .swal2-shown {
+
+          color: white !important;
 
         }
 
@@ -186,7 +194,7 @@ top: -20vh;
       <div class="container">
         <div class="row row-grid">
           <div class="col-lg-9 order-lg-2">
-            <form>
+            <form id="passwordChange">
               <!-- Password -->
               <div class="actions-toolbar py-2 mb-4">
                 <h5 class="mb-1">Change password</h5>
@@ -196,7 +204,7 @@ top: -20vh;
                 <div class="col-md-6">
                   <div class="form-group">
                     <label class="form-control-label">Old password</label>
-                    <input class="form-control" type="password">
+                    <input name="oldPassword" class="form-control" type="password">
                   </div>
                 </div>
               </div>
@@ -204,18 +212,18 @@ top: -20vh;
                 <div class="col-md-6">
                   <div class="form-group">
                     <label class="form-control-label">New password</label>
-                    <input class="form-control" type="password">
+                    <input id="newPassword" name="newPassword" class="form-control" type="password">
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label class="form-control-label">Confirm password</label>
-                    <input class="form-control" type="password">
+                    <input name="newPasswordConfirm" class="form-control" type="password">
                   </div>
                 </div>
               </div>
               <div class="mt-4">
-                <button type="button" class="btn btn-sm btn-primary">Update password</button>
+                <button id="passwordChangeButton" type="button" class="btn btn-sm btn-primary">Update password</button>
                 <a href="recover.html" class="btn btn-sm btn-secondary">I forgot my password</a>
               </div>
             </form>
@@ -286,28 +294,28 @@ top: -20vh;
               <!-- Modal -->
               <div class="modal modal-danger fade" id="modal-delete-account" tabindex="-1" role="dialog" aria-labelledby="modal-delete-account" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
-                  <form class="form-danger">
+                  <form id="form-delete-account" class="form-danger">
                     <div class="modal-content">
                       <div class="modal-body">
                         <div class="text-center">
                           <i class="fas fa-exclamation-circle fa-3x opacity-8"></i>
                           <h5 class="text-white mt-4">Should we stop now?</h5>
-                          <p class="text-sm text-sm">All your data will be erased. You will no longer be billed, and your username will be available to anyone.</p>
+                          <p class="text-sm text-sm">All your data and preferences will be erased. If you have a subscription it will be removed and you will no longer be billed.</p>
                         </div>
                         <div class="form-group">
-                          <label class="form-control-label text-white">You email or username</label>
-                          <input class="form-control" type="text">
+                          <label class="form-control-label text-white">Your email (username)</label>
+                          <input name="email" class="form-control" type="text">
                         </div>
                         <div class="form-group">
                           <label class="form-control-label text-white">To verify, type <span class="font-italic">delete my account</span> below</label>
-                          <input class="form-control" type="text">
+                          <input name="delete" class="form-control" type="text">
                         </div>
                         <div class="form-group">
                           <label class="form-control-label text-white">Your password</label>
-                          <input class="form-control" type="password">
+                          <input name="password" class="form-control" type="password">
                         </div>
                         <div class="mt-4">
-                          <button type="button" class="btn btn-block btn-sm btn-white text-danger">Delete my account</button>
+                          <button id="delete" type="button" class="btn btn-block btn-sm btn-white text-danger">Delete my account</button>
                           <button type="button" class="btn btn-block btn-sm btn-link text-light mt-4" data-dismiss="modal">Not this time</button>
                         </div>
                       </div>
@@ -349,149 +357,273 @@ top: -20vh;
     var videoPassed = $("#id").text();
                     </script>
 
-    <script src=<?php echo BASE_URL . "/pages/learning/includes/endowiki-player.js"?>></script>
     <script>
         var signup = $('#signup').text();
 
-        function submitPreRegisterForm() {
+        var edit = 0;
 
-            var esdLesionObject = pushDataFromFormAJAX("pre-register", "preRegister", "id", null,
-            "0"); //insert new object
+        var lesionUnderEdit = <?php echo $userid;?>;
 
-            esdLesionObject.done(function (data) {
+        function submituserDeleteForm() {
 
-                console.log(data);
+//pushDataFromFormAJAX (form, table, identifierKey, identifier, updateType)
 
-                var dataTrim = data.trim();
-
-                console.log(dataTrim);
-
-                if (dataTrim) {
-
-                    try {
-
-                        dataTrim = parseInt(dataTrim);
-
-                        if (dataTrim > 0) {
-
-                            alert("Thank you for your details.  We will keep you updated on everything GIEQs.");
-                            $("[data-dismiss=modal]").trigger({
-                                type: "click"
-                            });
-
-                        }
-
-                    } catch (error) {
-
-                        //data not entered
-                        console.log('error parsing integer');
-                        $("[data-dismiss=modal]").trigger({
-                            type: "click"
-                        });
-
-
-                    }
-
-                    //$('#success').text("New esdLesion no "+data+" created");
-                    //$('#successWrapper').show();
-                    /* $("#successWrapper").fadeTo(4000, 500).slideUp(500, function() {
-                      $("#successWrapper").slideUp(500);
-                    });
-                    edit = 1;
-                    $("#id").text(data);
-                    esdLesionPassed = data;
-                    fillForm(data); */
+console.log('got to the submit function');
 
 
 
 
-                } else {
+  if (lesionUnderEdit) {
 
-                    alert("No data inserted, try again");
+    var esdLesionObject = pushFormDataJSON($("#form-delete-account"), "users", "user_id", lesionUnderEdit, "3"); //insert new object
 
-                }
+    esdLesionObject.done(function (data) {
 
+      console.log(data);
 
-            });
+      if (data) {
+
+        if (data == 1) {
+
+          Swal.fire({
+            type: 'success',
+            title: 'Profile Deleted',
+            text: 'Your user profile was deleted.  Logging you out.',
+            background: '#162e4d',
+            confirmButtonText: 'ok', 
+            confirmButtonColor: 'rgb(238, 194, 120)', 
+
+          }).then((result) => {
+            logout();
+})
+
+          
+
+        
+
+        } else if (data == 0) {
+
+          alert("Error, try again");
+
+        } else if (data == 3) {
+
+          Swal.fire({
+            type: 'error',
+            title: 'Incorrect Entry',
+            text: 'Your user profile was NOT deleted.  Either the username or password was incorrect.',
+            background: '#162e4d',
+            confirmButtonText: 'ok', 
+            confirmButtonColor: 'rgb(238, 194, 120)', 
+
+          }).then((result) => {
+           
+          })
+
         }
+
+
+
+      }
+
+
+    });
+
+  }
+
+
+
+
+
+}
 
         $(document).ready(function () {
 
-            
 
 
-            /* $(document).click(function(event) { 
-                $target = $(event.target);
+
+          $(document).on('click', '#delete', function () {
+
+            event.preventDefault();
+
+            $('#form-delete-account').submit();
+
+          });
+          
+          $(document).on('click', '#passwordChangeButton', function () {
+
+            event.preventDefault();
+
+            $('#passwordChange').submit();
+
+          });
+
+          $("#form-delete-account").validate({
+
+            invalidHandler: function (event, validator) {
+              var errors = validator.numberOfInvalids();
+              console.log("there were " + errors + " errors");
+              if (errors) {
+                var message = errors == 1 ?
+                  "1 field contains errors. It has been highlighted" :
+                  +errors + " fields contain errors. They have been highlighted";
+
+
+                $('#error').text(message);
+                //$('div.error span').addClass('form-text text-danger');
+                //$('#errorWrapper').show();
+
+                $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function () {
+                  $("#errorWrapper").slideUp(500);
+                });
+              } else {
+                $('#errorWrapper').hide();
+              }
+            },
+            ignore: [],
+            rules: {
+
+
+              email: {
+                required: true,
+                email: true,
+
+              },
+              delete: {
+                required: true,
+                regex: 'delete my account',
+
+              },
+              password: {
+                required: true,
+
+              },
+
+
+
+
+
+
+
+
+
+
+
+            },
+            submitHandler: function (form) {
+
+              //submitPreRegisterForm();
+
+              submituserDeleteForm();
+
+              //TODO submit changes
+              //TODO reimport the array at the top
+              //TODO redraw the table
+
+
+
+            }
+
+
+
+
+          });
+
+          $("#passwordChange").validate({
+
+invalidHandler: function (event, validator) {
+  var errors = validator.numberOfInvalids();
+  console.log("there were " + errors + " errors");
+  if (errors) {
+    var message = errors == 1 ?
+      "1 field contains errors. It has been highlighted" :
+      +errors + " fields contain errors. They have been highlighted";
+
+
+    $('#error').text(message);
+    //$('div.error span').addClass('form-text text-danger');
+    //$('#errorWrapper').show();
+
+    $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function () {
+      $("#errorWrapper").slideUp(500);
+    });
+  } else {
+    $('#errorWrapper').hide();
+  }
+},
+ignore: [],
+rules: {
+
+
+  oldPassword: {
+    required: true,
+    
+
+  },
+  newPassword: {
+    required: true,
+    minlength: 6,
+    
+
+  },
+  newPasswordConfirm: {
+                    
+                    equalTo: "#newPassword", 
                 
-                if(!$target.closest('#collapseExample').length && 
-                    $('#collapseExample').is(":visible")) {
-                        $('#collapseExample').collapse('hide');
-                    }        
-            }); */
 
-            $(document).click(function(event) { 
-                $target = $(event.target);
-                
-                if(!$target.closest('#selectDropdown').length && 
-                    $('#selectDropdown').is(":visible")) {
-                        $('#selectDropdown').collapse('hide');
-                    }        
-            });
 
-            $(document).click(function(event) { 
-                $target = $(event.target);
-                
-                if(!$target.closest('#collapseExample2').length && 
-                    $('#collapseExample2').is(":visible")) {
-                        $('#collapseExample2').collapse('hide');
-                    }        
-            });
+  },
+  messages: {
 
-            $(document).click(function(event) { 
-                $target = $(event.target);
-                
-                if(!$target.closest('#collapseExample3').length && 
-                    $('#collapseExample3').is(":visible")) {
-                        $('#collapseExample3').collapse('hide');
-                    }        
-            });
 
-            $(document).on('click', '.tagsClose', function(){
+oldPassword: {
+  required: 'Please enter your old password',
+  
 
-                $('#collapseExample').collapse('hide');
+},
+newPassword: {
+  required: 'Please enter a new password',
+  minlength: 'Please use at least 6 characters'
+  
 
-            })
+},
+newPasswordConfirm: {
+                  
+                  equalTo: "The new passwords should match", 
+              
 
-            $('.referencelist').on('click', function (){
-		
-		
-		//get the tag name
-		
-		var searchTerm = $(this).attr('data');
-		
-		//console.log("https://www.ncbi.nlm.nih.gov/pubmed/?term="+searchTerm);
-		
-		PopupCenter("https://www.ncbi.nlm.nih.gov/pubmed/?term="+searchTerm, 'PubMed Search (endoWiki)', 800, 700);
 
-		
-		
-		
-		
-	})
+},
 
-	$('.referencelist').on('mouseenter', function (){
 
-		$(this).css('color', 'rgb(238, 194, 120)');
-		$(this).css('cursor', 'pointer');
 
-	})
 
-	$('.referencelist').on('mouseleave', function (){
 
-		$(this).css('color', 'white');
-		$(this).css('cursor', 'default');
 
-	})
+
+
+
+
+
+},
+submitHandler: function (form) {
+
+  //submitPreRegisterForm();
+
+  submituserDeleteForm();
+
+  //TODO submit changes
+  //TODO reimport the array at the top
+  //TODO redraw the table
+
+
+
+}
+
+
+
+
+}
+          });
 
 
         })
