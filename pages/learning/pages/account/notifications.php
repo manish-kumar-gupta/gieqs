@@ -28,6 +28,18 @@
     <title>GIEQs Online Endoscopy Trainer</title>
 
     <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
+
+    <!-- Cookie Consent by https://www.TermsFeed.com -->
+<script type="text/javascript" src="//www.termsfeed.com/public/cookie-consent/3.0.0/cookie-consent.js"></script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({"notice_banner_type":"interstitial","consent_type":"express","palette":"dark","language":"en","website_name":"GIEQs.com","change_preferences_selector":"#changePreferences"});
+});
+</script>
+
+<!-- End Cookie Consent -->
+
+
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
 
     
@@ -186,63 +198,19 @@ top: -20vh;
       <div class="container">
         <div class="row row-grid">
           <div class="col-lg-9 order-lg-2">
-            <!-- Notification -->
-            <div class="actions-toolbar py-2 mb-4">
-              <h5 class="mb-1">Shop notifications</h5>
-              <p class="text-sm text-muted mb-0">Be notified only about the things that matter to you.</p>
-            </div>
-            <div class="card">
-              <div class="list-group list-group-flush">
-                <div class="list-group-item d-flex w-100 justify-content-between">
-                  <div>
-                    <h6 class="mb-1">A product from wishlist is on sale</h6>
-                    <span class="text-sm text-muted">You will receive an alert when one of your favorite products has a discount price.</span>
-                  </div>
-                  <div>
-                    <div class="custom-control custom-switch">
-                      <input type="checkbox" class="custom-control-input" id="shop-notification-1">
-                      <label class="custom-control-label" for="shop-notification-1"></label>
-                    </div>
-                  </div>
-                </div>
-                <div class="list-group-item d-flex w-100 justify-content-between">
-                  <div>
-                    <h6 class="mb-1">A new product is released</h6>
-                    <span class="text-sm text-muted">You will receive an alert when one of your favorite products has a discount price.</span>
-                  </div>
-                  <div>
-                    <div class="custom-control custom-switch">
-                      <input type="checkbox" class="custom-control-input" id="shop-notification-2">
-                      <label class="custom-control-label" for="shop-notification-2"></label>
-                    </div>
-                  </div>
-                </div>
-                <div class="list-group-item d-flex w-100 justify-content-between">
-                  <div>
-                    <h6 class="mb-1">New promotions are available</h6>
-                    <span class="text-sm text-muted">You will receive an alert when one of your favorite products has a discount price.</span>
-                  </div>
-                  <div>
-                    <div class="custom-control custom-switch">
-                      <input type="checkbox" class="custom-control-input" id="shop-notification-3">
-                      <label class="custom-control-label" for="shop-notification-3"></label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="mt-5">
+            
+            <div class="mt-2">
               <!-- Notification -->
               <div class="actions-toolbar py-2 mb-4">
-                <h5 class="mb-1">Card notifications</h5>
-                <p class="text-sm text-muted mb-0">Be notified only about the things that matter to you.</p>
+                <h5 class="mb-1">GDPR compliant notifications</h5>
+                <p class="text-sm text-muted mb-0">Modify how or whether we can contact you.</p>
               </div>
               <div class="card">
                 <div class="list-group list-group-flush">
                   <div class="list-group-item d-flex w-100 justify-content-between">
                     <div>
-                      <h6 class="mb-1">Insufficient funds on credit card</h6>
-                      <span class="text-sm text-muted">You will receive an alert when one of your favorite products has a discount price.</span>
+                      <h6 class="mb-1">Email regarding my account</h6>
+                      <span class="text-sm text-muted">You will receive an alert when changesa are made to your account or updates are required.</span>
                     </div>
                     <div>
                       <div class="custom-control custom-switch">
@@ -253,8 +221,8 @@ top: -20vh;
                   </div>
                   <div class="list-group-item d-flex w-100 justify-content-between">
                     <div>
-                      <h6 class="mb-1">Send monthly invoices via email</h6>
-                      <span class="text-sm text-muted">You will receive an alert when one of your favorite products has a discount price.</span>
+                      <h6 class="mb-1">Email regarding other services from GIEQs.com</h6>
+                      <span class="text-sm text-muted">You will receive infrequent emails regarding interesting features of GIEQs.com based on your profile.</span>
                     </div>
                     <div>
                       <div class="custom-control custom-switch">
@@ -265,8 +233,8 @@ top: -20vh;
                   </div>
                   <div class="list-group-item d-flex w-100 justify-content-between">
                     <div>
-                      <h6 class="mb-1">You balance is almost 0</h6>
-                      <span class="text-sm text-muted">You will receive an alert when one of your favorite products has a discount price.</span>
+                      <h6 class="mb-1">Marketing email from partners</h6>
+                      <span class="text-sm text-muted">We will share your details with carefully selected marketing partners to provide offers of interest to you.</span>
                     </div>
                     <div>
                       <div class="custom-control custom-switch">
@@ -275,20 +243,17 @@ top: -20vh;
                       </div>
                     </div>
                   </div>
-                  <div class="list-group-item d-flex w-100 justify-content-between">
-                    <div>
-                      <h6 class="mb-1">Expired cred card</h6>
-                      <span class="text-sm text-muted">You will receive an alert when one of your favorite products has a discount price.</span>
-                    </div>
-                    <div>
-                      <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="card-notification-4">
-                        <label class="custom-control-label" for="card-notification-4"></label>
-                      </div>
-                    </div>
-                  </div>
+               
                 </div>
               </div>
+            </div>
+            <div class="mt-2">
+              <!-- Notification -->
+              <div class="actions-toolbar py-2 mb-4">
+                <h5 class="mb-1">Manage Cookie Preferences</h5>
+                <button id="changePreferences" type="button" class="btn btn-sm btn-primary mt-3">Manage</button>
+              </div>
+              
             </div>
           </div>
           <?php require BASE_URI . '/pages/learning/pages/account/sidenav.php';?>

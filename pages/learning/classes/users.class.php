@@ -2,7 +2,7 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 13-04-2020
+ * Create Date: 1-06-2020
  *
  * DJT 2019
  *
@@ -16,9 +16,11 @@ Class users {
 	private $user_id; //int(10)
 	private $firstname; //varchar(30)
 	private $surname; //varchar(30)
+	private $gender; //varchar(11)
 	private $email; //varchar(70)
 	private $password; //varchar(200)
 	private $centre; //int(10)
+	private $centreName; //varchar(200)
 	private $registered_date; //date
 	private $last_login; //timestamp(6)
 	private $previous_login; //timestamp(6)
@@ -26,6 +28,20 @@ Class users {
 	private $access_level; //int(3)
 	private $contactPhone; //varchar(40)
 	private $key; //varchar(200)
+	private $centreCity; //varchar(200)
+	private $centreCountry; //varchar(200)
+	private $centreType; //varchar(22)
+	private $trainee; //int(10)
+	private $endoscopistType; //varchar(11)
+	private $yearsIndependent; //int(10)
+	private $endoscopyTrainingProgramme; //int(10)
+	private $yearsEndoscopy; //int(11)
+	private $specialistInterest; //int(11)
+	private $emailPreferences; //int(11)
+	private $emailAccount; //varchar(11)
+	private $emailServices; //varchar(11)
+	private $emailPartners; //varchar(11)
+	private $bio; //varchar(2000)
 	private $connection;
 
 	public function __construct(){
@@ -36,12 +52,14 @@ Class users {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_users($firstname,$surname,$email,$password,$centre,$registered_date,$last_login,$previous_login,$timezone,$access_level,$contactPhone,$key){
+	public function New_users($firstname,$surname,$gender,$email,$password,$centre,$centreName,$registered_date,$last_login,$previous_login,$timezone,$access_level,$contactPhone,$key,$centreCity,$centreCountry,$centreType,$trainee,$endoscopistType,$yearsIndependent,$endoscopyTrainingProgramme,$yearsEndoscopy,$specialistInterest,$emailPreferences,$emailAccount,$emailServices,$emailPartners,$bio){
 		$this->firstname = $firstname;
 		$this->surname = $surname;
+		$this->gender = $gender;
 		$this->email = $email;
 		$this->password = $password;
 		$this->centre = $centre;
+		$this->centreName = $centreName;
 		$this->registered_date = $registered_date;
 		$this->last_login = $last_login;
 		$this->previous_login = $previous_login;
@@ -49,6 +67,20 @@ Class users {
 		$this->access_level = $access_level;
 		$this->contactPhone = $contactPhone;
 		$this->key = $key;
+		$this->centreCity = $centreCity;
+		$this->centreCountry = $centreCountry;
+		$this->centreType = $centreType;
+		$this->trainee = $trainee;
+		$this->endoscopistType = $endoscopistType;
+		$this->yearsIndependent = $yearsIndependent;
+		$this->endoscopyTrainingProgramme = $endoscopyTrainingProgramme;
+		$this->yearsEndoscopy = $yearsEndoscopy;
+		$this->specialistInterest = $specialistInterest;
+		$this->emailPreferences = $emailPreferences;
+		$this->emailAccount = $emailAccount;
+		$this->emailServices = $emailServices;
+		$this->emailPartners = $emailPartners;
+		$this->bio = $bio;
 	}
 
     /**
@@ -63,9 +95,11 @@ Class users {
 			$this->user_id = $row["user_id"];
 			$this->firstname = $row["firstname"];
 			$this->surname = $row["surname"];
+			$this->gender = $row["gender"];
 			$this->email = $row["email"];
 			$this->password = $row["password"];
 			$this->centre = $row["centre"];
+			$this->centreName = $row["centreName"];
 			$this->registered_date = $row["registered_date"];
 			$this->last_login = $row["last_login"];
 			$this->previous_login = $row["previous_login"];
@@ -73,6 +107,20 @@ Class users {
 			$this->access_level = $row["access_level"];
 			$this->contactPhone = $row["contactPhone"];
 			$this->key = $row["key"];
+			$this->centreCity = $row["centreCity"];
+			$this->centreCountry = $row["centreCountry"];
+			$this->centreType = $row["centreType"];
+			$this->trainee = $row["trainee"];
+			$this->endoscopistType = $row["endoscopistType"];
+			$this->yearsIndependent = $row["yearsIndependent"];
+			$this->endoscopyTrainingProgramme = $row["endoscopyTrainingProgramme"];
+			$this->yearsEndoscopy = $row["yearsEndoscopy"];
+			$this->specialistInterest = $row["specialistInterest"];
+			$this->emailPreferences = $row["emailPreferences"];
+			$this->emailAccount = $row["emailAccount"];
+			$this->emailServices = $row["emailServices"];
+			$this->emailPartners = $row["emailPartners"];
+			$this->bio = $row["bio"];
 		}
 	}
     /**
@@ -93,9 +141,11 @@ $q = "Select * from `users` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["user_id"] = $row["user_id"];
 			$rowReturn[$x]["firstname"] = $row["firstname"];
 			$rowReturn[$x]["surname"] = $row["surname"];
+			$rowReturn[$x]["gender"] = $row["gender"];
 			$rowReturn[$x]["email"] = $row["email"];
 			$rowReturn[$x]["password"] = $row["password"];
 			$rowReturn[$x]["centre"] = $row["centre"];
+			$rowReturn[$x]["centreName"] = $row["centreName"];
 			$rowReturn[$x]["registered_date"] = $row["registered_date"];
 			$rowReturn[$x]["last_login"] = $row["last_login"];
 			$rowReturn[$x]["previous_login"] = $row["previous_login"];
@@ -103,6 +153,20 @@ $q = "Select * from `users` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["access_level"] = $row["access_level"];
 			$rowReturn[$x]["contactPhone"] = $row["contactPhone"];
 			$rowReturn[$x]["key"] = $row["key"];
+			$rowReturn[$x]["centreCity"] = $row["centreCity"];
+			$rowReturn[$x]["centreCountry"] = $row["centreCountry"];
+			$rowReturn[$x]["centreType"] = $row["centreType"];
+			$rowReturn[$x]["trainee"] = $row["trainee"];
+			$rowReturn[$x]["endoscopistType"] = $row["endoscopistType"];
+			$rowReturn[$x]["yearsIndependent"] = $row["yearsIndependent"];
+			$rowReturn[$x]["endoscopyTrainingProgramme"] = $row["endoscopyTrainingProgramme"];
+			$rowReturn[$x]["yearsEndoscopy"] = $row["yearsEndoscopy"];
+			$rowReturn[$x]["specialistInterest"] = $row["specialistInterest"];
+			$rowReturn[$x]["emailPreferences"] = $row["emailPreferences"];
+			$rowReturn[$x]["emailAccount"] = $row["emailAccount"];
+			$rowReturn[$x]["emailServices"] = $row["emailServices"];
+			$rowReturn[$x]["emailPartners"] = $row["emailPartners"];
+			$rowReturn[$x]["bio"] = $row["bio"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -127,9 +191,11 @@ $q = "Select * from `users` WHERE `id` = $key";
 			$rowReturn[$x]["user_id"] = $row["user_id"];
 			$rowReturn[$x]["firstname"] = $row["firstname"];
 			$rowReturn[$x]["surname"] = $row["surname"];
+			$rowReturn[$x]["gender"] = $row["gender"];
 			$rowReturn[$x]["email"] = $row["email"];
 			$rowReturn[$x]["password"] = $row["password"];
 			$rowReturn[$x]["centre"] = $row["centre"];
+			$rowReturn[$x]["centreName"] = $row["centreName"];
 			$rowReturn[$x]["registered_date"] = $row["registered_date"];
 			$rowReturn[$x]["last_login"] = $row["last_login"];
 			$rowReturn[$x]["previous_login"] = $row["previous_login"];
@@ -137,6 +203,20 @@ $q = "Select * from `users` WHERE `id` = $key";
 			$rowReturn[$x]["access_level"] = $row["access_level"];
 			$rowReturn[$x]["contactPhone"] = $row["contactPhone"];
 			$rowReturn[$x]["key"] = $row["key"];
+			$rowReturn[$x]["centreCity"] = $row["centreCity"];
+			$rowReturn[$x]["centreCountry"] = $row["centreCountry"];
+			$rowReturn[$x]["centreType"] = $row["centreType"];
+			$rowReturn[$x]["trainee"] = $row["trainee"];
+			$rowReturn[$x]["endoscopistType"] = $row["endoscopistType"];
+			$rowReturn[$x]["yearsIndependent"] = $row["yearsIndependent"];
+			$rowReturn[$x]["endoscopyTrainingProgramme"] = $row["endoscopyTrainingProgramme"];
+			$rowReturn[$x]["yearsEndoscopy"] = $row["yearsEndoscopy"];
+			$rowReturn[$x]["specialistInterest"] = $row["specialistInterest"];
+			$rowReturn[$x]["emailPreferences"] = $row["emailPreferences"];
+			$rowReturn[$x]["emailAccount"] = $row["emailAccount"];
+			$rowReturn[$x]["emailServices"] = $row["emailServices"];
+			$rowReturn[$x]["emailPartners"] = $row["emailPartners"];
+			$rowReturn[$x]["bio"] = $row["bio"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -412,6 +492,13 @@ $q = "UPDATE `users` SET $implodeArray WHERE `user_id` = '$this->user_id'";
 	}
 
 	/**
+	 * @return gender - varchar(11)
+	 */
+	public function getgender(){
+		return $this->gender;
+	}
+
+	/**
 	 * @return email - varchar(70)
 	 */
 	public function getemail(){
@@ -430,6 +517,13 @@ $q = "UPDATE `users` SET $implodeArray WHERE `user_id` = '$this->user_id'";
 	 */
 	public function getcentre(){
 		return $this->centre;
+	}
+
+	/**
+	 * @return centreName - varchar(200)
+	 */
+	public function getcentreName(){
+		return $this->centreName;
 	}
 
 	/**
@@ -482,6 +576,104 @@ $q = "UPDATE `users` SET $implodeArray WHERE `user_id` = '$this->user_id'";
 	}
 
 	/**
+	 * @return centreCity - varchar(200)
+	 */
+	public function getcentreCity(){
+		return $this->centreCity;
+	}
+
+	/**
+	 * @return centreCountry - varchar(200)
+	 */
+	public function getcentreCountry(){
+		return $this->centreCountry;
+	}
+
+	/**
+	 * @return centreType - varchar(22)
+	 */
+	public function getcentreType(){
+		return $this->centreType;
+	}
+
+	/**
+	 * @return trainee - int(10)
+	 */
+	public function gettrainee(){
+		return $this->trainee;
+	}
+
+	/**
+	 * @return endoscopistType - varchar(11)
+	 */
+	public function getendoscopistType(){
+		return $this->endoscopistType;
+	}
+
+	/**
+	 * @return yearsIndependent - int(10)
+	 */
+	public function getyearsIndependent(){
+		return $this->yearsIndependent;
+	}
+
+	/**
+	 * @return endoscopyTrainingProgramme - int(10)
+	 */
+	public function getendoscopyTrainingProgramme(){
+		return $this->endoscopyTrainingProgramme;
+	}
+
+	/**
+	 * @return yearsEndoscopy - int(11)
+	 */
+	public function getyearsEndoscopy(){
+		return $this->yearsEndoscopy;
+	}
+
+	/**
+	 * @return specialistInterest - int(11)
+	 */
+	public function getspecialistInterest(){
+		return $this->specialistInterest;
+	}
+
+	/**
+	 * @return emailPreferences - int(11)
+	 */
+	public function getemailPreferences(){
+		return $this->emailPreferences;
+	}
+
+	/**
+	 * @return emailAccount - varchar(11)
+	 */
+	public function getemailAccount(){
+		return $this->emailAccount;
+	}
+
+	/**
+	 * @return emailServices - varchar(11)
+	 */
+	public function getemailServices(){
+		return $this->emailServices;
+	}
+
+	/**
+	 * @return emailPartners - varchar(11)
+	 */
+	public function getemailPartners(){
+		return $this->emailPartners;
+	}
+
+	/**
+	 * @return bio - varchar(2000)
+	 */
+	public function getbio(){
+		return $this->bio;
+	}
+
+	/**
 	 * @param Type: int(10)
 	 */
 	public function setuser_id($user_id){
@@ -503,6 +695,13 @@ $q = "UPDATE `users` SET $implodeArray WHERE `user_id` = '$this->user_id'";
 	}
 
 	/**
+	 * @param Type: varchar(11)
+	 */
+	public function setgender($gender){
+		$this->gender = $gender;
+	}
+
+	/**
 	 * @param Type: varchar(70)
 	 */
 	public function setemail($email){
@@ -521,6 +720,13 @@ $q = "UPDATE `users` SET $implodeArray WHERE `user_id` = '$this->user_id'";
 	 */
 	public function setcentre($centre){
 		$this->centre = $centre;
+	}
+
+	/**
+	 * @param Type: varchar(200)
+	 */
+	public function setcentreName($centreName){
+		$this->centreName = $centreName;
 	}
 
 	/**
@@ -570,7 +776,114 @@ $q = "UPDATE `users` SET $implodeArray WHERE `user_id` = '$this->user_id'";
 	 */
 	public function setkey($key){
 		$this->key = $key;
-    }
+	}
+
+	/**
+	 * @param Type: varchar(200)
+	 */
+	public function setcentreCity($centreCity){
+		$this->centreCity = $centreCity;
+	}
+
+	/**
+	 * @param Type: varchar(200)
+	 */
+	public function setcentreCountry($centreCountry){
+		$this->centreCountry = $centreCountry;
+	}
+
+	/**
+	 * @param Type: varchar(22)
+	 */
+	public function setcentreType($centreType){
+		$this->centreType = $centreType;
+	}
+
+	/**
+	 * @param Type: int(10)
+	 */
+	public function settrainee($trainee){
+		$this->trainee = $trainee;
+	}
+
+	/**
+	 * @param Type: varchar(11)
+	 */
+	public function setendoscopistType($endoscopistType){
+		$this->endoscopistType = $endoscopistType;
+	}
+
+	/**
+	 * @param Type: int(10)
+	 */
+	public function setyearsIndependent($yearsIndependent){
+		$this->yearsIndependent = $yearsIndependent;
+	}
+
+	/**
+	 * @param Type: int(10)
+	 */
+	public function setendoscopyTrainingProgramme($endoscopyTrainingProgramme){
+		$this->endoscopyTrainingProgramme = $endoscopyTrainingProgramme;
+	}
+
+	/**
+	 * @param Type: int(11)
+	 */
+	public function setyearsEndoscopy($yearsEndoscopy){
+		$this->yearsEndoscopy = $yearsEndoscopy;
+	}
+
+	/**
+	 * @param Type: int(11)
+	 */
+	public function setspecialistInterest($specialistInterest){
+		$this->specialistInterest = $specialistInterest;
+	}
+
+	/**
+	 * @param Type: int(11)
+	 */
+	public function setemailPreferences($emailPreferences){
+		$this->emailPreferences = $emailPreferences;
+	}
+
+	/**
+	 * @param Type: varchar(11)
+	 */
+	public function setemailAccount($emailAccount){
+		$this->emailAccount = $emailAccount;
+	}
+
+	/**
+	 * @param Type: varchar(11)
+	 */
+	public function setemailServices($emailServices){
+		$this->emailServices = $emailServices;
+	}
+
+	/**
+	 * @param Type: varchar(11)
+	 */
+	public function setemailPartners($emailPartners){
+		$this->emailPartners = $emailPartners;
+	}
+
+	/**
+	 * @param Type: varchar(2000)
+	 */
+	public function setbio($bio){
+		$this->bio = $bio;
+	}
+
+    /**
+     * Close mysql connection
+     */
+	public function endusers(){
+		$this->connection->CloseMysql();
+	}
+
+
     
     public function isAdmin ($userid){
 		
@@ -640,6 +953,55 @@ $q = "UPDATE `users` SET $implodeArray WHERE `user_id` = '$this->user_id'";
 		
 		
 	}
+
+	public function getUserAccessLevelText ($userid) {
+		
+		$q = "SELECT `access_level` FROM `users` WHERE `user_id` = $userid";
+
+		//echo $q;
+
+		$result = $this->connection->RunQuery($q);
+
+        $nRows = $result->rowCount();
+            if ($nRows > 0) {
+			
+			while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+				$accesslevel = $row['access_level'];
+				
+				
+	
+			}
+			
+			if ($accesslevel == 1){
+
+				$accessLevelText = 'GIEQs.com Superuser';
+			}elseif ($accesslevel == 2){
+
+				$accessLevelText = 'GIEQs.com Creator';
+			}elseif ($accesslevel == 3){
+
+				$accessLevelText = 'GIEQs.com Staff, no creator priveledge';
+			}elseif ($accesslevel == 4){
+
+				$accessLevelText = 'GIEQs Pro Member';
+			}elseif ($accesslevel == 5){
+				
+				$accessLevelText = 'GIEQS Standard Member';
+				
+			}
+
+			return $accessLevelText;
+			
+		}else{
+			
+			return FALSE;	
+		
+		}
+		
+		
+		
+	}
 	
 	
 	public function getUsers (){
@@ -699,6 +1061,34 @@ $q = "UPDATE `users` SET $implodeArray WHERE `user_id` = '$this->user_id'";
 			return null;
 		}
 	}
+
+	public function getUserInitials ($id){
+		
+		$q = "SELECT `firstname`, `surname` FROM `users` WHERE `user_id` = $id";
+
+
+		$result = $this->connection->RunQuery($q);
+
+        $nRows = $result->rowCount();
+            if ($nRows > 0) {
+
+			
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+				
+				$firstname = $row['firstname'];
+				$surname = $row['surname'];
+				
+				$user = $firstname[0] . '' . $surname[0];
+				
+				
+			}
+		
+			return $user;
+		}else{
+			
+			return null;
+		}
+	}
 	
 	public function generateRandomString($length) {
 	    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -713,8 +1103,7 @@ $q = "UPDATE `users` SET $implodeArray WHERE `user_id` = '$this->user_id'";
     /**
      * Close mysql connection
      */
-	public function endusers(){
-		$this->connection->CloseMysql();
-	}
+	
 
 }
+

@@ -22,6 +22,7 @@ function ne($v) {
 
 
 //$debug = true;
+//echo 'hello';
 
 //$connection = new DataBaseMysql();
 
