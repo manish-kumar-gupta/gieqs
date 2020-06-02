@@ -162,6 +162,7 @@ function JSONStraightDataQuery (table, query, outputFormat){
 	
 	dataObject.query = query;
 	
+
 	//var datastring = 'table='+ table;
 	
 	//datastring = datastring + '&outputFormat=' + outputFormat;

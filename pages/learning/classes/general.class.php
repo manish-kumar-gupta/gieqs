@@ -4016,6 +4016,32 @@ return $arr;
 		}
 
 	}
+
+	public function getCountryName ($id){
+		
+		$q = "SELECT `CountryName`
+		FROM `countries` WHERE `CountryID` = $id";
+
+		//echo $q;
+
+		$result = $this->connection->RunQuery($q);
+
+		if ($result->num_rows == 1){
+
+			
+			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+				
+				$countryName = $row['CountryName'];
+				
+				
+			}
+		
+			return $countryName;
+		}else{
+			
+			return null;
+		}
+	}
 	
 	
 

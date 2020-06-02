@@ -333,8 +333,10 @@ top: -20vh;
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="form-control-label">Institution country</label>
-                      <input name="centreCountry" class="form-control" type="text"
-                        placeholder="Enter your institution country" value="<?php echo $users->getcentreCountry();?>">
+                      <select id="centreCountry" name="centreCountry" class="form-control" tabindex="-1" aria-hidden="true">
+                        <option hidden disabled>select a country...</option>
+                        <option value="<?php $country = $users->getcentreCountry(); echo $country;?>" selected="selected"><?php echo $general->getCountryName($country);?></option>
+                      </select>
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -609,7 +611,31 @@ top: -20vh;
 
     $(document).ready(function () {
 
+      $('#centreCountry').select2({
 
+        dropdownParent: $("#userForm"),
+
+        ajax: {
+        //url: siteRoot + 'assets/scripts/select2simple.php?table=Delegate&field=firstname',
+        url: siteRoot + 'assets/scripts/select2query.php',
+        data: function (params) {
+            var query = {
+                search: params.term,
+                query: '`id`, `CountryName` FROM `countries`',
+                fieldRequired: 'CountryName',
+            }
+
+            // Query parameters will be 
+            console.log(query);
+            return query;
+        },
+        dataType: 'json'
+        // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
+        }
+
+
+
+        });
 
       $(document).on('click', '#submit-userForm', function () {
 

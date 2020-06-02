@@ -227,16 +227,16 @@ top: -20vh;
                 <a href="recover.html" class="btn btn-sm btn-secondary">I forgot my password</a>
               </div>
             </form>
-            <!-- Username -->
-            <div class="mt-5 pt-5 delimiter-top">
+            <!-- Username TODO ADD LATER-->
+            <!-- <div class="mt-5 pt-5 delimiter-top">
               <div class="actions-toolbar py-2 mb-4">
                 <h5 class="mb-1">Global User Settings can appear here
                 </h5>
                 <p class="text-sm text-muted mb-0">Checkboxes for global settings.</p>
               </div>
-              <!-- Button trigger modal -->
+              <!-- Button trigger modal
               <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-change-username">Save</button>
-              <!-- Modal -->
+              <!-- Modal 
               <div class="modal fade" id="modal-change-username" tabindex="-1" role="dialog" aria-labelledby="modal-change-username" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                   <form>
@@ -282,7 +282,7 @@ top: -20vh;
                   </form>
                 </div>
               </div>
-            </div>
+            </div> -->
             <!-- Delete -->
             <div class="mt-5 pt-5 delimiter-top">
               <div class="actions-toolbar py-2 mb-4">
@@ -364,6 +364,31 @@ top: -20vh;
 
         var lesionUnderEdit = <?php echo $userid;?>;
 
+        function updatePassword(){
+
+          //userid is lesionUnderEdit
+
+          //go to php script with an object from the form
+
+          var data = getFormDatav2($('#passwordChange'), 'users', 'user_id', lesionUnderEdit, 1);	
+
+            //TODO add identifier and identifierKey
+
+            console.log(data);
+
+            data = JSON.stringify(data);
+
+            console.log(data);
+
+            return $.ajax({
+              url: siteRoot + "/assets/scripts/changePassword.php",
+              type: "POST",
+              contentType: "application/json",
+              data: data,
+                });
+
+        }
+
         function submituserDeleteForm() {
 
 //pushDataFromFormAJAX (form, table, identifierKey, identifier, updateType)
@@ -439,7 +464,7 @@ console.log('got to the submit function');
         $(document).ready(function () {
 
 
-
+          
 
           $(document).on('click', '#delete', function () {
 
@@ -449,7 +474,7 @@ console.log('got to the submit function');
 
           });
           
-          $(document).on('click', '#passwordChangeButton', function () {
+          $(document).on('click', '#passwordChangeButton', function (event) {
 
             event.preventDefault();
 
@@ -609,7 +634,7 @@ submitHandler: function (form) {
 
   //submitPreRegisterForm();
 
-  submituserDeleteForm();
+  updatePassword();
 
   //TODO submit changes
   //TODO reimport the array at the top
