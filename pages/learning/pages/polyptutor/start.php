@@ -345,7 +345,8 @@ background-color: rgb(238, 194, 120);
 				}*/var dataToSend = {
 
                     tags: tags,
-                    requiredTagCategories: requiredTagCategories
+                    requiredTagCategories: requiredTagCategories,
+                    active: activeStatus,
 
                     }
 
@@ -439,6 +440,7 @@ background-color: rgb(238, 194, 120);
                         loadedRequired: loadedRequired,
                         requiredTagCategories: requiredTagCategories,
                         referringUrl: $('#escaped_url').text(), active: activeStatus,
+
 
 
                     }

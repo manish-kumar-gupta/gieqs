@@ -21,10 +21,10 @@ function ne($v) {
 
 
 
-$debug = false;
+$debug = true;
 //echo 'hello';
 
-*/
+
 
 $data = json_decode(file_get_contents('php://input'), true);
 
@@ -45,6 +45,18 @@ if (count($data) > 0){
 		$GLOBALS[$key] = $value;
 
 	}*/
+
+	//check the user matching the passed user_id is making the request [happens in interpretuseraccess]
+
+	//check the old password against the db user_id
+
+	//check the old password and the new are not the same
+
+	//check the new password is > 6 characters
+
+	//write the new password to the db
+
+	//come back with reply
 
 	if ($debug){
 	print_r($GLOBALS);

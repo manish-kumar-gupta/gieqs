@@ -342,18 +342,17 @@ top: -20vh;
     <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
     <!-- <script src="assets/js/purpose.core.js"></script> -->
     <!-- Page JS -->
-    <script src="assets/libs/swiper/dist/js/swiper.min.js"></script>
+    <script src="<?php echo BASE_URL;?>/assets/libs/swiper/dist/js/swiper.min.js"></script>
     <script src="<?php echo BASE_URL;?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
-    <script src="assets/libs/typed.js/lib/typed.min.js"></script>
-    <script src="assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script>
-    <script src="assets/libs/jquery-countdown/dist/jquery.countdown.min.js"></script>
+    <script src="<?php echo BASE_URL;?>/assets/libs/typed.js/lib/typed.min.js"></script>
+    <script src="<?php echo BASE_URL;?>/assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script>
+    <script src="<?php echo BASE_URL;?>/assets/libs/jquery-countdown/dist/jquery.countdown.min.js"></script>
     <!-- Google maps -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBuyKngB9VC3zgY_uEB-DKL9BKYMekbeY"></script>
     <!-- Purpose JS -->
-    <script src="../../assets/js/purpose.js"></script>
+    <script src="<?php echo BASE_URL;?>/assets/js/purpose.js"></script>
     <!-- <script src="assets/js/generaljs.js"></script> -->
-    <script src="assets/js/demo.js"></script>
     <script>
+
     var videoPassed = $("#id").text();
                     </script>
 
@@ -368,6 +367,7 @@ top: -20vh;
 
           //userid is lesionUnderEdit
 
+          console.log('updatePassword chunk');
           //go to php script with an object from the form
 
           var data = getFormDatav2($('#passwordChange'), 'users', 'user_id', lesionUnderEdit, 1);	
@@ -380,7 +380,7 @@ top: -20vh;
 
             console.log(data);
 
-            return $.ajax({
+           return $.ajax({
               url: siteRoot + "/assets/scripts/changePassword.php",
               type: "POST",
               contentType: "application/json",
@@ -555,99 +555,101 @@ console.log('got to the submit function');
 
           $("#passwordChange").validate({
 
-invalidHandler: function (event, validator) {
-  var errors = validator.numberOfInvalids();
-  console.log("there were " + errors + " errors");
-  if (errors) {
-    var message = errors == 1 ?
-      "1 field contains errors. It has been highlighted" :
-      +errors + " fields contain errors. They have been highlighted";
+          invalidHandler: function (event, validator) {
+          var errors = validator.numberOfInvalids();
+          console.log("there were " + errors + " errors");
+          if (errors) {
+          var message = errors == 1 ?
+          "1 field contains errors. It has been highlighted" :
+          +errors + " fields contain errors. They have been highlighted";
 
 
-    $('#error').text(message);
-    //$('div.error span').addClass('form-text text-danger');
-    //$('#errorWrapper').show();
+          $('#error').text(message);
+          //$('div.error span').addClass('form-text text-danger');
+          //$('#errorWrapper').show();
 
-    $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function () {
-      $("#errorWrapper").slideUp(500);
-    });
-  } else {
-    $('#errorWrapper').hide();
-  }
-},
-ignore: [],
-rules: {
-
-
-  oldPassword: {
-    required: true,
-    
-
-  },
-  newPassword: {
-    required: true,
-    minlength: 6,
-    
-
-  },
-  newPasswordConfirm: {
-                    
-                    equalTo: "#newPassword", 
-                
+          $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function () {
+          $("#errorWrapper").slideUp(500);
+          });
+          } else {
+          $('#errorWrapper').hide();
+          }
+          },
+          ignore: [],
+          rules: {
 
 
-  },
-  messages: {
+                oldPassword: {
+                required: true,
+
+
+                },
+                newPassword: {
+                required: true,
+                minlength: 6,
+
+
+                },
+                newPasswordConfirm: {
+
+                equalTo: "#newPassword",
+
+
+
+                },
+          },
+          messages: {
 
 
 oldPassword: {
-  required: 'Please enter your old password',
-  
+required: 'Please enter your old password',
+
 
 },
 newPassword: {
-  required: 'Please enter a new password',
-  minlength: 'Please use at least 6 characters'
-  
+required: 'Please enter a new password',
+minlength: 'Please use at least 6 characters'
+
 
 },
 newPasswordConfirm: {
-                  
-                  equalTo: "The new passwords should match", 
-              
 
-
-},
-
-
-
-
-
-
-
-
+equalTo: "The new passwords should match",
 
 
 
 },
-submitHandler: function (form) {
-
-  //submitPreRegisterForm();
-
-  updatePassword();
-
-  //TODO submit changes
-  //TODO reimport the array at the top
-  //TODO redraw the table
-
-
-
-}
 
 
 
 
-}
+
+
+
+
+
+
+
+},
+          
+          submitHandler: function (form) {
+
+          //submitPreRegisterForm();
+
+          updatePassword();
+
+          //TODO submit changes
+          //TODO reimport the array at the top
+          //TODO redraw the table
+
+
+
+          },
+
+
+
+
+          
           });
 
 

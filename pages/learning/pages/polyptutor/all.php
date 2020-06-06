@@ -340,7 +340,8 @@ background-color: rgb(238, 194, 120);
 				}*/var dataToSend = {
 
                     tags: tags,
-                    requiredTagCategories: requiredTagCategories
+                    requiredTagCategories: requiredTagCategories,
+                    active: activeStatus,
 
                     }
 
