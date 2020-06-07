@@ -2299,15 +2299,45 @@ $(this).append(' ');
                 //console.log(chapterNumber);
                 //TODO FIX TIMINGS HERE
 
-                var minutes = Math.floor(chapterTimeFrom / 60);
+                //var minutes = Math.floor(chapterTimeFrom / 60);
 
-                var seconds = ((chapterTimeFrom - (minutes * 60)) / 60) * 100;
+                //var seconds = ((chapterTimeFrom - (minutes * 60)) / 60) * 100;
 
-                function str_pad_left(string,pad,length) {
-                    return (new Array(length+1).join(pad)+string).slice(-length);
+                function secondsToHmsReturnMin(d) {
+                    d = Number(d);
+                    var h = Math.floor(d / 3600);
+                    var m = Math.floor(d % 3600 / 60);
+                    var s = Math.floor(d % 3600 % 60);
+
+                    var hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : "";
+                    var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minutes, ") : "";
+                    var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
+                    return m; 
                 }
 
-                var finalTime = str_pad_left(minutes,'0',2)+':'+str_pad_left(seconds,'0',2);
+                function secondsToHmsReturnSec(d) {
+                    d = Number(d);
+                    var h = Math.floor(d / 3600);
+                    var m = Math.floor(d % 3600 / 60);
+                    var s = Math.floor(d % 3600 % 60);
+
+                    var hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : "";
+                    var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minutes, ") : "";
+                    var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
+                    return s; 
+                }
+
+                /* function str_pad_left(string,pad,length) {
+                    return (new Array(length+1).join(pad)+string).slice(-length);
+                } */
+
+                //var finalTime = str_pad_left(minutes,'0',2)+':'+str_pad_left(seconds,'0',2);
+
+                var minutes = secondsToHmsReturnMin(chapterTimeFrom);
+
+                var seconds = secondsToHmsReturnSec(chapterTimeFrom);
+
+                var finalTime = minutes + ':' + seconds ;
 
 
                 chapters[chapterNumber] = {"name" : chapterName, "timeFrom" : finalTime, };
