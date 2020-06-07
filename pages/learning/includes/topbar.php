@@ -123,6 +123,9 @@
                   </a>
                 </div>
               </li>
+              <li class="nav-item dropdown">
+                <span class="nav-link">Logged In</span>
+              </li>
             
               <?php
 

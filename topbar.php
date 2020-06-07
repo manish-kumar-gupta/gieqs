@@ -103,21 +103,18 @@
 
             ?>
             
-              <li class="nav-item dropdown">
+            <li class="nav-item dropdown">
                 <a class="nav-link pr-0" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="fas fa-user-circle"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
                   
                   <h6 class="dropdown-header"><?php echo $_SESSION['firstname'] . ' ' . $_SESSION['surname']?></h6>
-                  <a class="dropdown-item" href="#">
+                  <a class="dropdown-item" href="<?php echo BASE_URL . '/pages/learning/pages/account/profile.php'?>">
                     <i class="fas fa-user"></i>Account
                   </a>
-                  <a class="dropdown-item" href="#">
-                    <span class="float-right badge badge-primary">0</span>
-                    <i class="fas fa-envelope"></i>Messages
-                  </a>
-                  <a class="dropdown-item" href="#">
+                 
+                  <a class="dropdown-item" href="<?php echo BASE_URL . '/pages/learning/pages/account/settings.php'?>">
                     <i class="fas fa-cog"></i>Settings
                   </a>
                   <div class="dropdown-divider" role="presentation"></div>
@@ -125,6 +122,9 @@
                     <i class="fas fa-sign-out-alt"></i>Sign out
                   </a>
                 </div>
+              </li>
+              <li class="nav-item dropdown">
+                <span class="nav-link">Logged In</span>
               </li>
             
               <?php

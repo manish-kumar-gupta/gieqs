@@ -989,6 +989,10 @@ $q = "UPDATE `users` SET $implodeArray WHERE `user_id` = '$this->user_id'";
 				
 				$accessLevelText = 'GIEQS Standard Member';
 				
+			}elseif ($accesslevel == 6){
+				
+				$accessLevelText = 'GIEQS Basic Member';
+				
 			}
 
 			return $accessLevelText;

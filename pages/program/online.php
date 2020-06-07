@@ -29,6 +29,10 @@
 
     <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.css">
+    <script src="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.js"></script>
+
+
 
     
 
@@ -197,6 +201,10 @@ top: -20vh;
             <a href="https://vimeo.com/422871506" class="btn btn-icon btn-group-nav bg-gieqsGold shadow btn-neutral mx-2" data-fancybox>
                 <span class="btn-inner--icon text-dark"><i class="fas fa-eye"></i></span>
                 <span class="animated bounce delay-2s btn-inner--text text-dark d-none d-inline-block">Sneak Preview!</span>
+              </a>
+              <a data-toggle="modal" data-target="#registerInterest" class="btn btn-icon btn-group-nav pointer bg-gieqsGold shadow btn-neutral mx-2" data-fancybox>
+                <span class="btn-inner--icon text-dark"><i class="fas fa-eye"></i></span>
+                <span class="animated bounce delay-2s btn-inner--text text-dark d-none d-inline-block">Sign Up</span>
               </a>
             
         </div>
@@ -907,6 +915,93 @@ top: -20vh;
       </div>
     </section>
   </div>
+  <div class="modal fade" id="registerInterest" tabindex="-1" role="dialog" aria-labelledby="registerInterestLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerInterestLabel" style="color: rgb(238, 194, 120);">Sign-up for GIEQs Online!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="text-white" aria-hidden="false">&times;</span>
+                    </button>
+                </div>
+ 
+                <div class="modal-body">
+                    <span class="h6">This will only take 2 seconds.</span><span><br/>We need your email address and a password to keep track of your learning aims and objectives.  Thereafter you can choose what further information you share with us</span>
+                    <form id="NewUserForm" class="mt-3">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="form-control-label">First name</label>
+                            <input name="firstname" class="form-control" type="text" placeholder="Enter your first name" value="">
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="form-control-label">Last name</label>
+                            <input name="surname" class="form-control" type="text" placeholder="Also your last name" value="">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row align-items-center">
+                        
+                        <div class="col-md-6">
+                          <div class="form-group focused">
+                            <label class="form-control-label">Gender</label>
+                            <select name="gender" class="form-control"  aria-hidden="true">
+                            <option hidden>select gender
+                            </option>  
+                            <option value="1" >Female</option>
+                              <option value="2"> Male</option>
+                              <option value="3">Rather not say</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="form-control-label">Email (will be your user id)</label>
+                            <input name="email" class="form-control" type="email" placeholder="name@example.com" value="">
+        <!--                     <small class="form-text text-muted mt-2">This is the main email address that we'll send notifications to. <a href="account-notifications.html">Manage your notifications</a> in order to control what we send.</small>
+         -->                  </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="form-control-label">Password</label>
+                            <input id="password" name="password" class="form-control" type="password" placeholder="Enter your password" value="">
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="form-control-label">Password again</label>
+                            <input name="passwordAgain" class="form-control" type="password" placeholder="password again" value="">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="my-4">
+                        <div class="custom-control custom-checkbox mb-3">
+                          <input type="checkbox" name="checkterms" class="custom-control-input" id="checkterms">
+                          <label class="custom-control-label" for="checkterms">I agree to the <a href="#">terms and conditions</a></label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" name="checkprivacy" class="custom-control-input" id="checkprivacy">
+                          <label class="custom-control-label" for="checkprivacy">I agree to the <a href="#">privacy policy</a></label>
+                        </div>
+                      </div>
+                      
+          </form>
+                </div>
+                <div class="modal-footer">
+                  <button id="submitPreRegister" type="button" class="btn-small text-dark bg-gieqsGold">Sign up</button>
+                  <button id="login" type="button" class="btn-small btn-secondary">I already have a login</button>
+
+
+                   
+                </div>
+            </div>
+        </div>
+    </div>
 
     <?php require BASE_URI . '/footer.php';?>
 
@@ -928,77 +1023,190 @@ top: -20vh;
     var videoPassed = $("#id").text();
                     </script>
 
-    <script src=<?php echo BASE_URL . "/pages/learning/includes/endowiki-player.js"?>></script>
+    
     <script>
         var signup = $('#signup').text();
 
         function submitPreRegisterForm() {
 
-            var esdLesionObject = pushDataFromFormAJAX("pre-register", "preRegister", "id", null,
-            "0"); //insert new object
 
-            esdLesionObject.done(function (data) {
+//userid is lesionUnderEdit
 
-                console.log(data);
+//console.log('updatePassword chunk');
+//go to php script with an object from the form
 
-                var dataTrim = data.trim();
+var data = getFormDatav2($('#NewUserForm'), 'users', 'user_id', null, 1);
 
-                console.log(dataTrim);
+//TODO add identifier and identifierKey
 
-                if (dataTrim) {
+console.log(data);
 
-                    try {
+data = JSON.stringify(data);
 
-                        dataTrim = parseInt(dataTrim);
+console.log(data);
 
-                        if (dataTrim > 0) {
+disableFormInputs('NewUserForm');
 
-                            alert("Thank you for your details.  We will keep you updated on everything GIEQs.");
-                            $("[data-dismiss=modal]").trigger({
-                                type: "click"
-                            });
+var passwordChange = $.ajax({
+url: siteRoot + "/assets/scripts/newUser.php",
+type: "POST",
+contentType: "application/json",
+data: data,
+});
 
-                        }
-
-                    } catch (error) {
-
-                        //data not entered
-                        console.log('error parsing integer');
-                        $("[data-dismiss=modal]").trigger({
-                            type: "click"
-                        });
+passwordChange.done(function(data){
 
 
-                    }
+Swal.fire({
+type: 'info',
+title: 'Create Account',
+text: data,
+background: '#162e4d',
+confirmButtonText: 'ok',
+confirmButtonColor: 'rgb(238, 194, 120)',
 
-                    //$('#success').text("New esdLesion no "+data+" created");
-                    //$('#successWrapper').show();
-                    /* $("#successWrapper").fadeTo(4000, 500).slideUp(500, function() {
-                      $("#successWrapper").slideUp(500);
-                    });
-                    edit = 1;
-                    $("#id").text(data);
-                    esdLesionPassed = data;
-                    fillForm(data); */
+}).then((result) => {
+
+  resetFormElements('NewUserForm');
+  enableFormInputs('NewUserForm');
+  $('#registerInterest').modal('hide');
+
+})
 
 
 
+})
 
-                } else {
-
-                    alert("No data inserted, try again");
-
-                }
-
-
-            });
-        }
+}
 
         $(document).ready(function () {
 
             
 
+          if (videoPassed == '2456') {
 
+$('#registerInterest').modal('show');
+
+}
+
+$(document).on('click', '#submitPreRegister', function() {
+
+event.preventDefault();
+$('#NewUserForm').submit();
+
+})
+
+$(document).on('click', '#login', function() {
+
+event.preventDefault();
+window.location.href = siteRoot + '/pages/authentication/login.php';
+
+
+})
+
+$("#NewUserForm").validate({
+
+invalidHandler: function(event, validator) {
+    var errors = validator.numberOfInvalids();
+    console.log("there were " + errors + " errors");
+    if (errors) {
+        var message = errors == 1 ?
+            "1 field contains errors. It has been highlighted" :
+            +errors + " fields contain errors. They have been highlighted";
+
+
+        $('#error').text(message);
+        //$('div.error span').addClass('form-text text-danger');
+        //$('#errorWrapper').show();
+
+        $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function() {
+            $("#errorWrapper").slideUp(500);
+        });
+    } else {
+        $('#errorWrapper').hide();
+    }
+},
+rules: {
+  firstname: {
+            required: true,
+
+          },
+
+
+
+          surname: {
+            required: true,
+
+          },
+
+          gender: {
+            required: true,
+
+          },
+
+
+          email: {
+            required: true,
+            email: true,
+
+          },
+
+          password: {
+            required: true,
+            minlength: 6,
+
+          },
+
+          passwordAgain: {
+            equalTo: "#password",
+            
+
+          },
+
+          checkterms:{
+
+            required: true,
+
+          }, 
+          checkprivacy:{
+
+            required:true
+          }
+
+
+
+},messages: {
+
+
+
+password: {
+required: 'Please enter a password',
+minlength: 'Please use at least 6 characters'
+
+
+},
+passwordAgain: {
+
+equalTo: "The new passwords should match",
+
+
+
+},
+},
+submitHandler: function(form) {
+
+    submitPreRegisterForm();
+
+    //console.log("submitted form");
+
+
+
+}
+
+
+
+
+});
             /* $(document).click(function(event) { 
                 $target = $(event.target);
                 

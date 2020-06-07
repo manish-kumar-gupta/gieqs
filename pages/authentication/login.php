@@ -178,7 +178,7 @@ background-color: rgb(238, 194, 120);
                           <label class="form-control-label">Password</label>
                         </div>
                         <div class="mb-2">
-                          <a href="#!" class="small text-muted text-underline--dashed border-primary">Lost password?</a>
+                          <a href="<?php echo BASE_URL . '/pages/authentication/recover.php';?>" class="small text-muted text-underline--dashed border-primary" tabindex="-1">Lost password?</a>
                         </div>
                       </div>
                       <div class="input-group input-group-merge">
@@ -199,13 +199,13 @@ background-color: rgb(238, 194, 120);
                       </button></div>
                   </form>
                 </div>
-                <div class="card-footer px-md-5"><small>Registration is currently by invitation only</small>
-                  <!-- <a href="#" class="small font-weight-bold">Create account</a> --></div>
+                <div class="card-footer px-md-5"><small>Don't yet have an account? You can now </small>
+             <a href="<?php echo BASE_URL . '/pages/program/online.php?id=2456';?>" class="small font-weight-bold">create an account</a></div>
               </div>
             </div>
             <div class="col-lg-5 order-lg-1 d-none d-lg-block">
               <blockquote>
-                <h3 class="h2 mb-4">We can do everyday endoscopy better.</h3>
+                <h3 class="h2 mb-4">"We can do everyday endoscopy better"</h3>
                 <footer>— <cite class="text-lg">GIEQs 2020</cite></footer>
               </blockquote>
             </div>
@@ -250,9 +250,16 @@ function login(){
 
 	request.done(function(data){
 			   
-			   //console.log(data);
-			   
-			   if (data == 1){
+         //console.log(data);
+         
+         if (data == 3){
+
+          $('#loginError').show().html('Please use the code sent by email to login');
+				   setTimeout(
+				   function() 
+				   {  $('#loginError').hide();  }, 8000);
+
+         }else if (data == 1){
 					
 					   
 				  $('#loginError').addClass('text-success').show().text('Successful Login');

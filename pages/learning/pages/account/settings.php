@@ -15,7 +15,7 @@
 
       //$openaccess = 1;
 
-      $requiredUserLevel = 4;
+      $requiredUserLevel = 6;
 
 
       require BASE_URI . '/head.php';
@@ -365,27 +365,46 @@ top: -20vh;
 
         function updatePassword(){
 
-          //userid is lesionUnderEdit
+        //userid is lesionUnderEdit
 
-          console.log('updatePassword chunk');
-          //go to php script with an object from the form
+        //console.log('updatePassword chunk');
+        //go to php script with an object from the form
 
-          var data = getFormDatav2($('#passwordChange'), 'users', 'user_id', lesionUnderEdit, 1);	
+        var data = getFormDatav2($('#passwordChange'), 'users', 'user_id', lesionUnderEdit, 1);
 
-            //TODO add identifier and identifierKey
+        //TODO add identifier and identifierKey
 
-            console.log(data);
+        console.log(data);
 
-            data = JSON.stringify(data);
+        data = JSON.stringify(data);
 
-            console.log(data);
+        console.log(data);
 
-           return $.ajax({
-              url: siteRoot + "/assets/scripts/changePassword.php",
-              type: "POST",
-              contentType: "application/json",
-              data: data,
-                });
+        var passwordChange = $.ajax({
+        url: siteRoot + "/assets/scripts/changePassword.php",
+        type: "POST",
+        contentType: "application/json",
+        data: data,
+        });
+
+        passwordChange.done(function(data){
+
+
+        Swal.fire({
+        type: 'info',
+        title: 'Password Change',
+        text: data,
+        background: '#162e4d',
+        confirmButtonText: 'ok',
+        confirmButtonColor: 'rgb(238, 194, 120)',
+
+        }).then((result) => {
+
+        })
+
+
+
+        })
 
         }
 

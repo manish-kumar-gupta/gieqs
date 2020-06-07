@@ -215,6 +215,9 @@ function endsWith($haystack, $needle)
                   </div>
                 </li>
 
+                <?php
+                                if (isset($_SESSION['user_id']) && ($_SESSION['siteKey'] == 'TxsvAb6KDYpmdNk') && ($_SESSION['access_level'] == '1' || $_SESSION['access_level'] == '2')){
+                                  ?>
                 <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
                     <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Creator</a>
@@ -248,6 +251,8 @@ function endsWith($haystack, $needle)
                     
                   </div>
                 </li>
+                <?php
+                }?>
 
                 
 

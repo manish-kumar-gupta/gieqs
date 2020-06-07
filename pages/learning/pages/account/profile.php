@@ -15,7 +15,7 @@
 
       //$openaccess = 1;
 
-      $requiredUserLevel = 4;
+      $requiredUserLevel = 6;
 
 
 
@@ -235,6 +235,20 @@ top: -20vh;
                     </a>
                   </div>
                   <?php }?>
+                  <?php if ($users->getUserAccessLevel($userid) == 6){?>
+
+<!--TODO Implement this upgrade functionality-->
+<div class="col-auto flex-fill mt-4 mt-sm-0 text-sm-right d-none d-lg-block">
+<a id="upgradeStandard"href="#" class="btn btn-sm btn-white rounded-pill btn-icon shadow bg-gieqsGold text-dark">
+    <span class="btn-inner--icon"><i class="fas fa-fire"></i></span>
+    <span class="btn-inner--text">Upgrade to GIEQs Standard</span>
+  </a>  
+<a id="upgradePro"href="#" class="btn btn-sm btn-white rounded-pill btn-icon shadow bg-gieqsGold text-dark">
+    <span class="btn-inner--icon"><i class="fas fa-fire"></i></span>
+    <span class="btn-inner--text">Upgrade to GIEQs Pro</span>
+  </a>
+</div>
+<?php }?>
                 </div>
               </div>
             </div>
@@ -247,7 +261,7 @@ top: -20vh;
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label class="form-control-label">First name</label>
+                  <label class="form-control-label">First name</label>
                     <input name="firstname" class="form-control" type="text" placeholder="Enter your first name" value="<?php echo $users->getfirstname();?>">
                   </div>
                 </div>

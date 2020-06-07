@@ -26,6 +26,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	if ($check) { // OK!
 
+		if ($data['access_level'] == 7){
+
+			echo '3';
+			exit();
+		}
+
 		// Set the session data:
 		$_SESSION['user_id'] = $data['user_id'];
 		$_SESSION['firstname'] = $data['firstname'];
