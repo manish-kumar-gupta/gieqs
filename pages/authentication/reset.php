@@ -340,7 +340,7 @@ confirmButtonColor: 'rgb(238, 194, 120)',
 
 }).then((result) => {
 
-  window.location.href(siteRoot);
+  window.location.href = siteRoot;
   resetFormElements('NewUserForm');
   enableFormInputs('NewUserForm');
   //$('#registerInterest').modal('hide');

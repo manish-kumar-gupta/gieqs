@@ -72,7 +72,7 @@ if (count($data) > 0){
 
         if ($users->prepareStatementPDOUpdate() > 0){
 
-            echo 'Your password was successfully reset';
+            echo 'Your password was successfully reset.  You can now login from the main page';
 
 
 

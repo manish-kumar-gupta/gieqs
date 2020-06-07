@@ -694,7 +694,7 @@
                                                                                                             style="font-family:Helvetica;font-size:18px;padding:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
                                                                                                             <a class="mcnButton "
                                                                                                                 title="Find Out More"
-                                                                                                                href="https://www.gieqs.com/assets/scripts/passwordReset.php?key=<?php echo $key;?>"
+                                                                                                                href="https://www.gieqs.com/pages/authentication/reset.php?key=<?php echo $key;?>"
                                                                                                                 target="_blank"
                                                                                                                 style="font-weight:bold;letter-spacing:-0.5px;line-height:100%;text-align:center;text-decoration:none;color:#e3ebf6;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;display:block;">Reset My Password
                                                                                                             </a>
