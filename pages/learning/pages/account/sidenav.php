@@ -23,7 +23,9 @@
                       <i class="fas fa-angle-right"></i>
                     </div>
                   </a>
-                  <a href="<?php //echo BASE_URL;?>/pages/learning/pages/account/billing.php" class="list-group-item list-group-item-action d-flex justify-content-between">
+                  <a href="<?php //echo BASE_URL;?>" class="list-group-item list-group-item-action d-flex justify-content-between">
+
+                  <!-- /pages/learning/pages/account/billing.php -->
                     <div>
                       <i class="fas fa-credit-card mr-2"></i>
                       <span>Subscriptions</span>
