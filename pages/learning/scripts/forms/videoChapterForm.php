@@ -2301,7 +2301,7 @@ $(this).append(' ');
 
                 var minutes = Math.floor(chapterTimeFrom / 60);
 
-                var seconds = chapterTimeFrom - minutes * 60;
+                var seconds = ((chapterTimeFrom - (minutes * 60)) / 60) * 100;
 
                 function str_pad_left(string,pad,length) {
                     return (new Array(length+1).join(pad)+string).slice(-length);
