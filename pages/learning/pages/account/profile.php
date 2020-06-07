@@ -202,56 +202,7 @@ top: -20vh;
         <div class="row row-grid">
           <div class="col-lg-9 order-lg-2">
             <!-- Change avatar -->
-            <div class="card bg-gradient-dark hover-shadow-lg">
-              <div class="card-body py-3">
-                <div class="row row-grid align-items-center">
-                  <div class="col-lg-8">
-                    <div class="media align-items-center">
-                      <a href="#" class="avatar bg-gieqsGold text-dark avatar-lg rounded-circle mr-3">
-                        <?php echo $users->getUserInitials($userid);?>
-                      </a>
-                      <div class="media-body">
-                        <h5 class="text-white mb-0"><?php if ($debug){ echo '$userid is ' . $userid;}  echo $users->getfirstname() . ' ' . $users->getsurname();?></h5>
-                        <p class="text-sm text-muted mb-0"><?php echo $users->getUserAccessLevelText($userid);?></p>
-
-                        <div>
-                          <!-- <form>
-                            <input type="file" name="file-1[]" id="file-1" class="custom-input-file custom-input-file-link" data-multiple-caption="{count} files selected" multiple="">
-                            <label for="file-1">
-                              <span class="text-white">Change avatar</span>
-                            </label>
-                          </form> -->
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <?php if ($users->getUserAccessLevel($userid) == 5){?>
-
-                  <!--TODO Implement this upgrade functionality-->
-                  <div class="col-auto flex-fill mt-4 mt-sm-0 text-sm-right d-none d-lg-block">
-                    <a id="upgradePro"href="#" class="btn btn-sm btn-white rounded-pill btn-icon shadow bg-gieqsGold text-dark">
-                      <span class="btn-inner--icon"><i class="fas fa-fire"></i></span>
-                      <span class="btn-inner--text">Upgrade to GIEQs Pro</span>
-                    </a>
-                  </div>
-                  <?php }?>
-                  <?php if ($users->getUserAccessLevel($userid) == 6){?>
-
-<!--TODO Implement this upgrade functionality-->
-<div class="col-auto flex-fill mt-4 mt-sm-0 text-sm-right d-none d-lg-block">
-<a id="upgradeStandard"href="#" class="btn btn-sm btn-white rounded-pill btn-icon shadow bg-gieqsGold text-dark">
-    <span class="btn-inner--icon"><i class="fas fa-fire"></i></span>
-    <span class="btn-inner--text">Upgrade to GIEQs Standard</span>
-  </a>  
-<a id="upgradePro"href="#" class="btn btn-sm btn-white rounded-pill btn-icon shadow bg-gieqsGold text-dark">
-    <span class="btn-inner--icon"><i class="fas fa-fire"></i></span>
-    <span class="btn-inner--text">Upgrade to GIEQs Pro</span>
-  </a>
-</div>
-<?php }?>
-                </div>
-              </div>
-            </div>
+            <?php require(BASE_URI . '/pages/learning/pages/account/memberCard.php');?>
             <!-- General information form -->
             <div class="actions-toolbar py-2 mb-4">
               <h5 class="mb-1">General information</h5>
@@ -716,13 +667,17 @@ top: -20vh;
 
           },
 
+          bio: {
+            required: true,
+            minlength: 150,
 
+          },
 
 
 
 
           centreName: {
-
+            required: true,
 
           },
 

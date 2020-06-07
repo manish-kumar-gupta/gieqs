@@ -21,6 +21,8 @@
       require BASE_URI . '/head.php';
 
       $general = new general;
+      $users = new users;
+      $users->Load_from_key($userid);
 
       ?>
 
@@ -187,36 +189,7 @@ top: -20vh;
         <div class="row row-grid">
           <div class="col-lg-9 order-lg-2">
             <!-- Change avatar -->
-            <div class="card bg-gradient-dark hover-shadow-lg">
-              <div class="card-body py-3">
-                <div class="row row-grid align-items-center">
-                  <div class="col-lg-8">
-                    <div class="media align-items-center">
-                      <a href="#" class="avatar bg-gieqsGold text-dark avatar-lg rounded-circle mr-3">
-                        HW
-                      </a>
-                      <div class="media-body">
-                        <h5 class="text-white mb-0">{{username}}</h5>
-                        <div>
-                          <!-- <form>
-                            <input type="file" name="file-1[]" id="file-1" class="custom-input-file custom-input-file-link" data-multiple-caption="{count} files selected" multiple="">
-                            <label for="file-1">
-                              <span class="text-white">Change avatar</span>
-                            </label>
-                          </form> -->
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-auto flex-fill mt-4 mt-sm-0 text-sm-right d-none d-lg-block">
-                    <a href="#" class="btn btn-sm btn-white rounded-pill btn-icon shadow bg-gieqsGold text-dark">
-                      <span class="btn-inner--icon"><i class="fas fa-fire"></i></span>
-                      <span class="btn-inner--text">Upgrade to GIEQs Pro</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <?php require(BASE_URI . '/pages/learning/pages/account/memberCard.php');?>
             <!-- Section title -->
             <div class="actions-toolbar py-2 mb-4">
               <h5 class="mb-1">Attach a new card</h5>
