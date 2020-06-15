@@ -161,16 +161,16 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                 <span class="badge gieqsGold badge-pill">
                                 <i class="fas fa-notes-medical"></i>
                                     </span>
-                                <span class="alert-content">COVID-19 statement</span>
+                                <span class="alert-content"><strong>new</strong> COVID-19 statement</span>
                              </div></a>
                                 <h2 class="text-white mb-4 mt-4 mt-lg-0">
                                     <span class="display-4 font-weight-light">We can do everyday endoscopy
                                         better.</span>
                                     <span class="d-block" style="color: rgb(238, 194, 120);"><strong
                                             class="font-weight-light">Edition I<br />October 7 & 8
-                                            2020</strong><br />Ghent, Belgium </span>
+                                            2020</strong><br />Ghent, Belgium<br />and streamed in full, live, right here</span>
                                 </h2>
-                                <p class="lead text-white">An endoscopy symposium focussed on promoting quality in the
+                                <p class="lead text-white">An endoscopy symposium with live stream focussed on promoting quality in the
                                     endoscopic interventions we perform everyday</p>
                                 <div class="mt-5">
                                     <a href="https://www.youtube.com/watch?v=I9Y8gC6wtKg"
@@ -199,7 +199,28 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
             </div>
         </section>
         <!-- <hr class="divider divider-fade" /> -->
+        <section class="slice slice-lg bg-cover bg-size--cover" style="background-image: url('<?php echo BASE_URL;?>/assets/img/covers/learning/roomview1.png'); background-position: center bottom;">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="card py-5 px-4 box-shadow-3">
+                <div class="card-body">
+                  <h6 class="h2">
+                    <strong>We are adapting to the restrictions around</strong> Coronavirus.
+                  </h6>
+                  <p class="lead lh-180 mt-4">We will stream the entire conference, in high definition, right here on GIEQs.com.  So if you can't attend, it will be just like being here.</p>
+                  <p class="lead lh-180 mt-4">We are committed to making the experience feel like you're in the room 1:1 with the endoscopist or lecturer, and to extend live interaction to the digital experience.</p>
+                  <p class="lead lh-180 mt-4">And after the congress we will leave all the content on GIEQs learning, so you can watch at your leisure, <strong>free</strong> if you register for the congress.</p>
 
+                  <div class="btn-container mt-5">
+                  <a href="https://vimeo.com/429163871" class="btn bg-gieqsGold text-dark rounded-pill btn-icon mt-4" data-fancybox>Discover more</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
         <section class="slice slice-lg mt-1">
             <div class="container">
                 <div class="row no-gutters align-items-md-center text-center text-md-left">
@@ -294,7 +315,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
     <!-- Modal -->
     <div class="modal fade" id="registerInterest" tabindex="-1" role="dialog" aria-labelledby="registerInterestLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dark" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="registerInterestLabel" style="color: rgb(238, 194, 120);">COVID-19 Statement</h5>
@@ -303,8 +324,18 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                     </button>
                 </div>
                 <div class="modal-body">
-                    <span class="h6">Everybody knows that COVID-19 has changed everything about our society. <br /> <br/></span><span>We are working full steam ahead to deliver GIEQs as a traditional face-to-face event and are closely monitoring the further developments related to the outbreak of the COVID-19 virus. 
-                    <br/><br/>Of course as this unprecedented situation is constantly evolving, we remain watchful and will react to any official advice in the appropriate way.</span><br/><br/><span>Rest assured a GIEQs event in some form will take place in October 2020!</span>
+                
+            <div id="videoDisplay mb-3" class="embed-responsive embed-responsive-16by9">
+                    <iframe  id='videoChapter' class="embed-responsive-item"
+                     allow='autoplay' src='https://player.vimeo.com/video/429163871' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        </div>
+                
+
+                    <p class="h6 mt-5">Things have changed drastically since we started planning GIEQs. <br /> <br/></p>
+                    <p class="text-muted">We have decided to stream the entire congress right here on GIEQs.com. &nbsp;So if you can't make it to Ghent or would rather not travel, but want to follow the congress, you can do so right here for a small fee.
+                    <br/><br/>We remain committed to the face-to-face event, and Coronavirus restrictions permitting, will have a venue ready in Ghent to receive you if you wish to attend in person!</p>
+                    <p class="text-white">If we are forced to cancel the face-to-face event we will refund all your money minus the cost of a digital registration, so you can register now with peace of mind!</p>
+                    
                     
                 </div>
                 <div class="modal-footer">
@@ -397,6 +428,21 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
         });
     }
 
+    function stopVideo() {
+  var $frame = $('iframe#videoChapter');
+
+  // saves the current iframe source
+  var vidsrc = $frame.attr('src');
+
+  // sets the source to nothing, stopping the video
+  $frame.attr('src', '');
+
+  // sets it back to the correct link so that it reloads immediately on the next window open
+  $frame.attr('src', vidsrc);
+}
+
+
+
     $(document).ready(function() {
 
         if (signup == '2456') {
@@ -404,6 +450,12 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
             $('#registerInterest').modal('show');
 
         }
+
+        $('#registerInterest').on('hidden.bs.modal', function(e) {
+  stopVideo();
+})
+
+        
 
         $(document).on('click', '#submitPreRegister', function() {
 

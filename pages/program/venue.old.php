@@ -157,7 +157,7 @@ background-color: rgb(238, 194, 120);
                   </a>  
                   <div class="">
                     <h2 class="text-white my-4">
-                      <span class="display-5 font-weight-light">the University Hospital of Ghent. Ghent. Belgium.</span>
+                      <span class="display-5 font-weight-light">the Ghelamco Arena. Ghent. Belgium.</span>
                       
                     </h2>
                     <p class="lead text-white"></p>
@@ -178,9 +178,9 @@ background-color: rgb(238, 194, 120);
           <section class="slice slice-lg">
             <div class="container no-padding">
               <div class="mb-5 text-center">
-                <h3 class=" mt-4">GIEQs will be held at the University Hospital of Ghent, Ghent, Belgium.</h3>
+                <h3 class=" mt-4">GIEQs will be held at the Ghelamco Arena, Ghent, Belgium.</h3>
                 <div class="fluid-paragraph mt-3">
-                  <p class="lead lh-180">within the University Hospital of Ghent is a modern conference venue which will make for a spectacular meeting</p>
+                  <p class="lead lh-180">within the Ghelamco arena is a modern conference venue which will make for a spectacular meeting</p>
                 </div>
               </div>
               <div class="card-deck">
@@ -190,7 +190,7 @@ background-color: rgb(238, 194, 120);
                       
                       <h5 class="text-center mt-4">2 bespoke lecture theatres</h5>
                     </div>
-                    <p class="text-center">Two large auditoria with high definition live endoscopy streams and possibilities for interaction.</p>
+                    <p class="text-center">A large auditorium and an up-close and personal 'pitch arena' for 70 people allows for unparalleled interaction with the faculty.</p>
                   </div>
                   <div class="card-footer px-0 py-0 border-0 overflow-hidden">
                     <a href="<?php echo $registrationURL;?>" target="_blank" class="btn btn-block btn-dark gieqsGold rounded-0">Register now!</a>
@@ -201,12 +201,12 @@ background-color: rgb(238, 194, 120);
                     <div class="delimiter-bottom pb-3 mb-4">
                       
     
-                      <h5 class="text-center mt-4">Hub and spoke model</h5>
+                      <h5 class="text-center mt-4">Modern networking space</h5>
                     </div>
-                    <p class="text-center">Possibility to host a socially distanced GIEQs event at your hospital with high definition streaming.  Contact us for more details</p>
+                    <p class="text-center">With beautiful, modern open spaces this venue allows for professional networking and mingling with the faculty.</p>
                   </div>
                   <div class="card-footer px-0 py-0 border-0 overflow-hidden">
-                    <a href="mailto:gieqs@seauton-international.com" class="btn btn-block btn-dark gieqsGold rounded-0">Contact us!</a>
+                    <a href="<?php echo $registrationURL;?>" target="_blank" class="btn btn-block btn-dark gieqsGold rounded-0">Register now!</a>
                   </div>
                 </div>
                 <div class="card hover-shadow-lg">
@@ -214,9 +214,9 @@ background-color: rgb(238, 194, 120);
                     <div class="delimiter-bottom pb-3 mb-4">
                      
     
-                      <h5 class="text-center mt-4">Expert interaction</h5>
+                      <h5 class="text-center mt-4">Beautiful satellite rooms</h5>
                     </div>
-                    <p class="text-center">The moderators and invited faculty can interact live and are filmed professionally to appear on the digital stream.</p>
+                    <p class="text-center">The venue contains multiple modern meeting rooms for spin-off sessions and up-close interaction with the faculty.</p>
                   </div>
                   <div class="card-footer px-0 py-0 border-0 overflow-hidden">
                     <a href="<?php echo $registrationURL;?>" target="_blank" class="btn btn-block btn-dark gieqsGold rounded-0">Register now!</a>
@@ -226,7 +226,142 @@ background-color: rgb(238, 194, 120);
             </div>
           </section>
 
-         
+          <section class="slice slice-lg delimiter-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="card card-overlay card-hover-overlay">
+              <figure class="figure">
+                <img alt="Image placeholder" src="../../assets/img/venue/venue1.jpg" class="img-fluid">
+              </figure>
+              <div class="card-img-overlay d-flex flex-column align-items-center p-0">
+                <div class="overlay-text w-75 mt-auto p-4">
+                  <p class="lead">Large open reception area for catering and networking.</p>
+                  
+                </div>
+                <div class="overlay-actions w-100 card-footer mt-auto d-flex justify-content-between align-items-center">
+                  <div>
+                  <p class="h6 mb-0">Reception and Catering Area</p>
+                  </div>
+                  <div>
+                    <div class="actions">
+                      
+                      <a href="<?php echo $registrationURL;?>" target="_blank" class="action-item"><i class="fas fa-user-plus"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            
+              <figure class="figure">
+                <img alt="Image placeholder" src="../../assets/img/venue/venue2.jpg" class="img-fluid">
+              </figure>
+              
+              
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="card card-overlay card-hover-overlay">
+              <figure class="figure">
+                <img alt="Image placeholder" src="../../assets/img/venue/venue3.jpg" class="img-fluid">
+              </figure>
+              <div class="card-img-overlay d-flex flex-column align-items-center p-0">
+                <div class="overlay-text w-75 mt-auto p-4">
+                  <p class="lead">The Pitch Arena.  A space for up to 70 people allowing unparalleled interaction with the faculty</p>
+                  
+                </div>
+                <div class="overlay-actions w-100 card-footer mt-auto d-flex justify-content-between align-items-center">
+                  <div>
+                  <p class="h6 mb-0">Pitch Arena</p>
+                  </div>
+                  <div>
+                    <div class="actions">
+                    <a href="<?php echo $registrationURL;?>" target="_blank" class="action-item"><i class="fas fa-user-plus"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card card-overlay card-hover-overlay">
+              <figure class="figure">
+                <img alt="Image placeholder" src="../../assets/img/venue/venue4.jpg" class="img-fluid">
+              </figure>
+              <div class="card-img-overlay d-flex flex-column align-items-center p-0">
+                <div class="overlay-text w-75 mt-auto p-4">
+                  <p class="lead">A brand new lecture theatre with state of the art projection and audio facilities.  Direct streaming from the University Hospital of Ghent</p>
+                  
+                </div>
+                <div class="overlay-actions w-100 card-footer mt-auto d-flex justify-content-between align-items-center">
+                  <div>
+                  <p class="h6 mb-0">Main Auditorium</p>
+                  </div>
+                  <div>
+                    <div class="actions">
+                    <a href="<?php echo $registrationURL;?>" target="_blank" class="action-item"><i class="fas fa-user-plus"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="card card-overlay card-hover-overlay">
+              <figure class="figure">
+                <img alt="Image placeholder" src="../../assets/img/venue/venue5.jpg" class="img-fluid">
+              </figure>
+              <div class="card-img-overlay d-flex flex-column align-items-center p-0">
+                <div class="overlay-text w-75 mt-auto p-4">
+                  <p class="lead">Large area full of light for interactions with industry sponsors.</p>
+          
+                </div>
+                <div class="overlay-actions w-100 card-footer mt-auto d-flex justify-content-between align-items-center">
+                  <div>
+                    <p class="h6 mb-0">Industry interaction area</p>
+                  </div>
+                  <div>
+                    <div class="actions">
+                    <a href="<?php echo $registrationURL;?>" target="_blank" class="action-item"><i class="fas fa-user-plus"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card card-overlay card-hover-overlay">
+              <figure class="figure">
+                <img alt="Image placeholder" src="../../assets/img/venue/venue6.jpg" class="img-fluid">
+              </figure>
+              <div class="card-img-overlay d-flex flex-column align-items-center p-0">
+                <div class="overlay-text w-75 mt-auto p-4">
+                  <p class="lead">Interaction area with smaller meeting rooms visible to the right.  Allows for up-close faculty interaction.</p>
+                
+                </div>
+                <div class="overlay-actions w-100 card-footer mt-auto d-flex justify-content-between align-items-center">
+                  <div>
+                    <p class="h6 mb-0">Up-close faculty interaction</p>
+                  </div>
+                  <div>
+                    <div class="actions">
+                    <a href="<?php echo $registrationURL;?>" target="_blank" class="action-item"><i class="fas fa-user-plus"></i></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Load more -->
+        
+      </div>
+    </section>
     <section class="slice slice-lg bg-section-secondary" id="sct-call-to-action"><a href="#sct-call-to-action"
             class="tongue tongue-up tongue-section-primary" data-scroll-to="">
             <i class="fas fa-angle-up"></i>

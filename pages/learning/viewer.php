@@ -542,7 +542,7 @@ min-width:30vw;
             <div class="container">
             <div id="videoDisplay" class="embed-responsive embed-responsive-16by9">
                     <iframe  id='videoChapter' class="embed-responsive-item" style="left:50%; top:50%;"
-                        src='https://player.vimeo.com/video/398791515' allow='autoplay'
+                     allow='autoplay'
                         webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                         </div>
                 </div>

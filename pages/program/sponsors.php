@@ -218,37 +218,40 @@ width: 100%;
 
                     </div>
                     <div class="col-lg-2 col-md-4 col-4 py-1">
+                    <img class="logo" alt="Prion Medical" src="<?php echo BASE_URL . '/assets/img/brand/prion.jpg';?>">
 
                     </div>
                     <div class="col-lg-2 col-md-4 col-4 py-1">
+                    <img class="logo" alt="Cook Medical" src="<?php echo BASE_URL . '/assets/img/brand/cook.jpg';?>">
 
                     </div>
                     <div class="col-lg-2 col-md-4 col-4 py-1">
+                    <img class="logo" alt="Boucart Medical" src="<?php echo BASE_URL . '/assets/img/brand/boucart.jpg';?>">
 
                     </div>
 
                 </div>
 
                 <!--Other Sponsors-->
-                <div class="row text-left">
+           <!--      <div class="row text-left">
                     <div class="col-12 p-3 pb-2 mb-4">
                         <span class="h2" style="color: black;">Additional Sponsors</span><br />
                     </div>
-                </div>
+                </div> -->
 
                 <div class="client-group row justify-content-left">
                     <div class="col-lg-1 col-md-4 col-4 py-1">
-                        <img class="logo" alt="Prion Medical" src="<?php echo BASE_URL . '/assets/img/brand/prion.jpg';?>">
-                    </div>
+<!--                         <img class="logo" alt="Prion Medical" src="<?php echo BASE_URL . '/assets/img/brand/prion.jpg';?>">
+ -->                    </div>
                     <div class="col-lg-1 col-md-4 col-4 py-1">
                     
-                    <img class="logo" alt="Cook Medical" src="<?php echo BASE_URL . '/assets/img/brand/cook.jpg';?>">
-
+<!--                     <img class="logo" alt="Cook Medical" src="<?php echo BASE_URL . '/assets/img/brand/cook.jpg';?>">
+ -->
                     </div>
                     <div class="col-lg-2 col-md-4 col-4 py-1">
                     
-                    <img class="logo" alt="Boucart Medical" src="<?php echo BASE_URL . '/assets/img/brand/boucart.jpg';?>">
-
+<!--                     <img class="logo" alt="Boucart Medical" src="<?php echo BASE_URL . '/assets/img/brand/boucart.jpg';?>">
+ -->
                     </div>
                     <div class="col-lg-1 col-md-4 col-4 py-1">
 
