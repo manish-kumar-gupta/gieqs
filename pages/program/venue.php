@@ -141,7 +141,7 @@ background-color: rgb(238, 194, 120);
 
         <!-- Header (v1) -->
        
-        <section class="slice slice-xl bg-cover bg-size--cover" data-offset-top="#header-main" style="background-image: url(&quot;<?php echo BASE_URL?>/assets/img/backgrounds/ghalemcohigh.png&quot;); background-position: center center; padding-top: 150px;">
+        <section class="slice slice-xl bg-cover bg-size--cover" data-offset-top="#header-main" style="background-image: url(&quot;<?php echo BASE_URL?>/assets/img/venue/uzg2blue.jpg&quot;); background-position: center center; padding-top: 150px;">
             <span class="mask bg-dark opacity-3"></span>
             <div class="container py-5 pt-lg-2 position-relative zindex-100">
               <div class="row">
