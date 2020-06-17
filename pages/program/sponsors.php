@@ -152,7 +152,25 @@ width: 100%;
           <section class="clients">
             <div class="container mb-4 bg-white">
                 
-                <!--Gold Sponsors-->
+            <!--Platinum Sponsor-->
+            <div class="row text-left">
+                    <div class="col-12 p-3 pb-2">
+                        <span class="h2" style="color: black;">Platinum Sponsor</span><br />
+                    </div>
+                </div>
+
+                <div class="client-group row justify-content-center mb-4">
+                    <div class="col-lg-6 col-md-6 col-12 py-3">
+                        <img class="logo" alt="Boston Scientific" src="<?php echo BASE_URL . '/assets/img/brand/boston.jpg';?>">
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-12 py-3">
+
+                    </div>
+                    
+
+                </div>    
+            
+            <!--Gold Sponsors-->
                 <div class="row text-left">
                     <div class="col-12 p-3 pb-2">
                         <span class="h2" style="color: black;">Gold Sponsors</span><br />
@@ -161,9 +179,10 @@ width: 100%;
 
                 <div class="client-group row justify-content-center mb-4">
                     <div class="col-lg-4 col-md-6 col-12 py-3">
-                        <img class="logo" alt="Boston Scientific" src="<?php echo BASE_URL . '/assets/img/brand/boston.jpg';?>">
+                    <img class="logo" alt="Fujinon" src="<?php echo BASE_URL . '/assets/img/icons/fujifilm.png';?>">
                     </div>
                     <div class="col-lg-4 col-md-6 col-12 py-3">
+                    <img class="logo" alt="Onis" src="<?php echo BASE_URL . '/assets/img/icons/onis.png';?>">
 
                     </div>
                     <div class="col-lg-4 col-md-6 col-12 py-3">
@@ -181,13 +200,11 @@ width: 100%;
 
                 <div class="client-group row justify-content-center mb-4">
                     <div class="col-lg-3 col-md-4 col-6 py-3">
-                    <img class="logo" alt="Fujinon" src="<?php echo BASE_URL . '/assets/img/icons/fujifilm.png';?>">
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-6 py-3">
                     <img class="logo" alt="Olympus" src="<?php echo BASE_URL . '/assets/img/icons/olympus.png';?>">
                     </div>
                     <div class="col-lg-3 col-md-4 col-6 py-3">
-                    <img class="logo" alt="Onis" src="<?php echo BASE_URL . '/assets/img/icons/onis.png';?>">
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-6 py-3">
                     </div>
                     <div class="col-lg-3 col-md-4 col-6 py-3">
 
@@ -227,6 +244,28 @@ width: 100%;
                     </div>
                     <div class="col-lg-2 col-md-4 col-4 py-1">
                     <img class="logo" alt="Boucart Medical" src="<?php echo BASE_URL . '/assets/img/brand/boucart.jpg';?>">
+
+                    </div>
+
+                </div>
+                <div class="client-group row justify-content-center mb-4">
+                    <div class="col-lg-2 col-md-4 col-4 py-1">
+                        <img class="logo" alt="ovesco" src="<?php echo BASE_URL . '/assets/img/icons/ovesco.png';?>">
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-4 py-1">
+                    <img class="logo" alt="sandoz" src="<?php echo BASE_URL . '/assets/img/icons/sandoz.png';?>">
+
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-4 py-1">
+
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-4 py-1">
+
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-4 py-1">
+
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-4 py-1">
 
                     </div>
 
