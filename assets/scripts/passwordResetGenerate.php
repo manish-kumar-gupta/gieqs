@@ -88,7 +88,7 @@ if (count($data) > 0){
 
             $subject = 'Password reset for your GIEQs online account';
 
-            require(BASE_URI . '/assets/scripts/individualMailer.php');  //TEST MAIL
+            require(BASE_URI . '/assets/scripts/individualMailerGmail.php');  //TEST MAIL
 
             if ($debug){
 

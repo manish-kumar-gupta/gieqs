@@ -141,12 +141,12 @@ background-color: rgb(238, 194, 120);
 
         <!-- Header (v1) -->
        
-        <section class="slice slice-xl bg-cover bg-size--cover" data-offset-top="#header-main" style="background-image: url(&quot;<?php echo BASE_URL?>/assets/img/venue/uzg2blue.jpg&quot;); background-position: center center; padding-top: 150px;">
+        <section class="slice slice-xl bg-cover bg-size--cover" data-offset-top="#header-main" style="background-image: url(&quot;<?php echo BASE_URL?>/assets/img/venue/world.jpg&quot;); background-position: center center; padding-top: 150px;">
             <span class="mask bg-dark opacity-3"></span>
-            <div class="container py-5 pt-lg-2 position-relative zindex-100">
+            <div class="container pt-5 pt-lg-2 position-relative zindex-100">
               <div class="row">
                 <div class="col-lg-8 text-center text-lg-left">
-                <a href="<?php echo $registrationURL;?>" target="_blank">
+                <a href="<?php echo $registrationURL;?>">
 
                 <div class="alert alert-modern alert-dark">
                     <span class="badge gieqsGold badge-pill">
@@ -156,17 +156,15 @@ background-color: rgb(238, 194, 120);
                   </div>
                   </a>  
                   <div class="">
-                    <h2 class="text-white my-4">
-                      <span class="display-5 font-weight-light">the University Hospital of Ghent. Ghent. Belgium.</span>
+                    <h2 class="gieqsGold mt-4">
+                      <span class="display-5 font-weight-bold">FREE Live Stream in High Definition.<br/>4 locations.<br/>Focussed on everyday endoscopy.</span>
+                      
                       
                     </h2>
-                    <p class="lead text-white"></p>
-                    <div class="mt-5 mb-8">
-                     <!--  <a href="#sct-products" class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon d-none d-xl-inline-block scroll-me">
-                        <span class="btn-inner--icon"><i class="fas fa-shopping-bag"></i></span>
-                        <span class="btn-inner--text">Go shopping</span>
-                      </a> -->
-                    </div>
+                    
+
+                    
+                   
                   </div>
                 </div>
               </div>
@@ -177,20 +175,41 @@ background-color: rgb(238, 194, 120);
 
           <section class="slice slice-lg">
             <div class="container no-padding">
-              <div class="mb-5 text-center">
-                <h3 class=" mt-4">GIEQs will be held at the University Hospital of Ghent, Ghent, Belgium.</h3>
-                <div class="fluid-paragraph mt-3">
-                  <p class="lead lh-180">within the University Hospital of Ghent is a modern conference venue which will make for a spectacular meeting</p>
+              <div class="">
+                
+                <h2 class="text-white mb-4">
+                  <span class="display-5 font-weight-light">streamed from<br/></span>
+                  <ul>
+                      <li><span class="display-5 font-weight-light">the University Hospital of Ghent. Ghent. Belgium.</span></li>
+                    </ul>
+                    <span class="display-5 font-weight-light">contributions from<br/></span>
+                  <ul>
+                      <li><span class="display-5 font-weight-light">Westmead Hospital.  Sydney.  Australia.</span></li>
+                      <li><span class="display-5 font-weight-light">Forzani & MacPhail Colon Cancer Screening Centre.  Calgary. Canada.</span></li>
+                      <li><span class="display-5 font-weight-light">Cheltenham Hospital. Cheltenham. UK.</span></li>
+
+                    </ul>
+                  
+                </h2>
+
+                
+                <p class="lead text-white"></p>
+                <div class="mt-5 mb-8">
+                 <!--  <a href="#sct-products" class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon d-none d-xl-inline-block scroll-me">
+                    <span class="btn-inner--icon"><i class="fas fa-shopping-bag"></i></span>
+                    <span class="btn-inner--text">Go shopping</span>
+                  </a> -->
                 </div>
               </div>
+              
               <div class="card-deck">
                 <div class="card hover-shadow-lg">
                   <div class="card-body">
                     <div class="delimiter-bottom pb-3 mb-4">
                       
-                      <h5 class="text-center mt-4">2 bespoke lecture theatres</h5>
+                      <h5 class="text-center mt-4">4 locations</h5>
                     </div>
-                    <p class="text-center">Two large auditoria with high definition live endoscopy streams and possibilities for interaction.</p>
+                    <p class="text-center">Based in Belgium.  Truly international.  Since the international faculty will not be travelling to Belgium due to COVID-19 restrictions, we bring them to you on the digital stream.  In High Definition.</p>
                   </div>
                   <div class="card-footer px-0 py-0 border-0 overflow-hidden">
                     <a href="<?php echo $registrationURL;?>" target="_blank" class="btn btn-block btn-dark gieqsGold rounded-0">Register now!</a>
@@ -225,6 +244,10 @@ background-color: rgb(238, 194, 120);
               </div>
             </div>
           </section>
+          <div id="videoDisplay mb-3" class="embed-responsive embed-responsive-16by9">
+            <iframe  id='videoChapter' class="embed-responsive-item"
+             allow='autoplay' src='https://player.vimeo.com/video/431241116?autoplay=1&loop=1&autopause=0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                </div>
 
          
     <section class="slice slice-lg bg-section-secondary" id="sct-call-to-action"><a href="#sct-call-to-action"

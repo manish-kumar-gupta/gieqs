@@ -24,9 +24,9 @@
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description"
-        content="The Ghent International Endoscopy Symposium is an endoscopy symposium focussed on promoting quality in the endoscopic interventions we perform everyday">
+        content="GIEQs learning is a digital repository and online learning platform focussed on promoting quality in endoscopy via deconstructed learning.  The content is focussed on simple endoscopic techniques that many practitioners are performing everyday">
     <meta name="author" content="David Tate">
-    <meta name="keywords" content="colonoscopy, gastroscopy, ERCP, quality, polyp, colon cancer, colorectal cancer, endoscopy, gieqs, GIEQS">
+    <meta name="keywords" content="online learning, colonoscopy technique, loops, pain, difficult colonoscopy, learning, deconstructed learning, how to do polypectemoy, training in endoscopy, training, how to do colonoscopy, colonoscopy, gastroscopy, ERCP, quality, polyp, colon cancer, polypectomy, EMR, endoscopic imaging, colorectal cancer, endoscopy, gieqs, GIEQS, digital endoscopy event, digital symposium, ghent, gent, endoscopy quality, quality in endoscopy">
  
  <!-- Favicon -->
  <link rel="icon" href="<?php echo BASE_URL;?>/assets/img/brand/favicongieqs.png" type="image/png">
@@ -36,7 +36,6 @@
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
     <!--Extra CSS -->
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/select2/dist/css/select2.min.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
 
     <!-- <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/select2/dist/css/select2bootstrap.min.css">
      -->
@@ -50,5 +49,7 @@
 <script src="<?php echo BASE_URL;?>/assets/js/purpose.core.js"></script>
 <script src="<?php echo BASE_URL;?>/assets/libs/select2/dist/js/select2.min.js"></script>
 <script src="<?php echo BASE_URL;?>/assets/js/purpose.js"></script>
-<script src="<?php echo BASE_URL;?>/pages/learning/includes/generaljs.js"></script>
+<script src="<?php echo BASE_URL;?>/assets/js/generaljs.js"></script>
 <script src="<?php echo BASE_URL;?>/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+
+

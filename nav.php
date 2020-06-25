@@ -5,7 +5,7 @@
     <div class="container px-lg-0">
         <!-- Logo -->
         <a class="navbar-brand mr-lg-5" href="<?php echo BASE_URL;?>/index.php">
-            <img alt="Image placeholder" src="<?php echo BASE_URL;?>/assets/img/brand/gieqs.svg" id="navbar-logo"
+            <img alt="Image placeholder" src="<?php echo BASE_URL;?>/assets/img/brand/gieqs_digital.png" id="navbar-logo"
                 style="height: 50px;">
         </a>
         <!-- Navbar collapse trigger -->
@@ -32,7 +32,7 @@
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">Programme</span>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program.php"><i class="fas fa-columns"></i>Medical Programme</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/nursing.php"><i class="fas fa-columns"></i>Draft Nursing Programme</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/nursing.php"><i class="fas fa-columns"></i>Nursing Programme</a>
                     
                     <div class="dropdown-divider"></div>
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">Faculty</span>
@@ -45,7 +45,7 @@
               
                 <!-- Venue -->
                 <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/venue.php">Venue</a>
+                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/venue.php">Locations</a>
                 </li>
 
                 <!-- Sponsors -->
@@ -56,17 +56,20 @@
 
                 <!-- Registration-basic -->
                 <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-                    <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
+                   <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/registration.php">Registration<span class="badge bg-gieqsGold text-dark badge-pill badge-floating ml-1 pl-1">
+                                    Free!
+                                    </span></a>
+                    <!-- <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Registration</a>
                     
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">Registration</span>
                     <a class="dropdown-item" href="https://eu.eventscloud.com/ereg/index.php?eventid=200200203&" target="_blank"><i class="fas fa-registered"></i>Register now!</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/registration.php"><i class="fas fa-shapes"></i>Registration options</a>
+                    <a class="dropdown-item" href="<?php //echo BASE_URL;?>/pages/program/registration.php"><i class="fas fa-shapes"></i>Registration options</a>
                     
                     <div class="dropdown-divider"></div>
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">Practical</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/practical/accommodation.php"><i class="fas fa-igloo"></i>Accommodation</a>
+                    <a class="dropdown-item" href="<?php //echo BASE_URL;?>/pages/practical/accommodation.php"><i class="fas fa-igloo"></i>Accommodation</a>
                     <a class="dropdown-item" href="https://visit.gent.be/en/good-know/practical-information/how-get-ghent" target="_blank"><i class="fas fa-train"></i></i>Getting here</a>
                     <div class="dropdown-divider"></div>
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">Why Ghent?</span>
@@ -75,7 +78,7 @@
                     <a class="dropdown-item" href="http://www.flickr.com/photos/visit_gent/albums" target="_blank"><i class="fas fa-images"></i>Ghent in pictures</a>
                     <a class="dropdown-item" href="https://visit.gent.be/en/top-10-tips" target="_blank"><i class="fas fa-university"></i>Top 10 Ghent</a>
                     
-                  </div>
+                  </div> -->
                 </li>
                 <?php
                 if (isset($_SESSION['user_id']) && ($_SESSION['siteKey'] == 'TxsvAb6KDYpmdNk') && ($_SESSION['access_level'] > 0 && $_SESSION['access_level'] < 7)){
@@ -97,9 +100,9 @@
                 <?php }else{ ?>
 
                   <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/online.php">GIEQs Online<span class="badge bg-gieqsGold text-dark badge-pill badge-floating ml-1 p-1">
+                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/online.php">GIEQs Online<!-- <span class="badge bg-gieqsGold text-dark badge-pill badge-floating ml-1 p-1">
                                     New
-                                    </span></a>
+                                    </span> --></a>
                 </li>
 
 

@@ -27,7 +27,7 @@ function ne($v) {
 
 $debug = true;
 $explicit = true;
-//echo 'hello';
+echo 'hello';
 
 if (count($_GET) > 0){
 

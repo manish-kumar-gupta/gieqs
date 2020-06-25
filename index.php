@@ -154,23 +154,23 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                 <span class="badge gieqsGold badge-pill">
                                     New
                                     </span>
-                                <span class="alert-content">Registration now open!</span>
+                                <span class="alert-content">Registration now for FREE!</span>
                              </div></a>
                              <a class="ml-3 pointer" data-toggle="modal" data-target="#registerInterest">
                             <div class="alert alert-modern alert-dark">
                                 <span class="badge gieqsGold badge-pill">
                                 <i class="fas fa-notes-medical"></i>
                                     </span>
-                                <span class="alert-content"><strong>new</strong> COVID-19 statement</span>
+                                <span class="alert-content">COVID-19 statement</span>
                              </div></a>
                                 <h2 class="text-white mb-4 mt-4 mt-lg-0">
                                     <span class="display-4 font-weight-light">We can do everyday endoscopy
                                         better.</span>
                                     <span class="d-block" style="color: rgb(238, 194, 120);"><strong
-                                            class="font-weight-light">Edition I<br />October 7 & 8
-                                            2020</strong><br />Ghent, Belgium<br />and streamed in full, live, right here</span>
+                                            class="font-weight-light">Digital Edition I<br />October 7 & 8
+                                            2020</strong><br />streamed in full, live, right here <br />Registration is FREE.</span>
                                 </h2>
-                                <p class="lead text-white">An endoscopy symposium with live stream focussed on promoting quality in the
+                                <p class="lead text-white">A digital endoscopy symposium in high definition focussed on promoting quality in the
                                     endoscopic interventions we perform everyday</p>
                                 <div class="mt-5">
                                     <a href="https://www.youtube.com/watch?v=I9Y8gC6wtKg"
@@ -180,7 +180,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                         <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
 
                                     </a>
-                                    <a href="https://www.youtube.com/watch?v=zRy1xwGsagc"
+                                    <!-- <a href="https://www.youtube.com/watch?v=zRy1xwGsagc"
                                         class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mt-2 mr-sm-4 scroll-me"
                                         style="background-color: rgb(238, 194, 120);" data-fancybox>
                                         <span class="badge bg-dark gieqsGold badge-pill">
@@ -189,7 +189,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                         <span class="btn-inner--text">Watch the latest teaser video</span>
                                         <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
 
-                                    </a>
+                                    </a> -->
                                     
                                 </div>
                             </div>
@@ -208,7 +208,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                   <h6 class="h2">
                     <strong>We are adapting to the restrictions around</strong> Coronavirus.
                   </h6>
-                  <p class="lead lh-180 mt-4">We will stream the entire conference, in high definition, right here on GIEQs.com.  So if you can't attend, it will be just like being here.</p>
+                  <p class="lead lh-180 mt-4">We will stream the entire conference, in high definition, right here on GIEQs.com.  So it will be just like being here.</p>
                   <p class="lead lh-180 mt-4">We are committed to making the experience feel like you're in the room 1:1 with the endoscopist or lecturer, and to extend live interaction to the digital experience.</p>
                   <p class="lead lh-180 mt-4">And after the congress we will leave all the content on GIEQs learning, so you can watch at your leisure, <strong>free</strong> if you register for the congress.</p>
 
@@ -332,9 +332,8 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                 
 
                     <p class="h6 mt-5">Things have changed drastically since we started planning GIEQs. <br /> <br/></p>
-                    <p class="text-muted">We have decided to stream the entire congress right here on GIEQs.com. &nbsp;So if you can't make it to Ghent or would rather not travel, but want to follow the congress, you can do so right here for a small fee.
-                    <br/><br/>We remain committed to the face-to-face event, and Coronavirus restrictions permitting, will have a venue ready in Ghent to receive you if you wish to attend in person!</p>
-                    <p class="text-white">If we are forced to cancel the face-to-face event we will refund all your money minus the cost of a digital registration, so you can register now with peace of mind!</p>
+                    <p class="text-muted">COVID-19 restrictions mean we cannot plan a face-to-face event in 2020.  We have therefore decided to stream the entire congress right here on GIEQs.com. &nbsp;
+                    <br/><br/>We remain committed to the face-to-face event and will reschedule this in 2021 and we very much look forward to welcoming you to Ghent!</p>
                     
                     
                 </div>

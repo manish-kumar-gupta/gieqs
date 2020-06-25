@@ -91,7 +91,7 @@ echo date('Y/m/d H:i:s'); */
 
             $subject = 'Welcome to your new GIEQs Online Account';
 
-            require(BASE_URI . '/assets/scripts/individualMailer.php');  //TEST MAIL
+            require(BASE_URI . '/assets/scripts/individualMailerGmail.php');  //TEST MAIL
 
             if ($debug){
 

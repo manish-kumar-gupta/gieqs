@@ -16,7 +16,7 @@
      
      require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
 
-     $registrationURL = 'https://www.gieqs.com/pages/program/registration.php';
+     $registrationURL = BASE_URL . '/pages/program/registration.php';
      //$registrationURL = 'https://eu.eventscloud.com/200200203';
  ?>
 
@@ -24,9 +24,9 @@
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description"
-        content="The Ghent International Endoscopy Symposium is an endoscopy symposium focussed on promoting quality in the endoscopic interventions we perform everyday">
+        content="The Ghent International Endoscopy Symposium (GIEQs) is a digital endoscopy event and symposium focussed on promoting quality in endoscopy.  The content is focussed on simple endoscopic techniques that many practitioners are performing everyday">
     <meta name="author" content="David Tate">
-    <meta name="keywords" content="colonoscopy, gastroscopy, ERCP, quality, polyp, colon cancer, colorectal cancer, endoscopy, gieqs, GIEQS">
+    <meta name="keywords" content="colonoscopy, gastroscopy, ERCP, quality, polyp, colon cancer, polypectomy, EMR, endoscopic imaging, colorectal cancer, endoscopy, gieqs, GIEQS, training, digital endoscopy event, digital symposium, ghent, gent, endoscopy quality, quality in endoscopy">
  
  <!-- Favicon -->
  <link rel="icon" href="<?php echo BASE_URL;?>/assets/img/brand/favicongieqs.png" type="image/png">
