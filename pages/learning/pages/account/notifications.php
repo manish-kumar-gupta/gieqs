@@ -16,11 +16,27 @@
       //$openaccess = 1;
 
       $requiredUserLevel = 6;
+      $tokenaccess = 1;
 
 
       require BASE_URI . '/pages/learning/includes/head.php';
 
       $general = new general;
+      $users = new users;
+
+      if ($users->matchRecord($userid)){
+
+        $users->Load_from_key($userid);
+
+        //get preferences
+
+        $emailAccount = $users->getemailAccount();
+        $emailServices = $users->getemailServices();
+        $emailPartners = $users->getemailPartners();
+
+
+      }
+      
 
       ?>
 
@@ -162,6 +178,9 @@ top: -20vh;
         <body>
 
 <div id="id" style="display:none;"><?php if ($id){echo $id;}?></div>
+<div id="emailAccount" style="display:none;"><?php if ($emailAccount){echo $emailAccount;}?></div>
+<div id="emailServices" style="display:none;"><?php if ($emailServices){echo $emailServices;}?></div>
+<div id="emailPartners" style="display:none;"><?php if ($emailPartners){echo $emailPartners;}?></div>
 
 <div class="main-content">
     <!-- Header (account) -->
@@ -210,12 +229,12 @@ top: -20vh;
                   <div class="list-group-item d-flex w-100 justify-content-between">
                     <div>
                       <h6 class="mb-1">Email regarding my account</h6>
-                      <span class="text-sm text-muted">You will receive an alert when changesa are made to your account or updates are required.</span>
+                      <span class="text-sm text-muted">You will receive an alert when changes are made to your account or updates are required.</span>
                     </div>
                     <div>
                       <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="card-notification-1">
-                        <label class="custom-control-label" for="card-notification-1"></label>
+                        <input type="checkbox" class="custom-control-input" id="notification-account" disabled>
+                        <label class="custom-control-label" for="notification-account"></label>
                       </div>
                     </div>
                   </div>
@@ -226,8 +245,8 @@ top: -20vh;
                     </div>
                     <div>
                       <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="card-notification-2">
-                        <label class="custom-control-label" for="card-notification-2"></label>
+                        <input type="checkbox" class="custom-control-input" id="notification-services" disabled>
+                        <label class="custom-control-label" for="notification-services"></label>
                       </div>
                     </div>
                   </div>
@@ -238,8 +257,8 @@ top: -20vh;
                     </div>
                     <div>
                       <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="card-notification-3">
-                        <label class="custom-control-label" for="card-notification-3"></label>
+                        <input type="checkbox" class="custom-control-input" id="notification-email" disabled>
+                        <label class="custom-control-label" for="notification-email"></label>
                       </div>
                     </div>
                   </div>
@@ -281,6 +300,10 @@ top: -20vh;
     <script src="assets/js/demo.js"></script>
     <script>
     var videoPassed = $("#id").text();
+    var emailAccount = $("#emailAccount").text();
+    var emailServices = $("#emailServices").text();
+    var emailPartners = $("#emailPartners").text();
+
                     </script>
 
     <script src=<?php echo BASE_URL . "/pages/learning/includes/endowiki-player.js"?>></script>
@@ -349,10 +372,54 @@ top: -20vh;
             });
         }
 
+        function setStartSliders(){
+
+          if (emailAccount){
+
+            if (emailAccount == '1'){
+
+              //check emailAccount
+              $('#notification-account').prop("checked", true);
+              
+
+
+            }
+          }
+
+          if (emailServices){
+
+            if (emailServices == '1'){
+
+              $('#notification-services').prop("checked", true);
+              
+
+            }
+
+
+          }
+
+          if (emailPartners){
+
+            if (emailPartners == '1'){
+
+              $('#notification-email').prop("checked", true);
+              
+
+            }
+
+
+          }
+              
+          $('#notification-account').prop("disabled", false);
+          $('#notification-services').prop("disabled", false);
+          $('#notification-email').prop("disabled", false);
+
+        }
+
         $(document).ready(function () {
 
             
-
+          setStartSliders();
 
             /* $(document).click(function(event) { 
                 $target = $(event.target);
@@ -426,6 +493,191 @@ top: -20vh;
 		$(this).css('cursor', 'default');
 
 	})
+
+  //new behaviours
+
+  $('#notification-account').change(function(){
+
+    var slider = $(this);
+    $(slider).prop("disabled", true);
+//ajax to a script to update
+
+      if($(this).is(':checked')){
+          var notification = '1';  // checked
+      }else{
+          var notification = '0';  // unchecked
+
+      }
+
+      var dataToSend = {
+
+          notification: notification,
+          type: 1,
+          
+
+      }
+
+      //const jsonString2 = JSON.stringify(dataToSend);
+
+      const jsonString = JSON.stringify(dataToSend);
+      console.log(jsonString);
+      //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
+
+      var request2 = $.ajax({
+      beforeSend: function () {
+
+          $('#notification-account').removeClass('is-valid');
+
+      },
+      url: siteRoot + "/pages/learning/scripts/account/updateNotify.php",
+      type: "POST",
+      contentType: "application/json",
+      data: jsonString,
+      });
+
+
+
+      request2.done(function (data) {
+      // alert( "success" );
+      if (data == '1'){
+          //show green tick
+
+          
+        $('#notification-account').delay('1000').addClass('is-valid');
+          
+              
+              
+
+      }
+
+      $(slider).prop("disabled", false);
+      //$(document).find('.Thursday').hide();
+      })
+
+
+  })
+
+  $('#notification-services').change(function(){
+    var slider = $(this);
+    $(slider).prop("disabled", true);
+
+//ajax to a script to update
+
+      if($(this).is(':checked')){
+          var notification = '1';  // checked
+      }else{
+          var notification = '0';  // unchecked
+
+      }
+
+      var dataToSend = {
+
+          notification: notification,
+          type: 2,
+          
+
+      }
+
+      //const jsonString2 = JSON.stringify(dataToSend);
+
+      const jsonString = JSON.stringify(dataToSend);
+      console.log(jsonString);
+      //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
+
+      var request2 = $.ajax({
+      beforeSend: function () {
+
+          $('#notification-services').removeClass('is-valid');
+
+      },
+      url: siteRoot + "/pages/learning/scripts/account/updateNotify.php",
+      type: "POST",
+      contentType: "application/json",
+      data: jsonString,
+      });
+
+
+
+      request2.done(function (data) {
+      // alert( "success" );
+      if (data == '1'){
+          //show green tick
+
+          
+        $('#notification-services').delay('1000').addClass('is-valid');
+          
+              
+              
+
+      }
+      //$(document).find('.Thursday').hide();
+      $(slider).prop("disabled", false);
+      })
+
+
+  })
+
+  $('#notification-email').change(function(){
+
+    var slider = $(this);
+    $(slider).prop("disabled", true);
+
+//ajax to a script to update
+
+      if($(this).is(':checked')){
+          var notification = '1';  // checked
+      }else{
+          var notification = '0';  // unchecked
+
+      }
+
+      var dataToSend = {
+
+          notification: notification,
+          type: 3,
+          
+
+      }
+
+      //const jsonString2 = JSON.stringify(dataToSend);
+
+      const jsonString = JSON.stringify(dataToSend);
+      console.log(jsonString);
+      //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
+
+      var request2 = $.ajax({
+      beforeSend: function () {
+
+          $('#notification-email').removeClass('is-valid');
+
+      },
+      url: siteRoot + "/pages/learning/scripts/account/updateNotify.php",
+      type: "POST",
+      contentType: "application/json",
+      data: jsonString,
+      });
+
+
+
+      request2.done(function (data) {
+      // alert( "success" );
+      if (data == '1'){
+          //show green tick
+
+          
+        $('#notification-email').delay('1000').addClass('is-valid');
+          
+              
+              
+
+      }
+      //$(document).find('.Thursday').hide();
+      $(slider).prop("disabled", false);
+      })
+
+
+  })
+  
 
 
         })

@@ -196,14 +196,14 @@ top: -20vh;
               <span class="btn-inner--text d-none d-md-inline-block">My Learning Profile</span>
             </a> -->
             <span class="h2 mb-0 text-white text-bold d-block"><span class="badge text-dark bg-gieqsGold">
-    Coming July 2020!
+    Coming end August 2020!
 </span>
             <a href="https://vimeo.com/422871506" class="btn btn-icon btn-group-nav bg-gieqsGold shadow btn-neutral mx-2" data-fancybox>
                 <span class="btn-inner--icon text-dark"><i class="fas fa-eye"></i></span>
                 <span class="animated bounce delay-2s btn-inner--text text-dark d-none d-inline-block">Sneak Preview!</span>
               </a>
               <!-- <a data-toggle="modal" data-target="#registerInterest" class="btn btn-icon btn-group-nav pointer bg-gieqsGold shadow btn-neutral mx-2" data-fancybox>
-                <span class="btn-inner--icon text-dark"><i class="fas fa-eye"></i></span>
+                <span class="btn-inner--icon text-dark"><i class="fas fa-eye"></i></span
                 <span class="animated bounce delay-2s btn-inner--text text-dark d-none d-inline-block">Sign Up</span>
               </a> --> <!-- ENABLE FOR SIGN UP -->
             

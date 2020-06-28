@@ -72,7 +72,7 @@ if ($openaccess == 1){
 
             $dbc = @mysqli_connect (DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
            // print_r($dbc);
-            $sql = "SELECT `user_id` FROM `users` WHERE `key` = '$token'";
+            $sql = "SELECT `user_id`, `access_level`, `firstname`, `surname` FROM `users` WHERE `key` = '$token'";
             //echo $sql;
             $result = mysqli_query ($dbc, $sql);
             //print_r($result);
@@ -80,6 +80,14 @@ if ($openaccess == 1){
 
                 while($row = mysqli_fetch_array($result)) {
                     $userid = $row['user_id'];
+                    //do login?
+                    /* $_SESSION['user_id'] = $row['user_id'];
+                    $_SESSION['firstname'] = $row['firstname'];
+                    $_SESSION['surname'] = $row['surname'];
+                    $_SESSION['access_level'] = $row['access_level'];
+                    $_SESSION['siteKey'] = 'TxsvAb6KDYpmdNk'; */
+
+
                     $info[] = 'token access allowed for user id ' . $row['user_id'];
                     
                 }

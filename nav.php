@@ -57,7 +57,7 @@
                 <!-- Registration-basic -->
                 <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/registration.php">Registration<span class="badge bg-gieqsGold text-dark badge-pill badge-floating ml-1 pl-1">
-                                    Free!
+                                    Reduced!
                                     </span></a>
                     <!-- <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Registration</a>

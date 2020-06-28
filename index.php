@@ -123,7 +123,11 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
     </div>
     <div class="main-content">
 
+        <?php
 
+        $imageArray = ['assets/img/polyps/ssp.png', 'assets/img/backgrounds/ChromoPolypTransBack.png']
+
+        ?>
 
         <!-- Header (v1) -->
         <section class="header-1 section-rotate bg-section-dark" data-offset-top="#header-main">
@@ -131,9 +135,10 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
             <!-- SVG illustration -->
             <div class="pt-7 position-absolute middle right-0 col-lg-7 col-xl-6 d-none d-lg-block">
                 <figure class="w-75" style="max-width: 1000px;">
-                    <img alt="Image placeholder" src="assets/img/backgrounds/ChromoPolypTransBack.png"
+                    <img alt="Image placeholder" src="<?php echo $imageArray[array_rand($imageArray)];?>"
                         class="svg-inject img-fluid">
                 </figure>
+                <p class="text-center text-muted mt-2"><br/>* early bird fee until 1/9/2020, <br/>reductions for trainees, nurses and students</p>
             </div>
             <!-- SVG background -->
             <!--<div class="bg-absolute-cover bg-size--contain d-flex align-items-center">
@@ -154,7 +159,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                 <span class="badge gieqsGold badge-pill">
                                     New
                                     </span>
-                                <span class="alert-content">Registration now for FREE!</span>
+                                <span class="alert-content">Register now</span>
                              </div></a>
                              <a class="ml-3 pointer" data-toggle="modal" data-target="#registerInterest">
                             <div class="alert alert-modern alert-dark">
@@ -168,10 +173,10 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                         better.</span>
                                     <span class="d-block" style="color: rgb(238, 194, 120);"><strong
                                             class="font-weight-light">Digital Edition I<br />October 7 & 8
-                                            2020</strong><br />streamed in full, live, right here <br />Registration is FREE.</span>
+                                            2020</strong><br />streamed in full, live, right here <br />Registration is &euro;100* for 2 days.</span>
                                 </h2>
                                 <p class="lead text-white">A digital endoscopy symposium in high definition focussed on promoting quality in the
-                                    endoscopic interventions we perform everyday</p>
+                                    endoscopic interventions we perform everyday.&nbsp;</p>
                                 <div class="mt-5">
                                     <a href="https://www.youtube.com/watch?v=I9Y8gC6wtKg"
                                         class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
@@ -180,6 +185,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                         <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
 
                                     </a>
+                                  
                                     <!-- <a href="https://www.youtube.com/watch?v=zRy1xwGsagc"
                                         class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mt-2 mr-sm-4 scroll-me"
                                         style="background-color: rgb(238, 194, 120);" data-fancybox>
@@ -327,7 +333,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                 
             <div id="videoDisplay mb-3" class="embed-responsive embed-responsive-16by9">
                     <iframe  id='videoChapter' class="embed-responsive-item"
-                     allow='autoplay' src='https://player.vimeo.com/video/429163871' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                     allow='autoplay' src='https://player.vimeo.com/video/433331131' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                         </div>
                 
 

@@ -141,7 +141,7 @@ background-color: rgb(238, 194, 120);
 
         <!-- Header (v1) -->
        
-        <section class="slice slice-xl bg-cover bg-size--cover" data-offset-top="#header-main" style="background-image: url(&quot;<?php echo BASE_URL?>/assets/img/venue/world.jpg&quot;); background-position: center center; padding-top: 150px;">
+        <section class="slice slice-xl bg-cover bg-size--cover" data-offset-top="#header-main" style="background-image: url(&quot;<?php echo BASE_URL?>/assets/img/backgrounds/audience.jpg&quot;); background-position: center center; padding-top: 150px;">
             <span class="mask bg-dark opacity-3"></span>
             <div class="container pt-5 pt-lg-2 position-relative zindex-100">
               <div class="row">
@@ -156,8 +156,8 @@ background-color: rgb(238, 194, 120);
                   </div>
                   </a>  
                   <div class="">
-                    <h2 class="gieqsGold mt-4">
-                      <span class="display-5 font-weight-bold">FREE Live Stream in High Definition.<br/>4 locations.<br/>Focussed on everyday endoscopy.</span>
+                    <h2 class="gieqsGold mt-4 card p-2 text-left">
+                      <span class="display-5 font-weight-bold">FREE Live Stream in High Definition.<br/>3 locations.<br/>Focussed on everyday endoscopy.</span>
                       
                       
                     </h2>
@@ -186,7 +186,7 @@ background-color: rgb(238, 194, 120);
                   <ul>
                       <li><span class="display-5 font-weight-light">Westmead Hospital.  Sydney.  Australia.</span></li>
                       <li><span class="display-5 font-weight-light">Forzani & MacPhail Colon Cancer Screening Centre.  Calgary. Canada.</span></li>
-                      <li><span class="display-5 font-weight-light">Cheltenham Hospital. Cheltenham. UK.</span></li>
+                     <!--  <li><span class="display-5 font-weight-light">Cheltenham Hospital. Cheltenham. UK.</span></li> -->
 
                     </ul>
                   
@@ -207,7 +207,7 @@ background-color: rgb(238, 194, 120);
                   <div class="card-body">
                     <div class="delimiter-bottom pb-3 mb-4">
                       
-                      <h5 class="text-center mt-4">4 locations</h5>
+                      <h5 class="text-center mt-4">3 locations</h5>
                     </div>
                     <p class="text-center">Based in Belgium.  Truly international.  Since the international faculty will not be travelling to Belgium due to COVID-19 restrictions, we bring them to you on the digital stream.  In High Definition.</p>
                   </div>

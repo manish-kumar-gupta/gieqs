@@ -199,9 +199,10 @@ background-color: rgb(238, 194, 120);
                       </button></div>
                   </form>
                 </div>
-                <div class="card-footer px-md-5"><small>Don't yet have an account? You can now </small>
-             <a href="<?php echo BASE_URL . '/pages/program/online.php?id=2456';?>" class="small font-weight-bold">create an account</a></div>
-              </div>
+                <div class="card-footer px-md-5"><small>Don't yet have an account?
+             <?php if ($userid){echo 'You can now <a href="' . BASE_URL . '/pages/program/online.php?id=2456" class="small font-weight-bold">create an account</a>';}else{echo '<br/>You can register from end August 2020';}?></small></div>
+              
+            </div>
             </div>
             <div class="col-lg-5 order-lg-1 d-none d-lg-block">
               <blockquote>
