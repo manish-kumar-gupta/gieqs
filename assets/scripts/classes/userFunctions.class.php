@@ -90,6 +90,28 @@ Class userFunctions {
 	    return $randomString;
 	}
 
+	public function getEmailListKey ($email){
+
+		$q = "SELECT `id` FROM `emailList` WHERE `email` = '$email'";
+        //echo $q;
+
+        $result = $this->connection->RunQuery($q);
+		$nRows = $result->rowCount();
+			if ($nRows == 1){
+
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                    $userid = $row['id'];
+                }
+
+				return $userid;
+			}else{
+				return FALSE;
+			}
+
+
+	}
+
 
 	
 

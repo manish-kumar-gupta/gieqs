@@ -219,7 +219,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                   <p class="lead lh-180 mt-4">And after the congress we will leave all the content on GIEQs learning, so you can watch at your leisure, <strong>free</strong> if you register for the congress.</p>
 
                   <div class="btn-container mt-5">
-                  <a href="https://vimeo.com/429163871" class="btn bg-gieqsGold text-dark rounded-pill btn-icon mt-4" data-fancybox>Discover more</a>
+                  <a href="https://vimeo.com/433331131" class="btn bg-gieqsGold text-dark rounded-pill btn-icon mt-4" data-fancybox>Discover more</a>
                   </div>
                 </div>
               </div>

@@ -157,7 +157,7 @@ $q = "Select * from `emailList` WHERE `id` = $key";
      *
      */
 	public function matchRecord($key_row){
-		$result = $this->connection->RunQuery("Select * from `emailList` where `id` = '$key_row' ");
+		$result = $this->connection->RunQuery("Select * from `emailList` where `email` = '$key_row' ");
 		$nRows = $result->rowCount();
 			if ($nRows == 1){
 				return TRUE;
