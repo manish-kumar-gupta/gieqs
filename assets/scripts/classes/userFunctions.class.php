@@ -112,6 +112,24 @@ Class userFunctions {
 
 	}
 
+	public function getAllEmailsFaculty(){
+		$q = "Select `email` from `faculty`";
+				$result = $this->connection->RunQuery($q);
+									$rowReturn = array();
+								$x = 0;
+								$nRows = $result->rowCount();
+								if ($nRows > 0){
+		
+							while($row = $result->fetch(PDO::FETCH_ASSOC)){
+					
+					$rowReturn[$x] = $row["email"];
+				$x++;		}return $rowReturn;}
+		
+					else{return FALSE;
+					}
+					
+			}
+
 
 	
 

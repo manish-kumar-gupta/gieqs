@@ -466,8 +466,7 @@
             display: none !important;
         }
     </style>
-    <div class="preheader" style="font-size: 1px; display: none !important;">Registration open now! Visit Ghent in
-        October 2020 for a new kind of endoscopy meeting.</div>
+    <div class="preheader" style="font-size: 1px; display: none !important;">Digital Registration open now! The first international meeting on everyday endoscopy.  October 7/8 2020.  Online.</div>
     <center>
         <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable"
             style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;height:100%;margin:0;padding:0;width:100%;">
@@ -2583,7 +2582,7 @@
                                                                             <br>
                                                                             To unsubscribe, please click 
                                                                             <a
-                                                                                href="*/unsubscribe_link/*"
+                                                                                href="https://www.gieqs.com/pages/authentication/removeConsentMailingList.php?email=<?php echo $email;?>"
                                                                                 style="mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#FFFFFF;font-weight:normal;text-decoration:underline;">here
                                                                                </a>
                                                                             <br>

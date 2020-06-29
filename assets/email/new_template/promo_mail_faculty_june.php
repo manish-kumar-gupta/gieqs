@@ -466,8 +466,7 @@
             display: none !important;
         }
     </style>
-    <div class="preheader" style="font-size: 1px; display: none !important;">Registration open now! Visit Ghent in
-        October 2020 for a new kind of endoscopy meeting.</div>
+    <div class="preheader" style="font-size: 1px; display: none !important;">Digital Registration open now! The first international meeting on everyday endoscopy.  October 7/8 2020.  Online.</div>
     <center>
         <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable"
             style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;height:100%;margin:0;padding:0;width:100%;">
@@ -579,7 +578,7 @@
                                                                             </h4>
                                                                             <h1
                                                                                 style="display:block;margin:0;padding:0;color:#222222;font-family:Helvetica;font-size:40px;font-style:normal;font-weight:bold;line-height:150%;letter-spacing:normal;text-align:center;">
-                                                                                Digital Edition Registration now open.</h1>
+                                                                                Thanks for being part of GIEQs.</h1>
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
@@ -643,7 +642,7 @@
 
                                                                             <h3
                                                                                 style="display:block;margin:0;padding: 0;color:#444444;font-family:Helvetica;font-size:22px;font-style:normal;font-weight:bold;line-height:150%;letter-spacing:normal;text-align:left;">
-                                                                              Dear Friends, Colleagues, Endoscopists and Endoscopy Nurses,
+                                                                              Dear GIEQs Faculty Member,
                                                                           </h3>
                                                                         </td>
                                                                     </tr>
@@ -661,30 +660,44 @@
                                                                             style="padding-top:0;padding-right:18px;padding-bottom:9px;padding-left:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;word-break:break-word;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
 
 
-                                                                            <p
-                                                                                style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;font-weight:bold">
-                                                                                Welcome to GIEQs Digital.</p>
-                                                                            <p style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;"> Due to COVID-19 restrictions we cannot hold GIEQs at the Ghelamco arena in Ghent as we planned. </p>
-                                                                          <p style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">So we are ready to deliver GIEQs Digital - the first digital international event focussed on everyday endoscopy, <strong> streamed in high definition</strong>, directly to your computer / hospital / living room <strong>from 8am - 630pm on 7 / 8th October 2020</strong>.</p>
+                                                                            
+                                                                                <p><strong>We thank you so much, our friends and colleagues, for having committed to be part of the first edition of GIEQs, an endoscopy event focussed on the everyday, back in March. </strong></p>
+
+<p>And boy has a lot changed since then! </p>
+
+<p>We wanted to update you on our plans for the conference given the Coronavirus restrictions. </p>
+
+<p>Firstly we will hold GIEQs on 7/8 October 2020 whatever happens. The event will be fully digital and renamed GIEQs digital. </p>
+
+<p>We plan to run the event from our newly rebuilt endoscopy unit at UZG with a number of satellite film studios around the hospital building. This video (web video) gives you more of an idea of what we are thinking. We propose that those who agreed to moderate will be involved as moderators on the live stream. This video indicates the possibilities of video acquisition from our partner organisation. </p>
+
+<p>All live cases will still go ahead. They will be captured and streamed live. Real-time interaction will be possible with the online audience. Other speakers and moderators will be present for local and face-to-face interaction during the live cases and lectures.</p>
+
+<p>We will run a slightly modified version of the original program we previously advertised and ask you to come around the time we have already advertised. More logistical details will of course follow nearer the time. We will endeavour that you only have to come on a single day.</p>
+
+<p>All of the material will be stored and go towards creating our curriculum for endoscopy on GIEQs.com. Some insight into how this may look in the future can be found <a href="https://www.gieqs.com/learning"
+                                                                            class="mc-template-link" 
+                                                                            target="_blank"
+                                                                            style="mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#007C89;font-weight:normal;text-decoration:underline;">here</a>. As you know there is an urgent need for such material as training and education is pressured due to service commitment during the coronavirus situation.</p>
+
+<p>Please for now simply reconfirm your commitment to this exciting project in its new form. Your modified conference plan will be mailed again to you shortly and at this stage please let us know if it works for you. We hope this is the first of many GIEQs events and we long forward to partnering with you in the long term. </p>
+
+<p>Also If you wish to host a GIEQs event at your institution we are partnering with industry colleagues to set up spokes - perhaps a lecture theatre or room in your hospital - where you and your colleagues / nurses can come together to enjoy the digital GIEQs stream. Please reply to this mail if you would like more information on this. </p>
+
 <!--GIEQS BUTTON -->
 
 
 
                                                                             
 
-                                                                            <p style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;"> From today you can register for a digital pass. </p>
-                                                                          <p style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">And the best news of all? This groundbreaking new educational event will be yours at a significantly <strong>reduced rate</strong>, thanks to the generosity of our sponsors. </p>
-                                                                          <p style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">GIEQs digital promises a stellar faculty, highly-praised academic program and live interaction from your internet device. Furthermore we will immediately upload the recordings of the event to <a href="https://www.gieqs.com/learning"
-                                                                            class="mc-template-link" 
-                                                                            target="_blank"
-                                                                            style="mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#007C89;font-weight:normal;text-decoration:underline;">GIEQs Online</a> (our new online endoscopy education portal) so that you can enjoy them for up to a month afterwards. All included with your registration. </p>
+                                                                          
                                                                           <p style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">Check out our video below for more information or click <a href="https://www.gieqs.com/program"
                                                                     			   class="mc-template-link" 
 																				   target="_blank"
-                                                                    			   style="mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#007C89;font-weight:normal;text-decoration:underline;">here</a> for the program and <a href="https://www.gieqs.com/register"
-                                                                    			   class="mc-template-link" 
-																				   target="_blank"
-                                                                                   style="mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#007C89;font-weight:normal;text-decoration:underline;">here</a> to register. </p>
+                                                                    			   style="mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#007C89;font-weight:normal;text-decoration:underline;">here</a> for the program. </p>
+
+                                                                                   <p>With our best wishes and hoping to hear from you soon</p>
+
 
                                                                                    <table border="0" cellpadding="0" cellspacing="0"
                                                                                    width="100%" class="mcnImageGroupBlock"
@@ -767,7 +780,6 @@
                                                                                     </tr>
                                                                                 </tbody>
                                                                             </table>
-                                                                          <p style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">Hope to see you in October 2020 and face-to-face in 2021, </p>
                                                                             <p style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">The hosts of the Symposium</p>
 <ul>
                                         <li
@@ -2583,7 +2595,7 @@
                                                                             <br>
                                                                             To unsubscribe, please click 
                                                                             <a
-                                                                                href="*/unsubscribe_link/*"
+                                                                                href="https://www.gieqs.com/pages/authentication/removeConsentMailingList.php?email=<?php echo $email;?>"
                                                                                 style="mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#FFFFFF;font-weight:normal;text-decoration:underline;">here
                                                                                </a>
                                                                             <br>

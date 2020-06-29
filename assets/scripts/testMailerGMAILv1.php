@@ -62,7 +62,7 @@
 
 // error_reporting(-1);
 
-$debug=true;
+$debug=false;
 
 $folder = 'https://' . $_SERVER['HTTP_HOST'] . '/studyserver/PROSPER/';
 
@@ -97,7 +97,17 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 //require($_SERVER['DOCUMENT_ROOT'].'/studyserver/PROSPER/scripts/phpmailer/SMTP.php');
 
-function Mailer ($email, $subject, $filename){
+function get_include_contents($filename, $variablesToMakeLocal) {
+    extract($variablesToMakeLocal);
+    if (is_file($filename)) {
+        ob_start();
+        include $filename;
+        return ob_get_clean();
+    }
+    return false;
+}
+
+function Mailer ($email, $subject, $filename, $emailVaryarray){
 		
 		$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 				try {
@@ -120,10 +130,10 @@ function Mailer ($email, $subject, $filename){
     
 					//Recipients
 					$mail->setFrom('admin@gieqs.com', 'Ghent International Endoscopy Quality Symposium');
-					$mail->addAddress('admin@gieqs.com');
+					//$mail->addAddress('admin@gieqs.com');
 					foreach ($email as $key=>$value){
 						
-						$mail->addBCC($value);
+						$mail->addAddress($value);
 						
 					}
 					
@@ -141,7 +151,9 @@ function Mailer ($email, $subject, $filename){
 					$mail->isHTML(true);                                  // Set email format to HTML
 					$mail->Subject = $subject;
                     
-                    $mail->msgHTML(file_get_contents(BASE_URI . $filename), __DIR__);
+                    $mail->msgHTML(get_include_contents(BASE_URI . $filename, $emailVaryarray));
+                    $mail->AltBody = strip_tags((get_include_contents(BASE_URI . $filename, $emailVaryarray)));
+
                     // $mail->Body    = $txt;
 					//$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
@@ -197,11 +209,48 @@ print_r($emailList);
 
 $emailArray = $emailList->getAllEmails();
 
-//print_r($emailArray);
+print_r($emailArray);
 
-Mailer(array(0 => 'djtate@gmail.com'), $subject, '/assets/email/new_template/promo_mail_participants_june.php');
+//Mailer(array(0 => 'djtate@gmail.com'), $subject, '/assets/email/new_template/promo_mail_participants_june.php');
 
 
+$subject = "Digital Registration is Open.  The Ghent International Endoscopy Quality Symposium, October 7/8 2020";
+
+$i=0;
+
+foreach ($emailArray AS $key=>$value){
+
+    //echo $key;
+    //echo $value;
+
+    //$firstname = $value['firstname'];
+    //$surname = $value['surname'];
+    $email = $emailArray[$i];
+
+    //$emailVaryarray['firstname'] = $firstname;
+    //$emailVaryarray['surname'] = $surname;
+    $emailVaryarray['email'] = $email;
+    echo 'emailArray is ' . $email;
+
+
+    //ACTIVE MAILER FROM THE DATABASE
+    //Mailer(array(0 => $email), $subject, '/assets/email/new_template/promo_mail_participants_june.php', $emailVaryarray); //uncomment for active mail
+    Mailer(array(0 => 'djtate@gmail.com'), $subject, '/assets/email/new_template/promo_mail_participants_june.php', $emailVaryarray);
+
+    //TEST MAILER
+    //Mailer(array(0 => 'david.tate@uzgent.be'), $subject, '/assets/email/emailTemplateSponsorsJan.php', $emailVaryarray);  //TEST MAIL
+    
+    //TODO change the reply to mail address
+    //TODO work on dutch characters
+    //TODO repeat if fails
+    //TODO
+
+    //$x++;
+    $i++;
+    if($i==2) break;
+
+
+}
 
 
 

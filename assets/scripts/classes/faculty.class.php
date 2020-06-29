@@ -2,7 +2,7 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 7-03-2020
+ * Create Date: 30-06-2020
  *
  * DJT 2019
  *
@@ -17,6 +17,7 @@ Class faculty {
 	private $title; //varchar(100)
 	private $firstname; //varchar(200)
 	private $surname; //varchar(200)
+	private $email; //varchar(100)
 	private $type; //varchar(20)
 	private $replyInvolved; //varchar(11)
 	private $confirmInvolved; //varchar(11)
@@ -32,10 +33,11 @@ Class faculty {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_faculty($title,$firstname,$surname,$type,$replyInvolved,$confirmInvolved,$confirmGuidelines,$user_id){
+	public function New_faculty($title,$firstname,$surname,$email,$type,$replyInvolved,$confirmInvolved,$confirmGuidelines,$user_id){
 		$this->title = $title;
 		$this->firstname = $firstname;
 		$this->surname = $surname;
+		$this->email = $email;
 		$this->type = $type;
 		$this->replyInvolved = $replyInvolved;
 		$this->confirmInvolved = $confirmInvolved;
@@ -56,6 +58,7 @@ Class faculty {
 			$this->title = $row["title"];
 			$this->firstname = $row["firstname"];
 			$this->surname = $row["surname"];
+			$this->email = $row["email"];
 			$this->type = $row["type"];
 			$this->replyInvolved = $row["replyInvolved"];
 			$this->confirmInvolved = $row["confirmInvolved"];
@@ -82,6 +85,7 @@ $q = "Select * from `faculty` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["title"] = $row["title"];
 			$rowReturn[$x]["firstname"] = $row["firstname"];
 			$rowReturn[$x]["surname"] = $row["surname"];
+			$rowReturn[$x]["email"] = $row["email"];
 			$rowReturn[$x]["type"] = $row["type"];
 			$rowReturn[$x]["replyInvolved"] = $row["replyInvolved"];
 			$rowReturn[$x]["confirmInvolved"] = $row["confirmInvolved"];
@@ -112,6 +116,7 @@ $q = "Select * from `faculty` WHERE `id` = $key";
 			$rowReturn[$x]["title"] = $row["title"];
 			$rowReturn[$x]["firstname"] = $row["firstname"];
 			$rowReturn[$x]["surname"] = $row["surname"];
+			$rowReturn[$x]["email"] = $row["email"];
 			$rowReturn[$x]["type"] = $row["type"];
 			$rowReturn[$x]["replyInvolved"] = $row["replyInvolved"];
 			$rowReturn[$x]["confirmInvolved"] = $row["confirmInvolved"];
@@ -399,6 +404,13 @@ $q = "UPDATE `faculty` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return email - varchar(100)
+	 */
+	public function getemail(){
+		return $this->email;
+	}
+
+	/**
 	 * @return type - varchar(20)
 	 */
 	public function gettype(){
@@ -459,6 +471,13 @@ $q = "UPDATE `faculty` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function setsurname($surname){
 		$this->surname = $surname;
+	}
+
+	/**
+	 * @param Type: varchar(100)
+	 */
+	public function setemail($email){
+		$this->email = $email;
 	}
 
 	/**
