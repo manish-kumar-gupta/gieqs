@@ -684,6 +684,8 @@
 
 <p>Also If you wish to host a GIEQs event at your institution we are partnering with industry colleagues to set up spokes - perhaps a lecture theatre or room in your hospital - where you and your colleagues / nurses can come together to enjoy the digital GIEQs stream. Please reply to this mail if you would like more information on this. </p>
 
+<p>If you have any questions, suggestions or please do not hesitate to get in touch and we will be happy to help! Ruth our faculty manager can be contacted by replying to this mail or on E: gieqs@seauton-international.com, M: +32 474 84 15 31.</p>
+
 <!--GIEQS BUTTON -->
 
 
@@ -824,40 +826,7 @@
                                                             </table>
 
                                                           <!--GIEQS BUTTON -->
-											 <table border="0" cellpadding="0"
-                                                                                cellspacing="0" width="100%"
-                                                                                class="mcnButtonBlock"
-                                                                                style="min-width:100%;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                                                <tbody class="mcnButtonBlockOuter">
-                                                                                    <tr>
-                                                                                        <td style="padding-top:25px;padding-right:18px;padding-bottom:18px;padding-left:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;"
-                                                                                            valign="top" align="center"
-                                                                                            class="mcnButtonBlockInner">
-                                                                                            <table border="0"
-                                                                                                cellpadding="0"
-                                                                                                cellspacing="0"
-                                                                                                class="mcnButtonContentContainer"
-                                                                                                style="border-collapse:separate !important;border-radius:3px;background-color:#1b385d;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust: 100%;">
-                                                                                                <tbody>
-                                                                                                    <tr>
-                                                                                                        <td align="center"
-                                                                                                            valign="middle"
-                                                                                                            class="mcnButtonContent"
-                                                                                                            style="font-family:Helvetica;font-size:18px;padding:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                                                                          <a class="mcnButton "
-                                                                                                                title="Find Out More"
-                                                                                                                href="https://www.gieqs.com"
-                                                                                                                target="_blank"
-                                                                                                                style="font-weight:bold;letter-spacing:-0.5px;line-height:100%;text-align:center;text-decoration:none;color:#e3ebf6;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;display:block;">Register here
-                                                                                                            </a>
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                </tbody>
-                                                                                            </table>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                </tbody>
-                                                          </table>
+											 
 
                                                           <table align="left" border="0" cellpadding="0"
                                                                 cellspacing="0"

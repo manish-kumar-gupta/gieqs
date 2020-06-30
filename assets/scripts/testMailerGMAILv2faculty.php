@@ -236,8 +236,8 @@ foreach ($emailArray AS $key=>$value){
 
 
     //ACTIVE MAILER FROM THE DATABASE
-    //Mailer(array(0 => $email), $subject, '/assets/email/new_template/promo_mail_participants_june.php', $emailVaryarray); //uncomment for active mail
-    //Mailer(array(0 => 'djtate@gmail.com'), $subject, '/assets/email/new_template/promo_mail_participants_june.php', $emailVaryarray);
+    //Mailer(array(0 => $email), $subject, '/assets/email/new_template/promo_mail_faculty_june.php', $emailVaryarray); //uncomment for active mail
+    //Mailer(array(0 => 'djtate@gmail.com'), $subject, '/assets/email/new_template/promo_mail_faculty_june.php', $emailVaryarray);
 
     //TEST MAILER
     //Mailer(array(0 => 'david.tate@uzgent.be'), $subject, '/assets/email/emailTemplateSponsorsJan.php', $emailVaryarray);  //TEST MAIL
