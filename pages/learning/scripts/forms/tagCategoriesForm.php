@@ -273,7 +273,9 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
 			        <p>
 		
 					    <form id="tagCategories" class="m-3">
-					    <?php echo $formv1->generateText('tagCategoryName', 'tagCategoryName', '', 'tooltip here');
+						<?php 
+						echo $formv1->generateSelect('superCategory', 'superCategory', '', 'superCategory', 'tooltip here');
+						echo $formv1->generateText('tagCategoryName', 'tagCategoryName', '', 'tooltip here');
 								echo $formv1->generateSelect('active', 'active', '', 'Yes_No', 'tooltip here');
 ?>
 						    <button id="submittagCategories" class="btn btn-sm bg-dark">Submit</button>

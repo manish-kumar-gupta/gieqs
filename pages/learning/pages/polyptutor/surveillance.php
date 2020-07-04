@@ -17,8 +17,7 @@
       $requiredUserLevel = 6;
 
 
-      require BASE_URI . '/pages/learning/includes/head.php';
-
+      require BASE_URI . '/head.php';
       $general = new general;
 
       $navigator = new navigator;

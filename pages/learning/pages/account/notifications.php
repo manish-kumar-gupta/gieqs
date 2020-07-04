@@ -19,7 +19,7 @@
       $tokenaccess = 1;
 
 
-      require BASE_URI . '/pages/learning/includes/head.php';
+      require BASE_URI . '/head.php';
 
       $general = new general;
       $users = new users;

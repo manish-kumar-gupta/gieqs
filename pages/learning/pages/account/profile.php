@@ -19,7 +19,7 @@
 
 
 
-      require BASE_URI . '/pages/learning/includes/head.php';
+      require BASE_URI . '/head.php';
 
      
 

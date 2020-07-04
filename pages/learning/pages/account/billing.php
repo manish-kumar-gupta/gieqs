@@ -18,8 +18,8 @@
       $requiredUserLevel = 6;
 
 
-      require BASE_URI . '/pages/learning/includes/head.php';
-
+      require BASE_URI . '/head.php';
+      
       $general = new general;
       $users = new users;
       $users->Load_from_key($userid);

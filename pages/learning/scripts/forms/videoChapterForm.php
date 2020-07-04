@@ -863,6 +863,7 @@ function showCategoryModal () {
 
     var selectorObject = getDataQuery('tagCategories', '', {
             'id': 'id',
+            'Focus': 'superCategory',
             'Category Name': 'tagCategoryName'
         }, 2);
 
@@ -1708,6 +1709,7 @@ $(document).ready(function() {
 
         var selectorObject = getDataQuery('tagCategories', '', {
             'id': 'id',
+            'Focus': 'superCategory',
             'Category Name': 'tagCategoryName'
         }, 2);
 
