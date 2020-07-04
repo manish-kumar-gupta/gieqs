@@ -436,7 +436,7 @@ $programme = new programme;
 <!-- Site Location JS -->
 <script src="<?php echo BASE_URL; ?>/assets/js/siteLocation.js"></script>
 <!-- Datatables -->
-<script src="<?php echo BASE_URL; ?>/node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo BASE_URL; ?>/node_modules/datatables.net/js/jquery.datatables.min.js"></script>
 <script src="<?php echo BASE_URL; ?>/assets/libs/datatables/datatables.min.js"></script>
 
 <script>

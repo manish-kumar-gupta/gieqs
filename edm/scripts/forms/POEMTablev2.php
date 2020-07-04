@@ -52,7 +52,7 @@ background-color: rgb(238, 194, 120);
 
 }
             </style>
-			    <link rel="stylesheet" href="<?php echo BASE_URL1; ?>/assets/libs/datatables/dataTables.min.css">
+			    <link rel="stylesheet" href="<?php echo BASE_URL1; ?>/assets/libs/datatables/datatables.min.css">
 
 		</head>
 		
@@ -94,8 +94,8 @@ background-color: rgb(238, 194, 120);
 		        
 		    </div>
 			<!-- Datatables -->
-<script src="<?php echo BASE_URL1; ?>/node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="<?php echo BASE_URL1; ?>/assets/libs/datatables/dataTables.min.js"></script>
+<script src="<?php echo BASE_URL1; ?>/node_modules/datatables.net/js/jquery.datatables.min.js"></script>
+<script src="<?php echo BASE_URL1; ?>/assets/libs/datatables/datatables.min.js"></script>
 
 		<script>
 			switch (true) {

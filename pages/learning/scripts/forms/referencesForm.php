@@ -31,10 +31,10 @@
 
 	<script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
 	<!-- Datatables -->
-<script src="<?php echo BASE_URL; ?>/node_modules/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="<?php echo BASE_URL; ?>/assets/libs/datatables/dataTables.min.js"></script>
+<script src="<?php echo BASE_URL; ?>/node_modules/datatables.net/js/jquery.datatables.min.js"></script>
+<script src="<?php echo BASE_URL; ?>/assets/libs/datatables/datatables.min.js"></script>
     
-<link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/datatables/dataTables.min.css">
+<link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/datatables/datatables.min.css">
     <style>
        
         .gieqsGold {
