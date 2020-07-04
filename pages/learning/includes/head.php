@@ -49,7 +49,7 @@
 <script src="<?php echo BASE_URL;?>/assets/js/purpose.core.js"></script>
 <script src="<?php echo BASE_URL;?>/assets/libs/select2/dist/js/select2.min.js"></script>
 <script src="<?php echo BASE_URL;?>/assets/js/purpose.js"></script>
-<script src="<?php echo BASE_URL;?>/assets/js/generaljs.js"></script>
+<script src="<?php echo BASE_URL;?>/pages/learning/includes/generaljs.js"></script>
 <script src="<?php echo BASE_URL;?>/node_modules/jquery-validation/dist/jquery.validate.js"></script>
 
 

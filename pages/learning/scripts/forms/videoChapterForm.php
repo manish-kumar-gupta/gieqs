@@ -859,6 +859,66 @@ function deleteImage(imageRowClicked){
 	
 }
 
+function showCategoryModal () {
+
+    var selectorObject = getDataQuery('tagCategories', '', {
+            'id': 'id',
+            'Category Name': 'tagCategoryName'
+        }, 2);
+
+        //console.log(selectorObject);
+
+        selectorObject.done(function(data) {
+
+            //console.log(data);
+
+            $('.modal').modal('show');
+
+            //$('.modal').show();
+            
+
+
+
+            $('.modal').find('.modalContent').html('<h3>Choose Tag Category</h3>');
+
+
+            $('.modal').find('.modalContent').append('<p>' + data + '</p>');
+
+            $('.modal').find('.modalContent').append('<button class="btn btn-sm bg-primary py-0" id="newTagCategory">Add new tag category</button>');
+
+
+            var $table = $('.modal').find('#dataTable2');
+
+            //var $table = $("#demo table");
+$table.DataTable({
+"sScrollY": "600px",
+"fnDrawCallback" : function(oSettings) {
+var total_count = oSettings.fnRecordsTotal();
+var columns_in_row = $(this).children('thead').children('tr').children('th').length;
+var show_num = oSettings._iDisplayLength;
+var tr_count = $(this).children('tbody').children('tr').length;
+var missing = show_num - tr_count;
+if (show_num < total_count && missing > 0){
+for(var i = 0; i < missing; i++){
+$(this).append(' ');
+}
+}
+if (show_num > total_count) {
+for(var i = 0; i < (total_count - tr_count); i++) {
+$(this).append(' ');
+}
+}
+}
+});
+
+            return;
+
+
+
+        })
+
+}
+
 
 function fn60sec() {
 
@@ -1737,6 +1797,7 @@ $(this).append(' ');
 
             $('.modal').find('.modalContent').html('<h3>Choose Tag</h3>');
 
+            $('.modal').find('.modalContent').append('<button onclick="showCategoryModal()" class="btn btn-sm m-1 p-1 btn-primary w-25">' + 'Return to Base list' + '</button>');
 
             $('.modal').find('.modalContent').append('<p>' + data + '</p>');
 
