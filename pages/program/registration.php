@@ -321,11 +321,9 @@ $registrationURL = 'https://eu.eventscloud.com/200200203';
                                 <div class="card-header py-5 border-0 delimiter-bottom">
                                     <span class="d-block h5 mb-4">Early Bird</span>
                                     <div class="h1 gieqsGold text-center mb-0" data-pricing-value="250">€
-                                        <span class="price">50</span></div>
+                                        <span class="price">35</span></div>
                                     <span class="h6 text-muted">full registration</span>
-                                    <div class="h6 text-muted text-center mb-0 mt-4"
-                                        data-pricing-value="200">€ <span class="price">35</span> for single
-                                        day</div>
+                                    
 
                                 </div>
                                 <div class="card-body">
@@ -344,11 +342,9 @@ $registrationURL = 'https://eu.eventscloud.com/200200203';
                                 <div class="card-header py-5 border-0 delimiter-bottom">
                                     <span class="d-block h5 mb-4">Regular Rate</span>
                                     <div class="h1 gieqsGold text-center mb-0" data-pricing-value="400">€
-                                        <span class="price">75</span></div>
+                                        <span class="price">50</span></div>
                                     <span class="h6 text-muted">full registration</span>
-                                    <div class="h6 text-muted text-center mb-0 mt-4"
-                                        data-pricing-value="300">€ <span class="price">50</span> for single
-                                        day</div>
+                                    
 
                                 </div>
                                 <div class="card-body">
