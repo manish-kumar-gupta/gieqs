@@ -228,7 +228,7 @@ min-width:30vw;
 
                         $videoDataMod[0]['author'] = $authorText;
                         $videoDataMod[0]['authorid'] = $author;
-                        $videoDataMod[0]['centreName'] = $users->getcentre($author);
+                        $videoDataMod[0]['centreName'] = $users->getcentreName($author);
                         $videoDataMod[0]['centreCity'] = $users->getcentreCity($author);
                         $country = $users->getcentreCountry($author);
                         $videoDataMod[0]['centreCountry'] = $general->getCountryName($country);
