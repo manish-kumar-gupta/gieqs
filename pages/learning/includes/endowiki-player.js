@@ -635,7 +635,7 @@ $(document).ready(function () {
 
 		$('#videoDescription').html('' + val.description + '');
 
-		$('#videoAuthor').html('<a class="text-muted" target="_blank" href="http://localhost:90/dashboard/gieqs/pages/learning/pages/account/public-profile.php?id=' + val.authorid + '">' + val.author + ', ' + val.centreName + ', ' + val.centreCountry + '</a>');
+		$('#videoAuthor').html('<a class="text-muted" target="_blank" href="'+siteRoot+'/pages/learning/pages/account/public-profile.php?id=' + val.authorid + '">' + val.author + ', ' + val.centreName + ', ' + val.centreCountry + '</a>');
 
 	})
 
