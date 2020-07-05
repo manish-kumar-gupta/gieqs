@@ -73,18 +73,17 @@ background-color: #1b385dde;
 }
 
         
+.video {
 
-        iframe {
-  box-sizing: border-box;
-    height: 25.25vw;
-    left: 50%;
-    min-height: 100%;
-    min-width: 100%;
+    
+box-sizing: border-box;
+    /* height: 25.25vw; */
+    /* min-height: 100%;
+    min-width: 100%; */
     transform: translate(-50%, -50%);
     position: absolute;
-    top: 50%;
-    width: 100.77777778vh;
-}
+
+}   
 .cursor-pointer {
 
     cursor: pointer;
@@ -110,6 +109,24 @@ left: -50vw;
 top: -20vh;
 min-width:30vw;
 
+
+}
+.video {
+  box-sizing: border-box;
+    height: 25.25vw;
+    /* min-height: 100%;
+    min-width: 100%; */
+    transform: translate(-50%, -50%);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100.77777778vh;
+    
+}
+#col-container{
+
+    padding-left: 0px !important;
+    padding-right: 0px !important;
 
 }
 }
@@ -143,6 +160,41 @@ min-width:30vw;
 
             
 
+}
+@keyframes fade-in-up {
+  0% { opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+.video-wrap {
+  text-align: center;
+}
+
+.video iframe {
+  max-width: 100%;
+  max-height: 100%;
+}
+.video.stuck {
+  z-index: 25;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  width: 400px !important;
+  
+  -webkit-animation: fade-in-up .25s ease forwards;
+          animation: fade-in-up .25s ease forwards;
 }
     </style>
 
@@ -582,15 +634,13 @@ min-width:30vw;
     <div id="playerContainer" class="d-flex align-items-end" style="padding-left:15px; padding-right:15px;">
         <div class="container mt-2 mb-2 py-0">
             <div class="row">
-                <div class="col-lg-9 mb-0 mb-lg-0 pr-lg-3">
+                <div id="col-container" class="col-lg-9 mb-0 mb-lg-0 pr-lg-3">
 
 
                
             <div class="container">
-            <div id="videoDisplay" class="embed-responsive embed-responsive-16by9">
-                    <iframe  id='videoChapter' class="embed-responsive-item" style="left:50%; top:50%;"
-                     allow='autoplay'
-                        webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            <div id="videoDisplay" class="embed-responsive embed-responsive-16by9 video-wrap">
+                    
                         </div>
                 </div>
 </div>
@@ -665,7 +715,82 @@ min-width:30vw;
                         </div>
                     </div>
                     <div class="collapse" id="collapseExample3">
-                        <dic class="card">
+                        <div class="card">
+                        <div class="card-header pt-4 pb-2">
+                <div class="d-flex align-items-center">
+                <a href="#" class="avatar bg-gieqsGold text-dark avatar-md rounded-circle mr-3 p-1">
+                        DT
+                      </a>
+                  <div class="avatar-content">
+                    <h6 class="mb-0">Comments</h6>
+                    <div class="d-flex">
+<!--                     <small class="d-block text-muted mr-2"><i class="fas fa-clock mr-2"></i>Profile updated : 3 hrs ago</small>
+ -->                    <small class="d-block text-muted mr-2"><i class="fas fa-pen mr-2"></i>Commenting Publicly as David Tate</small>
+</div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                  <!-- Comments-->
+                <div class="mb-3">
+                  <div class="media media-comment">
+                    <img alt="Image placeholder" class="rounded-circle shadow mr-4" src="../../assets/img/theme/light/team-2-800x800.jpg" style="width: 64px;">
+                    <div class="media-body">
+                      <div class="media-comment-bubble left-top">
+                        <h6 class="mt-0">Alexis Ren</h6>
+                        <p class="text-sm lh-160">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+                        <div class="icon-actions">
+                          <a href="#" class="love active">
+                            <i class="fas fa-heart"></i>
+                            <span class="text-muted">10 likes</span>
+                          </a>
+                          <a href="#">
+                            <i class="fas fa-comment"></i>
+                            <span class="text-muted">1 reply</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="media media-comment">
+                    <img alt="Image placeholder" class="rounded-circle shadow mr-4" src="../../assets/img/theme/light/team-3-800x800.jpg" style="width: 64px;">
+                    <div class="media-body">
+                      <div class="media-comment-bubble left-top">
+                        <h6 class="mt-0">Tom Cruise</h6>
+                        <p class="text-sm lh-160">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+                        <div class="icon-actions">
+                          <a href="#" class="love active">
+                            <i class="fas fa-heart"></i>
+                            <span class="text-muted">20 likes</span>
+                          </a>
+                          <a href="#">
+                            <i class="fas fa-comment"></i>
+                            <span class="text-muted">3 replies</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="media media-comment align-items-center">
+                    <img alt="Image placeholder" class="avatar rounded-circle shadow mr-4" src="../../assets/img/theme/light/team-1-800x800.jpg">
+                    <div class="media-body">
+                      <form>
+                        <div class="form-group mb-0">
+                          <div class="input-group input-group-merge">
+                            <textarea class="form-control" data-toggle="autosize" placeholder="Write your comment" rows="1"></textarea>
+                            <div class="input-group-append">
+                              <button class="btn btn-primary" type="button">
+                                <span class="far fa-paper-plane"></span>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                                            </div>
                             <div class="card-footer">
                                 <div class="row align-items-left">
                                     <div class="col">

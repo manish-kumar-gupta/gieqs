@@ -13,7 +13,7 @@
 
       //define user access level
 
-      $openaccess = 1;a
+      $openaccess = 1;
 
       require BASE_URI . '/pages/learning/includes/head.php';
 

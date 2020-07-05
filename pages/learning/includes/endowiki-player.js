@@ -258,13 +258,41 @@ function videoDisplay(url) {
 
 	if (isNormalInteger(url) === true) {
 
-		$('#videoDisplay').html("<iframe id='videoChapter' class='embed-responsive-item' style='left:50%; top:50%;' src='https://player.vimeo.com/video/" + url + "' frameborder='0' allow='autoplay' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>");
+		$('#videoDisplay').html("<iframe id='videoChapter' class='video' src='https://player.vimeo.com/video/" + url + "' frameborder='0' allow='autoplay' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>");
 
 		$('#submitimagefiles').prop('disabled', true);
 		$('#video').prop('disabled', true);
 		$('#resetVideoSubmit').show();
 		$('#videoForm').show();
 		$('#url').val(url);
+
+		waitForFinalEvent(function() {
+            //alert("Resize...");
+                var $window = $(window);
+                var $videoWrap = $(document).find('.video-wrap');
+                console.log($videoWrap);
+                var $video = $(document).find('.video');
+                console.log($video);
+				var videoHeight = $video.outerHeight();
+				$video.css({top: '50%', left: '50%'});
+
+                $window.on('scroll',  function() {
+                var windowScrollTop = $window.scrollTop();
+                var videoBottom = videoHeight + $videoWrap.offset().top - 200;
+                
+                if (windowScrollTop > videoBottom) {
+					$videoWrap.height(videoHeight);
+					$video.addClass('stuck');
+					$video.css({top: 'auto', left: 'auto'});
+					
+                } else {
+                    $videoWrap.height('auto');
+					$video.removeClass('stuck');
+					$video.css({top: '50%', left: '50%'});
+                }
+                });
+
+            }, 100, 'Wrapper Video');
 
 
 
