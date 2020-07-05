@@ -8,7 +8,7 @@
 
     <?php
 
-error_reporting(E_ALL);
+error_reporting(E_NONE);
 
 
       //define user access level
@@ -219,11 +219,22 @@ min-width:30vw;
                         
                         $author = $videoDataMod[0]['author'];
 
+
                         //echo $author;
 
                         $authorText = $users->getUserName($author);
 
+                        $users->Load_from_key($author);
+
                         $videoDataMod[0]['author'] = $authorText;
+                        $videoDataMod[0]['authorid'] = $author;
+                        $videoDataMod[0]['centreName'] = $users->getcentre($author);
+                        $videoDataMod[0]['centreCity'] = $users->getcentreCity($author);
+                        $country = $users->getcentreCountry($author);
+                        $videoDataMod[0]['centreCountry'] = $general->getCountryName($country);
+
+                        $users->endusers();
+                        
 
                         echo json_encode($videoDataMod);
 
