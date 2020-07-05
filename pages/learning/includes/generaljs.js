@@ -1034,7 +1034,25 @@ $(document).ready(function() {
 	//!login validation
 	
 	
-	
+	$.validator.setDefaults({
+		highlight: function(element) {
+			//$(element).closest('.form-control').addClass('bg-gieqsGold').addClass('text-white');
+		},
+		unhighlight: function(element) {
+			//$(element).closest('.form-control').removeClass('bg-gieqsGold').removeClass('text-white');
+		},
+		errorElement: 'div',
+		errorClass: 'input-group-btn pb-2 text-gieqsGold',
+		errorPlacement: function(error, element) {
+			
+			
+			if(element.parent('.input-group').length) {
+				error.insertAfter(element.parent());
+			} else {
+				error.insertAfter(element);
+			}
+		}
+	});
 	
 
 })

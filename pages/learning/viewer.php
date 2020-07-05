@@ -26,7 +26,8 @@ error_reporting(E_NONE);
       $usersSocial = new usersSocial;
 
       $usersLikeVideo = new usersLikeVideo;
-$usersFavouriteVideo = new usersFavouriteVideo;
+        
+        $usersFavouriteVideo = new usersFavouriteVideo;
 
       ?>
 
@@ -670,10 +671,10 @@ min-width:30vw;
             <div class="row">
                 <div class="col-lg-9 mb-0 mb-lg-0">
                     <p class="text-left d-flex align-items-left">
-                    <a class="dropdown-item" data-toggle="collapse" href="#collapseExamplenotyet" aria-expanded="false"
+                    <!-- <a class="dropdown-item" data-toggle="collapse" href="#collapseExamplenotyet" aria-expanded="false"
                             aria-controls="collapseExample2">
                             <i class="fas fa-chevron-circle-up"></i> show histopathology result
-                        </a>
+                        </a> -->
                         <a class="dropdown-item" data-toggle="collapse" href="#collapseExample2" aria-expanded="false"
                             aria-controls="collapseExample3">
                             <i class="fas fa-chevron-circle-up"></i> show references
@@ -686,8 +687,8 @@ min-width:30vw;
                     <div class="collapse" id="collapseExample2">
                         <div class="card">
                             <div class="card-footer">
-                            <span class="h5 mb-4">References from Video</span>
-                                <div class="flex-row">
+                            <span class="h5 mb-4">References</span>
+                                <div class="flex-row mt-2">
                                 
                                     <div>
                                         <?php echo $general->getFullReferenceListVideo($id);?>
@@ -718,7 +719,7 @@ min-width:30vw;
                         <div class="card">
                         <div class="card-header pt-4 pb-2">
                 <div class="d-flex align-items-center">
-                <a href="#" class="avatar bg-gieqsGold text-dark avatar-md rounded-circle mr-3 p-1">
+                <a class="avatar bg-gieqsGold text-dark avatar-md rounded-circle mr-3 p-1">
                         DT
                       </a>
                   <div class="avatar-content">
@@ -734,26 +735,9 @@ min-width:30vw;
               <div class="card-body">
                   <!-- Comments-->
                 <div class="mb-3">
-                  <div class="media media-comment">
-                    <img alt="Image placeholder" class="rounded-circle shadow mr-4" src="../../assets/img/theme/light/team-2-800x800.jpg" style="width: 64px;">
-                    <div class="media-body">
-                      <div class="media-comment-bubble left-top">
-                        <h6 class="mt-0">Alexis Ren</h6>
-                        <p class="text-sm lh-160">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
-                        <div class="icon-actions">
-                          <a href="#" class="love active">
-                            <i class="fas fa-heart"></i>
-                            <span class="text-muted">10 likes</span>
-                          </a>
-                          <a href="#">
-                            <i class="fas fa-comment"></i>
-                            <span class="text-muted">1 reply</span>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="media media-comment">
+                    <div id="commentsArea">
+                  
+                  <!-- <div class="media media-comment">
                     <img alt="Image placeholder" class="rounded-circle shadow mr-4" src="../../assets/img/theme/light/team-3-800x800.jpg" style="width: 64px;">
                     <div class="media-body">
                       <div class="media-comment-bubble left-top">
@@ -771,16 +755,17 @@ min-width:30vw;
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="media media-comment align-items-center">
-                    <img alt="Image placeholder" class="avatar rounded-circle shadow mr-4" src="../../assets/img/theme/light/team-1-800x800.jpg">
+                  </div> -->
+                                            </div>
+                  <div class="media mt-3 media-comment align-items-center">
+                  <a class="avatar bg-gieqsGold text-dark avatar-md rounded-circle mr-3 p-1">DT</a>
                     <div class="media-body">
-                      <form>
+                      <form id="commentForm" validate>
                         <div class="form-group mb-0">
                           <div class="input-group input-group-merge">
-                            <textarea class="form-control" data-toggle="autosize" placeholder="Write your comment" rows="1"></textarea>
+                            <textarea class="form-control" id="comment" name="comment" data-toggle="autosize" placeholder="Write your comment" rows="1"></textarea>
                             <div class="input-group-append">
-                              <button class="btn btn-primary" type="button">
+                              <button id="submitComment" class="btn btn-primary" type="button">
                                 <span class="far fa-paper-plane"></span>
                               </button>
                             </div>
@@ -792,15 +777,16 @@ min-width:30vw;
                 </div>
                                             </div>
                             <div class="card-footer">
-                                <div class="row align-items-left">
-                                    <div class="col">
+                                <div class="row align-items-left p-2">
+                                    <span class="small text-muted">Comments are moderated for inapropriate content</span>
+                                    <!-- <div class="col">
                                         <span class="badge badge-primary mx-2">
                                             comment 1
                                         </span>
                                         <span class="badge badge-primary mx-2">
                                             comment 2
                                         </span>
-                                    </div>
+                                    </div> -->
                                     <div class="col text-right text-right">
                                         <div class="actions">
                                             <a href="#" class="action-item"><i class="fas fa-info mr-1"></i></a>
@@ -952,10 +938,164 @@ min-width:30vw;
             });
         }
 
+        function getComments(){
+
+            var videoid = videoPassed;
+            
+                //alert(videoid);
+                //$(this).children('.fa-thumbs-up').addClass('gieqsGold');
+                //$(this).children('.fa-thumbs-up').removeClass('text-muted');
+                
+                //AJAX to add the like
+
+                
+
+                //change state
+
+//ajax to a script to update
+
+                
+
+                
+
+
+                var dataToSend = {
+
+                    videoid: videoid,
+                    
+                    
+
+                }
+
+                    //const jsonString2 = JSON.stringify(dataToSend);
+
+                    const jsonString = JSON.stringify(dataToSend);
+                    //console.log(jsonString);
+                    //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
+
+                    var request2 = $.ajax({
+                    beforeSend: function () {
+
+
+                    },
+                    url: siteRoot + "scripts/queries/getCommentsVideo.php",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: jsonString,
+                    });
+
+
+
+                    request2.done(function (data) {
+                    // alert( "success" );
+                    if (data){
+                        //show green tick
+                        console.log(data);
+
+                        $('#commentsArea').html(data);
+                        
+                        
+                        //$('#notification-services').delay('1000').addClass('is-valid');
+                        
+                            
+                            
+
+                    }
+                    //$(document).find('.Thursday').hide();
+                    //$(icon).prop("disabled", false);
+                    })
+
+                
+                //$(this).('.fa-thumbs-up').first().addClass("gieqsGold");
+                //remove the check from the tag removed
+
+
+        }
+        
+        function submitCommentForm(){
+
+
+            //console.log('reached submit');
+
+            //alert('hello');
+
+            var videoid = videoPassed;
+            var type = 1;
+            var comment = $('#comment').val();
+                //alert(videoid);
+                //$(this).children('.fa-thumbs-up').addClass('gieqsGold');
+                //$(this).children('.fa-thumbs-up').removeClass('text-muted');
+                
+                //AJAX to add the like
+
+                var icon = $('#submitComment');
+                $(icon).prop("disabled", true);
+
+                //change state
+
+//ajax to a script to update
+
+                
+
+                
+
+
+                var dataToSend = {
+
+                    videoid: videoid,
+                    type: type,
+                    comment: comment,
+                    
+
+                }
+
+                    //const jsonString2 = JSON.stringify(dataToSend);
+
+                    const jsonString = JSON.stringify(dataToSend);
+                    //console.log(jsonString);
+                    //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
+
+                    var request2 = $.ajax({
+                    beforeSend: function () {
+
+
+                    },
+                    url: siteRoot + "scripts/useractions/addUserComment.php",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: jsonString,
+                    });
+
+
+
+                    request2.done(function (data) {
+                    // alert( "success" );
+                    if (data == 1){
+                        //show green tick
+
+                        
+                        
+                        //$('#notification-services').delay('1000').addClass('is-valid');
+                        
+                            
+                            
+
+                    }
+                    //$(document).find('.Thursday').hide();
+                    $(icon).prop("disabled", false);
+                    })
+
+                
+                //$(this).('.fa-thumbs-up').first().addClass("gieqsGold");
+                //remove the check from the tag removed
+
+               
+        }
+
         $(document).ready(function () {
 
             
-
+            getComments();
 
             /* $(document).click(function(event) { 
                 $target = $(event.target);
@@ -1254,6 +1394,94 @@ var dataToSend = {
 
 
 })
+
+$(document).on('click', '#submitComment', function () {
+
+event.preventDefault();
+
+$('#commentForm').submit();
+
+})
+
+$("#commentForm").validate({
+
+invalidHandler: function (event, validator) {
+  var errors = validator.numberOfInvalids();
+  console.log("there were " + errors + " errors");
+  if (errors) {
+    var message = errors == 1 ?
+      "1 field contains errors. It has been highlighted" :
+      +errors + " fields contain errors. They have been highlighted";
+
+
+    $('#error').text(message);
+    //$('div.error span').addClass('form-text text-danger');
+    //$('#errorWrapper').show();
+
+    $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function () {
+      $("#errorWrapper").slideUp(500);
+    });
+  } else {
+    $('#errorWrapper').hide();
+  }
+},
+ignore: [],
+rules: {
+
+  //EDIT
+
+
+
+
+
+
+
+  comment: {
+    required: true,
+    maxlength: 600,
+    minlength: 25,
+
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+},
+submitHandler: function (form) {
+
+  //submitPreRegisterForm();
+
+  submitCommentForm();
+
+  //TODO submit changes
+  //TODO reimport the array at the top
+  //TODO redraw the table
+
+
+
+}
+
+
+
+
+});
 
 
         })

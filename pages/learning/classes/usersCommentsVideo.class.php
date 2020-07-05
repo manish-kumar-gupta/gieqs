@@ -11,111 +11,30 @@
  */
 require_once 'DataBaseMysqlPDO.class.php';
 
-Class usersSocial {
+Class usersCommentsVideo {
 
-	
+	private $id; //int(11)
+	private $user_id; //int(11)
+	private $video_id; //int(11)
+	private $comment; //varchar(600)
+	private $created; //timestamp
+	private $updated; //timestamp
 	private $connection;
 
 	public function __construct(){
 		$this->connection = new DataBaseMysqlPDOLearning();
-    }
-    
-    public function getComments($video_id){
-
-        $q = "SELECT `user_id`, `comment`, `created` FROM `usersCommentsVideo` WHERE `video_id` = '$video_id' ORDER BY `created` DESC";
-        
-        $result = $this->connection->RunQuery($q);
-        
-        $returnArray = [];
-        $x=0;
-        
-        $nRows = $result->rowCount();
-        if ($nRows > 0){
-            while($row = $result->fetch(PDO::FETCH_ASSOC)){
-                $returnArray[$x]['comment'] = $row['comment'];
-                $returnArray[$x]['user_id'] = $row['user_id'];
-                $returnArray[$x]['created'] = $row['created'];
-                $x++;
-            }
-            return $returnArray;
-        }else{
-        
-            return null;
-        }
-        
-        
-        
-        
-        }
-    
-    public function countViews($video_id){
-
-        $q = "SELECT count(`id`) AS `count` FROM `usersViewsVideo` WHERE `video_id` = '$video_id' GROUP BY `user_id`";
-
-        $result = $this->connection->RunQuery($q);
-
-        if ($result){
-		while($row = $result->fetch(PDO::FETCH_ASSOC)){
-			$count = $row['count'];
-        }
-        return $count;
-        }else{
-
-            return 0;
-        }
-
-
-
-
-    }
-
-    public function countFavourites($video_id){
-
-        $q = "SELECT count(`id`) AS `count` FROM `usersFavouriteVideo` WHERE `video_id` = '$video_id' GROUP BY `user_id`";
-
-        $result = $this->connection->RunQuery($q);
-
-        $nRows = $result->rowCount();
-		if ($nRows > 0){
-            while($row = $result->fetch(PDO::FETCH_ASSOC)){
-                $count = $row['count'];
-            }
-            return $count;
-        }else{
-    
-            return '0';
-        }
-
-
-
-
-    }
-
-    public function countLikes($video_id){
-
-        $q = "SELECT count(`id`) AS `count` FROM `usersLikeVideo` WHERE `video_id` = '$video_id' GROUP BY `user_id`";
-
-        $result = $this->connection->RunQuery($q);
-		$nRows = $result->rowCount();
-		if ($nRows > 0){
-            while($row = $result->fetch(PDO::FETCH_ASSOC)){
-                $count = $row['count'];
-            }
-            return $count;
-        }else{
-    
-            return '0';
-        }
-    
-    }
+	}
 
     /**
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_usersFavouriteVideo($user_id,$video_id){
+	public function New_usersCommentsVideo($user_id,$video_id,$comment,$created,$updated){
 		$this->user_id = $user_id;
 		$this->video_id = $video_id;
+		$this->comment = $comment;
+		$this->created = $created;
+		$this->updated = $updated;
 	}
 
     /**
@@ -125,11 +44,14 @@ Class usersSocial {
      *
      */
 	public function Load_from_key($key_row){
-		$result = $this->connection->RunQuery("Select * from usersFavouriteVideo where id = \"$key_row\" ");
+		$result = $this->connection->RunQuery("Select * from usersCommentsVideo where id = \"$key_row\" ");
 		while($row = $result->fetch(PDO::FETCH_ASSOC)){
 			$this->id = $row["id"];
 			$this->user_id = $row["user_id"];
 			$this->video_id = $row["video_id"];
+			$this->comment = $row["comment"];
+			$this->created = $row["created"];
+			$this->updated = $row["updated"];
 		}
 	}
     /**
@@ -139,7 +61,7 @@ Class usersSocial {
  *
  */
 	public function Load_records_limit_json($y, $x=0){
-$q = "Select * from `usersFavouriteVideo` LIMIT " . $x . ", " . $y;
+$q = "Select * from `usersCommentsVideo` LIMIT " . $x . ", " . $y;
 		$result = $this->connection->RunQuery($q);
 							$rowReturn = array();
 						$x = 0;
@@ -150,6 +72,9 @@ $q = "Select * from `usersFavouriteVideo` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["id"] = $row["id"];
 			$rowReturn[$x]["user_id"] = $row["user_id"];
 			$rowReturn[$x]["video_id"] = $row["video_id"];
+			$rowReturn[$x]["comment"] = $row["comment"];
+			$rowReturn[$x]["created"] = $row["created"];
+			$rowReturn[$x]["updated"] = $row["updated"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -163,7 +88,7 @@ $q = "Select * from `usersFavouriteVideo` LIMIT " . $x . ", " . $y;
  *
  */
 	public function Return_row($key){
-$q = "Select * from `usersFavouriteVideo` WHERE `id` = $key";
+$q = "Select * from `usersCommentsVideo` WHERE `id` = $key";
 		$result = $this->connection->RunQuery($q);
 							$rowReturn = array();
 						$x = 0;
@@ -174,6 +99,9 @@ $q = "Select * from `usersFavouriteVideo` WHERE `id` = $key";
 			$rowReturn[$x]["id"] = $row["id"];
 			$rowReturn[$x]["user_id"] = $row["user_id"];
 			$rowReturn[$x]["video_id"] = $row["video_id"];
+			$rowReturn[$x]["comment"] = $row["comment"];
+			$rowReturn[$x]["created"] = $row["created"];
+			$rowReturn[$x]["updated"] = $row["updated"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -184,7 +112,7 @@ $q = "Select * from `usersFavouriteVideo` WHERE `id` = $key";
 
         public function Load_records_limit_json_datatables($y, $x = 0)
             {
-            $q = "Select * from `usersFavouriteVideo` LIMIT $x, $y";
+            $q = "Select * from `usersCommentsVideo` LIMIT $x, $y";
             $result = $this->connection->RunQuery($q);
             $rowReturn = array();
             $x = 0;
@@ -216,19 +144,9 @@ $q = "Select * from `usersFavouriteVideo` WHERE `id` = $key";
      *
      */
 	public function matchRecord($key_row){
-		$result = $this->connection->RunQuery("Select * from `usersFavouriteVideo` where `id` = '$key_row' ");
+		$result = $this->connection->RunQuery("Select * from `usersCommentsVideo` where `id` = '$key_row' ");
 		$nRows = $result->rowCount();
 			if ($nRows == 1){
-				return TRUE;
-			}else{
-				return FALSE;
-			}
-    }
-    
-    public function matchRecord2way($user_id, $video_id){
-		$result = $this->connection->RunQuery("Select * from `usersFavouriteVideo` where `user_id` = '$user_id' AND `video_id` = '$video_id' ");
-		$nRows = $result->rowCount();
-			if ($nRows > 0){
 				return TRUE;
 			}else{
 				return FALSE;
@@ -239,7 +157,7 @@ $q = "Select * from `usersFavouriteVideo` WHERE `id` = $key";
 		* Return the number of rows
 		*/
 	public function numberOfRows(){
-		return $this->connection->TotalOfRows('usersFavouriteVideo');
+		return $this->connection->TotalOfRows('usersCommentsVideo');
 	}
 
     /**
@@ -317,7 +235,7 @@ $x=0;
 			$x++;
 
 		} 
-$q = "INSERT INTO `usersFavouriteVideo` ($keys) VALUES ($keys2)";
+$q = "INSERT INTO `usersCommentsVideo` ($keys) VALUES ($keys2)";
 		
  $stmt = $this->connection->prepare($q); 
 $stmt->execute($ovMod3); 
@@ -402,7 +320,7 @@ $x=0;
 			$x++;
 
 		} 
-$q = "UPDATE `usersFavouriteVideo` SET $implodeArray WHERE `id` = '$this->id'";
+$q = "UPDATE `usersCommentsVideo` SET $implodeArray WHERE `id` = '$this->id'";
 
 		
  $stmt = $this->connection->RunQuery($q); 
@@ -417,7 +335,7 @@ $q = "UPDATE `usersFavouriteVideo` SET $implodeArray WHERE `id` = '$this->id'";
      *
      */
 	public function Delete_row_from_key($key_row){
-		$result = $this->connection->RunQuery("DELETE FROM `usersFavouriteVideo` WHERE `id` = $key_row");
+		$result = $this->connection->RunQuery("DELETE FROM `usersCommentsVideo` WHERE `id` = $key_row");
 		return $result->rowCount();
 	}
 
@@ -429,7 +347,7 @@ $q = "UPDATE `usersFavouriteVideo` SET $implodeArray WHERE `id` = '$this->id'";
      */
 	public function GetKeysOrderBy($column, $order){
 		$keys = array(); $i = 0;
-		$result = $this->connection->RunQuery("SELECT id from usersFavouriteVideo order by $column $order");
+		$result = $this->connection->RunQuery("SELECT id from usersCommentsVideo order by $column $order");
 			while($row = $result->fetch_array(MYSQLI_ASSOC)){
 				$keys[$i] = $row["id"];
 				$i++;
@@ -459,6 +377,27 @@ $q = "UPDATE `usersFavouriteVideo` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return comment - varchar(600)
+	 */
+	public function getcomment(){
+		return $this->comment;
+	}
+
+	/**
+	 * @return created - timestamp
+	 */
+	public function getcreated(){
+		return $this->created;
+	}
+
+	/**
+	 * @return updated - timestamp
+	 */
+	public function getupdated(){
+		return $this->updated;
+	}
+
+	/**
 	 * @param Type: int(11)
 	 */
 	public function setid($id){
@@ -479,10 +418,31 @@ $q = "UPDATE `usersFavouriteVideo` SET $implodeArray WHERE `id` = '$this->id'";
 		$this->video_id = $video_id;
 	}
 
+	/**
+	 * @param Type: varchar(600)
+	 */
+	public function setcomment($comment){
+		$this->comment = $comment;
+	}
+
+	/**
+	 * @param Type: timestamp
+	 */
+	public function setcreated($created){
+		$this->created = $created;
+	}
+
+	/**
+	 * @param Type: timestamp
+	 */
+	public function setupdated($updated){
+		$this->updated = $updated;
+	}
+
     /**
      * Close mysql connection
      */
-	public function endusersSocial(){
+	public function endusersCommentsVideo(){
 		$this->connection->CloseMysql();
 	}
 
