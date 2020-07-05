@@ -636,8 +636,9 @@ min-width:30vw;
                     <div class="collapse" id="collapseExample2">
                         <div class="card">
                             <div class="card-footer">
+                            <span class="h5 mb-4">References from Video</span>
                                 <div class="flex-row">
-                                    
+                                
                                     <div>
                                         <?php echo $general->getFullReferenceListVideo($id);?>
                                         <!-- 
@@ -652,9 +653,10 @@ min-width:30vw;
                                     -->
                                     </div>
                                     <div class="text-right text-right">
+                                        
                                         <div class="actions">
 
-                                            <a href="#" class="action-item"><i class="fas fa-info mr-1"></i></a>
+                                            <a class="action-item"><i class="fas fa-info mr-1" data-toggle="tooltip" title="click on the references to go to PubMed"></i></a>
                                         </div>
                                     </div>
 

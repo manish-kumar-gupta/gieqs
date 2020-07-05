@@ -1525,6 +1525,59 @@ class general {
 
 	}
 
+	public function getFullReferenceListv1 ($tagid){
+
+		$q = "SELECT b.`id`, c.`authors`, c.`formatted`, c.`DOI`, c.`journal`, c.`PMID` 
+		from `tags` as a 
+		INNER JOIN `referencesTag` as b on a.`id` = b.`tag_id` 
+		INNER JOIN `references` as c on c.`id` = b.`references_id` 
+		WHERE a.`id` = $tagid ";
+
+		//echo $q;
+
+		//$q = "SELECT `authors`, `formatted`, `DOI` from `references` WHERE `id` = $id";
+
+		//echo $q;
+
+		$references = '';
+		$x = 1;
+		$result = $this->connection->RunQuery($q);
+
+		if ($result->num_rows > 0){
+
+			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+				$PMID = $row['PMID'];
+				$references .= '<p class="referencelist" data="' . $PMID . '" style="text-align:left;" >' . $x . ' - ';
+				$references .= $row['authors'];
+				//echo var_dump( explode( ',', $row['authors'] ) );
+				$references .= '. ';
+				$references .= $row['formatted'];
+				$references .= ' ';
+				$references .= $row['journal'];
+				$references .= ' ';
+				if ($row['DOI'] <> ''){
+
+					$references .= $row['DOI'];
+					$references .= '.';
+				}
+				$references .= '</p>';
+				
+				$x++;
+			}
+
+			echo $references;
+		}else{
+
+			echo '<p style="text-align:left;">No references yet</p>';
+		}
+
+		
+
+
+
+
+	}
+
 	public function getFullReferenceListImageSet ($imageSetid){
 
 		$q = "SELECT b.`id`, c.`authors`, c.`formatted`, c.`DOI`, c.`journal`, c.`PMID` 
@@ -1641,19 +1694,44 @@ class general {
 
 	}
 
+	public function getCategoryforTag($tagid){
+
+		$q = "SELECT a.`id` as tagid, a.`tagName`, b.`id`, b.`tagCategoryName`
+		from `tags` as a 
+		INNER JOIN `tagCategories` as b on b.`id` = a.`tagCategories_id` 
+		WHERE a.`id` = $tagid";
+
+		$result = $this->connection->RunQuery($q);
+
+		if ($result->num_rows > 0){
+
+			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+
+				$categoryName = $row['tagCategoryName'];
+
+			}
+
+		}
+
+		return $categoryName;
+
+
+	}
+
 	public function getFullReferenceListVideo ($videoid){
 
 		//this for imageset then another for video, merge same and return
 
-		$q = "SELECT b.`id`, c.`authors`, c.`formatted`, c.`DOI`, c.`journal`, c.`PMID` 
+		$q = "SELECT a.`id` as tagid, a.`tagName`, b.`id`, c.`authors`, c.`formatted`, c.`DOI`, c.`journal`, c.`PMID` 
 		from `tags` as a 
 		INNER JOIN `referencesTag` as b on a.`id` = b.`tag_id` 
 		INNER JOIN `references` as c on c.`id` = b.`references_id`
 		INNER JOIN `chapterTag` as d on a.`id` = d.`tags_id`
 		INNER JOIN `chapter` as e on d.`chapter_id` = e.`id`
 		INNER JOIN `video` as f on f.`id` = e.`video_id`
-		WHERE f.`id` = $videoid 
-		GROUP BY c.`id`";
+		WHERE f.`id` = $videoid
+		GROUP BY c.`id`
+		ORDER BY a.`id` ASC";
 
 		//echo $q;
 
@@ -1687,8 +1765,11 @@ class general {
 			while($row = $result->fetch_array(MYSQLI_ASSOC)){
 				$PMID = $row['PMID'];
 				
-				$references .= '<p class="referencelist" data="' . $PMID . '" style="text-align:left;" >' . $x . ' - ';
-				$references .= $row['authors'];
+				$references .= '<p class="referencelist" data="' . $PMID . '" style="text-align:left;" data-tag="' . $row['tagid'] . '" >' . $x . ' - ';
+				
+				$authors = explode( ',', $row['authors'] );
+				$n = count($authors);
+				$references .= $authors[0] . ', ' . $authors[1] . ', ' . $authors[$n-1];
 				$references .= '. ';
 				$references .= $row['formatted'];
 				$references .= ' ';
@@ -1699,6 +1780,7 @@ class general {
 					$references .= $row['DOI'];
 					$references .= '.';
 				}
+				$references .= '<span class="badge bg-gray-800 mx-2 mb-1 tagButton" data-tag="' . $row['tagid'] . '">' . $this->getCategoryforTag($row['tagid']) . ' / '. $row['tagName'] . '</span>';
 				$references .= '</p>';
 				
 				
