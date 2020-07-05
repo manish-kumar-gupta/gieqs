@@ -191,8 +191,8 @@ top: -20vh;
             </a>
 
             <a href="https://vimeo.com/422871506" class="btn btn-icon btn-group-nav bg-gieqsGold shadow btn-neutral mx-2" data-fancybox>
-                <span class="btn-inner--icon text-dark"><i class="fas fa-user"></i></span>
-                <span class="animated bounce delay-2s btn-inner--text text-dark d-none d-md-inline-block">Take a Tour!</span>
+                <span class="btn-inner--icon text-dark"><i class="fas fa-directions"></i></span>
+                <span class="animated bounce delay-2s btn-inner--text text-dark d-none d-md-inline-block">Show me the basics!</span>
               </a>
             
         </div>
@@ -202,11 +202,13 @@ top: -20vh;
           <div class="row row-grid align-items-center justify-content-around">
             <div class="col-lg-5 order-lg-2">
               <div class="pr-md-4">
-                <h5 class="h3">Change the way you think about Endoscopy training. Forever.</h5>
-                <p class="text-muted lead my-4">GIEQs learning uses our original tagged based approach throughout to connect you with cases relevant to what you want to discover, fast.</p>
-                <a href="https://vimeo.com/422871506" class="btn bg-gieqsGold text-dark rounded-pill btn-icon mt-4" data-fancybox>
+                <h5 class="h3">Colonoscopy Tutor.</h5>
+                <p class="text-muted lead my-4">Ever wonder why some colonoscopies are difficult?  Some impossible? Why some patients experience significant discomfort whereas others don't?  Why removing small polyps in the right colon is often difficult?</p>
+                <p class="text-muted lead my-4">It turns out that with some understanding of colonoscopy theory and multiple case-based examples, many of these problems are <strong>predictable</strong>, and <strong>preventable</strong>.  Welcome to painless, rapid colon examination.  Leaving you more time for lesion detection and removal.</p>
+
+                <a href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/all.php" class="btn bg-gieqsGold text-dark rounded-pill btn-icon mt-4">
                   <span class="btn-inner--icon"><i class="fas fa-binoculars"></i></span>
-                  <span class="btn-inner--text">Discover</span>
+                  <span class="btn-inner--text">Discover Colonoscopy Tutor</span>
                 </a>
               </div>
             </div>
@@ -218,20 +220,20 @@ top: -20vh;
           </div>
         </div>
       </section>
-      <section class="slice slice-lg bg-cover bg-size--cover" style="background-image: url('<?php echo BASE_URL;?>/assets/img/covers/learning/roomview1.png'); background-position: center bottom;">
+      <section class="slice slice-lg bg-cover" style="background-image: url('<?php echo BASE_URL;?>/assets/img/polyps/sspFuji.png'); background-position: center bottom;">
         <div class="container">
           <div class="row">
             <div class="col-lg-6">
               <div class="card py-5 px-4 box-shadow-3">
                 <div class="card-body">
                   <h6 class="h2">
-                    <strong>Privacy Respecting in-room view</strong> allows rapid visual learning.
+                    <strong>Polypectomy tutor</strong>.
                   </h6>
-                  <p class="lead lh-180 mt-4">Our videos combine in-room audio and visuals with the endoscopic image, respecting the privacy of the patient at all times.</p>
-                  <p class="lead lh-180 mt-4">Feel like you're in the room 1:1 with the endoscopist teaching you the technique.</p>
+                  <p class="lead lh-180 mt-4">Deconstructed technique.  Based on the forthcoming ESGE endoscopic mucosal resection guideline</p>
+                  <p class="lead lh-180 mt-4">Apply an evidence based approach from cold snare polypectomy of small lesions right up to larger lesions &ge; 20mm in size</p>
 
                   <div class="btn-container mt-5">
-                    <a href="#" class="btn btn-primary rounded-pill">Our mission</a>
+                    <a href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/all.php" class="btn bg-gieqsGold text-dark rounded-pill btn-icon mt-4">Discover Polypectomy Tutor</a>
                   </div>
                 </div>
               </div>

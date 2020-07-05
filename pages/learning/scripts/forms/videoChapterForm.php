@@ -909,7 +909,8 @@ for(var i = 0; i < (total_count - tr_count); i++) {
 $(this).append(' ');
 }
 }
-}
+},
+"pageLength": 20,
 });
 
             return;
@@ -1756,7 +1757,8 @@ for(var i = 0; i < (total_count - tr_count); i++) {
 $(this).append(' ');
 }
 }
-}
+},
+"pageLength": 20,
 });
 
             return;
@@ -1827,7 +1829,8 @@ for(var i = 0; i < (total_count - tr_count); i++) {
 $(this).append(' ');
 }
 }
-}
+},
+"pageLength": 20,
 });
 
 
