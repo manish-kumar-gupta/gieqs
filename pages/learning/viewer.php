@@ -21,18 +21,27 @@ error_reporting(E_NONE);
 
       $users = new users;
 
+      $usersViewsVideo = new usersViewsVideo;
+
+      $usersSocial = new usersSocial;
+
+      $usersLikeVideo = new usersLikeVideo;
+$usersFavouriteVideo = new usersFavouriteVideo;
+
       ?>
 
     <!--Page title-->
     <title>GIEQs Online Endoscopy Trainer</title>
 
     <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
+    <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
+
     
 
     <style>
         .gieqsGold {
 
-            color: rgb(238, 194, 120);
+            color: rgb(238, 194, 120) !important;
 
 
         }
@@ -246,7 +255,21 @@ min-width:30vw;
                     <div id="tagCategories" style="display:none;"><?php $allCategories = $general->getAllTagCategories(); print_r($allCategories);?></div>
 
 
-                    <!--CONSTRUCT TAG DISPLAY-->
+                    <!--RECORD THE USER DETAILS AND VIEW-->
+<?php
+
+//echo $userid; echo $id; echo 'hello';
+                        if ($usersViewsVideo->matchRecord2way($userid, $id) === false){  
+                            
+                            //if not recorded already
+
+                            echo $userid; echo $id;
+                $usersViewsVideo->setuser_id($userid);
+                $usersViewsVideo->setvideo_id($id);
+                $usersViewsVideo->prepareStatementPDO();
+            }
+
+?>
 
                     <!--GET TAG CATEGORY NAME 
                     
@@ -397,11 +420,24 @@ min-width:30vw;
                        
                         <div class="col text-left mt-0 align-items-center">
                                                     <div class="actions">
-                                                        <a class="action-item p-0 m-0 pr-4 likes"><i
-                                                                class="fas fa-heart mr-1 pr-1"></i> <span id="likesNumber">50</span></a>
-                                                        <a class="action-item p-0 m-0 pr-4 views"><i class="fas fa-eye mr-1"></i> <span id="viewsNumber">250</span></a>
-                                                            <a class="action-item p-0 m-0 pr-1 text-wrap"><i class="fas fa-user mr-1"></i>
-                                                            <span id="videoAuthor" class="flex-grow"></span></a>
+                                                        <a class="action-item action-favorite p-0 m-0 pr-4 likes" data="<?php echo $id;?>">
+                                                            <i class="fas fa-heart mr-1 pr-1 <?php if ($usersFavouriteVideo->matchRecord2way($userid, $id) === true){echo 'gieqsGold';}else{echo 'text-muted';}?>" data-toggle="tooltip" data-placement="bottom" title="favourite"></i> <span
+                                                                id="likesNumber"><?php echo $usersSocial->countFavourites($id);?></span></a>
+                                                            
+                                                        <a class="action-item action-like p-0 m-0 pr-4 views" data="<?php echo $id;?>">
+                                                            <i class="fas fa-thumbs-up mr-1 <?php if ($usersLikeVideo->matchRecord2way($userid, $id) === true){echo 'gieqsGold';}else{echo 'text-muted';}?>" data-toggle="tooltip"
+                                                            data-placement="bottom" title="like"></i> <span
+                                                                id="viewsNumber"><?php echo $usersSocial->countLikes($id);?></span></a>
+
+                                                        <a class="action-item p-0 m-0 pr-4 views"><i
+                                                                class="fas fa-eye mr-1" data-toggle="tooltip"
+                                                                data-placement="bottom" title="views"></i> <span
+                                                                id="viewsNumber"><?php echo $usersSocial->countViews($id);?></span></a>
+                                                        <a class="action-item p-0 m-0 pr-1 text-wrap"><i
+                                                                class="fas fa-user mr-1"></i>
+                                                            <span id="videoAuthor" class="flex-grow"></span>
+                                                        </a>
+
                                                     </div>
                                                 </div>
 </div>
@@ -874,7 +910,223 @@ min-width:30vw;
 		$(this).css('color', 'white');
 		$(this).css('cursor', 'default');
 
-	})
+    })
+    
+    $(document).on('click', '.action-like', function(){
+
+//alert('hello');
+
+var videoid = $(this).attr('data');
+//alert(videoid);
+//$(this).children('.fa-thumbs-up').addClass('gieqsGold');
+//$(this).children('.fa-thumbs-up').removeClass('text-muted');
+
+//AJAX to add the like
+
+var icon = $(this).children('.fa-thumbs-up');
+$(icon).prop("disabled", true);
+
+//change state
+
+//ajax to a script to update
+
+if($(icon).hasClass('gieqsGold')){
+    var liked = 1;  // already liked
+    /* $(icon).addClass('text-muted');
+    $(icon).removeClass('gieqsGold'); */
+
+}else{
+    var liked = 0;  // not liked yet
+    /* $(icon).removeClass('text-muted');
+    $(icon).addClass('gieqsGold'); */
+}
+
+$(icon).prop("disabled", false);
+
+if (liked == 0){
+
+    var type = 1;
+
+}else if (liked == 1){
+
+    var type = 2;
+
+}
+
+var dataToSend = {
+
+    videoid: videoid,
+    type: type,
+    
+
+}
+
+    //const jsonString2 = JSON.stringify(dataToSend);
+
+    const jsonString = JSON.stringify(dataToSend);
+    //console.log(jsonString);
+    //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
+
+    var request2 = $.ajax({
+    beforeSend: function () {
+
+
+    },
+    url: siteRoot + "scripts/useractions/updateUserLike.php",
+    type: "POST",
+    contentType: "application/json",
+    data: jsonString,
+    });
+
+
+
+    request2.done(function (data) {
+    // alert( "success" );
+    if (data == 1){
+        //show green tick
+
+        if (liked == 1){
+
+            $(icon).addClass('text-muted');
+            $(icon).removeClass('gieqsGold');
+            $(icon).removeClass('animated');
+            $(icon).removeClass('heartBeat');
+
+        }else if (liked == 0){
+
+            $(icon).removeClass('text-muted');
+            $(icon).addClass('gieqsGold');
+            $(icon).addClass('animated');
+            $(icon).addClass('heartBeat');
+            
+
+        }
+        
+        //$('#notification-services').delay('1000').addClass('is-valid');
+        
+            
+            
+
+    }
+    //$(document).find('.Thursday').hide();
+    $(icon).prop("disabled", false);
+    })
+
+
+//$(this).('.fa-thumbs-up').first().addClass("gieqsGold");
+//remove the check from the tag removed
+
+
+})
+
+$(document).on('click', '.action-favorite', function(){
+
+//alert('hello');
+
+var videoid = $(this).attr('data');
+//alert(videoid);
+//$(this).children('.fa-thumbs-up').addClass('gieqsGold');
+//$(this).children('.fa-thumbs-up').removeClass('text-muted');
+
+//AJAX to add the like
+
+var icon = $(this).children('.fa-heart');
+$(icon).prop("disabled", true);
+
+//change state
+
+//ajax to a script to update
+
+if($(icon).hasClass('gieqsGold')){
+    var liked = 1;  // already liked
+    /* $(icon).addClass('text-muted');
+    $(icon).removeClass('gieqsGold'); */
+
+}else{
+    var liked = 0;  // not liked yet
+    /* $(icon).removeClass('text-muted');
+    $(icon).addClass('gieqsGold'); */
+}
+
+$(icon).prop("disabled", false);
+
+if (liked == 0){
+
+    var type = 1;
+
+}else if (liked == 1){
+
+    var type = 2;
+
+}
+
+var dataToSend = {
+
+    videoid: videoid,
+    type: type,
+    
+
+}
+
+    //const jsonString2 = JSON.stringify(dataToSend);
+
+    const jsonString = JSON.stringify(dataToSend);
+    //console.log(jsonString);
+    //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
+
+    var request2 = $.ajax({
+    beforeSend: function () {
+
+
+    },
+    url: siteRoot + "scripts/useractions/updateUserFavourite.php",
+    type: "POST",
+    contentType: "application/json",
+    data: jsonString,
+    });
+
+
+
+    request2.done(function (data) {
+    // alert( "success" );
+    if (data == 1){
+        //show green tick
+
+        if (liked == 1){
+
+            $(icon).addClass('text-muted');
+            $(icon).removeClass('gieqsGold');
+            $(icon).removeClass('animated');
+            $(icon).removeClass('heartBeat');
+
+        }else if (liked == 0){
+
+            $(icon).removeClass('text-muted');
+            $(icon).addClass('gieqsGold');
+            $(icon).addClass('animated');
+            $(icon).addClass('heartBeat');
+            
+
+        }
+
+        //TODO update views and likes number here
+        
+        //$('#notification-services').delay('1000').addClass('is-valid');
+        
+            
+            
+
+    }
+    //$(document).find('.Thursday').hide();
+    $(icon).prop("disabled", false);
+    })
+
+
+//$(this).('.fa-thumbs-up').first().addClass("gieqsGold");
+//remove the check from the tag removed
+
+
+})
 
 
         })

@@ -19,8 +19,16 @@ Class usersFavouriteVideo {
 	private $connection;
 
 	public function __construct(){
-		$this->connection = new DataBaseMysqlPDO();
-	}
+		$this->connection = new DataBaseMysqlPDOLearning();
+    }
+    
+    public function deleteLink($userid, $videoid){
+
+        $q = "DELETE FROM `usersFavouriteVideo` WHERE `user_id` = '$userid' AND `video_id` = '$videoid'";
+        $result = $this->connection->RunQuery($q);
+        return $result;
+
+    }
 
     /**
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
@@ -132,6 +140,16 @@ $q = "Select * from `usersFavouriteVideo` WHERE `id` = $key";
 		$result = $this->connection->RunQuery("Select * from `usersFavouriteVideo` where `id` = '$key_row' ");
 		$nRows = $result->rowCount();
 			if ($nRows == 1){
+				return TRUE;
+			}else{
+				return FALSE;
+			}
+    }
+    
+    public function matchRecord2way($user_id, $video_id){
+		$result = $this->connection->RunQuery("Select * from `usersFavouriteVideo` where `user_id` = '$user_id' AND `video_id` = '$video_id' ");
+		$nRows = $result->rowCount();
+			if ($nRows > 0){
 				return TRUE;
 			}else{
 				return FALSE;

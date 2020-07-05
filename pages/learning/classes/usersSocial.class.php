@@ -11,30 +11,81 @@
  */
 require_once 'DataBaseMysqlPDO.class.php';
 
-Class usersLikeVideo {
+Class usersSocial {
 
-	private $id; //int(11)
-	private $user_id; //int(11)
-	private $video_id; //int(11)
+	
 	private $connection;
 
 	public function __construct(){
 		$this->connection = new DataBaseMysqlPDOLearning();
     }
     
-    public function deleteLink($userid, $videoid){
+    public function countViews($video_id){
 
-        $q = "DELETE FROM `usersLikeVideo` WHERE `user_id` = '$userid' AND `video_id` = '$videoid'";
+        $q = "SELECT count(`id`) AS `count` FROM `usersViewsVideo` WHERE `video_id` = '$video_id' GROUP BY `user_id`";
+
         $result = $this->connection->RunQuery($q);
-        return $result;
 
+        if ($result){
+		while($row = $result->fetch(PDO::FETCH_ASSOC)){
+			$count = $row['count'];
+        }
+        return $count;
+        }else{
+
+            return 0;
+        }
+
+
+
+
+    }
+
+    public function countFavourites($video_id){
+
+        $q = "SELECT count(`id`) AS `count` FROM `usersFavouriteVideo` WHERE `video_id` = '$video_id' GROUP BY `user_id`";
+
+        $result = $this->connection->RunQuery($q);
+
+        $nRows = $result->rowCount();
+		if ($nRows > 0){
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+                $count = $row['count'];
+            }
+            return $count;
+        }else{
+    
+            return '0';
+        }
+
+
+
+
+    }
+
+    public function countLikes($video_id){
+
+        $q = "SELECT count(`id`) AS `count` FROM `usersLikeVideo` WHERE `video_id` = '$video_id' GROUP BY `user_id`";
+
+        $result = $this->connection->RunQuery($q);
+		$nRows = $result->rowCount();
+		if ($nRows > 0){
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+                $count = $row['count'];
+            }
+            return $count;
+        }else{
+    
+            return '0';
+        }
+    
     }
 
     /**
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_usersLikeVideo($user_id,$video_id){
+	public function New_usersFavouriteVideo($user_id,$video_id){
 		$this->user_id = $user_id;
 		$this->video_id = $video_id;
 	}
@@ -46,7 +97,7 @@ Class usersLikeVideo {
      *
      */
 	public function Load_from_key($key_row){
-		$result = $this->connection->RunQuery("Select * from usersLikeVideo where id = \"$key_row\" ");
+		$result = $this->connection->RunQuery("Select * from usersFavouriteVideo where id = \"$key_row\" ");
 		while($row = $result->fetch(PDO::FETCH_ASSOC)){
 			$this->id = $row["id"];
 			$this->user_id = $row["user_id"];
@@ -60,7 +111,7 @@ Class usersLikeVideo {
  *
  */
 	public function Load_records_limit_json($y, $x=0){
-$q = "Select * from `usersLikeVideo` LIMIT " . $x . ", " . $y;
+$q = "Select * from `usersFavouriteVideo` LIMIT " . $x . ", " . $y;
 		$result = $this->connection->RunQuery($q);
 							$rowReturn = array();
 						$x = 0;
@@ -84,7 +135,7 @@ $q = "Select * from `usersLikeVideo` LIMIT " . $x . ", " . $y;
  *
  */
 	public function Return_row($key){
-$q = "Select * from `usersLikeVideo` WHERE `id` = $key";
+$q = "Select * from `usersFavouriteVideo` WHERE `id` = $key";
 		$result = $this->connection->RunQuery($q);
 							$rowReturn = array();
 						$x = 0;
@@ -105,7 +156,7 @@ $q = "Select * from `usersLikeVideo` WHERE `id` = $key";
 
         public function Load_records_limit_json_datatables($y, $x = 0)
             {
-            $q = "Select * from `usersLikeVideo` LIMIT $x, $y";
+            $q = "Select * from `usersFavouriteVideo` LIMIT $x, $y";
             $result = $this->connection->RunQuery($q);
             $rowReturn = array();
             $x = 0;
@@ -137,7 +188,7 @@ $q = "Select * from `usersLikeVideo` WHERE `id` = $key";
      *
      */
 	public function matchRecord($key_row){
-		$result = $this->connection->RunQuery("Select * from `usersLikeVideo` where `id` = '$key_row' ");
+		$result = $this->connection->RunQuery("Select * from `usersFavouriteVideo` where `id` = '$key_row' ");
 		$nRows = $result->rowCount();
 			if ($nRows == 1){
 				return TRUE;
@@ -147,7 +198,7 @@ $q = "Select * from `usersLikeVideo` WHERE `id` = $key";
     }
     
     public function matchRecord2way($user_id, $video_id){
-		$result = $this->connection->RunQuery("Select * from `usersLikeVideo` where `user_id` = '$user_id' AND `video_id` = '$video_id' ");
+		$result = $this->connection->RunQuery("Select * from `usersFavouriteVideo` where `user_id` = '$user_id' AND `video_id` = '$video_id' ");
 		$nRows = $result->rowCount();
 			if ($nRows > 0){
 				return TRUE;
@@ -160,7 +211,7 @@ $q = "Select * from `usersLikeVideo` WHERE `id` = $key";
 		* Return the number of rows
 		*/
 	public function numberOfRows(){
-		return $this->connection->TotalOfRows('usersLikeVideo');
+		return $this->connection->TotalOfRows('usersFavouriteVideo');
 	}
 
     /**
@@ -238,7 +289,7 @@ $x=0;
 			$x++;
 
 		} 
-$q = "INSERT INTO `usersLikeVideo` ($keys) VALUES ($keys2)";
+$q = "INSERT INTO `usersFavouriteVideo` ($keys) VALUES ($keys2)";
 		
  $stmt = $this->connection->prepare($q); 
 $stmt->execute($ovMod3); 
@@ -323,7 +374,7 @@ $x=0;
 			$x++;
 
 		} 
-$q = "UPDATE `usersLikeVideo` SET $implodeArray WHERE `id` = '$this->id'";
+$q = "UPDATE `usersFavouriteVideo` SET $implodeArray WHERE `id` = '$this->id'";
 
 		
  $stmt = $this->connection->RunQuery($q); 
@@ -338,7 +389,7 @@ $q = "UPDATE `usersLikeVideo` SET $implodeArray WHERE `id` = '$this->id'";
      *
      */
 	public function Delete_row_from_key($key_row){
-		$result = $this->connection->RunQuery("DELETE FROM `usersLikeVideo` WHERE `id` = $key_row");
+		$result = $this->connection->RunQuery("DELETE FROM `usersFavouriteVideo` WHERE `id` = $key_row");
 		return $result->rowCount();
 	}
 
@@ -350,7 +401,7 @@ $q = "UPDATE `usersLikeVideo` SET $implodeArray WHERE `id` = '$this->id'";
      */
 	public function GetKeysOrderBy($column, $order){
 		$keys = array(); $i = 0;
-		$result = $this->connection->RunQuery("SELECT id from usersLikeVideo order by $column $order");
+		$result = $this->connection->RunQuery("SELECT id from usersFavouriteVideo order by $column $order");
 			while($row = $result->fetch_array(MYSQLI_ASSOC)){
 				$keys[$i] = $row["id"];
 				$i++;
@@ -403,7 +454,7 @@ $q = "UPDATE `usersLikeVideo` SET $implodeArray WHERE `id` = '$this->id'";
     /**
      * Close mysql connection
      */
-	public function endusersLikeVideo(){
+	public function endusersSocial(){
 		$this->connection->CloseMysql();
 	}
 

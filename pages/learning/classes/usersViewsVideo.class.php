@@ -19,7 +19,7 @@ Class usersViewsVideo {
 	private $connection;
 
 	public function __construct(){
-		$this->connection = new DataBaseMysqlPDO();
+		$this->connection = new DataBaseMysqlPDOLearning();
 	}
 
     /**
@@ -132,6 +132,18 @@ $q = "Select * from `usersViewsVideo` WHERE `id` = $key";
 		$result = $this->connection->RunQuery("Select * from `usersViewsVideo` where `id` = '$key_row' ");
 		$nRows = $result->rowCount();
 			if ($nRows == 1){
+				return TRUE;
+			}else{
+				return FALSE;
+			}
+    }
+    
+    public function matchRecord2way($user_id, $video_id){
+        $q = "Select * from `usersViewsVideo` where `user_id` = '$user_id' AND `video_id` = '$video_id'";
+        echo $q;
+		$result = $this->connection->RunQuery($q);
+		$nRows = $result->rowCount();
+			if ($nRows > 0){
 				return TRUE;
 			}else{
 				return FALSE;

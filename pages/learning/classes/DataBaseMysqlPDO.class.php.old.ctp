@@ -8,7 +8,7 @@
  */
 //;
 		
-Class DataBaseMysqlPDOLearning {
+Class DataBaseMysqlPDO {
 
 	public $conn;
 

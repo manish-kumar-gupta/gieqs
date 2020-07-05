@@ -7,6 +7,19 @@ require '../includes/config.inc.php';
 
 $debug = FALSE;
 
+require (BASE_URI . '/assets/scripts/login_functions.php');
+     
+     //place to redirect the user if not allowed access
+     $location = BASE_URL . '/index.php';
+ 
+     if (!($dbc)){
+     require(DB);
+     }
+    
+     
+     require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
+
+
 //require (BASE_URI.'/scripts/headerCreatorV2.php');
 
 //(1);
@@ -51,6 +64,9 @@ $general = new general;
 $navigator = new navigator;
 
 $user = new users;
+
+$usersLikeVideo = new usersLikeVideo;
+$usersFavouriteVideo = new usersFavouriteVideo;
 
 $data = json_decode(file_get_contents('php://input'), true);
 
@@ -160,13 +176,13 @@ if ($debug) {
                     <div class="row align-items-right my-0">
                         <div class="col-12 my-0 pr-0">
                             <div class="actions text-right">
-                                <a href="#" class="action-item action-favorite" data-toggle="tooltip" data-original-title="Mark as favorite">
-                                    <i class="fas fa-star gieqsGold"></i>
+                                <a class="action-item action-favorite" data-toggle="tooltip" data-original-title="Mark as favorite" data="<?php echo $value['id'];?>">
+                                    <i class="fas fa-heart <?php if ($usersFavouriteVideo->matchRecord2way($userid, $value['id']) === true){echo 'gieqsGold';}else{echo 'text-muted';}?>"></i>
                                 </a>
                                
                             
-                                <a href="#" class="action-item action-like active" data-toggle="tooltip" data-original-title="Like">
-                                    <i class="fas fa-thumbs-up text-muted"></i>
+                                <a class="action-item action-like active" data-toggle="tooltip" data-original-title="Like" data="<?php echo $value['id'];?>">
+                                    <i class="fas fa-thumbs-up <?php if ($usersLikeVideo->matchRecord2way($userid, $value['id']) === true){echo 'gieqsGold';}else{echo 'text-muted';}?>"></i>
                                 </a>
                             </div>
                         </div>
