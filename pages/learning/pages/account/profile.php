@@ -206,7 +206,7 @@ top: -20vh;
             <!-- General information form -->
             <div class="actions-toolbar py-2 mb-4">
               <h5 class="mb-1">General information</h5>
-              <p class="text-sm text-muted mb-0">The information below in your profile is publicly available on GIEQs.com except your email address</p>
+              <p class="text-sm text-muted mb-0">The information below in your profile is <a href="<?php echo BASE_URL;?>/pages/learning/pages/account/public-profile.php?id=<?php echo $userid;?>" target="_blank">publicly available on GIEQs.com</a> except your email address</p>
             </div>
             <form id="userForm">
               <div class="row">
