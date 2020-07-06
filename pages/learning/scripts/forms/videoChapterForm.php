@@ -864,7 +864,7 @@ function deleteImage(imageRowClicked){
 
 function showCategoryModal () {
 
-    var selectorObject = getDataQuery('tagCategories', '', {
+    var selectorObject = getDataQuery('tagCategories', '\`superCategory\` IS NOT NULL', {
             'id': 'id',
             'Focus': 'superCategory',
             'Category Name': 'tagCategoryName'
@@ -1713,7 +1713,7 @@ $(document).ready(function() {
 
 
 
-        var selectorObject = getDataQuery('tagCategories', '', {
+        var selectorObject = getDataQuery('tagCategories', '\`superCategory\` IS NOT NULL', {
             'id': 'id',
             'Focus': 'superCategory',
             'Category Name': 'tagCategoryName'
@@ -2104,9 +2104,10 @@ $(this).append(' ');
 
 
 
-        var selectorObject = getDataQuery('tagCategories', '', {
+        var selectorObject = getDataQuery('tagCategories', '\`superCategory\` IS NOT NULL', {
             'id': 'id',
-            'Category Name': 'tagCategoryName'
+            'Focus': 'superCategory',
+            'Category Name': 'tagCategoryName',
         }, 2);
 
         //console.log(selectorObject);

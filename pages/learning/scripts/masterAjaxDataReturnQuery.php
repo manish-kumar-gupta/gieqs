@@ -77,6 +77,8 @@ if (count($_GET) > 0){
 		exit();
 
 	}*/
+	
+	
 
 	if (!isset($outputFormat)){
 
