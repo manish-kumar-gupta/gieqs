@@ -78,6 +78,10 @@ if ($users->matchRecord($userid)){
         $usersCommentsVideo->setuser_id($userid);
         $usersCommentsVideo->setvideo_id($videoid);
         $usersCommentsVideo->setcomment($comment);
+        //timestamp is stored in UTC
+        $timestamp = date("Y-m-d H:i:s");
+
+        
         $result = $usersCommentsVideo->prepareStatementPDO();
         if ($result > 1){
 

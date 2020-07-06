@@ -97,6 +97,23 @@ if ($commentsArray){
         $users->Load_from_key($value['user_id']);
 
       }
+      $timestamp = date("Y-m-d H:i:s");
+
+      if ($users->gettimezone()){
+
+
+      
+    $userTimezone = new DateTimeZone($users->gettimezone());
+    $gmtTimezone = new DateTimeZone('GMT');
+    $myDateTime = new DateTime($value['created'], $gmtTimezone);
+    $offset = $userTimezone->getOffset($myDateTime);
+    $myInterval=DateInterval::createFromDateString((string)$offset . 'seconds');
+    $myDateTime->add($myInterval);
+    $result = $myDateTime->format('Y-m-d H:i:s');
+
+  }else{
+    $result = $value['created'];
+  }
         
         ?>
 
@@ -106,7 +123,7 @@ if ($commentsArray){
                     <div class="media-body">
                       <div class="media-comment-bubble left-top">
                         <h6 class="mt-0 mb-0"><?php echo $users->getfirstname() . ' ' . $users->getsurname();?></h6>
-                        <span class="small text-muted"><?php echo time_elapsed_string($value['created']);?></span>
+                        <span class="small text-muted"><?php echo time_elapsed_string($result);?></span>
                         <p class="text-sm lh-160"><?php echo $value['comment'];?></p>
                         <!-- <div class="icon-actions">
                           <a href="#" class="love active">
