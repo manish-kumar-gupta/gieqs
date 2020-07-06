@@ -1788,7 +1788,7 @@ $(this).append(' ');
 
 
 
-        var selectorObject = getDataQuery('tags', 'tagCategories_id =\'' + tagCategoryID + '\'', {
+        var selectorObject = getDataQuery('tags', 'tagCategories_id =\'' + tagCategoryID + '\' ORDER BY\`tagName\` ASC', {
             'id': 'id',
             'Tag Name': 'tagName'
         }, 2);
@@ -1816,7 +1816,7 @@ $(this).append(' ');
             var $table = $('.modal').find('#dataTable2');
 
             //var $table = $("#demo table");
-$table.DataTable({
+var dt = $table.DataTable({
 "sScrollY": "600px",
 "fnDrawCallback" : function(oSettings) {
 var total_count = oSettings.fnRecordsTotal();
@@ -1837,8 +1837,10 @@ $(this).append(' ');
 },
 "pageLength": 20,
 });
-
-
+dt.order( [ 2, 'asc' ]).draw();
+/* $table.DataTable({
+    "order": [[ 1, 'desc' ]]
+}); */
             return;
 
 
