@@ -562,7 +562,7 @@ function constructEditTable(idPassed){
 
     imagesString = '`id`=\'' + idPassed + '\'';
     
-    query = "SELECT a.`id`, a.`split`, a.`active`, b.`id` as `chapterid`, b.`name`, b.`timeFrom`, b.`timeTo`, b.`number`, b.`name` AS `chaptername`, b.`description` FROM `video` as a INNER JOIN `chapter` as b ON a.`id` = b.`video_id` WHERE a.`id` = "+idPassed+" ORDER BY b.`number` ASC";
+    query = "SELECT a.`id`, a.`split`, a.`active`, b.`id` as `chapterid`, b.`name`, b.`timeFrom`, b.`timeTo`, b.`number`, b.`name` AS `chaptername`, b.`description` FROM `video` as a INNER JOIN `chapter` as b ON a.`id` = b.`video_id` WHERE a.`id` = "+idPassed+" ORDER BY ISNULL(b.`number`), b.`number` ASC";
 
     var selectorObject = JSONStraightDataQuery("video", query, 7); //to here
 
@@ -884,6 +884,8 @@ function showCategoryModal () {
 
 
             $('.modal').find('.modalContent').html('<h3>Choose Tag Category</h3>');
+
+            $('.modal').find('.modalContent').append('<span class="text-white">Quick Links</span><div class="d-flex"><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 0 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Video Navigation' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 1 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Colon Tutor' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.column( 1 ).search( 2 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Polypectomy Tutor' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 3 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Imaging in Polypectomy' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 4 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Other Resection' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 5 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Other GIEQs topics' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 6 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Nursing Topics' + '</button></div>');
 
 
             $('.modal').find('.modalContent').append('<p>' + data + '</p>');
