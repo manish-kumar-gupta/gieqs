@@ -438,7 +438,7 @@ $x=0;
 
 		} 
 $q = "UPDATE `users` SET $implodeArray WHERE `user_id` = '$this->user_id'";
-echo $q;
+//echo $q;
 		
  $stmt = $this->connection->RunQuery($q); 
  return $stmt->rowCount(); 

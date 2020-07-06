@@ -31,7 +31,8 @@
 	<!-- Datatables -->
 <script src="<?php echo BASE_URL; ?>/node_modules/datatables.net/js/jquery.datatables.min.js"></script>
 <script src="<?php echo BASE_URL; ?>/assets/libs/datatables/datatables.min.js"></script>
-    
+<script src="<?php echo BASE_URL; ?>/assets/libs/autosize/dist/autosize.min.js"></script>
+
 <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/datatables/datatables.min.css">
     <style>
        
@@ -561,7 +562,7 @@ function constructEditTable(idPassed){
 
     imagesString = '`id`=\'' + idPassed + '\'';
     
-    query = "SELECT a.`id`, a.`split`, a.`active`, b.`id` as `chapterid`, b.`name`, b.`timeFrom`, b.`timeTo`, b.`number`, b.`name` AS `chaptername`, b.`description` FROM `video` as a INNER JOIN `chapter` as b ON a.`id` = b.`video_id` WHERE a.`id` = "+idPassed;
+    query = "SELECT a.`id`, a.`split`, a.`active`, b.`id` as `chapterid`, b.`name`, b.`timeFrom`, b.`timeTo`, b.`number`, b.`name` AS `chaptername`, b.`description` FROM `video` as a INNER JOIN `chapter` as b ON a.`id` = b.`video_id` WHERE a.`id` = "+idPassed+" ORDER BY b.`number` ASC";
 
     var selectorObject = JSONStraightDataQuery("video", query, 7); //to here
 
@@ -595,7 +596,9 @@ function constructEditTable(idPassed){
         $('#active').val(active);
 
 
-		var html = "<table id=\"imagesTable\" class=\"table imageTable\">";
+        var html = "<table id=\"imagesTable\" class=\"table imageTable\" style=\"width:100%\">";
+        
+
 		html += "<tr>";
 					html += '<th>Chapter Number</th>';
 			html += '<th>Time from:</th>';
@@ -651,7 +654,7 @@ function constructEditTable(idPassed){
 			
 			html += "<td class='chapterDesc' style='width:50%'><input id='chaptername"+chapterid+"' class='form-control form-control-sm w-100 px-1 py-0'></input></td>";
 			
-			html += "<td class='chapterDesc' style='width:50%'><textarea id='chapterdescription"+chapterid+"' class='name form-control form-control-sm w-100 px-1 py-0' rows='3' cols='70'></textarea></td>";
+			html += "<td class='chapterDesc' style='width:50%'><textarea id='chapterdescription"+chapterid+"' class='name form-control form-control-sm w-100 px-1 py-0' rows='3' cols='70' data-toggle='autosize'></textarea></td>";
 			
 			html += "<td><button class='addTag m-2 py-0 my-2 btn btn-small bg-dark'>Add Tag</button></td>";
 			html += "<td class='chapterTag' id='tag"+chapterid+"'></td>";

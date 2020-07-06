@@ -24,7 +24,7 @@ function ne($v) {
 
 
 $debug = false;
-$explicit = true;
+$explicit = false;
 //echo 'hello';
 
 
