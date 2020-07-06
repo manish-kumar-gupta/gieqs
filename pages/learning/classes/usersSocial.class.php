@@ -22,7 +22,7 @@ Class usersSocial {
     
     public function getComments($video_id){
 
-        $q = "SELECT `user_id`, `comment`, `created` FROM `usersCommentsVideo` WHERE `video_id` = '$video_id' ORDER BY `created` DESC";
+        $q = "SELECT `user_id`, `comment`, `created` FROM `usersCommentsVideo` WHERE `video_id` = '$video_id' ORDER BY `created` ASC";
         
         $result = $this->connection->RunQuery($q);
         
@@ -107,7 +107,17 @@ Class usersSocial {
             return '0';
         }
     
-    }
+	}
+	
+	public function checkLessFiveComments($user_id, $video_id){
+		$result = $this->connection->RunQuery("Select `id` from `usersCommentsVideo` where `user_id` = '$user_id' AND `video_id` = '$video_id' ");
+		$nRows = $result->rowCount();
+			if ($nRows > 5){
+				return FALSE;
+			}else{
+				return TRUE;
+			}
+	}
 
     /**
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();

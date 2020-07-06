@@ -36,6 +36,8 @@ error_reporting(E_NONE);
 
     <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.css">
+    <script src="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.js"></script>
 
     
 
@@ -197,6 +199,15 @@ min-width:30vw;
   -webkit-animation: fade-in-up .25s ease forwards;
           animation: fade-in-up .25s ease forwards;
 }
+/* swal-text {
+  background-color: #162e4d;
+  padding: 17px;
+  border: 1px solid #F0E1A1;
+  display: block;
+  margin: 22px;
+  text-align: center;
+  color: #162e4d;
+} */
     </style>
 
 
@@ -778,7 +789,7 @@ min-width:30vw;
                                             </div>
                             <div class="card-footer">
                                 <div class="row align-items-left p-2">
-                                    <span class="small text-muted">Comments are moderated for inapropriate content</span>
+                                    <span class="small text-muted">Comments are moderated for inapropriate content.  Offending users will have their commenting priveledges blocked and may be removed from the site.  Maximum 5 comments per video.</span>
                                     <!-- <div class="col">
                                         <span class="badge badge-primary mx-2">
                                             comment 1
@@ -1073,12 +1084,28 @@ min-width:30vw;
                     if (data == 1){
                         //show green tick
 
-                        
-                        
+                        $('#comment').val('')
+                        getComments();
                         //$('#notification-services').delay('1000').addClass('is-valid');
                         
                             
-                            
+                        
+
+                    }else if (data == 0){
+
+                        Swal.fire({
+                            type: 'error',
+                            title: 'Further comments not allowed',
+                            text: 'You cannot comment more than 5 times on the same video.',
+                            background: '#162e4d',
+                            confirmButtonText: 'ok', 
+                            confirmButtonColor: 'rgb(238, 194, 120)', 
+
+                        }).then((result) => {
+                            $('#comment').val('')
+                            getComments();
+
+                        })
 
                     }
                     //$(document).find('.Thursday').hide();

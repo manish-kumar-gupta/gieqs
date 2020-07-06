@@ -20,6 +20,35 @@ require (BASE_URI . '/assets/scripts/login_functions.php');
 
 $debug = false;
 
+function time_elapsed_string($datetime, $full = false) {
+  $now = new DateTime;
+  $ago = new DateTime($datetime);
+  $diff = $now->diff($ago);
+
+  $diff->w = floor($diff->d / 7);
+  $diff->d -= $diff->w * 7;
+
+  $string = array(
+      'y' => 'year',
+      'm' => 'month',
+      'w' => 'week',
+      'd' => 'day',
+      'h' => 'hour',
+      'i' => 'minute',
+      's' => 'second',
+  );
+  foreach ($string as $k => &$v) {
+      if ($diff->$k) {
+          $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
+      } else {
+          unset($string[$k]);
+      }
+  }
+
+  if (!$full) $string = array_slice($string, 0, 1);
+  return $string ? implode(', ', $string) . ' ago' : 'just now';
+}
+
 //require (BASE_URI.'/scripts/headerCreatorV2.php');
 
 //(1);
@@ -28,13 +57,13 @@ $debug = false;
 
 
 
-spl_autoload_unregister ('class_loader');
+/* spl_autoload_unregister ('class_loader');
 
 //$users = new users; //must be users from GIEQs
-require(BASE_URI .'/assets/scripts/classes/users.class.php');
+require(BASE_URI .'/assets/scripts/classes/users.class.php'); */
 $users = new users;
 
-spl_autoload_register ('class_loader');
+/* spl_autoload_register ('class_loader'); */
 
 $general = new general;
 $usersCommentsVideo = new usersCommentsVideo;
@@ -63,15 +92,21 @@ if ($commentsArray){
 
     foreach ($commentsArray as $key=>$value){
 
-        $value['comment'];?>
+      if ($users->matchRecord($value['user_id'])){
+
+        $users->Load_from_key($value['user_id']);
+
+      }
+        
+        ?>
 
         <!-- <div class="mb-3"> -->
                   <div class="media media-comment">
-                  <a class="avatar bg-gieqsGold text-dark avatar-md rounded-circle mr-3 p-1"><?php echo $value['user_id'];?></a>
+                  <a class="avatar bg-gieqsGold text-dark avatar-md rounded-circle mr-3 p-1"><?php echo $users->getUserInitials($value['user_id']);?></a>
                     <div class="media-body">
                       <div class="media-comment-bubble left-top">
-                        <h6 class="mt-0 mb-0"><?php echo $value['user_id'];?></h6>
-                        <span class="small text-muted"><?php echo $value['created'];?></span>
+                        <h6 class="mt-0 mb-0"><?php echo $users->getfirstname() . ' ' . $users->getsurname();?></h6>
+                        <span class="small text-muted"><?php echo time_elapsed_string($value['created']);?></span>
                         <p class="text-sm lh-160"><?php echo $value['comment'];?></p>
                         <!-- <div class="icon-actions">
                           <a href="#" class="love active">

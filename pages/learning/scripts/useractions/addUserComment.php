@@ -18,7 +18,7 @@ require (BASE_URI . '/assets/scripts/login_functions.php');
      
      require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
 
-$debug = true;
+$debug = FALSE;
 
 //require (BASE_URI.'/scripts/headerCreatorV2.php');
 
@@ -38,6 +38,7 @@ spl_autoload_register ('class_loader');
 
 $general = new general;
 $usersCommentsVideo = new usersCommentsVideo;
+$usersSocial = new usersSocial;
 
 
 $data = json_decode(file_get_contents('php://input'), true);
@@ -56,6 +57,15 @@ echo '$userid is ' . $userid;
 if ($users->matchRecord($userid)){
 
     $users->Load_from_key($userid); //this is checking securely against the db for the logged in user
+
+    //if the user has more than 5 comments for this video abort
+
+    if ($usersSocial->checkLessFiveComments($userid, $videoid) === false){
+
+        echo 0;
+        exit();
+
+    }
 
     if ($type == 1){
 
