@@ -19,7 +19,7 @@ $contact_email = 'djtate@gmail.com';
 
 //turn off whole site
 
-$active = 0;
+$active = 1;
 
 if ($active == 0){
 	
