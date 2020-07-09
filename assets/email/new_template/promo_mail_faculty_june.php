@@ -680,7 +680,7 @@
                                                                             target="_blank"
                                                                             style="mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#007C89;font-weight:normal;text-decoration:underline;">here</a>. As you know there is an urgent need for such material as training and education is pressured due to service commitment during the coronavirus situation.</p>
 
-<p>Please for now simply reconfirm your commitment to this exciting project in its new form by replying to this mail. We hope this is the first of many GIEQs events and we long forward to partnering with you in the long term. </p>
+<p>Please for now <strong>simply reconfirm your commitment to this exciting project</strong> in its new form by replying to this mail. We hope this is the first of many GIEQs events and we long forward to partnering with you in the long term. </p>
 
 <p>Also If you wish to host a GIEQs event at your institution we are partnering with industry colleagues to set up a hub and spoke model - perhaps you would like to set up a lecture theatre or room in your hospital - where you and your colleagues / nurses can come together to enjoy the digital GIEQs stream. Please reply to this mail if you would like more information on this. </p>
 
