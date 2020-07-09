@@ -64,6 +64,8 @@
 
 $debug=false;
 
+error_reporting(E_NONE);
+
 $folder = 'https://' . $_SERVER['HTTP_HOST'] . '/studyserver/PROSPER/';
 
 $page_title='Administration GIEQs';
@@ -86,6 +88,16 @@ $page_title='Administration GIEQs';
 echo 'hello';
 
 $userFunctions = new userFunctions;
+
+$programmeReports = new programmeReports;
+
+$general = new general;
+$programme = new programme;
+$session = new session;
+$faculty = new faculty;
+$sessionItem = new sessionItem;
+$queries = new queries;
+$sessionView = new sessionView;
 
 require(BASE_URI.'/vendor/autoload.php');
 
@@ -216,28 +228,56 @@ print_r($emailArray);
 //Mailer(array(0 => 'djtate@gmail.com'), $subject, '/assets/email/new_template/promo_mail_participants_june.php');
 
 
-$subject = "Digital Registration is Open.  The Ghent International Endoscopy Quality Symposium, October 7/8 2020";
+$subject = "Important Faculty Message.  The Ghent International Endoscopy Quality Symposium, October 7/8 2020";
 
 $i=0;
 
 foreach ($emailArray AS $key=>$value){
 
-    //echo $key;
-    //echo $value;
+    //print_r($key);
+    //print_r($value);
 
-    //$firstname = $value['firstname'];
-    //$surname = $value['surname'];
-    $email = $emailArray[$i];
+    //get faculty details using class
 
-    //$emailVaryarray['firstname'] = $firstname;
-    //$emailVaryarray['surname'] = $surname;
+
+
+
+
+    $firstname = $value['firstname'];
+    $surname = $value['surname'];
+    $email = $value['email']; 
+    $title = $value['title']; 
+
+
+    $emailVaryarray['firstname'] = $firstname;
+    $emailVaryarray['surname'] = $surname;
     $emailVaryarray['email'] = $email;
+    $emailVaryarray['title'] = $title;
+
+
+
+    $id = $value['id']; 
+    $facultyid = $id;
+
+    $response =  $programmeReports->generateReport($id);
+
+    $edit = 0;
+
+    $var = include('mailerAddOnFaculty.php');
+
+    echo $var;
+
+    $emailVaryarray['var'] = $var;
+
+
     echo 'emailArray is ' . $email;
 
 
     //ACTIVE MAILER FROM THE DATABASE
     //Mailer(array(0 => $email), $subject, '/assets/email/new_template/promo_mail_faculty_june.php', $emailVaryarray); //uncomment for active mail
-    //Mailer(array(0 => 'djtate@gmail.com'), $subject, '/assets/email/new_template/promo_mail_faculty_june.php', $emailVaryarray);
+    Mailer(array(0 => 'djtate@gmail.com'), $subject, '/assets/email/new_template/promo_mail_faculty_june.php', $emailVaryarray);
+
+//add cc dt
 
     //TEST MAILER
     //Mailer(array(0 => 'david.tate@uzgent.be'), $subject, '/assets/email/emailTemplateSponsorsJan.php', $emailVaryarray);  //TEST MAIL

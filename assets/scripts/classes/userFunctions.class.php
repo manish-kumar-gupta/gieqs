@@ -113,7 +113,7 @@ Class userFunctions {
 	}
 
 	public function getAllEmailsFaculty(){
-		$q = "Select `email` from `faculty`";
+		$q = "Select `id`, `firstname`, `surname`, `email`, `title` from `faculty`";
 				$result = $this->connection->RunQuery($q);
 									$rowReturn = array();
 								$x = 0;
@@ -122,7 +122,13 @@ Class userFunctions {
 		
 							while($row = $result->fetch(PDO::FETCH_ASSOC)){
 					
-					$rowReturn[$x] = $row["email"];
+					$rowReturn[$x]['id'] = $row["id"];
+					$rowReturn[$x]['title'] = $row["title"];
+
+					$rowReturn[$x]['firstname'] = $row["firstname"];
+					$rowReturn[$x]['surname'] = $row["surname"];
+					$rowReturn[$x]['email'] = $row["email"];
+
 				$x++;		}return $rowReturn;}
 		
 					else{return FALSE;

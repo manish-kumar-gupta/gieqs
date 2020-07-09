@@ -257,6 +257,7 @@ width: 100%;
 
                     </div>
                     <div class="col-lg-2 col-md-4 col-4 py-1">
+                    <img class="logo" alt="takeda" src="<?php echo BASE_URL . '/assets/img/brand/takeda.png';?>">
 
                     </div>
                     <div class="col-lg-2 col-md-4 col-4 py-1">
