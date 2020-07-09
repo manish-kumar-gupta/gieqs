@@ -24,7 +24,7 @@ $programmeDate = new DateTime($response[0]['date']);
 <div class="modal-title d-flex align-items-left" id="modal-title-change-username">
 <div>
 <div class="icon bg-dark icon-sm icon-shape icon-info rounded-circle shadow mr-3">
-    <img src="<?php echo BASE_URL;?>/assets/img/icons/gieqsicon.png">
+    <img src="https://www.gieqs.com/assets/img/icons/gieqsicon.png">
 </div>
 </div>
 <div class="text-left">

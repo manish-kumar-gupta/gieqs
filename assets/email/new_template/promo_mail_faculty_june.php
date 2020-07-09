@@ -466,7 +466,7 @@
             display: none !important;
         }
     </style>
-    <div class="preheader" style="font-size: 1px; display: none !important;">Thanks for confirming your involvement in GIEQs digital 2020.</div>
+    <div class="preheader" style="font-size: 1px; display: none !important;">Thanks for confirming your involvement in GIEQs.   This mail contains important information regarding migration to GIEQs digital.</div>
     <center>
         <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable"
             style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;height:100%;margin:0;padding:0;width:100%;">
@@ -673,16 +673,16 @@
 
 <p>All live cases will still go ahead. They will be captured and streamed live. Real-time interaction will be possible with the online audience. Other speakers and moderators will be present for local and face-to-face interaction during the live cases and lectures.</p>
 
-<p>We will run a slightly modified version of the original program we previously advertised and ask you to take a look at the attached speaker schedule to see if you can still make the times. More logistical details will of course follow nearer the time. We have endeavoured to ensure that you are only scheduled to come on a single day.</p>
+<p>We will run a slightly modified version of the original program we previously advertised and ask you to take a look at the attached speaker schedule to see if you can still make the times. More logistical details will of course follow nearer the time. We have endeavoured to ensure that you are only scheduled to come on a single day.  There will be a faculty dinner at the end of the first day for those who wish to attend.</p>
 
 <p>All of the material will be stored and go towards creating our curriculum for endoscopy on GIEQs.com. Some insight into how this may look in the future can be found <a href="https://www.gieqs.com/learning"
                                                                             class="mc-template-link" 
                                                                             target="_blank"
                                                                             style="mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#007C89;font-weight:normal;text-decoration:underline;">here</a>. As you know there is an urgent need for such material as training and education is pressured due to service commitment during the coronavirus situation.</p>
 
-<p>Please for now simply reconfirm your commitment to this exciting project in its new form. We hope this is the first of many GIEQs events and we long forward to partnering with you in the long term. </p>
+<p>Please for now simply reconfirm your commitment to this exciting project in its new form by replying to this mail. We hope this is the first of many GIEQs events and we long forward to partnering with you in the long term. </p>
 
-<p>Also If you wish to host a GIEQs event at your institution we are partnering with industry colleagues to set up spokes - perhaps a lecture theatre or room in your hospital - where you and your colleagues / nurses can come together to enjoy the digital GIEQs stream. Please reply to this mail if you would like more information on this. </p>
+<p>Also If you wish to host a GIEQs event at your institution we are partnering with industry colleagues to set up a hub and spoke model - perhaps you would like to set up a lecture theatre or room in your hospital - where you and your colleagues / nurses can come together to enjoy the digital GIEQs stream. Please reply to this mail if you would like more information on this. </p>
 
 <p>If you have any questions, suggestions or please do not hesitate to get in touch and we will be happy to help! Ruth our faculty manager can be contacted by replying to this mail or on E: gieqs@seauton-international.com, M: +32 474 84 15 31.</p>
 

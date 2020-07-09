@@ -274,14 +274,15 @@ foreach ($emailArray AS $key=>$value){
 
 
     //ACTIVE MAILER FROM THE DATABASE
-    //Mailer(array(0 => $email), $subject, '/assets/email/new_template/promo_mail_faculty_june.php', $emailVaryarray); //uncomment for active mail
-    Mailer(array(0 => 'djtate@gmail.com'), $subject, '/assets/email/new_template/promo_mail_faculty_june.php', $emailVaryarray);
 
-//add cc dt
 
-    //TEST MAILER
-    //Mailer(array(0 => 'david.tate@uzgent.be'), $subject, '/assets/email/emailTemplateSponsorsJan.php', $emailVaryarray);  //TEST MAIL
+    //TEST
+    Mailer(array(0 => 'djtate@gmail.com'), $subject, '/assets/email/new_template/promo_mail_faculty_june.php', $emailVaryarray);  
     
+    //ACTIVE MAILER , remember to remove limit below
+    //Mailer(array(0=> $email, 1 => 'nele.coulier@seauton-international.com', 2=> 'gieqs@seauton-international.com'), $subject, '/assets/email/new_template/promo_mail_faculty_june.php', $emailVaryarray);
+
+
     //TODO change the reply to mail address
     //TODO work on dutch characters
     //TODO repeat if fails
@@ -293,11 +294,6 @@ foreach ($emailArray AS $key=>$value){
 
 
 }
-
-
-
-//Mailer($emailArray, $subject, '/assets/email/emailTemplateInline.html');
-//then can use myArray here
 
 
 
