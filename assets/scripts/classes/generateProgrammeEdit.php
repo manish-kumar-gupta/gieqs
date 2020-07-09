@@ -121,7 +121,9 @@
 
                         //rigid time structure
 
-                        $times = array(1=>'08:45:00', 2=>'09:00:00', 3=>'10:00:00', 4=>'10:45:00', 5=>'11:00:00', 6=>'12:00:00', 7=>'12:45:00', 8=>'13:45:00', 9=>'14:15:00', 10=>'15:15:00', 11=>'15:30:00', 12=>'16:30:00', 13=>'17:00:00', 14=>'17:15:00', 15=>'19:30:00');
+                        //$times = array(1=>'08:45:00', 2=>'09:00:00', 3=>'10:00:00', 4=>'10:45:00', 5=>'11:00:00', 6=>'12:00:00', 7=>'12:45:00', 8=>'13:45:00', 9=>'14:15:00', 10=>'15:15:00', 11=>'15:30:00', 12=>'16:30:00', 13=>'17:00:00', 14=>'17:15:00', 15=>'19:30:00');
+                        $times = array(1=>'07:30:00', 2=>'07:35:00', 3=>'08:20:00', 4=>'09:30:00', 5=>'10:30:00', 6=>'11:15:00', 7=>'11:45:00', 8=>'12:50:00', 9=>'13:55:00', 10=>'15:00:00', 11=>'15:15:00', 12=>'16:30:00', );
+
                         if ($debug){
                             echo '<br/><br/>times Array contains </br></br>';
                             print_r($times);}
@@ -165,12 +167,12 @@
 
                             //IF A BREAK MODIFY EDIT BREAKS HERE
 
-                            if ($timeValue == '10:45:00'){
+                            if ($timeValue == '11:15:00'){
                                 ?>
                                 <div class="row text-center align-middle border-left border-right border-bottom">
 
                                     <div class="col-12 p-2 pb-3 pt-3">
-                                        <span class="h5" style="color: rgb(238, 194, 120);">Morning Tea | 15 minutes</span>
+                                        <span class="h5" style="color: rgb(238, 194, 120);">Break | 30 minutes</span>
                                     </div>
 
                                 </div>
@@ -197,7 +199,7 @@
 
                                     
                                     <div class="col-12 p-2 pb-3 pt-3">
-                                        <span class="h5" style="color: rgb(238, 194, 120);">Afternoon Tea | 15 minutes</span>
+                                        <span class="h5" style="color: rgb(238, 194, 120);">Afternoon Tea | 30 minutes</span>
                                     </div>
 
                                 </div>
@@ -747,7 +749,7 @@
 
                         //rigid time structure
 
-                        $times = array(1=>'08:45:00', 2=>'09:00:00', 3=>'09:40:00', 4=>'10:10:00', 5=>'10:45:00', 6=>'11:00:00', 7=>'12:00:00', 8=>'12:45:00', 9=>'13:45:00', 10=>'14:15:00', 11=>'14:45:00', 12=>'15:15:00', 13=>'15:30:00', 14=>'16:15:00', 15=>'17:00:00');
+                        $times = array(1=>'07:30:00', 2=>'07:35:00', 3=>'08:40:00', 4=>'09:50:00', 6=>'11:00:00', 7=>'11:30:00', 8=>'12:50:00', 9=>'13:45:00', 10=>'14:20:00', 11=>'15:30:00', 12=>'16:00:00', 13=>'17:05:00', 14=>'18:00:00' );
                         if ($debug){
                             echo '<br/><br/>times Array contains </br></br>';
                             print_r($times);}
@@ -791,12 +793,12 @@
 
                             //IF A BREAK MODIFY EDIT BREAKS HERE
 
-                            if ($timeValue == '10:45:00'){
+                            if ($timeValue == '11:00:00'){
                                 ?>
                                 <div class="row text-center align-middle border-left border-right border-bottom">
 
                                     <div class="col-12 p-2 pb-3 pt-3">
-                                        <span class="h5" style="color: rgb(238, 194, 120);">Morning Tea | 15 minutes</span>
+                                        <span class="h5" style="color: rgb(238, 194, 120);">Lunch Break | 30 minutes</span>
                                     </div>
 
                                 </div>
@@ -804,26 +806,14 @@
                                 continue;
                             }
 
-                            if ($timeValue == '12:45:00'){
+                            
+                            if ($timeValue == '15:30:00'){
                                 ?>
                                 <div class="row text-center align-middle border-left border-right border-bottom">
 
                                     
                                     <div class="col-12 p-2 pb-3 pt-3">
-                                        <span class="h5" style="color: rgb(238, 194, 120);">Lunch | 1 hour</span>
-                                    </div>
-
-                                </div>
-                                <?php
-                                continue;
-                            }
-                            if ($timeValue == '15:15:00'){
-                                ?>
-                                <div class="row text-center align-middle border-left border-right border-bottom">
-
-                                    
-                                    <div class="col-12 p-2 pb-3 pt-3">
-                                        <span class="h5" style="color: rgb(238, 194, 120);">Afternoon Tea | 15 minutes</span>
+                                        <span class="h5" style="color: rgb(238, 194, 120);">Afternoon Tea Break | 30 minutes</span>
                                     </div>
 
                                 </div>
