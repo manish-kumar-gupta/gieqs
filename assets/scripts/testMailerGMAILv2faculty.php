@@ -133,7 +133,7 @@ function Mailer ($email, $subject, $filename, $emailVaryarray){
                             $mail->SMTPDebug = 0; 
                         }
                         $mail->SMTPDebug = 3;    
-                        //$mail->isSMTP();                                      // Set mailer to use SMTP
+                        $mail->isSMTP();                                      // Set mailer to use SMTP
                         $mail->Host = 'smtp.gmail.com';
                         $mail->Port = 587;
                         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
