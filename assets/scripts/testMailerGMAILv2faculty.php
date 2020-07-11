@@ -133,7 +133,7 @@ function Mailer ($email, $subject, $filename, $emailVaryarray){
                             $mail->SMTPDebug = 0; 
                         }
                         $mail->SMTPDebug = 3;    
-                        $mail->isSMTP();                                      // Set mailer to use SMTP
+                        //$mail->isSMTP();                                      // Set mailer to use SMTP
                         $mail->Host = 'smtp.gmail.com';
                         $mail->Port = 587;
                         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
@@ -172,13 +172,13 @@ function Mailer ($email, $subject, $filename, $emailVaryarray){
 					//$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
 					$mail->send();
-                    echo 'Message has been sent';
-                    if (save_mail($mail)) {
-                        echo "Message saved!";
-                    }
+                    echo '<br/>Message to ' . $emailVaryarray['firstname'] . ' ' . $emailVaryarray['surname'] . 'has been sent';
+                    $info[] = 'Message to ' . $emailVaryarray['firstname'] . ' ' . $emailVaryarray['surname'] . 'has been sent';
+                   
 					//$this->setAccommodationUpdateDone($guestid);
 				} catch (Exception $e) {
-					echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+                    echo '<br/>Message to ' . $emailVaryarray['firstname'] . ' ' . $emailVaryarray['surname'] . 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+                    $info[] = 'Message to ' . $emailVaryarray['firstname'] . ' ' . $emailVaryarray['surname'] . 'Message could not be sent. Mailer Error: '.  $mail->ErrorInfo;
 				}
 
 		
@@ -215,7 +215,7 @@ $emailString = "Hans Van Vlierberghe <hans.vanvlierberghe@uzgent.be>, Lobke Deso
 $emailArray = explode(',', $emailString);
 
 
-print_r($emailList);
+//print_r($emailList);
 //print_r($myArray);
 
 
@@ -223,7 +223,7 @@ print_r($emailList);
 
 $emailArray = $userFunctions->getAllEmailsFaculty();
 
-print_r($emailArray);
+//print_r($emailArray);
 
 //Mailer(array(0 => 'djtate@gmail.com'), $subject, '/assets/email/new_template/promo_mail_participants_june.php');
 
@@ -231,6 +231,8 @@ print_r($emailArray);
 $subject = "Important Faculty Message.  The Ghent International Endoscopy Quality Symposium, October 7/8 2020";
 
 $i=0;
+
+$info = [];
 
 foreach ($emailArray AS $key=>$value){
 
@@ -265,12 +267,12 @@ foreach ($emailArray AS $key=>$value){
 
     $var = include('mailerAddOnFaculty.php');
 
-    echo $var;
+    //echo $var;
 
     $emailVaryarray['var'] = $var;
 
 
-    echo 'emailArray is ' . $email;
+    //echo 'emailArray is ' . $email;
 
 
     //ACTIVE MAILER FROM THE DATABASE
@@ -296,7 +298,7 @@ foreach ($emailArray AS $key=>$value){
 }
 
 
-
+print_r($info);
 
 
 
