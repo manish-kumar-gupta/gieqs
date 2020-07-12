@@ -1,5 +1,10 @@
 <?php
 error_reporting(E_ALL);
+$openaccess = 0;
+			$requiredUserLevel = 1;
+			require ('assets/includes/config.inc.php');		
+			
+			require (BASE_URI.'/assets/scripts/headerScript.php');
 
 // Visit https://developers.google.com/gmail/api/quickstart/php
 // for an example of how to build the getClient() function.
@@ -22,7 +27,7 @@ function getClient()
         Google_Service_Gmail::GMAIL_COMPOSE)
       ));  
     $client->setScopes(SCOPES);
-    $client->setAuthConfig('credentials.json');
+    $client->setAuthConfig(BASE_URI . '/../scripts/credentials.json');
     $client->setAccessType('offline');
     $client->setPrompt('select_account consent');
 
@@ -30,7 +35,7 @@ function getClient()
     // The file token.json stores the user's access and refresh tokens, and is
     // created automatically when the authorization flow completes for the first
     // time.
-    $tokenPath = 'token.json';
+    $tokenPath = BASE_URI . '/../scripts/token.json';
     if (file_exists($tokenPath)) {
         $accessToken = json_decode(file_get_contents($tokenPath), true);
         $client->setAccessToken($accessToken);
