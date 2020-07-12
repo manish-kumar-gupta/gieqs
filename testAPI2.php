@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+
 // Visit https://developers.google.com/gmail/api/quickstart/php
 // for an example of how to build the getClient() function.
 require __DIR__ . '/vendor/autoload.php';
