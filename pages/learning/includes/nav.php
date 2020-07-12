@@ -53,6 +53,8 @@ function endsWith($haystack, $needle)
                   </div>
                 </li> -->
 
+                <?php if ($currentUserLevel < 6){?>
+
                 <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
                     <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Learning Tools</a>
@@ -66,18 +68,58 @@ function endsWith($haystack, $needle)
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">Polypectomy</span>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/start.php"><i class="fas fa-columns"></i>Polypectomy Tutor</a>
                 
+                    <div class="dropdown-divider"></div>
+
+<span style="color: rgb(238, 194, 120);" class="dropdown-header">GIEQs Curriculum</span>
+<a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/start.php"><i class="fas fa-columns"></i>GIEQs Endoscopy Curriculum</a>
+
+
 
                   </div>
-</li>
+                  
+              </li>
+
+                <?php }else{?>
+
+                  <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                    <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Basic Content</a>
+                    
+                        <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
+
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Polypectomy</span>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/preview.php"><i class="fas fa-columns"></i>Polypectomy Tutor Basic</a>
+                
+                    <!-- <div class="dropdown-divider"></div>
+
+<span style="color: rgb(238, 194, 120);" class="dropdown-header">GIEQs Curriculum</span>
+<a class="dropdown-item" href="<?php //echo BASE_URL;?>/pages/learning/pages/curriculum/start.php"><i class="fas fa-columns"></i>GIEQs Endoscopy Curriculum</a> -->
+
+
+
+                  </div>
+                  
+              </li>
+          
+                <?php } ?>
                 <!-- if on main page -->
 
                 <!--show nothing -->
 
                 <?php
+                
+
+                if ($currentUserLevel < 6){
+
                     $url =  "{$_SERVER['REQUEST_URI']}";
                     $inColonTutor = preg_match (  '/colontutor/' ,  $url);
                     $inPolypectomyTutor = preg_match (  '/polyptutor/' ,  $url);
                     $inNursing = preg_match (  '/nursing/' ,  $url);
+                    $inCurriculum = preg_match (  '/curriculum/' ,  $url);
+
+                  }
+
+
                     if ($inColonTutor){?>
                
                <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
@@ -185,6 +227,35 @@ function endsWith($haystack, $needle)
 
 <div class="dropdown-divider"></div>
 
+
+<a class="dropdown-item" href=""><i class="fas fa-columns"></i>View All Videos</a>
+
+
+</div>
+</li>
+
+<?php } elseif ($inCurriculum) {?>
+
+<li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+<a class="nav-link dropdown-toggle" style="color: rgb(238, 194, 120);" role="button" data-toggle="dropdown"
+  aria-haspopup="true" aria-expanded="false">GIEQs Endoscopy Curriculum</a>
+
+<div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
+
+<span style="color: rgb(238, 194, 120);" class="dropdown-header">Start here</span>
+
+<a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/nursing/start.php"><i class="fas fa-columns"></i>Introduction to Endoscopy Nursing Theory</a>
+
+<div class="dropdown-divider"></div>
+<span style="color: rgb(238, 194, 120);" class="dropdown-header">GI Bleeding</span>
+
+<a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/nursing/techniques.php"><i class="fas fa-columns"></i>GIB</a>
+<a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/nursing/techniques.php"><i class="fas fa-columns"></i>Advanced GIB</a>
+
+<div class="dropdown-divider"></div>
+<span style="color: rgb(238, 194, 120);" class="dropdown-header">IBD</span>
+
+<a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/nursing/techniques.php"><i class="fas fa-columns"></i>IBD</a>
 
 <a class="dropdown-item" href=""><i class="fas fa-columns"></i>View All Videos</a>
 

@@ -26,7 +26,7 @@
       ?>
 
     <!--Page title-->
-    <title>GIEQs Online Endoscopy Trainer - Polypectomy Videos</title>
+    <title>GIEQs Online Endoscopy Trainer - Polypectomy Videos Preview</title>
 
     <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">

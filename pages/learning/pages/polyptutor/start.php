@@ -14,7 +14,7 @@
       //define user access level
 
       //$openaccess = 1;
-      $requiredUserLevel = 6;
+      $requiredUserLevel = 5;
 
 
       require BASE_URI . '/head.php';
