@@ -18,7 +18,7 @@ function getClient()
         Google_Service_Gmail::GMAIL_COMPOSE)
       ));  
     $client->setScopes(SCOPES);
-    $client->setAuthConfig('credentials.json');
+    $client->setAuthConfig('../scripts/credentials.json');
     $client->setAccessType('offline');
     $client->setPrompt('select_account consent');
 

@@ -224,7 +224,7 @@ top: -20vh;
               </div>
               <div class="mt-4">
                 <button id="passwordChangeButton" type="button" class="btn btn-sm btn-primary">Update password</button>
-                <a href="recover.html" class="btn btn-sm btn-secondary">I forgot my password</a>
+                <a href="<?php echo BASE_URL;?>/pages/authentication/recover.php" class="btn btn-sm btn-secondary">I forgot my password</a>
               </div>
             </form>
             <!-- Username TODO ADD LATER-->
@@ -399,6 +399,8 @@ top: -20vh;
         confirmButtonColor: 'rgb(238, 194, 120)',
 
         }).then((result) => {
+
+          resetFormElements('passwordChange');
 
         })
 

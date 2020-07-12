@@ -2,13 +2,13 @@
 error_reporting(E_ALL);
 $openaccess = 1;
 //$requiredUserLevel = 1;
-			require ('assets/includes/config.inc.php');		
+			require ('../../assets/includes/config.inc.php');		
 			
 			require (BASE_URI.'/assets/scripts/headerScript.php');
 
 // Visit https://developers.google.com/gmail/api/quickstart/php
 // for an example of how to build the getClient() function.
-require __DIR__ . '/vendor/autoload.php';
+require (BASE_URI . '/vendor/autoload.php');
 
 /* if (php_sapi_name() != 'cli') {
     throw new Exception('This application must be run on the command line.');

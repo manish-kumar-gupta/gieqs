@@ -1,14 +1,13 @@
 <?php
-error_reporting(E_ALL);
-$openaccess = 1;
-//$requiredUserLevel = 1;
-			require ('assets/includes/config.inc.php');		
-			
-			require (BASE_URI.'/assets/scripts/headerScript.php');
+//error_reporting(E_ALL);
+
 
 // Visit https://developers.google.com/gmail/api/quickstart/php
 // for an example of how to build the getClient() function.
-require __DIR__ . '/vendor/autoload.php';
+require (BASE_URI . '/vendor/autoload.php');
+
+date_default_timezone_set('Europe/Brussels');
+
 
 /* if (php_sapi_name() != 'cli') {
     throw new Exception('This application must be run on the command line.');
@@ -71,7 +70,7 @@ function getClient()
             }
         }
         // Save the token to a file.
-        print_r($tokenPath);
+        //print_r($tokenPath);
         if (!file_exists(dirname($tokenPath))) {
             mkdir(dirname($tokenPath), 0700, true);
         }
@@ -89,14 +88,14 @@ $service = new Google_Service_Gmail($client);
 $user = 'me';
 $results = $service->users_labels->listUsersLabels($user);
 
-if (count($results->getLabels()) == 0) {
+/* if (count($results->getLabels()) == 0) {
   print "No labels found.\n";
 } else {
   print "Labels:\n";
   foreach ($results->getLabels() as $label) {
     printf("- %s\n", $label->getName());
   }
-}
+} */
 
 $client = getClient();
 
@@ -115,29 +114,29 @@ function createMessage($sender, $to, $subject, $messageText) {
     $rawMessageString .= "{$messageText}\r\n";
    
     $rawMessage = strtr(base64_encode($rawMessageString), array('+' => '-', '/' => '_'));
-    print_r($rawMessage);
+    //print_r($rawMessage);
     $message->setRaw($rawMessage);
     return $message;
    }
 
-$sender = 'djtate@gmail.com';
-$to = 'david.tate@uzgent.be';
-$subject = 'hello david';
+//$sender = 'djtate@gmail.com';
+//$to = 'david.tate@uzgent.be';
+//$subject = 'hello david';
 
 //$emailVaryarray['firstname'] = $firstname;
   //  $emailVaryarray['surname'] = $surname;
-    $emailVaryarray['email'] = $to;
-    $emailVaryarray['title'] = $subject;
+    //$emailVaryarray['email'] = $to;
+    //$emailVaryarray['title'] = $subject;
 
-    $filename = BASE_URI . '/assets/email/new_template/promo_mail_faculty_june.php'; 
+    //$filename = BASE_URI . '/assets/email/new_template/promo_mail_faculty_june.php'; 
 
 //$messageText = 'whatever';
 
-$messageText = get_include_contents($filename, $emailVaryarray);
+$messageText = get_include_contents(BASE_URI . $filename, $emailVaryarray);
 
-$message = createMessage($sender, $to, $subject, $messageText);
+$message = createMessage('admin@gieqs.com', $email, $subject, $messageText);
 
-print_r($message);
+//print_r($message);
 
 function createDraft($service, $user, $message) {
     $draft = new Google_Service_Gmail_Draft();
@@ -145,7 +144,7 @@ function createDraft($service, $user, $message) {
    
     try {
       $draft = $service->users_drafts->create($user, $draft);
-      print 'Draft ID: ' . $draft->getId();
+      //print 'Draft ID: ' . $draft->getId();
     } catch (Exception $e) {
       print 'An error occurred: ' . $e->getMessage();
     }
@@ -164,7 +163,8 @@ createDraft($service, $user, $message);
 function sendMessage($service, $userId, $message) {
     try {
       $message = $service->users_messages->send($userId, $message);
-      print 'Message with ID: ' . $message->getId() . ' sent.';
+      //print 'Message with ID: ' . $message->getId() . ' sent.';
+      print ' Please check your inbox.';
       return $message;
     } catch (Exception $e) {
       print 'An error occurred: ' . $e->getMessage();

@@ -179,8 +179,10 @@ top: -20vh;
               <div class="mt-4">
                 <button type="button" id="submitPreRegister" class="btn btn-block btn-primary">Reset password</button></div>
             </form>
+            <?php if (!($userid)){?>
             <div class="mt-4 text-center"><small>Not registered?</small>
               <a href="<?php echo BASE_URL . '/pages/program/online.php?id=2456'?>" class="small font-weight-bold">Create account</a></div>
+            <?php }?>
           </div>
         </div>
       </div>

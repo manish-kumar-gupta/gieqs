@@ -564,6 +564,48 @@ top: -20vh;
             }
 
 
+          }).then((result) => {
+
+            const dataToSend = {
+
+             
+              profile: '2379',
+
+              }
+
+              const jsonString = JSON.stringify(dataToSend);
+              console.log(jsonString);
+
+
+
+              var request = $.ajax({
+                  url: siteRoot + "pages/learning/scripts/useractions/upgradeUserStandard.php",
+                  type: "POST",
+                  contentType: "application/json",
+                  data: jsonString,
+              });
+
+
+
+              request.done(function (data) {
+
+                if (data == 'User profile updated'){
+
+                  Swal.fire({
+                    title: 'Congratulations',
+                    text: 'Your user profile was upgraded to GIEQs Standard',
+                    type: 'success',
+                    background: '#162e4d',
+                    confirmButtonText: 'ok',
+                    confirmButtonColor: 'rgb(238, 194, 120)',
+
+                  })
+                }
+
+              })
+
+
+
           });
 
         }

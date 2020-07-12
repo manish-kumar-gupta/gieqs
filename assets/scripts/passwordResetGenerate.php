@@ -81,14 +81,15 @@ if (count($data) > 0){
             $emailVaryarray['firstname'] = $users->getfirstname();
             $emailVaryarray['surname'] = $users->getsurname();
             $emailVaryarray['email'] = $users->getemail();
-            $email = array(0 => $users->getemail());
+            // $email = array(0 => $users->getemail()); //original version
+            $email = $users->getemail();
             $emailVaryarray['key'] = $users->getkey();
 
             $filename = '/assets/email/emailPasswordReset.php';
 
             $subject = 'Password reset for your GIEQs online account';
 
-            require(BASE_URI . '/assets/scripts/individualMailerGmail.php');  //TEST MAIL
+            require(BASE_URI . '/assets/scripts/individualMailerGmailAPI.php');  //TEST MAIL
 
             if ($debug){
 

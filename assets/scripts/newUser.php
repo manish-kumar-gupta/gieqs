@@ -84,14 +84,15 @@ echo date('Y/m/d H:i:s'); */
             $emailVaryarray['firstname'] = $data['firstname'];
             $emailVaryarray['surname'] = $data['surname'];
             $emailVaryarray['email'] = $data['email'];
-            $email = array(0 => $data['email']);
+            //$email = array(0 => $data['email']); //old
+            $email = $data['email'];
             $emailVaryarray['key'] = $key;
 
             $filename = '/assets/email/emailNewAccount.php';;
 
             $subject = 'Welcome to your new GIEQs Online Account';
 
-            require(BASE_URI . '/assets/scripts/individualMailerGmail.php');  //TEST MAIL
+            require(BASE_URI . '/assets/scripts/individualMailerGmailAPI.php');  //TEST MAIL
 
             if ($debug){
 
