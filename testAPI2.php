@@ -13,7 +13,15 @@ require __DIR__ . '/vendor/autoload.php';
 /* if (php_sapi_name() != 'cli') {
     throw new Exception('This application must be run on the command line.');
 } */
-
+function get_include_contents($filename, $variablesToMakeLocal) {
+    extract($variablesToMakeLocal);
+    if (is_file($filename)) {
+        ob_start();
+        include $filename;
+        return ob_get_clean();
+    }
+    return false;
+}
 /**
  * Returns an authorized API client.
  * @return Google_Client the authorized client object
@@ -114,7 +122,17 @@ function createMessage($sender, $to, $subject, $messageText) {
 $sender = 'djtate@gmail.com';
 $to = 'david.tate@uzgent.be';
 $subject = 'hello david';
-$messageText = 'whatever';
+
+//$emailVaryarray['firstname'] = $firstname;
+  //  $emailVaryarray['surname'] = $surname;
+    $emailVaryarray['email'] = $to;
+    $emailVaryarray['title'] = $subject;
+
+    $filename = BASE_URI . '/assets/email/new_template/promo_mail_faculty_june.php'; 
+
+//$messageText = 'whatever';
+
+$messageText = get_include_contents($filename, $emailVaryarray);
 
 $message = createMessage($sender, $to, $subject, $messageText);
 
