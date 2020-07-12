@@ -89,6 +89,32 @@ Class usersSocial {
 
 
 
+	}
+	
+	public function getAllFavourites($user_id){
+
+        $q = "SELECT `video_id` FROM `usersFavouriteVideo` WHERE `user_id` = '$user_id' ORDER BY `id` DESC";
+
+        $result = $this->connection->RunQuery($q);
+
+		$y = 0;
+		$videosRequired = [];
+		$nRows = $result->rowCount();
+		
+		if ($nRows > 0){
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+				$videosRequired[] = $row['video_id'];
+				$y++;
+            }
+            return $videosRequired;
+        }else{
+    
+            return null;
+        }
+
+
+
+
     }
 
     public function countLikes($video_id){

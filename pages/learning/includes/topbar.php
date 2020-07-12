@@ -118,6 +118,13 @@
                     <i class="fas fa-cog"></i>Settings
                   </a>
                   <div class="dropdown-divider" role="presentation"></div>
+
+                  <a class="dropdown-item" href="<?php echo BASE_URL . '/pages/learning/pages/polyptutor/favourites.php'?>">
+                    <i class="fas fa-heart"></i>Favourite Videos
+                  </a>
+
+                  <div class="dropdown-divider" role="presentation"></div>
+
                   <a id="logout" class="dropdown-item" href="#">
                     <i class="fas fa-sign-out-alt"></i>Sign out
                   </a>
