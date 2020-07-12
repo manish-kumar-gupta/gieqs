@@ -9,5 +9,7 @@ return array(
     'BaseFacebook' => $vendorDir . '/facebook/php-sdk/src/base_facebook.php',
     'Facebook' => $vendorDir . '/facebook/php-sdk/src/facebook.php',
     'FacebookApiException' => $vendorDir . '/facebook/php-sdk/src/base_facebook.php',
+    'Google_Service_Exception' => $vendorDir . '/google/apiclient/src/Google/Service/Exception.php',
+    'Google_Service_Resource' => $vendorDir . '/google/apiclient/src/Google/Service/Resource.php',
     'JsonException' => $vendorDir . '/symfony/polyfill-php73/Resources/stubs/JsonException.php',
 );
