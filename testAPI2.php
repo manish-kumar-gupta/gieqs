@@ -111,7 +111,7 @@ function createMessage($sender, $to, $subject, $messageText) {
     $rawMessageString .= 'Subject: =?utf-8?B?' . base64_encode($subject) . "?=\r\n";
     $rawMessageString .= "MIME-Version: 1.0\r\n";
     $rawMessageString .= "Content-Type: text/html; charset=utf-8\r\n";
-    $rawMessageString .= 'Content-Transfer-Encoding: quoted-printable' . "\r\n\r\n";
+    $rawMessageString .= 'Content-Transfer-Encoding: base64' . "\r\n\r\n";
     $rawMessageString .= "{$messageText}\r\n";
    
     $rawMessage = strtr(base64_encode($rawMessageString), array('+' => '-', '/' => '_'));
