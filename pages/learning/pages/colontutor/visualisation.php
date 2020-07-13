@@ -14,7 +14,7 @@
       //define user access level
 
       //$openaccess = 1;
-      $requiredUserLevel = 6;
+      $requiredUserLevel = 5;
 
 
       //require BASE_URI . '/pages/learning/includes/head.php';
@@ -27,7 +27,7 @@
       ?>
 
     <!--Page title-->
-    <title>GIEQs Online Endoscopy Trainer - Polypectomy Videos</title>
+    <title>GIEQs Online Endoscopy Trainer - Mucosal Visualisation at Colonoscopy</title>
 
     <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
@@ -186,7 +186,7 @@ background-color: rgb(238, 194, 120);
         <!--- specifiy the tag Categories required for display  CHANGEME-->
 
         <?php
-        $requiredTagCategories = ['47', '48', '49', '50', '51', '52', '53', '54', '55', '56'];
+        $requiredTagCategories = ['47', '48', '49'];
 
         ?>
 
@@ -226,16 +226,18 @@ background-color: rgb(238, 194, 120);
 
         <!--Header CHANGEME-->
 
-        <div class="d-flex flex-wrap container pt-10">
-            <div class="h1 mr-auto">Colonoscopy Tutor</div>
-            <nav aria-label="breadcrumb" class="align-self-center">
-                                <ol class="breadcrumb breadcrumb-links p-0 m-0">
-                                    <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/index.php'?>">GIEQs online</a></li>
-                                    <li class="breadcrumb-item gieqsGold">Colonoscopy Tutor</a></li>
-                                </ol>
-                            </nav>
+    <div class="d-flex flex-wrap container pt-10">
+        <div class="h1 mr-auto">Mucosal Visualisation</div>
+        <nav aria-label="breadcrumb" class="align-self-center">
+                            <ol class="breadcrumb breadcrumb-links p-0 m-0">
+                                <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/index.php'?>">GIEQs online</a></li>
+                                <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/pages/colontutor/all.php'?>">Colonoscopy Tutor</a></li>
+                                <li class="breadcrumb-item gieqsGold" aria-current="page">Improved Mucosal Visualisation</li>
+                            </ol>
+                        </nav>
+
+    </div>
     
-        </div>
 
 
         <!--Navigation-->

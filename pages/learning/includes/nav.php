@@ -136,20 +136,20 @@ function endsWith($haystack, $needle)
 
                     <div class="dropdown-divider"></div>
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">Progress your technique</span>
-                    
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/all.php"><i class="fas fa-columns"></i>Loop resolution</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/all.php"><i class="fas fa-columns"></i>Mucosal visualisation</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/all.php"><i class="fas fa-columns"></i>Insertion techniques</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/insertion.php"><i class="fas fa-columns"></i>Insertion techniques</a>
+
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/loops.php"><i class="fas fa-columns"></i>Loop resolution</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/visualisation.php"><i class="fas fa-columns"></i>Mucosal visualisation</a>
                     <div class="dropdown-divider"></div>
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">Learning Theory</span>
 
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/all.php"><i class="fas fa-columns"></i>Conceptual lectures</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/all.php"><i class="fas fa-columns"></i>Training theory</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/training.php"><i class="fas fa-columns"></i>Training theory</a>
                     <div class="dropdown-divider"></div>
                     
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">Pathology</span>
 
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/all.php"><i class="fas fa-columns"></i>Management of pathology</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/pathology.php"><i class="fas fa-columns"></i>Management of pathology</a>
                     
                     <div class="dropdown-divider"></div>
 
