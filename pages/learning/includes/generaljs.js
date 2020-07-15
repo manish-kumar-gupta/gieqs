@@ -689,18 +689,20 @@ function PopupCenter(url, title, w, h) {
 
 
 
+
 function logout(){
 	
 	request = $.ajax({
-	        url: siteRoot + "logout.php",
+	        url: siteRoot + "/../../../assets/scripts/logout.php",
 	        type: "get",
 	        data: '',
 
 		   });
 
 	request.done(function(data){
-
-			   window.location.href = siteRoot + "index.php";
+			   //var siteRootesd = siteRoot.replace('/learning/','');
+				console.log(siteRoot + "index.php");
+			  	 window.location.href = siteRoot + "index.php";
 
 		   });
 	
@@ -912,13 +914,13 @@ $(document).ready(function() {
                         $loading.hide();
                     });
 
-	$('#userDisplay').on('click', '.logout', function(e){
+					$('#navbar-top-main').on('click', '#logout', function(e){
 		
-		e.preventDefault(); 
-		logout();
-		return false; 
-		
-	} );
+						e.preventDefault(); 
+						logout();
+						
+						
+					} );
 	
 	$('#userDisplay').on('click', '.login', function(e){
 		

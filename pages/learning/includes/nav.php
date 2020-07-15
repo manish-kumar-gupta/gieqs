@@ -71,7 +71,7 @@ function endsWith($haystack, $needle)
                     <div class="dropdown-divider"></div>
 
 <span style="color: rgb(238, 194, 120);" class="dropdown-header">GIEQs Curriculum</span>
-<a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/start.php"><i class="fas fa-columns"></i>GIEQs Endoscopy Curriculum</a>
+<a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/gieqs/all.php"><i class="fas fa-columns"></i>GIEQs Endoscopy Curriculum</a>
 
 
 
