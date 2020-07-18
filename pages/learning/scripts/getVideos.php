@@ -190,8 +190,10 @@ if ($debug) {
                     <div class="row align-items-center text-break">
                         <div class="col-12 text-break">
                             <h5 class="card-title mb-0 w-100"><?php echo $value['name']; ?></h5>
-                            <p class=" text-muted text-sm mt-1 mb-0 w-100 align-self-baseline">Author : <a class="text-muted" target="_blank" href="<?php echo BASE_URL;?>/pages/learning/pages/account/public-profile.php?id=<?php echo $value['author'];?>"><?php echo $user->getUserName($value['author']); ?></a></p>
-                            
+                            <p class=" text-muted text-sm mt-1 mb-0 align-self-baseline">Author : <a class="text-muted" target="_blank" href="<?php echo BASE_URL;?>/pages/learning/pages/account/public-profile.php?id=<?php echo $value['author'];?>"><?php echo $user->getUserName($value['author']); ?></a></p>
+                            <div class="d-flex flex-row-reverse">
+                            <span class="badge bg-info p-1"><?php echo $navigator->getVideoType($value['id']);?></span>
+                    </div>
 
                         </div>
                     </div>
