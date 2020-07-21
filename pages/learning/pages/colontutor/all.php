@@ -613,6 +613,25 @@ background-color: rgb(238, 194, 120);
 
             })
 
+
+            $('body').on('change', '#filter', function(){
+
+                if ($(this).val() == 1){
+
+                    //TODO make this function maintain the structure that is already present
+                
+                var result = $('.individualVideo').sort(function (a, b) {
+
+                var contentA =parseInt( $(a).data('type'));
+                var contentB =parseInt( $(b).data('type'));
+                return (contentA < contentB) ? -1 : (contentA > contentB) ? 1 : 0;
+                }).appendTo($('#videoCards'));
+
+                }
+
+            })
+            
+
             
             
             

@@ -203,6 +203,8 @@ width: 100%;
                     <img class="logo" alt="Olympus" src="<?php echo BASE_URL . '/assets/img/icons/olympus.png';?>">
                     </div>
                     <div class="col-lg-3 col-md-4 col-6 py-3">
+                    <img class="logo" alt="Medtronic" src="<?php echo BASE_URL . '/assets/img/icons/medtronic.png';?>">
+
                     </div>
                     <div class="col-lg-3 col-md-4 col-6 py-3">
                     </div>

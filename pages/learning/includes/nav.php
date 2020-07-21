@@ -32,6 +32,10 @@ function endsWith($haystack, $needle)
                 <!--<li class="nav-item active">
               <a class="nav-link" href="/index.php">Overview</a>
             </li>-->
+
+            <!-- LIVE, moved to main page -->
+
+           
                 <!-- Mission -->
                 <li class="nav-item active">
                     <a class="nav-link" href="<?php echo BASE_URL;?>/pages/learning/index.php">Learning Home</a>

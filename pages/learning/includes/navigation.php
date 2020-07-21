@@ -16,10 +16,31 @@
         //$requiredTagCategories = ['39', '40', '41', '42'];
 
         ?>
-        <div class="container mt-4 pt-0 bg-dark text-white" style="border: 1px solid #1b385d;">
+        <div class="container mt-4 p-2 bg-dark text-white" style="border: 1px solid #1b385d;">
         <div class="d-flex">
             <span class='mr-auto p-2'>Navigator</span>
+            <form class="d-flex">
+                                                    
+                                                    <div class="form-group mr-2 mt-1 ml-auto">
+                                                        
+                                                        <div class="input-group input-group-merge">
+                                                          <select name="filter" id="filter" class="form-control form-control-sm">
+                                                            <option hidden inactive>sort by</option>
+                                                            <option value="0">Video type (lecture, trainee etc...)</option>
+                                                            <option value="1">Title</option>
+                                                            <option value="2">Oldest First</option>
+                                                            <option value="3">Newest First</option>
+                                                            <option value="4">Author</option>
+                                                            </select>
+                                                    
+                                                        </div>
+
+                                                    </div>
+                                                   
+                            
+                                                </form>
             <?php if ($currentUserLevel < 3){?>
+
             <form class="d-flex">
                                                     
                                                     <div class="form-group mt-1 ml-auto">

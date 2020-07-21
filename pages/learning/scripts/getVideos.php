@@ -163,7 +163,7 @@ if ($debug) {
 
                         ?>
 
-                        <div class="d-flex flex-row flex-wrap align-items-stretch mt-1 pt-0 px-0 text-white">
+                        <div class="d-flex flex-row flex-wrap align-items-stretch mt-1 pt-0 px-0 text-white video-card">
                     <?php }
                     if ($a < $loadedRequiredProduct){
 
@@ -189,11 +189,11 @@ if ($debug) {
                     </div>
                     <div class="row align-items-center text-break">
                         <div class="col-12 text-break">
-                            <h5 class="card-title mb-0 w-100"><?php echo $value['name']; ?></h5>
-                            <p class=" text-muted text-sm mt-1 mb-0 align-self-baseline">Author : <a class="text-muted" target="_blank" href="<?php echo BASE_URL;?>/pages/learning/pages/account/public-profile.php?id=<?php echo $value['author'];?>"><?php echo $user->getUserName($value['author']); ?></a></p>
+                            <h5 class="card-title title mb-0 w-100"><?php echo $value['name']; ?></h5>
+                            <p class="text-muted text-sm mt-1 mb-0 align-self-baseline">Author : <a class="author text-muted" data-author="<?php echo $value['author'];?>" target="_blank" href="<?php echo BASE_URL;?>/pages/learning/pages/account/public-profile.php?id=<?php echo $value['author'];?>"><?php echo $user->getUserName($value['author']); ?></a></p>
                             <div class="d-flex flex-row-reverse">
-                            <span class="badge bg-info p-1"><?php echo $navigator->getVideoType($value['id']);?></span>
-                    </div>
+                            <span class="badge text-dark p-1 type" data-type="<?php echo $navigator->getVideoTypeid($value['id']);?>" style="background-color:rgb(238, 194, 120) !important;"><?php echo $navigator->getVideoType($value['id']);?></span>
+                        </div>
 
                         </div>
                     </div>
@@ -209,10 +209,10 @@ if ($debug) {
                 <div class="card-footer">
                     <div class="row align-items-center">
                         <div class="col-6">
-                            <a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $value['id'] . '&referid=' . $data['referringUrl']; ?>" class="btn btn-sm text-white gieqsGoldBackground">View</a>
+                            <a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $value['id'] . '&referid=' . $data['referringUrl']; ?>" class="btn btn-sm text-dark gieqsGoldBackground">View</a>
                         </div>
                         <div class="col-6 text-right">
-                            <span class="text-muted text-sm"><?php echo time_elapsed_string($value['created']);?></span>
+                            <span class="text-muted created text-sm" data-created="<?php echo $value['created'];?>"><?php echo time_elapsed_string($value['created']);?></span>
                         </div>
                     </div>
                 </div>
@@ -246,7 +246,7 @@ if ($debug) {
                 </div>
                 <div class="d-flex flex-row-reverse flex-wrap mt-1 pb-6 pt-0 px-0 text-white">
 
-                            <button class="align-self-end btn btn-sm text-white gieqsGoldBackground" id="loadMore">Load more videos..</button>
+                            <button class="align-self-end btn btn-sm text-dark gieqsGoldBackground" id="loadMore">Load more videos..</button>
 
 
                     <?php

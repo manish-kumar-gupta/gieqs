@@ -32,6 +32,73 @@ cursor: pointer;
 
 }
 
+@import url(https://fonts.googleapis.com/css?family=Lato:700);
+
+.box {
+  position: relative;
+  max-width: 600px;
+  width: 90%;
+  height: 400px;
+  background: #fff;
+  box-shadow: 0 0 15px rgba(0,0,0,.1);
+}
+
+/* common */
+.ribbon {
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  position: absolute;
+}
+.ribbon::before,
+.ribbon::after {
+  position: absolute;
+  z-index: -1;
+  content: '';
+  display: block;
+  border: 5px solid #2980b9;
+}
+.ribbon span {
+  position: absolute;
+  display: block;
+  width: 225px;
+  padding: 15px 0;
+  background-color: #3498db;
+  box-shadow: 0 5px 10px rgba(0,0,0,.1);
+  color: #fff;
+  font: 700 18px/1 'Lato', sans-serif;
+  text-shadow: 0 1px 1px rgba(0,0,0,.2);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+
+
+/* top right*/
+.ribbon-top-right {
+  top: -10px;
+  right: -10px;
+}
+.ribbon-top-right::before,
+.ribbon-top-right::after {
+  border-top-color: transparent;
+  border-right-color: transparent;
+}
+.ribbon-top-right::before {
+  top: 0;
+  left: 0;
+}
+.ribbon-top-right::after {
+  bottom: 0;
+  right: 0;
+}
+.ribbon-top-right span {
+  left: -25px;
+  top: 30px;
+  transform: rotate(45deg);
+}
+
+
     </style>
 
 
@@ -130,6 +197,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
         ?>
 
         <!-- Header (v1) -->
+        <?php if (!$live){?>
         <section class="header-1 section-rotate bg-section-dark" data-offset-top="#header-main">
             <div class="section-inner bg-gradient-dark"></div>
             <!-- SVG illustration -->
@@ -148,6 +216,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
       </div>-->
             <!-- Hero container -->
             <div class="container py-5 pt-lg-6 d-flex align-items-center position-relative zindex-100">
+               
                 <div class="col">
                     <div class="row">
                         <div class="col-lg-5 col-xl-6 text-center text-lg-left">
@@ -204,6 +273,87 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                 </div>
             </div>
         </section>
+        <?php }elseif ($live){?>
+
+<!-- If Livestream-->
+<section class="header-1 section-rotate bg-section-dark" data-offset-top="#header-main">
+    
+    <div class="section-inner bg-gradient-dark"></div>
+    <!-- SVG illustration -->
+    <div class="pt-7 position-absolute middle right-0 col-lg-7 col-xl-6 d-none d-lg-block">
+        <figure class="w-75" style="max-width: 1000px;">
+            <img alt="Image placeholder" src="<?php echo $imageArray[array_rand($imageArray)];?>"
+                class="svg-inject img-fluid">
+        </figure>
+<!--         <p class="text-center text-muted mt-2"><br/>* early bird fee until 1/9/2020, <br/>reductions for trainees, nurses and students</p>
+ -->    </div>
+    <!-- SVG background -->
+    <!--<div class="bg-absolute-cover bg-size--contain d-flex align-items-center">
+<figure class="w-100 d-none d-lg-block">
+  <img alt="Image placeholder" src="assets/img/svg/backgrounds/bg-4.svg" class="svg-inject" style="height: 1000px;">
+</figure>
+</div>-->
+    <!-- Hero container -->
+    <div class="container py-5 pt-lg-6 d-flex align-items-center position-relative zindex-100">
+        <div class="col">
+            <div class="row">
+                <div class="col-lg-5 col-xl-6 text-center text-lg-left">
+                    <div class="d-none d-lg-block mb-4">
+
+                    </div>
+                    <a href="<?php echo $registrationURL;?>">
+                    <div class="alert alert-modern alert-dark">
+                        <span class="badge gieqsGold badge-pill">
+                            New
+                            </span>
+                        <span class="alert-content">Not yet registered? Click here!</span>
+                     </div></a>
+                     <a class="ml-3 pointer" data-toggle="modal" data-target="#registerInterest">
+                    <!-- <div class="alert alert-modern alert-dark">
+                        <span class="badge gieqsGold badge-pill">
+                        <i class="fas fa-notes-medical"></i>
+                            </span>
+                        <span class="alert-content">COVID-19 statement</span>
+                     </div></a> -->
+                        <h2 class="text-white mb-4 mt-4 mt-lg-0">
+                            <span class="display-4 font-weight-light">We can do everyday endoscopy
+                                better.</span>
+                            <span class="d-block" style="color: rgb(238, 194, 120);"><strong
+                                    class="font-weight-light">Digital Edition I<br />Streaming NOW LIVE!<br /><!-- Registration is &euro;100* for 2 days. --></span>
+                        </h2>
+                        <p class="lead text-white">A digital endoscopy symposium in high definition focussed on promoting quality in the
+                            endoscopic interventions we perform everyday.&nbsp;</p>
+                        <div class="mt-5">
+                            <a href="https://www.youtube.com/watch?v=I9Y8gC6wtKg"
+                                class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
+                                style="background-color: rgb(238, 194, 120);" data-fancybox>
+                                <span class="btn-inner--text">Login now to watch!</span>
+                                <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
+
+                            </a>
+                          
+                            <!-- <a href="https://www.youtube.com/watch?v=zRy1xwGsagc"
+                                class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mt-2 mr-sm-4 scroll-me"
+                                style="background-color: rgb(238, 194, 120);" data-fancybox>
+                                <span class="badge bg-dark gieqsGold badge-pill">
+                            New
+                            </span>
+                                <span class="btn-inner--text">Watch the latest teaser video</span>
+                                <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
+
+                            </a> -->
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>  
+
+
+
+     <?php }?>
         <!-- <hr class="divider divider-fade" /> -->
         <section class="slice slice-lg bg-cover bg-size--cover" style="background-image: url('<?php echo BASE_URL;?>/assets/img/covers/learning/roomview1.png'); background-position: center bottom;">
         <div class="container">

@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php require '../../assets/includes/config.inc.php';?>
+<?php require '../../includes/config.inc.php';?>
 
 <head>
 <?php
 
 //define user access level
 
-$openaccess = 0;
-$requiredUserLevel = 3;
+$openaccess = 1;
 
 require BASE_URI . '/head.php';
 
 ?>
-    <title>Ghent International Endoscopy Symposium - Draft Programme</title>
+    <title>Ghent International Endoscopy Symposium - Live Programme</title>
   
     <style>
         .text-gieqsGold {
@@ -137,13 +136,13 @@ background-color: rgb(238, 194, 120);
 
         <!-- PROGRAM TABLE -->
 
-        <section class="slice bg-gradient-dark slice-lg">
+        <section class="slice bg-gradient-dark slice-lg mt-9">
             <div class="container">
                 <div class="row text-center">
 
                     <div class="col-12 p-3 pb-5">
                         <span class="h1" style="color: rgb(238, 194, 120);">Ghent International Endoscopy Quality
-                            Symposium <br /> Edition I. <br/>Draft Programme</span>
+                            Symposium <br /> Edition I. <br/>Live Scientific Programme</span>
                     </div>
 
                 </div>
@@ -183,19 +182,19 @@ background-color: rgb(238, 194, 120);
     <?php require BASE_URI . '/footer.php';?>
 
     <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
-    <script src="../../assets/js/purpose.core.js"></script>
+    <script src="<?php echo BASE_URL;?>/assets/js/purpose.core.js"></script>
     <!-- Page JS -->
-    <script src="../../assets/libs/swiper/dist/js/swiper.min.js"></script>
-    <script src="../../assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
-    <script src="../../assets/libs/typed.js/lib/typed.min.js"></script>
-    <script src="../../assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script>
-    <script src="../../assets/libs/jquery-countdown/dist/jquery.countdown.min.js"></script>
+    <script src="<?php echo BASE_URL;?>/assets/libs/swiper/dist/js/swiper.min.js"></script>
+    <script src="<?php echo BASE_URL;?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+    <script src="<?php echo BASE_URL;?>/assets/libs/typed.js/lib/typed.min.js"></script>
+    <script src="<?php echo BASE_URL;?>/assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script>
+    <script src="<?php echo BASE_URL;?>/assets/libs/jquery-countdown/dist/jquery.countdown.min.js"></script>
     <!-- Google maps -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBuyKngB9VC3zgY_uEB-DKL9BKYMekbeY"></script>
     <!-- Purpose JS -->
-    <script src="<?php echo BASE_URL;?>/assets/js/purpose.js"></script>
+    <script src="<?php echo BASE_URL2;?>/assets/js/purpose.js"></script>
     <!-- Demo JS - remove it when starting your project -->
-    <script src="../../assets/js/demo.js"></script>
+    <script src="<?php echo BASE_URL;?>/assets/js/demo.js"></script>
 
     <script>
 
@@ -214,7 +213,7 @@ background-color: rgb(238, 194, 120);
     console.log(jsonString);
 
     var request2 = $.ajax({
-        url: siteRoot + "assets/scripts/classes/generateProgrammeFacultyView.php",
+        url: siteRoot + "assets/scripts/classes/generateProgrammeCurrent.php",
         type: "POST",
         contentType: "application/json",
         data: jsonString,

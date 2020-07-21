@@ -90,6 +90,15 @@ $roothttp = BASE_URL . '/';
 
 //define('redirect_location', BASE_URL . '/index.php');
 //echo redirect_location;
+
+# ******************** #
+# ***** LIVE EVENT ***** #
+
+//make GIEQs conference live
+
+$live = 1;
+
+
     
 /* 
  *  Most important setting!

@@ -284,7 +284,7 @@ background-color: rgb(238, 194, 120);
     <!-- Google maps -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBuyKngB9VC3zgY_uEB-DKL9BKYMekbeY"></script>
     <!-- Purpose JS -->
-    <script src="../../assets/js/purpose.js"></script>
+    <script src="<?php echo BASE_URL;?>/assets/js/purpose.js"></script>
     <!-- Demo JS - remove it when starting your project -->
     <script src="../../assets/js/demo.js"></script>
 

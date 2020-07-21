@@ -738,7 +738,7 @@ top: -20vh;
     <!-- Google maps -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBuyKngB9VC3zgY_uEB-DKL9BKYMekbeY"></script>
     <!-- Purpose JS -->
-    <script src="../../assets/js/purpose.js"></script>
+    <script src="<?php echo BASE_URL;?>/assets/js/purpose.js"></script>
     <!-- <script src="assets/js/generaljs.js"></script> -->
     <script src="assets/js/demo.js"></script>
     <script>
