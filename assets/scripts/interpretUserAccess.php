@@ -369,9 +369,34 @@ b:{
     if (in_array($userid, $liveTestingUsers)) {
         $live = 1;
     }
+
+    
     
     
     }
+
+    # ******************** #
+    # ***** USER TRACKING ***** #
+
+    //ensure users activity logged
+
+    $userActivity = new userActivity;
+
+    if ($userid){
+
+        //getcurrent UTC time
+		$date = new DateTime('now', new DateTimeZone('UTC'));
+		$sqltimestamp = date_format($date, 'Y-m-d H:i:s');
+		
+		//add a user activity event to the database
+
+        $userActivity->New_userActivity($userid, null, null, $sqltimestamp);
+        
+		$userActivity->prepareStatementPDO();
+
+        
+    }
+    
 
 
 //do things where open access allowed

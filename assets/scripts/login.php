@@ -3,7 +3,9 @@
 	 
 	 $openaccess = 1;
 	 
-	 require ('../../assets/includes/config.inc.php');		
+	 require ('../../assets/includes/config.inc.php');	
+	 
+	 $userActivity = new userActivity;
 	 
 
 
@@ -37,12 +39,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$_SESSION['firstname'] = $data['firstname'];
 		$_SESSION['surname'] = $data['surname'];
         $_SESSION['access_level'] = $data['access_level'];
-        $_SESSION['siteKey'] = 'TxsvAb6KDYpmdNk';
+		$_SESSION['siteKey'] = 'TxsvAb6KDYpmdNk';
 		
-
-
+		//getcurrent UTC time
+		$date = new DateTime('now', new DateTimeZone('UTC'));
+		$sqltimestamp = date_format($date, 'Y-m-d H:i:s');
 		
+		//add a login event to the database
 
+		$userActivity->New_userActivity($data['user_id'], null, $sqltimestamp, null);
+		$userActivity->prepareStatementPDO();
 
 		// Redirect:
 		echo '1';

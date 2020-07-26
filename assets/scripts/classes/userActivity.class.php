@@ -231,6 +231,8 @@ $x=0;
 
 		} 
 $q = "INSERT INTO `userActivity` ($keys) VALUES ($keys2)";
+
+//echo $q;
 		
  $stmt = $this->connection->prepare($q); 
 $stmt->execute($ovMod3); 

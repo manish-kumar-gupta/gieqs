@@ -102,6 +102,7 @@ $live = 0;
 
 
     
+
 /* 
  *  Most important setting!
  *  The $debug variable is used to set error management.
