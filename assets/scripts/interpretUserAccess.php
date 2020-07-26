@@ -365,6 +365,10 @@ b:{
         }
 
     }
+
+    if (in_array($userid, $liveTestingUsers)) {
+        $live = 1;
+    }
     
     
     }

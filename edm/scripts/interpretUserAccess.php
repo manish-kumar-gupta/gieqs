@@ -146,6 +146,9 @@ if (isset($requiredUserLevel)){
 
     }
 
+   
+    
+
     //CHECK THE SUPERUSER STATUS, variable $isSuperuser
 
     if ($databaseUserAccessLevel == '1'){

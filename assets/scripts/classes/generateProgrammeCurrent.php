@@ -20,8 +20,14 @@
 
             //system to use as a reference
             
-            $currentTime = new DateTime('2020-10-07 09:30:20');
+            //$currentTime = new DateTime('2020-10-07 09:30:20');
             //$currentTime = new DateTime();  //need to check Belgium time
+            $serverTimeZone = new DateTimeZone('Europe/Brussels');
+            
+            
+            $currentTime = new DateTime('now', $serverTimeZone);
+            
+            print_r($currentTime);
 
             //$print_r()
 

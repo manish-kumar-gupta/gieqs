@@ -89,7 +89,10 @@ $roothttp = BASE_URL . '/';
 
 //make GIEQs conference live
 
+$liveTestingUsers = array(1, 16);
+
 $live = 0;
+
 
 
 /* 

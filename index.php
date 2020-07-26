@@ -192,7 +192,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 
         <?php
 
-        $imageArray = ['assets/img/polyps/ssp.png', 'assets/img/backgrounds/ChromoPolypTransBack.png']
+        $imageArray = ['assets/img/polyps/ssp.png', 'assets/img/backgrounds/ChromoPolypTransBack.png', 'assets/img/covers/bleeding/heaterNonLive.png']
 
         ?>
 
@@ -282,7 +282,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
     <!-- SVG illustration -->
     <div class="pt-7 position-absolute middle right-0 col-lg-7 col-xl-6 d-none d-lg-block">
         <figure class="w-75" style="max-width: 1000px;">
-            <img alt="Image placeholder" src="<?php echo $imageArray[array_rand($imageArray)];?>"
+            <img alt="Image placeholder" src="<?php echo BASE_URL;?>/assets/img/covers/bleeding/heaterLivev2.png"
                 class="svg-inject img-fluid">
         </figure>
 <!--         <p class="text-center text-muted mt-2"><br/>* early bird fee until 1/9/2020, <br/>reductions for trainees, nurses and students</p>
@@ -304,7 +304,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                     <a href="<?php echo $registrationURL;?>">
                     <div class="alert alert-modern alert-dark">
                         <span class="badge gieqsGold badge-pill">
-                            New
+                            LIVE
                             </span>
                         <span class="alert-content">Not yet registered? Click here!</span>
                      </div></a>
@@ -323,14 +323,35 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                         </h2>
                         <p class="lead text-white">A digital endoscopy symposium in high definition focussed on promoting quality in the
                             endoscopic interventions we perform everyday.&nbsp;</p>
+
+                            <!-- if not logged in -->
                         <div class="mt-5">
-                            <a href="https://www.youtube.com/watch?v=I9Y8gC6wtKg"
+
+                            <?php if (!$userid){?>
+                            <a href="<?php echo BASE_URL;?>/pages/authentication/login.php"
                                 class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
-                                style="background-color: rgb(238, 194, 120);" data-fancybox>
-                                <span class="btn-inner--text">Login now to watch!</span>
+                                style="background-color: rgb(238, 194, 120);">
+                                <span class="btn-inner--text">Login now to participate!</span>
                                 <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
 
                             </a>
+                            <?php }elseif ($userid){ //what if no access, tag set above has access to live?>
+                                <a href="<?php echo BASE_URL;?>/pages/learning/pages/live/plenary.php"
+                                    class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
+                                    style="background-color: rgb(238, 194, 120);">
+                                    <span class="btn-inner--text">Jump right into Plenary!</span>
+                                    <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
+    
+                                </a>
+                                <a href="<?php echo BASE_URL;?>/pages/learning/pages/live/complex.php"
+                                    class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mt-2 mr-sm-4 scroll-me"
+                                    style="background-color: rgb(238, 194, 120);">
+                                    <span class="btn-inner--text">Jump right into Complex!</span>
+                                    <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
+    
+                                </a>
+
+                            <?php }?>
                           
                             <!-- <a href="https://www.youtube.com/watch?v=zRy1xwGsagc"
                                 class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mt-2 mr-sm-4 scroll-me"
