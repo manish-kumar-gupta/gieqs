@@ -138,7 +138,73 @@ Class userFunctions {
 
 			
 
+	public function recentUserLogin($userid){
 
+		//if the user has had activity within 15 minutes deny second attempt
+		//unless logged out (logout in sessionid)
+
+		$date = new DateTime('now', new DateTimeZone('UTC'));
+
+		//15 mins ago
+
+		$date->sub(new DateInterval('PT15M'));
+
+
+		$sqltimestamp = date_format($date, 'Y-m-d H:i:s');
+		//15 mins ago
+
+
+		$q = "SELECT count(`id`) as `count` FROM `userActivity` WHERE `user_id` = '$userid' AND `activity_time` > '$sqltimestamp' AND `session_id` <> '99'";
+
+		//echo $q;
+
+		$result = $this->connection->RunQuery($q);
+
+						
+			$nRows = $result->rowCount();
+			
+			if ($nRows > 0){
+
+				//$q2 = "SELECT count(`id`) as `count` FROM `userActivity` WHERE `user_id` = '$userid' AND `activity_time` > '$sqltimestamp' AND `session_id` = '99'";
+				$q2 = "SELECT `session_id` FROM `userActivity` WHERE `user_id` = '$userid' AND `activity_time` > '$sqltimestamp' ORDER BY `activity_time` DESC, `id` DESC LIMIT 1";
+				//echo $q2;
+
+				$result2 = $this->connection->RunQuery($q2);
+
+				$nRows2 = $result2->rowCount();
+			
+				if ($nRows2 > 0){
+
+					while($row = $result2->fetch(PDO::FETCH_ASSOC)){
+
+						$sessionid = $row['session_id'];
+
+
+					}
+					
+					if ($sessionid == 99){
+
+						return true; //allow login due to last action logout
+
+					}else{
+
+						return false; //deny login
+					}
+
+				}else{
+
+					return false; // deny login
+
+
+				}
+
+			}else{
+
+				return true; // allow login
+			}
+
+
+	}
 	
 
     /**

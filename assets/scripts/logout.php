@@ -3,6 +3,19 @@
 $openaccess = 1;
 
 require ('../../assets/includes/config.inc.php');	
+require (BASE_URI . '/assets/scripts/interpretUserAccess.php');	
+
+$userActivity = new userActivity;
+
+
+//getcurrent UTC time
+$date = new DateTime('now', new DateTimeZone('UTC'));
+$sqltimestamp = date_format($date, 'Y-m-d H:i:s');
+
+//add a logout event to the database
+
+$userActivity->New_userActivity($userid, 99, null, $sqltimestamp);
+$userActivity->prepareStatementPDO();
 
 
 $_SESSION = array();
@@ -17,6 +30,7 @@ if (ini_get("session.use_cookies")) {
         $params["secure"], $params["httponly"]
     );
 }
+
 
 // Finally, destroy the session.
 session_destroy();

@@ -6,6 +6,7 @@
 	 require ('../../assets/includes/config.inc.php');	
 	 
 	 $userActivity = new userActivity;
+	 $userFunctions = new userFunctions;
 	 
 
 
@@ -28,30 +29,42 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	if ($check) { // OK!
 
-		if ($data['access_level'] == 7){
+		//check no duplicate login
 
-			echo '3';
+		if ($userFunctions->recentUserLogin($data['user_id'])){
+
+			if ($data['access_level'] == 7){
+
+				echo '3';
+				exit();
+			}
+
+			// Set the session data:
+			$_SESSION['user_id'] = $data['user_id'];
+			$_SESSION['firstname'] = $data['firstname'];
+			$_SESSION['surname'] = $data['surname'];
+			$_SESSION['access_level'] = $data['access_level'];
+			$_SESSION['siteKey'] = 'TxsvAb6KDYpmdNk';
+			
+			//getcurrent UTC time
+			$date = new DateTime('now', new DateTimeZone('UTC'));
+			$sqltimestamp = date_format($date, 'Y-m-d H:i:s');
+			
+			//add a login event to the database
+
+			$userActivity->New_userActivity($data['user_id'], null, $sqltimestamp, null);
+			$userActivity->prepareStatementPDO();
+
+			// Redirect:
+			echo '1';
+
+		}else{ // recent activity
+
+			echo '4';
 			exit();
+
+
 		}
-
-		// Set the session data:
-		$_SESSION['user_id'] = $data['user_id'];
-		$_SESSION['firstname'] = $data['firstname'];
-		$_SESSION['surname'] = $data['surname'];
-        $_SESSION['access_level'] = $data['access_level'];
-		$_SESSION['siteKey'] = 'TxsvAb6KDYpmdNk';
-		
-		//getcurrent UTC time
-		$date = new DateTime('now', new DateTimeZone('UTC'));
-		$sqltimestamp = date_format($date, 'Y-m-d H:i:s');
-		
-		//add a login event to the database
-
-		$userActivity->New_userActivity($data['user_id'], null, $sqltimestamp, null);
-		$userActivity->prepareStatementPDO();
-
-		// Redirect:
-		echo '1';
 		
 	} else { // Unsuccessful!
 		

@@ -948,7 +948,16 @@ function login(){
 				   { window.location.reload();  }, 1000);
 
 				   
-			   }else {
+			   }else if (data == 4){
+					
+					   
+				$('.modal').find('.errorTxt').show().html('Duplicate login attempt detected, you will be locked out for 15 minutes');
+				   setTimeout(
+				   function() 
+				   {  $('.modal').find('.errorTxt').hide();  }, 2000);
+
+				 
+			 }else {
 				   
 				   $('.modal').find('.errorTxt').show().html('Unsuccessful Login, try again');
 				   setTimeout(
