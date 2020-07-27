@@ -31,6 +31,7 @@
 
             //comment for live the below line !forLive
 
+            //$currentTime = new DateTime('2020-10-07 09:30:20', $serverTimeZone);
             $currentTime = new DateTime('2020-10-07 09:30:20', $serverTimeZone);
 
             //$print_r()
@@ -192,10 +193,10 @@
                             }
 
                             if ($session1data){
-                            $sessionTimeTo = new DateTime($session1data[0]['date'] . ' ' . $session1data[0]['timeTo']);
+                            $sessionTimeTo = new DateTime($session1data[0]['date'] . ' ' . $session1data[0]['timeTo'], $serverTimeZone);
                             }elseif ($session2data){
 
-                             $sessionTimeTo = new DateTime($session2data[0]['date'] . ' ' . $session2data[0]['timeTo']);
+                             $sessionTimeTo = new DateTime($session2data[0]['date'] . ' ' . $session2data[0]['timeTo'], $serverTimeZone);
                             }
 
                             if ($debug){
@@ -385,8 +386,8 @@
 
                                                             <?php 
                                                             
-                                                            $sessionItemTimeFrom = new DateTime($response[0]['timeFrom']);
-                                                            $sessionItemTimeTo = new DateTime($response[array_key_last($response)]['timeTo']);
+                                                            $sessionItemTimeFrom = new DateTime($response[0]['timeFrom'], $serverTimeZone);
+                                                            $sessionItemTimeTo = new DateTime($response[array_key_last($response)]['timeTo'], $serverTimeZone);
                                                             
                                                             
                                                             ?>                           
@@ -453,8 +454,8 @@
                                                     <div class="pl-2 pr-1 pb-0 pt-1 time">
                                                     <?php 
                                                             
-                                                            $sessionItemTimeFrom = new DateTime($value['sessionItemTimeFrom']);
-                                                            $sessionItemTimeTo = new DateTime($value['sessionItemTimeTo']);
+                                                            $sessionItemTimeFrom = new DateTime($value['sessionItemTimeFrom'], $serverTimeZone);
+                                                            $sessionItemTimeTo = new DateTime($value['sessionItemTimeTo'], $serverTimeZone);
                                                             
                                                             
                                                             ?>                           
@@ -604,8 +605,8 @@
                                                     <p class="mb-0"><?php echo $programmeDate->format('D d M Y');?>
                                                     <?php 
                                                             
-                                                            $sessionItemTimeFrom = new DateTime($response[0]['timeFrom']);
-                                                            $sessionItemTimeTo = new DateTime($response[array_key_last($response)]['timeTo']);
+                                                            $sessionItemTimeFrom = new DateTime($response[0]['timeFrom'], $serverTimeZone);
+                                                            $sessionItemTimeTo = new DateTime($response[array_key_last($response)]['timeTo'], $serverTimeZone);
                                                             
                                                             
                                                             ?>                           
@@ -672,8 +673,8 @@
                                                     <div class="pl-2 pr-1 pb-0 pt-1 time">
                                                     <?php 
                                                             
-                                                            $sessionItemTimeFrom = new DateTime($value['sessionItemTimeFrom']);
-                                                            $sessionItemTimeTo = new DateTime($value['sessionItemTimeTo']);
+                                                            $sessionItemTimeFrom = new DateTime($value['sessionItemTimeFrom'], $serverTimeZone);
+                                                            $sessionItemTimeTo = new DateTime($value['sessionItemTimeTo'], $serverTimeZone);
                                                             
                                                             
                                                             ?>                           
@@ -859,13 +860,13 @@
 
                             //display the time anyway
                             
-                            $sessionTimeFrom = new DateTime($session1data[0]['date'] . ' ' . $timeValue);
+                            $sessionTimeFrom = new DateTime($session1data[0]['date'] . ' ' . $timeValue, $serverTimeZone);
 
                             if ($session1data){
-                            $sessionTimeTo = new DateTime($session1data[0]['date'] . ' ' . $session1data[0]['timeTo']);
+                            $sessionTimeTo = new DateTime($session1data[0]['date'] . ' ' . $session1data[0]['timeTo'], $serverTimeZone);
                             }elseif ($session2data){
 
-                             $sessionTimeTo = new DateTime($session2data[0]['date'] . ' ' . $session2data[0]['timeTo']);
+                             $sessionTimeTo = new DateTime($session2data[0]['date'] . ' ' . $session2data[0]['timeTo'], $serverTimeZone);
                             }
 
                             $now = $currentTime;
@@ -1035,8 +1036,8 @@
                                                     <p class="mb-0"><?php echo $programmeDate->format('D d M Y');?>
                                                     <?php 
                                                             
-                                                            $sessionItemTimeFrom = new DateTime($response[0]['timeFrom']);
-                                                            $sessionItemTimeTo = new DateTime($response[array_key_last($response)]['timeTo']);
+                                                            $sessionItemTimeFrom = new DateTime($response[0]['timeFrom'], $serverTimeZone);
+                                                            $sessionItemTimeTo = new DateTime($response[array_key_last($response)]['timeTo'], $serverTimeZone);
                                                             
                                                             
                                                             ?>                           
@@ -1103,8 +1104,8 @@
                                                     <div class="pl-2 pr-1 pb-0 pt-1 time">
                                                     <?php 
                                                             
-                                                            $sessionItemTimeFrom = new DateTime($value['sessionItemTimeFrom']);
-                                                            $sessionItemTimeTo = new DateTime($value['sessionItemTimeTo']);
+                                                            $sessionItemTimeFrom = new DateTime($value['sessionItemTimeFrom'], $serverTimeZone);
+                                                            $sessionItemTimeTo = new DateTime($value['sessionItemTimeTo'], $serverTimeZone);
                                                             
                                                             
                                                             ?>                           
@@ -1252,8 +1253,8 @@
                                                     <p class="mb-0"><?php echo $programmeDate->format('D d M Y');?>
                                                     <?php 
                                                             
-                                                            $sessionItemTimeFrom = new DateTime($response[0]['timeFrom']);
-                                                            $sessionItemTimeTo = new DateTime($response[array_key_last($response)]['timeTo']);
+                                                            $sessionItemTimeFrom = new DateTime($response[0]['timeFrom'], $serverTimeZone);
+                                                            $sessionItemTimeTo = new DateTime($response[array_key_last($response)]['timeTo'], $serverTimeZone);
                                                             
                                                             
                                                             ?>                           
@@ -1321,8 +1322,8 @@
 
                                                     <?php 
                                                             
-                                                            $sessionItemTimeFrom = new DateTime($value['sessionItemTimeFrom']);
-                                                            $sessionItemTimeTo = new DateTime($value['sessionItemTimeTo']);
+                                                            $sessionItemTimeFrom = new DateTime($value['sessionItemTimeFrom'], $serverTimeZone);
+                                                            $sessionItemTimeTo = new DateTime($value['sessionItemTimeTo'], $serverTimeZone);
                                                             
                                                             
                                                             ?>                           
