@@ -380,7 +380,13 @@ b:{
 
     //ensure users activity logged
 
+     spl_autoload_unregister ('class_loader');
+
+    require(BASE_URI .'/assets/scripts/classes/userActivity.class.php');
+
     $userActivity = new userActivity;
+
+    spl_autoload_register ('class_loader');
 
     if ($userid){
 
@@ -395,7 +401,9 @@ b:{
 		$userActivity->prepareStatementPDO();
 
         
-    }
+    }  
+    
+
     
 
 

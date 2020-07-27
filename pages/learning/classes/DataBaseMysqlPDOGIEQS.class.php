@@ -11,7 +11,7 @@
  * 
  */
 		
-Class DataBaseMysqlPDO {
+Class DataBaseMysqlPDOv2 {
 
 	public $conn;
 

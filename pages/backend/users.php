@@ -661,66 +661,80 @@ function fillForm (idPassed){
 
     //delete behaviour
 
-		function deleteRow (id){
+    <?php if ($isSuperuser){
 
-        //esdLesionPassed is the current record, some security to check its also that in the id field
+        if ($isSuperuser == 1){
 
-        /* if (esdLesionPassed != $("#id").text()){
+            ?>
 
-            return;
+function deleteRow (id){
 
-        } */
+//esdLesionPassed is the current record, some security to check its also that in the id field
 
+/* if (esdLesionPassed != $("#id").text()){
 
-        if (confirm("Do you wish to delete this <?php echo $databaseName;?>?")) {
+    return;
 
-            disableFormInputs("<?php echo $databaseName;?>-form");
-
-            var esdLesionObject = pushFormDataJSON($("#<?php echo $databaseName;?>-form"), "<?php echo $databaseName;?>", "user_id", id, "2"); //delete esdLesion
-
-            esdLesionObject.done(function (data){
-
-                console.log(data);
-
-                if (data){
-
-                    if (data == 1){
-
-                        $('#topTableSuccess').text("<?php echo $databaseName;?> deleted");
-
-                        $("#topTableAlert").removeClass("alert-success").addClass("alert-danger").fadeTo(4000, 500).slideUp(500, function() {
-                            $("#topTableAlert").slideUp(500);
-                        });
-                        //TODO refresh the table from AJAX
-                        //esdLesionPassed = null;
-                        //window.location.href = siteRoot + "scripts/forms/esdLesionTable.php";
-                        //location.reload();
-                        datatable.ajax.reload();
+} */
 
 
-                        enableFormInputs("<?php echo $databaseName;?>-form");
+if (confirm("Do you wish to delete this <?php echo $databaseName;?>?")) {
 
-                        //go to esdLesion list
+    disableFormInputs("<?php echo $databaseName;?>-form");
 
-                    }else {
+    var esdLesionObject = pushFormDataJSON($("#<?php echo $databaseName;?>-form"), "<?php echo $databaseName;?>", "user_id", id, "2"); //delete esdLesion
 
-                    alert("Error, could not delete.  Please try again");
+    esdLesionObject.done(function (data){
 
-                    enableFormInputs("<?php echo $databaseName;?>-form");
+        console.log(data);
 
-                    }
+        if (data){
+
+            if (data == 1){
+
+                $('#topTableSuccess').text("<?php echo $databaseName;?> deleted");
+
+                $("#topTableAlert").removeClass("alert-success").addClass("alert-danger").fadeTo(4000, 500).slideUp(500, function() {
+                    $("#topTableAlert").slideUp(500);
+                });
+                //TODO refresh the table from AJAX
+                //esdLesionPassed = null;
+                //window.location.href = siteRoot + "scripts/forms/esdLesionTable.php";
+                //location.reload();
+                datatable.ajax.reload();
 
 
+                enableFormInputs("<?php echo $databaseName;?>-form");
 
-                }
+                //go to esdLesion list
+
+            }else {
+
+            alert("Error, could not delete.  Please try again");
+
+            enableFormInputs("<?php echo $databaseName;?>-form");
+
+            }
 
 
-            });
 
         }
 
 
+    });
+
+}
+
+
+}
+        
+<?php 
+
+        }
     }
+    ?>
+
+		
 
 $(document).ready(function(){
 
@@ -793,7 +807,7 @@ $(document).ready(function(){
            {
            data: null,
            render: function ( data, type, row ) {
-               return '<div class="d-flex align-items-center justify-content-end"><div class="actions ml-3"><a class="fill-modal action-item mr-2"  data-toggle="tooltip" title="edit this row" data-original-title="Edit"> <i class="fas fa-pencil-alt"></i> </a> <a href="#" class="action-item mr-2" data-toggle="tooltip" title="" data-original-title="see enclosed items"> <i class="fas fa-level-down-alt"></i> </a> <div class="dropdown"> <a href="#" class="action-item" role="button" data-toggle="dropdown" aria-haspopup="true" data-expanded="false"> <i class="fas fa-ellipsis-v"></i> </a> <div class="dropdown-menu dropdown-menu-right"> <a class="delete-row dropdown-item"> Delete </a> </div> </div> </div> </div>';
+           return '<div class="d-flex align-items-center justify-content-end"><div class="actions ml-3"><a class="fill-modal action-item mr-2"  data-toggle="tooltip" title="edit this row" data-original-title="Edit"> <i class="fas fa-pencil-alt"></i> </a> <a href="#" class="action-item mr-2" data-toggle="tooltip" title="" data-original-title="see enclosed items"> <i class="fas fa-level-down-alt"></i> </a> <div class="dropdown"> <a href="#" class="action-item" role="button" data-toggle="dropdown" aria-haspopup="true" data-expanded="false"> <i class="fas fa-ellipsis-v"></i> </a> <div class="dropdown-menu dropdown-menu-right"> <?php if ($isSuperuser == 1){ ?><a class="delete-row dropdown-item"> Delete </a><?php } ?> </div> </div> </div> </div>';
            }
            }
        ],

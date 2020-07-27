@@ -154,7 +154,8 @@ Class userFunctions {
 		//15 mins ago
 
 
-		$q = "SELECT count(`id`) as `count` FROM `userActivity` WHERE `user_id` = '$userid' AND `activity_time` > '$sqltimestamp' AND `session_id` <> '99'";
+		//$q = "SELECT count(`id`) as `count` FROM `userActivity` WHERE `user_id` = '$userid' AND `activity_time` > '$sqltimestamp' AND `session_id` <> '99'";
+		$q = "SELECT count(`id`) as `count` FROM `userActivity` WHERE `user_id` = '$userid' AND `activity_time` > '$sqltimestamp'";
 
 		//echo $q;
 
@@ -162,8 +163,17 @@ Class userFunctions {
 
 						
 			$nRows = $result->rowCount();
+
+			while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+				$count = $row['count'];
+
+
+			}
+
+			//echo $count;
 			
-			if ($nRows > 0){
+			if ($count > 0){
 
 				//$q2 = "SELECT count(`id`) as `count` FROM `userActivity` WHERE `user_id` = '$userid' AND `activity_time` > '$sqltimestamp' AND `session_id` = '99'";
 				$q2 = "SELECT `session_id` FROM `userActivity` WHERE `user_id` = '$userid' AND `activity_time` > '$sqltimestamp' ORDER BY `activity_time` DESC, `id` DESC LIMIT 1";
