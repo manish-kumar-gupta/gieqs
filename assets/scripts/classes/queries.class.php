@@ -192,8 +192,7 @@ class queries
   public function select2_moderator_programme($search)
       {
       
-      $q = "Select 
-            
+      $q = "Select      
       `id`, `title`, `firstname`, `surname`
       FROM `faculty`
       WHERE lower(CONCAT(`firstname`, ' ', `surname` )) LIKE lower('%{$search}%')";
@@ -226,10 +225,10 @@ class queries
   public function select2_programme_match($search)
       {
       
-      $q = "Select 
-            
-      `id`, `date`, `title` FROM `Programme`
-      WHERE `id` = '$search'";
+      $q = "Select `id`, `date`, `title` FROM `Programme`
+      WHERE lower(`title`) LIKE lower('%{$search}%')";
+
+      //echo $q;
 
       $result = $this->connection->RunQuery($q);
       $rowReturn = array();
@@ -242,7 +241,7 @@ class queries
             $programmeDate = new DateTime($row['date']);
             $programmeDateText = $programmeDate->format('D d M Y');
                 //note here returning an option only
-              $rowReturn = array('id' => $row['id'], 'text' => $programmeDateText . ' ' . $row['title']);
+              $rowReturn['results'][] = array('id' => $row['id'], 'text' => $programmeDateText . ' ' . $row['title']);
               //print_r($row);
           }
       

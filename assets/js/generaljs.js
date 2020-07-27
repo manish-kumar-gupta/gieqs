@@ -92,8 +92,18 @@ function getFormData($form){
     return indexed_array;
 }
 
+/* function objectifyForm(formArray) {//serialize data function
+
+	var returnArray = {};
+	for (var i = 0; i < formArray.length; i++){
+	  returnArray[formArray[i]['name']] = formArray[i]['value'];
+	}
+	return returnArray;
+  } */
+
 function getFormDatav2($form, table, identifier, identifierKey, update){
-    var unindexed_array = $form.serializeArray();
+	var unindexed_array = $form.serializeArray();
+	//console.dir(unindexed_array);
     var indexed_array = {};
 
 	indexed_array['table'] = table;
@@ -103,9 +113,46 @@ function getFormDatav2($form, table, identifier, identifierKey, update){
 
     $.map(unindexed_array, function(n, i){
         indexed_array[n['name']] = n['value'];
-    });
+	});
+	
+	//$("#centre").select2('data')
+	//FORM 
+	//0 {selected: false, disabled: false, text: "Thu 08 Oct 2020 Plenary", id: "29", _resultId: "select2-centre-result-j08e-29", …}
+	//1 {selected: false, disabled: false, text: "Thu 08 Oct 2020 Complex", id: "30", _resultId: "select2-centre-result-todw-30", …}
 
-    return indexed_array;
+	return indexed_array;
+	
+}
+
+function getFormDatav3($form, table, identifier, identifierKey, update){
+
+	//push any data-disabled = true from $form;
+
+	$form = $form.find('input, select').filter(function ()
+	{
+		if ($(this).attr('data-disabled') == "true") return false;
+
+		if ($(this).hasClass('select2-searchField') === true) return false;
+
+		return true;
+	});
+
+	var formObject = $form.serializeObject();
+
+	formObject.table = table;
+	formObject.identifier = identifier;
+	formObject.identifierKey = identifierKey;
+	formObject.update = update;
+
+    
+	
+	//$("#centre").select2('data')
+	//FORM 
+	//0 {selected: false, disabled: false, text: "Thu 08 Oct 2020 Plenary", id: "29", _resultId: "select2-centre-result-j08e-29", …}
+	//1 {selected: false, disabled: false, text: "Thu 08 Oct 2020 Complex", id: "30", _resultId: "select2-centre-result-todw-30", …}
+
+	return formObject;
+	
 }
 
 function getFormDatav2Modifier($form, table, identifier, identifierKey, update, modifier){
@@ -128,7 +175,31 @@ function getFormDatav2Modifier($form, table, identifier, identifierKey, update, 
 function pushFormDataJSON ($form, table, identifierKey, identifier, update){
 
 	//var $form = $(form);
+	//var data = getFormDatav2($form, table, identifier, identifierKey, update);	//updated to v3
 	var data = getFormDatav2($form, table, identifier, identifierKey, update);	
+
+	//TODO add identifier and identifierKey
+
+	console.log(data);
+
+	data = JSON.stringify(data);
+
+	console.log(data);
+
+	return $.ajax({
+		url: siteRoot + "assets/scripts/masterAjaxDataReturnQueryJSONv2.php",
+		type: "POST",
+		contentType: "application/json",
+		data: data,
+	    });
+
+}
+
+function pushFormDataJSONv2 ($form, table, identifierKey, identifier, update){
+
+	//var $form = $(form);
+	//var data = getFormDatav2($form, table, identifier, identifierKey, update);	//updated to v3
+	var data = getFormDatav3($form, table, identifier, identifierKey, update);	
 
 	//TODO add identifier and identifierKey
 
@@ -1142,6 +1213,33 @@ $.validator.addMethod(
 	"Please check your input."
 );
 
+jQuery.fn.serializeObject = function() {
+	var arrayData, objectData;
+	arrayData = this.serializeArray();
+	objectData = {};
+  
+	$.each(arrayData, function() {
+	  var value;
+  
+	  if (this.value != null) {
+		value = this.value;
+	  } else {
+		value = '';
+	  }
+  
+	  if (objectData[this.name] != null) {
+		if (!objectData[this.name].push) {
+		  objectData[this.name] = [objectData[this.name]];
+		}
+  
+		objectData[this.name].push(value);
+	  } else {
+		objectData[this.name] = value;
+	  }
+	});
+  
+	return objectData;
+  };
 
 
 

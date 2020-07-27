@@ -350,41 +350,34 @@ if ($identifierValue) {
                                     <div class="form-group">
                                     <!-- EDIT -->
                                     
-                                    <label for="firstname">firstname</label>
+                                    <label for="firstname">First Name</label>
                                         <div class="input-group mb-3">
                                             <input id="firstname" type="text" class="form-control" name="firstname">
                                         </div>
 
-                                    <label for="surname">surname</label>
+                                    <label for="surname">Surname</label>
                                     <div class="input-group mb-3">
                                         <input id="surname" type="text" class="form-control" name="surname">
                                     </div>
 
-                                    <label for="user_id">user_id</label>
-                                        <div class="input-group mb-3">
-                                            <select id="user_id" type="text" data-toggle="select" class="form-control" name="user_id">
-                                            <!--TODO get the users from AJAX-->
-                                            </select>
-                                        </div>
 
-                                    <label for="email">email</label>
+                                    <label for="email">email (also user id)</label>
                                     <div class="input-group mb-3">
                                         <input id="email" type="text" class="form-control" name="email">
                                     </div>
 
-                                    <label for="password">password</label>
-                                        <div class="input-group mb-3">
-                                            <input id="password" type="text" class="form-control" name="password">
-                                        </div>
+                                    <button class="btn bg-warning text-white p-1 m-1">Send Password Reset Mail</button>
+
+                                    <br/>
 
                                     <label for="centre">centre</label>
                                         <div class="input-group mb-3">
-                                            <select id="centre" type="text" data-toggle="select" class="form-control" name="centre">
+                                            <select id="centre" type="text" data-toggle="select" class="form-control" name="centre" data-disabled="true">
                                             <!--TODO get centres from AJAX-->
                                             </select>
                                         </div>
 
-                                        <label for="centreName">centreName</label>
+                                        <!-- <label for="centreName">centreName</label>
                                         <div class="input-group mb-3">
                                             <input id="centreName" type="text" class="form-control" name="centreName">
                                         </div>
@@ -392,7 +385,7 @@ if ($identifierValue) {
                                         <label for="registered_date">registered_date</label>
                                         <div class="input-group mb-3">
                                             <input id="registered_date" data-toggle = "date" type="text" class="form-control" name="registered_date">
-                                        </div>
+                                        </div> -->
 
                                         <label for="timezone">timezone</label>
                                         <div class="input-group mb-3">
@@ -405,15 +398,32 @@ if ($identifierValue) {
                                         <div class="input-group mb-3">
                                             <select id="access_level" type="text" data-toggle="select" class="form-control" name="access_level">
                                             <option value="" selected disabled hidden>select</option>
-                                            <option value="1">1 - Superuser</option>
-                                            <option value="2">2 - Content Creator</option>
-                                            <option value="3">3 - Unused Option</option>
-                                            <option value="4">4 - Regular User</option>
-                                            <option value="5">5 - View only</option>
+                                            
+                                            <?php if ($isSuperuser){
+                                                if ($isSuperuser == 1){?>
+
+                                                <option value="1">1 - Superuser</option>
+                                                <option value="2">2 - Content Creator</option>
+
+                                            <?php    }
+                                            }?>
+                                            
+                                            <option value="3">3 - Staff member</option>
+                                            <option value="4">4 - GIEQs pro</option>
+                                            <option value="5">5 - GIEQs standard</option>
+                                            <option value="6">6 - GIEQs basic</option>
+                                            <?php if ($isSuperuser){
+                                                if ($isSuperuser == 1){?>
+
+                                    <option value="9">9 - Inactive user (cannot login)</option>
+
+                                            <?php    }
+                                            }?>
+                                            
                                             </select>
                                         </div>
 
-                                        <label for="contactPhone">contactPhone</label>
+                                        <!-- <label for="contactPhone">contactPhone</label>
                                         <div class="input-group mb-3">
                                             <input id="contactPhone" type="text" class="form-control" name="contactPhone">
                                         </div>
@@ -436,8 +446,8 @@ if ($identifierValue) {
                 
                                             </select>
                                         </div>
-
-                                        <label for="emailPreferences">emailPreferences</label>
+ -->
+                                       <!--  <label for="emailPreferences">emailPreferences</label>
                                         <div class="input-group mb-3">
                                             <select id="emailPreferences" type="text" data-toggle="select" class="form-control" name="emailPreferences">
                                             <option value="" selected disabled hidden>select</option>
@@ -450,7 +460,7 @@ if ($identifierValue) {
                                         <label for="key">key</label>
                                         <div class="input-group mb-3">
                                             <input id="key" type="text" class="form-control" name="key">
-                                        </div>
+                                        </div> -->
 
 
 
@@ -563,7 +573,7 @@ function fillForm (idPassed){
 
         if (edit == 0){
 
-            var esdLesionObject = pushFormDataJSON($("#<?php echo $databaseName;?>-form"), "<?php echo $databaseName;?>", "user_id", null, "0"); //insert new object
+            var esdLesionObject = pushFormDataJSONv2($("#<?php echo $databaseName;?>-form"), "<?php echo $databaseName;?>", "user_id", null, "0"); //insert new object
 
             esdLesionObject.done(function (data){
 
@@ -607,7 +617,7 @@ function fillForm (idPassed){
 
             if (lesionUnderEdit){
 
-                var esdLesionObject = pushFormDataJSON($("#<?php echo $databaseName;?>-form"), "<?php echo $databaseName;?>", "user_id", lesionUnderEdit, "1"); //insert new object
+                var esdLesionObject = pushFormDataJSONv2($("#<?php echo $databaseName;?>-form"), "<?php echo $databaseName;?>", "user_id", lesionUnderEdit, "1"); //insert new object
 
                     esdLesionObject.done(function (data){
 
@@ -682,7 +692,7 @@ if (confirm("Do you wish to delete this <?php echo $databaseName;?>?")) {
 
     disableFormInputs("<?php echo $databaseName;?>-form");
 
-    var esdLesionObject = pushFormDataJSON($("#<?php echo $databaseName;?>-form"), "<?php echo $databaseName;?>", "user_id", id, "2"); //delete esdLesion
+    var esdLesionObject = pushFormDataJSONv2($("#<?php echo $databaseName;?>-form"), "<?php echo $databaseName;?>", "user_id", id, "2"); //delete esdLesion //getFormdatav2 is specific for users
 
     esdLesionObject.done(function (data){
 
@@ -759,15 +769,19 @@ $(document).ready(function(){
     $('#centre').select2({
 
         dropdownParent: $(".modal-content"),
+        tags: true,
+    // automatically creates tag when user hit space or comma:
+    tokenSeparators: [",", " "],
 
+        multiple: true,
         ajax: {
         //url: siteRoot + 'assets/scripts/select2simple.php?table=Delegate&field=firstname',
-        url: siteRoot + 'assets/scripts/select2query.php',
+        url: siteRoot + 'assets/scripts/querySelectProgrammes.php',
         data: function (params) {
             var query = {
                 search: params.term,
-                query: '`user_id`, `firstname` FROM `users`',
-                fieldRequired: 'firstname',
+                /* query: '`user_id`, `firstname` FROM `users`',
+                fieldRequired: 'firstname', */
             }
 
             // Query parameters will be 
