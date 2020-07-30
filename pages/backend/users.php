@@ -770,8 +770,9 @@ $(document).ready(function(){
 
         dropdownParent: $(".modal-content"),
         tags: true,
-    // automatically creates tag when user hit space or comma:
-    tokenSeparators: [",", " "],
+
+        // automatically creates tag when user hit space or comma:
+        tokenSeparators: [",", " "],
 
         multiple: true,
         ajax: {
@@ -795,6 +796,8 @@ $(document).ready(function(){
         
 
     });
+
+    //centre.change, submit ajax of the added tag, or remove
 
 
 

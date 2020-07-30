@@ -206,7 +206,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                     <img alt="Image placeholder" src="<?php echo $imageArray[array_rand($imageArray)];?>"
                         class="svg-inject img-fluid">
                 </figure>
-                <p class="text-center text-muted mt-2"><br/>* early bird fee until 1/9/2020, <br/>reductions for trainees, nurses and students</p>
+                <p class="text-center text-muted mt-2"><br/>* early bird fee until 7/9/2020, <br/>reductions for trainees, nurses and students</p>
             </div>
             <!-- SVG background -->
             <!--<div class="bg-absolute-cover bg-size--contain d-flex align-items-center">
@@ -241,8 +241,8 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                     <span class="display-4 font-weight-light">We can do everyday endoscopy
                                         better.</span>
                                     <span class="d-block" style="color: rgb(238, 194, 120);"><strong
-                                            class="font-weight-light">Digital Edition I<br />October 7 & 8
-                                            2020</strong><br />streamed in full, live, right here <br />Registration is &euro;100* for 2 days.</span>
+                                            class="font-weight-light">Digital Edition I<br />October 7 & 8 2020 <br/>0730 - 1830 CET
+                                            </strong><br />streamed in full, live, right here <br />Registration is &euro;100* for 2 days.</span>
                                 </h2>
                                 <p class="lead text-white">A digital endoscopy symposium in high definition focussed on promoting quality in the
                                     endoscopic interventions we perform everyday.&nbsp;</p>

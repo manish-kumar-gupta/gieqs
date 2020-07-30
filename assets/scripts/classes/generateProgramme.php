@@ -102,7 +102,7 @@
                             <div class="d-flex col-lg-12 p-1 pb-3 pt-3">
                                 <span class="h5 mr-auto"><?php echo $programmeDate->format('l d M Y');?></span>
                                 
-                                <span class="ml-3 align-self-baseline" style="font-size:0.75em">click on a program item to see session details</span>
+                                <span class="ml-3 align-self-baseline" style="font-size:0.75em">click on a program item to see session details.  <br/>times in central european time (CET).</span>
 
                             </div>
                         </div>
@@ -722,7 +722,7 @@
                         <div class="d-flex col-lg-12 p-1 pb-3 pt-3">
                                 <span class="h5 mr-auto"><?php echo $programmeDate->format('l d M Y');?></span>
                                 
-                                <span class="ml-3 align-self-baseline" style="font-size:0.75em">click on a program item to see session details</span>
+                                <span class="ml-3 align-self-baseline" style="font-size:0.75em">click on a program item to see session details <br/>times in central european time (CET)</span>
 
                             </div>
                         </div>
