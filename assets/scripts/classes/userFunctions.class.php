@@ -215,6 +215,186 @@ Class userFunctions {
 
 
 	}
+
+	//update user registrations functions
+
+	public function checkCombinationUserProgramme($userid, $programmeid)
+            {
+            
+
+            $q = "Select a.`id`
+            FROM `userRegistrations` as a
+            WHERE `user_id` = '$userid' AND `programme_id` = '$programmeid'
+            ";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                return true;
+
+            } else {
+                
+
+                return false;
+            }
+
+		}
+		
+		public function returnCombinationUserProgramme($userid)
+            {
+            
+
+            $q = "Select a.`id`, a.`programme_id`
+            FROM `userRegistrations` as a
+            WHERE a.`user_id` = '$userid'
+            ";
+
+            echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn[] = $row;
+
+
+				}
+
+				return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+		}
+		
+		public function returnCombinationIDUserProgram($userid, $programmeid)
+            {
+            
+
+            $q = "Select a.`id`
+            FROM `userRegistrations` as a
+			WHERE a.`user_id` = '$userid' AND `programme_id` = '$programmeid'
+			LIMIT 1
+            ";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn = $row['id'];
+
+
+				}
+
+				return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+		}
+
+		public function returnProgrammesUser($userid)
+            {
+            
+
+            $q = "Select a.`programme_id`
+            FROM `userRegistrations` as a
+			WHERE a.`user_id` = '$userid'
+            ";
+
+            //echo $q . '<br><br>';
+
+			$rowReturn = [];
+
+            $result = $this->connection->RunQuery($q);
+            
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn[] = $row['programme_id'];
+
+
+				}
+
+				return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+		}
+		
+		public function returnProgrammeDenominatorSelect2()
+            {
+            
+
+				$q = "Select `id` FROM `Programme`";
+  
+			
+
+            //echo $q . '<br><br>';
+
+			$rowReturn = [];
+
+            $result = $this->connection->RunQuery($q);
+            
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn[] = $row['id'];
+
+
+				}
+
+				return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
 	
 
     /**

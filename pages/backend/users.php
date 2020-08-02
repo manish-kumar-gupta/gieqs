@@ -370,9 +370,9 @@ if ($identifierValue) {
 
                                     <br/>
 
-                                    <label for="centre">centre</label>
+                                    <label for="registrations">centre</label>
                                         <div class="input-group mb-3">
-                                            <select id="centre" type="text" data-toggle="select" class="form-control" name="centre" data-disabled="true">
+                                            <select id="registrations" type="text" data-toggle="select" class="form-control" name="registrations" data-disabled="true">
                                             <!--TODO get centres from AJAX-->
                                             </select>
                                         </div>
@@ -507,6 +507,7 @@ if ($identifierValue) {
 //var dataSet = $.parseJSON($('#data').text());
 var datatable;
 var edit = 0;
+var optionsSelect;
 var lesionUnderEdit = null;
 
 function tableRefresh (){
@@ -517,6 +518,21 @@ function tableRefresh (){
 
 
 }
+
+
+var waitForFinalEvent = (function () {
+		var timers = {};
+		return function (callback, ms, uniqueId) {
+		  if (!uniqueId) {
+			uniqueId = "Don't call this twice without a uniqueId";
+		  }
+		  if (timers[uniqueId]) {
+			clearTimeout (timers[uniqueId]);
+		  }
+		  timers[uniqueId] = setTimeout(callback, ms);
+		};
+	  })();	
+	
 
 function fillForm (idPassed){
 
@@ -556,12 +572,86 @@ function fillForm (idPassed){
 
             //$("#messageBox").text("Editing ESD lesion ID "+idPassed);
 
-            enableFormInputs("<?php echo $databaseName;?>-form");
+            //do specifics
+
+            //get array of current registrations
+
+            
+
+            
 
         });
 
+        const dataToSend = {
+
+                            
+               
+userid: lesionUnderEdit,
+//options: myOpts,
+
+}
+
+const jsonString = JSON.stringify(dataToSend);
+//console.log(jsonString);
 
 
+
+var request = $.ajax({
+    url: siteRoot + "assets/scripts/getUserRegistrations.php",
+    type: "POST",
+    contentType: "application/json",
+    data: jsonString,
+});
+
+
+
+request.done(function (data) {
+
+    
+    data = data.trim();
+    console.log(data);
+    if (data){            
+        
+       /*  waitForFinalEvent(function() { */
+        $('#registrations').select2('destroy');
+        $('#registrations').select2({
+
+            dropdownParent: $(".modal-content"),
+            tags: true,
+
+
+
+            multiple: true,
+            ajax: {
+
+                url: siteRoot + 'assets/scripts/querySelectProgrammes.php',
+            data: function (params) {
+                var query = {
+                    search: params.term,
+                }
+
+                console.log(query);
+                return query;
+            },
+            dataType: 'json'
+            }
+        })
+
+        $('#registrations').val(data).trigger('change');
+        
+
+        /*  }, 100, 'Wrapper Video'); */
+        
+    }
+
+    
+
+
+
+})
+
+
+enableFormInputs("<?php echo $databaseName;?>-form");
 
     }
 
@@ -749,6 +839,8 @@ if (confirm("Do you wish to delete this <?php echo $databaseName;?>?")) {
 $(document).ready(function(){
 
     //add those which require date pickr
+
+  
     
     var options = {
 			enableTime: false,
@@ -766,36 +858,34 @@ $(document).ready(function(){
 
     });
 
-    $('#centre').select2({
+    /* $('#registrations').select2({
 
         dropdownParent: $(".modal-content"),
         tags: true,
 
-        // automatically creates tag when user hit space or comma:
+
         tokenSeparators: [",", " "],
 
         multiple: true,
         ajax: {
-        //url: siteRoot + 'assets/scripts/select2simple.php?table=Delegate&field=firstname',
-        url: siteRoot + 'assets/scripts/querySelectProgrammes.php',
+
+            url: siteRoot + 'assets/scripts/querySelectProgrammes.php',
         data: function (params) {
             var query = {
                 search: params.term,
-                /* query: '`user_id`, `firstname` FROM `users`',
-                fieldRequired: 'firstname', */
             }
 
-            // Query parameters will be 
             console.log(query);
             return query;
         },
         dataType: 'json'
-    // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
-        }
+        } 
        
         
 
-    });
+    });*/
+
+    //$(document).find("#registrations").trigger('change');
 
     //centre.change, submit ajax of the added tag, or remove
 
@@ -1055,6 +1145,73 @@ submitHandler: function(form) {
 
 
 });
+
+//detect change of multi-select tag box
+
+$(document).on('change', '#registrations', function(){
+
+    /* alert('change'); */
+
+    //ajax call to update the link
+
+    //$('#registrations').refreshDataSelect2(optionsSelect);
+
+    //get the options to choose from
+
+    var myOpts = [];
+
+    $("#registrations option").each(function()
+    {
+        myOpts.push($(this).val());
+    });
+
+    const dataToSend = {
+
+             
+        programmeid: $(this).val(),
+        userid: lesionUnderEdit,
+        options: myOpts,
+
+        }
+
+        const jsonString = JSON.stringify(dataToSend);
+        console.log(jsonString);
+
+
+
+        var request = $.ajax({
+            url: siteRoot + "assets/scripts/updateUserRegistrations.php",
+            type: "POST",
+            contentType: "application/json",
+            data: jsonString,
+        });
+
+
+
+        request.done(function (data) {
+
+            
+
+        if (data == 'User profile updated'){
+
+            Swal.fire({
+            title: 'Congratulations',
+            text: 'Your user profile was upgraded to GIEQs Standard',
+            type: 'success',
+            background: '#162e4d',
+            confirmButtonText: 'ok',
+            confirmButtonColor: 'rgb(238, 194, 120)',
+
+            })
+        }
+
+        })
+
+    
+
+
+
+})
 
 
 })

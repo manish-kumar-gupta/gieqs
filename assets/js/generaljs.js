@@ -714,7 +714,7 @@ function getNamesFormElements(formName) {
 
     var x = 0;
 
-    var formString = 'form#' + formName + ' :input';
+    var formString = 'form#' + formName + ' :input:not(button, [data-disabled])';
 
     $(document).find(formString).not('button').each(function() {
 
@@ -724,9 +724,13 @@ function getNamesFormElements(formName) {
 
         x++;
 
-    });
+	});
+	
+	console.log(names);
 
-    return names;
+	return names;
+	
+	
 
 
 }
@@ -858,7 +862,7 @@ function enableFormInputs(formName) {
 	    timers[uniqueId] = setTimeout(callback, ms);
 	  };
 	})();	 */
-	
+
 	
 function isNormalInteger(str) {
     var n = Math.floor(Number(str));
