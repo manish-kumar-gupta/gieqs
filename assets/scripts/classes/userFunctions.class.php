@@ -359,6 +359,46 @@ Class userFunctions {
             }
 
 		}
+
+		public function generateUserRegistrationOptions()
+            {
+            
+
+            $q = "Select a.`id`, a.`title`, a.`date`
+            FROM `programme` as a
+            ";
+
+            //echo $q . '<br><br>';
+
+			$rowReturn = [];
+
+            $result = $this->connection->RunQuery($q);
+            
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn[] = $row;
+
+
+				}
+
+				foreach ($rowReturn as $key=>$value){
+
+					echo "<option value='{$value['id']}'>{$value['date']} {$value['title']}</value>";
+
+				}
+
+            } else {
+                
+
+                return false;
+            }
+
+		}
 		
 		public function returnProgrammeDenominatorSelect2()
             {

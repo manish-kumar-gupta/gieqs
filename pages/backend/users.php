@@ -172,6 +172,7 @@ $formv1 = new formGenerator;
 $formv1 = new formGenerator;
 
 $general = new general;
+$userFunctions = new userFunctions;
 
 error_reporting(E_ALL);
 
@@ -370,10 +371,14 @@ if ($identifierValue) {
 
                                     <br/>
 
-                                    <label for="registrations">centre</label>
+                                    <label for="registrations">Registrations</label>
                                         <div class="input-group mb-3">
-                                            <select id="registrations" type="text" data-toggle="select" class="form-control" name="registrations" data-disabled="true">
+                                            <select id="registrations" type="text" data-toggle="select" class="form-control registrations" name="registrations" data-disabled="true">
                                             <!--TODO get centres from AJAX-->
+                                            <!--or direct from PHP-->
+                                            <?php echo $userFunctions->generateUserRegistrationOptions();?>
+
+                                            
                                             </select>
                                         </div>
 
@@ -509,6 +514,8 @@ var datatable;
 var edit = 0;
 var optionsSelect;
 var lesionUnderEdit = null;
+var loading;
+var externalTest;
 
 function tableRefresh (){
 
@@ -610,37 +617,34 @@ request.done(function (data) {
     
     data = data.trim();
     console.log(data);
+    externalTest = $.parseJSON(data);
     if (data){            
         
        /*  waitForFinalEvent(function() { */
-        $('#registrations').select2('destroy');
-        $('#registrations').select2({
+        //$('#registrations').trigger('change');
+        //$('#registrations').select2('destroy');
+        
+        /* $('#registrations').select2({
 
             dropdownParent: $(".modal-content"),
             tags: true,
-
-
-
             multiple: true,
             ajax: {
 
                 url: siteRoot + 'assets/scripts/querySelectProgrammes.php',
-            data: function (params) {
-                var query = {
-                    search: params.term,
-                }
-
-                console.log(query);
-                return query;
-            },
+            
             dataType: 'json'
             }
-        })
-
-        $('#registrations').val(data).trigger('change');
+        }) */
         
+        //$(document).find("#registrations").val(2);
+        waitForFinalEvent(function() {
+        //$(document).find("#registrations").val().trigger('change');
+        //$('#registrations').select2();
+        //$(document).find("#registrations").empty().append('<option value="id">text</option>').val(externalTest).trigger('change');
+        $(document).find(".registrations").val(externalTest).trigger('change');
 
-        /*  }, 100, 'Wrapper Video'); */
+          }, 250, 'Wrapper Video');
         
     }
 
@@ -858,6 +862,24 @@ $(document).ready(function(){
 
     });
 
+    $('.registrations').select2({
+
+dropdownParent: $(".modal-content"),
+//tags: true,
+multiple: true,
+/* ajax: {
+
+    url: siteRoot + 'assets/scripts/querySelectProgrammes.php',
+
+dataType: 'json'
+},
+processResults: function(data) {
+        return {
+          results: data.items
+        };
+      }, */
+})
+
     /* $('#registrations').select2({
 
         dropdownParent: $(".modal-content"),
@@ -885,7 +907,7 @@ $(document).ready(function(){
 
     });*/
 
-    //$(document).find("#registrations").trigger('change');
+    //$(document).find(".registrations").trigger('change');
 
     //centre.change, submit ajax of the added tag, or remove
 
@@ -1148,7 +1170,7 @@ submitHandler: function(form) {
 
 //detect change of multi-select tag box
 
-$(document).on('change', '#registrations', function(){
+$(document).on('change', '.registrations', function(){
 
     /* alert('change'); */
 
@@ -1158,9 +1180,13 @@ $(document).on('change', '#registrations', function(){
 
     //get the options to choose from
 
+    if (loading){
+        return;
+    }
+
     var myOpts = [];
 
-    $("#registrations option").each(function()
+    $(".registrations option").each(function()
     {
         myOpts.push($(this).val());
     });
