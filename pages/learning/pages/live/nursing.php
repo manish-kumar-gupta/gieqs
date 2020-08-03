@@ -15,7 +15,8 @@
 
       //$openaccess = 1;
 
-      $openaccess = 1;
+      $openaccess = 0;
+$requiredUserLevel = 6;
 
 
       require BASE_URI . '/head.php';
@@ -169,6 +170,27 @@ top: -20vh;
 <?php require (BASE_URI . '/pages/learning/pages/live/liveNav.php');?>
 <div class="main-content">
     <!-- Navbar warning -->
+    <?php 
+     
+     if ($liveAccess){
+
+        $requiredArray = ['25', '30'];
+
+        //print_r($requiredArray);
+
+        //print_r($liveAccess);
+
+        
+        $bFound = (count(array_intersect($liveAccess, $requiredArray))) ? true : false;
+
+        //if (in_array($liveAccess, 25)){
+        if ($bFound){
+
+
+        
+     
+     
+     ?>
 
   <div class="container-fluid d-flex flex-wrap align-items-lg-stretch p-2 p-lg-5">
     <div class="col-lg-9">
@@ -181,8 +203,32 @@ top: -20vh;
 </div>
   
   </div>
+
+<?php  
+
+    }else{
+
+        echo "<div class=\"container d-flex flex-wrap align-items-lg-stretch p-2 p-lg-5\">";
+        echo '<p class="h6">You do not have access to the current nursing stream.  Please contact us if you believe this is a mistake</p>';
+        echo '</div>';
+    }
+
+
+}else{
+
+    
+
+    echo "<div class=\"container d-flex flex-wrap align-items-lg-stretch p-2 p-lg-5\">";
+    echo '<p class="h6">You currently do not have access to the nursing streams.  Please contact us if you believe this is a mistake.</p>';
+    echo '</div>';
+
+    
+}
+ 
+
+?>
+
 </div>
-      
 
     <?php require BASE_URI . '/footer.php';?>
 

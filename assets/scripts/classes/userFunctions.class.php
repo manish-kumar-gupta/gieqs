@@ -434,7 +434,45 @@ Class userFunctions {
                 return false;
             }
 
-        }
+		}
+		
+		public function enrolmentPatternLive($userid){
+
+			
+            
+
+				$q = "Select a.`programme_id`
+				FROM `userRegistrations` as a
+				WHERE a.`user_id` = '$userid'
+				";
+	
+				//echo $q . '<br><br>';
+	
+				$rowReturn = [];
+	
+				$result = $this->connection->RunQuery($q);
+				
+				$x = 0;
+				$nRows = $result->rowCount();
+	
+				if ($nRows > 0) {
+	
+					while($row = $result->fetch(PDO::FETCH_ASSOC)){
+	
+						$rowReturn[] = $row['programme_id'];
+	
+	
+					}
+	
+					return $rowReturn;
+	
+				} else {
+					
+	
+					return false;
+				}
+
+		}
 	
 
     /**

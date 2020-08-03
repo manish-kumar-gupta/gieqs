@@ -32,7 +32,7 @@
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/session.php">Sessions</a>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/faculty.php">Faculty</a>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/delegate.php">Delegates</a>
-                    <?php if ($currentUserLevel < 2){?>
+                    <?php if ($currentUserLevel < 4){?>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/users.php">Users (Access)</a>
                     <?php }?>
                   </div>

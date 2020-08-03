@@ -228,7 +228,8 @@
                         aria-haspopup="true" aria-expanded="false">Registration</a>
                     
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Registration</span>
+                    <span style="color: 
+                    rgb(238, 194, 120);" class="dropdown-header">Registration</span>
                     <a class="dropdown-item" href="https://eu.eventscloud.com/ereg/index.php?eventid=200200203&" target="_blank"><i class="fas fa-registered"></i>Register now!</a>
                     <a class="dropdown-item" href="<?php //echo BASE_URL;?>/pages/program/registration.php"><i class="fas fa-shapes"></i>Registration options</a>
                     

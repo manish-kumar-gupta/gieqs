@@ -15,7 +15,9 @@
 
       //$openaccess = 1;
 
-      $openaccess = 1;
+      
+$openaccess = 0;
+$requiredUserLevel = 6;
 
 
       require BASE_URI . '/head.php';
@@ -145,6 +147,10 @@ top: -20vh;
     </header>
 
     <?php
+
+
+        $debug = true;
+
 		if (isset($_GET["id"]) && is_numeric($_GET["id"])){
 			$id = $_GET["id"];
 		
@@ -169,19 +175,66 @@ top: -20vh;
 <?php require (BASE_URI . '/pages/learning/pages/live/liveNav.php');?>
 <div class="main-content">
     <!-- Navbar warning -->
+ <?php 
+     
+     if ($liveAccess){
 
+        $requiredArray = ['25', '30'];
+
+        //print_r($requiredArray);
+
+        //print_r($liveAccess);
+
+        
+        $bFound = (count(array_intersect($liveAccess, $requiredArray))) ? true : false;
+
+        //if (in_array($liveAccess, 25)){
+        if ($bFound){
+
+
+        
+     
+     
+     ?>
   <div class="container-fluid d-flex flex-wrap align-items-lg-stretch p-2 p-lg-5">
+ 
+
     <div class="col-lg-9">
     <div id="videoDisplay" class="embed-responsive embed-responsive-16by9 video-wrap">
        <iframe src="https://player.vimeo.com/video/440461809" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
     </div>   
-</div>
-<div class="col-lg-3">
-    <iframe id="chat" src="https://vimeo.com/live-chat/440461809/0c3ee518c9" frameborder="0" style="height:100%;width:100%;background-color: #162e4d;"></iframe>
-</div>
+    </div>
+    <div class="col-lg-3">
+        <iframe id="chat" src="https://vimeo.com/live-chat/440461809/0c3ee518c9" frameborder="0" style="height:100%;width:100%;background-color: #162e4d;"></iframe>
+    </div>
   
   </div>
+<?php  
+
+    }else{
+
+        echo "<div class=\"container d-flex flex-wrap align-items-lg-stretch p-2 p-lg-5\">";
+        echo '<p class="h6">You do not have access to the current complex stream.  Please contact us if you believe this is a mistake</p>';
+        echo '</div>';
+    }
+
+
+}else{
+
+    
+
+    echo "<div class=\"container d-flex flex-wrap align-items-lg-stretch p-2 p-lg-5\">";
+    echo '<p class="h6">You currently do not have access to the live streams.  Please contact us if you believe this is a mistake.</p>';
+    echo '</div>';
+
+    
+}
+ 
+
+?>
+
 </div>
+
       
 
     <?php require BASE_URI . '/footer.php';?>

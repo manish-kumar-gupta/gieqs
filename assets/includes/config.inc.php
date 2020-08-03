@@ -96,7 +96,7 @@ $roothttp = BASE_URL . '/';
 
 //make GIEQs conference live
 
-$liveTestingUsers = array(1, 16);
+$liveTestingUsers = array(1, 2, 3 , 4, 5, 6, 7, 8, 9, 12, 14, 15, 16);
 
 $live = 0;
 
