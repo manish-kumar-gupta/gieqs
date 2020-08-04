@@ -240,63 +240,9 @@ if (isset($requiredUserLevel)){
     //determine subscription to all videos and/or images, variables $subscriptionVideo, $subscriptionImage
     //not relevant to these databases
 
-    //live
-
-    $info[] = '\$livetestingusers contains (' . $liveTestingUsers . ')';
-
-    if (in_array($userid, $liveTestingUsers)) {
-        $live = 1;
-        $info[] = 'Live testing activated for (' . $userid . ')';
-
-    }
-
-    //further info re live
-
-    //generates array of the live sessions that a user has access to
     
-    spl_autoload_unregister ('class_loader');
 
-    require(BASE_URI .'/assets/scripts/classes/userFunctions.class.php');
-
-    $userFunctions = new userFunctions;
-
-    spl_autoload_register ('class_loader');
     
-    //$userFunctions = new userFunctions;
-
-    $liveAccess = $userFunctions->enrolmentPatternLive($userid);
-
-    $info[] = 'page determines live access to the following live events for (' . $userid . ')';
-    $info[] = $liveAccess;
-    //print_r($liveAccess);
-
-     # ******************** #
-    # ***** USER TRACKING ***** #
-
-    //ensure users activity logged
-
-    spl_autoload_unregister ('class_loader');
-
-    require(BASE_URI .'/assets/scripts/classes/userActivity.class.php');
-
-    $userActivity = new userActivity;
-
-    spl_autoload_register ('class_loader');
-
-    if ($userid){
-
-        //getcurrent UTC time
-		$date = new DateTime('now', new DateTimeZone('UTC'));
-		$sqltimestamp = date_format($date, 'Y-m-d H:i:s');
-		
-		//add a user activity event to the database
-
-        $userActivity->New_userActivity($userid, null, null, $sqltimestamp);
-        
-		$userActivity->prepareStatementPDO();
-
-        
-    }  
 
 
 
@@ -444,6 +390,69 @@ c:{
 //do things for token access
 
 }
+
+if ($userid){
+
+//live
+
+$info[] = '\$livetestingusers contains (' . $liveTestingUsers . ')';
+
+if (in_array($userid, $liveTestingUsers)) {
+    $live = 1;
+    $info[] = 'Live testing activated for (' . $userid . ')';
+
+}
+
+//further info re live
+
+//generates array of the live sessions that a user has access to
+
+spl_autoload_unregister ('class_loader');
+
+require(BASE_URI .'/assets/scripts/classes/userFunctions.class.php');
+
+$userFunctions = new userFunctions;
+
+spl_autoload_register ('class_loader');
+
+//$userFunctions = new userFunctions;
+
+$liveAccess = $userFunctions->enrolmentPatternLive($userid);
+
+$info[] = 'page determines live access to the following live events for (' . $userid . ')';
+$info[] = $liveAccess;
+//print_r($liveAccess);
+
+ # ******************** #
+    # ***** USER TRACKING ***** #
+
+    //ensure users activity logged
+
+    spl_autoload_unregister ('class_loader');
+
+    require(BASE_URI .'/assets/scripts/classes/userActivity.class.php');
+
+    $userActivity = new userActivity;
+
+    spl_autoload_register ('class_loader');
+
+    if ($userid){
+
+        //getcurrent UTC time
+		$date = new DateTime('now', new DateTimeZone('UTC'));
+		$sqltimestamp = date_format($date, 'Y-m-d H:i:s');
+		
+		//add a user activity event to the database
+
+        $userActivity->New_userActivity($userid, null, null, $sqltimestamp);
+        
+		$userActivity->prepareStatementPDO();
+
+        
+    }  
+
+}
+
 
 if ($debugUserAccess){
 print_r($info);

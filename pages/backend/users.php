@@ -799,7 +799,7 @@ if ($identifierValue) {
                                         <input id="email" type="text" class="form-control" name="email">
                                     </div>
 
-                                    <button class="btn bg-warning text-white p-2 m-2 send-mail">Send Password Reset Mail</button>
+                                    <button class="btn bg-warning text-white p-2 m-2 send-mail">Send Password Reset Mail   </button>
 
                                     <br/>
 
@@ -1180,6 +1180,10 @@ const dataToSend = {
 const jsonString = JSON.stringify(dataToSend);
 console.log(jsonString);
 
+$('.send-mail').prop('disabled', true);
+$('.send-mail').append('&nbsp&nbsp<i class="fas fa-circle-notch fa-spin"></i>');
+
+
 var passwordChange = $.ajax({
     url: siteRoot + "assets/scripts/passwordResetGenerateAdmin.php",
     type: "POST",
@@ -1202,6 +1206,9 @@ passwordChange.done(function (data) {
             
 
         }).then((result) => {
+
+            $('.send-mail').prop('disabled', false);
+            $('.send-mail').find('.fa-spin').remove();
 
         /* window.location.href = siteRoot;
         resetFormElements('NewUserForm');
