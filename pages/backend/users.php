@@ -1134,6 +1134,16 @@ request.done(function (data) {
 
           }, 250, 'Wrapper Video');
         
+    }else{
+
+        waitForFinalEvent(function() {
+        //$(document).find("#registrations").val().trigger('change');
+        //$('#registrations').select2();
+        //$(document).find("#registrations").empty().append('<option value="id">text</option>').val(externalTest).trigger('change');
+        $(document).find(".registrations").val('').trigger('change');
+
+          }, 250, 'Wrapper Video 3');
+
     }
 
     waitForFinalEvent(function() {

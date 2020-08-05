@@ -1,6 +1,6 @@
 <?php
 
-$openaccess =1;
+$openaccess = 1;
 			//$requiredUserLevel = 4;
 			require ('../../assets/includes/config.inc.php');		
 			
@@ -12,7 +12,7 @@ $openaccess =1;
             $userFunctions = new userFunctions;
             
             
-            $debug = true;
+            $debug = false;
 
             //$print_r()
 
@@ -30,8 +30,10 @@ $openaccess =1;
             $options = $userFunctions->returnProgrammeDenominatorSelect2(); //current userProgrammes
 
 
-
-            print_r($programmeid);
+            if ($debug){
+                print_r($programmeid);
+                }
+         
 
             //if in options but not in programme [delete]
             //if in options and present nothing
@@ -40,11 +42,15 @@ $openaccess =1;
             //define an array of existing connections for this user
 
             
-
-            print_r($options);
+            if ($debug){
+                print_r($options);
+                }
+           
 
             $currentConnections = $userFunctions->returnCombinationUserProgramme($userid); //current userProgrammes
-            print_r($currentConnections);
+            if ($debug){
+                print_r($currentConnections);
+                }
 
             //go through the current submission, add those needed, remove those needed
 
@@ -53,6 +59,8 @@ $openaccess =1;
             //for each in the total select box options
             //if in selected array and not present in db ADD
             //if not in selected array and present in db DELETE
+
+            //TODO make an array here of the actions
 
             if ($options){
 
