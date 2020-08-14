@@ -15,8 +15,8 @@
 
       //$openaccess = 1;
 
-      $openaccess = 0;
-      $requiredUserLevel = 6;
+      $openaccess = 1;
+      //$requiredUserLevel = 6;
 
 
       require BASE_URI . '/head.php';
@@ -171,25 +171,7 @@ top: -20vh;
 <?php require (BASE_URI . '/pages/learning/pages/live/liveNav.php');?>
 <div class="main-content">
     <!-- Navbar warning -->
-    <?php if ($liveAccess){
-
-        $requiredArray = ['23', '29'];
-
-        //print_r($requiredArray);
-
-        //print_r($liveAccess);
-
-        
-        $bFound = (count(array_intersect($liveAccess, $requiredArray))) ? true : false;
-
-        //if (in_array($liveAccess, 25)){
-        if ($bFound){
-
-
-        
-     
-     
-     ?>
+  
   <div class="main-content">
     <!-- Header (v13) -->
     <section class="slice slice-xl bg-cover bg-size--cover pb-300" data-offset-top="#header-main" style="background-image: url('../../assets/img/backgrounds/img-12.jpg');">
@@ -492,24 +474,7 @@ top: -20vh;
     </section>
   </div>
 </div>
-<?php  
 
-    }else{
-
-        echo "<div class=\"container d-flex flex-wrap align-items-lg-stretch p-2 p-lg-5\">";
-        echo '<p class="h6">You do not have access to the current plenary stream.  Please contact us if you believe this is a mistake</p>';
-        echo '</div>';
-    }
-
-
-}else{
-
-    echo "<div class=\"container d-flex flex-wrap align-items-lg-stretch p-2 p-lg-5\">";
-        echo '<p class="h6">You currently do not have access to the live streams.  Please contact us if you believe this is a mistake.</p>';
-        echo '</div>';
-}
-
-?>
       
 
     <?php require BASE_URI . '/footer.php';?>
