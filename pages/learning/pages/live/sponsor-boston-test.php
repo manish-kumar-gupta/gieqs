@@ -165,7 +165,7 @@ top: -20vh;
 
         <body>
 
-            <?php $livepage = 'Boston Scientific.  Proud sponsor of GIEQs';?>
+            <?php $livepage = 'Boston Scientific.  Proud sponsor of GIEQs.  TEST SITE ONLY, restricted viewership';?>
 
 <div id="id" style="display:none;"><?php if ($id){echo $id;}?></div>
 <?php require (BASE_URI . '/pages/learning/pages/live/liveNav.php');?>
