@@ -195,8 +195,8 @@ top: -20vh;
        <iframe src="https://player.vimeo.com/video/439710742" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
     </div>   
 </div>
-<div class="col-lg-3">
-    <iframe id="chat" src="https://vimeo.com/live-chat/439710742/4147b0b5ff" frameborder="0" style="height:100%;width:100%;background-color: #162e4d;"></iframe>
+<div class="col-lg-3 mt-3 mb-3">
+    <iframe id="chat" src="https://vimeo.com/live-chat/439710742/4147b0b5ff" frameborder="0" style="height:100%;width:100%;min-height:400px;background-color: #162e4d;"></iframe>
 </div>
   
   </div>

@@ -218,12 +218,9 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
             <div class="container py-5 pt-lg-6 d-flex align-items-center position-relative zindex-100">
                
                 <div class="col">
-                    <div class="row">
-                        <div class="col-lg-5 col-xl-6 text-center text-lg-left">
-                            <div class="d-none d-lg-block mb-4">
-
-                            </div>
-                            <a href="<?php echo $registrationURL;?>">
+                <div class="row">
+                        <div class="col-lg-10 col-xl-10 text-center text-lg-left">
+                        <a href="<?php echo $registrationURL;?>">
                             <div class="alert alert-modern alert-dark">
                                 <span class="badge gieqsGold badge-pill">
                                     New
@@ -237,6 +234,21 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                     </span>
                                 <span class="alert-content">COVID-19 statement</span>
                              </div></a>
+                             <a class="ml-3 pointer" data-toggle="modal" data-target="#accreditation">
+                            <div class="alert alert-modern alert-dark">
+                                <span class="badge gieqsGold badge-pill">
+                                <i class="fas fa-certificate"></i>
+                                    </span>
+                                <span class="alert-content">CME accreditation</span>
+                             </div></a>
+                        </div>
+        </div>
+                    <div class="row">
+                        <div class="col-lg-5 col-xl-6 text-center text-lg-left">
+                            <div class="d-none d-lg-block mb-4">
+
+                            </div>
+                            
                                 <h2 class="text-white mb-4 mt-4 mt-lg-0">
                                     <span class="display-4 font-weight-light">We can do everyday endoscopy
                                         better.</span>
@@ -521,6 +533,59 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
             </div>
         </div>
     </div>
+
+    <!-- Modal Accreditation-->
+    <div class="modal fade" id="accreditation" tabindex="-1" role="dialog" aria-labelledby="accreditationLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dark" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="accreditationLabel" style="color: rgb(238, 194, 120);">GIEQs Accreditation Statement</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="text-white" aria-hidden="false">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                
+            <div id="videoDisplay mb-3" class="">
+                    
+            <div class="row">
+                        <div class="col-lg-10 col-xl-10 text-center">
+                            <div class="icon-xl icon-shape bg-white mr-3 p-2">
+                            <a href="https://eaccme.uems.eu/" target="_blank" data-toggle="tooltip" data-placement="bottom" title="European Accreditation Council
+for Continuing Medical Education (EACCME)">
+                            <img src="<?php echo BASE_URL;?>/assets/img/icons/eaccme.png" alt="EACCME">
+                            </a>
+                            </div>
+                            <div class="icon-xl icon-shape bg-white mr-3 p-2">
+                            <a href="https://www.esge.com" target="_blank" data-toggle="tooltip" data-placement="bottom" title="European Society for Gastrointestinal Endoscopy">
+                            <img src="<?php echo BASE_URL;?>/assets/img/icons/esge.png" alt="ESGE">
+                            </a>
+                            </div>
+                            <div class="icon-xl icon-shape bg-white p-2">
+                            <a href="https://www.riziv.fgov.be/" target="_blank">
+                            <img src="<?php echo BASE_URL;?>/assets/img/icons/riziv.png" alt="RIZIV" data-toggle="tooltip" data-placement="bottom" title="Rijksinstituut voor ziekte- en invaliditeitsverzekering">
+                            </a>
+                            </div>
+
+                            </div>
+                            </div>
+
+                    <p class="h5 mt-5">At GIEQs we are serious about accrediting our educational events. <br /> <br/></p>
+                    <p class="text-white">We have applied for and received EACCME accreditation (number of CME points pending) and have received RIZIV [Belgium] accreditation for 8 hours (Wednesday) and 7.5 hours (Thursday) CME points. &nbsp;
+                    <br/><br/>We have received ESGE (European Society of Gastrointestinal Endoscopy) endorsement and are awaiting endorsement from ASGE (American Society of GI Endoscopy) and BSG (British Society of Gastroenterology)!</p>
+                    
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-small btn-secondary" data-dismiss="modal">Close</button>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
 
     <?php require 'footer.php';?>
 

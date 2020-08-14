@@ -103,7 +103,7 @@
                       <div class="row">
                         <div class="col-sm-3">
                           <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Platinum</a>
-                          <a href="sections.html#headers" class="dropdown-item">Boston<!--  <img class="w-100" alt="Boston Scientific" src="<?php echo BASE_URL . '/assets/img/brand/boston.jpg';?>"> -->
+                          <a href="<?php echo BASE_URL;?>/pages/learning/pages/live/sponsor-boston.php" class="dropdown-item">Boston<!--  <img class="w-100" alt="Boston Scientific" src="<?php echo BASE_URL . '/assets/img/brand/boston.jpg';?>"> -->
                           </a>
                           <!-- <a href="sections.html#footers" class="dropdown-item">Footers</a>
                           <a href="sections.html#blog" class="dropdown-item">Blog</a>
