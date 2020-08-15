@@ -30,6 +30,11 @@ input:-webkit-autofill:active  {
 color: rgb(238, 194, 120);
 
                }
+               .pointer {
+
+cursor: pointer;
+
+}
                .bg-gieqsGold {
 
 background-color: rgb(238, 194, 120);
@@ -215,6 +220,38 @@ background-color: rgb(238, 194, 120);
       </div>
     </section>
   </div>
+  <!-- Modal Help-->
+  <div class="modal fade" id="accreditation" tabindex="-1" role="dialog" aria-labelledby="accreditationLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dark" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="accreditationLabel" style="color: rgb(238, 194, 120);">Duplicate Logins</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span class="text-white" aria-hidden="false">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <div id="videoDisplay mb-3" class="">
+
+            
+
+            <p class="h5 mt-2">We want you to enjoy your personal GIEQs account<br /> <br /></p>
+            <p class="text-white">We have disabled duplicate logins with the same username to prevent people sharing user accounts.
+              <br /><br />If you receive this message your account was accessed somewhere on a different device within the last 15 minutes.  This could have been you on a different device.  Or another browser on the same computer.  <span class="text-gieqsGold">To use GIEQs here simply logout of that other browsing session and the login will work immediately here.</span>  </p>
+              <p class="text-white">If you already closed the other browsing window without logging out, you can still open www.gieqs.com on the same device and logout from there.  The login will immediately work again after this action.</p>
+              <p class="text-white">If you persistently receive this message please accept our apologies.  Computers sometimes make mistakes.  Please contact us to reset your account.  During GIEQs live events a response will be offered within a few minutes.  At other times you should try to login again after 15 minutes or we will respond when able.</p>
+  
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn-small btn-secondary" data-dismiss="modal">Close</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
   <?php require BASE_URI . '/footer.php';?>
 
 <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
@@ -267,6 +304,16 @@ function login(){
 				   setTimeout(
 				   function() 
 				   { window.location.href = siteRoot + "index.php";  }, 1000);
+
+				   
+			   }else if (data == 4){
+					
+					   
+				  $('#loginError').show().html('<p class="my-2">Duplicate Login Attempt detected.  <a class="pointer" data-toggle="modal" data-target="#accreditation">More...</a>');
+				   setTimeout(
+				   function() 
+				   {  $('#loginError').hide();  }, 6000);
+			   
 
 				   
 			   }else {

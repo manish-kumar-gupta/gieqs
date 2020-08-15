@@ -466,7 +466,7 @@
             display: none !important;
         }
     </style>
-    <div class="preheader" style="font-size: 1px; display: none !important;">Thanks for confirming your involvement in GIEQs.   This mail contains important information regarding migration to GIEQs digital.</div>
+    <div class="preheader" style="font-size: 1px; display: none !important;">Please reconfirm your involvement in GIEQs.   This mail contains important information regarding migration to GIEQs digital.</div>
     <center>
         <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable"
             style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;height:100%;margin:0;padding:0;width:100%;">
@@ -578,7 +578,7 @@
                                                                             </h4>
                                                                             <h1
                                                                                 style="display:block;margin:0;padding:0;color:#222222;font-family:Helvetica;font-size:40px;font-style:normal;font-weight:bold;line-height:150%;letter-spacing:normal;text-align:center;">
-                                                                                Thanks for being part of GIEQs.</h1>
+                                                                                Please reconfirm your participation in the digital GIEQs.</h1>
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
@@ -660,10 +660,10 @@
                                                                             style="padding-top:0;padding-right:18px;padding-bottom:9px;padding-left:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;word-break:break-word;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
 
 
-                                                                            
-                                                                                <p><strong>We thank you so much for having committed to be part of the first edition of GIEQs, an endoscopy event focussed on the everyday, back in March. </strong></p>
+                                                                            <p><strong>We didn't receive everyone's reply to the below mail when we sent it out a month ago.  Here are the details again.  Please check and confirm your participation by reply!  If you already replied no action is necessary. </strong></p>
 
-                                                                                <p><strong>We didn't receive many replies to the below mail when we sent it out a month ago.  Here are the details again.  Please check and confirm your participation by reply!  If you already replied no action is necessary. </strong></p>
+                                                                                <p>We thank you so much for having committed to be part of the first edition of GIEQs, an endoscopy event focussed on the everyday, back in March. </p>
+
 
 
 

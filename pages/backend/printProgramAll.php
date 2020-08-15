@@ -104,6 +104,8 @@ $openaccess =1;
                         echo '<span class="ml-3 editSession" data="' . $response[0]['sessionid'] . '"><i class="fas fa-edit"></i></span>';
 
                     }
+
+                    $checkDate = '';
                 
                 ?>
     

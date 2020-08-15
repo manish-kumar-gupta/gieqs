@@ -132,7 +132,7 @@ function Mailer ($email, $subject, $filename, $emailVaryarray){
     
                             $mail->SMTPDebug = 0; 
                         }
-                        $mail->SMTPDebug = 3;    
+                         
                         $mail->isSMTP();                                      // Set mailer to use SMTP
                         $mail->Host = 'smtp.gmail.com';
                         $mail->Port = 587;
@@ -140,7 +140,7 @@ function Mailer ($email, $subject, $filename, $emailVaryarray){
                         $mail->SMTPAuth = true;  
     
                         $mail->Username = 'admin@gieqs.com';
-                        $mail->Password = 'tgluoskrezwktjrc';
+                        $mail->Password = 'zybza0-Cogmaw-sypfur';
     
 					//Recipients
 					$mail->setFrom('admin@gieqs.com', 'Ghent International Endoscopy Quality Symposium');
@@ -228,7 +228,7 @@ $emailArray = $userFunctions->getAllEmailsFaculty();
 //Mailer(array(0 => 'djtate@gmail.com'), $subject, '/assets/email/new_template/promo_mail_participants_june.php');
 
 
-$subject = "Important Faculty Message.  The Ghent International Endoscopy Quality Symposium, October 7/8 2020";
+$subject = "GIEQs Faculty Message.  Please reconfirm your participation";
 
 $i=0;
 
@@ -250,6 +250,12 @@ foreach ($emailArray AS $key=>$value){
     $email = $value['email']; 
     $title = $value['title']; 
 
+    if ($email == 'michael@citywestgastro.com.au' || $email == 'sjheitma@ucalgary.ca' || $email == 'Hans.VanVlierberghe@UZGENT.be' || $email == 'tim.vanuytsel@kuleuven.be' || $email == 'eric.vancutsem@uzleuven.be' || $email == 'Ercan.cesmeli@azstlucas.be' || $email == 'j.poley@erasmusmc.nl' || $email == 'Marc.Peeters@uza.be' || $email == 'marc.ferrante@uzleuven.be' || $email == 'XAVIER.VERHELST@UGent.be' || $email == 'guy.desmet@ugent.be'){
+
+        continue;
+
+    }
+
 
     $emailVaryarray['firstname'] = $firstname;
     $emailVaryarray['surname'] = $surname;
@@ -262,6 +268,8 @@ foreach ($emailArray AS $key=>$value){
     $facultyid = $id;
 
     $response =  $programmeReports->generateReport($id);
+
+    //print_r($response);
 
     $edit = 0;
 
@@ -279,10 +287,10 @@ foreach ($emailArray AS $key=>$value){
 
 
     //TEST
-    Mailer(array(0 => 'djtate@gmail.com'), $subject, '/assets/email/new_template/promo_mail_faculty_june.php', $emailVaryarray);  
+    //Mailer(array(0 => 'djtate@gmail.com'), $subject, '/assets/email/new_template/promo_mail_faculty_aug_remind.php', $emailVaryarray);  
     
     //ACTIVE MAILER , remember to remove limit below
-    //Mailer(array(0=> $email, 1 => 'nele.coulier@seauton-international.com', 2=> 'gieqs@seauton-international.com'), $subject, '/assets/email/new_template/promo_mail_faculty_june.php', $emailVaryarray);
+   // Mailer(array(0=> $email, 1 => 'nele.coulier@seauton-international.com', 2=> 'gieqs@seauton-international.com'), $subject, '/assets/email/new_template/promo_mail_faculty_aug_remind.php', $emailVaryarray);
 
 
     //TODO change the reply to mail address
@@ -291,8 +299,10 @@ foreach ($emailArray AS $key=>$value){
     //TODO
 
     //$x++;
-    $i++;
-    if($i==2) break;
+    
+    //LIMITER  
+    //$i++;
+    //if($i==4) break;
 
 
 }

@@ -173,7 +173,7 @@ top: -20vh;
     <!-- Navbar warning -->
     <?php if ($liveAccess){
 
-        $requiredArray = ['23', '29'];
+        $requiredArray = ['23', '29', '25', '30', '31'];
 
         //print_r($requiredArray);
 

@@ -174,7 +174,7 @@ top: -20vh;
      
      if ($liveAccess){
 
-        $requiredArray = ['25', '30'];
+        $requiredArray = ['31'];
 
         //print_r($requiredArray);
 

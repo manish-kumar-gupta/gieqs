@@ -3,7 +3,7 @@ ob_start();
 error_reporting(0);
 
 
-
+$checkDate = '';
 $programmeDate = new DateTime($response[0]['date']);
 
 //echo $programmeDate->format('D d M Y');
