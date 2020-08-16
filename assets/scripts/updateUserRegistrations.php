@@ -8,7 +8,7 @@ $openaccess = 1;
 
             $general = new general;
             $programme = new programme;
-            $userRegistrations = new userRegistrations;
+            //$userRegistrations = new userRegistrations;
             $userFunctions = new userFunctions;
             
             
@@ -165,5 +165,5 @@ $openaccess = 1;
              
 $general->endgeneral();
 $programme->endprogramme();
-$userRegistrations->enduserRegistrations();
+$userFunctions->enduserFunctions();
 ?>

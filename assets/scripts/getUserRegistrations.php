@@ -11,7 +11,7 @@
             $userFunctions = new userFunctions;
             
             error_reporting(E_ALL);
-            $debug = true;
+            $debug = FALSE;
 
             //$print_r()
 
