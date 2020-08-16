@@ -7,7 +7,7 @@
 			require (BASE_URI.'/assets/scripts/headerScript.php');
 
             //$general = new general;
-            $programme = new programme;
+            //$programme = new programme;
             $userFunctions = new userFunctions;
             
             
@@ -36,7 +36,7 @@
 
             
              
-$general->endgeneral();
-$programme->endprogramme();
+//$general->endgeneral();
+//$programme->endprogramme();
 $userRegistrations->enduserRegistrations();
 ?>
