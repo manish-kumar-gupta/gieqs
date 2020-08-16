@@ -1,6 +1,6 @@
 <?php
 
-$openaccess =1;
+            $openaccess =1;
 			//$requiredUserLevel = 4;
 			require ('../../assets/includes/config.inc.php');		
 			
@@ -11,7 +11,7 @@ $openaccess =1;
             $userFunctions = new userFunctions;
             
             
-            $debug = false;
+            $debug = true;
 
             //$print_r()
 
