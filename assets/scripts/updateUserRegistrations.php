@@ -6,8 +6,8 @@ $openaccess = 1;
 			
 			require (BASE_URI.'/assets/scripts/headerScript.php');
 
-            $general = new general;
-            $programme = new programme;
+            //$general = new general;
+            //$programme = new programme;
             $userRegistrations = new userRegistrations;
             $userFunctions = new userFunctions;
             
@@ -163,7 +163,7 @@ $openaccess = 1;
 
             
              
-$general->endgeneral();
-$programme->endprogramme();
+//$general->endgeneral();
+//$programme->endprogramme();
 $userFunctions->enduserFunctions();
 ?>
