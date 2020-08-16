@@ -27,7 +27,7 @@
             //new methods for options, get from database
             //here put your denominator !!EDIT
 
-            //$options = $userFunctions->returnProgrammeDenominatorSelect2(); //current userProgrammes ADD BACK
+            $options = $userFunctions->returnProgrammeDenominatorSelect2(); //current userProgrammes ADD BACK
 
 
             if ($debug){
