@@ -1,18 +1,18 @@
 <?php
 
-            $openaccess = 1;
+$openaccess = 1;
 			//$requiredUserLevel = 4;
 			require ('../../assets/includes/config.inc.php');		
 			
 			require (BASE_URI.'/assets/scripts/headerScript.php');
 
-            //$general = new general;
-            //$programme = new programme;
-            //$userRegistrations = new userRegistrations; ADD BACK
+            $general = new general;
+            $programme = new programme;
+            $userRegistrations = new userRegistrations;
             $userFunctions = new userFunctions;
             
             
-            $debug = true;
+            $debug = false;
 
             //$print_r()
 
@@ -27,7 +27,7 @@
             //new methods for options, get from database
             //here put your denominator !!EDIT
 
-            $options = $userFunctions->returnProgrammeDenominatorSelect2(); //current userProgrammes ADD BACK
+            $options = $userFunctions->returnProgrammeDenominatorSelect2(); //current userProgrammes
 
 
             if ($debug){
@@ -47,7 +47,7 @@
                 }
            
 
-            //$currentConnections = $userFunctions->returnCombinationUserProgramme($userid); //current userProgrammes ADD BACK
+            $currentConnections = $userFunctions->returnCombinationUserProgramme($userid); //current userProgrammes
             if ($debug){
                 print_r($currentConnections);
                 }
@@ -79,7 +79,7 @@
 
                         //check if present in db
 
-                        /* if (($userFunctions->checkCombinationUserProgramme($userid, $value)) === false){ //there is no match, does not exist in db
+                        if (($userFunctions->checkCombinationUserProgramme($userid, $value)) === false){ //there is no match, does not exist in db
 
                             //add the connection
 
@@ -87,12 +87,12 @@
                                 print_r('Select element ' . $value . ' is not present in the connections db' . PHP_EOL);
                                 }
 
-                            //$userRegistrations->setuser_id($userid); ADD BACK
-                            //$userRegistrations->setprogramme_id($value); ADD BACK
+                            $userRegistrations->setuser_id($userid);
+                            $userRegistrations->setprogramme_id($value);
             
                             
             
-                            //echo $userRegistrations->prepareStatementPDO(); ADD BACK
+                            echo $userRegistrations->prepareStatementPDO();
                             continue;
 
 
@@ -105,7 +105,7 @@
                             continue;
 
 
-                        } ADD BACK */
+                        }
 
 
 
@@ -115,7 +115,7 @@
                             print_r('Select element ' . $value . ' is not selected' . PHP_EOL);
                             }
 
-                        /* if (($userFunctions->checkCombinationUserProgramme($userid, $value)) === true){ //there is a match, does exist in db
+                        if (($userFunctions->checkCombinationUserProgramme($userid, $value)) === true){ //there is a match, does exist in db
 
                             if ($debug){
                                 print_r('Select element ' . $value . ' exists in the connections db and needs to be deleted' . PHP_EOL);
@@ -128,7 +128,7 @@
                                 print_r('The required ID in the connections database is ' . $userFunctions->returnCombinationIDUserProgram($userid, $value) . PHP_EOL);
                                 }
 
-                            //$userRegistrations->Load_from_key($userFunctions->returnCombinationIDUserProgram($userid, $value)); //required? ADD BACK
+                            $userRegistrations->Load_from_key($userFunctions->returnCombinationIDUserProgram($userid, $value)); //required?
 
                             //delete the connection
                             if ($userRegistrations->Delete_row_from_key($userFunctions->returnCombinationIDUserProgram($userid, $value))){
@@ -137,11 +137,11 @@
                                     print_r('The required ID in the connections database ' . $userFunctions->returnCombinationIDUserProgram($userid, $value) .  ' was deleted' . PHP_EOL);
                                     }
 
-                            }; 
+                            };
 
 
 
-                        } ADD BACK */
+                        }
 
 
                     }
@@ -163,7 +163,7 @@
 
             
              
-//$general->endgeneral();
-//$programme->endprogramme();
-//$userFunctions->enduserFunctions(); ADD BACK
+$general->endgeneral();
+$programme->endprogramme();
+$userRegistrations->enduserRegistrations();
 ?>
