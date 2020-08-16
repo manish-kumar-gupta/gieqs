@@ -404,7 +404,7 @@ Class userFunctions {
             {
             
 
-				$q = "Select `id` FROM `Programme`";
+				$q = "Select `id` FROM `programme`";
   
 			
 

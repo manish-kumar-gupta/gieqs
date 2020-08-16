@@ -639,7 +639,7 @@ $(document).ready(function(){
         data: function (params) {
             var query = {
                 search: params.term,
-                query: '`id`, `date`, `title` FROM `Programme`',
+                query: '`id`, `date`, `title` FROM `programme`',
                 fieldRequired: 'date',
             }
 

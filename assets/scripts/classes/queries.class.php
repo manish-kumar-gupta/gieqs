@@ -225,7 +225,7 @@ class queries
   public function select2_programme_match($search)
       {
       
-      $q = "Select `id`, `date`, `title` FROM `Programme`
+      $q = "Select `id`, `date`, `title` FROM `programme`
       WHERE lower(`title`) LIKE lower('%{$search}%')";
 
       //echo $q;

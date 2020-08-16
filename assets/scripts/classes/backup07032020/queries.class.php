@@ -228,7 +228,7 @@ class queries
       
       $q = "Select 
             
-      `id`, `date`, `title` FROM `Programme`
+      `id`, `date`, `title` FROM `programme`
       WHERE `id` = '$search'";
 
       $result = $this->connection->RunQuery($q);
