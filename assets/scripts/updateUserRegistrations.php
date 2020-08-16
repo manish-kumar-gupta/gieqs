@@ -12,7 +12,7 @@ $openaccess = 1;
             $userFunctions = new userFunctions;
             
             
-            $debug = false;
+            $debug = true;
 
             //$print_r()
 
