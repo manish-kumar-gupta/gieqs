@@ -10,7 +10,7 @@
             //$programme = new programme;
             //$userFunctions = new userFunctions;
             
-            
+            error_reporting(E_ALL);
             $debug = true;
 
             //$print_r()
@@ -38,5 +38,5 @@
              
 //$general->endgeneral();
 //$programme->endprogramme();
-$userRegistrations->enduserRegistrations();
+//$userRegistrations->enduserRegistrations();
 ?>
