@@ -6,7 +6,7 @@
 			
 			require (BASE_URI.'/assets/scripts/headerScript.php');
 
-            $general = new general;
+            //$general = new general;
             $programme = new programme;
             $userFunctions = new userFunctions;
             
