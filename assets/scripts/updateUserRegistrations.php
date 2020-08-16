@@ -9,7 +9,7 @@
             //$general = new general;
             //$programme = new programme;
             //$userRegistrations = new userRegistrations; ADD BACK
-            //$userFunctions = new userFunctions; ADD BACK
+            $userFunctions = new userFunctions;
             
             
             $debug = true;
