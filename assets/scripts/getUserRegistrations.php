@@ -10,7 +10,7 @@
             //$programme = new programme;
             $userFunctions = new userFunctions;
             
-            error_reporting(E_ALL);
+            //error_reporting(E_ALL);
             $debug = FALSE;
 
             //$print_r()
