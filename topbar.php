@@ -30,10 +30,8 @@
           </div>
           <div class="ml-auto">
             <ul class="nav">
-             <!-- <li class="nav-item">
-                <a class="nav-link" href="pages/utility/support.html">Support</a>
-              </li>
-              <li class="nav-item">
+             
+              <!-- <li class="nav-item">
                 <a href="#" class="nav-link" data-action="omnisearch-open" data-target="#omnisearch"><i class="fas fa-search"></i></a>
               </li>
               <li class="nav-item">
@@ -46,6 +44,8 @@
               if (!isset($_SESSION['user_id']) || ($_SESSION['siteKey'] != 'TxsvAb6KDYpmdNk')){
 
             ?>
+
+            
 
             <li class="nav-item">
               <a class="nav-link" title="Login" href="<?php echo BASE_URL . '/pages/authentication/login.php'?>"><i class="fas fa-user-plus"></i></a>
@@ -102,6 +102,9 @@
               
 
             ?>
+            <li class="nav-item">
+                <a class="nav-link mr-4" href="<?php echo BASE_URL;?>/pages/support/support.php">Support</a>
+              </li>
             
             <li class="nav-item dropdown">
                 <a class="nav-link pr-0" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
