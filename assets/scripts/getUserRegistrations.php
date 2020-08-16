@@ -28,7 +28,7 @@
             //new methods for options, get from database
             //here put your denominator !!EDIT
 
-            echo json_encode($userFunctions->returnProgrammesUser($userid));
+            //echo json_encode($userFunctions->returnProgrammesUser($userid));
         
 
             
