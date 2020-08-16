@@ -1,6 +1,6 @@
 <?php
 
-$openaccess = 1;
+            $openaccess = 1;
 			//$requiredUserLevel = 4;
 			require ('../../assets/includes/config.inc.php');		
 			
@@ -8,8 +8,8 @@ $openaccess = 1;
 
             //$general = new general;
             //$programme = new programme;
-            //$userRegistrations = new userRegistrations;
-            $userFunctions = new userFunctions;
+            //$userRegistrations = new userRegistrations; ADD BACK
+            //$userFunctions = new userFunctions; ADD BACK
             
             
             $debug = true;
@@ -165,5 +165,5 @@ $openaccess = 1;
              
 //$general->endgeneral();
 //$programme->endprogramme();
-$userFunctions->enduserFunctions();
+//$userFunctions->enduserFunctions(); ADD BACK
 ?>
