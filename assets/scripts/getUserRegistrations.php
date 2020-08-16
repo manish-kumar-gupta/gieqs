@@ -8,7 +8,7 @@
 
             //$general = new general;
             //$programme = new programme;
-            //$userFunctions = new userFunctions;
+            $userFunctions = new userFunctions;
             
             error_reporting(E_ALL);
             $debug = true;
@@ -28,7 +28,7 @@
             //new methods for options, get from database
             //here put your denominator !!EDIT
 
-            //echo json_encode($userFunctions->returnProgrammesUser($userid));
+            echo json_encode($userFunctions->returnProgrammesUser($userid));
         
 
             
