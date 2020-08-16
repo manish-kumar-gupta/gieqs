@@ -27,7 +27,7 @@
             //new methods for options, get from database
             //here put your denominator !!EDIT
 
-            $options = $userFunctions->returnProgrammeDenominatorSelect2(); //current userProgrammes
+            //$options = $userFunctions->returnProgrammeDenominatorSelect2(); //current userProgrammes ADD BACK
 
 
             if ($debug){
@@ -47,7 +47,7 @@
                 }
            
 
-            $currentConnections = $userFunctions->returnCombinationUserProgramme($userid); //current userProgrammes
+            //$currentConnections = $userFunctions->returnCombinationUserProgramme($userid); //current userProgrammes ADD BACK
             if ($debug){
                 print_r($currentConnections);
                 }
@@ -79,7 +79,7 @@
 
                         //check if present in db
 
-                        if (($userFunctions->checkCombinationUserProgramme($userid, $value)) === false){ //there is no match, does not exist in db
+                        /* if (($userFunctions->checkCombinationUserProgramme($userid, $value)) === false){ //there is no match, does not exist in db
 
                             //add the connection
 
@@ -105,7 +105,7 @@
                             continue;
 
 
-                        }
+                        } ADD BACK */
 
 
 
@@ -115,7 +115,7 @@
                             print_r('Select element ' . $value . ' is not selected' . PHP_EOL);
                             }
 
-                        if (($userFunctions->checkCombinationUserProgramme($userid, $value)) === true){ //there is a match, does exist in db
+                        /* if (($userFunctions->checkCombinationUserProgramme($userid, $value)) === true){ //there is a match, does exist in db
 
                             if ($debug){
                                 print_r('Select element ' . $value . ' exists in the connections db and needs to be deleted' . PHP_EOL);
@@ -131,17 +131,17 @@
                             //$userRegistrations->Load_from_key($userFunctions->returnCombinationIDUserProgram($userid, $value)); //required? ADD BACK
 
                             //delete the connection
-                            /* if ($userRegistrations->Delete_row_from_key($userFunctions->returnCombinationIDUserProgram($userid, $value))){
+                            if ($userRegistrations->Delete_row_from_key($userFunctions->returnCombinationIDUserProgram($userid, $value))){
 
                                 if ($debug){
                                     print_r('The required ID in the connections database ' . $userFunctions->returnCombinationIDUserProgram($userid, $value) .  ' was deleted' . PHP_EOL);
                                     }
 
-                            }; ADD BACK */ 
+                            }; 
 
 
 
-                        }
+                        } ADD BACK */
 
 
                     }
