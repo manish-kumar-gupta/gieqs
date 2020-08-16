@@ -4,11 +4,11 @@
 			//$requiredUserLevel = 4;
 			require ('../../assets/includes/config.inc.php');		
 			
-			//require (BASE_URI.'/assets/scripts/headerScript.php');
+			require (BASE_URI.'/assets/scripts/headerScript.php');
 
             //$general = new general;
             //$programme = new programme;
-            $userFunctions = new userFunctions;
+            //$userFunctions = new userFunctions;
             
             
             $debug = true;
