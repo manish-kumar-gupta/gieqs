@@ -87,12 +87,12 @@ $openaccess = 1;
                                 print_r('Select element ' . $value . ' is not present in the connections db' . PHP_EOL);
                                 }
 
-                            $userRegistrations->setuser_id($userid);
-                            $userRegistrations->setprogramme_id($value);
+                            //$userRegistrations->setuser_id($userid); ADD BACK
+                            //$userRegistrations->setprogramme_id($value); ADD BACK
             
                             
             
-                            echo $userRegistrations->prepareStatementPDO();
+                            //echo $userRegistrations->prepareStatementPDO(); ADD BACK
                             continue;
 
 
@@ -128,16 +128,16 @@ $openaccess = 1;
                                 print_r('The required ID in the connections database is ' . $userFunctions->returnCombinationIDUserProgram($userid, $value) . PHP_EOL);
                                 }
 
-                            $userRegistrations->Load_from_key($userFunctions->returnCombinationIDUserProgram($userid, $value)); //required?
+                            //$userRegistrations->Load_from_key($userFunctions->returnCombinationIDUserProgram($userid, $value)); //required? ADD BACK
 
                             //delete the connection
-                            if ($userRegistrations->Delete_row_from_key($userFunctions->returnCombinationIDUserProgram($userid, $value))){
+                            /* if ($userRegistrations->Delete_row_from_key($userFunctions->returnCombinationIDUserProgram($userid, $value))){
 
                                 if ($debug){
                                     print_r('The required ID in the connections database ' . $userFunctions->returnCombinationIDUserProgram($userid, $value) .  ' was deleted' . PHP_EOL);
                                     }
 
-                            };
+                            }; ADD BACK */ 
 
 
 
