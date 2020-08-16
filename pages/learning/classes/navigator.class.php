@@ -328,6 +328,8 @@ class navigator {
 
 	}
 
+	
+
 	public function getVideoTypeid ($videoid){
 
 		$q = "SELECT d.`id` as `tagid`, d.`tagName` FROM `video` as a INNER JOIN `chapter` as b ON a.`id` = b.`video_id` INNER JOIN `chapterTag` as c ON b.`id` = c.`chapter_id` INNER JOIN `tags` as d ON d.`id` = c.`tags_id` INNER JOIN `tagCategories` as e ON d.`tagCategories_id` = e.`id` WHERE a.`id` = '$videoid' AND e.`id` = '62' GROUP BY d.`id` ORDER BY d.`tagName` ASC ";
@@ -358,6 +360,57 @@ class navigator {
 		}
 
 		echo $type;
+
+
+	}
+
+	public function getVideoTypeidv2 ($videoid){
+
+		$q = "SELECT d.`id` as `tagid`, d.`tagName` FROM `video` as a INNER JOIN `chapter` as b ON a.`id` = b.`video_id` INNER JOIN `chapterTag` as c ON b.`id` = c.`chapter_id` INNER JOIN `tags` as d ON d.`id` = c.`tags_id` INNER JOIN `tagCategories` as e ON d.`tagCategories_id` = e.`id` WHERE a.`id` = '$videoid' AND e.`id` = '62' GROUP BY d.`id` ORDER BY d.`tagName` ASC ";
+
+		//echo $q;
+
+		$result = $this->connection->RunQuery($q);
+
+		$tags = [];
+		$y=1;
+
+		if ($result){
+
+
+			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+				
+				//echo '<a href="' . $roothttp . '/scripts/display/colontutor/video.php?id=' . $row['tagid'] . '">' . $row['tagName'] . '</a>';
+
+				$type = $row['tagid'];
+				
+
+
+			}
+
+			
+
+
+		}
+
+		if ($type == 255){ // endoscopic video only
+
+			echo '<i class="fas fa-film" data-toggle="tooltip" data-placement="bottom" title="endoscopic video"></i>';
+		}elseif ($type == 256){ //endoscopic video and audio narration
+
+			echo '<i class="fas fa-film" data-toggle="tooltip" data-placement="bottom" title="endoscopic video"></i>';echo '<i class="fas fa-volume-up" data-toggle="tooltip" data-placement="bottom" title="audio narration"></i>';
+		}elseif ($type == 257){ //endoscopic video room video with audio
+
+			echo '<i class="fas fa-film" data-toggle="tooltip" data-placement="bottom" title="endoscopic video"></i>';echo '<i class="fas fa-user-md" data-toggle="tooltip" data-placement="bottom" title="room view of endoscopist"></i>';
+
+		}elseif ($type == 258){ //lecture with audio
+			echo '<i class="fas fa-chalkboard-teacher" data-toggle="tooltip" data-placement="bottom" title="lecture"></i>';echo '<i class="fas fa-volume-up" data-toggle="tooltip" data-placement="bottom" title="audio narration"></i>';
+
+		}elseif ($type == 462){ //endoscopic video room video with audio plus trainee
+
+			echo '<i class="fas fa-film" data-toggle="tooltip" data-placement="bottom" title="endoscopic video"></i>';echo '<i class="fas fa-user-md" data-toggle="tooltip" data-placement="bottom" title="room view of endoscopist"></i>'; echo '<i class="fas fa-chalkboard-teacher" data-toggle="tooltip" data-placement="bottom" title="with trainee"></i>';
+
+		}
 
 
 	}

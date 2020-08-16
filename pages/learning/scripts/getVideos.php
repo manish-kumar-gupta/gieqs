@@ -192,7 +192,7 @@ if ($debug) {
                             <h5 class="card-title title mb-0 w-100"><?php echo $value['name']; ?></h5>
                             <p class="text-muted text-sm mt-1 mb-0 align-self-baseline">Author : <a class="author text-muted" data-author="<?php echo $value['author'];?>" target="_blank" href="<?php echo BASE_URL;?>/pages/learning/pages/account/public-profile.php?id=<?php echo $value['author'];?>"><?php echo $user->getUserName($value['author']); ?></a></p>
                             <div class="d-flex flex-row-reverse">
-                            <span class="badge text-dark p-1 type" data-type="<?php echo $navigator->getVideoTypeid($value['id']);?>" style="background-color:rgb(238, 194, 120) !important;"><?php echo $navigator->getVideoType($value['id']);?></span>
+                            <span class="badge text-dark p-1 type" data-type="<?php echo $navigator->getVideoTypeid($value['id']);?>" style="color:rgb(238, 194, 120) !important;"><?php echo $navigator->getVideoTypeidv2($value['id']);?></span>
                         </div>
 
                         </div>
