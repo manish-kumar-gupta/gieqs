@@ -13,9 +13,9 @@ error_reporting(E_NONE);
 
       //define user access level
 
-      $openaccess = 0;
+      $openaccess = 1;
 
-      $requiredUserLevel = 6;
+      //$requiredUserLevel = 6;
 
       require BASE_URI . '/pages/learning/includes/head.php';
 
