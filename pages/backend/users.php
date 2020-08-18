@@ -1314,11 +1314,13 @@ passwordChange.done(function (data) {
 
                             } else if (data == 0) {
 
-                            alert("No change in data detected");
+                            //alert("No change in data detected");
+                            $('#modal-row-1').modal('hide');
 
                             } else if (data == 2) {
 
                             alert("Error, try again");
+                            
 
                             }
 
@@ -1551,6 +1553,10 @@ processResults: function(data) {
         $('#modal-row-1').modal('show');
         $(document).find('#<?php echo $databaseName;?>-form').find(':input').val('');
         $(document).find('#<?php echo $databaseName;?>-form').find(':checkbox, :radio').prop('checked', false);
+        $(document).find('#<?php echo $databaseName;?>-form').find('select').val('').trigger('change');  //TODO ADD TO ALL PAGES WHERE SELECT2
+        $(document).find('#<?php echo $databaseName;?>-form').find('.send-mail').prop('disabled', true);
+        $(document).find('#<?php echo $databaseName;?>-form').find('#registrations').prop('disabled', true);
+
         edit = 0;
 
     })
