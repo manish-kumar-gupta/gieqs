@@ -41,6 +41,8 @@ error_reporting(E_NONE);
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.css">
     <script src="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.js"></script>
     <script src="<?php echo BASE_URL; ?>/assets/libs/autosize/dist/autosize.min.js"></script>
+    <script src="<?php echo BASE_URL; ?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+
 
 
     
@@ -226,7 +228,7 @@ min-width:30vw;
 
         <!-- Main navbar -->
 
-        <?php require BASE_URI . '/pages/learning/includes/nav.php';?>
+        <?php require BASE_URI . '/pages/learning/includes/navTest.php';?>
 
         
 
@@ -327,7 +329,7 @@ min-width:30vw;
 <?php
 
 //echo $userid; echo $id; echo 'hello';
-                        if ($usersViewsVideo->matchRecord2way($userid, $id) === false){  
+                        /* if ($usersViewsVideo->matchRecord2way($userid, $id) === false){  
                             
                             //if not recorded already
 
@@ -335,7 +337,7 @@ min-width:30vw;
                 $usersViewsVideo->setuser_id($userid);
                 $usersViewsVideo->setvideo_id($id);
                 $usersViewsVideo->prepareStatementPDO();
-            }
+            } */
 
 ?>
 
@@ -470,9 +472,9 @@ min-width:30vw;
             <div class="container mt-10 mt-lg-10 pt-4 pt-lg-4">
             <nav aria-label="breadcrumb" class="mb-3">
                             <ol class="breadcrumb breadcrumb-links p-0 m-0">
-                                <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/index.php'?>">GIEQs online</a></li>
-                                <li class="breadcrumb-item"><a href="<?php echo 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . "{$_SERVER['HTTP_HOST']}" . $referid?>">Video Search</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Video Viewer</li>
+                                <li class="breadcrumb-item"><a>GIEQs online</a></li>
+                                <li class="breadcrumb-item"><a>Video Search</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">GIEQs Demonstration Viewer</li>
                             </ol>
                         </nav>
                         <div class="row" style="margin-right:15px; margin-left:15px;">
@@ -488,12 +490,12 @@ min-width:30vw;
                        
                         <div class="col text-left mt-0 align-items-center">
                                                     <div class="actions">
-                                                        <a class="action-item action-favorite p-0 m-0 pr-4 likes" data="<?php echo $id;?>">
-                                                            <i class="fas fa-heart mr-1 pr-1 <?php if ($usersFavouriteVideo->matchRecord2way($userid, $id) === true){echo 'gieqsGold';}else{echo 'text-muted';}?>" data-toggle="tooltip" data-placement="bottom" title="favourite"></i> <span
+                                                        <a class="action-item p-0 m-0 pr-4 likes" data="<?php echo $id;?>">
+                                                            <i class="fas fa-heart mr-1 pr-1 text-muted" data-toggle="tooltip" data-placement="bottom" title="favourite"></i> <span
                                                                 id="likesNumber"><?php echo $usersSocial->countFavourites($id);?></span></a>
                                                             
-                                                        <a class="action-item action-like p-0 m-0 pr-4 views" data="<?php echo $id;?>">
-                                                            <i class="fas fa-thumbs-up mr-1 <?php if ($usersLikeVideo->matchRecord2way($userid, $id) === true){echo 'gieqsGold';}else{echo 'text-muted';}?>" data-toggle="tooltip"
+                                                        <a class="action-item p-0 m-0 pr-4 views" data="<?php echo $id;?>">
+                                                            <i class="fas fa-thumbs-up mr-1 text-muted" data-toggle="tooltip"
                                                             data-placement="bottom" title="like"></i> <span
                                                                 id="viewsNumber"><?php echo $usersSocial->countLikes($id);?></span></a>
 
@@ -503,7 +505,7 @@ min-width:30vw;
                                                                 id="viewsNumber"><?php echo $usersSocial->countViews($id);?></span></a>
                                                         <a class="action-item p-0 m-0 pr-1 text-wrap"><i
                                                                 class="fas fa-user mr-1"></i>
-                                                            <span id="videoAuthor" class="flex-grow"></span>
+                                                            <!-- <span id="videoAuthor" class="flex-grow"></span> -->
                                                         </a>
 
                                                     </div>
@@ -694,7 +696,7 @@ min-width:30vw;
                             aria-controls="collapseExample3">
                             <i class="fas fa-chevron-circle-up"></i> show references
                         </a>
-                        <a class="dropdown-item" data-toggle="collapse" href="#collapseExample3" aria-expanded="false"
+                        <a class="dropdown-item" onclick="alert('Comments are disabled for the demonstration version');" aria-expanded="false"
                             aria-controls="collapseExample3">
                             <i class="fas fa-chevron-circle-up"></i> show comments
                         </a>
@@ -730,90 +732,7 @@ min-width:30vw;
                             </div>
                         </div>
                     </div>
-                    <div class="collapse" id="collapseExample3">
-                        <div class="card">
-                        <div class="card-header pt-4 pb-2">
-                <div class="d-flex align-items-center">
-                <a class="avatar bg-gieqsGold text-dark avatar-md rounded-circle mr-3 p-1">
-                        DT
-                      </a>
-                  <div class="avatar-content">
-                    <h6 class="mb-0">Comments</h6>
-                    <div class="d-flex">
-<!--                     <small class="d-block text-muted mr-2"><i class="fas fa-clock mr-2"></i>Profile updated : 3 hrs ago</small>
- -->                    <small class="d-block text-muted mr-2"><i class="fas fa-pen mr-2"></i>Commenting Publicly as David Tate</small>
-</div>
-
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                  <!-- Comments-->
-                <div class="mb-3">
-                    <div id="commentsArea">
-                  
-                  <!-- <div class="media media-comment">
-                    <img alt="Image placeholder" class="rounded-circle shadow mr-4" src="../../assets/img/theme/light/team-3-800x800.jpg" style="width: 64px;">
-                    <div class="media-body">
-                      <div class="media-comment-bubble left-top">
-                        <h6 class="mt-0">Tom Cruise</h6>
-                        <p class="text-sm lh-160">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
-                        <div class="icon-actions">
-                          <a href="#" class="love active">
-                            <i class="fas fa-heart"></i>
-                            <span class="text-muted">20 likes</span>
-                          </a>
-                          <a href="#">
-                            <i class="fas fa-comment"></i>
-                            <span class="text-muted">3 replies</span>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div> -->
-                                            </div>
-                  <div class="media mt-3 media-comment align-items-center">
-                  <a class="avatar bg-gieqsGold text-dark avatar-md rounded-circle mr-3 p-1">DT</a>
-                    <div class="media-body">
-                      <form id="commentForm" validate>
-                        <div class="form-group mb-0">
-                          <div class="input-group input-group-merge">
-                            <textarea class="form-control" id="comment" name="comment" data-toggle="autosize" placeholder="Write your comment" rows="1"></textarea>
-                            <div class="input-group-append">
-                              <button id="submitComment" class="btn btn-primary" type="button">
-                                <span class="far fa-paper-plane"></span>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-                                            </div>
-                            <div class="card-footer">
-                                <div class="row align-items-left p-2">
-                                    <span class="small text-muted">Comments are moderated for inapropriate content.  Offending users will have their commenting priveledges blocked and may be removed from the site.  Maximum 5 comments per video.</span>
-                                    <!-- <div class="col">
-                                        <span class="badge badge-primary mx-2">
-                                            comment 1
-                                        </span>
-                                        <span class="badge badge-primary mx-2">
-                                            comment 2
-                                        </span>
-                                    </div> -->
-                                    <div class="col text-right text-right">
-                                        <div class="actions">
-                                            <a href="#" class="action-item"><i class="fas fa-info mr-1"></i></a>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-
-
-                </div>
+                    
 
             </div>
 
@@ -1184,9 +1103,17 @@ min-width:30vw;
 		
 		//get the tag name
 		
-		var searchTerm = $(this).attr('data');
+		/* var searchTerm = $(this).attr('data');
 		
-		//console.log("https://www.ncbi.nlm.nih.gov/pubmed/?term="+searchTerm);
+        console.log("https://www.ncbi.nlm.nih.gov/pubmed/?term="+searchTerm);
+
+        var passSRC = 'https://www.ncbi.nlm.nih.gov/pubmed/?term='+searchTerm;
+        
+        $.fancybox.open({
+	type  : 'iframe', // Source of the content
+	href : passSRC, // Content type: image|inline|ajax|iframe|html (optional)
+	opts : {} // Object containing item options (optional) */
+});
 		
 		PopupCenter("https://www.ncbi.nlm.nih.gov/pubmed/?term="+searchTerm, 'PubMed Search (endoWiki)', 800, 700);
 
@@ -1433,6 +1360,8 @@ event.preventDefault();
 $('#commentForm').submit();
 
 })
+
+
 
 $("#commentForm").validate({
 

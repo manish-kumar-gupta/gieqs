@@ -1800,6 +1800,88 @@ class general {
 
 	}
 
+	public function getFullReferenceListVideoTest ($videoid){
+
+		//this for imageset then another for video, merge same and return
+
+		$q = "SELECT a.`id` as tagid, a.`tagName`, b.`id`, c.`authors`, c.`formatted`, c.`DOI`, c.`journal`, c.`PMID` 
+		from `tags` as a 
+		INNER JOIN `referencesTag` as b on a.`id` = b.`tag_id` 
+		INNER JOIN `references` as c on c.`id` = b.`references_id`
+		INNER JOIN `chapterTag` as d on a.`id` = d.`tags_id`
+		INNER JOIN `chapter` as e on d.`chapter_id` = e.`id`
+		INNER JOIN `video` as f on f.`id` = e.`video_id`
+		WHERE f.`id` = $videoid
+		GROUP BY c.`id`
+		ORDER BY a.`id` ASC";
+
+		//echo $q;
+
+		//$q = "SELECT `authors`, `formatted`, `DOI` from `references` WHERE `id` = $id";
+
+		//echo $q;
+		/*
+		<div class="col">
+                                        <span class="badge badge-primary mx-2">
+                                            ref 1
+                                        </span>
+                                        <span class="badge badge-primary mx-2">
+                                            ref 2
+                                        </span>
+                                    </div>
+                                    <div class="col text-right text-right">
+                                        <div class="actions">
+                                            
+                                            <a href="#" class="action-item"><i class="fas fa-info mr-1"></i></a>
+                                        </div>
+                                    </div>
+
+		*/
+
+		$references = '';
+		$x = 1;
+		$result = $this->connection->RunQuery($q);
+
+		if ($result->num_rows > 0){
+
+			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+				$PMID = $row['PMID'];
+				
+				$references .= '<a data-fancybox data-type="iframe" data-src="https://www.ncbi.nlm.nih.gov/pubmed/?term=' . $PMID . '" href="javascript:;"><p class="referencelistTest" data="' . $PMID . '" style="text-align:left;" data-tag="' . $row['tagid'] . '" >' . $x . ' - ';
+				
+				$authors = explode( ',', $row['authors'] );
+				$n = count($authors);
+				$references .= $authors[0] . ', ' . $authors[1] . ', ' . $authors[$n-1];
+				$references .= '. ';
+				$references .= $row['formatted'];
+				$references .= ' ';
+				$references .= $row['journal'];
+				$references .= ' ';
+				if ($row['DOI'] <> ''){
+
+					$references .= $row['DOI'];
+					$references .= '.';
+				}
+				$references .= '<span class="badge bg-gray-800 mx-2 mb-1 tagButton" data-tag="' . $row['tagid'] . '">' . $this->getCategoryforTag($row['tagid']) . ' / '. $row['tagName'] . '</span>';
+				$references .= '</p></a>';
+				
+				
+				$x++;
+			}
+
+			echo $references;
+		}else{
+
+			echo '<p style="text-align:left;">No references yet</p>';
+		}
+
+		
+
+
+
+
+	}
+
 	public function generateLogicValidate ($table){
 
 		$q = "SELECT `COLUMN_NAME` AS `name`, `ORDINAL_POSITION` AS `position`, `CHARACTER_MAXIMUM_LENGTH` AS `length`
