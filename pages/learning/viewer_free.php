@@ -1045,16 +1045,9 @@ min-width:30vw;
         $(document).ready(function () {
 
             
-            getComments();
+            //getComments();
 
-            /* $(document).click(function(event) { 
-                $target = $(event.target);
-                
-                if(!$target.closest('#collapseExample').length && 
-                    $('#collapseExample').is(":visible")) {
-                        $('#collapseExample').collapse('hide');
-                    }        
-            }); */
+            
 
             $(document).click(function(event) { 
                 $target = $(event.target);
@@ -1083,14 +1076,7 @@ min-width:30vw;
                     }        
             });
 
-            $(document).click(function(event) { 
-                $target = $(event.target);
-                
-                if(!$target.closest('#collapseExample3').length && 
-                    $('#collapseExample3').is(":visible")) {
-                        $('#collapseExample3').collapse('hide');
-                    }        
-            });
+            
 
             $(document).on('click', '.tagsClose', function(){
 
@@ -1101,19 +1087,8 @@ min-width:30vw;
             $('.referencelist').on('click', function (){
 		
 		
-		//get the tag name
 		
-		/* var searchTerm = $(this).attr('data');
-		
-        console.log("https://www.ncbi.nlm.nih.gov/pubmed/?term="+searchTerm);
 
-        var passSRC = 'https://www.ncbi.nlm.nih.gov/pubmed/?term='+searchTerm;
-        
-        $.fancybox.open({
-	type  : 'iframe', // Source of the content
-	href : passSRC, // Content type: image|inline|ajax|iframe|html (optional)
-	opts : {} // Object containing item options (optional) */
-});
 		
 		PopupCenter("https://www.ncbi.nlm.nih.gov/pubmed/?term="+searchTerm, 'PubMed Search (endoWiki)', 800, 700);
 
@@ -1137,311 +1112,311 @@ min-width:30vw;
 
     })
     
-    $(document).on('click', '.action-like', function(){
+    $(document).on('click', '.action-like', function () {
 
-//alert('hello');
+        //alert('hello');
 
-var videoid = $(this).attr('data');
-//alert(videoid);
-//$(this).children('.fa-thumbs-up').addClass('gieqsGold');
-//$(this).children('.fa-thumbs-up').removeClass('text-muted');
+        var videoid = $(this).attr('data');
+        //alert(videoid);
+        //$(this).children('.fa-thumbs-up').addClass('gieqsGold');
+        //$(this).children('.fa-thumbs-up').removeClass('text-muted');
 
-//AJAX to add the like
+        //AJAX to add the like
 
-var icon = $(this).children('.fa-thumbs-up');
-$(icon).prop("disabled", true);
+        var icon = $(this).children('.fa-thumbs-up');
+        $(icon).prop("disabled", true);
 
-//change state
+        //change state
 
-//ajax to a script to update
+        //ajax to a script to update
 
-if($(icon).hasClass('gieqsGold')){
-    var liked = 1;  // already liked
-    /* $(icon).addClass('text-muted');
-    $(icon).removeClass('gieqsGold'); */
+        if ($(icon).hasClass('gieqsGold')) {
+            var liked = 1; // already liked
+            /* $(icon).addClass('text-muted');
+            $(icon).removeClass('gieqsGold'); */
 
-}else{
-    var liked = 0;  // not liked yet
-    /* $(icon).removeClass('text-muted');
-    $(icon).addClass('gieqsGold'); */
-}
-
-$(icon).prop("disabled", false);
-
-if (liked == 0){
-
-    var type = 1;
-
-}else if (liked == 1){
-
-    var type = 2;
-
-}
-
-var dataToSend = {
-
-    videoid: videoid,
-    type: type,
-    
-
-}
-
-    //const jsonString2 = JSON.stringify(dataToSend);
-
-    const jsonString = JSON.stringify(dataToSend);
-    //console.log(jsonString);
-    //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
-
-    var request2 = $.ajax({
-    beforeSend: function () {
-
-
-    },
-    url: siteRoot + "scripts/useractions/updateUserLike.php",
-    type: "POST",
-    contentType: "application/json",
-    data: jsonString,
-    });
-
-
-
-    request2.done(function (data) {
-    // alert( "success" );
-    if (data == 1){
-        //show green tick
-
-        if (liked == 1){
-
-            $(icon).addClass('text-muted');
-            $(icon).removeClass('gieqsGold');
-            $(icon).removeClass('animated');
-            $(icon).removeClass('heartBeat');
-
-        }else if (liked == 0){
-
-            $(icon).removeClass('text-muted');
-            $(icon).addClass('gieqsGold');
-            $(icon).addClass('animated');
-            $(icon).addClass('heartBeat');
-            
-
+        } else {
+            var liked = 0; // not liked yet
+            /* $(icon).removeClass('text-muted');
+            $(icon).addClass('gieqsGold'); */
         }
-        
-        //$('#notification-services').delay('1000').addClass('is-valid');
-        
-            
-            
 
-    }
-    //$(document).find('.Thursday').hide();
-    $(icon).prop("disabled", false);
-    })
+        $(icon).prop("disabled", false);
 
+        if (liked == 0) {
 
-//$(this).('.fa-thumbs-up').first().addClass("gieqsGold");
-//remove the check from the tag removed
+            var type = 1;
 
+        } else if (liked == 1) {
 
-})
-
-$(document).on('click', '.action-favorite', function(){
-
-//alert('hello');
-
-var videoid = $(this).attr('data');
-//alert(videoid);
-//$(this).children('.fa-thumbs-up').addClass('gieqsGold');
-//$(this).children('.fa-thumbs-up').removeClass('text-muted');
-
-//AJAX to add the like
-
-var icon = $(this).children('.fa-heart');
-$(icon).prop("disabled", true);
-
-//change state
-
-//ajax to a script to update
-
-if($(icon).hasClass('gieqsGold')){
-    var liked = 1;  // already liked
-    /* $(icon).addClass('text-muted');
-    $(icon).removeClass('gieqsGold'); */
-
-}else{
-    var liked = 0;  // not liked yet
-    /* $(icon).removeClass('text-muted');
-    $(icon).addClass('gieqsGold'); */
-}
-
-$(icon).prop("disabled", false);
-
-if (liked == 0){
-
-    var type = 1;
-
-}else if (liked == 1){
-
-    var type = 2;
-
-}
-
-var dataToSend = {
-
-    videoid: videoid,
-    type: type,
-    
-
-}
-
-    //const jsonString2 = JSON.stringify(dataToSend);
-
-    const jsonString = JSON.stringify(dataToSend);
-    //console.log(jsonString);
-    //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
-
-    var request2 = $.ajax({
-    beforeSend: function () {
-
-
-    },
-    url: siteRoot + "scripts/useractions/updateUserFavourite.php",
-    type: "POST",
-    contentType: "application/json",
-    data: jsonString,
-    });
-
-
-
-    request2.done(function (data) {
-    // alert( "success" );
-    if (data == 1){
-        //show green tick
-
-        if (liked == 1){
-
-            $(icon).addClass('text-muted');
-            $(icon).removeClass('gieqsGold');
-            $(icon).removeClass('animated');
-            $(icon).removeClass('heartBeat');
-
-        }else if (liked == 0){
-
-            $(icon).removeClass('text-muted');
-            $(icon).addClass('gieqsGold');
-            $(icon).addClass('animated');
-            $(icon).addClass('heartBeat');
-            
+            var type = 2;
 
         }
 
-        //TODO update views and likes number here
-        
-        //$('#notification-services').delay('1000').addClass('is-valid');
-        
-            
-            
+        var dataToSend = {
 
-    }
-    //$(document).find('.Thursday').hide();
-    $(icon).prop("disabled", false);
+            videoid: videoid,
+            type: type,
+
+
+        }
+
+        //const jsonString2 = JSON.stringify(dataToSend);
+
+        const jsonString = JSON.stringify(dataToSend);
+        //console.log(jsonString);
+        //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
+
+        var request2 = $.ajax({
+            beforeSend: function () {
+
+
+            },
+            url: siteRoot + "scripts/useractions/updateUserLike.php",
+            type: "POST",
+            contentType: "application/json",
+            data: jsonString,
+        });
+
+
+
+        request2.done(function (data) {
+            // alert( "success" );
+            if (data == 1) {
+                //show green tick
+
+                if (liked == 1) {
+
+                    $(icon).addClass('text-muted');
+                    $(icon).removeClass('gieqsGold');
+                    $(icon).removeClass('animated');
+                    $(icon).removeClass('heartBeat');
+
+                } else if (liked == 0) {
+
+                    $(icon).removeClass('text-muted');
+                    $(icon).addClass('gieqsGold');
+                    $(icon).addClass('animated');
+                    $(icon).addClass('heartBeat');
+
+
+                }
+
+                //$('#notification-services').delay('1000').addClass('is-valid');
+
+
+
+
+            }
+            //$(document).find('.Thursday').hide();
+            $(icon).prop("disabled", false);
+        })
+
+
+        //$(this).('.fa-thumbs-up').first().addClass("gieqsGold");
+        //remove the check from the tag removed
+
+
+    })
+
+    $(document).on('click', '.action-favorite', function () {
+
+        //alert('hello');
+
+        var videoid = $(this).attr('data');
+        //alert(videoid);
+        //$(this).children('.fa-thumbs-up').addClass('gieqsGold');
+        //$(this).children('.fa-thumbs-up').removeClass('text-muted');
+
+        //AJAX to add the like
+
+        var icon = $(this).children('.fa-heart');
+        $(icon).prop("disabled", true);
+
+        //change state
+
+        //ajax to a script to update
+
+        if ($(icon).hasClass('gieqsGold')) {
+            var liked = 1; // already liked
+            /* $(icon).addClass('text-muted');
+            $(icon).removeClass('gieqsGold'); */
+
+        } else {
+            var liked = 0; // not liked yet
+            /* $(icon).removeClass('text-muted');
+            $(icon).addClass('gieqsGold'); */
+        }
+
+        $(icon).prop("disabled", false);
+
+        if (liked == 0) {
+
+            var type = 1;
+
+        } else if (liked == 1) {
+
+            var type = 2;
+
+        }
+
+        var dataToSend = {
+
+            videoid: videoid,
+            type: type,
+
+
+        }
+
+        //const jsonString2 = JSON.stringify(dataToSend);
+
+        const jsonString = JSON.stringify(dataToSend);
+        //console.log(jsonString);
+        //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
+
+        var request2 = $.ajax({
+            beforeSend: function () {
+
+
+            },
+            url: siteRoot + "scripts/useractions/updateUserFavourite.php",
+            type: "POST",
+            contentType: "application/json",
+            data: jsonString,
+        });
+
+
+
+        request2.done(function (data) {
+            // alert( "success" );
+            if (data == 1) {
+                //show green tick
+
+                if (liked == 1) {
+
+                    $(icon).addClass('text-muted');
+                    $(icon).removeClass('gieqsGold');
+                    $(icon).removeClass('animated');
+                    $(icon).removeClass('heartBeat');
+
+                } else if (liked == 0) {
+
+                    $(icon).removeClass('text-muted');
+                    $(icon).addClass('gieqsGold');
+                    $(icon).addClass('animated');
+                    $(icon).addClass('heartBeat');
+
+
+                }
+
+                //TODO update views and likes number here
+
+                //$('#notification-services').delay('1000').addClass('is-valid');
+
+
+
+
+            }
+            //$(document).find('.Thursday').hide();
+            $(icon).prop("disabled", false);
+        })
+
+
+        //$(this).('.fa-thumbs-up').first().addClass("gieqsGold");
+        //remove the check from the tag removed
+
+
+    })
+
+    $(document).on('click', '#submitComment', function () {
+
+        event.preventDefault();
+
+        $('#commentForm').submit();
+
     })
 
 
-//$(this).('.fa-thumbs-up').first().addClass("gieqsGold");
-//remove the check from the tag removed
+
+    $("#commentForm").validate({
+
+        invalidHandler: function (event, validator) {
+            var errors = validator.numberOfInvalids();
+            console.log("there were " + errors + " errors");
+            if (errors) {
+                var message = errors == 1 ?
+                    "1 field contains errors. It has been highlighted" :
+                    +errors + " fields contain errors. They have been highlighted";
 
 
-})
+                $('#error').text(message);
+                //$('div.error span').addClass('form-text text-danger');
+                //$('#errorWrapper').show();
 
-$(document).on('click', '#submitComment', function () {
+                $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function () {
+                    $("#errorWrapper").slideUp(500);
+                });
+            } else {
+                $('#errorWrapper').hide();
+            }
+        },
+        ignore: [],
+        rules: {
 
-event.preventDefault();
-
-$('#commentForm').submit();
-
-})
-
-
-
-$("#commentForm").validate({
-
-invalidHandler: function (event, validator) {
-  var errors = validator.numberOfInvalids();
-  console.log("there were " + errors + " errors");
-  if (errors) {
-    var message = errors == 1 ?
-      "1 field contains errors. It has been highlighted" :
-      +errors + " fields contain errors. They have been highlighted";
+            //EDIT
 
 
-    $('#error').text(message);
-    //$('div.error span').addClass('form-text text-danger');
-    //$('#errorWrapper').show();
 
-    $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function () {
-      $("#errorWrapper").slideUp(500);
+
+
+
+
+            comment: {
+                required: true,
+                maxlength: 600,
+                minlength: 25,
+
+            },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        },
+        submitHandler: function (form) {
+
+            //submitPreRegisterForm();
+
+            submitCommentForm();
+
+            //TODO submit changes
+            //TODO reimport the array at the top
+            //TODO redraw the table
+
+
+
+        }
+
+
+
+
     });
-  } else {
-    $('#errorWrapper').hide();
-  }
-},
-ignore: [],
-rules: {
-
-  //EDIT
-
-
-
-
-
-
-
-  comment: {
-    required: true,
-    maxlength: 600,
-    minlength: 25,
-
-  },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-},
-submitHandler: function (form) {
-
-  //submitPreRegisterForm();
-
-  submitCommentForm();
-
-  //TODO submit changes
-  //TODO reimport the array at the top
-  //TODO redraw the table
-
-
-
-}
-
-
-
-
-});
 
 
         })
