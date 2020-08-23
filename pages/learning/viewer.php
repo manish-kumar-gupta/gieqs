@@ -31,6 +31,8 @@ error_reporting(E_NONE);
         
         $usersFavouriteVideo = new usersFavouriteVideo;
 
+        $userFunctions = new userFunctions;
+
       ?>
 
     <!--Page title-->
@@ -759,13 +761,13 @@ min-width:30vw;
                         <div class="card-header pt-4 pb-2">
                 <div class="d-flex align-items-center">
                 <a class="avatar bg-gieqsGold text-dark avatar-md rounded-circle mr-3 p-1">
-                        DT
+                        <?php echo $userFunctions->getUserInitials($userid);?>
                       </a>
                   <div class="avatar-content">
                     <h6 class="mb-0">Comments</h6>
                     <div class="d-flex">
 <!--                     <small class="d-block text-muted mr-2"><i class="fas fa-clock mr-2"></i>Profile updated : 3 hrs ago</small>
- -->                    <small class="d-block text-muted mr-2"><i class="fas fa-pen mr-2"></i>Commenting Publicly as David Tate</small>
+ -->                    <small class="d-block text-muted mr-2"><i class="fas fa-pen mr-2"></i>Commenting Publicly as <?php echo $userFunctions->getUserName($userid);?></small>
 </div>
 
                   </div>
@@ -797,7 +799,7 @@ min-width:30vw;
                   </div> -->
                                             </div>
                   <div class="media mt-3 media-comment align-items-center">
-                  <a class="avatar bg-gieqsGold text-dark avatar-md rounded-circle mr-3 p-1">DT</a>
+                  <a class="avatar bg-gieqsGold text-dark avatar-md rounded-circle mr-3 p-1"><?php echo $userFunctions->getUserInitials($userid);?></a>
                     <div class="media-body">
                       <form id="commentForm" validate>
                         <div class="form-group mb-0">

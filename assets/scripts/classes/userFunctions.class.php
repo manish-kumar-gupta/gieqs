@@ -56,6 +56,61 @@ Class userFunctions {
 			}
 
 
+	}
+	
+	public function getUserInitials($user_id){
+
+        $q = "SELECT `firstname`, `surname` FROM `users` WHERE `user_id` = '$user_id'";
+        //echo $q;
+
+        $result = $this->connection->RunQuery($q);
+		$nRows = $result->rowCount();
+			if ($nRows == 1){
+
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+					$firstname = $row['firstname'];
+					$surname = $row['surname'];
+				}
+				
+				$first_letter_firstname = substr($firstname, 0, 1);
+				$first_letter_surname = substr($surname, 0, 1);
+
+
+
+				return $first_letter_firstname . $first_letter_surname;
+			}else{
+				return FALSE;
+			}
+
+
+	}
+	
+	public function getUserName($user_id){
+
+        $q = "SELECT `firstname`, `surname` FROM `users` WHERE `user_id` = '$user_id'";
+        //echo $q;
+
+        $result = $this->connection->RunQuery($q);
+		$nRows = $result->rowCount();
+			if ($nRows == 1){
+
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+					$firstname = $row['firstname'];
+					$surname = $row['surname'];
+				}
+				
+				
+
+
+
+				return $firstname . ' ' . $surname;
+			}else{
+				return FALSE;
+			}
+
+
     }
 
     public function getUserFromEmail($email){
