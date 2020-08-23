@@ -43,14 +43,14 @@ function endsWith($haystack, $needle)
                 <li class="nav-item active">
                 <a href="https://vimeo.com/450743797" class="btn btn-sm btn-icon btn-group-nav bg-gieqsGold shadow btn-neutral mx-2" data-fancybox>
                 <span class="btn-inner--icon text-dark"><i class="fas fa-directions"></i></span>
-                <span class="animated bounce delay-2s btn-inner--text text-dark d-none d-md-inline-block">Show me the basics!</span>
+                <span class="animated bounce delay-2s btn-inner--text text-dark">Show me the basics!</span>
               </a>
                 </li>
 
                 <li class="nav-item active">
-                <a href="<?php echo BASE_URL;?>/pages/program/online.php?id=2456" class="btn btn-sm btn-icon btn-group-nav bg-dark text-white shadow btn-neutral mx-2">
+                <a href="<?php echo BASE_URL;?>/pages/program/online.php?id=2456" class="btn btn-sm btn-icon btn-group-nav bg-dark text-white shadow btn-neutral mx-2 my-2">
                 <span class="btn-inner--icon text-white"><i class="fas fa-user-plus"></i></span>
-                <span class="btn-inner--text text-white d-none d-md-inline-block">Sign up for a FREE account</span>
+                <span class="btn-inner--text text-white">Sign up for a FREE account</span>
               </a>
                 </li>
                 <!-- Program-basic, later to add dropdown with options -->
