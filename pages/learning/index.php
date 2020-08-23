@@ -187,12 +187,12 @@ top: -20vh;
         <div class="d-flex flex-row-reverse mt-1 align-items-end">
             <a href="<?php echo BASE_URL;?>/pages/learning/pages/account/profile.php" class="btn btn-icon btn-group-nav shadow btn-neutral mx-2">
               <span class="btn-inner--icon"><i class="fas fa-user"></i></span>
-              <span class="btn-inner--text d-none d-md-inline-block">My Learning Profile</span>
+              <span class="btn-inner--text">My Learning Profile</span>
             </a>
 
             <a href="https://vimeo.com/422871506" class="btn btn-icon btn-group-nav bg-gieqsGold shadow btn-neutral mx-2" data-fancybox>
                 <span class="btn-inner--icon text-dark"><i class="fas fa-directions"></i></span>
-                <span class="animated bounce delay-2s btn-inner--text text-dark d-none d-md-inline-block">Show me the basics!</span>
+                <span class="animated bounce delay-2s btn-inner--text text-dark">Show me the basics!</span>
               </a>
             
         </div>
