@@ -14,7 +14,7 @@
       //define user access level
 
       //$openaccess = 1;
-      $requiredUserLevel = 5;
+      $requiredUserLevel = 6;
 
 
       require BASE_URI . '/head.php';
@@ -23,10 +23,12 @@
 
       $navigator = new navigator;
 
+      $users = new users;
+
       ?>
 
     <!--Page title-->
-    <title>GIEQs Online Endoscopy Trainer - Polypectomy Videos</title>
+    <title>GIEQs Online Endoscopy Trainer - Polypectomy Videos Preview</title>
 
     <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
@@ -59,8 +61,6 @@
 .flex-nav {
   flex: 0 0 18%;
 }
-
-
 
 
         
@@ -187,11 +187,13 @@ background-color: rgb(238, 194, 120);
         <!--- specifiy the tag Categories required for display  CHANGEME-->
 
         <?php
-        $requiredTagCategories = ['62', '63'];
+        $requiredTagCategories = ['65'];
+        $requiredVideos = ['113', '114', '137'];
 
         ?>
 
         <div id="requiredTagCategories" style="display:none;"><?php echo json_encode($requiredTagCategories);?></div>
+        <div id="requiredVideos" style="display:none;"><?php echo json_encode($requiredVideos);?></div>
 
        
 
@@ -227,13 +229,16 @@ background-color: rgb(238, 194, 120);
 
         <!--Header CHANGEME-->
 
-    <div class="d-flex align-items-end container">
-        <p class="h1 mt-10">Introduction to Polypectomy</p>
+    <div class="d-flex flex-wrap container pt-10">
+        <div class="h1 mr-auto">Colorectal Polypectomy</div>
+       <!--  <div class="w-50"><?php //require(BASE_URI . '/pages/learning/pages/account/memberCard.php');?></div> -->
+   
 
     </div>
+    <p class="h3 gieqsGold container ">A Primer</p>
 
     <div class="d-flex align-items-end container">
-        <p class="text-muted pl-4 mt-2">Making your first steps in polypectomy theory? These videos will give you a comprehensive background.</p>
+        <p class="text-muted pl-4 mt-2">Below is a selection of lectures and interactive learning tools for those taking their first steps in colonoscopic polypectomy.</p>
 
     </div>
 
@@ -241,7 +246,7 @@ background-color: rgb(238, 194, 120);
         <!--Navigation-->
 
     <div id="navigationZone">
-    <?php require(BASE_URI . '/pages/learning/includes/navigation.php'); ?>
+    <?php //require(BASE_URI . '/pages/learning/includes/navigation.php'); ?>
     </div>
     
 
@@ -249,7 +254,7 @@ background-color: rgb(238, 194, 120);
         <!--Video Display-->
 
 
-    <div class="container mt-6">
+    <div class="container mt-4 pb-6">
         <div id="videoCards" class="flex-wrap">
             
 
@@ -317,6 +322,10 @@ background-color: rgb(238, 194, 120);
 
         var requiredTagCategories = JSON.parse(requiredTagCategoriesText);
         
+        var requiredVideosText = $("#requiredVideos").text();
+
+        var requiredVideos = JSON.parse(requiredVideosText);
+
 
         function refreshNavAndTags(){
 
@@ -351,6 +360,7 @@ background-color: rgb(238, 194, 120);
 
                     tags: tags,
                     requiredTagCategories: requiredTagCategories,
+                    requiredVideos: requiredVideos,
                     active: activeStatus,
 
                     }
@@ -444,6 +454,7 @@ background-color: rgb(238, 194, 120);
                         loaded: loaded,
                         loadedRequired: loadedRequired,
                         requiredTagCategories: requiredTagCategories,
+                        requiredVideos: requiredVideos,
                         referringUrl: $('#escaped_url').text(), active: activeStatus,
 
 
@@ -465,7 +476,7 @@ background-color: rgb(238, 194, 120);
 
 
 					},
-					url: siteRoot + "/pages/learning/scripts/getVideos.php",
+					url: siteRoot + "/pages/learning/scripts/getVideosSimple.php",
 					type: "POST",
 					contentType: "application/json",
 					data: jsonString2,

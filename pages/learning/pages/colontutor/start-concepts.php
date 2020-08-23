@@ -23,10 +23,12 @@
 
       $navigator = new navigator;
 
+      $users = new users;
+
       ?>
 
     <!--Page title-->
-    <title>GIEQs Online Endoscopy Trainer - Polypectomy Imaging Videos</title>
+    <title>GIEQs Online Endoscopy Trainer - Polypectomy Videos Preview</title>
 
     <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
@@ -185,11 +187,13 @@ background-color: rgb(238, 194, 120);
         <!--- specifiy the tag Categories required for display  CHANGEME-->
 
         <?php
-        $requiredTagCategories = ['71', '72', '73', '74', '75', '76', '92', '103', '84'];
+        $requiredTagCategories = ['47'];
+        $requiredVideos = ['104', '105', '72'];
 
         ?>
 
         <div id="requiredTagCategories" style="display:none;"><?php echo json_encode($requiredTagCategories);?></div>
+        <div id="requiredVideos" style="display:none;"><?php echo json_encode($requiredVideos);?></div>
 
        
 
@@ -225,18 +229,16 @@ background-color: rgb(238, 194, 120);
 
         <!--Header CHANGEME-->
 
-        <div class="d-flex flex-wrap container pt-10">
-            <div class="h1 mr-auto">Endoscopic Imaging Tutor</div>
-            <nav aria-label="breadcrumb" class="align-self-center">
-                                <ol class="breadcrumb breadcrumb-links p-0 m-0">
-                                    <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/index.php'?>">GIEQs online</a></li>
-                                    <li class="breadcrumb-item gieqsGold">Endoscopic Imaging Tutor</a></li>
-                                </ol>
-                            </nav>
-    
-        </div>
+    <div class="d-flex flex-wrap container pt-10">
+        <div class="h1 mr-auto">Introduction to Colonoscopy Theory</div>
+       <!--  <div class="w-50"><?php //require(BASE_URI . '/pages/learning/pages/account/memberCard.php');?></div> -->
+   
+
+    </div>
+    <p class="h3 gieqsGold container ">A Primer</p>
+
     <div class="d-flex align-items-end container">
-        <p class="text-muted pl-4 mt-2">Endoscopic imaging allows detailed interrogation of colorectal polyps of all sizes.</p>
+        <p class="text-muted pl-4 mt-2">Below is a selection of lectures and interactive learning tools for those taking their first steps in coolonoscopy theory.</p>
 
     </div>
 
@@ -244,7 +246,7 @@ background-color: rgb(238, 194, 120);
         <!--Navigation-->
 
     <div id="navigationZone">
-    <?php require(BASE_URI . '/pages/learning/includes/navigation.php'); ?>
+    <?php //require(BASE_URI . '/pages/learning/includes/navigation.php'); ?>
     </div>
     
 
@@ -252,7 +254,7 @@ background-color: rgb(238, 194, 120);
         <!--Video Display-->
 
 
-    <div class="container mt-6">
+    <div class="container mt-4 pb-6">
         <div id="videoCards" class="flex-wrap">
             
 
@@ -320,6 +322,10 @@ background-color: rgb(238, 194, 120);
 
         var requiredTagCategories = JSON.parse(requiredTagCategoriesText);
         
+        var requiredVideosText = $("#requiredVideos").text();
+
+        var requiredVideos = JSON.parse(requiredVideosText);
+
 
         function refreshNavAndTags(){
 
@@ -354,6 +360,7 @@ background-color: rgb(238, 194, 120);
 
                     tags: tags,
                     requiredTagCategories: requiredTagCategories,
+                    requiredVideos: requiredVideos,
                     active: activeStatus,
 
                     }
@@ -447,7 +454,9 @@ background-color: rgb(238, 194, 120);
                         loaded: loaded,
                         loadedRequired: loadedRequired,
                         requiredTagCategories: requiredTagCategories,
+                        requiredVideos: requiredVideos,
                         referringUrl: $('#escaped_url').text(), active: activeStatus,
+
 
 
                     }
@@ -467,7 +476,7 @@ background-color: rgb(238, 194, 120);
 
 
 					},
-					url: siteRoot + "/pages/learning/scripts/getVideos.php",
+					url: siteRoot + "/pages/learning/scripts/getVideosSimple.php",
 					type: "POST",
 					contentType: "application/json",
 					data: jsonString2,

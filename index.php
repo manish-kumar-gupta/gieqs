@@ -133,61 +133,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 
     </header>
 
-    <!-- Omnisearch -->
-    <div id="omnisearch" class="omnisearch">
-        <div class="container">
-            <!-- Search form -->
-            <form class="omnisearch-form">
-                <div class="form-group">
-                    <div class="input-group input-group-merge input-group-flush">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-search"></i></span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Type and hit enter ...">
-                    </div>
-                </div>
-            </form>
-            <div class="omnisearch-suggestions">
-                <h6 class="heading">Search Suggestions</h6>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <ul class="list-unstyled mb-0">
-                            <li>
-                                <a class="list-link" href="#">
-                                    <i class="fas fa-search"></i>
-                                    <span>macbook pro</span> in Laptops
-                                </a>
-                            </li>
-                            <li>
-                                <a class="list-link" href="#">
-                                    <i class="fas fa-search"></i>
-                                    <span>iphone 8</span> in Smartphones
-                                </a>
-                            </li>
-                            <li>
-                                <a class="list-link" href="#">
-                                    <i class="fas fa-search"></i>
-                                    <span>macbook pro</span> in Laptops
-                                </a>
-                            </li>
-                            <li>
-                                <a class="list-link" href="#">
-                                    <i class="fas fa-search"></i>
-                                    <span>beats pro solo 3</span> in Headphones
-                                </a>
-                            </li>
-                            <li>
-                                <a class="list-link" href="#">
-                                    <i class="fas fa-search"></i>
-                                    <span>smasung galaxy 10</span> in Phones
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
     <div class="main-content">
 
         <?php
@@ -241,7 +187,10 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                     </span>
                                 <span class="alert-content">CME accreditation</span>
                              </div></a>
-                        </div>
+                            
+<!--                              <div class="countdown" data-countdown-date="10/07/2020" data-countdown-label="hide"></div>
+ --><!--                              <div class="countdown countdown-blocks" data-countdown-date="10/07/2020"></div>
+ -->                        </div>
         </div>
                     <div class="row">
                         <div class="col-lg-5 col-xl-6 text-center text-lg-left">
@@ -252,6 +201,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                 <h2 class="text-white mb-4 mt-4 mt-lg-0">
                                     <span class="display-4 font-weight-light">We can do everyday endoscopy
                                         better.</span>
+                                     
                                     <span class="d-block" style="color: rgb(238, 194, 120);"><strong
                                             class="font-weight-light">Digital Edition I<br />October 7 & 8 2020 <br/>0730 - 1830 CEST
                                             </strong><br />streamed in full, live, right here <br />Registration is &euro;100* for 2 days.</span>
@@ -259,6 +209,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                 <p class="lead text-white">A digital endoscopy symposium in high definition focussed on promoting quality in the
                                     endoscopic interventions we perform everyday.&nbsp;</p>
                                 <div class="mt-5">
+
                                     <a href="https://www.youtube.com/watch?v=I9Y8gC6wtKg"
                                         class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
                                         style="background-color: rgb(238, 194, 120);" data-fancybox>
@@ -279,6 +230,8 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                     </a> -->
                                     
                                 </div>
+                                <div class="countdown countdown-hero mt-2" data-countdown-date="10/07/2020"></div>
+
                             </div>
                         </div>
                     </div>

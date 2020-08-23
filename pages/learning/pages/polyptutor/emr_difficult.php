@@ -185,7 +185,7 @@ background-color: rgb(238, 194, 120);
         <!--- specifiy the tag Categories required for display  CHANGEME-->
 
         <?php
-        $requiredTagCategories = ['67', '68', '102'];
+        $requiredTagCategories = ['67', '68', '80', '107', '108', '109'];
 
         ?>
 
@@ -226,11 +226,11 @@ background-color: rgb(238, 194, 120);
         <!--Header CHANGEME-->
 
     <div class="d-flex align-items-end container">
-        <p class="h1 mt-10">Endoscopic Mucosal Resection (EMR)</p>
+        <p class="h1 mt-10">Difficult Endoscopic Mucosal Resection (EMR)</p>
 
     </div>
     <div class="d-flex align-items-end container">
-        <p class="text-muted pl-4 mt-2">EMR is the standard of care for intermediate and large colorectal polyps.  It is effective and safer than surgery.</p>
+        <p class="text-muted pl-4 mt-2">Well defined features of patient, procedure and lesion make EMR more difficult.  You can explore these here.</p>
 
     </div>
 

@@ -14,7 +14,7 @@
       //define user access level
 
       //$openaccess = 1;
-      $requiredUserLevel = 6;
+      $requiredUserLevel = 5;
 
 
       require BASE_URI . '/head.php';
@@ -26,7 +26,7 @@
       ?>
 
     <!--Page title-->
-    <title>GIEQs Online Endoscopy Trainer - Polypectomy Imaging Videos</title>
+    <title>GIEQs Online Endoscopy Trainer - IBD</title>
 
     <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
@@ -185,7 +185,7 @@ background-color: rgb(238, 194, 120);
         <!--- specifiy the tag Categories required for display  CHANGEME-->
 
         <?php
-        $requiredTagCategories = ['71', '72', '73', '74', '75', '76', '92', '103', '84'];
+        $requiredTagCategories = ['89'];
 
         ?>
 
@@ -225,18 +225,8 @@ background-color: rgb(238, 194, 120);
 
         <!--Header CHANGEME-->
 
-        <div class="d-flex flex-wrap container pt-10">
-            <div class="h1 mr-auto">Endoscopic Imaging Tutor</div>
-            <nav aria-label="breadcrumb" class="align-self-center">
-                                <ol class="breadcrumb breadcrumb-links p-0 m-0">
-                                    <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/index.php'?>">GIEQs online</a></li>
-                                    <li class="breadcrumb-item gieqsGold">Endoscopic Imaging Tutor</a></li>
-                                </ol>
-                            </nav>
-    
-        </div>
     <div class="d-flex align-items-end container">
-        <p class="text-muted pl-4 mt-2">Endoscopic imaging allows detailed interrogation of colorectal polyps of all sizes.</p>
+        <p class="h1 mt-10">Inflammatory Bowel Disease in Endoscopy</p>
 
     </div>
 
