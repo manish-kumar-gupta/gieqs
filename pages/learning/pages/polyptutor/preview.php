@@ -246,7 +246,7 @@ background-color: rgb(238, 194, 120);
         <!--Navigation-->
 
     <div id="navigationZone">
-    <?php require(BASE_URI . '/pages/learning/includes/navigation.php'); ?>
+    <?php //require(BASE_URI . '/pages/learning/includes/navigation.php'); ?>
     </div>
     
 

@@ -61,7 +61,7 @@ function endsWith($haystack, $needle)
 
                 <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
                     <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">Learning Tools</a>
+                        aria-haspopup="true" aria-expanded="false">Medical</a>
                     
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">Colonoscopy</span>
@@ -74,8 +74,8 @@ function endsWith($haystack, $needle)
                 
                     <div class="dropdown-divider"></div>
 
-<span style="color: rgb(238, 194, 120);" class="dropdown-header">GIEQs Curriculum</span>
-<a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/gieqs/all.php"><i class="fas fa-columns"></i>GIEQs Endoscopy Curriculum</a>
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">GIEQs Curriculum</span>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/gieqs/all.php"><i class="fas fa-columns"></i>GIEQs Endoscopy Curriculum</a>
 
 
 

@@ -41,7 +41,7 @@ function endsWith($haystack, $needle)
                     <a class="nav-link text-white">GIEQs Demonstration Viewer</a>
                 </li>
                 <li class="nav-item active">
-                <a href="https://vimeo.com/422871506" class="btn btn-sm btn-icon btn-group-nav bg-gieqsGold shadow btn-neutral mx-2" data-fancybox>
+                <a href="https://vimeo.com/450743797" class="btn btn-sm btn-icon btn-group-nav bg-gieqsGold shadow btn-neutral mx-2" data-fancybox>
                 <span class="btn-inner--icon text-dark"><i class="fas fa-directions"></i></span>
                 <span class="animated bounce delay-2s btn-inner--text text-dark d-none d-md-inline-block">Show me the basics!</span>
               </a>
