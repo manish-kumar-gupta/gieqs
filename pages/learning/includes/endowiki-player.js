@@ -1019,7 +1019,7 @@ $(document).ready(function () {
 
 						//console.log('in the loop');
 
-						var positionOfChapter = requiredChapters.indexOf(val.chapterid);
+						var positionOfChapter = requiredChapters.indexOf(val.number);
 
 						if (positionOfChapter < 0 && startedConnectedPlayback == null) {
 
@@ -1096,7 +1096,7 @@ $(document).ready(function () {
 
 					if (playSelectedChapters == 1) {
 
-						var positionOfChapter = requiredChapters.indexOf(val.chapterid);
+						var positionOfChapter = requiredChapters.indexOf(val.number);
 
 						if (positionOfChapter < 0 && startedConnectedPlayback == null) {
 
