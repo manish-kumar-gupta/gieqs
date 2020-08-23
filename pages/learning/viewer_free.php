@@ -183,7 +183,6 @@ error_reporting(E_NONE);
         z-index: 25;
         width: 200%;
         position: absolute;
-
         }
 
 

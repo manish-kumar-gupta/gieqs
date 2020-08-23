@@ -53,6 +53,10 @@ error_reporting(E_NONE);
 
         }
 
+        .close > span:not(.sr-only) {
+        color: white !important;
+        }
+
         .collapsing {
     -webkit-transition: none;
     transition: none;
@@ -138,6 +142,18 @@ min-width:30vw;
 }
 }
 
+@media (max-width: 576px) {
+        #videoDisplay{
+
+        width: 100vw;
+        position: relative;
+        margin-left: -50vw;
+        left: 50%;
+        height: auto;
+
+        }
+        }
+
 @media (min-width: 1200px) {
         #chapterSelectorDiv{
 
@@ -163,11 +179,14 @@ min-width:30vw;
 
             
             z-index: 25;
+            width: 200%;
+            position: absolute;
             }
 
             
 
 }
+@media (min-width: 577px) {
 @keyframes fade-in-up {
   0% { opacity: 0; }
   100% { transform: translateY(0); opacity: 1; }
@@ -202,6 +221,7 @@ min-width:30vw;
   
   -webkit-animation: fade-in-up .25s ease forwards;
           animation: fade-in-up .25s ease forwards;
+}
 }
 /* swal-text {
   background-color: #162e4d;
@@ -518,6 +538,10 @@ min-width:30vw;
                                         aria-expanded="false" aria-controls="collapseExample">
                                         <i class="fas fa-chevron-circle-up"></i> show tags
                                     </a>
+                                    <a class="dropdown-item" data-toggle="collapse" href="#selectDropdown"
+                                        aria-expanded="false" aria-controls="selectDropdown">
+                                        <i class="fas fa-chevron-circle-up"></i> show chapters
+                                    </a>
                                     
 
 </div>
@@ -555,7 +579,7 @@ min-width:30vw;
                     </div>
                             </div>
                     </div>
-                    <div id='chapterSelectorDiv' class="col-xl-3 mb-0 mb-lg-0 mt-2 py-0 text-center vertical-align-top">
+                    <div id='chapterSelectorDiv' class="col-lg-3 mb-0 mb-lg-0 mt-2 py-0 text-center vertical-align-top">
 
                         <div class="card mb-0">
                             <div class="card-header" style="    padding-right: 0.5em;
@@ -570,8 +594,8 @@ min-width:30vw;
                                         <div class="actions">
                                             <a href="#" class="action-item"><i class="fas fa-sync" data-toggle="tooltip" data-placement="bottom" title="restart video"></i></a>
 
-                                            <a class="action-item" data-toggle="collapse" href="#selectDropdown"><i
-                                                    class="fas fa-ellipsis-h" data-toggle="tooltip" data-placement="bottom" title="show chapters"></i></a>
+                                           <!-- <a class="action-item" data-toggle="collapse" href="#selectDropdown"><i
+                                                    class="fas fa-ellipsis-h" data-toggle="tooltip" data-placement="bottom" title="show chapters"></i></a> -->
 
                                             <?php if ($isSuperuser == 1){?>
                                             
