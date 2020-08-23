@@ -681,7 +681,7 @@ if (count($data) > 0){
 			}
 			
 			
-			$q = "SELECT a.`id`, a.`split`, b.`id` as `chapterid`, TRIM(b.`timeFrom`) AS `timeFrom`, TRIM(b.`timeTo`) AS `timeTo`, b.`number`, b.`name` AS `chaptername`, d.`tagName` AS `tagName` FROM `video` as a INNER JOIN `chapter` as b ON a.`id` = b.`video_id` INNER JOIN `chapterTag` as c ON b.`id` = c.`chapter_id` INNER JOIN `tags` as d ON d.`id` = c.`tags_id` WHERE a.`id` = ". $id . " AND d.`id` = " . $tagid;
+			$q = "SELECT a.`id`, a.`split`, b.`id` as `chapterid`, TRIM(b.`timeFrom`) AS `timeFrom`, TRIM(b.`timeTo`) AS `timeTo`, b.`number`, b.`name` AS `chaptername`, d.`tagName` AS `tagName` FROM `video` as a INNER JOIN `chapter` as b ON a.`id` = b.`video_id` INNER JOIN `chapterTag` as c ON b.`id` = c.`chapter_id` INNER JOIN `tags` as d ON d.`id` = c.`tags_id` WHERE a.`id` = ". $id . " AND d.`id` = " . $tagid . " ORDER BY b.`number` ASC";
 			
 			//echo $q;
 			
@@ -725,7 +725,7 @@ if (count($data) > 0){
 			}
 			
 			
-			$q = "SELECT a.`id`, a.`split`, b.`id` as `chapterid`, TRIM(b.`timeFrom`) AS `timeFrom`, TRIM(b.`timeTo`) AS `timeTo`, b.`number`, b.`name` AS `chaptername`, d.`tagName` AS `tagName` FROM `video` as a INNER JOIN `chapter` as b ON a.`id` = b.`video_id` INNER JOIN `chapterTag` as c ON b.`id` = c.`chapter_id` INNER JOIN `tags` as d ON d.`id` = c.`tags_id` WHERE a.`id` = ". $id . " GROUP BY b.`id`";
+			$q = "SELECT a.`id`, a.`split`, b.`id` as `chapterid`, TRIM(b.`timeFrom`) AS `timeFrom`, TRIM(b.`timeTo`) AS `timeTo`, b.`number`, b.`name` AS `chaptername`, d.`tagName` AS `tagName` FROM `video` as a INNER JOIN `chapter` as b ON a.`id` = b.`video_id` INNER JOIN `chapterTag` as c ON b.`id` = c.`chapter_id` INNER JOIN `tags` as d ON d.`id` = c.`tags_id` WHERE a.`id` = ". $id . " GROUP BY b.`id` ORDER BY b.`number` ASC";
 			
 			//echo $q;
 			
