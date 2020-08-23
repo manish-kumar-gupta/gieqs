@@ -144,6 +144,18 @@ min-width:30vw;
 }
 }
 
+@media (max-width: 576px) {
+        #videoDisplay{
+
+            width: 100vw;
+position: relative;
+margin-left: -50vw;
+left: 50%;
+height: auto;
+
+        }
+}
+
 @media (min-width: 1200px) {
         #chapterSelectorDiv{
 
@@ -177,6 +189,7 @@ min-width:30vw;
             
 
 }
+@media (min-width: 577px) {
 @keyframes fade-in-up {
   0% { opacity: 0; }
   100% { transform: translateY(0); opacity: 1; }
@@ -211,6 +224,7 @@ min-width:30vw;
   
   -webkit-animation: fade-in-up .25s ease forwards;
           animation: fade-in-up .25s ease forwards;
+}
 }
 /* swal-text {
   background-color: #162e4d;
@@ -569,7 +583,7 @@ min-width:30vw;
                     </div>
                             </div>
                     </div>
-                    <div id='chapterSelectorDiv' class="col-xl-3 mb-0 mb-lg-0 mt-2 py-0 text-center vertical-align-top">
+                    <div id='chapterSelectorDiv' class="col-lg-3 mb-0 mb-lg-0 mt-2 py-0 text-center vertical-align-top">
 
                         <div class="card mb-0">
                             <div class="card-header" style="    padding-right: 0.5em;
