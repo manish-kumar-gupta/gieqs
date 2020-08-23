@@ -50,191 +50,191 @@ error_reporting(E_NONE);
     <style>
         .gieqsGold {
 
-            color: rgb(238, 194, 120) !important;
+        color: rgb(238, 194, 120) !important;
 
 
         }
 
         .close > span:not(.sr-only) {
-color: white !important;
-}
+        color: white !important;
+        }
 
         .collapsing {
-    -webkit-transition: none;
-    transition: none;
-    display: none;
-}
+        -webkit-transition: none;
+        transition: none;
+        display: none;
+        }
 
         .tagButton {
 
-            cursor: pointer;
+        cursor: pointer;
 
         }
 
         .tagCard {
 
-background-color: #1b385dde;
+        background-color: #1b385dde;
 
 
-
-}
-
-.tagCardHeader{
-
-    background-color: #162e4d;
-
-}
-
-        
-.video {
-
-    
-box-sizing: border-box;
-    /* height: 25.25vw; */
-    /* min-height: 100%;
-    min-width: 100%; */
-    transform: translate(-50%, -50%);
-    position: absolute;
-
-}   
-.cursor-pointer {
-
-    cursor: pointer;
-
-}
-
-.card-body ::-webkit-scrollbar{
-
-    display: none;
-
-}
-
-.card-body {
-
-    -ms-overflow-style : none;
-}
-
-@media (min-width: 992px) {
-    .tagCard {
-
-            
-left: -50vw;
-top: -20vh;
-min-width:30vw;
-
-
-}
-.video {
-  box-sizing: border-box;
-    height: 25.25vw;
-    /* min-height: 100%;
-    min-width: 100%; */
-    transform: translate(-50%, -50%);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 100.77777778vh;
-    
-}
-#col-container{
-
-    padding-left: 0px !important;
-    padding-right: 0px !important;
-
-}
-}
-
-@media (max-width: 576px) {
-        #videoDisplay{
-
-            width: 100vw;
-position: relative;
-margin-left: -50vw;
-left: 50%;
-height: auto;
 
         }
-}
 
-@media (min-width: 1200px) {
+        .tagCardHeader{
+
+        background-color: #162e4d;
+
+        }
+
+
+        .video {
+
+
+        box-sizing: border-box;
+        /* height: 25.25vw; */
+        /* min-height: 100%;
+        min-width: 100%; */
+        transform: translate(-50%, -50%);
+        position: absolute;
+
+        }
+        .cursor-pointer {
+
+        cursor: pointer;
+
+        }
+
+        .card-body ::-webkit-scrollbar{
+
+        display: none;
+
+        }
+
+        .card-body {
+
+        -ms-overflow-style : none;
+        }
+
+        @media (min-width: 992px) {
+        .tagCard {
+
+
+        left: -50vw;
+        top: -20vh;
+        min-width:30vw;
+
+
+        }
+        .video {
+        box-sizing: border-box;
+        height: 25.25vw;
+        /* min-height: 100%;
+        min-width: 100%; */
+        transform: translate(-50%, -50%);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 100.77777778vh;
+
+        }
+        #col-container{
+
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+
+        }
+        }
+
+        @media (max-width: 576px) {
+        #videoDisplay{
+
+        width: 100vw;
+        position: relative;
+        margin-left: -50vw;
+        left: 50%;
+        height: auto;
+
+        }
+        }
+
+        @media (min-width: 1200px) {
         #chapterSelectorDiv{
 
-            
-                
-                top:-3vh;
-            
+
+
+        top:-3vh;
+
 
         }
         #playerContainer{
 
-                margin-top:-20px;
+        margin-top:-20px;
 
         }
         #collapseExample {
 
-            position: absolute; 
-            max-width: 50vh; 
-            z-index: 25;
+        position: absolute;
+        max-width: 50vh;
+        z-index: 25;
         }
 
         #selectDropdown {
 
-            
-            z-index: 25;
-            width: 200%;
-            position: absolute;
 
-            }
+        z-index: 25;
+        width: 200%;
+        position: absolute;
 
-            
+        }
 
-}
-@media (min-width: 577px) {
-@keyframes fade-in-up {
-  0% { opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
-}
 
-@keyframes fade-in-up {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-    opacity: 1;
-  }
-}
-.video-wrap {
-  text-align: center;
-}
 
-.video iframe {
-  max-width: 100%;
-  max-height: 100%;
-}
-.video.stuck {
-  z-index: 25;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  -webkit-transform: translateY(100%);
-          transform: translateY(100%);
-  width: 400px !important;
-  
-  -webkit-animation: fade-in-up .25s ease forwards;
-          animation: fade-in-up .25s ease forwards;
-}
-}
-/* swal-text {
-  background-color: #162e4d;
-  padding: 17px;
-  border: 1px solid #F0E1A1;
-  display: block;
-  margin: 22px;
-  text-align: center;
-  color: #162e4d;
-} */
+        }
+        @media (min-width: 577px) {
+        @keyframes fade-in-up {
+        0% { opacity: 0; }
+        100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fade-in-up {
+        0% {
+        opacity: 0;
+        }
+        100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        opacity: 1;
+        }
+        }
+        .video-wrap {
+        text-align: center;
+        }
+
+        .video iframe {
+        max-width: 100%;
+        max-height: 100%;
+        }
+        .video.stuck {
+        z-index: 25;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        -webkit-transform: translateY(100%);
+        transform: translateY(100%);
+        width: 400px !important;
+
+        -webkit-animation: fade-in-up .25s ease forwards;
+        animation: fade-in-up .25s ease forwards;
+        }
+        }
+        /* swal-text {
+        background-color: #162e4d;
+        padding: 17px;
+        border: 1px solid #F0E1A1;
+        display: block;
+        margin: 22px;
+        text-align: center;
+        color: #162e4d;
+        } */
     </style>
 
 
@@ -275,7 +275,22 @@ height: auto;
 								include(BASE_URI . "/footer.php");
 								exit();
 		
-							}
+							}else {
+
+                                if ($general->checkVideoFree($id) == '3'){
+
+                                    //video is available free
+                                }else{
+
+                                    echo '<div class="container mt-10 mb-10">';
+                                    echo "Video not freely available.  Return <a href='https://www.gieqs.com'>home</a>";
+                                    echo '</div>';
+                                    include(BASE_URI . "/footer.php");
+                                    exit();
+
+                                }
+                                //check that the id is a free video
+                            }
 						}else {
 							echo '<div class="container mt-10 mb-10">';
 							echo "This page requires the id of a video existing in the database to be passed";

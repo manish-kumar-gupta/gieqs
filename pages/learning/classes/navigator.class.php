@@ -83,9 +83,17 @@ class navigator {
 		
 		//get the tags from the required categories
 		
+		if ($active == '1'){
 
+			//fill to ensure all live shown
 
-		$q = "SELECT a.`id`, a.`name`, b.`id` as `chapterid`, b.`timeFrom`, b.`timeTo`, b.`number`, b.`name` AS `chaptername`, b.`description`, d.`id` as `tagid`, d.`tagName` FROM `video` as a INNER JOIN `chapter` as b ON a.`id` = b.`video_id` INNER JOIN `chapterTag` as c ON b.`id` = c.`chapter_id` INNER JOIN `tags` as d ON d.`id` = c.`tags_id` INNER JOIN `tagCategories` as e ON d.`tagCategories_id` = e.`id` WHERE (e.`id` = '$categories') AND (a.`id` IS NOT NULL) AND (a.`active` = '$active') GROUP BY d.`tagName` ORDER BY d.`id` ASC ";
+			$extra_active = 'OR a.`active` = \'3\'';
+		}else{
+
+			$extra_active = null;
+		}
+
+		$q = "SELECT a.`id`, a.`name`, b.`id` as `chapterid`, b.`timeFrom`, b.`timeTo`, b.`number`, b.`name` AS `chaptername`, b.`description`, d.`id` as `tagid`, d.`tagName` FROM `video` as a INNER JOIN `chapter` as b ON a.`id` = b.`video_id` INNER JOIN `chapterTag` as c ON b.`id` = c.`chapter_id` INNER JOIN `tags` as d ON d.`id` = c.`tags_id` INNER JOIN `tagCategories` as e ON d.`tagCategories_id` = e.`id` WHERE (e.`id` = '$categories') AND (a.`id` IS NOT NULL) AND (a.`active` = '$active' $extra_active) GROUP BY d.`tagName` ORDER BY d.`id` ASC ";
 
 		$result = $this->connection->RunQuery($q);
 
@@ -126,6 +134,15 @@ class navigator {
 			print_r($categories);
 			echo '<br/><br/>';
 		}
+		if ($active == '1'){
+
+			//fill to ensure all live shown
+
+			$extra_active = 'OR a.`active` = \'3\'';
+		}else{
+
+			$extra_active = null;
+		}
 
 		//get the tags from the required categories
 		if ($tagsRequired){
@@ -137,7 +154,9 @@ class navigator {
 			$x=1;
 			$y=1;
 
-			$query_where .= "WHERE (a.`active` = '$active') AND ";
+			
+
+			$query_where .= "WHERE (a.`active` = '$active' $extra_active) AND ";
 
 			foreach ($categories as $key=>$value){
 
@@ -207,7 +226,7 @@ class navigator {
 	
 			$y=1;
 
-			$query_where .= "WHERE (a.`active` = '$active') AND ";
+			$query_where .= "WHERE (a.`active` = '$active' $extra_active) AND ";
 
 			foreach ($categories as $key=>$value){
 
@@ -520,6 +539,23 @@ class navigator {
 			echo '<br/><br/>';
 		}
 
+		if ($active == '1'){
+
+			//fill to ensure all live shown
+
+			$extra_active = 'OR a.`active` = \'3\'';
+
+			if ($debug){
+				echo 'extra active is ' . $extra_active;
+			}
+		}else{
+
+			$extra_active = null;
+			if ($debug){
+				echo 'extra active is null';
+			}
+		}
+
 		//get the tags from the required categories
 		if ($tagsRequired){
 			
@@ -529,8 +565,9 @@ class navigator {
 	
 			$x=1;
 			$y=1;
+			
 
-			$query_where .= "WHERE (a.`active` = '$active') AND ";
+			$query_where .= "WHERE (a.`active` = '$active' $extra_active) AND ";
 
 			foreach ($categories as $key=>$value){
 
@@ -600,7 +637,7 @@ class navigator {
 	
 			$y=1;
 
-			$query_where .= "WHERE (a.`active` = '$active') AND ";
+			$query_where .= "WHERE (a.`active` = '$active' $extra_active) AND ";
 
 			foreach ($categories as $key=>$value){
 
@@ -700,13 +737,21 @@ class navigator {
 
 		//get the tags from the required categories
 		
+		if ($active == '1'){
 
+			//fill to ensure all live shown
+
+			$extra_active = 'OR a.`active` = \'3\'';
+		}else{
+
+			$extra_active = null;
+		}
 
 			$howManyTagCategories = count($requiredVideos);
 	
 			$y=1;
 
-			$query_where .= "WHERE (a.`active` = '$active') AND ";
+			$query_where .= "WHERE (a.`active` = '$active' $extra_active) AND ";
 
 			foreach ($requiredVideos as $key=>$value){
 
@@ -879,7 +924,7 @@ class navigator {
 	
 			$x=1;
 
-			$query_where .= "WHERE (a.`active` = '1') AND ";
+			$query_where .= "WHERE (a.`active` = '1' OR a.`active` = '3') AND ";
 	
 			foreach ($tagsRequired as $key=>$value){
 	
@@ -898,7 +943,7 @@ class navigator {
 			//echo query_where;;
 		}else{
 
-			$query_where = "WHERE (a.`active` = '1') AND e.`id` = '$categories'";
+			$query_where = "WHERE (a.`active` = '1' OR a.`active` = '3') AND e.`id` = '$categories'";
 
 		}
 

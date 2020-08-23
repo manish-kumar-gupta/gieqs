@@ -4206,6 +4206,32 @@ return $arr;
 			return null;
 		}
 	}
+
+	public function checkVideoFree ($id){
+		
+		$q = "SELECT `active`
+		FROM `video` WHERE `id` = $id";
+
+		//echo $q;
+
+		$result = $this->connection->RunQuery($q);
+
+		if ($result->num_rows == 1){
+
+			
+			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+				
+				$free = $row['active'];
+				
+				
+			}
+		
+			return $free;
+		}else{
+			
+			return null;
+		}
+	}
 	
 	
 

@@ -51,6 +51,7 @@
                                                             <option value="0">Not shown, not tagged, inactive video</option>
                                                             <option value="1" selected>Shown on Live site</option>
                                                             <option value="2">Needs tagging</option>
+                                                            <option value="3">Shown on Live site and available free</option>
                                                             </select>
                                                          
                                                         </div>

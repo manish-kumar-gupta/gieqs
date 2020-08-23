@@ -270,6 +270,7 @@ background-color: rgb(238, 194, 120);
                                         <option value="0">Not shown, not tagged, inactive video</option>
                                         <option value="1">Shown on Live site</option>
                                         <option value="2">Needs tagging</option>
+                                        <option value="3">Shown on Live site and available FREE</option>
                                         </select>
                                      
                                     </div>
