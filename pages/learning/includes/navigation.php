@@ -19,7 +19,7 @@
         <div class="container mt-4 p-2 bg-dark text-white" style="border: 1px solid #1b385d;">
         <div class="d-flex">
             <span class='mr-auto p-2'>Navigator</span>
-            <form class="d-flex">
+            <!-- <form class="d-flex">
                                                     
                                                     <div class="form-group mr-2 mt-1 ml-auto">
                                                         
@@ -38,7 +38,7 @@
                                                     </div>
                                                    
                             
-                                                </form>
+                                                </form> -->
             <?php if ($currentUserLevel < 3){?>
 
             <form class="d-flex">
@@ -86,7 +86,7 @@
             
             ?>
 
-            <div class="d-flex m-2 pt-0 bg-dark-light text-white text-sm flex-nav">
+            <div class="d-flex m-2 pt-0 bg-dark-light text-white text-sm flex-nav navigator-item">
             
             <a class='p-2 bd-highlight' data-toggle="dropdown" data-flip="false"><i class="cursor-pointer fas fa-chevron-down"></i></a>
 

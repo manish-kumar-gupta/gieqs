@@ -14,10 +14,9 @@
       //define user access level
 
       //$openaccess = 1;
-      $requiredUserLevel = 5;
+      $requiredUserLevel = 6;
 
 
-      //require BASE_URI . '/pages/learning/includes/head.php';
       require BASE_URI . '/head.php';
 
       $general = new general;
@@ -27,7 +26,7 @@
       ?>
 
     <!--Page title-->
-    <title>GIEQs Online Endoscopy Trainer - Training Theory</title>
+    <title>GIEQs Online Endoscopy Trainer - Polypectomy Videos</title>
 
     <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
@@ -186,7 +185,7 @@ background-color: rgb(238, 194, 120);
         <!--- specifiy the tag Categories required for display  CHANGEME-->
 
         <?php
-        $requiredTagCategories = ['47', '48', '54'];
+        $requiredTagCategories = ['67', '68', '102'];
 
         ?>
 
@@ -226,18 +225,14 @@ background-color: rgb(238, 194, 120);
 
         <!--Header CHANGEME-->
 
-    <div class="d-flex flex-wrap container pt-10">
-        <div class="h1 mr-auto">Training Theory</div>
-        <nav aria-label="breadcrumb" class="align-self-center">
-                            <ol class="breadcrumb breadcrumb-links p-0 m-0">
-                                <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/index.php'?>">GIEQs online</a></li>
-                                <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/pages/colontutor/all.php'?>">Colonoscopy Tutor</a></li>
-                                <li class="breadcrumb-item gieqsGold" aria-current="page">Training Theory</li>
-                            </ol>
-                        </nav>
+    <div class="d-flex align-items-end container">
+        <p class="h1 mt-10">Endoscopic Mucosal Resection (EMR)</p>
 
     </div>
-    
+    <div class="d-flex align-items-end container">
+        <p class="text-muted pl-4 mt-2">EMR is the standard of care for intermediate and large colorectal polyps.  It is effective and safer than surgery.</p>
+
+    </div>
 
 
         <!--Navigation-->
@@ -313,9 +308,7 @@ background-color: rgb(238, 194, 120);
         //the number the user wants
         var loadedRequired = 1;
 
-        var firstTime = 1;
-
-        var activeStatus = 1;
+        var firstTime = 1; var activeStatus = 1;
 
         var requiredTagCategoriesText = $("#requiredTagCategories").text();
 
@@ -448,8 +441,7 @@ background-color: rgb(238, 194, 120);
                         loaded: loaded,
                         loadedRequired: loadedRequired,
                         requiredTagCategories: requiredTagCategories,
-                        referringUrl: $('#escaped_url').text(),
-                        active: activeStatus,
+                        referringUrl: $('#escaped_url').text(), active: activeStatus,
 
 
                     }
@@ -601,7 +593,6 @@ background-color: rgb(238, 194, 120);
                 refreshNavAndTags();
 
             })
-
             //active behaviour
 
             $('body').on('change', '#active', function(){
@@ -615,8 +606,6 @@ background-color: rgb(238, 194, 120);
 
             })
 
-            
-            
             
 
 

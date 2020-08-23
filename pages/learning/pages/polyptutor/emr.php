@@ -57,7 +57,7 @@
 }
 
 .flex-nav {
-  flex: 1 0 18%;
+  flex: 0 0 18%;
 }
 
 
@@ -185,7 +185,7 @@ background-color: rgb(238, 194, 120);
         <!--- specifiy the tag Categories required for display  CHANGEME-->
 
         <?php
-        $requiredTagCategories = ['65', '66', '67', '68', '69', '70', '71'];
+        $requiredTagCategories = ['104', '65', '102'];
 
         ?>
 
