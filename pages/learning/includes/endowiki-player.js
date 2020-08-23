@@ -500,7 +500,7 @@ function getChapterSelectorv2(idSelector, ChapteridSelector) {
 
 				//do the tag thing foreach data
 
-				console.log(data);
+				//console.log(data);
 
 				try {
 
