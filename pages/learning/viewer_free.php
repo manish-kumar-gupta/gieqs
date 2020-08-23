@@ -55,6 +55,10 @@ error_reporting(E_NONE);
 
         }
 
+        .close > span:not(.sr-only) {
+color: white !important;
+}
+
         .collapsing {
     -webkit-transition: none;
     transition: none;
@@ -165,6 +169,9 @@ min-width:30vw;
 
             
             z-index: 25;
+            width: 200%;
+            position: absolute;
+
             }
 
             
@@ -520,6 +527,11 @@ min-width:30vw;
                                         aria-expanded="false" aria-controls="collapseExample">
                                         <i class="fas fa-chevron-circle-up"></i> show tags
                                     </a>
+                                    <a class="dropdown-item" data-toggle="collapse" href="#selectDropdown"
+                                        aria-expanded="false" aria-controls="selectDropdown">
+                                        <i class="fas fa-chevron-circle-up"></i> show chapters
+                                    </a>
+                                   
                                     
 
 </div>
@@ -572,8 +584,8 @@ min-width:30vw;
                                         <div class="actions">
                                             <a href="#" class="action-item"><i class="fas fa-sync" data-toggle="tooltip" data-placement="bottom" title="restart video"></i></a>
 
-                                            <a class="action-item" data-toggle="collapse" href="#selectDropdown"><i
-                                                    class="fas fa-ellipsis-h" data-toggle="tooltip" data-placement="bottom" title="show chapters"></i></a>
+                                            <!-- <a class="action-item" data-toggle="collapse" href="#selectDropdown"><i
+                                                    class="fas fa-ellipsis-h" data-toggle="tooltip" data-placement="bottom" title="show chapters"></i></a> -->
 
                                             <?php if ($isSuperuser == 1){?>
                                             

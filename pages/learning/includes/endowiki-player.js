@@ -1710,6 +1710,8 @@ $(document).ready(function () {
 
 			jumpToTime(nextChapterStartTime);
 
+			$("#videoChapter").vimeo("play");
+
 		}
 
 		
