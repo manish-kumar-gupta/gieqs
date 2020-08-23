@@ -231,7 +231,7 @@ background-color: rgb(238, 194, 120);
 
     <div class="d-flex flex-wrap container pt-10">
         <div class="h1 mr-auto">Introduction to Polypectomy</div>
-        <div class="w-50"><?php require(BASE_URI . '/pages/learning/pages/account/memberCard.php');?></div>
+       <!--  <div class="w-50"><?php //require(BASE_URI . '/pages/learning/pages/account/memberCard.php');?></div> -->
    
 
     </div>
@@ -246,7 +246,7 @@ background-color: rgb(238, 194, 120);
         <!--Navigation-->
 
     <div id="navigationZone">
-    <?php //require(BASE_URI . '/pages/learning/includes/navigation.php'); ?>
+    <?php require(BASE_URI . '/pages/learning/includes/navigation.php'); ?>
     </div>
     
 
