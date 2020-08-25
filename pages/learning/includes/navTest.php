@@ -48,9 +48,9 @@ function endsWith($haystack, $needle)
                 </li>
 
                 <li class="nav-item active">
-                <a href="<?php echo BASE_URL;?>/pages/program/online.php?id=2456" class="btn btn-sm btn-icon btn-group-nav bg-dark text-white shadow btn-neutral mx-2 my-2">
+                <a href="<?php echo BASE_URL;?>/register" class="btn btn-sm btn-icon btn-group-nav bg-dark text-white shadow btn-neutral mx-2 my-2">
                 <span class="btn-inner--icon text-white"><i class="fas fa-user-plus"></i></span>
-                <span class="btn-inner--text text-white">Sign up for a FREE account</span>
+                <span class="btn-inner--text text-white">Sign up for GIEQs digital</span>
               </a>
                 </li>
                 <!-- Program-basic, later to add dropdown with options -->

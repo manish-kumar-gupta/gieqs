@@ -341,6 +341,29 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 
      <?php }?>
         <!-- <hr class="divider divider-fade" /> -->
+        <section class="slice slice-lg mb-4">
+            <div class="container">
+              <div class="row row-grid align-items-center justify-content-around">
+                <div class="col-lg-5 order-lg-2">
+                  <div class="pr-md-4">
+                    <h5 class="h3">Change the way you think about learning in Endoscopy. Forever.</h5>
+                    <p class="text-muted lead my-4">GIEQs uses our ground-breaking tagged based approach throughout to connect you with cases relevant to what you want to discover, fast.</p>
+                    <p class="text-muted lead my-4">In the run up to GIEQs we will share a case every week so you can better understand the approach.</p>
+
+                    <a href="<?php echo BASE_URL;?>/polypectomy" target="_blank" class="btn bg-gieqsGold text-dark rounded-pill btn-icon mt-4">
+                      <span class="btn-inner--icon"><i class="fas fa-binoculars"></i></span>
+                      <span class="btn-inner--text">FREE case - Polypectomy</span>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                  <div class="position-relative" style="z-index: 10;">
+                    <a href="<?php echo BASE_URL;?>/polypectomy" target="_blank"><img alt="Image placeholder" src="<?php echo BASE_URL;?>/assets/img/learning/advertising/tagsPolypectomyV2.png" class="img-center img-fluid"></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         <section class="slice slice-lg bg-cover bg-size--cover" style="background-image: url('<?php echo BASE_URL;?>/assets/img/covers/learning/roomview1.png'); background-position: center bottom;">
         <div class="container">
           <div class="row">

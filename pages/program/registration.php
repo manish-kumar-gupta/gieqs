@@ -153,7 +153,26 @@ $registrationURL = 'https://eu.eventscloud.com/200200203';
                       <p class="lead lh-180">You will also receive complimentary access to GIEQs learning basic from its launch until one month after the event, containing all the content from GIEQs and a selection of our curated learning material.</p>
                       <p class="lead lh-180">Welcome to the GIEQs family.  Let's do everyday endoscopy better!</p>
                   <div class="btn-container mt-5">
-                    <a href="<?php if (isset($_SESSION['user_id'])){echo '';}else{echo $registrationURL;}?>"
+                  <?php if ($liveAccess){
+
+                                $requiredArray = ['23', '29', '25', '30', '31'];
+
+                                //print_r($requiredArray);
+
+                                //print_r($liveAccess);
+
+
+                                $bFound = (count(array_intersect($liveAccess, $requiredArray))) ? true : false;
+
+                                //if (in_array($liveAccess, 25)){
+                                }else{
+
+                                    $bFound = false;
+                                }
+
+?>
+
+                    <a href="<?php if (isset($_SESSION['user_id']) && $bFound){echo '';}else{echo $registrationURL;}?>"
                         class="btn gieqsGoldBack text-dark mt-2 rounded-pill hover-translate-y-n3">
                         Register now ->
                     </a>

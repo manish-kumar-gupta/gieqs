@@ -32,7 +32,7 @@
             //comment for live the below line !forLive
 
             //$currentTime = new DateTime('2020-10-07 09:30:20', $serverTimeZone);
-            $currentTime = new DateTime('2020-10-07 09:30:20', $serverTimeZone);
+            $currentTime = new DateTime('2020-10-08 09:30:20', $serverTimeZone);
 
             //$print_r()
 
@@ -209,6 +209,19 @@
                                     $startdate = $sessionTimeFrom;
                                     $enddate = $sessionTimeTo;
 
+                                    if ($debug){
+
+                                        echo 'comparing start date ';
+                                        print_r($startdate);
+                                        echo 'and end  date ';
+                                        print_r($enddate);
+                                        echo 'with current time';
+                                        print_r($currentTime);
+                                    }
+
+                                    $current = false;
+                                    $past = false;
+
                                     if($startdate <= $now && $now <= $enddate) {
                                         $current = true;
                                         
@@ -221,6 +234,32 @@
                                         
                                     }else{
                                         $past = false;
+                                    }
+
+                                    if ($debug){
+
+                                        echo 'SESSION is ';
+                                        if ($past == true){
+
+                                            echo 'past';
+                                        }
+
+                                        if ($past == false){
+
+                                            echo 'not past';
+                                        }
+
+                                        if ($current == false){
+
+                                            echo 'not current';
+                                        }
+
+                                        if ($current == true){
+
+                                            echo 'current';
+                                        }
+
+                                        echo PHP_EOL;
                                     }
 
                                     if ($current){
@@ -873,6 +912,19 @@
                                     $startdate = $sessionTimeFrom;
                                     $enddate = $sessionTimeTo;
 
+                                    if ($debug){
+
+                                        echo 'comparing start date ';
+                                        print_r($startdate);
+                                        echo 'and end  date ';
+                                        print_r($enddate);
+                                        echo 'with current time';
+                                        print_r($currentTime);
+                                    }
+
+                                    $current = false;
+                                    $past = false;
+
                                     if($startdate <= $now && $now <= $enddate) {
                                         $current = true;
                                         
@@ -885,6 +937,32 @@
                                         
                                     }else{
                                         $past = false;
+                                    }
+
+                                    if ($debug){
+
+                                        echo 'SESSION is ';
+                                        if ($past == true){
+
+                                            echo 'past';
+                                        }
+
+                                        if ($past == false){
+
+                                            echo 'not past';
+                                        }
+
+                                        if ($current == false){
+
+                                            echo 'not current';
+                                        }
+
+                                        if ($current == true){
+
+                                            echo 'current';
+                                        }
+
+                                        echo PHP_EOL;
                                     }
 
                                     if ($current){

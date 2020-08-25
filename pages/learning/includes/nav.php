@@ -65,27 +65,90 @@ function endsWith($haystack, $needle)
                     
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">Colonoscopy</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/start-concepts.php"><i class="fas fa-columns"></i>Colonoscopy Tutor</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/start-concepts.php"><i class="fas fa-columns"></i>Colonoscopy</a>
                 
                     <div class="dropdown-divider"></div>
 
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">Polypectomy</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/start.php"><i class="fas fa-columns"></i>Polypectomy Tutor</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/start.php"><i class="fas fa-columns"></i>Polypectomy</a>
                 
                     <div class="dropdown-divider"></div>
 
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">GIEQs Everyday Endoscopy</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/gastroscopy.php"><i class="fas fa-columns"></i>GIEQs Endoscopy Curriculum</a>
+                    <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown"><i class="fas fa-columns"></i>GIEQs Endoscopy Curriculum</a>
+                    <div class="dropdown-menu dropdown-menu-xl rounded-bottom delimiter-top p-4 bg-dark-light">
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Gastroscopy</a>
+                          <a href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/gastroscopy.php" class="dropdown-item">Gastroscopy<!--  <img class="w-100" alt="Boston Scientific" src="<?php echo BASE_URL . '/assets/img/brand/boston.jpg';?>"> --> </a>
+                          <a href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/gastroscopy-imaging.php" class="dropdown-item">Imaging at Gastroscopy<!--  <img class="w-100" alt="Boston Scientific" src="<?php echo BASE_URL . '/assets/img/brand/boston.jpg';?>"> --> </a>
+                          
+                          <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);"></a>
+
+                          <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">GI Bleeding</a>
+
+                          <a href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/gib.php" class="dropdown-item">Gastrointestinal Bleeding</a>
+                          <!-- <a href="sections.html#footers" class="dropdown-item">Footers</a>
+                          <a href="sections.html#blog" class="dropdown-item">Blog</a>
+                          <a href="sections.html#call-to-action" class="dropdown-item">Call to action</a>
+                          <a href="sections.html#clients" class="dropdown-item">Clients</a>
+                          <a href="sections.html#collapse" class="dropdown-item">Collapse</a> -->
+                        </div>
+                        <div class="col-sm-3">
+                         
+
+                          <!-- <a href="sections.html#features" class="dropdown-item">Features</a>
+                          <a href="sections.html#milestone" class="dropdown-item">Milestone</a>
+                          <a href="sections.html#pricing" class="dropdown-item">Pricing</a>
+                          <a href="sections.html#projects" class="dropdown-item">Projects</a>
+                          <a href="sections.html#subscribe" class="dropdown-item">Subscribe</a> -->
+                        </div>
+                        <div class="col-sm-3">
+                          <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Upper GI Therapeutics</a>
+
+                         
+                        
+                        </div>
+                        <!-- <div class="col-sm-3">
+                          <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">IBD</a>
+
+                          <a href="sections.html#headers" class="dropdown-item">MudiPharma</a>
+                          <a href="sections.html#headers" class="dropdown-item">Norgine</a>
+                          <a href="sections.html#headers" class="dropdown-item">Dr Falk</a>
+                          <a href="sections.html#headers" class="dropdown-item">Prion Medical</a>
+                          <a href="sections.html#headers" class="dropdown-item">Cook Medical</a>
+                          <a href="sections.html#headers" class="dropdown-item">Boucart Medical</a>
+                          <a href="sections.html#headers" class="dropdown-item">Ovesco</a>
+                          <a href="sections.html#headers" class="dropdown-item">Sandoz</a>
+                          <a href="sections.html#headers" class="dropdown-item">Takeda</a>
+
+
+                          
+                        </div> -->
+                      
+                      </div>
+                    </div>
 
                     <div class="dropdown-divider"></div>
 
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Advanced Endoscopic Resection</span>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/resection/all.php"><i class="fas fa-columns"></i>Advanced Endoscopic Resection</a>
+                    
+                    <div class="dropdown-divider"></div>
+
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Submucosal Endoscopy</span>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/resection/all.php"><i class="fas fa-columns"></i>Submucosal Endoscopy</a>
+                    
+                    <div class="dropdown-divider"></div>
+
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">ERCP</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/ERCP/all.php"><i class="fas fa-columns"></i>ERCP Tutor</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/ERCP/all.php"><i class="fas fa-columns"></i>ERCP</a>
 
                     <div class="dropdown-divider"></div>
 
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">EUS</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/EUS/all.php"><i class="fas fa-columns"></i>EUS Tutor</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/EUS/all.php"><i class="fas fa-columns"></i>EUS</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/EUS-therapeutic/all.php"><i class="fas fa-columns"></i>Therapeutic  EUS</a>
 
 
 
