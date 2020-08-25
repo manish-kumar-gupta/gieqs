@@ -182,7 +182,6 @@ background-color: rgb(238, 194, 120);
     <?php require BASE_URI . '/footer.php';?>
 
     <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
-    <script src="<?php echo BASE_URL;?>/assets/js/purpose.core.js"></script>
     <!-- Page JS -->
     <script src="<?php echo BASE_URL;?>/assets/libs/swiper/dist/js/swiper.min.js"></script>
     <script src="<?php echo BASE_URL;?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>

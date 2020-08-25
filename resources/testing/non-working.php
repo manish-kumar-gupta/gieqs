@@ -1,11 +1,182 @@
-<!--Main Navbar-->
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+
+
+
+ <!--META DATA-->
+ <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description"
+        content="The Ghent International Endoscopy Symposium (GIEQs) is a digital endoscopy event and symposium focussed on promoting quality in endoscopy.  The content is focussed on simple endoscopic techniques that many practitioners are performing everyday">
+    <meta name="author" content="David Tate">
+    <meta name="keywords" content="colonoscopy, gastroscopy, ERCP, quality, polyp, colon cancer, polypectomy, EMR, endoscopic imaging, colorectal cancer, endoscopy, gieqs, GIEQS, training, digital endoscopy event, digital symposium, ghent, gent, endoscopy quality, quality in endoscopy">
+ 
+ <!-- Favicon -->
+ <link rel="icon" href="https://www.gieqs.com/assets/img/brand/favicongieqs.png" type="image/png">
+    <!-- Font Awesome 5 -->
+    <link rel="stylesheet" href="https://www.gieqs.com/assets/libs/@fortawesome/fontawesome-free/css/all.min.css"><!-- Page CSS -->
+    <link rel="stylesheet" href="https://www.gieqs.com/assets/libs/swiper/dist/css/swiper.min.css">
+    <link rel="stylesheet" href="https://www.gieqs.com/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.css">
+    <!--Extra CSS -->
+    <link rel="stylesheet" href="https://www.gieqs.com/assets/libs/select2/dist/css/select2.min.css">
+
+    <!-- <link rel="stylesheet" href="https://www.gieqs.com/assets/libs/select2/dist/css/select2bootstrap.min.css">
+     -->
+    <!-- Purpose CSS -->
+    <link rel="stylesheet" href="https://www.gieqs.com/assets/css/purpose.css" id="stylesheet">
+   
+    <link rel="stylesheet" href="https://www.gieqs.com/assets/css/gieqs.css">
+
+<!-- Global JS -->
+
+<script src="https://www.gieqs.com/assets/js/purpose.core.js"></script>
+<script src="https://www.gieqs.com/assets/libs/select2/dist/js/select2.min.js"></script>
+<!-- <script src="/assets/js/purpose.js"></script>
+ --><script src="https://www.gieqs.com/assets/js/generaljs.js"></script>
+<script src="https://www.gieqs.com/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+    <title>Ghent International Endoscopy Symposium - Draft Programme</title>
+  
+    <style>
+        .text-gieqsGold {
+
+color: rgb(238, 194, 120);
+
+               }
+               .bg-gieqsGold {
+
+background-color: rgb(238, 194, 120);
+
+}
+      .modal-backdrop
+      {
+          opacity:0.75 !important;
+      }
+      @media screen and (max-width: 400px) {
+        
+        
+        .scroll{
+
+          font-size: 1em;
+
+          }
+
+          .h5{
+
+          font-size: 1em;
+          }
+
+          .tiny {
+          font-size: 0.75em;
+
+          }
+
+          .btn {
+
+            padding: 0.25rem 1.00rem;
+            margin-bottom: 0.75rem;
+          }
+      }
+    
+
+    </style>
+</head>
+
+<body>
+    <header class="header header-transparent" id="header-main">
+        <!-- Topbar -->
+
+        <style>
+.modal-backdrop
+{
+    opacity:0.7 !important;
+}
+</style>
+
+<!--Topbar-->
+<div id="navbar-top-main" class="navbar-top navbar-dark bg-dark border-bottom navbar-collapsed">
+      <div class="container px-0">
+        <div class="navbar-nav align-items-center">
+          <div class="d-none d-lg-inline-block">
+            <span class="navbar-text mr-3">Ghent International Endoscopy Quality Symposium</span>
+          </div>
+          <div>
+            <ul class="nav">
+              <!--<li class="nav-item dropdown ml-lg-2">
+                <a class="nav-link px-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="0,10">
+                  <img alt="Image placeholder" src="assets/img/icons/flags/us.svg">
+                  <span class="d-none d-lg-inline-block">United States</span>
+                  <span class="d-lg-none">EN</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-sm">
+                  <a href="#" class="dropdown-item"><img alt="Image placeholder" src="assets/img/icons/flags/es.svg">Spanish</a>
+                  <a href="#" class="dropdown-item"><img alt="Image placeholder" src="assets/img/icons/flags/ro.svg">Romanian</a>
+                  <a href="#" class="dropdown-item"><img alt="Image placeholder" src="assets/img/icons/flags/gr.svg">Greek</a>
+                </div>
+              </li>-->
+            </ul>
+          </div>
+          <div class="ml-auto">
+            <ul class="nav">
+             
+              <!-- <li class="nav-item">
+                <a href="#" class="nav-link" data-action="omnisearch-open" data-target="#omnisearch"><i class="fas fa-search"></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="pages/shop/checkout-cart.html"><i class="fas fa-shopping-cart"></i></a>
+              </li>
+            -->
+            
+                        
+            
+                        <li class="nav-item">
+                <a class="nav-link mr-4" href="https://www.gieqs.com/pages/support/support.php">Support</a>
+              </li>
+            
+            <li class="nav-item dropdown">
+                <a class="nav-link pr-0" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fas fa-user-circle"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                  
+                  <h6 class="dropdown-header">David Tate</h6>
+                  <a class="dropdown-item" href="https://www.gieqs.com/pages/learning/pages/account/profile.php">
+                    <i class="fas fa-user"></i>Account
+                  </a>
+                 
+                  <a class="dropdown-item" href="https://www.gieqs.com/pages/learning/pages/account/settings.php">
+                    <i class="fas fa-cog"></i>Settings
+                  </a>
+                  <div class="dropdown-divider" role="presentation"></div>
+                  <a id="logout" class="dropdown-item" href="#">
+                    <i class="fas fa-sign-out-alt"></i>Sign out
+                  </a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <span class="nav-link">Logged In</span>
+              </li>
+            
+                            
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   
+        <!-- Main navbar -->
+
+        <!--Main Navbar-->
 
 
 <nav class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-dark bg-dark" id="navbar-main">
     <div class="container px-lg-0">
         <!-- Logo -->
-        <a class="navbar-brand mr-lg-5" href="<?php echo BASE_URL;?>/index.php">
-            <img alt="Image placeholder" src="<?php echo BASE_URL;?>/assets/img/brand/gieqs_digital.png" id="navbar-logo"
+        <a class="navbar-brand mr-lg-5" href="https://www.gieqs.com/index.php">
+            <img alt="Image placeholder" src="https://www.gieqs.com/assets/img/brand/gieqs_digital.png" id="navbar-logo"
                 style="height: 50px;">
         </a>
         <!-- Navbar collapse trigger -->
@@ -18,15 +189,11 @@
             <ul class="navbar-nav align-items-lg-center">
                 <!-- Home - Overview  -->
                 <!--<li class="nav-item active">
-              <a class="nav-link" href="<?php echo BASE_URL;?>/index.php">Overview</a>
+              <a class="nav-link" href="https://www.gieqs.com/index.php">Overview</a>
             </li>-->
             <!-- LIVE -->
 
-            <?php if (($live == 1) && (isset($_SESSION['user_id'])) && ($_SESSION['siteKey'] == 'TxsvAb6KDYpmdNk') && ($_SESSION['access_level'] > 0 && $_SESSION['access_level'] < 7)){ 
-              
-              $liveAndLoggedIn = true;
-              ?>
-              <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                          <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
               <a class="nav-link dropdown-toggle animated bounce" style="color: rgb(238, 194, 120);" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">GIEQs Live Stream</a>
               <div class="dropdown-menu dropdown-menu-lg dropdown-menu-arrow p-0">
                 <ul class="list-group list-group-flush">
@@ -46,12 +213,12 @@
                     </a>
                     <ul class="dropdown-menu">
                       <li>
-                        <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/live/plenary.php">
+                        <a class="dropdown-item" href="https://www.gieqs.com/pages/learning/pages/live/plenary.php">
                           Access Plenary Live Stream
                         </a>
                       </li>
                       <li>
-                        <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/live/complex.php">
+                        <a class="dropdown-item" href="https://www.gieqs.com/pages/learning/pages/live/complex.php">
                           Access Complex Live Stream
                         </a>
                       </li>
@@ -59,7 +226,7 @@
                     </ul>
                   </li>
                   <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
-                    <a href="<?php echo BASE_URL;?>/pages/learning/pages/live/programLive.php" class="list-group-item list-group-item-action dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                    <a href="#" class="list-group-item list-group-item-action dropdown-toggle" aria-haspopup="true" aria-expanded="false">
                       <div class="media d-flex align-items-center">
                         <!-- SVG icon -->
                         <figure style="width: 50px;">
@@ -72,14 +239,18 @@
                         </div>
                       </div>
                     </a>
-                    <!-- <ul class="dropdown-menu">
+                    <ul class="dropdown-menu">
                       <li>
-                        <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/live/programLive.php">
+                        <a class="dropdown-item" href="https://www.gieqs.com/pages/learning/pages/live/programLive.php">
                           View the programme
                         </a>
                       </li>
+                      <li>
+                        
+                      </li>
                     
-                    </ul> -->
+                    </ul>
+                  
                   </li>
                   <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
                     <a href="#" class="list-group-item list-group-item-action dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -99,7 +270,7 @@
                       <div class="row">
                         <div class="col-sm-3">
                           <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Platinum</a>
-                          <a href="<?php echo BASE_URL;?>/pages/learning/pages/live/sponsor-boston.php" class="dropdown-item">Boston<!--  <img class="w-100" alt="Boston Scientific" src="<?php echo BASE_URL . '/assets/img/brand/boston.jpg';?>"> -->
+                          <a href="https://www.gieqs.com/pages/learning/pages/live/sponsor-boston.php" class="dropdown-item">Boston<!--  <img class="w-100" alt="Boston Scientific" src="https://www.gieqs.com/assets/img/brand/boston.jpg"> -->
                           </a>
                           <!-- <a href="sections.html#footers" class="dropdown-item">Footers</a>
                           <a href="sections.html#blog" class="dropdown-item">Blog</a>
@@ -161,7 +332,7 @@
                     </a>
                     <ul class="dropdown-menu">
                       <li>
-                        <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/live/nursing.php">
+                        <a class="dropdown-item" href="https://www.gieqs.com/pages/learning/pages/live/nursing.php">
                           Access Nursing Live Stream (Thurs AM Only)
                         </a>
                       </li>
@@ -175,10 +346,9 @@
             </li>
 
 
-            <?php }?>
-                <!-- Mission -->
+                            <!-- Mission -->
                 <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/mission.php">Mission</a>
+                    <a class="nav-link" href="https://www.gieqs.com/pages/program/mission.php">Mission</a>
                 </li>
                 <!-- Program-basic, later to add dropdown with options -->
                 <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
@@ -187,12 +357,12 @@
                     
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">Programme</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program.php"><i class="fas fa-columns"></i>Medical Programme</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/nursing.php"><i class="fas fa-columns"></i>Nursing Programme</a>
+                    <a class="dropdown-item" href="https://www.gieqs.com/pages/program/program.php"><i class="fas fa-columns"></i>Medical Programme</a>
+                    <a class="dropdown-item" href="https://www.gieqs.com/pages/program/nursing.php"><i class="fas fa-columns"></i>Nursing Programme</a>
                     
                     <div class="dropdown-divider"></div>
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">Faculty</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/faculty.php"><i class="fas fa-user"></i>Faculty</a>
+                    <a class="dropdown-item" href="https://www.gieqs.com/pages/program/faculty.php"><i class="fas fa-user"></i>Faculty</a>
                     
                     
                   </div>
@@ -200,53 +370,12 @@
 
               
                 <!-- Venue -->
-                <?php if (!$liveAndLoggedIn){?>
-                <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/venue.php">Locations</a>
-                </li>
-                <?php }?>
-
+                
                 <!-- Sponsors -->
                 <!--currently not active-->
-                <?php if (!$liveAndLoggedIn){?>
-                <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/sponsors.php">Sponsors</a>
-                </li>
-                <?php }?>
-
+                
                 <!-- Registration-basic -->
-                <?php if (!$liveAndLoggedIn){?>
-                <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-                   <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/registration.php">Registration<span class="badge bg-gieqsGold text-dark badge-pill badge-floating ml-1 pl-1">
-                                    Reduced!
-                                    </span></a>
-                    <!-- <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">Registration</a>
-                    
-                    <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
-                    <span style="color: 
-                    rgb(238, 194, 120);" class="dropdown-header">Registration</span>
-                    <a class="dropdown-item" href="https://eu.eventscloud.com/ereg/index.php?eventid=200200203&" target="_blank"><i class="fas fa-registered"></i>Register now!</a>
-                    <a class="dropdown-item" href="<?php //echo BASE_URL;?>/pages/program/registration.php"><i class="fas fa-shapes"></i>Registration options</a>
-                    
-                    <div class="dropdown-divider"></div>
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Practical</span>
-                    <a class="dropdown-item" href="<?php //echo BASE_URL;?>/pages/practical/accommodation.php"><i class="fas fa-igloo"></i>Accommodation</a>
-                    <a class="dropdown-item" href="https://visit.gent.be/en/good-know/practical-information/how-get-ghent" target="_blank"><i class="fas fa-train"></i></i>Getting here</a>
-                    <div class="dropdown-divider"></div>
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Why Ghent?</span>
-                    <a class="dropdown-item" href="https://visit.gent.be/en"><i class="fas fa-city" target="_blank"></i>Because it's the most beautiful<br/> medieval city in Europe</a>
-                    <a class="dropdown-item" href="https://goo.gl/maps/PLsJXm86oGUPjQ7i7" target="_blank"><i class="fas fa-search-location"></i>Where is Ghent?</a>
-                    <a class="dropdown-item" href="http://www.flickr.com/photos/visit_gent/albums" target="_blank"><i class="fas fa-images"></i>Ghent in pictures</a>
-                    <a class="dropdown-item" href="https://visit.gent.be/en/top-10-tips" target="_blank"><i class="fas fa-university"></i>Top 10 Ghent</a>
-                    
-                  </div> -->
-                </li>
-                <?php }?>
-                <?php
-                if (isset($_SESSION['user_id']) && ($_SESSION['siteKey'] == 'TxsvAb6KDYpmdNk') && ($_SESSION['access_level'] > 0 && $_SESSION['access_level'] < 7)){
-                ?>
-                <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                                                <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
                     <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">GIEQs Online</a>
                     
@@ -257,20 +386,10 @@
                 
                 
                     
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/index.php"><i class="fas fa-graduation-cap"></i>GIEQs Online BETA</a>
+                    <a class="dropdown-item" href="https://www.gieqs.com/pages/learning/index.php"><i class="fas fa-graduation-cap"></i>GIEQs Online BETA</a>
 
 
-                <?php }else{ ?>
-
-                  <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/online.php">GIEQs Online<!-- <span class="badge bg-gieqsGold text-dark badge-pill badge-floating ml-1 p-1">
-                                    New
-                                    </span> --></a>
-                </li>
-
-
-                <?php }?>
-                    
+                                    
                     
                   </div>
                 </li>
@@ -278,61 +397,19 @@
 
                 <!-- Backend -->
 
-                <?php
                 
-                if (isset($_SESSION['user_id']) && ($_SESSION['siteKey'] == 'TxsvAb6KDYpmdNk') && ($_SESSION['access_level'] == '1' || $_SESSION['access_level'] == '2') || $_SESSION['access_level'] == '3'){
-                ?>
-
                 <li class="nav-item">
                     <a class="nav-link text-muted"
-                        href="<?php echo BASE_URL;?>/pages/backend/backend.php">Administration</a>
+                        href="https://www.gieqs.com/pages/backend/backend.php">Administration</a>
                 </li>
 
-                <?php
-                }
-
-              
                 
-                if (isset($_SESSION['user_id']) && ($_SESSION['siteKey'] == 'TxsvAb6KDYpmdNk') && ($_SESSION['access_level'] == '1')){
-                ?>
-
                 <li class="nav-item">
                     <a class="nav-link text-muted"
-                        href="<?php echo BASE_URL;?>/edm/index.php">eDM</a>
+                        href="https://www.gieqs.com/edm/index.php">eDM</a>
                 </li>
 
-                <?php
-                }
-
-            //check page we are on
-/* 
-            $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-
-            //if contains index.html
-
-            if (strpos($actual_link, 'index.php') !== false) {
-              echo '
-            <li class="nav-item active">
-              <a class="nav-link" data-toggle="modal" data-target="#registerInterest">Register</a>
-            </li>';
-            }else{
-              //otherwise
-              echo '
-              <li class="nav-item active">
-                <a class="nav-link" href="' . BASE_URL . '/index.php?signup=2456">Register</a>
-              </li>';
-              
-
-            } */
-
-            
-
-            
-
-
-
-            ?>
-
+                
 
                 <!-- Pages menu -->
                 <!-- <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
@@ -909,3 +986,284 @@
         </div>
     </div>
 </nav>
+    </header>
+    <!-- Omnisearch -->
+    <div id="omnisearch" class="omnisearch">
+        <div class="container">
+            <!-- Search form -->
+            <form class="omnisearch-form">
+                <div class="form-group">
+                    <div class="input-group input-group-merge input-group-flush">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-search"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Type and hit enter ...">
+                    </div>
+                </div>
+            </form>
+            <div class="omnisearch-suggestions">
+                <h6 class="heading">Search Suggestions</h6>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a class="list-link" href="#">
+                                    <i class="fas fa-search"></i>
+                                    <span>macbook pro</span> in Laptops
+                                </a>
+                            </li>
+                            <li>
+                                <a class="list-link" href="#">
+                                    <i class="fas fa-search"></i>
+                                    <span>iphone 8</span> in Smartphones
+                                </a>
+                            </li>
+                            <li>
+                                <a class="list-link" href="#">
+                                    <i class="fas fa-search"></i>
+                                    <span>macbook pro</span> in Laptops
+                                </a>
+                            </li>
+                            <li>
+                                <a class="list-link" href="#">
+                                    <i class="fas fa-search"></i>
+                                    <span>beats pro solo 3</span> in Headphones
+                                </a>
+                            </li>
+                            <li>
+                                <a class="list-link" href="#">
+                                    <i class="fas fa-search"></i>
+                                    <span>smasung galaxy 10</span> in Phones
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-content">
+
+        <!-- Header (v1) -->
+        <section class="header-1 bg-gradient-dark" data-offset-top="#header-main">
+
+
+        </section>
+
+        <!-- PROGRAM TABLE -->
+
+        <section class="slice bg-gradient-dark slice-lg">
+            <div class="container">
+                <div class="row text-center">
+
+                    <div class="col-12 p-3 pb-5">
+                        <span class="h1" style="color: rgb(238, 194, 120);">Ghent International Endoscopy Quality
+                            Symposium <br /> Edition I. <br/>Scientific Programme</span>
+                    </div>
+
+                </div>
+                <div class="row text-center">
+
+                    <div class="col-12 p-3 pb-4">
+                        <!-- <a href="#" class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me"> -->
+                            <!-- <span class="btn-inner--text">Overview</span> -->
+                            <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+                        <!-- </a> -->
+                        <a href="#targetScrollProgramme" id="wednesday"
+                            class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
+                            <span class="btn-inner--text text-dark">Wed 7 Oct</span>
+                            <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+                        </a>
+                        <a href="#targetScrollProgramme" id="thursday" class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
+                            <span class="btn-inner--text text-dark">Thurs 8 Oct</span>
+                            <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+                        </a>
+                    </div>
+
+                </div>
+
+                <hr id="targetScrollProgramme" class="divider divider-fade" />
+
+
+                <div id="ajaxWed">
+
+                </div>
+
+                
+
+            </div>
+            </section>
+            </div>
+
+    
+<!--Footer-->
+<footer id="footer-main">
+  <div class="footer footer-dark bg-gradient-dark mt-0">
+    <div class="container">
+      <div class="row pt-md">
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <a href="index.html">
+            <img src="https://www.gieqs.com/assets/img/brand/gieqs.svg" alt="Footer logo" style="height: 70px;">
+          </a>
+          <p>At GIEQS we believe we can do everyday endoscopy better.  <br/>Together, using an emerging evidence base we can increase the quality of everyday endoscopic interventions. </p>
+        </div>
+        <!--
+        <div class="col-lg-2 col-6 col-sm-4 ml-lg-auto mb-5 mb-lg-0">
+          <h6 class="heading mb-3">Account</h6>j
+          <ul class="list-unstyled">
+            <li><a href="pages/account-profile.html">Profile</a></li>
+            <li><a href="pages/account-settings.html">Settings</a></li>
+            <li><a href="pages/account-billing.html">Billing</a></li>
+            <li><a href="pages/account-notifications.html">Notifications</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-6 col-sm-4 mb-5 mb-lg-0">
+          <h6 class="heading mb-3">About</h6>
+          <ul class="list-unstyled text-small">
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-sm-4 mb-5 mb-lg-0">
+          <h6 class="heading mb-3">Company</h6>
+          <ul class="list-unstyled">
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Support</a></li>
+          </ul>
+        </div>
+        -->
+      </div>
+    
+      <div class="row align-items-center justify-content-md-between py-4 mt-4 delimiter-top">
+        <div class="col-md-6">
+          <div class="copyright text-sm font-weight-bold text-center text-md-left">
+            &copy; 2020 <a href="https://www.gieqs.com" class="font-weight-bold" target="_blank">GIEQS Organising Committee</a>. All rights reserved. <br/><span class="text-secondary">No cookies are collected by this site.</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <ul class="nav justify-content-center justify-content-md-end mt-3 mt-md-0">
+            
+
+          <li class="nav-item">
+              <a class="nav-link" href="https://facebook.com/gieqs" target="_blank">
+                <i class="fab fa-facebook"></i>
+              </a>
+            </li>
+
+
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.youtube.com/channel/UCoSyY4lJcnthZiDxcHGtD-Q/" target="_blank">
+                <i class="fab fa-youtube"></i>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="https://vimeo.com/showcase/gieqs" target="_blank">
+                <i class="fab fa-vimeo"></i>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="https://twitter.com/gieqs_symposium" target="_blank">
+                <i class="fab fa-twitter"></i>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="http://www.uzgent.be" target="_blank">
+              <img style="max-width:80px;" src="https://www.gieqs.com/assets/img/brand/uzggold.png">
+              </a>
+            </li>
+            <!--
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.instagram.com/" target="_blank">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.facebook.com/" target="_blank">
+                <i class="fab fa-facebook"></i>
+              </a>
+            </li>
+-->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+    <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
+    <script src="https://www.gieqs.com/assets/js/purpose.core.js"></script>
+    <!-- Page JS -->
+    <script src="https://www.gieqs.com/assets/libs/swiper/dist/js/swiper.min.js"></script>
+    <script src="https://www.gieqs.com/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+    <script src="https://www.gieqs.com/assets/libs/typed.js/lib/typed.min.js"></script>
+    <script src="https://www.gieqs.com/assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script>
+    <script src="https://www.gieqs.com/assets/libs/jquery-countdown/dist/jquery.countdown.min.js"></script>
+    <!-- Google maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBuyKngB9VC3zgY_uEB-DKL9BKYMekbeY"></script>
+    <!-- Purpose JS -->
+    <script src="https://www.gieqs.com/assets/js/purpose.js"></script>
+    <!-- Demo JS - remove it when starting your project -->
+    <script src="https://www.gieqs.com/assets/js/demo.js"></script>
+
+    <script>
+
+
+    function refreshProgrammeView() {
+
+
+
+    const dataToSend = {
+
+        programmeid: '24' ,
+
+    }
+
+    const jsonString = JSON.stringify(dataToSend);
+    console.log(jsonString);
+
+    var request2 = $.ajax({
+        url: siteRoot + "assets/scripts/classes/generateProgramme.php",
+        type: "POST",
+        contentType: "application/json",
+        data: jsonString,
+    });
+
+
+
+    request2.done(function (data) {
+        // alert( "success" );
+        $('#ajaxWed').html(data);
+        $(document).find('.Thursday').hide();
+    })
+    }
+
+    $(document).ready(function() {
+
+        refreshProgrammeView();
+
+        
+
+        $(document).on('click', '#wednesday', function() {
+
+            $(document).find('.Wednesday').show();
+            $(document).find('.Thursday').hide();
+
+        })
+
+        $(document).on('click', '#thursday', function() {
+
+            $(document).find('.Thursday').show();
+            $(document).find('.Wednesday').hide();
+
+        })
+
+    })
+    </script>
+</body>
+
+</html>
