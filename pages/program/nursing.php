@@ -164,7 +164,7 @@ background-color: rgb(238, 194, 120);
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         </a>
                         <a id="french" class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
-                            <span class="btn-inner--text text-dark">Fran&ccedil;ais [coming soon]</span>
+                            <span class="btn-inner--text text-dark">Fran&ccedil;ais [NEW!]</span>
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         </a>
                         <p class="h6 mt-3">Programme delivered in all 3 languages</p>
@@ -228,8 +228,8 @@ background-color: rgb(238, 194, 120);
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
-                        <span class="sessionTitle h5">Best practice endoscopy nursing - Preparation</span><br />
-                            <span class="sessionSubtitle">Preparation is the key - Routine, complex and surviving on call
+                        <span class="sessionTitle h5">The Endoscopy Unit of 2020</span><br />
+                            <span class="sessionSubtitle">Set-up, Equipment, Disinfection and Staffing
     </span>
                             
                         </div>
@@ -248,8 +248,8 @@ background-color: rgb(238, 194, 120);
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
                         
-    <span class="sessionTitle h5">GI bleeding overview</span><br />
-                            <span class="sessionSubtitle">Techniques, how to prepare best for on call bleeding</span>
+    <span class="sessionTitle h5">Endoscopy Nursing Consultations</span><br />
+                            <span class="sessionSubtitle">Improving Preparation, Attendance and Managing Anticoagulants</span>
                         </div>
 
                         
@@ -265,8 +265,8 @@ background-color: rgb(238, 194, 120);
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
-                            <span class="sessionTitle h5">The Endoscopy Unit of 2020</span><br />
-                            <span class="sessionSubtitle">Set-up, equipment, disinfection and staffing</span>
+                            <span class="sessionTitle h5">Best Practice Endoscopy Nursing - Preparation</span><br />
+                            <span class="sessionSubtitle">Preparation is the Key - Routine, Complex and Surviving on Call</span>
                         </div>
 
                         
@@ -282,8 +282,8 @@ background-color: rgb(238, 194, 120);
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
-                            <span class="sessionTitle h5">Best practice endoscopy nursing - Techniques</span><br />
-                            <span class="sessionSubtitle">Clips, using the snare and the endoloop</span>
+                            <span class="sessionTitle h5">Tips and Tricks in Colonoscopy and Polyps</span><br />
+                            <span class="sessionSubtitle">Conscious Competence, which Polyp which Technique</span>
                         </div>
 
                         
@@ -310,8 +310,8 @@ background-color: rgb(238, 194, 120);
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
-                            <span class="sessionTitle h5">Current state of Endoscopy Nursing in Belgium</span><br />
-                            <span class="sessionSubtitle">Numbers, PG course</span>
+                            <span class="sessionTitle h5">GI Bleeding Overview</span><br />
+                            <span class="sessionSubtitle">Techniques, how to Prepare best for on Call Bleeding</span>
                         </div>
 
                         
@@ -327,8 +327,8 @@ background-color: rgb(238, 194, 120);
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
-                            <span class="sessionTitle h5">Endoscopy Nursing consulatations</span><br />
-                            <span class="sessionSubtitle">Improving preparation, attendance and managing anticoagulants</span>
+                            <span class="sessionTitle h5">Current State of Endoscopy Nursing in Belgium</span><br />
+                            <span class="sessionSubtitle">Numbers, postgraduate Course</span>
                         </div>
 
                         
@@ -361,22 +361,6 @@ background-color: rgb(238, 194, 120);
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
-                            <span class="sessionTitle h5">Tips and tricks in colonoscopy and polyps</span><br />
-                            <span class="sessionSubtitle">Conscious competence, which polyp which technique</span>
-                        </div>
-
-                        
-
-
-
-                    </div>
-                    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
-
-                        <div class="col-3 p-1 pb-3 pt-3 border-right">
-                            <span class="tiny" style="color: rgb(238, 194, 120);">1215-1245</span>
-                        </div>
-
-                        <div class="col-9 p-1 pb-3 pt-3 border-right">
                             <!--TODO-->
                             <span class="sessionTitle h5">Endoscopy State of the Art</span><br />
                             <span class="sessionSubtitle">Newest and most important techniques in 2020</span>
@@ -387,6 +371,7 @@ background-color: rgb(238, 194, 120);
 
 
                     </div>
+                 
                     
 
                     <div class="row text-center align-middle border-left border-right border-bottom">
@@ -468,8 +453,8 @@ background-color: rgb(238, 194, 120);
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
-                        <span class="sessionTitle h5">Best practice endoscopy nursing - voorbereiding</span><br />
-                            <span class="sessionSubtitle">Voorbereiding is alles - Routine, complex en het overleven van de wacht
+                        <span class="sessionTitle h5">De endoscopische eenheid van 2020 </span><br />
+                            <span class="sessionSubtitle">Opzet, materiaal, desinfectie en personeel 
     </span>
                            
                         </div>
@@ -487,8 +472,8 @@ background-color: rgb(238, 194, 120);
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
-                        <span class="sessionTitle h5">Overzicht gastro-intestinale bloedingen</span><br />
-                            <span class="sessionSubtitle">Technieken, hoe voor te bereiden tijdens de wacht op een bloeding</span>
+                        <span class="sessionTitle h5">Verpleegkundige consultaties </span><br />
+                            <span class="sessionSubtitle">Voorbereiding, verbetering van aanwezigheid en aanpassing van bloedverdunners</span>
                         
                         
                         </div>
@@ -506,8 +491,8 @@ background-color: rgb(238, 194, 120);
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
-                            <span class="sessionTitle h5">De endoscopische eenheid van 2020</span><br />
-                            <span class="sessionSubtitle">Opzet, materiaal, desinfectie en personeel</span>
+                            <span class="sessionTitle h5">Best Practice Endoscopy Nursing - voorbereiding </span><br />
+                            <span class="sessionSubtitle">Voorbereiding is alles - Routine, complex en het overleven van de wacht </span>
                         </div>
 
                         
@@ -523,8 +508,8 @@ background-color: rgb(238, 194, 120);
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
-                            <span class="sessionTitle h5">Best practice endoscopy nursing - technieken</span><br />
-                            <span class="sessionSubtitle">Clips, gebruik van de lus en de endoloop</span>
+                            <span class="sessionTitle h5">Tips and tricks bij colonoscopie en poliepen </span><br />
+                            <span class="sessionSubtitle">Conscious Competence, welke techniek bij welke poliep </span>
                         </div>
 
                         
@@ -551,8 +536,8 @@ background-color: rgb(238, 194, 120);
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
-                            <span class="sessionTitle h5">Huidige situatie endoscopische verpleegkundigen in Belgi&euml;</span><br />
-                            <span class="sessionSubtitle">Cijfers, verpleegkundige postgraduaat</span>
+                            <span class="sessionTitle h5">Overzicht gastro-intestinale bloedingen </span><br />
+                            <span class="sessionSubtitle">Technieken, hoe voor te bereiden tijdens de wacht op een bloeding</span>
                         </div>
 
                         
@@ -568,8 +553,8 @@ background-color: rgb(238, 194, 120);
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
-                            <span class="sessionTitle h5">Verpleegkundige consultaties</span><br />
-                            <span class="sessionSubtitle">Voorbereiding, verbetering van aanwezigheid en aanpassing van bloedverdunners</span>
+                            <span class="sessionTitle h5">Huidige situatie endoscopische verpleegkundigen in België </span><br />
+                            <span class="sessionSubtitle">Cijfers, verpleegkundige postgraduaats</span>
                         </div>
 
                         
@@ -595,22 +580,6 @@ background-color: rgb(238, 194, 120);
 
                     </div>
 
-                    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
-
-                        <div class="col-3 p-1 pb-3 pt-3 border-right">
-                            <span class="tiny" style="color: rgb(238, 194, 120);">1145-1215</span>
-                        </div>
-
-                        <div class="col-9 p-1 pb-3 pt-3 border-right">
-                            <span class="sessionTitle h5">Tips and tricks bij colonoscopie en poliepen</span><br />
-                            <span class="sessionSubtitle">Conscious competence, welke techniek bij welke poliep</span>
-                        </div>
-
-                        
-
-
-
-                    </div>
                     <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
 
                         <div class="col-3 p-1 pb-3 pt-3 border-right">
@@ -654,6 +623,231 @@ background-color: rgb(238, 194, 120);
                     </div>
 
                 </div>
+
+                <!--French-->
+
+                <div class="french d-none">
+
+                    <div class="row text-left">
+                        <div class="col-12 p-1 pb-3 pt-3">
+                            <span class="h5">Jeudi 8 octobre 2020</span>
+
+                        </div>
+                    </div>
+
+                    <div class="row text-center border">
+
+                        <div class="col-3 p-1 pb-3 pt-3 border-right">
+
+                        </div>
+
+                        <div class="col-9 p-1 pb-3 pt-3 border-right">
+                            <span class="h4">Séance</span>
+                        </div>
+
+                        
+
+
+
+
+
+                    </div>
+
+                    <div class="row text-center border-left border-right border-bottom bg-dark">
+
+                        <div class="col-3 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny" style="color: rgb(238, 194, 120);">0845-0900</span>
+                        </div>
+
+                        <div class="col-9 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">Introduction du Symposium sur les soins infirmiers</span><br />
+                            <span class="sessionSubtitle"></span>
+                        </div>
+
+                        
+
+
+
+                    </div>
+
+                    <div class="row text-center border-left border-right border-bottom bg-dark">
+
+                        <div class="col-3 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny" style="color: rgb(238, 194, 120);">0900-0920</span>
+                        </div>
+
+                        <div class="col-9 p-1 pb-3 pt-3 border-right">
+                        <span class="sessionTitle h5">L’unité endoscopique de 2020</span><br />
+                            <span class="sessionSubtitle">Installation, matériel, désinfection et personnel
+    </span>
+                           
+                        </div>
+
+                        
+
+
+
+                    </div>
+
+                    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
+
+                        <div class="col-3 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny" style="color: rgb(238, 194, 120);">0920-1000</span>
+                        </div>
+
+                        <div class="col-9 p-1 pb-3 pt-3 border-right">
+                        <span class="sessionTitle h5">Verpleegkundige consultaties </span><br />
+                            <span class="sessionSubtitle">Voorbereiding, verbetering van aanwezigheid en aanpassing van bloedverdunners</span>
+                        
+                        
+                        </div>
+
+                        
+
+
+
+                    </div>
+
+                    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
+
+                        <div class="col-3 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1000-1015</span>
+                        </div>
+
+                        <div class="col-9 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">Consultations infirmier/-ère</span><br />
+                            <span class="sessionSubtitle">Préparation, amélioration de la présence et ajustement des anticoagulants </span>
+                        </div>
+
+                        
+
+
+
+                    </div>
+
+                    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
+
+                        <div class="col-3 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1015-1045</span>
+                        </div>
+
+                        <div class="col-9 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">Bonne pratique en soins infirmiers en endoscopie – préparation</span><br />
+                            <span class="sessionSubtitle">La préparation est tout - Routine, complexe et survie des gardes </span>
+                        </div>
+
+                        
+
+
+
+                    </div>
+
+                    <div class="row text-center align-middle border-left border-right border-bottom">
+
+                        <div class="col-12 p-2 pb-3 pt-3">
+                            <span class="h5" style="color: rgb(238, 194, 120);">Pauze matinale</span>
+                        </div>
+
+
+
+
+                    </div>
+
+                    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
+
+                        <div class="col-3 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1100-1110</span>
+                        </div>
+
+                        <div class="col-9 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">Aperçu des saignements gastro-intestinaux </span><br />
+                            <span class="sessionSubtitle">Techniques, comment se préparer pendant la garde en attendant un saignement</span>
+                        </div>
+
+                        
+
+
+
+                    </div>
+
+                    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
+
+                        <div class="col-3 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1110-1120</span>
+                        </div>
+
+                        <div class="col-9 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">Situation actuelle des infirmiers/-ères endoscopiques en Belgique </span><br />
+                            <span class="sessionSubtitle">Chiffres, infirmier/-ère de troisième cycle</span>
+                        </div>
+
+                        
+
+
+
+                    </div>
+
+                    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
+
+                        <div class="col-3 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1120-1145</span>
+                        </div>
+
+                        <div class="col-9 p-1 pb-3 pt-3 border-right">
+                            <span class="sessionTitle h5">Réflexions d’une infirmier/-ère endoscopiste</span><br />
+                            <span class="sessionSubtitle">Le cursus de l’infirmière endoscopique, astuces, défis </span>
+                        </div>
+
+                        
+
+
+
+                    </div>
+
+                    <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
+
+                        <div class="col-3 p-1 pb-3 pt-3 border-right">
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1215-1245</span>
+                        </div>
+
+                        <div class="col-9 p-1 pb-3 pt-3 border-right">
+                        <span class="sessionTitle h5">Endoscopy State of the Art</span><br />
+                            <span class="sessionSubtitle">Technologies les plus récentes et les plus importantes en 2020</span>
+                            
+                        </div>
+
+                        
+
+
+
+                    </div>
+                    
+
+                    <div class="row text-center align-middle border-left border-right border-bottom">
+
+                        <div class="col-12 p-2 pb-3 pt-3">
+                            <span class="h5" style="color: rgb(238, 194, 120);">Close</span>
+                        </div>
+
+
+
+
+                    </div>
+
+
+                    <div class="row text-left">
+
+                        <div class="col-12 p-2 pb-3 pt-3">
+                            <span class="text-sm">Programme contents subject to change without notice.</span>
+                        </div>
+
+
+
+
+                    </div>
+
+                </div>
+
 
                 <!--Old-->
 
@@ -1062,9 +1256,9 @@ background-color: rgb(238, 194, 120);
 
         $(document).on('click', '#french', function() {
 
-           /*  $('.french').removeClass('d-none');
+           $('.french').removeClass('d-none');
             $('.dutch').addClass('d-none');
-            $('.english').addClass('d-none'); */
+            $('.english').addClass('d-none');
 
             })
 
