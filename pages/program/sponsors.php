@@ -263,6 +263,7 @@ width: 100%;
 
                     </div>
                     <div class="col-lg-2 col-md-4 col-4 py-1">
+                    <img class="logo" alt="mylan" src="<?php echo BASE_URL . '/assets/img/icons/mylan-inc-logo.jpg';?>">
 
                     </div>
                     <div class="col-lg-2 col-md-4 col-4 py-1">
