@@ -321,6 +321,7 @@ width: 100%;
                     </div>
                     <div class="col-lg-3 col-md-4 col-6 py-3">
                     
+                    <img class="logo" alt="ESGE" src="<?php echo BASE_URL . '/assets/img/brand/bsgie.png';?>">
 
                     </div>
                     <div class="col-lg-2 col-md-4 col-4 py-1">
