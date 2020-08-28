@@ -538,18 +538,23 @@ for Continuing Medical Education (EACCME)">
                             <img src="<?php echo BASE_URL;?>/assets/img/icons/esge.png" alt="ESGE">
                             </a>
                             </div>
-                            <div class="icon-xl icon-shape bg-white p-2">
+                            <div class="icon-xl icon-shape bg-white mr-3 p-2">
                             <a href="https://www.riziv.fgov.be/" target="_blank">
                             <img src="<?php echo BASE_URL;?>/assets/img/icons/riziv.png" alt="RIZIV" data-toggle="tooltip" data-placement="bottom" title="Rijksinstituut voor ziekte- en invaliditeitsverzekering">
                             </a>
                             </div>
-
+                            <div class="icon-xl icon-shape bg-white p-2">
+                                <a href="https://www.riziv.fgov.be/" target="_blank">
+                                <img src="<?php echo BASE_URL;?>/assets/img/brand/bsgie.png" alt="BSGIE" data-toggle="tooltip" data-placement="bottom" title="Belgian Society for Gastrointestinal Endoscopy">
+                                </a>
+                                </div>
+                            
                             </div>
                             </div>
 
                     <p class="h5 mt-5">At GIEQs we are serious about accrediting our educational events. <br /> <br/></p>
                     <p class="text-white">We have applied for and received EACCME accreditation (number of CME points pending) and have received RIZIV [Belgium] accreditation for 8 hours (Wednesday) and 7.5 hours (Thursday) CME points. &nbsp;
-                    <br/><br/>We have received ESGE (European Society of Gastrointestinal Endoscopy) endorsement and are awaiting endorsement from ASGE (American Society of GI Endoscopy) and BSG (British Society of Gastroenterology)!</p>
+                    <br/><br/>We have received ESGE (European Society of Gastrointestinal Endoscopy) and BSGIE (Belgian Society of Gastrointestinal Endoscopy) endorsement and are awaiting endorsement from ASGE (American Society of GI Endoscopy) and BSG (British Society of Gastroenterology)!</p>
                     
                     
                 </div>

@@ -238,7 +238,7 @@ background-color: rgb(238, 194, 120);
     <p class="h3 gieqsGold container ">A Primer</p>
 
     <div class="d-flex align-items-end container">
-        <p class="text-muted pl-4 mt-2">Below is a selection of lectures and interactive learning tools for those taking their first steps in coolonoscopy theory.</p>
+        <p class="text-muted pl-4 mt-2">Below is a selection of lectures and interactive learning tools for those taking their first steps in colonoscopy theory.</p>
 
     </div>
 
