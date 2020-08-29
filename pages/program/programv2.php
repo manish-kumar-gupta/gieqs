@@ -10,7 +10,7 @@
 
 $openaccess = 1;
 
-require BASE_URI . '/head.php';
+require BASE_URI . '/headNoPurposeCore.php';
 
 ?>
     <title>Ghent International Endoscopy Symposium - Draft Programme</title>
@@ -182,19 +182,10 @@ background-color: rgb(238, 194, 120);
     <?php require BASE_URI . '/footer.php';?>
 
     <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
-    <script src="<?php echo BASE_URL;?>/assets/js/purpose.core.js"></script>
-    <!-- Page JS -->
-    <script src="<?php echo BASE_URL;?>/assets/libs/swiper/dist/js/swiper.min.js"></script>
-    <script src="<?php echo BASE_URL;?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
-    <script src="<?php echo BASE_URL;?>/assets/libs/typed.js/lib/typed.min.js"></script>
-    <script src="<?php echo BASE_URL;?>/assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script>
-    <script src="<?php echo BASE_URL;?>/assets/libs/jquery-countdown/dist/jquery.countdown.min.js"></script>
-    <!-- Google maps -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBuyKngB9VC3zgY_uEB-DKL9BKYMekbeY"></script>
-    <!-- Purpose JS -->
-    <script src="<?php echo BASE_URL;?>/assets/js/purpose.js"></script>
-    <!-- Demo JS - remove it when starting your project -->
-    <script src="<?php echo BASE_URL;?>/assets/js/demo.js"></script>
+    <script src="../../assets/js/purpose.core.js"></script> 
+    <script src="<?php echo BASE_URL;?>/assets/js/purpose.js"></script>   
+    <script src=<?php echo BASE_URL . "/assets/js/generaljs.js"?>></script>
+
 
     <script>
 

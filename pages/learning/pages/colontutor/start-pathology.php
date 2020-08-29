@@ -17,7 +17,7 @@
       $requiredUserLevel = 6;
 
 
-      require BASE_URI . '/head.php';
+      require BASE_URI . '/headNoPurposeCore.php';
 
       $general = new general;
 
@@ -30,7 +30,6 @@
     <!--Page title-->
     <title>GIEQs Online Endoscopy Trainer - Simple Cases</title>
 
-    <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
 
 
@@ -289,23 +288,19 @@ background-color: rgb(238, 194, 120);
 
     <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
     <!-- <script src="assets/js/purpose.core.js"></script> -->
+    <script src="<?php echo BASE_URL;?>/assets/js/purpose.core.js"></script>
+    <script src="<?php echo BASE_URL;?>/assets/js/purpose.js"></script>
     <!-- Page JS -->
-    <script src=<?php echo BASE_URL . "/assets/libs/swiper/dist/js/swiper.min.js"?>></script>
-    <script src=<?php echo BASE_URL . "/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"?>></script>
-    <script src=<?php echo BASE_URL . "/assets/libs/typed.js/lib/typed.min.js"?>></script>
-    <script src=<?php echo BASE_URL . "/assets/libs/isotope-layout/dist/isotope.pkgd.min.js"?>></script>
-    <script src=<?php echo BASE_URL . "/assets/libs/jquery-countdown/dist/jquery.countdown.min.js"?>></script>
+    
     <!-- Google maps -->
     
     <!-- Purpose JS -->
-    <script src=<?php echo BASE_URL . "/assets/js/purpose.js"?>></script>
-    <!-- <script src=<?php echo BASE_URL . "/assets/js/generaljs.js"?>></script> -->
-    <!-- <script src=<?php echo BASE_URL . "/assets/js/demo.js"?>></script> -->
+   
+    <script src=<?php echo BASE_URL . "/assets/js/generaljs.js"?>></script>
     <script>
     var videoPassed = $("#id").text();
                     </script>
 
-    <script src=<?php echo BASE_URL . "/pages/learning/includes/endowiki-player.js"?>></script>
     <script src=<?php echo BASE_URL . "/pages/learning/includes/social.js"?>></script>
 
     <script>
@@ -548,9 +543,7 @@ background-color: rgb(238, 194, 120);
 
         $(document).ready(function () {
 
-            $('.dropdown-menu a').click(function(e) {
-            e.stopPropagation();
-                    });
+            
 
             refreshNavAndTags();
 

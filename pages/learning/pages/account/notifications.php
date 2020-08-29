@@ -43,7 +43,6 @@
     <!--Page title-->
     <title>GIEQs Online Endoscopy Trainer</title>
 
-    <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
 
     <!-- Cookie Consent by https://www.TermsFeed.com -->
 <script type="text/javascript" src="//www.termsfeed.com/public/cookie-consent/3.0.0/cookie-consent.js"></script>
@@ -306,7 +305,6 @@ top: -20vh;
 
                     </script>
 
-    <script src=<?php echo BASE_URL . "/pages/learning/includes/endowiki-player.js"?>></script>
     <script>
         var signup = $('#signup').text();
 

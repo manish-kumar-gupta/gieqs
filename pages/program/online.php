@@ -18,7 +18,7 @@
       $openaccess = 1;
 
 
-      require BASE_URI . '/head.php';
+      require BASE_URI . '/headNoPurposeCore.php';
 
       $general = new general;
 
@@ -1008,17 +1008,14 @@ top: -20vh;
     <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
     <!-- <script src="assets/js/purpose.core.js"></script> -->
     <!-- Page JS -->
-    <script src="assets/libs/swiper/dist/js/swiper.min.js"></script>
+    <script src="../../assets/js/purpose.core.js"></script> 
+    <script src="<?php echo BASE_URL;?>/assets/js/purpose.js"></script>   
     <script src="<?php echo BASE_URL;?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
-    <script src="assets/libs/typed.js/lib/typed.min.js"></script>
-    <script src="assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script>
-    <script src="assets/libs/jquery-countdown/dist/jquery.countdown.min.js"></script>
+    <script src=<?php echo BASE_URL . "/assets/js/generaljs.js"?>></script>
+
     <!-- Google maps -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBuyKngB9VC3zgY_uEB-DKL9BKYMekbeY"></script>
     <!-- Purpose JS -->
-    <script src="<?php echo BASE_URL;?>/assets/js/purpose.js"></script>
     <!-- <script src="assets/js/generaljs.js"></script> -->
-    <script src="assets/js/demo.js"></script>
     <script>
     var videoPassed = $("#id").text();
                     </script>

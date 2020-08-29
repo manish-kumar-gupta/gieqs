@@ -33,15 +33,15 @@ function endsWith($haystack, $needle)
               <a class="nav-link" href="/index.php">Overview</a>
             </li>-->
 
-            <!-- LIVE, moved to main page -->
+                <!-- LIVE, moved to main page -->
 
-           
+
                 <!-- Mission -->
                 <li class="nav-item active">
                     <a class="nav-link" href="<?php echo BASE_URL;?>/pages/learning/index.php">Learning Home</a>
                 </li>
                 <!-- Program-basic, later to add dropdown with options -->
-               <!--  <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                <!--  <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
                     <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Video</a>
                     
@@ -60,124 +60,200 @@ function endsWith($haystack, $needle)
                 <?php if ($currentUserLevel < 6){?>
 
                 <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-                    <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">Medical</a>
-                    
-                    <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Colonoscopy</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/start-concepts.php"><i class="fas fa-columns"></i>Colonoscopy</a>
-                
-                    <div class="dropdown-divider"></div>
+                  
+                    <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">Medical</a>
 
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Polypectomy</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/start.php"><i class="fas fa-columns"></i>Polypectomy</a>
-                
-                    <div class="dropdown-divider"></div>
+                    <div class="dropdown-menu dropdown-menu-arrow" aria-labelledby="btn-group-settings">
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Colonoscopy</span>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/start-concepts.php"><i
+                                class="fas fa-columns"></i>Colonoscopy</a>
 
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">GIEQs Everyday Endoscopy</span>
-                    <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown"><i class="fas fa-columns"></i>GIEQs Endoscopy Curriculum</a>
-                    <div class="dropdown-menu dropdown-menu-xl rounded-bottom delimiter-top p-4 bg-dark-light">
-                      <div class="row">
-                        <div class="col-sm-3">
-                          <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Gastroscopy</a>
-                          <a href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/gastroscopy.php" class="dropdown-item">Gastroscopy<!--  <img class="w-100" alt="Boston Scientific" src="<?php echo BASE_URL . '/assets/img/brand/boston.jpg';?>"> --> </a>
-                          <a href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/gastroscopy-imaging.php" class="dropdown-item">Imaging at Gastroscopy<!--  <img class="w-100" alt="Boston Scientific" src="<?php echo BASE_URL . '/assets/img/brand/boston.jpg';?>"> --> </a>
-                          
-                          <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);"></a>
+                        <div class="dropdown-divider"></div>
 
-                          <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">GI Bleeding</a>
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Polypectomy</span>
 
-                          <a href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/gib.php" class="dropdown-item">Gastrointestinal Bleeding</a>
-                          <!-- <a href="sections.html#footers" class="dropdown-item">Footers</a>
-                          <a href="sections.html#blog" class="dropdown-item">Blog</a>
-                          <a href="sections.html#call-to-action" class="dropdown-item">Call to action</a>
-                          <a href="sections.html#clients" class="dropdown-item">Clients</a>
-                          <a href="sections.html#collapse" class="dropdown-item">Collapse</a> -->
+                        <a class="dropdown-item dropdown-toggle cursor-pointer" role="button" data-toggle="dropdown"><i
+                                class="fas fa-columns"></i>Polypectomy</a>
+                        <div id="polypectomy-dropdown" class="dropdown-submenu dropdown-menu-xl rounded-bottom delimiter-top p-4 bg-dark-light">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <a href="#" class="dropdown-item"
+                                        style="color: rgb(238, 194, 120);">Introduction</a>
+                                    <a class="dropdown-item"
+                                        href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/start.php"><i
+                                            class="fas fa-columns"></i>Start here</a>
+
+                                    <a href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/gastroscopy-imaging.php"
+                                        class="dropdown-item">Imaging at Gastroscopy
+                                        <!--  <img class="w-100" alt="Boston Scientific" src="<?php echo BASE_URL . '/assets/img/brand/boston.jpg';?>"> -->
+                                    </a>
+
+                                    <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);"></a>
+
+                                    <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">GI Bleeding</a>
+
+                                    <a href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/gib.php"
+                                        class="dropdown-item">Gastrointestinal Bleeding</a>
+
+                                </div>
+                                <div class="col-sm-3">
+
+
+
+                                </div>
+                                <div class="col-sm-3">
+                                    <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Upper GI
+                                        Therapeutics</a>
+
+                                    <a class="dropdown-item"
+                                        href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/feeding-tube.php">Feeding
+                                        Tube Placement</a>
+                                    <a class="dropdown-item"
+                                        href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/food-bolus.php">Food
+                                        Bolus Obstruction</a>
+                                    <a class="dropdown-item"
+                                        href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/dilatation.php">Dilatation</a>
+
+                                    <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);"></a>
+
+
+                                    <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Inflammatory
+                                        Bowel Disease</a>
+
+                                    <a class="dropdown-item"
+                                        href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/ibd.php">IBD</a>
+
+
+
+                                </div>
+
+
+                            </div>
                         </div>
-                        <div class="col-sm-3">
-                         
 
-                          <!-- <a href="sections.html#features" class="dropdown-item">Features</a>
-                          <a href="sections.html#milestone" class="dropdown-item">Milestone</a>
-                          <a href="sections.html#pricing" class="dropdown-item">Pricing</a>
-                          <a href="sections.html#projects" class="dropdown-item">Projects</a>
-                          <a href="sections.html#subscribe" class="dropdown-item">Subscribe</a> -->
-                        </div>
-                        <div class="col-sm-3">
-                          <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Upper GI Therapeutics</a>
 
-                         
+                        <div class="dropdown-divider"></div>
+
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">GIEQs Everyday Endoscopy</span>
                         
+                        <a class="dropdown-item dropdown-toggle cursor-pointer" role="button" data-toggle="dropdown"><i
+                                class="fas fa-columns"></i>GIEQs Endoscopy Curriculum</a>
+                        <div id="curriculum-dropdown" class="dropdown-submenu dropdown-menu-xl rounded-bottom delimiter-top p-4 bg-dark-light">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Gastroscopy</a>
+                                    <a href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/gastroscopy.php"
+                                        class="dropdown-item">Gastroscopy
+                                        <!--  <img class="w-100" alt="Boston Scientific" src="<?php echo BASE_URL . '/assets/img/brand/boston.jpg';?>"> -->
+                                    </a>
+                                    <a href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/gastroscopy-imaging.php"
+                                        class="dropdown-item">Imaging at Gastroscopy
+                                        <!--  <img class="w-100" alt="Boston Scientific" src="<?php echo BASE_URL . '/assets/img/brand/boston.jpg';?>"> -->
+                                    </a>
+
+                                    <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);"></a>
+
+                                    <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">GI Bleeding</a>
+
+                                    <a href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/gib.php"
+                                        class="dropdown-item">Gastrointestinal Bleeding</a>
+
+                                </div>
+                                <div class="col-sm-3">
+
+
+
+                                </div>
+                                <div class="col-sm-3">
+                                    <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Upper GI
+                                        Therapeutics</a>
+
+                                    <a class="dropdown-item"
+                                        href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/feeding-tube.php">Feeding
+                                        Tube Placement</a>
+                                    <a class="dropdown-item"
+                                        href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/food-bolus.php">Food
+                                        Bolus Obstruction</a>
+                                    <a class="dropdown-item"
+                                        href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/dilatation.php">Dilatation</a>
+
+                                    <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);"></a>
+
+
+                                    <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Inflammatory
+                                        Bowel Disease</a>
+
+                                    <a class="dropdown-item"
+                                        href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/ibd.php">IBD</a>
+
+
+
+                                </div>
+
+
+                            </div>
                         </div>
-                        <!-- <div class="col-sm-3">
-                          <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">IBD</a>
+                        
+                        <div class="dropdown-divider"></div>
 
-                          <a href="sections.html#headers" class="dropdown-item">MudiPharma</a>
-                          <a href="sections.html#headers" class="dropdown-item">Norgine</a>
-                          <a href="sections.html#headers" class="dropdown-item">Dr Falk</a>
-                          <a href="sections.html#headers" class="dropdown-item">Prion Medical</a>
-                          <a href="sections.html#headers" class="dropdown-item">Cook Medical</a>
-                          <a href="sections.html#headers" class="dropdown-item">Boucart Medical</a>
-                          <a href="sections.html#headers" class="dropdown-item">Ovesco</a>
-                          <a href="sections.html#headers" class="dropdown-item">Sandoz</a>
-                          <a href="sections.html#headers" class="dropdown-item">Takeda</a>
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Advanced Endoscopic
+                            Resection</span>
+                        <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/resection/all.php"><i
+                                class="fas fa-columns"></i>Advanced Endoscopic Resection</a>
+
+                        <div class="dropdown-divider"></div>
+
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Submucosal Endoscopy</span>
+                        <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/resection/all.php"><i
+                                class="fas fa-columns"></i>Submucosal Endoscopy</a>
+
+                        <div class="dropdown-divider"></div>
+
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">ERCP</span>
+                        <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/ERCP/all.php"><i
+                                class="fas fa-columns"></i>ERCP</a>
+
+                        <div class="dropdown-divider"></div>
+
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">EUS</span>
+                        <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/EUS/all.php"><i
+                                class="fas fa-columns"></i>EUS</a>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/EUS-therapeutic/all.php"><i
+                                class="fas fa-columns"></i>Therapeutic EUS</a>
 
 
-                          
-                        </div> -->
-                      
-                      </div>
+
                     </div>
 
-                    <div class="dropdown-divider"></div>
-
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Advanced Endoscopic Resection</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/resection/all.php"><i class="fas fa-columns"></i>Advanced Endoscopic Resection</a>
-                    
-                    <div class="dropdown-divider"></div>
-
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Submucosal Endoscopy</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/resection/all.php"><i class="fas fa-columns"></i>Submucosal Endoscopy</a>
-                    
-                    <div class="dropdown-divider"></div>
-
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">ERCP</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/ERCP/all.php"><i class="fas fa-columns"></i>ERCP</a>
-
-                    <div class="dropdown-divider"></div>
-
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">EUS</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/EUS/all.php"><i class="fas fa-columns"></i>EUS</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/EUS-therapeutic/all.php"><i class="fas fa-columns"></i>Therapeutic  EUS</a>
-
-
-
-                  </div>
-                  
-              </li>
+                </li>
 
                 <?php }else{?>
 
-                  <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-                    <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">Basic Content</a>
-                    
-                        <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
+                <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                    <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">Basic Content</a>
 
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Polypectomy</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/preview.php"><i class="fas fa-columns"></i>Polypectomy Tutor Basic</a>
-                
-                    <!-- <div class="dropdown-divider"></div>
+                    <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
+
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Polypectomy</span>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/preview.php"><i
+                                class="fas fa-columns"></i>Polypectomy Tutor Basic</a>
+
+                        <!-- <div class="dropdown-divider"></div>
 
 <span style="color: rgb(238, 194, 120);" class="dropdown-header">GIEQs Curriculum</span>
 <a class="dropdown-item" href="<?php //echo BASE_URL;?>/pages/learning/pages/curriculum/start.php"><i class="fas fa-columns"></i>GIEQs Endoscopy Curriculum</a> -->
 
 
 
-                  </div>
-                  
-              </li>
-          
+                    </div>
+
+                </li>
+
                 <?php } ?>
                 <!-- if on main page -->
 
@@ -198,231 +274,306 @@ function endsWith($haystack, $needle)
 
 
                     if ($inColonTutor){?>
-               
-               <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-                    <a class="nav-link dropdown-toggle" style="color: rgb(238, 194, 120);" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">Colonoscopy Tutor</a>
-                    
+
+                <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                    <a class="nav-link dropdown-toggle" style="color: rgb(238, 194, 120);" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Colonoscopy Tutor</a>
+
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
-                    
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Start here</span>
 
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/start-concepts.php"><i class="fas fa-columns"></i>Introduction to Colonoscopy Theory</a>
-                    <a class="dropdown-item" href=""><i class="fas fa-columns"></i>Simple cases</a>
-                    <a class="dropdown-item" href=""><i class="fas fa-columns"></i>Introduction to managing pathology</a>
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Start here</span>
 
-                    <div class="dropdown-divider"></div>
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Progress your technique</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/insertion.php"><i class="fas fa-columns"></i>Insertion techniques</a>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/start-concepts.php"><i
+                                class="fas fa-columns"></i>Introduction to Colonoscopy Theory</a>
+                        <a class="dropdown-item" href=""><i class="fas fa-columns"></i>Simple cases</a>
+                        <a class="dropdown-item" href=""><i class="fas fa-columns"></i>Introduction to managing
+                            pathology</a>
 
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/loops.php"><i class="fas fa-columns"></i>Loop resolution</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/visualisation.php"><i class="fas fa-columns"></i>Mucosal visualisation</a>
-                    <div class="dropdown-divider"></div>
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Learning Theory</span>
+                        <div class="dropdown-divider"></div>
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Progress your technique</span>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/insertion.php"><i
+                                class="fas fa-columns"></i>Insertion techniques</a>
 
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/concepts.php"><i class="fas fa-columns"></i>Conceptual lectures</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/training.php"><i class="fas fa-columns"></i>Training theory</a>
-                    <div class="dropdown-divider"></div>
-                    
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Pathology</span>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/loops.php"><i
+                                class="fas fa-columns"></i>Loop resolution</a>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/visualisation.php"><i
+                                class="fas fa-columns"></i>Mucosal visualisation</a>
+                        <div class="dropdown-divider"></div>
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Learning Theory</span>
 
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/pathology.php"><i class="fas fa-columns"></i>Management of pathology</a>
-                    
-                    <div class="dropdown-divider"></div>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/concepts.php"><i
+                                class="fas fa-columns"></i>Conceptual lectures</a>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/training.php"><i
+                                class="fas fa-columns"></i>Training theory</a>
+                        <div class="dropdown-divider"></div>
 
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/all.php"><i class="fas fa-columns"></i>View All Videos</a>
-                    
-                    
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Pathology</span>
 
-                    </div>
-                </li>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/pathology.php"><i
+                                class="fas fa-columns"></i>Management of pathology</a>
 
-                    
-                    <!--do colontutor links here and colour menu gold-->
+                        <div class="dropdown-divider"></div>
 
-                    <?php }elseif ($inPolypectomyTutor) {?>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/all.php"><i
+                                class="fas fa-columns"></i>View All Videos</a>
 
-                      <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-                    <a class="nav-link dropdown-toggle" style="color: rgb(238, 194, 120);" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">Polypectomy Tutor</a>
-                    
-                    <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
-                    
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Start here</span>
 
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/start.php"><i class="fas fa-columns"></i>Introduction to Polypectomy Theory</a>
-            
-                    <div class="dropdown-divider"></div>
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Imaging</span>
-                    
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/imaging.php"><i class="fas fa-columns"></i>Colorectal Polyp Imaging</a>
-
-                    <div class="dropdown-divider"></div>
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Techniques</span>
-
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/csp.php"><i class="fas fa-columns"></i>Cold Snare Polypectomy</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/pcsp.php"><i class="fas fa-columns"></i>Piecemeal Cold Snare Polypectomy</a>
-
-                    
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/pedunculated.php"><i class="fas fa-columns"></i>Pedunculated Polypectomy</a>
-
-                    
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/emr.php"><i class="fas fa-columns"></i>Endoscopic Mucosal Resection (EMR)</a>
-
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/emr_difficult.php"><i class="fas fa-columns"></i>Difficult EMR</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/emr_defect.php"><i class="fas fa-columns"></i>Defect Assessment after EMR</a>
-
-                    <div class="dropdown-divider"></div>
-                    
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Adverse Events</span>
-
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/adverse.php"><i class="fas fa-columns"></i>Adverse Events</a>
-                    
-                    <div class="dropdown-divider"></div>
-
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Surveillance</span>
-
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/surveillance.php"><i class="fas fa-columns"></i>Surveillance after Polypectomy</a>
-                    
-                    <div class="dropdown-divider"></div>
-
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/all.php"><i class="fas fa-columns"></i>View All Videos</a>
-                    
 
                     </div>
                 </li>
 
 
+                <!--do colontutor links here and colour menu gold-->
 
-                     
-                     <?php } elseif ($inNursing) {?>
+                <?php }elseif ($inPolypectomyTutor) {?>
 
-<li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-<a class="nav-link dropdown-toggle" style="color: rgb(238, 194, 120);" role="button" data-toggle="dropdown"
-  aria-haspopup="true" aria-expanded="false">Nursing Tutor</a>
+                <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                    <a class="nav-link dropdown-toggle" style="color: rgb(238, 194, 120);" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Polypectomy Tutor</a>
 
-<div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
+                    <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
 
-<span style="color: rgb(238, 194, 120);" class="dropdown-header">Start here</span>
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Start here</span>
 
-<a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/nursing/start.php"><i class="fas fa-columns"></i>Introduction to Endoscopy Nursing Theory</a>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/start.php"><i
+                                class="fas fa-columns"></i>Introduction to Polypectomy Theory</a>
 
-<div class="dropdown-divider"></div>
-<span style="color: rgb(238, 194, 120);" class="dropdown-header">Nursing techniques</span>
+                        <div class="dropdown-divider"></div>
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Imaging</span>
 
-<a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/nursing/techniques.php"><i class="fas fa-columns"></i>Techniques</a>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/imaging.php"><i
+                                class="fas fa-columns"></i>Colorectal Polyp Imaging</a>
 
-<div class="dropdown-divider"></div>
+                        <div class="dropdown-divider"></div>
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Techniques</span>
 
-
-<a class="dropdown-item" href=""><i class="fas fa-columns"></i>View All Videos</a>
-
-
-</div>
-</li>
-
-<?php } elseif ($inCurriculum) {?>
-
-<li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-<a class="nav-link dropdown-toggle" style="color: rgb(238, 194, 120);" role="button" data-toggle="dropdown"
-  aria-haspopup="true" aria-expanded="false">GIEQs Everyday Endoscopy</a>
-
-<div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
-
-<span style="color: rgb(238, 194, 120);" class="dropdown-header">Gastroscopy</span>
-
-<a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/gastroscopy.php"><i class="fas fa-columns"></i>Gastroscopy Technique</a>
-<a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/gastroscopy-imaging.php"><i class="fas fa-columns"></i>Upper GI Imaging</a>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/csp.php"><i
+                                class="fas fa-columns"></i>Cold Snare Polypectomy</a>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/pcsp.php"><i
+                                class="fas fa-columns"></i>Piecemeal Cold Snare Polypectomy</a>
 
 
-<div class="dropdown-divider"></div>
-<span style="color: rgb(238, 194, 120);" class="dropdown-header">GI Bleeding</span>
-
-<a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/gib.php"><i class="fas fa-columns"></i>Gastrointestinal Bleeding</a>
-
-<div class="dropdown-divider"></div>
-<span style="color: rgb(238, 194, 120);" class="dropdown-header">Upper GI Therapeutics</span>
-<a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/feeding-tube.php"><i class="fas fa-columns"></i>Feeding Tube Placement</a>
-<a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/food-bolus.php"><i class="fas fa-columns"></i>Food Bolus Obstruction</a>
-<a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/dilatation.php"><i class="fas fa-columns"></i>Dilatation</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/pedunculated.php"><i
+                                class="fas fa-columns"></i>Pedunculated Polypectomy</a>
 
 
-<div class="dropdown-divider"></div>
-<span style="color: rgb(238, 194, 120);" class="dropdown-header">Inflammatory Bowel Disease</span>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/emr.php"><i
+                                class="fas fa-columns"></i>Endoscopic Mucosal Resection (EMR)</a>
 
-<a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/ibd.php"><i class="fas fa-columns"></i>IBD</a>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/emr_difficult.php"><i
+                                class="fas fa-columns"></i>Difficult EMR</a>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/emr_defect.php"><i
+                                class="fas fa-columns"></i>Defect Assessment after EMR</a>
 
-<!-- <a class="dropdown-item" href=""><i class="fas fa-columns"></i>View All Videos</a>
+                        <div class="dropdown-divider"></div>
+
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Adverse Events</span>
+
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/adverse.php"><i
+                                class="fas fa-columns"></i>Adverse Events</a>
+
+                        <div class="dropdown-divider"></div>
+
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Surveillance</span>
+
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/surveillance.php"><i
+                                class="fas fa-columns"></i>Surveillance after Polypectomy</a>
+
+                        <div class="dropdown-divider"></div>
+
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/all.php"><i
+                                class="fas fa-columns"></i>View All Videos</a>
+
+
+                    </div>
+                </li>
+
+
+
+
+                <?php } elseif ($inNursing) {?>
+
+                <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                    <a class="nav-link dropdown-toggle" style="color: rgb(238, 194, 120);" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Nursing Tutor</a>
+
+                    <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
+
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Start here</span>
+
+                        <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/nursing/start.php"><i
+                                class="fas fa-columns"></i>Introduction to Endoscopy Nursing Theory</a>
+
+                        <div class="dropdown-divider"></div>
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Nursing techniques</span>
+
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/nursing/techniques.php"><i
+                                class="fas fa-columns"></i>Techniques</a>
+
+                        <div class="dropdown-divider"></div>
+
+
+                        <a class="dropdown-item" href=""><i class="fas fa-columns"></i>View All Videos</a>
+
+
+                    </div>
+                </li>
+
+                <?php } elseif ($inCurriculum) {?>
+
+                <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                    <a class="nav-link dropdown-toggle" style="color: rgb(238, 194, 120);" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">GIEQs Everyday Endoscopy</a>
+
+                    <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
+
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Gastroscopy</span>
+
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/gastroscopy.php"><i
+                                class="fas fa-columns"></i>Gastroscopy Technique</a>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/gastroscopy-imaging.php"><i
+                                class="fas fa-columns"></i>Upper GI Imaging</a>
+
+
+                        <div class="dropdown-divider"></div>
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">GI Bleeding</span>
+
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/gib.php"><i
+                                class="fas fa-columns"></i>Gastrointestinal Bleeding</a>
+
+                        <div class="dropdown-divider"></div>
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Upper GI Therapeutics</span>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/feeding-tube.php"><i
+                                class="fas fa-columns"></i>Feeding Tube Placement</a>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/food-bolus.php"><i
+                                class="fas fa-columns"></i>Food Bolus Obstruction</a>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/dilatation.php"><i
+                                class="fas fa-columns"></i>Dilatation</a>
+
+
+                        <div class="dropdown-divider"></div>
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Inflammatory Bowel
+                            Disease</span>
+
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/ibd.php"><i
+                                class="fas fa-columns"></i>IBD</a>
+
+                        <!-- <a class="dropdown-item" href=""><i class="fas fa-columns"></i>View All Videos</a>
  -->
 
-</div>
-</li>
+                    </div>
+                </li>
 
 
 
 
-<?php } else{?>
-                     
-                    <?php } ?>
-                    
-                    
-                    
-               
+                <?php } else{?>
+
+                <?php } ?>
+
+
+
+
                 <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-                    <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">Nursing</a>
-                    
+                    <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">Nursing</a>
+
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Nursing Techniques</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/nursing/techniques.php"><i class="fas fa-columns"></i>Techniques Videos</a>
-                    
-                    
-                    
-                  </div>
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Nursing Techniques</span>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/nursing/techniques.php"><i
+                                class="fas fa-columns"></i>Techniques Videos</a>
+
+
+
+                    </div>
                 </li>
 
                 <?php
                                 if (isset($_SESSION['user_id']) && ($_SESSION['siteKey'] == 'TxsvAb6KDYpmdNk') && ($_SESSION['access_level'] == '1' || $_SESSION['access_level'] == '2')){
                                   ?>
                 <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-                    <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">Creator</a>
-                    
-                    <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Video</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/scripts/videoUploadForm.php"><i class="fas fa-columns"></i>New Video</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/scripts/forms/videoTable.php"><i class="fas fa-columns"></i>Video Table</a>
-                    
-                    <div class="dropdown-divider"></div>
-                    
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Tags</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/scripts/forms/tagsForm.php"><i class="fas fa-columns"></i>New Tag</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/scripts/forms/tagsTable.php"><i class="fas fa-columns"></i>Tag / Reference Table</a>
-                    
+                    <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">Creator</a>
 
-                    <div class="dropdown-divider"></div>
-                    
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Tag Categories</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/scripts/forms/tagCategoriesForm.php"><i class="fas fa-columns"></i>New Tag Category</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/scripts/forms/tagCategoriesTable.php"><i class="fas fa-columns"></i>Tag Category Table</a>
-                    
-                    <div class="dropdown-divider"></div>
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">References</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/scripts/forms/referencesForm.php"><i class="fas fa-columns"></i>New Reference</a>
-                    
-                    <div class="dropdown-divider"></div>
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Maintenance</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/scripts/getThumbnailsVideo.php"><i class="fas fa-user"></i>Update / generate Thumbnails</a>
-                    
-                    
-                  </div>
+                    <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Video</span>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/scripts/videoUploadForm.php"><i
+                                class="fas fa-columns"></i>New Video</a>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/scripts/forms/videoTable.php"><i
+                                class="fas fa-columns"></i>Video Table</a>
+
+                        <div class="dropdown-divider"></div>
+
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Tags</span>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/scripts/forms/tagsForm.php"><i
+                                class="fas fa-columns"></i>New Tag</a>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/scripts/forms/tagsTable.php"><i
+                                class="fas fa-columns"></i>Tag / Reference Table</a>
+
+
+                        <div class="dropdown-divider"></div>
+
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Tag Categories</span>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/scripts/forms/tagCategoriesForm.php"><i
+                                class="fas fa-columns"></i>New Tag Category</a>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/scripts/forms/tagCategoriesTable.php"><i
+                                class="fas fa-columns"></i>Tag Category Table</a>
+
+                        <div class="dropdown-divider"></div>
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">References</span>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/scripts/forms/referencesForm.php"><i
+                                class="fas fa-columns"></i>New Reference</a>
+
+                        <div class="dropdown-divider"></div>
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Maintenance</span>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/scripts/getThumbnailsVideo.php"><i
+                                class="fas fa-user"></i>Update / generate Thumbnails</a>
+
+
+                    </div>
                 </li>
                 <?php
                 }?>
 
-                
+
 
                 <!-- Backend menu for learning-->
 

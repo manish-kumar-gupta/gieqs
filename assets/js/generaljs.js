@@ -1188,6 +1188,9 @@ $('.reset').click(function(){
 	 
  });
 
+ if ($.validator) {
+    // $.validator is defined
+
  $.validator.setDefaults({
 	highlight: function(element) {
 		//$(element).closest('.form-control').addClass('bg-gieqsGold').addClass('text-white');
@@ -1244,7 +1247,7 @@ jQuery.fn.serializeObject = function() {
   
 	return objectData;
   };
-
+ }
 
 
 

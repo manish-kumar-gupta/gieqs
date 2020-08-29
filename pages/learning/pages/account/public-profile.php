@@ -57,7 +57,6 @@ error_reporting(E_NONE);
     <!--Page title-->
     <title>User Profile</title>
 
-    <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
 
     

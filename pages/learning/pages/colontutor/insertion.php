@@ -18,7 +18,7 @@
 
 
       //require BASE_URI . '/pages/learning/includes/head.php';
-      require BASE_URI . '/head.php';
+      require BASE_URI . '/headNoPurposeCore.php';
 
       $general = new general;
 
@@ -29,8 +29,8 @@
     <!--Page title-->
     <title>GIEQs Online Endoscopy Trainer - Insertion Technique</title>
 
-    <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
-    <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
+
+ -->    <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
 
 
     <style>
@@ -285,7 +285,9 @@ background-color: rgb(238, 194, 120);
     <?php require BASE_URI . '/footer.php';?>
 
     <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
+    <script src="<?php echo BASE_URL;?>/assets/js/purpose.core.js"></script>
     <script src="<?php echo BASE_URL;?>/assets/js/purpose.js"></script>
+    <script src="<?php echo BASE_URL . "/assets/js/generaljs.js"?>"></script>
 
     <!-- <script src="assets/js/purpose.core.js"></script> -->
     <!-- Page JS -->
@@ -538,9 +540,7 @@ background-color: rgb(238, 194, 120);
 
         $(document).ready(function () {
 
-            /* $('.dropdown-menu a').click(function(e) {
-            e.stopPropagation();
-                    }); */ //TODO WHY WAS THIS NECESSARY MAJOR BUG
+            /* */ //TODO WHY WAS THIS NECESSARY MAJOR BUG
 
             refreshNavAndTags();
 

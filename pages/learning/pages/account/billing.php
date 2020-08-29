@@ -29,7 +29,6 @@
     <!--Page title-->
     <title>GIEQs Online Endoscopy Trainer</title>
 
-    <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
 
     
@@ -548,7 +547,6 @@ top: -20vh;
     var videoPassed = $("#id").text();
                     </script>
 
-    <script src=<?php echo BASE_URL . "/pages/learning/includes/endowiki-player.js"?>></script>
     <script>
         var signup = $('#signup').text();
 

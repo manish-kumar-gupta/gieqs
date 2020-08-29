@@ -11,7 +11,7 @@
 
 $openaccess = 1;
 
-require BASE_URI . '/head.php';
+require BASE_URI . '/headNoPurposeCore.php';
 
 $registrationURL = 'https://eu.eventscloud.com/200200203';
 
@@ -525,13 +525,8 @@ $registrationURL = 'https://eu.eventscloud.com/200200203';
     <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
 
     <!-- Page JS -->
-    <script src="../../assets/libs/swiper/dist/js/swiper.min.js"></script>
-    <script src="../../assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
-    <script src="../../assets/libs/typed.js/lib/typed.min.js"></script>
-    <script src="../../assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script>
-    <script src="../../assets/libs/jquery-countdown/dist/jquery.countdown.min.js"></script>
+   <script src="../../assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
     <!-- Google maps -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBuyKngB9VC3zgY_uEB-DKL9BKYMekbeY"></script>
     <!-- Purpose JS -->
     <script src="../../assets/js/purpose.js"></script>
 

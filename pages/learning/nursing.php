@@ -271,7 +271,6 @@ background-color: rgb(238, 194, 120);
     <!-- Purpose JS -->
     <script src=<?php echo BASE_URL . "/assets/js/purpose.js"?>></script>
     <!-- <script src=<?php echo BASE_URL . "/assets/js/generaljs.js"?>></script> -->
-    <!-- <script src=<?php echo BASE_URL . "/assets/js/demo.js"?>></script> -->
     <script>
     var videoPassed = $("#id").text();
                     </script>
