@@ -130,7 +130,7 @@ background-color: rgb(238, 194, 120);
             </div>
         </div>
     </div>
-    <?php $livepage = 'GIEQs Livestream - Live Programme';?>
+    <?php $livepage = 'GIEQs Livestream - Programme';?>
     <?php require (BASE_URI . '/pages/learning/pages/live/liveNav.php');?>
     <div class="main-content">
     

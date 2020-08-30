@@ -46,13 +46,67 @@
                     </a>
                     <ul class="dropdown-menu">
                       <li>
-                        <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/live/plenary.php">
+                          <?php  if ($currentTime > $desiredTimeWednesdayFrom && $currentTime < $desiredTimeWednesdayTo){
+                            ?>
+    
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/live/plenary.php">
+                            <span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2">LIVE</span>
+
+    
+                            <?php
+                        }elseif($currentTime > $desiredTimeThursdayFrom && $currentTime < $desiredTimeThursdayTo){
+    
+                            ?>
+    
+                            <a class="dropdown-item"
+                                href="<?php echo BASE_URL;?>/pages/learning/pages/live/plenary-thursday.php">
+                                <span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2">LIVE</span>
+
+    
+                                <?php   
+                        }else{
+                        
+                        ?>
+                                <a class="dropdown-item disabled" href="#">
+    
+    
+                                    <?php
+                        }
+    
+    ?>
                           Access Plenary Live Stream
                         </a>
                       </li>
                       <li>
-                        <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/live/complex.php">
-                          Access Complex Live Stream
+                        <?php  if ($currentTime > $desiredTimeWednesdayFrom && $currentTime < $desiredTimeWednesdayTo){
+                          ?>
+  
+                      <a class="dropdown-item"
+                          href="<?php echo BASE_URL;?>/pages/learning/pages/live/complex.php">
+                          <span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2">LIVE</span>
+  
+                          <?php
+                      }elseif($currentTime > $desiredTimeThursdayFrom && $currentTime < $desiredTimeThursdayTo){
+  
+                          ?>
+  
+                          <a class="dropdown-item"
+                              href="<?php echo BASE_URL;?>/pages/learning/pages/live/complex-thursday.php">
+                              <span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2">LIVE</span>
+
+  
+                              <?php   
+                      }else{
+                      
+                      ?>
+                              <a class="dropdown-item disabled" href="#">
+  
+  
+                                  <?php
+                      }
+  
+  ?>                          Access Complex Live Stream
                         </a>
                       </li>
                     
