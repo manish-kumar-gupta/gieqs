@@ -271,6 +271,39 @@ Class userFunctions {
 
 	}
 
+	public function resetUserLast15($userid){
+
+		//STAFF FUNCTION TO RESET USER ACCESS
+		
+		//unless logged out (logout in sessionid)
+
+		$date = new DateTime('now', new DateTimeZone('UTC'));
+
+		//15 mins ago
+
+		$date->sub(new DateInterval('PT15M'));
+
+
+		$sqltimestamp = date_format($date, 'Y-m-d H:i:s');
+		//15 mins ago
+
+
+		//$q = "SELECT count(`id`) as `count` FROM `userActivity` WHERE `user_id` = '$userid' AND `activity_time` > '$sqltimestamp' AND `session_id` <> '99'";
+		$q = "DELETE FROM `userActivity` WHERE `user_id` = '$userid' AND `activity_time` > '$sqltimestamp'";
+
+		//echo $q;
+
+		$result = $this->connection->RunQuery($q);
+
+			
+		if ($result){
+
+			echo 'There were ' . $result->rowCount() . ' entries deleted for login.  Ask the user to try logging in again';
+		}
+			
+
+	}
+
 	//update user registrations functions
 
 	public function checkCombinationUserProgramme($userid, $programmeid)

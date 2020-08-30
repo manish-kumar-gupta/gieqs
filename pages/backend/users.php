@@ -800,6 +800,8 @@ if ($identifierValue) {
                                     </div>
 
                                     <button class="btn bg-warning text-white p-2 m-2 send-mail">Send Password Reset Mail   </button>
+                                    <button class="btn bg-warning text-white p-2 m-2 reset-activity">Fix user login issue   </button>
+
 
                                     <br/>
 
@@ -1173,65 +1175,128 @@ enableFormInputs("<?php echo $databaseName;?>-form");
     function sendUserEmail() {
 
 
-//userid is lesionUnderEdit
+        //userid is lesionUnderEdit
 
-//console.log('updatePassword chunk');
-//go to php script with an object from the form
-
-
-//TODO add identifier and identifierKey
-
-const dataToSend = {
-
-    passedUserid: lesionUnderEdit,
-
-}
-
-const jsonString = JSON.stringify(dataToSend);
-console.log(jsonString);
-
-$('.send-mail').prop('disabled', true);
-$('.send-mail').append('&nbsp&nbsp<i class="fas fa-circle-notch fa-spin"></i>');
+        //console.log('updatePassword chunk');
+        //go to php script with an object from the form
 
 
-var passwordChange = $.ajax({
-    url: siteRoot + "assets/scripts/passwordResetGenerateAdmin.php",
-    type: "POST",
-    contentType: "application/json",
-    data: jsonString,
-});
+        //TODO add identifier and identifierKey
+
+        const dataToSend = {
+
+            passedUserid: lesionUnderEdit,
+
+        }
+
+        const jsonString = JSON.stringify(dataToSend);
+        console.log(jsonString);
+
+        $('.send-mail').prop('disabled', true);
+        $('.send-mail').append('&nbsp&nbsp<i class="fas fa-circle-notch fa-spin"></i>');
+
+
+        var passwordChange = $.ajax({
+            url: siteRoot + "assets/scripts/passwordResetGenerateAdmin.php",
+            type: "POST",
+            contentType: "application/json",
+            data: jsonString,
+        });
 
 
 
-passwordChange.done(function (data) {
+        passwordChange.done(function (data) {
 
-    if (data) {
-        Swal.fire({
-                type: 'info',
-                title: 'Password Reset',
-                text: data,
-                background: '#162e4d',
-                confirmButtonText: 'ok',
-                confirmButtonColor: 'rgb(238, 194, 120)',
-            
+            if (data) {
+                Swal.fire({
+                    type: 'info',
+                    title: 'Password Reset',
+                    text: data,
+                    background: '#162e4d',
+                    confirmButtonText: 'ok',
+                    confirmButtonColor: 'rgb(238, 194, 120)',
 
-        }).then((result) => {
 
-            $('.send-mail').prop('disabled', false);
-            $('.send-mail').find('.fa-spin').remove();
+                }).then((result) => {
 
-        /* window.location.href = siteRoot;
-        resetFormElements('NewUserForm');
-        enableFormInputs('NewUserForm'); */
-        //$('#registerInterest').modal('hide');
+                    $('.send-mail').prop('disabled', false);
+                    $('.send-mail').find('.fa-spin').remove();
 
-    })
+                    /* window.location.href = siteRoot;
+                    resetFormElements('NewUserForm');
+                    enableFormInputs('NewUserForm'); */
+                    //$('#registerInterest').modal('hide');
 
-}
+                })
 
-})
+            }
 
-}
+        })
+
+    }
+
+    function fixUserLogin() {
+
+
+        //userid is lesionUnderEdit
+
+        //console.log('updatePassword chunk');
+        //go to php script with an object from the form
+
+
+        //TODO add identifier and identifierKey
+
+        const dataToSend = {
+
+            passedUserid: lesionUnderEdit,
+
+        }
+
+        const jsonString = JSON.stringify(dataToSend);
+        console.log(jsonString);
+
+        $('.reset-activity').prop('disabled', true);
+        $('.reset-activity').append('&nbsp&nbsp<i class="fas fa-circle-notch fa-spin"></i>');
+
+
+        var userFix = $.ajax({
+            url: siteRoot + "assets/scripts/fixUserAccess.php",
+            type: "POST",
+            contentType: "application/json",
+            data: jsonString,
+        });
+
+
+
+        userFix.done(function (data) {
+
+            if (data) {
+                Swal.fire({
+                    type: 'info',
+                    title: 'User Activity Reset',
+                    text: data,
+                    background: '#162e4d',
+                    confirmButtonText: 'ok',
+                    confirmButtonColor: 'rgb(238, 194, 120)',
+
+
+                }).then((result) => {
+
+                    $('.reset-activity').prop('disabled', false);
+                    $('.reset-activity').find('.fa-spin').remove();
+
+                    /* window.location.href = siteRoot;
+                    resetFormElements('NewUserForm');
+                    enableFormInputs('NewUserForm'); */
+                    //$('#registerInterest').modal('hide');
+
+                })
+
+            }
+
+        })
+
+    }
 
     function submit<?php echo $databaseName;?>Form (){
 
@@ -1555,6 +1620,7 @@ processResults: function(data) {
         $(document).find('#<?php echo $databaseName;?>-form').find(':checkbox, :radio').prop('checked', false);
         $(document).find('#<?php echo $databaseName;?>-form').find('select').val('').trigger('change');  //TODO ADD TO ALL PAGES WHERE SELECT2
         $(document).find('#<?php echo $databaseName;?>-form').find('.send-mail').prop('disabled', true);
+        $(document).find('#<?php echo $databaseName;?>-form').find('.reset-activity').prop('disabled', true);
         $(document).find('#<?php echo $databaseName;?>-form').find('#registrations').prop('disabled', true);
 
         edit = 0;
@@ -1597,6 +1663,13 @@ processResults: function(data) {
     sendUserEmail();
 
     })
+
+    $(document).on('click', '.reset-activity', function() {
+
+        event.preventDefault();
+        fixUserLogin();
+    
+        })
 
 $("#<?php echo $databaseName;?>-form").validate({
 
