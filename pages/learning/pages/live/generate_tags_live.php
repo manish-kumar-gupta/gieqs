@@ -22,7 +22,16 @@ $requiredUserLevel = 3;
 
       require BASE_URI . '/head.php';
 
+      //$general = new general;
+      $userFunctions = new userFunctions;
+
+      spl_autoload_unregister ('class_loader');
+
+      require(BASE_URI.'/pages/learning/classes/general.class.php');
+
+
       $general = new general;
+      //open to the classes outside this include
 
       ?>
 
@@ -43,12 +52,7 @@ $requiredUserLevel = 3;
         z-index: 9999;
     }
 
-    .gieqsGold {
-
-        color: rgb(238, 195, 120);
-
-
-    }
+    
 
     .tagButton {
 
@@ -75,6 +79,10 @@ $requiredUserLevel = 3;
 
     }
 
+    .even-larger-badge{
+    font-size: 1.2em;
+}
+
 
 
     .cursor-pointer {
@@ -83,7 +91,7 @@ $requiredUserLevel = 3;
 
     }
 
-    
+
 
     @media (min-width: 1200px) {
         #chapterSelectorDiv {
@@ -176,33 +184,18 @@ $requiredUserLevel = 3;
      ?>
             <div class="container d-flex flex-wrap align-items-lg-stretch p-2 p-lg-5">
                 <div class="col-lg-6">
-                    <div class="card mb-0 tagCard">
+                    <div class="card mb-0 tagCard" style="height:50vh; overflow:hidden;">
                         <div class="card-header tagCardHeader mb-0">
-                            
+
                             <span class="h6">Tags <br /></span><span class="text-sm"></span><span
-                                class="text-sm text-right"> <a style="float:right;" class="cursor-pointer"
-                                    onclick="undoFilterByTag();"></span>
+                                class="text-sm text-right"></span>
                         </div>
-                        <div class="card-body mt-0 pt-0">
+                        <div class="card-body mt-0 p-0">
 
-                            <div id="tagsDisplay">
-
-
-                                <div class="row align-items-left">
-
-                                    <span class="h6 mt-1"> ' . $value['tagCategoryName'] . '</span>
+                            <div id="tagsDisplay" class="p-2 d-flex flex-wrap">
 
 
-
-                                </div>
-
-                                <div class="row align-items-left">
-
-                                    <span class="badge bg-gray-800 mx-2 mb-1 tagButton" id="tag' . $value1['id'] . '">'
-                                        .
-                                        $value1['tagName'] . '</span>
-
-                                </div>
+                               
                             </div>
 
 
@@ -216,22 +209,23 @@ $requiredUserLevel = 3;
                 </div>
                 <div class="col-lg-4">
 
-                <label for="timezone">timezone</label>
-                                        <div class="input-group mb-3">
-                                            <select id="timezone" type="text" data-toggle="select" class="form-control" name="timezone">
-                                            <?php
+                    <label for="tags">Tags (search)</label>
+                    <div class="input-group mb-3 mt-8">
+                        <select id="tags" type="text" data-toggle="select" class="form-control" name="tags">
+                            <?php
 
                                             
 
 
-                                                echo "<option value='$key'>$value</option>";
+                                        echo $general->generateTagStructure();
+
 
                                             
 
 
 ?>
-                                            </select>
-                                        </div>
+                        </select>
+                    </div>
 
 
                 </div>
@@ -281,6 +275,8 @@ $requiredUserLevel = 3;
 
             <script>
             var signup = $('#signup').text();
+
+            var x = 0;
 
             function submitPreRegisterForm() {
 
@@ -432,6 +428,13 @@ $requiredUserLevel = 3;
                         }        
                 }); */
 
+                $('[data-toggle="select"]').select2({
+
+                    //dropdownParent: $(".modal-content"),
+                    //theme: "bootstrap",
+
+                });
+
                 $(document).click(function(event) {
                     $target = $(event.target);
 
@@ -462,6 +465,39 @@ $requiredUserLevel = 3;
                 $(document).on('click', '.tagsClose', function() {
 
                     $('#collapseExample').collapse('hide');
+
+                })
+                
+                $(document).on('change', '#tags', function() {
+
+                    //get selected id
+                    //get selected data 
+                    //append
+
+                    //alert('change detected');
+
+                    //var id=2;
+                    //var selectElement = $(this)
+                    var tagName = $("option:selected", this).text();
+
+                    //var el = $(this);
+                    
+
+                    (function () {
+    setTimeout(function () {
+        $('#tagsDisplay').find('span').filter('#tag'+x).remove();
+        const element = $('#tagsDisplay').find('span').filter('#tag'+x);
+        console.log(element);
+       
+    }, 5000);
+}($('#tagsDisplay').prepend('<span class="animated rubberBand badge even-larger-badge bg-gieqsGold text-dark mx-2 my-2" id="tag' + x + '">' + tagName + '</span>')));
+
+                   
+
+                    $('#tagsDisplay').find('span').not('#tag'+x).removeClass('bg-gieqsGold').removeClass('text-dark').removeClass('even-larger-badge').addClass('bg-secondary-dark').addClass('text-white');
+
+                   
+                    x++;
 
                 })
 

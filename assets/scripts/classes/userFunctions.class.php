@@ -487,6 +487,45 @@ Class userFunctions {
             }
 
 		}
+
+		public function generateTagStructure()
+            {
+            
+
+			$q = "SELECT a.`tagCategories_id` as `Category id`, a.`tagCategories_id`, a.`id`, a.`tagName` as `Tag` from `tags` as a WHERE a.`tagCategories_id` > 46 ORDER BY tagCategories_id, a.`id` ASC";
+
+
+            //echo $q . '<br><br>';
+
+			$rowReturn = [];
+
+            $result = $this->connection->RunQuery($q);
+            
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn[] = $row;
+
+
+				}
+
+				foreach ($rowReturn as $key=>$value){
+
+					echo "<option value='{$value['id']}'>{$value['tagCategories_id']} {$value['tagName']}</value>";
+
+				}
+
+            } else {
+                
+
+                return false;
+            }
+
+		}
 		
 		public function returnProgrammeDenominatorSelect2()
             {
