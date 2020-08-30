@@ -501,6 +501,15 @@ $requiredUserLevel = 3;
 
                 })
 
+                $(document).on('click', '.badge', function() {
+
+                    //alert('detect');
+
+                    $(this).remove();
+
+
+                })
+
                 $('.referencelist').on('click', function() {
 
 
