@@ -399,9 +399,14 @@ $info[] = '\$livetestingusers contains (' . $liveTestingUsers . ')';
 
 if (in_array($userid, $liveTestingUsers)) {
     $live = 1;
+    $liveTest = 1;
     $info[] = 'Live testing activated for (' . $userid . ')';
 
 }
+
+if (liveTest){
+    $currentTime = new DateTime('2020-10-08 09:30:20', $serverTimeZone);
+    }
 
 //further info re live
 

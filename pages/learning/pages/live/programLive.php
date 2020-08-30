@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php require '../../includes/config.inc.php';?>
+<?php require '../../../../assets/includes/config.inc.php';?>
 
 <head>
 <?php
@@ -21,6 +21,10 @@ require BASE_URI . '/headNoPurposeCore.php';
 color: rgb(238, 194, 120);
 
                }
+               #navbar-main{
+
+z-index: 9999;
+}
                .bg-gieqsGold {
 
 background-color: rgb(238, 194, 120);
@@ -126,29 +130,28 @@ background-color: rgb(238, 194, 120);
             </div>
         </div>
     </div>
+    <?php $livepage = 'GIEQs Livestream - Live Programme';?>
+    <?php require (BASE_URI . '/pages/learning/pages/live/liveNav.php');?>
     <div class="main-content">
+    
 
-        <!-- Header (v1) -->
-        <section class="header-1 bg-gradient-dark" data-offset-top="#header-main">
-
-
-        </section>
+        
 
         <!-- PROGRAM TABLE -->
 
-        <section class="slice bg-gradient-dark slice-lg">
+        <section class="bg-gradient-dark">
             <div class="container">
-                <div class="row text-center">
+                <!-- <div class="row text-center">
 
                     <div class="col-12 p-3 pb-5">
                         <span class="h1" style="color: rgb(238, 194, 120);">Ghent International Endoscopy Quality
                             Symposium <br /> Edition I. <br/>Live Scientific Programme</span>
                     </div>
 
-                </div>
+                </div> -->
                 <div class="row text-center">
 
-                    <div class="col-12 p-3 pb-4">
+                    <div class="col-12 p-3 pb-5 mt-5">
                         <!-- <a href="#" class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me"> -->
                             <!-- <span class="btn-inner--text">Overview</span> -->
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->

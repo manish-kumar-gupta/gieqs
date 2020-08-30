@@ -15,8 +15,7 @@
 
       //$openaccess = 1;
 
-      
-$openaccess = 0;
+      $openaccess = 0;
 $requiredUserLevel = 6;
 
 
@@ -27,7 +26,7 @@ $requiredUserLevel = 6;
       ?>
 
     <!--Page title-->
-    <title>GIEQs Livestream Complex Session</title>
+    <title>GIEQs Livestream Plenary Session</title>
 
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.css">
@@ -146,10 +145,6 @@ top: -20vh;
     </header>
 
     <?php
-
-
-        $debug = true;
-
 		if (isset($_GET["id"]) && is_numeric($_GET["id"])){
 			$id = $_GET["id"];
 		
@@ -168,17 +163,15 @@ top: -20vh;
 
         <body>
 
-            <?php $livepage = 'GIEQs Livestream - Complex';?>
+            <?php $livepage = 'GIEQs Livestream - Plenary';?>
 
 <div id="id" style="display:none;"><?php if ($id){echo $id;}?></div>
 <?php require (BASE_URI . '/pages/learning/pages/live/liveNav.php');?>
 <div class="main-content">
     <!-- Navbar warning -->
- <?php 
-     
-     if ($liveAccess){
+    <?php if ($liveAccess){
 
-        $requiredArray = ['25'];
+        $requiredArray = ['29'];
 
         //print_r($requiredArray);
 
@@ -195,39 +188,36 @@ top: -20vh;
      
      
      ?>
-     <div class="container d-flex flex-wrap align-items-lg-stretch p-2">
+  <div class="container d-flex flex-wrap align-items-lg-stretch p-2">
     <div class="col-lg-12">
     <div id="videoDisplay" class="embed-responsive embed-responsive-16by9 video-wrap">
-       <iframe src="https://player.vimeo.com/video/440461809" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+       <iframe src="https://player.vimeo.com/video/452963229" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
     </div>   
 </div>
+<!-- <div class="col-lg-3 mt-3 mb-3">
+    <iframe id="chat" src="https://vimeo.com/live-chat/439710742/4147b0b5ff" frameborder="0" style="height:100%;width:100%;min-height:400px;background-color: #162e4d;"></iframe>
+</div> -->
   
+  </div>
+</div>
 <?php  
 
     }else{
 
         echo "<div class=\"container d-flex flex-wrap align-items-lg-stretch p-2 p-lg-5\">";
-        echo '<p class="h6">You do not have access to the current complex stream.  Please contact us if you believe this is a mistake</p>';
+        echo '<p class="h6">You do not have access to the current plenary stream.  Please contact us if you believe this is a mistake</p>';
         echo '</div>';
     }
 
 
 }else{
 
-    
-
     echo "<div class=\"container d-flex flex-wrap align-items-lg-stretch p-2 p-lg-5\">";
-    echo '<p class="h6">You currently do not have access to the live streams.  Please contact us if you believe this is a mistake.</p>';
-    echo '</div>';
-
-    
+        echo '<p class="h6">You currently do not have access to the live streams.  Please contact us if you believe this is a mistake.</p>';
+        echo '</div>';
 }
- 
 
 ?>
-
-</div>
-
       
 
     <?php require BASE_URI . '/footer.php';?>

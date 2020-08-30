@@ -13,3 +13,13 @@
 
         cursor: pointer;
     }
+
+    .col-sm-6 .dropdown-item{
+
+        max-width: 100%;
+        word-wrap: break-word;
+        white-space: normal;
+    
+    }
+
+   

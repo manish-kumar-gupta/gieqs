@@ -178,7 +178,7 @@ top: -20vh;
      
      if ($liveAccess){
 
-        $requiredArray = ['25'];
+        $requiredArray = ['30'];
 
         //print_r($requiredArray);
 
@@ -198,7 +198,7 @@ top: -20vh;
      <div class="container d-flex flex-wrap align-items-lg-stretch p-2">
     <div class="col-lg-12">
     <div id="videoDisplay" class="embed-responsive embed-responsive-16by9 video-wrap">
-       <iframe src="https://player.vimeo.com/video/440461809" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+       <iframe src="https://player.vimeo.com/video/452963709" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
     </div>   
 </div>
   

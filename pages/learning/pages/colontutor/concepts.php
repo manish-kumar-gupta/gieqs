@@ -28,7 +28,7 @@
       ?>
 
     <!--Page title-->
-    <title>GIEQs Online Endoscopy Trainer - Polypectomy Videos Preview</title>
+    <title>GIEQs Online Endoscopy Trainer - Colonoscopy Theory Concepts</title>
 
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
 
@@ -229,15 +229,15 @@ background-color: rgb(238, 194, 120);
         <!--Header CHANGEME-->
 
     <div class="d-flex flex-wrap container pt-10 mt-5">
-        <div class="h1 mr-auto">Introduction to Colonoscopy Theory</div>
+        <div class="h1 mr-auto">Concepts in Colonoscopy Theory</div>
        <!--  <div class="w-50"><?php //require(BASE_URI . '/pages/learning/pages/account/memberCard.php');?></div> -->
    
 
     </div>
-    <p class="h3 gieqsGold container ">A Primer</p>
+    <p class="h3 gieqsGold container "></p>
 
     <div class="d-flex align-items-end container">
-        <p class="text-muted pl-4 mt-2">Below is a selection of lectures and interactive learning tools for those taking their first steps in colonoscopy theory.</p>
+        <p class="text-muted pl-4 mt-2">A deeper delve into the theory behind colonoscopy training.</p>
 
     </div>
 

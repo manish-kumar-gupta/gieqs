@@ -22,22 +22,27 @@
             
             
             //$currentTime = new DateTime();  //need to check Belgium time
-            $serverTimeZone = new DateTimeZone('Europe/Brussels');
+            //now requires liveNav.php to generate the next 3 lines
+            
+            /* $serverTimeZone = new DateTimeZone('Europe/Brussels');
             
             
             $currentTime = new DateTime('now', $serverTimeZone);
             
-            print_r($currentTime); // comment !forLive
+            print_r($currentTime); */ // comment !forLive
 
             //comment for live the below line !forLive
 
-            //$currentTime = new DateTime('2020-10-07 09:30:20', $serverTimeZone);
-            $currentTime = new DateTime('2020-10-08 09:30:20', $serverTimeZone);
+            //$currentTime = new DateTime('2020-10-08 09:30:20', $serverTimeZone);
 
             //$print_r()
 
-            print_r($currentTime); // comment !forLive
-            echo ' is current test time'; // comment !forLive
+            if ($liveTest){
+
+            //print_r($currentTime); // comment !forLive
+            echo 'test ' . date_format($currentTime,"d/m/Y H:i") . ' is current test time'; // comment !forLive
+
+            }
 
             $data = json_decode(file_get_contents('php://input'), true);
 

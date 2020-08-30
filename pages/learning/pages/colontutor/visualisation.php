@@ -225,7 +225,7 @@ background-color: rgb(238, 194, 120);
 
         <!--Header CHANGEME-->
 
-    <div class="d-flex flex-wrap container pt-10">
+    <div class="d-flex flex-wrap container pt-10 mt-5">
         <div class="h1 mr-auto">Mucosal Visualisation</div>
         <nav aria-label="breadcrumb" class="align-self-center">
                             <ol class="breadcrumb breadcrumb-links p-0 m-0">
@@ -293,7 +293,7 @@ background-color: rgb(238, 194, 120);
     
     <!-- Purpose JS -->
     
-   <?php echo BASE_URL . "/assets/js/generaljs.js"?>></script>
+    <script src="<?php echo BASE_URL . "/assets/js/generaljs.js"?>"></script>
     <script>
     var videoPassed = $("#id").text();
                     </script>

@@ -25,10 +25,14 @@
 
       $users = new users;
 
+      $page_title = "Introduction to Managing Pathology";
+
       ?>
 
     <!--Page title-->
-    <title>GIEQs Online Endoscopy Trainer - Simple Cases</title>
+
+
+    <title>GIEQs Online Endoscopy Trainer - <?php echo $page_title;?></title>
 
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
 
@@ -228,8 +232,8 @@ background-color: rgb(238, 194, 120);
 
         <!--Header CHANGEME-->
 
-    <div class="d-flex flex-wrap container pt-10">
-        <div class="h1 mr-auto">Simple Colonoscopy Cases</div>
+    <div class="d-flex flex-wrap container pt-10 mt-5">
+        <div class="h1 mr-auto"><?php echo $page_title;?></div>
        <!--  <div class="w-50"><?php //require(BASE_URI . '/pages/learning/pages/account/memberCard.php');?></div> -->
    
 
