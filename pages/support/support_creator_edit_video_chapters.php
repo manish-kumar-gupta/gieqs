@@ -168,15 +168,15 @@ top: -20vh;
           <div class="card">
             <div class="card-body p-5">
               <!-- Topic header -->
-              <h2 class="mb-2">Adding User Permissions for GIEQs digital</h2>
-              <p class="lead mb-0">For the doctors sessions and nursing session adding permissions is easy.</p>
+              <h2 class="mb-2">Editing videos chapters and tags for GIEQs Learning</h2>
+              <p class="lead mb-0">Properly tagging and chaptering a video is the key to the GIEQs online learning experience.</p>
               <div class="media align-items-center mt-4">
                 <a href="#!" class="avatar avatar-sm rounded-circle mr-3">
                   <img alt="Image placeholder" src="<?php echo BASE_URL;?>/assets/img/icons/people/white-male.png"">
                 </a>
                 <div class="media-body">
                   <span class="h6 mb-0">David Tate</span>
-                  <span class="text-sm text-muted">16th August 2020</span>
+                  <span class="text-sm text-muted">31st August 2020</span>
                 </div>
               </div>
               <!-- <div class="d-flex align-items-center mt-4">
@@ -193,8 +193,22 @@ top: -20vh;
               </div> -->
               <!-- Topic body -->
               <article class="mt-5">
-                <p>To access the live stream for GIEQs digital each participant must have a user account for GIEQs online.</p>
-               
+                <p>The video below shows you how to add chapters to videos on GIEQs online</p>
+                
+                <h5>This video shows you the basics</h5>
+                
+                  <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/453408855" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                </div>
+                  <figcaption class="mt-3 text-muted"><p><a href="https://vimeo.com/453408855/a077212070">Creator Video Chapter Tagging GIEQs Learning</a> from <a href="https://vimeo.com/user67134812">David</a> on <a href="https://vimeo.com">Vimeo</a>.</p></figcaption>
+                  
+                
+                <h4>Frequent Questions</h4>
+
+                <h5>Why can I not add tag categories or new tags?</h5>
+                <p>The tags and tag categories govern the running of the site.  Therefore we ask that you don't modify them but discuss them with the managing users</p>
+
+                
               </article>
             </div>
             <div class="card-footer px-5 py-4 bg-lighter border-0 delimiter-top">

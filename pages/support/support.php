@@ -173,7 +173,7 @@ top: -20vh;
               <h5 class="mt-5 mb-0"><a href="#">GIEQs digital</a></h5>
             </div>
             <div class="list-group list-group-sm list-group-flush">
-              <a href="#" class="list-group-item list-group-item-action">Navigate the congress</a>
+              <a href="#" class="list-group-item list-group-item-action disabled">Navigate the congress</a>
               
             </div>
             <div class="card-footer d-flex align-items-center justify-content-between">
@@ -199,7 +199,7 @@ top: -20vh;
               <h5 class="mt-5 mb-0"><a href="#">My account</a></h5>
             </div>
             <div class="list-group list-group-sm list-group-flush">
-              <a href="#" class="list-group-item list-group-item-action">Update my profile</a>
+              <a href="#" class="list-group-item list-group-item-action disabled">Update my profile</a>
             
             </div>
             <div class="card-footer d-flex align-items-center justify-content-between">
@@ -228,8 +228,8 @@ top: -20vh;
             </div>
             <div class="list-group list-group-sm list-group-flush">
               <a href="<?php echo BASE_URL;?>/pages/support/support_admin_user_add_permissions.php" class="list-group-item list-group-item-action">Add user permissions (GIEQs digital)</a>
-              <a href="#" class="list-group-item list-group-item-action">Reset user account</a>
-              <a href="#" class="list-group-item list-group-item-action">Reset user password</a>
+              <a href="#" class="list-group-item list-group-item-action disabled">Reset user account</a>
+              <a href="#" class="list-group-item list-group-item-action disabled">Reset user password</a>
             </div>
             <div class="card-footer d-flex align-items-center justify-content-between">
               <div>
@@ -257,19 +257,19 @@ top: -20vh;
               <h5 class="mt-5 mb-0"><a href="#">Creator Tools (GIEQs Online)</a></h5>
             </div>
             <div class="list-group list-group-sm list-group-flush">
-              <a href="#" class="list-group-item list-group-item-action">Add new video</a>
-              <a href="#" class="list-group-item list-group-item-action">Edit video chapters</a>
-              <a href="#" class="list-group-item list-group-item-action">Tag a video</a>
+              <a href="#" class="list-group-item list-group-item-action disabled">Add new video</a>
+              <a href="<?php echo BASE_URL;?>/pages/support/support_creator_edit_video_chapters.php" class="list-group-item list-group-item-action">Edit video chapters</a>
+              <a href="#" class="list-group-item list-group-item-action disabled">Tag a video</a>
             </div>
             <div class="card-footer d-flex align-items-center justify-content-between">
               <div>
-                <a href="#!" class="text-sm text-muted">
+                <a href="#!" class="text-sm text-muted disabled">
                   <i class="fas fa-edit mr-2"></i>see more topics
                 </a>
               </div>
               <div class="text-right">
                 <div class="actions">
-                  <a href="#!" class="action-item"><i class="fas fa-angle-right"></i></a>
+                  <a href="#!" class="action-item disabled"><i class="fas fa-angle-right"></i></a>
                 </div>
               </div>
             </div>

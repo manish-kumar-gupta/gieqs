@@ -46,6 +46,7 @@
               if (!isset($_SESSION['user_id']) || ($_SESSION['siteKey'] != 'TxsvAb6KDYpmdNk')){
 
             ?>
+             
 
             <li class="nav-item">
               <a class="nav-link" title="Login" href="<?php echo BASE_URL . '/pages/authentication/login.php'?>"><i class="fas fa-user-plus"></i></a>
@@ -102,7 +103,9 @@
               
 
             ?>
-            
+            <li class="nav-item">
+                <a class="nav-link mr-4" href="<?php echo BASE_URL;?>/pages/support/support.php">Support</a>
+              </li>
               <li class="nav-item dropdown">
                 <a class="nav-link pr-0" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="fas fa-user-circle"></i>
