@@ -184,13 +184,13 @@ $requiredUserLevel = 3;
      ?>
             <div class="container d-flex flex-wrap align-items-lg-stretch p-2 p-lg-5">
                 <div class="col-lg-6">
-                    <div class="card mb-0 tagCard" style="height:50vh; overflow:hidden;">
+                    <div class="card mb-0 p-2 tagCard" style="height:25vh; overflow:hidden;">
                         <div class="card-header tagCardHeader mb-0">
 
                             <span class="h6">Tags <br /></span><span class="text-sm"></span><span
                                 class="text-sm text-right"></span>
                         </div>
-                        <div class="card-body mt-0 p-0">
+                        <div class="card-body mt-0 p-2">
 
                             <div id="tagsDisplay" class="p-2 d-flex flex-wrap">
 
@@ -253,7 +253,6 @@ $requiredUserLevel = 3;
 
 
 
-            <?php require BASE_URI . '/footer.php';?>
 
             <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
             <!-- <script src="assets/js/purpose.core.js"></script> -->
@@ -490,7 +489,7 @@ $requiredUserLevel = 3;
         console.log(element);
        
     }, 5000);
-}($('#tagsDisplay').prepend('<span class="animated rubberBand badge even-larger-badge bg-gieqsGold text-dark mx-2 my-2" id="tag' + x + '">' + tagName + '</span>')));
+}($('#tagsDisplay').prepend('<span class="animated rubberBand badge even-larger-badge bg-gieqsGold text-dark mx-2 my-2" id="tag' + x + '" style="max-width:100%; text-align:justify; white-space:normal;">' + tagName + '</span>')));
 
                    
 

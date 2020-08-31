@@ -10,6 +10,7 @@ require (BASE_URI.'/assets/scripts/headerScript.php');
 
 //echo 'hello3';sss
 $general = new general;
+$userFunctions = new userFunctions;
 //echo 'hello4';
 
 
@@ -157,6 +158,21 @@ if (count($data) > 0){
 	
 	if ($update == 0){
 		
+
+		if ($data['table'] == 'users'){
+
+			$desiredUserName = $data['email'];
+    
+			$userExists = $userFunctions->userExists($desiredUserName);
+			
+			if ($userExists){
+
+				echo 'User NOT CREATED.  Username already exists';
+				exit();
+
+			}
+
+		}
 
 		unset($data['update']);
 		unset($data['table']);
