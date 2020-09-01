@@ -478,7 +478,7 @@ var request2 = $.ajax({
         //$('#videoCards').html("<div class=\"d-flex align-items-center\"><strong>Loading...</strong><div class=\"spinner-border ml-auto\" role=\"status\" aria-hidden=\"true\"></div></div>");
 
     },
-    url: siteRoot + "pages/learning/scripts/getTagStructure.php",
+    url: siteRoot + "pages/learning/scripts/getTagStructurev2.php",
     type: "POST",
     contentType: "application/json",
     data: jsonString,
