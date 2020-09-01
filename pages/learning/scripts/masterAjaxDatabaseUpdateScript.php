@@ -10,6 +10,13 @@ function hash_password($password, $salt) {
     return hash('sha512', $salted_password);
 }
 
+//must require a login
+//creator level
+$requiredUserLevel = 3;
+
+require BASE_URI . '/pages/learning/includes/head.php';
+
+
 
 /* if (!isset($_SESSION['user_id'])) {
 			 		

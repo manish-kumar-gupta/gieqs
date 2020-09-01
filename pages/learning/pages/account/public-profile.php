@@ -18,7 +18,7 @@ error_reporting(E_NONE);
       $requiredUserLevel = 6;
 
 
-      require BASE_URI . '/pages/learning/includes/head.php';
+      require BASE_URI . '/headNoPurposeCore.php';
 
       function time_elapsed_string($datetime, $full = false) {
         $now = new DateTime;
@@ -217,7 +217,7 @@ top: -20vh;
 
     <div id="id" style="display:none;"><?php if ($id){echo $id;}?></div>
 
-    <section class="header-account-page bg-dark-dark d-flex align-items-end">
+    <section class="pt-10 bg-dark-dark d-flex align-items-end">
       <!-- Header container -->
       <div class="container mt-4 pt-0 pt-lg-0">
         <div class="row justify-content-end">
@@ -235,7 +235,8 @@ top: -20vh;
       <div class="container">
         <div class="row">
           <div class="col-lg-4">
-            <div data-toggle="sticky" data-sticky-offset="30" data-negative-margin=".card-profile-cover">
+            <div>
+              <!-- <div data-toggle="sticky" data-sticky-offset="200" data-negative-margin=".card-profile-cover">-->
               <div class="card card-profile border-0">
                 <div class="card-profile-cover">
                   <img alt="Image placeholder" src="<?php echo BASE_URL;?><?php if ($users->getgender() == 1){echo "/assets/img/icons/people/white-female.png";}?><?php if ($users->getgender() == 2){echo "/assets/img/icons/people/white-male.png";}?>" class="card-img-top">
@@ -728,6 +729,7 @@ top: -20vh;
 
     <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
     <!-- <script src="assets/js/purpose.core.js"></script> -->
+    <script src="<?php echo BASE_URL;?>/assets/js/purpose.core.js"></script>
     <!-- Page JS -->
     <script src="assets/libs/swiper/dist/js/swiper.min.js"></script>
     <script src="<?php echo BASE_URL;?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
@@ -737,7 +739,9 @@ top: -20vh;
     <!-- Google maps -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBuyKngB9VC3zgY_uEB-DKL9BKYMekbeY"></script>
     <!-- Purpose JS -->
+    
     <script src="<?php echo BASE_URL;?>/assets/js/purpose.js"></script>
+    
     <!-- <script src="assets/js/generaljs.js"></script> -->
     <script src="assets/js/demo.js"></script>
     <script>

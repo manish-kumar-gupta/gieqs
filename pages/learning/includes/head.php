@@ -1,8 +1,19 @@
+ <!--META DATA-->
+ <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description"
+        content="GIEQs learning is a digital repository and online learning platform focussed on promoting quality in endoscopy via deconstructed learning.  The content is focussed on simple endoscopic techniques that many practitioners are performing everyday">
+    <meta name="author" content="David Tate">
+    <meta name="keywords" content="virtual, virtual learning, online learning, online endoscopy learning, colonoscopy technique, loops, pain, difficult colonoscopy, learning, deconstructed learning, how to do polypectemoy, training in endoscopy, training, how to do colonoscopy, colonoscopy, gastroscopy, ERCP, quality, polyp, colon cancer, polypectomy, EMR, endoscopic imaging, colorectal cancer, endoscopy, gieqs, GIEQS, digital endoscopy event, digital symposium, ghent, gent, endoscopy quality, quality in endoscopy, COVID-19, coronavirus">
+ 
+
 <?php
 	
     //error_reporting;
  
     //print_r($_SESSION);
+
+    
 
      require (BASE_URI . '/assets/scripts/login_functions.php');
      
@@ -20,14 +31,7 @@
      //$registrationURL = 'https://eu.eventscloud.com/200200203';
  ?>
 
- <!--META DATA-->
- <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description"
-        content="GIEQs learning is a digital repository and online learning platform focussed on promoting quality in endoscopy via deconstructed learning.  The content is focussed on simple endoscopic techniques that many practitioners are performing everyday">
-    <meta name="author" content="David Tate">
-    <meta name="keywords" content="online learning, colonoscopy technique, loops, pain, difficult colonoscopy, learning, deconstructed learning, how to do polypectemoy, training in endoscopy, training, how to do colonoscopy, colonoscopy, gastroscopy, ERCP, quality, polyp, colon cancer, polypectomy, EMR, endoscopic imaging, colorectal cancer, endoscopy, gieqs, GIEQS, digital endoscopy event, digital symposium, ghent, gent, endoscopy quality, quality in endoscopy">
- 
+
  <!-- Favicon -->
  <link rel="icon" href="<?php echo BASE_URL;?>/assets/img/brand/favicongieqs.png" type="image/png">
     <!-- Font Awesome 5 -->

@@ -982,11 +982,11 @@ top: -20vh;
                       <div class="my-4">
                         <div class="custom-control custom-checkbox mb-3">
                           <input type="checkbox" name="checkterms" class="custom-control-input" id="checkterms">
-                          <label class="custom-control-label" for="checkterms">I agree to the <a href="#">terms and conditions</a></label>
+                          <label class="custom-control-label" for="checkterms">I agree to the <a href="<?php echo BASE_URL;?>/pages/support/support_gieqs_terms_and_conditions.php" target="_blank">terms and conditions</a></label>
                         </div>
                         <div class="custom-control custom-checkbox">
                           <input type="checkbox" name="checkprivacy" class="custom-control-input" id="checkprivacy">
-                          <label class="custom-control-label" for="checkprivacy">I agree to the <a href="#">privacy policy</a></label>
+                          <label class="custom-control-label" for="checkprivacy">I agree to the <a href="<?php echo BASE_URL;?>/pages/support/support_gieqs_privacy_policy.php" target="_blank">privacy policy</a></label>
                         </div>
                       </div>
                       

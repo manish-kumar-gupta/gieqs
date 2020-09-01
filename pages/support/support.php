@@ -216,6 +216,35 @@ top: -20vh;
             </div>
           </div>
         </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="card">
+            <div class="card-body text-center">
+              <a href="#!">
+                <img alt="Image placeholder" src="<?php echo BASE_URL;?>/assets/img/svg/illustrations/financial-data.svg" class="img-fluid img-center" style="height:90px;">
+              </a>
+              <h5 class="mt-5 mb-0"><a href="#">Legal and Privacy</a></h5>
+            </div>
+            <div class="list-group list-group-sm list-group-flush">
+              <a href="<?php echo BASE_URL;?>/pages/support/support_gieqs_terms_and_conditions.php" class="list-group-item list-group-item-action">Terms and Conditions</a>
+              <a href="<?php echo BASE_URL;?>/pages/support/support_gieqs_privacy_policy.php" class="list-group-item list-group-item-action">Privacy Policy</a>
+              <a href="<?php echo BASE_URL;?>/pages/support/support_gieqs_online_terms.php" class="list-group-item list-group-item-action">GIEQs Online Terms</a>
+
+            
+            </div>
+            <div class="card-footer d-flex align-items-center justify-content-between">
+              <div>
+                <a href="#!" class="text-sm text-muted disabled">
+                  <i class="fas fa-edit mr-2"></i>see more topics
+                </a>
+              </div>
+              <div class="text-right">
+                <div class="actions">
+                  <a href="#!" class="action-item"><i class="fas fa-angle-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 <?php        if (isset($_SESSION['user_id']) && ($_SESSION['siteKey'] == 'TxsvAb6KDYpmdNk') && ($_SESSION['access_level'] == '1' || $_SESSION['access_level'] == '2') || $_SESSION['access_level'] == '3'){?>
 
         <div class="col-lg-4 col-md-6">
@@ -275,6 +304,8 @@ top: -20vh;
             </div>
           </div>
         </div>
+
+
         <?php }?>
         <!-- <div class="col-lg-4 col-md-6">
           <div class="card">

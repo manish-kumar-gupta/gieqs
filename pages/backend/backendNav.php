@@ -6,7 +6,24 @@
               </a>
               <div class="btn-group btn-group-nav shadow ml-auto" role="group" aria-label="Basic example">
                 
-              <div class="btn-group" role="group">
+                <div class="btn-group" role="group">
+                  <button id="btn-group-listing" type="button" class="btn btn-neutral btn-icon rounded-right" data-toggle="dropdown" data-offset="0,8" aria-haspopup="true" aria-expanded="false">
+                    <span class="btn-inner--icon"><i class="fas fa-list-ul"></i></span>
+                    <span class="btn-inner--text d-none d-sm-inline-block">Live</span>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow" aria-labelledby="btn-group-settings">
+                    <?php if ($currentUserLevel < 4){?>
+                    <h6 class="dropdown-header">Tagging</h6>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/live/generate_tags_live.php">Tagging Live Screen</a>
+                    <?php }?>
+                    <?php if ($currentUserLevel < 4){?>
+                      <h6 class="dropdown-header">Materials</h6>
+                      <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/live/generate_materials_live.php">Materials Live Screen</a>
+                      <?php }?>
+                    
+                  </div>
+                </div>
+                <div class="btn-group" role="group">
                   <button id="btn-group-listing" type="button" class="btn btn-neutral btn-icon rounded-right" data-toggle="dropdown" data-offset="0,8" aria-haspopup="true" aria-expanded="false">
                     <span class="btn-inner--icon"><i class="fas fa-list-ul"></i></span>
                     <span class="btn-inner--text d-none d-sm-inline-block">Programme</span>
