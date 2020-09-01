@@ -212,7 +212,7 @@ background-color: rgb(238, 194, 120);
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
                             <span class="sessionTitle h5">Introduction to Nursing Symposium</span><br />
-                            <span class="sessionSubtitle"></span>
+                            <span class="sessionSubtitle text-white">Tania Helleputte - Head Nurse, UZ Gent Endoscopy Unit</span>
                         </div>
 
                         
@@ -230,7 +230,8 @@ background-color: rgb(238, 194, 120);
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
                         <span class="sessionTitle h5">The Endoscopy Unit of 2020</span><br />
                             <span class="sessionSubtitle">Set-up, Equipment, Disinfection and Staffing
-    </span>
+    </span>                            <span class="sessionSubtitle text-white"><br/>Anick Van Doorsselaer / Evy De Smaele - Nurses UZ Gent Endoscopy Unit</span>
+
                             
                         </div>
 
@@ -243,13 +244,15 @@ background-color: rgb(238, 194, 120);
                     <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
 
                         <div class="col-3 p-1 pb-3 pt-3 border-right">
-                            <span class="tiny" style="color: rgb(238, 194, 120);">0920-1000</span>
+                            <span class="tiny" style="color: rgb(238, 194, 120);">0920-0945</span>
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
                         
     <span class="sessionTitle h5">Endoscopy Nursing Consultations</span><br />
                             <span class="sessionSubtitle">Improving Preparation, Attendance and Managing Anticoagulants</span>
+                        </span>                            <span class="sessionSubtitle text-white"><br/>Karolien Haenebalcke / Tine Logghe - Nurses UZ Gent Endoscopy Unit</span>
+
                         </div>
 
                         
@@ -261,12 +264,14 @@ background-color: rgb(238, 194, 120);
                     <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
 
                         <div class="col-3 p-1 pb-3 pt-3 border-right">
-                            <span class="tiny" style="color: rgb(238, 194, 120);">1000-1015</span>
+                            <span class="tiny" style="color: rgb(238, 194, 120);">0945-1015</span>
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
                             <span class="sessionTitle h5">Best Practice Endoscopy Nursing - Preparation</span><br />
                             <span class="sessionSubtitle">Preparation is the Key - Routine, Complex and Surviving on Call</span>
+                        </span>                            <span class="sessionSubtitle text-white"><br/>Ewoud De Munter - Nurse UZ Gent Endoscopy Unit</span>
+
                         </div>
 
                         
@@ -278,12 +283,14 @@ background-color: rgb(238, 194, 120);
                     <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
 
                         <div class="col-3 p-1 pb-3 pt-3 border-right">
-                            <span class="tiny" style="color: rgb(238, 194, 120);">1015-1045</span>
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1015-1040</span>
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
                             <span class="sessionTitle h5">Tips and Tricks in Colonoscopy and Polyps</span><br />
                             <span class="sessionSubtitle">Conscious Competence, which Polyp which Technique</span>
+                        </span>                            <span class="sessionSubtitle text-white"><br/>Jolien De Keukelaere / Thalita Van Hulle - Nurses UZ Gent Endoscopy Unit</span>
+
                         </div>
 
                         
@@ -306,12 +313,14 @@ background-color: rgb(238, 194, 120);
                     <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
 
                         <div class="col-3 p-1 pb-3 pt-3 border-right">
-                            <span class="tiny" style="color: rgb(238, 194, 120);">1100-1110</span>
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1100-1130</span>
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
                             <span class="sessionTitle h5">GI Bleeding Overview</span><br />
                             <span class="sessionSubtitle">Techniques, how to Prepare best for on Call Bleeding</span>
+                        </span>                            <span class="sessionSubtitle text-white"><br/>Maureen De Taeye / Larissa Bruggeman - Nurses UZ Gent Endoscopy Unit</span>
+
                         </div>
 
                         
@@ -323,12 +332,14 @@ background-color: rgb(238, 194, 120);
                     <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
 
                         <div class="col-3 p-1 pb-3 pt-3 border-right">
-                            <span class="tiny" style="color: rgb(238, 194, 120);">1110-1120</span>
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1130-1150</span>
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
                             <span class="sessionTitle h5">Current State of Endoscopy Nursing in Belgium</span><br />
                             <span class="sessionSubtitle">Numbers, postgraduate Course</span>
+                        </span>                            <span class="sessionSubtitle text-white"><br/>Hilde Willekens, UZ Leuven</span>
+
                         </div>
 
                         
@@ -340,12 +351,14 @@ background-color: rgb(238, 194, 120);
                     <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
 
                         <div class="col-3 p-1 pb-3 pt-3 border-right">
-                            <span class="tiny" style="color: rgb(238, 194, 120);">1120-1145</span>
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1150-1215</span>
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
                             <span class="sessionTitle h5">Reflections of a Nurse Endoscopist</span><br />
                             <span class="sessionSubtitle">How I got there, what is rewarding, current challenges</span>
+                        </span>                            <span class="sessionSubtitle text-white"><br/>Amber Prisk, Nurse Endoscopist, Cheltenham, UK</span>
+
                         </div>
 
                         
@@ -357,13 +370,15 @@ background-color: rgb(238, 194, 120);
                     <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
 
                         <div class="col-3 p-1 pb-3 pt-3 border-right">
-                            <span class="tiny" style="color: rgb(238, 194, 120);">1145-1215</span>
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1215-1240</span>
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
                             <!--TODO-->
                             <span class="sessionTitle h5">Endoscopy State of the Art</span><br />
                             <span class="sessionSubtitle">Newest and most important techniques in 2020</span>
+                        </span>                            <span class="sessionSubtitle text-white"><br/>Dr David Tate, UZ Ghent</span>
+
                         </div>
 
                         
@@ -437,7 +452,7 @@ background-color: rgb(238, 194, 120);
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
                             <span class="sessionTitle h5">Introductie verpleegkundig symposium</span><br />
-                            <span class="sessionSubtitle"></span>
+                            <span class="sessionSubtitle text-white">Tania Helleputte - Head Nurse, UZ Gent Endoscopy Unit</span>
                         </div>
 
                         
@@ -455,7 +470,7 @@ background-color: rgb(238, 194, 120);
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
                         <span class="sessionTitle h5">De endoscopische eenheid van 2020 </span><br />
                             <span class="sessionSubtitle">Opzet, materiaal, desinfectie en personeel 
-    </span>
+                            </span>                            <span class="sessionSubtitle text-white"><br/>Anick Van Doorsselaer / Evy De Smaele - Nurses UZ Gent Endoscopy Unit</span>
                            
                         </div>
 
@@ -468,13 +483,13 @@ background-color: rgb(238, 194, 120);
                     <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
 
                         <div class="col-3 p-1 pb-3 pt-3 border-right">
-                            <span class="tiny" style="color: rgb(238, 194, 120);">0920-1000</span>
+                            <span class="tiny" style="color: rgb(238, 194, 120);">0920-0945</span>
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
                         <span class="sessionTitle h5">Verpleegkundige consultaties </span><br />
                             <span class="sessionSubtitle">Voorbereiding, verbetering van aanwezigheid en aanpassing van bloedverdunners</span>
-                        
+                        </span>                            <span class="sessionSubtitle text-white"><br/>Karolien Haenebalcke / Tine Logghe - Nurses UZ Gent Endoscopy Unit</span>
                         
                         </div>
 
@@ -487,12 +502,14 @@ background-color: rgb(238, 194, 120);
                     <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
 
                         <div class="col-3 p-1 pb-3 pt-3 border-right">
-                            <span class="tiny" style="color: rgb(238, 194, 120);">1000-1015</span>
+                            <span class="tiny" style="color: rgb(238, 194, 120);">0945-1015</span>
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
                             <span class="sessionTitle h5">Best Practice Endoscopy Nursing - voorbereiding </span><br />
-                            <span class="sessionSubtitle">Voorbereiding is alles - Routine, complex en het overleven van de wacht </span>
+                            <span class="sessionSubtitle">Voorbereiding is alles - Routine, complex en het overleven van de wacht 
+                            </span>                            <span class="sessionSubtitle text-white"><br/>Ewoud De Munter - Nurse UZ Gent Endoscopy Unit</span>
+
                         </div>
 
                         
@@ -504,12 +521,14 @@ background-color: rgb(238, 194, 120);
                     <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
 
                         <div class="col-3 p-1 pb-3 pt-3 border-right">
-                            <span class="tiny" style="color: rgb(238, 194, 120);">1015-1045</span>
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1015-1040</span>
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
                             <span class="sessionTitle h5">Tips and tricks bij colonoscopie en poliepen </span><br />
-                            <span class="sessionSubtitle">Conscious Competence, welke techniek bij welke poliep </span>
+                            <span class="sessionSubtitle">Conscious Competence, welke techniek bij welke poliep 
+
+                        </span>                            <span class="sessionSubtitle text-white"><br/>Jolien De Keukelaere / Thalita Van Hulle - Nurses UZ Gent Endoscopy Unit</span>
                         </div>
 
                         
@@ -532,12 +551,15 @@ background-color: rgb(238, 194, 120);
                     <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
 
                         <div class="col-3 p-1 pb-3 pt-3 border-right">
-                            <span class="tiny" style="color: rgb(238, 194, 120);">1100-1110</span>
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1100-1130</span>
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
                             <span class="sessionTitle h5">Overzicht gastro-intestinale bloedingen </span><br />
-                            <span class="sessionSubtitle">Technieken, hoe voor te bereiden tijdens de wacht op een bloeding</span>
+                            <span class="sessionSubtitle">Technieken, hoe voor te bereiden tijdens de wacht op een bloeding
+
+                        </span>                            <span class="sessionSubtitle text-white"><br/>Maureen De Taeye / Larissa Bruggeman - Nurses UZ Gent Endoscopy Unit</span>
+
                         </div>
 
                         
@@ -549,12 +571,14 @@ background-color: rgb(238, 194, 120);
                     <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
 
                         <div class="col-3 p-1 pb-3 pt-3 border-right">
-                            <span class="tiny" style="color: rgb(238, 194, 120);">1110-1120</span>
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1130-1150</span>
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
                             <span class="sessionTitle h5">Huidige situatie endoscopische verpleegkundigen in België </span><br />
-                            <span class="sessionSubtitle">Cijfers, verpleegkundige postgraduaats</span>
+                            <span class="sessionSubtitle">Cijfers, verpleegkundige postgraduaats
+
+                        </span>                            <span class="sessionSubtitle text-white"><br/>Hilde Willekens, UZ Leuven</span>
                         </div>
 
                         
@@ -566,12 +590,14 @@ background-color: rgb(238, 194, 120);
                     <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
 
                         <div class="col-3 p-1 pb-3 pt-3 border-right">
-                            <span class="tiny" style="color: rgb(238, 194, 120);">1120-1145</span>
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1150-1215</span>
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
                             <span class="sessionTitle h5">Bedenkingen van een verpleegkundig endoscopist</span><br />
-                            <span class="sessionSubtitle">de weg naar endoscopisch verpleegkundige, tricks, uitdagingen</span>
+                            <span class="sessionSubtitle">de weg naar endoscopisch verpleegkundige, tricks, uitdagingen
+
+                        </span>                            <span class="sessionSubtitle text-white"><br/>Amber Prisk, Nurse Endoscopist, Cheltenham, UK</span>
                         </div>
 
                         
@@ -588,7 +614,9 @@ background-color: rgb(238, 194, 120);
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
                         <span class="sessionTitle h5">Endoscopy State of the Art</span><br />
-                            <span class="sessionSubtitle">Nieuwste en belangrijkste technieken in 2020</span>
+                            <span class="sessionSubtitle">Nieuwste en belangrijkste technieken in 2020
+
+                        </span>                            <span class="sessionSubtitle text-white"><br/>Dr David Tate, UZ Ghent</span>
                             
                         </div>
 
@@ -692,7 +720,7 @@ background-color: rgb(238, 194, 120);
                     <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
 
                         <div class="col-3 p-1 pb-3 pt-3 border-right">
-                            <span class="tiny" style="color: rgb(238, 194, 120);">0920-1000</span>
+                            <span class="tiny" style="color: rgb(238, 194, 120);">0920-0945</span>
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
@@ -711,7 +739,7 @@ background-color: rgb(238, 194, 120);
                     <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
 
                         <div class="col-3 p-1 pb-3 pt-3 border-right">
-                            <span class="tiny" style="color: rgb(238, 194, 120);">1000-1015</span>
+                            <span class="tiny" style="color: rgb(238, 194, 120);">0945-1015</span>
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
@@ -728,7 +756,7 @@ background-color: rgb(238, 194, 120);
                     <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
 
                         <div class="col-3 p-1 pb-3 pt-3 border-right">
-                            <span class="tiny" style="color: rgb(238, 194, 120);">1015-1045</span>
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1015-1040</span>
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
@@ -756,7 +784,7 @@ background-color: rgb(238, 194, 120);
                     <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
 
                         <div class="col-3 p-1 pb-3 pt-3 border-right">
-                            <span class="tiny" style="color: rgb(238, 194, 120);">1100-1110</span>
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1100-1130</span>
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
@@ -773,7 +801,7 @@ background-color: rgb(238, 194, 120);
                     <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
 
                         <div class="col-3 p-1 pb-3 pt-3 border-right">
-                            <span class="tiny" style="color: rgb(238, 194, 120);">1110-1120</span>
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1130-1150</span>
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">
@@ -790,7 +818,7 @@ background-color: rgb(238, 194, 120);
                     <div class="row text-center align-middle border-left border-right border-bottom bg-dark">
 
                         <div class="col-3 p-1 pb-3 pt-3 border-right">
-                            <span class="tiny" style="color: rgb(238, 194, 120);">1120-1145</span>
+                            <span class="tiny" style="color: rgb(238, 194, 120);">1150-1215</span>
                         </div>
 
                         <div class="col-9 p-1 pb-3 pt-3 border-right">

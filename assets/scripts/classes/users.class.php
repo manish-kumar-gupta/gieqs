@@ -472,6 +472,8 @@ $q = "UPDATE `users` SET $implodeArray WHERE `user_id` = '$this->user_id'";
 	return $keys;
 	}
 
+	
+
 	/**
 	 * @return user_id - int(10)
 	 */
