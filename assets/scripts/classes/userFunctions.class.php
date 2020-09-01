@@ -191,9 +191,79 @@ Class userFunctions {
 					
 			}
 
-			
+			public function isSuperuser ($userid){
+		
+				$q = "SELECT `access_level` FROM `users` WHERE `user_id` = $userid";
+				
+				$result = $this->connection->RunQuery($q);
+
+				$nRows = $result->rowCount();
+
+				if ($nRows == 1){
+				
+					while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+						$access_level = $row['access_level'];
+		
+		
+					}
+
+					if ($access_level == 1){
+
+						return true;
+					}else{
+
+						return false;
+					}
+
+				}else{
+
+					return false;
+				}
+				
+				
+				
+			}
+
+			public function isStaff ($userid){
+		
+				$q = "SELECT `access_level` FROM `users` WHERE `user_id` = $userid";
+				
+				$result = $this->connection->RunQuery($q);
+
+				$nRows = $result->rowCount();
+
+				if ($nRows == 1){
+				
+					while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+						$access_level = $row['access_level'];
+		
+		
+					}
+
+					if ($access_level < 4){
+
+						return true;
+					}else{
+
+						return false;
+					}
+
+				}else{
+
+					return false;
+				}
+				
+				
+				
+			}
 
 	public function recentUserLogin($userid){
+
+		//if superuser return ok
+
+		
 
 		//if the user has had activity within 15 minutes deny second attempt
 		//unless logged out (logout in sessionid)
@@ -246,8 +316,13 @@ Class userFunctions {
 
 
 					}
-					
-					if ($sessionid == 99){
+
+					if ($this->isStaff($userid)){
+
+						return true;  //staff yes or no
+						
+			
+					}else if ($sessionid == 99){
 
 						return true; //allow login due to last action logout
 
