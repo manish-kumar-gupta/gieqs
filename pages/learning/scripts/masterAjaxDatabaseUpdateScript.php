@@ -12,9 +12,9 @@ function hash_password($password, $salt) {
 
 //must require a login
 //creator level
-$requiredUserLevel = 3;
+/* $requiredUserLevel = 3;
 
-require BASE_URI . '/pages/learning/includes/head.php';
+require BASE_URI . '/pages/learning/includes/head.php'; */
 
 
 
