@@ -124,6 +124,9 @@ class navigator {
 
 	public function generateNavigationSingleDisabledQuery($categories, $tagsRequired, $debug, $active='1'){ //USED TO GENERATE THE VIDEOS THAT MATCH THE SELECTED TAGS
 
+
+		//this is used
+
 		if ($debug){
 			echo '<br/><br/>';
 			echo 'Function getVideoData inputs:';
@@ -159,6 +162,7 @@ class navigator {
 			$query_where .= "WHERE (a.`active` = '$active' $extra_active) AND ";
 
 			foreach ($categories as $key=>$value){
+
 
 				if ($y == 1 AND $y == $howManyTagCategories){
 
@@ -219,7 +223,7 @@ class navigator {
 	
 			//echo query_where;
 
-		}else{
+		}else{ //nothing is selected as a filter
 
 
 			$howManyTagCategories = count($categories);
@@ -230,9 +234,24 @@ class navigator {
 
 			foreach ($categories as $key=>$value){
 
-				if ($y == 1){
+
+				if ($debug){
+
+					echo $y . ' is \$y';
+					echo $howManyTagCategories . ' is \$howManyTagCategories';
+				}
+
+				if ($y == 1 AND $y == $howManyTagCategories){
+
+					$query_where .= "(e.`id` = '$value') ";
+
+				}
+				
+				else if ($y == 1 AND $y < $howManyTagCategories){
 
 				$query_where .= "(e.`id` = '$value' OR ";
+
+				
 
 				}else if ($y == $howManyTagCategories){
 
@@ -562,6 +581,10 @@ class navigator {
 			$howManyCategories = count($tagsRequired);
 
 			$howManyTagCategories = count($categories);
+
+			
+
+			
 	
 			$x=1;
 			$y=1;
@@ -634,16 +657,31 @@ class navigator {
 
 
 			$howManyTagCategories = count($categories);
-	
+
+			
 			$y=1;
 
 			$query_where .= "WHERE (a.`active` = '$active' $extra_active) AND ";
 
 			foreach ($categories as $key=>$value){
 
-				if ($y == 1){
+				if ($debug){
+
+					echo $y . ' is \$y';
+					echo $howManyTagCategories . ' is \$howManyTagCategories';
+				}
+
+				if ($y == 1 AND $y == $howManyTagCategories){
+
+					$query_where .= "(e.`id` = '$value') ";
+
+				}
+				
+				else if ($y == 1 AND $y < $howManyTagCategories){
 
 				$query_where .= "(e.`id` = '$value' OR ";
+
+				
 
 				}else if ($y == $howManyTagCategories){
 

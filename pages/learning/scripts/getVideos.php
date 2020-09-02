@@ -5,7 +5,7 @@ $openaccess = 1;
 
 require '../includes/config.inc.php';
 
-$debug = FALSE;
+$debug = true;
 
 require (BASE_URI . '/assets/scripts/login_functions.php');
      

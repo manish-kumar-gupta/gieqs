@@ -6,7 +6,7 @@
 			
             require ('../includes/config.inc.php');		
             
-            $debug = false;
+            $debug = true;
 			
 			//require (BASE_URI.'/scripts/headerCreatorV2.php');
 		
