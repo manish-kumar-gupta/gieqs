@@ -276,8 +276,8 @@
                                 
 
                                    echo '
-                            <div class="row fade" id="row-' . $programmeDate->format('l') . '-' . $session1data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '" tabindex="-1" role="dialog" aria-labelledby="row-change-username" aria-hidden="true">
-                                <div class="row-dialog row-lg row-dialog-centered" role="document">
+                            <div class="row" id="row-' . $programmeDate->format('l') . '-' . $session1data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '" tabindex="-1" role="dialog" aria-labelledby="row-change-username" aria-hidden="true">
+                                <div class="row-lg row-dialog-centered">
                                     <form>';
                                     ?>
                                     <div class="row-content bg-dark border" style="border-color:rgb(238, 194, 120) !important;">
