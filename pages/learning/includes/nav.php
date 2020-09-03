@@ -270,6 +270,8 @@ function endsWith($haystack, $needle)
                                         Bolus Obstruction</a>
                                     <a class="dropdown-item"
                                         href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/dilatation.php">Dilatation</a>
+                                        <a class="dropdown-item"
+                                        href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/stenting.php">Stenting</a>
 
                                     <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);"></a>
 
@@ -567,6 +569,10 @@ function endsWith($haystack, $needle)
                         <a class="dropdown-item"
                             href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/dilatation.php"><i
                                 class="fas fa-columns"></i>Dilatation</a>
+
+                                <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/stenting.php"><i
+                                class="fas fa-columns"></i>Stenting</a>
 
 
                         <div class="dropdown-divider"></div>
