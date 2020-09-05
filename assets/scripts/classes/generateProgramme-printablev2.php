@@ -280,7 +280,7 @@
                                     $programmeDate = new DateTime($response[0]['date']);
 
 
-                                    echo '<div class="col-5 p-1 pb-3 pt-3 border-right" style="cursor:pointer !important;" data-toggle="modal" data-target="#modal-' . $programmeDate->format('l') . '-' . $session1data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
+                                    echo '<div class="col-5 p-1 pb-3 pt-3 border-right" style="cursor:pointer !important;"  data-target="#modal-' . $programmeDate->format('l') . '-' . $session1data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
                                     <span class="sessionTitle h5">' . $session1data[0]['sessionTitle'] . '</span><br>';
 
                                     $specificSessionModerators = $programmeReports->generateModeratorsForSession($session1data[0]['sessionid']);
@@ -626,7 +626,7 @@
 
                                 $programmeDate = new DateTime($response[0]['date']);
                                 
-                            echo '<div class="col-5 p-1 pb-3 pt-3 border-right" style="cursor:pointer !important;" data-toggle="modal" data-target="#modal-' . $programmeDate->format('l') . '-' . $session2data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
+                            echo '<div class="col-5 p-1 pb-3 pt-3 border-right" style="cursor:pointer !important;"  data-target="#modal-' . $programmeDate->format('l') . '-' . $session2data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
                                     <span class="sessionTitle h5">' . $session2data[0]['sessionTitle'] . '</span><br>';
                                     $specificSessionModerators = $programmeReports->generateModeratorsForSession($session2data[0]['sessionid']);
 
@@ -1154,7 +1154,7 @@
 
                                     $programmeDate = new DateTime($response[0]['date']);
                                     
-                                    echo '<div class="col-5 p-1 pb-3 pt-3 border-right" style="cursor:pointer !important;" data-toggle="modal" data-target="#modal-' . $programmeDate->format('l') . '-' . $session1data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
+                                    echo '<div class="col-5 p-1 pb-3 pt-3 border-right" style="cursor:pointer !important;"  data-target="#modal-' . $programmeDate->format('l') . '-' . $session1data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
                                     <span class="sessionTitle h5">' . $session1data[0]['sessionTitle'] . '</span><br>';
                                     $specificSessionModerators = $programmeReports->generateModeratorsForSession($session1data[0]['sessionid']);
 
@@ -1497,7 +1497,7 @@
 
                                 $programmeDate = new DateTime($response[0]['date']);
 
-                            echo '<div class="col-5 p-1 pb-3 pt-3 border-right" style="cursor:pointer !important;" data-toggle="modal" data-target="#modal-' . $programmeDate->format('l') . '-' . $session2data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
+                            echo '<div class="col-5 p-1 pb-3 pt-3 border-right" style="cursor:pointer !important;"  data-target="#modal-' . $programmeDate->format('l') . '-' . $session2data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
                                     <span class="sessionTitle h5">' . $session2data[0]['sessionTitle'] . '</span><br>';
                                     $specificSessionModerators = $programmeReports->generateModeratorsForSession($session2data[0]['sessionid']);
 
