@@ -350,15 +350,15 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                     <p class="text-muted lead my-4">GIEQs uses our ground-breaking tagged based approach throughout to connect you with cases relevant to what you want to discover, fast.</p>
                     <p class="text-muted lead my-4">In the run up to GIEQs we will share a case every week so you can better understand the approach.</p>
 
-                    <a href="<?php echo BASE_URL;?>/polypectomy" target="_blank" class="btn bg-gieqsGold text-dark rounded-pill btn-icon mt-4">
+                    <a href="<?php echo BASE_URL;?>/artificial-intelligence" target="_blank" class="btn bg-gieqsGold text-dark rounded-pill btn-icon mt-4">
                       <span class="btn-inner--icon"><i class="fas fa-binoculars"></i></span>
-                      <span class="btn-inner--text">FREE case - Polypectomy</span>
+                      <span class="btn-inner--text">FREE case - Artifical Intelligence</span>
                     </a>
                   </div>
                 </div>
                 <div class="col-lg-6 order-lg-1">
                   <div class="position-relative" style="z-index: 10;">
-                    <a href="<?php echo BASE_URL;?>/polypectomy" target="_blank"><img alt="Image placeholder" src="<?php echo BASE_URL;?>/assets/img/learning/advertising/tagsPolypectomyV2.png" class="img-center img-fluid"></a>
+                    <a href="<?php echo BASE_URL;?>/artificial-intelligence" target="_blank"><img alt="Image placeholder" src="https://i.vimeocdn.com/video/951736614_1280x720.jpg?r=pad" class="img-center img-fluid"></a>
                   </div>
                 </div>
               </div>

@@ -17,6 +17,7 @@
             $programmeView = new programmeView;
             $programmeReports = new programmeReports;
 
+            $debug = true;
 
             //$print_r()
 
@@ -113,6 +114,9 @@
         </div>
         <div class="col-5 p-1 pb-3 pt-3 border-right">
             <span class="h4"><?php echo $programmes[0]['programmeTitle'];?></span>
+        </div>
+        <div class="col-5 p-1 pb-3 pt-3 border-right">
+            <span class="h4"><?php echo 'Complex';?></span>
         </div>
 
     </div>
@@ -235,7 +239,7 @@
 
 
                             //start row
-                            echo '<div class="row text-left align-middle border-left border-right border-bottom bg-dark">';
+                            echo '<div class="row text-left align-middle border-left border-right border-bottom ">';
                             
                             echo ' <div class="col-2 p-1 pb-3 pt-3 border-right">
                             <span class="tiny"
@@ -417,12 +421,12 @@
                                 <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                                     <form>';
                                     ?>
-    <div class="modal-content bg-dark border" style="border-color:rgb(238, 194, 120) !important;">
+    <div class="modal-content  border" style="border-color:rgb(238, 194, 120) !important;">
         <div class="modal-header">
 
             <div class="modal-title d-flex align-items-left" id="modal-title-change-username">
                 <div>
-                    <div class="icon bg-dark icon-sm icon-shape icon-info rounded-circle shadow mr-3">
+                    <div class="icon  icon-sm icon-shape icon-info rounded-circle shadow mr-3">
                         <img src="../../assets/img/icons/gieqsicon.png">
                     </div>
                 </div>
@@ -762,12 +766,12 @@
                                 <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                                     <form>';
                                     ?>
-<div class="modal-content bg-dark border" style="border-color:rgb(238, 194, 120) !important;">
+<div class="modal-content  border" style="border-color:rgb(238, 194, 120) !important;">
     <div class="modal-header">
 
         <div class="modal-title d-flex align-items-left" id="modal-title-change-username">
             <div>
-                <div class="icon bg-dark icon-sm icon-shape icon-info rounded-circle shadow mr-3">
+                <div class="icon  icon-sm icon-shape icon-info rounded-circle shadow mr-3">
                     <img src="../../assets/img/icons/gieqsicon.png">
                 </div>
             </div>
@@ -989,6 +993,8 @@
         </div>
         <div class="col-5 p-1 pb-3 pt-3 border-right">
             <span class="h4"><?php echo $programmes[0]['programmeTitle'];?></span>
+        </div><div class="col-5 p-1 pb-3 pt-3 border-right">
+        <span class="h4"><?php echo 'Complex';?></span>
         </div>
 
     </div>
@@ -1110,7 +1116,7 @@
 
 
                             //start row
-                            echo '<div class="row text-left align-middle border-left border-right border-bottom bg-dark">';
+                            echo '<div class="row text-left align-middle border-left border-right border-bottom ">';
                             
                             echo ' <div class="col-2 p-1 pb-3 pt-3 border-right">
                             <span class="tiny"
@@ -1288,12 +1294,12 @@
                                 <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                                     <form>';
                                     ?>
-    <div class="modal-content bg-dark border" style="border-color:rgb(238, 194, 120) !important;">
+    <div class="modal-content  border" style="border-color:rgb(238, 194, 120) !important;">
         <div class="modal-header">
 
             <div class="modal-title d-flex align-items-left" id="modal-title-change-username">
                 <div>
-                    <div class="icon bg-dark icon-sm icon-shape icon-info rounded-circle shadow mr-3">
+                    <div class="icon  icon-sm icon-shape icon-info rounded-circle shadow mr-3">
                         <img src="../../assets/img/icons/gieqsicon.png">
                     </div>
                 </div>
@@ -1628,12 +1634,12 @@
                                 <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                                     <form>';
                                     ?>
-<div class="modal-content bg-dark border" style="border-color:rgb(238, 194, 120) !important;">
+<div class="modal-content  border" style="border-color:rgb(238, 194, 120) !important;">
     <div class="modal-header">
 
         <div class="modal-title d-flex align-items-left" id="modal-title-change-username">
             <div>
-                <div class="icon bg-dark icon-sm icon-shape icon-info rounded-circle shadow mr-3">
+                <div class="icon  icon-sm icon-shape icon-info rounded-circle shadow mr-3">
                     <img src="../../assets/img/icons/gieqsicon.png">
                 </div>
             </div>
