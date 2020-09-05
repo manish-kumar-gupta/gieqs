@@ -149,7 +149,7 @@ class programmeReports
             INNER JOIN `sessionModerator` as b on a.`id` = b.`sessionid` 
             INNER JOIN `faculty` as c on b.`facultyid` = c.`id`
             WHERE a.`id` = $sessionid 
-            ORDER BY c.`surname` ASC
+            ORDER BY b.`id` ASC
             ";
 
             //echo $q . '<br><br>';
