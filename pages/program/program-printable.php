@@ -10,7 +10,7 @@
 
 $openaccess = 1;
 
-$debug = true;
+$debug = false;
 
 require BASE_URI . '/headNoPurposeCore.php';
 

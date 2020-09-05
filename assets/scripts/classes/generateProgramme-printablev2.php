@@ -17,7 +17,7 @@
             $programmeView = new programmeView;
             $programmeReports = new programmeReports;
 
-            $debug = true;
+            $debug = false;
 
             //$print_r()
 
@@ -1158,7 +1158,6 @@
                                     <span class="sessionTitle h5">' . $session1data[0]['sessionTitle'] . '</span><br>';
                                     $specificSessionModerators = $programmeReports->generateModeratorsForSession($session1data[0]['sessionid']);
 
-                                    //print_r($specificSessionModerators);
 
                                     echo '<h6 class="mt-2" style="color: rgb(238, 194, 120);">Moderators</h6>';
 
