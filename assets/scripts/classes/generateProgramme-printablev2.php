@@ -106,7 +106,7 @@
         </div>
     </div>
 
-    <div class="row text-center border">
+    <div class="row text-left border">
 
         <div class="col-2 p-1 pb-3 pt-3 border-right">
 
@@ -168,7 +168,7 @@
 
                             if ($timeValue == '10:45:00'){
                                 ?>
-    <div class="row text-center align-middle border-left border-right border-bottom">
+    <div class="row text-left align-middle border-left border-right border-bottom">
 
         <div class="col-12 p-2 pb-3 pt-3">
             <span class="h5" style="color: rgb(238, 194, 120);">Morning Tea | 15 minutes</span>
@@ -181,7 +181,7 @@
 
                             if ($timeValue == '12:45:00'){
                                 ?>
-    <div class="row text-center align-middle border-left border-right border-bottom">
+    <div class="row text-left align-middle border-left border-right border-bottom">
 
 
         <div class="col-12 p-2 pb-3 pt-3">
@@ -194,7 +194,7 @@
                             }
                             if ($timeValue == '15:15:00'){
                                 ?>
-    <div class="row text-center align-middle border-left border-right border-bottom">
+    <div class="row text-left align-middle border-left border-right border-bottom">
 
 
         <div class="col-12 p-2 pb-3 pt-3">
@@ -207,7 +207,7 @@
                             }
                             if ($timeValue == '17:00:00'){
                                 ?>
-    <div class="row text-center align-middle border-left border-right border-bottom">
+    <div class="row text-left align-middle border-left border-right border-bottom">
 
 
         <div class="col-12 p-2 pb-3 pt-3">
@@ -220,7 +220,7 @@
                             }
                             if ($timeValue == '19:30:00'){
                                 ?>
-    <div class="row text-center align-middle border-left border-right border-bottom">
+    <div class="row text-left align-middle border-left border-right border-bottom">
 
 
         <div class="col-12 p-2 pb-3 pt-3">
@@ -235,7 +235,7 @@
 
 
                             //start row
-                            echo '<div class="row text-center align-middle border-left border-right border-bottom bg-dark">';
+                            echo '<div class="row text-left align-middle border-left border-right border-bottom bg-dark">';
                             
                             echo ' <div class="col-2 p-1 pb-3 pt-3 border-right">
                             <span class="tiny"
@@ -562,7 +562,7 @@
 
             </div>
 
-            <div class="px-5 pt-2 mt-2 mb-2 pb-2 text-center">
+            <div class="px-5 pt-2 mt-2 mb-2 pb-2 text-left">
                 <p class="text-muted text-sm">Programme subject to variation and change without notice.</p>
             </div>
         </div>
@@ -906,7 +906,7 @@
 
         </div>
 
-        <div class="px-5 pt-2 mt-2 mb-2 pb-2 text-center">
+        <div class="px-5 pt-2 mt-2 mb-2 pb-2 text-left">
             <p class="text-muted text-sm">Programme subject to change without notice.</p>
         </div>
     </div>
@@ -982,7 +982,7 @@
         </div>
     </div>
 
-    <div class="row text-center border">
+    <div class="row text-left border">
 
         <div class="col-2 p-1 pb-3 pt-3 border-right">
 
@@ -1044,7 +1044,7 @@
 
                             if ($timeValue == '10:45:00'){
                                 ?>
-    <div class="row text-center align-middle border-left border-right border-bottom">
+    <div class="row text-left align-middle border-left border-right border-bottom">
 
         <div class="col-12 p-2 pb-3 pt-3">
             <span class="h5" style="color: rgb(238, 194, 120);">Morning Tea | 15 minutes</span>
@@ -1057,7 +1057,7 @@
 
                             if ($timeValue == '12:45:00'){
                                 ?>
-    <div class="row text-center align-middle border-left border-right border-bottom">
+    <div class="row text-left align-middle border-left border-right border-bottom">
 
 
         <div class="col-12 p-2 pb-3 pt-3">
@@ -1070,7 +1070,7 @@
                             }
                             if ($timeValue == '15:15:00'){
                                 ?>
-    <div class="row text-center align-middle border-left border-right border-bottom">
+    <div class="row text-left align-middle border-left border-right border-bottom">
 
 
         <div class="col-12 p-2 pb-3 pt-3">
@@ -1083,7 +1083,7 @@
                             }
                             //if ($timeValue == '17:00:00'){
                                 ?>
-    <!-- <div class="row text-center align-middle border-left border-right border-bottom">
+    <!-- <div class="row text-left align-middle border-left border-right border-bottom">
 
                                     
                                     <div class="col-12 p-2 pb-3 pt-3">
@@ -1096,7 +1096,7 @@
                             //}
                             if ($timeValue == '19:30:00'){
                                 ?>
-    <div class="row text-center align-middle border-left border-right border-bottom">
+    <div class="row text-left align-middle border-left border-right border-bottom">
 
 
         <div class="col-12 p-2 pb-3 pt-3">
@@ -1110,7 +1110,7 @@
 
 
                             //start row
-                            echo '<div class="row text-center align-middle border-left border-right border-bottom bg-dark">';
+                            echo '<div class="row text-left align-middle border-left border-right border-bottom bg-dark">';
                             
                             echo ' <div class="col-2 p-1 pb-3 pt-3 border-right">
                             <span class="tiny"
@@ -1431,7 +1431,7 @@
 
             </div>
 
-            <div class="px-5 pt-2 mt-2 mb-2 pb-2 text-center">
+            <div class="px-5 pt-2 mt-2 mb-2 pb-2 text-left">
                 <p class="text-muted text-sm">Programme subject to change without notice.</p>
             </div>
         </div>
@@ -1775,7 +1775,7 @@
 
         </div>
 
-        <div class="px-5 pt-2 mt-2 mb-2 pb-2 text-center">
+        <div class="px-5 pt-2 mt-2 mb-2 pb-2 text-left">
             <p class="text-muted text-sm">Programme subject to change without notice.</p>
         </div>
     </div>
