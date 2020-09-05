@@ -183,13 +183,13 @@
                                 continue;
                             }
 
-                            if ($timeValue == '12:45:00'){
+                            if ($timeValue == '11:15:00'){
                                 ?>
-    <div class="row text-left align-middle border-left border-right border-bottom">
+    <div class="row text-center align-middle border-left border-right border-bottom">
 
 
         <div class="col-12 p-2 pb-3 pt-3">
-            <span class="h5" style="color: rgb(238, 194, 120);">Lunch | 1 hour</span>
+            <span class="h5" style="color: rgb(238, 194, 120);">Lunch | 30 minutes</span>
         </div>
 
     </div>
@@ -198,11 +198,11 @@
                             }
                             if ($timeValue == '15:15:00'){
                                 ?>
-    <div class="row text-left align-middle border-left border-right border-bottom">
+    <div class="row text-center align-middle border-left border-right border-bottom">
 
 
         <div class="col-12 p-2 pb-3 pt-3">
-            <span class="h5" style="color: rgb(238, 194, 120);">Afternoon Tea | 15 minutes</span>
+            <span class="h5" style="color: rgb(238, 194, 120);">Afternoon Tea | 30 minutes</span>
         </div>
 
     </div>
@@ -1061,26 +1061,26 @@
                                 continue;
                             }
 
-                            if ($timeValue == '12:45:00'){
+                            if ($timeValue == '11:00:00'){
                                 ?>
-    <div class="row text-left align-middle border-left border-right border-bottom">
+    <div class="row text-center align-middle border-left border-right border-bottom">
 
 
         <div class="col-12 p-2 pb-3 pt-3">
-            <span class="h5" style="color: rgb(238, 194, 120);">Lunch | 1 hour</span>
+            <span class="h5" style="color: rgb(238, 194, 120);">Lunch | 30 minutes</span>
         </div>
 
     </div>
     <?php
                                 continue;
                             }
-                            if ($timeValue == '15:15:00'){
+                            if ($timeValue == '15:30:00'){
                                 ?>
-    <div class="row text-left align-middle border-left border-right border-bottom">
+    <div class="row text-center align-middle border-left border-right border-bottom">
 
 
         <div class="col-12 p-2 pb-3 pt-3">
-            <span class="h5" style="color: rgb(238, 194, 120);">Afternoon Tea | 15 minutes</span>
+            <span class="h5" style="color: rgb(238, 194, 120);">Afternoon Tea | 30 minutes</span>
         </div>
 
     </div>

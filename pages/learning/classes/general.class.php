@@ -4274,7 +4274,51 @@ return $arr;
 	
 	
 
+
+
+public function generateMaterialsStructure()
+            {
+            
+
+			$q = "SELECT a.`id`, a.`overall_category_type`, a.`long_name`, b.`vendor_name` FROM `material` as a INNER JOIN `vendor` as b ON a.`vendor` = b.`id` ORDER BY a.`overall_category_type` ASC";
+
+
+            echo $q . '<br><br>';
+
+			$rowReturn = [];
+
+            $result = $this->connection->RunQuery($q);
+            
+            $x = 0;
+            $nRows = $result->num_rows;
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch_array(MYSQLI_ASSOC)){
+
+					$rowReturn[] = $row;
+
+
+				}
+
+				foreach ($rowReturn as $key=>$value){
+
+					echo "<option value='{$value['id']}'>{$value['overall_category_type']} - {$value['vendor_name']} - {$value['long_name']}</value>";
+
+				}
+
+            } else {
+                
+
+                return false;
+            }
+
+		}
+	
+	
+
 }
+
 
 
 
