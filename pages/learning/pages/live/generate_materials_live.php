@@ -215,9 +215,9 @@ $requiredUserLevel = 3;
                 <div class="col-lg-4">
 
                 <div>
-                <a id="showStructureButton" class="action-item"><i class="fas fa-table" title="show tag structure"></i> Show Tag Structure</a>
-     </div>
-                    <label for="tags" class="mb-3 mt-3">Tags (search)</label>
+<!--                 <a id="showStructureButton" class="action-item"><i class="fas fa-table" title="show tag structure"></i> Show Materials Structure</a>
+ -->     </div>
+                    <label for="tags" class="mb-3 mt-3">Materials (search)</label>
                     <div class="input-group ">
                         <select id="tags" type="text" data-toggle="select" class="form-control" name="tags">
                             <?php
