@@ -409,7 +409,7 @@
                                     //echo the modal for the session
 
                                     
-                                    echo '</div>';
+                                   // echo '</div>';
                                 
 
                                    echo '
@@ -684,7 +684,73 @@
                                         }
                                     
                                     }
-                                    echo '</div>';
+
+                                    echo '<h6 class="mt-2" style="color: rgb(238, 194, 120);">Session Content</h6>';
+
+                                    foreach ($response as $key=>$value){
+                                        ?>
+
+
+    <div class="container">
+        <span class="sessionItemid" style="display:none;"><?php echo $value['sessionItemid'];?></span>
+        <div class="">
+            <?php 
+            
+            $sessionItemTimeFrom = new DateTime($value['sessionItemTimeFrom']);
+            $sessionItemTimeTo = new DateTime($value['sessionItemTimeTo']);
+            
+            
+            ?>
+
+
+
+            <span class="timeFrom"><?php echo $sessionItemTimeFrom->format('H:i');?></span> - <span
+                class="timeTo"><?php echo $sessionItemTimeTo->format('H:i');?></span>
+            : </span>
+
+
+            <span class="h6 sessionTitle"><?php echo $value['sessionItemTitle'];?></span>
+
+            <!--if live stream-->
+            <!--if sessionItem.live == 1-->
+            <?php if ($value['live'] == 1){?>
+            <span class="badge text-white ml-3" style="background-color:rgb(238, 194, 120) !important;">Live
+            </span>
+
+            <?php }
+                
+                                    if ($edit == 1){
+                                        echo '<span class="ml-3 editSessionItem"><i class="fas fa-edit"></i></span>';
+                                        echo '<span class="ml-3 addSessionItem"><i class="fas fa-plus"></i></span>';
+                                        echo '<span class="ml-3 deleteSessionItem"><i class="fas fa-times"></i></span>';
+                
+                                    }
+                                    ?>
+
+        </div>
+
+    </div>
+    <div class="">
+        <div class="">
+            <span class="sessionDescription text-justify"><?php echo $value['sessionItemDescription'];?></span>
+
+            <p class="pt-2 h6 faculty"><?php 
+                                    
+                                    $faculty = $sessionView->getFacultyName($value['faculty']);
+                
+                                    echo $faculty['title'] . ' ' . $faculty['firstname'] . ' ' . $faculty['surname'];
+                                    
+                                    
+                                    ?></p>
+        </div>
+    </div>
+    <hr class="m-2">
+
+    <?php }
+    echo '</div>';
+
+
+                               
 
                                     //echo the modal for the session
 
@@ -1145,7 +1211,71 @@
                                         }
                                     
                                     }
-                                    echo '</div>';
+
+                                    echo '<h6 class="mt-2" style="color: rgb(238, 194, 120);">Session Content</h6>';
+
+                                    foreach ($response as $key=>$value){
+                                        ?>
+
+
+    <div class="container">
+        <span class="sessionItemid" style="display:none;"><?php echo $value['sessionItemid'];?></span>
+        <div class="">
+            <?php 
+            
+            $sessionItemTimeFrom = new DateTime($value['sessionItemTimeFrom']);
+            $sessionItemTimeTo = new DateTime($value['sessionItemTimeTo']);
+            
+            
+            ?>
+
+
+
+            <span class="timeFrom"><?php echo $sessionItemTimeFrom->format('H:i');?></span> - <span
+                class="timeTo"><?php echo $sessionItemTimeTo->format('H:i');?></span>
+            : </span>
+
+
+            <span class="h6 sessionTitle"><?php echo $value['sessionItemTitle'];?></span>
+
+            <!--if live stream-->
+            <!--if sessionItem.live == 1-->
+            <?php if ($value['live'] == 1){?>
+            <span class="badge text-white ml-3" style="background-color:rgb(238, 194, 120) !important;">Live
+            </span>
+
+            <?php }
+                
+                                    if ($edit == 1){
+                                        echo '<span class="ml-3 editSessionItem"><i class="fas fa-edit"></i></span>';
+                                        echo '<span class="ml-3 addSessionItem"><i class="fas fa-plus"></i></span>';
+                                        echo '<span class="ml-3 deleteSessionItem"><i class="fas fa-times"></i></span>';
+                
+                                    }
+                                    ?>
+
+        </div>
+
+    </div>
+    <div class="">
+        <div class="">
+            <span class="sessionDescription text-justify"><?php echo $value['sessionItemDescription'];?></span>
+
+            <p class="pt-2 h6 faculty"><?php 
+                                    
+                                    $faculty = $sessionView->getFacultyName($value['faculty']);
+                
+                                    echo $faculty['title'] . ' ' . $faculty['firstname'] . ' ' . $faculty['surname'];
+                                    
+                                    
+                                    ?></p>
+        </div>
+    </div>
+    <hr class="m-2">
+
+    <?php }
+    echo '</div>';
+                                    //echo '</div>';
 
                                     //echo the modal for the session
 
@@ -1423,7 +1553,71 @@
                                         }
                                     
                                     }
-                                    echo '</div>';
+
+                                    echo '<h6 class="mt-2" style="color: rgb(238, 194, 120);">Session Content</h6>';
+
+                                    foreach ($response as $key=>$value){
+                                        ?>
+
+
+    <div class="container">
+        <span class="sessionItemid" style="display:none;"><?php echo $value['sessionItemid'];?></span>
+        <div class="">
+            <?php 
+            
+            $sessionItemTimeFrom = new DateTime($value['sessionItemTimeFrom']);
+            $sessionItemTimeTo = new DateTime($value['sessionItemTimeTo']);
+            
+            
+            ?>
+
+
+
+            <span class="timeFrom"><?php echo $sessionItemTimeFrom->format('H:i');?></span> - <span
+                class="timeTo"><?php echo $sessionItemTimeTo->format('H:i');?></span>
+            : </span>
+
+
+            <span class="h6 sessionTitle"><?php echo $value['sessionItemTitle'];?></span>
+
+            <!--if live stream-->
+            <!--if sessionItem.live == 1-->
+            <?php if ($value['live'] == 1){?>
+            <span class="badge text-white ml-3" style="background-color:rgb(238, 194, 120) !important;">Live
+            </span>
+
+            <?php }
+                
+                                    if ($edit == 1){
+                                        echo '<span class="ml-3 editSessionItem"><i class="fas fa-edit"></i></span>';
+                                        echo '<span class="ml-3 addSessionItem"><i class="fas fa-plus"></i></span>';
+                                        echo '<span class="ml-3 deleteSessionItem"><i class="fas fa-times"></i></span>';
+                
+                                    }
+                                    ?>
+
+        </div>
+
+    </div>
+    <div class="">
+        <div class="">
+            <span class="sessionDescription text-justify"><?php echo $value['sessionItemDescription'];?></span>
+
+            <p class="pt-2 h6 faculty"><?php 
+                                    
+                                    $faculty = $sessionView->getFacultyName($value['faculty']);
+                
+                                    echo $faculty['title'] . ' ' . $faculty['firstname'] . ' ' . $faculty['surname'];
+                                    
+                                    
+                                    ?></p>
+        </div>
+    </div>
+    <hr class="m-2">
+
+    <?php }
+    echo '</div>';
+                                    //echo '</div>';
 
                                     
 
