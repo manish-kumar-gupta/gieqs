@@ -146,6 +146,7 @@ class sessionView
             INNER JOIN `sessionModerator` as b on a.`id` = b.`sessionid`
             INNER JOIN `faculty` as c on b.`facultyid` = c.`id`
             WHERE a.`id` = '$sessionid'
+            ORDER BY b.`id` ASC
             ";
 
             //echo $q . '<br><br>';
