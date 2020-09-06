@@ -36,7 +36,7 @@ $requiredUserLevel = 3;
       ?>
 
     <!--Page title-->
-    <title>Tag Generation - GIEQs Live</title>
+    <title>Materials Generation - GIEQs Live</title>
 
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.css">
@@ -173,7 +173,7 @@ $requiredUserLevel = 3;
 
     <body>
 
-        <?php $livepage = 'Tag Generation';?>
+        <?php $livepage = 'Materials Live Generation';?>
 
         <div id="id" style="display:none;"><?php if ($id){echo $id;}?></div>
         <?php require (BASE_URI . '/pages/learning/pages/live/liveNav.php');?>
@@ -186,18 +186,18 @@ $requiredUserLevel = 3;
         
      
      ?>
-            <div class="container d-flex flex-wrap align-items-lg-stretch p-2 p-lg-5" style="max-height:60vh;">
-                <div class="col-lg-6" style="cursor:none;">
-                    <h2 class="mb-5">LIVE area, do not mouse over</h2>
-                                        <div class="card mb-0 p-2 tagCard" style="height:25vh; overflow:hidden; cursor:none;">
+            <div class="container-fluid d-flex flex-wrap align-items-lg-stretch p-2 p-lg-5" style="max-height:60vh;">
+                <div class="col-lg-5 ml-4" style="cursor:none;">
+                    <h2 class="mb-5">LIVE area</h2>
+                                        <div class="card mb-0 p-2 tagCard" style="height:35vh; overflow:hidden; cursor:none;">
                         <div class="card-header tagCardHeader mb-0">
 
-                            <span class="h6">Tags <br /></span><span class="text-sm"></span><span
+                            <span class="h6">Materials <br /></span><span class="text-sm"></span><span
                                 class="text-sm text-right"></span>
                         </div>
-                        <div id="cardBody" class="card-body mt-0 p-2">
+                        <div id="cardBodyMirror" class="card-body mt-0 p-2">
 
-                            <div id="tagsDisplay" class="p-2 d-flex flex-wrap">
+                            <div id="tagsDisplayMirror" class="p-2 d-flex flex-wrap tagsDisplay">
 
 
                                
@@ -209,15 +209,19 @@ $requiredUserLevel = 3;
 
 
                 </div>
-                <div class="col-lg-2">
+                
+                <!-- <div class="col-lg-1 border-left border-right">
 
-                </div>
-                <div class="col-lg-4">
+                </div> -->
+                <div class="col-lg-5 ml-6">
+                <h2 class="mb-0">EDIT area</h2>
+                <p class="text-muted text-sm">Use this area to edit.  Dropdown and search for tags / materials.  Delete tags by clicking them in the box below.
+                Edits here are mirrored in the box to the left.  The left box only is used for the live feed. </p>
 
                 <div>
 <!--                 <a id="showStructureButton" class="action-item"><i class="fas fa-table" title="show tag structure"></i> Show Materials Structure</a>
  -->     </div>
-                    <label for="tags" class="mb-3 mt-3">Materials (search)</label>
+                    <label for="tags" class="mb-3 mt-1">Materials (search)</label>
                     <div class="input-group ">
                         <select id="tags" type="text" data-toggle="select" class="form-control" name="tags">
                             <?php
@@ -234,7 +238,24 @@ $requiredUserLevel = 3;
 ?>
                         </select>
                     </div>
-                    <div id="table" class="mt-4" style="height: 40vh; width: 30vw; overflow-x:scroll;overflow-y:scroll;"></div>
+                    <div class="card mt-5 mb-0 p-2 tagCard" style="height:35vh; overflow:hidden;">
+                        <div class="card-header tagCardHeader mb-0">
+
+                            <span class="h6">Materials <br /></span><span class="text-sm"></span><span
+                                class="text-sm text-right"></span>
+                        </div>
+                        <div id="cardBody" class="card-body mt-0 p-2">
+
+                            <div id="tagsDisplay" class="p-2 d-flex flex-wrap tagsDisplay">
+
+
+                               
+                            </div>
+
+
+                        </div>
+                    </div>
+                <!--     <div id="table" class="mt-4" style="height: 40vh; width: 30vw; overflow-x:scroll;overflow-y:scroll;"></div> -->
 
 
                 </div>
@@ -286,6 +307,7 @@ $requiredUserLevel = 3;
             var signup = $('#signup').text();
 
             var x = 0;
+            var y = 0;
 
             function submitPreRegisterForm() {
 
@@ -373,21 +395,66 @@ $requiredUserLevel = 3;
                     var tagName = $("option:selected", this).text();
 
                     //var el = $(this);
-
+                    
+                    
+                    //for the editable box
 
                     (function () {
                         setTimeout(function () {
-                            $('#tagsDisplay').find('span').filter('#tag' + x).remove();
-                            const element = $('#tagsDisplay').find('span').filter('#tag' + x);
+                            $('#tagsDisplayMirror').find('span').filter('#tag' + x).remove();
+                            const element = $('#tagsDisplayMirror').find('span').filter('#tag' + x);
                             console.log(element);
 
                         }, 5000);
-                    }($('#tagsDisplay').prepend('<span class="animated rubberBand badge even-larger-badge bg-gieqsGold text-dark mx-2 my-2" id="tag' + x + '" style="max-width:100%; text-align:justify; white-space:normal;">' + tagName + '</span>')));
+                    }($('#tagsDisplayMirror').prepend('<span class="animated rubberBand badge even-larger-badge bg-gieqsGold text-dark mx-2 my-2" data="tag' + x + '" id="tag' + x + '" style="max-width:100%; text-align:justify; white-space:normal;">' + tagName + '</span>')));
 
 
 
-                    $('#tagsDisplay').find('span').not('#tag' + x).removeClass('bg-gieqsGold').removeClass('text-dark').removeClass('even-larger-badge').addClass('bg-secondary-dark').addClass('text-white');
-                    $('#tagsDisplay').find('span').not('#tag' + x).each(function(){
+                    $('#tagsDisplayMirror').find('span').not('#tag' + x).removeClass('bg-gieqsGold').removeClass('text-dark').removeClass('even-larger-badge').addClass('bg-secondary-dark').addClass('text-white');
+                    $('#tagsDisplayMirror').find('span').not('#tag' + x).each(function(){
+
+                        $(this).removeClass('bg-gieqsGold').removeClass('text-dark').removeClass('even-larger-badge').addClass('bg-secondary-dark').addClass('text-white');
+                        var hider= $("#cardBodyMirror"); 
+                        var height= $(hider).height(); //the height of the box
+                        var offset = $("#cardBodyMirror").offset(); // the offset of the top of the box
+                        var offset2 = $(this).offset(); //the offset of the top of the tag
+
+                        var bottomPosition = height + offset.top; //the position of the bottom of the box
+
+                        console.log( height );
+                        console.log( offset2.top );
+                        console.log( bottomPosition);
+
+                        
+                        //alert($(this).attr('class'));
+                        if( offset2.top > bottomPosition){
+
+                            $(this).hide();
+
+                        }
+                            
+
+                    })
+                    
+
+
+                    x++;
+
+                    //for the mirror (display box)
+
+                    (function () {
+                        setTimeout(function () {
+                            $('#tagsDisplay').find('span').filter('#tag' + y).remove();
+                            const element = $('#tagsDisplay').find('span').filter('#tag' + y);
+                            console.log(element);
+
+                        }, 5000);
+                    }($('#tagsDisplay').prepend('<span class="animated rubberBand badge even-larger-badge bg-gieqsGold text-dark mx-2 my-2" data="tag' + y + '" id="tag' + y + '" style="max-width:100%; text-align:justify; white-space:normal;">' + tagName + '</span>')));
+
+
+
+                    $('#tagsDisplay').find('span').not('#tag' + y).removeClass('bg-gieqsGold').removeClass('text-dark').removeClass('even-larger-badge').addClass('bg-secondary-dark').addClass('text-white');
+                    $('#tagsDisplay').find('span').not('#tag' + y).each(function(){
 
                         $(this).removeClass('bg-gieqsGold').removeClass('text-dark').removeClass('even-larger-badge').addClass('bg-secondary-dark').addClass('text-white');
                         var hider= $("#cardBody"); 
@@ -414,7 +481,7 @@ $requiredUserLevel = 3;
                     
 
 
-                    x++;
+                    y++;
 
                 })
 
@@ -422,7 +489,24 @@ $requiredUserLevel = 3;
 
                     //alert('detect');
 
-                    $(this).remove();
+                    //get the id
+
+                    var id = $(this).attr('data');
+
+                    //alert(id);
+
+                    //remove both this and the mirror
+
+/*                     $(this).remove();
+ */                    $(this).addClass('bounceOutLeft').remove();
+                    
+
+                    //remove mirror
+                    /* $("#tagsDisplayMirror").find("[data='" + id + "']").remove();  */
+                    $("#tagsDisplayMirror").find("[data='" + id + "']").addClass('bounceOutLeft').remove(); 
+                    //$('#tagsDisplay').find('span').not('#tag' + y);
+
+                    
 
 
                 })
