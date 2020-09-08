@@ -152,7 +152,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                     <img alt="Image placeholder" src="<?php echo $imageArray[array_rand($imageArray)];?>"
                         class="svg-inject img-fluid">
                 </figure>
-                <p class="text-center text-muted mt-2"><br/>* early bird fee until 7/9/2020, <br/>reductions for trainees, nurses and students</p>
+                <p class="text-center text-muted mt-2"><br/>* early bird fee EXTENDED until 24/9/2020, <br/>reductions for trainees, nurses and students</p>
             </div>
             <!-- SVG background -->
             <!--<div class="bg-absolute-cover bg-size--contain d-flex align-items-center">
