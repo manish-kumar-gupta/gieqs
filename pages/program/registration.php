@@ -230,7 +230,7 @@ $registrationURL = 'https://eu.eventscloud.com/200200203';
                                     </div>
                                     <div class="card-body">
                                         <ul class="list-unstyled mb-4">
-                                            <li>available until September 7th 2020</li>
+                                            <li>available until September 24th 2020</li>
                                             <li>Access to full programme</li>
                                             <li>GIEQs online access<sup>*</sup></li>
                                             
@@ -253,7 +253,7 @@ $registrationURL = 'https://eu.eventscloud.com/200200203';
                                     </div>
                                     <div class="card-body">
                                         <ul class="list-unstyled mb-4">
-                                            <li>available from September 7th 2020</li>
+                                            <li>available from September 24th 2020</li>
                                             <li>Access to full programme</li>
                                             <li>GIEQs online access<sup>*</sup></li>
                                         </ul>
@@ -290,7 +290,7 @@ $registrationURL = 'https://eu.eventscloud.com/200200203';
                                 </div>
                                 <div class="card-body">
                                     <ul class="list-unstyled mb-4">
-                                        <li>available until September 7th 2020</li>
+                                        <li>available until September 24th 2020</li>
                                         <li>Access to full programme</li>
                                         <li>GIEQs online access<sup>*</sup></li>
                                         
@@ -313,7 +313,7 @@ $registrationURL = 'https://eu.eventscloud.com/200200203';
                                 </div>
                                 <div class="card-body">
                                     <ul class="list-unstyled mb-4">
-                                        <li>available from September 7th 2020</li>
+                                        <li>available from September 24th 2020</li>
                                         <li>Access to full programme</li>
                                         <li>GIEQs online access<sup>*</sup></li>
                                     </ul>
@@ -347,7 +347,7 @@ $registrationURL = 'https://eu.eventscloud.com/200200203';
                                 </div>
                                 <div class="card-body">
                                     <ul class="list-unstyled mb-4">
-                                        <li>available until September 7th 2020</li>
+                                        <li>available until September 24th 2020</li>
                                         <li>Access to full programme</li>
                                         <li>GIEQs online access<sup>*</sup></li>
                                         
@@ -368,7 +368,7 @@ $registrationURL = 'https://eu.eventscloud.com/200200203';
                                 </div>
                                 <div class="card-body">
                                     <ul class="list-unstyled mb-4">
-                                        <li>available from September 7th 2020</li>
+                                        <li>available from September 24th 2020</li>
                                         <li>Access to full programme</li>
                                         <li>GIEQs online access<sup>*</sup></li>
                                     </ul>
@@ -404,7 +404,7 @@ $registrationURL = 'https://eu.eventscloud.com/200200203';
                                 </div>
                                 <div class="card-body">
                                     <ul class="list-unstyled mb-4">
-                                        <li>available until September 7th 2020</li>
+                                        <li>available until September 24th 2020</li>
                                         <li>Access to full programme</li>
                                         <li>GIEQs online access<sup>*</sup></li>
                                         
@@ -427,7 +427,7 @@ $registrationURL = 'https://eu.eventscloud.com/200200203';
                                 </div>
                                 <div class="card-body">
                                     <ul class="list-unstyled mb-4">
-                                        <li>available from September 7th 2020</li>
+                                        <li>available from September 24th 2020</li>
                                         <li>Access to full programme</li>
                                         <li>GIEQs online access<sup>*</sup></li>
                                     </ul>
