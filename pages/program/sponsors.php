@@ -324,17 +324,21 @@ width: 100%;
                     <img class="logo" alt="ESGE" src="<?php echo BASE_URL . '/assets/img/brand/bsgie.png';?>">
 
                     </div>
-                    <div class="col-lg-2 col-md-4 col-4 py-1">
+                    <div class="col-lg-3 col-md-4 col-4 py-1">
                     
+                    <a href="https://esgeconnect2020.vfairs.com/en/" target="_blank"><img class="logo" alt="ESGE connect" src="<?php echo BASE_URL . '/assets/img/brand/esgeconnect.png';?>"></a>
 
                     </div>
-                    <div class="col-lg-1 col-md-4 col-4 py-1">
+                    <div class="col-lg-2 col-md-4 col-4 py-1">
+                    <img class="logo" alt="bsg" src="<?php echo BASE_URL . '/assets/img/brand/bsg.png';?>">
 
                     </div>
-                    <div class="col-lg-1 col-md-4 col-4 py-1">
+                    <div class="col-lg-2 col-md-4 col-4 py-1">
+
+                    <img class="logo" alt="asge" src="<?php echo BASE_URL . '/assets/img/icons/asge.png';?>">
 
                     </div>
-                    <div class="col-lg-1 col-md-4 col-4 py-1">
+                    <div class="col-lg-3 col-md-4 col-4 py-1">
 
                     </div>
 
