@@ -1623,6 +1623,12 @@ processResults: function(data) {
         $(document).find('#<?php echo $databaseName;?>-form').find('.reset-activity').prop('disabled', true);
         $(document).find('#<?php echo $databaseName;?>-form').find('#registrations').prop('disabled', true);
 
+        //as per Seauton request
+
+        $(document).find('#<?php echo $databaseName;?>-form').find('#timezone').val('Europe/Brussels').trigger('change');
+        $(document).find('#<?php echo $databaseName;?>-form').find('#access_level').val('6').trigger('change');;
+
+
         edit = 0;
 
     })

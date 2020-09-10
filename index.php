@@ -526,6 +526,10 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
             <div id="videoDisplay mb-3" class="">
                     
             <div class="row">
+                <p class="h5 mt-5">At GIEQs we are serious about accrediting our educational events. <br /> <br/></p>
+                    <p class="text-white">We have applied for and received EACCME accreditation (number of CME points pending) and have received RIZIV [Belgium] accreditation for 8 hours (Wednesday) and 7.5 hours (Thursday) CME points. &nbsp;
+                    <br/><br/>We have received ESGE (European Society of Gastrointestinal Endoscopy), BSGIE (Belgian Society of Gastrointestinal Endoscopy), ASGE (American Society of GI Endoscopy) and BSG (British Society of Gastroenterology) accreditation!</p>
+                    
                         <div class="col-lg-10 col-xl-10 text-center">
                             <div class="icon-xl icon-shape bg-white mr-3 p-2">
                             <a href="https://eaccme.uems.eu/" target="_blank" data-toggle="tooltip" data-placement="bottom" title="European Accreditation Council
@@ -539,6 +543,11 @@ for Continuing Medical Education (EACCME)">
                             </a>
                             </div>
                             <div class="icon-xl icon-shape bg-white mr-3 p-2">
+                                <a href="https://www.asge.com" target="_blank" data-toggle="tooltip" data-placement="bottom" title="American Society for Gastrointestinal Endoscopy">
+                                <img src="<?php echo BASE_URL;?>/assets/img/icons/asge.png" alt="ASGE">
+                                </a>
+                                </div>
+                            <div class="icon-xl icon-shape bg-white mr-3 p-2">
                             <a href="https://www.riziv.fgov.be/" target="_blank">
                             <img src="<?php echo BASE_URL;?>/assets/img/icons/riziv.png" alt="RIZIV" data-toggle="tooltip" data-placement="bottom" title="Rijksinstituut voor ziekte- en invaliditeitsverzekering">
                             </a>
@@ -548,13 +557,15 @@ for Continuing Medical Education (EACCME)">
                                 <img src="<?php echo BASE_URL;?>/assets/img/brand/bsgie.png" alt="BSGIE" data-toggle="tooltip" data-placement="bottom" title="Belgian Society for Gastrointestinal Endoscopy">
                                 </a>
                                 </div>
+                                <div class="icon-xl icon-shape bg-white p-2 m-2">
+                                    <a href="https://www.bsg.org.uk/" target="_blank">
+                                    <img src="<?php echo BASE_URL;?>/assets/img/brand/bsg.png" alt="BSG" data-toggle="tooltip" data-placement="bottom" title="British Society for Gastrointestinal Endoscopy">
+                                    </a>
+                                    </div>
                             
                             </div>
                             </div>
 
-                    <p class="h5 mt-5">At GIEQs we are serious about accrediting our educational events. <br /> <br/></p>
-                    <p class="text-white">We have applied for and received EACCME accreditation (number of CME points pending) and have received RIZIV [Belgium] accreditation for 8 hours (Wednesday) and 7.5 hours (Thursday) CME points. &nbsp;
-                    <br/><br/>We have received ESGE (European Society of Gastrointestinal Endoscopy) and BSGIE (Belgian Society of Gastrointestinal Endoscopy) endorsement and are awaiting endorsement from ASGE (American Society of GI Endoscopy) and BSG (British Society of Gastroenterology)!</p>
                     
                     
                 </div>
@@ -565,10 +576,11 @@ for Continuing Medical Education (EACCME)">
             </div>
         </div>
     </div>
+</div>
 
     
 
-    <?php require 'footer.php';?>
+    <?php require(BASE_URI . '/footer.php');?>
 
     <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
     <!-- <script src="assets/js/purpose.core.js"></script> -->

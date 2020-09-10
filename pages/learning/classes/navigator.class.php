@@ -1020,6 +1020,122 @@ class navigator {
 
 	}
 
+	public function generateSimplePageOptions()
+            {
+            
+
+            $q = "Select a.`id`, a.`name`
+            FROM `video` as a ORDER BY `created` DESC
+            ";
+
+			//echo $q . '<br><br>';
+
+			$rowReturn = [];
+
+            $result = $this->connection->RunQuery($q);
+            
+            $x = 0;
+            if ($result){
+
+
+				while($row = $result->fetch_array(MYSQLI_ASSOC)){
+
+                
+
+					$rowReturn[] = $row;
+
+
+				}
+
+				foreach ($rowReturn as $key=>$value){
+
+					echo "<option value='{$value['id']}'>{$value['id']} - {$value['name']}</value>";
+
+				}
+
+            } else {
+                
+
+                return false;
+            }
+
+		}
+
+		public function getSuperCategoryName($id){
+
+			
+			$q = "SELECT `superCategory`, `superCategory_t` from `values` WHERE `superCategory` = '$id'";
+				//$q = "SELECT `superCategory` FROM `tagCategories` WHERE `id` = $id";
+		
+				//echo $q;
+		
+				$result = $this->connection->RunQuery($q);
+		
+				if ($result->num_rows == 1){
+		
+					
+					while($row = $result->fetch_array(MYSQLI_ASSOC)){
+						
+						$tagCategoryName = $row['superCategory_t'];
+					
+						
+						
+						
+						
+					}
+				
+					return $tagCategoryName;
+				}else{
+					
+					return null;
+				}
+			
+
+
+
+		}
+
+		public function generateTagCategoryOptions()
+		{
+		
+
+		$q = "Select a.`id`, a.`tagCategoryName`, a.`superCategory`
+		FROM `tagCategories` as a WHERE a.`id` > 47 ORDER BY a.`superCategory` ASC
+		";
+
+		//echo $q . '<br><br>';
+
+		$rowReturn = [];
+
+		$result = $this->connection->RunQuery($q);
+		
+		$x = 0;
+		if ($result){
+
+
+			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+
+			
+
+				$rowReturn[] = $row;
+
+
+			}
+
+			foreach ($rowReturn as $key=>$value){
+
+				echo "<option value='{$value['id']}'>{$value['id']} - {$value['tagCategoryName']} ({$this->getSuperCategoryName($value['superCategory'])})</value>";
+
+			}
+
+		} else {
+			
+
+			return false;
+		}
+
+	}
+
 	
 	
 	public function endNavigator (){
