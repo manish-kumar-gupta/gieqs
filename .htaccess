@@ -18,6 +18,8 @@ RewriteRule ^bleeding$ pages/learning/viewer_free.php?id=113
 RewriteRule ^artificial-intelligence$ pages/learning/viewer_free.php?id=136
 RewriteRule ^colonoscopy$ pages/learning/viewer_free.php?id=113
 RewriteRule ^polypectomy$ pages/learning/viewer_free.php?id=113
+RewriteRule ^ercp$ pages/learning/viewer_free.php?id=153
+
 
 
 RewriteCond %{SERVER_PORT} 80
