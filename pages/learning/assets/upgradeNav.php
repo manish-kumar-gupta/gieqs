@@ -50,9 +50,9 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon">
+                    <a class="nav-link nav-link-icon" href="<?php echo BASE_URL;?>/pages/learning/upgrade.php">
 
-                        <span class="nav-link-inner--text ">You are missing out on key features.  Upgrade now!</span>
+                        <span class="nav-link-inner--text ">You are missing out on key features.   <span class="gieqsGold">Upgrade now!</span></span>
                     </a>
                 </li>
                 <?php
@@ -60,7 +60,7 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                 ?>
                                            <li class="nav-item">
                    
-                   <a class="nav-link nav-link-icon"
+                   <a class="nav-link nav-link-icon" 
                        >
                        <span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2" style="z-index: -1 !important;">LEVEL 5</span>
                        <span class="nav-link-inner--text ">GIEQs Standard Member</span></a>
@@ -78,10 +78,10 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                </li>
 
                <li class="nav-item">
-                   <a class="nav-link nav-link-icon"
+                   <a class="nav-link nav-link-icon" href="<?php echo BASE_URL;?>/pages/learning/upgrade.php" class="nav-link-inner--text"
                        >
 
-                       <span class="nav-link-inner--text ">You are missing out on key features.  Upgrade now!</span>
+                       <span class="nav-link-inner--text">You are missing out on key features.  <span class="gieqsGold">Upgrade now!</span></span>
                    </a>
                </li>
                 <?php

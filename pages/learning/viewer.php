@@ -325,9 +325,15 @@ min-width:30vw;
                         //echo $author;
 
                         $authorText = $users->getUserName($author);
+                        if ($taggerText){
                         $taggerText = $users->getUserName($videoDataMod[0]['tagger']);
+                        }
+                        if ($recorderText){
                         $recorderText = $users->getUserName($videoDataMod[0]['recorder']);
+                        }
+                        if ($editorText){
                         $editorText = $users->getUserName($videoDataMod[0]['editor']);
+                        }
 
                         $users->Load_from_key($author);
 

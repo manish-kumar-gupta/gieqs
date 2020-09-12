@@ -238,7 +238,7 @@ top: -20vh;
               <div class="mb-5 text-center">
                 <h3 class=" mt-4">GIEQs Pro Subscription</h3>
                 <div class="fluid-paragraph mt-3">
-                  <p class="lead lh-180">Get access to the full functionality of GIEQs Online.  Subscriptions start 9 November 2020</p>
+                  <p class="lead lh-180">Get access to the full functionality of GIEQs Online.  <br/>Subscriptions start 9 November 2020</p>
                 </div>
               </div>
               <div class="pricing-container">
@@ -263,7 +263,7 @@ top: -20vh;
                         <li>Regular new material</li>
                         <li>Cancel Anytime</li>
                         <sup>*</sup><span class="text-sm">Other content available to buy separately</span>
-                      </ul><button type="button" class="btn btn-sm btn-neutral mb-3">Get 1 month free trial!</button>
+                      </ul><button type="button" class="btn btn-sm btn-neutral mb-3 trial">Get 1 month free trial!</button>
                     </div>
                   </div>
                   <div class="card card-pricing  text-center px-3 mb-5 mb-lg-0">
@@ -280,7 +280,7 @@ top: -20vh;
                         <li>Regular new material</li>
                         <li>Cancel Anytime</li>
                         <sup>*</sup><span class="text-sm">Other content available to buy separately</span>
-                      </ul><button type="button" class="btn btn-sm btn-neutral mb-3">Get 1 month free trial!</button>
+                      </ul><button type="button" class="btn btn-sm btn-neutral mb-3 trial">Get 1 month free trial!</button>
                     </div>
                   </div>
                   <div class="card card-pricing text-center px-3 mb-5 mb-lg-0">
@@ -297,7 +297,7 @@ top: -20vh;
                         <li>Regular new material</li>
                         <li>Cancel Anytime</li>
                         <sup>*</sup><span class="text-sm">Other content available to buy separately</span>
-                      </ul><button type="button" class="btn btn-sm btn-neutral mb-3">Get 1 month free trial!</button>
+                      </ul><button type="button" class="btn btn-sm btn-neutral mb-3 trial">Get 1 month free trial!</button>
                     </div>
                   </div>
                   
@@ -1037,6 +1037,13 @@ top: -20vh;
                 $('#collapseExample').collapse('hide');
 
             })
+
+            $(document).on('click', '.trial', function(){
+
+alert('Thanks for your interest.  More information available will be available after GIEQs digital.')
+
+
+})
 
             $(document).on('click', '#monthly', function(){
 
