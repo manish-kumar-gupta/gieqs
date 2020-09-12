@@ -564,9 +564,17 @@ if (count($data) > 0){
 		$table = $data['table'];
 		unset($data['outputFormat']);
 
+		//how many chapter rows are there currently
+
+		$numberOfChapters = $general->howManyChaptersVideo($table);
+
+		$requiredNewChapter = intval($numberOfChapters) + 1;
+
+		//number is one higher
+
 		if ($data['query'] == 'newChapterRow'){
 			
-			$q = "INSERT INTO chapter set video_id = $table";
+			$q = "INSERT INTO `chapter` set `video_id` = '$table', `number` = '$requiredNewChapter'";
 			
 			
 			$result = $general->returnWithInsertID($q);

@@ -14,9 +14,9 @@ $url =  "{$_SERVER['REQUEST_URI']}";
 ?>
 
 
-<nav class="mt-2 navbar navbar-horizontal navbar-expand-lg navbar-dark gieqsGold">
+<nav class="mt-2 navbar navbar-horizontal navbar-expand-lg navbar-dark gieqsGold"  style="z-index: 1 !important;">
     <div class="container">
-        <a class="navbar-brand" style="z-index: -1 !important;"><?php echo 'GIEQs Online';?>
+        <a class="navbar-brand"><?php echo 'GIEQs Online';?>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-warning"
             aria-controls="navbar-warning" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,8 +32,8 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                 
                 <li class="nav-item">
                    
-                    <a class="nav-link nav-link-icon"
-                        href="<?php echo BASE_URL;?>/pages/learning/pages/live/complex.php">
+                    <a class="nav-link nav-link-icon">
+                       
                         <span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2">LEVEL 6</span>
                         <span class="nav-link-inner--text ">GIEQs Basic Member</span></a>
                       
@@ -50,8 +50,7 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon"
-                        href="<?php //echo BASE_URL;?>/pages/learning/pages/live/nursing.php">
+                    <a class="nav-link nav-link-icon">
 
                         <span class="nav-link-inner--text ">You are missing out on key features.  Upgrade now!</span>
                     </a>
@@ -62,8 +61,8 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                                            <li class="nav-item">
                    
                    <a class="nav-link nav-link-icon"
-                       href="<?php echo BASE_URL;?>/pages/learning/pages/live/complex.php">
-                       <span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2">LEVEL 5</span>
+                       >
+                       <span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2" style="z-index: -1 !important;">LEVEL 5</span>
                        <span class="nav-link-inner--text ">GIEQs Standard Member</span></a>
                      
                    
@@ -80,15 +79,43 @@ $url =  "{$_SERVER['REQUEST_URI']}";
 
                <li class="nav-item">
                    <a class="nav-link nav-link-icon"
-                       href="<?php //echo BASE_URL;?>/pages/learning/pages/live/nursing.php">
+                       >
 
                        <span class="nav-link-inner--text ">You are missing out on key features.  Upgrade now!</span>
                    </a>
                </li>
                 <?php
-                    }
+                    }else {
+                ?>
+                                           <li class="nav-item">
+                   
+                   <a class="nav-link nav-link-icon"
+                       >
+                       <span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2" style="z-index: -1 !important;">LEVEL 4</span>
+                       <span class="nav-link-inner--text ">GIEQs Pro Member</span></a>
+                     
+                   
+                   
+                   
 
-?>
+
+                          
+
+
+                               <!-- <span class="nav-link-inner--text ">Complex</span> -->
+                           
+               </li>
+
+               <li class="nav-item">
+                   <a class="nav-link nav-link-icon"
+                       >
+
+                       <span class="nav-link-inner--text ">Thanks for your support!</span>
+                   </a>
+               </li>
+                <?php
+                    }
+                ?>
                 <!-- <li class="nav-item">
                     <a class="nav-link nav-link-icon"
                         href="<?php //echo BASE_URL;?>/pages/learning/pages/live/nursing.php">
