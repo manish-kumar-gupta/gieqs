@@ -264,7 +264,7 @@ class general {
 
 	public function getVideoDataMod ($id) {
 
-		$q = "SELECT `name`, `description`, `author` FROM `video` WHERE `id` = $id";
+		$q = "SELECT `name`, `description`, `author`, `tagger`, `editor`, `recorder` FROM `video` WHERE `id` = $id";
 
 		$result = $this->connection->RunQuery($q);
 

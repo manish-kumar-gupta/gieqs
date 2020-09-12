@@ -317,16 +317,28 @@ min-width:30vw;
                         //print_r($videoDataMod);
                         
                         $author = $videoDataMod[0]['author'];
+                        $tagger = $videoDataMod[0]['tagger'];
+                        $recorder = $videoDataMod[0]['recorder'];
+                        $editor = $videoDataMod[0]['editor'];
 
 
                         //echo $author;
 
                         $authorText = $users->getUserName($author);
+                        $taggerText = $users->getUserName($videoDataMod[0]['tagger']);
+                        $recorderText = $users->getUserName($videoDataMod[0]['recorder']);
+                        $editorText = $users->getUserName($videoDataMod[0]['editor']);
 
                         $users->Load_from_key($author);
 
                         $videoDataMod[0]['author'] = $authorText;
+                        $videoDataMod[0]['tagger'] = $taggerText;
+                        $videoDataMod[0]['recorder'] = $recorderText;
+                        $videoDataMod[0]['editor'] = $editorText;
                         $videoDataMod[0]['authorid'] = $author;
+                        $videoDataMod[0]['taggerid'] = $tagger;
+                        $videoDataMod[0]['recorderid'] = $recorder;
+                        $videoDataMod[0]['editorid'] = $editor;
                         $videoDataMod[0]['centreName'] = $users->getcentreName($author);
                         $videoDataMod[0]['centreCity'] = $users->getcentreCity($author);
                         $country = $users->getcentreCountry($author);
@@ -637,7 +649,7 @@ min-width:30vw;
                                     <div class="d-flex align-items-center justify-content-between">
 
                                         <div class="flex-fill p-2 text-limit">
-                                            <h6 id="chapterHeadingControl" class="progress-text mb-1 text-sm d-block text-limit text-left">No chapter selected
+                                            <h6 id="chapterHeadingControl" class="progress-text mb-1 text-sm d-block text-limit text-left">Video Credits
                                             </h6>
                                             <div id="myProgress" class="progress progress-xs mb-0">
                                                 <div id="myBar" class="progress-bar bg-gieqsGold" role="progressbar"
@@ -709,14 +721,36 @@ min-width:30vw;
     padding-left: 0.5em;
     padding-bottom: 0.5em;
     padding-top: 0.5em;">
-                    <span id="chapterHeading" class="h6 mb-0 text-white d-block">No chapter selected</span>
+                    <span id="chapterHeading" class="h6 mb-0 text-white d-block">Video Credits</span>
 </div>
 <div class="card-body" style="padding-right: 0.2em;
     padding-left: 0.2em;
     padding-bottom: 0.2em;
   
     padding-top: 0.5em; max-height: 40vh; overflow-y: scroll;">
-                    <span id="chapterDescription" class="mt-2 p-2 d-block text-left"></span>
+                    <span id="chapterDescription" class="mt-2 p-2 d-block text-left">
+                        <table class="w-100 text-sm">
+                        <tr>                        
+                        <td>Performed by : </td><td><span class="text-white"><a class="text-white" href="<?php echo BASE_URL;?>/pages/learning/pages/account/public-profile.php?id=<?php echo $videoDataMod[0]['authorid']?>"><?php echo $videoDataMod[0]['author'];?></a></span></td>
+                                            </tr>
+                        <tr>
+                       <?php if ($videoDataMod[0]['recorder']){?>
+                        <td>Filmed by : </td><td><span class="text-white"><a class="text-white" href="<?php echo BASE_URL;?>/pages/learning/pages/account/public-profile.php?id=<?php echo $videoDataMod[0]['recorderid']?>"><?php echo $videoDataMod[0]['recorder'];?></a></span></td>
+                       <?php }?>
+                       </tr>
+                       <tr>
+                       <?php if ($videoDataMod[0]['editor']){?>
+                        <td>Cut by : </td><td><span class="text-white"><a class="text-white" href="<?php echo BASE_URL;?>/pages/learning/pages/account/public-profile.php?id=<?php echo $videoDataMod[0]['editorid']?>"><?php echo $videoDataMod[0]['editor'];?></a></span></td>
+                       <?php }?>
+                       </tr>
+                       <tr>
+                       <?php if ($videoDataMod[0]['recorder']){?>
+                        <td>Tagged by : </td><td><span class="text-white"><a class="text-white" href="<?php echo BASE_URL;?>/pages/learning/pages/account/public-profile.php?id=<?php echo $videoDataMod[0]['taggerid']?>"><?php echo $videoDataMod[0]['tagger'];?></a></span></td>
+                       <?php }?>
+                       </tr>
+                       </table>
+                       
+                        </span>
 </div>
 <div class="card-footer tagFilterDisplayArea">
 </div>
