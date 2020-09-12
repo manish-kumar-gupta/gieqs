@@ -852,7 +852,7 @@ function deleteImage(imageRowClicked){
 				
 			}else{
 				
-				alert('Chapter not deleted');
+				alert('Chapter not deleted.  Perhaps there are still tags attached.  You cannot delete a chapter until all tags are removed.  Click on tags to remove them.');
 				
 			}
 			
