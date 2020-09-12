@@ -391,8 +391,16 @@ min-width:30vw;
 
                                         if ($value1['tagCategories_id'] == $value['id']){
 
-                                           $tagBox .= '<span class="badge bg-gray-800 mx-2 mb-1 tagButton" id="tag' . $value1['id'] . '">' . $value1['tagName'] . '</span>'; 
+                                            //remove clickability if user is above 4
 
+                                            if ($currentUserLevel > 4){
+
+                                                $tagBox .= '<span class="badge bg-gray-800 mx-2 mb-1" id="tag' . $value1['id'] . '">' . $value1['tagName'] . '</span>'; 
+
+                                            }else{
+
+                                           $tagBox .= '<span class="badge bg-gray-800 mx-2 mb-1 tagButton" id="tag' . $value1['id'] . '">' . $value1['tagName'] . '</span>'; 
+                                            }
                                         }
 
                                     }
@@ -535,11 +543,21 @@ min-width:30vw;
                                 <div class="text-right ">
                                 
                                                         
-                                                    
+                                <?php if ($currentUserLevel < 6){ // message to upgrade if basic?>
                                     <a class="dropdown-item" data-toggle="collapse" href="#collapseExample"
                                         aria-expanded="false" aria-controls="collapseExample">
                                         <i class="fas fa-chevron-circle-up"></i> show tags
                                     </a>
+                                    
+
+                                <?php }else{?>
+                                    <a class="dropdown-item" onclick="alert('Upgrade to view tags');"
+                                        aria-expanded="false" aria-controls="collapseExample">
+                                        <i class="fas fa-chevron-circle-up"></i> show tags
+                                    </a>
+                                    
+
+                                <?php }?>
                                     <a class="dropdown-item" data-toggle="collapse" href="#selectDropdown"
                                         aria-expanded="false" aria-controls="selectDropdown">
                                         <i class="fas fa-chevron-circle-up"></i> show chapters
@@ -555,7 +573,7 @@ min-width:30vw;
                     </div>
                                         <div class="card-body mt-0 pt-0">
                                             
-                                                <div id="tagsDisplay">
+                                                <div id="tagsDisplay" class="flex-wrap">
                                                 <?php echo $tagBox;?>
                                                 </div>
                                                 
@@ -716,20 +734,41 @@ min-width:30vw;
                             aria-controls="collapseExample2">
                             <i class="fas fa-chevron-circle-up"></i> show histopathology result
                         </a> -->
+                        <?php if ($currentUserLevel< 5){ // message to upgrade if standard?>
+
                         <a class="dropdown-item" data-toggle="collapse" href="#collapseExample2" aria-expanded="false"
                             aria-controls="collapseExample3">
                             <i class="fas fa-chevron-circle-up"></i> show references
                         </a>
+                        <?php }else{?>
+                            <a class="dropdown-item" onclick="alert('Upgrade to view references for tags');" aria-expanded="false"
+                            aria-controls="collapseExample3">
+                            <i class="fas fa-chevron-circle-up"></i> show references
+                        </a>
+                            <?php } ?>
+
+
+                        <?php if ($currentUserLevel <6){ ?>
                         <a class="dropdown-item" data-toggle="collapse" href="#collapseExample3" aria-expanded="false"
                             aria-controls="collapseExample3">
                             <i class="fas fa-chevron-circle-up"></i> show comments
                         </a>
+                        <?php }else{// message to upgrade if basic?>
+                            
+                            <a class="dropdown-item" onclick="alert('Upgrade to comment on cases');" aria-expanded="false"
+                            aria-controls="collapseExample3">
+                            <i class="fas fa-chevron-circle-up"></i> show comments
+                        </a>
+
+
+                        <?php } ?>
                     </p>
+                    
                     <div class="collapse" id="collapseExample2">
                         <div class="card">
                             <div class="card-footer">
                             <span class="h5 mb-4">References</span>
-                                <div class="flex-row mt-2">
+                                <div class="flex-row flex-wrap mt-2">
                                 
                                     <div>
                                         <?php echo $general->getFullReferenceListVideo($id);?>

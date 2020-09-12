@@ -212,6 +212,35 @@ if (isset($requiredUserLevel)){
 
     $info[] = 'current user has following rights (current user level is ' . $currentUserLevel . ') versus (required user level is '. $requiredUserLevel .')';
     
+    //FOR FREE TRIAL AFTER GIEQS FOR THOSE LOGGED IN
+
+        //FROM 1 WEEK PRIOR TO 1 MONTH AFTER ALL HAVE LEVEL 4 ACCESS
+
+        //1/10 TO 9/11
+
+        $startGlobalAccessDate = new DateTime('2020-10-01 00:00:01', new DateTimeZone('UTC'));
+
+        $endGlobalAccessDate = new DateTime('2020-11-09 00:00:01', new DateTimeZone('UTC'));
+
+        $currentTime = new DateTime('now', $serverTimeZone);
+
+
+        if ($currentTime > $startGlobalAccessDate && $currentTime < $endGlobalAccessDate){
+
+            if ($currentUserLevel == '6'){
+
+                $currentUserLevel = '4';
+
+            }elseif($currentUserLevel == '5'){
+
+                $currentUserLevel = '4';
+
+            }
+
+
+        }
+
+
     if ($currentUserLevel > $requiredUserLevel){
 
        
@@ -428,6 +457,10 @@ $info[] = 'page determines live access to the following live events for (' . $us
 $info[] = $liveAccess;
 //print_r($liveAccess);
 
+
+
+
+
  # ******************** #
     # ***** USER TRACKING ***** #
 
@@ -447,7 +480,11 @@ $info[] = $liveAccess;
 		$date = new DateTime('now', new DateTimeZone('UTC'));
 		$sqltimestamp = date_format($date, 'Y-m-d H:i:s');
 		
-		//add a user activity event to the database
+        //add a user activity event to the database
+        
+        //TODO add which page they visited
+
+        //TODO Cron clean up userActivity
 
         $userActivity->New_userActivity($userid, null, null, $sqltimestamp);
         

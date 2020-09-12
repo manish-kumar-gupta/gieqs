@@ -128,6 +128,9 @@ top: -20vh;
         
 
 
+        
+
+
     </header>
 
     <?php
@@ -182,6 +185,7 @@ top: -20vh;
         </div>
       </div>
     </section>
+    <?php require BASE_URI . '/pages/learning/assets/upgradeNav.php';?>
     <section class="slice bg-section-secondary">
       <div class="container">
         <div class="d-flex flex-row-reverse mt-1 align-items-end">
