@@ -215,7 +215,7 @@ top: -20vh;
     –       The registration includes:
     o   Exclusive access to the Scientific Programme of the Ghent International Endoscopy Quality Symposium, digital edition
     o   Exclusive access to CME accredited content
-    o   You will also receive complimentary access to GIEQs learning basic from its launch until one month after the event, containing all the content from GIEQs and a selection of our curated learning material 
+    o   You will also receive complimentary access to GIEQs Online basic from its launch until one month after the event, containing all the content from GIEQs and a selection of our curated learning material 
     –       All fees are in euro, including applicable VAT. 
 </p>
  

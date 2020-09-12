@@ -290,17 +290,27 @@ background-color: rgb(238, 194, 120);
                                                 <form class="d-flex">
                                                     
                                                     <div class="form-group ml-auto">
-                                                        <label class="form-control-label">Video Status</label>
-                                                        <div class="input-group input-group-merge">
-                                                          <select name="active" id="active" class="form-control form-control-sm">
-                                                            <option hidden inactive>choose status</option>
-                                                            <option value="0">Not shown, not tagged, inactive video</option>
-                                                            <option value="1">Shown on Live site</option>
-                                                            <option value="2">Needs tagging</option>
-                                                            <option value="3">Shown on Live site and available FREE</option>
-                                                            </select>
-                                                         
-                                                        </div>
+                                                    <label class="form-control-label">Video Status</label>
+                                    <div class="input-group input-group-merge">
+                                      <select name="active" id="active" class="form-control form-control-sm">
+                                        <option hidden inactive>choose status</option>
+
+                                        <?php if ($currentUserLevel = 1){?>
+                                        <option value="0">Not shown, not tagged, inactive video</option>
+                                       
+                                        <?php } ?>
+                                        <option value="2">Needs tagging</option>
+                                        
+                                        <?php if ($currentUserLevel = 1){?>
+                                        <option value="1">Shown on Live site</option>
+                                        <option value="3">Shown on Live site and available FREE</option>
+                                        <?php }?>
+
+                                        <option value="4">Submit for moderation prior to Live Site</option>
+                                        
+                                        </select>
+                                     
+                                    </div>
                                                       </div>
                                                    
                             

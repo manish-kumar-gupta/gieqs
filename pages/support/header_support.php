@@ -4,7 +4,7 @@
       <div class="row justify-content-center">
         <div class="col-lg-9">
           <h2 class="mb-2 text-white">How can we help?</h2>
-          <p class="text-white">Support documents for GIEQs digital and GIEQs learning are below.  Need help with something you can't find below? <a href="mailto:admin@gieqs.com">Contact us</a>.</p>
+          <p class="text-white">Support documents for GIEQs digital and GIEQs Online are below.  Need help with something you can't find below? <a href="mailto:admin@gieqs.com">Contact us</a>.</p>
           <!-- <form>
             <div class="form-group bg-white rounded-pill px-2 py-2 shadow">
               <div class="row">

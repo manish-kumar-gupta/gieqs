@@ -709,7 +709,7 @@ top: -20vh;
             <div class=" col-lg-8">
               <!-- Salute + Small stats -->
              <p class="h4">User does not exist</p>
-             <p class="text-muted"><a href="<?php echo BASE_URL;?>/pages/learning/">Return to GIEQs Learning</a></p>
+             <p class="text-muted"><a href="<?php echo BASE_URL;?>/pages/learning/">Return to GIEQs Online</a></p>
               <!-- Account navigation -->
               
           

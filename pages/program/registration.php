@@ -148,9 +148,9 @@ $registrationURL = 'https://eu.eventscloud.com/200200203';
                     <strong>Reserve </strong> your place now!
                   </h6>
                   <p class="lead lh-180">Thanks to the extremely generous support of our partners registration for GIEQs is now <a href="#pricing" class='gieqsGold'>dramatically reduced in price</a> since the event will be fully digital!</p>
-                  <p class="lead lh-180">Once you register you will gain access to our unique learning site <a href="<?php echo BASE_URL;?>/pages/program/online.php" class='gieqsGold'>GIEQs learning</a>.
+                  <p class="lead lh-180">Once you register you will gain access to our unique learning site <a href="<?php echo BASE_URL;?>/pages/program/online.php" class='gieqsGold'>GIEQs Online</a>.
                       You will be registered for updates on GIEQs via email and will be notified of your unique link to view the entire event on October 7 / 8 2020.</p>
-                      <p class="lead lh-180">You will also receive complimentary access to GIEQs learning basic from its launch until one month after the event, containing all the content from GIEQs and a selection of our curated learning material.</p>
+                      <p class="lead lh-180">You will also receive complimentary access to GIEQs Online basic from its launch until one month after the event, containing all the content from GIEQs and a selection of our curated learning material.</p>
                       <p class="lead lh-180">Welcome to the GIEQs family.  Let's do everyday endoscopy better!</p>
                   <div class="btn-container mt-5">
                   <?php if ($liveAccess){

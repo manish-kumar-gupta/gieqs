@@ -168,7 +168,7 @@ top: -20vh;
           <div class="card">
             <div class="card-body p-5">
               <!-- Topic header -->
-              <h2 class="mb-2">Editing videos chapters and tags for GIEQs Learning</h2>
+              <h2 class="mb-2">Editing videos chapters and tags for GIEQs Online</h2>
               <p class="lead mb-0">Properly tagging and chaptering a video is the key to the GIEQs online learning experience.</p>
               <div class="media align-items-center mt-4">
                 <a href="#!" class="avatar avatar-sm rounded-circle mr-3">
@@ -200,7 +200,7 @@ top: -20vh;
                   <div class="embed-responsive embed-responsive-16by9">
                 <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/453408855" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                 </div>
-                  <figcaption class="mt-3 text-muted"><p><a href="https://vimeo.com/453408855/a077212070">Creator Video Chapter Tagging GIEQs Learning</a> from <a href="https://vimeo.com/user67134812">David</a> on <a href="https://vimeo.com">Vimeo</a>.</p></figcaption>
+                  <figcaption class="mt-3 text-muted"><p><a href="https://vimeo.com/453408855/a077212070">Creator Video Chapter Tagging GIEQs Online</a> from <a href="https://vimeo.com/user67134812">David</a> on <a href="https://vimeo.com">Vimeo</a>.</p></figcaption>
                   
                 
                 <h4>Frequent Questions</h4>

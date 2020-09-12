@@ -177,7 +177,7 @@ top: -20vh;
             <!-- Salute + Small stats -->
             <div class="row align-items-center mb-4">
               <div class="col-auto mb-4 mb-md-0">
-                <span class="h2 mb-0 text-white text-bold d-block">Welcome to GIEQs Learning. <?php //echo $_SESSION['firstname'] . ' ' . $_SESSION['surname']?></span>
+                <span class="h2 mb-0 text-white text-bold d-block">Welcome to GIEQs Online. <?php //echo $_SESSION['firstname'] . ' ' . $_SESSION['surname']?></span>
                 <span class="text-white">Your home for evidence-based endoscopy education.</span>
               </div>
               <!-- video -->

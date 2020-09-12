@@ -167,7 +167,7 @@ top: -20vh;
             <!-- Salute + Small stats -->
             <div class="row align-items-center mb-4">
               <div class="col-auto mb-4 mb-md-0">
-                <span class="h2 mb-0 text-white text-bold d-block">Welcome to GIEQs Learning <span class="badge text-dark bg-gieqsGold">
+                <span class="h2 mb-0 text-white text-bold d-block">Welcome to GIEQs Online <span class="badge text-dark bg-gieqsGold">
     Coming Soon!
 </span>. <?php //echo $_SESSION['firstname'] . ' ' . $_SESSION['surname']?></span>
                 <span class="text-white">Your home for evidence-based endoscopy education.</span>
@@ -215,7 +215,7 @@ top: -20vh;
             <div class="col-lg-5 order-lg-2">
               <div class="pr-md-4">
                 <h5 class="h3">Change the way you think about Endoscopy training. Forever.</h5>
-                <p class="text-muted lead my-4">GIEQs learning uses our original tagged based approach throughout to connect you with cases relevant to what you want to discover, fast.</p>
+                <p class="text-muted lead my-4">GIEQs Online uses our original tagged based approach throughout to connect you with cases relevant to what you want to discover, fast.</p>
                 <a href="https://vimeo.com/422871506" class="btn bg-gieqsGold text-dark rounded-pill btn-icon mt-4" data-fancybox>
                   <span class="btn-inner--icon"><i class="fas fa-binoculars"></i></span>
                   <span class="btn-inner--text">Discover</span>

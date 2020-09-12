@@ -267,10 +267,20 @@ background-color: rgb(238, 194, 120);
                                     <div class="input-group input-group-merge">
                                       <select name="active" id="active" class="form-control form-control-sm">
                                         <option hidden inactive>choose status</option>
+
+                                        <?php if ($currentUserLevel = 1){?>
                                         <option value="0">Not shown, not tagged, inactive video</option>
-                                        <option value="1">Shown on Live site</option>
+                                       
+                                        <?php } ?>
                                         <option value="2">Needs tagging</option>
+                                        
+                                        <?php if ($currentUserLevel = 1){?>
+                                        <option value="1">Shown on Live site</option>
                                         <option value="3">Shown on Live site and available FREE</option>
+                                        <?php }?>
+
+                                        <option value="4">Submit for moderation prior to Live Site</option>
+                                        
                                         </select>
                                      
                                     </div>
@@ -386,7 +396,12 @@ background-color: rgb(238, 194, 120);
                 //generate textarea for description
                 //author as dropdown of users
                 //print_r($user->getUsers());
-                echo $formv1->generateSelectCustom('Author', 'author', '', $user->getUsers(), 'select the author from the list of users');
+                echo $formv1->generateSelectCustom('Author (performed procedure)', 'author', '', $user->getUsers(), 'select the author from the list of users');
+                echo $formv1->generateSelectCustom('Tagged by', 'tagger', '', $user->getUsers(), 'select the tagging author from the list of users');
+                echo $formv1->generateSelectCustom('Filmed by', 'recorder', '', $user->getUsers(), 'select the recording author [who filmed the procedure] from the list of users');
+
+                echo $formv1->generateSelectCustom('Edited by', 'editor', '', $user->getUsers(), 'select the editing author [who cut the raw video footage] from the list of users');
+
 /*                 echo $formv1->generateSelectCustom('Active on site?', 'active', '', array(0=>'No', 1=>'Yes'), 'is the video to be active on the learning site?');
  */                echo $formv1->generateSelectCustom('Split into chapters?', 'split', '', array(0=>'No', 1=>'Yes'), 'should the video be split into chapters or available as is');
                 //duration and thumbnail to be added separately

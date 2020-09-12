@@ -1165,7 +1165,7 @@ cursor: pointer;
                   </h6>
                   <p class="lead lh-180 mt-4">We will stream the entire conference, in high definition, right here on GIEQs.com.  So it will be just like being here.</p>
                   <p class="lead lh-180 mt-4">We are committed to making the experience feel like you're in the room 1:1 with the endoscopist or lecturer, and to extend live interaction to the digital experience.</p>
-                  <p class="lead lh-180 mt-4">And after the congress we will leave all the content on GIEQs learning, so you can watch at your leisure, <strong>free</strong> if you register for the congress.</p>
+                  <p class="lead lh-180 mt-4">And after the congress we will leave all the content on GIEQs Online, so you can watch at your leisure, <strong>free</strong> if you register for the congress.</p>
 
                   <div class="btn-container mt-5">
                   <a href="https://vimeo.com/433331131" class="btn bg-gieqsGold text-dark rounded-pill btn-icon mt-4" data-fancybox>Discover more</a>

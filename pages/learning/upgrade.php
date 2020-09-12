@@ -25,7 +25,7 @@
       ?>
 
     <!--Page title-->
-    <title>GIEQs Online Endoscopy Trainer</title>
+    <title>GIEQs Online Endoscopy Trainer - Upgrade your Access</title>
 
     <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
@@ -166,8 +166,8 @@ top: -20vh;
             <!-- Salute + Small stats -->
             <div class="row align-items-center mb-4">
               <div class="col-auto mb-4 mb-md-0">
-                <span class="h2 mb-0 text-white text-bold d-block">Welcome to GIEQs Online. <?php //echo $_SESSION['firstname'] . ' ' . $_SESSION['surname']?></span>
-                <span class="text-white">Your home for evidence-based endoscopy education.</span>
+                <span class="h2 mb-0 text-white text-bold d-block"><strong>Upgrade</strong> your GIEQs Online Access. <?php //echo $_SESSION['firstname'] . ' ' . $_SESSION['surname']?></span>
+                <span class="text-white">Get more cases, tagging, links to published evidence and more.</span>
               </div>
               <!-- video -->
               <div class="col-auto flex-fill d-none d-xl-block">
@@ -185,11 +185,11 @@ top: -20vh;
         </div>
       </div>
     </section>
-    <?php require BASE_URI . '/pages/learning/assets/upgradeNav.php';?>
-    <section class="slice bg-section-secondary">
+   <!--  <?php //require BASE_URI . '/pages/learning/assets/upgradeNav.php';?> -->
+    <!-- <section class="slice bg-section-secondary">
       <div class="container">
         <div class="d-flex flex-row-reverse mt-1 align-items-end">
-            <a href="<?php echo BASE_URL;?>/pages/learning/pages/account/profile.php" class="btn btn-icon btn-group-nav shadow btn-neutral mx-2">
+            <a href="<?php //echo BASE_URL;?>/pages/learning/pages/account/profile.php" class="btn btn-icon btn-group-nav shadow btn-neutral mx-2">
               <span class="btn-inner--icon"><i class="fas fa-user"></i></span>
               <span class="btn-inner--text">My Learning Profile</span>
             </a>
@@ -200,20 +200,29 @@ top: -20vh;
               </a>
             
         </div>
-      </section>
+      </section> -->
       <section class="slice slice-lg">
         <div class="container">
           <div class="row row-grid align-items-center justify-content-around">
             <div class="col-lg-5 order-lg-2">
               <div class="pr-md-4">
-                <h5 class="h3">Colonoscopy Tutor.</h5>
-                <p class="text-muted lead my-4">Ever wonder why some colonoscopies are difficult?  Some impossible? Why some patients experience significant discomfort whereas others don't?  Why removing small polyps in the right colon is often difficult?</p>
-                <p class="text-muted lead my-4">It turns out that with some understanding of colonoscopy theory and multiple case-based examples, many of these problems are <strong>predictable</strong>, and <strong>preventable</strong>.  Welcome to painless, rapid colon examination.  Leaving you more time for lesion detection and removal.</p>
+                <h5 class="h3">Subscription Levels.</h5>
+                <p class="text-muted lead my-4">There are 3 levels of GIEQs online membership.  Here's how it works:
 
-                <a href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/all.php" class="btn bg-gieqsGold text-dark rounded-pill btn-icon mt-4">
-                  <span class="btn-inner--icon"><i class="fas fa-binoculars"></i></span>
-                  <span class="btn-inner--text">Discover Colonoscopy Tutor</span>
-                </a>
+                  <ul>
+
+                  <li class="my-2">You can sign-up for free.  <span class="gieqsGold">GIEQs Basic membership </span> contains a limited number of cases and does not give access to comments, tagging or access to published evidence.</li>
+                  <li class="my-2"><p><span class="gieqsGold">GIEQs Standard Membership</span> - if you share details of your endoscopic practice and workplace with us we will gift you standard access.   You can do this via your <a class="gieqsGold" href="<?php echo BASE_URL;?>/pages/learning/pages/account/profile.php">profile page</a>.</p>
+                <p>Standard membership allows access to the tag structure and commenting with access to more content.</p></li>
+                  <li class="my-2"><p><span class="gieqsGold">GIEQs Pro Membership</span> Those who signed up to the GIEQs Digital Congress will receive this level free for 1 month (until 8 November 2020).</p>
+                  <p>Thereafter GIEQs pro will require a small monthly subscription [month free trial available], with reduced fees for yearly subscription.</p>
+                  <p>GIEQs pro gives access to the full tag functionality of GIEQs online, 1-click access to published evidence and commenting.  Your favourite videos are tracked for easy access.</p></li>
+
+                  </ul>
+
+                </p>
+
+                
               </div>
             </div>
             <div class="col-lg-6 order-lg-1">
@@ -224,93 +233,81 @@ top: -20vh;
           </div>
         </div>
       </section>
-      <section class="slice slice-lg bg-cover" style="background-image: url('<?php echo BASE_URL;?>/assets/img/polyps/sspFuji.png'); background-position: center bottom;">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="card py-5 px-4 box-shadow-3">
-                <div class="card-body">
-                  <h6 class="h2">
-                    <strong>Polypectomy tutor</strong>.
-                  </h6>
-                  <p class="lead lh-180 mt-4">Deconstructed technique.  Based on the forthcoming ESGE endoscopic mucosal resection guideline</p>
-                  <p class="lead lh-180 mt-4">Apply an evidence based approach from cold snare polypectomy of small lesions right up to larger lesions &ge; 20mm in size</p>
-
-                  <div class="btn-container mt-5">
-                    <a href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/all.php" class="btn bg-gieqsGold text-dark rounded-pill btn-icon mt-4">Discover Polypectomy Tutor</a>
+      <section class="slice slice-lg bg-gradient-dark">
+            <div class="container">
+              <div class="mb-5 text-center">
+                <h3 class=" mt-4">GIEQs Pro Subscription</h3>
+                <div class="fluid-paragraph mt-3">
+                  <p class="lead lh-180">Get access to the full functionality of GIEQs Online.  Subscriptions start 9 November 2020</p>
+                </div>
+              </div>
+              <div class="pricing-container">
+                <div class="text-center mb-7">
+                  <div class="btn-group" role="group">
+                    <button id="monthly" type="button" class="btn btn-secondary active" data-pricing="monthly">Monthly billing</button>
+                    <button id="yearly" type="button" class="btn btn-secondary" data-pricing="yearly">Yearly billing</button>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="slice slice-lg">
-        <div class="container">
-          <div class="row row-grid align-items-center justify-content-around">
-            <div class="col-lg-5 order-lg-2">
-              <div class="pr-md-4">
-                <h5 class="h3">Use tags to see multiple examples of complex ideas. Fast.  And back to back.</h5>
-                <p class="text-muted lead my-4">Real life training is ad hoc and dependent on luck and opportunity.  Why wait when all the experiences are collected on GIEQs online, and categorised for your convenience.</p>
-                <a href="" target="_blank" class="btn bg-gieqsGold text-dark rounded-pill btn-icon mt-4">
-                  <span class="btn-inner--icon"><i class="fas fa-binoculars"></i></span>
-                  <span class="btn-inner--text">Discover</span>
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-6 order-lg-1">
-              <div class="position-relative" style="z-index: 10;">
-                <img alt="Image placeholder" src="<?php echo BASE_URL;?>/assets/img/learning/advertising/tagscomplex.png" class="img-center img-fluid">
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="slice slice-lg bg-gradient-dark">
-        <div class="container">
-          <div class="mb-5 text-center">
-            <h3 class=" mt-4">GIEQs is an idea.  That we can do everyday endoscopy better.</h3>
-            <div class="fluid-paragraph mt-3">
-              <p class="lead lh-180"></p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-3"></div>
-              
-            <div class="col-lg-6">
-              <div class="card" data-animate-hover="1">
-                <div class="animate-this">
-                  <img alt="Image placeholder" src="<?php echo BASE_URL;?>/assets/img/learning/advertising/dt.png" class="card-img-top">
-                  <a href="https://vimeo.com/417539867" class="btn btn-lg btn-white btn-icon-only rounded-circle shadow-sm position-absolute right-4 top-4 hover-scale-110" data-fancybox="">
-                    <span class="btn-inner--icon">
-                      <i class="fas fa-play"></i>
-                    </span>
-                  </a>
-                </div>
-                <div class="card-body">
-                  <blockquote class="blockquote">
-                    <span class="quote"></span>
-                    <div class="quote-text">
-                      <p class="font-italic lh-170">GIEQs is an idea.  That we can learn lessons from complex endoscopic practice and apply them to everyday procedures.  To make everyday endoscopy better for our patients.</p>
-                      <footer class="blockquote-footer">
-                        Dr David Tate<cite title="Source Title"><br/>Endoscopist and member of the GIEQs Online Creator Team</cite>
-                      </footer>
+                <div class="pricing card-group flex-column flex-lg-row mb-3">
+                  <div class="card card-pricing popular scale-110 text-center px-3 mb-5 mb-lg-0">
+                    <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white">Physician</span>
+                    <div class="card-header py-5 border-0">
+                      <div class="h1 text-primary text-center mb-0" data-pricing-value-month="5" data-pricing-value-year="50">&euro;<span class="price">5</span><span class="h6 ml-2 unit">/ per month</span></div>
                     </div>
-                  </blockquote>
+                    <div class="card-body delimiter-top">
+                      <ul class="list-unstyled mb-4">
+                        <li>Full access to tag structure</li>
+                        <li>Jump rapidly between related learning</li>
+                        <li>1-click access to published evidence via PubMed</li>
+                        <li>Includes variety of cases<sup>*</sup></li>
+                        <li>Regular new material</li>
+                        <li>Cancel Anytime</li>
+                        <sup>*</sup><span class="text-sm">Other content available to buy separately</span>
+                      </ul><button type="button" class="btn btn-sm btn-neutral mb-3">Get 1 month free trial!</button>
+                    </div>
+                  </div>
+                  <div class="card card-pricing  text-center px-3 mb-5 mb-lg-0">
+                    <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white">Trainee</span>
+                    <div class="card-header py-5 border-0">
+                      <div class="h1 text-primary text-center mb-0" data-pricing-value-month="3" data-pricing-value-year="30">&euro;<span class="price">3</span><span class="h6 ml-2 unit">/ per month</span></div>
+                    </div>
+                    <div class="card-body delimiter-top">
+                      <ul class="list-unstyled mb-4">
+                      <li>Full access to tag structure</li>
+                        <li>Jump rapidly between related learning</li>
+                        <li>1-click access to published evidence via PubMed</li>
+                        <li>Includes variety of cases<sup>*</sup></li>
+                        <li>Regular new material</li>
+                        <li>Cancel Anytime</li>
+                        <sup>*</sup><span class="text-sm">Other content available to buy separately</span>
+                      </ul><button type="button" class="btn btn-sm btn-neutral mb-3">Get 1 month free trial!</button>
+                    </div>
+                  </div>
+                  <div class="card card-pricing text-center px-3 mb-5 mb-lg-0">
+                    <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white">Nurse / Medical Student</span>
+                    <div class="card-header py-5 border-0">
+                      <div class="h1 text-primary text-center mb-0" data-pricing-value-month="2" data-pricing-value-year="20">&euro;<span class="price">2</span><span class="h6 ml-2 unit">/ per month</span></div>
+                    </div>
+                    <div class="card-body delimiter-top">
+                      <ul class="list-unstyled mb-4">
+                      <li>Full access to tag structure</li>
+                        <li>Jump rapidly between related learning</li>
+                        <li>1-click access to published evidence via PubMed</li>
+                        <li>Includes variety of cases<sup>*</sup></li>
+                        <li>Regular new material</li>
+                        <li>Cancel Anytime</li>
+                        <sup>*</sup><span class="text-sm">Other content available to buy separately</span>
+                      </ul><button type="button" class="btn btn-sm btn-neutral mb-3">Get 1 month free trial!</button>
+                    </div>
+                  </div>
+                  
                 </div>
               </div>
+              <p class="mt-6 text-muted">Does not include access to all content.  Pricing subject to change without notice.  <br/>If you have an active subscription you will be notified of pricing changes.</p>
+
             </div>
-            <div class="col-lg-3"></div>
-            </div>
-          </div>
-          <div class="mt-5 text-center">
-            <a href="" target="_blank" class="btn bg-gieqsGold text-dark rounded-pill btn-icon mt-4">
-              <span class="btn-inner--icon"><i class="fas fa-binoculars"></i></span>
-              <span class="btn-inner--text">Discover</span>
-            </a>
-          </div>
-        </div>
-      </section>
+          </section>
+      
         <!-- Current studies -->
    
         <!--
@@ -1040,6 +1037,54 @@ top: -20vh;
                 $('#collapseExample').collapse('hide');
 
             })
+
+            $(document).on('click', '#monthly', function(){
+
+              //find find pricing
+              //find has attribute data-pricing-value-month
+              //store this value
+              //set pricing find price to that value
+              // set pricing find unit to / month
+
+              $(document).find('.card-pricing').each(function(){
+
+                var monthPrice = $(this).children().find("[data-pricing-value-month]").attr('data-pricing-value-month')
+
+                $(this).children().find(".price").text(monthPrice);
+
+                $(this).children().find(".unit").text('/ per month');
+
+
+
+
+              })
+
+
+            })
+
+            $(document).on('click', '#yearly', function(){
+
+//find find pricing
+//find has attribute data-pricing-value-month
+//store this value
+//set pricing find price to that value
+// set pricing find unit to / month
+
+$(document).find('.card-pricing').each(function(){
+
+  var yearPrice = $(this).children().find("[data-pricing-value-year]").attr('data-pricing-value-year')
+
+  $(this).children().find(".price").text(yearPrice);
+
+  $(this).children().find(".unit").text('/ per year');
+
+
+
+
+})
+
+
+})
 
             $('.referencelist').on('click', function (){
 		
