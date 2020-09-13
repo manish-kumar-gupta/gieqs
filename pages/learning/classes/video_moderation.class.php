@@ -21,7 +21,7 @@ Class video_moderation {
 
 	public function getModerationTable()
 	{
-	$q = "Select * from `video`";
+	$q = "Select * from `video` WHERE `active` = '2'";
 	$result = $this->connection->RunQuery($q);
 	$rowReturn = array();
 	$x = 0;
@@ -104,24 +104,204 @@ Class video_moderation {
 
 	}
 
-	public function videoHasOpenTaggerInvite($videoid){
+	public function videoHasOpenTaggerInvite($videoid, $debug){
 
-		$q = "SELECT * from `usersTagging` WHERE (`video_id` = '$videoid') AND (`invite_tag` IS NOT NULL) AND (`decline_tag` IS NOT NULL) AND (`done_tag` IS NOT NULL)";
+		$q = "SELECT `user_id` from `usersTagging` WHERE (`video_id` = '$videoid') AND (`invite_tag` IS NOT NULL) AND (`decline_tag` IS NULL AND `done_tag` IS NULL) ORDER BY `invite_tag` DESC";
+
+		if ($debug){
+
+			echo $q;
+		}
+		$result = $this->connection->RunQuery($q);
 
 		$nRows = $result->rowCount();
 
 			if ($nRows > 0) {
 
-				return true;
+				while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn = $row['user_id'];
 
 
+				}
+
+				return $rowReturn; //single value expected
 			
 
 			} else {
 				
-
+				//echo 'false';
 				return false;
 			}
+
+	}
+
+	public function videoHasOpenTaggerInviteReturnKey($videoid, $debug){
+
+		$q = "SELECT `id` from `usersTagging` WHERE (`video_id` = '$videoid') AND (`invite_tag` IS NOT NULL) AND (`decline_tag` IS NULL AND `done_tag` IS NULL) ORDER BY `invite_tag` DESC";
+
+		if ($debug){
+
+			echo $q;
+		}
+		$result = $this->connection->RunQuery($q);
+
+		$nRows = $result->rowCount();
+
+			if ($nRows > 0) {
+
+				while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn = $row['id'];
+
+
+				}
+
+				return $rowReturn; //single value expected
+			
+
+			} else {
+				
+				//echo 'false';
+				return false;
+			}
+
+	}
+
+	public function getTagLockedUser($videoid, $debug){
+
+		$q = "SELECT `user_id` from `usersTagging` WHERE (`video_id` = '$videoid') AND (`invite_tag` IS NOT NULL) AND (`decline_tag` IS NULL AND `done_tag` IS NULL) ORDER BY `invite_tag` DESC LIMIT 1";
+
+		if ($debug){
+
+			echo $q;
+		}
+		$result = $this->connection->RunQuery($q);
+
+		$rowReturn = [];
+
+		$nRows = $result->rowCount();
+
+			if ($nRows > 0) {
+
+				while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn[] = $row['user_id'];
+
+
+				}
+
+			
+				return $rowReturn;
+
+			} else {
+				
+				//echo 'false';
+				return false;
+			}
+
+
+	}
+
+	public function getActionsLast5($videoid, $debug){
+
+		$q = "SELECT `user_id`, `inviting_user`, `invite_tag`, `accept_tag`, `review_tag`, `done_tag`, `decline_tag` from `usersTagging` WHERE (`video_id` = '$videoid') ORDER BY `invite_tag` DESC LIMIT 5";
+
+		if ($debug){
+
+			echo $q;
+		}
+		$result = $this->connection->RunQuery($q);
+
+		$rowReturn = [];
+
+		$nRows = $result->rowCount();
+
+			if ($nRows > 0) {
+
+				while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					
+
+					//$dateArray = [$row['invite_tag'], $row['accept_tag'], $row['review_tag'], $row['done_tag'], $row['decline_tag']];
+					//purge null
+
+					//else use Europe/Brussels
+					
+					//date of action
+
+					//=latest of 4 dates
+
+					//action
+
+					//column head of the 
+					$action = null;
+					$date = null;
+					$expires = null;
+
+					if ($row['decline_tag'] != null){
+
+						$action = 'Tagging declined';
+						$date = $row['decline_tag'];
+						$expires = null;
+
+					}else if ($row['done_tag'] != null){
+
+						$action = 'Tagging done';
+						$date = $row['done_tag'];
+						$expires = null;
+
+					}else if ($row['review_tag'] != null){
+
+						$action = 'Tagging sent for Review';
+						$date = $row['review_tag'];
+						$expires = true;
+					
+					}else if ($row['accept_tag'] != null){
+
+						$action = 'Accepted Tagging';
+						$date = $row['accept_tag'];
+						$expires = null;
+
+					}elseif ($row['invite_tag'] != null){
+
+						$action = 'Invitation';
+						$date = $row['invite_tag'];
+
+						//get user timezone
+						
+						$expires = true;
+
+
+					
+
+					}
+
+
+					$rowReturn[] = [
+						
+						'date' => $date,
+						'user' => $row['user_id'],
+						'inviting_user' => $row['inviting_user'],
+						'action' => $action,
+						'expires' => $expires,
+						
+						
+						
+					];
+
+
+				}
+
+			
+				return $rowReturn;
+
+			} else {
+				
+				//echo 'false';
+				return false;
+			}
+
 
 	}
 /**

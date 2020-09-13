@@ -75,7 +75,6 @@ $video_moderation = new video_moderation;
 $data = json_decode(file_get_contents('php://input'), true);
 
 $videoid = $data['videoid'];
-$taggerid = $data['taggerid'];
 
 
 if ($debug){
@@ -86,19 +85,13 @@ echo '$userid is ' . $userid;
 
 
 
-if ($videoid && $taggerid && userid){
+if ($videoid && $userid){
 
 
     //if the request is for the currently tag-locked user ignore
     $currentLockedUser = $video_moderation->getTagLockedUser($videoid, $debug);
 
-    if ($currentLockedUser[0] == $taggerid){
-
-        echo 'Cannot re-invite the current tagger';
-        exit();
-    }
-    
-    //if a current invitation exits remove it
+    //get data on the open invite
 
     if ($video_moderation->videoHasOpenTaggerInvite($videoid, $debug)){
 
@@ -112,45 +105,67 @@ if ($videoid && $taggerid && userid){
         $gmtTimezone = new DateTimeZone('GMT');
          $myDateTime = new DateTime('now', $gmtTimezone);
          $timestamp = $myDateTime->format('Y-m-d H:i:s');
-        $usersTagging->setdecline_tag($timestamp);
-        $result = $usersTagging->prepareStatementPDOUpdate();
+
+         function addTimeUserReadable($userTimezone, $time, $addTime){
+
+            //first add the date
+
+            $myInterval2=DateInterval::createFromDateString($addTime);
+            $myDateTime2=new DateTime($time, $gmtTimezone);
+            $myDateTime2->add($myInterval2);
+
+            $userTimezone = new DateTimeZone($userTimezone);
+            $gmtTimezone = new DateTimeZone('GMT');
+            $myDateTime = $myDateTime2;
+            $offset = $userTimezone->getOffset($myDateTime);
+            $myInterval=DateInterval::createFromDateString((string)$offset . 'seconds');
+            $myDateTime->add($myInterval);
+            $result = $myDateTime->format('d-m-y H:i:s');
+            return $result;
+
+        }
         
+        $users->Load_from_key($currentLockedUser);
+        if ($users->gettimezone()){
+
+            $userTimezoneDatabase = $users->gettimezone();
+
+        }else{
+
+            $userTimezoneDatabase = 'Europe/Brussels';
+    
+         }
         
+        //send mail here
+        
+        $tagging_due = addTimeUserReadable($userTimezoneDatabase, $usersTagging->getinvite_tag(), '2 weeks');
+
+
+
         if ($result){
 
             if ($debug){
-
-                echo 'Decline tag set';
+                echo 'Tagging due on ' .  $tagging_due;
+                echo 'Mail sent';
 
             }
         }
+
 
         $usersTagging->endusersTagging;
 
         //send mail
 
 
-    }else{
-
-        //insert only
     }
+
+    //send a mail to remind
+
+    //include the time 
     
-    //insert an invitation row
-    //use UTC for insertion
-    $gmtTimezone = new DateTimeZone('GMT');
-    $myDateTime = new DateTime('now', $gmtTimezone);
-    $timestamp = $myDateTime->format('Y-m-d H:i:s');
-    //$timestamp = date("Y-m-d H:i:s");
-    $usersTagging->New_usersTagging($taggerid, $videoid, $userid, $timestamp, null, null, null, null);
-    $result = $usersTagging->prepareStatementPDO();
+    //if a current invitation exits remove it
 
-    if ($result){
-
-        echo "User {$userFunctions->getUserName($taggerid)} Invited";
-    }
-
-    // send a mail to the invited user
-
+    
  
 }else{
     if ($debug){

@@ -316,7 +316,7 @@ if ($identifierValue) {
     <!-- Modal -->
     <div class="modal fade" id="modal-faculty" tabindex="-1" role="dialog" aria-labelledby="modal-change-username"
             aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
 
                     
         </div>
@@ -401,7 +401,7 @@ if ($identifierValue) {
         if (data){
             //show green tick
             alert(data);
-
+            fillForm();
             //$('#commentsArea').html(data);
             
             
@@ -420,6 +420,63 @@ if ($identifierValue) {
 
 
     }
+
+    function remindUser(){
+
+//get the id of the new tagger
+
+//var taggerid = $('#user_id').val();
+var videoid = lesionUnderEdit;
+
+var dataToSend = {
+
+    //taggerid: taggerid,
+    videoid: videoid,
+
+
+
+    }
+
+const jsonString = JSON.stringify(dataToSend);
+
+
+var request2 = $.ajax({
+beforeSend: function () {
+
+
+},
+url: siteRoot + "pages/learning/scripts/moderation/remindUser.php",
+type: "POST",
+contentType: "application/json",
+data: jsonString,
+});
+
+
+
+request2.done(function (data) {
+// alert( "success" );
+if (data){
+    //show green tick
+    alert(data);
+    //fillForm();
+    //$('#commentsArea').html(data);
+    
+    
+    //$('#notification-services').delay('1000').addClass('is-valid');
+    
+        
+        
+
+}
+//$(document).find('.Thursday').hide();
+//$(icon).prop("disabled", false);
+})
+
+
+
+
+
+}
     
     function tableRefresh() {
 
@@ -437,7 +494,7 @@ if ($identifierValue) {
 
         var dataToSend = {
 
-            taggerid: taggerid,
+            //taggerid: taggerid,
             videoid: videoid,
 
 
@@ -795,6 +852,17 @@ if ($identifierValue) {
             $('#modal-faculty').modal('show');
             fillForm(targettd);
             edit = 1;
+
+        })
+
+        $(document).on('click', '.send-reminder-mail', function() {
+
+        //var targettd = $(this).parent().parent().parent().parent().find('td').first().text();
+        //console.log(targettd);
+        //lesionUnderEdit = targettd;
+        
+        remindUser();
+       // edit = 1;
 
         })
 

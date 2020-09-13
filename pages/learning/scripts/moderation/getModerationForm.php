@@ -18,7 +18,7 @@ require (BASE_URI . '/assets/scripts/login_functions.php');
      
      require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
 
-$debug = false;
+$debug = true;
 
 function time_elapsed_string($datetime, $full = false) {
   $now = new DateTime;
@@ -69,12 +69,15 @@ $general = new general;
 //$usersCommentsVideo = new usersCommentsVideo;
 //$usersSocial = new usersSocial;
 $usersTagging = new usersTagging;
+$video_moderation = new video_moderation;
+
+
 
 
 $data = json_decode(file_get_contents('php://input'), true);
 
 $videoid = $data['videoid'];
-$taggerid = $data['taggerid'];
+//$taggerid = $data['taggerid'];
 
 
 if ($debug){
@@ -113,7 +116,29 @@ if ($data){
                                 <div class="col-sm-12 text-left">
                                     <div>
                                         <h6 class="mb-0"></h6>
-                                        <span id = "modalMessageArea" class="mb-0"></span>
+                                        <span id = "modalMessageArea" class="mb-0">
+
+                                        <?php if ($debug){
+
+                                            echo "Video id is $videoid". PHP_EOL;
+                                            echo "<br/> There is";
+                                            
+                                            if ($video_moderation->videoHasOpenTaggerInvite($videoid, $debug)){
+                                                
+                                                echo " indeed a ";
+                                                
+                                            }else{
+
+                                                echo " no ";
+                                            }
+
+                                            echo "open tagging invite for this video";
+                                        }
+                                        
+                                        
+                                        ?>
+
+                                        </span>
 
                                     </div>
                                     <div id="topModalAlert" class="alert alert-warning alert-flush collapse" role="alert">
@@ -126,7 +151,79 @@ if ($data){
                         <div class="modal-body">
 
                             <div class="faculty-body">
+
+                            <?php $moderationActions = $video_moderation->getActionsLast5($videoid, $debug); ?> 
+                            <?php  
+                            if ($debug){
+
+                                print_r($moderationActions);
+                            }
+
+                            //get user timezone
+
+                            function convertTimeSQL($userTimezone, $time){
+
+                                $userTimezone = new DateTimeZone($userTimezone);
+                                $gmtTimezone = new DateTimeZone('GMT');
+                                $myDateTime = new DateTime($time, $gmtTimezone);
+                                $offset = $userTimezone->getOffset($myDateTime);
+                                $myInterval=DateInterval::createFromDateString((string)$offset . 'seconds');
+                                $myDateTime->add($myInterval);
+                                $result = $myDateTime->format('Y-m-d H:i:s');
+                                return $result;
+
+                            }
+
+                            function convertTimeUserReadable($userTimezone, $time){
+
+                                $userTimezone = new DateTimeZone($userTimezone);
+                                $gmtTimezone = new DateTimeZone('GMT');
+                                $myDateTime = new DateTime($time, $gmtTimezone);
+                                $offset = $userTimezone->getOffset($myDateTime);
+                                $myInterval=DateInterval::createFromDateString((string)$offset . 'seconds');
+                                $myDateTime->add($myInterval);
+                                $result = $myDateTime->format('d-m-y H:i:s');
+                                return $result;
+
+                            }
+
+                            function addTimeUserReadable($userTimezone, $time, $addTime){
+
+                                //first add the date
+
+                                $gmtTimezone = new DateTimeZone('GMT');
+                                $myInterval2=DateInterval::createFromDateString($addTime);
+                                $myDateTime2=new DateTime($time, $gmtTimezone);
+                                $myDateTime2->add($myInterval2);
+
+                                $userTimezone = new DateTimeZone($userTimezone);
                                 
+                                $myDateTime = $myDateTime2;
+                                $offset = $userTimezone->getOffset($myDateTime);
+                                $myInterval=DateInterval::createFromDateString((string)$offset . 'seconds');
+                                $myDateTime->add($myInterval);
+                                $result = $myDateTime->format('d-m-y H:i:s');
+                                return $result;
+
+                            }
+                            
+                            $users->Load_from_key($userid);
+					        if ($users->gettimezone()){
+
+                                $userTimezoneDatabase = $users->gettimezone();
+					
+					        }else{
+
+						        $userTimezoneDatabase = 'Europe/Brussels';
+						
+                             }
+
+                             convertTimeSQL($userTimezoneDatabase, '2020-09-20 00:00:00');
+                             
+                            ?>
+
+                            
+
                                 <table id="#actions-table" class="mb-3">
 
                                     <thead>
@@ -139,23 +236,57 @@ if ($data){
                                         </tr>
                                     </thead>
                                     <tbody>
+
+                                    <?php foreach ($moderationActions as $key=>$value){?>
+
                                         <tr>
-                                            <td>1/7/2019</td>
-                                            <td>David Tate</td>
-                                            <td>David Tate</td>
-                                            <td>Invitation</td>
-                                            <td>16/7/2020</td>
+                                            <td><?php echo convertTimeUserReadable($userTimezoneDatabase, $value['date']);?></td>
+                                            <td><?php echo $userFunctions->getUserName($value['user']);?></td>
+                                            <td><?php echo $userFunctions->getUserName($value['inviting_user']);?></td>
+                                            <td><?php echo $value['action'];?></td>
+                                            <td><?php if ($value['expires']){echo addTimeUserReadable($userTimezoneDatabase, $value['date'], '2 weeks');}?></td>
                                             
                                         </tr>
+
+                                        <?php }?>
                                     </tbody>
 
                                 </table>
                                 <hr>
-                                <p>Video currently tag-locked to user: </p>
+                                <?php $lockedUser = $video_moderation->getTagLockedUser($videoid, $debug);?>
+                                <p>Video currently tag-locked to user : <?php echo $userFunctions->getUserName($lockedUser[0])?></p>
                                 <hr>
                                 <p class="h6">Current Allocation</p>
-                                <p>Video tagging due on </p>
-                                <span>Remind User</span><button class="btn btn-sm bg-gieqsGold text-dark p-2 m-2 ml-4 send-reminder-mail">Send Reminder Mail</button>
+
+                                <?php if ($video_moderation->videoHasOpenTaggerInvite($videoid, $debug)){?>
+
+                                <p>Video tagging due on <?php echo addTimeUserReadable($userTimezoneDatabase, $moderationActions[0]['date'], '2 weeks');?> </p>
+
+                                <!-- generate time now, time for review, if overdue enable button-->
+
+                                <?php
+
+                                $overdueTagging = null;
+
+                                $gmtTimezone = new DateTimeZone('GMT');
+                                $invite = $moderationActions[0]['date'];
+
+                                $myInterval2=DateInterval::createFromDateString('2 weeks');
+                                $myDateTime2=new DateTime($invite, $gmtTimezone);
+                                $myDateTime2->add($myInterval2);
+
+                                $currentDate = new DateTime('now', $gmtTimezone);
+
+                                if ($currentDate < $myDateTime2){
+
+                                    $overdueTagging = disabled;
+                                }
+
+                                ?>
+
+                                <span>Remind User</span><button class="btn btn-sm bg-gieqsGold text-dark p-2 m-2 ml-4 send-reminder-mail" <?php echo $overdueTagging;?>>Send Reminder Mail</button>
+
+                                
                                
                                 <form id="review-form" class="mt-3">
                                     <div class="form-group">
@@ -170,6 +301,7 @@ if ($data){
                                         </form>
                                 
                                         <hr>
+                                        <?php }?>
 
                                         <p class="h6">Approval</p>
 
