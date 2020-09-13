@@ -8,7 +8,7 @@
           <a href="index.html">
             <img src="<?php echo BASE_URL;?>/assets/img/brand/gieqs.svg" alt="Footer logo" style="height: 70px;">
           </a>
-          <p>At GIEQS we believe we can do everyday endoscopy better.  <br/>Together, using an emerging evidence base we can increase the quality of everyday endoscopic interventions. </p><p>GIEQs is a not for profit organisation dedicated to improving of endoscopic practice.</p>
+          <p>At GIEQS we believe we can do everyday endoscopy better.  <br/>Together, using an emerging evidence base we can increase the quality of everyday endoscopic interventions. </p><p>GIEQs is a not for profit organisation dedicated to improving endoscopic practice.</p>
         </div>
         <!--
         <div class="col-lg-2 col-6 col-sm-4 ml-lg-auto mb-5 mb-lg-0">
