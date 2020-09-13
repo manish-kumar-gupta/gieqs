@@ -421,6 +421,65 @@ if ($identifierValue) {
 
     }
 
+    function sendReview(){
+
+//get the id of the new tagger
+
+//var taggerid = $('#user_id').val();
+var videoid = lesionUnderEdit;
+var review = $('#review_message').val();
+
+var dataToSend = {
+
+    //taggerid: taggerid,
+    videoid: videoid,
+    review: review,
+
+
+
+    }
+
+const jsonString = JSON.stringify(dataToSend);
+
+
+var request2 = $.ajax({
+beforeSend: function () {
+
+
+},
+url: siteRoot + "pages/learning/scripts/moderation/sendReview.php",
+type: "POST",
+contentType: "application/json",
+data: jsonString,
+});
+
+
+
+request2.done(function (data) {
+// alert( "success" );
+if (data){
+    //show green tick
+    alert(data);
+    fillForm();
+    //$('#commentsArea').html(data);
+    
+    
+    //$('#notification-services').delay('1000').addClass('is-valid');
+    
+        
+        
+
+}
+//$(document).find('.Thursday').hide();
+//$(icon).prop("disabled", false);
+})
+
+
+
+
+
+}
+
     function remindUser(){
 
 //get the id of the new tagger
@@ -887,79 +946,153 @@ if (data){
 
         
 
-        $(document).on('click', '.invite-new-tagger', function() {
+        $(document).on('click', '.invite-new-tagger', function () {
 
-        event.preventDefault();
-        console.log('clicked invite new tagger');
-        //console.log($('#<?php echo $databaseName; ?>-form').closest());
-        $(document).find('#faculty-form').validate({
+            event.preventDefault();
+            console.log('clicked invite new tagger');
+            //console.log($('#<?php echo $databaseName; ?>-form').closest());
+            $(document).find('#faculty-form').validate({
 
-invalidHandler: function(event, validator) {
-    var errors = validator.numberOfInvalids();
-    console.log("there were " + errors + " errors");
-    if (errors) {
-        var message = errors == 1 ?
-            "1 field contains errors. It has been highlighted" :
-            +errors + " fields contain errors. They have been highlighted";
-
-
-        $('#error').text(message);
-        //$('div.error span').addClass('form-text text-danger');
-        //$('#errorWrapper').show();
-
-        $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function() {
-            $("#errorWrapper").slideUp(500);
-        });
-    } else {
-        $('#errorWrapper').hide();
-    }
-},
-ignore: [],
-rules: {
-
-    //EDIT
+                invalidHandler: function (event, validator) {
+                    var errors = validator.numberOfInvalids();
+                    console.log("there were " + errors + " errors");
+                    if (errors) {
+                        var message = errors == 1 ?
+                            "1 field contains errors. It has been highlighted" :
+                            +errors + " fields contain errors. They have been highlighted";
 
 
+                        $('#error').text(message);
+                        //$('div.error span').addClass('form-text text-danger');
+                        //$('#errorWrapper').show();
+
+                        $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function () {
+                            $("#errorWrapper").slideUp(500);
+                        });
+                    } else {
+                        $('#errorWrapper').hide();
+                    }
+                },
+                ignore: [],
+                rules: {
+
+                    //EDIT
 
 
 
-    user_id: {
-        required: true,
+
+
+                    user_id: {
+                        required: true,
+
+                    },
+
+
+
+
+
+                },
+                submitHandler: function (form) {
+
+                    //submitPreRegisterForm();
+
+
+
+                    //TODO submit changes
+                    //TODO reimport the array at the top
+                    //TODO redraw the table
+
+
+
+                }
+
+
+
+
+            }).form();
+
+            if ($(document).find('#faculty-form').valid()) {
+
+                inviteNewTagger();
+
+            }
+            //$(document).find('#faculty-form').valid()
+
+        })
+
+        $(document).on('click', '.send-review-mail', function () {
+
+event.preventDefault();
+console.log('clicked send review mail');
+//console.log($('#<?php echo $databaseName; ?>-form').closest());
+$(document).find('#review-form').validate({
+
+    invalidHandler: function (event, validator) {
+        var errors = validator.numberOfInvalids();
+        console.log("there were " + errors + " errors");
+        if (errors) {
+            var message = errors == 1 ?
+                "1 field contains errors. It has been highlighted" :
+                +errors + " fields contain errors. They have been highlighted";
+
+
+            $('#error').text(message);
+            //$('div.error span').addClass('form-text text-danger');
+            //$('#errorWrapper').show();
+
+            $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function () {
+                $("#errorWrapper").slideUp(500);
+            });
+        } else {
+            $('#errorWrapper').hide();
+        }
+    },
+    ignore: [],
+    rules: {
+
+        //EDIT
+
+
+
+
+
+        review_message: {
+            required: true,
+
+        },
+
+
+
+
 
     },
+    submitHandler: function (form) {
+
+        //submitPreRegisterForm();
 
 
 
-    
-
-},
-submitHandler: function(form) {
-
-    //submitPreRegisterForm();
-
-   
-
-    //TODO submit changes
-    //TODO reimport the array at the top
-    //TODO redraw the table
+        //TODO submit changes
+        //TODO reimport the array at the top
+        //TODO redraw the table
 
 
 
-}
+    }
 
 
 
 
 }).form();
 
-if ($(document).find('#faculty-form').valid()){
-    
-    inviteNewTagger();
+if ($(document).find('#review-form').valid()) {
+
+    sendReview();
 
 }
-        //$(document).find('#faculty-form').valid()
+//$(document).find('#faculty-form').valid()
 
-        })
+})
 
         $("#faculty-form").validate({
 
@@ -1020,6 +1153,124 @@ if ($(document).find('#faculty-form').valid()){
 
 
         });
+
+        $(document).on('click', '.approve-video', function () {
+
+
+            var videoid = lesionUnderEdit;
+
+            var dataToSend = {
+
+
+                videoid: videoid,
+
+
+
+            }
+
+            const jsonString = JSON.stringify(dataToSend);
+
+
+            var request2 = $.ajax({
+                beforeSend: function () {
+
+
+                },
+                url: siteRoot + "pages/learning/scripts/moderation/approveVideo.php",
+                type: "POST",
+                contentType: "application/json",
+                data: jsonString,
+            });
+
+
+
+            request2.done(function (data) {
+                // alert( "success" );
+                if (data) {
+                    //show green tick
+                    alert(data);
+                    fillForm();
+                    //$('#commentsArea').html(data);
+
+
+                    //$('#notification-services').delay('1000').addClass('is-valid');
+
+
+
+
+                }
+                //$(document).find('.Thursday').hide();
+                //$(icon).prop("disabled", false);
+            })
+
+
+
+        })
+        
+        
+        
+        
+        $(document).on('click', '.view-video', function () {
+
+            window.open(siteRoot + 'pages/learning/scripts/forms/videoChapterForm.php?id='+lesionUnderEdit, '_blank');
+
+        })
+            
+
+
+        $(document).on('click', '.deny-video', function () {
+
+
+            var videoid = lesionUnderEdit;
+
+            var dataToSend = {
+
+
+                videoid: videoid,
+
+
+
+            }
+
+            const jsonString = JSON.stringify(dataToSend);
+
+
+            var request2 = $.ajax({
+                beforeSend: function () {
+
+
+                },
+                url: siteRoot + "pages/learning/scripts/moderation/denyVideo.php",
+                type: "POST",
+                contentType: "application/json",
+                data: jsonString,
+            });
+
+
+
+            request2.done(function (data) {
+                // alert( "success" );
+                if (data) {
+                    //show green tick
+                    alert(data);
+                    fillForm();
+                    //$('#commentsArea').html(data);
+
+
+                    //$('#notification-services').delay('1000').addClass('is-valid');
+
+
+
+
+                }
+                //$(document).find('.Thursday').hide();
+                //$(icon).prop("disabled", false);
+            })
+
+
+
+        })
+
 
 
     })

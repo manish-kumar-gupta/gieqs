@@ -18,7 +18,7 @@ require (BASE_URI . '/assets/scripts/login_functions.php');
      
      require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
 
-$debug = true;
+$debug = false;
 
 function time_elapsed_string($datetime, $full = false) {
   $now = new DateTime;
@@ -137,10 +137,13 @@ if ($data){
                                         
                                         
                                         ?>
+                                     <button class="btn btn-sm bg-success text-dark p-2 m-2 ml-0 view-video">View in Player</button>
+
 
                                         </span>
 
                                     </div>
+
                                     <div id="topModalAlert" class="alert alert-warning alert-flush collapse" role="alert">
     <span id="topModalSuccess"></span>
 </div>
@@ -266,6 +269,8 @@ if ($data){
 
                                 <?php
 
+
+                                //TODO modify for expires if a review
                                 $overdueTagging = null;
 
                                 $gmtTimezone = new DateTimeZone('GMT');
@@ -291,7 +296,7 @@ if ($data){
                                 <form id="review-form" class="mt-3">
                                     <div class="form-group">
                                         <label class="form-control-label">Generate Review Mail</label>
-                                        <textarea name="review-message" class="form-control" placeholder="Message to user"
+                                        <textarea id="review_message" name="review_message" class="form-control" placeholder="Message to user"
                                           rows="3"></textarea>
                                         <small class="form-text text-muted mt-2"></small>
 

@@ -285,6 +285,7 @@ Class video_moderation {
 						'inviting_user' => $row['inviting_user'],
 						'action' => $action,
 						'expires' => $expires,
+						'review' => $row['review_tag'],
 						
 						
 						
@@ -300,6 +301,50 @@ Class video_moderation {
 				
 				//echo 'false';
 				return false;
+			}
+
+
+	}
+
+	public function checkModerationKeyExists($key){
+
+        $q = "SELECT `id` FROM `usersTagging` WHERE `id` = '$key'";
+        //echo $q;
+
+        $result = $this->connection->RunQuery($q);
+		$nRows = $result->rowCount();
+			if ($nRows == 1){
+
+                return TRUE;
+			}else{
+				return FALSE;
+			}
+
+
+	}
+
+	public function getMailImage($videoid){
+
+        $q = "SELECT `thumbnail` FROM `video` WHERE `id` = '$videoid'";
+        //echo $q;
+
+        $result = $this->connection->RunQuery($q);
+		$nRows = $result->rowCount();
+			if ($nRows == 1){
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn = $row['thumbnail'];
+
+
+				}
+
+				return $rowReturn;
+
+			
+				
+			}else{
+				return FALSE;
 			}
 
 

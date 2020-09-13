@@ -57,6 +57,47 @@ Class userFunctions {
 
 
 	}
+
+	public function getUserKey($userid){
+
+        $q = "SELECT `key` FROM `users` WHERE `user_id` = '$userid'";
+        //echo $q;
+
+        $result = $this->connection->RunQuery($q);
+		$nRows = $result->rowCount();
+			if ($nRows == 1){
+
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                    $key = $row['key'];
+                }
+
+				return $key;
+			}else{
+				return FALSE;
+			}
+
+
+	}
+
+	public function generateNewKey($userid){
+
+        $q = "UPDATE `users` SET `key` = '{$this->generateRandomString(9)}' WHERE `user_id` = '$userid'";
+        //echo $q;
+
+        $result = $this->connection->RunQuery($q);
+		
+			if ($result){
+
+                
+
+				return TRUE;
+			}else{
+				return FALSE;
+			}
+
+
+	}
 	
 	public function getUserInitials($user_id){
 
