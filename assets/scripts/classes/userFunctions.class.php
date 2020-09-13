@@ -678,6 +678,46 @@ Class userFunctions {
 				}
 
 		}
+
+		public function generateUserNames()
+            {
+            
+
+            $q = "Select a.`user_id`, a.`firstname`, a.`surname`
+            FROM `users` as a
+            ";
+
+            //echo $q . '<br><br>';
+
+			$rowReturn = [];
+
+            $result = $this->connection->RunQuery($q);
+            
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn[] = $row;
+
+
+				}
+
+				foreach ($rowReturn as $key=>$value){
+
+					echo "<option value='{$value['user_id']}'>{$value['firstname']} {$value['surname']}</value>";
+
+				}
+
+            } else {
+                
+
+                return false;
+            }
+
+		}
 	
 
     /**

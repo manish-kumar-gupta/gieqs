@@ -47,6 +47,7 @@ $formv1 = new formGenerator;
     <!-- Page CSS -->
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/datatables/datatables.min.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/datatables/Buttons-1.6.1/css/buttons.dataTables.min.css">
     <!-- Purpose CSS -->
     <!-- <link rel="stylesheet" href="<?php //echo BASE_URL; ?>/assets/css/purpose.css" id="stylesheet"> -->
 
@@ -54,6 +55,8 @@ $formv1 = new formGenerator;
     .modal-backdrop {
         opacity: 0.75 !important;
     }
+
+    #actions-table, th, td { padding: 5px; }
 
     @media screen and (max-width: 400px) {
 
@@ -174,6 +177,9 @@ error_reporting(E_ALL);
 
 ${$databaseName} = new $databaseName;
 
+
+
+
 //eval("\$" . $databaseName . " = new " . $databaseName . ";");
 
 //$programme = new programme;
@@ -283,6 +289,7 @@ if ($identifierValue) {
                                 <!-- EDIT -->
                                 <th>id</th>
                                 <th>name</th>
+                                <th>category</th>
                                 <th>video status</th>
                                 <th>author</th>
                                 <th>editor</th>
@@ -307,7 +314,12 @@ if ($identifierValue) {
     </div>
 
     <!-- Modal -->
-    <?php require BASE_URI . '/pages/backend/forms/facultyForm.php';?>
+    <div class="modal fade" id="modal-faculty" tabindex="-1" role="dialog" aria-labelledby="modal-change-username"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+
+                    
+        </div>
 
 
     </div>
@@ -329,6 +341,9 @@ if ($identifierValue) {
     <!-- Datatables -->
     <script src="<?php echo BASE_URL; ?>/node_modules/datatables.net/js/jquery.datatables.min.js"></script>
     <script src="<?php echo BASE_URL; ?>/assets/libs/datatables/datatables.min.js"></script>
+    <script src="<?php echo BASE_URL; ?>/assets/datatables/Buttons-1.6.1/js/dataTables.buttons.min.js"></script>
+    <script src="<?php echo BASE_URL; ?>/assets/datatables/Buttons-1.6.1/js/buttons.html5.min.js"></script>
+
     <script src="<?php echo BASE_URL; ?>/assets/libs/flatpickr/dist/flatpickr.min.js"></script>
 
     <script>
@@ -338,6 +353,74 @@ if ($identifierValue) {
     var edit = 0;
     var lesionUnderEdit = null;
 
+    var addContainer = '<div class="d-flex align-items-center justify-content-end">'+
+        '<div class="actions ml-3"><a class="fill-modal action-item mr-2" data-toggle="tooltip" title="edit this row"'+
+                'data-original-title="Edit"> <i class="fas fa-pencil-alt"></i> </a> <a href="#" class="action-item mr-2"'+
+                'data-toggle="tooltip" title="" data-original-title="see enclosed items"> <i class="fas fa-level-down-alt"></i> </a>'+
+            '<div class="dropdown"> <a href="#" class="action-item" role="button" data-toggle="dropdown"'+
+                    'aria-haspopup="true" data-expanded="false"> <i class="fas fa-ellipsis-v"></i> </a>'+
+                '<div class="dropdown-menu dropdown-menu-right"> <a class="delete-row dropdown-item"> Delete </a> </div>'+
+            '</div>'+
+        '</div>'+
+    '</div>';
+
+    function inviteNewTagger(){
+
+        //get the id of the new tagger
+
+        var taggerid = $('#user_id').val();
+        var videoid = lesionUnderEdit;
+
+        var dataToSend = {
+
+            taggerid: taggerid,
+            videoid: videoid,
+
+
+
+            }
+
+        const jsonString = JSON.stringify(dataToSend);
+
+
+        var request2 = $.ajax({
+        beforeSend: function () {
+
+
+        },
+        url: siteRoot + "pages/learning/scripts/moderation/inviteUserTagging.php",
+        type: "POST",
+        contentType: "application/json",
+        data: jsonString,
+        });
+
+
+
+        request2.done(function (data) {
+        // alert( "success" );
+        if (data){
+            //show green tick
+            alert(data);
+
+            //$('#commentsArea').html(data);
+            
+            
+            //$('#notification-services').delay('1000').addClass('is-valid');
+            
+                
+                
+
+        }
+        //$(document).find('.Thursday').hide();
+        //$(icon).prop("disabled", false);
+        })
+
+
+
+
+
+    }
+    
     function tableRefresh() {
 
         //update the div at the top with AJAX
@@ -349,47 +432,58 @@ if ($identifierValue) {
 
     function fillForm(idPassed) {
 
-        disableFormInputs("<?php echo $databaseName; ?>-form");
+        var taggerid = $('#user_id').val();
+        var videoid = lesionUnderEdit;
 
-        esdLesionRequired = new Object;
+        var dataToSend = {
 
-        esdLesionRequired = getNamesFormElements("<?php echo $databaseName; ?>-form");
-
-        esdLesionString = '`id`=\'' + idPassed + '\'';
-
-        var selectorObject = getDataQuery("<?php echo $databaseName; ?>", esdLesionString, getNamesFormElements(
-            "<?php echo $databaseName; ?>-form"), 1);
-
-        //console.log(selectorObject);
-
-        selectorObject.done(function(data) {
-
-            console.log(data);
-
-            var formData = $.parseJSON(data);
+            taggerid: taggerid,
+            videoid: videoid,
 
 
-            $(formData).each(function(i, val) {
-                $.each(val, function(k, v) {
-                    $(document).find("#" + k).val(v);
 
-                    //if a select2, trigger change also required to display the change
-                    if ($(document).find("#" + k).hasClass('select2-hidden-accessible') ===
-                        true) {
+            }
 
-                        $(document).find("#" + k).trigger('change');
+        const jsonString = JSON.stringify(dataToSend);
 
-                    }
 
-                });
+        var request2 = $.ajax({
+        beforeSend: function () {
+
+
+        },
+        url: siteRoot + "pages/learning/scripts/moderation/getModerationForm.php",
+        type: "POST",
+        contentType: "application/json",
+        data: jsonString,
+        });
+
+
+
+        request2.done(function (data) {
+        // alert( "success" );
+        if (data){
+            //show green tick
+            $('.modal-dialog').html(data);
+
+            //$('#commentsArea').html(data);
+            
+            
+            //$('#notification-services').delay('1000').addClass('is-valid');
+            $('[data-toggle="select"]').select2({
+
+            dropdownParent: $(".modal-content"),
+            //theme: "bootstrap",
 
             });
+                
+                
 
-            //$("#messageBox").text("Editing ESD lesion ID "+idPassed);
+        }
+        //$(document).find('.Thursday').hide();
+        //$(icon).prop("disabled", false);
+        })
 
-            enableFormInputs("<?php echo $databaseName; ?>-form");
-
-        });
 
 
 
@@ -619,6 +713,9 @@ if ($identifierValue) {
                     data: 'name'
                 },
                 {
+                    data: 'supercategory'
+                },
+                {
                     data: 'active'
                 },
                 {
@@ -636,10 +733,17 @@ if ($identifierValue) {
                 {
                     data: null,
                     render: function(data, type, row) {
-                        return '<div class="d-flex align-items-center justify-content-end"><div class="actions ml-3"><a class="fill-modal action-item mr-2"  data-toggle="tooltip" title="edit this row" data-original-title="Edit"> <i class="fas fa-pencil-alt"></i> </a> <a href="#" class="action-item mr-2" data-toggle="tooltip" title="" data-original-title="see enclosed items"> <i class="fas fa-level-down-alt"></i> </a> <div class="dropdown"> <a href="#" class="action-item" role="button" data-toggle="dropdown" aria-haspopup="true" data-expanded="false"> <i class="fas fa-ellipsis-v"></i> </a> <div class="dropdown-menu dropdown-menu-right"> <a class="delete-row dropdown-item"> Delete </a> </div> </div> </div> </div>';
+                        return addContainer;
                     }
                 }
             ],
+            dom: 'Bfrtip',
+
+            buttons: [
+            'copyHtml5',
+            'csvHtml5',
+            
+        ],
 
 
 
@@ -687,7 +791,7 @@ if ($identifierValue) {
             var targettd = $(this).parent().parent().parent().parent().find('td').first().text();
             //console.log(targettd);
             lesionUnderEdit = targettd;
-            $('#modalMessageArea').text('Editing <?php echo $databaseName;?>' + lesionUnderEdit);
+            $('#modalMessageArea').text('Editing <?php echo $databaseName;?> ' + lesionUnderEdit);
             $('#modal-faculty').modal('show');
             fillForm(targettd);
             edit = 1;
@@ -713,7 +817,83 @@ if ($identifierValue) {
 
         })
 
-        $("#<?php echo $databaseName; ?>-form").validate({
+        
+
+        $(document).on('click', '.invite-new-tagger', function() {
+
+        event.preventDefault();
+        console.log('clicked invite new tagger');
+        //console.log($('#<?php echo $databaseName; ?>-form').closest());
+        $(document).find('#faculty-form').validate({
+
+invalidHandler: function(event, validator) {
+    var errors = validator.numberOfInvalids();
+    console.log("there were " + errors + " errors");
+    if (errors) {
+        var message = errors == 1 ?
+            "1 field contains errors. It has been highlighted" :
+            +errors + " fields contain errors. They have been highlighted";
+
+
+        $('#error').text(message);
+        //$('div.error span').addClass('form-text text-danger');
+        //$('#errorWrapper').show();
+
+        $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function() {
+            $("#errorWrapper").slideUp(500);
+        });
+    } else {
+        $('#errorWrapper').hide();
+    }
+},
+ignore: [],
+rules: {
+
+    //EDIT
+
+
+
+
+
+    user_id: {
+        required: true,
+
+    },
+
+
+
+    
+
+},
+submitHandler: function(form) {
+
+    //submitPreRegisterForm();
+
+   
+
+    //TODO submit changes
+    //TODO reimport the array at the top
+    //TODO redraw the table
+
+
+
+}
+
+
+
+
+}).form();
+
+if ($(document).find('#faculty-form').valid()){
+    
+    inviteNewTagger();
+
+}
+        //$(document).find('#faculty-form').valid()
+
+        })
+
+        $("#faculty-form").validate({
 
             invalidHandler: function(event, validator) {
                 var errors = validator.numberOfInvalids();
@@ -744,31 +924,21 @@ if ($identifierValue) {
 
 
 
-                title: {
+                user_id: {
                     required: true,
 
                 },
 
 
 
-                firstname: {
-                    required: true,
-
-                },
-
-
-
-                surname: {
-                    required: true,
-
-                },
+                
 
             },
             submitHandler: function(form) {
 
                 //submitPreRegisterForm();
 
-                submit<?php echo $databaseName;?>Form();
+                inviteNewTagger();
 
                 //TODO submit changes
                 //TODO reimport the array at the top

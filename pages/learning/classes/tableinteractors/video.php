@@ -10,13 +10,15 @@ require ('../../includes/config.inc.php');
 
 
 $video_PDO = new video_PDO;
+$video_moderation = new video_moderation;
 
 //echo 'could load video class';
 
-$response =  $video_PDO->Load_records_limit_json_datatables(50);
+$response =  $video_moderation->getModerationTable();
 
 echo $response;
 
 //echo ltrim($response);
 
-$video_PDO->endvideo();
+$video_PDO->endvideo_PDO();
+$video_PDO->endvideo_moderation();
