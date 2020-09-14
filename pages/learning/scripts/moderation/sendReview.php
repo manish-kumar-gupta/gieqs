@@ -18,7 +18,7 @@ require (BASE_URI . '/assets/scripts/login_functions.php');
      
      require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
 
-$debug = false;
+$debug = true;
 
 function time_elapsed_string($datetime, $full = false) {
   $now = new DateTime;
@@ -70,6 +70,7 @@ $general = new general;
 //$usersSocial = new usersSocial;
 $usersTagging = new usersTagging;
 $video_moderation = new video_moderation;
+$video = new video;
 
 
 $data = json_decode(file_get_contents('php://input'), true);

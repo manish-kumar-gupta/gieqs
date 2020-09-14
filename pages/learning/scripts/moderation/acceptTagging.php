@@ -72,6 +72,10 @@ if ($userFunctions->getUserFromKey($key)){
             echo 'moderation key checks out';
         }
 
+        //check user key combination
+
+
+
         $usersTagging->Load_from_key($id);
         $videoid = $usersTagging->getvideo_id();
 
@@ -125,6 +129,10 @@ if ($userFunctions->getUserFromKey($key)){
          }
 
 
+
+    }else{
+
+      echo 'Moderation key is not valid';
 
     }
 
