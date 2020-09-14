@@ -12,7 +12,7 @@ require BASE_URI . '/head.php';
 
 
 
-$debug = false;
+$debug = TRUE;
 
 
 $users = new users;
@@ -74,6 +74,9 @@ if ($userFunctions->getUserFromKey($key)){
 
         $usersTagging->Load_from_key($id);
         $videoid = $usersTagging->getvideo_id();
+
+        $video->Load_from_key($videoid);
+
         $gmtTimezone = new DateTimeZone('GMT');
          $myDateTime = new DateTime('now', $gmtTimezone);
          $timestamp = $myDateTime->format('Y-m-d H:i:s');
@@ -94,9 +97,16 @@ if ($userFunctions->getUserFromKey($key)){
             // $email = array(0 => $users->getemail()); //original version
             $email = $users->getemail();
             $emailVaryarray['key'] = $users->getkey();
-            $emailVaryarray['linkVideo'] = BASE_URL . 'pages/learning/scripts/forms/videoChapterForm.php?id=' . $videoid;
+            $emailVaryarray['linkVideo'] = 'https://www.gieqs.com/pages/learning/scripts/forms/videoChapterForm.php?id=' . $videoid;
             $emailVaryarray['image'] = $video_moderation->getMailImage($videoid);
+            $emailVaryarray['video_name'] = $video->getname();
+            
+            if ($debug){
 
+                echo PHP_EOL;
+                print_r($emailVaryarray);
+
+            }
 
             $filename = '/assets/email/acceptMailTagging.php';
 
@@ -108,13 +118,7 @@ if ($userFunctions->getUserFromKey($key)){
 
             if ($debug){
 
-                if ($emailWorked){
-
-                    echo 'Email sent';
-                }else{
-
-                    echo 'Email failed ' . $reason;
-                }
+                
 
             }
 

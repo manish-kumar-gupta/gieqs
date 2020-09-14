@@ -142,17 +142,52 @@ if ($videoid && $userid){
 
 
 
-        if ($result){
+        if ($users->Load_from_key($currentLockedUser)){
 
             if ($debug){
                 echo 'Tagging due on ' .  $tagging_due;
                 echo 'Mail sent';
 
             }
+
+            $users->Load_from_key($loggedInUser);
+            $emailVaryarray['firstname'] = $users->getfirstname();
+            $emailVaryarray['surname'] = $users->getsurname();
+            $emailVaryarray['email'] = $users->getemail();
+            // $email = array(0 => $users->getemail()); //original version
+            $email = $users->getemail();
+            $emailVaryarray['key'] = $users->getkey();
+            $emailVaryarray['linkVideo'] = 'https://www.gieqs.com/pages/learning/scripts/forms/videoChapterForm.php?id=' . $videoid;
+            $emailVaryarray['image'] = $video_moderation->getMailImage($videoid);
+            $emailVaryarray['video_name'] = $video->getname();
+            $emailVaryarray['tagging_due'] = $tagging_due;
+            
+            if ($debug){
+
+                echo PHP_EOL;
+                print_r($emailVaryarray);
+
+            }
+
+            $filename = '/assets/email/remindAcceptMailTagging.php';
+
+            $subject = 'Overdue Tagging Request for GIEQs Online';
+
+            require(BASE_URI . '/assets/scripts/individualMailerGmailAPI.php');  //TEST MAIL
+
+            echo 'An email was sent to the registered email address of the user.';
+
+            if ($debug){
+
+                
+
+            }
+
+
         }
 
 
-        $usersTagging->endusersTagging;
+       
 
         //send mail
 
@@ -162,8 +197,8 @@ if ($videoid && $userid){
     //send a mail to remind
 
     //include the time 
+
     
-    //if a current invitation exits remove it
 
     
  
@@ -176,3 +211,4 @@ if ($videoid && $userid){
 }
 
 $users->endusers();
+$usersTagging->endusersTagging;

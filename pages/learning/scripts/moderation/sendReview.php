@@ -127,16 +127,21 @@ if ($videoid && $userid){
 
         }
         
-        $users->Load_from_key($currentLockedUser);
-        if ($users->gettimezone()){
+        if ($users->Load_from_key($currentLockedUser)){
+            if ($users->gettimezone()){
 
-            $userTimezoneDatabase = $users->gettimezone();
+                $userTimezoneDatabase = $users->gettimezone();
 
+            }else{
+
+                $userTimezoneDatabase = 'Europe/Brussels';
+        
+            }
         }else{
 
-            $userTimezoneDatabase = 'Europe/Brussels';
-    
-         }
+            echo 'User does not match a known user';
+            exit();
+        }
         
         //send mail here
         
@@ -163,6 +168,39 @@ if ($videoid && $userid){
                 echo 'Review Request sent';
 
             }
+             //generate an initial login link
+             $users->Load_from_key($loggedInUser);
+             $emailVaryarray['firstname'] = $users->getfirstname();
+             $emailVaryarray['surname'] = $users->getsurname();
+             $emailVaryarray['email'] = $users->getemail();
+             // $email = array(0 => $users->getemail()); //original version
+             $email = $users->getemail();
+             $emailVaryarray['key'] = $users->getkey();
+             $emailVaryarray['linkVideo'] = 'https://www.gieqs.com/pages/learning/scripts/forms/videoChapterForm.php?id=' . $videoid;
+             $emailVaryarray['image'] = $video_moderation->getMailImage($videoid);
+             $emailVaryarray['video_name'] = $video->getname();
+             $emailVaryarray['review'] = $review;
+             
+             if ($debug){
+ 
+                 echo PHP_EOL;
+                 print_r($emailVaryarray);
+ 
+             }
+ 
+             $filename = '/assets/email/reviewMailTagging.php';
+ 
+             $subject = 'Tagging Review Request for GIEQs Online';
+ 
+             require(BASE_URI . '/assets/scripts/individualMailerGmailAPI.php');  //TEST MAIL
+ 
+             echo 'An email was sent to the registered email address of the user.';
+ 
+             if ($debug){
+ 
+                 
+ 
+             }
 
             echo 'Review sent to user';
             echo 'Review text: ';

@@ -18,7 +18,7 @@ require (BASE_URI . '/assets/scripts/login_functions.php');
      
      require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
 
-$debug = false;
+$debug = true;
 
 function time_elapsed_string($datetime, $full = false) {
   $now = new DateTime;
@@ -107,6 +107,9 @@ if ($videoid && $taggerid && userid){
             echo 'open user invite detected for user ' . $video_moderation->videoHasOpenTaggerInvite($videoid, $debug);
         }
 
+        //identify the currently identified user
+
+
         //close the invite
         $usersTagging->Load_from_key($video_moderation->videoHasOpenTaggerInviteReturnKey($videoid, $debug));
         $gmtTimezone = new DateTimeZone('GMT');
@@ -125,9 +128,44 @@ if ($videoid && $taggerid && userid){
             }
         }
 
-        $usersTagging->endusersTagging;
+        
+        //send mail to declined user
 
-        //send mail
+        $users->Load_from_key($currentLockedUser);
+        $emailVaryarray['firstname'] = $users->getfirstname();
+        $emailVaryarray['surname'] = $users->getsurname();
+        $emailVaryarray['email'] = $users->getemail();
+        // $email = array(0 => $users->getemail()); //original version
+        $email = $users->getemail();
+        $emailVaryarray['key'] = $users->getkey();
+        //$emailVaryarray['linkVideo'] = BASE_URL . '/pages/learning/scripts/forms/videoChapterForm.php?id=' . $videoid;
+        $emailVaryarray['image'] = $video_moderation->getMailImage($videoid);
+        $emailVaryarray['video_name'] = $video->getname();
+        $emailVaryarray['videoid'] = $videoid;
+        
+        if ($debug){
+
+            echo PHP_EOL;
+            print_r($emailVaryarray);
+
+        }
+
+        $filename = '/assets/email/declineMailTagging.php';
+
+        $subject = 'You no longer need to tag video ' . $videoid . ' on GIEQs Online';
+
+        require(BASE_URI . '/assets/scripts/individualMailerGmailAPI.php');  //TEST MAIL
+
+        echo 'An email was sent to the registered email address of the user.';
+
+        if ($debug){
+
+            
+
+        }
+
+        $usersTagging->endusersTagging;
+        $users->endusers;
 
 
     }else{
@@ -147,6 +185,52 @@ if ($videoid && $taggerid && userid){
     if ($result){
 
         echo "User {$userFunctions->getUserName($taggerid)} Invited";
+
+        //send mail to accepted user
+
+        if ($debug){
+
+            echo PHP_EOL;
+            echo 'Result which should contain last insert id is ';
+            print_r($result);
+            echo PHP_EOL;
+        }
+
+        $users->Load_from_key($taggerid);
+        $emailVaryarray['firstname'] = $users->getfirstname();
+        $emailVaryarray['surname'] = $users->getsurname();
+        $emailVaryarray['email'] = $users->getemail();
+        // $email = array(0 => $users->getemail()); //original version
+        $email = $users->getemail();
+        $key = $users->getkey();
+        $emailVaryarray['key'] = $key;
+        $emailVaryarray['linkConfirm'] = 'https://www.gieqs.com/pages/learning/scripts/moderation/acceptTagging.php?id=' . $result . '&key=' . $key;
+        $emailVaryarray['linkDecline'] = 'https://www.gieqs.com/pages/learning/scripts/moderation/declineTagging.php?id=' . $result . '&key=' . $key;
+
+        $emailVaryarray['image'] = $video_moderation->getMailImage($videoid);
+        $emailVaryarray['video_name'] = $video->getname();
+        $emailVaryarray['videoid'] = $videoid;
+        
+        if ($debug){
+
+            echo PHP_EOL;
+            print_r($emailVaryarray);
+
+        }
+
+        $filename = '/assets/email/inviteMailTagging.php';
+
+        $subject = 'You are invited to tag a video on GIEQs Online';
+
+        require(BASE_URI . '/assets/scripts/individualMailerGmailAPI.php');  //TEST MAIL
+
+        echo 'An email was sent to the registered email address of the user.';
+
+        if ($debug){
+
+            
+
+        }
     }
 
     // send a mail to the invited user

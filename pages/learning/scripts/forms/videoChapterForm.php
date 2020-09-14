@@ -22,6 +22,14 @@
 
       $navigator = new navigator;
 
+      //if user is not superuser
+
+      //check for a link to tag
+
+      //if no link for this video allow
+
+      //if an open invite deny unless that user
+
       ?>
 
     <!--Page title-->

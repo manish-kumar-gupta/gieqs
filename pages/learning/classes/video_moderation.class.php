@@ -21,7 +21,53 @@ Class video_moderation {
 
 	public function getModerationTable()
 	{
-	$q = "Select * from `video` WHERE `active` = '2'";
+	$q = "Select * from `video` WHERE `active` = '4'";
+	$result = $this->connection->RunQuery($q);
+	$rowReturn = array();
+	$x = 0;
+	$nRows = $result->rowCount();
+	if ($nRows > 0) {
+
+		while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+			//print_r(array_map('utf8_encode', $row));
+			//$rowReturn['data'][] = array_map('utf8_encode', $row);
+
+			$rowReturn['data'][] = [
+
+				'id' => $row['id'],
+				'name' => $row['name'],
+				'supercategory' => $this->getVideoSuperCategory($row['id']),
+				'active' => $row['active'],
+				'author' => $row['author'],
+				'editor' => $row['editor'],
+				'tagger' => $row['tagger'],
+				'recorder' => $row['recorder'],
+
+
+			];
+
+			
+
+			$x++;
+		}
+	
+		return json_encode($rowReturn);
+
+	} else {
+		
+
+		//RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+		$rowReturn['data'] = [];
+		
+		return json_encode($rowReturn);
+	}
+
+}
+
+public function getManagementTable()
+	{
+	$q = "Select * from `video` WHERE `active` = '2' OR `active` = '4'";
 	$result = $this->connection->RunQuery($q);
 	$rowReturn = array();
 	$x = 0;

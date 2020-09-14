@@ -85,6 +85,39 @@ if ($userFunctions->getUserFromKey($key)){
             echo 'Thank you for your response.  We hope we can interest you in tagging at another time.';
             $userFunctions->generateNewKey($loggedInUser);
 
+             //generate an initial login link
+             $users->Load_from_key($loggedInUser);
+             $emailVaryarray['firstname'] = $users->getfirstname();
+             $emailVaryarray['surname'] = $users->getsurname();
+             $emailVaryarray['email'] = $users->getemail();
+             // $email = array(0 => $users->getemail()); //original version
+             $email = $users->getemail();
+             $emailVaryarray['key'] = $users->getkey();
+             //$emailVaryarray['linkVideo'] = BASE_URL . '/pages/learning/scripts/forms/videoChapterForm.php?id=' . $videoid;
+             //$emailVaryarray['image'] = $video_moderation->getMailImage($videoid);
+             //$emailVaryarray['video_name'] = $video->getname();
+             
+             if ($debug){
+ 
+                 echo PHP_EOL;
+                 print_r($emailVaryarray);
+ 
+             }
+ 
+             $filename = '/assets/email/declineMailTagging.php'; //later could send this to administrator
+ 
+             $subject = 'Thanks for your response.';
+ 
+             //require(BASE_URI . '/assets/scripts/individualMailerGmailAPI.php');  //NO EMAIL REQUIRED since declining
+ 
+             //echo 'An email was sent to your registered email address.';
+ 
+             if ($debug){
+ 
+                 
+ 
+             }
+
          }
 
 

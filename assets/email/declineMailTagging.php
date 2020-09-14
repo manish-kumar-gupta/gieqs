@@ -577,7 +577,7 @@
                                                                             </h4>
                                                                             <h2
                                                                                 style="display:block;margin:0;padding:0;color:#222222;font-family:Helvetica;font-size:40px;font-style:normal;font-weight:bold;line-height:150%;letter-spacing:normal;text-align:center;">
-                                                                                Thanks for agreeing to tag.</h2>
+                                                                               Your services are no longer required for this video.</h2>
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
@@ -619,51 +619,15 @@
 
                                                                             <p
                                                                                 style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;font-weight:bold">
-                                                                                Thanks for accepting our tagging request.</p>
-                                                                            <p
+                                                                                Your services in tagging video id <?php echo $videoid;?> (<?php echo $video_name;?>) are no longer required.</p>
+                                                                                                              <p
                                                                                 style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                You can access the video <a href="<?php echo $linkVideo;?>">here</a>.  You will need to <a href="www.gieqs.com/login">login</a> first.</p>
-                                                                            <p
-                                                                                style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                Please try to tag and submit within 2 weeks.</p>
+                                                                                We hope to interest you in tagging on GIEQs online in the future.</p>
 
 
                                                                             <!--GIEQS BUTTON -->
 
-                                                                            <table border="0" cellpadding="0"
-                                                                                cellspacing="0" width="100%"
-                                                                                class="mcnButtonBlock"
-                                                                                style="min-width:100%;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                                                <tbody class="mcnButtonBlockOuter">
-                                                                                    <tr>
-                                                                                        <td style="padding-top:25px;padding-right:18px;padding-bottom:18px;padding-left:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;"
-                                                                                            valign="top" align="center"
-                                                                                            class="mcnButtonBlockInner">
-                                                                                            <table border="0"
-                                                                                                cellpadding="0"
-                                                                                                cellspacing="0"
-                                                                                                class="mcnButtonContentContainer"
-                                                                                                style="border-collapse:separate !important;border-radius:3px;background-color:#1b385d;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust: 100%;">
-                                                                                                <tbody>
-                                                                                                    <tr>
-                                                                                                        <td align="center"
-                                                                                                            valign="middle"
-                                                                                                            class="mcnButtonContent"
-                                                                                                            style="font-family:Helvetica;font-size:18px;padding:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                                                                            <a class="mcnButton "
-                                                                                                                title="Find Out More"
-                                                                                                                href="<?php echo $linkVideo;?>"
-                                                                                                                target="_blank"
-                                                                                                                style="font-weight:bold;letter-spacing:-0.5px;line-height:100%;text-align:center;text-decoration:none;color:#e3ebf6;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;display:block;">Start Tagging
-                                                                                                            </a>
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                </tbody>
-                                                                                            </table>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
+                                                                            
 
                                                                             
 
@@ -694,7 +658,7 @@
                                                                                             style="padding-left:9px;padding-top:0;padding-bottom:40px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;text-align:center;">
 
 																			<center>
-                                                                                            <a href="<?php echo $linkVideo;?>"
+                                                                                            <a href=""
                                                                                                 target="_blank"><img
                                                                                                     alt=""
                                                                                                     src="<?php echo $image;?>"

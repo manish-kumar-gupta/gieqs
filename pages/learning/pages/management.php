@@ -123,7 +123,7 @@ and 4
                         <!-- Salute + Small stats -->
                         <div class="row align-items-center mb-4">
                             <div class="col-md-5 mb-4 mb-md-0">
-                                <span class="h2 mb-0 text-white d-block">Videos Requiring Moderation</span>
+                                <span class="h2 mb-0 text-white d-block">Manage Videos (Superuser)</span>
 
                                 <!-- <span class="text-white">Have a nice day!</span> -->
                             </div>
@@ -240,7 +240,7 @@ if ($identifierValue) {
 
                     <div class="row justify-content-between align-items-center">
                         <div class="col">
-                            <h5 class="mb-1">Videos Requiring Moderation</h5>
+                            <h5 class="mb-1">Manage Videos (SuperUser)</h5>
                             <p class="text-sm text-muted mb-0 d-none d-md-block">Manage <?php echo $databaseName; ?>.</p>
                         </div>
                         <div class="col text-right">
@@ -823,7 +823,7 @@ if (data){
 
 
             ajax: siteRoot +
-                'pages/learning/classes/tableInteractors/<?php echo $databaseName; ?>.php',
+                'pages/learning/classes/tableInteractors/management.php',
             //TODO all classes need this function
 
 
