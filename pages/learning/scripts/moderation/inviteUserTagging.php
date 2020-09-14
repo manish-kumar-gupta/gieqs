@@ -174,6 +174,8 @@ if ($videoid && $taggerid && userid){
         //insert only
     }
     
+    $users = new users;
+    $usersTagging = new usersTagging;
     //insert an invitation row
     //use UTC for insertion
     $gmtTimezone = new DateTimeZone('GMT');

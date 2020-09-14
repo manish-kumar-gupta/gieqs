@@ -12,7 +12,7 @@ require BASE_URI . '/head.php';
 
 
 
-$debug = TRUE;
+$debug = true;
 
 
 $users = new users;
