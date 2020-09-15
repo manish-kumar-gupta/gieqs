@@ -823,7 +823,7 @@ if (data){
 
 
             ajax: siteRoot +
-                'pages/learning/classes/tableInteractors/management.php',
+                'pages/learning/classes/tableinteractors/management.php',
             //TODO all classes need this function
 
 

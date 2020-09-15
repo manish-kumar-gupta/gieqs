@@ -823,7 +823,7 @@ if (data){
 
 
             ajax: siteRoot +
-                'pages/learning/classes/tableInteractors/<?php echo $databaseName; ?>.php',
+                'pages/learning/classes/tableinteractors/<?php echo $databaseName; ?>.php',
             //TODO all classes need this function
 
 
