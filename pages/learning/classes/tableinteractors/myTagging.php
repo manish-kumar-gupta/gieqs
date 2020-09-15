@@ -135,6 +135,8 @@ foreach ($responsePre as $key1=>$value1){
         $addContainer .= '</div>';
         $addContainer .=  '</div>';
 
+        //$addContainer = '<div class="d-flex align-items-center justify-content-end"><div class="actions ml-3"><a class="fill-modal action-item mr-2" data-toggle="tooltip" title="tag this video" data-original-title="Edit"> <i class="fas fa-pencil-alt"></i> </a> </div> </div> </div>';
+
         }
 
         if ($value['status'] == 'Invitation'){
