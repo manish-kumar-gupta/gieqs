@@ -162,7 +162,7 @@ if ($videoid && $taggerid && userid){
 
         $subject = 'You no longer need to tag video ' . $videoid . ' on GIEQs Online';
 
-        require(BASE_URI . '/assets/scripts/individualMailerGmailAPI.php');  //TEST MAIL
+        require_once(BASE_URI . '/assets/scripts/individualMailerGmailAPI.php');  //TEST MAIL
 
         echo 'An email was sent to the registered email address of the user.';
 
@@ -237,6 +237,8 @@ if ($videoid && $taggerid && userid){
 
         }
 
+        if ($video_moderation->videoHasOpenTaggerInvite($videoid, $debug)){
+
         $filename2 = '/assets/email/inviteMailTagging.php';
 
         $subject = 'You are invited to tag a video on GIEQs Online';
@@ -247,7 +249,16 @@ if ($videoid && $taggerid && userid){
 
         
         sendMessage($service, $user, $message2);
+        }else{
 
+            $filename = '/assets/email/inviteMailTagging.php';
+
+            $subject = 'You are invited to tag a video on GIEQs Online';
+
+            require_once(BASE_URI . '/assets/scripts/individualMailerGmailAPI.php');
+
+
+        }
 
         //require(BASE_URI . '/assets/scripts/individualMailerGmailAPI.php');  //TEST MAIL
 
