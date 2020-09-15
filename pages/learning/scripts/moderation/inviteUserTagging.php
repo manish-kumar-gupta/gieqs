@@ -130,15 +130,15 @@ if ($videoid && $taggerid && userid){
 
             //send mail to declined user
 
-        $declinedUser = $$video_moderation->videoHasOpenTaggerInvite($videoid, $debug);
+        $declinedUser = $video_moderation->videoHasOpenTaggerInvite($videoid, $debug);
 
         if ($debug){
 
-            echo 'Decline user ' . $declinedUser;
+            echo 'Decline user ' . $currentLockedUser[0];
 
         }
 
-        $users->Load_from_key($declinedUser);
+        $users->Load_from_key($currentLockedUser[0]);
         $emailVaryarray['firstname'] = $users->getfirstname();
         $emailVaryarray['surname'] = $users->getsurname();
         $emailVaryarray['email'] = $users->getemail();
@@ -188,6 +188,8 @@ if ($videoid && $taggerid && userid){
     
     $users = new users;
     $usersTagging = new usersTagging;
+    $emailVaryarray = null;
+    $emailVaryarray = array();
     //insert an invitation row
     //use UTC for insertion
     $gmtTimezone = new DateTimeZone('GMT');
@@ -223,6 +225,7 @@ if ($videoid && $taggerid && userid){
         $emailVaryarray['linkDecline'] = 'https://www.gieqs.com/pages/learning/scripts/moderation/declineTagging.php?id=' . $result . '&key=' . $key;
 
         $emailVaryarray['image'] = $video_moderation->getMailImage($videoid);
+        $video->Load_from_key($videoid);
         $emailVaryarray['video_name'] = $video->getname();
         $emailVaryarray['videoid'] = $videoid;
         
@@ -233,11 +236,19 @@ if ($videoid && $taggerid && userid){
 
         }
 
-        $filename = '/assets/email/inviteMailTagging.php';
+        $filename2 = '/assets/email/inviteMailTagging.php';
 
         $subject = 'You are invited to tag a video on GIEQs Online';
 
-        require(BASE_URI . '/assets/scripts/individualMailerGmailAPI.php');  //TEST MAIL
+        $messageText2 = get_include_contents(BASE_URI . $filename2, $emailVaryarray);
+
+        $message2 = createMessage('admin@gieqs.com', $email, $subject, $messageText2);
+
+        
+        sendMessage($service, $user, $message2);
+
+
+        //require(BASE_URI . '/assets/scripts/individualMailerGmailAPI.php');  //TEST MAIL
 
         echo 'An email was sent to the registered email address of the user.';
 

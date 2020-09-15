@@ -128,7 +128,7 @@ if ($videoid && $userid){
 
         }
         
-        $users->Load_from_key($currentLockedUser);
+        $users->Load_from_key($currentLockedUser[0]);
         if ($users->gettimezone()){
 
             $userTimezoneDatabase = $users->gettimezone();
@@ -156,6 +156,44 @@ if ($videoid && $userid){
         if ($result){
 
             echo 'Database updated with approval';
+
+            //echo 'Thank you for your response.  Please try to complete tagging within 2 weeks.';
+            $userFunctions->generateNewKey($loggedInUser);
+
+            //generate an initial login link
+            //$users->Load_from_key($loggedInUser);
+            $emailVaryarray['firstname'] = $users->getfirstname();
+            $emailVaryarray['surname'] = $users->getsurname();
+            $emailVaryarray['email'] = $users->getemail();
+            // $email = array(0 => $users->getemail()); //original version
+            $email = $users->getemail();
+            $emailVaryarray['key'] = $users->getkey();
+            $emailVaryarray['linkVideo'] = 'https://www.gieqs.com/pages/learning/viewer.php?id=' . $videoid;
+            $emailVaryarray['image'] = $video_moderation->getMailImage($videoid);
+            $video->Load_from_key($videoid);
+            $emailVaryarray['video_name'] = $video->getname();
+            $emailVaryarray['videoid'] = $videoid;
+            
+            if ($debug){
+
+                echo PHP_EOL;
+                print_r($emailVaryarray);
+
+            }
+
+            $filename = '/assets/email/thanksMailTagging.php';
+
+            $subject = 'Thanks for tagging!';
+
+            require(BASE_URI . '/assets/scripts/individualMailerGmailAPI.php');  //TEST MAIL
+
+            echo 'An email was sent to the user\'s registered email address.';
+
+            if ($debug){
+
+                
+
+            }
             
 
         }

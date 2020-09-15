@@ -22,6 +22,10 @@
 
       $navigator = new navigator;
 
+      $usersTagging = new usersTagging;
+
+      $video_moderation = new video_moderation;
+
       //if user is not superuser
 
       //check for a link to tag
@@ -247,7 +251,30 @@ background-color: rgb(238, 194, 120);
 		
 		
 		
-		//TERMINATE THE SCRIPT IF NOT A SUPERUSER
+        //TERMINATE THE SCRIPT IF NOT A SUPERUSER
+        
+        if ($isSuperuser == 0){
+
+            //terminate if there is an open invite
+
+            $openInvite =  $video_moderation->videoHasOpenTaggerInvite($id, $debug);
+
+            if ($openInvite){
+
+                $currentLockedUser = $video_moderation->getTagLockedUser($id, $debug);
+
+                if ($currentLockedUser[0] != $userid){
+
+                    echo 'This video is locked for tagging to another user';
+                    exit();
+                }
+
+            }
+
+
+            //and the logged in user is not that user
+
+        }
 		
 		
 		

@@ -12,7 +12,7 @@ require BASE_URI . '/head.php';
 
 
 
-$debug = true;
+$debug = false;
 
 
 $users = new users;
@@ -118,7 +118,7 @@ if ($userFunctions->getUserFromKey($key)){
 
             require(BASE_URI . '/assets/scripts/individualMailerGmailAPI.php');  //TEST MAIL
 
-            echo 'An email was sent to your registered email address.';
+            echo 'An email was sent to your registered email address with a link to the video.';
 
             if ($debug){
 

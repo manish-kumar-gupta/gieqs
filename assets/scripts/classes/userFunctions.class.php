@@ -34,6 +34,21 @@ Class userFunctions {
 			}
 
 
+	}
+	
+	public function userExistsid($id){
+
+        $q = "SELECT `user_id` FROM `users` WHERE `user_id` = '$id'";
+
+        $result = $this->connection->RunQuery($q);
+		$nRows = $result->rowCount();
+			if ($nRows == 1){
+				return TRUE;
+			}else{
+				return FALSE;
+			}
+
+
     }
 
     public function getUserFromKey($key){

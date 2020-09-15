@@ -619,55 +619,18 @@
 
                                                                             <p
                                                                                 style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;font-weight:bold">
-                                                                                Thanks for submitting your tagged video.  We had some comments:</p>
-
-                                                                                <p
-                                                                                style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                <?php echo $review;?></p>
+                                                                                Thanks for tagging video id <?php echo $videoid; ?> on GIEQs Online.  You have been credited on the video display page.</p>
                                                                             <p
                                                                                 style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                You can modify the video <a href="<?php echo $linkVideo;?>">here</a>.  You will need to <a href="www.gieqs.com/login">login</a> first.</p>
+                                                                                You can access the video <a href="<?php echo $linkVideo;?>">here</a>.  You will need to <a href="www.gieqs.com/login">login</a> first.</p>
                                                                             <p
                                                                                 style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                Please try to tag and submit your modified video within 2 weeks.</p>
+                                                                                We hope we can interest you in tagging further videos in the future.</p>
 
 
                                                                             <!--GIEQS BUTTON -->
 
-                                                                            <table border="0" cellpadding="0"
-                                                                                cellspacing="0" width="100%"
-                                                                                class="mcnButtonBlock"
-                                                                                style="min-width:100%;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                                                <tbody class="mcnButtonBlockOuter">
-                                                                                    <tr>
-                                                                                        <td style="padding-top:25px;padding-right:18px;padding-bottom:18px;padding-left:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;"
-                                                                                            valign="top" align="center"
-                                                                                            class="mcnButtonBlockInner">
-                                                                                            <table border="0"
-                                                                                                cellpadding="0"
-                                                                                                cellspacing="0"
-                                                                                                class="mcnButtonContentContainer"
-                                                                                                style="border-collapse:separate !important;border-radius:3px;background-color:#1b385d;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust: 100%;">
-                                                                                                <tbody>
-                                                                                                    <tr>
-                                                                                                        <td align="center"
-                                                                                                            valign="middle"
-                                                                                                            class="mcnButtonContent"
-                                                                                                            style="font-family:Helvetica;font-size:18px;padding:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                                                                            <a class="mcnButton "
-                                                                                                                title="Find Out More"
-                                                                                                                href="<?php echo $linkVideo;?>"
-                                                                                                                target="_blank"
-                                                                                                                style="font-weight:bold;letter-spacing:-0.5px;line-height:100%;text-align:center;text-decoration:none;color:#e3ebf6;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;display:block;">Start Tagging
-                                                                                                            </a>
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                </tbody>
-                                                                                            </table>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
+                                                                         
 
                                                                             
 
@@ -762,7 +725,7 @@
 
                                                                             <p
                                                                                 style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                With kind regards and thanks for your time,</p>
+                                                                                With kind regards,</p>
                                                                             <p
                                                                                 style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#444444;font-weight:bold;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
                                                                                 GIEQs Online.</p>

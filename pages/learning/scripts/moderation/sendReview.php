@@ -18,7 +18,7 @@ require (BASE_URI . '/assets/scripts/login_functions.php');
      
      require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
 
-$debug = true;
+$debug = false;
 
 function time_elapsed_string($datetime, $full = false) {
   $now = new DateTime;
@@ -81,6 +81,7 @@ $review = $data['review'];
 
 
 if ($debug){
+    echo '$videoid is';
 print_r($videoid);
 print_r($review);
 echo '$userid is ' . $userid;
@@ -128,7 +129,21 @@ if ($videoid && $userid){
 
         }
         
-        if ($users->Load_from_key($currentLockedUser)){
+
+        if ($debug){
+        echo 'Current Locked user is ';
+        print_r($currentLockedUser);
+
+        }
+
+       
+
+        if ($userFunctions->userExistsid($currentLockedUser[0])){
+        
+        
+            
+            $users->Load_from_key($currentLockedUser[0]);
+            
             if ($users->gettimezone()){
 
                 $userTimezoneDatabase = $users->gettimezone();
@@ -195,7 +210,7 @@ if ($videoid && $userid){
  
              require(BASE_URI . '/assets/scripts/individualMailerGmailAPI.php');  //TEST MAIL
  
-             echo 'An email was sent to the registered email address of the user.';
+             //echo 'An email was sent to the registered email address of the user.';
  
              if ($debug){
  
@@ -203,8 +218,8 @@ if ($videoid && $userid){
  
              }
 
-            echo 'Review sent to user';
-            echo 'Review text: ';
+            echo 'Review sent to user'. PHP_EOL;
+            echo PHP_EOL . 'Review text: ';
             echo $review;
 
         }

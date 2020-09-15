@@ -164,7 +164,7 @@ function sendMessage($service, $userId, $message) {
     try {
       $message = $service->users_messages->send($userId, $message);
       //print 'Message with ID: ' . $message->getId() . ' sent.';
-      print ' Please check your inbox. ';
+      //print ' Please check your inbox. ';
       return $message;
     } catch (Exception $e) {
       print 'An error occurred: ' . $e->getMessage();
