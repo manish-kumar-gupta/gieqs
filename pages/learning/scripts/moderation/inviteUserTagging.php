@@ -146,6 +146,7 @@ if ($videoid && $taggerid && userid){
         $email = $users->getemail();
         $emailVaryarray['key'] = $users->getkey();
         //$emailVaryarray['linkVideo'] = BASE_URL . '/pages/learning/scripts/forms/videoChapterForm.php?id=' . $videoid;
+        $video->Load_from_key($videoid);
         $emailVaryarray['image'] = $video_moderation->getMailImage($videoid);
         $emailVaryarray['video_name'] = $video->getname();
         $emailVaryarray['videoid'] = $videoid;

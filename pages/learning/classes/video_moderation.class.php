@@ -530,6 +530,37 @@ public function getMyTaggingTable($userid)
 
 
 	}
+
+	public function isVideoLive($videoid){
+
+        $q = "SELECT `active` FROM `video` WHERE `id` = '$videoid'";
+        //echo $q;
+
+        $result = $this->connection->RunQuery($q);
+		$nRows = $result->rowCount();
+			if ($nRows == 1){
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn = $row['active'];
+
+
+				}
+
+				if ( $rowReturn == '1' || $rowReturn == '3'){
+					return TRUE;
+				}else{
+					return FALSE;
+				}
+
+			
+				
+			}else{
+				return FALSE;
+			}
+
+
+	}
 /**
     
      * Close mysql connection

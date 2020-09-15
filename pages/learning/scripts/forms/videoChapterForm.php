@@ -253,28 +253,7 @@ background-color: rgb(238, 194, 120);
 		
         //TERMINATE THE SCRIPT IF NOT A SUPERUSER
         
-        if ($isSuperuser == 0){
-
-            //terminate if there is an open invite
-
-            $openInvite =  $video_moderation->videoHasOpenTaggerInvite($id, $debug);
-
-            if ($openInvite){
-
-                $currentLockedUser = $video_moderation->getTagLockedUser($id, $debug);
-
-                if ($currentLockedUser[0] != $userid){
-
-                    echo 'This video is locked for tagging to another user';
-                    exit();
-                }
-
-            }
-
-
-            //and the logged in user is not that user
-
-        }
+        
 		
 		
 		
@@ -317,6 +296,52 @@ background-color: rgb(238, 194, 120);
 		    <div id='content' class='content mt-10'>
 		
 		        <div class='responsiveContainer container white'>
+
+                <?php
+                
+                if ($id){
+
+                    if ($isSuperuser == 0){
+    
+                        //terminate if there is an open invite
+            
+                        $openInvite =  $video_moderation->videoHasOpenTaggerInvite($id, $debug);
+            
+                        if ($openInvite){
+            
+                            $currentLockedUser = $video_moderation->getTagLockedUser($id, $debug);
+            
+                            if ($currentLockedUser[0] != $userid){
+            
+                                echo 'This video is locked for tagging to another user<br/>';
+                                echo 'Return to <a href="' . BASE_URL .  '/pages/learning/pages/myTagging.php">My Tagging</a>';
+                                exit();
+                            }
+            
+                        }
+    
+                        //if the video is live requires a supeuser to edit
+    
+                        if ($video_moderation->isVideoLive($id)){
+    
+                            echo 'This video is locked for tagging as it has been designated live on the site<br/>';
+                            echo '<a href="mailto:admin@gieqs.com?subject=please unlock video ' . $id . ' for editing">Contact a Superuser</a> to unlock if you need to edit further<br/>';
+                            echo 'Return to <a href="' . BASE_URL .  '/pages/learning/pages/myTagging.php">My Tagging</a>';
+                            exit();
+    
+    
+                        }
+    
+            
+            
+                        //and the logged in user is not that user
+            
+                    }
+    
+    
+                }
+                
+                ?>
                 <div class="text-right">
                     
                                         <div class="actions">
@@ -330,13 +355,13 @@ background-color: rgb(238, 194, 120);
                                       <select name="active" id="active" class="form-control form-control-sm">
                                         <option hidden inactive>choose status</option>
 
-                                        <?php if ($currentUserLevel = 1){?>
+                                        <?php if ($currentUserLevel == 1){?>
                                         <option value="0">Not shown, not tagged, inactive video</option>
                                        
                                         <?php } ?>
                                         <option value="2">Needs tagging</option>
                                         
-                                        <?php if ($currentUserLevel = 1){?>
+                                        <?php if ($currentUserLevel == 1){?>
                                         <option value="1">Shown on Live site</option>
                                         <option value="3">Shown on Live site and available FREE</option>
                                         <?php }?>
@@ -2545,13 +2570,72 @@ dt.order( [ 2, 'asc' ]).draw();
 
          //2020-05-26 code to enable video status box
 
-         $('#active').change(function(){
+         $('#active').change(function(event){
 
             //ajax to a script to update
 
             var active = $(this);
 
+            
             var selectedStatus = $(this).children("option:selected").val();
+
+            if (selectedStatus == '4'){
+
+                var r = confirm("Are you sure? This will submit for moderation and lock the video for further editing!");
+                    if (r == true) {
+
+                        var dataToSend = {
+
+active: selectedStatus,
+videoid: videoPassed,
+
+
+}
+
+//const jsonString2 = JSON.stringify(dataToSend);
+
+const jsonString = JSON.stringify(dataToSend);
+console.log(jsonString);
+//console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
+
+var request2 = $.ajax({
+beforeSend: function () {
+
+$('#active').removeClass('is-valid');
+
+},
+url: siteRoot + "scripts/updateActive.php",
+type: "POST",
+contentType: "application/json",
+data: jsonString,
+});
+
+
+
+request2.done(function (data) {
+// alert( "success" );
+if (data == '1'){
+//show green tick
+
+
+$('#active').delay('1000').addClass('is-valid');
+}
+            //$(document).find('.Thursday').hide();
+            })
+
+            window.location.href = siteRoot + 'pages/myTagging.php';
+                    
+                    } else {
+                    event.preventDefault();
+                    $('#active').removeClass('is-valid');
+                    $(this).children("option:selected").val(selectedStatus);
+
+                    //go to my tagging
+
+                    
+                    return false;
+                    }
+            }else{
 
 
             var dataToSend = {
@@ -2596,6 +2680,8 @@ dt.order( [ 2, 'asc' ]).draw();
             }
             //$(document).find('.Thursday').hide();
             })
+
+        }
 
 
          })
