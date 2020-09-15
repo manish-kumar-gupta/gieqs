@@ -94,7 +94,7 @@ $formv1 = new formGenerator;
 
         <!-- Main navbar -->
 
-        <?php require BASE_URI . '/nav.php';?>
+        <?php require BASE_URI . '/pages/learning/includes/nav.php';?>
 
     </header>
 

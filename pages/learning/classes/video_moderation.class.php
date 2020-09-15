@@ -111,6 +111,105 @@ public function getManagementTable()
 
 }
 
+public function getMyTaggingTable($userid)
+	{
+	$q = "Select a.`id`, a.`name`, a.`active`, b.`invite_tag`, b.`accept_tag`, b.`review_tag`, b.`done_tag`, b.`decline_tag` from `video` as a 
+	INNER JOIN `usersTagging` as b 
+	on b.`video_id` = a.`id` 
+	WHERE (a.`active` = '2') AND  
+	(b.`user_id` = '$userid') AND ((b.`invite_tag` IS NOT NULL) AND (b.`decline_tag` IS NULL AND b.`done_tag` IS NULL)) 
+	GROUP BY a.`id` ORDER BY b.`invite_tag` DESC";
+
+
+	//echo $q;
+
+	$result = $this->connection->RunQuery($q);
+	$rowReturn = array();
+	$x = 0;
+	$nRows = $result->rowCount();
+	if ($nRows > 0) {
+
+		while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+			//print_r(array_map('utf8_encode', $row));
+			//$rowReturn['data'][] = array_map('utf8_encode', $row);
+
+			$action = null;
+					$date = null;
+					$expires = null;
+
+					if ($row['decline_tag'] != null){
+
+						$action = 'Tagging declined';
+						$date = $row['decline_tag'];
+						$expires = null;
+
+					}else if ($row['done_tag'] != null){
+
+						$action = 'Tagging done';
+						$date = $row['done_tag'];
+						$expires = null;
+
+					}else if ($row['review_tag'] != null){
+
+						$action = 'Tagging sent for Review';
+						$date = $row['review_tag'];
+						$expires = true;
+					
+					}else if ($row['accept_tag'] != null){
+
+						$action = 'Accepted Tagging';
+						$date = $row['accept_tag'];
+						$expires = true;
+
+					}elseif ($row['invite_tag'] != null){
+
+						$action = 'Invitation';
+						$date = $row['invite_tag'];
+
+						//get user timezone
+						
+						$expires = true;
+
+
+					
+
+					}
+
+
+			$rowReturn['data'][] = [
+
+				'id' => $row['id'],
+				'name' => $row['name'],
+				'supercategory' => $this->getSuperCategoryName($this->getVideoSuperCategory($row['id'])),
+				
+				'author' => $row['author'],
+				'status' => $action,
+				'date' => $date,
+				'expires' => $expires,
+			
+
+
+			];
+
+			
+
+			$x++;
+		}
+	
+		return $rowReturn;
+
+	} else {
+		
+
+		//RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+		$rowReturn['data'] = [];
+		
+		return json_encode($rowReturn);
+	}
+
+}
+
     
      
 
@@ -145,6 +244,42 @@ public function getManagementTable()
 
 				return false;
 			}
+
+
+
+	}
+
+	public function getSuperCategoryName($id){
+
+			
+		$q = "SELECT `superCategory`, `superCategory_t` from `values` WHERE `superCategory` = '$id'";
+			//$q = "SELECT `superCategory` FROM `tagCategories` WHERE `id` = $id";
+	
+			//echo $q;
+	
+			$result = $this->connection->RunQuery($q);
+	
+			$x = 0;
+			$nRows = $result->rowCount();
+
+			if ($nRows > 0) {
+
+				while($row = $result->fetch(PDO::FETCH_ASSOC)){
+					
+					$tagCategoryName = $row['superCategory_t'];
+				
+					
+					
+					
+					
+				}
+			
+				return $tagCategoryName;
+			}else{
+				
+				return null;
+			}
+		
 
 
 
@@ -307,7 +442,7 @@ public function getManagementTable()
 
 						$action = 'Accepted Tagging';
 						$date = $row['accept_tag'];
-						$expires = null;
+						$expires = true;
 
 					}elseif ($row['invite_tag'] != null){
 

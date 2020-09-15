@@ -34,7 +34,7 @@ $identifier = 'id';
 //define user access level
 
 $openaccess = 0;
-$requiredUserLevel = 2;
+$requiredUserLevel = 6;
 
 require BASE_URI . '/head.php';
 
@@ -42,7 +42,7 @@ $formv1 = new formGenerator;
 
 ?>
 
-    <title>Moderation - Cases GIEQs Online</title>
+    <title>Tagging - My Tagging Cases on GIEQs Online</title>
 
     <!-- Page CSS -->
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/flatpickr/dist/flatpickr.min.css">
@@ -123,7 +123,7 @@ and 4
                         <!-- Salute + Small stats -->
                         <div class="row align-items-center mb-4">
                             <div class="col-md-5 mb-4 mb-md-0">
-                                <span class="h2 mb-0 text-white d-block">Videos Requiring Moderation</span>
+                                <span class="h2 mb-0 text-white d-block">My Tagging</span>
 
                                 <!-- <span class="text-white">Have a nice day!</span> -->
                             </div>
@@ -240,15 +240,15 @@ if ($identifierValue) {
 
                     <div class="row justify-content-between align-items-center">
                         <div class="col">
-                            <h5 class="mb-1">Videos Requiring Moderation</h5>
-                            <p class="text-sm text-muted mb-0 d-none d-md-block">Manage <?php echo $databaseName; ?>.</p>
-                        </div>
+                            <!-- <h5 class="mb-1">Videos Requiring Moderation</h5> -->
+<!--                             <p class="text-sm text-muted mb-0 d-none d-md-block">Manage <?php //echo $databaseName; ?>.</p>
+ -->                        </div>
                         <div class="col text-right">
                             <div class="actions">
                                 <!-- <a href="#" class="action-item mr-2 active" data-action="search-open"
                                     data-target="#actions-search"><i class="fas fa-search"></i></a> -->
-                                <a href="#" id="add<?php echo $databaseName; ?>" class="action-item mr-2 active"><i
-                                        class="fas fa-plus"></i></a>
+                               <!--  <a href="#" id="add<?php //echo $databaseName; ?>" class="action-item mr-2 active"><i
+                                        class="fas fa-plus"></i></a> -->
                                 <!-- <div class="dropdown mr-2">
                                     <a href="#" class="action-item" role="button" data-toggle="dropdown"
                                         aria-haspopup="true" aria-expanded="false">
@@ -289,18 +289,21 @@ if ($identifierValue) {
                 </div>
                 <!-- Orders table -->
                 <div class="table-responsive">
-                    <table id="dataTable" class="table text-center table-cards align-items-center">
+                    <table id="dataTable" class="table text-center table-cards align-items-center w-100">
                         <thead>
                             <tr>
                                 <!-- EDIT -->
                                 <th>id</th>
                                 <th>name</th>
                                 <th>category</th>
-                                <th>video status</th>
+                                
                                 <th>author</th>
-                                <th>editor</th>
-                                <th>tagger</th>
-                                <th>recorder</th>
+                                <th>tagging status</th>
+                                <th>last action date</th>
+                                <th>due</th>
+                               
+                            
+                                
                                 <th></th>
 
                             </tr>
@@ -361,11 +364,7 @@ if ($identifierValue) {
 
     var addContainer = '<div class="d-flex align-items-center justify-content-end">'+
         '<div class="actions ml-3"><a class="fill-modal action-item mr-2" data-toggle="tooltip" title="edit this row"'+
-                'data-original-title="Edit"> <i class="fas fa-pencil-alt"></i> </a> <a href="#" class="action-item mr-2"'+
-                'data-toggle="tooltip" title="" data-original-title="see enclosed items"> <i class="fas fa-level-down-alt"></i> </a>'+
-            '<div class="dropdown"> <a href="#" class="action-item" role="button" data-toggle="dropdown"'+
-                    'aria-haspopup="true" data-expanded="false"> <i class="fas fa-ellipsis-v"></i> </a>'+
-                '<div class="dropdown-menu dropdown-menu-right"> <a class="delete-row dropdown-item"> Delete </a> </div>'+
+                'data-original-title="Edit"> <i class="fas fa-pencil-alt"></i> </a> '+
             '</div>'+
         '</div>'+
     '</div>';
@@ -823,7 +822,7 @@ if (data){
 
 
             ajax: siteRoot +
-                'pages/learning/classes/tableInteractors/<?php echo $databaseName; ?>.php',
+                'pages/learning/classes/tableInteractors/myTagging.php',
             //TODO all classes need this function
 
 
@@ -838,26 +837,23 @@ if (data){
                     data: 'supercategory'
                 },
                 {
-                    data: 'active'
-                },
-                {
                     data: 'author'
                 },
                 {
-                    data: 'editor'
+                    data: 'status'
                 },
                 {
-                    data: 'tagger'
+                    data: 'date'
                 },
                 {
-                    data: 'recorder'
+                    data: 'expires'
                 },
                 {
-                    data: null,
-                    render: function(data, type, row) {
-                        return addContainer;
-                    }
-                }
+                    data: 'addContainer'
+                },
+                
+                
+                
             ],
             dom: 'Bfrtip',
 
@@ -913,10 +909,12 @@ if (data){
             var targettd = $(this).parent().parent().parent().parent().find('td').first().text();
             //console.log(targettd);
             lesionUnderEdit = targettd;
-            $('#modalMessageArea').text('Editing <?php echo $databaseName;?> ' + lesionUnderEdit);
+            window.open(siteRoot + 'pages/learning/scripts/forms/videoChapterForm.php?id='+lesionUnderEdit, '_blank');
+
+            /* $('#modalMessageArea').text('Editing <?php echo $databaseName;?> ' + lesionUnderEdit);
             $('#modal-faculty').modal('show');
             fillForm(targettd);
-            edit = 1;
+            edit = 1; */
 
         })
 

@@ -127,12 +127,18 @@ if ($videoid && $taggerid && userid){
                 echo 'Decline tag set';
 
             }
+
+            //send mail to declined user
+
+        $declinedUser = $$video_moderation->videoHasOpenTaggerInvite($videoid, $debug);
+
+        if ($debug){
+
+            echo 'Decline user ' . $declinedUser;
+
         }
 
-        
-        //send mail to declined user
-
-        $users->Load_from_key($currentLockedUser);
+        $users->Load_from_key($declinedUser);
         $emailVaryarray['firstname'] = $users->getfirstname();
         $emailVaryarray['surname'] = $users->getsurname();
         $emailVaryarray['email'] = $users->getemail();
@@ -143,7 +149,7 @@ if ($videoid && $taggerid && userid){
         $emailVaryarray['image'] = $video_moderation->getMailImage($videoid);
         $emailVaryarray['video_name'] = $video->getname();
         $emailVaryarray['videoid'] = $videoid;
-        
+
         if ($debug){
 
             echo PHP_EOL;
@@ -167,6 +173,12 @@ if ($videoid && $taggerid && userid){
 
         $usersTagging->endusersTagging;
         $users->endusers;
+        }
+
+        
+        
+        
+        
 
 
     }else{

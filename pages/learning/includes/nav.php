@@ -621,7 +621,30 @@ function endsWith($haystack, $needle)
                     <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">Creator</a>
 
+                      
+
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
+                    <?php if ($isSuperuser){?>
+
+                      <span style="color: rgb(238, 194, 120);" class="dropdown-header">Moderation</span>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/management.php"><i
+                                class="fas fa-columns"></i>Manage All Needs Tagging</a>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/moderation.php"><i
+                                class="fas fa-columns"></i>Manage User Tagged Videos</a>
+
+                    <?php }?>
+
+                    <div class="dropdown-divider"></div>
+
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">My Tagging</span>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/myTagging.php"><i
+                                class="fas fa-columns"></i>View my Tagging Tasks</a>
+                        
+
+                        <div class="dropdown-divider"></div>
                         <span style="color: rgb(238, 194, 120);" class="dropdown-header">Video</span>
                         <a class="dropdown-item"
                             href="<?php echo BASE_URL;?>/pages/learning/scripts/videoUploadForm.php"><i
