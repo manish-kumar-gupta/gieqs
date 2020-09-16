@@ -187,7 +187,7 @@ background-color: rgb(238, 194, 120);
 
         <?php
         $requiredTagCategories = ['47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60'];
-        $requiredVideos = ['72', '67', '56'];
+        $requiredVideos = ['56', '67', '72'];
 
         ?>
 
