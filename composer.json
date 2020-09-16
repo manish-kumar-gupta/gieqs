@@ -5,6 +5,7 @@
         "facebook/graph-sdk": "^5.7",
         "vimeo/vimeo-api": "^3.0",
         "league/oauth2-google": "^3.0",
-        "google/apiclient": "^2.6"
+        "google/apiclient": "^2.6",
+        "swiftmailer/swiftmailer": "^6.0"
     }
 }

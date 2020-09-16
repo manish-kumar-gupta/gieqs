@@ -116,7 +116,7 @@ public function getMyTaggingTable($userid)
 	$q = "Select a.`id`, a.`name`, a.`active`, b.`invite_tag`, b.`accept_tag`, b.`review_tag`, b.`done_tag`, b.`decline_tag` from `video` as a 
 	INNER JOIN `usersTagging` as b 
 	on b.`video_id` = a.`id` 
-	WHERE (a.`active` = '2') AND  
+	WHERE (a.`active` = '2' OR a.`active` = '4') AND  
 	(b.`user_id` = '$userid') AND ((b.`invite_tag` IS NOT NULL) AND (b.`decline_tag` IS NULL AND b.`done_tag` IS NULL)) 
 	GROUP BY a.`id` ORDER BY b.`invite_tag` DESC";
 
@@ -548,6 +548,37 @@ public function getMyTaggingTable($userid)
 				}
 
 				if ( $rowReturn == '1' || $rowReturn == '3'){
+					return TRUE;
+				}else{
+					return FALSE;
+				}
+
+			
+				
+			}else{
+				return FALSE;
+			}
+
+
+	}
+
+	public function isVideoUnderReview($videoid){
+
+        $q = "SELECT `active` FROM `video` WHERE `id` = '$videoid'";
+        //echo $q;
+
+        $result = $this->connection->RunQuery($q);
+		$nRows = $result->rowCount();
+			if ($nRows == 1){
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn = $row['active'];
+
+
+				}
+
+				if ( $rowReturn == '4'){
 					return TRUE;
 				}else{
 					return FALSE;

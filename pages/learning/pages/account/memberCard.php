@@ -24,7 +24,7 @@
                   <?php if ($users->getUserAccessLevel($userid) == 5){?>
 
                   <!--TODO Implement this upgrade functionality-->
-                  <div class="col-auto flex-fill mt-4 mt-sm-0 text-sm-right d-none d-lg-block">
+                  <div class="col-auto flex-fill mt-4 mt-sm-0 text-sm-right">
                     <a id="upgradePro"href="#" class="btn btn-sm btn-white rounded-pill btn-icon shadow bg-gieqsGold text-dark">
                       <span class="btn-inner--icon"><i class="fas fa-fire"></i></span>
                       <span class="btn-inner--text">Upgrade to GIEQs Pro</span>
@@ -34,12 +34,12 @@
                   <?php if ($users->getUserAccessLevel($userid) == 6){?>
 
 <!--TODO Implement this upgrade functionality-->
-<div class="col-auto flex-fill mt-4 mt-sm-0 text-sm-right d-none d-lg-block">
-<a id="upgradeStandard" data-toggle="modal" data-target="#modal_1" class="btn btn-sm btn-white rounded-pill btn-icon shadow bg-gieqsGold text-dark">
+<div class="col-auto flex-fill mt-4 mt-sm-0 text-sm-right">
+<a id="upgradeStandard" data-toggle="modal" data-target="#modal_1" class="btn btn-sm btn-white rounded-pill btn-icon shadow bg-gieqsGold text-dark mt-2">
     <span class="btn-inner--icon"><i class="fas fa-fire"></i></span>
     <span class="btn-inner--text">Upgrade to GIEQs Standard</span>
   </a>  
-<a id="upgradePro"href="#" class="btn btn-sm btn-white rounded-pill btn-icon shadow bg-gieqsGold text-dark">
+<a id="upgradePro"href="<?php echo BASE_URL;?>/pages/learning/upgrade.php" class="btn btn-sm btn-white rounded-pill btn-icon shadow bg-gieqsGold text-dark mt-2">
     <span class="btn-inner--icon"><i class="fas fa-fire"></i></span>
     <span class="btn-inner--text">Upgrade to GIEQs Pro</span>
   </a>
@@ -67,8 +67,9 @@
                         </p>
                         <ul class="list-group text-left">
   <li class="list-group-item gieqsGold">More videos</li>
-  <li class="list-group-item gieqsGold">Access to sections : groups of videos on a specific topic</li>
-  <li class="list-group-item gieqsGold">Access to tag filtering</li>
+  <li class="list-group-item gieqsGold">Access to sections : grouped of videos on specific endoscopy topics</li>
+  <li class="list-group-item gieqsGold">Access to tags (without filtering)</li>
+  <li class="list-group-item gieqsGold">Access to comment on videos</li>
   
 </ul>
 
@@ -77,6 +78,10 @@
                         </p>
                         <p class="lead text-muted mt-3">
                            After updating your profile you will automatically receive access to GIEQs Standard.
+                        </p>
+
+                        <p class="lead text-muted mt-3">
+                           For more information check out our <a href="<?php echo BASE_URL;?>/pages/learning/upgrade.php">upgrade page</a>
                         </p>
                         
                         <button type="button" class="btn btn-sm text-dark bg-gieqsGold mt-3" data-dismiss="modal">Close</button>

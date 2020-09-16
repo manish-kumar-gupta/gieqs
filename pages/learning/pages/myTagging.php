@@ -1158,9 +1158,11 @@ if ($(document).find('#review-form').valid()) {
 
         });
 
-        $(document).on('click', '.approve-video', function () {
+        $(document).on('click', '.accept-invite', function () {
 
-
+            var targettd = $(this).parent().parent().parent().parent().find('td').first().text();
+            //console.log(targettd);
+            lesionUnderEdit = targettd;
             var videoid = lesionUnderEdit;
 
             var dataToSend = {
@@ -1180,7 +1182,7 @@ if ($(document).find('#review-form').valid()) {
 
 
                 },
-                url: siteRoot + "pages/learning/scripts/moderation/approveVideo.php",
+                url: siteRoot + "pages/learning/scripts/moderation/acceptTaggingAjax.php",
                 type: "POST",
                 contentType: "application/json",
                 data: jsonString,
@@ -1193,7 +1195,7 @@ if ($(document).find('#review-form').valid()) {
                 if (data) {
                     //show green tick
                     alert(data);
-                    fillForm();
+                    location.reload();
                     //$('#commentsArea').html(data);
 
 
@@ -1210,6 +1212,61 @@ if ($(document).find('#review-form').valid()) {
 
 
         })
+
+        $(document).on('click', '.decline-invite', function () {
+
+var targettd = $(this).parent().parent().parent().parent().find('td').first().text();
+//console.log(targettd);
+lesionUnderEdit = targettd;
+var videoid = lesionUnderEdit;
+
+var dataToSend = {
+
+
+    videoid: videoid,
+
+
+
+}
+
+const jsonString = JSON.stringify(dataToSend);
+
+
+var request2 = $.ajax({
+    beforeSend: function () {
+
+
+    },
+    url: siteRoot + "pages/learning/scripts/moderation/declineTaggingAjax.php",
+    type: "POST",
+    contentType: "application/json",
+    data: jsonString,
+});
+
+
+
+request2.done(function (data) {
+    // alert( "success" );
+    if (data) {
+        //show green tick
+        alert(data);
+        location.reload();
+        //$('#commentsArea').html(data);
+
+
+        //$('#notification-services').delay('1000').addClass('is-valid');
+
+
+
+
+    }
+    //$(document).find('.Thursday').hide();
+    //$(icon).prop("disabled", false);
+})
+
+
+
+})
         
         
         
@@ -1257,7 +1314,7 @@ if ($(document).find('#review-form').valid()) {
                 if (data) {
                     //show green tick
                     alert(data);
-                    fillForm();
+                    location.reload();
                     //$('#commentsArea').html(data);
 
 

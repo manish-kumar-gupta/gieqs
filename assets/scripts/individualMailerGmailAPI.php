@@ -1,5 +1,5 @@
 <?php
-//error_reporting(E_ALL);
+error_reporting(E_ALL);
 
 
 // Visit https://developers.google.com/gmail/api/quickstart/php
@@ -8,6 +8,35 @@ require (BASE_URI . '/vendor/autoload.php');
 
 date_default_timezone_set('Europe/Brussels');
 
+/* // Create a message USING SWIFT MAILER TO GET DETAILS RIGHT
+$message1 = (new Swift_Message('Wonderful Subject'))
+  ->setFrom(['john@doe.com' => 'John Doe'])
+  ->setTo(['receiver@domain.org', 'other@domain.org' => 'A name'])
+  ->setBody('Here is the message itself')
+  ;
+
+print_r($message1);
+
+THEN SEND HERE
+
+$service = new \Google_Service_Gmail($client);
+$mailer = $service->users_messages;
+
+$message = (new \Swift_Message('Here is my subject'))
+    ->setFrom('myemailaddress@myserver.com')
+    ->setTo(['receiver@someserver.com' => 'Test Name'])
+    ->setContentType('text/html')
+    ->setCharset('utf-8')
+    ->setBody('<h4>Here is my body</h4>');
+
+$msg_base64 = (new \Swift_Mime_ContentEncoder_Base64ContentEncoder())
+    ->encodeString($message->toString());
+
+$message = new \Google_Service_Gmail_Message();
+$message->setRaw($msg_base64);
+$message = $mailer->send('me', $message);
+print_r($message);
+ */
 
 /* if (php_sapi_name() != 'cli') {
     throw new Exception('This application must be run on the command line.');
@@ -111,9 +140,13 @@ function createMessage($sender, $to, $subject, $messageText) {
     $rawMessageString .= "MIME-Version: 1.0\r\n";
     $rawMessageString .= "Content-Type: text/html; charset=utf-8\r\n";
     $rawMessageString .= 'Content-Transfer-Encoding: base64' . "\r\n\r\n";
+    //$rawMessageString .= 'Content-Transfer-Encoding: quoted-printable' . "\r\n\r\n";
+
     $rawMessageString .= "{$messageText}\r\n";
    
     $rawMessage = strtr(base64_encode($rawMessageString), array('+' => '-', '/' => '_'));
+    //$rawMessage = $rawMessageString;
+
     //print_r($rawMessage);
     $message->setRaw($rawMessage);
     return $message;

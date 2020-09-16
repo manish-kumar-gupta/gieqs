@@ -317,6 +317,20 @@ background-color: rgb(238, 194, 120);
                                 echo 'Return to <a href="' . BASE_URL .  '/pages/learning/pages/myTagging.php">My Tagging</a>';
                                 exit();
                             }
+
+                            //if the video is under review
+
+                            //set as 2
+
+                            if ($video_moderation->isVideoUnderReview($id)){
+
+                                echo 'This video is awaiting review<br/>';
+                                echo 'Return to <a href="' . BASE_URL .  '/pages/learning/pages/myTagging.php">My Tagging</a>';
+                                exit();
+
+                            }
+
+
             
                         }
     

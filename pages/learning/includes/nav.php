@@ -634,9 +634,11 @@ function endsWith($haystack, $needle)
                             href="<?php echo BASE_URL;?>/pages/learning/pages/moderation.php"><i
                                 class="fas fa-columns"></i>Manage User Tagged Videos</a>
 
+                                <div class="dropdown-divider"></div>
+
                     <?php }?>
 
-                    <div class="dropdown-divider"></div>
+                    
 
                         <span style="color: rgb(238, 194, 120);" class="dropdown-header">My Tagging</span>
                         <a class="dropdown-item"
@@ -656,9 +658,11 @@ function endsWith($haystack, $needle)
                         <div class="dropdown-divider"></div>
 
                         <span style="color: rgb(238, 194, 120);" class="dropdown-header">Tags</span>
+                        <?php if ($isSuperuser){?>
                         <a class="dropdown-item"
                             href="<?php echo BASE_URL;?>/pages/learning/scripts/forms/tagsForm.php"><i
                                 class="fas fa-columns"></i>New Tag</a>
+                                <?php }?>
                         <a class="dropdown-item"
                             href="<?php echo BASE_URL;?>/pages/learning/scripts/forms/tagsTable.php"><i
                                 class="fas fa-columns"></i>Tag / Reference Table</a>
@@ -667,9 +671,12 @@ function endsWith($haystack, $needle)
                         <div class="dropdown-divider"></div>
 
                         <span style="color: rgb(238, 194, 120);" class="dropdown-header">Tag Categories</span>
+                        <?php if ($isSuperuser){?>
                         <a class="dropdown-item"
+                        
                             href="<?php echo BASE_URL;?>/pages/learning/scripts/forms/tagCategoriesForm.php"><i
                                 class="fas fa-columns"></i>New Tag Category</a>
+                                <?php }?>
                         <a class="dropdown-item"
                             href="<?php echo BASE_URL;?>/pages/learning/scripts/forms/tagCategoriesTable.php"><i
                                 class="fas fa-columns"></i>Tag Category Table</a>
@@ -679,12 +686,14 @@ function endsWith($haystack, $needle)
                         <a class="dropdown-item"
                             href="<?php echo BASE_URL;?>/pages/learning/scripts/forms/referencesForm.php"><i
                                 class="fas fa-columns"></i>New Reference</a>
-
+                                <?php if ($isSuperuser){?>
                         <div class="dropdown-divider"></div>
                         <span style="color: rgb(238, 194, 120);" class="dropdown-header">Maintenance</span>
+                        
                         <a class="dropdown-item"
                             href="<?php echo BASE_URL;?>/pages/learning/scripts/getThumbnailsVideo.php"><i
                                 class="fas fa-user"></i>Update / generate Thumbnails</a>
+                                <?php }?>
 
 
                     </div>

@@ -91,7 +91,7 @@ echo '$userid is ' . $userid;
 
 if ($videoid && $userid){
 
-
+    $video->Load_from_key($videoid);
     //if the request is for the currently tag-locked user ignore
     $currentLockedUser = $video_moderation->getTagLockedUser($videoid, $debug);
 
@@ -172,6 +172,9 @@ if ($videoid && $userid){
         $usersTagging->setreview_tag($result);
         $result2 = $usersTagging->prepareStatementPDOUpdate();
 
+        $video->setactive('2');
+        $video->Save_Active_Row();
+
         //TODO STORE and RELOAD the review
 
 
@@ -194,7 +197,10 @@ if ($videoid && $userid){
              $emailVaryarray['key'] = $users->getkey();
              $emailVaryarray['linkVideo'] = 'https://www.gieqs.com/pages/learning/scripts/forms/videoChapterForm.php?id=' . $videoid;
              $emailVaryarray['image'] = $video_moderation->getMailImage($videoid);
+             
+             
              $emailVaryarray['video_name'] = $video->getname();
+
              $emailVaryarray['review'] = $review;
              
              if ($debug){
