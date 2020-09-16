@@ -186,8 +186,8 @@ background-color: rgb(238, 194, 120);
         <!--- specifiy the tag Categories required for display  CHANGEME-->
 
         <?php
-        $requiredTagCategories = ['47'];
-        $requiredVideos = ['104', '105', '72', '67', '56'];
+        $requiredTagCategories = ['47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60'];
+        $requiredVideos = ['72', '67', '56'];
 
         ?>
 
