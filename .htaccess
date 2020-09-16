@@ -16,7 +16,7 @@ RewriteRule ^proposedprogram$ pages/program/programv2.php
 RewriteRule ^learning$ pages/program/online.php
 RewriteRule ^bleeding$ pages/learning/viewer_free.php?id=113
 RewriteRule ^artificial-intelligence$ pages/learning/viewer_free.php?id=136
-RewriteRule ^colonoscopy$ pages/learning/viewer_free.php?id=67
+RewriteRule ^colonoscopy$ pages/learning/viewer_free.php?id=56
 RewriteRule ^polypectomy$ pages/learning/viewer_free.php?id=113
 RewriteRule ^ercp$ pages/learning/viewer_free.php?id=153
 
