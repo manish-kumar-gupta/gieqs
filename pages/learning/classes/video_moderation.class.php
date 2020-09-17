@@ -152,9 +152,22 @@ public function getMyTaggingTable($userid)
 
 					}else if ($row['review_tag'] != null){
 
-						$action = 'Tagging sent for Review';
-						$date = $row['review_tag'];
-						$expires = true;
+						if ($row['active'] == 2){
+
+							$action = 'Tagging Reviewed.  Changes required';
+							$date = $row['review_tag'];
+							$expires = true;
+
+
+						}else if ($row['active'] == 4){
+
+							$action = 'Tagging sent for Review';
+							$date = $row['review_tag'];
+							$expires = false;
+
+						}
+
+						
 					
 					}else if ($row['accept_tag'] != null){
 

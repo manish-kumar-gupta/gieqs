@@ -126,7 +126,7 @@ foreach ($responsePre as $key1=>$value1){
 
         $addContainer = false;
 
-        if ($value['status'] == 'Accepted Tagging' || $value['status'] == 'Tagging sent for Review'){
+        if ($value['status'] == 'Accepted Tagging' || $value['status'] == 'Tagging Reviewed.  Changes required'){
 
         $addContainer = '<div class="d-flex align-items-center justify-content-end">';
         $addContainer .= '<div class="actions ml-3"><a class="fill-modal action-item mr-2" data-toggle="tooltip" title="tag this video"';
