@@ -594,7 +594,7 @@ $q = "UPDATE `video` SET $implodeArray WHERE `id` = '$this->id'";
     /**
      * Close mysql connection
      */
-	public function endvideo(){
+	public function endvideo_PDO(){
 		$this->connection->CloseMysql();
 	}
 

@@ -21,4 +21,4 @@ echo $response;
 //echo ltrim($response);
 
 $video_PDO->endvideo_PDO();
-$video_PDO->endvideo_moderation();
+$video_moderation->endvideo_moderation();
