@@ -128,14 +128,16 @@ foreach ($responsePre as $key1=>$value1){
 
         if ($value['status'] == 'Accepted Tagging' || $value['status'] == 'Tagging Reviewed.  Changes required'){
 
-        $addContainer = '<div class="d-flex align-items-center justify-content-end">';
-        $addContainer .= '<div class="actions ml-3"><a class="fill-modal action-item mr-2" data-toggle="tooltip" title="tag this video"';
-        $addContainer .=  'data-original-title="Edit"> <i class="fas fa-pencil-alt"></i> </a>';
-        $addContainer .=  '</div>';
-        $addContainer .= '</div>';
-        $addContainer .=  '</div>';
+            $addContainer = '<div class="d-flex align-items-center justify-content-end">';
+            $addContainer .= '<div class="actions ml-3"><a class="fill-modal action-item mr-2" data-toggle="tooltip" title="tag this video"';
+            $addContainer .=  'data-original-title="Edit"> <i class="fas fa-pencil-alt"></i> </a>';
+            $addContainer .=  '</div>';
+            $addContainer .= '<div class="actions ml-3"><a class="decline-invite-check action-item mr-2" data-toggle="tooltip" title="decline invite"';
+            $addContainer .=  'data-original-title="Edit"> <i class="fas fa-times"></i> </a>';
+            $addContainer .=  '</div>';
+            $addContainer .= '</div>';
+            $addContainer .=  '</div>';
 
-        //$addContainer = '<div class="d-flex align-items-center justify-content-end"><div class="actions ml-3"><a class="fill-modal action-item mr-2" data-toggle="tooltip" title="tag this video" data-original-title="Edit"> <i class="fas fa-pencil-alt"></i> </a> </div> </div> </div>';
 
         }
 

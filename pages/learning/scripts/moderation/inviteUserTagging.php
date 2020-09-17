@@ -18,7 +18,7 @@ require (BASE_URI . '/assets/scripts/login_functions.php');
      
      require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
 
-$debug = true;
+$debug = false;
 
 function time_elapsed_string($datetime, $full = false) {
   $now = new DateTime;

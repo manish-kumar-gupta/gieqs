@@ -20,7 +20,7 @@ require (BASE_URI . '/assets/scripts/login_functions.php');
      require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
 
 
-$debug = true;
+$debug = false;
 
 $users = new users;
 

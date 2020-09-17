@@ -288,7 +288,7 @@ if ($identifierValue) {
                     </div>
                 </div>
                 <!-- Orders table -->
-                <div class="table-responsive">
+                <div class="table-responsive w-100">
                     <table id="dataTable" class="table text-center table-cards align-items-center">
                         <thead>
                             <tr>

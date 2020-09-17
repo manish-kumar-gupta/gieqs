@@ -2026,62 +2026,67 @@ var active = $(this);
 
 var selectedStatus = $(this).children("option:selected").val();
 
-if (selectedStatus == '4'){
+if (selectedStatus == '4') {
 
     var r = confirm("Are you sure? This will submit for moderation and lock the video for further editing!");
-        if (r == true) {
+    if (r == true) {
 
-            var dataToSend = {
+        var dataToSend = {
 
-active: selectedStatus,
-videoid: videoPassed,
-
-
-}
-
-//const jsonString2 = JSON.stringify(dataToSend);
-
-const jsonString = JSON.stringify(dataToSend);
-console.log(jsonString);
-//console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
-
-var request2 = $.ajax({
-beforeSend: function () {
-
-$('#active').removeClass('is-valid');
-
-},
-url: siteRoot + "scripts/updateActive.php",
-type: "POST",
-contentType: "application/json",
-data: jsonString,
-});
+            active: selectedStatus,
+            videoid: videoPassed,
 
 
+        }
 
-request2.done(function (data) {
-// alert( "success" );
-if (data == '1'){
-//show green tick
+        //const jsonString2 = JSON.stringify(dataToSend);
+
+        const jsonString = JSON.stringify(dataToSend);
+        console.log(jsonString);
+        //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
+
+        var request2 = $.ajax({
+            beforeSend: function () {
+
+                $('#active').removeClass('is-valid');
+
+            },
+            url: siteRoot + "scripts/updateActive.php",
+            type: "POST",
+            contentType: "application/json",
+            data: jsonString,
+        });
 
 
-$('#active').delay('1000').addClass('is-valid');
-}
-//$(document).find('.Thursday').hide();
-})
 
-window.location.href = siteRoot + 'pages/myTagging.php';
+        request2.done(function (data) {
+            // alert( "success" );
+            if (data == '1') {
+                //show green tick
+
+
+                $('#active').delay('1000').addClass('is-valid');
+            }
+            //$(document).find('.Thursday').hide();
+        })
+
+        request2.complete(function (data) {
+        window.location.href = siteRoot + 'pages/myTagging.php';
+      
+      })
+
         
-        } else {
+
+    } else {
         event.preventDefault();
         $('#active').removeClass('is-valid');
         $(this).children("option:selected").val(selectedStatus);
 
         //go to my tagging
 
-        
+
         return false;
-        }
+    }
 }else{
 
 

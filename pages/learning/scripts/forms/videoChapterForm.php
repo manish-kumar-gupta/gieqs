@@ -2584,118 +2584,121 @@ dt.order( [ 2, 'asc' ]).draw();
 
          //2020-05-26 code to enable video status box
 
-         $('#active').change(function(event){
+         $('#active').change(function (event) {
 
-            //ajax to a script to update
+             //ajax to a script to update
 
-            var active = $(this);
-
-            
-            var selectedStatus = $(this).children("option:selected").val();
-
-            if (selectedStatus == '4'){
-
-                var r = confirm("Are you sure? This will submit for moderation and lock the video for further editing!");
-                    if (r == true) {
-
-                        var dataToSend = {
-
-active: selectedStatus,
-videoid: videoPassed,
+             var active = $(this);
 
 
-}
+             var selectedStatus = $(this).children("option:selected").val();
 
-//const jsonString2 = JSON.stringify(dataToSend);
+             if (selectedStatus == '4') {
 
-const jsonString = JSON.stringify(dataToSend);
-console.log(jsonString);
-//console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
+                 var r = confirm("Are you sure? This will submit for moderation and lock the video for further editing!");
+                 if (r == true) {
 
-var request2 = $.ajax({
-beforeSend: function () {
+                     var dataToSend = {
 
-$('#active').removeClass('is-valid');
-
-},
-url: siteRoot + "scripts/updateActive.php",
-type: "POST",
-contentType: "application/json",
-data: jsonString,
-});
+                         active: selectedStatus,
+                         videoid: videoPassed,
 
 
+                     }
 
-request2.done(function (data) {
-// alert( "success" );
-if (data == '1'){
-//show green tick
+                     //const jsonString2 = JSON.stringify(dataToSend);
+
+                     const jsonString = JSON.stringify(dataToSend);
+                     console.log(jsonString);
+                     //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
+
+                     var request2 = $.ajax({
+                         beforeSend: function () {
+
+                             $('#active').removeClass('is-valid');
+
+                         },
+                         url: siteRoot + "scripts/updateActive.php",
+                         type: "POST",
+                         contentType: "application/json",
+                         data: jsonString,
+                     });
 
 
-$('#active').delay('1000').addClass('is-valid');
-}
-            //$(document).find('.Thursday').hide();
-            })
 
-            window.location.href = siteRoot + 'pages/myTagging.php';
+                     request2.done(function (data) {
+                         // alert( "success" );
+                         if (data == '1') {
+                             //show green tick
+
+
+                             $('#active').delay('1000').addClass('is-valid');
+                         }
+                         //$(document).find('.Thursday').hide();
+                     })
+
+                     request2.complete(function (data) {
+                            window.location.href = siteRoot + 'pages/myTagging.php';
                     
-                    } else {
-                    event.preventDefault();
-                    $('#active').removeClass('is-valid');
-                    $(this).children("option:selected").val(selectedStatus);
+                    })
 
-                    //go to my tagging
+                 } else {
+                     event.preventDefault();
+                     $('#active').removeClass('is-valid');
+                     $(this).children("option:selected").val(selectedStatus);
 
-                    
-                    return false;
-                    }
-            }else{
+                     //go to my tagging
 
 
-            var dataToSend = {
-
-                active: selectedStatus,
-                videoid: videoPassed,
-                
-
-            }
-
-//const jsonString2 = JSON.stringify(dataToSend);
-
-            const jsonString = JSON.stringify(dataToSend);
-            console.log(jsonString);
-            //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
-
-            var request2 = $.ajax({
-            beforeSend: function () {
-
-                $('#active').removeClass('is-valid');
-
-            },
-            url: siteRoot + "scripts/updateActive.php",
-            type: "POST",
-            contentType: "application/json",
-            data: jsonString,
-            });
+                     return false;
+                 }
+             } else {
 
 
+                 var dataToSend = {
 
-            request2.done(function (data) {
-            // alert( "success" );
-            if (data == '1'){
-                //show green tick
+                     active: selectedStatus,
+                     videoid: videoPassed,
 
-                
-               $('#active').delay('1000').addClass('is-valid');
-                
-                    
-                    
-            
-            }
-            //$(document).find('.Thursday').hide();
-            })
 
-        }
+                 }
+
+                 //const jsonString2 = JSON.stringify(dataToSend);
+
+                 const jsonString = JSON.stringify(dataToSend);
+                 console.log(jsonString);
+                 //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
+
+                 var request2 = $.ajax({
+                     beforeSend: function () {
+
+                         $('#active').removeClass('is-valid');
+
+                     },
+                     url: siteRoot + "scripts/updateActive.php",
+                     type: "POST",
+                     contentType: "application/json",
+                     data: jsonString,
+                 });
+
+
+
+                 request2.done(function (data) {
+                     // alert( "success" );
+                     if (data == '1') {
+                         //show green tick
+
+
+                         $('#active').delay('1000').addClass('is-valid');
+
+
+
+
+                     }
+                     //$(document).find('.Thursday').hide();
+                 })
+
+             }
 
 
          })

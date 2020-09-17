@@ -289,7 +289,7 @@ if ($identifierValue) {
                 </div>
                 <!-- Orders table -->
                 <div class="table-responsive">
-                    <table id="dataTable" class="table text-center table-cards align-items-center">
+                    <table id="dataTable" class="table text-center table-cards align-items-center w-100">
                         <thead>
                             <tr>
                                 <!-- EDIT -->
