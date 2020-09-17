@@ -113,7 +113,7 @@ public function getManagementTable()
 
 public function getMyTaggingTable($userid)
 	{
-	$q = "Select a.`id`, a.`name`, a.`active`, b.`invite_tag`, b.`accept_tag`, b.`review_tag`, b.`done_tag`, b.`decline_tag` from `video` as a 
+	$q = "Select a.`id`, a.`name`, a.`author`, a.`active`, b.`invite_tag`, b.`accept_tag`, b.`review_tag`, b.`done_tag`, b.`decline_tag` from `video` as a 
 	INNER JOIN `usersTagging` as b 
 	on b.`video_id` = a.`id` 
 	WHERE (a.`active` = '2' OR a.`active` = '4') AND  
