@@ -108,6 +108,9 @@ if ($videoid && $taggerid && userid){
             echo 'open user invite detected for user ' . $video_moderation->videoHasOpenTaggerInvite($videoid, $debug);
         }
 
+
+        $rememberAlreadyTagged = true;
+
         //identify the currently identified user
 
 
@@ -174,6 +177,8 @@ if ($videoid && $taggerid && userid){
 
         $usersTagging->endusersTagging;
         $users->endusers;
+        $users = new users;
+    $usersTagging = new usersTagging;
         }
 
         
@@ -187,8 +192,7 @@ if ($videoid && $taggerid && userid){
         //insert only
     }
     
-    $users = new users;
-    $usersTagging = new usersTagging;
+    
     $emailVaryarray = null;
     $emailVaryarray = array();
     //insert an invitation row
@@ -237,7 +241,7 @@ if ($videoid && $taggerid && userid){
 
         }
 
-        if ($video_moderation->videoHasOpenTaggerInvite($videoid, $debug)){
+        if ($rememberAlreadyTagged){
 
         $filename2 = '/assets/email/inviteMailTagging.php';
 
