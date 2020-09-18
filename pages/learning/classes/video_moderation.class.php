@@ -83,7 +83,7 @@ public function getManagementTable()
 
 				'id' => $row['id'],
 				'name' => $row['name'],
-				'supercategory' => $this->getVideoSuperCategory($row['id']),
+				'supercategory' => $this->getSuperCategoryName($this->getVideoSuperCategory($row['id'])),
 				'active' => $row['active'],
 				'author' => $row['author'],
 				'editor' => $row['editor'],
