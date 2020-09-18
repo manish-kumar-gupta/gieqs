@@ -98,7 +98,7 @@ public function getManagementTable()
 	LEFT OUTER JOIN `usersTagging` as b 
 	on b.`video_id` = a.`id` 
 	WHERE (a.`active` = '2' OR a.`active` = '4') AND  
-	((b.`invite_tag` IS NULL)) 
+	((b.`invite_tag` IS NULL) OR (b.`invite_tag` IS NOT NULL AND b.`decline_tag` IS NOT NULL)) 
 	GROUP BY a.`id` ORDER BY b.`invite_tag` DESC";
 
 	//$q = "Select * from `video` WHERE `active` = '2' OR `active` = '4' ORDER BY `created` DESC";
