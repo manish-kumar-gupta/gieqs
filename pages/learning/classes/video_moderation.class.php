@@ -65,9 +65,43 @@ Class video_moderation {
 
 }
 
+public function getUserName($user_id){
+
+	$q = "SELECT `firstname`, `surname` FROM `users` WHERE `user_id` = '$user_id'";
+	//echo $q;
+
+	$result = $this->connection->RunQuery($q);
+	$nRows = $result->rowCount();
+		if ($nRows == 1){
+
+			while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+				$firstname = $row['firstname'];
+				$surname = $row['surname'];
+			}
+			
+			
+
+
+
+			return $firstname . ' ' . $surname;
+		}else{
+			return FALSE;
+		}
+
+
+}
+
 public function getManagementTable()
 	{
-	$q = "Select * from `video` WHERE `active` = '2' OR `active` = '4'";
+		$q = "Select a.*, b.`invite_tag`, b.`accept_tag`, b.`review_tag`, b.`done_tag`, b.`decline_tag` from `video` as a 
+	INNER JOIN `usersTagging` as b 
+	on b.`video_id` = a.`id` 
+	WHERE (a.`active` = '2' OR a.`active` = '4') AND  
+	((b.`invite_tag` IS NULL) AND (b.`decline_tag` IS NULL AND b.`done_tag` IS NULL)) 
+	GROUP BY a.`id` ORDER BY b.`invite_tag` DESC";
+
+	$q = "Select * from `video` WHERE `active` = '2' OR `active` = '4' ORDER BY `created` DESC";
 	$result = $this->connection->RunQuery($q);
 	$rowReturn = array();
 	$x = 0;
@@ -85,7 +119,7 @@ public function getManagementTable()
 				'name' => $row['name'],
 				'supercategory' => $this->getSuperCategoryName($this->getVideoSuperCategory($row['id'])),
 				'active' => $row['active'],
-				'author' => $row['author'],
+				'author' => $this->getUserName($row['author']),
 				'editor' => $row['editor'],
 				'tagger' => $row['tagger'],
 				'recorder' => $row['recorder'],
