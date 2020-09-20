@@ -204,7 +204,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                      
                                     <span class="d-block" style="color: rgb(238, 194, 120);"><strong
                                             class="font-weight-light">Digital Edition I<br />October 7 & 8 2020 <br/>0730 - 1830 CEST
-                                            </strong><br />streamed in full, live, right here <br />Registration is &euro;100* for 2 days.</span>
+                                            </strong><br />streamed in full, live, right here, available for 1 month on-demand<br />Registration is &euro;100* for 2 days.</span>
                                 </h2>
                                 <p class="lead text-white">A digital endoscopy symposium in high definition focussed on promoting quality in the
                                     endoscopic interventions we perform everyday.&nbsp;</p>
