@@ -405,7 +405,7 @@ background-color: rgb(238, 194, 120);
 				}else{
 				
 					var SMICriskOR = 0;
-					var SMICriskactual = 0.4;
+					var SMICriskactual = 1.1;
 
 					if (kudovInt == 1){
 
@@ -501,7 +501,7 @@ background-color: rgb(238, 194, 120);
 
 					SMICnumeric = round(SMICnumeric, 1);
 
-					return SMICnumeric + '%  <br>(or ' + SMICriskOR + 'x the risk of a granular 0-IIa 20-29mm LSL in the colon proximal to the sigmoid without a demarcated area or depression)<br>';
+					return SMICnumeric + '%  <br>(or ' + SMICriskOR + 'x the risk of a granular 0-IIa 20-29mm LSL in the colon proximal to the sigmoid without a demarcated area or depression, risk 1.1%)<br>';
 ;	
 					
 				}
@@ -602,6 +602,7 @@ background-color: rgb(238, 194, 120);
 		<P>Reference:</P>
 		<P>1.	Burgess NG, Hourigan LF, Zanati SA, Brown GJ, Singh R, Williams SJ, et al. Risk Stratification for Covert Invasive Cancer Among Patients Referred for Colonic Endoscopic Mucosal Resection: A Large Multicenter Cohort. Gastroenterology. 2017 Sep;153(3):732–742.e1. </P>
         <P>Score Adapted for GIEQs.com by David Tate:</P>
+        <P>With thanks to Nick Burgess for supplying the original study data</P>
 		<P>Unauthorised distribution of the code prohibited.  Copyright 2020.  All rights reserved </P>
     </div>
 

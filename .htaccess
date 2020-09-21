@@ -14,6 +14,7 @@ RewriteRule ^login$ pages/authentication/login.php
 RewriteRule ^logmein$ pages/authentication/login.php
 RewriteRule ^proposedprogram$ pages/program/programv2.php
 RewriteRule ^learning$ pages/program/online.php
+RewriteRule ^online$ pages/program/online.php
 RewriteRule ^bleeding$ pages/learning/viewer_free.php?id=113
 RewriteRule ^artificial-intelligence$ pages/learning/viewer_free.php?id=136
 RewriteRule ^colonoscopy$ pages/learning/viewer_free.php?id=56
