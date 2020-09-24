@@ -533,7 +533,7 @@ min-width:30vw;
                 <div class="row">
                     <div class="col-lg-7 mb-0 mb-lg-0 pl-lg-5">
                         
-                       
+                        <div class="row">
                         <div class="col text-left mt-0 align-items-center">
                                                     <div class="actions">
                                                         <a class="action-item action-favorite p-0 m-0 pr-4 likes" data="<?php echo $id;?>">
@@ -556,6 +556,14 @@ min-width:30vw;
 
                                                     </div>
                                                 </div>
+                        </div>
+                        <div class="row">
+                            <div class="col text-left mt-0 align-items-center">
+                                                    <div class="tagsActive mt-3">
+                                                        
+                                                    </div>
+                                                </div>
+                        </div>
 </div>
                             <div class="col-lg-2 mb-0 mb-lg-0 align-self-center">
                                 <div class="text-right ">

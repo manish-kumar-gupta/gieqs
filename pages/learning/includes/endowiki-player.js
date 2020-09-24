@@ -1229,7 +1229,7 @@ $(document).ready(function () {
 							//console.log('chapters matched');
 
 							
-							//console.log(val);
+							console.log(val2);
 							////console.log('tag id'+val2.tagid+' matched and being shown');
 
 							//skip any tag id 254
@@ -1269,14 +1269,28 @@ $(document).ready(function () {
 
 
 
+							//copy tag to . tagsActive
+							//$('body').find('.tagsActive').prepend('<span class="badge badge-info mx-2 my-2 tagButton" id="tagMirror' + val2.tagid + '">' + val2.tagName + '</span>');
+
+							if (!($('body').find('.tagsActive').find('#tagMirror' + val2.tagid).length)){
+							$('body').find('.tagsActive').prepend('<span class="badge mx-2 mb-1 bg-gieqsGold text-dark" id="tagMirror' + val2.tagid + '">' + val2.tagName + '</span>');
+							}
 
 
 						} else {
 
 							var desiredTag = '#tag' + val2.tagid;
 
+							
+
 							$('body').find(desiredTag).removeClass('greenButton').removeClass('bg-gieqsGold').removeClass('text-dark').addClass('tagButton').addClass('bg-gray-800');
-							;
+
+
+							//remove tag crom tagsActive
+							if ($('body').find('.tagsActive').find('#tagMirror' + val2.tagid).length){
+
+								$('body').find('.tagsActive').find('#tagMirror' + val2.tagid).remove();
+							}
 
 						}
 
