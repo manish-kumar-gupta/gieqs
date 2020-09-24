@@ -1271,9 +1271,99 @@ $(document).ready(function () {
 
 							//copy tag to . tagsActive
 							//$('body').find('.tagsActive').prepend('<span class="badge badge-info mx-2 my-2 tagButton" id="tagMirror' + val2.tagid + '">' + val2.tagName + '</span>');
+							console.log(val2.tagid);
 
 							if (!($('body').find('.tagsActive').find('#tagMirror' + val2.tagid).length)){
+								//if (val2.tagid == selectedTag){
 							$('body').find('.tagsActive').prepend('<span class="badge mx-2 mb-1 bg-gieqsGold text-dark" id="tagMirror' + val2.tagid + '">' + val2.tagName + '</span>');
+								//}else{
+								//	$('body').find('.tagsActive').prepend('<span class="badge mx-2 mb-1 bg-gray-800 gieqsGold" id="tagMirror' + val2.tagid + '">' + val2.tagName + '</span>');
+
+
+								}
+							//}
+
+							//TODO HIGHLIGHT THE CLICKED TAG
+
+
+						} else {
+
+							var desiredTag = '#tag' + val2.tagid;
+
+							
+
+							$('body').find(desiredTag).removeClass('greenButton').removeClass('bg-gieqsGold').removeClass('text-dark').addClass('tagButton').addClass('bg-gray-800');
+
+
+							//remove tag crom tagsActive
+							if ($('body').find('.tagsActive').find('#tagMirror' + val2.tagid).length){
+
+								$('body').find('.tagsActive').find('#tagMirror' + val2.tagid).remove();
+							}
+
+						}
+
+					})
+				}else{
+
+					$(videoChapterTagData).each(function (i2, val2) {
+
+						//macth this array to the other
+						if (val.chapterid == val2.chapterid) {
+
+							//console.log('chapters matched');
+
+							
+							console.log(val2);
+							////console.log('tag id'+val2.tagid+' matched and being shown');
+
+							//skip any tag id 254
+
+							if (val2.tagid == '254'){
+
+								//skip detected
+
+								//console.log('tag 90 detected');
+								//get the current chapter, skip to the next
+
+								//var targetChapterSkip = positionOfChapter + 1;
+
+								//val contains current chapter data		
+
+								//var targetChapterKeySkip = getKeyForChapterid(targetChapterSkip);
+
+								var targetTimeSkip = videoChapterData[i+1].timeFrom;
+
+								//get time of targetSkip
+
+								jumpToTime(targetTimeSkip);
+
+								//		
+
+							}
+
+							
+
+							//console.log('tag id'+val2.tagid+' matched and being shown');
+
+							var desiredTag = '#tag' + val2.tagid;
+
+							//console.log(desiredTag);
+
+							$('body').find(desiredTag).addClass('greenButton').addClass('bg-gieqsGold').addClass('text-dark').removeClass('tagButton').removeClass('bg-gray-800');
+
+
+
+							//copy tag to . tagsActive
+							//$('body').find('.tagsActive').prepend('<span class="badge badge-info mx-2 my-2 tagButton" id="tagMirror' + val2.tagid + '">' + val2.tagName + '</span>');
+
+							if (!($('body').find('.tagsActive').find('#tagMirror' + val2.tagid).length)){
+
+								//IF THE TAG IS THE CLICKED TAG HIGHLIGHT FURTHER
+
+								
+									$('body').find('.tagsActive').prepend('<span class="badge mx-2 mb-1 bg-gieqsGold text-dark" id="tagMirror' + val2.tagid + '">' + val2.tagName + '</span>');
+								
 							}
 
 
@@ -1295,6 +1385,7 @@ $(document).ready(function () {
 						}
 
 					})
+
 				}
 
 				/*

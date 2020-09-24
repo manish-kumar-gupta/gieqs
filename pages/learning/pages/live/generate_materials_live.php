@@ -426,7 +426,7 @@ $requiredUserLevel = 3;
                         console.log( bottomPosition);
 
                         
-                        //alert($(this).attr('class'));
+                        //alert($(this).attr('class'))xx;
                         if( offset2.top > bottomPosition){
 
                             $(this).hide();
