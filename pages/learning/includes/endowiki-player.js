@@ -1271,7 +1271,7 @@ $(document).ready(function () {
 
 							//copy tag to . tagsActive
 							//$('body').find('.tagsActive').prepend('<span class="badge badge-info mx-2 my-2 tagButton" id="tagMirror' + val2.tagid + '">' + val2.tagName + '</span>');
-							console.log(val2.tagid);
+							//console.log(val2.tagid);
 
 							if (!($('body').find('.tagsActive').find('#tagMirror' + val2.tagid).length)){
 								//if (val2.tagid == selectedTag){

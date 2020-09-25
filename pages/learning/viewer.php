@@ -559,7 +559,7 @@ min-width:30vw;
                         </div>
                         <div class="row">
                             <div class="col text-left mt-0 align-items-center">
-                                                    <div class="tagsActive d-flex flex-wrap mt-3" style="max-height:5vh;">
+                                                    <div class="tagsActive d-flex flex-wrap mt-3" style="max-height:50px; overflow-y: hidden;">
                                                         
                                                     </div>
                                                 </div>
