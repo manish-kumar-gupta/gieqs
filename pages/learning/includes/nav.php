@@ -289,30 +289,87 @@ function endsWith($haystack, $needle)
 
                             </div>
                         </div>
-
-                        <div class="dropdown-divider"></div>
-
-                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Advanced Endoscopic
-                            Resection</span>
-                        <a class="dropdown-item"><i
-                                class="fas fa-columns"></i>Coming Soon</a>
-
-                        <div class="dropdown-divider"></div>
-
-                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Submucosal Endoscopy</span>
-                        <a class="dropdown-item"><i
-                          class="fas fa-columns"></i>Coming Soon</a>
-                                
-
                         <div class="dropdown-divider"></div>
 
                         <span style="color: rgb(238, 194, 120);" class="dropdown-header">ERCP</span>
-                        <a class="dropdown-item"><i
-                          class="fas fa-columns"></i>Coming Soon</a>
+
+<a class="dropdown-item dropdown-toggle cursor-pointer" role="button" data-toggle="dropdown"
+                            data-target="#ercp-dropdown"><i class="fas fa-columns"></i>ERCP</a>
+                        <div id="ercp-dropdown"
+                            class="dropdown-menu dropdown-menu-xl rounded-bottom delimiter-top p-4 bg-dark-light">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">ERCP</a>
+                                    <a href="<?php echo BASE_URL;?>/pages/learning/pages/ERCP/ercp.php"
+                                        class="dropdown-item">All ERCP videos
+                                        <!--  <img class="w-100" alt="Boston Scientific" src="<?php echo BASE_URL . '/assets/img/brand/boston.jpg';?>"> -->
+                                    </a>
+                                    
+
+                                    
+                                  
+
+                                </div>
+                                
+                                <div class="col-sm-6">
+                                    
+
+
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                        
 
                         <div class="dropdown-divider"></div>
 
                         <span style="color: rgb(238, 194, 120);" class="dropdown-header">EUS</span>
+
+<a class="dropdown-item dropdown-toggle cursor-pointer" role="button" data-toggle="dropdown"
+                            data-target="#eus-dropdown"><i class="fas fa-columns"></i>Endoscopic Ultrasound</a>
+                        <div id="eus-dropdown"
+                            class="dropdown-menu dropdown-menu-xl rounded-bottom delimiter-top p-4 bg-dark-light">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">EUS</a>
+                                    <a href="<?php echo BASE_URL;?>/pages/learning/pages/EUS/eus.php"
+                                        class="dropdown-item">All Endoscopic Ultrasound videos
+                                        <!--  <img class="w-100" alt="Boston Scientific" src="<?php echo BASE_URL . '/assets/img/brand/boston.jpg';?>"> -->
+                                    </a>
+                                    
+
+                                    
+                                  
+
+                                </div>
+                                
+                                <div class="col-sm-6">
+                                    
+
+
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        
+                                
+
+                        <div class="dropdown-divider"></div>
+
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Advanced Endoscopic
+                          Resection</span>
+                      <a class="dropdown-item"><i
+                              class="fas fa-columns"></i>Coming Soon</a>
+                        
+
+                        <div class="dropdown-divider"></div>
+
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Submucosal Endoscopy</span>
                         <a class="dropdown-item"><i
                           class="fas fa-columns"></i>Coming Soon</a>
 
