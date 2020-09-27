@@ -1229,7 +1229,7 @@ $(document).ready(function () {
 							//console.log('chapters matched');
 
 							
-							console.log(val2);
+							//console.log(val2);
 							////console.log('tag id'+val2.tagid+' matched and being shown');
 
 							//skip any tag id 254
@@ -1314,7 +1314,7 @@ $(document).ready(function () {
 							//console.log('chapters matched');
 
 							
-							console.log(val2);
+							//console.log(val2);
 							////console.log('tag id'+val2.tagid+' matched and being shown');
 
 							//skip any tag id 254
