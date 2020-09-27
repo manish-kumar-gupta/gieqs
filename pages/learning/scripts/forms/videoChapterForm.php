@@ -970,7 +970,8 @@ function showCategoryModal () {
 
             $('.modal').find('.modalContent').html('<h3>Choose Tag Category</h3>');
 
-            $('.modal').find('.modalContent').append('<span class="text-white">Quick Links</span> <div class="d-flex flex-wrap"><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 0 ).draw(); window.localStorage.setItem(\'superCategory\', \'0\');" class="btn btn-sm m-1 p-1 btn-primary">' + 'Video Navigation' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 1 ).draw(); window.localStorage.setItem(\'superCategory\', \'1\');" class="btn btn-sm m-1 p-1 btn-primary">' + 'Colon Tutor' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.column( 1 ).search( 2 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Polypectomy Tutor' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 3 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Imaging in Polypectomy' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 4 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Other Resection' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 5 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Other GIEQs topics' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 6 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Nursing Topics' + '</button><div class="break"></div><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 7 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'ERCP' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 8 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'EUS' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 9 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Therapeutic EUS' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 10 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Complex endoscopic resection' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 11 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Submucosal endoscopy' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable().search("").draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Reset' + '</button></div>');
+            //$('.modal').find('.modalContent').append('<span class="text-white">Quick Links</span> <div class="d-flex flex-wrap"><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 0 ).draw(); window.localStorage.setItem(\'superCategory\', \'0\');" class="btn btn-sm m-1 p-1 btn-primary">' + 'Video Navigation' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 1 ).draw(); window.localStorage.setItem(\'superCategory\', \'1\');" class="btn btn-sm m-1 p-1 btn-primary">' + 'Colon Tutor' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.column( 1 ).search( 2 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Polypectomy Tutor' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 3 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Imaging in Polypectomy' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 4 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Other Resection' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 5 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Other GIEQs topics' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 6 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Nursing Topics' + '</button><div class="break"></div><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 7 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'ERCP' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 8 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'EUS' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 9 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Therapeutic EUS' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 10 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Complex endoscopic resection' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 11 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Submucosal endoscopy' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable().search(\'\').columns().search(\'\').draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Reset' + '</button></div>');
+             $('.modal').find('.modalContent').append('<span class="text-white">Quick Links</span><div class="d-flex flex-wrap"><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 0 ).draw(); window.localStorage.setItem(\'superCategory\', \'0\');" class="btn btn-sm m-1 p-1 btn-primary">' + 'Video Navigation' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 1 ).draw(); window.localStorage.setItem(\'superCategory\', \'1\');" class="btn btn-sm m-1 p-1 btn-primary">' + 'Colon Tutor' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.column( 1 ).search( 2 ).draw(); window.localStorage.setItem(\'superCategory\', \'2\');" class="btn btn-sm m-1 p-1 btn-primary">' + 'Polypectomy Tutor' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 3 ).draw(); window.localStorage.setItem(\'superCategory\', \'3\');" class="btn btn-sm m-1 p-1 btn-primary">' + 'Imaging in Polypectomy' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 4 ).draw(); window.localStorage.setItem(\'superCategory\', \'4\');" class="btn btn-sm m-1 p-1 btn-primary">' + 'Other Resection' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 5 ).draw(); window.localStorage.setItem(\'superCategory\', \'5\');" class="btn btn-sm m-1 p-1 btn-primary">' + 'Other GIEQs topics' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 6 ).draw(); window.localStorage.setItem(\'superCategory\', \'6\');" class="btn btn-sm m-1 p-1 btn-primary">' + 'Nursing Topics' + '</button><div class="break"></div><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 7 ).draw(); window.localStorage.setItem(\'superCategory\', \'7\');" class="btn btn-sm m-1 p-1 btn-primary">' + 'ERCP' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 8 ).draw(); window.localStorage.setItem(\'superCategory\', \'8\');" class="btn btn-sm m-1 p-1 btn-primary">' + 'EUS' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 9 ).draw(); window.localStorage.setItem(\'superCategory\', \'9\');" class="btn btn-sm m-1 p-1 btn-primary">' + 'Therapeutic EUS' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 10 ).draw(); window.localStorage.setItem(\'superCategory\', \'10\');" class="btn btn-sm m-1 p-1 btn-primary">' + 'Complex endoscopic resection' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 11 ).draw(); window.localStorage.setItem(\'superCategory\', \'11\');" class="btn btn-sm m-1 p-1 btn-primary">' + 'Submucosal endoscopy' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable().search(\'\').columns().search(\'\').draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Reset' + '</button></div>');
 
 
             $('.modal').find('.modalContent').append('<p>' + data + '</p>');
@@ -1009,20 +1010,27 @@ $(this).append(' ');
 var superCategory = window.localStorage.getItem('superCategory');
 var dt = $('#dataTable2').DataTable(); dt.draw(); dt.column( 1 ).search( superCategory ).draw();
 //highlight which one is selected
-$(document).find('.modalContent').find('btn').each(function(){
 
-    if ($(this).index() == superCategory){
+waitForFinalEvent(function() {
+ 
+    $(document).find('.modalContent').find('button').each(function(index){
 
-        $(this).addClass('gieqsGoldBackground');
+        //console.log(index);
 
-    }else{
+        if (index == superCategory){
 
-        $(this).removeClass('gieqsGoldBackground');
+            $(this).addClass('gieqsGoldBackground');
 
-    }
+        }else{
+
+            $(this).removeClass('gieqsGoldBackground');
+
+        }
 
 
-})
+    })
+
+}, 300, 'Highlight SuperCategory');
 
 
     
@@ -1852,7 +1860,7 @@ $(document).ready(function() {
 
             $('.modal').find('.modalContent').html('<div class="container"><h3>Choose Tag Category</h3>');
 
-            $('.modal').find('.modalContent').append('<span class="text-white">Quick Links</span><div class="d-flex flex-wrap"><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 0 ).draw(); window.localStorage.setItem(\'superCategory\', \'0\');" class="btn btn-sm m-1 p-1 btn-primary">' + 'Video Navigation' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 1 ).draw(); window.localStorage.setItem(\'superCategory\', \'1\');" class="btn btn-sm m-1 p-1 btn-primary">' + 'Colon Tutor' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.column( 1 ).search( 2 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Polypectomy Tutor' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 3 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Imaging in Polypectomy' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 4 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Other Resection' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 5 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Other GIEQs topics' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 6 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Nursing Topics' + '</button><div class="break"></div><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 7 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'ERCP' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 8 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'EUS' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 9 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Therapeutic EUS' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 10 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Complex endoscopic resection' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 11 ).draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Submucosal endoscopy' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable().search(\'\').draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Reset' + '</button></div>');
+            $('.modal').find('.modalContent').append('<span class="text-white">Quick Links</span><div class="d-flex flex-wrap"><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 0 ).draw(); window.localStorage.setItem(\'superCategory\', \'0\');" class="btn btn-sm m-1 p-1 btn-primary">' + 'Video Navigation' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 1 ).draw(); window.localStorage.setItem(\'superCategory\', \'1\');" class="btn btn-sm m-1 p-1 btn-primary">' + 'Colon Tutor' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.column( 1 ).search( 2 ).draw(); window.localStorage.setItem(\'superCategory\', \'2\');" class="btn btn-sm m-1 p-1 btn-primary">' + 'Polypectomy Tutor' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 3 ).draw(); window.localStorage.setItem(\'superCategory\', \'3\');" class="btn btn-sm m-1 p-1 btn-primary">' + 'Imaging in Polypectomy' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 4 ).draw(); window.localStorage.setItem(\'superCategory\', \'4\');" class="btn btn-sm m-1 p-1 btn-primary">' + 'Other Resection' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 5 ).draw(); window.localStorage.setItem(\'superCategory\', \'5\');" class="btn btn-sm m-1 p-1 btn-primary">' + 'Other GIEQs topics' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 6 ).draw(); window.localStorage.setItem(\'superCategory\', \'6\');" class="btn btn-sm m-1 p-1 btn-primary">' + 'Nursing Topics' + '</button><div class="break"></div><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 7 ).draw(); window.localStorage.setItem(\'superCategory\', \'7\');" class="btn btn-sm m-1 p-1 btn-primary">' + 'ERCP' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 8 ).draw(); window.localStorage.setItem(\'superCategory\', \'8\');" class="btn btn-sm m-1 p-1 btn-primary">' + 'EUS' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 9 ).draw(); window.localStorage.setItem(\'superCategory\', \'9\');" class="btn btn-sm m-1 p-1 btn-primary">' + 'Therapeutic EUS' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 10 ).draw(); window.localStorage.setItem(\'superCategory\', \'10\');" class="btn btn-sm m-1 p-1 btn-primary">' + 'Complex endoscopic resection' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable(); dt.draw(); dt.column( 1 ).search( 11 ).draw(); window.localStorage.setItem(\'superCategory\', \'11\');" class="btn btn-sm m-1 p-1 btn-primary">' + 'Submucosal endoscopy' + '</button><button onclick="var dt = $(\'#dataTable2\').DataTable().search(\'\').columns().search(\'\').draw();" class="btn btn-sm m-1 p-1 btn-primary">' + 'Reset' + '</button></div>');
 
             $('.modal').find('.modalContent').append('<p>' + data + '</p>');
 
@@ -1886,6 +1894,28 @@ $(this).append(' ');
 
 var superCategory = window.localStorage.getItem('superCategory');
 var dt = $('#dataTable2').DataTable(); dt.draw(); dt.column( 1 ).search( superCategory ).draw();
+//highlight which one is selected
+
+waitForFinalEvent(function() {
+ 
+    $(document).find('.modalContent').find('button').each(function(index){
+
+        //console.log(index);
+
+        if (index == superCategory){
+
+            $(this).addClass('gieqsGoldBackground');
+
+        }else{
+
+            $(this).removeClass('gieqsGoldBackground');
+
+        }
+
+
+    })
+
+}, 300, 'Highlight SuperCategory');
 
             return;
 

@@ -173,7 +173,7 @@ top: -20vh;
               <h5 class="mt-5 mb-0"><a href="#">GIEQs digital</a></h5>
             </div>
             <div class="list-group list-group-sm list-group-flush">
-              <a href="#" class="list-group-item list-group-item-action disabled">Navigate the congress</a>
+              <a href="<?php echo BASE_URL;?>/pages/support/support_gieqs_digital.php" class="list-group-item list-group-item-action">Connection and other issues</a>
               
             </div>
             <div class="card-footer d-flex align-items-center justify-content-between">
