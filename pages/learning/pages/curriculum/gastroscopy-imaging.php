@@ -184,7 +184,7 @@ background-color: rgb(238, 194, 120);
         <!--- specifiy the tag Categories required for display  CHANGEME-->
 
         <?php
-        $requiredTagCategories = ['88', '111', '112', '113', '116'];
+        $requiredTagCategories = ['88', '111', '112', '113', '116', '142', '143', '144'];
 
         ?>
 
