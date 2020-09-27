@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php require '../../includes/config.inc.php';?>
+<?php require 'includes/config.inc.php';?>
 
 
 <head>
@@ -13,12 +13,9 @@
 
       //define user access level
 
-      //$openaccess = 1;
-      $requiredUserLevel = 5;
+      $openaccess = 1;
 
-
-      //require BASE_URI . '/pages/learning/includes/head.php';
-      require BASE_URI . '/headNoPurposeCore.php';
+      require BASE_URI . '/pages/learning/includes/head.php';
 
       $general = new general;
 
@@ -27,11 +24,10 @@
       ?>
 
     <!--Page title-->
-    <title>GIEQs Online Endoscopy Trainer - Insertion Technique</title>
+    <title>GIEQs Online Endoscopy Trainer</title>
 
-
- -->    <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
-
+    <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
+    
 
     <style>
        
@@ -174,20 +170,7 @@ background-color: rgb(238, 194, 120);
 		
         }
         
-        if ($liveAccess){
-
-            $requiredArray = ['23', '25', '29', '30', '31'];
-    
-            //print_r($requiredArray);
-    
-            //print_r($liveAccess);
-    
-            
-            $gieqsDigital = (count(array_intersect($liveAccess, $requiredArray))) ? true : false;
-    
-            //if (in_array($liveAccess, 25)){
-            
-        }
+        
 				    
                         
                         
@@ -201,7 +184,7 @@ background-color: rgb(238, 194, 120);
         <!--- specifiy the tag Categories required for display  CHANGEME-->
 
         <?php
-        $requiredTagCategories = ['47', '48', '50', '55'];
+        $requiredTagCategories = ['40', '41'];
 
         ?>
 
@@ -241,18 +224,10 @@ background-color: rgb(238, 194, 120);
 
         <!--Header CHANGEME-->
 
-    <div class="d-flex flex-wrap container pt-10 mt-5">
-        <div class="h1 mr-auto">Insertion Technique</div>
-        <nav aria-label="breadcrumb" class="align-self-center">
-                            <ol class="breadcrumb breadcrumb-links p-0 m-0">
-                                <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/index.php'?>">GIEQs online</a></li>
-                                <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/pages/colontutor/all.php'?>">Colonoscopy Tutor</a></li>
-                                <li class="breadcrumb-item gieqsGold" aria-current="page">Insertion Technique</li>
-                            </ol>
-                        </nav>
+    <div class="d-flex align-items-end container">
+        <p class="h1 mt-10">Colonoscopy Tutor Videos</p>
 
     </div>
-    
 
 
         <!--Navigation-->
@@ -300,25 +275,24 @@ background-color: rgb(238, 194, 120);
     <?php require BASE_URI . '/footer.php';?>
 
     <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
-    <script src="<?php echo BASE_URL;?>/assets/js/purpose.core.js"></script>
-    <script src="<?php echo BASE_URL;?>/assets/js/purpose.js"></script>
-    <script src="<?php echo BASE_URL . "/assets/js/generaljs.js"?>"></script>
-
     <!-- <script src="assets/js/purpose.core.js"></script> -->
     <!-- Page JS -->
-   
+    <script src=<?php echo BASE_URL . "/assets/libs/swiper/dist/js/swiper.min.js"?>></script>
+    <script src=<?php echo BASE_URL . "/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"?>></script>
+    <script src=<?php echo BASE_URL . "/assets/libs/typed.js/lib/typed.min.js"?>></script>
+    <script src=<?php echo BASE_URL . "/assets/libs/isotope-layout/dist/isotope.pkgd.min.js"?>></script>
+    <script src=<?php echo BASE_URL . "/assets/libs/jquery-countdown/dist/jquery.countdown.min.js"?>></script>
     <!-- Google maps -->
     
     <!-- Purpose JS -->
-    
- 
-
+    <script src=<?php echo BASE_URL . "/assets/js/purpose.js"?>></script>
+    <!-- <script src=<?php echo BASE_URL . "/assets/js/generaljs.js"?>></script> -->
+    <!-- <script src=<?php echo BASE_URL . "/assets/js/demo.js"?>></script> -->
     <script>
     var videoPassed = $("#id").text();
                     </script>
 
-    <script src=<?php echo BASE_URL . "/pages/learning/includes/social.js"?>></script>
-
+    <script src=<?php echo BASE_URL . "/pages/learning/includes/endowiki-player.js"?>></script>
     <script>
         
         //the number that are actually loaded
@@ -328,8 +302,6 @@ background-color: rgb(238, 194, 120);
         var loadedRequired = 1;
 
         var firstTime = 1;
-
-        var activeStatus = 1;
 
         var requiredTagCategoriesText = $("#requiredTagCategories").text();
 
@@ -368,8 +340,7 @@ background-color: rgb(238, 194, 120);
 				}*/var dataToSend = {
 
                     tags: tags,
-                    requiredTagCategories: requiredTagCategories,
-                    active: activeStatus,
+                    requiredTagCategories: requiredTagCategories
 
                     }
 
@@ -463,8 +434,6 @@ background-color: rgb(238, 194, 120);
                         loadedRequired: loadedRequired,
                         requiredTagCategories: requiredTagCategories,
                         referringUrl: $('#escaped_url').text(),
-                        active: activeStatus,
-                        gieqsDigital: '<?php echo $gieqsDigital;?>',
 
 
                     }
@@ -556,7 +525,9 @@ background-color: rgb(238, 194, 120);
 
         $(document).ready(function () {
 
-            /* */ //TODO WHY WAS THIS NECESSARY MAJOR BUG
+            $('.dropdown-menu a').click(function(e) {
+            e.stopPropagation();
+                    });
 
             refreshNavAndTags();
 
@@ -615,21 +586,6 @@ background-color: rgb(238, 194, 120);
 
             })
 
-            //active behaviour
-
-            $('body').on('change', '#active', function(){
-
-                var active = $(this).children("option:selected").val();
-                //remove the check from the tag removed
-
-                activeStatus = active;
-
-                refreshNavAndTags();
-
-            })
-
-            
-            
             
 
 

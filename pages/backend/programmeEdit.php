@@ -252,6 +252,7 @@ echo $programme->Load_records_limit_json(50);
                             <th>title</th>
                             <th>subtitle</th>
                             <th>description</th>
+                            <th>url</th>
                             <th></th>
 
                 </tr>
@@ -334,6 +335,12 @@ echo $programme->Load_records_limit_json(50);
                                         <div class="input-group">
                                             <textarea id="description" name="description" data-toggle="autosize" class="form-control"
                                                 placeholder="Description"></textarea>
+                                        </div>
+
+                                        <label for="url_vimeo">Vimeo URL</label>
+                                        <div class="input-group">
+                                            <textarea id="url_vimeo" name="url_vimeo" data-toggle="autosize" class="form-control"
+                                                placeholder="Vimeo URL"></textarea>
                                         </div>
                                     </div>
                                 </form>
@@ -621,6 +628,8 @@ $(document).ready(function(){
            { data: 'title' },
            { data: 'subtitle' },
            { data: 'description' },
+           { data: 'url_vimeo' },
+
            {
            data: null,
            render: function ( data, type, row ) {

@@ -78,6 +78,8 @@ $loadedRequired = $data['loadedRequired'];
 
 $active = $data['active'];
 
+$gieqsDigitalv1 = $data['gieqsDigital'];
+
 $loadedRequiredProduct = 10 * $loadedRequired;
 
 if ($debug) {
@@ -116,7 +118,7 @@ $requiredTagCategories = $data['requiredTagCategories'];
 $videos = [];
 $x = 0;
 
-$data2 = $navigator->getVideoData($requiredTagCategories, $tagsToMatch, $debug, $active);
+$data2 = $navigator->getVideoData($requiredTagCategories, $tagsToMatch, $debug, $active, $gieqsDigitalv1);
 
 
 
@@ -208,12 +210,38 @@ if ($debug) {
                 </div>
                 <div class="card-footer">
                     <div class="row align-items-center">
+                        
+                        <?php 
+                        
+                        $videoIsGIEQsDigital = false;
+                        $videoIsGIEQsDigital = ($navigator->videoIsGIEQsDigitalv1($value['id']) ? true : false);
+
+                        
+                        
+                        if (!$videoIsGIEQsDigital){?>
                         <div class="col-6">
                             <a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $value['id'] . '&referid=' . $data['referringUrl']; ?>" class="btn btn-sm text-dark gieqsGoldBackground">View</a>
                         </div>
                         <div class="col-6 text-right">
                             <span class="text-muted created text-sm" data-created="<?php echo $value['created'];?>"><?php echo time_elapsed_string($value['created']);?></span>
                         </div>
+                        <?php }else if ($videoIsGIEQsDigital) {?>
+                            <div class="col-4">
+                            <a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $value['id'] . '&referid=' . $data['referringUrl']; ?>" class="btn btn-sm text-dark gieqsGoldBackground">View</a>
+                        </div>
+                        <div class="col-3">
+                            <img class = "img-responsive" width = "140%" src="<?php echo BASE_URL . '/assets/img/brand/gieqs_digital.png';?>">
+                        </div>
+                        <div class="col-5 text-right">
+                            <span class="text-muted created text-sm" data-created="<?php echo $value['created'];?>"><?php echo time_elapsed_string($value['created']);?></span>
+                        </div>
+
+
+                        <?php }else {?>
+
+
+                        <?php }?>
+
                     </div>
                 </div>
                 </div>

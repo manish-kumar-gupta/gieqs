@@ -582,11 +582,27 @@ class navigator {
 			echo 'gieqsDigital = ' . $gieqsDigital;
 		}
 
-		//testing
+		if ($gieqsDigital == 1){
 
-		//$gieqsDigital = 0;
+			//$queryGieqsDigtalv1 = false;
+			$queryGieqsDigtalv1 = " AND (`tagCategories_id` NOT IN (9999))";
 
-		
+			if ($debug){
+
+				echo 'gieqsDigitalv1 subscription detected';
+				echo 'query set to ' . $queryGieqsDigtalv1;
+			}
+
+
+		}else{
+
+			$queryGieqsDigtalv1 = " AND (`tagCategories_id` NOT IN (9999))";
+			if ($debug){
+
+				echo 'gieqsDigitalv1 subscription not detected';
+				echo 'query set to ' . $queryGieqsDigtalv1;
+			}
+		}
 
 		//get the tags from the required categories
 		if ($tagsRequired){

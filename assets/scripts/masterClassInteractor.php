@@ -131,6 +131,12 @@ if (count($_GET) > 0){
 		unset($data['table']);
 		unset($data['identifierKey']);
 		unset($data['identifier']);
+
+		//set a cookie for 1 hour using the tagCategory
+
+		if (isset($data['tagCategories_id'])){
+			setcookie('persistCategory', $data['tagCategories_id'], time()+3600);
+		}
 		
 		/*foreach ($data as $key=>$value){
 			

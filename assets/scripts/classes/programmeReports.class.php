@@ -482,6 +482,44 @@ class programmeReports
                         }
                         
                 }
+
+                public function getVimeoURLProgramme($programmeid)
+            {
+            
+                
+                $q = "Select `url_vimeo` 
+            from `programme`
+            WHERE `id` = '$programmeid' 
+            ";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                    $url = $row['url_vimeo'];
+                }
+            
+                return $url;
+
+            } else {
+                
+
+                //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+                $rowReturn = [];
+                
+                return $rowReturn;
+            }
+
+        }
         
         
         

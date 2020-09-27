@@ -450,7 +450,8 @@ $requiredVideos = ['105', '72', '56', '67'];
                         loadedRequired: loadedRequired,
                         requiredTagCategories: requiredTagCategories,
                         requiredVideos: requiredVideos,
-                        referringUrl: $('#escaped_url').text(), active: activeStatus,
+                        referringUrl: $('#escaped_url').text(), 
+                        active: activeStatus,
 
 
 

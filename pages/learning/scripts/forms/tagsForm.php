@@ -276,6 +276,10 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
 			
 			
 var siteRoot = rootFolder;
+
+var myCookie = getCookie("persistCategory");
+
+
 		
 			 tagsPassed = $("#id").text();
 		
@@ -313,14 +317,22 @@ var siteRoot = rootFolder;
 		
 					var formData = $.parseJSON(data);
 		
-		
+					
+
 				    $(formData).each(function(i,val){
 					    $.each(val,function(k,v){
-					        $("#"+k).val(v);
+
+						
+							$("#"+k).val(v);
+							
 					        //console.log(k+' : '+ v);
 					    });
 		
-				    });
+					});
+					
+					
+
+					
 				    
 				    $("#messageBox").append("Editing tags id "+idPassed);
 		
@@ -337,6 +349,10 @@ var siteRoot = rootFolder;
 					$("form#tags").find("button").after("<button id='deletetags' class='btn btn-sm bg-dark'>Delete</button>");
 		
 				}
+
+				
+					
+				
 		
 			}
 		
@@ -399,6 +415,8 @@ var siteRoot = rootFolder;
 				//pushDataFromFormAJAX (form, table, identifierKey, identifier, updateType)
 		
 				if (edit == 0){
+
+					//set a tag cookie
 		
 					var tagsObject = pushDataFromFormAJAX("tags", "tags", "id", null, "0"); //insert new object
 		
@@ -475,6 +493,11 @@ var siteRoot = rootFolder;
 				}else{
 					
 					$("#messageBox").append("New tags");
+
+					if (myCookie != null){
+
+					$('#tagCategories_id').val(myCookie);
+					}
 					
 				}
 		

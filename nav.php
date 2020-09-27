@@ -179,7 +179,7 @@
                           <a href="sections.html#tables" class="dropdown-item">Medtronic</a>
                         
                         </div>
-                        <div class="col-sm-3">
+                        <!-- <div class="col-sm-3">
                           <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Bronze</a>
 
                           <a href="sections.html#headers" class="dropdown-item">MudiPharma</a>
@@ -194,7 +194,7 @@
 
 
                           
-                        </div>
+                        </div> -->
                       
                       </div>
                     </div>

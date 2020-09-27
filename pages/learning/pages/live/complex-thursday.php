@@ -23,6 +23,7 @@ $requiredUserLevel = 6;
       require BASE_URI . '/head.php';
 
       $general = new general;
+      $programmeReports = new programmeReports;
 
       ?>
 
@@ -198,8 +199,11 @@ top: -20vh;
      <div class="container d-flex flex-wrap align-items-lg-stretch p-2">
     <div class="col-lg-12">
     <div id="videoDisplay" class="embed-responsive embed-responsive-16by9 video-wrap">
-       <iframe src="https://player.vimeo.com/video/452963709" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
-    </div>   
+<!--        <iframe src="https://player.vimeo.com/video/452963709" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+ -->    
+ <iframe src="<?php echo $programmeReports->getVimeoURLProgramme($requiredArray[0]); ?>" frameborder="0" allow="autoplay; fullscreen" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+
+</div>   
 </div>
   
 <?php  

@@ -206,6 +206,10 @@ if (count($_GET) > 0){
 		$q = "INSERT INTO `$table` (`$keys`) VALUES ('$values')";
 		
 		//echo $q;
+
+		if (isset($data['tagCategories_id'])){
+			setcookie('persistCategory', $data['tagCategories_id'], time()+3600);
+		}
 				
 		echo $general->returnWithInsertID($q);
 		
