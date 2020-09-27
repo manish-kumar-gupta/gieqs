@@ -459,6 +459,7 @@ background-color: rgb(238, 194, 120);
                         requiredTagCategories: requiredTagCategories,
                         referringUrl: $('#escaped_url').text(),
                         active: activeStatus,
+                        gieqsDigital: '<?php echo $gieqsDigital;?>',
 
 
                     }
