@@ -171,6 +171,20 @@ background-color: rgb(238, 194, 120);
 			$id = null;
 		
 		}
+        if ($liveAccess){
+
+            $requiredArray = ['23', '25', '29', '30', '31'];
+    
+            //print_r($requiredArray);
+    
+            //print_r($liveAccess);
+    
+            
+            $gieqsDigital = (count(array_intersect($liveAccess, $requiredArray))) ? true : false;
+    
+            //if (in_array($liveAccess, 25)){
+            
+        }
 				    
                         
                         
