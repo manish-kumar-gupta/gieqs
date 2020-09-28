@@ -326,7 +326,7 @@ width: 100%;
                     </div>
                     <div class="col-lg-3 col-md-4 col-4 py-1">
                     
-                    <a href="https://esgeconnect2020.vfairs.com/en/" target="_blank"><img class="logo" alt="ESGE connect" src="<?php echo BASE_URL . '/assets/img/brand/esgeconnect.png';?>"></a>
+                    <a href="https://www.sfed.org/professionnels/actualites-pro/programme-du-congres-e-video-digest-reservez-votre-vendredi-13" target="_blank"><img class="logo" alt="SFED" src="<?php echo BASE_URL . '/assets/img/brand/sfed.png';?>"></a>
 
                     </div>
                     <div class="col-lg-2 col-md-4 col-4 py-1">
