@@ -81,6 +81,16 @@
                                             </select>
                                         </div>
 
+                                        <label for="SIurl_video">video attachment</label>
+                                        <div class="input-group mb-3">
+                                            <select id="SIurl_video" data-toggle="select" class="form-control" name="SIurl_video">
+                                            <option value="" selected disabled hidden>please select an option</option>
+                                            
+                                            </select>
+                                        </div>
+
+                                        
+
 
 
                                     </div>

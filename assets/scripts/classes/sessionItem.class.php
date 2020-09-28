@@ -2,7 +2,7 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 7-03-2020
+ * Create Date: 27-09-2020
  *
  * DJT 2019
  *
@@ -20,6 +20,7 @@ Class sessionItem {
 	private $description; //varchar(800)
 	private $faculty; //int(11)
 	private $live; //int(11)
+	private $url_video; //varchar(300)
 	private $connection;
 
 	public function __construct(){
@@ -30,13 +31,14 @@ Class sessionItem {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_sessionItem($timeFrom,$timeTo,$title,$description,$faculty,$live){
+	public function New_sessionItem($timeFrom,$timeTo,$title,$description,$faculty,$live,$url_video){
 		$this->timeFrom = $timeFrom;
 		$this->timeTo = $timeTo;
 		$this->title = $title;
 		$this->description = $description;
 		$this->faculty = $faculty;
 		$this->live = $live;
+		$this->url_video = $url_video;
 	}
 
     /**
@@ -55,6 +57,7 @@ Class sessionItem {
 			$this->description = $row["description"];
 			$this->faculty = $row["faculty"];
 			$this->live = $row["live"];
+			$this->url_video = $row["url_video"];
 		}
 	}
     /**
@@ -79,6 +82,7 @@ $q = "Select * from `sessionItem` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["description"] = $row["description"];
 			$rowReturn[$x]["faculty"] = $row["faculty"];
 			$rowReturn[$x]["live"] = $row["live"];
+			$rowReturn[$x]["url_video"] = $row["url_video"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -107,6 +111,7 @@ $q = "Select * from `sessionItem` WHERE `id` = $key";
 			$rowReturn[$x]["description"] = $row["description"];
 			$rowReturn[$x]["faculty"] = $row["faculty"];
 			$rowReturn[$x]["live"] = $row["live"];
+			$rowReturn[$x]["url_video"] = $row["url_video"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -410,6 +415,13 @@ $q = "UPDATE `sessionItem` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return url_video - varchar(300)
+	 */
+	public function geturl_video(){
+		return $this->url_video;
+	}
+
+	/**
 	 * @param Type: int(11)
 	 */
 	public function setid($id){
@@ -456,6 +468,13 @@ $q = "UPDATE `sessionItem` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function setlive($live){
 		$this->live = $live;
+	}
+
+	/**
+	 * @param Type: varchar(300)
+	 */
+	public function seturl_video($url_video){
+		$this->url_video = $url_video;
 	}
 
     /**

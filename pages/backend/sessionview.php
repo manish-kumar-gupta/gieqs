@@ -182,6 +182,8 @@ error_reporting(E_ALL);
 
 //$session = new session;
 
+
+
 ${$databaseName} = new $databaseName;
 
 //eval("\$" . $databaseName . " = new " . $databaseName . ";");
@@ -577,6 +579,30 @@ request.done(function (data) {
 
             // manually trigger the `select2:select` event
             $('#SIfaculty').trigger({
+                type: 'select2:select',
+                params: {
+                    data: data
+                }
+            });
+        });
+
+        var url = (formData[0]['url_video']);
+
+
+        $.ajax({
+            //url: siteRoot + 'assets/scripts/select2simple.php?table=Delegate&field=firstname',
+
+            url: siteRoot + 'assets/scripts/classes/querySelectVideoOption.php?search=' + url,
+
+        }).then(function (data) {
+            // create the option and append to Select2
+            var retrievedProgramme = $.parseJSON(data);
+            //console.log(retrievedProgramme);
+            var option = new Option(retrievedProgramme.text, retrievedProgramme.id, true, true);
+            $('#SIurl_video').append(option).trigger('change');
+
+            // manually trigger the `select2:select` event
+            $('#SIurl_video').trigger({
                 type: 'select2:select',
                 params: {
                     data: data
@@ -1222,6 +1248,30 @@ $(document).ready(function () {
         dataType: 'json'
         // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
     }
+
+
+
+    });
+
+    $('#SIurl_video').select2({
+
+dropdownParent: $("#modal-sessionItem"),
+
+ajax: {
+    //url: siteRoot + 'assets/scripts/select2simple.php?table=Delegate&field=firstname',
+    url: siteRoot + 'assets/scripts/classes/queryVideoSelect.php',
+    data: function (params) {
+        var query = {
+            search: params.term,
+        }
+
+        // Query parameters will be 
+        console.log(query);
+        return query;
+    },
+    dataType: 'json'
+    // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
+}
 
 
 

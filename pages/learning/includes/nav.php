@@ -63,7 +63,16 @@ function endsWith($haystack, $needle)
                     <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">Endoscopist</a>
 
+
+                        
+
+
                     <div class="dropdown-menu dropdown-menu-arrow" aria-labelledby="btn-group-settings">
+                      <span style="color: rgb(238, 194, 120);" class="dropdown-header">GIEQs Digital Edition I Catch Up</span>
+                        <a class="dropdown-item"><i
+                          class="fas fa-columns"></i>Coming Soon</a>
+                          <div class="dropdown-divider"></div>
+
                         <span style="color: rgb(238, 194, 120);" class="dropdown-header">Colonoscopy</span>
                         <a class="dropdown-item dropdown-toggle cursor-pointer" role="button" data-toggle="dropdown"
                             data-target="#colonoscopy-dropdown"><i

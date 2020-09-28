@@ -9,7 +9,11 @@
  * License: LGPL
  *
  */
-require_once 'DataBaseMysqlPDO.class.php';
+
+ error_reporting(E_ALL);
+/*  var_dump($_SERVER["DOCUMENT_ROOT"]."/myFolder/*");
+ var_dump(BASE_URI);
+require_once 'DataBaseMysqlPDO.class.php'; */
 
 Class usersSocial {
 
@@ -17,6 +21,7 @@ Class usersSocial {
 	private $connection;
 
 	public function __construct(){
+		require_once 'DataBaseMysqlPDO.class.php';
 		$this->connection = new DataBaseMysqlPDOLearning();
     }
     
@@ -472,6 +477,44 @@ $q = "UPDATE `usersFavouriteVideo` SET $implodeArray WHERE `id` = '$this->id'";
 			}
 	return $keys;
 	}
+
+	public function select2_video_match($search)
+      {
+      
+      $q = "Select 
+            
+      `id`, `title`, `firstname`, `surname`
+      FROM `faculty`
+	  WHERE `id` = '$search'";
+	  
+	  echo $q;
+
+      $result = $this->connection->RunQuery($q);
+      $rowReturn = array();
+      $x = 0;
+      $nRows = $result->rowCount();
+      if ($nRows > 0) {
+
+          while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+            
+                //note here returning an option only
+              $rowReturn = array('id' => $row['id'], 'text' => $row['title'] . ' ' . $row['firstname']  . ' ' . $row['surname']);
+              //print_r($row);
+          }
+      
+          return json_encode($rowReturn);
+
+      } else {
+          
+
+          //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+          $rowReturn['result'] = [];
+          
+          return json_encode($rowReturn);
+      }
+
+  }
 
 	/**
 	 * @return id - int(11)

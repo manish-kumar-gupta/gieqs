@@ -81,6 +81,11 @@
                                             </select>
                                         </div>
 
+                                        <label for="SIurl_video">url of Vimeo video</label>
+                                        <div class="input-group mb-3">
+                                            <textarea id="SIurl_video" type="text" data-toggle="autosize" class="form-control" name="SIurl_video"></textarea>
+                                        </div>
+
 
 
                                     </div>

@@ -1207,6 +1207,41 @@ class navigator {
 
 	}
 
+	public function select2_video_match($search)
+      {
+      
+      $q = "Select 
+      `id`, `name`
+      FROM `video`
+      WHERE `id` = '$search'";
+
+      $result = $this->connection->RunQuery($q);
+      $rowReturn = array();
+      $x = 0;
+      $nRows = $result->rowCount();
+      if ($nRows > 0) {
+
+          while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+            
+                //note here returning an option only
+              $rowReturn = array('id' => $row['id'], 'text' => $row['name']);
+              //print_r($row);
+          }
+      
+          return json_encode($rowReturn);
+
+      } else {
+          
+
+          //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+          $rowReturn['result'] = [];
+          
+          return json_encode($rowReturn);
+      }
+
+  }
+
 	
 	
 	public function endNavigator (){
