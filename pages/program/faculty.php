@@ -221,22 +221,7 @@ require BASE_URI . '/headNoPurposeCore.php';
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
-                            <div data-animate-hover="2">
-                                <div class="animate-this">
-                                    <a href="">
-                                        <img alt="Jan-Warner Poley" class="img-fluid rounded shadow"
-                                            src="../../assets/img/faculty/JP.png">
-                                    </a>
-                                </div>
-                                <div class="mt-3">
-                                    <h5 class="gieqsGold card-title mb-0">Dr Jan-Werner Poley</h5>
-                                    <p class="text-muted mb-0">Interventional Endoscopist</p>
-                                    <p class="text-muted mb-0">Erasmus MC, University Medical Center Rotterdam</p>
-                                    <p class="text mb-0">Focus: quality in ERCP and endoscopic ultrasound</p>
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                     <!-- <div class="row row-grid"> -->
 
@@ -259,6 +244,22 @@ require BASE_URI . '/headNoPurposeCore.php';
                                     <p class="text-muted mb-0">Professor of Medicine</p>
                                     <p class="text-muted mb-0">University Hospital Leuven</p>
                                     <p class="text mb-0">Focus: Endoscopic imaging, Barrett's oesophagus</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="">
+                                        <img alt="Pierre Deprez" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/PD.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Professor Pierre Deprez</h5>
+                                    <p class="text-muted mb-0">Interventional Endoscopist</p>
+                                    <p class="text-muted mb-0">Cliniques universitaires Saint-Luc (UCLouvain)</p>
+                                    <p class="text mb-0">Focus: quality in upper GI tract early neoplasia, ERCP and endoscopic ultrasound</p>
                                 </div>
                             </div>
                         </div>

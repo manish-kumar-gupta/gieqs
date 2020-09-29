@@ -770,14 +770,14 @@
 
 <hr /><p>The Local Organising Committee is ready to deliver GIEQs Digital, streamed in high-definition directly to you on October 7-8 from 0730-1830 CET.</p>
 
-<p>For the full programme we kindly refer to <a href="http://www.gieqs.com/">www.gieqs.com</a></p>
+<p>For the full programme kindly refer to <a href="http://www.gieqs.com/program">www.gieqs.com</a></p>
 
 <br/>
 <p><strong>Q&amp;A</strong></p>
 
 <hr /><p>We would like to encourage you to interact with the speakers and the audience using our online tool Slido, which will be active on October 7-8. </p>
 
-<p>To send in your questions and participate in polls, go to http://sli.do.com in an internet browser on your smart phone, tablet or computer or scan the QR code available on the GIEQs website in the live pages. Type in the event code "gieqs" and select the event. Follow the instructions on your screen to start.</p>
+<p>To send in your questions and participate in polls, go to <a href="https://app.sli.do/event/wxcyu5bh/live/questions">http://sli.do.com</a> in an internet browser on your smart phone, tablet or computer or scan the QR code available on the GIEQs website in the live menus. Follow the instructions on your screen to start.</p>
 
 <p>The moderator will make a selection of questions, to be submitted to the speakers. If your question concerns a specific lecture, please mention the name of the speaker.</p>
 

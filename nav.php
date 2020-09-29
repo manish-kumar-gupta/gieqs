@@ -128,7 +128,7 @@
                     </a>
                     <!-- <ul class="dropdown-menu">
                       <li>
-                        <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/live/programLive.php">
+                        <a class="dropdown-item" href="<?php //echo BASE_URL;?>/pages/learning/pages/live/programLive.php">
                           View the programme
                         </a>
                       </li>
@@ -222,6 +222,31 @@
                       
                     
                     </ul>
+                  </li>
+                  <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
+                    <a href="https://app.sli.do/event/wxcyu5bh/live/questions?w=wFYcu" target="_blank" class="list-group-item list-group-item-action dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                      <div class="flex-column align-items-right">
+                        <!-- SVG icon -->
+                        <figure>
+                            <img src="<?php echo BASE_URL;?>/assets/img/brand/qrslido_white.png" style="width: 200px;">
+                        </figure>
+                        <p>Scan Me with a SmartPhone or click to join the conversation</p>
+                       
+                        <!-- Media body -->
+                        <!-- <div>
+                          <h6 class="mb-1">Join the discussion</h6>
+                          <p class="mb-0">Scan the code on your smartphone to join the discussion, ask questions and participate in polls.</p>
+                        </div> -->
+                      </div>
+                    </a>
+                    <!-- <ul class="dropdown-menu">
+                      <li>
+                        <a class="dropdown-item" href="<?php //echo BASE_URL;?>/pages/learning/pages/live/programLive.php">
+                          View the programme
+                        </a>
+                      </li>
+                    
+                    </ul> -->
                   </li>
                   
                 </ul>

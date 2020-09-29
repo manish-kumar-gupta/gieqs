@@ -219,11 +219,22 @@ top: -20vh;
 </p>
 
 <h4>
+    Having your say
+</h4>
+<p>
+    –       The attached app sli.do will allow you to interact with us live<br/>
+    –       On your smartphone scan the QR code below, or click on the code to jump to the page in a new window<br/>
+    <a href="https://app.sli.do/event/wxcyu5bh/live/questions?w=wFYcu" target="_blank"><img src="<?php echo BASE_URL;?>/assets/img/brand/qrslido_white.png" style="width: 200px;"></a>
+
+
+</p>
+
+<h4>
     Contact us
 </h4>
 <p>
-    –       Email : <a href="mailto:admin@gieqs.com">admin@gieqs.com</a> (rapid response during GIEQs digital, slower at other times)<br/>
-    –       Telephone : +32 (0) 470 820 432<br/>
+    –       Email : <a href="mailto:gieqs-helpdesk@seauton-international.com">gieqs-helpdesk@seauton-international.com</a> (rapid response during GIEQs digital, slower at other times)<br/>
+   
    
 
 </p>
@@ -241,7 +252,7 @@ top: -20vh;
                   </button>
                 </div>
                 <div>
-                  <a href="mailto:admin@gieqs.com" class="btn btn-sm btn-primary" >Contact Support</a>
+                  <a href="mailto:gieqs-helpdesk@seauton-international.com" class="btn btn-sm btn-primary" >Contact Support</a>
                 </div>
               </form>
             </div>
