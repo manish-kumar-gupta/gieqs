@@ -166,14 +166,12 @@ public function createChapter($videoid){
 
 }
 
-public function linkTags($chapterid, $tagGIEQsDigital, $tagRoomView){
+public function linkTags($chapterid, $tagGIEQsDigital){
 
     //q insert the row in video
 
     $q = "INSERT INTO `chapterTag`(`tags_id`, `chapter_id`) 
-    VALUES ('$tagGIEQsDigital','$chapterid');
-    INSERT INTO `chapterTag`(`tags_id`, `chapter_id`) 
-    VALUES ('$tagRoomView','$chapterid');";
+    VALUES ('$tagGIEQsDigital','$chapterid');";
 
       echo $q;
 
@@ -182,7 +180,11 @@ public function linkTags($chapterid, $tagGIEQsDigital, $tagRoomView){
 
       if ($result) {
 
+       
+
         return $this->connection->conn->lastInsertId(); 
+
+        
 
       } else {
           

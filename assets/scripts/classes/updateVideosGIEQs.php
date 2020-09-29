@@ -26,7 +26,7 @@ echo 'Working Classes' . PHP_EOL;
 
 $sessionItemArray = $general->copyRecords_SessionItem_video();
 
-//var_dump($sessionItemArray);
+var_dump($sessionItemArray);
 
 //using this array do 2 things
 
@@ -43,9 +43,9 @@ foreach ($sessionItemArray as $key=>$value){
     $sessionItemid = null;
 
 
-    $name = $value['sessionItemTitle'];
+    $name = addslashes($value['sessionItemTitle']);
     echo $name . PHP_EOL;
-    $description = $value['sessionItemDescription'];
+    $description = addslashes($value['sessionItemDescription']);
     echo $description . PHP_EOL;
     $sessionItemid = $value['sessionItemid'];
     echo $sessionItemid . PHP_EOL;
@@ -76,13 +76,19 @@ if (isset($live)){
 
         $tagid = '258';
     }
+}else{
+
+    $tagid = '258';
+
 }
 
 echo $tagid;
 
 
 
-$videosAccess->linkTags($chapterid, '9999', $tagid);
+$videosAccess->linkTags($chapterid, '569');
+
+$videosAccess->linkTags($chapterid, $tagid);
 
 
 

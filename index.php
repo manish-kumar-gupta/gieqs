@@ -271,7 +271,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                         <span class="badge gieqsGold badge-pill">
                             LIVE
                             </span>
-                        <span class="alert-content">Not yet registered? Click here!</span>
+                        <span class="alert-content">Not yet registered? You <strong>still can!</strong>  Click here!</span>
                      </div></a>
                      <a class="ml-3 pointer" data-toggle="modal" data-target="#registerInterest">
                     <!-- <div class="alert alert-modern alert-dark">
