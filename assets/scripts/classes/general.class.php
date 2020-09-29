@@ -2184,6 +2184,74 @@ INNER JOIN `imagesDraft` as c on b.`image_id` = c.`id` WHERE a.`approved` IS NUL
 		}
 	}
 
+
+
+	//FOR SCRIPTS MAINTENANCE
+
+	public function copyRecords_SessionItem_video (){
+		
+		$q = "SELECT a.`id` as `programmeid`, a.`date`,
+		c.`id` as `sessionid`, c.`timeFrom`, c.`timeTo`, c.`title` as `sessionTitle`, c.`subtitle` as `sessionSubtitle`, c.`description` as `sessionDescription`,
+		e.`id` as `sessionItemid`, e.`timeFrom` as `sessionItemTimeFrom`, e.`timeTo` as `sessionItemTimeTo`, e.`title` as `sessionItemTitle`, e.`description` as `sessionItemDescription`, e.`faculty`, e.`live`,
+		g.`id` as `assetId`, g.`type`, g.`location`, g.`href`, g.`endoscopy_wiki_id`
+		from `programme` as a
+		INNER JOIN `programmeOrder` as b on a.`id` = b.`programmeid` 
+		INNER JOIN `session` as c on b.`sessionid` = c.`id`
+		LEFT OUTER JOIN `sessionOrder` as d on c.`id` = d.`sessionid`
+		LEFT OUTER JOIN `sessionItem` as e on d.`sessionItemid` = e.`id`
+		LEFT OUTER JOIN `sessionItemAsset` as f on f.`sessionItemid` = e.`id`
+		LEFT OUTER JOIN `assets` as g on f.`assetId` = g.`id`
+  
+		ORDER BY a.`date`, e.`timeFrom` ASC";
+		
+		/* $q = "select `id`, `title`, `description`
+		from `sessionItem`
+		WHERE `id` > 41"; */
+
+		//echo $q;
+
+		$rowReturn = array();
+
+		$result = $this->connection->RunQuery($q);
+
+		if ($result->num_rows > 1){
+
+			
+			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+				
+				$rowReturn[] = $row;
+				
+				
+			}
+		
+			return $rowReturn;
+		}else{
+			
+			return null;
+		}
+	}
+
+	public function updateSessionItemVideoId($videoid, $sessionItemid){
+
+		$q = "UPDATE `sessionItem` SET `url_video`='$videoid' WHERE `id`='$sessionItemid'";
+
+		echo $q;
+
+		$result = $this->connection->RunQuery($q);
+
+		if ($result->num_rows == 1){
+
+			
+			echo 'sessionItem ' . $sessionItemid . ' updated with video id ' . $videoid . '';
+
+		}else{
+			
+			return null;
+		}
+
+
+	}
+
 }
 
 

@@ -66,21 +66,21 @@ public function select2_video_programme($search)
       {
       
       $q = "Select 
-      CONCAT(`id`, ' ', `name`) as `video`
+      `id`, CONCAT(`id`, ' ', `name`) as `video`
       FROM `video`
       WHERE lower(CONCAT(`id`, ' ', `name`)) LIKE lower('%{$search}%')";
 
       //echo $q;
 
       $result = $this->connection->RunQuery($q);
-      $rowReturn = array();
+      $rowReturn['results'] = array();
       $x = 0;
       $nRows = $result->rowCount();
       if ($nRows > 0) {
 
           while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 
-            $rowReturn[] = array('id' => $row['id'], 'text' => $row['video']);
+            $rowReturn['results'][] = array('id' => $row['id'], 'text' => $row['video']);
               //print_r($row);
           }
       
@@ -90,7 +90,7 @@ public function select2_video_programme($search)
           
 
           //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
-          $rowReturn['result'] = [];
+          $rowReturn['results'] = [];
           
           return json_encode($rowReturn);
       }
@@ -114,6 +114,82 @@ public function sanitiseGET ($data) {
 
     return $dataSanitised;
 
+
+}
+
+public function insert_copied_records_with_video_id($name, $description){
+
+    //q insert the row in video
+
+    $q = "insert into `video` (`name`, `url`, `description`, `active`, `split`) VALUES ('$name', '123', '$description', '2', '1')";
+
+      echo $q;
+
+      $result = $this->connection->RunQuery($q);
+      
+
+      if ($result) {
+
+        return $this->connection->conn->lastInsertId(); 
+
+      } else {
+          
+
+          
+          return null;
+      }
+
+}
+
+public function createChapter($videoid){
+
+    //q insert the row in video
+
+    $q = "INSERT INTO `chapter`(`number`, `name`, `timeFrom`, `timeTo`, `video_id`, `description`) 
+    VALUES ('1','Introduction','0','20',$videoid, '')";
+
+      echo $q;
+
+      $result = $this->connection->RunQuery($q);
+      
+
+      if ($result) {
+
+        return $this->connection->conn->lastInsertId(); 
+
+      } else {
+          
+
+          
+          return null;
+      }
+
+}
+
+public function linkTags($chapterid, $tagGIEQsDigital, $tagRoomView){
+
+    //q insert the row in video
+
+    $q = "INSERT INTO `chapterTag`(`tags_id`, `chapter_id`) 
+    VALUES ('$tagGIEQsDigital','$chapterid');
+    INSERT INTO `chapterTag`(`tags_id`, `chapter_id`) 
+    VALUES ('$tagRoomView','$chapterid');";
+
+      echo $q;
+
+      $result = $this->connection->RunQuery($q);
+      
+
+      if ($result) {
+
+        return $this->connection->conn->lastInsertId(); 
+
+      } else {
+          
+
+          
+          return null;
+      }
 
 }
 	
