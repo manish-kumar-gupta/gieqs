@@ -2252,6 +2252,64 @@ INNER JOIN `imagesDraft` as c on b.`image_id` = c.`id` WHERE a.`approved` IS NUL
 
 	}
 
+	public function convert_facultyid_to_userid($facultyid){
+
+		//get the faculty name
+
+		$q = "SELECT CONCAT(lower(`firstname`), ' ', lower(`surname`)) as `name` from `faculty` where `id`='$facultyid'";
+
+		echo $q;
+
+		$result = $this->connection->RunQuery($q);
+
+		if ($result->num_rows == 1){
+
+			
+			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+				
+				return $row['name'];
+
+			}
+
+		}else{
+			
+			return null;
+		}
+
+
+
+	}
+
+	public function getUserIdFromName($facultyname){
+
+		//get the faculty name
+
+		$q = "SELECT `user_id` from `users` where concat_ws(' ',`firstname`,`surname`) like '$facultyname' LIMIT 1
+
+		";
+
+		echo $q;
+
+		$result = $this->connection->RunQuery($q);
+
+		if ($result->num_rows == 1){
+
+			
+			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+				
+				return $row['user_id'];
+
+			}
+
+		}else{
+			
+			return null;
+		}
+
+
+
+	}
+
 }
 
 

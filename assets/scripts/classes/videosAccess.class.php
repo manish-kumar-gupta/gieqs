@@ -117,11 +117,11 @@ public function sanitiseGET ($data) {
 
 }
 
-public function insert_copied_records_with_video_id($name, $description){
+public function insert_copied_records_with_video_id($name, $description, $user_id){
 
     //q insert the row in video
 
-    $q = "insert into `video` (`name`, `url`, `description`, `active`, `split`) VALUES ('$name', '123', '$description', '2', '1')";
+    $q = "insert into `video` (`name`, `url`, `description`, `active`, `split`, `author`) VALUES ('$name', '123', '$description', '2', '1', '$user_id')";
 
       echo $q;
 

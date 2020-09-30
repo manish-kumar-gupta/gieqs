@@ -26,7 +26,7 @@ echo 'Working Classes' . PHP_EOL;
 
 $sessionItemArray = $general->copyRecords_SessionItem_video();
 
-//var_dump($sessionItemArray);
+var_dump($sessionItemArray);
 
 //using this array do 2 things
 
@@ -41,43 +41,21 @@ foreach ($sessionItemArray as $key=>$value){
     $name = null;
     $description = null;
     $sessionItemid = null;
-    $faculty = null;
 
 
     $name = addslashes($value['sessionItemTitle']);
-    //echo $name . PHP_EOL;
+    echo $name . PHP_EOL;
     $description = addslashes($value['sessionItemDescription']);
-    //echo $description . PHP_EOL;
+    echo $description . PHP_EOL;
     $sessionItemid = $value['sessionItemid'];
-    //echo $sessionItemid . PHP_EOL;
+    echo $sessionItemid . PHP_EOL;
     $live = $value['live'];
-    //echo $live . PHP_EOL;
-    $faculty = $value['faculty'];
-    //echo $faculty . PHP_EOL;
-
-    
-    $facultyName = $general->convert_facultyid_to_userid($faculty);
-
-    $user_id = $general->getUserIdFromName($facultyName);
-
-    $user_id = intval($user_id);
-
-    if (is_int($user_id)){
-
-
-    }else{
-
-        $user_id = 0;
-    }
-
-    //echo '<br/><br/>';
-
-    
+    echo $live . PHP_EOL;
 
 
 
 
-$videoid = $videosAccess->insert_copied_records_with_video_id($name, $description, $user_id);
+$videoid = $videosAccess->insert_copied_records_with_video_id($name, $description);
 
 //each time insert use the video_id to link back into the sessionItem
 

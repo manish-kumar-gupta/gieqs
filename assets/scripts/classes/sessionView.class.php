@@ -90,7 +90,7 @@ class sessionView
             
             a.`id` as `programmeid`, a.`date`,
             c.`id` as `sessionid`, c.`timeFrom`, c.`timeTo`, c.`title` as `sessionTitle`, c.`subtitle` as `sessionSubtitle`, c.`description` as `sessionDescription`,
-            e.`id` as `sessionItemid`, e.`timeFrom` as `sessionItemTimeFrom`, e.`timeTo` as `sessionItemTimeTo`, e.`title` as `sessionItemTitle`, e.`description` as `sessionItemDescription`, e.`faculty`, e.`live`,
+            e.`id` as `sessionItemid`, e.`timeFrom` as `sessionItemTimeFrom`, e.`timeTo` as `sessionItemTimeTo`, e.`title` as `sessionItemTitle`, e.`description` as `sessionItemDescription`, e.`faculty`, e.`live`, e.`url_video`,
             g.`id` as `assetId`, g.`type`, g.`location`, g.`href`, g.`endoscopy_wiki_id`
             from `programme` as a
             INNER JOIN `programmeOrder` as b on a.`id` = b.`programmeid` 

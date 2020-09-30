@@ -279,8 +279,9 @@
 
                                     $programmeDate = new DateTime($response[0]['date']);
 
+                                   
 
-                                    echo '<div class="col-5 p-1 pb-3 pt-3 border-right" style="cursor:pointer !important;"  data-target="#modal-' . $programmeDate->format('l') . '-' . $session1data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
+                                    echo '<div class="col-5 p-1 pb-3 pt-3 border-right session-opener" style="cursor:pointer !important;" data="' . $session1data[0]['sessionid'] . '"  data-target="#modal-' . $programmeDate->format('l') . '-' . $session1data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
                                     <span class="sessionTitle h5">' . $session1data[0]['sessionTitle'] . '</span><br>';
 
                                     $specificSessionModerators = $programmeReports->generateModeratorsForSession($session1data[0]['sessionid']);
@@ -349,10 +350,11 @@
                                     echo '<h6 class="mt-2" style="color: rgb(238, 194, 120);">Session Content</h6>';
 
                                     foreach ($response as $key=>$value){
+
                                         ?>
 
 <!--to here get vid id-->
-    <div class="container" style="cursor:pointer !important;" onclick="window.location.href = '<?php echo BASE_URL;?>/pages/learning/viewer.php?id=<?php echo $value['sessionItemid'];?>';">
+    <div class="container" style="cursor:pointer !important;" onclick="window.location.href = '<?php echo BASE_URL;?>/pages/learning/viewer.php?id=<?php echo $value['url_video'];?>';">
         <span class="sessionItemid" style="display:none;"><?php echo $value['sessionItemid'];?></span>
         <div class="">
             <?php 
@@ -386,11 +388,18 @@
                                         echo '<span class="ml-3 deleteSessionItem"><i class="fas fa-times"></i></span>';
                 
                                     }
+
+                                   
+                                    if (isset($value['url_video'])){
+
+                                        echo $urlvideo = '<span class="ml-3"><i class="fas fa-play"></i></span>';
+
+                                    }
                                     ?>
 
         </div>
 
-    </div>
+    
     <div class="">
         <div class="">
             <span class="sessionDescription text-justify"><?php echo $value['sessionItemDescription'];?></span>
@@ -404,6 +413,7 @@
                                     
                                     ?></p>
         </div>
+    </div>
     </div>
     <hr class="m-2">
 
