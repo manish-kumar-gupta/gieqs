@@ -12,7 +12,7 @@ require (BASE_URI.'/assets/scripts/headerScript.php');
 //echo 'hello3';
 //$general = new general;
 $general = new general;
-$videosAccess = new videosAccess;
+//$videosAccess = new videosAccess;
 //echo 'hello4';
 
 
@@ -23,6 +23,8 @@ function ne($v) {
 }
 
 echo 'Working Classes' . PHP_EOL;
+
+exit();
 
 $sessionItemArray = $general->copyRecords_SessionItem_video();
 
