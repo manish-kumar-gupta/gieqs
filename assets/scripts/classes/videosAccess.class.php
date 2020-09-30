@@ -18,7 +18,7 @@ Class videosAccess {
 	private $connection;
 
 	public function __construct(){
-        require_once 'DataBaseMyssqlPDOLearning.class.php';
+        require_once 'DatabaseMyssqlPDOLearning.class.php';
 		$this->connection = new DataBaseMysqlPDOLearning();
 	}
 

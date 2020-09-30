@@ -12,7 +12,7 @@ require (BASE_URI.'/assets/scripts/headerScript.php');
 //echo 'hello3';
 //$general = new general;
 $general = new general;
-//$videosAccess = new videosAccess;
+$videosAccess = new videosAccess;
 //echo 'hello4';
 
 
