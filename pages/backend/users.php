@@ -27,6 +27,7 @@ $identifier = 'user_id';
 
 <!DOCTYPE html>
 <html lang="en">
+    <meta charset="ISO-8859-1">
 
 
 

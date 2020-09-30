@@ -113,7 +113,7 @@
                     </ul>
                   </li>
                   <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
-                    <a href="<?php echo BASE_URL;?>/pages/learning/pages/live/programLive.php" class="list-group-item list-group-item-action dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                    <a href="#" class="list-group-item list-group-item-action dropdown-toggle" aria-haspopup="true" aria-expanded="false">
                       <div class="media d-flex align-items-center">
                         <!-- SVG icon -->
                         <figure style="width: 50px;">
@@ -126,14 +126,20 @@
                         </div>
                       </div>
                     </a>
-                    <!-- <ul class="dropdown-menu">
+                    <ul class="dropdown-menu">
                       <li>
-                        <a class="dropdown-item" href="<?php //echo BASE_URL;?>/pages/learning/pages/live/programLive.php">
+                        <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/live/programLive.php">
                           View the programme
                         </a>
                       </li>
+
+                      <li>
+                        <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program-printable-catchup.php">
+                          Catch up (half day lag before items available)
+                        </a>
+                      </li>
                     
-                    </ul> -->
+                    </ul>
                   </li>
                   <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
                     <a href="#" class="list-group-item list-group-item-action dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

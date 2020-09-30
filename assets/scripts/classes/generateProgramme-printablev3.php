@@ -314,7 +314,7 @@
 
                                     $specificSessionSpeakersLive = $programmeReports->generateSpeakersForSessionLive($session1data[0]['sessionid']);
 
-                                    echo '<h6 class="mt-2" style="color: rgb(238, 194, 120);">Live Case</h6>';
+                                    echo '<h6 class="mt-2" style="color: rgb(238, 194, 120);">Live Endoscopy</h6>';
 
                                     if (empty($specificSessionSpeakersLive) === true){
 
@@ -357,7 +357,7 @@
 <!--to here get vid id-->
 
 <?php
-            if (!isset($value['url_video'])){
+            if (isset($value['url_video'])){
 
                 if ($videosAccess->checkVimeoidPresent($value['url_video'])){
 
@@ -402,7 +402,7 @@
             <!--if live stream-->
             <!--if sessionItem.live == 1-->
             <?php if ($value['live'] == 1){?>
-            <span class="badge text-white ml-3">Live Case
+            <span class="badge text-white <?php echo $urlVideoNotPresent;?> ml-3">Live Endoscopy
             </span>
 
             <?php }
@@ -419,7 +419,7 @@
 
                                         if ($videosAccess->checkVimeoidPresent($value['url_video'])){
 
-                                        echo $urlvideo = '<span class="ml-3" style="background-color:rgb(238, 194, 120) !important;"><i class="fas fa-play"></i></span>';
+                                        echo $urlvideo = '<span class="ml-3" style="color:rgb(238, 194, 120) !important;"><i class="fas fa-play"></i></span>';
 
                                         }
 
@@ -696,7 +696,7 @@
 
                                     $specificSessionSpeakersLive = $programmeReports->generateSpeakersForSessionLive($session2data[0]['sessionid']);
 
-                                    echo '<h6 class="mt-2" style="color: rgb(238, 194, 120);">Live Case</h6>';
+                                    echo '<h6 class="mt-2" style="color: rgb(238, 194, 120);">Live Endoscopy</h6>';
 
                                     if (empty($specificSessionSpeakersLive) === true){
 
@@ -732,9 +732,30 @@
 
                                     foreach ($response as $key=>$value){
                                         ?>
+<?php
+            if (isset($value['url_video'])){
 
+                if ($videosAccess->checkVimeoidPresent($value['url_video'])){
+
+                    $urlVideoNotPresent = null;
+                }else{
+
+                $urlVideoNotPresent = "text-muted";
+                }
+
+            }else{
+
+                $urlVideoNotPresent = "text-muted";
+            }
+            ?>
+
+            <?php if ($videosAccess->checkVimeoidPresent($value['url_video'])){?>
 
 <div class="container" style="cursor:pointer !important;" onclick="window.location.href = '<?php echo BASE_URL;?>/pages/learning/viewer.php?id=<?php echo $value['url_video'];?>';">
+<?php }else{?>
+                <div class="container">
+
+                <?php }?>
         <span class="sessionItemid" style="display:none;"><?php echo $value['sessionItemid'];?></span>
         <div class="">
             <?php 
@@ -752,12 +773,12 @@
             : </span>
 
 
-            <span class="h6 sessionTitle"><?php echo $value['sessionItemTitle'];?></span>
+            <span class="h6 sessionTitle <?php echo $urlVideoNotPresent;?>"><?php echo $value['sessionItemTitle'];?></span>
 
             <!--if live stream-->
             <!--if sessionItem.live == 1-->
             <?php if ($value['live'] == 1){?>
-            <span class="badge text-white ml-3" style="background-color:rgb(238, 194, 120) !important;">Live
+                <span class="badge text-white <?php echo $urlVideoNotPresent;?> ml-3">Live Endoscopy
             </span>
 
             <?php }
@@ -771,8 +792,11 @@
 
                                     if (isset($value['url_video'])){
 
-                                        echo $urlvideo = '<span class="ml-3"><i class="fas fa-play"></i></span>';
+                                        if ($videosAccess->checkVimeoidPresent($value['url_video'])){
 
+                                            echo $urlvideo = '<span class="ml-3" style="color:rgb(238, 194, 120) !important;"><i class="fas fa-play"></i></span>';
+    
+                                            }
                                     }
                                     ?>
 
@@ -783,7 +807,7 @@
         <div class="">
             <span class="sessionDescription text-justify"><?php echo $value['sessionItemDescription'];?></span>
 
-            <p class="pt-2 h6 faculty"><?php 
+            <p class="pt-2 h6 faculty <?php echo $urlVideoNotPresent;?>"><?php 
                                     
                                     $faculty = $sessionView->getFacultyName($value['faculty']);
                 
@@ -1230,7 +1254,7 @@
 
                                     $specificSessionSpeakersLive = $programmeReports->generateSpeakersForSessionLive($session1data[0]['sessionid']);
 
-                                    echo '<h6 class="mt-2" style="color: rgb(238, 194, 120);">Live Case</h6>';
+                                    echo '<h6 class="mt-2" style="color: rgb(238, 194, 120);">Live Endoscopy</h6>';
 
                                     if (empty($specificSessionSpeakersLive) === true){
 
@@ -1266,9 +1290,31 @@
 
                                     foreach ($response as $key=>$value){
                                         ?>
+<?php
+            if (isset($value['url_video'])){
 
+                if ($videosAccess->checkVimeoidPresent($value['url_video'])){
+
+                    $urlVideoNotPresent = null;
+                }else{
+
+                $urlVideoNotPresent = "text-muted";
+                }
+
+            }else{
+
+                $urlVideoNotPresent = "text-muted";
+            }
+            ?>
+
+            <?php if ($videosAccess->checkVimeoidPresent($value['url_video'])){?>
 
 <div class="container" style="cursor:pointer !important;" onclick="window.location.href = '<?php echo BASE_URL;?>/pages/learning/viewer.php?id=<?php echo $value['url_video'];?>';">
+       
+        <?php }else{?>
+                <div class="container">
+
+                <?php }?>
         <span class="sessionItemid" style="display:none;"><?php echo $value['sessionItemid'];?></span>
         <div class="">
             <?php 
@@ -1286,12 +1332,12 @@
             : </span>
 
 
-            <span class="h6 sessionTitle"><?php echo $value['sessionItemTitle'];?></span>
+            <span class="h6 sessionTitle <?php echo $urlVideoNotPresent;?>"><?php echo $value['sessionItemTitle'];?></span>
 
             <!--if live stream-->
             <!--if sessionItem.live == 1-->
             <?php if ($value['live'] == 1){?>
-            <span class="badge text-white ml-3" style="background-color:rgb(238, 194, 120) !important;">Live
+                <span class="badge text-white <?php echo $urlVideoNotPresent;?> ml-3">Live Endoscopy
             </span>
 
             <?php }
@@ -1305,8 +1351,12 @@
 
                                     if (isset($value['url_video'])){
 
-                                        echo $urlvideo = '<span class="ml-3"><i class="fas fa-play"></i></span>';
+                                        if ($videosAccess->checkVimeoidPresent($value['url_video'])){
 
+                                            echo $urlvideo = '<span class="ml-3" style="color:rgb(238, 194, 120) !important;"><i class="fas fa-play"></i></span>';
+    
+                                            }
+    
                                     }
                                     ?>
 
@@ -1317,7 +1367,7 @@
         <div class="">
             <span class="sessionDescription text-justify"><?php echo $value['sessionItemDescription'];?></span>
 
-            <p class="pt-2 h6 faculty"><?php 
+            <p class="pt-2 h6 faculty <?php echo $urlVideoNotPresent;?>"><?php 
                                     
                                     $faculty = $sessionView->getFacultyName($value['faculty']);
                 
@@ -1578,7 +1628,7 @@
 
                                     $specificSessionSpeakersLive = $programmeReports->generateSpeakersForSessionLive($session2data[0]['sessionid']);
 
-                                    echo '<h6 class="mt-2" style="color: rgb(238, 194, 120);">Live Case</h6>';
+                                    echo '<h6 class="mt-2" style="color: rgb(238, 194, 120);">Live Endoscopy</h6>';
 
                                     if (empty($specificSessionSpeakersLive) === true){
 
@@ -1616,8 +1666,32 @@
                                         ?>
 
 
+<?php
+            if (isset($value['url_video'])){
+
+                if ($videosAccess->checkVimeoidPresent($value['url_video'])){
+
+                    $urlVideoNotPresent = null;
+                }else{
+
+                $urlVideoNotPresent = "text-muted";
+                }
+
+            }else{
+
+                $urlVideoNotPresent = "text-muted";
+            }
+            ?>
+
+            <?php if ($videosAccess->checkVimeoidPresent($value['url_video'])){?>
+
 <div class="container" style="cursor:pointer !important;" onclick="window.location.href = '<?php echo BASE_URL;?>/pages/learning/viewer.php?id=<?php echo $value['url_video'];?>';">
-        <span class="sessionItemid" style="display:none;"><?php echo $value['sessionItemid'];?></span>
+<?php }else{?>
+                <div class="container">
+
+                <?php }?>        
+
+<span class="sessionItemid" style="display:none;"><?php echo $value['sessionItemid'];?></span>
         <div class="">
             <?php 
             
@@ -1634,12 +1708,12 @@
             : </span>
 
 
-            <span class="h6 sessionTitle"><?php echo $value['sessionItemTitle'];?></span>
+            <span class="h6 sessionTitle <?php echo $urlVideoNotPresent;?>"><?php echo $value['sessionItemTitle'];?></span>
 
             <!--if live stream-->
             <!--if sessionItem.live == 1-->
             <?php if ($value['live'] == 1){?>
-            <span class="badge text-white ml-3" style="background-color:rgb(238, 194, 120) !important;">Live
+                <span class="badge text-white <?php echo $urlVideoNotPresent;?> ml-3">Live Endoscopy
             </span>
 
             <?php }
@@ -1653,8 +1727,11 @@
 
                                     if (isset($value['url_video'])){
 
-                                        echo $urlvideo = '<span class="ml-3"><i class="fas fa-play"></i></span>';
+                                        if ($videosAccess->checkVimeoidPresent($value['url_video'])){
 
+                                            echo $urlvideo = '<span class="ml-3" style="color:rgb(238, 194, 120) !important;"><i class="fas fa-play"></i></span>';
+    
+                                            }
                                     }
                                     ?>
 
@@ -1665,7 +1742,7 @@
         <div class="">
             <span class="sessionDescription text-justify"><?php echo $value['sessionItemDescription'];?></span>
 
-            <p class="pt-2 h6 faculty"><?php 
+            <p class="pt-2 h6 faculty <?php echo $urlVideoNotPresent;?>"><?php 
                                     
                                     $faculty = $sessionView->getFacultyName($value['faculty']);
                 

@@ -8,7 +8,9 @@
 
 //define user access level
 
-$openaccess = 1;
+$openaccess = 0;
+
+$requiredUserLevel = 6;
 
 $debug = false;
 
@@ -141,6 +143,32 @@ background-color: rgb(238, 194, 120);
         <section class="slice bg-gradient-dark slice-lg">
             <div class="container">
                 <div class="row text-center">
+
+                <?php
+                
+                if ($liveAccess){
+
+                    $requiredArray = ['23', '25', '29', '30', '31'];
+            
+                    //print_r($requiredArray);
+            
+                    //print_r($liveAccess);
+            
+                    
+                    $liveAccessGranted = (count(array_intersect($liveAccess, $requiredArray))) ? true : false;
+            
+                    //if (in_array($liveAccess, 25)){
+
+                    if (!$liveAccessGranted){
+
+                        echo 'You do not have access to catch up materials';
+                        exit();
+                    }
+                    
+                }
+                
+                
+                ?>
 
                     <div class="col-12 p-3 pb-5">
                         <span class="h1" style="color: rgb(238, 194, 120);">Ghent International Endoscopy Quality
