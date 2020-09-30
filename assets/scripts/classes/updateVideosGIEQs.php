@@ -24,7 +24,7 @@ function ne($v) {
 
 echo 'Working Classes' . PHP_EOL;
 
-exit();
+
 
 $sessionItemArray = $general->copyRecords_SessionItem_video();
 
