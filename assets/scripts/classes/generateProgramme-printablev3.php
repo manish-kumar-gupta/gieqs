@@ -281,7 +281,7 @@
 
                                    
 
-                                    echo '<div class="col-5 p-1 pb-3 pt-3 border-right session-opener" style="cursor:pointer !important;" data="' . $session1data[0]['sessionid'] . '"  data-target="#modal-' . $programmeDate->format('l') . '-' . $session1data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
+                                    echo '<div class="col-5 p-1 pb-3 pt-3 border-right session-opener" data="' . $session1data[0]['sessionid'] . '"  data-target="#modal-' . $programmeDate->format('l') . '-' . $session1data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
                                     <span class="sessionTitle h5">' . $session1data[0]['sessionTitle'] . '</span><br>';
 
                                     $specificSessionModerators = $programmeReports->generateModeratorsForSession($session1data[0]['sessionid']);
