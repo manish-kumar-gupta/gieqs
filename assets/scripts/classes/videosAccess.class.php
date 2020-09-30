@@ -194,6 +194,47 @@ public function linkTags($chapterid, $tagGIEQsDigital){
       }
 
 }
+
+public function checkVimeoidPresent($videoid){
+
+    //q insert the row in video
+
+    $q = "SELECT `url` FROM `video` WHERE `id` = '$videoid'";
+
+      //echo $q;
+
+      $result = $this->connection->RunQuery($q);
+      
+
+      $nRows = $result->rowCount();
+      
+      if ($nRows == 1) {
+
+       
+
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+            $url_video = $row['url'];
+              //print_r($row);
+          }
+
+        if ($url_video == '123'){
+
+            return false;
+        }else{
+
+            return true;
+        }
+
+
+      } else {
+          
+
+          
+          return false;
+      }
+
+}
 	
     /**
      * Close mysql connection

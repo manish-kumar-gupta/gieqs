@@ -16,6 +16,7 @@
             $sessionView = new sessionView;
             $programmeView = new programmeView;
             $programmeReports = new programmeReports;
+            $videosAccess = new videosAccess;
 
             $debug = false;
 
@@ -354,7 +355,30 @@
                                         ?>
 
 <!--to here get vid id-->
+
+<?php
+            if (!isset($value['url_video'])){
+
+                if ($videosAccess->checkVimeoidPresent($value['url_video'])){
+
+                    $urlVideoNotPresent = null;
+                }else{
+
+                $urlVideoNotPresent = "text-muted";
+                }
+
+            }else{
+
+                $urlVideoNotPresent = "text-muted";
+            }
+            ?>
+
+            <?php if ($videosAccess->checkVimeoidPresent($value['url_video'])){?>
     <div class="container" style="cursor:pointer !important;" onclick="window.location.href = '<?php echo BASE_URL;?>/pages/learning/viewer.php?id=<?php echo $value['url_video'];?>';">
+            <?php }else{?>
+                <div class="container">
+
+                <?php }?>
         <span class="sessionItemid" style="display:none;"><?php echo $value['sessionItemid'];?></span>
         <div class="">
             <?php 
@@ -371,13 +395,14 @@
                 class="timeTo"><?php echo $sessionItemTimeTo->format('H:i');?></span>
             : </span>
 
+            
 
-            <span class="h6 sessionTitle"><?php echo $value['sessionItemTitle'];?></span>
+            <span class="h6 sessionTitle <?php echo $urlVideoNotPresent;?>"><?php echo $value['sessionItemTitle'];?></span>
 
             <!--if live stream-->
             <!--if sessionItem.live == 1-->
             <?php if ($value['live'] == 1){?>
-            <span class="badge text-white ml-3" style="background-color:rgb(238, 194, 120) !important;">Live
+            <span class="badge text-white ml-3">Live Case
             </span>
 
             <?php }
@@ -392,7 +417,11 @@
                                    
                                     if (isset($value['url_video'])){
 
-                                        echo $urlvideo = '<span class="ml-3"><i class="fas fa-play"></i></span>';
+                                        if ($videosAccess->checkVimeoidPresent($value['url_video'])){
+
+                                        echo $urlvideo = '<span class="ml-3" style="background-color:rgb(238, 194, 120) !important;"><i class="fas fa-play"></i></span>';
+
+                                        }
 
                                     }
                                     ?>
@@ -404,7 +433,7 @@
         <div class="">
             <span class="sessionDescription text-justify"><?php echo $value['sessionItemDescription'];?></span>
 
-            <p class="pt-2 h6 faculty"><?php 
+            <p class="pt-2 h6 faculty <?php echo $urlVideoNotPresent;?>"><?php 
                                     
                                     $faculty = $sessionView->getFacultyName($value['faculty']);
                 
@@ -705,7 +734,7 @@
                                         ?>
 
 
-    <div class="container">
+<div class="container" style="cursor:pointer !important;" onclick="window.location.href = '<?php echo BASE_URL;?>/pages/learning/viewer.php?id=<?php echo $value['url_video'];?>';">
         <span class="sessionItemid" style="display:none;"><?php echo $value['sessionItemid'];?></span>
         <div class="">
             <?php 
@@ -738,6 +767,12 @@
                                         echo '<span class="ml-3 addSessionItem"><i class="fas fa-plus"></i></span>';
                                         echo '<span class="ml-3 deleteSessionItem"><i class="fas fa-times"></i></span>';
                 
+                                    }
+
+                                    if (isset($value['url_video'])){
+
+                                        echo $urlvideo = '<span class="ml-3"><i class="fas fa-play"></i></span>';
+
                                     }
                                     ?>
 
@@ -1233,7 +1268,7 @@
                                         ?>
 
 
-    <div class="container">
+<div class="container" style="cursor:pointer !important;" onclick="window.location.href = '<?php echo BASE_URL;?>/pages/learning/viewer.php?id=<?php echo $value['url_video'];?>';">
         <span class="sessionItemid" style="display:none;"><?php echo $value['sessionItemid'];?></span>
         <div class="">
             <?php 
@@ -1266,6 +1301,12 @@
                                         echo '<span class="ml-3 addSessionItem"><i class="fas fa-plus"></i></span>';
                                         echo '<span class="ml-3 deleteSessionItem"><i class="fas fa-times"></i></span>';
                 
+                                    }
+
+                                    if (isset($value['url_video'])){
+
+                                        echo $urlvideo = '<span class="ml-3"><i class="fas fa-play"></i></span>';
+
                                     }
                                     ?>
 
@@ -1575,7 +1616,7 @@
                                         ?>
 
 
-    <div class="container">
+<div class="container" style="cursor:pointer !important;" onclick="window.location.href = '<?php echo BASE_URL;?>/pages/learning/viewer.php?id=<?php echo $value['url_video'];?>';">
         <span class="sessionItemid" style="display:none;"><?php echo $value['sessionItemid'];?></span>
         <div class="">
             <?php 
@@ -1608,6 +1649,12 @@
                                         echo '<span class="ml-3 addSessionItem"><i class="fas fa-plus"></i></span>';
                                         echo '<span class="ml-3 deleteSessionItem"><i class="fas fa-times"></i></span>';
                 
+                                    }
+
+                                    if (isset($value['url_video'])){
+
+                                        echo $urlvideo = '<span class="ml-3"><i class="fas fa-play"></i></span>';
+
                                     }
                                     ?>
 
