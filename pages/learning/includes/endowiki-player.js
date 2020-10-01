@@ -663,11 +663,11 @@ $(document).ready(function () {
 
 		$('#videoDescription').html('' + val.description + '');
 
-		if (val.centreName == 'null'){
+		if (val.centreName == null){
 			val.centreName = '';
 		}
 
-		if (val.centreCountry == 'null'){
+		if (val.centreCountry == null){
 			val.centreCountry = '';
 		}
 
