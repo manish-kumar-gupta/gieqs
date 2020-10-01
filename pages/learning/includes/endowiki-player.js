@@ -663,6 +663,14 @@ $(document).ready(function () {
 
 		$('#videoDescription').html('' + val.description + '');
 
+		if (val.centreName == 'null'){
+			val.centreName = '';
+		}
+
+		if (val.centreCountry == 'null'){
+			val.centreCountry = '';
+		}
+
 		$('#videoAuthor').html('<a class="text-muted" target="_blank" href="'+siteRoot+'pages/account/public-profile.php?id=' + val.authorid + '">' + val.author + ', ' + val.centreName + ', ' + val.centreCountry + '</a>');
 
 	})
