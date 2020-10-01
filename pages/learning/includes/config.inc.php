@@ -95,6 +95,27 @@ $live = 0;
 
 
 
+ //MORE LIVE TIME SETTINGS
+
+ $serverTimeZone = new DateTimeZone('Europe/Brussels');
+        
+ $currentTime = new DateTime('now', $serverTimeZone);
+ 
+ $desiredTimeWednesdayFrom = new DateTime('2020-10-07 07:00:00', $serverTimeZone);
+
+ $desiredTimeWednesdayTo = new DateTime('2020-10-07 19:30:00', $serverTimeZone);
+
+ $desiredTimeThursdayFrom = new DateTime('2020-10-08 07:00:00', $serverTimeZone);
+
+ $desiredTimeThursdayTo = new DateTime('2020-10-08 19:30:00', $serverTimeZone);
+
+
+
+ 
+
+
+
+
 /* 
  *  Most important setting!
  *  The $debug variable is used to set error management.
