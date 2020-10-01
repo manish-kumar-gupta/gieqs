@@ -76,7 +76,7 @@
 
             $edit = FALSE;
 
-            $debug = false;
+            $debug = true;
             
             if ($debug){
                 echo '<br/><br/>Data Array contains </br></br>';
