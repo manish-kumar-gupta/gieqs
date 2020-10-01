@@ -189,7 +189,7 @@
                                 
                             }
                             
-                            $sessionTimeFrom = new DateTime($session1data[0]['date'] . ' ' . $timeValue);
+                            $sessionTimeFrom = new DateTime($session1data[0]['date'] . ' ' . $timeValue , $serverTimeZone);
 
                             if ($debug){
 
