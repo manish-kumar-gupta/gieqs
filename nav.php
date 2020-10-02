@@ -134,7 +134,7 @@
                       </li>
 
                       <li>
-                        <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program-printable-catchup.php">
+                        <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program-printable-catchup-public.php">
                           Catch up (half day lag before items available)
                         </a>
                       </li>
