@@ -161,7 +161,7 @@ width: 100%;
 
                 <div class="client-group row justify-content-center mb-4">
                     <div class="col-lg-6 col-md-6 col-12 py-3">
-                        <img class="logo" alt="Boston Scientific" src="<?php echo BASE_URL . '/assets/img/brand/boston.jpg';?>">
+                        <img class="logo" alt="Boston Scientific" src="<?php echo BASE_URL . '/assets/img/brand/boston_new.png';?>">
                     </div>
                     <div class="col-lg-6 col-md-6 col-12 py-3">
 

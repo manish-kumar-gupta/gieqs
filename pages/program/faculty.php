@@ -263,6 +263,38 @@ require BASE_URI . '/headNoPurposeCore.php';
                                 </div>
                             </div>
                         </div>
+                        <div class="col-lg-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="">
+                                        <img alt="Ratislav Kunda" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/RK.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Professor Ratislav Kunda</h5>
+                                    <p class="text-muted mb-0">Interventional Endoscopist and Surgeon</p>
+                                    <p class="text-muted mb-0">University Hospital of Brussels</p>
+                                    <p class="text mb-0">Focus: quality in_array ERCP and endoscopic ultrasound</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="">
+                                        <img alt="Schalk Van der Merwe" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/SM.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Professor Schalk Van der Merwe</h5>
+                                    <p class="text-muted mb-0">Interventional Endoscopist</p>
+                                    <p class="text-muted mb-0">University Hospital of Leuven</p>
+                                    <p class="text mb-0">Focus: quality in ERCP and endoscopic ultrasound</p>
+                                </div>
+                            </div>
+                        </div>
                         <!-- <div class="col-lg-3">
                             <div data-animate-hover="2">
                                 <div class="animate-this">
@@ -396,6 +428,54 @@ require BASE_URI . '/headNoPurposeCore.php';
                                     <p class="text-muted mb-0">Interventional Endoscopist</p>
                                     <p class="text-muted mb-0">AZ Delta Hospital, Roeselare</p>
                                     <p class="text mb-0">Focus: endoscopy quality, polypectomy, training</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="#">
+                                        <img alt="Helena Degroote" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/HD.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr Helena Degroote</h5>
+                                    <p class="text-muted mb-0">Interventional Endoscopist</p>
+                                    <p class="text-muted mb-0">UZ Gent</p>
+                                    <p class="text mb-0">Focus: quality in ERCP and EUS</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="#">
+                                        <img alt="Suzane Ribeiro" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/SR.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr Suzane Moura Ribeiro</h5>
+                                    <p class="text-muted mb-0">Oncologist and Echo-Endoscopist</p>
+                                    <p class="text-muted mb-0">UZ Gent</p>
+                                    <p class="text mb-0">Focus: quality in EUS and digestive oncology</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="#">
+                                        <img alt="Helena Degroote" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/TL.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Prof. Dr Triana Lobaton</h5>
+                                    <p class="text-muted mb-0">Gastroenterologist</p>
+                                    <p class="text-muted mb-0">UZ Gent</p>
+                                    <p class="text mb-0">Focus: quality in IBD and endoscopy</p>
                                 </div>
                             </div>
                         </div>
