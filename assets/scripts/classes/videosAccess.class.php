@@ -290,7 +290,7 @@ public function checkVimeoidPresentPublic($videoid, $past=null, $current=null){
 
             }
 
-            if ($highlight == 2){
+            if ($highlight == 0){
 
             return true;
 
