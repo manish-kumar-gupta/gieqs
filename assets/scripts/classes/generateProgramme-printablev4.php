@@ -171,14 +171,103 @@
 
                             //display the time anyway
                             
-                            $sessionTimeFrom = new DateTime($timeValue);
+                            if ($debug){
+
+                                print_r($currentTime); 
+                                
+                            }
+                            
+                            $sessionTimeFrom = new DateTime($session1data[0]['date'] . ' ' . $timeValue , $serverTimeZone);
+
+                            if ($debug){
+
+                                print_r($sessionTimeFrom); 
+                                
+                            }
 
                             if ($session1data){
-                            $sessionTimeTo = new DateTime($session1data[0]['timeTo']);
+                            $sessionTimeTo = new DateTime($session1data[0]['date'] . ' ' . $session1data[0]['timeTo'], $serverTimeZone);
                             }elseif ($session2data){
 
-                             $sessionTimeTo = new DateTime($session2data[0]['timeTo']);
+                             $sessionTimeTo = new DateTime($session2data[0]['date'] . ' ' . $session2data[0]['timeTo'], $serverTimeZone);
                             }
+
+                            if ($debug){
+
+                                print_r($sessionTimeTo); 
+                                
+                            }
+
+                            $now = $currentTime;
+                                    $startdate = $sessionTimeFrom;
+                                    $enddate = $sessionTimeTo;
+
+                                    if ($debug){
+
+                                        echo 'comparing start date ';
+                                        print_r($startdate);
+                                        echo 'and end  date ';
+                                        print_r($enddate);
+                                        echo 'with current time';
+                                        print_r($currentTime);
+                                    }
+
+                                    $current = false;
+                                    $past = false;
+
+                                    if($startdate <= $now && $now <= $enddate) {
+                                        $current = true;
+                                        
+                                    }else{
+                                        $current = false;
+                                    }
+
+                                    if($startdate <= $now && $current === false) {
+                                        $past = true;
+                                        
+                                    }else{
+                                        $past = false;
+                                    }
+
+                                    if ($debug){
+
+                                        echo 'SESSION is ';
+                                        if ($past == true){
+
+                                            echo 'past';
+                                        }
+
+                                        if ($past == false){
+
+                                            echo 'not past';
+                                        }
+
+                                        if ($current == false){
+
+                                            echo 'not current';
+                                        }
+
+                                        if ($current == true){
+
+                                            echo 'current';
+                                        }
+
+                                        echo PHP_EOL;
+                                    }
+
+                                    if ($current){
+
+                                        $highlight = 'bg-gieqsGold text-dark';
+
+                                    }elseif ($past){
+
+                                        $highlight = 'text-muted';
+                                        
+                                    }else{
+
+                                        $highlight = null;
+
+                                    }
 
 
                             //IF A BREAK MODIFY EDIT BREAKS HERE
@@ -371,7 +460,7 @@
 <?php
             if (isset($value['url_video'])){
 
-                if ($videosAccess->checkVimeoidPresent($value['url_video'])){
+                if ($videosAccess->checkVimeoidPresentPublic($value['url_video'], $past, $current)){
 
                     $urlVideoNotPresent = null;
                 }else{
@@ -385,7 +474,7 @@
             }
             ?>
 
-            <?php if ($videosAccess->checkVimeoidPresent($value['url_video'])){?>
+            <?php if ($videosAccess->checkVimeoidPresentPublic($value['url_video'])){?>
     <div class="container" style="cursor:pointer !important;" onclick="window.location.href = '<?php echo BASE_URL;?>/pages/learning/viewer.php?id=<?php echo $value['url_video'];?>';">
             <?php }else{?>
                 <div class="container">
@@ -429,7 +518,7 @@
                                    
                                     if (isset($value['url_video'])){
 
-                                        if ($videosAccess->checkVimeoidPresent($value['url_video'])){
+                                        if ($videosAccess->checkVimeoidPresentPublic($value['url_video'])){
 
                                         echo $urlvideo = '<span class="ml-3" style="color:rgb(238, 194, 120) !important;"><i class="fas fa-play"></i></span>';
 
@@ -1117,14 +1206,103 @@
 
                             //display the time anyway
                             
-                            $sessionTimeFrom = new DateTime($timeValue);
+                            if ($debug){
+
+                                print_r($currentTime); 
+                                
+                            }
+                            
+                            $sessionTimeFrom = new DateTime($session1data[0]['date'] . ' ' . $timeValue , $serverTimeZone);
+
+                            if ($debug){
+
+                                print_r($sessionTimeFrom); 
+                                
+                            }
 
                             if ($session1data){
-                            $sessionTimeTo = new DateTime($session1data[0]['timeTo']);
+                            $sessionTimeTo = new DateTime($session1data[0]['date'] . ' ' . $session1data[0]['timeTo'], $serverTimeZone);
                             }elseif ($session2data){
 
-                             $sessionTimeTo = new DateTime($session2data[0]['timeTo']);
+                             $sessionTimeTo = new DateTime($session2data[0]['date'] . ' ' . $session2data[0]['timeTo'], $serverTimeZone);
                             }
+
+                            if ($debug){
+
+                                print_r($sessionTimeTo); 
+                                
+                            }
+
+                            $now = $currentTime;
+                                    $startdate = $sessionTimeFrom;
+                                    $enddate = $sessionTimeTo;
+
+                                    if ($debug){
+
+                                        echo 'comparing start date ';
+                                        print_r($startdate);
+                                        echo 'and end  date ';
+                                        print_r($enddate);
+                                        echo 'with current time';
+                                        print_r($currentTime);
+                                    }
+
+                                    $current = false;
+                                    $past = false;
+
+                                    if($startdate <= $now && $now <= $enddate) {
+                                        $current = true;
+                                        
+                                    }else{
+                                        $current = false;
+                                    }
+
+                                    if($startdate <= $now && $current === false) {
+                                        $past = true;
+                                        
+                                    }else{
+                                        $past = false;
+                                    }
+
+                                    if ($debug){
+
+                                        echo 'SESSION is ';
+                                        if ($past == true){
+
+                                            echo 'past';
+                                        }
+
+                                        if ($past == false){
+
+                                            echo 'not past';
+                                        }
+
+                                        if ($current == false){
+
+                                            echo 'not current';
+                                        }
+
+                                        if ($current == true){
+
+                                            echo 'current';
+                                        }
+
+                                        echo PHP_EOL;
+                                    }
+
+                                    if ($current){
+
+                                        $highlight = 'bg-gieqsGold text-dark';
+
+                                    }elseif ($past){
+
+                                        $highlight = 'text-muted';
+                                        
+                                    }else{
+
+                                        $highlight = null;
+
+                                    }
 
 
                             //IF A BREAK MODIFY EDIT BREAKS HERE

@@ -195,7 +195,7 @@ public function linkTags($chapterid, $tagGIEQsDigital){
 
 }
 
-public function checkVimeoidPresent($videoid){
+public function checkVimeoidPresent($videoid, $past=null, $current=null){
 
     //q insert the row in video
 
@@ -224,6 +224,77 @@ public function checkVimeoidPresent($videoid){
         }else{
 
             return true;
+        }
+
+
+      } else {
+          
+
+          
+          return false;
+      }
+
+}
+
+public function checkVimeoidPresentPublic($videoid, $past=null, $current=null){
+
+    //q insert the row in video
+
+    $q = "SELECT `url` FROM `video` WHERE `id` = '$videoid'";
+
+      //echo $q;
+
+      $result = $this->connection->RunQuery($q);
+      
+
+      $nRows = $result->rowCount();
+      
+      if ($nRows == 1) {
+
+       
+
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+            //would show the url
+            //now dependent on time
+
+            
+
+            
+
+                $url_video = $row['url']; 
+
+
+          
+            
+            
+              //print_r($row);
+          }
+
+        if ($url_video == '123'){
+
+            return false;
+        }else{
+            
+            if ($current){
+
+                $highlight = 1;
+
+            }elseif ($past){
+
+                $highlight = 0;
+                
+            }else{
+
+                $highlight = 2;
+
+            }
+
+            if ($highlight == 2){
+
+            return true;
+
+             }
         }
 
 
