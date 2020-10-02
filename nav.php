@@ -293,11 +293,11 @@
 
                 <!-- Sponsors -->
                 <!--currently not active-->
-                <?php if (!$liveAndLoggedIn){?>
+                
                 <li class="nav-item active">
                     <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/sponsors.php">Sponsors</a>
                 </li>
-                <?php }?>
+               
 
                 <!-- Registration-basic -->
                 <?php if (!$liveAndLoggedIn){?>
