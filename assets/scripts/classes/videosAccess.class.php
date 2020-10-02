@@ -236,7 +236,7 @@ public function checkVimeoidPresent($videoid, $past=null, $current=null){
 
 }
 
-public function checkVimeoidPresentPublic($videoid, $past=null, $current=null){
+public function checkVimeoidPresentPublic($videoid, $past=null, $current=null, $debug=false){
 
     //q insert the row in video
 
@@ -274,23 +274,48 @@ public function checkVimeoidPresentPublic($videoid, $past=null, $current=null){
         if ($url_video == '123'){
 
             return false;
+
+            if ($debug){
+
+                echo 'video is default, not displaying';
+            }
         }else{
             
             if ($current){
 
                 $highlight = 1;
 
+                if ($debug){
+
+                    echo 'setting highlight to 1';
+                }
+
             }elseif ($past){
 
                 $highlight = 0;
+
+                if ($debug){
+
+                    echo 'setting highlight to 0';
+                }
                 
             }else{
 
                 $highlight = 2;
 
+                if ($debug){
+
+                    echo 'setting highlight to 2';
+                }
+
             }
 
             if ($highlight == 0){
+
+                if ($debug){
+
+                    echo 'highlight is 0, this should be sjowing a video';
+                }
 
             return true;
 
