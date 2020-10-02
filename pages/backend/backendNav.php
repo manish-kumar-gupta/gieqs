@@ -20,6 +20,10 @@
                       <h6 class="dropdown-header">Materials</h6>
                       <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/live/generate_materials_live.php">Materials Live Screen</a>
                       <?php }?>
+                      <?php if ($currentUserLevel < 4){?>
+                      <h6 class="dropdown-header">Programme Catch Up</h6>
+                      <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program-printable-catchup.php">Catch up program for staff</a>
+                      <?php }?>
                     
                   </div>
                 </div>
