@@ -236,7 +236,7 @@ public function checkVimeoidPresent($videoid, $past=null, $current=null){
 
 }
 
-public function checkVimeoidPresentPublic($videoid, $past=null, $current=null, $debug=false){
+public function checkVimeoidPresentPublic($videoid, $past=null, $current=null, $debug=true){
 
     //q insert the row in video
 
