@@ -667,6 +667,8 @@ $(document).ready(function () {
 			val.centreName = '';
 		}
 
+		//cast centreName to int, if int then don't display TODO
+
 		if (val.centreCountry == null){
 			val.centreCountry = '';
 		}

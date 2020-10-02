@@ -10,7 +10,7 @@
 
 $openaccess = 0;
 
-$requiredUserLevel = 3;
+$requiredUserLevel = 6;
 
 $debug = false;
 
@@ -237,7 +237,7 @@ background-color: rgb(238, 194, 120);
     console.log(jsonString);
 
     var request2 = $.ajax({
-        url: siteRoot + "assets/scripts/classes/generateProgramme-printablev3.php",
+        url: siteRoot + "assets/scripts/classes/generateProgramme-printablev4.php",
         type: "POST",
         contentType: "application/json",
         data: jsonString,
