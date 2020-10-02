@@ -836,7 +836,7 @@
 <?php
             if (isset($value['url_video'])){
 
-                if ($videosAccess->checkVimeoidPresent($value['url_video'])){
+                if ($videosAccess->checkVimeoidPresentPublic($value['url_video'], $past, $current)){
 
                     $urlVideoNotPresent = null;
                 }else{
@@ -850,7 +850,7 @@
             }
             ?>
 
-            <?php if ($videosAccess->checkVimeoidPresent($value['url_video'])){?>
+            <?php if ($videosAccess->checkVimeoidPresentPublic($value['url_video'], $past, $current)){?>
 
 <div class="container" style="cursor:pointer !important;" onclick="window.location.href = '<?php echo BASE_URL;?>/pages/learning/viewer.php?id=<?php echo $value['url_video'];?>';">
 <?php }else{?>
@@ -893,7 +893,7 @@
 
                                     if (isset($value['url_video'])){
 
-                                        if ($videosAccess->checkVimeoidPresent($value['url_video'])){
+                                        if ($videosAccess->checkVimeoidPresentPublic($value['url_video'], $past, $current)){
 
                                             echo $urlvideo = '<span class="ml-3" style="color:rgb(238, 194, 120) !important;"><i class="fas fa-play"></i></span>';
     
@@ -1483,7 +1483,7 @@
 <?php
             if (isset($value['url_video'])){
 
-                if ($videosAccess->checkVimeoidPresent($value['url_video'])){
+                if ($videosAccess->checkVimeoidPresentPublic($value['url_video'], $past, $current)){
 
                     $urlVideoNotPresent = null;
                 }else{
@@ -1497,7 +1497,7 @@
             }
             ?>
 
-            <?php if ($videosAccess->checkVimeoidPresent($value['url_video'])){?>
+            <?php if ($videosAccess->checkVimeoidPresentPublic($value['url_video'], $past, $current)){?>
 
 <div class="container" style="cursor:pointer !important;" onclick="window.location.href = '<?php echo BASE_URL;?>/pages/learning/viewer.php?id=<?php echo $value['url_video'];?>';">
        
@@ -1541,7 +1541,7 @@
 
                                     if (isset($value['url_video'])){
 
-                                        if ($videosAccess->checkVimeoidPresent($value['url_video'])){
+                                        if ($videosAccess->checkVimeoidPresentPublic($value['url_video'], $past, $current)){
 
                                             echo $urlvideo = '<span class="ml-3" style="color:rgb(238, 194, 120) !important;"><i class="fas fa-play"></i></span>';
     
@@ -1859,7 +1859,7 @@
 <?php
             if (isset($value['url_video'])){
 
-                if ($videosAccess->checkVimeoidPresent($value['url_video'])){
+                if ($videosAccess->checkVimeoidPresentPublic($value['url_video'], $past, $current)){
 
                     $urlVideoNotPresent = null;
                 }else{
@@ -1873,7 +1873,7 @@
             }
             ?>
 
-            <?php if ($videosAccess->checkVimeoidPresent($value['url_video'])){?>
+            <?php if ($videosAccess->checkVimeoidPresentPublic($value['url_video'], $past, $current)){?>
 
 <div class="container" style="cursor:pointer !important;" onclick="window.location.href = '<?php echo BASE_URL;?>/pages/learning/viewer.php?id=<?php echo $value['url_video'];?>';">
 <?php }else{?>
@@ -1917,7 +1917,7 @@
 
                                     if (isset($value['url_video'])){
 
-                                        if ($videosAccess->checkVimeoidPresent($value['url_video'])){
+                                        if ($videosAccess->checkVimeoidPresentPublic($value['url_video'], $past, $current)){
 
                                             echo $urlvideo = '<span class="ml-3" style="color:rgb(238, 194, 120) !important;"><i class="fas fa-play"></i></span>';
     
