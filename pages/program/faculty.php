@@ -441,7 +441,7 @@ require BASE_URI . '/headNoPurposeCore.php';
                                 </div>
                                 <div class="mt-3">
                                     <h5 class="gieqsGold card-title mb-0">Dr Helena Degroote</h5>
-                                    <p class="text-muted mb-0">Interventional Endoscopist</p>
+                                    <p class="text-muted mb-0">Hepatologist and Interventional Endoscopist</p>
                                     <p class="text-muted mb-0">UZ Gent</p>
                                     <p class="text mb-0">Focus: quality in ERCP and EUS</p>
                                 </div>

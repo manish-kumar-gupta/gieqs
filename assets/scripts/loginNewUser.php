@@ -1,5 +1,5 @@
 <?php
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 //;
 $openaccess = 1;
 //echo 'hello';
@@ -27,7 +27,7 @@ function ne($v) {
 
 $debug = true;
 $explicit = true;
-echo 'hello';
+//echo 'hello';
 
 if (count($_GET) > 0){
 

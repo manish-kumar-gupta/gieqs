@@ -210,7 +210,7 @@
                                 
                             }
 
-                            $now = $currentTime;
+                                    $now = $currentTime;
                                     $startdate = $sessionTimeFrom;
                                     $enddate = $sessionTimeTo;
 
