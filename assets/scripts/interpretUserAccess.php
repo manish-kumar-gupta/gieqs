@@ -436,7 +436,7 @@ if (in_array($userid, $liveTestingUsers)) {
 }
 
 if (liveTest){
-    $currentTime = new DateTime('2020-10-09 15:45:20', $serverTimeZone);
+    $currentTime = new DateTime('2020-10-08 12:45:20', $serverTimeZone);
     }
 
 //further info re live
