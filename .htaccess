@@ -10,7 +10,7 @@ RewriteRule ^ghelamco$ pages/program/venue.php
 RewriteRule ^sponsors$ pages/program/sponsors.php
 RewriteRule ^registration$ pages/program/registration.php
 RewriteRule ^register$ pages/program/registration.php
-RewriteRule ^login$ pages/authentication/login.php
+RewriteRule ^login$ pages/authentication/login.php [QSA]
 RewriteRule ^logmein$ pages/authentication/login.php
 RewriteRule ^proposedprogram$ pages/program/programv2.php
 RewriteRule ^learning$ pages/program/online.php

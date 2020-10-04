@@ -20,7 +20,12 @@ if (isset($_GET['destination'])) {
 
     $target = 'pages/program/program-printable-catchup-public.php';
 
-  }else{
+  }else if ($destination == 'catchupstaff'){
+
+    $target = 'pages/program/program-printable-catchup.php';
+
+
+  } else {
 
     $destination = null;
 
@@ -288,14 +293,14 @@ background-color: rgb(238, 194, 120);
 
 <script>
 
-<?php if (isset($destination)){?>
+<?php if (isset($target)){?>
 
-  var destination = "<?php echo $destination;?>";
+  var target = "<?php echo $target;?>";
 
 
 <?php }else{?>
 
-  var destination = false;
+  var target = false;
 
 
 <?php 
@@ -338,8 +343,8 @@ function login(){
 				   function() 
 				   { 
              
-            if (destination){  
-              window.location.href = siteRoot + "<?php echo $target;?>";  
+            if (target){  
+              window.location.href = siteRoot + target;  
             }else{
               window.location.href = siteRoot + "index.php";  
 
