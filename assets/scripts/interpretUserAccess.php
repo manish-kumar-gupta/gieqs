@@ -402,8 +402,8 @@ b:{
     }
     
 
-    //$currentTime = new DateTime('now', $serverTimeZone);
-    $currentTime = new DateTime('2020-10-09 15:45:20', $serverTimeZone);
+    $currentTime = new DateTime('now', $serverTimeZone);
+    //$currentTime = new DateTime('2020-10-09 15:45:20', $serverTimeZone);
 
     
     }
