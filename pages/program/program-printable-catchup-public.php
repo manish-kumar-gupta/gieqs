@@ -161,10 +161,15 @@ background-color: rgb(238, 194, 120);
 
                     if (!$liveAccessGranted){
 
-                        echo 'You do not have access to catch up materials';
+                        echo '<p class="mt-8">You do not have access to catch up materials.  You can get access <a href="' . BASE_URL . '/pages/program/registration.php">here</a></p>';
                         exit();
                     }
                     
+                }else{
+
+                    echo '<p class="mt-8">You do not have access to catch up materials.  You can get access <a href="' . BASE_URL . '/pages/program/registration.php">here</a></p>';
+                        exit();
+
                 }
                 
                 

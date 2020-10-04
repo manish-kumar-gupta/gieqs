@@ -2147,10 +2147,10 @@
 
 
 <?php               
-$general->endgeneral;
-$programme->endprogramme;
-$session->endsession;
-$faculty->endfaculty;
-$sessionItem->endsessionItem;
-$queries->endqueries;
-$sessionView>endsessionView;?>
+$general->endgeneral();
+$programme->endprogramme();
+$session->endsession();
+//$faculty->endfaculty();
+$sessionItem->endsessionItem();
+$queries->endqueries();
+//$sessionView>endsessionView();?>

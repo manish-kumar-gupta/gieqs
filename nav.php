@@ -113,7 +113,7 @@
                     </ul>
                   </li>
                   <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
-                    <a href="#" class="list-group-item list-group-item-action dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                    <a href="#" class="list-group-item list-group-item-action dropdown-toggle" aria-haspopup="true" aria-expanded="false" role="button" data-toggle="dropdown">
                       <div class="media d-flex align-items-center">
                         <!-- SVG icon -->
                         <figure style="width: 50px;">

@@ -12,6 +12,23 @@ $openaccess = 1;
 
 require BASE_URI . '/head.php';
 
+if (isset($_GET['destination'])) {
+
+  $destination = $_GET['destination'];
+
+  if ($destination == 'catchup'){
+
+    $target = 'pages/program/program-printable-catchup-public.php';
+
+  }else{
+
+    $destination = null;
+
+  }
+
+
+}
+
 ?>
     <title>Ghent International Endoscopy Symposium - Login </title>
   
@@ -271,13 +288,29 @@ background-color: rgb(238, 194, 120);
 
 <script>
 
+<?php if (isset($destination)){?>
+
+  var destination = "<?php echo $destination;?>";
+
+
+<?php }else{?>
+
+  var destination = false;
+
+
+<?php 
+} ?>;
+
 
 
 function login(){
 	
 	//validate both boxes filled
 	//check the login against the databse as per the elearn script
-	//reload the page for logged in
+  //reload the page for logged in
+  
+  //	        data: $('#login').serialize()+ "&destination=<\?php echo destination;?>",
+
 	
 	request = $.ajax({
 	        url: siteRoot + "assets/scripts/login.php",
@@ -303,7 +336,18 @@ function login(){
 				  $('#loginError').addClass('text-success').show().text('Successful Login');
 				   setTimeout(
 				   function() 
-				   { window.location.href = siteRoot + "index.php";  }, 1000);
+				   { 
+             
+            if (destination){  
+              window.location.href = siteRoot + "<?php echo $target;?>";  
+            }else{
+              window.location.href = siteRoot + "index.php";  
+
+            }
+          
+          
+          
+          }, 1000);
 
 				   
 			   }else if (data == 4){

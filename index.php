@@ -211,7 +211,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
             
             
             ?>
-        <section class="header-1 section-rotate bg-section-dark" data-offset-top="#header-main">
+        <section class="section-rotate bg-section-dark" data-offset-top="#header-main">
             <div class="section-inner bg-gradient-dark"></div>
             <!-- SVG illustration -->
             <div class="pt-7 position-absolute middle right-0 col-lg-7 col-xl-6 d-none d-lg-block">
@@ -470,13 +470,26 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                             class="font-weight-light">GIEQs Digital is over for 2020<br />It is still available, on demand,
                                             </strong><br />in full, live, right here</span>
                                 </h2>
-                                <p class="lead text-white">Catch us again, Fall 2021, live and face to face with the same high quality stream.&nbsp;<br/>or throughout the year on GIEQs Online</p>
+                                <p class="lead text-white">Catch us again, Fall 2021, live and face to face with the same high quality stream. Or throughout the year on GIEQs Online</p>
                                 <div class="mt-5">
 
-                                    <a href="<?php echo BASE_URL;?>/pages/program/program-printable-catchup-public.php"
+                                        <?php
+                                        
+                                        if ($userid){
+
+                                            $catchupLink = BASE_URL . "/pages/program/program-printable-catchup-public.php";
+                                        }else{
+
+                                            $catchupLink = BASE_URL . "/pages/authentication/login.php?destination=catchup";
+
+                                        }
+
+                                        ?>
+
+                                    <a href="<?php echo $catchupLink;?>"
                                         class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
                                         style="background-color: rgb(238, 194, 120);">
-                                        <span class="btn-inner--text">Watch on demand (requires login)</span>
+                                        <span class="btn-inner--text">On Demand (requires login + subscription)</span>
                                         <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
 
                                     </a>
