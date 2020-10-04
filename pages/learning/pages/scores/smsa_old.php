@@ -13,8 +13,8 @@
 
       //define user access level
 
-      $openaccess = 1;
-      /* $requiredUserLevel = 5; */
+      //$openaccess = 1;
+      $requiredUserLevel = 5;
 
 
       require BASE_URI . '/head.php';
@@ -28,7 +28,7 @@
       ?>
 
     <!--Page title-->
-    <title>GIEQs Online Endoscopy Trainer - Scores - SMSA calculator</title>
+    <title>GIEQs Online Endoscopy Trainer - Scores - SMSA</title>
 
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
 
@@ -227,8 +227,7 @@ background-color: rgb(238, 194, 120);
         <!--Header CHANGEME-->
 
     <div class="d-flex align-items-end container">
-        <p class="h1 mt-10">Difficulty of Polypectomy Scoring System</p>
-        
+        <p class="h1 mt-10">SMSA score</p>
 
     </div>
     <div class="d-flex align-items-end container">
@@ -257,9 +256,9 @@ background-color: rgb(238, 194, 120);
 		return Math.round(value * multiplier) / multiplier;
 	}
 
-	function determineSMSA (location, morphology, size, access) {
+	function determineCOVERT (location, morphology, paris) {
 			
-			if ((location === null) || (morphology === null) || (size ===null) || (access ===null)){
+			if ((location === null) || (morphology === null) || (paris ===null)){
 		
 				COVERT = '-';
 				return COVERT;
@@ -269,11 +268,10 @@ background-color: rgb(238, 194, 120);
 				
 				var locationInt = +location;
 				var morphologyInt = +morphology;
-                var sizeInt = +size;
-                var accessInt = +access;
+				var parisInt = +paris;
 				
 				
-				if (isNaN(locationInt) || isNaN(morphologyInt) || isNaN(sizeInt) || isNaN(accessInt)){
+				if (isNaN(locationInt) || isNaN(morphologyInt) || isNaN(parisInt)){
 
 				COVERT = '-';
 				return COVERT;
@@ -283,8 +281,7 @@ background-color: rgb(238, 194, 120);
 				
 				var locationCategory;
 				var morphologyCategory;
-                var sizeCategory;
-                var accessCategory;
+				var parisCategory;
 
 				//need colon site
 				//need morphology
@@ -408,7 +405,7 @@ background-color: rgb(238, 194, 120);
 				}else{
 				
 					var SMICriskOR = 0;
-					var SMICriskactual = 1.1;
+					var SMICriskactual = 0.4;
 
 					if (kudovInt == 1){
 
@@ -504,7 +501,7 @@ background-color: rgb(238, 194, 120);
 
 					SMICnumeric = round(SMICnumeric, 1);
 
-					return SMICnumeric + '%  <br>(or ' + SMICriskOR + 'x the risk of a granular 0-IIa 20-29mm LSL in the colon proximal to the sigmoid without a demarcated area or depression, risk 1.1%)<br>';
+					return SMICnumeric + '%  <br>(or ' + SMICriskOR + 'x the risk of a granular 0-IIa 20-29mm LSL in the colon proximal to the sigmoid without a demarcated area or depression)<br>';
 ;	
 					
 				}
@@ -561,10 +558,10 @@ background-color: rgb(238, 194, 120);
 ?>
 
        
-                <p><h3><b>Size Morphology Site and Access Score for Polypectomy </h3>[algorithm ala Gupta 2013 FG]</b></p>
+                <p><h3><b>Risk for Submucosal Invasion within a given LSL </h3>[algorithm ala Burgess 2018 Gastroenterology]</b></p>
 
                 <p>Pre-requisites:</p>
-                <p><ul>Colorectal polyp</ul></p>
+                <p><ul>Laterally spreading lesion >= 20mm in size</ul></p>
 		<br>
 		<div id='result' class='yellow'></div>
 		<br>
@@ -573,7 +570,7 @@ background-color: rgb(238, 194, 120);
             <fieldset>
 				<?php
 
-				$formv1->generateSelectCustom ('Size:', 'size', 'factor', array('1' => '1 - <1cm', '3' => '3 - 1 - 1.9cm', '5' => '5 - 2- 2.9cm', '7' => '7 - 3 - 3.9cm', '9' => '9 - >4cm'), 'Size?');
+				$formv1->generateSelectCustom ('Demarcated area containing Kudo V / NICE III:', 'kudov', 'factor', array('0' => '0 - No demarcated area', '1' => '1 - Demarcated area'), 'Demarcated area?');
 				echo '<br/>';
 				$formv1->generateSelectCustom ('Any Paris 0-IIa+c / depressed area :', 'depression', 'factor', array('0' => '0 - No Paris 0-II+c area / depression', '1' => '1 - Paris 0-II+c area'), 'Depression?');
 				echo '<br/>';
@@ -603,10 +600,7 @@ background-color: rgb(238, 194, 120);
         </form>
 
 		<P>Reference:</P>
-		<P>1.	Gupta S, Miskovic D, Bhandari P, et al. A novel method for determining the difficulty of colonoscopic polypectomy. Frontline Gastroenterol. 2013;4(4):244-248. doi:10.1136/flgastro-2013-100331. </P>
-        <P>Score Adapted for GIEQs.com by David Tate:</P>
-        
-		<P>Unauthorised distribution of the code prohibited.  Copyright 2020.  All rights reserved </P>
+		<P>1.	Burgess NG, Hourigan LF, Zanati SA, Brown GJ, Singh R, Williams SJ, et al. Risk Stratification for Covert Invasive Cancer Among Patients Referred for Colonic Endoscopic Mucosal Resection: A Large Multicenter Cohort. Gastroenterology. 2017 Sep;153(3):732–742.e1. </P>
     </div>
 
             
