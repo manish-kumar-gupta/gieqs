@@ -217,7 +217,7 @@ top: -20vh;
                 <div class="col-lg-6">
                   <p class="lead text-white lh-180">Advancing Science for Life.</p>
                   <p class="lead text-white lh-180">Proud Platinum Sponsor of GIEQs.</p>
-                  <a href="<?php echo BASE_URL;?>/pages/learning/pages/live/assets/boston_video.mp4" class="btn btn-lg btn-white btn-icon-only rounded-circle hover-scale-110 mt-4" data-fancybox="">
+                  <a href="https://vimeo.com/464663395" class="btn btn-lg btn-white btn-icon-only rounded-circle hover-scale-110 mt-4" data-fancybox>
                     <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
                   </a>
                 </div>
