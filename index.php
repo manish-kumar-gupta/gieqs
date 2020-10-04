@@ -420,7 +420,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
             <!-- SVG illustration -->
             <div class="pt-7 position-absolute middle right-0 col-lg-7 col-xl-6 d-none d-lg-block">
                 <figure class="w-75" style="max-width: 1000px;">
-                    <img alt="Image placeholder" src="<?php echo $imageArray[array_rand($imageArray)];?>"
+                    <img alt="Image placeholder" src="<?php echo BASE_URL;?>/assets/img/covers/bleeding/heaterThanks.png"
                         class="svg-inject img-fluid">
                 </figure>
             </div>
