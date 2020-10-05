@@ -216,7 +216,7 @@ top: -20vh;
               <div class="col-lg-6">
                 <p class="lead text-white lh-180">Bringing high quality products, services & innovations to the healthcare community.</p>
                 <p class="lead text-white lh-180">Proud Gold Sponsor of GIEQs.</p>
-                <a href="./assets/onis-gieqs_video.mp4" class="btn btn-lg btn-white btn-icon-only rounded-circle hover-scale-110 mt-4" data-fancybox="">
+                <a href="https://vimeo.com/465122663/63047c8a27" class="btn btn-lg btn-white btn-icon-only rounded-circle hover-scale-110 mt-4" data-fancybox="">
                   <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
                 </a>
               </div>
