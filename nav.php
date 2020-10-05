@@ -236,7 +236,7 @@
                         <figure>
                             <img src="<?php echo BASE_URL;?>/assets/img/brand/qrslido_white.png" style="width: 200px;">
                         </figure>
-                        <p>Scan Me with a SmartPhone or click to join the conversation</p>
+                        <p>Scan Me with a SmartPhone or click to join the Q+A conversation</p>
                        
                         <!-- Media body -->
                         <!-- <div>
