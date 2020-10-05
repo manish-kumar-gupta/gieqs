@@ -168,7 +168,7 @@
                           <a href="sections.html#collapse" class="dropdown-item">Collapse</a> -->
                         </div>
                         <div class="col-sm-3">
-                          <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Gold</a>
+                          <a href="<?php echo BASE_URL;?>/pages/learning/pages/live/sponsor-fujifilm.php" class="dropdown-item" style="color: rgb(238, 194, 120);">Gold</a>
 
                           <a href="sections.html#covers" class="dropdown-item">Onis / Fujifilm</a>
 

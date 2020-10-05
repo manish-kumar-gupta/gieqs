@@ -408,7 +408,7 @@ require BASE_URI . '/headNoPurposeCore.php';
                                     </a>
                                 </div>
                                 <div class="mt-3">
-                                    <h5 class="gieqsGold card-title mb-0">Prof. Danny Delooze</h5>
+                                    <h5 class="gieqsGold card-title mb-0">Prof. Danny De Looze</h5>
                                     <p class="text-muted mb-0">Interventional Endoscopist</p>
                                     <p class="text-muted mb-0">University Hospital of Ghent</p>
                                     <p class="text mb-0">Focus: Barrett's, proctology, general gastroenterology</p>
