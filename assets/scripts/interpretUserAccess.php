@@ -402,8 +402,8 @@ b:{
     }
     
 
-    $currentTime = new DateTime('now', $serverTimeZone);
-    //$currentTime = new DateTime('2020-10-09 15:45:20', $serverTimeZone);
+    //$currentTime = new DateTime('now', $serverTimeZone);  //CHANGE FOR LIVE
+    $currentTime = new DateTime('2020-10-09 15:45:20', $serverTimeZone);
 
     
     }
@@ -439,7 +439,7 @@ if (liveTest){
     $currentTime = new DateTime('2020-10-08 12:45:20', $serverTimeZone);
     }
 
-//$currentTime = new DateTime('now', $serverTimeZone); //ADD in for Live
+//$currentTime = new DateTime('now', $serverTimeZone); //ADD in for Live  CHANGE FOR LIVE
 
 //$currentTime = new DateTime('2020-10-09 12:45:20', $serverTimeZone);
 

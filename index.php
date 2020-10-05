@@ -228,7 +228,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
         </figure>
       </div>-->
             <!-- Hero container -->
-            <div class="container py-5 pt-lg-6 d-flex align-items-center position-relative zindex-100">
+            <div class="container  d-flex align-items-center position-relative zindex-100">
                
                 <div class="col">
                 <div class="row">
@@ -330,7 +330,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 </figure>
 </div>-->
     <!-- Hero container -->
-    <div class="container py-5 pt-lg-6 d-flex align-items-center position-relative zindex-100">
+    <div class="container  d-flex align-items-center position-relative zindex-100">
         <div class="col">
             <div class="row">
                 <div class="col-lg-5 col-xl-6 text-center text-lg-left">
@@ -431,7 +431,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
         </figure>
       </div>-->
             <!-- Hero container -->
-            <div class="container py-3 pt-lg-6 d-flex align-items-center position-relative zindex-100">
+            <div class="container  d-flex align-items-center position-relative zindex-100">
                
                 <div class="col">
                 <div class="row">
