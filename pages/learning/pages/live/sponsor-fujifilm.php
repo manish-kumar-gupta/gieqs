@@ -164,7 +164,7 @@ top: -20vh;
 
         <body>
 
-            <?php $livepage = 'Boston Scientific.  Proud sponsor of GIEQs';?>
+            <?php $livepage = 'Onis / Fujifilm.  Proud Gold sponsor of GIEQs';?>
 
 <div id="id" style="display:none;"><?php if ($id){echo $id;}?></div>
 <?php require (BASE_URI . '/pages/learning/pages/live/liveNav.php');?>
@@ -216,7 +216,7 @@ top: -20vh;
               <div class="col-lg-6">
                 <p class="lead text-white lh-180">Bringing high quality products, services & innovations to the healthcare community.</p>
                 <p class="lead text-white lh-180">Proud Gold Sponsor of GIEQs.</p>
-                <a href="https://vimeo.com/465122663/63047c8a27" class="btn btn-lg btn-white btn-icon-only rounded-circle hover-scale-110 mt-4" data-fancybox="">
+                <a href="https://vimeo.com/465122663" class="btn btn-lg btn-white btn-icon-only rounded-circle hover-scale-110 mt-4" data-fancybox="">
                   <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
                 </a>
               </div>
