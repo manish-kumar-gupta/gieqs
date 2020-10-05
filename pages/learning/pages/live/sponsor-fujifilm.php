@@ -26,7 +26,7 @@
       ?>
 
     <!--Page title-->
-    <title>Boston Scientific - proudly sponsors GIEQs</title>
+    <title>Fujifilm / Onis - proudly sponsors GIEQs</title>
 
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.css">
