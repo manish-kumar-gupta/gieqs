@@ -439,6 +439,9 @@ if (liveTest){
     $currentTime = new DateTime('2020-10-08 12:45:20', $serverTimeZone);
     }
 
+$currentTime = new DateTime('now', $serverTimeZone);
+
+
 //further info re live
 
 //generates array of the live sessions that a user has access to
