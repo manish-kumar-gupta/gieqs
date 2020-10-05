@@ -265,7 +265,7 @@ Based on AI deep learning technology, CAD EYE allows to support real-time detect
         </div>
         <div class="col-lg-7">
           <div class="px-4">
-            <img alt="Image placeholder" src="./assets/Onis_CADEYE.jpg" class="img-fluid rounded shadow-lg hover-scale-110">
+            <img alt="Image placeholder" src="./assets/Onis_Cadeye.jpg" class="img-fluid rounded shadow-lg hover-scale-110">
           </div>
         </div>
         <div class="col-lg-1 d-lg-flex flex-lg-column">
