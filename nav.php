@@ -181,8 +181,8 @@
                         <div class="col-sm-3">
                           <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Silver</a>
 
-                          <a href="sections.html#swiper" class="dropdown-item">Olympus</a>
-                          <a href="sections.html#tables" class="dropdown-item">Medtronic</a>
+                          <a href="<?php echo BASE_URL;?>/pages/learning/pages/live/sponsor-olympus.php" class="dropdown-item">Olympus</a>
+                          <a href="<?php echo BASE_URL;?>/pages/learning/pages/live/sponsor-medtronic.php" class="dropdown-item">Medtronic</a>
                         
                         </div>
                         <!-- <div class="col-sm-3">
