@@ -200,7 +200,7 @@ top: -20vh;
         <div class="col-lg-12 text-center justify-content-center mb-3">
 
             <div class="text-center d-flex justify-content-center">
-                <img alt="Boston Scientific" src="./Boston Scientific - proudly sponsors GIEQs_files/assets/onis.png" style="max-width:100%;max-height:20vh">
+                <img alt="Boston Scientific" src="./assets/onis.png" style="max-width:100%;max-height:20vh">
             </div>
 
         </div>
@@ -216,7 +216,7 @@ top: -20vh;
               <div class="col-lg-6">
                 <p class="lead text-white lh-180">Bringing high quality products, services & innovations to the healthcare community.</p>
                 <p class="lead text-white lh-180">Proud Gold Sponsor of GIEQs.</p>
-                <a href="./Boston Scientific - proudly sponsors GIEQs_files/assets/onis-gieqs_video.mp4" class="btn btn-lg btn-white btn-icon-only rounded-circle hover-scale-110 mt-4" data-fancybox="">
+                <a href="./assets/onis-gieqs_video.mp4" class="btn btn-lg btn-white btn-icon-only rounded-circle hover-scale-110 mt-4" data-fancybox="">
                   <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
                 </a>
               </div>
@@ -265,7 +265,7 @@ Based on AI deep learning technology, CAD EYE allows to support real-time detect
         </div>
         <div class="col-lg-7">
           <div class="px-4">
-            <img alt="Image placeholder" src="./Boston Scientific - proudly sponsors GIEQs_files/assets/Onis_CADEYE.jpg" class="img-fluid rounded shadow-lg hover-scale-110">
+            <img alt="Image placeholder" src="./assets/Onis_CADEYE.jpg" class="img-fluid rounded shadow-lg hover-scale-110">
           </div>
         </div>
         <div class="col-lg-1 d-lg-flex flex-lg-column">
@@ -281,13 +281,13 @@ Based on AI deep learning technology, CAD EYE allows to support real-time detect
               <div class="col-xl-8">
                 <ul class="nav ml-lg-auto mb-0">
                   <li class="nav-item">
-                    <a class="nav-link pl-0" href="https://www.gieqs.com/pages/learning/pages/live/sponsor-boston.php#"><i class="fab fa-instagram"></i></a>
+                    <a class="nav-link pl-0 disabled" href="https://www.gieqs.com/pages/learning/pages/live/sponsor-boston.php#"><i class="fab fa-instagram"></i></a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="https://www.gieqs.com/pages/learning/pages/live/sponsor-boston.php#"><i class="fab fa-facebook"></i></a>
+                    <a class="nav-link disabled" href="https://www.gieqs.com/pages/learning/pages/live/sponsor-boston.php#"><i class="fab fa-facebook"></i></a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="https://www.gieqs.com/pages/learning/pages/live/sponsor-boston.php#"><i class="fab fa-twitter"></i></a>
+                    <a class="nav-link disabled" href="https://www.gieqs.com/pages/learning/pages/live/sponsor-boston.php#"><i class="fab fa-twitter"></i></a>
                   </li>
                 </ul>
               </div>
@@ -310,7 +310,7 @@ Based on AI deep learning technology, CAD EYE allows to support real-time detect
         <div class="card hover-shadow-lg">
           <div class="card-body">
             <div class="delimiter-bottom pb-3 mb-4">
-              <center><img alt="Image placeholder" src="./Boston Scientific - proudly sponsors GIEQs_files/assets/Onis_Cadeye2.jpg" class="svg-inject" style="height: 150px; width: auto"></center>
+              <center><img alt="Image placeholder" src="./assets/Onis_Cadeye2.jpg" class="svg-inject" style="height: 150px; width: auto"></center>
               <h5 class="mt-4">CAD EYE - Artificial Intelligence for Fujifilm Eluxeo</h5>
             </div>
             <p class="">CAD EYE has been developed utilising AI deep learning technology and is compatible with Fujifilm’s ELUXEO™ endoscopy series to support endoscopic lesion detection and characterisation in the colon.</p>
@@ -322,7 +322,7 @@ Based on AI deep learning technology, CAD EYE allows to support real-time detect
         <div class="card hover-shadow-lg">
           <div class="card-body">
             <div class="delimiter-bottom pb-3 mb-4">
-              <center><img alt="Image placeholder" src="./Boston Scientific - proudly sponsors GIEQs_files/assets/Onis_Purastat.jpg" class="svg-inject" style="height: 150px; width: auto"></center>
+              <center><img alt="Image placeholder" src="./assets/Onis_Purastat.jpg" class="svg-inject" style="height: 150px; width: auto"></center>
               <h5 class="mt-4">PuraStat: the easy-to-use haemostat</h5>
             </div>
             <p class="">PuraStat, is a slightly viscous solution of synthetic peptides. When in contact with blood, the synthetic peptide self-assembles into a 3-dimensional matrix which rapidly coats the bleeding point leading to haemostasis.</p>
@@ -334,7 +334,7 @@ Based on AI deep learning technology, CAD EYE allows to support real-time detect
         <div class="card hover-shadow-lg">
           <div class="card-body">
             <div class="delimiter-bottom pb-3 mb-4">
-              <center><img alt="Image placeholder" src="./Boston Scientific - proudly sponsors GIEQs_files/assets/Onis_Medwork.jpg" class="svg-inject" style="height: 150px; width: auto"></center>
+              <center><img alt="Image placeholder" src="./assets/Onis_Medwork.jpg" class="svg-inject" style="height: 150px; width: auto"></center>
               <h5 class="mt-4">Medwork</h5>
             </div>
             <p class="">Medwork develops and manufactures instruments for therapeutic endoscopy since 1998. Their products are used for gastroscopy and colonoscopy.
