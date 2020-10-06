@@ -189,7 +189,7 @@ $requiredUserLevel = 3;
             <div class="container-fluid d-flex flex-wrap align-items-lg-stretch p-2 p-lg-5" style="max-height:60vh;">
                 <div class="col-lg-5 ml-4" style="cursor:none;">
                     <h2 class="mb-5">LIVE area</h2>
-                                        <div class="card mb-0 p-2 tagCard" style="height:35vh; overflow:hidden; cursor:none;">
+                                        <div class="card mb-0 p-2 tagCard mx-6" style="height:30vh; overflow:hidden; cursor:none; margin-top: 15rem !important;">
                         <div class="card-header tagCardHeader mb-0">
 
                             <span class="h6">Materials <br /></span><span class="text-sm"></span><span
@@ -238,7 +238,7 @@ $requiredUserLevel = 3;
 ?>
                         </select>
                     </div>
-                    <div class="card mt-5 mb-0 p-2 tagCard" style="height:35vh; overflow:hidden;">
+                    <div class="card mb-0 p-2 mx-6 tagCard" style="height:30vh; overflow:hidden; margin-top: 3.25rem !important;">
                         <div class="card-header tagCardHeader mb-0">
 
                             <span class="h6">Materials <br /></span><span class="text-sm"></span><span
