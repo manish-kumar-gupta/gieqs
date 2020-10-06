@@ -16,6 +16,62 @@ require BASE_URI . '/headNoPurposeCore.php';
 
 $registrationURL = 'https://eu.eventscloud.com/200200203';
 
+$now = $currentTime;
+
+
+$sessionTimeFrom = new DateTime('2020-10-08 19:30:00', $serverTimeZone);
+$startdate = $sessionTimeFrom;
+
+
+
+if ($debug){
+
+    echo 'comparing start date ';
+    print_r($startdate);
+
+    echo 'with current time';
+    print_r($currentTime);
+}
+
+$current = false;
+$past = false;
+
+
+
+if($startdate <= $now) {
+    $past = true;
+    
+}else{
+    $past = false;
+}
+
+if ($debug){
+
+    echo 'SESSION is ';
+    if ($past == true){
+
+        echo 'past';
+    }
+
+    if ($past == false){
+
+        echo 'not past';
+    }
+
+    if ($current == false){
+
+        echo 'not current';
+    }
+
+    if ($current == true){
+
+        echo 'current';
+    }
+
+    echo PHP_EOL;
+}
+
+
 
 ?>
 
@@ -145,6 +201,8 @@ $registrationURL = 'https://eu.eventscloud.com/200200203';
               <div class="card py-5 px-4 box-shadow-3 mt-0">
                 <div class="card-body">
                   <h6 class="h2">
+                    <?php if (!$past){?>
+
                     <strong>Reserve </strong> your place now!
                   </h6>
                   <p class="lead lh-180">Thanks to the extremely generous support of our partners registration for GIEQs is now <a href="#pricing" class='gieqsGold'>dramatically reduced in price</a> since the event will be fully digital!</p>
@@ -155,6 +213,22 @@ $registrationURL = 'https://eu.eventscloud.com/200200203';
                       <p class="lead lh-180">You will also receive complimentary access to GIEQs Online basic from its launch until one month after the event, containing all the content from GIEQs and a selection of our curated learning material.</p>
                       <p class="lead lh-180">Welcome to the GIEQs family.  Let's do everyday endoscopy better!</p>
                   <div class="btn-container mt-5">
+                    <?php }else{?>
+
+                        <strong>Register </strong> for on demand now!
+                    </h6>
+                    <p class="lead lh-180">Thanks to the extremely generous support of our partners registration for GIEQs catch up is now <a href="#pricing" class='gieqsGold'>dramatically reduced in price</a> since the event was fully digital!</p>
+                    <p class="lead lh-180">You can still register for the catch up.  We will get your registration processed ASAP and contact you after payment!</p>
+  
+                    <p class="lead lh-180">Once you register you will gain access to our unique learning site <a href="<?php echo BASE_URL;?>/pages/program/online.php" class='gieqsGold'>GIEQs Online containing all the material from GIEQs</a>.
+                        </p>
+                        <p class="lead lh-180">You will also receive complimentary access to GIEQs Online basic from its launch until one month after the event, containing all the content from GIEQs and a selection of our curated learning material.</p>
+                        <p class="lead lh-180">Welcome to the GIEQs family.  Let's do everyday endoscopy better!</p>
+                    <div class="btn-container mt-5">
+
+                        <?php }?>
+
+
                   <?php if ($liveAccess){
 
                                 $requiredArray = ['23', '29', '25', '30', '31'];
@@ -185,6 +259,8 @@ $registrationURL = 'https://eu.eventscloud.com/200200203';
           </div>
         </div>
       </section>
+
+      <?php if (!$past){?>
       <section id="pricing" class="slice slice-lg">
         <div class="container">
             <div class="row justify-content-center">
@@ -455,6 +531,188 @@ $registrationURL = 'https://eu.eventscloud.com/200200203';
         </div>
 </div>
 </section>
+<?php }else{?>
+    <section id="pricing" class="slice slice-lg">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="mb-5 text-center">
+                        <h3 class="mt-2">Registration for Catch Up On Demand</h3>
+                        <div class="fluid-paragraph mt-3">
+                            <p class="lead lh-180">high quality endoscopic education. for a fair price,</p>
+                        </div>
+                        <a href="<?php echo $registrationURL;?>" target="_blank"
+                            class="btn btn-dark gieqsGold mt-2 rounded-pill hover-translate-y-n3">
+                            Register now ->
+                        </a>
+                    </div>
+
+
+                    <div class="pricing-container px-2">
+                        <div class="text-center mb-7">
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <button type="button" class="btn selectorRole btn-secondary active"
+                                    data-pricing="P">Physician</button>
+                                <button type="button" class="btn selectorRole btn-secondary"
+                                    data-pricing="ST">Specialist in Training</button>
+                                <button type="button" class="btn selectorRole btn-secondary"
+                                    data-pricing="AHP">Nurse</button>
+                                <button type="button" class="btn selectorRole btn-secondary"
+                                    data-pricing="MS">Medical Student</button>
+
+                            </div>
+                        </div>
+
+                        <div id="P">
+                            <div class="pricing card-group flex-column flex-lg-row mb-3 shadow-none">
+                                <div
+                                    class="card card-pricing text-center border shadow-none hover-shadow mb-2 popular scale-110">
+                                    <div class="card-header py-5 border-0 delimiter-bottom">
+                                        <span class="d-block h5 mb-4">Access to All Material</span>
+                                        <div class="h1 gieqsGold text-center mb-0" data-pricing-value="250">€
+                                            <span class="price">100</span></div>
+                                        
+
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="list-unstyled mb-4">
+                                            <li>available until November 9th 2020</li>
+                                            <li>Access to full programme</li>
+                                            <li>GIEQs online access<sup>*</sup></li>
+                                            
+                                        </ul>
+                                        <a href="<?php echo $registrationURL;?>" target="_blank"
+
+                                            class="btn btn-sm gieqsGold btn-neutral mb-3">Register</a>
+                                    </div>
+                                </div>
+                                
+                                
+                            </div>
+                        
+                        <div class="mt-6 mb-2 text-center">
+                            <div class="fluid-paragraph mt-3">
+                                <p class="lead lh-180"><sup>*</sup>access lasts from launch until 1 month after GIEQs</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- </div> -->
+
+            <!-- Specialist in Training Rates -->
+                    <div id="ST" class="d-none">
+                        <div class="pricing card-group flex-column flex-lg-row mb-3 shadow-none">
+                            <div
+                                class="card card-pricing text-center border shadow-none hover-shadow mb-2 popular scale-110">
+                                <div class="card-header py-5 border-0 delimiter-bottom">
+                                    <span class="d-block h5 mb-4">Access all Material</span>
+                                    <div class="h1 gieqsGold text-center mb-0" data-pricing-value="250">€
+                                        <span class="price">50</span></div>
+                                    
+
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-unstyled mb-4">
+                                        <li>available until November 9th 2020</li>
+                                        <li>Access to full programme</li>
+                                        <li>GIEQs online access<sup>*</sup></li>
+                                        
+                                    </ul>
+                                    <a href="<?php echo $registrationURL;?>" target="_blank"
+
+                                        class="btn btn-sm gieqsGold btn-neutral mb-3">Register</a>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                    
+                    <div class="mt-6 mb-2 text-center">
+                        <div class="fluid-paragraph mt-3">
+                            <p class="lead lh-180"><sup>*</sup>access lasts from launch until 1 month after GIEQs, proof of status required for reduced registration rate</p>
+                        </div>
+                    </div>
+                </div>
+                    <!-- </div>   -->
+
+                    <div id="AHP" class="d-none">
+                        <div class="pricing card-group flex-column flex-lg-row mb-3 shadow-none">
+                            <div
+                                class="card card-pricing text-center border shadow-none hover-shadow mb-2 popular scale-110">
+                                <div class="card-header py-5 border-0 delimiter-bottom">
+                                    <span class="d-block h5 mb-4">Access All Material</span>
+                                    <div class="h1 gieqsGold text-center mb-0" data-pricing-value="250">€
+                                        <span class="price">35</span></div>
+                                    
+                                    
+
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-unstyled mb-4">
+                                        <li>available until November 9th 2020</li>
+                                        <li>Access to full programme</li>
+                                        <li>GIEQs online access<sup>*</sup></li>
+                                        
+                                    </ul>
+                                    <a href="<?php echo $registrationURL;?>" target="_blank"
+
+                                        class="btn btn-sm gieqsGold btn-neutral mb-3">Register</a>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                    
+                    <div class="mt-6 mb-2 text-center">
+                        <div class="fluid-paragraph mt-3">
+                            <p class="lead lh-180"><sup>*</sup>access lasts from launch until 1 month after GIEQs, proof of status required for reduced registration rate</p>
+                        </div>
+                    </div>
+                </div>
+                   <!--  </div>   -->
+
+                    <div id="MS" class="d-none">
+                        <div class="pricing card-group flex-column flex-lg-row mb-3 shadow-none">
+                            <div
+                                class="card card-pricing text-center border shadow-none hover-shadow mb-2 popular scale-110">
+                                <div class="card-header py-5 border-0 delimiter-bottom">
+                                    <span class="d-block h5 mb-4">Access All Material</span>
+                                    <div class="h1 gieqsGold text-center mb-0" data-pricing-value="250">€
+                                        <span class="price">25</span></div>
+                                    
+
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-unstyled mb-4">
+                                        <li>available until November 9th 2020</li>
+                                        <li>Access to full programme</li>
+                                        <li>GIEQs online access<sup>*</sup></li>
+                                        
+                                    </ul>
+                                    <a href="<?php echo $registrationURL;?>" target="_blank"
+
+                                        class="btn btn-sm gieqsGold btn-neutral mb-3">Register</a>
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                    
+                    <div class="mt-6 mb-2 text-center">
+                        <div class="fluid-paragraph mt-3">
+                            <p class="lead lh-180"><sup>*</sup>access lasts from launch until 1 month after GIEQs, proof of status required for reduced registration rate</p>
+                        </div>
+                    </div>
+                </div>
+                  <!--   </div> -->  
+
+
+                </div>
+            </div>
+        </div>
+</div>
+</section>
+
+    <?php }?>
     <section class="slice slice-lg bg-section-secondary" id="sct-call-to-action"><a href="#sct-call-to-action"
             class="tongue tongue-up tongue-section-primary" data-scroll-to="">
             <i class="fas fa-angle-up"></i>
