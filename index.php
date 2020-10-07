@@ -372,14 +372,14 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 
                             </a>
                             <?php }elseif ($userid){ //what if no access, tag set above has access to live?>
-                                <a href="<?php echo BASE_URL;?>/pages/learning/pages/live/plenary.php"
+                                <a href="<?php echo BASE_URL;?>/pages/learning/pages/live/plenary-thursday.php"
                                     class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
                                     style="background-color: rgb(238, 194, 120);">
                                     <span class="btn-inner--text">Jump right into Plenary!</span>
                                     <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
     
                                 </a>
-                                <a href="<?php echo BASE_URL;?>/pages/learning/pages/live/complex.php"
+                                <a href="<?php echo BASE_URL;?>/pages/learning/pages/live/complex-thursday.php"
                                     class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mt-2 mr-sm-4 scroll-me"
                                     style="background-color: rgb(238, 194, 120);">
                                     <span class="btn-inner--text">Jump right into Complex!</span>
