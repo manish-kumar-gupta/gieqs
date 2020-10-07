@@ -201,6 +201,7 @@ top: -20vh;
 </h4>
 
 <p>
+    -       Use a MODERN BROWSER (such as Google Chrome or Safari).  You will not be able to access onm Internet Explorer<br/>
     –       Click the gieqs digital logo on the top left of the screen<br/>
     –       if you are registered for the congress there is a menu entitled GIEQs Live Stream visible.<br/>
     –       Hover over this to reveal the live menu including streams, programme and sponsor pages.<br/>

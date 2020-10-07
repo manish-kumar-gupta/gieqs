@@ -98,7 +98,7 @@ $roothttp = BASE_URL . '/';
 
 $liveTestingUsers = array(1, 2, 3 , 4, 5, 6, 7, 8, 9, 12, 14, 15, 16, 84, 25);
 
-$live = 0;
+$live = 1;
 
  //MORE LIVE TIME SETTINGS
 

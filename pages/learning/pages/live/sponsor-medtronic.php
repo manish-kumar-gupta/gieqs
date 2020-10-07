@@ -560,7 +560,7 @@ top: -20vh;
               <p class="">Supporting Colonic Polyp Detection. Introducing artificial intelligence (AI) for colonoscopy with the GI Genius intelligent endoscopy module.</p>
             </div>
             <div class="card-footer px-0 py-0 border-0 overflow-hidden">
-              <a href="https://www.gieqs.com/pages/learning/pages/live/sponsor-boston.php#" class="btn btn-block btn-primary rounded-0">Learn more</a>
+              <a href="https://www.medtronic.com/covidien/en-us/products/gastrointestinal-artificial-intelligence/gi-genius-intelligent-endoscopy.html" class="btn btn-block btn-primary rounded-0">Learn more</a>
             </div>
           </div>
           <div class="card hover-shadow-lg">
@@ -572,7 +572,7 @@ top: -20vh;
               <p class="">In a short, well-tolerated endoscopic procedure and offers an alternative to "watchful waiting" for patients with intestinal metaplasia, low-grade, and high-grade dysplasia. </p>
             </div>
             <div class="card-footer px-0 py-0 border-0 overflow-hidden">
-              <a href="https://www.gieqs.com/pages/learning/pages/live/sponsor-boston.php#" class="btn btn-block btn-primary rounded-0">Learn more</a>
+              <a href="https://www.medtronic.com/covidien/en-us/products/gastrointestinal-rf-ablation/barrx-radiofrequency-ablation-system.html" class="btn btn-block btn-primary rounded-0">Learn more</a>
             </div>
           </div>
           <div class="card hover-shadow-lg">
@@ -584,7 +584,7 @@ top: -20vh;
               <p class="">Measure pressure and dimensions in the esophagus, pylorus, and anal sphincters with a patient-friendly solution that enables you to Detect early. Treat early. </p>
             </div>
             <div class="card-footer px-0 py-0 border-0 overflow-hidden">
-              <a href="https://www.gieqs.com/pages/learning/pages/live/sponsor-boston.php#" class="btn btn-block btn-primary rounded-0">Learn more</a>
+              <a href=" https://www.medtronic.com/covidien/en-us/products/motility-testing/endoflip-impedance-planimetry-system.html" class="btn btn-block btn-primary rounded-0">Learn more</a>
             </div>
           </div>
         </div>
