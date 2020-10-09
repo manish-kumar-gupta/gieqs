@@ -774,6 +774,40 @@ Class userFunctions {
             }
 
 		}
+
+		public function printUserEmailsConsent()
+            {
+            
+
+            $q = "SELECT CONCAT(`email` , '; ') AS `emailString` FROM `users` WHERE `emailAccount` = '1' OR `emailAccount` IS NULL";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					echo $row['emailString'] . ' ';
+
+
+				}
+
+				//return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+		}
 	
 
     /**
