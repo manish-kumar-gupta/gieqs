@@ -38,4 +38,14 @@ print_r($data);
 
 }
 
-echo $userFunctions->printUserEmailsConsent();
+echo $userFunctions->printUserEmailsConsent1();
+
+echo '<br/><br/>';
+echo '<hr>';
+
+echo $userFunctions->printUserEmailsConsent2();
+
+echo '<br/><br/>';
+echo '<hr>';
+
+echo $userFunctions->printUserEmailsConsent3();
