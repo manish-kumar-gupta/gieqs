@@ -76,7 +76,7 @@ Class usersSocial {
 
     public function countFavourites($video_id){
 
-        $q = "SELECT count(`id`) AS `count` FROM `usersFavouriteVideo` WHERE `video_id` = '$video_id' GROUP BY `user_id`";
+        $q = "SELECT DISTINCT count(`user_id`) AS `count` FROM `usersFavouriteVideo` WHERE `video_id` = '$video_id'";
 
         $result = $this->connection->RunQuery($q);
 
@@ -124,7 +124,7 @@ Class usersSocial {
 
     public function countLikes($video_id){
 
-        $q = "SELECT count(`id`) AS `count` FROM `usersLikeVideo` WHERE `video_id` = '$video_id' GROUP BY `user_id`";
+        $q = "SELECT DISTINCT count(`user_id`) AS `count` FROM `usersLikeVideo` WHERE `video_id` = '$video_id'";
 
         $result = $this->connection->RunQuery($q);
 		$nRows = $result->rowCount();
