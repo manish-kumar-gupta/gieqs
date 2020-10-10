@@ -242,7 +242,7 @@ background-color: rgb(238, 194, 120);
     console.log(jsonString);
 
     var request2 = $.ajax({
-        url: siteRoot + "assets/scripts/classes/generateProgramme-printablev4.php",
+        url: siteRoot + "assets/scripts/classes/generateProgramme-printablev5.php",
         type: "POST",
         contentType: "application/json",
         data: jsonString,
