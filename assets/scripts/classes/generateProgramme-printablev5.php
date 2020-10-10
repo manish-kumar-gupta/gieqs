@@ -807,9 +807,43 @@
                                 }
 
                                 $programmeDate = new DateTime($response[0]['date']);
+
+                                $videoid = null;
+
+                                    $videoid = $programmeView->getVideoURL($session2data[0]['sessionid']);
+
+                                    if (isset($videoid)){
+
+                                        if ($videosAccess->checkVimeoidPresentPublic($videoid, $past, $current)){
+                        
+                                            $urlVideoNotPresent = null;
+                                        }else{
+                        
+                                        $urlVideoNotPresent = "text-muted";
+                                        }
+                        
+                                    }else{
+                        
+                                        $urlVideoNotPresent = "text-muted";
+                                    }
                                 
                             echo '<div class="col-5 p-1 pb-3 pt-3 border-right" style="cursor:pointer !important;"  data-target="#modal-' . $programmeDate->format('l') . '-' . $session2data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
-                                    <span class="sessionTitle h5">' . $session2data[0]['sessionTitle'] . '</span><br>';
+                                    <span class="sessionTitle h5 ' . $urlVideoNotPresent .  '">' . $session2data[0]['sessionTitle'] . '</span>';
+                                    
+                                    if (isset($videoid)){
+
+                                        if ($videosAccess->checkVimeoidPresentPublic($videoid, $past, $current)){
+
+                                            $url = "window.location.href = '" . BASE_URL .  "/pages/learning/viewer.php?id={$videoid}'";
+
+                                        echo $urlvideo2 = '<span class="ml-3" style="color:rgb(238, 194, 120) !important;" onclick="' . $url . '" ><i class="fas fa-play"></i></span>';
+
+                                        }
+
+                                    }
+                                    
+                                    
+                                    echo '<br>';
                                     $specificSessionModerators = $programmeReports->generateModeratorsForSession($session2data[0]['sessionid']);
 
                                     //print_r($specificSessionModerators);
@@ -1455,8 +1489,44 @@
 
                                     $programmeDate = new DateTime($response[0]['date']);
                                     
+                                    $videoid = null;
+
+                                    $videoid = $programmeView->getVideoURL($session1data[0]['sessionid']);
+
+                                    if (isset($videoid)){
+
+                                        if ($videosAccess->checkVimeoidPresentPublic($videoid, $past, $current)){
+                        
+                                            $urlVideoNotPresent = null;
+                                        }else{
+                        
+                                        $urlVideoNotPresent = "text-muted";
+                                        }
+                        
+                                    }else{
+                        
+                                        $urlVideoNotPresent = "text-muted";
+                                    }
+
+
                                     echo '<div class="col-5 p-1 pb-3 pt-3 border-right" style="cursor:pointer !important;"  data-target="#modal-' . $programmeDate->format('l') . '-' . $session1data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
-                                    <span class="sessionTitle h5">' . $session1data[0]['sessionTitle'] . '</span><br>';
+                                    <span class="sessionTitle h5 ' . $urlVideoNotPresent .  '">' . $session1data[0]['sessionTitle'] . '</span>';
+                                    
+                                    
+                                    if (isset($videoid)){
+
+                                        if ($videosAccess->checkVimeoidPresentPublic($videoid, $past, $current)){
+
+                                            $url = "window.location.href = '" . BASE_URL .  "/pages/learning/viewer.php?id={$videoid}'";
+
+                                        echo $urlvideo2 = '<span class="ml-3" style="color:rgb(238, 194, 120) !important;" onclick="' . $url . '" ><i class="fas fa-play"></i></span>';
+
+                                        }
+
+                                    }
+                                    
+                                    echo '<br>';
+
                                     $specificSessionModerators = $programmeReports->generateModeratorsForSession($session1data[0]['sessionid']);
 
 
@@ -1829,8 +1899,45 @@
 
                                 $programmeDate = new DateTime($response[0]['date']);
 
+                                $videoid = null;
+
+                                    $videoid = $programmeView->getVideoURL($session2data[0]['sessionid']);
+
+                                    //echo $videoid . 'is video id';
+
+                               
+
+                                        if (isset($videoid)){
+
+                                            if ($videosAccess->checkVimeoidPresentPublic($videoid, $past, $current)){
+                            
+                                                $urlVideoNotPresent = null;
+                                            }else{
+                            
+                                            $urlVideoNotPresent = "text-muted";
+                                            }
+                            
+                                        }else{
+                            
+                                            $urlVideoNotPresent = "text-muted";
+                                        }
+
                             echo '<div class="col-5 p-1 pb-3 pt-3 border-right"  data-target="#modal-' . $programmeDate->format('l') . '-' . $session2data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
-                                    <span class="sessionTitle h5">' . $session2data[0]['sessionTitle'] . '</span><br>';
+                                    <span class="sessionTitle h5 ' . $urlVideoNotPresent .  '">' . $session2data[0]['sessionTitle'] . '</span>';
+                                    
+                                    if (isset($videoid)){
+
+                                        if ($videosAccess->checkVimeoidPresentPublic($videoid, $past, $current)){
+
+                                            $url = "window.location.href = '" . BASE_URL .  "/pages/learning/viewer.php?id={$videoid}'";
+
+                                        echo $urlvideo2 = '<span class="ml-3" style="color:rgb(238, 194, 120) !important;" onclick="' . $url . '" ><i class="fas fa-play"></i></span>';
+
+                                        }
+
+                                    }
+                                    
+                                    echo'<br>';
                                     $specificSessionModerators = $programmeReports->generateModeratorsForSession($session2data[0]['sessionid']);
 
                                     //print_r($specificSessionModerators);
