@@ -180,7 +180,7 @@ background-color: rgb(238, 194, 120);
                             Symposium <br /> Edition I. <br/>Watch Sessions Again</span>
                     </div>
                     <div class="col-12 p-3 pb-5">
-                        <span class="h6" style="color: rgb(238, 194, 120);">Sessions with a <i class="fas fa-play"></i> icon are available for catch-up viewing</span>
+                        <span class="h6" style="color: rgb(238, 194, 120);">Sessions with a <i class="fas fa-play"></i> icon are available for catch-up viewing. <br/>The <i class="fas fa-play"></i> next to the title of the session will play the whole session.  Some sessions have videos for individual item catch up.</span>
                     </div>
 
                 </div>

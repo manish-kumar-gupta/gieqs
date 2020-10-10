@@ -420,7 +420,7 @@
 
                                             $url = "window.location.href = '" . BASE_URL .  "/pages/learning/viewer.php?id={$videoid}'";
 
-                                        echo $urlvideo2 = '<span class="ml-3" style="color:rgb(238, 194, 120) !important;" onclick="' . $url . '" ><i class="fas fa-play"></i></span>';
+                                        echo $urlvideo2 = '<span class="ml-3" style="color:rgb(238, 194, 120) !important; cursor:pointer !important; " onclick="' . $url . '" ><i class="fas fa-play"></i></span>';
 
                                         }
 
@@ -836,7 +836,7 @@
 
                                             $url = "window.location.href = '" . BASE_URL .  "/pages/learning/viewer.php?id={$videoid}'";
 
-                                        echo $urlvideo2 = '<span class="ml-3" style="color:rgb(238, 194, 120) !important;" onclick="' . $url . '" ><i class="fas fa-play"></i></span>';
+                                        echo $urlvideo2 = '<span class="ml-3" style="color:rgb(238, 194, 120) !important; cursor:pointer !important; " onclick="' . $url . '" ><i class="fas fa-play"></i></span>';
 
                                         }
 
@@ -1519,7 +1519,7 @@
 
                                             $url = "window.location.href = '" . BASE_URL .  "/pages/learning/viewer.php?id={$videoid}'";
 
-                                        echo $urlvideo2 = '<span class="ml-3" style="color:rgb(238, 194, 120) !important;" onclick="' . $url . '" ><i class="fas fa-play"></i></span>';
+                                        echo $urlvideo2 = '<span class="ml-3" style="color:rgb(238, 194, 120) !important; cursor:pointer !important; " onclick="' . $url . '" ><i class="fas fa-play"></i></span>';
 
                                         }
 
@@ -1931,7 +1931,7 @@
 
                                             $url = "window.location.href = '" . BASE_URL .  "/pages/learning/viewer.php?id={$videoid}'";
 
-                                        echo $urlvideo2 = '<span class="ml-3" style="color:rgb(238, 194, 120) !important;" onclick="' . $url . '" ><i class="fas fa-play"></i></span>';
+                                        echo $urlvideo2 = '<span class="ml-3" style="color:rgb(238, 194, 120) !important; cursor:pointer !important;" onclick="' . $url . '" ><i class="fas fa-play"></i></span>';
 
                                         }
 
