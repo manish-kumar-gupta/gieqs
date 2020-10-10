@@ -55,7 +55,7 @@ Class usersSocial {
     
     public function countViews($video_id){
 
-        $q = "SELECT count(`id`) AS `count` FROM `usersViewsVideo` WHERE `video_id` = '$video_id' GROUP BY `user_id`";
+        $q = "SELECT DISTINCT count(`user_id`) AS `count` FROM `usersViewsVideo` WHERE `video_id` = '$video_id'";
 
         $result = $this->connection->RunQuery($q);
 
