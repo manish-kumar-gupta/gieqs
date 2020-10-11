@@ -11,7 +11,6 @@ require ('../../includes/config.inc.php');
 require BASE_URI . '/head.php';
 
 
-
 $debug = false;
 
 
@@ -153,7 +152,7 @@ if ($userFunctions->getUserFromKey($key)){
 
 
 
-$users->endusers();?>
+//$users->endusers();?>
 </p> 
 </div>
         </div>

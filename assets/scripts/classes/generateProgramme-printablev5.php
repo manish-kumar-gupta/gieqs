@@ -3,7 +3,6 @@
 
 //this version is time sensitive
 
-
             $openaccess = 1;
 
 			//$requiredUserLevel = 4;

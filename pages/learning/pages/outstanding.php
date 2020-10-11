@@ -34,7 +34,7 @@ $identifier = 'id';
 //define user access level
 
 $openaccess = 0;
-$requiredUserLevel = 2;
+$requiredUserLevel = 1;
 
 require BASE_URI . '/head.php';
 
@@ -42,7 +42,7 @@ $formv1 = new formGenerator;
 
 ?>
 
-    <title>Moderation - Cases GIEQs Online</title>
+    <title>Tagging - Outstanding Tagging</title>
 
     <!-- Page CSS -->
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/flatpickr/dist/flatpickr.min.css">
@@ -123,7 +123,7 @@ and 4
                         <!-- Salute + Small stats -->
                         <div class="row align-items-center mb-4">
                             <div class="col-md-5 mb-4 mb-md-0">
-                                <span class="h2 mb-0 text-white d-block">Manage Videos (Superuser)</span>
+                                <span class="h2 mb-0 text-white d-block">Outstanding Tagging Tasks</span>
 
                                 <!-- <span class="text-white">Have a nice day!</span> -->
                             </div>
@@ -240,15 +240,15 @@ if ($identifierValue) {
 
                     <div class="row justify-content-between align-items-center">
                         <div class="col">
-                            <h5 class="mb-1">Manage Videos (SuperUser)</h5>
-                            <p class="text-sm text-muted mb-0 d-none d-md-block">Manage <?php echo $databaseName; ?>.</p>
-                        </div>
+                            <!-- <h5 class="mb-1">Videos Requiring Moderation</h5> -->
+<!--                             <p class="text-sm text-muted mb-0 d-none d-md-block">Manage <?php //echo $databaseName; ?>.</p>
+ -->                        </div>
                         <div class="col text-right">
                             <div class="actions">
                                 <!-- <a href="#" class="action-item mr-2 active" data-action="search-open"
                                     data-target="#actions-search"><i class="fas fa-search"></i></a> -->
-                                <a href="#" id="add<?php echo $databaseName; ?>" class="action-item mr-2 active"><i
-                                        class="fas fa-plus"></i></a>
+                               <!--  <a href="#" id="add<?php //echo $databaseName; ?>" class="action-item mr-2 active"><i
+                                        class="fas fa-plus"></i></a> -->
                                 <!-- <div class="dropdown mr-2">
                                     <a href="#" class="action-item" role="button" data-toggle="dropdown"
                                         aria-haspopup="true" aria-expanded="false">
@@ -296,11 +296,14 @@ if ($identifierValue) {
                                 <th>id</th>
                                 <th>name</th>
                                 <th>category</th>
-                                <th>video status</th>
+                                
                                 <th>author</th>
-                                <th>editor</th>
-                                <th>tagger</th>
-                                <th>recorder</th>
+                                <th>tagging status</th>
+                                <th>last action date</th>
+                                <th>due</th>
+                               
+                            
+                                
                                 <th></th>
 
                             </tr>
@@ -361,11 +364,7 @@ if ($identifierValue) {
 
     var addContainer = '<div class="d-flex align-items-center justify-content-end">'+
         '<div class="actions ml-3"><a class="fill-modal action-item mr-2" data-toggle="tooltip" title="edit this row"'+
-                'data-original-title="Edit"> <i class="fas fa-pencil-alt"></i> </a> <a href="#" class="action-item mr-2"'+
-                'data-toggle="tooltip" title="" data-original-title="see enclosed items"> <i class="fas fa-level-down-alt"></i> </a>'+
-            '<div class="dropdown"> <a href="#" class="action-item" role="button" data-toggle="dropdown"'+
-                    'aria-haspopup="true" data-expanded="false"> <i class="fas fa-ellipsis-v"></i> </a>'+
-                '<div class="dropdown-menu dropdown-menu-right"> <a class="delete-row dropdown-item"> Delete </a> </div>'+
+                'data-original-title="Edit"> <i class="fas fa-pencil-alt"></i> </a> '+
             '</div>'+
         '</div>'+
     '</div>';
@@ -820,10 +819,11 @@ if (data){
                 zeroRecords: "There are currently no active <?php echo $databaseName; ?>s.",
             },
             autowidth: false,
+            //scrollX: false;
 
 
             ajax: siteRoot +
-                'pages/learning/classes/tableinteractors/management.php',
+                'pages/learning/classes/tableinteractors/outstanding.php',
             //TODO all classes need this function
 
 
@@ -838,26 +838,26 @@ if (data){
                     data: 'supercategory'
                 },
                 {
-                    data: 'active'
-                },
-                {
                     data: 'author'
                 },
                 {
-                    data: 'editor'
+                    data: 'status'
                 },
                 {
-                    data: 'tagger'
+                    data: 'date'
                 },
                 {
-                    data: 'recorder'
+                    data: 'expires'
                 },
                 {
                     data: null,
                     render: function(data, type, row) {
                         return addContainer;
                     }
-                }
+                },
+                
+                
+                
             ],
             dom: 'Bfrtip',
 
@@ -866,7 +866,6 @@ if (data){
             'csvHtml5',
             
         ],
-        "order": [],
 
 
 
@@ -914,6 +913,8 @@ if (data){
             var targettd = $(this).parent().parent().parent().parent().find('td').first().text();
             //console.log(targettd);
             lesionUnderEdit = targettd;
+            //window.open(siteRoot + 'pages/learning/scripts/forms/videoChapterForm.php?id='+lesionUnderEdit, '_blank');
+
             $('#modalMessageArea').text('Editing <?php echo $databaseName;?> ' + lesionUnderEdit);
             $('#modal-faculty').modal('show');
             fillForm(targettd);
@@ -1161,9 +1162,11 @@ if ($(document).find('#review-form').valid()) {
 
         });
 
-        $(document).on('click', '.approve-video', function () {
+        $(document).on('click', '.accept-invite', function () {
 
-
+            var targettd = $(this).parent().parent().parent().parent().find('td').first().text();
+            //console.log(targettd);
+            lesionUnderEdit = targettd;
             var videoid = lesionUnderEdit;
 
             var dataToSend = {
@@ -1183,7 +1186,7 @@ if ($(document).find('#review-form').valid()) {
 
 
                 },
-                url: siteRoot + "pages/learning/scripts/moderation/approveVideo.php",
+                url: siteRoot + "pages/learning/scripts/moderation/acceptTaggingAjax.php",
                 type: "POST",
                 contentType: "application/json",
                 data: jsonString,
@@ -1196,7 +1199,7 @@ if ($(document).find('#review-form').valid()) {
                 if (data) {
                     //show green tick
                     alert(data);
-                    fillForm();
+                    location.reload();
                     //$('#commentsArea').html(data);
 
 
@@ -1213,6 +1216,123 @@ if ($(document).find('#review-form').valid()) {
 
 
         })
+
+        $(document).on('click', '.decline-invite', function () {
+
+            var targettd = $(this).parent().parent().parent().parent().find('td').first().text();
+            //console.log(targettd);
+            lesionUnderEdit = targettd;
+            var videoid = lesionUnderEdit;
+
+            var dataToSend = {
+
+
+                videoid: videoid,
+
+
+
+            }
+
+            const jsonString = JSON.stringify(dataToSend);
+
+
+            var request2 = $.ajax({
+                beforeSend: function () {
+
+
+                },
+                url: siteRoot + "pages/learning/scripts/moderation/declineTaggingAjax.php",
+                type: "POST",
+                contentType: "application/json",
+                data: jsonString,
+            });
+
+
+
+            request2.done(function (data) {
+                // alert( "success" );
+                if (data) {
+                    //show green tick
+                    alert(data);
+                    location.reload();
+                    //$('#commentsArea').html(data);
+
+
+                    //$('#notification-services').delay('1000').addClass('is-valid');
+
+
+
+
+                }
+                //$(document).find('.Thursday').hide();
+                //$(icon).prop("disabled", false);
+            })
+
+
+
+        })
+
+        $(document).on('click', '.decline-invite-check', function () {
+
+
+            if (confirm("Do you wish to permanently decline this invitation?")) {
+       
+    
+
+var targettd = $(this).parent().parent().parent().parent().find('td').first().text();
+//console.log(targettd);
+lesionUnderEdit = targettd;
+var videoid = lesionUnderEdit;
+
+var dataToSend = {
+
+
+    videoid: videoid,
+
+
+
+}
+
+const jsonString = JSON.stringify(dataToSend);
+
+
+var request2 = $.ajax({
+    beforeSend: function () {
+
+
+    },
+    url: siteRoot + "pages/learning/scripts/moderation/declineTaggingAjax.php",
+    type: "POST",
+    contentType: "application/json",
+    data: jsonString,
+});
+
+
+
+request2.done(function (data) {
+    // alert( "success" );
+    if (data) {
+        //show green tick
+        alert(data);
+        location.reload();
+        //$('#commentsArea').html(data);
+
+
+        //$('#notification-services').delay('1000').addClass('is-valid');
+
+
+
+
+    }
+    //$(document).find('.Thursday').hide();
+    //$(icon).prop("disabled", false);
+})
+
+            }
+
+
+
+})
         
         
         
@@ -1260,7 +1380,7 @@ if ($(document).find('#review-form').valid()) {
                 if (data) {
                     //show green tick
                     alert(data);
-                    fillForm();
+                    location.reload();
                     //$('#commentsArea').html(data);
 
 

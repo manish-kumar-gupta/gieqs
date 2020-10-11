@@ -2,7 +2,7 @@
 
 $openaccess = 0;
 
-$requiredUserLevel = 2;
+$requiredUserLevel = 1;
 
 require ('../../includes/config.inc.php');	
 
@@ -18,7 +18,7 @@ require (BASE_URI . '/assets/scripts/login_functions.php');
      
      require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
 
-$debug = false;
+$debug = true;
 
 function time_elapsed_string($datetime, $full = false) {
   $now = new DateTime;
@@ -70,6 +70,7 @@ $general = new general;
 //$usersSocial = new usersSocial;
 $usersTagging = new usersTagging;
 $video_moderation = new video_moderation;
+$video = new video;
 
 
 $data = json_decode(file_get_contents('php://input'), true);
@@ -90,6 +91,12 @@ if ($videoid && $userid){
 
     //if the request is for the currently tag-locked user ignore
     $currentLockedUser = $video_moderation->getTagLockedUser($videoid, $debug);
+
+    if ($debug){
+        
+        echo 'Current locked user is ' . $currentLockedUser[0];
+
+    }
 
     //get data on the open invite
 
@@ -125,7 +132,7 @@ if ($videoid && $userid){
 
         }
         
-        $users->Load_from_key($currentLockedUser);
+        $users->Load_from_key($currentLockedUser[0]);
         if ($users->gettimezone()){
 
             $userTimezoneDatabase = $users->gettimezone();
@@ -140,26 +147,35 @@ if ($videoid && $userid){
         
         $tagging_due = addTimeUserReadable($userTimezoneDatabase, $usersTagging->getinvite_tag(), '2 weeks');
 
+        if ($debug){
 
 
-        if ($users->Load_from_key($currentLockedUser)){
+            echo 'to second if';
+        }
 
-            if ($debug){
-                echo 'Tagging due on ' .  $tagging_due;
-                echo 'Mail sent';
 
-            }
+            //$users->Load_from_key($currentLockedUser[0]);
 
-            $users->Load_from_key($loggedInUser);
+            
+
+            //$users->Load_from_key($loggedInUser);
             $emailVaryarray['firstname'] = $users->getfirstname();
+            
             $emailVaryarray['surname'] = $users->getsurname();
             $emailVaryarray['email'] = $users->getemail();
             // $email = array(0 => $users->getemail()); //original version
             $email = $users->getemail();
             $emailVaryarray['key'] = $users->getkey();
+            
             $emailVaryarray['linkVideo'] = 'https://www.gieqs.com/pages/learning/scripts/forms/videoChapterForm.php?id=' . $videoid;
-            $emailVaryarray['image'] = $video_moderation->getMailImage($videoid);
+            
+            //$emailVaryarray['image'] = $video_moderation->getMailImage($videoid);
             $emailVaryarray['video_name'] = $video->getname();
+            if ($debug){
+                echo 'Tagging due on ' .  $tagging_due;
+                echo 'Mail sent';
+
+            }
             $emailVaryarray['tagging_due'] = $tagging_due;
             
             if ($debug){
@@ -184,7 +200,7 @@ if ($videoid && $userid){
             }
 
 
-        }
+        
 
 
        
@@ -210,5 +226,5 @@ if ($videoid && $userid){
     exit();
 }
 
-$users->endusers();
-$usersTagging->endusersTagging;
+//$users->endusers();
+//$usersTagging->endusersTagging;

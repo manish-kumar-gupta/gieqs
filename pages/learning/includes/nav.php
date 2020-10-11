@@ -695,10 +695,13 @@ function endsWith($haystack, $needle)
                       <span style="color: rgb(238, 194, 120);" class="dropdown-header">Moderation</span>
                         <a class="dropdown-item"
                             href="<?php echo BASE_URL;?>/pages/learning/pages/management.php"><i
-                                class="fas fa-columns"></i>Manage All Needs Tagging</a>
+                                class="fas fa-columns"></i>Send Out New Invites</a>
+                                <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/outstanding.php"><i
+                                class="fas fa-columns"></i>Manage Tagging in Progress</a>
                         <a class="dropdown-item"
                             href="<?php echo BASE_URL;?>/pages/learning/pages/moderation.php"><i
-                                class="fas fa-columns"></i>Manage User Tagged Videos</a>
+                                class="fas fa-columns"></i>Moderate Completed Tagging</a>
 
                                 <div class="dropdown-divider"></div>
 
@@ -711,7 +714,7 @@ function endsWith($haystack, $needle)
                             href="<?php echo BASE_URL;?>/pages/learning/pages/myTagging.php"><i
                                 class="fas fa-columns"></i>View my Tagging Tasks</a>
                         
-
+                                <?php if ($isSuperuser){?>
                         <div class="dropdown-divider"></div>
                         <span style="color: rgb(238, 194, 120);" class="dropdown-header">Video</span>
                         <a class="dropdown-item"
@@ -722,6 +725,7 @@ function endsWith($haystack, $needle)
                                 class="fas fa-columns"></i>Video Table</a>
 
                         <div class="dropdown-divider"></div>
+                        <?php }?>
 
                         <span style="color: rgb(238, 194, 120);" class="dropdown-header">Tags</span>
                         <?php if ($isSuperuser){?>

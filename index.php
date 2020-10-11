@@ -120,7 +120,7 @@ cursor: pointer;
 
 //print_r($_GET);
 
-$debug = true;
+$debug = false;
 
 if (isset($_GET['signup'])) {
 
@@ -443,7 +443,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                     </span>
                                 <span class="alert-content">Register for CATCH up now</span>
                              </div></a>
-                             <a class="ml-3 pointer" data-toggle="modal" data-target="#registerInterest">
+                             <a class="ml-3 pointer" data-toggle="modal" data-target="#accreditation">
                             <div class="alert alert-modern alert-dark">
                                 <span class="badge gieqsGold badge-pill">
                                 <i class="fas fa-notes-medical"></i>

@@ -100,7 +100,7 @@ public function getManagementTable()
 	WHERE (a.`active` = '2' OR a.`active` = '4') AND  
 	((b.`invite_tag` IS NULL) OR (b.`invite_tag` IS NOT NULL AND b.`decline_tag` IS NOT NULL) OR (b.`invite_tag` IS NOT NULL AND b.`accept_tag` IS NOT NULL) OR (b.`invite_tag` IS NOT NULL AND b.`review_tag` IS NOT NULL))
 	AND (b.`done_tag` IS NULL) 
-	GROUP BY a.`id` ORDER BY b.`invite_tag` DESC";
+	GROUP BY a.`id` ORDER BY a.`id` DESC";
 
 	//$q = "Select * from `video` WHERE `active` = '2' OR `active` = '4' ORDER BY `created` DESC";
 	$result = $this->connection->RunQuery($q);
@@ -245,6 +245,131 @@ public function getMyTaggingTable($userid)
 				'supercategory' => $this->getSuperCategoryName($this->getVideoSuperCategory($row['id'])),
 				
 				'author' => $row['author'],
+				'status' => $action,
+				'date' => $date,
+				'expires' => $expires,
+			
+
+
+			];
+
+			
+
+			$x++;
+		}
+	
+		return $rowReturn;
+
+	} else {
+		
+
+		//RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+		$rowReturn['data'] = [];
+		
+		return json_encode($rowReturn);
+	}
+
+}
+
+public function getOutstandingTable()
+	{
+	$q = "Select a.`id`, a.`name`, a.`author`, a.`active`, b.`user_id`, b.`invite_tag`, b.`accept_tag`, b.`review_tag`, b.`done_tag`, b.`decline_tag` from `video` as a 
+	INNER JOIN `usersTagging` as b 
+	on b.`video_id` = a.`id` 
+	WHERE (a.`active` = '2') AND  
+	((b.`invite_tag` IS NOT NULL) AND (b.`decline_tag` IS NULL AND b.`done_tag` IS NULL)) 
+	GROUP BY a.`id` ORDER BY b.`invite_tag` DESC";
+
+
+	//echo $q;
+
+	$result = $this->connection->RunQuery($q);
+	$rowReturn = array();
+	$x = 0;
+	$nRows = $result->rowCount();
+	if ($nRows > 0) {
+
+		while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+			//print_r(array_map('utf8_encode', $row));
+			//$rowReturn['data'][] = array_map('utf8_encode', $row);
+
+			$action = null;
+					$date = null;
+					$expires = null;
+
+					if ($row['decline_tag'] != null){
+
+						$action = 'Tagging declined';
+						$date = $row['decline_tag'];
+						$expires = null;
+
+					}else if ($row['done_tag'] != null){
+
+						$action = 'Tagging done';
+						$date = $row['done_tag'];
+						$expires = null;
+
+					}else if ($row['review_tag'] != null){
+
+						if ($row['active'] == 2){
+
+							$action = 'Tagging Reviewed.  Changes required';
+							$date = $row['review_tag'];
+							$expires = true;
+
+
+						}else if ($row['active'] == 4){
+
+							$action = 'Review completed. Awaiting Approval';
+							$date = $row['review_tag'];
+							$expires = false;
+
+						}
+
+						
+					
+					}else if ($row['accept_tag'] != null){
+
+						if ($row['active'] == 2){
+
+							$action = 'Accepted Tagging';
+							$date = $row['accept_tag'];
+							$expires = true;
+
+
+						}else if ($row['active'] == 4){
+
+							$action = 'Pending Moderator Review';
+							$date = $row['accept_tag'];
+							$expires = false;
+
+						}
+
+						
+
+					}elseif ($row['invite_tag'] != null){
+
+						$action = 'Invitation';
+						$date = $row['invite_tag'];
+
+						//get user timezone
+						
+						$expires = true;
+
+
+					
+
+					}
+
+
+			$rowReturn['data'][] = [
+
+				'id' => $row['id'],
+				'name' => $row['name'],
+				'supercategory' => $this->getSuperCategoryName($this->getVideoSuperCategory($row['id'])),
+				
+				'author' => $row['user_id'],
 				'status' => $action,
 				'date' => $date,
 				'expires' => $expires,
