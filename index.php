@@ -516,8 +516,52 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 
 <?php
     }?>
-        <!-- <hr class="divider divider-fade" /> -->
-        <section class="slice slice-lg mb-4">
+        <section class="slice slice-lg">
+            <div class="container mt-6">
+              <div class="row justify-content-center">
+                <div class="col-lg-9">
+                  <div class="swiper-js-container">
+                    <div class="swiper-container swiper-container-horizontal" data-swiper-items="1" data-swiper-space-between="0" style="cursor: grab;">
+                      <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-1650px, 0px, 0px);">
+                        <div class="swiper-slide" style="width: 825px;">
+                          <div class="text-center">
+                            <p class="h2 lh-160 text-gray font-italic font-weight-300" style="font-family: 'Playfair Display', serif;">"Perfect and worth every minute of my time.  Hoping to join next year!"</p>
+                            <div class="text-center mt-4">
+                              <h3 class="h5">GIEQs Edition I Participant</h3>
+                              <span class="lead text-muted">Gastroenterologist</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="swiper-slide swiper-slide-prev" style="width: 825px;">
+                          <div class="text-center">
+                            <p class="h2 lh-160 text-gray font-italic font-weight-300" style="font-family: 'Playfair Display', serif;">"I've worked for 27 years as a gastroenterologist.  This was the congress that I have waited 27 years for.  Thank you and much success in the future!"</p>
+                            <div class="text-center mt-4">
+                             <h3 class="h5">GIEQs Edition I Participant</h3>
+                              <span class="lead text-muted">Gastroenterologist</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="swiper-slide swiper-slide-active" style="width: 825px;">
+                          <div class="text-center">
+                            <p class="h2 lh-160 text-gray font-italic font-weight-300" style="font-family: 'Playfair Display', serif;">"This was a great symposium and the mix of live endoscopy, with its challenges and pre-recorded lectures / videos worked well.  Thank you to the organising committee and faculty.  Great job!"</p>
+                            <div class="text-center mt-4">
+                              <h3 class="h5">GIEQs Edition I Participant</h3>
+                              <span class="lead text-muted">Gastroenterologist</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination w-100 pt-5 d-flex align-items-center justify-content-center swiper-pagination-clickable swiper-pagination-bullets"><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 3"></span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+                   
+
+        <section class="slice slice-lg mt-8 mb-4"><!-- 
             <div class="container">
               <div class="row row-grid align-items-center justify-content-around">
                 <div class="col-lg-5 order-lg-2">
@@ -561,7 +605,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
         <section class="slice slice-lg mt-1">
             <div class="container">
                 <div class="row no-gutters align-items-md-center text-center text-md-left">
@@ -593,7 +637,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
         </section>
         <!-- <hr class="divider divider-fade" /> -->
 
-        <section class="bg-section-dark slice slice-lg mt-1" id="sct-what-we-do">
+        <!-- <section class="bg-section-dark slice slice-lg mt-1" id="sct-what-we-do">
             <div class="container">
                 <div class="row row-grid">
                     <div class="col-lg-4">
@@ -650,7 +694,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 
                 </a>
             </div>
-        </section>
+        </section> -->
 
     </div>
     <!-- Modal -->
