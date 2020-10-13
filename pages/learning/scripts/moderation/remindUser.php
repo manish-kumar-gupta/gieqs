@@ -186,7 +186,7 @@ if ($videoid && $userid){
             $email = $users->getemail();
             $emailVaryarray['key'] = $users->getkey();
             
-            $emailVaryarray['linkVideo'] = 'https://www.gieqs.com/login?destination=tagvideo?videoid=' . $videoid;
+            $emailVaryarray['linkVideo'] = 'https://www.gieqs.com/login?destination=tagvideo&videoid=' . $videoid;
             
             //$emailVaryarray['image'] = $video_moderation->getMailImage($videoid);
             $emailVaryarray['video_name'] = $video->getname();

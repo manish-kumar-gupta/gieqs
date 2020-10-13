@@ -100,7 +100,7 @@ if ($userFunctions->getUserFromKey($key)){
             // $email = array(0 => $users->getemail()); //original version
             $email = $users->getemail();
             $emailVaryarray['key'] = $users->getkey();
-            $emailVaryarray['linkVideo'] = 'https://www.gieqs.com/pages/learning/scripts/forms/videoChapterForm.php?id=' . $videoid;
+            $emailVaryarray['linkVideo'] = 'https://www.gieqs.com/login?destination=tagvideo&videoid=' . $videoid;
             $emailVaryarray['image'] = $video_moderation->getMailImage($videoid);
             $emailVaryarray['video_name'] = $video->getname();
             

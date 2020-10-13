@@ -40,6 +40,21 @@ if (isset($_GET['destination'])) {
 
     }
 
+  }else if ($destination == 'viewvideo'){
+
+    //define other constant
+
+    if (isset($_GET['videoid']) & is_numeric($_GET['videoid'])){
+
+      $videoid = $_GET['videoid'];
+      $target = 'pages/learning/viewer.php?id=' . $videoid;
+
+    }else{
+
+      $destination = null;
+
+    }
+
   }else {
 
     $destination = null;
