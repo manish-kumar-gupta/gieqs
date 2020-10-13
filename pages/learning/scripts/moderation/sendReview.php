@@ -4,6 +4,8 @@ $openaccess = 0;
 
 $requiredUserLevel = 2;
 
+
+
 require ('../../includes/config.inc.php');	
 
 require (BASE_URI . '/assets/scripts/login_functions.php');
@@ -18,7 +20,14 @@ require (BASE_URI . '/assets/scripts/login_functions.php');
      
      require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
 
+     require(BASE_URI.'/vendor/autoload.php');    
+     
+     use PHPMailer\PHPMailer\PHPMailer;
+     use PHPMailer\PHPMailer\Exception;
+
 $debug = false;
+
+$mail = new PHPMailer;
 
 function time_elapsed_string($datetime, $full = false) {
   $now = new DateTime;
@@ -47,6 +56,16 @@ function time_elapsed_string($datetime, $full = false) {
 
   if (!$full) $string = array_slice($string, 0, 1);
   return $string ? implode(', ', $string) . ' ago' : 'just now';
+}
+
+function get_include_contents($filename, $variablesToMakeLocal) {
+    extract($variablesToMakeLocal);
+    if (is_file($filename)) {
+        ob_start();
+        include $filename;
+        return ob_get_clean();
+    }
+    return false;
 }
 
 //require (BASE_URI.'/scripts/headerCreatorV2.php');
@@ -213,8 +232,20 @@ if ($videoid && $userid){
              $filename = '/assets/email/reviewMailTagging.php';
  
              $subject = 'Tagging Review Request for GIEQs Online';
+
+             $mail->CharSet = "UTF-8";
+             $mail->Encoding = "base64";
+             $mail->Subject = $subject;
+             $mail->setFrom('admin@gieqs.com', 'GIEQs Online');
+             $mail->addAddress($emailVaryarray['email']);
+             $mail->msgHTML(get_include_contents(BASE_URI . $filename, $emailVaryarray));
+             $mail->AltBody = strip_tags((get_include_contents(BASE_URI . $filename, $emailVaryarray)));
+             $mail->preSend();
+             $mime = $mail->getSentMIMEMessage();
+             $mime = rtrim(strtr(base64_encode($mime), '+/', '-_'), '=');
+
  
-             require(BASE_URI . '/assets/scripts/individualMailerGmailAPI.php');  //TEST MAIL
+             require(BASE_URI . '/assets/scripts/individualMailerGmailAPIPHPMailer.php');  //TEST MAIL
  
              //echo 'An email was sent to the registered email address of the user.';
  

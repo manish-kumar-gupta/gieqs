@@ -4,6 +4,8 @@ $openaccess = 0;
 
 $requiredUserLevel = 2;
 
+error_reporting(0);
+
 require ('../../includes/config.inc.php');	
 
 require (BASE_URI . '/assets/scripts/login_functions.php');
@@ -19,6 +21,23 @@ require (BASE_URI . '/assets/scripts/login_functions.php');
      require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
 
 $debug = false;
+
+function get_include_contents($filename, $variablesToMakeLocal) {
+    extract($variablesToMakeLocal);
+    if (is_file($filename)) {
+        ob_start();
+        include $filename;
+        return ob_get_clean();
+    }
+    return false;
+}
+
+require(BASE_URI.'/vendor/autoload.php');
+use PHPMailer\PHPMailer\PHPMailer;
+
+use PHPMailer\PHPMailer\Exception;
+
+$mail = new PHPMailer;
 
 function time_elapsed_string($datetime, $full = false) {
   $now = new DateTime;
@@ -165,9 +184,29 @@ if ($videoid && $taggerid && userid){
 
         $subject = 'You no longer need to tag video ' . $videoid . ' on GIEQs Online';
 
-        require_once(BASE_URI . '/assets/scripts/individualMailerGmailAPI.php');  //TEST MAIL
+        $mail->CharSet = "UTF-8";
 
-        echo 'An email was sent to the registered email address of the user.';
+        $mail->Encoding = "base64";
+
+        $mail->Subject = $subject;
+        $mail->setFrom('admin@gieqs.com', 'GIEQs Online');
+
+        $mail->addAddress($emailVaryarray['email']);
+        $mail->msgHTML(get_include_contents(BASE_URI . $filename, $emailVaryarray));
+
+        $mail->AltBody = strip_tags((get_include_contents(BASE_URI . $filename, $emailVaryarray)));
+
+        $mail->preSend();
+        $mime = $mail->getSentMIMEMessage();
+        $mime = rtrim(strtr(base64_encode($mime), '+/', '-_'), '=');
+
+
+
+        require_once(BASE_URI . '/assets/scripts/individualMailerGmailAPIPHPMailer.php');
+
+        //require_once(BASE_URI . '/assets/scripts/individualMailerGmailAPI.php');  //TEST MAIL
+
+        echo 'An email was sent to the registered email address of previous tagging user informing them that they no longer need to tag.';
 
         if ($debug){
 
@@ -175,8 +214,8 @@ if ($videoid && $taggerid && userid){
 
         }
 
-        $usersTagging->endusersTagging;
-        $users->endusers;
+        //$usersTagging->endusersTagging;
+        //$users->endusers;
         $users = new users;
     $usersTagging = new usersTagging;
         }
@@ -241,32 +280,64 @@ if ($videoid && $taggerid && userid){
 
         }
 
-        if ($rememberAlreadyTagged){
+        $filename = null;
+        $filename = '/assets/email/inviteMailTagging.php';
 
-        $filename2 = '/assets/email/inviteMailTagging.php';
-
+        $subject = null;
         $subject = 'You are invited to tag a video on GIEQs Online';
 
-        $messageText2 = get_include_contents(BASE_URI . $filename2, $emailVaryarray);
+        $mail = new PHPMailer;
+        $mime = null;
 
-        $message2 = createMessage('admin@gieqs.com', $email, $subject, $messageText2);
+        $mail->CharSet = "UTF-8";
+
+        $mail->Encoding = "base64";
+
+        $mail->Subject = $subject;
+        $mail->setFrom('admin@gieqs.com', 'GIEQs Online');
+
+        $mail->addAddress($emailVaryarray['email']);
+        $mail->msgHTML(get_include_contents(BASE_URI . $filename, $emailVaryarray));
+
+        $mail->AltBody = strip_tags((get_include_contents(BASE_URI . $filename, $emailVaryarray)));
+
+        $mail->preSend();
+        $mime = $mail->getSentMIMEMessage();
+        $mime = rtrim(strtr(base64_encode($mime), '+/', '-_'), '=');
+
+        if ($rememberAlreadyTagged){
 
         
-        sendMessage($service, $user, $message2);
+            $client = getClient();
+
+            $service = new \Google_Service_Gmail($client);
+
+            $message = new Google_Service_Gmail_Message();
+
+            $message->setRaw($mime);
+
+        //$messageText2 = get_include_contents(BASE_URI . $filename, $emailVaryarray);
+
+        //$message2 = createMessage('admin@gieqs.com', $email, $subject, $mime);
+
+            sendMessage($service, $user, $message);
+
         }else{
 
-            $filename = '/assets/email/inviteMailTagging.php';
+            //$filename = '/assets/email/inviteMailTagging.php';
 
-            $subject = 'You are invited to tag a video on GIEQs Online';
+            //$subject = 'You are invited to tag a video on GIEQs Online';
+            
 
-            require_once(BASE_URI . '/assets/scripts/individualMailerGmailAPI.php');
+
+            require_once(BASE_URI . '/assets/scripts/individualMailerGmailAPIPHPMailer.php');
 
 
         }
 
         //require(BASE_URI . '/assets/scripts/individualMailerGmailAPI.php');  //TEST MAIL
 
-        echo 'An email was sent to the registered email address of the user.';
+        echo 'An email was sent to the registered email address of the new invited tagger.';
 
         if ($debug){
 
@@ -286,4 +357,4 @@ if ($videoid && $taggerid && userid){
     exit();
 }
 
-$users->endusers();
+//$users->endusers();

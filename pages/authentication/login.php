@@ -25,7 +25,22 @@ if (isset($_GET['destination'])) {
     $target = 'pages/program/program-printable-catchup.php';
 
 
-  } else {
+  } else if ($destination == 'tagvideo'){
+
+    //define other constant
+
+    if (isset($_GET['videoid']) & is_numeric($_GET['videoid'])){
+
+      $videoid = $_GET['videoid'];
+      $target = 'pages/learning/scripts/forms/videoChapterForm.php?id=' . $videoid;
+
+    }else{
+
+      $destination = null;
+
+    }
+
+  }else {
 
     $destination = null;
 

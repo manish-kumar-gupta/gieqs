@@ -141,7 +141,7 @@ if ($userFunctions->getUserFromKey($key)){
 
 
 
-$users->endusers();?>
+//$users->endusers();?>
 </p> 
 </div>
         </div>

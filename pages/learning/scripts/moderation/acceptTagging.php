@@ -11,7 +11,7 @@ require ('../../includes/config.inc.php');
 require BASE_URI . '/head.php';
 
 
-$debug = false;
+$debug = true;
 
 
 $users = new users;

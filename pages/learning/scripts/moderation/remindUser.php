@@ -20,6 +20,24 @@ require (BASE_URI . '/assets/scripts/login_functions.php');
 
 $debug = true;
 
+require(BASE_URI.'/vendor/autoload.php');    
+     
+     use PHPMailer\PHPMailer\PHPMailer;
+     use PHPMailer\PHPMailer\Exception;
+
+//$debug = false;
+
+$mail = new PHPMailer;
+function get_include_contents($filename, $variablesToMakeLocal) {
+    extract($variablesToMakeLocal);
+    if (is_file($filename)) {
+        ob_start();
+        include $filename;
+        return ob_get_clean();
+    }
+    return false;
+}
+
 function time_elapsed_string($datetime, $full = false) {
   $now = new DateTime;
   $ago = new DateTime($datetime);
@@ -156,7 +174,8 @@ if ($videoid && $userid){
 
             //$users->Load_from_key($currentLockedUser[0]);
 
-            
+            $video->Load_from_key($videoid);
+
 
             //$users->Load_from_key($loggedInUser);
             $emailVaryarray['firstname'] = $users->getfirstname();
@@ -167,7 +186,7 @@ if ($videoid && $userid){
             $email = $users->getemail();
             $emailVaryarray['key'] = $users->getkey();
             
-            $emailVaryarray['linkVideo'] = 'https://www.gieqs.com/pages/learning/scripts/forms/videoChapterForm.php?id=' . $videoid;
+            $emailVaryarray['linkVideo'] = 'https://www.gieqs.com/login?destination=tagvideo?videoid=' . $videoid;
             
             //$emailVaryarray['image'] = $video_moderation->getMailImage($videoid);
             $emailVaryarray['video_name'] = $video->getname();
@@ -189,7 +208,21 @@ if ($videoid && $userid){
 
             $subject = 'Overdue Tagging Request for GIEQs Online';
 
-            require(BASE_URI . '/assets/scripts/individualMailerGmailAPI.php');  //TEST MAIL
+            $mail->CharSet = "UTF-8";
+             $mail->Encoding = "base64";
+             $mail->Subject = $subject;
+             $mail->setFrom('admin@gieqs.com', 'GIEQs Online');
+             $mail->addAddress($emailVaryarray['email']);
+             $mail->msgHTML(get_include_contents(BASE_URI . $filename, $emailVaryarray));
+             $mail->AltBody = strip_tags((get_include_contents(BASE_URI . $filename, $emailVaryarray)));
+             $mail->preSend();
+             $mime = $mail->getSentMIMEMessage();
+             $mime = rtrim(strtr(base64_encode($mime), '+/', '-_'), '=');
+
+ 
+             require(BASE_URI . '/assets/scripts/individualMailerGmailAPIPHPMailer.php'); 
+
+            //require(BASE_URI . '/assets/scripts/individualMailerGmailAPI.php');  //TEST MAIL
 
             echo 'An email was sent to the registered email address of the user.';
 
