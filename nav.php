@@ -27,17 +27,17 @@
               $liveAndLoggedIn = true;
               ?>
               <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-              <a class="nav-link dropdown-toggle animated bounce" style="color: rgb(238, 194, 120);" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">GIEQs Live Stream</a>
+              <a class="nav-link dropdown-toggle animated bounce" style="color: rgb(238, 194, 120);" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">GIEQs Digital Edition I</a>
               <div class="dropdown-menu dropdown-menu-lg dropdown-menu-arrow p-0">
                 <ul class="list-group list-group-flush">
-                  <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
+                 <!--  <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
                     <a href="#" class="list-group-item list-group-item-action dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <div class="media d-flex align-items-center">
-                        <!-- SVG icon -->
+                       
                         <figure style="width: 50px;">
                           <svg width="100%" height="100%" viewBox="0 0 328 284" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><path d="M96.367,205.433l135.015,0c12.588,0 -10.619,-55.25 -10.619,-55.25c-1.375,-3.287 -4.68,-5.395 -7.842,-6.69l-21.35,-9.83l-10.258,-8.649l-16.482,16.392l-0.012,0l7.111,47.547c0.023,0.165 -0.016,0.329 -0.114,0.464l-7.435,10.178c-0.12,0.162 -0.309,0.258 -0.51,0.258c-0.201,0 -0.39,-0.096 -0.507,-0.258l-7.438,-10.178c-0.098,-0.135 -0.139,-0.299 -0.113,-0.464l7.111,-47.547l-0.011,0l-16.481,-16.392l-10.257,8.649l-21.35,9.83c-3.158,1.295 -6.263,3.264 -7.843,6.69c0.003,0 -23.202,55.25 -10.615,55.25Z" style="fill:#eec278;fill-rule:nonzero;"/><path d="M163.875,129.409c16.285,0 38.131,-20.346 38.501,-54.462c0.236,-23.674 -11.038,-37.841 -38.501,-37.841c-27.464,0 -38.742,14.167 -38.501,37.842c0.369,34.116 19.442,54.461 38.501,54.461Zm-7.74,-44.954c19.91,2.121 37.271,-25.726 36.988,-0.793c-0.168,14.924 -14.012,37.462 -29.245,37.462c-15.988,0 -27.021,-18.731 -29.247,-37.454c-2.413,-20.306 34.859,-15.679 21.504,0.785Z" style="fill:#eec278;fill-rule:nonzero;"/><path d="M312.75,0l-297.75,0c-8.285,0 -15,6.715 -15,15l0,212.539c0,8.285 6.716,15 15,15l297.75,0c8.284,0 15,-6.715 15,-15l0,-212.539c0,-8.285 -6.716,-15 -15,-15Zm-7.5,220.039l-282.75,0l0,-197.539l282.75,0l0,197.539Z" style="fill:#eec278;fill-rule:nonzero;"/><path d="M0,266.394c0,4.576 3.709,8.287 8.285,8.287l79.775,0l0,-16.573l-79.775,0c-4.575,0 -8.285,3.71 -8.285,8.286Z" style="fill:#eec278;fill-rule:nonzero;"/><path d="M319.464,258.108l-199.349,0l0,16.574l199.349,0c4.576,0 8.286,-3.711 8.286,-8.287c0,-4.578 -3.71,-8.287 -8.286,-8.287Z" style="fill:#eec278;fill-rule:nonzero;"/><path d="M104.09,249.423c-5.495,0 -9.965,4.471 -9.965,9.964l0,14.013c0,5.494 4.47,9.965 9.965,9.965c5.493,0 9.962,-4.471 9.962,-9.965l0,-14.012c0,-5.494 -4.469,-9.965 -9.963,-9.965Z" style="fill:#eec278;fill-rule:nonzero;"/></svg>
                         </figure>
-                        <!-- Media body -->
+                        
                         <div class="media-body ml-3">
                           <h6 class="mb-1">Live Stream</h6>
                           <p class="mb-0">2 streams. <br/><strong>Plenary</strong>- focussed on everyday endoscopy. <br/><strong>Complex</strong> - focussed on the next steps</p>
@@ -111,7 +111,7 @@
                       </li>
                     
                     </ul>
-                  </li>
+                  </li> -->
                   <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
                     <a href="#" class="list-group-item list-group-item-action dropdown-toggle" aria-haspopup="true" aria-expanded="false" role="button" data-toggle="dropdown">
                       <div class="media d-flex align-items-center">
@@ -127,15 +127,15 @@
                       </div>
                     </a>
                     <ul class="dropdown-menu">
-                      <li>
+                      <!-- <li>
                         <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/live/programLive.php">
                           View the programme
                         </a>
-                      </li>
+                      </li> -->
 
                       <li>
                         <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program-printable-catchup-public.php">
-                          Catch up (full day lag before items available)
+                          GIEQs Digital Edition I - On Demand
                         </a>
                       </li>
                     
@@ -144,11 +144,9 @@
                   <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
                     <a href="#" class="list-group-item list-group-item-action dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <div class="media d-flex align-items-center">
-                        <!-- SVG icon -->
                         <figure style="width: 50px;">
                           <svg width="100%" height="100%" viewBox="0 0 36 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><path d="M23.804,4.718c-0.083,-0.084 -0.187,-0.144 -0.298,-0.18l-6.732,-2.113c-2.691,-0.845 -4.443,0.629 -4.914,1.102c-0.276,0.276 -0.486,0.566 -0.594,0.819l-2.999,7.053c-0.172,0.403 -0.113,0.941 0.156,1.477c0.386,0.766 1.08,1.318 1.91,1.517c0.93,0.222 1.893,-0.08 2.648,-0.834c0.197,-0.197 0.365,-0.414 0.464,-0.599l1.008,-1.87c0.166,-0.309 0.407,-0.63 0.66,-0.884c0.865,-0.865 1.276,-0.469 1.451,-0.301c1.508,1.455 9.415,9.396 9.415,9.396c0.281,0.282 0.223,0.815 -0.129,1.166c-0.351,0.35 -0.885,0.41 -1.165,0.13l-2.222,-2.22c-0.286,-0.288 -0.748,-0.288 -1.035,0c-0.286,0.284 -0.286,0.748 0,1.034l2.222,2.222c0.28,0.28 0.222,0.813 -0.129,1.163c-0.351,0.352 -0.886,0.411 -1.165,0.131l-2.222,-2.221c-0.287,-0.286 -0.75,-0.286 -1.035,0c-0.287,0.284 -0.287,0.749 0,1.035l2.221,2.222c0.281,0.28 0.22,0.813 -0.13,1.164c-0.351,0.351 -0.884,0.411 -1.165,0.129l-2.222,-2.22c-0.285,-0.286 -0.749,-0.286 -1.035,0c-0.285,0.285 -0.285,0.75 0,1.034l2.222,2.222c0.281,0.281 0.221,0.815 -0.129,1.166c-0.353,0.351 -0.886,0.41 -1.166,0.129l-2.704,-2.706c0.386,-0.581 0.281,-1.423 -0.292,-1.998c-0.642,-0.642 -1.63,-0.701 -2.201,-0.128c0.571,-0.572 0.515,-1.558 -0.128,-2.201c-0.644,-0.642 -1.629,-0.701 -2.201,-0.13c0.572,-0.571 0.514,-1.557 -0.13,-2.199c-0.642,-0.643 -1.628,-0.702 -2.201,-0.13c0.573,-0.572 0.514,-1.557 -0.129,-2.202c-0.601,-0.601 -1.498,-0.683 -2.08,-0.225l-4.38,-4.379c-0.285,-0.286 -0.75,-0.286 -1.035,0c-0.285,0.285 -0.285,0.749 0,1.036l4.368,4.367l-1.296,1.295c-0.571,0.571 -0.513,1.557 0.131,2.201c0.642,0.642 1.627,0.701 2.2,0.129c-0.573,0.572 -0.514,1.557 0.129,2.2c0.642,0.642 1.629,0.702 2.201,0.13c-0.572,0.572 -0.515,1.557 0.129,2.2c0.643,0.643 1.629,0.702 2.2,0.13c-0.571,0.571 -0.513,1.556 0.13,2.2c0.643,0.642 1.628,0.701 2.201,0.129l1.368,-1.367l2.685,2.685c0.858,0.857 2.307,0.797 3.236,-0.13c0.452,-0.452 0.694,-1.03 0.727,-1.601c0.572,-0.034 1.15,-0.276 1.602,-0.729c0.453,-0.452 0.696,-1.03 0.73,-1.601c0.571,-0.034 1.147,-0.276 1.601,-0.729c0.453,-0.453 0.695,-1.029 0.728,-1.602c0.572,-0.033 1.15,-0.274 1.603,-0.729c0.927,-0.927 0.984,-2.379 0.129,-3.234l-1.133,-1.134l4.65,-4.649c0.286,-0.285 0.286,-0.749 0,-1.035l-6.729,-6.733Z" style="fill:#eec278;fill-rule:nonzero;"/><path d="M34.825,6.355l-5.926,-5.926c-0.572,-0.572 -1.499,-0.572 -2.072,0l-2.071,2.07c-0.572,0.572 -0.572,1.499 0,2.071l5.926,5.927c0.573,0.572 1.5,0.572 2.072,0l2.071,-2.071c0.57,-0.572 0.57,-1.5 0,-2.071Zm-3.111,3.018c-0.663,0 -1.201,-0.538 -1.201,-1.202c0,-0.663 0.538,-1.202 1.201,-1.202c0.664,0 1.203,0.538 1.203,1.202c-0.001,0.663 -0.539,1.202 -1.203,1.202Z" style="fill:#eec278;fill-rule:nonzero;"/></svg>
                         </figure>
-                        <!-- Media body -->
                         <div class="media-body ml-3">
                           <h6 class="mb-1">Sponsors</h6>
                           <p class="mb-0">Come and meet our fantastic sponsors.</p>
@@ -161,22 +159,14 @@
                           <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Platinum</a>
                           <a href="<?php echo BASE_URL;?>/pages/learning/pages/live/sponsor-boston.php" class="dropdown-item">Boston<!--  <img class="w-100" alt="Boston Scientific" src="<?php echo BASE_URL . '/assets/img/brand/boston.jpg';?>"> -->
                           </a>
-                          <!-- <a href="sections.html#footers" class="dropdown-item">Footers</a>
-                          <a href="sections.html#blog" class="dropdown-item">Blog</a>
-                          <a href="sections.html#call-to-action" class="dropdown-item">Call to action</a>
-                          <a href="sections.html#clients" class="dropdown-item">Clients</a>
-                          <a href="sections.html#collapse" class="dropdown-item">Collapse</a> -->
+                         
                         </div>
                         <div class="col-sm-3">
                           <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Gold</a>
 
                           <a href="<?php echo BASE_URL;?>/pages/learning/pages/live/sponsor-fujifilm.php" class="dropdown-item">Onis / Fujifilm</a>
 
-                          <!-- <a href="sections.html#features" class="dropdown-item">Features</a>
-                          <a href="sections.html#milestone" class="dropdown-item">Milestone</a>
-                          <a href="sections.html#pricing" class="dropdown-item">Pricing</a>
-                          <a href="sections.html#projects" class="dropdown-item">Projects</a>
-                          <a href="sections.html#subscribe" class="dropdown-item">Subscribe</a> -->
+                         
                         </div>
                         <div class="col-sm-3">
                           <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Silver</a>
@@ -185,22 +175,7 @@
                           <a href="<?php echo BASE_URL;?>/pages/learning/pages/live/sponsor-medtronic.php" class="dropdown-item">Medtronic</a>
                         
                         </div>
-                        <!-- <div class="col-sm-3">
-                          <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Bronze</a>
-
-                          <a href="sections.html#headers" class="dropdown-item">MudiPharma</a>
-                          <a href="sections.html#headers" class="dropdown-item">Norgine</a>
-                          <a href="sections.html#headers" class="dropdown-item">Dr Falk</a>
-                          <a href="sections.html#headers" class="dropdown-item">Prion Medical</a>
-                          <a href="sections.html#headers" class="dropdown-item">Cook Medical</a>
-                          <a href="sections.html#headers" class="dropdown-item">Boucart Medical</a>
-                          <a href="sections.html#headers" class="dropdown-item">Ovesco</a>
-                          <a href="sections.html#headers" class="dropdown-item">Sandoz</a>
-                          <a href="sections.html#headers" class="dropdown-item">Takeda</a>
-
-
-                          
-                        </div> -->
+                       
                       
                       </div>
                     </div>
@@ -214,7 +189,7 @@
                         </figure>
                         <!-- Media body -->
                         <div class="media-body ml-3">
-                          <h6 class="mb-1">Nursing Live Stream</h6>
+                          <h6 class="mb-1">Nursing Catch Up</h6>
                           <p class="mb-0">1 half-day stream. <br/><strong>Nursing</strong>- dedicated to the other half of the team.</p>
                         </div>
                       </div>
@@ -222,38 +197,24 @@
                     <ul class="dropdown-menu">
                       <li>
                         <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/live/nursing.php">
-                          Access Nursing Live Stream (Thurs AM Only)
+                          Nursing Stream On Demand
                         </a>
                       </li>
                       
                     
                     </ul>
                   </li>
-                  <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
+                  <!-- <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
                     <a href="https://app.sli.do/event/wxcyu5bh/live/questions?w=wFYcu" target="_blank" class="list-group-item list-group-item-action dropdown-toggle" aria-haspopup="true" aria-expanded="false">
                       <div class="flex-column align-items-right">
-                        <!-- SVG icon -->
                         <figure>
                             <img src="<?php echo BASE_URL;?>/assets/img/brand/qrslido_white.png" style="width: 200px;">
                         </figure>
                         <p>Scan Me with a SmartPhone or click to join the Q+A conversation</p>
                        
-                        <!-- Media body -->
-                        <!-- <div>
-                          <h6 class="mb-1">Join the discussion</h6>
-                          <p class="mb-0">Scan the code on your smartphone to join the discussion, ask questions and participate in polls.</p>
-                        </div> -->
                       </div>
                     </a>
-                    <!-- <ul class="dropdown-menu">
-                      <li>
-                        <a class="dropdown-item" href="<?php //echo BASE_URL;?>/pages/learning/pages/live/programLive.php">
-                          View the programme
-                        </a>
-                      </li>
-                    
-                    </ul> -->
-                  </li>
+                  </li> -->
                   
                 </ul>
               </div>
@@ -268,16 +229,17 @@
                 <!-- Program-basic, later to add dropdown with options -->
                 <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
                     <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">Programme</a>
+                        aria-haspopup="true" aria-expanded="false">Digital Courses</a>
                     
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Programme</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program.php"><i class="fas fa-columns"></i>Medical Programme</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/nursing.php"><i class="fas fa-columns"></i>Nursing Programme</a>
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Upcoming Courses [coming soon]</span>
+                    <a class="dropdown-item disabled" href="<?php echo BASE_URL;?>/pages/program/program_basic_colon.php"><i class="fas fa-columns"></i>Basic Colonoscopy Skills</a>
+                    <a class="dropdown-item disabled" href="<?php echo BASE_URL;?>/pages/program/program_trainer_colon.php"><i class="fas fa-columns"></i>Training Primer (Colonoscopy)</a>
+                    <a class="dropdown-item disabled" href="<?php echo BASE_URL;?>/pages/program/program_basic_polyp.php"><i class="fas fa-columns"></i>Basic Polypectomy</a>
                     
                     <div class="dropdown-divider"></div>
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Faculty</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/faculty.php"><i class="fas fa-user"></i>Faculty</a>
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">GIEQs Faculty</span>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/faculty_stable.php"><i class="fas fa-user"></i>Faculty</a>
                     
                     
                   </div>
@@ -336,13 +298,17 @@
                         aria-haspopup="true" aria-expanded="false">GIEQs Online</a>
                     
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Online tools for promoting<br/> quality in endoscopy</span>
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Digital Learning Library</span>
                     
                     
                 
                 
                     
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/index.php"><i class="fas fa-graduation-cap"></i>GIEQs Online BETA</a>
+                                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Scoring Systems</span>
+
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/smic"><i class="fas fa-graduation-cap"></i>Risk of Polyp Submucosal Invasion</a>
+
 
 
                 <?php }else{ ?>
