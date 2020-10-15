@@ -127,7 +127,7 @@
 
                         //rigid time structure
 
-                        $times = array(1=>'09:00:00', 2=>'07:35:00', 3=>'08:20:00', 4=>'09:30:00', 5=>'10:30:00', 6=>'11:15:00', 7=>'11:45:00', 8=>'12:50:00', 9=>'13:55:00', 10=>'15:00:00', 11=>'15:15:00', 12=>'16:30:00', );
+                        $times = array(1=>'08:30:00', 2=>'10:40:00', 3=>'12:30:00', 4=>'13:30:00', 5=>'15:30:00', 6=>'15:40:00', );
                         if ($debug){
                             echo '<br/><br/>times Array contains </br></br>';
                             print_r($times);}
@@ -171,7 +171,7 @@
 
                             //IF A BREAK MODIFY EDIT BREAKS HERE
 
-                            if ($timeValue == '11:15:00'){
+                            if ($timeValue == '12:30:00'){
                                 ?>
                                 <div class="row text-center align-middle border-left border-right border-bottom">
 
@@ -185,7 +185,7 @@
                             }
 
                             
-                            if ($timeValue == '15:15:00'){
+                            if ($timeValue == '15:30:00'){
                                 ?>
                                 <div class="row text-center align-middle border-left border-right border-bottom">
 
