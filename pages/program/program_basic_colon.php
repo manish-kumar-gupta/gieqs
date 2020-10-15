@@ -105,10 +105,9 @@ background-color: rgb(238, 194, 120);
                             <span class="btn-inner--text text-dark">Mon 16 Nov</span>
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         </a>
-                        <a href="#targetScrollProgramme" id="thursday" class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
+                        <!-- <a href="#targetScrollProgramme" id="thursday" class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
                             <span class="btn-inner--text text-dark">Tues 17 Nov</span>
-                            <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
-                        </a>
+                        </a> -->
                     </div>
 
                 </div>
@@ -143,7 +142,7 @@ background-color: rgb(238, 194, 120);
 
     const dataToSend = {
 
-        programmeid: 23 ,
+        programmeid: 32 ,
 
     }
 
@@ -151,7 +150,7 @@ background-color: rgb(238, 194, 120);
     console.log(jsonString);
 
     var request2 = $.ajax({
-        url: siteRoot + "assets/scripts/classes/generateProgramme_course.php",
+        url: siteRoot + "assets/scripts/classes/generateProgramme_course_single.php",
         type: "POST",
         contentType: "application/json",
         data: jsonString,

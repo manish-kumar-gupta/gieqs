@@ -113,10 +113,10 @@
 
                         <div class="row text-center border">
 
-                        <div class="col-2 p-1 pb-3 pt-3 border-right">
+                        <div class="col-3 p-1 pb-3 pt-3 border-right">
 
                         </div>
-                        <div class="col-5 p-1 pb-3 pt-3 border-right">
+                        <div class="col-9 p-1 pb-3 pt-3 border-right">
                         <span class="h4"><?php echo $programmes[0]['programmeTitle'];?></span>
                           </div>
 
@@ -127,7 +127,7 @@
 
                         //rigid time structure
 
-                        $times = array(1=>'07:30:00', 2=>'07:35:00', 3=>'08:20:00', 4=>'09:30:00', 5=>'10:30:00', 6=>'11:15:00', 7=>'11:45:00', 8=>'12:50:00', 9=>'13:55:00', 10=>'15:00:00', 11=>'15:15:00', 12=>'16:30:00', );
+                        $times = array(1=>'09:30:00', 2=>'07:35:00', 3=>'08:20:00', 4=>'09:30:00', 5=>'10:30:00', 6=>'11:15:00', 7=>'11:45:00', 8=>'12:50:00', 9=>'13:55:00', 10=>'15:00:00', 11=>'15:15:00', 12=>'16:30:00', );
                         if ($debug){
                             echo '<br/><br/>times Array contains </br></br>';
                             print_r($times);}
@@ -229,7 +229,7 @@
                             //start row
                             echo '<div class="row text-center align-middle border-left border-right border-bottom bg-dark">';
                             
-                            echo ' <div class="col-2 p-1 pb-3 pt-3 border-right">
+                            echo ' <div class="col-3 p-1 pb-3 pt-3 border-right">
                             <span class="tiny"
                                 style="color: rgb(238, 194, 120);">' . $sessionTimeFrom->format('H:i'). ' - ' . $sessionTimeTo->format('H:i') . '</span>
                             </div>';
@@ -268,7 +268,7 @@
                                     $programmeDate = new DateTime($response[0]['date']);
 
 
-                                    echo '<div class="col-5 p-1 pb-3 pt-3 border-right" style="cursor:pointer !important;" data-toggle="modal" data-target="#modal-' . $programmeDate->format('l') . '-' . $session1data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
+                                    echo '<div class="col-9 p-1 pb-3 pt-3 border-right" style="cursor:pointer !important;" data-toggle="modal" data-target="#modal-' . $programmeDate->format('l') . '-' . $session1data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
                                     <span class="sessionTitle h5">' . $session1data[0]['sessionTitle'] . '</span><br>
                                     <span class="sessionSubtitle">' . $session1data[0]['sessionSubtitle'] . '</span>
                                     </div>';
@@ -448,7 +448,7 @@
 
                                 }else{
 
-                                    echo '<div class="col-5 p-1 pb-3 pt-3 border-right">
+                                    echo '<div class="col-9 p-1 pb-3 pt-3 border-right">
                                     <span class="sessionTitle h5"></span><br>
                                     <span class="sessionSubtitle"></span>
                                     </div>';
@@ -489,7 +489,7 @@
 
                                 $programmeDate = new DateTime($response[0]['date']);
                                 
-                            echo '<div class="col-5 p-1 pb-3 pt-3 border-right" style="cursor:pointer !important;" data-toggle="modal" data-target="#modal-' . $programmeDate->format('l') . '-' . $session2data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
+                            echo '<div class="col-9 p-1 pb-3 pt-3 border-right" style="cursor:pointer !important;" data-toggle="modal" data-target="#modal-' . $programmeDate->format('l') . '-' . $session2data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
                                     <span class="sessionTitle h5">' . $session2data[0]['sessionTitle'] . '</span><br>
                                     <span class="sessionSubtitle">' . $session2data[0]['sessionSubtitle'] . '</span>
                                     </div>';
@@ -668,7 +668,7 @@
                            
                             }else{
 
-                                echo '<div class="col-5 p-1 pb-3 pt-3 border-right">
+                                echo '<div class="col-9 p-1 pb-3 pt-3 border-right">
                                 <span class="sessionTitle h5"></span><br>
                                 <span class="sessionSubtitle"></span>
                                 </div>';
@@ -733,10 +733,10 @@
 
                         <div class="row text-center border">
 
-                        <div class="col-2 p-1 pb-3 pt-3 border-right">
+                        <div class="col-3 p-1 pb-3 pt-3 border-right">
 
                         </div>
-                        <div class="col-5 p-1 pb-3 pt-3 border-right">
+                        <div class="col-9 p-1 pb-3 pt-3 border-right">
                         <span class="h4"><?php echo $programmes[0]['programmeTitle'];?></span>
                           </div>
 
@@ -851,7 +851,7 @@
                             //start row
                             echo '<div class="row text-center align-middle border-left border-right border-bottom bg-dark">';
                             
-                            echo ' <div class="col-2 p-1 pb-3 pt-3 border-right">
+                            echo ' <div class="col-3 p-1 pb-3 pt-3 border-right">
                             <span class="tiny"
                                 style="color: rgb(238, 194, 120);">' . $sessionTimeFrom->format('H:i'). ' - ' . $sessionTimeTo->format('H:i') . '</span>
                             </div>';
@@ -887,7 +887,7 @@
 
                                     $programmeDate = new DateTime($response[0]['date']);
                                     
-                                    echo '<div class="col-5 p-1 pb-3 pt-3 border-right" style="cursor:pointer !important;" data-toggle="modal" data-target="#modal-' . $programmeDate->format('l') . '-' . $session1data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
+                                    echo '<div class="col-9 p-1 pb-3 pt-3 border-right" style="cursor:pointer !important;" data-toggle="modal" data-target="#modal-' . $programmeDate->format('l') . '-' . $session1data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
                                     <span class="sessionTitle h5">' . $session1data[0]['sessionTitle'] . '</span><br>
                                     <span class="sessionSubtitle">' . $session1data[0]['sessionSubtitle'] . '</span>
                                     </div>';
@@ -1065,7 +1065,7 @@
 
                                 }else{
 
-                                    echo '<div class="col-5 p-1 pb-3 pt-3 border-right">
+                                    echo '<div class="col-9 p-1 pb-3 pt-3 border-right">
                                     <span class="sessionTitle h5"></span><br>
                                     <span class="sessionSubtitle"></span>
                                     </div>';
@@ -1106,7 +1106,7 @@
 
                                 $programmeDate = new DateTime($response[0]['date']);
 
-                            echo '<div class="col-5 p-1 pb-3 pt-3 border-right" style="cursor:pointer !important;" data-toggle="modal" data-target="#modal-' . $programmeDate->format('l') . '-' . $session2data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
+                            echo '<div class="col-9 p-1 pb-3 pt-3 border-right" style="cursor:pointer !important;" data-toggle="modal" data-target="#modal-' . $programmeDate->format('l') . '-' . $session2data[0]['programmeid'] . '-' . $sessionTimeFrom->format('Hi') . '">
                                     <span class="sessionTitle h5">' . $session2data[0]['sessionTitle'] . '</span><br>
                                     <span class="sessionSubtitle">' . $session2data[0]['sessionSubtitle'] . '</span>
                                     </div>';
@@ -1285,7 +1285,7 @@
                            
                             }else{
 
-                                echo '<div class="col-5 p-1 pb-3 pt-3 border-right">
+                                echo '<div class="col-9 p-1 pb-3 pt-3 border-right">
                                 <span class="sessionTitle h5"></span><br>
                                 <span class="sessionSubtitle"></span>
                                 </div>';

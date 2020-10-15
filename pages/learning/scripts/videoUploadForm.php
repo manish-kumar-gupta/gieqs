@@ -178,7 +178,7 @@ background-color: rgb(238, 194, 120);
         
 
     $formv1 = new formGenerator;
-    $general = new general;
+    //$general = new general;
     $video = new video;
     $tagCategories = new tagCategories;
     $user = new users;
@@ -454,6 +454,9 @@ background-color: rgb(238, 194, 120);
                 echo $formv1->generateSelectCustom('Filmed by', 'recorder', '', $user->getUsers(), 'select the recording author [who filmed the procedure] from the list of users');
 
                 echo $formv1->generateSelectCustom('Edited by', 'editor', '', $user->getUsers(), 'select the editing author [who cut the raw video footage] from the list of users');
+
+                echo $formv1->generateSelect('superCategory', 'superCategory', '', 'superCategory', 'tooltip here');
+
 
 /*                 echo $formv1->generateSelectCustom('Active on site?', 'active', '', array(0=>'No', 1=>'Yes'), 'is the video to be active on the learning site?');
  */                echo $formv1->generateSelectCustom('Split into chapters?', 'split', '', array(0=>'No', 1=>'Yes'), 'should the video be split into chapters or available as is');
