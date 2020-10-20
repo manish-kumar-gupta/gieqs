@@ -177,7 +177,7 @@
 
                                     
                                     <div class="col-12 p-2 pb-3 pt-3">
-                                        <span class="h5" style="color: rgb(238, 194, 120);">Afternoon Tea Break | 10 minutes</span>
+                                        <span class="h5" style="color: rgb(238, 194, 120);">Morning Tea Break | 10 minutes</span>
                                     </div>
 
                                 </div>
@@ -190,7 +190,7 @@
                                 <div class="row text-center align-middle border-left border-right border-bottom">
 
                                     <div class="col-12 p-2 pb-3 pt-3">
-                                        <span class="h5" style="color: rgb(238, 194, 120);">Lunch Break | 30 minutes</span>
+                                        <span class="h5" style="color: rgb(238, 194, 120);">Lunch Break | 1 hour</span>
                                     </div>
 
                                 </div>

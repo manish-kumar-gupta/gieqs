@@ -96,6 +96,11 @@ background-color: rgb(238, 194, 120);
                             <span class="btn-inner--text text-dark">View Programme</span>
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         </a>
+                        <a href="#targetScrollProgramme" id="wednesdayTop"
+                            class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 scroll-me ml-3">
+                            <span class="btn-inner--text text-dark">Register Now!</span>
+                            <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+                        </a>
                     </div>
 
                 </div>
@@ -192,7 +197,7 @@ background-color: rgb(238, 194, 120);
                         <p class=""><span class="text-white">Format of the course:</span> The course is suitable for anyone who wants to improve their colonoscopy skills and ideal for trainees learning colonoscopy. The format of the course will be a mixture of short presentations, discussion groups and in depth analysis of colonoscopy technique. Delegates will be invited to participate at various junctures of the course and everyone will be able to pose questions at any time.</p> -->
                         <a href="#targetScrollProgramme" id="wednesday"
                             class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me mt-3">
-                            <span class="btn-inner--text text-dark">Mon 16 Nov</span>
+                            <span class="btn-inner--text text-dark">Register Now!</span>
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         </a>
                         <!-- <a href="#targetScrollProgramme" id="thursday" class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
