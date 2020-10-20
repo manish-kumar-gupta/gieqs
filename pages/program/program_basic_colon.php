@@ -91,7 +91,11 @@ background-color: rgb(238, 194, 120);
                         <span class="h1" style="color: rgb(238, 194, 120);">GIEQs - Basic Colonoscopy Skills Course (Virtual)<br/></span>
                         <span class="h3 mt-4" style="color: rgb(238, 194, 120);">Monday 16th November 2020<br/></span>
                         <span class="h5" style="color: rgb(238, 194, 120);">0830 - 1600 CET, on Demand thereafter<br/></span>
-
+                        <a href="#targetScrollProgramme" id="wednesdayTop"
+                            class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 scroll-me">
+                            <span class="btn-inner--text text-dark">View Programme</span>
+                            <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+                        </a>
                     </div>
 
                 </div>
@@ -187,7 +191,7 @@ background-color: rgb(238, 194, 120);
                         <p class=""><span class="text-white">What to expect:</span> We will demonstrate the essentials of how to control the instrument effectively, and how to diagnose and overcome failure to progress.  The goal will be to provide participants with a clear understanding of the essential components of high quality colonoscopy and practical advice of how to improve when they get back into the endoscopy room.</span></p>
                         <p class=""><span class="text-white">Format of the course:</span> The course is suitable for anyone who wants to improve their colonoscopy skills and ideal for trainees learning colonoscopy. The format of the course will be a mixture of short presentations, discussion groups and in depth analysis of colonoscopy technique. Delegates will be invited to participate at various junctures of the course and everyone will be able to pose questions at any time.</p> -->
                         <a href="#targetScrollProgramme" id="wednesday"
-                            class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
+                            class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me mt-3">
                             <span class="btn-inner--text text-dark">Mon 16 Nov</span>
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         </a>
