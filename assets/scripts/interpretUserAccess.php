@@ -12,7 +12,7 @@
 
 require(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
 
-$assetManager = new assetManager;
+//$assetManager = new assetManager;
 error_reporting(0);
 
 $debugUserAccess = false;
@@ -520,7 +520,7 @@ $info[] = $liveAccess;
 
    
 
-if ($assetManager->getSiteWideSubscription($userid, $debug)){
+/* if ($assetManager->getSiteWideSubscription($userid, $debug)){
 
   //there is a site wide subscription
   if ($debugUserAccess){
@@ -632,7 +632,7 @@ if ($assetManager->getSiteWideSubscription($userid, $debug)){
 
   
 
-}
+} */
 
 }
 
