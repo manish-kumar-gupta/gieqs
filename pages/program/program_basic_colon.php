@@ -88,7 +88,7 @@ background-color: rgb(238, 194, 120);
                 <div class="row text-center">
 
                     <div class="col-12 p-3 pb-5">
-                        <span class="h1" style="color: rgb(238, 194, 120);">GIEQs - Basic Colonoscopy Skills <br/>(1 day)<br/>
+                        <span class="h1" style="color: rgb(238, 194, 120);">GIEQs - Basic Colonoscopy Skills Course<br/>(1 day)<br/>
                             Scientific Programme</span>
                     </div>
 

@@ -81,6 +81,49 @@ function getDataQuery (table, query, fieldsToGetObject, outputFormat){
 
 }
 
+function getDataQueryLearning (table, query, fieldsToGetObject, outputFormat){
+
+	//outputFormat is 1 JSON 2 Table of HTML
+	
+	//ideA TO USE
+	
+	/*
+		
+		hello = new Object;
+		
+		hello['Identifier'] = 'id';
+	
+		getDataQuery('tags', '', hello, '1');
+	
+		
+		*/
+	
+	uriQuery = encodeURI(query);
+	
+	var datastring = 'table='+ table;
+	
+	datastring = datastring + '&outputFormat=' + outputFormat;
+	
+	
+	if (query){
+	
+	datastring = datastring + '&query=' + uriQuery;
+	
+	}
+	
+	datastring = datastring + '&' + jQuery.param(fieldsToGetObject);
+	
+	console.log('Requested data was '+datastring);
+	
+	return $.ajax({
+	        url: siteRoot + "assets/scripts/masterAjaxDataReturnQueryLearning.php",
+	        type: "get",
+	        data: datastring
+	
+	    });
+
+}
+
 function getFormData($form){
     var unindexed_array = $form.serializeArray();
     var indexed_array = {};
@@ -128,7 +171,7 @@ function getFormDatav3($form, table, identifier, identifierKey, update){
 
 	//push any data-disabled = true from $form;
 
-	$form = $form.find('input, select').filter(function ()
+	$form = $form.find('input, select, textarea').filter(function ()
 	{
 		if ($(this).attr('data-disabled') == "true") return false;
 

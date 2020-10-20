@@ -8,7 +8,16 @@
 
 //define token from url
 
+
+
+require(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
+
+$assetManager = new assetManager;
+error_reporting(0);
+
 $debugUserAccess = false;
+$debug = false;
+
 $info = [];
 
 $info[] = 'the redirect location is set as ' . $location;
@@ -435,7 +444,7 @@ if (in_array($userid, $liveTestingUsers)) {
 
 }
 
-if (liveTest){
+if ($liveTest){
     $currentTime = new DateTime('2020-10-08 12:45:20', $serverTimeZone);
     }
 
@@ -499,6 +508,131 @@ $info[] = $liveAccess;
 
         
     }  
+
+
+    # ******************** #
+    # ***** USER ACCESS SUBSCRIPTIONS ***** #
+
+
+
+    
+    //site wide access
+
+   
+
+if ($assetManager->getSiteWideSubscription($userid, $debug)){
+
+  //there is a site wide subscription
+  if ($debugUserAccess){
+    echo 'there is a site wide subscription';
+    }
+  
+  
+  //check if active 
+
+  $datetime_utc = new DateTime('now', new DateTimeZone('UTC'));
+
+  if ($assetManager->isSubscriptionActive($assetManager->getSiteWideSubscription($userid, $debugUserAccess), $datetime_utc, $debugUserAccess)){
+
+    //is active
+    if ($debugUserAccess){
+      echo 'it is active';
+      }
+
+      $siteWide = true;
+      $siteWideSubscriptionid = $assetManager->getSiteWideSubscription($userid, $debugUserAccess);
+      if ($currentUserLevel == '6'){
+
+        $currentUserLevel = '4';
+
+    }elseif($currentUserLevel == '5'){
+
+        $currentUserLevel = '4';
+
+    }
+
+    //check if expiring Soon
+
+    if ($assetManager->subscription_expires_soon($assetManager->getSiteWideSubscription($userid, $debugUserAccess), $debugUserAccess)){
+
+      //expiring soon
+
+      if ($debugUserAccess){
+        echo 'it is expiring soon';
+        }
+
+        $siteWideExpiring = true;
+
+
+    }else{
+
+      //not expiring soon
+
+      if ($debugUserAccess){
+        echo 'it is not expiring soon';
+        }
+
+        $siteWideExpiring = false;
+    }
+
+
+  }else{
+
+    //subscription inactive
+    if ($debugUserAccess){
+      echo 'the subscription is inactive';
+      }
+
+      if ($currentUserLevel < 4){
+
+        //allow GIEQs Pro
+        if ($debugUserAccess){
+          echo 'allow gieqs pro due to user level';
+          }
+          
+    
+      }
+
+  }
+
+}else{
+
+  //there is no site wide subscription
+
+  if ($debugUserAccess){
+    echo 'there is no site-wide subscription';
+    }
+
+    
+
+  //go by currentUserLevel
+  // if < 4 then ok and permanent
+
+  if ($currentUserLevel < 4){
+
+    //allow GIEQs Pro
+    if ($debugUserAccess){
+      echo 'allow gieqs pro due to user level';
+      }
+
+      $siteWide = true;
+
+  }else{
+
+    //no subscription and no user level access
+    //therefore no access
+    if ($debugUserAccess){
+      echo 'no subscription and no user level access
+      therefore no access';
+      }
+
+      $siteWide = false;
+
+  }
+
+  
+
+}
 
 }
 

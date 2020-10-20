@@ -8,8 +8,8 @@
 
     <?php
 
-//error_reporting(E_ALL);
 
+    error_reporting(0);
 
       //define user access level
 
@@ -19,10 +19,21 @@
 
 
       require BASE_URI . '/head.php';
+
+      $debug = false;
+      error_reporting(E_ALL);
       
       $general = new general;
       $users = new users;
       $users->Load_from_key($userid);
+      
+
+      require_once(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
+      $assetManager = new assetManager;
+
+      require_once(BASE_URI . '/assets/scripts/classes/subscriptions.class.php');
+      $subscription = new subscriptions;
+     
 
       ?>
 
@@ -189,21 +200,162 @@ top: -20vh;
           <div class="col-lg-9 order-lg-2">
             <!-- Change avatar -->
             <?php require(BASE_URI . '/pages/learning/pages/account/memberCard.php');?>
-            <!-- Section title -->
-            <div class="actions-toolbar py-2 mb-4">
-              <h5 class="mb-1">Attach a new card</h5>
-              <p class="text-sm text-muted mb-0">Add you credit card for faster checkout process.</p>
-            </div>
+
+<!--Site Wide Subscriptions
+            Asset User connections
+            -->
             <div class="card">
               <div class="card-header">
                 <div class="row">
                   <div class="col-5 col-lg-8">
-                    <span class="h6">Credit Card</span>
+                    <span class="h6">Site Wide Subscription Status</span>
                   </div>
                   <div class="col-7 col-lg-4 text-right">
-                    <img alt="Image placeholder" src="../../assets/img/icons/cards/mastercard.png" width="40" class="mr-2">
+                    <!-- <img alt="Image placeholder" src="../../assets/img/icons/cards/mastercard.png" width="40" class="mr-2">
                     <img alt="Image placeholder" src="../../assets/img/icons/cards/visa.png" width="40" class="mr-2">
-                    <img alt="Image placeholder" src="../../assets/img/icons/cards/skrill.png" width="40">
+                    <img alt="Image placeholder" src="../../assets/img/icons/cards/skrill.png" width="40"> -->
+                  </div>
+                </div>
+              </div>
+              <div>
+
+<!-- 
+
+know the user level
+-->
+
+<?php
+
+
+
+
+?>
+
+<!--
+  get linked subscription (should have value type of 1)
+there should only be 1
+to become a user 4 must have a linked subscription;
+
+get expiry
+
+get whether expiring soon su
+
+
+
+
+ -->
+
+                <ul class="list-group list-group-flush">
+
+                  <?php 
+                  
+                  if ($siteWide){
+
+                    //use $siteWideSubscriptionid to get data from subscriptions
+
+                    if ($debug){
+
+                      echo $siteWideSubscriptionid . ' is $siteWideSubscriptionid';
+                    }
+
+                    $subscription->Load_from_key($siteWideSubscriptionid);
+
+                    $expiry_date = null;
+
+                    $expiry_date = new DateTime($subscription->getexpiry_date(), new DateTimeZone('UTC'));
+
+                    $expiry_date->setTimezone(new DateTimeZone($users->gettimezone()));
+
+
+                    ?>
+
+                    <li class="list-group-item">
+                      <div class="row align-items-center">
+                        <div class="col-sm-4"><small class="h6 text-sm mb-3 mb-sm-0">Plan</small></div>
+                        <div class="col-sm-5">
+                          <strong><?php echo $assetManager->getAssetName($siteWideSubscriptionid);?></strong>
+                          <br/>
+                          Expires : <span class="expiry_date"><?php echo date_format($expiry_date,"d/m/Y");?></span>
+                          <br/>
+                          Renews : <span class="renewalFrequency"></span>
+                        </div>
+                        <div class="col-sm-3 text-sm-right">
+                          <?php if ($siteWideExpiring){ ?>
+
+                            <a href="#" class="btn btn-sm btn-primary rounded-pill mt-3 mt-sm-0 upgrade-plan">Renew</a>
+                            
+                            <?php
+                          }
+                          ?>
+<!--                           <a href="#" class="btn btn-sm btn-primary rounded-pill mt-3 mt-sm-0">Upgrade</a>
+ -->                        </div>
+                      </div>
+                    </li>
+
+<?php 
+                  }else{
+                    ?>
+
+                    <?php if ($users->getUserAccessLevel($userid) < 5){ ?>
+
+                      <li class="list-group-item">
+                        <div class="row align-items-center">
+                          <div class="col-sm-4"><small class="h6 text-sm mb-3 mb-sm-0">Plan</small></div>
+                          <div class="col-sm-5">
+                            <strong>GIEQs Pro Membership Via Status</strong>
+                            <br/>
+                          Expires :<span class="expiry_date">Never</span>
+                          <br/>
+                          Renews : <span class="renewalFrequency">Not Applicable</span>
+                          </div>
+                          <div class="col-sm-3 text-sm-right">
+  <!--                           <a href="#" class="btn btn-sm btn-primary rounded-pill mt-3 mt-sm-0">Upgrade</a>
+   -->                        </div>
+                        </div>
+                      </li>
+
+                      <?php } else { ?>
+
+                    <li class="list-group-item">
+                      <div class="row align-items-center">
+                        <div class="col-sm-4"><small class="h6 text-sm mb-3 mb-sm-0">Plan</small></div>
+                        <div class="col-sm-5">
+                          <strong>No Current Plan</strong>
+                        </div>
+                        <div class="col-sm-3 text-sm-right">
+
+                          <a href="#" class="btn btn-sm btn-primary rounded-pill mt-3 mt-sm-0 start-plan">Buy Plan</a>
+
+<!--                           <a href="#" class="btn btn-sm btn-primary rounded-pill mt-3 mt-sm-0">Upgrade</a>
+ -->                        </div>
+                      </div>
+                    </li>
+
+                    <?php } ?>
+<?php
+
+                  }
+                  ?>
+                  
+                  
+                </ul>
+              </div>
+            </div>
+
+
+
+            <!-- Section title -->
+            
+            <div class="card">
+              <div class="card-header">
+                <div class="row">
+                  <div class="col-5 col-lg-8">
+                    <span class="h6">Subscription Status</span>
+                  </div>
+                  <div class="col-7 col-lg-4 text-right">
+                    <!-- <img alt="Image placeholder" src="../../assets/img/icons/cards/mastercard.png" width="40" class="mr-2">
+                    <img alt="Image placeholder" src="../../assets/img/icons/cards/visa.png" width="40" class="mr-2">
+                    <img alt="Image placeholder" src="../../assets/img/icons/cards/skrill.png" width="40"> -->
                   </div>
                 </div>
               </div>
@@ -213,312 +365,179 @@ top: -20vh;
                     <div class="row align-items-center">
                       <div class="col-sm-4"><small class="h6 text-sm mb-3 mb-sm-0">Plan</small></div>
                       <div class="col-sm-5">
-                        <strong>Free</strong> plan, unlimited public repositories.
+                        <strong>Status</strong> benefits.
                       </div>
                       <div class="col-sm-3 text-sm-right">
                         <a href="#" class="btn btn-sm btn-primary rounded-pill mt-3 mt-sm-0">Upgrade</a>
                       </div>
                     </div>
                   </li>
-                  <li class="list-group-item">
-                    <div class="row">
-                      <div class="col-sm-4"><small class="h6 text-sm mb-3 mb-sm-0">Credit or debit cards</small></div>
-                      <div class="col-sm-8">
-                        <!-- First card -->
-                        <div class="row mb-3">
-                          <div class="col-9">
-                            <img alt="Image placeholder" src="../../assets/img/icons/cards/visa.png" class="mr-1" width="30">
-                            x-1023 (Expires on 11/2018)
-                          </div>
-                          <div class="col-3 actions text-right">
-                            <a href="#" class="action-item" data-toggle="tooltip" data-original-title="Remove card">
-                              <i class="fas fa-trash-alt"></i>
-                            </a>
-                          </div>
-                        </div>
-                        <!-- Second card -->
-                        <div class="row">
-                          <div class="col-9">
-                            <img alt="Image placeholder" src="../../assets/img/icons/cards/skrill.png" class="mr-1" width="30">
-                            x-3165 (Expires on 09/2017)
-                          </div>
-                          <div class="col-3 actions text-right">
-                            <a href="#" class="action-item" data-toggle="tooltip" data-original-title="Remove card">
-                              <i class="fas fa-trash-alt"></i>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="list-group-item">
-                    <div class="row">
-                      <div class="col-sm-4"><small class="h6 text-sm mb-3 mb-sm-0">Other information</small></div>
-                      <div class="col-sm-8">
-                        <strong>$27.00 <small>U.S Dollar</small></strong>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="list-group-item">
-                    <div class="row">
-                      <div class="col-sm-4"><small class="h6 text-sm mb-3 mb-sm-0">Your balance</small></div>
-                      <div class="col-sm-8">
-                        <p class="mb-0">
-                          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
-                        </p>
-                      </div>
-                    </div>
-                  </li>
+                  
                 </ul>
               </div>
             </div>
-            <!-- Payment history -->
+
+            
+
+            <!-- Payment history
+            GIEQs Pro
+            Then other specifics 
+            Use Asset User connection
+            Order desc
+
+            
+
+            -->
             <div class="mt-5">
               <div class="actions-toolbar py-2 mb-4">
                 <h5 class="mb-1">Payment history</h5>
-                <p class="text-sm text-muted mb-0">Add you credit card for faster checkout process.</p>
+                <p class="text-sm text-muted mb-0">A history of your payments.</p>
               </div>
               <div class="table-responsive">
                 <table class="table table-hover table-cards align-items-center">
+                  <thead>
+                    <th></th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Invoice Number</th>
+                    <th>Decription</th>
+                    <th>Amount</th>
+
+                  </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">
-                        <span class="badge badge-lg badge-dot">
-                          <i class="bg-success"></i>
-                        </span>
-                      </th>
-                      <td>
-                        <i class="fas fa-calendar-alt mr-2"></i>
-                        <span class="h6 text-sm">May 20, 2018</span>
-                      </td>
-                      <td>#10015</td>
-                      <td><i class="fas fa-credit-card mr-2"></i>Visa ending in 2035</td>
-                      <td>$49.00 USD</td>
-                      <td class="text-right">
-                        <div class="actions">
-                          <div class="dropdown">
-                            <a class="action-item" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                              <a class="dropdown-item" href="#"><i class="fas fa-file-pdf"></i>Download invoice</a>
-                              <a class="dropdown-item" href="#"><i class="fas fa-file-archive"></i>See details</a>
-                              <a class="dropdown-item" href="#"><i class="fas fa-trash-alt"></i>Delete</a>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr class="table-divider"></tr>
-                    <tr>
-                      <th scope="row">
-                        <span class="badge badge-lg badge-dot">
-                          <i class="bg-danger"></i>
-                        </span>
-                      </th>
-                      <td>
-                        <i class="fas fa-calendar-alt mr-2"></i>
-                        <span class="h6 text-sm">Apr 15, 2018</span>
-                      </td>
-                      <td>#10015</td>
-                      <td><i class="fas fa-credit-card mr-2"></i>Visa ending in 2035</td>
-                      <td><span class="text-danger">$39.00 USD</span></td>
-                      <td class="text-right">
-                        <div class="actions">
-                          <div class="dropdown">
-                            <a class="action-item" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                              <a class="dropdown-item" href="#"><i class="fas fa-file-pdf"></i>Download invoice</a>
-                              <a class="dropdown-item" href="#"><i class="fas fa-file-archive"></i>See details</a>
-                              <a class="dropdown-item" href="#"><i class="fas fa-trash-alt"></i>Delete</a>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr class="table-divider"></tr>
-                    <tr>
-                      <th scope="row">
-                        <span class="badge badge-lg badge-dot">
-                          <i class="bg-success"></i>
-                        </span>
-                      </th>
-                      <td>
-                        <i class="fas fa-calendar-alt mr-2"></i>
-                        <span class="h6 text-sm">May 20, 2018</span>
-                      </td>
-                      <td>#10015</td>
-                      <td><i class="fas fa-credit-card mr-2"></i>Visa ending in 2035</td>
-                      <td>$49.00 USD</td>
-                      <td class="text-right">
-                        <div class="actions">
-                          <div class="dropdown">
-                            <a class="action-item" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                              <a class="dropdown-item" href="#"><i class="fas fa-file-pdf"></i>Download invoice</a>
-                              <a class="dropdown-item" href="#"><i class="fas fa-file-archive"></i>See details</a>
-                              <a class="dropdown-item" href="#"><i class="fas fa-trash-alt"></i>Delete</a>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr class="table-divider"></tr>
-                    <tr>
-                      <th scope="row">
-                        <span class="badge badge-lg badge-dot">
-                          <i class="bg-danger"></i>
-                        </span>
-                      </th>
-                      <td>
-                        <i class="fas fa-calendar-alt mr-2"></i>
-                        <span class="h6 text-sm">Apr 15, 2018</span>
-                      </td>
-                      <td>#10015</td>
-                      <td><i class="fas fa-credit-card mr-2"></i>Visa ending in 2035</td>
-                      <td><span class="text-danger">$39.00 USD</span></td>
-                      <td class="text-right">
-                        <div class="actions">
-                          <div class="dropdown">
-                            <a class="action-item" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                              <a class="dropdown-item" href="#"><i class="fas fa-file-pdf"></i>Download invoice</a>
-                              <a class="dropdown-item" href="#"><i class="fas fa-file-archive"></i>See details</a>
-                              <a class="dropdown-item" href="#"><i class="fas fa-trash-alt"></i>Delete</a>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr class="table-divider"></tr>
-                    <tr>
-                      <th scope="row">
-                        <span class="badge badge-lg badge-dot">
-                          <i class="bg-danger"></i>
-                        </span>
-                      </th>
-                      <td>
-                        <i class="fas fa-calendar-alt mr-2"></i>
-                        <span class="h6 text-sm">Apr 15, 2018</span>
-                      </td>
-                      <td>#10015</td>
-                      <td><i class="fas fa-credit-card mr-2"></i>Visa ending in 2035</td>
-                      <td><span class="text-danger">$39.00 USD</span></td>
-                      <td class="text-right">
-                        <div class="actions">
-                          <div class="dropdown">
-                            <a class="action-item" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                              <a class="dropdown-item" href="#"><i class="fas fa-file-pdf"></i>Download invoice</a>
-                              <a class="dropdown-item" href="#"><i class="fas fa-file-archive"></i>See details</a>
-                              <a class="dropdown-item" href="#"><i class="fas fa-trash-alt"></i>Delete</a>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
+
+          <?php 
+          
+            $subscriptions = $assetManager->returnCombinationUserSubscription($userid);
+
+            $current_date = new DateTime('now', new DateTimeZone('UTC'));
+
+          if ($debug){
+          print_r($subscriptions);
+          }
+          
+          
+          
+          foreach ($subscriptions as $key=>$value){
+
+
+            $start_date = null;
+
+            $start_date = new DateTime($value['start_date'], new DateTimeZone('UTC'));
+
+            $start_date->setTimezone(new DateTimeZone($users->gettimezone()));
+
+            $expiry_date = null;
+
+            $expiry_date = new DateTime($value['expiry_date'], new DateTimeZone('UTC'));
+
+            $expiry_date->setTimezone(new DateTimeZone($users->gettimezone()));
+
+
+
+            if ($debug){
+            echo $value['id'];
+            echo $value['asset_id'];
+            
+            echo '<br/>' . date_format($start_date,"d/m/Y H:i:s");
+            echo '<br/>';
+            echo $users->gettimezone();
+            echo '<br/>';
+            echo '<br/>';
+            echo '<br/>' . date_format($start_date,"d/m/Y H:i:s");
+            echo '<br/>';
+            echo $value['start_date'];
+
+            echo '<br/>' . date_format($expiry_date,"d/m/Y H:i:s");
+            echo '<br/>';
+            echo $users->gettimezone();
+            echo '<br/>';
+            echo '<br/>';
+            echo '<br/>' . date_format($expiry_date,"d/m/Y H:i:s");
+            echo '<br/>';
+            echo $value['expiry_date'];
+
+
+            echo $value['expiry_date'];
+            echo $value['active'];
+
+            echo $assetManager->subscription_expires_soon($value['id'], $debug);
+            
+
+            }
+
+            $cost = $assetManager->getCost($value['id']);
+            ?>
+
+
+            
+            <tr data="<?php echo $value['id'];?>">
+              <th scope="row">
+                <span class="badge badge-lg badge-dot">
+
+                  <?php if ($assetManager->subscription_expires_soon($value['id'], $debug) === true){ ?>
+                    <i class="bg-warning" title="Expires Soon" data-toggle="tooltip"></i>
+
+                  
+                  <?php } elseif ($assetManager->isSubscriptionActive($value['id'], $current_date, $debug) === true){ ?>
+                  <i class="bg-success" title="Active" data-toggle="tooltip"></i>
+                  <?php } else { ?>
+
+                    <i class="bg-danger" title="Inactive or Unpaid" data-toggle="tooltip"></i>
+
+
+                  <?php } ?>
+
+                </span>
+              </th>
+              <!-- <td class="identifier" style="display:none;">
+                <?php echo $value['id'];?>
+              </td> -->
+              <td>
+                <i class="fas fa-calendar-alt mr-2"></i>
+                <span class="h6 text-sm"><?php echo date_format($start_date,"d/m/Y");?></span>
+              </td>
+              <td>
+                <i class="fas fa-calendar-alt mr-2"></i>
+                <span class="h6 text-sm"><?php echo date_format($expiry_date,"d/m/Y");?></span>
+              </td>
+              <td>#<?php echo $value['id'];?></td>
+              <td><!-- <i class="fas fa-credit-card mr-2"></i>Electronic --><?php echo $assetManager->getAssetName($value['id']);?></td>
+              <td><?php echo $cost;?> EUR</td>
+              <td class="text-right">
+                <div class="actions">
+                  <div class="dropdown">
+                    <a class="action-item" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                      <a class="dropdown-item" href="mailto:gieqs@seauton-international.com?subject=Invoice Please for GIEQs.com Subscription ID <?php echo $value['id'];?>"><i class="fas fa-file-pdf"></i>Request invoice</a>
+                     <!--  <a class="dropdown-item" href="#"><i class="fas fa-file-archive"></i>See details</a>
+                      <a class="dropdown-item" href="#"><i class="fas fa-trash-alt"></i>Delete</a> -->
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr class="table-divider"></tr>
+
+
+
+
+<?php
+          }
+          
+          ?>
+
+            
+
+            
+                    
+                    
                   </tbody>
                 </table>
               </div>
             </div>
             <!-- Attach a new card -->
-            <div class="mt-5">
-              <div class="actions-toolbar py-2 mb-4">
-                <h5 class="mb-1">Attach a new card</h5>
-                <p class="text-sm text-muted mb-0">Add you credit card for faster checkout process.</p>
-              </div>
-              <form>
-                <div class="card">
-                  <div class="card-header">
-                    <div class="row">
-                      <div class="col-5 col-lg-8">
-                        <span class="h6">Credit Card</span>
-                        <p class="text-muted text-sm mt-2 mb-0 d-none d-lg-block">Safe money transfer using your bank account. We support Mastercard, Visa, Maestro and Skrill.</p>
-                      </div>
-                      <div class="col-7 col-lg-4 text-right">
-                        <img alt="Image placeholder" src="../../assets/img/icons/cards/mastercard.png" width="40" class="mr-2">
-                        <img alt="Image placeholder" src="../../assets/img/icons/cards/visa.png" width="40" class="mr-2">
-                        <img alt="Image placeholder" src="../../assets/img/icons/cards/skrill.png" width="40">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-body">
-                    <div class="row mt-3">
-                      <div class="col-md-12">
-                        <div class="form-group">
-                          <label class="form-control-label">Card number</label>
-                          <div class="input-group input-group-merge">
-                            <input type="text" class="form-control" data-mask="0000 0000 0000 0000" placeholder="4789 5697 0541 7546">
-                            <div class="input-group-append">
-                              <span class="input-group-text"><i class="fas fa-credit-card"></i></span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label class="form-control-label">Name on card</label>
-                          <input type="text" class="form-control" placeholder="John Doe">
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label class="form-control-label">Expiry date</label>
-                          <input type="text" class="form-control" data-mask="00/00" placeholder="MM/YY">
-                        </div>
-                      </div>
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label class="form-control-label">CVV code</label>
-                          <div class="input-group input-group-merge">
-                            <input type="text" class="form-control" data-mask="000" placeholder="746">
-                            <div class="input-group-append">
-                              <span class="input-group-text"><i class="fas fa-question-circle"></i></span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="text-right">
-                      <button type="button" class="btn btn-sm btn-primary">Save card</button>
-                    </div>
-                  </div>
-                </div>
-                <!-- Add money using PayPal -->
-                <div class="card">
-                  <div class="card-header">
-                    <div class="row">
-                      <div class="col-6">
-                        <span class="h6">PayPal</span>
-                        <p class="text-sm text-muted mt-2 mb-0 d-none d-lg-block">Pay your order using the most known and secure platform for online money transfers. You will be redirected to PayPal to finish complete your purchase.</p>
-                      </div>
-                      <div class="col-6 text-right">
-                        <img alt="Image placeholder" src="../../assets/img/icons/cards/paypal-256x160.png" width="70">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="card-body">
-                    <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
-                      <label class="btn btn-sm btn-secondary flex-fill">
-                        <input type="radio" name="options" id="checkboxButton3"> $10
-                      </label>
-                      <label class="btn btn-sm btn-secondary flex-fill">
-                        <input type="radio" name="options" id="checkboxButton4"> $25
-                      </label>
-                      <label class="btn btn-sm btn-secondary flex-fill">
-                        <input type="radio" name="options" id="checkboxButton5"> $50
-                      </label>
-                      <label class="btn btn-sm btn-secondary flex-fill">
-                        <input type="radio" name="options" id="checkboxButton6"> $100
-                      </label>
-                    </div>
-                    <div class="text-right mt-3">
-                      <a href="#" class="btn btn-sm btn-primary">Pay with PayPal</a>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
+            
           </div>
           <?php require BASE_URI . '/pages/learning/pages/account/sidenav.php';?>
         </div>

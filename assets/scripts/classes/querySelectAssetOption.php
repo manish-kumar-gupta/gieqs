@@ -1,8 +1,7 @@
 
 <?php
+//error_reporting(E_ALL);
 //;
-error_reporting(0);
-
 $openaccess = 1;
 //echo 'hello';
 //$requiredUserLevel = 4;
@@ -10,11 +9,17 @@ require ('../../../assets/includes/config.inc.php');
 //echo 'hello2';
 require (BASE_URI.'/assets/scripts/headerScript.php');
 
+//echo 'hello34';
 
-
-//echo 'hello3';
 //$general = new general;
-$videosAccess = new videosAccess;
+//$queries = new queries;
+
+//spl_autoload_unregister ('class_loader');
+
+	  
+	  
+
+$assetManager = new assetManager;
 //echo 'hello4';
 
 
@@ -35,7 +40,7 @@ function ne($v) {
 
 //check count of get variables
 
-$data = $videosAccess->sanitiseGET($_GET);
+$data = $assetManager->sanitiseGET($_GET);
 	
 foreach ($data as $key=>$value){
     
@@ -43,14 +48,16 @@ foreach ($data as $key=>$value){
     
 }
 
+//print_r($data);
+
                 
-	$response =  $videosAccess->select2_video_programme($search);
+	$response =  $assetManager->select2_asset_match($search);
 
 	echo $response;
     
     
 
 
-	$videosAccess->endvideosAccess();
+	//$queries->endqueries();
 
       

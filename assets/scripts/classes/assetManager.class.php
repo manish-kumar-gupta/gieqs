@@ -1,0 +1,957 @@
+<?php
+/*
+ * Author: David Tate  - www.gieqs.com
+ *
+ * Create Date: 1-06-2020
+ *
+ * DJT 2019
+ *
+ * License: LGPL
+ *
+ */
+
+error_reporting(E_ALL);
+
+Class assetManager {
+
+	
+	private $connection;
+
+	public function __construct(){
+        require_once 'DatabaseMyssqlPDOLearning.class.php';
+		$this->connection = new DataBaseMysqlPDOLearning();
+	}
+
+    /**
+     * get a select2 box
+     *
+     */
+
+    public function select2_video_match($search)
+    {
+    
+    $q = "Select 
+    `id`, `name`
+    FROM `video`
+    WHERE `id` = '$search'";
+
+    $result = $this->connection->RunQuery($q);
+    $rowReturn = array();
+    $x = 0;
+    $nRows = $result->rowCount();
+    if ($nRows > 0) {
+
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+          
+              //note here returning an option only
+            $rowReturn = array('id' => $row['id'], 'text' => $row['name']);
+            //print_r($row);
+        }
+    
+        return json_encode($rowReturn);
+
+    } else {
+        
+
+        //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+        $rowReturn['result'] = [];
+        
+        return json_encode($rowReturn);
+    }
+
+}
+
+public function select2_all_assets($search)
+      {
+      
+      $q = "Select 
+      `id`, CONCAT(`id`, ' - ', `name`, ' - ', `description`, ' - ', _ucs2 0x20AC, `cost`) as `video`
+      FROM `assets_paid`
+      WHERE lower(CONCAT(`id`, ' ', `name`, ' ', `description`)) LIKE lower('%{$search}%')";
+
+      //echo $q;
+
+      $result = $this->connection->RunQuery($q);
+      $rowReturn['results'] = array();
+      $x = 0;
+      $nRows = $result->rowCount();
+      if ($nRows > 0) {
+
+          while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+            $rowReturn['results'][] = array('id' => $row['id'], 'text' => $row['video']);
+              //print_r($row);
+          }
+      
+          return json_encode($rowReturn);
+
+      } else {
+          
+
+          //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+          $rowReturn['results'] = [];
+          
+          return json_encode($rowReturn);
+      }
+
+  }
+
+public function sanitiseGET ($data) {
+
+    $dataSanitised = array();
+
+    foreach ($data as $key=>$value){
+
+        $sanitisedValue = trim($value);
+        //$sanitisedValue = addslashes($sanitisedValue);
+        //$sanitisedValue = htmlspecialchars($sanitisedValue);
+        //consider htmlentitydecode here, this converts back so &amp to &, special chars & to &amp 
+        $dataSanitised[$key] = $sanitisedValue;
+
+    }
+
+
+    return $dataSanitised;
+
+
+}
+
+public function select2_asset_match($search)
+    {
+    
+    $q = "Select 
+    `id`, CONCAT(`name`, ' - ', `description`) as `name`
+    FROM `assets_paid`
+    WHERE `id` = '$search'";
+
+    $result = $this->connection->RunQuery($q);
+    $rowReturn = array();
+    $x = 0;
+    $nRows = $result->rowCount();
+    if ($nRows > 0) {
+
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+          
+              //note here returning an option only
+            $rowReturn = array('id' => $row['user_id'], 'text' => $row['name']);
+            //print_r($row);
+        }
+    
+        return json_encode($rowReturn);
+
+    } else {
+        
+
+        //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+        $rowReturn['result'] = [];
+        
+        return json_encode($rowReturn);
+    }
+
+}
+
+public function returnProgrammesAsset($assetid)
+            {
+            
+
+            $q = "Select a.`programme_id`
+            FROM `sub_asset_paid` as a
+			WHERE a.`asset_id` = '$assetid'
+            ";
+
+            //echo $q . '<br><br>';
+
+			$rowReturn = [];
+
+            $result = $this->connection->RunQuery($q);
+            
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn[] = $row['programme_id'];
+
+
+				}
+
+				return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
+
+        public function returnVideosAsset($assetid)
+            {
+            
+
+            $q = "Select a.`video_id`
+            FROM `sub_asset_paid` as a
+			WHERE a.`asset_id` = '$assetid'
+            ";
+
+            //echo $q . '<br><br>';
+
+			$rowReturn = [];
+
+            $result = $this->connection->RunQuery($q);
+            
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn[] = $row['video_id'];
+
+
+				}
+
+				return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
+        
+
+
+        public function returnProgrammeDenominatorSelect2()
+        {
+        
+
+            $q = "Select `id` FROM `programme`";
+
+        
+
+        //echo $q . '<br><br>';
+
+        $rowReturn = [];
+
+        $result = $this->connection->RunQuery($q);
+        
+        $x = 0;
+        $nRows = $result->rowCount();
+
+        if ($nRows > 0) {
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                $rowReturn[] = $row['id'];
+
+
+            }
+
+            return $rowReturn;
+
+        } else {
+            
+
+            return false;
+        }
+
+    }
+
+    public function returnCombinationAssetProgramme($assetid)
+            {
+            
+
+            $q = "Select a.`id`, a.`programme_id`
+            FROM `sub_asset_paid` as a
+            WHERE a.`asset_id` = '$assetid'
+            ";
+
+            echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn[] = $row;
+
+
+				}
+
+				return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
+        
+        public function checkCombinationAssetProgramme($assetid, $programmeid)
+            {
+            
+
+            $q = "Select a.`id`
+            FROM `sub_asset_paid` as a
+            WHERE `asset_id` = '$assetid' AND `programme_id` = '$programmeid'
+            ";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                return true;
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
+        
+        public function returnCombinationIDAssetProgram($assetid, $programmeid)
+            {
+            
+
+            $q = "Select a.`id`
+            FROM `sub_asset_paid` as a
+			WHERE a.`asset_id` = '$assetid' AND `programme_id` = '$programmeid'
+			LIMIT 1
+            ";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn = $row['id'];
+
+
+				}
+
+				return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
+        
+        public function returnCombinationUserSubscription($userid)
+            {
+            
+
+            $q = "Select a.*
+            FROM `subscriptions` as a
+            WHERE a.`user_id` = '$userid'
+            ORDER BY a.`start_date` DESC
+            ";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn[] = $row;
+
+
+				}
+
+				return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
+        
+        public function getAssetName($subscription_id)
+            {
+            
+
+                $q = "Select 
+                b.`name`
+                FROM `subscriptions` as a
+                INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
+                WHERE a.`id` = '$subscription_id'";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows == 1) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn = $row['name'];
+
+
+				}
+
+				return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
+        
+        public function getSiteWideSubscription($user_id, $debug)
+            {
+            
+
+                $q = "Select 
+                a.`id`
+                FROM `subscriptions` as a
+                INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
+                WHERE b.`asset_type` = '1' 
+                AND a.`user_id` = '$user_id'
+                AND a.`active` = '1'
+                AND a.`expiry_date` > NOW()
+                ORDER BY a.`start_date` DESC
+                LIMIT 1
+                ";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows == 1) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn = $row['id'];
+
+
+				}
+
+				return $rowReturn;
+
+            } else {
+                
+
+                if ($debug){
+
+                    echo 'no or more than one rows matched';
+                }
+
+                return false;
+
+                
+            }
+
+		}
+
+
+
+        public function getCost($subscription_id)
+        {
+        
+        $q = "Select 
+        b.`cost`
+        FROM `subscriptions` as a
+        INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
+        WHERE a.`id` = '$subscription_id'";
+    
+        $result = $this->connection->RunQuery($q);
+        $rowReturn = array();
+        $x = 0;
+        $nRows = $result->rowCount();
+        if ($nRows == 1) {
+    
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+    
+              
+                  //note here returning an option only
+                $rowReturn = $row['cost'];
+                //print_r($row);
+            }
+        
+            return $rowReturn;
+    
+        } else {
+            
+    
+            //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+            //$rowReturn['result'] = [];
+            
+            return false;
+        }
+    
+    }
+
+    public function isSubscriptionActive($subscription_id, $datetime_utc, $debug){
+
+        $q = "Select 
+        a.`active`, a.`start_date`, a.`expiry_date`
+        FROM `subscriptions` as a
+        WHERE a.`id` = '$subscription_id'";
+    
+        $result = $this->connection->RunQuery($q);
+        $rowReturn = array();
+        $x = 0;
+        $nRows = $result->rowCount();
+        if ($nRows > 0) {
+
+            if ($nRows == 1){
+    
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+        
+                
+                    //note here returning an option only
+                    $active = $row['active'];
+                    $start_date = $row['start_date'];
+                    $expiry_date = new DateTime($row['expiry_date'], new DateTimeZone('UTC'));
+                    //print_r($row);
+                }
+            
+                //if not active, not active
+
+                if ($active == '1'){
+
+                    //is active, ? younger than end date
+
+                    if ($expiry_date > $datetime_utc){
+
+                        return true;
+
+                    }else{
+
+                        if ($debug){
+
+                            echo 'inactive since end date passed';
+                        }
+
+                        return false;
+                    }
+
+
+                }else{
+
+                    if ($debug){
+
+                        echo 'inactive since active tag inactive';
+                    }
+
+                    return false; //inactive since active tag inactive
+                    
+
+                }
+
+            }else{
+
+
+                //more than one such id
+
+                if ($debug){
+
+                    echo 'more than one such id';
+                }
+                return false;
+            }
+    
+        } else {
+            
+    
+            //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+            //$rowReturn['result'] = [];
+            
+            return false; //no subscription id matching
+        }
+
+    }
+
+    public function subscription_expires_soon($subscription_id, $debug){
+
+        $q = "Select 
+        a.`active`, a.`start_date`, a.`expiry_date`
+        FROM `subscriptions` as a
+        WHERE a.`id` = '$subscription_id'";
+    
+        $result = $this->connection->RunQuery($q);
+        $rowReturn = array();
+        $x = 0;
+        $nRows = $result->rowCount();
+        if ($nRows > 0) {
+
+            if ($nRows == 1){
+    
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+        
+                
+                    //note here returning an option only
+                    
+                    $expiry_date = new DateTime($row['expiry_date'], new DateTimeZone('UTC'));
+                    //print_r($row);
+                }
+
+                $current_date = new DateTime('now', new DateTimeZone('UTC'));
+
+                if ($current_date < $expiry_date){
+
+                    
+
+
+
+                    $current_date->modify('+2 week');
+                
+                    
+
+                    if ($current_date > $expiry_date){
+
+                        //will expire soon
+
+                        if ($debug){
+
+                            echo '<br/>';
+                            echo 'will expire soon';
+                            print_r($current_date);
+                            print_r($expiry_date);
+                            echo '<br/>';
+                        }
+
+                        return true;
+
+                        
+
+
+                    }else{
+
+                        if ($debug){
+
+                            echo '<br/>';
+                            echo 'will not expire soon';
+                            print_r($current_date);
+                            print_r($expiry_date);
+                            echo '<br/>';
+                        }
+
+                        return false; //inactive since active tag inactive
+                        
+
+                    }
+
+                }else{
+
+                    //if already passed date return false
+
+                    if ($debug){
+
+                        echo 'date of expiry already passed';
+                    }
+
+                    return false;
+
+
+                }
+
+            }else{
+
+
+                //more than one such id
+
+                if ($debug){
+
+                    echo 'more than one such id';
+                }
+                return false;
+            }
+    
+        } else {
+            
+    
+            //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+            //$rowReturn['result'] = [];
+            
+            return false; //no subscription id matching
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+public function insert_copied_records_with_video_id($name, $description, $user_id){
+
+    //q insert the row in video
+
+    $q = "insert into `video` (`name`, `url`, `description`, `active`, `split`, `author`) VALUES ('$name', '123', '$description', '2', '1', '$user_id')";
+
+      echo $q;
+
+      $result = $this->connection->RunQuery($q);
+      
+
+      if ($result) {
+
+        return $this->connection->conn->lastInsertId(); 
+
+      } else {
+          
+
+          
+          return null;
+      }
+
+}
+
+public function createChapter($videoid){
+
+    //q insert the row in video
+
+    $q = "INSERT INTO `chapter`(`number`, `name`, `timeFrom`, `timeTo`, `video_id`, `description`) 
+    VALUES ('1','Introduction','0','20',$videoid, '')";
+
+      echo $q;
+
+      $result = $this->connection->RunQuery($q);
+      
+
+      if ($result) {
+
+        return $this->connection->conn->lastInsertId(); 
+
+      } else {
+          
+
+          
+          return null;
+      }
+
+}
+
+public function linkTags($chapterid, $tagGIEQsDigital){
+
+    //q insert the row in video
+
+    $q = "INSERT INTO `chapterTag`(`tags_id`, `chapter_id`) 
+    VALUES ('$tagGIEQsDigital','$chapterid');";
+
+      echo $q;
+
+      $result = $this->connection->RunQuery($q);
+      
+
+      if ($result) {
+
+       
+
+        return $this->connection->conn->lastInsertId(); 
+
+        
+
+      } else {
+          
+
+          
+          return null;
+      }
+
+}
+
+public function checkVimeoidPresent($videoid, $past=null, $current=null){
+
+    //q insert the row in video
+
+    $q = "SELECT `url` FROM `video` WHERE `id` = '$videoid'";
+
+      //echo $q;
+
+      $result = $this->connection->RunQuery($q);
+      
+
+      $nRows = $result->rowCount();
+      
+      if ($nRows == 1) {
+
+       
+
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+            $url_video = $row['url'];
+              //print_r($row);
+          }
+
+        if ($url_video == '123'){
+
+            return false;
+        }else{
+
+            return true;
+        }
+
+
+      } else {
+          
+
+          
+          return false;
+      }
+
+}
+
+public function checkVimeoidPresentPublic($videoid, $past=null, $current=null, $debug=false){
+
+    //q insert the row in video
+
+    $q = "SELECT `url` FROM `video` WHERE `id` = '$videoid'";
+
+      //echo $q;
+
+      $result = $this->connection->RunQuery($q);
+      
+
+      $nRows = $result->rowCount();
+      
+      if ($nRows == 1) {
+
+       
+
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+            //would show the url
+            //now dependent on time
+
+            
+
+            
+
+                $url_video = $row['url']; 
+
+
+          
+            
+            
+              //print_r($row);
+          }
+
+        if ($url_video == '123'){
+
+            return false;
+
+            if ($debug){
+
+                echo 'video is default, not displaying';
+            }
+        }else{
+            
+            if ($current){
+
+                $highlight = 1;
+
+                if ($debug){
+
+                    echo 'setting highlight to 1';
+                }
+
+            }elseif ($past){
+
+                $highlight = 0;
+
+                if ($debug){
+
+                    echo 'setting highlight to 0';
+                }
+                
+            }else{
+
+                $highlight = 2;
+
+                if ($debug){
+
+                    echo 'setting highlight to 2';
+                }
+
+            }
+
+            if ($highlight == 0){
+
+                if ($debug){
+
+                    echo 'highlight is 0, this should be sjowing a video';
+                }
+
+            return true;
+
+             }
+        }
+
+
+      } else {
+          
+
+          
+          return false;
+      }
+
+}
+	
+    /**
+     * Close mysql connection
+     */
+	public function endassetManager (){
+		$this->connection->CloseMysql();
+	}
+
+}

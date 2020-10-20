@@ -1088,7 +1088,7 @@ class navigator {
 
 				foreach ($rowReturn as $key=>$value){
 
-					echo "<option value='{$value['id']}'>{$value['id']} - {$value['name']}</value>";
+					echo "<option value='{$value['id']}'>{$value['id']} - {$value['name']}</option>";
 
 				}
 
@@ -1163,7 +1163,7 @@ class navigator {
 
 			foreach ($rowReturn as $key=>$value){
 
-				echo "<option value='{$value['id']}'>{$value['id']} - {$value['tagCategoryName']} ({$this->getSuperCategoryName($value['superCategory'])})</value>";
+				echo "<option value='{$value['id']}'>{$value['id']} - {$value['tagCategoryName']} ({$this->getSuperCategoryName($value['superCategory'])})</option>";
 
 			}
 

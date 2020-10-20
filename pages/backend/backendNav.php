@@ -76,16 +76,18 @@
                 <div class="btn-group" role="group">
                   <button id="btn-group-settings" type="button" class="btn btn-neutral btn-icon" data-toggle="dropdown" data-offset="0,8" aria-haspopup="true" aria-expanded="false">
                     <span class="btn-inner--icon"><i class="fas fa-sliders-h"></i></span>
-                    <span class="btn-inner--text d-none d-sm-inline-block">Account</span>
+                    <span class="btn-inner--text d-none d-sm-inline-block">Subscriptions</span>
                   </button>
                   <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow" aria-labelledby="btn-group-settings">
-                    <span class="dropdown-header">My Profile</span>
-                    <a class="dropdown-item" href="account-profile-public.html">Public profile</a>
-                    <span class="dropdown-header">My profile</span>
-                    <a class="dropdown-item" href="account-profile.html">Profile</a>
-                    <a class="dropdown-item" href="account-settings.html">Settings</a>
-                    <a class="dropdown-item" href="account-billing.html">Delegate</a>
-                    <a class="dropdown-item" href="account-notifications.html">Faculty</a>
+
+                  <?php if ($currentUserLevel < 3){?>
+                    <span class="dropdown-header">Subscriptions</span>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/subscriptions.php">User Subscriptions</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/paid_assets.php">Subscribable Items</a>
+
+                    <?php }?>
+                   
+                   
                   </div>
                 </div>
                 

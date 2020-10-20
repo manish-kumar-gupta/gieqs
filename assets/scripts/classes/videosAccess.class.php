@@ -331,6 +331,46 @@ public function checkVimeoidPresentPublic($videoid, $past=null, $current=null, $
       }
 
 }
+
+public function generateVideoRegistrationOptions()
+            {
+            
+
+            $q = "Select a.`id`, a.`name`
+            FROM `video` as a
+            ";
+
+            //echo $q . '<br><br>';
+
+			$rowReturn = [];
+
+            $result = $this->connection->RunQuery($q);
+            
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn[] = $row;
+
+
+				}
+
+				foreach ($rowReturn as $key=>$value){
+
+					echo "<option value='{$value['id']}'>{$value['id']} - {$value['name']}</option>";
+
+				}
+
+            } else {
+                
+
+                return false;
+            }
+
+		}
 	
     /**
      * Close mysql connection

@@ -9,6 +9,9 @@
  * License: LGPL
  *
  */
+
+//error_reporting(E_ALL);
+
 require_once 'DataBaseMysqlPDO.class.php';
 
 Class userFunctions {
@@ -504,43 +507,7 @@ Class userFunctions {
 
 		}
 		
-		public function returnCombinationIDUserProgram($userid, $programmeid)
-            {
-            
-
-            $q = "Select a.`id`
-            FROM `userRegistrations` as a
-			WHERE a.`user_id` = '$userid' AND `programme_id` = '$programmeid'
-			LIMIT 1
-            ";
-
-            //echo $q . '<br><br>';
-
-
-
-            $result = $this->connection->RunQuery($q);
-            
-            $x = 0;
-            $nRows = $result->rowCount();
-
-            if ($nRows > 0) {
-
-                while($row = $result->fetch(PDO::FETCH_ASSOC)){
-
-					$rowReturn = $row['id'];
-
-
-				}
-
-				return $rowReturn;
-
-            } else {
-                
-
-                return false;
-            }
-
-		}
+		
 
 		public function returnProgrammesUser($userid)
             {
@@ -607,7 +574,7 @@ Class userFunctions {
 
 				foreach ($rowReturn as $key=>$value){
 
-					echo "<option value='{$value['id']}'>{$value['date']} {$value['title']}</value>";
+					echo "<option value='{$value['id']}'>{$value['date']} {$value['title']}</option>";
 
 				}
 
@@ -649,7 +616,7 @@ Class userFunctions {
 
 				foreach ($rowReturn as $key=>$value){
 
-					echo "<option value='{$value['id']}'>{$value['tagCategories_id']} {$value['tagName']}</value>";
+					echo "<option value='{$value['id']}'>{$value['tagCategories_id']} {$value['tagName']}</option>";
 
 				}
 
@@ -763,7 +730,7 @@ Class userFunctions {
 
 				foreach ($rowReturn as $key=>$value){
 
-					echo "<option value='{$value['user_id']}'>{$value['firstname']} {$value['surname']}</value>";
+					echo "<option value='{$value['user_id']}'>{$value['firstname']} {$value['surname']}</option>";
 
 				}
 
@@ -874,6 +841,98 @@ Class userFunctions {
             }
 
 		}
+
+		public function select2_user_match($search)
+    {
+    
+    $q = "Select 
+    `user_id`, CONCAT(`firstname`, ' ', `surname`) as `name`
+    FROM `users`
+    WHERE `user_id` = '$search'";
+
+    $result = $this->connection->RunQuery($q);
+    $rowReturn = array();
+    $x = 0;
+    $nRows = $result->rowCount();
+    if ($nRows > 0) {
+
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+          
+              //note here returning an option only
+            $rowReturn = array('id' => $row['user_id'], 'text' => $row['name']);
+            //print_r($row);
+        }
+    
+        return json_encode($rowReturn);
+
+    } else {
+        
+
+        //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+        $rowReturn['result'] = [];
+        
+        return json_encode($rowReturn);
+    }
+
+}
+
+		public function select2_all_users($search)
+      {
+      
+      $q = "Select 
+      `user_id`, CONCAT(`user_id`, ' - ', `firstname`, ' ', `surname`) as `video`
+      FROM `users`
+      WHERE lower(CONCAT(`user_id`, ' - ', `firstname`, ' ', `surname`)) LIKE lower('%{$search}%')";
+
+      //echo $q;
+
+      $result = $this->connection->RunQuery($q);
+      $rowReturn['results'] = array();
+      $x = 0;
+      $nRows = $result->rowCount();
+      if ($nRows > 0) {
+
+          while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+            $rowReturn['results'][] = array('id' => $row['user_id'], 'text' => $row['video']);
+              //print_r($row);
+          }
+      
+          return json_encode($rowReturn);
+
+      } else {
+          
+
+          //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+          $rowReturn['results'] = [];
+          
+          return json_encode($rowReturn);
+      }
+
+  }
+
+public function sanitiseGET ($data) {
+
+    $dataSanitised = array();
+
+    foreach ($data as $key=>$value){
+
+        $sanitisedValue = trim($value);
+        //$sanitisedValue = addslashes($sanitisedValue);
+        //$sanitisedValue = htmlspecialchars($sanitisedValue);
+        //consider htmlentitydecode here, this converts back so &amp to &, special chars & to &amp 
+        $dataSanitised[$key] = $sanitisedValue;
+
+    }
+
+
+    return $dataSanitised;
+
+
+}
+
+
 	
 
     /**

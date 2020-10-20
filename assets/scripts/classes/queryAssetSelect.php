@@ -14,7 +14,7 @@ require (BASE_URI.'/assets/scripts/headerScript.php');
 
 //echo 'hello3';
 //$general = new general;
-$videosAccess = new videosAccess;
+$assetManager = new assetManager;
 //echo 'hello4';
 
 
@@ -35,7 +35,7 @@ function ne($v) {
 
 //check count of get variables
 
-$data = $videosAccess->sanitiseGET($_GET);
+$data = $assetManager->sanitiseGET($_GET);
 	
 foreach ($data as $key=>$value){
     
@@ -44,13 +44,13 @@ foreach ($data as $key=>$value){
 }
 
                 
-	$response =  $videosAccess->select2_video_programme($search);
+	$response =  $assetManager->select2_all_assets($search);
 
 	echo $response;
     
     
 
 
-	$videosAccess->endvideosAccess();
+	$assetManager->endassetManager();
 
       

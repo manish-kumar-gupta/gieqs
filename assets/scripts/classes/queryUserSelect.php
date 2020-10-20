@@ -1,7 +1,7 @@
 
 <?php
 //;
-error_reporting(0);
+//error_reporting(E_ALL);
 
 $openaccess = 1;
 //echo 'hello';
@@ -14,7 +14,7 @@ require (BASE_URI.'/assets/scripts/headerScript.php');
 
 //echo 'hello3';
 //$general = new general;
-$videosAccess = new videosAccess;
+$userFunctions = new userFunctions;
 //echo 'hello4';
 
 
@@ -35,7 +35,7 @@ function ne($v) {
 
 //check count of get variables
 
-$data = $videosAccess->sanitiseGET($_GET);
+$data = $userFunctions->sanitiseGET($_GET);
 	
 foreach ($data as $key=>$value){
     
@@ -44,13 +44,13 @@ foreach ($data as $key=>$value){
 }
 
                 
-	$response =  $videosAccess->select2_video_programme($search);
+	$response =  $userFunctions->select2_all_users($search);
 
 	echo $response;
     
     
 
 
-	$videosAccess->endvideosAccess();
+	$userFunctions->enduserFunctions();
 
       
