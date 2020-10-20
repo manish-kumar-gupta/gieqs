@@ -714,6 +714,7 @@ if ($identifierValue) {
                                 <th>start_date</th>
                                 <th>expiry_date</th>
                                 <th>active</th>
+                                <th>auto_renew</th>
                                 <th></th>
 
                             </tr>
@@ -816,6 +817,15 @@ if ($identifierValue) {
                                         <option value="1">Yes</option>
                                     </select>
                                 </div>
+
+                                <label for="auto_renew">auto_renew</label>
+                                        <div class="input-group mb-3">
+                                            <select id="auto_renew" type="text" data-toggle="select" class="form-control" name="auto_renew">
+                                            <option value="" selected disabled hidden>please select an option</option>
+                                            <option value="0">No</option>
+                                            <option value="1">Yes</option>
+                                            </select>
+                                        </div>
 
                                 <!-- <label for="firstname">First Name</label>
                                         <div class="input-group mb-3">
@@ -1751,6 +1761,8 @@ if ($identifierValue) {
                 {
                     data: 'active'
                 },
+
+                {data: 'auto_renew' },
                 {
                     data: null,
                     render: function(data, type, row) {
@@ -1939,6 +1951,11 @@ if ($identifierValue) {
                     required: true,
 
                 },
+
+                auto_renew:{
+                        required : true,
+
+            },
 
 
 

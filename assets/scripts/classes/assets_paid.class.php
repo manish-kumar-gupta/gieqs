@@ -2,17 +2,14 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 17-10-2020
+ * Create Date: 20-10-2020
  *
  * DJT 2019
  *
  * License: LGPL
  *
  */
-
 require_once 'DataBaseMysqlPDO.class.php';
-
-//require_once 'DataBaseMysqlPDO.class.php';
 
 Class assets_paid {
 
@@ -21,6 +18,7 @@ Class assets_paid {
 	private $description; //varchar(200)
 	private $asset_type; //varchar(20)
 	private $cost; //varchar(20)
+	private $renew_frequency; //varchar(11)
 	private $connection;
 
 	public function __construct(){
@@ -32,11 +30,12 @@ Class assets_paid {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_assets_paid($name,$description,$asset_type,$cost){
+	public function New_assets_paid($name,$description,$asset_type,$cost,$renew_frequency){
 		$this->name = $name;
 		$this->description = $description;
 		$this->asset_type = $asset_type;
 		$this->cost = $cost;
+		$this->renew_frequency = $renew_frequency;
 	}
 
     /**
@@ -53,6 +52,7 @@ Class assets_paid {
 			$this->description = $row["description"];
 			$this->asset_type = $row["asset_type"];
 			$this->cost = $row["cost"];
+			$this->renew_frequency = $row["renew_frequency"];
 		}
 	}
     /**
@@ -75,6 +75,7 @@ $q = "Select * from `assets_paid` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["description"] = $row["description"];
 			$rowReturn[$x]["asset_type"] = $row["asset_type"];
 			$rowReturn[$x]["cost"] = $row["cost"];
+			$rowReturn[$x]["renew_frequency"] = $row["renew_frequency"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -101,6 +102,7 @@ $q = "Select * from `assets_paid` WHERE `id` = $key";
 			$rowReturn[$x]["description"] = $row["description"];
 			$rowReturn[$x]["asset_type"] = $row["asset_type"];
 			$rowReturn[$x]["cost"] = $row["cost"];
+			$rowReturn[$x]["renew_frequency"] = $row["renew_frequency"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -390,6 +392,13 @@ $q = "UPDATE `assets_paid` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return renew_frequency - varchar(11)
+	 */
+	public function getrenew_frequency(){
+		return $this->renew_frequency;
+	}
+
+	/**
 	 * @param Type: int(11)
 	 */
 	public function setid($id){
@@ -422,6 +431,13 @@ $q = "UPDATE `assets_paid` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function setcost($cost){
 		$this->cost = $cost;
+	}
+
+	/**
+	 * @param Type: varchar(11)
+	 */
+	public function setrenew_frequency($renew_frequency){
+		$this->renew_frequency = $renew_frequency;
 	}
 
     /**

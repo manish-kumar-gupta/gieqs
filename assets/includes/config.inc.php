@@ -56,7 +56,7 @@ if ($local) {
     
     function class_loader($class) {
 		
-			require($_SERVER['DOCUMENT_ROOT'].'/dashboard/gieqs/assets/scripts/classes/'.$class.'.class.php');
+			require_once($_SERVER['DOCUMENT_ROOT'].'/dashboard/gieqs/assets/scripts/classes/'.$class.'.class.php');
 		 	
 	}
 	
@@ -75,7 +75,7 @@ if ($local) {
     
     function class_loader($class) {
 		
-        require($_SERVER['DOCUMENT_ROOT'].'/assets/scripts/classes/'.$class.'.class.php');
+        require_once($_SERVER['DOCUMENT_ROOT'].'/assets/scripts/classes/'.$class.'.class.php');
 		 	
 		 	
 	}

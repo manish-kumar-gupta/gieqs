@@ -1,5 +1,4 @@
 <?php
-//error_reporting(E_ALL);
 //;
 $openaccess = 1;
 //echo 'hello';
@@ -22,7 +21,9 @@ function ne($v) {
 
 
 
-$debug = false;
+//$debug = true;
+//error_reporting(E_ALL);
+
 //echo 'hello';
 
 //$connection = new DataBaseMysql();

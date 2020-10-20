@@ -723,6 +723,77 @@ public function returnProgrammesAsset($assetid)
 
     }
 
+    public function getRenewal ($subscription_id, $debug)
+        {
+        
+        $q = "Select 
+        a.`auto_renew`, b.`renew_frequency`
+        FROM `subscriptions` as a
+        INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
+        WHERE a.`id` = '$subscription_id'";
+    
+        $result = $this->connection->RunQuery($q);
+        $rowReturn = array();
+        $x = 0;
+        $nRows = $result->rowCount();
+        if ($nRows == 1) {
+    
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+    
+              
+                  //note here returning an option only
+                $auto = $row['auto_renew'];
+                $renew = $row['renew_frequency'];
+                //print_r($row);
+            }
+
+            if ($auto == 0 || $auto == null){
+
+                if ($debug){
+
+                    echo 'Will Not Renew, Auto Renew not 1';
+
+                } 
+                return false;
+
+            }elseif ($auto == 1){
+
+                if (isset($renew)){
+
+                    if ($debug){
+
+                        echo 'Will Renew, frequency ' . $renew . ' months';
+
+                    } 
+
+                    return true;
+
+                }else{
+
+                    if ($debug){
+
+                        echo 'Will not Renew, no frequency set';
+
+                    } 
+
+                    return false;
+
+                }
+
+            }        
+            return $rowReturn;
+    
+        } else {
+            
+    
+            //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+            //$rowReturn['result'] = [];
+            
+            return false;
+        }
+    
+    }
+
 
 
 

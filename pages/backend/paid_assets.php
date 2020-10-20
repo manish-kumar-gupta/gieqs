@@ -652,6 +652,7 @@ if ($identifierValue) {
                                 <th>description</th>
                                 <th>asset_type</th>
                                 <th>cost</th>
+                                <th>renew_frequency</th>
                                 <th></th>
 
                             </tr>
@@ -761,6 +762,11 @@ if ($identifierValue) {
 
                                             
                                             </select>
+                                        </div>
+
+                                        <label for="renew_frequency">Length (months), 999 continues indefinitely</label>
+                                        <div class="input-group mb-3">
+                                            <input id="renew_frequency" type="text" class="form-control" name="renew_frequency">
                                         </div>
 
                                 <!-- <label for="firstname">First Name</label>
@@ -1697,6 +1703,11 @@ processResults: function(data) {
        {data: 'description' },
        {data: 'asset_type' },
        {data: 'cost' },
+       {data: 'renew_frequency' },
+
+
+       
+
                 {
                     data: null,
                     render: function(data, type, row) {
@@ -1878,6 +1889,11 @@ processResults: function(data) {
             
               
            cost:{
+                        required : true,
+
+            },
+
+            renew_frequency:{
                         required : true,
 
             },

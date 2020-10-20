@@ -2,7 +2,7 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 17-10-2020
+ * Create Date: 20-10-2020
  *
  * DJT 2019
  *
@@ -19,9 +19,8 @@ Class subscriptions {
 	private $start_date; //timestamp
 	private $expiry_date; //timestamp
 	private $active; //varchar(50)
+	private $auto_renew; //varchar(11)
 	private $connection;
-
-	//private $connection;
 
 	public function __construct(){
         require_once 'DatabaseMyssqlPDOLearning.class.php';
@@ -32,12 +31,13 @@ Class subscriptions {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_subscriptions($user_id,$asset_id,$start_date,$expiry_date,$active){
+	public function New_subscriptions($user_id,$asset_id,$start_date,$expiry_date,$active,$auto_renew){
 		$this->user_id = $user_id;
 		$this->asset_id = $asset_id;
 		$this->start_date = $start_date;
 		$this->expiry_date = $expiry_date;
 		$this->active = $active;
+		$this->auto_renew = $auto_renew;
 	}
 
     /**
@@ -55,6 +55,7 @@ Class subscriptions {
 			$this->start_date = $row["start_date"];
 			$this->expiry_date = $row["expiry_date"];
 			$this->active = $row["active"];
+			$this->auto_renew = $row["auto_renew"];
 		}
 	}
     /**
@@ -78,6 +79,7 @@ $q = "Select * from `subscriptions` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["start_date"] = $row["start_date"];
 			$rowReturn[$x]["expiry_date"] = $row["expiry_date"];
 			$rowReturn[$x]["active"] = $row["active"];
+			$rowReturn[$x]["auto_renew"] = $row["auto_renew"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -105,6 +107,7 @@ $q = "Select * from `subscriptions` WHERE `id` = $key";
 			$rowReturn[$x]["start_date"] = $row["start_date"];
 			$rowReturn[$x]["expiry_date"] = $row["expiry_date"];
 			$rowReturn[$x]["active"] = $row["active"];
+			$rowReturn[$x]["auto_renew"] = $row["auto_renew"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -401,6 +404,13 @@ $q = "UPDATE `subscriptions` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return auto_renew - varchar(11)
+	 */
+	public function getauto_renew(){
+		return $this->auto_renew;
+	}
+
+	/**
 	 * @param Type: int(11)
 	 */
 	public function setid($id){
@@ -440,6 +450,13 @@ $q = "UPDATE `subscriptions` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function setactive($active){
 		$this->active = $active;
+	}
+
+	/**
+	 * @param Type: varchar(11)
+	 */
+	public function setauto_renew($auto_renew){
+		$this->auto_renew = $auto_renew;
 	}
 
     /**

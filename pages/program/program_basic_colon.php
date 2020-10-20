@@ -87,12 +87,92 @@ background-color: rgb(238, 194, 120);
             <div class="container">
                 <div class="row text-center">
 
-                    <div class="col-12 p-3 pb-5">
-                        <span class="h1" style="color: rgb(238, 194, 120);">GIEQs - Basic Colonoscopy Skills Course<br/>(1 day)<br/>
-                            Scientific Programme</span>
+                    <div class="col-12 p-3 pb-1">
+                        <span class="h1" style="color: rgb(238, 194, 120);">GIEQs - Basic Colonoscopy Skills Course (Virtual)<br/></span>
+                        <span class="h3 mt-4" style="color: rgb(238, 194, 120);">Monday 16th November 2020<br/></span>
+                        <span class="h5" style="color: rgb(238, 194, 120);">0830 - 1600 CET, on Demand thereafter<br/></span>
+
                     </div>
 
                 </div>
+            </div>
+    </section>
+    <section class="">
+            <div class="container">
+              <div class="mb-5 text-center">
+                <h3 class=" mt-4">Suitable for Everyone Starting Out in Colonoscopy</h3>
+                <div class="fluid-paragraph mt-3">
+                  <p class="lead lh-180">Or for those wanting to perfect their technique.</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="card hover-shadow-lg hover-scale-110">
+                    <div class="card-body py-4">
+                      <div class="d-flex align-items-start">
+                        <div class="icon text-primary rounded-circle">
+                          <i class="fas fa-terminal"></i>
+                        </div>
+                        <div class="icon-text pl-4">
+                          <h5 class="ma-0 ">Deconstructed Technique</h5>
+                          <p class="mb-0">Acquisition of the skills necessary to perform basic colonoscopy is still difficult. To become a skilled colonoscopist takes a long time. This course will explore and deconstruct the key problem areas encountered when performing colonoscopy with commentary and analysis .</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="card hover-shadow-lg hover-scale-110">
+                    <div class="card-body py-4">
+                      <div class="d-flex align-items-start">
+                        <div class="icon text-primary rounded-circle">
+                          <i class="fas fa-dolly"></i>
+                        </div>
+                        <div class="icon-text pl-4">
+                          <h5 class="ma-0 ">Practical Advice</h5>
+                          <p class="mb-0">We will demonstrate the essentials of how to control the instrument effectively, and how to diagnose and overcome failure to progress. The goal will be to provide participants with a clear understanding of the essential components of high quality colonoscopy and practical advice of how to improve when they get back into the endoscopy room.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="card hover-shadow-lg hover-scale-110">
+                    <div class="card-body py-4">
+                      <div class="d-flex align-items-start">
+                        <div class="icon text-primary rounded-circle">
+                          <i class="far fa-comments"></i>
+                        </div>
+                        <div class="icon-text pl-4">
+                          <h5 class="ma-0 ">Interactive</h5>
+                          <p class="mb-0">Delegates will be invited to participate at various junctures of the course and everyone will be able to pose questions at any time via our trademark high quality digital stream</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="card hover-shadow-lg hover-scale-110">
+                    <div class="card-body py-4">
+                      <div class="d-flex align-items-start">
+                        <div class="icon text-primary rounded-circle">
+                          <i class="fas fa-users"></i>
+                        </div>
+                        <div class="icon-text pl-4">
+                          <h5 class="ma-0 ">Unique Live / Virtual Hybrid</h5>
+                          <p class="mb-0">A mixture of training experiences performed live, with commentary from experienced trainers, lectures and discussiom of pre-recorded training.  Focussed on the basics.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+    <section class="">
+        <div class="container">
                 <div class="row text-center">
 
                     <div class="col-12 p-3 pb-4">
@@ -100,6 +180,12 @@ background-color: rgb(238, 194, 120);
                             <!-- <span class="btn-inner--text">Overview</span> -->
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         <!-- </a> -->
+
+                        
+                        <!-- <p class=""><span class="text-white">Programme description:</span> Acquisition of the skills necessary to perform basic colonoscopy is still difficult. To become a skilled colonoscopist takes a long time. This course will explore and deconstruct the key problem areas encountered when performing colonoscopy with commentary and analysis .  </p>
+
+                        <p class=""><span class="text-white">What to expect:</span> We will demonstrate the essentials of how to control the instrument effectively, and how to diagnose and overcome failure to progress.  The goal will be to provide participants with a clear understanding of the essential components of high quality colonoscopy and practical advice of how to improve when they get back into the endoscopy room.</span></p>
+                        <p class=""><span class="text-white">Format of the course:</span> The course is suitable for anyone who wants to improve their colonoscopy skills and ideal for trainees learning colonoscopy. The format of the course will be a mixture of short presentations, discussion groups and in depth analysis of colonoscopy technique. Delegates will be invited to participate at various junctures of the course and everyone will be able to pose questions at any time.</p> -->
                         <a href="#targetScrollProgramme" id="wednesday"
                             class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
                             <span class="btn-inner--text text-dark">Mon 16 Nov</span>

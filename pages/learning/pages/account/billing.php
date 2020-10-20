@@ -277,7 +277,7 @@ get whether expiring soon su
                           <br/>
                           Expires : <span class="expiry_date"><?php echo date_format($expiry_date,"d/m/Y");?></span>
                           <br/>
-                          Renews : <span class="renewalFrequency"></span>
+                          Renews : <span class="renewalFrequency"><?php echo $assetManager->getRenewal($siteWideSubscriptionid, $debug);?></span>
                         </div>
                         <div class="col-sm-3 text-sm-right">
                           <?php if ($siteWideExpiring){ ?>

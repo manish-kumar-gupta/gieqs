@@ -49,7 +49,7 @@ if ($local) {
     
     function class_loader($class) {
 		
-			require($_SERVER['DOCUMENT_ROOT'].'/dashboard/gieqs/pages/learning/classes/'.$class.'.class.php');
+			require_once($_SERVER['DOCUMENT_ROOT'].'/dashboard/gieqs/pages/learning/classes/'.$class.'.class.php');
 		 	
 	}
 	
@@ -68,7 +68,7 @@ if ($local) {
     
     function class_loader($class) {
 		
-        require($_SERVER['DOCUMENT_ROOT'].'/pages/learning/classes/'.$class.'.class.php');
+        require_once($_SERVER['DOCUMENT_ROOT'].'/pages/learning/classes/'.$class.'.class.php');
 		 	
 		 	
 	}
