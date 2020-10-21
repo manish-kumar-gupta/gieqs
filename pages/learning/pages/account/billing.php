@@ -41,6 +41,9 @@
     <title>GIEQs Online Endoscopy Trainer</title>
 
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.css">
+    <script src="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.js"></script>
+
 
     
 
@@ -165,7 +168,7 @@ top: -20vh;
 
 <div class="main-content">
     <!-- Header (account) -->
-    <section class="page-header bg-dark-dark d-flex align-items-end pt-8 mt-10" style="background-image: url('<?php echo BASE_URL;?>/assets/img/covers/resection/ssp.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;" data-offset-top="#header-main">
+    <section class="page-header bg-dark-dark d-flex align-items-end pt-8 mt-10" style="background-image: url('<?php echo BASE_URL;?>/assets/img/covers/resection/ai.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;" data-offset-top="#header-main">
 
    
       <!-- Header container -->
@@ -208,7 +211,7 @@ top: -20vh;
               <div class="card-header">
                 <div class="row">
                   <div class="col-5 col-lg-8">
-                    <span class="h6">Site Wide Subscription Status</span>
+                    <span class="h6">GIEQs Online Status Subscription</span>
                   </div>
                   <div class="col-7 col-lg-4 text-right">
                     <!-- <img alt="Image placeholder" src="../../assets/img/icons/cards/mastercard.png" width="40" class="mr-2">
@@ -264,7 +267,11 @@ get whether expiring soon su
 
                     $expiry_date = new DateTime($subscription->getexpiry_date(), new DateTimeZone('UTC'));
 
-                    $expiry_date->setTimezone(new DateTimeZone($users->gettimezone()));
+                    $expiry_date_display = null;
+
+                    $expiry_date_display = new DateTime($subscription->getexpiry_date(), new DateTimeZone('UTC'));
+
+                    $expiry_date_display->setTimezone(new DateTimeZone($users->gettimezone()));
 
 
                     ?>
@@ -275,20 +282,15 @@ get whether expiring soon su
                         <div class="col-sm-5">
                           <strong><?php echo $assetManager->getAssetName($siteWideSubscriptionid);?></strong>
                           <br/>
-                          Expires : <span class="expiry_date"><?php echo date_format($expiry_date,"d/m/Y");?></span>
+                          Expires : <span class="expiry_date"><?php echo date_format($expiry_date_display,"d/m/Y");?></span>
                           <br/>
-                          Renews : <span class="renewalFrequency"><?php echo $assetManager->getRenewal($siteWideSubscriptionid, $debug);?></span>
+                          Renews : <span class="renewalFrequency"><?php if($assetManager->getRenewal($siteWideSubscriptionid, $debug)){ echo 'On Expiry';}else{ echo 'Does Not Renew';}?></span>
                         </div>
                         <div class="col-sm-3 text-sm-right">
-                          <?php if ($siteWideExpiring){ ?>
 
-                            <a href="#" class="btn btn-sm btn-primary rounded-pill mt-3 mt-sm-0 upgrade-plan">Renew</a>
-                            
-                            <?php
-                          }
-                          ?>
-<!--                           <a href="#" class="btn btn-sm btn-primary rounded-pill mt-3 mt-sm-0">Upgrade</a>
- -->                        </div>
+                          <?php echo $assetManager->showButtonSubscription($siteWideSubscriptionid, $debug);   ?>
+                          
+</div>
                       </div>
                     </li>
 
@@ -304,7 +306,7 @@ get whether expiring soon su
                           <div class="col-sm-5">
                             <strong>GIEQs Pro Membership Via Status</strong>
                             <br/>
-                          Expires :<span class="expiry_date">Never</span>
+                          Expires : <span class="expiry_date">Never</span>
                           <br/>
                           Renews : <span class="renewalFrequency">Not Applicable</span>
                           </div>
@@ -324,7 +326,7 @@ get whether expiring soon su
                         </div>
                         <div class="col-sm-3 text-sm-right">
 
-                          <a href="#" class="btn btn-sm btn-primary rounded-pill mt-3 mt-sm-0 start-plan">Buy Plan</a>
+                          <button class="btn btn-sm btn-primary rounded-pill mt-3 mt-sm-0 start-plan" data-userid="<?php echo $userid;?>" data-subscription-type="1">Buy Plan</button>
 
 <!--                           <a href="#" class="btn btn-sm btn-primary rounded-pill mt-3 mt-sm-0">Upgrade</a>
  -->                        </div>
@@ -342,7 +344,24 @@ get whether expiring soon su
               </div>
             </div>
 
+<!--Get Subscription Data-->
 
+<?php
+$subscriptionsList = $assetManager->returnCombinationUserSubscriptionList($userid);
+$subscriptions = $assetManager->returnCombinationUserSubscription($userid);
+
+
+            $current_date = new DateTime('now', new DateTimeZone('UTC'));
+
+            //this is a comparator so not user timezone
+
+            //$current_date->setTimezone(new DateTimeZone($users->gettimezone()));
+
+          if ($debug){
+          print_r($subscriptions);
+          }
+
+          ?>
 
             <!-- Section title -->
             
@@ -350,7 +369,7 @@ get whether expiring soon su
               <div class="card-header">
                 <div class="row">
                   <div class="col-5 col-lg-8">
-                    <span class="h6">Subscription Status</span>
+                    <span class="h6">Subscriptions</span>
                   </div>
                   <div class="col-7 col-lg-4 text-right">
                     <!-- <img alt="Image placeholder" src="../../assets/img/icons/cards/mastercard.png" width="40" class="mr-2">
@@ -361,17 +380,93 @@ get whether expiring soon su
               </div>
               <div>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item">
+
+<?php
+
+foreach ($subscriptionsList as $key=>$value){
+
+
+  $start_date = null;
+
+  $start_date_display = null;
+
+  $start_date = new DateTime($value['start_date'], new DateTimeZone('UTC'));
+
+  $start_date_display = $start_date;
+
+  $start_date_display->setTimezone(new DateTimeZone($users->gettimezone()));
+
+  $expiry_date = null;
+
+  $expiry_date_display = null;
+
+  $expiry_date = new DateTime($value['expiry_date'], new DateTimeZone('UTC'));
+
+  $expiry_date_display = $expiry_date;
+
+
+  $expiry_date->setTimezone(new DateTimeZone($users->gettimezone()));
+
+  $assetManager->subscription_state($value['id'], $debug);
+
+?>
+
+
+                  <li class="list-group-item" data="<?php echo $value['id']?>">
                     <div class="row align-items-center">
-                      <div class="col-sm-4"><small class="h6 text-sm mb-3 mb-sm-0">Plan</small></div>
-                      <div class="col-sm-5">
-                        <strong>Status</strong> benefits.
+                      <div class="col-sm-1">
+
+                        <span class="badge badge-lg badge-dot">
+
+                          <?php if ($assetManager->subscription_expires_soon($value['id'], $debug) === true){ ?>
+                            <i class="bg-warning" title="Expires Soon" data-toggle="tooltip"></i>
+        
+                          
+                          <?php } elseif ($assetManager->isSubscriptionActive($value['id'], $current_date, $debug) === true){ ?>
+                          <i class="bg-success" title="Active" data-toggle="tooltip"></i>
+                          <?php } else { ?>
+        
+                            <i class="bg-danger" title="Inactive or Unpaid" data-toggle="tooltip"></i>
+        
+        
+                          <?php } ?>
+        
+                        </span>
+
+
+
+                      </div>
+                      <div class="col-sm-4"><strong class="h6 text-sm mb-3 mb-sm-0"><?php echo $assetManager->getAssetName($value['id']);?></strong>
+                      
+                       
+                        <small><br/><?php echo $assetManager->getAssetTypeText($value['asset_type']);?></small>
+                        <small><br/><?php echo $value['renew_frequency'];?> Monthly Renewal</small>
+                      </div>
+                      <div class="col-sm-2">
+                        <small><?php echo $expiry_date < $current_date ? 'Expired' : 'Expires : ' . date_format($expiry_date_display,"d/m/Y");?></small>
+                       
+                       
+                      </div>
+                      <div class="col-sm-2">
+                        <small><?php echo $assetManager->getRenewal($value['id'], $debug) ? 'Auto Renews : ' . date_format($expiry_date_display,"d/m/Y") : 'Does Not Renew';?></small>
+                       
+                       
                       </div>
                       <div class="col-sm-3 text-sm-right">
-                        <a href="#" class="btn btn-sm btn-primary rounded-pill mt-3 mt-sm-0">Upgrade</a>
+                        <!-- if ending soon show renew, if expired show renew, if active show cancel renew always if auto-renew on -->
+
+                        <?php echo $assetManager->showButtonSubscription($value['id'], $debug);   ?>
+                        
                       </div>
                     </div>
                   </li>
+
+
+<?php 
+
+                }
+
+?>
                   
                 </ul>
               </div>
@@ -408,13 +503,7 @@ get whether expiring soon su
 
           <?php 
           
-            $subscriptions = $assetManager->returnCombinationUserSubscription($userid);
-
-            $current_date = new DateTime('now', new DateTimeZone('UTC'));
-
-          if ($debug){
-          print_r($subscriptions);
-          }
+            
           
           
           

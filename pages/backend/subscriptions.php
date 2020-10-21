@@ -1060,17 +1060,18 @@ if ($identifierValue) {
             }).then(function (data) {
                 // create the option and append to Select2
                 var retrievedProgramme = $.parseJSON(data);
-                //console.log(retrievedProgramme);
+                console.log(retrievedProgramme);
                 var option = new Option(retrievedProgramme.text, retrievedProgramme.id, true, true);
                 $('#asset_id').append(option).trigger('change');
+                //$('#asset_id').val(retrievedProgramme.id).trigger('change');
 
                 // manually trigger the `select2:select` event
-                $('#asset_id').trigger({
+                 $('#asset_id').trigger({
                     type: 'select2:select',
                     params: {
                         data: data
                     }
-                });
+                }); 
             });
 
             $(formData).each(function(i, val) {

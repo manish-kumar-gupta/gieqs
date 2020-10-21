@@ -12,7 +12,7 @@
 
 require(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
 
-//$assetManager = new assetManager;
+$assetManager = new assetManager;
 error_reporting(0);
 
 $debugUserAccess = false;
@@ -518,9 +518,9 @@ $info[] = $liveAccess;
     
     //site wide access
 
-   
+   //comment here
 
-/* if ($assetManager->getSiteWideSubscription($userid, $debug)){
+if ($assetManager->getSiteWideSubscription($userid, $debug)){
 
   //there is a site wide subscription
   if ($debugUserAccess){
@@ -615,7 +615,7 @@ $info[] = $liveAccess;
       echo 'allow gieqs pro due to user level';
       }
 
-      $siteWide = true;
+      $siteWide = false;  //unless it starts a subscription if not found this should be false
 
   }else{
 
@@ -632,7 +632,7 @@ $info[] = $liveAccess;
 
   
 
-} */
+}  //comment here
 
 }
 

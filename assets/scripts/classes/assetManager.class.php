@@ -135,7 +135,7 @@ public function select2_asset_match($search)
 
           
               //note here returning an option only
-            $rowReturn = array('id' => $row['user_id'], 'text' => $row['name']);
+            $rowReturn = array('id' => $row['id'], 'text' => $row['name']);
             //print_r($row);
         }
     
@@ -406,6 +406,45 @@ public function returnProgrammesAsset($assetid)
             }
 
         }
+
+        public function returnCombinationUserSubscriptionList($userid)
+            {
+            
+
+            $q = "Select a.*, b.`asset_type`, b.`renew_frequency`
+            FROM `subscriptions` as a
+            INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
+            WHERE a.`user_id` = '$userid' AND b.`asset_type` > 1
+            ORDER BY a.`active` DESC, b.`asset_type` 
+            ";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn[] = $row;
+
+
+				}
+
+				return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
         
         public function getAssetName($subscription_id)
             {
@@ -431,6 +470,41 @@ public function returnProgrammesAsset($assetid)
                 while($row = $result->fetch(PDO::FETCH_ASSOC)){
 
 					$rowReturn = $row['name'];
+
+
+				}
+
+				return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
+
+        public function getAssetTypeText($asset_type)
+            {
+            
+
+                $q = " 
+                SELECT `asset_type`, `asset_type_t` from `values` WHERE `asset_type` = '$asset_type'";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows == 1) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn = $row['asset_type_t'];
 
 
 				}
@@ -731,6 +805,11 @@ public function returnProgrammesAsset($assetid)
         FROM `subscriptions` as a
         INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
         WHERE a.`id` = '$subscription_id'";
+
+        if ($debug){
+            
+            echo $q;
+        }
     
         $result = $this->connection->RunQuery($q);
         $rowReturn = array();
@@ -744,7 +823,12 @@ public function returnProgrammesAsset($assetid)
                   //note here returning an option only
                 $auto = $row['auto_renew'];
                 $renew = $row['renew_frequency'];
-                //print_r($row);
+
+                if ($debug){
+            
+                    print_r($row);
+                }
+                
             }
 
             if ($auto == 0 || $auto == null){
@@ -760,13 +844,30 @@ public function returnProgrammesAsset($assetid)
 
                 if (isset($renew)){
 
-                    if ($debug){
+                    //check that the subscription is active
 
-                        echo 'Will Renew, frequency ' . $renew . ' months';
+                    $current_date = new DateTime('now', new DateTimeZone('UTC'));
 
-                    } 
+                    $active = $this->isSubscriptionActive($subscription_id, $current_date, $debug);
 
-                    return true;
+                    if ($active){
+                
+
+                        if ($debug){
+
+                            echo 'Will Renew, frequency ' . $renew . ' months';
+
+                        } 
+
+                        return true;
+
+                    }else{
+
+                        echo 'Will Not Renew, already expired';
+
+                        return false;
+
+                    }
 
                 }else{
 
@@ -795,7 +896,96 @@ public function returnProgrammesAsset($assetid)
     }
 
 
+    public function subscription_state($subscription_id, $debug){
+        
+        
+        $current_date = new DateTime('now', new DateTimeZone('UTC'));
+        $active = $this->isSubscriptionActive($subscription_id, $current_date, $debug) ? 1 : 0;
+        $expires_soon = $this->subscription_expires_soon($subscription_id, $debug) ? 1 : 0;
+        $renews = $this->getRenewal($subscription_id, $debug) ? 1 : 0;
 
+        $subscription_state = array('id' => $subscription_id, 'active' => $active, 'expires_soon' => $expires_soon, 'renews' => $renews);
+
+        if ($debug){
+
+            print_r($subscription_state);
+        }
+       
+        return $subscription_state;
+
+
+    }
+
+
+public function showButtonSubscription ($subscription_id, $debug){
+
+
+    $subscription_state = $this->subscription_state($subscription_id, $debug);
+
+    $active = $subscription_state['active'];
+    $expires_soon = $subscription_state['expires_soon'];
+    $renews = $subscription_state['renews'];
+
+    if ($active == 1){
+
+        if ($renews == 1){
+
+           if ($expires_soon == 1){
+
+            //active, renews and expires soon
+            //no extra button
+
+           }
+
+
+
+
+
+             //show cancel renewal button anyway
+
+            $button = '<button class="btn btn-sm btn-danger rounded-pill p-2 mt-3 ml-3 mt-sm-0 cancel-autorenew" data-subscriptionid = " '. $subscription_id .' ">Cancel Auto-Renew</button>';
+
+            return $button;
+
+        }else if ($renews == 0){
+
+            // active and won't renew
+            //show only renew button if expires soon
+
+            if ($expires_soon == 1){
+
+                //show renew button
+                $button = '<button class="btn btn-sm btn-primary rounded-pill p-2 mt-3 mt-sm-0 renew" data-subscriptionid = " '. $subscription_id .' ">Renew</button>';
+                return $button;
+
+
+            }elseif ($expires_soon == 0){
+
+                //no button, will not renew, not expiring
+
+                $button = '<button class="btn btn-sm btn-success rounded-pill p-2 mt-3 mt-sm-0 activate-auto-renew" data-subscriptionid = " '. $subscription_id .' ">Activate Auto Renew</button>';
+                return $button;
+
+            }
+
+
+
+        }
+
+
+
+    }elseif ($active == 0){
+
+        //buy again
+
+        $button = '<button class="btn btn-sm btn-warning rounded-pill p-2 mt-3 mt-sm-0 buy-again" data-subscriptionid = " '. $subscription_id .' ">Buy Again</button>';
+        return $button;
+
+    }
+
+   
+
+}
 
 
 
