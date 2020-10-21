@@ -41,8 +41,9 @@
     <title>GIEQs Online Endoscopy Trainer</title>
 
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
-    <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.css">
     <script src="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.css">
+
 
 
     
@@ -635,6 +636,34 @@ foreach ($subscriptionsList as $key=>$value){
 
   </div>
 
+<!-- Modals -->
+
+<div class="modal modal-activate-auto-renew modal-success fade" id="modal_success" tabindex="-1" role="dialog" aria-labelledby="modal_success" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title h6" id="modal_title_6">Activate Auto Renew</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <div class="py-3 text-center">
+                  <i class="fas fa-exclamation-circle fa-4x"></i>
+                  <h5 class="heading h4 mt-4">Activation of Auto-Renewal for Subscription ID #</h5>
+                  <p>
+                      You can easy create stackable modal boxes. For example, your inline content or Ajax response can contain a gallery:
+                  </p>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn bg-danger btn-sm btn-white" data-dismiss="modal">Cancel</button>  
+            <button type="button" class="btn btn-sm btn-white" data-dismiss="modal">OK</button>
+          </div>
+      </div>
+  </div>
+</div>
+
     <?php require BASE_URI . '/footer.php';?>
 
     <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
@@ -650,7 +679,6 @@ foreach ($subscriptionsList as $key=>$value){
     <!-- Purpose JS -->
     <script src="<?php echo BASE_URL;?>/assets/js/purpose.js"></script>
     <!-- <script src="assets/js/generaljs.js"></script> -->
-    <script src="assets/js/demo.js"></script>
     <script>
     var videoPassed = $("#id").text();
                     </script>
@@ -724,16 +752,18 @@ foreach ($subscriptionsList as $key=>$value){
 
             
 
+          //alerts
 
-            /* $(document).click(function(event) { 
-                $target = $(event.target);
+            $('.activate-auto-renew').click(function(event) { 
+
+              
                 
-                if(!$target.closest('#collapseExample').length && 
-                    $('#collapseExample').is(":visible")) {
-                        $('#collapseExample').collapse('hide');
-                    }        
-            }); */
+              $('.modal-activate-auto-renew').modal('show');
+              
 
+            });
+            
+            
             $(document).click(function(event) { 
                 $target = $(event.target);
                 
