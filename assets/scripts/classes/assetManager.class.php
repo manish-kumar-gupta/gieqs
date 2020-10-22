@@ -987,6 +987,10 @@ public function showButtonSubscription ($subscription_id, $debug){
 
 }
 
+//scripts for user modifications to settings
+
+
+
 
 
 

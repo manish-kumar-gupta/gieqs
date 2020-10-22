@@ -650,15 +650,18 @@ foreach ($subscriptionsList as $key=>$value){
           <div class="modal-body">
               <div class="py-3 text-center">
                   <i class="fas fa-exclamation-circle fa-4x"></i>
-                  <h5 class="heading h4 mt-4">Activation of Auto-Renewal for Subscription ID #</h5>
+                  <h5 class="heading h4 mt-4">Activation of Auto-Renewal for Subscription ID #<span id="modal-activate-auto-renew-subscriptionid"></span></h5>
                   <p>
-                      You can easy create stackable modal boxes. For example, your inline content or Ajax response can contain a gallery:
+                    This will activate auto-renewal for the associated subscription.
+                    Your account will be charged automatically on the date identified for expiry.
+                    Your payment method will be charged automatically.
+                    You can turn this setting off at any time.
                   </p>
               </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn bg-danger btn-sm btn-white" data-dismiss="modal">Cancel</button>  
-            <button type="button" class="btn btn-sm btn-white" data-dismiss="modal">OK</button>
+            <button type="button" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</button>  
+            <button type="button" class="btn btn-sm btn-white button-activate-auto-renew">Activate</button>
           </div>
       </div>
   </div>
@@ -757,9 +760,74 @@ foreach ($subscriptionsList as $key=>$value){
             $('.activate-auto-renew').click(function(event) { 
 
               
-                
+              var subscription_id = $(this).data('subscriptionid');
+               $(".modal-body #modal-activate-auto-renew-subscriptionid").text( subscription_id );
               $('.modal-activate-auto-renew').modal('show');
               
+
+            });
+
+            $('.button-activate-auto-renew').click(function(event) { 
+
+              
+            var subscription_id = $(".modal-body #modal-activate-auto-renew-subscriptionid").text();
+            $(".modal-body .btn").prop('disabled', true);
+
+            //ajax 
+
+              const dataToSend = {
+
+
+
+                subscription_id: subscription_id,
+              //options: myOpts,
+
+              }
+
+              const jsonString = JSON.stringify(dataToSend);
+              //console.log(jsonString);
+
+
+
+              var request = $.ajax({
+              url: siteRoot + "pages/learning/scripts/subscriptions/activate_auto_renew.php",
+              type: "POST",
+              contentType: "application/json",
+              data: jsonString,
+              });
+
+
+
+              request.done(function(data) {
+
+
+              data = data.trim();
+              console.log(data);
+              //externalTest = $.parseJSON(data);
+              if (data == 1) {
+
+                alert('Auto Renew Status Updated');
+
+                $(".modal-body .btn").prop('disabled', false);
+                $('.modal-activate-auto-renew').modal('hide');
+                location.reload();
+
+              }else{
+
+                alert('Something went wrong.  We didn\'t change anything.');
+
+                $(".modal-body .btn").prop('disabled', false);
+                $('.modal-activate-auto-renew').modal('hide');
+
+
+              }
+
+            });
+            
+            
+            
+            
+
 
             });
             
