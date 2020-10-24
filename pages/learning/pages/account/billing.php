@@ -638,7 +638,7 @@ foreach ($subscriptionsList as $key=>$value){
 
 <!-- Modals -->
 
-<div class="modal modal-activate-auto-renew modal-success fade" id="modal_success" tabindex="-1" role="dialog" aria-labelledby="modal_success" aria-hidden="true">
+<div class="modal modal-activate-auto-renew modal-success fade" id="modal-activate-auto-renew" tabindex="-1" role="dialog" aria-labelledby="modal_success" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
           <div class="modal-header">
@@ -666,6 +666,78 @@ foreach ($subscriptionsList as $key=>$value){
       </div>
   </div>
 </div>
+
+<!-- Modals Cancel AutoRenew -->
+
+<div class="modal modal-cancel-auto-renew modal-warning fade" id="modal-cancel-auto-renew" tabindex="-1" role="dialog" aria-labelledby="modal_success" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title h6" id="modal_title_6">Cancel Auto Renew</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <div class="py-3 text-center">
+                  <i class="fas fa-exclamation-circle fa-4x"></i>
+                  <h5 class="heading h4 mt-4">Cancellation of Auto-Renewal for Subscription ID #<span id="modal-cancel-auto-renew-subscriptionid"></span></h5>
+                  <p>
+                    This will cancel auto-renewal for the associated subscription.
+                    Your account will no longer be charged automatically on the date identified for expiry.
+                    Your payment method will no longer be charged automatically.
+                    You can re-activate this setting at any time.
+                  </p>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-sm btn-white" data-dismiss="modal">Continue with Auto-Renew</button>  
+            <button type="button" class="btn btn-sm btn-white button-cancel-auto-renew">Cancel Auto-Renew</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- Modals RENEW GENERIC -->
+
+<div class="modal modal-renew fade" id="modal_success" tabindex="-1" role="dialog" aria-labelledby="modal-renew" aria-hidden="true">
+  <div class="modal-lg modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title h6" id="modal_title_6">Renew Subscription</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+            <div class="py-0" style="min-height: 100px; background-image: url('<?php echo BASE_URL;?>/assets/img/covers/learning/1.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+           </div>
+              <div class="py-3 text-left">
+                  <!-- <i class="fas fa-exclamation-circle fa-4x"></i> -->
+                  <h5 class="heading h4 mt-4">$assetManager->getAssetName($value['id'])Renew  <span id="modal-renew-subscriptionid"></span></h5>
+                  <h6 class="heading h6 mt-3">$assetManager->getAssetTypeText($value['asset_type']) Monthly Renewal<span id="modal-renew-subscriptionid"></span></h6>
+                  <h6 class="heading h6 mt-3">$value['renew_frequency']; <span id="modal-renew-subscriptionid"></span></h6>
+                  
+                  <p class="text-justify mt-4">
+                    $value['description'];
+                  </p>
+
+                  <p class="text-justify mt-4">
+                    By clicking confirm you will be taken to PayPal to start the payment process.
+                    Once complete your subscription will be renewed and you will receive a confirmation email.
+                    This subscription will automatically renew after the expiry term.  This can easily be switched off in the settings.
+                    All subscriptions and payments are covered by our <a href="<?php echo BASE_URL;?>/pages/support/support_gieqs_online_terms.php" target="_blank">terms and conditions</a>.
+                  </p>
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</button>  
+            <button type="button" class="btn btn-sm btn-white button-cancel-auto-renew">Confirm Renewal</button>
+          </div>
+      </div>
+  </div>
+</div>
+
 
     <?php require BASE_URI . '/footer.php';?>
 
@@ -755,7 +827,93 @@ foreach ($subscriptionsList as $key=>$value){
 
             
 
-          //alerts
+          //modal operations
+
+          //renew
+
+          $('.renew').click(function(event) { 
+
+              
+          var subscription_id = $(this).data('subscriptionid');
+          //$(".modal-body #modal-renew-subscriptionid").text( subscription_id );
+          $('.modal-renew').modal('show');
+
+
+          });
+
+          //cancel auto renew
+
+          $('.cancel-auto-renew').click(function(event) { 
+
+              
+            var subscription_id = $(this).data('subscriptionid');
+            $(".modal-body #modal-cancel-auto-renew-subscriptionid").text( subscription_id );
+            $('.modal-cancel-auto-renew').modal('show');
+
+
+            });
+
+            $('.button-cancel-auto-renew').click(function(event) { 
+
+              
+              var subscription_id = $(".modal-body #modal-cancel-auto-renew-subscriptionid").text();
+              $(".modal-body .btn").prop('disabled', true);
+
+              //ajax 
+
+                const dataToSend = {
+
+
+
+                  subscription_id: subscription_id,
+                //options: myOpts,
+
+                }
+
+                const jsonString = JSON.stringify(dataToSend);
+                //console.log(jsonString);
+
+
+
+                var request = $.ajax({
+                url: siteRoot + "pages/learning/scripts/subscriptions/cancel_auto_renew.php",
+                type: "POST",
+                contentType: "application/json",
+                data: jsonString,
+                });
+
+
+
+                request.done(function(data) {
+
+
+                data = data.trim();
+                console.log(data);
+                //externalTest = $.parseJSON(data);
+                if (data == 1) {
+
+                  alert('Auto Renew Cancelled');
+
+                  $(".modal-body .btn").prop('disabled', false);
+                  $('.modal-cancel-auto-renew').modal('hide');
+                  location.reload();
+
+                }else{
+
+                  alert('Something went wrong.  We didn\'t change anything.');
+
+                  $(".modal-body .btn").prop('disabled', false);
+                  $('.modal-cancel-auto-renew').modal('hide');
+
+
+                }
+
+              });
+
+            });
+
+
+              //activate auto renew
 
             $('.activate-auto-renew').click(function(event) { 
 
@@ -824,12 +982,12 @@ foreach ($subscriptionsList as $key=>$value){
 
             });
             
-            
+          });
             
             
 
 
-            });
+            
             
             
             $(document).click(function(event) { 

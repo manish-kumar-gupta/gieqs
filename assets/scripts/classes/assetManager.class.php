@@ -943,7 +943,7 @@ public function showButtonSubscription ($subscription_id, $debug){
 
              //show cancel renewal button anyway
 
-            $button = '<button class="btn btn-sm btn-danger rounded-pill p-2 mt-3 ml-3 mt-sm-0 cancel-autorenew" data-subscriptionid = " '. $subscription_id .' ">Cancel Auto-Renew</button>';
+            $button = '<button class="btn btn-sm btn-danger rounded-pill p-2 mt-3 ml-3 mt-sm-0 cancel-auto-renew" data-subscriptionid = "'. $subscription_id .' ">Cancel Auto-Renew</button>';
 
             return $button;
 
@@ -955,7 +955,7 @@ public function showButtonSubscription ($subscription_id, $debug){
             if ($expires_soon == 1){
 
                 //show renew button
-                $button = '<button class="btn btn-sm btn-primary rounded-pill p-2 mt-3 mt-sm-0 renew" data-subscriptionid = " '. $subscription_id .' ">Renew</button>';
+                $button = '<button class="btn btn-sm btn-primary rounded-pill p-2 mt-3 mt-sm-0 renew" data-subscriptionid = "'. $subscription_id .' ">Renew</button>';
                 return $button;
 
 
@@ -963,7 +963,7 @@ public function showButtonSubscription ($subscription_id, $debug){
 
                 //no button, will not renew, not expiring
 
-                $button = '<button class="btn btn-sm btn-success rounded-pill p-2 mt-3 mt-sm-0 activate-auto-renew" data-subscriptionid = " '. $subscription_id .' ">Activate Auto Renew</button>';
+                $button = '<button class="btn btn-sm btn-success rounded-pill p-2 mt-3 mt-sm-0 activate-auto-renew" data-subscriptionid = "'. $subscription_id .' ">Activate Auto Renew</button>';
                 return $button;
 
             }
@@ -978,7 +978,7 @@ public function showButtonSubscription ($subscription_id, $debug){
 
         //buy again
 
-        $button = '<button class="btn btn-sm btn-warning rounded-pill p-2 mt-3 mt-sm-0 buy-again" data-subscriptionid = " '. $subscription_id .' ">Buy Again</button>';
+        $button = '<button class="btn btn-sm btn-warning rounded-pill p-2 mt-3 mt-sm-0 buy-again" data-subscriptionid = "'. $subscription_id .' ">Buy Again</button>';
         return $button;
 
     }

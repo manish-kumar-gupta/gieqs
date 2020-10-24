@@ -328,6 +328,8 @@ $x=0;
 		} 
 $q = "UPDATE `subscriptions` SET $implodeArray WHERE `id` = '$this->id'";
 
+//echo $q;
+
 		
  $stmt = $this->connection->RunQuery($q); 
  return $stmt->rowCount(); 
