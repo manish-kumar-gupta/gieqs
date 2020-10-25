@@ -732,7 +732,7 @@ foreach ($subscriptionsList as $key=>$value){
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</button>  
-            <button type="button" class="btn btn-sm btn-white button-cancel-auto-renew">Confirm Renewal</button>
+            <button type="button" id="button-confirm-renew" class="btn btn-sm btn-white button-confirm-renew">Confirm Renewal</button>
           </div>
       </div>
   </div>
@@ -833,84 +833,220 @@ foreach ($subscriptionsList as $key=>$value){
 
           $('.renew').click(function(event) { 
 
-              
+          $(this).append('<i class="fas fa-circle-notch fa-spin ml-2"></i>');
+          $(this).attr('disabled', true);
           var subscription_id = $(this).data('subscriptionid');
-          //$(".modal-body #modal-renew-subscriptionid").text( subscription_id );
-          $('.modal-renew').modal('show');
+          console.log(subscription_id);
+          $('.modal-footer #button-confirm-renew').attr('data-subscriptionid', ''+subscription_id);
 
-
-          });
-
-          //cancel auto renew
-
-          $('.cancel-auto-renew').click(function(event) { 
-
-              
-            var subscription_id = $(this).data('subscriptionid');
-            $(".modal-body #modal-cancel-auto-renew-subscriptionid").text( subscription_id );
-            $('.modal-cancel-auto-renew').modal('show');
-
-
-            });
-
-            $('.button-cancel-auto-renew').click(function(event) { 
-
-              
-              var subscription_id = $(".modal-body #modal-cancel-auto-renew-subscriptionid").text();
-              $(".modal-body .btn").prop('disabled', true);
-
-              //ajax 
-
-                const dataToSend = {
+          //get the modal data
+              const dataToSend = {
 
 
 
-                  subscription_id: subscription_id,
-                //options: myOpts,
+              subscription_id: subscription_id,
+              //options: myOpts,
 
-                }
+              }
 
-                const jsonString = JSON.stringify(dataToSend);
-                //console.log(jsonString);
-
-
-
-                var request = $.ajax({
-                url: siteRoot + "pages/learning/scripts/subscriptions/cancel_auto_renew.php",
-                type: "POST",
-                contentType: "application/json",
-                data: jsonString,
-                });
+              const jsonString = JSON.stringify(dataToSend);
+              //console.log(jsonString);
 
 
 
-                request.done(function(data) {
+              var request = $.ajax({
+                  url: siteRoot + "pages/learning/scripts/subscriptions/get_renewal_data.php",
+                  type: "POST",
+                  contentType: "application/json",
+                  data: jsonString,
+                  timeout: 5000,
+                  fail: function(xhr, textStatus, errorThrown){
+                    alert('Something went wrong.  We could not load the renewal data.');
+                    $(this).find('i').remove();
+                    $(this).attr('disabled', false);
+                  }
+              });
+
+              request.done(function(data) {
 
 
                 data = data.trim();
                 console.log(data);
-                //externalTest = $.parseJSON(data);
-                if (data == 1) {
+                externalTest = $.parseJSON(data);
+                console.dir(externalTest);
+                if (data) {
 
-                  alert('Auto Renew Cancelled');
+                  /* alert('Auto Renew Cancelled');
 
                   $(".modal-body .btn").prop('disabled', false);
                   $('.modal-cancel-auto-renew').modal('hide');
-                  location.reload();
+                  location.reload(); */
+
+                  $('.modal-renew').modal('show');
+                  $(this).find('i').remove();
+                  $(this).attr('disabled', false);
 
                 }else{
 
-                  alert('Something went wrong.  We didn\'t change anything.');
+                  alert('Something went wrong.  We could not load the renewal data.');
 
-                  $(".modal-body .btn").prop('disabled', false);
-                  $('.modal-cancel-auto-renew').modal('hide');
+                  $(this).find('i').remove();
+                   $(this).attr('disabled', false);
 
 
                 }
 
               });
 
+          //don't show the modal until the data is loaded
+
+          //add a loading spinner to the button of renew
+
+
+
+
+
+          //$(".modal-body #modal-renew-subscriptionid").text( subscription_id );
+         
+
+
+          });
+
+          $('.button-confirm-renew').click(function(event) { 
+
+              
+            var subscription_id = $(this).data('subscriptionid');
+            console.log(subscription_id);
+
+            $(".modal-body .btn").prop('disabled', true);
+
+            //now we need to get cost from modal, and redirect url codes which would be subscription_id and user_id but this coded within a php script
+
+            /* //ajax 
+
+              const dataToSend = {
+
+
+
+                subscription_id: subscription_id,
+              //options: myOpts,
+
+              }
+
+              const jsonString = JSON.stringify(dataToSend);
+              //console.log(jsonString);
+
+
+
+              var request = $.ajax({
+              url: siteRoot + "pages/learning/scripts/subscriptions/cancel_auto_renew.php",
+              type: "POST",
+              contentType: "application/json",
+              data: jsonString,
+              });
+
+
+
+              request.done(function(data) {
+
+
+              data = data.trim();
+              console.log(data);
+              //externalTest = $.parseJSON(data);
+              if (data == 1) {
+
+                alert('Auto Renew Cancelled');
+
+                $(".modal-body .btn").prop('disabled', false);
+                $('.modal-cancel-auto-renew').modal('hide');
+                location.reload();
+
+              }else{
+
+                alert('Something went wrong.  We didn\'t change anything.');
+
+                $(".modal-body .btn").prop('disabled', false);
+                $('.modal-cancel-auto-renew').modal('hide');
+
+
+              }
+
+            }); */
+
             });
+
+              //cancel auto renew
+
+              $('.cancel-auto-renew').click(function(event) { 
+
+                  
+                var subscription_id = $(this).data('subscriptionid');
+                $(".modal-body #modal-cancel-auto-renew-subscriptionid").text( subscription_id );
+                $('.modal-cancel-auto-renew').modal('show');
+
+
+                });
+
+
+
+                $('.button-cancel-auto-renew').click(function(event) { 
+
+                  
+                  var subscription_id = $(".modal-body #modal-cancel-auto-renew-subscriptionid").text();
+                  $(".modal-body .btn").prop('disabled', true);
+
+                  //ajax 
+
+                    const dataToSend = {
+
+
+
+                      subscription_id: subscription_id,
+                    //options: myOpts,
+
+                    }
+
+                    const jsonString = JSON.stringify(dataToSend);
+                    //console.log(jsonString);
+
+
+
+                    var request = $.ajax({
+                    url: siteRoot + "pages/learning/scripts/subscriptions/cancel_auto_renew.php",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: jsonString,
+                    });
+
+
+
+                    request.done(function(data) {
+
+
+                    data = data.trim();
+                    console.log(data);
+                    //externalTest = $.parseJSON(data);
+                    if (data == 1) {
+
+                      alert('Auto Renew Cancelled');
+
+                      $(".modal-body .btn").prop('disabled', false);
+                      $('.modal-cancel-auto-renew').modal('hide');
+                      location.reload();
+
+                    }else{
+
+                      alert('Something went wrong.  We didn\'t change anything.');
+
+                      $(".modal-body .btn").prop('disabled', false);
+                      $('.modal-cancel-auto-renew').modal('hide');
+
+
+                    }
+
+                  });
+
+                });
 
 
               //activate auto renew

@@ -63,7 +63,7 @@ $payment = new Payment;
                        <input type='hidden' name='item_number' value='CAM#N1'>
                        <!--<input type='hidden' name='amount' value='10'>-->
                        <input type='hidden' name='no_shipping' value='1'>
-                       <input type='hidden' name='currency_code' value='USD'>
+                       <input type='hidden' name='currency_code' value='EUR'>
                        <input type='hidden' name='notify_url' value='<?php echo $payment->route("notify", "") ?>'>
                        <input type='hidden' name='cancel_return' value='<?php echo $payment->route("http://www.gieqs.com/pages/learning/pages/paypal/cancel.php", "") ?>'>
                        <input type='hidden' name='return' value='<?php echo $payment->route("return", "http://www.gieqs.com/pages/learning/pages/paypal/return.php") ?>'>

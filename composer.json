@@ -8,6 +8,7 @@
         "google/apiclient": "^2.6",
         "swiftmailer/swiftmailer": "^6.0",
         "league/omnipay": "^3",
-        "omnipay/paypal": "^3.0"
+        "omnipay/paypal": "^3.0",
+        "paypal/rest-api-sdk-php": "^1.14"
     }
 }
