@@ -484,6 +484,82 @@ public function returnProgrammesAsset($assetid)
 
         }
 
+        public function getAssetType($subscription_id)
+            {
+            
+
+                $q = "Select 
+                b.`asset_type`
+                FROM `subscriptions` as a
+                INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
+                WHERE a.`id` = '$subscription_id'";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows == 1) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn = $row['asset_type'];
+
+
+				}
+
+				return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
+
+        public function getAssetid($subscription_id)
+            {
+            
+
+                $q = "Select 
+                b.`id`
+                FROM `subscriptions` as a
+                INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
+                WHERE a.`id` = '$subscription_id'";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows == 1) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn = $row['id'];
+
+
+				}
+
+				return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
+
         public function getAssetTypeText($asset_type)
             {
             

@@ -714,15 +714,20 @@ foreach ($subscriptionsList as $key=>$value){
            </div>
               <div class="py-3 text-left">
                   <!-- <i class="fas fa-exclamation-circle fa-4x"></i> -->
-                  <h5 class="heading h4 mt-4">$assetManager->getAssetName($value['id'])Renew  <span id="modal-renew-subscriptionid"></span></h5>
-                  <h6 class="heading h6 mt-3">$assetManager->getAssetTypeText($value['asset_type']) Monthly Renewal<span id="modal-renew-subscriptionid"></span></h6>
-                  <h6 class="heading h6 mt-3">$value['renew_frequency']; <span id="modal-renew-subscriptionid"></span></h6>
+                  <h5 class="heading h4 mt-4">Renew GIEQs Online Subscription</h5>
+                  <p class="heading h5 mt-4">Subscription : <span id="asset-name"></span></p>
+
+                  <p class="text-muted"><span id="asset-type"></span></p>
+                  <p class="text-muted">Duration : <span id="renew-frequency"></span> Month(s)</p>
+                 
+
                   
                   <p class="text-justify mt-4">
-                    $value['description'];
+                    <span id="asset-description"></span> 
+
                   </p>
 
-                  <p class="text-justify mt-4">
+                  <p class="text-sm mt-8">
                     By clicking confirm you will be taken to PayPal to start the payment process.
                     Once complete your subscription will be renewed and you will receive a confirmation email.
                     This subscription will automatically renew after the expiry term.  This can easily be switched off in the settings.
@@ -732,7 +737,10 @@ foreach ($subscriptionsList as $key=>$value){
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</button>  
-            <button type="button" id="button-confirm-renew" class="btn btn-sm btn-white button-confirm-renew">Confirm Renewal</button>
+            <form id="confirm-renew" action="<?php echo BASE_URL;?>/pages/learning/scripts/subscriptions/charge.php" method="POST">
+              <input type="hidden" id="subscription_id_hidden" name="subscription_id" value="">
+            <input type="submit" id="button-confirm-renew" class="btn btn-sm btn-white button-confirm-renew" value="Confirm Renewal">
+          </form>
           </div>
       </div>
   </div>
@@ -833,6 +841,8 @@ foreach ($subscriptionsList as $key=>$value){
 
           $('.renew').click(function(event) { 
 
+          var button = $(this);
+
           $(this).append('<i class="fas fa-circle-notch fa-spin ml-2"></i>');
           $(this).attr('disabled', true);
           var subscription_id = $(this).data('subscriptionid');
@@ -882,9 +892,16 @@ foreach ($subscriptionsList as $key=>$value){
                   $('.modal-cancel-auto-renew').modal('hide');
                   location.reload(); */
 
+                  $('.modal-renew #asset-name').text(externalTest.asset_name);
+                  $('.modal-renew #asset-type').text(externalTest.asset_type);
+                  $('.modal-renew #renew-frequency').text(externalTest.renew_frequency);
+                  $('.modal-renew #asset-description').text(externalTest.description);
+                  $('.modal-renew #subscription_id_hidden').val(subscription_id);
+
+
                   $('.modal-renew').modal('show');
-                  $(this).find('i').remove();
-                  $(this).attr('disabled', false);
+                  $(button).find('i').remove();
+                  $(button).attr('disabled', false);
 
                 }else{
 
@@ -922,7 +939,7 @@ foreach ($subscriptionsList as $key=>$value){
 
             //now we need to get cost from modal, and redirect url codes which would be subscription_id and user_id but this coded within a php script
 
-            /* //ajax 
+             //ajax 
 
               const dataToSend = {
 
@@ -939,7 +956,7 @@ foreach ($subscriptionsList as $key=>$value){
 
 
               var request = $.ajax({
-              url: siteRoot + "pages/learning/scripts/subscriptions/cancel_auto_renew.php",
+              url: siteRoot + "pages/learning/scripts/subscriptions/execute_renewal.php",
               type: "POST",
               contentType: "application/json",
               data: jsonString,
@@ -955,23 +972,23 @@ foreach ($subscriptionsList as $key=>$value){
               //externalTest = $.parseJSON(data);
               if (data == 1) {
 
-                alert('Auto Renew Cancelled');
+                /* alert('Auto Renew Cancelled');
 
                 $(".modal-body .btn").prop('disabled', false);
                 $('.modal-cancel-auto-renew').modal('hide');
-                location.reload();
+                location.reload(); */
 
               }else{
 
-                alert('Something went wrong.  We didn\'t change anything.');
+                /* alert('Something went wrong.  We didn\'t change anything.');
 
                 $(".modal-body .btn").prop('disabled', false);
                 $('.modal-cancel-auto-renew').modal('hide');
-
+ */
 
               }
 
-            }); */
+            }); 
 
             });
 
