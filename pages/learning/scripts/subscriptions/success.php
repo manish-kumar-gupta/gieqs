@@ -1,5 +1,15 @@
 <?php
-require '../../../../assets/includes/config.inc.php';
+$openaccess = 0;
+
+$requiredUserLevel = 6;
+
+
+error_reporting(E_ALL);
+require_once '../../../../assets/includes/config.inc.php';
+
+$location = BASE_URL . '/index.php';
+
+require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
 
 
 $general = new general;
@@ -21,8 +31,13 @@ require_once BASE_URI .'/../scripts/config.php'; //KEY CODE TO REPLICATE
 
 
 
-error_reporting(E_ALL);
+
 $debug = true;
+
+if ($debug){
+
+    error_reporting(E_ALL);
+}
 
 // Once the transaction has been approved, we need to complete it.
 if (array_key_exists('paymentId', $_GET) && array_key_exists('PayerID', $_GET)) {
@@ -51,6 +66,8 @@ if (array_key_exists('paymentId', $_GET) && array_key_exists('PayerID', $_GET)) 
         $description = $arr_body['transactions'][0]['description'];
         $subscription_id = $arr_body['transactions'][0]['invoice_number'];
 
+       // print_r($subscription_id);
+
  
         // Insert transaction data into the database
 
@@ -58,6 +75,7 @@ if (array_key_exists('paymentId', $_GET) && array_key_exists('PayerID', $_GET)) 
 
             //we created a new subscription for the renewal
             //with the required term
+            //store the paypal ref only, no personal details stored
 
             $subscription->Load_from_key($subscription_id);
 
@@ -66,6 +84,7 @@ if (array_key_exists('paymentId', $_GET) && array_key_exists('PayerID', $_GET)) 
             //then reload the previous page with a popup that it was successful
     
             $subscription->setactive('1');
+            $subscription->setgateway_transactionId($payment_id);
             
             if ($subscription->prepareStatementPDOUpdate() == 1){
 
@@ -73,11 +92,17 @@ if (array_key_exists('paymentId', $_GET) && array_key_exists('PayerID', $_GET)) 
             }else{
 
                 //updating the subscription went wrong
+                echo 'error in subscription updating';
+
             }
             
 
         }
 
+        if ($debug){
+
+            die();
+        }
 
         /* $isPaymentExist = $db->query("SELECT * FROM payments WHERE payment_id = '".$payment_id."'");
  
@@ -88,6 +113,14 @@ if (array_key_exists('paymentId', $_GET) && array_key_exists('PayerID', $_GET)) 
         echo "Payment is successful. Your transaction id is: ". $payment_id;
 
         //redirect to page with positive outcome
+
+        $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult='+$subscription_id;
+        header("Location: $page");
+        die();
+
+
+
+
     } else {
         echo $response->getMessage();
     }

@@ -2,7 +2,7 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 20-10-2020
+ * Create Date: 26-10-2020
  *
  * DJT 2019
  *
@@ -20,6 +20,7 @@ Class subscriptions {
 	private $expiry_date; //timestamp
 	private $active; //varchar(50)
 	private $auto_renew; //varchar(11)
+	private $gateway_transactionId; //varchar(100)
 	private $connection;
 
 	public function __construct(){
@@ -31,13 +32,14 @@ Class subscriptions {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_subscriptions($user_id,$asset_id,$start_date,$expiry_date,$active,$auto_renew){
+	public function New_subscriptions($user_id,$asset_id,$start_date,$expiry_date,$active,$auto_renew,$gateway_transactionId){
 		$this->user_id = $user_id;
 		$this->asset_id = $asset_id;
 		$this->start_date = $start_date;
 		$this->expiry_date = $expiry_date;
 		$this->active = $active;
 		$this->auto_renew = $auto_renew;
+		$this->gateway_transactionId = $gateway_transactionId;
 	}
 
     /**
@@ -56,6 +58,7 @@ Class subscriptions {
 			$this->expiry_date = $row["expiry_date"];
 			$this->active = $row["active"];
 			$this->auto_renew = $row["auto_renew"];
+			$this->gateway_transactionId = $row["gateway_transactionId"];
 		}
 	}
     /**
@@ -80,6 +83,7 @@ $q = "Select * from `subscriptions` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["expiry_date"] = $row["expiry_date"];
 			$rowReturn[$x]["active"] = $row["active"];
 			$rowReturn[$x]["auto_renew"] = $row["auto_renew"];
+			$rowReturn[$x]["gateway_transactionId"] = $row["gateway_transactionId"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -108,6 +112,7 @@ $q = "Select * from `subscriptions` WHERE `id` = $key";
 			$rowReturn[$x]["expiry_date"] = $row["expiry_date"];
 			$rowReturn[$x]["active"] = $row["active"];
 			$rowReturn[$x]["auto_renew"] = $row["auto_renew"];
+			$rowReturn[$x]["gateway_transactionId"] = $row["gateway_transactionId"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -328,8 +333,6 @@ $x=0;
 		} 
 $q = "UPDATE `subscriptions` SET $implodeArray WHERE `id` = '$this->id'";
 
-//echo $q;
-
 		
  $stmt = $this->connection->RunQuery($q); 
  return $stmt->rowCount(); 
@@ -413,6 +416,13 @@ $q = "UPDATE `subscriptions` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return gateway_transactionId - varchar(100)
+	 */
+	public function getgateway_transactionId(){
+		return $this->gateway_transactionId;
+	}
+
+	/**
 	 * @param Type: int(11)
 	 */
 	public function setid($id){
@@ -459,6 +469,13 @@ $q = "UPDATE `subscriptions` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function setauto_renew($auto_renew){
 		$this->auto_renew = $auto_renew;
+	}
+
+	/**
+	 * @param Type: varchar(100)
+	 */
+	public function setgateway_transactionId($gateway_transactionId){
+		$this->gateway_transactionId = $gateway_transactionId;
 	}
 
     /**

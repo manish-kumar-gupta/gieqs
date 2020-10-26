@@ -1,6 +1,16 @@
 <?php
+$openaccess = 0;
+
+$requiredUserLevel = 6;
+
+
 error_reporting(E_ALL);
 require_once '../../../../assets/includes/config.inc.php';
+
+$location = BASE_URL . '/index.php';
+
+require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
+
 
 
 $general = new general;
@@ -27,13 +37,29 @@ print_r($_POST);
 
 $subscription_id = $_POST['subscription_id'];
 
-
+//because this is a renewal
 if ($subscription->Return_row($subscription_id)){
 
     $subscription->Load_from_key($subscription_id);
 
     //if subscription exists
 
+    //check the user id is the same as the logged in user
+
+    $subscriptionUser = $subscription->getuser_id();
+    $activeUser = $userid;
+
+    if ($subscriptionUser != $activeUser){
+
+        //active user is not the user that owns the subscription
+
+        echo 'Permissions Error.  Active user is not the subscription owner';
+        die();
+
+    }
+
+
+    //old subscription
     $subscription_to_return = array();
 
     $subscription_to_return['asset_name'] = $assetManager->getAssetName($subscription_id);
@@ -46,11 +72,18 @@ if ($subscription->Return_row($subscription_id)){
     $subscription_to_return['description'] = $assets_paid->getdescription();
     $subscription_to_return['renew_frequency'] = $assets_paid->getrenew_frequency();
 
-
-
-    
     $subscription_to_return['user_id'] = $subscription->getuser_id();
     $subscription_to_return['expiry_date'] = $subscription->getexpiry_date();
+
+
+
+
+    //new subscription
+    //ADD THE RENEW FREQUENCY TO THE OLD EXPIRY DATE
+    //START DATE NOW
+
+    $subscription->New_subscriptions($userid, $subscription_to_return['asset_id'], $subscription_to_return['expiry_date'], $subscription_to_return['expiry_date'], '0', '1', NULL);
+
 
 
     //echo json_encode($subscription_to_return);
