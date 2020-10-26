@@ -18,7 +18,7 @@ require_once(BASE_URI . '/assets/scripts/classes/subscriptions.class.php');
 $subscription = new subscriptions;
 
 error_reporting(E_ALL);
-require_once 'config.php';
+require_once BASE_URI .'/../scripts/config.php';
 //check the user is logged in
 //check the correct user
 //check the subscription exists
@@ -73,6 +73,9 @@ if ($subscription->Return_row($subscription_id)){
                 'currency' => PAYPAL_CURRENCY,
                 'returnUrl' => PAYPAL_RETURN_URL,
                 'cancelUrl' => PAYPAL_CANCEL_URL,
+                'transactionId' => $subscription_id,
+                'description' => $subscription_to_return['asset_name'],
+
                 /* {
                     "intent": "sale",
                     "payer": {
