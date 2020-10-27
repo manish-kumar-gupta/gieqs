@@ -272,6 +272,9 @@ const browserSync = require("browser-sync");
 
                 </div>
             </div>
+            <div class="row">
+            <small>OQ = outer quadrant, TF = tri-radiate fold, AO = appendiceal orifice, ICV = ileo-caecal valve</small>
+            </div>
         </div>
     </div>
     <!-- Omnisearch -->

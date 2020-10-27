@@ -414,8 +414,8 @@ public function returnProgrammesAsset($assetid)
             $q = "Select a.*, b.`asset_type`, b.`renew_frequency`
             FROM `subscriptions` as a
             INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
-            WHERE a.`user_id` = '$userid' AND b.`asset_type` > 1
-            ORDER BY a.`active` DESC, b.`asset_type` 
+            WHERE a.`user_id` = '$userid' AND b.`asset_type` > 1 AND a.`active` = '1'
+            ORDER BY a.`start_date` DESC, b.`asset_type` 
             ";
 
             //echo $q . '<br><br>';
@@ -1065,6 +1065,181 @@ public function showButtonSubscription ($subscription_id, $debug){
 
 //scripts for user modifications to settings
 
+//check user has no same subscription
+
+public function doesUserHaveSameAssetClassSubscription ($subscription_id, $user_id, $debug){
+
+    {
+            
+
+        $assetType = $this->getAssetType($subscription_id);
+        
+
+        $q = "Select 
+        a.`id`
+        FROM `subscriptions` as a
+        INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
+        WHERE b.`asset_type` = '$assetType' 
+        AND a.`user_id` = '$user_id'
+        AND a.`active` = '1'
+        AND a.`expiry_date` > NOW()
+        ";
+
+    //echo $q . '<br><br>';
+
+
+
+    $result = $this->connection->RunQuery($q);
+    
+    $x = 0;
+    $nRows = $result->rowCount();
+
+    if ($nRows > 0) {
+
+        /* while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+            $rowReturn = $row['id'];
+
+
+        } */
+
+        if ($debug){
+
+            echo 'user has a subscription of this type already';
+        }
+
+        return true;
+
+    } else {
+        
+
+        if ($debug){
+
+            echo 'user has no subscription of this type';
+        }
+
+        return false;
+
+        
+    }
+
+}
+
+}
+
+public function doesUserHaveSameAssetClassAssetType ($asset_type, $user_id, $debug){
+
+    {
+        
+        $q = "Select 
+        a.`id`
+        FROM `subscriptions` as a
+        INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
+        WHERE b.`asset_type` = '$asset_type' 
+        AND a.`user_id` = '$user_id'
+        AND a.`active` = '1'
+        AND a.`expiry_date` > NOW()
+        ";
+
+    //echo $q . '<br><br>';
+
+
+
+    $result = $this->connection->RunQuery($q);
+    
+    $x = 0;
+    $nRows = $result->rowCount();
+
+    if ($nRows > 0) {
+
+        /* while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+            $rowReturn = $row['id'];
+
+
+        } */
+
+        if ($debug){
+
+            echo 'user has a subscription of this type already';
+        }
+
+        return true;
+
+    } else {
+        
+
+        if ($debug){
+
+            echo 'user has no subscription of this type';
+        }
+
+        return false;
+
+        
+    }
+
+}
+
+
+}
+
+public function doesUserHaveSameAssetAlready ($asset_id, $user_id, $debug){
+
+    {
+        
+        $q = "Select 
+        a.`id`
+        FROM `subscriptions` as a
+        INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
+        WHERE b.`id` = '$asset_id' 
+        AND a.`user_id` = '$user_id'
+        AND a.`active` = '1'
+        AND a.`expiry_date` > NOW()
+        ";
+
+    //echo $q . '<br><br>';
+
+
+
+    $result = $this->connection->RunQuery($q);
+    
+    $x = 0;
+    $nRows = $result->rowCount();
+
+    if ($nRows > 0) {
+
+        /* while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+            $rowReturn = $row['id'];
+
+
+        } */
+
+        if ($debug){
+
+            echo 'user has this exact asset in a subscription already';
+        }
+
+        return true;
+
+    } else {
+        
+
+        if ($debug){
+
+            echo 'user has no such asset in a subscription';
+        }
+
+        return false;
+
+        
+    }
+
+}
+
+
+}
 
 
 

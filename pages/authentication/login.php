@@ -25,6 +25,11 @@ if (isset($_GET['destination'])) {
     $target = 'pages/program/program-printable-catchup.php';
 
 
+  }else if ($destination == 'gieqsonline'){
+
+    $target = '/pages/learning/index.php';
+
+
   } else if ($destination == 'tagvideo'){
 
     //define other constant

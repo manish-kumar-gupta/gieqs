@@ -308,6 +308,7 @@
                                         <span style="color: rgb(238, 194, 120);" class="dropdown-header">Scoring Systems</span>
 
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/smic"><i class="fas fa-graduation-cap"></i>Risk of Polyp Submucosal Invasion</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/scores/cecum.php"><i class="fas fa-graduation-cap"></i>Caecum Visualisation Score</a>
 
 
 

@@ -82,8 +82,22 @@ if ($subscription->Return_row($subscription_id)){
     //ADD THE RENEW FREQUENCY TO THE OLD EXPIRY DATE
     //START DATE NOW
 
-    $subscription->New_subscriptions($userid, $subscription_to_return['asset_id'], $subscription_to_return['expiry_date'], $subscription_to_return['expiry_date'], '0', '1', NULL);
+    $current_date = new DateTime('now', new DateTimeZone('UTC'));
 
+    $current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s');
+
+    $end_date = new DateTime($subscription_to_return['expiry_date'], new DateTimeZone('UTC'));
+
+    $interval = 'P' . $subscription_to_return['renew_frequency'] . 'M';
+
+    $end_date->add(new DateInterval($interval));
+    
+    $end_date_sqltimestamp = date_format($end_date, 'Y-m-d H:i:s');
+
+
+    $subscription->New_subscriptions($userid, $subscription_to_return['asset_id'], $current_date_sqltimestamp, $end_date_sqltimestamp, '0', '1', NULL);
+
+    $newSubscriptionid = $subscription->prepareStatementPDO();
 
 
     //echo json_encode($subscription_to_return);
@@ -106,7 +120,7 @@ if ($subscription->Return_row($subscription_id)){
                 'currency' => PAYPAL_CURRENCY,
                 'returnUrl' => PAYPAL_RETURN_URL,
                 'cancelUrl' => PAYPAL_CANCEL_URL,
-                'transactionId' => $subscription_id,
+                'transactionId' => $newSubscriptionid,
                 'description' => $subscription_to_return['asset_name'],
 
                 /* {

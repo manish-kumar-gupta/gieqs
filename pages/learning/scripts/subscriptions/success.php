@@ -29,14 +29,31 @@ $subscription = new subscriptions;
 
 require_once BASE_URI .'/../scripts/config.php'; //KEY CODE TO REPLICATE
 
+require_once BASE_URI . "/vendor/autoload.php";
+
+spl_autoload_unregister ('class_loader');
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+$mail = new PHPMailer;
 
 
 
-$debug = true;
+$debug = FALSE;
 
 if ($debug){
 
     error_reporting(E_ALL);
+}
+
+function get_include_contents($filename, $variablesToMakeLocal) {
+    extract($variablesToMakeLocal);
+    if (is_file($filename)) {
+        ob_start();
+        include $filename;
+        return ob_get_clean();
+    }
+    return false;
 }
 
 // Once the transaction has been approved, we need to complete it.
@@ -86,6 +103,7 @@ if (array_key_exists('paymentId', $_GET) && array_key_exists('PayerID', $_GET)) 
             $subscription->setactive('1');
             $subscription->setgateway_transactionId($payment_id);
             
+            
             if ($subscription->prepareStatementPDOUpdate() == 1){
 
 
@@ -99,10 +117,7 @@ if (array_key_exists('paymentId', $_GET) && array_key_exists('PayerID', $_GET)) 
 
         }
 
-        if ($debug){
-
-            die();
-        }
+        
 
         /* $isPaymentExist = $db->query("SELECT * FROM payments WHERE payment_id = '".$payment_id."'");
  
@@ -112,9 +127,80 @@ if (array_key_exists('paymentId', $_GET) && array_key_exists('PayerID', $_GET)) 
  
         echo "Payment is successful. Your transaction id is: ". $payment_id;
 
+        //send mail
+
+        //get required data
+
+        $asset_id = $assetManager->getAssetid($subscription_id);
+
+        $assets_paid->Load_from_key($asset_id);
+
+        if ($users->gettimezone()){
+
+            $timezone = $users->gettimezone();
+        }else{
+
+            $timezone = 'UTC';
+        }
+
+        $end_date = new DateTime($subscription->getexpiry_date(), new DateTimeZone($timezone));
+
+        $end_date_user_readable = date_format($end_date, 'd/m/Y');
+    
+    
+
+        $users->Load_from_key($userid);
+        $emailVaryarray['firstname'] = $users->getfirstname();
+        $emailVaryarray['surname'] = $users->getsurname();
+        $emailVaryarray['email'] = $users->getemail();
+        $email = $users->getemail();
+        $emailVaryarray['subscription_id'] = $subscription_id;
+        $emailVaryarray['asset_name'] = $assetManager->getAssetName($subscription_id);
+        $emailVaryarray['asset_type'] = $assetManager->getAssetTypeText($assetManager->getAssetType($subscription_id));
+        $emailVaryarray['renew_frequency'] = $assets_paid->getrenew_frequency();
+        $emailVaryarray['expiry_date'] = $end_date_user_readable;
+        $emailVaryarray['cost'] = $amount . ' ' . $currency;
+
+        $emailVaryarray['gateway_transactionId'] = $payment_id;
+        $emailVaryarray['preheader'] = 'Your subscription has been renewed.  Thank you for your support of GIEQs Online';
+    
+
+        
+        if ($debug){
+
+            echo PHP_EOL;
+            print_r($emailVaryarray);
+
+        }
+
+        $filename = '/assets/email/subscriptions/renewSubscriptionMail.php';
+ 
+        $subject = 'Thank-you for Renewing Your Subscription on GIEQS Online';
+
+
+        $mail->CharSet = "UTF-8";
+        $mail->Encoding = "base64";
+        $mail->Subject = $subject;
+        $mail->setFrom('admin@gieqs.com', 'GIEQs Online');
+        $mail->addAddress($emailVaryarray['email']);
+        $mail->msgHTML(get_include_contents(BASE_URI . $filename, $emailVaryarray));
+        $mail->AltBody = strip_tags((get_include_contents(BASE_URI . $filename, $emailVaryarray)));
+        $mail->preSend();
+        $mime = $mail->getSentMIMEMessage();
+        $mime = rtrim(strtr(base64_encode($mime), '+/', '-_'), '=');
+
+
+        require(BASE_URI . '/assets/scripts/individualMailerGmailAPIPHPMailer.php');
+
+        
+
+        if ($debug){
+
+            die();
+        }
         //redirect to page with positive outcome
 
-        $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult='+$subscription_id;
+        $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $subscription_id;
         header("Location: $page");
         die();
 

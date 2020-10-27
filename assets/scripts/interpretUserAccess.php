@@ -230,6 +230,8 @@ if (isset($requiredUserLevel)){
         $startGlobalAccessDate = new DateTime('2020-10-01 00:00:01', new DateTimeZone('UTC'));
 
         $endGlobalAccessDate = new DateTime('2020-11-09 00:00:01', new DateTimeZone('UTC'));
+        $endGlobalAccessDate = new DateTime('2020-10-09 00:00:01', new DateTimeZone('UTC')); //COMMENT HERE
+
 
         $currentTime = new DateTime('now', $serverTimeZone);
 
