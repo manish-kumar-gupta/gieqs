@@ -25,6 +25,11 @@ if (isset($_GET['destination'])) {
     $target = 'pages/program/program-printable-catchup.php';
 
 
+  }else if ($destination == 'basic_colon_signup'){
+
+    $target = '/pages/program/program_basic_colon.php?action=register';
+
+
   }else if ($destination == 'gieqsonline'){
 
     $target = '/pages/learning/index.php';

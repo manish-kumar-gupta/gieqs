@@ -1074,7 +1074,7 @@ foreach ($subscriptionsList as $key=>$value){
                         $('.modal-new #asset-type').text(externalTest.asset_type);
                         $('.modal-new #renew-frequency').text(externalTest.renew_frequency);
                         $('.modal-new #asset-description').text(externalTest.description);
-                        $('.modal-new #asset_id_hidden').val(asset_id);
+                        $('.modal-new #asset_id_hidden').val(externalTest.asset_id);
 
 
                         $('.modal-new').modal('show');
