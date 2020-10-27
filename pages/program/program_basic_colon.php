@@ -326,12 +326,104 @@ if (isset($_GET["action"])){
         </div>
     </div>
 
+    <!-- Register Modal -->
+
+    <div class="modal fade" id="registerInterest" tabindex="-1" role="dialog" aria-labelledby="registerInterestLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerInterestLabel" style="color: rgb(238, 194, 120);">Sign-up for GIEQs Online!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="text-white" aria-hidden="false">&times;</span>
+                    </button>
+                </div>
+ 
+                <div class="modal-body">
+                    <span class="h6">This will only take 2 seconds.</span><span><br/>We need your email address and a password to keep track of your learning aims and objectives.  Thereafter you can choose what further information you share with us</span>
+                    <form id="NewUserForm" class="mt-3">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="form-control-label">First name</label>
+                            <input name="firstname" class="form-control" type="text" placeholder="Enter your first name" value="">
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="form-control-label">Last name</label>
+                            <input name="surname" class="form-control" type="text" placeholder="Also your last name" value="">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row align-items-center">
+                        
+                        <div class="col-md-6">
+                          <div class="form-group focused">
+                            <label class="form-control-label">Gender</label>
+                            <select name="gender" class="form-control"  aria-hidden="true">
+                            <option hidden>select gender
+                            </option>  
+                            <option value="1" >Female</option>
+                              <option value="2"> Male</option>
+                              <option value="3">Rather not say</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="form-control-label">Email (will be your user id)</label>
+                            <input name="email" class="form-control" type="email" placeholder="name@example.com" value="">
+        <!--                     <small class="form-text text-muted mt-2">This is the main email address that we'll send notifications to. <a href="account-notifications.html">Manage your notifications</a> in order to control what we send.</small>
+         -->                  </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="form-control-label">Password</label>
+                            <input id="password" name="password" class="form-control" type="password" placeholder="Enter your password" value="">
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="form-control-label">Password again</label>
+                            <input name="passwordAgain" class="form-control" type="password" placeholder="password again" value="">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="my-4">
+                        <div class="custom-control custom-checkbox mb-3">
+                          <input type="checkbox" name="checkterms" class="custom-control-input" id="checkterms">
+                          <label class="custom-control-label" for="checkterms">I agree to the <a href="<?php echo BASE_URL;?>/pages/support/support_gieqs_terms_and_conditions.php" target="_blank">terms and conditions</a></label>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" name="checkprivacy" class="custom-control-input" id="checkprivacy">
+                          <label class="custom-control-label" for="checkprivacy">I agree to the <a href="<?php echo BASE_URL;?>/pages/support/support_gieqs_privacy_policy.php" target="_blank">privacy policy</a></label>
+                        </div>
+                      </div>
+                      
+          </form>
+                </div>
+                <div class="modal-footer">
+                  <button id="submitPreRegister" type="button" class="btn-small text-dark bg-gieqsGold">Sign up</button>
+                  <button id="login" type="button" class="btn-small btn-secondary">I already have a login</button>
+
+
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
     <?php require BASE_URI . '/footer.php';?>
 
     <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
     <script src="../../assets/js/purpose.core.js"></script>
     <script src="<?php echo BASE_URL;?>/assets/js/purpose.js"></script>
     <script src=<?php echo BASE_URL . "/assets/js/generaljs.js"?>></script>
+    <script src="<?php echo BASE_URL;?>/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+
 
 
     <script>
@@ -394,6 +486,30 @@ if (isset($_GET["action"])){
 
 
           window.location = siteRoot + "pages/authentication/login.php?destination=basic_colon_signup";
+
+
+        })
+
+        $(document).on('click', '#submitPreRegister', function() {
+
+        event.preventDefault();
+        $('#NewUserForm').submit();
+
+        })
+
+        $(document).on('click', '#login', function() {
+
+        event.preventDefault();
+        window.location.href = siteRoot + '/pages/authentication/login.php?destination=basic_colon_signup';
+
+
+        })
+
+        $('#button-signup').click(function(){
+
+
+          $('.modal-new').modal('hide');
+          $('#registerInterest').modal('show');
 
 
         })
