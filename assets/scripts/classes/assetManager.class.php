@@ -1241,6 +1241,63 @@ public function doesUserHaveSameAssetAlready ($asset_id, $user_id, $debug){
 
 }
 
+public function isRenewal ($asset_id, $user_id, $debug){
+
+    {
+        
+        $q = "Select 
+        a.`id`
+        FROM `subscriptions` as a
+        INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
+        WHERE b.`id` = '$asset_id' 
+        AND a.`user_id` = '$user_id'
+        AND a.`active` = '1'
+        AND a.`expiry_date` > NOW()
+        ";
+
+    //echo $q . '<br><br>';
+
+
+
+    $result = $this->connection->RunQuery($q);
+    
+    $x = 0;
+    $nRows = $result->rowCount();
+
+    if ($nRows > 1) {
+
+        /* while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+            $rowReturn = $row['id'];
+
+
+        } */
+
+        if ($debug){
+
+            echo 'user has more than 1 subscription with this asset_id, therefore renewal';
+        }
+
+        return true;
+
+    } else {
+        
+
+        if ($debug){
+
+            echo 'user has one or less subscription with this asset_id, therefore new purchase';
+        }
+
+        return false;
+
+        
+    }
+
+}
+
+
+}
+
 
 
 

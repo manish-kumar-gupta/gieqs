@@ -737,7 +737,10 @@ foreach ($subscriptionsList as $key=>$value){
                             <h5 class="heading h4 mt-4">Thank you for your payment!<br /> Subscription ID #<span
                                     id="modal-subscription-success-id"></span> is now active</h5>
                             <p>
-                                We very much appreciate your support of GIEQs Online! </p>
+                                Please check your email for details. We very much appreciate your support of GIEQs Online! </p>
+
+                                <p class="small">
+                                Didn't receive a mail? Check your spam and don't worry.  If there is an ongoing issue please contact us!</p>
                         </div>
                     </div>
                     <div class="modal-footer">

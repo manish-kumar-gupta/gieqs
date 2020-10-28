@@ -315,7 +315,9 @@ if (isset($_GET["action"])){
                     <button type="button" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</button>
                     <form id="confirm-new"
                         action="<?php echo BASE_URL;?>/pages/learning/scripts/subscriptions/charge.php" method="POST">
-                        <input type="hidden" id="subscription_id_hidden" name="subscription_id" value="">
+                        <input type="hidden" id="asset_id_hidden" name="asset_id" value="">
+                        <input type="hidden" id="course_date" name="course_date" value="2020-11-16 08:00"> <!-- CHANGE ME UPDATE TODO MAKE THIS COME FROM THE PROGRAM -->
+
                         <input type="submit" id="button-confirm-new" class="btn btn-sm btn-white button-confirm-new"
                             value="Start Payment">
                     </form>
@@ -435,6 +437,15 @@ if (isset($_GET["action"])){
             var videoPassed = false;
         }
 
+        
+
+          var userid = '<?php echo $userid;?>';
+          
+        if (userid == ''){
+
+          userid = false;
+
+        }
     
         var waitForFinalEvent = (function () {
 	  var timers = {};
@@ -548,9 +559,21 @@ if (isset($_GET["action"])){
 
             const jsonString = JSON.stringify(dataToSend);
 
+            if (userid) {
+             
+              //closed version
+              var url = siteRoot + "pages/learning/scripts/subscriptions/get_new_subscription_data.php";
+
+            }else{
+
+              //open version
+
+              var url = siteRoot + "pages/learning/scripts/subscriptions/get_new_subscription_data_open.php";
+
+            }
+
             var request = $.ajax({
-                url: siteRoot +
-                    "pages/learning/scripts/subscriptions/get_new_subscription_data_open.php",
+                url: url,
                 type: "POST",
                 contentType: "application/json",
                 data: jsonString,
@@ -569,9 +592,12 @@ if (isset($_GET["action"])){
 
                 data = data.trim();
                 console.log(data);
-                externalTest = $.parseJSON(data);
-                console.dir(externalTest);
-                if (data) {
+
+                try {
+
+                  externalTest = $.parseJSON(data);
+                  console.dir(externalTest);
+                  if (data) {
 
                     $('.modal-new #asset-name').text(externalTest.asset_name);
                     $('.modal-new #asset-type').text(externalTest.asset_type);
@@ -585,16 +611,25 @@ if (isset($_GET["action"])){
                     $(button).find('i').remove();
                     $(button).attr('disabled', false);
 
-                } else {
+                  } else {
 
                     alert(
-                        'Something went wrong.  We could not load the subscription data.');
+                      'Something went wrong.  We could not load the subscription data.');
 
                     $(this).find('i').remove();
                     $(this).attr('disabled', false);
 
 
+                  }
+                  
+                } catch (error) {
+
+                  alert(data);
+                  $(button).find('i').remove();
+                  $(button).attr('disabled', false);
+                  
                 }
+                
 
             });
 

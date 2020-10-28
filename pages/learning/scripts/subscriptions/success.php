@@ -127,6 +127,12 @@ if (array_key_exists('paymentId', $_GET) && array_key_exists('PayerID', $_GET)) 
  
         echo "Payment is successful. Your transaction id is: ". $payment_id;
 
+        
+       
+
+
+        
+        
         //send mail
 
         //get required data
@@ -134,6 +140,119 @@ if (array_key_exists('paymentId', $_GET) && array_key_exists('PayerID', $_GET)) 
         $asset_id = $assetManager->getAssetid($subscription_id);
 
         $assets_paid->Load_from_key($asset_id);
+
+
+
+        //figure out
+
+        //what this payment was for
+
+        $asset_type = $assetManager->getAssetType($subscription_id);
+
+        //was it a renewal
+
+        $isRenewal = $assetManager->isRenewal($asset_id, $userid, $debug);
+
+        //check if 2xasset_id on 2 subscriptions = renewal
+
+        //clean up other unsuccessful purchases for this type
+
+        //based on asset_type set some parameters
+
+        /* 
+        
+                $filename = ''; // link to email that needs to be sent
+                $subject = ''; // subject of mail
+                $preheader = ''; //preheader text of mail
+                $page = '';  //where to locate to after success
+
+        
+        */
+
+        //set some basics
+
+        $filename = '/assets/email/subscriptions/renewSubscriptionMail.php';
+        $subject = 'Thank-you for Renewing Your Subscription on GIEQS Online';
+        $preheader = 'Your subscription has been renewed.  Thank you for your support of GIEQs Online';
+        $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $subscription_id;
+
+
+        if ($isRenewal){
+
+            if ($asset_type == '1'){ //site wide
+
+                $filename = '/assets/email/subscriptions/renewSubscriptionMail.php';
+                $subject = 'Thank-you for Renewing Your Subscription on GIEQS Online';
+                $preheader = 'Your subscription has been renewed.  Thank you for your support of GIEQs Online';
+                $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $subscription_id;
+
+
+
+            }else if ($asset_type == '2'){ //GIEQs Congress Subscription
+
+                $filename = '/assets/email/subscriptions/renewSubscriptionMail.php';
+                $subject = 'Thank-you for Renewing Your Subscription on GIEQS Online';
+                $preheader = 'Your subscription has been renewed.  Thank you for your support of GIEQs Online';
+                $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $subscription_id;
+
+
+            }else if ($asset_type == '3'){ //GIEQs Virtual / Live Course
+
+
+
+            }else if ($asset_type == '4'){ //video set / area of site
+
+                $filename = '/assets/email/subscriptions/renewSubscriptionMail.php';
+                $subject = 'Thank-you for Renewing Your Subscription on GIEQS Online';
+                $preheader = 'Your subscription has been renewed.  Thank you for your support of GIEQs Online';
+                $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $subscription_id;
+
+
+            }
+
+        }else if ($isRenewal === false){
+
+            if ($asset_type == '1'){ //site wide
+
+                $filename = '/assets/email/subscriptions/renewSubscriptionMail.php';  //to change
+                $subject = 'Thank-you for Your Subscription on GIEQS Online';
+                $preheader = 'Your new subscription awaits!  Thank you for your support of GIEQs Online';
+                $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $subscription_id;
+
+
+            }else if ($asset_type == '2'){ //GIEQs Congress Subscription
+                
+                $filename = '/assets/email/subscriptions/renewSubscriptionMail.php';
+                $subject = 'Thank-you for Your Subscription on GIEQS Online';
+                $preheader = 'Your new subscription awaits!  Thank you for your support of GIEQs Online';
+                $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $subscription_id;
+
+
+
+
+            }else if ($asset_type == '3'){ //GIEQs Virtual / Live Course
+
+                $filename = '/assets/email/subscriptions/newSubscriptionCourse.php';
+                $subject = 'Thank-you for Your GIEQs Online Course Purchase';
+                $preheader = 'Your course awaits! Check out this mail for information on joining and catch-up. Thank you for your support of GIEQs Online';
+                $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $subscription_id;
+
+
+
+
+
+            }else if ($asset_type == '4'){ //video set / area of site
+
+
+
+            }
+
+        }
+
+
+
+
+
 
         if ($users->gettimezone()){
 
@@ -162,7 +281,7 @@ if (array_key_exists('paymentId', $_GET) && array_key_exists('PayerID', $_GET)) 
         $emailVaryarray['cost'] = $amount . ' ' . $currency;
 
         $emailVaryarray['gateway_transactionId'] = $payment_id;
-        $emailVaryarray['preheader'] = 'Your subscription has been renewed.  Thank you for your support of GIEQs Online';
+        $emailVaryarray['preheader'] = $preheader;
     
 
         
@@ -173,9 +292,9 @@ if (array_key_exists('paymentId', $_GET) && array_key_exists('PayerID', $_GET)) 
 
         }
 
-        $filename = '/assets/email/subscriptions/renewSubscriptionMail.php';
+        //$filename = '/assets/email/subscriptions/renewSubscriptionMail.php';
  
-        $subject = 'Thank-you for Renewing Your Subscription on GIEQS Online';
+        //$subject = 'Thank-you for Renewing Your Subscription on GIEQS Online';
 
 
         $mail->CharSet = "UTF-8";
@@ -200,7 +319,7 @@ if (array_key_exists('paymentId', $_GET) && array_key_exists('PayerID', $_GET)) 
         }
         //redirect to page with positive outcome
 
-        $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $subscription_id;
+        //$page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $subscription_id;
         header("Location: $page");
         die();
 

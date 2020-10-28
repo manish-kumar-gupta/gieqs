@@ -11,6 +11,7 @@ $location = BASE_URL . '/index.php';
 
 require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
 
+$debug = false;
 
 
 $general = new general;
@@ -35,7 +36,34 @@ require_once BASE_URI .'/../scripts/config.php';
 
 print_r($_POST);
 
-$subscription_id = $_POST['subscription_id'];
+if (isset($_POST['subscription_id'])){
+
+    $subscription_id = $_POST['subscription_id'];
+
+
+}
+
+if (isset($_POST['asset_id'])){
+
+    $asset_id = $_POST['asset_id'];
+
+
+}
+
+//if both are set reject
+
+if (isset($subscription_id) && isset($asset_id)){
+
+    if ($debug){
+
+        echo 'both subscription id and asset id set';
+    }
+
+    die();
+}
+
+if (isset($subscription_id)){
+
 
 //because this is a renewal
 if ($subscription->Return_row($subscription_id)){
@@ -176,7 +204,147 @@ if ($subscription->Return_row($subscription_id)){
 
 }else{
 
+    if ($debug){
     echo 'Subscription does not exist';
+    }
+}
+
+}
+
+if (isset($asset_id)){
+
+//get the required asset data
+
+//old subscription
+$subscription_to_return = array();
+
+$assets_paid->Load_from_key($asset_id);
+
+
+$subscription_to_return['asset_name'] = $assets_paid->getname();
+$subscription_to_return['asset_type'] = $assetManager->getAssetTypeText($assets_paid->getasset_type());
+$subscription_to_return['asset_id'] = $assets_paid->getid();
+
+$subscription_to_return['cost'] = $assets_paid->getcost();
+$subscription_to_return['description'] = $assets_paid->getdescription();
+$subscription_to_return['renew_frequency'] = $assets_paid->getrenew_frequency();
+
+$subscription_to_return['user_id'] = $userid;
+
+//make a new subscription
+
+//new subscription
+    //ADD THE RENEW FREQUENCY TO THE DATE TODAY PLUS COURSE DATE
+
+
+
+    //START DATE NOW
+
+    $current_date = new DateTime('now', new DateTimeZone('UTC'));
+
+    $current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s');
+
+    if ($users->gettimezone()){
+
+        $timezone = $users->gettimezone();
+
+    }else{
+
+        $timezone = 'UTC';
+    }
+
+    if (isset($_POST['course_date'])){
+
+        $end_start_calculate_date = new DateTime($_POST['course_date'], new DateTimeZone('UTC'));
+
+
+    }else{
+
+        $end_start_calculate_date = new DateTime('now', new DateTimeZone('UTC'));
+        
+    }
+
+    //$end_date = new DateTime($subscription_to_return['expiry_date'], new DateTimeZone('UTC'));
+
+    $interval = 'P' . $subscription_to_return['renew_frequency'] . 'M';
+
+    $end_start_calculate_date->add(new DateInterval($interval));
+    
+    $end_date_sqltimestamp = date_format($end_start_calculate_date, 'Y-m-d H:i:s');
+
+
+    $subscription->New_subscriptions($userid, $subscription_to_return['asset_id'], $current_date_sqltimestamp, $end_date_sqltimestamp, '0', '1', NULL);
+
+    $newSubscriptionid = $subscription->prepareStatementPDO();
+
+
+    if (isset($_POST)) {
+
+     
+        try {
+            $response = $gateway->purchase(array(
+                'amount' => $subscription_to_return['cost'],
+                'currency' => PAYPAL_CURRENCY,
+                'returnUrl' => PAYPAL_RETURN_URL,
+                'cancelUrl' => PAYPAL_CANCEL_URL,
+                'transactionId' => $newSubscriptionid,
+                'description' => $subscription_to_return['asset_name'],
+
+                /* {
+                    "intent": "sale",
+                    "payer": {
+                        "payment_method": "paypal"
+                    },
+                    "redirect_urls": {
+                        "return_url": "http://<return url>",
+                        "cancel_url": "http://<cancle url>"
+                    },
+                    "transactions": [
+                        {
+                            "amount": {
+                                "total": "8.00",
+                                "currency": "USD",
+                                "details": {
+                                    "subtotal": "6.00",
+                                    "tax": "1.00",
+                                    "shipping": "1.00"
+                                }
+                            },
+                            "description": "This is payment description.",
+                            "item_list": { 
+                                "items":[
+                                    {
+                                        "quantity":"3", 
+                                        "name":"Hat", 
+                                        "price":"2.00",  
+                                        "sku":"product12345", 
+                                        "currency":"USD"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                } */
+                
+            ))->send();
+     
+            if ($response->isRedirect()) {
+                $response->redirect(); // this will automatically forward the customer
+            } else {
+                // not successful
+                echo $response->getMessage();
+            }
+        } catch(Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+
+}else{
+
+    if ($debug){
+        echo 'Asset does not exist';
+        }
 }
 
  
