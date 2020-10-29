@@ -382,6 +382,34 @@ if (isset($_GET["action"])){
          -->                  </div>
                         </div>
                       </div>
+                      <div class="row align-items-center">
+                        
+                        <div class="col-md-6">
+                          <div class="form-group focused">
+                            <label class="form-control-label">I am a...</label>
+                            <select name="endoscopistType" class="form-control" aria-hidden="true">
+                        <option hidden selected disabled>Select the option which best describes you</option>
+                        <option value="1">Medical Endoscopist</option> 
+                        <option value="2">Surgical Endoscopist</option>
+                        <option value="3">Nurse Endoscopist</option>
+                        <option value="4">Endoscopy Nurse (assistant)</option>
+                        <option value="5">Medical Student</option>
+                        <option value="6">Nursing Student</option>
+                        <option value="7">Not a healthcare professional</option>
+
+
+                      </select>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="form-group">
+                          <label class="form-control-label">Institution country</label>
+                      <select id="centreCountry" name="centreCountry" class="form-control" tabindex="-1" aria-hidden="true">
+                        <option hidden disabled>select a country...</option>
+                      </select>
+                          </div>
+                        </div>
+                      </div>
                       <div class="row">
                         <div class="col-md-6">
                           <div class="form-group">
@@ -551,6 +579,32 @@ if (isset($_GET["action"])){
     }
 
     $(document).ready(function() {
+
+      /* $('#centreCountry').select2({
+
+        dropdownParent: $(".modal-content"),
+
+        ajax: {
+        //url: siteRoot + 'assets/scripts/select2simple.php?table=Delegate&field=firstname',
+        url: siteRoot + 'assets/scripts/select2query.php',
+        data: function (params) {
+            var query = {
+                search: params.term,
+                query: '`id`, `CountryName` FROM `countries`',
+                fieldRequired: 'CountryName',
+            }
+
+            // Query parameters will be 
+            console.log(query);
+            return query;
+        },
+        dataType: 'json'
+        // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
+        }
+
+
+
+        }); */
 
         refreshProgrammeView();
 

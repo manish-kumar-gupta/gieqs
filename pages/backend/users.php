@@ -864,6 +864,7 @@ if ($identifierValue) {
                                             <option value="4">4 - GIEQs pro</option>
                                             <option value="5">5 - GIEQs standard</option>
                                             <option value="6">6 - GIEQs basic</option>
+                                            <option value="7">7 - GIEQs basic, still requiring email confirm</option>
                                             <?php if ($isSuperuser){
                                                 if ($isSuperuser == 1){?>
 

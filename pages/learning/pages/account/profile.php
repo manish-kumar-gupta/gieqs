@@ -351,6 +351,7 @@ top: -20vh;
                         <option value="4" <?php if ($users->getendoscopistType() == 4){echo "selected";}?>>Endoscopy Nurse (assistant)</option>
                         <option value="5" <?php if ($users->getendoscopistType() == 5){echo "selected";}?>>Medical Student</option>
                         <option value="6" <?php if ($users->getendoscopistType() == 6){echo "selected";}?>>Nursing Student</option>
+                        <option value="7" <?php if ($users->getendoscopistType() == 7){echo "selected";}?>>Not a Healthcare Professional</option>
 
                       </select>
                     </div>
@@ -455,7 +456,7 @@ top: -20vh;
     <script src="assets/js/demo.js"></script>
     <script>
     var videoPassed = $("#id").text(); 
- 
+  
 
   
       var signup = $('#signup').text();
