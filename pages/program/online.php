@@ -1026,54 +1026,54 @@ top: -20vh;
         function submitPreRegisterForm() {
 
 
-//userid is lesionUnderEdit
+          //userid is lesionUnderEdit
 
-//console.log('updatePassword chunk');
-//go to php script with an object from the form
+          //console.log('updatePassword chunk');
+          //go to php script with an object from the form
 
-var data = getFormDatav2($('#NewUserForm'), 'users', 'user_id', null, 1);
+          var data = getFormDatav2($('#NewUserForm'), 'users', 'user_id', null, 1);
 
-//TODO add identifier and identifierKey
+          //TODO add identifier and identifierKey
 
-console.log(data);
+          console.log(data);
 
-data = JSON.stringify(data);
+          data = JSON.stringify(data);
 
-console.log(data);
+          console.log(data);
 
-disableFormInputs('NewUserForm');
+          disableFormInputs('NewUserForm');
 
-var passwordChange = $.ajax({
-url: siteRoot + "/assets/scripts/newUser.php",
-type: "POST",
-contentType: "application/json",
-data: data,
-});
+          var passwordChange = $.ajax({
+            url: siteRoot + "/assets/scripts/newUser.php",
+            type: "POST",
+            contentType: "application/json",
+            data: data,
+          });
 
-passwordChange.done(function(data){
-
-
-Swal.fire({
-type: 'info',
-title: 'Create Account',
-text: data,
-background: '#162e4d',
-confirmButtonText: 'ok',
-confirmButtonColor: 'rgb(238, 194, 120)',
-
-}).then((result) => {
-
-  resetFormElements('NewUserForm');
-  enableFormInputs('NewUserForm');
-  $('#registerInterest').modal('hide');
-
-})
+          passwordChange.done(function (data) {
 
 
+            Swal.fire({
+              type: 'info',
+              title: 'Create Account',
+              text: data,
+              background: '#162e4d',
+              confirmButtonText: 'ok',
+              confirmButtonColor: 'rgb(238, 194, 120)',
 
-})
+            }).then((result) => {
 
-}
+              resetFormElements('NewUserForm');
+              enableFormInputs('NewUserForm');
+              $('#registerInterest').modal('hide');
+
+            })
+
+
+
+          })
+
+        }
 
         $(document).ready(function () {
 

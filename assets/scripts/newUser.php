@@ -63,17 +63,17 @@ if ($debug){
 echo date_default_timezone_get();
 echo date('Y/m/d H:i:s'); */
 
-        $users->setemail($data['email']);
-        $users->setfirstname($data['firstname']);
-        $users->setsurname($data['surname']);
-        $users->setgender($data['gender']);
-        $users->setaccess_level(7); // user level 7 requires an email confirm
-        $users->settimezone($timezone);
-        $key = $userFunctions->generateRandomString('10');
-        $users->setkey($key);
-        $desiredPassword = $general->hash_password($data['password'], 'westmead');
-        $users->setpassword($desiredPassword);
-        if ($users->prepareStatementPDO() > 0){
+            $users->setemail($data['email']);
+            $users->setfirstname($data['firstname']);
+            $users->setsurname($data['surname']);
+            $users->setgender($data['gender']);
+            $users->setaccess_level(7); // user level 7 requires an email confirm
+            $users->settimezone($timezone);
+            $key = $userFunctions->generateRandomString('10');
+            $users->setkey($key);
+            $desiredPassword = $general->hash_password($data['password'], 'westmead');
+            $users->setpassword($desiredPassword);
+            if ($users->prepareStatementPDO() > 0){
 
             $emailWorked = null;
             $reason = null;

@@ -24,6 +24,8 @@ if (isset($_GET["action"])){
 
 ?>
     <title>GIEQs - Basic Colonoscopy Skills (1 day)</title>
+    <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.css">
+    <script src="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.js"></script>
 
     <style>
     .text-gieqsGold {
@@ -332,7 +334,7 @@ if (isset($_GET["action"])){
 
     <div class="modal fade" id="registerInterest" tabindex="-1" role="dialog" aria-labelledby="registerInterestLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-lg modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="registerInterestLabel" style="color: rgb(238, 194, 120);">Sign-up for GIEQs Online!</h5>
@@ -421,10 +423,12 @@ if (isset($_GET["action"])){
     <?php require BASE_URI . '/footer.php';?>
 
     <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
+
     <script src="../../assets/js/purpose.core.js"></script>
     <script src="<?php echo BASE_URL;?>/assets/js/purpose.js"></script>
-    <script src=<?php echo BASE_URL . "/assets/js/generaljs.js"?>></script>
     <script src="<?php echo BASE_URL;?>/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+
+    <script src=<?php echo BASE_URL . "/assets/js/generaljs.js"?>></script>
 
 
 
@@ -489,6 +493,63 @@ if (isset($_GET["action"])){
         })
     }
 
+    function submitPreRegisterForm() {
+
+
+      //userid is lesionUnderEdit
+
+      //console.log('updatePassword chunk');
+      //go to php script with an object from the form
+
+      $('#submitPreRegister').append('<i class="fas fa-circle-notch fa-spin ml-2"></i>');
+
+
+      var data = getFormDatav2($('#NewUserForm'), 'users', 'user_id', null, 1);
+
+      //TODO add identifier and identifierKey
+
+      console.log(data);
+
+      data = JSON.stringify(data);
+
+      console.log(data);
+
+      disableFormInputs('NewUserForm');
+
+      var passwordChange = $.ajax({
+        url: siteRoot + "/assets/scripts/newUser.php",
+        type: "POST",
+        contentType: "application/json",
+        data: data,
+      });
+
+      passwordChange.done(function (data) {
+
+
+        Swal.fire({
+          type: 'info',
+          title: 'Create Account',
+          text: data,
+          background: '#162e4d',
+          confirmButtonText: 'ok',
+          confirmButtonColor: 'rgb(238, 194, 120)',
+
+        }).then((result) => {
+
+          resetFormElements('NewUserForm');
+          enableFormInputs('NewUserForm');
+          $('#registerInterest').modal('hide');
+          $('#submitPreRegister').find('i').remove();
+
+
+        })
+
+
+
+      })
+
+    }
+
     $(document).ready(function() {
 
         refreshProgrammeView();
@@ -501,12 +562,7 @@ if (isset($_GET["action"])){
 
         })
 
-        $(document).on('click', '#submitPreRegister', function() {
-
-        event.preventDefault();
-        $('#NewUserForm').submit();
-
-        })
+        
 
         $(document).on('click', '#login', function() {
 
@@ -635,6 +691,116 @@ if (isset($_GET["action"])){
 
 
         });
+
+        $(document).on('click', '#submitPreRegister', function(event) {
+
+          event.preventDefault();
+          $('#NewUserForm').submit();
+          
+          })
+
+        $("#NewUserForm").validate({
+
+          invalidHandler: function(event, validator) {
+              var errors = validator.numberOfInvalids();
+              console.log("there were " + errors + " errors");
+              if (errors) {
+                  var message = errors == 1 ?
+                      "1 field contains errors. It has been highlighted" :
+                      +errors + " fields contain errors. They have been highlighted";
+          
+          
+                  $('#error').text(message);
+                  //$('div.error span').addClass('form-text text-danger');
+                  //$('#errorWrapper').show();
+          
+                  $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function() {
+                      $("#errorWrapper").slideUp(500);
+                  });
+              } else {
+                  $('#errorWrapper').hide();
+              }
+          },
+          rules: {
+            firstname: {
+                      required: true,
+          
+                    },
+          
+          
+          
+                    surname: {
+                      required: true,
+          
+                    },
+          
+                    gender: {
+                      required: true,
+          
+                    },
+          
+          
+                    email: {
+                      required: true,
+                      email: true,
+          
+                    },
+          
+                    password: {
+                      required: true,
+                      minlength: 6,
+          
+                    },
+          
+                    passwordAgain: {
+                      equalTo: "#password",
+                      
+          
+                    },
+          
+                    checkterms:{
+          
+                      required: true,
+          
+                    }, 
+                    checkprivacy:{
+          
+                      required:true
+                    }
+          
+          
+          
+          },messages: {
+          
+          
+          
+          password: {
+          required: 'Please enter a password',
+          minlength: 'Please use at least 6 characters'
+          
+          
+          },
+          passwordAgain: {
+          
+          equalTo: "The new passwords should match",
+          
+          
+          
+          },
+          },
+          submitHandler: function(form) {
+          
+              submitPreRegisterForm();
+          
+              //console.log("submitted form");
+          
+          
+          
+          }
+
+        });
+
+        
 
 
 
