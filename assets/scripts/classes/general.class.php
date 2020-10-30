@@ -2184,6 +2184,36 @@ INNER JOIN `imagesDraft` as c on b.`image_id` = c.`id` WHERE a.`approved` IS NUL
 		}
 	}
 
+	public function getCountries (){
+		
+		$q = "SELECT `CountryName`
+		FROM `countries`
+		ORDER BY `CountryName` ASC";
+
+		//echo $q;
+
+		$result = $this->connection->RunQuery($q);
+
+		$countryName = array();
+		$x = 0;
+
+		if ($result->num_rows > 0){
+
+			
+			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+				
+				$countryName[$x] = $row['CountryName'];
+				
+				$x++;
+			}
+		
+			return $countryName;
+		}else{
+			
+			return null;
+		}
+	}
+
 
 
 	//FOR SCRIPTS MAINTENANCE

@@ -88,6 +88,9 @@ echo date('Y/m/d H:i:s'); */
         $users->setkey($key);
         $desiredPassword = $general->hash_password($data['password'], 'westmead');
         $users->setpassword($desiredPassword);
+
+        
+
         if ($users->prepareStatementPDO() > 0) {
 
             $emailWorked = null;
@@ -103,7 +106,25 @@ echo date('Y/m/d H:i:s'); */
             $email = $data['email'];
             $emailVaryarray['key'] = $key;
 
-            $filename = '/assets/email/emailNewAccount.php';
+            if (isset($data['signup_redirect'])){
+
+                if ($data['signup_redirect'] == 'basic_colon'){
+    
+                    $filename = '/assets/email/emailNewAccountHook.php';
+                    $emailVaryarray['signup_redirect'] = 'basic_colon';
+                    
+                } else {
+    
+                    $filename = '/assets/email/emailNewAccount.php';
+    
+                }
+    
+            } else {
+    
+                $filename = '/assets/email/emailNewAccount.php';
+    
+            }
+
 
             $subject = 'Welcome to your new GIEQs Online Account';
 

@@ -1,5 +1,5 @@
 <?php
-//error_reporting(E_ALL);
+error_reporting(E_ALL);
 //;
 $openaccess = 1;
 //echo 'hello';
@@ -31,7 +31,10 @@ $explicit = true;
 
 if (count($_GET) > 0){
 
-	
+	if ($debug){
+
+        print_r($_GET);
+    }
 
 	
 	$data = $general->sanitiseGET($_GET);
@@ -51,8 +54,13 @@ if (count($_GET) > 0){
 
     //look up the user
 
-    $userid = $userFunctions->getUserFromKey($key);
+    
 
+    
+
+    if ($userFunctions->getUserFromKey($data['key'])){
+
+    $userid = $userFunctions->getUserFromKey($data['key']);
     echo $userid;
 
     //switch the userLevel to 6
@@ -81,7 +89,11 @@ if (count($_GET) > 0){
 
             //redirect gieqs.com
 
-            redirect_login(BASE_URL . '/pages/authentication/welcomeNewUser.php');
+           
+
+                redirect_login(BASE_URL . '/pages/authentication/welcomeNewUser.php?signup_redirect=' . $signup_redirect);
+
+            
 
 
 
@@ -91,6 +103,16 @@ if (count($_GET) > 0){
             //show error
 
         }
+
+
+    }else{
+        
+        if ($debug){
+            echo 'Invalid Key.  Please go to login and request a new account reset or contact us';
+            }
+
+
+    }
 
 
     //log the user in

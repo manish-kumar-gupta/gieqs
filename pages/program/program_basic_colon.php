@@ -21,6 +21,8 @@ if (isset($_GET["action"])){
 
 }
 
+$general = new general;
+
 
 ?>
     <title>GIEQs - Basic Colonoscopy Skills (1 day)</title>
@@ -43,6 +45,8 @@ if (isset($_GET["action"])){
     .modal-backdrop {
         opacity: 0.75 !important;
     }
+
+.modal { overflow: auto !important; }
 
     @media screen and (max-width: 400px) {
 
@@ -405,7 +409,19 @@ if (isset($_GET["action"])){
                           <div class="form-group">
                           <label class="form-control-label">Institution country</label>
                       <select id="centreCountry" name="centreCountry" class="form-control" tabindex="-1" aria-hidden="true">
-                        <option hidden disabled>select a country...</option>
+                        <option hidden disabled selected>select a country...</option>
+                        <?php $countries = $general->getCountries();
+                        
+                        foreach ($countries as $key=>$value){
+                        
+                        ?>
+
+                          <option value="<?php echo $value;?>"><?php echo $value;?></option>
+
+
+
+
+                        <?php }?>
                       </select>
                           </div>
                         </div>
@@ -434,12 +450,14 @@ if (isset($_GET["action"])){
                           <label class="custom-control-label" for="checkprivacy">I agree to the <a href="<?php echo BASE_URL;?>/pages/support/support_gieqs_privacy_policy.php" target="_blank">privacy policy</a></label>
                         </div>
                       </div>
+
+                      <input type="hidden" name="signup_redirect" value="basic_colon">
                       
           </form>
                 </div>
                 <div class="modal-footer">
-                  <button id="submitPreRegister" type="button" class="btn-small text-dark bg-gieqsGold">Sign up</button>
-                  <button id="login" type="button" class="btn-small btn-secondary">I already have a login</button>
+                  <button id="submitPreRegister" type="button" class="btn btn-small text-dark bg-gieqsGold">Sign up</button>
+                  <button id="login" type="button" class="btn btn-small btn-secondary">I already have a login</button>
 
 
                    
@@ -606,6 +624,8 @@ if (isset($_GET["action"])){
 
         }); */
 
+        
+
         refreshProgrammeView();
 
         $('#button-login').click(function(){
@@ -631,6 +651,8 @@ if (isset($_GET["action"])){
 
           $('.modal-new').modal('hide');
           $('#registerInterest').modal('show');
+          $('.modal').css('overflow','auto');
+      
 
 
         })
@@ -811,7 +833,18 @@ if (isset($_GET["action"])){
                       
           
                     },
+                    
           
+                    centreCountry:{
+          
+                      required: true,
+          
+                    }, 
+                    endoscopistType:{
+          
+                      required:true
+                    },
+
                     checkterms:{
           
                       required: true,

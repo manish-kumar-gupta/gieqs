@@ -14,6 +14,8 @@ $users = new users;
 
 require BASE_URI . '/head.php';
 
+//error_reporting(E_ALL);
+
 ?>
     <title>Ghent International Endoscopy Symposium - Welcome </title>
   
@@ -85,62 +87,10 @@ background-color: rgb(238, 194, 120);
 
         <?php require BASE_URI . '/nav.php';?>
 
+        <?php $signup_redirect = $_GET['signup_redirect'];?>
+
     </header>
-    <!-- Omnisearch -->
-    <div id="omnisearch" class="omnisearch">
-        <div class="container">
-            <!-- Search form -->
-            <form class="omnisearch-form">
-                <div class="form-group">
-                    <div class="input-group input-group-merge input-group-flush">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-search"></i></span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Type and hit enter ...">
-                    </div>
-                </div>
-            </form>
-            <div class="omnisearch-suggestions">
-                <h6 class="heading">Search Suggestions</h6>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <ul class="list-unstyled mb-0">
-                            <li>
-                                <a class="list-link" href="#">
-                                    <i class="fas fa-search"></i>
-                                    <span>macbook pro</span> in Laptops
-                                </a>
-                            </li>
-                            <li>
-                                <a class="list-link" href="#">
-                                    <i class="fas fa-search"></i>
-                                    <span>iphone 8</span> in Smartphones
-                                </a>
-                            </li>
-                            <li>
-                                <a class="list-link" href="#">
-                                    <i class="fas fa-search"></i>
-                                    <span>macbook pro</span> in Laptops
-                                </a>
-                            </li>
-                            <li>
-                                <a class="list-link" href="#">
-                                    <i class="fas fa-search"></i>
-                                    <span>beats pro solo 3</span> in Headphones
-                                </a>
-                            </li>
-                            <li>
-                                <a class="list-link" href="#">
-                                    <i class="fas fa-search"></i>
-                                    <span>smasung galaxy 10</span> in Phones
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  
    
 
       <div class="main-content">
@@ -159,7 +109,31 @@ background-color: rgb(238, 194, 120);
                   </div>
                   
                     <div class="mt-4">
-                      <a href="<?php echo BASE_URL . '/pages/learning/index.php'?>"><button type="button" class="btn btn-block text-dark bg-gieqsGold">Continue to GIEQs online</button></a>
+
+                      <?php
+
+                        if ($signup_redirect == 'basic_colon'){
+
+                          $link = BASE_URL . '/pages/program/program_basic_colon.php?action=register';
+                          $link_text = 'Continue to Course Booking';
+
+                        }elseif ($signup_redirect == 'trainer_colon'){
+
+                          $link = BASE_URL . '/pages/program/program_trainer_colon.php?action=register';
+                          $link_text = 'Continue to Course Booking';
+
+
+                        }else{
+
+                          $link = BASE_URL . '/pages/learning/index.php';
+                          $link_text = 'Continue to GIEQs Online';
+
+
+                        }
+
+                     ?>
+
+                      <a href="<?php echo $link;?>"><button type="button" class="btn btn-block text-dark bg-gieqsGold"><?php echo $link_text;?></button></a>
                     </div>
                   
               </div>
