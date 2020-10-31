@@ -8,9 +8,9 @@
  */
 //;
 
-//error_reporting(E_ALL);
+error_reporting(E_ALL);
 
-Class DataBaseMysqlPDOLearning {
+Class DataBaseMysqlPDOLearning2 {
 
 	public $conn;
 

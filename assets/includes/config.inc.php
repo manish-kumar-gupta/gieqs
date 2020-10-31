@@ -29,7 +29,7 @@ if ($active == 0){
 
 //active superuser only, executed in interpretuseraccess
 
-$onlySuperuser = false;
+$onlySuperuser = 0;
 
 
 
@@ -136,7 +136,7 @@ $debug = TRUE;
  *  before this next conditional.
  */
 
-$debug = TRUE;
+$debug = FALSE;
 
 // Assume debugging is off. 
 if (!isset($debug)) {

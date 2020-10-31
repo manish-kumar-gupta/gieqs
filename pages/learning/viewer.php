@@ -8,7 +8,7 @@
 
     <?php
 
-error_reporting(E_NONE);
+//error_reporting(E_NONE);
 
 
       //define user access level
