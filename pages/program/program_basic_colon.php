@@ -102,7 +102,7 @@ $general = new general;
 
         <!-- PROGRAM TABLE -->
 
-        <section class="slice bg-gradient-dark slice-lg">
+        <section class="bg-gradient-dark pt-6 mb-0">
             <div class="container">
                 <div class="row text-center">
 
@@ -126,13 +126,40 @@ $general = new general;
 
                 </div>
             </div>
+            
         </section>
+        
         <section class="">
+          
             <div class="container">
                 <div class="mb-5 text-center">
-                    <h3 class=" mt-4">Suitable for Everyone Starting Out in Colonoscopy</h3>
-                    <div class="fluid-paragraph mt-3">
-                        <p class="lead lh-180">Or for those wanting to perfect their technique.</p>
+                    <h3 class=" mt-6">A Virtual Experience Suitable for Everyone Starting Out in Colonoscopy</h3>
+                    <div class="fluid-paragraph mt-5">
+                      <p class="lead lh-180"><span class="text-white">Format</span></p>  
+                      <p class="lead lh-180">Following a classroom-based overview of colonoscopy technique trainees with variable experience will be trained to improve their skills and understanding of how to overcome common problems encountered during colonoscopy by local and virtual faculty.</p>  
+                      <p class="lead lh-180"><span class="text-white">Who should enroll?</span></p>  
+ 
+                      <p class="lead lh-180">Colonoscopy trainees and anyone wanting to improve their understanding of the technique of colonoscopy</p>
+                      <p class="lead lh-180"><span class="text-white">When?</span></p>  
+ 
+                      <p class="lead lh-180">Monday 16th November 2020, 0830 CET until 1700 CET</p>
+                      <p class="lead lh-180"><span class="text-white">Where?</span></p>  
+ 
+                      <p class="lead lh-180">Live here, online at gieqs.com</p>
+                      <p class="lead lh-180"><span class="text-white">Cost?</span></p>  
+  
+                      <p class="lead lh-180">100 euros (includes review of the course on demand for 3 months)</p>
+                        <p class="lead lh-180">Participation via live chat platform possible.  Anyone can ask questions and join the conversation at any time.
+                        </p>
+
+
+
+                          
+                          
+                          
+                          
+                          
+                          </p>
                     </div>
                 </div>
                 <div class="row">
@@ -212,6 +239,52 @@ $general = new general;
                     </div>
                 </div>
             </div>
+            <div class="row text-center">
+
+              <div class="col-12 p-3 pb-4">
+                  <!-- <a href="#" class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me"> -->
+                  <!-- <span class="btn-inner--text">Overview</span> -->
+                  <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+                  <!-- </a> -->
+
+
+                  <!-- <p class=""><span class="text-white">Programme description:</span> Acquisition of the skills necessary to perform basic colonoscopy is still difficult. To become a skilled colonoscopist takes a long time. This course will explore and deconstruct the key problem areas encountered when performing colonoscopy with commentary and analysis .  </p>
+
+                  <p class=""><span class="text-white">What to expect:</span> We will demonstrate the essentials of how to control the instrument effectively, and how to diagnose and overcome failure to progress.  The goal will be to provide participants with a clear understanding of the essential components of high quality colonoscopy and practical advice of how to improve when they get back into the endoscopy room.</span></p>
+                  <p class=""><span class="text-white">Format of the course:</span> The course is suitable for anyone who wants to improve their colonoscopy skills and ideal for trainees learning colonoscopy. The format of the course will be a mixture of short presentations, discussion groups and in depth analysis of colonoscopy technique. Delegates will be invited to participate at various junctures of the course and everyone will be able to pose questions at any time.</p> -->
+                  <a data-assetid="7"
+                      class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mr-3 mt-3">
+                      <span class="btn-inner--text text-dark">Register Now!</span>
+                      <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+                  </a>
+                  <!-- <a href="#targetScrollProgramme" id="thursday" class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
+                      <span class="btn-inner--text text-dark">Tues 17 Nov</span>
+                  </a> -->
+              </div>
+
+          </div>
+         
+        </section>
+        <section class="my-4 slice-video slice-xl d-flex align-items-center bg-cover bg-size--cover" style="background-image: url(<?php echo BASE_URL;?>/assets/img/backgrounds/endoscopy_blue.jpg);">
+          <span class="mask bg-gradient-dark opacity-7"></span>
+          <div class="container">
+            <div class="col">
+              <div class="row justify-content-center">
+                <div class="col-md-10 text-center">
+                  <h2 class="display-4 text-white">
+                    What will I experience? 
+                  </h2>
+                  <h4 class="text-white mt-3">Check out this example footage!</h4>
+                  <a href="https://vimeo.com/464471706/3fad6eb562" data-fancybox data-toggle="tooltip" data-placement="bottom" title="" class="btn btn-white btn-icon-only rounded-circle hover-scale-110 mt-4" data-original-title="Watch video">
+                    <span class="btn-inner--icon">
+                      <i class="fas fa-play"></i>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
         </section>
         <section class="">
             <div class="container">
@@ -473,6 +546,8 @@ $general = new general;
     <script src="../../assets/js/purpose.core.js"></script>
     <script src="<?php echo BASE_URL;?>/assets/js/purpose.js"></script>
     <script src="<?php echo BASE_URL;?>/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="../../assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+
 
     <script src=<?php echo BASE_URL . "/assets/js/generaljs.js"?>></script>
 
