@@ -21,7 +21,7 @@
       require BASE_URI . '/head.php';
 
       $debug = false;
-      error_reporting(E_ALL);
+      //error_reporting(E_ALL);
       
       $general = new general;
       $users = new users;

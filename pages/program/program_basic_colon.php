@@ -416,7 +416,7 @@ $general = new general;
                         
                         ?>
 
-                          <option value="<?php echo $value;?>"><?php echo $value;?></option>
+                          <option value="<?php echo $key;?>"><?php echo $value;?></option>
 
 
 

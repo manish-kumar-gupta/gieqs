@@ -951,7 +951,12 @@ public function returnProgrammesAsset($assetid)
 
                     }else{
 
-                        echo 'Will Not Renew, already expired';
+                        if ($debug){
+
+                            echo 'Will Not Renew, already expired';
+
+                        } 
+
 
                         return false;
 

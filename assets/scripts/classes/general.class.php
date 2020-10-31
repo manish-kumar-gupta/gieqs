@@ -2200,7 +2200,7 @@ INNER JOIN `imagesDraft` as c on b.`image_id` = c.`id` WHERE a.`approved` IS NUL
 
 	public function getCountries (){
 		
-		$q = "SELECT `CountryName`
+		$q = "SELECT `id`, `CountryName`
 		FROM `countries`
 		ORDER BY `CountryName` ASC";
 
@@ -2216,7 +2216,9 @@ INNER JOIN `imagesDraft` as c on b.`image_id` = c.`id` WHERE a.`approved` IS NUL
 			
 			while($row = $result->fetch_array(MYSQLI_ASSOC)){
 				
-				$countryName[$x] = $row['CountryName'];
+				$id = null;
+				$id = $row['id'];
+				$countryName[$id] = $row['CountryName'];
 				
 				$x++;
 			}
