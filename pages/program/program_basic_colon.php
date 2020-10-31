@@ -272,10 +272,10 @@ $general = new general;
               <div class="row justify-content-center">
                 <div class="col-md-10 text-center">
                   <h2 class="display-4 text-white">
-                    What will I experience? 
+                    Considering participating? 
                   </h2>
-                  <h4 class="text-white mt-3">Check out this example footage!</h4>
-                  <a href="https://vimeo.com/464471706/3fad6eb562" data-fancybox data-toggle="tooltip" data-placement="bottom" title="" class="btn btn-white btn-icon-only rounded-circle hover-scale-110 mt-4" data-original-title="Watch video">
+                  <h4 class="text-white mt-3">This example footage of our training style may help convince you!</h4>
+                  <a href="https://vimeo.com/464471706" data-fancybox data-toggle="tooltip" data-placement="bottom" title="" class="btn btn-white btn-icon-only rounded-circle hover-scale-110 mt-4" data-original-title="Watch video">
                     <span class="btn-inner--icon">
                       <i class="fas fa-play"></i>
                     </span>
