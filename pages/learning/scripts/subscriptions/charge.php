@@ -148,7 +148,16 @@ if ($subscription->Return_row($subscription_id)){
 
     $current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s');
 
-    $end_date = new DateTime($subscription_to_return['expiry_date'], new DateTimeZone('UTC'));
+    if ($active){ // if the subscription is still active use the expiry date
+
+      $end_date = new DateTime($subscription_to_return['expiry_date'], new DateTimeZone('UTC'));
+
+    }else{  //otherwise use the current date
+
+        $end_date = new DateTime('now', new DateTimeZone('UTC'));
+
+
+    }
 
     $interval = 'P' . $subscription_to_return['renew_frequency'] . 'M';
 
