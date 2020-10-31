@@ -151,6 +151,7 @@ if (!isset($debug)) {
 # **************************** #
 # ***** ERROR MANAGEMENT ***** #
 
+
 // Create the error handler:
 function my_error_handler($e_number, $e_message, $e_file, $e_line, $e_vars) {
 

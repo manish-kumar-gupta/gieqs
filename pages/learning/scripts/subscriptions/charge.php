@@ -160,6 +160,8 @@ if ($subscription->Return_row($subscription_id)){
 
     if (isset($_POST)) {
 
+        
+
      
         try {
             $response = $gateway->purchase(array(
@@ -207,6 +209,13 @@ if ($subscription->Return_row($subscription_id)){
                 } */
                 
             ))->send();
+
+            if ($debug){
+
+                print_r($response);
+            
+            }
+
      
             if ($response->isRedirect()) {
                 $response->redirect(); // this will automatically forward the customer
