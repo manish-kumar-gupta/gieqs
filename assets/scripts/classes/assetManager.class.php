@@ -10,7 +10,16 @@
  *
  */
 
+session_start();
+if ($_SESSION['debug'] == true){
+
 error_reporting(E_ALL);
+
+}else{
+
+error_reporting(0);
+	
+}
 
 Class assetManager {
 

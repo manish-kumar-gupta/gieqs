@@ -545,13 +545,23 @@ foreach ($subscriptionsList as $key=>$value){
 
             $start_date = new DateTime($value['start_date'], new DateTimeZone('UTC'));
 
-            $start_date->setTimezone(new DateTimeZone($users->gettimezone()));
+            if ($users->gettimezone()){
+
+              $userTimezoneDatabase = $users->gettimezone();
+          
+            }else{
+          
+              $userTimezoneDatabase = 'Europe/Brussels';
+          
+           }
+            
+            $start_date->setTimezone(new DateTimeZone($userTimezoneDatabase));
 
             $expiry_date = null;
 
             $expiry_date = new DateTime($value['expiry_date'], new DateTimeZone('UTC'));
 
-            $expiry_date->setTimezone(new DateTimeZone($users->gettimezone()));
+            $expiry_date->setTimezone(new DateTimeZone($userTimezoneDatabase));
 
 
 

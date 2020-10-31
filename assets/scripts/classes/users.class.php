@@ -10,7 +10,15 @@
  *
  */
 
-//error_reporting(E_ALL);
+session_start();
+if ($_SESSION['debug'] == true){
+
+error_reporting(E_ALL);
+
+}
+
+//require_once '../../../assets/includes/config.inc.php';
+
 
 require_once 'DataBaseMysqlPDO.class.php';
 

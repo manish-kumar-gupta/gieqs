@@ -136,7 +136,7 @@ $debug = TRUE;
  *  before this next conditional.
  */
 
-$debug = FALSE;
+$debug = TRUE;
 
 // Assume debugging is off. 
 if (!isset($debug)) {
@@ -190,9 +190,12 @@ function my_error_handler($e_number, $e_message, $e_file, $e_line, $e_vars) {
 //error_reporting(E_ERROR | E_WARNING | E_PARSE);
 if ($debug){
     
+
+    $_SESSION['debug'] = true;
     error_reporting(E_ALL);
 
 }else{
 
+    $_SESSION['debug'] = false;
     error_reporting(0);
 }
