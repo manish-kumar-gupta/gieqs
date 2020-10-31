@@ -11,13 +11,14 @@ $location = BASE_URL . '/index.php';
 
 require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
 
-$debug = false;
+$debug = true;
 
 
 $general = new general;
 $users = new users;
 $users->Load_from_key($userid);
 
+error_reporting(E_ALL);
 
 require_once(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
 $assetManager = new assetManager;
