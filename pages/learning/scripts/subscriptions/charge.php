@@ -8,13 +8,14 @@ $requiredUserLevel = 6;
 error_reporting(E_ALL);
 require_once '../../../../assets/includes/config.inc.php';
 
-echo hello;
 
 $location = BASE_URL . '/index.php';
 
 require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
 
 $debug = true;
+
+echo hello;
 
 
 $general = new general;
