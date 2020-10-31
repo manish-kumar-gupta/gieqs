@@ -132,6 +132,75 @@ if ($debug) {
     echo json_encode($videos);
 }
 
+$debug = false;
+//$isSuperuser = '0';
+
+if ($isSuperuser == '0'){
+
+    //GO THROUGH THE VIDEOS AND REMOVE ANY THAT THE USER HAS NO ACCESS TO
+    
+    foreach ($videos as $key=>$value){
+    
+    
+        //does it require subscription?
+    
+        $array_key = $key;
+    
+        $access = $assetManager->video_requires_subscription($value['id'], false);
+    
+        if ($access){
+    
+    
+            $access2 = $assetManager->video_owned_by_user($value['id'], $userid, false);
+    
+            if ($access2 === false){
+    
+                //remove this video from the array
+                unset($videos[$key]);
+                if ($debug){
+    
+                    echo 'user id ' . $userid . ' has no access to video id ' . $value['id'];
+    
+               }
+    
+    
+            }else{
+    
+                if ($debug){
+    
+                    echo 'user id ' . $userid . ' has access to video id ' . $value['id'];
+    
+               }
+    
+                
+                //user has access to this video
+            }
+    
+        }else{
+    
+            if ($debug){
+    
+                echo 'video id ' . $value['id'] . ' does not require a subscription';
+    
+            }
+    
+        }
+    
+        //test user access
+    
+    
+    
+        
+    
+    }
+    }else{
+    
+        if ($debug){
+    
+            echo 'all videos available as superuser';
+        }
+    }
+
 
 ?>
 
@@ -165,9 +234,9 @@ if ($debug) {
                     if ($a == 1){
 
                         ?>
-
-                        <div class="d-flex flex-row flex-wrap align-items-stretch mt-1 pt-0 px-0 text-white">
-                    <?php }
+                        <div class="card-deck">
+<!--                         <div class="d-flex flex-row flex-wrap align-items-stretch mt-1 pt-0 px-0 text-white">
+ -->                    <?php }
                     if ($a < $loadedRequiredProduct){
 
                     
@@ -231,7 +300,9 @@ if ($debug) {
                     if ($a % 3 == 0){
                         ?>
                         </div>
-                        <div class="d-flex flex-row flex-wrap align-items-stretch mt-1 pt-0 px-0 text-white">
+                    </div>
+<!--                         <div class="d-flex flex-row flex-wrap align-items-stretch mt-1 pt-0 px-0 text-white">
+ -->                        <div class="card-deck">
 
                         <?php
                     }
@@ -257,9 +328,9 @@ if ($debug) {
                 if ($b == 1){
 
                     ?>
-                    <div class="d-flex flex-row flex-wrap card-placeholder align-items-stretch mt-1 pt-0 px-0 text-white">
+                    <div class="card">
                     </div>
-                    <div class="d-flex flex-row flex-wrap card-placeholder align-items-stretch mt-1 pt-0 px-0 text-white">
+                    <div class="card">
                     </div>
                     <?php
 
@@ -268,7 +339,7 @@ if ($debug) {
                 if ($b == 2){
 
                     ?>
-                    <div class="d-flex flex-row flex-wrap card-placeholder align-items-stretch mt-1 pt-0 px-0 text-white">
+                    <div class="card">
                     </div>
                     <?php
 
