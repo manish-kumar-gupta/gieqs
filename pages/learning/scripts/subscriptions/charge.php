@@ -15,12 +15,13 @@ require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
 
 $debug = true;
 
-echo hello;
 
 
 $general = new general;
 $users = new users;
 $users->Load_from_key($userid);
+
+echo hello;
 
 error_reporting(E_ALL);
 
