@@ -21,12 +21,14 @@ $general = new general;
 $users = new users;
 $users->Load_from_key($userid);
 
-echo hello;
 
 error_reporting(E_ALL);
 
 require_once(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
 $assetManager = new assetManager;
+
+echo hello;
+
 
 require_once(BASE_URI . '/assets/scripts/classes/assets_paid.class.php');
 $assets_paid = new assets_paid;
