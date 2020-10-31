@@ -27,11 +27,13 @@ error_reporting(E_ALL);
 require_once(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
 $assetManager = new assetManager;
 
-echo hello;
 
 
 require_once(BASE_URI . '/assets/scripts/classes/assets_paid.class.php');
 $assets_paid = new assets_paid;
+
+echo hello;
+
 
 require_once(BASE_URI . '/assets/scripts/classes/subscriptions.class.php');
 $subscription = new subscriptions;
