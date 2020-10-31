@@ -136,7 +136,7 @@ $debug = TRUE;
  *  before this next conditional.
  */
 
-$debug = FALSE;
+$debug = TRUE;
 
 // Assume debugging is off. 
 if (!isset($debug)) {
