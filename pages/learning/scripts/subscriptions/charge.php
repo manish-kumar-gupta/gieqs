@@ -3,10 +3,12 @@ $openaccess = 0;
 
 $requiredUserLevel = 6;
 
-echo hello;
+
 
 error_reporting(E_ALL);
 require_once '../../../../assets/includes/config.inc.php';
+
+echo hello;
 
 $location = BASE_URL . '/index.php';
 
