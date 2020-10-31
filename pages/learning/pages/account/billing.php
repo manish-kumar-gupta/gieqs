@@ -1123,7 +1123,7 @@ foreach ($subscriptionsList as $key=>$value){
 
             //renew
 
-            $('.renew').click(function(event) {
+            $('.renew, .buy-again').click(function(event) {
 
                 var button = $(this);
 

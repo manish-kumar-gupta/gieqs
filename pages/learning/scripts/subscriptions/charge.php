@@ -13,7 +13,7 @@ $location = BASE_URL . '/index.php';
 
 require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
 
-$debug = true;
+$debug = false;
 
 
 
@@ -121,6 +121,21 @@ if ($subscription->Return_row($subscription_id)){
 
     $subscription_to_return['user_id'] = $subscription->getuser_id();
     $subscription_to_return['expiry_date'] = $subscription->getexpiry_date();
+
+    //if the old subscription is expired make inactive
+
+    $current_date = new DateTime('now', new DateTimeZone('UTC'));
+
+    $active = $assetManager->isSubscriptionActive($subscription_id, $current_date, $debug);
+
+    if (!$active){
+
+        $subscription->setactive('0');
+        $subscription->prepareStatementPDOUpdate();
+
+
+    }
+
 
 
 

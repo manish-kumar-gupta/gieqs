@@ -572,6 +572,55 @@ public function returnProgrammesAsset($assetid)
 
         }
 
+        public function isAssetFree($subscription_id)
+        {
+        
+
+            $q = "Select 
+            b.`cost`
+            FROM `subscriptions` as a
+            INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
+            WHERE a.`id` = '$subscription_id'";
+
+        //echo $q . '<br><br>';
+
+
+
+        $result = $this->connection->RunQuery($q);
+        
+        $x = 0;
+        $nRows = $result->rowCount();
+
+        if ($nRows == 1) {
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                $cost = $row['cost'];
+
+
+            }
+
+            //if the cost is 0 return true
+
+            if ($cost == '0.00'){
+
+                return true;
+
+            }else{
+
+                return false;
+            }
+
+            //otherwise return false
+
+        } else {
+            
+
+            //return false;  don't return false here
+        }
+
+    }
+
         public function getAssetTypeText($asset_type)
             {
             
@@ -1030,10 +1079,6 @@ public function showButtonSubscription ($subscription_id, $debug){
 
            }
 
-
-
-
-
              //show cancel renewal button anyway
 
             $button = '<button class="btn btn-sm btn-danger rounded-pill p-2 mt-3 ml-3 mt-sm-0 cancel-auto-renew" data-subscriptionid = "'. $subscription_id .' ">Cancel Auto-Renew</button>';
@@ -1045,19 +1090,31 @@ public function showButtonSubscription ($subscription_id, $debug){
             // active and won't renew
             //show only renew button if expires soon
 
-            if ($expires_soon == 1){
+            //if a trial don't allow renew
 
-                //show renew button
-                $button = '<button class="btn btn-sm btn-primary rounded-pill p-2 mt-3 mt-sm-0 renew" data-subscriptionid = "'. $subscription_id .' ">Renew</button>';
-                return $button;
+            if ($this->isAssetFree($subscription_id) === false){
+
+                if ($expires_soon == 1){
+
+                    //show renew button
+                    $button = '<button class="btn btn-sm btn-primary rounded-pill p-2 mt-3 mt-sm-0 renew" data-subscriptionid = "'. $subscription_id .' ">Renew</button>';
+                    return $button;
 
 
-            }elseif ($expires_soon == 0){
+                }elseif ($expires_soon == 0){
 
-                //no button, will not renew, not expiring
+                    //no button, will not renew, not expiring
 
-                $button = '<button class="btn btn-sm btn-success rounded-pill p-2 mt-3 mt-sm-0 activate-auto-renew" data-subscriptionid = "'. $subscription_id .' ">Activate Auto Renew</button>';
-                return $button;
+                    $button = '<button class="btn btn-sm btn-success rounded-pill p-2 mt-3 mt-sm-0 activate-auto-renew" data-subscriptionid = "'. $subscription_id .' ">Activate Auto Renew</button>';
+                    return $button;
+
+                }
+
+            }else{ //is free
+
+                
+
+
 
             }
 
