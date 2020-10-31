@@ -5,12 +5,15 @@
  * Create Date: 1-06-2020
  *
  * DJT 2019
- *
+ *P
  * License: LGPL
  *
  */
 
-session_start();
+if (session_status() == PHP_SESSION_NONE) { //if there's no session_start yet...
+    session_start(); //do this
+}
+
 if ($_SESSION['debug'] == true){
 
 error_reporting(E_ALL);
