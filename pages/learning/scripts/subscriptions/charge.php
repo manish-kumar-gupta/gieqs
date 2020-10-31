@@ -63,6 +63,16 @@ if (isset($subscription_id) && isset($asset_id)){
     die();
 }
 
+if (!isset($subscription_id) && !isset($asset_id)){
+
+    if ($debug){
+
+        echo 'neither subscription id or asset id set';
+    }
+
+    die();
+}
+
 if (isset($subscription_id)){
 
 
