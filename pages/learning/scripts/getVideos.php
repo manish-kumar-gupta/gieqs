@@ -5,7 +5,6 @@ $openaccess = 1;
 
 require '../includes/config.inc.php';
 
-$debug = false;
 
 require (BASE_URI . '/assets/scripts/login_functions.php');
      
@@ -68,6 +67,10 @@ $user = new users;
 $usersLikeVideo = new usersLikeVideo;
 $usersFavouriteVideo = new usersFavouriteVideo;
 
+
+require_once(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
+$assetManager = new assetManager;
+
 $data = json_decode(file_get_contents('php://input'), true);
 
 $tagsToMatch = $data['tags'];
@@ -120,7 +123,7 @@ $x = 0;
 
 $data2 = $navigator->getVideoData($requiredTagCategories, $tagsToMatch, $debug, $active, $gieqsDigitalv1);
 
-
+$debug = false;
 
 $videos = $data2;
 
@@ -129,6 +132,73 @@ if ($debug) {
     print_r($videos);
 
     echo json_encode($videos);
+}
+
+
+if ($isSuperuser == '0'){
+
+//GO THROUGH THE VIDEOS AND REMOVE ANY THAT THE USER HAS NO ACCESS TO
+
+foreach ($videos as $key=>$value){
+
+
+    //does it require subscription?
+
+    $array_key = $key;
+
+    $access = $assetManager->video_requires_subscription($value['id'], false);
+
+    if ($access){
+
+
+        $access2 = $assetManager->video_owned_by_user($value['id'], $userid, false);
+
+        if ($access2 === false){
+
+            //remove this video from the array
+            unset($videos[$key]);
+            if ($debug){
+
+                echo 'user id ' . $userid . ' has no access to video id ' . $value['id'];
+
+           }
+
+
+        }else{
+
+            if ($debug){
+
+                echo 'user id ' . $userid . ' has access to video id ' . $value['id'];
+
+           }
+
+            
+            //user has access to this video
+        }
+
+    }else{
+
+        if ($debug){
+
+            echo 'video id ' . $value['id'] . ' does not require a subscription';
+
+        }
+
+    }
+
+    //test user access
+
+
+
+    
+
+}
+}else{
+
+    if ($debug){
+
+        echo 'all videos available as superuser';
+    }
 }
 
 
@@ -154,6 +224,8 @@ if ($debug) {
                 </div>
 <?php
                 }
+
+                
 
                 foreach ($videos as $key=>$value){
 

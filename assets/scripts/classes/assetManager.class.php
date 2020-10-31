@@ -285,7 +285,7 @@ public function returnProgrammesAsset($assetid)
             WHERE a.`asset_id` = '$assetid'
             ";
 
-            echo $q . '<br><br>';
+            //echo $q . '<br><br>';
 
 
 
@@ -1593,6 +1593,342 @@ public function checkVimeoidPresentPublic($videoid, $past=null, $current=null, $
       }
 
 }
+
+public function video_requires_subscription($videoid, $debug=false){
+
+
+    // if a video is defined as a subasset it requires a subscription
+
+    $asset_array = $this->which_assets_contain_video($videoid);
+
+    if ($asset_array === false){
+
+
+        if ($debug){
+
+            echo 'video ' . $videoid . ' does not require a subscription';
+        }
+
+        return false;
+
+        
+
+    }else{
+
+        if ($debug){
+
+            echo 'video ' . $videoid . ' does require a subscription';
+        }
+
+        return true;
+    }
+
+
+    //determine if there are associated videos with the asset tied to the subscription
+
+    //get asset id for subscription
+
+
+    //check whether the video id is within those covered
+
+
+
+}
+
+public function programme_owned_by_user ($programmeid, $userid, $debug){
+
+    //check which assets contain this programme
+
+    $asset_array = $this->which_assets_contain_programme($programmeid);
+
+    if ($asset_array != false){
+
+
+
+        //check if user has a subscription containing any of these assetids and that it is active
+
+        $countAssets = 0;
+
+        foreach ($asset_array as $key=>$value){
+
+            if ($this->is_assetid_covered_by_user_subscription($value, $userid, $debug)){  //user has the asset
+
+                $countAssets++;
+
+            }
+
+        }
+
+        if ($countAssets > 0){
+
+
+            if ($debug){
+
+                echo 'User has access to  ' . $programmeid . ' via a subscription';
+    
+            }
+
+            return true;
+
+        }else{
+
+            if ($debug){
+
+                echo 'User has NO access to  ' . $programmeid . ' via a subscription';
+    
+            }
+
+            return false;
+        }
+
+
+
+        
+
+
+
+    }else{
+
+        if ($debug){
+
+            echo 'No asset ids in array for ' . $programmeid;
+
+        }
+    }
+
+    //check if user has a subscription containing any of these assetids and that it is active
+
+
+}
+
+public function which_assets_contain_programme ($programmeid){
+
+            $q = "Select 
+            b.`id`
+            FROM `assets_paid` as b
+            INNER JOIN `sub_asset_paid` as c ON b.`id` = c.`asset_id`
+            WHERE c.`programme_id` = '$programmeid'";
+
+        //echo $q . '<br><br>';
+
+
+
+        $result = $this->connection->RunQuery($q);
+
+        $x = 0;
+        $nRows = $result->rowCount();
+
+        if ($nRows > 0) {
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                $rowReturn[$x] = $row['id'];
+
+
+            }
+
+
+            return $rowReturn;
+
+        } else {
+            
+
+            if ($debug){
+
+                echo 'no assets contain this programmeid';
+            }
+
+            return false;
+
+            
+        }
+
+
+
+
+}
+
+public function is_assetid_covered_by_user_subscription($asset_id, $userid, $debug=false){
+
+
+        
+            
+            $q = "Select 
+            a.`id`
+            FROM `subscriptions` as a
+            INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
+            WHERE b.`id` = '$asset_id' 
+            AND a.`user_id` = '$userid'
+            AND a.`active` = '1'
+            AND a.`expiry_date` > NOW()
+            ";
+    
+        //echo $q . '<br><br>';
+    
+    
+    
+        $result = $this->connection->RunQuery($q);
+        
+        $x = 0;
+        $nRows = $result->rowCount();
+    
+        if ($nRows > 0) {
+    
+            /* while($row = $result->fetch(PDO::FETCH_ASSOC)){
+    
+                $rowReturn = $row['id'];
+    
+    
+            } */
+    
+            if ($debug){
+    
+                echo 'user has a subscription with this asset_id - ' . $asset_id;
+            }
+    
+            return true;
+    
+        } else {
+            
+    
+            if ($debug){
+    
+                echo 'user has no subscription with this asset_id or this asset_id does not exist - ' . $asset_id;
+            }
+    
+            return false;
+    
+            
+        }
+    
+    }
+    
+    
+    
+    
+public function video_owned_by_user ($videoid, $userid, $debug){
+
+    //check which assets contain this programme
+
+    $asset_array = $this->which_assets_contain_video($videoid);
+
+    if ($asset_array != false){
+
+
+
+        //check if user has a subscription containing any of these assetids and that it is active
+
+        $countAssets = 0;
+
+        foreach ($asset_array as $key=>$value){
+
+            if ($this->is_assetid_covered_by_user_subscription($value, $userid, $debug)){  //user has the asset
+
+                $countAssets++;
+
+            }
+
+        }
+
+        if ($countAssets > 0){
+
+
+            if ($debug){
+
+                echo 'User has access to  ' . $videoid . ' via a subscription';
+    
+            }
+
+            return true;
+
+        }else{
+
+            if ($debug){
+
+                echo 'User has NO access to  ' . $videoid . ' via a subscription';
+    
+            }
+
+            return false;
+        }
+
+
+
+        
+
+
+
+    }else{
+
+        if ($debug){
+
+            echo 'This video ' . $videoid . ' is not covered by any assets';
+
+        }
+    }
+
+    //check if user has a subscription containing any of these assetids and that it is active
+
+
+}
+
+public function which_assets_contain_video ($videoid, $debug=false){
+
+    $q = "Select 
+    b.`id`
+    FROM `assets_paid` as b
+    INNER JOIN `sub_asset_paid` as c ON b.`id` = c.`asset_id`
+    WHERE c.`video_id` = '$videoid'";
+
+//echo $q . '<br><br>';
+
+
+
+$result = $this->connection->RunQuery($q);
+
+$x = 0;
+$nRows = $result->rowCount();
+
+if ($nRows > 0) {
+
+    while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+        $rowReturn[$x] = $row['id'];
+
+
+    }
+
+
+    return $rowReturn;
+
+} else {
+    
+
+    if ($debug){
+
+        echo 'no assets contain this videoid';
+    }
+
+    return false;
+
+    
+}
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
 	
     /**
      * Close mysql connection
