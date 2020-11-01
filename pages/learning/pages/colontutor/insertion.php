@@ -54,7 +54,7 @@
 }
 
 .flex-even {
-  flex: 1;
+  flex: 0 0 30%;
 }
 
 .flex-nav {

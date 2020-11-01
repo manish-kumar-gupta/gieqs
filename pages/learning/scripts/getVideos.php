@@ -71,6 +71,11 @@ $usersFavouriteVideo = new usersFavouriteVideo;
 require_once(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
 $assetManager = new assetManager;
 
+require_once(BASE_URI . '/assets/scripts/classes/programmeView.class.php');
+
+$programmeView = new programmeView;
+
+
 $data = json_decode(file_get_contents('php://input'), true);
 
 $tagsToMatch = $data['tags'];
@@ -81,7 +86,15 @@ $loadedRequired = $data['loadedRequired'];
 
 $active = $data['active'];
 
+$videoset = $data['videoset'];
+
+$assetid = $data['assetid'];
+
+
 $gieqsDigitalv1 = $data['gieqsDigital'];
+
+$debug = false;
+
 
 $loadedRequiredProduct = 10 * $loadedRequired;
 
@@ -123,7 +136,6 @@ $x = 0;
 
 $data2 = $navigator->getVideoData($requiredTagCategories, $tagsToMatch, $debug, $active, $gieqsDigitalv1);
 
-$debug = false;
 
 $videos = $data2;
 
@@ -201,6 +213,156 @@ foreach ($videos as $key=>$value){
     }
 }
 
+//if a videoset
+
+if (isset($videoset)){
+
+    if ($videoset == 1){
+
+        $emptyText = 'There are no videos matching your filters.';
+
+
+        //push out of the data2 array videos that are not part of the asset $assetid
+
+        $videosAsset = $assetManager->returnVideosAsset($assetid);
+
+        foreach ($videos as $key=>$value){
+
+
+            $array_key = $key;
+
+            $access = null;
+
+            $access = (in_array($value['id'], $videosAsset)) ? true : false;
+        
+            if (!$access){
+
+
+                unset($videos[$key]);
+
+                if ($debug){
+    
+                    echo 'video id ' . $value['id'] . ' was not found in the video asset array';
+    
+               }
+    
+            }else{
+
+                if ($debug){
+
+                echo 'video id ' . $value['id'] . ' was found in the video asset array';
+                
+            }
+
+
+            }
+        
+
+        }
+
+        
+
+
+    }
+
+    if ($videoset == 2){
+
+        $emptyText = 'There are no videos yet matching these criteria for this course.';
+
+
+        //push out of the data2 array videos that are not part of the asset $assetid
+        $videosForSessions = array();
+
+            //get programme / session info
+
+            $programmes = $assetManager->returnCombinationAssetProgramme($assetid);
+            
+            if ($debug){
+
+                //var_dump($programmes);
+            }
+
+            foreach ($programmes as $key=>$value){
+
+
+            $sessions = $programmeView->getSessions($value['programme_id']);
+
+                if ($debug){
+
+                    //var_dump($sessions);
+                }
+
+                //get programmeid for asset
+                foreach ($sessions as $key2=>$value2){
+
+                    if (isset($value2['sessionid'])){
+
+                        $videosForSessions[] = $programmeView->getVideoURL($value2['sessionid']);
+
+                    }
+
+                }
+
+             }
+
+             //if debug show the videos
+
+             if ($debug){
+
+                var_dump($videosForSessions);
+
+             }
+
+        $videosAsset = $videosForSessions;
+
+        foreach ($videos as $key=>$value){
+
+
+            $array_key = $key;
+
+            $access = null;
+
+            $access = (in_array($value['id'], $videosAsset)) ? true : false;
+        
+            if (!$access){
+
+
+                unset($videos[$key]);
+
+                if ($debug){
+    
+                    echo 'video id ' . $value['id'] . ' was not found in the video asset array';
+    
+               }
+    
+            }else{
+
+                if ($debug){
+
+                echo 'video id ' . $value['id'] . ' was found in the video asset array';
+                
+            }
+
+
+            }
+        
+
+        }
+
+        
+
+
+    }
+
+
+}else{
+
+    //normal page
+
+    $emptyText = 'No videos match your criteria. Please reset your filters above.';
+
+}
+
 
 ?>
 
@@ -220,7 +382,7 @@ foreach ($videos as $key=>$value){
                     ?>
 
                     <div class="d-flex flex-row flex-wrap align-items-stretch mt-1 pt-0 px-0 text-white">
-                        <span class=" mt-3 mb-6 h6">No videos match your criteria.  Please reset your filters above.</span>
+                        <span class=" mt-3 mb-6 h6"><?php echo $emptyText;?></span>
                 </div>
 <?php
                 }

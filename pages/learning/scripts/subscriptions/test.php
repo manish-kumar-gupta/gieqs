@@ -100,6 +100,23 @@ $access = $assetManager->video_requires_subscription($videoid, true);
 
 var_dump($access);
 
+//does this video require a subscription
+echo '<br/><br/><br/>';
+
+
+$videos = array('77', '78');
+///$videoid = '77';
+echo '<h2>Return tag categories for given video array</h2>';
+
+echo 'The tag categories for ' . print_r($videos);
+
+$access = null;
+
+$access = $assetManager->getVideoTagCategories($videos, true);
+
+var_dump($access);
+
+
 
 
 

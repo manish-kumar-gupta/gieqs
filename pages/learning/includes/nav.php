@@ -64,78 +64,93 @@ function endsWith($haystack, $needle)
                         aria-expanded="false">Endoscopist</a>
 
 
-                        
+
 
 
                     <div class="dropdown-menu dropdown-menu-arrow" aria-labelledby="btn-group-settings">
-                      <span style="color: rgb(238, 194, 120);" class="dropdown-header">GIEQs Digital Edition I Catch Up</span>
-                        <a class="dropdown-item"><i
-                          class="fas fa-columns"></i>Coming Soon</a>
-                          <div class="dropdown-divider"></div>
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">GIEQs Digital Edition I Catch
+                            Up</span>
+                        <a class="dropdown-item"><i class="fas fa-columns"></i>Coming Soon</a>
+                        <div class="dropdown-divider"></div>
 
                         <span style="color: rgb(238, 194, 120);" class="dropdown-header">Colonoscopy</span>
                         <a class="dropdown-item dropdown-toggle cursor-pointer" role="button" data-toggle="dropdown"
-                            data-target="#colonoscopy-dropdown"><i
-                            class="fas fa-columns"></i>Colonoscopy</a>
+                            data-target="#colonoscopy-dropdown"><i class="fas fa-columns"></i>Colonoscopy</a>
                         <div id="colonoscopy-dropdown"
                             class="dropdown-menu dropdown-menu-xl rounded-bottom delimiter-top p-4 bg-dark-light">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Introduction to
                                         Colonoscopy Theory</a>
-                                        <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/start-concepts.php">Concepts</a>
-                                        <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/start-simple.php">Simple cases</a>
-                                        <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/start-pathology.php">Managing pathology</a>
-                
+                                    <a class="dropdown-item"
+                                        href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/start-concepts.php">Concepts</a>
+                                    <a class="dropdown-item"
+                                        href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/start-simple.php">Simple
+                                        cases</a>
+                                    <a class="dropdown-item"
+                                        href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/start-pathology.php">Managing
+                                        pathology</a>
+
 
 
                                     <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);"></a>
 
-                                    <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Insertion Technique</a>
+                                    <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Insertion
+                                        Technique</a>
 
                                     <a class="dropdown-item"
-                                    href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/insertion.php">Insertion technique</a>
-        
-                                <a class="dropdown-item"
-                                    href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/loops.php">Loop resolution</a>
+                                        href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/insertion.php">Insertion
+                                        technique</a>
+
+                                    <a class="dropdown-item"
+                                        href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/loops.php">Loop
+                                        resolution</a>
                                     <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);"></a>
 
-                                    <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Withdrawal Technique</a>
+                                    <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Withdrawal
+                                        Technique</a>
 
                                     <a class="dropdown-item"
-                            href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/visualisation.php">Optimal Mucosal visualisation</a>
+                                        href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/visualisation.php">Optimal
+                                        Mucosal visualisation</a>
 
 
 
                                 </div>
-                      
+
                                 <div class="col-sm-6">
                                     <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">
                                         Management of pathology</a>
 
-                                        <a class="dropdown-item"
-                            href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/pathology.php">Management of pathology</a>
+                                    <a class="dropdown-item"
+                                        href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/pathology.php">Management
+                                        of pathology</a>
 
-                       
+
                                     <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);"></a>
 
 
-                                    <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Colonoscopy Theory</a>
+                                    <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Colonoscopy
+                                        Theory</a>
 
                                     <a class="dropdown-item"
-                                    href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/concepts.php">Conceptual lectures</a>
-                                        <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);"></a>
+                                        href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/concepts.php">Conceptual
+                                        lectures</a>
+                                    <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);"></a>
 
-                                <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Training theory</a>
-                                <a class="dropdown-item"
-                            href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/training.php">Training theory</a>
+                                    <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Training
+                                        theory</a>
+                                    <a class="dropdown-item"
+                                        href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/training.php">Training
+                                        theory</a>
 
-                            <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);"></a>
+                                    <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);"></a>
 
 
-                                <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">All videos</a>
-                                <a class="dropdown-item"
-                            href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/all.php">View All Videos</a>
+                                    <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">All videos</a>
+                                    <a class="dropdown-item"
+                                        href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/all.php">View All
+                                        Videos</a>
 
 
 
@@ -184,7 +199,7 @@ function endsWith($haystack, $needle)
                                     <a class="dropdown-item"
                                         href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/pcsp.php">Piecemeal
                                         Cold Snare Polypectomy</a>
-                                    
+
                                     <a class="dropdown-item"
                                         href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/pedunculated.php">Pedunculated
                                         Polypectomy</a>
@@ -192,38 +207,46 @@ function endsWith($haystack, $needle)
 
 
                                 </div>
-                      
+
                                 <div class="col-sm-6">
                                     <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">
                                         Endoscopic Mucosal Resection</a>
 
-                                        <a class="dropdown-item"
-                            href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/emr.php">Endoscopic Mucosal Resection (EMR)</a>
+                                    <a class="dropdown-item"
+                                        href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/emr.php">Endoscopic
+                                        Mucosal Resection (EMR)</a>
 
-                        <a class="dropdown-item"
-                            href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/emr_difficult.php">Difficult EMR</a>
-                        <a class="dropdown-item"
-                            href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/emr_defect.php">Defect Assessment after EMR</a>
+                                    <a class="dropdown-item"
+                                        href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/emr_difficult.php">Difficult
+                                        EMR</a>
+                                    <a class="dropdown-item"
+                                        href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/emr_defect.php">Defect
+                                        Assessment after EMR</a>
                                     <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);"></a>
 
 
-                                    <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Adverse Events</a>
+                                    <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Adverse
+                                        Events</a>
 
                                     <a class="dropdown-item"
-                            href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/adverse.php">Adverse Events</a>
-                            <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);"></a>
+                                        href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/adverse.php">Adverse
+                                        Events</a>
+                                    <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);"></a>
 
 
-                                <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Surveillance</a>
-                                <a class="dropdown-item"
-                            href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/surveillance.php">Surveillance after Polypectomy</a>
+                                    <a href="#" class="dropdown-item"
+                                        style="color: rgb(238, 194, 120);">Surveillance</a>
+                                    <a class="dropdown-item"
+                                        href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/surveillance.php">Surveillance
+                                        after Polypectomy</a>
 
-                            <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);"></a>
+                                    <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);"></a>
 
 
-                                <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">All videos</a>
-                                <a class="dropdown-item"
-                            href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/all.php">View All Videos</a>
+                                    <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">All videos</a>
+                                    <a class="dropdown-item"
+                                        href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/all.php">View All
+                                        Videos</a>
 
 
 
@@ -266,7 +289,7 @@ function endsWith($haystack, $needle)
                                         class="dropdown-item">Gastrointestinal Bleeding</a>
 
                                 </div>
-                                
+
                                 <div class="col-sm-6">
                                     <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Upper GI
                                         Therapeutics</a>
@@ -279,7 +302,7 @@ function endsWith($haystack, $needle)
                                         Bolus Obstruction</a>
                                     <a class="dropdown-item"
                                         href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/dilatation.php">Dilatation</a>
-                                        <a class="dropdown-item"
+                                    <a class="dropdown-item"
                                         href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/stenting.php">Stenting</a>
 
                                     <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);"></a>
@@ -302,7 +325,7 @@ function endsWith($haystack, $needle)
 
                         <span style="color: rgb(238, 194, 120);" class="dropdown-header">ERCP</span>
 
-<a class="dropdown-item dropdown-toggle cursor-pointer" role="button" data-toggle="dropdown"
+                        <a class="dropdown-item dropdown-toggle cursor-pointer" role="button" data-toggle="dropdown"
                             data-target="#ercp-dropdown"><i class="fas fa-columns"></i>ERCP</a>
                         <div id="ercp-dropdown"
                             class="dropdown-menu dropdown-menu-xl rounded-bottom delimiter-top p-4 bg-dark-light">
@@ -313,15 +336,15 @@ function endsWith($haystack, $needle)
                                         class="dropdown-item">All ERCP videos
                                         <!--  <img class="w-100" alt="Boston Scientific" src="<?php echo BASE_URL . '/assets/img/brand/boston.jpg';?>"> -->
                                     </a>
-                                    
 
-                                    
-                                  
+
+
+
 
                                 </div>
-                                
+
                                 <div class="col-sm-6">
-                                    
+
 
 
 
@@ -330,13 +353,13 @@ function endsWith($haystack, $needle)
 
                             </div>
                         </div>
-                        
+
 
                         <div class="dropdown-divider"></div>
 
                         <span style="color: rgb(238, 194, 120);" class="dropdown-header">EUS</span>
 
-<a class="dropdown-item dropdown-toggle cursor-pointer" role="button" data-toggle="dropdown"
+                        <a class="dropdown-item dropdown-toggle cursor-pointer" role="button" data-toggle="dropdown"
                             data-target="#eus-dropdown"><i class="fas fa-columns"></i>Endoscopic Ultrasound</a>
                         <div id="eus-dropdown"
                             class="dropdown-menu dropdown-menu-xl rounded-bottom delimiter-top p-4 bg-dark-light">
@@ -347,15 +370,15 @@ function endsWith($haystack, $needle)
                                         class="dropdown-item">All Endoscopic Ultrasound videos
                                         <!--  <img class="w-100" alt="Boston Scientific" src="<?php echo BASE_URL . '/assets/img/brand/boston.jpg';?>"> -->
                                     </a>
-                                    
 
-                                    
-                                  
+
+
+
 
                                 </div>
-                                
+
                                 <div class="col-sm-6">
-                                    
+
 
 
 
@@ -365,22 +388,20 @@ function endsWith($haystack, $needle)
                             </div>
                         </div>
 
-                        
-                                
+
+
 
                         <div class="dropdown-divider"></div>
 
                         <span style="color: rgb(238, 194, 120);" class="dropdown-header">Advanced Endoscopic
-                          Resection</span>
-                      <a class="dropdown-item"><i
-                              class="fas fa-columns"></i>Coming Soon</a>
-                        
+                            Resection</span>
+                        <a class="dropdown-item"><i class="fas fa-columns"></i>Coming Soon</a>
+
 
                         <div class="dropdown-divider"></div>
 
                         <span style="color: rgb(238, 194, 120);" class="dropdown-header">Submucosal Endoscopy</span>
-                        <a class="dropdown-item"><i
-                          class="fas fa-columns"></i>Coming Soon</a>
+                        <a class="dropdown-item"><i class="fas fa-columns"></i>Coming Soon</a>
 
 
 
@@ -439,13 +460,18 @@ function endsWith($haystack, $needle)
 
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
 
-                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Introduction to Colonoscopy Theory</span>
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Introduction to Colonoscopy
+                            Theory</span>
 
                         <a class="dropdown-item"
                             href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/start-concepts.php"><i
                                 class="fas fa-columns"></i>Concepts</a>
-                        <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/start-simple.php"><i class="fas fa-columns"></i>Simple cases</a>
-                        <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/start-pathology.php"><i class="fas fa-columns"></i>Managing
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/start-simple.php"><i
+                                class="fas fa-columns"></i>Simple cases</a>
+                        <a class="dropdown-item"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/start-pathology.php"><i
+                                class="fas fa-columns"></i>Managing
                             pathology</a>
 
                         <div class="dropdown-divider"></div>
@@ -636,7 +662,7 @@ function endsWith($haystack, $needle)
                             href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/dilatation.php"><i
                                 class="fas fa-columns"></i>Dilatation</a>
 
-                                <a class="dropdown-item"
+                        <a class="dropdown-item"
                             href="<?php echo BASE_URL;?>/pages/learning/pages/curriculum/stenting.php"><i
                                 class="fas fa-columns"></i>Stenting</a>
 
@@ -658,9 +684,13 @@ function endsWith($haystack, $needle)
 
 
 
+
+
                 <?php } else{?>
 
                 <?php } ?>
+
+
 
 
 
@@ -679,6 +709,57 @@ function endsWith($haystack, $needle)
 
                     </div>
                 </li>
+                <!-- Subscriptions Menu -->
+                <?php if ($assetManager->doesUserHaveSubscriptionMenu($userid, $debug)){  //if user has a subscription to assets type 2 3 or 4?>
+                <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                    <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">Subscriptions</a>
+
+                    <!-- pages which have a pattern depending on programme or video collection -->
+
+                    <!-- get the subscriptions with headers to match
+                        
+                        headers from type
+                         -->
+
+                         <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
+                    <?php
+
+                         $headers = $assetManager->getHeadersNavSubscriptions($userid, false);
+
+                         foreach ($headers as $key=>$value){
+                          ?>
+
+                    <!-- print the header -->
+                    
+                        <span style="color: rgb(238, 194, 120);"
+                            class="dropdown-header"><?php echo $value['asset_type'];?></span>
+
+
+                          <?php
+                            
+                            $courses = $assetManager->getMenuItems($userid, $value['id'], false);
+
+                            foreach ($courses as $key2=>$value2){
+
+                            
+                            ?>
+                          <!-- print the contained courses -->
+                          <a class="dropdown-item"
+                              href="<?php echo BASE_URL;?>/pages/learning/pages/general/show_subscription.php?assetid=<?php echo $value2['id'];?>"><i
+                                  class="fas fa-tasks"></i><?php echo $value2['name'];?></a>
+
+                          <?php }?>
+
+
+
+                        <?php }?>
+
+
+
+                    </div>
+                </li>
+                <?php }?>
 
                 <?php
                                 if (isset($_SESSION['user_id']) && ($_SESSION['siteKey'] == 'TxsvAb6KDYpmdNk') && ($_SESSION['access_level'] == '1' || $_SESSION['access_level'] == '2')){
@@ -687,34 +768,30 @@ function endsWith($haystack, $needle)
                     <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">Creator</a>
 
-                      
+
 
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
-                    <?php if ($isSuperuser){?>
+                        <?php if ($isSuperuser){?>
 
-                      <span style="color: rgb(238, 194, 120);" class="dropdown-header">Moderation</span>
-                        <a class="dropdown-item"
-                            href="<?php echo BASE_URL;?>/pages/learning/pages/management.php"><i
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Moderation</span>
+                        <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/management.php"><i
                                 class="fas fa-columns"></i>Send Out New Invites</a>
-                                <a class="dropdown-item"
-                            href="<?php echo BASE_URL;?>/pages/learning/pages/outstanding.php"><i
+                        <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/outstanding.php"><i
                                 class="fas fa-columns"></i>Manage Tagging in Progress</a>
-                        <a class="dropdown-item"
-                            href="<?php echo BASE_URL;?>/pages/learning/pages/moderation.php"><i
+                        <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/moderation.php"><i
                                 class="fas fa-columns"></i>Moderate Completed Tagging</a>
 
-                                <div class="dropdown-divider"></div>
+                        <div class="dropdown-divider"></div>
 
-                    <?php }?>
+                        <?php }?>
 
-                    
+
 
                         <span style="color: rgb(238, 194, 120);" class="dropdown-header">My Tagging</span>
-                        <a class="dropdown-item"
-                            href="<?php echo BASE_URL;?>/pages/learning/pages/myTagging.php"><i
+                        <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/myTagging.php"><i
                                 class="fas fa-columns"></i>View my Tagging Tasks</a>
-                        
-                                <?php if ($isSuperuser){?>
+
+                        <?php if ($isSuperuser){?>
                         <div class="dropdown-divider"></div>
                         <span style="color: rgb(238, 194, 120);" class="dropdown-header">Video</span>
                         <a class="dropdown-item"
@@ -732,7 +809,7 @@ function endsWith($haystack, $needle)
                         <a class="dropdown-item"
                             href="<?php echo BASE_URL;?>/pages/learning/scripts/forms/tagsForm.php"><i
                                 class="fas fa-columns"></i>New Tag</a>
-                                <?php }?>
+                        <?php }?>
                         <a class="dropdown-item"
                             href="<?php echo BASE_URL;?>/pages/learning/scripts/forms/tagsTable.php"><i
                                 class="fas fa-columns"></i>Tag / Reference Table</a>
@@ -743,10 +820,9 @@ function endsWith($haystack, $needle)
                         <span style="color: rgb(238, 194, 120);" class="dropdown-header">Tag Categories</span>
                         <?php if ($isSuperuser){?>
                         <a class="dropdown-item"
-                        
                             href="<?php echo BASE_URL;?>/pages/learning/scripts/forms/tagCategoriesForm.php"><i
                                 class="fas fa-columns"></i>New Tag Category</a>
-                                <?php }?>
+                        <?php }?>
                         <a class="dropdown-item"
                             href="<?php echo BASE_URL;?>/pages/learning/scripts/forms/tagCategoriesTable.php"><i
                                 class="fas fa-columns"></i>Tag Category Table</a>
@@ -756,18 +832,19 @@ function endsWith($haystack, $needle)
                         <a class="dropdown-item"
                             href="<?php echo BASE_URL;?>/pages/learning/scripts/forms/referencesForm.php"><i
                                 class="fas fa-columns"></i>New Reference</a>
-                                <?php if ($isSuperuser){?>
+                        <?php if ($isSuperuser){?>
                         <div class="dropdown-divider"></div>
                         <span style="color: rgb(238, 194, 120);" class="dropdown-header">Maintenance</span>
-                        
+
                         <a class="dropdown-item"
                             href="<?php echo BASE_URL;?>/pages/learning/scripts/getThumbnailsVideo.php"><i
                                 class="fas fa-user"></i>Update / generate Thumbnails</a>
-                                <?php }?>
+                        <?php }?>
 
 
                     </div>
                 </li>
+
                 <?php
                 }?>
 
