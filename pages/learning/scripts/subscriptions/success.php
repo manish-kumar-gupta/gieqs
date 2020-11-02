@@ -198,7 +198,12 @@ if (array_key_exists('paymentId', $_GET) && array_key_exists('PayerID', $_GET)) 
 
             }else if ($asset_type == '3'){ //GIEQs Virtual / Live Course
 
+                //need to add text for course renewal
 
+                $filename = '/assets/email/subscriptions/renewSubscriptionMail.php';
+        $subject = 'Thank-you for Renewing Your Subscription on GIEQS Online';
+        $preheader = 'Your subscription has been renewed.  Thank you for your support of GIEQs Online';
+        $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $subscription_id;
 
             }else if ($asset_type == '4'){ //video set / area of site
 

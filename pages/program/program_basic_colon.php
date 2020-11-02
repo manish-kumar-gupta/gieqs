@@ -382,8 +382,10 @@ $general = new general;
                             The payment process is not final until you confirm with the payment provider.
                             Once complete your subscription will be active immediately and you will receive a
                             confirmation email.
-                            This subscription will automatically renew after the expiry term. This can easily be
-                            switched off your account settings.
+                            <!-- This subscription will automatically renew after the expiry term. This can easily be
+                            switched off your account settings. -->
+                            We do not store any payment details whatsoever on GIEQs.com.  We believe this is best handled by PayPal who have a 
+                            track record in industry standard procedures in this regard.
                             All subscriptions and payments are covered by our <a
                                 href="<?php echo BASE_URL;?>/pages/support/support_gieqs_online_terms.php"
                                 target="_blank">terms and conditions</a>.
