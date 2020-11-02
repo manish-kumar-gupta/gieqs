@@ -753,6 +753,42 @@ Class userFunctions {
 
 		}
 
+
+		public function getMailListServices()
+            {
+            
+
+            $q = "SELECT `user_id` FROM `users` WHERE `emailServices` = '1' OR `emailAccount` IS NULL";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn[] = $row['user_id'];
+					
+
+
+				}
+
+				return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+		}
+
 		public function printUserEmailsConsent1()
             {
             

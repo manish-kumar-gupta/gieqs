@@ -517,7 +517,7 @@ foreach ($subscriptionsList as $key=>$value){
                             <div class="mt-5">
                                 <div class="actions-toolbar py-2 mb-4">
                                     <h5 class="mb-1">Payment history</h5>
-                                    <p class="text-sm text-muted mb-0">A history of your payments.</p>
+                                    <p class="text-sm text-muted mb-0">A history of your payments and attempted payments.</p>
                                 </div>
                                 <div class="table-responsive">
                                     <table class="table table-hover table-cards align-items-center">

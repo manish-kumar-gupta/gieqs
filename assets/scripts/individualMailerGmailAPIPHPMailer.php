@@ -1,7 +1,7 @@
 <?php
 error_reporting(E_ALL);
 
-require (BASE_URI . '/vendor/autoload.php');
+require_once (BASE_URI . '/vendor/autoload.php');
 
 date_default_timezone_set('Europe/Brussels');
 
@@ -10,6 +10,9 @@ date_default_timezone_set('Europe/Brussels');
  * Returns an authorized API client.
  * @return Google_Client the authorized client object
  */
+
+if(!function_exists("getClient")) {
+  
 function getClient()
 {
     $client = new Google_Client();
@@ -63,7 +66,9 @@ function getClient()
     }
     return $client;
 }
+}
 
+if(!function_exists("createDraft")) {
 
 function createDraft($service, $user, $message) {
     $draft = new Google_Service_Gmail_Draft();
@@ -99,6 +104,8 @@ function sendMessage($service, $userId, $message) {
    
     return null;
    }
+
+}
 
 
 // Get the API client and construct the service object.

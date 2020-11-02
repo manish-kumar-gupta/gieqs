@@ -664,8 +664,13 @@
 
                                                                             <p
                                                                                 style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#393737;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;font-weight:bold">
-                                                                                Thanks for your previous interest in
+                                                                                We hope you are keeping safe and thanks for your previous interest in
                                                                                 GIEQs.</p>
+
+                                                                                <p style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#393737;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
+                                                                                    Has COVID affected your Colonoscopy
+                                                                                    Training? Do you want some practical tips and technical advice on how to get better? 
+                                                                                    If so read on.  We have you covered...</p>
 
                                                                             <p
                                                                                 style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#393737;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
@@ -673,10 +678,7 @@
                                                                                 hybrid virtual/live educational course,
                                                                                 focussed on <strong>basic colonoscopy.</strong></p>
 
-                                                                            <p style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#393737;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;font-weight:bold">
-                                                                                Has COVID affected your Colonoscopy
-                                                                                Training? Do you want to know how to get
-                                                                                better? We have you covered...</p>
+                                                                            
 
                                                                                 <table border="0" cellpadding="0" cellspacing="0"
                                                                                 width="100%" class="mcnImageGroupBlock"
@@ -722,9 +724,10 @@
                                                                                 </tbody>
                                                                             </table>
 
-                                                                            <p style="margin:10px 0;padding-top:12px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#393737;font-family:Helvetica;font-size:20px;line-height:150%;text-align:left;font-weight:bold"> Colonoscopy Skills improvement course
-                                                                                &lsquo;How to do everyday colonoscopy
-                                                                                better&rsquo;</p>
+                                                                            <p style="margin:10px 0;padding-top:12px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#393737;font-family:Helvetica;font-size:20px;line-height:150%;text-align:left;font-weight:bold"> 
+                                                                                Basic Colonoscopy Skills Course
+                                                                                &lsquo;How to do Everyday Colonoscopy
+                                                                                Better&rsquo;</p>
 
                                                 
 
