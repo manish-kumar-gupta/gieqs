@@ -27,8 +27,11 @@ $assets_paid = new assets_paid;
 require_once(BASE_URI . '/assets/scripts/classes/subscriptions.class.php');
 $subscription = new subscriptions;
 
+require_once(BASE_URI . '/assets/scripts/classes/user_email.class.php');
+$user_email = new user_email;
 
-require_once BASE_URI .'/../scripts/config.php'; //KEY CODE TO REPLICATE
+
+//require_once BASE_URI .'/../scripts/config.php'; //KEY CODE TO REPLICATE
 
 require_once BASE_URI . "/vendor/autoload.php";
 
@@ -40,7 +43,7 @@ $mail = new PHPMailer;
 
 
 
-$debug = FALSE;
+$debug = false;
 
 if ($debug){
 
@@ -74,7 +77,7 @@ function get_include_contents($filename, $variablesToMakeLocal) {
 
         //$population = ['1', '5', '10', '11', '23']; //TEST USER IDs
 
-        $population = []; //blank while the script is on the server
+        $population = ['1']; //blank while the script is on the server
 
         if ($debug){
         
@@ -136,6 +139,8 @@ function get_include_contents($filename, $variablesToMakeLocal) {
                 echo 'email to ' . $emailVaryarray['firstname'] . ' ' . $emailVaryarray['surname'] . ' was sent. <br/><br/>'; 
                 //track which user_id has received
                 //emails received id, email_id, user_id
+                $user_email->New_user_email($value, $email_id);
+                $user_email->prepareStatementPDO();
 
             }
 

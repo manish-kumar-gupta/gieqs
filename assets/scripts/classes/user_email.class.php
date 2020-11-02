@@ -9,6 +9,20 @@
  * License: LGPL
  *
  */
+session_start();
+if ($_SESSION['debug'] == true){
+
+error_reporting(E_ALL);
+
+}else{
+
+error_reporting(0);
+    
+}
+
+
+error_reporting(E_ALL);
+
 require_once 'DataBaseMysqlPDO.class.php';
 
 Class user_email {
