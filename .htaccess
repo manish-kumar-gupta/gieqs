@@ -23,6 +23,8 @@ RewriteRule ^malignant-polyp$ pages/learning/viewer_free.php?id=157
 RewriteRule ^ercp$ pages/learning/viewer_free.php?id=153
 RewriteRule ^smic$ pages/learning/pages/scores/smic.php
 RewriteRule ^smsa$ pages/learning/pages/scores/smsa.php
+RewriteRule ^privacy-policy$ pages/support/support_gieqs_privacy_policy.php
+
 
 
 

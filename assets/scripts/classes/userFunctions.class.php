@@ -68,7 +68,7 @@ Class userFunctions {
     public function getUserFromKey($key){
 
         $q = "SELECT `user_id` FROM `users` WHERE `key` = '$key'";
-        echo $q;
+        //echo $q;
 
         $result = $this->connection->RunQuery($q);
 		$nRows = $result->rowCount();

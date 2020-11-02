@@ -145,10 +145,10 @@ $general = new general;
                       <p class="lead lh-180">Monday 16th November 2020, 0830 CET until 1700 CET</p>
                       <p class="lead lh-180"><span class="text-white">Where?</span></p>  
  
-                      <p class="lead lh-180">Live here, online at gieqs.com</p>
+                      <p class="lead lh-180">Live here, online at gieqs.com.  You can follow live (discussion and interaction) or catch up at your leisure.</p>
                       <p class="lead lh-180"><span class="text-white">Cost?</span></p>  
   
-                      <p class="lead lh-180">100 euros (includes review of the course on demand for 3 months)</p>
+                      <p class="lead lh-180">100 euros (includes review of the course on demand for 3 months, delay of 24 hours for content upload)</p>
                         <p class="lead lh-180">Participation via live chat platform possible.  Anyone can ask questions and join the conversation at any time.
                         </p>
 
@@ -369,8 +369,8 @@ $general = new general;
                         <div class="modal-footer">
                     <button type="button" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</button>
                     
-                        <button id="button-login" class="btn btn-sm btn-white button-login">Login</button>
-                        <button id="button-signup" class="btn btn-sm btn-white button-signup">Sign Up</button>
+                        <button id="button-login" class="btn btn-sm btn-white button-login">I have a GIEQs Online Account</button>
+                        <button id="button-signup" class="btn btn-sm btn-white button-signup">I have no account, sign me up!</button>
 
                     
                 </div>
