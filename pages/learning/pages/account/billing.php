@@ -338,7 +338,7 @@ get whether expiring soon su
                                                 </div>
                                                 <div class="col-sm-3 text-sm-right">
 
-                                                    <button class="btn btn-sm btn-primary rounded-pill mt-3 mt-sm-0 new"
+                                                    <button class="btn btn-sm btn-primary rounded-pill mt-3 mt-sm-0 new disabled"
                                                         data-userid="<?php echo $userid;?>" data-assetid="6">Buy
                                                         Plan</button>
 
