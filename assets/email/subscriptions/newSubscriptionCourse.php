@@ -619,7 +619,7 @@
 
                                                                             <p
                                                                                 style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;font-weight:bold">
-                                                                                Thanks for renewing your GIEQs Online Course Subscription and for your payment.</p>
+                                                                                Thanks your GIEQs Online Course Subscription and for your payment.</p>
 
                                                                                 <p
                                                                                 style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
@@ -630,7 +630,7 @@
 
                                                                                 <p
                                                                                 style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                Course joining instructions here.</p>
+                                                                                Course joining instructions will be communicated to you a few days before the course.</p>
                                                                             <p
                                                                                 style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
                                                                                 We thank you again for your support of GIEQs Online.</p>

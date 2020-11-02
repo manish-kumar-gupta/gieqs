@@ -166,7 +166,7 @@ if ($subscription->Return_row($subscription_id)){
     $end_date_sqltimestamp = date_format($end_date, 'Y-m-d H:i:s');
 
 
-    $subscription->New_subscriptions($userid, $subscription_to_return['asset_id'], $current_date_sqltimestamp, $end_date_sqltimestamp, '0', '1', NULL);
+    $subscription->New_subscriptions($userid, $subscription_to_return['asset_id'], $current_date_sqltimestamp, $end_date_sqltimestamp, '0', '0', NULL);
 
     $newSubscriptionid = $subscription->prepareStatementPDO();
 
@@ -325,7 +325,7 @@ $subscription_to_return['user_id'] = $userid;
     $end_date_sqltimestamp = date_format($end_start_calculate_date, 'Y-m-d H:i:s');
 
 
-    $subscription->New_subscriptions($userid, $subscription_to_return['asset_id'], $current_date_sqltimestamp, $end_date_sqltimestamp, '0', '1', NULL);
+    $subscription->New_subscriptions($userid, $subscription_to_return['asset_id'], $current_date_sqltimestamp, $end_date_sqltimestamp, '0', '0', NULL);
 
     $newSubscriptionid = $subscription->prepareStatementPDO();
 

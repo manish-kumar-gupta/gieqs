@@ -279,7 +279,7 @@ if (array_key_exists('paymentId', $_GET) && array_key_exists('PayerID', $_GET)) 
         $emailVaryarray['renew_frequency'] = $assets_paid->getrenew_frequency();
         $emailVaryarray['expiry_date'] = $end_date_user_readable;
         $emailVaryarray['cost'] = $amount . ' ' . $currency;
-
+        $emailVaryarray['key'] = $users->getkey();
         $emailVaryarray['gateway_transactionId'] = $payment_id;
         $emailVaryarray['preheader'] = $preheader;
     
