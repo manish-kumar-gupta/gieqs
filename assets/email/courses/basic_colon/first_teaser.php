@@ -722,7 +722,7 @@
                                                                                 </tbody>
                                                                             </table>
 
-                                                                            <p style="margin:10px 0;padding-top:12px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#393737;font-family:Helvetica;font-size:30px;line-height:150%;text-align:left;font-weight:bold"> Colonoscopy Skills improvement course
+                                                                            <p style="margin:10px 0;padding-top:12px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#393737;font-family:Helvetica;font-size:20px;line-height:150%;text-align:left;font-weight:bold"> Colonoscopy Skills improvement course
                                                                                 &lsquo;How to do everyday colonoscopy
                                                                                 better&rsquo;</p>
 
@@ -799,7 +799,7 @@
                                                                                 possible. Anyone can ask questions and
                                                                                 join the conversation at any time.  This is a
                                                                                 major advantage of participating live, but will
-                                                                                be recorded for your later review</p>
+                                                                                be recorded for your later review.</p>
 
                                                                             <p><strong>More details</strong></p>
 
