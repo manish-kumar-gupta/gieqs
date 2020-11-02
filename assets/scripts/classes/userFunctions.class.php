@@ -789,6 +789,85 @@ Class userFunctions {
 
 		}
 
+		public function getMailListAlreadyMailed($email_id)
+            {
+            
+
+            $q = "SELECT `user_id` FROM `user_email` WHERE `email_id` = '$email_id' GROUP BY `user_id`";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn[] = $row['user_id'];
+					
+
+
+				}
+
+				return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+		}
+
+		public function getMailListServicesLink()
+            {
+			
+				/* 
+				
+				only user id with match
+				SELECT b.`email_id` FROM `users` as a RIGHT OUTER JOIN `user_email` as b on a.`user_id` = b.`user_id` LIMIT 20
+
+				only user id without match
+
+
+				*/
+
+            $q = "SELECT a.`user_id`, a.`emailServices`, b.`email_id` FROM `users` as a LEFT JOIN `user_email` as b on a.`user_id` = b.`user_id` AND b.`email_id` <> 'first_teaser' WHERE (a.`emailServices` = '1' OR a.`emailServices` IS NULL) LIMIT 20";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn[] = $row['user_id'];
+					
+
+
+				}
+
+				return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+		}
+
 		public function printUserEmailsConsent1()
             {
             

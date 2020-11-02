@@ -73,11 +73,17 @@ function get_include_contents($filename, $variablesToMakeLocal) {
 
         //define the population
 
-        //$population = $userFunctions->getMailListServices(); // LIVE
+        $populationDenom = $userFunctions->getMailListServices(); // LIVE
+
+        $removePopulation = $userFunctions->getMailListAlreadyMailed($email_id);
+
+        $population_overall = array_diff($populationDenom, $removePopulation);
+
+        $population = array_slice($population_overall, 0, 24);  
 
         //$population = ['1', '5', '10', '11', '23']; //TEST USER IDs
 
-        $population = ['1']; //blank while the script is on the server
+        //$population = ['1']; //blank while the script is on the server
 
         if ($debug){
         
@@ -135,7 +141,7 @@ function get_include_contents($filename, $variablesToMakeLocal) {
             }else{
 
 
-                require(BASE_URI . '/assets/scripts/individualMailerGmailAPIPHPMailer.php');
+                //require(BASE_URI . '/assets/scripts/individualMailerGmailAPIPHPMailer.php');
                 echo 'email to ' . $emailVaryarray['firstname'] . ' ' . $emailVaryarray['surname'] . ' was sent. <br/><br/>'; 
                 //track which user_id has received
                 //emails received id, email_id, user_id
