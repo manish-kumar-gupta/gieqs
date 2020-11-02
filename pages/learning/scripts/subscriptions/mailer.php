@@ -141,7 +141,7 @@ function get_include_contents($filename, $variablesToMakeLocal) {
             }else{
 
 
-                //require(BASE_URI . '/assets/scripts/individualMailerGmailAPIPHPMailer.php');
+                require(BASE_URI . '/assets/scripts/individualMailerGmailAPIPHPMailer.php');
                 echo 'email to ' . $emailVaryarray['firstname'] . ' ' . $emailVaryarray['surname'] . ' was sent. <br/><br/>'; 
                 //track which user_id has received
                 //emails received id, email_id, user_id
