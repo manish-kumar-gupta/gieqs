@@ -1105,8 +1105,10 @@ public function showButtonSubscription ($subscription_id, $debug){
 
                     //no button, will not renew, not expiring
 
-                    $button = '<button class="btn btn-sm btn-success rounded-pill p-2 mt-3 mt-sm-0 activate-auto-renew" data-subscriptionid = "'. $subscription_id .' ">Activate Auto Renew</button>';
-                    return $button;
+                    //AUTO-RENEW RE-ADD HERE
+
+                   /*  $button = '<button class="btn btn-sm btn-success rounded-pill p-2 mt-3 mt-sm-0 activate-auto-renew" data-subscriptionid = "'. $subscription_id .' ">Activate Auto Renew</button>';
+                    return $button; */
 
                 }
 
