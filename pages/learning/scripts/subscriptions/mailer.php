@@ -63,6 +63,7 @@ function get_include_contents($filename, $variablesToMakeLocal) {
         //set some basics FOR THE EMAIL
 
         $filename = '/assets/email/courses/basic_colon/first_teaser.php';
+        $email_id = 'first_teaser';
         $subject = 'GIEQs Basic Colonoscopy Skills Course';
         $preheader = 'Limited endoscopy education because of COVID-19?  Try our new virtual / live hybrid courses';
         //$page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $subscription_id;
@@ -134,6 +135,7 @@ function get_include_contents($filename, $variablesToMakeLocal) {
                 require(BASE_URI . '/assets/scripts/individualMailerGmailAPIPHPMailer.php');
                 echo 'email to ' . $emailVaryarray['firstname'] . ' ' . $emailVaryarray['surname'] . ' was sent. <br/><br/>'; 
                 //track which user_id has received
+                //emails received id, email_id, user_id
 
             }
 
