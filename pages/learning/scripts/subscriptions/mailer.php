@@ -11,6 +11,8 @@ $location = BASE_URL . '/index.php';
 
 require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
 
+error_reporting(E_ALL);
+
 
 $general = new general;
 $users = new users;
