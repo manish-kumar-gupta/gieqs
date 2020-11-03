@@ -11,8 +11,11 @@ $location = BASE_URL . '/index.php';
 
 require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
 
-error_reporting(E_ALL);
+$_SESSION['debug'] = true;
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 $general = new general;
 $users = new users;
