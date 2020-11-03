@@ -82,7 +82,7 @@ function get_include_contents($filename, $variablesToMakeLocal) {
 
         $removePopulation = $userFunctions->getMailListAlreadyMailed($email_id);
 
-        if (count($removePopulation) > 0){
+        if (is_array($removePopulation)){
 
         $population_overall = array_diff($populationDenom, $removePopulation);
 
