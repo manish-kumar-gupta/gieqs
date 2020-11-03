@@ -32,8 +32,8 @@ $assets_paid = new assets_paid;
 require_once(BASE_URI . '/assets/scripts/classes/subscriptions.class.php');
 $subscription = new subscriptions;
 
-//require_once(BASE_URI . '/assets/scripts/classes/user_email.class.php');
-//$user_email = new user_email;
+require_once(BASE_URI . '/assets/scripts/classes/user_email.class.php');
+$user_email = new user_email;
 
 
 //require_once BASE_URI .'/../scripts/config.php'; //KEY CODE TO REPLICATE
