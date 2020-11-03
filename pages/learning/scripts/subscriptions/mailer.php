@@ -82,9 +82,16 @@ function get_include_contents($filename, $variablesToMakeLocal) {
 
         $removePopulation = $userFunctions->getMailListAlreadyMailed($email_id);
 
+        if (count($removePopulation) > 0){
+
         $population_overall = array_diff($populationDenom, $removePopulation);
 
         $population = array_slice($population_overall, 0, 24);  
+
+        }else{
+
+            $population = array_slice($population_Denom, 0, 24);
+        }
 
         //$population = ['1', '5', '10', '11', '23']; //TEST USER IDs
 
