@@ -11,7 +11,7 @@ $location = BASE_URL . '/index.php';
 
 require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
 
-$_SESSION['debug'] = true;
+//$_SESSION['debug'] = true;
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -48,7 +48,7 @@ $mail = new PHPMailer;
 
 
 
-$debug = true;
+$debug = false;
 
 if ($debug){
 
@@ -153,7 +153,7 @@ function get_include_contents($filename, $variablesToMakeLocal) {
             }else{
 
 
-                //require(BASE_URI . '/assets/scripts/individualMailerGmailAPIPHPMailer.php');
+                require(BASE_URI . '/assets/scripts/individualMailerGmailAPIPHPMailer.php');
                 echo 'email to ' . $emailVaryarray['firstname'] . ' ' . $emailVaryarray['surname'] . ' was sent. <br/><br/>'; 
                 //track which user_id has received
                 //emails received id, email_id, user_id

@@ -11,7 +11,10 @@
  */
 
 //error_reporting(E_ALL);
-session_start();
+if (session_status() == PHP_SESSION_NONE) { //if there's no session_start yet...
+    session_start(); //do this
+}
+
 if ($_SESSION['debug'] == true){
 
 	ini_set('display_errors', 1);
