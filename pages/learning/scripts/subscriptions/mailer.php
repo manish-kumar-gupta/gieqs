@@ -43,7 +43,7 @@ $mail = new PHPMailer;
 
 
 
-$debug = false;
+$debug = true;
 
 if ($debug){
 
