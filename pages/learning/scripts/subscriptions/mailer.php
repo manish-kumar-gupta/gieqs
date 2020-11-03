@@ -86,11 +86,11 @@ function get_include_contents($filename, $variablesToMakeLocal) {
 
         $population_overall = array_diff($populationDenom, $removePopulation);
 
-        $population = array_slice($population_overall, 0, 24);  
+        $population = array_slice($population_overall, 0, 5);  
 
         }else{
 
-            $population = array_slice($populationDenom, 0, 24);
+            $population = array_slice($populationDenom, 0, 5);
         }
 
         //$population = ['1', '5', '10', '11', '23']; //TEST USER IDs
