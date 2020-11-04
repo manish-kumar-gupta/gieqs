@@ -67,7 +67,35 @@ function get_include_contents($filename, $variablesToMakeLocal) {
 
 // Once the transaction has been approved, we need to complete it.
 
+?>
+<form id="mail" action="mailer_formbased.php" method ="post">
 
+Subject : <textarea type="text" name="subject"></textarea>
+<br/><br/>
+Preheader : <textarea type="text" name="preheader"></textarea>
+<br/><br/>
+Email_id : <input type="text" name="email_id">
+<br/><br/>
+File to attach : <input type="file" name="filename">
+<br/><br/>
+Frequency to attempt send : 
+<select name="frequency">
+<option hidden selected>select send frequency</option>
+<option>1 min</option>
+<option>5 min</option>
+<option>20 min</option>
+</select>
+
+<br/><br/><input type="submit" name="submit_email">
+
+
+
+
+
+</form>
+
+
+<?php
         //set some basics FOR THE EMAIL
 
         $filename = '/assets/email/courses/basic_colon/first_teaser.php';
@@ -91,11 +119,11 @@ function get_include_contents($filename, $variablesToMakeLocal) {
         }else{
 
             $population = array_slice($populationDenom, 0, 25);
-        } */  //UNCOMMENT FOR LIVE
+        } */   //LIVE COMMENT
 
         //$population = ['1', '5', '10', '11', '23']; //TEST USER IDs
 
-        $population = ['1']; //blank while the script is on the server COMMENT FOR LIVE
+        $population = ['1']; //blank while the script is on the server
 
         if ($debug){
         
@@ -153,12 +181,13 @@ function get_include_contents($filename, $variablesToMakeLocal) {
             }else{
 
 
-                require(BASE_URI . '/assets/scripts/individualMailerGmailAPIPHPMailer.php');
+                //require(BASE_URI . '/assets/scripts/individualMailerGmailAPIPHPMailer.php');
                 echo 'email to ' . $emailVaryarray['firstname'] . ' ' . $emailVaryarray['surname'] . ' was sent. <br/><br/>'; 
                 //track which user_id has received
                 //emails received id, email_id, user_id
-                $user_email->New_user_email($value, $email_id);
-                $user_email->prepareStatementPDO();
+                
+                //$user_email->New_user_email($value, $email_id);
+                //$user_email->prepareStatementPDO();
 
             }
 

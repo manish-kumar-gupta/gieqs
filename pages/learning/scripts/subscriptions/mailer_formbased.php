@@ -67,8 +67,19 @@ function get_include_contents($filename, $variablesToMakeLocal) {
 
 // Once the transaction has been approved, we need to complete it.
 
+?>
 
+
+
+<?php
         //set some basics FOR THE EMAIL
+
+        if (isset($_POST)){
+
+            print_r($_POST);
+    
+        }
+        
 
         $filename = '/assets/email/courses/basic_colon/first_teaser.php';
         $email_id = 'first_teaser';
@@ -91,11 +102,11 @@ function get_include_contents($filename, $variablesToMakeLocal) {
         }else{
 
             $population = array_slice($populationDenom, 0, 25);
-        } */  //UNCOMMENT FOR LIVE
+        } */   //LIVE COMMENT
 
         //$population = ['1', '5', '10', '11', '23']; //TEST USER IDs
 
-        $population = ['1']; //blank while the script is on the server COMMENT FOR LIVE
+        $population = ['1']; //blank while the script is on the server
 
         if ($debug){
         
@@ -153,12 +164,13 @@ function get_include_contents($filename, $variablesToMakeLocal) {
             }else{
 
 
-                require(BASE_URI . '/assets/scripts/individualMailerGmailAPIPHPMailer.php');
+                //require(BASE_URI . '/assets/scripts/individualMailerGmailAPIPHPMailer.php');
                 echo 'email to ' . $emailVaryarray['firstname'] . ' ' . $emailVaryarray['surname'] . ' was sent. <br/><br/>'; 
                 //track which user_id has received
                 //emails received id, email_id, user_id
-                $user_email->New_user_email($value, $email_id);
-                $user_email->prepareStatementPDO();
+                
+                //$user_email->New_user_email($value, $email_id);
+                //$user_email->prepareStatementPDO();
 
             }
 
