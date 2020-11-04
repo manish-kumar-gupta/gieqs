@@ -16,11 +16,26 @@ Class DataBaseMysqlPDO {
 	public $conn;
 
 	public function __construct(){
-		$host = substr($_SERVER['HTTP_HOST'], 0, 5);
-		if (in_array($host, array('local', '127.0', '192.1'))) {
-		    $local = TRUE;
-		} else {
-		    $local = FALSE;
+		
+		if (isset($_SERVER['HTTP_HOST'])){
+
+			$host = substr($_SERVER['HTTP_HOST'], 0, 5);
+			if (in_array($host, array('local', '127.0', '192.1'))) {
+				$local = TRUE;
+				//echo 'local';
+			} else {
+				$local = FALSE;
+				//echo 'not local';
+			}
+
+		}else{
+
+			//assume script on remote server
+
+			$local = FALSE;
+
+			
+
 		}
 
 		if ($local){
