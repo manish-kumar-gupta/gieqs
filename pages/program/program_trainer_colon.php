@@ -25,7 +25,7 @@ $general = new general;
 
 
 ?>
-    <title>GIEQs - Basic Colonoscopy Skills (1 day)</title>
+    <title>GIEQs - Train the Colonoscopy Trainers Course (1 day)</title>
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.css">
     <script src="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.js"></script>
 
@@ -107,9 +107,9 @@ $general = new general;
                 <div class="row text-center">
 
                     <div class="col-12 p-3 pb-1">
-                        <span class="h1" style="color: rgb(238, 194, 120);">GIEQs - Basic Colonoscopy Skills Course
+                        <span class="h1" style="color: rgb(238, 194, 120);">GIEQs - Train the Colonoscopy Trainers Course
                             (Virtual)<br /></span>
-                        <span class="h3 mt-4" style="color: rgb(238, 194, 120);">Monday 16th November 2020<br /></span>
+                        <span class="h3 mt-4" style="color: rgb(238, 194, 120);">Tuesday 17th November 2020<br /></span>
                         <span class="h5" style="color: rgb(238, 194, 120);">0830 - 1700 CET, on Demand
                             thereafter<br /></span>
                         <a href="#targetScrollProgramme" id="wednesdayTop"
@@ -117,7 +117,7 @@ $general = new general;
                             <span class="btn-inner--text text-dark">View Programme</span>
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         </a>
-                        <a data-assetid="7"
+                        <a data-assetid="8"
                             class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
                             <span class="btn-inner--text text-dark">Register Now!</span>
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
@@ -133,16 +133,16 @@ $general = new general;
           
             <div class="container">
                 <div class="mb-5 text-center">
-                    <h3 class=" mt-6">A Virtual Experience Suitable for Everyone Starting Out in Colonoscopy</h3>
+                    <h3 class=" mt-6">A Virtual Experience Suitable for All Who Train Other Colonoscopists</h3>
                     <div class="fluid-paragraph mt-5">
                       <p class="lead lh-180"><span class="text-white">Format</span></p>  
-                      <p class="lead lh-180">Following a classroom-based overview of colonoscopy technique trainees with variable experience will be trained to improve their skills and understanding of how to overcome common problems encountered during colonoscopy by local and virtual faculty.</p>  
+                      <p class="lead lh-180"> Following a classroom-based overview of training theory, trainers with variable experience will be coached to improve their training skills and understanding of how to overcome common problems encountered during colonoscopy by local and virtual faculty.</p>  
                       <p class="lead lh-180"><span class="text-white">Who should enroll?</span></p>  
  
-                      <p class="lead lh-180">Colonoscopy trainees and anyone wanting to improve their understanding of the technique of colonoscopy</p>
+                      <p class="lead lh-180">Anyone who wishes to train others in Colonoscopy</p>
                       <p class="lead lh-180"><span class="text-white">When?</span></p>  
  
-                      <p class="lead lh-180">Monday 16th November 2020, 0830 CET until 1700 CET</p>
+                      <p class="lead lh-180">Tuesday 17th November 2020, 0830 CET until 1700 CET</p>
                       <p class="lead lh-180"><span class="text-white">Where?</span></p>  
  
                       <p class="lead lh-180">Live here, online at gieqs.com.  You can follow live (discussion and interaction) or catch up at your leisure.</p>
@@ -172,10 +172,10 @@ $general = new general;
                                     </div>
                                     <div class="icon-text pl-4">
                                         <h5 class="ma-0 ">Deconstructed Technique</h5>
-                                        <p class="mb-0">Acquisition of the skills necessary to perform basic colonoscopy
-                                            is still difficult. To become a skilled colonoscopist takes a long time.
-                                            This course will explore and deconstruct the key problem areas encountered
-                                            when performing colonoscopy with commentary and analysis .</p>
+                                        <p class="mb-0">Training requires an understanding (on the part of the trainer) of
+                                            why colonoscopy is difficult and how to apply a problem solving approach for trainees. 
+                                            To become a good trainer requires the trainer to be Consciously Competent.
+                                            </p>
                                     </div>
                                 </div>
                             </div>
@@ -189,13 +189,10 @@ $general = new general;
                                         <i class="fas fa-dolly"></i>
                                     </div>
                                     <div class="icon-text pl-4">
-                                        <h5 class="ma-0 ">Practical Advice</h5>
-                                        <p class="mb-0">We will demonstrate the essentials of how to control the
-                                            instrument effectively, and how to diagnose and overcome failure to
-                                            progress. The goal will be to provide participants with a clear
-                                            understanding of the essential components of high quality colonoscopy and
-                                            practical advice of how to improve when they get back into the endoscopy
-                                            room.</p>
+                                        <h5 class="ma-0 ">Conscious Competence</h5>
+                                        <p class="mb-0">This is the art of knowing why what you do in Colonoscopy works and is critical to passing your skills based 
+                                            knowledge onto others.  A key focus of this course is improving your conscious competence of colonoscopy as a trainer.  
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -229,9 +226,9 @@ $general = new general;
                                     </div>
                                     <div class="icon-text pl-4">
                                         <h5 class="ma-0 ">Unique Live / Virtual Hybrid</h5>
-                                        <p class="mb-0">A mixture of training experiences performed live, with
-                                            commentary from experienced trainers, lectures and discussiom of
-                                            pre-recorded training. Focussed on the basics.</p>
+                                        <p class="mb-0">Training experiences [involving trainers seeking to improve their conscious competence and local trainees] will be performed live, with
+                                            commentary from experienced trainers, lectures and discussion of
+                                            pre-recorded training. Detailed debrief sessions will deconstruct the techniques demonstrated to cement the learning points.</p>
                                     </div>
                                 </div>
                             </div>
@@ -252,7 +249,7 @@ $general = new general;
 
                   <p class=""><span class="text-white">What to expect:</span> We will demonstrate the essentials of how to control the instrument effectively, and how to diagnose and overcome failure to progress.  The goal will be to provide participants with a clear understanding of the essential components of high quality colonoscopy and practical advice of how to improve when they get back into the endoscopy room.</span></p>
                   <p class=""><span class="text-white">Format of the course:</span> The course is suitable for anyone who wants to improve their colonoscopy skills and ideal for trainees learning colonoscopy. The format of the course will be a mixture of short presentations, discussion groups and in depth analysis of colonoscopy technique. Delegates will be invited to participate at various junctures of the course and everyone will be able to pose questions at any time.</p> -->
-                  <a data-assetid="7"
+                  <a data-assetid="8"
                       class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mr-3 mt-3">
                       <span class="btn-inner--text text-dark">Register Now!</span>
                       <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
@@ -265,7 +262,7 @@ $general = new general;
           </div>
          
         </section>
-        <section class="my-4 slice-video slice-xl d-flex align-items-center bg-cover bg-size--cover" style="background-image: url(<?php echo BASE_URL;?>/assets/img/backgrounds/endoscopy_blue.jpg);">
+        <section class="my-4 slice-video slice-xl d-flex align-items-center bg-cover bg-size--cover" style="background-image: url(<?php echo BASE_URL;?>/assets/img/backgrounds/trainers.png);">
           <span class="mask bg-gradient-dark opacity-7"></span>
           <div class="container">
             <div class="col">
@@ -275,7 +272,7 @@ $general = new general;
                     Considering participating? 
                   </h2>
                   <h4 class="text-white mt-3">This example footage of our training style may help convince you!</h4>
-                  <a href="https://vimeo.com/464471706" data-fancybox data-toggle="tooltip" data-placement="bottom" title="" class="btn btn-white btn-icon-only rounded-circle hover-scale-110 mt-4" data-original-title="Watch video">
+                  <a href="https://vimeo.com/464879077" data-fancybox data-toggle="tooltip" data-placement="bottom" title="" class="btn btn-white btn-icon-only rounded-circle hover-scale-110 mt-4" data-original-title="Watch video">
                     <span class="btn-inner--icon">
                       <i class="fas fa-play"></i>
                     </span>
@@ -301,7 +298,7 @@ $general = new general;
 
                         <p class=""><span class="text-white">What to expect:</span> We will demonstrate the essentials of how to control the instrument effectively, and how to diagnose and overcome failure to progress.  The goal will be to provide participants with a clear understanding of the essential components of high quality colonoscopy and practical advice of how to improve when they get back into the endoscopy room.</span></p>
                         <p class=""><span class="text-white">Format of the course:</span> The course is suitable for anyone who wants to improve their colonoscopy skills and ideal for trainees learning colonoscopy. The format of the course will be a mixture of short presentations, discussion groups and in depth analysis of colonoscopy technique. Delegates will be invited to participate at various junctures of the course and everyone will be able to pose questions at any time.</p> -->
-                        <a data-assetid="7"
+                        <a data-assetid="8"
                             class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mr-3 mt-3">
                             <span class="btn-inner--text text-dark">Register Now!</span>
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
@@ -593,7 +590,7 @@ $general = new general;
 
         const dataToSend = {
 
-            programmeid: 32,
+            programmeid: 33,
 
         }
 

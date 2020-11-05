@@ -583,7 +583,7 @@
                                                                                             style="padding-left:9px;padding-top:0;padding-bottom:40px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;text-align:center;">
 
                                                                                             <center>
-                                                                                                <a href="https://www.gieqs.com/pages/program/program_basic_colon.php"
+                                                                                                <a href="https://www.gieqs.com/pages/program/program_trainer_colon.php"
                                                                                                     target="_blank"><img
                                                                                                         alt=""
                                                                                                         src="https://www.gieqs.com/assets/img/covers/learning/1.png"
@@ -620,7 +620,7 @@
                                                                             </h4>
                                                                             <h2
                                                                                 style="display:block;margin:0;padding:0;color:#222222;font-family:Helvetica;font-size:30px;font-style:normal;font-weight:bold;line-height:150%;letter-spacing:normal;text-align:center;">
-                                                                                Announcing GIEQs Virtual / Live Hybrid Courses!</h2>
+                                                                                Ever wished someone would train you in how to train others in Endoscopy?</h2>
                                                                         </td>
                                                                     </tr>
                                                                 </tbody>
@@ -668,15 +668,14 @@
                                                                                 GIEQs.</p>
 
                                                                                 <p style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#393737;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                    Has COVID affected your Colonoscopy
-                                                                                    Training? Do you want some practical tips and technical advice on how to get better? 
+                                                                                    Ever wanted to train colleagues at Colonoscopy? Feel like you struggle to know how to communicate your endoscopic skills to others? Not sure where to start?
                                                                                     If so read on.  We have you covered...</p>
 
                                                                             <p
                                                                                 style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#393737;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                Today we wish to announce our first
+                                                                                Today we wish to announce our second
                                                                                 hybrid virtual/live educational course,
-                                                                                focussed on <strong>basic colonoscopy.</strong></p>
+                                                                                focussed on <strong>training colonoscopy trainers.</strong></p>
 
                                                                             
 
@@ -702,10 +701,10 @@
                                                                                                             style="padding-left:9px;padding-top:0;padding-bottom:40px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;text-align:center;">
                 
                                                                                                             <center>
-                                                                                                                <a href="https://www.gieqs.com/pages/program/program_basic_colon.php"
+                                                                                                                <a href="https://www.gieqs.com/pages/program/program_trainer_colon.php"
                                                                                                                     target="_blank"><img
                                                                                                                         alt=""
-                                                                                                                        src="https://www.gieqs.com/assets/img/covers/learning/roomview1.png"
+                                                                                                                        src="https://www.gieqs.com/assets/img/backgrounds/trainers.png"
                                                                                                                         width="400"
                                                                                                                         style="max-width:400px;padding-bottom:0;border:0;height:auto;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;vertical-align:bottom;text-align:center;"
                                                                                                                         class="mcnImage"></a>
@@ -725,31 +724,28 @@
                                                                             </table>
 
                                                                             <p style="margin:10px 0;padding-top:12px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#393737;font-family:Helvetica;font-size:20px;line-height:150%;text-align:left;font-weight:bold"> 
-                                                                                Basic Colonoscopy Skills Course
-                                                                                &lsquo;How to do Everyday Colonoscopy
+                                                                                Train the Colonoscopy Trainers Course
+                                                                                &lsquo;How to Teach Everyday Colonoscopy
                                                                                 Better&rsquo;</p>
 
                                                 
 
-                                                                                <p><strong>When?</strong> Monday 16th November 2020, 0830 CET
+                                                                                <p><strong>When?</strong> Tuesday 17th November 2020, 0830 CET
                                                                                     until 1700 CET (then on demand)</p>
 
 
-                                                                            <p><strong>Format:</strong> following a classroom-based
-                                                                                overview of colonoscopy technique
-                                                                                trainees with variable experience will
-                                                                                be trained to improve their skills and
+                                                                            <p><strong>Format:</strong> Following a classroom-based
+                                                                                overview of training theory,
+                                                                             trainers with variable experience will
+                                                                                be coached to improve their training skills and
                                                                                 understanding of how to overcome common
                                                                                 problems encountered during colonoscopy
-                                                                                by local and virtual faculty. The
-                                                                                emphasis will be on a proactive approach
-                                                                                to performing colonoscopy, utilising the
-                                                                                examples that arise opportunistically
-                                                                                during the training on real cases. The
-                                                                                course will also include scope handling,
-                                                                                key non-technical skills and other
-                                                                                associated components through supportive
-                                                                                lectures and interactive sessions.</p>
+                                                                                by local and virtual faculty. </p><p>There will
+                                                                                be an emphasis on training methods and
+                                                                                how to train. Trainee trainers will be coached to improve their conscious
+                                                                                 competence of colonoscopy and training by the local and virtual faculty. </p>
+                                                                                 <p>The course will start with ‘classroom’ learning (25%) covering the basic competencies of effective colonoscopy training. The remainder of the course (75%) will be spent using live colonoscopy training to illustrate basic training concepts, why they are so important and how applying them makes such a difference. 
+                                                                                 </p><p>This ‘live’ colonoscopy training will include in depth feedback for the trainee colonoscopists and the trainee trainers.</p>
 
                                                                                 <table border="0" cellpadding="0"
                                                                                 cellspacing="0" width="100%"
@@ -773,7 +769,7 @@
                                                                                                             style="font-family:Helvetica;font-size:18px;padding:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
                                                                                                             <a class="mcnButton "
                                                                                                                 title="Sign Up Now"
-                                                                                                                href="https://www.gieqs.com/pages/program/program_basic_colon.php"
+                                                                                                                href="https://www.gieqs.com/pages/program/program_trainer_colon.php"
                                                                                                                 target="_blank"
                                                                                                                 style="font-weight:bold;letter-spacing:-0.5px;line-height:100%;text-align:center;text-decoration:none;color:#e3ebf6;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;display:block;">More Information
                                                                                                             </a>
@@ -787,9 +783,7 @@
                                                                             </table>
 
                                                                             <p><strong>Who should enroll?</strong>
-                                                                                 Anyone wanting to improve their
-                                                                                understanding of the technique of
-                                                                                colonoscopy</p>
+                                                                                 Anyone how wants to train others in Colonoscopy and become Consciously Competent</p>
 
                                                                             
 
@@ -806,35 +800,20 @@
 
                                                                             <p><strong>More details</strong></p>
 
-                                                                            <p>Acquisition of the skills necessary to
-                                                                                perform basic colonoscopy is still
-                                                                                difficult. To become a skilled
-                                                                                colonoscopist takes a long time. This
-                                                                                course will explore and deconstruct the
-                                                                                key problems encountered when performing
-                                                                                colonoscopy with commentary and
-                                                                                analysis. The fundamentals of how to
-                                                                                control the instrument effectively and
-                                                                                how to diagnose and overcome failure to
-                                                                                progress will be demonstrated. The goal
-                                                                                will be to provide participants with a
-                                                                                clear understanding of the essential
-                                                                                components of high quality colonoscopy
-                                                                                and practical advice of how they can
-                                                                                improve when they get back into the
-                                                                                endoscopy room.</p>
+                                                                            <p>Training in Endoscopy is difficult.  Often
+                                                                                a trainer can be an extremely skilled Endoscopist
+                                                                                but is unable to pass his or her skills to a trainee.
+                                                                            </p>
 
-                                                                            <p>The course is suitable for anyone who
-                                                                                wants to improve their colonoscopy
-                                                                                skills and ideal for any trainees
-                                                                                learning colonoscopy. The format of the
-                                                                                course will be a mixture of short
-                                                                                presentations, discussion groups and in
-                                                                                depth analysis of colonoscopy technique.
-                                                                                Delegates will be invited to participate
-                                                                                at various junctures of the course and
-                                                                                everyone will be able to pose questions
-                                                                                at any time.</p>
+                                                                            <p>To successfully train the trainer needs to be Consciously Competent - 
+                                                                                that is he or she needs to understand how and why the interventions
+                                                                                they make during endoscopy work so they can deconstruct a given
+                                                                                training situation for the trainee.  By implementing a problem solving
+                                                                                approach to training a trainee can understand why their actions were unsuccessful
+                                                                                and apply the same solution next time quickly and more successfully.</p>
+
+                                                                                <p>Join us for classroom based learning and multiple live experiences with trainers 
+                                                                                    seeking to improve their conscious competence.</p>
 
                                                                             
 
@@ -863,7 +842,7 @@
                                                                                                             style="font-family:Helvetica;font-size:18px;padding:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
                                                                                                             <a class="mcnButton "
                                                                                                                 title="Sign Up Now"
-                                                                                                                href="https://www.gieqs.com/pages/program/program_basic_colon.php"
+                                                                                                                href="https://www.gieqs.com/pages/program/program_trainer_colon.php"
                                                                                                                 target="_blank"
                                                                                                                 style="font-weight:bold;letter-spacing:-0.5px;line-height:100%;text-align:center;text-decoration:none;color:#e3ebf6;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;display:block;">Sign Up Now
                                                                                                             </a>

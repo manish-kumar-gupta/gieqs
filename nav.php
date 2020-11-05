@@ -234,7 +234,7 @@
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">Upcoming Courses [coming soon]</span>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_basic_colon.php"><i class="fas fa-columns"></i>Basic Colonoscopy Skills</a>
-                    <a class="dropdown-item disabled" href="<?php echo BASE_URL;?>/pages/program/program_trainer_colon.php"><i class="fas fa-columns"></i>Training Primer (Colonoscopy)</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_trainer_colon.php"><i class="fas fa-columns"></i>Train the Colonoscopy Trainers</a>
                     <a class="dropdown-item disabled" href="<?php echo BASE_URL;?>/pages/program/program_basic_polyp.php"><i class="fas fa-columns"></i>Basic Polypectomy</a>
                     
                     <div class="dropdown-divider"></div>
