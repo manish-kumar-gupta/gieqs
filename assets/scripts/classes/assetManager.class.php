@@ -24,6 +24,9 @@ error_reporting(0);
 	
 }
 
+//require_once(BASE_URI . '/assets/scripts/classes/programmeView.class.php');
+
+
 Class assetManager {
 
 	
@@ -35,6 +38,8 @@ Class assetManager {
         $this->connection = new DataBaseMysqlPDOLearning();
         require_once(BASE_URI . '/assets/scripts/classes/sessionView.class.php');
         $this->sessionView = new sessionView();
+        require_once(BASE_URI . '/assets/scripts/classes/programmeView.class.php');
+        $this->programmeView = new programmeView;
 
 	}
 
@@ -1960,6 +1965,255 @@ if ($nRows > 0) {
 
 }
 
+//is there a programme which contains this video?
+
+//is programme subscribable?
+
+public function isProgrammeSubscribable($programmeid, $debug=false){
+
+    $q = "Select 
+    b.`id`
+    FROM `assets_paid` as b
+    INNER JOIN `sub_asset_paid` as c ON b.`id` = c.`asset_id`
+    WHERE c.`programme_id` = '$programmeid'";
+
+//echo $q . '<br><br>';
+
+
+
+$result = $this->connection->RunQuery($q);
+
+$x = 0;
+$nRows = $result->rowCount();
+
+if ($nRows > 0) {
+
+    while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+        $rowReturn[$x] = $row['id'];
+
+
+    }
+
+
+    return $rowReturn;
+
+} else {
+    
+
+    if ($debug){
+
+        echo 'no assets contain this programmeid';
+    }
+
+    return false;
+
+    
+}
+
+}
+
+//return a list of id's of subscribable programmes
+
+//is programme subscribable?
+
+public function returnSubscribableProgrammes($debug=false){
+
+    $q = "Select 
+    c.`programme_id`
+    FROM `assets_paid` as b
+    INNER JOIN `sub_asset_paid` as c ON b.`id` = c.`asset_id`
+    WHERE `programme_id` IS NOT NULL";
+
+echo $q . '<br><br>';
+
+
+
+$result = $this->connection->RunQuery($q);
+
+$x = 0;
+$nRows = $result->rowCount();
+
+if ($nRows > 0) {
+
+    while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+        $rowReturn[$x] = $row['programme_id'];
+        $x++;
+
+
+    }
+
+    if ($debug){
+
+        print_r($rowReturn);
+    }
+
+    return $rowReturn;
+
+} else {
+    
+
+    if ($debug){
+
+        echo 'no programmes are subscribable';
+    }
+
+    return false;
+
+    
+}
+
+}
+
+
+public function getVideosProgramme($programmeid, $debug=false){
+
+    //$programmesSubscribable = $this->returnSubscribableProgrammes();
+
+    $programmesSubscribable = $this->isProgrammeSubscribable($programmeid, $debug);
+
+    //print_r($programmesSubscribable);
+
+    $videos = array();
+
+    if ($programmesSubscribable){
+
+
+       
+
+            $sessions = $this->programmeView->getSessionsShort($value);
+
+            foreach ($sessions as $key2=>$value2){
+
+                if (isset($value2['sessionid'])){
+
+                    $videos[] = $this->programmeView->getVideoURL($value2['sessionid']);
+                    //$matches[]['programme_id'] = $value;
+
+                }
+
+            }
+
+
+           
+
+        
+
+    }else{
+
+        return false;
+
+        if ($debug){
+
+            echo 'no subscribable programmes';
+        }
+    }
+
+}
+
+//if so is the video contained within any programme?
+
+public function isVideoContainedWithinAnySubscribableProgramme($videoid, $debug=false){
+
+    $programmesSubscribable = $this->returnSubscribableProgrammes();
+
+    //print_r($programmesSubscribable);
+
+    $videos = array();
+
+    if (isset($programmesSubscribable)){
+
+
+        foreach ($programmesSubscribable as $key=>$value){
+
+            //$value is programmeid
+
+            //get sessions
+            if ($debug){
+
+                //print_r($programmesSubscribable);
+            }
+
+            $sessions = $this->programmeView->getSessionsShort($value);
+
+            foreach ($sessions as $key2=>$value2){
+
+                if (isset($value2['sessionid'])){
+
+                    $videos[] = $this->programmeView->getVideoURL($value2['sessionid']);
+                    //$matches[]['programme_id'] = $value;
+
+                }
+
+            }
+
+
+           
+
+        }
+
+        if ($debug){
+
+            print_r($videos);
+        }
+
+         //do they contain this video
+
+         if (in_array($videoid, $videos)){
+
+            
+
+            //WE NEED the programme_id
+            //then the asset_id(S)
+
+           /*  if ($debug){
+
+                var_dump($matches);
+            }
+            $y=0;
+
+            foreach ($matches as $key=>$value){
+
+                $returnArray[$y] = $this->returnAssetIDProgramme($value);
+
+                $y++;
+            } */
+
+            //return an array of asset_ids
+            if ($debug){
+
+                echo 'The video is contained within a subscribable program(S)';
+            }
+
+            return true;
+
+        }else{
+
+            if ($debug){
+
+                echo 'The video is not contained within a subscribable program';
+            }
+
+            return false;
+        }
+
+    }else{
+
+        if ($debug){
+
+            echo 'No subscribable programmes';
+        }
+
+        return false;
+
+    }
+
+
+
+}
+
+
 public function doesUserHaveSubscriptionMenu($user_id, $debug)
             {
             
@@ -2364,6 +2618,46 @@ public function returnVideoDenominatorSelect2()
 
         }
 
+        public function returnAssetidforVideoidStraight($videoid)
+            {
+            
+
+            $q = "Select a.`asset_id`
+            FROM `sub_asset_paid` as a
+            WHERE (a.`video_id` = '$videoid') 
+            AND (a.`video_id` IS NOT NULL)
+            ";
+
+            echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn[] = $row;
+
+
+				}
+
+				return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
+
+        
+
 
         public function checkCombinationVideoProgramme($assetid, $videoid)
             {
@@ -2433,7 +2727,45 @@ public function returnVideoDenominatorSelect2()
 
     }
 
-    
+    public function returnAssetIDProgramme($programmeid)
+            {
+            
+
+            $q = "Select a.`id`
+            FROM `assets_paid` as a 
+            INNER JOIN `sub_asset_paid` as b
+            WHERE b.`programme_id` = '$programmeid'
+            ";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                    
+        
+                    $rowReturn[] = $row['id'];
+                  
+        
+        
+                }
+                return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
 
 
 

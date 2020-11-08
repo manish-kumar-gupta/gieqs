@@ -38,7 +38,7 @@ function endsWith($haystack, $needle)
 
                 <!-- Mission -->
                 <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/learning/index.php">Learning Home</a>
+                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/learning/index.php">Home</a>
                 </li>
                 <!-- Program-basic, later to add dropdown with options -->
                 <!--  <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
@@ -68,10 +68,10 @@ function endsWith($haystack, $needle)
 
 
                     <div class="dropdown-menu dropdown-menu-arrow" aria-labelledby="btn-group-settings">
-                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">GIEQs Digital Edition I Catch
+                        <!-- <span style="color: rgb(238, 194, 120);" class="dropdown-header">GIEQs Digital Edition I Catch
                             Up</span>
                         <a class="dropdown-item"><i class="fas fa-columns"></i>Coming Soon</a>
-                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-divider"></div> -->
 
                         <span style="color: rgb(238, 194, 120);" class="dropdown-header">Colonoscopy</span>
                         <a class="dropdown-item dropdown-toggle cursor-pointer" role="button" data-toggle="dropdown"

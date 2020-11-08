@@ -210,6 +210,40 @@ var_dump($access3);
 
 
 echo '<br/><br/><br/>';
+//does this video require a subscription
+echo '<br/><br/><br/>';
+
+
+//$videos = array('77', '78');
+///
+$videoid = '297';
+
+echo '<h2>Is video contained within a subscribable programme</h2>';
+
+echo 'The video ' . $videoid;
+
+$access = null;
+
+$access = $assetManager->isVideoContainedWithinAnySubscribableProgramme($videoid, true);
+
+var_dump($access);
+
+
+//$videos = array('77', '78');
+///
+$videoid = '297';
+
+echo '<h2>Return asset id for videoid (not a programme approach)</h2>';
+
+echo 'The video ' . $videoid;
+
+$access = null;
+
+$access = $assetManager->returnAssetidforVideoidStraight($videoid, true);
+
+var_dump($access);
+
+
 echo '<br/><br/><br/>';
 echo '<br/><br/><br/>';
 echo '<br/><br/><br/>';

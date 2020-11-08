@@ -32,7 +32,7 @@ $sessionView = new sessionView;
               $debug=false;
               $serverTimeZoneNav = new DateTimeZone('Europe/Brussels'); //because this is where course is held
               $currentNavTime = new DateTime('now', $serverTimeZoneNav);
-              $currentNavTime = new DateTime('2020-11-17', $serverTimeZoneNav);
+              $currentNavTime = new DateTime('2020-11-16', $serverTimeZoneNav);
 
 
 

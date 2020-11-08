@@ -187,6 +187,8 @@
 
     </header>
 
+   
+
     <?php
 
 
@@ -372,7 +374,47 @@
 		
         ?>
 
-    <!-- load all video data -->
+<!-- Omnisearch data -->    
+
+<div id="omnisearch" class="omnisearch">
+    <div class="container">
+        <!-- Search form -->
+        <form class="omnisearch-form">
+            <div class="form-group">
+                <div class="input-group input-group-merge input-group-flush">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-search"></i></span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Searching within <?php echo $page_title;?>">
+                </div>
+            </div>
+        </form>
+        <div class="omnisearch-suggestions">
+            <h6 class="heading">Search Ideas</h6>
+            <div class="row">
+                <div class="col-sm-6">
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a class="list-link" href="#">
+                                <i class="fas fa-search"></i>
+                                <span>search for a</span> Tag Category
+                            </a>
+                        </li>
+                        <li>
+                            <a class="list-link" href="#">
+                                <i class="fas fa-search"></i>
+                                <span>or search for an</span> Individual Tag
+                            </a>
+                        </li>
+                       
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- load all video data -->
 
     <div id="id" style="display:none;"><?php if ($id){echo $id;}?></div>
 

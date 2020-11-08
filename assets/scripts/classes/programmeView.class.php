@@ -107,6 +107,48 @@ class programmeView
 
     }
 
+    public function getSessionsShort($programmeid){
+
+       
+        $q = "Select 
+        c.`id` as `sessionid`
+        from `programme` as a
+        INNER JOIN `programmeOrder` as b on a.`id` = b.`programmeid` 
+        INNER JOIN `session` as c on b.`sessionid` = c.`id`
+        WHERE a.`id` = '$programmeid'
+        ORDER BY c.`timeFrom` ASC
+        ";
+
+        //echo $q . '<br><br>';
+
+
+
+        $result = $this->connection->RunQuery($q);
+        $rowReturn = array();
+        $x = 0;
+        $nRows = $result->rowCount();
+
+        if ($nRows > 0) {
+
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                $rowReturn[] = array_map('utf8_encode', $row);
+            }
+        
+            return $rowReturn;
+
+        } else {
+            
+
+            //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+            $rowReturn = [];
+            
+            return $rowReturn;
+        }
+
+
+    }
+
 
     public function getVideoURL($sessionid){
 
