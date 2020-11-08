@@ -27,11 +27,15 @@ error_reporting(0);
 Class assetManager {
 
 	
-	private $connection;
+    private $connection;
+    private $sessionView;
 
 	public function __construct(){
         require_once 'DatabaseMyssqlPDOLearning.class.php';
-		$this->connection = new DataBaseMysqlPDOLearning();
+        $this->connection = new DataBaseMysqlPDOLearning();
+        require_once(BASE_URI . '/assets/scripts/classes/sessionView.class.php');
+        $this->sessionView = new sessionView();
+
 	}
 
     /**
@@ -163,6 +167,43 @@ public function select2_asset_match($search)
     }
 
 }
+
+public function returnAssetProgrammes($programmeid)
+            {
+            
+
+            $q = "Select a.`asset_id`
+            FROM `sub_asset_paid` as a
+			WHERE a.`programme_id` = '$programmeid'
+            ";
+
+            //echo $q . '<br><br>';
+
+			$rowReturn = [];
+
+            $result = $this->connection->RunQuery($q);
+            
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                    $rowReturn[] = $row['asset_id'];
+
+
+				}
+
+				return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
 
 public function returnProgrammesAsset($assetid)
             {
@@ -1701,7 +1742,7 @@ public function programme_owned_by_user ($programmeid, $userid, $debug){
 
 }
 
-public function which_assets_contain_programme ($programmeid){
+public function which_assets_contain_programme ($programmeid, $debug=false){
 
             $q = "Select 
             b.`id`
@@ -2391,6 +2432,8 @@ public function returnVideoDenominatorSelect2()
         }
 
     }
+
+    
 
 
 

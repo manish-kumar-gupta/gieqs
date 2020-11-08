@@ -1,5 +1,7 @@
 <!--Main Navbar-->
-
+<?php $users = new users;
+$sessionView = new sessionView;
+?>
 
 <nav class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-dark bg-dark" id="navbar-main">
     <div class="container px-lg-0">
@@ -22,15 +24,55 @@
             </li>-->
             <!-- LIVE -->
 
-            <?php if (($live == 1) && (isset($_SESSION['user_id'])) && ($_SESSION['siteKey'] == 'TxsvAb6KDYpmdNk') && ($_SESSION['access_level'] > 0 && $_SESSION['access_level'] < 7)){ 
+            <?php if ((isset($_SESSION['user_id'])) && ($_SESSION['siteKey'] == 'TxsvAb6KDYpmdNk')){ 
               
+              //load user from key
               $liveAndLoggedIn = true;
-              ?>
-              <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+
+              $debug=false;
+              $serverTimeZoneNav = new DateTimeZone('Europe/Brussels'); //because this is where course is held
+              $currentNavTime = new DateTime('now', $serverTimeZoneNav);
+              $currentNavTime = new DateTime('2020-11-17', $serverTimeZoneNav);
+
+
+
+              if ($users->Return_row($userid)){
+
+
+                  $programmes = $sessionView->returnLiveProgrammesArray($currentNavTime, $debug);
+
+
+                //just use the first programme that day.  modify later if others required
+
+                if ($programmes){
+
+                  $access3 = $assetManager->programme_owned_by_user($programmes[0]['programmeid'], $userid, $debug);
+
+                  if ($access3){
+                    //user has access to the programme with id $programmes[0]['programmeid']
+
+                    require_once(BASE_URI . '/assets/scripts/classes/assets_paid.class.php');
+                    $assets_paid = new assets_paid;
+
+                    //get the asset id
+
+                    $asset_id = $assetManager->returnAssetProgrammes($programmes[0]['programmeid']);
+                    
+                    if ($debug){
+                      print_r($asset_id);
+
+                    }
+
+                    $assets_paid->Load_from_key($asset_id[0]);
+
+
+                    ?>
+
+<li class="nav-item dropdown dropdown-animate" data-toggle="hover">
               <a class="nav-link dropdown-toggle animated bounce" style="color: rgb(238, 194, 120);" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">GIEQs Digital Edition I</a>
               <div class="dropdown-menu dropdown-menu-lg dropdown-menu-arrow p-0">
                 <ul class="list-group list-group-flush">
-                 <!--  <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
+                 <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
                     <a href="#" class="list-group-item list-group-item-action dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <div class="media d-flex align-items-center">
                        
@@ -40,78 +82,31 @@
                         
                         <div class="media-body ml-3">
                           <h6 class="mb-1">Live Stream</h6>
-                          <p class="mb-0">2 streams. <br/><strong>Plenary</strong>- focussed on everyday endoscopy. <br/><strong>Complex</strong> - focussed on the next steps</p>
-                        </div>
+<!--                           <p class="mb-0">2 streams. <br/><strong>Plenary</strong>- focussed on everyday endoscopy. <br/><strong>Complex</strong> - focussed on the next steps</p>
+
+ -->                       
+ <p class="mb-0"><strong><?php echo $assets_paid->getname();?></strong><br/><?php echo $assets_paid->getdescription();?></p>
+</div>
                       </div>
                     </a>
                     <ul class="dropdown-menu">
                       <li>
-                          <?php  if ($currentTime > $desiredTimeWednesdayFrom && $currentTime < $desiredTimeWednesdayTo){
-                            ?>
+                          <?php  ?>
     
                         <a class="dropdown-item"
-                            href="<?php echo BASE_URL;?>/pages/learning/pages/live/plenary.php">
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/live/course.php">
                             <span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2">LIVE</span>
 
     
-                            <?php
-                        }elseif($currentTime > $desiredTimeThursdayFrom && $currentTime < $desiredTimeThursdayTo){
-    
-                            ?>
-    
-                            <a class="dropdown-item"
-                                href="<?php echo BASE_URL;?>/pages/learning/pages/live/plenary-thursday.php">
-                                <span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2">LIVE</span>
-
-    
-                                <?php   
-                        }else{
-                        
-                        ?>
-                                <a class="dropdown-item disabled" href="#">
-    
-    
-                                    <?php
-                        }
-    
-    ?>
-                          Access Plenary Live Stream
-                        </a>
-                      </li>
-                      <li>
-                        <?php  if ($currentTime > $desiredTimeWednesdayFrom && $currentTime < $desiredTimeWednesdayTo){
-                          ?>
-  
-                      <a class="dropdown-item"
-                          href="<?php echo BASE_URL;?>/pages/learning/pages/live/complex.php">
-                          <span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2">LIVE</span>
-  
-                          <?php
-                      }elseif($currentTime > $desiredTimeThursdayFrom && $currentTime < $desiredTimeThursdayTo){
-  
-                          ?>
-  
-                          <a class="dropdown-item"
-                              href="<?php echo BASE_URL;?>/pages/learning/pages/live/complex-thursday.php">
-                              <span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2">LIVE</span>
-
-  
-                              <?php   
-                      }else{
-                      
-                      ?>
-                              <a class="dropdown-item disabled" href="#">
-  
-  
-                                  <?php
-                      }
-  
-  ?>                          Access Complex Live Stream
+                           
+                          Access <?php echo $assets_paid->getname();?> Live Stream
                         </a>
                       </li>
                     
+                       
+                    
                     </ul>
-                  </li> -->
+                  </li>
                   <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
                     <a href="#" class="list-group-item list-group-item-action dropdown-toggle" aria-haspopup="true" aria-expanded="false" role="button" data-toggle="dropdown">
                       <div class="media d-flex align-items-center">
@@ -122,7 +117,7 @@
                         <!-- Media body -->
                         <div class="media-body ml-3">
                           <h6 class="mb-1">Programme and Catch-up</h6>
-                          <p class="mb-0">See what's currently playing and catch up on what you missed.  </p>
+                          <p class="mb-0" >See what's currently playing and catch up on what you missed.  </p>
                         </div>
                       </div>
                     </a>
@@ -208,7 +203,7 @@
                     <a href="https://app.sli.do/event/wxcyu5bh/live/questions?w=wFYcu" target="_blank" class="list-group-item list-group-item-action dropdown-toggle" aria-haspopup="true" aria-expanded="false">
                       <div class="flex-column align-items-right">
                         <figure>
-                            <img src="<?php echo BASE_URL;?>/assets/img/brand/qrslido_white.png" style="width: 200px;">
+                            <img src="<?php //echo BASE_URL;?>/assets/img/brand/qrslido_white.png" style="width: 200px;">
                         </figure>
                         <p>Scan Me with a SmartPhone or click to join the Q+A conversation</p>
                        
@@ -219,6 +214,23 @@
                 </ul>
               </div>
             </li>
+
+
+                <?php } //close if access3
+
+                          } //close if programmes
+
+
+
+              }
+            
+
+              //are any progammes live now
+
+              //if so  determine if user has access to the programm
+
+              ?>
+              
 
 
             <?php }?>

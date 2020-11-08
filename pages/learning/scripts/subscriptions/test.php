@@ -24,6 +24,10 @@ $users->Load_from_key($userid);
 
 error_reporting(E_ALL);
 
+require_once(BASE_URI . '/assets/scripts/classes/sessionView.class.php');
+$sessionView = new sessionView;
+
+
 require_once(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
 $assetManager = new assetManager;
 
@@ -116,8 +120,99 @@ $access = $assetManager->getVideoTagCategories($videos, true);
 
 var_dump($access);
 
+//find the active programme
+echo '<br/><br/><br/>';
+
+$serverTimeZone = new DateTimeZone('Europe/Brussels');
+$currentTime = new DateTime('now', $serverTimeZone);
 
 
+            //test
+
+            $currentTime = new DateTime('2020-10-07', $serverTimeZone);
+
+///$videoid = '77';
+echo '<h2>Return programmes with start and end times for ' . $currentTimeCET . '</h2>';
+
+//echo 'The tag categories for ' . print_r($videos);
+
+$debug = true;
+
+$access = null;
+
+//$programmes = $assetManager->returnLiveProgrammesArray($currentTime, true);
+           
+
+
+
+if ($access = $sessionView->programmesActiveToday($currentTime, $debug) == true){
+
+
+    $access = $sessionView->programmesActiveToday($currentTime, $debug);
+
+var_dump($access);
+
+echo '<br/><br/>now get the start and end times<br/><br/>';
+
+$access1 = null;
+
+$access1 = $sessionView->getStartAndEndProgrammes($access, $debug);
+
+var_dump($access1);
+
+echo '<br/><br/>now get the start and end times in a single array<br/><br/>';
+
+$access2 = null;
+
+$access2 = $sessionView->getStartEndProgrammes($access1, $debug);
+
+
+var_dump($access2);
+
+echo '<br/><br/>does user have access to the programme<br/><br/>';
+
+$access3 = null;
+
+//first one
+
+$access3 = $assetManager->programme_owned_by_user($access2[0]['programmeid'], $userid, $debug);
+
+//do other things with second one if required
+
+var_dump($access3);
+
+}else{
+
+    if ($debug){
+    echo '<br/><br/>No programmes active<br/><br/>';
+    }
+
+    return false;
+
+
+}
+
+
+
+echo '<br/><br/>United Form in 2 classes<br/>';
+
+$debug = false;
+
+$programmes = null;
+
+$programmes = $sessionView->returnLiveProgrammesArray($currentTime, $debug);
+
+$access3 = null;
+
+$access3 = $assetManager->programme_owned_by_user($programmes[0]['programmeid'], $userid, $debug);
+
+var_dump($access3);
+
+
+echo '<br/><br/><br/>';
+echo '<br/><br/><br/>';
+echo '<br/><br/><br/>';
+echo '<br/><br/><br/>';
 
 
 

@@ -194,7 +194,7 @@ $q = "Select * from `users` LIMIT " . $x . ", " . $y;
  *
  */
 	public function Return_row($key){
-$q = "Select * from `users` WHERE `id` = $key";
+$q = "Select * from `users` WHERE `user_id` = $key";
 		$result = $this->connection->RunQuery($q);
 							$rowReturn = array();
 						$x = 0;
