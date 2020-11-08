@@ -119,7 +119,7 @@ spl_autoload_register ('class_loader');
                           <?php  ?>
     
                         <a class="dropdown-item"
-                            href="<?php echo BASE_URL;?>/pages/learning/pages/live/course.php?id=<?php echo $asset_id[0];?>">
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/live/course.php?assetid=<?php echo $asset_id[0];?>">
                             <span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2">LIVE</span>
 
     

@@ -3,6 +3,8 @@
 //require '../../includes/config.inc.php';	
 
 $url =  "{$_SERVER['REQUEST_URI']}";
+                    $highlightCourse = preg_match (  '/course/' ,  $url);
+
                     $highlightComplex = preg_match (  '/complex/' ,  $url);
                     $highlightProgram = preg_match (  '/program/' ,  $url);
                     $highlightPlenary = preg_match (  '/plenary/' ,  $url);
@@ -26,97 +28,49 @@ $url =  "{$_SERVER['REQUEST_URI']}";
             <ul class="navbar-nav align-items-lg-center ml-lg-auto">
 
 
-                <?php if ($liveTest){?>
-                <li class="nav-item">
-                    <span
-                        class="nav-link-inner--text "><?php echo 'test ' . date_format($currentTime,"d/m/Y H:i");?></span>
-                </li>
-                <?php
-            }
-            ?>
 
 
                 <li class="nav-item">
 
-                    <?php  if ($currentTime > $desiredTimeWednesdayFrom && $currentTime < $desiredTimeWednesdayTo){
-                        ?>
+                  
 
                     <a class="nav-link nav-link-icon"
                         href="<?php echo BASE_URL;?>/pages/learning/pages/live/plenary.php">
-                        <span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2">LIVE</span>
+                        <span
+                            class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2">LIVE</span>
 
 
-                        <?php
-                    }elseif($currentTime > $desiredTimeThursdayFrom && $currentTime < $desiredTimeThursdayTo){
-
-                        ?>
-
-                        <a class="nav-link nav-link-icon"
-                            href="<?php echo BASE_URL;?>/pages/learning/pages/live/plenary-thursday.php">
-                            <span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2">LIVE</span>
+                       
+                  
 
 
-                            <?php   
-                    }else{
+                                <span
+                                    class="nav-link-inner--text <?php if ($highlightCourse){echo 'gieqsGold';}?>">Course</span>
+                            </a>
+                </li
+                <li class="nav-item">
                     
-                    ?>
-                            <a class="nav-link nav-link-icon disabled" href="#">
+                    <a class="nav-link nav-link-icon"
+                        href="https://app.sli.do/event/<?php echo $programme->geturl_slido();?>">
+                       
+
+                        
 
 
-                                <?php
-                    }
-
-?>
+                           
 
 
-                                <span class="nav-link-inner--text <?php if ($highlightPlenary){echo 'gieqsGold';}?>">Plenary</span>
+                                <span
+                                    class="nav-link-inner--text <?php if ($highlightComplex){echo 'gieqsGold';}?>">Chat</span>
                             </a>
                 </li>
-                <li class="nav-item">
-                    <?php  if ($currentTime > $desiredTimeWednesdayFrom && $currentTime < $desiredTimeWednesdayTo){
-                        ?>
-                    <a class="nav-link nav-link-icon"
-                        href="<?php echo BASE_URL;?>/pages/learning/pages/live/complex.php">
-                        <span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2">LIVE</span>
-
-                        <?php
-                    }elseif($currentTime > $desiredTimeThursdayFrom && $currentTime < $desiredTimeThursdayTo){
-
-                        ?>
-
-                        <a class="nav-link nav-link-icon"
-                            href="<?php echo BASE_URL;?>/pages/learning/pages/live/complex-thursday.php">
-                            <span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2">LIVE</span>
-
-
-                            <?php   
-                    }else{
-                    
-                    ?>
-                            <a class="nav-link nav-link-icon disabled" href="#">
-
-
-                                <?php
-                    }
-
-?>
-
-
-                                <span class="nav-link-inner--text <?php if ($highlightComplex){echo 'gieqsGold';}?>">Complex</span>
-                            </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-link-icon"
-                        href="<?php echo BASE_URL;?>/pages/learning/pages/live/nursing.php">
-
-                        <span class="nav-link-inner--text <?php if ($highlightNursing){echo 'gieqsGold';}?>">Nursing</span>
-                    </a>
-                </li>
+                
                 <li class="nav-item">
                     <a class="nav-link nav-link-icon" target="_blank"
                         href="<?php echo BASE_URL;?>/pages/learning/pages/live/programLive.php">
 
-                        <span class="nav-link-inner--text <?php if ($highlightProgram){echo 'gieqsGold';}?>">Live Programme</span>
+                        <span class="nav-link-inner--text <?php if ($highlightProgram){echo 'gieqsGold';}?>">Live
+                            Programme</span>
                     </a>
                 </li>
                 <li class="nav-item">
