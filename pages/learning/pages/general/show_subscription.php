@@ -30,11 +30,11 @@
       $assetManager = new assetManager;
 
       require_once(BASE_URI . '/assets/scripts/classes/assets_paid.class.php');
-        $assets_paid = new assets_paid;
+    $assets_paid = new assets_paid;
 
-        require_once(BASE_URI . '/assets/scripts/classes/programmeView.class.php');
+    require_once(BASE_URI . '/assets/scripts/classes/programmeView.class.php');
 
-        $programmeView = new programmeView;
+    $programmeView = new programmeView;
 
       /* load the asset */
 

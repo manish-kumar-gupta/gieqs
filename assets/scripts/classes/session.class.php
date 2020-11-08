@@ -2,7 +2,7 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 7-03-2020
+ * Create Date: 8-11-2020
  *
  * DJT 2019
  *
@@ -19,6 +19,7 @@ Class session {
 	private $title; //varchar(400)
 	private $subtitle; //varchar(400)
 	private $description; //varchar(800)
+	private $break; //varchar(11)
 	private $connection;
 
 	public function __construct(){
@@ -29,12 +30,13 @@ Class session {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_session($timeFrom,$timeTo,$title,$subtitle,$description){
+	public function New_session($timeFrom,$timeTo,$title,$subtitle,$description,$break){
 		$this->timeFrom = $timeFrom;
 		$this->timeTo = $timeTo;
 		$this->title = $title;
 		$this->subtitle = $subtitle;
 		$this->description = $description;
+		$this->break = $break;
 	}
 
     /**
@@ -52,6 +54,7 @@ Class session {
 			$this->title = $row["title"];
 			$this->subtitle = $row["subtitle"];
 			$this->description = $row["description"];
+			$this->break = $row["break"];
 		}
 	}
     /**
@@ -75,6 +78,7 @@ $q = "Select * from `session` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["title"] = $row["title"];
 			$rowReturn[$x]["subtitle"] = $row["subtitle"];
 			$rowReturn[$x]["description"] = $row["description"];
+			$rowReturn[$x]["break"] = $row["break"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -102,6 +106,7 @@ $q = "Select * from `session` WHERE `id` = $key";
 			$rowReturn[$x]["title"] = $row["title"];
 			$rowReturn[$x]["subtitle"] = $row["subtitle"];
 			$rowReturn[$x]["description"] = $row["description"];
+			$rowReturn[$x]["break"] = $row["break"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -398,6 +403,13 @@ $q = "UPDATE `session` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return break - varchar(11)
+	 */
+	public function getbreak(){
+		return $this->break;
+	}
+
+	/**
 	 * @param Type: int(11)
 	 */
 	public function setid($id){
@@ -437,6 +449,13 @@ $q = "UPDATE `session` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function setdescription($description){
 		$this->description = $description;
+	}
+
+	/**
+	 * @param Type: varchar(11)
+	 */
+	public function setbreak($break){
+		$this->break = $break;
 	}
 
     /**

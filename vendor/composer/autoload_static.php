@@ -30,6 +30,11 @@ class ComposerStaticInit8eb686780e878a127cff40babf542ad7
         array (
             'phpseclib\\' => 10,
         ),
+        'c' => 
+        array (
+            'chillerlan\\Traits\\' => 18,
+            'chillerlan\\QRCode\\' => 18,
+        ),
         'V' => 
         array (
             'Vimeo\\' => 6,
@@ -122,6 +127,14 @@ class ComposerStaticInit8eb686780e878a127cff40babf542ad7
         'phpseclib\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib',
+        ),
+        'chillerlan\\Traits\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/chillerlan/php-traits/src',
+        ),
+        'chillerlan\\QRCode\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/chillerlan/php-qrcode/src',
         ),
         'Vimeo\\' => 
         array (
