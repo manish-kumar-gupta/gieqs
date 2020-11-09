@@ -27,10 +27,13 @@ $requiredUserLevel = 3;
 
       spl_autoload_unregister ('class_loader');
 
-      require(BASE_URI.'/pages/learning/classes/general.class.php');
+      error_reporting(E_ALL);
+      require_once(BASE_URI.'/pages/learning/classes/general.class.php');
 
 
       $general = new general;
+
+      spl_autoload_register ('class_loader');
       //open to the classes outside this include
 
       ?>

@@ -385,7 +385,23 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-search"></i></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Searching within <?php echo $page_title;?>">
+<!--                     <input type="text" class="form-control" placeholder="Searching within <?php //echo $page_title;?>">
+ -->                
+                        <select id="tags" type="text" data-toggle="select" class="custom-select form-control" name="tags" placeholder="Searching within <?php echo $page_title;?>">
+                            <?php
+
+                                            
+
+
+                                        echo $general->generateTagStructure();
+
+
+                                            
+
+
+?>
+                        </select>
+  
                 </div>
             </div>
         </form>
@@ -535,6 +551,8 @@
     <script src="<?php echo BASE_URL;?>/assets/js/purpose.core.js"></script>
     <script src="<?php echo BASE_URL;?>/assets/js/purpose.js"></script>
     <script src="<?php echo BASE_URL . "/assets/js/generaljs.js"?>"></script>
+    <script src="<?php echo BASE_URL;?>/assets/libs/select2/dist/js/select2.min.js"></script>
+
 
     <script>
     var videoPassed = $("#id").text();
@@ -792,6 +810,12 @@
 
     $(document).ready(function() {
 
+        $('[data-toggle="select"]').select2({
+
+//dropdownParent: $(".modal-content"),
+theme: "classic",
+
+});
 
         $(document).find('#navigatorCollapse').collapse();
 

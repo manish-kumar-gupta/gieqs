@@ -238,7 +238,7 @@ top: -20vh;
               <div class="mb-5 text-center">
                 <h3 class=" mt-4">GIEQs Pro Subscription</h3>
                 <div class="fluid-paragraph mt-3">
-                  <p class="lead lh-180">Get access to the full functionality of GIEQs Online.  <br/>Subscriptions start 9 November 2020</p>
+                  <p class="lead lh-180">Get access to the full functionality of GIEQs Online.  <br/>Subscriptions start 9 December 2020</p>
                 </div>
               </div>
               <div class="pricing-container">
