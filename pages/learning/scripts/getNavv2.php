@@ -246,65 +246,151 @@ if (isset($videoset)){
 
         if ($isSuperuser == '0'){
 
+            //GO THROUGH THE VIDEOS AND REMOVE ANY THAT THE USER HAS NO ACCESS TO
+            
             foreach ($data2 as $key=>$value){
-    
-    
+            
+            
                 //does it require subscription?
-    
+            
                 $array_key = $key;
-    
-                $access = $assetManager->video_requires_subscription($value, false);
-    
-                if ($access){
-    
-    
-                    $access2 = $assetManager->video_owned_by_user($value, $userid, false);
-      
-                    if ($access2 === false){
-    
-                        //remove this video from the array
-                        unset($data2[$key]);
-                        if ($debug){
-    
-                            echo 'user id ' . $userid . ' has no access to video id ' . $value;
-    
-                       }
-    
-    
-                    }else{
-    
-                        if ($debug){
-    
-                            echo 'user id ' . $userid . ' has access to video id ' . $value;
-    
-                       }
-    
-                        
-                        //user has access to this video
-                    }
-    
-                }else{
-    
+            
+                //check there is no access via a programme
+            
+                $access3 = $assetManager->checkVideoProgrammeAspect($value['id'], $userid, false);
+            
+                if ($access3 === false){ //contained within a programme and no access to this programme
+            
+            
                     if ($debug){
-    
-                        echo 'video id ' . $value . ' does not require a subscription';
-    
+            
+                        echo 'user id ' . $userid . ' has no access to video id ' . $value['id'] . ' via a programme';
+                        echo 'now checking access via videoset';
+            
+                   }
+            
+                   $access = $assetManager->video_requires_subscription($value['id'], false);
+            
+                    if ($access){ //requires subscription via videoset (is in a videoset)
+            
+            
+                        $access2 = $assetManager->video_owned_by_user($value['id'], $userid, false);
+            
+                        if ($access2 === false){ //in videoset, not owned by user
+            
+                            //remove this video from the array
+                            unset($videos[$key]);
+                            if ($debug){
+            
+                                echo 'user id ' . $userid . ' has no access to video id ' . $value['id'];
+            
+                            }
+            
+            
+                        }else{
+            
+                            if ($debug){
+            
+                                echo 'user id ' . $userid . ' has access to video id ' . $value['id'];
+            
+                            }
+            
+                            
+                            //user has access to this video via videoset.  despite no access via programme grant
+                        }
+            
+                    }else{ //is not in a videoset (but is contained within a programme)
+            
+                        if ($debug){
+            
+                            echo 'video id ' . $value['id'] . ' requires a programme subscription and is not covered by a videoset';
+                            echo 'video id ' . $value['id'] . ' removed from array';
+            
+                        }
+            
+                        unset($videos[$key]);
+            
+            
                     }
-    
+            
+            
+            
+                }elseif ($access3 === true) {
+            
+                    if ($debug){
+            
+                        echo 'user id ' . $userid . ' has access to video id ' . $value['id'] . ' via a programme';
+                        echo 'access granted';
+            
+                   }
+            
+                   
+            
+                }else{
+            
+                    //not contained within a programme
+                    //check if contained within a videoset
+                    $access = $assetManager->video_requires_subscription($value['id'], false);
+            
+                    if ($access){ //requires subscription via videoset (is in a videoset)
+            
+            
+                        $access2 = $assetManager->video_owned_by_user($value['id'], $userid, false);
+            
+                        if ($access2 === false){ //in videoset, not owned by user
+            
+                            //remove this video from the array
+                            unset($videos[$key]);
+                            if ($debug){
+            
+                                echo 'user id ' . $userid . ' has no access to video id ' . $value['id'];
+            
+                            }
+            
+            
+                        }else{
+            
+                            if ($debug){
+            
+                                echo 'user id ' . $userid . ' has access to video id ' . $value['id'];
+            
+                            }
+            
+                            
+                            //user has access to this video via videoset.  despite no access via programme grant
+                        }
+            
+                    }else{
+            
+                        //not in programme or videoset
+                        
+            
+                        if ($debug){
+            
+                            echo 'video ' . $value['id'] . ' is freely available';
+            
+                            echo 'user id ' . $userid . ' has access to video id ' . $value['id'];
+            
+                        }
+            
+                    }
+            
                 }
-    
-                //test user access
-    
-    
-    
+            
+            
                 
-    
+            
+                //test user access
+            
+            
+            
+                
+            
             }
-    
             }else{
-    
+            
                 if ($debug){
-    
+            
                     echo 'all videos available as superuser';
                 }
             }
