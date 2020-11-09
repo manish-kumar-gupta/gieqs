@@ -11,6 +11,16 @@
  * session view creator
  * 
  */
+if (session_status() == PHP_SESSION_NONE) { //if there's no session_start yet...
+    session_start(); //do this
+}
+
+if ($_SESSION['debug'] == true){
+
+error_reporting(E_ALL);
+
+}
+
 require_once 'DataBaseMysqlPDO.class.php';
 
 class sessionView
@@ -21,6 +31,8 @@ class sessionView
     public function __construct()
     {
         $this->connection = new DataBaseMysqlPDO();
+     
+        
     }
 
     
@@ -492,6 +504,263 @@ class sessionView
                 return false;
             }
 
+        }
+
+
+        public function programmesActiveToday($date, $debug=false){
+
+            
+            
+         
+            $currentTime = $date;
+            
+
+
+            $currentTimeCET = $currentTime->format('Y-m-d');
+
+            
+
+            $q = "Select 
+                a.`id`, a.`date`
+                from `programme` as a
+                WHERE a.`date` = '$currentTimeCET'
+                ";
+
+            if ($debug){
+
+                echo $q;
+            }
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                    $rowReturn[]['id'] = $row['id'];
+                }
+
+                return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
+
+        public function getStartAndEndProgrammes($programmes, $debug=false){
+
+            $rowReturn = array();
+
+
+            foreach ($programmes as $key=>$value){
+
+                $programmeid = null;
+                $programmeid = $value['id'];
+
+                if ($debug){
+
+                    echo 'programme id is ' . $programmeid;
+                }
+
+                $q = "Select 
+                a.`date`, a.`id`,
+                c.`id` as `sessionid`, c.`timeFrom`, c.`timeTo` 
+                from `programme` as a
+                INNER JOIN `programmeOrder` as b on a.`id` = b.`programmeid` 
+                INNER JOIN `session` as c on b.`sessionid` = c.`id`
+                WHERE a.`id` = '{$programmeid}'
+                ORDER BY c.`timeFrom` ASC
+                ";
+
+                if ($debug){
+                    echo $q . '<br><br>';
+
+                }
+
+
+
+
+                $result = $this->connection->RunQuery($q);
+                
+                $x = 0;
+                $y = 0;
+                $nRows = $result->rowCount();
+
+                if ($nRows > 0) {
+
+                    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                    
+
+                        //$id = $row['id'];
+
+                        $rowReturn[$programmeid][$x]['timeFrom'] = $row['timeFrom'];
+                        $rowReturn[$programmeid][$x]['timeTo'] = $row['timeTo'];
+                        $x++;
+                    }
+
+                }
+
+
+            }
+
+            return $rowReturn;
+
+
+        }
+
+        public function getStartEndProgrammes ($programmes, $debug){
+
+            //takes input from getStartAndEndProgrammes
+
+            $items = count($programmes);
+
+            $itemsArrayKey = $items - 1;
+
+            $rowReturn = array();
+
+            foreach ($programmes as $key=>$value){
+
+                $items = null;
+                $itemsArrayKey = null;
+
+                $items = count($value);
+
+                $itemsArrayKey = $items - 1;
+    
+
+                $programmeid = null;
+                $startTime = null;
+                $endTime = null;
+
+                $programmeid = $key;
+
+                $startTime = $value[0]['timeFrom'];
+
+                $endTime = $value[$itemsArrayKey]['timeTo'];
+
+                $rowReturn[] = ['programmeid'=>$programmeid, 'startTime'=>$startTime, 'endTime'=>$endTime,];
+
+
+            }
+
+            return $rowReturn;
+
+
+        }
+
+        public function showLiveProgrammes(){
+
+            $currentTime = new DateTime('now', 'UTC');
+
+            $q = "Select 
+            
+                a.`date`,
+                c.`id` as `sessionid`, c.`timeFrom`, c.`timeTo` 
+                from `programme` as a
+                INNER JOIN `programmeOrder` as b on a.`id` = b.`programmeid` 
+                INNER JOIN `session` as c on b.`sessionid` = c.`id`
+                WHERE c.`id` = '$sessionid'
+                ";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                    return $row['programmeid'];
+                }
+
+            } else {
+                
+
+                return false;
+            }
+
+
+
+
+
+
+        }
+
+        public function returnLiveProgrammesArray($currentTime, $debug=false){
+
+        
+            if ($access = $this->programmesActiveToday($currentTime, $debug) == true){
+    
+    
+                $access = $this->programmesActiveToday($currentTime, $debug);
+            
+            if ($debug){
+    
+                var_dump($access);
+            
+            }
+    
+            
+    
+            
+            if ($debug){
+                echo '<br/><br/>now get the start and end times<br/><br/>';
+    
+            }
+            
+            $access1 = null;
+            
+            $access1 = $this->getStartAndEndProgrammes($access, $debug);
+            
+            if ($debug){
+                var_dump($access1);
+                echo '<br/><br/>now get the start and end times in a single array<br/><br/>';
+    
+    
+            }
+            
+            
+            $access2 = null;
+            
+            $access2 = $this->getStartEndProgrammes($access1, $debug);
+            
+            if ($debug){
+            
+                var_dump($access2);
+    
+                echo '<br/><br/>does user have access to the programme<br/><br/>';
+        
+            }
+            
+            
+            return $access2;
+            
+            }else{
+            
+                if ($debug){
+                echo '<br/><br/>No programmes active<br/><br/>';
+                }
+            
+                return false;
+            
+            
+            }
+    
+    
+    
+    
         }
 
         

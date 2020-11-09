@@ -2,7 +2,7 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 26-09-2020
+ * Create Date: 8-11-2020
  *
  * DJT 2019
  *
@@ -19,6 +19,8 @@ Class programme {
 	private $subtitle; //varchar(400)
 	private $description; //varchar(800)
 	private $url_vimeo; //varchar(250)
+	private $url_slido; //varchar(300)
+	private $url_zoom; //varchar(300)
 	private $connection;
 
 	public function __construct(){
@@ -29,12 +31,14 @@ Class programme {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_programme($date,$title,$subtitle,$description,$url_vimeo){
+	public function New_programme($date,$title,$subtitle,$description,$url_vimeo,$url_slido,$url_zoom){
 		$this->date = $date;
 		$this->title = $title;
 		$this->subtitle = $subtitle;
 		$this->description = $description;
 		$this->url_vimeo = $url_vimeo;
+		$this->url_slido = $url_slido;
+		$this->url_zoom = $url_zoom;
 	}
 
     /**
@@ -52,6 +56,8 @@ Class programme {
 			$this->subtitle = $row["subtitle"];
 			$this->description = $row["description"];
 			$this->url_vimeo = $row["url_vimeo"];
+			$this->url_slido = $row["url_slido"];
+			$this->url_zoom = $row["url_zoom"];
 		}
 	}
     /**
@@ -75,6 +81,8 @@ $q = "Select * from `programme` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["subtitle"] = $row["subtitle"];
 			$rowReturn[$x]["description"] = $row["description"];
 			$rowReturn[$x]["url_vimeo"] = $row["url_vimeo"];
+			$rowReturn[$x]["url_slido"] = $row["url_slido"];
+			$rowReturn[$x]["url_zoom"] = $row["url_zoom"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -102,6 +110,8 @@ $q = "Select * from `programme` WHERE `id` = $key";
 			$rowReturn[$x]["subtitle"] = $row["subtitle"];
 			$rowReturn[$x]["description"] = $row["description"];
 			$rowReturn[$x]["url_vimeo"] = $row["url_vimeo"];
+			$rowReturn[$x]["url_slido"] = $row["url_slido"];
+			$rowReturn[$x]["url_zoom"] = $row["url_zoom"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -398,6 +408,20 @@ $q = "UPDATE `programme` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return url_slido - varchar(300)
+	 */
+	public function geturl_slido(){
+		return $this->url_slido;
+	}
+
+	/**
+	 * @return url_zoom - varchar(300)
+	 */
+	public function geturl_zoom(){
+		return $this->url_zoom;
+	}
+
+	/**
 	 * @param Type: int(11)
 	 */
 	public function setid($id){
@@ -437,6 +461,20 @@ $q = "UPDATE `programme` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function seturl_vimeo($url_vimeo){
 		$this->url_vimeo = $url_vimeo;
+	}
+
+	/**
+	 * @param Type: varchar(300)
+	 */
+	public function seturl_slido($url_slido){
+		$this->url_slido = $url_slido;
+	}
+
+	/**
+	 * @param Type: varchar(300)
+	 */
+	public function seturl_zoom($url_zoom){
+		$this->url_zoom = $url_zoom;
 	}
 
     /**

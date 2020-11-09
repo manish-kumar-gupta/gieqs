@@ -1,5 +1,30 @@
 <!--Main Navbar-->
+<?php $users = new users;
+$programme = new programme;
+$sessionView = new sessionView;
+//error_reporting(E_ALL);
 
+
+require_once BASE_URI . "/vendor/autoload.php";
+spl_autoload_unregister ('class_loader');
+
+use chillerlan\QRCode\QRCode;
+use chillerlan\QRCode\QROptions;
+$options = new QROptions([
+	'version'    => 7,
+	'outputType' => QRCode::OUTPUT_MARKUP_SVG,
+  'eccLevel'   => QRCode::ECC_L,
+  'cssClass' => 'gieqsGold',
+  'svgOpacity' => 50,
+  'scale' => 3,
+]);
+$qrcode = new QRCode($options);
+spl_autoload_register ('class_loader');
+
+
+
+
+?>
 
 <nav class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-dark bg-dark" id="navbar-main">
     <div class="container px-lg-0">
@@ -22,15 +47,57 @@
             </li>-->
             <!-- LIVE -->
 
-            <?php if (($live == 1) && (isset($_SESSION['user_id'])) && ($_SESSION['siteKey'] == 'TxsvAb6KDYpmdNk') && ($_SESSION['access_level'] > 0 && $_SESSION['access_level'] < 7)){ 
+            <?php if ((isset($_SESSION['user_id'])) && ($_SESSION['siteKey'] == 'TxsvAb6KDYpmdNk')){ 
               
+              //load user from key
               $liveAndLoggedIn = true;
-              ?>
-              <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-              <a class="nav-link dropdown-toggle animated bounce" style="color: rgb(238, 194, 120);" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">GIEQs Digital Edition I</a>
+
+              $debug=false;
+              $serverTimeZoneNav = new DateTimeZone('Europe/Brussels'); //because this is where course is held
+              $currentNavTime = new DateTime('now', $serverTimeZoneNav);
+              $currentNavTime = new DateTime('2020-11-16', $serverTimeZoneNav);
+
+
+
+              if ($users->Return_row($userid)){
+
+
+                  $programmes = $sessionView->returnLiveProgrammesArray($currentNavTime, $debug);
+
+
+                //just use the first programme that day.  modify later if others required
+
+                if ($programmes){
+
+                  $access3 = $assetManager->programme_owned_by_user($programmes[0]['programmeid'], $userid, $debug);
+
+                  if ($access3){
+                    //user has access to the programme with id $programmes[0]['programmeid']
+
+                    require_once(BASE_URI . '/assets/scripts/classes/assets_paid.class.php');
+                    $assets_paid = new assets_paid;
+
+                    //get the asset id
+
+                    $asset_id = $assetManager->returnAssetProgrammes($programmes[0]['programmeid']);
+                    $programme->Load_from_key($programmes[0]['programmeid']);
+
+                    
+                    if ($debug){
+                      print_r($asset_id);
+
+                    }
+
+                    $assets_paid->Load_from_key($asset_id[0]);
+
+
+                    ?>
+
+<li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+              <a class="nav-link dropdown-toggle animated bounce" style="color: rgb(238, 194, 120);" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $assets_paid->getname();?></a>
               <div class="dropdown-menu dropdown-menu-lg dropdown-menu-arrow p-0">
                 <ul class="list-group list-group-flush">
-                 <!--  <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
+                 <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
                     <a href="#" class="list-group-item list-group-item-action dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <div class="media d-flex align-items-center">
                        
@@ -40,78 +107,44 @@
                         
                         <div class="media-body ml-3">
                           <h6 class="mb-1">Live Stream</h6>
-                          <p class="mb-0">2 streams. <br/><strong>Plenary</strong>- focussed on everyday endoscopy. <br/><strong>Complex</strong> - focussed on the next steps</p>
-                        </div>
+<!--                           <p class="mb-0">2 streams. <br/><strong>Plenary</strong>- focussed on everyday endoscopy. <br/><strong>Complex</strong> - focussed on the next steps</p>
+
+ -->                       
+ <p class="mb-0"><strong><?php echo $assets_paid->getname();?></strong></p>
+</div>
                       </div>
                     </a>
                     <ul class="dropdown-menu">
                       <li>
-                          <?php  if ($currentTime > $desiredTimeWednesdayFrom && $currentTime < $desiredTimeWednesdayTo){
-                            ?>
+                          <?php  ?>
     
                         <a class="dropdown-item"
-                            href="<?php echo BASE_URL;?>/pages/learning/pages/live/plenary.php">
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/live/course.php?assetid=<?php echo $asset_id[0];?>">
                             <span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2">LIVE</span>
 
     
-                            <?php
-                        }elseif($currentTime > $desiredTimeThursdayFrom && $currentTime < $desiredTimeThursdayTo){
-    
-                            ?>
-    
-                            <a class="dropdown-item"
-                                href="<?php echo BASE_URL;?>/pages/learning/pages/live/plenary-thursday.php">
-                                <span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2">LIVE</span>
+                           
+                          Access High Quality Stream
+                        </a>
+
+                        <?php if ($programme->geturl_zoom() != ''){?>
+
+                        <a class="dropdown-item"
+                            href="<?php echo $programme->geturl_zoom();?>">
+                            <span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2">LIVE</span>
 
     
-                                <?php   
-                        }else{
-                        
-                        ?>
-                                <a class="dropdown-item disabled" href="#">
-    
-    
-                                    <?php
-                        }
-    
-    ?>
-                          Access Plenary Live Stream
+                           
+                          Access Interactive Zoom Stream (lower image quality)
                         </a>
-                      </li>
-                      <li>
-                        <?php  if ($currentTime > $desiredTimeWednesdayFrom && $currentTime < $desiredTimeWednesdayTo){
-                          ?>
-  
-                      <a class="dropdown-item"
-                          href="<?php echo BASE_URL;?>/pages/learning/pages/live/complex.php">
-                          <span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2">LIVE</span>
-  
-                          <?php
-                      }elseif($currentTime > $desiredTimeThursdayFrom && $currentTime < $desiredTimeThursdayTo){
-  
-                          ?>
-  
-                          <a class="dropdown-item"
-                              href="<?php echo BASE_URL;?>/pages/learning/pages/live/complex-thursday.php">
-                              <span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2">LIVE</span>
 
-  
-                              <?php   
-                      }else{
-                      
-                      ?>
-                              <a class="dropdown-item disabled" href="#">
-  
-  
-                                  <?php
-                      }
-  
-  ?>                          Access Complex Live Stream
-                        </a>
+                        <?php }?>
                       </li>
                     
+                       
+                    
                     </ul>
-                  </li> -->
+                  </li>
                   <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
                     <a href="#" class="list-group-item list-group-item-action dropdown-toggle" aria-haspopup="true" aria-expanded="false" role="button" data-toggle="dropdown">
                       <div class="media d-flex align-items-center">
@@ -121,8 +154,8 @@
                         </figure>
                         <!-- Media body -->
                         <div class="media-body ml-3">
-                          <h6 class="mb-1">Programme and Catch-up</h6>
-                          <p class="mb-0">See what's currently playing and catch up on what you missed.  </p>
+                          <h6 class="mb-1">Programme</h6>
+                          <p class="mb-0" >See the schedule for this course.</p>
                         </div>
                       </div>
                     </a>
@@ -134,14 +167,16 @@
                       </li> -->
 
                       <li>
-                        <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program-printable-catchup-public.php">
-                          GIEQs Digital Edition I - On Demand
+                        <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program-printable-catchup-public.php?id=<?php echo $asset_id[0];?>">
+                        <?php echo $assets_paid->getname();?> Live Programme
                         </a>
                       </li>
                     
                     </ul>
                   </li>
-                  <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
+
+                  <!--Sponsors Menu-->
+                  <!-- <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
                     <a href="#" class="list-group-item list-group-item-action dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <div class="media d-flex align-items-center">
                         <figure style="width: 50px;">
@@ -157,7 +192,7 @@
                       <div class="row">
                         <div class="col-sm-3">
                           <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Platinum</a>
-                          <a href="<?php echo BASE_URL;?>/pages/learning/pages/live/sponsor-boston.php" class="dropdown-item">Boston<!--  <img class="w-100" alt="Boston Scientific" src="<?php echo BASE_URL . '/assets/img/brand/boston.jpg';?>"> -->
+                          <a href="<?php echo BASE_URL;?>/pages/learning/pages/live/sponsor-boston.php" class="dropdown-item">Boston
                           </a>
                          
                         </div>
@@ -179,15 +214,17 @@
                       
                       </div>
                     </div>
-                  </li>
-                  <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
+                  </li> -->
+
+                  <!--Nursing Menu-->
+                  <!-- <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
                     <a href="#" class="list-group-item list-group-item-action dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <div class="media d-flex align-items-center">
-                        <!-- SVG icon -->
+                        
                         <figure style="width: 50px;">
                           <svg width="100%" height="100%" viewBox="0 0 328 284" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><path d="M96.367,205.433l135.015,0c12.588,0 -10.619,-55.25 -10.619,-55.25c-1.375,-3.287 -4.68,-5.395 -7.842,-6.69l-21.35,-9.83l-10.258,-8.649l-16.482,16.392l-0.012,0l7.111,47.547c0.023,0.165 -0.016,0.329 -0.114,0.464l-7.435,10.178c-0.12,0.162 -0.309,0.258 -0.51,0.258c-0.201,0 -0.39,-0.096 -0.507,-0.258l-7.438,-10.178c-0.098,-0.135 -0.139,-0.299 -0.113,-0.464l7.111,-47.547l-0.011,0l-16.481,-16.392l-10.257,8.649l-21.35,9.83c-3.158,1.295 -6.263,3.264 -7.843,6.69c0.003,0 -23.202,55.25 -10.615,55.25Z" style="fill:#eec278;fill-rule:nonzero;"/><path d="M163.875,129.409c16.285,0 38.131,-20.346 38.501,-54.462c0.236,-23.674 -11.038,-37.841 -38.501,-37.841c-27.464,0 -38.742,14.167 -38.501,37.842c0.369,34.116 19.442,54.461 38.501,54.461Zm-7.74,-44.954c19.91,2.121 37.271,-25.726 36.988,-0.793c-0.168,14.924 -14.012,37.462 -29.245,37.462c-15.988,0 -27.021,-18.731 -29.247,-37.454c-2.413,-20.306 34.859,-15.679 21.504,0.785Z" style="fill:#eec278;fill-rule:nonzero;"/><path d="M312.75,0l-297.75,0c-8.285,0 -15,6.715 -15,15l0,212.539c0,8.285 6.716,15 15,15l297.75,0c8.284,0 15,-6.715 15,-15l0,-212.539c0,-8.285 -6.716,-15 -15,-15Zm-7.5,220.039l-282.75,0l0,-197.539l282.75,0l0,197.539Z" style="fill:#eec278;fill-rule:nonzero;"/><path d="M0,266.394c0,4.576 3.709,8.287 8.285,8.287l79.775,0l0,-16.573l-79.775,0c-4.575,0 -8.285,3.71 -8.285,8.286Z" style="fill:#eec278;fill-rule:nonzero;"/><path d="M319.464,258.108l-199.349,0l0,16.574l199.349,0c4.576,0 8.286,-3.711 8.286,-8.287c0,-4.578 -3.71,-8.287 -8.286,-8.287Z" style="fill:#eec278;fill-rule:nonzero;"/><path d="M104.09,249.423c-5.495,0 -9.965,4.471 -9.965,9.964l0,14.013c0,5.494 4.47,9.965 9.965,9.965c5.493,0 9.962,-4.471 9.962,-9.965l0,-14.012c0,-5.494 -4.469,-9.965 -9.963,-9.965Z" style="fill:#eec278;fill-rule:nonzero;"/></svg>
                         </figure>
-                        <!-- Media body -->
+                        
                         <div class="media-body ml-3">
                           <h6 class="mb-1">Nursing Catch Up</h6>
                           <p class="mb-0">1 half-day stream. <br/><strong>Nursing</strong>- dedicated to the other half of the team.</p>
@@ -203,22 +240,62 @@
                       
                     
                     </ul>
-                  </li>
-                  <!-- <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
-                    <a href="https://app.sli.do/event/wxcyu5bh/live/questions?w=wFYcu" target="_blank" class="list-group-item list-group-item-action dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                  </li> -->
+
+                  <!--QR Code Slido Menu, only show if slido details entered-->
+
+                  <?php
+                        if ($programme->geturl_slido() != ''){?>
+                          
+
+                  
+                  <li class="dropdown dropdown-animate dropdown-submenu" data-toggle="hover">
+                    <a href="https://app.sli.do/event/<?php echo $programme->geturl_slido();?>" target="_blank" class="list-group-item list-group-item-action dropdown-toggle" aria-haspopup="true" aria-expanded="false">
                       <div class="flex-column align-items-right">
-                        <figure>
-                            <img src="<?php echo BASE_URL;?>/assets/img/brand/qrslido_white.png" style="width: 200px;">
+                        <figure class="gieqsGold" style="background-size:100px;">
+
+                        <?php
+
+                        //load the programme
+
+                        
+                        $data = 'https://app.sli.do/event/' . $programme->geturl_slido();
+
+                        // quick and simple:
+                        //echo '<img src="'.$qrcode->render($data).'" alt="QR Code" />';
+                        echo $qrcode->render($data);
+                        ?>
+                          <!--   <img src="<?php //echo BASE_URL;?>/assets/img/brand/qrslido_white.png" style="width: 200px;"> -->
                         </figure>
-                        <p>Scan Me with a SmartPhone or click to join the Q+A conversation</p>
+                        <p>Scan Me with a SmartPhone or click to join the Q+A conversation on Slido</p>
                        
                       </div>
                     </a>
-                  </li> -->
+                  </li>
+
+                  <?php       }?>
+
                   
                 </ul>
               </div>
             </li>
+
+
+                <?php } //close if access3
+
+                          } //close if programmes
+
+
+
+              }
+            
+
+              //are any progammes live now
+
+              //if so  determine if user has access to the programm
+
+              ?>
+              
 
 
             <?php }?>

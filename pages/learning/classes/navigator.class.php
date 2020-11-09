@@ -1,6 +1,6 @@
 <?php
 
-require_once 'DataBaseMysql.class.php';
+require_once 'DataBaseMysqlLearningWorkaround.class.php';
 
 
 
@@ -15,7 +15,7 @@ class navigator {
 	public $connection;
 
 	public function __construct (){
-		$this->connection = new DataBaseMysql();
+		$this->connection = new DataBaseMysqlLearningWorkaround();
 	}
 
 	//!Sanitise form input and other important functions
@@ -546,6 +546,242 @@ class navigator {
 	}
 
 	public function getVideoData($categories, $tagsRequired, $debug, $active='1', $gieqsDigital=null){
+
+		if ($debug){
+			echo '<br/><br/>';
+			echo 'Function getVideoData inputs:';
+			
+			echo '<br/><br/>tagsRequired : ';
+			print_r($tagsRequired);
+			echo '<br/><br/> Categories : ';
+			print_r($categories);
+			echo '<br/><br/>';
+		}
+
+		if ($active == '1'){
+
+			//fill to ensure all live shown
+
+			$extra_active = 'OR a.`active` = \'3\'';
+
+			if ($debug){
+				echo 'extra active is ' . $extra_active;
+			}
+		}else{
+
+			$extra_active = null;
+			if ($debug){
+				echo 'extra active is null';
+			}
+		}
+
+		//code for gieqsDigital v1
+
+		if ($debug){
+
+			echo 'gieqsDigital = ' . $gieqsDigital;
+		}
+
+		//testing
+
+		//$gieqsDigital = 0;
+
+		
+
+		//get the tags from the required categories
+		if ($tagsRequired){
+			
+			$howManyCategories = count($tagsRequired);
+
+			$howManyTagCategories = count($categories);
+
+			
+
+			
+	
+			$x=1;
+			$y=1;
+			
+			
+			$query_where .= "WHERE (a.`active` = '$active' $extra_active) AND ";
+
+			foreach ($categories as $key=>$value){
+
+				if ($y == 1 AND $y == $howManyTagCategories){
+
+					$query_where .= "(e.`id` = '$value') ";
+
+				}
+				
+				else if ($y == 1 AND $y < $howManyTagCategories){
+
+				$query_where .= "(e.`id` = '$value' OR ";
+
+				}else if ($y == $howManyTagCategories){
+
+					$query_where .= "e.`id` = '$value') ";
+					
+				}else{
+
+					$query_where .= "e.`id` = '$value' OR ";
+
+				}
+
+				$y++;
+
+			}
+
+			$query_where .= ' AND ';
+	
+			foreach ($tagsRequired as $key=>$value){
+	
+				if ($x == 1 AND $x == $howManyCategories){
+
+					$query_where .= "(d.`id` = '$value') ";
+					
+
+				}
+
+				else if ($x == 1){
+
+					$query_where .= "(d.`id` = '$value' OR ";
+	
+					}else if ($x == $howManyCategories){
+	
+						$query_where .= "d.`id` = '$value') ";
+						
+					}else{
+	
+						$query_where .= "d.`id` = '$value' OR ";
+	
+					}
+	
+					$x++;
+	
+			}
+
+			$query_where .= "GROUP BY a.`id` HAVING COUNT(DISTINCT d.`id`) = $howManyCategories ORDER BY a.`created` DESC";
+
+			//$query_where .= ')';
+	
+			//echo query_where;
+
+		}else{
+
+
+			$howManyTagCategories = count($categories);
+
+			
+			$y=1;
+
+			$query_where .= "WHERE (a.`active` = '$active' $extra_active) AND ";
+
+
+			foreach ($categories as $key=>$value){
+
+				if ($debug){
+
+					echo $y . ' is \$y';
+					echo $howManyTagCategories . ' is \$howManyTagCategories';
+				}
+
+				if ($y == 1 AND $y == $howManyTagCategories){
+
+					$query_where .= "(e.`id` = '$value') ";
+
+				}
+				
+				else if ($y == 1 AND $y < $howManyTagCategories){
+
+				$query_where .= "(e.`id` = '$value' OR ";
+
+				
+
+				}else if ($y == $howManyTagCategories){
+
+					$query_where .= "e.`id` = '$value') ";
+					
+				}else{
+
+					$query_where .= "e.`id` = '$value' OR ";
+
+				}
+
+				$y++;
+
+			}
+
+			$query_where .= "GROUP BY a.`id` ORDER BY a.`created` DESC";
+
+			
+
+		}
+
+		//currently order by most recent
+
+		$r = "SELECT DISTINCT a.* FROM `video` as a INNER JOIN `chapter` as b ON a.`id` = b.`video_id` INNER JOIN `chapterTag` as c ON b.`id` = c.`chapter_id` INNER JOIN `tags` as d ON d.`id` = c.`tags_id` INNER JOIN `tagCategories` as e ON d.`tagCategories_id` = e.`id` $query_where ORDER BY a.`created` DESC";
+
+		$q = "SELECT DISTINCT
+		a.*,
+		d.`id` AS `tagid`,
+		e.`id` AS `tagCategories_id`
+			FROM
+				`video` AS a
+			INNER JOIN `chapter` AS b
+			ON
+				a.`id` = b.`video_id`
+			INNER JOIN `chapterTag` AS c
+			ON
+				b.`id` = c.`chapter_id`
+			INNER JOIN `tags` AS d
+			ON
+				d.`id` = c.`tags_id`
+			INNER JOIN `tagCategories` AS e
+			ON
+				d.`tagCategories_id` = e.`id` $query_where";
+
+
+		$result = $this->connection->RunQuery($q);
+	
+		if ($debug){
+			echo $q;
+			echo '<br/><br/>';
+		}
+
+		$tags = [];
+
+		if ($result){
+
+
+			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+				
+				//echo '<a href="' . $roothttp . '/scripts/display/colontutor/video.php?id=' . $row['tagid'] . '">' . $row['tagName'] . '</a>';
+
+						//check videos for those that should be removed if no GIEQs digital access
+				
+
+					$tags[] = $row;
+
+				
+
+				
+
+
+			}
+
+			
+
+
+		}
+
+		
+
+		return $tags; 
+
+
+	}
+
+	public function getVideoDataBackup($categories, $tagsRequired, $debug, $active='1', $gieqsDigital=null){
 
 		if ($debug){
 			echo '<br/><br/>';

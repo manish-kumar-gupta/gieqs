@@ -295,6 +295,8 @@ if ($identifierValue) {
                         <th>title</th>
                         <th>subtitle</th>
                         <th>description</th>	
+                        <th>break</th>	
+
                         <th></th>
 
                     </tr>
@@ -680,6 +682,8 @@ $(document).ready(function(){
        {data: 'title' },
        {data: 'subtitle' },
        {data: 'description' },
+       {data: 'break' },
+
            {
            data: null,
            render: function ( data, type, row ) {

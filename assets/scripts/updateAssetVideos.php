@@ -1,8 +1,9 @@
 <?php
 
 
-error_reporting(E_ALL);
-$openaccess = 1;
+            error_reporting(E_ALL);
+            $openaccess = 1;
+            
 			//$requiredUserLevel = 4;
 			require ('../../assets/includes/config.inc.php');		
 			
@@ -17,7 +18,7 @@ $openaccess = 1;
             $videosAccess = new videosAccess;
             
             
-            $debug = false;
+            $debug = true;
 
             //$print_r()
 
@@ -26,17 +27,17 @@ $openaccess = 1;
             //print_r($data);
 
             $assetid = $data['assetid'];
-            $programmeid = $data['programmeid'];
+            $videoid = $data['videoid'];
             $options = $data['options'];
 
             //new methods for options, get from database
             //here put your denominator !!EDIT
 
-            $options = $userFunctions->returnProgrammeDenominatorSelect2(); //current userProgrammes
+            $options = $assetManager->returnVideoDenominatorSelect2(); //current userProgrammes
 
 
             if ($debug){
-                print_r($programmeid);
+                print_r($videoid);
                 }
          
 
@@ -52,7 +53,7 @@ $openaccess = 1;
                 }
            
 
-            $currentConnections = $assetManager->returnCombinationAssetProgramme($assetid); //current userProgrammes
+            $currentConnections = $assetManager->returnCombinationVideoAsset($assetid); //current userProgrammes
             if ($debug){
                 print_r($currentConnections);
                 }
@@ -75,7 +76,7 @@ $openaccess = 1;
 
                 foreach ($options as $key=>$value){
 
-                    if (in_array($value, $programmeid)){
+                    if (in_array($value, $videoid)){
 
                         //select element is selected
                         if ($debug){
@@ -84,7 +85,7 @@ $openaccess = 1;
 
                         //check if present in db
 
-                        if (($assetManager->checkCombinationAssetProgramme($assetid, $value)) === false){ //there is no match, does not exist in db
+                        if (($assetManager->checkCombinationVideoProgramme($assetid, $value)) === false){ //there is no match, does not exist in db
 
                             //add the connection
 
@@ -93,7 +94,7 @@ $openaccess = 1;
                                 }
 
                             $sub_asset_paid->setasset_id($assetid);
-                            $sub_asset_paid->setprogramme_id($value);
+                            $sub_asset_paid->setvideo_id($value);
             
                             
             
@@ -120,7 +121,7 @@ $openaccess = 1;
                             print_r('Select element ' . $value . ' is not selected' . PHP_EOL);
                             }
 
-                        if (($assetManager->checkCombinationAssetProgramme($assetid, $value)) === true){ //there is a match, does exist in db
+                        if (($assetManager->checkCombinationVideoProgramme($assetid, $value)) === true){ //there is a match, does exist in db
 
                             if ($debug){
                                 print_r('Select element ' . $value . ' exists in the connections db and needs to be deleted' . PHP_EOL);
@@ -130,16 +131,16 @@ $openaccess = 1;
                             //load the required connection
 
                             if ($debug){
-                                print_r('The required ID in the connections database is ' . $assetManager->returnCombinationIDAssetProgram($assetid, $value) . PHP_EOL);
+                                print_r('The required ID in the connections database is ' . $assetManager->returnCombinationIDAssetVideo($assetid, $value) . PHP_EOL);
                                 }
 
-                            $sub_asset_paid->Load_from_key($assetManager->returnCombinationIDAssetProgram($assetid, $value)); //required?
+                            $sub_asset_paid->Load_from_key($assetManager->returnCombinationIDAssetVideo($assetid, $value)); //required?
 
                             //delete the connection
-                            if ($sub_asset_paid->Delete_row_from_key($assetManager->returnCombinationIDAssetProgram($assetid, $value))){
+                            if ($sub_asset_paid->Delete_row_from_key($assetManager->returnCombinationIDAssetVideo($assetid, $value))){
 
                                 if ($debug){
-                                    print_r('The required ID in the connections database ' . $assetManager->returnCombinationIDAssetProgram($assetid, $value) .  ' was deleted' . PHP_EOL);
+                                    print_r('The required ID in the connections database ' . $assetManager->returnCombinationIDAssetVideo($assetid, $value) .  ' was deleted' . PHP_EOL);
                                     }
 
                             };
@@ -168,7 +169,5 @@ $openaccess = 1;
 
             
              
-$general->endgeneral();
-$programme->endprogramme();
-$sub_asset_paid->endsub_asset_paid();
+
 ?>

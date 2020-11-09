@@ -252,7 +252,9 @@ echo $programme->Load_records_limit_json(50);
                             <th>title</th>
                             <th>subtitle</th>
                             <th>description</th>
-                            <th>url</th>
+                            <th>url vimeo</th>
+                            <th>url slido</th>
+                            <th>url zoom</th>
                             <th></th>
 
                 </tr>
@@ -341,6 +343,16 @@ echo $programme->Load_records_limit_json(50);
                                         <div class="input-group">
                                             <textarea id="url_vimeo" name="url_vimeo" data-toggle="autosize" class="form-control"
                                                 placeholder="Vimeo URL"></textarea>
+                                        </div>
+                                        <label for="url_slido">Slido URL</label>
+                                        <div class="input-group">
+                                            <textarea id="url_slido" name="url_slido" data-toggle="autosize" class="form-control"
+                                                placeholder="Slido URL"></textarea>
+                                        </div>
+                                        <label for="url_zoom">Zoom URL</label>
+                                        <div class="input-group">
+                                            <textarea id="url_zoom" name="url_zoom" data-toggle="autosize" class="form-control"
+                                                placeholder="Zoom URL"></textarea>
                                         </div>
                                     </div>
                                 </form>
@@ -629,6 +641,8 @@ $(document).ready(function(){
            { data: 'subtitle' },
            { data: 'description' },
            { data: 'url_vimeo' },
+           { data: 'url_slido' },
+           { data: 'url_zoom' },
 
            {
            data: null,

@@ -64,7 +64,7 @@
             <span class='p-2 bd-highlight text-muted'><span id='itemCount'></span> video(s) shown</span>
             
             <span id='refreshNavigation' class='p-2 bd-highlight' data-toggle="tooltip" data-placement="bottom" title="refresh"><i class="cursor-pointer fas fa-redo"></i></span>
-            <span class='p-2 bd-highlight' data-toggle="tooltip" data-placement="bottom" title="search"><i class="cursor-pointer fas fa-search"></i></span>
+            <span class='p-2 bd-highlight' data-toggle="tooltip" data-placement="bottom" title="search" data-action="omnisearch-open" data-target="#omnisearch"><i class="cursor-pointer fas fa-search"></i></span>
             
                     <span class='p-2 bd-highlight'><i id="navigatorCollapseButton" class="cursor-pointer fas fa-chevron-down"
                     data-toggle="collapse" data-target="#navigatorCollapse"></i></span>

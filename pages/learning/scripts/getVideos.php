@@ -71,6 +71,11 @@ $usersFavouriteVideo = new usersFavouriteVideo;
 require_once(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
 $assetManager = new assetManager;
 
+require_once(BASE_URI . '/assets/scripts/classes/programmeView.class.php');
+
+$programmeView = new programmeView;
+
+
 $data = json_decode(file_get_contents('php://input'), true);
 
 $tagsToMatch = $data['tags'];
@@ -81,7 +86,15 @@ $loadedRequired = $data['loadedRequired'];
 
 $active = $data['active'];
 
+$videoset = $data['videoset'];
+
+$assetid = $data['assetid'];
+
+
 $gieqsDigitalv1 = $data['gieqsDigital'];
+
+$debug = false;
+
 
 $loadedRequiredProduct = 10 * $loadedRequired;
 
@@ -123,7 +136,6 @@ $x = 0;
 
 $data2 = $navigator->getVideoData($requiredTagCategories, $tagsToMatch, $debug, $active, $gieqsDigitalv1);
 
-$debug = false;
 
 $videos = $data2;
 
@@ -135,77 +147,313 @@ if ($debug) {
 }
 
 
-if ($isSuperuser == '0'){
-
-//GO THROUGH THE VIDEOS AND REMOVE ANY THAT THE USER HAS NO ACCESS TO
-
-foreach ($videos as $key=>$value){
 
 
-    //does it require subscription?
+//if a videoset
 
-    $array_key = $key;
+if (isset($videoset)){
 
-    $access = $assetManager->video_requires_subscription($value['id'], false);
+    if ($videoset == 1){
 
-    if ($access){
-
-
-        $access2 = $assetManager->video_owned_by_user($value['id'], $userid, false);
-
-        if ($access2 === false){
-
-            //remove this video from the array
-            unset($videos[$key]);
-            if ($debug){
-
-                echo 'user id ' . $userid . ' has no access to video id ' . $value['id'];
-
-           }
+        $emptyText = 'There are no videos matching your filters.';
 
 
-        }else{
+        //push out of the data2 array videos that are not part of the asset $assetid
 
-            if ($debug){
+        $videosAsset = $assetManager->returnVideosAsset($assetid);
 
-                echo 'user id ' . $userid . ' has access to video id ' . $value['id'];
+        foreach ($videos as $key=>$value){
 
-           }
 
-            
-            //user has access to this video
+            $array_key = $key;
+
+            $access = null;
+
+            $access = (in_array($value['id'], $videosAsset)) ? true : false;
+        
+            if (!$access){
+
+
+                unset($videos[$key]);
+
+                if ($debug){
+    
+                    echo 'video id ' . $value['id'] . ' was not found in the video asset array';
+    
+               }
+    
+            }else{
+
+                if ($debug){
+
+                echo 'video id ' . $value['id'] . ' was found in the video asset array';
+                
+            }
+
+
+            }
+        
+
         }
 
-    }else{
+        
 
-        if ($debug){
-
-            echo 'video id ' . $value['id'] . ' does not require a subscription';
-
-        }
 
     }
 
-    //test user access
+    if ($videoset == 2){
+
+        $emptyText = 'There are no videos yet matching these criteria for this course.';
 
 
+        //push out of the data2 array videos that are not part of the asset $assetid
+        $videosForSessions = array();
 
+            //get programme / session info
+
+            $programmes = $assetManager->returnCombinationAssetProgramme($assetid);
+            
+            if ($debug){
+
+                //var_dump($programmes);
+            }
+
+            foreach ($programmes as $key=>$value){
+
+
+            $sessions = $programmeView->getSessions($value['programme_id']);
+
+                if ($debug){
+
+                    //var_dump($sessions);
+                }
+
+                //get programmeid for asset
+                foreach ($sessions as $key2=>$value2){
+
+                    if (isset($value2['sessionid'])){
+
+                        $videosForSessions[] = $programmeView->getVideoURL($value2['sessionid']);
+
+                    }
+
+                }
+
+             }
+
+             //if debug show the videos
+
+             if ($debug){
+
+                var_dump($videosForSessions);
+
+             }
+
+        $videosAsset = $videosForSessions;
+
+        foreach ($videos as $key=>$value){
+
+
+            $array_key = $key;
+
+            $access = null;
+
+            $access = (in_array($value['id'], $videosAsset)) ? true : false;
+        
+            if (!$access){
+
+
+                unset($videos[$key]);
+
+                if ($debug){
     
+                    echo 'video id ' . $value['id'] . ' was not found in the video asset array';
+    
+               }
+    
+            }else{
 
-}
+                if ($debug){
+
+                echo 'video id ' . $value['id'] . ' was found in the video asset array';
+                
+            }
+
+
+            }
+        
+
+        }
+
+        
+
+
+    }
+
+
 }else{
 
-    if ($debug){
+    //normal page
+    if ($isSuperuser == '0'){
 
-        echo 'all videos available as superuser';
-    }
+        //GO THROUGH THE VIDEOS AND REMOVE ANY THAT THE USER HAS NO ACCESS TO
+        
+        foreach ($videos as $key=>$value){
+        
+        
+            //does it require subscription?
+        
+            $array_key = $key;
+        
+            //check there is no access via a programme
+        
+            $access3 = $assetManager->checkVideoProgrammeAspect($value['id'], $userid, false);
+        
+            if ($access3 === false){ //contained within a programme and no access to this programme
+        
+        
+                if ($debug){
+        
+                    echo 'user id ' . $userid . ' has no access to video id ' . $value['id'] . ' via a programme';
+                    echo 'now checking access via videoset';
+        
+               }
+        
+               $access = $assetManager->video_requires_subscription($value['id'], false);
+        
+                if ($access){ //requires subscription via videoset (is in a videoset)
+        
+        
+                    $access2 = $assetManager->video_owned_by_user($value['id'], $userid, false);
+        
+                    if ($access2 === false){ //in videoset, not owned by user
+        
+                        //remove this video from the array
+                        unset($videos[$key]);
+                        if ($debug){
+        
+                            echo 'user id ' . $userid . ' has no access to video id ' . $value['id'];
+        
+                        }
+        
+        
+                    }else{
+        
+                        if ($debug){
+        
+                            echo 'user id ' . $userid . ' has access to video id ' . $value['id'];
+        
+                        }
+        
+                        
+                        //user has access to this video via videoset.  despite no access via programme grant
+                    }
+        
+                }else{ //is not in a videoset (but is contained within a programme)
+        
+                    if ($debug){
+        
+                        echo 'video id ' . $value['id'] . ' requires a programme subscription and is not covered by a videoset';
+                        echo 'video id ' . $value['id'] . ' removed from array';
+        
+                    }
+        
+                    unset($videos[$key]);
+        
+        
+                }
+        
+        
+        
+            }elseif ($access3 === true) {
+        
+                if ($debug){
+        
+                    echo 'user id ' . $userid . ' has access to video id ' . $value['id'] . ' via a programme';
+                    echo 'access granted';
+        
+               }
+        
+               
+        
+            }else{
+        
+                //not contained within a programme
+                //check if contained within a videoset
+                $access = $assetManager->video_requires_subscription($value['id'], false);
+        
+                if ($access){ //requires subscription via videoset (is in a videoset)
+        
+        
+                    $access2 = $assetManager->video_owned_by_user($value['id'], $userid, false);
+        
+                    if ($access2 === false){ //in videoset, not owned by user
+        
+                        //remove this video from the array
+                        unset($videos[$key]);
+                        if ($debug){
+        
+                            echo 'user id ' . $userid . ' has no access to video id ' . $value['id'];
+        
+                        }
+        
+        
+                    }else{
+        
+                        if ($debug){
+        
+                            echo 'user id ' . $userid . ' has access to video id ' . $value['id'];
+        
+                        }
+        
+                        
+                        //user has access to this video via videoset.  despite no access via programme grant
+                    }
+        
+                }else{
+        
+                    //not in programme or videoset
+                    
+        
+                    if ($debug){
+        
+                        echo 'video ' . $value['id'] . ' is freely available';
+        
+                        echo 'user id ' . $userid . ' has access to video id ' . $value['id'];
+        
+                    }
+        
+                }
+        
+            }
+        
+        
+            
+        
+            //test user access
+        
+        
+        
+            
+        
+        }
+        }else{
+        
+            if ($debug){
+        
+                echo 'all videos available as superuser';
+            }
+        }
+
+    $emptyText = 'No videos match your criteria. Please reset your filters above.';
+
 }
 
 
 ?>
 
 
-                <?php
+<?php
 
                 //new script
 
@@ -219,9 +467,9 @@ foreach ($videos as $key=>$value){
 
                     ?>
 
-                    <div class="d-flex flex-row flex-wrap align-items-stretch mt-1 pt-0 px-0 text-white">
-                        <span class=" mt-3 mb-6 h6">No videos match your criteria.  Please reset your filters above.</span>
-                </div>
+<div class="d-flex flex-row flex-wrap align-items-stretch mt-1 pt-0 px-0 text-white">
+    <span class=" mt-3 mb-6 h6"><?php echo $emptyText;?></span>
+</div>
 <?php
                 }
 
@@ -237,53 +485,63 @@ foreach ($videos as $key=>$value){
 
                         ?>
 
-                        <div class="d-flex flex-row flex-wrap align-items-stretch mt-1 pt-0 px-0 text-white video-card">
-                    <?php }
+<div class="d-flex flex-row flex-wrap align-items-stretch mt-1 pt-0 px-0 text-white video-card">
+    <?php }
                     if ($a < $loadedRequiredProduct){
 
                     
                     
-?>          
-                
-                <div class="card mr-md-4 individualVideo flex-even">
-                <div class="card-header" style="height:175px;">
-                    <div class="row align-items-right my-0">
-                        <div class="col-12 my-0 pr-0">
-                            <div class="actions text-right">
-                                <a class="action-item action-favorite" data-toggle="tooltip" data-original-title="Mark as favorite" data="<?php echo $value['id'];?>">
-                                    <i class="fas fa-heart <?php if ($usersFavouriteVideo->matchRecord2way($userid, $value['id']) === true){echo 'gieqsGold';}else{echo 'text-muted';}?>"></i>
-                                </a>
-                               
-                            
-                                <a class="action-item action-like active" data-toggle="tooltip" data-original-title="Like" data="<?php echo $value['id'];?>">
-                                    <i class="fas fa-thumbs-up <?php if ($usersLikeVideo->matchRecord2way($userid, $value['id']) === true){echo 'gieqsGold';}else{echo 'text-muted';}?>"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row align-items-center text-break">
-                        <div class="col-12 text-break">
-                            <h5 class="card-title title mb-0 w-100"><?php echo $value['name']; ?></h5>
-                            <p class="text-muted text-sm mt-1 mb-0 align-self-baseline">Author : <a class="author text-muted" data-author="<?php echo $value['author'];?>" target="_blank" href="<?php echo BASE_URL;?>/pages/learning/pages/account/public-profile.php?id=<?php echo $value['author'];?>"><?php echo $user->getUserName($value['author']); ?></a></p>
-                            <div class="d-flex flex-row-reverse">
-                            <span class="badge text-dark p-1 type" data-type="<?php echo $navigator->getVideoTypeid($value['id']);?>" style="color:rgb(238, 194, 120) !important;"><?php echo $navigator->getVideoTypeidv2($value['id']);?></span>
-                        </div>
+?>
 
-                        </div>
-                    </div>
-                    
-                </div>
-                <a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $value['id'] . '&referid=' . $data['referringUrl']; ?>">
-                <img alt="video image" src="<?php echo $value['thumbnail']; ?>" class="img-fluid mt-2">
-            </a>
+    <div class="card mr-md-4 individualVideo flex-even">
+        <div class="card-header" style="height:175px;">
+            <div class="row align-items-right my-0">
+                <div class="col-12 my-0 pr-0">
+                    <div class="actions text-right">
+                        <a class="action-item action-favorite" data-toggle="tooltip"
+                            data-original-title="Mark as favorite" data="<?php echo $value['id'];?>">
+                            <i
+                                class="fas fa-heart <?php if ($usersFavouriteVideo->matchRecord2way($userid, $value['id']) === true){echo 'gieqsGold';}else{echo 'text-muted';}?>"></i>
+                        </a>
 
-                <div class="card-body">
-                    <p class="card-text"><?php echo $value['description']; ?></p>
+
+                        <a class="action-item action-like active" data-toggle="tooltip" data-original-title="Like"
+                            data="<?php echo $value['id'];?>">
+                            <i
+                                class="fas fa-thumbs-up <?php if ($usersLikeVideo->matchRecord2way($userid, $value['id']) === true){echo 'gieqsGold';}else{echo 'text-muted';}?>"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="card-footer">
-                    <div class="row align-items-center">
-                        
-                        <?php 
+            </div>
+            <div class="row align-items-center text-break">
+                <div class="col-12 text-break">
+                    <h5 class="card-title title mb-0 w-100"><?php echo $value['name']; ?></h5>
+                    <p class="text-muted text-sm mt-1 mb-0 align-self-baseline">Author : <a class="author text-muted"
+                            data-author="<?php echo $value['author'];?>" target="_blank"
+                            href="<?php echo BASE_URL;?>/pages/learning/pages/account/public-profile.php?id=<?php echo $value['author'];?>"><?php echo $user->getUserName($value['author']); ?></a>
+                    </p>
+                    <div class="d-flex flex-row-reverse">
+                        <span class="badge text-dark p-1 type"
+                            data-type="<?php echo $navigator->getVideoTypeid($value['id']);?>"
+                            style="color:rgb(238, 194, 120) !important;"><?php echo $navigator->getVideoTypeidv2($value['id']);?></span>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <a
+            href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $value['id'] . '&referid=' . $data['referringUrl']; ?>">
+            <img alt="video image" src="<?php echo $value['thumbnail']; ?>" class="img-fluid mt-2">
+        </a>
+
+        <div class="card-body">
+            <p class="card-text"><?php echo $value['description']; ?></p>
+        </div>
+        <div class="card-footer">
+            <div class="row align-items-center">
+
+                <?php 
                         
                         $videoIsGIEQsDigital = false;
                         $videoIsGIEQsDigital = ($navigator->videoIsGIEQsDigitalv1($value['id']) ? true : false);
@@ -291,48 +549,53 @@ foreach ($videos as $key=>$value){
                         
                         
                         if (!$videoIsGIEQsDigital){?>
-                        <div class="col-6">
-                            <a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $value['id'] . '&referid=' . $data['referringUrl']; ?>" class="btn btn-sm text-dark gieqsGoldBackground">View</a>
-                        </div>
-                        <div class="col-6 text-right">
-                            <span class="text-muted created text-sm" data-created="<?php echo $value['created'];?>"><?php echo time_elapsed_string($value['created']);?></span>
-                        </div>
-                        <?php }else if ($videoIsGIEQsDigital) {?>
-                            <div class="col-4">
-                            <a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $value['id'] . '&referid=' . $data['referringUrl']; ?>" class="btn btn-sm text-dark gieqsGoldBackground">View</a>
-                        </div>
-                        <div class="col-3">
-                            <img class = "img-responsive" width = "140%" src="<?php echo BASE_URL . '/assets/img/brand/gieqs_digital.png';?>">
-                        </div>
-                        <div class="col-5 text-right">
-                            <span class="text-muted created text-sm" data-created="<?php echo $value['created'];?>"><?php echo time_elapsed_string($value['created']);?></span>
-                        </div>
-
-
-                        <?php }else {?>
-
-
-                        <?php }?>
-
-                    </div>
+                <div class="col-6">
+                    <a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $value['id'] . '&referid=' . $data['referringUrl']; ?>"
+                        class="btn btn-sm text-dark gieqsGoldBackground">View</a>
                 </div>
+                <div class="col-6 text-right">
+                    <span class="text-muted created text-sm"
+                        data-created="<?php echo $value['created'];?>"><?php echo time_elapsed_string($value['created']);?></span>
                 </div>
-                   
+                <?php }else if ($videoIsGIEQsDigital) {?>
+                <div class="col-4">
+                    <a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $value['id'] . '&referid=' . $data['referringUrl']; ?>"
+                        class="btn btn-sm text-dark gieqsGoldBackground">View</a>
+                </div>
+                <div class="col-3">
+                    <img class="img-responsive" width="140%"
+                        src="<?php echo BASE_URL . '/assets/img/brand/gieqs_digital.png';?>">
+                </div>
+                <div class="col-5 text-right">
+                    <span class="text-muted created text-sm"
+                        data-created="<?php echo $value['created'];?>"><?php echo time_elapsed_string($value['created']);?></span>
+                </div>
+
+
+                <?php }else {?>
+
+
+                <?php }?>
+
+            </div>
+        </div>
+    </div>
 
 
 
 
 
 
-<?php
+
+    <?php
                     }
 
                     if ($a % 3 == 0){
                         ?>
-                        </div>
-                        <div class="d-flex flex-row flex-wrap align-items-stretch mt-1 pt-0 px-0 text-white">
+</div>
+<div class="d-flex flex-row flex-wrap align-items-stretch mt-1 pt-0 px-0 text-white">
 
-                        <?php
+    <?php
                     }
 
                     $a++;
@@ -343,33 +606,33 @@ foreach ($videos as $key=>$value){
 
                     ?>
 
-                </div>
-                <div class="d-flex flex-row-reverse flex-wrap mt-1 pb-6 pt-0 px-0 text-white">
+</div>
+<div class="d-flex flex-row-reverse flex-wrap mt-1 pb-6 pt-0 px-0 text-white">
 
-                            <button class="align-self-end btn btn-sm text-dark gieqsGoldBackground" id="loadMore">Load more videos..</button>
+    <button class="align-self-end btn btn-sm text-dark gieqsGoldBackground" id="loadMore">Load more videos..</button>
 
 
-                    <?php
+    <?php
 
                 }
 
                 if ($b == 1){
 
                     ?>
-                    <div class="d-flex flex-row flex-wrap card-placeholder align-items-stretch mt-1 pt-0 px-0 text-white">
-                    </div>
-                    <div class="d-flex flex-row flex-wrap card-placeholder align-items-stretch mt-1 pt-0 px-0 text-white">
-                    </div>
-                    <?php
+    <div class="d-flex flex-row flex-wrap card-placeholder align-items-stretch mt-1 pt-0 px-0 text-white">
+    </div>
+    <div class="d-flex flex-row flex-wrap card-placeholder align-items-stretch mt-1 pt-0 px-0 text-white">
+    </div>
+    <?php
 
                 }
 
                 if ($b == 2){
 
                     ?>
-                    <div class="d-flex flex-row flex-wrap card-placeholder align-items-stretch mt-1 pt-0 px-0 text-white">
-                    </div>
-                    <?php
+    <div class="d-flex flex-row flex-wrap card-placeholder align-items-stretch mt-1 pt-0 px-0 text-white">
+    </div>
+    <?php
 
                 }
 

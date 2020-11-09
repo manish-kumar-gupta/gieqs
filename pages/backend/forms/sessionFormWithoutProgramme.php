@@ -69,6 +69,16 @@
                                             <textarea id="description" type="text" data-toggle="autosize" class="form-control" name="description"></textarea>
                                         </div>
 
+                                        <label for="break">Break?</label>
+                                        <div class="input-group mb-3">
+                                            <select id="break" type="text" data-toggle="select" class="form-control" name="break">
+                                            <option value="" selected disabled hidden>please select an option</option>
+                                            <option value="0">No</option>
+                                            <option value="1">Yes</option>
+        
+                                            </select>
+                                        </div>
+
                                         
 
 

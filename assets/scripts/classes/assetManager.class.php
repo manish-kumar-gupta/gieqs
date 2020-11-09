@@ -24,14 +24,23 @@ error_reporting(0);
 	
 }
 
+//require_once(BASE_URI . '/assets/scripts/classes/programmeView.class.php');
+
+
 Class assetManager {
 
 	
-	private $connection;
+    private $connection;
+    private $sessionView;
 
 	public function __construct(){
         require_once 'DatabaseMyssqlPDOLearning.class.php';
-		$this->connection = new DataBaseMysqlPDOLearning();
+        $this->connection = new DataBaseMysqlPDOLearning();
+        require_once(BASE_URI . '/assets/scripts/classes/sessionView.class.php');
+        $this->sessionView = new sessionView();
+        require_once(BASE_URI . '/assets/scripts/classes/programmeView.class.php');
+        $this->programmeView = new programmeView;
+
 	}
 
     /**
@@ -163,6 +172,43 @@ public function select2_asset_match($search)
     }
 
 }
+
+public function returnAssetProgrammes($programmeid)
+            {
+            
+
+            $q = "Select a.`asset_id`
+            FROM `sub_asset_paid` as a
+			WHERE a.`programme_id` = '$programmeid'
+            ";
+
+            //echo $q . '<br><br>';
+
+			$rowReturn = [];
+
+            $result = $this->connection->RunQuery($q);
+            
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                    $rowReturn[] = $row['asset_id'];
+
+
+				}
+
+				return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
 
 public function returnProgrammesAsset($assetid)
             {
@@ -1703,7 +1749,7 @@ public function programme_owned_by_user ($programmeid, $userid, $debug){
 
 }
 
-public function which_assets_contain_programme ($programmeid){
+public function which_assets_contain_programme ($programmeid, $debug=false){
 
             $q = "Select 
             b.`id`
@@ -1921,11 +1967,926 @@ if ($nRows > 0) {
 
 }
 
+//is there a programme which contains this video?
+
+//is programme subscribable?
+
+public function isProgrammeSubscribable($programmeid, $debug=false){
+
+    $q = "Select 
+    b.`id`
+    FROM `assets_paid` as b
+    INNER JOIN `sub_asset_paid` as c ON b.`id` = c.`asset_id`
+    WHERE c.`programme_id` = '$programmeid'";
+
+//echo $q . '<br><br>';
 
 
 
+$result = $this->connection->RunQuery($q);
+
+$x = 0;
+$nRows = $result->rowCount();
+
+if ($nRows > 0) {
+
+    while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+        $rowReturn[$x] = $row['id'];
 
 
+    }
+
+
+    return $rowReturn;
+
+} else {
+    
+
+    if ($debug){
+
+        echo 'no assets contain this programmeid';
+    }
+
+    return false;
+
+    
+}
+
+}
+
+//return a list of id's of subscribable programmes
+
+//is programme subscribable?
+
+public function returnSubscribableProgrammes($debug=false){
+
+    $q = "Select 
+    c.`programme_id`
+    FROM `assets_paid` as b
+    INNER JOIN `sub_asset_paid` as c ON b.`id` = c.`asset_id`
+    WHERE `programme_id` IS NOT NULL";
+
+//echo $q . '<br><br>';
+
+
+
+$result = $this->connection->RunQuery($q);
+
+$x = 0;
+$nRows = $result->rowCount();
+
+if ($nRows > 0) {
+
+    while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+        $rowReturn[$x] = $row['programme_id'];
+        $x++;
+
+
+    }
+
+    if ($debug){
+
+        print_r($rowReturn);
+    }
+
+    return $rowReturn;
+
+} else {
+    
+
+    if ($debug){
+
+        echo 'no programmes are subscribable';
+    }
+
+    return false;
+
+    
+}
+
+}
+
+
+public function getVideosProgramme($programmeid, $debug=false){
+
+    //$programmesSubscribable = $this->returnSubscribableProgrammes();
+
+    $programmesSubscribable = $this->isProgrammeSubscribable($programmeid, $debug);
+
+    //print_r($programmesSubscribable);
+
+    $videos = array();
+
+    if ($programmesSubscribable){
+
+
+       
+
+            $sessions = $this->programmeView->getSessionsShort($value);
+
+            foreach ($sessions as $key2=>$value2){
+
+                if (isset($value2['sessionid'])){
+
+                    $videos[] = $this->programmeView->getVideoURL($value2['sessionid']);
+                    //$matches[]['programme_id'] = $value;
+
+                }
+
+            }
+
+
+           
+
+        
+
+    }else{
+
+        return false;
+
+        if ($debug){
+
+            echo 'no subscribable programmes';
+        }
+    }
+
+}
+
+//if so is the video contained within any programme?
+
+public function isVideoContainedWithinAnySubscribableProgramme($videoid, $debug=false){
+
+    $programmesSubscribable = $this->returnSubscribableProgrammes();
+
+    //print_r($programmesSubscribable);
+
+    $videos = array();
+
+    if (isset($programmesSubscribable)){
+
+
+        $unifiedarray = array();
+        $x = 0;
+        $y = 0;
+        foreach ($programmesSubscribable as $key=>$value){
+
+            //$value is programmeid
+
+            $programmeid = $value;
+            $unifiedarray[$x]['programmeid'] = $programmeid;
+
+            //get sessions
+            if ($debug){
+
+                print_r($programmesSubscribable);
+            }
+
+            $sessions = $this->programmeView->getSessionsShort($value);
+
+            if ($debug){
+
+                print_r($sessions);
+            }
+
+            $y=0;
+
+            foreach ($sessions as $key2=>$value2){
+
+                if (isset($value2['sessionid'])){
+
+                    $videos[] = $this->programmeView->getVideoURL($value2['sessionid']);
+                    $unifiedarray[$x]['videos'][$y] = $this->programmeView->getVideoURL($value2['sessionid']);
+                    //$matches[]['programme_id'] = $value;
+                    $y++;
+                }
+
+            }
+
+            $x++;
+
+
+           
+
+        }
+
+        if ($debug){
+
+            print_r($videos);
+        }
+
+        if ($debug){
+
+            print_r($unifiedarray);
+        }
+
+         //do they contain this video
+
+
+         if (in_array($videoid, $videos)){
+
+            
+            if ($debug){
+
+                echo 'The video is contained within a subscribable program(S)';
+            }
+
+            return $unifiedarray;
+
+
+        }else{
+
+            if ($debug){
+
+                echo 'The video is not contained within a subscribable program';
+            }
+
+            return false;
+        }
+
+    }else{
+
+        if ($debug){
+
+            echo 'No subscribable programmes';
+        }
+
+        return false;
+
+    }
+
+
+
+}
+
+public function getProgrammeidVideo ($unifiedarray, $videoid, $debug=false){
+    //searches array from isVideoContainedWithinAnySubscribableProgramme for the programme id
+
+    $matched_programmes = array();
+    $x = 0;
+
+    foreach ($unifiedarray as $key=>$value){
+
+
+        //check the $value['programmeid'] is programme id
+
+        $programmeid = null;
+        $programmeid = $value['programmeid'];
+
+        if ($debug){
+            print_r($value['videos']);
+        }
+       
+
+        foreach ($value['videos'] as $key2=>$value2){
+
+            if ($value2 == $videoid){
+
+                $matched_programmes[$x]['videoid'] = $videoid;
+                $matched_programmes[$x]['programmeid'] = $programmeid;
+                //maybe more than one asset per programme
+                $matched_programmes[$x]['assetid'] = $this->returnAssetIDProgramme($programmeid);
+
+                $x++;
+
+            }
+
+        }
+
+
+
+    }
+
+    if ($debug){
+        print_r($matched_programmes);
+    }
+
+    return $matched_programmes;
+
+}
+
+public function userAssetsAccessArray($matched_programmes, $userid, $debug){
+
+    foreach ($matched_programmes as $key=>$value){
+
+        foreach ($value['assetid'] as $key2=>$value2){
+    
+            //check $value2;
+            $access4 = null;
+            $access4 = $this->is_assetid_covered_by_user_subscription($value2, $userid, false);
+    
+            if ($access4){
+    
+                return true;
+    
+            }
+    
+    
+        }
+        
+    }
+
+}
+
+public function checkVideoProgrammeAspect($videoid, $userid, $debug){
+
+    if ($this->isVideoContainedWithinAnySubscribableProgramme($videoid, $debug)){
+
+        $access = $this->isVideoContainedWithinAnySubscribableProgramme($videoid, $debug);
+    
+        $access2 = $this->getProgrammeidVideo($access, $videoid, $debug);
+    
+        if (is_array($access2)){
+    
+    
+            $access3 = $this->userAssetsAccessArray($access2, $userid, $debug);
+    
+            if ($access3 === true){
+    
+                return true;
+            }else{
+    
+                return false;
+            }
+    
+    
+        }else{
+    
+            if ($debug){
+             echo 'no array returned';
+            }
+            //no array returned
+    
+        }
+    
+    
+    
+    }else{
+    
+        if ($debug){
+            echo 'video is not in a subscribable';
+
+        }
+    //video is not in a subscribable
+    return null; //because this is not in a subscribable programme
+    
+    }
+}
+
+public function doesUserHaveSubscriptionMenu($user_id, $debug)
+            {
+            
+
+                $q = "Select 
+                a.`id`
+                FROM `subscriptions` as a
+                INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
+                WHERE (b.`asset_type` = '2' OR b.`asset_type` = '3' OR b.`asset_type` = '4') 
+                AND (a.`user_id` = '$user_id')
+                AND (a.`active` = '1')
+                AND (a.`expiry_date` > NOW())
+                ORDER BY a.`start_date` DESC
+                ";
+
+            
+            if ($debug){
+
+                echo $q . '<br><br>';
+
+            }
+
+
+            $result = $this->connection->RunQuery($q);
+            
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                if ($debug){
+
+                    echo 'user has one or more course subscription';
+                }
+
+                return true;
+
+            } else {
+                
+
+                if ($debug){
+
+                    echo 'user has no subscriptions to courses';
+                }
+
+                return false;
+
+                
+            }
+
+        }
+        
+public function getHeadersNavSubscriptions($user_id, $debug){
+
+    {
+            
+
+        $q = "Select 
+        b.`asset_type`
+        FROM `subscriptions` as a
+        INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
+        WHERE (b.`asset_type` = '2' OR b.`asset_type` = '3' OR b.`asset_type` = '4') 
+        AND (a.`user_id` = '$user_id')
+        AND (a.`active` = '1')
+        AND (a.`expiry_date` > NOW())
+        GROUP BY b.`asset_type`
+        ORDER BY b.`asset_type` ASC
+        ";
+
+    
+    if ($debug){
+
+        echo $q . '<br><br>';
+
+    }
+
+
+    $result = $this->connection->RunQuery($q);
+    
+    $x = 0;
+    $nRows = $result->rowCount();
+
+    if ($nRows > 0) {
+
+        
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+            $id = null;
+
+            $id = $row['asset_type'];
+
+            $rowReturn[$x]['id'] = $row['asset_type'];
+            $rowReturn[$x]['asset_type'] = $this->getAssetTypeText($row['asset_type']);
+            $x++;
+
+
+        }
+
+
+        if ($debug){
+
+            var_dump($rowReturn);
+        }
+
+        return $rowReturn;
+
+    } else {
+        
+
+        if ($debug){
+
+            echo 'user has no subscriptions to this courses';
+        }
+
+        return false;
+
+        
+    }
+
+}
+
+
+}
+
+
+public function getMenuItems($user_id, $asset_type, $debug){
+
+    {
+            
+
+        $q = "Select 
+        b.`id`, b.`name`
+        FROM `subscriptions` as a
+        INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
+        WHERE (b.`asset_type` = '$asset_type') 
+        AND (a.`user_id` = '$user_id')
+        AND (a.`active` = '1')
+        AND (a.`expiry_date` > NOW())
+        ORDER BY b.`name` ASC
+        ";
+
+    
+    if ($debug){
+
+        echo $q . '<br><br>';
+
+    }
+
+
+    $result = $this->connection->RunQuery($q);
+    
+    $x = 0;
+    $nRows = $result->rowCount();
+
+    if ($nRows > 0) {
+
+        
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+            $id = null;
+
+            $id = $row['id'];
+
+            $rowReturn[$x]['id'] = $row['id'];
+            $rowReturn[$x]['name'] = $row['name'];
+            $x++;
+
+
+        }
+
+        if ($debug){
+
+           var_dump($rowReturn);
+        }
+
+        return $rowReturn;
+
+    } else {
+        
+
+        if ($debug){
+
+            echo 'no items for this asset_type ' . $asset_type;
+        }
+
+        return false;
+
+        
+    }
+
+}
+
+
+}
+
+
+
+public function getVideoTagCategories($videos, $debug){
+
+    {
+
+        // $videos is an array of videos
+
+        //generic code to pass arrays to mysql query!
+
+        $query_where = null;
+        $y=0;
+        $z = count($videos);
+
+        if ($z == 0){
+
+            if ($debug){
+
+                echo 'no videos passed';
+            }
+
+            return false;
+
+        }
+
+        if ($z == 1){
+
+            $query_where = "WHERE a.`id` = '$videos[0]'";
+
+        }else{
+
+            foreach ($videos as $key=>$value){
+                
+                if ($y == 0){
+
+                    $query_where .= 'WHERE (';
+
+                }
+
+                
+
+                $array_position = null;
+                $array_position = $z - $y;
+
+                if ($debug){
+
+                    
+                    echo $array_position . ' is array position';
+                }
+                 
+                if ($array_position == 1){
+
+                    $query_where .= "a.`id` = '$value')";
+                    continue;
+
+                    
+                }
+
+                $query_where .= "a.`id` = '$value' OR ";
+
+                $y++;
+
+            }
+    }
+
+        if ($debug){
+
+            echo $query_where;
+        }
+            
+        $q = "SELECT e.`id` 
+        FROM `video` as a 
+        INNER JOIN `chapter` as b ON a.`id` = b.`video_id`
+        INNER JOIN `chapterTag` as c ON b.`id` = c.`chapter_id` 
+        INNER JOIN `tags` as d ON d.`id` = c.`tags_id` 
+        INNER JOIN `tagCategories` as e ON d.`tagCategories_id` = e.`id` 
+        $query_where 
+        GROUP BY e.`id` 
+        ORDER BY e.`tagCategoryName` ASC ";
+
+    
+    if ($debug){
+
+        echo $q . '<br><br>';
+
+    }
+
+
+    $result = $this->connection->RunQuery($q);
+    
+    $x = 0;
+    $nRows = $result->rowCount();
+
+    if ($nRows > 0) {
+
+        
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+            $id = null;
+
+            $id = $row['id'];
+
+            $rowReturn[] = $row['id'];
+            //$rowReturn[$x]['tagCategoryName'] = $row['tagCategoryName'];
+            $x++;
+
+
+        }
+
+        if ($debug){
+
+           var_dump($rowReturn);
+        }
+
+        return $rowReturn;
+
+    } else {
+        
+
+        if ($debug){
+
+            echo 'the linked videos have no tagCategories';
+            print_r($videos);
+        }
+
+        return false;
+
+        
+    }
+
+}
+
+
+}
+
+public function returnVideoDenominatorSelect2()
+            {
+            
+
+				$q = "Select `id` FROM `video`";
+  
+			
+
+            //echo $q . '<br><br>';
+
+			$rowReturn = [];
+
+            $result = $this->connection->RunQuery($q);
+            
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn[] = $row['id'];
+
+
+				}
+
+				return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
+        
+        public function returnCombinationVideoAsset($assetid)
+            {
+            
+
+            $q = "Select a.`id`, a.`video_id`
+            FROM `sub_asset_paid` as a
+            WHERE (a.`asset_id` = '$assetid') 
+            AND (a.`video_id` IS NOT NULL)
+            ";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn[] = $row;
+
+
+				}
+
+				return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
+
+        public function returnAssetidforVideoidStraight($videoid)
+            {
+            
+
+            $q = "Select a.`asset_id`
+            FROM `sub_asset_paid` as a
+            WHERE (a.`video_id` = '$videoid') 
+            AND (a.`video_id` IS NOT NULL)
+            ";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn[] = $row;
+
+
+				}
+
+				return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
+
+        
+
+
+        public function checkCombinationVideoProgramme($assetid, $videoid)
+            {
+            
+
+            $q = "Select a.`id`
+            FROM `sub_asset_paid` as a
+            WHERE `asset_id` = '$assetid' AND `video_id` = '$videoid'
+            ";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                return true;
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
+
+        public function returnCombinationIDAssetVideo($assetid, $videoid)
+        {
+        
+
+        $q = "Select a.`id`
+        FROM `sub_asset_paid` as a
+        WHERE a.`asset_id` = '$assetid' AND `video_id` = '$videoid'
+        LIMIT 1
+        ";
+
+        //echo $q . '<br><br>';
+
+
+
+        $result = $this->connection->RunQuery($q);
+        
+        $x = 0;
+        $nRows = $result->rowCount();
+
+        if ($nRows > 0) {
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                $rowReturn = $row['id'];
+
+
+            }
+
+            return $rowReturn;
+
+        } else {
+            
+
+            return false;
+        }
+
+    }
+
+    public function returnAssetIDProgramme($programmeid)
+            {
+            
+
+            $q = "Select b.`id`
+            FROM `sub_asset_paid` as a
+            INNER JOIN `assets_paid` as b on a.`asset_id` = b.`id`
+            WHERE a.`programme_id` = '$programmeid'
+            AND a.`programme_id` IS NOT NULL
+            ";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                    
+        
+                    $rowReturn[] = $row['id'];
+                  
+        
+        
+                }
+                return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
 
 
 

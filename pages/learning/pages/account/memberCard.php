@@ -25,7 +25,7 @@
 
                   <!--TODO Implement this upgrade functionality-->
                   <div class="col-auto flex-fill mt-4 mt-sm-0 text-sm-right">
-                    <a id="upgradePro"href="#" class="btn btn-sm btn-white rounded-pill btn-icon shadow bg-gieqsGold text-dark">
+                    <a id="upgradePro" href="<?php echo BASE_URL;?>/pages/learning/upgrade.php" class="btn btn-sm btn-white rounded-pill btn-icon shadow bg-gieqsGold text-dark">
                       <span class="btn-inner--icon"><i class="fas fa-fire"></i></span>
                       <span class="btn-inner--text">Upgrade to GIEQs Pro</span>
                     </a>
