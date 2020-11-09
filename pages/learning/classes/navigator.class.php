@@ -1,6 +1,6 @@
 <?php
 
-require_once 'DataBaseMysql.class.php';
+require_once 'DataBaseMysqlLearningWorkaround.class.php';
 
 
 
@@ -15,7 +15,7 @@ class navigator {
 	public $connection;
 
 	public function __construct (){
-		$this->connection = new DataBaseMysql();
+		$this->connection = new DataBaseMysqlLearningWorkaround();
 	}
 
 	//!Sanitise form input and other important functions

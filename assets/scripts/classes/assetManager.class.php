@@ -2025,7 +2025,7 @@ public function returnSubscribableProgrammes($debug=false){
     INNER JOIN `sub_asset_paid` as c ON b.`id` = c.`asset_id`
     WHERE `programme_id` IS NOT NULL";
 
-echo $q . '<br><br>';
+//echo $q . '<br><br>';
 
 
 
@@ -2125,28 +2125,44 @@ public function isVideoContainedWithinAnySubscribableProgramme($videoid, $debug=
     if (isset($programmesSubscribable)){
 
 
+        $unifiedarray = array();
+        $x = 0;
+        $y = 0;
         foreach ($programmesSubscribable as $key=>$value){
 
             //$value is programmeid
 
+            $programmeid = $value;
+            $unifiedarray[$x]['programmeid'] = $programmeid;
+
             //get sessions
             if ($debug){
 
-                //print_r($programmesSubscribable);
+                print_r($programmesSubscribable);
             }
 
             $sessions = $this->programmeView->getSessionsShort($value);
+
+            if ($debug){
+
+                print_r($sessions);
+            }
+
+            $y=0;
 
             foreach ($sessions as $key2=>$value2){
 
                 if (isset($value2['sessionid'])){
 
                     $videos[] = $this->programmeView->getVideoURL($value2['sessionid']);
+                    $unifiedarray[$x]['videos'][$y] = $this->programmeView->getVideoURL($value2['sessionid']);
                     //$matches[]['programme_id'] = $value;
-
+                    $y++;
                 }
 
             }
+
+            $x++;
 
 
            
@@ -2158,35 +2174,24 @@ public function isVideoContainedWithinAnySubscribableProgramme($videoid, $debug=
             print_r($videos);
         }
 
+        if ($debug){
+
+            print_r($unifiedarray);
+        }
+
          //do they contain this video
+
 
          if (in_array($videoid, $videos)){
 
             
-
-            //WE NEED the programme_id
-            //then the asset_id(S)
-
-           /*  if ($debug){
-
-                var_dump($matches);
-            }
-            $y=0;
-
-            foreach ($matches as $key=>$value){
-
-                $returnArray[$y] = $this->returnAssetIDProgramme($value);
-
-                $y++;
-            } */
-
-            //return an array of asset_ids
             if ($debug){
 
                 echo 'The video is contained within a subscribable program(S)';
             }
 
-            return true;
+            return $unifiedarray;
+
 
         }else{
 
@@ -2213,6 +2218,119 @@ public function isVideoContainedWithinAnySubscribableProgramme($videoid, $debug=
 
 }
 
+public function getProgrammeidVideo ($unifiedarray, $videoid, $debug=false){
+    //searches array from isVideoContainedWithinAnySubscribableProgramme for the programme id
+
+    $matched_programmes = array();
+    $x = 0;
+
+    foreach ($unifiedarray as $key=>$value){
+
+
+        //check the $value['programmeid'] is programme id
+
+        $programmeid = null;
+        $programmeid = $value['programmeid'];
+
+        if ($debug){
+            print_r($value['videos']);
+        }
+       
+
+        foreach ($value['videos'] as $key2=>$value2){
+
+            if ($value2 == $videoid){
+
+                $matched_programmes[$x]['videoid'] = $videoid;
+                $matched_programmes[$x]['programmeid'] = $programmeid;
+                //maybe more than one asset per programme
+                $matched_programmes[$x]['assetid'] = $this->returnAssetIDProgramme($programmeid);
+
+                $x++;
+
+            }
+
+        }
+
+
+
+    }
+
+    if ($debug){
+        print_r($matched_programmes);
+    }
+
+    return $matched_programmes;
+
+}
+
+public function userAssetsAccessArray($matched_programmes, $userid, $debug){
+
+    foreach ($matched_programmes as $key=>$value){
+
+        foreach ($value['assetid'] as $key2=>$value2){
+    
+            //check $value2;
+            $access4 = null;
+            $access4 = $this->is_assetid_covered_by_user_subscription($value2, $userid, false);
+    
+            if ($access4){
+    
+                return true;
+    
+            }
+    
+    
+        }
+        
+    }
+
+}
+
+public function checkVideoProgrammeAspect($videoid, $userid, $debug){
+
+    if ($this->isVideoContainedWithinAnySubscribableProgramme($videoid, $debug)){
+
+        $access = $this->isVideoContainedWithinAnySubscribableProgramme($videoid, $debug);
+    
+        $access2 = $this->getProgrammeidVideo($access, $videoid, $debug);
+    
+        if (is_array($access2)){
+    
+    
+            $access3 = $this->userAssetsAccessArray($access2, $userid, $debug);
+    
+            if ($access3 === true){
+    
+                return true;
+            }else{
+    
+                return false;
+            }
+    
+    
+        }else{
+    
+            if ($debug){
+             echo 'no array returned';
+            }
+            //no array returned
+    
+        }
+    
+    
+    
+    }else{
+    
+        if ($debug){
+            echo 'video is not in a subscribable';
+
+        }
+    //video is not in a subscribable
+    return null; //because this is not in a subscribable programme
+    
+    }
+}
 
 public function doesUserHaveSubscriptionMenu($user_id, $debug)
             {
@@ -2628,7 +2746,7 @@ public function returnVideoDenominatorSelect2()
             AND (a.`video_id` IS NOT NULL)
             ";
 
-            echo $q . '<br><br>';
+            //echo $q . '<br><br>';
 
 
 
@@ -2731,10 +2849,11 @@ public function returnVideoDenominatorSelect2()
             {
             
 
-            $q = "Select a.`id`
-            FROM `assets_paid` as a 
-            INNER JOIN `sub_asset_paid` as b
-            WHERE b.`programme_id` = '$programmeid'
+            $q = "Select b.`id`
+            FROM `sub_asset_paid` as a
+            INNER JOIN `assets_paid` as b on a.`asset_id` = b.`id`
+            WHERE a.`programme_id` = '$programmeid'
+            AND a.`programme_id` IS NOT NULL
             ";
 
             //echo $q . '<br><br>';

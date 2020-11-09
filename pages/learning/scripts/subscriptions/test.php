@@ -19,6 +19,7 @@ $debug = false;
 
 $general = new general;
 $users = new users;
+
 $users->Load_from_key($userid);
 
 
@@ -40,6 +41,10 @@ $assets_paid = new assets_paid;
 
 require_once(BASE_URI . '/assets/scripts/classes/subscriptions.class.php');
 $subscription = new subscriptions;
+error_reporting(E_ALL);
+
+require_once(BASE_URI . '/pages/learning/classes/navigator.class.php');
+$navigator = new navigator;
 
 error_reporting(E_ALL);
 
@@ -216,7 +221,7 @@ echo '<br/><br/><br/>';
 
 //$videos = array('77', '78');
 ///
-$videoid = '297';
+$videoid = '350';
 
 echo '<h2>Is video contained within a subscribable programme</h2>';
 
@@ -231,7 +236,7 @@ var_dump($access);
 
 //$videos = array('77', '78');
 ///
-$videoid = '297';
+$videoid = '350';
 
 echo '<h2>Return asset id for videoid (not a programme approach)</h2>';
 
@@ -245,8 +250,235 @@ var_dump($access);
 
 
 echo '<br/><br/><br/>';
+
+$videoid = '56';
+
+echo '<h2>Check programme id for video</h2>';
+
+echo 'The video ' . $videoid;
+
+$access = null;
+$access2 = null;
+
+$debug = true;
+
+/* if ($assetManager->isVideoContainedWithinAnySubscribableProgramme($videoid, false)){
+
+    $access = $assetManager->isVideoContainedWithinAnySubscribableProgramme($videoid, false);
+
+    $access2 = $assetManager->getProgrammeidVideo($access, $videoid, $debug);
+
+    if (is_array($access2)){
+
+
+        $access3 = $assetManager->userAssetsAccessArray($access2, $userid, false);
+
+        if ($access3 === true){
+
+            return true;
+        }else{
+
+            return false;
+        }
+
+
+    }else{
+
+        //no array returned
+
+    }
+
+
+
+}else{
+
+//video is not in a subscribable
+return false;
+
+} */
+
+
+
+
+
+var_dump($access2);
+
+//check the asset ids against whether user has access
+//if any positive grant
+
+
+
+var_dump($access3);
+
+
 echo '<br/><br/><br/>';
+
+echo '<h2>Unified version</h2>';
+
+$debug = true;
+$access = null;
+$access = $assetManager->checkVideoProgrammeAspect($videoid, $userid, $debug);
+var_dump($access);
+
+
+
 echo '<br/><br/><br/>';
+echo 'check a given video array';
+
+
+$requiredTags = ["47","48","50","55"];
+
+$requiredTagCategories = $requiredTags;
+
+$videos = [];
+
+$x = 0;
+
+$data2 = $navigator->getVideoData($requiredTagCategories, $tagsToMatch, $debug, $active, $gieqsDigitalv1);
+
+$videos = $data2;
+
+
+
+
+foreach ($videos as $key=>$value){
+
+
+    //does it require subscription?
+
+    $array_key = $key;
+
+    //check there is no access via a programme
+
+    $access3 = $assetManager->checkVideoProgrammeAspect($value['id'], $userid, false);
+
+    if ($access3 === false){ //contained within a programme and no access to this programme
+
+
+        if ($debug){
+
+            echo 'user id ' . $userid . ' has no access to video id ' . $value['id'] . ' via a programme';
+            echo 'now checking access via videoset';
+            echo '<br/><br/>';
+
+       }
+
+       $access = $assetManager->video_requires_subscription($value['id'], false);
+
+        if ($access){ //requires subscription via videoset (is in a videoset)
+
+
+            $access2 = $assetManager->video_owned_by_user($value['id'], $userid, false);
+
+            if ($access2 === false){ //in videoset, not owned by user
+
+                //remove this video from the array
+                unset($videos[$key]);
+                if ($debug){
+
+                    echo 'user id ' . $userid . ' has no access to video id ' . $value['id'];
+                    echo '<br/><br/>';
+
+                }
+
+
+            }else{
+
+                if ($debug){
+
+                    echo 'user id ' . $userid . ' has access to video id ' . $value['id'];
+                    echo '<br/><br/>';
+
+                }
+
+                
+                //user has access to this video via videoset.  despite no access via programme grant
+            }
+
+        }else{ //is not in a videoset (but is contained within a programme)
+
+            if ($debug){
+
+                echo 'video id ' . $value['id'] . ' requires a programme subscription and is not covered by a videoset';
+                echo 'video id ' . $value['id'] . ' removed from array';
+                echo '<br/><br/>';
+
+            }
+
+            unset($videos[$key]);
+
+
+        }
+
+
+
+    }elseif ($access3 === true) {
+
+        if ($debug){
+
+            echo 'user id ' . $userid . ' has access to video id ' . $value['id'] . ' via a programme';
+            echo 'access granted';
+            echo '<br/><br/>';
+
+       }
+
+       
+
+    }else{
+
+        //not contained within a programme
+        //check if contained within a videoset
+        $access = $assetManager->video_requires_subscription($value['id'], false);
+
+        if ($access){ //requires subscription via videoset (is in a videoset)
+
+
+            $access2 = $assetManager->video_owned_by_user($value['id'], $userid, false);
+
+            if ($access2 === false){ //in videoset, not owned by user
+
+                //remove this video from the array
+                unset($videos[$key]);
+                if ($debug){
+
+                    echo 'user id ' . $userid . ' has no access to video id ' . $value['id'];
+                    echo '<br/><br/>';
+
+                }
+
+
+            }else{
+
+                if ($debug){
+
+                    echo 'user id ' . $userid . ' has access to video id ' . $value['id'];
+                    echo '<br/><br/>';
+
+                }
+
+                
+                //user has access to this video via videoset.  despite no access via programme grant
+            }
+
+        }else{
+
+            //not in programme or videoset
+            
+
+            if ($debug){
+
+                echo 'video ' . $value['id'] . ' is freely available';
+
+                echo 'user id ' . $userid . ' has access to video id ' . $value['id'];
+                echo '<br/><br/>';
+
+            }
+
+        }
+
+    }
+
+}
 
 
 

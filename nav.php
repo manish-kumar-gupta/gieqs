@@ -2,7 +2,7 @@
 <?php $users = new users;
 $programme = new programme;
 $sessionView = new sessionView;
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 
 
 require_once BASE_URI . "/vendor/autoload.php";

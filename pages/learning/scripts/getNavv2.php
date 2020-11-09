@@ -97,75 +97,7 @@ $assetid = $data['assetid'];
     
            }
 
-        //work data 2 to remove those without a subscription
-
-        //unless is superuser
-
-        if ($isSuperuser == '0'){
-
-        foreach ($data2 as $key=>$value){
-
-
-            //does it require subscription?
-
-            $array_key = $key;
-
-            $access = $assetManager->video_requires_subscription($value, false);
-
-            if ($access){
-
-
-                $access2 = $assetManager->video_owned_by_user($value, $userid, false);
-  
-                if ($access2 === false){
-
-                    //remove this video from the array
-                    unset($data2[$key]);
-                    if ($debug){
-
-                        echo 'user id ' . $userid . ' has no access to video id ' . $value;
-
-                   }
-
-
-                }else{
-
-                    if ($debug){
-
-                        echo 'user id ' . $userid . ' has access to video id ' . $value;
-
-                   }
-
-                    
-                    //user has access to this video
-                }
-
-            }else{
-
-                if ($debug){
-
-                    echo 'video id ' . $value . ' does not require a subscription';
-
-                }
-
-            }
-
-            //test user access
-
-
-
-            
-
-        }
-
-        }else{
-
-            if ($debug){
-
-                echo 'all videos available as superuser';
-            }
-        }
-
+        
         //if a videoset
 
 if (isset($videoset)){
@@ -302,6 +234,82 @@ if (isset($videoset)){
 
 
     }
+
+
+}else{
+
+    //normal page
+
+    //work data 2 to remove those without a subscription
+
+        //unless is superuser
+
+        if ($isSuperuser == '0'){
+
+            foreach ($data2 as $key=>$value){
+    
+    
+                //does it require subscription?
+    
+                $array_key = $key;
+    
+                $access = $assetManager->video_requires_subscription($value, false);
+    
+                if ($access){
+    
+    
+                    $access2 = $assetManager->video_owned_by_user($value, $userid, false);
+      
+                    if ($access2 === false){
+    
+                        //remove this video from the array
+                        unset($data2[$key]);
+                        if ($debug){
+    
+                            echo 'user id ' . $userid . ' has no access to video id ' . $value;
+    
+                       }
+    
+    
+                    }else{
+    
+                        if ($debug){
+    
+                            echo 'user id ' . $userid . ' has access to video id ' . $value;
+    
+                       }
+    
+                        
+                        //user has access to this video
+                    }
+    
+                }else{
+    
+                    if ($debug){
+    
+                        echo 'video id ' . $value . ' does not require a subscription';
+    
+                    }
+    
+                }
+    
+                //test user access
+    
+    
+    
+                
+    
+            }
+    
+            }else{
+    
+                if ($debug){
+    
+                    echo 'all videos available as superuser';
+                }
+            }
+    
+
 
 
 }
