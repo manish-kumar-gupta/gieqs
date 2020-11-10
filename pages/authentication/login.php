@@ -65,6 +65,24 @@ if (isset($_GET['destination'])) {
 
     }
 
+  }else if ($destination == 'viewasset'){
+
+    //define other constant
+
+    if (isset($_GET['assetid']) & is_numeric($_GET['assetid'])){
+
+      $assetid = $_GET['assetid'];
+      //$target = 'pages/learning/viewer.php?id=' . $videoid;
+
+      $target = 'pages/learning/pages/general/show_subscription.php?assetid='.$assetid;
+
+
+    }else{
+
+      $destination = null;
+
+    }
+
   }else {
 
     $destination = null;
