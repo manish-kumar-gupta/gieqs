@@ -420,8 +420,9 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
             <!-- SVG illustration -->
             <div class="pt-7 position-absolute middle right-0 col-lg-7 col-xl-6 d-none d-lg-block">
                 <figure class="w-75" style="max-width: 1000px;">
-                    <img alt="Image placeholder" src="<?php echo BASE_URL;?>/assets/img/covers/bleeding/heaterThanks.png"
+                    <img alt="Image placeholder" src="<?php echo BASE_URL;?>/assets/img/covers/learning/bedysplasia_transparent.png"
                         class="svg-inject img-fluid">
+                        <figcaption class="figure-caption text-right">Dysplasia within Barrett's Oesophagus. <br/>Acetic Acid Stain + Virtual Chromoendoscopy.</figcaption>
                 </figure>
             </div>
             <!-- SVG background -->
@@ -436,12 +437,19 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                 <div class="col">
                 <div class="row">
                         <div class="col-lg-10 col-xl-10 text-center text-lg-left">
-                        <a href="<?php echo $registrationURL;?>">
+                        <a href="<?php echo BASE_URL;?>/pages/program/program_trainer_colon.php">
                             <div class="alert alert-modern alert-dark">
                                 <span class="badge gieqsGold badge-pill">
                                     New
                                     </span>
-                                <span class="alert-content">Register for CATCH up now</span>
+                                <span class="alert-content">Live / Virtual Hybrid Courses</span>
+                             </div></a>
+                        <a href="<?php echo $registrationURL;?>">
+                            <div class="alert alert-modern alert-dark">
+                            <span class="badge gieqsGold badge-pill">
+                                <i class="fas fa-notes-medical"></i>
+                                    </span>
+                                <span class="alert-content">Register for GIEQs Digital on Demand</span>
                              </div></a>
                              <a class="ml-3 pointer" data-toggle="modal" data-target="#accreditation">
                             <div class="alert alert-modern alert-dark">
@@ -467,10 +475,10 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                         better!</span>
                                      
                                     <span class="d-block" style="color: rgb(238, 194, 120);"><strong
-                                            class="font-weight-light">GIEQs Digital is over for 2020<br />It is still available, on demand,
-                                            </strong><br />in full, live, right here</span>
+                                            class="font-weight-light">GIEQs Digital is over for 2020<br />It is still available, on demand.
+                                            </strong><br />NEW Virtual / Live Hybrid Courses</span>
                                 </h2>
-                                <p class="lead text-white">Catch us again, Fall 2021, live and face to face with the same high quality stream. Or throughout the year on GIEQs Online</p>
+                                <p class="lead text-white">Catch us again, Fall 2021, live and face to face.  If you can't wait until then new Live / Virtual Hybrid Courses start November 2020</p>
                                 <div class="mt-5">
 
                                         <?php
@@ -489,10 +497,13 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                     <a href="<?php echo $catchupLink;?>"
                                         class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
                                         style="background-color: rgb(238, 194, 120);">
-                                        <span class="btn-inner--text">On Demand (requires login + subscription)</span>
+                                        <span class="btn-inner--text">GIEQs Digital On Demand <sup>*</sup></span>
                                         <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
 
                                     </a>
+
+                                   
+                                  
                                   
                                     <!-- <a href="https://www.youtube.com/watch?v=zRy1xwGsagc"
                                         class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mt-2 mr-sm-4 scroll-me"
@@ -606,6 +617,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
           </div>
         </div>
       </section> -->
+      <hr />
         <section class="slice slice-lg mt-1">
             <div class="container">
                 <div class="row no-gutters align-items-md-center text-center text-md-left">

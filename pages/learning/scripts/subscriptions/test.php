@@ -46,6 +46,9 @@ error_reporting(E_ALL);
 require_once(BASE_URI . '/pages/learning/classes/navigator.class.php');
 $navigator = new navigator;
 
+require_once(BASE_URI . '/assets/scripts/classes/userFunctions.class.php');
+$userFunctions = new userFunctions;
+
 error_reporting(E_ALL);
 
 echo 'hello';
@@ -481,5 +484,41 @@ foreach ($videos as $key=>$value){
 }
 
 
+echo '<br/><br/><br/>';
 
+echo '<h2>Testing Mail to GIEQs Digital Registrants</h2>';
+
+$requiredArray = ['23', '25', '29', '30', '31'];
+
+        //print_r($requiredArray);
+
+        //print_r($liveAccess);
+
+        
+        $bFound = (count(array_intersect($liveAccess, $requiredArray))) ? true : false;
+
+        //if (in_array($liveAccess, 25)){
+        if ($bFound){
+
+$access = null;
+$access = $userFunctions->enrolmentPatternLive($userid);
+
+var_dump($access);
+
+//if has access to any of these then grant mail and update the user registration with a 1 month trial
+
+
+
+
+echo '<br/><br/><br/>';
+echo '<br/><br/><br/>';
+echo '<br/><br/><br/>';
+echo '<br/><br/><br/>';
+echo '<br/><br/><br/>';
+echo '<br/><br/><br/>';
+echo '<br/><br/><br/>';
+echo '<br/><br/><br/>';
+echo '<br/><br/><br/>';
+echo '<br/><br/><br/>';
+echo '<br/><br/><br/>';
 

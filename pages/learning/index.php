@@ -201,6 +201,35 @@ top: -20vh;
             
         </div>
       </section>
+      
+      <section class="slice slice-lg">
+        <div class="container">
+          <div class="row row-grid align-items-center justify-content-around">
+            <div class="col-lg-5 order-lg-2">
+              <div class="pr-md-4">
+                <h5 class="h3">NEW - Live / Virtual Hybrid Courses</h5>
+                <p class="text-muted lead my-4">The current global situation presents significant challenges for training.</p>
+                <p class="text-muted lead my-4">We have developed a COVID proof live/virtual hybrid course, initially focussed on colonoscopy and traing that will set a benchmark for distance learning in endoscopy.</p>
+
+                <a href="<?php echo BASE_URL;?>/pages/program/program_basic_colon.php" class="btn btn-sm bg-gieqsGold text-dark rounded-pill btn-icon m-2">
+                  <span class="btn-inner--icon"><i class="fas fa-binoculars"></i></span>
+                  <span class="btn-inner--text">Discover Basic Colonoscopy</span>
+                </a>
+                <a href="<?php echo BASE_URL;?>/pages/program/program_trainer_colon.php" class="btn btn-sm bg-gieqsGold text-dark rounded-pill btn-icon m-2">
+                  <span class="btn-inner--icon"><i class="fas fa-binoculars"></i></span>
+                  <span class="btn-inner--text">Discover Train the Colonoscopy Trainers</span>
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+              <div class="position-relative" style="z-index: 10;">
+                <img alt="Image placeholder" src="<?php echo BASE_URL;?>/assets/img/backgrounds/trainers.png" class="img-center img-fluid">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <hr />
       <section class="slice slice-lg">
         <div class="container">
           <div class="row row-grid align-items-center justify-content-around">
@@ -224,6 +253,7 @@ top: -20vh;
           </div>
         </div>
       </section>
+      <hr />
       <section class="slice slice-lg bg-cover" style="background-image: url('<?php echo BASE_URL;?>/assets/img/polyps/sspFuji.png'); background-position: center bottom;">
         <div class="container">
           <div class="row">
@@ -245,6 +275,8 @@ top: -20vh;
           </div>
         </div>
       </section>
+      <hr />
+
       <section class="slice slice-lg">
         <div class="container">
           <div class="row row-grid align-items-center justify-content-around">
@@ -266,6 +298,8 @@ top: -20vh;
           </div>
         </div>
       </section>
+     
+
       <section class="slice slice-lg bg-gradient-dark">
         <div class="container">
           <div class="mb-5 text-center">

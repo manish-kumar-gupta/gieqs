@@ -576,7 +576,7 @@ if ($debug){
                                     </div>
                                     <div class="card-body">
                                         <ul class="list-unstyled mb-4">
-                                            <li>available until November 9th 2020</li>
+                                            <li>available until December 9th 2020</li>
                                             <li>Access to full programme</li>
                                             <li>GIEQs online access<sup>*</sup></li>
                                             
@@ -612,7 +612,7 @@ if ($debug){
                                 </div>
                                 <div class="card-body">
                                     <ul class="list-unstyled mb-4">
-                                        <li>available until November 9th 2020</li>
+                                        <li>available until December 9th 2020</li>
                                         <li>Access to full programme</li>
                                         <li>GIEQs online access<sup>*</sup></li>
                                         
@@ -648,7 +648,7 @@ if ($debug){
                                 </div>
                                 <div class="card-body">
                                     <ul class="list-unstyled mb-4">
-                                        <li>available until November 9th 2020</li>
+                                        <li>available until December 9th 2020</li>
                                         <li>Access to full programme</li>
                                         <li>GIEQs online access<sup>*</sup></li>
                                         
@@ -683,7 +683,7 @@ if ($debug){
                                 </div>
                                 <div class="card-body">
                                     <ul class="list-unstyled mb-4">
-                                        <li>available until November 9th 2020</li>
+                                        <li>available until December 9th 2020</li>
                                         <li>Access to full programme</li>
                                         <li>GIEQs online access<sup>*</sup></li>
                                         
