@@ -30,7 +30,7 @@ Class video_PDO {
 	private $connection;
 
 	public function __construct(){
-		$this->connection = new DataBaseMysqlPDOLearning();
+		$this->connection = new DataBaseMysqlPDOLearning2();
 	}
 
     /**

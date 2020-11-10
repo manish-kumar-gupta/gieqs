@@ -179,7 +179,7 @@ $formv1 = new formGenerator;
 
 $general = new general;
 
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 
 ${$databaseName} = new $databaseName;
 

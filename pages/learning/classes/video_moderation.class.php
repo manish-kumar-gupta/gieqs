@@ -16,7 +16,7 @@ Class video_moderation {
 	
 
 	public function __construct(){
-		$this->connection = new DataBaseMysqlPDOLearning();
+		$this->connection = new DataBaseMysqlPDOLearning2();
 	}
 
 	public function getModerationTable()
