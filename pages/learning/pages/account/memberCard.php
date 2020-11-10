@@ -7,8 +7,38 @@
                         <?php echo $users->getUserInitials($userid);?>
                       </a>
                       <div class="media-body">
+
+
+                      <?php
+
+                      $accesslevel = $currentUserLevel;
+                      
+                      if ($accesslevel == 1){
+
+                        $accessLevelText = 'GIEQs.com Superuser';
+                      }elseif ($accesslevel == 2){
+                
+                        $accessLevelText = 'GIEQs.com Creator';
+                      }elseif ($accesslevel == 3){
+                
+                        $accessLevelText = 'GIEQs.com Staff, no creator priveledge';
+                      }elseif ($accesslevel == 4){
+                
+                        $accessLevelText = 'GIEQs Pro Member';
+                      }elseif ($accesslevel == 5){
+                        
+                        $accessLevelText = 'GIEQS Standard Member';
+                        
+                      }elseif ($accesslevel == 6){
+                        
+                        $accessLevelText = 'GIEQS Basic Member';
+                        
+                      }
+                      
+                      
+                      ?>
                         <h5 class="text-white mb-0"><?php if ($debug){ echo '$userid is ' . $userid;}  echo $users->getfirstname() . ' ' . $users->getsurname();?></h5>
-                        <p class="text-sm text-muted mb-0"><?php echo $users->getUserAccessLevelText($userid);?></p>
+                        <p class="text-sm text-muted mb-0"><?php echo $accessLevelText;?></p>
 
                         <div>
                           <!-- <form>
@@ -21,7 +51,7 @@
                       </div>
                     </div>
                   </div>
-                  <?php if ($users->getUserAccessLevel($userid) == 5){?>
+                  <?php if ($currentUserLevel == 5){?>
 
                   <!--TODO Implement this upgrade functionality-->
                   <div class="col-auto flex-fill mt-4 mt-sm-0 text-sm-right">
@@ -31,7 +61,7 @@
                     </a>
                   </div>
                   <?php }?>
-                  <?php if ($users->getUserAccessLevel($userid) == 6){?>
+                  <?php if ($currentUserLevel == 6){?>
 
 <!--TODO Implement this upgrade functionality-->
 <div class="col-auto flex-fill mt-4 mt-sm-0 text-sm-right">
