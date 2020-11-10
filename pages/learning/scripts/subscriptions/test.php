@@ -481,7 +481,7 @@ foreach ($usersArray as $key => $value) {
 
         }
 
-        if (!($assetManager->is_assetid_covered_by_user_subscription('4', $value, false))) {
+        if (!($assetManager->is_assetid_covered_by_user_subscription('4', $value, false)) && !($assetManager->is_assetid_covered_by_user_subscription('3', $value, false))) {
 
             $subscription->New_subscriptions($value, 4, $current_date_sqltimestamp, $end_date_sqltimestamp, '1', '0', 'GIFT_GIEQSDIGITAL_SUBSCRIBERS');
             echo $subscription->prepareStatementPDO();
