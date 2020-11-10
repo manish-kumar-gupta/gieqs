@@ -488,22 +488,58 @@ echo '<br/><br/><br/>';
 
 echo '<h2>Testing Mail to GIEQs Digital Registrants</h2>';
 
-$requiredArray = ['23', '25', '29', '30', '31'];
+$requiredArray = ['23', '25', '29', '30', '31']; //all GIEQs digital registrants
 
         //print_r($requiredArray);
 
         //print_r($liveAccess);
 
-        
-        $bFound = (count(array_intersect($liveAccess, $requiredArray))) ? true : false;
+        //get all users
 
-        //if (in_array($liveAccess, 25)){
-        if ($bFound){
+        $usersArray = $userFunctions->getMailListAll();
+
+        foreach ($usersArray as $key=>$value){
 
 $access = null;
-$access = $userFunctions->enrolmentPatternLive($userid);
+$access = $userFunctions->enrolmentPatternLive($value);
 
 var_dump($access);
+
+
+        
+$bFound = (count(array_intersect($access, $requiredArray))) ? true : false;
+
+//if (in_array($liveAccess, 25)){
+if ($bFound){
+
+    echo $value . ' has access';
+    //update database
+
+    
+    $current_date = new DateTime('now', new DateTimeZone('UTC'));
+
+    $current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s');
+
+    $interval = 'P1M';
+
+    $end_start_calculate_date = $current_date;
+
+    $end_start_calculate_date->add(new DateInterval($interval));
+
+    $end_date_sqltimestamp = date_format($end_start_calculate_date, 'Y-m-d H:i:s');
+
+    //$subscription->New_subscriptions($value, 9, $current_date_sqltimestamp, $end_date_sqltimestamp, '1', '0', 'GIFT_GIEQSDIGITAL_SUBSCRIBERS');
+
+    echo '<br/><br/>would update so now \$subscription->New_subscriptions(' . $value . ', 9, ' . $current_date_sqltimestamp . ', ' . $end_date_sqltimestamp . ', \'1\', \'0\', \'GIFT_GIEQSDIGITAL_SUBSCRIBERS\'); <br/><br/>';
+
+
+}else{
+
+    echo $value . ' has NO access<br/><br/>';
+
+}
+
+        }
 
 //if has access to any of these then grant mail and update the user registration with a 1 month trial
 

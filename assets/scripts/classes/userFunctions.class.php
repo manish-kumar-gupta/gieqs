@@ -794,6 +794,41 @@ Class userFunctions {
 
 		}
 
+		public function getMailListAll()
+            {
+            
+
+            $q = "SELECT `user_id` FROM `users`";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn[] = $row['user_id'];
+					
+
+
+				}
+
+				return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+		}
+
 		public function getMailListAlreadyMailed($email_id)
             {
             
