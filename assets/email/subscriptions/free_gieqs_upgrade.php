@@ -776,7 +776,7 @@
 
 <p><strong>Be quick</strong> &ndash; a lot of these materials are currently free but over the next month will be added to learning experiences which will require a subscription.</p>
 
-<p>We look forward to your feedback. If you have something you would like to let us know about gieqs online please <a href="mailto:admin@gieqs.com&subject=feedback">contact us!</a></p>
+<p>We look forward to your feedback. If you have something you would like to let us know about gieqs online please <a href="mailto:admin@gieqs.com?subject=feedback on GIEQs online">contact us!</a></p>
 
 
 

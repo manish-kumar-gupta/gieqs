@@ -12,6 +12,8 @@ $openaccess = 1;
 
 require BASE_URI . '/head.php';
 
+//if $userid is logged in
+
 if (isset($_GET['destination'])) {
 
   $destination = $_GET['destination'];
@@ -89,6 +91,14 @@ if (isset($_GET['destination'])) {
 
   }
 
+
+}
+
+if ($userid && $target){
+
+//just go to location
+
+redirect_user(BASE_URL . '/' . $target);
 
 }
 
