@@ -1749,6 +1749,54 @@ public function programme_owned_by_user ($programmeid, $userid, $debug){
 
 }
 
+public function getProgrammeidAsset ($assetid, $debug=false){
+
+    $q = "Select 
+    c.`programme_id`
+    FROM `assets_paid` as b
+    INNER JOIN `sub_asset_paid` as c ON b.`id` = c.`asset_id`
+    WHERE c.`asset_id` = '$assetid'";
+
+//echo $q . '<br><br>';
+
+
+
+$result = $this->connection->RunQuery($q);
+
+$x = 0;
+$nRows = $result->rowCount();
+
+if ($nRows > 0) {
+
+    while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+        $rowReturn[$x] = $row['programme_id'];
+        $x++;
+
+
+    }
+
+
+    return $rowReturn;
+
+} else {
+    
+
+    if ($debug){
+
+        echo 'no programmes contained within this asset';
+    }
+
+    return false;
+
+    
+}
+
+
+
+
+}
+
 public function which_assets_contain_programme ($programmeid, $debug=false){
 
             $q = "Select 

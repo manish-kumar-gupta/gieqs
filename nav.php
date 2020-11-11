@@ -52,10 +52,10 @@ spl_autoload_register ('class_loader');
               //load user from key
               $liveAndLoggedIn = true;
 
-              $debug=false;
+              $debug=FALSE;
               $serverTimeZoneNav = new DateTimeZone('Europe/Brussels'); //because this is where course is held
               $currentNavTime = new DateTime('now', $serverTimeZoneNav);
-              $currentNavTime = new DateTime('2020-11-16', $serverTimeZoneNav);
+              $currentNavTime = new DateTime('2020-11-17', $serverTimeZoneNav); //TESTING
 
 
 
@@ -167,7 +167,7 @@ spl_autoload_register ('class_loader');
                       </li> -->
 
                       <li>
-                        <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program-printable-catchup-public.php?id=<?php echo $asset_id[0];?>">
+                        <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/live/programLiveGeneric.php?assetid=<?php echo $asset_id[0];?>">
                         <?php echo $assets_paid->getname();?> Live Programme
                         </a>
                       </li>

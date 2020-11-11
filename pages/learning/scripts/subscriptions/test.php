@@ -98,6 +98,36 @@ var_dump($access);
 //does this video require a subscription
 echo '<br/><br/><br/>';
 
+echo '<h2>Return start and end times for programme elements (sessions)</h2>';
+
+$programmes = null;
+
+$programmes = $sessionView->getProgrammeTimes([0=>['id'=>33],], $debug);
+
+//for one program
+
+$programmes2 = $sessionView->convertProgrammeTimes($programmes, $debug);
+
+$breaks = $sessionView->getProgrammeBreaks([0=>['id'=>33],], true);
+
+$breaks2 = $sessionView->convertProgrammeTimesBreaks($breaks, $debug);
+
+
+//get array of session times
+
+//get array of break times
+
+//var_dump($programmes);
+//var_dump($breaks);
+
+var_dump($programmes2);
+var_dump($breaks2);
+
+
+echo '<br/><br/><br/>';
+echo '<br/><br/><br/>';
+echo '<br/><br/><br/>';
+
 $videos = array('77', '78');
 ///$videoid = '77';
 echo '<h2>Return tag categories for given video array</h2>';
@@ -442,7 +472,7 @@ $usersArray = $userFunctions->getMailListAll();
 
 //$usersArray = ['598'];//test
 
-foreach ($usersArray as $key => $value) {
+/* foreach ($usersArray as $key => $value) {  //COMMENTED SINCE SCRIPT LONG
 
     $access = null;
     $access = $userFunctions->enrolmentPatternLive($value);
@@ -503,7 +533,7 @@ foreach ($usersArray as $key => $value) {
 
     }
 
-}
+} */
 
 //if has access to any of these then grant mail and update the user registration with a 1 month trial
 

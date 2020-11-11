@@ -245,7 +245,7 @@ error_reporting(E_ALL);
 
         $access = null;
 
-        $access = $assetManager->is_assetid_covered_by_user_subscription($assetid, $userid, true);
+        $access = $assetManager->is_assetid_covered_by_user_subscription($assetid, $userid, $debug);
 
         if (!$access){
 

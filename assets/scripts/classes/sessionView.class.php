@@ -615,6 +615,176 @@ class sessionView
 
         }
 
+        public function getProgrammeTimes($programmes, $debug=false){
+
+            $rowReturn = array();
+
+
+            foreach ($programmes as $key=>$value){
+
+                $programmeid = null;
+                $programmeid = $value['id'];
+
+                if ($debug){
+
+                    echo 'programme id is ' . $programmeid;
+                }
+
+                $q = "Select 
+                a.`date`, a.`id`,
+                c.`id` as `sessionid`, c.`timeFrom`, c.`timeTo`, c.`break` 
+                from `programme` as a
+                INNER JOIN `programmeOrder` as b on a.`id` = b.`programmeid` 
+                INNER JOIN `session` as c on b.`sessionid` = c.`id`
+                WHERE a.`id` = '{$programmeid}'
+                ORDER BY c.`timeFrom` ASC
+                ";
+
+                if ($debug){
+                    echo $q . '<br><br>';
+
+                }
+
+
+
+
+                $result = $this->connection->RunQuery($q);
+                
+                $x = 0;
+                $y = 0;
+                $nRows = $result->rowCount();
+
+                if ($nRows > 0) {
+
+                    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                    
+
+                        //$id = $row['id'];
+
+                        $rowReturn[$programmeid][$x]['timeFrom'] = $row['timeFrom'];
+                        $rowReturn[$programmeid][$x]['timeTo'] = $row['timeTo'];
+                        $rowReturn[$programmeid][$x]['break'] = $row['break'];
+
+                        $x++;
+                    }
+
+                }
+
+
+            }
+
+            return $rowReturn;
+
+
+        }
+
+        public function getProgrammeBreaks($programmes, $debug=false){
+
+            $rowReturn = array();
+
+
+            foreach ($programmes as $key=>$value){
+
+                $programmeid = null;
+                $programmeid = $value['id'];
+
+                if ($debug){
+
+                    echo 'programme id is ' . $programmeid;
+                }
+
+                $q = "Select 
+                a.`date`, a.`id`,
+                c.`id` as `sessionid`, c.`timeFrom`, c.`timeTo`, c.`break`, c.`title` 
+                from `programme` as a
+                INNER JOIN `programmeOrder` as b on a.`id` = b.`programmeid` 
+                INNER JOIN `session` as c on b.`sessionid` = c.`id`
+                WHERE a.`id` = '{$programmeid}' AND (c.`break` = '1')
+                ORDER BY c.`timeFrom` ASC
+                ";
+
+                if ($debug){
+                    echo $q . '<br><br>';
+
+                }
+
+
+
+
+                $result = $this->connection->RunQuery($q);
+                
+                $x = 0;
+                $y = 0;
+                $nRows = $result->rowCount();
+
+                if ($nRows > 0) {
+
+                    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                    
+
+                        //$id = $row['id'];
+
+                        $rowReturn[$programmeid][$x]['title'] = $row['title'];
+
+                        $rowReturn[$programmeid][$x]['timeFrom'] = $row['timeFrom'];
+                        $rowReturn[$programmeid][$x]['timeTo'] = $row['timeTo'];
+                        $rowReturn[$programmeid][$x]['break'] = $row['break'];
+
+                        $x++;
+                    }
+
+                }
+
+
+            }
+
+            return $rowReturn;
+
+
+        }
+
+        public function convertProgrammeTimes($programmes, $debug=false){
+
+            $rowReturn = array();
+
+            foreach ($programmes as $key=>$value){
+
+                foreach ($value as $key2=>$value2){
+
+                    //print_r($value2);
+                    $rowReturn[] = $value2['timeFrom'];
+
+                }
+
+            }
+
+            return $rowReturn;
+
+
+        }
+
+        public function convertProgrammeTimesBreaks($breaks, $debug=false){
+
+            $rowReturn = array();
+
+            foreach ($breaks as $key=>$value){
+
+                foreach ($value as $key2=>$value2){
+
+                    //print_r($value2);
+                    $rowReturn[] = ['title' => $value2['title'], 'timeFrom'=>$value2['timeFrom']];
+
+                }
+
+            }
+
+            return $rowReturn;
+
+
+        }
+
         public function getStartEndProgrammes ($programmes, $debug){
 
             //takes input from getStartAndEndProgrammes

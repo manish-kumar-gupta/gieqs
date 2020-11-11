@@ -34,8 +34,8 @@ $url =  "{$_SERVER['REQUEST_URI']}";
 
                   
 
-                    <a class="nav-link nav-link-icon"
-                        href="<?php echo BASE_URL;?>/pages/learning/pages/live/plenary.php">
+                    <a class="nav-link nav-link-icon <?php if ($highlightCourse){echo 'disabled';}?>"
+                        href="<?php echo BASE_URL;?>/pages/learning/pages/live/course.php?assetid=<?php echo $asset_id[0];?>">
                         <span
                             class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2">LIVE</span>
 
@@ -45,13 +45,13 @@ $url =  "{$_SERVER['REQUEST_URI']}";
 
 
                                 <span
-                                    class="nav-link-inner--text <?php if ($highlightCourse){echo 'gieqsGold';}?>">Course</span>
+                                    class="nav-link-inner--text <?php if ($highlightCourse){echo 'gieqsGold';}?>">HD Stream</span>
                             </a>
                 </li
                 <li class="nav-item">
                     
                     <a class="nav-link nav-link-icon"
-                        href="https://app.sli.do/event/<?php echo $programme->geturl_slido();?>">
+                        href="https://app.sli.do/event/<?php echo $programme->geturl_slido();?>" target="_blank">
                        
 
                         
@@ -66,8 +66,8 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                 </li>
                 
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon" target="_blank"
-                        href="<?php echo BASE_URL;?>/pages/learning/pages/live/programLive.php">
+                    <a class="nav-link nav-link-icon <?php if ($highlightProgram) {echo 'disabled';}?>" target="_blank"
+                        href="<?php echo BASE_URL;?>/pages/learning/pages/live/programLiveGeneric.php?assetid=<?php echo $asset_id[0];?>">
 
                         <span class="nav-link-inner--text <?php if ($highlightProgram){echo 'gieqsGold';}?>">Live
                             Programme</span>
