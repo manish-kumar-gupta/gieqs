@@ -2937,6 +2937,47 @@ public function returnVideoDenominatorSelect2()
         }
 
 
+        public function getOwnersAsset($assetid)
+            {
+            //via subscriptions
+
+            $q = "Select c.`user_id`
+            FROM `subscriptions` as c
+            WHERE c.`asset_id` = '$assetid' 
+            GROUP BY c.`user_id`
+            ";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                    
+        
+                    $rowReturn[] = $row['user_id'];
+                  
+        
+        
+                }
+                return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
+
+
 
 
 

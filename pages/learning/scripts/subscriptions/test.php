@@ -539,6 +539,48 @@ $usersArray = $userFunctions->getMailListAll();
 
 echo '<br/><br/><br/>';
 echo '<br/><br/><br/>';
+echo 'Participants';
+
+//get array of participants 
+
+$assetid = 7;
+
+$owners = $assetManager->getOwnersAsset($assetid);
+
+print_r($owners);
+
+echo '<table>';
+
+echo '<tr>';
+echo '<th>Name</th>';
+echo '<th>Gender</th>';
+echo '<th>Role</th>';
+echo '<th>Country</th>';
+echo '</tr>';
+
+
+
+foreach ($owners as $key=>$value){
+    echo '<tr>';
+
+    $users->Load_from_key($value);
+
+    echo "<td>{$users->getfirstname()} {$users->getsurname()}</td>";
+    echo "<td>{$users->getgender()}</td>";
+    echo "<td>{$users->getendoscopistType()}</td>";
+    echo "<td>{$general->getCountryName($users->getcentreCountry())}</td>";
+
+    echo '</tr>';
+
+
+}
+
+
+
+echo '</table>';
+
+
+
 echo '<br/><br/><br/>';
 echo '<br/><br/><br/>';
 echo '<br/><br/><br/>';
