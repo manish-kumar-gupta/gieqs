@@ -23,7 +23,7 @@ color: rgb(238, 194, 120);
                }
                #navbar-main{
 
-z-index: 9999;
+z-index: 1000;
 }
                .bg-gieqsGold {
 
