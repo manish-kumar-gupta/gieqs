@@ -537,15 +537,28 @@ $usersArray = $userFunctions->getMailListAll();
 
 //if has access to any of these then grant mail and update the user registration with a 1 month trial
 
+$currentTime = new DateTime('now', $serverTimeZone);
+
 echo '<br/><br/><br/>';
 echo '<br/><br/><br/>';
 echo 'Participants';
 
 //get array of participants 
 
-$assetid = 7;
+$assetid = 8;
 
 $owners = $assetManager->getOwnersAsset($assetid);
+
+foreach ($owners as $key=>$value){
+
+    //push if active
+    if (!($assetManager->isSubscriptionActive($value['id'], $currentTime, false))){
+
+        unset($owners[$value]);
+
+    }
+
+}
 
 print_r($owners);
 

@@ -712,7 +712,20 @@ echo 'Participants';
 
 $assetid = 7;
 
+//$owners = $assetManager->getOwnersAsset($assetid);
+
 $owners = $assetManager->getOwnersAsset($assetid);
+
+/* foreach ($owners as $key=>$value){
+
+    //push if active
+    if (!($assetManager->isSubscriptionActive($value['id'], $currentTime, false))){
+
+        unset($owners[$key]);
+
+    }
+
+} */
 
 //print_r($owners);
 echo '<h2>Basic Colon Course</h2>';
@@ -753,6 +766,17 @@ echo '<br/><br/><br/>';
 $assetid = 8;
 
 $owners = $assetManager->getOwnersAsset($assetid);
+
+/* foreach ($owners as $key=>$value){
+
+    //push if active
+    if (!($assetManager->isSubscriptionActive($value['id'], $currentTime, false))){
+
+        unset($owners[$key]);
+
+    }
+
+} */
 
 //print_r($owners);
 echo '<h2>Trainer Colon Course</h2>';

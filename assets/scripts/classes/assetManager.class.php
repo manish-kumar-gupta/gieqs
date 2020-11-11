@@ -2941,10 +2941,13 @@ public function returnVideoDenominatorSelect2()
             {
             //via subscriptions
 
-            $q = "Select c.`user_id`
+            $q = "Select c.`id`, c.`user_id`
             FROM `subscriptions` as c
-            WHERE c.`asset_id` = '$assetid' 
+            WHERE c.`asset_id` = '$assetid'
+            AND a.`active` = '1'
+            AND a.`expiry_date` > NOW()
             GROUP BY c.`user_id`
+            
             ";
 
             //echo $q . '<br><br>';
@@ -2962,8 +2965,11 @@ public function returnVideoDenominatorSelect2()
 
                     
         
-                    $rowReturn[] = $row['user_id'];
-                  
+                    $rowReturn[$x]['user_id'] = $row['user_id'];
+                    $rowReturn[$x]['id'] = $row['id'];
+ 
+
+                    $x++;
         
         
                 }

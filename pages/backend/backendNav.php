@@ -84,7 +84,7 @@
                     <span class="dropdown-header">Subscriptions</span>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/subscriptions.php">User Subscriptions</a>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/paid_assets.php">Subscribable Items</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/paid_assets.php">Course Enrolments</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/enrolments.php">Course Enrolments</a>
 
                     <?php }?>
                    
