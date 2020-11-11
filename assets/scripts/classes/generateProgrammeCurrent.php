@@ -312,6 +312,8 @@
 
                             //IF A BREAK MODIFY EDIT BREAKS HERE
 
+                            $ab = 0;
+
                             foreach ($breaks2 as $key=>$value){
 
                                 if ($timeValue == $value['timeFrom']){
@@ -324,10 +326,21 @@
 
     </div>
     <?php
+
+                                    $ab++;
                                     continue;
+
+                                    
                                 }
 
+                                
 
+
+                            }
+
+                            if ($ab > 0){
+
+                                continue;
                             }
 
                             /* if ($timeValue == '11:15:00'){
