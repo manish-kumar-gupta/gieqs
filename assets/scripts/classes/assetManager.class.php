@@ -2944,13 +2944,13 @@ public function returnVideoDenominatorSelect2()
             $q = "Select c.`id`, c.`user_id`
             FROM `subscriptions` as c
             WHERE c.`asset_id` = '$assetid'
-            AND a.`active` = '1'
-            AND a.`expiry_date` > NOW()
+            AND c.`active` = '1'
+            AND c.`expiry_date` > NOW()
             GROUP BY c.`user_id`
             
             ";
 
-            //echo $q . '<br><br>';
+            echo $q . '<br><br>';
 
 
 

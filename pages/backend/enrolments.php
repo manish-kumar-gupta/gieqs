@@ -713,7 +713,7 @@ echo 'Participants';
 $assetid = 7;
 
 //$owners = $assetManager->getOwnersAsset($assetid);
-
+error_reporting(E_ALL);
 $owners = $assetManager->getOwnersAsset($assetid);
 
 /* foreach ($owners as $key=>$value){
@@ -743,7 +743,7 @@ echo '</tr>';
 foreach ($owners as $key=>$value){
     echo '<tr>';
 
-    $users->Load_from_key($value);
+    $users->Load_from_key($value['user_id']);
 
     echo "<td>{$users->getfirstname()} {$users->getsurname()}</td>";
     echo "<td>{$users->getgender()}</td>";
@@ -778,7 +778,7 @@ $owners = $assetManager->getOwnersAsset($assetid);
 
 } */
 
-//print_r($owners);
+print_r($owners);
 echo '<h2>Trainer Colon Course</h2>';
 echo '<table class="table">';
 
@@ -794,7 +794,7 @@ echo '</tr>';
 foreach ($owners as $key=>$value){
     echo '<tr>';
 
-    $users->Load_from_key($value);
+    $users->Load_from_key($value['user_id']);
 
     echo "<td>{$users->getfirstname()} {$users->getsurname()}</td>";
     echo "<td>{$users->getgender()}</td>";
