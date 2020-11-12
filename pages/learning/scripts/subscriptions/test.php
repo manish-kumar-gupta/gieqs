@@ -621,12 +621,12 @@ $interval = NULL; //length of time valid
 
 $reference = NULL;
 
-$usersArray = ['1', '2', '5', '4', '9', '10', '11', '12', '14', '15', '21', '23', '24', '29', '55', '22', '581', '219', '353', '355', '50', '471'];//test ALL PARTICIPANTS 2ND DAY
+//$usersArray = ['1', '2', '5', '4', '9', '10', '11', '12', '14', '15', '21', '23', '24', '29', '55', '22', '581', '219', '353', '355', '50', '471'];//test ALL PARTICIPANTS 2ND DAY
 
-//$usersArray = ['1', '5', '4', '9', '10', '11', '12', '14', '15', '21', '23', '24', '22', '581', '219', '353', '355', '471'];//test FIRST DAY
+$usersArray = ['1', '5', '4', '9', '10', '11', '12', '14', '15', '21', '23', '24', '22', '581', '219', '353', '355', '471'];//test FIRST DAY
 
 
-$asset_to_add = '8'; //the asset for which access should be added
+$asset_to_add = '7'; //the asset for which access should be added
 
 $interval = 'P3M'; //length of time valid
 
