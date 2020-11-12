@@ -2950,7 +2950,7 @@ public function returnVideoDenominatorSelect2()
             
             ";
 
-            echo $q . '<br><br>';
+            //echo $q . '<br><br>';
 
 
 

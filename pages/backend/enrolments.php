@@ -655,8 +655,7 @@ if ($identifierValue) {
 
                     <div class="row justify-content-between align-items-center">
                         <div class="col">
-                            <h5 class="mb-1"><?php echo 'Subscriptions';?></h5>
-                            <p class="text-sm text-muted mb-0 d-none d-md-block">Manage <?php echo $databaseName;?>.</p>
+                            <h5 class="mb-1"><?php echo 'Course Participants';?></h5>
                         </div>
                         <div class="col text-right">
                             <div class="actions">
@@ -705,8 +704,7 @@ if ($identifierValue) {
                 <!-- Orders table -->
                 <div class="table-responsive">
                     <?php
-                echo '<br/><br/><br/>';
-echo 'Participants';
+            
 
 //get array of participants 
 
@@ -732,6 +730,7 @@ echo '<h2>Basic Colon Course</h2>';
 echo '<table class="table">';
 
 echo '<tr>';
+echo '<th>user id</th>';
 echo '<th>Name</th>';
 echo '<th>Gender</th>';
 echo '<th>Role</th>';
@@ -745,6 +744,7 @@ foreach ($owners as $key=>$value){
 
     $users->Load_from_key($value['user_id']);
 
+    echo "<td>{$value['user_id']}</td>";
     echo "<td>{$users->getfirstname()} {$users->getsurname()}</td>";
     echo "<td>{$users->getgender()}</td>";
     echo "<td>{$users->getendoscopistType()}</td>";
@@ -765,6 +765,8 @@ echo '<br/><br/><br/>';
 
 $assetid = 8;
 
+//$owners = $assetManager->getOwnersAsset($assetid);
+error_reporting(E_ALL);
 $owners = $assetManager->getOwnersAsset($assetid);
 
 /* foreach ($owners as $key=>$value){
@@ -778,11 +780,12 @@ $owners = $assetManager->getOwnersAsset($assetid);
 
 } */
 
-print_r($owners);
+//print_r($owners);
 echo '<h2>Trainer Colon Course</h2>';
 echo '<table class="table">';
 
 echo '<tr>';
+echo '<th>user id</th>';
 echo '<th>Name</th>';
 echo '<th>Gender</th>';
 echo '<th>Role</th>';
@@ -796,6 +799,7 @@ foreach ($owners as $key=>$value){
 
     $users->Load_from_key($value['user_id']);
 
+    echo "<td>{$value['user_id']}</td>";
     echo "<td>{$users->getfirstname()} {$users->getsurname()}</td>";
     echo "<td>{$users->getgender()}</td>";
     echo "<td>{$users->getendoscopistType()}</td>";
@@ -812,6 +816,7 @@ echo '</table>';
 
 
 
+echo '<br/><br/><br/>';
 echo '<br/><br/><br/>';
 ?>
                 </div>
