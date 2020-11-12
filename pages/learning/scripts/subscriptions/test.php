@@ -596,6 +596,87 @@ echo '</table>';
 
 echo '<br/><br/><br/>';
 echo '<br/><br/><br/>';
+
+echo '<br/><br/><br/>';
+
+echo '<h2>Adding a specific subscription to a specific group of users</h2>';
+
+//a script to update bulk registrations based on the old system
+
+
+//$requiredArray = ['23', '25', '29', '30', '31']; //all GIEQs digital registrants
+
+//print_r($requiredArray);
+
+//print_r($liveAccess);
+
+//get all users
+
+//$usersArray = $userFunctions->getMailListAll();
+$usersArray = NULL;//test
+
+$asset_to_add = NULL; //the asset for which access should be added
+
+$interval = NULL; //length of time valid
+
+$reference = NULL;
+
+$usersArray = ['1', '2', '5', '4', '9', '10', '11', '12', '14', '15', '21', '23', '24', '29', '55', '22', '581', '219', '353', '355', '50', '471'];//test ALL PARTICIPANTS 2ND DAY
+
+//$usersArray = ['1', '5', '4', '9', '10', '11', '12', '14', '15', '21', '23', '24', '22', '581', '219', '353', '355', '471'];//test FIRST DAY
+
+
+$asset_to_add = '8'; //the asset for which access should be added
+
+$interval = 'P3M'; //length of time valid
+
+$reference = 'GIFTUZSTAFF';
+
+//does it auto-renew?
+
+foreach ($usersArray as $key => $value) {  //COMMENTED SINCE SCRIPT LONG
+
+
+
+        echo $value . ' was in the array';
+        //update database
+
+        $current_date = new DateTime('now', new DateTimeZone('UTC'));
+
+        $current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s');
+
+
+        $end_start_calculate_date = $current_date;
+
+        $end_start_calculate_date->add(new DateInterval($interval));
+
+        $end_date_sqltimestamp = date_format($end_start_calculate_date, 'Y-m-d H:i:s');
+
+        if (!($assetManager->is_assetid_covered_by_user_subscription($asset_to_add, $value, false))) {
+
+            $subscription->New_subscriptions($value, $asset_to_add, $current_date_sqltimestamp, $end_date_sqltimestamp, '1', '0', $reference);
+            echo $subscription->prepareStatementPDO();
+
+        } else {
+
+            $assetManager->is_assetid_covered_by_user_subscription($asset_to_add, $value, true);
+            echo '<br/>User already owns current subscription of this asset type';
+
+        }
+
+        
+
+        echo 'Subscriptions update status above <br/><br/>';
+
+        //echo '<br/><br/>would update so now \$subscription->New_subscriptions(' . $value . ', 9, ' . $current_date_sqltimestamp . ', ' . $end_date_sqltimestamp . ', \'1\', \'0\', \'GIFT_GIEQSDIGITAL_SUBSCRIBERS\'); <br/><br/>';
+
+    
+
+} 
+
+//if has access to any of these then grant mail and update the user registration with a 1 month trial
+
+
 echo '<br/><br/><br/>';
 echo '<br/><br/><br/>';
 echo '<br/><br/><br/>';

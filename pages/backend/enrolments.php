@@ -711,7 +711,7 @@ if ($identifierValue) {
 $assetid = 7;
 
 //$owners = $assetManager->getOwnersAsset($assetid);
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 $owners = $assetManager->getOwnersAsset($assetid);
 
 /* foreach ($owners as $key=>$value){
@@ -766,7 +766,7 @@ echo '<br/><br/><br/>';
 $assetid = 8;
 
 //$owners = $assetManager->getOwnersAsset($assetid);
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 $owners = $assetManager->getOwnersAsset($assetid);
 
 /* foreach ($owners as $key=>$value){
