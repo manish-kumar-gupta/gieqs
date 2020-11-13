@@ -55,7 +55,7 @@ spl_autoload_register ('class_loader');
               $debug=FALSE;
               $serverTimeZoneNav = new DateTimeZone('Europe/Brussels'); //because this is where course is held
               $currentNavTime = new DateTime('now', $serverTimeZoneNav);
-              $currentNavTime = new DateTime('2020-11-16', $serverTimeZoneNav); //TESTING
+              //$currentNavTime = new DateTime('2020-11-17', $serverTimeZoneNav); //TESTING
 
 
 
@@ -64,6 +64,31 @@ spl_autoload_register ('class_loader');
 
                   $programmes = $sessionView->returnLiveProgrammesArray($currentNavTime, $debug);
 
+                  //test users
+
+                  if ($debug){
+
+                    print_r($programmes);
+
+                  }
+
+                  if (!$programmes){
+
+                    if ($debug){
+
+                      echo 'no programmes';
+  
+                    }
+
+                    if (in_array($userid, $liveTestingUsers)){
+
+                      $currentNavTime = new DateTime('2020-11-16', $serverTimeZoneNav); //TESTING
+                      $programmes = $sessionView->returnLiveProgrammesArray($currentNavTime, $debug);
+
+
+                    }
+
+                  }
 
                 //just use the first programme that day.  modify later if others required
 
@@ -381,7 +406,7 @@ spl_autoload_register ('class_loader');
                 
                 
                     
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/index.php"><i class="fas fa-graduation-cap"></i>GIEQs Online BETA</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/index.php"><i class="fas fa-graduation-cap"></i>GIEQs Online</a>
                                         <span style="color: rgb(238, 194, 120);" class="dropdown-header">Scoring Systems</span>
 
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/smic"><i class="fas fa-graduation-cap"></i>Risk of Polyp Submucosal Invasion</a>

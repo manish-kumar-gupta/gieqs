@@ -18,7 +18,11 @@ if (isset($_GET['destination'])) {
 
   $destination = $_GET['destination'];
 
-  if ($destination == 'catchup'){
+  if ($destination == 'subscriptions'){
+
+    $target = 'pages/learning/pages/account/billing.php';
+
+  }else if ($destination == 'catchup'){
 
     $target = 'pages/program/program-printable-catchup-public.php';
 
