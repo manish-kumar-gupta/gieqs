@@ -1898,6 +1898,61 @@ public function is_assetid_covered_by_user_subscription($asset_id, $userid, $deb
         }
     
     }
+
+    public function get_subscription_id_asset($asset_id, $userid, $debug=false){
+
+
+        
+            
+        $q = "Select 
+        a.`id`
+        FROM `subscriptions` as a
+        INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
+        WHERE b.`id` = '$asset_id' 
+        AND a.`user_id` = '$userid'
+        AND a.`active` = '1'
+        AND a.`expiry_date` > NOW()
+        ";
+
+    //echo $q . '<br><br>';
+
+
+
+    $result = $this->connection->RunQuery($q);
+    
+    $x = 0;
+    $nRows = $result->rowCount();
+
+    if ($nRows > 0) {
+
+         while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+            $rowReturn = $row['id'];
+
+
+        } 
+
+        if ($debug){
+
+            echo 'user has a subscription id ' . $rowReturn . 'with this asset_id - ' . $asset_id;
+        }
+
+        return $rowReturn;
+
+    } else {
+        
+
+        if ($debug){
+
+            echo 'user has no subscription with this asset_id or this asset_id does not exist - ' . $asset_id;
+        }
+
+        return false;
+
+        
+    }
+
+}
     
     
     

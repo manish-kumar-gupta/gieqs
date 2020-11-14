@@ -102,13 +102,16 @@ echo '<h2>Return start and end times for programme elements (sessions)</h2>';
 
 $programmes = null;
 
-$programmes = $sessionView->getProgrammeTimes([0=>['id'=>33],], $debug);
+$programmes = $sessionView->getProgrammeTimes([0=>['id'=>33],], false);
+
+
 
 //for one program
 
 $programmes2 = $sessionView->convertProgrammeTimes($programmes, $debug);
+var_dump($programmes2);
 
-$breaks = $sessionView->getProgrammeBreaks([0=>['id'=>33],], true);
+$breaks = $sessionView->getProgrammeBreaks([0=>['id'=>33],], false);
 
 $breaks2 = $sessionView->convertProgrammeTimesBreaks($breaks, $debug);
 
