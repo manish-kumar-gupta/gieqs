@@ -1005,9 +1005,9 @@
                                                                                 Duration :
                                                                                 <?php echo $renew_frequency;?> Month(s)
                                                                             </p>
-                                                                            <p
+                                                                            <!-- <p
                                                                                 style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                Cost : <?php echo $cost;?> </p>
+                                                                                Cost : <?php //echo $cost;?> </p> -->
                                                                             <p
                                                                                 style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
                                                                                 Ends : <?php echo $expiry_date;?></p>

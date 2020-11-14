@@ -48,7 +48,6 @@
       ?>
 
     <!--Page title-->
-    <title>GIEQs Online Endoscopy Trainer - Loop Resolution at Colonoscopy</title>
 
 
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
@@ -267,7 +266,12 @@
 
         /* define the page variables */
 
-        $page_title = $assets_paid->getname();
+        $page_title = $assets_paid->getname();?>
+
+<title>GIEQs Online Endoscopy Trainer - <?php echo $page_title;?></title>
+
+
+        <?php
         $page_description = $assets_paid->getdescription();
         $videoset = null;
 
