@@ -110,7 +110,7 @@ if ($debug){
  //so do the days match
 
 //set date today - 3 days
-$interval = 'P3D'; //length of time valid
+//$interval = 'P3D'; //length of time valid
 
 
 if ($debug){
@@ -121,9 +121,9 @@ if ($debug){
 
 }
 
-//actually todays date minus 3
 
-$courseDateMinus3 = date_sub($courseDate, new DateInterval($interval));
+
+$courseDateMinus3 = $courseDate; //send on date of course
 
 if ($debug){
 
@@ -220,7 +220,7 @@ $currentTimeBrusselsOnCourseDate = DateTime::createFromFormat('Y-m-d', $date) ?:
 $currentTimeBrusselsOnCourseDate->setTimezone($serverTimeZoneNav);
 
 //$desiredMailSendTime = new DateTime('2020-10-15 07:00:00', $serverTimeZoneNav);
-$desiredMailSendTimeOnCourseDate = new DateTime($date . ' 07:00:00', $serverTimeZoneNav);
+$desiredMailSendTimeOnCourseDate = new DateTime($date . ' 18:00:00', $serverTimeZoneNav);
 //$desiredMailSendTimeOnCourseDate = DateTime::createFromFormat('H:i:s', $desiredMailSendTime) ?: new DateTime; //time now on course date
 //$desiredMailSendTimeOnCourseDate->setTimezone($serverTimeZoneNav);
 
@@ -287,10 +287,10 @@ if (($currentNavTime > $desiredMailSendTimeOnCourseDateMinus1) && ($currentNavTi
 
 
         //set some basics FOR THE EMAIL
-        $filename = '/assets/email/subscriptions/onboarding_course.php';
-        $email_id = 'onboarding_course_' . $assetid; //unique id
-        $subject = $assets_paid->getname() . ' joining instructions';
-        $preheader = 'Joining instructions for your GIEQs Online Course - ' . $assets_paid->getname();
+        $filename = '/assets/email/subscriptions/feedback_course.php';
+        $email_id = 'feedback_course_' . $assetid; //unique id
+        $subject = 'Please give us feedback for ' . $assets_paid->getname();
+        $preheader = 'We rely on your feedback to improve our courses for next time.  Please take less than 5 minutes to let us know how we did.';
         //$page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $subscription_id;
 
         
@@ -354,7 +354,11 @@ if (($currentNavTime > $desiredMailSendTimeOnCourseDateMinus1) && ($currentNavTi
             $end_date = new DateTime($subscription->getexpiry_date(), new DateTimeZone($timezone));
             $end_date_user_readable = date_format($end_date, 'd/m/Y');
 
+            //todo get from database later and customise
+
             $emailVaryarray['assetid'] = $assets_paid->getid();
+            $emailVaryarray['feedback_link'] = 'https://www.surveymonkey.com/r/FZ7BK27?user_id=' . $value . '&asset_id=' . $assetid;
+ 
             $emailVaryarray['asset_name'] = $assets_paid->getname();
             $emailVaryarray['programme_date'] = date_format($courseDateFull, 'd/m/Y'); //from programme array
             $emailVaryarray['subscription_id'] = $assetManager->get_subscription_id_asset($assetid, $value); //from sub_asset_paid using assetid and userid
