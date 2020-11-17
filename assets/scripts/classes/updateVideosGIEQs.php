@@ -24,10 +24,10 @@ function ne($v) {
 
 echo 'Working Classes' . PHP_EOL;
 
-exit(); //unable to execute again unless this removed
+//exit(); //unable to execute again unless this removed
 
 
-$sessionItemArray = $general->copyRecords_SessionItem_video();
+$sessionItemArray = $general->copyRecords_SessionItem_video_specific('32');
 
 //var_dump($sessionItemArray);
 
@@ -75,12 +75,12 @@ foreach ($sessionItemArray as $key=>$value){
 
     //echo '<br/><br/>';
 
-    
+    $supercategory = '1'; // colonoscopy tutor
 
 
 
 
-$videoid = $videosAccess->insert_copied_records_with_video_id($name, $description, $user_id);
+$videoid = $videosAccess->insert_copied_records_with_video_id_v2($name, $description, $user_id, $supercategory);
 
 //each time insert use the video_id to link back into the sessionItem
 
@@ -111,7 +111,7 @@ echo $tagid;
 
 
 
-$videosAccess->linkTags($chapterid, '569');
+//$videosAccess->linkTags($chapterid, '569'); link any required tags
 
 $videosAccess->linkTags($chapterid, $tagid);
 

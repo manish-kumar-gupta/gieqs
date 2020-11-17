@@ -141,6 +141,30 @@ public function insert_copied_records_with_video_id($name, $description, $user_i
 
 }
 
+public function insert_copied_records_with_video_id_v2($name, $description, $user_id, $supercategory){
+
+    //q insert the row in video
+
+    $q = "insert into `video` (`name`, `url`, `description`, `active`, `split`, `author`, `superCategory`, `editor`, `recorder`) VALUES ('$name', '123', '$description', '2', '1', '$user_id', '$supercategory', '1', '9')";
+
+      echo $q;
+
+      $result = $this->connection->RunQuery($q);
+      
+
+      if ($result) {
+
+        return $this->connection->conn->lastInsertId(); 
+
+      } else {
+          
+
+          
+          return null;
+      }
+
+}
+
 public function createChapter($videoid){
 
     //q insert the row in video
