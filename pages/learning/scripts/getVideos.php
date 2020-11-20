@@ -151,6 +151,15 @@ if ($debug) {
 
 //if a videoset
 
+/*
+
+1 - videoset
+2 - course, show by session one only
+3 - course, show by session all items
+
+
+*/
+
 if (isset($videoset)){
 
     if ($videoset == 1){
@@ -238,6 +247,110 @@ if (isset($videoset)){
                     }
 
                 }
+
+             }
+
+             //if debug show the videos
+
+             if ($debug){
+
+                var_dump($videosForSessions);
+
+             }
+
+        $videosAsset = $videosForSessions;
+
+        foreach ($videos as $key=>$value){
+
+
+            $array_key = $key;
+
+            $access = null;
+
+            $access = (in_array($value['id'], $videosAsset)) ? true : false;
+        
+            if (!$access){
+
+
+                unset($videos[$key]);
+
+                if ($debug){
+    
+                    echo 'video id ' . $value['id'] . ' was not found in the video asset array';
+    
+               }
+    
+            }else{
+
+                if ($debug){
+
+                echo 'video id ' . $value['id'] . ' was found in the video asset array';
+                
+            }
+
+
+            }
+        
+
+        }
+
+        
+
+
+    }
+
+    if ($videoset == 3){
+
+        $emptyText = 'There are no videos yet matching these criteria for this course.';
+
+
+        //push out of the data2 array videos that are not part of the asset $assetid
+        $videosForSessions = array();
+
+            //get programme / session info
+
+            $programmes = $assetManager->returnCombinationAssetProgramme($assetid);
+            
+            if ($debug){
+
+                //var_dump($programmes);
+            }
+
+            $videosForSessions = array();
+                    $x = 0;
+
+            foreach ($programmes as $key=>$value){
+
+
+            $sessions = $programmeView->getSessions($value['programme_id']);
+
+                if ($debug){
+
+                    //var_dump($sessions);
+                }
+
+                //get programmeid for asset
+                //now shows all session items
+
+                    
+                    foreach ($sessions as $key2=>$value2){
+
+                        if (isset($value2['sessionid'])){
+
+                            $videosForSessions2data = array();
+                            $videosForSessions2data = $programmeView->getVideoURLAll($value2['sessionid']);
+
+                            foreach ($videosForSessions2data as $key3=>$value3){
+
+                                $videosForSessions[$x] = $value3;
+                                $x++;
+
+                            }
+
+                            
+                        }
+
+                    }
 
              }
 

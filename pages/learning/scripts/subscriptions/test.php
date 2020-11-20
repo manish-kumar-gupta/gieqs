@@ -38,6 +38,9 @@ $navigator = new navigator;
 require_once BASE_URI . '/assets/scripts/classes/userFunctions.class.php';
 $userFunctions = new userFunctions;
 
+require_once BASE_URI . '/assets/scripts/classes/programmeView.class.php';
+$programmeView = new programmeView;
+
 error_reporting(E_ALL);
 
 echo 'hello';
@@ -682,6 +685,57 @@ foreach ($usersArray as $key => $value) {  //COMMENTED SINCE SCRIPT LONG
 
 echo '<br/><br/><br/>';
 echo '<br/><br/><br/>';
+
+$sessions = null;
+$sessions = $programmeView->getSessions('23');
+print_r($sessions);
+
+
+$videosForSessions = array();
+foreach ($sessions as $key2=>$value2){
+
+    if (isset($value2['sessionid'])){
+
+        $videosForSessions[] = $programmeView->getVideoURL($value2['sessionid']);
+
+    }
+
+}
+
+
+//now shows all session items
+
+$videosForSessions2 = array();
+$x = 0;
+foreach ($sessions as $key2=>$value2){
+
+    if (isset($value2['sessionid'])){
+
+        $videosForSessions2data = array();
+        $videosForSessions2data = $programmeView->getVideoURLAll($value2['sessionid']);
+
+        foreach ($videosForSessions2data as $key3=>$value3){
+
+            $videosForSessions2[$x] = $value3;
+            $x++;
+
+        }
+
+        
+    }
+
+}
+
+
+//if debug show the videos
+
+if ($debug){
+
+var_dump($videosForSessions2);
+
+}
+
+
 echo '<br/><br/><br/>';
 echo '<br/><br/><br/>';
 echo '<br/><br/><br/>';

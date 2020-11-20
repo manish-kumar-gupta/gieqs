@@ -193,6 +193,53 @@ class programmeView
 
 
     }
+
+
+    //NEW VERSION OF ABOVE WITH NO LIMIT FOR SESSIONITEMS
+
+    public function getVideoURLAll($sessionid){
+
+        $q = "SELECT a.`id` as `programmeid`, a.`date`,
+        c.`id` as `sessionid`, c.`timeFrom`, c.`timeTo`, c.`title` as `sessionTitle`, c.`subtitle` as `sessionSubtitle`, c.`description` as `sessionDescription`,
+        e.`id` as `sessionItemid`, e.`timeFrom` as `sessionItemTimeFrom`, e.`timeTo` as `sessionItemTimeTo`, e.`title` as `sessionItemTitle`, e.`description` as `sessionItemDescription`, e.`faculty`, e.`live`, e.`url_video`,
+        g.`id` as `assetId`, g.`type`, g.`location`, g.`href`, g.`endoscopy_wiki_id`
+        from `programme` as a
+        INNER JOIN `programmeOrder` as b on a.`id` = b.`programmeid` 
+        INNER JOIN `session` as c on b.`sessionid` = c.`id`
+        LEFT OUTER JOIN `sessionOrder` as d on c.`id` = d.`sessionid`
+        LEFT OUTER JOIN `sessionItem` as e on d.`sessionItemid` = e.`id`
+        LEFT OUTER JOIN `sessionItemAsset` as f on f.`sessionItemid` = e.`id`
+        LEFT OUTER JOIN `assets` as g on f.`assetId` = g.`id`
+        WHERE c.`id` = '$sessionid'
+        ORDER BY e.`timeFrom` ASC";
+
+        $result = $this->connection->RunQuery($q);
+        $rowReturn = array();
+        $x = 0;
+        $nRows = $result->rowCount();
+
+        if ($nRows > 0) {
+
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                $rowReturn[] = $row['url_video'];
+            }
+
+            return $rowReturn;
+
+        } else {
+            
+
+            //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+            $rowReturn = false;
+            
+            return $rowReturn;
+        }
+
+
+
+    }
+
     public function getSessionTimeSpecific($programmeid, $timeFrom){
 
        

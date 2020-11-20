@@ -236,6 +236,103 @@ if (isset($videoset)){
     }
 
 
+}
+
+if ($videoset == 3){
+
+
+
+    //push out of the data2 array videos that are not part of the asset $assetid
+    $videosForSessions = array();
+
+        //get programme / session info
+
+        $videosForSessions = array();
+                    $x = 0;
+
+            foreach ($programmes as $key=>$value){
+
+
+            $sessions = $programmeView->getSessions($value['programme_id']);
+
+                if ($debug){
+
+                    //var_dump($sessions);
+                }
+
+                //get programmeid for asset
+                //now shows all session items
+
+                    
+                    foreach ($sessions as $key2=>$value2){
+
+                        if (isset($value2['sessionid'])){
+
+                            $videosForSessions2data = array();
+                            $videosForSessions2data = $programmeView->getVideoURLAll($value2['sessionid']);
+
+                            foreach ($videosForSessions2data as $key3=>$value3){
+
+                                $videosForSessions[$x] = $value3;
+                                $x++;
+
+                            }
+
+                            
+                        }
+
+                    }
+
+             }
+
+         //if debug show the videos
+
+         if ($debug){
+
+            echo "<br/><br/>Session Videos to Match with array";
+            var_dump($videosForSessions);
+
+         }
+
+    $videosAsset = $videosForSessions;
+
+    foreach ($data2 as $key=>$value){
+
+
+        $array_key = $key;
+
+        $access = null;
+
+        $access = (in_array($value, $videosAsset)) ? true : false;
+    
+        if (!$access){
+
+
+            unset($data2[$key]);
+
+            if ($debug){
+
+                echo 'video id ' . $value . ' was not found in the video asset array';
+
+           }
+
+        }else{
+
+            if ($debug){
+
+            echo 'video id ' . $value . ' was found in the video asset array';
+            
+        }
+
+
+        }
+    
+
+    }
+
+    
+
+
 }else{
 
     //normal page

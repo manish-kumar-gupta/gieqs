@@ -286,7 +286,17 @@
 
             //is a course
             $course = 1;
+
+
+            //is a conference
+            if ($assets_paid->getasset_type() == '2'){
             $videoset = 2;
+            }elseif ($assets_paid->getasset_type() == '3'){
+            $videoset = 3;
+            }else{
+            $videoset = 3;
+
+            }
 
             $videosForSessions = array();
 
