@@ -27,7 +27,7 @@ echo 'Working Classes' . PHP_EOL;
 //exit(); //unable to execute again unless this removed
 
 
-$sessionItemArray = $general->copyRecords_SessionItem_video_specific('32');
+$sessionItemArray = $general->copyRecords_SessionItem_video_specific('33');
 
 //var_dump($sessionItemArray);
 
