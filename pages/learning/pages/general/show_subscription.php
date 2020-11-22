@@ -74,6 +74,7 @@
 
     .flex-even {
         flex: 0 0 30%;
+        
         /*
         
         flex: 1;
@@ -674,7 +675,7 @@
 
 
                     </div>
-                    <div id="videoCards" class="flex-wrap">
+                    <div id="videoCards" class="flex-wrap align-items-center">
 
 
                         <div class="d-flex align-items-center">
