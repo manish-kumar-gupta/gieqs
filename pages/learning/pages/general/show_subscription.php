@@ -296,7 +296,7 @@
             if ($assets_paid->getasset_type() == '2'){
             $videoset = 2;
             }elseif ($assets_paid->getasset_type() == '3'){
-            $videoset = 3;
+            $videoset = 3; //IS A STANDARD COURSE
             }else{
             $videoset = 3;
 
@@ -544,7 +544,29 @@
         </div>
 
 
+        <!--Programme Display, Cuurently Courses only-->
 
+        <?php if ($videoset == 3){?>
+        <hr>
+        <div class="container mt-3">
+            <!-- <div class="text-justify m-4">
+            <p class="h3"><?php //echo 'Course Programme'?></p>  
+
+
+
+            </div> -->
+            <div id="programme-display" class="p-6 flex-wrap">
+
+
+                
+
+
+
+
+            </div>
+
+        </div>
+    <?php } ?>
 
 
 
@@ -592,6 +614,35 @@
     var requiredTagCategoriesText = $("#requiredTagCategories").text();
 
     var requiredTagCategories = JSON.parse(requiredTagCategoriesText);
+
+    function refreshProgrammeView() {
+
+
+
+const dataToSend = {
+
+    programmeid: <?php echo $programmes[0]['programme_id'];?> ,
+
+}
+
+const jsonString = JSON.stringify(dataToSend);
+console.log(jsonString);
+
+var request2 = $.ajax({
+    url: siteRoot + "assets/scripts/classes/generateProgrammeCurrent.php",
+    type: "POST",
+    contentType: "application/json",
+    data: jsonString,
+});
+
+
+
+request2.done(function (data) {
+    // alert( "success" );
+    $('#programme-display').html(data);
+    //$(document).find('.Thursday').hide();
+})
+}
 
 
     function refreshNavAndTags() {
@@ -838,6 +889,8 @@ theme: "classic",
         $(document).find('#navigatorCollapse').collapse();
 
         refreshNavAndTags();
+
+        refreshProgrammeView();
 
         $('#refreshNavigation').click(function() {
 
