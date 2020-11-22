@@ -675,7 +675,7 @@
 
 
                     </div>
-                    <div id="videoCards" class="flex-wrap align-items-center">
+                    <div id="videoCards" class="flex-wrap justify-content-center">
 
 
                         <div class="d-flex align-items-center">
