@@ -4271,6 +4271,94 @@ return $arr;
             }
 
 		}
+
+		public function generateTagStructureBasedOnTags($tags)
+		{
+		
+
+		//generate where clause
+
+		//if count $tags = 0
+
+		$noresults = "<option disabled hidden selected value>Search is not available here</option>";
+
+
+		$where = 'WHERE ';
+
+		if (count($tags) > 0){
+
+
+			$x = 1;
+
+			foreach ($tags as $key=>$value){
+
+				if (count($tags) == 1){
+
+					$where .= "a.`id` = '$value'";
+					continue;
+				}
+
+				if (count($tags) == ($x)){
+					//last item
+					$where .= "a.`id` = '$value'";
+					continue;
+
+
+				}
+
+				$where .= "a.`id` = '$value' OR ";
+
+
+
+
+
+				$x++;
+			}
+
+
+			
+		}else{
+
+			return $noresults;
+
+		}
+
+		$q = "SELECT a.`tagCategories_id` as `Category id`, a.`tagCategories_id`, a.`id`, a.`tagName` as `Tag` from `tags` as a $where ORDER BY tagCategories_id, a.`id` ASC";
+
+
+		echo $q . '<br><br>';
+
+		$rowReturn = [];
+
+		$result = $this->connection->RunQuery($q);
+		
+		$x = 0;
+		$nRows = $result->num_rows;
+
+		if ($nRows > 0) {
+
+			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+
+				$rowReturn[] = $row;
+
+
+			}
+			echo "<option disabled hidden selected value>Click here to search</option>";
+
+			foreach ($rowReturn as $key=>$value){
+
+				echo "<option value='{$value['id']}'>{$this->getCategoryName($value['tagCategories_id'])} - {$value['Tag']}</option>";
+
+			}
+
+		} else {
+			
+
+
+			return $noresults;
+		}
+
+	}
 	
 	
 

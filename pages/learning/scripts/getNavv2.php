@@ -42,6 +42,7 @@ $assetid = $data['assetid'];
 
             if ($debug){
             print_r($tagsToMatch);
+            print_r($data);
             }
 
             $numberOfTagsToMatch = count($tagsToMatch);
@@ -236,8 +237,6 @@ if (isset($videoset)){
     }
 
 
-}
-
 if ($videoset == 3){
 
 
@@ -249,6 +248,13 @@ if ($videoset == 3){
 
         $videosForSessions = array();
                     $x = 0;
+
+                    $programmes = $assetManager->returnCombinationAssetProgramme($assetid);
+            
+                    if ($debug){
+        
+                        var_dump($programmes);
+                    }
 
             foreach ($programmes as $key=>$value){
 
@@ -331,6 +337,9 @@ if ($videoset == 3){
     }
 
     
+
+
+}
 
 
 }else{
@@ -495,6 +504,11 @@ if ($videoset == 3){
 
 
 
+}
+
+if ($debug){
+
+    print_r($data2);
 }
 
         $data3 = $navigator->getVideoTagsBasedOnVideosShown($data2, $debug);
