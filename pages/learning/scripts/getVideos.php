@@ -580,7 +580,7 @@ if (isset($videoset)){
 
                     ?>
 
-<div class="d-flex flex-row flex-wrap align-items-stretch mt-1 pt-0 px-0 text-white">
+<div class="d-flex flex-row flex-wrap justify-content-center mt-1 pt-0 px-0 text-white">
     <span class=" mt-3 mb-6 h6"><?php echo $emptyText;?></span>
 </div>
 <?php
@@ -598,7 +598,7 @@ if (isset($videoset)){
 
                         ?>
 
-<div class="d-flex flex-row flex-wrap align-items-stretch mt-1 pt-0 px-0 text-white video-card">
+<div class="d-flex flex-row flex-wrap justify-content-center mt-1 pt-0 px-0 text-white video-card">
     <?php }
                     if ($a < $loadedRequiredProduct){
 
@@ -706,7 +706,7 @@ if (isset($videoset)){
                     if ($a % 3 == 0){
                         ?>
 </div>
-<div class="d-flex flex-row flex-wrap align-items-stretch mt-1 pt-0 px-0 text-white">
+<div class="d-flex flex-row flex-wrap justify-content-center mt-1 pt-0 px-0 text-white">
 
     <?php
                     }
@@ -732,9 +732,9 @@ if (isset($videoset)){
                 if ($b == 1){
 
                     ?>
-    <div class="d-flex flex-row flex-wrap card-placeholder align-items-stretch mt-1 pt-0 px-0 text-white">
+    <div class="d-flex flex-row flex-wrap card-placeholder justify-content-center mt-1 pt-0 px-0 text-white">
     </div>
-    <div class="d-flex flex-row flex-wrap card-placeholder align-items-stretch mt-1 pt-0 px-0 text-white">
+    <div class="d-flex flex-row flex-wrap card-placeholder justify-content-center mt-1 pt-0 px-0 text-white">
     </div>
     <?php
 
@@ -743,7 +743,7 @@ if (isset($videoset)){
                 if ($b == 2){
 
                     ?>
-    <div class="d-flex flex-row flex-wrap card-placeholder align-items-stretch mt-1 pt-0 px-0 text-white">
+    <div class="d-flex flex-row flex-wrap card-placeholder justify-content-center mt-1 pt-0 px-0 text-white">
     </div>
     <?php
 
