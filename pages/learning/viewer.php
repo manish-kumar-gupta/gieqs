@@ -643,7 +643,7 @@ min-width:30vw;
                                            <!-- <a class="action-item" data-toggle="collapse" href="#selectDropdown"><i
                                                     class="fas fa-ellipsis-h" data-toggle="tooltip" data-placement="bottom" title="show chapters"></i></a> -->
 
-                                            <?php if ($isSuperuser == 1){?>
+                                            <?php if ($currentUserLevel < 3){?>
                                             
                                             <a href="<?php echo BASE_URL; ?>/pages/learning/scripts/forms/videoChapterForm.php?id=<?php echo $id;?>" class="action-item"><i class="fas fa-edit" data-toggle="tooltip" data-placement="bottom" title="edit video"></i></a>
 
