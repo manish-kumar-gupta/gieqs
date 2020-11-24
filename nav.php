@@ -21,7 +21,9 @@ $options = new QROptions([
 $qrcode = new QRCode($options);
 spl_autoload_register ('class_loader');
 
+//TESTIING
 
+$test = false;
 
 
 ?>
@@ -82,9 +84,12 @@ spl_autoload_register ('class_loader');
 
                     if (in_array($userid, $liveTestingUsers)){
 
+                      if ($test){
+
                       $currentNavTime = new DateTime('2020-11-16', $serverTimeZoneNav); //TESTING
                       $programmes = $sessionView->returnLiveProgrammesArray($currentNavTime, $debug);
 
+                      }
 
                     }
 
@@ -349,14 +354,15 @@ spl_autoload_register ('class_loader');
 
               
                 <!-- Venue -->
+                <!--currently not active-->
                 <?php if (!$liveAndLoggedIn){?>
                 <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/venue.php">Locations</a>
+                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/faculty_stable.php">Faculty</a>
                 </li>
                 <?php }?>
 
                 <!-- Sponsors -->
-                <!--currently not active-->
+                
                 
                 <li class="nav-item active">
                     <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/sponsors.php">Sponsors</a>
