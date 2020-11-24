@@ -1,6 +1,15 @@
 <!--Main Navbar-->
-<?php $users = new users;
+
+
+<?php 
+
+//error_reporting(E_ALL);
+require_once BASE_URI . '/assets/scripts/classes/users.class.php';
+$users = new users;
+require_once BASE_URI . '/assets/scripts/classes/programme.class.php';
 $programme = new programme;
+//$sessionView = new sessionView;
+require_once BASE_URI . '/assets/scripts/classes/sessionView.class.php';
 $sessionView = new sessionView;
 //error_reporting(E_ALL);
 
@@ -339,15 +348,15 @@ $test = false;
                         aria-haspopup="true" aria-expanded="false">Digital Courses</a>
                     
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Upcoming Courses [coming soon]</span>
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Upcoming Courses</span>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_basic_colon.php" disabled><i class="fas fa-columns"></i>Basic Colonoscopy Skills</a>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_trainer_colon.php"><i class="fas fa-columns"></i>Train the Colonoscopy Trainers</a>
                     <a class="dropdown-item disabled" href="<?php echo BASE_URL;?>/pages/program/program_basic_polyp.php"><i class="fas fa-columns"></i>Basic Polypectomy</a>
                     
-                    <div class="dropdown-divider"></div>
+                    <!-- <div class="dropdown-divider"></div>
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">GIEQs Faculty</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/faculty_stable.php"><i class="fas fa-user"></i>Faculty</a>
-                    
+                    <a class="dropdown-item" href="<?php //echo BASE_URL;?>/pages/program/faculty_stable.php"><i class="fas fa-user"></i>Faculty</a>
+                     -->
                     
                   </div>
                 </li>

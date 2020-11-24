@@ -1,9 +1,21 @@
 <?php
 	
 
+echo BASE_URI;
 
+/**
+ * 
+ * BASE_URI is the root
+ * BASE_URI1 is the EDM folder
+ * 
+ * 
+ * 
+ * so all that was 1 is 
+ * all that was URI is 1
+ * 
+ */
 
-require(BASE_URI1 . '/assets/scripts/login_functions.php');
+require(BASE_URI . '/assets/scripts/login_functions.php');
 
 
 
@@ -22,8 +34,8 @@ if (!($dbc)){
 
 
 
-require(BASE_URI1 . '/assets/scripts/interpretUserAccess.php');
-
+require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
+//echo hello;
 
 ?>
 

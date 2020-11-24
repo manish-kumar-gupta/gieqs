@@ -184,7 +184,7 @@
 
         <!-- Main navbar -->
 
-        <?php require BASE_URI . '/pages/learning/includes/nav.php';?>
+        <?php require BASE_URI . '/nav.php';?>
 
 
 

@@ -53,6 +53,12 @@ if ($local) {
     define('BASE_URI', '/Applications/XAMPP/xamppfiles/htdocs/dashboard/gieqs');
     define('BASE_URL', 'http://localhost:90/dashboard/gieqs');
     define('DB', '/Applications/XAMPP/xamppfiles/htdocs/dashboard/mysqli_connect_gieqs.inc.php');
+    define('BASE_URI1', '/Applications/XAMPP/xamppfiles/htdocs/dashboard/gieqs/edm');
+
+    define('BASE_URL1', 'http://localhost:90/dashboard/gieqs/edm');
+
+    define('DB1', '/Applications/XAMPP/xamppfiles/htdocs/dashboard/mysqli_connect_POEM.inc.php');
+
     
     function class_loader($class) {
 		
@@ -72,6 +78,12 @@ if ($local) {
     //echo BASE_URL;
     define('DB', '/home/u8l2e829uoi9/mysqli_connect_gieqs.inc.php');
     //echo DB;
+    define('BASE_URI1', $_SERVER['DOCUMENT_ROOT'].'/edm'); 
+
+    define('BASE_URL1', 'https://www.gieqs.com/edm');
+
+    define('DB1', '/home/u8l2e829uoi9/mysqli_connect_edm.inc.php');
+
     
     function class_loader($class) {
 		

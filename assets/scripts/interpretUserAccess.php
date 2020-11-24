@@ -8,11 +8,26 @@
 
 //define token from url
 
+if ($edm){
 
+    require(BASE_URI1 . '/assets/scripts/classes/assetManager.class.php');
 
-require(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
+}else{
+    require(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
+
+    
+
+}
+
+spl_autoload_unregister ('class_loader');
 
 $assetManager = new assetManager;
+spl_autoload_register ('class_loader');
+
+
+
+
+
 error_reporting(0);
 
 $debugUserAccess = false;

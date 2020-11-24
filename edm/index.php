@@ -3,9 +3,13 @@
 $openaccess = 0;
 $requiredUserLevel = 2;
 
-require ('includes/config.inc.php');		
+require ('../assets/includes/config.inc.php');		
 
-require (BASE_URI.'/scripts/headerCreatorV2.php');
+error_reporting(E_ALL);
+
+require (BASE_URI.'/edm/scripts/headerCreatorV2.php');
+
+
 
 $formv1 = new formGenerator;
 $general = new general;

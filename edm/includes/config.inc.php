@@ -37,6 +37,11 @@ if (in_array($host, array('local', '127.0', '192.1'))) {
 
 // Determine location of files and the URL of the site:
 // Allow for development on different servers.
+
+//set edm tag
+
+$edm = true;
+
 if ($local) {
 
     // Always debug when running locally:
@@ -157,9 +162,12 @@ function my_error_handler($e_number, $e_message, $e_file, $e_line, $e_vars) {
 
 if ($debug){
     
+
+    $_SESSION['debug'] = true;
     error_reporting(E_ALL);
 
 }else{
 
+    $_SESSION['debug'] = false;
     error_reporting(0);
 }
