@@ -8,7 +8,7 @@
 			
 			require ('../../includes/config.inc.php');		
 			
-			require (BASE_URI.'/scripts/headerCreatorV2.php');
+			require (BASE_URI1.'/scripts/headerCreatorV2.php');
 			
 			$formv1 = new formGenerator;
 			$general = new general;

@@ -6,7 +6,7 @@
 		
 		require ('../../includes/config.inc.php');		
 		
-		require (BASE_URI.'/scripts/headerCreatorV2.php');
+		require (BASE_URI1.'/scripts/headerCreatorV2.php');
 	
 		//;
 		
@@ -52,14 +52,14 @@ background-color: rgb(238, 194, 120);
 
 }
             </style>
-			    <link rel="stylesheet" href="<?php echo BASE_URL1; ?>/assets/libs/datatables/datatables.min.css">
+			    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/datatables/datatables.min.css">
 
 		</head>
 		
 		<?php
 		//include($root . "/scripts/logobar.php");
-		include(BASE_URI . "/includes/topbar.php");
-		include(BASE_URI . "/includes/naviv2.php");
+		include(BASE_URI1 . "/includes/topbar.php");
+		include(BASE_URI1 . "/includes/naviv2.php");
 		?>
 		<body>
 			
@@ -94,8 +94,8 @@ background-color: rgb(238, 194, 120);
 		        
 		    </div>
 			<!-- Datatables -->
-<script src="<?php echo BASE_URL1; ?>/node_modules/datatables.net/js/jquery.datatables.min.js"></script>
-<script src="<?php echo BASE_URL1; ?>/assets/libs/datatables/datatables.min.js"></script>
+<script src="<?php echo BASE_URL; ?>/node_modules/datatables.net/js/jquery.datatables.min.js"></script>
+<script src="<?php echo BASE_URL; ?>/assets/libs/datatables/datatables.min.js"></script>
 
 		<script>
 			switch (true) {

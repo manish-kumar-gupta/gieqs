@@ -8,7 +8,7 @@
 			
 			require ('../../includes/config.inc.php');		
 			
-			require (BASE_URI.'/scripts/headerCreatorV2.php');
+			require (BASE_URI1.'/scripts/headerCreatorV2.php');
 		
 			//(1);
 			//require ('/Applications/XAMPP/xamppfiles/htdocs/dashboard/esd/scripts/headerCreator.php');
@@ -56,7 +56,7 @@
 		<?php
 		//include($root . "/scripts/logobar.php");
 		
-		include(BASE_URI . "/includes/naviERCP.php");
+		include(BASE_URI1 . "/includes/naviERCP.php");
 		?>
 		
 		<body>
@@ -102,7 +102,7 @@
 						$tableNameSheet = "pageLayoutESD";
 
 
-						include(BASE_URI . "/scripts/FormFunctionsGeneric.php");
+						include(BASE_URI1 . "/scripts/FormFunctionsGeneric.php");
 
 						$iterationForm = 1;
 						$sectionTitle = array();
@@ -132,7 +132,7 @@
 						echo "<div class='col-5'>";
 						echo "<fieldset class=\"".$sectionTitle[$x]."\"><h3 style='text-align:left;'>".$sectionTitle[$x]."</h3>";
 						echo "<table class=\"comorbidity\">";
-						include(BASE_URI . "/scripts/iterateFormGeneric.php");
+						include(BASE_URI1 . "/scripts/iterateFormGeneric.php");
 						echo "</table><br/></fieldset><br>";
 						echo "</div>";
 						echo "<div class='col-1'>";
@@ -458,7 +458,7 @@
 		<?php
 		
 		    // Include the footer file to complete the template:
-		    include(BASE_URI ."/includes/footer.php");
+		    include(BASE_URI1 ."/includes/footer.php");
 		
 		
 		

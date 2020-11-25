@@ -6,7 +6,7 @@
 			
 			require ('../../includes/config.inc.php');		
 			
-			//require (BASE_URI.'/scripts/headerCreatorV2.php');
+			//require (BASE_URI1.'/scripts/headerCreatorV2.php');
 		
 			//(1);
 			//require ('/Applications/XAMPP/xamppfiles/htdocs/dashboard/esd/scripts/headerCreator.php');
@@ -33,7 +33,7 @@ $POEM->Load_from_key($key); //load the correct patient record?>
                             <div class="modal-title d-flex align-items-left" id="modal-title-change-username">
                                 <div>
                                     <div class="bg-dark mr-3">
-                                    <img src="<?php echo BASE_URL;?>/assets/logo/edm.png" id="navbar-logo" style="height: 50px;">
+                                    <img src="<?php echo BASE_URL1;?>/assets/logo/edm.png" id="navbar-logo" style="height: 50px;">
 
                                     </div>
                                 </div>
@@ -239,7 +239,7 @@ $POEM->Load_from_key($key); //load the correct patient record?>
                             <div class="modal-title d-flex align-items-left" id="modal-title-change-username">
                                 <div>
                                     <div class="bg-dark mr-3">
-                                    <img src="<?php echo BASE_URL;?>/assets/logo/erm.png" id="navbar-logo" style="height: 50px;">
+                                    <img src="<?php echo BASE_URL1;?>/assets/logo/erm.png" id="navbar-logo" style="height: 50px;">
 
                                     </div>
                                 </div>

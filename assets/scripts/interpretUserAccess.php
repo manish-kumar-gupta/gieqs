@@ -7,17 +7,14 @@
 //$paid allows setting of pages which require subscription and login
 
 //define token from url
+//echo 'hello';
 
-if ($edm){
-
-    require(BASE_URI1 . '/assets/scripts/classes/assetManager.class.php');
-
-}else{
+error_reporting(E_ALL);
     require(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
 
     
 
-}
+
 
 spl_autoload_unregister ('class_loader');
 
@@ -28,10 +25,10 @@ spl_autoload_register ('class_loader');
 
 
 
-error_reporting(0);
 
-$debugUserAccess = false;
-$debug = false;
+
+$debugUserAccess = FALSE;
+//$debug = FALSE;
 
 $info = [];
 

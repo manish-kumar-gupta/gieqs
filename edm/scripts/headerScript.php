@@ -2,15 +2,15 @@
 	
    //error_reporting;
 
-    require (BASE_URI . '/includes/login_functions.php');
+    require (BASE_URI1 . '/includes/login_functions.php');
     
     //place to redirect the user if not allowed access
-    $location = BASE_URL . '/index.php';
+    $location = BASE_URL1 . '/index.php';
 
     if (!($dbc)){
     require(DB);
     }
    
     
-    require(BASE_URI . '/scripts/interpretUserAccess.php');
+    require(BASE_URI1 . '/scripts/interpretUserAccess.php');
 ?>

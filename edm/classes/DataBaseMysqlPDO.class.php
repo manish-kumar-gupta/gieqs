@@ -12,7 +12,7 @@
  */
 //;
 		
-Class DataBaseMysqlPDO {
+Class DataBaseMysqlPDOEDM {
 
 	public $conn;
 

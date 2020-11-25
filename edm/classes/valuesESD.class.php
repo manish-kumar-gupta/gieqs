@@ -87,7 +87,7 @@ Class valuesESD {
 	private $connection;
 
 	public function __construct(){
-		$this->connection = new DataBaseMysqlPDO();
+		$this->connection = new DataBaseMysqlPDOEDM();
 	}
 
     /**

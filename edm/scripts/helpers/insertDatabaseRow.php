@@ -8,7 +8,7 @@
 			
 			require ('../../includes/config.inc.php');		
 			
-			require (BASE_URI.'/scripts/headerCreatorV2.php');
+			require (BASE_URI1.'/scripts/headerCreatorV2.php');
 		
 			//(1);
 			//require ('/Applications/XAMPP/xamppfiles/htdocs/dashboard/esd/scripts/headerCreator.php');
@@ -123,8 +123,8 @@ background-color: rgb(238, 194, 120);
 		
 		<?php
 		//include($root . "/scripts/logobar.php");
-		include(BASE_URI . "/includes/topbar.php");
-		include(BASE_URI . "/includes/naviv2.php");
+		include(BASE_URI1 . "/includes/topbar.php");
+		include(BASE_URI1 . "/includes/naviv2.php");
 		?>
 		
 		<body>
@@ -339,7 +339,7 @@ $.fn.serializeObject = function() {
 		<?php
 		
 		    // Include the footer file to complete the template:
-		    include(BASE_URI ."/includes/footer.php");
+		    include(BASE_URI1 ."/includes/footer.php");
 		
 		
 		

@@ -1,7 +1,7 @@
 <?php
 //require ('config.inc.php');
 		
-//require (BASE_URI . '/scripts/headerScript.php');
+//require (BASE_URI1 . '/scripts/headerScript.php');
 new users;
 
 echo '<div class="navbar">';

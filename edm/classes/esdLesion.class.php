@@ -11,6 +11,20 @@
  */
 
 //;
+
+if (session_status() == PHP_SESSION_NONE) { //if there's no session_start yet...
+    session_start(); //do this
+}
+
+if ($_SESSION['debug'] == true){
+
+error_reporting(E_ALL);
+
+}else{
+
+error_reporting(0);
+	
+}
 require_once 'DataBaseMysqlPDO.class.php';
 
 Class esdLesion {
@@ -103,7 +117,7 @@ Class esdLesion {
 	private $connection;
 
 	public function esdLesion(){
-		$this->connection = new DataBaseMysqlPDO();
+		$this->connection = new DataBaseMysqlPDOEDM();
 	}
 
     /**

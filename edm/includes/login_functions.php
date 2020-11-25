@@ -4,7 +4,7 @@
 //require ('config.inc.php');
 //$openaccess = 1;		
 
-//require (BASE_URI . '/scripts/headerScript.php');
+//require (BASE_URI1 . '/scripts/headerScript.php');
     
     require(DB);    
 

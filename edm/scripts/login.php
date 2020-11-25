@@ -4,7 +4,7 @@
 	 //$openaccess = 1;
 	 
 	 require ('../includes/config.inc.php');		
-	 //require (BASE_URI.'/scripts/headerScript.php');
+	 //require (BASE_URI1.'/scripts/headerScript.php');
 
 
 
@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	
 	// Need two helper files:
 
-	require (BASE_URI.'/includes/login_functions.php');
+	require (BASE_URI1.'/includes/login_functions.php');
 	
 	
 	// set specifically that this is to login via GIEQs, but this is not used anyway...

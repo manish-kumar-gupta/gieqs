@@ -48,10 +48,10 @@ if ($local) {
    // $debug = TRUE;
     
     // Define the constants:
-    define('BASE_URI', '/Applications/XAMPP/xamppfiles/htdocs/dashboard/gieqs/edm');
-    define('BASE_URL', 'http://localhost:90/dashboard/gieqs/edm');
-    define('BASE_URI1', '/Applications/XAMPP/xamppfiles/htdocs/dashboard/gieqs');
-    define('BASE_URL1', 'http://localhost:90/dashboard/gieqs');
+    define('BASE_URI1', '/Applications/XAMPP/xamppfiles/htdocs/dashboard/gieqs/edm');
+    define('BASE_URL1', 'http://localhost:90/dashboard/gieqs/edm');
+    define('BASE_URI', '/Applications/XAMPP/xamppfiles/htdocs/dashboard/gieqs');
+    define('BASE_URL', 'http://localhost:90/dashboard/gieqs');
     define('DB', '/Applications/XAMPP/xamppfiles/htdocs/dashboard/mysqli_connect_POEM.inc.php');
     define('DB1', '/Applications/XAMPP/xamppfiles/htdocs/dashboard/mysqli_connect_gieqs.inc.php');
 
@@ -68,10 +68,10 @@ if ($local) {
     
 } else {
 
-    define('BASE_URI', $_SERVER['DOCUMENT_ROOT'].'/edm'); 
-    define('BASE_URI1', $_SERVER['DOCUMENT_ROOT']); 
-    define('BASE_URL', 'https://www.gieqs.com/edm');
-    define('BASE_URL1', 'https://www.gieqs.com');
+    define('BASE_URI1', $_SERVER['DOCUMENT_ROOT'].'/edm'); 
+    define('BASE_URI', $_SERVER['DOCUMENT_ROOT']); 
+    define('BASE_URL1', 'https://www.gieqs.com/edm');
+    define('BASE_URL', 'https://www.gieqs.com');
     
     define('DB', '/home/u8l2e829uoi9/mysqli_connect_edm.inc.php');
     define('DB1', '/home/u8l2e829uoi9/mysqli_connect_gieqs.inc.php');
@@ -88,10 +88,10 @@ if ($local) {
     
 }
 
-$root = BASE_URI . '/';
-$roothttp = BASE_URL . '/';
+$root = BASE_URI1 . '/';
+$roothttp = BASE_URL1 . '/';
 
-//define('redirect_location', BASE_URL . '/index.php');
+//define('redirect_location', BASE_URL1 . '/index.php');
 //echo redirect_location;
     
 /* 
@@ -109,7 +109,7 @@ $debug = TRUE;
  *  before this next conditional.
  */
 
-$debug = TRUE;
+$debug = FALSE;
 
 // Assume debugging is off. 
 if (!isset($debug)) {

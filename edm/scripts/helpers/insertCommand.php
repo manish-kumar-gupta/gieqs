@@ -5,7 +5,7 @@
 			
 			require ('../../includes/config.inc.php');		
 			
-            //require (BASE_URI.'/scripts/headerCreatorV2.php');
+            //require (BASE_URI1.'/scripts/headerCreatorV2.php');
             
   
 
@@ -42,7 +42,7 @@
 
                 foreach ($databasesToBackup as $key=>$value){
 
-                    $dir = BASE_URI . '/changes/sql/'.$containerDatabase. '_'. $value. '_backup_' .date("j_n_Y_gi"). '.sql';
+                    $dir = BASE_URI1 . '/changes/sql/'.$containerDatabase. '_'. $value. '_backup_' .date("j_n_Y_gi"). '.sql';
 
                     echo "<p>Backing up database to `<code>{$dir}</code>`</p>";
 
@@ -88,7 +88,7 @@
                 echo '<br/><br/>';
                 print_r($log);
 
-                print_r(BASE_URI . '/changes/databaseModifications.log');
+                print_r(BASE_URI1 . '/changes/databaseModifications.log');
 
-                file_put_contents(BASE_URI . '/changes/databaseModifications.log', $log, FILE_APPEND);
+                file_put_contents(BASE_URI1 . '/changes/databaseModifications.log', $log, FILE_APPEND);
                 

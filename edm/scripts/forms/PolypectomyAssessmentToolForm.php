@@ -9,7 +9,7 @@
 			
 			require ('../../includes/config.inc.php');		
 			
-			require (BASE_URI.'/scripts/headerCreatorV2.php');
+			require (BASE_URI1.'/scripts/headerCreatorV2.php');
 
 			$formv1 = new formGenerator;
 			$general = new general;
@@ -123,7 +123,7 @@
 						$tableNameSheet = "pageLayoutPolypectomyTool";
 
 
-						include(BASE_URI . "/scripts/FormFunctionsGenericWeight.php");
+						include(BASE_URI1 . "/scripts/FormFunctionsGenericWeight.php");
 
 						$iterationForm = 1;
 						$sectionTitle = array();
@@ -171,7 +171,7 @@
 							echo "</div>";
 						
 						echo "<table class=\"comorbidity\">";
-						include(BASE_URI . "/scripts/iterateFormGenericWeight.php");
+						include(BASE_URI1 . "/scripts/iterateFormGenericWeight.php");
 						echo "</table><br/></fieldset><br>";
 						echo "</div>";
 						echo "<div class='col-1'>";

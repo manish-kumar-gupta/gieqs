@@ -1,7 +1,7 @@
 <?php
-//require ('config.inc.php');
+//require_once ('../assets/includes/config.inc.php');
 		
-//require (BASE_URI . '/scripts/headerScript.php');
+//require (BASE_URI1 . '/scripts/headerScript.php');
 new users;
 $userid = $_SESSION['user_id'];
 ?>
@@ -12,8 +12,8 @@ $userid = $_SESSION['user_id'];
     <nav class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-dark bg-dark" id="navbar-main">
       <div class="container px-lg-0">
         <!-- Logo -->
-        <a class="navbar-brand mr-lg-5" href="<?php echo BASE_URL;?>/index.php">
-          <img alt="Image placeholder" src="<?php echo BASE_URL;?>/assets/logo/edm.png" id="navbar-logo" style="height: 50px;">
+        <a class="navbar-brand mr-lg-5" href="<?php echo BASE_URL1;?>/index.php">
+          <img alt="Image placeholder" src="<?php echo BASE_URL1;?>/assets/logo/edm.png" id="navbar-logo" style="height: 50px;">
         </a>
         <!-- Navbar collapse trigger -->
         <button class="navbar-toggler pr-0" type="button" data-toggle="collapse" data-target="#navbar-main-collapse" aria-controls="navbar-main-collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +29,7 @@ $userid = $_SESSION['user_id'];
           <ul class="navbar-nav align-items-lg-center">
             <!-- Home - Overview  -->
             <li class="nav-item active">
-              <a class="nav-link" href="' . BASE_URL . '/index.php">Home</a>
+              <a class="nav-link" href="' . BASE_URL1 . '/index.php">Home</a>
             </li>
             
 
@@ -90,12 +90,12 @@ $userid = $_SESSION['user_id'];
                     </a>
                     <ul class="dropdown-menu">
                       <li>
-                        <a class="dropdown-item" href="' . $roothttp . 'scripts/forms/esdLesionFormv2.php">
+                        <a class="dropdown-item" href="' . BASE_URL1 . '/scripts/forms/esdLesionFormv2.php">
                           Enter new Lesion
                         </a>
                       </li>
                       <li>
-                        <a class="dropdown-item" href="' . $roothttp . 'scripts/forms/esdLesionTablev2.php">
+                        <a class="dropdown-item" href="' . BASE_URL1 . '/scripts/forms/esdLesionTablev2.php">
                           Table of Lesions
                         </a>
                       </li>
@@ -155,12 +155,12 @@ $userid = $_SESSION['user_id'];
                     </a>
                     <ul class="dropdown-menu">
                       <li>
-                        <a class="dropdown-item" href="' . $roothttp . 'scripts/forms/POEMFormv2.php">
+                        <a class="dropdown-item" href="' . BASE_URL1 . '/scripts/forms/POEMFormv2.php">
                           Enter new POEM
                         </a>
                       </li>
                       <li>
-                        <a class="dropdown-item" href="' . $roothttp . 'scripts/forms/POEMTablev2.php">
+                        <a class="dropdown-item" href="' . BASE_URL1 . '/scripts/forms/POEMTablev2.php">
                           Table of Lesions
                         </a>
                       </li>

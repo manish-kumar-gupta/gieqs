@@ -9,7 +9,7 @@
 $openaccess = 1;
 
 require 'includes/config.inc.php';
-require BASE_URI . '/scripts/headerScript.php';
+require BASE_URI1 . '/scripts/headerScript.php';
 $_SESSION = array();
 
 // If it's desired to kill the session, also delete the session cookie.
@@ -25,7 +25,7 @@ if (ini_get("session.use_cookies")) {
 // Finally, destroy the session.
 session_destroy();
 
-//header ("Location: ". BASE_URI ."elearn.php");
+//header ("Location: ". BASE_URI1 ."elearn.php");
 //  exit ();
 
 ?>

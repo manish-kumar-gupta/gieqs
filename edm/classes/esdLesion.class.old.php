@@ -103,7 +103,7 @@ Class esdLesion {
 	private $connection;
 
 	public function esdLesion(){
-		$this->connection = new DataBaseMysqlPDO();
+		$this->connection = new DataBaseMysqlPDOEDM();
 	}
 
     /**

@@ -8,7 +8,7 @@
 
 			require ('../../includes/config.inc.php');		
 
-			require (BASE_URI.'/scripts/headerCreatorV2.php');
+			require (BASE_URI1.'/scripts/headerCreatorV2.php');
 		
 			//require ('/Applications/XAMPP/xamppfiles/htdocs/dashboard/esd/scripts/headerCreator.php');
 		
@@ -53,8 +53,8 @@
 		</head>
 		
 		<?php
-	include(BASE_URI . "/includes/topbar.php");
-	include(BASE_URI . "/includes/naviv2.php");
+	include(BASE_URI1 . "/includes/topbar.php");
+	include(BASE_URI1 . "/includes/naviv2.php");
 		?>
 		
 		<body>
@@ -93,7 +93,7 @@
 		
 					    <form id="POEM">
 						
-					    <?php include(BASE_URI.'/classes/formPOEM.html');?>
+					    <?php include(BASE_URI1.'/classes/formPOEM.html');?>
 						    <button id="submitPOEM">Submit</button>
 		
 					    </form>
@@ -107,8 +107,8 @@
 		    </div>
 
 			<!-- Datatables -->
-<script src="<?php echo BASE_URL1; ?>/node_modules/datatables.net/js/jquery.datatables.min.js"></script>
-<script src="<?php echo BASE_URL1; ?>/assets/libs/datatables/datatables.min.js"></script>
+<script src="<?php echo BASE_URL; ?>/node_modules/datatables.net/js/jquery.datatables.min.js"></script>
+<script src="<?php echo BASE_URL; ?>/assets/libs/datatables/datatables.min.js"></script>
 
 		<script>
 			switch (true) {

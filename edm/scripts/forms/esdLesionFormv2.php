@@ -6,17 +6,34 @@
 			$openaccess = 0;
 			$requiredUserLevel = 2;
 			
-			require ('../../includes/config.inc.php');		
+			require ('../../../assets/includes/config.inc.php');		
 			
-			require (BASE_URI.'/scripts/headerCreatorV2.php');
+			require (BASE_URI1.'/scripts/headerCreatorV2.php');
 		
 			//(1);
 			//require ('/Applications/XAMPP/xamppfiles/htdocs/dashboard/esd/scripts/headerCreator.php');
 		
-			$formv1 = new formGenerator;
-			$general = new general;
-			$video = new video;
-			$tagCategories = new tagCategories;
+			//echo 'hello';
+
+
+    
+
+
+
+spl_autoload_unregister ('class_loader');
+
+require(BASE_URI . '/edm/classes/formGenerator.class.php');
+$formv1 = new formGenerator;
+require(BASE_URI . '/edm/classes/general.class.php');
+$general = new general;
+
+
+
+spl_autoload_register ('class_loader');
+			
+		
+			//$video = new video;
+			//$tagCategories = new tagCategories;
 			
 		
 		
@@ -82,8 +99,8 @@ background-color: rgb(238, 194, 120);
 		
 		<?php
 		//include($root . "/scripts/logobar.php");
-		include(BASE_URI . "/includes/topbar.php");
-		include(BASE_URI . "/includes/naviv2.php");
+		include(BASE_URI1 . "/includes/topbar.php");
+		include(BASE_URI1 . "/includes/naviv2.php");
 		?>
 		
 		<body>
@@ -132,7 +149,7 @@ background-color: rgb(238, 194, 120);
 						$tableNameSheet = "pageLayoutESD";
 
 
-						include(BASE_URI . "/scripts/FormFunctionsGeneric.php");
+						include(BASE_URI1 . "/scripts/FormFunctionsGeneric.php");
 
 						$iterationForm = 1;
 						$sectionTitle = array();
@@ -162,7 +179,7 @@ background-color: rgb(238, 194, 120);
 						//echo "<div class='col-5'>";
 						echo "<fieldset id=\"".$sectionTitle[$x]."Section\" class=\"".$sectionTitle[$x]."\"><h4 style='text-align:left;'>".$sectionTitle[$x]."</h4>";
 						//echo "<table class=\"comorbidity\">";
-						include(BASE_URI . "/scripts/iterateFormGeneric.php");
+						include(BASE_URI1 . "/scripts/iterateFormGeneric.php");
 						echo "<br/></fieldset><br>";
 						//echo "</div>";
 						//echo "<div class='col-1'>";
@@ -589,7 +606,7 @@ switch (true) {
 		<?php
 		
 		    // Include the footer file to complete the template:
-		    include(BASE_URI ."/includes/footer.php");
+		    include(BASE_URI1 ."/includes/footer.php");
 		
 		
 		

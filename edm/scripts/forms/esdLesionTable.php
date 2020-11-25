@@ -4,16 +4,22 @@
 		$openaccess = 0;
 		$requiredUserLevel = 4;
 		
-		require ('../../includes/config.inc.php');		
+		require ('../../../assets/includes/config.inc.php');		
 		
-		require (BASE_URI.'/scripts/headerCreatorV2.php');
+		require (BASE_URI1.'/scripts/headerCreatorV2.php');
 	
 		//;
 		
-		$formv1 = new formGenerator;
-		$general = new general;
-		$video = new video;
-		$tagCategories = new tagCategories;
+		spl_autoload_unregister ('class_loader');
+
+require(BASE_URI . '/edm/classes/formGenerator.class.php');
+$formv1 = new formGenerator;
+require(BASE_URI . '/edm/classes/general.class.php');
+$general = new general;
+
+
+
+spl_autoload_register ('class_loader');
 		$esdLesion = new esdLesion;
 		
 		

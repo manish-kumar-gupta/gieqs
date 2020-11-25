@@ -2,19 +2,29 @@
 		
 		<?php
 		$openaccess = 0;
-		$requiredUserLevel = 4;
+		$requiredUserLevel = 2;
 		
-		require ('../../includes/config.inc.php');		
+		require ('../../../assets/includes/config.inc.php');		
 		
-		require (BASE_URI.'/scripts/headerCreatorV2.php');
+		require (BASE_URI1.'/scripts/headerCreatorV2.php');
 	
 		//;
 		
-		$formv1 = new formGenerator;
-		$general = new general;
-		$video = new video;
-		$tagCategories = new tagCategories;
-		$esdLesion = new esdLesion;
+		
+spl_autoload_unregister ('class_loader');
+
+require(BASE_URI . '/edm/classes/formGenerator.class.php');
+$formv1 = new formGenerator;
+require(BASE_URI . '/edm/classes/general.class.php');
+$general = new general;
+require(BASE_URI . '/edm/classes/esdLesion.class.php');
+$esdLesion = new esdLesion;
+
+
+spl_autoload_register ('class_loader');
+		//$video = new video;
+		//$tagCategories = new tagCategories;
+		//
 		
 		
 		
@@ -52,14 +62,14 @@ background-color: rgb(238, 194, 120);
 
 }
             </style>
-			    <link rel="stylesheet" href="<?php echo BASE_URL1; ?>/assets/libs/datatables/datatables.min.css">
+			    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/datatables/datatables.min.css">
 
 		</head>
 		
 		<?php
 		//include($root . "/scripts/logobar.php");
-		include(BASE_URI . "/includes/topbar.php");
-		include(BASE_URI . "/includes/naviv2.php");
+		include(BASE_URI1 . "/includes/topbar.php");
+		include(BASE_URI1 . "/includes/naviv2.php");
 		?>
 		<body>
 			
@@ -94,8 +104,8 @@ background-color: rgb(238, 194, 120);
 		        
 		    </div>
 			<!-- Datatables -->
-<script src="<?php echo BASE_URL1; ?>/node_modules/datatables.net/js/jquery.datatables.min.js"></script>
-<script src="<?php echo BASE_URL1; ?>/assets/libs/datatables/datatables.min.js"></script>
+<script src="<?php echo BASE_URL; ?>/node_modules/datatables.net/js/jquery.datatables.min.js"></script>
+<script src="<?php echo BASE_URL; ?>/assets/libs/datatables/datatables.min.js"></script>
 
 		<script>
 			switch (true) {
@@ -147,7 +157,7 @@ background-color: rgb(238, 194, 120);
 		<?php
 		
 		    // Include the footer file to complete the template:
-		    include($root ."/includes/footer.php");
+		    include(BASE_URI ."/includes/footer.php");
 		
 		
 		

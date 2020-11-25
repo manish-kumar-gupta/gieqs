@@ -37,22 +37,12 @@ Class assetManager {
         require_once 'DatabaseMyssqlPDOLearning.class.php';
         $this->connection = new DataBaseMysqlPDOLearning();
 
-        $host = substr($_SERVER['HTTP_HOST'], 0, 5);
-        if (in_array($host, array('local', '127.0', '192.1'))) {
-            $local = TRUE;
-            define('BASE_URI1', '/Applications/XAMPP/xamppfiles/htdocs/dashboard/gieqs');
+       
 
 
-        } else {
-            $local = FALSE;
-            define('BASE_URI1', $_SERVER['DOCUMENT_ROOT']);
-
-        }
-
-
-            require_once(BASE_URI1 . '/assets/scripts/classes/sessionView.class.php');
+            require_once(BASE_URI . '/assets/scripts/classes/sessionView.class.php');
             $this->sessionView = new sessionView();
-            require_once(BASE_URI1 . '/assets/scripts/classes/programmeView.class.php');
+            require_once(BASE_URI . '/assets/scripts/classes/programmeView.class.php');
             $this->programmeView = new programmeView;
 
 

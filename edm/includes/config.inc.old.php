@@ -44,8 +44,8 @@ if ($local) {
    // $debug = TRUE;
     
     // Define the constants:
-    define('BASE_URI', '/Applications/XAMPP/xamppfiles/htdocs/dashboard/esd');
-    define('BASE_URL', 'http://localhost:90/dashboard/esd');
+    define('BASE_URI1', '/Applications/XAMPP/xamppfiles/htdocs/dashboard/esd');
+    define('BASE_URL1', 'http://localhost:90/dashboard/esd');
     define('DB', '/Applications/XAMPP/xamppfiles/htdocs/dashboard/mysqli_connect_POEM.inc.php');
     
     function class_loader($class) {
@@ -60,8 +60,8 @@ if ($local) {
     
 } else {
 
-    define('BASE_URI', $_SERVER['DOCUMENT_ROOT'].'/esd');
-    define('BASE_URL', 'http://www.endoscopy.wiki/esd');
+    define('BASE_URI1', $_SERVER['DOCUMENT_ROOT'].'/esd');
+    define('BASE_URL1', 'http://www.endoscopy.wiki/esd');
     define('DB', '../../mysqli_connect_esd.php');
     
     function class_loader($class) {

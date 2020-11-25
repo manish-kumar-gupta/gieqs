@@ -5,7 +5,7 @@
 			
 			require ('../includes/config.inc.php');		
 			
-			require (BASE_URI.'/scripts/headerScript.php');
+			require (BASE_URI1.'/scripts/headerScript.php');
 
 
 

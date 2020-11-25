@@ -10,7 +10,7 @@
 			
 			require ('../../includes/config.inc.php');		
 			
-			require (BASE_URI.'/scripts/headerCreatorV2.php');
+			require (BASE_URI1.'/scripts/headerCreatorV2.php');
 		
 			//(1);
 			//require ('/Applications/XAMPP/xamppfiles/htdocs/dashboard/esd/scripts/headerCreator.php');
@@ -150,8 +150,8 @@ display:block;
 		
 		<?php
 		//include($root . "/scripts/logobar.php");
-		include(BASE_URI . "/includes/topbar.php");
-		include(BASE_URI . "/includes/naviv2.php");
+		include(BASE_URI1 . "/includes/topbar.php");
+		include(BASE_URI1 . "/includes/naviv2.php");
 		?>
 		
 		<body>
@@ -209,7 +209,7 @@ display:block;
 						$tableNameSheet = "pageLayoutPOEM";
 
 
-						include(BASE_URI . "/scripts/FormFunctionsGeneric.php");
+						include(BASE_URI1 . "/scripts/FormFunctionsGeneric.php");
 
 						$iterationForm = 1;
 						$sectionTitle = array();
@@ -241,7 +241,7 @@ display:block;
 						//echo "<div class='col-5'>";
 						echo "<fieldset id=\"".$sectionTitle[$x]."Section\" class=\"".$sectionTitle[$x]."\"><h4 style='text-align:left;'>".$sectionTitle[$x]."</h4>";
 						//echo "<table class=\"comorbidity\">";
-						include(BASE_URI . "/scripts/iterateFormGeneric.php");
+						include(BASE_URI1 . "/scripts/iterateFormGeneric.php");
 						echo "<br/></fieldset><br>";
 						//echo "</div>";
 						//echo "<div class='col-1'>";
@@ -367,7 +367,7 @@ display:block;
 		<!-- Modal -->
 
 		<div id='modalHolder'>
-		<?php //require BASE_URI . '/scripts/display/popupPOEMReport.php';?>
+		<?php //require BASE_URI1 . '/scripts/display/popupPOEMReport.php';?>
 		</div>
 		<script>
 			switch (true) {
@@ -2207,7 +2207,7 @@ display:block;
 		<?php
 		
 		    // Include the footer file to complete the template:
-		    include(BASE_URI ."/includes/footer.php");
+		    include(BASE_URI1 ."/includes/footer.php");
 		
 		
 		

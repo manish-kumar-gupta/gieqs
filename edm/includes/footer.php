@@ -5,10 +5,10 @@
       <div class="row pt-md">
         <div class="col-lg-4 mb-5 mb-lg-0">
           <a href="https://www.gieqs.com">
-          <img src="<?php echo BASE_URL1;?>/assets/img/brand/gieqs.svg" alt="Footer logo" style="height: 70px;">
+          <img src="<?php echo BASE_URL;?>/assets/img/brand/gieqs.svg" alt="Footer logo" style="height: 70px;">
           </a>
           <a href="index.html">
-            <img src="<?php echo BASE_URL;?>/assets/logo/edm.png" class="mr-4" alt="Footer logo" style="height: 30px;">
+            <img src="<?php echo BASE_URL1;?>/assets/logo/edm.png" class="mr-4" alt="Footer logo" style="height: 30px;">
             </a>
           <p>Data makes endoscopy better for patients.  <br/>Together, we can build the evidence base and increase the quality of everyday endoscopic interventions. </p>
         </div>
@@ -78,7 +78,7 @@
 
             <li class="nav-item">
               <a class="nav-link" href="http://www.uzgent.be" target="_blank">
-              <img style="max-width:80px;" src="<?php echo BASE_URL1;?>/assets/img/brand/uzggold.png">
+              <img style="max-width:80px;" src="<?php echo BASE_URL;?>/assets/img/brand/uzggold.png">
               </a>
             </li>
             <!--
