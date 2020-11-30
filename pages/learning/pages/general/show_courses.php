@@ -13,8 +13,8 @@
 
       //define user access level
 
-      //$openaccess = 1;
-      $requiredUserLevel = 6;
+      $openaccess = 1;
+      //$requiredUserLevel = 6;
 
 
       //require BASE_URI . '/pages/learning/includes/head.php';
@@ -28,6 +28,9 @@
 
       require_once(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
       $assetManager = new assetManager;
+
+      require_once(BASE_URI . '/assets/scripts/classes/courseManager.class.php');
+      $courseManager = new courseManager;
 
       require_once(BASE_URI . '/assets/scripts/classes/assets_paid.class.php');
     $assets_paid = new assets_paid;
@@ -213,23 +216,27 @@
 		
         }
 
-        /* exit if no assetid provided */
+        //check for course assets
+
+        //$courseManager->returnAllCourses('3', true);
+        $courses = $courseManager->returnAllCourses('3', false);
+
+        
+
+        /* don't exit if no assetid provided */
 
         if (!isset($assetid)){
             ?>
-    <div class="main-content container mt-10">
+   
 
         <?php            
-            echo 'This page requires an asset id';
-            echo '<br/><br/>Return <a href="' . BASE_URL .  '/pages/learning/">home</a>';
-            //redirect_user(BASE_URL . '/pages/learning/');
-            die();
+            
         }
 
 
         /* determine access */
 
-
+/*
         $access = null;
 
         $access = $assetManager->is_assetid_covered_by_user_subscription($assetid, $userid, $debug);
@@ -254,9 +261,10 @@
             }
         }
 
-              /* load the asset */
+        /*
+              /* load all assets */
 
-        if ($assets_paid->Return_row($assetid)){
+        /* if ($assets_paid->Return_row($assetid)){
 
             $assets_paid->Load_from_key($assetid); 
 
@@ -267,13 +275,13 @@
                 $log[] =  'issue loading the asset';
             }
 
-        }
+        } */
 
         /* define the page variables */
 
-        $page_title = $assets_paid->getname();?>
+        $page_title = 'Endoscopy Courses';?>
 
-            <title>GIEQs Online Endoscopy Trainer - <?php echo $page_title;?></title>
+            <title>GIEQs Online - <?php echo $page_title;?></title>
 
 
             <?php
@@ -560,7 +568,7 @@
                         </div>
                     </form>
                     <div class="omnisearch-suggestions">
-                        <h6 class="heading">Search within this Subscription. Search is within the filtered set of
+                        <h6 class="heading">Search within courses. Search is within the filtered set of
                             results.</h6>
                         <div class="row">
                             <div class="col-sm-6">
@@ -607,6 +615,9 @@
             <div id="requiredTagCategories" style="display:none;"><?php echo json_encode($requiredTagCategories);?>
             </div>
 
+            <div id="courses" style="display:none;"><?php echo json_encode($courses);?>
+            </div>
+
 
 
             <!--CONSTRUCT TAG DISPLAY-->
@@ -644,13 +655,13 @@
                 <div class="d-flex flex-wrap container pt-9 mt-3">
                     <div class="h1 mr-auto pt-3"><?php echo $page_title;?></div>
                     <nav aria-label="breadcrumb" class="align-self-center">
-                        <ol class="breadcrumb breadcrumb-links p-0 m-0">
+                       <!--  <ol class="breadcrumb breadcrumb-links p-0 m-0">
                             <li class="breadcrumb-item"><a
-                                    href="<?php echo BASE_URL . '/pages/learning/index.php'?>">GIEQs
+                                    href="<?php //echo BASE_URL . '/pages/learning/index.php'?>">GIEQs
                                     online</a></li>
                             <li class="breadcrumb-item">Subscribable Courses</li>
                             <li class="breadcrumb-item gieqsGold" aria-current="page"><?php echo $page_title;?></li>
-                        </ol>
+                        </ol> -->
                     </nav>
 
                 </div>
@@ -797,13 +808,13 @@
 
             }
 
-            function refreshProgrammeView() {
+            /* function refreshProgrammeView() {
 
 
 
                 const dataToSend = {
 
-                    programmeid: <?php echo $programmes[0]['programme_id'];?>,
+                    programmeid: <?php echo isset($programmes) ? $programmes[0]['programme_id'] : 'null';?>,
 
                 }
 
@@ -824,7 +835,7 @@
                     $('#programme-display').html(data);
                     //$(document).find('.Thursday').hide();
                 })
-            }
+            } */
 
             function refreshSearch() {
 
@@ -1036,7 +1047,7 @@
 
 
                         },
-                        url: siteRoot + "/pages/learning/scripts/getVideos.php",
+                        url: siteRoot + "/pages/learning/scripts/getCourses.php",
                         type: "POST",
                         contentType: "application/json",
                         data: jsonString2,
@@ -1117,12 +1128,12 @@
 
                 });
 
-                $(document).find('#navigatorCollapse').collapse();
+                //$(document).find('#navigatorCollapse').collapse();
 
                 refreshNavAndTags();
 
 
-                refreshProgrammeView();
+                //refreshProgrammeView();
 
                 $('#refreshNavigation').click(function() {
 

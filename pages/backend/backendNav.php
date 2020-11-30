@@ -64,13 +64,17 @@
                 <div class="btn-group" role="group">
                   <button id="btn-group-boards" type="button" class="btn btn-neutral btn-icon" data-toggle="dropdown" data-offset="0,8" aria-haspopup="true" aria-expanded="false">
                     <span class="btn-inner--icon"><i class="fas fa-chart-line"></i></span>
-                    <span class="btn-inner--text d-none d-sm-inline-block">Communication</span>
+                    <span class="btn-inner--text d-none d-sm-inline-block">Courses</span>
                   </button>
+
+
                   <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow" aria-labelledby="btn-group-boards">
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/backend.php">Overview</a>
+                  <span class="dropdown-header">Course Managers</span>
+                  <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/paid_assets.php">Edit Courses</a>
+                  <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/course_dashboard.php">Course Dashboard</a>
+
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/socialGenerator.php">Social contact</a>
-                    <a class="dropdown-item" href="board-tasks.html">Tasks</a>
-                    <a class="dropdown-item" href="board-connections.html">Connections</a>
+                    
                   </div>
                 </div>
                 <div class="btn-group" role="group">

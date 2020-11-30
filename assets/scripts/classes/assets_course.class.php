@@ -2,15 +2,13 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 20-10-2020
+ * Create Date: 30-11-2020
  *
  * DJT 2019
  *
  * License: LGPL
  *
  */
-
-
 if (session_status() == PHP_SESSION_NONE) { //if there's no session_start yet...
     session_start(); //do this
 }
@@ -25,36 +23,49 @@ error_reporting(0);
 	
 }
 
+ //require_once 'DataBaseMysqlPDO.class.php';
 
-require_once 'DataBaseMysqlPDO.class.php';
-
-Class assets_paid {
+Class assets_course {
 
 	private $id; //int(11)
 	private $name; //varchar(200)
 	private $description; //varchar(800)
 	private $asset_type; //varchar(20)
-	private $superCategory; //varchar(11)
-	private $cost; //varchar(20)
-	private $renew_frequency; //varchar(11)
+	private $assetid; //varchar(11)
+	private $path; //varchar(800)
+	private $send_date; //varchar(5)
+	private $time_send; //time
 	private $connection;
+
+	//private $connection;
+   // private $sessionView;
 
 	public function __construct(){
         require_once 'DatabaseMyssqlPDOLearning.class.php';
-		$this->connection = new DataBaseMysqlPDOLearning();
+        $this->connection = new DataBaseMysqlPDOLearning();
+
+       
+
+
+           
+
+
+       
+
 	}
 
     /**
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_assets_paid($name,$description,$asset_type,$superCategory,$cost,$renew_frequency){
+	public function New_assets_course($name,$description,$asset_type,$assetid,$path,$send_date,$time_send){
 		$this->name = $name;
 		$this->description = $description;
 		$this->asset_type = $asset_type;
-		$this->superCategory = $superCategory;
-		$this->cost = $cost;
-		$this->renew_frequency = $renew_frequency;
+		$this->assetid = $assetid;
+		$this->path = $path;
+		$this->send_date = $send_date;
+		$this->time_send = $time_send;
 	}
 
     /**
@@ -64,15 +75,16 @@ Class assets_paid {
      *
      */
 	public function Load_from_key($key_row){
-		$result = $this->connection->RunQuery("Select * from assets_paid where id = \"$key_row\" ");
+		$result = $this->connection->RunQuery("Select * from assets_course where id = \"$key_row\" ");
 		while($row = $result->fetch(PDO::FETCH_ASSOC)){
 			$this->id = $row["id"];
 			$this->name = $row["name"];
 			$this->description = $row["description"];
 			$this->asset_type = $row["asset_type"];
-			$this->superCategory = $row["superCategory"];
-			$this->cost = $row["cost"];
-			$this->renew_frequency = $row["renew_frequency"];
+			$this->assetid = $row["assetid"];
+			$this->path = $row["path"];
+			$this->send_date = $row["send_date"];
+			$this->time_send = $row["time_send"];
 		}
 	}
     /**
@@ -82,7 +94,7 @@ Class assets_paid {
  *
  */
 	public function Load_records_limit_json($y, $x=0){
-$q = "Select * from `assets_paid` LIMIT " . $x . ", " . $y;
+$q = "Select * from `assets_course` LIMIT " . $x . ", " . $y;
 		$result = $this->connection->RunQuery($q);
 							$rowReturn = array();
 						$x = 0;
@@ -94,9 +106,10 @@ $q = "Select * from `assets_paid` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["name"] = $row["name"];
 			$rowReturn[$x]["description"] = $row["description"];
 			$rowReturn[$x]["asset_type"] = $row["asset_type"];
-			$rowReturn[$x]["superCategory"] = $row["superCategory"];
-			$rowReturn[$x]["cost"] = $row["cost"];
-			$rowReturn[$x]["renew_frequency"] = $row["renew_frequency"];
+			$rowReturn[$x]["assetid"] = $row["assetid"];
+			$rowReturn[$x]["path"] = $row["path"];
+			$rowReturn[$x]["send_date"] = $row["send_date"];
+			$rowReturn[$x]["time_send"] = $row["time_send"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -110,7 +123,7 @@ $q = "Select * from `assets_paid` LIMIT " . $x . ", " . $y;
  *
  */
 	public function Return_row($key){
-$q = "Select * from `assets_paid` WHERE `id` = $key";
+$q = "Select * from `assets_course` WHERE `id` = $key";
 		$result = $this->connection->RunQuery($q);
 							$rowReturn = array();
 						$x = 0;
@@ -122,9 +135,10 @@ $q = "Select * from `assets_paid` WHERE `id` = $key";
 			$rowReturn[$x]["name"] = $row["name"];
 			$rowReturn[$x]["description"] = $row["description"];
 			$rowReturn[$x]["asset_type"] = $row["asset_type"];
-			$rowReturn[$x]["superCategory"] = $row["superCategory"];
-			$rowReturn[$x]["cost"] = $row["cost"];
-			$rowReturn[$x]["renew_frequency"] = $row["renew_frequency"];
+			$rowReturn[$x]["assetid"] = $row["assetid"];
+			$rowReturn[$x]["path"] = $row["path"];
+			$rowReturn[$x]["send_date"] = $row["send_date"];
+			$rowReturn[$x]["time_send"] = $row["time_send"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -135,7 +149,7 @@ $q = "Select * from `assets_paid` WHERE `id` = $key";
 
         public function Load_records_limit_json_datatables($y, $x = 0)
             {
-            $q = "Select * from `assets_paid` LIMIT $x, $y";
+            $q = "Select * from `assets_course` LIMIT $x, $y";
             $result = $this->connection->RunQuery($q);
             $rowReturn = array();
             $x = 0;
@@ -167,7 +181,7 @@ $q = "Select * from `assets_paid` WHERE `id` = $key";
      *
      */
 	public function matchRecord($key_row){
-		$result = $this->connection->RunQuery("Select * from `assets_paid` where `id` = '$key_row' ");
+		$result = $this->connection->RunQuery("Select * from `assets_course` where `id` = '$key_row' ");
 		$nRows = $result->rowCount();
 			if ($nRows == 1){
 				return TRUE;
@@ -180,7 +194,7 @@ $q = "Select * from `assets_paid` WHERE `id` = $key";
 		* Return the number of rows
 		*/
 	public function numberOfRows(){
-		return $this->connection->TotalOfRows('assets_paid');
+		return $this->connection->TotalOfRows('assets_course');
 	}
 
     /**
@@ -258,7 +272,7 @@ $x=0;
 			$x++;
 
 		} 
-$q = "INSERT INTO `assets_paid` ($keys) VALUES ($keys2)";
+$q = "INSERT INTO `assets_course` ($keys) VALUES ($keys2)";
 		
  $stmt = $this->connection->prepare($q); 
 $stmt->execute($ovMod3); 
@@ -343,7 +357,7 @@ $x=0;
 			$x++;
 
 		} 
-$q = "UPDATE `assets_paid` SET $implodeArray WHERE `id` = '$this->id'";
+$q = "UPDATE `assets_course` SET $implodeArray WHERE `id` = '$this->id'";
 
 		
  $stmt = $this->connection->RunQuery($q); 
@@ -358,7 +372,7 @@ $q = "UPDATE `assets_paid` SET $implodeArray WHERE `id` = '$this->id'";
      *
      */
 	public function Delete_row_from_key($key_row){
-		$result = $this->connection->RunQuery("DELETE FROM `assets_paid` WHERE `id` = $key_row");
+		$result = $this->connection->RunQuery("DELETE FROM `assets_course` WHERE `id` = $key_row");
 		return $result->rowCount();
 	}
 
@@ -370,7 +384,7 @@ $q = "UPDATE `assets_paid` SET $implodeArray WHERE `id` = '$this->id'";
      */
 	public function GetKeysOrderBy($column, $order){
 		$keys = array(); $i = 0;
-		$result = $this->connection->RunQuery("SELECT id from assets_paid order by $column $order");
+		$result = $this->connection->RunQuery("SELECT id from assets_course order by $column $order");
 			while($row = $result->fetch_array(MYSQLI_ASSOC)){
 				$keys[$i] = $row["id"];
 				$i++;
@@ -407,24 +421,31 @@ $q = "UPDATE `assets_paid` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
-	 * @return superCategory - varchar(11)
+	 * @return assetid - varchar(11)
 	 */
-	public function getsuperCategory(){
-		return $this->superCategory;
+	public function getassetid(){
+		return $this->assetid;
 	}
 
 	/**
-	 * @return cost - varchar(20)
+	 * @return path - varchar(800)
 	 */
-	public function getcost(){
-		return $this->cost;
+	public function getpath(){
+		return $this->path;
 	}
 
 	/**
-	 * @return renew_frequency - varchar(11)
+	 * @return send_date - varchar(5)
 	 */
-	public function getrenew_frequency(){
-		return $this->renew_frequency;
+	public function getsend_date(){
+		return $this->send_date;
+	}
+
+	/**
+	 * @return time_send - time
+	 */
+	public function gettime_send(){
+		return $this->time_send;
 	}
 
 	/**
@@ -458,28 +479,35 @@ $q = "UPDATE `assets_paid` SET $implodeArray WHERE `id` = '$this->id'";
 	/**
 	 * @param Type: varchar(11)
 	 */
-	public function setsuperCategory($superCategory){
-		$this->superCategory = $superCategory;
+	public function setassetid($assetid){
+		$this->assetid = $assetid;
 	}
 
 	/**
-	 * @param Type: varchar(20)
+	 * @param Type: varchar(800)
 	 */
-	public function setcost($cost){
-		$this->cost = $cost;
+	public function setpath($path){
+		$this->path = $path;
 	}
 
 	/**
-	 * @param Type: varchar(11)
+	 * @param Type: varchar(5)
 	 */
-	public function setrenew_frequency($renew_frequency){
-		$this->renew_frequency = $renew_frequency;
+	public function setsend_date($send_date){
+		$this->send_date = $send_date;
+	}
+
+	/**
+	 * @param Type: time
+	 */
+	public function settime_send($time_send){
+		$this->time_send = $time_send;
 	}
 
     /**
      * Close mysql connection
      */
-	public function endassets_paid(){
+	public function endassets_course(){
 		$this->connection->CloseMysql();
 	}
 

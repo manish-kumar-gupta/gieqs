@@ -29,6 +29,9 @@
       require_once(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
       $assetManager = new assetManager;
 
+     
+
+
       require_once(BASE_URI . '/assets/scripts/classes/assets_paid.class.php');
     $assets_paid = new assets_paid;
 

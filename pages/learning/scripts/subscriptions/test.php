@@ -19,6 +19,10 @@ $users->Load_from_key($userid);
 
 error_reporting(E_ALL);
 
+require_once(BASE_URI . '/assets/scripts/classes/courseManager.class.php');
+$courseManager = new courseManager;
+
+
 require_once BASE_URI . '/assets/scripts/classes/sessionView.class.php';
 $sessionView = new sessionView;
 

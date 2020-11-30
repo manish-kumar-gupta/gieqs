@@ -651,6 +651,7 @@ if ($identifierValue) {
                                 <th>name</th>
                                 <th>description</th>
                                 <th>asset_type</th>
+                                <th>superCategory</th>
                                 <th>cost</th>
                                 <th>renew_frequency</th>
                                 <th></th>
@@ -734,6 +735,24 @@ if ($identifierValue) {
                                             <option value="2">GIEQs Congress</option>
                                             <option value="3">Online Course</option>
                                             <option value="4">Online Video Collection</option>
+                                            </select>
+                                        </div>
+
+                                        <label for="superCategory">superCategory</label>
+                                        <div class="input-group mb-3">
+                                            <select id="superCategory" type="text" data-toggle="select" class="form-control" name="superCategory">
+                                            <option value="" selected disabled hidden>please select an option</option>
+                                            <?php 
+                                            
+                                            $supercategories = $assetManager->getSuperCategories();
+
+                                            foreach ($supercategories as $key=>$value){
+
+                                                echo "<option value='{$value['superCategory']}'>{$value['superCategory_t']}<option>";
+
+                                            }
+                                            
+                                            //echo $assetManager->getSuperCategories();?>
                                             </select>
                                         </div>
 
@@ -1702,6 +1721,8 @@ processResults: function(data) {
        {data: 'name' },
        {data: 'description' },
        {data: 'asset_type' },
+       {data: 'superCategory' },
+
        {data: 'cost' },
        {data: 'renew_frequency' },
 
@@ -1711,7 +1732,7 @@ processResults: function(data) {
                 {
                     data: null,
                     render: function(data, type, row) {
-                        return '<div class="d-flex align-items-center justify-content-end"><div class="actions ml-3"><a class="fill-modal action-item mr-2"  data-toggle="tooltip" title="edit this row" data-original-title="Edit"> <i class="fas fa-pencil-alt"></i> </a> <a href="#" class="action-item mr-2" data-toggle="tooltip" title="" data-original-title="see enclosed items"> <i class="fas fa-level-down-alt"></i> </a> <div class="dropdown"> <a href="#" class="action-item" role="button" data-toggle="dropdown" aria-haspopup="true" data-expanded="false"> <i class="fas fa-ellipsis-v"></i> </a> <div class="dropdown-menu dropdown-menu-right"> <?php if ($isSuperuser == 1){ ?><a class="delete-row dropdown-item"> Delete </a><?php } ?> </div> </div> </div> </div>';
+                        return '<div class="d-flex align-items-center justify-content-end"><div class="actions ml-3"><a class="fill-modal action-item mr-2"  data-toggle="tooltip" title="edit this row" data-original-title="Edit"> <i class="fas fa-pencil-alt"></i> </a> <a class="action-item mr-2 dashboard" data-toggle="tooltip" title="view course dashboard" data-original-title="see enclosed items"> <i class="fas fa-level-down-alt"></i> </a> <div class="dropdown"> <a href="#" class="action-item" role="button" data-toggle="dropdown" aria-haspopup="true" data-expanded="false"> <i class="fas fa-ellipsis-v"></i> </a> <div class="dropdown-menu dropdown-menu-right"> <?php if ($isSuperuser == 1){ ?><a class="delete-row dropdown-item"> Delete </a><?php } ?> </div> </div> </div> </div>';
                     }
                 }
             ],
@@ -2062,6 +2083,19 @@ request.done(function(data) {
 
 })
 
+
+$(document).on('click', '.dashboard', function() {
+
+var targettd = $(this).parent().parent().parent().parent().find('td').first().text();
+//console.log(targettd);
+lesionUnderEdit = targettd;
+
+//load edit form in new window
+
+openInNewTab(siteRoot + 'pages/backend/course_dashboard.php?identifier='+targettd);
+
+
+})
 
     })
     </script>
