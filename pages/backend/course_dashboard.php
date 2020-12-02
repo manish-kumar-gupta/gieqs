@@ -192,6 +192,11 @@ $assetManager = new assetManager;
 
 $assets_paid = new assets_paid;
 
+$emails = new emails;
+
+$emails = new emailContent;
+
+
 $databaseName = assets_paid;
 
 
@@ -244,6 +249,8 @@ if ($identifierValue) {
 //create a standard form based on the database to be included in modals
 
 ?>
+
+
 
                 <!--alerts-->
 
@@ -339,6 +346,9 @@ if ($identifierValue) {
 
     <!-- modal 2,5 asset -->
     <?php require(BASE_URI . '/pages/backend/forms/emailForm.php');?>
+
+    <!-- modal 2,5 asset -->
+    <?php require(BASE_URI . '/pages/backend/forms/emailCreateForm.php');?>
 
 
     <!-- Modal 2, moderator -->
@@ -450,12 +460,12 @@ if ($identifierValue) {
     var lesionUnderEdit = null;
     var editSessionItem = 0;
     var editModerator = 0;
-    var editEmail = 0;
     var sessionItemUnderEdit = null;
-    var emailUnderEdit = null;
     var moderatorUnderEdit = null;
     Dropzone.autoDiscover = false;
     var assetUnderEdit = null;
+
+    //generic functions
 
     function tableRefresh() {
 
@@ -465,6 +475,1007 @@ if ($identifierValue) {
 
 
     }
+
+    /* COURSE EMAIL FUNCTIONS */
+
+
+    //email attach functions
+
+
+    //definitions
+
+    var editEmail = 0;
+
+    var emailUnderEdit = null;
+
+    var file_up_names = [];
+
+
+
+    function fillFormEmail(idPassed) {
+
+        disableFormInputs("sessionItem-form");
+
+        var formString = $('#sessionItem-form').serializeFormJSON();
+
+        formString["sessionItemid"] = idPassed;
+
+        const jsonString = JSON.stringify(formString);
+        console.log(jsonString);
+
+        var request = $.ajax({
+            url: siteRoot + "assets/scripts/getSessionItem.php", //TODO make this file
+            type: "POST",
+            contentType: "application/json",
+            data: jsonString,
+        });
+
+
+
+        request.done(function(data) {
+            // alert( "success" );
+
+            if (data) {
+                var formData = $.parseJSON(data);
+                console.dir(formData);
+
+
+                //do something with the select2
+
+
+
+                //TODO required for faculty
+                var faculty = (formData[0]['faculty']);
+
+                $.ajax({
+                    //url: siteRoot + 'assets/scripts/select2simple.php?table=Delegate&field=firstname',
+
+                    url: siteRoot +
+                        'assets/scripts/classes/querySelectFacultySingleOption.php?search=' + faculty,
+
+                }).then(function(data) {
+                    // create the option and append to Select2
+                    var retrievedProgramme = $.parseJSON(data);
+                    //console.log(retrievedProgramme);
+                    var option = new Option(retrievedProgramme.text, retrievedProgramme.id, true, true);
+                    $('#SIfaculty').append(option).trigger('change');
+
+                    // manually trigger the `select2:select` event
+                    $('#SIfaculty').trigger({
+                        type: 'select2:select',
+                        params: {
+                            data: data
+                        }
+                    });
+                });
+
+                var url = (formData[0]['url_video']);
+
+
+                $.ajax({
+                    //url: siteRoot + 'assets/scripts/select2simple.php?table=Delegate&field=firstname',
+
+                    url: siteRoot + 'assets/scripts/classes/querySelectVideoOption.php?search=' + url,
+
+                }).then(function(data) {
+                    // create the option and append to Select2
+                    var retrievedProgramme = $.parseJSON(data);
+                    //console.log(retrievedProgramme);
+                    var option = new Option(retrievedProgramme.text, retrievedProgramme.id, true, true);
+                    $('#SIurl_video').append(option).trigger('change');
+
+                    // manually trigger the `select2:select` event
+                    $('#SIurl_video').trigger({
+                        type: 'select2:select',
+                        params: {
+                            data: data
+                        }
+                    });
+                });
+
+
+
+
+
+
+                $(formData).each(function(i, val) {
+                    $.each(val, function(k, v) {
+                        $("#SI" + k).val(v).trigger('change');
+                        //console.log(k+' : '+ v);
+                    });
+
+                });
+
+                enableFormInputs("sessionItem-form");
+
+
+            } else {
+
+                alert('please try again');
+
+            }
+        })
+
+
+
+
+
+    }
+
+    function submitEmailForm() {
+
+        //pushDataFromFormAJAX (form, table, identifierKey, identifier, updateType)
+
+        var idPassed = emailUnderEdit;
+
+        console.log('got to the submit function for email item' + emailUnderEdit);
+
+        if (editEmail == 0) {
+
+
+            const dataToSend = {
+
+                assetid: $('.editAsset').attr('data'),
+                assets_course_id: emailUnderEdit,
+
+            }
+
+            const jsonString = JSON.stringify(dataToSend);
+            console.log(jsonString);
+
+
+
+            var request = $.ajax({
+                url: siteRoot + "assets/scripts/courses/addEmail.php",
+                type: "POST",
+                contentType: "application/json",
+                data: jsonString,
+            });
+
+
+
+            request.done(function(data) {
+                // alert( "success" );
+
+                if (data == 1) {
+                    refreshSessionView();
+                } else if (data == 4) {
+
+                    alert('This link already exists.  Try again');
+
+                }
+            })
+
+
+            //alert ("New esdLesion no "+data+" created");
+            $('#topTableSuccess').text("New sessionItem no " + data + " created");
+
+            $('#modal-email').animate({
+                scrollTop: 0
+            }, 'slow');
+
+
+            $("#topTableAlert").fadeTo(4000, 500).slideUp(500, function() {
+                $("#topTableAlert").slideUp(500);
+            });
+
+            //edit = 1;
+
+            //refresh table
+            refreshSessionView();
+
+            //close modal
+            $('#modal-email').modal('hide');
+
+
+        } else if (editSessionItem == 1) {
+
+            //
+
+            var formString = $('#sessionItem-form').serializeFormJSONModifier();
+
+            disableFormInputs("sessionItem-form");
+            //get session id
+
+            console.dir(formString);
+
+            formString["sessionItemid"] = idPassed;
+            formString["update"] = 1;
+            //formString["programmeid"] = ; get from the form
+
+            const jsonString = JSON.stringify(formString);
+            console.log(jsonString);
+
+            var request = $.ajax({
+                url: siteRoot + "assets/scripts/createUpdateSessionItem.php",
+                type: "POST",
+                contentType: "application/json",
+                data: jsonString,
+            });
+
+
+
+            request.done(function(data) {
+                // alert( "success" );
+
+                if (data) {
+
+                    //decode data
+                    var returnedData = $.parseJSON(data);
+
+                    console.dir(returnedData);
+
+
+                    var wasSessionItemUpdated = returnedData.updatedSessionItem;
+                    //check it for 1's
+
+                    if (wasSessionItemUpdated == 1) {
+
+                        console.log('we know data was updated / saved');
+                    }
+
+                    //console.log(data);
+                    enableFormInputs("sessionItem-form");
+                    $('#topModalSuccess').text("Data for <?php echo $databaseName;?> " + idPassed + " saved");
+
+                    $('#modal-sessionItem').animate({
+                        scrollTop: 0
+                    }, 'slow');
+
+                    $("#topModalAlert-sessionItem").fadeTo(4000, 500).slideUp(500, function() {
+                        $("#topTableAlert").slideUp(500);
+                    });
+
+
+                    refreshSessionView();
+
+
+
+                } else {
+
+                    alert('please try again');
+
+                }
+            })
+
+
+
+
+        }
+
+
+    }
+
+
+    //document ready functions
+
+    $(document).ready(function() {
+
+
+        $(document).on('click', '.addEmail', function() {
+
+            //define session id
+
+
+            $('#modal-email').modal('show');
+
+            //fillFormEmail(sessionid);
+
+            edit = 0;
+
+        })
+
+
+        $(document).on('click', '.editEmail', function() {
+
+            //define session id
+
+            var sessionid = $(this).attr('data');
+
+            console.log(sessionid);
+
+            $('#modal-email').modal('show');
+
+            fillFormEmail(sessionid);
+
+            edit = 1;
+
+        })
+
+        $(document).on('click', '.deleteEmail', function() {
+
+
+            //TODO add a sessionItem form
+            //GET the ID of the sessionItem required to edit
+            //update this from here via a template form
+            //use the tempate form for the table later
+
+            var sessionItemID = $(this).parent().prev().prev().text();
+            console.log(sessionItemID);
+            const dataToSend = {
+
+                sessionItemID: sessionItemID,
+                sessionid: <?php echo $sessionIdentifier; ?>,
+
+            }
+
+            const jsonString = JSON.stringify(dataToSend);
+            console.log(jsonString);
+
+
+
+            var request = $.ajax({
+                url: siteRoot + "assets/scripts/deleteSessionItem.php",
+                type: "POST",
+                contentType: "application/json",
+                data: jsonString,
+            });
+
+
+
+            request.done(function(data) {
+                // alert( "success" );
+
+                if (data == 1) {
+                    refreshSessionView();
+                } else if (data == 4) {
+
+                    alert('This record does not exist.  Try again');
+
+                }
+            })
+
+
+
+        })
+
+
+        //validation
+
+        //extra methods
+
+        $.validator.addMethod("time24", function(value, element) {
+            if (!/^\d{2}:\d{2}:\d{2}$/.test(value)) return false;
+            var parts = value.split(':');
+            if (parts[0] > 23 || parts[1] > 59 || parts[2] > 59) return false;
+            return true;
+        }, "Invalid time format.");
+
+        //form validation
+
+        $("#email-form").validate({
+
+            invalidHandler: function(event, validator) {
+                var errors = validator.numberOfInvalids();
+                console.log("there were " + errors + " errors");
+                if (errors) {
+                    var message = errors == 1 ?
+                        "1 field contains errors. It has been highlighted" :
+                        +errors + " fields contain errors. They have been highlighted";
+
+
+                    $('#error').text(message);
+                    //$('div.error span').addClass('form-text text-danger');
+                    //$('#errorWrapper').show();
+
+                    $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function() {
+                        $("#errorWrapper").slideUp(500);
+                    });
+                } else {
+                    $('#errorWrapper').hide();
+                }
+            },
+            ignore: [],
+            rules: {
+
+                //EDIT
+
+
+
+
+                name: {
+                    required: true,
+
+                },
+
+
+
+                description: {
+                    required: true,
+
+                },
+
+
+
+                asset_type: {
+                    required: true,
+
+                },
+
+
+
+                assetid: {
+                    required: true,
+
+                },
+
+
+
+                path: {
+                    required: true,
+
+                },
+
+
+
+                send_date: {
+                    required: true,
+                    date: true,
+
+                },
+
+
+
+                time_send: {
+                    required: true,
+                    time24: true,
+
+                },
+
+
+
+
+            },
+            messages: {
+
+
+
+            },
+
+
+            submitHandler: function(form) {
+
+                //submitPreRegisterForm();
+
+                submitEmailForm();
+
+                //TODO submit changes
+                //TODO reimport the array at the top
+                //TODO redraw the table
+
+
+
+            }
+
+
+
+
+        });
+
+        //extra functions for email
+
+        //file upload
+
+
+        $("#id_dropzone").dropzone({
+            maxFiles: 1,
+            /* acceptedFiles: 'image/jpeg, image/png, image/gif, video/*, application/pdf, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document', */
+            acceptedFiles: '.html,',
+
+            createImageThumbnails: true,
+            addRemoveLinks: true,
+            url: siteRoot + "/pages/backend/uploadFileAsset.php",
+            success: function(file, response) {
+                console.log(response);
+                file_up_names.push(response);
+
+                //the file is stored at pages/backend/uploads/response
+            },
+            removedfile: function(file) {
+
+                x = confirm('Do you want to delete?');
+                if (!x) return false;
+                for (var i = 0; i < file_up_names.length; ++i) {
+
+                    if (file_up_names[i] == file.name) {
+
+                        $.post('delete_file.php', {
+                                file_name: file_up_names[i]
+                            },
+                            function(data, status) {
+                                alert('file deleted');
+                            });
+                    }
+                }
+            }
+
+        });
+
+    });
+
+
+    /* EMAIL CREATION FUNCTIONS */
+
+
+    //email attach functions
+
+
+    //definitions
+
+    var editEmailCreate = 0;
+
+    var emailCreateUnderEdit = null;
+
+    var file_up_names_create = [];
+
+
+
+    function fillFormEmailCreate(idPassed) {
+
+        disableFormInputs("sessionItem-form");
+
+        var formString = $('#sessionItem-form').serializeFormJSON();
+
+        formString["sessionItemid"] = idPassed;
+
+        const jsonString = JSON.stringify(formString);
+        console.log(jsonString);
+
+        var request = $.ajax({
+            url: siteRoot + "assets/scripts/getSessionItem.php", //TODO make this file
+            type: "POST",
+            contentType: "application/json",
+            data: jsonString,
+        });
+
+
+
+        request.done(function(data) {
+            // alert( "success" );
+
+            if (data) {
+                var formData = $.parseJSON(data);
+                console.dir(formData);
+
+
+                //do something with the select2
+
+
+
+                //TODO required for faculty
+                var faculty = (formData[0]['faculty']);
+
+                $.ajax({
+                    //url: siteRoot + 'assets/scripts/select2simple.php?table=Delegate&field=firstname',
+
+                    url: siteRoot +
+                        'assets/scripts/classes/querySelectFacultySingleOption.php?search=' + faculty,
+
+                }).then(function(data) {
+                    // create the option and append to Select2
+                    var retrievedProgramme = $.parseJSON(data);
+                    //console.log(retrievedProgramme);
+                    var option = new Option(retrievedProgramme.text, retrievedProgramme.id, true, true);
+                    $('#SIfaculty').append(option).trigger('change');
+
+                    // manually trigger the `select2:select` event
+                    $('#SIfaculty').trigger({
+                        type: 'select2:select',
+                        params: {
+                            data: data
+                        }
+                    });
+                });
+
+                var url = (formData[0]['url_video']);
+
+
+                $.ajax({
+                    //url: siteRoot + 'assets/scripts/select2simple.php?table=Delegate&field=firstname',
+
+                    url: siteRoot + 'assets/scripts/classes/querySelectVideoOption.php?search=' + url,
+
+                }).then(function(data) {
+                    // create the option and append to Select2
+                    var retrievedProgramme = $.parseJSON(data);
+                    //console.log(retrievedProgramme);
+                    var option = new Option(retrievedProgramme.text, retrievedProgramme.id, true, true);
+                    $('#SIurl_video').append(option).trigger('change');
+
+                    // manually trigger the `select2:select` event
+                    $('#SIurl_video').trigger({
+                        type: 'select2:select',
+                        params: {
+                            data: data
+                        }
+                    });
+                });
+
+
+
+
+
+
+                $(formData).each(function(i, val) {
+                    $.each(val, function(k, v) {
+                        $("#SI" + k).val(v).trigger('change');
+                        //console.log(k+' : '+ v);
+                    });
+
+                });
+
+                enableFormInputs("sessionItem-form");
+
+
+            } else {
+
+                alert('please try again');
+
+            }
+        })
+
+
+
+
+
+    }
+
+    function submitEmailCreateForm() {
+
+        //pushDataFromFormAJAX (form, table, identifierKey, identifier, updateType)
+
+        var idPassed = emailUnderEdit;
+
+        console.log('got to the submit function for email item' + emailUnderEdit);
+
+        if (editEmail == 0) {
+
+
+            const dataToSend = {
+
+                assetid: $('.editAsset').attr('data'),
+                assets_course_id: emailUnderEdit,
+
+            }
+
+            const jsonString = JSON.stringify(dataToSend);
+            console.log(jsonString);
+
+
+
+            var request = $.ajax({
+                url: siteRoot + "assets/scripts/courses/addEmail.php",
+                type: "POST",
+                contentType: "application/json",
+                data: jsonString,
+            });
+
+
+
+            request.done(function(data) {
+                // alert( "success" );
+
+                if (data == 1) {
+                    refreshSessionView();
+                } else if (data == 4) {
+
+                    alert('This link already exists.  Try again');
+
+                }
+            })
+
+
+            //alert ("New esdLesion no "+data+" created");
+            $('#topTableSuccess').text("New sessionItem no " + data + " created");
+
+            $('#modal-email').animate({
+                scrollTop: 0
+            }, 'slow');
+
+
+            $("#topTableAlert").fadeTo(4000, 500).slideUp(500, function() {
+                $("#topTableAlert").slideUp(500);
+            });
+
+            //edit = 1;
+
+            //refresh table
+            refreshSessionView();
+
+            //close modal
+            $('#modal-email').modal('hide');
+
+
+        } else if (editSessionItem == 1) {
+
+            //
+
+            var formString = $('#sessionItem-form').serializeFormJSONModifier();
+
+            disableFormInputs("sessionItem-form");
+            //get session id
+
+            console.dir(formString);
+
+            formString["sessionItemid"] = idPassed;
+            formString["update"] = 1;
+            //formString["programmeid"] = ; get from the form
+
+            const jsonString = JSON.stringify(formString);
+            console.log(jsonString);
+
+            var request = $.ajax({
+                url: siteRoot + "assets/scripts/createUpdateSessionItem.php",
+                type: "POST",
+                contentType: "application/json",
+                data: jsonString,
+            });
+
+
+
+            request.done(function(data) {
+                // alert( "success" );
+
+                if (data) {
+
+                    //decode data
+                    var returnedData = $.parseJSON(data);
+
+                    console.dir(returnedData);
+
+
+                    var wasSessionItemUpdated = returnedData.updatedSessionItem;
+                    //check it for 1's
+
+                    if (wasSessionItemUpdated == 1) {
+
+                        console.log('we know data was updated / saved');
+                    }
+
+                    //console.log(data);
+                    enableFormInputs("sessionItem-form");
+                    $('#topModalSuccess').text("Data for <?php echo $databaseName;?> " + idPassed + " saved");
+
+                    $('#modal-sessionItem').animate({
+                        scrollTop: 0
+                    }, 'slow');
+
+                    $("#topModalAlert-sessionItem").fadeTo(4000, 500).slideUp(500, function() {
+                        $("#topTableAlert").slideUp(500);
+                    });
+
+
+                    refreshSessionView();
+
+
+
+                } else {
+
+                    alert('please try again');
+
+                }
+            })
+
+
+
+
+        }
+
+
+    }
+
+
+    //document ready functions
+
+    $(document).ready(function() {
+
+
+        $(document).on('click', '.addEmailCreate', function() {
+
+            //define session id
+
+
+            $('#modal-emailCreate').modal('show');
+
+            //fillFormEmail(sessionid);
+
+            edit = 0;
+
+        })
+
+
+        $(document).on('click', '.editEmail', function() {
+
+            //define session id
+
+            var sessionid = $(this).attr('data');
+
+            console.log(sessionid);
+
+            $('#modal-email').modal('show');
+
+            fillFormEmail(sessionid);
+
+            edit = 1;
+
+        })
+
+        $(document).on('click', '.deleteEmailCreate', function() {
+
+
+            //TODO add a sessionItem form
+            //GET the ID of the sessionItem required to edit
+            //update this from here via a template form
+            //use the tempate form for the table later
+
+            var sessionItemID = $(this).parent().prev().prev().text();
+            console.log(sessionItemID);
+            const dataToSend = {
+
+                sessionItemID: sessionItemID,
+                sessionid: <?php echo $sessionIdentifier; ?>,
+
+            }
+
+            const jsonString = JSON.stringify(dataToSend);
+            console.log(jsonString);
+
+
+
+            var request = $.ajax({
+                url: siteRoot + "assets/scripts/deleteSessionItem.php",
+                type: "POST",
+                contentType: "application/json",
+                data: jsonString,
+            });
+
+
+
+            request.done(function(data) {
+                // alert( "success" );
+
+                if (data == 1) {
+                    refreshSessionView();
+                } else if (data == 4) {
+
+                    alert('This record does not exist.  Try again');
+
+                }
+            })
+
+
+
+        })
+
+
+        //validation
+
+        //extra methods
+
+        
+
+        //form validation
+
+        $("#emailCreate-form").validate({
+
+            invalidHandler: function(event, validator) {
+                var errors = validator.numberOfInvalids();
+                console.log("there were " + errors + " errors");
+                if (errors) {
+                    var message = errors == 1 ?
+                        "1 field contains errors. It has been highlighted" :
+                        +errors + " fields contain errors. They have been highlighted";
+
+
+                    $('#error').text(message);
+                    //$('div.error span').addClass('form-text text-danger');
+                    //$('#errorWrapper').show();
+
+                    $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function() {
+                        $("#errorWrapper").slideUp(500);
+                    });
+                } else {
+                    $('#errorWrapper').hide();
+                }
+            },
+            ignore: [],
+            rules: {
+
+                //EDIT
+
+
+
+
+                name: {
+                    required: true,
+
+                },
+
+
+
+                description: {
+                    required: true,
+
+                },
+
+
+
+                asset_type: {
+                    required: true,
+
+                },
+
+
+
+                assetid: {
+                    required: true,
+
+                },
+
+
+
+                path: {
+                    required: true,
+
+                },
+
+
+
+                send_date: {
+                    required: true,
+                    date: true,
+
+                },
+
+
+
+                time_send: {
+                    required: true,
+                    time24: true,
+
+                },
+
+
+
+
+            },
+            messages: {
+
+
+
+            },
+
+
+            submitHandler: function(form) {
+
+                //submitPreRegisterForm();
+
+                submitEmailForm();
+
+                //TODO submit changes
+                //TODO reimport the array at the top
+                //TODO redraw the table
+
+
+
+            }
+
+
+
+
+        });
+
+        //extra functions for email
+
+        //file upload
+
+
+        
+
+    });
+
+
+
 
     function fillFormSession(idPassed) {
 
@@ -804,7 +1815,7 @@ if ($identifierValue) {
         if (editSessionItem == 0) {
 
             var esdLesionObject = pushFormDataJSONModifier($("#sessionItem-form"), "sessionItem", "id", null,
-            "0"); //insert new object
+                "0"); //insert new object
 
             esdLesionObject.done(function(data) {
 
@@ -962,149 +1973,7 @@ if ($identifierValue) {
     }
 
 
-    function submitEmailForm() {
 
-        //pushDataFromFormAJAX (form, table, identifierKey, identifier, updateType)
-
-        var idPassed = emailUnderEdit;
-
-        console.log('got to the submit function for email item' + emailUnderEdit);
-
-        if (editEmail == 0) {
-
-
-            const dataToSend = {
-
-                assetid: $('.editAsset').attr('data'),
-                assets_course_id: emailUnderEdit,
-
-            }
-
-            const jsonString = JSON.stringify(dataToSend);
-            console.log(jsonString);
-
-
-
-            var request = $.ajax({
-                url: siteRoot + "assets/scripts/courses/addEmail.php",
-                type: "POST",
-                contentType: "application/json",
-                data: jsonString,
-            });
-
-
-
-            request.done(function(data) {
-                // alert( "success" );
-
-                if (data == 1) {
-                    refreshSessionView();
-                } else if (data == 4) {
-
-                    alert('This link already exists.  Try again');
-
-                }
-            })
-
-
-            //alert ("New esdLesion no "+data+" created");
-            $('#topTableSuccess').text("New sessionItem no " + data + " created");
-
-            $('#modal-email').animate({
-                scrollTop: 0
-            }, 'slow');
-
-
-            $("#topTableAlert").fadeTo(4000, 500).slideUp(500, function() {
-                $("#topTableAlert").slideUp(500);
-            });
-
-            //edit = 1;
-
-            //refresh table
-            refreshSessionView();
-
-            //close modal
-            $('#modal-email').modal('hide');
-
-
-        } else if (editSessionItem == 1) {
-
-            //
-
-            var formString = $('#sessionItem-form').serializeFormJSONModifier();
-
-            disableFormInputs("sessionItem-form");
-            //get session id
-
-            console.dir(formString);
-
-            formString["sessionItemid"] = idPassed;
-            formString["update"] = 1;
-            //formString["programmeid"] = ; get from the form
-
-            const jsonString = JSON.stringify(formString);
-            console.log(jsonString);
-
-            var request = $.ajax({
-                url: siteRoot + "assets/scripts/createUpdateSessionItem.php",
-                type: "POST",
-                contentType: "application/json",
-                data: jsonString,
-            });
-
-
-
-            request.done(function(data) {
-                // alert( "success" );
-
-                if (data) {
-
-                    //decode data
-                    var returnedData = $.parseJSON(data);
-
-                    console.dir(returnedData);
-
-
-                    var wasSessionItemUpdated = returnedData.updatedSessionItem;
-                    //check it for 1's
-
-                    if (wasSessionItemUpdated == 1) {
-
-                        console.log('we know data was updated / saved');
-                    }
-
-                    //console.log(data);
-                    enableFormInputs("sessionItem-form");
-                    $('#topModalSuccess').text("Data for <?php echo $databaseName;?> " + idPassed + " saved");
-
-                    $('#modal-sessionItem').animate({
-                        scrollTop: 0
-                    }, 'slow');
-
-                    $("#topModalAlert-sessionItem").fadeTo(4000, 500).slideUp(500, function() {
-                        $("#topTableAlert").slideUp(500);
-                    });
-
-
-                    refreshSessionView();
-
-
-
-                } else {
-
-                    alert('please try again');
-
-                }
-            })
-
-
-
-
-        }
-
-
-    }
 
 
 
@@ -1248,42 +2117,12 @@ if ($identifierValue) {
         })
     }
 
-    var file_up_names = [];
+
 
     $(document).ready(function() {
 
 
-        $("#id_dropzone").dropzone({
-            maxFiles: 1,
-            acceptedFiles: 'image/jpeg, image/png, image/gif, video/*, application/pdf, application/vnd.ms-powerpoint, application/vnd.openxmlformats-officedocument.presentationml.presentation, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-            createImageThumbnails: true,
-            addRemoveLinks: true,
-            url: siteRoot + "/pages/backend/uploadFileAsset.php",
-            success: function(file, response) {
-                console.log(response);
-                file_up_names.push(response);
 
-                //the file is stored at pages/backend/uploads/response
-            },
-            removedfile: function(file) {
-
-                x = confirm('Do you want to delete?');
-                if (!x) return false;
-                for (var i = 0; i < file_up_names.length; ++i) {
-
-                    if (file_up_names[i] == file.name) {
-
-                        $.post('delete_file.php', {
-                                file_name: file_up_names[i]
-                            },
-                            function(data, status) {
-                                alert('file deleted');
-                            });
-                    }
-                }
-            }
-
-        });
 
 
         //add those which require date pickr
@@ -1459,6 +2298,8 @@ if ($identifierValue) {
 
         <?php
 
+    
+
     if ($sessionIdentifier) {
         ?>
 
@@ -1495,18 +2336,18 @@ if ($identifierValue) {
 
 
 
-        datatable = $('#dataTable').DataTable({
+        /* datatable = $('#dataTable').DataTable({
 
             language: {
-                infoEmpty: "There are currently no active <?php echo $databaseName;?>s.",
-                emptyTable: "There are currently no active <?php echo $databaseName;?>s.",
-                zeroRecords: "There are currently no active <?php echo $databaseName;?>s.",
+                infoEmpty: "There are currently no active <?php //echo $databaseName;?>s.",
+                emptyTable: "There are currently no active <?php //echo $databaseName;?>s.",
+                zeroRecords: "There are currently no active <?php //echo $databaseName;?>s.",
             },
             autowidth: true,
 
 
             ajax: siteRoot +
-                'assets/scripts/tableInteractors/refresh<?php echo $databaseName;?>Table.php',
+                'assets/scripts/tableInteractors/refresh<?php //echo $databaseName;?>Table.php',
             //TODO all classes need this function
 
 
@@ -1537,7 +2378,7 @@ if ($identifierValue) {
 
 
 
-        });
+        }); */
 
 
 
@@ -1577,34 +2418,7 @@ if ($identifierValue) {
 
         })
 
-        $(document).on('click', '.editEmail', function() {
 
-            //define session id
-
-            var sessionid = $(this).attr('data');
-
-            console.log(sessionid);
-
-            $('#modal-email').modal('show');
-
-            fillFormEmail(sessionid);
-
-            edit = 1;
-
-        })
-
-        $(document).on('click', '.addEmail', function() {
-
-            //define session id
-
-
-            $('#modal-email').modal('show');
-
-            //fillFormEmail(sessionid);
-
-            edit = 0;
-
-        })
 
         $(document).on('click', '.addModerators', function() {
 
@@ -2162,121 +2976,7 @@ if ($identifierValue) {
 
         });
 
-        $.validator.addMethod("time24", function(value, element) {
-            if (!/^\d{2}:\d{2}:\d{2}$/.test(value)) return false;
-            var parts = value.split(':');
-            if (parts[0] > 23 || parts[1] > 59 || parts[2] > 59) return false;
-            return true;
-        }, "Invalid time format.");
 
-        $("#email-form").validate({
-
-            invalidHandler: function(event, validator) {
-                var errors = validator.numberOfInvalids();
-                console.log("there were " + errors + " errors");
-                if (errors) {
-                    var message = errors == 1 ?
-                        "1 field contains errors. It has been highlighted" :
-                        +errors + " fields contain errors. They have been highlighted";
-
-
-                    $('#error').text(message);
-                    //$('div.error span').addClass('form-text text-danger');
-                    //$('#errorWrapper').show();
-
-                    $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function() {
-                        $("#errorWrapper").slideUp(500);
-                    });
-                } else {
-                    $('#errorWrapper').hide();
-                }
-            },
-            ignore: [],
-            rules: {
-
-                //EDIT
-
-
-
-
-                name: {
-                    required: true,
-
-                },
-
-
-
-                description: {
-                    required: true,
-
-                },
-
-
-
-                asset_type: {
-                    required: true,
-
-                },
-
-
-
-                assetid: {
-                    required: true,
-
-                },
-
-
-
-                path: {
-                    required: true,
-
-                },
-
-
-
-                send_date: {
-                    required: true,
-                    date: true,
-
-                },
-
-
-
-                time_send: {
-                    required: true,
-                    time24: true,
-
-                },
-
-
-
-
-            },
-            messages: {
-
-
-
-            },
-
-
-            submitHandler: function(form) {
-
-                //submitPreRegisterForm();
-
-                submitEmailForm();
-
-                //TODO submit changes
-                //TODO reimport the array at the top
-                //TODO redraw the table
-
-
-
-            }
-
-
-
-
-        });
 
         $("#sessionItem-form").validate({
 

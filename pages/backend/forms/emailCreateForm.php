@@ -1,4 +1,4 @@
-<div class="modal fade" id="modal-asset" tabindex="-1" role="dialog" aria-labelledby="modal-change-username"
+<div class="modal fade" id="modal-email" tabindex="-1" role="dialog" aria-labelledby="modal-change-username"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
 
@@ -11,7 +11,7 @@
                                     </div>
                                 </div>
                                 <div class="text-left">
-                                    <h5 class="mb-0">Edit Asset Details</h5>
+                                    <h5 class="mb-0">Email Creation Details</h5>
                                     <span class="mb-0"></span>
                                 </div>
 
@@ -26,7 +26,7 @@
                                 <div class="col-sm-12 text-left">
                                     <div>
                                         <h6 class="mb-0"></h6>
-                                        <span id = "modalMessageArea-asset" class="mb-0"></span>
+                                        <span id = "modalMessageArea-email" class="mb-0"></span>
 
                                     </div>
                                     <div id="topModalAlert" class="alert alert-warning alert-flush collapse" role="alert">
@@ -38,52 +38,56 @@
 
                         <div class="modal-body">
 
-                            <div class="asset-body">
-                                <form id="asset-form">
+                            <div class="email-body">
+                                <form id="email-form">
                                     <div class="form-group">
                                     <!-- EDIT -->
 
+                            
                                     
-                                        <label for="Assettype">Asset Type</label>
+                                    <label for="name">name</label>
                                         <div class="input-group mb-3">
-                                            <select id="Assettype" type="text" data-toggle="select" class="form-control" name="Assettype">
-                                            <option value="" selected disabled hidden>please select an option</option>
-                                            <option value="1">Video</option>
-                                            <option value="2">Set of Images</option>
-                                            <option value="3">Patient</option>
-                                            <option value="4">Academic Reference</option>
-                                            <option value="5">Presentation</option>
-                                            </select>
-                                        </div>
-                                    
-                                        <label for="Assethref">Asset Reference</label>
-                                        <div class="input-group mb-3">
-                                            <input id="Assethref" type="text" class="form-control" name="Assethref">
+                                            <input id="name" type="text" class="form-control" name="name">
                                         </div>
 
-                                        <label for="Assetlocation">Asset Location</label>
+                                        <label for="description">description</label>
                                         <div class="input-group mb-3">
-                                            <select id="Assetlocation" type="text" data-toggle="select" class="form-control" name="Assetlocation">
-                                            <option value="" selected disabled hidden>please select an option</option>
-                                            <option value="1">Online</option>
-                                            <option value="2">Offline HDD, (include in reference where)</option>
-                                            <option value="3">Patient</option>
+                                            <textarea id="description" type="text" data-toggle="autosize" class="form-control" name="description"></textarea>
+                                        </div>
+
+                                        <label for="asset_type">asset_type</label>
+                                        <div class="input-group mb-3">
+                                            <select id="asset_type" type="text" data-toggle="select" class="form-control" name="asset_type">
+                                            <option value="1" selected>1 - Email</option>
                                             </select>
                                         </div>
 
-                                        <label for="Assetendoscopy_wiki_id">Endoscopy Wiki Link</label>
+                                        <label for="assetid">assetid</label>
                                         <div class="input-group mb-3">
-                                            <input id="Assetendoscopy_wiki_id" type="text" class="form-control" name="Assetendoscopy_wiki_id">
-                                            <button id="assetCheck" type="button" class="btn btn-xs btn-secondary">check</button>
+                                            <select id="assetid" type="text" data-toggle="select" class="form-control" name="assetid">
+                                            <option value="<?php echo $sessionIdentifier; ?>"><?php echo $sessionIdentifier . ' ' . $assets_paid->getname(); ?></option>
+                                            <option value=""></option>
+                                            </select>
                                         </div>
 
-                                        <label for="Assetdescription">Description</label>
+                                        <label for="path">path</label>
+                                        <div class="dropzone" id="id_dropzone"></div>
+
+                                        <!-- <div class="input-group mb-3">
+                                            <input id="path" type="file" class="form-control" name="path" accept=".html">
+                                        </div> -->
+
+                                        <label for="send_date">send_date</label>
                                         <div class="input-group mb-3">
-                                            <textarea id="Assetdescription" type="text" data-toggle="autosize" class="form-control" name="SIdescription"></textarea>
+                                            <input id="send_date" type="text" class="form-control" name="send_date">
                                         </div>
-                                        
-                                        <!-- <div class="dropzone" id="id_dropzone"></div> -->
-                                        
+
+                                        <label for="time_send">time_send</label>
+                                        <div class="input-group mb-3">
+                                            <input id="time_send" type="text" class="form-control" name="time_send" placeholder="hh:mm:ss">
+                                        </div>
+
+
                                         
 
 
@@ -96,7 +100,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="submit-asset-form btn btn-sm btn-success">Save</button>
+                                <button type="button" class="submit-email-form btn btn-sm btn-success">Save</button>
                                 <button type="button" class="btn btn-sm btn-danger"
                                     data-dismiss="modal">Cancel</button>
                             </div>

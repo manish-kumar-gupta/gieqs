@@ -71,9 +71,11 @@
                                         </div>
 
                                         <label for="path">path</label>
-                                        <div class="input-group mb-3">
-                                            <input id="path" type="text" class="form-control" name="path">
-                                        </div>
+                                        <div class="dropzone" id="id_dropzone"></div>
+
+                                        <!-- <div class="input-group mb-3">
+                                            <input id="path" type="file" class="form-control" name="path" accept=".html">
+                                        </div> -->
 
                                         <label for="send_date">send_date</label>
                                         <div class="input-group mb-3">

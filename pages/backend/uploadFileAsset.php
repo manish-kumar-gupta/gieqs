@@ -23,6 +23,7 @@ if (!empty($_FILES)) {
             'docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
             'mp4' => 'video/mp4',
             'mov' => 'video/quicktime',
+            'html' => 'text/html',
         ),
         true
     )) {
