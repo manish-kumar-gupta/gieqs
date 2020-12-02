@@ -65,6 +65,10 @@ $emailLink = new emailLink;
         opacity: 0.75 !important;
     }
 
+    .can-drag.over {
+        border: 3px dotted #666;
+    }
+
     @media screen and (max-width: 400px) {
 
 
@@ -255,7 +259,7 @@ if ($identifierValue) {
     <!-- Modal -->
 
     <div class="modal-email-placeholder">
-    
+
     </div>
 
 
@@ -289,6 +293,88 @@ if ($identifierValue) {
     var externalTest2;
     var databaseName = '<?php echo $databaseName;?>';
 
+
+
+    //drag and drop
+
+    var items = null;
+    var dragSrcEl = null;
+
+    //functions for the modal
+
+    $(document).on('click', '.delete-email-content', function() {
+
+        //get the id
+
+        var id = $(this).attr('data-id');
+
+
+        if (confirm("do you wish to delete this row?") == true) {
+
+            deleteEmailContent(id);
+
+
+        } else {
+            return false;
+        }
+
+
+
+    })
+
+    function deleteEmailContent(id) {
+
+        const dataToSend = {
+
+
+
+            id: id,
+
+            //options: myOpts,
+
+        }
+
+        const jsonString = JSON.stringify(dataToSend);
+        //console.log(jsonString);
+
+
+
+        var request = $.ajax({
+            url: siteRoot + "assets/scripts/courses/deleteEmailContent.php",
+            type: "POST",
+            contentType: "application/json",
+            data: jsonString,
+
+        });
+
+
+
+        request.done(function(data) {
+
+
+
+            console.log(data);
+
+            if (data) {
+
+                redrawModal();
+
+            }
+
+
+
+
+
+
+
+        })
+
+        return request;
+
+
+
+    }
+
     function tableRefresh() {
 
         //update the div at the top with AJAX
@@ -300,12 +386,38 @@ if ($identifierValue) {
 
     //refresh modal
 
-    function redrawModal(){
+    function redrawModal() {
 
 
-        $(document).find('#modal-row-1').modal('hide');
-        refreshModal();
-        $(document).find('#modal-row-1').modal('show');
+        refreshModal().done(function(result) {
+
+
+            //$(document).find("#registrations").val().trigger('change');
+            //$('#registrations').select2();
+            //$(document).find("#registrations").empty().append('<option value="id">text</option>').val(externalTest).trigger('change');
+
+            $('#modalMessageArea').text('Editing <?php echo $databaseName;?> ' +
+                lesionUnderEdit);
+            fillForm(lesionUnderEdit);
+            edit = 1;
+            items = document.querySelectorAll('.emailBody .can-drag');
+            items.forEach(function(item) {
+                item.addEventListener('dragstart', handleDragStart, false);
+                item.addEventListener('dragenter', handleDragEnter, false);
+                item.addEventListener('dragover', handleDragOver, false);
+                item.addEventListener('dragleave', handleDragLeave, false);
+                item.addEventListener('drop', handleDrop, false);
+                item.addEventListener('dragend', handleDragEnd, false);
+            });
+
+            $(document).find('#modal-row-1').modal('show');
+
+
+
+
+
+
+        })
 
 
 
@@ -329,11 +441,18 @@ if ($identifierValue) {
 
 
         var request = $.ajax({
+            beforeSend: function() {
+
+                $('#modal-row-1').modal('hide');
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
+
+            },
             url: siteRoot + "assets/scripts/getEmailModal.php",
             type: "POST",
             contentType: "application/json",
             data: jsonString,
-            
+
         });
 
 
@@ -341,17 +460,23 @@ if ($identifierValue) {
         request.done(function(data) {
 
 
-            
+
             console.log(data);
-            
+
             if (data) {
 
+
+
+
+
+
                 $('body').find('.modal-email-placeholder').html(data);
-                
+
+
 
             }
 
-                
+
 
 
 
@@ -361,12 +486,167 @@ if ($identifierValue) {
 
         return request;
 
-       
+
 
 
 
     }
 
+    function addNewEmail() {
+
+        const dataToSend = {
+
+
+
+            emailid: lesionUnderEdit,
+            databaseName: databaseName,
+            //options: myOpts,
+
+        }
+
+        const jsonString = JSON.stringify(dataToSend);
+        //console.log(jsonString);
+
+
+
+        var request = $.ajax({
+            url: siteRoot + "assets/scripts/courses/addEmail2.php",
+            type: "POST",
+            contentType: "application/json",
+            data: jsonString,
+
+        });
+
+
+
+        request.done(function(data) {
+
+
+
+            if (data) {
+
+                lesionUnderEdit = data;
+            }
+
+
+
+
+
+
+        })
+
+        return request;
+
+
+
+
+
+    }
+
+    function getSortOrderComponentsEmail(){
+
+        var x = 0;
+
+        var film = $('body').find('.modal-body').find('.emailContent');
+
+        
+
+    }
+
+    function addText() {
+
+        const dataToSend = {
+
+
+
+            emailid: lesionUnderEdit,
+            databaseName: databaseName,
+            //options: myOpts,
+
+        }
+
+        const jsonString = JSON.stringify(dataToSend);
+        //console.log(jsonString);
+
+
+
+        var request = $.ajax({
+            url: siteRoot + "assets/scripts/courses/addText.php",
+            type: "POST",
+            contentType: "application/json",
+            data: jsonString,
+
+        });
+
+
+
+        request.done(function(data) {
+
+
+
+            console.log(data);
+
+            if (data) {
+
+                redrawModal();
+
+            }
+
+
+
+
+
+
+
+        })
+
+        return request;
+
+
+
+
+
+    }
+
+
+    function addImg() {
+
+        const dataToSend = {
+
+            emailid: lesionUnderEdit,
+            databaseName: databaseName,
+            //options: myOpts,
+
+        }
+
+        const jsonString = JSON.stringify(dataToSend);
+        //console.log(jsonString);
+
+        var request = $.ajax({
+            url: siteRoot + "assets/scripts/courses/addImg.php",
+            type: "POST",
+            contentType: "application/json",
+            data: jsonString,
+
+        });
+
+
+        request.done(function(data) {
+
+            console.log(data);
+
+            if (data) {
+
+                redrawModal();
+
+            }
+
+        })
+
+        return request;
+
+
+    }
 
     var waitForFinalEvent = (function() {
         var timers = {};
@@ -385,7 +665,7 @@ if ($identifierValue) {
 
     function fillForm(idPassed, result) {
 
-        
+
 
         var stop;
 
@@ -1003,10 +1283,59 @@ if ($identifierValue) {
     ?>
 
 
+    function handleDragStart(e) {
+        this.style.opacity = '0.4';
+        dragSrcEl = this;
+
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/html', this.innerHTML);
+    }
+
+    function handleDragEnd(e) {
+        this.style.opacity = '1';
+
+        items.forEach(function(item) {
+            item.classList.remove('over');
+        });
+    }
+
+    function handleDragOver(e) {
+        if (e.preventDefault) {
+            e.preventDefault();
+        }
+
+        return false;
+    }
+
+    function handleDrop(e) {
+        e.stopPropagation();
+
+        if (dragSrcEl !== this) {
+            dragSrcEl.innerHTML = this.innerHTML;
+            this.innerHTML = e.dataTransfer.getData('text/html');
+        }
+
+        return false;
+    }
+
+    function handleDragEnter(e) {
+        this.classList.add('over');
+    }
+
+    function handleDragLeave(e) {
+        this.classList.remove('over');
+    }
+
+
+
 
     $(document).ready(function() {
 
         //add those which require date pickr
+
+        //drag and drop
+
+
 
 
 
@@ -1225,33 +1554,46 @@ if ($identifierValue) {
 
 
             $('#modalMessageArea').text('New <?php echo $databaseName;?>');
-            $('#modal-row-1').modal('show');
-            $(document).find('#<?php echo $databaseName;?>-form').find(':input').val('');
-            $(document).find('#<?php echo $databaseName;?>-form').find(':checkbox, :radio').prop(
-                'checked', false);
-            $(document).find('#<?php echo $databaseName;?>-form').find('select').val('').trigger(
-                'change'); //TODO ADD TO ALL PAGES WHERE SELECT2
-            $(document).find('#<?php echo $databaseName;?>-form').find('.send-mail').prop('disabled',
-                true);
-            $(document).find('#<?php echo $databaseName;?>-form').find('.send-welcome-mail').prop(
-                'disabled', true);
-            $(document).find('#<?php echo $databaseName;?>-form').find('.reset-activity').prop(
-                'disabled', true);
-            $(document).find('#<?php echo $databaseName;?>-form').find('#registrations').prop(
-                'disabled', true);
-
-            $(document).find('#<?php echo $databaseName;?>-form').find('#videos').prop(
-                'disabled', true);
-
-            //as per Seauton request
-
-            $(document).find('#<?php echo $databaseName;?>-form').find('#timezone').val(
-                'Europe/Brussels').trigger('change');
-            $(document).find('#<?php echo $databaseName;?>-form').find('#access_level').val('6')
-                .trigger('change');;
 
 
-            edit = 0;
+
+
+
+
+            addNewEmail().done(function(e) {
+
+                //$('#modal-row-1').modal('show');
+
+                refreshModal().done(function(result) {
+
+                    $('#modalMessageArea').text('Editing <?php echo $databaseName;?> ' +
+                        lesionUnderEdit);
+                    $('#modal-row-1').modal('show');
+                    fillForm(lesionUnderEdit);
+                    edit = 1;
+                    items = document.querySelectorAll('.emailBody .can-drag');
+                    items.forEach(function(item) {
+                        item.addEventListener('dragstart', handleDragStart,
+                            false);
+                        item.addEventListener('dragenter', handleDragEnter,
+                            false);
+                        item.addEventListener('dragover', handleDragOver,
+                        false);
+                        item.addEventListener('dragleave', handleDragLeave,
+                            false);
+                        item.addEventListener('drop', handleDrop, false);
+                        item.addEventListener('dragend', handleDragEnd, false);
+                    });
+
+                })
+
+
+            })
+
+            
+
+
+           
 
         })
 
@@ -1260,24 +1602,34 @@ if ($identifierValue) {
             var targettd = $(this).parent().parent().parent().parent().find('td').first().text();
             //console.log(targettd);
             lesionUnderEdit = targettd;
-            refreshModal().done(function(result){
-            
-                $('#modalMessageArea').text('Editing <?php echo $databaseName;?> ' + lesionUnderEdit);
+            refreshModal().done(function(result) {
+
+                $('#modalMessageArea').text('Editing <?php echo $databaseName;?> ' +
+                    lesionUnderEdit);
                 $('#modal-row-1').modal('show');
                 fillForm(targettd);
                 edit = 1;
-            
-            })
-                
-                
-                //fillForm(targettd));
-            
-            
-                
+                items = document.querySelectorAll('.emailBody .can-drag');
+                items.forEach(function(item) {
+                    item.addEventListener('dragstart', handleDragStart, false);
+                    item.addEventListener('dragenter', handleDragEnter, false);
+                    item.addEventListener('dragover', handleDragOver, false);
+                    item.addEventListener('dragleave', handleDragLeave, false);
+                    item.addEventListener('drop', handleDrop, false);
+                    item.addEventListener('dragend', handleDragEnd, false);
+                });
 
-        
-            
-            
+            })
+
+
+            //fillForm(targettd));
+
+
+
+
+
+
+
 
         })
 
@@ -1557,6 +1909,27 @@ if ($identifierValue) {
             //load edit form in new window
 
             openInNewTab(siteRoot + 'pages/backend/course_dashboard.php?identifier=' + targettd);
+
+
+        })
+
+        $(document).on('click', '.addText', function(e) {
+
+            //add a new text to the database
+
+            //refresh the database
+
+            if (e.preventDefault) {
+                e.preventDefault();
+            }
+
+            addText();
+
+
+
+            //load edit form in new window
+
+            //openInNewTab(siteRoot + 'pages/backend/course_dashboard.php?identifier=' + targettd);
 
 
         })
