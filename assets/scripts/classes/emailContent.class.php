@@ -35,6 +35,7 @@ Class emailContent {
 	private $text; //varchar(10000)
 	private $img; //varchar(800)
 	private $video; //varchar(800)
+	private $display_order; //varchar(100)
 	private $connection;
 
 	public function __construct(){
@@ -50,11 +51,12 @@ Class emailContent {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_emailContent($email_id,$text,$img,$video){
+	public function New_emailContent($email_id,$text,$img,$video,$display_order){
 		$this->email_id = $email_id;
 		$this->text = $text;
 		$this->img = $img;
 		$this->video = $video;
+		$this->display_order = $display_order;
 	}
 
     /**
@@ -71,6 +73,7 @@ Class emailContent {
 			$this->text = $row["text"];
 			$this->img = $row["img"];
 			$this->video = $row["video"];
+			$this->display_order = $row["display_order"];
 		}
 	}
     /**
@@ -93,6 +96,7 @@ $q = "Select * from `emailContent` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["text"] = $row["text"];
 			$rowReturn[$x]["img"] = $row["img"];
 			$rowReturn[$x]["video"] = $row["video"];
+			$rowReturn[$x]["display_order"] = $row["display_order"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -119,6 +123,7 @@ $q = "Select * from `emailContent` WHERE `id` = $key";
 			$rowReturn[$x]["text"] = $row["text"];
 			$rowReturn[$x]["img"] = $row["img"];
 			$rowReturn[$x]["video"] = $row["video"];
+			$rowReturn[$x]["display_order"] = $row["display_order"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -408,6 +413,13 @@ $q = "UPDATE `emailContent` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return display_order - varchar(100)
+	 */
+	public function getdisplay_order(){
+		return $this->display_order;
+	}
+
+	/**
 	 * @param Type: int(11)
 	 */
 	public function setid($id){
@@ -440,6 +452,13 @@ $q = "UPDATE `emailContent` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function setvideo($video){
 		$this->video = $video;
+	}
+
+	/**
+	 * @param Type: varchar(100)
+	 */
+	public function setdisplay_order($display_order){
+		$this->display_order = $display_order;
 	}
 
     /**

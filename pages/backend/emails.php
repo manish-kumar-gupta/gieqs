@@ -262,6 +262,10 @@ if ($identifierValue) {
 
     </div>
 
+    <div class="modal-email-generate-placeholder">
+
+    </div>
+
 
 
 
@@ -423,6 +427,17 @@ if ($identifierValue) {
 
     }
 
+    function openMail(id) {
+
+        lesionUnderEdit = id;
+
+        refreshModalEmailText();
+        
+
+
+
+    }
+
     function refreshModal() {
 
         const dataToSend = {
@@ -471,6 +486,78 @@ if ($identifierValue) {
 
 
                 $('body').find('.modal-email-placeholder').html(data);
+                refreshModalEmailText();
+                $(document).find('#modal-row-2').modal('show');
+
+
+            }
+
+
+
+
+
+
+
+        })
+
+        return request;
+
+
+
+
+
+    }
+
+    function refreshModalEmailText() {
+
+        const dataToSend = {
+
+
+
+            emailid: lesionUnderEdit,
+            databaseName: databaseName,
+            //options: myOpts,
+
+        }
+
+        const jsonString = JSON.stringify(dataToSend);
+        //console.log(jsonString);
+
+
+
+        var request = $.ajax({
+            beforeSend: function() {
+
+                $('#modal-row-2').modal('hide');
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
+
+            },
+            url: siteRoot + "assets/scripts/courses/generateEmail.php",
+            type: "POST",
+            contentType: "application/json",
+            data: jsonString,
+
+        });
+
+
+
+        request.done(function(data) {
+
+
+
+            console.log(data);
+
+            if (data) {
+
+
+
+
+
+
+                $('body').find('.modal-email-generate-placeholder').html(data);             
+                   //refreshModalEmailText();
+                //$(document).find('#modal-row-2').modal('show');
 
 
 
@@ -543,13 +630,34 @@ if ($identifierValue) {
 
     }
 
-    function getSortOrderComponentsEmail(){
+    function getSortOrderComponentsEmail() {
 
-        var x = 0;
+        var x = 1;
 
         var film = $('body').find('.modal-body').find('.emailContent');
 
-        
+        var output = new Object();
+
+        $.each(film, function(k, v) {
+
+            console.log(k);
+            console.log(v);
+            console.log($(v).attr('data-id'));
+
+            output[x] = {
+                order: k,
+                id: $(v).attr('data-id'),
+                type: $(v).attr('data-type'),
+                content: $(v).val(),
+            };
+
+            x++;
+
+        })
+
+        console.dir(output);
+
+        return output;
 
     }
 
@@ -624,6 +732,45 @@ if ($identifierValue) {
 
         var request = $.ajax({
             url: siteRoot + "assets/scripts/courses/addImg.php",
+            type: "POST",
+            contentType: "application/json",
+            data: jsonString,
+
+        });
+
+
+        request.done(function(data) {
+
+            console.log(data);
+
+            if (data) {
+
+                redrawModal();
+
+            }
+
+        })
+
+        return request;
+
+
+    }
+
+    function addVideo() {
+
+        const dataToSend = {
+
+            emailid: lesionUnderEdit,
+            databaseName: databaseName,
+            //options: myOpts,
+
+        }
+
+        const jsonString = JSON.stringify(dataToSend);
+        //console.log(jsonString);
+
+        var request = $.ajax({
+            url: siteRoot + "assets/scripts/courses/addVideo.php",
             type: "POST",
             contentType: "application/json",
             data: jsonString,
@@ -1204,6 +1351,84 @@ if ($identifierValue) {
 
     }
 
+    function saveForm() {
+
+        if (lesionUnderEdit) {
+
+            var esdLesionObject = pushFormDataJSONv2($("#<?php echo $databaseName;?>-form"),
+                "<?php echo $databaseName;?>", "user_id", lesionUnderEdit, "1"); //insert new object
+
+            esdLesionObject.done(function(data) {
+
+                console.log(data);
+
+                if (data) {
+
+                    if (data == 1) {
+
+
+
+                    } else if (data == 0) {
+
+
+
+                    } else if (data == 2) {
+
+                        alert("Error, try again");
+
+
+                    }
+
+
+
+                }
+
+
+            });
+
+            esdLesionObject.then(function(data) {
+
+                //get the array
+
+                var dataToSend = getSortOrderComponentsEmail();
+
+                const jsonString = JSON.stringify(dataToSend);
+                console.dir(jsonString);
+
+
+                var request2 = $.ajax({
+                    url: siteRoot + "assets/scripts/courses/updateEmailComponents.php",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: jsonString,
+
+                });
+
+
+                request2.done(function(data) {
+
+                    console.log(data);
+
+                    if (data) {
+
+                        redrawModal();
+
+                    }
+
+                })
+
+                return request2;
+
+
+
+            })
+
+        }
+
+
+
+    }
+
     //delete behaviour
 
     <?php if ($isSuperuser){
@@ -1578,7 +1803,7 @@ if ($identifierValue) {
                         item.addEventListener('dragenter', handleDragEnter,
                             false);
                         item.addEventListener('dragover', handleDragOver,
-                        false);
+                            false);
                         item.addEventListener('dragleave', handleDragLeave,
                             false);
                         item.addEventListener('drop', handleDrop, false);
@@ -1590,10 +1815,10 @@ if ($identifierValue) {
 
             })
 
-            
 
 
-           
+
+
 
         })
 
@@ -1648,7 +1873,9 @@ if ($identifierValue) {
             event.preventDefault();
             console.log('clicked');
             console.log($('#<?php echo $databaseName;?>-form').closest());
-            $('#<?php echo $databaseName;?>-form').submit();
+            //$('#<?php echo $databaseName;?>-form').submit();
+
+            saveForm();
 
         })
 
@@ -1908,7 +2135,7 @@ if ($identifierValue) {
 
             //load edit form in new window
 
-            openInNewTab(siteRoot + 'pages/backend/course_dashboard.php?identifier=' + targettd);
+            openMail(targettd);
 
 
         })
@@ -1924,6 +2151,48 @@ if ($identifierValue) {
             }
 
             addText();
+
+
+
+            //load edit form in new window
+
+            //openInNewTab(siteRoot + 'pages/backend/course_dashboard.php?identifier=' + targettd);
+
+
+        })
+
+        $(document).on('click', '.addImg', function(e) {
+
+            //add a new text to the database
+
+            //refresh the database
+
+            if (e.preventDefault) {
+                e.preventDefault();
+            }
+
+            addImg();
+
+
+
+            //load edit form in new window
+
+            //openInNewTab(siteRoot + 'pages/backend/course_dashboard.php?identifier=' + targettd);
+
+
+        })
+
+        $(document).on('click', '.addVideo', function(e) {
+
+            //add a new text to the database
+
+            //refresh the database
+
+            if (e.preventDefault) {
+                e.preventDefault();
+            }
+
+            addVideo();
 
 
 

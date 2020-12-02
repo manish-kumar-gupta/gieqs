@@ -106,7 +106,7 @@
                             <!-- get all connections for this email id -->
                             <?php 
                                 
-                                $emailContents = $emailLink->getEmailContents($emailid);
+                                $emailContents = $emailLink->getEmailContents($emailid, false);
 
                                 //var_dump($emailContents);
 
@@ -117,21 +117,25 @@
                                     if ($value['video'] != NULL){
                                         //is a video
 ?>
-                           
-                                <div draggable="true" style="cursor: move;" class="input-group mb-3 can-drag p-2 emailContent">
+
+                            <div draggable="true" style="cursor: move;"
+                                class="input-group input-group-merge mb-3 can-drag p-2">
                                 <div class="input-group-prepend">
-                                <span class="input-group-text">Video</span>
+                                    <span class="input-group-text">Video</span>
                                 </div>
 
-                                    <input data-sort-order="<?php echo $x;?>" value="<?php echo $value['video'];?>">
-                                    <div class="input-group-append">
+                                <input data-id="<?php echo $value['id'];?>" data-sort-order="<?php echo $x;?>"
+                                    data-type="video" class="form-control emailContent" value="<?php echo $value['video'];?>">
+                                <div class="input-group-append">
 
-                                        <span class="input-group-text delete-email-content" data-id="<?php echo $value['id'];?>" style="cursor: pointer !important;">x</span>
+                                    <span class="input-group-text delete-email-content"
+                                        data-id="<?php echo $value['id'];?>"
+                                        style="cursor: pointer !important;">x</span>
 
-                                        </div>
                                 </div>
+                            </div>
 
-                           
+
                             <?php
                                     }else if($value['img'] != NULL){
                                         //is an image?>
@@ -142,17 +146,20 @@
 
                                     <span class="input-group-text">Image</span>
 
-                                    </div>
+                                </div>
 
-                                    <input data-sort-order="<?php echo $x;?>" type="text" class="p-2 form-control emailContent"
-                                        name="img" value="<?php echo $value['img'];?>">
+                                <input data-id="<?php echo $value['id'];?>" data-sort-order="<?php echo $x;?>"
+                                    data-type="img" type="text" class="p-2 form-control emailContent" name="img"
+                                    value="<?php echo $value['img'];?>">
 
-                                        <div class="input-group-append">
+                                <div class="input-group-append">
 
-                                        <span class="input-group-text delete-email-content" data-id="<?php echo $value['id'];?>" style="cursor: pointer !important;">x</span>
+                                    <span class="input-group-text delete-email-content"
+                                        data-id="<?php echo $value['id'];?>"
+                                        style="cursor: pointer !important;">x</span>
 
-                                        </div>
-                                
+                                </div>
+
                             </div>
                             <?php
                                     }else{
@@ -166,17 +173,20 @@
                                 <div class="input-group-prepend">
 
                                     <span class="input-group-text">Text</span>
-                                    </div>
+                                </div>
 
-                                    <textarea data-id="<?php echo $value['id'];?>" data-sort-order="<?php echo $x;?>"
-                                        type="text" data-toggle="autosize" class="form-control p-2 emailContent"
-                                        name="id"><?php echo $value['text'];?></textarea>
-                                        <div class="input-group-append">
+                                <textarea data-id="<?php echo $value['id'];?>" data-type="text"
+                                    data-sort-order="<?php echo $x;?>" type="text" data-toggle="autosize"
+                                    class="form-control p-2 emailContent"
+                                    name="id"><?php echo $value['text'];?></textarea>
+                                <div class="input-group-append">
 
-                                        <span class="input-group-text delete-email-content" data-id="<?php echo $value['id'];?>" style="cursor: pointer !important;">x</span>
+                                    <span class="input-group-text delete-email-content"
+                                        data-id="<?php echo $value['id'];?>"
+                                        style="cursor: pointer !important;">x</span>
 
-                                        </div>
-                                
+                                </div>
+
                             </div>
 
 

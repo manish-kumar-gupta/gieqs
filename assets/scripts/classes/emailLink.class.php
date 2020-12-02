@@ -50,7 +50,8 @@ Class emailLink {
             $q = "Select b.`id`, b.`text`, b.`img`, b.`video`
             FROM `emails` as a
             INNER JOIN `emailContent` as b ON a.`id` = b.`email_id`
-			WHERE a.`id` = '$email_id'
+            WHERE a.`id` = '$email_id'
+            ORDER BY CAST(b.`display_order` AS SIGNED) ASC
             ";
 
             if ($debug){
@@ -88,6 +89,55 @@ Class emailLink {
 
 
     }
+
+    public function getNextDisplayOrder($email_id, $debug=false){
+
+       
+            
+
+        $q = "Select b.`display_order`
+        FROM `emails` as a
+        INNER JOIN `emailContent` as b ON a.`id` = b.`email_id`
+        WHERE a.`id` = '$email_id'
+        ORDER BY CAST(b.`display_order` AS SIGNED) DESC
+        LIMIT 1
+        ";
+
+        if ($debug){
+
+        
+        echo $q . '<br><br>';
+
+
+        }
+
+
+        $result = $this->connection->RunQuery($q);
+        
+        $x = 0;
+        $nRows = $result->rowCount();
+
+        if ($nRows == 1) {
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                $latest = $row['display_order'];
+
+
+            }
+
+            return intval($latest) + 1;
+
+        } else {
+            
+
+            return false;
+        }
+
+    
+
+
+}
 
     
     /**

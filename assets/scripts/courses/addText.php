@@ -26,9 +26,10 @@
             $emailid = $data['emailid'];
             $databaseName = $data['databaseName'];
             
+            $nextDisplay = $emailLink->getNextDisplayOrder($emailid);
 
 
-            $emailContent->New_emailContent($emailid, null, null, null);
+            $emailContent->New_emailContent($emailid, null, null, null, $nextDisplay);
             echo $emailContent->prepareStatementPDO();
 
 

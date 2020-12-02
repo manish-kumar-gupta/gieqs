@@ -9,12 +9,10 @@
             //$general = new general;
             //$programme = new programme;
             $emailLink = new emailLink;
-            //$emailContent = new emailContent;           
-            $emails = new emails;
-
-        
+            $emailContent = new emailContent;
+            
             //error_reporting(E_ALL);
-            $debug = FALSE;
+            $debug = TRUE;
 
             //$print_r()
 
@@ -28,10 +26,11 @@
             $emailid = $data['emailid'];
             $databaseName = $data['databaseName'];
             
+            $nextDisplay = $emailLink->getNextDisplayOrder($emailid);
 
 
-            $emails->New_emails(null, 'new mail', null, null);
-            echo $emails->prepareStatementPDO();
+            $emailContent->New_emailContent($emailid, null, null, 'vimeo id', $nextDisplay);
+            echo $emailContent->prepareStatementPDO();
 
 
 
