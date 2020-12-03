@@ -295,6 +295,7 @@ if ($identifierValue) {
     var loading;
     var externalTest;
     var externalTest2;
+    var mailUnderEdit = null;
     var databaseName = '<?php echo $databaseName;?>';
 
 
@@ -427,12 +428,37 @@ if ($identifierValue) {
 
     }
 
+    function redrawModalEmailText() {
+
+
+        refreshModalEmailText().done(function(result) {
+
+
+            //$(document).find("#registrations").val().trigger('change');
+            //$('#registrations').select2();
+            //$(document).find("#registrations").empty().append('<option value="id">text</option>').val(externalTest).trigger('change');
+
+
+
+            $(document).find('#modal-row-2').modal('show');
+
+
+
+
+
+
+        })
+
+
+
+    }
+
     function openMail(id) {
 
-        lesionUnderEdit = id;
+        mailUnderEdit = id;
 
-        refreshModalEmailText();
-        
+        redrawModalEmailText();
+
 
 
 
@@ -486,8 +512,8 @@ if ($identifierValue) {
 
 
                 $('body').find('.modal-email-placeholder').html(data);
-                refreshModalEmailText();
-                $(document).find('#modal-row-2').modal('show');
+                //refreshModalEmailText();
+                //$(document).find('#modal-row-1').modal('show');
 
 
             }
@@ -514,7 +540,7 @@ if ($identifierValue) {
 
 
 
-            emailid: lesionUnderEdit,
+            emailid: mailUnderEdit,
             databaseName: databaseName,
             //options: myOpts,
 
@@ -555,8 +581,8 @@ if ($identifierValue) {
 
 
 
-                $('body').find('.modal-email-generate-placeholder').html(data);             
-                   //refreshModalEmailText();
+                $('body').find('.modal-email-generate-placeholder').html(data);
+                //refreshModalEmailText();
                 //$(document).find('#modal-row-2').modal('show');
 
 
@@ -645,7 +671,7 @@ if ($identifierValue) {
             console.log($(v).attr('data-id'));
 
             output[x] = {
-                order: k,
+                order: k + 1,
                 id: $(v).attr('data-id'),
                 type: $(v).attr('data-type'),
                 content: $(v).val(),
@@ -1411,17 +1437,26 @@ if ($identifierValue) {
 
                     if (data) {
 
-                        redrawModal();
+                        
+                        //redrawModal();
 
                     }
 
+                    
+
                 })
 
+                
+
+                
                 return request2;
 
 
-
             })
+
+            return esdLesionObject;
+
+           
 
         }
 
@@ -1565,6 +1600,39 @@ if ($identifierValue) {
 
 
         refreshModal();
+
+        //allow keyboard inpuy
+
+        var keys=[];
+
+        $(document).on('keydown, keyup', function(e) {
+            //
+            if (e.type == "keydown"){
+
+            
+            
+            if (e.keyCode == 17 || e.keyCode == 91) {
+                //e.preventDefault();
+                keys[0] = e.keyCode; //cmd or ctrl pressed
+            }
+            else if (e.keyCode == 69) {
+                keys[1] = 69; //other key pressed
+            };
+
+            if ((keys[0] == 17 || keys[0] == 91) && keys[1] == 69) {
+                
+                saveForm().done(function(){
+
+redrawModal();
+});
+            }
+
+        }else {
+            
+            keys = [];
+        }
+
+        });
 
 
         var options = {
@@ -1875,7 +1943,10 @@ if ($identifierValue) {
             console.log($('#<?php echo $databaseName;?>-form').closest());
             //$('#<?php echo $databaseName;?>-form').submit();
 
-            saveForm();
+            saveForm().done(function(){
+
+                redrawModal();
+            });
 
         })
 
@@ -2150,7 +2221,12 @@ if ($identifierValue) {
                 e.preventDefault();
             }
 
-            addText();
+            saveForm().done(function(result){
+                addText().done(function(result){
+                    redrawModal();
+
+                });
+            })
 
 
 
@@ -2171,7 +2247,10 @@ if ($identifierValue) {
                 e.preventDefault();
             }
 
-            addImg();
+            saveForm().done(function(result){
+                addImg();
+            })
+          
 
 
 
@@ -2192,7 +2271,9 @@ if ($identifierValue) {
                 e.preventDefault();
             }
 
-            addVideo();
+            saveForm().done(function(result){
+                addVideo();
+            })
 
 
 

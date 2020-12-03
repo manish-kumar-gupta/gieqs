@@ -11,7 +11,7 @@
             $emailLink = new emailLink;
             
             //error_reporting(E_ALL);
-            $debug = FALSE;
+            $debug = false;
 
             //$print_r()
 

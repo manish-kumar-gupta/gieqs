@@ -47,7 +47,7 @@ Class emailLink {
        
             
 
-            $q = "Select b.`id`, b.`text`, b.`img`, b.`video`
+            $q = "Select b.`id`, b.`text`, b.`img`, b.`video`, b.`display_order`
             FROM `emails` as a
             INNER JOIN `emailContent` as b ON a.`id` = b.`email_id`
             WHERE a.`id` = '$email_id'
