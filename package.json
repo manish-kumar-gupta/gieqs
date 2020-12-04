@@ -65,7 +65,7 @@
         "datatables.net-responsive-bs4": "^2.2.3",
         "dropzone": "^5.7.0",
         "flatpickr": "^4.5.2",
-        "highlight.js": "^9.14.2",
+        "highlight.js": "^10.4.1",
         "highlightjs": "^9.10.0",
         "holderjs": "^2.9.6",
         "image-map-resizer": "^1.0.10",
