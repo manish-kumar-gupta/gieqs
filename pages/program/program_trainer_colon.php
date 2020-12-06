@@ -109,9 +109,9 @@ $general = new general;
                     <div class="col-12 p-3 pb-1">
                         <span class="h1" style="color: rgb(238, 194, 120);">GIEQs - Train the Colonoscopy Trainers Course
                             (Virtual)<br /></span>
-                        <span class="h3 mt-4" style="color: rgb(238, 194, 120);">Tuesday 17th November 2020<br /></span>
-                        <span class="h5" style="color: rgb(238, 194, 120);">0830 - 1700 CET, on Demand
-                            thereafter<br /></span>
+                        <span class="h3 mt-4" style="color: rgb(238, 194, 120);">Currently Online and Directly Accessible<br /></span>
+                        <span class="h5" style="color: rgb(238, 194, 120);">Further Dates with Interaction Planned
+                            (watch this space!)<br /></span>
                         <a href="#targetScrollProgramme" id="wednesdayTop"
                             class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 scroll-me">
                             <span class="btn-inner--text text-dark">View Programme</span>
@@ -142,7 +142,7 @@ $general = new general;
                       <p class="lead lh-180">Anyone who wishes to train others in Colonoscopy</p>
                       <p class="lead lh-180"><span class="text-white">When?</span></p>  
  
-                      <p class="lead lh-180">Tuesday 17th November 2020, 0830 CET until 1700 CET</p>
+                      <p class="lead lh-180">Currently Online and Directly Accessible</p>
                       <p class="lead lh-180"><span class="text-white">Where?</span></p>  
  
                       <p class="lead lh-180">Live here, online at gieqs.com.  You can follow live (discussion and interaction) or catch up at your leisure.</p>
