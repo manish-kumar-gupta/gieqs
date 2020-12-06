@@ -30,7 +30,7 @@
 
 
 <div class="modal fade" id="modal-row-1" role="dialog" aria-labelledby="modal-change-username" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
 
         <div class="modal-content bg-dark border" style="border-color:rgb(238, 194, 120) !important;">
             <div class="modal-header">
@@ -119,13 +119,20 @@
 ?>
 
                             <div draggable="true" style="cursor: move;"
-                                class="input-group input-group-merge mb-3 can-drag p-2">
+                                class="input-group input-group-merge mb-3 can-drag">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Video</span>
                                 </div>
 
                                 <input data-id="<?php echo $value['id'];?>" data-sort-order="<?php echo $x;?>"
-                                    data-type="video" class="form-control emailContent" value="<?php echo $value['video'];?>">
+                                    data-type="video" class="mx-1 p-2 form-control emailContent"
+                                    value="<?php echo $value['video'];?>" placeholder="vimeo id">
+
+                                <input data-id="<?php echo $value['id'];?>" data-type="text"
+                                    data-sort-order="<?php echo $x;?>" type="text"
+                                    class="form-control mr-1 p-2 emailContent" name="id"
+                                    value="<?php echo $value['text'];?>" placeholder="video thumbnail img src">
+
                                 <div class="input-group-append">
 
                                     <span class="input-group-text delete-email-content"
@@ -149,8 +156,12 @@
                                 </div>
 
                                 <input data-id="<?php echo $value['id'];?>" data-sort-order="<?php echo $x;?>"
-                                    data-type="img" type="text" class="p-2 form-control emailContent" name="img"
-                                    value="<?php echo $value['img'];?>">
+                                    data-type="img" type="text" class="p-2 mx-1 form-control emailContent" name="img"
+                                    value="<?php echo $value['img'];?>" placeholder="image src">
+                                <input data-id="<?php echo $value['id'];?>" data-type="text"
+                                    data-sort-order="<?php echo $x;?>" type="text"
+                                    class="form-control mr-1 p-2 emailContent" name="id"
+                                    value="<?php echo $value['text'];?>" placeholder="href">
 
                                 <div class="input-group-append">
 
@@ -178,7 +189,7 @@
                                 <textarea data-id="<?php echo $value['id'];?>" data-type="text"
                                     data-sort-order="<?php echo $x;?>" type="text" data-toggle="autosize"
                                     class="form-control p-2 emailContent"
-                                    name="id"><?php echo $value['text'];?></textarea>
+                                    name="id" data-toggle="autosize"><?php echo $value['text'];?></textarea>
                                 <div class="input-group-append">
 
                                     <span class="input-group-text delete-email-content"
@@ -230,6 +241,8 @@
                 </div>
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-info launchViewer">Launch Viewer Window</button>
+
                 <button type="button"
                     class="submit-<?php echo $databaseName;?>-form btn btn-sm btn-success">Save</button>
                 <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Cancel</button>

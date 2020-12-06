@@ -38,7 +38,9 @@
 
                       //is video
                       
-                      $emailContent->setvideo($value['content']);
+                      //$emailContent->setvideo($value['content']);
+                      $emailContent->setvideo($value['video']);
+                      $emailContent->settext($value['text']);
                       $emailContent->setdisplay_order($value['order']);
                       echo $emailContent->prepareStatementPDOUpdate();
 
@@ -46,7 +48,8 @@
 
                         //is video
                         
-                        $emailContent->setimg($value['content']);
+                        $emailContent->setimg($value['img']);
+                      $emailContent->settext($value['text']);
                         $emailContent->setdisplay_order($value['order']);
                         echo $emailContent->prepareStatementPDOUpdate();
 

@@ -692,10 +692,10 @@ if ($value['img'] != NULL){
                                                                                             <tr>
                                                                                                 <td class="mcnImageGroupContent"
                                                                                                     valign="top"
-                                                                                                    style="padding-left:9px;padding-top:0;padding-bottom:40px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;text-align:center;">
+                                                                                                    style="padding-left:9px;padding-top:0;padding-bottom:0px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;text-align:center;">
 
                                                                                                     <center>
-                                                                                                        <a href=""
+                                                                                                        <a href="<?php echo $value['text'];?>"
                                                                                                             target="_blank"><img
                                                                                                                 alt=""
                                                                                                                 src="<?php echo BASE_URL . $value['img'];?>"
@@ -722,6 +722,54 @@ if ($value['img'] != NULL){
 
 }elseif ($value['video'] != NULL){
 
+    ?>
+
+    <table border="0" cellpadding="0" cellspacing="0"
+                                                                        width="100%" class="mcnImageGroupBlock"
+                                                                        style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
+                                                                        <tbody class="mcnImageGroupBlockOuter">
+
+                                                                            <tr>
+                                                                                <td valign="top"
+                                                                                    style="padding:9px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;"
+                                                                                    class="mcnImageGroupBlockInner">
+
+                                                                                    <table align="left"
+                                                                                        width="563.9999389648438"
+                                                                                        border="0" cellpadding="0"
+                                                                                        cellspacing="0"
+                                                                                        class="mcnImageGroupContentContainer"
+                                                                                        style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
+                                                                                        <tbody>
+                                                                                            <tr>
+                                                                                                <td class="mcnImageGroupContent"
+                                                                                                    valign="top"
+                                                                                                    style="padding-left:9px;padding-top:0;padding-bottom:0px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;text-align:center;">
+
+                                                                                                    <center>
+                                                                                                        <a href="<?php echo 'https://www.vimeo.com/' . $value['video'];?>"
+                                                                                                            target="_blank"><img
+                                                                                                                alt=""
+                                                                                                                src="<?php echo BASE_URL . $value['text'];?>"
+                                                                                                                width="300"
+                                                                                                                style="max-width:300px;padding-bottom:0;border:0;height:auto;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;vertical-align:bottom;text-align:center;"
+                                                                                                                class="mcnImage"></a>
+                                                                                                    </center>
+
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+
+                                                                                </td>
+                                                                            </tr>
+
+
+
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                    <?php
 
     
 }else{
@@ -1419,6 +1467,11 @@ $x++;
                                                                                     <br>
                                                                                     <br>
 
+                                                                                    GIEQs is a not for profit organisation dedicated to the improvement of Quality in Endoscopy
+
+                                                                                    <br>
+                                                                                    <br>
+
                                                                                     University Hospital of Ghent
                                                                                     <br>
                                                                                     C Heymanslaan 10
@@ -1467,6 +1520,23 @@ $x++;
                 </table>
             </center>
         </body>
+
+        <script>
+
+var time = new Date().getTime();
+     $(document.body).bind("mousemove keypress", function(e) {
+         time = new Date().getTime();
+     });
+
+     function refresh() {
+         if(new Date().getTime() - time >= 60000) 
+             window.location.reload(true);
+         else 
+             setTimeout(refresh, 10000);
+     }
+
+     setTimeout(refresh, 10000);
+        </script>
 
         </html>
 

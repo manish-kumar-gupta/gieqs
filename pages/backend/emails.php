@@ -297,6 +297,7 @@ if ($identifierValue) {
     var externalTest2;
     var mailUnderEdit = null;
     var databaseName = '<?php echo $databaseName;?>';
+    var openedWindow = null;
 
 
 
@@ -660,22 +661,101 @@ if ($identifierValue) {
 
         var x = 1;
 
-        var film = $('body').find('.modal-body').find('.emailContent');
+        var film = $('body').find('.modal-body').find('.input-group-merge');
 
         var output = new Object();
 
-        $.each(film, function(k, v) {
+        $.each(film, function(k1, v1) {
 
-            console.log(k);
-            console.log(v);
-            console.log($(v).attr('data-id'));
 
-            output[x] = {
-                order: k + 1,
-                id: $(v).attr('data-id'),
-                type: $(v).attr('data-type'),
-                content: $(v).val(),
-            };
+            var rowitems = $(v1).find('.emailContent');
+
+            var y = 1;
+
+
+            $.each(rowitems, function(k, v) {
+
+                var len = rowitems.length;
+
+                console.dir(rowitems);
+                console.log('length is ' + len);
+                
+
+
+                //does this row contain only text
+
+                var len = rowitems.length;
+
+                if (len > 1) {
+
+                    //check if video or image
+
+                    var type = null;
+                    var video = null;
+                    var img = null;
+                    var text = null;
+
+                    $.each(rowitems, function(a, b) {
+
+                        if ($(b).attr('data-type') == 'video') {
+
+                            type = 'video';
+                            video = $(b).val();
+
+
+                        } else if ($(b).attr('data-type') == 'img') {
+
+                            type = 'img';
+                            img = $(b).val();
+
+                        } else {
+
+                            text = $(b).val();
+                        }
+
+                    })
+
+                    if (type == 'video') {
+
+                        output[x] = {
+                            order: x,
+                            id: $(v).attr('data-id'),
+                            type: type,
+                            video: video,
+                            text: text,
+                        };
+
+                    }
+
+                    if (type == 'img') {
+
+                        output[x] = {
+                            order: x,
+                            id: $(v).attr('data-id'),
+                            type: type,
+                            img: img,
+                            text: text,
+                        };
+
+                    }
+
+
+                } else {
+
+                    //text
+
+                    output[x] = {
+                        order: x,
+                        id: $(v).attr('data-id'),
+                        type: $(v).attr('data-type'),
+                        content: $(v).val(),
+                    };
+
+                }
+
+                y++;
+
+            })
 
             x++;
 
@@ -718,7 +798,7 @@ if ($identifierValue) {
 
 
 
-            console.log(data);
+            //console.log(data);
 
             if (data) {
 
@@ -767,7 +847,7 @@ if ($identifierValue) {
 
         request.done(function(data) {
 
-            console.log(data);
+            //console.log(data);
 
             if (data) {
 
@@ -806,7 +886,7 @@ if ($identifierValue) {
 
         request.done(function(data) {
 
-            console.log(data);
+            //console.log(data);
 
             if (data) {
 
@@ -820,6 +900,14 @@ if ($identifierValue) {
 
 
     }
+
+    function launchViewer() {
+
+        openedWindow = window.open(siteRoot + 'assets/scripts/courses/generateEmail.php?emailid=' + lesionUnderEdit,
+            '_blank', 'toolbar=0,location=0,menubar=0');
+
+    }
+
 
     var waitForFinalEvent = (function() {
         var timers = {};
@@ -857,7 +945,7 @@ if ($identifierValue) {
 
         selectorObject.done(function(data) {
 
-            console.log(data);
+            //console.log(data);
 
             var formData = $.parseJSON(data);
 
@@ -879,7 +967,7 @@ if ($identifierValue) {
 
                 if (parseInt(val.access_level) < parseInt(userAccessLevel)) {
 
-                    console.log('edit not allowed');
+                    //console.log('edit not allowed');
                     //console.log(val.access_level);
 
                     stop = true;
@@ -959,9 +1047,9 @@ if ($identifierValue) {
 
 
             data = data.trim();
-            console.log(data);
+            //console.log(data);
             externalTest = $.parseJSON(data);
-            console.log(externalTest);
+            //console.log(externalTest);
             if (data) {
 
                 $(externalTest).each(function(i, val) {
@@ -969,10 +1057,10 @@ if ($identifierValue) {
                     //CAN TAKE THIIS FORWARD TO ECHO THE EMAIL TEXT WITH VAL
                     //IF IMG
                     //IF VIDEO DO SOMETHING DIFFERENT (echo a textbox for video and an upload for image) 
-                    console.log(val);
+                    //console.log(val);
                     $.each(val, function(k, v) {
 
-                        console.log(v);
+                        //console.log(v);
                     });
                 });
 
@@ -1023,7 +1111,7 @@ if ($identifierValue) {
 
 
             data = data.trim();
-            console.log(data);
+            //console.log(data);
             externalTest2 = $.parseJSON(data);
             if (data) {
 
@@ -1093,7 +1181,7 @@ if ($identifierValue) {
         }
 
         const jsonString = JSON.stringify(dataToSend);
-        console.log(jsonString);
+        //console.log(jsonString);
 
         $('.send-mail').prop('disabled', true);
         $('.send-mail').append('&nbsp&nbsp<i class="fas fa-circle-notch fa-spin"></i>');
@@ -1156,7 +1244,7 @@ if ($identifierValue) {
         }
 
         const jsonString = JSON.stringify(dataToSend);
-        console.log(jsonString);
+        //console.log(jsonString);
 
         $('.send-welcome-mail').prop('disabled', true);
         $('.send-welcome-mail').append('&nbsp&nbsp<i class="fas fa-circle-notch fa-spin"></i>');
@@ -1206,7 +1294,7 @@ if ($identifierValue) {
 
         //userid is lesionUnderEdit
 
-        //console.log('updatePassword chunk');
+        ////console.log('updatePassword chunk');
         //go to php script with an object from the form
 
 
@@ -1219,7 +1307,7 @@ if ($identifierValue) {
         }
 
         const jsonString = JSON.stringify(dataToSend);
-        console.log(jsonString);
+        //console.log(jsonString);
 
         $('.reset-activity').prop('disabled', true);
         $('.reset-activity').append('&nbsp&nbsp<i class="fas fa-circle-notch fa-spin"></i>');
@@ -1268,7 +1356,7 @@ if ($identifierValue) {
 
         //pushDataFromFormAJAX (form, table, identifierKey, identifier, updateType)
 
-        console.log('got to the submit function');
+        //console.log('got to the submit function');
 
         if (edit == 0) {
 
@@ -1277,7 +1365,7 @@ if ($identifierValue) {
 
             esdLesionObject.done(function(data) {
 
-                console.log(data);
+                //console.log(data);
 
                 if (data) {
 
@@ -1324,7 +1412,7 @@ if ($identifierValue) {
 
                 esdLesionObject.done(function(data) {
 
-                    console.log(data);
+                    //console.log(data);
 
                     if (data) {
 
@@ -1386,11 +1474,13 @@ if ($identifierValue) {
 
             esdLesionObject.done(function(data) {
 
-                console.log(data);
+                //console.log(data);
 
                 if (data) {
 
                     if (data == 1) {
+
+
 
 
 
@@ -1412,53 +1502,55 @@ if ($identifierValue) {
 
             });
 
-            esdLesionObject.then(function(data) {
-
-                //get the array
-
-                var dataToSend = getSortOrderComponentsEmail();
-
-                const jsonString = JSON.stringify(dataToSend);
-                console.dir(jsonString);
-
-
-                var request2 = $.ajax({
-                    url: siteRoot + "assets/scripts/courses/updateEmailComponents.php",
-                    type: "POST",
-                    contentType: "application/json",
-                    data: jsonString,
-
-                });
-
-
-                request2.done(function(data) {
-
-                    console.log(data);
-
-                    if (data) {
-
-                        
-                        //redrawModal();
-
-                    }
-
-                    
-
-                })
-
-                
-
-                
-                return request2;
-
-
-            })
-
             return esdLesionObject;
 
-           
+            //return request22;
+
+
 
         }
+
+
+
+    }
+
+    function saveEmailContents() {
+
+
+        var dataToSend = getSortOrderComponentsEmail();
+
+        const jsonString = JSON.stringify(dataToSend);
+        console.dir(jsonString);
+
+
+        var request2 = $.ajax({
+            url: siteRoot + "assets/scripts/courses/updateEmailComponents.php",
+            type: "POST",
+            contentType: "application/json",
+            data: jsonString,
+
+        });
+
+
+        request2.done(function(data) {
+
+            //console.log(data);
+
+            if (data) {
+
+
+
+            }
+
+
+
+        })
+
+        return request2;
+
+
+
+
 
 
 
@@ -1493,7 +1585,7 @@ if ($identifierValue) {
 
             esdLesionObject.done(function(data) {
 
-                console.log(data);
+                //console.log(data);
 
                 if (data) {
 
@@ -1571,8 +1663,45 @@ if ($identifierValue) {
         e.stopPropagation();
 
         if (dragSrcEl !== this) {
-            dragSrcEl.innerHTML = this.innerHTML;
-            this.innerHTML = e.dataTransfer.getData('text/html');
+
+            //get the dragged element
+            //put it in a new space just after
+
+            var el = document.createElement("div");
+            el.setAttribute('draggable', 'true');
+            el.setAttribute('style', 'cursor: move;');
+            el.classList.add('input-group');
+            el.classList.add('input-group-merge');
+            el.classList.add('mb-3');
+            el.classList.add('can-drag');
+
+
+            this.parentNode.insertBefore(el, this.nextSibling);
+
+            //delete the old one
+
+            //dragSrcEl.innerHTML = this.innerHTML;  OLD
+
+            
+
+            //this.innerHTML = e.dataTransfer.getData('text/html');  OLD
+
+            //this.innerHTML = e.dataTransfer.getData('text/html');
+                                
+
+            el.innerHTML = e.dataTransfer.getData('text/html');
+
+            dragSrcEl.remove();
+
+            items = document.querySelectorAll('.emailBody .can-drag');
+            items.forEach(function(item) {
+                item.addEventListener('dragstart', handleDragStart, false);
+                item.addEventListener('dragenter', handleDragEnter, false);
+                item.addEventListener('dragover', handleDragOver, false);
+                item.addEventListener('dragleave', handleDragLeave, false);
+                item.addEventListener('drop', handleDrop, false);
+                item.addEventListener('dragend', handleDragEnd, false);
+            });
         }
 
         return false;
@@ -1603,34 +1732,38 @@ if ($identifierValue) {
 
         //allow keyboard inpuy
 
-        var keys=[];
+        var keys = [];
 
         $(document).on('keydown, keyup', function(e) {
             //
-            if (e.type == "keydown"){
+            if (e.type == "keydown") {
 
-            
-            
-            if (e.keyCode == 17 || e.keyCode == 91) {
-                //e.preventDefault();
-                keys[0] = e.keyCode; //cmd or ctrl pressed
+
+
+                if (e.keyCode == 17 || e.keyCode == 91) {
+                    //e.preventDefault();
+                    keys[0] = e.keyCode; //cmd or ctrl pressed
+                } else if (e.keyCode == 69) {
+                    keys[1] = 69; //other key pressed
+                };
+
+                if ((keys[0] == 17 || keys[0] == 91) && keys[1] == 69) {
+
+                    saveForm().done(function() {
+
+                        saveEmailContents().done(function() {
+
+                            redrawModal();
+
+                        })
+
+                    });
+                }
+
+            } else {
+
+                keys = [];
             }
-            else if (e.keyCode == 69) {
-                keys[1] = 69; //other key pressed
-            };
-
-            if ((keys[0] == 17 || keys[0] == 91) && keys[1] == 69) {
-                
-                saveForm().done(function(){
-
-redrawModal();
-});
-            }
-
-        }else {
-            
-            keys = [];
-        }
 
         });
 
@@ -1701,7 +1834,7 @@ redrawModal();
                     }
 
                     // Query parameters will be 
-                    console.log(query);
+                    //console.log(query);
                     return query;
                 },
                 dataType: 'json'
@@ -1725,7 +1858,7 @@ redrawModal();
                     }
 
                     // Query parameters will be 
-                    console.log(query);
+                    //console.log(query);
                     return query;
                 },
                 dataType: 'json'
@@ -1930,7 +2063,7 @@ redrawModal();
 
             var targettd = $(this).parent().parent().parent().parent().parent().parent().find('td')
                 .first().text();
-            console.log(targettd);
+            //console.log(targettd);
             //$('#modal-row-1').modal('show');
             deleteRow(targettd);
 
@@ -1939,13 +2072,25 @@ redrawModal();
         $(document).on('click', '.submit-<?php echo $databaseName;?>-form', function() {
 
             event.preventDefault();
-            console.log('clicked');
-            console.log($('#<?php echo $databaseName;?>-form').closest());
+            //console.log('clicked');
+            //console.log($('#<?php echo $databaseName;?>-form').closest());
             //$('#<?php echo $databaseName;?>-form').submit();
 
-            saveForm().done(function(){
+            saveForm().done(function() {
 
-                redrawModal();
+                saveEmailContents().done(function() {
+
+                    /* if (openedWindow){   TODO IMPLEMENT THIS SO THAT OPENED WINDOW REFRESHES
+
+openedWindow.opener.location.reload();
+
+
+} */
+
+                    redrawModal();
+
+                })
+
             });
 
         })
@@ -1975,7 +2120,7 @@ redrawModal();
 
             invalidHandler: function(event, validator) {
                 var errors = validator.numberOfInvalids();
-                console.log("there were " + errors + " errors");
+                //console.log("there were " + errors + " errors");
                 if (errors) {
                     var message = errors == 1 ?
                         "1 field contains errors. It has been highlighted" :
@@ -2091,7 +2236,7 @@ redrawModal();
             }
 
             const jsonString = JSON.stringify(dataToSend);
-            console.log(jsonString);
+            //console.log(jsonString);
 
 
 
@@ -2159,7 +2304,7 @@ redrawModal();
             }
 
             const jsonString = JSON.stringify(dataToSend);
-            console.log(jsonString);
+            //console.log(jsonString);
 
 
 
@@ -2221,12 +2366,21 @@ redrawModal();
                 e.preventDefault();
             }
 
-            saveForm().done(function(result){
-                addText().done(function(result){
-                    redrawModal();
+            saveForm().done(function() {
 
-                });
-            })
+                saveEmailContents().done(function() {
+
+                    addText().done(function(result) {
+
+                        //redrawModal();
+
+                    });
+
+
+
+                })
+
+            });
 
 
 
@@ -2247,10 +2401,22 @@ redrawModal();
                 e.preventDefault();
             }
 
-            saveForm().done(function(result){
-                addImg();
-            })
-          
+            saveForm().done(function() {
+
+                saveEmailContents().done(function() {
+
+                    addImg().done(function(result) {
+
+                        //redrawModal();
+
+                    });
+
+
+
+                })
+
+            });
+
 
 
 
@@ -2271,9 +2437,55 @@ redrawModal();
                 e.preventDefault();
             }
 
-            saveForm().done(function(result){
-                addVideo();
-            })
+            saveForm().done(function() {
+
+                saveEmailContents().done(function() {
+
+                    addVideo().done(function(result) {
+
+                        //redrawModal();
+
+                    });
+
+
+
+                })
+
+            });
+
+
+
+            //load edit form in new window
+
+            //openInNewTab(siteRoot + 'pages/backend/course_dashboard.php?identifier=' + targettd);
+
+
+        })
+
+        $(document).on('click', '.launchViewer', function(e) {
+
+            //add a new text to the database
+
+            //refresh the database
+
+            if (e.preventDefault) {
+                e.preventDefault();
+            }
+
+            launchViewer();
+
+
+            /* saveForm().done(function() {
+
+                saveEmailContents().done(function() {
+
+                    redrawModal();
+
+
+
+                })
+
+            }); */
 
 
 

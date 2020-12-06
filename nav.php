@@ -351,7 +351,7 @@ $test = false;
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">Upcoming Courses</span>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_basic_colon.php" disabled><i class="fas fa-columns"></i>Basic Colonoscopy Skills</a>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_trainer_colon.php"><i class="fas fa-columns"></i>Train the Colonoscopy Trainers</a>
-                    <a class="dropdown-item disabled" href="<?php echo BASE_URL;?>/pages/program/program_basic_polyp.php"><i class="fas fa-columns"></i>Basic Polypectomy</a>
+                    <a class="dropdown-item disabled" href="<?php echo BASE_URL;?>/pages/program/program_basic_polyp.php"><i class="fas fa-columns"></i>Polypectomy Upskilling Course</a>
                     
                     <!-- <div class="dropdown-divider"></div>
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">GIEQs Faculty</span>
