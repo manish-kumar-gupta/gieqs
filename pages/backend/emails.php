@@ -266,6 +266,47 @@ if ($identifierValue) {
 
     </div>
 
+    <div class="buttonText d-none">
+
+    
+
+<table border="0" cellpadding="0"
+    cellspacing="0" width="100%"
+    class="mcnButtonBlock"
+    style="min-width:100%;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
+    <tbody class="mcnButtonBlockOuter">
+        <tr>
+            <td style="padding-top:25px;padding-right:18px;padding-bottom:18px;padding-left:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;"
+                valign="top" align="center"
+                class="mcnButtonBlockInner">
+                <table border="0"
+                    cellpadding="0"
+                    cellspacing="0"
+                    class="mcnButtonContentContainer"
+                    style="border-collapse:separate !important;border-radius:3px;background-color:#1b385d;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust: 100%;">
+                    <tbody>
+                        <tr>
+                            <td align="center"
+                                valign="middle"
+                                class="mcnButtonContent"
+                                style="font-family:Helvetica;font-size:18px;padding:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
+                                <a class="mcnButton "
+                                    title=""
+                                    href=""
+                                    target="_blank"
+                                    style="font-weight:bold;letter-spacing:-0.5px;line-height:100%;text-align:center;text-decoration:none;color:#e3ebf6;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;display:block;">button text
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+    </div>
+
 
 
 
@@ -2374,6 +2415,8 @@ openedWindow.opener.location.reload();
 
                         //redrawModal();
 
+                        //
+
                     });
 
 
@@ -2390,6 +2433,64 @@ openedWindow.opener.location.reload();
 
 
         })
+
+        $(document).on('click', '.addTextButton', function(e) {
+
+//add a new text to the database
+
+//refresh the database
+
+if (e.preventDefault) {
+    e.preventDefault();
+}
+
+saveForm().done(function() {
+
+    saveEmailContents().done(function() {
+
+        addText().done(function(result) {
+
+            //redrawModal();
+
+            //get last item
+            waitForFinalEvent(function() {
+                 
+                var buttonText = $('.buttonText').html();
+
+//add button text
+
+var film = $('body').find('.modal-body').find('.emailContent').last();
+
+//var rowitems = $(v1).
+
+
+$(film).val(buttonText);
+
+                }, 250, 'Wrapper Video 750');
+
+            
+
+            //
+
+        });
+
+
+
+    })
+
+});
+
+
+
+//load edit form in new window
+
+//openInNewTab(siteRoot + 'pages/backend/course_dashboard.php?identifier=' + targettd);
+
+
+})
+        
+
+        
 
         $(document).on('click', '.addImg', function(e) {
 

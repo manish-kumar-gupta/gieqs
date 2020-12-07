@@ -5,5 +5,5 @@ $requiredUserLevel = 1;
 
 
 error_reporting(E_ALL);
-require_once '../../../../../scripts/mailer.php';
+require_once '../../../../../scripts/mailer_new.php';
 

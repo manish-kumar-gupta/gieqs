@@ -229,6 +229,8 @@
                             img</button>
                         <button class="addVideo btn btn-sm m-2 px-2 py-0 bg-gieqsGold text-dark form-control">+
                             video</button>
+                            <button class="addTextButton btn btn-sm m-2 px-2 py-0 bg-gieqsGold text-dark form-control">+
+                            button</button>
 
 
 

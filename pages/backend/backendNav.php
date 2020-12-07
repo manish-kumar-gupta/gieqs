@@ -72,7 +72,7 @@
                   <span class="dropdown-header">Course Managers</span>
                   <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/paid_assets.php">Edit Courses</a>
                   <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/course_dashboard.php">Course Dashboard</a>
-
+                  <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/emails.php">Email Editor</a>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/socialGenerator.php">Social contact</a>
                     
                   </div>
