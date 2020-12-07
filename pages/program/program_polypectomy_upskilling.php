@@ -641,7 +641,7 @@ $general = new general;
         request2.done(function(data) {
             // alert( "success" );
             $('#ajaxWed').html(data);
-            $(document).find('.Thursday').hide();
+            //$(document).find('.Thursday').hide();
         })
     }
 
