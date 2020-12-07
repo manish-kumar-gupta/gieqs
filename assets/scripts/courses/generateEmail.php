@@ -698,7 +698,7 @@ if ($value['img'] != NULL){
                                                                                                         <a href="<?php echo $value['text'];?>"
                                                                                                             target="_blank"><img
                                                                                                                 alt=""
-                                                                                                                src="<?php echo BASE_URL . $value['img'];?>"
+                                                                                                                src="<?php echo 'https://www.gieqs.com' . $value['img'];?>"
                                                                                                                 width="300"
                                                                                                                 style="max-width:300px;padding-bottom:0;border:0;height:auto;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;vertical-align:bottom;text-align:center;"
                                                                                                                 class="mcnImage"></a>
@@ -750,7 +750,7 @@ if ($value['img'] != NULL){
                                                                                                         <a href="<?php echo 'https://www.vimeo.com/' . $value['video'];?>"
                                                                                                             target="_blank"><img
                                                                                                                 alt=""
-                                                                                                                src="<?php echo BASE_URL . $value['text'];?>"
+                                                                                                                src="<?php echo 'https://www.gieqs.com' . $value['text'];?>"
                                                                                                                 width="300"
                                                                                                                 style="max-width:300px;padding-bottom:0;border:0;height:auto;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;vertical-align:bottom;text-align:center;"
                                                                                                                 class="mcnImage"></a>
@@ -1481,7 +1481,7 @@ $x++;
                                                                                     <br>
                                                                                     <br>
                                                                                     To unsubscribe, please click
-                                                                                    <a href="https://www.gieqs.com/assets/scripts/unsubscribeUser.php?key=<?php echo $key;?>"
+                                                                                    <a href="https://www.gieqs.com/assets/scripts/unsubscribeUser.php?key=<?php echo '<?php echo $key;?>';?>"
                                                                                         style="mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#FFFFFF;font-weight:normal;text-decoration:underline;">here
                                                                                     </a>
                                                                                     <br>
