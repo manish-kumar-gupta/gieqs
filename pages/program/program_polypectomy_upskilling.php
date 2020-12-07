@@ -630,7 +630,7 @@ $general = new general;
         console.log(jsonString);
 
         var request2 = $.ajax({
-            url: siteRoot + "assets/scripts/classes/generateProgramme_course_single.php",
+            url: siteRoot + "assets/scripts/classes/generateProgrammeCurrent.php",
             type: "POST",
             contentType: "application/json",
             data: jsonString,
