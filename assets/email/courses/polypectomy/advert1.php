@@ -644,7 +644,7 @@
                                                                                                         <a href="https://www.gieqs.com/pages/program/program_polypectomy_upskilling.php"
                                                                                                             target="_blank"><img
                                                                                                                 alt=""
-                                                                                                                src="http://localhost:90/dashboard/gieqs/assets/img/polyps/defect_scar.png"
+                                                                                                                src="https://www.gieqs.com/assets/img/polyps/defect_scar.png"
                                                                                                                 width="300"
                                                                                                                 style="max-width:300px;padding-bottom:0;border:0;height:auto;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;vertical-align:bottom;text-align:center;"
                                                                                                                 class="mcnImage"></a>
@@ -673,7 +673,7 @@
                                                                                     
                                                                                     <p
                                                                                         style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                        <br><br><b>Dear <?php echo $firstname . ' ' . $surname;?></b>                                                                                    </p>
+                                                                                        <br><br><b>Dear GIEQs Member,</b>                                                                                    </p>
 
                                                                                     
 
@@ -706,7 +706,7 @@
                                                                                     
                                                                                     <p
                                                                                         style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                        Want to take your next steps in colorectal polypectomy of larger polyps.  We have you covered.  Suitable for anyone performing or interesting in performing endoscopic mucosal resection of larger colorectal polyps.                                                                                    </p>
+                                                                                        Want to take your next steps in colorectal polypectomy of larger polyps?  We have you covered.  This course is suitable for anyone performing or interesting in performing endoscopic mucosal resection of larger colorectal polyps.                                                                                    </p>
 
                                                                                     
 
@@ -842,7 +842,7 @@
                     <tbody>
                         <tr>
                             <td align="center" valign="middle" class="mcnButtonContent" style="font-family:Helvetica;font-size:18px;padding:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                <a class="mcnButton " title="Register Now!" href="https://www.gieqs.com/pages/program/program_polypectomy_upskilling.php" target="_blank" style="font-weight:bold;letter-spacing:-0.5px;line-height:100%;text-align:center;text-decoration:none;color:#e3ebf6;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;display:block;">Register Now!
+                                <a class="mcnButton " title="Register Now" href="https://www.gieqs.com/pages/program/program_polypectomy_upskilling.php" target="_blank" style="font-weight:bold;letter-spacing:-0.5px;line-height:100%;text-align:center;text-decoration:none;color:#e3ebf6;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;display:block;">Register Now!
                                 </a>
                             </td>
                         </tr>
