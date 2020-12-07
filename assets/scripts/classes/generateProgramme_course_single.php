@@ -53,7 +53,7 @@
 
             $edit = FALSE;
 
-            $debug = false;
+            $debug = TRUE;
             
             if ($debug){
                 echo '<br/><br/>Data Array contains </br></br>';

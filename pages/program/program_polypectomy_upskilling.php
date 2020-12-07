@@ -140,6 +140,9 @@ $general = new general;
                     <div class="fluid-paragraph mt-5">
                         <p class="lead lh-180"><span class="text-white">Format</span></p>
                         <p class="lead lh-180">Based around 2 live cases we will demonstrate polyp assessment, technique selection and safe resection.  Focussed on endoscopic mucosal resection of intermediate and larger lesions.</p>
+                        <p class="lead lh-180">Interaction via live chat platform (Zoom based). Anyone can ask questions
+                            and join the conversation at any time.
+                        </p>
                         <p class="lead lh-180"><span class="text-white">Who should enrol?</span></p>
 
                         <p class="lead lh-180">Endoscopists and Trainees wanting to improve their knowledge and
@@ -155,9 +158,7 @@ $general = new general;
 
                         <p class="lead lh-180">30 euros (includes review of the course on demand for 3 months, delay of
                             24 hours for content upload)</p>
-                        <p class="lead lh-180">Interaction via live chat platform (Zoom based). Anyone can ask questions
-                            and join the conversation at any time.
-                        </p>
+                        
 
 
 
@@ -193,10 +194,10 @@ $general = new general;
                             <div class="card-body py-4">
                                 <div class="d-flex align-items-start">
                                     <div class="icon text-primary rounded-circle">
-                                        <i class="fas fa-dolly"></i>
+                                        <i class="fas fa-camera-retro"></i>
                                     </div>
                                     <div class="icon-text pl-4">
-                                        <h5 class="ma-0 ">High Defition, fully Interactive Stream</h5>
+                                        <h5 class="ma-0 ">High Definition, Fully Interactive Stream</h5>
                                         <p class="mb-0">Our courses are fully interactive. They allow participation and
                                             interaction live with the proceduralists using Zoom or via Smartphone with Slido.</p>
                                     </div>
@@ -211,7 +212,7 @@ $general = new general;
                             <div class="card-body py-4">
                                 <div class="d-flex align-items-start">
                                     <div class="icon text-primary rounded-circle">
-                                        <i class="far fa-comments"></i>
+                                        <i class="fas fa-procedures"></i>
                                     </div>
                                     <div class="icon-text pl-4">
                                         <h5 class="ma-0 ">Based around Live Endoscopy</h5>
