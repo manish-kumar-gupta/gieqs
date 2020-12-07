@@ -763,7 +763,7 @@ Class userFunctions {
             {
             
 
-            $q = "SELECT `user_id` FROM `users` WHERE `emailServices` = '1' OR `emailAccount` IS NULL";
+            $q = "SELECT `user_id` FROM `users` WHERE `emailServices` = '1' OR `emailServices` IS NULL";
 
             //echo $q . '<br><br>';
 
