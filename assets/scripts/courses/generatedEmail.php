@@ -1,49 +1,3 @@
-<?php
-
-            $openaccess = 0;
-			$requiredUserLevel = 3;
-			require_once ('../../../assets/includes/config.inc.php');		
-			
-			require_once (BASE_URI.'/assets/scripts/headerScript.php');
-
-            //$general = new general;
-            //$programme = new programme;
-            $emailLink = new emailLink;
-            $emails = new emails;
-            $emailContent = new emailContent;
-
-            
-            error_reporting(E_ALL);
-            $debug = FALSE; 
-
-            //$print_r()
-
-            if (isset($_GET['emailid'])) {
-
-                $emailid = $_GET['emailid'];
-            
-            }
-
-            $data = json_decode(file_get_contents('php://input'), true);
-
-            
-            if ($debug){
-            print_r($data);
-            }
-
-            if ($data){
-            $emailid = $data['emailid'];
-            //$databaseName = $data['databaseName'];
-            }
-
-            if ($emails->Return_row($emailid)){
-
-                $emails->Load_from_key($emailid);
-                
-                
-                }
-                
-            ?>
 
 
 
@@ -521,7 +475,7 @@
             }
             </style>
             <div class="preheader" style="font-size: 1px; display: none !important;">
-                <?php echo $emails->getpreheader();?></div>
+                Want to improve your skills at colonic polypectomy - imaging and high quality piecemeal EMR?</div>
             <center>
                 <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%"
                     id="bodyTable"
@@ -638,40 +592,30 @@
                                             
                                             -->
 
-                                                                                    <?php
-
-$emailContents = $emailLink->getEmailContents($emailid);
-
-$x = 0;
-
-//var_dump($emailContents);
-
-foreach ($emailContents as $key=>$value){
-
-   
-
-
-if ($x == 0){
-
-//header row
-
-?>
-
+                                                                                    
                                                                                     <h3
                                                                                         style="display:block;margin:0;padding-top:30px;color:#222222;font-family:Helvetica;font-size:40px;font-style:normal;font-weight:bold;line-height:150%;letter-spacing:normal;text-align:center;">
-                                                                                        <?php echo $value['text'];?>
-                                                                                    </h3>
+                                                                                        Polypectomy Upskilling Afternoon                                                                                    </h3>
 
-                                                                                    <?php
-
-
-}else{
+                                                                                    
 
 
-if ($value['img'] != NULL){
 
-    ?>
 
+
+                                                                                    
+                                                                                    <p
+                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
+                                                                                        <h4>Thursday 17th December, 1400-1800 CET<br/>Online at www.gieqs.com</h4>
+<h4>Interaction possible using Zoom</h4>                                                                                    </p>
+
+                                                                                    
+
+
+
+
+
+                                                                                    
     <table border="0" cellpadding="0" cellspacing="0"
                                                                         width="100%" class="mcnImageGroupBlock"
                                                                         style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
@@ -695,10 +639,10 @@ if ($value['img'] != NULL){
                                                                                                     style="padding-left:9px;padding-top:0;padding-bottom:0px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;text-align:center;">
 
                                                                                                     <center>
-                                                                                                        <a href="<?php echo $value['text'];?>"
+                                                                                                        <a href="https://www.gieqs.com/pages/program/program_polypectomy_upskilling.php"
                                                                                                             target="_blank"><img
                                                                                                                 alt=""
-                                                                                                                src="<?php echo 'https://www.gieqs.com' . $value['img'];?>"
+                                                                                                                src="https://www.gieqs.com/assets/img/polyps/defect_scar.png"
                                                                                                                 width="300"
                                                                                                                 style="max-width:300px;padding-bottom:0;border:0;height:auto;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;vertical-align:bottom;text-align:center;"
                                                                                                                 class="mcnImage"></a>
@@ -718,88 +662,204 @@ if ($value['img'] != NULL){
                                                                     </table>
                                                                    
 
-<?php
-
-}elseif ($value['video'] != NULL){
-
-    ?>
-
-    <table border="0" cellpadding="0" cellspacing="0"
-                                                                        width="100%" class="mcnImageGroupBlock"
-                                                                        style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                                        <tbody class="mcnImageGroupBlockOuter">
-
-                                                                            <tr>
-                                                                                <td valign="top"
-                                                                                    style="padding:9px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;"
-                                                                                    class="mcnImageGroupBlockInner">
-
-                                                                                    <table align="left"
-                                                                                        width="563.9999389648438"
-                                                                                        border="0" cellpadding="0"
-                                                                                        cellspacing="0"
-                                                                                        class="mcnImageGroupContentContainer"
-                                                                                        style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                                                        <tbody>
-                                                                                            <tr>
-                                                                                                <td class="mcnImageGroupContent"
-                                                                                                    valign="top"
-                                                                                                    style="padding-left:9px;padding-top:0;padding-bottom:0px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;text-align:center;">
-
-                                                                                                    <center>
-                                                                                                        <a href="<?php echo 'https://www.vimeo.com/' . $value['video'];?>"
-                                                                                                            target="_blank"><img
-                                                                                                                alt=""
-                                                                                                                src="<?php echo 'https://www.gieqs.com' . $value['text'];?>"
-                                                                                                                width="300"
-                                                                                                                style="max-width:300px;padding-bottom:0;border:0;height:auto;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;vertical-align:bottom;text-align:center;"
-                                                                                                                class="mcnImage"></a>
-                                                                                                    </center>
-
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                        </tbody>
-                                                                                    </table>
-
-                                                                                </td>
-                                                                            </tr>
 
 
 
-                                                                        </tbody>
-                                                                    </table>
 
-                                                                    <?php
 
-    
-}else{
 
-    ?>
-
+                                                                                    
                                                                                     <p
                                                                                         style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                        <?php echo $value['text'];?>
+                                                                                        <br><br><b>Dear <?php echo $firstname . ' ' . $surname;?></b>                                                                                    </p>
+
+                                                                                    
+
+
+
+
+
+                                                                                    
+                                                                                    <p
+                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
+                                                                                        Mastery of colorectal polypectomy can be difficult.  With many different types and sizes of polyps <b>technique selection</b> is the first hurdle.  An understanding of the principles of endoscopic imaging can help significantly with this.                                                                                    </p>
+
+                                                                                    
+
+
+
+
+
+                                                                                    
+                                                                                    <p
+                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
+                                                                                        In over 70% of colorectal polyps ≥ 20mm in size (and therefore the majority of larger polyps seen in everyday practice) [piecemeal] EMR is the technique of choice.  It is <b>safe, effective in over 90% and prevents the morbitity associated with colorectal surgery</b>.                                                                                    </p>
+
+                                                                                    
+
+
+
+
+
+                                                                                    
+                                                                                    <p
+                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
+                                                                                        Want to take your next steps in colorectal polypectomy of larger polyps.  We have you covered.  Suitable for anyone performing or interesting in performing endoscopic mucosal resection of larger colorectal polyps.                                                                                    </p>
+
+                                                                                    
+
+
+
+
+
+                                                                                    
+                                                                                    <p
+                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
+                                                                                        <hr>                                                                                    </p>
+
+                                                                                    
+
+
+
+
+
+                                                                                    
+                                                                                    <p
+                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
+                                                                                        <h4 style="text-align:left;">Faculty</h4>
+<ul>
+<li>Dr David Tate, UZ Gent, Belgium</li>
+<li>Dr John Anderson, Interventional Endoscopist, UK</li>
+<li>Dr Roland Valori, Interventional Endoscopist, UK</li>
+<li>Dr Lobke Desomer, Interventional Endoscopist, Roeselare, Belgium</li>
+<li>Dr Pieter Hindryckx, UZ Gent, Belgium</li>
+<li>Dr Christophe Schoonjans, Endoscopy Fellow, Bruges, Belgium</li>
+</ul>
                                                                                     </p>
 
-                                                                                    <?
-    
-}
-
-}
-
-?>
+                                                                                    
 
 
 
 
 
+                                                                                    
+                                                                                    <p
+                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
+                                                                                        <hr>                                                                                    </p>
 
-                                                                                    <?php 
+                                                                                    
 
-$x++;
 
-}?>
 
+
+
+                                                                                    
+                                                                                    <p
+                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
+                                                                                        <h4 style="text-align:left;">Course Structure</h4>                                                                                    </p>
+
+                                                                                    
+
+
+
+
+
+                                                                                    
+                                                                                    <p
+                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
+                                                                                        <ul>
+<li>High Definition stream from UZ Gent</li>
+<li>2 Live Cases, focussed on piecemeal endoscopic mucosal resection cold and hot</li>
+<li>Interactive discussion throughout between faculty members</li>
+<li>Ability for audience interaction via Zoom or Slido app on smartphone</li>
+<li>Demonstration of 'Virtual Coaching' for remote attaining of skills required for mastery of polypectomy</li>
+</ul>
+                                                                                    </p>
+
+                                                                                    
+
+
+
+
+
+                                                                                    
+                                                                                    <p
+                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
+                                                                                        <hr>                                                                                    </p>
+
+                                                                                    
+
+
+
+
+
+                                                                                    
+                                                                                    <p
+                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
+                                                                                        <h4 style="text-align:left;">Cost</h4>
+
+                                                                                    </p>
+
+                                                                                    
+
+
+
+
+
+                                                                                    
+                                                                                    <p
+                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
+                                                                                        Joining costs €30.  You will have access to the live stream, be able to interact with the faculty live on Zoom and have access to the whole afternoon for 3 months.                                                                                    </p>
+
+                                                                                    
+
+
+
+
+
+                                                                                    
+                                                                                    <p
+                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
+                                                                                        GIEQs is a not-for-profit Educational Foundation dedicated to the promotion of quality in endoscopy.                                                                                    </p>
+
+                                                                                    
+
+
+
+
+
+                                                                                    
+                                                                                    <p
+                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
+                                                                                        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnButtonBlock" style="min-width:100%;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
+    <tbody class="mcnButtonBlockOuter">
+        <tr>
+            <td style="padding-top:25px;padding-right:18px;padding-bottom:18px;padding-left:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;" valign="top" align="center" class="mcnButtonBlockInner">
+                <table border="0" cellpadding="0" cellspacing="0" class="mcnButtonContentContainer" style="border-collapse:separate !important;border-radius:3px;background-color:#1b385d;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust: 100%;">
+                    <tbody>
+                        <tr>
+                            <td align="center" valign="middle" class="mcnButtonContent" style="font-family:Helvetica;font-size:18px;padding:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
+                                <a class="mcnButton " title="Register Now!" href="https://www.gieqs.com/pages/program/program_polypectomy_upskilling.php" target="_blank" style="font-weight:bold;letter-spacing:-0.5px;line-height:100%;text-align:center;text-decoration:none;color:#e3ebf6;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;display:block;">Register Now!
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+                                                                                        </p>
+
+                                                                                    
+
+
+
+
+
+                                                                                    
 
                                                                                     
                                                                                 </td>
@@ -1481,7 +1541,7 @@ $x++;
                                                                                     <br>
                                                                                     <br>
                                                                                     To unsubscribe, please click
-                                                                                    <a href="https://www.gieqs.com/assets/scripts/unsubscribeUser.php?key=<?php echo '<?php echo $key;?>';?>"
+                                                                                    <a href="https://www.gieqs.com/assets/scripts/unsubscribeUser.php?key=<?php echo $key;?>"
                                                                                         style="mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#FFFFFF;font-weight:normal;text-decoration:underline;">here
                                                                                     </a>
                                                                                     <br>
@@ -1544,15 +1604,3 @@ var time = new Date().getTime();
     </div>
 </div>
 
-<?php
-        
-
-            
-           
-
-            
-             
-//$general->endgeneral();
-//$programme->endprogramme();
-//$userRegistrations->enduserRegistrations();
-?>

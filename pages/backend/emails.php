@@ -268,42 +268,32 @@ if ($identifierValue) {
 
     <div class="buttonText d-none">
 
-    
 
-<table border="0" cellpadding="0"
-    cellspacing="0" width="100%"
-    class="mcnButtonBlock"
-    style="min-width:100%;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-    <tbody class="mcnButtonBlockOuter">
-        <tr>
-            <td style="padding-top:25px;padding-right:18px;padding-bottom:18px;padding-left:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;"
-                valign="top" align="center"
-                class="mcnButtonBlockInner">
-                <table border="0"
-                    cellpadding="0"
-                    cellspacing="0"
-                    class="mcnButtonContentContainer"
-                    style="border-collapse:separate !important;border-radius:3px;background-color:#1b385d;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust: 100%;">
-                    <tbody>
-                        <tr>
-                            <td align="center"
-                                valign="middle"
-                                class="mcnButtonContent"
-                                style="font-family:Helvetica;font-size:18px;padding:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                <a class="mcnButton "
-                                    title=""
-                                    href=""
-                                    target="_blank"
-                                    style="font-weight:bold;letter-spacing:-0.5px;line-height:100%;text-align:center;text-decoration:none;color:#e3ebf6;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;display:block;">button text
-                                </a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </td>
-        </tr>
-    </tbody>
-</table>
+
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnButtonBlock"
+            style="min-width:100%;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
+            <tbody class="mcnButtonBlockOuter">
+                <tr>
+                    <td style="padding-top:25px;padding-right:18px;padding-bottom:18px;padding-left:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;"
+                        valign="top" align="center" class="mcnButtonBlockInner">
+                        <table border="0" cellpadding="0" cellspacing="0" class="mcnButtonContentContainer"
+                            style="border-collapse:separate !important;border-radius:3px;background-color:#1b385d;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust: 100%;">
+                            <tbody>
+                                <tr>
+                                    <td align="center" valign="middle" class="mcnButtonContent"
+                                        style="font-family:Helvetica;font-size:18px;padding:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
+                                        <a class="mcnButton " title="" href="" target="_blank"
+                                            style="font-weight:bold;letter-spacing:-0.5px;line-height:100%;text-align:center;text-decoration:none;color:#e3ebf6;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;display:block;">button
+                                            text
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
     </div>
 
@@ -339,6 +329,7 @@ if ($identifierValue) {
     var mailUnderEdit = null;
     var databaseName = '<?php echo $databaseName;?>';
     var openedWindow = null;
+    var active = null;
 
 
 
@@ -720,7 +711,7 @@ if ($identifierValue) {
 
                 console.dir(rowitems);
                 console.log('length is ' + len);
-                
+
 
 
                 //does this row contain only text
@@ -949,6 +940,148 @@ if ($identifierValue) {
 
     }
 
+    function commitEmail() {
+
+        if (confirm('Are you sure you wish to spool this mail for sending?') === true) {
+
+
+            //var audience = $(document).find('.modalContent').find('#audience').val();
+            const dataToSend = {
+
+                emailid: lesionUnderEdit,
+               // audience: audience,
+                //options: myOpts,
+
+            }
+
+            const jsonString = JSON.stringify(dataToSend);
+            //console.log(jsonString);
+
+            var request = $.ajax({
+                url: siteRoot + "assets/scripts/courses/commitEmail.php",
+                type: "POST",
+                contentType: "application/json",
+                data: jsonString,
+
+            });
+
+
+            request.done(function(data) {
+
+                //console.log(data);
+
+                if (data) {
+
+                    redrawModal();
+
+                }
+
+            })
+
+            return request;
+
+        }
+
+
+
+    }
+
+    function uncommitEmail() {
+
+if (confirm('Are you sure you wish to stop this mail from spool sending?') === true) {
+
+
+    //var audience = $(document).find('.modalContent').find('#audience').val();
+    const dataToSend = {
+
+        emailid: lesionUnderEdit,
+       // audience: audience,
+        //options: myOpts,
+
+    }
+
+    const jsonString = JSON.stringify(dataToSend);
+    //console.log(jsonString);
+
+    var request = $.ajax({
+        url: siteRoot + "assets/scripts/courses/uncommitEmail.php",
+        type: "POST",
+        contentType: "application/json",
+        data: jsonString,
+
+    });
+
+
+    request.done(function(data) {
+
+        //console.log(data);
+
+        if (data) {
+
+            redrawModal();
+
+        }
+
+    })
+
+    return request;
+
+}
+
+
+
+}
+
+function testEmail() {
+
+if (confirm('Are you sure you wish to send a test mail') === true) {
+
+
+    //var audience = $(document).find('.modalContent').find('#audience').val();
+    const dataToSend = {
+
+        emailid: lesionUnderEdit,
+       // audience: audience,
+        //options: myOpts,
+
+    }
+
+    const jsonString = JSON.stringify(dataToSend);
+    //console.log(jsonString);
+
+    var request = $.ajax({
+        url: siteRoot + "assets/scripts/courses/sendTestMail.php",
+        type: "POST",
+        contentType: "application/json",
+        data: jsonString,
+
+    });
+
+
+    request.done(function(data) {
+
+        //console.log(data);
+
+        if (data) {
+
+            alert('Mail Sent.');
+
+        }
+
+    })
+
+    return request;
+
+}
+
+
+
+}
+
+
+
+
+
 
     var waitForFinalEvent = (function() {
         var timers = {};
@@ -1006,16 +1139,21 @@ if ($identifierValue) {
 
             $(formData).each(function(i, val) {
 
-                if (parseInt(val.access_level) < parseInt(userAccessLevel)) {
+                if (parseInt(val.active) == 1) {
 
-                    //console.log('edit not allowed');
-                    //console.log(val.access_level);
+                    console.log('edit not allowed');
+                    console.dir(val);
 
-                    stop = true;
-                    return false;
+                    active = true;
+                    $(document).find('.modal-body').find(':input').prop('disabled', true);
+                    $(document).find('.modal-body').find('.commitEmail').removeClass('commitEmail').addClass('uncommitEmail');
+                    //return false;
 
 
 
+                }else{
+
+                    active = false;
                 }
 
 
@@ -1723,12 +1861,12 @@ if ($identifierValue) {
 
             //dragSrcEl.innerHTML = this.innerHTML;  OLD
 
-            
+
 
             //this.innerHTML = e.dataTransfer.getData('text/html');  OLD
 
             //this.innerHTML = e.dataTransfer.getData('text/html');
-                                
+
 
             el.innerHTML = e.dataTransfer.getData('text/html');
 
@@ -2436,61 +2574,62 @@ openedWindow.opener.location.reload();
 
         $(document).on('click', '.addTextButton', function(e) {
 
-//add a new text to the database
+            //add a new text to the database
 
-//refresh the database
+            //refresh the database
 
-if (e.preventDefault) {
-    e.preventDefault();
-}
+            if (e.preventDefault) {
+                e.preventDefault();
+            }
 
-saveForm().done(function() {
+            saveForm().done(function() {
 
-    saveEmailContents().done(function() {
+                saveEmailContents().done(function() {
 
-        addText().done(function(result) {
+                    addText().done(function(result) {
 
-            //redrawModal();
+                        //redrawModal();
 
-            //get last item
-            waitForFinalEvent(function() {
-                 
-                var buttonText = $('.buttonText').html();
+                        //get last item
+                        waitForFinalEvent(function() {
 
-//add button text
+                            var buttonText = $('.buttonText').html();
 
-var film = $('body').find('.modal-body').find('.emailContent').last();
+                            //add button text
 
-//var rowitems = $(v1).
+                            var film = $('body').find('.modal-body')
+                                .find('.emailContent').last();
+
+                            //var rowitems = $(v1).
 
 
-$(film).val(buttonText);
+                            $(film).val(buttonText);
 
-                }, 250, 'Wrapper Video 750');
-
-            
-
-            //
-
-        });
+                        }, 250, 'Wrapper Video 750');
 
 
 
-    })
+                        //
 
-});
-
-
-
-//load edit form in new window
-
-//openInNewTab(siteRoot + 'pages/backend/course_dashboard.php?identifier=' + targettd);
+                    });
 
 
-})
-        
 
-        
+                })
+
+            });
+
+
+
+            //load edit form in new window
+
+            //openInNewTab(siteRoot + 'pages/backend/course_dashboard.php?identifier=' + targettd);
+
+
+        })
+
+
+
 
         $(document).on('click', '.addImg', function(e) {
 
@@ -2596,6 +2735,108 @@ $(film).val(buttonText);
 
 
         })
+
+        $(document).on('click', '.commitEmail', function(e) {
+
+            //add a new text to the database
+
+            //refresh the database
+
+            if (e.preventDefault) {
+                e.preventDefault();
+            }
+
+            commitEmail();
+
+
+            /* saveForm().done(function() {
+
+                saveEmailContents().done(function() {
+
+                    redrawModal();
+
+
+
+                })
+
+            }); */
+
+
+
+            //load edit form in new window
+
+            //openInNewTab(siteRoot + 'pages/backend/course_dashboard.php?identifier=' + targettd);
+
+
+        })
+
+        $(document).on('click', '.uncommitEmail', function(e) {
+
+//add a new text to the database
+
+//refresh the database
+
+if (e.preventDefault) {
+    e.preventDefault();
+}
+
+uncommitEmail();
+
+
+/* saveForm().done(function() {
+
+    saveEmailContents().done(function() {
+
+        redrawModal();
+
+
+
+    })
+
+}); */
+
+
+
+//load edit form in new window
+
+//openInNewTab(siteRoot + 'pages/backend/course_dashboard.php?identifier=' + targettd);
+
+
+})
+
+$(document).on('click', '.testEmail', function(e) {
+
+//add a new text to the database
+
+//refresh the database
+
+if (e.preventDefault) {
+    e.preventDefault();
+}
+
+testEmail();
+
+
+/* saveForm().done(function() {
+
+    saveEmailContents().done(function() {
+
+        redrawModal();
+
+
+
+    })
+
+}); */
+
+
+
+//load edit form in new window
+
+//openInNewTab(siteRoot + 'pages/backend/course_dashboard.php?identifier=' + targettd);
+
+
+})
 
     })
     </script>

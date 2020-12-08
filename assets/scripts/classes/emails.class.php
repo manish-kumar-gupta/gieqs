@@ -24,10 +24,7 @@ error_reporting(0);
 
 }
 
-//error_reporting(E_ALL);
 
-
-//require_once 'DataBaseMysqlPDO.class.php';
 
 Class emails {
 
@@ -36,6 +33,8 @@ Class emails {
 	private $name; //varchar(200)
 	private $subject; //varchar(800)
 	private $preheader; //varchar(800)
+	private $active; //varchar(11)
+	private $audience; //varchar(11)
 	private $connection;
 
 	public function __construct(){
@@ -51,11 +50,13 @@ Class emails {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_emails($email_id,$name,$subject,$preheader){
+	public function New_emails($email_id,$name,$subject,$preheader,$active,$audience){
 		$this->email_id = $email_id;
 		$this->name = $name;
 		$this->subject = $subject;
 		$this->preheader = $preheader;
+		$this->active = $active;
+		$this->audience = $audience;
 	}
 
     /**
@@ -72,6 +73,8 @@ Class emails {
 			$this->name = $row["name"];
 			$this->subject = $row["subject"];
 			$this->preheader = $row["preheader"];
+			$this->active = $row["active"];
+			$this->audience = $row["audience"];
 		}
 	}
     /**
@@ -94,6 +97,8 @@ $q = "Select * from `emails` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["name"] = $row["name"];
 			$rowReturn[$x]["subject"] = $row["subject"];
 			$rowReturn[$x]["preheader"] = $row["preheader"];
+			$rowReturn[$x]["active"] = $row["active"];
+			$rowReturn[$x]["audience"] = $row["audience"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -120,6 +125,8 @@ $q = "Select * from `emails` WHERE `id` = $key";
 			$rowReturn[$x]["name"] = $row["name"];
 			$rowReturn[$x]["subject"] = $row["subject"];
 			$rowReturn[$x]["preheader"] = $row["preheader"];
+			$rowReturn[$x]["active"] = $row["active"];
+			$rowReturn[$x]["audience"] = $row["audience"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -409,6 +416,20 @@ $q = "UPDATE `emails` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return active - varchar(11)
+	 */
+	public function getactive(){
+		return $this->active;
+	}
+
+	/**
+	 * @return audience - varchar(11)
+	 */
+	public function getaudience(){
+		return $this->audience;
+	}
+
+	/**
 	 * @param Type: int(11)
 	 */
 	public function setid($id){
@@ -441,6 +462,20 @@ $q = "UPDATE `emails` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function setpreheader($preheader){
 		$this->preheader = $preheader;
+	}
+
+	/**
+	 * @param Type: varchar(11)
+	 */
+	public function setactive($active){
+		$this->active = $active;
+	}
+
+	/**
+	 * @param Type: varchar(11)
+	 */
+	public function setaudience($audience){
+		$this->audience = $audience;
 	}
 
     /**

@@ -9,6 +9,7 @@
             //$general = new general;
             //$programme = new programme;
             $emailLink = new emailLink;
+            $emails = new emails;
             
             //error_reporting(E_ALL);
             $debug = false;
@@ -24,6 +25,7 @@
 
             $emailid = $data['emailid'];
             $databaseName = $data['databaseName'];
+            $emails->Load_from_key($emailid);
             
 
             ?>
@@ -93,6 +95,17 @@
                                 <textarea id="preheader" type="text" data-toggle="autosize" class="form-control"
                                     name="preheader"></textarea>
                             </div>
+
+                            <label for="audience">audience</label>
+                                        <div class="input-group mb-3">
+                                            <select id="audience" type="text" data-toggle="select" class="form-control" name="audience">
+                                            <option value="" selected disabled hidden>please select an option</option>
+                                            <option value="1">All Users</option>
+                                            <option value="2">Mailing List Services Only</option>
+                                            </select>
+                                        </div>
+
+                            <input type="hidden" name="active">
                         </div>
                     </form>
                     <form id="emailContent-form">
@@ -243,6 +256,24 @@
                 </div>
             </div>
             <div class="modal-footer">
+            <?php
+            if ($emails->getactive() == '1'){
+?>
+
+<button type="button" class="btn btn-sm btn-warning uncommitEmail">Edit Email</button>
+
+
+<?php
+            }else{?>
+
+<button type="button" class="btn btn-sm btn-warning commitEmail">Commit Email</button>
+<button type="button" class="btn btn-sm bg-gieqsGold testEmail">Send Test Email</button>
+
+
+
+          <?php  }?>
+
+
                 <button type="button" class="btn btn-sm btn-info launchViewer">Launch Viewer Window</button>
 
                 <button type="button"
