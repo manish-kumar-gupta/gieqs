@@ -176,6 +176,9 @@
                             require(BASE_URI . '/assets/scripts/individualMailerGmailAPIPHPMailer.php');
                             echo 'email to ' . $emailVaryarray['firstname'] . ' ' . $emailVaryarray['surname'] . ' was sent. <br/><br/>'; 
 
+
+                            //since testing don't add to the sent users list
+
                             $user_email->New_user_email($value, $email_id);
                             $user_email->prepareStatementPDO();
                             $_GET['emailid'] = null;
