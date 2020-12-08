@@ -13,8 +13,8 @@
             //$emailContent = new emailContent;
 
             
-            error_reporting(E_ALL);
-            $debug = FALSE; 
+            //error_reporting(E_ALL);
+            //$debug = FALSE; 
 
             //emails from file including
 
