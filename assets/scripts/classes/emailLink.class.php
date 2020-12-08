@@ -139,6 +139,184 @@ Class emailLink {
 
 }
 
+public function getActiveEmails($debug=false){
+
+       
+            
+
+    $q = "Select a.`id`
+    FROM `emails` as a
+    WHERE a.`active` = 1
+    ";
+
+    if ($debug){
+
+    
+    echo $q . '<br><br>';
+
+
+    }
+
+
+    $result = $this->connection->RunQuery($q);
+    
+    $x = 0;
+    $nRows = $result->rowCount();
+
+    if ($nRows > 0) {
+
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+            $rowReturn[] = $row;
+
+
+        }
+
+        return $rowReturn;
+
+    } else {
+        
+
+        return false;
+    }
+
+
+
+
+}
+
+public function getAudienceEmail($emailid, $debug=false){
+
+    $q = "Select a.`audience`
+    FROM `emails` as a
+    WHERE a.`id` = '$emailid'
+    ";
+
+    if ($debug){
+
+    
+    echo $q . '<br><br>';
+
+
+    }
+
+
+    $result = $this->connection->RunQuery($q);
+    
+    $x = 0;
+    $nRows = $result->rowCount();
+
+    if ($nRows == 1) {
+
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+            $rowReturn = $row['audience'];
+
+
+        }
+
+        return $rowReturn;
+
+    } else {
+        
+
+        return false;
+    }
+
+
+
+}
+
+public function getEmailidEmail($emailid, $debug=false){
+
+    $q = "Select a.`email_id`
+    FROM `emails` as a
+    WHERE a.`id` = '$emailid'
+    ";
+
+    if ($debug){
+
+    
+    echo $q . '<br><br>';
+
+
+    }
+
+
+    $result = $this->connection->RunQuery($q);
+    
+    $x = 0;
+    $nRows = $result->rowCount();
+
+    if ($nRows == 1) {
+
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+            $rowReturn = $row['email_id'];
+
+
+        }
+
+        return $rowReturn;
+
+    } else {
+        
+
+        return false;
+    }
+
+
+
+}
+
+
+
+public function hasEmailBeenSent($emailid, $debug=false){
+
+       
+    //$audience = $this->getAudienceEmail($emailid);    
+
+    $q = "Select a.`id`
+    FROM `emails` as a
+    WHERE a.`active` = 1
+    ";
+
+    if ($debug){
+
+    
+    echo $q . '<br><br>';
+
+
+    }
+
+
+    $result = $this->connection->RunQuery($q);
+    
+    $x = 0;
+    $nRows = $result->rowCount();
+
+    if ($nRows > 0) {
+
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+            $rowReturn[] = $row;
+
+
+        }
+
+        return $rowReturn;
+
+    } else {
+        
+
+        return false;
+    }
+
+
+
+
+}
+
     
     /**
      * Close mysql connection

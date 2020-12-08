@@ -1098,6 +1098,55 @@ public function sanitiseGET ($data) {
 
 }
 
+public function getUnlinkedMails($allEmails, $debug=false){
+
+       
+	//$audience = $this->getAudienceEmail($emailid);
+	
+	$returnArray = $allEmails;
+
+    foreach ($allEmails as $key=>$value){
+
+        $id = null;
+		$id = $value['id'];
+		$email_id = null;
+        $email_id = $this->getEmailidEmail($id);
+
+
+		$q = "Select a.`id`
+		FROM `user_email` as a
+		WHERE a.`email_id` = '$email_id'
+		";
+
+		if ($debug){
+
+		
+		echo $q . '<br><br>';
+
+
+		}
+
+
+		$result = $this->connection->RunQuery($q);
+		
+		$x = 0;
+		$nRows = $result->rowCount();
+
+		if ($nRows > 0) {
+
+			//remove this from the array
+
+
+
+		} 
+
+    }
+
+	return $returnArray;
+
+
+}
+
 
 	
 
