@@ -2134,6 +2134,41 @@ INNER JOIN `imagesDraft` as c on b.`image_id` = c.`id` WHERE a.`approved` IS NUL
 
 	 }
 
+	 public function archiveTableRowGeneric ($table, $id){
+
+		$q1 = "CREATE TABLE IF NOT EXISTS {$table}archive like $table";
+   
+		$result1 = $this->connection->RunQuery($q1);
+   
+		if ($result1){
+   
+		$q2 = "INSERT INTO {$table}archive
+			   SELECT *
+		FROM {$table}
+		WHERE `id` = '$id'";
+   
+		//echo $q2;
+   
+		   $result2 = $this->connection->RunQuery($q2);
+		   
+		   if ($result2){
+   
+			   return 1;
+		   }else{
+   
+			   return 0;
+		   }
+		   //return $returnArray;
+   
+   
+	   }else{
+   
+		   return 0;
+	   }
+   
+   
+		}
+
 	 public function hash_password($password, $salt) {
 		$salted_password = substr($password, 0, 4) . $salt . substr($password, 4);
 		return hash('sha512', $salted_password);}

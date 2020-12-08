@@ -1098,19 +1098,15 @@ public function sanitiseGET ($data) {
 
 }
 
-public function getUnlinkedMails($allEmails, $debug=false){
+public function mailSent($email_id, $debug=false){
 
        
 	//$audience = $this->getAudienceEmail($emailid);
 	
-	$returnArray = $allEmails;
+	
 
-    foreach ($allEmails as $key=>$value){
-
-        $id = null;
-		$id = $value['id'];
-		$email_id = null;
-        $email_id = $this->getEmailidEmail($id);
+        
+        
 
 
 		$q = "Select a.`id`
@@ -1135,17 +1131,171 @@ public function getUnlinkedMails($allEmails, $debug=false){
 		if ($nRows > 0) {
 
 			//remove this from the array
+			return true;
 
 
 
-		} 
+		}else{
 
-    }
+			return false;
+		}
+
+    
 
 	return $returnArray;
 
 
 }
+
+public function archiveTableRowGeneric ($table, $id){
+
+	$q1 = "CREATE TABLE IF NOT EXISTS {$table}archive like $table";
+
+	$result1 = $this->connection->RunQuery($q1);
+
+	if ($result1){
+
+	$q2 = "INSERT INTO {$table}archive
+		   SELECT *
+	FROM {$table}
+	WHERE `id` = '$id'";
+
+	//echo $q2;
+
+	   $result2 = $this->connection->RunQuery($q2);
+	   
+	   if ($result2){
+
+		   return 1;
+	   }else{
+
+		   return 0;
+	   }
+	   //return $returnArray;
+
+
+   }else{
+
+	   return 0;
+   }
+
+
+	}
+
+public function deleteRowUserEmail($id){
+
+	$q = "DELETE FROM `user_email`
+	WHERE `user_email`.`id` = '$id'
+	";
+
+	if ($debug){
+
+	
+	echo $q . '<br><br>';
+
+
+	}
+
+
+	$result = $this->connection->RunQuery($q);
+	
+	$x = 0;
+	$nRows = $result->rowCount();
+
+	if ($nRows > 0) {
+
+		
+
+		return true;
+
+
+
+	}else{
+
+		return false;
+	}
+
+}
+
+public function clearRecipients($email_id, $debug=false){
+
+       
+	//$audience = $this->getAudienceEmail($emailid);
+
+
+		$q = "Select a.`id`
+		FROM `user_email` as a
+		WHERE a.`email_id` = '$email_id'
+		";
+
+		if ($debug){
+
+		
+		echo $q . '<br><br>';
+
+
+		}
+
+
+		$result = $this->connection->RunQuery($q);
+		
+		$x = 0;
+		$nRows = $result->rowCount();
+
+		if ($nRows > 0) {
+
+			while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+			//archive the row
+
+			if ($this->archiveTableRowGeneric('user_email', $row['id']) == 1){
+
+				if ($this->deleteRowUserEmail($row['id'])){
+
+					if ($debug){
+
+						echo 'row deleted';
+					}
+
+				}else{
+					if ($debug){
+
+						echo 'row not deleted';
+					}
+
+
+				}
+
+
+				
+
+			}else{
+
+				if ($debug){
+
+					echo 'could not archive';
+				
+				}
+			}
+
+		}
+
+			return true;
+
+
+
+		}else{
+
+			return false;
+		}
+
+    
+
+	//return $returnArray;
+
+
+}
+
 
 
 	

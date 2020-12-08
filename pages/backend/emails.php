@@ -1077,6 +1077,51 @@ if (confirm('Are you sure you wish to send a test mail') === true) {
 
 
 }
+function clearRecipients() {
+
+if (confirm('Are you sure you wish to clear recipients for this mail') === true) {
+
+
+    //var audience = $(document).find('.modalContent').find('#audience').val();
+    const dataToSend = {
+
+        emailid: lesionUnderEdit,
+       // audience: audience,
+        //options: myOpts,
+
+    }
+
+    const jsonString = JSON.stringify(dataToSend);
+    //console.log(jsonString);
+
+    var request = $.ajax({
+        url: siteRoot + "assets/scripts/courses/removeSentUsersEmail.php",
+        type: "POST",
+        contentType: "application/json",
+        data: jsonString,
+
+    });
+
+
+    request.done(function(data) {
+
+        //console.log(data);
+
+        if (data) {
+
+            alert('Recipients Cleared and Archived.');
+
+        }
+
+    })
+
+    return request;
+
+}
+
+
+
+}
 
 
 
@@ -2815,6 +2860,45 @@ if (e.preventDefault) {
 }
 
 testEmail();
+
+
+/* saveForm().done(function() {
+
+    saveEmailContents().done(function() {
+
+        redrawModal();
+
+
+
+    })
+
+}); */
+
+
+
+//load edit form in new window
+
+//openInNewTab(siteRoot + 'pages/backend/course_dashboard.php?identifier=' + targettd);
+
+
+})
+
+$(document).on('click', '.clearRecipients', function(e) {
+
+//add a new text to the database
+
+//refresh the database
+
+if (e.preventDefault) {
+    e.preventDefault();
+}
+
+clearRecipients().done(function() {
+    
+    redrawModal();
+
+    
+});
 
 
 /* saveForm().done(function() {

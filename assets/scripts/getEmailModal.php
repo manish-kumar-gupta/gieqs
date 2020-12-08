@@ -10,6 +10,7 @@
             //$programme = new programme;
             $emailLink = new emailLink;
             $emails = new emails;
+            $userFunctions = new userFunctions();
             
             //error_reporting(E_ALL);
             $debug = false;
@@ -57,7 +58,29 @@
                 <div class="row">
                     <div class="col-sm-12 text-left">
                         <div>
-                            <h6 class="mb-0"></h6>
+                            <?php 
+                            
+                            if ($emails->getemail_id()){
+                            $sent = $userFunctions->mailSent($emails->getemail_id());
+                            }else{
+
+                            $sent = false;
+                            }
+
+                            if ($sent === true){
+
+                                $sentText = 'been sent';
+
+                            }else if ($sent === false){
+
+                                $sentText = 'never been sent';
+
+                            }
+                            
+                            ?>
+                            <h6 class="mb-0"><?php echo 'Email has ' . $sentText;?></h6>
+                            
+
                             <span id="modalMessageArea" class="mb-0"></span>
 
                         </div>
@@ -263,11 +286,22 @@
 <button type="button" class="btn btn-sm btn-warning uncommitEmail">Edit Email</button>
 
 
+
+
+
 <?php
             }else{?>
 
-<button type="button" class="btn btn-sm btn-warning commitEmail">Commit Email</button>
-<button type="button" class="btn btn-sm bg-gieqsGold testEmail">Send Test Email</button>
+<?php if ($sent === true){?>
+
+<button type="button" class="btn btn-sm bg-gieqsGold text-dark clearRecipients">Clear Recipients</button>
+
+
+
+<?php }?>
+
+<button type="button" class="btn btn-sm btn-warning text-dark commitEmail">Commit Email</button>
+<button type="button" class="btn btn-sm bg-gieqsGold text-dark testEmail">Send Test Email</button>
 
 
 
