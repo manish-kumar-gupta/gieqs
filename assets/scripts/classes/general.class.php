@@ -4,17 +4,18 @@ if (session_status() == PHP_SESSION_NONE) { //if there's no session_start yet...
     session_start(); //do this
 }
 
-if ($_SESSION['debug'] == true){
+if ($_SESSION){
 
-	ini_set('display_errors', 1);
-	ini_set('display_startup_errors', 1);
-	error_reporting(E_ALL);
-
-}else{
-
-error_reporting(0);
+	if ($_SESSION['debug'] == true){
 	
-}
+	error_reporting(E_ALL);
+	
+	}else{
+	
+	error_reporting(0);
+	
+	}
+	}
 
 require_once 'DataBaseMysql.class.php';
 
