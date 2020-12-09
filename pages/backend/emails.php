@@ -1119,6 +1119,50 @@ if (confirm('Are you sure you wish to clear recipients for this mail') === true)
 
 }
 
+}
+
+function duplicateRow(targettd) {
+
+if (confirm('Are you sure you wish to create a new email duplicating email id ' + targettd) === true) {
+
+
+    //var audience = $(document).find('.modalContent').find('#audience').val();
+    const dataToSend = {
+
+        emailid: targettd,
+       // audience: audience,
+        //options: myOpts,
+
+    }
+
+    const jsonString = JSON.stringify(dataToSend);
+    //console.log(jsonString);
+
+    var request = $.ajax({
+        url: siteRoot + "assets/scripts/courses/duplicateEmail.php",
+        type: "POST",
+        contentType: "application/json",
+        data: jsonString,
+
+    });
+
+
+    request.done(function(data) {
+
+        //console.log(data);
+
+        if (data) {
+
+            alert('Email Duplicated.');
+
+        }
+
+    })
+
+    return request;
+
+}
+
 
 
 }
@@ -2166,7 +2210,7 @@ if (confirm('Are you sure you wish to clear recipients for this mail') === true)
                 {
                     data: null,
                     render: function(data, type, row) {
-                        return '<div class="d-flex align-items-center justify-content-end"><div class="actions ml-3"><a class="fill-modal action-item mr-2"  data-toggle="tooltip" title="edit this row" data-original-title="Edit"> <i class="fas fa-pencil-alt"></i> </a> <a class="action-item mr-2 dashboard" data-toggle="tooltip" title="view course dashboard" data-original-title="see enclosed items"> <i class="fas fa-level-down-alt"></i> </a> <div class="dropdown"> <a href="#" class="action-item" role="button" data-toggle="dropdown" aria-haspopup="true" data-expanded="false"> <i class="fas fa-ellipsis-v"></i> </a> <div class="dropdown-menu dropdown-menu-right"> <?php if ($isSuperuser == 1){ ?><a class="delete-row dropdown-item"> Delete </a><?php } ?> </div> </div> </div> </div>';
+                        return '<div class="d-flex align-items-center justify-content-end"><div class="actions ml-3"><a class="fill-modal action-item mr-2"  data-toggle="tooltip" title="edit this row" data-original-title="Edit"> <i class="fas fa-pencil-alt"></i> </a> <a class="action-item mr-2 dashboard" data-toggle="tooltip" title="view course dashboard" data-original-title="see enclosed items"> <i class="fas fa-level-down-alt"></i> </a> <div class="dropdown"> <a href="#" class="action-item" role="button" data-toggle="dropdown" aria-haspopup="true" data-expanded="false"> <i class="fas fa-ellipsis-v"></i> </a> <div class="dropdown-menu dropdown-menu-right"> <?php if ($isSuperuser == 1){ ?><a class="delete-row dropdown-item"> Delete </a><a class="duplicate-row dropdown-item"> Duplicate this Mail </a><?php } ?> </div> </div> </div> </div>';
                     }
                 }
             ],
@@ -2285,13 +2329,21 @@ if (confirm('Are you sure you wish to clear recipients for this mail') === true)
 
         $(document).on('click', '.delete-row', function() {
 
-            var targettd = $(this).parent().parent().parent().parent().parent().parent().find('td')
-                .first().text();
+            var targettd = $(this).parent().parent().parent().parent().parent().parent().find('td').first().text();
             //console.log(targettd);
             //$('#modal-row-1').modal('show');
             deleteRow(targettd);
 
         })
+
+        $(document).on('click', '.duplicate-row', function() {
+
+            var targettd = $(this).parent().parent().parent().parent().parent().parent().find('td').first().text();
+            //console.log(targettd);
+            //$('#modal-row-1').modal('show');
+            duplicateRow(targettd);
+
+            })
 
         $(document).on('click', '.submit-<?php echo $databaseName;?>-form', function() {
 
