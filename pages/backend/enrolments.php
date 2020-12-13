@@ -708,6 +708,8 @@ if ($identifierValue) {
 
 //get array of participants 
 
+$debug = true;
+
 $courses = $assetManager->getCourses();
 $assets_paid = new assets_paid;
 
