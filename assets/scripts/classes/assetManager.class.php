@@ -3131,7 +3131,55 @@ public function returnVideoDenominatorSelect2()
 
 
 
-		}
+        }
+        
+        public function getCourses($debug=false){
+
+            $q = "Select 
+            b.`id`
+            FROM `assets_paid` as b
+            WHERE (b.`asset_type` = '3')";
+        
+        echo $q . '<br><br>';
+        
+        
+        
+        $result = $this->connection->RunQuery($q);
+        
+        $x = 0;
+        $nRows = $result->rowCount();
+        
+        if ($nRows > 0) {
+        
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+        
+                $rowReturn[$x] = $row['id'];
+                $x++;
+        
+        
+            }
+        
+            if ($debug){
+        
+                print_r($rowReturn);
+            }
+        
+            return $rowReturn;
+        
+        } else {
+            
+        
+            if ($debug){
+        
+                echo 'no assets are courses';
+            }
+        
+            return false;
+        
+            
+        }
+        
+        }
 
 
 

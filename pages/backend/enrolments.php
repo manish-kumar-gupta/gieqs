@@ -708,8 +708,24 @@ if ($identifierValue) {
 
 //get array of participants 
 
-$assetid = 7;
+$courses = $assetManager->getCourses();
+$assets_paid = new assets_paid;
 
+if ($debug){
+
+    print_r($courses);
+
+}
+
+//$assetid = 7;
+
+foreach ($courses as $key=>$value){
+
+$assetid = null;
+$owners = null;
+
+$assetid = $value['id'];
+$assets_paid->Load_from_key($assetid);
 //$owners = $assetManager->getOwnersAsset($assetid);
 //error_reporting(E_ALL);
 $owners = $assetManager->getOwnersAsset($assetid);
@@ -726,7 +742,7 @@ $owners = $assetManager->getOwnersAsset($assetid);
 } */
 
 //print_r($owners);
-echo '<h2>Basic Colon Course</h2>';
+echo '<h2>' . $assets_paid->getname() . '</h2>';
 echo '<table class="table">';
 
 echo '<tr>';
@@ -763,61 +779,9 @@ echo '</table>';
 
 echo '<br/><br/><br/>';
 
-$assetid = 8;
-
-//$owners = $assetManager->getOwnersAsset($assetid);
-//error_reporting(E_ALL);
-$owners = $assetManager->getOwnersAsset($assetid);
-
-/* foreach ($owners as $key=>$value){
-
-    //push if active
-    if (!($assetManager->isSubscriptionActive($value['id'], $currentTime, false))){
-
-        unset($owners[$key]);
-
-    }
-
-} */
-
-//print_r($owners);
-echo '<h2>Trainer Colon Course</h2>';
-echo '<table class="table">';
-
-echo '<tr>';
-echo '<th>user id</th>';
-echo '<th>Name</th>';
-echo '<th>Gender</th>';
-echo '<th>Role</th>';
-echo '<th>Country</th>';
-echo '</tr>';
-
-
-
-foreach ($owners as $key=>$value){
-    echo '<tr>';
-
-    $users->Load_from_key($value['user_id']);
-
-    echo "<td>{$value['user_id']}</td>";
-    echo "<td>{$users->getfirstname()} {$users->getsurname()}</td>";
-    echo "<td>{$users->getgender()}</td>";
-    echo "<td>{$users->getendoscopistType()}</td>";
-    echo "<td>{$general->getCountryName($users->getcentreCountry())}</td>";
-
-    echo '</tr>';
-
-
 }
 
 
-
-echo '</table>';
-
-
-
-echo '<br/><br/><br/>';
-echo '<br/><br/><br/>';
 ?>
                 </div>
                 <!-- Load more -->
