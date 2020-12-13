@@ -708,7 +708,7 @@ if ($identifierValue) {
 
 //get array of participants 
 
-$debug = true;
+$debug = false;
 
 $courses = $assetManager->getCourses();
 $assets_paid = new assets_paid;
@@ -726,7 +726,7 @@ foreach ($courses as $key=>$value){
 $assetid = null;
 $owners = null;
 
-$assetid = $value['id'];
+$assetid = $value;
 $assets_paid->Load_from_key($assetid);
 //$owners = $assetManager->getOwnersAsset($assetid);
 //error_reporting(E_ALL);
