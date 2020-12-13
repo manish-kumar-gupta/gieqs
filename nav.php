@@ -32,7 +32,7 @@ spl_autoload_register ('class_loader');
 
 //TESTIING
 
-$test = false;
+$test = true;
 
 
 ?>
@@ -95,7 +95,7 @@ $test = false;
 
                       if ($test){
 
-                      $currentNavTime = new DateTime('2020-11-16', $serverTimeZoneNav); //TESTING
+                      $currentNavTime = new DateTime('2020-12-17', $serverTimeZoneNav); //TESTING
                       $programmes = $sessionView->returnLiveProgrammesArray($currentNavTime, $debug);
 
                       }
