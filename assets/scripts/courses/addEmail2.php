@@ -30,7 +30,7 @@
             
 
 
-            $emails->New_emails(null, 'new mail', null, null);
+            $emails->New_emails(null, 'new mail', null, null, null, null);
             echo $emails->prepareStatementPDO();
 
 
