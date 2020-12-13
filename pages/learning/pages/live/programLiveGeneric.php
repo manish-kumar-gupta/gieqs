@@ -81,7 +81,7 @@ background-color: rgb(238, 194, 120);
 
         <?php
 
-$debug = true;
+$debug = false;
 
 if ($debug){
   error_reporting(E_ALL);
@@ -285,7 +285,7 @@ die();
     request2.done(function (data) {
         // alert( "success" );
         $('#ajaxWed').html(data);
-        $(document).find('.Thursday').hide();
+        //$(document).find('.Thursday').hide();
     })
     }
 
