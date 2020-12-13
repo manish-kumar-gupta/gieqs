@@ -742,8 +742,12 @@ $owners = $assetManager->getOwnersAsset($assetid);
     }
 
 } */
+if ($debug){
 
-//print_r($owners);
+    print_r($owners);
+
+}
+
 echo '<h2>' . $assets_paid->getname() . '</h2>';
 echo '<table class="table">';
 
