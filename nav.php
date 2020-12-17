@@ -32,7 +32,7 @@ spl_autoload_register ('class_loader');
 
 //TESTIING
 
-$test = true;
+$test = false;
 
 
 ?>
