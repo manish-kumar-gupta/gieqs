@@ -63,7 +63,7 @@ $test = false;
               //load user from key
               $liveAndLoggedIn = true;
 
-              $debug=TRUE;
+              $debug=FALSE;
               $serverTimeZoneNav = new DateTimeZone('Europe/Brussels'); //because this is where course is held
               $currentNavTime = new DateTime('now', $serverTimeZoneNav);
               //$currentNavTime = new DateTime('2020-11-17', $serverTimeZoneNav); //TESTING
