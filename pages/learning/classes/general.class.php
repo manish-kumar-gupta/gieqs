@@ -146,6 +146,28 @@ class general {
 
 	}
 
+	public function getTagsChapter ($id) {
+
+		$q = "SELECT a.`id`, a.`split`, b.`id` as `chapterid`, b.`timeFrom`, b.`timeTo`, b.`number`, b.`name` AS `chaptername`, b.`description`, d.`id` as `tagid`, d.`tagName` FROM `video` as a INNER JOIN `chapter` as b ON a.`id` = b.`video_id` INNER JOIN `chapterTag` as c ON b.`id` = c.`chapter_id` INNER JOIN `tags` as d ON d.`id` = c.`tags_id` WHERE b.`id` = $id ORDER BY d.`tagName` ASC";
+
+		$result = $this->connection->RunQuery($q);
+
+		if ($result){
+
+
+			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+				$rows[] = array_map('utf8_encode', $row);
+			}
+
+			return $rows;
+
+
+		}
+
+
+
+	}
+
 	public function getVideoAndChapterDatav1 ($id) {
 
 		//each array element is a chapter, tags are iterated within
@@ -181,6 +203,49 @@ class general {
 			}
 
 			return json_encode($videoChapterArray);
+
+
+		}
+
+
+
+	}
+
+	public function getVideoAndChapterDatav1php ($id) {
+
+		//each array element is a chapter, tags are iterated within
+
+		$q = "SELECT a.`id`, a.`split`, b.`id` as `chapterid`, b.`timeFrom`, b.`timeTo`, b.`number`, b.`name` AS `chaptername`, b.`description` FROM `video` as a INNER JOIN `chapter` as b ON a.`id` = b.`video_id` WHERE a.`id` = $id ORDER BY b.`number` ASC";
+
+		$result = $this->connection->RunQuery($q);
+
+		$videoChapterArray = array();
+
+		if ($result){
+
+			$x = 0;
+
+			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+				
+				
+				
+				
+
+				$videoChapterArray[$x] = array(
+					'id' => $row['id'],
+					'chapterid' => $row['chapterid'], 
+					'timeTo' => $row['timeTo'], 
+					'timeFrom' => $row['timeFrom'],
+					'number' => $row['number'],
+					'chaptername' => $row['chaptername'],
+					'description' => $row['description'],
+					
+				);
+
+				$x++;
+			}
+
+			return $videoChapterArray;
 
 
 		}

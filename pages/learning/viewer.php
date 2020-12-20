@@ -45,187 +45,209 @@
     <script src="<?php echo BASE_URL; ?>/assets/libs/autosize/dist/autosize.min.js"></script>
 
 
-    
+
 
     <style>
-        .gieqsGold {
+    .gieqsGold {
 
-            color: rgb(238, 194, 120) !important;
+        color: rgb(238, 194, 120) !important;
 
 
-        }
+    }
 
-        .close > span:not(.sr-only) {
+    .close>span:not(.sr-only) {
         color: white !important;
-        }
+    }
 
-        .collapsing {
-    -webkit-transition: none;
-    transition: none;
-    display: none;
-}
+    .collapsing {
+        -webkit-transition: none;
+        transition: none;
+        display: none;
+    }
 
-        .tagButton {
+    .tagButton {
 
-            cursor: pointer;
+        cursor: pointer;
 
-        }
+    }
 
-        .tagCard {
+    .chapterSkip {
 
-background-color: #1b385dde;
-
-
+cursor: pointer;
 
 }
 
-.tagCardHeader{
-
-    background-color: #162e4d;
-
-}
-
-        
-.video {
-
-    
-box-sizing: border-box;
-    /* height: 25.25vw; */
-    /* min-height: 100%;
-    min-width: 100%; */
-    transform: translate(-50%, -50%);
-    position: absolute;
-
-}   
-.cursor-pointer {
-
-    cursor: pointer;
-
-}
-
-.card-body ::-webkit-scrollbar{
-
-    display: none;
-
-}
-
-.card-body {
-
-    -ms-overflow-style : none;
-}
-
-@media (min-width: 992px) {
     .tagCard {
 
-            
-left: -50vw;
-top: -20vh;
-min-width:30vw;
+        background-color: #1b385dde;
 
 
-}
-.video {
-  box-sizing: border-box;
-    height: 25.25vw;
-    /* min-height: 100%;
+
+    }
+
+    .tagCardHeader {
+
+        background-color: #162e4d;
+
+    }
+
+
+    .video {
+
+
+        box-sizing: border-box;
+        /* height: 25.25vw; */
+        /* min-height: 100%;
     min-width: 100%; */
-    transform: translate(-50%, -50%);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 100.77777778vh;
-    
-}
-#col-container{
+        transform: translate(-50%, -50%);
+        position: absolute;
 
-    padding-left: 0px !important;
-    padding-right: 0px !important;
+    }
 
-}
-}
+    .cursor-pointer {
 
-@media (max-width: 576px) {
-        #videoDisplay{
+        cursor: pointer;
 
-        width: 100vw;
-        position: relative;
-        margin-left: -50vw;
-        left: 50%;
-        height: auto;
+    }
 
-        }
-        }
+    .card-body ::-webkit-scrollbar {
 
-@media (min-width: 1200px) {
-        #chapterSelectorDiv{
+        display: none;
 
-            
-                
-                top:-3vh;
-            
+    }
+
+    .card-body {
+
+        -ms-overflow-style: none;
+    }
+
+    @media (min-width: 992px) {
+        .tagCard {
+
+
+            left: -50vw;
+            top: -20vh;
+            min-width: 30vw;
+
 
         }
-        #playerContainer{
 
-                margin-top:-20px;
+        .video {
+            box-sizing: border-box;
+            height: 25.25vw;
+            /* min-height: 100%;
+    min-width: 100%; */
+            transform: translate(-50%, -50%);
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 100.77777778vh;
 
         }
+
+        #col-container {
+
+            padding-left: 0px !important;
+            padding-right: 0px !important;
+
+        }
+    }
+
+    @media (max-width: 576px) {
+        #videoDisplay {
+
+            width: 100vw;
+            position: relative;
+            margin-left: -50vw;
+            left: 50%;
+            height: auto;
+
+        }
+    }
+
+    @media (min-width: 1200px) {
+        #chapterSelectorDiv {
+
+
+
+            top: -3vh;
+
+
+        }
+
+        #playerContainer {
+
+            margin-top: -20px;
+
+        }
+
         #collapseExample {
 
-            position: absolute; 
-            max-width: 50vh; 
+            position: absolute;
+            max-width: 50vh;
             z-index: 25;
         }
 
         #selectDropdown {
 
-            
+
             z-index: 25;
             width: 200%;
             position: absolute;
+        }
+
+
+
+    }
+
+    @media (min-width: 577px) {
+        @keyframes fade-in-up {
+            0% {
+                opacity: 0;
             }
 
-            
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
 
-}
-@media (min-width: 577px) {
-@keyframes fade-in-up {
-  0% { opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
-}
+        @keyframes fade-in-up {
+            0% {
+                opacity: 0;
+            }
 
-@keyframes fade-in-up {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-    opacity: 1;
-  }
-}
-.video-wrap {
-  text-align: center;
-}
+            100% {
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
 
-.video iframe {
-  max-width: 100%;
-  max-height: 100%;
-}
-.video.stuck {
-  z-index: 25;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  -webkit-transform: translateY(100%);
-          transform: translateY(100%);
-  width: 400px !important;
-  
-  -webkit-animation: fade-in-up .25s ease forwards;
-          animation: fade-in-up .25s ease forwards;
-}
-}
-/* swal-text {
+        .video-wrap {
+            text-align: center;
+        }
+
+        .video iframe {
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .video.stuck {
+            z-index: 25;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+            width: 400px !important;
+
+            -webkit-animation: fade-in-up .25s ease forwards;
+            animation: fade-in-up .25s ease forwards;
+        }
+    }
+
+    /* swal-text {
   background-color: #162e4d;
   padding: 17px;
   border: 1px solid #F0E1A1;
@@ -234,6 +256,282 @@ min-width:30vw;
   text-align: center;
   color: #162e4d;
 } */
+
+
+    /* html, body {
+    background-color: #222C32;
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
+} */
+
+    .cd-container {
+        width: 90%;
+        max-width: 1080px;
+        margin: 0 auto;
+        background: #12263f;
+        padding: 0 10%;
+        border-radius: 2px;
+        box-sizing: border-box;
+    }
+
+    .cd-container::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+
+    /* -------------------------------- Main components -------------------------------- */
+    #cd-timeline {
+        position: relative;
+        padding: 2em 0;
+        margin-top: 2em;
+        margin-bottom: 2em;
+    }
+
+    #cd-timeline::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 25px;
+        height: 100%;
+        width: 4px;
+        background: rgba(255, 255, 255, 0.7);
+    }
+
+    @media only screen and (min-width: 1170px) {
+        #cd-timeline {
+            margin-top: 3em;
+            margin-bottom: 3em;
+        }
+
+        #cd-timeline::before {
+            left: 50%;
+            margin-left: -2px;
+        }
+    }
+
+    .cd-timeline-block {
+        position: relative;
+        margin: 2em 0;
+    }
+
+    .cd-timeline-block:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .cd-timeline-block:first-child {
+        margin-top: 0;
+    }
+
+    .cd-timeline-block:last-child {
+        margin-bottom: 0;
+    }
+
+    @media only screen and (min-width: 1170px) {
+        .cd-timeline-block {
+            margin: 4em 0;
+        }
+
+        .cd-timeline-block:first-child {
+            margin-top: 0;
+        }
+
+        .cd-timeline-block:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .cd-timeline-img {
+        position: absolute;
+        top: 8px;
+        left: 12px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        box-shadow: 0 0 0 4px #eec278, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .cd-timeline-img {
+        background: #12263f;
+    }
+
+    @media only screen and (min-width: 1170px) {
+        .cd-timeline-img {
+            width: 30px;
+            height: 30px;
+            left: 50%;
+            margin-left: -15px;
+            margin-top: 15px;
+            /* Force Hardware Acceleration in WebKit */
+            -webkit-transform: translateZ(0);
+            -webkit-backface-visibility: hidden;
+        }
+    }
+
+    .cd-timeline-content {
+        position: relative;
+        margin-left: 60px;
+        margin-right: 30px;
+        background: #193659;
+        border-radius: 2px;
+        padding: 1em;
+    }
+
+    .cd-timeline-content .timeline-content-info {
+        background: #162e4d;
+        padding: 5px 10px;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 12px;
+        box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.08);
+        border-radius: 2px;
+    }
+
+    .cd-timeline-content .timeline-content-info i {
+        margin-right: 5px;
+    }
+
+    .cd-timeline-content .timeline-content-info .timeline-content-info-title,
+    .cd-timeline-content .timeline-content-info .timeline-content-info-date {
+        width: calc(50% - 2px);
+        display: inline-block;
+    }
+
+    @media (max-width: 500px) {
+
+        .cd-timeline-content .timeline-content-info .timeline-content-info-title,
+        .cd-timeline-content .timeline-content-info .timeline-content-info-date {
+            display: block;
+            width: 100%;
+        }
+    }
+
+    .cd-timeline-content .content-skills {
+        font-size: 12px;
+        padding: 0;
+        margin-bottom: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .cd-timeline-content .content-skills li {
+        background: #eec278;
+        border-radius: 2px;
+        display: inline-block;
+        padding: 2px 10px;
+        color: #162e4d;
+        margin: 3px 2px;
+        text-align: center;
+        flex-grow: 1;
+    }
+
+    .cd-timeline-content:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .cd-timeline-content h2 {
+        color: rgba(255, 255, 255, .9);
+        margin-top: 0;
+        margin-bottom: 5px;
+    }
+
+    .cd-timeline-content p,
+    .cd-timeline-content .cd-date {
+        color: rgba(255, 255, 255, .7);
+        font-size: 13px;
+        font-size: 0.8125rem;
+    }
+
+    .cd-timeline-content .cd-date {
+        display: inline-block;
+    }
+
+    .cd-timeline-content p {
+        margin: 1em 0;
+        line-height: 1.6;
+    }
+
+    .cd-timeline-content::before {
+        content: '';
+        position: absolute;
+        top: 16px;
+        right: 100%;
+        height: 0;
+        width: 0;
+        border: 7px solid transparent;
+        border-right: 7px solid #333c42;
+    }
+
+    @media only screen and (min-width: 768px) {
+        .cd-timeline-content h2 {
+            font-size: 20px;
+            font-size: 1.25rem;
+        }
+
+        .cd-timeline-content p {
+            font-size: 16px;
+            font-size: 1rem;
+        }
+
+        .cd-timeline-content .cd-read-more,
+        .cd-timeline-content .cd-date {
+            font-size: 14px;
+            font-size: 0.875rem;
+        }
+    }
+
+    @media only screen and (min-width: 1170px) {
+        .cd-timeline-content {
+            color: white;
+            margin-left: 0;
+            padding: 1.6em;
+            width: 36%;
+            margin: 0 5%;
+        }
+
+        .cd-timeline-content::before {
+            top: 24px;
+            left: 100%;
+            border-color: transparent;
+            border-left-color: #333c42;
+        }
+
+        .cd-timeline-content .cd-date {
+            position: absolute;
+            width: 100%;
+            left: 135% !important;
+            top: 6px;
+            font-size: 16px;
+            font-size: 1rem;
+        }
+
+        .cd-timeline-block:nth-child(even) .cd-timeline-content {
+            float: right;
+        }
+
+        .cd-timeline-block:nth-child(even) .cd-timeline-content::before {
+            top: 24px;
+            left: auto !important;
+            right: 100%;
+            border-color: transparent;
+            border-right-color: #333c42;
+        }
+
+        .cd-timeline-block:nth-child(even) .cd-timeline-content .cd-read-more {
+            float: right;
+        }
+
+        .cd-timeline-block:nth-child(even) .cd-timeline-content .cd-date {
+            left: auto !important;
+            right: 135% !important;
+            text-align: right;
+        }
+    }
     </style>
 
 
@@ -250,7 +548,7 @@ min-width:30vw;
 
         <?php require BASE_URI . '/pages/learning/includes/nav.php';?>
 
-        
+
 
 
     </header>
@@ -297,22 +595,23 @@ min-width:30vw;
                         
 		
         ?>
-        
-        <!-- load all video data -->
 
-        <div id="id" style="display:none;"><?php if ($id){echo $id;}?></div>
+    <!-- load all video data -->
+
+    <div id="id" style="display:none;"><?php if ($id){echo $id;}?></div>
 
 
 
-        <div id="vimeoid" style="display:none;"><?php echo $general->getVimeoID($id);?></div>
+    <div id="vimeoid" style="display:none;"><?php echo $general->getVimeoID($id);?></div>
 
-					<div id="videoChapterData" style="display:none;"><?php echo $general->getVideoAndChapterDatav1($id);?>
-					</div>
+    <div id="videoChapterData" style="display:none;">
+        <?php $chapterData = $general->getVideoAndChapterDatav1php($id); echo $general->getVideoAndChapterDatav1($id);?>
+    </div>
 
-					<div id="videoChapterTagData" style="display:none;"><?php echo $general->getVideoAndChapterData($id);?>
-					</div>
+    <div id="videoChapterTagData" style="display:none;"><?php echo $general->getVideoAndChapterData($id);?>
+    </div>
 
-                    <div id="videoData" style="display:none;"><?php $videoDataMod = $general->getVideoDataMod($id);
+    <div id="videoData" style="display:none;"><?php $videoDataMod = $general->getVideoDataMod($id);
                         
                         //print_r($videoDataMod);
                         
@@ -357,14 +656,15 @@ min-width:30vw;
 
                         
                         ?></div>
-                    
-                    <div id="tagsData" style="display:none;"><?php echo $general->getTagsVideo($id);?></div>
 
-                    <div id="tagCategories" style="display:none;"><?php $allCategories = $general->getAllTagCategories(); print_r($allCategories);?></div>
+    <div id="tagsData" style="display:none;"><?php echo $general->getTagsVideo($id);?></div>
+
+    <div id="tagCategories" style="display:none;">
+        <?php $allCategories = $general->getAllTagCategories(); print_r($allCategories);?></div>
 
 
-                    <!--RECORD THE USER DETAILS AND VIEW-->
-<?php
+    <!--RECORD THE USER DETAILS AND VIEW-->
+    <?php
 
 //echo $userid; echo $id; echo 'hello';
                         if ($usersViewsVideo->matchRecord2way($userid, $id) === false){  
@@ -379,7 +679,7 @@ min-width:30vw;
 
 ?>
 
-                    <!--GET TAG CATEGORY NAME 
+    <!--GET TAG CATEGORY NAME 
                     
                     <?php
 
@@ -512,118 +812,126 @@ min-width:30vw;
     </div>
     <div class="main-content bg-gradient-dark">
 
-    
+
 
         <div class="d-flex align-items-end">
             <div class="container mt-10 mt-lg-10 pt-4 pt-lg-4">
-            <nav aria-label="breadcrumb" class="mb-3">
-                            <ol class="breadcrumb breadcrumb-links p-0 m-0">
-                                <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/index.php'?>">GIEQs online</a></li>
-                                <li class="breadcrumb-item"><a href="<?php echo 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . "{$_SERVER['HTTP_HOST']}" . $referid?>">Video Search</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Video Viewer</li>
-                            </ol>
-                        </nav>
-                        <div class="row" style="margin-right:15px; margin-left:15px;">
-                        <span class="h3 mb-0 text-white d-block w-lg-75 w-xl-75"><?php echo $general->getVideoTitle($id)?></span>
-                        </div>
-                        <div class="row" style="margin-right:15px; margin-left:15px;">
-                        <span class="col-xl-8 text-muted text-md d-block my-2" id="videoDescription">Video subtitle</span>
-                    </div>
+                <nav aria-label="breadcrumb" class="mb-3">
+                    <ol class="breadcrumb breadcrumb-links p-0 m-0">
+                        <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/index.php'?>">GIEQs
+                                online</a></li>
+                        <li class="breadcrumb-item"><a
+                                href="<?php echo 'http' . (isset($_SERVER['HTTPS']) ? 's' : '') . '://' . "{$_SERVER['HTTP_HOST']}" . $referid?>">Video
+                                Search</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Video Viewer</li>
+                    </ol>
+                </nav>
+                <div class="row" style="margin-right:15px; margin-left:15px;">
+                    <span
+                        class="h3 mb-0 text-white d-block w-lg-75 w-xl-75"><?php echo $general->getVideoTitle($id)?></span>
+                </div>
+                <div class="row" style="margin-right:15px; margin-left:15px;">
+                    <span class="col-xl-8 text-muted text-md d-block my-2" id="videoDescription">Video subtitle</span>
+                </div>
 
                 <div class="row">
                     <div class="col-lg-7 mb-0 mb-lg-0 pl-lg-5">
-                        
+
                         <div class="row">
-                        <div class="col text-left mt-0 align-items-center">
-                                                    <div class="actions">
-                                                        <a class="action-item action-favorite p-0 m-0 pr-4 likes" data="<?php echo $id;?>">
-                                                            <i class="fas fa-heart mr-1 pr-1 <?php if ($usersFavouriteVideo->matchRecord2way($userid, $id) === true){echo 'gieqsGold';}else{echo 'text-muted';}?>" data-toggle="tooltip" data-placement="bottom" title="favourite"></i> <span
-                                                                id="likesNumber"><?php echo $usersSocial->countFavourites($id);?></span></a>
-                                                            
-                                                        <a class="action-item action-like p-0 m-0 pr-4 views" data="<?php echo $id;?>">
-                                                            <i class="fas fa-thumbs-up mr-1 <?php if ($usersLikeVideo->matchRecord2way($userid, $id) === true){echo 'gieqsGold';}else{echo 'text-muted';}?>" data-toggle="tooltip"
-                                                            data-placement="bottom" title="like"></i> <span
-                                                                id="viewsNumber"><?php echo $usersSocial->countLikes($id);?></span></a>
+                            <div class="col text-left mt-0 align-items-center">
+                                <div class="actions">
+                                    <a class="action-item action-favorite p-0 m-0 pr-4 likes" data="<?php echo $id;?>">
+                                        <i class="fas fa-heart mr-1 pr-1 <?php if ($usersFavouriteVideo->matchRecord2way($userid, $id) === true){echo 'gieqsGold';}else{echo 'text-muted';}?>"
+                                            data-toggle="tooltip" data-placement="bottom" title="favourite"></i> <span
+                                            id="likesNumber"><?php echo $usersSocial->countFavourites($id);?></span></a>
 
-                                                        <a class="action-item p-0 m-0 pr-4 views"><i
-                                                                class="fas fa-eye mr-1" data-toggle="tooltip"
-                                                                data-placement="bottom" title="views"></i> <span
-                                                                id="viewsNumber"><?php echo $usersSocial->countViews($id);?></span></a>
-                                                        <a class="action-item p-0 m-0 pr-1 text-wrap"><i
-                                                                class="fas fa-user mr-1"></i>
-                                                            <span id="videoAuthor" class="flex-grow"></span>
-                                                        </a>
+                                    <a class="action-item action-like p-0 m-0 pr-4 views" data="<?php echo $id;?>">
+                                        <i class="fas fa-thumbs-up mr-1 <?php if ($usersLikeVideo->matchRecord2way($userid, $id) === true){echo 'gieqsGold';}else{echo 'text-muted';}?>"
+                                            data-toggle="tooltip" data-placement="bottom" title="like"></i> <span
+                                            id="viewsNumber"><?php echo $usersSocial->countLikes($id);?></span></a>
 
-                                                    </div>
-                                                </div>
+                                    <a class="action-item p-0 m-0 pr-4 views"><i class="fas fa-eye mr-1"
+                                            data-toggle="tooltip" data-placement="bottom" title="views"></i> <span
+                                            id="viewsNumber"><?php echo $usersSocial->countViews($id);?></span></a>
+                                    <a class="action-item p-0 m-0 pr-1 text-wrap"><i class="fas fa-user mr-1"></i>
+                                        <span id="videoAuthor" class="flex-grow"></span>
+                                    </a>
+
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col text-left mt-0 align-items-center">
-                                                    <div class="tagsActive d-flex flex-wrap mt-3" style="max-height:50px; overflow-y: hidden;">
-                                                        
-                                                    </div>
-                                                </div>
+                                <div class="tagsActive d-flex flex-wrap mt-3"
+                                    style="max-height:50px; overflow-y: hidden;">
+
+                                </div>
+                            </div>
                         </div>
-</div>
-                            <div class="col-lg-2 mb-0 mb-lg-0 align-self-center">
-                                <div class="text-right ">
-                                
-                                                        
-                                <?php if ($currentUserLevel < 6){ // message to upgrade if basic?>
-                                    <a class="dropdown-item" data-toggle="collapse" href="#collapseExample"
-                                        aria-expanded="false" aria-controls="collapseExample">
-                                        <i class="fas fa-chevron-circle-up"></i> show tags
-                                    </a>
-                                    
-
-                                <?php }else{?>
-                                    <a class="dropdown-item" onclick="alert('Upgrade to view tags');"
-                                        aria-expanded="false" aria-controls="collapseExample">
-                                        <i class="fas fa-chevron-circle-up"></i> show tags
-                                    </a>
-                                    
-
-                                <?php }?>
-                                    <a class="dropdown-item" data-toggle="collapse" href="#selectDropdown"
-                                        aria-expanded="false" aria-controls="selectDropdown">
-                                        <i class="fas fa-chevron-circle-up"></i> show chapters
-                                    </a>
-                                    
-
-</div>
-                                <div class="collapse mb-0" id="collapseExample">
-                                    <div class="card mb-0 tagCard">
-                                    <div class="card-header tagCardHeader mb-0">
-                                    <i style="float:right;" class="fas fa-times tagsClose cursor-pointer"></i>
-                        <span class="h6">Tags <br/></span><span class="text-sm">(click to filter)</span><span class="text-sm text-right"> <a style="float:right;" class="cursor-pointer" onclick="undoFilterByTag();"><i class="fas fa-undo"></i>  Undo Filter</a></span>
                     </div>
-                                        <div class="card-body mt-0 pt-0">
-                                            
-                                                <div id="tagsDisplay" class="flex-wrap">
-                                                <?php echo $tagBox;?>
-                                                </div>
-                                                
-                                            
-                                        </div>
+                    <div class="col-lg-2 mb-0 mb-lg-0 align-self-center">
+                        <div class="text-right ">
+
+
+                            <?php if ($currentUserLevel < 6){ // message to upgrade if basic?>
+                            <a class="dropdown-item" data-toggle="collapse" href="#collapseExample"
+                                aria-expanded="false" aria-controls="collapseExample">
+                                <i class="fas fa-chevron-circle-up"></i> show tags
+                            </a>
+
+
+                            <?php }else{?>
+                            <a class="dropdown-item" onclick="alert('Upgrade to view tags');" aria-expanded="false"
+                                aria-controls="collapseExample">
+                                <i class="fas fa-chevron-circle-up"></i> show tags
+                            </a>
+
+
+                            <?php }?>
+                            <a class="dropdown-item" data-toggle="collapse" href="#selectDropdown" aria-expanded="false"
+                                aria-controls="selectDropdown">
+                                <i class="fas fa-chevron-circle-up"></i> show chapters
+                            </a>
+
+
+                        </div>
+                        <div class="collapse mb-0" id="collapseExample">
+                            <div class="card mb-0 tagCard">
+                                <div class="card-header tagCardHeader mb-0">
+                                    <i style="float:right;" class="fas fa-times tagsClose cursor-pointer"></i>
+                                    <span class="h6">Tags <br /></span><span class="text-sm">(click to
+                                        filter)</span><span class="text-sm text-right"> <a style="float:right;"
+                                            class="cursor-pointer" onclick="undoFilterByTag();"><i
+                                                class="fas fa-undo"></i> Undo Filter</a></span>
+                                </div>
+                                <div class="card-body mt-0 pt-0">
+
+                                    <div id="tagsDisplay" class="flex-wrap">
+                                        <?php echo $tagBox;?>
                                     </div>
 
 
                                 </div>
-                                <div class="collapse card mb-0 p-2 flex-row"  id="selectDropdown">
+                            </div>
+
+
+                        </div>
+                        <div class="collapse card mb-0 p-2 flex-row" id="selectDropdown">
                             <div class="container">
                                 <div class="row">
-                                <span class="mb-0 pl-2 pt-2 flex-grow-1">Choose chapter</span>
-                                <button type="button" class="close text-right text-white" data-toggle="collapse" href="#selectDropdown" aria-label="Close">
-                              <span>&times;</span>
-                            </button>
-                    </div>
-                    <div class="row">
-                                <?php
+                                    <span class="mb-0 pl-2 pt-2 flex-grow-1">Choose chapter</span>
+                                    <button type="button" class="close text-right text-white" data-toggle="collapse"
+                                        href="#selectDropdown" aria-label="Close">
+                                        <span>&times;</span>
+                                    </button>
+                                </div>
+                                <div class="row">
+                                    <?php
                                 if ($currentUserLevel == 1){}?>
-                                <?php echo $general->getChapterSelector($id);?>
-                    </div>
-                    </div>
+                                    <?php echo $general->getChapterSelector($id);?>
+                                </div>
                             </div>
+                        </div>
                     </div>
                     <div id='chapterSelectorDiv' class="col-lg-3 mb-0 mb-lg-0 mt-2 py-0 text-center vertical-align-top">
 
@@ -638,14 +946,17 @@ min-width:30vw;
                                     </div>
                                     <div class="text-right">
                                         <div class="actions">
-                                            <a href="#" class="action-item"><i class="fas fa-sync" data-toggle="tooltip" data-placement="bottom" title="restart video"></i></a>
+                                            <a href="#" class="action-item"><i class="fas fa-sync" data-toggle="tooltip"
+                                                    data-placement="bottom" title="restart video"></i></a>
 
-                                           <!-- <a class="action-item" data-toggle="collapse" href="#selectDropdown"><i
+                                            <!-- <a class="action-item" data-toggle="collapse" href="#selectDropdown"><i
                                                     class="fas fa-ellipsis-h" data-toggle="tooltip" data-placement="bottom" title="show chapters"></i></a> -->
 
                                             <?php if ($currentUserLevel < 3){?>
-                                            
-                                            <a href="<?php echo BASE_URL; ?>/pages/learning/scripts/forms/videoChapterForm.php?id=<?php echo $id;?>" class="action-item"><i class="fas fa-edit" data-toggle="tooltip" data-placement="bottom" title="edit video"></i></a>
+
+                                            <a href="<?php echo BASE_URL; ?>/pages/learning/scripts/forms/videoChapterForm.php?id=<?php echo $id;?>"
+                                                class="action-item"><i class="fas fa-edit" data-toggle="tooltip"
+                                                    data-placement="bottom" title="edit video"></i></a>
 
                                             <?php }?>
 
@@ -654,7 +965,7 @@ min-width:30vw;
                                 </div>
                             </div>
 
-                            
+
                             <div class="list-group">
 
 
@@ -663,7 +974,9 @@ min-width:30vw;
                                     <div class="d-flex align-items-center justify-content-between">
 
                                         <div class="flex-fill p-2 text-limit">
-                                            <h6 id="chapterHeadingControl" class="progress-text mb-1 text-sm d-block text-limit text-left">Video Credits
+                                            <h6 id="chapterHeadingControl"
+                                                class="progress-text mb-1 text-sm d-block text-limit text-left">Video
+                                                Credits
                                             </h6>
                                             <div id="myProgress" class="progress progress-xs mb-0">
                                                 <div id="myBar" class="progress-bar bg-gieqsGold" role="progressbar"
@@ -672,7 +985,7 @@ min-width:30vw;
                                             </div>
                                             <div
                                                 class="d-flex justify-content-between text-xs text-muted text-right mt-1">
-                                                
+
                                                 <div>
                                                     <i id='video-back' class="fas fa-step-backward cursor-pointer"></i>
                                                 </div>
@@ -681,23 +994,25 @@ min-width:30vw;
                                                 </div>
                                                 <div>
                                                     <i id='video-stop' class="fas fa-stop cursor-pointer"></i>
-                                              </div>
+                                                </div>
                                                 <div>
-                                                <i id='video-forward' class="fas fa-step-forward cursor-pointer"></i>
+                                                    <i id='video-forward'
+                                                        class="fas fa-step-forward cursor-pointer"></i>
                                                 </div>
                                                 <div>
                                                     <span id='currentChapterTime'></span>
 
                                                 </div>
-                                            
-                                                
-                                               <!--  <div class="custom-control custom-checkbox">
+
+
+                                                <!--  <div class="custom-control custom-checkbox">
                                                     <input type="checkbox" class="custom-control-input" id="customCheck1">
                                                     <label class="custom-control-label" for="customCheck1"></label>
                                                 </div> -->
-                                                
+
                                                 <div class="font-weight-bold gieqsGold">
-                                                    <span id="currentChapter">x</span> / <span id="totalChapters">y</span>
+                                                    <span id="currentChapter">x</span> / <span
+                                                        id="totalChapters">y</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -712,115 +1027,127 @@ min-width:30vw;
         </div>
 
 
-    
 
 
 
 
-    <div id="playerContainer" class="d-flex align-items-end" style="padding-left:15px; padding-right:15px;">
-        <div class="container mt-2 mb-2 py-0">
-            <div class="row">
-                <div id="col-container" class="col-lg-9 mb-0 mb-lg-0 pr-lg-3">
+
+        <div id="playerContainer" class="d-flex align-items-end" style="padding-left:15px; padding-right:15px;">
+            <div class="container mt-2 mb-2 py-0">
+                <div class="row">
+                    <div id="col-container" class="col-lg-9 mb-0 mb-lg-0 pr-lg-3">
 
 
-               
-            <div class="container">
-            <div id="videoDisplay" class="embed-responsive embed-responsive-16by9 video-wrap">
-                    
+
+                        <div class="container">
+                            <div id="videoDisplay" class="embed-responsive embed-responsive-16by9 video-wrap">
+
+                            </div>
                         </div>
-                </div>
-</div>
-                <div class="card p-0 col-lg-3 bg-dark mt-2 mt-lg-0 mb-0 mb-lg-0 text-center vertical-align-center">
-                <div class="card-header" style="padding-right: 0.5em;
+                    </div>
+                    <div class="card p-0 col-lg-3 bg-dark mt-2 mt-lg-0 mb-0 mb-lg-0 text-center vertical-align-center">
+                        <div class="card-header" style="padding-right: 0.5em;
     padding-left: 0.5em;
     padding-bottom: 0.5em;
     padding-top: 0.5em;">
-                    <span id="chapterHeading" class="h6 mb-0 text-white d-block">Video Credits</span>
-</div>
-<div class="card-body" style="padding-right: 0.2em;
+                            <span id="chapterHeading" class="h6 mb-0 text-white d-block">Video Credits</span>
+                        </div>
+                        <div class="card-body" style="padding-right: 0.2em;
     padding-left: 0.2em;
     padding-bottom: 0.2em;
   
     padding-top: 0.5em; max-height: 40vh; overflow-y: scroll;">
-                    <span id="chapterDescription" class="mt-2 p-2 d-block text-left">
-                        <table class="w-100 text-sm">
-                        <tr>                        
-                        <td>Performed by : </td><td><span class="text-white"><a class="text-white" href="<?php echo BASE_URL;?>/pages/learning/pages/account/public-profile.php?id=<?php echo $videoDataMod[0]['authorid']?>"><?php echo $videoDataMod[0]['author'];?></a></span></td>
-                                            </tr>
-                        <tr>
-                       <?php if ($videoDataMod[0]['recorder']){?>
-                        <td>Filmed by : </td><td><span class="text-white"><a class="text-white" href="<?php echo BASE_URL;?>/pages/learning/pages/account/public-profile.php?id=<?php echo $videoDataMod[0]['recorderid']?>"><?php echo $videoDataMod[0]['recorder'];?></a></span></td>
-                       <?php }?>
-                       </tr>
-                       <tr>
-                       <?php if ($videoDataMod[0]['editor']){?>
-                        <td>Cut by : </td><td><span class="text-white"><a class="text-white" href="<?php echo BASE_URL;?>/pages/learning/pages/account/public-profile.php?id=<?php echo $videoDataMod[0]['editorid']?>"><?php echo $videoDataMod[0]['editor'];?></a></span></td>
-                       <?php }?>
-                       </tr>
-                       <tr>
-                       <?php if ($videoDataMod[0]['recorder']){?>
-                        <td>Tagged by : </td><td><span class="text-white"><a class="text-white" href="<?php echo BASE_URL;?>/pages/learning/pages/account/public-profile.php?id=<?php echo $videoDataMod[0]['taggerid']?>"><?php echo $videoDataMod[0]['tagger'];?></a></span></td>
-                       <?php }?>
-                       </tr>
-                       </table>
-                       
-                        </span>
-</div>
-<div class="card-footer tagFilterDisplayArea">
-</div>
+                            <span id="chapterDescription" class="mt-2 p-2 d-block text-left">
+                                <table class="w-100 text-sm">
+                                    <tr>
+                                        <td>Performed by : </td>
+                                        <td><span class="text-white"><a class="text-white"
+                                                    href="<?php echo BASE_URL;?>/pages/learning/pages/account/public-profile.php?id=<?php echo $videoDataMod[0]['authorid']?>"><?php echo $videoDataMod[0]['author'];?></a></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <?php if ($videoDataMod[0]['recorder']){?>
+                                        <td>Filmed by : </td>
+                                        <td><span class="text-white"><a class="text-white"
+                                                    href="<?php echo BASE_URL;?>/pages/learning/pages/account/public-profile.php?id=<?php echo $videoDataMod[0]['recorderid']?>"><?php echo $videoDataMod[0]['recorder'];?></a></span>
+                                        </td>
+                                        <?php }?>
+                                    </tr>
+                                    <tr>
+                                        <?php if ($videoDataMod[0]['editor']){?>
+                                        <td>Cut by : </td>
+                                        <td><span class="text-white"><a class="text-white"
+                                                    href="<?php echo BASE_URL;?>/pages/learning/pages/account/public-profile.php?id=<?php echo $videoDataMod[0]['editorid']?>"><?php echo $videoDataMod[0]['editor'];?></a></span>
+                                        </td>
+                                        <?php }?>
+                                    </tr>
+                                    <tr>
+                                        <?php if ($videoDataMod[0]['recorder']){?>
+                                        <td>Tagged by : </td>
+                                        <td><span class="text-white"><a class="text-white"
+                                                    href="<?php echo BASE_URL;?>/pages/learning/pages/account/public-profile.php?id=<?php echo $videoDataMod[0]['taggerid']?>"><?php echo $videoDataMod[0]['tagger'];?></a></span>
+                                        </td>
+                                        <?php }?>
+                                    </tr>
+                                </table>
+
+                            </span>
+                        </div>
+                        <div class="card-footer tagFilterDisplayArea">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="d-flex align-items-end bg-gradient-dark">
-        <div class="container mt-4 pt-0 pt-lg-0">
-            <div class="row">
-                <div class="col-lg-9 mb-0 mb-lg-0">
-                    <p class="text-left d-flex align-items-left">
-                    <!-- <a class="dropdown-item" data-toggle="collapse" href="#collapseExamplenotyet" aria-expanded="false"
+        <div class="d-flex align-items-end bg-gradient-dark">
+            <div class="container mt-4 pt-0 pt-lg-0">
+                <div class="row">
+                    <div class="col-lg-9 mb-0 mb-lg-0">
+                        <p class="text-left d-flex align-items-left">
+                            <!-- <a class="dropdown-item" data-toggle="collapse" href="#collapseExamplenotyet" aria-expanded="false"
                             aria-controls="collapseExample2">
                             <i class="fas fa-chevron-circle-up"></i> show histopathology result
                         </a> -->
-                        <?php if ($currentUserLevel< 5){ // message to upgrade if standard?>
+                            <?php if ($currentUserLevel< 5){ // message to upgrade if standard?>
 
-                        <a class="dropdown-item" data-toggle="collapse" href="#collapseExample2" aria-expanded="false"
-                            aria-controls="collapseExample3">
-                            <i class="fas fa-chevron-circle-up"></i> show references
-                        </a>
-                        <?php }else{?>
-                            <a class="dropdown-item" onclick="alert('Upgrade to view references for tags');" aria-expanded="false"
-                            aria-controls="collapseExample3">
-                            <i class="fas fa-chevron-circle-up"></i> show references
-                        </a>
+                            <a class="dropdown-item" data-toggle="collapse" href="#collapseExample2"
+                                aria-expanded="false" aria-controls="collapseExample3">
+                                <i class="fas fa-chevron-circle-up"></i> show references
+                            </a>
+                            <?php }else{?>
+                            <a class="dropdown-item" onclick="alert('Upgrade to view references for tags');"
+                                aria-expanded="false" aria-controls="collapseExample3">
+                                <i class="fas fa-chevron-circle-up"></i> show references
+                            </a>
                             <?php } ?>
 
 
-                        <?php if ($currentUserLevel <6){ ?>
-                        <a class="dropdown-item" data-toggle="collapse" href="#collapseExample3" aria-expanded="false"
-                            aria-controls="collapseExample3">
-                            <i class="fas fa-chevron-circle-up"></i> show comments
-                        </a>
-                        <?php }else{// message to upgrade if basic?>
-                            
-                            <a class="dropdown-item" onclick="alert('Upgrade to comment on cases');" aria-expanded="false"
-                            aria-controls="collapseExample3">
-                            <i class="fas fa-chevron-circle-up"></i> show comments
-                        </a>
+                            <?php if ($currentUserLevel <6){ ?>
+                            <a class="dropdown-item" data-toggle="collapse" href="#collapseExample3"
+                                aria-expanded="false" aria-controls="collapseExample3">
+                                <i class="fas fa-chevron-circle-up"></i> show comments
+                            </a>
+                            <?php }else{// message to upgrade if basic?>
+
+                            <a class="dropdown-item" onclick="alert('Upgrade to comment on cases');"
+                                aria-expanded="false" aria-controls="collapseExample3">
+                                <i class="fas fa-chevron-circle-up"></i> show comments
+                            </a>
 
 
-                        <?php } ?>
-                    </p>
-                    
-                    <div class="collapse" id="collapseExample2">
-                        <div class="card">
-                            <div class="card-footer">
-                            <span class="h5 mb-4">References</span>
-                                <div class="flex-row flex-wrap mt-2">
-                                
-                                    <div>
-                                        <?php echo $general->getFullReferenceListVideo($id);?>
-                                        <!-- 
+                            <?php } ?>
+                        </p>
+
+                        <div class="collapse" id="collapseExample2">
+                            <div class="card">
+                                <div class="card-footer">
+                                    <span class="h5 mb-4">References</span>
+                                    <div class="flex-row flex-wrap mt-2">
+
+                                        <div>
+                                            <?php echo $general->getFullReferenceListVideo($id);?>
+                                            <!-- 
                                         <span class="badge badge-primary mx-2">
                                             ref 1
                                         </span>
@@ -830,42 +1157,44 @@ min-width:30vw;
                                     
                                     
                                     -->
-                                    </div>
-                                    <div class="text-right text-right">
-                                        
-                                        <div class="actions">
-
-                                            <a class="action-item"><i class="fas fa-info mr-1" data-toggle="tooltip" title="click on the references to go to PubMed"></i></a>
                                         </div>
-                                    </div>
+                                        <div class="text-right text-right">
 
+                                            <div class="actions">
+
+                                                <a class="action-item"><i class="fas fa-info mr-1" data-toggle="tooltip"
+                                                        title="click on the references to go to PubMed"></i></a>
+                                            </div>
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="collapse" id="collapseExample3">
-                        <div class="card">
-                        <div class="card-header pt-4 pb-2">
-                <div class="d-flex align-items-center">
-                <a class="avatar bg-gieqsGold text-dark avatar-md rounded-circle mr-3 p-1">
-                        <?php echo $userFunctions->getUserInitials($userid);?>
-                      </a>
-                  <div class="avatar-content">
-                    <h6 class="mb-0">Comments</h6>
-                    <div class="d-flex">
-<!--                     <small class="d-block text-muted mr-2"><i class="fas fa-clock mr-2"></i>Profile updated : 3 hrs ago</small>
- -->                    <small class="d-block text-muted mr-2"><i class="fas fa-pen mr-2"></i>Commenting Publicly as <?php echo $userFunctions->getUserName($userid);?></small>
-</div>
+                        <div class="collapse" id="collapseExample3">
+                            <div class="card">
+                                <div class="card-header pt-4 pb-2">
+                                    <div class="d-flex align-items-center">
+                                        <a class="avatar bg-gieqsGold text-dark avatar-md rounded-circle mr-3 p-1">
+                                            <?php echo $userFunctions->getUserInitials($userid);?>
+                                        </a>
+                                        <div class="avatar-content">
+                                            <h6 class="mb-0">Comments</h6>
+                                            <div class="d-flex">
+                                                <!--                     <small class="d-block text-muted mr-2"><i class="fas fa-clock mr-2"></i>Profile updated : 3 hrs ago</small>
+ --> <small class="d-block text-muted mr-2"><i class="fas fa-pen mr-2"></i>Commenting Publicly as
+                                                    <?php echo $userFunctions->getUserName($userid);?></small>
+                                            </div>
 
-                  </div>
-                </div>
-              </div>
-              <div class="card-body">
-                  <!-- Comments-->
-                <div class="mb-3">
-                    <div id="commentsArea">
-                  
-                  <!-- <div class="media media-comment">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <!-- Comments-->
+                                    <div class="mb-3">
+                                        <div id="commentsArea">
+
+                                            <!-- <div class="media media-comment">
                     <img alt="Image placeholder" class="rounded-circle shadow mr-4" src="../../assets/img/theme/light/team-3-800x800.jpg" style="width: 64px;">
                     <div class="media-body">
                       <div class="media-comment-bubble left-top">
@@ -884,30 +1213,36 @@ min-width:30vw;
                       </div>
                     </div>
                   </div> -->
+                                        </div>
+                                        <div class="media mt-3 media-comment align-items-center">
+                                            <a
+                                                class="avatar bg-gieqsGold text-dark avatar-md rounded-circle mr-3 p-1"><?php echo $userFunctions->getUserInitials($userid);?></a>
+                                            <div class="media-body">
+                                                <form id="commentForm" validate>
+                                                    <div class="form-group mb-0">
+                                                        <div class="input-group input-group-merge">
+                                                            <textarea class="form-control" id="comment" name="comment"
+                                                                data-toggle="autosize" placeholder="Write your comment"
+                                                                rows="1"></textarea>
+                                                            <div class="input-group-append">
+                                                                <button id="submitComment" class="btn btn-primary"
+                                                                    type="button">
+                                                                    <span class="far fa-paper-plane"></span>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
                                             </div>
-                  <div class="media mt-3 media-comment align-items-center">
-                  <a class="avatar bg-gieqsGold text-dark avatar-md rounded-circle mr-3 p-1"><?php echo $userFunctions->getUserInitials($userid);?></a>
-                    <div class="media-body">
-                      <form id="commentForm" validate>
-                        <div class="form-group mb-0">
-                          <div class="input-group input-group-merge">
-                            <textarea class="form-control" id="comment" name="comment" data-toggle="autosize" placeholder="Write your comment" rows="1"></textarea>
-                            <div class="input-group-append">
-                              <button id="submitComment" class="btn btn-primary" type="button">
-                                <span class="far fa-paper-plane"></span>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-                                            </div>
-                            <div class="card-footer">
-                                <div class="row align-items-left p-2">
-                                    <span class="small text-muted">Comments are moderated for inapropriate content.  Offending users will have their commenting priveledges blocked and may be removed from the site.  Maximum 5 comments per video.</span>
-                                    <!-- <div class="col">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row align-items-left p-2">
+                                        <span class="small text-muted">Comments are moderated for inapropriate content.
+                                            Offending users will have their commenting priveledges blocked and may be
+                                            removed from the site. Maximum 5 comments per video.</span>
+                                        <!-- <div class="col">
                                         <span class="badge badge-primary mx-2">
                                             comment 1
                                         </span>
@@ -915,29 +1250,75 @@ min-width:30vw;
                                             comment 2
                                         </span>
                                     </div> -->
-                                    <div class="col text-right text-right">
-                                        <div class="actions">
-                                            <a href="#" class="action-item"><i class="fas fa-info mr-1"></i></a>
-                                            
+                                        <div class="col text-right text-right">
+                                            <div class="actions">
+                                                <a href="#" class="action-item"><i class="fas fa-info mr-1"></i></a>
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+
+
+                        </div>
+
                     </div>
 
-
                 </div>
+            </div>
+        </div>
 
+
+
+    </div>
+    </div>
+
+    <!--
+
+    get chapters in order
+    get tags per chapter
+
+chapterData
+                        -->
+    <section id="cd-timeline" class="cd-container">
+        <h1>Video Timeline</h1>
+
+<?php foreach ($chapterData as $key=>$value){?>
+
+        <div class="cd-timeline-block">
+            <div class="cd-timeline-img cd-picture">
             </div>
 
-        </div>
-    </div>
-    </div>
+            <div class="cd-timeline-content">
+                <h2 class="chapterSkip" data-id="<?php echo $value['chapterid'];?>"><?php echo $value['chaptername']; ?></h2>
+                <span class="cd-date chapterSkip" data-id="<?php echo $value['chapterid'];?>">Chapter <?php echo $value['number']; ?></span>
+                <div class="timeline-content-info">
+                    <span class="timeline-content-info-title chapterSkip" data-id="<?php echo $value['chapterid'];?>">
+                        <i class="fa fa-certificate" aria-hidden="true"></i>
+                        Chapter <?php echo $value['number']; ?>
+                    </span>
+                    <span class="timeline-content-info-date">
+                        <i class="fa fa-calendar-o" aria-hidden="true"></i>
+                        <?php echo gmdate("i:s", intval($value['timeFrom'])) . ' - ' . gmdate("i:s", intval($value['timeTo'])); ?>
+                    </span>
+                </div>
+                <p><?php echo $value['description']; ?></p>
+                <?php $tagsChapter = null; $tagsChapter = $general->getTagsChapter($value['chapterid']);?>
+                <ul class="content-skills">
 
+                <?php foreach ($tagsChapter as $key2=>$value2){?>
+                    <li class="tagButton" id="tag<?php echo $value2['tagid'];?>"><?php echo $value2['tagName'];?></li>
+                    
+                <?php } ?>
+                </ul>
+            </div> <!-- cd-timeline-content -->
+        </div> <!-- cd-timeline-block -->
 
+<?php } ?>
 
-    </div>
-    </div>
+        
+    </section> <!-- cd-timeline -->
     <!-- Modal -->
     <div class="modal fade" id="registerInterest" tabindex="-1" role="dialog" aria-labelledby="registerInterestLabel"
         aria-hidden="true">
@@ -985,644 +1366,645 @@ min-width:30vw;
     <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
     <!-- <script src="assets/js/purpose.core.js"></script> -->
     <!-- Page JS -->
-  
+
     <!-- Google maps -->
     <!-- Purpose JS -->
     <script src="<?php echo BASE_URL;?>/assets/js/purpose.js"></script>
     <!-- <script src="assets/js/generaljs.js"></script> -->
     <script>
     var videoPassed = $("#id").text();
-                    </script>
+    </script>
 
     <script src=<?php echo BASE_URL . "/pages/learning/includes/endowiki-player.js"?>></script>
     <script>
-        var signup = $('#signup').text();
+    var signup = $('#signup').text();
 
-        function submitPreRegisterForm() {
+    function submitPreRegisterForm() {
 
-            var esdLesionObject = pushDataFromFormAJAX("pre-register", "preRegister", "id", null,
+        var esdLesionObject = pushDataFromFormAJAX("pre-register", "preRegister", "id", null,
             "0"); //insert new object
 
-            esdLesionObject.done(function (data) {
+        esdLesionObject.done(function(data) {
 
-                console.log(data);
+            console.log(data);
 
-                var dataTrim = data.trim();
+            var dataTrim = data.trim();
 
-                console.log(dataTrim);
+            console.log(dataTrim);
 
-                if (dataTrim) {
+            if (dataTrim) {
 
-                    try {
+                try {
 
-                        dataTrim = parseInt(dataTrim);
+                    dataTrim = parseInt(dataTrim);
 
-                        if (dataTrim > 0) {
+                    if (dataTrim > 0) {
 
-                            alert("Thank you for your details.  We will keep you updated on everything GIEQs.");
-                            $("[data-dismiss=modal]").trigger({
-                                type: "click"
-                            });
-
-                        }
-
-                    } catch (error) {
-
-                        //data not entered
-                        console.log('error parsing integer');
+                        alert("Thank you for your details.  We will keep you updated on everything GIEQs.");
                         $("[data-dismiss=modal]").trigger({
                             type: "click"
                         });
 
-
                     }
 
-                    //$('#success').text("New esdLesion no "+data+" created");
-                    //$('#successWrapper').show();
-                    /* $("#successWrapper").fadeTo(4000, 500).slideUp(500, function() {
-                      $("#successWrapper").slideUp(500);
-                    });
-                    edit = 1;
-                    $("#id").text(data);
-                    esdLesionPassed = data;
-                    fillForm(data); */
+                } catch (error) {
 
-
-
-
-                } else {
-
-                    alert("No data inserted, try again");
-
-                }
-
-
-            });
-        }
-
-        function getComments(){
-
-            var videoid = videoPassed;
-            
-                //alert(videoid);
-                //$(this).children('.fa-thumbs-up').addClass('gieqsGold');
-                //$(this).children('.fa-thumbs-up').removeClass('text-muted');
-                
-                //AJAX to add the like
-
-                
-
-                //change state
-
-//ajax to a script to update
-
-                
-
-                
-
-
-                var dataToSend = {
-
-                    videoid: videoid,
-                    
-                    
-
-                }
-
-                    //const jsonString2 = JSON.stringify(dataToSend);
-
-                    const jsonString = JSON.stringify(dataToSend);
-                    //console.log(jsonString);
-                    //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
-
-                    var request2 = $.ajax({
-                    beforeSend: function () {
-
-
-                    },
-                    url: siteRoot + "scripts/queries/getCommentsVideo.php",
-                    type: "POST",
-                    contentType: "application/json",
-                    data: jsonString,
+                    //data not entered
+                    console.log('error parsing integer');
+                    $("[data-dismiss=modal]").trigger({
+                        type: "click"
                     });
 
 
-
-                    request2.done(function (data) {
-                    // alert( "success" );
-                    if (data){
-                        //show green tick
-                        console.log(data);
-
-                        $('#commentsArea').html(data);
-                        
-                        
-                        //$('#notification-services').delay('1000').addClass('is-valid');
-                        
-                            
-                            
-
-                    }
-                    //$(document).find('.Thursday').hide();
-                    //$(icon).prop("disabled", false);
-                    })
-
-                
-                //$(this).('.fa-thumbs-up').first().addClass("gieqsGold");
-                //remove the check from the tag removed
-
-
-        }
-        
-        function submitCommentForm(){
-
-
-            //console.log('reached submit');
-
-            //alert('hello');
-
-            var videoid = videoPassed;
-            var type = 1;
-            var comment = $('#comment').val();
-                //alert(videoid);
-                //$(this).children('.fa-thumbs-up').addClass('gieqsGold');
-                //$(this).children('.fa-thumbs-up').removeClass('text-muted');
-                
-                //AJAX to add the like
-
-                var icon = $('#submitComment');
-                $(icon).prop("disabled", true);
-
-                //change state
-
-//ajax to a script to update
-
-                
-
-                
-
-
-                var dataToSend = {
-
-                    videoid: videoid,
-                    type: type,
-                    comment: comment,
-                    
-
                 }
 
-                    //const jsonString2 = JSON.stringify(dataToSend);
-
-                    const jsonString = JSON.stringify(dataToSend);
-                    //console.log(jsonString);
-                    //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
-
-                    var request2 = $.ajax({
-                    beforeSend: function () {
-
-
-                    },
-                    url: siteRoot + "scripts/useractions/addUserComment.php",
-                    type: "POST",
-                    contentType: "application/json",
-                    data: jsonString,
-                    });
+                //$('#success').text("New esdLesion no "+data+" created");
+                //$('#successWrapper').show();
+                /* $("#successWrapper").fadeTo(4000, 500).slideUp(500, function() {
+                  $("#successWrapper").slideUp(500);
+                });
+                edit = 1;
+                $("#id").text(data);
+                esdLesionPassed = data;
+                fillForm(data); */
 
 
 
-                    request2.done(function (data) {
-                    // alert( "success" );
-                    if (data == 1){
-                        //show green tick
 
-                        $('#comment').val('')
-                        getComments();
-                        //$('#notification-services').delay('1000').addClass('is-valid');
-                        
-                            
-                        
+            } else {
 
-                    }else if (data == 0){
+                alert("No data inserted, try again");
 
-                        Swal.fire({
-                            type: 'error',
-                            title: 'Further comments not allowed',
-                            text: 'You cannot comment more than 5 times on the same video.',
-                            background: '#162e4d',
-                            confirmButtonText: 'ok', 
-                            confirmButtonColor: 'rgb(238, 194, 120)', 
+            }
 
-                        }).then((result) => {
-                            $('#comment').val('')
-                            getComments();
 
-                        })
+        });
+    }
 
-                    }
-                    //$(document).find('.Thursday').hide();
-                    $(icon).prop("disabled", false);
-                    })
+    function getComments() {
 
-                
-                //$(this).('.fa-thumbs-up').first().addClass("gieqsGold");
-                //remove the check from the tag removed
+        var videoid = videoPassed;
 
-               
+        //alert(videoid);
+        //$(this).children('.fa-thumbs-up').addClass('gieqsGold');
+        //$(this).children('.fa-thumbs-up').removeClass('text-muted');
+
+        //AJAX to add the like
+
+
+
+        //change state
+
+        //ajax to a script to update
+
+
+
+
+
+
+        var dataToSend = {
+
+            videoid: videoid,
+
+
+
         }
 
-        $(document).ready(function () {
+        //const jsonString2 = JSON.stringify(dataToSend);
 
+        const jsonString = JSON.stringify(dataToSend);
+        //console.log(jsonString);
+        //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
+
+        var request2 = $.ajax({
+            beforeSend: function() {
+
+
+            },
+            url: siteRoot + "scripts/queries/getCommentsVideo.php",
+            type: "POST",
+            contentType: "application/json",
+            data: jsonString,
+        });
+
+
+
+        request2.done(function(data) {
+            // alert( "success" );
+            if (data) {
+                //show green tick
+                console.log(data);
+
+                $('#commentsArea').html(data);
+
+
+                //$('#notification-services').delay('1000').addClass('is-valid');
+
+
+
+
+            }
+            //$(document).find('.Thursday').hide();
+            //$(icon).prop("disabled", false);
+        })
+
+
+        //$(this).('.fa-thumbs-up').first().addClass("gieqsGold");
+        //remove the check from the tag removed
+
+
+    }
+
+    function submitCommentForm() {
+
+
+        //console.log('reached submit');
+
+        //alert('hello');
+
+        var videoid = videoPassed;
+        var type = 1;
+        var comment = $('#comment').val();
+        //alert(videoid);
+        //$(this).children('.fa-thumbs-up').addClass('gieqsGold');
+        //$(this).children('.fa-thumbs-up').removeClass('text-muted');
+
+        //AJAX to add the like
+
+        var icon = $('#submitComment');
+        $(icon).prop("disabled", true);
+
+        //change state
+
+        //ajax to a script to update
+
+
+
+
+
+
+        var dataToSend = {
+
+            videoid: videoid,
+            type: type,
+            comment: comment,
+
+
+        }
+
+        //const jsonString2 = JSON.stringify(dataToSend);
+
+        const jsonString = JSON.stringify(dataToSend);
+        //console.log(jsonString);
+        //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
+
+        var request2 = $.ajax({
+            beforeSend: function() {
+
+
+            },
+            url: siteRoot + "scripts/useractions/addUserComment.php",
+            type: "POST",
+            contentType: "application/json",
+            data: jsonString,
+        });
+
+
+
+        request2.done(function(data) {
+            // alert( "success" );
+            if (data == 1) {
+                //show green tick
+
+                $('#comment').val('')
+                getComments();
+                //$('#notification-services').delay('1000').addClass('is-valid');
+
+
+
+
+            } else if (data == 0) {
+
+                Swal.fire({
+                    type: 'error',
+                    title: 'Further comments not allowed',
+                    text: 'You cannot comment more than 5 times on the same video.',
+                    background: '#162e4d',
+                    confirmButtonText: 'ok',
+                    confirmButtonColor: 'rgb(238, 194, 120)',
+
+                }).then((result) => {
+                    $('#comment').val('')
+                    getComments();
+
+                })
+
+            }
+            //$(document).find('.Thursday').hide();
+            $(icon).prop("disabled", false);
+        })
+
+
+        //$(this).('.fa-thumbs-up').first().addClass("gieqsGold");
+        //remove the check from the tag removed
+
+
+    }
+
+    $(document).ready(function() {
+
+
+        getComments();
+
+        /* $(document).click(function(event) { 
+            $target = $(event.target);
             
-            getComments();
+            if(!$target.closest('#collapseExample').length && 
+                $('#collapseExample').is(":visible")) {
+                    $('#collapseExample').collapse('hide');
+                }        
+        }); */
 
-            /* $(document).click(function(event) { 
-                $target = $(event.target);
-                
-                if(!$target.closest('#collapseExample').length && 
-                    $('#collapseExample').is(":visible")) {
-                        $('#collapseExample').collapse('hide');
-                    }        
-            }); */
+        $(document).click(function(event) {
+            $target = $(event.target);
 
-            $(document).click(function(event) { 
-                $target = $(event.target);
-                
-                if(!$target.closest('#selectDropdown').length && 
-                    $('#selectDropdown').is(":visible")) {
-                        $('#selectDropdown').collapse('hide');
-                    }        
-            });
+            if (!$target.closest('#selectDropdown').length &&
+                $('#selectDropdown').is(":visible")) {
+                $('#selectDropdown').collapse('hide');
+            }
+        });
 
-            $(document).click(function(event) { 
-                $target = $(event.target);
-                
-                if(!$target.closest('#collapseExample').length && 
-                    $('#collapseExample').is(":visible")) {
-                        $('#collapseExample').collapse('hide');
-                    }        
-            });
-            
-            $(document).click(function(event) { 
-                $target = $(event.target);
-                
-                if(!$target.closest('#collapseExample2').length && 
-                    $('#collapseExample2').is(":visible")) {
-                        $('#collapseExample2').collapse('hide');
-                    }        
-            });
+        $(document).click(function(event) {
+            $target = $(event.target);
 
-            $(document).click(function(event) { 
-                $target = $(event.target);
-                
-                if(!$target.closest('#collapseExample3').length && 
-                    $('#collapseExample3').is(":visible")) {
-                        $('#collapseExample3').collapse('hide');
-                    }        
-            });
-
-            $(document).on('click', '.tagsClose', function(){
-
+            if (!$target.closest('#collapseExample').length &&
+                $('#collapseExample').is(":visible")) {
                 $('#collapseExample').collapse('hide');
+            }
+        });
 
-            })
+        $(document).click(function(event) {
+            $target = $(event.target);
 
-            $('.referencelist').on('click', function (){
-		
-		
-		//get the tag name
-		
-		var searchTerm = $(this).attr('data');
-		
-		//console.log("https://www.ncbi.nlm.nih.gov/pubmed/?term="+searchTerm);
-		
-		PopupCenter("https://www.ncbi.nlm.nih.gov/pubmed/?term="+searchTerm, 'PubMed Search (endoWiki)', 800, 700);
+            if (!$target.closest('#collapseExample2').length &&
+                $('#collapseExample2').is(":visible")) {
+                $('#collapseExample2').collapse('hide');
+            }
+        });
 
-		
-		
-		
-		
-	})
+        $(document).click(function(event) {
+            $target = $(event.target);
 
-	$('.referencelist').on('mouseenter', function (){
+            if (!$target.closest('#collapseExample3').length &&
+                $('#collapseExample3').is(":visible")) {
+                $('#collapseExample3').collapse('hide');
+            }
+        });
 
-		$(this).css('color', 'rgb(238, 194, 120)');
-		$(this).css('cursor', 'pointer');
+        $(document).on('click', '.tagsClose', function() {
 
-	})
+            $('#collapseExample').collapse('hide');
 
-	$('.referencelist').on('mouseleave', function (){
+        })
 
-		$(this).css('color', 'white');
-		$(this).css('cursor', 'default');
+        $('.referencelist').on('click', function() {
 
-    })
-    
-    $(document).on('click', '.action-like', function(){
 
-//alert('hello');
+            //get the tag name
 
-var videoid = $(this).attr('data');
-//alert(videoid);
-//$(this).children('.fa-thumbs-up').addClass('gieqsGold');
-//$(this).children('.fa-thumbs-up').removeClass('text-muted');
+            var searchTerm = $(this).attr('data');
 
-//AJAX to add the like
+            //console.log("https://www.ncbi.nlm.nih.gov/pubmed/?term="+searchTerm);
 
-var icon = $(this).children('.fa-thumbs-up');
-$(icon).prop("disabled", true);
+            PopupCenter("https://www.ncbi.nlm.nih.gov/pubmed/?term=" + searchTerm,
+                'PubMed Search (endoWiki)', 800, 700);
 
-//change state
 
-//ajax to a script to update
 
-if($(icon).hasClass('gieqsGold')){
-    var liked = 1;  // already liked
-    /* $(icon).addClass('text-muted');
-    $(icon).removeClass('gieqsGold'); */
-
-}else{
-    var liked = 0;  // not liked yet
-    /* $(icon).removeClass('text-muted');
-    $(icon).addClass('gieqsGold'); */
-}
-
-$(icon).prop("disabled", false);
-
-if (liked == 0){
-
-    var type = 1;
-
-}else if (liked == 1){
-
-    var type = 2;
-
-}
-
-var dataToSend = {
-
-    videoid: videoid,
-    type: type,
-    
-
-}
-
-    //const jsonString2 = JSON.stringify(dataToSend);
-
-    const jsonString = JSON.stringify(dataToSend);
-    //console.log(jsonString);
-    //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
-
-    var request2 = $.ajax({
-    beforeSend: function () {
-
-
-    },
-    url: siteRoot + "scripts/useractions/updateUserLike.php",
-    type: "POST",
-    contentType: "application/json",
-    data: jsonString,
-    });
-
-
-
-    request2.done(function (data) {
-    // alert( "success" );
-    if (data == 1){
-        //show green tick
-
-        if (liked == 1){
-
-            $(icon).addClass('text-muted');
-            $(icon).removeClass('gieqsGold');
-            $(icon).removeClass('animated');
-            $(icon).removeClass('heartBeat');
-
-        }else if (liked == 0){
-
-            $(icon).removeClass('text-muted');
-            $(icon).addClass('gieqsGold');
-            $(icon).addClass('animated');
-            $(icon).addClass('heartBeat');
-            
-
-        }
-        
-        //$('#notification-services').delay('1000').addClass('is-valid');
-        
-            
-            
-
-    }
-    //$(document).find('.Thursday').hide();
-    $(icon).prop("disabled", false);
-    })
-
-
-//$(this).('.fa-thumbs-up').first().addClass("gieqsGold");
-//remove the check from the tag removed
-
-
-})
-
-$(document).on('click', '.action-favorite', function(){
-
-//alert('hello');
-
-var videoid = $(this).attr('data');
-//alert(videoid);
-//$(this).children('.fa-thumbs-up').addClass('gieqsGold');
-//$(this).children('.fa-thumbs-up').removeClass('text-muted');
-
-//AJAX to add the like
-
-var icon = $(this).children('.fa-heart');
-$(icon).prop("disabled", true);
-
-//change state
-
-//ajax to a script to update
-
-if($(icon).hasClass('gieqsGold')){
-    var liked = 1;  // already liked
-    /* $(icon).addClass('text-muted');
-    $(icon).removeClass('gieqsGold'); */
-
-}else{
-    var liked = 0;  // not liked yet
-    /* $(icon).removeClass('text-muted');
-    $(icon).addClass('gieqsGold'); */
-}
-
-$(icon).prop("disabled", false);
-
-if (liked == 0){
-
-    var type = 1;
-
-}else if (liked == 1){
-
-    var type = 2;
-
-}
-
-var dataToSend = {
-
-    videoid: videoid,
-    type: type,
-    
-
-}
-
-    //const jsonString2 = JSON.stringify(dataToSend);
-
-    const jsonString = JSON.stringify(dataToSend);
-    //console.log(jsonString);
-    //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
-
-    var request2 = $.ajax({
-    beforeSend: function () {
-
-
-    },
-    url: siteRoot + "scripts/useractions/updateUserFavourite.php",
-    type: "POST",
-    contentType: "application/json",
-    data: jsonString,
-    });
-
-
-
-    request2.done(function (data) {
-    // alert( "success" );
-    if (data == 1){
-        //show green tick
-
-        if (liked == 1){
-
-            $(icon).addClass('text-muted');
-            $(icon).removeClass('gieqsGold');
-            $(icon).removeClass('animated');
-            $(icon).removeClass('heartBeat');
-
-        }else if (liked == 0){
-
-            $(icon).removeClass('text-muted');
-            $(icon).addClass('gieqsGold');
-            $(icon).addClass('animated');
-            $(icon).addClass('heartBeat');
-            
-
-        }
-
-        //TODO update views and likes number here
-        
-        //$('#notification-services').delay('1000').addClass('is-valid');
-        
-            
-            
-
-    }
-    //$(document).find('.Thursday').hide();
-    $(icon).prop("disabled", false);
-    })
-
-
-//$(this).('.fa-thumbs-up').first().addClass("gieqsGold");
-//remove the check from the tag removed
-
-
-})
-
-$(document).on('click', '#submitComment', function () {
-
-event.preventDefault();
-
-$('#commentForm').submit();
-
-})
-
-$("#commentForm").validate({
-
-invalidHandler: function (event, validator) {
-  var errors = validator.numberOfInvalids();
-  console.log("there were " + errors + " errors");
-  if (errors) {
-    var message = errors == 1 ?
-      "1 field contains errors. It has been highlighted" :
-      +errors + " fields contain errors. They have been highlighted";
-
-
-    $('#error').text(message);
-    //$('div.error span').addClass('form-text text-danger');
-    //$('#errorWrapper').show();
-
-    $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function () {
-      $("#errorWrapper").slideUp(500);
-    });
-  } else {
-    $('#errorWrapper').hide();
-  }
-},
-ignore: [],
-rules: {
-
-  //EDIT
-
-
-
-
-
-
-
-  comment: {
-    required: true,
-    maxlength: 600,
-    minlength: 25,
-
-  },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-},
-submitHandler: function (form) {
-
-  //submitPreRegisterForm();
-
-  submitCommentForm();
-
-  //TODO submit changes
-  //TODO reimport the array at the top
-  //TODO redraw the table
-
-
-
-}
-
-
-
-
-});
 
 
         })
+
+        $('.referencelist').on('mouseenter', function() {
+
+            $(this).css('color', 'rgb(238, 194, 120)');
+            $(this).css('cursor', 'pointer');
+
+        })
+
+        $('.referencelist').on('mouseleave', function() {
+
+            $(this).css('color', 'white');
+            $(this).css('cursor', 'default');
+
+        })
+
+        $(document).on('click', '.action-like', function() {
+
+            //alert('hello');
+
+            var videoid = $(this).attr('data');
+            //alert(videoid);
+            //$(this).children('.fa-thumbs-up').addClass('gieqsGold');
+            //$(this).children('.fa-thumbs-up').removeClass('text-muted');
+
+            //AJAX to add the like
+
+            var icon = $(this).children('.fa-thumbs-up');
+            $(icon).prop("disabled", true);
+
+            //change state
+
+            //ajax to a script to update
+
+            if ($(icon).hasClass('gieqsGold')) {
+                var liked = 1; // already liked
+                /* $(icon).addClass('text-muted');
+                $(icon).removeClass('gieqsGold'); */
+
+            } else {
+                var liked = 0; // not liked yet
+                /* $(icon).removeClass('text-muted');
+                $(icon).addClass('gieqsGold'); */
+            }
+
+            $(icon).prop("disabled", false);
+
+            if (liked == 0) {
+
+                var type = 1;
+
+            } else if (liked == 1) {
+
+                var type = 2;
+
+            }
+
+            var dataToSend = {
+
+                videoid: videoid,
+                type: type,
+
+
+            }
+
+            //const jsonString2 = JSON.stringify(dataToSend);
+
+            const jsonString = JSON.stringify(dataToSend);
+            //console.log(jsonString);
+            //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
+
+            var request2 = $.ajax({
+                beforeSend: function() {
+
+
+                },
+                url: siteRoot + "scripts/useractions/updateUserLike.php",
+                type: "POST",
+                contentType: "application/json",
+                data: jsonString,
+            });
+
+
+
+            request2.done(function(data) {
+                // alert( "success" );
+                if (data == 1) {
+                    //show green tick
+
+                    if (liked == 1) {
+
+                        $(icon).addClass('text-muted');
+                        $(icon).removeClass('gieqsGold');
+                        $(icon).removeClass('animated');
+                        $(icon).removeClass('heartBeat');
+
+                    } else if (liked == 0) {
+
+                        $(icon).removeClass('text-muted');
+                        $(icon).addClass('gieqsGold');
+                        $(icon).addClass('animated');
+                        $(icon).addClass('heartBeat');
+
+
+                    }
+
+                    //$('#notification-services').delay('1000').addClass('is-valid');
+
+
+
+
+                }
+                //$(document).find('.Thursday').hide();
+                $(icon).prop("disabled", false);
+            })
+
+
+            //$(this).('.fa-thumbs-up').first().addClass("gieqsGold");
+            //remove the check from the tag removed
+
+
+        })
+
+        $(document).on('click', '.action-favorite', function() {
+
+            //alert('hello');
+
+            var videoid = $(this).attr('data');
+            //alert(videoid);
+            //$(this).children('.fa-thumbs-up').addClass('gieqsGold');
+            //$(this).children('.fa-thumbs-up').removeClass('text-muted');
+
+            //AJAX to add the like
+
+            var icon = $(this).children('.fa-heart');
+            $(icon).prop("disabled", true);
+
+            //change state
+
+            //ajax to a script to update
+
+            if ($(icon).hasClass('gieqsGold')) {
+                var liked = 1; // already liked
+                /* $(icon).addClass('text-muted');
+                $(icon).removeClass('gieqsGold'); */
+
+            } else {
+                var liked = 0; // not liked yet
+                /* $(icon).removeClass('text-muted');
+                $(icon).addClass('gieqsGold'); */
+            }
+
+            $(icon).prop("disabled", false);
+
+            if (liked == 0) {
+
+                var type = 1;
+
+            } else if (liked == 1) {
+
+                var type = 2;
+
+            }
+
+            var dataToSend = {
+
+                videoid: videoid,
+                type: type,
+
+
+            }
+
+            //const jsonString2 = JSON.stringify(dataToSend);
+
+            const jsonString = JSON.stringify(dataToSend);
+            //console.log(jsonString);
+            //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
+
+            var request2 = $.ajax({
+                beforeSend: function() {
+
+
+                },
+                url: siteRoot + "scripts/useractions/updateUserFavourite.php",
+                type: "POST",
+                contentType: "application/json",
+                data: jsonString,
+            });
+
+
+
+            request2.done(function(data) {
+                // alert( "success" );
+                if (data == 1) {
+                    //show green tick
+
+                    if (liked == 1) {
+
+                        $(icon).addClass('text-muted');
+                        $(icon).removeClass('gieqsGold');
+                        $(icon).removeClass('animated');
+                        $(icon).removeClass('heartBeat');
+
+                    } else if (liked == 0) {
+
+                        $(icon).removeClass('text-muted');
+                        $(icon).addClass('gieqsGold');
+                        $(icon).addClass('animated');
+                        $(icon).addClass('heartBeat');
+
+
+                    }
+
+                    //TODO update views and likes number here
+
+                    //$('#notification-services').delay('1000').addClass('is-valid');
+
+
+
+
+                }
+                //$(document).find('.Thursday').hide();
+                $(icon).prop("disabled", false);
+            })
+
+
+            //$(this).('.fa-thumbs-up').first().addClass("gieqsGold");
+            //remove the check from the tag removed
+
+
+        })
+
+        $(document).on('click', '#submitComment', function() {
+
+            event.preventDefault();
+
+            $('#commentForm').submit();
+
+        })
+
+        $("#commentForm").validate({
+
+            invalidHandler: function(event, validator) {
+                var errors = validator.numberOfInvalids();
+                console.log("there were " + errors + " errors");
+                if (errors) {
+                    var message = errors == 1 ?
+                        "1 field contains errors. It has been highlighted" :
+                        +errors + " fields contain errors. They have been highlighted";
+
+
+                    $('#error').text(message);
+                    //$('div.error span').addClass('form-text text-danger');
+                    //$('#errorWrapper').show();
+
+                    $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function() {
+                        $("#errorWrapper").slideUp(500);
+                    });
+                } else {
+                    $('#errorWrapper').hide();
+                }
+            },
+            ignore: [],
+            rules: {
+
+                //EDIT
+
+
+
+
+
+
+
+                comment: {
+                    required: true,
+                    maxlength: 600,
+                    minlength: 25,
+
+                },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            },
+            submitHandler: function(form) {
+
+                //submitPreRegisterForm();
+
+                submitCommentForm();
+
+                //TODO submit changes
+                //TODO reimport the array at the top
+                //TODO redraw the table
+
+
+
+            }
+
+
+
+
+        });
+
+
+    })
     </script>
 </body>
 

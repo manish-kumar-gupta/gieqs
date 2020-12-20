@@ -1869,6 +1869,73 @@ $(document).ready(function () {
 
 
 	}));
+
+	$('body').on("click", ".chapterSkip", (function (event) {
+
+		//event.preventDefault();
+
+		////console.log('changed');
+
+		var option = $(this).attr('data-id');
+
+		undoFilterByTag();
+
+		//if (option != '(not in a chapter)') {
+
+			console.log('changed chapter selected value to ' + $(this).attr('data-id'));
+			
+			chapterSelected = $(this).attr('data-id');
+
+			var targetChapterKey = getKeyForChapterid(option);
+
+			var nextChapterStartTime = videoChapterData[targetChapterKey].timeFrom;
+
+			jumpToTime(nextChapterStartTime);
+
+			$("#videoChapter").vimeo("play");
+
+		//}
+
+		
+
+		/*
+		//get the video start time for this option
+
+		var imagesObject = JSONStraightDataQuery(option, 'getTime', 9);
+
+		imagesObject.done(function (data) {
+
+			////console.log(data);
+
+			if (data) {
+
+				if (data) {
+
+					jumpToTime(data);
+
+				} else {
+
+					alert("Error, try again");
+
+					//enableFormInputs("images");
+
+				}
+
+
+
+			}
+
+
+		});
+
+
+
+		//////console.log(tagRow);
+
+		*/
+
+
+	}));
     
     
 
