@@ -163,6 +163,42 @@ cursor: pointer;
             height: auto;
 
         }
+
+        @keyframes fade-in-up {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fade-in-up {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .video.stuck {
+            z-index: 25;
+            position: fixed;
+            bottom: -320px;
+            right: 20px;
+            -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+            width: 300px !important;
+
+            -webkit-animation: fade-in-up .25s ease forwards;
+            animation: fade-in-up .25s ease forwards;
+        }
     }
 
     @media (min-width: 1200px) {
@@ -236,7 +272,7 @@ cursor: pointer;
         .video.stuck {
             z-index: 25;
             position: fixed;
-            bottom: 20px;
+            bottom: -300px;
             right: 20px;
             -webkit-transform: translateY(100%);
             transform: translateY(100%);
@@ -548,6 +584,8 @@ cursor: pointer;
 
         <?php require BASE_URI . '/pages/learning/includes/nav.php';?>
 
+       
+
 
 
 
@@ -756,66 +794,15 @@ cursor: pointer;
 
 
     <!-- Omnisearch -->
-    <div id="omnisearch" class="omnisearch">
-        <div class="container">
-            <!-- Search form -->
-            <form class="omnisearch-form">
-                <div class="form-group">
-                    <div class="input-group input-group-merge input-group-flush">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-search"></i></span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Type and hit enter ...">
-                    </div>
-                </div>
-            </form>
-            <div class="omnisearch-suggestions">
-                <h6 class="heading">Search Suggestions</h6>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <ul class="list-unstyled mb-0">
-                            <li>
-                                <a class="list-link" href="#">
-                                    <i class="fas fa-search"></i>
-                                    <span>macbook pro</span> in Laptops
-                                </a>
-                            </li>
-                            <li>
-                                <a class="list-link" href="#">
-                                    <i class="fas fa-search"></i>
-                                    <span>iphone 8</span> in Smartphones
-                                </a>
-                            </li>
-                            <li>
-                                <a class="list-link" href="#">
-                                    <i class="fas fa-search"></i>
-                                    <span>macbook pro</span> in Laptops
-                                </a>
-                            </li>
-                            <li>
-                                <a class="list-link" href="#">
-                                    <i class="fas fa-search"></i>
-                                    <span>beats pro solo 3</span> in Headphones
-                                </a>
-                            </li>
-                            <li>
-                                <a class="list-link" href="#">
-                                    <i class="fas fa-search"></i>
-                                    <span>smasung galaxy 10</span> in Phones
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="main-content bg-gradient-dark">
+    
+
+    <div class="main-content bg-gradient-dark pt-8">
+    <?php require BASE_URI . '/pages/learning/assets/tagNav.php';?>
 
 
 
         <div class="d-flex align-items-end">
-            <div class="container mt-10 mt-lg-10 pt-4 pt-lg-4">
+            <div class="container pt-4 pt-lg-4">
                 <nav aria-label="breadcrumb" class="mb-3">
                     <ol class="breadcrumb breadcrumb-links p-0 m-0">
                         <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/index.php'?>">GIEQs
@@ -1290,9 +1277,9 @@ chapterData
             <div class="cd-timeline-img cd-picture">
             </div>
 
-            <div class="cd-timeline-content">
+            <div class="cd-timeline-content chapterBox" data-chapter-id="<?php echo $value['chapterid'];?>">
                 <h2 class="chapterSkip" data-id="<?php echo $value['chapterid'];?>"><?php echo $value['chaptername']; ?></h2>
-                <span class="cd-date chapterSkip" data-id="<?php echo $value['chapterid'];?>">Chapter <?php echo $value['number']; ?></span>
+                <span class="cd-date chapterSkip" data-id="<?php echo $value['chapterid'];?>">Chapter <?php echo $value['number'] . ' ' . gmdate("i:s", intval($value['timeFrom'])); ?></span>
                 <div class="timeline-content-info">
                     <span class="timeline-content-info-title chapterSkip" data-id="<?php echo $value['chapterid'];?>">
                         <i class="fa fa-certificate" aria-hidden="true"></i>
