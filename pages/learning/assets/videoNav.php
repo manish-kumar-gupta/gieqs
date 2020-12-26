@@ -14,7 +14,7 @@ $url =  "{$_SERVER['REQUEST_URI']}";
 ?>
 
 
-<nav class="mt-2 navbar navbar-expand-lg navbar-dark bg-dark-dark sticky-top"  style="z-index: 1 !important;">
+<nav class="mt-2 navbar navbar-expand-lg navbar-dark bg-dark-dark sticky-top" style="z-index: 1 !important;">
     <div class="container">
         <a class="navbar-brand" id="start_tour"><?php echo 'Video Navigation';?>
         </a>
@@ -27,52 +27,98 @@ $url =  "{$_SERVER['REQUEST_URI']}";
 
 
 
-            
-                                          
+                <li class="nav-item dropdown-animate dropdown-submenu bg-dark-dark" data-toggle="hover">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Navigation
+                    </a>
+                    <div class="dropdown-menu bg-dark-dark" aria-labelledby="navbarDropdown">
+                        <a id="chapterNavTour" class="dropdown-item" data-toggle="collapse" href="#selectDropdown">
 
-               <li class="nav-item">
-                   <a id="chapterNavTour"class="nav-link nav-link-icon" data-toggle="collapse" href="#selectDropdown">
+                            Toggle <span class="gieqsGold">Chapter</span> View
+                        </a>
+                        <a id="jumpTimeLine" class="dropdown-item cursor-pointer">Timeline
+                        </a>
 
-                       <span class="nav-link-inner--text ">Show Chapters</span>
-                   </a>
-               </li>
+                        <div class="dropdown-divider"></div>
+                        <a id="tourTagNav" class="dropdown-item cursor-pointer" data-toggle="collapse"
+                            href="#collapseExample">
 
-               <li class="nav-item">
-                   <a id="tourTagNav" class="nav-link nav-link-icon" data-toggle="collapse" href="#collapseExample">
+                            Toggle <span class="gieqsGold">Tag</span> Window View
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a id="jumpComments" class="dropdown-item cursor-pointer">
 
-                       <span class="nav-link-inner--text ">Show Tags</span>
-                   </a>
-               </li>
 
-               <li class="nav-item">
-                   <a class="nav-link nav-link-icon" href="#cd-timeline">
+                            <span class="nav-link-inner--text ">Comments</span>
+                        </a>
+                        <a id="jumpReferences" class="dropdown-item cursor-pointer" data-toggle="collapse"
+                            href="#collapseExample2">
 
-                       <span class="nav-link-inner--text ">Timeline</span>
-                   </a>
-               </li>
+                            <span class="nav-link-inner--text">References</span>
+                        </a>
+                    </div>
+                </li>
 
-               <li class="nav-item">
-                   <a class="nav-link nav-link-icon" data-toggle="collapse" href="#collapseExample3">
-                   
+                <li class="nav-item dropdown-animate dropdown-submenu bg-dark-dark" data-toggle="hover">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Show Me Around!
+                    </a>
+                    <div class="dropdown-menu bg-dark-dark" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item cursor-pointer showMeAround">
 
-                       <span class="nav-link-inner--text ">Comments</span>
-                   </a>
-               </li>
+                            Overview Tour
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="showMeAroundLong dropdown-item cursor-pointer">Detailed Feature Tour
+                        </a>
 
-               <li class="nav-item">
-                   <a class="nav-link nav-link-icon" data-toggle="collapse" href="#collapseExample2">
 
-                       <span class="nav-link-inner--text" >References</span>
-                   </a>
-               </li>
 
-               <li class="nav-item">
-                   <a class="nav-link nav-link-icon showMeAround">
+                    </div>
+                </li>
 
-                       <span class="nav-link-inner--text gieqsGold " >Show Me Around!</span>
-                   </a>
-               </li>
-               <!-- <li class="nav-item">
+
+                <!-- <li class="nav-item">
+                    <a id="chapterNavTour" class="nav-link nav-link-icon" data-toggle="collapse" href="#selectDropdown">
+
+                        <span class="nav-link-inner--text ">Show Chapters</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a id="tourTagNav" class="nav-link nav-link-icon" data-toggle="collapse" href="#collapseExample">
+
+                        <span class="nav-link-inner--text ">Show Tags</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a id="jumpTimeLine" class="nav-link nav-link-icon cursor-pointer">
+
+                        <span class="nav-link-inner--text ">Timeline</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a id="jumpComments" class="nav-link nav-link-icon cursor-pointer">
+
+
+                        <span class="nav-link-inner--text ">Comments</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a id="jumpReferences" class="nav-link nav-link-icon" data-toggle="collapse"
+                        href="#collapseExample2">
+
+                        <span class="nav-link-inner--text">References</span>
+                    </a>
+                </li> -->
+
+
+                <!-- <li class="nav-item">
                    
                    <a class="nav-link nav-link-icon"
                        >
