@@ -365,7 +365,7 @@ top: 0;
         width: 90%;
         max-width: 1080px;
         margin: 0 auto;
-        background: #12263f;
+        
         padding: 0 10%;
         border-radius: 2px;
         box-sizing: border-box;
@@ -858,7 +858,7 @@ top: 0;
 
     <!-- Omnisearch -->
     
-    <div class="main-content bg-gradient-dark pt-8">
+    <div class="main-content  pt-8">
     
     <?php require BASE_URI . '/pages/learning/assets/videoNav.php';?>
 
@@ -1152,8 +1152,8 @@ top: 0;
             </div>
         </div>
 
-        <div class="d-flex align-items-end bg-gradient-dark">
-            <div class="container mt-4 bg-gradient-dark pt-0 pt-lg-0">
+        <div class="d-flex align-items-end ">
+            <div class="container mt-4  pt-0 pt-lg-0">
                 <div class="row">
                     <div class="col-lg-9 mb-0 mb-lg-0">
                         <p class="text-left d-flex align-items-left">
@@ -1333,7 +1333,7 @@ top: 0;
 
 chapterData
                         -->
-    <section id="cd-timeline" class="cd-container bg-gradient-dark">
+    <div id="cd-timeline" class="cd-container ">
         <h1>Video Timeline</h1>
 
 <?php foreach ($chapterData as $key=>$value){?>
@@ -1369,8 +1369,8 @@ chapterData
 
 <?php } ?>
 
-        
-    </section> <!-- cd-timeline -->
+                </div>
+    <!-- </section> --> <!-- cd-timeline -->
 
     </div> <!-- end main-content div-->
 
