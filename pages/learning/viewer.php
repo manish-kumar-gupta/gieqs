@@ -16,7 +16,9 @@
       $openaccess = 0;
 
       $requiredUserLevel = 6;
+      ?>
 
+<?php
       require BASE_URI . '/pages/learning/includes/head.php';
 
       $general = new general;
@@ -40,9 +42,13 @@
 
     <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
+    <link href="<?php echo BASE_URL;?>/node_modules/bootstrap-tour/build/css/bootstrap-tour-standalone-gieqs.css" rel="stylesheet">
+
+
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.css">
     <script src="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.js"></script>
     <script src="<?php echo BASE_URL; ?>/assets/libs/autosize/dist/autosize.min.js"></script>
+    <script src="<?php echo BASE_URL; ?>/node_modules/bootstrap-tour/build/js/bootstrap-tour-standalone.min.js"></script>
 
 
 
@@ -65,7 +71,13 @@
         display: none;
     }
 
-    .tagButton {
+    .tagButton  {
+
+        cursor: pointer;
+
+    }
+    
+    .showMeAround  {
 
         cursor: pointer;
 
@@ -300,6 +312,54 @@ cursor: pointer;
     font-family: 'Open Sans', sans-serif;
     box-sizing: border-box;
 } */
+
+/* sticky fix*/
+@supports ((position: -webkit-sticky) or (position: sticky)){
+
+.sticky-top {
+position: -webkit-sticky !important;
+position: sticky !important;
+z-index: 1020;
+top: 0;
+}
+}
+
+/* For Tour*/
+
+.popover-title {
+
+    background-color: rgb(238,194,120);
+    color: #162e4d;
+    font-size: 1rem;
+}
+
+.popover {
+
+    background-color: #193659;
+
+}
+
+.popover.right > .arrow::after {
+
+    border-right-color: rgb(238, 194, 120);;
+}
+
+.btn {
+
+    padding: 2px 6px;
+
+
+}
+
+.tour-backdrop {
+
+    opacity: .3;
+    filter: alpha(opacity=30);
+
+
+}
+
+
 
     .cd-container {
         width: 90%;
@@ -573,7 +633,7 @@ cursor: pointer;
 
 </head>
 
-<body>
+<body class="bg-gradient-dark">
     <header class="header header-transparent" id="header-main">
 
         <!-- Topbar -->
@@ -583,6 +643,9 @@ cursor: pointer;
         <!-- Main navbar -->
 
         <?php require BASE_URI . '/pages/learning/includes/nav.php';?>
+
+
+
 
        
 
@@ -795,9 +858,11 @@ cursor: pointer;
 
     <!-- Omnisearch -->
     
-
     <div class="main-content bg-gradient-dark pt-8">
-    <?php require BASE_URI . '/pages/learning/assets/tagNav.php';?>
+    
+    <?php require BASE_URI . '/pages/learning/assets/videoNav.php';?>
+
+   
 
 
 
@@ -813,7 +878,7 @@ cursor: pointer;
                         <li class="breadcrumb-item active" aria-current="page">Video Viewer</li>
                     </ol>
                 </nav>
-                <div class="row" style="margin-right:15px; margin-left:15px;">
+                <div class="row" id="videoTitleTour" style="margin-right:15px; margin-left:15px;">
                     <span
                         class="h3 mb-0 text-white d-block w-lg-75 w-xl-75"><?php echo $general->getVideoTitle($id)?></span>
                 </div>
@@ -825,17 +890,17 @@ cursor: pointer;
                     <div class="col-lg-7 mb-0 mb-lg-0 pl-lg-5">
 
                         <div class="row">
-                            <div class="col text-left mt-0 align-items-center">
+                            <div id="actionsTour" class="col text-left mt-0 align-items-center">
                                 <div class="actions">
                                     <a class="action-item action-favorite p-0 m-0 pr-4 likes" data="<?php echo $id;?>">
                                         <i class="fas fa-heart mr-1 pr-1 <?php if ($usersFavouriteVideo->matchRecord2way($userid, $id) === true){echo 'gieqsGold';}else{echo 'text-muted';}?>"
-                                            data-toggle="tooltip" data-placement="bottom" title="favourite"></i> <span
-                                            id="likesNumber"><?php echo $usersSocial->countFavourites($id);?></span></a>
+                                            data-toggle="tooltip" data-placement="bottom" title="click to favourite"></i> <span
+                                            id="favouritesNumber"><?php echo $usersSocial->countFavourites($id);?></span></a>
 
                                     <a class="action-item action-like p-0 m-0 pr-4 views" data="<?php echo $id;?>">
                                         <i class="fas fa-thumbs-up mr-1 <?php if ($usersLikeVideo->matchRecord2way($userid, $id) === true){echo 'gieqsGold';}else{echo 'text-muted';}?>"
-                                            data-toggle="tooltip" data-placement="bottom" title="like"></i> <span
-                                            id="viewsNumber"><?php echo $usersSocial->countLikes($id);?></span></a>
+                                            data-toggle="tooltip" data-placement="bottom" title="click to like"></i> <span
+                                            id="likesNumber"><?php echo $usersSocial->countLikes($id);?></span></a>
 
                                     <a class="action-item p-0 m-0 pr-4 views"><i class="fas fa-eye mr-1"
                                             data-toggle="tooltip" data-placement="bottom" title="views"></i> <span
@@ -861,7 +926,7 @@ cursor: pointer;
 
 
                             <?php if ($currentUserLevel < 6){ // message to upgrade if basic?>
-                            <a class="dropdown-item" data-toggle="collapse" href="#collapseExample"
+                            <a class="dropdown-item" id="tagDropdownButton" data-toggle="collapse" href="#collapseExample"
                                 aria-expanded="false" aria-controls="collapseExample">
                                 <i class="fas fa-chevron-circle-up"></i> show tags
                             </a>
@@ -875,7 +940,7 @@ cursor: pointer;
 
 
                             <?php }?>
-                            <a class="dropdown-item" data-toggle="collapse" href="#selectDropdown" aria-expanded="false"
+                            <a class="dropdown-item" id="chapterDropdownButton" data-toggle="collapse" href="#selectDropdown" aria-expanded="false"
                                 aria-controls="selectDropdown">
                                 <i class="fas fa-chevron-circle-up"></i> show chapters
                             </a>
@@ -886,8 +951,8 @@ cursor: pointer;
                             <div class="card mb-0 tagCard">
                                 <div class="card-header tagCardHeader mb-0">
                                     <i style="float:right;" class="fas fa-times tagsClose cursor-pointer"></i>
-                                    <span class="h6">Tags <br /></span><span class="text-sm">(click to
-                                        filter)</span><span class="text-sm text-right"> <a style="float:right;"
+                                    <span id="tagsTitleTour" class="h6">Tags <br /></span><span id="tagsFilterTour" class="text-sm">(click to
+                                        filter)</span><span class="text-sm text-right"> <a style="float:right;" id="tagsCloseTour"
                                             class="cursor-pointer" onclick="undoFilterByTag();"><i
                                                 class="fas fa-undo"></i> Undo Filter</a></span>
                                 </div>
@@ -1088,7 +1153,7 @@ cursor: pointer;
         </div>
 
         <div class="d-flex align-items-end bg-gradient-dark">
-            <div class="container mt-4 pt-0 pt-lg-0">
+            <div class="container mt-4 bg-gradient-dark pt-0 pt-lg-0">
                 <div class="row">
                     <div class="col-lg-9 mb-0 mb-lg-0">
                         <p class="text-left d-flex align-items-left">
@@ -1098,12 +1163,12 @@ cursor: pointer;
                         </a> -->
                             <?php if ($currentUserLevel< 5){ // message to upgrade if standard?>
 
-                            <a class="dropdown-item" data-toggle="collapse" href="#collapseExample2"
+                            <a class="dropdown-item" id="referencesTour" data-toggle="collapse" href="#collapseExample2"
                                 aria-expanded="false" aria-controls="collapseExample3">
                                 <i class="fas fa-chevron-circle-up"></i> show references
                             </a>
                             <?php }else{?>
-                            <a class="dropdown-item" onclick="alert('Upgrade to view references for tags');"
+                            <a class="dropdown-item" id="referencesTour" onclick="alert('Upgrade to view references for tags');"
                                 aria-expanded="false" aria-controls="collapseExample3">
                                 <i class="fas fa-chevron-circle-up"></i> show references
                             </a>
@@ -1111,13 +1176,13 @@ cursor: pointer;
 
 
                             <?php if ($currentUserLevel <6){ ?>
-                            <a class="dropdown-item" data-toggle="collapse" href="#collapseExample3"
+                            <a class="dropdown-item" id="commentsTour" data-toggle="collapse" href="#collapseExample3"
                                 aria-expanded="false" aria-controls="collapseExample3">
                                 <i class="fas fa-chevron-circle-up"></i> show comments
                             </a>
                             <?php }else{// message to upgrade if basic?>
 
-                            <a class="dropdown-item" onclick="alert('Upgrade to comment on cases');"
+                            <a class="dropdown-item" id="commentsTour" onclick="alert('Upgrade to comment on cases');"
                                 aria-expanded="false" aria-controls="collapseExample3">
                                 <i class="fas fa-chevron-circle-up"></i> show comments
                             </a>
@@ -1258,8 +1323,8 @@ cursor: pointer;
 
 
 
-    </div>
-    </div>
+    
+    
 
     <!--
 
@@ -1268,7 +1333,7 @@ cursor: pointer;
 
 chapterData
                         -->
-    <section id="cd-timeline" class="cd-container">
+    <section id="cd-timeline" class="cd-container bg-gradient-dark">
         <h1>Video Timeline</h1>
 
 <?php foreach ($chapterData as $key=>$value){?>
@@ -1306,6 +1371,12 @@ chapterData
 
         
     </section> <!-- cd-timeline -->
+
+    </div> <!-- end main-content div-->
+
+    </div>
+
+    <div id="bootstrapTour"></div>
     <!-- Modal -->
     <div class="modal fade" id="registerInterest" tabindex="-1" role="dialog" aria-labelledby="registerInterestLabel"
         aria-hidden="true">
@@ -1502,6 +1573,324 @@ chapterData
 
     }
 
+    // Instance the tour
+    var tour = new Tour({
+        name: "tour",
+        steps: [
+
+            {
+                element: "#start_tour",
+                title: "Welcome!",
+                content: "<p>If you haven't already taken the tour we <b>highly recommend it</b> before viewing.</p><p>This video player is specifically designed for Endoscopy Education.</p><p>Click next to quickly understand its novel features.</p>",
+            },
+
+            {
+                element: ".action-favorite",
+                title: "Favourite for Quick Access",
+                content: "<p>Click the &nbsp;<i class=\"fas fa-heart\"></i>&nbsp; to <b>favourite</b> this video.  It is then available in the account &nbsp;<i class=\"fas fa-user-circle\"></i> menu at the top right of the screen for quick access. </p><p>The number of people that favourited this video is displayed to the right. </p>",
+            },
+            {
+                element: ".action-like",
+                title: "Likes",
+                content: "<p>Click the thumbs up to <b>let us know you</b> liked this video.  </p><p>The number of people that liked this video is displayed to the right. </p>",
+            },
+            {
+                element: "#viewsNumber",
+                title: "Views",
+                content: "<p>The number of unique views this video has had on GIEQS.com. </p>",
+            },
+            {
+                element: "#chapterDropdownButton",
+                title: "Chapters",
+                content: "<p>All videos on GIEQs Online are divided into Chapters for ease of moving between ideas.</p><p>Click here to show Chapters.</p>",
+            },
+            {
+                onShow: function (tour) {
+
+                    $('#selectDropdown').collapse('show');
+                    $('#selectDropdown').find('select').attr('size', 6);
+
+
+                },
+
+                element: "#selectDropdown",
+                placement: "auto left",
+                title: "Chapter Selection",
+                content: "<p>This dropdown shows all the chapters in the video.</p>  <p>Video chapters indicate steps in a procedure or ideas in a lecture.</p>",
+
+                onHidden: function (tour) {
+                    $('#selectDropdown').collapse('hide');
+                    $('#selectDropdown').find('select').attr('size', 1);
+
+
+
+                }
+
+            },
+            {
+                element: "#chapterNavTour",
+                title: "Chapters",
+                content: "<p>You can also activate the chapter menu by clicking here.</p>",
+            },
+
+            {
+                element: "#chapterSelectorDiv",
+                placement: "auto left",
+                title: "Chapter Navigation",
+                content: "<p>This area allows navigation <b>WITHIN the current chapter</b></p><p>It is not active until the video starts playing</p>",
+            },
+
+            {
+                element: "#chapterHeadingControl",
+                placement: "auto left",
+                title: "Chapter Name",
+                content: "<p>The name of the current chapter is displayed here</p>",
+            },
+
+            {
+                element: "#myProgress",
+                placement: "auto left",
+                title: "Chapter Progress Bar",
+                content: "<p>The bar displays progress through the current chapter</p>",
+            },
+            {
+                element: "#video-back",
+                placement: "auto left",
+                title: "Restart the Chapter",
+                content: "<p>Click to go back to the start of the current chapter</p>",
+            },
+
+            {
+                element: "#video-forward",
+                placement: "auto left",
+                title: "Skip to the next Chapter",
+                content: "<p>Click to skip to the next chapter</p><p>If you have selected a tag this will skip between all the chapters with that tag</p>",
+            },
+
+            {
+                element: "#video-stop",
+                placement: "auto left",
+                title: "Stop and restart",
+                content: "<p>Click to stop the video and return to the start</p><p>If you have selected a tag this will cancel that selection</p>",
+            },
+
+            {
+                element: "#video-start-pause",
+                placement: "auto left",
+                title: "Play / Pause",
+                content: "<p>Click here to start / pause the video at any time.</p><p>This button is also active before the video has started playing.</p>",
+            },
+
+            {
+                element: "#currentChapter",
+                placement: "auto left",
+                title: "Position in Video",
+                content: "<p>This tells you which chapter / total chapters is currently playing.</p>",
+            },
+
+            {
+                element: "#tagDropdownButton",
+                placement: "auto left",
+                title: "Tags",
+                content: "<p>Content on GIEQs.com is tagged.</p><p class=\"gieqsGold\">  A tag is an idea in endoscopy.</p>  You can use tags to quickly jump between similar ideas and find information you are looking for.</p>",
+            },
+
+            {
+                element: "#tagDropdownButton",
+                placement: "auto left",
+                title: "Tags",
+                content: "<p>click here to open the tag window for this video</p>",
+              
+                
+
+            },
+
+            {
+                
+                element: ".tagCardHeader",
+                placement: "auto right",
+                title: "Tag Window",
+                content: "<p>This is the tag window.  It contains a categorised list of all the ideas in the video.</p><p><span class=\"h6\">Tag Categories</span> are listed alphabetically.</p><p>A tag is grey if it is not currently being shown in the active video chapter or the video is not playing <br/>( e.g. <span class=\"badge bg-gray-800 mx-2 mb-1 tagButton\">Inactive Tag</span>) </p><p>A tag is gold if it is contained within the current active chapter <br/>( e.g. <span class=\"badge bg-gieqsGold text-dark mx-2 mb-1 tagButton\">Active Tag</span> )</p>",
+                onShow: function (tour) {
+
+$('#collapseExample').collapse('show');
+//$('#collapseExample').find('select').attr('size',6);
+
+
+},
+                
+            },
+
+            {
+                element: "#tourTagNav",
+                placement: "auto left",
+                title: "Tag Window",
+                content: "<p>you can also click here to access the tags window</p>",
+              
+                
+
+            },
+            {
+               
+                element: "#tagsDisplay .tagButton:first",
+                placement: "auto right",
+                title: "Filtering by Tag",
+                content: "<p>Clicking on an inactive tag allows you to see all examples of that tag / idea within the video.</p><p>The video will play only chapters containing that tag and will skip between them.</p><p>Skip controls will skip between these chapters only</p>",
+                onShow: function (tour) {
+
+$('#collapseExample').collapse('show');
+//$('#collapseExample').find('select').attr('size',6);
+
+
+},
+                onHidden: function (tour) {
+                    $('#collapseExample').collapse('hide');
+                    //$('#selectDropdown').find('select').attr('size',1);
+
+
+
+                }
+            },
+            {
+               
+               element: ".tagFilterDisplayArea",
+               placement: "left",
+               title: "Filtering by Tag",
+               content: "<p>The filtered tag will display here in gold.</p>",
+               onShow: function (tour) {
+
+
+//$('#collapseExample').find('select').attr('size',6);
+$('.tagFilterDisplayArea').addClass('bg-gieqsGold').addClass('text-dark').addClass('text-sm');
+                $('body').find('.tagFilterDisplayArea').html('Filtered by highlighted tag');
+
+
+
+},
+               onHidden: function (tour) {
+                $('.tagFilterDisplayArea').removeClass('bg-gieqsGold').removeClass('text-dark').removeClass('text-sm');
+                $('body').find('.tagFilterDisplayArea').html('');
+                   //$('#selectDropdown').find('select').attr('size',1);
+
+
+
+               }
+           },
+           {
+               
+               element: "#referencesTour",
+               placement: "right",
+               title: "Academic References",
+               content: "<p>Clicking here opens the reference panel for this video</p><p>The <span class=\"badge bg-gray-800 mx-2 mb-1 tagButton\">button</span> after the reference shows the linked tag category / tag</p><p>You can click on any reference to open the abstract in PubMed and access fulltext directly depending on your institution.</p>",
+               onShow: function (tour) {
+
+                $('body').animate({ scrollTop: $('#referencesTour').offset().top }, 500);
+
+$('#collapseExample2').collapse('show');
+//$('#collapseExample').find('select').attr('size',6);
+
+
+},
+               
+           },
+
+           {
+               
+               element: "#commentsTour",
+               placement: "right",
+               title: "Comments",
+               content: "<p>Clicking here opens the comments panel for this video</p><p>Please keep comments constructive.  You can only comment 5 times per video.</p><p>Comments which violate common-sense norms of politeness or decency will be removed and we reserve the right to cancel your account without recourse to appeal if you violate these.</p>",
+               onShow: function (tour) {
+
+$('#collapseExample3').collapse('show');
+/* $([document.documentElement, document.body]).animate({
+        scrollTop: $("#collapseExample3").offset().top
+    }, 1000); */
+//$('#collapseExample').find('select').attr('size',6);
+
+
+},
+               
+           },
+
+           {
+               
+               element: "#cd-timeline",
+               placement: "right",
+               title: "Timeline",
+               content: "<p>Here you can view the chapters with tags and texts as one overview.  Clicking on a chapter will skip the video.  The video continues to play on the right lower aspect of the screen.</p>",
+               onShow: function (tour) {
+
+
+//$('#collapseExample').find('select').attr('size',6);
+
+
+},
+               
+           },
+
+           {
+               
+               
+               placement: "auto",
+               title: "Thanks for taking the Tour",
+               content: "<p>We hope this gave you a broad overview of how to use the GIEQs Online Player.</p><p>Questions? Don't hesitate to contact us!</p>",
+               onShow: function (tour) {
+
+                $([document.documentElement, document.body]).animate({
+        scrollTop: $("#selectDropdown").offset().top
+    }, 1000);
+//$('#collapseExample').find('select').attr('size',6);
+
+
+},
+               
+           },
+
+
+
+
+
+        ],
+
+        animation: false,
+        container: "#bootstrapTour",
+        smartPlacement: true,
+        keyboard: true,
+        storage: window.localStorage,
+        debug: true,
+        backdrop: true,
+        backdropContainer: 'body',
+        backdropPadding: 10,
+        redirect: true,
+        orphan: true,
+        duration: false,
+        delay: false,
+        template: "<div class='popover tour'><div class='arrow'></div><h3 class='popover-title'></h3><div class='popover-content'></div><div class='popover-navigation'><button class='btn btn-default' data-role='prev'>« Prev</button><button class='btn btn-default' data-role='next'>Next »</button><button class='btn btn-default' data-role='end'>End tour</button></div></div>",
+        afterGetState: function (key, value) {},
+        afterSetState: function (key, value) {},
+        afterRemoveState: function (key, value) {},
+        onStart: function (tour) {},
+        onEnd: function (tour) {
+
+            //tour.restart();
+
+        },
+        onShow: function (tour) {},
+        onShown: function (tour) {},
+        onHide: function (tour) {},
+        onHidden: function (tour) {},
+        onNext: function (tour) {},
+        onPrev: function (tour) {},
+        onPause: function (tour, duration) {},
+        onResume: function (tour, duration) {},
+        onRedirectError: function (tour) {}
+
+
+    });
+
+
+
     function submitCommentForm() {
 
 
@@ -1602,6 +1991,12 @@ chapterData
 
 
         getComments();
+
+        // Initialize the tour
+        tour.init();
+
+        // Start the tour
+        tour.start();
 
         /* $(document).click(function(event) { 
             $target = $(event.target);
@@ -1907,6 +2302,16 @@ chapterData
             event.preventDefault();
 
             $('#commentForm').submit();
+
+        })
+
+        $(document).on('click', '.showMeAround', function(){
+
+            // Initialize the tour
+            tour.init();
+
+            // Start the tour
+            tour.restart();
 
         })
 
