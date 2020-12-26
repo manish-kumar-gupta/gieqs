@@ -2703,6 +2703,18 @@ chapterData
 
         })
 
+        $(document).on('click', '#start_tour', function() {
+
+
+
+    $('html,body').animate({
+        scrollTop: $('#videoDisplay').offset().top - 250
+    }, 500);
+
+
+
+})
+
 
     })
     </script>

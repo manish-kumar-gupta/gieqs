@@ -16,16 +16,44 @@ $url =  "{$_SERVER['REQUEST_URI']}";
 
 <nav class="mt-2 navbar navbar-expand-lg navbar-dark bg-dark-dark sticky-top" style="z-index: 1 !important;">
     <div class="container">
-        <a class="navbar-brand" id="start_tour"><?php echo 'Video Navigation';?>
+        <a class="navbar-brand cursor-pointer" id="start_tour"><?php echo 'Video Navigation';?>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-warning"
             aria-controls="navbar-warning" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbar-warning">
-            <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+            <ul class="navbar-nav align-items-lg-left ml-lg-auto">
 
+            <li class="nav-item">
 
+                    <a  class="nav-link nav-link-icon gieqsGold" >
+
+                        <span class="nav-link-inner--text ">tagName -- current Filtered Tag</span>
+                    </a>
+                </li>
+</ul>
+                <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+
+            <li class="nav-item">
+                    <a  class="nav-link nav-link-icon" >
+
+                        <span class="nav-link-inner--text "><-- Previous Video</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a  class="nav-link nav-link-icon" >
+
+                        <span class="nav-link-inner--text ">x / y</span>
+                    </a>
+                </li>
+            <li class="nav-item">
+                    <a  class="nav-link nav-link-icon" >
+
+                        <span class="nav-link-inner--text ">Next Video --></span>
+                    </a>
+                </li>
 
                 <li class="nav-item dropdown-animate dropdown-submenu bg-dark-dark" data-toggle="hover">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
