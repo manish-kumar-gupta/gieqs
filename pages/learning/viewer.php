@@ -517,11 +517,12 @@
     }
 
     .cd-timeline-content .content-skills li {
-        background: #eec278;
+        background: #162e4d;
         border-radius: 2px;
+        border-color: #eec278;
         display: inline-block;
         padding: 2px 10px;
-        color: #162e4d;
+        color: #eec278;
         margin: 3px 2px;
         text-align: center;
         flex-grow: 1;
@@ -817,11 +818,11 @@
 
                                             if ($currentUserLevel > 4){
 
-                                                $tagBox .= '<span class="badge bg-gray-800 mx-2 mb-1" id="tag' . $value1['id'] . '">' . $value1['tagName'] . '</span>'; 
+                                                $tagBox .= '<span class="badge bg-gray-800 mx-2 mb-1" data-tag-id="' . $value1['id'] . '" id="tag' . $value1['id'] . '">' . $value1['tagName'] . '</span>'; 
 
                                             }else{
 
-                                           $tagBox .= '<span class="badge bg-gray-800 mx-2 mb-1 tagButton" id="tag' . $value1['id'] . '">' . $value1['tagName'] . '</span>'; 
+                                           $tagBox .= '<span class="badge bg-gray-800 mx-2 mb-1 tagButton" data-tag-id="' . $value1['id'] . '" id="tag' . $value1['id'] . '">' . $value1['tagName'] . '</span>'; 
                                             }
                                         }
 
@@ -864,6 +865,7 @@
     <div class="main-content  pt-8">
 
         <?php require BASE_URI . '/pages/learning/assets/videoNav.php';?>
+        <?php require BASE_URI . '/pages/learning/assets/tagNav.php';?>
 
 
 
@@ -1369,7 +1371,8 @@ chapterData
                     <ul class="content-skills">
 
                         <?php foreach ($tagsChapter as $key2=>$value2){?>
-                        <li class="tagButton" id="tag<?php echo $value2['tagid'];?>"><?php echo $value2['tagName'];?>
+                        <li class="tagButton" data-tag-id="<?php echo $value2['tagid'];?>"
+                            id="tag<?php echo $value2['tagid'];?>"><?php echo $value2['tagName'];?>
                         </li>
 
                         <?php } ?>
@@ -2211,6 +2214,157 @@ chapterData
 
     }
 
+    //new code for tagbar
+
+    function showTagBar(selectedTag) {
+
+
+        $('#tagBar').removeClass('d-none');
+        window.localStorage.setItem('selectedTag', selectedTag);
+
+        //get tags to parse data
+
+        try {
+
+            var JSONtoParse = $('#tagsData').text();
+            var tagsData = $.parseJSON(JSONtoParse);
+
+        } catch (error) {
+
+            //console.log ('caught');
+
+        }
+
+        console.dir(tagsData);
+
+        var tagNameBar;
+
+        $(tagsData).each(function(k, v) {
+
+            //console.log(k);
+            //console.log(v);
+            if (v.id == selectedTag) {
+
+                tagNameBar = v.tagName;
+
+            }
+
+        })
+
+        console.log(tagNameBar);
+
+        $('#tagNameBar').text(tagNameBar);
+
+        //use ajax to send
+
+        if ($('#browsing_id').attr('data-browsing-id') != ''){
+
+            var browsing_id = $('#browsing_id').attr('data-browsing-id');
+
+        }else{
+
+            var browsing_id = '';
+
+
+        }
+
+        if ($('#browsing').attr('data-browsing') != ''){
+
+        var browsing = $('#browsing').attr('data-browsing');
+
+        }else{
+
+        var browsing = '';
+
+
+        }
+    
+
+        var dataToSend = {
+
+            videoid: videoPassed,
+            browsing_id: browsing_id,
+            browsing: browsing,
+
+
+        }
+
+        const jsonString = JSON.stringify(dataToSend);
+        //console.log(jsonString);
+        //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
+
+        var request2 = $.ajax({
+            beforeSend: function() {
+
+
+            },
+            url: siteRoot + "scripts/tagnavigation/get_tag_navigation_info.php",
+            type: "POST",
+            contentType: "application/json",
+            data: jsonString,
+        });
+
+
+
+        request2.done(function(data) {
+            // alert( "success" );
+            if (data == 1) {
+                //show green tick
+
+               
+
+                //$('#notification-services').delay('1000').addClass('is-valid');
+
+
+
+
+            }
+            //$(document).find('.Thursday').hide();
+           
+        })
+
+        //  context (as video bar)
+        //  id of context  
+        //  video id current
+
+        //get back
+        //  array of videos within that tag context 
+        // number
+        // total number
+
+
+
+
+
+
+
+
+
+    }
+
+    function hideTagBar() {
+
+        $('#tagBar').addClass('d-none');
+        window.localStorage.setItem('selectedTag', null);
+
+
+
+    }
+
+    $(document).ready(function() {
+
+        $(document).on('click', '.exitTagNav', function() {
+
+            hideTagBar();
+            undoFilterByTag();
+
+
+        })
+
+    })
+
+
+
     $(document).ready(function() {
 
 
@@ -2707,13 +2861,13 @@ chapterData
 
 
 
-    $('html,body').animate({
-        scrollTop: $('#videoDisplay').offset().top - 250
-    }, 500);
+            $('html,body').animate({
+                scrollTop: $('#videoDisplay').offset().top - 250
+            }, 500);
 
 
 
-})
+        })
 
 
     })

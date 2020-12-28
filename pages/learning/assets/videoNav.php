@@ -8,50 +8,288 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                     $highlightPlenary = preg_match (  '/plenary/' ,  $url);
                     $highlightNursing = preg_match (  '/nursing/' ,  $url);
                   
-         
+
+//define if any video cookies set
+
+require_once(BASE_URI . '/assets/scripts/classes/assets_paid.class.php');
+$assets_paid = new assets_paid;
+
+
+$debug = false;
+
+if(isset($_COOKIE['browsing'])) {
+
+    $browsing = $_COOKIE['browsing'];
+
+    if ($debug){
+
+        var_dump($browsing);
+    }
+
+}else{
+
+    $browsing = null;
+}
+
+
+if(isset($_COOKIE['browsing_id'])) {
+
+    $browsing_id = $_COOKIE['browsing_id'];
+
+    if ($debug){
+
+        var_dump($browsing_id);
+    }
+
+}else{
+
+    $browsing_id = null;
+}    
+
+if(isset($_COOKIE['browsing_array'])) {
+
+    $browsing_array = json_decode($_COOKIE['browsing_array'], true);
+
+    if ($debug){
+
+        var_dump($browsing_array);
+    }
+
+}else{
+
+    $browsing_array = null;
+} 
+
+//currently shows all live videos and non tagged videos (TODO)
+
+if (isset($browsing) && isset($browsing_id) && is_array($browsing_array)){
+
+
+    //is an asset
+
+    
+
+    if ($browsing == '2' || $browsing == '3' || $browsing == '4'){
+
+        //load asset
+        if ($assets_paid->Return_row($browsing_id)){
+
+            $assets_paid->Load_from_key($browsing_id);
+
+        }else{
+
+            if ($debug){
+                echo 'cannot load asset';
+            }
+        }
+
+
+
+    //if all set, get array of videos associated with these parameters to which the user has access
+
+    if ($debug){
+
+        echo 'All required parameter cookies set';
+
+    }
+
+    if(isset($id)) {
+
+        $currentVideo = $id;
+    
+        if ($debug){
+    
+            var_dump($id);
+        }
+
+        //id detected
+
+        $position = array_search($id, $browsing_array);
+
+
+        if ($position > -1){
+
+            //is id in the array browsingArray?
+
+            if ($debug){
+    
+                echo 'id detected in the browsing array at position ' . $position;
+            }
+
+            
+            //get previous video and next video
+
+            $nextVideo = $browsing_array[(intval($position) + 1)];
+
+            if (!isset($nextVideo)){
+
+                $lastVideo = true;
+            }else{
+
+                $lastVideo = false;
+            }
+            
+
+            $previousVideo = $browsing_array[(intval($position) - 1)];
+
+            if (!isset($previousVideo)){
+
+                $firstVideo = true;
+            }else{
+
+                $firstVideo = false;
+            }
+
+            if ($debug){
+    
+                echo "NEXT video is $nextVideo and PREVIOUS video is $previousVideo";
+                
+                if ($firstVideo == true){
+                
+                    echo "this is the FIRST video ";
+                    
+                    }
+                
+                if ($lastVideo == true){
+                
+                echo "this is the LAST video ";
+
+                }
+
+
+            }
+
+            $numberOfVideos = count($browsing_array);
+          
+            if ($debug){
+    
+                echo "This video is number $position of $numberOfVideos";
+            }
+
+        }else{
+
+
+            if ($debug){
+    
+                echo 'id not deteced in the browsing array'; 
+            }
+
+
+        }        
+
+
+
+
+
+
+
+    
+    }else{
+    
+
+        //no id detected from viewer.php
+
+        if ($debug){
+
+            echo 'no id detected from viewer.php';
+    
+        }
+
+
+    }
+    
+}else{
+
+    //browsing not a course or asset
+}
+
+    
+//echo 'All set';
+
+
+}else{
+
+    if ($debug){
+
+        echo 'one of required parameters $browsing and / or $browsing_id not set in cookies';
+
+    }
+
+    //delete the others?
+}
+
+
+
+
+
+//get an array of the videos associated with these parameters
+
+//if tag filtering filter by tag
 
 
 ?>
 
 
-<nav class="mt-2 navbar navbar-expand-lg navbar-dark bg-dark-dark sticky-top" style="z-index: 1 !important;">
+<nav class="mt-2 navbar navbar-expand-lg navbar-dark bg-dark-dark sticky-top" style="margin-top: 20px; z-index: 2 !important;">
     <div class="container">
         <a class="navbar-brand cursor-pointer" id="start_tour"><?php echo 'Video Navigation';?>
+            <!-- <small class="m-0 p-0"><br/><?php //echo 'Asset Name'?> --></small>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-warning"
             aria-controls="navbar-warning" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
+<!--
+
+Useful for PHP to JS transfer
+
+-->
+<div id='browsing_id' data-browsing-id="<?php echo $browsing_id;?>" class="d-none"></div>
+<div id='browsing' data-browsing="<?php echo $browsing;?>" class="d-none"></div>
+
         <div class="collapse navbar-collapse" id="navbar-warning">
-            <ul class="navbar-nav align-items-lg-left ml-lg-auto">
+            <!-- <ul class="navbar-nav align-items-lg-left ml-lg-auto">
+
+                
+            </ul> -->
+            <ul class="navbar-nav justify-content-sm-center ml-sm-auto">
 
             <li class="nav-item">
 
-                    <a  class="nav-link nav-link-icon gieqsGold" >
+                    <a href="<?php echo BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=' . $browsing_id;?>" class="nav-link nav-link-icon gieqsGold">
 
-                        <span class="nav-link-inner--text ">tagName -- current Filtered Tag</span>
+                    <?php 
+                    
+                    $pieces = explode(" ", $assets_paid->getname());
+$first_part = implode(" ", array_splice($pieces, 0, 4));
+                    
+                    ?>
+
+                        <span class="nav-link-inner--text "><?php echo $first_part;?></span>
                     </a>
                 </li>
-</ul>
-                <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+                <li class="nav-item">
+                    <a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $previousVideo;?>"
+                        class="nav-link nav-link-icon <?php if ($firstVideo === true){echo 'disabled';}?>">
 
-            <li class="nav-item">
-                    <a  class="nav-link nav-link-icon" >
-
-                        <span class="nav-link-inner--text "><-- Previous Video</span>
+                        <span class="nav-link-inner--text ">
+                        <i class="fas fa-arrow-left mr-2"></i> Previous</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a  class="nav-link nav-link-icon" >
+                    <a class="nav-link nav-link-icon">
 
-                        <span class="nav-link-inner--text ">x / y</span>
+                        <span
+                            class="nav-link-inner--text "><?php echo intval($position) + 1 . ' / ' .  $numberOfVideos;?></span>
                     </a>
                 </li>
-            <li class="nav-item">
-                    <a  class="nav-link nav-link-icon" >
+                <li class="nav-item">
+                    <a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $nextVideo;?>"
+                        class="nav-link nav-link-icon <?php if ($lastVideo === true){echo 'disabled';}?>">
 
-                        <span class="nav-link-inner--text ">Next Video --></span>
+                        <span class="nav-link-inner--text ">Next <i class="fas fa-arrow-right ml-2"></i></span>
                     </a>
                 </li>
 

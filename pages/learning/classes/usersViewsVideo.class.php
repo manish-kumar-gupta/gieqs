@@ -153,7 +153,7 @@ $q = "Select * from `usersViewsVideo` WHERE `id` = $key";
     
     public function matchRecord2way($user_id, $video_id){
         $q = "Select * from `usersViewsVideo` where `user_id` = '$user_id' AND `video_id` = '$video_id'";
-        echo $q;
+        //echo $q;
 		$result = $this->connection->RunQuery($q);
 		$nRows = $result->rowCount();
 			if ($nRows > 0){

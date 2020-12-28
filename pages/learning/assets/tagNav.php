@@ -14,16 +14,16 @@ $url =  "{$_SERVER['REQUEST_URI']}";
 ?>
 
 
-<nav class="mt-2 navbar navbar-horizontal navbar-expand-lg bg-gieqsGold"  style="z-index: 1 !important;">
-    <div class="container text-dark">
-        <a class="navbar-brand"><?php echo 'Tag Navigation';?>
+<nav id="tagBar" class="mt-2 navbar navbar-horizontal navbar-expand-lg d-none"  style="padding: 0;margin-top: 0 !important; z-index: 1 !important; ">
+    <div class="container gieqsGold">
+        <a class="navbar-brand"><?php echo '- active tag filter';?>
         </a>
-        <button class="navbar-toggler text-dark" type="button" data-toggle="collapse" data-target="#navbar-warning"
+        <button class="navbar-toggler gieqsGold" type="button" data-toggle="collapse" data-target="#navbar-tag"
             aria-controls="navbar-warning" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbar-warning">
-            <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+        <div class="collapse navbar-collapse" id="navbar-tag">
+            <ul class="navbar-nav gieqsGold align-items-lg-center ml-lg-auto">
 
 
 
@@ -35,15 +35,17 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                    <a class="nav-link nav-link-icon exitTagNav"
                        >
 
-                       <span class="nav-link-inner--text ">Polypectomy Tutor</span>
+                       <span id="tagCategoryNameBar" class="nav-link-inner--text"></span>
                    </a>
                </li>
+
+               
                                            <li class="nav-item">
                    
                    <a class="nav-link nav-link-icon"
                        >
 <!--                        <span class="badge badge-pill text-dark badge-floating border-dark mr-2" style="z-index: -1 !important;">LEVEL 4</span>
- -->                       <span class="nav-link-inner--text text-bold">Tag Name</span></a>
+ -->                       <span id="tagNameBar" class="nav-link-inner--text text-bold"></span></a>
                      
                    
                    
@@ -55,6 +57,14 @@ $url =  "{$_SERVER['REQUEST_URI']}";
 
                                <!-- <span class="nav-link-inner--text ">Complex</span> -->
                            
+               </li>
+
+               <li class="nav-item">
+                   <a class="nav-link nav-link-icon exitTagNav"
+                       >
+
+                       <span class="nav-link-inner--text ">x / y</span>
+                   </a>
                </li>
 
                <li class="nav-item">

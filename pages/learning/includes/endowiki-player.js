@@ -649,6 +649,8 @@ function undoFilterByTag() {
 
 	selectedTag = null;
 
+	hideTagBar();
+
 
 }
 
@@ -683,7 +685,139 @@ $(document).ready(function () {
 		undoFilterByTag();
 
 
-    })
+	})
+	
+	function filterByTag(selectedTag){
+
+			undoFilterByTag();
+
+			requiredChapters = null;
+
+			selectedTag = null;
+
+			$("#videoChapter").vimeo("pause");
+
+			//set the play only these chapters tag
+			playSelectedChapters = 1;
+
+
+			//add an identifier that this is the tag we are going to show
+			//here this is any tag that is associated with this tag
+
+			$(this).addClass('selectiveTag');
+			$(this).siblings().each(function () {
+
+
+
+				$(this).removeClass('selectiveTag');
+
+			})
+
+
+			var str = $('.selectiveTag').prop('id');
+			str = str.substring('tag'.length);
+			selectedTag = str;
+			//console.log(selectedTag);
+
+			//WRITE THE SELECTED TAG TO LOCAL STORAGE
+
+			showTagBar(selectedTag);
+
+			//make the selected button green and all others blue
+
+			if ($(this).hasClass('tagButton') == true) {
+
+				$(this).removeClass('tagButton').addClass('greenButton').addClass('bg-gieqsGold').addClass('text-dark').removeClass('bg-gray-800');
+
+			}
+
+			$(this).siblings().each(function () {
+
+				//console.log($(this));
+
+				$(this).removeClass('greenButton').removeClass('bg-gieqsGold').removeClass('text-dark').addClass('tagButton').addClass('bg-gray-800');
+
+
+			})
+
+			//go through the videoChapterTagData object to identify which of these has the required tag, returning an array of chapter ids
+
+			requiredChapters = getChaptersForGivenTag(selectedTag);
+
+			//console.log(requiredChapters);
+
+			//highlight these in red in the chapter selector
+
+			$('.chapterSelector').find('option').each(function () {
+
+				//first remove any previous addition
+
+				if (($(this).text()).indexOf(' -- filtered by highlighted tag') >= 0) {
+
+					//remove it 31
+
+					var textToReplace = $(this).text();
+
+					textToReplace = textToReplace.slice(0, -31);
+
+					$(this).text(textToReplace);
+
+
+				}
+
+				//console.log($(this));
+
+				if (requiredChapters.includes($(this).val()) === true) {
+
+					$(this).append(' -- filtered by highlighted tag');
+
+					$(this).attr('data', 'view');
+
+				}
+
+
+			})
+
+			//some alert to the user that this has happened
+
+			//$('.tagFilterDisplayArea').css('background-color', '#4CAF50');
+			$('.tagFilterDisplayArea').addClass('bg-gieqsGold').addClass('text-dark').addClass('text-sm');
+
+			if ($('body').find('.tagFilterDisplayArea').find('#taggedChapterDisplay').length == 0) {
+
+				var tagName = getTagName(selectedTag);
+
+				tagName = tagName.toString().toLowerCase();
+
+				$('.tagFilterDisplayArea').append('#taggedChapterDisplay').html('<i style="float:right;" class="fas fa-times remove cursor-pointer"></i><span>Showing chapters tagged <br/>' + tagName + '</span>');
+
+			} else {
+
+				var tagName = getTagName(selectedTag);
+
+				tagName = tagName.toString().toLowerCase();
+
+				$('body').find('.tagFilterDisplayArea').append('#taggedChapterDisplay').html('<i style="float:right;" class="cursor-pointer fas fa-times remove"></i><span>Showing chapters tagged <br/>' + tagName + '</span>');
+			}
+
+			//skip the video to the start of the first chapter in the array
+
+			var targetChapter = requiredChapters[0];
+
+			//console.log(targetChapter);
+
+			var targetChapterKey = getKeyForChapterid(targetChapter);
+
+			var targetTime = videoChapterData[targetChapterKey].timeFrom;
+
+			startedConnectedPlayback = 1;
+
+            jumpToTime(targetTime);
+            
+            $("#videoChapter").vimeo("play");
+		
+
+	}
     
     $("body").on('click', '.greenButton, .tagButton', (function (event) {
 
@@ -725,6 +859,10 @@ $(document).ready(function () {
 			str = str.substring('tag'.length);
 			selectedTag = str;
 			//console.log(selectedTag);
+
+			//WRITE THE SELECTED TAG TO LOCAL STORAGE
+
+			showTagBar(selectedTag);
 
 			//make the selected button green and all others blue
 
@@ -1285,7 +1423,7 @@ $(document).ready(function () {
 
 							if (!($('body').find('.tagsActive').find('#tagMirror' + val2.tagid).length)){
 								//if (val2.tagid == selectedTag){
-							$('body').find('.tagsActive').prepend('<span class="badge mx-2 mb-1 bg-gieqsGold text-dark" id="tagMirror' + val2.tagid + '">' + val2.tagName + '</span>');
+							$('body').find('.tagsActive').prepend('<span class="badge mx-2 mb-1 bg-gieqsGold text-dark" data-tag-id="' + val2.tagid + '" id="tagMirror' + val2.tagid + '">' + val2.tagName + '</span>');
 								//}else{
 								//	$('body').find('.tagsActive').prepend('<span class="badge mx-2 mb-1 bg-gray-800 gieqsGold" id="tagMirror' + val2.tagid + '">' + val2.tagName + '</span>');
 

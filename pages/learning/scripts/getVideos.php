@@ -160,6 +160,13 @@ if ($debug) {
 
 */
 
+//determining access
+
+//options 1, reusable code from here in a class
+//options 2, save this array to localstorage so does not require determining twice
+//option 3 , option 2 on this page, option 1 for other pages [speed up this page, make generalisable]
+//for option 3 critical to change / delete every time page loads
+
 if (isset($videoset)){
 
     if ($videoset == 1){

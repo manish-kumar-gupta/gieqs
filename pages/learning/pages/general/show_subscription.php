@@ -16,6 +16,7 @@
       //$openaccess = 1;
       $requiredUserLevel = 6;
 
+      
 
       //require BASE_URI . '/pages/learning/includes/head.php';
       require BASE_URI . '/headNoPurposeCore.php';
@@ -64,6 +65,10 @@
 
     }
 
+    .navbar-brand small {
+  display:block;
+  font-size:10px;
+}
     .card-placeholder {
 
         width: 344px;
@@ -77,7 +82,7 @@
 
     .flex-even {
         flex: 0 0 30%;
-        
+
         /*
         
         flex: 1;
@@ -175,28 +180,7 @@
     }
     </style>
 
-
-</head>
-
-<body>
-    <header class="header header-transparent" id="header-main">
-
-        <!-- Topbar -->
-
-        <?php require BASE_URI . '/pages/learning/includes/topbar.php';?>
-
-        <!-- Main navbar -->
-
-        <?php require BASE_URI . '/pages/learning/includes/nav.php';?>
-
-
-
-
-    </header>
-
-
-
-    <?php
+<?php
 
 
         $debug = false;
@@ -226,12 +210,15 @@
             echo 'This page requires an asset id';
             echo '<br/><br/>Return <a href="' . BASE_URL .  '/pages/learning/">home</a>';
             //redirect_user(BASE_URL . '/pages/learning/');
+
+            setcookie("browsing", "", time() - 3600);
+            setcookie("browsing_id", "", time() - 3600);
             die();
         }
 
 
         /* determine access */
-
+       
 
         $access = null;
 
@@ -246,6 +233,9 @@
             echo 'You do not have access to this subscribable material.  You can buy a subscription from <a href="' . BASE_URL .  '/pages/learning/pages/account/billing.php">My Account</a>';
             echo '<br/><br/>Return <a href="' . BASE_URL .  '/pages/learning/">home</a>';
             //redirect_user(BASE_URL . '/pages/learning/');
+
+            setcookie("browsing", "", time() - 3600);
+            setcookie("browsing_id", "", time() - 3600);
             die();
 
 
@@ -265,10 +255,26 @@
 
         }else{
 
+            
             if ($debug){
 
                 $log[] =  'issue loading the asset';
             }
+            ?>
+            <div class="main-content container mt-10">
+
+            <?php            
+            echo 'Failed Asset Loading</a>';
+            echo '<br/><br/>Return <a href="' . BASE_URL .  '/pages/learning/">home</a>';
+            //redirect_user(BASE_URL . '/pages/learning/');
+
+            setcookie("browsing", "", time() - 3600);
+            setcookie("browsing_id", "", time() - 3600);
+            die();
+
+
+
+           
 
         }
 
@@ -297,9 +303,14 @@
             
 
 
+
             //is a conference
             if ($assets_paid->getasset_type() == '2'){
             $videoset = 2;
+            setcookie('browsing', '2', time() + (365 * 24 * 60 * 60), '/');
+            setcookie('browsing_id', $assetid, time() + (365 * 24 * 60 * 60), '/');
+
+
             if ($debug){
 
                 echo '<br/><br/>';
@@ -309,15 +320,21 @@
             }
             }elseif ($assets_paid->getasset_type() == '3'){
             $videoset = 3; //IS A STANDARD COURSE
+            setcookie('browsing', '3', time() + (365 * 24 * 60 * 60), '/'); //1year
+            setcookie('browsing_id', $assetid, time() + (365 * 24 * 60 * 60), '/');
+
+
             if ($debug){
 
                 echo '<br/><br/>';
                 echo 'is a standard course';
+                
                 echo '<br/><br/>';
 
             }
             }else{
             $videoset = 3;
+
 
             if ($debug){
 
@@ -340,13 +357,15 @@
             if ($debug){
 
                 echo '<br/><br/>';
-                echo 'prgrammes array for asset id ' . $assetid;
+                echo 'programmes array for asset id ' . $assetid;
 
             }
             
             if ($debug){
 
-                var_dump($programmes);
+                print("<pre class=\"text-white\">".print_r($programmes,true)."</pre>");
+
+                //var_dump($programmes);
             }
 
             foreach ($programmes as $key=>$value){
@@ -362,8 +381,10 @@
 
             }
                 if ($debug){
+                    print("<pre class=\"text-white\">".print_r($sessions,true)."</pre>");
 
-                    var_dump($sessions);
+
+                    //var_dump($sessions);
                 }
 
                 //get programmeid for asset
@@ -371,7 +392,13 @@
 
                     if (isset($value2['sessionid'])){
 
+                        $videoToEnter = $programmeView->getVideoURL($value2['sessionid']);
+
+                        if ($videoToEnter != ''){
+
                         $videosForSessions[] = $programmeView->getVideoURL($value2['sessionid']);
+
+                        }
 
                     }
 
@@ -390,9 +417,14 @@
 
              if ($debug){
 
-                var_dump($videosForSessions);
+                print("<pre class=\"text-white\">".print_r($videosForSessions,true)."</pre>");
+
+                //var_dump($videosForSessions);
 
              }
+
+             setcookie('browsing_array', json_encode($videosForSessions), time() + (365 * 24 * 60 * 60), '/');
+
 
             }elseif ($videoset == 3){
 
@@ -412,7 +444,10 @@
             
             if ($debug){
 
-                var_dump($programmes);
+                print("<pre class=\"text-white\">".print_r($programmes,true)."</pre>");
+
+
+                //var_dump($programmes);
             }
 
             foreach ($programmes as $key=>$value){
@@ -429,10 +464,15 @@
             }
                 if ($debug){
 
-                    var_dump($sessions);
+                    //var_dump($sessions);
+                    print("<pre class=\"text-white\">".print_r($sessions,true)."</pre>");
+                    /* foreach($sessions as $child) {
+                        echo $child . "\n";
+                     } */
                 }
 
                 //get programmeid for asset
+                $x = 0;
                 foreach ($sessions as $key2=>$value2){
 
                     if (isset($value2['sessionid'])){
@@ -440,7 +480,23 @@
                         $videosForSessions2data = array();
                         $videosForSessions2data = $programmeView->getVideoURLAll($value2['sessionid']);
 
+                        if ($debug){
+
+                            //var_dump($sessions);
+                            print("<pre class=\"text-white\">".print_r($videosForSessions2data,true)."</pre>");
+                            /* foreach($sessions as $child) {
+                                echo $child . "\n";
+                             } */
+                        }
+                        
+
                         foreach ($videosForSessions2data as $key3=>$value3){
+
+
+                            if ($value3 == NULL){
+
+                                continue;
+                            }
 
                             $videosForSessions[$x] = $value3;
                             $x++;
@@ -453,6 +509,9 @@
                 }
 
              }
+
+             setcookie('browsing_array', json_encode($videosForSessions), time() + (365 * 24 * 60 * 60), '/');
+
 
              //if debug show the videos
 
@@ -498,10 +557,18 @@
 
             //is a videoset
             $videoset = 1;
+            setcookie('browsing', '4', time() + (365 * 24 * 60 * 60), '/');
+            setcookie('browsing_id', $assetid, time() + (365 * 24 * 60 * 60), '/');
+
+
+
 
             //get videos associated with this asset
 
             $videos = $assetManager->returnVideosAsset($assetid);
+
+            setcookie('browsing_array', json_encode($videos), time() + (365 * 24 * 60 * 60), '/');
+
             
             
 
@@ -530,6 +597,28 @@
 		
         ?>
 
+</head>
+
+
+    <header class="header header-transparent" id="header-main">
+
+        <!-- Topbar -->
+
+        <?php require BASE_URI . '/pages/learning/includes/topbar.php';?>
+
+        <!-- Main navbar -->
+
+        <?php require BASE_URI . '/pages/learning/includes/nav.php';?>
+
+
+
+
+    </header>
+
+
+
+    
+<body>
             <!-- Omnisearch data -->
 
             <div id="omnisearch" class="omnisearch">
@@ -806,7 +895,7 @@
 
                 const dataToSend = {
 
-                    programmeid: <?php echo $programmes[0]['programme_id'];?>,
+                    programmeid: <?php if (isset($programmes)){echo $programmes[0]['programme_id'];}else{echo 'null';}?>,
 
                 }
 
