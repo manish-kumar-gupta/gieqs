@@ -83,7 +83,21 @@ if (isset($browsing) && isset($browsing_id) && isset($videoid)){
 
         //get all videos with this tag
 
-        
+            //determine the context videos
+
+             //in context of asset this is already set as $browsing_array
+
+        //isSuperuser = 1 or 0
+
+        //determine which of the context videos can be accessed (also add to cookie?, then do it once)
+
+        $accessibleVideos = $assetManager->determineVideoAccess($browsing, $browsing_array, $isSuperuser, $userid);
+
+        //filter these by tag
+
+        //check what they are ordered by!
+
+
 
 
 

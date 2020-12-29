@@ -86,6 +86,7 @@ $loadedRequired = $data['loadedRequired'];
 
 $active = $data['active'];
 
+//set by referring page
 $videoset = $data['videoset'];
 
 $assetid = $data['assetid'];
@@ -93,7 +94,7 @@ $assetid = $data['assetid'];
 
 $gieqsDigitalv1 = $data['gieqsDigital'];
 
-$debug = false;
+$debug = true;
 
 
 $loadedRequiredProduct = 10 * $loadedRequired;
@@ -134,8 +135,11 @@ $requiredTagCategories = $data['requiredTagCategories'];
 $videos = [];
 $x = 0;
 
-$data2 = $navigator->getVideoData($requiredTagCategories, $tagsToMatch, $debug, $active, $gieqsDigitalv1);
 
+//v2 in same format as getNav
+//$data2 = $navigator->getVideoDatav2($requiredTagCategories, $tagsToMatch, $debug, $active, $gieqsDigitalv1);
+
+$data2 = $navigator->getVideoData($requiredTagCategories, $tagsToMatch, $debug, $active, $gieqsDigitalv1);
 
 $videos = $data2;
 
@@ -166,6 +170,19 @@ if ($debug) {
 //options 2, save this array to localstorage so does not require determining twice
 //option 3 , option 2 on this page, option 1 for other pages [speed up this page, make generalisable]
 //for option 3 critical to change / delete every time page loads
+
+
+/* //determine video access
+
+    dependencies
+    assetManager
+    programmeView
+
+    so could be in assetManager with programmeView as a dependency
+
+    function determineVideoAccess($videoset, $videoArray, $superuser, $userid)
+
+*/
 
 if (isset($videoset)){
 

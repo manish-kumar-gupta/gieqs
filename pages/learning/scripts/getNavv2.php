@@ -37,7 +37,7 @@ $programmeView = new programmeView;
 $assetid = $data['assetid'];
 
 
-            $debug = false;
+            $debug = true;
 
 
             if ($debug){
@@ -104,6 +104,8 @@ $assetid = $data['assetid'];
 if (isset($videoset)){
 
     if ($videoset == 1){
+
+        $emptyText = 'There are no videos matching your filters.';
 
         //push out of the data2 array videos that are not part of the asset $assetid
 
@@ -255,6 +257,10 @@ if ($videoset == 3){
         
                         var_dump($programmes);
                     }
+
+                    $videosForSessions = array();
+                    $x = 0;
+
 
             foreach ($programmes as $key=>$value){
 

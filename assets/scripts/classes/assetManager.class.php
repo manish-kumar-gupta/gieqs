@@ -3182,6 +3182,43 @@ public function returnVideoDenominatorSelect2()
         }
 
 
+            /*
+
+            VideoSet
+
+            1 - videoset
+            2 - course, show by session one only
+            3 - course, show by session all items
+
+
+            Browsing
+
+            1 - sitewide subscription
+            2 - congress
+            3 - course
+            4 - video collection
+            5 - superCategory
+
+            */
+        /* Takes an array of videos and variables describing the context to return an array of allowed videos */
+        public function determineVideoAccess ($browsing, $videoset, $videoArray, $superuser, $userid){
+
+            //determine the context
+
+
+            //determine what is in the two array inputs from getVideos and getNavv2, if same fields ok if not make same
+
+            //if $browsing is an asset
+
+            //then easy to check access to the whole asset
+
+            // then re
+
+
+
+        }
+
+
 
 
 
