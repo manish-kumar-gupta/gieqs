@@ -895,7 +895,7 @@
 
                 const dataToSend = {
 
-                    programmeid: <?php if (isset($programmes)){echo $programmes[0]['programme_id'];}else{echo 'null';}?>,
+                    programmeid: <?php if (is_array($programmes)){echo $programmes[0]['programme_id'];}else{echo 'null';}?>,
 
                 }
 

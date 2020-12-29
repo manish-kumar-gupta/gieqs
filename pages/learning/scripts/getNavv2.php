@@ -355,11 +355,16 @@ if ($videoset == 3){
 
     //normal page
 
+    $data2 = $assetManager->determineVideoAccessNonAsset($data2, $isSuperuser, $userid, true);
+
+
     //work data 2 to remove those without a subscription
 
         //unless is superuser
 
-        if ($isSuperuser == '0'){
+       
+       
+        /* if ($isSuperuser == '0'){
 
             //GO THROUGH THE VIDEOS AND REMOVE ANY THAT THE USER HAS NO ACCESS TO
             
@@ -490,7 +495,7 @@ if ($videoset == 3){
             
                     }
             
-                }
+                } 
             
             
                 
@@ -509,6 +514,7 @@ if ($videoset == 3){
                     echo 'all videos available as superuser';
                 }
             }
+            */
     
 
 

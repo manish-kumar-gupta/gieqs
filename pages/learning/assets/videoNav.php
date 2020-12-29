@@ -247,6 +247,8 @@ Useful for PHP to JS transfer
 -->
 <div id='browsing_id' data-browsing-id="<?php echo $browsing_id;?>" class="d-none"></div>
 <div id='browsing' data-browsing="<?php echo $browsing;?>" class="d-none"></div>
+<div id='browsing_array' class="d-none"><?php echo json_encode($browsing_array);?></div>
+
 
         <div class="collapse navbar-collapse" id="navbar-warning">
             <!-- <ul class="navbar-nav align-items-lg-left ml-lg-auto">

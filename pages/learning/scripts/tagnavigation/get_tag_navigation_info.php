@@ -47,18 +47,28 @@ $data = json_decode(file_get_contents('php://input'), true);
 $videoid = $data['videoid'];
 $browsing_id = $data['browsing_id'];
 $browsing = $data['browsing'];
+$selectedTag = $data['selectedTag'];
+$browsing_array = $data['browsing_array'];
+
+$browsing_array = json_decode($browsing_array);
+
 
 
 if ($debug){
 //print_r($subscription_id);
 print("<pre class=\"text-white\">".print_r($data,true)."</pre>");
+print_r($browsing_array);
 //echo '$userid is ' . $userid;
 }
 
 
 if (isset($browsing) && isset($browsing_id) && isset($videoid)){
 
+    if ($debug){
 
+        echo 'All required parameter cookies set';
+
+    }
     
 
     
@@ -91,27 +101,33 @@ if (isset($browsing) && isset($browsing_id) && isset($videoid)){
 
         //determine which of the context videos can be accessed (also add to cookie?, then do it once)
 
-        $accessibleVideos = $assetManager->determineVideoAccess($browsing, $browsing_array, $isSuperuser, $userid);
+        //determine the asset access ? assume since on page // no check for now
 
-        //filter these by tag
+        $access = $assetManager->is_assetid_covered_by_user_subscription($browsing_id, $userid);
 
-        //check what they are ordered by!
-
-
+        if ($access){
 
 
+            //check which videos are tagged the same as this videos selected tag within this asset
 
-    //if all set, get array of videos associated with these parameters to which the user has access
+            //filter the browsing array
 
-    if ($debug){
+            //to write $videosTag = $getVideosTag->($browsing_array); (needs to be a learning class which i guess asset manager is);
 
-        echo 'All required parameter cookies set';
+            //get all videos associated with this tag in thi
 
-    }
+            //then use array intersect to remove videos which are not tagged like this
 
-    if(isset($id)) {
+            //return the tagged videos as json array with
+                //count of videos
+                //position of this video
+                //next video
+                //previous video
 
-        $currentVideo = $id;
+
+            //copied from above to modify
+
+            $currentVideo = $id;
     
         if ($debug){
     
@@ -191,32 +207,48 @@ if (isset($browsing) && isset($browsing_id) && isset($videoid)){
             }
 
 
-        }        
+        }  
 
 
 
 
 
+        }else{
 
 
-    
-    }else{
-    
+            if ($debug){
 
-        //no id detected from viewer.php
+                echo 'no user access to this asset';
 
-        if ($debug){
-
-            echo 'no id detected from viewer.php';
-    
+            }
         }
 
 
-    }
-    
-}else{
+        //filter these by tag
 
-    //browsing not a course or asset
+        //check what they are ordered by!
+
+
+
+
+
+    //if all set, get array of videos associated with these parameters to which the user has access
+
+    
+
+    
+    
+}elseif ($browsing == '5'){
+
+    //browsing the site separately
+
+    //check video access
+
+   
+
+    $accessibleVideos = $assetManager->determineVideoAccess($videoArray, $isSuperuser, $userid, $debug=false);
+
+
 }
 
     

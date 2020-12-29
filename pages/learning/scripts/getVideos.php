@@ -435,7 +435,9 @@ if (isset($videoset)){
 }else{
 
     //normal page
-    if ($isSuperuser == '0'){
+    
+    $videos = $assetManager->determineVideoAccessNonAsset($data2, $isSuperuser, $userid, true);
+    /* if ($isSuperuser == '0'){
 
         //GO THROUGH THE VIDEOS AND REMOVE ANY THAT THE USER HAS NO ACCESS TO
         
@@ -566,7 +568,7 @@ if (isset($videoset)){
         
                 }
         
-            }
+            } 
         
         
             
@@ -585,6 +587,7 @@ if (isset($videoset)){
                 echo 'all videos available as superuser';
             }
         }
+        */
 
     $emptyText = 'No videos match your criteria. Please reset your filters above.';
 

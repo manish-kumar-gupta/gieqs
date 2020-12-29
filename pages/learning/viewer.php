@@ -2278,6 +2278,17 @@ chapterData
 
 
         }
+
+        if ($('#browsing_array').text() != ''){
+
+        var browsing_array = $('#browsing_array').text();
+
+        }else{
+
+        var browsing_array = '';
+
+
+        }
     
 
         var dataToSend = {
@@ -2285,6 +2296,8 @@ chapterData
             videoid: videoPassed,
             browsing_id: browsing_id,
             browsing: browsing,
+            tag: selectedTag,
+            browsing_array: browsing_array,
 
 
         }
