@@ -264,7 +264,7 @@ if (isset($videoset)){
                 //get programmeid for asset
                 foreach ($sessions as $key2=>$value2){
 
-                    if (isset($value2['sessionid'])){
+                    if ($value2['sessionid'] != ''){
 
                         $videosForSessions[] = $programmeView->getVideoURL($value2['sessionid']);
 
@@ -359,15 +359,19 @@ if (isset($videoset)){
                     
                     foreach ($sessions as $key2=>$value2){
 
-                        if (isset($value2['sessionid'])){
+                        if ($value2['sessionid'] != ''){
 
                             $videosForSessions2data = array();
                             $videosForSessions2data = $programmeView->getVideoURLAll($value2['sessionid']);
 
                             foreach ($videosForSessions2data as $key3=>$value3){
 
+                                if ($value3 != ''){
+
                                 $videosForSessions[$x] = $value3;
                                 $x++;
+
+                                }
 
                             }
 
