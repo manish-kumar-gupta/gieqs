@@ -41,6 +41,7 @@
     <title>GIEQs Online Endoscopy Trainer</title>
 
     <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
+    <script src="<?php echo BASE_URL . "/node_modules/@vimeo/player/dist/player.js"?>"></script>
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
     <link href="<?php echo BASE_URL;?>/node_modules/bootstrap-tour/build/css/bootstrap-tour-standalone-gieqs.css"
         rel="stylesheet">
@@ -2321,10 +2322,46 @@ chapterData
 
         request2.done(function(data) {
             // alert( "success" );
-            if (data == 1) {
+            if (data) {
                 //show green tick
 
-               
+               var result = JSON.parse(data);
+
+               console.dir(result);
+
+               $(result).each(function(k,v){
+
+                $('#videoNumeratorTagNav').text(v.postion);
+                $('#videoDenomTagNav').text(v.numberOfVideos);
+                $('.previousTagNav').attr('href', siteRoot + 'viewer.php?id=' + v.previousVideo);
+                $('.nextTagNav').attr('href', siteRoot + 'viewer.php?id=' + v.nextVideo);
+
+                if (v.firstVideo === true){
+
+                    $('.previousTagNav').addClass('disabled');
+
+
+                }else{
+
+                    $('.previousTagNav').removeClass('disabled');
+
+                }
+
+                if (v.lastVideo === true){
+
+                $('.nextTagNav').addClass('disabled');
+
+
+                }else{
+
+                $('.nextTagNav').removeClass('disabled');
+
+                }
+
+
+
+               })
+
 
                 //$('#notification-services').delay('1000').addClass('is-valid');
 
@@ -2355,6 +2392,26 @@ chapterData
 
     }
 
+    function checkTagFiltering(){
+
+        var overallTagAvailable = window.localStorage.getItem('selectedTag');
+
+        if (overallTagAvailable && overallTagAvailable != 'null'){
+
+            showTagBar(overallTagAvailable);
+
+            waitForFinalEvent(function(){
+      //alert('Resize...');
+            filterByTag(overallTagAvailable);
+
+    }, 200, "filter by overall tag available");
+
+            
+
+        }
+
+    }
+
     function hideTagBar() {
 
         $('#tagBar').addClass('d-none');
@@ -2380,6 +2437,8 @@ chapterData
 
     $(document).ready(function() {
 
+
+        checkTagFiltering();
 
         getComments();
 

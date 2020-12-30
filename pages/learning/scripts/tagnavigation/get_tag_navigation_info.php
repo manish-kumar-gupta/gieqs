@@ -18,7 +18,7 @@ require (BASE_URI . '/assets/scripts/login_functions.php');
      
      require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
 
-$debug = true;
+$debug = false;
 
 if ($debug == true){
 error_reporting(E_ALL);
@@ -49,6 +49,8 @@ $browsing_id = $data['browsing_id'];
 $browsing = $data['browsing'];
 $selectedTag = $data['selectedTag'];
 $browsing_array = $data['browsing_array'];
+$selectedTag = $data['tag'];
+
 
 $browsing_array = json_decode($browsing_array);
 
@@ -116,10 +118,116 @@ if (isset($browsing) && isset($browsing_id) && isset($videoid)){
 
             //get all videos associated with this tag in thi
 
+            $taggedVideoArray = $assetManager->getVideosTag($selectedTag);
+
+            if ($debug){
+
+                print_r($taggedVideoArray);
+
+            }
+
             //then use array intersect to remove videos which are not tagged like this
 
             //return the tagged videos as json array with
+
+
+            $videosToReturnv2 = array_intersect($browsing_array, $taggedVideoArray);
+
+            if ($debug){
+
+                print_r($videosToReturnv2);
+
+            }
+
+            $videosToReturn = array();
+            $x = 1;
+            foreach ($videosToReturnv2 as $key=>$value){
+
+                $videosToReturn[$x] = $value;
+                $x++;
+
+
+
+            }
+
+            $position = array_search($videoid, $videosToReturn);
+
+            if ($debug){
+
+                print_r($position);
+
+            }
                 //count of videos
+
+                if ($position > -1){
+
+                    //is id in the array browsingArray?
+        
+                    if ($debug){
+            
+                        echo 'id detected in the browsing array at position ' . $position;
+                    }
+        
+                    
+                    //get previous video and next video
+        
+                    $nextVideo = $videosToReturn[(intval($position) + 1)];
+        
+                    if (!isset($nextVideo)){
+        
+                        $lastVideo = true;
+                    }else{
+        
+                        $lastVideo = false;
+                    }
+                    
+        
+                    $previousVideo = $videosToReturn[(intval($position) - 1)];
+        
+                    if (!isset($previousVideo)){
+        
+                        $firstVideo = true;
+                    }else{
+        
+                        $firstVideo = false;
+                    }
+        
+                    if ($debug){
+            
+                        echo "NEXT video is $nextVideo and PREVIOUS video is $previousVideo";
+                        
+                        if ($firstVideo == true){
+                        
+                            echo "this is the FIRST video ";
+                            
+                            }
+                        
+                        if ($lastVideo == true){
+                        
+                        echo "this is the LAST video ";
+        
+                        }
+        
+        
+                    }
+        
+                    $numberOfVideos = count($videosToReturn);
+                  
+                    if ($debug){
+            
+                        echo "This video is number $position of $numberOfVideos";
+                    }
+        
+                }else{
+        
+        
+                    if ($debug){
+            
+                        echo 'id not deteced in the browsing array'; 
+                    }
+        
+        
+                }  
                 //position of this video
                 //next video
                 //previous video
@@ -127,87 +235,21 @@ if (isset($browsing) && isset($browsing_id) && isset($videoid)){
 
             //copied from above to modify
 
-            $currentVideo = $id;
-    
-        if ($debug){
-    
-            var_dump($id);
-        }
+            $returnArray = [
 
-        //id detected
-
-        $position = array_search($id, $browsing_array);
+                'postion' => $position,
+                'numberOfVideos' => $numberOfVideos,
+                'nextVideo' => $nextVideo,
+                'previousVideo' => $previousVideo,
+                'firstVideo' => $firstVideo,
+                'lastVideo' => $lastVideo,
 
 
-        if ($position > -1){
+            ];
 
-            //is id in the array browsingArray?
+            echo json_encode($returnArray);
 
-            if ($debug){
-    
-                echo 'id detected in the browsing array at position ' . $position;
-            }
-
-            
-            //get previous video and next video
-
-            $nextVideo = $browsing_array[(intval($position) + 1)];
-
-            if (!isset($nextVideo)){
-
-                $lastVideo = true;
-            }else{
-
-                $lastVideo = false;
-            }
-            
-
-            $previousVideo = $browsing_array[(intval($position) - 1)];
-
-            if (!isset($previousVideo)){
-
-                $firstVideo = true;
-            }else{
-
-                $firstVideo = false;
-            }
-
-            if ($debug){
-    
-                echo "NEXT video is $nextVideo and PREVIOUS video is $previousVideo";
-                
-                if ($firstVideo == true){
-                
-                    echo "this is the FIRST video ";
-                    
-                    }
-                
-                if ($lastVideo == true){
-                
-                echo "this is the LAST video ";
-
-                }
-
-
-            }
-
-            $numberOfVideos = count($browsing_array);
-          
-            if ($debug){
-    
-                echo "This video is number $position of $numberOfVideos";
-            }
-
-        }else{
-
-
-            if ($debug){
-    
-                echo 'id not deteced in the browsing array'; 
-            }
-
-
-        }  
+        
 
 
 

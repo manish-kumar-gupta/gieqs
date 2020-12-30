@@ -63,19 +63,19 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                    <a class="nav-link nav-link-icon exitTagNav"
                        >
 
-                       <span class="nav-link-inner--text ">x / y</span>
+                       <span class="nav-link-inner--text "><span id="videoNumeratorTagNav">x</span> / <span id="videoDenomTagNav">y</span></span>
                    </a>
                </li>
 
                <li class="nav-item">
-                   <a class="nav-link nav-link-icon exitTagNav"
+                   <a class="nav-link nav-link-icon previousTagNav"
                        >
 
                        <span class="nav-link-inner--text "><i class="fas fa-arrow-left mr-2"></i> Previous</span>
                    </a>
                </li>
                <li class="nav-item">
-                   <a class="nav-link nav-link-icon exitTagNav"
+                   <a class="nav-link nav-link-icon nextTagNav"
                        >
 
                        <span class="nav-link-inner--text ">Next<i class="fas fa-arrow-right ml-2"></i></span>

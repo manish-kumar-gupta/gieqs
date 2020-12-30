@@ -37,7 +37,7 @@ $programmeView = new programmeView;
 $assetid = $data['assetid'];
 
 
-            $debug = true;
+            $debug = false;
 
 
             if ($debug){
