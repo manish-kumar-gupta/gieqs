@@ -230,7 +230,7 @@ if (isset($browsing) && isset($browsing_id) && is_array($browsing_array)){
 ?>
 
 
-<nav class="mt-2 navbar navbar-expand-lg navbar-dark bg-dark-dark sticky-top" style="margin-top: 20px; z-index: 2 !important;">
+<nav class="mt-4 navbar navbar-expand-lg navbar-dark bg-dark sticky-top" style="margin-top: 20px; z-index: 2 !important;">
     <div class="container">
         <a class="navbar-brand cursor-pointer" id="start_tour"><?php echo 'Video Navigation';?>
             <!-- <small class="m-0 p-0"><br/><?php //echo 'Asset Name'?> --></small>
@@ -295,12 +295,12 @@ $first_part = implode(" ", array_splice($pieces, 0, 4));
                     </a>
                 </li>
 
-                <li class="nav-item dropdown-animate dropdown-submenu bg-dark-dark" data-toggle="hover">
+                <li class="nav-item dropdown-animate dropdown-submenu bg-dark" data-toggle="hover">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Navigation
                     </a>
-                    <div class="dropdown-menu bg-dark-dark" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
                         <a id="chapterNavTour" class="dropdown-item" data-toggle="collapse" href="#selectDropdown">
 
                             Toggle <span class="gieqsGold">Chapter</span> View
@@ -328,12 +328,12 @@ $first_part = implode(" ", array_splice($pieces, 0, 4));
                     </div>
                 </li>
 
-                <li class="nav-item dropdown-animate dropdown-submenu bg-dark-dark" data-toggle="hover">
+                <li class="nav-item dropdown-animate dropdown-submenu bg-dark" data-toggle="hover">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Show Me Around!
                     </a>
-                    <div class="dropdown-menu bg-dark-dark" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item cursor-pointer showMeAround">
 
                             Overview Tour

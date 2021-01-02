@@ -935,7 +935,7 @@
                         </div>
                         <div class="row">
                             <div class="col text-left mt-0 align-items-center">
-                                <div class="tagsActive d-flex flex-wrap mt-3 mb-3"
+                                <div class="tagsActive d-flex flex-wrap mt-3 mb-4"
                                     style="max-height:50px; overflow-y: hidden;">
 
                                 </div>

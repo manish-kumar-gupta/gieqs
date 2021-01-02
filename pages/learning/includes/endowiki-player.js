@@ -773,11 +773,11 @@ function filterByTag(requestedTag){
 
 			if ($(this).attr('data-tag-id') == requestedTag){
 
-				$(this).addClass('.selectiveTag').addClass('bg-gieqsGold').addClass('text-dark').removeClass('bg-gray-800');
+				$(this).addClass('selectiveTag');
 
 			}else{
 
-				$(this).removeClass('bg-gieqsGold').removeClass('text-dark').addClass('bg-gray-800');
+				$(this).removeClass('selectiveTag');
 
 			}	
 			
@@ -885,7 +885,7 @@ function filterByTag(requestedTag){
 
 		startedConnectedPlayback = 1;
 
-		jumpToTime(targetTime);
+		player.setCurrentTime(targetTime);
 		
 		waitForFinalEvent(function(){
 			
@@ -1047,7 +1047,7 @@ function updateChapterMarkers(currentChapterPassed){
 
 				startedConnectedPlayback = 1;
 
-				jumpToTime(targetTime);
+				player.setCurrentTime(targetTime);
 
 
 			}
@@ -1126,7 +1126,7 @@ function updateChapterMarkers(currentChapterPassed){
 
 				startedConnectedPlayback = 1;
 
-				jumpToTime(targetTime);
+				player.setCurrentTime(targetTime);
 
 
 			}
@@ -1147,7 +1147,7 @@ function updateChapterMarkers(currentChapterPassed){
 
 					var targetTime = videoChapterData[targetChapterKey].timeFrom;
 
-					jumpToTime(targetTime);
+					player.setCurrentTime(targetTime);
 
 				} else {
 
@@ -1199,6 +1199,12 @@ function updateChapterMarkers(currentChapterPassed){
 
 }
 
+function updatePlayer(data){
+
+
+
+}
+
 function addCuePoints(){
 
 
@@ -1227,6 +1233,8 @@ function addCuePoints(){
 		
 		console.dir(data)
 
+		//updatePlayer(data);
+
 		//define the chapter number and key for videoChapterData
 		var number = data.data.number;
 		var key = number - 1;
@@ -1247,9 +1255,141 @@ function addCuePoints(){
 
 		//set globals
 
-		nextChapter = data.data.next;
+		if (requiredChapters == null){
 
-		previousChapter = data.data.previous;
+			nextChapter = data.data.next;
+
+			previousChapter = data.data.previous;
+
+		}else{
+
+			//find the position of this chapter
+
+			var positionInRequiredChapters = requiredChapters.indexOf(chapterid);
+
+			if (positionInRequiredChapters > -1){ //in the required array
+
+				console.log('this chapter ('+ chapterid +') is in required chapter array at position '+positionInRequiredChapters);
+
+				//if there is a next define it
+
+			try {
+
+				var nextRequiredChapter = positionInRequiredChapters + 1;
+				
+				var checkNextChapter = requiredChapters[nextRequiredChapter];
+
+				nextChapter = checkNextChapter;
+
+				console.log('next chapter set');
+
+			} catch (error) {
+
+				nextChapter = null;
+				
+			}
+
+			//if there is a previous define it
+
+			try {
+				
+				var previousRequiredChapter = positionInRequiredChapters - 1;
+
+
+				var checkPreviousChapter = requiredChapters[previousRequiredChapter];
+
+				previousChapter = checkPreviousChapter;
+
+				console.log('previous chapter set');
+
+			} catch (error) {
+
+				previousChapter = null;
+				
+			}
+
+
+
+			}else{
+
+				console.log('this chapter ('+ chapterid +') is NOT in required chapter array');
+
+				//skip to the next chapter in requiredChapters
+
+				//find the position of this chapter in the whole videoChapterData (key)
+
+				//get the nearest chapter which is in requiredChapters
+
+				var keys = [];
+				var x = 0;
+
+
+				$(requiredChapters).each(function(k,v){
+
+					keys[x] = getKeyForChapterid(v);
+					x++;
+
+
+				})
+
+				console.log(keys);
+				console.log('key is ' + key);
+
+				var closest = null;
+
+				var y=0;
+
+				$(keys).each(function(k,v){
+
+					if (y==0){
+					if (v > key){
+
+						closest = v;
+						y++;
+
+					}
+				}
+
+				})
+
+				/* var closest = keys.reduce((a, b) => {
+					let aDiff = Math.abs(a - key);
+					let bDiff = Math.abs(b - key);
+				
+					if (aDiff == bDiff) {
+						// Choose largest vs smallest (> vs <)
+						return a > b ? a : b;
+					} else {
+						return bDiff < aDiff ? b : a;
+					}
+				}); */
+
+				console.log(closest);
+
+				/* var closest = keys.reduce(function(prev, curr) {
+					return (Math.abs(curr - key) < Math.abs(prev - key) ? curr : prev);
+				  }); */
+
+				//closest is the key in videoChapterData to which we need to skip
+
+				console.log('skipping to next chapter ('+ videoChapterData[closest].chapterid +') from videoChapterData array')
+
+				player.setCurrentTime(videoChapterData[closest].timeFrom);
+
+
+
+
+
+			}
+
+
+
+			
+			//skip to the next requiredChapters chapter
+
+			
+			
+		}
 
 
 		//chapter selector
@@ -1408,6 +1548,11 @@ function addCuePoints(){
 
 	});
 
+	player.on('seeked', function(data) {
+
+
+	})
+
 	player.on('play', function(data) {
 
 		$('#video-start-pause').trigger('click');
@@ -1428,6 +1573,30 @@ function addCuePoints(){
 		}
 
 
+
+	});
+
+	player.on('timeupdate', function(data) {
+
+		var key = getKeyForChapterid(currentChapter);
+
+		var chapterTime = videoChapterData[key].timeTo - videoChapterData[key].timeFrom;
+
+		var currentTime = data.seconds;
+
+		var chapterPercent = ((currentTime - videoChapterData[key].timeFrom) / chapterTime) * 100;
+
+		$('#myBar').css('width', chapterPercent + '%');
+
+		//$('#myBar').text(Math.round(chapterPercent) * 1 + '%');
+
+		chapterLength = chapterTime;
+
+		chapterPosition = currentTime - videoChapterData[key].timeFrom;
+
+		chapterStartTime = videoChapterData[key].timeFrom;
+
+		$('#currentChapterTime').text(Math.round(chapterPercent) * 1 + '%');
 
 	});
 
@@ -1479,7 +1648,7 @@ $(document).ready(function () {
 
 			$("#videoChapter").vimeo("pause");
 			undoFilterByTag();
-			$(this).removeClass('selectiveTag').removeClass('bg-gieqsGold').removeClass('text-dark').addClass('tagButton').addClass('bg-gray-800');
+			$(this).removeClass('selectiveTag');
 			return;
 
 		}else if ($(this).hasClass('selectiveTag') === false) {
@@ -1519,7 +1688,7 @@ $(document).ready(function () {
 
 			//make the selected button green and all others blue
 
-			if ($(this).hasClass('tagButton') == true) {
+			/* if ($(this).hasClass('tagButton') == true) {
 
 				$(this).addClass('bg-gieqsGold').addClass('text-dark').removeClass('bg-gray-800');
 
@@ -1532,7 +1701,7 @@ $(document).ready(function () {
 				$(this).removeClass('bg-gieqsGold').removeClass('text-dark').addClass('bg-gray-800');
 
 
-			})
+			}) */
 
 			//go through the videoChapterTagData object to identify which of these has the required tag, returning an array of chapter ids
 
@@ -1606,7 +1775,7 @@ $(document).ready(function () {
 
 			startedConnectedPlayback = 1;
 
-            jumpToTime(targetTime);
+            player.setCurrentTime(targetTime);
             
             $("#videoChapter").vimeo("play");
 
@@ -1707,7 +1876,7 @@ $(document).ready(function () {
 
 			//console.log('percentage is ' + percentage + ' and percentageVideoTarget is '+ percentageVideoTarget);
 
-			jumpToTime(percentageVideoTarget);
+			player.setCurrentTime(percentageVideoTarget);
 
 
 
@@ -1731,717 +1900,7 @@ $(document).ready(function () {
 
 	
 
-	$("#videoChapter").on("playProgress", function (event, data) {
-		////console.log( data );
-
-
-
-		if ($('#video-start-pause').hasClass('fa-play') === true) {
-
-
-            if (stopclicked == 1){
-
-                stopclicked = null;
-
-            }else{
-
-                $('#video-start-pause').removeClass('fa-play').addClass('fa-pause');
-            
-            }
-
-		}
-
-		//if the video is within a known chapter, use that chapter data
-
-		//check the chapter selector
-
-		//chapterSelected = $('.chapterSelector').val();
-
-		//ensure it is 		
-
-		//otherwise first seek 
-
-
-		singleInChapter = null; //back in a chapter
-		//put chapter id as the key
-
-
-		videoLength = data.duration;
-		//console.log('x is '+inChapter);
-
-
-		var key = getKeyForChapterid(currentChapter);
-
-				var chapterTime = videoChapterData[key].timeTo - videoChapterData[key].timeFrom;
-
-				var currentTime = data.seconds;
-
-				var chapterPercent = ((currentTime - videoChapterData[key].timeFrom) / chapterTime) * 100;
-
-				$('#myBar').css('width', chapterPercent + '%');
-
-				//$('#myBar').text(Math.round(chapterPercent) * 1 + '%');
-
-				chapterLength = chapterTime;
-
-				chapterPosition = currentTime - videoChapterData[key].timeFrom;
-
-				chapterStartTime = videoChapterData[key].timeFrom;
-
-				$('#currentChapterTime').text(Math.round(chapterPercent) * 1 + '%');
-
-
-
-
-
-
-		inChapter = 0;
-
-		$(videoChapterData).each(function (i, val) {
-
-			//detect if outside a chapter displayed, small function
-
-			//TODO add here is skip tag applied to the chapter move to next chapter
-
-
-			//skip the rest
-
-			//no tags highlighted
-			//no text displayed
-
-
-			//if not within the chapters displayed alert and reset
-
-			//if a selection of chapters displayed set a variable and skip between these one to the other
-
-			if (val.timeTo != '') {
-				if ((val.chapterid == chapterSelected) && (data.seconds >= (val.timeTo - 0.4)) && (triggerStop == 1)) {
-
-					$("#videoChapter").vimeo("pause");
-
-				}
-			}
-
-
-
-			if ((data.seconds >= val.timeFrom) && (data.seconds <= val.timeTo)) {
-
-				//inChapter = 1;
-
-				//currentChapter = val.chapterid;
-
-				
-
-				//$('#totalChapterTime').text(Math.round(chapterTime));
-
-				//console.log(chapterStartTime);
-
-				/* var chapterExists = $('body').find("#chapterSelectorVideo" + val.id + " option[value='" + val.chapterid + "']").length; */
-				
-
-				//updateChapterMarkers(currentChapter);
-
-
-				//update previous and next chapters
-
-				//if playSelectedChapters == null
-				//index of this chapter, this chapter + 1 in array of requiredChapters
-				if (i > 0) {
-
-					//if the chapter is a skip, skip to next chapter
-
-					//var positionOfChapter = requiredChapters.indexOf(val.chapterid);
-
-
-
-
-
-					if (playSelectedChapters == 1) {
-
-						//console.log('in the loop');
-
-						var positionOfChapter = requiredChapters.indexOf(val.chapterid);
-
-						if (positionOfChapter < 0 && startedConnectedPlayback == null) {
-
-							//this chapter is not in the array
-
-							//skip the video to the first chapter of the array
-
-							var targetChapter = requiredChapters[0];
-
-							//console.log('target chapter for previousChapter '+ targetChapter);
-
-							var targetChapterKey = getKeyForChapterid(targetChapter);
-
-							//console.log('target chapter key for previousChapter ' + targetChapterKey);
-
-							var targetTime = videoChapterData[targetChapterKey].timeFrom;
-
-							//console.log('target start time for  previousChapter ' + targetTime);
-
-
-							startedConnectedPlayback = 1;
-
-							jumpToTime(targetTime);
-
-
-						}
-
-						if (positionOfChapter >= 0 && startedConnectedPlayback == 1) {
-
-							if (positionOfChapter == 0) {
-
-								previousChapter = null;
-
-							} else {
-
-								//console.log('positionOfChapter chapter for previousChapter ' + positionOfChapter);
-
-								var requiredChapter = requiredChapters[positionOfChapter - 1];
-
-								//console.log('target chapter for previousChapter ' + requiredChapter);
-
-								var targetChapterKey = getKeyForChapterid(requiredChapter);
-
-								//console.log('target chapter key for previousChapter ' + targetChapterKey);
-
-								////console.log('required previous chapter is ' + requiredChapter);
-
-								previousChapter = videoChapterData[targetChapterKey].chapterid;
-
-								//console.log('previous chapter is ' + previousChapter);
-							}
-
-						}
-
-
-
-
-					} else {
-
-						previousChapter = videoChapterData[i - 1].chapterid;
-
-					}
-
-				} else {
-
-					previousChapter = null;
-				}
-
-				//if playSelectedChapters == 1 then should select the previous member of the array
-
-
-				//if playSelectedChapters == null
-				if (i < (numberofChapters - 1)) {
-
-					if (playSelectedChapters == 1) {
-
-						var positionOfChapter = requiredChapters.indexOf(val.chapterid);
-
-						if (positionOfChapter < 0 && startedConnectedPlayback == null) {
-
-							//this chapter is not in the array
-
-							//skip the video to the first chapter of the array
-
-							var targetChapter = requiredChapters[0];
-
-							////console.log(targetChapter);
-
-							var targetChapterKey = getKeyForChapterid(targetChapter);
-
-							var targetTime = videoChapterData[targetChapterKey].timeFrom;
-
-							startedConnectedPlayback = 1;
-
-							jumpToTime(targetTime);
-
-
-						}
-
-						if (positionOfChapter < 0 && startedConnectedPlayback == 1) {
-
-							//this chapter is not in the array
-
-							//skip the video to the first chapter of the array
-
-							if (nextChapter) {
-
-								var targetChapter = nextChapter;
-
-								////console.log(targetChapter);
-
-								var targetChapterKey = getKeyForChapterid(targetChapter);
-
-								var targetTime = videoChapterData[targetChapterKey].timeFrom;
-
-								jumpToTime(targetTime);
-
-							} else {
-
-								$("#videoChapter").vimeo("pause");
-							}
-
-
-						}
-
-						if (positionOfChapter >= 0 && startedConnectedPlayback == 1) {
-
-							//this chapter is in the array and the flag was started for connected playback
-
-							var requiredChapter = requiredChapters[positionOfChapter + 1];
-
-							if (requiredChapter) {
-
-								var targetChapterKey = getKeyForChapterid(requiredChapter);
-
-								////console.log('required next chapter is ' + requiredChapter);
-
-								nextChapter = videoChapterData[targetChapterKey].chapterid;
-
-							} else {
-
-								//there is no next chapter in the array
-								nextChapter = null;
-
-								//set a flag that this is the end of the connected playback
-							}
-
-
-
-						}
-
-					} else {
-
-
-						nextChapter = videoChapterData[i + 1].chapterid;
-
-					}
-				} else {
-
-					nextChapter = null;
-				}
-
-				//if playSelectedChapters == 1 then should select the next member of the array
-
-
-
-				//var tagName = val.tagName;
-
-				//$('#buttons').html('');
-
-				/* var description = val.description;
-
-				var stripped = description.replace(/\n/g, '<br>');
-
-				//////console.log(stripped);
-
-
-				$//('#chapterHeading').html(val.chaptername);
-
-				$('#chapterHeadingControl').html('Chapter '+val.number);
-				
-				$('#chapterDescription').html(stripped);
-
-				$('#currentChapter').html(val.number);
-				
-				$('#totalChapters').html(numberofChapters); */
-
-				
-
-				/*
-			    	
-			    	////console.log('tagid is' +val.tagid);
-			    	
-			    	////console.log('tagName is' +val.tagName);
-			    	
-					//videoChapterTagData each match the video id and chapter id, get any tags required, highlight them in green
-
-					*/
-
-				//if (playSelectedChapters != 1) { //if we are showing specific chapters don't apply this logic as the video plays
-
-					/* $(videoChapterTagData).each(function (i2, val2) {
-
-						//match this array to the other
-						if (val.chapterid == val2.chapterid) {
-
-							//console.log('chapters matched');
-
-							
-							//console.log(val2);
-							//console.log('tag id'+val2.tagid+' matched and being shown');
-
-							//skip any tag id 254
-
-							if (val2.tagid == '254'){
-
-								//skip detected
-
-								//console.log('tag 90 detected');
-								//get the current chapter, skip to the next
-
-								//var targetChapterSkip = positionOfChapter + 1;
-
-								//val contains current chapter data		
-
-								//var targetChapterKeySkip = getKeyForChapterid(targetChapterSkip);
-
-								var targetTimeSkip = videoChapterData[i+1].timeFrom;
-
-								//get time of targetSkip
-
-								jumpToTime(targetTimeSkip);
-
-								//		
-
-							}
-
-							
-
-							//console.log('tag id'+val2.tagid+' matched and being shown');
-
-							var desiredTag = '#tag' + val2.tagid;
-
-							//suggest var desiredTag = $(document).find('.tagButton').find('')
-
-							//console.log(desiredTag);
-
-							$('body').find(desiredTag).addClass('bg-gieqsGold').addClass('text-dark').removeClass('bg-gray-800');
-
-
-
-							//copy tag to . tagsActive
-							//$('body').find('.tagsActive').prepend('<span class="badge badge-info mx-2 my-2 tagButton" id="tagMirror' + val2.tagid + '">' + val2.tagName + '</span>');
-							//console.log(val2.tagid);
-
-							if (!($('body').find('.tagsActive').find('#tagMirror' + val2.tagid).length)){
-								//if (val2.tagid == selectedTag){
-							$('body').find('.tagsActive').prepend('<span class="badge mx-2 mb-1 bg-dark-dark text-white" data-tag-id="' + val2.tagid + '" id="tagMirror' + val2.tagid + '">' + val2.tagName + '</span>');
-								//}else{
-								//	$('body').find('.tagsActive').prepend('<span class="badge mx-2 mb-1 bg-gray-800 gieqsGold" id="tagMirror' + val2.tagid + '">' + val2.tagName + '</span>');
-
-
-								}
-							//}
-
-							//TODO HIGHLIGHT THE CLICKED TAG
-
-
-						} else {
-
-							var desiredTag = '#tag' + val2.tagid;
-
-							
-
-							$('body').find(desiredTag).removeClass('bg-gieqsGold').removeClass('text-dark').addClass('bg-gray-800');
-
-
-							//remove tag crom tagsActive
-							if ($('body').find('.tagsActive').find('#tagMirror' + val2.tagid).length){
-
-								$('body').find('.tagsActive').find('#tagMirror' + val2.tagid).remove();
-							}
-
-						}
-
-					}) */
-				//}else{
-
-					/* $(videoChapterTagData).each(function (i2, val2) {
-
-						//macth this array to the other
-						if (val.chapterid == val2.chapterid) {
-
-							//console.log('chapters matched');
-
-							
-							//console.log(val2);
-							////console.log('tag id'+val2.tagid+' matched and being shown');
-
-							//skip any tag id 254
-
-							if (val2.tagid == '254'){
-
-								//skip detected
-
-								//console.log('tag 90 detected');
-								//get the current chapter, skip to the next
-
-								//var targetChapterSkip = positionOfChapter + 1;
-
-								//val contains current chapter data		
-
-								//var targetChapterKeySkip = getKeyForChapterid(targetChapterSkip);
-
-								var targetTimeSkip = videoChapterData[i+1].timeFrom;
-
-								//get time of targetSkip
-
-								jumpToTime(targetTimeSkip);
-
-								//		
-
-							}
-
-							
-
-							//console.log('tag id'+val2.tagid+' matched and being shown');
-
-							var desiredTag = '#tag' + val2.tagid;
-
-							//console.log(desiredTag);
-
-							$('body').find(desiredTag).addClass('bg-gieqsGold').addClass('text-dark').removeClass('bg-gray-800');
-
-
-
-							//copy tag to . tagsActive
-							//$('body').find('.tagsActive').prepend('<span class="badge badge-info mx-2 my-2 tagButton" id="tagMirror' + val2.tagid + '">' + val2.tagName + '</span>');
-
-							if (!($('body').find('.tagsActive').find('#tagMirror' + val2.tagid).length)){
-
-								//IF THE TAG IS THE CLICKED TAG HIGHLIGHT FURTHER
-
-									if (selectedTag != null){
-
-										if (val2.tagid == selectedTag){
-
-											$('body').find('.tagsActive').prepend('<span class="badge mx-2 mb-1 bg-dark-dark gieqsGold" id="tagMirror' + val2.tagid + '">' + val2.tagName + '</span>');
-
-
-										}else{
-
-											$('body').find('.tagsActive').prepend('<span class="badge mx-2 mb-1 bg-dark-dark text-white" id="tagMirror' + val2.tagid + '">' + val2.tagName + '</span>');
-										
-											}
-									}else{
-
-										$('body').find('.tagsActive').prepend('<span class="badge mx-2 mb-1 bg-dark-dark text-white" id="tagMirror' + val2.tagid + '">' + val2.tagName + '</span>');
-									
-										}
-							}
-
-
-						} else {
-
-							var desiredTag = '#tag' + val2.tagid;
-
-							
-
-							$('body').find(desiredTag).removeClass('bg-gieqsGold').removeClass('text-dark').addClass('bg-gray-800');
-
-
-							//remove tag crom tagsActive
-							if ($('body').find('.tagsActive').find('#tagMirror' + val2.tagid).length){
-
-								$('body').find('.tagsActive').find('#tagMirror' + val2.tagid).remove();
-							}
-
-						}
-
-					}) */
-
-			//	}
-
-				/*
-			    	
-			    	if ($('#buttons').find('#'+val.tagid+'').length == 0){
-			    	
-			    	//console.log('no button');
-			    	
-			    	var button = '<button type = "button" id="' + val.tagid + '" class="tagButton">' + tagName + '</button>';
-			    	
-			    	//console.log(button);
-			    	
-			    	$('#buttons').append('<button id="' + val.tagid + '" class="tagButton">' + tagName + '</button>');
-			    	
-			    	}*/
-
-				//$('body').find("#chapterSelectorVideo"+val.id+" option:selected").prop("selected",false);
-
-				//check the selector shows the data for the chapter being displayed
-
-				
-
-				////console.log('chapter exists is' +chapterExists);
-
-				//if (chapterExists == 0) {
-
-
-					//$('.tagButton').removeClass('tagbutton').addClass('greenButton');
-
-					//$('.tagButton').removeClass('bg-gieqsGold').removeClass('text-dark').removeClass('text-dark').addClass('bg-gray-800');
-
-
-					//getChapterSelector(val.id, val.chapterid);
-
-				//} else {
-
-
-					//$('body').find("#chapterSelectorVideo" + val.id + " option[value='" + val.chapterid + "']").prop('selected', true);
-					//$('body').find("#chapterSelectorVideo" + val.id).trigger('change');
-
-					//chapterSelected = val.chapterid;
-
-					//each tagButton
-					//check if the tag is in this chapter
-					//if so highlight green
-					//$('.tagButton').removeClass('greenButton').addClass('tagButton');
-					/*
-					$('#tagsDisplay').find('button').each(function(){
-
-						var desiredTag = 'tag'+val.tagid;							
-
-						if ($(this).attr('id') == desiredTag){
-
-							$(this).addClass('greenButton').removeClass('tagButton');
-
-							
-
-						}else{
-
-							$(this).removeClass('greenButton').addClass('tagButton');
-						}
-
-
-
-					})
-					*/
-
-
-				//}
-				//$('.chapterSelector').val('')
-
-			} 
-
-		})
-
-/* 		if (inChapter == 0) {
-
-
-			//console.log(chapterSelected + 'is Chapter selected');
-
-			if (singleInChapter === null) {
-
-				previousChapter = chapterSelected;
-
-				//chapterSelected = null;
-
-				singleInChapter = 1;
-
-
-			} */
-
-			//no match found for chapter
-
-			//set all tags as blue if this is not connected playback
-
-			/* if (playSelectedChapters === null) {
-
-				$('#tagsDisplay').find('button').each(function () {
-
-
-					$(this).removeClass('bg-gieqsGold').removeClass('text-dark').addClass('bg-gray-800');
-
-
-
-				})
-
-			} */
-
-
-
-			//add a blank line to the top of the chapter selector and select it
-
-			/* var chapterselector = "#chapterSelectorVideo" + videoChapterData[0].id;
-
-			var xyz = 0;
-
-			//is there a blank line at the top of the chapter selector		
-
-			$('body').find(chapterselector).find('option').each(function () {
-
-				//console.log($(this).text());
-
-				if ($(this).text() == '(not in a chapter)') {
-
-					xyz++;
-				}
-
-
-			}) */
-
-			//if there is a blank line don't add another
-			//in any event deselect the selected value and go to the blank line
-
-			//if ($(chapterselector + " option:selected").text() != '(not in a chapter)') {/* 
-
-				//first discovery that we are not in a chapter
-
-				//change chapterSelected to null
-
-				//previousChapter = chapterSelected;
-
-				//chapterSelected == null;
-
-
-
-
-				//add previousChapter and nextChapter
-
-				//console.log(chapterselector);
-				//console.log("xyz is " + xyz);
-			/*	if (xyz == 0) {
-					$('body').find(chapterselector).prepend("<option value='(not in a chapter)' selected='selected'>(not in a chapter)</option>");
-				} else {
-
-					$('body').find(chapterselector).prop('selectedIndex', 0);
-				}
-
-			} */
-
-			//set chapter progress bar to 0
-
-			/* $('#myBar').css('width', '0%');
-
-			$('#myBar').text('0%');
-
-			//disable the forward, backward buttons -- done above
-
-
-
-			//stop button causes a play button to be shown -- done above
-
-			//remove text from chapter display area
-
-			$('#chapterHeading').html("<p style='text-align:left;'></p><br><p style='text-align:justify;'></p>");
-
-			if (playSelectedChapters == 1) {
-
-				$("#videoChapter").vimeo("pause");
-
-			} */
-
-
-
-
-		//}
-
-
-
-		//create a function
-
-		//gets dataobject including text, chapter number, timefrom and time to
-
-		//somehow compare the object to the data.seconds and display correct chapter
-
-		//serach array of chapter times
-
-		//first > match display this chapter data
-
-    });
+	
     
     $('#video-back').on('click', function (event) {
 
@@ -2475,7 +1934,7 @@ $(document).ready(function () {
 
 
 
-			jumpToTime(previousChapterStartTime);
+			player.setCurrentTime(previousChapterStartTime);
 
 			if (wasChecked == 1) {
 				$('#triggerStop').prop('checked', true);
@@ -2495,6 +1954,8 @@ $(document).ready(function () {
 
 		//}
 
+		player.play();
+
 
 	})
 
@@ -2502,22 +1963,24 @@ $(document).ready(function () {
 
 		//first time  
 
-		if (plays == 0) {
+		/* if (plays == 0) {
 			$('#videoChapter').vimeoLoad();
 			plays++;
-		}
+		} */
 
-		event.preventDefault();
+		//event.preventDefault();
 
 		if ($(this).hasClass('fa-play') === true) {
 
-			$("#videoChapter").vimeo("play");
+			//$("#videoChapter").vimeo("play");
+			player.play();
 
 			$(this).removeClass('fa-play').addClass('fa-pause');
 
 		} else if ($(this).hasClass('fa-pause') === true) {
 
-			$("#videoChapter").vimeo("pause");
+			//$("#videoChapter").vimeo("pause");
+			player.pause();
 
 			$(this).removeClass('fa-pause').addClass('fa-play');
 
@@ -2562,7 +2025,7 @@ $(document).ready(function () {
 
 
 
-			jumpToTime(nextChapterStartTime);
+			player.setCurrentTime(nextChapterStartTime);
 
 			if (wasChecked == 1) {
 				$('#triggerStop').prop('checked', true);
@@ -2578,7 +2041,7 @@ $(document).ready(function () {
 
 		//if (inChapter == 1){
 
-
+			player.play();
 
 
 		//}
@@ -2603,9 +2066,9 @@ $(document).ready(function () {
         var targetTime = videoChapterData[0].timeFrom;
 		
         
-        jumpToTime(targetTime);
+        player.setCurrentTime(targetTime);
 
-        $("#videoChapter").vimeo("pause");
+        player.pause();
 
         
 		
@@ -2641,9 +2104,9 @@ $(document).ready(function () {
 
 			var nextChapterStartTime = videoChapterData[targetChapterKey].timeFrom;
 
-			jumpToTime(nextChapterStartTime);
+			player.setCurrentTime(nextChapterStartTime);
 
-			$("#videoChapter").vimeo("play");
+			player.play();
 
 		}
 
@@ -2708,7 +2171,7 @@ $(document).ready(function () {
 
 			var nextChapterStartTime = videoChapterData[targetChapterKey].timeFrom;
 
-			jumpToTime(nextChapterStartTime);
+			player.setCurrentTime(nextChapterStartTime);
 
 			$("#videoChapter").vimeo("play");
 
