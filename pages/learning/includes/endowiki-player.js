@@ -202,6 +202,20 @@ try {
 
 try {
 
+	var TagDataPerChapter = $("#TagDataPerChapter").text();
+
+	var TagDataPerChapter = JSON.parse(TagDataPerChapter);
+
+} catch (err) {
+
+	////console.log('No video chapter data received');
+
+}
+
+
+
+try {
+
 	var videoDataText = $("#videoData").text();
 
 	var videoData = $.parseJSON(videoDataText);
@@ -252,11 +266,17 @@ var singleInChapter = null;
 
 var stopclicked = null;
 
+var currentChapter = null;
+
+var player = null;
+
 function videoDisplay(url) {
 
 
 
 	if (isNormalInteger(url) === true) {
+
+		//can use ?muted=1 here if required
 
 		$('#videoDisplay').html("<iframe id='videoChapter' class='video' src='https://player.vimeo.com/video/" + url + "' frameborder='0' allow='autoplay' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>");
 
@@ -290,7 +310,17 @@ function videoDisplay(url) {
 					$video.removeClass('stuck');
 					$video.css({top: '50%', left: '50%'});
                 }
-                });
+				});
+
+				var iframe = document.querySelector('#videoChapter');
+				
+				player = new Vimeo.Player(iframe);
+
+				player.on('loaded', function(data) {
+					addCuePoints();
+			
+				
+				});
 
             }, 100, 'Wrapper Video');
 
@@ -321,6 +351,32 @@ function getKeyForChapterid(chapterid) {
 
 			//console.log(i);
 			requiredReturn = i;
+
+		}
+
+
+
+	})
+
+	return requiredReturn;
+
+}
+
+function getChapterid(chapternumber) {
+
+	//requires videoChapterData
+	//gets the key for the required chapter id
+
+	var requiredReturn = null;
+
+	var arrayPosition = chapternumber - 1;
+
+	$(videoChapterData).each(function (i, val) {
+
+		if (i == arrayPosition) {
+
+			//console.log(i);
+			requiredReturn = val.chapterid;
 
 		}
 
@@ -365,6 +421,43 @@ function getChaptersForGivenTag(tagid) {
 	return requiredReturn;
 
 }
+
+function getTagsGivenChapter(chapterid) {
+
+	//requires videoChapterData
+	//gets the key for the required chapter id
+
+	var requiredReturn = new Array;
+
+	var x = 0;
+	var y = 0;
+
+	$(TagDataPerChapter).each(function (i, val) {
+
+		if (val.chapterid == chapterid) {
+
+			//console.log(val.chapterid);
+
+			//check that this chapter is not already in the list
+			var n = requiredReturn.includes(val.tagid);
+
+			if (n == false) {
+				requiredReturn[x] = val.tagid;
+			}
+
+			x++;
+
+		}
+
+
+
+	})
+
+	return requiredReturn;
+
+}
+
+
 
 function getTagName(tagid) {
 
@@ -805,9 +898,460 @@ function filterByTag(requestedTag){
 
 }
 
+function getNextChapter(currentChapterPassed){
+
+	//if playselectedchapters, use requiredChapters array
+
+
+	if (playSelectedChapters == 1) {
+
+
+		//try to get next chapter
+
+		var positionOfChapter = requiredChapters.indexOf(currentChapterPassed);
+
+		if (positionOfChapter > 0){
+
+			try {
+				
+				nextChapter = requiredChapters[positionOfChapter + 1];
+
+				
+			} catch (error) {
+
+				nextChapter = null;
+
+				
+			}
+		}else{
+
+			nextChapter = null;
+		}
+
+	}else{
+
+		try {
+			
+			nextChapter = videoChapterData[currentChapterPassed].chapterid;
+
+		} catch (error) {
+			
+			nextChapter = null;
+
+		}
+
+	}
+
+	return nextChapter;
+
+
+		
+
+}
+
+function getPreviousChapter(currentChapterPassed){
+
+	//if playselectedchapters, use requiredChapters array
+
+
+	if (playSelectedChapters == 1) {
+
+
+		//try to get next chapter
+
+		var positionOfChapter = requiredChapters.indexOf(currentChapterPassed);
+
+		if (positionOfChapter > 0){
+
+			try {
+				
+				previousChapter = requiredChapters[positionOfChapter - 1];
+
+				
+			} catch (error) {
+
+				previousChapter = null;
+
+				
+			}
+		}else{
+
+			previousChapter = null;
+		}
+
+	}else{
+
+		try {
+				
+			previousChapter = videoChapterData[currentChapterPassed - 2].chapterid;
+
+		} catch (error) {
+			
+			previousChapter = null;
+		}
+
+	}
+
+	return previousChapter;
+
+
+		
+
+}
+
+function updateChapterMarkers(currentChapterPassed){
+
+	//when chapter changes or when a tag clicked
+
+
+
+
+	//check if connectedplayback
+	//if so make sure to check the other array
+	//otherwise set the previousChapter and nextChapter flags
+
+	//if (i > 0) {
+
+		//if the chapter is a skip, skip to next chapter
+
+		//var positionOfChapter = requiredChapters.indexOf(val.chapterid);
+
+
+
+
+
+		if (playSelectedChapters == 1) {
+
+			//console.log('in the loop');
+
+			var positionOfChapter = requiredChapters.indexOf(currentChapterPassed);
+
+			if (positionOfChapter < 0 && startedConnectedPlayback == null) {
+
+				//this chapter is not in the array
+
+				//skip the video to the first chapter of the array
+
+				var targetChapter = requiredChapters[0];
+
+				//console.log('target chapter for previousChapter '+ targetChapter);
+
+				var targetChapterKey = getKeyForChapterid(targetChapter);
+
+				//console.log('target chapter key for previousChapter ' + targetChapterKey);
+
+				var targetTime = videoChapterData[targetChapterKey].timeFrom;
+
+				//console.log('target start time for  previousChapter ' + targetTime);
+
+
+				startedConnectedPlayback = 1;
+
+				jumpToTime(targetTime);
+
+
+			}
+
+			if (positionOfChapter >= 0 && startedConnectedPlayback == 1) {
+
+				if (positionOfChapter == 0) {
+
+					previousChapter = null;
+
+				} else {
+
+					//console.log('positionOfChapter chapter for previousChapter ' + positionOfChapter);
+
+					var requiredChapter = requiredChapters[positionOfChapter - 1];
+
+					//console.log('target chapter for previousChapter ' + requiredChapter);
+
+					var targetChapterKey = getKeyForChapterid(requiredChapter);
+
+					//console.log('target chapter key for previousChapter ' + targetChapterKey);
+
+					////console.log('required previous chapter is ' + requiredChapter);
+
+					previousChapter = videoChapterData[targetChapterKey].chapterid;
+
+					//console.log('previous chapter is ' + previousChapter);
+				}
+
+			}
+
+
+
+
+		} else {
+
+			try {
+				
+				previousChapter = videoChapterData[currentChapterPassed - 2].chapterid;
+
+			} catch (error) {
+				
+				previousChapter = null;
+			}
+
+
+		}
+
+	//} else {
+
+	//	previousChapter = null;
+	//xw}
+
+	//if playSelectedChapters == 1 then should select the previous member of the array
+
+
+	//if playSelectedChapters == null
+
+		if (playSelectedChapters == 1) {
+
+			var positionOfChapter = requiredChapters.indexOf(currentChapterPassed);
+
+			if (positionOfChapter < 0 && startedConnectedPlayback == null) {
+
+				//this chapter is not in the array
+
+				//skip the video to the first chapter of the array
+
+				var targetChapter = requiredChapters[0];
+
+				////console.log(targetChapter);
+
+				var targetChapterKey = getKeyForChapterid(targetChapter);
+
+				var targetTime = videoChapterData[targetChapterKey].timeFrom;
+
+				startedConnectedPlayback = 1;
+
+				jumpToTime(targetTime);
+
+
+			}
+
+			if (positionOfChapter < 0 && startedConnectedPlayback == 1) {
+
+				//this chapter is not in the array
+
+				//skip the video to the first chapter of the array
+
+				if (nextChapter) {
+
+					var targetChapter = nextChapter;
+
+					////console.log(targetChapter);
+
+					var targetChapterKey = getKeyForChapterid(targetChapter);
+
+					var targetTime = videoChapterData[targetChapterKey].timeFrom;
+
+					jumpToTime(targetTime);
+
+				} else {
+
+					$("#videoChapter").vimeo("pause");
+				}
+
+
+			}
+
+			if (positionOfChapter >= 0 && startedConnectedPlayback == 1) {
+
+				//this chapter is in the array and the flag was started for connected playback
+
+				var requiredChapter = requiredChapters[positionOfChapter + 1];
+
+				if (requiredChapter) {
+
+					var targetChapterKey = getKeyForChapterid(requiredChapter);
+
+					////console.log('required next chapter is ' + requiredChapter);
+
+					nextChapter = videoChapterData[targetChapterKey].chapterid;
+
+				} else {
+
+					//there is no next chapter in the array
+					nextChapter = null;
+
+					//set a flag that this is the end of the connected playback
+				}
+
+
+
+			}
+
+		} else {
+
+
+			try {
+				
+				nextChapter = videoChapterData[currentChapterPassed].chapterid;
+
+			} catch (error) {
+				
+				nextChapter = null;
+			}
+
+		}
+
+}
+
+function addCuePoints(){
+
+
+	$(videoChapterData).each(function(k,v){
+
+
+		player.addCuePoint(
+			v.timeFrom, 
+			
+			{id: v.chapterid,
+
+			number: k+1,
+
+			next: getNextChapter(k+1),
+
+			previous: getPreviousChapter(k+1),
+
+			tags: getTagsGivenChapter(v.chapterid)
+			}
+			
+		);
+
+	})
+
+	player.on('cuepoint', function(data) {
+		
+		console.dir(data)
+
+		//define the chapter number and key for videoChapterData
+		var number = data.data.number;
+		var key = number - 1;
+
+		//write the headings to the page 
+		var chaptername = videoChapterData[key].chaptername;
+		var description = videoChapterData[key].description;
+		description.replace(/\n/g, '<br>');
+
+		console.log(chaptername);
+
+		$('#chapterHeading').html(chaptername);
+		$('#chapterDescription').html(description);
+		$('#currentChapter').html(number);
+		$('#totalChapters').html(numberofChapters);
+
+		//handle tag changes
+		var tags = data.data.tags;
+
+			//handle skip logic
+			if (tags.indexOf('254') > -1){
+
+				try {
+
+					var targetTimeSkip = videoChapterData[key+1].timeFrom;
+
+					player.setCurrentTime(targetTimeSkip);
+					
+				} catch (error) {
+
+					player.pause();
+					
+				}
+
+				
+
+			}
+
+			//otherwise write tags 
+
+			$(tags).each(function(k,v){
+
+				//find all the tags on the page
+
+				var tagid = v;
+
+				$('body').find('.tagButton').each(function(){
+
+					if ($(this).attr('data-tag-id') == tagid){
+		
+						$(this).addClass('bg-gieqsGold').addClass('text-dark').removeClass('bg-gray-800');
+		
+					}else{
+		
+						$(this).removeClass('bg-gieqsGold').removeClass('text-dark').addClass('bg-gray-800');
+		
+					}	
+					
+				})
+
+				//function to highlight
+
+
+			})
+
+
+
+
+		//set text
+
+		//var description = val.description;
+
+				//var stripped = description.replace(/\n/g, '<br>');
+
+				//////console.log(stripped);
+
+
+
+				/* $('#chapterHeadingControl').html('Chapter '+val.number);
+				
+				$('#chapterDescription').html(stripped);
+
+				$('#currentChapter').html(val.number);
+				
+				$('#totalChapters').html(numberofChapters); */
+
+		//
+		
+		//change the chapter playing
+
+
+
+	});
+
+	player.on('play', function(data) {
+
+		$('#video-start-pause').trigger('click');
+
+		if ($('#video-start-pause').hasClass('fa-play') === true) {
+
+
+            if (stopclicked == 1){
+
+                stopclicked = null;
+
+            }else{
+
+                $('#video-start-pause').removeClass('fa-play').addClass('fa-pause');
+            
+            }
+
+		}
+
+
+
+	});
+
+}
+
 $(document).ready(function () {
 
-    //getVideoTags(videoPassed);
+	//getVideoTags(videoPassed);
+
+	
+	
 
     //writes the chapter heading, description and author information
     $(videoData).each(function (i, val) {
@@ -890,7 +1434,7 @@ $(document).ready(function () {
 
 			if ($(this).hasClass('tagButton') == true) {
 
-				$(this).removeClass('tagButton').addClass('bg-gieqsGold').addClass('text-dark').removeClass('bg-gray-800');
+				$(this).addClass('bg-gieqsGold').addClass('text-dark').removeClass('bg-gray-800');
 
 			}
 
@@ -898,7 +1442,7 @@ $(document).ready(function () {
 
 				//console.log($(this));
 
-				$(this).removeClass('bg-gieqsGold').removeClass('text-dark').addClass('tagButton').addClass('bg-gray-800');
+				$(this).removeClass('bg-gieqsGold').removeClass('text-dark').addClass('bg-gray-800');
 
 
 			})
@@ -989,7 +1533,7 @@ $(document).ready(function () {
 
     }));
     
-    $('#triggerStop').change(function () {
+    /* $('#triggerStop').change(function () {
 
 		if ($(this).is(':checked')) {
 
@@ -1001,7 +1545,7 @@ $(document).ready(function () {
 			triggerStop = 0;
 		}
 
-    });
+    }); */
     
     $('body').on("click", ".title-fold", (function (event) {
 
@@ -1098,6 +1642,8 @@ $(document).ready(function () {
 
 	})
 
+	
+
 	$("#videoChapter").on("playProgress", function (event, data) {
 		////console.log( data );
 
@@ -1168,10 +1714,13 @@ $(document).ready(function () {
 
 				inChapter = 1;
 
+				currentChapter = val.chapterid;
 				
 
+				//updateChapterMarkers(currentChapter);
 
 
+				//update previous and next chapters
 
 				//if playSelectedChapters == null
 				//index of this chapter, this chapter + 1 in array of requiredChapters
@@ -1360,14 +1909,14 @@ $(document).ready(function () {
 
 				//$('#buttons').html('');
 
-				var description = val.description;
+				/* var description = val.description;
 
 				var stripped = description.replace(/\n/g, '<br>');
 
 				//////console.log(stripped);
 
 
-				$('#chapterHeading').html(val.chaptername);
+				$//('#chapterHeading').html(val.chaptername);
 
 				$('#chapterHeadingControl').html('Chapter '+val.number);
 				
@@ -1375,7 +1924,7 @@ $(document).ready(function () {
 
 				$('#currentChapter').html(val.number);
 				
-				$('#totalChapters').html(numberofChapters);
+				$('#totalChapters').html(numberofChapters); */
 
 				
 
@@ -1393,14 +1942,14 @@ $(document).ready(function () {
 
 					$(videoChapterTagData).each(function (i2, val2) {
 
-						//macth this array to the other
+						//match this array to the other
 						if (val.chapterid == val2.chapterid) {
 
 							//console.log('chapters matched');
 
 							
 							//console.log(val2);
-							////console.log('tag id'+val2.tagid+' matched and being shown');
+							//console.log('tag id'+val2.tagid+' matched and being shown');
 
 							//skip any tag id 254
 
@@ -1433,9 +1982,11 @@ $(document).ready(function () {
 
 							var desiredTag = '#tag' + val2.tagid;
 
+							//suggest var desiredTag = $(document).find('.tagButton').find('')
+
 							//console.log(desiredTag);
 
-							$('body').find(desiredTag).addClass('greenButton').addClass('bg-gieqsGold').addClass('text-dark').removeClass('tagButton').removeClass('bg-gray-800');
+							$('body').find(desiredTag).addClass('bg-gieqsGold').addClass('text-dark').removeClass('bg-gray-800');
 
 
 
@@ -1445,7 +1996,7 @@ $(document).ready(function () {
 
 							if (!($('body').find('.tagsActive').find('#tagMirror' + val2.tagid).length)){
 								//if (val2.tagid == selectedTag){
-							$('body').find('.tagsActive').prepend('<span class="badge mx-2 mb-1 bg-gieqsGold text-dark" data-tag-id="' + val2.tagid + '" id="tagMirror' + val2.tagid + '">' + val2.tagName + '</span>');
+							$('body').find('.tagsActive').prepend('<span class="badge mx-2 mb-1 bg-dark-dark text-white" data-tag-id="' + val2.tagid + '" id="tagMirror' + val2.tagid + '">' + val2.tagName + '</span>');
 								//}else{
 								//	$('body').find('.tagsActive').prepend('<span class="badge mx-2 mb-1 bg-gray-800 gieqsGold" id="tagMirror' + val2.tagid + '">' + val2.tagName + '</span>');
 
@@ -1462,7 +2013,7 @@ $(document).ready(function () {
 
 							
 
-							$('body').find(desiredTag).removeClass('greenButton').removeClass('bg-gieqsGold').removeClass('text-dark').addClass('tagButton').addClass('bg-gray-800');
+							$('body').find(desiredTag).removeClass('bg-gieqsGold').removeClass('text-dark').addClass('bg-gray-800');
 
 
 							//remove tag crom tagsActive
@@ -1520,7 +2071,7 @@ $(document).ready(function () {
 
 							//console.log(desiredTag);
 
-							$('body').find(desiredTag).addClass('greenButton').addClass('bg-gieqsGold').addClass('text-dark').removeClass('tagButton').removeClass('bg-gray-800');
+							$('body').find(desiredTag).addClass('bg-gieqsGold').addClass('text-dark').removeClass('bg-gray-800');
 
 
 
@@ -1531,9 +2082,23 @@ $(document).ready(function () {
 
 								//IF THE TAG IS THE CLICKED TAG HIGHLIGHT FURTHER
 
-								
-									$('body').find('.tagsActive').prepend('<span class="badge mx-2 mb-1 bg-gieqsGold text-dark" id="tagMirror' + val2.tagid + '">' + val2.tagName + '</span>');
-								
+									if (selectedTag != null){
+
+										if (val2.tagid == selectedTag){
+
+											$('body').find('.tagsActive').prepend('<span class="badge mx-2 mb-1 bg-dark-dark gieqsGold" id="tagMirror' + val2.tagid + '">' + val2.tagName + '</span>');
+
+
+										}else{
+
+											$('body').find('.tagsActive').prepend('<span class="badge mx-2 mb-1 bg-dark-dark text-white" id="tagMirror' + val2.tagid + '">' + val2.tagName + '</span>');
+										
+											}
+									}else{
+
+										$('body').find('.tagsActive').prepend('<span class="badge mx-2 mb-1 bg-dark-dark text-white" id="tagMirror' + val2.tagid + '">' + val2.tagName + '</span>');
+									
+										}
 							}
 
 
@@ -1543,7 +2108,7 @@ $(document).ready(function () {
 
 							
 
-							$('body').find(desiredTag).removeClass('greenButton').removeClass('bg-gieqsGold').removeClass('text-dark').addClass('tagButton').addClass('bg-gray-800');
+							$('body').find(desiredTag).removeClass('bg-gieqsGold').removeClass('text-dark').addClass('bg-gray-800');
 
 
 							//remove tag crom tagsActive
@@ -1607,7 +2172,7 @@ $(document).ready(function () {
 
 					//$('.tagButton').removeClass('tagbutton').addClass('greenButton');
 
-					$('.tagButton').removeClass('greenButton').removeClass('bg-gieqsGold').removeClass('text-dark').removeClass('text-dark').addClass('tagButton').addClass('bg-gray-800');
+					$('.tagButton').removeClass('bg-gieqsGold').removeClass('text-dark').removeClass('text-dark').addClass('bg-gray-800');
 
 
 					//getChapterSelector(val.id, val.chapterid);
@@ -1653,7 +2218,7 @@ $(document).ready(function () {
 
 				//outside a defined chapter
 
-
+				currentChapter = null;
 
 
 			}
@@ -1685,7 +2250,7 @@ $(document).ready(function () {
 				$('#tagsDisplay').find('button').each(function () {
 
 
-					$(this).removeClass('greenButton').addClass('tagButton');
+					$(this).removeClass('bg-gieqsGold').removeClass('text-dark').addClass('bg-gray-800');
 
 
 

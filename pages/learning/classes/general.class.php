@@ -124,9 +124,46 @@ class general {
 
 	}
 
+	public function getTagDataPerChapter($videoid){
+
+		$q = "SELECT b.`id` as `chapterid`, 
+		d.`id` as `tagid`
+		FROM `video` as a 
+		INNER JOIN `chapter` as b ON a.`id` = b.`video_id` 
+		INNER JOIN `chapterTag` as c ON b.`id` = c.`chapter_id` 
+		INNER JOIN `tags` as d ON d.`id` = c.`tags_id` 
+		WHERE a.`id` = $videoid ORDER BY b.`id` ASC";
+
+		$result = $this->connection->RunQuery($q);
+
+		$x = 0;
+
+		if ($result){
+
+
+			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+				$rows[$x] = array_map('utf8_encode', $row);
+				$x++;
+			}
+
+			return json_encode($rows);
+
+
+		}
+
+		
+	}
+
 	public function getVideoAndChapterData ($id) {
 
-		$q = "SELECT a.`id`, a.`split`, b.`id` as `chapterid`, b.`timeFrom`, b.`timeTo`, b.`number`, b.`name` AS `chaptername`, b.`description`, d.`id` as `tagid`, d.`tagName` FROM `video` as a INNER JOIN `chapter` as b ON a.`id` = b.`video_id` INNER JOIN `chapterTag` as c ON b.`id` = c.`chapter_id` INNER JOIN `tags` as d ON d.`id` = c.`tags_id` WHERE a.`id` = $id ORDER BY b.`number` ASC";
+		$q = "SELECT a.`id`, a.`split`, b.`id` as `chapterid`, 
+		b.`timeFrom`, b.`timeTo`, b.`number`, b.`name` AS `chaptername`, 
+		b.`description`, d.`id` as `tagid`, d.`tagName`
+		FROM `video` as a 
+		INNER JOIN `chapter` as b ON a.`id` = b.`video_id` 
+		INNER JOIN `chapterTag` as c ON b.`id` = c.`chapter_id` 
+		INNER JOIN `tags` as d ON d.`id` = c.`tags_id` 
+		WHERE a.`id` = $id ORDER BY b.`number` ASC";
 
 		$result = $this->connection->RunQuery($q);
 

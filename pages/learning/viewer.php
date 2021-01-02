@@ -717,6 +717,9 @@
     <div id="videoChapterTagData" style="display:none;"><?php echo $general->getVideoAndChapterData($id);?>
     </div>
 
+    <div id="TagDataPerChapter" style="display:none;"><?php echo $general->getTagDataPerChapter($id);?>
+    </div>
+
     <div id="videoData" style="display:none;"><?php $videoDataMod = $general->getVideoDataMod($id);
                         
                         //print_r($videoDataMod);
