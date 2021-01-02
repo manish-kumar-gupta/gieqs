@@ -534,7 +534,7 @@
         border-color: #eec278;
         display: inline-block;
         padding: 2px 10px;
-        color: #eec278;
+        color: #95aac9;
         margin: 3px 2px;
         text-align: center;
         flex-grow: 1;
@@ -833,11 +833,11 @@
 
                                             if ($currentUserLevel > 4){
 
-                                                $tagBox .= '<span class="badge bg-gray-800 mx-2 mb-1" data-tag-id="' . $value1['id'] . '" id="tag' . $value1['id'] . '">' . $value1['tagName'] . '</span>'; 
+                                                $tagBox .= '<span class="badge bg-dark mx-2 mb-1" data-tag-id="' . $value1['id'] . '" id="tag' . $value1['id'] . '">' . $value1['tagName'] . '</span>'; 
 
                                             }else{
 
-                                           $tagBox .= '<span class="badge bg-gray-800 mx-2 mb-1 tagButton tagTagsboxButton" data-tag-id="' . $value1['id'] . '" id="tag' . $value1['id'] . '">' . $value1['tagName'] . '</span>'; 
+                                           $tagBox .= '<span class="badge bg-dark mx-2 mb-1 tagButton tagTagsboxButton" data-tag-id="' . $value1['id'] . '" id="tag' . $value1['id'] . '">' . $value1['tagName'] . '</span>'; 
                                             }
                                         }
 
