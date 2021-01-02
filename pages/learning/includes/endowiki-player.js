@@ -1267,30 +1267,97 @@ function addCuePoints(){
 
 			//otherwise write tags 
 
-			$(tags).each(function(k,v){
+				//clear tagsMirror area
 
-				//find all the tags on the page
+				$('.tagsActive').html('');
 
-				var tagid = v;
+				//first write the required tags (max 6) to the tagsMirror area
 
-				$('body').find('.tagButton').each(function(){
+				var x = 0;
 
-					if ($(this).attr('data-tag-id') == tagid){
+				$(tags).each(function(k,v){
+
+					if (x < 6){
+					$('.tagsActive').append('<span class="badge mx-2 mb-1 bg-dark-dark text-white tagMirror" id="tagMirror' + v + '">' + getTagName(v) + '</span>');
+					x++;
+					}
+
+				})
+			
+			
+			//find all the tags on the page
+
+			
+
+				//var tagid = v;
+
+				$(document).find('.tagTagsboxButton').each(function(){
+
+					if (tags.indexOf($(this).attr('data-tag-id')) > -1){
 		
-						$(this).addClass('bg-gieqsGold').addClass('text-dark').removeClass('bg-gray-800');
+						//$(this).addClass('bg-gieqsGold').addClass('text-dark').removeClass('bg-gray-800');
+						$(this).addClass('bg-dark-dark').addClass('text-white').removeClass('bg-gray-800');
 		
 					}else{
 		
-						$(this).removeClass('bg-gieqsGold').removeClass('text-dark').addClass('bg-gray-800');
+						$(this).removeClass('bg-dark-dark').removeClass('text-white').addClass('bg-gray-800');
 		
 					}	
 					
 				})
 
-				//function to highlight
+				$(document).find('.tagTimeline').each(function(){
+
+					if (tags.indexOf($(this).attr('data-tag-id')) > -1){
+		
+						$(this).css({background: "#eec278", color: "#162e4d" });
+		
+					}else{
+		
+						$(this).css({background: "#162e4d", color: "#eec278" });
+		
+					}	
+					
+				})
+
+				//function to extra highlight the selected tag
+
+				if (selectedTag != null){
+
+					$(document).find('.tagTagsboxButton').each(function(){
+
+						if ($(this).attr('data-tag-id') == selectedTag){
+			
+							//$(this).addClass('bg-gieqsGold').addClass('text-dark').removeClass('bg-gray-800');
+							$(this).addClass('gieqsGold');
+			
+						}else{
+			
+							$(this).removeClass('gieqsGold');
+			
+						}	
+						
+					})
+	
+					$(document).find('.tagTimeline').each(function(){
+	
+						if ($(this).attr('data-tag-id') == selectedTag){
+			
+							//$(this).addClass('bg-gieqsGold').addClass('text-dark').removeClass('bg-gray-800');
+							$(this).addClass('gieqsGold');
+			
+						}else{
+			
+							$(this).removeClass('gieqsGold');
+			
+						}	
+						
+					})
+
+				}
 
 
-			})
+			//})
 
 
 
@@ -1940,7 +2007,7 @@ $(document).ready(function () {
 
 				if (playSelectedChapters != 1) { //if we are showing specific chapters don't apply this logic as the video plays
 
-					$(videoChapterTagData).each(function (i2, val2) {
+					/* $(videoChapterTagData).each(function (i2, val2) {
 
 						//match this array to the other
 						if (val.chapterid == val2.chapterid) {
@@ -2024,7 +2091,7 @@ $(document).ready(function () {
 
 						}
 
-					})
+					}) */
 				}else{
 
 					$(videoChapterTagData).each(function (i2, val2) {

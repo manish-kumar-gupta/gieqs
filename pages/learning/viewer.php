@@ -64,6 +64,17 @@
 
     }
 
+    .badge{
+
+        font-weight: 550 !important;
+    }
+
+    .indigo {
+
+        background-color: #6e00ff !important;
+
+    }
+
     .close>span:not(.sr-only) {
         color: white !important;
     }
@@ -826,7 +837,7 @@
 
                                             }else{
 
-                                           $tagBox .= '<span class="badge bg-gray-800 mx-2 mb-1 tagButton" data-tag-id="' . $value1['id'] . '" id="tag' . $value1['id'] . '">' . $value1['tagName'] . '</span>'; 
+                                           $tagBox .= '<span class="badge bg-gray-800 mx-2 mb-1 tagButton tagTagsboxButton" data-tag-id="' . $value1['id'] . '" id="tag' . $value1['id'] . '">' . $value1['tagName'] . '</span>'; 
                                             }
                                         }
 
@@ -924,7 +935,7 @@
                         </div>
                         <div class="row">
                             <div class="col text-left mt-0 align-items-center">
-                                <div class="tagsActive d-flex flex-wrap mt-3"
+                                <div class="tagsActive d-flex flex-wrap mt-3 mb-3"
                                     style="max-height:50px; overflow-y: hidden;">
 
                                 </div>
@@ -1375,7 +1386,7 @@ chapterData
                     <ul class="content-skills">
 
                         <?php foreach ($tagsChapter as $key2=>$value2){?>
-                        <li class="tagButton" data-tag-id="<?php echo $value2['tagid'];?>"
+                        <li class="tagButton tagTimeline" data-tag-id="<?php echo $value2['tagid'];?>"
                             id="tag<?php echo $value2['tagid'];?>"><?php echo $value2['tagName'];?>
                         </li>
 
