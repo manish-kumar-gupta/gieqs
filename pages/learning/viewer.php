@@ -64,9 +64,32 @@
 
     }
 
+    /* Tag highlighting */
+
     .badge{
 
         font-weight: 550 !important;
+    }
+
+    .unhighlightedTag {
+
+        color: #95aac9 !important;
+        background-color: #162e4d !important;
+
+    }
+
+    .highlightedTag {
+
+        color: rgb(238, 194, 120) !important;
+        background-color: #162e4d !important;
+
+    }
+
+    .selectedTag {
+
+        color: #162e4d !important;
+        background-color: rgb(238, 194, 120) !important;
+
     }
 
     .indigo {
@@ -489,6 +512,18 @@
         background: #193659;
         border-radius: 2px;
         padding: 1em;
+    }
+
+    .timeline-active {
+
+        border: 5px solid rgb(238, 195, 120) !important;
+
+    }
+
+    .cd-date-active {
+
+        color: rgb(238, 195, 120) !important;
+
     }
 
     .cd-timeline-content .timeline-content-info {
@@ -1367,7 +1402,7 @@ chapterData
                 <div class="cd-timeline-img cd-picture">
                 </div>
 
-                <div class="cd-timeline-content chapterBox" data-chapter-id="<?php echo $value['chapterid'];?>">
+                <div class="cd-timeline-content chapterBox" data-chapter-id="<?php echo $value['chapterid'];?>" style="border-radius:8px !important;">
                     <h2 class="chapterSkip" data-id="<?php echo $value['chapterid'];?>">
                         <?php echo $value['chaptername']; ?></h2>
                     <span class="cd-date chapterSkip" data-id="<?php echo $value['chapterid'];?>">Chapter

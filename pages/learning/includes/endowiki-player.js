@@ -544,8 +544,9 @@ function getVideoTime(chapterid, type) {
 function jumpToTime(time) {
 
 
-	$("#videoChapter").vimeo("seekTo", time);
-	//$("#videoChapter").vimeo("play");
+	player.setCurrentTime(time);
+	
+	player.play();
 
 }
 
@@ -824,7 +825,7 @@ function filterByTag(requestedTag){
 	selectedTag = null;
 		//remove all selected tags
 
-		$("#videoChapter").vimeo("pause");
+		player.pause();
 
 		$('body').find('.tagButton').each(function(){
 
@@ -955,7 +956,8 @@ function filterByTag(requestedTag){
 		waitForFinalEvent(function(){
 			
 			
-			$('#video-start-pause').trigger('click');
+			//$('#video-start-pause').trigger('click');
+			player.play();
 
 
 		  }, 1000, "play selected part of video");
@@ -1013,6 +1015,16 @@ function getNextChapter(currentChapterPassed){
 		
 
 }
+
+$.fn.isInViewport = function() {
+    var elementTop = $(this).offset().top;
+    var elementBottom = elementTop + $(this).outerHeight();
+
+    var viewportTop = $(window).scrollTop();
+    var viewportBottom = viewportTop + $(window).height();
+
+    return elementBottom > viewportTop && elementTop < viewportBottom;
+};
 
 function getPreviousChapter(currentChapterPassed){
 
@@ -1216,7 +1228,7 @@ function updateChapterMarkers(currentChapterPassed){
 
 				} else {
 
-					$("#videoChapter").vimeo("pause");
+					player.pause();
 				}
 
 
@@ -1284,6 +1296,38 @@ function updatePlayer(data){
 	$('#currentChapter').html(number);
 	$('#totalChapters').html(numberofChapters);
 
+	//set timeline colouring
+
+	$(document).find('.cd-date').each(function(){
+
+		if ($(this).attr('data-id') == chapterid){
+
+			$(this).addClass('cd-date-active');
+
+		}else{
+
+			$(this).removeClass('cd-date-active');
+
+		}
+
+
+	})
+
+	$(document).find('.cd-timeline-content').each(function(){
+
+		if ($(this).attr('data-chapter-id') == chapterid){
+
+			$(this).addClass('timeline-active');
+
+		}else{
+
+			$(this).removeClass('timeline-active');
+
+		}
+
+
+	})
+
 	//set globals
 
 	if (requiredChapters == null){
@@ -1294,6 +1338,7 @@ function updatePlayer(data){
 
 	}else{
 
+		showAlert('Skipping between tagged chapters (active filter).  Click here to cancel');
 		//find the position of this chapter
 
 		var positionInRequiredChapters = requiredChapters.indexOf(chapterid);
@@ -1465,7 +1510,7 @@ function updatePlayer(data){
 			$(tags).each(function(k,v){
 
 				if (x < 6){
-				$('.tagsActive').append('<span class="badge mx-2 mb-1 bg-dark gieqsGold tagMirror" data-tag-id="' + v + '">' + getTagName(v) + '</span>');
+				$('.tagsActive').append('<span class="badge mx-2 mb-1 highlightedTag tagMirror" data-tag-id="' + v + '">' + getTagName(v) + '</span>');
 				x++;
 				}
 
@@ -1483,11 +1528,11 @@ function updatePlayer(data){
 				if (tags.indexOf($(this).attr('data-tag-id')) > -1){
 	
 					//$(this).addClass('bg-gieqsGold').addClass('text-dark').removeClass('bg-gray-800');
-					$(this).addClass('gieqsGold').addClass('text-dark');
+					$(this).addClass('highlightedTag').removeClass('selectedTag').removeClass('unhighlightedTag');
 	
 				}else{
 	
-					$(this).removeClass('gieqsGold');
+					$(this).addClass('unhighlightedTag').removeClass('selectedTag').removeClass('highlightedTag');
 	
 				}	
 				
@@ -1517,7 +1562,7 @@ function updatePlayer(data){
 					if ($(this).attr('data-tag-id') == selectedTag){
 		
 						//$(this).addClass('bg-gieqsGold').addClass('text-dark').removeClass('bg-gray-800');
-						$(this).addClass('bg-gieqsGold').addClass('text-dark').removeClass('gieqsGold').removeClass('bg-dark');
+						$(this).addClass('selectedTag').removeClass('unhighlightedTag').removeClass('highlightedTag');
 		
 					}	
 					
@@ -1539,7 +1584,7 @@ function updatePlayer(data){
 					if ($(this).attr('data-tag-id') == selectedTag){
 		
 						//$(this).addClass('bg-gieqsGold').addClass('text-dark').removeClass('bg-gray-800');
-						$(this).addClass('bg-gieqsGold').addClass('text-dark').removeClass('gieqsGold').removeClass('bg-dark');
+						$(this).addClass('selectedTag').removeClass('unhighlightedTag').removeClass('highlightedTag');
 		
 					}	
 					
@@ -1580,7 +1625,24 @@ function updatePlayer(data){
 
 function showAlert(text){
 
-	var $el = $(document).find('#videoBar');
+
+	//show below the video bar unless the tag bar is fully on screen
+	if (!($('#tagBar').hasClass('d-none'))){
+
+		if ($('#tagBar').isInViewport()){
+
+			var $el = $(document).find('#tagBar');
+
+		}else{
+			var $el = $(document).find('#videoBar');
+
+
+		}
+
+	}else{
+		var $el = $(document).find('#videoBar');
+
+	}
 	var bottom = $el.offset().top + $el.outerHeight(true);
 	bottom = bottom;
 	$('.alert').html(text);
@@ -1594,7 +1656,7 @@ function showAlert(text){
 		$('.alert').addClass('d-none');
 
 
-	  }, 1500, "alert");
+	  }, 4000, "alert");
 
 }
 
@@ -1685,7 +1747,7 @@ function addCuePoints(){
 
 	player.on('play', function(data) {
 
-		$('#video-start-pause').trigger('click');
+		//$('#video-start-pause').trigger('click');
 
 		if ($('#video-start-pause').hasClass('fa-play') === true) {
 
@@ -1776,7 +1838,7 @@ $(document).ready(function () {
 
 		if ($(this).hasClass('selectiveTag') === true) {
 
-			$("#videoChapter").vimeo("pause");
+			player.pause();
 			undoFilterByTag();
 			$(this).removeClass('selectiveTag');
 			return;
@@ -1789,7 +1851,7 @@ $(document).ready(function () {
 
 			selectedTag = null;
 
-			$("#videoChapter").vimeo("pause");
+			player.pause();
 
 			//set the play only these chapters tag
 			playSelectedChapters = 1;
@@ -1907,7 +1969,7 @@ $(document).ready(function () {
 
             player.setCurrentTime(targetTime);
             
-            $("#videoChapter").vimeo("play");
+            player.play();
 
 
 		}
@@ -2079,7 +2141,9 @@ $(document).ready(function () {
 		}else{
 
 			//alert('no previous chapter');
-			showAlert('No previous chapter');
+			player.setCurrentTime(0);
+
+			showAlert('Video Restarted. No previous chapter');
 			//$('.alert').show();
 			//waitForFinalEvent
 
@@ -2105,23 +2169,35 @@ $(document).ready(function () {
 			plays++;
 		} */
 
-		//event.preventDefault();
+		event.preventDefault();
+
+		
+
+		if ($(this).hasClass('fa-pause') === true) {
+
+			//$("#videoChapter").vimeo("pause");
+			
+
+			$(this).removeClass('fa-pause').addClass('fa-play');
+
+			player.pause();
+			
+			return;
+
+		} 
 
 		if ($(this).hasClass('fa-play') === true) {
 
 			//$("#videoChapter").vimeo("play");
-			player.play();
+			
 
 			$(this).removeClass('fa-play').addClass('fa-pause');
 
-		} else if ($(this).hasClass('fa-pause') === true) {
+			player.play();
 
-			//$("#videoChapter").vimeo("pause");
-			player.pause();
+			return;
 
-			$(this).removeClass('fa-pause').addClass('fa-play');
-
-		}
+		}  
 
 		//$('#triggerStop').prop('checked', false);
 
@@ -2138,7 +2214,7 @@ $(document).ready(function () {
 
 		//get next chapter time
 
-		if (nextChapter) {
+		if (nextChapter != null) {
 
 			var nextChapterKey = getKeyForChapterid(nextChapter);
 
@@ -2171,6 +2247,10 @@ $(document).ready(function () {
 
 				chapterSelected = nextChapter;
 			}
+
+		}else{
+
+			showAlert('Last Chapter in Video');
 
 		}
 
@@ -2310,7 +2390,7 @@ $(document).ready(function () {
 
 			player.setCurrentTime(nextChapterStartTime);
 
-			$("#videoChapter").vimeo("play");
+			player.play();
 
 		//}
 
