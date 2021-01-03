@@ -729,12 +729,7 @@ function undoFilterByTag() {
 
 	playSelectedChapters = null;
 
-	$('body').find('.tagButton').each(function () {
-
-		$(this).removeClass('selectiveTag');
-
-
-	})
+	
 
 	$('.tagFilterDisplayArea').removeClass('bg-gieqsGold').removeClass('text-dark').removeClass('text-sm'); //remove and add gentBlue
 
@@ -769,6 +764,7 @@ function undoFilterByTag() {
 
 
 	selectedTag = null;
+	hideTagBar();
 
 	var currentTime = player.getCurrentTime();
 
@@ -808,7 +804,7 @@ function undoFilterByTag() {
 
 	updatePlayer(data2);
 
-	hideTagBar();
+
 
 	//window.localStorage.setItem('selectedTag', null);
 
@@ -827,15 +823,11 @@ function filterByTag(requestedTag){
 
 		player.pause();
 
-		$('body').find('.tagButton').each(function(){
-
-			$(this).removeClass('selectiveTag');
-
-		})
+		
 
 		//add selected tag to the tag with requestedtag data-tag-id
 
-		$('body').find('.tagButton').each(function(){
+		/* $('body').find('.tagButton').each(function(){
 
 			if ($(this).attr('data-tag-id') == requestedTag){
 
@@ -847,7 +839,7 @@ function filterByTag(requestedTag){
 
 			}	
 			
-		})
+		}) */
 
 		//set selected tag as requestedtag
 
@@ -940,6 +932,29 @@ function filterByTag(requestedTag){
 		}
 
 		//skip the video to the start of the first chapter in the array
+
+		var data2 = {
+
+			data : {
+
+			id: chapterid,
+
+			number: key+1,
+
+			next: getNextChapter(key+1),
+
+			previous: getPreviousChapter(key+1),
+
+			tags: getTagsGivenChapter(chapterid)
+
+
+			}
+
+
+
+		}
+
+		updatePlayer(data2);
 
 		var targetChapter = requiredChapters[0];
 
@@ -1503,14 +1518,14 @@ function updatePlayer(data){
 
 			$('.tagsActive').html('');
 
-			//first write the required tags (max 6) to the tagsMirror area
+			//first write the required tags (max 8) to the tagsMirror area
 
 			var x = 0;
 
 			$(tags).each(function(k,v){
 
-				if (x < 6){
-				$('.tagsActive').append('<span class="badge mx-2 mb-1 highlightedTag tagMirror" data-tag-id="' + v + '">' + getTagName(v) + '</span>');
+				if (x < 8){
+				$('.tagsActive').append('<span class="badge mx-2 mb-1 highlightedTag tagButton tagMirror" data-tag-id="' + v + '">' + getTagName(v) + '</span>');
 				x++;
 				}
 
@@ -1543,11 +1558,11 @@ function updatePlayer(data){
 				if (tags.indexOf($(this).attr('data-tag-id')) > -1){
 	
 					//$(this).css({background: "#eec278", color: "#162e4d" });
-					$(this).addClass('gieqsGold');
+					$(this).addClass('highlightedTag').removeClass('selectedTag').removeClass('unhighlightedTag');
 	
 				}else{
 	
-					$(this).removeClass('gieqsGold');
+					$(this).addClass('unhighlightedTag').removeClass('selectedTag').removeClass('highlightedTag');
 	
 				}	
 				
@@ -1573,7 +1588,7 @@ function updatePlayer(data){
 					if ($(this).attr('data-tag-id') == selectedTag){
 		
 						//$(this).addClass('bg-gieqsGold').addClass('text-dark').removeClass('bg-gray-800');
-						$(this).addClass('bg-gieqsGold').addClass('text-dark').removeClass('gieqsGold').removeClass('bg-dark');
+						$(this).addClass('selectedTag').removeClass('unhighlightedTag').removeClass('highlightedTag');
 		
 					}	
 					
@@ -1836,14 +1851,14 @@ $(document).ready(function () {
     
     $("body").on('click', '.tagButton', (function (event) {
 
-		if ($(this).hasClass('selectiveTag') === true) {
+		if ($(this).hasClass('selectedTag') === true) {
 
 			player.pause();
 			undoFilterByTag();
-			$(this).removeClass('selectiveTag');
+			//$(this).removeClass('selectiveTag');
 			return;
 
-		}else if ($(this).hasClass('selectiveTag') === false) {
+		}else if ($(this).hasClass('selectedTag') === false) {
 
 			undoFilterByTag();
 
@@ -1859,14 +1874,7 @@ $(document).ready(function () {
 
 			//add an identifier that this is the tag we are going to show
 
-			$(this).addClass('selectiveTag');
-			$('.tagButton').not(this).each(function () {
-
-
-
-				$(this).removeClass('selectiveTag');
-
-			})
+		
 
 			var str = $(this).attr('data-tag-id');
 			//var str = $('.selectiveTag').prop('id');
@@ -1956,6 +1964,46 @@ $(document).ready(function () {
 			}
 
 			//skip the video to the start of the first chapter in the array
+
+			//reboot player
+
+			var currentTime = player.getCurrentTime();
+
+
+		//construct the same data array as for a chapter cue point first
+
+
+		//which chapter are we in
+
+		var chapterid = getChapterFromTime(currentTime);
+
+		var key = getKeyForChapterid(chapterid);
+
+
+		//define the data array
+
+		var data2 = {
+
+			data : {
+
+			id: chapterid,
+
+			number: key+1,
+
+			next: getNextChapter(key+1),
+
+			previous: getPreviousChapter(key+1),
+
+			tags: getTagsGivenChapter(chapterid)
+
+
+			}
+
+
+
+		}
+
+		updatePlayer(data2);
 
 			var targetChapter = requiredChapters[0];
 
