@@ -938,7 +938,7 @@
                                 Search</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Video Viewer</li>
                     </ol>
-                    <div class="alert alert-dark d-none" role="alert" style="position:absolute !important;">
+                    <div class="alert alert-dark d-none sticky-top" role="alert" style="position:absolute !important;">
 </div>
                 </nav>
                 <div class="row" id="videoTitleTour" style="margin-right:15px; margin-left:15px;">
