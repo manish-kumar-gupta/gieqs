@@ -99,6 +99,11 @@
 
     }
 
+    .alert {
+
+        z-index: 25;
+    }
+
     .close>span:not(.sr-only) {
         color: white !important;
     }
@@ -971,10 +976,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row" style="height:120px; overflow-y: hidden;">
                             <div class="col text-left mt-0 align-items-center">
-                                <div class="tagsActive d-flex flex-wrap mt-3 mb-4"
-                                    style="max-height:50px; overflow-y: hidden;">
+                                <div class="tagsActive d-flex flex-wrap mt-3 mb-4">
 
                                 </div>
                             </div>

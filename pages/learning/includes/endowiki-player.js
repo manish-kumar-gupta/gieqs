@@ -1291,7 +1291,13 @@ function updateChapterMarkers(currentChapterPassed){
 
 }
 
-function updatePlayer(data){
+function updatePlayer(data, debug=true){
+
+	if (debug){
+
+		console.log('data array given to update player was ');
+		console.dir(data);
+	}
 
 	//define the chapter number and key for videoChapterData
 	var number = data.data.number;
@@ -1304,12 +1310,20 @@ function updatePlayer(data){
 	var description = videoChapterData[key].description;
 	description.replace(/\n/g, '<br>');
 
-	console.log(chaptername);
+	if (debug){
+
+		console.log('chaptername was ');
+		console.log(chaptername);
+	}
+
+	
 
 	$('#chapterHeading').html(chaptername);
 	$('#chapterDescription').html(description);
 	$('#currentChapter').html(number);
 	$('#totalChapters').html(numberofChapters);
+
+	$('#chapterHeadingControl').html('Chapter '+number);
 
 	//set timeline colouring
 
@@ -1347,20 +1361,37 @@ function updatePlayer(data){
 
 	if (requiredChapters == null){
 
+		if (debug){
+
+			console.log('no tag filter detected');
+			//console.log(chaptername);
+		}
+
 		nextChapter = data.data.next;
 
 		previousChapter = data.data.previous;
 
 	}else{
 
-		showAlert('Skipping between tagged chapters (active filter).  Click here to cancel');
+		if (debug){
+
+			console.log('tag filter detected and required chapters were');
+			console.log(requiredChapters);
+		}
+
+		showAlert('Skipping between tagged chapters (active filter).  <a href=\"javascript:undoFilterByTag();\">Click here to cancel</a>');
 		//find the position of this chapter
 
 		var positionInRequiredChapters = requiredChapters.indexOf(chapterid);
 
 		if (positionInRequiredChapters > -1){ //in the required array
 
+
+			if (debug){
+
 			console.log('this chapter ('+ chapterid +') is in required chapter array at position '+positionInRequiredChapters);
+
+			}
 
 			//if there is a next define it
 
@@ -1371,12 +1402,22 @@ function updatePlayer(data){
 			var checkNextChapter = requiredChapters[nextRequiredChapter];
 
 			nextChapter = checkNextChapter;
+			if (debug){
 
-			console.log('next chapter set');
+
+			console.log('next chapter set successfully');
+
+			}
 
 		} catch (error) {
 
 			nextChapter = null;
+
+			if (debug){
+			console.log('next chapter could not be set successfully');
+
+			}
+
 			
 		}
 
@@ -1518,13 +1559,13 @@ function updatePlayer(data){
 
 			$('.tagsActive').html('');
 
-			//first write the required tags (max 8) to the tagsMirror area
+			//first write the required tags (max 10) to the tagsMirror area
 
 			var x = 0;
 
 			$(tags).each(function(k,v){
 
-				if (x < 8){
+				if (x < 10){
 				$('.tagsActive').append('<span class="badge mx-2 mb-1 highlightedTag tagButton tagMirror" data-tag-id="' + v + '">' + getTagName(v) + '</span>');
 				x++;
 				}
@@ -2298,7 +2339,16 @@ $(document).ready(function () {
 
 		}else{
 
-			showAlert('Last Chapter in Video');
+			if (requiredChapters){
+
+				showAlert('Last Chapter containing filtered tag.  <a href=\"javascript:undoFilterByTag();\">Click here to remove filter</a>');
+
+			}else{
+
+				showAlert('Last Chapter in Video');
+
+
+			}
 
 		}
 
