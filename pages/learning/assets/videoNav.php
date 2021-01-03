@@ -230,7 +230,7 @@ if (isset($browsing) && isset($browsing_id) && is_array($browsing_array)){
 ?>
 
 
-<nav class="mt-4 navbar navbar-expand-lg navbar-dark bg-dark sticky-top" style="margin-top: 20px; z-index: 2 !important;">
+<nav class="mt-4 navbar navbar-expand-lg navbar-dark bg-dark sticky-top" id="videoBar" style="margin-top: 20px; z-index: 2 !important;">
     <div class="container">
         <a class="navbar-brand cursor-pointer" id="start_tour"><?php echo 'Video Navigation';?>
             <!-- <small class="m-0 p-0"><br/><?php //echo 'Asset Name'?> --></small>
