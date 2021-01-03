@@ -928,7 +928,7 @@
 
 
         <div class="d-flex align-items-end">
-            <div class="container pt-4 pt-lg-4">
+            <div class="container pt-4 pt-lg-4" id="mainContainer">
                 <nav aria-label="breadcrumb" class="mb-3">
                     <ol class="breadcrumb breadcrumb-links p-0 m-0">
                         <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/index.php'?>">GIEQs

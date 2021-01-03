@@ -933,28 +933,7 @@ function filterByTag(requestedTag){
 
 		//skip the video to the start of the first chapter in the array
 
-		var data2 = {
-
-			data : {
-
-			id: chapterid,
-
-			number: key+1,
-
-			next: getNextChapter(key+1),
-
-			previous: getPreviousChapter(key+1),
-
-			tags: getTagsGivenChapter(chapterid)
-
-
-			}
-
-
-
-		}
-
-		updatePlayer(data2);
+		
 
 		var targetChapter = requiredChapters[0];
 
@@ -967,6 +946,29 @@ function filterByTag(requestedTag){
 		startedConnectedPlayback = 1;
 
 		player.setCurrentTime(targetTime);
+
+		var data2 = {
+
+			data : {
+
+			id: targetChapter,
+
+			number: targetChapterKey+1,
+
+			next: getNextChapter(targetChapterKey+1),
+
+			previous: getPreviousChapter(targetChapterKey+1),
+
+			tags: getTagsGivenChapter(targetChapter)
+
+
+			}
+
+
+
+		}
+
+		updatePlayer(data2);
 		
 		waitForFinalEvent(function(){
 			
@@ -1700,9 +1702,15 @@ function showAlert(text){
 
 	}
 	var bottom = $el.offset().top + $el.outerHeight(true);
+
+	$el2 = $('#mainContainer');
+
+	var right = $(document).width() - ($el2.offset().left + $el2.width());
+	//var right = $el2.offset().left + $el2.width(); 
+
 	bottom = bottom;
 	$('.alert').html(text);
-	$('.alert').css({right:'100px', top: bottom+'px'});
+	$('.alert').css({right:right+'px', top: bottom+'px'});
 	$('.alert').removeClass('d-none');
 	$('.alert').fadeIn('slow');
 	waitForFinalEvent(function(){
@@ -2008,7 +2016,7 @@ $(document).ready(function () {
 
 			//reboot player
 
-			var currentTime = player.getCurrentTime();
+			//var currentTime = player.getCurrentTime();
 
 
 		//construct the same data array as for a chapter cue point first
@@ -2016,35 +2024,9 @@ $(document).ready(function () {
 
 		//which chapter are we in
 
-		var chapterid = getChapterFromTime(currentTime);
+		
 
-		var key = getKeyForChapterid(chapterid);
-
-
-		//define the data array
-
-		var data2 = {
-
-			data : {
-
-			id: chapterid,
-
-			number: key+1,
-
-			next: getNextChapter(key+1),
-
-			previous: getPreviousChapter(key+1),
-
-			tags: getTagsGivenChapter(chapterid)
-
-
-			}
-
-
-
-		}
-
-		updatePlayer(data2);
+		//updatePlayer(data2);
 
 			var targetChapter = requiredChapters[0];
 
@@ -2056,7 +2038,30 @@ $(document).ready(function () {
 
 			startedConnectedPlayback = 1;
 
-            player.setCurrentTime(targetTime);
+			player.setCurrentTime(targetTime);
+			
+			var data2 = {
+
+				data : {
+	
+				id: targetChapter,
+	
+				number: targetChapterKey+1,
+	
+				next: getNextChapter(targetChapterKey+1),
+	
+				previous: getPreviousChapter(targetChapterKey+1),
+	
+				tags: getTagsGivenChapter(targetChapter)
+	
+	
+				}
+	
+	
+	
+			}
+	
+			updatePlayer(data2);
             
             player.play();
 
