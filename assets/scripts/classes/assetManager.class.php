@@ -3430,6 +3430,143 @@ public function returnVideoDenominatorSelect2()
     
         }
 
+        public function getVideosSuperCategory($superCategory){
+
+            $q = "SELECT a.`id`
+            FROM `video` as a 
+            WHERE a.`superCategory` = $superCategory
+            ORDER BY a.`name` ASC";
+                
+
+            //echo $q;
+                //$q = "SELECT b.`image_id`, c.`url`, c.`name`, c.`type`, e.`tagName`, d.`id` as imagesTagid, d.`tags_id` FROM `imageSet` as a INNER JOIN `imageImageSet` as b ON a.`id` = b.`imageSet_id` INNER JOIN `images` as c on b.`image_id` = c.`id` INNER JOIN `imagesTag` as d ON c.`id` = d.`images_id` INNER JOIN `tags` as e ON d.`tags_id` = e.`id` WHERE a.`id` = "+idPassed;
+                
+                
+              
+
+                $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                    
+        
+                    $rowReturn[$x] = $row['id'];
+                    $x++;
+ 
+
+                    
+        
+        
+                }
+                return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+    
+    
+        }
+
+        public function getVideosSelectedTagSuperCategory($tagid, $superCategory, $debug){
+
+            $q = "SELECT a.`id`
+            FROM `video` as a 
+            INNER JOIN `chapter` as b ON a.`id` = b.`video_id` 
+            INNER JOIN `chapterTag` as c ON b.`id` = c.`chapter_id` 
+            INNER JOIN `tags` as d ON d.`id` = c.`tags_id` 
+            WHERE d.`id` = $tagid AND a.`superCategory` = $superCategory
+            GROUP BY a.`id` ORDER BY a.`name` ASC";
+                
+if ($debug){
+            echo $q;
+
+}
+                //$q = "SELECT b.`image_id`, c.`url`, c.`name`, c.`type`, e.`tagName`, d.`id` as imagesTagid, d.`tags_id` FROM `imageSet` as a INNER JOIN `imageImageSet` as b ON a.`id` = b.`imageSet_id` INNER JOIN `images` as c on b.`image_id` = c.`id` INNER JOIN `imagesTag` as d ON c.`id` = d.`images_id` INNER JOIN `tags` as e ON d.`tags_id` = e.`id` WHERE a.`id` = "+idPassed;
+                
+                
+              
+
+                $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                    
+        
+                    $rowReturn[$x] = $row['id'];
+                    $x++;
+ 
+
+                    
+        
+        
+                }
+                return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+    
+    
+        }
+
+        public function getVideoSuperCategory($videoid, $debug=false){
+
+            $q = "SELECT a.`superCategory`
+            FROM `video` as a 
+            WHERE a.`id` = $videoid";
+                
+             //$q = "SELECT b.`image_id`, c.`url`, c.`name`, c.`type`, e.`tagName`, d.`id` as imagesTagid, d.`tags_id` FROM `imageSet` as a INNER JOIN `imageImageSet` as b ON a.`id` = b.`imageSet_id` INNER JOIN `images` as c on b.`image_id` = c.`id` INNER JOIN `imagesTag` as d ON c.`id` = d.`images_id` INNER JOIN `tags` as e ON d.`tags_id` = e.`id` WHERE a.`id` = "+idPassed;
+                
+                
+              
+
+                $result = $this->connection->RunQuery($q);
+            $rowReturn = false;
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows == 1) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                    
+        
+                    $rowReturn = $row['superCategory'];
+                    
+ 
+
+                    
+        
+        
+                }
+                return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
+
+        
+
 
 
 

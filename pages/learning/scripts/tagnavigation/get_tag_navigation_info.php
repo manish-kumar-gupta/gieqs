@@ -284,12 +284,293 @@ if (isset($browsing) && isset($browsing_id) && isset($videoid)){
 
     //browsing the site separately
 
+    if ($debug){
+
+        echo 'browsing 5';
+    }
+
     //check video access
 
-   
+   //get all videos from current supercategory
 
-    $accessibleVideos = $assetManager->determineVideoAccess($videoArray, $isSuperuser, $userid, $debug=false);
+   //get supercategory from video
 
+   $superCategory = $assetManager->getVideoSuperCategory($videoid, true);
+
+   if ($debug){
+
+        echo 'supercategory is ' . $superCategory;
+
+            
+   }
+
+   if (!$superCategory){
+
+    //no supercategory specified for video
+    //get all videos
+    //best guess the supercategory
+
+    $superCategory = 2;
+
+
+   }
+
+   //set supercategory
+
+   $videosSuperCategory = $assetManager->getVideosSelectedTagSuperCategory($selectedTag, $superCategory, false);
+
+   if ($debug){
+
+   print_r($videosSuperCategory);
+
+   error_reporting(E_ALL);
+
+   }
+
+    $accessibleVideos = $assetManager->determineVideoAccessNonAsset($videosSuperCategory, $isSuperuser, $userid, $debug=false);
+
+    //consider part of a supercategory
+
+    if ($debug){
+
+    print_r($accessibleVideos);
+
+    }
+
+    $position = array_search($videoid, $accessibleVideos);
+
+            if ($debug){
+
+                print_r($position);
+
+            }
+                //count of videos
+
+                if ($position > -1){
+
+                    //is id in the array browsingArray?
+        
+                    if ($debug){
+            
+                        echo 'id detected in the browsing array at position ' . $position;
+                    }
+        
+                    
+                    //get previous video and next video
+        
+                    $nextVideo = $accessibleVideos[(intval($position) + 1)];
+        
+                    if (!isset($nextVideo)){
+        
+                        $lastVideo = true;
+                    }else{
+        
+                        $lastVideo = false;
+                    }
+                    
+        
+                    $previousVideo = $accessibleVideos[(intval($position) - 1)];
+        
+                    if (!isset($previousVideo)){
+        
+                        $firstVideo = true;
+                    }else{
+        
+                        $firstVideo = false;
+                    }
+        
+                    if ($debug){
+            
+                        echo "NEXT video is $nextVideo and PREVIOUS video is $previousVideo";
+                        
+                        if ($firstVideo == true){
+                        
+                            echo "this is the FIRST video ";
+                            
+                            }
+                        
+                        if ($lastVideo == true){
+                        
+                        echo "this is the LAST video ";
+        
+                        }
+        
+        
+                    }
+        
+                    $numberOfVideos = count($accessibleVideos);
+                  
+                    if ($debug){
+            
+                        echo "This video is number $position of $numberOfVideos";
+                    }
+        
+                }else{
+        
+        
+                    if ($debug){
+            
+                        echo 'id not detected in the browsing array'; 
+                    }
+        
+        
+                }  
+                //position of this video
+                //next video
+                //previous video
+
+
+            //copied from above to modify
+
+            $returnArray = [
+
+                'postion' => $position+1,
+                'numberOfVideos' => $numberOfVideos,
+                'nextVideo' => $nextVideo,
+                'previousVideo' => $previousVideo,
+                'firstVideo' => $firstVideo,
+                'lastVideo' => $lastVideo,
+
+
+            ];
+
+            echo json_encode($returnArray);
+
+
+}elseif ($browsing == '99'){
+
+    //user opens up to all available videos
+
+
+    if ($debug){
+
+        echo 'browsing all videos (99)';
+    }
+
+    
+
+   //get all videos tagged this way
+
+   $videosTaggedAll = $assetManager->getVideosTag($selectedTag);
+
+   if ($debug){
+
+   print_r($videosTaggedAll);
+
+   error_reporting(E_ALL);
+
+   }
+
+    $accessibleVideos = $assetManager->determineVideoAccessNonAsset($videosTaggedAll, $isSuperuser, $userid, $debug=false);
+
+    //consider part of a supercategory
+
+    if ($debug){
+
+    print_r($accessibleVideos);
+
+    }
+
+    $position = array_search($videoid, $accessibleVideos);
+
+            if ($debug){
+
+                print_r($position);
+
+            }
+                //count of videos
+
+                if ($position > -1){
+
+                    //is id in the array browsingArray?
+        
+                    if ($debug){
+            
+                        echo 'id detected in the browsing array at position ' . $position;
+                    }
+        
+                    
+                    //get previous video and next video
+        
+                    $nextVideo = $accessibleVideos[(intval($position) + 1)];
+        
+                    if (!isset($nextVideo)){
+        
+                        $lastVideo = true;
+                    }else{
+        
+                        $lastVideo = false;
+                    }
+                    
+        
+                    $previousVideo = $accessibleVideos[(intval($position) - 1)];
+        
+                    if (!isset($previousVideo)){
+        
+                        $firstVideo = true;
+                    }else{
+        
+                        $firstVideo = false;
+                    }
+        
+                    if ($debug){
+            
+                        echo "NEXT video is $nextVideo and PREVIOUS video is $previousVideo";
+                        
+                        if ($firstVideo == true){
+                        
+                            echo "this is the FIRST video ";
+                            
+                            }
+                        
+                        if ($lastVideo == true){
+                        
+                        echo "this is the LAST video ";
+        
+                        }
+        
+        
+                    }
+        
+                    $numberOfVideos = count($accessibleVideos);
+                  
+                    if ($debug){
+            
+                        echo "This video is number $position of $numberOfVideos";
+                    }
+        
+                }else{
+        
+        
+                    if ($debug){
+            
+                        echo 'id not detected in the browsing array'; 
+                    }
+        
+        
+                }  
+                //position of this video
+                //next video
+                //previous video
+
+
+            //copied from above to modify
+
+            $returnArray = [
+
+                'postion' => $position+1,
+                'numberOfVideos' => $numberOfVideos,
+                'nextVideo' => $nextVideo,
+                'previousVideo' => $previousVideo,
+                'firstVideo' => $firstVideo,
+                'lastVideo' => $lastVideo,
+
+
+            ];
+
+            echo json_encode($returnArray);
+
+    
 
 }
 

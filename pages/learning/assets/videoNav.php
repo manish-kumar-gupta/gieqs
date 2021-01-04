@@ -198,9 +198,21 @@ if (isset($browsing) && isset($browsing_id) && is_array($browsing_array)){
 
     }
     
-}else{
+}elseif ($browsing == '5'){
 
     //browsing not a course or asset
+
+
+
+
+
+
+
+
+}else{
+
+
+
 }
 
     

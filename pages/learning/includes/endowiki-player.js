@@ -481,6 +481,35 @@ function getTagsGivenChapter(chapterid) {
 
 }
 
+function tagExistsInVideo(tagid){
+
+
+	var requiredReturn = false;
+
+	var x = 0;
+	var y = 0;
+
+	$(TagDataPerChapter).each(function (i, val) {
+
+		console.log(val.tagid);
+
+		if (val.tagid == tagid) {
+
+			console.log(val.tagid);
+
+			//check that this chapter is not already in the list
+			requiredReturn = true;
+
+		}
+
+
+
+	})
+
+	return requiredReturn;
+
+}
+
 
 
 function getTagName(tagid) {
@@ -857,7 +886,9 @@ function filterByTag(requestedTag){
 		//set selected tag as requestedtag
 
 
-		
+		//does tag exist in video (maybe coming from another page)
+
+		if (tagExistsInVideo(requestedTag)){
 
 		//$("#videoChapter").vimeo("pause");
 
@@ -991,6 +1022,8 @@ function filterByTag(requestedTag){
 
 
 		  }, 1000, "play selected part of video");
+
+		}
 	
 
 }
