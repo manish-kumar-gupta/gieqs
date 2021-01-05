@@ -12,20 +12,20 @@
 /* Configuaration Settings */
 global $config;
 //script url - Enter complete url inside which script folder is placed. Please note that it doesn't include the script folder
-$config["script_url"] = "http://localhost/pdocrud/";
+$config["script_url"] = "http://localhost:90/dashboard/gieqs/assets/scripts/pdocrud/";
 /************************ database ************************/
 //Set the host name to connect for database
 $config["hostname"] =  "localhost";
 //Set the database name
-$config["database"] = "pdocrud";
+$config["database"] = "learningToolv1";
 //Set the username for database access
 $config["username"] = "root";
 //Set the pwd for the database user
-$config["password"] = "";
+$config["password"] = "nevira1pine";
 //Set the database type to be used. Available values are "mysql", "pgsql", "sqlite" and "sqlserver".
 $config["dbtype"] = "mysql";
 //Please enter purchase code. Please check how to find purchase code details here https://help.market.envato.com/hc/en-us/articles/202822600-Where-Is-My-Purchase-Code-
-$config["purchase_code"] = "";
+$config["purchase_code"] = "a84973e6-8a31-4583-808c-5ccfb7ae6444";
 //Set the character set to be used
 $config["characterset"] = "utf8";
 //Encryption and Decryption salt
