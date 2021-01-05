@@ -217,6 +217,11 @@
             die();
         }
 
+        //then check other structures
+
+        //supercategory
+        //
+
 
         /* determine access */
        
