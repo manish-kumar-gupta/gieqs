@@ -38,7 +38,7 @@ $identifier = 'id';
 //define user access level
 
 $openaccess = 0;
-$requiredUserLevel = 3;
+$requiredUserLevel = 1;
 
 require BASE_URI . '/head.php';
 
@@ -545,41 +545,27 @@ $timezones = array('Pacific/Midway' => '(UTC-11:00) Midway',
                         <!-- Salute + Small stats -->
                         <div class="row align-items-center mb-4">
                             <div class="col-md-5 mb-4 mb-md-0">
-                                <span class="h2 mb-0 text-white d-block">GIEQs Admin Console</span>
+                                <span class="h2 mb-0 text-white d-block">Navigation Editor</span>
 
                                 <!-- <span class="text-white">Have a nice day!</span> -->
                             </div>
-                            <!-- <div class="col-auto flex-fill d-none d-xl-block">
+                            <div class="col-auto flex-fill d-none d-xl-block">
                 <ul class="list-inline row justify-content-lg-end mb-0">
                   <li class="list-inline-item col-sm-4 col-md-auto px-3 my-2 mx-0">
-                    <span class="badge badge-dot text-white">
-                      <i class="bg-success"></i>Sales
-                    </span>
-                    <a class="d-sm-block h5 text-white font-weight-bold pl-2" href="#">
-                      20.5%
-                      <small class="fas fa-angle-up text-success"></small>
-                    </a>
+                    <a href="<?php echo BASE_URL;?>/pages/backend/test_backend.php?table=menu"><button class="btn btn-sm">Menus</button></a>
                   </li>
                   <li class="list-inline-item col-sm-4 col-md-auto px-3 my-2 mx-0">
-                    <span class="badge badge-dot text-white">
-                      <i class="bg-warning"></i>Tasks
-                    </span>
-                    <a class="d-sm-block h5 text-white font-weight-bold pl-2" href="#">
-                      5.7%
-                      <small class="fas fa-angle-up text-warning"></small>
-                    </a>
+                  <a href="<?php echo BASE_URL;?>/pages/backend/test_backend.php?table=navigation"><button class="btn btn-sm">Navigation</button></a>
                   </li>
                   <li class="list-inline-item col-sm-4 col-md-auto px-3 my-2 mx-0">
-                    <span class="badge badge-dot text-white">
-                      <i class="bg-danger"></i>Sales
-                    </span>
-                    <a class="d-sm-block h5 text-white font-weight-bold pl-2" href="#">
-                      -3.24%
-                      <small class="fas fa-angle-down text-danger"></small>
-                    </a>
+                  <a href="<?php echo BASE_URL;?>/pages/backend/test_backend.php?table=headings"><button class="btn btn-sm">Headings</button></a>
                   </li>
+                  <li class="list-inline-item col-sm-4 col-md-auto px-3 my-2 mx-0">
+                  <a href="<?php echo BASE_URL;?>/pages/backend/test_backend.php?table=pages"><button class="btn btn-sm">Pages</button></a>
+                  </li>
+                  
                 </ul>
-              </div> -->
+              </div>
                         </div>
 
                         <!-- Account navigation -->
@@ -617,6 +603,16 @@ if (isset($_GET['identifier']) && is_numeric($_GET['identifier'])) {
 } else {
 
     $identifierValue = null;
+
+}
+
+if (isset($_GET['table'])) {
+    $table = $_GET['table'];
+    //echo $identifierValue;
+
+} else {
+
+    $table = null;
 
 }
 
@@ -659,9 +655,59 @@ if ($identifierValue) {
 
 <?php 
 
+$pdocrud->setSettings("inlineEditbtn", true);
 
-$pdocrud->setSkin("dark");
-echo $pdocrud->dbTable("usersViewsVideo")->render();?>
+
+switch ($table) {
+    case "menu":
+        echo $pdocrud->dbTable("menu")->render();
+        break;
+    case "navigation":
+        $pdocrud->relatedData('menu_id','menu','id','id');
+        $pdocrud->relatedData('superCategory','values','superCategory','superCategory_t');
+        echo $pdocrud->dbTable("navigation")->render();
+        break;
+    case "headings":
+        $pdocrud->relatedData('navigation_id','navigation','id','title');
+        echo $pdocrud->dbTable("headings")->render();
+        break;
+    case "pages":
+        $pdocrud->relatedData('headings_id','headings','id','name');
+        echo $pdocrud->dbTable("pages")->render();
+            break;
+            case "blog":
+                $pdocrud->relatedData('video_id','video','id','name');
+echo $pdocrud->dbTable("blog_v2")->render();
+break;
+}
+
+
+//$pdocrud->setSkin("dark");
+//$pdocrud->formDisplayInPopup();// call this function to show forms in popup
+
+/* $pdocrud->joinTable("video", "usersViewsVideo.videoid = video.id", "LEFT JOIN");
+ */
+
+//menu
+ //
+
+
+//navigation
+
+
+//headings
+
+
+//pages
+
+
+//blog
+
+
+
+
+
+//echo $pdocrud->dbTable("usersViewsVideo")->render();?>
 
 
 
@@ -1560,29 +1606,19 @@ echo $pdocrud->dbTable("usersViewsVideo")->render();?>
 
         // add those which require select2 box
 
-        $('[data-toggle="select"]').select2({
+        /* $('[data-toggle="select"]').select2({
 
             dropdownParent: $(".modal-content"),
             //theme: "bootstrap",
 
-        });
-
+        }); */
+/* 
         $('.registrations').select2({
 
             dropdownParent: $(".modal-content"),
             //tags: true,
             multiple: true,
-            /* ajax: {
-
-                url: siteRoot + 'assets/scripts/querySelectProgrammes.php',
-
-            dataType: 'json'
-            },
-            processResults: function(data) {
-                    return {
-                      results: data.items
-                    };
-                  }, */
+           
         })
 
         $('#user_id').select2({
@@ -1632,7 +1668,7 @@ echo $pdocrud->dbTable("usersViewsVideo")->render();?>
 
 
         });
-
+ */
         /* $('#registrations').select2({
 
             dropdownParent: $(".modal-content"),
@@ -1666,18 +1702,18 @@ echo $pdocrud->dbTable("usersViewsVideo")->render();?>
 
 
 
-        datatable = $('#dataTable').DataTable({
+       /*  datatable = $('#dataTable').DataTable({
 
             language: {
-                infoEmpty: "There are currently no active <?php echo $databaseName;?>s.",
-                emptyTable: "There are currently no active <?php echo $databaseName;?>s.",
-                zeroRecords: "There are currently no active <?php echo $databaseName;?>s.",
+                infoEmpty: "There are currently no active <?php //echo $databaseName;?>s.",
+                emptyTable: "There are currently no active <?php //echo $databaseName;?>s.",
+                zeroRecords: "There are currently no active <?php //echo $databaseName;?>s.",
             },
             autowidth: true,
 
 
             ajax: siteRoot +
-                'assets/scripts/tableInteractors/refresh<?php echo $databaseName;?>Table.php',
+                'assets/scripts/tableInteractors/refresh<?php //echo $databaseName;?>Table.php',
             //TODO all classes need this function
 
 
@@ -1713,7 +1749,7 @@ echo $pdocrud->dbTable("usersViewsVideo")->render();?>
 
 
 
-        });
+        }); */
 
 
 
@@ -1822,7 +1858,7 @@ echo $pdocrud->dbTable("usersViewsVideo")->render();?>
 
         })
 
-        $("#<?php echo $databaseName;?>-form").validate({
+        /* $("#<?php //echo $databaseName;?>-form").validate({
 
             invalidHandler: function(event, validator) {
                 var errors = validator.numberOfInvalids();
@@ -1907,7 +1943,7 @@ echo $pdocrud->dbTable("usersViewsVideo")->render();?>
 
                 //submitPreRegisterForm();
 
-                submit<?php echo $databaseName;?>Form();
+                submit<?php //echo $databaseName;?>Form();
 
                 //TODO submit changes
                 //TODO reimport the array at the top
@@ -1920,7 +1956,7 @@ echo $pdocrud->dbTable("usersViewsVideo")->render();?>
 
 
 
-        });
+        }); */
 
         //detect change of multi-select tag box
 

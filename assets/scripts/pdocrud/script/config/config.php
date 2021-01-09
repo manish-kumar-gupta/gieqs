@@ -129,7 +129,7 @@ $config["includeTemplateCSS"] = true;
 $config["includeTemplateJS"] = true;
 /******************************** template settings ***********************************/
 //Template name to be used. Templates are present in the script/classes/templ
-$config["template"] = "bootstrap";
+$config["template"] = "bootstrap4";
 //set skin css to be used (skin css are placed in the script/skin folder)
 $config["skin"] = "default";
 //default language
