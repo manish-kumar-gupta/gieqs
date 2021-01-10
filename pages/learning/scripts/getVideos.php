@@ -128,6 +128,10 @@ $requiredTagCategories = $data['requiredTagCategories'];
 
 //$requiredTagCategories = ['39', '40', '41', '42'];
 
+$requiredVideos = $data['requiredVideos'];
+
+
+
 ?>
 
 <?php
@@ -139,7 +143,18 @@ $x = 0;
 //v2 in same format as getNav
 //$data2 = $navigator->getVideoDatav2($requiredTagCategories, $tagsToMatch, $debug, $active, $gieqsDigitalv1);
 
+if (is_array($requiredVideos)){
+
+    $data2 = $navigator->getVideoDataSimple($requiredVideos, $debug, $active);
+
+
+
+}else{
+
+
 $data2 = $navigator->getVideoData($requiredTagCategories, $tagsToMatch, $debug, $active, $gieqsDigitalv1);
+
+}
 
 $videos = $data2;
 

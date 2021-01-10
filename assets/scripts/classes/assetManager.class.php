@@ -3565,6 +3565,101 @@ if ($debug){
 
         }
 
+
+        public function getTagsPage($pageid, $debug=false){
+
+            $q = "SELECT a.`tagCategories_id`
+            FROM `pagesTagCategory` as a 
+            WHERE a.`pages_id` = $pageid
+            ORDER BY a.`tagCategories_id` ASC";
+                
+if ($debug){
+            echo $q;
+
+}
+                //$q = "SELECT b.`image_id`, c.`url`, c.`name`, c.`type`, e.`tagName`, d.`id` as imagesTagid, d.`tags_id` FROM `imageSet` as a INNER JOIN `imageImageSet` as b ON a.`id` = b.`imageSet_id` INNER JOIN `images` as c on b.`image_id` = c.`id` INNER JOIN `imagesTag` as d ON c.`id` = d.`images_id` INNER JOIN `tags` as e ON d.`tags_id` = e.`id` WHERE a.`id` = "+idPassed;
+                
+                
+              
+
+                $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                    
+        
+                    $rowReturn[$x] = $row['tagCategories_id'];
+                    $x++;
+ 
+
+                    
+        
+        
+                }
+                return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+    
+    
+        }
+
+        public function getVideosPage($pageid, $debug=false){
+
+            $q = "SELECT a.`video_id`
+            FROM `pagesVideo` as a 
+            WHERE a.`pages_id` = $pageid
+            ORDER BY a.`video_id` ASC";
+                
+if ($debug){
+            echo $q;
+
+}
+                //$q = "SELECT b.`image_id`, c.`url`, c.`name`, c.`type`, e.`tagName`, d.`id` as imagesTagid, d.`tags_id` FROM `imageSet` as a INNER JOIN `imageImageSet` as b ON a.`id` = b.`imageSet_id` INNER JOIN `images` as c on b.`image_id` = c.`id` INNER JOIN `imagesTag` as d ON c.`id` = d.`images_id` INNER JOIN `tags` as e ON d.`tags_id` = e.`id` WHERE a.`id` = "+idPassed;
+                
+                
+              
+
+                $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                    
+        
+                    $rowReturn[$x] = $row['video_id'];
+                    $x++;
+ 
+
+                    
+        
+        
+                }
+                return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+    
+    
+        }
+
         
 
 

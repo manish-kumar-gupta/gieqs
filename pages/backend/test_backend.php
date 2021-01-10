@@ -486,6 +486,8 @@ $timezones = array('Pacific/Midway' => '(UTC-11:00) Midway',
         opacity: 0.75 !important;
     }
 
+    
+
     @media screen and (max-width: 400px) {
 
 
@@ -675,12 +677,62 @@ switch ($table) {
         echo $pdocrud->dbTable("headings")->render();
         break;
     case "pages":
-        $pdocrud->relatedData('headings_id','headings','id','name');
-        $pdocrud->fieldTypes("simple", "radio");//change gender to radio button
-        $pdocrud->fieldDataBinding("simple", array(0 => "No", 1=> "Yes"), "", "","array");//add data for radio button
-        echo $pdocrud->dbTable("pages")->render();
 
+        //pages table
+        $pPages = new PDOCrud();
+
+        $pPages->relatedData('headings_id','headings','id','name');
+        $pPages->fieldTypes("simple", "radio");//change gender to radio button
+        $pPages->fieldDataBinding("simple", array(0 => "No (displays tag categories)", 1=> "Yes (displays list of individual videos)"), "", "","array");//add data for radio button
+
+        $pPages->tableHeading("Pages");
+        $pPages->tableSubHeading("<br><span class=\"text-muted\">Here you can edit individual pages on the site.</span>");
+
+        //add button to view page
+        $action = BASE_URL . "/pages/learning/pages/general/show_subscription.php?page_id={pk}";//pk will be replaced by primary key value
+        $text = '<i class="fa fa-external-link" aria-hidden="true"></i>';
+        $attr = array("title"=>"Show Page");
+        $pPages->enqueueBtnActions("url", $action, "url",$text,"id", $attr);   
+
+
+        echo $pPages->dbTable("pages")->render();
+
+        //tag Category pages table;
+        $ppagesTagCategory = new PDOCrud(true);
+        $ppagesTagCategory->addPlugin('select2');
+        $ppagesTagCategory->tableHeading("Page Tag Categories");
+        $ppagesTagCategory->tableSubHeading("<br><span class=\"text-muted\">Add tag categories to the page.  Dependent upon the simple variable on the page.  If simple is 0 these will work.  If simple is 1 these will have no effect.</span>");
+        $ppagesTagCategory->relatedData('pages_id','pages','id','title');
+        $ppagesTagCategory->relatedData('tagCategories_id','tagCategories','id','tagCategoryName');
+        $ppagesTagCategory->fieldCssClass("pages_id", array("select2-element-identifier"));// add css classes
+        $ppagesTagCategory->fieldCssClass("tagCategories_id", array("select2-element-identifier"));// add css classes
+
+/*         $ppagesTagCategory->fieldTypes('pages_id', 'multiselect');
+ *//*         $ppagesTagCategory->fieldTypes('tagCategories_id', 'multiselect');
+ */        
+        $ppagesTagCategory->dbTable("pagesTagCategory");
+        echo $ppagesTagCategory->render();
+        echo $ppagesTagCategory->loadPluginJsCode("select2",".select2-element-identifier");//to add plugin call on select elements
+
+
+        //video pages table
+
+        $ppagesVideo = new PDOCrud(true);
+        $ppagesVideo->dbTable("pagesVideo");
+        $ppagesVideo->tableHeading("Page Videos");
+        $ppagesVideo->tableSubHeading("<br><span class=\"text-muted\">Add individual videos to the page.  Dependent upon the simple variable on the page.  If simple is 1 these will be added.  If simple is 0 these will have no effect.</span>");
+
+        $ppagesVideo->relatedData('pages_id','pages','id','title');
+        $ppagesVideo->relatedData('video_id','video','id','name');
+        $ppagesVideo->fieldCssClass("pages_id", array("select2-element-identifier"));// add css classes
+
+        $ppagesVideo->fieldCssClass("video_id", array("select2-element-identifier"));// add css classes
+
+
+        echo $ppagesVideo->render();
         
+//first paramater is first table(object) columnn name and 2nd parameter is 2nd object column name
+
 
 
             break;
@@ -943,1103 +995,276 @@ break;
     <script src="<?php echo BASE_URL; ?>/assets/libs/autosize/dist/autosize.min.js"></script>
 
     <!-- Datatables -->
-    <script src="<?php echo BASE_URL; ?>/node_modules/datatables.net/js/jquery.datatables.min.js"></script>
-    <script src="<?php echo BASE_URL; ?>/assets/libs/datatables/datatables.min.js"></script>
-    <script src="<?php echo BASE_URL; ?>/assets/libs/flatpickr/dist/flatpickr.min.js"></script>
+  <!-- Purpose JS -->
+<!--   <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/css/purpose.css" id="stylesheet">
+ -->    
 
-    <script>
-    //var data = $('#data').text();
-    //var dataSet = $.parseJSON($('#data').text());
-    var datatable;
-    var edit = 0;
-    var optionsSelect;
-    var lesionUnderEdit = null;
-    var loading;
-    var externalTest;
+  <!-- <script src="<?php echo BASE_URL; ?>/assets/js/purpose.js"></script>
+     -->
 
-    function tableRefresh() {
+     <style>
+     
+     .select2-selection__arrow
+{
+    /*display: none;*/
+}
 
-        //update the div at the top with AJAX
+.select2.select2-container
+{
+    width: 100% !important;
+}
 
-        // refresh the table
+.select2-container .select2-selection--single,
+.select2-container--default.select2-container--focus .select2-selection--multiple,
+.select2-container--default .select2-selection--multiple,
+.select2-container--default .select2-search--dropdown .select2-search__field
+{
+    font-size: 1rem;
+    line-height: 1.5;
 
+    display: block;
 
+    width: 100%;
+    height: calc(1.5em + 1.5rem + 2px);
+    padding: .75rem 1.25rem;
+
+    transition: all .2s ease; 
+
+    color: #fff;
+    border: 1px solid #142b47;
+    border-radius: .25rem;
+    background-color: #1b385d;
+    background-clip: padding-box;
+    box-shadow: inset 0 1px 1px rgba(18, 38, 63, .075);
+}
+@media (prefers-reduced-motion: reduce)
+{
+    .select2-container .select2-selection--single,
+    .select2-container--default.select2-container--focus .select2-selection--multiple,
+    .select2-container--default .select2-selection--multiple,
+    .select2-container--default .select2-search--dropdown .select2-search__field
+    {
+        transition: none;
     }
-
-
-    var waitForFinalEvent = (function() {
-        var timers = {};
-        return function(callback, ms, uniqueId) {
-            if (!uniqueId) {
-                uniqueId = "Don't call this twice without a uniqueId";
-            }
-            if (timers[uniqueId]) {
-                clearTimeout(timers[uniqueId]);
-            }
-            timers[uniqueId] = setTimeout(callback, ms);
-        };
-    })();
-
-    var externalFormData;
-
-    function fillForm(idPassed) {
-
-
-        var stop;
-
-        disableFormInputs("<?php echo $databaseName;?>-form");
-
-        esdLesionRequired = new Object;
-
-        esdLesionRequired = getNamesFormElements("<?php echo $databaseName;?>-form");
-
-        esdLesionString = '`id`=\'' + idPassed + '\'';
-
-        var selectorObject = getDataQueryLearning("<?php echo $databaseName;?>", esdLesionString, getNamesFormElements(
-            "<?php echo $databaseName;?>-form"), 1);
-
-        //console.log(selectorObject);
-
-        selectorObject.done(function(data) {
-
-            console.log(data);
-
-            var formData = $.parseJSON(data);
-
-            //externalFormData = formData;
-
-            console.dir(formData);
-
-            //if the user making the edit request is of lower rank than the user to be edited don't respond
-
-            var userAccessLevel = "<?php echo $currentUserLevel;?>";
-
-
-            externalFormData = userAccessLevel;
-
-
-            var url = (formData[0]['user_id']);
-
-
-            $.ajax({
-                //url: siteRoot + 'assets/scripts/select2simple.php?table=Delegate&field=firstname',
-
-                url: siteRoot + 'assets/scripts/classes/querySelectUserOption.php?search=' + url,
-
-            }).then(function (data) {
-                // create the option and append to Select2
-                var retrievedProgramme = $.parseJSON(data);
-                //console.log(retrievedProgramme);
-                var option = new Option(retrievedProgramme.text, retrievedProgramme.id, true, true);
-                $('#user_id').append(option).trigger('change');
-
-                // manually trigger the `select2:select` event
-                $('#user_id').trigger({
-                    type: 'select2:select',
-                    params: {
-                        data: data
-                    }
-                });
-            });
-
-            var url = (formData[0]['asset_id']);
-
-
-            $.ajax({
-                //url: siteRoot + 'assets/scripts/select2simple.php?table=Delegate&field=firstname',
-
-                url: siteRoot + 'assets/scripts/classes/querySelectAssetOption.php?search=' + url,
-
-            }).then(function (data) {
-                // create the option and append to Select2
-                var retrievedProgramme = $.parseJSON(data);
-                console.log(retrievedProgramme);
-                var option = new Option(retrievedProgramme.text, retrievedProgramme.id, true, true);
-                $('#asset_id').append(option).trigger('change');
-                //$('#asset_id').val(retrievedProgramme.id).trigger('change');
-
-                // manually trigger the `select2:select` event
-                 $('#asset_id').trigger({
-                    type: 'select2:select',
-                    params: {
-                        data: data
-                    }
-                }); 
-            });
-
-            $(formData).each(function(i, val) {
-
-                /* if (parseInt(val.access_level) < parseInt(userAccessLevel)) {
-
-                    console.log('edit not allowed');
-                    //console.log(val.access_level);
-
-                    stop = true;
-                    return false;
-
-
-
-                } */
-
-
-                $.each(val, function(k, v) {
-
-                    /* if (k == 'access_level'){
-                        console.log(v);
-                        if (parseInt(v) < parseInt(userAccessLevel)){
-                            console.log('edit not allowed');
-                            $(document).find('#modal-row-1').modal('hide');
-                            return false;
-                            
-                            
-                        } 
-                    } */
-
-                    $(document).find("#" + k).val(v);
-
-                    //if a select2, trigger change also required to display the change
-                    if ($(document).find("#" + k).hasClass('select2-hidden-accessible') ===
-                        true) {
-
-                        $(document).find("#" + k).trigger('change');
-
-                    }
-
-                });
-
-            });
-
-
-
-
-            //$("#messageBox").text("Editing ESD lesion ID "+idPassed);
-
-            //do specifics
-
-            //get array of current registrations
-
-
-
-
-
-        });
-
-        const dataToSend = {
-
-
-
-            userid: lesionUnderEdit,
-            //options: myOpts,
-
-        }
-
-        const jsonString = JSON.stringify(dataToSend);
-        //console.log(jsonString);
-
-
-
-        var request = $.ajax({
-            url: siteRoot + "assets/scripts/getUserRegistrations.php",
-            type: "POST",
-            contentType: "application/json",
-            data: jsonString,
-        });
-
-
-
-        request.done(function(data) {
-
-
-            data = data.trim();
-            console.log(data);
-            externalTest = $.parseJSON(data);
-            if (data) {
-
-                /*  waitForFinalEvent(function() { */
-                //$('#registrations').trigger('change');
-                //$('#registrations').select2('destroy');
-
-                /* $('#registrations').select2({
-
-                    dropdownParent: $(".modal-content"),
-                    tags: true,
-                    multiple: true,
-                    ajax: {
-
-                        url: siteRoot + 'assets/scripts/querySelectProgrammes.php',
-                    
-                    dataType: 'json'
-                    }
-                }) */
-
-                //$(document).find("#registrations").val(2);
-                waitForFinalEvent(function() {
-                    //$(document).find("#registrations").val().trigger('change');
-                    //$('#registrations').select2();
-                    //$(document).find("#registrations").empty().append('<option value="id">text</option>').val(externalTest).trigger('change');
-                    $(document).find(".registrations").val(externalTest).trigger('change');
-
-                }, 250, 'Wrapper Video');
-
-            } else {
-
-                waitForFinalEvent(function() {
-                    //$(document).find("#registrations").val().trigger('change');
-                    //$('#registrations').select2();
-                    //$(document).find("#registrations").empty().append('<option value="id">text</option>').val(externalTest).trigger('change');
-                    $(document).find(".registrations").val('').trigger('change');
-
-                }, 250, 'Wrapper Video 3');
-
-            }
-
-            waitForFinalEvent(function() {
-                if (stop === true) {
-
-                    $(document).find('#modal-row-1').modal('hide');
-                    resetFormElements("<?php echo $databaseName;?>-form");
-                    return;
-                }
-            }, 500, 'Wrapper Video 2');
-
-
-
-
-
-        })
-
-
-
-
-
-
-        enableFormInputs("<?php echo $databaseName;?>-form");
-
-    }
-
-    function sendUserEmail() {
-
-
-        //userid is lesionUnderEdit
-
-        //console.log('updatePassword chunk');
-        //go to php script with an object from the form
-
-
-        //TODO add identifier and identifierKey
-
-        const dataToSend = {
-
-            passedUserid: lesionUnderEdit,
-
-        }
-
-        const jsonString = JSON.stringify(dataToSend);
-        console.log(jsonString);
-
-        $('.send-mail').prop('disabled', true);
-        $('.send-mail').append('&nbsp&nbsp<i class="fas fa-circle-notch fa-spin"></i>');
-
-
-        var passwordChange = $.ajax({
-            url: siteRoot + "assets/scripts/passwordResetGenerateAdmin.php",
-            type: "POST",
-            contentType: "application/json",
-            data: jsonString,
-        });
-
-
-
-        passwordChange.done(function(data) {
-
-            if (data) {
-                Swal.fire({
-                    type: 'info',
-                    title: 'Password Reset',
-                    text: data,
-                    background: '#162e4d',
-                    confirmButtonText: 'ok',
-                    confirmButtonColor: 'rgb(238, 194, 120)',
-
-
-                }).then((result) => {
-
-                    $('.send-mail').prop('disabled', false);
-                    $('.send-mail').find('.fa-spin').remove();
-
-                    /* window.location.href = siteRoot;
-                    resetFormElements('NewUserForm');
-                    enableFormInputs('NewUserForm'); */
-                    //$('#registerInterest').modal('hide');
-
-                })
-
-            }
-
-        })
-
-    }
-
-    function sendUserWelcomeEmail() {
-
-
-        //userid is lesionUnderEdit
-
-        //console.log('updatePassword chunk');
-        //go to php script with an object from the form
-
-
-        //TODO add identifier and identifierKey
-
-        const dataToSend = {
-
-            passedUserid: lesionUnderEdit,
-
-        }
-
-        const jsonString = JSON.stringify(dataToSend);
-        console.log(jsonString);
-
-        $('.send-welcome-mail').prop('disabled', true);
-        $('.send-welcome-mail').append('&nbsp&nbsp<i class="fas fa-circle-notch fa-spin"></i>');
-
-
-        var passwordChange = $.ajax({
-            url: siteRoot + "assets/scripts/passwordResetGenerateAdminDigital.php",
-            type: "POST",
-            contentType: "application/json",
-            data: jsonString,
-        });
-
-
-
-        passwordChange.done(function(data) {
-
-            if (data) {
-                Swal.fire({
-                    type: 'info',
-                    title: 'Digital Invite',
-                    text: data,
-                    background: '#162e4d',
-                    confirmButtonText: 'ok',
-                    confirmButtonColor: 'rgb(238, 194, 120)',
-
-
-                }).then((result) => {
-
-                    $('.send-welcome-mail').prop('disabled', false);
-                    $('.send-welcome-mail').find('.fa-spin').remove();
-
-                    /* window.location.href = siteRoot;
-                    resetFormElements('NewUserForm');
-                    enableFormInputs('NewUserForm'); */
-                    //$('#registerInterest').modal('hide');
-
-                })
-
-            }
-
-        })
-
-    }
-
-    function fixUserLogin() {
-
-
-        //userid is lesionUnderEdit
-
-        //console.log('updatePassword chunk');
-        //go to php script with an object from the form
-
-
-        //TODO add identifier and identifierKey
-
-        const dataToSend = {
-
-            passedUserid: lesionUnderEdit,
-
-        }
-
-        const jsonString = JSON.stringify(dataToSend);
-        console.log(jsonString);
-
-        $('.reset-activity').prop('disabled', true);
-        $('.reset-activity').append('&nbsp&nbsp<i class="fas fa-circle-notch fa-spin"></i>');
-
-
-        var userFix = $.ajax({
-            url: siteRoot + "assets/scripts/fixUserAccess.php",
-            type: "POST",
-            contentType: "application/json",
-            data: jsonString,
-        });
-
-
-
-        userFix.done(function(data) {
-
-            if (data) {
-                Swal.fire({
-                    type: 'info',
-                    title: 'User Activity Reset',
-                    text: data,
-                    background: '#162e4d',
-                    confirmButtonText: 'ok',
-                    confirmButtonColor: 'rgb(238, 194, 120)',
-
-
-                }).then((result) => {
-
-                    $('.reset-activity').prop('disabled', false);
-                    $('.reset-activity').find('.fa-spin').remove();
-
-                    /* window.location.href = siteRoot;
-                    resetFormElements('NewUserForm');
-                    enableFormInputs('NewUserForm'); */
-                    //$('#registerInterest').modal('hide');
-
-                })
-
-            }
-
-        })
-
-    }
-
-    function submit<?php echo $databaseName;?>Form() {
-
-        //pushDataFromFormAJAX (form, table, identifierKey, identifier, updateType)
-
-        console.log('got to the submit function');
-
-        if (edit == 0) {
-
-            var esdLesionObject = pushFormDataJSONv2($("#<?php echo $databaseName;?>-form"),
-                "<?php echo $databaseName;?>", "user_id", null, "0"); //insert new object
-
-            esdLesionObject.done(function(data) {
-
-                console.log(data);
-
-                if (data) {
-
-                    //alert ("New esdLesion no "+data+" created");
-                    $('#topTableSuccess').text("New <?php echo $databaseName;?> no " + data + " created");
-
-                    $('#modal-row-1').animate({
-                        scrollTop: 0
-                    }, 'slow');
-
-
-                    $("#topTableAlert").fadeTo(4000, 500).slideUp(500, function() {
-                        $("#topTableAlert").slideUp(500);
-                    });
-
-                    //edit = 1;
-
-                    //refresh table
-                    datatable.ajax.reload();
-
-                    //close modal
-                    $('#modal-row-1').modal('hide');
-
-
-
-
-
-                } else {
-
-                    alert("No data inserted, try again");
-
-                }
-
-
-            });
-
-        } else if (edit == 1) {
-
-
-            if (lesionUnderEdit) {
-
-                var esdLesionObject = pushFormDataJSONv2($("#<?php echo $databaseName;?>-form"),
-                    "<?php echo $databaseName;?>", "user_id", lesionUnderEdit, "1"); //insert new object
-
-                esdLesionObject.done(function(data) {
-
-                    console.log(data);
-
-                    if (data) {
-
-                        if (data == 1) {
-
-                            $('#topModalSuccess').text("Data for <?php echo $databaseName;?> " +
-                                lesionUnderEdit + " saved");
-
-                            $('#modal-row-1').animate({
-                                scrollTop: 0
-                            }, 'slow');
-
-                            $("#topModalAlert").fadeTo(4000, 500).slideUp(500, function() {
-                                $("#topTableAlert").slideUp(500);
-                            });
-
-
-
-                            //refresh table
-                            datatable.ajax.reload();
-                            //edit = 1;
-
-
-                            //edit = 1;
-
-                        } else if (data == 0) {
-
-                            //alert("No change in data detected");
-                            $('#modal-row-1').modal('hide');
-
-                        } else if (data == 2) {
-
-                            alert("Error, try again");
-
-
-                        }
-
-
-
-                    }
-
-
-                });
-
-            }
-
-
-        }
-
-
-    }
-
-    //delete behaviour
-
-    <?php if ($isSuperuser){
-
-        if ($isSuperuser == 1){
-
-            ?>
-
-    function deleteRow(id) {
-
-        //esdLesionPassed is the current record, some security to check its also that in the id field
-
-        /* if (esdLesionPassed != $("#id").text()){
-
-            return;
-
-        } */
-
-
-        if (confirm("Do you wish to delete this <?php echo $databaseName;?>?")) {
-
-            disableFormInputs("<?php echo $databaseName;?>-form");
-
-            var esdLesionObject = pushFormDataJSONv2($("#<?php echo $databaseName;?>-form"),
-                "<?php echo $databaseName;?>", "user_id", id, "2"
-            ); //delete esdLesion //getFormdatav2 is specific for users
-
-            esdLesionObject.done(function(data) {
-
-                console.log(data);
-
-                if (data) {
-
-                    if (data == 1) {
-
-                        $('#topTableSuccess').text("<?php echo $databaseName;?> deleted");
-
-                        $("#topTableAlert").removeClass("alert-success").addClass("alert-danger").fadeTo(4000,
-                            500).slideUp(500, function() {
-                            $("#topTableAlert").slideUp(500);
-                        });
-                        //TODO refresh the table from AJAX
-                        //esdLesionPassed = null;
-                        //window.location.href = siteRoot + "scripts/forms/esdLesionTable.php";
-                        //location.reload();
-                        datatable.ajax.reload();
-
-
-                        enableFormInputs("<?php echo $databaseName;?>-form");
-
-                        //go to esdLesion list
-
-                    } else {
-
-                        alert("Error, could not delete.  Please try again");
-
-                        enableFormInputs("<?php echo $databaseName;?>-form");
-
-                    }
-
-
-
-                }
-
-
-            });
-
-        }
-
-
-    }
-
-    <?php 
-
-        }
-    }
-    ?>
-
-
-
-    $(document).ready(function() {
-
-        //add those which require date pickr
-
-
-
-        var options = {
-            enableTime: true,
-            allowInput: true
-        };
-
-
-        $('[data-toggle="date"]').flatpickr(options);
-
-        // add those which require select2 box
-
-        /* $('[data-toggle="select"]').select2({
-
-            dropdownParent: $(".modal-content"),
-            //theme: "bootstrap",
-
-        }); */
-/* 
-        $('.registrations').select2({
-
-            dropdownParent: $(".modal-content"),
-            //tags: true,
-            multiple: true,
-           
-        })
-
-        $('#user_id').select2({
-
-            dropdownParent: $(".modal-content"),
-
-            ajax: {
-                //url: siteRoot + 'assets/scripts/select2simple.php?table=Delegate&field=firstname',
-                url: siteRoot + 'assets/scripts/classes/queryUserSelect.php',
-                data: function(params) {
-                    var query = {
-                        search: params.term,
-                    }
-
-                    // Query parameters will be 
-                    console.log(query);
-                    return query;
-                },
-                dataType: 'json'
-                // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
-            }
-
-
-
-        });
-
-        $('#asset_id').select2({
-
-            dropdownParent: $(".modal-content"),
-
-            ajax: {
-                //url: siteRoot + 'assets/scripts/select2simple.php?table=Delegate&field=firstname',
-                url: siteRoot + 'assets/scripts/classes/queryAssetSelect.php',
-                data: function(params) {
-                    var query = {
-                        search: params.term,
-                    }
-
-                    // Query parameters will be 
-                    console.log(query);
-                    return query;
-                },
-                dataType: 'json'
-                // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
-            }
-
-
-
-        });
- */
-        /* $('#registrations').select2({
-
-            dropdownParent: $(".modal-content"),
-            tags: true,
-
-
-            tokenSeparators: [",", " "],
-
-            multiple: true,
-            ajax: {
-
-                url: siteRoot + 'assets/scripts/querySelectProgrammes.php',
-            data: function (params) {
-                var query = {
-                    search: params.term,
-                }
-
-                console.log(query);
-                return query;
-            },
-            dataType: 'json'
-            } 
-           
-            
-
-        });*/
-
-        //$(document).find(".registrations").trigger('change');
-
-        //centre.change, submit ajax of the added tag, or remove
-
-
-
-       /*  datatable = $('#dataTable').DataTable({
-
-            language: {
-                infoEmpty: "There are currently no active <?php //echo $databaseName;?>s.",
-                emptyTable: "There are currently no active <?php //echo $databaseName;?>s.",
-                zeroRecords: "There are currently no active <?php //echo $databaseName;?>s.",
-            },
-            autowidth: true,
-
-
-            ajax: siteRoot +
-                'assets/scripts/tableInteractors/refresh<?php //echo $databaseName;?>Table.php',
-            //TODO all classes need this function
-
-
-            //EDIT
-            columns: [{
-                    data: 'id'
-                },
-                {
-                    data: 'user_id'
-                },
-                {
-                    data: 'asset_id'
-                },
-                {
-                    data: 'start_date'
-                },
-                {
-                    data: 'expiry_date'
-                },
-                {
-                    data: 'active'
-                },
-
-                {data: 'auto_renew' },
-                {
-                    data: null,
-                    render: function(data, type, row) {
-                        return '<div class="d-flex align-items-center justify-content-end"><div class="actions ml-3"><a class="fill-modal action-item mr-2"  data-toggle="tooltip" title="edit this row" data-original-title="Edit"> <i class="fas fa-pencil-alt"></i> </a> <a href="#" class="action-item mr-2" data-toggle="tooltip" title="" data-original-title="see enclosed items"> <i class="fas fa-level-down-alt"></i> </a> <div class="dropdown"> <a href="#" class="action-item" role="button" data-toggle="dropdown" aria-haspopup="true" data-expanded="false"> <i class="fas fa-ellipsis-v"></i> </a> <div class="dropdown-menu dropdown-menu-right"> <?php if ($isSuperuser == 1){ ?><a class="delete-row dropdown-item"> Delete </a><?php } ?> </div> </div> </div> </div>';
-                    }
-                }
-            ],
-
-
-
-
-        }); */
-
-
-
-        /* datatable = $('#dataTable').DataTable( {
-
-        data: dataSet,
-        columns: [
-            { data: 'id' },
-            { data: 'date' },
-            { data: 'title' },
-            { data: 'subtitle' },
-            { data: 'description' },
-            {
-            data: null,
-            render: function ( data, type, row ) {
-                return '<div class="d-flex align-items-center justify-content-end"><div class="actions ml-3"><a class="fill-modal action-item mr-2"  data-toggle="tooltip" title="edit this row" data-original-title="Edit"> <i class="fas fa-pencil-alt"></i> </a> <a href="#" class="action-item mr-2" data-toggle="tooltip" title="" data-original-title="see enclosed items"> <i class="fas fa-level-down-alt"></i> </a> <div class="dropdown"> <a href="#" class="action-item" role="button" data-toggle="dropdown" aria-haspopup="true" data-expanded="false"> <i class="fas fa-ellipsis-v"></i> </a> <div class="dropdown-menu dropdown-menu-right"> <a class="delete-row dropdown-item"> Delete </a> </div> </div> </div> </div>';
-            }
-            }
-        ],
-
-
-
-
-        } ); */
-
-        $(document).on('click', '#add<?php echo $databaseName;?>', function() {
-
-
-            $('#modalMessageArea').text('New <?php echo $databaseName;?>');
-            $('#modal-row-1').modal('show');
-            $(document).find('#<?php echo $databaseName;?>-form').find(':input').val('');
-            $(document).find('#<?php echo $databaseName;?>-form').find(':checkbox, :radio').prop(
-                'checked', false);
-            $(document).find('#<?php echo $databaseName;?>-form').find('select').val('').trigger(
-                'change'); //TODO ADD TO ALL PAGES WHERE SELECT2
-            $(document).find('#<?php echo $databaseName;?>-form').find('.send-mail').prop('disabled',
-                true);
-            $(document).find('#<?php echo $databaseName;?>-form').find('.send-welcome-mail').prop(
-                'disabled', true);
-            $(document).find('#<?php echo $databaseName;?>-form').find('.reset-activity').prop(
-                'disabled', true);
-            $(document).find('#<?php echo $databaseName;?>-form').find('#registrations').prop(
-                'disabled', true);
-
-            //as per Seauton request
-
-            $(document).find('#<?php echo $databaseName;?>-form').find('#timezone').val(
-                'Europe/Brussels').trigger('change');
-            $(document).find('#<?php echo $databaseName;?>-form').find('#access_level').val('6')
-                .trigger('change');;
-
-
-            edit = 0;
-
-        })
-
-        $(document).on('click', '.fill-modal', function() {
-
-            var targettd = $(this).parent().parent().parent().parent().find('td').first().text();
-            //console.log(targettd);
-            lesionUnderEdit = targettd;
-            $('#modalMessageArea').text('Editing <?php echo $databaseName;?> ' + lesionUnderEdit);
-            $('#modal-row-1').modal('show');
-            fillForm(targettd);
-            edit = 1;
-
-        })
-
-        $(document).on('click', '.delete-row', function() {
-
-            var targettd = $(this).parent().parent().parent().parent().parent().parent().find('td')
-                .first().text();
-            console.log(targettd);
-            //$('#modal-row-1').modal('show');
-            deleteRow(targettd);
-
-        })
-
-        $(document).on('click', '.submit-<?php echo $databaseName;?>-form', function() {
-
-            event.preventDefault();
-            console.log('clicked');
-            console.log($('#<?php echo $databaseName;?>-form').closest());
-            $('#<?php echo $databaseName;?>-form').submit();
-
-        })
-
-        $(document).on('click', '.send-mail', function() {
-
-            event.preventDefault();
-            sendUserEmail();
-
-        })
-
-        $(document).on('click', '.send-welcome-mail', function() {
-
-            event.preventDefault();
-            sendUserWelcomeEmail();
-
-        })
-
-        $(document).on('click', '.reset-activity', function() {
-
-            event.preventDefault();
-            fixUserLogin();
-
-        })
-
-        /* $("#<?php //echo $databaseName;?>-form").validate({
-
-            invalidHandler: function(event, validator) {
-                var errors = validator.numberOfInvalids();
-                console.log("there were " + errors + " errors");
-                if (errors) {
-                    var message = errors == 1 ?
-                        "1 field contains errors. It has been highlighted" :
-                        +errors + " fields contain errors. They have been highlighted";
-
-
-                    $('#error').text(message);
-                    //$('div.error span').addClass('form-text text-danger');
-                    //$('#errorWrapper').show();
-
-                    $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function() {
-                        $("#errorWrapper").slideUp(500);
-                    });
-                } else {
-                    $('#errorWrapper').hide();
-                }
-            },
-            ignore: [],
-            rules: {
-
-                //EDIT
-
-
-
-
-
-
-
-
-
-
-                user_id: {
-                    required: true,
-
-                },
-
-
-
-                asset_id: {
-                    required: true,
-
-                },
-
-
-
-                start_date: {
-                    required: true,
-
-                },
-
-
-
-                expiry_date: {
-                    required: true,
-
-                },
-
-
-
-                active: {
-                    required: true,
-
-                },
-
-                auto_renew:{
-                        required : true,
-
-            },
-
-
-
-
-
-
-
-            },
-            submitHandler: function(form) {
-
-                //submitPreRegisterForm();
-
-                submit<?php //echo $databaseName;?>Form();
-
-                //TODO submit changes
-                //TODO reimport the array at the top
-                //TODO redraw the table
-
-
-
-            }
-
-
-
-
-        }); */
-
-        //detect change of multi-select tag box
-
-        $(document).on('change', '.registrations', function() {
-
-            /* alert('change'); */
-
-            //ajax call to update the link
-
-            //$('#registrations').refreshDataSelect2(optionsSelect);
-
-            //get the options to choose from
-
-            if (loading) {
-                return;
-            }
-
-            var myOpts = [];
-
-            $(".registrations option").each(function() {
-                myOpts.push($(this).val());
-            });
-
-            const dataToSend = {
-
-
-                programmeid: $(this).val(),
-                userid: lesionUnderEdit,
-                options: myOpts,
-
-            }
-
-            const jsonString = JSON.stringify(dataToSend);
-            console.log(jsonString);
-
-
-
-            var request = $.ajax({
-                url: siteRoot + "assets/scripts/updateUserRegistrations.php",
-                type: "POST",
-                contentType: "application/json",
-                data: jsonString,
-            });
-
-
-
-            request.done(function(data) {
-
-
-
-                if (data == 'User profile updated') {
-
-                    Swal.fire({
-                        title: 'Congratulations',
-                        text: 'Your user profile was upgraded to GIEQs Standard',
-                        type: 'success',
-                        background: '#162e4d',
-                        confirmButtonText: 'ok',
-                        confirmButtonColor: 'rgb(238, 194, 120)',
-
-                    })
-                }
-
-            })
-
-
-
-
-
-        })
-
-
-    })
-    </script>
+}
+.select2-container .select2-selection--single::-ms-expand,
+.select2-container--default.select2-container--focus .select2-selection--multiple::-ms-expand,
+.select2-container--default .select2-selection--multiple::-ms-expand,
+.select2-container--default .select2-search--dropdown .select2-search__field::-ms-expand
+{
+    border: 0; 
+    background-color: transparent;
+}
+.select2-container .select2-selection--single:focus,
+.select2-container--default.select2-container--focus .select2-selection--multiple:focus,
+.select2-container--default .select2-selection--multiple:focus,
+.select2-container--default .select2-search--dropdown .select2-search__field:focus
+{
+    color: #fff;
+    border-color: rgba(48, 110, 255, .5);
+    outline: 0;
+    background-color: #1b385d;
+    box-shadow: inset 0 1px 1px rgba(18, 38, 63, .075), 0 0 20px rgba(48, 110, 255, .1);
+}
+.select2-container .select2-selection--single::-ms-input-placeholder,
+.select2-container--default.select2-container--focus .select2-selection--multiple::-ms-input-placeholder,
+.select2-container--default .select2-selection--multiple::-ms-input-placeholder,
+.select2-container--default .select2-search--dropdown .select2-search__field::-ms-input-placeholder
+{
+    opacity: 1; 
+    color: #95aac9;
+}
+.select2-container .select2-selection--single::placeholder,
+.select2-container--default.select2-container--focus .select2-selection--multiple::placeholder,
+.select2-container--default .select2-selection--multiple::placeholder,
+.select2-container--default .select2-search--dropdown .select2-search__field::placeholder
+{
+    opacity: 1; 
+    color: #95aac9;
+}
+.select2-container .select2-selection--single:disabled,
+.select2-container .select2-selection--single[readonly],
+.select2-container--default.select2-container--focus .select2-selection--multiple:disabled,
+.select2-container--default.select2-container--focus .select2-selection--multiple[readonly],
+.select2-container--default .select2-selection--multiple:disabled,
+.select2-container--default .select2-selection--multiple[readonly],
+.select2-container--default .select2-search--dropdown .select2-search__field:disabled,
+.select2-container--default .select2-search--dropdown .select2-search__field[readonly]
+{
+    opacity: 1; 
+    background-color: #edf2f9;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered
+{
+    overflow: inherit;
+
+    padding: 0;
+
+    white-space: inherit; 
+    text-overflow: inherit;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered
+{
+    line-height: inherit; 
+
+    color: inherit;
+}
+
+.select2-dropdown
+{
+    padding: .35rem 0;
+
+    border: 1px solid #142b47;
+    border-radius: .25rem; 
+    background-color: #162e4d;
+}
+
+.select2-results__option
+{
+    padding: .25rem 1.25rem;
+
+    color: #6e84a3; 
+    background-color: #fff;
+}
+.select2-results__option:hover
+{
+    color: #fff;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected],
+.select2-container--default .select2-results__option[aria-selected='true']
+{
+    color: #306eff; 
+    background-color: transparent;
+}
+
+.select2-container--default .select2-results__option[aria-disabled=true]
+{
+    color: #95aac9;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--multiple,
+.select2-container--default .select2-selection--multiple
+{
+    height: auto;
+    min-height: calc(1.5em + 1.5rem + 2px);
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__rendered
+{
+    display: block;
+
+    margin: 0 0 -.25rem -.25rem;
+    padding: 0;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice
+{
+    font-size: .875rem;
+    line-height: 1.5rem;
+
+    display: inline-flex;
+
+    margin: 0 0 .25rem .25rem;
+    padding: 0 .5rem;
+
+    color: #fff; 
+    border: none;
+    border-radius: .2rem;
+    background-color: #193659;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove
+{
+    margin-left: .5rem;
+
+    color: #6e84a3; 
+
+    order: 2;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover
+{
+    color: #95aac9;
+}
+
+.select2-container .select2-search--inline
+{
+    display: none;
+}
+
+.select2-selection[aria-expanded='true']
+{
+    border-bottom-right-radius: 0 !important; 
+    border-bottom-left-radius: 0 !important;
+}
+
+.select2-search--dropdown
+{
+    padding: .25rem 1.25rem;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field
+{
+    font-size: .875rem;
+    line-height: 1.5;
+
+    height: calc(1.5em + 1rem + 2px);
+    padding: .5rem 1.25rem;
+
+    border-radius: .2rem;
+}
+
+.form-control-sm + .select2-container .select2-selection--single,
+.form-control-sm + .select2-container--default.select2-container--focus .select2-selection--multiple,
+.form-control-sm + .select2-container--default .select2-selection--multiple
+{
+    font-size: .875rem;
+    line-height: 1.5;
+
+    height: calc(1.5em + 1rem + 2px);
+    padding: .5rem 1.25rem;
+
+    border-radius: .2rem;
+}
+
+.form-control-sm + .select2-container--default.select2-container--focus .select2-selection--multiple,
+.form-control-sm + .select2-container--default .select2-selection--multiple
+{
+    min-height: calc(1.5em + 1rem + 2px);
+}
+
+.form-control-sm + .select2-container--default .select2-selection--multiple .select2-selection__choice
+{
+    line-height: 1.3125rem;
+}
+
+.form-control-lg + .select2-container .select2-selection--single,
+.form-control-lg + .select2-container--default.select2-container--focus .select2-selection--multiple,
+.form-control-lg + .select2-container--default .select2-selection--multiple
+{
+    font-size: 1.25rem;
+    line-height: 1.5;
+
+    height: calc(1.5em + 2rem + 2px);
+    padding: 1rem 1.875rem;
+
+    border-radius: .375rem;
+}
+
+.form-control-lg + .select2-container--default.select2-container--focus .select2-selection--multiple,
+.form-control-lg + .select2-container--default .select2-selection--multiple
+{
+    min-height: calc(1.5em + 2rem + 2px);
+}
+
+.form-control-lg + .select2-container--default .select2-selection--multiple .select2-selection__choice
+{
+    line-height: 1.875rem;
+}
+     
+     </style>
 </body>
 
 <?php require BASE_URI . '/footer.php';?>

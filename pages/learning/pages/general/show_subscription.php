@@ -36,6 +36,9 @@
       require_once(BASE_URI . '/assets/scripts/classes/assets_paid.class.php');
     $assets_paid = new assets_paid;
 
+    require_once(BASE_URI . '/assets/scripts/classes/pages.class.php');
+    $pages = new pages;
+
     require_once(BASE_URI . '/assets/scripts/classes/programmeView.class.php');
 
     $programmeView = new programmeView;
@@ -201,14 +204,32 @@
 		
         }
 
+        if (isset($_GET["page_id"]) && is_numeric($_GET["page_id"])){
+            $pageid = $_GET["page_id"];
+            
+            if ($debug){
+
+                echo 'Page id set';
+            }
+		
+		}else{
+		
+            //$assetid = null;
+            if ($debug){
+
+                echo 'Page id not set';
+            }
+		
+        }
+
         /* exit if no assetid provided */
 
-        if (!isset($assetid)){
+        if ((!isset($assetid)) && (!isset($pageid))){
             ?>
     <div class="main-content container mt-10">
 
         <?php            
-            echo 'This page requires an asset id';
+            echo 'This page requires an asset or page id';
             echo '<br/><br/>Return <a href="' . BASE_URL .  '/pages/learning/">home</a>';
             //redirect_user(BASE_URL . '/pages/learning/');
 
@@ -224,6 +245,11 @@
 
 
         /* determine access */
+
+
+              /* load the asset */
+
+              if (isset($assetid)){
        
 
         $access = null;
@@ -253,7 +279,7 @@
             }
         }
 
-              /* load the asset */
+
 
         if ($assets_paid->Return_row($assetid)){
 
@@ -283,6 +309,7 @@
            
 
         }
+
 
         /* define the page variables */
 
@@ -591,6 +618,124 @@
 
         }
 
+    }
+
+    if (isset($pageid)){
+
+        //check the page id exists
+
+        //get the page details
+
+        //get the required tagcategories or videos
+       
+
+
+        if ($pages->Return_row($pageid)){
+
+            $pages->Load_from_key($pageid); 
+
+            if ($debug){
+
+                echo 'page loaded ok';
+            }
+
+        }else{
+
+            
+            if ($debug){
+
+                $log[] =  'issue loading the page';
+            }
+            ?>
+            <div class="main-content container mt-10">
+
+                <?php            
+            echo 'Failed Page Loading</a>';
+            echo '<br/><br/>Return <a href="' . BASE_URL .  '/pages/learning/">home</a>';
+            //redirect_user(BASE_URL . '/pages/learning/');
+
+            setcookie("browsing", "", time() - 3600);
+            setcookie("browsing_id", "", time() - 3600);
+            die();
+
+
+
+           
+
+        }
+
+
+        /* define the page variables */
+
+        $page_title = $pages->gettitle();?>
+
+                <title>GIEQs Online Endoscopy Trainer - <?php echo $page_title;?></title>
+
+
+                <?php
+        $page_description = $pages->getdescription();
+        $videoset = null;
+
+        
+
+        
+        $gieqsDigital = false;  //?remove
+
+        if ($pages->getsimple() == '0'){
+
+            //tag categories should already be defined
+
+            $tagCategories = $assetManager->getTagsPage($pageid);
+
+            if ($debug){
+
+                echo 'tag categories';
+                print_r($tagCategories);
+            }
+
+
+        }elseif ($pages->getsimple() == '1'){
+
+            //get videos array
+
+            $videos = $assetManager->getVideosPage($pageid);
+
+            //then get the tag categories
+
+            $tagCategories = $assetManager->getVideoTagCategories($videos, $debug);
+
+            if ($debug){
+
+                echo 'videos';
+                print_r($videos);
+                echo 'tag categories';
+                print_r($tagCategories);
+            }
+
+
+        }else{
+
+            if ($debug){
+
+                echo 'Error, simple tag not set';
+
+            }
+
+
+        }
+
+        
+        setcookie('browsing', '5', time() + (365 * 24 * 60 * 60), '/');
+        setcookie('browsing_id', $pageid, time() + (365 * 24 * 60 * 60), '/');
+
+
+
+        
+
+    }
+
+    
+
 
 
 
@@ -699,11 +844,14 @@
 
     <?php
         $requiredTagCategories = $tagCategories;
+        $requiredVideos = $videos;
 
         ?>
 
-    <div id="requiredTagCategories" style="display:none;"><?php echo json_encode($requiredTagCategories);?>
-    </div>
+    <div id="requiredTagCategories" style="display:none;"><?php echo json_encode($requiredTagCategories);?></div>
+    <div id="requiredVideos" style="display:none;"><?php echo json_encode($requiredVideos);?></div>
+
+    
 
 
 
@@ -859,6 +1007,10 @@
 
     var requiredTagCategories = JSON.parse(requiredTagCategoriesText);
 
+    var requiredVideosText = $("#requiredVideos").text();
+
+    var requiredVideos = JSON.parse(requiredVideosText);
+
 
     function close_omnisearch() {
 
@@ -1003,6 +1155,7 @@
 
             tags: tags,
             requiredTagCategories: requiredTagCategories,
+            requiredVideos: requiredVideos,
             active: activeStatus,
             videoset: '<?php echo $videoset;?>',
             assetid: '<?php echo $assetid;?>',
@@ -1109,6 +1262,7 @@
                 loaded: loaded,
                 loadedRequired: loadedRequired,
                 requiredTagCategories: requiredTagCategories,
+                requiredVideos: requiredVideos,
                 referringUrl: $('#escaped_url').text(),
                 active: activeStatus,
                 videoset: '<?php echo $videoset;?>',
@@ -1211,9 +1365,9 @@
 
         if (overallTagAvailable && overallTagAvailable != '') {
 
-            $(document).find('.tag').each(function(){
+            $(document).find('.tag').each(function() {
 
-                if ($(this).attr('data') == overallTagAvailable){
+                if ($(this).attr('data') == overallTagAvailable) {
 
                     $(this).click();
 
