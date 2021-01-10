@@ -663,8 +663,11 @@ switch ($table) {
         echo $pdocrud->dbTable("menu")->render();
         break;
     case "navigation":
-        $pdocrud->relatedData('menu_id','menu','id','id');
+        $pdocrud->relatedData('menu_id','menu','id','title');
         $pdocrud->relatedData('superCategory','values','superCategory','superCategory_t');
+        //$pdocrud->addFilter("superCategoryFilter", "Super Category", "superCategory", "dropdown");
+        //$pdocrud->setFilterSource("superCategoryFilter", "values", "superCategory", "superCategory_t", "db");
+        //$pdocrud->setAdvSearchParam('superCategory', 'Super Category');
         echo $pdocrud->dbTable("navigation")->render();
         break;
     case "headings":
@@ -673,7 +676,13 @@ switch ($table) {
         break;
     case "pages":
         $pdocrud->relatedData('headings_id','headings','id','name');
+        $pdocrud->fieldTypes("simple", "radio");//change gender to radio button
+        $pdocrud->fieldDataBinding("simple", array(0 => "No", 1=> "Yes"), "", "","array");//add data for radio button
         echo $pdocrud->dbTable("pages")->render();
+
+        
+
+
             break;
             case "blog":
                 $pdocrud->relatedData('video_id','video','id','name');
