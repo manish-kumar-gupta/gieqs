@@ -37,7 +37,7 @@ $programmeView = new programmeView;
 $assetid = $data['assetid'];
 
 
-            $debug = true;
+            $debug = false;
 
 
             if ($debug){
@@ -530,7 +530,7 @@ if ($debug){
 
 }
 
-setcookie('browsing_array', json_encode($data2), time() + (365 * 24 * 60 * 60), '/');
+//setcookie('browsing_array', json_encode($data2), time() + (365 * 24 * 60 * 60), '/');
 
 
         $data3 = $navigator->getVideoTagsBasedOnVideosShown($data2, $debug);

@@ -14,6 +14,9 @@ $url =  "{$_SERVER['REQUEST_URI']}";
 require_once(BASE_URI . '/assets/scripts/classes/assets_paid.class.php');
 $assets_paid = new assets_paid;
 
+require_once(BASE_URI . '/assets/scripts/classes/pages.class.php');
+$pages = new pages;
+
 
 $debug = false;
 
@@ -203,6 +206,110 @@ if (isset($browsing) && isset($browsing_id) && is_array($browsing_array)){
     //browsing not a course or asset
 
 
+    if(isset($id)) {
+
+        $currentVideo = $id;
+    
+        if ($debug){
+    
+            var_dump($id);
+        }
+
+        //id detected
+
+        $position = array_search($id, $browsing_array);
+
+
+        if ($position > -1){
+
+            //is id in the array browsingArray?
+
+            if ($debug){
+    
+                echo 'id detected in the browsing array at position ' . $position;
+            }
+
+            
+            //get previous video and next video
+
+            $nextVideo = $browsing_array[(intval($position) + 1)];
+
+            if (!isset($nextVideo)){
+
+                $lastVideo = true;
+            }else{
+
+                $lastVideo = false;
+            }
+            
+
+            $previousVideo = $browsing_array[(intval($position) - 1)];
+
+            if (!isset($previousVideo)){
+
+                $firstVideo = true;
+            }else{
+
+                $firstVideo = false;
+            }
+
+            if ($debug){
+    
+                echo "NEXT video is $nextVideo and PREVIOUS video is $previousVideo";
+                
+                if ($firstVideo == true){
+                
+                    echo "this is the FIRST video ";
+                    
+                    }
+                
+                if ($lastVideo == true){
+                
+                echo "this is the LAST video ";
+
+                }
+
+
+            }
+
+            $numberOfVideos = count($browsing_array);
+          
+            if ($debug){
+    
+                echo "This video is number $position of $numberOfVideos";
+            }
+
+        }else{
+
+
+            if ($debug){
+    
+                echo 'id not deteced in the browsing array'; 
+            }
+
+
+        }        
+
+
+
+
+
+
+
+    
+    }else{
+    
+
+        //no id detected from viewer.php
+
+        if ($debug){
+
+            echo 'no id detected from viewer.php';
+    
+        }
+
+
+    }
 
 
 
@@ -271,12 +378,34 @@ Useful for PHP to JS transfer
 
             <li class="nav-item">
 
-                    <a href="<?php echo BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=' . $browsing_id;?>" class="nav-link nav-link-icon gieqsGold">
+<?php
+            if ($browsing == '5'){
+
+                ?>
+
+<a href="<?php echo BASE_URL . '/pages/learning/pages/general/show_subscription.php?page_id=' . $browsing_id;?>" class="nav-link nav-link-icon gieqsGold">
+
+
+                    <?php
+            }else {
+
+                ?>
+
+<a href="<?php echo BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=' . $browsing_id;?>" class="nav-link nav-link-icon gieqsGold">
+
 
                     <?php 
+
+        }
                     
+                    if ($browsing == '5'){
+                        $pages->Load_from_key($browsing_id);
+                        $first_part = $pages->gettitle();
+
+                    }else{
                     $pieces = explode(" ", $assets_paid->getname());
 $first_part = implode(" ", array_splice($pieces, 0, 4));
+                    }
                     
                     ?>
 

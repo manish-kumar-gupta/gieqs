@@ -1276,6 +1276,89 @@ class navigator {
 
 	}
 
+	public function getVideosTagCategories($requiredTagCategories, $debug=true){
+
+		$query_where = '';
+
+		$y=1;
+
+		$howManyTagCategories = count($requiredTagCategories);
+		
+		foreach ($requiredTagCategories as $key=>$value){
+
+			if ($y == 1 AND $y == $howManyTagCategories){
+
+				$query_where .= "(e.`id` = '$value') ";
+
+			}
+			
+			else if ($y == 1 AND $y < $howManyTagCategories){
+
+			$query_where .= "(e.`id` = '$value' OR ";
+
+			}else if ($y == $howManyTagCategories){
+
+				$query_where .= "e.`id` = '$value') ";
+				
+			}else{
+
+				$query_where .= "e.`id` = '$value' OR ";
+
+			}
+
+			$y++;
+
+		}
+
+		$q= "SELECT DISTINCT a.`id` 
+		FROM `video` AS a INNER JOIN `chapter` AS b ON a.`id` = b.`video_id` 
+		INNER JOIN `chapterTag` AS c ON b.`id` = c.`chapter_id` 
+		INNER JOIN `tags` AS d ON d.`id` = c.`tags_id` 
+		INNER JOIN `tagCategories` AS e ON d.`tagCategories_id` = e.`id`
+		WHERE $query_where  
+		AND (a.`active` = '1' OR a.`active` = '3') GROUP BY a.`id` ORDER BY a.`id` ASC";
+
+
+		if ($debug){
+
+			echo $q;
+
+		}
+
+				$result = $this->connection->RunQuery($q);
+
+				$x = 0;
+
+		
+				if ($result->num_rows > 0){
+		
+					
+					while($row = $result->fetch_array(MYSQLI_ASSOC)){
+						
+						$rowReturn[$x] = $row['id'];
+					
+						
+						$x++;
+						
+						
+					}
+				
+					return $rowReturn;
+				}else{
+
+					if ($debug){
+
+						echo 'no videos in this collection of tag categories';
+					}
+					
+					return false;
+				}
+			
+
+
+
+	}
+
 	public function getVideoDataSimple($requiredVideos, $debug, $active='1'){
 
 		if ($debug){

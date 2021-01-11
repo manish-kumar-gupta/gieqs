@@ -693,8 +693,27 @@
                 print_r($tagCategories);
             }
 
+            $data4 = $navigator->getVideosTagCategories($tagCategories);
+
+            if ($debug){
+
+                echo 'data 4 categories';
+                print_r($data4);
+            }
+
+            $videosDenominator = $assetManager->determineVideoAccessNonAsset($data4, $isSuperuser, $userid, false);
+
+
+            setcookie('browsing', '5', time() + (365 * 24 * 60 * 60), '/');
+            setcookie('browsing_id', $pageid, time() + (365 * 24 * 60 * 60), '/');
+            setcookie('browsing_array', json_encode($videosDenominator), time() + (365 * 24 * 60 * 60), '/');
+    
+
+
 
         }elseif ($pages->getsimple() == '1'){
+
+            $simple = 1;
 
             //get videos array
 
@@ -712,6 +731,11 @@
                 print_r($tagCategories);
             }
 
+            setcookie('browsing', '5', time() + (365 * 24 * 60 * 60), '/');
+            setcookie('browsing_id', $pageid, time() + (365 * 24 * 60 * 60), '/');
+            setcookie('browsing_array', json_encode($videos), time() + (365 * 24 * 60 * 60), '/');
+
+
 
         }else{
 
@@ -721,13 +745,15 @@
 
             }
 
+            setcookie('browsing', '5', time() + (365 * 24 * 60 * 60), '/');
+            setcookie('browsing_id', null, time() + (365 * 24 * 60 * 60), '/');
+            setcookie('browsing_array', null, time() + (365 * 24 * 60 * 60), '/');
+
+
 
         }
 
         
-        setcookie('browsing', '5', time() + (365 * 24 * 60 * 60), '/');
-        setcookie('browsing_id', $pageid, time() + (365 * 24 * 60 * 60), '/');
-
 
 
         
@@ -893,7 +919,11 @@
                 <ol class="breadcrumb breadcrumb-links p-0 m-0">
                     <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/index.php'?>">GIEQs
                             online</a></li>
+
+                    <?php if ($videoset == 2 || $videoset == 3){?>
                     <li class="breadcrumb-item">Subscribable Courses</li>
+                    <?php } ?>
+                    
                     <li class="breadcrumb-item gieqsGold" aria-current="page"><?php echo $page_title;?></li>
                 </ol>
             </nav>
@@ -904,9 +934,13 @@
 
         <!--Navigation-->
 
+        <?php if (!isset($simple)){?>
+
         <div id="navigationZone" class="pt-3">
             <?php require(BASE_URI . '/pages/learning/includes/navigation.php'); ?>
         </div>
+
+        <?php }?>
 
 
 
