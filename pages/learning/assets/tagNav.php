@@ -82,6 +82,13 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                    </a>
                </li>
                <li class="nav-item">
+                   <a class="nav-link nav-link-icon expandSearch cursor-pointer text-primary"
+                       >
+
+                       <span class="nav-link-inner--text ">Expand Search</span>
+                   </a>
+               </li>
+               <li class="nav-item">
                    <a class="nav-link nav-link-icon exitTagNav"
                        >
 

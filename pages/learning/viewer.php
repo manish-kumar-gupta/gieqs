@@ -2173,6 +2173,38 @@ chapterData
 
     });
 
+    //new cookie functions
+
+    function createCookie(name,value,days) {
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 *1000));
+        var expires = "; expires=" + date.toGMTString();
+    } else {
+        var expires = "";
+    }
+    document.cookie = name + "=" + value + expires + "; path=/";
+    }
+
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') {
+                c = c.substring(1,c.length);
+            }
+            if (c.indexOf(nameEQ) == 0) {
+                return c.substring(nameEQ.length,c.length);
+            }
+        }
+        return null;
+    }
+
+    function eraseCookie(name) {
+        createCookie(name,"",-1);
+    }
+
 
 
     function submitCommentForm() {
@@ -2486,6 +2518,37 @@ chapterData
 
 
         })
+
+    })
+
+    $(document).ready(function() {
+
+    $(document).on('click', '.expandSearch', function() {
+
+
+        //set the cookie 99
+
+        createCookie('browsing', '99', '2');
+
+        //remove the video browsing cookies
+
+        //createCookie('browsing_id', '', '2');
+        //createCookie('browsing_array', '', '2');
+
+        $('#browsing_id').attr('data-browsing-id', '');
+        $('#browsing').attr('data-browsing', '99');
+
+        $('#browsing_array').text('');
+
+
+        showTagBar(selectedTag);
+        
+
+
+        //get the tag bar again
+
+
+    })
 
     })
 
