@@ -1508,6 +1508,10 @@ chapterData
     <script>
     var signup = $('#signup').text();
 
+    var browsingBeforeExpand = readCookie('browsing');
+    var browsing_idBeforeExpand = readCookie('browsing_id');
+    var browsing_arrayBeforeExpand = $('#browsing_array').text();
+
     function submitPreRegisterForm() {
 
         var esdLesionObject = pushDataFromFormAJAX("pre-register", "preRegister", "id", null,
@@ -2525,23 +2529,70 @@ chapterData
 
     $(document).on('click', '.expandSearch', function() {
 
-
+        $(this).removeClass('heartBeat');
         //set the cookie 99
 
-        createCookie('browsing', '99', '2');
+        if ($(this).attr('restricted') == 0){
 
-        //remove the video browsing cookies
 
-        //createCookie('browsing_id', '', '2');
-        //createCookie('browsing_array', '', '2');
+            //put original values back
 
-        $('#browsing_id').attr('data-browsing-id', '');
-        $('#browsing').attr('data-browsing', '99');
+            createCookie('browsing', browsingBeforeExpand, '2');
+            createCookie('browsing_id', browsing_idBeforeExpand, '2');
+            createCookie('browsing_array', browsing_arrayBeforeExpand, '2');
 
-        $('#browsing_array').text('');
+            //put original page values back
 
+            $('#browsing').attr('data-browsing', browsingBeforeExpand);
+            $('#browsing_id').attr('data-browsing-id', browsing_idBeforeExpand); //need to blank these?
+            $('#browsing_array').text(browsing_arrayBeforeExpand);
+
+            $(this).attr('restricted', 1);
+            $(this).text('Expand Search');
+
+
+
+        }else if ($(this).attr('restricted') == 1){
+
+            createCookie('browsing', '99', '2');
+
+            $('#browsing').attr('data-browsing', '99');
+
+            $('#browsing_id').attr('data-browsing-id', ''); //need to blank these?
+
+            $('#browsing_array').text('');
+
+
+            $(this).attr('restricted', 0);
+             $(this).text('Restrict Search');
+
+        }else{
+
+            //first click
+
+            $(this).removeClass('heartBeat');
+            //set the cookie 99
+
+            createCookie('browsing', '99', '2');
+
+            //update the page references
+
+            $('#browsing').attr('data-browsing', '99');
+            $('#browsing_id').attr('data-browsing-id', ''); //need to blank these?
+            $('#browsing_array').text('');
+
+
+            $(this).attr('restricted', 0);
+                    $(this).text('Restrict Search');
+
+        }
 
         showTagBar(selectedTag);
+
+
+$(this).addClass('heartBeat');
+
+        
         
 
 

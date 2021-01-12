@@ -27,7 +27,9 @@ Class headings {
 
 	private $id; //int(11)
 	private $navigation_id; //int(11)
+	private $name; //varchar(300)
 	private $order; //varchar(11)
+	private $active; //varchar(2)
 	private $connection;
 
 	public function __construct(){
@@ -40,9 +42,11 @@ Class headings {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_headings($navigation_id,$order){
+	public function New_headings($navigation_id,$name,$order,$active){
 		$this->navigation_id = $navigation_id;
+		$this->name = $name;
 		$this->order = $order;
+		$this->active = $active;
 	}
 
     /**
@@ -56,7 +60,9 @@ Class headings {
 		while($row = $result->fetch(PDO::FETCH_ASSOC)){
 			$this->id = $row["id"];
 			$this->navigation_id = $row["navigation_id"];
+			$this->name = $row["name"];
 			$this->order = $row["order"];
+			$this->active = $row["active"];
 		}
 	}
     /**
@@ -76,7 +82,9 @@ $q = "Select * from `headings` LIMIT " . $x . ", " . $y;
 					while($row = $result->fetch(PDO::FETCH_ASSOC)){
 			$rowReturn[$x]["id"] = $row["id"];
 			$rowReturn[$x]["navigation_id"] = $row["navigation_id"];
+			$rowReturn[$x]["name"] = $row["name"];
 			$rowReturn[$x]["order"] = $row["order"];
+			$rowReturn[$x]["active"] = $row["active"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -100,7 +108,9 @@ $q = "Select * from `headings` WHERE `id` = $key";
 					while($row = $result->fetch(PDO::FETCH_ASSOC)){
 			$rowReturn[$x]["id"] = $row["id"];
 			$rowReturn[$x]["navigation_id"] = $row["navigation_id"];
+			$rowReturn[$x]["name"] = $row["name"];
 			$rowReturn[$x]["order"] = $row["order"];
+			$rowReturn[$x]["active"] = $row["active"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -369,10 +379,24 @@ $q = "UPDATE `headings` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return name - varchar(300)
+	 */
+	public function getname(){
+		return $this->name;
+	}
+
+	/**
 	 * @return order - varchar(11)
 	 */
 	public function getorder(){
 		return $this->order;
+	}
+
+	/**
+	 * @return active - varchar(2)
+	 */
+	public function getactive(){
+		return $this->active;
 	}
 
 	/**
@@ -390,10 +414,24 @@ $q = "UPDATE `headings` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @param Type: varchar(300)
+	 */
+	public function setname($name){
+		$this->name = $name;
+	}
+
+	/**
 	 * @param Type: varchar(11)
 	 */
 	public function setorder($order){
 		$this->order = $order;
+	}
+
+	/**
+	 * @param Type: varchar(2)
+	 */
+	public function setactive($active){
+		$this->active = $active;
 	}
 
     /**

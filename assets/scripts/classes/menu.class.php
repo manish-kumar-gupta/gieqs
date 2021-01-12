@@ -23,10 +23,13 @@ error_reporting(0);
 	
 }
 
+
 Class menu {
 
 	private $id; //int(11)
 	private $title; //varchar(400)
+	private $active; //varchar(2)
+	private $order; //varchar(11)
 	private $connection;
 
 	public function __construct(){
@@ -39,8 +42,10 @@ Class menu {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_menu($title){
+	public function New_menu($title,$active,$order){
 		$this->title = $title;
+		$this->active = $active;
+		$this->order = $order;
 	}
 
     /**
@@ -54,6 +59,8 @@ Class menu {
 		while($row = $result->fetch(PDO::FETCH_ASSOC)){
 			$this->id = $row["id"];
 			$this->title = $row["title"];
+			$this->active = $row["active"];
+			$this->order = $row["order"];
 		}
 	}
     /**
@@ -73,6 +80,8 @@ $q = "Select * from `menu` LIMIT " . $x . ", " . $y;
 					while($row = $result->fetch(PDO::FETCH_ASSOC)){
 			$rowReturn[$x]["id"] = $row["id"];
 			$rowReturn[$x]["title"] = $row["title"];
+			$rowReturn[$x]["active"] = $row["active"];
+			$rowReturn[$x]["order"] = $row["order"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -96,6 +105,8 @@ $q = "Select * from `menu` WHERE `id` = $key";
 					while($row = $result->fetch(PDO::FETCH_ASSOC)){
 			$rowReturn[$x]["id"] = $row["id"];
 			$rowReturn[$x]["title"] = $row["title"];
+			$rowReturn[$x]["active"] = $row["active"];
+			$rowReturn[$x]["order"] = $row["order"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -364,6 +375,20 @@ $q = "UPDATE `menu` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return active - varchar(2)
+	 */
+	public function getactive(){
+		return $this->active;
+	}
+
+	/**
+	 * @return order - varchar(11)
+	 */
+	public function getorder(){
+		return $this->order;
+	}
+
+	/**
 	 * @param Type: int(11)
 	 */
 	public function setid($id){
@@ -375,6 +400,20 @@ $q = "UPDATE `menu` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function settitle($title){
 		$this->title = $title;
+	}
+
+	/**
+	 * @param Type: varchar(2)
+	 */
+	public function setactive($active){
+		$this->active = $active;
+	}
+
+	/**
+	 * @param Type: varchar(11)
+	 */
+	public function setorder($order){
+		$this->order = $order;
 	}
 
     /**

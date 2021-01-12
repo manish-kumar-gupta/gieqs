@@ -30,6 +30,7 @@ Class navigation {
 	private $superCategory; //int(11)
 	private $title; //varchar(400)
 	private $order; //varchar(11)
+	private $active; //varchar(2)
 	private $connection;
 
 	public function __construct(){
@@ -42,11 +43,12 @@ Class navigation {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_navigation($menu_id,$superCategory,$title,$order){
+	public function New_navigation($menu_id,$superCategory,$title,$order,$active){
 		$this->menu_id = $menu_id;
 		$this->superCategory = $superCategory;
 		$this->title = $title;
 		$this->order = $order;
+		$this->active = $active;
 	}
 
     /**
@@ -63,6 +65,7 @@ Class navigation {
 			$this->superCategory = $row["superCategory"];
 			$this->title = $row["title"];
 			$this->order = $row["order"];
+			$this->active = $row["active"];
 		}
 	}
     /**
@@ -85,6 +88,7 @@ $q = "Select * from `navigation` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["superCategory"] = $row["superCategory"];
 			$rowReturn[$x]["title"] = $row["title"];
 			$rowReturn[$x]["order"] = $row["order"];
+			$rowReturn[$x]["active"] = $row["active"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -111,6 +115,7 @@ $q = "Select * from `navigation` WHERE `id` = $key";
 			$rowReturn[$x]["superCategory"] = $row["superCategory"];
 			$rowReturn[$x]["title"] = $row["title"];
 			$rowReturn[$x]["order"] = $row["order"];
+			$rowReturn[$x]["active"] = $row["active"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -400,6 +405,13 @@ $q = "UPDATE `navigation` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return active - varchar(2)
+	 */
+	public function getactive(){
+		return $this->active;
+	}
+
+	/**
 	 * @param Type: int(11)
 	 */
 	public function setid($id){
@@ -432,6 +444,13 @@ $q = "UPDATE `navigation` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function setorder($order){
 		$this->order = $order;
+	}
+
+	/**
+	 * @param Type: varchar(2)
+	 */
+	public function setactive($active){
+		$this->active = $active;
 	}
 
     /**

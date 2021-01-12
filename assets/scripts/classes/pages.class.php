@@ -33,6 +33,7 @@ Class pages {
 	private $title; //varchar(400)
 	private $description; //varchar(1000)
 	private $simple; //varchar(11)
+	private $active; //varchar(2)
 	private $connection;
 
 	public function __construct(){
@@ -40,16 +41,18 @@ Class pages {
         $this->connection = new DataBaseMysqlPDOLearning();
        
 }
+
     /**
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_pages($headings_id,$order,$title,$description,$simple){
+	public function New_pages($headings_id,$order,$title,$description,$simple,$active){
 		$this->headings_id = $headings_id;
 		$this->order = $order;
 		$this->title = $title;
 		$this->description = $description;
 		$this->simple = $simple;
+		$this->active = $active;
 	}
 
     /**
@@ -67,6 +70,7 @@ Class pages {
 			$this->title = $row["title"];
 			$this->description = $row["description"];
 			$this->simple = $row["simple"];
+			$this->active = $row["active"];
 		}
 	}
     /**
@@ -90,6 +94,7 @@ $q = "Select * from `pages` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["title"] = $row["title"];
 			$rowReturn[$x]["description"] = $row["description"];
 			$rowReturn[$x]["simple"] = $row["simple"];
+			$rowReturn[$x]["active"] = $row["active"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -117,6 +122,7 @@ $q = "Select * from `pages` WHERE `id` = $key";
 			$rowReturn[$x]["title"] = $row["title"];
 			$rowReturn[$x]["description"] = $row["description"];
 			$rowReturn[$x]["simple"] = $row["simple"];
+			$rowReturn[$x]["active"] = $row["active"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -413,6 +419,13 @@ $q = "UPDATE `pages` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return active - varchar(2)
+	 */
+	public function getactive(){
+		return $this->active;
+	}
+
+	/**
 	 * @param Type: int(11)
 	 */
 	public function setid($id){
@@ -452,6 +465,13 @@ $q = "UPDATE `pages` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function setsimple($simple){
 		$this->simple = $simple;
+	}
+
+	/**
+	 * @param Type: varchar(2)
+	 */
+	public function setactive($active){
+		$this->active = $active;
 	}
 
     /**
