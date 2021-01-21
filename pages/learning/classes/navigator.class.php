@@ -1276,7 +1276,7 @@ class navigator {
 
 	}
 
-	public function getVideosTagCategories($requiredTagCategories, $debug=true){
+	public function getVideosTagCategories($requiredTagCategories, $debug=false){
 
 		$query_where = '';
 

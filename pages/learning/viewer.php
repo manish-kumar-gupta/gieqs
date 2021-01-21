@@ -2314,6 +2314,8 @@ chapterData
 
         $('#tagBar').removeClass('d-none');
         window.localStorage.setItem('selectedTag', selectedTag);
+        createCookie('selectedTag', selectedTag, '2');
+
 
         //get tags to parse data
 
@@ -2484,13 +2486,92 @@ chapterData
 
     }
 
+    function refreshVideoBar(){
+    
+        var dataToSend = {
+
+        identifier: 'refresh',
+        videoid : videoPassed,
+
+
+        }
+
+        const jsonString2 = JSON.stringify(dataToSend);
+
+        //const jsonString = JSON.stringify(dataToSend);
+        //console.log(jsonString);
+        //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
+
+        var request2 = $.ajax({
+        beforeSend: function() {
+
+
+        },
+        url: siteRoot + "assets/videoNav.php",
+        type: "POST",
+        contentType: "application/json",
+        data: jsonString2,
+        
+        });
+
+
+
+        request2.done(function(data) {
+        // alert( "success" );
+        if (data) {
+            //show green tick
+            //console.log(data);
+
+            $('#videoBar').replaceWith(data);
+
+
+            //$('#notification-services').delay('1000').addClass('is-valid');
+
+
+
+
+        }
+        //$(document).find('.Thursday').hide();
+        //$(icon).prop("disabled", false);
+        })
+
+
+    }
+
+    function updateVideoBar(){
+
+
+
+        var restricted = window.localStorage.getItem('restricted');
+
+        if (restricted == 'false'){
+
+            //alter the video bar
+
+            refreshVideoBar();
+
+
+        }else if (restricted == 'true'){
+
+
+
+        }
+
+    }
+
     function checkTagFiltering(){
+
+        // check tag filtering
 
         var overallTagAvailable = window.localStorage.getItem('selectedTag');
 
         if (overallTagAvailable && overallTagAvailable != 'null'){
 
             showTagBar(overallTagAvailable);
+
+            //and remove the video text if restricted == false
+
+            
 
             waitForFinalEvent(function(){
       //alert('Resize...');
@@ -2502,12 +2583,16 @@ chapterData
 
         }
 
+        
+
     }
 
     function hideTagBar() {
 
         $('#tagBar').addClass('d-none');
         window.localStorage.setItem('selectedTag', null);
+        createCookie('selectedTag', null, '2');
+
 
 
 
@@ -2529,10 +2614,15 @@ chapterData
 
     $(document).on('click', '.expandSearch', function() {
 
+        var restricted = window.localStorage.getItem('restricted');
+        console.log('restricted is ' + restricted);
+
         $(this).removeClass('heartBeat');
         //set the cookie 99
 
-        if ($(this).attr('restricted') == 0){
+        if (restricted == "false"){
+
+            console.log('Entered restricted = false loop');
 
 
             //put original values back
@@ -2550,21 +2640,29 @@ chapterData
             $(this).attr('restricted', 1);
             $(this).text('Expand Search');
 
+            //put here
+
+            window.localStorage.setItem('restricted', "true");
+            createCookie('restricted', 'true', '2');
 
 
-        }else if ($(this).attr('restricted') == 1){
+        }else if (restricted == "true"){
 
             createCookie('browsing', '99', '2');
 
             $('#browsing').attr('data-browsing', '99');
 
-            $('#browsing_id').attr('data-browsing-id', ''); //need to blank these?
+            //$('#browsing_id').attr('data-browsing-id', ''); //need to blank these?
 
-            $('#browsing_array').text('');
+            //$('#browsing_array').text('');
 
 
             $(this).attr('restricted', 0);
              $(this).text('Restrict Search');
+
+             window.localStorage.setItem('restricted', "false");
+             createCookie('restricted', 'false', '2');
+
 
         }else{
 
@@ -2578,12 +2676,16 @@ chapterData
             //update the page references
 
             $('#browsing').attr('data-browsing', '99');
-            $('#browsing_id').attr('data-browsing-id', ''); //need to blank these?
-            $('#browsing_array').text('');
+            //$('#browsing_id').attr('data-browsing-id', ''); //need to blank these?
+            //$('#browsing_array').text('');
 
 
             $(this).attr('restricted', 0);
-                    $(this).text('Restrict Search');
+            $(this).text('Restrict Search');
+            window.localStorage.setItem('restricted', "false");
+            createCookie('restricted', 'false', '2');
+
+
 
         }
 

@@ -1,6 +1,29 @@
 <?php
 
-//require '../../includes/config.inc.php';	
+
+//for the ajax version
+$data = json_decode(file_get_contents('php://input'), true);
+
+if ($data){
+
+    if ($data['identifier'] == 'refresh'){
+
+        require '../includes/config.inc.php';	
+
+        //set id
+
+        //this in other circumstances is set by the page
+
+        $id = $data['videoid'];
+
+
+
+    }
+
+
+}
+
+//
 
 $url =  "{$_SERVER['REQUEST_URI']}";
                     $highlightComplex = preg_match (  '/complex/' ,  $url);
@@ -411,6 +434,9 @@ $first_part = implode(" ", array_splice($pieces, 0, 4));
                     ?>
 
                         <span class="nav-link-inner--text "><?php echo $first_part;?></span>
+
+                        <!-- unless rge selectedTag is not null and restricted is false then no numbers and expanded tag viewing -->
+
                     </a>
                 </li>
                 <li class="nav-item">
