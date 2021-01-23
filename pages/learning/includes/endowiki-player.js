@@ -831,7 +831,7 @@ function undoFilterByTag() {
 
 		}
 
-	updatePlayer(data2);
+		updatePlayer(data2);
 
 
 		});  
@@ -854,6 +854,8 @@ function undoFilterByTag() {
 
 function filterByTag(requestedTag){
 
+	//restrictTagStatusBar();
+	
 	undoFilterByTag();
 
 	requiredChapters = null;

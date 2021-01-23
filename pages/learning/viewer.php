@@ -27,6 +27,8 @@
 
       $usersViewsVideo = new usersViewsVideo;
 
+      $usersMetricsManager = new usersMetricsManager;
+
       $usersSocial = new usersSocial;
 
       $usersLikeVideo = new usersLikeVideo;
@@ -1509,6 +1511,11 @@ chapterData
     var signup = $('#signup').text();
 
     var browsingBeforeExpand = readCookie('browsing');
+
+    if (browsingBeforeExpand != '99'){
+    createCookie('browsing_last', browsingBeforeExpand, '2');
+    }
+
     var browsing_idBeforeExpand = readCookie('browsing_id');
     var browsing_arrayBeforeExpand = $('#browsing_array').text();
 
@@ -2441,6 +2448,18 @@ chapterData
 
                 }
 
+                if (v.outside_asset === true){
+
+                    $('.expandSearch').addClass('disabled').addClass('text-muted');
+
+
+                }else{
+
+                    $('.expandSearch').removeClass('disabled').removeClass('text-muted');
+
+
+                }
+
                 if (v.lastVideo === true){
 
                 $('.nextTagNav').addClass('disabled');
@@ -2456,6 +2475,8 @@ chapterData
 
                })
 
+               refreshVideoBar();
+
 
                 //$('#notification-services').delay('1000').addClass('is-valid');
 
@@ -2466,6 +2487,8 @@ chapterData
             //$(document).find('.Thursday').hide();
            
         })
+
+        
 
         //  context (as video bar)
         //  id of context  
@@ -2487,6 +2510,8 @@ chapterData
     }
 
     function refreshVideoBar(){
+
+        //gets video bar again from AJAX to reflect most recent changes
     
         var dataToSend = {
 
@@ -2540,7 +2565,7 @@ chapterData
 
     function updateVideoBar(){
 
-
+        //unused
 
         var restricted = window.localStorage.getItem('restricted');
 
@@ -2592,6 +2617,7 @@ chapterData
         $('#tagBar').addClass('d-none');
         window.localStorage.setItem('selectedTag', null);
         createCookie('selectedTag', null, '2');
+        refreshVideoBar();
 
 
 
@@ -2610,11 +2636,169 @@ chapterData
 
     })
 
+    function restrictTagStatusBar() {
+
+        var restricted = getCookie('restricted');
+
+        if (restricted == 'false'){
+
+            var browsing_last = getCookie('browsing_last');
+            createCookie('browsing', browsing_last, '2');
+
+            //put original page values back
+
+            $('#browsing').attr('data-browsing', browsing_last);
+            //$('#browsing_id').attr('data-browsing-id', browsing_idBeforeExpand); //need to blank these?
+            //$('#browsing_array').text(browsing_arrayBeforeExpand);
+
+            $('.expandSearch').attr('restricted', 1);
+            $('.expandSearch').text('Expand Search');
+
+            //put here
+
+            window.localStorage.setItem('restricted', "true");
+            createCookie('restricted', 'true', '2');
+
+            showTagBar();
+
+        }
+
+
+
+    }
+
+    function checkExpandedStatusTagBar () {
+
+
+        var restricted = window.localStorage.getItem('restricted');
+        console.log('restricted is ' + restricted);
+
+        //$('.expandSearch').removeClass('heartBeat');
+        //set the cookie 99
+
+        if (restricted == "false"){
+
+            console.log('Entered restricted = false loop');
+
+            $('.expandSearch').attr('restricted', 0);
+            $('.expandSearch').text('Restrict Search');
+
+
+
+        }else if (restricted == "true"){
+
+        
+            $('.expandSearch').attr('restricted', 1);
+             $('.expandSearch').text('Expand Search');
+
+            
+
+
+        }
+
+       // showTagBar(selectedTag);
+
+
+        //$('.expandSearch').addClass('heartBeat');
+
+    }
+
+    function toggleExpandedStatusTagBar (){
+
+        var restricted = window.localStorage.getItem('restricted');
+        console.log('restricted is ' + restricted);
+
+        $('.expandSearch').removeClass('heartBeat');
+        //set the cookie 99
+
+        if (restricted == "false"){
+
+            console.log('Entered restricted = false loop');
+
+
+            //put original values back
+
+            //createCookie('browsing', browsingBeforeExpand, '2');
+            //createCookie('browsing_id', browsing_idBeforeExpand, '2');
+            //createCookie('browsing_array', browsing_arrayBeforeExpand, '2');
+
+            var browsing_last = getCookie('browsing_last');
+            createCookie('browsing', browsing_last, '2');
+
+            //put original page values back
+
+            $('#browsing').attr('data-browsing', browsing_last);
+            //$('#browsing_id').attr('data-browsing-id', browsing_idBeforeExpand); //need to blank these?
+            //$('#browsing_array').text(browsing_arrayBeforeExpand);
+
+            $('.expandSearch').attr('restricted', 1);
+            $('.expandSearch').text('Expand Search');
+
+            //put here
+
+            window.localStorage.setItem('restricted', "true");
+            createCookie('restricted', 'true', '2');
+
+
+        }else if (restricted == "true"){
+
+            createCookie('browsing', '99', '2');
+
+            $('#browsing').attr('data-browsing', '99');
+
+            //$('#browsing_id').attr('data-browsing-id', ''); //need to blank these?
+
+            //$('#browsing_array').text('');
+
+
+            $('.expandSearch').attr('restricted', 0);
+             $('.expandSearch').text('Restrict Search');
+
+             window.localStorage.setItem('restricted', "false");
+             createCookie('restricted', 'false', '2');
+
+
+        }else{
+
+            //first click
+
+            $('.expandSearch').removeClass('heartBeat');
+            //set the cookie 99
+
+            createCookie('browsing', '99', '2');
+
+            //update the page references
+
+            $('#browsing').attr('data-browsing', '99');
+            //$('#browsing_id').attr('data-browsing-id', ''); //need to blank these?
+            //$('#browsing_array').text('');
+
+
+            $('.expandSearch').attr('restricted', 0);
+            $('.expandSearch').text('Restrict Search');
+            window.localStorage.setItem('restricted', "false");
+            createCookie('restricted', 'false', '2');
+
+
+
+        }
+
+
+
+    }
+
     $(document).ready(function() {
 
     $(document).on('click', '.expandSearch', function() {
 
-        var restricted = window.localStorage.getItem('restricted');
+        toggleExpandedStatusTagBar();
+
+        showTagBar(selectedTag);
+
+
+        $('.expandSearch').addClass('heartBeat');
+
+        /* var restricted = window.localStorage.getItem('restricted');
         console.log('restricted is ' + restricted);
 
         $(this).removeClass('heartBeat');
@@ -2692,7 +2876,7 @@ chapterData
         showTagBar(selectedTag);
 
 
-$(this).addClass('heartBeat');
+$(this).addClass('heartBeat'); */
 
         
         
@@ -2711,6 +2895,10 @@ $(this).addClass('heartBeat');
 
 
         checkTagFiltering();
+
+        checkExpandedStatusTagBar();
+
+        //$('.expandSearch').trigger('click');
 
         getComments();
 

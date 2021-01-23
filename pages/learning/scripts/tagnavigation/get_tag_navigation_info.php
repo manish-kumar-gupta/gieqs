@@ -47,6 +47,9 @@ $pages = new pages;
 require_once(BASE_URI . '/pages/learning/classes/navigator.class.php');
 $navigator = new navigator;
 
+require_once(BASE_URI . '/pages/learning/classes/usersMetricsManager.class.php');
+$usersMetricsManager = new usersMetricsManager;
+
 $data = json_decode(file_get_contents('php://input'), true);
 
 
@@ -126,11 +129,19 @@ if (isset($browsing) && isset($browsing_id) && isset($videoid)){
 
             $taggedVideoArray = $assetManager->getVideosTag($selectedTag);
 
-            if ($debug){
+            //IF THIS IS FALSE THE TAG IS NOT IN THE ARRAY AND SO THE USER IS OUTSIDE THE BROWSING RANGE
+
+            
+
+
+            /* if ($debug){
 
                 print_r($taggedVideoArray);
+                echo  'last viewed asset page was';
+                echo $usersMetricsManager->getLastViewedVideoAsset($userid, $assetManager->returnVideosAsset($browsing_id), true);
 
-            }
+
+            } */
 
             //then use array intersect to remove videos which are not tagged like this
 
@@ -715,6 +726,25 @@ if (isset($browsing) && isset($browsing_id) && isset($videoid)){
             
                         echo "This video is number $position of $numberOfVideos";
                     }
+
+                    //check if video is in original browsing array
+
+                    $original_asset = array_search($videoid, $browsing_array);
+
+                    if ($original_asset > -1){
+
+                        //detected in original asset array
+
+                        $outside_asset = false;
+
+                    }else{
+
+                        $outside_asset = true;
+
+                    }
+
+
+
         
                 }else{
         
@@ -741,6 +771,7 @@ if (isset($browsing) && isset($browsing_id) && isset($videoid)){
                 'previousVideo' => $previousVideo,
                 'firstVideo' => $firstVideo,
                 'lastVideo' => $lastVideo,
+                'outside_asset' => $outside_asset,
 
 
             ];

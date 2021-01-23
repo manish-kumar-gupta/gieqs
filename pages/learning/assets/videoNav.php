@@ -86,12 +86,59 @@ if(isset($_COOKIE['browsing_array'])) {
     $browsing_array = null;
 } 
 
+if(isset($_COOKIE['selectedTag'])) {
+
+    $selectedTag = $_COOKIE['selectedTag'];
+
+    if ($debug){
+
+        var_dump($selectedTag);
+    }
+
+}else{
+
+    $selectedTag = null;
+} 
+
+if(isset($_COOKIE['browsing_last'])) {
+
+    $browsing_last = $_COOKIE['browsing_last'];
+
+    if ($debug){
+
+        var_dump($browsing_last);
+    }
+
+}else{
+
+    $browsing_last = null;
+}
+
+if(isset($_COOKIE['restricted'])) {
+
+    $restricted = $_COOKIE['restricted'];
+
+    if ($debug){
+
+        var_dump($restricted);
+    }
+
+}else{
+
+    $restricted = null;
+} 
+
 //currently shows all live videos and non tagged videos (TODO)
 
 if (isset($browsing) && isset($browsing_id) && is_array($browsing_array)){
 
 
     //is an asset
+
+    if ($debug){
+
+        echo 'entered browsing loop';
+    }
 
     
 
@@ -339,6 +386,35 @@ if (isset($browsing) && isset($browsing_id) && is_array($browsing_array)){
 
 
 
+}elseif ($browsing = '99'){
+
+    if ($debug){
+
+        echo '99 loop entered';
+
+    }
+
+    //load asset if last was 
+
+    if ($browsing_last == '2' || $browsing_last == '3' || $browsing_last == '4'){
+
+        //load asset
+        if ($assets_paid->Return_row($browsing_id)){
+
+            $assets_paid->Load_from_key($browsing_id);
+
+        }else{
+
+            if ($debug){
+                echo 'cannot load asset';
+            }
+        }
+
+
+    }
+
+
+
 }else{
 
 
@@ -372,7 +448,8 @@ if (isset($browsing) && isset($browsing_id) && is_array($browsing_array)){
 ?>
 
 
-<nav class="mt-4 navbar navbar-expand-lg navbar-dark bg-dark sticky-top" id="videoBar" style="margin-top: 20px; z-index: 2 !important;">
+<nav class="mt-4 navbar navbar-expand-lg navbar-dark bg-dark sticky-top" id="videoBar"
+    style="margin-top: 20px; z-index: 2 !important;">
     <div class="container">
         <a class="navbar-brand cursor-pointer" id="start_tour"><?php echo 'Video Navigation';?>
             <!-- <small class="m-0 p-0"><br/><?php //echo 'Asset Name'?> --></small>
@@ -382,14 +459,14 @@ if (isset($browsing) && isset($browsing_id) && is_array($browsing_array)){
             <span class="navbar-toggler-icon"></span>
         </button>
 
-<!--
+        <!--
 
 Useful for PHP to JS transfer
 
 -->
-<div id='browsing_id' data-browsing-id="<?php echo $browsing_id;?>" class="d-none"></div>
-<div id='browsing' data-browsing="<?php echo $browsing;?>" class="d-none"></div>
-<div id='browsing_array' class="d-none"><?php echo json_encode($browsing_array);?></div>
+        <div id='browsing_id' data-browsing-id="<?php echo $browsing_id;?>" class="d-none"></div>
+        <div id='browsing' data-browsing="<?php echo $browsing;?>" class="d-none"></div>
+        <div id='browsing_array' class="d-none"><?php echo json_encode($browsing_array);?></div>
 
 
 
@@ -400,25 +477,29 @@ Useful for PHP to JS transfer
             </ul> -->
             <ul class="navbar-nav justify-content-sm-center ml-sm-auto">
 
-            <li class="nav-item">
+                <?php if (($selectedTag == 'null') || (is_numeric(intval($selectedTag)) && $restricted == 'true')){?>
 
-<?php
+                <li class="nav-item">
+
+                    <?php
             if ($browsing == '5'){
 
                 ?>
 
-<a href="<?php echo BASE_URL . '/pages/learning/pages/general/show_subscription.php?page_id=' . $browsing_id;?>" class="nav-link nav-link-icon gieqsGold">
+                    <a href="<?php echo BASE_URL . '/pages/learning/pages/general/show_subscription.php?page_id=' . $browsing_id;?>"
+                        class="nav-link nav-link-icon gieqsGold">
 
 
-                    <?php
+                        <?php
             }else {
 
                 ?>
 
-<a href="<?php echo BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=' . $browsing_id;?>" class="nav-link nav-link-icon gieqsGold">
+                        <a href="<?php echo BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=' . $browsing_id;?>"
+                            class="nav-link nav-link-icon gieqsGold">
 
 
-                    <?php 
+                            <?php 
 
         }
                     
@@ -433,18 +514,19 @@ $first_part = implode(" ", array_splice($pieces, 0, 4));
                     
                     ?>
 
-                        <span class="nav-link-inner--text "><?php echo $first_part;?></span>
 
-                        <!-- unless rge selectedTag is not null and restricted is false then no numbers and expanded tag viewing -->
+                            <span class="nav-link-inner--text "><?php echo $first_part;?></span>
 
-                    </a>
+                            <!-- unless rge selectedTag is not null and restricted is false then no numbers and expanded tag viewing -->
+
+                        </a>
                 </li>
                 <li class="nav-item">
                     <a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $previousVideo;?>"
                         class="nav-link nav-link-icon <?php if ($firstVideo === true){echo 'disabled';}?>">
 
                         <span class="nav-link-inner--text ">
-                        <i class="fas fa-arrow-left mr-2"></i> Previous</span>
+                            <i class="fas fa-arrow-left mr-2"></i> Previous</span>
                     </a>
                 </li>
 
@@ -462,6 +544,60 @@ $first_part = implode(" ", array_splice($pieces, 0, 4));
                         <span class="nav-link-inner--text ">Next <i class="fas fa-arrow-right ml-2"></i></span>
                     </a>
                 </li>
+
+                <?php } elseif (is_numeric(intval($selectedTag)) && $restricted == 'false'){ ?>
+
+                <li class="nav-item">
+
+                    <?php
+                if ($browsing_last == '5'){
+    
+                    ?>
+
+                    <a href="<?php echo BASE_URL . '/pages/learning/pages/general/show_subscription.php?page_id=' . $browsing_id;?>"
+                        class="nav-link nav-link-icon text-muted">
+
+
+                        <?php
+                }else {
+    
+                    ?>
+
+                        <a href="<?php echo BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=' . $browsing_id;?>"
+                            class="nav-link nav-link-icon text-muted">
+
+
+                            <?php 
+    
+            }
+                        
+                        if ($browsing_last == '5' && $browsing == '99'){
+                            $pages->Load_from_key($browsing_id);
+                            $first_part = $pages->gettitle();
+    
+                        }else{
+                        $pieces = explode(" ", $assets_paid->getname());
+    $first_part = implode(" ", array_splice($pieces, 0, 4));
+                        }
+                        
+                        ?>
+
+
+                            <span class="nav-link-inner--text ">Return to Restricted Browsing of
+                                <?php echo $first_part;?></span>
+
+
+
+                            <!-- unless rge selectedTag is not null and restricted is false then no numbers and expanded tag viewing -->
+
+                        </a>
+                </li>
+
+
+                <?php } //end selectedTag null if ?>
+
+
+
 
                 <li class="nav-item dropdown-animate dropdown-submenu bg-dark" data-toggle="hover">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
