@@ -238,6 +238,14 @@ class usersMetricsManager
 
     }
 
+    public function setSQLTimezoneUTC(){
+
+        $q = "SET @@session.time_zone='+00:00'";
+
+        $result = $this->connection->RunQuery($q);
+
+    }
+
     public function getLastViewedVideosCompletion($userid)
     {
 
