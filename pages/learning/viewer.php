@@ -830,14 +830,62 @@
     <?php
 
 //echo $userid; echo $id; echo 'hello';
+
+$current_date = new DateTime('now', new DateTimeZone('UTC'));
+
+$current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s');
+
+
                         if ($usersViewsVideo->matchRecord2way($userid, $id) === false){  
                             
                             //if not recorded already
 
-                            echo $userid; echo $id;
+                            //echo $userid; echo $id;
                 $usersViewsVideo->setuser_id($userid);
                 $usersViewsVideo->setvideo_id($id);
+
+
+                $usersViewsVideo->setfirstView($current_date_sqltimestamp);
+                $usersViewsVideo->setrecentView($current_date_sqltimestamp);
+
+
                 $usersViewsVideo->prepareStatementPDO();
+
+            
+
+                
+            }elseif ($usersViewsVideo->matchRecord2way($userid, $id) === true) {
+
+                //already viewed
+                //update most recent view time
+                //increment view counter
+                //get the key
+
+                $key = $usersMetricsManager->getKeyUserViewsVideoMatch($userid, $id);
+
+                //$debug = true;
+
+                if ($debug){
+
+                    echo $key . 'is key';
+                }
+
+                $usersViewsVideo->Load_from_key($key);
+
+
+                if ($debug){
+
+                    echo $usersViewsVideo->getid();
+                    echo $current_date_sqltimestamp;
+                }
+
+
+                $usersViewsVideo->setrecentView($current_date_sqltimestamp);
+
+                echo $usersViewsVideo->prepareStatementPDOUpdate();
+
+
+
             }
 
 ?>

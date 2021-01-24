@@ -214,11 +214,11 @@ class usersMetricsManager
 
                 if ($this->checkChapterUser($userid, $row['id']) === true) {
 
-                    $y++;
+                    $x++;
 
                 }
 
-                $x++;
+                $y++;
 
             }
 
@@ -246,35 +246,77 @@ class usersMetricsManager
 
     }
 
-    public function getLastViewedVideosCompletion($userid)
+    public function getLastViewedVideosCompletion($userid, $debug=false)
     {
 
-        $q = "SELECT a.`id`
-        FROM `video` as a
-        INNER JOIN `chapter` as b ON a.`id` = b.`video_id`
-        WHERE b.`id` = '$chapter_id'";
+        $q = "SELECT `video_id` FROM `usersViewsVideo`
+            WHERE `user_id` = '$userid'
+            ORDER BY `recentView` DESC
+            LIMIT 3";
+
+        if ($debug){
+
+            echo $q;
+
+        }
 
         $result = $this->connection->RunQuery($q);
 
         $x = 0;
+        $y=0;
+        $rowReturn = array();
         $nRows = $result->rowCount();
 
-        if ($nRows == 1) {
+        if ($nRows > 0) {
+
+            
 
             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 
-                $videoid = $row['id'];
+                $rowReturn[$x] = $row['video_id'];
+                $x++;
 
             }
 
-            return $videoid;
+            if ($debug){
+
+                print_r($rowReturn);
+    
+            }
+
+            $uncompletedLastThree = array();
+
+            foreach ($rowReturn as $key=>$value){
+
+                //check if this video was completed
+
+                if ($debug){
+
+                    echo $this->userCompletionVideo($userid, $value, false);
+        
+                }
+
+                if ($this->userCompletionVideo($userid, $value, false) > 0 && $this->userCompletionVideo($userid, $value, false) < 100){
+
+                
+                    $uncompletedLastThree[$y] = $value;
+                    $y++;
+
+
+                }
+
+
+            }
+
+            return $uncompletedLastThree;
+
 
         } else {
 
 
             if ($debug){
 
-                echo 'one exact video not matched';
+                echo 'no videos matched';
 
             }
 
@@ -283,6 +325,29 @@ class usersMetricsManager
             
         }
 
+    }
+
+    public function getKeyUserViewsVideoMatch($userid, $video_id){
+        
+        $q="Select `id` from `usersViewsVideo` where `user_id` = '$userid' and `video_id` = '$video_id'";
+        //echo $q;
+
+
+        $result = $this->connection->RunQuery($q);
+        
+		$nRows = $result->rowCount();
+			if ($nRows == 1){
+				while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                    $rowReturn = $row['id'];
+                    //$x++;
+    
+                }
+
+                return $rowReturn;
+			}else{
+				return FALSE;
+			}
     }
 
     /**

@@ -22,6 +22,40 @@
 
       $general = new general;
 
+      //require_once(BASE_URI . '/assets/scripts/classes/users.class.php');
+      $users = new users;
+      $navigator = new navigator;
+
+      function time_elapsed_string($datetime, $full = false) {
+        $now = new DateTime('now', new DateTimeZone('UTC'));     
+        $ago = new DateTime($datetime, new DateTimeZone('UTC'));
+        $diff = $now->diff($ago);
+    
+        $diff->w = floor($diff->d / 7);
+        $diff->d -= $diff->w * 7;
+    
+        $string = array(
+            'y' => 'year',
+            'm' => 'month',
+            'w' => 'week',
+            'd' => 'day',
+            'h' => 'hour',
+            'i' => 'minute',
+            's' => 'second',
+        );
+        foreach ($string as $k => &$v) {
+            if ($diff->$k) {
+                $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
+            } else {
+                unset($string[$k]);
+            }
+        }
+    
+        if (!$full) $string = array_slice($string, 0, 1);
+        return $string ? implode(', ', $string) . ' ago' : 'just now';
+    }
+
+
       ?>
 
     <!--Page title-->
@@ -67,6 +101,17 @@
         cursor: pointer;
 
     }
+
+    @supports ((position: -webkit-sticky) or (position: sticky)) {
+
+        .sticky-top {
+            position: -webkit-sticky !important;
+            position: sticky !important;
+            z-index: 1020;
+            top: 0;
+        }
+    }
+
 
     @media (min-width: 992px) {
         .tagCard {
@@ -127,6 +172,15 @@
 
         <?php require BASE_URI . '/pages/learning/includes/nav.php';?>
 
+        <?php
+        $usersMetricsManager = new usersMetricsManager;
+        $usersViewsVideo = new usersViewsVideo;
+
+        $video_PDO = new video_PDO;
+
+
+        $debug = false;
+    ?>
 
 
 
@@ -192,91 +246,97 @@
             </section>
             <?php require BASE_URI . '/pages/learning/assets/upgradeNav.php';?>
 
+            <?php require BASE_URI . '/pages/learning/assets/materialNav.php';?>
+
+
             <!-- New material -->
-            <section class="slice delimiter-bottom">
+            <section class="slice delimiter-bottom" id="statistics">
                 <div class="container pt-0 pt-lg-0">
 
-                <div class="actions-toolbar py-2 mb-4">
-                        <h5 class="mb-1">GIEQs Statistics</h5>
-                        <p class="text-sm text-muted mb-0">How gieqy are you <?php echo $_SESSION['firstname'];?>?</p>
+                    <div class="actions-toolbar py-2 mb-4">
+                        <h5 class="mb-1">Your GIEQs Stats</h5>
+                        <p class="text-sm text-muted mb-0">How GIEQy are you <?php echo $_SESSION['firstname'];?>?</p>
                     </div>
 
-                <div class="mb-5">
-          <div class="row">
-            <div class="col-lg-4">
-              <div class="card card-stats bg-gradient-primary border-0 hover-shadow-lg hover-translate-y-n3 mb-4 ml-lg-0">
-                <div class="actions actions-dark">
-                  <a href="#" class="action-item">
-                    <i class="fas fa-sync-alt"></i>
-                  </a>
-                  
-                </div>
-                <div class="card-body">
-                  <div class="d-flex">
-                    <div>
-                      <div class="icon text-white icon-sm">
-                        <i class="fas fa-video"></i>
-                      </div>
+                    <div class="mb-5">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div
+                                    class="card card-stats bg-gradient-primary border-0 hover-shadow-lg hover-translate-y-n3 mb-4 ml-lg-0">
+                                    <div class="actions actions-dark">
+                                        <a href="#" class="action-item">
+                                            <i class="fas fa-sync-alt"></i>
+                                        </a>
+
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div>
+                                                <div class="icon text-white icon-sm">
+                                                    <i class="fas fa-video"></i>
+                                                </div>
+                                            </div>
+                                            <div class="pl-4">
+                                                <span class="d-block h5 text-white mr-2 mb-1">x / y</span>
+                                                <span class="text-white">Available Videos Watched</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div
+                                    class="card card-stats bg-gradient-info border-0 hover-shadow-lg hover-translate-y-n3 mb-4 ml-lg-0">
+                                    <div class="actions actions-dark">
+                                        <a href="#" class="action-item">
+                                            <i class="fas fa-sync-alt"></i>
+                                        </a>
+
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div>
+                                                <div class="icon text-white icon-sm">
+                                                    <i class="fas fa-tags"></i>
+                                                </div>
+                                            </div>
+                                            <div class="pl-4">
+                                                <span class="d-block h5 text-white mr-2 mb-1">x / y</span>
+                                                <span class="text-white">Tags covered</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div
+                                    class="card card-stats bg-gradient-dark border-0 hover-shadow-lg hover-translate-y-n3 mb-4 ml-lg-0">
+                                    <div class="actions actions-dark">
+                                        <a href="#" class="action-item">
+                                            <i class="fas fa-sync-alt"></i>
+                                        </a>
+
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div>
+                                                <div class="icon text-white icon-sm">
+                                                    <i class="fas fa-clock"></i>
+                                                </div>
+                                            </div>
+                                            <div class="pl-4">
+                                                <span class="d-block h5 text-white mr-2 mb-1">x</span>
+                                                <span class="text-white">Minutes spent</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="pl-4">
-                      <span class="d-block h5 text-white mr-2 mb-1">x / y</span>
-                      <span class="text-white">Available Videos Watched</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="card card-stats bg-gradient-info border-0 hover-shadow-lg hover-translate-y-n3 mb-4 ml-lg-0">
-                <div class="actions actions-dark">
-                  <a href="#" class="action-item">
-                    <i class="fas fa-sync-alt"></i>
-                  </a>
-                  
-                </div>
-                <div class="card-body">
-                  <div class="d-flex">
-                    <div>
-                      <div class="icon text-white icon-sm">
-                        <i class="fas fa-tags"></i>
-                      </div>
-                    </div>
-                    <div class="pl-4">
-                      <span class="d-block h5 text-white mr-2 mb-1">x / y</span>
-                      <span class="text-white">Tags covered</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4">
-              <div class="card card-stats bg-gradient-dark border-0 hover-shadow-lg hover-translate-y-n3 mb-4 ml-lg-0">
-                <div class="actions actions-dark">
-                  <a href="#" class="action-item">
-                    <i class="fas fa-sync-alt"></i>
-                  </a>
-                  
-                </div>
-                <div class="card-body">
-                  <div class="d-flex">
-                    <div>
-                      <div class="icon text-white icon-sm">
-                        <i class="fas fa-clock"></i>
-                      </div>
-                    </div>
-                    <div class="pl-4">
-                      <span class="d-block h5 text-white mr-2 mb-1">x</span>
-                      <span class="text-white">Minutes spent</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
                     <div class="actions-toolbar py-2 mb-4">
-                        <h5 class="mb-1">New Material</h5>
+                        <h5 id="whats-new" class="mb-1">What's new?</h5>
                         <p class="text-sm text-muted mb-0">Jump right into a new learning experience.</p>
                     </div>
                     <div class="card-deck flex-column flex-lg-row mb-5">
@@ -303,6 +363,7 @@
                                     around us becomes better too.</p>
                             </div>
                         </div>
+
                         <div class="card"></div>
                         <div class="card"></div>
 
@@ -314,53 +375,126 @@
 
             <!-- Finish watching videos -->
 
-            
 
 
-            <section class="slice slice-lg bg-section-secondary delimiter-top">
+
+            <section id="catchup" class="slice slice-lg bg-section-secondary delimiter-top">
                 <div class="container pt-0 pt-lg-0">
+
+
+                    <?php
+
+          //data definition
+
+          $lastViewedVideos = $usersMetricsManager->getLastViewedVideosCompletion($userid, false);
+
+          if ($debug){
+
+            print_r($lastViewedVideos);
+
+          }
+
+
+
+?>
 
                     <div class="actions-toolbar py-2 mb-4 ">
                         <h5 class="mb-1">Pick up where you left off</h5>
                         <p class="text-sm text-muted mb-0">Videos you started watching, jump back in.</p>
                     </div>
                     <div class="card-deck flex-column flex-lg-row mb-5">
+
+                        <?php 
+                                              $a = count($lastViewedVideos);
+                                              if ($debug){
+
+                                                echo $a;
+                                              }
+
+                        foreach ($lastViewedVideos as $key=>$value){
+                      $video_PDO->Load_from_key($value);
+                      $key = $usersMetricsManager->getKeyUserViewsVideoMatch($userid, $value);
+                      if ($debug){
+
+                        echo $key;
+                      }
+                      $usersViewsVideo->Load_from_key($key);
+                      if ($debug){
+
+                        echo 'recent view is ' . $usersViewsVideo->getrecentView();
+                      }
+                      
+                      ?>
+
+
+
                         <div class="card">
-                            <div class="card-header">
+                            <div class="card-header" style="height:115px;">
                                 <div class="d-flex align-items-center">
                                     <!-- <span class="avatar bg-primary text-white rounded-circle avatar-lg">TC</span> -->
                                     <div class="avatar-content ml-3">
-                                        <h6 class="mb-0">Video title</h6>
-                                        <small class="d-block text-muted font-weight-bold">video author</small>
-                                        <span class="text-muted"><i class="fas fa-clock mr-2"></i>time uploaded</span>
-                                        
-                                        
+                                        <h6 class="mb-0"><?php echo $video_PDO->getname();?></h6>
+                                        <small class="d-block text-muted font-weight-bold"><a
+                                                href="<?php echo BASE_URL;?>/pages/learning/pages/account/public-profile.php?id=<?php echo $video_PDO->getauthor();?>"><?php echo $users->getUserName($video_PDO->getauthor()); ?></a></small>
+                                        <small class="text-muted"><i
+                                                class="fas fa-clock mr-2"></i><?php echo time_elapsed_string($usersViewsVideo->getrecentView());?></small>
+
+
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="progress-wrapper p-4 delimiter-bottom">
-			<div class="progress progress-xs mt-2">
-				<div class="progress-bar bg-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 30%;"></div>
-      </div>
-      <span class="progress-percentage p-1 mr-4">x% <small class="font-weight-bold">complete</small></span>
+                            <?php 
 
-		</div>
-                            
-                            <a
-                                href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $value['id'] . '&referid=' . $data['referringUrl']; ?>">
-                                <img alt="video image" src="<?php echo $value['thumbnail']; ?>" class="img-fluid mt-2">
+                            $completion = $usersMetricsManager->userCompletionVideo($userid, $value, false);
+                            $completion = floor($completion);
+
+                            ?>
+
+                            <div class="progress-wrapper pt-3 pb-1 px-2">
+                                <div class="progress progress-xs mt-2">
+                                    <div class="progress-bar bg-gieqsGold" role="progressbar" aria-valuenow="20"
+                                        aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $completion;?>%;"></div>
+                                </div>
+                                <small class="progress-percentage p-1 mr-4"><?php echo $completion;?>% <small
+                                        class="font-weight-bold">complete</small></small>
+
+                            </div>
+
+                            <a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $value; ?>">
+                                <img alt="video image" src="<?php echo $video_PDO->getthumbnail(); ?>"
+                                    class="img-fluid mt-2">
                             </a>
                             <div class="card-body">
 
 
-                                <small class="h6 text-sm font-weight-bold">Reminder:</small>
-                                <p class="text-sm lh-160 mb-0">When we strive to become better than we are everything
-                                    around us becomes better too.</p>
+                                <small class="h6 text-sm font-weight-bold">Description:</small>
+                                <p class="text-sm lh-160 mb-0"><?php echo $video_PDO->getdescription();?></p>
                             </div>
                         </div>
-                        <div class="card"></div>
-                        <div class="card"></div>
+
+                        <?php }
+                        
+                        if ($a == 1){
+
+                          echo '<div class="card"></div>
+                        <div class="card"></div>';
+
+                        }elseif ($a == 2){
+
+                          echo '<div class="card"></div>';
+
+                        }elseif ($a == 0){
+
+                          echo '<div class="card"></div>
+                        <div class="card"></div><div class="card"></div>';
+
+                        }
+                        
+                        ?>
+
+
+                        
 
 
                     </div> <!-- end new material div-->
@@ -371,7 +505,7 @@
             <!-- Suggested videos -->
 
 
-            <section class="slice slice-lg delimiter-top">
+            <section id="suggested" class="slice slice-lg delimiter-top">
                 <div class="container pt-0 pt-lg-0">
 
                     <div class="actions-toolbar py-2 mb-4 ">
@@ -399,9 +533,8 @@
                             <div class="card-body">
 
 
-                                <small class="h6 text-sm font-weight-bold">Reminder:</small>
-                                <p class="text-sm lh-160 mb-0">When we strive to become better than we are everything
-                                    around us becomes better too.</p>
+                                <small class="h6 text-sm font-weight-bold">Description:</small>
+                                <p class="text-sm lh-160 mb-0"><?php echo $video_PDO->getdescription();?></p>
                             </div>
                         </div>
                         <div class="card"></div>
@@ -416,7 +549,7 @@
             <!-- Popular videos -->
 
 
-            <section class="slice slice-lg bg-section-secondary delimiter-top">
+            <section id="popular" class="slice slice-lg bg-section-secondary delimiter-top">
                 <div class="container pt-0 pt-lg-0">
 
                     <div class="actions-toolbar py-2 mb-4 ">

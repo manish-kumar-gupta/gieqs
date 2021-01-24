@@ -29,6 +29,9 @@ Class usersViewsVideo {
 	private $id; //int(11)
 	private $user_id; //int(11)
 	private $video_id; //int(11)
+	private $firstView; //timestamp
+	private $recentView; //timestamp
+
 	private $connection;
 
 	public function __construct(){
@@ -39,9 +42,11 @@ Class usersViewsVideo {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_usersViewsVideo($user_id,$video_id){
+	public function New_usersViewsVideo($user_id,$video_id,$firstView,$recentView){
 		$this->user_id = $user_id;
 		$this->video_id = $video_id;
+		$this->firstView = $firstView;
+		$this->recentView = $recentView;
 	}
 
     /**
@@ -56,6 +61,9 @@ Class usersViewsVideo {
 			$this->id = $row["id"];
 			$this->user_id = $row["user_id"];
 			$this->video_id = $row["video_id"];
+			$this->firstView = $row["firstView"];
+			$this->recentView = $row["recentView"];;
+	
 		}
 	}
     /**
@@ -76,6 +84,8 @@ $q = "Select * from `usersViewsVideo` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["id"] = $row["id"];
 			$rowReturn[$x]["user_id"] = $row["user_id"];
 			$rowReturn[$x]["video_id"] = $row["video_id"];
+			$rowReturn[$x]["firstView"] = $row["firstView"];
+			$rowReturn[$x]["recentView"] = $row["recentView"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -100,6 +110,8 @@ $q = "Select * from `usersViewsVideo` WHERE `id` = $key";
 			$rowReturn[$x]["id"] = $row["id"];
 			$rowReturn[$x]["user_id"] = $row["user_id"];
 			$rowReturn[$x]["video_id"] = $row["video_id"];
+			$rowReturn[$x]["firstView"] = $row["firstView"];
+			$rowReturn[$x]["recentView"] = $row["recentView"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -387,6 +399,20 @@ $q = "UPDATE `usersViewsVideo` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return firstView - timestamp
+	 */
+	public function getfirstView(){
+		return $this->firstView;
+	}
+
+	/**
+	 * @return recentView - timestamp
+	 */
+	public function getrecentView(){
+		return $this->recentView;
+	}
+
+	/**
 	 * @param Type: int(11)
 	 */
 	public function setid($id){
@@ -405,6 +431,20 @@ $q = "UPDATE `usersViewsVideo` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function setvideo_id($video_id){
 		$this->video_id = $video_id;
+	}
+
+	/**
+	 * @param Type: timestamp
+	 */
+	public function setfirstView($firstView){
+		$this->firstView = $firstView;
+	}
+
+	/**
+	 * @param Type: timestamp
+	 */
+	public function setrecentView($recentView){
+		$this->recentView = $recentView;
 	}
 
     /**
