@@ -277,8 +277,9 @@
                                                 </div>
                                             </div>
                                             <div class="pl-4">
-                                                <span class="d-block h5 text-white mr-2 mb-1">x / y</span>
-                                                <span class="text-white">Available Videos Watched</span>
+                                                <?php $completionArray = $usersMetricsManager->userCompletionVideos($userid, false);?>
+                                                <span class="d-block h5 text-white mr-2 mb-1"><?php echo $completionArray['numerator'];?> / <?php echo $completionArray['denominator'];?> (<?php echo round($completionArray['completion'], 2);?>%)</span>
+                                                <span class="text-white">Videos Completed</span>
                                             </div>
                                         </div>
                                     </div>

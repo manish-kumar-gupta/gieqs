@@ -180,6 +180,69 @@ class usersMetricsManager
 
     }
 
+    public function userCompletionVideos($userid, $debug = false)
+    {
+
+        //get all chapters for selected video
+
+        $q = "SELECT a.`id`
+        FROM `video` as a
+        WHERE a.`active` = '1' OR a.`active` = '3'";
+
+        if ($debug) {
+
+            echo $q . '<br><br>';
+
+        }
+
+        $x = 0; // completed video counter
+        $y = 0; // video total counter
+
+        //thus completion = x / y x 100%
+
+        //$rowReturn = [];
+
+        $result = $this->connection->RunQuery($q);
+
+        $x = 0;
+        $nRows = $result->rowCount();
+
+        if ($nRows > 0) {
+
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                if ($debug) {
+
+                    echo $this->userCompletionVideo($userid, $row['id']) . 'is completion for video ' . $row['id'] . '<br><br>';
+        
+                }
+
+                if ($this->userCompletionVideo($userid, $row['id']) == 100) {
+
+                    $x++;
+
+                }
+
+                $y++;
+
+            }
+
+            $completion = (intval($x) / intval($y)) * 100;
+
+            return ['numerator' => $x, 'denominator' => $y, 'completion' => $completion];
+
+        } else {
+
+            return false;
+
+            if ($debug) {
+
+                echo 'no videos';
+            }
+        }
+
+    }
+
     public function userCompletionVideo($userid, $videoid, $debug = false)
     {
 
