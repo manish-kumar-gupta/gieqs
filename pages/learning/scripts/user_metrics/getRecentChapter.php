@@ -57,7 +57,7 @@ $usersVideoChapterProgress = new usersVideoChapterProgress;
 $data = json_decode(file_get_contents('php://input'), true);
 
 
-$chapter_id = $data['chapter_id'];
+$videoid = $data['videoid'];
 //$user_id = $data['user_id'];
 
 
@@ -68,7 +68,7 @@ print("<pre class=\"text-white\">".print_r($data,true)."</pre>");
 }
 
 
-if (isset($chapter_id)){
+if (isset($videoid)){
 
     if ($debug){
 
@@ -76,59 +76,14 @@ if (isset($chapter_id)){
 
     }
 
+    $recentChapter =  $usersMetricsManager->getMostRecentPosition($videoid, $userid);
 
-    $current_date = new DateTime('now', new DateTimeZone('UTC'));
+    $returnArray = ['recentChapter' => $recentChapter];
 
-$current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s');
-
-
-        if ($usersMetricsManager->checkChapterUser($userid, $chapter_id) === false){
-
-            //no current recorded chapter view from this user
-
-            $usersVideoChapterProgress->setuser_id($userid);
-            $usersVideoChapterProgress->setchapter_id($chapter_id);
-            $usersVideoChapterProgress->setfirstView($current_date_sqltimestamp);
-            $usersVideoChapterProgress->setrecentView($current_date_sqltimestamp);
-
-            $usersVideoChapterProgress->prepareStatementPDO();
-
-            echo 'Completion for User ' . $userid . ' recorded for ' . $chapter_id;
-            echo PHP_EOL;
-            echo 'Completion for video ' . $usersMetricsManager->getVideoForChapter($chapter_id) . ' is currently ' . $usersMetricsManager->userCompletionVideo($userid, $usersMetricsManager->getVideoForChapter($chapter_id));
-
-
-        }elseif ($usersMetricsManager->checkChapterUser($userid, $chapter_id) === true){
-
-            if ($info){
-
-                echo 'User ' . $userid . ' has already viewed chapter ' . $chapter_id;
-
-            }
-
-            //get key
-
-            $key = $usersMetricsManager->getKeyUserViewsChapterVideoMatch($userid, $chapter_id);
-
-            if ($debug){
-
-                echo 'Key is ' . $key;
-
-            }
-
-            $usersVideoChapterProgress->Load_from_key($key);
-            $usersVideoChapterProgress->setrecentView($current_date_sqltimestamp);
-            $usersVideoChapterProgress->prepareStatementPDOUpdate();
-
-            echo 'Completion for User ' . $userid . ' recorded for ' . $chapter_id;
-            echo PHP_EOL;
-            echo 'Completion for video ' . $usersMetricsManager->getVideoForChapter($chapter_id) . ' is currently ' . $usersMetricsManager->userCompletionVideo($userid, $usersMetricsManager->getVideoForChapter($chapter_id));
+    echo json_encode($returnArray);
 
 
 
-
-
-        }
 
 
 

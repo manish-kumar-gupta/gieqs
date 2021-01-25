@@ -390,6 +390,87 @@ class usersMetricsManager
 
     }
 
+    public function getNewVideos($debug=false)
+    {
+
+        $q = "SELECT `video_id` FROM `usersViewsVideo`
+            WHERE `user_id` = '$userid'
+            ORDER BY `recentView` DESC
+            LIMIT 3";
+
+        if ($debug){
+
+            echo $q;
+
+        }
+
+        $result = $this->connection->RunQuery($q);
+
+        $x = 0;
+        $y=0;
+        $rowReturn = array();
+        $nRows = $result->rowCount();
+
+        if ($nRows > 0) {
+
+            
+
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                $rowReturn[$x] = $row['video_id'];
+                $x++;
+
+            }
+
+            if ($debug){
+
+                print_r($rowReturn);
+    
+            }
+
+            $uncompletedLastThree = array();
+
+            foreach ($rowReturn as $key=>$value){
+
+                //check if this video was completed
+
+                if ($debug){
+
+                    echo $this->userCompletionVideo($userid, $value, false);
+        
+                }
+
+                if ($this->userCompletionVideo($userid, $value, false) > 0 && $this->userCompletionVideo($userid, $value, false) < 100){
+
+                
+                    $uncompletedLastThree[$y] = $value;
+                    $y++;
+
+
+                }
+
+
+            }
+
+            return $uncompletedLastThree;
+
+
+        } else {
+
+
+            if ($debug){
+
+                echo 'no videos matched';
+
+            }
+
+            return false;
+
+            
+        }
+
+    }
+
     public function getKeyUserViewsVideoMatch($userid, $video_id){
         
         $q="Select `id` from `usersViewsVideo` where `user_id` = '$userid' and `video_id` = '$video_id'";
@@ -412,6 +493,67 @@ class usersMetricsManager
 				return FALSE;
 			}
     }
+
+    public function getKeyUserViewsChapterVideoMatch($userid, $chapter_id){
+        
+        $q="Select `id` from `usersVideoChapterProgress` where `user_id` = '$userid' and `chapter_id` = '$chapter_id'";
+        //echo $q;
+
+
+        $result = $this->connection->RunQuery($q);
+        
+		$nRows = $result->rowCount();
+			if ($nRows == 1){
+				while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                    $rowReturn = $row['id'];
+                    //$x++;
+    
+                }
+
+                return $rowReturn;
+			}else{
+				return FALSE;
+			}
+    }
+
+    public function getMostRecentPosition ($video_id, $userid, $debug=false){
+
+        //returns most recent chapter use for video
+
+        $q="Select `chapter_id` from `usersVideoChapterProgress` AS a
+        INNER JOIN `chapter` as b on a.`chapter_id` = b.`id`
+        where a.`user_id` = '$userid' and b.`video_id` = '$video_id'
+        ORDER BY `recentView` DESC
+        LIMIT 1";
+        
+        if ($debug){
+
+            echo $q;
+
+
+        }
+
+
+        $result = $this->connection->RunQuery($q);
+        
+		$nRows = $result->rowCount();
+			if ($nRows == 1){
+				while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                    $rowReturn = $row['chapter_id'];
+                    //$x++;
+    
+                }
+
+                return $rowReturn;
+			}else{
+				return FALSE;
+			}
+    }
+
+
+    
 
     /**
      * Close mysql connection

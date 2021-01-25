@@ -2654,9 +2654,110 @@ chapterData
 
             
 
+        }else{
+
+            
+            //check if there is a recent chapter and jump to it, does nothing if no recent chapter
+
+            waitForFinalEvent(function(){
+      //alert('Resize...');
+      viewedVideoRecentChapter();
+
+      showAlert('Started from where you finished last time. To <a href=\"javascript:jumpToTime(0);\">restart click here</a>.')
+
+    }, 200, "wait for most recent Video");
+
+
+            
+
+            
+
+            
+
+            //has user viewed video before, if so which chapter, if not false
+            
+
+
         }
 
         
+
+    }
+
+    function viewedVideoRecentChapter (){
+
+        var dataToSend = {
+
+            videoid : videoPassed,
+
+        }
+
+        const jsonString2 = JSON.stringify(dataToSend);
+
+        //const jsonString = JSON.stringify(dataToSend);
+        //console.log(jsonString);
+        //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
+
+        var request2 = $.ajax({
+            
+                
+            beforeSend: function() {
+
+
+        },
+        url: siteRoot + "scripts/user_metrics/getRecentChapter.php",
+        type: "POST",
+        contentType: "application/json",
+        data: jsonString2,
+
+        });
+
+        request2.done(function(data){
+
+            if (data){
+
+                var recentChapter = $.parseJSON(data);
+
+                console.log(recentChapter);
+
+                if (recentChapter != false){
+
+                var requiredReturn = null;
+
+                $(videoChapterData).each(function (i, val) {
+
+                    console.log(val.chapterid);
+                    console.log(recentChapter.recentChapter);
+                    if (val.chapterid == recentChapter.recentChapter) {
+
+                        //console.log(i);
+                        //console.log(val);
+                        //console.log(recentChapter.recentChapter);
+                        requiredReturn = val.timeFrom;
+
+                    }
+
+
+
+                })
+
+                console.log('required return is ' + requiredReturn);
+
+                requiredReturn = parseInt(requiredReturn);
+
+                 
+
+                if (requiredReturn != null){
+                    jumpToTime(requiredReturn);
+                }
+            }
+        }
+            
+            
+        })
+
+        return request2;
+
 
     }
 

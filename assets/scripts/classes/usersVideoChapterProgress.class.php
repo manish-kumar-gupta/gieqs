@@ -29,6 +29,9 @@ Class usersVideoChapterProgress {
 	private $user_id; //int(11)
 	private $chapter_id; //int(11)
 	private $progress; //varchar(50)
+	private $firstView; //timestamp
+	private $recentView; //timestamp
+
 	private $connection;
 
 	public function __construct(){
@@ -45,6 +48,9 @@ Class usersVideoChapterProgress {
 		$this->user_id = $user_id;
 		$this->chapter_id = $chapter_id;
 		$this->progress = $progress;
+		$this->firstView = $firstView;
+		$this->recentView = $recentView;
+
 	}
 
     /**
@@ -60,6 +66,9 @@ Class usersVideoChapterProgress {
 			$this->user_id = $row["user_id"];
 			$this->chapter_id = $row["chapter_id"];
 			$this->progress = $row["progress"];
+			$this->firstView = $row["firstView"];
+			$this->recentView = $row["recentView"];
+
 		}
 	}
     /**
@@ -81,6 +90,9 @@ $q = "Select * from `usersVideoChapterProgress` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["user_id"] = $row["user_id"];
 			$rowReturn[$x]["chapter_id"] = $row["chapter_id"];
 			$rowReturn[$x]["progress"] = $row["progress"];
+			$rowReturn[$x]["firstView"] = $row["firstView"];
+			$rowReturn[$x]["recentView"] = $row["recentView"];
+
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -106,6 +118,9 @@ $q = "Select * from `usersVideoChapterProgress` WHERE `id` = $key";
 			$rowReturn[$x]["user_id"] = $row["user_id"];
 			$rowReturn[$x]["chapter_id"] = $row["chapter_id"];
 			$rowReturn[$x]["progress"] = $row["progress"];
+			$rowReturn[$x]["firstView"] = $row["firstView"];
+			$rowReturn[$x]["recentView"] = $row["recentView"];
+
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -387,6 +402,22 @@ $q = "UPDATE `usersVideoChapterProgress` SET $implodeArray WHERE `id` = '$this->
 		return $this->progress;
 	}
 
+		/**
+	 * @return firstView - timestamp
+	 */
+	public function getfirstView(){
+		return $this->firstView;
+	}
+
+	/**
+	 * @return recentView - timestamp
+	 */
+	public function getrecentView(){
+		return $this->recentView;
+	}
+
+
+
 	/**
 	 * @param Type: int(11)
 	 */
@@ -414,6 +445,22 @@ $q = "UPDATE `usersVideoChapterProgress` SET $implodeArray WHERE `id` = '$this->
 	public function setprogress($progress){
 		$this->progress = $progress;
 	}
+
+		/**
+	 * @param Type: timestamp
+	 */
+	public function setfirstView($firstView){
+		$this->firstView = $firstView;
+	}
+
+	/**
+	 * @param Type: timestamp
+	 */
+	public function setrecentView($recentView){
+		$this->recentView = $recentView;
+	}
+
+
 
     /**
      * Close mysql connection
