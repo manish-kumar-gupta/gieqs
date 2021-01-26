@@ -175,6 +175,8 @@
         <?php
         $usersMetricsManager = new usersMetricsManager;
         $usersViewsVideo = new usersViewsVideo;
+        require_once(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
+        $assetManager = new assetManager;
 
         $video_PDO = new video_PDO;
 
@@ -348,7 +350,24 @@
 
 //data definition
 
-$newVideos = $usersMetricsManager->getNewVideos(false);
+$newVideosUnfiltered = $usersMetricsManager->getNewVideos(false);
+
+
+$newVideosFiltered = $assetManager->determineVideoAccessNonAsset($newVideosUnfiltered, $isSuperuser, $userid, false);
+
+shuffle($newVideosFiltered);
+
+$newVideos = array_slice($newVideosFiltered, 0, 3);
+
+
+if ($debug){
+
+  print_r($newVideosUnfiltered);
+  print_r($newVideosFiltered);
+  print_r($newVideos);
+
+}
+
 
 if ($debug){
 
@@ -391,7 +410,7 @@ if ($debug){
 
 
               <div class="card">
-                  <div class="card-header" style="height:115px;">
+                  <div class="card-header" style="height:100px;">
                       <div class="d-flex align-items-center">
                           <!-- <span class="avatar bg-primary text-white rounded-circle avatar-lg">TC</span> -->
                           <div class="avatar-content ml-3">
@@ -400,8 +419,7 @@ if ($debug){
                               </h6>
                               <small class="d-block text-muted font-weight-bold"><a
                                       href="<?php echo BASE_URL;?>/pages/learning/pages/account/public-profile.php?id=<?php echo $video_PDO->getauthor();?>"><?php echo $users->getUserName($video_PDO->getauthor()); ?></a></small>
-                              <small class="text-muted"><i
-                                      class="fas fa-clock mr-2"></i><?php echo time_elapsed_string($usersViewsVideo->getrecentView());?></small>
+                              
 
 
                           </div>

@@ -393,10 +393,10 @@ class usersMetricsManager
     public function getNewVideos($debug=false)
     {
 
-        $q = "SELECT `video_id` FROM `usersViewsVideo`
-            WHERE `user_id` = '$userid'
-            ORDER BY `recentView` DESC
-            LIMIT 3";
+        $q = "SELECT `id` FROM `video`
+            WHERE `active` = 1 OR `active` = 3
+            ORDER BY `created` DESC
+            LIMIT 20";
 
         if ($debug){
 
@@ -417,7 +417,7 @@ class usersMetricsManager
 
             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 
-                $rowReturn[$x] = $row['video_id'];
+                $rowReturn[$x] = $row['id'];
                 $x++;
 
             }
@@ -428,31 +428,19 @@ class usersMetricsManager
     
             }
 
-            $uncompletedLastThree = array();
-
-            foreach ($rowReturn as $key=>$value){
-
-                //check if this video was completed
-
-                if ($debug){
-
-                    echo $this->userCompletionVideo($userid, $value, false);
-        
-                }
-
-                if ($this->userCompletionVideo($userid, $value, false) > 0 && $this->userCompletionVideo($userid, $value, false) < 100){
-
-                
-                    $uncompletedLastThree[$y] = $value;
-                    $y++;
+            //now rowReturn is an array of 10 newest videos
 
 
-                }
 
+            //check access
 
-            }
+            //make 3
 
-            return $uncompletedLastThree;
+            //return
+
+            
+
+            return $rowReturn;
 
 
         } else {
