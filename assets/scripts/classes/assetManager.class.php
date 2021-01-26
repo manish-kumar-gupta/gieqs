@@ -3757,7 +3757,7 @@ if ($debug){
             $q = "SELECT a.`video_id`
             FROM `pagesVideo` as a 
             WHERE a.`pages_id` = $pageid
-            ORDER BY a.`video_id` ASC";
+            ORDER BY CAST(a.`page_order` AS SIGNED) ASC";
                 
 if ($debug){
             echo $q;

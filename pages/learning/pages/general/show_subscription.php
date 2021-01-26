@@ -25,6 +25,17 @@
 
       $navigator = new navigator;
 
+      //$navigation = new navigation;
+
+      require_once(BASE_URI . '/assets/scripts/classes/navigation.class.php');
+      $navigation = new navigation;
+
+
+
+      require_once(BASE_URI . '/assets/scripts/classes/navigationManager.class.php');
+      $navigationManager = new navigationManager;
+
+
      
 
       require_once(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
@@ -922,7 +933,13 @@
 
                     <?php if ($videoset == 2 || $videoset == 3){?>
                     <li class="breadcrumb-item">Subscribable Courses</li>
-                    <?php } ?>
+                    <?php }
+                    
+                    if (isset($pageid)){ ?>
+                    <li class="breadcrumb-item"><?php $navigationName = $navigationManager->getNavigationPage($pageid, false); $navigation->Load_from_key($navigationName); echo $navigation->gettitle();?></li>
+
+
+                    <?php }?>
                     
                     <li class="breadcrumb-item gieqsGold" aria-current="page"><?php echo $page_title;?></li>
                 </ol>

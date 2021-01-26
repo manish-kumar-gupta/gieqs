@@ -267,6 +267,61 @@ Class navigationManager {
     }
     
     }
+
+    public function getNavigationPage($page_id, $debug=false){
+
+        $q = "Select 
+        a.`id`
+        FROM `navigation` as a
+        INNER JOIN `headings` as b on a.`id` = b.`navigation_id`
+        INNER JOIN `pages` as c on b.`id` = c.`headings_id`
+        WHERE c.`id` = '$page_id'";
+    
+        if ($debug){
+
+            echo $q . '<br><br>';
+
+
+        }
+    
+    
+    
+    $result = $this->connection->RunQuery($q);
+    
+    $x = 0;
+    $nRows = $result->rowCount();
+    
+    if ($nRows == 1) {
+    
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+    
+            $rowReturn = $row['id'];
+         
+    
+    
+        }
+    
+        if ($debug){
+    
+            print_r($rowReturn);
+        }
+    
+        return $rowReturn;
+    
+    } else {
+        
+    
+        if ($debug){
+    
+            echo 'no navigation matched';
+        }
+    
+        return false;
+    
+        
+    }
+    
+    }
     
 
 	
