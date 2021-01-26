@@ -992,7 +992,7 @@ $current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s');
 </div>
                 </nav>
                 <div class="row" id="videoTitleTour" style="margin-right:15px; margin-left:15px;">
-                    <span
+                    <spa
                         class="h3 mb-0 text-white d-block w-lg-75 w-xl-75"><?php echo $general->getVideoTitle($id)?></span>
                 </div>
                 <div class="row" style="margin-right:15px; margin-left:15px;">

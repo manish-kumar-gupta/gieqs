@@ -3132,6 +3132,45 @@ public function returnVideoDenominatorSelect2()
 
 
         }
+
+        public function getSuperCategoryName($supercategory){
+
+			
+			$q = "SELECT `superCategory_t` from `values` WHERE `superCategory` = '$supercategory'";
+				//$q = "SELECT `superCategory` FROM `tagCategories` WHERE `id` = $id";
+		
+                //echo $q;
+                
+                $x = 0;
+                $tagCategoryName = array();
+		
+                $result = $this->connection->RunQuery($q);
+
+                $nRows = $result->rowCount();
+
+                
+                if ($nRows > 0){
+		
+					
+                    while($row = $result->fetch(PDO::FETCH_ASSOC)){
+						
+						$name = $row['superCategory_t'];
+						
+						
+						
+						
+					}
+				
+					return $name;
+				}else{
+					
+					return null;
+				}
+			
+
+
+
+        }
         
         public function getCourses($debug=false){
 
@@ -3197,7 +3236,8 @@ public function returnVideoDenominatorSelect2()
             2 - congress
             3 - course
             4 - video collection
-            5 - superCategory
+            5 - page
+            6 - single video
 
             */
         /* Takes an array of videos and variables describing the context to return an array of allowed videos */
@@ -3390,6 +3430,105 @@ public function returnVideoDenominatorSelect2()
             INNER JOIN `chapterTag` as c ON b.`id` = c.`chapter_id` 
             INNER JOIN `tags` as d ON d.`id` = c.`tags_id` 
             WHERE d.`id` = $tagid
+            GROUP BY a.`id` ORDER BY a.`name` ASC";
+                
+
+            //echo $q;
+                //$q = "SELECT b.`image_id`, c.`url`, c.`name`, c.`type`, e.`tagName`, d.`id` as imagesTagid, d.`tags_id` FROM `imageSet` as a INNER JOIN `imageImageSet` as b ON a.`id` = b.`imageSet_id` INNER JOIN `images` as c on b.`image_id` = c.`id` INNER JOIN `imagesTag` as d ON c.`id` = d.`images_id` INNER JOIN `tags` as e ON d.`tags_id` = e.`id` WHERE a.`id` = "+idPassed;
+                
+                
+              
+
+                $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                    
+        
+                    $rowReturn[$x] = $row['id'];
+                    $x++;
+ 
+
+                    
+        
+        
+                }
+                return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+    
+    
+        }
+
+        public function getVideosTagCategory($tagCategory_id){
+
+            $q = "SELECT a.`id`
+            FROM `video` as a 
+            INNER JOIN `chapter` as b ON a.`id` = b.`video_id` 
+            INNER JOIN `chapterTag` as c ON b.`id` = c.`chapter_id` 
+            INNER JOIN `tags` as d ON d.`id` = c.`tags_id`
+            INNER JOIN `tagCategories` as e on d.`tagCategories_id` = e.`id`
+            WHERE e.`id` = '$tagCategory_id'
+            GROUP BY a.`id` ORDER BY a.`name` ASC";
+                
+
+            //echo $q;
+                //$q = "SELECT b.`image_id`, c.`url`, c.`name`, c.`type`, e.`tagName`, d.`id` as imagesTagid, d.`tags_id` FROM `imageSet` as a INNER JOIN `imageImageSet` as b ON a.`id` = b.`imageSet_id` INNER JOIN `images` as c on b.`image_id` = c.`id` INNER JOIN `imagesTag` as d ON c.`id` = d.`images_id` INNER JOIN `tags` as e ON d.`tags_id` = e.`id` WHERE a.`id` = "+idPassed;
+                
+                
+              
+
+                $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                    
+        
+                    $rowReturn[$x] = $row['id'];
+                    $x++;
+ 
+
+                    
+        
+        
+                }
+                return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+    
+    
+        }
+
+
+        public function getActiveVideosTagCategory($tagCategory_id){
+
+            $q = "SELECT a.`id`
+            FROM `video` as a 
+            INNER JOIN `chapter` as b ON a.`id` = b.`video_id` 
+            INNER JOIN `chapterTag` as c ON b.`id` = c.`chapter_id` 
+            INNER JOIN `tags` as d ON d.`id` = c.`tags_id`
+            INNER JOIN `tagCategories` as e on d.`tagCategories_id` = e.`id`
+            WHERE (e.`id` = '$tagCategory_id') AND (a.`active` = '1' OR a.`active` = '3')
             GROUP BY a.`id` ORDER BY a.`name` ASC";
                 
 

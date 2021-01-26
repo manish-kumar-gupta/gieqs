@@ -30,124 +30,7 @@ Useful for PHP to JS transfer
             </ul> -->
             <ul class="navbar-nav justify-content-sm-center ml-sm-auto">
 
-                <?php if (($selectedTag == 'null') || (is_numeric(intval($selectedTag)) && $restricted == 'true')){?>
-
-                <li class="nav-item">
-
-                    <?php
-            if ($browsing == '5'){
-
-                ?>
-
-                    <a href="<?php echo BASE_URL . '/pages/learning/pages/general/show_subscription.php?page_id=' . $browsing_id;?>"
-                        class="nav-link nav-link-icon gieqsGold">
-
-
-                        <?php
-            }else {
-
-                ?>
-
-                        <a href="<?php echo BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=' . $browsing_id;?>"
-                            class="nav-link nav-link-icon gieqsGold">
-
-
-                            <?php 
-
-        }
-                    
-                    if ($browsing == '5'){
-                        $pages->Load_from_key($browsing_id);
-                        $first_part = $pages->gettitle();
-
-                    }else{
-                    $pieces = explode(" ", $assets_paid->getname());
-$first_part = implode(" ", array_splice($pieces, 0, 4));
-                    }
-                    
-                    ?>
-
-
-                            <span class="nav-link-inner--text "><?php echo $first_part;?></span>
-
-                            <!-- unless rge selectedTag is not null and restricted is false then no numbers and expanded tag viewing -->
-
-                        </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $previousVideo;?>"
-                        class="nav-link nav-link-icon <?php if ($firstVideo === true){echo 'disabled';}?>">
-
-                        <span class="nav-link-inner--text ">
-                            <i class="fas fa-arrow-left mr-2"></i> Previous</span>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link nav-link-icon">
-
-                        <span
-                            class="nav-link-inner--text "><?php echo intval($position) + 1 . ' / ' .  $numberOfVideos;?></span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $nextVideo;?>"
-                        class="nav-link nav-link-icon <?php if ($lastVideo === true){echo 'disabled';}?>">
-
-                        <span class="nav-link-inner--text ">Next <i class="fas fa-arrow-right ml-2"></i></span>
-                    </a>
-                </li>
-
-                <?php } elseif (is_numeric(intval($selectedTag)) && $restricted == 'false'){ ?>
-
-                <li class="nav-item">
-
-                    <?php
-                if ($browsing_last == '5'){
-    
-                    ?>
-
-                    <a href="<?php echo BASE_URL . '/pages/learning/pages/general/show_subscription.php?page_id=' . $browsing_id;?>"
-                        class="nav-link nav-link-icon text-muted">
-
-
-                        <?php
-                }else {
-    
-                    ?>
-
-                        <a href="<?php echo BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=' . $browsing_id;?>"
-                            class="nav-link nav-link-icon text-muted">
-
-
-                            <?php 
-    
-            }
-                        
-                        if ($browsing_last == '5' && $browsing == '99'){
-                            $pages->Load_from_key($browsing_id);
-                            $first_part = $pages->gettitle();
-    
-                        }else{
-                        $pieces = explode(" ", $assets_paid->getname());
-    $first_part = implode(" ", array_splice($pieces, 0, 4));
-                        }
-                        
-                        ?>
-
-
-                            <span class="nav-link-inner--text ">Return to Restricted Browsing of
-                                <?php echo $first_part;?></span>
-
-
-
-                            <!-- unless rge selectedTag is not null and restricted is false then no numbers and expanded tag viewing -->
-
-                        </a>
-                </li>
-
-
-                <?php } //end selectedTag null if ?>
+           
 
 
 
@@ -162,23 +45,23 @@ $first_part = implode(" ", array_splice($pieces, 0, 4));
 
                             GIEQs Statistics
                         </a>
-                        <a class="dropdown-item cursor-pointer" href="#statistics">New Material
+                        <a class="dropdown-item cursor-pointer" href="#whats-new">New Material
                         </a>
 
                         <div class="dropdown-divider"></div>
                         <a id="tourTagNav" class="dropdown-item cursor-pointer"
-                            href="#whats-new">
+                            href="#catchup">
 
                             Pick up where you left off
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a id="jumpComments" class="dropdown-item cursor-pointer" href="#catchup">
+                        <a id="jumpComments" class="dropdown-item cursor-pointer" href="#suggested">
 
 
                             <span class="nav-link-inner--text ">Next steps</span>
                         </a>
                         <a id="jumpReferences" class="dropdown-item cursor-pointer"
-                            href="#suggested">
+                            href="#popular">
 
                             <span class="nav-link-inner--text">Popular</span>
                         </a>

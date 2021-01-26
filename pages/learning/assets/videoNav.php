@@ -433,6 +433,25 @@ if (isset($browsing) && isset($browsing_id) && is_array($browsing_array)){
 
     }
 
+    //so now set them based on the video
+
+    //$browsing = 6;
+    //$browsing_id = ;
+    //$browsing_array = ;
+
+    //or don't set them just set up the required arrays
+
+    $currentVideo = $id;
+
+    $position = 0;
+
+    $lastVideo = true;
+
+    $firstVideo = true;
+
+    $numberOfVideos = 1;
+
+
     //delete the others?
 }
 

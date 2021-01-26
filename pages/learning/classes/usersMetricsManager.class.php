@@ -314,8 +314,7 @@ class usersMetricsManager
 
         $q = "SELECT `video_id` FROM `usersViewsVideo`
             WHERE `user_id` = '$userid'
-            ORDER BY `recentView` DESC
-            LIMIT 3";
+            ORDER BY `recentView` DESC";
 
         if ($debug){
 
@@ -353,6 +352,8 @@ class usersMetricsManager
 
                 //check if this video was completed
 
+                
+
                 if ($debug){
 
                     echo $this->userCompletionVideo($userid, $value, false);
@@ -368,10 +369,19 @@ class usersMetricsManager
 
                 }
 
+                if ($y > 2){
+                    
+                    return $uncompletedLastThree;
+
+
+                }
+
 
             }
 
             return $uncompletedLastThree;
+
+
 
 
         } else {
@@ -391,6 +401,145 @@ class usersMetricsManager
     }
 
     public function getNewVideos($debug=false)
+    {
+
+        $q = "SELECT `id` FROM `video`
+            WHERE `active` = 1 OR `active` = 3
+            ORDER BY `created` DESC
+            LIMIT 20";
+
+        if ($debug){
+
+            echo $q;
+
+        }
+
+        $result = $this->connection->RunQuery($q);
+
+        $x = 0;
+        $y=0;
+        $rowReturn = array();
+        $nRows = $result->rowCount();
+
+        if ($nRows > 0) {
+
+            
+
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                $rowReturn[$x] = $row['id'];
+                $x++;
+
+            }
+
+            if ($debug){
+
+                print_r($rowReturn);
+    
+            }
+
+            //now rowReturn is an array of 10 newest videos
+
+
+
+            //check access
+
+            //make 3
+
+            //return
+
+            
+
+            return $rowReturn;
+
+
+        } else {
+
+
+            if ($debug){
+
+                echo 'no videos matched';
+
+            }
+
+            return false;
+
+            
+        }
+
+    }
+
+    public function getAllVideosWatchedUser ($userid, $debug=false){
+
+
+        $q = "SELECT `video_id` FROM `usersViewsVideo`
+            WHERE `user_id` = '$userid'
+            ORDER BY `recentView` DESC";
+
+    if ($debug){
+
+        echo $q;
+
+    }
+
+    $result = $this->connection->RunQuery($q);
+
+    $x = 0;
+    $y=0;
+    $rowReturn = array();
+    $nRows = $result->rowCount();
+
+    if ($nRows > 0) {
+
+        
+
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+            $rowReturn[$x] = $row['video_id'];
+            $x++;
+
+        }
+
+        if ($debug){
+
+            print_r($rowReturn);
+
+        }
+
+        //now rowReturn is an array of 10 newest videos
+
+
+
+        //check access
+
+        //make 3
+
+        //return
+
+        
+
+        return $rowReturn;
+
+
+    } else {
+
+
+        if ($debug){
+
+            echo 'no videos matched';
+
+        }
+
+        return false;
+
+        
+    }
+
+
+
+    }
+
+    public function getSuggestedVideos($debug=false)
     {
 
         $q = "SELECT `id` FROM `video`
@@ -538,6 +687,44 @@ class usersMetricsManager
 			}else{
 				return FALSE;
 			}
+    }
+
+    function getPopularVideos ($debug = false){
+
+
+            $q = "SELECT `video_id`, count(*)
+            FROM `usersViewsVideo` 
+            GROUP BY `video_id`
+            ORDER BY count(*) DESC 
+            LIMIT 10";
+    
+            $result = $this->connection->RunQuery($q);
+
+            $count = array();
+            $x = 0;
+    
+            if ($result){
+           
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+               
+                    $count[$x] = $row['video_id'];
+                    $x++;
+            
+                }
+           
+                return $count;
+            
+        }else{
+    
+                return false;
+            }
+    
+    
+    
+    
+
+
+
     }
 
 

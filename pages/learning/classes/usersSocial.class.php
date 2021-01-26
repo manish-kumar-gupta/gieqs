@@ -10,7 +10,7 @@
  *
  */
 
- error_reporting(E_ALL);
+ //error_reporting(E_ALL);
 /*  var_dump($_SERVER["DOCUMENT_ROOT"]."/myFolder/*");
  var_dump(BASE_URI);
 require_once 'DataBaseMysqlPDO.class.php'; */

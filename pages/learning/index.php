@@ -17,6 +17,15 @@
 
       $requiredUserLevel = 6;
 
+      //blank previous browsing
+
+      setcookie('browsing', null, time() + (365 * 24 * 60 * 60), '/');
+
+      setcookie('browsing_id', null, time() + (365 * 24 * 60 * 60), '/');
+
+      setcookie('browsing_array', null, time() + (365 * 24 * 60 * 60), '/');
+
+
 
       require BASE_URI . '/pages/learning/includes/head.php';
 
@@ -175,6 +184,8 @@
         <?php
         $usersMetricsManager = new usersMetricsManager;
         $usersViewsVideo = new usersViewsVideo;
+        $usersSocial = new usersSocial;
+
         require_once(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
         $assetManager = new assetManager;
 
@@ -290,7 +301,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4">
+                            <!--<div class="col-lg-4">
                                 <div
                                     class="card card-stats bg-gradient-info border-0 hover-shadow-lg hover-translate-y-n3 mb-4 ml-lg-0">
                                     <div class="actions actions-dark">
@@ -337,7 +348,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
 
@@ -380,6 +391,8 @@ if ($debug){
 ?>
 
           <div class="actions-toolbar py-2 mb-4 ">
+            
+
               <h5 class="mb-1">What's New</h5>
               <p class="text-sm text-muted mb-0">Jump right into a new learning experience.</p>
           </div>
@@ -410,9 +423,12 @@ if ($debug){
 
 
               <div class="card">
-                  <div class="card-header" style="height:100px;">
+                  <div class="card-header" style="height:120px;">
+                  <small class="ml-auto text-right gieqsGold"><?php echo $assetManager->getSuperCategoryName($assetManager->getVideoSuperCategory($value));?></small>
+
                       <div class="d-flex align-items-center">
                           <!-- <span class="avatar bg-primary text-white rounded-circle avatar-lg">TC</span> -->
+
                           <div class="avatar-content ml-3">
                               <h6 class="mb-0"><a
                                       href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $value; ?>"><?php echo $video_PDO->getname();?></a>
@@ -496,6 +512,8 @@ if ($debug){
 
                     <?php
 
+                    $debug = false;
+
           //data definition
 
           $lastViewedVideos = $usersMetricsManager->getLastViewedVideosCompletion($userid, false);
@@ -520,7 +538,7 @@ if ($debug){
                                               $a = count($lastViewedVideos);
                                               if ($debug){
 
-                                                echo $a;
+                                                echo 'count is is ' .$a;
                                               }
 
                         foreach ($lastViewedVideos as $key=>$value){
@@ -541,7 +559,9 @@ if ($debug){
 
 
                         <div class="card">
-                            <div class="card-header" style="height:115px;">
+                            <div class="card-header" style="height:120px;">
+                            <small class="ml-auto text-right gieqsGold"><?php echo $assetManager->getSuperCategoryName($assetManager->getVideoSuperCategory($value));?></small>
+
                                 <div class="d-flex align-items-center">
                                     <!-- <span class="avatar bg-primary text-white rounded-circle avatar-lg">TC</span> -->
                                     <div class="avatar-content ml-3">
@@ -623,39 +643,207 @@ if ($debug){
             <section id="suggested" class="slice slice-lg delimiter-top">
                 <div class="container pt-0 pt-lg-0">
 
-                    <div class="actions-toolbar py-2 mb-4 ">
-                        <h5 class="mb-1">Suggested next steps</h5>
-                        <p class="text-sm text-muted mb-0">Based on what you watched before. Available right now with
-                            your current
-                            subscriptions.</p>
-                    </div>
-                    <div class="card-deck flex-column flex-lg-row mb-5">
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="d-flex align-items-center">
-                                    <!-- <span class="avatar bg-primary text-white rounded-circle avatar-lg">TC</span> -->
-                                    <div class="avatar-content ml-3">
-                                        <h6 class="mb-0">Video title</h6>
-                                        <small class="d-block text-muted font-weight-bold">video author</small>
-                                        <span class="text-muted"><i class="fas fa-clock mr-2"></i>time uploaded</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $value['id']; ?>">
-                                <img alt="video image" src="<?php echo $value['thumbnail']; ?>" class="img-fluid mt-2">
-                            </a>
-                            <div class="card-body">
+                <?php
+
+//data definition
+
+$newVideos = null;
+$newVideosUnfiltered = null;
+$newVideosFiltered = null;
+
+$x = 0;
+
+$newVideosUnfiltered = $usersMetricsManager->getAllVideosWatchedUser($userid, false);
+
+$tagCategories = $assetManager->getVideoTagCategories($newVideosUnfiltered, false); //an array of tag categories matching the videos watched
+
+if ($debug){
+
+  echo 'Tag Categories is';
+  print_r($tagCategories);
+
+}
+
+$videoTagCategories = array();
+
+foreach ($tagCategories as $key=>$value){
+
+  //get videos for the tagCategory
+
+  //echo $value;
+
+  $videosForCategory = $assetManager->getActiveVideosTagCategory($value);
+
+  //print_r($videosForCategory);
+
+  //add them to the overall array
+
+  foreach ($videosForCategory as $key2=>$value2){
+
+    //echo $value2 . PHP_EOL;
 
 
-                                <small class="h6 text-sm font-weight-bold">Description:</small>
-                                <p class="text-sm lh-160 mb-0"><?php echo $video_PDO->getdescription();?></p>
-                            </div>
-                        </div>
-                        <div class="card"></div>
-                        <div class="card"></div>
+    if (in_array($value2, $videoTagCategories) === false){
+
+    $videoTagCategories[$x] = $value2;
+
+    $x++;
+    }
 
 
-                    </div> <!-- end new material div-->
+  }
+
+
+
+}
+
+$newVideosFiltered = $assetManager->determineVideoAccessNonAsset($videoTagCategories, $isSuperuser, $userid, false);
+
+shuffle($newVideosFiltered);
+
+$newVideos = array_slice($newVideosFiltered, 0, 3);
+
+//videoTagCategories is an array of videos with the same categories as those which have been watched bu the user
+
+//determine access
+
+//
+
+//print_r($videoTagCategories)
+
+
+//$newVideosFiltered = $assetManager->determineVideoAccessNonAsset($newVideosUnfiltered, $isSuperuser, $userid, false);
+
+//shuffle($newVideosFiltered);
+
+//$newVideos = array_slice($newVideosFiltered, 0, 3);
+
+
+if ($debug){
+
+  //print_r($newVideosUnfiltered);
+  //print_r($tagCategories);
+  //echo PHP_EOL;
+  print_r($videoTagCategories);
+  //print_r($newVideos);
+
+}
+
+
+if ($debug){
+
+  print_r($newVideos);
+
+}
+
+
+
+?>
+
+          <div class="actions-toolbar py-2 mb-4 ">
+              <h5 class="mb-1">Suggested Next Steps</h5>
+              <p class="text-sm text-muted mb-0">Based on what you watched previously.</p>
+          </div>
+          <div class="card-deck flex-column flex-lg-row mb-5">
+
+              <?php 
+                                    $a = count($newVideos);
+                                    if ($debug){
+
+                                      echo $a;
+                                    }
+
+              foreach ($newVideos as $key=>$value){
+            $video_PDO->Load_from_key($value);
+            $key = $usersMetricsManager->getKeyUserViewsVideoMatch($userid, $value);
+            if ($debug){
+
+              echo $key;
+            }
+            $usersViewsVideo->Load_from_key($key);
+            if ($debug){
+
+              echo 'recent view is ' . $usersViewsVideo->getrecentView();
+            }
+            
+            ?>
+
+
+
+              <div class="card">
+                  <div class="card-header" style="height:120px;">
+                  <small class="ml-auto text-right gieqsGold"><?php echo $assetManager->getSuperCategoryName($assetManager->getVideoSuperCategory($value));?></small>
+
+                      <div class="d-flex align-items-center">
+                          <!-- <span class="avatar bg-primary text-white rounded-circle avatar-lg">TC</span> -->
+                          <div class="avatar-content ml-3">
+                              <h6 class="mb-0"><a
+                                      href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $value; ?>"><?php echo $video_PDO->getname();?></a>
+                              </h6>
+                              <small class="d-block text-muted font-weight-bold"><a
+                                      href="<?php echo BASE_URL;?>/pages/learning/pages/account/public-profile.php?id=<?php echo $video_PDO->getauthor();?>"><?php echo $users->getUserName($video_PDO->getauthor()); ?></a></small>
+                              
+
+
+                          </div>
+                      </div>
+                  </div>
+
+                  <?php 
+
+                  $completion = $usersMetricsManager->userCompletionVideo($userid, $value, false);
+                  $completion = floor($completion);
+
+                  ?>
+
+                  <div class="progress-wrapper pt-3 pb-1 px-2">
+                      <div class="progress progress-xs mt-2">
+                          <div class="progress-bar bg-gieqsGold" role="progressbar" aria-valuenow="20"
+                              aria-valuemin="0" aria-valuemax="100"
+                              style="width: <?php echo $completion;?>%;"></div>
+                      </div>
+                      <small class="progress-percentage p-1 mr-4"><?php echo $completion;?>% <small
+                              class="font-weight-bold">complete</small></small>
+
+                  </div>
+
+                  <a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $value; ?>">
+                      <img alt="video image" src="<?php echo $video_PDO->getthumbnail(); ?>"
+                          class="img-fluid mt-2">
+                  </a>
+                  <div class="card-body">
+
+
+                      <small class="h6 text-sm font-weight-bold">Description:</small>
+                      <p class="text-sm lh-160 mb-0"><?php echo $video_PDO->getdescription();?></p>
+                  </div>
+              </div>
+
+              <?php }
+              
+              if ($a == 1){
+
+                echo '<div class="card"></div>
+              <div class="card"></div>';
+
+              }elseif ($a == 2){
+
+                echo '<div class="card"></div>';
+
+              }elseif ($a == 0){
+
+                echo '<div class="card"></div>
+              <div class="card"></div><div class="card"></div>';
+
+              }
+              
+              ?>
+
+
+
+
+
+          </div> <!-- end new material div-->
                 </div> <!-- end container div-->
 
             </section>
@@ -666,37 +854,154 @@ if ($debug){
             <section id="popular" class="slice slice-lg bg-section-secondary delimiter-top">
                 <div class="container pt-0 pt-lg-0">
 
-                    <div class="actions-toolbar py-2 mb-4 ">
-                        <h5 class="mb-1">Popular videos</h5>
-                        <p class="text-sm text-muted mb-0">What others are watching right now.</p>
-                    </div>
-                    <div class="card-deck flex-column flex-lg-row mb-5">
-                        <div class="card">
-                            <div class="card-header">
-                                <div class="d-flex align-items-center">
-                                    <!-- <span class="avatar bg-primary text-white rounded-circle avatar-lg">TC</span> -->
-                                    <div class="avatar-content ml-3">
-                                        <h6 class="mb-0">Video title</h6>
-                                        <small class="d-block text-muted font-weight-bold">video author</small>
-                                        <span class="text-muted"><i class="fas fa-clock mr-2"></i>time uploaded</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <a
-                                href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $value['id'] . '&referid=' . $data['referringUrl']; ?>">
-                                <img alt="video image" src="<?php echo $value['thumbnail']; ?>" class="img-fluid mt-2">
-                            </a>
-                            <div class="card-body">
+                <?php
 
 
-                                <small class="h6 text-sm font-weight-bold">Reminder:</small>
-                                <p class="text-sm lh-160 mb-0">When we strive to become better than we are everything
-                                    around us becomes better too.</p>
-                            </div>
-                        </div>
-                        <div class="card"></div>
-                        <div class="card"></div>
+              //data definition
 
+              $newVideosFiltered = null;
+              $newVideosUnfiltered = null;
+              $newVideos = null;
+
+              $newVideosUnfiltered = $usersMetricsManager->getPopularVideos(false);
+
+
+              $newVideosFiltered = $assetManager->determineVideoAccessNonAsset($newVideosUnfiltered, $isSuperuser, $userid, false);
+
+              shuffle($newVideosFiltered);
+
+              $newVideos = array_slice($newVideosFiltered, 0, 3);
+
+
+              if ($debug){
+
+                print_r($newVideosUnfiltered);
+                print_r($newVideosFiltered);
+                print_r($newVideos);
+
+              }
+
+
+              if ($debug){
+
+                print_r($newVideos);
+
+              }
+
+
+
+?>
+
+          <div class="actions-toolbar py-2 mb-4 ">
+            
+
+              <h5 class="mb-1">Popular Videos</h5>
+              <p class="text-sm text-muted mb-0">What others are watching right ow.</p>
+          </div>
+          <div class="card-deck flex-column flex-lg-row mb-5">
+
+              <?php 
+                                    $a = count($newVideos);
+                                    if ($debug){
+
+                                      echo $a;
+                                    }
+
+              foreach ($newVideos as $key=>$value){
+            $video_PDO->Load_from_key($value);
+            $key = $usersMetricsManager->getKeyUserViewsVideoMatch($userid, $value);
+            if ($debug){
+
+              echo $key;
+            }
+            $usersViewsVideo->Load_from_key($key);
+            if ($debug){
+
+              echo 'recent view is ' . $usersViewsVideo->getrecentView();
+            }
+            
+            ?>
+
+
+
+              <div class="card">
+                  <div class="card-header" style="height:140px;">
+                  <small class="ml-auto text-right gieqsGold"><?php echo $assetManager->getSuperCategoryName($assetManager->getVideoSuperCategory($value));?></small>
+
+                      <div class="d-flex align-items-center">
+                          <!-- <span class="avatar bg-primary text-white rounded-circle avatar-lg">TC</span> -->
+
+                          <div class="avatar-content ml-3">
+                              <h6 class="mb-0"><a
+                                      href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $value; ?>"><?php echo $video_PDO->getname();?></a>
+                              </h6>
+                              <small class="d-block text-muted font-weight-bold"><a
+                                      href="<?php echo BASE_URL;?>/pages/learning/pages/account/public-profile.php?id=<?php echo $video_PDO->getauthor();?>"><?php echo $users->getUserName($video_PDO->getauthor()); ?></a></small>
+                                      <a class="action-item p-0 m-0 pr-4 views"><i class="fas fa-eye mr-1"
+                                            data-toggle="tooltip" data-placement="bottom" title="views"></i> <small
+                                            id="viewsNumber"><?php echo $usersSocial->countViews($value);?></small></a>
+                              
+
+
+                          </div>
+                      </div>
+                  </div>
+
+                  <?php 
+
+                  $completion = $usersMetricsManager->userCompletionVideo($userid, $value, false);
+                  $completion = floor($completion);
+
+                  ?>
+
+                  <div class="progress-wrapper pt-3 pb-1 px-2">
+                      <div class="progress progress-xs mt-2">
+                          <div class="progress-bar bg-gieqsGold" role="progressbar" aria-valuenow="20"
+                              aria-valuemin="0" aria-valuemax="100"
+                              style="width: <?php echo $completion;?>%;"></div>
+                      </div>
+                      <small class="progress-percentage p-1 mr-4"><?php echo $completion;?>% <small
+                              class="font-weight-bold">complete</small></small>
+
+                  </div>
+
+                  <a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $value; ?>">
+                      <img alt="video image" src="<?php echo $video_PDO->getthumbnail(); ?>"
+                          class="img-fluid mt-2">
+                  </a>
+                  <div class="card-body">
+
+
+                      <small class="h6 text-sm font-weight-bold">Description:</small>
+                      <p class="text-sm lh-160 mb-0"><?php echo $video_PDO->getdescription();?></p>
+                  </div>
+              </div>
+
+              <?php }
+              
+              if ($a == 1){
+
+                echo '<div class="card"></div>
+              <div class="card"></div>';
+
+              }elseif ($a == 2){
+
+                echo '<div class="card"></div>';
+
+              }elseif ($a == 0){
+
+                echo '<div class="card"></div>
+              <div class="card"></div><div class="card"></div>';
+
+              }
+              
+              ?>
+
+
+
+
+
+          </div> <!-- end new material div-->
 
                     </div> <!-- end new material div-->
                 </div> <!-- end container div-->

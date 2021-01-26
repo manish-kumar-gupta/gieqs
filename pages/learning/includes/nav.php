@@ -89,6 +89,9 @@ if ($menus) {
                         aria-expanded="false"><?php echo $menu->gettitle(); ?></a>
 
 
+                        <div class="dropdown-menu dropdown-menu-arrow" aria-labelledby="btn-group-settings">
+
+
           <?php
 
             //get navigation
@@ -108,13 +111,12 @@ if ($menus) {
               ?>
 
 
-              <div class="dropdown-menu dropdown-menu-arrow" aria-labelledby="btn-group-settings">
                         
                         <span style="color: rgb(238, 194, 120);" class="dropdown-header"><?php echo $navigation->gettitle(); ?></span>
                         <a class="dropdown-item dropdown-toggle cursor-pointer" role="button" data-toggle="dropdown"
-                            data-target="#<?php echo $navigation->gettitle(); ?>-dropdown"><i class="fas fa-columns"></i><?php echo $navigation->gettitle(); ?></a>
+                            data-target="#dropdown<?php echo $navigation->getid();?>"><i class="fas fa-columns"></i><?php echo $navigation->gettitle(); ?></a>
 
-                            <div id="<?php echo $navigation->gettitle(); ?>-dropdown"
+                            <div id="dropdown<?php echo $navigation->getid();?>"
                             class="dropdown-menu dropdown-menu-xl rounded-bottom delimiter-top p-4 bg-dark-light">
                             <div class="row">
                             <div class="col-sm-6">
@@ -189,7 +191,7 @@ if ($menus) {
                         <div class="dropdown-divider"></div>
 
 
-              </div>
+              
 
 
               <?php
@@ -208,6 +210,8 @@ if ($menus) {
 
             }
 ?>
+
+</div>
 
 
 
