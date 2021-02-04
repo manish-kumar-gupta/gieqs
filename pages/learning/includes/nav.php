@@ -114,7 +114,7 @@ if ($menus) {
                         
                         <span style="color: rgb(238, 194, 120);" class="dropdown-header"><?php echo $navigation->gettitle(); ?></span>
                         <a class="dropdown-item dropdown-toggle cursor-pointer" role="button" data-toggle="dropdown"
-                            data-target="#dropdown<?php echo $navigation->getid();?>"><i class="fas fa-columns"></i><?php echo $navigation->gettitle(); ?></a>
+                            data-target="#dropdown<?php echo $navigation->getid();?>"><i class="fas fa-folder"></i><?php echo $navigation->gettitle(); ?></a>
 
                             <div id="dropdown<?php echo $navigation->getid();?>"
                             class="dropdown-menu dropdown-menu-xl rounded-bottom delimiter-top p-4 bg-dark-light">
@@ -239,7 +239,7 @@ if ($menus) {
            
 
    <!-- Subscriptions Menu -->
-   <?php if ($assetManager->doesUserHaveSubscriptionMenu($userid, $debug)) { //if user has a subscription to assets type 2 3 or 4?>
+   <?php if ($assetManager->doesUserHaveSubscriptionMenu($userid, false)) { //if user has a subscription to assets type 2 3 or 4?>
                 <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
                     <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">Subscriptions</a>
