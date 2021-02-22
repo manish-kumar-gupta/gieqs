@@ -11,7 +11,7 @@
                 $subscriptions = new subscriptions;
 
                 
-                $response =  $subscriptions->Load_records_limit_json_datatables(2000);
+                $response =  $subscriptions->Load_records_limit_json_datatables(400000);
 
                 echo $response;
 
