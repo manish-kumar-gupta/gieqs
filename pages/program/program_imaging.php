@@ -112,7 +112,7 @@ $general = new general;
                         <span class="h1" style="color: rgb(238, 194, 120);">Imaging of Colorectal Polyps
                             (Virtual)<br /></span>
                         <span class="h3 mt-4" style="color: rgb(238, 194, 120);">Thursday 18th March 2021<br /></span>
-                        <span class="h5" style="color: rgb(238, 194, 120);">1930 - 2100 CET, on Demand
+                        <span class="h5" style="color: rgb(238, 194, 120);">1930 - 2120 CET, on Demand
                             thereafter<br /></span>
                         <a href="#targetScrollProgramme" id="wednesdayTop"
                             class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 scroll-me">
@@ -223,7 +223,7 @@ $general = new general;
                                                                                     
                                                                                     <p
                                                                                        >
-                                                                                        <h4 class="text-center text-dark"><b>Thursday</b> 18th March, 1930-2100 CET <br/>Online at www.gieqs.com </h4></p>
+                                                                                        <h4 class="text-center text-dark"><b>Thursday</b> 18th March, 1930-2120 CET <br/>Online at www.gieqs.com </h4></p>
 
 <p style="text-align:center;"> <b>€10</b> (or FREE if you <a href="mailto:admin@gieqs.com?subject=Why%20i%20shouldn't%20pay%20for%20your%20online%20polypectomy%20course">tell us why</a> you shouldn't pay)*</p>                                                                                    </p>
 
@@ -317,9 +317,7 @@ $general = new general;
 
 
                                                                                     
-                                                                                    <p
-                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                        <br><br><b>Dear GIEQs Member,</b>                                                                                    </p>
+                                                                                    
 
                                                                                     
 

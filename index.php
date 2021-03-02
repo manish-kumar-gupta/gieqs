@@ -437,7 +437,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                 <div class="col">
                 <div class="row">
                         <div class="col-lg-10 col-xl-10 text-center text-lg-left">
-                        <a href="<?php echo BASE_URL;?>/pages/program/program_trainer_colon.php">
+                        <a href="<?php echo BASE_URL;?>/pages/program/program_imaging.php">
                             <div class="alert alert-modern alert-dark">
                                 <span class="badge gieqsGold badge-pill">
                                     New
