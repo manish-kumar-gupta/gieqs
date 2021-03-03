@@ -197,7 +197,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
     
     <div class="main-content">
 
-    <section class="header-1 section-rotate bg-section-dark mt-6" data-offset-top="#header-main">
+    <section class="header-1 section-rotate bg-section-dark mt-5" data-offset-top="#header-main">
             <div class="section-inner bg-gradient-dark"></div>
             <!-- SVG illustration -->
             <div class="pt-7 position-absolute middle right-0 col-lg-7 col-xl-6 d-none d-lg-block">
