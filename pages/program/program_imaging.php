@@ -1079,7 +1079,7 @@ $general = new general;
 
 
             window.location = siteRoot +
-            "pages/authentication/login.php?destination=basic_colon_signup";
+            "pages/authentication/login.php?destination=imaging_signup";
 
 
         })
@@ -1090,7 +1090,7 @@ $general = new general;
 
             event.preventDefault();
             window.location.href = siteRoot +
-                '/pages/authentication/login.php?destination=basic_colon_signup';
+                '/pages/authentication/login.php?destination=imaging_signup';
 
 
         })
