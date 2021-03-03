@@ -345,7 +345,9 @@ $test = false;
                 <!-- Program-basic, later to add dropdown with options -->
                 <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
                     <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">Digital Courses</a>
+                        aria-haspopup="true" aria-expanded="false">Digital Courses<span class="badge bg-gieqsGold text-dark badge-pill badge-floating ml-1 pl-1">
+                                    New!
+                                    </span></a>
                     
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">Upcoming Courses</span>
@@ -385,9 +387,7 @@ $test = false;
                 <!-- Registration-basic -->
                 <?php if (!$liveAndLoggedIn){?>
                 <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-                   <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/registration.php">Registration<span class="badge bg-gieqsGold text-dark badge-pill badge-floating ml-1 pl-1">
-                                    Reduced!
-                                    </span></a>
+                   <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/registration.php">Registration</a>
                     <!-- <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Registration</a>
                     
