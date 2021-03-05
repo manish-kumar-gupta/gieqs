@@ -50,7 +50,7 @@
                 <a class="nav-link mr-4" href="<?php echo BASE_URL;?>/pages/support/support_gieqs_digital.php">GIEQs Digital Help</a>
               </li>
             <li class="nav-item">
-              <a class="nav-link" title="Login" href="<?php echo BASE_URL . '/pages/authentication/login.php'?>"><i class="fas fa-user-plus"></i></a>
+              <a class="nav-link" title="Login" href="<?php echo BASE_URL . '/pages/authentication/login.php'?>"><i class="fas fa-user-plus mr-2"></i>Login</a>
             </li>
 
             

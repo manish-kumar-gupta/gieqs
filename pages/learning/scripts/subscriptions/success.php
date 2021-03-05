@@ -278,6 +278,7 @@ if (array_key_exists('paymentId', $_GET) && array_key_exists('PayerID', $_GET)) 
         $emailVaryarray['surname'] = $users->getsurname();
         $emailVaryarray['email'] = $users->getemail();
         $email = $users->getemail();
+        $emailVaryarray['assetid'] = $asset_id;
         $emailVaryarray['subscription_id'] = $subscription_id;
         $emailVaryarray['asset_name'] = $assetManager->getAssetName($subscription_id);
         $emailVaryarray['asset_type'] = $assetManager->getAssetTypeText($assetManager->getAssetType($subscription_id));

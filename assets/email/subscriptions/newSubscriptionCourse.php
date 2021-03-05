@@ -779,7 +779,7 @@
                                                                                 </li>
                                                                                 <li>Access the Slido app for asking
                                                                                     questions using your SmartPhone or
-                                                                                    from your computer</li>
+                                                                                    from your computer (if available for your course)</li>
                                                                                 <li>Access the live programme and check
                                                                                     upcoming and current sessions</li>
                                                                             </ul>
