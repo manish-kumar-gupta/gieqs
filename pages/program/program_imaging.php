@@ -750,7 +750,7 @@ $general = new general;
             <form id="confirm-new" action="<?php echo BASE_URL;?>/pages/learning/scripts/subscriptions/charge.php"
                 method="POST">
                 <input type="hidden" id="asset_id_hidden" name="asset_id" value="">
-                <input type="hidden" id="course_date" name="course_date" value="2020-11-16 08:00">
+                <input type="hidden" id="course_date" name="course_date" value="2021-03-16 08:00">
                 <!-- CHANGE ME UPDATE TODO MAKE THIS COME FROM THE PROGRAM -->
 
                 <input type="submit" id="button-confirm-new" class="btn btn-sm btn-white button-confirm-new"
