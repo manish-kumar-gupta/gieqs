@@ -1172,7 +1172,7 @@
     }
 
 
-    function refreshNavAndTags() {
+    function refreshNavAndTags(tagid = null) {
 
         var screenTop = $(document).scrollTop();
 
@@ -1284,6 +1284,18 @@
                     }
 
                 })
+
+
+                //ALSO SET THE LOCALSTORAGE TO THIS TAG
+
+                //if count tags >0
+
+                if (tags.length > 0){
+
+                    window.localStorage.setItem('selectedTag', tagid);
+
+                }
+
 
 
             }
@@ -1482,7 +1494,9 @@
 
         $('.tag').click(function() {
 
-            refreshNavAndTags();
+            var tagClicked = $(this).attr('data');
+
+            refreshNavAndTags(tagClicked);
 
 
         })

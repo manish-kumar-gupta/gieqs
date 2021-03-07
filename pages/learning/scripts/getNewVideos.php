@@ -99,7 +99,7 @@ $data = json_decode(file_get_contents('php://input'), true);
 $newVideosUnfiltered = $usersMetricsManager->getNewVideos(false);
 
 
-$newVideosFiltered = $assetManager->determineVideoAccess($newVideosUnfiltered, $isSuperuser, $userid, true);
+$newVideosFiltered = $assetManager->determineVideoAccess($newVideosUnfiltered, $isSuperuser, $userid, false);
 
 shuffle($newVideosFiltered);
 

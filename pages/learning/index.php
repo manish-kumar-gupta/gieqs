@@ -377,10 +377,10 @@
 
 
             <!-- New material -->
-            <section class="slice delimiter-bottom" id="statistics">
+            <section class="slice delimiter-bottom m-0 p-2" id="statistics">
                 <div class="container pt-0 pt-lg-0">
 
-                    <div class="actions-toolbar py-2 mb-4">
+                    <div class="actions-toolbar py-2">
                         <h5 class="mb-1">Your GIEQs Stats</h5>
                         <p class="text-sm text-muted mb-0">How GIEQy are you <?php echo $_SESSION['firstname'];?>?</p>
                     </div>
@@ -389,7 +389,7 @@
                         <div class="row">
                             <div class="col-lg-4">
                                 <div
-                                    class="card card-stats bg-gradient-primary border-0 hover-shadow-lg hover-translate-y-n3 mb-4 ml-lg-0">
+                                    class="card card-stats bg-gradient-primary border-0 hover-shadow-lg hover-translate-y-n3 mb-0 ml-lg-0">
                                     <div class="actions actions-dark">
                                         <a href="#" class="action-item">
                                             <i class="fas fa-sync-alt"></i>
@@ -421,13 +421,13 @@
 
                 </div>
             </section>
-            <section class="slice delimiter-bottom" id="whats-new">
+            <section class="slice delimiter-bottom m-0 p-2" id="whats-new">
 
                 <div class="container pt-0 pt-lg-0">
                     <div class="actions-toolbar py-2 mb-4 ">
 
 
-                        <h5 class="mb-1">What's New</h5>
+                        <h4 class="mb-1  mt-2">What's New</h4>
                         <p class="text-sm text-muted mb-0">Jump right into a new learning experience.</p>
                     </div>
                     <div class="placeholder">
@@ -447,10 +447,10 @@
 
 
 
-            <section id="catchup" class="slice slice-lg bg-section-secondary delimiter-top">
+            <section id="catchup" class="slice slice-lg bg-section-secondary delimiter-top m-0 p-2">
                 <div class="container pt-0 pt-lg-0">
                     <div class="actions-toolbar py-2 mb-4 ">
-                        <h5 class="mb-1">Pick up where you left off</h5>
+                        <h4 class="mb-1  mt-2">Pick up where you left off</h4>
                         <p class="text-sm text-muted mb-0">Videos you started watching, jump back in.</p>
                     </div>
                     <div class="placeholder">
@@ -469,10 +469,10 @@
             <!-- Suggested videos -->
 
 
-            <section id="suggested" class="slice slice-lg delimiter-top">
+            <section id="suggested" class="slice slice-lg delimiter-top m-0 p-2">
                 <div class="container pt-0 pt-lg-0">
                     <div class="actions-toolbar py-2 mb-4 ">
-                        <h5 class="mb-1">Suggested Next Steps</h5>
+                        <h4 class="mb-1 mt-2">Suggested Next Steps</h4>
                         <p class="text-sm text-muted mb-0">Based on what you watched previously.</p>
                     </div>
                     <div class="placeholder">
@@ -492,12 +492,12 @@
             <!-- Popular videos -->
 
 
-            <section id="popular" class="slice slice-lg bg-section-secondary delimiter-top">
+            <section id="popular" class="slice slice-lg bg-section-secondary delimiter-top m-0 p-2">
                 <div class="container pt-0 pt-lg-0">
                     <div class="actions-toolbar py-2 mb-4 ">
 
 
-                        <h5 class="mb-1">Popular Videos</h5>
+                        <h4 class="mb-1  mt-2">Popular Videos</h4>
                         <p class="text-sm text-muted mb-0">What others are watching right ow.</p>
                     </div>
                     <div class="placeholder">

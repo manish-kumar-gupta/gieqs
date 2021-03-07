@@ -90,6 +90,7 @@ if ($menus) {
 
 
                         <div class="dropdown-menu dropdown-menu-arrow" aria-labelledby="btn-group-settings">
+                        <span style="color: rgb(238, 194, 120);" class="h4 dropdown-header">Choose an <?php echo $menu->gettitle(); ?> Category</span>
 
 
           <?php
@@ -112,14 +113,13 @@ if ($menus) {
 
 
                         
-                        <span style="color: rgb(238, 194, 120);" class="dropdown-header"><?php echo $navigation->gettitle(); ?></span>
-                        <a class="dropdown-item dropdown-toggle cursor-pointer" role="button" data-toggle="dropdown"
-                            data-target="#dropdown<?php echo $navigation->getid();?>"><i class="fas fa-folder"></i><?php echo $navigation->gettitle(); ?></a>
+                        <!-- <span style="color: rgb(238, 194, 120);" class="dropdown-header"><?php //echo $navigation->gettitle(); ?></span> -->
+                        <a class="dropdown-item dropdown-toggle cursor-pointer py-3 px-2" role="button" data-toggle="dropdown"
+                            data-target="#dropdown<?php echo $navigation->getid();?>"><i class="fas fa-file-alt"></i><?php echo $navigation->gettitle(); ?></a>
 
                             <div id="dropdown<?php echo $navigation->getid();?>"
-                            class="dropdown-menu dropdown-menu-xl rounded-bottom delimiter-top p-4 bg-dark-light">
-                            <div class="row">
-                            <div class="col-sm-6">
+                            class="dropdown-menu dropdown-menu-xl delimiter-top p-4 bg-dark-light">
+                            
 
 
                               <?php
@@ -128,6 +128,7 @@ if ($menus) {
                                 //split in two
                                 //divide between first and second column
 
+   
                                 $headers = $navigationManager->getHeadersNavigation($value1, false);
 
                                 if ($debug){
@@ -137,7 +138,44 @@ if ($menus) {
 
                                 }
 
+                                $headerCounter = 1;
+
                                 foreach ($headers as $key2=>$value2){
+
+                                    //count headers
+
+                                    $count = count($headers);
+
+                                    
+
+                                    $halfCount = $count / 2;
+                                    $halfCount = round($halfCount, 0, PHP_ROUND_HALF_UP) + 1;
+
+                                    if ($headerCounter == 1){
+
+                                        echo '<h4 mb-2>' . $navigation->gettitle() . '</h4>';
+                                        echo '<div class="row">';
+                                        
+                                        echo '<div class="col-sm-6">';
+                                        //first time
+                                    }
+
+                                    if ($headerCounter == $halfCount){
+
+                                        //left side, do only once
+                                        echo '</div>';
+                                        echo '<div class="col-sm-6">';
+
+                                    }
+
+                                    if ($debug){
+
+                                        echo 'total header count is ' . $count;
+                                        echo '<br/>halfCount is ' . $halfCount;
+                                        echo '<br/>header counter is at' . $headerCounter;
+                                    }
+
+                                    
 
                                   $headings->Load_from_key($value2);
                                   
@@ -145,7 +183,7 @@ if ($menus) {
 
 
 
-                                  <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);"><?php echo $headings->getname(); ?></a>
+                                  <a href="#" style="color: rgb(238, 194, 120);"><?php echo $headings->getname(); ?></a>
 <?php
                                   $pagesDisplay = $navigationManager->getPagesHeadings($value2, false);
 
@@ -161,12 +199,25 @@ if ($menus) {
 
 
                                     <?php
+
+                                    
+
                                 }
 ?>
 
 
                                 <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);"></a>
+
+                                
 <?php
+
+                                    if ($headerCounter == $count){
+
+                                        echo '</div>';
+                                        echo '</div>';
+                                    }
+
+                                    $headerCounter++;
 
                                 }
 
@@ -182,13 +233,10 @@ if ($menus) {
 
 
 
-                                </div>
-
-
-                            </div>
+                               
                         </div>
 
-                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-divider my-0"></div>
 
 
               

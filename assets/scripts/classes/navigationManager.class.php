@@ -62,7 +62,7 @@ Class navigationManager {
         a.`id`
         FROM `menu` as a
         WHERE `active` = '1'
-        ORDER BY `order` ASC";
+        ORDER BY CAST(`order` AS SIGNED) ASC";
     
     //echo $q . '<br><br>';
     
@@ -111,7 +111,7 @@ Class navigationManager {
         a.`id`
         FROM `navigation` as a
         WHERE `menu_id` = '$menu_id' AND `active` = '1'
-        ORDER BY `order` ASC";
+        ORDER BY CAST(`order` AS SIGNED) ASC";
     
         if ($debug){
 
@@ -166,7 +166,7 @@ Class navigationManager {
         a.`id`
         FROM `headings` as a
         WHERE `navigation_id` = '$navigation_id' AND `active` = '1'
-        ORDER BY `order` ASC";
+        ORDER BY CAST(`order` AS SIGNED) ASC";
     
         if ($debug){
 
@@ -220,7 +220,7 @@ Class navigationManager {
         a.`id`
         FROM `pages` as a
         WHERE `headings_id` = '$headings_id' AND `active` = '1'
-        ORDER BY `order` ASC";
+        ORDER BY CAST(`order` AS SIGNED) ASC";
     
         if ($debug){
 
