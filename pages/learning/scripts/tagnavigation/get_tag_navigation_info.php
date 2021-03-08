@@ -41,6 +41,15 @@ $assets_paid = new assets_paid;
 require_once(BASE_URI . '/assets/scripts/classes/subscriptions.class.php');
 $subscription = new subscriptions;
 
+require_once(BASE_URI . '/assets/scripts/classes/pages.class.php');
+$pages = new pages;
+
+require_once(BASE_URI . '/pages/learning/classes/navigator.class.php');
+$navigator = new navigator;
+
+require_once(BASE_URI . '/pages/learning/classes/usersMetricsManager.class.php');
+$usersMetricsManager = new usersMetricsManager;
+
 $data = json_decode(file_get_contents('php://input'), true);
 
 
@@ -120,11 +129,19 @@ if (isset($browsing) && isset($browsing_id) && isset($videoid)){
 
             $taggedVideoArray = $assetManager->getVideosTag($selectedTag);
 
-            if ($debug){
+            //IF THIS IS FALSE THE TAG IS NOT IN THE ARRAY AND SO THE USER IS OUTSIDE THE BROWSING RANGE
+
+            
+
+
+            /* if ($debug){
 
                 print_r($taggedVideoArray);
+                echo  'last viewed asset page was';
+                echo $usersMetricsManager->getLastViewedVideoAsset($userid, $assetManager->returnVideosAsset($browsing_id), true);
 
-            }
+
+            } */
 
             //then use array intersect to remove videos which are not tagged like this
 
@@ -289,22 +306,187 @@ if (isset($browsing) && isset($browsing_id) && isset($videoid)){
         echo 'browsing 5';
     }
 
+
+    //actually get from the page
+
+    //get tags required
+
+
+
+    $taggedVideoArray = $assetManager->getVideosTag($selectedTag);
+
+            if ($debug){
+
+                echo 'videos tagged with ' . $selectedTag;
+                print_r($taggedVideoArray);
+
+            }
+
+    //check browsing id
+
+    if (isset($browsing_id)){
+
+        //check it is valid
+
+        if ($pages->Return_row($browsing_id)){
+
+            $pages->Load_from_key($browsing_id);
+
+
+          
+        
+           //IF COMPLEX USE THE TAG CATEGORIES
+
+           if ($pages->getsimple() == '0'){
+
+                //complex
+
+                if ($debug){
+
+                    echo 'page is complex';
+                }
+
+
+                $tagCategories = $assetManager->getTagsPage($browsing_id);
+
+                if ($debug){
+
+                    echo 'tag categories are';
+                    print_r($tagCategories);
+                }
+
+
+                $videosPage = $navigator->getVideosTagCategories($tagCategories);
+    
+                if ($debug){
+
+                    echo 'page videos are are';
+                    print_r($videosPage);
+                }
+
+                $videosToReturnv2 = array_intersect($videosPage, $taggedVideoArray);
+
+                    if ($debug){
+
+                        echo 'result of intersecting page videos with those tagged in this way (' . $selectedTag . ')';
+                        print_r($videosToReturnv2);
+
+                    }
+
+                    $videosToReturn = array();
+                    $x = 1;
+                    foreach ($videosToReturnv2 as $key=>$value){
+        
+                        $videosToReturn[$x] = $value;
+                        $x++;
+        
+        
+        
+                    }
+
+                    if ($debug){
+
+                        echo 'videostoreturn (refactoring videostoreturnv2) (' . $selectedTag . ')';
+                        print_r($videosToReturn);
+
+                    }
+
+
+
+            }elseif ($pages->getsimple() == '1'){
+
+                if ($debug){
+
+                    echo 'page is simple';
+                }
+
+
+                 $videosPage = $assetManager->getVideosPage($browsing_id, false);
+
+
+                 if ($debug){
+
+                    echo 'page videos are are';
+                    print_r($videosPage);
+                }
+
+                $videosToReturnv2 = array_intersect($videosPage, $taggedVideoArray);
+
+                    if ($debug){
+
+                        echo 'videostoreturnv2 (result of intersecting page videos with those tagged in this way) (' . $selectedTag . ')';
+                        print_r($videosToReturnv2);
+
+                    }
+
+                    $videosToReturn = array();
+                    $x = 1;
+                    foreach ($videosToReturnv2 as $key=>$value){
+        
+                        $videosToReturn[$x] = $value;
+                        $x++;
+        
+        
+        
+                    }
+
+                    if ($debug){
+
+                        echo 'videostoreturn (refactoring videostoreturnv2) (' . $selectedTag . ')';
+                        print_r($videosToReturn);
+
+                    }
+
+
+
+           }else{
+
+            if ($debug){
+        
+                echo 'unable to determine pagetype';
+        
+                    
+             }
+
+           }
+        
+           // IF SIMPLE
+
+
+        }else{
+
+            if ($debug){
+
+                echo 'Can\'t get browsing id';
+                
+            }
+        }
+
+    }
+
+    //the page id
+
+
+
+
+
+
     //check video access
 
    //get all videos from current supercategory
 
    //get supercategory from video
 
-   $superCategory = $assetManager->getVideoSuperCategory($videoid, true);
+   //$superCategory = $assetManager->getVideoSuperCategory($videoid, true);
 
-   if ($debug){
+   /* if ($debug){
 
         echo 'supercategory is ' . $superCategory;
 
             
-   }
+   } */
 
-   if (!$superCategory){
+   /* if (!$superCategory){
 
     //no supercategory specified for video
     //get all videos
@@ -317,6 +499,8 @@ if (isset($browsing) && isset($browsing_id) && isset($videoid)){
 
    //set supercategory
 
+
+
    $videosSuperCategory = $assetManager->getVideosSelectedTagSuperCategory($selectedTag, $superCategory, false);
 
    if ($debug){
@@ -325,15 +509,19 @@ if (isset($browsing) && isset($browsing_id) && isset($videoid)){
 
    error_reporting(E_ALL);
 
-   }
+   } */
 
-    $accessibleVideos = $assetManager->determineVideoAccessNonAsset($videosSuperCategory, $isSuperuser, $userid, $debug=false);
+   //$debug = false;
+
+    $accessibleVideos = $assetManager->determineVideoAccessNonAsset($videosToReturn, $isSuperuser, $userid, $debug=false);
 
     //consider part of a supercategory
 
     if ($debug){
 
-    print_r($accessibleVideos);
+        echo 'Accessible videos are';
+
+        print_r($accessibleVideos);
 
     }
 
@@ -424,7 +612,7 @@ if (isset($browsing) && isset($browsing_id) && isset($videoid)){
 
             $returnArray = [
 
-                'postion' => $position+1,
+                'postion' => $position,
                 'numberOfVideos' => $numberOfVideos,
                 'nextVideo' => $nextVideo,
                 'previousVideo' => $previousVideo,
@@ -538,6 +726,25 @@ if (isset($browsing) && isset($browsing_id) && isset($videoid)){
             
                         echo "This video is number $position of $numberOfVideos";
                     }
+
+                    //check if video is in original browsing array
+
+                    $original_asset = array_search($videoid, $browsing_array);
+
+                    if ($original_asset > -1){
+
+                        //detected in original asset array
+
+                        $outside_asset = false;
+
+                    }else{
+
+                        $outside_asset = true;
+
+                    }
+
+
+
         
                 }else{
         
@@ -564,6 +771,7 @@ if (isset($browsing) && isset($browsing_id) && isset($videoid)){
                 'previousVideo' => $previousVideo,
                 'firstVideo' => $firstVideo,
                 'lastVideo' => $lastVideo,
+                'outside_asset' => $outside_asset,
 
 
             ];

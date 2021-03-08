@@ -328,7 +328,7 @@ class general {
 			foreach ($data as $k=>$v){
 
 				if ($v){
-					echo '<tr class="datarow">';
+					echo '<tr class="datarow text-center">';
 
 					foreach($v as $key=>$value){
 

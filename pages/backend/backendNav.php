@@ -77,6 +77,23 @@
                     
                   </div>
                 </div>
+                <?php if ($currentUserLevel < 2){?>
+
+                <div class="btn-group" role="group">
+                  <button id="btn-group-boards" type="button" class="btn btn-neutral btn-icon" data-toggle="dropdown" data-offset="0,8" aria-haspopup="true" aria-expanded="false">
+                    <span class="btn-inner--icon"><i class="fas fa-chart-line"></i></span>
+                    <span class="btn-inner--text d-none d-sm-inline-block">Navigation</span>
+                  </button>
+
+
+                  <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow" aria-labelledby="btn-group-boards">
+                  <span class="dropdown-header">Navigation Managers</span>
+                  <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/test_backend.php?table=pages">Edit Site Structure</a>
+                    
+                  </div>
+                </div>
+
+                <?php }?>
                 <div class="btn-group" role="group">
                   <button id="btn-group-settings" type="button" class="btn btn-neutral btn-icon" data-toggle="dropdown" data-offset="0,8" aria-haspopup="true" aria-expanded="false">
                     <span class="btn-inner--icon"><i class="fas fa-sliders-h"></i></span>

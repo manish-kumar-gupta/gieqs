@@ -27,6 +27,8 @@
 
       $usersViewsVideo = new usersViewsVideo;
 
+      $usersMetricsManager = new usersMetricsManager;
+
       $usersSocial = new usersSocial;
 
       $usersLikeVideo = new usersLikeVideo;
@@ -828,14 +830,62 @@
     <?php
 
 //echo $userid; echo $id; echo 'hello';
+
+$current_date = new DateTime('now', new DateTimeZone('UTC'));
+
+$current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s');
+
+
                         if ($usersViewsVideo->matchRecord2way($userid, $id) === false){  
                             
                             //if not recorded already
 
-                            echo $userid; echo $id;
+                            //echo $userid; echo $id;
                 $usersViewsVideo->setuser_id($userid);
                 $usersViewsVideo->setvideo_id($id);
+
+
+                $usersViewsVideo->setfirstView($current_date_sqltimestamp);
+                $usersViewsVideo->setrecentView($current_date_sqltimestamp);
+
+
                 $usersViewsVideo->prepareStatementPDO();
+
+            
+
+                
+            }elseif ($usersViewsVideo->matchRecord2way($userid, $id) === true) {
+
+                //already viewed
+                //update most recent view time
+                //increment view counter
+                //get the key
+
+                $key = $usersMetricsManager->getKeyUserViewsVideoMatch($userid, $id);
+
+                //$debug = true;
+
+                if ($debug){
+
+                    echo $key . 'is key';
+                }
+
+                $usersViewsVideo->Load_from_key($key);
+
+
+                if ($debug){
+
+                    echo $usersViewsVideo->getid();
+                    echo $current_date_sqltimestamp;
+                }
+
+
+                $usersViewsVideo->setrecentView($current_date_sqltimestamp);
+
+                echo $usersViewsVideo->prepareStatementPDOUpdate();
+
+
+
             }
 
 ?>
@@ -942,7 +992,7 @@
 </div>
                 </nav>
                 <div class="row" id="videoTitleTour" style="margin-right:15px; margin-left:15px;">
-                    <span
+                    <spa
                         class="h3 mb-0 text-white d-block w-lg-75 w-xl-75"><?php echo $general->getVideoTitle($id)?></span>
                 </div>
                 <div class="row" style="margin-right:15px; margin-left:15px;">
@@ -1507,6 +1557,15 @@ chapterData
     <script src=<?php echo BASE_URL . "/pages/learning/includes/endowiki-player.js"?>></script>
     <script>
     var signup = $('#signup').text();
+
+    var browsingBeforeExpand = readCookie('browsing');
+
+    if (browsingBeforeExpand != '99'){
+    createCookie('browsing_last', browsingBeforeExpand, '2');
+    }
+
+    var browsing_idBeforeExpand = readCookie('browsing_id');
+    var browsing_arrayBeforeExpand = $('#browsing_array').text();
 
     function submitPreRegisterForm() {
 
@@ -2173,6 +2232,38 @@ chapterData
 
     });
 
+    //new cookie functions
+
+    function createCookie(name,value,days) {
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 *1000));
+        var expires = "; expires=" + date.toGMTString();
+    } else {
+        var expires = "";
+    }
+    document.cookie = name + "=" + value + expires + "; path=/";
+    }
+
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0;i < ca.length;i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') {
+                c = c.substring(1,c.length);
+            }
+            if (c.indexOf(nameEQ) == 0) {
+                return c.substring(nameEQ.length,c.length);
+            }
+        }
+        return null;
+    }
+
+    function eraseCookie(name) {
+        createCookie(name,"",-1);
+    }
+
 
 
     function submitCommentForm() {
@@ -2278,6 +2369,8 @@ chapterData
 
         $('#tagBar').removeClass('d-none');
         window.localStorage.setItem('selectedTag', selectedTag);
+        createCookie('selectedTag', selectedTag, '2');
+
 
         //get tags to parse data
 
@@ -2403,6 +2496,18 @@ chapterData
 
                 }
 
+                if (v.outside_asset === true){
+
+                    $('.expandSearch').addClass('disabled').addClass('text-muted');
+
+
+                }else{
+
+                    $('.expandSearch').removeClass('disabled').removeClass('text-muted');
+
+
+                }
+
                 if (v.lastVideo === true){
 
                 $('.nextTagNav').addClass('disabled');
@@ -2418,6 +2523,8 @@ chapterData
 
                })
 
+               refreshVideoBar();
+
 
                 //$('#notification-services').delay('1000').addClass('is-valid');
 
@@ -2428,6 +2535,8 @@ chapterData
             //$(document).find('.Thursday').hide();
            
         })
+
+        
 
         //  context (as video bar)
         //  id of context  
@@ -2448,13 +2557,94 @@ chapterData
 
     }
 
+    function refreshVideoBar(){
+
+        //gets video bar again from AJAX to reflect most recent changes
+    
+        var dataToSend = {
+
+        identifier: 'refresh',
+        videoid : videoPassed,
+
+
+        }
+
+        const jsonString2 = JSON.stringify(dataToSend);
+
+        //const jsonString = JSON.stringify(dataToSend);
+        //console.log(jsonString);
+        //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
+
+        var request2 = $.ajax({
+        beforeSend: function() {
+
+
+        },
+        url: siteRoot + "assets/videoNav.php",
+        type: "POST",
+        contentType: "application/json",
+        data: jsonString2,
+        
+        });
+
+
+
+        request2.done(function(data) {
+        // alert( "success" );
+        if (data) {
+            //show green tick
+            //console.log(data);
+
+            $('#videoBar').replaceWith(data);
+
+
+            //$('#notification-services').delay('1000').addClass('is-valid');
+
+
+
+
+        }
+        //$(document).find('.Thursday').hide();
+        //$(icon).prop("disabled", false);
+        })
+
+
+    }
+
+    function updateVideoBar(){
+
+        //unused
+
+        var restricted = window.localStorage.getItem('restricted');
+
+        if (restricted == 'false'){
+
+            //alter the video bar
+
+            refreshVideoBar();
+
+
+        }else if (restricted == 'true'){
+
+
+
+        }
+
+    }
+
     function checkTagFiltering(){
+
+        // check tag filtering
 
         var overallTagAvailable = window.localStorage.getItem('selectedTag');
 
         if (overallTagAvailable && overallTagAvailable != 'null'){
 
             showTagBar(overallTagAvailable);
+
+            //and remove the video text if restricted == false
+
+            
 
             waitForFinalEvent(function(){
       //alert('Resize...');
@@ -2464,7 +2654,110 @@ chapterData
 
             
 
+        }else{
+
+            
+            //check if there is a recent chapter and jump to it, does nothing if no recent chapter
+
+            waitForFinalEvent(function(){
+      //alert('Resize...');
+      viewedVideoRecentChapter();
+
+      showAlert('Started from where you finished last time. To <a href=\"javascript:jumpToTime(0);\">restart click here</a>.')
+
+    }, 200, "wait for most recent Video");
+
+
+            
+
+            
+
+            
+
+            //has user viewed video before, if so which chapter, if not false
+            
+
+
         }
+
+        
+
+    }
+
+    function viewedVideoRecentChapter (){
+
+        var dataToSend = {
+
+            videoid : videoPassed,
+
+        }
+
+        const jsonString2 = JSON.stringify(dataToSend);
+
+        //const jsonString = JSON.stringify(dataToSend);
+        //console.log(jsonString);
+        //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
+
+        var request2 = $.ajax({
+            
+                
+            beforeSend: function() {
+
+
+        },
+        url: siteRoot + "scripts/user_metrics/getRecentChapter.php",
+        type: "POST",
+        contentType: "application/json",
+        data: jsonString2,
+
+        });
+
+        request2.done(function(data){
+
+            if (data){
+
+                var recentChapter = $.parseJSON(data);
+
+                console.log(recentChapter);
+
+                if (recentChapter != false){
+
+                var requiredReturn = null;
+
+                $(videoChapterData).each(function (i, val) {
+
+                    console.log(val.chapterid);
+                    console.log(recentChapter.recentChapter);
+                    if (val.chapterid == recentChapter.recentChapter) {
+
+                        //console.log(i);
+                        //console.log(val);
+                        //console.log(recentChapter.recentChapter);
+                        requiredReturn = val.timeFrom;
+
+                    }
+
+
+
+                })
+
+                console.log('required return is ' + requiredReturn);
+
+                requiredReturn = parseInt(requiredReturn);
+
+                 
+
+                if (requiredReturn != null){
+                    jumpToTime(requiredReturn);
+                }
+            }
+        }
+            
+            
+        })
+
+        return request2;
+
 
     }
 
@@ -2472,6 +2765,9 @@ chapterData
 
         $('#tagBar').addClass('d-none');
         window.localStorage.setItem('selectedTag', null);
+        createCookie('selectedTag', null, '2');
+        refreshVideoBar();
+
 
 
 
@@ -2489,12 +2785,269 @@ chapterData
 
     })
 
+    function restrictTagStatusBar() {
+
+        var restricted = getCookie('restricted');
+
+        if (restricted == 'false'){
+
+            var browsing_last = getCookie('browsing_last');
+            createCookie('browsing', browsing_last, '2');
+
+            //put original page values back
+
+            $('#browsing').attr('data-browsing', browsing_last);
+            //$('#browsing_id').attr('data-browsing-id', browsing_idBeforeExpand); //need to blank these?
+            //$('#browsing_array').text(browsing_arrayBeforeExpand);
+
+            $('.expandSearch').attr('restricted', 1);
+            $('.expandSearch').text('Expand Search');
+
+            //put here
+
+            window.localStorage.setItem('restricted', "true");
+            createCookie('restricted', 'true', '2');
+
+            showTagBar();
+
+        }
+
+
+
+    }
+
+    function checkExpandedStatusTagBar () {
+
+
+        var restricted = window.localStorage.getItem('restricted');
+        console.log('restricted is ' + restricted);
+
+        //$('.expandSearch').removeClass('heartBeat');
+        //set the cookie 99
+
+        if (restricted == "false"){
+
+            console.log('Entered restricted = false loop');
+
+            $('.expandSearch').attr('restricted', 0);
+            $('.expandSearch').text('Restrict Search');
+
+
+
+        }else if (restricted == "true"){
+
+        
+            $('.expandSearch').attr('restricted', 1);
+             $('.expandSearch').text('Expand Search');
+
+            
+
+
+        }
+
+       // showTagBar(selectedTag);
+
+
+        //$('.expandSearch').addClass('heartBeat');
+
+    }
+
+    function toggleExpandedStatusTagBar (){
+
+        var restricted = window.localStorage.getItem('restricted');
+        console.log('restricted is ' + restricted);
+
+        $('.expandSearch').removeClass('heartBeat');
+        //set the cookie 99
+
+        if (restricted == "false"){
+
+            console.log('Entered restricted = false loop');
+
+
+            //put original values back
+
+            //createCookie('browsing', browsingBeforeExpand, '2');
+            //createCookie('browsing_id', browsing_idBeforeExpand, '2');
+            //createCookie('browsing_array', browsing_arrayBeforeExpand, '2');
+
+            var browsing_last = getCookie('browsing_last');
+            createCookie('browsing', browsing_last, '2');
+
+            //put original page values back
+
+            $('#browsing').attr('data-browsing', browsing_last);
+            //$('#browsing_id').attr('data-browsing-id', browsing_idBeforeExpand); //need to blank these?
+            //$('#browsing_array').text(browsing_arrayBeforeExpand);
+
+            $('.expandSearch').attr('restricted', 1);
+            $('.expandSearch').text('Expand Search');
+
+            //put here
+
+            window.localStorage.setItem('restricted', "true");
+            createCookie('restricted', 'true', '2');
+
+
+        }else if (restricted == "true"){
+
+            createCookie('browsing', '99', '2');
+
+            $('#browsing').attr('data-browsing', '99');
+
+            //$('#browsing_id').attr('data-browsing-id', ''); //need to blank these?
+
+            //$('#browsing_array').text('');
+
+
+            $('.expandSearch').attr('restricted', 0);
+             $('.expandSearch').text('Restrict Search');
+
+             window.localStorage.setItem('restricted', "false");
+             createCookie('restricted', 'false', '2');
+
+
+        }else{
+
+            //first click
+
+            $('.expandSearch').removeClass('heartBeat');
+            //set the cookie 99
+
+            createCookie('browsing', '99', '2');
+
+            //update the page references
+
+            $('#browsing').attr('data-browsing', '99');
+            //$('#browsing_id').attr('data-browsing-id', ''); //need to blank these?
+            //$('#browsing_array').text('');
+
+
+            $('.expandSearch').attr('restricted', 0);
+            $('.expandSearch').text('Restrict Search');
+            window.localStorage.setItem('restricted', "false");
+            createCookie('restricted', 'false', '2');
+
+
+
+        }
+
+
+
+    }
+
+    $(document).ready(function() {
+
+    $(document).on('click', '.expandSearch', function() {
+
+        toggleExpandedStatusTagBar();
+
+        showTagBar(selectedTag);
+
+
+        $('.expandSearch').addClass('heartBeat');
+
+        /* var restricted = window.localStorage.getItem('restricted');
+        console.log('restricted is ' + restricted);
+
+        $(this).removeClass('heartBeat');
+        //set the cookie 99
+
+        if (restricted == "false"){
+
+            console.log('Entered restricted = false loop');
+
+
+            //put original values back
+
+            createCookie('browsing', browsingBeforeExpand, '2');
+            createCookie('browsing_id', browsing_idBeforeExpand, '2');
+            createCookie('browsing_array', browsing_arrayBeforeExpand, '2');
+
+            //put original page values back
+
+            $('#browsing').attr('data-browsing', browsingBeforeExpand);
+            $('#browsing_id').attr('data-browsing-id', browsing_idBeforeExpand); //need to blank these?
+            $('#browsing_array').text(browsing_arrayBeforeExpand);
+
+            $(this).attr('restricted', 1);
+            $(this).text('Expand Search');
+
+            //put here
+
+            window.localStorage.setItem('restricted', "true");
+            createCookie('restricted', 'true', '2');
+
+
+        }else if (restricted == "true"){
+
+            createCookie('browsing', '99', '2');
+
+            $('#browsing').attr('data-browsing', '99');
+
+            //$('#browsing_id').attr('data-browsing-id', ''); //need to blank these?
+
+            //$('#browsing_array').text('');
+
+
+            $(this).attr('restricted', 0);
+             $(this).text('Restrict Search');
+
+             window.localStorage.setItem('restricted', "false");
+             createCookie('restricted', 'false', '2');
+
+
+        }else{
+
+            //first click
+
+            $(this).removeClass('heartBeat');
+            //set the cookie 99
+
+            createCookie('browsing', '99', '2');
+
+            //update the page references
+
+            $('#browsing').attr('data-browsing', '99');
+            //$('#browsing_id').attr('data-browsing-id', ''); //need to blank these?
+            //$('#browsing_array').text('');
+
+
+            $(this).attr('restricted', 0);
+            $(this).text('Restrict Search');
+            window.localStorage.setItem('restricted', "false");
+            createCookie('restricted', 'false', '2');
+
+
+
+        }
+
+        showTagBar(selectedTag);
+
+
+$(this).addClass('heartBeat'); */
+
+        
+        
+
+
+        //get the tag bar again
+
+
+    })
+
+    })
+
 
 
     $(document).ready(function() {
 
 
         checkTagFiltering();
+
+        checkExpandedStatusTagBar();
+
+        //$('.expandSearch').trigger('click');
 
         getComments();
 

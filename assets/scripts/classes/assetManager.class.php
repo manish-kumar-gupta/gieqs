@@ -2023,6 +2023,8 @@ public function video_owned_by_user ($videoid, $userid, $debug){
             echo 'This video ' . $videoid . ' is not covered by any assets';
 
         }
+
+        return null;
     }
 
     //check if user has a subscription containing any of these assetids and that it is active
@@ -2052,6 +2054,7 @@ if ($nRows > 0) {
     while($row = $result->fetch(PDO::FETCH_ASSOC)){
 
         $rowReturn[$x] = $row['id'];
+        $x++;
 
 
     }
@@ -2226,15 +2229,8 @@ public function getVideosProgramme($programmeid, $debug=false){
 
 //if so is the video contained within any programme?
 
-public function isVideoContainedWithinAnySubscribableProgramme($videoid, $debug=false){
+public function getSubscribableProgrammesArray_unified ($programmesSubscribable, $debug=false){
 
-    $programmesSubscribable = $this->returnSubscribableProgrammes();
-
-    //print_r($programmesSubscribable);
-
-    $videos = array();
-
-    if (isset($programmesSubscribable)){
 
 
         $unifiedarray = array();
@@ -2248,16 +2244,17 @@ public function isVideoContainedWithinAnySubscribableProgramme($videoid, $debug=
             $unifiedarray[$x]['programmeid'] = $programmeid;
 
             //get sessions
-            if ($debug){
-
-                print_r($programmesSubscribable);
-            }
+           
 
             $sessions = $this->programmeView->getSessionsShort($value);
 
             if ($debug){
+                echo 'sessions for programmeid ' . $programmeid .  'are';
 
+                
+        
                 print_r($sessions);
+                echo '<br/><br/>';
             }
 
             $y=0;
@@ -2266,7 +2263,6 @@ public function isVideoContainedWithinAnySubscribableProgramme($videoid, $debug=
 
                 if (isset($value2['sessionid'])){
 
-                    $videos[] = $this->programmeView->getVideoURL($value2['sessionid']);
                     $unifiedarray[$x]['videos'][$y] = $this->programmeView->getVideoURL($value2['sessionid']);
                     //$matches[]['programme_id'] = $value;
                     $y++;
@@ -2281,14 +2277,204 @@ public function isVideoContainedWithinAnySubscribableProgramme($videoid, $debug=
 
         }
 
+        
         if ($debug){
 
+            echo 'Outcome unified array is ';
+            //print_r($videos);
+            
+        
+            print_r($unifiedarray);
+            echo '<br/><br/>';
+        }
+
+        return $unifiedarray;
+
+
+    
+
+
+}
+
+public function getSubscribableProgrammesArray_videos ($programmesSubscribable, $debug=false){
+
+
+    $videos = array();
+
+
+
+        $unifiedarray = array();
+        $x = 0;
+        $y = 0;
+        foreach ($programmesSubscribable as $key=>$value){
+
+            //$value is programmeid
+
+            $programmeid = $value;
+            $unifiedarray[$x]['programmeid'] = $programmeid;
+
+            //get sessions
+           
+
+            $sessions = $this->programmeView->getSessionsShort($value);
+
+            if ($debug){
+                echo 'sessions for programmeid ' . $programmeid .  'are';
+
+                
+        
+                print_r($sessions);
+                echo '<br/><br/>';
+            }
+
+            $y=0;
+
+            foreach ($sessions as $key2=>$value2){
+
+                if (isset($value2['sessionid'])){
+
+                    $videos[] = $this->programmeView->getVideoURL($value2['sessionid']);
+                    //$matches[]['programme_id'] = $value;
+                    $y++;
+                }
+
+            }
+
+            $x++;
+
+
+           
+
+        }
+
+        
+        
+        if ($debug){
+            echo 'Outcome videos array is ';
             print_r($videos);
+            echo '<br/><br/>';
+        }
+
+        return $videos;
+
+
+    
+
+
+}
+
+public function isVideoContainedWithinAnySubscribableProgramme($videoid, $debug=false){
+
+    $programmesSubscribable = $this->returnSubscribableProgrammes();
+
+    if ($debug){
+
+        echo 'Subscribable programmes are';
+        print_r($programmesSubscribable);
+        echo '<br/>';
+
+    }
+    //print_r($programmesSubscribable);
+
+    $videos = array();
+
+    if (isset($programmesSubscribable)){
+
+        $unifiedarray = $this->getSubscribableProgrammesArray_unified($programmesSubscribable);
+        $videos = $this->getSubscribableProgrammesArray_videos($programmesSubscribable);
+
+    
+        if ($debug){
+            echo 'Outcome videos array is ';
+            print_r($videos);
+            echo '<br/><br/>';
         }
 
         if ($debug){
 
+            echo 'Outcome unified array is ';
+            //print_r($videos);
+            
+        
             print_r($unifiedarray);
+            echo '<br/><br/>';
+        }
+
+         //do they contain this video
+
+
+         if (in_array($videoid, $videos)){
+
+            
+            if ($debug){
+
+                echo 'The video is contained within a subscribable program(S)';
+            }
+
+            return $unifiedarray;
+
+
+        }else{
+
+            if ($debug){
+
+                echo 'The video is not contained within a subscribable program';
+            }
+
+            return false;
+        }
+
+    }else{
+
+        if ($debug){
+
+            echo 'No subscribable programmes';
+        }
+
+        return false;
+
+    }
+
+
+
+}
+
+public function isVideoContainedWithinAnySubscribableProgramme_old($videoid, $debug=false){
+
+    $programmesSubscribable = $this->returnSubscribableProgrammes();
+
+    if ($debug){
+
+        echo 'Subscribable programmes are';
+        print_r($programmesSubscribable);
+        echo '<br/>';
+
+    }
+    //print_r($programmesSubscribable);
+
+    $videos = array();
+
+    if (isset($programmesSubscribable)){
+
+
+        $unifiedarray = $this->getSubscribableProgrammesArray_unified($programmesSubscribable);
+        $videos = $this->getSubscribableProgrammesArray_videos($programmesSubscribable);
+       
+
+        if ($debug){
+            echo 'Outcome videos array is ';
+            print_r($videos);
+            echo '<br/><br/>';
+        }
+
+        if ($debug){
+
+            echo 'Outcome unified array is ';
+            //print_r($videos);
+            
+        
+            print_r($unifiedarray);
+            echo '<br/><br/>';
         }
 
          //do they contain this video
@@ -3132,6 +3318,45 @@ public function returnVideoDenominatorSelect2()
 
 
         }
+
+        public function getSuperCategoryName($supercategory){
+
+			
+			$q = "SELECT `superCategory_t` from `values` WHERE `superCategory` = '$supercategory'";
+				//$q = "SELECT `superCategory` FROM `tagCategories` WHERE `id` = $id";
+		
+                //echo $q;
+                
+                $x = 0;
+                $tagCategoryName = array();
+		
+                $result = $this->connection->RunQuery($q);
+
+                $nRows = $result->rowCount();
+
+                
+                if ($nRows > 0){
+		
+					
+                    while($row = $result->fetch(PDO::FETCH_ASSOC)){
+						
+						$name = $row['superCategory_t'];
+						
+						
+						
+						
+					}
+				
+					return $name;
+				}else{
+					
+					return null;
+				}
+			
+
+
+
+        }
         
         public function getCourses($debug=false){
 
@@ -3197,7 +3422,8 @@ public function returnVideoDenominatorSelect2()
             2 - congress
             3 - course
             4 - video collection
-            5 - superCategory
+            5 - page
+            6 - single video
 
             */
         /* Takes an array of videos and variables describing the context to return an array of allowed videos */
@@ -3382,6 +3608,258 @@ public function returnVideoDenominatorSelect2()
 
         }
 
+        public function determineVideoAccess ($videoArray, $superuser, $userid, $debug=false){
+
+            //determine the context
+
+            //returns array of videos
+
+
+
+                //use all approach to browsing the site
+
+                if ($superuser == '0'){
+
+                    //GO THROUGH THE VIDEOS AND REMOVE ANY THAT THE USER HAS NO ACCESS TO
+
+                    if ($debug){
+                    
+                        echo 'user id ' . $userid . ' is  not a superuser';
+                        echo '<br/>checking videoArray';
+                        print_r($videoArray);
+                        echo '<br/><br/>';
+                      
+
+            
+                   }
+                    
+                    foreach ($videoArray as $key=>$value){
+                    
+                    
+                        //does it require subscription?
+                    
+                        $array_key = $key;
+
+                        //is it an asset and contained withiin
+
+                        $access4 = $this->video_owned_by_user($value, $userid, $debug); //if true access granted //if false check further
+
+                        if ($access4 === true){
+
+                            //grant access
+
+                            if ($debug){
+                    
+                                echo 'is an asset and user has access, so access granted';
+                                echo '<br/><br/>';
+                              
+        
+                    
+                           }
+                           continue;
+
+                        }elseif ($access4 === false){
+
+                            //deny access since this is an asset with no access
+
+                            if ($debug){
+                    
+                                echo 'is an asset and user has NO access, therefore access denied';
+                                echo '<br/><br/>';
+                            
+        
+                    
+                           }
+                           unset($videoArray[$key]);
+                           continue;
+
+                        }elseif ($access4 === null){
+
+                            if ($debug){
+                    
+                                echo 'is NOT an asset';
+                                echo '<br/><br/>';
+                              
+        
+                    
+                           }
+                    
+                        //check there is no access via a programme
+                    
+                        $access3 = $this->checkVideoProgrammeAspect($value, $userid, $debug);
+                    
+                        if ($access3 === false){ //contained within a programme and no access to this programme
+                    
+                    
+                            if ($debug){
+                    
+                                echo 'user id ' . $userid . ' has no access to video id ' . $value . ' via a programme';
+                                echo 'now checking access via videoset';
+                    
+                           }
+                    
+                           $access = $this->video_requires_subscription($value, $debug);
+                    
+                            if ($access){ //requires subscription via videoset (is in a videoset)
+                    
+                    
+                                $access2 = $this->video_owned_by_user($value, $userid, $debug);
+                    
+                                if ($access2 === false){ //in videoset, not owned by user
+                    
+                                    //remove this video from the array
+                                    unset($videoArray[$key]);
+                                    if ($debug){
+                    
+                                        echo 'user id ' . $userid . ' has no access to video id ' . $value;
+                    
+                                    }
+                    
+                    
+                                }else{
+                    
+                                    if ($debug){
+                    
+                                        echo 'user id ' . $userid . ' has access to video id ' . $value;
+                    
+                                    }
+                    
+                                    
+                                    //user has access to this video via videoset.  despite no access via programme grant
+                                }
+                    
+                            }else{ //is not in a videoset (but is contained within a programme)
+                    
+                                if ($debug){
+                    
+                                    echo 'video id ' . $value . ' requires a programme subscription and is not covered by a videoset';
+                                    echo 'video id ' . $value . ' removed from array';
+                    
+                                }
+                    
+                                unset($videoArray[$key]);
+                    
+                    
+                            }
+                    
+                    
+                    
+                        }elseif ($access3 === true) {
+                    
+                            if ($debug){
+                    
+                                echo 'user id ' . $userid . ' has access to video id ' . $value . ' via a programme';
+                                echo 'access granted';
+                    
+                           }
+                    
+                           
+                    
+                        }else{
+                    
+                            //not contained within a programme
+                            //check if contained within a videoset
+                            $access = $this->video_requires_subscription($value, $debug);
+                    
+                            if ($access){ //requires subscription via videoset (is in a videoset)
+                    
+                    
+                                $access2 = $this->video_owned_by_user($value, $userid, $debug);
+                    
+                                if ($access2 === false){ //in videoset, not owned by user
+                    
+                                    //remove this video from the array
+                                    unset($videoArray[$key]);
+                                    if ($debug){
+                    
+                                        echo 'user id ' . $userid . ' has no access to video id ' . $value;
+                    
+                                    }
+                    
+                    
+                                }else{
+                    
+                                    if ($debug){
+                    
+                                        echo 'user id ' . $userid . ' has access to video id ' . $value;
+                    
+                                    }
+                    
+                                    
+                                    //user has access to this video via videoset.  despite no access via programme grant
+                                }
+                    
+                            }else{
+                    
+                                //not in programme or videoset
+                                
+                    
+                                if ($debug){
+                    
+                                    echo 'video ' . $value . ' is freely available';
+                    
+                                    echo 'user id ' . $userid . ' has access to video id ' . $value;
+                    
+                                }
+                    
+                            }
+                    
+                        }
+
+                    
+                    
+                        
+                    
+                        //test user access
+                    
+                    
+                    
+                     } //end if null
+
+                     if ($debug){
+
+
+                        echo '<br/><br/><br/>';
+                     }
+                    
+                    }
+                    }else{
+                    
+                        if ($debug){
+                    
+                            echo 'all videos available as superuser';
+                        }
+
+
+
+                    }
+
+                    if ($debug){
+                    
+                        echo '<br/><br/><br/>';
+
+                        echo 'final array was';
+                        print_r($videoArray);
+                        echo '<br/><br/><br/>';
+                    }
+
+                    return $videoArray;
+
+            
+            //determine what is in the two array inputs from getVideos and getNavv2, if same fields ok if not make same
+
+            //if $browsing is an asset
+
+            //then easy to check access to the whole asset
+
+            // then re
+
+            
+
+
+
+        }
+
         public function getVideosTag($tagid){
 
             $q = "SELECT a.`id`
@@ -3390,6 +3868,105 @@ public function returnVideoDenominatorSelect2()
             INNER JOIN `chapterTag` as c ON b.`id` = c.`chapter_id` 
             INNER JOIN `tags` as d ON d.`id` = c.`tags_id` 
             WHERE d.`id` = $tagid
+            GROUP BY a.`id` ORDER BY a.`name` ASC";
+                
+
+            //echo $q;
+                //$q = "SELECT b.`image_id`, c.`url`, c.`name`, c.`type`, e.`tagName`, d.`id` as imagesTagid, d.`tags_id` FROM `imageSet` as a INNER JOIN `imageImageSet` as b ON a.`id` = b.`imageSet_id` INNER JOIN `images` as c on b.`image_id` = c.`id` INNER JOIN `imagesTag` as d ON c.`id` = d.`images_id` INNER JOIN `tags` as e ON d.`tags_id` = e.`id` WHERE a.`id` = "+idPassed;
+                
+                
+              
+
+                $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                    
+        
+                    $rowReturn[$x] = $row['id'];
+                    $x++;
+ 
+
+                    
+        
+        
+                }
+                return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+    
+    
+        }
+
+        public function getVideosTagCategory($tagCategory_id){
+
+            $q = "SELECT a.`id`
+            FROM `video` as a 
+            INNER JOIN `chapter` as b ON a.`id` = b.`video_id` 
+            INNER JOIN `chapterTag` as c ON b.`id` = c.`chapter_id` 
+            INNER JOIN `tags` as d ON d.`id` = c.`tags_id`
+            INNER JOIN `tagCategories` as e on d.`tagCategories_id` = e.`id`
+            WHERE e.`id` = '$tagCategory_id'
+            GROUP BY a.`id` ORDER BY a.`name` ASC";
+                
+
+            //echo $q;
+                //$q = "SELECT b.`image_id`, c.`url`, c.`name`, c.`type`, e.`tagName`, d.`id` as imagesTagid, d.`tags_id` FROM `imageSet` as a INNER JOIN `imageImageSet` as b ON a.`id` = b.`imageSet_id` INNER JOIN `images` as c on b.`image_id` = c.`id` INNER JOIN `imagesTag` as d ON c.`id` = d.`images_id` INNER JOIN `tags` as e ON d.`tags_id` = e.`id` WHERE a.`id` = "+idPassed;
+                
+                
+              
+
+                $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                    
+        
+                    $rowReturn[$x] = $row['id'];
+                    $x++;
+ 
+
+                    
+        
+        
+                }
+                return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+    
+    
+        }
+
+
+        public function getActiveVideosTagCategory($tagCategory_id){
+
+            $q = "SELECT a.`id`
+            FROM `video` as a 
+            INNER JOIN `chapter` as b ON a.`id` = b.`video_id` 
+            INNER JOIN `chapterTag` as c ON b.`id` = c.`chapter_id` 
+            INNER JOIN `tags` as d ON d.`id` = c.`tags_id`
+            INNER JOIN `tagCategories` as e on d.`tagCategories_id` = e.`id`
+            WHERE (e.`id` = '$tagCategory_id') AND (a.`active` = '1' OR a.`active` = '3')
             GROUP BY a.`id` ORDER BY a.`name` ASC";
                 
 
@@ -3563,6 +4140,151 @@ if ($debug){
                 return false;
             }
 
+        }
+
+
+        public function getTagsPage($pageid, $debug=false){
+
+            $q = "SELECT a.`tagCategories_id`
+            FROM `pagesTagCategory` as a 
+            WHERE a.`pages_id` = $pageid
+            ORDER BY a.`tagCategories_id` ASC";
+                
+if ($debug){
+            echo $q;
+
+}
+                //$q = "SELECT b.`image_id`, c.`url`, c.`name`, c.`type`, e.`tagName`, d.`id` as imagesTagid, d.`tags_id` FROM `imageSet` as a INNER JOIN `imageImageSet` as b ON a.`id` = b.`imageSet_id` INNER JOIN `images` as c on b.`image_id` = c.`id` INNER JOIN `imagesTag` as d ON c.`id` = d.`images_id` INNER JOIN `tags` as e ON d.`tags_id` = e.`id` WHERE a.`id` = "+idPassed;
+                
+                
+              
+
+                $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                    
+        
+                    $rowReturn[$x] = $row['tagCategories_id'];
+                    $x++;
+ 
+
+                    
+        
+        
+                }
+                return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+    
+    
+        }
+
+        public function getVideosPage($pageid, $debug=false){
+
+            $q = "SELECT a.`video_id`
+            FROM `pagesVideo` as a 
+            WHERE a.`pages_id` = $pageid
+            ORDER BY CAST(a.`page_order` AS SIGNED) ASC";
+                
+if ($debug){
+            echo $q;
+
+}
+                //$q = "SELECT b.`image_id`, c.`url`, c.`name`, c.`type`, e.`tagName`, d.`id` as imagesTagid, d.`tags_id` FROM `imageSet` as a INNER JOIN `imageImageSet` as b ON a.`id` = b.`imageSet_id` INNER JOIN `images` as c on b.`image_id` = c.`id` INNER JOIN `imagesTag` as d ON c.`id` = d.`images_id` INNER JOIN `tags` as e ON d.`tags_id` = e.`id` WHERE a.`id` = "+idPassed;
+                
+                
+              
+
+                $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                    
+        
+                    $rowReturn[$x] = $row['video_id'];
+                    $x++;
+ 
+
+                    
+        
+        
+                }
+                return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+    
+    
+        }
+
+
+        public function getPageType($pageid, $debug=false){
+
+            $q = "SELECT a.`simple`
+            FROM `pages` as a 
+            WHERE a.`id` = $pageid
+            LIMIT 1";
+                
+            if ($debug){
+                
+                echo $q;
+
+            }
+        
+            //$q = "SELECT b.`image_id`, c.`url`, c.`name`, c.`type`, e.`tagName`, d.`id` as imagesTagid, d.`tags_id` FROM `imageSet` as a INNER JOIN `imageImageSet` as b ON a.`id` = b.`imageSet_id` INNER JOIN `images` as c on b.`image_id` = c.`id` INNER JOIN `imagesTag` as d ON c.`id` = d.`images_id` INNER JOIN `tags` as e ON d.`tags_id` = e.`id` WHERE a.`id` = "+idPassed;
+                
+                
+              
+
+                $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                    
+        
+                    $rowReturn = $row['id'];
+                    //$x++;
+ 
+
+                    
+        
+        
+                }
+                return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+    
+    
         }
 
         

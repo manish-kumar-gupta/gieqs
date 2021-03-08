@@ -17,10 +17,53 @@
 
       $requiredUserLevel = 6;
 
+      //blank previous browsing
+
+      setcookie('browsing', null, time() + (365 * 24 * 60 * 60), '/');
+
+      setcookie('browsing_id', null, time() + (365 * 24 * 60 * 60), '/');
+
+      setcookie('browsing_array', null, time() + (365 * 24 * 60 * 60), '/');
+
+
 
       require BASE_URI . '/pages/learning/includes/head.php';
 
       $general = new general;
+
+      //require_once(BASE_URI . '/assets/scripts/classes/users.class.php');
+      $users = new users;
+      $navigator = new navigator;
+
+      function time_elapsed_string($datetime, $full = false) {
+        $now = new DateTime('now', new DateTimeZone('UTC'));     
+        $ago = new DateTime($datetime, new DateTimeZone('UTC'));
+        $diff = $now->diff($ago);
+    
+        $diff->w = floor($diff->d / 7);
+        $diff->d -= $diff->w * 7;
+    
+        $string = array(
+            'y' => 'year',
+            'm' => 'month',
+            'w' => 'week',
+            'd' => 'day',
+            'h' => 'hour',
+            'i' => 'minute',
+            's' => 'second',
+        );
+        foreach ($string as $k => &$v) {
+            if ($diff->$k) {
+                $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
+            } else {
+                unset($string[$k]);
+            }
+        }
+    
+        if (!$full) $string = array_slice($string, 0, 1);
+        return $string ? implode(', ', $string) . ' ago' : 'just now';
+    }
+
 
       ?>
 
@@ -30,85 +73,212 @@
     <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
 
-    
+
 
     <style>
-        .gieqsGold {
+    .gieqsGold {
 
-            color: rgb(238, 195, 120);
-
-
-        }
-
-        .tagButton {
-
-            cursor: pointer;
-
-        }
-
-        .tagCard {
-
-background-color: #1b385d75; 
+        color: rgb(238, 195, 120);
 
 
+    }
 
-}
+    .tagButton {
 
-.tagCardHeader{
+        cursor: pointer;
 
-    background-color: #162e4d;
+    }
 
-}
-
-        
-
-.cursor-pointer {
-
-    cursor: pointer;
-
-}
-
-@media (min-width: 992px) {
     .tagCard {
 
-            
-left: -50vw;
-top: -20vh;
+        background-color: #1b385d75;
 
 
-}
-}
 
-@media (min-width: 1200px) {
-        #chapterSelectorDiv{
+    }
 
-            
-                
-                top:-3vh;
-            
+    .tagCardHeader {
+
+        background-color: #162e4d;
+
+    }
+
+
+
+    .cursor-pointer {
+
+        cursor: pointer;
+
+    }
+
+    @supports ((position: -webkit-sticky) or (position: sticky)) {
+
+        .sticky-top {
+            position: -webkit-sticky !important;
+            position: sticky !important;
+            z-index: 1020;
+            top: 0;
+        }
+    }
+
+
+    @media (min-width: 992px) {
+        .tagCard {
+
+
+            left: -50vw;
+            top: -20vh;
+
 
         }
-        #playerContainer{
+    }
 
-                margin-top:-20px;
+    @media (min-width: 1200px) {
+        #chapterSelectorDiv {
+
+
+
+            top: -3vh;
+
 
         }
+
+        #playerContainer {
+
+            margin-top: -20px;
+
+        }
+
         #collapseExample {
 
-            position: absolute; 
-            max-width: 50vh; 
+            position: absolute;
+            max-width: 50vh;
             z-index: 25;
         }
 
         #selectDropdown {
 
-            
+
             z-index: 25;
-            }
+        }
 
-            
+    }
 
-}
+    /*
+ * Variables
+ */
+    :root {
+        --card-padding: 24px;
+        --card-height: 480px;
+        --card-skeleton: linear-gradient(#193659 var(--card-height), transparent 0);
+        --avatar-size: 32px;
+        --avatar-position: var(--card-padding) var(--card-padding);
+        --avatar-skeleton: radial-gradient(circle 16px at center, #162e4d 99%, transparent 0);
+        --title-height: 32px;
+        --title-width: 200px;
+        --title-position: var(--card-padding) 180px;
+        --title-skeleton: linear-gradient(#162e4d var(--title-height), transparent 0);
+        --desc-line-height: 16px;
+        --desc-line-skeleton: linear-gradient(#162e4d var(--desc-line-height), transparent 0);
+        --desc-line-1-width: 230px;
+        --desc-line-1-position: var(--card-padding) 242px;
+        --desc-line-2-width: 180px;
+        --desc-line-2-position: var(--card-padding) 265px;
+        --footer-height: 40px;
+        --footer-position: 0 calc(var(--card-height) - var(--footer-height));
+        --footer-skeleton: linear-gradient(#162e4d var(--footer-height), transparent 0);
+        --blur-width: 200px;
+        --blur-size: var(--blur-width) calc(var(--card-height) - var(--footer-height));
+    }
+
+    /*
+ * Card Skeleton for Loading
+ */
+    .card-skeleton {
+        width: 280px;
+        height: var(--card-height);
+    }
+
+    .card-skeleton:empty::after {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 6px;
+        box-shadow: 0 10px 45px rgba(0, 0, 0, 0.1);
+        background-image: linear-gradient(90deg, rgba(238, 195, 120, 0) 0, rgba(238, 195, 120, 0.8) 50%, rgba(238, 195, 120, 0) 100%), var(--title-skeleton), var(--desc-line-skeleton), var(--desc-line-skeleton), var(--avatar-skeleton), var(--footer-skeleton), var(--card-skeleton);
+        background-size: var(--blur-size), var(--title-width) var(--title-height), var(--desc-line-1-width) var(--desc-line-height), var(--desc-line-2-width) var(--desc-line-height), var(--avatar-size) var(--avatar-size), 100% var(--footer-height), 100% 100%;
+        background-position: -150% 0, var(--title-position), var(--desc-line-1-position), var(--desc-line-2-position), var(--avatar-position), var(--footer-position), 0 0;
+        background-repeat: no-repeat;
+        -webkit-animation: loading 1.5s infinite;
+        animation: loading 1.5s infinite;
+    }
+
+    /*  background-image: linear-gradient(90deg, rgba(211, 211, 211, 0) 0, rgba(211, 211, 211, 0.8) 50%, rgba(211, 211, 211, 0) 100%), var(--title-skeleton), var(--desc-line-skeleton), var(--desc-line-skeleton), var(--avatar-skeleton), var(--footer-skeleton), var(--card-skeleton);
+*/
+
+    @-webkit-keyframes loading {
+        to {
+            background-position: 350% 0, var(--title-position), var(--desc-line-1-position), var(--desc-line-2-position), var(--avatar-position), var(--footer-position), 0 0;
+        }
+    }
+
+    @keyframes loading {
+        to {
+            background-position: 350% 0, var(--title-position), var(--desc-line-1-position), var(--desc-line-2-position), var(--avatar-position), var(--footer-position), 0 0;
+        }
+    }
+
+    .demo {
+        margin: auto;
+        width: 300px;
+        height: 700px;
+        /* change height to see repeat-y behavior */
+
+        background-image:
+            radial-gradient(circle 16px, white 99%, transparent 0),
+            /* layer 1: title */
+            /* white rectangle with 40px height */
+            linear-gradient(white 40px, transparent 0),
+            /* layer 0: card bg */
+            /* gray rectangle that covers whole element */
+            linear-gradient(gray 100%, transparent 0);
+
+        background-repeat: no-repeat;
+
+        background-size:
+            32px 32px,
+            /* avatar */
+            200px 40px,
+            /* title */
+            100% 100%;
+        /* card bg */
+
+        background-position:
+            24px 24px,
+            /* avatar */
+            24px 200px,
+            /* title */
+            0 0;
+        /* card bg */
+
+        animation: shine 1s infinite;
+    }
+
+    @keyframes shine {
+        to {
+            background-position:
+                350% 0,
+                200px
+                /*var(--title-position)*/
+                ,
+                var(--desc-line-1-position),
+                var(--desc-line-2-position),
+                var(--avatar-position),
+                var(--footer-position),
+                0 0
+        }
+    }
     </style>
 
 
@@ -125,10 +295,23 @@ top: -20vh;
 
         <?php require BASE_URI . '/pages/learning/includes/nav.php';?>
 
-        
+        <?php
+        $usersMetricsManager = new usersMetricsManager;
+        $usersViewsVideo = new usersViewsVideo;
+        $usersSocial = new usersSocial;
+
+        require_once(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
+        $assetManager = new assetManager;
+
+        $video_PDO = new video_PDO;
 
 
-        
+        $debug = false;
+    ?>
+
+
+
+
 
 
     </header>
@@ -147,831 +330,329 @@ top: -20vh;
                         
 		
         ?>
-        
-        <!-- load all video data -->
 
-        <body>
+    <!-- load all video data -->
 
-<div id="id" style="display:none;"><?php if ($id){echo $id;}?></div>
+    <body>
 
-<div class="main-content">
-    <!-- Header (account) -->
-    <section class="page-header bg-dark-dark d-flex align-items-end pt-8 mt-10" style="background-image: url('<?php echo BASE_URL;?>/assets/img/covers/learning/1v2.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;" data-offset-top="#header-main">
+        <div id="id" style="display:none;"><?php if ($id){echo $id;}?></div>
 
-   
-      <!-- Header container -->
-      <div class="container pt-0 pt-lg-0" >
-        <div class="row" >
-          <div class=" col-lg-12">
-            <!-- Salute + Small stats -->
-            <div class="row align-items-center mb-4">
-              <div class="col-auto mb-4 mb-md-0">
-                <span class="h2 mb-0 text-white text-bold d-block">Welcome to GIEQs Online. <?php //echo $_SESSION['firstname'] . ' ' . $_SESSION['surname']?></span>
-                <span class="text-white">Your home for evidence-based endoscopy education.</span>
-              </div>
-              <!-- video -->
-              <div class="col-auto flex-fill d-none d-xl-block">
-              <!-- <div id="videoDisplay" class="embed-responsive embed-responsive-16by9">
+        <div class="main-content">
+            <!-- Header (account) -->
+            <section class="page-header bg-dark-dark d-flex align-items-end pt-8 mt-10"
+                style="background-image: url('<?php echo BASE_URL;?>/assets/img/covers/learning/1v2.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;"
+                data-offset-top="#header-main">
+
+
+                <!-- Header container -->
+                <div class="container pt-0 pt-lg-0">
+                    <div class="row">
+                        <div class=" col-lg-12">
+                            <!-- Salute + Small stats -->
+                            <div class="row align-items-center mb-4">
+                                <div class="col-auto mb-4 mb-md-0">
+                                    <span class="h2 mb-0 text-white text-bold d-block">Welcome to GIEQs Online.
+                                        <?php //echo $_SESSION['firstname'] . ' ' . $_SESSION['surname']?></span>
+                                    <span class="text-white">Your home for evidence-based endoscopy education.</span>
+                                </div>
+                                <!-- video -->
+                                <div class="col-auto flex-fill d-none d-xl-block">
+                                    <!-- <div id="videoDisplay" class="embed-responsive embed-responsive-16by9">
                 <iframe  id='videoChapter' class="embed-responsive-item"
                     src='https://player.vimeo.com/video/398791515' allow='autoplay'
                     webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                     </div> -->
-            </div>
-            </div>
-            <!-- Account navigation -->
-           
-            
-          </div>
-        </div>
-      </div>
-    </section>
-    <?php require BASE_URI . '/pages/learning/assets/upgradeNav.php';?>
-    <section class="slice bg-section-secondary">
-      <div class="container">
-        <div class="d-flex flex-row-reverse mt-1 align-items-end">
-            <a href="<?php echo BASE_URL;?>/pages/learning/pages/account/profile.php" class="btn btn-icon btn-group-nav shadow btn-neutral mx-2">
-              <span class="btn-inner--icon"><i class="fas fa-user"></i></span>
-              <span class="btn-inner--text">My Learning Profile</span>
-            </a>
+                                </div>
+                            </div>
+                            <!-- Account navigation -->
 
-            <a href="https://vimeo.com/422871506" class="btn btn-icon btn-group-nav bg-gieqsGold shadow btn-neutral mx-2" data-fancybox>
-                <span class="btn-inner--icon text-dark"><i class="fas fa-directions"></i></span>
-                <span class="animated bounce delay-2s btn-inner--text text-dark">Show me the basics!</span>
-              </a>
-            
-        </div>
-      </section>
-      
-      <section class="slice slice-lg">
-        <div class="container">
-          <div class="row row-grid align-items-center justify-content-around">
-            <div class="col-lg-5 order-lg-2">
-              <div class="pr-md-4">
-                <h5 class="h3">NEW - Live / Virtual Hybrid Courses</h5>
-                <p class="text-muted lead my-4">The current global situation presents significant challenges for training.</p>
-                <p class="text-muted lead my-4">We have developed a COVID proof live/virtual hybrid course, initially focussed on colonoscopy and traing that will set a benchmark for distance learning in endoscopy.</p>
 
-                <a href="<?php echo BASE_URL;?>/pages/program/program_basic_colon.php" class="btn btn-sm bg-gieqsGold text-dark rounded-pill btn-icon m-2">
-                  <span class="btn-inner--icon"><i class="fas fa-binoculars"></i></span>
-                  <span class="btn-inner--text">Discover Basic Colonoscopy</span>
-                </a>
-                <a href="<?php echo BASE_URL;?>/pages/program/program_trainer_colon.php" class="btn btn-sm bg-gieqsGold text-dark rounded-pill btn-icon m-2">
-                  <span class="btn-inner--icon"><i class="fas fa-binoculars"></i></span>
-                  <span class="btn-inner--text">Discover Train the Colonoscopy Trainers</span>
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-6 order-lg-1">
-              <div class="position-relative" style="z-index: 10;">
-                <img alt="Image placeholder" src="<?php echo BASE_URL;?>/assets/img/backgrounds/trainers.png" class="img-center img-fluid">
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <hr />
-      <section class="slice slice-lg">
-        <div class="container">
-          <div class="row row-grid align-items-center justify-content-around">
-            <div class="col-lg-5 order-lg-2">
-              <div class="pr-md-4">
-                <h5 class="h3">Colonoscopy Tutor.</h5>
-                <p class="text-muted lead my-4">Ever wonder why some colonoscopies are difficult?  Some impossible? Why some patients experience significant discomfort whereas others don't?  Why removing small polyps in the right colon is often difficult?</p>
-                <p class="text-muted lead my-4">It turns out that with some understanding of colonoscopy theory and multiple case-based examples, many of these problems are <strong>predictable</strong>, and <strong>preventable</strong>.  Welcome to painless, rapid colon examination.  Leaving you more time for lesion detection and removal.</p>
-
-                <a href="<?php echo BASE_URL;?>/pages/learning/pages/colontutor/all.php" class="btn bg-gieqsGold text-dark rounded-pill btn-icon mt-4">
-                  <span class="btn-inner--icon"><i class="fas fa-binoculars"></i></span>
-                  <span class="btn-inner--text">Discover Colonoscopy Tutor</span>
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-6 order-lg-1">
-              <div class="position-relative" style="z-index: 10;">
-                <img alt="Image placeholder" src="<?php echo BASE_URL;?>/assets/img/learning/advertising/tagsv2.png" class="img-center img-fluid">
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <hr />
-      <section class="slice slice-lg bg-cover" style="background-image: url('<?php echo BASE_URL;?>/assets/img/polyps/sspFuji.png'); background-position: center bottom;">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="card py-5 px-4 box-shadow-3">
-                <div class="card-body">
-                  <h6 class="h2">
-                    <strong>Polypectomy tutor</strong>.
-                  </h6>
-                  <p class="lead lh-180 mt-4">Deconstructed technique.  Based on the forthcoming ESGE endoscopic mucosal resection guideline</p>
-                  <p class="lead lh-180 mt-4">Apply an evidence based approach from cold snare polypectomy of small lesions right up to larger lesions &ge; 20mm in size</p>
-
-                  <div class="btn-container mt-5">
-                    <a href="<?php echo BASE_URL;?>/pages/learning/pages/polyptutor/all.php" class="btn bg-gieqsGold text-dark rounded-pill btn-icon mt-4">Discover Polypectomy Tutor</a>
-                  </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <hr />
+            </section>
+            <?php require BASE_URI . '/pages/learning/assets/upgradeNav.php';?>
 
-      <section class="slice slice-lg">
-        <div class="container">
-          <div class="row row-grid align-items-center justify-content-around">
-            <div class="col-lg-5 order-lg-2">
-              <div class="pr-md-4">
-                <h5 class="h3">Use tags to see multiple examples of complex ideas. Fast.  And back to back.</h5>
-                <p class="text-muted lead my-4">Real life training is ad hoc and dependent on luck and opportunity.  Why wait when all the experiences are collected on GIEQs online, and categorised for your convenience.</p>
-                <a href="" target="_blank" class="btn bg-gieqsGold text-dark rounded-pill btn-icon mt-4">
-                  <span class="btn-inner--icon"><i class="fas fa-binoculars"></i></span>
-                  <span class="btn-inner--text">Discover</span>
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-6 order-lg-1">
-              <div class="position-relative" style="z-index: 10;">
-                <img alt="Image placeholder" src="<?php echo BASE_URL;?>/assets/img/learning/advertising/tagscomplex.png" class="img-center img-fluid">
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-     
+            <?php require BASE_URI . '/pages/learning/assets/materialNav.php';?>
 
-      <section class="slice slice-lg bg-gradient-dark">
-        <div class="container">
-          <div class="mb-5 text-center">
-            <h3 class=" mt-4">GIEQs is an idea.  That we can do everyday endoscopy better.</h3>
-            <div class="fluid-paragraph mt-3">
-              <p class="lead lh-180"></p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-3"></div>
-              
-            <div class="col-lg-6">
-              <div class="card" data-animate-hover="1">
-                <div class="animate-this">
-                  <img alt="Image placeholder" src="<?php echo BASE_URL;?>/assets/img/learning/advertising/dt.png" class="card-img-top">
-                  <a href="https://vimeo.com/417539867" class="btn btn-lg btn-white btn-icon-only rounded-circle shadow-sm position-absolute right-4 top-4 hover-scale-110" data-fancybox="">
-                    <span class="btn-inner--icon">
-                      <i class="fas fa-play"></i>
-                    </span>
-                  </a>
+
+            <!-- New material -->
+            <section class="slice delimiter-bottom m-0 p-2" id="statistics">
+                <div class="container pt-0 pt-lg-0">
+
+                    <div class="actions-toolbar py-2">
+                        <h5 class="mb-1">Your GIEQs Stats</h5>
+                        <p class="text-sm text-muted mb-0">How GIEQy are you <?php echo $_SESSION['firstname'];?>?</p>
+                    </div>
+
+                    <div class="mb-5">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div
+                                    class="card card-stats bg-gradient-primary border-0 hover-shadow-lg hover-translate-y-n3 mb-0 ml-lg-0">
+                                    <div class="actions actions-dark">
+                                        <a href="#" class="action-item">
+                                            <i class="fas fa-sync-alt"></i>
+                                        </a>
+
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div>
+                                                <div class="icon text-white icon-sm">
+                                                    <i class="fas fa-video"></i>
+                                                </div>
+                                            </div>
+                                            <div class="pl-4">
+                                                <?php $completionArray = $usersMetricsManager->userCompletionVideos($userid, false);?>
+                                                <span
+                                                    class="d-block h5 text-white mr-2 mb-1"><?php echo $completionArray['numerator'];?>
+                                                    / <?php echo $completionArray['denominator'];?>
+                                                    (<?php echo round($completionArray['completion'], 2);?>%)</span>
+                                                <span class="text-white">Videos Completed</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
                 </div>
-                <div class="card-body">
-                  <blockquote class="blockquote">
-                    <span class="quote"></span>
-                    <div class="quote-text">
-                      <p class="font-italic lh-170">GIEQs is an idea.  That we can learn lessons from complex endoscopic practice and apply them to everyday procedures.  To make everyday endoscopy better for our patients.</p>
-                      <footer class="blockquote-footer">
-                        Dr David Tate<cite title="Source Title"><br/>Endoscopist and member of the GIEQs Online Creator Team</cite>
-                      </footer>
-                    </div>
-                  </blockquote>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3"></div>
-            </div>
-          </div>
-          <div class="mt-5 text-center">
-            <a href="" target="_blank" class="btn bg-gieqsGold text-dark rounded-pill btn-icon mt-4">
-              <span class="btn-inner--icon"><i class="fas fa-binoculars"></i></span>
-              <span class="btn-inner--text">Discover</span>
-            </a>
-          </div>
-        </div>
-      </section>
-        <!-- Current studies -->
-   
-        <!--
-        <div class="col-auto flex-fill d-none d-xl-block">
-            <ul class="list-inline row justify-content-lg-end mb-0">
-              <li class="list-inline-item col-sm-4 col-md-auto px-3 my-2 mx-0">
-                <span class="badge badge-dot text-white">
-                  <i class="bg-success"></i>Percentage complete
-                </span>
-                <a class="d-sm-block h5 text-white font-weight-bold pl-2" href="#">
-                  20.5%
-                  <small class="fas fa-angle-up text-success"></small>
-                </a>
-              </li>
-              <li class="list-inline-item col-sm-4 col-md-auto px-3 my-2 mx-0">
-                <span class="badge badge-dot text-white">
-                  <i class="bg-warning"></i>Incomplete learning
-                </span>
-                <a class="d-sm-block h5 text-white font-weight-bold pl-2" href="#">
-                  5.7%
-                  <small class="fas fa-angle-up text-warning"></small>
-                </a>
-              </li>
-              <li class="list-inline-item col-sm-4 col-md-auto px-3 my-2 mx-0">
-                <span class="badge badge-dot text-white">
-                  <i class="bg-danger"></i>Learning not started
-                </span>
-                <a class="d-sm-block h5 text-white font-weight-bold pl-2" href="#">
-                  -3.24%
-                  <small class="fas fa-angle-down text-danger"></small>
-                </a>
-              </li>
-            </ul>
-          </div>-->
-        
-        <!-- Further to add later Latest projects
-        <div class="mb-5">
-          <div class="actions-toolbar py-2 mb-4">
-            <h5 class="mb-1">Latest projects</h5>
-            <p class="text-sm text-muted mb-0">Manage pending orders and track invoices.</p>
-          </div>
-          <div>
-            <table class="table table-cards align-items-center">
-              <thead>
-                <tr>
-                  <th scope="col" class="sort" data-sort="name">Project</th>
-                  <th scope="col" class="sort" data-sort="budget">Budget</th>
-                  <th scope="col" class="sort" data-sort="status">Status</th>
-                  <th scope="col">Users</th>
-                  <th scope="col" class="sort" data-sort="completion">Completion</th>
-                  <th scope="col"></th>
-                </tr>
-              </thead>
-              <tbody class="list">
-                <tr>
-                  <th scope="row">
-                    <div class="media align-items-center">
-                      <div>
-                        <img alt="Image placeholder" src="../../assets/img/theme/light/brand-avatar-1.png" class="avatar  rounded-circle">
-                      </div>
-                      <div class="media-body ml-4">
-                        <span class="name mb-0 text-sm">Purpose Design System</span>
-                      </div>
-                    </div>
-                  </th>
-                  <td class="budget">
-                    $2500 USD
-                  </td>
-                  <td>
-                    <span class="badge badge-dot mr-4">
-                      <i class="bg-warning"></i>
-                      <span class="status">pending</span>
-                    </span>
-                  </td>
-                  <td>
-                    <div class="avatar-group">
-                      <a href="#" class="avatar rounded-circle avatar-sm">
-                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-1-800x800.jpg" class="">
-                      </a>
-                      <a href="#" class="avatar rounded-circle avatar-sm">
-                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-2-800x800.jpg" class="">
-                      </a>
-                      <a href="#" class="avatar rounded-circle avatar-sm">
-                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-3-800x800.jpg" class="">
-                      </a>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="d-flex align-items-center">
-                      <span class="completion mr-2">60%</span>
-                      <div>
-                        <div class="progress">
-                          <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="text-right">
-                    <!-- Actions 
-                    <div class="actions ml-3">
-                      <a href="#" class="action-item mr-2" data-toggle="tooltip" title="Quick view">
-                        <i class="fas fa-external-link-alt"></i>
-                      </a>
-                      <a href="#" class="action-item mr-2" data-toggle="tooltip" title="Edit">
-                        <i class="fas fa-pencil-alt"></i>
-                      </a>
-                      <a href="#" class="action-item text-danger mr-2" data-toggle="tooltip" title="Move to trash">
-                        <i class="fas fa-trash"></i>
-                      </a>
-                    </div>
-                  </td>
-                </tr>
-                <tr class="table-divider"></tr>
-                <tr>
-                  <th scope="row">
-                    <div class="media align-items-center">
-                      <div>
-                        <img alt="Image placeholder" src="../../assets/img/theme/light/brand-avatar-2.png" class="avatar  rounded-circle">
-                      </div>
-                      <div class="media-body ml-4">
-                        <span class="name mb-0 text-sm">Website redesign</span>
-                      </div>
-                    </div>
-                  </th>
-                  <td class="budget">
-                    $1800 USD
-                  </td>
-                  <td>
-                    <span class="badge badge-dot mr-4">
-                      <i class="bg-success"></i>
-                      <span class="status">completed</span>
-                    </span>
-                  </td>
-                  <td>
-                    <div class="avatar-group">
-                      <a href="#" class="avatar rounded-circle avatar-sm">
-                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-1-800x800.jpg" class="">
-                      </a>
-                      <a href="#" class="avatar rounded-circle avatar-sm">
-                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-2-800x800.jpg" class="">
-                      </a>
-                      <a href="#" class="avatar rounded-circle avatar-sm">
-                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-3-800x800.jpg" class="">
-                      </a>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="d-flex align-items-center">
-                      <span class="completion mr-2">100%</span>
-                      <div>
-                        <div class="progress">
-                          <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="text-right">
-                    <!-- Actions 
-                    <div class="actions ml-3">
-                      <a href="#" class="action-item mr-2" data-toggle="tooltip" title="Quick view">
-                        <i class="fas fa-external-link-alt"></i>
-                      </a>
-                      <a href="#" class="action-item mr-2" data-toggle="tooltip" title="Edit">
-                        <i class="fas fa-pencil-alt"></i>
-                      </a>
-                      <a href="#" class="action-item text-danger mr-2" data-toggle="tooltip" title="Move to trash">
-                        <i class="fas fa-trash"></i>
-                      </a>
-                    </div>
-                  </td>
-                </tr>
-                <tr class="table-divider"></tr>
-                <tr>
-                  <th scope="row">
-                    <div class="media align-items-center">
-                      <div>
-                        <img alt="Image placeholder" src="../../assets/img/theme/light/brand-avatar-3.png" class="avatar  rounded-circle">
-                      </div>
-                      <div class="media-body ml-4">
-                        <span class="name mb-0 text-sm">Webpixels website launch</span>
-                      </div>
-                    </div>
-                  </th>
-                  <td class="budget">
-                    $3150 USD
-                  </td>
-                  <td>
-                    <span class="badge badge-dot mr-4">
-                      <i class="bg-danger"></i>
-                      <span class="status">delayed</span>
-                    </span>
-                  </td>
-                  <td>
-                    <div class="avatar-group">
-                      <a href="#" class="avatar rounded-circle avatar-sm">
-                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-1-800x800.jpg" class="">
-                      </a>
-                      <a href="#" class="avatar rounded-circle avatar-sm">
-                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-2-800x800.jpg" class="">
-                      </a>
-                      <a href="#" class="avatar rounded-circle avatar-sm">
-                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-3-800x800.jpg" class="">
-                      </a>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="d-flex align-items-center">
-                      <span class="completion mr-2">72%</span>
-                      <div>
-                        <div class="progress">
-                          <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 72%;"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="text-right">
-                    <!-- Actions 
-                    <div class="actions ml-3">
-                      <a href="#" class="action-item mr-2" data-toggle="tooltip" title="Quick view">
-                        <i class="fas fa-external-link-alt"></i>
-                      </a>
-                      <a href="#" class="action-item mr-2" data-toggle="tooltip" title="Edit">
-                        <i class="fas fa-pencil-alt"></i>
-                      </a>
-                      <a href="#" class="action-item text-danger mr-2" data-toggle="tooltip" title="Move to trash">
-                        <i class="fas fa-trash"></i>
-                      </a>
-                    </div>
-                  </td>
-                </tr>
-                <tr class="table-divider"></tr>
-                <tr>
-                  <th scope="row">
-                    <div class="media align-items-center">
-                      <div>
-                        <img alt="Image placeholder" src="../../assets/img/theme/light/brand-avatar-4.png" class="avatar  rounded-circle">
-                      </div>
-                      <div class="media-body ml-4">
-                        <span class="name mb-0 text-sm">Purpose Website UI Kit</span>
-                      </div>
-                    </div>
-                  </th>
-                  <td class="budget">
-                    $4400 USD
-                  </td>
-                  <td>
-                    <span class="badge badge-dot mr-4">
-                      <i class="bg-info"></i>
-                      <span class="status">on schedule</span>
-                    </span>
-                  </td>
-                  <td>
-                    <div class="avatar-group">
-                      <a href="#" class="avatar rounded-circle avatar-sm">
-                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-1-800x800.jpg" class="">
-                      </a>
-                      <a href="#" class="avatar rounded-circle avatar-sm">
-                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-2-800x800.jpg" class="">
-                      </a>
-                      <a href="#" class="avatar rounded-circle avatar-sm">
-                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-3-800x800.jpg" class="">
-                      </a>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="d-flex align-items-center">
-                      <span class="completion mr-2">90%</span>
-                      <div>
-                        <div class="progress">
-                          <div class="progress-bar bg-info" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="text-right">
-                    <!-- Actions 
-                    <div class="actions ml-3">
-                      <a href="#" class="action-item mr-2" data-toggle="tooltip" title="Quick view">
-                        <i class="fas fa-external-link-alt"></i>
-                      </a>
-                      <a href="#" class="action-item mr-2" data-toggle="tooltip" title="Edit">
-                        <i class="fas fa-pencil-alt"></i>
-                      </a>
-                      <a href="#" class="action-item text-danger mr-2" data-toggle="tooltip" title="Move to trash">
-                        <i class="fas fa-trash"></i>
-                      </a>
-                    </div>
-                  </td>
-                </tr>
-                <tr class="table-divider"></tr>
-                <tr>
-                  <th scope="row">
-                    <div class="media align-items-center">
-                      <div>
-                        <img alt="Image placeholder" src="../../assets/img/theme/light/brand-avatar-5.png" class="avatar  rounded-circle">
-                      </div>
-                      <div class="media-body ml-4">
-                        <span class="name mb-0 text-sm">Prototype Purpose Dashboard</span>
-                      </div>
-                    </div>
-                  </th>
-                  <td class="budget">
-                    $2200 USD
-                  </td>
-                  <td>
-                    <span class="badge badge-dot mr-4">
-                      <i class="bg-success"></i>
-                      <span class="status">completed</span>
-                    </span>
-                  </td>
-                  <td>
-                    <div class="avatar-group">
-                      <a href="#" class="avatar rounded-circle avatar-sm">
-                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-1-800x800.jpg" class="">
-                      </a>
-                      <a href="#" class="avatar rounded-circle avatar-sm">
-                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-2-800x800.jpg" class="">
-                      </a>
-                      <a href="#" class="avatar rounded-circle avatar-sm">
-                        <img alt="Image placeholder" src="../../assets/img/theme/light/team-3-800x800.jpg" class="">
-                      </a>
-                    </div>
-                  </td>
-                  <td>
-                    <div class="d-flex align-items-center">
-                      <span class="completion mr-2">100%</span>
-                      <div>
-                        <div class="progress">
-                          <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="text-right">
-                    <!-- Actions
-                    <div class="actions ml-3">
-                      <a href="#" class="action-item mr-2" data-toggle="tooltip" title="Quick view">
-                        <i class="fas fa-external-link-alt"></i>
-                      </a>
-                      <a href="#" class="action-item mr-2" data-toggle="tooltip" title="Edit">
-                        <i class="fas fa-pencil-alt"></i>
-                      </a>
-                      <a href="#" class="action-item text-danger mr-2" data-toggle="tooltip" title="Move to trash">
-                        <i class="fas fa-trash"></i>
-                      </a>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <!-- Project stats
-        <div class="actions-toolbar py-2 mb-4">
-          <h5 class="mb-1">Project stats</h5>
-          <p class="text-sm text-muted mb-0">Manage pending orders and track invoices.</p>
-        </div>
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="card mb-0">
-              <div class="card-header">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <h6 class="mb-0">Project progress</h6>
-                  </div>
-                  <div class="text-right">
-                    <div class="actions">
-                      <a href="#" class="action-item"><i class="fas fa-sync"></i></a>
-                      <div class="dropdown action-item" data-toggle="dropdown">
-                        <a href="#" class="action-item"><i class="fas fa-ellipsis-h"></i></a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                          <a href="#" class="dropdown-item">Refresh</a>
-                          <a href="#" class="dropdown-item">Manage Widgets</a>
-                          <a href="#" class="dropdown-item">Settings</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action">
-                  <div class="d-flex align-items-center justify-content-between">
-                    <div>
-                      <img alt="Image placeholder" src="../../assets/img/theme/light/brand-avatar-1.png" class="avatar  rounded-circle">
-                    </div>
-                    <div class="flex-fill pl-3 text-limit">
-                      <h6 class="progress-text mb-1 text-sm d-block text-limit">Purpose Design System</h6>
-                      <div class="progress progress-xs mb-0">
-                        <div class="progress-bar bg-warning" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <div class="d-flex justify-content-between text-xs text-muted text-right mt-1">
-                        <div>
-                          <span class="font-weight-bold text-warning">Pending</span>
-                        </div>
-                        <div>
-                          20 Aug 2018
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action">
-                  <div class="d-flex align-items-center justify-content-between">
-                    <div>
-                      <img alt="Image placeholder" src="../../assets/img/theme/light/brand-avatar-2.png" class="avatar  rounded-circle">
-                    </div>
-                    <div class="flex-fill pl-3 text-limit">
-                      <h6 class="progress-text mb-1 text-sm d-block text-limit">Website redesign</h6>
-                      <div class="progress progress-xs mb-0">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <div class="d-flex justify-content-between text-xs text-muted text-right mt-1">
-                        <div>
-                          <span class="font-weight-bold text-success">Completed</span>
-                        </div>
-                        <div>
-                          20 Aug 2018
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action">
-                  <div class="d-flex align-items-center justify-content-between">
-                    <div>
-                      <img alt="Image placeholder" src="../../assets/img/theme/light/brand-avatar-3.png" class="avatar  rounded-circle">
-                    </div>
-                    <div class="flex-fill pl-3 text-limit">
-                      <h6 class="progress-text mb-1 text-sm d-block text-limit">Webpixels website launch</h6>
-                      <div class="progress progress-xs mb-0">
-                        <div class="progress-bar bg-danger" role="progressbar" style="width: 72%;" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <div class="d-flex justify-content-between text-xs text-muted text-right mt-1">
-                        <div>
-                          <span class="font-weight-bold text-danger">Delayed</span>
-                        </div>
-                        <div>
-                          20 Aug 2018
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action">
-                  <div class="d-flex align-items-center justify-content-between">
-                    <div>
-                      <img alt="Image placeholder" src="../../assets/img/theme/light/brand-avatar-4.png" class="avatar  rounded-circle">
-                    </div>
-                    <div class="flex-fill pl-3 text-limit">
-                      <h6 class="progress-text mb-1 text-sm d-block text-limit">Purpose Website UI Kit</h6>
-                      <div class="progress progress-xs mb-0">
-                        <div class="progress-bar bg-info" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <div class="d-flex justify-content-between text-xs text-muted text-right mt-1">
-                        <div>
-                          <span class="font-weight-bold text-info">On schedule</span>
-                        </div>
-                        <div>
-                          20 Aug 2018
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action">
-                  <div class="d-flex align-items-center justify-content-between">
-                    <div>
-                      <img alt="Image placeholder" src="../../assets/img/theme/light/brand-avatar-5.png" class="avatar  rounded-circle">
-                    </div>
-                    <div class="flex-fill pl-3 text-limit">
-                      <h6 class="progress-text mb-1 text-sm d-block text-limit">Prototype Purpose Dashboard</h6>
-                      <div class="progress progress-xs mb-0">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <div class="d-flex justify-content-between text-xs text-muted text-right mt-1">
-                        <div>
-                          <span class="font-weight-bold text-success">Completed</span>
-                        </div>
-                        <div>
-                          20 Aug 2018
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="card mb-0">
-              <div class="card-header">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div>
-                    <h6 class="mb-0">Project budgets</h6>
-                  </div>
-                  <div class="text-right">
-                    <div class="actions">
-                      <a href="#" class="action-item"><i class="fas fa-sync"></i></a>
-                      <div class="dropdown action-item" data-toggle="dropdown">
-                        <a href="#" class="action-item"><i class="fas fa-ellipsis-h"></i></a>
-                        <div class="dropdown-menu dropdown-menu-right">
-                          <a href="#" class="dropdown-item">Refresh</a>
-                          <a href="#" class="dropdown-item">Manage Widgets</a>
-                          <a href="#" class="dropdown-item">Settings</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action">
-                  <div class="media align-items-center">
-                    <div class="mr-3">
-                      <img alt="Image placeholder" src="../../assets/img/theme/light/brand-avatar-1.png" class="avatar  rounded-circle">
-                    </div>
-                    <div class="media-body">
-                      <h6 class="text-sm d-block text-limit mb-0">Purpose Design System</h6>
-                      <span class="d-block text-sm text-muted">Development</span>
-                    </div>
-                    <div class="media-body text-right">
-                      <span class="text-sm text-dark font-weight-bold ml-3">
-                        $2500
-                      </span>
-                    </div>
-                  </div>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action">
-                  <div class="media align-items-center">
-                    <div class="mr-3">
-                      <img alt="Image placeholder" src="../../assets/img/theme/light/brand-avatar-2.png" class="avatar  rounded-circle">
-                    </div>
-                    <div class="media-body">
-                      <h6 class="text-sm d-block text-limit mb-0">Website redesign</h6>
-                      <span class="d-block text-sm text-muted">Identity</span>
-                    </div>
-                    <div class="media-body text-right">
-                      <span class="text-sm text-dark font-weight-bold ml-3">
-                        $1800
-                      </span>
-                    </div>
-                  </div>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action">
-                  <div class="media align-items-center">
-                    <div class="mr-3">
-                      <img alt="Image placeholder" src="../../assets/img/theme/light/brand-avatar-3.png" class="avatar  rounded-circle">
-                    </div>
-                    <div class="media-body">
-                      <h6 class="text-sm d-block text-limit mb-0">Webpixels website launch</h6>
-                      <span class="d-block text-sm text-muted">Branding</span>
-                    </div>
-                    <div class="media-body text-right">
-                      <span class="text-sm text-dark font-weight-bold ml-3">
-                        $3150
-                      </span>
-                    </div>
-                  </div>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action">
-                  <div class="media align-items-center">
-                    <div class="mr-3">
-                      <img alt="Image placeholder" src="../../assets/img/theme/light/brand-avatar-4.png" class="avatar  rounded-circle">
-                    </div>
-                    <div class="media-body">
-                      <h6 class="text-sm d-block text-limit mb-0">Purpose Website UI Kit</h6>
-                      <span class="d-block text-sm text-muted">Marketing</span>
-                    </div>
-                    <div class="media-body text-right">
-                      <span class="text-sm text-dark font-weight-bold ml-3">
-                        $4400
-                      </span>
-                    </div>
-                  </div>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action">
-                  <div class="media align-items-center">
-                    <div class="mr-3">
-                      <img alt="Image placeholder" src="../../assets/img/theme/light/brand-avatar-5.png" class="avatar  rounded-circle">
-                    </div>
-                    <div class="media-body">
-                      <h6 class="text-sm d-block text-limit mb-0">Prototype Purpose Dashboard</h6>
-                      <span class="d-block text-sm text-muted">Frameworks</span>
-                    </div>
-                    <div class="media-body text-right">
-                      <span class="text-sm text-dark font-weight-bold ml-3">
-                        $2200
-                      </span>
-                    </div>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div> -->
-      </div>
-    </section>
-  </div>
+            </section>
+            <section class="slice delimiter-bottom m-0 p-2" id="whats-new">
 
-    <?php require BASE_URI . '/footer.php';?>
+                <div class="container pt-0 pt-lg-0">
+                    <div class="actions-toolbar py-2 mb-4 ">
 
-    <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
-    <!-- <script src="assets/js/purpose.core.js"></script> -->
-    <!-- Page JS -->
-    
-  
-   
-    <!-- Google maps -->
-  
-    <!-- Purpose JS -->
-    <script src="../../assets/js/purpose.js"></script>
-    <script src="<?php echo BASE_URL;?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
-    <!-- <script src="assets/js/generaljs.js"></script> -->
-    <script>
-    var videoPassed = $("#id").text();
-                    </script>
 
-    <script>
+                        <h4 class="mb-1  mt-2">What's New</h4>
+                        <p class="text-sm text-muted mb-0">Jump right into a new learning experience.</p>
+                    </div>
+                    <div class="placeholder">
+                        <div class="card-deck flex-column flex-lg-row mb-5">
+                            <div class="card card-skeleton"></div>
+                            <div class="card card-skeleton"></div>
+                            <div class="card card-skeleton"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- Finish watching videos -->
+
+
+
+
+            <section id="catchup" class="slice slice-lg bg-section-secondary delimiter-top m-0 p-2">
+                <div class="container pt-0 pt-lg-0">
+                    <div class="actions-toolbar py-2 mb-4 ">
+                        <h4 class="mb-1  mt-2">Pick up where you left off</h4>
+                        <p class="text-sm text-muted mb-0">Videos you started watching, jump back in.</p>
+                    </div>
+                    <div class="placeholder">
+                        <div class="card-deck flex-column flex-lg-row mb-5">
+                            <div class="card card-skeleton"></div>
+                            <div class="card card-skeleton"></div>
+                            <div class="card card-skeleton"></div>
+                        </div>
+                    </div>
+
+
+                </div> <!-- end container div-->
+
+            </section>
+
+            <!-- Suggested videos -->
+
+
+            <section id="suggested" class="slice slice-lg delimiter-top m-0 p-2">
+                <div class="container pt-0 pt-lg-0">
+                    <div class="actions-toolbar py-2 mb-4 ">
+                        <h4 class="mb-1 mt-2">Suggested Next Steps</h4>
+                        <p class="text-sm text-muted mb-0">Based on what you watched previously.</p>
+                    </div>
+                    <div class="placeholder">
+                        <div class="card-deck flex-column flex-lg-row mb-5">
+                            <div class="card card-skeleton"></div>
+                            <div class="card card-skeleton"></div>
+                            <div class="card card-skeleton"></div>
+                        </div>
+                    </div>
+
+
+
+                </div> <!-- end container div-->
+
+            </section>
+
+            <!-- Popular videos -->
+
+
+            <section id="popular" class="slice slice-lg bg-section-secondary delimiter-top m-0 p-2">
+                <div class="container pt-0 pt-lg-0">
+                    <div class="actions-toolbar py-2 mb-4 ">
+
+
+                        <h4 class="mb-1  mt-2">Popular Videos</h4>
+                        <p class="text-sm text-muted mb-0">What others are watching right ow.</p>
+                    </div>
+                    <div class="placeholder">
+                        <div class="card-deck flex-column flex-lg-row mb-5">
+                            <div class="card card-skeleton"></div>
+                            <div class="card card-skeleton"></div>
+                            <div class="card card-skeleton"></div>
+                        </div>
+                    </div>
+
+                    
+
+                </div> <!-- end new material div-->
+        </div> <!-- end container div-->
+
+        </section>
+
+
+        </div>
+
+        <?php require BASE_URI . '/footer.php';?>
+
+        <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
+        <!-- <script src="assets/js/purpose.core.js"></script> -->
+        <!-- Page JS -->
+
+
+
+        <!-- Google maps -->
+
+        <!-- Purpose JS -->
+        <script src="../../assets/js/purpose.js"></script>
+        <script src="<?php echo BASE_URL;?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+        <!-- <script src="assets/js/generaljs.js"></script> -->
+        <script>
+        var videoPassed = $("#id").text();
+        </script>
+
+        <script>
         var signup = $('#signup').text();
+
+        function getNew() {
+
+            const dataToSend = {
+
+            }
+
+            const jsonString = JSON.stringify(dataToSend);
+            console.log(jsonString);
+
+            var request2 = $.ajax({
+                url: siteRoot + "scripts/getNewVideos.php",
+                type: "POST",
+                contentType: "application/json",
+                data: jsonString,
+            });
+
+
+
+            request2.done(function(data) {
+                // alert( "success" );
+                $('#whats-new').find('.placeholder').html(data);
+                //$(document).find('.Thursday').hide();
+            })
+
+
+        }
+
+        function getRecentViewed() {
+
+            const dataToSend = {
+
+            }
+
+            const jsonString = JSON.stringify(dataToSend);
+            console.log(jsonString);
+
+            var request2 = $.ajax({
+                url: siteRoot + "scripts/getRecentViewedVideos.php",
+                type: "POST",
+                contentType: "application/json",
+                data: jsonString,
+            });
+
+
+
+            request2.done(function(data) {
+                // alert( "success" );
+                $('#catchup').find('.placeholder').html(data);
+                //$(document).find('.Thursday').hide();
+            })
+
+
+        }
+
+        function getNextSteps() {
+
+            const dataToSend = {
+
+            }
+
+            const jsonString = JSON.stringify(dataToSend);
+            console.log(jsonString);
+
+            var request2 = $.ajax({
+                url: siteRoot + "scripts/getNextStepsVideos.php",
+                type: "POST",
+                contentType: "application/json",
+                data: jsonString,
+            });
+
+
+
+            request2.done(function(data) {
+                // alert( "success" );
+                $('#suggested').find('.placeholder').html(data);
+                //$(document).find('.Thursday').hide();
+            })
+
+
+        }
+
+        function getPopular() {
+
+            const dataToSend = {
+
+            }
+
+            const jsonString = JSON.stringify(dataToSend);
+            console.log(jsonString);
+
+            var request2 = $.ajax({
+                url: siteRoot + "scripts/getPopularVideos.php",
+                type: "POST",
+                contentType: "application/json",
+                data: jsonString,
+            });
+
+
+
+            request2.done(function(data) {
+                // alert( "success" );
+                $('#popular').find('.placeholder').html(data);
+                //$(document).find('.Thursday').hide();
+            })
+
+
+        }
 
         function submitPreRegisterForm() {
 
             var esdLesionObject = pushDataFromFormAJAX("pre-register", "preRegister", "id", null,
-            "0"); //insert new object
+                "0"); //insert new object
 
-            esdLesionObject.done(function (data) {
+            esdLesionObject.done(function(data) {
 
                 console.log(data);
 
@@ -1028,10 +709,13 @@ top: -20vh;
             });
         }
 
-        $(document).ready(function () {
+        $(document).ready(function() {
 
-            
 
+            getNew();
+            getRecentViewed();
+            getNextSteps();
+            getPopular();
 
             /* $(document).click(function(event) { 
                 $target = $(event.target);
@@ -1042,73 +726,74 @@ top: -20vh;
                     }        
             }); */
 
-            $(document).click(function(event) { 
+            $(document).click(function(event) {
                 $target = $(event.target);
-                
-                if(!$target.closest('#selectDropdown').length && 
+
+                if (!$target.closest('#selectDropdown').length &&
                     $('#selectDropdown').is(":visible")) {
-                        $('#selectDropdown').collapse('hide');
-                    }        
+                    $('#selectDropdown').collapse('hide');
+                }
             });
 
-            $(document).click(function(event) { 
+            $(document).click(function(event) {
                 $target = $(event.target);
-                
-                if(!$target.closest('#collapseExample2').length && 
+
+                if (!$target.closest('#collapseExample2').length &&
                     $('#collapseExample2').is(":visible")) {
-                        $('#collapseExample2').collapse('hide');
-                    }        
+                    $('#collapseExample2').collapse('hide');
+                }
             });
 
-            $(document).click(function(event) { 
+            $(document).click(function(event) {
                 $target = $(event.target);
-                
-                if(!$target.closest('#collapseExample3').length && 
+
+                if (!$target.closest('#collapseExample3').length &&
                     $('#collapseExample3').is(":visible")) {
-                        $('#collapseExample3').collapse('hide');
-                    }        
+                    $('#collapseExample3').collapse('hide');
+                }
             });
 
-            $(document).on('click', '.tagsClose', function(){
+            $(document).on('click', '.tagsClose', function() {
 
                 $('#collapseExample').collapse('hide');
 
             })
 
-            $('.referencelist').on('click', function (){
-		
-		
-		//get the tag name
-		
-		var searchTerm = $(this).attr('data');
-		
-		//console.log("https://www.ncbi.nlm.nih.gov/pubmed/?term="+searchTerm);
-		
-		PopupCenter("https://www.ncbi.nlm.nih.gov/pubmed/?term="+searchTerm, 'PubMed Search (endoWiki)', 800, 700);
+            $('.referencelist').on('click', function() {
 
-		
-		
-		
-		
-	})
 
-	$('.referencelist').on('mouseenter', function (){
+                //get the tag name
 
-		$(this).css('color', 'rgb(238, 194, 120)');
-		$(this).css('cursor', 'pointer');
+                var searchTerm = $(this).attr('data');
 
-	})
+                //console.log("https://www.ncbi.nlm.nih.gov/pubmed/?term="+searchTerm);
 
-	$('.referencelist').on('mouseleave', function (){
+                PopupCenter("https://www.ncbi.nlm.nih.gov/pubmed/?term=" + searchTerm,
+                    'PubMed Search (endoWiki)', 800, 700);
 
-		$(this).css('color', 'white');
-		$(this).css('cursor', 'default');
 
-	})
+
+
+
+            })
+
+            $('.referencelist').on('mouseenter', function() {
+
+                $(this).css('color', 'rgb(238, 194, 120)');
+                $(this).css('cursor', 'pointer');
+
+            })
+
+            $('.referencelist').on('mouseleave', function() {
+
+                $(this).css('color', 'white');
+                $(this).css('cursor', 'default');
+
+            })
 
 
         })
-    </script>
-</body>
+        </script>
+    </body>
 
 </html>

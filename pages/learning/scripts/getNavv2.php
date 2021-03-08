@@ -358,6 +358,8 @@ if ($videoset == 3){
     $data2 = $assetManager->determineVideoAccessNonAsset($data2, $isSuperuser, $userid, true);
 
 
+
+
     //work data 2 to remove those without a subscription
 
         //unless is superuser
@@ -524,7 +526,12 @@ if ($videoset == 3){
 if ($debug){
 
     print_r($data2);
+    echo json_encode($data2);
+
 }
+
+//setcookie('browsing_array', json_encode($data2), time() + (365 * 24 * 60 * 60), '/');
+
 
         $data3 = $navigator->getVideoTagsBasedOnVideosShown($data2, $debug);
       

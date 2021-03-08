@@ -268,6 +268,8 @@ var stopclicked = null;
 
 var currentChapter = null;
 
+var currentChapter_lastViewed = null;
+
 var player = null;
 
 function videoDisplay(url) {
@@ -831,7 +833,7 @@ function undoFilterByTag() {
 
 		}
 
-	updatePlayer(data2);
+		updatePlayer(data2);
 
 
 		});  
@@ -854,6 +856,8 @@ function undoFilterByTag() {
 
 function filterByTag(requestedTag){
 
+	//restrictTagStatusBar();
+	
 	undoFilterByTag();
 
 	requiredChapters = null;
@@ -1339,6 +1343,59 @@ function updateChapterMarkers(currentChapterPassed){
 
 }
 
+function updateChapterView (currentChapter){
+
+	var dataToSend = {
+
+		chapter_id: currentChapter,
+
+
+
+	}
+
+	//const jsonString2 = JSON.stringify(dataToSend);
+
+	const jsonString = JSON.stringify(dataToSend);
+	//console.log(jsonString);
+	//console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
+
+	var request2 = $.ajax({
+		beforeSend: function() {
+
+
+		},
+		url: siteRoot + "scripts/user_metrics/updateChapterViews.php",
+		type: "POST",
+		contentType: "application/json",
+		data: jsonString,
+	});
+
+
+
+	request2.done(function(data) {
+		// alert( "success" );
+		if (data) {
+			//show green tick
+			console.log(data);
+
+			
+
+
+			//$('#notification-services').delay('1000').addClass('is-valid');
+
+
+
+
+		}
+		//$(document).find('.Thursday').hide();
+		//$(icon).prop("disabled", false);
+	})
+
+	return request2;
+
+
+}
+
 function updatePlayer(data, debug=true){
 
 	if (debug){
@@ -1352,6 +1409,23 @@ function updatePlayer(data, debug=true){
 	var key = number - 1;
 	var chapterid = data.data.id;
 	currentChapter = chapterid;
+
+	//if the chapter changes write the new viewed chapter to the database
+	//TODO modify so that some of the chapter must be viewed
+
+	if (currentChapter_lastViewed != currentChapter){
+
+		//update currentChapter_lastViewed
+
+		currentChapter_lastViewed = currentChapter;
+
+		//trigger the call to update the database BACK HERE
+
+		updateChapterView(currentChapter);
+
+
+
+	}
 
 	//write the headings to the page 
 	var chaptername = videoChapterData[key].chaptername;
