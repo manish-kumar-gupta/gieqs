@@ -423,7 +423,7 @@ function login(){
             if (target){  
               window.location.href = siteRoot + target;  
             }else{
-              window.location.href = siteRoot + "index.php";  
+              window.location.href = siteRoot + "/pages/learning/index.php";  
 
             }
           
