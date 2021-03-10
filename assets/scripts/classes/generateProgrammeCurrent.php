@@ -139,13 +139,7 @@
     <!--container-->
 
 
-    <div class="row text-left">
-        <div class="d-flex col-lg-12 p-1 pb-3 pt-3">
-            <a class="btn btn-sm text-dark gieqsGoldBackground" role="button" href="<?php echo $programme->geturl_zoom();?>" target="_blank">LIVE - Access Zoom Meeting</a>
-
-            
-        </div>
-    </div>
+   
 
     <div class="row text-left">
         <div class="d-flex col-lg-12 p-1 pb-3 pt-3">
@@ -331,6 +325,8 @@
     <div class="row text-center align-middle border-left border-right border-bottom">
 
         <div class="col-12 p-2 pb-3 pt-3">
+        <a class="btn btn-sm text-dark gieqsGoldBackground" role="button" href="<?php echo $programme->geturl_zoom();?>" target="_blank">LIVE - Access Zoom Meeting</a>
+
             <span class="h5" style="color: rgb(238, 194, 120);"><?php echo $value['title'];?></span>
         </div>
 

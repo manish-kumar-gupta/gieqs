@@ -689,30 +689,11 @@
 
                                                                             <p
                                                                                 style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                This is a virtual / live hybrid course.
-                                                                                This means there will be trainees
-                                                                                performing procedures on patients at the
-                                                                                host centre being trained by
-                                                                                local trainers and virtual trainers
-                                                                                (online).  We have tried hard to make this experience as close 
-                                                                            to being in the room as possible.</p>
-                                                                            <p>All links to join are available on the
-                                                                                gieqs.com site (details below). Remote
-                                                                                participants can follow via Zoom (low
-                                                                                quality video but allows audio
-                                                                                interaction) and/or a high quality
-                                                                                stream on gieqs.com (video and audio
-                                                                                with no interaction). </p>
-                                                                            <p>Please be aware there will be a small
-                                                                                difference in the timing (around 20
-                                                                                seconds) of the two streams. Therefore
-                                                                                it is advised to watch one stream or the
-                                                                                other.</p>
-                                                                            <p>Interaction is also possible via the
-                                                                                Slido web app where you can respond to
-                                                                                questions, polls and ask your own
-                                                                                questions at any time (link on
-                                                                                gieqs.com).</p>
+                                                                                This is a GIEQs Webinar.
+                                                                                There will be experts present on a Zoom call (link below).</p>
+                                                                            <p>All participants will be invited to participate by raising their hand.  Participants will be muted by default and will not be able to interact without raising their hand. </p>
+                                                                            <p>Interaction is invited and encouraged!</p>
+                                                                            
 
                                                                             <p
                                                                                 style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
@@ -721,41 +702,62 @@
 
 
 
-                                                                            <p
-                                                                                style="margin:10px 0;padding-top:20px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;font-weight:bold">
-                                                                                Browser Requirements</p>
-                                                                            <hr />
-
-                                                                            <p
-                                                                                style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                Following this course requires Google
-                                                                                Chrome or Apple Safari browser. Internet
-                                                                                Explorer will <strong>not</strong> work.
-                                                                                Both these browsers are freely
-                                                                                available. No responsibility will be
-                                                                                taken by the organising committee if you
-                                                                                cannot follow and are not using either
-                                                                                of the named internet browsers.</p>
+                                                                        
 
                                                                             <p
                                                                                 style="margin:10px 0;padding-top:20px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;font-weight:bold">
                                                                                 How to join the course</p>
                                                                             <hr />
 
+
+                                                                            <table border="0" cellpadding="0"
+                                                                                cellspacing="0" width="100%"
+                                                                                class="mcnButtonBlock"
+                                                                                style="min-width:100%;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
+                                                                                <tbody class="mcnButtonBlockOuter">
+                                                                                    <tr>
+                                                                                        <td style="padding-top:25px;padding-right:18px;padding-bottom:18px;padding-left:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;"
+                                                                                            valign="top" align="center"
+                                                                                            class="mcnButtonBlockInner">
+                                                                                            <table border="0"
+                                                                                                cellpadding="0"
+                                                                                                cellspacing="0"
+                                                                                                class="mcnButtonContentContainer"
+                                                                                                style="border-collapse:separate !important;border-radius:3px;background-color:#1b385d;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust: 100%;">
+                                                                                                <tbody>
+                                                                                                    <tr>
+                                                                                                        <td align="center"
+                                                                                                            valign="middle"
+                                                                                                            class="mcnButtonContent"
+                                                                                                            style="font-family:Helvetica;font-size:18px;padding:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
+                                                                                                            <a class="mcnButton "
+                                                                                                                title="Access My Course"
+                                                                                                                href="https://www.gieqs.com/login?destination=viewasset&assetid=<?php echo $assetid;?>"
+                                                                                                                target="_blank"
+                                                                                                                style="font-weight:bold;letter-spacing:-0.5px;line-height:100%;text-align:center;text-decoration:none;color:#e3ebf6;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;display:block;">Access
+                                                                                                                My
+                                                                                                                Course
+                                                                                                            </a>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                </tbody>
+                                                                                            </table>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+
+
                                                                             <p
                                                                                 style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                Start by going to <a
+                                                                                To get here later from within the GIEQs site start by going to  <a
                                                                                     href="https://www.gieqs.com/login">gieqs.com</a>
                                                                                 and logging in.</p>
 
                                                                             <p
                                                                                 style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
 
-                                                                                On the day of the course you will see
-                                                                                your course name highlighted in the
-                                                                                navigation bar at the top of the
-                                                                                homepage [or accessible from the menu on
-                                                                                a mobile device] (see below).
+                                                                                On the menu options within GIEQs Online you will see a Subscriptions Button.  Click this.  Then you will see the link displayed to access the Zoom Stream.
                                                                             </p>
 
                                                                             <table border="0" cellpadding="0"
@@ -786,7 +788,7 @@
                                                                                                                 <a href=""
                                                                                                                     target="_blank"><img
                                                                                                                         alt=""
-                                                                                                                        src="https://www.gieqs.com/assets/img/covers/learning/screen_course_navigate.png"
+                                                                                                                        src="https://www.gieqs.com/assets/img/covers/learning/subscriptions.jpg"
                                                                                                                         width="400"
                                                                                                                         style="max-width:400px;padding-bottom:0;border:0;height:auto;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;vertical-align:bottom;text-align:center;"
                                                                                                                         class="mcnImage"></a>
@@ -808,57 +810,16 @@
                                                                             <p
                                                                                 style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
 
-                                                                                From this menu you can: </p>
+                                                                                From this menu you can also: </p>
 
                                                                             <ul>
-                                                                                <li>Watch the high definition live
-                                                                                    stream</li>
-                                                                                <li>Access the Zoom Session for Audio
-                                                                                    and low quality video interaction
-                                                                                </li>
-                                                                                <li>Access the Slido app for asking
-                                                                                    questions using your SmartPhone or
-                                                                                    from your computer</li>
+                                                                                <li>Watch the stream in Catch Up later</li>
+                                                                    
                                                                                 <li>Access the live programme and check
                                                                                     upcoming and current sessions</li>
                                                                             </ul>
 
-                                                                            <table border="0" cellpadding="0"
-                                                                                cellspacing="0" width="100%"
-                                                                                class="mcnButtonBlock"
-                                                                                style="min-width:100%;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                                                <tbody class="mcnButtonBlockOuter">
-                                                                                    <tr>
-                                                                                        <td style="padding-top:25px;padding-right:18px;padding-bottom:18px;padding-left:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;"
-                                                                                            valign="top" align="center"
-                                                                                            class="mcnButtonBlockInner">
-                                                                                            <table border="0"
-                                                                                                cellpadding="0"
-                                                                                                cellspacing="0"
-                                                                                                class="mcnButtonContentContainer"
-                                                                                                style="border-collapse:separate !important;border-radius:3px;background-color:#1b385d;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust: 100%;">
-                                                                                                <tbody>
-                                                                                                    <tr>
-                                                                                                        <td align="center"
-                                                                                                            valign="middle"
-                                                                                                            class="mcnButtonContent"
-                                                                                                            style="font-family:Helvetica;font-size:18px;padding:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                                                                            <a class="mcnButton "
-                                                                                                                title="Access My Course"
-                                                                                                                href="https://www.gieqs.com/login"
-                                                                                                                target="_blank"
-                                                                                                                style="font-weight:bold;letter-spacing:-0.5px;line-height:100%;text-align:center;text-decoration:none;color:#e3ebf6;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;display:block;">Access
-                                                                                                                My
-                                                                                                                Course
-                                                                                                            </a>
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                </tbody>
-                                                                                            </table>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
+                                                                            
 
                                                                             <p
                                                                                 style="margin:10px 0;padding-top:20px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;font-weight:bold">
