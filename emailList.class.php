@@ -2,7 +2,7 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 25-01-2020
+ * Create Date: 8-11-2020
  *
  * DJT 2019
  *
@@ -17,6 +17,7 @@ Class emailList {
 	private $firstname; //varchar(200)
 	private $surname; //varchar(200)
 	private $email; //varchar(200)
+	private $optOut; //varchar(11)
 	private $connection;
 
 	public function __construct(){
@@ -27,10 +28,11 @@ Class emailList {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_emailList($firstname,$surname,$email){
+	public function New_emailList($firstname,$surname,$email,$optOut){
 		$this->firstname = $firstname;
 		$this->surname = $surname;
 		$this->email = $email;
+		$this->optOut = $optOut;
 	}
 
     /**
@@ -46,6 +48,7 @@ Class emailList {
 			$this->firstname = $row["firstname"];
 			$this->surname = $row["surname"];
 			$this->email = $row["email"];
+			$this->optOut = $row["optOut"];
 		}
 	}
     /**
@@ -67,14 +70,39 @@ $q = "Select * from `emailList` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["firstname"] = $row["firstname"];
 			$rowReturn[$x]["surname"] = $row["surname"];
 			$rowReturn[$x]["email"] = $row["email"];
+			$rowReturn[$x]["optOut"] = $row["optOut"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
 			}
 			
 	}
+    /**
+ * Load specified number of rows and output to JSON. To use the vars use for exemple echo $class->getVar_name;
+ *
+ * @param key_table_type $key_row
+ *
+ */
+	public function Return_row($key){
+$q = "Select * from `emailList` WHERE `id` = $key";
+		$result = $this->connection->RunQuery($q);
+							$rowReturn = array();
+						$x = 0;
+						$nRows = $result->rowCount();
+						if ($nRows > 0){
 
-	
+					while($row = $result->fetch(PDO::FETCH_ASSOC)){
+			$rowReturn[$x]["id"] = $row["id"];
+			$rowReturn[$x]["firstname"] = $row["firstname"];
+			$rowReturn[$x]["surname"] = $row["surname"];
+			$rowReturn[$x]["email"] = $row["email"];
+			$rowReturn[$x]["optOut"] = $row["optOut"];
+		$x++;		}return json_encode($rowReturn);}
+
+			else{return FALSE;
+			}
+			
+	}
     
 
         public function Load_records_limit_json_datatables($y, $x = 0)
@@ -174,6 +202,7 @@ foreach ($ov as $key=>$value){
 		} 
 foreach ($ovMod as $key => $value) {
 
+            $value = addslashes($value);
 			$value = "'$value'";
 			$updates[] = "$value";
 
@@ -258,6 +287,7 @@ foreach ($ov as $key=>$value){
 		} 
 foreach ($ovMod as $key => $value) {
 
+            $value = addslashes($value);
 			$value = "'$value'";
 			$updates[] = "$key=$value";
 
@@ -300,8 +330,8 @@ $q = "UPDATE `emailList` SET $implodeArray WHERE `id` = '$this->id'";
      *
      */
 	public function Delete_row_from_key($key_row){
-		$this->connection->RunQuery("DELETE FROM `emailList` WHERE `id` = $key_row");
-		$result->rowCount();
+		$result = $this->connection->RunQuery("DELETE FROM `emailList` WHERE `id` = $key_row");
+		return $result->rowCount();
 	}
 
     /**
@@ -349,6 +379,13 @@ $q = "UPDATE `emailList` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return optOut - varchar(11)
+	 */
+	public function getoptOut(){
+		return $this->optOut;
+	}
+
+	/**
 	 * @param Type: int(11)
 	 */
 	public function setid($id){
@@ -374,6 +411,13 @@ $q = "UPDATE `emailList` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function setemail($email){
 		$this->email = $email;
+	}
+
+	/**
+	 * @param Type: varchar(11)
+	 */
+	public function setoptOut($optOut){
+		$this->optOut = $optOut;
 	}
 
     /**

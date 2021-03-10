@@ -794,6 +794,41 @@ Class userFunctions {
 
 		}
 
+		public function getMailListExpandedNoOptOut()
+            {
+            
+
+            $q = "SELECT `email` FROM `emailList` WHERE `optOut` IS NULL";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn[] = $row['email'];
+					
+
+
+				}
+
+				return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+		}
+
 		public function getMailListAll()
             {
             
