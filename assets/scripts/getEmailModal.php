@@ -79,7 +79,7 @@
                             
                             ?>
                             <h6 class="mb-0"><?php echo 'Email has ' . $sentText;?></h6>
-                            
+
 
                             <span id="modalMessageArea" class="mb-0"></span>
 
@@ -120,13 +120,24 @@
                             </div>
 
                             <label for="audience">audience</label>
-                                        <div class="input-group mb-3">
-                                            <select id="audience" type="text" data-toggle="select" class="form-control" name="audience">
-                                            <option value="" selected disabled hidden>please select an option</option>
-                                            <option value="1">All Users</option>
-                                            <option value="2">Mailing List Services Only</option>
-                                            </select>
-                                        </div>
+                            <div class="input-group mb-3">
+                                <select id="audience" type="text" data-toggle="select" class="form-control"
+                                    name="audience">
+                                    <option value="" selected disabled hidden>please select an option</option>
+                                    <option value="1">All Users</option>
+                                    <option value="2">Mailing List Services Only (Users)</option>
+                                    <option value="3">Expanded Mailing List + Users (Mailing List Services)</option>
+                                    <option value="4">Expanded Mailing List Only</option>
+                                    <option value="5">Specific Course Recipients</option>
+                                    <option value="6">Specific Recipients, Listed below, Comma separated</option>
+                                </select>
+                            </div>
+
+                            <label for="audience_specify">Specify Audience (required if 5 or 6 selected above, 5 asset id of course, 6 comma separated email addresses)</label>
+                            <div class="input-group mb-3">
+                                <textarea id="audience_specify" type="text" data-toggle="autosize" class="form-control"
+                                    name="audience_specify"></textarea>
+                            </div>
 
                             <input type="hidden" name="active">
                         </div>
@@ -224,8 +235,8 @@
 
                                 <textarea data-id="<?php echo $value['id'];?>" data-type="text"
                                     data-sort-order="<?php echo $x;?>" type="text" data-toggle="autosize"
-                                    class="form-control p-2 emailContent"
-                                    name="id" data-toggle="autosize"><?php echo $value['text'];?></textarea>
+                                    class="form-control p-2 emailContent" name="id"
+                                    data-toggle="autosize"><?php echo $value['text'];?></textarea>
                                 <div class="input-group-append">
 
                                     <span class="input-group-text delete-email-content"
@@ -265,7 +276,7 @@
                             img</button>
                         <button class="addVideo btn btn-sm m-2 px-2 py-0 bg-gieqsGold text-dark form-control">+
                             video</button>
-                            <button class="addTextButton btn btn-sm m-2 px-2 py-0 bg-gieqsGold text-dark form-control">+
+                        <button class="addTextButton btn btn-sm m-2 px-2 py-0 bg-gieqsGold text-dark form-control">+
                             button</button>
 
 
@@ -279,33 +290,34 @@
                 </div>
             </div>
             <div class="modal-footer">
-            <?php
+                <?php
             if ($emails->getactive() == '1'){
 ?>
 
-<button type="button" class="btn btn-sm btn-warning uncommitEmail">Edit Email</button>
+                <button type="button" class="btn btn-sm btn-warning uncommitEmail">Edit Email</button>
 
 
 
 
 
-<?php
+                <?php
             }else{?>
 
-<?php if ($sent === true){?>
+                <?php if ($sent === true){?>
 
-<button type="button" class="btn btn-sm bg-gieqsGold text-dark clearRecipients">Clear Recipients</button>
-
-
-
-<?php }?>
-
-<button type="button" class="btn btn-sm btn-warning text-dark commitEmail">Commit Email</button>
-<button type="button" class="btn btn-sm bg-gieqsGold text-dark testEmail">Send Test Email</button>
+                <button type="button" class="btn btn-sm bg-gieqsGold text-dark clearRecipients">Clear
+                    Recipients</button>
 
 
 
-          <?php  }?>
+                <?php }?>
+
+                <button type="button" class="btn btn-sm btn-warning text-dark commitEmail">Commit Email</button>
+                <button type="button" class="btn btn-sm bg-gieqsGold text-dark testEmail">Send Test Email</button>
+
+
+
+                <?php  }?>
 
 
                 <button type="button" class="btn btn-sm btn-info launchViewer">Launch Viewer Window</button>

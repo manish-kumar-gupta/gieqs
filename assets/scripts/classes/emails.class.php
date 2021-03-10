@@ -38,6 +38,7 @@ Class emails {
 	private $preheader; //varchar(800)
 	private $active; //varchar(11)
 	private $audience; //varchar(11)
+	private $audience_specify; //varchar(1000)
 	private $connection;
 
 	public function __construct(){
@@ -53,13 +54,15 @@ Class emails {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_emails($email_id,$name,$subject,$preheader,$active,$audience){
+	public function New_emails($email_id,$name,$subject,$preheader,$active,$audience,$audience_specify){
 		$this->email_id = $email_id;
 		$this->name = $name;
 		$this->subject = $subject;
 		$this->preheader = $preheader;
 		$this->active = $active;
 		$this->audience = $audience;
+		$this->audience_specify = $audience_specify;
+
 	}
 
     /**
@@ -78,6 +81,8 @@ Class emails {
 			$this->preheader = $row["preheader"];
 			$this->active = $row["active"];
 			$this->audience = $row["audience"];
+			$this->audience_specify = $row["audience_specify"];
+
 		}
 	}
     /**
@@ -102,6 +107,8 @@ $q = "Select * from `emails` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["preheader"] = $row["preheader"];
 			$rowReturn[$x]["active"] = $row["active"];
 			$rowReturn[$x]["audience"] = $row["audience"];
+			$rowReturn[$x]["audience_specify"] = $row["audience_specify"];
+
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -130,6 +137,8 @@ $q = "Select * from `emails` WHERE `id` = $key";
 			$rowReturn[$x]["preheader"] = $row["preheader"];
 			$rowReturn[$x]["active"] = $row["active"];
 			$rowReturn[$x]["audience"] = $row["audience"];
+			$rowReturn[$x]["audience_specify"] = $row["audience_specify"];
+
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -433,6 +442,13 @@ $q = "UPDATE `emails` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return audience_specify - varchar(1000)
+	 */
+	public function getaudience_specify(){
+		return $this->audience_specify;
+	}
+
+	/**
 	 * @param Type: int(11)
 	 */
 	public function setid($id){
@@ -479,6 +495,14 @@ $q = "UPDATE `emails` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function setaudience($audience){
 		$this->audience = $audience;
+	}
+
+	
+	/**
+	 * @param Type: varchar(1000)
+	 */
+	public function setaudience_specify($audience_specify){
+		$this->audience_specify = $audience_specify;
 	}
 
     /**

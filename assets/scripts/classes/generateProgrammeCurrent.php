@@ -126,6 +126,7 @@
                         //echo the title first
 
                         $programmes = $programmeView->getProgrammes($programme1);
+                        $programme->Load_from_key($programme1);
                         if ($debug){
 
                             echo '<br/><br/>programmes Array contains </br></br>';
@@ -136,6 +137,15 @@
                         ?>
 <div id="<?php echo $programmeDate->format('l');?>Programme" class="<?php echo $programmeDate->format('l');?>">
     <!--container-->
+
+
+    <div class="row text-left">
+        <div class="d-flex col-lg-12 p-1 pb-3 pt-3">
+            <a class="btn btn-sm text-dark gieqsGoldBackground" role="button" href="<?php echo $programme->geturl_zoom();?>" target="_blank">LIVE - Access Zoom Meeting</a>
+
+            
+        </div>
+    </div>
 
     <div class="row text-left">
         <div class="d-flex col-lg-12 p-1 pb-3 pt-3">
