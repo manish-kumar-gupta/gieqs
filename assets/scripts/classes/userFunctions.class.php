@@ -794,6 +794,41 @@ Class userFunctions {
 
 		}
 
+		public function getMailListServicesEmails()
+            {
+            
+
+            $q = "SELECT `email` FROM `users` WHERE `emailServices` = '1' OR `emailServices` IS NULL";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn[] = $row['email'];
+					
+
+
+				}
+
+				return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+		}
+
 		public function getMailListExpandedNoOptOut()
             {
             
@@ -864,6 +899,41 @@ Class userFunctions {
 
 		}
 
+		public function getMailListAllEmails()
+            {
+            
+
+            $q = "SELECT `email` FROM `users`";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn[] = $row['email'];
+					
+
+
+				}
+
+				return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+		}
+
 		public function getMailListAlreadyMailed($email_id)
             {
             
@@ -884,6 +954,41 @@ Class userFunctions {
                 while($row = $result->fetch(PDO::FETCH_ASSOC)){
 
 					$rowReturn[] = $row['user_id'];
+					
+
+
+				}
+
+				return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+		}
+
+		public function getMailListAlreadyMailedUsingEmail($email_id)
+            {
+            
+
+            $q = "SELECT `email` FROM `user_email` WHERE `email_id` = '$email_id' GROUP BY `email`";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn[] = $row['email'];
 					
 
 

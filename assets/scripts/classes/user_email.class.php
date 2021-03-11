@@ -30,6 +30,7 @@ Class user_email {
 	private $id; //int(11)
 	private $user_id; //int(11)
 	private $email_id; //varchar(50)
+	private $email; //varchar(200)
 	private $connection;
 
 	public function __construct(){
@@ -40,9 +41,11 @@ Class user_email {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_user_email($user_id,$email_id){
+	public function New_user_email($user_id,$email_id,$email){
 		$this->user_id = $user_id;
 		$this->email_id = $email_id;
+		$this->email = $email;
+
 	}
 
     /**
@@ -57,6 +60,8 @@ Class user_email {
 			$this->id = $row["id"];
 			$this->user_id = $row["user_id"];
 			$this->email_id = $row["email_id"];
+			$this->email = $row["email"];
+
 		}
 	}
     /**
@@ -77,6 +82,7 @@ $q = "Select * from `user_email` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["id"] = $row["id"];
 			$rowReturn[$x]["user_id"] = $row["user_id"];
 			$rowReturn[$x]["email_id"] = $row["email_id"];
+			$rowReturn[$x]["email"] = $row["email"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -101,6 +107,8 @@ $q = "Select * from `user_email` WHERE `id` = $key";
 			$rowReturn[$x]["id"] = $row["id"];
 			$rowReturn[$x]["user_id"] = $row["user_id"];
 			$rowReturn[$x]["email_id"] = $row["email_id"];
+			$rowReturn[$x]["email"] = $row["email"];
+
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -376,6 +384,13 @@ $q = "UPDATE `user_email` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return email - varchar(200)
+	 */
+	public function getemail(){
+		return $this->email;
+	}
+
+	/**
 	 * @param Type: int(11)
 	 */
 	public function setid($id){
@@ -394,6 +409,13 @@ $q = "UPDATE `user_email` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function setemail_id($email_id){
 		$this->email_id = $email_id;
+	}
+
+	/**
+	 * @param Type: varchar(200)
+	 */
+	public function setemail($email){
+		$this->email = $email;
 	}
 
     /**
