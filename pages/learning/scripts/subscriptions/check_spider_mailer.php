@@ -12,6 +12,6 @@ require BASE_URI . '/assets/scripts/interpretUserAccess.php';
 
 
 error_reporting(E_ALL);
-require_once '../../../../../../scripts/spider_emailer.php';
+require_once 'home/u8l2e829uoi9/scripts/spider_emailer.php';
 echo 'hello';
 
