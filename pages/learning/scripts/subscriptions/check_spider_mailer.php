@@ -3,10 +3,10 @@ $openaccess = 0;
 
 $requiredUserLevel = 1;
 
-echo 'hello';
 
 error_reporting(E_ALL);
 require_once '../../../../assets/includes/config.inc.php';
+echo 'hello';
 
 require BASE_URI . '/assets/scripts/interpretUserAccess.php';
 
