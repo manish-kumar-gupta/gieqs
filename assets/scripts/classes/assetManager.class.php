@@ -45,7 +45,7 @@ Class assetManager {
             require_once(BASE_URI . '/assets/scripts/classes/programmeView.class.php');
             $this->programmeView = new programmeView;
             require_once(BASE_URI . '/assets/scripts/classes/userFunctions.class.php');
-            $this->userFunctons = new userFunctions;
+            $this->userFunctons = new userFunctions();
 
 
        
