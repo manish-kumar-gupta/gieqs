@@ -44,8 +44,7 @@ Class assetManager {
             $this->sessionView = new sessionView();
             require_once(BASE_URI . '/assets/scripts/classes/programmeView.class.php');
             $this->programmeView = new programmeView;
-            require_once(BASE_URI . '/assets/scripts/classes/userFunctions.class.php');
-            $this->userFunctons = new userFunctions();
+           
 
 
        
@@ -3307,7 +3306,7 @@ public function returnVideoDenominatorSelect2()
 
                     
                     
-                    $rowReturn[$x] = $this->userFunctions->getUserEmail($row['user_id']);
+                    $rowReturn[$x] = $row['user_id'];
                     
  
 
