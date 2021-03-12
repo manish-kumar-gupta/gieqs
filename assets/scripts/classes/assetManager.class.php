@@ -3281,7 +3281,7 @@ public function returnVideoDenominatorSelect2()
             {
             //via subscriptions
 
-            $q = "Select c.`id`, c.`email`
+            $q = "Select c.`id`, c.`user_id`
             FROM `subscriptions` as c
             WHERE c.`asset_id` = '$assetid'
             AND c.`active` = '1'
@@ -3304,8 +3304,9 @@ public function returnVideoDenominatorSelect2()
                 while($row = $result->fetch(PDO::FETCH_ASSOC)){
 
                     
-        
-                    $rowReturn[$x] = $row['email'];
+                    $user_id = null;
+                    $user_id = $row['user_id'];
+                    $rowReturn[$x] = $this->getUserEmail($user_id);
                     
  
 
@@ -3321,6 +3322,28 @@ public function returnVideoDenominatorSelect2()
                 return false;
             }
 
+        }
+
+        public function getUserEmail($user_id){
+
+            $q = "SELECT `email` FROM `users` WHERE `user_id` = '$user_id'";
+            //echo $q;
+    
+            $result = $this->connection->RunQuery($q);
+            $nRows = $result->rowCount();
+                if ($nRows == 1){
+    
+                    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+    
+                        $email = $row['email'];
+                    }
+    
+                    return $email;
+                }else{
+                    return FALSE;
+                }
+    
+    
         }
 
 
