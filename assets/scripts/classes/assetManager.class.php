@@ -44,6 +44,8 @@ Class assetManager {
             $this->sessionView = new sessionView();
             require_once(BASE_URI . '/assets/scripts/classes/programmeView.class.php');
             $this->programmeView = new programmeView;
+            require_once(BASE_URI . '/assets/scripts/classes/userFunctions.class.php');
+            $this->userFunctons = new userFunctions;
 
 
        
@@ -3305,7 +3307,7 @@ public function returnVideoDenominatorSelect2()
 
                     
                     
-                    $rowReturn[$x] = $this->getUserEmail($row['user_id']);
+                    $rowReturn[$x] = $this->userFunctions->getUserEmail($row['user_id']);
                     
  
 
@@ -3323,27 +3325,7 @@ public function returnVideoDenominatorSelect2()
 
         }
 
-        public function getUserEmail($user_id){
-
-            $q = "SELECT `email` FROM `users` WHERE `user_id` = '$user_id'";
-            //echo $q;
-    
-            $result = $this->connection->RunQuery($q);
-            $nRows = $result->rowCount();
-                if ($nRows > 0){
-    
-                    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-    
-                        $email = $row['email'];
-                    }
-    
-                    return $email;
-                }else{
-                    return FALSE;
-                }
-    
-    
-        }
+        
 
 
         public function getSuperCategories(){

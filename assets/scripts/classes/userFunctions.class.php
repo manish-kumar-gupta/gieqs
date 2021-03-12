@@ -92,6 +92,28 @@ Class userFunctions {
 
 	}
 
+	public function getUserEmail($user_id){
+
+		$q = "SELECT `email` FROM `users` WHERE `user_id` = '$user_id'";
+		//echo $q;
+
+		$result = $this->connection->RunQuery($q);
+		$nRows = $result->rowCount();
+			if ($nRows > 0){
+
+				while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+					$email = $row['email'];
+				}
+
+				return $email;
+			}else{
+				return FALSE;
+			}
+
+
+	}
+
 	public function getUserKey($userid){
 
         $q = "SELECT `key` FROM `users` WHERE `user_id` = '$userid'";
