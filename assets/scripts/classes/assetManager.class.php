@@ -3304,9 +3304,8 @@ public function returnVideoDenominatorSelect2()
                 while($row = $result->fetch(PDO::FETCH_ASSOC)){
 
                     
-                    $user_id = null;
-                    $user_id = $row['user_id'];
-                    $rowReturn[$x] = $this->getUserEmail($user_id);
+                    
+                    $rowReturn[$x] = $this->getUserEmail($row['user_id']);
                     
  
 
@@ -3331,7 +3330,7 @@ public function returnVideoDenominatorSelect2()
     
             $result = $this->connection->RunQuery($q);
             $nRows = $result->rowCount();
-                if ($nRows == 1){
+                if ($nRows > 0){
     
                     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
     
