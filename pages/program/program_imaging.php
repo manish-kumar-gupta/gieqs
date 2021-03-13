@@ -1300,7 +1300,7 @@ $general = new general;
 
                             if (externalTest.location_jump){
 
-                                window.location.href = externalTest.location;
+                                window.location.href = externalTest.location_jump;
                             
                             }
 
