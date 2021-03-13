@@ -45,6 +45,33 @@ require_once BASE_URI .'/../scripts/config.php';
 //check the correct user
 //check the subscription exists
 
+require_once BASE_URI . "/vendor/autoload.php";
+
+spl_autoload_unregister ('class_loader');
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+$mail = new PHPMailer;
+
+
+
+$debug = FALSE;
+
+if ($debug){
+
+    error_reporting(E_ALL);
+}
+
+function get_include_contents($filename, $variablesToMakeLocal) {
+    extract($variablesToMakeLocal);
+    if (is_file($filename)) {
+        ob_start();
+        include $filename;
+        return ob_get_clean();
+    }
+    return false;
+}
+
 print_r($_POST);
 
 if (isset($_POST['subscription_id'])){
@@ -93,6 +120,10 @@ if (isset($asset_id)){
 
 //old subscription
 $subscription_to_return = array();
+
+//already has subscription?
+
+
 
 $assets_paid->Load_from_key($asset_id);
 
