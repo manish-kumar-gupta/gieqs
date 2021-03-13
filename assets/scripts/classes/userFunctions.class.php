@@ -144,6 +144,7 @@ Class userFunctions {
 		return $emails;
 
 
+
 	}
 
 	public function getUserKey($userid){
@@ -257,6 +258,29 @@ Class userFunctions {
                 }
 
 				return $userid;
+			}else{
+				return FALSE;
+			}
+
+
+    }
+
+	public function isUserInEmailDatabase($email){
+
+        $q = "SELECT `id` FROM `emailList` WHERE `email` COLLATE UTF8_GENERAL_CI LIKE '$email'";
+        //echo $q;
+
+        $result = $this->connection->RunQuery($q);
+		$nRows = $result->rowCount();
+			if ($nRows == 1){
+
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                    $id = $row['id'];
+
+                }
+
+				return $id;
 			}else{
 				return FALSE;
 			}

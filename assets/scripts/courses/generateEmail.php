@@ -1481,7 +1481,7 @@ $x++;
                                                                                     <br>
                                                                                     <br>
                                                                                     To unsubscribe, please click
-                                                                                    <a href="https://www.gieqs.com/assets/scripts/unsubscribeUser.php?key=<?php echo '<?php echo $key;?>';?>"
+                                                                                    <a href="https://www.gieqs.com/assets/scripts/unsubscribeUserEmail.php?key=<?php echo '<?php echo $key;?>';?>"
                                                                                         style="mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#FFFFFF;font-weight:normal;text-decoration:underline;">here
                                                                                     </a>
                                                                                     <br>
