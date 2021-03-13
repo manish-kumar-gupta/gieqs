@@ -88,6 +88,8 @@ background-color: rgb(238, 194, 120);
         <?php require BASE_URI . '/nav.php';?>
 
         <?php $signup_redirect = $_GET['signup_redirect'];?>
+        <?php $access_token = $_GET['access_token'];?>
+
 
     </header>
   
@@ -134,6 +136,12 @@ background-color: rgb(238, 194, 120);
                           $link = BASE_URL . '/pages/learning/index.php';
                           $link_text = 'Continue to GIEQs Online';
 
+
+                        }
+
+                        if (isset($access_token)){
+
+                          $link_text .= '&access_token=' . $access_token;
 
                         }
                         

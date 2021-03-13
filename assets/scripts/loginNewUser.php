@@ -90,8 +90,17 @@ if (count($_GET) > 0){
             //redirect gieqs.com
 
            
+                if ($access_token){
 
+                    redirect_login(BASE_URL . '/pages/authentication/welcomeNewUser.php?signup_redirect=' . $signup_redirect . '&access_token=' . $access_token);
+
+
+                }else{
+
+                
                 redirect_login(BASE_URL . '/pages/authentication/welcomeNewUser.php?signup_redirect=' . $signup_redirect);
+
+                }
 
             
 
