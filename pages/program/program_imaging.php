@@ -1298,7 +1298,7 @@ $general = new general;
                         
                         try {
 
-                            if (externalTest.location){
+                            if (externalTest.location_jump){
 
                                 window.location.href = externalTest.location;
                             
