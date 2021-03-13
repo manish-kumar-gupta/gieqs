@@ -141,7 +141,7 @@ background-color: rgb(238, 194, 120);
 
                         if (isset($access_token)){
 
-                          $link_text .= '&access_token=' . $access_token;
+                          $link .= '&access_token=' . $access_token;
 
                         }
                         
