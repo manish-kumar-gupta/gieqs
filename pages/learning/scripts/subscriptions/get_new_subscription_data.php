@@ -111,7 +111,17 @@ if ($assetManager->doesUserHaveSameAssetAlready($asset_id, $userid, $debug)) {
     if ($verbose) {
 
         //print_r($review);
-        echo 'You have already purchased this! If you believe there is a mistake or you have an access issue please contact us!';
+        //echo 'You have already purchased this! If you believe there is a mistake or you have an access issue please contact us!';
+
+
+        //go to that asset
+
+        $location = BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=' . $asset_id;
+
+        header("Location: $location");
+
+
+
     }
 
     if ($debug) {
