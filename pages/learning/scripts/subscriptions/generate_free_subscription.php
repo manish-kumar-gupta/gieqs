@@ -123,6 +123,13 @@ $subscription_to_return = array();
 
 //already has subscription?
 
+if ($assetManager->doesUserHaveSameAssetAlready($asset_id, $userid, false)){ //if a subscription to this asset already exists
+
+    echo 'You already own this asset and it is active, so you can\'t purchase it again';
+    echo 'Return <a href="www.gieqs.com">home</a>';
+
+}
+
 
 
 $assets_paid->Load_from_key($asset_id);
@@ -340,6 +347,7 @@ $subscription_to_return['user_id'] = $userid;
         $emailVaryarray['expiry_date'] = $end_date_user_readable;
         $emailVaryarray['cost'] = '&euro; 0 via FREE CODE';
         $emailVaryarray['key'] = $users->getkey();
+        $emailVaryarray['gateway_transactionId'] = 'TOKEN SUBSCRIPTION NO PAYMENT';
         $emailVaryarray['preheader'] = $preheader;
     
 
