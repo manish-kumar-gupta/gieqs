@@ -245,7 +245,7 @@ Class userFunctions {
 
     public function getUserFromEmail($email){
 
-        $q = "SELECT `user_id` FROM `users` WHERE `email` = '$email'";
+        $q = "SELECT `user_id` FROM `users` WHERE `email` COLLATE UTF8_GENERAL_CI LIKE '$email'";
         //echo $q;
 
         $result = $this->connection->RunQuery($q);

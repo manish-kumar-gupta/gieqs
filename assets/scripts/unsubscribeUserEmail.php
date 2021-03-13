@@ -124,8 +124,7 @@ if (count($_GET) > 0){
     }else{
         
         
-            echo 'We had a problem updating your email preferences.  Please go to your account in GIEQs online 
-            and update your preferences from there.';
+            echo 'Your email preferences were updated.';
             die();
             
 
