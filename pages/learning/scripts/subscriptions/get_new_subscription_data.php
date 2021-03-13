@@ -116,9 +116,18 @@ if ($assetManager->doesUserHaveSameAssetAlready($asset_id, $userid, $debug)) {
 
         //go to that asset
 
+        $subscription_to_return = array();
+
         $location = BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=' . $asset_id;
 
-        header("Location: $location");
+        $subscription_to_return['location_jump'] = $location;
+        echo json_encode($subscription_to_return);
+
+        
+
+       
+
+        die();
 
 
 

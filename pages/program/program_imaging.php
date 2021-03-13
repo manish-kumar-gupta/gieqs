@@ -1295,6 +1295,24 @@ $general = new general;
                     console.dir(externalTest);
                     if (data) {
 
+                        
+                        try {
+
+                            if (externalTest.location){
+
+                                window.location.href = externalTest.location;
+                            
+                            }
+
+                        }catch(error){
+
+
+
+                        }
+                        
+                        
+                        
+
                         $('.modal-new #asset-name').text(externalTest.asset_name);
                         $('.modal-new #asset-type').text(externalTest.asset_type);
                         $('.modal-new #renew-frequency').text(externalTest.renew_frequency);
@@ -1319,7 +1337,7 @@ $general = new general;
 
                     }
 
-                } catch (error) {
+                } catch (error) 
 
                     alert(data);
                     $(button).find('i').remove();
