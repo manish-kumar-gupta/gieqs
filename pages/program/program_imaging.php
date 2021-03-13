@@ -142,7 +142,7 @@ $general = new general;
 
                             $asset_id_pagewrite = '14';
 
-                            if ($assetManager->$doesUserHaveSameAssetAlready($asset_id_pagewrite, $userid, false)){
+                            if ($assetManager->doesUserHaveSameAssetAlready($asset_id_pagewrite, $userid, false)){
                                 //user owns This
                                 ?>
 
