@@ -1327,10 +1327,7 @@ $general = new general;
 
                     } else {
 
-                        alert(
-                            'Something went wrong.  We could not load the subscription data.'
-                            );
-
+                        alert('Something went wrong.  We could not load the subscription data.');
                         $(this).find('i').remove();
                         $(this).attr('disabled', false);
 
