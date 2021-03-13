@@ -131,11 +131,44 @@ $general = new general;
                             <span class="btn-inner--text text-dark">View Programme</span>
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         </a>
-                        <a data-assetid="14"
-                            class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
-                            <span class="btn-inner--text text-dark">Register Now!</span>
-                            <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
-                        </a>
+
+                        <?php if ($userid){
+
+                            $asset_id_pagewrite = '14';
+
+                            if ($assetManager->$doesUserHaveSameAssetAlready($asset_id_pagewrite, $userid, false)){
+                                //user owns This
+
+
+                                <a data-assetid="<?php echo $asset_id_pagewrite; ?>>"
+                                    class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
+                                    <span class="btn-inner--text text-dark">View My Course!</span>
+                                    <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+                                </a>
+
+
+                             
+                        
+                        
+                        ?>
+
+                        
+
+                        <?php }else{?>
+
+                            <a data-assetid="<?php echo $asset_id_pagewrite; ?>>"
+                                class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
+                                <span class="btn-inner--text text-dark">Register Now!</span>
+                                <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+                            </a>
+
+                        <?php
+                      
+                        }//close if owns this
+
+                    }//close if user id
+                        
+                        ?>
                     </div>
 
                 </div>
