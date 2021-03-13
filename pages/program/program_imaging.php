@@ -712,7 +712,17 @@ $general = new general;
                         <p class="text-white"><span class="text-muted" id="asset-type"></span></p>
                         <p class="text-white">Duration : <span class="text-muted" id="renew-frequency"></span><span
                                 class="text-muted"> Month(s) after Live Date</span></p>
-                        <p class="text-white">Cost : <span class="text-muted" id="cost">&euro;</span></p>
+                        <p class="text-white">Cost : 
+                            <?php 
+                            if (isset($access_token) && ($access_token == '8874101655')){
+
+                                echo ' FREE';
+
+                            }else{?>
+                            
+                            <span class="text-muted" id="cost">&euro;</span></p>
+
+                            <?php }?>
 
 
                         <p class="text-white text-justify mt-4">

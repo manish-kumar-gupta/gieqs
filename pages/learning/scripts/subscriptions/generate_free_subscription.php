@@ -338,7 +338,7 @@ $subscription_to_return['user_id'] = $userid;
         $emailVaryarray['asset_type'] = $assetManager->getAssetTypeText($assetManager->getAssetType($subscription_id));
         $emailVaryarray['renew_frequency'] = $assets_paid->getrenew_frequency();
         $emailVaryarray['expiry_date'] = $end_date_user_readable;
-        $emailVaryarray['cost'] = '&euro; 0';
+        $emailVaryarray['cost'] = '&euro; 0 via FREE CODE';
         $emailVaryarray['key'] = $users->getkey();
         $emailVaryarray['preheader'] = $preheader;
     
