@@ -766,12 +766,12 @@ $general = new general;
 
             //allow free register
 
-            $form_action_path = BASE_URL . '/pages/learning/scripts/subscriptions/generate_free_subscription.php'
+            $form_action_path = BASE_URL . '/pages/learning/scripts/subscriptions/generate_free_subscription.php';
 
 
         }else{
 
-            $form_action_path = BASE_URL . '/pages/learning/scripts/subscriptions/charge.php'
+            $form_action_path = BASE_URL . '/pages/learning/scripts/subscriptions/charge.php';
 
 
         }
