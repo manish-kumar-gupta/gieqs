@@ -38,7 +38,18 @@ if (isset($_GET['destination'])) {
 
   }else if ($destination == 'imaging_signup'){
 
-    $target = '/pages/program/program_imaging.php?action=register';
+    if (isset($_GET['access_token'])){
+
+      $access_token = $_GET['access_token'];
+      $target = '/pages/program/program_imaging.php?action=register&access_token=' . $access_token;
+
+    }else{
+
+      $target = '/pages/program/program_imaging.php?action=register';
+
+    }
+
+    
 
 
   }else if ($destination == 'gieqsonline'){

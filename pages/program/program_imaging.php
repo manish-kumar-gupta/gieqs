@@ -1190,9 +1190,23 @@ $general = new general;
 
         $('#button-login').click(function() {
 
+            <?php 
+            if ($access_validated){
+                ?>
+
+window.location = siteRoot +
+            "pages/authentication/login.php?destination=imaging_signup&access_token=<?php echo $access_token;?>";
+
+<?php 
+            }else{
+                ?>
 
             window.location = siteRoot +
             "pages/authentication/login.php?destination=imaging_signup";
+
+            <?php
+            }
+            ?>
 
 
         })
