@@ -138,7 +138,7 @@ $general = new general;
 
                             if ($assetManager->$doesUserHaveSameAssetAlready($asset_id_pagewrite, $userid, false)){
                                 //user owns This
-
+                                ?>
 
                                 <a data-assetid="<?php echo $asset_id_pagewrite; ?>>"
                                     class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
@@ -150,11 +150,11 @@ $general = new general;
                              
                         
                         
-                        ?>
+                   
 
                         
 
-                        <?php }else{?>
+                        <?php }else{ ?>
 
                             <a data-assetid="<?php echo $asset_id_pagewrite; ?>>"
                                 class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
