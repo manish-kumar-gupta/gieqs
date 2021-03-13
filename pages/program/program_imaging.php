@@ -21,6 +21,17 @@ if (isset($_GET["action"])){
 
 }
 
+if (isset($_GET["access_token"])){
+    $access_token = $_GET["access_token"];
+  
+  }else{
+  
+    $access_token = null;
+  
+  }
+
+
+
 $general = new general;
 
 
@@ -89,6 +100,7 @@ $general = new general;
         <?php require BASE_URI . '/nav.php';?>
 
         <div id="action" style="display:none;"><?php if ($action){echo $action;}?></div>
+        <div id="access_token" style="display:none;"><?php if ($access_token){echo $access_token;}?></div>
 
 
     </header>
@@ -745,9 +757,30 @@ $general = new general;
                 </p>
             </div>
         </div>
+
+        <?php 
+
+        //determine action 
+
+        if (isset($access_token) && ($access_token == '8874101655')){
+
+            //allow free register
+
+            $form_action_path = BASE_URL . '/pages/learning/scripts/subscriptions/generate_free_subscription.php'
+
+
+        }else{
+
+            $form_action_path = BASE_URL . '/pages/learning/scripts/subscriptions/charge.php'
+
+
+        }
+
+
+        ?>
         <div class="modal-footer">
             <button type="button" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</button>
-            <form id="confirm-new" action="<?php echo BASE_URL;?>/pages/learning/scripts/subscriptions/charge.php"
+            <form id="confirm-new" action="<?php echo $form_action_path;?>"
                 method="POST">
                 <input type="hidden" id="asset_id_hidden" name="asset_id" value="">
                 <input type="hidden" id="course_date" name="course_date" value="2021-03-16 08:00">
@@ -932,6 +965,13 @@ $general = new general;
     } else {
 
         var videoPassed = false;
+    }
+
+    if ($("#access_token").text() != '') {
+        var access_token = $("#access_token").text();
+    } else {
+
+        var access_token = false;
     }
 
 
