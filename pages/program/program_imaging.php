@@ -8,6 +8,9 @@
 
 //define user access level
 
+require_once(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
+$assetManager = new assetManager;
+
 $openaccess = 1;
 
 require BASE_URI . '/headNoPurposeCore.php';
