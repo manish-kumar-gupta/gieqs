@@ -189,6 +189,7 @@ $subscription_to_return['user_id'] = $userid;
 
         //inserted from success.php , modified here does not modify there
 
+        $subscription_id = $newSubscriptionid;
 
         $asset_id = $assetManager->getAssetid($subscription_id);
 
