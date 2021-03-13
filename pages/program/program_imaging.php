@@ -686,6 +686,18 @@ $general = new general;
         </section>
     </div>
 
+    <?php 
+                            if (isset($access_token) && ($access_token == '8874101655')){
+
+                               $access_validated = true;
+
+                            }else{
+                            
+                                $access_validated = false;
+                            
+
+                             }?>
+
 
     <!-- Modals NEW GENERIC -->
 
@@ -714,9 +726,9 @@ $general = new general;
                                 class="text-muted"> Month(s) after Live Date</span></p>
                         <p class="text-white">Cost : 
                             <?php 
-                            if (isset($access_token) && ($access_token == '8874101655')){
+                            if ($access_validated){
 
-                                echo ' FREE';
+                                echo ' FREE with your Complimentary Link';
 
                             }else{?>
                             
@@ -751,8 +763,10 @@ $general = new general;
 
                 <?php }else{?>
 
+                    <?php if (!($access_validated)){?>
+
                 <p class="text-sm mt-4">
-                    By clicking confirm you will be taken to PayPal to start the payment process.
+                    By clicking Start Payment you will be taken to PayPal to start the payment process.
                     The payment process is not final until you confirm with the payment provider.
                     Once complete your subscription will be active immediately and you will receive a
                     confirmation email.
@@ -765,6 +779,16 @@ $general = new general;
                         href="<?php echo BASE_URL;?>/pages/support/support_gieqs_online_terms.php" target="_blank">terms
                         and conditions</a>.
                 </p>
+
+                <?php }else{?>
+
+                    <p class="text-sm mt-4">
+
+                        No payment is required for this subscription.
+                    </p>
+
+
+                <?php }   ?>
             </div>
         </div>
 
@@ -772,7 +796,7 @@ $general = new general;
 
         //determine action 
 
-        if (isset($access_token) && ($access_token == '8874101655')){
+        if ($access_validated){
 
             //allow free register
 
@@ -797,7 +821,7 @@ $general = new general;
                 <!-- CHANGE ME UPDATE TODO MAKE THIS COME FROM THE PROGRAM -->
 
                 <input type="submit" id="button-confirm-new" class="btn btn-sm btn-white button-confirm-new"
-                    value="Start Payment">
+                    value="<?php $result = $access_validated ? 'Register' : 'Start Payment'; echo $result;?>">
             </form>
         </div>
 
