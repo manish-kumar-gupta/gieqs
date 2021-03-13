@@ -237,7 +237,8 @@ if (array_key_exists('paymentId', $_GET) && array_key_exists('PayerID', $_GET)) 
 
             }else if ($asset_type == '3'){ //GIEQs Virtual / Live Course
 
-                $filename = '/assets/email/subscriptions/newSubscriptionCourse.php';
+                //$filename = '/assets/email/subscriptions/newSubscriptionCourse.php'; REINSTATE IF VIRTUAL, TODO DETERMINE THIS
+                $filename = '/assets/email/subscriptions/onboarding_course_Zoom.php';
                 $subject = 'Thank-you for Your GIEQs Online Course Purchase';
                 $preheader = 'Your course awaits! Check out this mail for information on joining and catch-up. Thank you for your support of GIEQs Online';
                 $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $subscription_id;
