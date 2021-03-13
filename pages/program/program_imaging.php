@@ -141,7 +141,7 @@ $general = new general;
                         <?php 
                         
                         $asset_id_pagewrite = '14';
-                        
+
                         if ($userid){
 
                             
@@ -1016,7 +1016,18 @@ $general = new general;
                             </div>
                         </div>
 
-                        <input type="hidden" name="signup_redirect" value="basic_colon">
+                        <input type="hidden" name="signup_redirect" value="imaging">
+
+                        <?php if ($access_validated){
+
+                            ?>
+                        <input type="hidden" name="access_token" value="true">
+
+                        <?php
+                        }
+                       
+
+                        ?>
 
                     </form>
                 </div>

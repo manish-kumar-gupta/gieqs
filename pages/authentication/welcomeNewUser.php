@@ -123,6 +123,12 @@ background-color: rgb(238, 194, 120);
                           $link_text = 'Continue to Course Booking';
 
 
+                        }elseif ($signup_redirect == 'imaging'){
+
+                          $link = BASE_URL . '/pages/program/program_imaging.php?action=register';
+                          $link_text = 'Continue to Course Booking';
+
+
                         }else{
 
                           $link = BASE_URL . '/pages/learning/index.php';
@@ -130,6 +136,7 @@ background-color: rgb(238, 194, 120);
 
 
                         }
+                        
 
                      ?>
 
