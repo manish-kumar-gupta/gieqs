@@ -1334,7 +1334,7 @@ $general = new general;
 
                     }
 
-                } catch (error) 
+                } catch (error) {
 
                     alert(data);
                     $(button).find('i').remove();
