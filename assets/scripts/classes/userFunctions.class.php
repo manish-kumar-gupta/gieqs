@@ -114,6 +114,38 @@ Class userFunctions {
 
 	}
 
+	public function getEmails($array_user_ids){
+
+		$emails = [];
+		$x=0;
+
+		foreach ($array_user_ids as $key=>$value){
+		
+			$q = "SELECT `email` FROM `users` WHERE `user_id` = '$value'";
+		//echo $q;
+
+		$result = $this->connection->RunQuery($q);
+		$nRows = $result->rowCount();
+			if ($nRows == 1){
+
+				while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+					$emails[$x] = $row['email'];
+					$x++;
+				}
+
+				
+			}else{
+				$emails[$x] = null;
+			}
+
+		}
+
+		return $emails;
+
+
+	}
+
 	public function getUserKey($userid){
 
         $q = "SELECT `key` FROM `users` WHERE `user_id` = '$userid'";
