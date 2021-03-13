@@ -3664,6 +3664,9 @@ public function returnVideoDenominatorSelect2()
             //returns array of videos
 
 
+                //REMOVE ONCE WORKING
+
+                $superuser = 1;
 
                 //use all approach to browsing the site
 
