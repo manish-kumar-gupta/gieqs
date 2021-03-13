@@ -146,7 +146,7 @@ $general = new general;
                                 //user owns This
                                 ?>
 
-                                <a data-assetid="<?php echo $asset_id_pagewrite; ?>>"
+                                <a data-assetid="<?php echo $asset_id_pagewrite; ?>"
                                     class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
                                     <span class="btn-inner--text text-dark">View My Course!</span>
                                     <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
@@ -162,7 +162,7 @@ $general = new general;
 
                         <?php }else{ ?>
 
-                            <a data-assetid="<?php echo $asset_id_pagewrite; ?>>"
+                            <a data-assetid="<?php echo $asset_id_pagewrite; ?>"
                                 class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
                                 <span class="btn-inner--text text-dark">Register Now!</span>
                                 <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
