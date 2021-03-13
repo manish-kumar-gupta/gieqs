@@ -138,9 +138,13 @@ $general = new general;
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         </a>
 
-                        <?php if ($userid){
+                        <?php 
+                        
+                        $asset_id_pagewrite = '14';
+                        
+                        if ($userid){
 
-                            $asset_id_pagewrite = '14';
+                            
 
                             if ($assetManager->doesUserHaveSameAssetAlready($asset_id_pagewrite, $userid, false)){
                                 //user owns This
@@ -172,9 +176,19 @@ $general = new general;
                       
                         }//close if owns this
 
-                    }//close if user id
+                    }else{//close if user id
                         
                         ?>
+
+<a data-assetid="<?php echo $asset_id_pagewrite; ?>"
+                                class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
+                                <span class="btn-inner--text text-dark">Register Now!</span>
+                                <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+                            </a>
+
+
+
+<?php }?>
                     </div>
 
                 </div>
