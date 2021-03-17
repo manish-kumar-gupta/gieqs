@@ -381,7 +381,7 @@ background-color: rgb(238, 194, 120);
 			//surely there should be a version involving size...
 		}
 
-	function determineSMIC (kudov, depression, size, location, morphology, paris) {
+	function determineSMIC (kudov, depression, size, location, morphology, paris, debug=false) {
 			
 			if ((kudov == null) || (depression == null) || (size == null) || (location == null) || (morphology == null) || (paris == null)){
 		
@@ -414,6 +414,12 @@ background-color: rgb(238, 194, 120);
 					}
 
 					if (depressionInt == 1){
+
+                        if (debug){
+
+                            console.log(SMICriskOR);
+
+                        }
 
 						SMICriskOR = SMICriskOR + 1.8;
 

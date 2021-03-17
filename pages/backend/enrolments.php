@@ -749,6 +749,7 @@ if ($debug){
 }
 
 echo '<h2>' . $assets_paid->getname() . '</h2>';
+echo 'There are ' . count($owners) . ' registrants';
 echo '<table class="table">';
 
 echo '<tr>';
