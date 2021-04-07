@@ -104,7 +104,7 @@ $formv1 = new formGenerator;
 
 
 
-    <div class="container">
+    <div class="container-fluid">
 
 
 
@@ -164,7 +164,7 @@ $formv1 = new formGenerator;
         </section>
 
         <section class="slice bg-section-secondary">
-            <div class="container">
+            <div class="container-fluid px-5">
 
                 <!-- id check-->
                 <?php
@@ -238,7 +238,7 @@ if ($identifierValue) {
                             <div class="actions"><!-- <a href="#" class="action-item mr-2 active" data-action="search-open"
                                     data-target="#actions-search"><i class="fas fa-search"></i></a> -->
                                     <a href="#" id="add<?php echo $databaseName;?>" class="action-item mr-2 active"><i class="fas fa-plus"></i></a><br/>
-                                    <label for="programmeIdentifier">Programme</label>
+                                    <label for="programmeIdentifier">Programme (select to filter table below)&nbsp</label><span class="cursor-pointer" id="cancelFilter">x</span>
                                         <div class="input-group mb-3">
                                             <select id="programmeIdentifier" type="text" data-toggle="select" class="form-control" name="programmeIdentifier">
                                             <option value="" selected disabled hidden>please select an option</option>
@@ -289,12 +289,12 @@ if ($identifierValue) {
                     <thead>
                     <tr>
                     <!-- EDIT -->
-                        <th>id</th>
+                        <th>programme id</th>
+                        <th>session id</th>
                         <th>timeFrom</th>
                         <th>timeTo</th>
                         <th>title</th>
-                        <th>subtitle</th>
-                        <th>description</th>	
+                       
                         <th>break</th>	
 
                         <th></th>
@@ -676,12 +676,12 @@ $(document).ready(function(){
 
         //EDIT
        columns: [
+        {data: 'programmeid' },
         {data: 'id' },
        {data: 'timeFrom' },
        {data: 'timeTo' },
        {data: 'title' },
-       {data: 'subtitle' },
-       {data: 'description' },
+       
        {data: 'break' },
 
            {
@@ -691,6 +691,18 @@ $(document).ready(function(){
            }
            }
        ],
+
+       "drawCallback": function( settings ) {
+           /*  var currentProgrammeID = localStorage.getItem('session-programmeID');
+
+            if (currentProgrammeID != ''){
+
+                datatable.columns([0]).search(currentProgrammeID).draw();
+
+
+            } */
+    }
+
 
 
 
@@ -720,6 +732,41 @@ $(document).ready(function(){
 
 
     } ); */
+
+
+
+    $(document).on('change', '#programmeIdentifier', function(){
+
+        var programmeID = $('#programmeIdentifier').val();
+
+        if (programmeID){
+
+            datatable.columns([0]).search(programmeID).draw();
+
+            localStorage.setItem('session-programmeID', programmeID);
+
+
+
+        }
+
+
+
+       });
+
+       $(document).on('click', '#cancelFilter', function(){
+
+
+            
+            datatable.columns([0]).search('').draw();
+            $('#programmeIdentifier').val('').trigger('change');
+            localStorage.removeItem('session-programmeID');
+
+
+
+
+        });
+
+
 
     $(document).on('click', '#add<?php echo $databaseName;?>', function() {
 

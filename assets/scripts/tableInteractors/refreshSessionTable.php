@@ -10,8 +10,9 @@ require ('../../../assets/includes/config.inc.php');
 
 
 $session = new session;
+$sessionView = new sessionView;
 
-$response =  $session->Load_records_limit_json_datatables(200);
+$response =  $sessionView->Load_records_session_programme_limit_json_datatables(900000);
 
 echo $response;
 

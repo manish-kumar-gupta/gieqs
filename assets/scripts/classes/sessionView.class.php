@@ -143,6 +143,38 @@ class sessionView
             }
 
         }
+
+        public function Load_records_session_programme_limit_json_datatables($y, $x = 0)
+            {
+            $q = "SELECT a.`id` as `programmeid`, a.`date`,
+            c.`id`, c.`timeFrom`, c.`timeTo`, c.`title`, c.`subtitle`, c.`description`, c.`break`
+            from `programme` as a
+            INNER JOIN `programmeOrder` as b on a.`id` = b.`programmeid` 
+            INNER JOIN `session` as c on b.`sessionid` = c.`id`
+            LIMIT $x, $y";
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+            if ($nRows > 0) {
+
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                    $rowReturn['data'][] = array_map('utf8_encode', $row);
+                }
+            
+                return json_encode($rowReturn);
+
+            } else {
+                
+
+                //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+                $rowReturn['data'] = [];
+                
+                return json_encode($rowReturn);
+            }
+
+        }
         
         
         public function getModerators($sessionid)

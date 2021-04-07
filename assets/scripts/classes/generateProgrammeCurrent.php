@@ -155,13 +155,14 @@
 <div id="<?php echo $programmeDate->format('l');?>Programme" class="<?php echo $programmeDate->format('l');?>">
     <!--container-->
 
-    <div class="row text-left">
+<!-- REENABLE ZOOM LINK-->
+    <!-- <div class="row text-left">
         <div class="d-flex col-lg-12 p-1 pb-3 pt-3">
-            <a class="btn btn-sm text-dark gieqsGoldBackground" role="button" href="<?php echo $programme->geturl_zoom();?>" target="_blank">LIVE - Access Zoom Meeting</a>
+            <a class="btn btn-sm text-dark gieqsGoldBackground" role="button" href="<?php //echo $programme->geturl_zoom();?>" target="_blank">LIVE - Access Zoom Meeting</a>
 
             
         </div>
-    </div>
+    </div> -->
    
 
     <div class="row text-left">
