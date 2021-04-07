@@ -45,7 +45,7 @@ $config["script_url"] = "https://www.gieqs.com/assets/scripts/pdocrud/";
 //Set the host name to connect for database
 $config["hostname"] =  "localhost";
 //Set the database name
-$config["database"] = "learningToolv1";
+$config["database"] = "learnToolv1";
 //Set the username for database access
 $config["username"] = "djt35";
 //Set the pwd for the database user
