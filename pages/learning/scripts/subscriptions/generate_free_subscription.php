@@ -169,8 +169,20 @@ $subscription_to_return['user_id'] = $userid;
 
     if (isset($_POST['course_date'])){
 
-        $end_start_calculate_date = new DateTime($_POST['course_date'], new DateTimeZone('UTC'));
+        $course_date = new DateTime($_POST['course_date'], new DateTimeZone('UTC'));
 
+        //$end_start_calculate_date = new DateTime($_POST['course_date'], new DateTimeZone('UTC'));
+
+        if ($current_date >= $course_date){
+
+            $end_start_calculate_date = new DateTime('now', new DateTimeZone('UTC'));
+
+        }else{
+
+
+            $end_start_calculate_date = $course_date;
+
+        }
 
     }else{
 
