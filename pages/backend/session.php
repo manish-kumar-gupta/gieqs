@@ -794,7 +794,7 @@ $(document).ready(function(){
 
     $(document).on('click', '.fill-modal', function() {
 
-    var targettd = $(this).parent().parent().parent().parent().find('td').first().text();
+    var targettd = $(this).parent().parent().parent().parent().find('td').eq(1).text();
     //console.log(targettd);
     lesionUnderEdit = targettd;
     $('#modalMessageArea').text('Editing <?php echo $databaseName;?> ' + lesionUnderEdit);
@@ -806,7 +806,7 @@ $(document).ready(function(){
 
     $(document).on('click', '.edit-session-view', function() {
 
-    var targettd = $(this).parent().parent().parent().parent().find('td').first().text();
+    var targettd = $(this).parent().parent().parent().parent().find('td').eq(1).text();
     //console.log(targettd);
     lesionUnderEdit = targettd;
     
@@ -819,7 +819,7 @@ $(document).ready(function(){
 
     $(document).on('click', '.delete-row', function() {
 
-    var targettd = $(this).parent().parent().parent().parent().parent().parent().find('td').first().text();
+    var targettd = $(this).parent().parent().parent().parent().parent().parent().find('td').eq(1).text();
     console.log(targettd);
     //$('#modal-session').modal('show');
     deleteRow(targettd);
