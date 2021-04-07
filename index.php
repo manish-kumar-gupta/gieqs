@@ -256,7 +256,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                     <span class="display-4 font-weight-light">GIEQs.  The home of Everyday Endoscopy</span>
                                      
                                     <span class="d-block" style="color: rgb(238, 194, 120);"><strong
-                                            class="font-weight-light">GIEQs II is coming in Fall 2021<br />For now there is GIEQs Online,
+                                            class="font-weight-light">GIEQs II will be held 30 September / 1 October 2021. <br/>  Registration opens mid April.<br />For now there is GIEQs Online,
                                             </strong><br />evening Seminars and Virtual Courses</span>
                                 </h2>
                                 <p class="lead text-white">Use the links above to explore courses and register for GIEQs Online.  News on GIEQs II coming end March 2021.</p>

@@ -19,11 +19,7 @@
 
       //blank previous browsing
 
-      setcookie('browsing', null, time() + (365 * 24 * 60 * 60), '/');
-
-      setcookie('browsing_id', null, time() + (365 * 24 * 60 * 60), '/');
-
-      setcookie('browsing_array', null, time() + (365 * 24 * 60 * 60), '/');
+      
 
 
 
@@ -340,7 +336,7 @@
         <div class="main-content">
             <!-- Header (account) -->
             <section class="page-header bg-dark-dark d-flex align-items-end pt-8 mt-10"
-                style="background-image: url('<?php echo BASE_URL;?>/assets/img/covers/learning/1v2.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;"
+                style="background-image: url('<?php echo BASE_URL;?>/assets/img/backgrounds/gent_wall_blue_v2.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;"
                 data-offset-top="#header-main">
 
 
@@ -351,9 +347,9 @@
                             <!-- Salute + Small stats -->
                             <div class="row align-items-center mb-4">
                                 <div class="col-auto mb-4 mb-md-0">
-                                    <span class="h2 mb-0 text-white text-bold d-block">Welcome to your GIEQs Online Dashboard.
+                                    <span class="h2 mb-0 text-white text-bold d-block">The GIEQs Online Blog.
                                         <?php //echo $_SESSION['firstname'] . ' ' . $_SESSION['surname']?></span>
-                                    <span class="text-white">Your home for evidence-based endoscopy education.</span>
+                                    <span class="text-white">Everyday Endoscopy.  Updated weekly.</span>
                                 </div>
                                 <!-- video -->
                                 <div class="col-auto flex-fill d-none d-xl-block">
@@ -373,147 +369,132 @@
             </section>
             <?php require BASE_URI . '/pages/learning/assets/upgradeNav.php';?>
 
-            <?php require BASE_URI . '/pages/learning/assets/materialNav.php';?>
-
-
-            <!-- New material -->
-            <section class="slice delimiter-bottom m-0 p-2" id="statistics">
-                <div class="container pt-0 pt-lg-0">
-
-                    <div class="actions-toolbar py-2">
-                        <h5 class="mb-1">Your GIEQs Stats</h5>
-                        <p class="text-sm text-muted mb-0">How GIEQy are you <?php echo $_SESSION['firstname'];?>?</p>
-                    </div>
-
-                    <div class="mb-5">
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <div
-                                    class="card card-stats bg-gradient-primary border-0 hover-shadow-lg hover-translate-y-n3 mb-0 ml-lg-0">
-                                    <div class="actions actions-dark">
-                                        <a href="#" class="action-item">
-                                            <i class="fas fa-sync-alt"></i>
-                                        </a>
-
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="d-flex">
-                                            <div>
-                                                <div class="icon text-white icon-sm">
-                                                    <i class="fas fa-video"></i>
-                                                </div>
-                                            </div>
-                                            <div class="pl-4">
-                                                <?php $completionArray = $usersMetricsManager->userCompletionVideos($userid, false);?>
-                                                <span
-                                                    class="d-block h5 text-white mr-2 mb-1"><?php echo $completionArray['numerator'];?>
-                                                    / <?php echo $completionArray['denominator'];?>
-                                                    (<?php echo round($completionArray['completion'], 2);?>%)</span>
-                                                <span class="text-white">Videos Completed</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
+            <section class="slice slice-lg bg-section-secondary delimiter-top delimiter-bottom">
+      <div class="container">
+        <div class="mb-5 text-center">
+          <h3 class=" mt-4">Latest from the blog</h3>
+          <div class="fluid-paragraph mt-3">
+            <p class="lead lh-180">Weekly nuggets focussed on Everyday techniques.  Monthly evening round-ups.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="card hover-shadow-lg hover-translate-y-n10">
+              <a href="#">
+                <img alt="Image placeholder" src="../../assets/img/theme/light/img-1-800x600.jpg" class="card-img-top">
+              </a>
+              <div class="card-body py-5 text-center">
+                <a href="#" class="d-block h5 lh-150">Choose the best solution for your business</a>
+                <h6 class="text-muted mt-4 mb-0">20 Aug 2019</h6>
+              </div>
+              <div class="card-footer delimiter-top">
+                <div class="row">
+                  <div class="col text-center">
+                    <ul class="list-inline mb-0">
+                      <li class="list-inline-item pr-4">
+                        <a href="#" class="text-muted"><i class="fas fa-share mr-1 text-muted"></i> 131</a>
+                      </li>
+                      <li class="list-inline-item pr-4">
+                        <a href="#" class="text-muted"><i class="fas fa-eye mr-1 text-muted"></i> 255</a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="text-muted"><i class="fas fa-comments mr-1 text-muted"></i> 14</a>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
-            </section>
-            <section class="slice delimiter-bottom m-0 p-2" id="whats-new">
-
-                <div class="container pt-0 pt-lg-0">
-                    <div class="actions-toolbar py-2 mb-4 ">
-
-
-                        <h4 class="mb-1  mt-2">What's New</h4>
-                        <p class="text-sm text-muted mb-0">Jump right into a new learning experience.</p>
-                    </div>
-                    <div class="placeholder">
-                        <div class="card-deck flex-column flex-lg-row mb-5">
-                            <div class="card card-skeleton"></div>
-                            <div class="card card-skeleton"></div>
-                            <div class="card card-skeleton"></div>
-                        </div>
-                    </div>
-
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card hover-shadow-lg hover-translate-y-n10">
+              <a href="#">
+                <img alt="Image placeholder" src="../../assets/img/theme/light/img-2-800x600.jpg" class="card-img-top">
+              </a>
+              <div class="card-body py-5 text-center">
+                <a href="#" class="d-block h5 lh-150">How to find the right design for your specific product</a>
+                <h6 class="text-muted mt-4 mb-0">23 Aug 2019</h6>
+              </div>
+              <div class="card-footer delimiter-top">
+                <div class="row">
+                  <div class="col text-center">
+                    <ul class="list-inline mb-0">
+                      <li class="list-inline-item pr-4">
+                        <a href="#" class="text-muted"><i class="fas fa-share mr-1 text-muted"></i> 131</a>
+                      </li>
+                      <li class="list-inline-item pr-4">
+                        <a href="#" class="text-muted"><i class="fas fa-eye mr-1 text-muted"></i> 255</a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="text-muted"><i class="fas fa-comments mr-1 text-muted"></i> 14</a>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card hover-shadow-lg hover-translate-y-n10">
+              <a href="#">
+                <img alt="Image placeholder" src="../../assets/img/theme/light/img-3-800x600.jpg" class="card-img-top">
+              </a>
+              <div class="card-body py-5 text-center">
+                <a href="#" class="d-block h5 lh-150">How to win buyers and influence sales with marketing</a>
+                <h6 class="text-muted mt-4 mb-0">27 Aug 2019</h6>
+              </div>
+              <div class="card-footer delimiter-top">
+                <div class="row">
+                  <div class="col text-center">
+                    <ul class="list-inline mb-0">
+                      <li class="list-inline-item pr-4">
+                        <a href="#" class="text-muted"><i class="fas fa-share mr-1 text-muted"></i> 131</a>
+                      </li>
+                      <li class="list-inline-item pr-4">
+                        <a href="#" class="text-muted"><i class="fas fa-eye mr-1 text-muted"></i> 255</a>
+                      </li>
+                      <li class="list-inline-item">
+                        <a href="#" class="text-muted"><i class="fas fa-comments mr-1 text-muted"></i> 14</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            </section>
-
-            <!-- Finish watching videos -->
-
-
-
-
-            <section id="catchup" class="slice slice-lg bg-section-secondary delimiter-top m-0 p-2">
-                <div class="container pt-0 pt-lg-0">
-                    <div class="actions-toolbar py-2 mb-4 ">
-                        <h4 class="mb-1  mt-2">Pick up where you left off</h4>
-                        <p class="text-sm text-muted mb-0">Videos you started watching, jump back in.</p>
-                    </div>
-                    <div class="placeholder">
-                        <div class="card-deck flex-column flex-lg-row mb-5">
-                            <div class="card card-skeleton"></div>
-                            <div class="card card-skeleton"></div>
-                            <div class="card card-skeleton"></div>
-                        </div>
-                    </div>
-
-
-                </div> <!-- end container div-->
-
-            </section>
-
-            <!-- Suggested videos -->
-
-
-            <section id="suggested" class="slice slice-lg delimiter-top m-0 p-2">
-                <div class="container pt-0 pt-lg-0">
-                    <div class="actions-toolbar py-2 mb-4 ">
-                        <h4 class="mb-1 mt-2">Suggested Next Steps</h4>
-                        <p class="text-sm text-muted mb-0">Based on what you watched previously.</p>
-                    </div>
-                    <div class="placeholder">
-                        <div class="card-deck flex-column flex-lg-row mb-5">
-                            <div class="card card-skeleton"></div>
-                            <div class="card card-skeleton"></div>
-                            <div class="card card-skeleton"></div>
-                        </div>
-                    </div>
+    <section class="slice slice-lg">
+      <div class="container">
+        <div class="mb-5 text-center">
+          <h3 class=" mt-4">Subscribe for weekly updates from GIEQs</h3>
+          <div class="fluid-paragraph mt-3">
+            <p class="lead lh-180">Improving your knowledge of everyday endoscopy has never been easier.</p>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-5 col-md-7">
+            <form class="mt-4">
+              <div class="form-group mb-0">
+                <div class="input-group input-group-lg input-group-merge rounded-pill bg-dark">
+                  <input type="email" class="form-control form-control-flush" name="email" placeholder="Enter your email address" aria-label="Enter your email address">
+                  <div class="input-group-append">
+                    <button class="btn btn-dark" type="button">
+                      <span class="fas fa-paper-plane"></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
 
 
-
-                </div> <!-- end container div-->
-
-            </section>
-
-            <!-- Popular videos -->
-
-
-            <section id="popular" class="slice slice-lg bg-section-secondary delimiter-top m-0 p-2">
-                <div class="container pt-0 pt-lg-0">
-                    <div class="actions-toolbar py-2 mb-4 ">
-
-
-                        <h4 class="mb-1  mt-2">Popular Videos</h4>
-                        <p class="text-sm text-muted mb-0">What others are watching right ow.</p>
-                    </div>
-                    <div class="placeholder">
-                        <div class="card-deck flex-column flex-lg-row mb-5">
-                            <div class="card card-skeleton"></div>
-                            <div class="card card-skeleton"></div>
-                            <div class="card card-skeleton"></div>
-                        </div>
-                    </div>
-
-                    
-
-                </div> <!-- end new material div-->
-        </div> <!-- end container div-->
-
-        </section>
+            
 
 
         </div>

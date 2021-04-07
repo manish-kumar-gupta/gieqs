@@ -11,6 +11,16 @@
 
 /* Configuaration Settings */
 global $config;
+
+$host = substr($_SERVER['HTTP_HOST'], 0, 5);
+if (in_array($host, array('local', '127.0', '192.1'))) {
+    $local = TRUE;
+} else {
+    $local = FALSE;
+}
+
+if ($local){
+
 //script url - Enter complete url inside which script folder is placed. Please note that it doesn't include the script folder
 $config["script_url"] = "http://localhost:90/dashboard/gieqs/assets/scripts/pdocrud/";
 /************************ database ************************/
@@ -22,6 +32,29 @@ $config["database"] = "learningToolv1";
 $config["username"] = "root";
 //Set the pwd for the database user
 $config["password"] = "nevira1pine";
+
+
+
+} else {
+
+
+
+//script url - Enter complete url inside which script folder is placed. Please note that it doesn't include the script folder
+$config["script_url"] = "https://www.gieqs.com/assets/scripts/pdocrud/";
+/************************ database ************************/
+//Set the host name to connect for database
+$config["hostname"] =  "localhost";
+//Set the database name
+$config["database"] = "learningToolv1";
+//Set the username for database access
+$config["username"] = "djt35";
+//Set the pwd for the database user
+$config["password"] = "nevira1pine";
+
+
+}
+
+
 //Set the database type to be used. Available values are "mysql", "pgsql", "sqlite" and "sqlserver".
 $config["dbtype"] = "mysql";
 //Please enter purchase code. Please check how to find purchase code details here https://help.market.envato.com/hc/en-us/articles/202822600-Where-Is-My-Purchase-Code-

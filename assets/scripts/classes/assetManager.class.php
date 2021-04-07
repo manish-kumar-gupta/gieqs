@@ -3178,7 +3178,7 @@ public function returnVideoDenominatorSelect2()
                 return $rowReturn;
 
             } else {
-                
+               
 
                 return false;
             }

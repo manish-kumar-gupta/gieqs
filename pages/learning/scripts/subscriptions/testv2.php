@@ -122,11 +122,13 @@ $programmes = null;
 
 $programmes = $sessionView->getProgrammeTimes([0=>['id'=>33],], false);
 
-
+echo 'programmes  is <br/><br/>';
+var_dump($programmes);
 
 //for one program
 
 $programmes2 = $sessionView->convertProgrammeTimes($programmes, $debug);
+echo 'programme 2 is <br/><br/>';
 var_dump($programmes2);
 
 $breaks = $sessionView->getProgrammeBreaks([0=>['id'=>33],], false);

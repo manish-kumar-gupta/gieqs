@@ -65,6 +65,11 @@ if ($menus) {
         <div class="collapse navbar-collapse" id="navbar-main-collapse">
             <ul class="navbar-nav align-items-lg-center">
 
+            <!-- <li class="nav-item">
+                    <a class="nav-link"
+                        href="<?php //echo BASE_URL; ?>/pages/learning/blog.php">Blog</a>
+                </li> -->
+            
             <li class="nav-item">
                     <a class="nav-link"
                         href="<?php echo BASE_URL; ?>/pages/learning/index.php">Dashboard</a>
