@@ -95,7 +95,7 @@ if ($menus) {
 
 
                         <div class="dropdown-menu dropdown-menu-arrow" aria-labelledby="btn-group-settings">
-                        <span style="color: rgb(238, 194, 120);" class="h4 dropdown-header">Choose an <?php echo $menu->gettitle(); ?> Category</span>
+                        <span style="color: rgb(238, 194, 120);" class="h4 dropdown-header">Choose a <?php //echo $menu->gettitle(); ?> Category</span>
 
 
           <?php
@@ -295,7 +295,7 @@ if ($menus) {
    <?php if ($assetManager->doesUserHaveSubscriptionMenu($userid, false)) { //if user has a subscription to assets type 2 3 or 4?>
                 <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
                     <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">Subscriptions</a>
+                        aria-expanded="false">My Courses</a>
 
                     <!-- pages which have a pattern depending on programme or video collection -->
 
