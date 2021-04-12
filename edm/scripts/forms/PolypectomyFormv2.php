@@ -352,7 +352,7 @@ display:block;
                   <?php
 
                     for($x = 1; $x <= 16; $x++) {
-                        echo '<li class="toc-entry toc-h4"><a class="text-muted" href="#'.$sectionTitle[$x].'Section">'.$sectionTitle[$x].'</a></li>';
+                        echo '<li class="toc-entry toc-h4" style="font-size:1.2rem;"><a class="text-muted" href="#'.$sectionTitle[$x].'Section">'.$sectionTitle[$x].'</a></li>';
                         //echo "<button type=\"button\" class=\"btn ".$sectionTitle[$x]. "\">".$sectionTitle[$x]."</button>";
 
                     }

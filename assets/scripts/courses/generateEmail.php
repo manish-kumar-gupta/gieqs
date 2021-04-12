@@ -563,10 +563,10 @@
                                                                         </a>
                                                                         <p class="h6 text-center mb-0"
                                                                             style="box-sizing:border-box;margin-top:0;font-family:inherit;font-weight:500;line-height:1.3;color: #e3ebf6;font-size:1.25rem;margin-bottom:0;text-align:center;margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                                            GIEQs Online</p>
+                                                                            The GIEQs Foundation</p>
                                                                         <p class="text-muted text-center mb-0"
                                                                             style="font-weight:500;box-sizing:border-box;margin-top:0;margin-bottom:0;text-align:center;color:#6e84a3;margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;font-family:Helvetica;font-size:18px;line-height:150%;">
-                                                                            A paradigm shift in Endoscopy Education</p>
+                                                                            Promoting Quality and Safety in Gastrointestinal Endoscopy</p>
                                                                         <p class="text-muted text-center"
                                                                             style="box-sizing:border-box;margin-top:0;margin-bottom:1rem;text-align:center;color:#6e84a3;margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust:100%;font-family:Helvetica;font-size:18px;line-height:150%;">
                                                                         </p>
