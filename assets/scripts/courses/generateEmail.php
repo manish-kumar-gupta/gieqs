@@ -825,7 +825,7 @@ $x++;
                                                                                         With kind regards,</p>
                                                                                     <p
                                                                                         style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#444444;font-weight:bold;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                        GIEQs Online.</p>
+                                                                                        the GIEQs Team.</p>
 
 
                                                                                 </td>
@@ -1459,15 +1459,15 @@ $x++;
                                                                                 <td valign="top" class="mcnTextContent"
                                                                                     style="padding-top:0;padding-right:18px;padding-bottom:9px;padding-left:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;word-break:break-word;color:#FFFFFF;font-family:Helvetica;font-size:12px;line-height:150%;text-align:center;">
 
-                                                                                    <em>&#169; GIEQs Online
-                                                                                        2020.</em>
+                                                                                    <em>&#169; The GIEQs Foundation
+                                                                                        2021.</em>
                                                                                     <br>
                                                                                     Our privacy policy is available on
                                                                                     request.
                                                                                     <br>
                                                                                     <br>
 
-                                                                                    GIEQs is a not for profit organisation dedicated to the improvement of Quality in Endoscopy
+                                                                                    GIEQs is a not for profit organisation dedicated to the improvement of Quality and Safety in Endoscopy
 
                                                                                     <br>
                                                                                     <br>
