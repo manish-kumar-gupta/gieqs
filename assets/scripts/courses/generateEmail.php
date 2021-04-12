@@ -651,21 +651,7 @@ foreach ($emailContents as $key=>$value){
    
 
 
-if ($x == 0){
 
-//header row
-
-?>
-
-                                                                                    <h3
-                                                                                        style="display:block;margin:0;padding-top:30px;color:#222222;font-family:Helvetica;font-size:40px;font-style:normal;font-weight:bold;line-height:150%;letter-spacing:normal;text-align:center;">
-                                                                                        <?php echo $value['text'];?>
-                                                                                    </h3>
-
-                                                                                    <?php
-
-
-}else{
 
 
 if ($value['img'] != NULL){
@@ -785,7 +771,7 @@ if ($value['img'] != NULL){
     
 }
 
-}
+
 
 ?>
 
