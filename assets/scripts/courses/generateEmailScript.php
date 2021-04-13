@@ -540,10 +540,10 @@
                                                                         </a>
                                                                         <p class="h6 text-center mb-0"
                                                                             style="box-sizing:border-box;margin-top:0;font-family:inherit;font-weight:500;line-height:1.3;color: #e3ebf6;font-size:1.25rem;margin-bottom:0;text-align:center;margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                                            GIEQs Online</p>
+                                                                            The GIEQs Foundation</p>
                                                                         <p class="text-muted text-center mb-0"
                                                                             style="font-weight:500;box-sizing:border-box;margin-top:0;margin-bottom:0;text-align:center;color:#6e84a3;margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;font-family:Helvetica;font-size:18px;line-height:150%;">
-                                                                            A paradigm shift in Endoscopy Education</p>
+                                                                            Promoting Quality and Safety in Gastrointestinal Endoscopy</p>
                                                                         <p class="text-muted text-center"
                                                                             style="box-sizing:border-box;margin-top:0;margin-bottom:1rem;text-align:center;color:#6e84a3;margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust:100%;font-family:Helvetica;font-size:18px;line-height:150%;">
                                                                         </p>
@@ -628,21 +628,6 @@ foreach ($emailContents as $key=>$value){
    
 
 
-if ($x == 0){
-
-//header row
-
-?>
-
-                                                                                    <h3
-                                                                                        style="display:block;margin:0;padding-top:30px;color:#222222;font-family:Helvetica;font-size:40px;font-style:normal;font-weight:bold;line-height:150%;letter-spacing:normal;text-align:center;">
-                                                                                        <?php echo $value['text'];?>
-                                                                                    </h3>
-
-                                                                                    <?php
-
-
-}else{
 
 
 if ($value['img'] != NULL){
@@ -762,7 +747,7 @@ if ($value['img'] != NULL){
     
 }
 
-}
+
 
 ?>
 
@@ -802,7 +787,7 @@ $x++;
                                                                                         With kind regards,</p>
                                                                                     <p
                                                                                         style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#444444;font-weight:bold;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                        GIEQs Online.</p>
+                                                                                        the GIEQs Team.</p>
 
 
                                                                                 </td>
@@ -1436,7 +1421,7 @@ $x++;
                                                                                 <td valign="top" class="mcnTextContent"
                                                                                     style="padding-top:0;padding-right:18px;padding-bottom:9px;padding-left:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;word-break:break-word;color:#FFFFFF;font-family:Helvetica;font-size:12px;line-height:150%;text-align:center;">
 
-                                                                                    <em>&#169; GIEQs Online
+                                                                                    <em>&#169; The GIEQs Foundation
                                                                                         2021.</em>
                                                                                     <br>
                                                                                     Our privacy policy is available on
@@ -1444,8 +1429,7 @@ $x++;
                                                                                     <br>
                                                                                     <br>
 
-                                                                                    GIEQs is a not for profit organisation dedicated to the improvement of Quality in Endoscopy
-
+                                                                                    GIEQs is a not for profit organisation dedicated to the improvement of Quality and Safety in Endoscopy
                                                                                     <br>
                                                                                     <br>
 
