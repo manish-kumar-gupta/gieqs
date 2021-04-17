@@ -2725,6 +2725,51 @@ openedWindow.opener.location.reload();
 
         })
 
+        $(document).on('click', '.expand-components', function(e) {
+
+//add a new text to the database
+
+//refresh the database
+
+if (e.preventDefault) {
+    e.preventDefault();
+}
+
+$('textarea').each(function () {
+  this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
+}).on('input', function () {
+  this.style.height = 'auto';
+  this.style.height = (this.scrollHeight) + 'px';
+});
+
+
+});
+
+$(document).on('click', '.shrink-components', function(e) {
+
+//add a new text to the database
+
+//refresh the database
+
+if (e.preventDefault) {
+    e.preventDefault();
+}
+
+$('textarea').attr('rows', 3);
+
+
+
+});
+
+
+
+//load edit form in new window
+
+//openInNewTab(siteRoot + 'pages/backend/course_dashboard.php?identifier=' + targettd);
+
+
+})
+
 
 
 

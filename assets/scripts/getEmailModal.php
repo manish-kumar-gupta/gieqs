@@ -279,6 +279,9 @@
                         <button class="addTextButton btn btn-sm m-2 px-2 py-0 bg-gieqsGold text-dark form-control">+
                             button</button>
 
+                            <button class="expand-components btn btn-sm m-2 px-2 py-0 bg-primary text-white form-control">Expand All Fields</button>
+                            <button class="shrink-components btn btn-sm m-2 px-2 py-0 bg-primary text-white form-control">Shrink All Fields</button>
+
 
 
 
