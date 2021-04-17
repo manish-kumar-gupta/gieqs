@@ -2755,7 +2755,11 @@ if (e.preventDefault) {
     e.preventDefault();
 }
 
-$('textarea').attr('rows', 3);
+$('textarea').each(function () {
+    $(this).attr('rows', 3);
+});
+
+
 
 
 
