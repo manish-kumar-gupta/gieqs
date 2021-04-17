@@ -2763,12 +2763,6 @@ $('textarea').attr('rows', 3);
 
 
 
-//load edit form in new window
-
-//openInNewTab(siteRoot + 'pages/backend/course_dashboard.php?identifier=' + targettd);
-
-
-})
 
 
 
