@@ -81,7 +81,7 @@
 
             //$edit ability; display icons next to editable segments.
 
-            if ($isSuperuser = 1){
+            if ($currentUserLevel < 2){
 
                 $edit = TRUE;
 
@@ -90,7 +90,7 @@
                 $edit = FALSE;
             }
             
-            //$edit = TRUE;
+            $edit = FALSE;
 
             $debug = FALSE;
             
