@@ -81,7 +81,16 @@
 
             //$edit ability; display icons next to editable segments.
 
-            $edit = TRUE;
+            if ($isSuperuser = 1){
+
+                $edit = TRUE;
+
+            }else{
+
+                $edit = FALSE;
+            }
+            
+            //$edit = TRUE;
 
             $debug = FALSE;
             
