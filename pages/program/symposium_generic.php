@@ -61,6 +61,7 @@ $debug = false;
 
 //$assetid = 13;
 $asset_id_pagewrite = '15';
+$asset_id_pagewrite2 = '16';
 $email_to_use_as_basis = '1';
 
 $emails->Load_from_key($email_to_use_as_basis);
@@ -74,6 +75,16 @@ if ($programme_array[1] != ''){
 }else{
 
     $programme2 = null;
+}
+
+$programme_array = $assetManager->returnProgrammesAsset($asset_id_pagewrite2);
+$programme_defined3 = $programme_array[0];
+if ($programme_array[1] != ''){
+
+    $programme4 = $programme_array[1];
+}else{
+
+    $programme4 = null;
 }
 
 if ($debug){
@@ -619,6 +630,14 @@ var_dump($currentTime);
 
             </div>
 
+            <hr>
+
+            <div id="ajaxThurs">
+
+            </div>
+
+           
+
 
 
         </div>
@@ -1011,6 +1030,36 @@ var_dump($currentTime);
         })
     }
 
+    function refreshProgrammeView2() {
+
+
+
+const dataToSend = {
+
+    programmeid: <?php echo $programme_defined3;?>,
+    programme2: <?php echo $programme4;?>
+
+}
+
+const jsonString = JSON.stringify(dataToSend);
+console.log(jsonString);
+
+var request2 = $.ajax({
+    url: siteRoot + "assets/scripts/classes/generateProgrammeCurrent.php",
+    type: "POST",
+    contentType: "application/json",
+    data: jsonString,
+});
+
+
+
+request2.done(function(data) {
+    // alert( "success" );
+    $('#ajaxThurs').html(data);
+    //$(document).find('.Thursday').hide();
+})
+}
+
     function submitPreRegisterForm() {
 
 
@@ -1099,6 +1148,7 @@ var_dump($currentTime);
 
 
         refreshProgrammeView();
+        refreshProgrammeView2();
 
         $('#button-login').click(function() {
 
