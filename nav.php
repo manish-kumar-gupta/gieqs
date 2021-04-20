@@ -345,9 +345,7 @@ $test = false;
                 <!-- Program-basic, later to add dropdown with options -->
                 <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
                     <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">Digital Courses<span class="badge bg-gieqsGold text-dark badge-pill badge-floating ml-1 pl-1">
-                                    New!
-                                    </span></a>
+                        aria-haspopup="true" aria-expanded="false">Digital Courses</a>
                     
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">Upcoming Courses</span>
@@ -367,6 +365,12 @@ $test = false;
                      -->
                     
                   </div>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/gieqs_ii_day_1.php">Symposium<span class="badge bg-gieqsGold text-dark badge-pill badge-floating ml-1 pl-1">
+                                    New!
+                                    </span></a>
                 </li>
 
               
