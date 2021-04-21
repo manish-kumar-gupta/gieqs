@@ -52,6 +52,22 @@ if (isset($_GET['destination'])) {
     
 
 
+  }else if ($destination == 'small_polyp_signup'){
+
+    if (isset($_GET['access_token'])){
+
+      $access_token = $_GET['access_token'];
+      $target = '/pages/program/program_small_polypectomy.php?action=register&access_token=' . $access_token;
+
+    }else{
+
+      $target = '/pages/program/program_small_polypectomy.php?action=register';
+
+    }
+
+    
+
+
   }else if ($destination == 'gieqsonline'){
 
     $target = '/pages/learning/index.php';

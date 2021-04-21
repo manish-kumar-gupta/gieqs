@@ -367,11 +367,11 @@ $test = false;
                   </div>
                 </li>
 
-                <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/gieqs_ii_day_1.php">Symposium<span class="badge bg-gieqsGold text-dark badge-pill badge-floating ml-1 pl-1">
+                <!-- <li class="nav-item active">
+                    <a class="nav-link" href="<?php //echo BASE_URL;?>/pages/program/gieqs_ii_day_1.php">Symposium<span class="badge bg-gieqsGold text-dark badge-pill badge-floating ml-1 pl-1">
                                     New!
                                     </span></a>
-                </li>
+                </li> -->
 
               
                 <!-- Venue -->

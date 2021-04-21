@@ -837,14 +837,14 @@ var_dump($currentTime);
                 ?>
 
 window.location = siteRoot +
-            "pages/authentication/login.php?destination=imaging_signup&access_token=<?php echo $access_token;?>";
+            "pages/authentication/login.php?destination=small_polyp_signup&access_token=<?php echo $access_token;?>";
 
 <?php 
             }else{
                 ?>
 
             window.location = siteRoot +
-            "pages/authentication/login.php?destination=imaging_signup";
+            "pages/authentication/login.php?destination=small_polyp_signup";
 
             <?php
             }
