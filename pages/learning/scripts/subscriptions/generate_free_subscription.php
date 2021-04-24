@@ -29,6 +29,8 @@ error_reporting(E_ALL);
 require_once(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
 $assetManager = new assetManager;
 
+require_once(BASE_URI . '/assets/scripts/classes/sessionManager.class.php');
+$sessionManager = new sessionManager;
 
 
 require_once(BASE_URI . '/assets/scripts/classes/assets_paid.class.php');
@@ -315,6 +317,14 @@ $subscription_to_return['user_id'] = $userid;
                 $subject = 'Thank-you for Your GIEQs Online Course Purchase';
                 $preheader = 'Your course awaits! Check out this mail for information on joining and catch-up. Thank you for your support of GIEQs Online';
                 $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $subscription_id;
+                $programme_array = $assetManager->returnProgrammesAsset($asset_id);
+                $programmeid = $programme_array[0];
+                //$programmeid = $programmes[0]['programmeid'];
+                $programmes3 = $sessionView->getProgrammeTimes([0=>['id'=>$programmeid,]], false);  
+                $programmes4 = $sessionView->convertProgrammeTimes($programmes3, false);
+                $start_time = $programmes4[0];
+                
+                $emailVaryarray['programme_start_time'] = $start_time;
 
 
 

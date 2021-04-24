@@ -325,23 +325,29 @@ var_dump($currentTime);
 
                         <!-- <h2 class="display-3 mt-2 text-gieqsGold">GIEQs II is coming!</h2> -->
 
-                        <p class="lead mb-3"><strong class="h3">IN OCTOBER 2020</strong> we welcomed &gt; 500 virtual delegates
-                            from 23 countries to our first digital Symposium in Everyday Endoscopy.  The feedback was overwhelmingly
+                        <p class="lead mb-3"><strong class="h3">IN OCTOBER 2020</strong> we welcomed &gt; 500 virtual
+                            delegates
+                            from 23 countries to our first digital Symposium in Everyday Endoscopy. The feedback was
+                            overwhelmingly
                             positive. </p>
 
                         <blockquote class="blockquote text-center m-5">
-                            <p class="text-white h3">I've worked for 27 years as a gastroenterologist.  This was the congress I have waited 27 years for.  Thank you and much success in the future!</p>
+                            <p class="text-white h3">I've worked for 27 years as a gastroenterologist. This was the
+                                congress I have waited 27 years for. Thank you and much success in the future!</p>
                             <footer class="blockquote-footer">GIEQs I Participant</footer>
                         </blockquote>
 
 
-                        <p class="lead mb-3"><strong class="h3">IN SEPTEMBER 2021</strong> we want to go further for GIEQs II. <strong class="h4">Remaining focussed on the
+                        <p class="lead mb-3"><strong class="h3">IN SEPTEMBER 2021</strong> we want to go further for
+                            GIEQs II. <strong class="h4">Remaining focussed on the
                                 everyday</strong> we will weave curated, high definition endoscopy video, training
                             theory and live endoscopy cases seamlessly together to create a unique digital experience
                             giving a voice to the <strong class="h4">Everyday Endoscopist</strong>. </p>
 
-                        <p class="lead mb-3">The focus will be on <strong class="h4">Decision Making</strong> in endoscopic
-                            practice which ties together imaging, technique and therapy to inform and execute the right treatment
+                        <p class="lead mb-3">The focus will be on <strong class="h4">Decision Making</strong> in
+                            endoscopic
+                            practice which ties together imaging, technique and therapy to inform and execute the right
+                            treatment
                             decision for your patient. </p>
 
 
@@ -392,17 +398,25 @@ var_dump($currentTime);
                         <h3 class="display-3 mt-2 text-gieqsGold">Highlights</h3>
 
                         <ul class="lead">
-                            <li class="mb-3">High profile <strong class="h4">International and Local Faculty</strong></li>
-                            <li class="mb-3"><strong class="h4">Curated content</strong> with high production values, full HD video </li>
-                            <li class="mb-3"><strong class="h4">‘Ideas in Endoscopy’</strong> - structured curriculum linked to our online platform GIEQs Online
+                            <li class="mb-3">High profile <strong class="h4">International and Local Faculty</strong>
+                            </li>
+                            <li class="mb-3"><strong class="h4">Curated content</strong> with high production values,
+                                full HD video </li>
+                            <li class="mb-3"><strong class="h4">‘Ideas in Endoscopy’</strong> - structured curriculum
+                                linked to our online platform GIEQs Online
                                 through use of easy-to-understand tags</li>
-                            <li class="mb-3"><strong class="h4">‘Training focus’</strong> - if you are a trainee invaluable tips, if you are a trainer focus on
+                            <li class="mb-3"><strong class="h4">‘Training focus’</strong> - if you are a trainee
+                                invaluable tips, if you are a trainer focus on
                                 how to train (Train-the-Trainers concept)</li>
-                            <li class="mb-3"><strong class="h4">‘Technique focus’</strong> - ok, you can perform this technique, but how can I learn / start
+                            <li class="mb-3"><strong class="h4">‘Technique focus’</strong> - ok, you can perform this
+                                technique, but how can I learn / start
                                 doing this technique</li>
-                                <li class="mb-3"><strong class="h4">Linked to Evidence</strong> - all sessions present supporting published evidence</li>
-                            <li class="mb-3">More time for <strong class="h4">in-depth exploration</strong> of decision-making and technique</li>
-                            <li class="mb-3"><strong class="h4">Breakout sessions on Zoom</strong>, limited participants, meet the expert from the previous
+                            <li class="mb-3"><strong class="h4">Linked to Evidence</strong> - all sessions present
+                                supporting published evidence</li>
+                            <li class="mb-3">More time for <strong class="h4">in-depth exploration</strong> of
+                                decision-making and technique</li>
+                            <li class="mb-3"><strong class="h4">Breakout sessions on Zoom</strong>, limited
+                                participants, meet the expert from the previous
                                 session! Extra time for questions / discussion.</li>
                         </ul>
 
@@ -411,13 +425,13 @@ var_dump($currentTime);
                             <span class="btn-inner--text text-dark">View Draft Scientific Programme</span>
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         </a>
-                        
-                       
 
 
 
 
-                     
+
+
+
 
 
                         <!-- Article body -->
@@ -428,7 +442,7 @@ var_dump($currentTime);
             </div>
 
         </section>
-       <!--  <section class="slice slice-xl bg-cover bg-size--cover" data-offset-top="#header-main" style="background-image: url(&quot;<?php echo BASE_URL;?>/assets/img/polyps/defect_scar.png&quot;); padding-top: 147.1875px; background-position: center center;">
+        <!--  <section class="slice slice-xl bg-cover bg-size--cover" data-offset-top="#header-main" style="background-image: url(&quot;<?php echo BASE_URL;?>/assets/img/polyps/defect_scar.png&quot;); padding-top: 147.1875px; background-position: center center;">
             <span class="mask bg-dark opacity-5"></span>
             <div class="container py-5 pt-lg-7 position-relative zindex-100">
             <div class="row justify-content-center">
@@ -468,7 +482,7 @@ var_dump($currentTime);
               </svg>
             </div>
           </section> -->
-       <!--  <section class="slice bg-absolute-cover bg-size--contain">
+        <!--  <section class="slice bg-absolute-cover bg-size--contain">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-9">
@@ -509,13 +523,19 @@ var_dump($currentTime);
                 <div class="row justify-content-center">
                     <div class="col-lg-9">
                         <h3 class="display-3 mt-2 mt-4 text-gieqsGold">The GIEQs Difference</h3>
-                        <p class="lead">There are many symposia on Endoscopy.  Why choose GIEQs?</p>
+                        <p class="lead">There are many symposia on Endoscopy. Why choose GIEQs?</p>
 
                         <ul class="lead">
-                            <li class="mb-3"><strong class="h4">Curated Content</strong>, linked to our structured curriculum and designed to tie together the science with techiques in clinical practice </li>
-                            <li class="mb-3"><strong class="h4">Integration of Key Digital Technologies.</strong> - all our content is linked via tags between our live events and online platform - GIEQs Online </li>
-                            <li class="mb-3"><strong class="h4">Grounded in Training Theory</strong> - all our content is linked via tags between our live events and online platform - GIEQs Online </li>
-                            <li class="mb-3"><strong class="h4">Published Evidence</strong> - all our content is linked to the latest published evidence and guidelines </li>
+                            <li class="mb-3"><strong class="h4">Curated Content</strong>, linked to our structured
+                                curriculum and designed to tie together the science with techiques in clinical practice
+                            </li>
+                            <li class="mb-3"><strong class="h4">Integration of Key Digital Technologies.</strong> - all
+                                our content is linked via tags between our live events and online platform - GIEQs
+                                Online </li>
+                            <li class="mb-3"><strong class="h4">Grounded in Training Theory</strong> - all our content
+                                is linked via tags between our live events and online platform - GIEQs Online </li>
+                            <li class="mb-3"><strong class="h4">Published Evidence</strong> - all our content is linked
+                                to the latest published evidence and guidelines </li>
 
                         </ul>
 
@@ -536,11 +556,328 @@ var_dump($currentTime);
                     <div class="col-lg-9">
                         <h3 class="display-3 mt-2 text-gieqsGold">Registration</h3>
 
-                        <p class="lead mb-3"><strong class="h4">We will keep the price the same as 2020 for a limited period</strong>. Medical
+                        <p class="lead mb-3"><strong class="h4">We will keep the price the same as 2020 for a limited
+                                period</strong>. Medical
                             students and trainee registrations remain at the same low level. </p>
 
-                        <p class="lead mb-3"><strong class="h4">Sign up for GIEQS II from mid-April</strong>, draft programme below, full programme to follow.</p>
+                        <p class="lead mb-3"><strong class="h4">Sign up for GIEQS II from mid-April</strong>, draft
+                            programme below, full programme to follow.</p>
 
+                        </div>
+                        </div>
+                        </div>
+                        <div class="container-fluid text-center">
+                        <div class="row justify-content-center">
+                        <div class="col-12">
+                        <table role="presentation" data-questiontype="0"
+                            data-relatedvars="qh-color,ql-background-color,ql-capitalization,ql-font,ql-font-color,ql-font-size,qi-container-bg-color,qi-bg-color,qi-font-size"
+                            class="questionContainer  questionLabelHeading" cellspacing="0" cellpadding="2"
+                            id="q214596099" style="">
+                            <tbody>
+                                <tr>
+                                    <td class="table standard " style="">
+                                        <p><span style="font-family: Arial; font-size: 12pt; color: #efc278;"><strong><span
+                                                        style="font-size: 14pt;">REGISTRATION
+                                                        FEES</span></strong></span></p>
+
+                                        <div style="font-family: Arial; font-size: 12pt; color: #efc278;">
+                                            <div style="text-align: center;">&nbsp;</div>
+                                        </div>
+
+                                        <div>
+                                            <div style="font-family: Arial; color: #efc278;">&nbsp;</div>
+
+                                            <div style="font-size: 14px;">
+                                                <table align="center" border="1" bordercolor="" cellpadding="10"
+                                                    cellspacing="0" style="border-image: initial;" width="100%">
+                                                    <tbody>
+                                                        <tr style="font-family: Arial;">
+                                                            <td style="border-image: initial;">
+                                                                <div style="text-align: center;"><br><span
+                                                                        style="font-size: 14pt;"><strong>Registration
+                                                                            fee</strong><br><strong
+                                                                            style="color: #efc278; font-size: 16px; text-align: start;">EUR
+                                                                            incl. 21% VAT</strong></span></div>
+
+                                                                <div style="text-align: center;"><span
+                                                                        style="color: #efc278;"><strong
+                                                                            style="font-size: 12px; text-align: start;">(EUR
+                                                                            excl. VAT)</strong></span></div>
+                                                            </td>
+                                                            <td
+                                                                style="text-align: center; border-image: initial; font-family: 'Lato Light';">
+                                                                <div><strong
+                                                                        style="font-size: 14pt; font-family: Arial;">Early
+                                                                        bird&nbsp;</strong></div>
+
+                                                                <div><strong style="font-family: Arial;"><span
+                                                                            style="color: #efc278; font-size: 10pt;"><span
+                                                                                style="color: #b08815;"><strong
+                                                                                    style="color: #efc278; font-size: 16px; text-align: start;">Until
+                                                                                    1&nbsp;July
+                                                                                    2021</strong></span></span></strong>
+                                                                </div>
+                                                            </td>
+                                                            <td
+                                                                style="text-align: center; border-image: initial; font-family: 'Lato Light';">
+                                                                <div><span style="font-size: 14pt;"><strong
+                                                                            style="font-family: Arial;">Regular&nbsp;</strong></span>
+                                                                </div>
+
+                                                                <div><strong
+                                                                        style="color: #efc278; font-family: Arial;"><span
+                                                                            style="color: #b08815;"><span
+                                                                                style="font-size: 10pt;"><span
+                                                                                    style="font-size: 10pt;"><strong
+                                                                                        style="color: #efc278; font-size: 16px; text-align: start;">Until
+                                                                                        15 September
+                                                                                        2021</strong></span></span></span></strong>
+                                                                </div>
+                                                            </td>
+                                                            <td
+                                                                style="text-align: center; border-image: initial; font-family: 'Lato Light';">
+                                                                <div><span style="font-size: 14pt;"><strong
+                                                                            style="font-family: Arial;">Late</strong></span>
+                                                                </div>
+
+                                                                <div><strong
+                                                                        style="color: #efc278; font-family: Arial;"><span
+                                                                            style="color: #b08815;"><span
+                                                                                style="font-size: 10pt;"><span
+                                                                                    style="font-size: 10pt;"><strong
+                                                                                        style="color: #efc278; font-size: 16px; text-align: start;">Until
+                                                                                        30 September
+                                                                                        2021</strong></span></span></span></strong>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr style="font-family: Arial;">
+                                                            <td style="text-align: center; border-image: initial;">
+                                                                <strong style="font-size: 14pt;">Doctor</strong></td>
+                                                            <td
+                                                                style="border-image: initial; font-family: 'Lato Light';">
+                                                                <ul>
+                                                                    <li><span
+                                                                            style="font-family: Arial; font-size: 12pt;">2
+                                                                            days: € 100,00 incl. VAT<br><span
+                                                                                style="font-size:12px;">(€ 82,64 excl.
+                                                                                VAT)</span></span></li>
+                                                                    <li><span
+                                                                            style="font-family: Arial; font-size: 12pt;">1
+                                                                            day: € 75,00 incl. VAT<br><span
+                                                                                style="font-size:12px;">(€ 61,98 excl.
+                                                                                VAT)</span></span><span
+                                                                            style="font-family: Arial;"> </span></li>
+                                                                </ul>
+                                                            </td>
+                                                            <td
+                                                                style="border-image: initial; font-family: 'Lato Light';">
+                                                                <ul>
+                                                                    <li><span
+                                                                            style="font-family: Arial; font-size: 12pt;">2
+                                                                            days: € 200,00 incl. VAT<br><span
+                                                                                style="font-size:12px;">(€
+                                                                                165,29&nbsp;excl. VAT)</span></span>
+                                                                    </li>
+                                                                    <li><span
+                                                                            style="font-family: Arial; font-size: 12pt;">1
+                                                                            day: € 150,00 incl. VAT<br><span
+                                                                                style="font-size:12px;">(€ 123,97 excl.
+                                                                                VAT)</span></span></li>
+                                                                </ul>
+                                                            </td>
+                                                            <td
+                                                                style="border-image: initial; font-family: 'Lato Light';">
+                                                                <ul>
+                                                                    <li><span
+                                                                            style="font-family: Arial; font-size: 12pt;">2
+                                                                            days: € 250,00 incl. VAT<br><span
+                                                                                style="font-size:12px;">(€ 206,61 excl.
+                                                                                VAT)</span></span></li>
+                                                                    <li><span
+                                                                            style="font-family: Arial; font-size: 12pt;">1
+                                                                            day: € 200,00 incl. VAT<br><span
+                                                                                style="font-size:12px;">(€
+                                                                                165,29&nbsp;excl. VAT)</span></span>
+                                                                    </li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr style="font-family: Arial;">
+                                                            <td style="text-align: center; border-image: initial;">
+                                                                <strong style="font-size: 14pt;">Specialist in training
+                                                                </strong></td>
+                                                            <td
+                                                                style="border-image: initial; font-family: 'Lato Light';">
+                                                                <ul>
+                                                                    <li><span style="color:#000000;"><span
+                                                                                style="font-family: Arial; font-size: 12pt;">2
+                                                                                days: € 50,00 incl. VAT<br><span
+                                                                                    style="font-size:12px;">(€ 41,32
+                                                                                    excl. VAT)</span></span></span></li>
+                                                                    <li><span style="color:#000000;"><span
+                                                                                style="font-family: Arial; font-size: 12pt;">1
+                                                                                day: € 35,00 incl. VAT<br><span
+                                                                                    style="font-size:12px;">(€ 28,93
+                                                                                    excl. VAT)</span></span></span></li>
+                                                                </ul>
+                                                            </td>
+                                                            <td
+                                                                style="border-image: initial; font-family: 'Lato Light';">
+                                                                <ul>
+                                                                    <li><span style="color:#000000;"><span
+                                                                                style="font-family: Arial; font-size: 12pt;">2
+                                                                                days: € 75,00 incl. VAT<br><span
+                                                                                    style="font-size:12px;">(€ 61,98
+                                                                                    excl. VAT)</span></span></span></li>
+                                                                    <li><span style="color:#000000;"><span
+                                                                                style="font-family: Arial; font-size: 12pt;">1
+                                                                                day: € 50,00 incl. VAT<br><span
+                                                                                    style="font-size:12px;">(€ 41,32
+                                                                                    excl. VAT)</span></span></span></li>
+                                                                </ul>
+                                                            </td>
+                                                            <td
+                                                                style="border-image: initial; font-family: 'Lato Light';">
+                                                                <ul>
+                                                                    <li><span
+                                                                            style="font-family: Arial; font-size: 12pt;">2
+                                                                            days: € 100,00 incl. VAT<br><span
+                                                                                style="font-size:12px;">(€ 82,64 excl.
+                                                                                VAT)</span></span></li>
+                                                                    <li><span
+                                                                            style="font-family: Arial; font-size: 12pt;">1
+                                                                            day: € 75,00 incl. VAT<br><span
+                                                                                style="font-size:12px;">(€ 61,98 excl.
+                                                                                VAT)</span></span></li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr style="font-family: Arial;">
+                                                            <td style="text-align: center; border-image: initial;">
+                                                                <strong style="font-size: 14pt;"><span
+                                                                        style="text-align: start;">Allied Health Care
+                                                                        Professional (incl. nurses)</span></strong></td>
+                                                            <td
+                                                                style="border-image: initial; font-family: 'Lato Light';">
+                                                                <ul>
+                                                                    <li><span style="color:#000000;"><span
+                                                                                style="font-family: Arial; font-size: 12pt;">2
+                                                                                days: € 50,00 incl. VAT<br><span
+                                                                                    style="font-size:12px;">(€ 41,32
+                                                                                    excl. VAT)</span></span></span></li>
+                                                                    <li><span style="color:#000000;"><span
+                                                                                style="font-family: Arial; font-size: 12pt;">1
+                                                                                day: € 35,00 incl. VAT<br><span
+                                                                                    style="font-size:12px;">(€ 28,93
+                                                                                    excl. VAT)</span></span></span></li>
+                                                                </ul>
+                                                            </td>
+                                                            <td
+                                                                style="border-image: initial; font-family: 'Lato Light';">
+                                                                <ul>
+                                                                    <li><span style="color:#000000;"><span
+                                                                                style="font-family: Arial; font-size: 12pt;">2
+                                                                                days: € 75,00 incl. VAT<br><span
+                                                                                    style="font-size:12px;">(€ 61,98
+                                                                                    excl. VAT)</span></span></span></li>
+                                                                    <li><span style="color:#000000;"><span
+                                                                                style="font-family: Arial; font-size: 12pt;">1
+                                                                                day: € 50,00 incl. VAT<br><span
+                                                                                    style="font-size:12px;">(€ 41,32
+                                                                                    excl. VAT)</span></span></span></li>
+                                                                </ul>
+                                                            </td>
+                                                            <td
+                                                                style="border-image: initial; font-family: 'Lato Light';">
+                                                                <ul>
+                                                                    <li><span
+                                                                            style="font-family: Arial; font-size: 12pt;">2
+                                                                            days: € 100,00 incl. VAT<br><span
+                                                                                style="font-size:12px;">(€ 82,64 excl.
+                                                                                VAT)</span></span></li>
+                                                                    <li><span
+                                                                            style="font-family: Arial; font-size: 12pt;">1
+                                                                            day: € 75,00 incl. VAT<br><span
+                                                                                style="font-size:12px;">(€ 61,98 excl.
+                                                                                VAT)</span></span></li>
+                                                                </ul>
+                                                            </td>
+                                                        </tr>
+                                                        <tr style="font-family: Arial;">
+                                                            <td style="text-align: center; border-image: initial;">
+                                                                <strong style="font-size: 14pt;">Student</strong></td>
+                                                            <td
+                                                                style="border-image: initial; font-family: 'Lato Light';">
+                                                                <div style="text-align: center; font-size: 12pt;">&nbsp;
+                                                                </div>
+
+                                                                <p style="font-size: 12pt; text-align: center;"><span
+                                                                        style="font-family: Arial;">FREE</span></p>
+
+                                                                <div style="text-align: center;">&nbsp;</div>
+                                                            </td>
+                                                            <td
+                                                                style="border-image: initial; font-family: 'Lato Light';">
+                                                                <div style="text-align: center;">&nbsp;</div>
+
+                                                                <p style="text-align: center;"><span
+                                                                        style="font-family: Arial; font-size: 12pt;">FREE</span>
+                                                                </p>
+
+                                                                <div style="text-align: center;">&nbsp;</div>
+                                                            </td>
+                                                            <td lato="" light=""
+                                                                style="border-image: initial; text-align: center;"><span
+                                                                    style="font-family: Arial; font-size: 12pt;">FREE</span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                            <div>&nbsp;</div>
+
+                                            <div>&nbsp;</div>
+
+                                            <div>
+                                                <div style="border-image: initial;"><span
+                                                        style="font-size: 14pt;"></span></div>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <div
+                                                style="font-weight: normal; font-family: arial; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal;">
+                                                <div style=" #666666; border-image: initial;">
+                                                    <div style=" #666666; border-image: initial;">
+                                                        <div style=" #666666; border-image: initial;">
+                                                            <div style=" #666666; border-image: initial;">
+                                                                <div style=" #666666; border-image: initial;">
+                                                                    <div style=" #666666; border-image: initial;">
+                                                                        <div><span style="font-size: 14pt;"><strong><span
+                                                                                        style="font-size: 14pt;"><strong><strong><span
+                                                                                                    style="font-weight: normal; font-size: 14pt; background-color: yellow;"><span
+                                                                                                        style="font-size: 12px;"></span></span></strong></strong></span></strong></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        </div>
+                        </div>
+                        <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-9">
 
 
 
@@ -636,7 +973,7 @@ var_dump($currentTime);
 
             </div>
 
-           
+
 
 
 
@@ -1034,31 +1371,31 @@ var_dump($currentTime);
 
 
 
-const dataToSend = {
+        const dataToSend = {
 
-    programmeid: <?php echo $programme_defined3;?>,
-    programme2: <?php echo $programme4;?>
+            programmeid: <?php echo $programme_defined3;?>,
+            programme2: <?php echo $programme4;?>
 
-}
+        }
 
-const jsonString = JSON.stringify(dataToSend);
-console.log(jsonString);
+        const jsonString = JSON.stringify(dataToSend);
+        console.log(jsonString);
 
-var request2 = $.ajax({
-    url: siteRoot + "assets/scripts/classes/generateProgrammeCurrent.php",
-    type: "POST",
-    contentType: "application/json",
-    data: jsonString,
-});
+        var request2 = $.ajax({
+            url: siteRoot + "assets/scripts/classes/generateProgrammeCurrent.php",
+            type: "POST",
+            contentType: "application/json",
+            data: jsonString,
+        });
 
 
 
-request2.done(function(data) {
-    // alert( "success" );
-    $('#ajaxThurs').html(data);
-    //$(document).find('.Thursday').hide();
-})
-}
+        request2.done(function(data) {
+            // alert( "success" );
+            $('#ajaxThurs').html(data);
+            //$(document).find('.Thursday').hide();
+        })
+    }
 
     function submitPreRegisterForm() {
 
