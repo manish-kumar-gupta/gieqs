@@ -25,7 +25,7 @@
 
       $navigator = new navigator;
 
-      $courseTest = true;
+      $courseTest = false;
 
       //$navigation = new navigation;
 
