@@ -343,29 +343,7 @@ $test = false;
                     <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/mission.php">Mission</a>
                 </li>
                 <!-- Program-basic, later to add dropdown with options -->
-                <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-                    <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">Digital Courses</a>
-                    
-                    <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Upcoming Courses</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_basic_colon.php" disabled><i class="fas fa-columns"></i>Basic Colonoscopy Skills</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_trainer_colon.php"><i class="fas fa-columns"></i>Train the Colonoscopy Trainers</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_polypectomy_upskilling.php"><i class="fas fa-columns"></i>Polypectomy Upskilling Course</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_imaging.php"><i class="fas fa-columns"></i>Colorectal Polyp Imaging<span class="badge gieqsGold">
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_small_polypectomy.php"><i class="fas fa-columns"></i>Small and Intermediate Polypectomy<span class="badge gieqsGold">
-
-                                    New
-                                    </span></a> 
-
-                    
-                    <!-- <div class="dropdown-divider"></div>
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">GIEQs Faculty</span>
-                    <a class="dropdown-item" href="<?php //echo BASE_URL;?>/pages/program/faculty_stable.php"><i class="fas fa-user"></i>Faculty</a>
-                     -->
-                    
-                  </div>
-                </li>
+                
 
                 <!-- <li class="nav-item active">
                     <a class="nav-link" href="<?php //echo BASE_URL;?>/pages/program/gieqs_ii_day_1.php">Symposium<span class="badge bg-gieqsGold text-dark badge-pill badge-floating ml-1 pl-1">
@@ -417,26 +395,17 @@ $test = false;
                   </div> -->
                 </li>
                 <?php }?>
+                
                 <?php
                 if (isset($_SESSION['user_id']) && ($_SESSION['siteKey'] == 'TxsvAb6KDYpmdNk') && ($_SESSION['access_level'] > 0 && $_SESSION['access_level'] < 7)){
                 ?>
-                <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-                    <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">GIEQs Online</a>
-                    
-                    <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Digital Learning Library</span>
-                    
-                    
-                
-                
-                    
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/index.php"><i class="fas fa-graduation-cap"></i>GIEQs Online</a>
-                                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Scoring Systems</span>
 
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/smic"><i class="fas fa-graduation-cap"></i>Risk of Polyp Submucosal Invasion</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/scores/cecum.php"><i class="fas fa-graduation-cap"></i>Caecum Visualisation Score</a>
+<li class="nav-item">
+                    <a class="nav-link"
+                        href="<?php echo BASE_URL; ?>/pages/learning/index.php">GIEQs Online</a>
+                </li>
 
+                
 
 
                 <?php }else{ ?>
@@ -449,10 +418,34 @@ $test = false;
 
 
                 <?php }?>
+
+
+                <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                    <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Digital Courses</a>
                     
+                    <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Upcoming Courses</span>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_basic_colon.php" disabled><i class="fas fa-columns"></i>Basic Colonoscopy Skills</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_trainer_colon.php"><i class="fas fa-columns"></i>Train the Colonoscopy Trainers</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_polypectomy_upskilling.php"><i class="fas fa-columns"></i>Polypectomy Upskilling Course</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_imaging.php"><i class="fas fa-columns"></i>Colorectal Polyp Imaging<span class="badge gieqsGold">
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_small_polypectomy.php"><i class="fas fa-columns"></i>Small and Intermediate Polypectomy<span class="badge gieqsGold">
+
+                                    New
+                                    </span></a> 
+
+                    
+                    <!-- <div class="dropdown-divider"></div>
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">GIEQs Faculty</span>
+                    <a class="dropdown-item" href="<?php //echo BASE_URL;?>/pages/program/faculty_stable.php"><i class="fas fa-user"></i>Faculty</a>
+                     -->
                     
                   </div>
                 </li>
+                    
+                    
+                  
                 
 
                 <!-- Backend -->

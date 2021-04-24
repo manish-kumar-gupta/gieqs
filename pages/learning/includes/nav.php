@@ -342,6 +342,49 @@ if ($menus) {
                 </li>
                 <?php }?>
 
+                <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                    <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Discover New Courses</a>
+                    
+                    <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Subscribable Courses</span>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_basic_colon.php" disabled><i class="fas fa-columns"></i>Basic Colonoscopy Skills Course</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_trainer_colon.php"><i class="fas fa-columns"></i>Train the Colonoscopy Trainers Course</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_polypectomy_upskilling.php"><i class="fas fa-columns"></i>Polypectomy Upskilling Course</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_imaging.php"><i class="fas fa-columns"></i>Colorectal Polyp Imaging Webinar<span class="badge gieqsGold">
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_small_polypectomy.php"><i class="fas fa-columns"></i>Small and Intermediate Polypectomy Course<span class="badge gieqsGold">
+
+                                    New
+                                    </span></a> 
+
+                    
+                    <!-- <div class="dropdown-divider"></div>
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">GIEQs Faculty</span>
+                    <a class="dropdown-item" href="<?php //echo BASE_URL;?>/pages/program/faculty_stable.php"><i class="fas fa-user"></i>Faculty</a>
+                     -->
+                    
+                  </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link"
+                        href="<?php echo BASE_URL; ?>/index.php">Symposium</a>
+                </li>
+
+                <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                    <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Online Scores</a>
+                    
+                    <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
+                    
+                                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Scoring Systems</span>
+
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/smic"><i class="fas fa-graduation-cap"></i>Risk of Polyp Submucosal Invasion</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/scores/cecum.php"><i class="fas fa-graduation-cap"></i>Caecum Visualisation Score</a>
+                    </div>
+
+                </li>
+
                 <?php
 if (isset($_SESSION['user_id']) && ($_SESSION['siteKey'] == 'TxsvAb6KDYpmdNk') && ($_SESSION['access_level'] == '1' || $_SESSION['access_level'] == '2')) {
     ?>
