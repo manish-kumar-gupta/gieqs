@@ -25,12 +25,19 @@
 
       $navigator = new navigator;
 
+      $courseTest = true;
+
       //$navigation = new navigation;
 
       require_once(BASE_URI . '/assets/scripts/classes/navigation.class.php');
       $navigation = new navigation;
 
 
+      require_once(BASE_URI . '/assets/scripts/classes/programmeReports.class.php');
+      $programmeReports = new programmeReports;
+
+      require_once(BASE_URI . '/assets/scripts/classes/programme.class.php');
+      $programme = new programme;
 
       require_once(BASE_URI . '/assets/scripts/classes/navigationManager.class.php');
       $navigationManager = new navigationManager;
@@ -127,7 +134,7 @@
 
 
 
-    iframe {
+    /* iframe {
         box-sizing: border-box;
         height: 25.25vw;
         left: 50%;
@@ -137,7 +144,7 @@
         position: absolute;
         top: 50%;
         width: 100.77777778vh;
-    }
+    } */
 
     .cursor-pointer {
 
@@ -177,11 +184,11 @@
 
         }
 
-        #playerContainer {
+        /* #playerContainer {
 
             margin-top: -20px;
 
-        }
+        } */
 
         #collapseExample {
 
@@ -658,9 +665,9 @@
                 $log[] =  'issue loading the page';
             }
             ?>
-            <div class="main-content container mt-10">
+                <div class="main-content container mt-10">
 
-                <?php            
+                    <?php            
             echo 'Failed Page Loading</a>';
             echo '<br/><br/>Return <a href="' . BASE_URL .  '/pages/learning/">home</a>';
             //redirect_user(BASE_URL . '/pages/learning/');
@@ -680,10 +687,10 @@
 
         $page_title = $pages->gettitle();?>
 
-                <title>GIEQs Online Endoscopy Trainer - <?php echo $page_title;?></title>
+                    <title>GIEQs Online Endoscopy Trainer - <?php echo $page_title;?></title>
 
 
-                <?php
+                    <?php
         $page_description = $pages->getdescription();
         $videoset = null;
 
@@ -807,7 +814,14 @@
 
 
 <body>
+
+
+
+
+
     <!-- Omnisearch data -->
+
+
 
     <div id="omnisearch" class="omnisearch">
         <div class="container">
@@ -888,7 +902,7 @@
     <div id="requiredTagCategories" style="display:none;"><?php echo json_encode($requiredTagCategories);?></div>
     <div id="requiredVideos" style="display:none;"><?php echo json_encode($requiredVideos);?></div>
 
-    
+
 
 
 
@@ -922,6 +936,8 @@
 
     <div class="main-content bg-gradient-dark">
 
+
+
         <!--Header CHANGEME-->
 
         <div class="d-flex flex-wrap container pt-9 mt-3">
@@ -936,80 +952,209 @@
                     <?php }
                     
                     if (isset($pageid)){ ?>
-                    <li class="breadcrumb-item"><?php $navigationName = $navigationManager->getNavigationPage($pageid, false); $navigation->Load_from_key($navigationName); echo $navigation->gettitle();?></li>
+                    <li class="breadcrumb-item">
+                        <?php $navigationName = $navigationManager->getNavigationPage($pageid, false); $navigation->Load_from_key($navigationName); echo $navigation->gettitle();?>
+                    </li>
 
 
                     <?php }?>
-                    
+
                     <li class="breadcrumb-item gieqsGold" aria-current="page"><?php echo $page_title;?></li>
                 </ol>
             </nav>
 
         </div>
 
+        <?php
+    
+    //on the day of a course
+
+    if ($videoset == 3){
+
+        //echo the same as for the GIEQs conference
+
+        $programme_array = $assetManager->returnProgrammesAsset($assetid);
+                $programme_id = $programme_array[0];
+                $programme->Load_from_key($programme_id);
+
+                $serverTimeZoneNav = new DateTimeZone('Europe/Brussels'); //because this is where course is held
 
 
-        <!--Navigation-->
-
-        <?php if (!isset($simple)){?>
-
-        <div id="navigationZone" class="pt-3">
-            <?php require(BASE_URI . '/pages/learning/includes/navigation.php'); ?>
-        </div>
-
-        <?php }?>
+                $currentNavTime = new DateTime('now', $serverTimeZoneNav);
 
 
+                if ($courseTest == true){
 
-        <!--Video Display-->
+                    $currentNavTime = new DateTime($programme->getdate(), $serverTimeZoneNav);
 
 
-        <div class="container mt-3">
-            <div class="text-justify m-4">
-                <p class="lead lh-180 pb-3"><?php echo $page_description;?></p>
+                }
 
+
+                $courseDate = new DateTime($programme->getdate(), $serverTimeZoneNav); //get course date from Programme
+
+                $firstDate = $currentNavTime->format('Y-m-d');
+                $secondDate = $courseDate->format('Y-m-d');
+
+
+        if ($firstDate == $secondDate){
+
+
+
+
+        ?>
+
+        <div class="container-fluid ">
+            <div class="row d-flex flex-wrap py-1 px-6">
+
+
+                <h5 class="text-gieqsGold mr-auto ml-8">GIEQs Live Course View</h5>
+
+
+
+
+                <a class="btn btn-sm text-dark gieqsGoldBackground" role="button"
+                    href="<?php echo $programme->geturl_zoom();?>" target="_blank">LIVE - Access Zoom Meeting</a>
+                <a class="btn btn-sm text-dark gieqsGoldBackground" role="button" href="#programme-display">View
+                    Programme</a>
 
 
             </div>
-            <div id="videoCards" class="flex-wrap">
+            <div class="row d-flex flex-wrap align-items-lg-stretch py-4 px-6">
+
+            <?php //fix for chat window 
+
+            
+            
+            if ($programme->geturl_slido() != ''){?>
+
+<?php
+                echo '<div class="col-lg-9">';
+                ?>
+                <div style="padding:56.25% 0 0 0;position:relative;"><iframe
+        src="<?php echo $programmeReports->getVimeoURLProgramme($programme_id); ?>" frameborder="0"
+        allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
+        style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe></div>
+</div>
+<div class="col-lg-3 p-0 m-0">
+<iframe src="<?php echo $programme->geturl_slido();?>" width="100%" height="100%"
+    frameborder="0"></iframe>
+</div>
 
 
-                <div class="d-flex align-items-center">
-                    <strong>Loading...</strong>
-                    <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
-                </div>
+<?php
+
+            }else{
+
+                
+
+                echo '<div class="col-lg-12">';xw
+               ?> <div style="padding:56.25% 0 0 0;position:relative;"><iframe
+        src="<?php echo $programmeReports->getVimeoURLProgramme($programme_id); ?>" frameborder="0"
+        allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
+        style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe></div>
+</div>
+<?php
+            }
+            
+            ?>
 
 
 
 
+            
+         <!--    <div class="col-lg-9">
+
+<div style="padding:56.25% 0 0 0;position:relative;"><iframe
+        src="https://vimeo.com/event/910289/embed/8a7dee8af0" frameborder="0"
+        allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
+        style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe></div>
+</div>
+
+<div class="col-lg-3 p-0 m-0">
+<iframe src="https://vimeo.com/event/910289/chat/8a7dee8af0" width="100%" height="100%"
+    frameborder="0"></iframe>
+</div>
+ -->
             </div>
+        </div>
+    </div>
+
+
+
+    <?php
+
+                    }
+
+    }
+    
+    
+    
+    ?>
+
+
+
+    <!--Navigation-->
+
+    <?php if (!isset($simple)){?>
+
+    <div id="navigationZone" class="pt-3">
+        <?php require(BASE_URI . '/pages/learning/includes/navigation.php'); ?>
+    </div>
+
+    <?php }?>
+
+
+
+    <!--Video Display-->
+
+
+    <div class="container mt-3">
+        <div class="text-justify m-4">
+            <p class="lead lh-180 pb-3"><?php echo $page_description;?></p>
+
+
+
+        </div>
+        <div id="videoCards" class="flex-wrap">
+
+
+            <div class="d-flex align-items-center">
+                <strong>Loading...</strong>
+                <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+            </div>
+
+
+
 
         </div>
 
+    </div>
 
-        <!--Programme Display, Cuurently Courses only-->
 
-        <?php if ($videoset == 3){?>
-        <hr>
-        <div class="container mt-3">
-            <!-- <div class="text-justify m-4">
+    <!--Programme Display, Cuurently Courses only-->
+
+    <?php if ($videoset == 3){?>
+    <hr>
+    <div class="container mt-3">
+        <!-- <div class="text-justify m-4">
             <p class="h3"><?php //echo 'Course Programme'?></p>  
 
 
 
             </div> -->
-            <div id="programme-display" class="p-6 flex-wrap">
+        <div id="programme-display" class="p-6 flex-wrap">
 
 
 
 
 
 
-
-            </div>
 
         </div>
-        <?php } ?>
+
+    </div>
+    <?php } ?>
 
 
 
@@ -1290,7 +1435,7 @@
 
                 //if count tags >0
 
-                if (tags.length > 0){
+                if (tags.length > 0) {
 
                     window.localStorage.setItem('selectedTag', tagid);
 
