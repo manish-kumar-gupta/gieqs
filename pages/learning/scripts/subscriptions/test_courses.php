@@ -59,7 +59,7 @@ print_r($usersError);
 $emails = $userFunctions->returnEmails($usersError);
 
 //generate a new subscription
-
+/*
 $current_date = new DateTime('now', new DateTimeZone('UTC'));
 
 $current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s');
@@ -87,6 +87,7 @@ if (!($assetManager->is_assetid_covered_by_user_subscription('17', $value, false
 }
 
 }
+*/
 
 //use users to get emails
 
