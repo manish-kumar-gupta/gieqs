@@ -49,6 +49,50 @@ error_reporting(E_ALL);
 
 echo 'hello';
 
+
+//check subscriptionns
+
+$usersError = $assetManager->getErroneousSubscriptionUsers();
+
+print_r($usersError);
+
+$emails = $userFunctions->returnEmails($usersError);
+
+//generate a new subscription
+
+/* $current_date = new DateTime('now', new DateTimeZone('UTC'));
+
+$current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s');
+
+$interval = 'P3M';
+
+$end_start_calculate_date = $current_date;
+
+$end_start_calculate_date->add(new DateInterval($interval));
+
+$end_date_sqltimestamp = date_format($end_start_calculate_date, 'Y-m-d H:i:s');
+
+foreach ($usersError as $key=>$value){
+
+if (!($assetManager->is_assetid_covered_by_user_subscription('17', $value, false))) {
+
+    $subscription->New_subscriptions($value, 17, $current_date_sqltimestamp, $end_date_sqltimestamp, '1', '0', 'GIFT-ERROR-GIEQS');
+    echo $subscription->prepareStatementPDO();
+
+} else {
+
+    $assetManager->is_assetid_covered_by_user_subscription('17', $value, true);
+    echo '<br/>User already owns current subscription of this asset type';
+
+}
+
+} */
+
+//use users to get emails
+
+
+
+
 $assetArray = $assetManager->which_assets_contain_programme('32');
 
 var_dump($assetArray);

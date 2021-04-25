@@ -1514,6 +1514,44 @@ public function clearRecipients($email_id, $debug=false){
 
 }
 
+public function returnEmails($users)
+            {
+            
+				$usersRequired = "`user_id` = '";
+				$usersRequired .= implode("' OR `user_id` = '", $users);
+				$usersRequired = "'";
+
+
+            $q = "SELECT CONCAT(`email` , '; ') AS `emailString` FROM `users` WHERE $usersRequired";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					echo $row['emailString'] . ' ';
+
+
+				}
+
+				//return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+		}
+
 
 
 	

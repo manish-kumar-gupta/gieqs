@@ -4339,6 +4339,43 @@ if ($debug){
     
         }
 
+
+    public function getErroneousSubscriptionUsers(){
+
+
+        $q = "SELECT `user_id`, `start_date` FROM `subscriptions` WHERE `asset_id`='14' AND `active` = '1' AND `start_date` > '2021-03-25'";
+
+        //echo $q . '<br><br>';
+
+
+
+        $result = $this->connection->RunQuery($q);
+        
+        $x = 0;
+        $nRows = $result->rowCount();
+
+        if ($nRows > 0) {
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                $rowReturn[$x] = $row['user_id'];
+                $x++;
+
+            }
+
+            return $rowReturn;
+
+        } else {
+            
+
+            return false;
+        }
+
+    
+
+    }
+    
+
         
 
 
