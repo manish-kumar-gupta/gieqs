@@ -1524,7 +1524,7 @@ public function returnEmails($users)
 
             $q = "SELECT CONCAT(`email` , '; ') AS `emailString` FROM `users` WHERE $usersRequired";
 
-            //echo $q . '<br><br>';
+            echo $q . '<br><br>';
 
 
 
