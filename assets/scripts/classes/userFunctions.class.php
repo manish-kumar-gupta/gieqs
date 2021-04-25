@@ -1519,7 +1519,7 @@ public function returnEmails($users)
             
 				$usersRequired = "`user_id` = '";
 				$usersRequired .= implode("' OR `user_id` = '", $users);
-				$usersRequired = "'";
+				$usersRequired .= "'";
 
 
             $q = "SELECT CONCAT(`email` , '; ') AS `emailString` FROM `users` WHERE $usersRequired";
