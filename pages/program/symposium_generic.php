@@ -60,8 +60,12 @@ $general = new general;
 $debug = false;
 
 //$assetid = 13;
-$asset_id_pagewrite = '15';
+/* $asset_id_pagewrite = '15';
 $asset_id_pagewrite2 = '16';
+$email_to_use_as_basis = '1'; */
+
+$asset_id_pagewrite = '3';
+$asset_id_pagewrite2 = '3';
 $email_to_use_as_basis = '1';
 
 $emails->Load_from_key($email_to_use_as_basis);
@@ -235,7 +239,9 @@ var_dump($currentTime);
                             class="h3 display-5 mt-4 text-white"><?php echo 'Live :  ' . $humanReadableProgrammeDate;?></span>
                         <span
                             class="h3 display-5 text-white"><?php echo ', ' . $humanStartTime . ' - ' . $humanEndTime;?>
-                            <br />on Demand
+                            <br /> and Friday 1st October 2021, 08:00 - 17:30 CEST
+
+                            <br /><br />on Demand
                             thereafter<br /></span>
                         <a href="#targetScrollProgramme" id="wednesdayTop"
                             class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 scroll-me">
@@ -361,11 +367,11 @@ var_dump($currentTime);
                                     <div class="row justify-content-center">
                                         <div class="col-md-10 text-center">
                                             <h2 class="display-4 text-white">
-                                                Watch the GIEQs II Teaser Video
+                                                
                                             </h2>
                                             <!-- <h4 class="text-white mt-3">This example footage of our presentation style may help convince
                                 you!</h4> -->
-                                            <a href="https://vimeo.com/458737091" data-fancybox="" data-toggle="tooltip"
+                                            <a href="https://vimeo.com/543463015" data-fancybox="" data-toggle="tooltip"
                                                 data-placement="bottom" title=""
                                                 class="btn btn-white btn-icon-only rounded-circle hover-scale-110 mt-4"
                                                 data-original-title="Watch video">
@@ -381,6 +387,7 @@ var_dump($currentTime);
 
 
                         </section>
+                        <caption>This video will give you a flavour of what GIEQs is about.  The application of excellent technique and the latest evidence to bring safe and effective diagnostic and therapeutic interventions to patient care</caption>
 
                     </div>
 
@@ -557,325 +564,67 @@ var_dump($currentTime);
                         <h3 class="display-3 mt-2 text-gieqsGold">Registration</h3>
 
                         <p class="lead mb-3"><strong class="h4">We will keep the price the same as 2020 for a limited
-                                period</strong>. Medical
-                            students and trainee registrations remain at the same low level. </p>
+                                'early-bird' period</strong>. Medical
+                            students and trainee registrations will always remain at the same low level. </p>
 
-                        <p class="lead mb-3"><strong class="h4">Sign up for GIEQS II from mid-April</strong>, draft
+                        <!-- <p class="lead mb-3"><strong class="h4">Sign up for GIEQS II from mid-April</strong>, draft
                             programme below, full programme to follow.</p>
+ -->
+                            <h6 class="mt-6 text-gieqsGold">Registration Fees</h6>
 
-                        </div>
-                        </div>
-                        </div>
-                        <div class="container-fluid text-center">
-                        <div class="row justify-content-center">
-                        <div class="col-12">
-                        <table role="presentation" data-questiontype="0"
-                            data-relatedvars="qh-color,ql-background-color,ql-capitalization,ql-font,ql-font-color,ql-font-size,qi-container-bg-color,qi-bg-color,qi-font-size"
-                            class="questionContainer  questionLabelHeading" cellspacing="0" cellpadding="2"
-                            id="q214596099" style="">
+
+                            <table class="table table-cards">
+                            <thead>
+                                <tr class="table-divider">
+                                    <th>Registration fee<br>EUR incl. 21% VAT<br>(EUR excl. VAT)</th>
+                                    <th>Early bird <br>Until 1 July 2021</th>
+                                    <th>Regular <br>Until 15 September 2021</th>
+                                    <th>Late<br>Until 30 September 2021</th>
+                                </tr>
+                            </thead>
                             <tbody>
-                                <tr>
-                                    <td class="table standard " style="">
-                                        <p><span style="font-family: Arial; font-size: 12pt; color: #efc278;"><strong><span
-                                                        style="font-size: 14pt;">REGISTRATION
-                                                        FEES</span></strong></span></p>
-
-                                        <div style="font-family: Arial; font-size: 12pt; color: #efc278;">
-                                            <div style="text-align: center;">&nbsp;</div>
-                                        </div>
-
-                                        <div>
-                                            <div style="font-family: Arial; color: #efc278;">&nbsp;</div>
-
-                                            <div style="font-size: 14px;">
-                                                <table align="center" border="1" bordercolor="" cellpadding="10"
-                                                    cellspacing="0" style="border-image: initial;" width="100%">
-                                                    <tbody>
-                                                        <tr style="font-family: Arial;">
-                                                            <td style="border-image: initial;">
-                                                                <div style="text-align: center;"><br><span
-                                                                        style="font-size: 14pt;"><strong>Registration
-                                                                            fee</strong><br><strong
-                                                                            style="color: #efc278; font-size: 16px; text-align: start;">EUR
-                                                                            incl. 21% VAT</strong></span></div>
-
-                                                                <div style="text-align: center;"><span
-                                                                        style="color: #efc278;"><strong
-                                                                            style="font-size: 12px; text-align: start;">(EUR
-                                                                            excl. VAT)</strong></span></div>
-                                                            </td>
-                                                            <td
-                                                                style="text-align: center; border-image: initial; font-family: 'Lato Light';">
-                                                                <div><strong
-                                                                        style="font-size: 14pt; font-family: Arial;">Early
-                                                                        bird&nbsp;</strong></div>
-
-                                                                <div><strong style="font-family: Arial;"><span
-                                                                            style="color: #efc278; font-size: 10pt;"><span
-                                                                                style="color: #b08815;"><strong
-                                                                                    style="color: #efc278; font-size: 16px; text-align: start;">Until
-                                                                                    1&nbsp;July
-                                                                                    2021</strong></span></span></strong>
-                                                                </div>
-                                                            </td>
-                                                            <td
-                                                                style="text-align: center; border-image: initial; font-family: 'Lato Light';">
-                                                                <div><span style="font-size: 14pt;"><strong
-                                                                            style="font-family: Arial;">Regular&nbsp;</strong></span>
-                                                                </div>
-
-                                                                <div><strong
-                                                                        style="color: #efc278; font-family: Arial;"><span
-                                                                            style="color: #b08815;"><span
-                                                                                style="font-size: 10pt;"><span
-                                                                                    style="font-size: 10pt;"><strong
-                                                                                        style="color: #efc278; font-size: 16px; text-align: start;">Until
-                                                                                        15 September
-                                                                                        2021</strong></span></span></span></strong>
-                                                                </div>
-                                                            </td>
-                                                            <td
-                                                                style="text-align: center; border-image: initial; font-family: 'Lato Light';">
-                                                                <div><span style="font-size: 14pt;"><strong
-                                                                            style="font-family: Arial;">Late</strong></span>
-                                                                </div>
-
-                                                                <div><strong
-                                                                        style="color: #efc278; font-family: Arial;"><span
-                                                                            style="color: #b08815;"><span
-                                                                                style="font-size: 10pt;"><span
-                                                                                    style="font-size: 10pt;"><strong
-                                                                                        style="color: #efc278; font-size: 16px; text-align: start;">Until
-                                                                                        30 September
-                                                                                        2021</strong></span></span></span></strong>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr style="font-family: Arial;">
-                                                            <td style="text-align: center; border-image: initial;">
-                                                                <strong style="font-size: 14pt;">Doctor</strong></td>
-                                                            <td
-                                                                style="border-image: initial; font-family: 'Lato Light';">
-                                                                <ul>
-                                                                    <li><span
-                                                                            style="font-family: Arial; font-size: 12pt;">2
-                                                                            days: € 100,00 incl. VAT<br><span
-                                                                                style="font-size:12px;">(€ 82,64 excl.
-                                                                                VAT)</span></span></li>
-                                                                    <li><span
-                                                                            style="font-family: Arial; font-size: 12pt;">1
-                                                                            day: € 75,00 incl. VAT<br><span
-                                                                                style="font-size:12px;">(€ 61,98 excl.
-                                                                                VAT)</span></span><span
-                                                                            style="font-family: Arial;"> </span></li>
-                                                                </ul>
-                                                            </td>
-                                                            <td
-                                                                style="border-image: initial; font-family: 'Lato Light';">
-                                                                <ul>
-                                                                    <li><span
-                                                                            style="font-family: Arial; font-size: 12pt;">2
-                                                                            days: € 200,00 incl. VAT<br><span
-                                                                                style="font-size:12px;">(€
-                                                                                165,29&nbsp;excl. VAT)</span></span>
-                                                                    </li>
-                                                                    <li><span
-                                                                            style="font-family: Arial; font-size: 12pt;">1
-                                                                            day: € 150,00 incl. VAT<br><span
-                                                                                style="font-size:12px;">(€ 123,97 excl.
-                                                                                VAT)</span></span></li>
-                                                                </ul>
-                                                            </td>
-                                                            <td
-                                                                style="border-image: initial; font-family: 'Lato Light';">
-                                                                <ul>
-                                                                    <li><span
-                                                                            style="font-family: Arial; font-size: 12pt;">2
-                                                                            days: € 250,00 incl. VAT<br><span
-                                                                                style="font-size:12px;">(€ 206,61 excl.
-                                                                                VAT)</span></span></li>
-                                                                    <li><span
-                                                                            style="font-family: Arial; font-size: 12pt;">1
-                                                                            day: € 200,00 incl. VAT<br><span
-                                                                                style="font-size:12px;">(€
-                                                                                165,29&nbsp;excl. VAT)</span></span>
-                                                                    </li>
-                                                                </ul>
-                                                            </td>
-                                                        </tr>
-                                                        <tr style="font-family: Arial;">
-                                                            <td style="text-align: center; border-image: initial;">
-                                                                <strong style="font-size: 14pt;">Specialist in training
-                                                                </strong></td>
-                                                            <td
-                                                                style="border-image: initial; font-family: 'Lato Light';">
-                                                                <ul>
-                                                                    <li><span style="color:#000000;"><span
-                                                                                style="font-family: Arial; font-size: 12pt;">2
-                                                                                days: € 50,00 incl. VAT<br><span
-                                                                                    style="font-size:12px;">(€ 41,32
-                                                                                    excl. VAT)</span></span></span></li>
-                                                                    <li><span style="color:#000000;"><span
-                                                                                style="font-family: Arial; font-size: 12pt;">1
-                                                                                day: € 35,00 incl. VAT<br><span
-                                                                                    style="font-size:12px;">(€ 28,93
-                                                                                    excl. VAT)</span></span></span></li>
-                                                                </ul>
-                                                            </td>
-                                                            <td
-                                                                style="border-image: initial; font-family: 'Lato Light';">
-                                                                <ul>
-                                                                    <li><span style="color:#000000;"><span
-                                                                                style="font-family: Arial; font-size: 12pt;">2
-                                                                                days: € 75,00 incl. VAT<br><span
-                                                                                    style="font-size:12px;">(€ 61,98
-                                                                                    excl. VAT)</span></span></span></li>
-                                                                    <li><span style="color:#000000;"><span
-                                                                                style="font-family: Arial; font-size: 12pt;">1
-                                                                                day: € 50,00 incl. VAT<br><span
-                                                                                    style="font-size:12px;">(€ 41,32
-                                                                                    excl. VAT)</span></span></span></li>
-                                                                </ul>
-                                                            </td>
-                                                            <td
-                                                                style="border-image: initial; font-family: 'Lato Light';">
-                                                                <ul>
-                                                                    <li><span
-                                                                            style="font-family: Arial; font-size: 12pt;">2
-                                                                            days: € 100,00 incl. VAT<br><span
-                                                                                style="font-size:12px;">(€ 82,64 excl.
-                                                                                VAT)</span></span></li>
-                                                                    <li><span
-                                                                            style="font-family: Arial; font-size: 12pt;">1
-                                                                            day: € 75,00 incl. VAT<br><span
-                                                                                style="font-size:12px;">(€ 61,98 excl.
-                                                                                VAT)</span></span></li>
-                                                                </ul>
-                                                            </td>
-                                                        </tr>
-                                                        <tr style="font-family: Arial;">
-                                                            <td style="text-align: center; border-image: initial;">
-                                                                <strong style="font-size: 14pt;"><span
-                                                                        style="text-align: start;">Allied Health Care
-                                                                        Professional (incl. nurses)</span></strong></td>
-                                                            <td
-                                                                style="border-image: initial; font-family: 'Lato Light';">
-                                                                <ul>
-                                                                    <li><span style="color:#000000;"><span
-                                                                                style="font-family: Arial; font-size: 12pt;">2
-                                                                                days: € 50,00 incl. VAT<br><span
-                                                                                    style="font-size:12px;">(€ 41,32
-                                                                                    excl. VAT)</span></span></span></li>
-                                                                    <li><span style="color:#000000;"><span
-                                                                                style="font-family: Arial; font-size: 12pt;">1
-                                                                                day: € 35,00 incl. VAT<br><span
-                                                                                    style="font-size:12px;">(€ 28,93
-                                                                                    excl. VAT)</span></span></span></li>
-                                                                </ul>
-                                                            </td>
-                                                            <td
-                                                                style="border-image: initial; font-family: 'Lato Light';">
-                                                                <ul>
-                                                                    <li><span style="color:#000000;"><span
-                                                                                style="font-family: Arial; font-size: 12pt;">2
-                                                                                days: € 75,00 incl. VAT<br><span
-                                                                                    style="font-size:12px;">(€ 61,98
-                                                                                    excl. VAT)</span></span></span></li>
-                                                                    <li><span style="color:#000000;"><span
-                                                                                style="font-family: Arial; font-size: 12pt;">1
-                                                                                day: € 50,00 incl. VAT<br><span
-                                                                                    style="font-size:12px;">(€ 41,32
-                                                                                    excl. VAT)</span></span></span></li>
-                                                                </ul>
-                                                            </td>
-                                                            <td
-                                                                style="border-image: initial; font-family: 'Lato Light';">
-                                                                <ul>
-                                                                    <li><span
-                                                                            style="font-family: Arial; font-size: 12pt;">2
-                                                                            days: € 100,00 incl. VAT<br><span
-                                                                                style="font-size:12px;">(€ 82,64 excl.
-                                                                                VAT)</span></span></li>
-                                                                    <li><span
-                                                                            style="font-family: Arial; font-size: 12pt;">1
-                                                                            day: € 75,00 incl. VAT<br><span
-                                                                                style="font-size:12px;">(€ 61,98 excl.
-                                                                                VAT)</span></span></li>
-                                                                </ul>
-                                                            </td>
-                                                        </tr>
-                                                        <tr style="font-family: Arial;">
-                                                            <td style="text-align: center; border-image: initial;">
-                                                                <strong style="font-size: 14pt;">Student</strong></td>
-                                                            <td
-                                                                style="border-image: initial; font-family: 'Lato Light';">
-                                                                <div style="text-align: center; font-size: 12pt;">&nbsp;
-                                                                </div>
-
-                                                                <p style="font-size: 12pt; text-align: center;"><span
-                                                                        style="font-family: Arial;">FREE</span></p>
-
-                                                                <div style="text-align: center;">&nbsp;</div>
-                                                            </td>
-                                                            <td
-                                                                style="border-image: initial; font-family: 'Lato Light';">
-                                                                <div style="text-align: center;">&nbsp;</div>
-
-                                                                <p style="text-align: center;"><span
-                                                                        style="font-family: Arial; font-size: 12pt;">FREE</span>
-                                                                </p>
-
-                                                                <div style="text-align: center;">&nbsp;</div>
-                                                            </td>
-                                                            <td lato="" light=""
-                                                                style="border-image: initial; text-align: center;"><span
-                                                                    style="font-family: Arial; font-size: 12pt;">FREE</span>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-
-                                            <div>&nbsp;</div>
-
-                                            <div>&nbsp;</div>
-
-                                            <div>
-                                                <div style="border-image: initial;"><span
-                                                        style="font-size: 14pt;"></span></div>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <div
-                                                style="font-weight: normal; font-family: arial; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal;">
-                                                <div style=" #666666; border-image: initial;">
-                                                    <div style=" #666666; border-image: initial;">
-                                                        <div style=" #666666; border-image: initial;">
-                                                            <div style=" #666666; border-image: initial;">
-                                                                <div style=" #666666; border-image: initial;">
-                                                                    <div style=" #666666; border-image: initial;">
-                                                                        <div><span style="font-size: 14pt;"><strong><span
-                                                                                        style="font-size: 14pt;"><strong><strong><span
-                                                                                                    style="font-weight: normal; font-size: 14pt; background-color: yellow;"><span
-                                                                                                        style="font-size: 12px;"></span></span></strong></strong></span></strong></span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
+                                <tr class="table-divider">
+                                    <td><b>Doctor</b></td>
+                                    <td>2 days: € 100,00 incl. VAT<br>(€ 82,64 excl. VAT)<br>1 day: € 75,00 incl.
+                                        VAT<br>(€ 61,98 excl. VAT)</td>
+                                    <td>2 days: € 200,00 incl. VAT<br>(€ 165,29 excl. VAT)<br>1 day: € 150,00 incl.
+                                        VAT<br>(€ 123,97 excl. VAT)</td>
+                                    <td>2 days: € 250,00 incl. VAT<br>(€ 206,61 excl. VAT)<br>1 day: € 200,00 incl.
+                                        VAT<br>(€ 165,29 excl. VAT)</td>
+                                </tr>
+                                <tr class="table-divider">
+                                    <td><b>Specialist in training</b></td>
+                                    <td>2 days: € 50,00 incl. VAT<br>(€ 41,32 excl. VAT)<br>1 day: € 35,00 incl.
+                                        VAT<br>(€ 28,93 excl. VAT)</td>
+                                    <td>2 days: € 75,00 incl. VAT<br>(€ 61,98 excl. VAT)<br>1 day: € 50,00 incl.
+                                        VAT<br>(€ 41,32 excl. VAT)</td>
+                                    <td>2 days: € 100,00 incl. VAT<br>(€ 82,64 excl. VAT)<br>1 day: € 75,00 incl.
+                                        VAT<br>(€ 61,98 excl. VAT)</td>
+                                </tr>
+                                <tr class="table-divider">
+                                    <td><b>Allied Health Care Professional (incl. nurses)</b></td>
+                                    <td>2 days: € 50,00 incl. VAT<br>(€ 41,32 excl. VAT)<br>1 day: € 35,00 incl.
+                                        VAT<br>(€ 28,93 excl. VAT)</td>
+                                    <td>2 days: € 75,00 incl. VAT<br>(€ 61,98 excl. VAT)<br>1 day: € 50,00 incl.
+                                        VAT<br>(€ 41,32 excl. VAT)</td>
+                                    <td>2 days: € 100,00 incl. VAT<br>(€ 82,64 excl. VAT)<br>1 day: € 75,00 incl.
+                                        VAT<br>(€ 61,98 excl. VAT)</td>
+                                </tr>
+                                <tr class="table-divider">
+                                    <td><b>Student</b></td>
+                                    <td> FREE </td>
+                                    <td> FREE </td>
+                                    <td>FREE</td>
                                 </tr>
                             </tbody>
                         </table>
-                        </div>
-                        </div>
-                        </div>
-                        <div class="container">
+
+
+                    </div>
+                </div>
+            </div>
+          
+            <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-9">
 
