@@ -21,7 +21,7 @@ Class video_moderation {
 
 	public function getModerationTable()
 	{
-	$q = "Select * from `video` WHERE `active` = '4'";
+	$q = "Select * from `video`";
 	$result = $this->connection->RunQuery($q);
 	$rowReturn = array();
 	$x = 0;
