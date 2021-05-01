@@ -96,8 +96,8 @@ public function getManagementTable()
 	{
 		$q = "Select a.*, b.`invite_tag`, b.`accept_tag`, b.`review_tag`, b.`done_tag`, b.`decline_tag` from `video` as a 
 	LEFT OUTER JOIN `usersTagging` as b 
-	on b.`video_id` = a.`id`  
-	((b.`invite_tag` IS NULL) OR (b.`invite_tag` IS NOT NULL AND b.`decline_tag` IS NOT NULL) OR (b.`invite_tag` IS NOT NULL AND b.`accept_tag` IS NOT NULL) OR (b.`invite_tag` IS NOT NULL AND b.`review_tag` IS NOT NULL))
+	on b.`video_id` = a.`id` 
+	WHERE ((b.`invite_tag` IS NULL) OR (b.`invite_tag` IS NOT NULL AND b.`decline_tag` IS NOT NULL) OR (b.`invite_tag` IS NOT NULL AND b.`accept_tag` IS NOT NULL) OR (b.`invite_tag` IS NOT NULL AND b.`review_tag` IS NOT NULL))
 	AND (b.`done_tag` IS NULL) 
 	GROUP BY a.`id` ORDER BY a.`id` DESC";
 
