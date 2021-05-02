@@ -113,7 +113,7 @@ echo date('Y/m/d H:i:s'); */
                     $filename = '/assets/email/emailNewAccountHook.php';
                     $emailVaryarray['signup_redirect'] = 'basic_colon';
                     
-                }else if ($data['signup_redirect'] == 'imaging'){
+                }elseif ($data['signup_redirect'] == 'imaging'){
 
                     if (isset($data['access_token'])){
 
@@ -127,7 +127,7 @@ echo date('Y/m/d H:i:s'); */
 
                     }
 
-                }else if ($data['signup_redirect'] == 'gieqs_ii'){
+                }elseif ($data['signup_redirect'] == 'gieqs_ii'){
 
                     if (isset($data['access_token'])){
 

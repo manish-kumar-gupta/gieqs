@@ -131,6 +131,18 @@ background-color: rgb(238, 194, 120);
                           $link_text = 'Continue to Course Booking';
 
 
+                        }elseif ($signup_redirect == 'small_polyp_signup'){
+
+                          $link = BASE_URL . '/pages/program/program_small_polypectomy.php?action=register';
+                          $link_text = 'Continue to Course Booking';
+
+
+                        }elseif ($signup_redirect == 'gieqs_ii'){
+
+                          $link = BASE_URL . '/pages/program/gieqs_ii.php?action=register';
+                          $link_text = 'Continue to GIEQs II Booking';
+
+
                         }else{
 
                           $link = BASE_URL . '/pages/learning/index.php';

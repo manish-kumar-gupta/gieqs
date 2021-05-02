@@ -633,7 +633,7 @@ var_dump($currentTime);
                             </div>
                         </div>
 
-                        <input type="hidden" name="signup_redirect" value="imaging">
+                        <input type="hidden" name="signup_redirect" value="small_polyp_signup">
 
                         <?php if ($access_validated){
 
