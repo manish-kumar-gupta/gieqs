@@ -60,13 +60,13 @@ $general = new general;
 $debug = false;
 
 //$assetid = 13;
-/* $asset_id_pagewrite = '15';
+$asset_id_pagewrite = '15';
 $asset_id_pagewrite2 = '16';
-$email_to_use_as_basis = '1'; */
-
-$asset_id_pagewrite = '3';
-$asset_id_pagewrite2 = '3';
 $email_to_use_as_basis = '1';
+
+/*$asset_id_pagewrite = '3';
+$asset_id_pagewrite2 = '3';
+$email_to_use_as_basis = '1';*/
 
 $emails->Load_from_key($email_to_use_as_basis);
 $emailid = $email_to_use_as_basis;
@@ -157,6 +157,11 @@ var_dump($currentTime);
         font-weight: ;
         color: white;
 
+    }
+
+    .table .td-dark{
+    color: #4a83cb;
+    
     }
 
     .bg-gieqsGold {
@@ -360,7 +365,7 @@ var_dump($currentTime);
 
                         <section
                             class="bg-dark slice-video slice-xl d-flex align-items-center bg-cover bg-size--cover p-0 mt-6"
-                            style="background-image: url(http://localhost:90/dashboard/gieqs/assets/img/covers/resection/cold_snare_cover.jpg);">
+                            style="background-image: url(http://localhost:90/dashboard/gieqs/assets/img/covers/ovesco.png);">
                             <span class="mask bg-gradient-dark opacity-2"></span>
                             <div class="container">
                                 <div class="col">
@@ -387,7 +392,7 @@ var_dump($currentTime);
 
 
                         </section>
-                        <caption>This video will give you a flavour of what GIEQs is about.  The application of excellent technique and the latest evidence to bring safe and effective diagnostic and therapeutic interventions to patient care</caption>
+                        <p class="mx-6 my-4">This video will give you a flavour of what GIEQs is about.  The application of <b>excellent technique</b> and the <b>latest evidence</b> to bring <b>safe and effective diagnostic and therapeutic interventions</b> to patient care</p>
 
                     </div>
 
@@ -564,55 +569,61 @@ var_dump($currentTime);
                         <h3 class="display-3 mt-2 text-gieqsGold">Registration</h3>
 
                         <p class="lead mb-3"><strong class="h4">We will keep the price the same as 2020 for a limited
-                                'early-bird' period</strong>. Medical
+                                'early-bird' period</strong>  Register now to lock-in a top quality Endoscopy experience at a very low price. Medical
                             students and trainee registrations will always remain at the same low level. </p>
 
                         <!-- <p class="lead mb-3"><strong class="h4">Sign up for GIEQS II from mid-April</strong>, draft
                             programme below, full programme to follow.</p>
  -->
-                            <h6 class="mt-6 text-gieqsGold">Registration Fees</h6>
+                            <h6 class="mt-6">Registration Fees</h6>
 
 
-                            <table class="table table-cards">
+                            <table class="table table-dark table-condensed px-9">
+                            <colgroup>
+                                <col></col>
+                                <col></col>
+                                <col></col>
+                                <col></col>
+                            </colgroup>
                             <thead>
-                                <tr class="table-divider">
+                                <tr class="table-divider bg-primary">
                                     <th>Registration fee<br>EUR incl. 21% VAT<br>(EUR excl. VAT)</th>
-                                    <th>Early bird <br>Until 1 July 2021</th>
+                                    <th class="gieqsGold">Early bird <br>Until 1 July 2021</th>
                                     <th>Regular <br>Until 15 September 2021</th>
                                     <th>Late<br>Until 30 September 2021</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="table-divider">
-                                    <td><b>Doctor</b></td>
-                                    <td>2 days: € 100,00 incl. VAT<br>(€ 82,64 excl. VAT)<br>1 day: € 75,00 incl.
+                                <tr class="table-divider text-muted">
+                                    <td class="td-dark"><b>Doctor</b></td>
+                                    <td><span class="text-white">2 days: € 100,00 incl. VAT<br>(€ 82,64 excl. VAT)<br></span><br>1 day: € 75,00 incl.
                                         VAT<br>(€ 61,98 excl. VAT)</td>
-                                    <td>2 days: € 200,00 incl. VAT<br>(€ 165,29 excl. VAT)<br>1 day: € 150,00 incl.
+                                    <td>2 days: € 200,00 incl. VAT<br>(€ 165,29 excl. VAT)<br><br>1 day: € 150,00 incl.
                                         VAT<br>(€ 123,97 excl. VAT)</td>
-                                    <td>2 days: € 250,00 incl. VAT<br>(€ 206,61 excl. VAT)<br>1 day: € 200,00 incl.
+                                    <td>2 days: € 250,00 incl. VAT<br>(€ 206,61 excl. VAT)<br><br>1 day: € 200,00 incl.
                                         VAT<br>(€ 165,29 excl. VAT)</td>
                                 </tr>
-                                <tr class="table-divider">
-                                    <td><b>Specialist in training</b></td>
-                                    <td>2 days: € 50,00 incl. VAT<br>(€ 41,32 excl. VAT)<br>1 day: € 35,00 incl.
+                                <tr class="table-divider text-muted">
+                                    <td class="td-dark"><b>Specialist in training</b></td>
+                                    <td><span class="text-white">2 days: € 50,00 incl. VAT<br>(€ 41,32 excl. VAT)<br></span><br>1 day: € 35,00 incl.
                                         VAT<br>(€ 28,93 excl. VAT)</td>
-                                    <td>2 days: € 75,00 incl. VAT<br>(€ 61,98 excl. VAT)<br>1 day: € 50,00 incl.
+                                    <td>2 days: € 75,00 incl. VAT<br>(€ 61,98 excl. VAT)<br><br>1 day: € 50,00 incl.
                                         VAT<br>(€ 41,32 excl. VAT)</td>
-                                    <td>2 days: € 100,00 incl. VAT<br>(€ 82,64 excl. VAT)<br>1 day: € 75,00 incl.
+                                    <td>2 days: € 100,00 incl. VAT<br>(€ 82,64 excl. VAT)<br><br>1 day: € 75,00 incl.
                                         VAT<br>(€ 61,98 excl. VAT)</td>
                                 </tr>
-                                <tr class="table-divider">
-                                    <td><b>Allied Health Care Professional (incl. nurses)</b></td>
-                                    <td>2 days: € 50,00 incl. VAT<br>(€ 41,32 excl. VAT)<br>1 day: € 35,00 incl.
+                                <tr class="table-divider text-muted">
+                                    <td class="td-dark"><b>Allied Health Care Professional (incl. nurses)</b></td>
+                                    <td ><span class="text-white">2 days: € 50,00 incl. VAT<br>(€ 41,32 excl. VAT)<br></span><br>1 day: € 35,00 incl.
                                         VAT<br>(€ 28,93 excl. VAT)</td>
-                                    <td>2 days: € 75,00 incl. VAT<br>(€ 61,98 excl. VAT)<br>1 day: € 50,00 incl.
+                                    <td>2 days: € 75,00 incl. VAT<br>(€ 61,98 excl. VAT)<br><br>1 day: € 50,00 incl.
                                         VAT<br>(€ 41,32 excl. VAT)</td>
-                                    <td>2 days: € 100,00 incl. VAT<br>(€ 82,64 excl. VAT)<br>1 day: € 75,00 incl.
+                                    <td>2 days: € 100,00 incl. VAT<br>(€ 82,64 excl. VAT)<br><br>1 day: € 75,00 incl.
                                         VAT<br>(€ 61,98 excl. VAT)</td>
                                 </tr>
-                                <tr class="table-divider">
-                                    <td><b>Student</b></td>
-                                    <td> FREE </td>
+                                <tr class="table-divider text-muted">
+                                    <td class="td-dark"><b>Student</b></td>
+                                    <td class="text-white"> FREE </td>
                                     <td> FREE </td>
                                     <td>FREE</td>
                                 </tr>
