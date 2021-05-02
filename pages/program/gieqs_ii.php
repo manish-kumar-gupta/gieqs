@@ -1013,7 +1013,7 @@ var_dump($currentTime);
                             </div>
                         </div>
 
-                        <input type="hidden" name="signup_redirect" value="imaging">
+                        <input type="hidden" name="signup_redirect" value="gieqs_ii">
 
                         <?php if ($access_validated){
 
