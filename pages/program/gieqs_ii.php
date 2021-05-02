@@ -871,7 +871,7 @@ var_dump($currentTime);
                 <!-- CHANGE ME UPDATE TODO MAKE THIS COME FROM THE PROGRAM -->
 
                 <input type="submit" id="button-confirm-new" class="btn btn-sm btn-white button-confirm-new"
-                    value="<?php $result = $access_validated ? 'Start Registration' : 'Start Registrationn'; echo $result;?>">
+                    value="<?php $result = $access_validated ? 'Start Registration' : 'Start Registration'; echo $result;?>">
             </form>
         </div>
 
