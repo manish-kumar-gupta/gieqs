@@ -376,7 +376,7 @@ var_dump($currentTime);
                                             </h2>
                                             <!-- <h4 class="text-white mt-3">This example footage of our presentation style may help convince
                                 you!</h4> -->
-                                            <a href="https://vimeo.com/543463015" data-fancybox="" data-toggle="tooltip"
+                                            <a href="https://vimeo.com/544188060" data-fancybox="" data-toggle="tooltip"
                                                 data-placement="bottom" title=""
                                                 class="btn btn-white btn-icon-only rounded-circle hover-scale-110 mt-4"
                                                 data-original-title="Watch video">
@@ -588,7 +588,7 @@ var_dump($currentTime);
                             <thead>
                                 <tr class="table-divider bg-primary">
                                     <th>Registration fee<br>EUR incl. 21% VAT<br>(EUR excl. VAT)</th>
-                                    <th class="gieqsGold">Early bird <br>Until 1 July 2021</th>
+                                    <th class="gieqsGold"><span style="color:white !important;">Early bird <br>Until 1 July 2021</span></th>
                                     <th>Regular <br>Until 15 September 2021</th>
                                     <th>Late<br>Until 30 September 2021</th>
                                 </tr>
