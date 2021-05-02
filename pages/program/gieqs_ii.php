@@ -787,7 +787,7 @@ var_dump($currentTime);
 
                             }else{?>
 
-                            <span class="text-muted" id="cost">&euro;</span><span>Varies depending upon class of subscription.  To be determined on registration platform.</span>
+                            <!-- <span class="text-muted" id="cost">&euro;</span> --><span class="text-muted">Varies depending upon class of subscription.  To be determined on registration platform.</span>
                         </p>
 
                         <?php }?>
