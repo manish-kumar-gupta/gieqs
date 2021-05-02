@@ -346,7 +346,7 @@ $test = false;
                 
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/gieqs_ii.php">Symposium<span class="badge bg-gieqsGold text-dark badge-pill badge-floating ml-1 pl-1">
+                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/gieqs_ii.php">GIEQs II<span class="badge bg-gieqsGold text-dark badge-pill badge-floating ml-1 pl-1">
                                     New!
                                     </span></a>
                 </li>
@@ -356,7 +356,7 @@ $test = false;
                 <!--currently not active-->
                 <?php if (!$liveAndLoggedIn){?>
                 <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/faculty_stable.php">Faculty</a>
+                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/faculty.php">Faculty</a>
                 </li>
                 <?php }?>
 
@@ -425,7 +425,7 @@ $test = false;
                         aria-haspopup="true" aria-expanded="false">Digital Courses</a>
                     
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Upcoming Courses</span>
+                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Past Courses (Available On Demand)</span>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_basic_colon.php" disabled><i class="fas fa-columns"></i>Basic Colonoscopy Skills</a>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_trainer_colon.php"><i class="fas fa-columns"></i>Train the Colonoscopy Trainers</a>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_polypectomy_upskilling.php"><i class="fas fa-columns"></i>Polypectomy Upskilling Course</a>

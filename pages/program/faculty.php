@@ -148,7 +148,7 @@ require BASE_URI . '/headNoPurposeCore.php';
                     <div class="mb-5 text-center">
                         <h2 class="mt-4" style="color: rgb(238, 194, 120);">The GIEQs faculty</h2>
                         <div class="fluid-paragraph mt-3">
-                            <p class="lead lh-180">With a stellar international faculty the first edition of GIEQs
+                            <p class="lead lh-180">With a stellar international faculty the second edition of GIEQs
                                 promises to be a launch-pad for innovative thinking in everyday endoscopic practice.</p>
                         </div>
                     </div>
@@ -157,23 +157,8 @@ require BASE_URI . '/headNoPurposeCore.php';
 
                     </div>
                     <div class="row row-grid">
-                        <div class="col-lg-3">
-                            <div data-animate-hover="2">
-                                <div class="animate-this">
-                                    <a href="#">
-                                        <img alt="Michael Bourke" class="img-fluid rounded shadow"
-                                            src="../../assets/img/faculty/MB.png">
-                                    </a>
-                                </div>
-                                <div class="mt-3">
-                                    <h5 class="gieqsGold card-title mb-0">Prof. Michael J Bourke</h5>
-                                    <p class="text-muted mb-0">Clinical Professor of Medicine</p>
-                                    <p class="text-muted mb-0">University of Sydney, Australia</p>
-                                    <p class="text mb-0">Focus: polypectomy, ERCP</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
+                        
+                        <!-- <div class="col-lg-3">
                             <div data-animate-hover="2">
                                 <div class="animate-this">
                                     <a href="#">
@@ -188,7 +173,7 @@ require BASE_URI . '/headNoPurposeCore.php';
                                     <p class="text mb-0">Focus: quality, polypectomy</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-lg-3">
                             <div data-animate-hover="2">
                                 <div class="animate-this">
@@ -221,6 +206,22 @@ require BASE_URI . '/headNoPurposeCore.php';
                                 </div>
                             </div>
                         </div>
+                        <div class="col-lg-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="#">
+                                        <img alt="Michael Bourke" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/MB.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Prof. Michael J Bourke</h5>
+                                    <p class="text-muted mb-0">Clinical Professor of Medicine</p>
+                                    <p class="text-muted mb-0">University of Sydney, Australia</p>
+                                    <p class="text mb-0">Focus: polypectomy, ERCP</p>
+                                </div>
+                            </div>
+                        </div>
                         
                     </div>
                     <!-- <div class="row row-grid"> -->
@@ -247,7 +248,7 @@ require BASE_URI . '/headNoPurposeCore.php';
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <!-- <div class="col-lg-3">
                             <div data-animate-hover="2">
                                 <div class="animate-this">
                                     <a href="">
@@ -262,8 +263,8 @@ require BASE_URI . '/headNoPurposeCore.php';
                                     <p class="text mb-0">Focus: quality in upper GI tract early neoplasia, ERCP and endoscopic ultrasound</p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3">
+                        </div> -->
+                        <!-- <div class="col-lg-3">
                             <div data-animate-hover="2">
                                 <div class="animate-this">
                                     <a href="">
@@ -278,8 +279,8 @@ require BASE_URI . '/headNoPurposeCore.php';
                                     <p class="text mb-0">Focus: quality in_array ERCP and endoscopic ultrasound</p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-3">
+                        </div> -->
+                       <!--  <div class="col-lg-3">
                             <div data-animate-hover="2">
                                 <div class="animate-this">
                                     <a href="">
@@ -294,7 +295,7 @@ require BASE_URI . '/headNoPurposeCore.php';
                                     <p class="text mb-0">Focus: quality in ERCP and endoscopic ultrasound</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- <div class="col-lg-3">
                             <div data-animate-hover="2">
                                 <div class="animate-this">

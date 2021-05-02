@@ -202,9 +202,9 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
             <!-- SVG illustration -->
             <div class="pt-7 position-absolute middle right-0 col-lg-7 col-xl-6 d-none d-lg-block">
                 <figure class="w-75" style="max-width: 1000px;">
-                    <img alt="Image placeholder" src="https://www.gieqs.com/assets/img/polyps/transverse_invasive.png"
+                    <img alt="Image placeholder" src="https://www.gieqs.com/assets/img/backgrounds/gieqs2ii.png"
                         class="svg-inject img-fluid">
-                        <figcaption class="small figure-caption text-right">Non-granular transverse colon large non-pedunculated colorectal polyp.  <br/>Suspicious for submucosal invasive cancer. </figcaption>
+                        <!-- <figcaption class="small figure-caption text-right">Non-granular transverse colon large non-pedunculated colorectal polyp.  <br/>Suspicious for submucosal invasive cancer. </figcaption> -->
                 </figure>
             </div>
             <!-- SVG background -->
@@ -219,6 +219,13 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                 <div class="col">
                 <div class="row">
                         <div class="col-lg-10 col-xl-10 text-center text-lg-left">
+                        <a href="https://www.gieqs.com/pages/program/gieqs_ii.php">
+                            <div class="alert alert-modern alert-dark">
+                            <span class="badge gieqsGold badge-pill">
+                                New
+                                    </span>
+                                <span class="alert-content">GIEQs II Registration Open</span>
+                             </div></a>
                         <a href="https://www.gieqs.com/pages/program/program_imaging.php">
                             <div class="alert alert-modern alert-dark">
                                 <span class="badge gieqsGold badge-pill">
@@ -226,13 +233,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                     </span>
                                 <span class="alert-content">Live / Virtual Hybrid Courses</span>
                              </div></a>
-                        <a href="https://www.gieqs.com/pages/program/registration.php">
-                            <div class="alert alert-modern alert-dark">
-                            <span class="badge gieqsGold badge-pill">
-                                <i class="fas fa-notes-medical"></i>
-                                    </span>
-                                <span class="alert-content">Register for GIEQs I on Demand</span>
-                             </div></a>
+                        
                              <a class="ml-3 pointer" data-toggle="modal" data-target="#accreditation">
                             <div class="alert alert-modern alert-dark">
                                 <span class="badge gieqsGold badge-pill">
@@ -253,21 +254,20 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                             </div>
                             
                                 <h2 class="text-white mb-4 mt-4 mt-lg-0">
-                                    <span class="display-4 font-weight-light">GIEQs.  The home of Everyday Endoscopy</span>
+                                    <span class="display-4 font-weight-light">GIEQs II.  Registration Now Open!</span>
                                      
                                     <span class="d-block" style="color: rgb(238, 194, 120);"><strong
-                                            class="font-weight-light">GIEQs II will be held 30 September / 1 October 2021. <br/>  Registration opens mid April.<br />For now there is GIEQs Online,
-                                            </strong><br />evening Seminars and Virtual Courses</span>
+                                            class="font-weight-light">Endoscopy in HD. Virtual Edition.<br/> Join us for step 2 of the Everyday Endoscopy Revolution.</span>
                                 </h2>
-                                <p class="lead text-white">Use the links above to explore courses and register for GIEQs Online.  News on GIEQs II coming end March 2021.</p>
+                                <p class="lead text-white">The highly anticipated Second Edition of the Ghent International Endoscopy Quality Symposium will be held 30 September / 1 October 2021.</p>
                                 <div class="mt-5">
 
                                         
-                                    <a href="https://www.gieqs.com/pages/program/program_imaging.php"
+                                    <a href="https://www.gieqs.com/pages/program/gieqs_ii.php"
                                         class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
                                         style="background-color: rgb(238, 194, 120);">
-                                        <span class="btn-inner--text">Register for our Latest Course (Imaging) <sup></sup></span>
-                                        <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
+                                        <span class="btn-inner--text">Find Out More + Register for GIEQs II<sup></sup></span>
+                                        <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
 
                                     </a>
 
