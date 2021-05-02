@@ -127,6 +127,20 @@ echo date('Y/m/d H:i:s'); */
 
                     }
 
+                }else if ($data['signup_redirect'] == 'gieqs_ii'){
+
+                    if (isset($data['access_token'])){
+
+                        $filename = '/assets/email/emailNewAccountHook.php';
+                        $emailVaryarray['signup_redirect'] = 'gieqs_ii&access_token=8898601655';
+
+                    }else{
+
+                    $filename = '/assets/email/emailNewAccountHook.php';
+                    $emailVaryarray['signup_redirect'] = 'gieqs_ii';
+
+                    }
+
                 } else {
     
                     $filename = '/assets/email/emailNewAccount.php';
