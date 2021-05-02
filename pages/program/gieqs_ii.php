@@ -761,7 +761,7 @@ var_dump($currentTime);
         <div class="modal-lg modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title h6" id="modal_title_6">Buy New GIEQs Online Course</h5>
+                    <h5 class="modal-title h6" id="modal_title_6">Buy New GIEQs Symposium Access</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -773,7 +773,7 @@ var_dump($currentTime);
                     <div class="py-3 text-left">
                         <!-- <i class="fas fa-exclamation-circle fa-4x"></i> -->
                         <hr />
-                        <h5 class="heading h4 mt-4">New GIEQs Online Course Subscription</h5>
+                        <h5 class="heading h4 mt-4">New GIEQs Symposium Purchase</h5>
                         <p class="heading h5 mt-4">Course : <span class="text-white" id="asset-name"></span></p>
 
                         <p class="text-white"><span class="text-muted" id="asset-type"></span></p>
@@ -787,7 +787,7 @@ var_dump($currentTime);
 
                             }else{?>
 
-                            <span class="text-muted" id="cost">&euro;</span>
+                            <span class="text-muted" id="cost">&euro;</span><span>Varies depending upon class of subscription.  To be determined on registration platform.</span>
                         </p>
 
                         <?php }?>
@@ -822,16 +822,11 @@ var_dump($currentTime);
                 <?php if (!($access_validated)){?>
 
                 <p class="text-sm mt-4">
-                    By clicking Start Payment you will be taken to PayPal to start the payment process.
-                    The payment process is not final until you confirm with the payment provider.
-                    Once complete your subscription will be active immediately and you will receive a
-                    confirmation email.
+                    On clicking Start Registration you will be forwarded to the registration portal of the symposium secretariat Seauton International.
                     <!-- This subscription will automatically renew after the expiry term. This can easily be
                             switched off your account settings. -->
-                    We do not store any payment details whatsoever on GIEQs.com. We believe this is best handled by
-                    PayPal who have a
-                    track record in industry standard procedures in this regard.
-                    All subscriptions and payments are covered by our <a
+                    
+                    All Congress subscriptions and payments are covered by our <a
                         href="<?php echo BASE_URL;?>/pages/support/support_gieqs_online_terms.php" target="_blank">terms
                         and conditions</a>.
                 </p>
@@ -856,12 +851,12 @@ var_dump($currentTime);
 
             //allow free register
 
-            $form_action_path = BASE_URL . '/pages/learning/scripts/subscriptions/generate_free_subscription.php';
+            $form_action_path = 'https://eu.eventscloud.com/ereg/index.php?eventid=200221839&';
 
 
         }else{
 
-            $form_action_path = BASE_URL . '/pages/learning/scripts/subscriptions/charge.php';
+            $form_action_path = 'https://eu.eventscloud.com/ereg/index.php?eventid=200221839&';
 
 
         }
@@ -872,11 +867,11 @@ var_dump($currentTime);
             <button type="button" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</button>
             <form id="confirm-new" action="<?php echo $form_action_path;?>" method="POST">
                 <input type="hidden" id="asset_id_hidden" name="asset_id" value="">
-                <input type="hidden" id="course_date" name="course_date" value="2021-03-16 08:00">
+                <input type="hidden" id="course_date" name="course_date" value="2021-09-30 08:00">
                 <!-- CHANGE ME UPDATE TODO MAKE THIS COME FROM THE PROGRAM -->
 
                 <input type="submit" id="button-confirm-new" class="btn btn-sm btn-white button-confirm-new"
-                    value="<?php $result = $access_validated ? 'Register' : 'Start Payment'; echo $result;?>">
+                    value="<?php $result = $access_validated ? 'Start Registration' : 'Start Registrationn'; echo $result;?>">
             </form>
         </div>
 
