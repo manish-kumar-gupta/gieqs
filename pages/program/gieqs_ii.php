@@ -721,6 +721,7 @@ var_dump($currentTime);
             </div>
 
             <hr id="targetScrollProgramme" class="divider divider-fade" />
+            <h3 class="display-3 mt-2 text-gieqsGold">Scientific Programme</h3>
 
 
             <div id="ajaxWed">
