@@ -68,6 +68,22 @@ if (isset($_GET['destination'])) {
     
 
 
+  }else if ($destination == 'gieqs_ii'){
+
+    if (isset($_GET['access_token'])){
+
+      $access_token = $_GET['access_token'];
+      $target = '/pages/program/gieqs_ii.php?action=register&access_token=' . $access_token;
+
+    }else{
+
+      $target = '/pages/program/gieqs_ii.php?action=register';
+
+    }
+
+    
+
+
   }else if ($destination == 'gieqsonline'){
 
     $target = '/pages/learning/index.php';
