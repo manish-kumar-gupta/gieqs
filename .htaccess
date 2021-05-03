@@ -32,7 +32,11 @@ RewriteRule ^train-the-trainers$ pages/program/program_trainer_colon.php
 RewriteRule ^polypectomy-upskilling$ pages/program/program_polypectomy_upskilling.php
 RewriteRule ^imaging$ pages/program/program_imaging.php
 RewriteRule ^small-intermediate-polypectomy$ pages/program/program_small_polypectomy.php
-RewriteRule ^gieqsii$ pages/program/gieqs_ii_day_1.php
+RewriteRule ^gieqsii$ pages/program/gieqs_ii.php
+RewriteRule ^ii$ pages/program/gieqs_ii.php
+RewriteRule ^2$ pages/program/gieqs_ii.php
+RewriteRule ^second_edition$ pages/program/gieqs_ii.php
+RewriteRule ^the_next_step$ pages/program/gieqs_ii.php
 
 
 

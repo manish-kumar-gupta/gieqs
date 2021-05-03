@@ -376,7 +376,7 @@ var_dump($currentTime);
                                             </h2>
                                             <!-- <h4 class="text-white mt-3">This example footage of our presentation style may help convince
                                 you!</h4> -->
-                                            <a href="https://vimeo.com/544188060" data-fancybox="" data-toggle="tooltip"
+                                            <a href="https://vimeo.com/544320202" data-fancybox="" data-toggle="tooltip"
                                                 data-placement="bottom" title=""
                                                 class="btn btn-white btn-icon-only rounded-circle hover-scale-110 mt-4"
                                                 data-original-title="Watch video">
@@ -392,7 +392,7 @@ var_dump($currentTime);
 
 
                         </section>
-                        <p class="mx-6 my-4">This video will give you a flavour of what GIEQs is about.  The application of <b>excellent technique</b> and the <b>latest evidence</b> to bring <b>safe and effective diagnostic and therapeutic interventions</b> to patient care</p>
+                        <p class="mx-6 my-4">This video will give you a flavour of what GIEQs is about.  It is shown using our custom viewer on <a href="https://www.gieqs.com/online">GIEQs Online</a>.  The application of <b>excellent technique</b> and the <b>latest evidence</b> to bring <b>safe and effective diagnostic and therapeutic interventions</b> to patient care</p>
 
                     </div>
 
@@ -545,7 +545,7 @@ var_dump($currentTime);
                                 our content is linked via tags between our live events and online platform - GIEQs
                                 Online </li>
                             <li class="mb-3"><strong class="h4">Grounded in Training Theory</strong> - all our content
-                                is linked via tags between our live events and online platform - GIEQs Online </li>
+                                is backed by established training theory </li>
                             <li class="mb-3"><strong class="h4">Published Evidence</strong> - all our content is linked
                                 to the latest published evidence and guidelines </li>
 
