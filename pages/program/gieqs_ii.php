@@ -365,7 +365,7 @@ var_dump($currentTime);
 
                         <section
                             class="bg-dark slice-video slice-xl d-flex align-items-center bg-cover bg-size--cover p-0 mt-6"
-                            style="background-image: url(http://localhost:90/dashboard/gieqs/assets/img/covers/ovesco.png);">
+                            style="background-image: url(https://www.gieqs.com/assets/img/covers/ovesco.png);">
                             <span class="mask bg-gradient-dark opacity-2"></span>
                             <div class="container">
                                 <div class="col">
