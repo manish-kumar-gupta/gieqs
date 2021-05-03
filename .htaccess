@@ -37,6 +37,7 @@ RewriteRule ^ii$ pages/program/gieqs_ii.php
 RewriteRule ^2$ pages/program/gieqs_ii.php
 RewriteRule ^second_edition$ pages/program/gieqs_ii.php
 RewriteRule ^the_next_step$ pages/program/gieqs_ii.php
+RewriteRule ^blog$ /pages/learning/blog.php
 
 
 
