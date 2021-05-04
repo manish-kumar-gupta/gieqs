@@ -734,6 +734,62 @@ var_dump($currentTime);
 
             </div>
 
+            <div class="row">
+            <div class="col-12 text-center pb-4">
+            <?php 
+                        
+
+                        if ($userid){
+
+                            
+
+                            if ($assetManager->doesUserHaveSameAssetAlready($asset_id_pagewrite, $userid, false)){
+                                //user owns This
+                                ?>
+
+                    <a data-assetid="<?php echo $asset_id_pagewrite; ?>"
+                        class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
+                        <span class="btn-inner--text text-dark">View My Course!</span>
+                        <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+                    </a>
+
+
+
+
+
+
+
+
+
+                    <?php }else{ ?>
+
+                    <a data-assetid="<?php echo $asset_id_pagewrite; ?>"
+                        class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
+                        <span class="btn-inner--text text-dark">Register Now!</span>
+                        <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+                    </a>
+
+                    <?php
+                      
+                        }//close if owns this
+
+                    }else{//close if user id
+                        
+                        ?>
+
+                    <a data-assetid="<?php echo $asset_id_pagewrite; ?>"
+                        class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
+                        <span class="btn-inner--text text-dark">Register Now!</span>
+                        <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+                    </a>
+
+
+
+                    <?php }?>
+
+</div>
+                    </div>
+
 
 
 
