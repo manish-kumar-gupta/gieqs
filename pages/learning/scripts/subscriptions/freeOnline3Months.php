@@ -52,7 +52,7 @@ $userFunctions = new userFunctions;
 require_once BASE_URI . '/assets/scripts/classes/programmeView.class.php';
 $programmeView = new programmeView;
 
-error_reporting(E_ALL);
+/* error_reporting(E_ALL);
 
 echo 'hello';
 
@@ -64,7 +64,7 @@ $assetArray = $assetManager->which_assets_contain_programme('32');
 
 var_dump($assetArray);
 
-var_dump($userid);
+var_dump($userid); */
 
 //set a max number allowed timees this can run
 
