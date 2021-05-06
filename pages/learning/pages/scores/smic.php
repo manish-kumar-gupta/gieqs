@@ -508,7 +508,7 @@ background-color: rgb(238, 194, 120);
 					SMICnumeric = round(SMICnumeric, 1);
 
 					return SMICnumeric + '%  <br>(or ' + SMICriskOR + 'x the risk of a granular 0-IIa 20-29mm LSL in the colon proximal to the sigmoid without a demarcated area or depression, risk 1.1%)<br>';
-;	
+	
 					
 				}
 			
