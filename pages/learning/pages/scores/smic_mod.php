@@ -247,7 +247,7 @@ background-color: rgb(238, 194, 120);
         <!--Video Display-->
 
 
-    <div class="container mt-6">
+    <div class="container mt-3">
             
 <script>
 
@@ -379,26 +379,65 @@ background-color: rgb(238, 194, 120);
 			}
 			
 			//surely there should be a version involving size...
+
+            
 		}
 
-	function determineSMIC (kudov, depression, size, location, morphology, paris, debug=false) {
+    //hie below if demarcated area = yes
+
+    function noDemarcatedArea(){
+
+        var labels = $('#size, #location, #morphology, #paris').parent().prev();
+        var arrayToHide = $('#size, #location, #morphology, #paris').parent();
+
+        $(labels).show();
+        $(arrayToHide).show();
+
+    }
+
+    function demarcatedArea(){
+
+        var labels = $('#size, #location, #morphology, #paris').parent().prev();
+        var arrayToHide = $('#size, #location, #morphology, #paris').parent();
+
+        $(labels).hide();
+        $(arrayToHide).hide();
+
+        /* $('#size, #location, #morphology, #paris').parent().hide(); */
+
+    }
+
+
+
+	function determineSMIC (demarcation, size, location, morphology, paris, debug=true) {
 			
-			if ((kudov == null) || (depression == null) || (size == null) || (location == null) || (morphology == null) || (paris == null)){
+			if ((demarcation == null)){
+
+				return 'Was there a demarcation zone?';
+
+
+
+            }else if ((demarcation == 1)){
+                
+                var risk = 16 * 1.1;
+                return '<h3>VERY High Risk</h3> <br/>SMIC risk ' + risk +  '%. ';
+             
+                
+            }else if ((size == null) || (location == null) || (morphology == null) || (paris == null)){
 		
-				return 'Missing Variables - please enter all 6 characteristics';
+				return 'Missing Variables - please enter all 4 further characteristics';
 
 
 			}else{
 				
-				var kudovInt = +kudov;
-				var depressionInt = +depression;
+				//var demarcation = +demarcation;
 				var sizeInt = +size;
 				var locationInt = +location;
 				var morphologyInt = +morphology;
 				var parisInt = +paris;
 				
 				
-				if (isNaN(kudovInt) || isNaN(depressionInt) || isNaN(sizeInt) || isNaN(locationInt) || isNaN(morphologyInt) || isNaN(parisInt) ){
+				if (isNaN(sizeInt) || isNaN(locationInt) || isNaN(morphologyInt) || isNaN(parisInt) ){
 
 					return 'Issue with variables supplied, please check they are numbers';
 
@@ -407,23 +446,6 @@ background-color: rgb(238, 194, 120);
 					var SMICriskOR = 0;
 					var SMICriskactual = 1.1;
 
-					if (kudovInt == 1){
-
-						SMICriskOR = SMICriskOR + 14.2;
-
-					}
-
-					if (depressionInt == 1){
-
-                        if (debug){
-
-                            console.log(SMICriskOR);
-
-                        }
-
-						SMICriskOR = SMICriskOR + 1.8;
-
-					}
 
 					if (sizeInt == 2){
 						//>=30mm
@@ -507,7 +529,18 @@ background-color: rgb(238, 194, 120);
 
 					SMICnumeric = round(SMICnumeric, 1);
 
-					return SMICnumeric + '%  <br>(or ' + SMICriskOR + 'x the risk of a granular 0-IIa 20-29mm LSL in the colon proximal to the sigmoid without a demarcated area or depression, risk 1.1%)<br>';
+                    if (SMICnumeric < 10){
+
+                        var text = 'Low Risk';
+
+                    }else if (SMICnumeric >= 10){
+
+
+                        var text = 'High Risk';
+
+                    }
+
+					return  '<h3> ' + text + '</h3><br>' + SMICnumeric + '%  <br>(or ' + SMICriskOR + 'x the risk of a granular 0-IIa 20-29mm LSL in the colon proximal to the sigmoid without a demarcated area or depression, risk 1.1%)<br>';
 	
 					
 				}
@@ -519,16 +552,17 @@ background-color: rgb(238, 194, 120);
 	
 		$(document).ready(function() {
 
+            demarcatedArea();
+
 			$('.content').on('click', '#calculate', function(){
 
-				var kudov = $('#kudov').val();
-				var depression = $('#depression').val();
+				var demarcation = $('#demarcation').val();
 				var size = $('#size').val();
 				var location = $('#location').val();
 				var morphology = $('#morphology').val();
 				var paris = $('#paris').val();
 
-				var COVERT = determineSMIC(kudov, depression, size, location, morphology, paris);
+				var COVERT = determineSMIC(demarcation, size, location, morphology, paris);
 
                 $('#result').html('Risk of SMIC: ' + COVERT);
                 $('#result').addClass('gieqsGold');
@@ -537,6 +571,31 @@ background-color: rgb(238, 194, 120);
                     scrollTop: eval($('#result').offset().top - 200)
                 }, 150);
 			})
+
+            $('.content').on('change', '#demarcation', function(){
+
+                var demarcation = $('#demarcation').val();
+
+                if (demarcation == 0){
+
+
+                    noDemarcatedArea();
+
+
+                }else if (demarcation == 1){
+
+                    demarcatedArea();
+
+
+                }
+
+                $('#result').html('Risk of SMIC: ' + COVERT);
+                $('#result').addClass('gieqsGold');
+
+                $('html, body').animate({
+                    scrollTop: eval($('#result').offset().top - 200)
+                }, 150);
+                })
 
 		})
 	
@@ -564,10 +623,10 @@ background-color: rgb(238, 194, 120);
 ?>
 
        
-                <p><h3><b>Risk for Submucosal Invasion within a given LSL </h3>[algorithm ala Burgess 2018 Gastroenterology]</b></p>
-
+                <!-- <p><h3><b>Risk for Submucosal Invasion within a given LSL </h3>[algorithm ala Burgess 2018 Gastroenterology]</b></p>
+ -->
                 <p>Pre-requisites:</p>
-                <p><ul>Laterally spreading lesion &ge; 20mm in size</ul></p>
+                <p><ul>Colon Polyp  &ge; 20mm in size</ul></p>
 		<br>
 		<div id='result' class='yellow'></div>
 		<br>
@@ -576,7 +635,7 @@ background-color: rgb(238, 194, 120);
             <fieldset>
 				<?php
 
-				$formv1->generateSelectCustom ('Is there a demarcation zone:', 'demarcaton', 'factor', array('0' => '0 - No demarcated area', '1' => '1 - Demarcated area'), 'Demarcated area?');
+				$formv1->generateSelectCustom ('Is there a demarcation zone:', 'demarcation', 'factor', array('0' => '0 - No demarcated area', '1' => '1 - Demarcated area'), 'Demarcated area?');
 				echo '<br/>';
 			
 
