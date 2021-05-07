@@ -473,7 +473,7 @@ background-color: rgb(238, 194, 120);
 
 					}else if (paris == 3){
 
-					SMICriskOR = SMICriskOR - 2.49;
+					SMICriskOR = SMICriskOR + 2.49;
 
 					}
 
@@ -483,7 +483,7 @@ background-color: rgb(238, 194, 120);
 
 						}else if (morphology == 3){
 
-						SMICriskOR = SMICriskOR - 0.28;
+						SMICriskOR = SMICriskOR + 0.72;
 
 						}
 						
