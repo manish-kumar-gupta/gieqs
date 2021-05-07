@@ -540,7 +540,7 @@ background-color: rgb(238, 194, 120);
 
                     }
 
-					return  '<h3> ' + text + '</h3><br>' + SMICnumeric + '%  <br>(or ' + SMICriskOR + 'x the risk of a granular 0-IIa 20-29mm LSL in the colon proximal to the sigmoid without a demarcated area or depression, risk 1.1%)<br>';
+					return  '<h3> ' + text + '</h3><h4>' + SMICnumeric + '% </h4> <br><br>(or ' + SMICriskOR + 'x the risk of a granular 0-IIa 20-29mm LSL in the colon proximal to the sigmoid without a demarcated area or depression, risk 1.1%)<br>';
 	
 					
 				}
@@ -635,7 +635,7 @@ background-color: rgb(238, 194, 120);
             <fieldset>
 				<?php
 
-				$formv1->generateSelectCustom ('Is there a demarcation zone:', 'demarcation', 'factor', array('0' => '0 - No demarcated area', '1' => '1 - Demarcated area'), 'Demarcated area?');
+				$formv1->generateSelectCustom ('Is there a demarcation zone (of regular to irregular pit / vascular patterm):', 'demarcation', 'factor', array('0' => '0 - No demarcated area', '1' => '1 - Demarcated area'), 'Demarcated area?');
 				echo '<br/>';
 			
 
