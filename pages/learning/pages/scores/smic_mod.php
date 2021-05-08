@@ -779,10 +779,11 @@ background-color: rgb(238, 194, 120);
                     };
 
                     console.log(score);
+                    console.log(JSON.stringify(score));
 
                     //copy to  clipboard
 
-                    copyToClipboard(score);
+                    copyToClipboard(JSON.stringify(score));
             
         }
         
