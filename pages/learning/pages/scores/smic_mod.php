@@ -413,14 +413,21 @@ background-color: rgb(238, 194, 120);
 			
 			if ((demarcation == null)){
 
-				return 'Was there a demarcation zone?';
+				return 'Was there a demarcated area?';
 
 
 
             }else if ((demarcation == 1)){
+
+                return {
+
+                "risk_text" : 'Very High Risk',
+                "risk": 17.6,
+                "odds": 16,
+
+
+                }
                 
-                var risk = 16 * 1.1;
-                return '<h3>VERY High Risk</h3> <br/>SMIC risk ' + risk +  '%. ';
              
                 
             }else if ((size == null) || (location == null) || (morphology == null) || (paris == null)){
@@ -575,17 +582,40 @@ background-color: rgb(238, 194, 120);
 
 				var COVERT = determineSMIC(demarcation, size, location, morphology, paris);
 
-                $('#result').html('<h3> ' + COVERT.risk_text + '</h3>');
-                $('#result').append('<h4>' + COVERT.risk + '% </h4><br><br>');
+                if (typeof COVERT === 'object' && COVERT !== null){
+
+                    $('#result').html('<h3> ' + COVERT.risk_text + '</h3>');
+                $('#result').append('<h4>' + COVERT.risk + '% </h4>');
+                $('#result').append('<p>The data was copied to your clipboard to paste back into the survey</p>');
+
                 $('#result').append('(or ' + COVERT.odds + 'x the risk of a granular 0-IIa 20-29mm LSL in the colon proximal to the sigmoid without a demarcated area or depression, risk 1.1%)<br>');
                 $('#result').addClass('gieqsGold');
 
                 generateScore();
+
+
+                }else{
+
+                    $('#result').html('<h3> ' + COVERT + '</h3>').addClass('gieqsGold');
+                   
+
+                }
+
+
+                
                 
                 $('html, body').animate({
                     scrollTop: eval($('#result').offset().top - 200)
                 }, 150);
 			})
+
+            $('.content').on('change', '.formInputs', function(){
+
+
+                $('#result').html('');
+
+
+            })
 
             $('.content').on('change', '#demarcation', function(){
 
@@ -644,7 +674,7 @@ background-color: rgb(238, 194, 120);
             <fieldset>
 				<?php
 
-				$formv1->generateSelectCustom ('Is there a demarcation zone (of regular to irregular pit / vascular patterm):', 'demarcation', 'factor', array('0' => '0 - No demarcated area', '1' => '1 - Demarcated area'), 'Demarcated area?');
+				$formv1->generateSelectCustom ('Is there a demarcation area (of regular to irregular pit / vascular pattern) within the polyp:', 'demarcation', 'factor', array('0' => '0 - No demarcated area', '1' => '1 - Demarcated area'), 'Demarcated area?');
 				echo '<br/>';
 			
 
@@ -666,7 +696,7 @@ background-color: rgb(238, 194, 120);
 									   
 				
 
-                <p><button id='calculate' type="button" name="calculate">Calculate</button></p>
+                <p><button id='calculate' type="button" name="calculate">Calculate and Copy Result to Clipboard</button></p>
 
                 <!--conversion to newlines $(this).val().replace(/\r\n|\r|\n/g,"<br />")-->
 
