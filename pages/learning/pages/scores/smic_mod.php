@@ -584,7 +584,7 @@ background-color: rgb(238, 194, 120);
 
                 if (typeof COVERT === 'object' && COVERT !== null){
 
-                    $('#result').html('<h3> ' + COVERT.risk_text + '</h3>');
+                    $('#result').html('<h3 class="gieqsGold"> ' + COVERT.risk_text + '</h3>');
                 $('#result').append('<h4>' + COVERT.risk + '% </h4>');
                 $('#result').append('<p>The data was copied to your clipboard to paste back into the survey</p>');
 
@@ -596,7 +596,7 @@ background-color: rgb(238, 194, 120);
 
                 }else{
 
-                    $('#result').html('<h3> ' + COVERT + '</h3>').addClass('gieqsGold');
+                    $('#result').html('<h3 class="gieqsGold"> ' + COVERT + '</h3>').addClass('gieqsGold');
                    
 
                 }
@@ -704,7 +704,16 @@ background-color: rgb(238, 194, 120);
             </fieldset>
         </form>
 
-		<P>Reference:</P>
+		<p class="mt-6">Definitions:</p>
+        <ul>
+        <li>Demarcation Area - Area within a colorectal polyp where a regular pit/vascular pattern becomes disordered. e.g. NICE II to NICE III, Kudo III/IV to Kudo V, JNET 2A to JNET 2B/3</li>
+        <li>Granularity - </li>
+        
+
+
+        </ul>
+        
+        <P>Reference:</P>
 		<P>1.	Burgess NG, Hourigan LF, Zanati SA, Brown GJ, Singh R, Williams SJ, et al. Risk Stratification for Covert Invasive Cancer Among Patients Referred for Colonic Endoscopic Mucosal Resection: A Large Multicenter Cohort. Gastroenterology. 2017 Sep;153(3):732–742.e1. </P>
         <P>Score Adapted for GIEQs.com by David Tate:</P>
         <P>With thanks to Nick Burgess for supplying the original study data</P>
