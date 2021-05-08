@@ -540,7 +540,18 @@ background-color: rgb(238, 194, 120);
 
                     }
 
-					return  '<h3> ' + text + '</h3><h4>' + SMICnumeric + '% </h4> <br><br>(or ' + SMICriskOR + 'x the risk of a granular 0-IIa 20-29mm LSL in the colon proximal to the sigmoid without a demarcated area or depression, risk 1.1%)<br>';
+                    //return an object
+
+                    return {
+
+                        "risk_text" : text,
+                        "risk": SMICnumeric,
+                        "odds": SMICriskOR,
+
+
+                    }
+
+					//return  '<h3> ' + text + '</h3><h4>' + SMICnumeric + '% </h4> <br><br>(or ' + SMICriskOR + 'x the risk of a granular 0-IIa 20-29mm LSL in the colon proximal to the sigmoid without a demarcated area or depression, risk 1.1%)<br>';
 	
 					
 				}
@@ -564,8 +575,12 @@ background-color: rgb(238, 194, 120);
 
 				var COVERT = determineSMIC(demarcation, size, location, morphology, paris);
 
-                $('#result').html('Risk of SMIC: ' + COVERT);
+                $('#result').html('<h3> ' + COVERT.risk_text + '</h3>');
+                $('#result').append('<h4>' + COVERT.risk + '% </h4><br><br>');
+                $('#result').append('(or ' + COVERT.odds + 'x the risk of a granular 0-IIa 20-29mm LSL in the colon proximal to the sigmoid without a demarcated area or depression, risk 1.1%)<br>');
                 $('#result').addClass('gieqsGold');
+
+                generateScore();
                 
                 $('html, body').animate({
                     scrollTop: eval($('#result').offset().top - 200)
@@ -589,12 +604,6 @@ background-color: rgb(238, 194, 120);
 
                 }
 
-                $('#result').html('Risk of SMIC: ' + COVERT);
-                $('#result').addClass('gieqsGold');
-
-                $('html, body').animate({
-                    scrollTop: eval($('#result').offset().top - 200)
-                }, 150);
                 })
 
 		})
@@ -719,6 +728,63 @@ background-color: rgb(238, 194, 120);
         var requiredTagCategoriesText = $("#requiredTagCategories").text();
 
         var requiredTagCategories = JSON.parse(requiredTagCategoriesText);
+
+        function copyToClipboard(text) {
+    if (window.clipboardData && window.clipboardData.setData) {
+        // Internet Explorer-specific code path to prevent textarea being shown while dialog is visible.
+        return window.clipboardData.setData("Text", text);
+
+    }
+    else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+        var textarea = document.createElement("textarea");
+        textarea.textContent = text;
+        textarea.style.position = "fixed";  // Prevent scrolling to bottom of page in Microsoft Edge.
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            return document.execCommand("copy");  // Security exception may be thrown by some browsers.
+        }
+        catch (ex) {
+            console.warn("Copy to clipboard failed.", ex);
+            return false;
+        }
+        finally {
+            document.body.removeChild(textarea);
+        }
+    }
+}
+
+        function generateScore(){
+
+            var demarcation = $('#demarcation').val();
+				var size = $('#size').val();
+				var location = $('#location').val();
+				var morphology = $('#morphology').val();
+				var paris = $('#paris').val();
+
+                var COVERT = determineSMIC(demarcation, size, location, morphology, paris);
+
+
+
+
+                            var score =  {
+                    "demarcation": demarcation,
+                    "size": size,
+                    "location": location,
+                    "morphology": morphology,
+                    "paris": paris,
+                    "risk": COVERT.risk,
+                    "odds": COVERT.odds,
+                    "text": COVERT.risk_text,
+                    };
+
+                    console.log(score);
+
+                    //copy to  clipboard
+
+                    copyToClipboard(score);
+            
+        }
         
 
         function refreshNavAndTags(){
