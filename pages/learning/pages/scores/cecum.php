@@ -270,7 +270,8 @@ const browserSync = require("browser-sync");
 
                     <p class="h2 score">Score is <span id="scoreResult"></span></p>
                     <p class="text-white segments mt-3">Visualised segments were <br/> <span id="segments"></span></p>
-                    <p class="text-white segments mt-3">This data is automatically copied to the clipboard</p>
+                    <p class="text-white mt-3">This data is automatically copied to the clipboard</p>
+                    <button class="btn btn-sm btn-dark mt-3" onclick="location.reload();">Reset</button>
 
 
                 </div>
@@ -380,6 +381,7 @@ const browserSync = require("browser-sync");
             "TF2" : TF2visualised ? 'Yes' : 'No',
             "TF3" : TF3visualised ? 'Yes' : 'No',
             "AO" : AOvisualised ? 'Yes' : 'No',
+            "Score" : totalScore,
 
 
 
