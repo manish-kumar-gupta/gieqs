@@ -236,6 +236,7 @@ const browserSync = require("browser-sync");
             <div class="row">
 
                     <p class="h1 mt-10">Completeness of Caecal Intubation Score</p>
+                    <p class="h6">MOBILE BROWSERS not supported</p>
 
             </div>
             <div class="row">
@@ -269,6 +270,8 @@ const browserSync = require("browser-sync");
 
                     <p class="h2 score">Score is <span id="scoreResult"></span></p>
                     <p class="text-white segments mt-3">Visualised segments were <br/> <span id="segments"></span></p>
+                    <p class="text-white segments mt-3">This data is automatically copied to the clipboard</p>
+
 
                 </div>
             </div>
@@ -325,6 +328,31 @@ const browserSync = require("browser-sync");
 
     //var totalScore = 0;
 
+    function copyToClipboard(text) {
+    if (window.clipboardData && window.clipboardData.setData) {
+        // Internet Explorer-specific code path to prevent textarea being shown while dialog is visible.
+        return window.clipboardData.setData("Text", text);
+
+    }
+    else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+        var textarea = document.createElement("textarea");
+        textarea.textContent = text;
+        textarea.style.position = "fixed";  // Prevent scrolling to bottom of page in Microsoft Edge.
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            return document.execCommand("copy");  // Security exception may be thrown by some browsers.
+        }
+        catch (ex) {
+            console.warn("Copy to clipboard failed.", ex);
+            return false;
+        }
+        finally {
+            document.body.removeChild(textarea);
+        }
+    }
+}
+
     function updateScore() {
 
 
@@ -339,7 +367,28 @@ const browserSync = require("browser-sync");
         visualisedSegments += TF2visualised ? 'TF2, ' : '';
         visualisedSegments += TF3visualised ? 'TF3, ' : '';
         visualisedSegments += AOvisualised ? 'AO, ' : '';
+
+        //create an object
+
+        var scoreObject = {
+
+            "OQ1" : OQ1visualised ? 'Yes' : 'No',
+            "OQ2" : OQ2visualised ? 'Yes' : 'No',
+            "OQ3" : OQ3visualised ? 'Yes' : 'No',
+            "OQ4" : OQ4visualised ? 'Yes' : 'No',
+            "TF1" : TF1visualised ? 'Yes' : 'No',
+            "TF2" : TF2visualised ? 'Yes' : 'No',
+            "TF3" : TF3visualised ? 'Yes' : 'No',
+            "AO" : AOvisualised ? 'Yes' : 'No',
+
+
+
+
+        }
         
+        console.log(JSON.stringify(scoreObject));
+
+        copyToClipboard(JSON.stringify(scoreObject));
 
 
 
