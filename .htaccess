@@ -22,6 +22,8 @@ RewriteRule ^polypectomy$ pages/learning/viewer_free.php?id=113
 RewriteRule ^malignant-polyp$ pages/learning/viewer_free.php?id=157
 RewriteRule ^ercp$ pages/learning/viewer_free.php?id=153
 RewriteRule ^smic$ pages/learning/pages/scores/smic.php
+RewriteRule ^smic-survey$ pages/learning/pages/scores/smic_mod.php
+
 RewriteRule ^smsa$ pages/learning/pages/scores/smsa.php
 RewriteRule ^caecal-score$ pages/learning/pages/scores/cecum.php
 RewriteRule ^cecal-score$ pages/learning/pages/scores/cecum.php
