@@ -159,16 +159,16 @@ width: 100%;
                     </div>
                 </div>
 
-                <div class="client-group row justify-content-center mb-4">
+                <!-- <div class="client-group row justify-content-center mb-4">
                     <div class="col-lg-6 col-md-6 col-12 py-3">
-                        <img class="logo" alt="Boston Scientific" src="<?php echo BASE_URL . '/assets/img/brand/boston_new.png';?>">
+                        <img class="logo" alt="Boston Scientific" src="<?php //echo BASE_URL . '/assets/img/brand/boston_new.png';?>">
                     </div>
                     <div class="col-lg-6 col-md-6 col-12 py-3">
 
                     </div>
                     
 
-                </div>    
+                </div>     -->
             
             <!--Gold Sponsors-->
                 <div class="row text-left">
@@ -177,19 +177,19 @@ width: 100%;
                     </div>
                 </div>
 
-                <div class="client-group row justify-content-center mb-4">
+                <!-- <div class="client-group row justify-content-center mb-4">
                     <div class="col-lg-4 col-md-6 col-12 py-3">
-                    <img class="logo" alt="Fujinon" src="<?php echo BASE_URL . '/assets/img/icons/fujifilm.png';?>">
+                    <img class="logo" alt="Fujinon" src="<?php //echo BASE_URL . '/assets/img/icons/fujifilm.png';?>">
                     </div>
                     <div class="col-lg-4 col-md-6 col-12 py-3">
-                    <img class="logo" alt="Onis" src="<?php echo BASE_URL . '/assets/img/icons/onis.png';?>">
+                    <img class="logo" alt="Onis" src="<?php //echo BASE_URL . '/assets/img/icons/onis.png';?>">
 
                     </div>
                     <div class="col-lg-4 col-md-6 col-12 py-3">
 
                     </div>
 
-                </div>
+                </div> -->
 
                 <!--Silver Sponsors-->
                 <div class="row text-left">
@@ -199,13 +199,13 @@ width: 100%;
                 </div>
 
                 <div class="client-group row justify-content-center mb-4">
-                    <div class="col-lg-3 col-md-4 col-6 py-3">
-                    <img class="logo" alt="Olympus" src="<?php echo BASE_URL . '/assets/img/icons/olympus.png';?>">
+                    <!-- <div class="col-lg-3 col-md-4 col-6 py-3">
+                    <img class="logo" alt="Olympus" src="<?php //echo BASE_URL . '/assets/img/icons/olympus.png';?>">
                     </div>
                     <div class="col-lg-3 col-md-4 col-6 py-3">
-                    <img class="logo" alt="Medtronic" src="<?php echo BASE_URL . '/assets/img/icons/medtronic.png';?>">
+                    <img class="logo" alt="Medtronic" src="<?php //echo BASE_URL . '/assets/img/icons/medtronic.png';?>">
 
-                    </div>
+                    </div> -->
                     <div class="col-lg-3 col-md-4 col-6 py-3">
                     </div>
                     <div class="col-lg-3 col-md-4 col-6 py-3">
@@ -226,9 +226,9 @@ width: 100%;
                 </div>
 
                 <div class="client-group row justify-content-center mb-4">
-                    <div class="col-lg-2 col-md-4 col-4 py-1">
-                        <img class="logo" alt="Mundipharma" src="<?php echo BASE_URL . '/assets/img/brand/mundipharma.jpg';?>">
-                    </div>
+                    <!-- <div class="col-lg-2 col-md-4 col-4 py-1">
+                        <img class="logo" alt="Mundipharma" src="<?php //echo BASE_URL . '/assets/img/brand/mundipharma.jpg';?>">
+                    </div> -->
                     <div class="col-lg-2 col-md-4 col-4 py-1">
                         <img class="logo" alt="Norgine" src="<?php echo BASE_URL . '/assets/img/brand/norgine.jpg';?>">
                     </div>
@@ -237,41 +237,55 @@ width: 100%;
 
                     </div>
                     <div class="col-lg-2 col-md-4 col-4 py-1">
-                    <img class="logo" alt="Prion Medical" src="<?php echo BASE_URL . '/assets/img/brand/prion.jpg';?>">
+                     <img class="logo" alt="Ambu" src="<?php echo BASE_URL . '/assets/img/brand/ambu.png';?>">
 
                     </div>
                     <div class="col-lg-2 col-md-4 col-4 py-1">
-                    <img class="logo" alt="Cook Medical" src="<?php echo BASE_URL . '/assets/img/brand/cook.jpg';?>">
+                     <img class="logo" alt="Viatris" src="<?php echo BASE_URL . '/assets/img/brand/viatris.jpg';?>">
 
                     </div>
                     <div class="col-lg-2 col-md-4 col-4 py-1">
-                    <img class="logo" alt="Boucart Medical" src="<?php echo BASE_URL . '/assets/img/brand/boucart.jpg';?>">
 
                     </div>
+                    <div class="col-lg-2 col-md-4 col-4 py-1">
+
+</div>
+                    <!-- <div class="col-lg-2 col-md-4 col-4 py-1">
+                    <img class="logo" alt="Prion Medical" src="<?php //echo BASE_URL . '/assets/img/brand/prion.jpg';?>">
+
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-4 py-1">
+                    <img class="logo" alt="Cook Medical" src="<?php //echo BASE_URL . '/assets/img/brand/cook.jpg';?>">
+
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-4 py-1">
+                    <img class="logo" alt="Boucart Medical" src="<?php //echo BASE_URL . '/assets/img/brand/boucart.jpg';?>">
+
+                    </div> -->
 
                 </div>
                 <div class="client-group row justify-content-center mb-4">
-                    <div class="col-lg-2 col-md-4 col-4 py-1">
-                        <img class="logo" alt="ovesco" src="<?php echo BASE_URL . '/assets/img/icons/ovesco.png';?>">
+                    <!-- <div class="col-lg-2 col-md-4 col-4 py-1">
+                        <img class="logo" alt="ovesco" src="<?php //echo BASE_URL . '/assets/img/icons/ovesco.png';?>">
                     </div>
                     <div class="col-lg-2 col-md-4 col-4 py-1">
-                    <img class="logo" alt="sandoz" src="<?php echo BASE_URL . '/assets/img/icons/sandoz.png';?>">
+                    <img class="logo" alt="sandoz" src="<?php //echo BASE_URL . '/assets/img/icons/sandoz.png';?>">
 
                     </div>
                     <div class="col-lg-2 col-md-4 col-4 py-1">
-                    <img class="logo" alt="takeda" src="<?php echo BASE_URL . '/assets/img/brand/takeda.png';?>">
+                    <img class="logo" alt="takeda" src="<?php //echo BASE_URL . '/assets/img/brand/takeda.png';?>">
 
                     </div>
                     <div class="col-lg-2 col-md-4 col-4 py-1">
-                    <img class="logo" alt="mylan" src="<?php echo BASE_URL . '/assets/img/icons/mylan-inc-logo.jpg';?>">
-
-                    </div>
-                    <div class="col-lg-2 col-md-4 col-4 py-1">
+                    <img class="logo" alt="mylan" src="<?php //echo BASE_URL . '/assets/img/icons/mylan-inc-logo.jpg';?>">
 
                     </div>
                     <div class="col-lg-2 col-md-4 col-4 py-1">
 
                     </div>
+                    <div class="col-lg-2 col-md-4 col-4 py-1">
+
+                    </div> -->
 
                 </div>
 
@@ -284,16 +298,16 @@ width: 100%;
 
                 <div class="client-group row justify-content-left">
                     <div class="col-lg-1 col-md-4 col-4 py-1">
-<!--                         <img class="logo" alt="Prion Medical" src="<?php echo BASE_URL . '/assets/img/brand/prion.jpg';?>">
+<!--                         <img class="logo" alt="Prion Medical" src="<?php //echo BASE_URL . '/assets/img/brand/prion.jpg';?>">
  -->                    </div>
                     <div class="col-lg-1 col-md-4 col-4 py-1">
                     
-<!--                     <img class="logo" alt="Cook Medical" src="<?php echo BASE_URL . '/assets/img/brand/cook.jpg';?>">
+<!--                     <img class="logo" alt="Cook Medical" src="<?php //echo BASE_URL . '/assets/img/brand/cook.jpg';?>">
  -->
                     </div>
                     <div class="col-lg-2 col-md-4 col-4 py-1">
                     
-<!--                     <img class="logo" alt="Boucart Medical" src="<?php echo BASE_URL . '/assets/img/brand/boucart.jpg';?>">
+<!--                     <img class="logo" alt="Boucart Medical" src="<?php //echo BASE_URL . '/assets/img/brand/boucart.jpg';?>">
  -->
                     </div>
                     <div class="col-lg-1 col-md-4 col-4 py-1">
