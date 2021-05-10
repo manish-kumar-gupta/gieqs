@@ -371,7 +371,7 @@ $test = false;
                 <!-- Registration-basic -->
                 <?php if (!$liveAndLoggedIn){?>
                 <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-                   <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/registration.php">Registration</a>
+                   <!-- <a class="nav-link" href="<?php //echo BASE_URL;?>/pages/program/registration.php">Registration</a> -->
                     <!-- <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Registration</a>
                     

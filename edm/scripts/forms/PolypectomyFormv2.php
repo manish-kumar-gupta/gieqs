@@ -209,10 +209,11 @@ display:block;
 						$tableNameSheet = "pageLayoutPolypectomyTool";
 
 
-						include(BASE_URI1 . "/scripts/FormFunctionsGeneric.php");
+						include(BASE_URI1 . "/scripts/FormFunctionsGenericWeight.php");
 
 						$iterationForm = 1;
 						$sectionTitle = array();
+						//error_reporting(E_ALL);
                         //$sectionTitle[0] = "";
                         
 
@@ -254,7 +255,7 @@ display:block;
 						//echo "<div class='col-5'>";
 						echo "<fieldset id=\"".$sectionTitle[$x]."Section\" class=\"".$sectionTitle[$x]."\"><h4 style='text-align:left;'>".$sectionTitle[$x]."</h4>";
 						//echo "<table class=\"comorbidity\">";
-						include(BASE_URI1 . "/scripts/iterateFormGeneric.php");
+						include(BASE_URI1 . "/scripts/iterateFormGenericWeight.php");
 						echo "<br/></fieldset><br>";
 						//echo "</div>";
 						//echo "<div class='col-1'>";

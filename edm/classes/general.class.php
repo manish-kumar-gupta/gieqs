@@ -12,6 +12,8 @@ error_reporting(E_ALL);
 error_reporting(0);
 	
 }
+//error_reporting(E_ALL);
+
 require_once 'DataBaseMysql.class.php';
 
 
@@ -2009,7 +2011,7 @@ INNER JOIN `imagesDraft` as c on b.`image_id` = c.`id` WHERE a.`approved` IS NUL
 
 	 }	
 
-	 public function writeCheckedWeight($sname, $svalue1, $svalue2, $tableNameValues, $weight){
+	 public function writeCheckedWeight($sname, $svalue1, $svalue2, $tableNameValues, $weight, $stext){
 
 		if ($weight == '1'){
 			$q = "SELECT `".$svalue1."`, `".$svalue2."`, `".$svalue1."_weight`, `".$svalue1."_denominator` FROM `$tableNameValues` WHERE `".$svalue1."` IS NOT NULL AND `".$svalue2."` <> ''";
@@ -2030,7 +2032,9 @@ INNER JOIN `imagesDraft` as c on b.`image_id` = c.`id` WHERE a.`approved` IS NUL
 		if ($result){
 			while($row = $result->fetch_array(MYSQLI_ASSOC)){
 
-				$returnString .= "<input type='checkbox' class='forminputs' name='$sname" . $row[$svalue1] . "'";
+				$returnString .= '<div class="form-check"><input class="form-check-input forminputs" type="checkbox" name="' . $sname . $row[$svalue1] . '" id="' . $sname . $row[$svalue1] . '">';
+
+				//$returnString .= "<input type='checkbox' class='custom-control-input forminputs' name='$sname" . $row[$svalue1] . "' id='$sname" . $row[$svalue1] . "'";
 
 					//echo $weight;
 					if ($weight) {
@@ -2040,7 +2044,7 @@ INNER JOIN `imagesDraft` as c on b.`image_id` = c.`id` WHERE a.`approved` IS NUL
 
 						$returnString .= " data-weight = '{\"weight\":\"$dataWeight\", \"denominator\":\"$dataDenominator\"}'";
 					}
-					$returnString .= ">" . $row[$svalue1] . " - " . $row[$svalue2] . "<br>"; 
+					$returnString .= "<label class='form-check-label' for='" . $sname . $row[$svalue1] . "'>" . $row[$svalue1] . " - " . $row[$svalue2] . "</label></div>"; 
 			
 			}
 		}
