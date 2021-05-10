@@ -254,6 +254,9 @@ display:block;
 						//echo "<div class='row'>";
 						//echo "<div class='col-5'>";
 						echo "<fieldset id=\"".$sectionTitle[$x]."Section\" class=\"".$sectionTitle[$x]."\"><h4 style='text-align:left;'>".$sectionTitle[$x]."</h4>";
+						echo "<div class='col-6' id='sectionScore$x'>";
+
+								echo "</div>";
 						//echo "<table class=\"comorbidity\">";
 						include(BASE_URI1 . "/scripts/iterateFormGenericWeight.php");
 						echo "<br/></fieldset><br>";
@@ -290,7 +293,7 @@ display:block;
         <div id="right" class="col-lg-3 col-xl-3 border-left">
         	<div class="h-100 p-4">
         		<div id="sticky" data-toggle="sticky" data-sticky-offset="100" class="is_stuck pr-3 mr-3 pl-2 pt-2"
-        			style="position: fixed; top: 140px;">
+        			style="position: fixed; top: 100px;">
         			<div id="messageBox" class='text-left text-white pb-2 pl-2 pt-2'></div><button type="button"
         				class="close closeNav close-popup" data-hide="#sticky" aria-label="Close">
 						<span aria-hidden="true" style="color:white !important;">&times;</span></button>
@@ -353,7 +356,7 @@ display:block;
                   <?php
 
                     for($x = 1; $x <= 16; $x++) {
-                        echo '<li class="toc-entry toc-h4" style="font-size:1.2rem;"><a class="text-muted" href="#'.$sectionTitle[$x].'Section">'.$sectionTitle[$x].'</a></li>';
+                        echo '<li class="toc-entry toc-h4" style="font-size:0.8rem;"><a class="text-muted" href="#'.$sectionTitle[$x].'Section">'.$sectionTitle[$x].'</a></li>';
                         //echo "<button type=\"button\" class=\"btn ".$sectionTitle[$x]. "\">".$sectionTitle[$x]."</button>";
 
                     }
@@ -374,10 +377,12 @@ display:block;
                 <ul class="section-nav">
 
                 <div class="d-none d-sm-inline-block align-items-center mt-4">
+				<h4 style="text-align:center;" class="strong">Overall Score<br/><span id="numeratorSum"></span>&nbsp;/&nbsp;<span id="denominatorSum"></span></h4>
+
                 
-                <p>Polypectomy Score </p>
+                <!-- <p>Polypectomy Score </p>
                 <p>Complexity Score </p>
-                <p>Overall Score </p>
+                <p>Overall Score </p> -->
 
                 </div>
                 </ul>
@@ -2229,6 +2234,318 @@ display:block;
 				//post_symptoms
 
 			})
+
+
+			//polypectomy score js
+
+			var sectionTitle = new Object;
+
+			var sectionTitleText = $('#sectionTitle').text();
+
+			try {
+
+				sectionTitle = JSON.parse(sectionTitleText);
+
+			}catch(Error){
+
+
+			}
+
+			var scoreBars;
+
+			function defineDenominator(selects) {
+				var scoreSection = 0;
+				$(selects).each(function () {
+					//console.dir($(this));
+					var valueWithoutWeight = $(this).children("option:selected").val();
+					//console.dir('value without weight' + valueWithoutWeight);
+					var valueWithWeight = $(this).children("option:selected").data('weight');
+					//console.dir(valueWithWeight);
+
+
+
+					//valueWithWeight will be undefined if no weight
+
+					/**
+					 * so the score is for those with ValueWithWeight undefined +valueWithoutWeight
+					 * for those where an object results, add the denominator from object
+					 */
+
+					if (valueWithWeight) {
+
+						var denominator = valueWithWeight.denominator;
+						denominator = parseInt(denominator);
+
+						var scoreOption = denominator;
+						
+
+
+					} else if (valueWithoutWeight) {
+
+						// var scoreOption = parseInt(valueWithoutWeight); not correct, needs to be 1
+						var scoreOption = 1;
+
+					} else{
+
+						var scoreOption = 0;
+
+					}
+
+					scoreSection = scoreSection + scoreOption;
+					//console.log('scoreSection is '+scoreSection);
+
+					
+
+
+				})
+
+				return scoreSection;
+
+			}
+
+			function defineNumerator(selects) {
+				var scoreSection = 0;
+				$(selects).each(function () {
+					console.dir($(this));
+					var valueWithoutWeight = $(this).children("option:selected").val();
+					console.dir('value without weight' + valueWithoutWeight);
+					var valueWithWeight = $(this).children("option:selected").data('weight');
+					console.dir(valueWithWeight);
+
+
+
+					//valueWithWeight will be undefined if no weight
+
+					/**
+					 * so the score is for those with ValueWithWeight undefined +valueWithoutWeight
+					 * for those where an object results, add the denominator from object
+					 */
+
+					if (valueWithWeight) {
+
+						var numerator = valueWithWeight.weight;
+						numerator = parseInt(numerator);
+
+						var scoreOption = numerator;
+						
+
+
+					} else if (valueWithoutWeight) {
+
+						var scoreOption = parseInt(valueWithoutWeight);
+						//var scoreOption = 1;
+
+					} else{
+
+						var scoreOption = 0;
+
+					}
+
+					scoreSection = scoreSection + scoreOption;
+					console.log('scoreSection is '+scoreSection);
+
+					
+
+
+				})
+
+				return scoreSection;
+
+			}
+
+			$(document).ready(function() {
+
+				if (edit == 1){
+		
+		fillForm(PolypectomyAssessmentToolPassed);
+
+		waitForFinalEvent(function () {
+			
+			var fieldsets = $('.content').find('fieldset');
+
+			$.each(fieldsets, function () {
+				var selects = $(this).find('select');
+				//console.dir(selects);
+				var denominator = defineDenominator(selects);
+				var numerator = defineNumerator(selects);
+
+				$(this).find('.denominator').text(denominator);
+				$(this).find('.numerator').text(numerator);
+
+				var addDenominators = 0;
+	$('fieldset').find('.denominator').each(function () {
+
+		var denominator = $(this).text();
+		//console.dir(denominator);
+		if (denominator) {
+			denominator = parseInt(denominator);
+			addDenominators = addDenominators + denominator;
+		} else {
+
+			addDenominators = addDenominators + 0;
+		}
+
+
+	});
+
+	$('#denominatorSum').text(addDenominators);
+
+	var addNumerators = 0;
+	$('fieldset').find('.numerator').each(function () {
+
+		var numerator = $(this).text();
+		//console.dir(numerator);
+		if (numerator) {
+			numerator = parseInt(numerator);
+			addNumerators = addNumerators + numerator;
+		} else {
+
+			addNumerators = addNumerators + 0;
+		}
+
+
+	});
+
+	$('#numeratorSum').text(addNumerators);
+			});
+
+		}, 500, "anotyher unique string");
+
+		
+
+		
+	//console.log(denominator);
+
+	//console.dir($(this).parents().closest('fieldset').find('.denominator'));
+	
+
+	//add denominator total
+
+	
+
+	}else{
+		
+		$("#messageBox").text("New PolypectomyAssessmentTool");
+		
+	}
+
+			
+
+			//get the section score divs to enter score
+			
+			scoreBars = $("[id^=sectionScore]");
+			scoreBars = scoreBars.filter(function () {
+				//return true to keep it, false to discard it
+				//the logic is up to you.
+				//console.dir($(this));
+				var id = $(this).attr('id');
+				console.dir(id);
+				if ((id.endsWith("sectionScore1") === true) || id.endsWith("sectionScore3") === true || id.endsWith("sectionScore4") === true) {
+					return false;
+
+				} else {
+					return true;
+				}
+
+			});
+
+			$(scoreBars).each(function(){
+				$(this).addClass('strong');
+				$(this).html('<h3>Score<br/><span class="numerator"></span>&nbsp;/&nbsp;<span class="denominator"></span></h3>'); 
+			})
+
+			$("#content").on('change', '.formInputs', (function(event) {
+			        
+				var selects = $(this).parents().closest('fieldset').find('select'); //returns the select elements for the whole fieldset where the change occurred
+				var denominator = defineDenominator(selects);
+				var numerator = defineNumerator(selects);
+				//console.log(denominator);
+
+				//console.dir($(this).parents().closest('fieldset').find('.denominator'));
+				$(this).parents().closest('fieldset').find('.denominator').text(denominator);
+				$(this).parents().closest('fieldset').find('.numerator').text(numerator);
+
+				//add denominator total
+
+				var addDenominators = 0;
+				$('fieldset').find('.denominator').each(function () {
+
+					var denominator = $(this).text();
+					console.dir(denominator);
+					if (denominator) {
+						denominator = parseInt(denominator);
+						addDenominators = addDenominators + denominator;
+					} else {
+
+						addDenominators = addDenominators + 0;
+					}
+
+
+				});
+
+				$('#denominatorSum').text(addDenominators);
+
+				var addNumerators = 0;
+				$('fieldset').find('.numerator').each(function () {
+
+					var numerator = $(this).text();
+					//console.dir(numerator);
+					if (numerator) {
+						numerator = parseInt(numerator);
+						addNumerators = addNumerators + numerator;
+					} else {
+
+						addNumerators = addNumerators + 0;
+					}
+
+
+				});
+
+				$('#numeratorSum').text(addNumerators);
+		
+			}));
+
+			//generate buttons for navigation
+
+			var xSection=1;
+
+			$.each(sectionTitle, function (key, value) {
+				//alert( key + ": " + value );
+
+				var text = '';
+				/*if (xSection == 1 || xSection == 7 || xSection == 11){
+
+					text += '<div class="row">';
+					text += '<div class="col-12">';
+
+				}*/
+				
+				text += '<button class="buttonNavigate" onclick=\'var scroll = $(".section' + key + '").offset().top; scroll = scroll-250; window.scrollTo({top: scroll});\'>' + key + ' - ' + value + '</button>';
+				$('#buttons').append(text);
+				
+				/*if (xSection == 6 || xSection == 10 || xSection == 16){
+					text += '</div>';
+					text += '</div>';
+
+				}*/
+				
+
+				xSection++;
+
+			});
+
+			
+
+
+
+	
+		
+		
+
+
+			});
+
+
 		</script>
 		<?php
 		
