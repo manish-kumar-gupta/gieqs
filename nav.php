@@ -346,6 +346,12 @@ $test = false;
                 
 
                 <li class="nav-item active">
+                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/learning/blog.php">Blog<span class="badge bg-gieqsGold text-dark badge-pill badge-floating ml-1 pl-1">
+                                    New!
+                                    </span></a>
+                </li>
+
+                <li class="nav-item active">
                     <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/gieqs_ii.php">GIEQs II<span class="badge bg-gieqsGold text-dark badge-pill badge-floating ml-1 pl-1">
                                     New!
                                     </span></a>

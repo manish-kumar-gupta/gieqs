@@ -13,9 +13,9 @@
 
       //define user access level
 
-      //$openaccess = 1;
+      $openaccess = 1;
 
-      $requiredUserLevel = 6;
+      //$requiredUserLevel = 6;
 
       //blank previous browsing
 
@@ -30,7 +30,7 @@
       //require_once(BASE_URI . '/assets/scripts/classes/users.class.php');
       $users = new users;
       $navigator = new navigator;
-
+       
       function time_elapsed_string($datetime, $full = false) {
         $now = new DateTime('now', new DateTimeZone('UTC'));     
         $ago = new DateTime($datetime, new DateTimeZone('UTC'));
@@ -302,6 +302,12 @@
         require_once(BASE_URI . '/assets/scripts/classes/settings_manager.class.php');
         $settings_manager = new settings_manager;
 
+        require_once(BASE_URI . '/assets/scripts/classes/blogs.class.php');
+        $blogs = new blogs;
+
+        require_once(BASE_URI . '/assets/scripts/classes/blogLink.class.php');
+        $blogLink = new blogLink;
+
 
         $video_PDO = new video_PDO;
 
@@ -371,14 +377,21 @@
                     </div>
                 </div>
             </section>
-            <?php require BASE_URI . '/pages/learning/assets/upgradeNav.php';?>
+
+             <?php 
+
+
+            if (isset($userid)){
+            require BASE_URI . '/pages/learning/assets/upgradeNav.php';
+            
+            }?>
 
             <?php if ($settings_manager->isBlogActive() === true){?>
             <section class="slice slice-lg bg-section-secondary delimiter-top delimiter-bottom pt-0 pt-5 pb-5">
                
-               <div class="pt-1 pl-10">
-                    <h1 class="display-5 ">GIEQs Live Blog</h1>
-                    <p>We are currently broadcasting live from the Endoscopy Room.  Usually these events are archived for you to enjoy later on GIEQs Online.</p>
+               <div class="row d-flex flex-wrap align-items-lg-stretch py-4 px-6">
+                    <h1 class="pl-10 display-5 w-100">GIEQs Live Blog</h1>
+                    <p class="pl-10">We are currently broadcasting live from the Endoscopy Room.  Usually these events are archived for you to enjoy later on GIEQs Online.</p>
                     </div>
                     <div class="row d-flex flex-wrap align-items-lg-stretch py-4 px-6">
 
@@ -400,119 +413,35 @@
 
             <?php } ?>
 
-            <section class="slice slice-lg bg-section-secondary delimiter-top delimiter-bottom">
-                <div class="container">
-                    <div class="mb-5 text-center">
-                        <h3 class=" mt-4">Latest from the blog</h3>
-                        <div class="fluid-paragraph mt-3">
-                            <p class="lead lh-180">Weekly nuggets focussed on Everyday techniques. Monthly evening
-                                round-ups.</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="card hover-shadow-lg hover-translate-y-n10">
-                                <a href="#">
-                                    <img alt="Image placeholder" src="../../assets/img/theme/light/img-1-800x600.jpg"
-                                        class="card-img-top">
-                                </a>
-                                <div class="card-body py-5 text-center">
-                                    <a href="#" class="d-block h5 lh-150">Choose the best solution for your business</a>
-                                    <h6 class="text-muted mt-4 mb-0">20 Aug 2019</h6>
-                                </div>
-                                <div class="card-footer delimiter-top">
-                                    <div class="row">
-                                        <div class="col text-center">
-                                            <ul class="list-inline mb-0">
-                                                <li class="list-inline-item pr-4">
-                                                    <a href="#" class="text-muted"><i
-                                                            class="fas fa-share mr-1 text-muted"></i> 131</a>
-                                                </li>
-                                                <li class="list-inline-item pr-4">
-                                                    <a href="#" class="text-muted"><i
-                                                            class="fas fa-eye mr-1 text-muted"></i> 255</a>
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    <a href="#" class="text-muted"><i
-                                                            class="fas fa-comments mr-1 text-muted"></i> 14</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="card hover-shadow-lg hover-translate-y-n10">
-                                <a href="#">
-                                    <img alt="Image placeholder" src="../../assets/img/theme/light/img-2-800x600.jpg"
-                                        class="card-img-top">
-                                </a>
-                                <div class="card-body py-5 text-center">
-                                    <a href="#" class="d-block h5 lh-150">How to find the right design for your specific
-                                        product</a>
-                                    <h6 class="text-muted mt-4 mb-0">23 Aug 2019</h6>
-                                </div>
-                                <div class="card-footer delimiter-top">
-                                    <div class="row">
-                                        <div class="col text-center">
-                                            <ul class="list-inline mb-0">
-                                                <li class="list-inline-item pr-4">
-                                                    <a href="#" class="text-muted"><i
-                                                            class="fas fa-share mr-1 text-muted"></i> 131</a>
-                                                </li>
-                                                <li class="list-inline-item pr-4">
-                                                    <a href="#" class="text-muted"><i
-                                                            class="fas fa-eye mr-1 text-muted"></i> 255</a>
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    <a href="#" class="text-muted"><i
-                                                            class="fas fa-comments mr-1 text-muted"></i> 14</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="card hover-shadow-lg hover-translate-y-n10">
-                                <a href="#">
-                                    <img alt="Image placeholder" src="../../assets/img/theme/light/img-3-800x600.jpg"
-                                        class="card-img-top">
-                                </a>
-                                <div class="card-body py-5 text-center">
-                                    <a href="#" class="d-block h5 lh-150">How to win buyers and influence sales with
-                                        marketing</a>
-                                    <h6 class="text-muted mt-4 mb-0">27 Aug 2019</h6>
-                                </div>
-                                <div class="card-footer delimiter-top">
-                                    <div class="row">
-                                        <div class="col text-center">
-                                            <ul class="list-inline mb-0">
-                                                <li class="list-inline-item pr-4">
-                                                    <a href="#" class="text-muted"><i
-                                                            class="fas fa-share mr-1 text-muted"></i> 131</a>
-                                                </li>
-                                                <li class="list-inline-item pr-4">
-                                                    <a href="#" class="text-muted"><i
-                                                            class="fas fa-eye mr-1 text-muted"></i> 255</a>
-                                                </li>
-                                                <li class="list-inline-item">
-                                                    <a href="#" class="text-muted"><i
-                                                            class="fas fa-comments mr-1 text-muted"></i> 14</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <section class="slice bg-section-secondary delimiter-top delimiter-bottom">
+            <div class="container">
+
+                <div class="mb-5 text-center">
+<!--                     <h3 class=" mt-4">Latest from the blog</h3>
+ -->                    <div class="fluid-paragraph mt-3">
+                        <p class="lead lh-180">Little nuggets of learning focussed on Everyday techniques. Weekly LIVE blogs archived here, Monthly evening
+                            round-ups.</p>
                     </div>
                 </div>
-            </section>
 
-            <section class="slice slice-lg">
+                <?php
+
+
+$maxToShow = 24;
+$featuredFirst = true;
+
+require(BASE_URI. '/pages/learning/scripts/show_blogs.php');
+
+?>
+
+
+
+
+
+                </div>
+        </section>
+
+            <!-- <section class="slice slice-lg">
                 <div class="container">
                     <div class="mb-5 text-center">
                         <h3 class=" mt-4">Subscribe for weekly updates from GIEQs</h3>
@@ -540,7 +469,7 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> -->
 
 
 
@@ -569,113 +498,7 @@
         <script>
         var signup = $('#signup').text();
 
-        function getNew() {
 
-            const dataToSend = {
-
-            }
-
-            const jsonString = JSON.stringify(dataToSend);
-            console.log(jsonString);
-
-            var request2 = $.ajax({
-                url: siteRoot + "scripts/getNewVideos.php",
-                type: "POST",
-                contentType: "application/json",
-                data: jsonString,
-            });
-
-
-
-            request2.done(function(data) {
-                // alert( "success" );
-                $('#whats-new').find('.placeholder').html(data);
-                //$(document).find('.Thursday').hide();
-            })
-
-
-        }
-
-        function getRecentViewed() {
-
-            const dataToSend = {
-
-            }
-
-            const jsonString = JSON.stringify(dataToSend);
-            console.log(jsonString);
-
-            var request2 = $.ajax({
-                url: siteRoot + "scripts/getRecentViewedVideos.php",
-                type: "POST",
-                contentType: "application/json",
-                data: jsonString,
-            });
-
-
-
-            request2.done(function(data) {
-                // alert( "success" );
-                $('#catchup').find('.placeholder').html(data);
-                //$(document).find('.Thursday').hide();
-            })
-
-
-        }
-
-        function getNextSteps() {
-
-            const dataToSend = {
-
-            }
-
-            const jsonString = JSON.stringify(dataToSend);
-            console.log(jsonString);
-
-            var request2 = $.ajax({
-                url: siteRoot + "scripts/getNextStepsVideos.php",
-                type: "POST",
-                contentType: "application/json",
-                data: jsonString,
-            });
-
-
-
-            request2.done(function(data) {
-                // alert( "success" );
-                $('#suggested').find('.placeholder').html(data);
-                //$(document).find('.Thursday').hide();
-            })
-
-
-        }
-
-        function getPopular() {
-
-            const dataToSend = {
-
-            }
-
-            const jsonString = JSON.stringify(dataToSend);
-            console.log(jsonString);
-
-            var request2 = $.ajax({
-                url: siteRoot + "scripts/getPopularVideos.php",
-                type: "POST",
-                contentType: "application/json",
-                data: jsonString,
-            });
-
-
-
-            request2.done(function(data) {
-                // alert( "success" );
-                $('#popular').find('.placeholder').html(data);
-                //$(document).find('.Thursday').hide();
-            })
-
-
-        }
 
         function submitPreRegisterForm() {
 
@@ -742,10 +565,6 @@
         $(document).ready(function() {
 
 
-            getNew();
-            getRecentViewed();
-            getNextSteps();
-            getPopular();
 
             /* $(document).click(function(event) { 
                 $target = $(event.target);

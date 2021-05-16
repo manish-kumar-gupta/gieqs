@@ -8,7 +8,7 @@
     
     require(DB);    
 
-    function redirect_user ($page='index.php') {
+    function redirect_user ($page='/pages/authentication/login.php') {
         header ("Location: $page");
         exit ();
     }

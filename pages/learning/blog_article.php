@@ -123,7 +123,6 @@ $blogLink = new blogLink;
             <!--Page title-->
             <title>GIEQs Online Endoscopy Blog - <?php echo $page_title ?></title>
 
-            <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
             <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
 
 
@@ -411,8 +410,14 @@ $blogLink = new blogLink;
                     </div>
                 </div>
             </section>
-            <?php require BASE_URI . '/pages/learning/assets/upgradeNav.php';?>
-            <div class="d-flex flex-wrap container">
+            <?php 
+
+
+            if (isset($userid)){
+            require BASE_URI . '/pages/learning/assets/upgradeNav.php';
+            
+            }?>
+            <div class="d-flex flex-wrap container mt-2">
 
                 <nav aria-label="breadcrumb" class="align-self-center text-right">
                     <ol class="breadcrumb breadcrumb-links p-0 m-0">
@@ -455,6 +460,26 @@ $blogLink = new blogLink;
                $blog_date = new DateTime($blogs->getcreated());
                $blog_date_readable = date_format($blog_date, "l jS F Y");
 
+              
+               
+               $imagesCovers = [
+
+                1 => [0 => '/assets/img/blog/covers/colonoscopy_1920x600.png', ], //Colon Tutor
+                2 => [0 => '/assets/img/blog/covers/polypectomy_1920x600.png', ], //Polyp Tutor
+                3 => [0 => '/assets/img/blog/covers/imaging_1920x600.png', ], //Imaging Tutor
+                4 => [0 => '/assets/img/blog/covers/gastroscopy_1920x600.png', ], //Gastroscopy Tutor
+                5 => '', //GIEQs Topics Tutor
+                6 => '', //Nursing Tutor
+                7 => '', //ERCP Tutor
+                8 => '', //EUS Tutor
+                9 => '', //Therapeutic EUS Tutor
+                10 => [0 => '/assets/img/blog/covers/complex_polypectomy_1920x600.png', ], //Complex Resection Tutor
+                11 => [0 => '/assets/img/blog/covers/submucosal_1920x600.png', ], //Submucosal Endoscopy Tutor
+                0 => '', //Video Nav
+            
+            
+              ];
+
                 
                 ?>
                                     <span class="text-sm text-muted"><?php echo $blog_date_readable;?></span>
@@ -467,9 +492,24 @@ $blogLink = new blogLink;
             <!--     <section class="bg-cover bg-size--cover" style="height: 200px; background-image: url('../../assets/img/backgrounds/endoscopy.jpg'); background-position: top center;"></section>
  -->
 
+ 
+
+ <?php 
+ 
+ 
+ //echo $blogs->getsubject();
+ 
+ if (array_key_exists($blogs->getsubject(),$imagesCovers)) {
+
+  $countImagesArray = count($imagesCovers[$blogs->getsubject()]) - 1;
+  $random_number = mt_rand(0, $countImagesArray);
+
+   ?>
             <section class="bg-cover bg-size--cover"
-                style="height: 300px; background-image: url('../../assets/img/backgrounds/endoscopy.jpg'); background-position: top center;">
+                style="height: 600px; background-image: url('<?php echo BASE_URL . $imagesCovers[$blogs->getsubject()][$random_number];?>'); background-position: top center;">
             </section>
+
+<?php }?> 
 
             <section class="slice">
                 <div class="container">
@@ -651,131 +691,10 @@ if ($value['img'] != NULL){
                 <?php
 
 
-$maxToShow = 6;
-$featuredFirst = true;
+$maxToShow = 3;
+$featuredFirst = false;
 
 require(BASE_URI. '/pages/learning/scripts/show_blogs.php');
-
-$blogsToShow = $blogLink->getActiveBlogs($maxToShow, $featuredFirst, FALSE);
-
-
-//print_r($blogsToShow);
-
-$a=1;
-$b=count($blogsToShow);
-
-foreach ($blogsToShow as $key=>$value){
-
-?>
-
-
-
-
-                <?php
-
-
-  //show the row
-
-  if ($b == 0){
-
-    ?>
-
-                <div class="row">
-                    <p>No blogs yet</p>
-                </div>
-
-
-                <?php
-    
-  }
-
-  if ($a == 1){
-?>
-
-                <div class="row">
-
-
-                    <?php
-
-  }
-
-  $blogs->Load_from_key($value['id']);
-
-  $blog_date = new DateTime($blogs->getcreated());
-               $blog_date_readable = date_format($blog_date, "jS F Y");
-
-
-
-?>
-
-
-                    <div class="col-lg-4">
-                        <div class="card hover-shadow-lg hover-translate-y-n10"
-                            data-blog-id="<?php echo $value['id'];?>">
-                            <a href="#">
-                                <img alt="Image placeholder" src="../../assets/img/theme/light/img-1-800x600.jpg"
-                                    class="card-img-top">
-                            </a>
-                            <div class="card-body py-5 text-center">
-                                <a href="#" class="d-block h5 lh-150"><?php echo $blogs->getname();?></a>
-                                <?php $users->Load_from_key($blogs->getauthor());?>
-
-
-                                <h6 class="text-muted mt-4 mb-0">
-                                    <?php echo $users->getfirstname() . ' ' . $users->getsurname();?></h6>
-
-                                <h6 class="text-muted mt-4 mb-0"><?php echo $blog_date_readable;?></h6>
-                            </div>
-                            <!--  <div class="card-footer delimiter-top">
-                <div class="row">
-                  <div class="col text-center">
-                    <ul class="list-inline mb-0">
-                      <li class="list-inline-item pr-4">
-                        <a href="#" class="text-muted"><i class="fas fa-share mr-1 text-muted"></i> 131</a>
-                      </li>
-                      <li class="list-inline-item pr-4">
-                        <a href="#" class="text-muted"><i class="fas fa-eye mr-1 text-muted"></i> 255</a>
-                      </li>
-                      <li class="list-inline-item">
-                        <a href="#" class="text-muted"><i class="fas fa-comments mr-1 text-muted"></i> 14</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div> -->
-
-                        </div>
-</div>
-
-
-
-
-
-                        <?php
-
-
-
-  //end the row
-
-  if (($a % 3 == 0) ){
-?>
-
-                    </div>
-
-
-                    <?php
-
-  }
-
-  $a++;
-
-  
-
-
-
-}
-
-
-
 
 ?>
 
@@ -835,263 +754,26 @@ foreach ($blogsToShow as $key=>$value){
         <script src="<?php echo BASE_URL;?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
         <!-- <script src="assets/js/generaljs.js"></script> -->
         <script>
-        var videoPassed = $("#id").text();
-        </script>
-
-        <script>
-        var signup = $('#signup').text();
-
-        function getNew() {
-
-            const dataToSend = {
-
-            }
-
-            const jsonString = JSON.stringify(dataToSend);
-            console.log(jsonString);
-
-            var request2 = $.ajax({
-                url: siteRoot + "scripts/getNewVideos.php",
-                type: "POST",
-                contentType: "application/json",
-                data: jsonString,
-            });
-
-
-
-            request2.done(function(data) {
-                // alert( "success" );
-                $('#whats-new').find('.placeholder').html(data);
-                //$(document).find('.Thursday').hide();
-            })
-
-
-        }
-
-        function getRecentViewed() {
-
-            const dataToSend = {
-
-            }
-
-            const jsonString = JSON.stringify(dataToSend);
-            console.log(jsonString);
-
-            var request2 = $.ajax({
-                url: siteRoot + "scripts/getRecentViewedVideos.php",
-                type: "POST",
-                contentType: "application/json",
-                data: jsonString,
-            });
-
-
-
-            request2.done(function(data) {
-                // alert( "success" );
-                $('#catchup').find('.placeholder').html(data);
-                //$(document).find('.Thursday').hide();
-            })
-
-
-        }
-
-        function getNextSteps() {
-
-            const dataToSend = {
-
-            }
-
-            const jsonString = JSON.stringify(dataToSend);
-            console.log(jsonString);
-
-            var request2 = $.ajax({
-                url: siteRoot + "scripts/getNextStepsVideos.php",
-                type: "POST",
-                contentType: "application/json",
-                data: jsonString,
-            });
-
-
-
-            request2.done(function(data) {
-                // alert( "success" );
-                $('#suggested').find('.placeholder').html(data);
-                //$(document).find('.Thursday').hide();
-            })
-
-
-        }
-
-        function getPopular() {
-
-            const dataToSend = {
-
-            }
-
-            const jsonString = JSON.stringify(dataToSend);
-            console.log(jsonString);
-
-            var request2 = $.ajax({
-                url: siteRoot + "scripts/getPopularVideos.php",
-                type: "POST",
-                contentType: "application/json",
-                data: jsonString,
-            });
-
-
-
-            request2.done(function(data) {
-                // alert( "success" );
-                $('#popular').find('.placeholder').html(data);
-                //$(document).find('.Thursday').hide();
-            })
-
-
-        }
-
-        function submitPreRegisterForm() {
-
-            var esdLesionObject = pushDataFromFormAJAX("pre-register", "preRegister", "id", null,
-                "0"); //insert new object
-
-            esdLesionObject.done(function(data) {
-
-                console.log(data);
-
-                var dataTrim = data.trim();
-
-                console.log(dataTrim);
-
-                if (dataTrim) {
-
-                    try {
-
-                        dataTrim = parseInt(dataTrim);
-
-                        if (dataTrim > 0) {
-
-                            alert("Thank you for your details.  We will keep you updated on everything GIEQs.");
-                            $("[data-dismiss=modal]").trigger({
-                                type: "click"
-                            });
-
-                        }
-
-                    } catch (error) {
-
-                        //data not entered
-                        console.log('error parsing integer');
-                        $("[data-dismiss=modal]").trigger({
-                            type: "click"
-                        });
-
-
-                    }
-
-                    //$('#success').text("New esdLesion no "+data+" created");
-                    //$('#successWrapper').show();
-                    /* $("#successWrapper").fadeTo(4000, 500).slideUp(500, function() {
-                      $("#successWrapper").slideUp(500);
-                    });
-                    edit = 1;
-                    $("#id").text(data);
-                    esdLesionPassed = data;
-                    fillForm(data); */
-
-
-
-
-                } else {
-
-                    alert("No data inserted, try again");
-
-                }
-
-
-            });
-        }
+        
 
         $(document).ready(function() {
 
 
-            getNew();
-            getRecentViewed();
-            getNextSteps();
-            getPopular();
+            $(document).ready(function() {
 
-            /* $(document).click(function(event) { 
-                $target = $(event.target);
-                
-                if(!$target.closest('#collapseExample').length && 
-                    $('#collapseExample').is(":visible")) {
-                        $('#collapseExample').collapse('hide');
-                    }        
-            }); */
+$(document).on('click', '.card', function() {
 
-            $(document).click(function(event) {
-                $target = $(event.target);
+    event.preventDefault();
+    var id = $(this).attr('data-blog-id');
 
-                if (!$target.closest('#selectDropdown').length &&
-                    $('#selectDropdown').is(":visible")) {
-                    $('#selectDropdown').collapse('hide');
-                }
-            });
-
-            $(document).click(function(event) {
-                $target = $(event.target);
-
-                if (!$target.closest('#collapseExample2').length &&
-                    $('#collapseExample2').is(":visible")) {
-                    $('#collapseExample2').collapse('hide');
-                }
-            });
-
-            $(document).click(function(event) {
-                $target = $(event.target);
-
-                if (!$target.closest('#collapseExample3').length &&
-                    $('#collapseExample3').is(":visible")) {
-                    $('#collapseExample3').collapse('hide');
-                }
-            });
-
-            $(document).on('click', '.tagsClose', function() {
-
-                $('#collapseExample').collapse('hide');
-
-            })
-
-            $('.referencelist').on('click', function() {
+    window.location.href = siteRoot + "blog_article.php?id="+id;
 
 
-                //get the tag name
-
-                var searchTerm = $(this).attr('data');
-
-                //console.log("https://www.ncbi.nlm.nih.gov/pubmed/?term="+searchTerm);
-
-                PopupCenter("https://www.ncbi.nlm.nih.gov/pubmed/?term=" + searchTerm,
-                    'PubMed Search (endoWiki)', 800, 700);
+})
 
 
-
-
-
-            })
-
-            $('.referencelist').on('mouseenter', function() {
-
-                $(this).css('color', 'rgb(238, 194, 120)');
-                $(this).css('cursor', 'pointer');
-
-            })
-
-            $('.referencelist').on('mouseleave', function() {
-
-                $(this).css('color', 'white');
-                $(this).css('cursor', 'default');
-
-            })
+})
+           
 
 
         })

@@ -78,7 +78,96 @@ if ($openaccess == 1){
 
     $info[] = 'page is open access';
 
-        goto b;
+    
+
+        //unset($userid);
+    
+        if ($openaccess == 1){
+    
+            //set user id
+    
+            if (isset($_SESSION['user_id'])) {
+    
+                $userid = $_SESSION['user_id'];
+    
+                $info[] = 'page was open access but a user id was found in the session so was assigned (' . $userid . ')';
+            }
+    
+            //set user access level
+    
+            if (isset($_SESSION['access_level'])) {
+    
+                    $currentUserLevel = $_SESSION['access_level'];
+    
+                    //require(DB);
+                    $dbc = @mysqli_connect (DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+                    $sql = "SELECT `user_id`, `access_level` 
+                    FROM `users` WHERE `user_id` = $userid";
+                    $result = mysqli_query ($dbc, $sql);
+                    
+                    if(mysqli_num_rows($result)>0){
+                        while($row = mysqli_fetch_array($result)) {
+                            $databaseUserAccessLevel = $row['access_level'];
+                        }
+    
+                        if ($databaseUserAccessLevel != $currentUserLevel){
+    
+                            if (!$debugUserAccess){
+                            redirect_login($location);
+                        }
+    
+                        }
+                    }else{
+    
+                        $databaseUserAccessLevel = NULL;
+        
+                     }
+    
+                    mysqli_free_result($result);
+                    mysqli_close($dbc);
+    
+            }
+            //set superuser status
+        
+            if ($databaseUserAccessLevel == '1'){
+    
+                $isSuperuser = 1;
+        
+            }else{
+        
+                $isSuperuser = 0;
+            }
+        
+        
+        if ($onlySuperuser){
+    
+            $info[] = 'only super user can access the site set in config.inc.php';
+    
+            if ($isSuperuser != 1){
+    
+                if (!$debugUserAccess){
+                            redirect_login($location);
+                        }
+    
+            }
+    
+        }
+        
+    
+        $currentTime = new DateTime('now', $serverTimeZone);  //CHANGE FOR LIVE
+        //$currentTime = new DateTime('2020-10-09 15:45:20', $serverTimeZone);
+    
+        
+        }
+    
+       
+        
+    
+        
+    
+    
+    //dothings where open access allowed
+    
 
 }else{
 
@@ -142,7 +231,7 @@ if ($openaccess == 1){
 
         }
     }
-}
+
 
     a:{
 //echo 'made it to a';
@@ -349,96 +438,7 @@ if (isset($requiredUserLevel)){
 
 
 
-b:{
 
-    //unset($userid);
-
-    if ($openaccess == 1){
-
-        //set user id
-
-        if (isset($_SESSION['user_id'])) {
-
-            $userid = $_SESSION['user_id'];
-
-            $info[] = 'page was open access but a user id was found in the session so was assigned (' . $userid . ')';
-        }
-
-        //set user access level
-
-        if (isset($_SESSION['access_level'])) {
-
-                $currentUserLevel = $_SESSION['access_level'];
-
-                //require(DB);
-                $dbc = @mysqli_connect (DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-                $sql = "SELECT `user_id`, `access_level` 
-                FROM `users` WHERE `user_id` = $userid";
-                $result = mysqli_query ($dbc, $sql);
-                
-                if(mysqli_num_rows($result)>0){
-                    while($row = mysqli_fetch_array($result)) {
-                        $databaseUserAccessLevel = $row['access_level'];
-                    }
-
-                    if ($databaseUserAccessLevel != $currentUserLevel){
-
-                        if (!$debugUserAccess){
-                        redirect_login($location);
-                    }
-
-                    }
-                }else{
-
-                    $databaseUserAccessLevel = NULL;
-    
-                 }
-
-                mysqli_free_result($result);
-                mysqli_close($dbc);
-
-        }
-        //set superuser status
-    
-        if ($databaseUserAccessLevel == '1'){
-
-            $isSuperuser = 1;
-    
-        }else{
-    
-            $isSuperuser = 0;
-        }
-    
-    
-    if ($onlySuperuser){
-
-        $info[] = 'only super user can access the site set in config.inc.php';
-
-        if ($isSuperuser != 1){
-
-            if (!$debugUserAccess){
-                        redirect_login($location);
-                    }
-
-        }
-
-    }
-    
-
-    $currentTime = new DateTime('now', $serverTimeZone);  //CHANGE FOR LIVE
-    //$currentTime = new DateTime('2020-10-09 15:45:20', $serverTimeZone);
-
-    
-    }
-
-   
-    
-
-    
-
-
-//do things where open access allowed
-}
 c:{
 //echo 'made it to c';
 //do things for token access
@@ -650,6 +650,8 @@ if ($assetManager->getSiteWideSubscription($userid, $debug)){
 
 }
 
+
+}
 
 if ($debugUserAccess){
 print_r($info);
