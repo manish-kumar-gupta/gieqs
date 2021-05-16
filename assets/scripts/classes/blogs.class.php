@@ -42,6 +42,7 @@ Class blogs {
     private $author; //varchar(11)
 	private $created; //timestamp
 	private $updated; //timestamp
+	private $featured; //varchar(11)
 	private $connection;
 
 	public function __construct(){
@@ -57,7 +58,7 @@ Class blogs {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_blogs($blog_id,$name,$subject,$preheader,$active,$audience,$audience_specify,$author,$created,$updated){
+	public function New_blogs($blog_id,$name,$subject,$preheader,$active,$audience,$audience_specify,$author,$created,$updated,$featured){
 		$this->blog_id = $blog_id;
 		$this->name = $name;
 		$this->subject = $subject;
@@ -68,6 +69,7 @@ Class blogs {
 		$this->author = $author;
 		$this->created = $created;
 		$this->updated = $updated;
+		$this->featured = $featured;
 	}
 
     /**
@@ -90,6 +92,7 @@ Class blogs {
 			$this->author = $row["author"];
 			$this->created = $row["created"];
 			$this->updated = $row["updated"];
+			$this->featured = $row["featured"];
 		}
 	}
     /**
@@ -118,6 +121,7 @@ $q = "Select * from `blogs` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["author"] = $row["author"];
 			$rowReturn[$x]["created"] = $row["created"];
 			$rowReturn[$x]["updated"] = $row["updated"];
+			$rowReturn[$x]["featured"] = $row["featured"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -150,6 +154,7 @@ $q = "Select * from `blogs` WHERE `id` = $key";
 			$rowReturn[$x]["author"] = $row["author"];
 			$rowReturn[$x]["created"] = $row["created"];
 			$rowReturn[$x]["updated"] = $row["updated"];
+			$rowReturn[$x]["featured"] = $row["featured"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -480,6 +485,14 @@ $q = "UPDATE `blogs` SET $implodeArray WHERE `id` = '$this->id'";
 		return $this->updated;
 	}
 
+		/**
+	 * @return featured - varchar(11)
+	 */
+	public function getfeatured(){
+		return $this->featured;
+	}
+
+
 	/**
 	 * @param Type: int(11)
 	 */
@@ -556,6 +569,14 @@ $q = "UPDATE `blogs` SET $implodeArray WHERE `id` = '$this->id'";
 	public function setupdated($updated){
 		$this->updated = $updated;
 	}
+
+		/**
+	 * @param Type: varchar(11)
+	 */
+	public function setfeatured($featured){
+		$this->featured = $featured;
+	}
+
 
     /**
      * Close mysql connection

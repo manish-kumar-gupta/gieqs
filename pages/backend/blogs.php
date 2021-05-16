@@ -230,7 +230,7 @@ if ($identifierValue) {
                 <!-- Orders table -->
                 <div class="table-responsive">
                     <table id="dataTable" class="table text-center table-cards align-items-center">
-                        <thead>
+                       <thead>
                             <tr>
                                 <!-- EDIT -->
                                 <th>id</th>
@@ -592,7 +592,7 @@ if ($identifierValue) {
                 $('.modal-backdrop').remove();
 
             },
-            url: siteRoot + "assets/scripts/courses/generateEmail.php",
+            url: siteRoot + "pages/learning/blog_article.php?id=" + mailUnderEdit,
             type: "POST",
             contentType: "application/json",
             data: jsonString,
@@ -656,7 +656,7 @@ if ($identifierValue) {
 
 
         var request = $.ajax({
-            url: siteRoot + "assets/scripts/courses/addEmail2.php",
+            url: siteRoot + "assets/scripts/courses/addBlog.php",
             type: "POST",
             contentType: "application/json",
             data: jsonString,
@@ -671,7 +671,7 @@ if ($identifierValue) {
 
             if (data) {
 
-                lesionUnderEdit = data;
+                lesionUnderEdit = data.trim();
             }
 
 
@@ -817,7 +817,7 @@ if ($identifierValue) {
 
 
         var request = $.ajax({
-            url: siteRoot + "assets/scripts/courses/addText.php",
+            url: siteRoot + "assets/scripts/courses/addblogText.php",
             type: "POST",
             contentType: "application/json",
             data: jsonString,
@@ -869,7 +869,7 @@ if ($identifierValue) {
         //console.log(jsonString);
 
         var request = $.ajax({
-            url: siteRoot + "assets/scripts/courses/addImg.php",
+            url: siteRoot + "assets/scripts/courses/addblogImg.php",
             type: "POST",
             contentType: "application/json",
             data: jsonString,
@@ -908,7 +908,7 @@ if ($identifierValue) {
         //console.log(jsonString);
 
         var request = $.ajax({
-            url: siteRoot + "assets/scripts/courses/addVideo.php",
+            url: siteRoot + "assets/scripts/courses/addblogVideo.php",
             type: "POST",
             contentType: "application/json",
             data: jsonString,
@@ -935,14 +935,14 @@ if ($identifierValue) {
 
     function launchViewer() {
 
-        openedWindow = window.open(siteRoot + 'assets/scripts/courses/generateEmail.php?blogid=' + lesionUnderEdit,
+        openedWindow = window.open(siteRoot + 'pages/learning/blog_article.php?id=' + lesionUnderEdit,
             '_blank', 'toolbar=0,location=0,menubar=0');
 
     }
 
     function commitEmail() {
 
-        if (confirm('Are you sure you wish to spool this mail for sending?') === true) {
+        if (confirm('Are you sure you wish to activate this blog on the site?') === true) {
 
 
             //var audience = $(document).find('.modalContent').find('#audience').val();
@@ -958,7 +958,7 @@ if ($identifierValue) {
             //console.log(jsonString);
 
             var request = $.ajax({
-                url: siteRoot + "assets/scripts/courses/commitEmail.php",
+                url: siteRoot + "assets/scripts/courses/commitBlog.php",
                 type: "POST",
                 contentType: "application/json",
                 data: jsonString,
@@ -988,7 +988,7 @@ if ($identifierValue) {
 
     function uncommitEmail() {
 
-if (confirm('Are you sure you wish to stop this mail from spool sending?') === true) {
+if (confirm('Are you sure you wish to remove this blog from the site?') === true) {
 
 
     //var audience = $(document).find('.modalContent').find('#audience').val();
@@ -1004,7 +1004,7 @@ if (confirm('Are you sure you wish to stop this mail from spool sending?') === t
     //console.log(jsonString);
 
     var request = $.ajax({
-        url: siteRoot + "assets/scripts/courses/uncommitEmail.php",
+        url: siteRoot + "assets/scripts/courses/uncommitBlog.php",
         type: "POST",
         contentType: "application/json",
         data: jsonString,
@@ -1303,7 +1303,7 @@ if (confirm('Are you sure you wish to create a new email duplicating email id ' 
 
 
         var request = $.ajax({
-            url: siteRoot + "assets/scripts/getEmailContents.php",
+            url: siteRoot + "assets/scripts/getBlogContents.php",
             type: "POST",
             contentType: "application/json",
             data: jsonString,
@@ -1792,7 +1792,7 @@ if (confirm('Are you sure you wish to create a new email duplicating email id ' 
 
 
         var request2 = $.ajax({
-            url: siteRoot + "assets/scripts/courses/updateEmailComponents.php",
+            url: siteRoot + "assets/scripts/courses/updateBlogComponents.php",
             type: "POST",
             contentType: "application/json",
             data: jsonString,

@@ -8,7 +8,7 @@
 
             //$general = new general;
             //$programme = new programme;
-            $emailLink = new emailLink;
+            $blogLink = new blogLink;
             $blogs = new blogs;
             $userFunctions = new userFunctions();
             $assetManager = new assetManager();
@@ -148,7 +148,20 @@
                                 </select>
                             </div>
 
-                            <label for="active">Active</label>
+                            <label for="featured">Hold in Featured Area?</label>
+                            <div class="input-group mb-3">
+                                <select id="featured" type="text" data-toggle="select" class="form-control"
+                                    name="featured">
+                                    <option value="" selected disabled hidden>please select an option</option>
+                                    <option value="0">Not Featured</option>
+                                    <option value="1">Featured</option>
+
+                                
+
+                                </select>
+                            </div>
+
+                            <!-- <label for="active">Active</label>
                             <div class="input-group mb-3">
                                 <select id="active" type="text" data-toggle="select" class="form-control"
                                     name="active">
@@ -156,7 +169,7 @@
                                     <option value="0">Inactive</option>
                                     <option value="1">Shown on Site</option>
                                 </select>
-                            </div>
+                            </div> -->
 
                             <!-- <label for="audience">audience</label>
                             <div class="input-group mb-3">
@@ -179,6 +192,8 @@
                             </div> -->
 
                             <input type="hidden" name="active">
+                            <input type="hidden" name="updated" value="<?php echo $timestamp = date('Y-m-d H:i:s');?>">
+
                         </div>
                     </form>
                     <form id="emailContent-form">
@@ -192,7 +207,7 @@
                             <!-- get all connections for this email id -->
                             <?php 
                                 
-                                $emailContents = $emailLink->getEmailContents($emailid, false);
+                                $emailContents = $blogLink->getEmailContents($blogid, false);
 
                                 //var_dump($emailContents);
 
@@ -315,8 +330,8 @@
                             img</button>
                         <button class="addVideo btn btn-sm m-2 px-2 py-0 bg-gieqsGold text-dark form-control">+
                             video</button>
-                        <button class="addTextButton btn btn-sm m-2 px-2 py-0 bg-gieqsGold text-dark form-control">+
-                            button</button>
+                        <!-- <button class="addTextButton btn btn-sm m-2 px-2 py-0 bg-gieqsGold text-dark form-control">+
+                            button</button> -->
 
 
 
@@ -330,10 +345,10 @@
             </div>
             <div class="modal-footer">
                 <?php
-            if ($emails->getactive() == '1'){
+            if ($blogs->getactive() == '1'){
 ?>
 
-                <button type="button" class="btn btn-sm btn-warning uncommitEmail">Edit Email</button>
+                <button type="button" class="btn btn-sm btn-warning uncommitEmail">Edit Blog</button>
 
 
 
@@ -351,9 +366,9 @@
 
                 <?php }?>
 
-                <button type="button" class="btn btn-sm btn-warning text-dark commitEmail">Commit Email</button>
-                <button type="button" class="btn btn-sm bg-gieqsGold text-dark testEmail">Send Test Email</button>
-
+                <button type="button" class="btn btn-sm btn-warning text-dark commitEmail">Commit Blog</button>
+                <!-- <button type="button" class="btn btn-sm bg-gieqsGold text-dark testEmail">Send Test Email</button>
+ -->
 
 
                 <?php  }?>

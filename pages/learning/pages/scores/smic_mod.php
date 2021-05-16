@@ -392,6 +392,8 @@ background-color: rgb(238, 194, 120);
 
         $(labels).show();
         $(arrayToHide).show();
+        $('#demarcation_imaging').hide();
+
 
     }
 
@@ -402,6 +404,7 @@ background-color: rgb(238, 194, 120);
 
         $(labels).hide();
         $(arrayToHide).hide();
+        $('#demarcation_imaging').show();
 
         /* $('#size, #location, #morphology, #paris').parent().hide(); */
 
@@ -631,6 +634,9 @@ background-color: rgb(238, 194, 120);
 
                     demarcatedArea();
 
+                    $('#demarcation_imaging').parent().show();
+
+
 
                 }
 
@@ -677,6 +683,8 @@ background-color: rgb(238, 194, 120);
 				$formv1->generateSelectCustom ('Is there a demarcation area (of regular to irregular pit / vascular pattern) within the polyp:', 'demarcation', 'factor', array('0' => '0 - No demarcated area', '1' => '1 - Demarcated area'), 'Demarcated area?');
 				echo '<br/>';
 			
+                $formv1->generateSelectCustom ('Highest classification of the demarcation area :', 'demarcation_imaging', 'factor', array('1' => '1 - NICE I / JNET 1 / Kudo II ', '2' => '2 - NICE II / JNET 2A / Kudo III or IV', '3' => '3 - NICE II / JNET 2B / Kudo Vi', '4' => '4 - NICE III / JNET 3 / Kudo Vn',), 'Highest Imaging Grade of the Demarcation Area?');
+				echo '<br/>';
 
                 //say that the polyp is regular
 				$formv1->generateSelectCustom ('Size of lesion :', 'size', 'factor', array('1' => '1 - &ge; 20mm', '2' => '2 - &ge; 30mm', '3' => '3 - &ge; 40mm', '4' => '4 - &ge; 50mm', '5' => '5 - &ge; 60mm', '6' => '6 - &ge; 70mm', '7' => '7 - &ge; 80mm', '8' => '8 - &ge; 90mm',  '9' => '9 - &ge; 100mm'), 'Depression?');

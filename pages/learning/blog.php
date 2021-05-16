@@ -299,6 +299,10 @@
         require_once(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
         $assetManager = new assetManager;
 
+        require_once(BASE_URI . '/assets/scripts/classes/settings_manager.class.php');
+        $settings_manager = new settings_manager;
+
+
         $video_PDO = new video_PDO;
 
 
@@ -349,7 +353,7 @@
                                 <div class="col-auto mb-4 mb-md-0">
                                     <span class="h2 mb-0 text-white text-bold d-block">The GIEQs Online Blog.
                                         <?php //echo $_SESSION['firstname'] . ' ' . $_SESSION['surname']?></span>
-                                    <span class="text-white">Everyday Endoscopy.  Updated weekly.</span>
+                                    <span class="text-white">Everyday Endoscopy. Updated weekly.</span>
                                 </div>
                                 <!-- video -->
                                 <div class="col-auto flex-fill d-none d-xl-block">
@@ -369,132 +373,177 @@
             </section>
             <?php require BASE_URI . '/pages/learning/assets/upgradeNav.php';?>
 
+            <?php if ($settings_manager->isBlogActive() === true){?>
+            <section class="slice slice-lg bg-section-secondary delimiter-top delimiter-bottom pt-0 pt-5 pb-5">
+               
+               <div class="pt-1 pl-10">
+                    <h1 class="display-5 ">GIEQs Live Blog</h1>
+                    <p>We are currently broadcasting live from the Endoscopy Room.  Usually these events are archived for you to enjoy later on GIEQs Online.</p>
+                    </div>
+                    <div class="row d-flex flex-wrap align-items-lg-stretch py-4 px-6">
+
+                    <div class="col-lg-1 pt-0">
+                    </div>
+
+                    <div class="col-lg-10 pt-0 p-4">
+
+                        <div style="padding:56.25% 0 0 0;position:relative;"><iframe
+                                src="https://vimeo.com/event/910289/embed/8a7dee8af0" frameborder="0"
+                                allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
+                                style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe></div>
+                    </div>
+                    <div class="col-lg-1 pt-0">
+                    </div>
+                    </div>
+
+            </section>
+
+            <?php } ?>
+
             <section class="slice slice-lg bg-section-secondary delimiter-top delimiter-bottom">
-      <div class="container">
-        <div class="mb-5 text-center">
-          <h3 class=" mt-4">Latest from the blog</h3>
-          <div class="fluid-paragraph mt-3">
-            <p class="lead lh-180">Weekly nuggets focussed on Everyday techniques.  Monthly evening round-ups.</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="card hover-shadow-lg hover-translate-y-n10">
-              <a href="#">
-                <img alt="Image placeholder" src="../../assets/img/theme/light/img-1-800x600.jpg" class="card-img-top">
-              </a>
-              <div class="card-body py-5 text-center">
-                <a href="#" class="d-block h5 lh-150">Choose the best solution for your business</a>
-                <h6 class="text-muted mt-4 mb-0">20 Aug 2019</h6>
-              </div>
-              <div class="card-footer delimiter-top">
-                <div class="row">
-                  <div class="col text-center">
-                    <ul class="list-inline mb-0">
-                      <li class="list-inline-item pr-4">
-                        <a href="#" class="text-muted"><i class="fas fa-share mr-1 text-muted"></i> 131</a>
-                      </li>
-                      <li class="list-inline-item pr-4">
-                        <a href="#" class="text-muted"><i class="fas fa-eye mr-1 text-muted"></i> 255</a>
-                      </li>
-                      <li class="list-inline-item">
-                        <a href="#" class="text-muted"><i class="fas fa-comments mr-1 text-muted"></i> 14</a>
-                      </li>
-                    </ul>
-                  </div>
+                <div class="container">
+                    <div class="mb-5 text-center">
+                        <h3 class=" mt-4">Latest from the blog</h3>
+                        <div class="fluid-paragraph mt-3">
+                            <p class="lead lh-180">Weekly nuggets focussed on Everyday techniques. Monthly evening
+                                round-ups.</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="card hover-shadow-lg hover-translate-y-n10">
+                                <a href="#">
+                                    <img alt="Image placeholder" src="../../assets/img/theme/light/img-1-800x600.jpg"
+                                        class="card-img-top">
+                                </a>
+                                <div class="card-body py-5 text-center">
+                                    <a href="#" class="d-block h5 lh-150">Choose the best solution for your business</a>
+                                    <h6 class="text-muted mt-4 mb-0">20 Aug 2019</h6>
+                                </div>
+                                <div class="card-footer delimiter-top">
+                                    <div class="row">
+                                        <div class="col text-center">
+                                            <ul class="list-inline mb-0">
+                                                <li class="list-inline-item pr-4">
+                                                    <a href="#" class="text-muted"><i
+                                                            class="fas fa-share mr-1 text-muted"></i> 131</a>
+                                                </li>
+                                                <li class="list-inline-item pr-4">
+                                                    <a href="#" class="text-muted"><i
+                                                            class="fas fa-eye mr-1 text-muted"></i> 255</a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#" class="text-muted"><i
+                                                            class="fas fa-comments mr-1 text-muted"></i> 14</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card hover-shadow-lg hover-translate-y-n10">
+                                <a href="#">
+                                    <img alt="Image placeholder" src="../../assets/img/theme/light/img-2-800x600.jpg"
+                                        class="card-img-top">
+                                </a>
+                                <div class="card-body py-5 text-center">
+                                    <a href="#" class="d-block h5 lh-150">How to find the right design for your specific
+                                        product</a>
+                                    <h6 class="text-muted mt-4 mb-0">23 Aug 2019</h6>
+                                </div>
+                                <div class="card-footer delimiter-top">
+                                    <div class="row">
+                                        <div class="col text-center">
+                                            <ul class="list-inline mb-0">
+                                                <li class="list-inline-item pr-4">
+                                                    <a href="#" class="text-muted"><i
+                                                            class="fas fa-share mr-1 text-muted"></i> 131</a>
+                                                </li>
+                                                <li class="list-inline-item pr-4">
+                                                    <a href="#" class="text-muted"><i
+                                                            class="fas fa-eye mr-1 text-muted"></i> 255</a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#" class="text-muted"><i
+                                                            class="fas fa-comments mr-1 text-muted"></i> 14</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="card hover-shadow-lg hover-translate-y-n10">
+                                <a href="#">
+                                    <img alt="Image placeholder" src="../../assets/img/theme/light/img-3-800x600.jpg"
+                                        class="card-img-top">
+                                </a>
+                                <div class="card-body py-5 text-center">
+                                    <a href="#" class="d-block h5 lh-150">How to win buyers and influence sales with
+                                        marketing</a>
+                                    <h6 class="text-muted mt-4 mb-0">27 Aug 2019</h6>
+                                </div>
+                                <div class="card-footer delimiter-top">
+                                    <div class="row">
+                                        <div class="col text-center">
+                                            <ul class="list-inline mb-0">
+                                                <li class="list-inline-item pr-4">
+                                                    <a href="#" class="text-muted"><i
+                                                            class="fas fa-share mr-1 text-muted"></i> 131</a>
+                                                </li>
+                                                <li class="list-inline-item pr-4">
+                                                    <a href="#" class="text-muted"><i
+                                                            class="fas fa-eye mr-1 text-muted"></i> 255</a>
+                                                </li>
+                                                <li class="list-inline-item">
+                                                    <a href="#" class="text-muted"><i
+                                                            class="fas fa-comments mr-1 text-muted"></i> 14</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="card hover-shadow-lg hover-translate-y-n10">
-              <a href="#">
-                <img alt="Image placeholder" src="../../assets/img/theme/light/img-2-800x600.jpg" class="card-img-top">
-              </a>
-              <div class="card-body py-5 text-center">
-                <a href="#" class="d-block h5 lh-150">How to find the right design for your specific product</a>
-                <h6 class="text-muted mt-4 mb-0">23 Aug 2019</h6>
-              </div>
-              <div class="card-footer delimiter-top">
-                <div class="row">
-                  <div class="col text-center">
-                    <ul class="list-inline mb-0">
-                      <li class="list-inline-item pr-4">
-                        <a href="#" class="text-muted"><i class="fas fa-share mr-1 text-muted"></i> 131</a>
-                      </li>
-                      <li class="list-inline-item pr-4">
-                        <a href="#" class="text-muted"><i class="fas fa-eye mr-1 text-muted"></i> 255</a>
-                      </li>
-                      <li class="list-inline-item">
-                        <a href="#" class="text-muted"><i class="fas fa-comments mr-1 text-muted"></i> 14</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="card hover-shadow-lg hover-translate-y-n10">
-              <a href="#">
-                <img alt="Image placeholder" src="../../assets/img/theme/light/img-3-800x600.jpg" class="card-img-top">
-              </a>
-              <div class="card-body py-5 text-center">
-                <a href="#" class="d-block h5 lh-150">How to win buyers and influence sales with marketing</a>
-                <h6 class="text-muted mt-4 mb-0">27 Aug 2019</h6>
-              </div>
-              <div class="card-footer delimiter-top">
-                <div class="row">
-                  <div class="col text-center">
-                    <ul class="list-inline mb-0">
-                      <li class="list-inline-item pr-4">
-                        <a href="#" class="text-muted"><i class="fas fa-share mr-1 text-muted"></i> 131</a>
-                      </li>
-                      <li class="list-inline-item pr-4">
-                        <a href="#" class="text-muted"><i class="fas fa-eye mr-1 text-muted"></i> 255</a>
-                      </li>
-                      <li class="list-inline-item">
-                        <a href="#" class="text-muted"><i class="fas fa-comments mr-1 text-muted"></i> 14</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+            </section>
 
-    <section class="slice slice-lg">
-      <div class="container">
-        <div class="mb-5 text-center">
-          <h3 class=" mt-4">Subscribe for weekly updates from GIEQs</h3>
-          <div class="fluid-paragraph mt-3">
-            <p class="lead lh-180">Improving your knowledge of everyday endoscopy has never been easier.</p>
-          </div>
-        </div>
-        <div class="row justify-content-center">
-          <div class="col-lg-5 col-md-7">
-            <form class="mt-4">
-              <div class="form-group mb-0">
-                <div class="input-group input-group-lg input-group-merge rounded-pill bg-dark">
-                  <input type="email" class="form-control form-control-flush" name="email" placeholder="Enter your email address" aria-label="Enter your email address">
-                  <div class="input-group-append">
-                    <button class="btn btn-dark" type="button">
-                      <span class="fas fa-paper-plane"></span>
-                    </button>
-                  </div>
+            <section class="slice slice-lg">
+                <div class="container">
+                    <div class="mb-5 text-center">
+                        <h3 class=" mt-4">Subscribe for weekly updates from GIEQs</h3>
+                        <div class="fluid-paragraph mt-3">
+                            <p class="lead lh-180">Improving your knowledge of everyday endoscopy has never been easier.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5 col-md-7">
+                            <form class="mt-4">
+                                <div class="form-group mb-0">
+                                    <div class="input-group input-group-lg input-group-merge rounded-pill bg-dark">
+                                        <input type="email" class="form-control form-control-flush" name="email"
+                                            placeholder="Enter your email address"
+                                            aria-label="Enter your email address">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-dark" type="button">
+                                                <span class="fas fa-paper-plane"></span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
+            </section>
 
 
-            
+
 
 
         </div>

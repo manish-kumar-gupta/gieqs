@@ -82,14 +82,16 @@
                 <div class="btn-group" role="group">
                   <button id="btn-group-boards" type="button" class="btn btn-neutral btn-icon" data-toggle="dropdown" data-offset="0,8" aria-haspopup="true" aria-expanded="false">
                     <span class="btn-inner--icon"><i class="fas fa-chart-line"></i></span>
-                    <span class="btn-inner--text d-none d-sm-inline-block">Navigation</span>
+                    <span class="btn-inner--text d-none d-sm-inline-block">Site Settings</span>
                   </button>
 
 
                   <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow" aria-labelledby="btn-group-boards">
-                  <span class="dropdown-header">Navigation Managers</span>
+                  <span class="dropdown-header">GIEQs Online Structure</span>
                   <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/test_backend.php?table=pages">Edit Site Structure</a>
-                    
+                  <span class="dropdown-header">Blog</span>
+                  <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/blogs.php">Edit Blogs</a>
+  
                   </div>
                 </div>
 

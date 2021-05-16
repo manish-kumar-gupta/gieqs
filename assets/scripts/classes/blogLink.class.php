@@ -28,7 +28,7 @@ error_reporting(0);
 
 //require_once 'DataBaseMysqlPDO.class.php';
 
-Class emailLink {
+Class blogLink {
 
 
 	private $connection;
@@ -89,6 +89,66 @@ Class emailLink {
 
 
     }
+
+    public function getActiveBlogs($maxToShow=false, $featuredFirst=false, $debug=false){
+
+       
+        //echo $maxToShow;
+
+        $q = "Select a.`id`
+        FROM `blogs` as a
+        WHERE a.`active` = '1'";
+
+        
+
+        $q .= " ORDER BY a.`created` DESC";
+
+        if ($featuredFirst){
+
+            $q .= " , a.`featured` DESC";
+        }
+
+
+        if ($maxToShow){
+
+            $q .= " LIMIT $maxToShow";
+        }
+
+        if ($debug){
+
+        
+        echo $q . '<br><br>';
+
+
+        }
+
+
+        $result = $this->connection->RunQuery($q);
+        
+        $x = 0;
+        $nRows = $result->rowCount();
+
+        if ($nRows > 0) {
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                $rowReturn[] = $row;
+
+
+            }
+
+            return $rowReturn;
+
+        } else {
+            
+
+            return false;
+        }
+
+    
+
+
+}
 
     public function getNextDisplayOrder($blog_id, $debug=false){
 
@@ -526,7 +586,7 @@ $stmt->execute();
     /**
      * Close mysql connection
      */
-	public function endemailLink(){
+	public function endblogLink(){
 		$this->connection->CloseMysql();
 	}
 

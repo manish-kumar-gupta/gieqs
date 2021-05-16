@@ -225,6 +225,11 @@ $userid = $_SESSION['user_id'];
                         </a>
                       </li>
                       <li>
+                        <a class="dropdown-item" href="' . BASE_URL1 . '/scripts/forms/PolypectomyForm_video.php">
+                          Enter new Polypectomy Video Test
+                        </a>
+                      </li>
+                      <li>
                         <a class="dropdown-item" href="' . BASE_URL1 . '/scripts/forms/PolypectomyReportTablev2.php">
                           Table of Report Cards
                         </a>
