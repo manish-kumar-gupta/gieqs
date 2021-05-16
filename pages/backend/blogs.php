@@ -1123,7 +1123,7 @@ if (confirm('Are you sure you wish to clear recipients for this mail') === true)
 
 function duplicateRow(targettd) {
 
-if (confirm('Are you sure you wish to create a new email duplicating email id ' + targettd) === true) {
+if (confirm('Are you sure you wish to create a new blog duplicating blog id ' + targettd) === true) {
 
 
     //var audience = $(document).find('.modalContent').find('#audience').val();
@@ -1139,7 +1139,7 @@ if (confirm('Are you sure you wish to create a new email duplicating email id ' 
     //console.log(jsonString);
 
     var request = $.ajax({
-        url: siteRoot + "assets/scripts/courses/duplicateEmail.php",
+        url: siteRoot + "assets/scripts/courses/duplicateBlog.php",
         type: "POST",
         contentType: "application/json",
         data: jsonString,
@@ -1153,7 +1153,7 @@ if (confirm('Are you sure you wish to create a new email duplicating email id ' 
 
         if (data) {
 
-            alert('Email Duplicated.');
+            alert('Blog Duplicated.');
 
         }
 

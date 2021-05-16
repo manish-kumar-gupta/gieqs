@@ -429,8 +429,8 @@ select c1, c2, ...
 from your_table
 where id = 1 */
 
-    $q2 = "INSERT INTO `blogs` (`blog_id`, `name`, `subject`, `preheader`, `active`, `audience`)
-		   SELECT `blog_id`, `name`, `subject`, `preheader`, `active`, `audience`
+    $q2 = "INSERT INTO `blogs` (`blog_id`, `name`, `subject`, `preheader`, `active`, `audience`, `audience_specify`, `author`, `created`, `updated`, `featured`)
+		   SELECT `blog_id`, `name`, `subject`, `preheader`, `active`, `audience`, `audience_specify`, `author`, `created`, `updated`, `featured`
 	FROM `blogs`
 	WHERE `id` = '$blogid'";
 
@@ -545,7 +545,7 @@ $stmt->execute();
 
         if ($debug){
 
-            echo 'No content for this mail';
+            echo 'No content for this BLOG';
         }
     }
 

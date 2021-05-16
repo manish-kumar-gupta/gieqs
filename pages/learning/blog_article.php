@@ -506,7 +506,7 @@ $blogLink = new blogLink;
 
    ?>
             <section class="bg-cover bg-size--cover"
-                style="height: 600px; background-image: url('<?php echo BASE_URL . $imagesCovers[$blogs->getsubject()][$random_number];?>'); background-position: top center;">
+                style="height: 600px; opacity: 60%; background-image: url('<?php echo BASE_URL . $imagesCovers[$blogs->getsubject()][$random_number];?>'); background-position: top center;">
             </section>
 
 <?php }?> 
