@@ -94,7 +94,7 @@ foreach ($blogsToShow as $key=>$value){
                         <div class="card <?php if ($blogs->getfeatured() == '1'){echo 'bg-gieqsGold text-dark';} ?> hover-shadow-lg hover-translate-y-n10"
                             data-blog-id="<?php echo $value['id'];?>">
                             <?php if ($blogs->getfeatured() == '1'){ ?>
-                            <p class="badge bg-gieqsGold text-dark position-absolute" style="right:15px; top:15px;">Featured Blog</p>
+                            <p class="badge bg-gieqsGold text-dark position-absolute" style="right:15px; top:15px;">Featured Post</p>
                             <?php } ?>
                             <a href="#">
                                 <img alt="Image placeholder" src="<?php echo BASE_URL . $images[$blogs->getsubject()][$random_number];?>"
