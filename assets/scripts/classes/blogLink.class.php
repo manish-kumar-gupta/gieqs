@@ -429,8 +429,8 @@ select c1, c2, ...
 from your_table
 where id = 1 */
 
-    $q2 = "INSERT INTO `blogs` (`blog_id`, `name`, `subject`, `preheader`, `active`, `audience`, `audience_specify`, `author`, `created`, `updated`, `featured`)
-		   SELECT `blog_id`, `name`, `subject`, `preheader`, `active`, `audience`, `audience_specify`, `author`, `created`, `updated`, `featured`
+    $q2 = "INSERT INTO `blogs` (`blog_id`, `name`, `subject`, `preheader`, `active`, `audience`, `audience_specify`, `author`, `featured`)
+		   SELECT `blog_id`, `name`, `subject`, `preheader`, `active`, `audience`, `audience_specify`, `author`, `featured`
 	FROM `blogs`
 	WHERE `id` = '$blogid'";
 
