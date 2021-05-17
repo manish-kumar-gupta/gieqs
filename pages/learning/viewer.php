@@ -2370,6 +2370,8 @@ chapterData
 
         $('#tagBar').removeClass('d-none');
         window.localStorage.setItem('selectedTag', selectedTag);
+        //window.localStorage.setItem('restricted', true);
+
         createCookie('selectedTag', selectedTag, '2');
 
 
@@ -2496,6 +2498,9 @@ chapterData
                         $('.previousTagNav').removeClass('disabled');
 
                     }
+
+
+                    
 
                     if (v.outside_asset === true) {
 

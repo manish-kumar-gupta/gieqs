@@ -2053,7 +2053,10 @@ $(document).ready(function () {
 			selectedTag = str;
 			//console.log(selectedTag);
 
-			//WRITE THE SELECTED TAG TO LOCAL STORAGE
+			window.localStorage.setItem('restricted', true);
+				$('.expandSearch').text('Expand Search');
+
+				//WRITE THE SELECTED TAG TO LOCAL STORAGE
 
 			showTagBar(selectedTag);
 
