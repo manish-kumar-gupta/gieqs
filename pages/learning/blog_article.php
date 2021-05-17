@@ -705,6 +705,14 @@ require(BASE_URI. '/pages/learning/scripts/show_blogs.php');
                 </div>
         </section>
 
+        <?php 
+
+
+if (isset($userid)){
+
+
+    ?>
+
         <section class="slice slice-lg">
             <div class="container">
                 <div class="mb-5 text-center">
@@ -733,8 +741,7 @@ require(BASE_URI. '/pages/learning/scripts/show_blogs.php');
             </div>
         </section>
 
-
-
+<? } ?>
 
 
         </div>

@@ -68,7 +68,7 @@
 
     /* Tag highlighting */
 
-    .badge{
+    .badge {
 
         font-weight: 550 !important;
     }
@@ -93,7 +93,7 @@
         background-color: rgb(238, 194, 120) !important;
 
     }
-   
+
 
     .indigo {
 
@@ -989,11 +989,11 @@ $current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s');
                         <li class="breadcrumb-item active" aria-current="page">Video Viewer</li>
                     </ol>
                     <div class="alert alert-dark d-none sticky-top" role="alert" style="position:absolute !important;">
-</div>
+                    </div>
                 </nav>
                 <div class="row" id="videoTitleTour" style="margin-right:15px; margin-left:15px;">
-                    <spa
-                        class="h3 mb-0 text-white d-block w-lg-75 w-xl-75"><?php echo $general->getVideoTitle($id)?></span>
+                    <spa class="h3 mb-0 text-white d-block w-lg-75 w-xl-75">
+                        <?php echo $general->getVideoTitle($id)?></span>
                 </div>
                 <div class="row" style="margin-right:15px; margin-left:15px;">
                     <span class="col-xl-8 text-muted text-md d-block my-2" id="videoDescription">Video subtitle</span>
@@ -1457,7 +1457,8 @@ chapterData
                 <div class="cd-timeline-img cd-picture">
                 </div>
 
-                <div class="cd-timeline-content chapterBox" data-chapter-id="<?php echo $value['chapterid'];?>" style="border-radius:8px !important;">
+                <div class="cd-timeline-content chapterBox" data-chapter-id="<?php echo $value['chapterid'];?>"
+                    style="border-radius:8px !important;">
                     <h2 class="chapterSkip" data-id="<?php echo $value['chapterid'];?>">
                         <?php echo $value['chaptername']; ?></h2>
                     <span class="cd-date chapterSkip" data-id="<?php echo $value['chapterid'];?>">Chapter
@@ -1560,8 +1561,8 @@ chapterData
 
     var browsingBeforeExpand = readCookie('browsing');
 
-    if (browsingBeforeExpand != '99'){
-    createCookie('browsing_last', browsingBeforeExpand, '2');
+    if (browsingBeforeExpand != '99') {
+        createCookie('browsing_last', browsingBeforeExpand, '2');
     }
 
     var browsing_idBeforeExpand = readCookie('browsing_id');
@@ -2234,34 +2235,34 @@ chapterData
 
     //new cookie functions
 
-    function createCookie(name,value,days) {
-    if (days) {
-        var date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 *1000));
-        var expires = "; expires=" + date.toGMTString();
-    } else {
-        var expires = "";
-    }
-    document.cookie = name + "=" + value + expires + "; path=/";
+    function createCookie(name, value, days) {
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            var expires = "; expires=" + date.toGMTString();
+        } else {
+            var expires = "";
+        }
+        document.cookie = name + "=" + value + expires + "; path=/";
     }
 
     function readCookie(name) {
         var nameEQ = name + "=";
         var ca = document.cookie.split(';');
-        for(var i=0;i < ca.length;i++) {
+        for (var i = 0; i < ca.length; i++) {
             var c = ca[i];
-            while (c.charAt(0)==' ') {
-                c = c.substring(1,c.length);
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1, c.length);
             }
             if (c.indexOf(nameEQ) == 0) {
-                return c.substring(nameEQ.length,c.length);
+                return c.substring(nameEQ.length, c.length);
             }
         }
         return null;
     }
 
     function eraseCookie(name) {
-        createCookie(name,"",-1);
+        createCookie(name, "", -1);
     }
 
 
@@ -2407,39 +2408,39 @@ chapterData
 
         //use ajax to send
 
-        if ($('#browsing_id').attr('data-browsing-id') != ''){
+        if ($('#browsing_id').attr('data-browsing-id') != '') {
 
             var browsing_id = $('#browsing_id').attr('data-browsing-id');
 
-        }else{
+        } else {
 
             var browsing_id = '';
 
 
         }
 
-        if ($('#browsing').attr('data-browsing') != ''){
+        if ($('#browsing').attr('data-browsing') != '') {
 
-        var browsing = $('#browsing').attr('data-browsing');
+            var browsing = $('#browsing').attr('data-browsing');
 
-        }else{
+        } else {
 
-        var browsing = '';
+            var browsing = '';
+
+
+        }
+
+        if ($('#browsing_array').text() != '') {
+
+            var browsing_array = $('#browsing_array').text();
+
+        } else {
+
+            var browsing_array = '';
 
 
         }
 
-        if ($('#browsing_array').text() != ''){
-
-        var browsing_array = $('#browsing_array').text();
-
-        }else{
-
-        var browsing_array = '';
-
-
-        }
-    
 
         var dataToSend = {
 
@@ -2474,56 +2475,56 @@ chapterData
             if (data) {
                 //show green tick
 
-               var result = JSON.parse(data);
+                var result = JSON.parse(data);
 
-               console.dir(result);
+                console.dir(result);
 
-               $(result).each(function(k,v){
+                $(result).each(function(k, v) {
 
-                $('#videoNumeratorTagNav').text(v.postion);
-                $('#videoDenomTagNav').text(v.numberOfVideos);
-                $('.previousTagNav').attr('href', siteRoot + 'viewer.php?id=' + v.previousVideo);
-                $('.nextTagNav').attr('href', siteRoot + 'viewer.php?id=' + v.nextVideo);
+                    $('#videoNumeratorTagNav').text(v.postion);
+                    $('#videoDenomTagNav').text(v.numberOfVideos);
+                    $('.previousTagNav').attr('href', siteRoot + 'viewer.php?id=' + v.previousVideo);
+                    $('.nextTagNav').attr('href', siteRoot + 'viewer.php?id=' + v.nextVideo);
 
-                if (v.firstVideo === true){
+                    if (v.firstVideo === true) {
 
-                    $('.previousTagNav').addClass('disabled');
-
-
-                }else{
-
-                    $('.previousTagNav').removeClass('disabled');
-
-                }
-
-                if (v.outside_asset === true){
-
-                    $('.expandSearch').addClass('disabled').addClass('text-muted');
+                        $('.previousTagNav').addClass('disabled');
 
 
-                }else{
+                    } else {
 
-                    $('.expandSearch').removeClass('disabled').removeClass('text-muted');
+                        $('.previousTagNav').removeClass('disabled');
 
+                    }
 
-                }
+                    if (v.outside_asset === true) {
 
-                if (v.lastVideo === true){
-
-                $('.nextTagNav').addClass('disabled');
-
-
-                }else{
-
-                $('.nextTagNav').removeClass('disabled');
-
-                }
+                        $('.expandSearch').addClass('disabled').addClass('text-muted');
 
 
+                    } else {
 
-               })
+                        $('.expandSearch').removeClass('disabled').removeClass('text-muted');
 
-               refreshVideoBar();
+
+                    }
+
+                    if (v.lastVideo === true) {
+
+                        $('.nextTagNav').addClass('disabled');
+
+
+                    } else {
+
+                        $('.nextTagNav').removeClass('disabled');
+
+                    }
+
+
+
+                })
+
+                refreshVideoBar();
 
 
                 //$('#notification-services').delay('1000').addClass('is-valid');
@@ -2533,10 +2534,10 @@ chapterData
 
             }
             //$(document).find('.Thursday').hide();
-           
+
         })
 
-        
+
 
         //  context (as video bar)
         //  id of context  
@@ -2557,14 +2558,14 @@ chapterData
 
     }
 
-    function refreshVideoBar(){
+    function refreshVideoBar() {
 
         //gets video bar again from AJAX to reflect most recent changes
-    
+
         var dataToSend = {
 
-        identifier: 'refresh',
-        videoid : videoPassed,
+            identifier: 'refresh',
+            videoid: videoPassed,
 
 
         }
@@ -2576,55 +2577,55 @@ chapterData
         //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
 
         var request2 = $.ajax({
-        beforeSend: function() {
+            beforeSend: function() {
 
 
-        },
-        url: siteRoot + "assets/videoNav.php",
-        type: "POST",
-        contentType: "application/json",
-        data: jsonString2,
-        
+            },
+            url: siteRoot + "assets/videoNav.php",
+            type: "POST",
+            contentType: "application/json",
+            data: jsonString2,
+
         });
 
 
 
         request2.done(function(data) {
-        // alert( "success" );
-        if (data) {
-            //show green tick
-            //console.log(data);
+            // alert( "success" );
+            if (data) {
+                //show green tick
+                //console.log(data);
 
-            $('#videoBar').replaceWith(data);
-
-
-            //$('#notification-services').delay('1000').addClass('is-valid');
+                $('#videoBar').replaceWith(data);
 
 
+                //$('#notification-services').delay('1000').addClass('is-valid');
 
 
-        }
-        //$(document).find('.Thursday').hide();
-        //$(icon).prop("disabled", false);
+
+
+            }
+            //$(document).find('.Thursday').hide();
+            //$(icon).prop("disabled", false);
         })
 
 
     }
 
-    function updateVideoBar(){
+    function updateVideoBar() {
 
         //unused
 
         var restricted = window.localStorage.getItem('restricted');
 
-        if (restricted == 'false'){
+        if (restricted == 'false' || restricted === null) {
 
             //alter the video bar
 
             refreshVideoBar();
 
 
-        }else if (restricted == 'true'){
+        } else if (restricted == 'true') {
 
 
 
@@ -2632,63 +2633,69 @@ chapterData
 
     }
 
-    function checkTagFiltering(){
+    function checkTagFiltering() {
 
         // check tag filtering
 
         var overallTagAvailable = window.localStorage.getItem('selectedTag');
 
-        if (overallTagAvailable && overallTagAvailable != 'null'){
+        if (overallTagAvailable && overallTagAvailable != 'null') {
 
             showTagBar(overallTagAvailable);
 
             //and remove the video text if restricted == false
 
-            
 
-            waitForFinalEvent(function(){
-      //alert('Resize...');
-            filterByTag(overallTagAvailable);
 
-    }, 200, "filter by overall tag available");
+            waitForFinalEvent(function() {
+                //alert('Resize...');
+                filterByTag(overallTagAvailable);
 
-            
+            }, 200, "filter by overall tag available");
 
-        }else{
 
-            
+
+        } else {
+
+
             //check if there is a recent chapter and jump to it, does nothing if no recent chapter
 
-            waitForFinalEvent(function(){
-      //alert('Resize...');
-      viewedVideoRecentChapter();
-
-      showAlert('Started from where you finished last time. To <a href=\"javascript:jumpToTime(0);\">restart click here</a>.')
-
-    }, 200, "wait for most recent Video");
+            window.localStorage.setItem('selectedTag', null);
+            window.localStorage.setItem('restricted', false);
 
 
-            
+            waitForFinalEvent(function() {
+                //alert('Resize...');
+                viewedVideoRecentChapter();
 
-            
+                showAlert(
+                    'Started from where you finished last time. To <a href=\"javascript:jumpToTime(0);\">restart click here</a>.'
+                    )
 
-            
+            }, 200, "wait for most recent Video");
+
+
+
+
+
+
+
 
             //has user viewed video before, if so which chapter, if not false
-            
+
 
 
         }
 
-        
+
 
     }
 
-    function viewedVideoRecentChapter (){
+    function viewedVideoRecentChapter() {
 
         var dataToSend = {
 
-            videoid : videoPassed,
+            videoid: videoPassed,
 
         }
 
@@ -2699,61 +2706,61 @@ chapterData
         //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
 
         var request2 = $.ajax({
-            
-                
+
+
             beforeSend: function() {
 
 
-        },
-        url: siteRoot + "scripts/user_metrics/getRecentChapter.php",
-        type: "POST",
-        contentType: "application/json",
-        data: jsonString2,
+            },
+            url: siteRoot + "scripts/user_metrics/getRecentChapter.php",
+            type: "POST",
+            contentType: "application/json",
+            data: jsonString2,
 
         });
 
-        request2.done(function(data){
+        request2.done(function(data) {
 
-            if (data){
+            if (data) {
 
                 var recentChapter = $.parseJSON(data);
 
                 console.log(recentChapter);
 
-                if (recentChapter != false){
+                if (recentChapter != false) {
 
-                var requiredReturn = null;
+                    var requiredReturn = null;
 
-                $(videoChapterData).each(function (i, val) {
+                    $(videoChapterData).each(function(i, val) {
 
-                    console.log(val.chapterid);
-                    console.log(recentChapter.recentChapter);
-                    if (val.chapterid == recentChapter.recentChapter) {
+                        console.log(val.chapterid);
+                        console.log(recentChapter.recentChapter);
+                        if (val.chapterid == recentChapter.recentChapter) {
 
-                        //console.log(i);
-                        //console.log(val);
-                        //console.log(recentChapter.recentChapter);
-                        requiredReturn = val.timeFrom;
+                            //console.log(i);
+                            //console.log(val);
+                            //console.log(recentChapter.recentChapter);
+                            requiredReturn = val.timeFrom;
 
+                        }
+
+
+
+                    })
+
+                    console.log('required return is ' + requiredReturn);
+
+                    requiredReturn = parseInt(requiredReturn);
+
+
+
+                    if (requiredReturn != null) {
+                        jumpToTime(requiredReturn);
                     }
-
-
-
-                })
-
-                console.log('required return is ' + requiredReturn);
-
-                requiredReturn = parseInt(requiredReturn);
-
-                 
-
-                if (requiredReturn != null){
-                    jumpToTime(requiredReturn);
                 }
             }
-        }
-            
-            
+
+
         })
 
         return request2;
@@ -2789,7 +2796,7 @@ chapterData
 
         var restricted = getCookie('restricted');
 
-        if (restricted == 'false'){
+        if (restricted == 'false') {
 
             var browsing_last = getCookie('browsing_last');
             createCookie('browsing', browsing_last, '2');
@@ -2816,7 +2823,7 @@ chapterData
 
     }
 
-    function checkExpandedStatusTagBar () {
+    function checkExpandedStatusTagBar() {
 
 
         var restricted = window.localStorage.getItem('restricted');
@@ -2825,7 +2832,7 @@ chapterData
         //$('.expandSearch').removeClass('heartBeat');
         //set the cookie 99
 
-        if (restricted == "false"){
+        if (restricted == "false") {
 
             console.log('Entered restricted = false loop');
 
@@ -2834,25 +2841,25 @@ chapterData
 
 
 
-        }else if (restricted == "true"){
+        } else if (restricted == "true") {
 
-        
+
             $('.expandSearch').attr('restricted', 1);
-             $('.expandSearch').text('Expand Search');
+            $('.expandSearch').text('Expand Search');
 
-            
+
 
 
         }
 
-       // showTagBar(selectedTag);
+        // showTagBar(selectedTag);
 
 
         //$('.expandSearch').addClass('heartBeat');
 
     }
 
-    function toggleExpandedStatusTagBar (){
+    function toggleExpandedStatusTagBar() {
 
         var restricted = window.localStorage.getItem('restricted');
         console.log('restricted is ' + restricted);
@@ -2860,7 +2867,7 @@ chapterData
         $('.expandSearch').removeClass('heartBeat');
         //set the cookie 99
 
-        if (restricted == "false"){
+        if (restricted == "false") {
 
             console.log('Entered restricted = false loop');
 
@@ -2889,7 +2896,7 @@ chapterData
             createCookie('restricted', 'true', '2');
 
 
-        }else if (restricted == "true"){
+        } else if (restricted == "true") {
 
             createCookie('browsing', '99', '2');
 
@@ -2901,13 +2908,13 @@ chapterData
 
 
             $('.expandSearch').attr('restricted', 0);
-             $('.expandSearch').text('Restrict Search');
+            $('.expandSearch').text('Restrict Search');
 
-             window.localStorage.setItem('restricted', "false");
-             createCookie('restricted', 'false', '2');
+            window.localStorage.setItem('restricted', "false");
+            createCookie('restricted', 'false', '2');
 
 
-        }else{
+        } else {
 
             //first click
 
@@ -2938,16 +2945,16 @@ chapterData
 
     $(document).ready(function() {
 
-    $(document).on('click', '.expandSearch', function() {
+        $(document).on('click', '.expandSearch', function() {
 
-        toggleExpandedStatusTagBar();
+            toggleExpandedStatusTagBar();
 
-        showTagBar(selectedTag);
+            showTagBar(selectedTag);
 
 
-        $('.expandSearch').addClass('heartBeat');
+            $('.expandSearch').addClass('heartBeat');
 
-        /* var restricted = window.localStorage.getItem('restricted');
+            /* var restricted = window.localStorage.getItem('restricted');
         console.log('restricted is ' + restricted);
 
         $(this).removeClass('heartBeat');
@@ -3027,14 +3034,14 @@ chapterData
 
 $(this).addClass('heartBeat'); */
 
-        
-        
 
 
-        //get the tag bar again
 
 
-    })
+            //get the tag bar again
+
+
+        })
 
     })
 
