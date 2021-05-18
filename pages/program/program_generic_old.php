@@ -26,9 +26,9 @@ $sessionView = new sessionView;
 require_once BASE_URI . '/assets/scripts/classes/programme.class.php';
 $programme = new programme;
 
-$blogLink = new blogLink;
-$blogs = new blogs;
-$blogContent = new blogContent;
+$emailLink = new emailLink;
+$emails = new emails;
+$emailContent = new emailContent;
 
 
 if (isset($_GET["action"])){
@@ -59,10 +59,10 @@ $general = new general;
 
 //$assetid = 13;
 $asset_id_pagewrite = '15';
-$blog_to_use_as_basis = '1';
+$email_to_use_as_basis = '1';
 
-$blogs->Load_from_key($blog_to_use_as_basis);
-$blogid = $blog_to_use_as_basis;
+$emails->Load_from_key($email_to_use_as_basis);
+$emailid = $email_to_use_as_basis;
 
 $programme_array = $assetManager->returnProgrammesAsset($asset_id_pagewrite);
 $programme_defined = $programme_array[0];

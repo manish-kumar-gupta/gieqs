@@ -289,6 +289,7 @@ $x=0;
 
 		} 
 $q = "INSERT INTO `blogs` ($keys) VALUES ($keys2)";
+
 		
  $stmt = $this->connection->prepare($q); 
 $stmt->execute($ovMod3); 

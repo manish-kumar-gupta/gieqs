@@ -2644,7 +2644,9 @@ chapterData
 
         var overallTagAvailable = window.localStorage.getItem('selectedTag');
 
-        if (overallTagAvailable && overallTagAvailable != 'null') {
+        if (overallTagAvailable != 'null') {
+
+            selectedTag = overallTagAvailable;
 
             showTagBar(overallTagAvailable);
 
@@ -2665,8 +2667,8 @@ chapterData
 
             //check if there is a recent chapter and jump to it, does nothing if no recent chapter
 
-            window.localStorage.setItem('selectedTag', null);
-            window.localStorage.setItem('restricted', false);
+            //window.localStorage.setItem('selectedTag', null);
+            //window.localStorage.setItem('restricted', false);
 
 
             waitForFinalEvent(function() {

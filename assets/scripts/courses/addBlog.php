@@ -27,10 +27,12 @@
 
             $emailid = $data['blogid'];
             $databaseName = $data['databaseName'];
+
+            //$_SESSION['debug'] = true;
             
 
             $timestamp = date('Y-m-d H:i:s');
-            $blogs->New_blogs(null, 'new blog', null, null, null, null, null, null, $timestamp, null);
+            $blogs->New_blogs(null, 'new blog', null, null, null, null, null, null, null, $timestamp, null);
             echo $blogs->prepareStatementPDO();
 
 
