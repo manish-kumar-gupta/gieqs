@@ -1040,7 +1040,7 @@ top: -20vh;
 
             $(document).on('click', '.trial', function(){
 
-alert('Thanks for your interest.  More information available will be available after GIEQs digital.')
+alert('Thanks for your interest.  We will be activating our subscription service shortly.')
 
 
 })
