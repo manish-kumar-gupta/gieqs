@@ -58,8 +58,8 @@ $general = new general;
 //assetid
 
 //$assetid = 13;
-$asset_id_pagewrite = '15';
-$blog_to_use_as_basis = '1';
+$asset_id_pagewrite = '14';
+$blog_to_use_as_basis = '11';
 
 $blogs->Load_from_key($blog_to_use_as_basis);
 $blogid = $blog_to_use_as_basis;
@@ -269,7 +269,7 @@ var_dump($currentTime);
         </section>
 
         <section class="">
-        <?php         include(BASE_URI . '/assets/scripts/courses/generateEmailScriptNoModal.php');?>
+        <?php         include(BASE_URI . '/pages/learning/blog_article_generate.php');?>
         </section>
         <section class="">
             <div class="container">
@@ -487,7 +487,7 @@ var_dump($currentTime);
             <form id="confirm-new" action="<?php echo $form_action_path;?>"
                 method="POST">
                 <input type="hidden" id="asset_id_hidden" name="asset_id" value="">
-                <input type="hidden" id="course_date" name="course_date" value="2021-03-16 08:00">
+                <input type="hidden" id="course_date" name="course_date" value="<?php echo date_format($programmeDate, "Y-m-d H:i:s");?>">
                 <!-- CHANGE ME UPDATE TODO MAKE THIS COME FROM THE PROGRAM -->
 
                 <input type="submit" id="button-confirm-new" class="btn btn-sm btn-white button-confirm-new"
