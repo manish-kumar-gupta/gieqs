@@ -760,9 +760,44 @@
 
         if ($assetManager->determineVideoAccessSingleVideo($id, $isSuperuser, $userid, false) === false){
 
+            require_once(BASE_URI . '/assets/scripts/classes/assets_paid.class.php');
+            $assets_paid = new assets_paid;
+
 
             echo '<div class="container mt-10 mb-10">';
-							echo "This video requires a subscription or upgrade.  Would you like to see your options for gaining access?  ";
+							echo "This learning tool requires a subscription or upgrade.  Your options for getting access are: <br/><br/>  ";
+
+                            $availableAssets = $assetManager->getAccessVideo($id, true);
+                            foreach ( $availableAssets as $key=>$value){
+
+                                foreach ($value as $key2=>$value2){
+                                echo $value2;
+                                $assets_paid->Load_from_key($value2);
+                                ?>
+
+                                
+
+                                <div class="card m-2">
+                                <div class="card-header">
+        <h5 class="card-title mb-0"><?php echo $assets_paid->getname();?></h5>
+        <span class="text-muted text-sm">2 hrs ago</span>
+    </div>
+    <div class="card-body">
+       
+        <p class="mb-0 text-white">
+            <?php echo $assets_paid->getdescription();?>
+        </p>
+        <p class="mt-4 mb-0 text-white">
+           
+        </p>
+    </div>
+    <div class="card-footer">
+    <button class="btn btn-primary">Buy Now for &euro;<?php echo $assets_paid->getcost();?></button>
+    </div>
+</div>
+                                <?php
+                                }
+                            }
 							echo '</div>';
 							include(BASE_URI . "/footer.php");
 							exit();

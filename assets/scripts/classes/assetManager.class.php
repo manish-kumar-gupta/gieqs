@@ -3199,6 +3199,47 @@ public function returnVideoDenominatorSelect2()
 
         }
 
+        public function returnAssetIDProgrammev2($programmeid)
+            {
+            
+
+            $q = "Select b.`id`
+            FROM `sub_asset_paid` as a
+            INNER JOIN `assets_paid` as b on a.`asset_id` = b.`id`
+            WHERE a.`programme_id` = '$programmeid'
+            AND a.`programme_id` IS NOT NULL
+            ";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                    
+        
+                    $rowReturn[$x] = $row['id'];
+                    $x++;
+        
+        
+                }
+                return $rowReturn;
+
+            } else {
+               
+
+                return false;
+            }
+
+        }
+
 
         public function getOwnersAsset($assetid)
             {
@@ -4180,6 +4221,85 @@ public function returnVideoDenominatorSelect2()
             // then re
 
             
+
+
+
+        }
+
+        function nestedToSingle(array $array)
+{
+    $singleDimArray = [];
+
+    foreach ($array as $item) {
+
+        if (is_array($item)) {
+            $singleDimArray = array_merge($singleDimArray, nestedToSingle($item));
+
+        } else {
+            $singleDimArray[] = $item;
+        }
+    }
+
+    return $singleDimArray;
+}
+
+        public function getAccessVideo ($id, $debug=false){
+
+
+            //check prior that user does not have access and that acess is required to access this video
+
+            $asset_array = $this->which_assets_contain_video($id);
+
+            if ($asset_array === false){
+
+                //must be a programme
+
+
+                if ($debug){
+        
+                    echo 'video ' . $id . ' is not contained within an asset';
+                    echo 'it is contained within a programme';
+                }
+
+                $programmesArray = $this->programmeView->getProgrammeVideo($id);
+
+                $assetArray = array();
+                $x = 0;
+
+                foreach ($programmesArray as $key=>$value){
+
+                    $assetArray[$x] = $this->returnAssetIDProgrammev2($value);
+
+
+                }
+
+                //$assetArray2 = $this->nestedToSingle($assetArray);
+
+
+
+                if ($debug){
+                print_r($programmesArray);
+                print_r($assetArray);
+
+                }
+
+                return $assetArray;
+        
+                //return false;
+        
+                
+        
+            }else{
+        
+                if ($debug){
+        
+                    echo 'video ' . $id . ' is within assets <br>';
+                    print_r($asset_array);
+                }
+        
+                //return true;
+            }
+
 
 
 
