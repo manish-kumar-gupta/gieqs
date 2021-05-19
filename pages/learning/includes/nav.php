@@ -351,8 +351,10 @@ if ($menus) {
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=7" disabled><i class="fas fa-columns"></i>Basic Colonoscopy Skills</a>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=8"><i class="fas fa-columns"></i>Train the Colonoscopy Trainers</a>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=11"><i class="fas fa-columns"></i>Polypectomy Upskilling Course</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_imaging.php"><i class="fas fa-columns"></i>Colorectal Polyp Imaging Webinar<span class="badge gieqsGold">
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_small_polypectomy.php"><i class="fas fa-columns"></i>Small and Intermediate Polypectomy Course<span class="badge gieqsGold">
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_imaging.php"><i class="fas fa-columns"></i>Colorectal Polyp Imaging Webinar</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_small_polypectomy.php"><i class="fas fa-columns"></i>Small and Intermediate Polypectomy Course</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=3"><i class="fas fa-columns"></i>GIEQs Edition I - Catch Up<span class="badge gieqsGold">
+
 
                                     New
                                     </span></a> 
