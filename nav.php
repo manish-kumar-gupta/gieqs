@@ -432,8 +432,8 @@ $test = false;
                     
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">Past Courses (Available On Demand)</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_basic_colon.php" disabled><i class="fas fa-columns"></i>Basic Colonoscopy Skills</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_trainer_colon.php"><i class="fas fa-columns"></i>Train the Colonoscopy Trainers</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=7" disabled><i class="fas fa-columns"></i>Basic Colonoscopy Skills</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=8"><i class="fas fa-columns"></i>Train the Colonoscopy Trainers</a>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_polypectomy_upskilling.php"><i class="fas fa-columns"></i>Polypectomy Upskilling Course</a>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_imaging.php"><i class="fas fa-columns"></i>Colorectal Polyp Imaging<span class="badge gieqsGold">
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_small_polypectomy.php"><i class="fas fa-columns"></i>Small and Intermediate Polypectomy<span class="badge gieqsGold">
