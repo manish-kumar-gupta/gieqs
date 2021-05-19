@@ -37,6 +37,9 @@
 
         $userFunctions = new userFunctions;
 
+        $assetManager = new assetManager;
+
+
       ?>
 
     <!--Page title-->
@@ -751,7 +754,22 @@
                             $referid = null;
                         
                         }
+                  
                         
+        //check access
+
+        if ($assetManager->determineVideoAccessSingleVideo($id, $isSuperuser, $userid, false) === false){
+
+
+            echo '<div class="container mt-10 mb-10">';
+							echo "This video requires a subscription or upgrade.  Would you like to see your options for gaining access?  ";
+							echo '</div>';
+							include(BASE_URI . "/footer.php");
+							exit();
+
+        }
+
+        
                         
 		
         ?>

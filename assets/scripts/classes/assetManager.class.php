@@ -2334,7 +2334,15 @@ public function getSubscribableProgrammesArray_videos ($programmesSubscribable, 
 
                 if (isset($value2['sessionid'])){
 
-                    $videos[] = $this->programmeView->getVideoURL($value2['sessionid']);
+                    $videosArray = null;
+                    $videosArray = $this->programmeView->getVideoURLArray($value2['sessionid']);
+
+                    foreach ($videosArray as $key3=>$value3){
+
+                        $videos[] = $value3;
+
+                    }
+
                     //$matches[]['programme_id'] = $value;
                     $y++;
                 }
@@ -2383,6 +2391,8 @@ public function isVideoContainedWithinAnySubscribableProgramme($videoid, $debug=
 
         $unifiedarray = $this->getSubscribableProgrammesArray_unified($programmesSubscribable);
         $videos = $this->getSubscribableProgrammesArray_videos($programmesSubscribable);
+        $videos = array_filter($videos);
+
 
     
         if ($debug){
@@ -2460,13 +2470,8 @@ public function isVideoContainedWithinAnySubscribableProgramme_old($videoid, $de
 
         $unifiedarray = $this->getSubscribableProgrammesArray_unified($programmesSubscribable);
         $videos = $this->getSubscribableProgrammesArray_videos($programmesSubscribable);
-       
+       $videos = array_filter($videos);
 
-        if ($debug){
-            echo 'Outcome videos array is ';
-            print_r($videos);
-            echo '<br/><br/>';
-        }
 
         if ($debug){
 
@@ -2477,6 +2482,15 @@ public function isVideoContainedWithinAnySubscribableProgramme_old($videoid, $de
             print_r($unifiedarray);
             echo '<br/><br/>';
         }
+
+
+        if ($debug){
+            echo 'Outcome videos array is ';
+            print_r($videos);
+            echo '<br/><br/>';
+        }
+
+       
 
          //do they contain this video
 
@@ -3483,6 +3497,9 @@ public function returnVideoDenominatorSelect2()
             //returns array of videos
 
 
+ //REMOVE ONCE WORKING
+
+ $superuser = 1;
 
                 //use all approach to browsing the site
 
@@ -3897,6 +3914,262 @@ public function returnVideoDenominatorSelect2()
 
                     return $videoArray;
 
+            
+            //determine what is in the two array inputs from getVideos and getNavv2, if same fields ok if not make same
+
+            //if $browsing is an asset
+
+            //then easy to check access to the whole asset
+
+            // then re
+
+            
+
+
+
+        }
+
+        public function determineVideoAccessSingleVideo ($id, $superuser, $userid, $debug=false){
+
+            //determine the context
+
+            //returns array of videos
+
+
+                //REMOVE ONCE WORKING
+
+                //$superuser = 1;
+
+                //use all approach to browsing the site
+
+                if ($superuser == '0'){
+
+                    //GO THROUGH THE VIDEOS AND REMOVE ANY THAT THE USER HAS NO ACCESS TO
+
+                    if ($debug){
+                    
+                        echo 'user id ' . $userid . ' is  not a superuser';
+                        echo '<br/>checking videoArray';
+                        print_r($videoArray);
+                        echo '<br/><br/>';
+                      
+
+            
+                   }
+                    
+                    
+                    
+                        //does it require subscription?
+                    
+                        $array_key = $key;
+
+                        //is it an asset and contained withiin
+
+                        $access4 = $this->video_owned_by_user($id, $userid, $debug); //if true access granted //if false check further
+
+                        if ($access4 === true){
+
+                            //grant access
+
+                            if ($debug){
+                    
+                                echo 'is an asset and user has access, so access granted';
+                                echo '<br/><br/>';
+                              
+        
+                    
+                           }
+                           return true;
+
+                        }elseif ($access4 === false){
+
+                            //deny access since this is an asset with no access
+
+                            if ($debug){
+                    
+                                echo 'is an asset and user has NO access, therefore access denied';
+                                echo '<br/><br/>';
+                            
+        
+                    
+                           }
+                           return false;
+
+                        }elseif ($access4 === null){
+
+                            if ($debug){
+                    
+                                echo 'is NOT an asset';
+                                echo '<br/><br/>';
+                              
+        
+                    
+                           }
+                    
+                        //check there is no access via a programme
+                    
+                        $access3 = $this->checkVideoProgrammeAspect($id, $userid, $debug);
+                    
+                        if ($access3 === false){ //contained within a programme and no access to this programme
+                    
+                    
+                            if ($debug){
+                                echo 'video id ' . $id . ' is contained within a programme <br/>';
+                                echo 'user id ' . $userid . ' has no access to video id ' . $id . ' via a programme';
+                                echo 'now checking access via videoset';
+                    
+                           }
+                    
+                           $access = $this->video_requires_subscription($id, $debug);
+                    
+                            if ($access){ //requires subscription via videoset (is in a videoset)
+                    
+                    
+                                $access2 = $this->video_owned_by_user($id, $userid, $debug);
+                    
+                                if ($access2 === false){ //in videoset, not owned by user
+                    
+                                    //remove this video from the array
+                                    if ($debug){
+                    
+                                        echo 'user id ' . $userid . ' has no access to video id ' . $id;
+                    
+                                    }
+
+                                    return false;
+                    
+                    
+                                }else{
+                    
+                                    if ($debug){
+                    
+                                        echo 'user id ' . $userid . ' has access to video id ' . $id . 'due to a videoset priveledge';
+                    
+                                    }
+
+                                    return true;
+                    
+                                    
+                                    //user has access to this video via videoset.  despite no access via programme grant
+                                }
+                    
+                            }else{ //is not in a videoset (but is contained within a programme)
+                    
+                                if ($debug){
+                    
+                                    echo 'video id ' . $id . ' requires a programme subscription and is not covered by a videoset';
+                                    echo 'video id ' . $id . ' removed from array';
+                    
+                                }
+                    
+                                //unset($videoArray[$key]);
+                                return false;
+                    
+                    
+                            }
+                    
+                    
+                    
+                        }elseif ($access3 === true) {
+                    
+                            if ($debug){
+                    
+                                echo 'user id ' . $userid . ' has access to video id ' . $id . ' via a programme';
+                                echo 'access granted';
+                    
+                           }
+
+                           return true;
+                    
+                           
+                    
+                        }else{
+                    
+                            //not contained within a programme
+                            //check if contained within a videoset
+                            $access = $this->video_requires_subscription($id, $debug);
+                    
+                            if ($access){ //requires subscription via videoset (is in a videoset)
+                    
+                    
+                                $access2 = $this->video_owned_by_user($id, $userid, $debug);
+                    
+                                if ($access2 === false){ //in videoset, not owned by user
+                    
+                                    //remove this video from the array
+                                    if ($debug){
+                    
+                                        echo 'user id ' . $userid . ' has no access to video id ' . $id;
+                    
+                                    }
+
+                                    return false;
+                    
+                    
+                                }else{
+                    
+                                    if ($debug){
+                    
+                                        echo 'user id ' . $userid . ' has access to video id ' . $id;
+                    
+                                    }
+
+                                    return true;
+                    
+                                    
+                                    //user has access to this video via videoset.  despite no access via programme grant
+                                }
+                    
+                            }else{
+                    
+                                //not in programme or videoset
+                                
+                    
+                                if ($debug){
+                    
+                                    echo 'video ' . $id . ' is freely available';
+                    
+                                    echo 'user id ' . $userid . ' has access to video id ' . $id;
+                    
+                                }
+
+                                return true;
+                    
+                            }
+                    
+                        }
+
+                    
+                    
+                        
+                    
+                        //test user access
+                    
+                    
+                    
+                     } //end if null
+
+                     if ($debug){
+
+
+                        echo '<br/><br/><br/>';
+                     }
+                    
+                    
+                    }else{
+                    
+                        if ($debug){
+                    
+                            echo 'all videos available as superuser';
+                        }
+
+                        return true;
+
+
+
+                    }
+
+                  
             
             //determine what is in the two array inputs from getVideos and getNavv2, if same fields ok if not make same
 
