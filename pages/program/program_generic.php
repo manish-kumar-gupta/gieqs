@@ -50,19 +50,24 @@ if (isset($_GET["access_token"])){
   }
 
 
-
 $general = new general;
+
+
+if (isset($_GET["id"]) && is_numeric($_GET["id"])){
+    $asset_id_url = $_GET["id"];
+
+}else{
+
+    $asset_id_url = null;
+
+}
 
 //definitions
 
 //assetid
 
 //$assetid = 13;
-$asset_id_pagewrite = '14';
-$blog_to_use_as_basis = '11';
-
-$blogs->Load_from_key($blog_to_use_as_basis);
-$blogid = $blog_to_use_as_basis;
+$asset_id_pagewrite = $asset_id_url;
 
 $programme_array = $assetManager->returnProgrammesAsset($asset_id_pagewrite);
 $programme_defined = $programme_array[0];
@@ -77,6 +82,12 @@ echo $programme_defined;
 
 
 $assets_paid->Load_from_key($asset_id_pagewrite);
+
+$blog_to_use_as_basis = $assets_paid->getlinked_blog();
+$blogs->Load_from_key($blog_to_use_as_basis);
+$blogid = $blog_to_use_as_basis;
+
+
 
 $access = [0=>['id'=>$programme_defined],];
 
@@ -181,10 +192,41 @@ var_dump($currentTime);
 
         <div id="action" style="display:none;"><?php if ($action){echo $action;}?></div>
         <div id="access_token" style="display:none;"><?php if ($access_token){echo $access_token;}?></div>
-
+        <div id="asset_id" style="display:none;"><?php if ($asset_id_url){echo $asset_id_url;}?></div>
 
     </header>
 
+
+<?php
+
+
+		
+				        if ($asset_id_url){
+		
+                            $access = $assets_paid->Return_row($asset_id_pagewrite);
+							if ($access === false){
+                                echo '<div class="container mt-10 mb-10">';
+                                echo "Passed id does not exist in the database";
+								echo '</div>';
+								include(BASE_URI . "/footer.php");
+								exit();
+		
+							}
+						}else {
+							echo '<div class="container mt-10 mb-10">';
+							echo "This page requires the id of an asset existing in the database to be passed";
+							echo '</div>';
+							include(BASE_URI . "/footer.php");
+							exit();
+							
+                        }
+
+        
+                        
+                  
+                        
+
+?>
 
     <div class="main-content">
 
@@ -196,7 +238,7 @@ var_dump($currentTime);
 
         <!-- PROGRAM TABLE -->
 
-        <section class="bg-gradient-dark pt-6 mb-0 pb-5">
+        <section class="sliice bg-gradient-dark pt-6 mb-0 pb-5">
             <div class="container">
                 <div class="row text-center">
 
@@ -502,7 +544,7 @@ var_dump($currentTime);
                             </div>
                         </div>
 
-                        <input type="hidden" name="signup_redirect" value="imaging">
+                        <input type="hidden" id="signup_redirect" name="signup_redirect" value="<?php echo $asset_id_pagewrite;?>">
 
                         <?php if ($access_validated){
 
@@ -529,6 +571,7 @@ var_dump($currentTime);
         </div>
     </div>
 
+ 
     <?php require BASE_URI . '/footer.php';?>
 
     <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
@@ -544,6 +587,107 @@ var_dump($currentTime);
     <?php require BASE_URI . '/assets/scripts/purchase.php';?>
 
     
+    <script>
+
+function submitPreRegisterForm() {
+
+
+//userid is lesionUnderEdit
+
+//console.log('updatePassword chunk');
+//go to php script with an object from the form
+
+$('#submitPreRegister').append('<i class="fas fa-circle-notch fa-spin ml-2"></i>');
+
+
+var data = getFormDatav2($('#NewUserForm'), 'users', 'user_id', null, 1);
+
+//TODO add identifier and identifierKey
+
+console.log(data);
+
+data = JSON.stringify(data);
+
+console.log(data);
+
+disableFormInputs('NewUserForm');
+
+var passwordChange = $.ajax({
+    url: siteRoot + "/assets/scripts/newUser.php",
+    type: "POST",
+    contentType: "application/json",
+    data: data,
+});
+
+passwordChange.done(function(data) {
+
+
+    Swal.fire({
+        type: 'info',
+        title: 'Create Account',
+        text: data,
+        background: '#162e4d',
+        confirmButtonText: 'ok',
+        confirmButtonColor: 'rgb(238, 194, 120)',
+
+    }).then((result) => {
+
+        resetFormElements('NewUserForm');
+        $(document).find('#signup_redirect').val(asset_id);
+        enableFormInputs('NewUserForm');
+        $('#registerInterest').modal('hide');
+        $('#submitPreRegister').find('i').remove();
+
+
+    })
+
+
+
+})
+
+}
+
+
+function refreshProgrammeView() {
+
+
+
+const dataToSend = {
+
+    programmeid: <?php echo $programme_defined;?>,
+
+}
+
+const jsonString = JSON.stringify(dataToSend);
+console.log(jsonString);
+
+var request2 = $.ajax({
+    url: siteRoot + "assets/scripts/classes/generateProgrammeCurrent.php",
+    type: "POST",
+    contentType: "application/json",
+    data: jsonString,
+});
+
+
+
+request2.done(function(data) {
+    // alert( "success" );
+    $('#ajaxWed').html(data);
+    //$(document).find('.Thursday').hide();
+})
+}
+
+$(document).ready(function() {
+
+
+
+
+refreshProgrammeView();
+
+});
+
+
+                        </script>
 
 
 

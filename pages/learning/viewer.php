@@ -828,69 +828,7 @@
         <?php $allCategories = $general->getAllTagCategories(); print_r($allCategories);?></div>
 
 
-    <!--RECORD THE USER DETAILS AND VIEW-->
-    <?php
-
-//echo $userid; echo $id; echo 'hello';
-
-$current_date = new DateTime('now', new DateTimeZone('UTC'));
-
-$current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s');
-
-
-                        if ($usersViewsVideo->matchRecord2way($userid, $id) === false){  
-                            
-                            //if not recorded already
-
-                            //echo $userid; echo $id;
-                $usersViewsVideo->setuser_id($userid);
-                $usersViewsVideo->setvideo_id($id);
-
-
-                $usersViewsVideo->setfirstView($current_date_sqltimestamp);
-                $usersViewsVideo->setrecentView($current_date_sqltimestamp);
-
-
-                $usersViewsVideo->prepareStatementPDO();
-
-            
-
-                
-            }elseif ($usersViewsVideo->matchRecord2way($userid, $id) === true) {
-
-                //already viewed
-                //update most recent view time
-                //increment view counter
-                //get the key
-
-                $key = $usersMetricsManager->getKeyUserViewsVideoMatch($userid, $id);
-
-                //$debug = true;
-
-                if ($debug){
-
-                    echo $key . 'is key';
-                }
-
-                $usersViewsVideo->Load_from_key($key);
-
-
-                if ($debug){
-
-                    echo $usersViewsVideo->getid();
-                    echo $current_date_sqltimestamp;
-                }
-
-
-                $usersViewsVideo->setrecentView($current_date_sqltimestamp);
-
-                echo $usersViewsVideo->prepareStatementPDOUpdate();
-
-
-
-            }
-
-?>
+    
 
     <!--GET TAG CATEGORY NAME 
                     
@@ -987,13 +925,13 @@ if ($assetManager->determineVideoAccessSingleVideo($id, $isSuperuser, $userid, f
 
 
     echo '<div class="container">';
-                    echo "This learning tool requires a subscription or upgrade.  Your options for getting access are: <br/><br/>  ";
+                    echo "<p class='mt-4'>This learning tool requires a subscription or upgrade.  Your options for getting access are: <br/><br/> </p> ";
 
                     $availableAssets = $assetManager->getAccessVideo($id, false);
                     foreach ( $availableAssets as $key=>$value){
 
                         foreach ($value as $key2=>$value2){
-                        echo $value2;
+                        //echo $value2;
                         $assets_paid->Load_from_key($value2);
                         ?>
 
@@ -1013,8 +951,22 @@ if ($assetManager->determineVideoAccessSingleVideo($id, $isSuperuser, $userid, f
 </div>
 <div class="card-footer">
 <a data-assetid="<?php echo $value2; ?>"
-                                class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon">
+                                class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon px-2">
                                 <span class="btn-inner--text text-dark">Buy Now for &euro;<?php echo $assets_paid->getcost();?></span>
+                                <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+                            </a>
+  
+
+<a data-assetid="<?php echo $value2; ?>"
+                                class="more-info btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon px-2">
+                                <span class="btn-inner--text text-dark">More info</span>
+                                <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+                            </a>
+  
+
+<a href="mailto:admin@gieqs.com"
+                                class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon px-2">
+                                <span class="btn-inner--text text-dark">Help with an Issue</span>
                                 <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                             </a>
   
@@ -1044,6 +996,70 @@ if ($assetManager->determineVideoAccessSingleVideo($id, $isSuperuser, $userid, f
                     exit();
 
 }
+
+//RECORD THE USER DETAILS AND VIEW
+  
+
+//echo $userid; echo $id; echo 'hello';
+
+$current_date = new DateTime('now', new DateTimeZone('UTC'));
+
+$current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s');
+
+
+                        if ($usersViewsVideo->matchRecord2way($userid, $id) === false){  
+                            
+                            //if not recorded already
+
+                            //echo $userid; echo $id;
+                $usersViewsVideo->setuser_id($userid);
+                $usersViewsVideo->setvideo_id($id);
+
+
+                $usersViewsVideo->setfirstView($current_date_sqltimestamp);
+                $usersViewsVideo->setrecentView($current_date_sqltimestamp);
+
+
+                $usersViewsVideo->prepareStatementPDO();
+
+            
+
+                
+            }elseif ($usersViewsVideo->matchRecord2way($userid, $id) === true) {
+
+                //already viewed
+                //update most recent view time
+                //increment view counter
+                //get the key
+
+                $key = $usersMetricsManager->getKeyUserViewsVideoMatch($userid, $id);
+
+                //$debug = true;
+
+                if ($debug){
+
+                    echo $key . 'is key';
+                }
+
+                $usersViewsVideo->Load_from_key($key);
+
+
+                if ($debug){
+
+                    echo $usersViewsVideo->getid();
+                    echo $current_date_sqltimestamp;
+                }
+
+
+                $usersViewsVideo->setrecentView($current_date_sqltimestamp);
+
+                echo $usersViewsVideo->prepareStatementPDOUpdate();
+
+
+
+            }
+
+
 
 
                 

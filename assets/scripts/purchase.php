@@ -164,6 +164,13 @@ if ($("#access_token").text() != '') {
     var access_token = false;
 }
 
+if ($(document).find("#asset_id").text() != '') {
+    var asset_id = $(document).find("#asset_id").text();
+} else {
+
+    var asset_id = false;
+}
+
 
 
 var userid = '<?php echo $userid;?>';
@@ -198,14 +205,14 @@ $('#button-login').click(function() {
                 ?>
 
 window.location = siteRoot2 +
-"pages/authentication/login.php?destination=imaging_signup&access_token=<?php echo $access_token;?>";
+"pages/authentication/login.php?destination=signup&assetid=" + asset_id + "&access_token=" + access_token;
 
 <?php 
             }else{
                 ?>
 
 window.location = siteRoot2 +
-"pages/authentication/login.php?destination=imaging_signup";
+"pages/authentication/login.php?destination=signup&assetid=" + asset_id;
 
 <?php
             }
@@ -220,7 +227,7 @@ $(document).on('click', '#login', function() {
 
 event.preventDefault();
 window.location.href = siteRoot2 +
-'/pages/authentication/login.php?destination=imaging_signup';
+'/pages/authentication/login.php?destination=signup&assetid=' + asset_id;
 
 
 })

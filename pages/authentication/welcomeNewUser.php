@@ -114,28 +114,10 @@ background-color: rgb(238, 194, 120);
 
                       <?php
 
-                        if ($signup_redirect == 'basic_colon'){
+                        if (is_numeric($signup_redirect) === true){
 
-                          $link = BASE_URL . '/pages/program/program_basic_colon.php?action=register';
+                          $link = BASE_URL . '/pages/program/program_generic.php?id=' . $signup_redirect . '&action=register';
                           $link_text = 'Continue to Course Booking';
-
-                        }elseif ($signup_redirect == 'trainer_colon'){
-
-                          $link = BASE_URL . '/pages/program/program_trainer_colon.php?action=register';
-                          $link_text = 'Continue to Course Booking';
-
-
-                        }elseif ($signup_redirect == 'imaging'){
-
-                          $link = BASE_URL . '/pages/program/program_imaging.php?action=register';
-                          $link_text = 'Continue to Course Booking';
-
-
-                        }elseif ($signup_redirect == 'small_polyp_signup'){
-
-                          $link = BASE_URL . '/pages/program/program_small_polypectomy.php?action=register';
-                          $link_text = 'Continue to Course Booking';
-
 
                         }elseif ($signup_redirect == 'gieqs_ii'){
 

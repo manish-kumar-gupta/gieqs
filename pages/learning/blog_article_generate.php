@@ -7,48 +7,7 @@
                         <div class="col-md-9">
                             <h1 class="lh-150 mb-3"><?php echo $blogs->getname();?></h1>
                             <p class="lead text-muted mb-0"><?php echo $blogs->getpreheader();?></p>
-                            <div class="media align-items-center mt-5">
-                                <div>
-                                    <a href="#" class="avatar rounded-circle mr-3">
-                                        <img alt="Image placeholder"
-                                            src="<?php echo BASE_URL;?><?php if ($users->getgender() == 1){echo "/assets/img/icons/people/white-female.png";}?><?php if ($users->getgender() == 2){echo "/assets/img/icons/people/white-male.png";}?>"
-                                            class="card-img-top">
-                                    </a>
-                                </div>
-                                <div class="media-body">
-                                    <span
-                                        class="d-block h6 mb-0"><?php echo $users->getfirstname() . ' ' . $users->getsurname();?></span>
-                                    <?php 
-                
-               //work the date
-               $blog_date = new DateTime($blogs->getcreated());
-               $blog_date_readable = date_format($blog_date, "l jS F Y");
-
-              
-               
-               $imagesCovers = [
-
-                1 => [0 => '/assets/img/blog/covers/colonoscopy_1920x600.png', ], //Colon Tutor
-                2 => [0 => '/assets/img/blog/covers/polypectomy_1920x600.png', ], //Polyp Tutor
-                3 => [0 => '/assets/img/blog/covers/imaging_1920x600.png', ], //Imaging Tutor
-                4 => [0 => '/assets/img/blog/covers/gastroscopy_1920x600.png', ], //Gastroscopy Tutor
-                5 => '', //GIEQs Topics Tutor
-                6 => '', //Nursing Tutor
-                7 => '', //ERCP Tutor
-                8 => '', //EUS Tutor
-                9 => '', //Therapeutic EUS Tutor
-                10 => [0 => '/assets/img/blog/covers/complex_polypectomy_1920x600.png', ], //Complex Resection Tutor
-                11 => [0 => '/assets/img/blog/covers/submucosal_1920x600.png', ], //Submucosal Endoscopy Tutor
-                0 => '', //Video Nav
-            
-            
-              ];
-
-                
-                ?>
-                                    <span class="text-sm text-muted"><?php echo $blog_date_readable;?></span>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -58,24 +17,13 @@
 
  
 
- <?php 
+
  
+
  
- //echo $blogs->getsubject();
- 
- if (array_key_exists($blogs->getsubject(),$imagesCovers)) {
 
-  $countImagesArray = count($imagesCovers[$blogs->getsubject()]) - 1;
-  $random_number = mt_rand(0, $countImagesArray);
 
-   ?>
-            <section class="bg-cover mt-5"
-                style="height: 250px; background-image: url('<?php echo BASE_URL . $imagesCovers[$blogs->getsubject()][$random_number];?>'); background-position: top center; background-size: contain;">
-            </section>
-
-<?php }?> 
-
-            <section class="slice">
+            <section>
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-9">

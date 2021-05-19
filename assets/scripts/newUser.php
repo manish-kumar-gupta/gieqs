@@ -108,22 +108,17 @@ echo date('Y/m/d H:i:s'); */
 
             if (isset($data['signup_redirect'])){
 
-                if ($data['signup_redirect'] == 'basic_colon'){
-    
-                    $filename = '/assets/email/emailNewAccountHook.php';
-                    $emailVaryarray['signup_redirect'] = 'basic_colon';
-                    
-                }elseif ($data['signup_redirect'] == 'imaging'){
+                if (is_numeric($data['signup_redirect']) === true){
 
                     if (isset($data['access_token'])){
 
                         $filename = '/assets/email/emailNewAccountHook.php';
-                        $emailVaryarray['signup_redirect'] = 'imaging&access_token=8874101655';
+                        $emailVaryarray['signup_redirect'] = $data['signup_redirect'] . '&access_token=8874101655';
 
                     }else{
 
                     $filename = '/assets/email/emailNewAccountHook.php';
-                    $emailVaryarray['signup_redirect'] = 'imaging';
+                    $emailVaryarray['signup_redirect'] = $data['signup_redirect'];
 
                     }
 

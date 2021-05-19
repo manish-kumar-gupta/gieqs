@@ -3423,6 +3423,47 @@ public function returnVideoDenominatorSelect2()
 
         }
 
+        public function getBlogs(){
+
+			
+			$q = "SELECT `id`, `name` from `blogs` ORDER BY `id` ASC";
+				//$q = "SELECT `superCategory` FROM `tagCategories` WHERE `id` = $id";
+		
+                //echo $q;
+                
+                $x = 0;
+                $tagCategoryName = array();
+		
+                $result = $this->connection->RunQuery($q);
+
+                $nRows = $result->rowCount();
+
+                
+                if ($nRows > 0){
+		
+					
+                    while($row = $result->fetch(PDO::FETCH_ASSOC)){
+						
+						$tagCategoryName[$x]['id'] = $row['id'];
+                        $tagCategoryName[$x]['name'] = $row['name'];
+                        $x++;
+						
+						
+						
+						
+					}
+				
+					return $tagCategoryName;
+				}else{
+					
+					return null;
+				}
+			
+
+
+
+        }
+
         public function getSuperCategoryName($supercategory){
 
 			

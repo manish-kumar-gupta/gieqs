@@ -35,6 +35,7 @@ Class assets_paid {
 	private $description; //varchar(800)
 	private $asset_type; //varchar(20)
 	private $superCategory; //varchar(11)
+	private $linked_blog; //varchar(11)
 	private $cost; //varchar(20)
 	private $renew_frequency; //varchar(11)
 	private $connection;
@@ -48,11 +49,12 @@ Class assets_paid {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_assets_paid($name,$description,$asset_type,$superCategory,$cost,$renew_frequency){
+	public function New_assets_paid($name,$description,$asset_type,$superCategory,$linked_blog,$cost,$renew_frequency){
 		$this->name = $name;
 		$this->description = $description;
 		$this->asset_type = $asset_type;
 		$this->superCategory = $superCategory;
+		$this->linked_blog = $linked_blog;
 		$this->cost = $cost;
 		$this->renew_frequency = $renew_frequency;
 	}
@@ -71,6 +73,7 @@ Class assets_paid {
 			$this->description = $row["description"];
 			$this->asset_type = $row["asset_type"];
 			$this->superCategory = $row["superCategory"];
+			$this->linked_blog = $row["linked_blog"];
 			$this->cost = $row["cost"];
 			$this->renew_frequency = $row["renew_frequency"];
 		}
@@ -95,6 +98,7 @@ $q = "Select * from `assets_paid` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["description"] = $row["description"];
 			$rowReturn[$x]["asset_type"] = $row["asset_type"];
 			$rowReturn[$x]["superCategory"] = $row["superCategory"];
+			$rowReturn[$x]["linked_blog"] = $row["linked_blog"];
 			$rowReturn[$x]["cost"] = $row["cost"];
 			$rowReturn[$x]["renew_frequency"] = $row["renew_frequency"];
 		$x++;		}return json_encode($rowReturn);}
@@ -123,6 +127,7 @@ $q = "Select * from `assets_paid` WHERE `id` = $key";
 			$rowReturn[$x]["description"] = $row["description"];
 			$rowReturn[$x]["asset_type"] = $row["asset_type"];
 			$rowReturn[$x]["superCategory"] = $row["superCategory"];
+			$rowReturn[$x]["linked_blog"] = $row["linked_blog"];
 			$rowReturn[$x]["cost"] = $row["cost"];
 			$rowReturn[$x]["renew_frequency"] = $row["renew_frequency"];
 		$x++;		}return json_encode($rowReturn);}
@@ -413,6 +418,13 @@ $q = "UPDATE `assets_paid` SET $implodeArray WHERE `id` = '$this->id'";
 		return $this->superCategory;
 	}
 
+		/**
+	 * @return linked_blog - varchar(11)
+	 */
+	public function getlinked_blog(){
+		return $this->linked_blog;
+	}
+
 	/**
 	 * @return cost - varchar(20)
 	 */
@@ -460,6 +472,13 @@ $q = "UPDATE `assets_paid` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function setsuperCategory($superCategory){
 		$this->superCategory = $superCategory;
+	}
+
+	/**
+	 * @param Type: varchar(11)
+	 */
+	public function setlinked_blog($linked_blog){
+		$this->linked_blog = $linked_blog;
 	}
 
 	/**

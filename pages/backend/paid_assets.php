@@ -756,6 +756,26 @@ if ($identifierValue) {
                                             </select>
                                         </div>
 
+
+                                        <label for="linked_blog">linked_blog</label>
+                                        <div class="input-group mb-3">
+                                            <select id="linked_blog" type="text" data-toggle="select" class="form-control" name="linked_blog">
+                                            <option value="" selected disabled hidden>please select an option</option>
+                                            <?php 
+                                            
+                                            $supercategories = $assetManager->getBlogs();
+
+                                            foreach ($supercategories as $key=>$value){
+
+                                                echo "<option value='{$value['id']}'>{$value['name']}<option>";
+
+                                            }
+                                            
+                                            //echo $assetManager->getSuperCategories();?>
+                                            
+                                            </select>
+                                        </div>
+
                                         <label for="cost">cost</label>
                                         <div class="input-group mb-3">
                                             <input id="cost" type="text" class="form-control" name="cost">

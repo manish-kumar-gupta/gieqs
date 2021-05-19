@@ -31,21 +31,24 @@ if (isset($_GET['destination'])) {
     $target = 'pages/program/program-printable-catchup.php';
 
 
-  }else if ($destination == 'basic_colon_signup'){
+  }else if ($destination == 'signup'){
 
-    $target = '/pages/program/program_basic_colon.php?action=register';
+    //check which page to go to... (that means use the db)
 
+    if (isset($_GET['assetid'])){
 
-  }else if ($destination == 'imaging_signup'){
+      $assetid = $_GET['assetid'];
+
+    }
 
     if (isset($_GET['access_token'])){
 
       $access_token = $_GET['access_token'];
-      $target = '/pages/program/program_imaging.php?action=register&access_token=' . $access_token;
+      $target = '/pages/program/program_generic.php?id=' . $assetid . '&action=register&access_token=' . $access_token;
 
     }else{
 
-      $target = '/pages/program/program_imaging.php?action=register';
+      $target = '/pages/program/program_generic.php?id=' . $assetid . '&action=register';
 
     }
 
