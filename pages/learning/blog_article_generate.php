@@ -241,32 +241,5 @@ if ($value['img'] != NULL){
         </div>
         </section>
 
-        <section class="slice bg-section-secondary delimiter-top delimiter-bottom">
-            <div class="container">
-
-                <div class="mb-5 text-center">
-                    <h3 class=" mt-4">Latest from the blog</h3>
-                    <div class="fluid-paragraph mt-3">
-                        <p class="lead lh-180">Weekly nuggets focussed on Everyday techniques. Monthly evening
-                            round-ups.</p>
-                    </div>
-                </div>
-
-                <?php
-
-
-$maxToShow = 3;
-$featuredFirst = false;
-
-require(BASE_URI. '/pages/learning/scripts/show_blogs.php');
-
-?>
-
-
-
-
-
-                </div>
-        </section>
 
        

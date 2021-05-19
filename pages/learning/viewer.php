@@ -756,57 +756,6 @@
                         }
                   
                         
-        //check access
-
-        if ($assetManager->determineVideoAccessSingleVideo($id, $isSuperuser, $userid, false) === false){
-
-            require_once(BASE_URI . '/assets/scripts/classes/assets_paid.class.php');
-            $assets_paid = new assets_paid;
-
-
-            echo '<div class="container mt-10 mb-10">';
-							echo "This learning tool requires a subscription or upgrade.  Your options for getting access are: <br/><br/>  ";
-
-                            $availableAssets = $assetManager->getAccessVideo($id, true);
-                            foreach ( $availableAssets as $key=>$value){
-
-                                foreach ($value as $key2=>$value2){
-                                echo $value2;
-                                $assets_paid->Load_from_key($value2);
-                                ?>
-
-                                
-
-                                <div class="card m-2">
-                                <div class="card-header">
-        <h5 class="card-title mb-0"><?php echo $assets_paid->getname();?></h5>
-        <span class="text-muted text-sm">2 hrs ago</span>
-    </div>
-    <div class="card-body">
-       
-        <p class="mb-0 text-white">
-            <?php echo $assets_paid->getdescription();?>
-        </p>
-        <p class="mt-4 mb-0 text-white">
-           
-        </p>
-    </div>
-    <div class="card-footer">
-    <button class="btn btn-primary">Buy Now for &euro;<?php echo $assets_paid->getcost();?></button>
-    </div>
-</div>
-                                <?php
-                                }
-                            }
-							echo '</div>';
-							include(BASE_URI . "/footer.php");
-							exit();
-
-        }
-
-        
-                        
-		
         ?>
 
     <!-- load all video data -->
@@ -1026,8 +975,80 @@ $current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s');
         <?php require BASE_URI . '/pages/learning/assets/videoNav.php';?>
         <?php require BASE_URI . '/pages/learning/assets/tagNav.php';?>
 
+        <?php
 
 
+        //check access
+
+if ($assetManager->determineVideoAccessSingleVideo($id, $isSuperuser, $userid, false) === false){
+
+    require_once(BASE_URI . '/assets/scripts/classes/assets_paid.class.php');
+    $assets_paid = new assets_paid;
+
+
+    echo '<div class="container">';
+                    echo "This learning tool requires a subscription or upgrade.  Your options for getting access are: <br/><br/>  ";
+
+                    $availableAssets = $assetManager->getAccessVideo($id, false);
+                    foreach ( $availableAssets as $key=>$value){
+
+                        foreach ($value as $key2=>$value2){
+                        echo $value2;
+                        $assets_paid->Load_from_key($value2);
+                        ?>
+
+
+
+<div class="card m-2">
+<div class="card-header">
+    <h5 class="card-title mb-0"><?php echo $assets_paid->getname();?></h5>
+    <span class="text-muted text-sm">Access is immediate after concluding registration</span>
+</div>
+<div class="card-body">
+
+    <p class="mb-0 text-white">
+        <?php echo $assets_paid->getdescription();?>
+    </p>
+    
+</div>
+<div class="card-footer">
+<a data-assetid="<?php echo $value2; ?>"
+                                class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon">
+                                <span class="btn-inner--text text-dark">Buy Now for &euro;<?php echo $assets_paid->getcost();?></span>
+                                <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+                            </a>
+  
+</div>
+
+</div>
+<?php
+                        }
+                    }
+                    echo '</div>';
+                    echo '</div>';
+                    ?>
+                    <script src="../../assets/js/purpose.core.js"></script>
+                    <script src="<?php echo BASE_URL;?>/assets/js/purpose.js"></script>
+                    <script src="<?php echo BASE_URL;?>/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+                    <script src="../../assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+                
+                
+                    <script src=<?php echo BASE_URL . "/assets/js/generaljs.js"?>></script>
+                
+                  <?php
+                
+              require BASE_URI . '/assets/scripts/purchase.php';
+
+
+                    include(BASE_URI . "/footer.php");
+                    exit();
+
+}
+
+
+                
+
+?>
 
 
         <div class="d-flex align-items-end">
@@ -2553,7 +2574,7 @@ chapterData
                     }
 
 
-                    
+
 
                     if (v.outside_asset === true) {
 
@@ -2730,7 +2751,7 @@ chapterData
 
                 showAlert(
                     'Started from where you finished last time. To <a href=\"javascript:jumpToTime(0);\">restart click here</a>.'
-                    )
+                )
 
             }, 200, "wait for most recent Video");
 
@@ -3620,6 +3641,8 @@ $(this).addClass('heartBeat'); */
 
     })
     </script>
+
+
 </body>
 
 </html>

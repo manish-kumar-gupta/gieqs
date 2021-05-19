@@ -4296,6 +4296,17 @@ public function returnVideoDenominatorSelect2()
                     echo 'video ' . $id . ' is within assets <br>';
                     print_r($asset_array);
                 }
+
+                $higherArray = array();
+                $y = 0;
+
+                foreach ($asset_array as $key2=>$value2){
+
+                    $higherArray[$x] = [$x => $value2];
+
+                }
+
+                return $higherArray;
         
                 //return true;
             }
