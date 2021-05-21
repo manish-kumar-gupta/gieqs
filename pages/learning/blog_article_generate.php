@@ -1,6 +1,6 @@
 <style>
 
-p {
+article p {
 
     font-size: 1.125rem !important; 
 font-weight: 300 !important;
