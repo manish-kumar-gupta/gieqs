@@ -2953,6 +2953,8 @@ clearRecipients().done(function() {
 });
 
 
+
+
 /* saveForm().done(function() {
 
     saveEmailContents().done(function() {
@@ -2973,6 +2975,46 @@ clearRecipients().done(function() {
 
 
 })
+
+$(document).on('click', '.expand-components', function(e) {
+
+//add a new text to the database
+
+//refresh the database
+
+if (e.preventDefault) {
+    e.preventDefault();
+}
+
+$('textarea').each(function () {
+  this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
+}).on('input', function () {
+  this.style.height = 'auto';
+  this.style.height = (this.scrollHeight) + 'px';
+});
+
+
+});
+
+$(document).on('click', '.shrink-components', function(e) {
+
+//add a new text to the database
+
+//refresh the database
+
+if (e.preventDefault) {
+    e.preventDefault();
+}
+
+$('textarea').each(function () {
+    $(this).attr('rows', 3);
+});
+
+
+
+
+
+});
 
     })
     </script>
