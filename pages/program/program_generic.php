@@ -148,6 +148,15 @@ var_dump($currentTime);
         opacity: 0.75 !important;
     }
 
+
+article p {
+
+    font-size: 1.125rem !important; 
+font-weight: 300 !important;
+
+}
+
+
     .modal {
         overflow: auto !important;
     }
