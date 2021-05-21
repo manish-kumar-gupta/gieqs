@@ -31,7 +31,7 @@
  */
 class Google_Service_FirebaseRules extends Google_Service
 {
-  /** View and manage your data across Google Cloud Platform services. */
+  /** See, edit, configure, and delete your Google Cloud Platform data. */
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
   /** View and administer all your Firebase data and settings. */
@@ -44,7 +44,7 @@ class Google_Service_FirebaseRules extends Google_Service
   public $projects;
   public $projects_releases;
   public $projects_rulesets;
-  
+
   /**
    * Constructs the internal representation of the FirebaseRules service.
    *
@@ -143,13 +143,13 @@ class Google_Service_FirebaseRules extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
                 'pageSize' => array(
                   'location' => 'query',
                   'type' => 'integer',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),'patch' => array(
@@ -211,7 +211,7 @@ class Google_Service_FirebaseRules extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'pageToken' => array(
+                'filter' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -219,7 +219,7 @@ class Google_Service_FirebaseRules extends Google_Service
                   'location' => 'query',
                   'type' => 'integer',
                 ),
-                'filter' => array(
+                'pageToken' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),

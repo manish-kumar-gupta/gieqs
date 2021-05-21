@@ -50,7 +50,6 @@ class Google_Service_SecretManager_Resource_ProjectsSecrets extends Google_Servi
    * @param array $optParams Optional parameters.
    *
    * @opt_param string secretId Required. This must be unique within the project.
-   *
    * A secret ID is a string with a maximum length of 255 characters and can
    * contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and
    * underscore (`_`) characters.
@@ -68,6 +67,10 @@ class Google_Service_SecretManager_Resource_ProjectsSecrets extends Google_Servi
    * @param string $name Required. The resource name of the Secret to delete in
    * the format `projects/secrets`.
    * @param array $optParams Optional parameters.
+   *
+   * @opt_param string etag Optional. Etag of the Secret. The request succeeds if
+   * it matches the etag of the currently stored secret object. If the etag is
+   * omitted, the request succeeds.
    * @return Google_Service_SecretManager_SecretmanagerEmpty
    */
   public function delete($name, $optParams = array())
@@ -100,17 +103,12 @@ class Google_Service_SecretManager_Resource_ProjectsSecrets extends Google_Servi
    * @param array $optParams Optional parameters.
    *
    * @opt_param int options.requestedPolicyVersion Optional. The policy format
-   * version to be returned.
-   *
-   * Valid values are 0, 1, and 3. Requests specifying an invalid value will be
-   * rejected.
-   *
-   * Requests for policies with any conditional bindings must specify version 3.
-   * Policies without any conditional bindings may specify any valid value or
-   * leave the field unset.
-   *
-   * To learn which resources support conditions in their IAM policies, see the
-   * [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-
+   * version to be returned. Valid values are 0, 1, and 3. Requests specifying an
+   * invalid value will be rejected. Requests for policies with any conditional
+   * bindings must specify version 3. Policies without any conditional bindings
+   * may specify any valid value or leave the field unset. To learn which
+   * resources support conditions in their IAM policies, see the [IAM
+   * documentation](https://cloud.google.com/iam/help/conditions/resource-
    * policies).
    * @return Google_Service_SecretManager_Policy
    */
@@ -127,12 +125,12 @@ class Google_Service_SecretManager_Resource_ProjectsSecrets extends Google_Servi
    * with the Secrets, in the format `projects`.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string pageToken Optional. Pagination token, returned earlier via
-   * ListSecretsResponse.next_page_token.
    * @opt_param int pageSize Optional. The maximum number of results to be
    * returned in a single page. If set to 0, the server decides the number of
    * results to return. If the number is greater than 25000, it is capped at
    * 25000.
+   * @opt_param string pageToken Optional. Pagination token, returned earlier via
+   * ListSecretsResponse.next_page_token.
    * @return Google_Service_SecretManager_ListSecretsResponse
    */
   public function listProjectsSecrets($parent, $optParams = array())
@@ -160,10 +158,8 @@ class Google_Service_SecretManager_Resource_ProjectsSecrets extends Google_Servi
   }
   /**
    * Sets the access control policy on the specified secret. Replaces any existing
-   * policy.
-   *
-   * Permissions on SecretVersions are enforced according to the policy set on the
-   * associated Secret. (secrets.setIamPolicy)
+   * policy. Permissions on SecretVersions are enforced according to the policy
+   * set on the associated Secret. (secrets.setIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
    * specified. See the operation documentation for the appropriate value for this
@@ -181,11 +177,9 @@ class Google_Service_SecretManager_Resource_ProjectsSecrets extends Google_Servi
   /**
    * Returns permissions that a caller has for the specified secret. If the secret
    * does not exist, this call returns an empty set of permissions, not a
-   * NOT_FOUND error.
-   *
-   * Note: This operation is designed to be used for building permission-aware UIs
-   * and command-line tools, not for authorization checking. This operation may
-   * "fail open" without warning. (secrets.testIamPermissions)
+   * NOT_FOUND error. Note: This operation is designed to be used for building
+   * permission-aware UIs and command-line tools, not for authorization checking.
+   * This operation may "fail open" without warning. (secrets.testIamPermissions)
    *
    * @param string $resource REQUIRED: The resource for which the policy detail is
    * being requested. See the operation documentation for the appropriate value

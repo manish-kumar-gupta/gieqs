@@ -11,6 +11,7 @@ use TusPhp\Exception\FileException;
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\ClientException;
 use TusPhp\Exception\ConnectionException;
+use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Exception\ConnectException;
 use Symfony\Component\HttpFoundation\Response as HttpResponse;
 
@@ -49,6 +50,9 @@ class Client extends AbstractTus
     /** @var array */
     protected $metadata = [];
 
+    /** @var array */
+    protected $headers = [];
+
     /**
      * Client constructor.
      *
@@ -59,9 +63,10 @@ class Client extends AbstractTus
      */
     public function __construct(string $baseUri, array $options = [])
     {
+        $this->headers      = $options['headers'] ?? [];
         $options['headers'] = [
             'Tus-Resumable' => self::TUS_PROTOCOL_VERSION,
-        ] + ($options['headers'] ?? []);
+        ] + ($this->headers);
 
         $this->client = new GuzzleClient(
             ['base_uri' => $baseUri] + $options
@@ -367,6 +372,7 @@ class Client extends AbstractTus
      * @param int $bytes Bytes to upload
      *
      * @throws TusException
+     * @throws GuzzleException
      * @throws ConnectionException
      *
      * @return int
@@ -398,6 +404,8 @@ class Client extends AbstractTus
     /**
      * Returns offset if file is partially uploaded.
      *
+     * @throws GuzzleException
+     *
      * @return bool|int
      */
     public function getOffset()
@@ -417,25 +425,63 @@ class Client extends AbstractTus
      * @param string $key
      *
      * @throws FileException
+     * @throws GuzzleException
      *
      * @return string
      */
     public function create(string $key) : string
     {
-        $headers = [
+        return $this->createWithUpload($key, 0)['location'];
+    }
+
+    /**
+     * Create resource with POST request and upload data using the creation-with-upload extension.
+     *
+     * @see https://tus.io/protocols/resumable-upload.html#creation-with-upload
+     *
+     * @param string $key
+     * @param int    $bytes -1 => all data; 0 => no data
+     *
+     * @throws GuzzleException
+     *
+     * @return array [
+     *     'location' => string,
+     *     'offset' => int
+     * ]
+     */
+    public function createWithUpload(string $key, int $bytes = -1) : array
+    {
+        $bytes = $bytes < 0 ? $this->fileSize : $bytes;
+
+        $headers = $this->headers + [
             'Upload-Length' => $this->fileSize,
             'Upload-Key' => $key,
             'Upload-Checksum' => $this->getUploadChecksumHeader(),
             'Upload-Metadata' => $this->getUploadMetadataHeader(),
         ];
 
+        $data = '';
+        if ($bytes > 0) {
+            $data = $this->getData(0, $bytes);
+
+            $headers += [
+                'Content-Type' => self::HEADER_CONTENT_TYPE,
+                'Content-Length' => \strlen($data),
+            ];
+        }
+
         if ($this->isPartial()) {
             $headers += ['Upload-Concat' => 'partial'];
         }
 
-        $response = $this->getClient()->post($this->apiPath, [
-            'headers' => $headers,
-        ]);
+        try {
+            $response = $this->getClient()->post($this->apiPath, [
+                'body' => $data,
+                'headers' => $headers,
+            ]);
+        } catch (ClientException $e) {
+            $response = $e->getResponse();
+        }
 
         $statusCode = $response->getStatusCode();
 
@@ -443,6 +489,7 @@ class Client extends AbstractTus
             throw new FileException('Unable to create resource.');
         }
 
+        $uploadOffset   = $bytes > 0 ? current($response->getHeader('upload-offset')) : 0;
         $uploadLocation = current($response->getHeader('location'));
 
         $this->getCache()->set($this->getKey(), [
@@ -450,7 +497,10 @@ class Client extends AbstractTus
             'expires_at' => Carbon::now()->addSeconds($this->getCache()->getTtl())->format($this->getCache()::RFC_7231),
         ]);
 
-        return $uploadLocation;
+        return [
+            'location' => $uploadLocation,
+            'offset' => $uploadOffset,
+        ];
     }
 
     /**
@@ -459,12 +509,14 @@ class Client extends AbstractTus
      * @param string $key
      * @param mixed  $partials
      *
+     * @throws GuzzleException
+     *
      * @return string
      */
     public function concat(string $key, ...$partials) : string
     {
         $response = $this->getClient()->post($this->apiPath, [
-            'headers' => [
+            'headers' => $this->headers + [
                 'Upload-Length' => $this->fileSize,
                 'Upload-Key' => $key,
                 'Upload-Checksum' => $this->getUploadChecksumHeader(),
@@ -488,6 +540,7 @@ class Client extends AbstractTus
      * Send DELETE request.
      *
      * @throws FileException
+     * @throws GuzzleException
      *
      * @return void
      */
@@ -532,6 +585,7 @@ class Client extends AbstractTus
      * Send HEAD request.
      *
      * @throws FileException
+     * @throws GuzzleException
      *
      * @return int
      */
@@ -555,6 +609,7 @@ class Client extends AbstractTus
      *
      * @throws TusException
      * @throws FileException
+     * @throws GuzzleException
      * @throws ConnectionException
      *
      * @return int
@@ -562,7 +617,7 @@ class Client extends AbstractTus
     protected function sendPatchRequest(int $bytes, int $offset) : int
     {
         $data    = $this->getData($offset, $bytes);
-        $headers = [
+        $headers = $this->headers + [
             'Content-Type' => self::HEADER_CONTENT_TYPE,
             'Content-Length' => \strlen($data),
             'Upload-Checksum' => $this->getUploadChecksumHeader(),

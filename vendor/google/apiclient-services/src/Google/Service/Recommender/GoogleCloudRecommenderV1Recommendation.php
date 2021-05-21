@@ -17,9 +17,11 @@
 
 class Google_Service_Recommender_GoogleCloudRecommenderV1Recommendation extends Google_Collection
 {
-  protected $collection_key = 'additionalImpact';
+  protected $collection_key = 'associatedInsights';
   protected $additionalImpactType = 'Google_Service_Recommender_GoogleCloudRecommenderV1Impact';
   protected $additionalImpactDataType = 'array';
+  protected $associatedInsightsType = 'Google_Service_Recommender_GoogleCloudRecommenderV1RecommendationInsightReference';
+  protected $associatedInsightsDataType = 'array';
   protected $contentType = 'Google_Service_Recommender_GoogleCloudRecommenderV1RecommendationContent';
   protected $contentDataType = '';
   public $description;
@@ -28,23 +30,38 @@ class Google_Service_Recommender_GoogleCloudRecommenderV1Recommendation extends 
   public $name;
   protected $primaryImpactType = 'Google_Service_Recommender_GoogleCloudRecommenderV1Impact';
   protected $primaryImpactDataType = '';
+  public $priority;
   public $recommenderSubtype;
   protected $stateInfoType = 'Google_Service_Recommender_GoogleCloudRecommenderV1RecommendationStateInfo';
   protected $stateInfoDataType = '';
 
   /**
-   * @param Google_Service_Recommender_GoogleCloudRecommenderV1Impact
+   * @param Google_Service_Recommender_GoogleCloudRecommenderV1Impact[]
    */
   public function setAdditionalImpact($additionalImpact)
   {
     $this->additionalImpact = $additionalImpact;
   }
   /**
-   * @return Google_Service_Recommender_GoogleCloudRecommenderV1Impact
+   * @return Google_Service_Recommender_GoogleCloudRecommenderV1Impact[]
    */
   public function getAdditionalImpact()
   {
     return $this->additionalImpact;
+  }
+  /**
+   * @param Google_Service_Recommender_GoogleCloudRecommenderV1RecommendationInsightReference[]
+   */
+  public function setAssociatedInsights($associatedInsights)
+  {
+    $this->associatedInsights = $associatedInsights;
+  }
+  /**
+   * @return Google_Service_Recommender_GoogleCloudRecommenderV1RecommendationInsightReference[]
+   */
+  public function getAssociatedInsights()
+  {
+    return $this->associatedInsights;
   }
   /**
    * @param Google_Service_Recommender_GoogleCloudRecommenderV1RecommendationContent
@@ -105,6 +122,14 @@ class Google_Service_Recommender_GoogleCloudRecommenderV1Recommendation extends 
   public function getPrimaryImpact()
   {
     return $this->primaryImpact;
+  }
+  public function setPriority($priority)
+  {
+    $this->priority = $priority;
+  }
+  public function getPriority()
+  {
+    return $this->priority;
   }
   public function setRecommenderSubtype($recommenderSubtype)
   {

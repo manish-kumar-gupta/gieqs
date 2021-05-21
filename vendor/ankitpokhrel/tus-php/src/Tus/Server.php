@@ -17,6 +17,7 @@ use TusPhp\Exception\FileException;
 use TusPhp\Exception\ConnectionException;
 use TusPhp\Exception\OutOfRangeException;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\Request as HttpRequest;
 use Symfony\Component\HttpFoundation\Response as HttpResponse;
 
 class Server extends AbstractTus
@@ -224,7 +225,7 @@ class Server extends AbstractTus
     }
 
     /**
-     * Set max upload size.
+     * Set max upload size in bytes.
      *
      * @param int $uploadSize
      *
@@ -264,7 +265,7 @@ class Server extends AbstractTus
 
         $clientVersion = $this->getRequest()->header('Tus-Resumable');
 
-        if ($clientVersion && $clientVersion !== self::TUS_PROTOCOL_VERSION) {
+        if (HttpRequest::METHOD_OPTIONS !== $requestMethod && $clientVersion && self::TUS_PROTOCOL_VERSION !== $clientVersion) {
             return $this->response->send(null, HttpResponse::HTTP_PRECONDITION_FAILED, [
                 'Tus-Version' => self::TUS_PROTOCOL_VERSION,
             ]);
@@ -382,7 +383,10 @@ class Server extends AbstractTus
             'Upload-Expires' => $this->cache->get($uploadKey)['expires_at'],
         ];
 
-        $this->event()->dispatch(UploadCreated::NAME, new UploadCreated($file, $this->getRequest(), $this->getResponse()->setHeaders($headers)));
+        $this->event()->dispatch(
+            new UploadCreated($file, $this->getRequest(), $this->getResponse()->setHeaders($headers)),
+            UploadCreated::NAME
+        );
 
         return $this->response->send(null, HttpResponse::HTTP_CREATED, $headers);
     }
@@ -429,8 +433,8 @@ class Server extends AbstractTus
         }
 
         $this->event()->dispatch(
-            UploadMerged::NAME,
-            new UploadMerged($file, $this->getRequest(), $this->getResponse())
+            new UploadMerged($file, $this->getRequest(), $this->getResponse()),
+            UploadMerged::NAME
         );
 
         return $this->response->send(
@@ -475,13 +479,13 @@ class Server extends AbstractTus
                 }
 
                 $this->event()->dispatch(
-                    UploadComplete::NAME,
-                    new UploadComplete($file, $this->getRequest(), $this->getResponse())
+                    new UploadComplete($file, $this->getRequest(), $this->getResponse()),
+                    UploadComplete::NAME
                 );
             } else {
                 $this->event()->dispatch(
-                    UploadProgress::NAME,
-                    new UploadProgress($file, $this->getRequest(), $this->getResponse())
+                    new UploadProgress($file, $this->getRequest(), $this->getResponse()),
+                    UploadProgress::NAME
                 );
             }
         } catch (FileException $e) {
