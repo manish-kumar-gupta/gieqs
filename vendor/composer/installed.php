@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '464d6f33e66d347865330b14084d60d137170b70',
+    'reference' => 'ec40e7b042fcf68485de9247521bd9f54acd16b7',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '464d6f33e66d347865330b14084d60d137170b70',
+      'reference' => 'ec40e7b042fcf68485de9247521bd9f54acd16b7',
     ),
     'ankitpokhrel/tus-php' => 
     array (
@@ -218,6 +218,15 @@
       ),
       'reference' => 'd3c447f21072766cddec3522f9468a5849a76147',
     ),
+    'nikic/fast-route' => 
+    array (
+      'pretty_version' => 'v1.3.0',
+      'version' => '1.3.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '181d480e08d9476e61381e04a71b34dc0432e812',
+    ),
     'omnipay/common' => 
     array (
       'pretty_version' => 'v3.0.5',
@@ -415,6 +424,15 @@
         0 => '1.0',
       ),
     ),
+    'psr/http-factory' => 
+    array (
+      'pretty_version' => '1.0.1',
+      'version' => '1.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '12ac7fcd07e5b077433f5f2bee95b3a771bf61be',
+    ),
     'psr/http-message' => 
     array (
       'pretty_version' => '1.0.1',
@@ -430,6 +448,24 @@
       array (
         0 => '1.0',
       ),
+    ),
+    'psr/http-server-handler' => 
+    array (
+      'pretty_version' => '1.0.1',
+      'version' => '1.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'aff2f80e33b7f026ec96bb42f63242dc50ffcae7',
+    ),
+    'psr/http-server-middleware' => 
+    array (
+      'pretty_version' => '1.0.1',
+      'version' => '1.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '2296f45510945530b9dceb8bcedb5cb84d40c5f5',
     ),
     'psr/log' => 
     array (
@@ -481,6 +517,15 @@
       array (
         0 => '4.1.1',
       ),
+    ),
+    'slim/slim' => 
+    array (
+      'pretty_version' => '4.8.0',
+      'version' => '4.8.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'c9bdc9e0d2f8613055632334ec6711b965d5fdf3',
     ),
     'stripe/stripe-php' => 
     array (
