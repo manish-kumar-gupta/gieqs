@@ -756,7 +756,7 @@
 
                                                                                 <p
                                                                                 style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                PayPal Transaction ID : <?php echo $gateway_transactionId;?></p>
+                                                                                Stripe Transaction ID : <?php echo $gateway_transactionId;?></p>
 
 
                                                                             <!--GIEQS BUTTON -->
