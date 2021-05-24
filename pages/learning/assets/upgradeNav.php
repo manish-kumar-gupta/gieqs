@@ -50,9 +50,9 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="<?php echo BASE_URL;?>/pages/learning/upgrade.php">
+                    <a class="nav-link nav-link-icon">
 
-                        <span class="nav-link-inner--text ">You are missing out on key features.   <span class="gieqsGold">Upgrade now!</span></span>
+                        <span class="nav-link-inner--text ">You are missing out on key features.   <span class="subscribe-now gieqsGold" data-assetid="5">Upgrade now!</span></span>
                     </a>
                 </li>
                 <?php
@@ -81,7 +81,7 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                    <a class="nav-link nav-link-icon" href="<?php echo BASE_URL;?>/pages/learning/upgrade.php" class="nav-link-inner--text"
                        >
 
-                       <span class="nav-link-inner--text">You are missing out on key features.  <span class="gieqsGold">Upgrade now!</span></span>
+                       <span class="nav-link-inner--text">You are missing out on key features.  <span class="subscribe-now gieqsGold" data-assetid="5"></span>
                    </a>
                </li>
                 <?php
@@ -116,35 +116,12 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                 <?php
                     }
                 ?>
-                <!-- <li class="nav-item">
-                    <a class="nav-link nav-link-icon"
-                        href="<?php //echo BASE_URL;?>/pages/learning/pages/live/nursing.php">
-
-                        <span class="nav-link-inner--text ">Nursing</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-link-icon" target="_blank"
-                        href="<?php //echo BASE_URL;?>/pages/learning/pages/live/programLive.php">
-
-                        <span class="nav-link-inner--text ">Live Programme</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-link-icon" target="_blank" href="https://facebook.com/gieqs">
-                        <i class="fab fa-facebook-square"></i>
-                        <span class="nav-link-inner--text d-lg-none">Share</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link nav-link-icon" target="_blank" href="https://twitter.com/gieqs_symposium">
-                        <i class="fab fa-twitter"></i>
-                        <span class="nav-link-inner--text d-lg-none">Tweet</span>
-                    </a>
-                </li> -->
-
+               
             </ul>
 
         </div>
     </div>
 </nav>
+<script src=<?php echo BASE_URL . "/assets/js/generaljs.js"?>></script>
+
+<?php require BASE_URI . '/assets/scripts/purchase.php';?>

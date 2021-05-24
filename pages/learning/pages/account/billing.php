@@ -20,7 +20,7 @@
 
       require BASE_URI . '/head.php';
 
-      $debug = false;
+      $debug = true;
       //error_reporting(E_ALL);
       
       $general = new general;
@@ -236,6 +236,7 @@ know the user level
                                     <?php
 
 
+//$debug = true;
 
 
 ?>
@@ -262,12 +263,18 @@ get whether expiring soon su
 
                     //use $siteWideSubscriptionid to get data from subscriptions
 
+
                     if ($debug){
 
                       echo $siteWideSubscriptionid . ' is $siteWideSubscriptionid';
                     }
 
+                  //  error_reporting(E_ALL);
+
+//                    echo 'hello';
+
                     $subscription->Load_from_key($siteWideSubscriptionid);
+
 
                     $expiry_date = null;
 
@@ -277,7 +284,11 @@ get whether expiring soon su
 
                     $expiry_date_display = new DateTime($subscription->getexpiry_date(), new DateTimeZone('UTC'));
 
+                    if ($users->gettimezone() != ''){
+
                     $expiry_date_display->setTimezone(new DateTimeZone($users->gettimezone()));
+
+                    }
 
 
                     ?>
