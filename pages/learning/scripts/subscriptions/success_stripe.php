@@ -95,14 +95,52 @@ if ($session['mode'] == 'payment'){
 
 
 }elseif ($session['mode'] == 'subscription'){
+
+    //$debug = true;
+
+    if ($debug){
+
+        print_r($session['metadata']);
+        print_r($session);
+        
+
+    }
+
+    $current_date = new DateTime('now', new DateTimeZone('UTC'));
+
+    $current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s'); 
+
+
     $payment_intent = $session['subscription']; //check is set
     $subscription_id = $session['metadata']['subscription_id'];  //check is set
     $currency = strtoupper($session['currency']);
-    if ($session['metadata']['free_trial'] === true){
+    if ($session['metadata']['free_trial'] == true){
 
-        $userActivity->New_userActivity($userid, 'FREE TRIAL', null, $current_date_sqltimestamp);
-        $userActivity->prepareStatementPDO();
-        $amount = 'FREE TRIAL';
+        if ($session['metadata']['subscription_type'] == 1){
+
+            $userActivity->New_userActivity($userid, 'FREE_TRIAL_PRO', null, $current_date_sqltimestamp);
+            echo $userActivity->prepareStatementPDO();
+            $amount = 'FREE TRIAL';
+
+            if ($debug){
+
+            echo 'free trial recorded';
+        
+            }
+
+        }elseif ($session['metadata']['subscription_type'] == 2){
+
+            $userActivity->New_userActivity($userid, 'FREE_TRIAL_PREMIUM', null, $current_date_sqltimestamp);
+            echo $userActivity->prepareStatementPDO();
+            $amount = 'FREE TRIAL';
+    
+            if ($debug){
+    
+               echo 'free trial recorded';
+        
+            }
+
+        }
 
 
 
@@ -110,7 +148,19 @@ if ($session['mode'] == 'payment'){
 
         $amount = $session['amount_total'];
         $amount = intval($amount) / 100;
+
+        if ($debug){
+
+            echo 'else recorded';
+     
+         }
     
+    }
+
+    if ($debug){
+
+    die();
+
     }
 
 

@@ -314,9 +314,39 @@ if (isset($subscription_id)){
             $end_start_calculate_date = new DateTime('now', new DateTimeZone('UTC'));
             
         }
+
+        $asset_numbers_pro_subscriptions = [
+
+            1 => 4,
+            2 => 5,
+            3 => 6,
+
+
+
+        ];
+
+        $asset_numbers_premium_subscriptions = [
+
+
+
+        ];
+
     
+        if (in_array($asset_id, $asset_numbers_pro_subscriptions)){
+
+            $freeTrial = $userFunctions->hadFreeTrial($userid, 1);
+            $subscription_type = 1; //pro
+
+
+        }elseif (in_array($asset_id, $asset_numbers_premium_subscriptions)){
+
+            $freeTrial = $userFunctions->hadFreeTrial($userid, 2);
+            $subscription_type = 2; //premium
+
+
+
+        }
        
-        $freeTrial = $userFunctions->hadFreeTrial($userid);
 
         //$end_date = new DateTime($subscription_to_return['expiry_date'], new DateTimeZone('UTC'));
     
@@ -383,6 +413,7 @@ if (isset($subscription_id)){
                 ]],
                 'metadata' => [
                     'subscription_id' => $newSubscriptionid,
+                    'subscription_type' => $subscription_type,
                     'free_trial' => false,
     
                 ],
@@ -414,6 +445,7 @@ if (isset($subscription_id)){
                 ]],
                 'metadata' => [
                     'subscription_id' => $newSubscriptionid,
+                    'subscription_type' => $subscription_type,
                     'free_trial' => true,
     
                 ],

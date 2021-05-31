@@ -220,7 +220,15 @@ border-bottom-width: 1px;
                     </div>
                 </div>
             </section>
-            <!--  <?php //require BASE_URI . '/pages/learning/assets/upgradeNav.php';?> -->
+            <?php //error_reporting(E_ALL);?>
+            
+          <?php 
+          
+          $users = new users;
+
+          
+          require BASE_URI . '/pages/learning/assets/upgradeNav.php';?>
+
             <!-- <section class="slice bg-section-secondary">
       <div class="container">
         <div class="d-flex flex-row-reverse mt-1 align-items-end">
@@ -442,7 +450,7 @@ border-bottom-width: 1px;
                     
                 </div>
             </section>
-            <section class="slice slice-lg bg-gradient-dark">
+            <!-- <section class="slice slice-lg bg-gradient-dark">
                 <div class="container">
                     <div class="mb-5 text-center">
                         <h3 class=" mt-4">GIEQs Pro Subscription</h3>
@@ -534,7 +542,7 @@ border-bottom-width: 1px;
                         notice. <br />If you have an active subscription you will be notified of pricing changes.</p>
 
                 </div>
-            </section>
+            </section> -->
 
             <!-- Current studies -->
 

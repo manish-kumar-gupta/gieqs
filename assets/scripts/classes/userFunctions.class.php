@@ -1555,9 +1555,21 @@ public function returnEmails($users)
 
 	
 
-		public function hadFreeTrial($userid){
+		public function hadFreeTrial($userid, $subscription_type){
 
 			//if superuser return ok
+
+			//modified for PREMIUM vs PRO
+
+			if ($subscription_type == 1){
+
+				$subscription_search = 'FREE_TRIAL_PRO';
+			}elseif ($subscription_type == 2){
+
+				$subscription_search = 'FREE_TRIAL_PREMIUM';
+
+
+			}
 	
 			
 	
@@ -1569,7 +1581,7 @@ public function returnEmails($users)
 	
 	
 			//$q = "SELECT count(`id`) as `count` FROM `userActivity` WHERE `user_id` = '$userid' AND `activity_time` > '$sqltimestamp' AND `session_id` <> '99'";
-			$q = "SELECT count(`id`) as `count` FROM `userActivity` WHERE `user_id` = '$userid' AND `session_id` LIKE 'FREE TRIAL'";
+			$q = "SELECT count(`id`) as `count` FROM `userActivity` WHERE `user_id` = '$userid' AND `session_id` LIKE '$subscription_search'";
 	
 			//echo $q;
 	
