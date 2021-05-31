@@ -52,7 +52,7 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                 <li class="nav-item">
                     <a class="nav-link nav-link-icon">
 
-                        <span class="nav-link-inner--text ">You are missing out on key features.   <span class="subscribe-now gieqsGold" data-assetid="5">Upgrade now!</span></span>
+                        <span class="nav-link-inner--text ">You are missing out on key features.   <span class="subscribe-now gieqsGold cursor-pointer" data-assetid="5">Upgrade now!</span></span>
                     </a>
                 </li>
                 <?php
@@ -81,7 +81,7 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                    <a class="nav-link nav-link-icon" href="<?php echo BASE_URL;?>/pages/learning/upgrade.php" class="nav-link-inner--text"
                        >
 
-                       <span class="nav-link-inner--text">You are missing out on key features.  <span class="subscribe-now gieqsGold" data-assetid="5"></span>
+                       <span class="nav-link-inner--text">You are missing out on key features.  <span class="subscribe-now gieqsGold cursor-pointer" data-assetid="5">Upgrade Now!</span>
                    </a>
                </li>
                 <?php
@@ -122,6 +122,5 @@ $url =  "{$_SERVER['REQUEST_URI']}";
         </div>
     </div>
 </nav>
-<script src=<?php echo BASE_URL . "/assets/js/generaljs.js"?>></script>
 
 <?php require BASE_URI . '/assets/scripts/purchase.php';?>

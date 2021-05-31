@@ -32,6 +32,10 @@ $assets_paid = new assets_paid;
 require_once(BASE_URI . '/assets/scripts/classes/subscriptions.class.php');
 $subscription = new subscriptions;
 
+require_once(BASE_URI . '/assets/scripts/classes/userActivity.class.php');
+$userActivity = new userActivity;
+
+
 if ($debug){
 
     error_reporting(E_ALL);
@@ -79,12 +83,42 @@ print "<pre>";
 print_r($customer);
 print "</pre>";
 
-$payment_intent = $session['payment_intent']; //check is set
-print $payment_intent;
-$subscription_id = $session['metadata']['subscription_id'];  //check is set
-$amount = $session['amount_total'];
-$amount = intval($amount) / 100;
-$currency = strtoupper($session['currency']);
+//check if this is a subscription or a fixed price
+
+if ($session['mode'] == 'payment'){
+    $payment_intent = $session['payment_intent']; //check is set
+    //print $payment_intent;
+    $subscription_id = $session['metadata']['subscription_id'];  //check is set
+    $amount = $session['amount_total'];
+    $amount = intval($amount) / 100;
+    $currency = strtoupper($session['currency']);
+
+
+}elseif ($session['mode'] == 'subscription'){
+    $payment_intent = $session['subscription']; //check is set
+    $subscription_id = $session['metadata']['subscription_id'];  //check is set
+    $currency = strtoupper($session['currency']);
+    if ($session['metadata']['free_trial'] === true){
+
+        $userActivity->New_userActivity($userid, 'FREE TRIAL', null, $current_date_sqltimestamp);
+        $userActivity->prepareStatementPDO();
+        $amount = 'FREE TRIAL';
+
+
+
+    }else{
+
+        $amount = $session['amount_total'];
+        $amount = intval($amount) / 100;
+    
+    }
+
+
+}
+
+
+
+
 
 if ($subscription->Return_row($subscription_id)){ //if the subscription already exist
 
@@ -324,6 +358,8 @@ if ($debug){
 //redirect to page with positive outcome
 
 //$page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $subscription_id;
+
+
 header("Location: $page");
 die();
 

@@ -2264,9 +2264,25 @@ public function getSubscribableProgrammesArray_unified ($programmesSubscribable,
 
                 if (isset($value2['sessionid'])){
 
-                    $unifiedarray[$x]['videos'][$y] = $this->programmeView->getVideoURL($value2['sessionid']);
-                    //$matches[]['programme_id'] = $value;
+
+                    $videosArray = null;
+                    $videosArray = $this->programmeView->getVideoURLArray($value2['sessionid']);
+
+                    foreach ($videosArray as $key3=>$value3){
+
+                        $unifiedarray[$x]['videos'][] = $value3;
+
+                    }
+
+                    
+
+                    
                     $y++;
+
+
+
+
+
                 }
 
             }
@@ -2337,6 +2353,16 @@ public function getSubscribableProgrammesArray_videos ($programmesSubscribable, 
                     $videosArray = null;
                     $videosArray = $this->programmeView->getVideoURLArray($value2['sessionid']);
 
+                    if ($debug){
+
+                        echo 'Outcome videos array for session  ' . $value2['sessionid'];
+                        //print_r($videos);
+                        
+                    
+                        print_r($videosArray);
+                        echo '<br/><br/>';
+                    }
+
                     foreach ($videosArray as $key3=>$value3){
 
                         $videos[] = $value3;
@@ -2359,6 +2385,7 @@ public function getSubscribableProgrammesArray_videos ($programmesSubscribable, 
         
         
         if ($debug){
+            echo '<br/><br/>';
             echo 'Outcome videos array is ';
             print_r($videos);
             echo '<br/><br/>';
@@ -2602,11 +2629,37 @@ public function userAssetsAccessArray($matched_programmes, $userid, $debug){
 
 public function checkVideoProgrammeAspect($videoid, $userid, $debug){
 
+    //$debug=true;
+
     if ($this->isVideoContainedWithinAnySubscribableProgramme($videoid, $debug)){
 
-        $access = $this->isVideoContainedWithinAnySubscribableProgramme($videoid, $debug);
+        //$access = $this->isVideoContainedWithinAnySubscribableProgramme($videoid, $debug);
+        $access = $this->isVideoContainedWithinAnySubscribableProgramme($videoid, false);
+
+        if ($debug){
+
+            echo '<br/></br>access is ';
+            print_r($access);
+            echo '<br/></br>';
+
+        
+
+        }
+
     
-        $access2 = $this->getProgrammeidVideo($access, $videoid, $debug);
+        //$access2 = $this->getProgrammeidVideo($access, $videoid, $debug);
+        $access2 = $this->getProgrammeidVideo($access, $videoid, false);
+
+        if ($debug){
+
+            echo '<br/></br>access2 is ';
+            print_r($access2);
+            echo '<br/></br>';
+
+        
+
+        }
+
     
         if (is_array($access2)){
     
@@ -3598,7 +3651,7 @@ public function returnVideoDenominatorSelect2()
                     
                         //check there is no access via a programme
                     
-                        $access3 = $this->checkVideoProgrammeAspect($value['id'], $userid, false);
+                        $access3 = $this->checkVideoProgrammeAspect($value['id'], $userid, true);
                     
                         if ($access3 === false){ //contained within a programme and no access to this programme
                     

@@ -31,20 +31,64 @@ $assets_paid = new assets_paid;
 require_once(BASE_URI . '/assets/scripts/classes/subscriptions.class.php');
 $subscription = new subscriptions;
 
+//echo'hello';
+
+//echo $users->getendoscopistType();
+
+$endoscopistType = [];
 
 if ($users->getendoscopistType() == ''){
 
-    echo false;
+    $endoscopistType['typeFilled'] = false;
 
-}else if (is_numeric(intval($users-getendoscopistType()))){
+}else if (is_numeric(intval($users->getendoscopistType()))){
 
-    echo true;
+    $endoscopistType['typeFilled'] = true;
+
+    if ($users->gettrainee() == ''){
+
+        $endoscopistType['endoscopistType'] = $users->getendoscopistType();
+
+
+        $endoscopistType['traineeFilled'] = false;
+
+
+    }else if (is_numeric(intval($users->gettrainee()))){
+
+        $endoscopistType['endoscopistType'] = $users->getendoscopistType();
+        $endoscopistType['trainee'] = $users->gettrainee();
+
+
+    }
 
 }else{
 
-    echo false;
+    $endoscopistType['typeFilled'] = false;
 }
 
+
+//determine which asset
+
+if ($endoscopistType['endoscopistType'] == '1' && $endoscopistType['trainee'] == '1'){
+
+    $endoscopistType['asset'] = 5;
+
+}elseif ($endoscopistType['endoscopistType'] == '1' && $endoscopistType['trainee'] != '1'){
+
+    $endoscopistType['asset'] = 4;
+
+}elseif ($endoscopistType['typeFilled'] === true && $endoscopistType['traineeFilled'] === true){
+
+    $endoscopistType['asset'] = 6;
+
+}else{
+
+    //do nothing
+}
+
+
+
+echo json_encode($endoscopistType);
 
 
 

@@ -1,5 +1,7 @@
 <!-- Modals NEW GENERIC -->
 
+
+
 <div class="modal modal-new" id="modal_success" tabindex="-1" role="dialog" aria-labelledby="modal-new"
     aria-hidden="true">
     <div class="modal-lg modal-dialog modal-dialog-centered" role="document">
@@ -117,8 +119,8 @@
         <button type="button" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</button>
         <form id="confirm-new" action="<?php echo $form_action_path;?>" method="POST">
             <input type="hidden" id="asset_id_hidden" name="asset_id" value="">
-            <input type="hidden" id="course_date" name="course_date"
-                value="<?php echo date_format($programmeDate, "Y-m-d H:i:s");?>">
+            <!-- <input type="hidden" id="course_date" name="course_date"
+                value="<?php //echo date_format($programmeDate, "Y-m-d H:i:s");?>"> -->
             <!-- CHANGE ME UPDATE TODO MAKE THIS COME FROM THE PROGRAM -->
 
             <input type="submit" id="button-confirm-new" class="btn btn-sm btn-white button-confirm-new"
@@ -133,6 +135,19 @@
 
 
 <!-- Modals SUBSCRIPTION GENERIC -->
+
+<?php
+if ($users){
+
+if ($userid){
+
+    $users->Load_from_key($userid);
+
+}
+
+}
+
+?>
 
 <div class="modal modal-subscribe-new" id="modal_subscribe" tabindex="-1" role="dialog" aria-labelledby="modal-new"
     aria-hidden="true">
@@ -155,7 +170,16 @@
                     <p class="heading h5 mt-4">Subscription : <span class="text-white" id="asset-name"></span></p>
 
                     <p class="text-white"><span class="text-muted" id="asset-type"></span></p>
-                    <p class="text-white">Type : <select id="subscription_type"><option value='1' selected>Physician</option><option value='2'>Trainee</option><option value='3'>Medical Student / Nurse</option><select></p>
+                    <p class="text-white">Type : <span class="text-muted" id="user-type">
+                        
+                    <?php if ($users->gettrainee() == 1){echo "Trainee ";}?>
+                        
+                        <?php if ($users->getendoscopistType() == 1){echo "Medical Endoscopist";}
+                        if ($users->getendoscopistType() == 2){echo "Surgical Endoscopist";}
+                        if ($users->getendoscopistType() == 3){echo "Nurse Endoscopist";}
+                        if ($users->getendoscopistType() == 4){echo "Endoscopy Nurse (assistant)";}
+                        if ($users->getendoscopistType() == 5){echo "Medical Student";}
+                        if ($users->getendoscopistType() == 6){echo "Nursing Student";}?></span><span class="text-muted">  - you can change this in <a href="<?php echo BASE_URL . '/pages/learning/pages/account/profile.php';?>">my account</a>.</span></p>
                     <p class="text-white">Duration : <span class="text-muted" id="renew-frequency"></span><span
                             class="text-muted"> Month(s) with automatic renewal until cancelled</span></p>
                     <p class="text-white">Cost :
@@ -167,7 +191,7 @@
                             }else{?>
 
                         <span class="text-muted" id="cost">&euro; </span> <span class="text-muted">per month</span>
-                    </p>6
+                    </p>
 
                     <?php }?>
 
@@ -200,6 +224,9 @@
 
             <?php if (!($access_validated)){?>
 
+                <p class="text-sm mt-4">
+                To take advantage of reduced pricing and access trainee or medical student rates please update your public profile with this information in <a href="<?php echo BASE_URL . '/pages/learning/pages/account/profile.php';?>">my account</a>.
+            </p<>
             <p class="text-sm mt-4">
                 By clicking Start Payment you will be taken to our customised checkout (partnered with Stripe) to start
                 the payment process.
@@ -427,7 +454,19 @@ $(document).ready(function() {
         var formObject = $form.serializeObject();
 
 
-        formObject['currentPage'] = '/pages/program/program_generic.php?id=' + asset_id;
+        <?php
+
+        $url = $_SERVER['REQUEST_URI'];
+
+        $url = str_replace('/dashboard/gieqs' , '', $url);
+        
+        //preg_replace('/^dashboard/gieqs/', '', $url);
+
+
+
+        ?>
+
+        formObject['currentPage'] = '<?php echo $url;?>';
 
         console.dir(formObject);
 
@@ -439,7 +478,7 @@ $(document).ready(function() {
         method: "POST",
       }) */
 
-        fetch(siteRoot + "pages/learning/scripts/subscriptions/create-checkout-session-subscription.php", {
+        fetch(siteRoot2 + "pages/learning/scripts/subscriptions/create-checkout-session-subscription.php", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -541,6 +580,10 @@ $(document).ready(function() {
 
         console.log(asset_id);
         $('.modal-footer #button-confirm-new').attr('data-assetid', '' + asset_id);
+
+
+
+      
 
         //get the modal data
         const dataToSend = {
@@ -646,121 +689,160 @@ $(document).ready(function() {
 
     });
 
-    $('.subscribe-now').click(function(event) {
+    $('.subscribe-now').click(function (event) {
 
-var button = $(this);
+        var button = $(this);
 
-$(this).append('<i class="fas fa-circle-notch fa-spin ml-2"></i>');
-$(this).attr('disabled', true);
-//var asset_type = $(this).data('assettype');
-var asset_id = $(this).data('assetid');
-
-console.log(asset_id);
-$('.subscribe-footer #button-confirm-new').attr('data-assetid', '' + asset_id);
-
-//get the modal data
-const dataToSend = {
-
-    asset_id: asset_id,
-
-}
-
-const jsonString = JSON.stringify(dataToSend);
-
-if (userid) {
-
-    //closed version
-    var url = siteRoot2 +
-        "pages/learning/scripts/subscriptions/get_new_subscription_data.php";
-
-} else {
-
-    //open version
-
-    var url = siteRoot2 +
-        "pages/learning/scripts/subscriptions/get_new_subscription_data_open.php";
-
-}
-
-var request = $.ajax({
-    url: url,
-    type: "POST",
-    contentType: "application/json",
-    data: jsonString,
-    timeout: 5000,
-    fail: function(xhr, textStatus, errorThrown) {
-        alert(
-            'Something went wrong. We could not load the subscription data.'
-        );
-        $(this).find('i').remove();
-        $(this).attr('disabled', false);
-    }
-});
-
-request.done(function(data) {
+        $(this).append('<i class="fas fa-circle-notch fa-spin ml-2"></i>');
+        $(this).attr('disabled', true);
+        //var asset_type = $(this).data('assettype');
+       
 
 
-    data = data.trim();
-    console.log(data);
 
-    try {
+        var request3 = $.ajax({
+            url: rootFolder2 +
+                "pages/learning/scripts/subscriptions/check_user_type_filled.php",
+            type: "POST",
+            contentType: "application/json",
+            timeout: 5000,
+            fail: function (xhr, textStatus, errorThrown) {
+                alert(
+                    'Something went wrong. Please try that again.'
+                );
+                $(this).find('i').remove();
+                $(this).attr('disabled', false);
+            }
+        });
 
-        externalTest = $.parseJSON(data);
-        console.dir(externalTest);
-        if (data) {
+        request3.done(function (data) {
 
 
-            try {
+            data = data.trim();
+            var result = JSON.parse(data);
+            console.dir(result);
 
-                if (externalTest.location_jump) {
+            if (result.typeFilled === true) {
 
-                    window.location.href = externalTest.location_jump;
+
+                var asset_id = result.asset;
+
+                console.log(asset_id);
+                $('.subscribe-footer #button-confirm-new').attr('data-assetid', '' + asset_id);
+
+                //get the modal data
+                const dataToSend = {
+
+                    asset_id: asset_id,
 
                 }
 
-            } catch (error) {
+                //first check that user type is filled
 
+                const jsonString = JSON.stringify(dataToSend);
+
+                //alert('true');
+
+                var request = $.ajax({
+                    url: siteRoot2 +
+                "pages/learning/scripts/subscriptions/get_new_subscription_data.php",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: jsonString,
+                    timeout: 5000,
+                    fail: function (xhr, textStatus, errorThrown) {
+                        alert(
+                            'Something went wrong. We could not load the subscription data.'
+                        );
+                        $(this).find('i').remove();
+                        $(this).attr('disabled', false);
+                    }
+                });
+
+                request.done(function (data) {
+
+
+                    data = data.trim();
+                    console.log(data);
+
+                    try {
+
+                        externalTest = $.parseJSON(data);
+                        console.dir(externalTest);
+                        if (data) {
+
+
+                            try {
+
+                                if (externalTest.location_jump) {
+
+                                    window.location.href = externalTest.location_jump;
+
+                                }
+
+                            } catch (error) {
+
+
+
+                            }
+
+
+
+
+                            $('.modal-subscribe-new #asset-name').text(externalTest.asset_name);
+                            $('.modal-subscribe-new #asset-type').text(externalTest.asset_type);
+                            $('.modal-subscribe-new #renew-frequency').text(externalTest.renew_frequency);
+                            $('.modal-subscribe-new #asset-description').text(externalTest.description);
+                            $('.modal-subscribe-new #asset_id_hidden').val(externalTest.asset_id);
+                            $('.modal-subscribe-new #cost').text(externalTest.cost + ' euro');
+                            //fill trainee here 
+
+
+                            $('.modal-subscribe-new').modal('show');
+                            $(button).find('i').remove();
+                            $(button).attr('disabled', false);
+
+                        } else {
+
+                            alert('Something went wrong. We could not load the subscription data.');
+                            $(this).find('i').remove();
+                            $(this).attr('disabled', false);
+
+
+                        }
+
+                    } catch (error) {
+
+                        alert(data);
+                        $(button).find('i').remove();
+                        $(button).attr('disabled', false);
+
+                    }
+
+
+                });
+
+            } else {
+
+                alert('We need to check your user type first.  Please update your profile with your status, either Endoscopist, Medical Student or Nurse, and ensure you specify trainee or not.  Then try this again.');
+                PopupCenter(siteRoot2 + '/pages/learning/pages/account/profile.php', 'Update your profile', 600, 400);
 
 
             }
 
 
 
-
-            $('.modal-subscribe-new #asset-name').text(externalTest.asset_name);
-            $('.modal-subscribe-new #asset-type').text(externalTest.asset_type);
-            $('.modal-subscribe-new #renew-frequency').text(externalTest.renew_frequency);
-            $('.modal-subscribe-new #asset-description').text(externalTest.description);
-            $('.modal-subscribe-new #asset_id_hidden').val(externalTest.asset_id);
-            $('.modal-subscribe-new #cost').text(externalTest.cost + ' euro');
+        })
 
 
-            $('.modal-subscribe-new').modal('show');
-            $(button).find('i').remove();
-            $(button).attr('disabled', false);
+        //then and only then go to the subscribe page
 
-        } else {
-
-            alert('Something went wrong. We could not load the subscription data.');
-            $(this).find('i').remove();
-            $(this).attr('disabled', false);
+       
 
 
-        }
-
-    } catch (error) {
-
-        alert(data);
-        $(button).find('i').remove();
-        $(button).attr('disabled', false);
-
-    }
 
 
-});
-
-
-});
+    });
 
     $(document).on('click', '#submitPreRegister', function(event) {
 

@@ -331,7 +331,7 @@ if (isset($subscription_id)){
     
     
         $checkout_session = \Stripe\Checkout\Session::create([
-            'payment_method_types' => ['card'],
+            'payment_method_types' => ['card', 'bancontact'],
             'line_items' => [[
               'price_data' => [
                 'currency' => 'eur',

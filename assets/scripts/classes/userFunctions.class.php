@@ -1553,6 +1553,53 @@ public function returnEmails($users)
 		}
 
 
+	
+
+		public function hadFreeTrial($userid){
+
+			//if superuser return ok
+	
+			
+	
+			//if the user has had activity within 15 minutes deny second attempt
+			//unless logged out (logout in sessionid)
+	
+			
+			//15 mins ago
+	
+	
+			//$q = "SELECT count(`id`) as `count` FROM `userActivity` WHERE `user_id` = '$userid' AND `activity_time` > '$sqltimestamp' AND `session_id` <> '99'";
+			$q = "SELECT count(`id`) as `count` FROM `userActivity` WHERE `user_id` = '$userid' AND `session_id` LIKE 'FREE TRIAL'";
+	
+			//echo $q;
+	
+			$result = $this->connection->RunQuery($q);
+	
+							
+				$nRows = $result->rowCount();
+	
+				while($row = $result->fetch(PDO::FETCH_ASSOC)){
+	
+					$count = $row['count'];
+	
+	
+				}
+	
+				//echo $count;
+				
+				if ($count > 0){
+	
+					return true;
+	
+					
+				}else{
+	
+					return false; // allow login
+				}
+	
+	
+		}
+	
 
 	
 

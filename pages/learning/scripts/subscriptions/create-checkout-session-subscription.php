@@ -21,6 +21,11 @@ error_reporting(E_ALL);
 require_once(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
 $assetManager = new assetManager;
 
+require_once(BASE_URI . '/assets/scripts/classes/userActivity.class.php');
+$userActivity = new userActivity;
+
+require_once(BASE_URI . '/assets/scripts/classes/userFunctions.class.php');
+$userFunctions = new userFunctions;
 
 
 require_once(BASE_URI . '/assets/scripts/classes/assets_paid.class.php');
@@ -311,7 +316,8 @@ if (isset($subscription_id)){
         }
     
        
-    
+        $freeTrial = $userFunctions->hadFreeTrial($userid);
+
         //$end_date = new DateTime($subscription_to_return['expiry_date'], new DateTimeZone('UTC'));
     
         $interval = 'P' . $subscription_to_return['renew_frequency'] . 'M';
@@ -324,32 +330,105 @@ if (isset($subscription_id)){
 
         
         $end_date_sqltimestamp = date_format($end_start_calculate_date, 'Y-m-d H:i:s');
+
+        $end_trial_sqltimestamp = date_format($trial_start_calculate_date, 'Y-m-d H:i:s');
+
+
+        if ($freeTrial){
+
+            //previous free trial , so standard subscription
+
+            $subscription->New_subscriptions($userid, $subscription_to_return['asset_id'], $current_date_sqltimestamp, $end_date_sqltimestamp, '0', '1', NULL);
+
+
+        }else{
+
+
+            $subscription->New_subscriptions($userid, $subscription_to_return['asset_id'], $current_date_sqltimestamp, $end_trial_sqltimestamp, '0', '1', NULL);
+
+
+        }
     
-    
-        $subscription->New_subscriptions($userid, $subscription_to_return['asset_id'], $current_date_sqltimestamp, $end_date_sqltimestamp, '0', '1', NULL);
     
         $newSubscriptionid = $subscription->prepareStatementPDO();
 
 
         $stripe_cost = intval($subscription_to_return['cost']) * 100;
 
-    
-    
-        $checkout_session = \Stripe\Checkout\Session::create([
-            'payment_method_types' => ['card'],
-            'line_items' => [[
-              'price' => 'price_1ItzxQEBnLMnXjogeyFdtHsd',
-              'quantity' => 1,
-            ]],
-            'metadata' => [
-                'subscription_id' => $newSubscriptionid,
+        //define price ids
 
-            ],
-            'mode' => 'subscription',
-            'success_url' => $YOUR_DOMAIN . '/pages/learning/scripts/subscriptions/success_stripe.php?session_id={CHECKOUT_SESSION_ID}',
-            'cancel_url' => $YOUR_DOMAIN . $data['currentPage'] . '&action=register',
-            'subscription_data' => ['trial_end' => date_format($trial_start_calculate_date, 'U')],
-          ]);
+        $price_ids = [
+
+            4 => 'price_1ItzuxEBnLMnXjogxXUcffRY',
+            5 => 'price_1ItzxQEBnLMnXjogeyFdtHsd', 
+            6 => 'price_1ItzxwEBnLMnXjogd1xjYkn0',
+
+        ];
+
+        //had a free trial previously?
+
+
+        if ($freeTrial){
+
+            //user had free trial before
+
+            //echo 'Already HAd free Trial';
+
+
+            $checkout_session = \Stripe\Checkout\Session::create([
+                'payment_method_types' => ['card'],
+                'line_items' => [[
+                  'price' => $price_ids[$asset_id],
+                  'quantity' => 1,
+                ]],
+                'metadata' => [
+                    'subscription_id' => $newSubscriptionid,
+                    'free_trial' => false,
+    
+                ],
+                'mode' => 'subscription',
+                'success_url' => $YOUR_DOMAIN . '/pages/learning/scripts/subscriptions/success_stripe.php?session_id={CHECKOUT_SESSION_ID}',
+                'cancel_url' => $YOUR_DOMAIN . $data['currentPage'],
+              ]);
+
+
+        }else{
+
+            //allow free trial
+
+            //and record
+
+            if ($debug){
+
+            echo 'had no free trial';
+            echo 'tell Stripe';
+
+            }
+
+
+            $checkout_session = \Stripe\Checkout\Session::create([
+                'payment_method_types' => ['card'],
+                'line_items' => [[
+                  'price' => $price_ids[$asset_id],
+                  'quantity' => 1,
+                ]],
+                'metadata' => [
+                    'subscription_id' => $newSubscriptionid,
+                    'free_trial' => true,
+    
+                ],
+                'mode' => 'subscription',
+                'success_url' => $YOUR_DOMAIN . '/pages/learning/scripts/subscriptions/success_stripe.php?session_id={CHECKOUT_SESSION_ID}',
+                'cancel_url' => $YOUR_DOMAIN . $data['currentPage'],
+                'subscription_data' => ['trial_end' => date_format($trial_start_calculate_date, 'U')],
+              ]);
+
+
+        }
+
+    
+    
+        
           
           //print_r($checkout_session);
           

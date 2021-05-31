@@ -531,7 +531,6 @@
         <!-- Purpose JS -->
         <script src="../../assets/js/purpose.js"></script>
         <script src="<?php echo BASE_URL;?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
-        <!-- <script src="assets/js/generaljs.js"></script> -->
         <script>
         var videoPassed = $("#id").text();
         </script>

@@ -140,6 +140,56 @@ class programmeReports
 
         }
 
+        public function generateReportv2($facultyid, $programmeids)
+        {
+        
+            $programmestring = implode("' OR a.`id` = '", $programmeids);
+
+            //report card per faculty
+            $q = "Select a.`id` as `programmeid`, a.`date`, 
+            c.`timeFrom`, c.`timeTo`, c.`title` as `sessionTitle`, c.`description` as `sessionDescription`,
+            e.`title` as `sessionItemTitle`, e.`description` as `sessionItemDescription`, e.`timeFrom` as `sessiontimeFrom`, e.`timeTo` as `sessiontimeTo`, e.`live`, f.`facultyid` 
+            from `programme` as a 
+            INNER JOIN `programmeOrder` as b on a.`id` = b.`programmeid` 
+            INNER JOIN `session` as c on b.`sessionid` = c.`id` 
+            INNER JOIN `sessionOrder` as d on c.`id` = d.`sessionid` 
+            INNER JOIN `sessionItem` as e on d.`sessionItemid` = e.`id` 
+            INNER JOIN `sessionModerator` as f on c.`id` = f.`sessionid` 
+            WHERE 
+            (a.`id` = '$programmestring')
+            AND ((e.`faculty` = $facultyid) OR (f.`facultyid` = $facultyid))
+            GROUP BY c.`id` 
+            ORDER BY a.`date` ASC, c.`timeFrom` ASC";
+
+        echo $q . '<br><br>';
+
+
+
+        $result = $this->connection->RunQuery($q);
+        $rowReturn = array();
+        $x = 0;
+        $nRows = $result->rowCount();
+
+        if ($nRows > 0) {
+
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                $rowReturn[] = array_map('utf8_encode', $row);
+            }
+        
+            return $rowReturn;
+
+        } else {
+            
+
+            //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+            $rowReturn = [];
+            
+            return $rowReturn;
+        }
+
+    }
+
         public function generateModeratorsForSession($sessionid)
             {
             

@@ -20,7 +20,6 @@
 
       require BASE_URI . '/head.php';
 
-      $debug = true;
       //error_reporting(E_ALL);
       
       $general = new general;
@@ -158,7 +157,8 @@
 		
 		}
 				        
-                        
+        $debug = false;
+             
                         
 		
         ?>
@@ -409,6 +409,8 @@ $subscriptions = $assetManager->returnCombinationUserSubscription($userid);
 
                                         <?php
 
+                                        error_reporting(E_ALL);
+
                                         if ($subscriptionsList){
 
 foreach ($subscriptionsList as $key=>$value){
@@ -422,7 +424,13 @@ foreach ($subscriptionsList as $key=>$value){
 
   $start_date_display = $start_date;
 
-  $start_date_display->setTimezone(new DateTimeZone($users->gettimezone()));
+  if ($users->gettimezone() != ''){
+
+    $start_date_display->setTimezone(new DateTimeZone($users->gettimezone()));
+
+
+  }
+
 
   $expiry_date = null;
 
@@ -431,9 +439,13 @@ foreach ($subscriptionsList as $key=>$value){
   $expiry_date = new DateTime($value['expiry_date'], new DateTimeZone('UTC'));
 
   $expiry_date_display = $expiry_date;
+  
+  if ($users->gettimezone() != ''){
 
 
   $expiry_date->setTimezone(new DateTimeZone($users->gettimezone()));
+
+  }
 
   $assetManager->subscription_state($value['id'], $debug);
 

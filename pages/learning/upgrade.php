@@ -30,85 +30,115 @@
     <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
 
-    
+
 
     <style>
-        .gieqsGold {
+    td {
+        white-space: normal !important;
+        word-wrap: break-word;
+    }
 
-            color: rgb(238, 195, 120);
+    table {
+        table-layout: fixed;
+    }
+
+    .header-row{
+
+      color: rgb(238, 195, 120);
+background-color: #1b385d;
+font-size: .75rem;
+/* padding-top: .75rem;
+padding-bottom: .75rem; */
+letter-spacing: 1px;
+text-transform: uppercase;
+border-bottom-width: 1px;
+    }
+
+    .text-muted{
+
+      /* font-size: 1.025rem !important;
+      font-weight: 300 !important; */
+      color : #f0f0f0 !important;
+    }
+
+    .gieqsGold {
+
+        color: rgb(238, 195, 120) !important;
 
 
-        }
+    }
 
-        .tagButton {
+    .tagButton {
 
-            cursor: pointer;
+        cursor: pointer;
 
-        }
+    }
 
-        .tagCard {
-
-background-color: #1b385d75; 
-
-
-
-}
-
-.tagCardHeader{
-
-    background-color: #162e4d;
-
-}
-
-        
-
-.cursor-pointer {
-
-    cursor: pointer;
-
-}
-
-@media (min-width: 992px) {
     .tagCard {
 
-            
-left: -50vw;
-top: -20vh;
+        background-color: #1b385d75;
 
 
-}
-}
 
-@media (min-width: 1200px) {
-        #chapterSelectorDiv{
+    }
 
-            
-                
-                top:-3vh;
-            
+    .tagCardHeader {
+
+        background-color: #162e4d;
+
+    }
+
+
+
+    .cursor-pointer {
+
+        cursor: pointer;
+
+    }
+
+    @media (min-width: 992px) {
+        .tagCard {
+
+
+            left: -50vw;
+            top: -20vh;
+
 
         }
-        #playerContainer{
+    }
 
-                margin-top:-20px;
+    @media (min-width: 1200px) {
+        #chapterSelectorDiv {
+
+
+
+            top: -3vh;
+
 
         }
+
+        #playerContainer {
+
+            margin-top: -20px;
+
+        }
+
         #collapseExample {
 
-            position: absolute; 
-            max-width: 50vh; 
+            position: absolute;
+            max-width: 50vh;
             z-index: 25;
         }
 
         #selectDropdown {
 
-            
+
             z-index: 25;
-            }
+        }
 
-            
 
-}
+
+    }
     </style>
 
 
@@ -125,10 +155,10 @@ top: -20vh;
 
         <?php require BASE_URI . '/pages/learning/includes/nav.php';?>
 
-        
 
 
-        
+
+
 
 
     </header>
@@ -147,46 +177,51 @@ top: -20vh;
                         
 		
         ?>
-        
-        <!-- load all video data -->
 
-        <body>
+    <!-- load all video data -->
 
-<div id="id" style="display:none;"><?php if ($id){echo $id;}?></div>
+    <body>
 
-<div class="main-content">
-    <!-- Header (account) -->
-    <section class="page-header bg-dark-dark d-flex align-items-end pt-8 mt-10" style="background-image: url('<?php echo BASE_URL;?>/assets/img/covers/learning/1v2.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;" data-offset-top="#header-main">
+        <div id="id" style="display:none;"><?php if ($id){echo $id;}?></div>
 
-   
-      <!-- Header container -->
-      <div class="container pt-0 pt-lg-0" >
-        <div class="row" >
-          <div class=" col-lg-12">
-            <!-- Salute + Small stats -->
-            <div class="row align-items-center mb-4">
-              <div class="col-auto mb-4 mb-md-0">
-                <span class="h2 mb-0 text-white text-bold d-block"><strong>Upgrade</strong> your GIEQs Online Access. <?php //echo $_SESSION['firstname'] . ' ' . $_SESSION['surname']?></span>
-                <span class="text-white">Get more cases, tagging, links to published evidence and more.</span>
-              </div>
-              <!-- video -->
-              <div class="col-auto flex-fill d-none d-xl-block">
-              <!-- <div id="videoDisplay" class="embed-responsive embed-responsive-16by9">
+        <div class="main-content">
+            <!-- Header (account) -->
+            <section class="page-header bg-dark-dark d-flex align-items-end pt-8 mt-10"
+                style="background-image: url('<?php echo BASE_URL;?>/assets/img/covers/learning/1v2.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;"
+                data-offset-top="#header-main">
+
+
+                <!-- Header container -->
+                <div class="container pt-0 pt-lg-0">
+                    <div class="row">
+                        <div class=" col-lg-12">
+                            <!-- Salute + Small stats -->
+                            <div class="row align-items-center mb-4">
+                                <div class="col-auto mb-4 mb-md-0">
+                                    <span class="h2 mb-0 text-white text-bold d-block"><strong>Upgrade</strong> your
+                                        GIEQs Online Access.
+                                        <?php //echo $_SESSION['firstname'] . ' ' . $_SESSION['surname']?></span>
+                                    <span class="text-white">Get more cases, tagging, links to published evidence and
+                                        more.</span>
+                                </div>
+                                <!-- video -->
+                                <div class="col-auto flex-fill d-none d-xl-block">
+                                    <!-- <div id="videoDisplay" class="embed-responsive embed-responsive-16by9">
                 <iframe  id='videoChapter' class="embed-responsive-item"
                     src='https://player.vimeo.com/video/398791515' allow='autoplay'
                     webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                     </div> -->
-            </div>
-            </div>
-            <!-- Account navigation -->
-           
-            
-          </div>
-        </div>
-      </div>
-    </section>
-   <!--  <?php //require BASE_URI . '/pages/learning/assets/upgradeNav.php';?> -->
-    <!-- <section class="slice bg-section-secondary">
+                                </div>
+                            </div>
+                            <!-- Account navigation -->
+
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--  <?php //require BASE_URI . '/pages/learning/assets/upgradeNav.php';?> -->
+            <!-- <section class="slice bg-section-secondary">
       <div class="container">
         <div class="d-flex flex-row-reverse mt-1 align-items-end">
             <a href="<?php //echo BASE_URL;?>/pages/learning/pages/account/profile.php" class="btn btn-icon btn-group-nav shadow btn-neutral mx-2">
@@ -201,116 +236,309 @@ top: -20vh;
             
         </div>
       </section> -->
-      <section class="slice slice-lg">
-        <div class="container">
-          <div class="row row-grid align-items-center justify-content-around">
-            <div class="col-lg-5 order-lg-2">
-              <div class="pr-md-4">
-                <h5 class="h3">Subscription Levels.</h5>
-                <p class="text-muted lead my-4">There are 3 levels of GIEQs online membership.  Here's how it works:
-
-                  <ul>
-
-                  <li class="my-2">You can sign-up for free.  <span class="gieqsGold">GIEQs Basic membership </span> contains a limited number of cases and does not give access to comments, tagging or access to published evidence.</li>
-                  <li class="my-2"><p><span class="gieqsGold">GIEQs Standard Membership</span> - if you share details of your endoscopic practice and workplace with us we will gift you standard access.   You can do this via your <a class="gieqsGold" href="<?php echo BASE_URL;?>/pages/learning/pages/account/profile.php">profile page</a>.</p>
-                <p>Standard membership allows access to the tag structure and commenting with access to more content.</p></li>
-                  <li class="my-2"><p><span class="gieqsGold">GIEQs Pro Membership</span> Those who signed up to the GIEQs Digital Congress will receive this level free for 1 month (until 8 November 2020).</p>
-                  <p>Thereafter GIEQs pro will require a small monthly subscription [month free trial available], with reduced fees for yearly subscription.</p>
-                  <p>GIEQs pro gives access to the full tag functionality of GIEQs online, 1-click access to published evidence and commenting.  Your favourite videos are tracked for easy access.</p></li>
-
-                  </ul>
-
-                </p>
-
-                
-              </div>
-            </div>
-            <div class="col-lg-6 order-lg-1">
-              <div class="position-relative" style="z-index: 10;">
-                <img alt="Image placeholder" src="<?php echo BASE_URL;?>/assets/img/learning/advertising/tagsv2.png" class="img-center img-fluid">
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="slice slice-lg bg-gradient-dark">
-            <div class="container">
-              <div class="mb-5 text-center">
-                <h3 class=" mt-4">GIEQs Pro Subscription</h3>
-                <div class="fluid-paragraph mt-3">
-                  <p class="lead lh-180">Get access to the full functionality of GIEQs Online.  <br/>Subscriptions start 9 December 2020</p>
-                </div>
-              </div>
-              <div class="pricing-container">
-                <div class="text-center mb-7">
-                  <div class="btn-group" role="group">
-                    <button id="monthly" type="button" class="btn btn-secondary active" data-pricing="monthly">Monthly billing</button>
-                    <button id="yearly" type="button" class="btn btn-secondary" data-pricing="yearly">Yearly billing</button>
+            <section class="slice slice-lg">
+                <div class="container">
+                  <div class="row row-grid align-items-center justify-content-around">
+                    <div class="col-lg-6 order-lg-1">
+                      <div class="position-relative" style="z-index: 10;">
+                          <img alt="Image placeholder"
+                              src="<?php echo BASE_URL;?>/assets/img/learning/advertising/tagsv2.png"
+                              class="img-center img-fluid">
+                      </div>
                   </div>
-                </div>
-                <div class="pricing card-group flex-column flex-lg-row mb-3">
-                  <div class="card card-pricing popular scale-110 text-center px-3 mb-5 mb-lg-0">
-                    <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white">Physician</span>
-                    <div class="card-header py-5 border-0">
-                      <div class="h1 text-primary text-center mb-0" data-pricing-value-month="5" data-pricing-value-year="50">&euro;<span class="price">5</span><span class="h6 ml-2 unit">/ per month</span></div>
-                    </div>
-                    <div class="card-body delimiter-top">
-                      <ul class="list-unstyled mb-4">
-                        <li>Full access to tag structure</li>
-                        <li>Jump rapidly between related learning</li>
-                        <li>1-click access to published evidence via PubMed</li>
-                        <li>Includes variety of cases<sup>*</sup></li>
-                        <li>Regular new material</li>
-                        <li>Cancel Anytime</li>
-                        <sup>*</sup><span class="text-sm">Other content available to buy separately</span>
-                      </ul><button type="button" class="btn btn-sm btn-neutral mb-3 trial">Get 1 month free trial!</button>
-                    </div>
-                  </div>
-                  <div class="card card-pricing  text-center px-3 mb-5 mb-lg-0">
-                    <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white">Trainee</span>
-                    <div class="card-header py-5 border-0">
-                      <div class="h1 text-primary text-center mb-0" data-pricing-value-month="3" data-pricing-value-year="30">&euro;<span class="price">3</span><span class="h6 ml-2 unit">/ per month</span></div>
-                    </div>
-                    <div class="card-body delimiter-top">
-                      <ul class="list-unstyled mb-4">
-                      <li>Full access to tag structure</li>
-                        <li>Jump rapidly between related learning</li>
-                        <li>1-click access to published evidence via PubMed</li>
-                        <li>Includes variety of cases<sup>*</sup></li>
-                        <li>Regular new material</li>
-                        <li>Cancel Anytime</li>
-                        <sup>*</sup><span class="text-sm">Other content available to buy separately</span>
-                      </ul><button type="button" class="btn btn-sm btn-neutral mb-3 trial">Get 1 month free trial!</button>
-                    </div>
-                  </div>
-                  <div class="card card-pricing text-center px-3 mb-5 mb-lg-0">
-                    <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white">Nurse / Medical Student</span>
-                    <div class="card-header py-5 border-0">
-                      <div class="h1 text-primary text-center mb-0" data-pricing-value-month="2" data-pricing-value-year="20">&euro;<span class="price">2</span><span class="h6 ml-2 unit">/ per month</span></div>
-                    </div>
-                    <div class="card-body delimiter-top">
-                      <ul class="list-unstyled mb-4">
-                      <li>Full access to tag structure</li>
-                        <li>Jump rapidly between related learning</li>
-                        <li>1-click access to published evidence via PubMed</li>
-                        <li>Includes variety of cases<sup>*</sup></li>
-                        <li>Regular new material</li>
-                        <li>Cancel Anytime</li>
-                        <sup>*</sup><span class="text-sm">Other content available to buy separately</span>
-                      </ul><button type="button" class="btn btn-sm btn-neutral mb-3 trial">Get 1 month free trial!</button>
-                    </div>
-                  </div>
-                  
-                </div>
-              </div>
-              <p class="mt-6 text-muted">Does not include access to all content.  Pricing subject to change without notice.  <br/>If you have an active subscription you will be notified of pricing changes.</p>
+                    <div class="col-lg-5 order-lg-2">
+                        <div class="pr-md-4">
+                            <h5 class="h3">Subscription Levels.</h5>
+                            <p class="text-muted lead my-4">There are 4 levels of GIEQs online membership. Here's
+                                how it works:
 
-            </div>
-          </section>
+                            <ul>
+
+                                <li class="my-1">You can sign-up for free. <span class="gieqsGold">GIEQs FREE
+                                        membership </span> contains a limited number of cases and does not give
+                                    access to comments, tagging or access to published evidence.</li>
+                                <li class="my-1">
+                                    <p><span class="gieqsGold">GIEQs BASIC Membership</span></p><p>If you share
+                                        details of your endoscopic practice and workplace via My Public Profile with us we will gift you
+                                        standard access. You can do this via your <a class=""
+                                            href="<?php echo BASE_URL;?>/pages/learning/pages/account/profile.php">profile
+                                            page</a>.</p>
+                                    <p>BASIC membership allows access to direct published evidence links and gives limited
+                                        access to PREMIUM content packages.</p>
+                                </li>
+                                <li class="my-1">
+                                    <p><span class="gieqsGold">GIEQs PRO Membership</span>
       
-        <!-- Current studies -->
-   
-        <!--
+                                      
+                                    <p>GIEQs PRO gives access to the full tag functionality of GIEQs online, 1-click
+                                        access to published evidence and commenting. Your favourite videos are
+                                        tracked for easy access.  More PREMIUM content packages are available and you get (non-live) access to 2 ONLINE COURSES of your choice per year</p>
+                                </li>
+                                <li class="my-1">
+                                  <p><span class="gieqsGold">GIEQs PREMIUM Membership</span>
+    
+                                    
+                                  <p>GIEQs PREMIUM gives all the advantages of PRO plus access to ALL courses and PREMIUM CONTENT packages on the site.  You also get discounted access to the yearly symposium if you are a member for > 3 months and catch-up access to last years symposium. </p>
+                              </li>
+
+                            </ul>
+
+                            </p>
+
+
+                        </div>
+                    </div>
+                    
+                </div>
+              </div>
+            </section>
+            <hr>
+            <section class="slice slice-lg">
+              <div class="container">
+                <p><h1 class="display-5">Subscription Details</h1></p>
+                    <div class="row table-responsive-md">
+                        <table class="table table-dark">
+                        <caption>1 free trial of Pro / Premium per user is available for 14 days.  You can peek at any paid content for 15 minutes once per user.  Prices subject to change without notice. Consult our terms and conditions before subscribing.</caption>
+                            <thead>
+                                <tr class="d-flex ">
+                                    <th class="col-4 gieqsGold" scope="col"> </th>
+                                    <th class="col-2 gieqsGold text-center " scope="col"><h3 class="my-auto">Free</h3></th>
+                                    <th class="col-2 gieqsGold text-center" scope="col"><h3 class="my-auto">Basic</h3></th>
+                                    <th class="col-2 gieqsGold text-center" scope="col"><h3 class="my-auto">Pro</h3>billed monthly</th>
+                                    <th class="col-2 gieqsGold text-center" scope="col"><h3 class="my-auto">Premium</h3>billed monthly</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- <tr class="d-flex header-row">
+                                    <th class="col-4" scope="row">Cost</th>
+                                    <td class="col-2 text-center text-muted"> </td>
+                                    <td class="col-2 text-center text-muted"> </td>
+                                    <td class="col-2 text-center text-muted"> </td>
+                                    <td class="col-2 text-center text-muted"> </td>
+                                </tr> -->
+                                <tr class="d-flex text-white">
+                                <td class="col-4">Medical Endoscopist</td>
+                                    <td class="col-2 text-center text-muted">FREE</td>
+                                    
+                                    <td class="col-2 text-center text-muted">Provide your profile details</td>
+                                    <td class="col-2 text-center text-muted">€ 7</td>
+                                    <td class="col-2 text-center text-muted">€ 15</td>
+                                </tr>
+                                <tr class="d-flex text-white">
+                                    <td class="col-4">Trainee endoscopist</td>
+                                    <td class="col-2 text-center text-muted">FREE</td>
+                                    <td class="col-2 text-center text-muted">Provide your profile details</td>
+                                    <td class="col-2 text-center text-muted">€ 5</td>
+                                    <td class="col-2 text-center text-muted">€ 10</td>
+                                </tr>
+                                <tr class="d-flex text-white">
+                                    <td class="col-4">Nursing endoscopist / Medical Student / Nursing assistant</td>
+                                    <td class="col-2 text-center text-muted">FREE</td>
+                                    <td class="col-2 text-center text-muted">Provide your profile details</td>
+                                    <td class="col-2 text-center text-muted">€ 3</td>
+                                    <td class="col-2 text-center text-muted">€ 5</td>
+                                </tr>
+                                <tr class="d-flex header-row">
+                                    <th class="col-4" scope="row">Site Functionality</th>
+                                    <td class="col-2 text-center text-muted"> </td>
+                                    <td class="col-2 text-center text-muted"> </td>
+                                    <td class="col-2 text-center text-muted"> </td>
+                                    <td class="col-2 text-center text-muted"> </td>
+                                </tr>
+                                <tr class="d-flex text-white">
+                                    <td class="col-4">Browse and enjoy free content</td>
+                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                </tr>
+                                <tr class="d-flex text-white">
+                                    <td class="col-4">Patented tag-based browsing for faster learning</td>
+                                    <td class="col-2 text-center text-muted">x</td>
+                                    <td class="col-2 text-center text-muted">x</td>
+                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                </tr>
+                                <tr class="d-flex text-white">
+                                    <td class="col-4">Direct link to published evidence</td>
+                                    <td class="col-2 text-center text-muted">x</td>
+                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                </tr>
+                                <tr class="d-flex text-white">
+                                    <td class="col-4">Commenting</td>
+                                    <td class="col-2 text-center text-muted">x</td>
+                                    <td class="col-2 text-center text-muted">x</td>
+                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                </tr>
+                                <tr class="d-flex text-white">
+                                    <td class="col-4">Store my favourite content for faster access later</td>
+                                    <td class="col-2 text-center text-muted">x</td>
+                                    <td class="col-2 text-center text-muted">x</td>
+                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                </tr>
+                                <tr class="d-flex text-white">
+                                    <td class="col-4">Online clinical scoring systems</td>
+                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                </tr>
+                                <tr class="d-flex header-row">
+                                    <th scope="row">Content</th>
+                                    <td class="col-4"> </td>
+                                    <td class="col-2 text-center text-muted"> </td>
+                                    <td class="col-2 text-center text-muted"> </td>
+                                    <td class="col-2 text-center text-muted"> </td>
+                                </tr>
+                                <tr class="d-flex text-white">
+                                    <td class="col-4">Selection of freely available everyday endoscopy content</td>
+                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                </tr>
+                                <tr class="d-flex text-white">
+                                    <td class="col-4">Online Courses<br>(catch-up)</td>
+                                    <td class="col-2 text-center text-muted">x</td>
+                                    <td class="col-2 text-center text-muted">x</td>
+                                    <td class="col-2 text-center text-muted">&#10003;<br>(2 / year)</td>
+                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                </tr>
+                                <tr class="d-flex text-white">
+                                    <td class="col-4">Online Courses<br>(live)</td>
+                                    <td class="col-2 text-center text-muted">x</td>
+                                    <td class="col-2 text-center text-muted">x</td>
+                                    <td class="col-2 text-center text-muted">x</td>
+                                    <td class="col-2 text-center text-muted">All*<br> (+ 5-6 new per year)</td>
+                                </tr>
+                                <tr class="d-flex text-white">
+                                    <td class="col-4">Premium Curated Content Packages</td>
+                                    <td class="col-2 text-center text-muted">x</td>
+                                    <td class="col-2 text-center text-muted">&#10003;<br> (one package)</td>
+                                    <td class="col-2 text-center text-muted">&#10003;<br> (selection)</td>
+                                    <td class="col-2 text-center text-muted">&#10003;<br> (all)</td>
+                                </tr>
+                                <tr class="d-flex text-white">
+                                    <td class="col-4">Symposium (catch-up) access</td>
+                                    <td class="col-2 text-center text-muted">x</td>
+                                    <td class="col-2 text-center text-muted">x</td>
+                                    <td class="col-2 text-center text-muted">x</td>
+                                    <td class="col-2 text-center text-muted">&#10003;<br> (after 2 months)</td>
+                                </tr>
+                                <tr class="d-flex text-white">
+                                    <td class="col-4">Live symposium access</td>
+                                    <td class="col-2 text-center text-muted">x</td>
+                                    <td class="col-2 text-center text-muted">x</td>
+                                    <td class="col-2 text-center text-muted">x</td>
+                                    <td class="col-2 text-center text-muted">&#10003;<br> (after 3 months membership)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                </div>
+            </section>
+            <section class="slice slice-lg bg-gradient-dark">
+                <div class="container">
+                    <div class="mb-5 text-center">
+                        <h3 class=" mt-4">GIEQs Pro Subscription</h3>
+                        <div class="fluid-paragraph mt-3">
+                            <p class="lead lh-180">Get access to the full functionality of GIEQs Online.
+                                <br />Subscriptions start 9 December 2020</p>
+                        </div>
+                    </div>
+                    <div class="pricing-container">
+                        <div class="text-center mb-7">
+                            <div class="btn-group" role="group">
+                                <button id="monthly" type="button" class="btn btn-secondary active"
+                                    data-pricing="monthly">Monthly billing</button>
+                                <button id="yearly" type="button" class="btn btn-secondary" data-pricing="yearly">Yearly
+                                    billing</button>
+                            </div>
+                        </div>
+                        <div class="pricing card-group flex-column flex-lg-row mb-3">
+                            <div class="card card-pricing popular scale-110 text-center px-3 mb-5 mb-lg-0">
+                                <span
+                                    class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white">Physician</span>
+                                <div class="card-header py-5 border-0">
+                                    <div class="h1 text-primary text-center mb-0" data-pricing-value-month="5"
+                                        data-pricing-value-year="50">&euro;<span class="price">5</span><span
+                                            class="h6 ml-2 unit">/ per month</span></div>
+                                </div>
+                                <div class="card-body delimiter-top">
+                                    <ul class="list-unstyled mb-4">
+                                        <li>Full access to tag structure</li>
+                                        <li>Jump rapidly between related learning</li>
+                                        <li>1-click access to published evidence via PubMed</li>
+                                        <li>Includes variety of cases<sup>*</sup></li>
+                                        <li>Regular new material</li>
+                                        <li>Cancel Anytime</li>
+                                        <sup>*</sup><span class="text-sm">Other content available to buy
+                                            separately</span>
+                                    </ul><button type="button" class="btn btn-sm btn-neutral mb-3 trial">Get 1 month
+                                        free trial!</button>
+                                </div>
+                            </div>
+                            <div class="card card-pricing  text-center px-3 mb-5 mb-lg-0">
+                                <span
+                                    class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white">Trainee</span>
+                                <div class="card-header py-5 border-0">
+                                    <div class="h1 text-primary text-center mb-0" data-pricing-value-month="3"
+                                        data-pricing-value-year="30">&euro;<span class="price">3</span><span
+                                            class="h6 ml-2 unit">/ per month</span></div>
+                                </div>
+                                <div class="card-body delimiter-top">
+                                    <ul class="list-unstyled mb-4">
+                                        <li>Full access to tag structure</li>
+                                        <li>Jump rapidly between related learning</li>
+                                        <li>1-click access to published evidence via PubMed</li>
+                                        <li>Includes variety of cases<sup>*</sup></li>
+                                        <li>Regular new material</li>
+                                        <li>Cancel Anytime</li>
+                                        <sup>*</sup><span class="text-sm">Other content available to buy
+                                            separately</span>
+                                    </ul><button type="button" class="btn btn-sm btn-neutral mb-3 trial">Get 1 month
+                                        free trial!</button>
+                                </div>
+                            </div>
+                            <div class="card card-pricing text-center px-3 mb-5 mb-lg-0">
+                                <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white">Nurse /
+                                    Medical Student</span>
+                                <div class="card-header py-5 border-0">
+                                    <div class="h1 text-primary text-center mb-0" data-pricing-value-month="2"
+                                        data-pricing-value-year="20">&euro;<span class="price">2</span><span
+                                            class="h6 ml-2 unit">/ per month</span></div>
+                                </div>
+                                <div class="card-body delimiter-top">
+                                    <ul class="list-unstyled mb-4">
+                                        <li>Full access to tag structure</li>
+                                        <li>Jump rapidly between related learning</li>
+                                        <li>1-click access to published evidence via PubMed</li>
+                                        <li>Includes variety of cases<sup>*</sup></li>
+                                        <li>Regular new material</li>
+                                        <li>Cancel Anytime</li>
+                                        <sup>*</sup><span class="text-sm">Other content available to buy
+                                            separately</span>
+                                    </ul><button type="button" class="btn btn-sm btn-neutral mb-3 trial">Get 1 month
+                                        free trial!</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <p class="mt-6 text-muted">Does not include access to all content. Pricing subject to change without
+                        notice. <br />If you have an active subscription you will be notified of pricing changes.</p>
+
+                </div>
+            </section>
+
+            <!-- Current studies -->
+
+            <!--
         <div class="col-auto flex-fill d-none d-xl-block">
             <ul class="list-inline row justify-content-lg-end mb-0">
               <li class="list-inline-item col-sm-4 col-md-auto px-3 my-2 mx-0">
@@ -342,8 +570,8 @@ top: -20vh;
               </li>
             </ul>
           </div>-->
-        
-        <!-- Further to add later Latest projects
+
+            <!-- Further to add later Latest projects
         <div class="mb-5">
           <div class="actions-toolbar py-2 mb-4">
             <h5 class="mb-1">Latest projects</h5>
@@ -904,37 +1132,37 @@ top: -20vh;
             </div>
           </div>
         </div> -->
-      </div>
-    </section>
-  </div>
+        </div>
+        </section>
+        </div>
 
-    <?php require BASE_URI . '/footer.php';?>
+        <?php require BASE_URI . '/footer.php';?>
 
-    <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
-    <!-- <script src="assets/js/purpose.core.js"></script> -->
-    <!-- Page JS -->
-    
-  
-   
-    <!-- Google maps -->
-  
-    <!-- Purpose JS -->
-    <script src="../../assets/js/purpose.js"></script>
-    <script src="<?php echo BASE_URL;?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
-    <!-- <script src="assets/js/generaljs.js"></script> -->
-    <script>
-    var videoPassed = $("#id").text();
-                    </script>
+        <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
+        <!-- <script src="assets/js/purpose.core.js"></script> -->
+        <!-- Page JS -->
 
-    <script>
+
+
+        <!-- Google maps -->
+
+        <!-- Purpose JS -->
+        <script src="../../assets/js/purpose.js"></script>
+        <script src="<?php echo BASE_URL;?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+        <!-- <script src="assets/js/generaljs.js"></script> -->
+        <script>
+        var videoPassed = $("#id").text();
+        </script>
+
+        <script>
         var signup = $('#signup').text();
 
         function submitPreRegisterForm() {
 
             var esdLesionObject = pushDataFromFormAJAX("pre-register", "preRegister", "id", null,
-            "0"); //insert new object
+                "0"); //insert new object
 
-            esdLesionObject.done(function (data) {
+            esdLesionObject.done(function(data) {
 
                 console.log(data);
 
@@ -991,9 +1219,9 @@ top: -20vh;
             });
         }
 
-        $(document).ready(function () {
+        $(document).ready(function() {
 
-            
+
 
 
             /* $(document).click(function(event) { 
@@ -1005,128 +1233,132 @@ top: -20vh;
                     }        
             }); */
 
-            $(document).click(function(event) { 
+            $(document).click(function(event) {
                 $target = $(event.target);
-                
-                if(!$target.closest('#selectDropdown').length && 
+
+                if (!$target.closest('#selectDropdown').length &&
                     $('#selectDropdown').is(":visible")) {
-                        $('#selectDropdown').collapse('hide');
-                    }        
+                    $('#selectDropdown').collapse('hide');
+                }
             });
 
-            $(document).click(function(event) { 
+            $(document).click(function(event) {
                 $target = $(event.target);
-                
-                if(!$target.closest('#collapseExample2').length && 
+
+                if (!$target.closest('#collapseExample2').length &&
                     $('#collapseExample2').is(":visible")) {
-                        $('#collapseExample2').collapse('hide');
-                    }        
+                    $('#collapseExample2').collapse('hide');
+                }
             });
 
-            $(document).click(function(event) { 
+            $(document).click(function(event) {
                 $target = $(event.target);
-                
-                if(!$target.closest('#collapseExample3').length && 
+
+                if (!$target.closest('#collapseExample3').length &&
                     $('#collapseExample3').is(":visible")) {
-                        $('#collapseExample3').collapse('hide');
-                    }        
+                    $('#collapseExample3').collapse('hide');
+                }
             });
 
-            $(document).on('click', '.tagsClose', function(){
+            $(document).on('click', '.tagsClose', function() {
 
                 $('#collapseExample').collapse('hide');
 
             })
 
-            $(document).on('click', '.trial', function(){
+            $(document).on('click', '.trial', function() {
 
-alert('Thanks for your interest.  We will be activating our subscription service shortly.')
-
-
-})
-
-            $(document).on('click', '#monthly', function(){
-
-              //find find pricing
-              //find has attribute data-pricing-value-month
-              //store this value
-              //set pricing find price to that value
-              // set pricing find unit to / month
-
-              $(document).find('.card-pricing').each(function(){
-
-                var monthPrice = $(this).children().find("[data-pricing-value-month]").attr('data-pricing-value-month')
-
-                $(this).children().find(".price").text(monthPrice);
-
-                $(this).children().find(".unit").text('/ per month');
-
-
-
-
-              })
+                alert(
+                    'Thanks for your interest.  We will be activating our subscription service shortly.')
 
 
             })
 
-            $(document).on('click', '#yearly', function(){
+            $(document).on('click', '#monthly', function() {
 
-//find find pricing
-//find has attribute data-pricing-value-month
-//store this value
-//set pricing find price to that value
-// set pricing find unit to / month
+                //find find pricing
+                //find has attribute data-pricing-value-month
+                //store this value
+                //set pricing find price to that value
+                // set pricing find unit to / month
 
-$(document).find('.card-pricing').each(function(){
+                $(document).find('.card-pricing').each(function() {
 
-  var yearPrice = $(this).children().find("[data-pricing-value-year]").attr('data-pricing-value-year')
+                    var monthPrice = $(this).children().find("[data-pricing-value-month]").attr(
+                        'data-pricing-value-month')
 
-  $(this).children().find(".price").text(yearPrice);
+                    $(this).children().find(".price").text(monthPrice);
 
-  $(this).children().find(".unit").text('/ per year');
-
-
-
-
-})
+                    $(this).children().find(".unit").text('/ per month');
 
 
-})
 
-            $('.referencelist').on('click', function (){
-		
-		
-		//get the tag name
-		
-		var searchTerm = $(this).attr('data');
-		
-		//console.log("https://www.ncbi.nlm.nih.gov/pubmed/?term="+searchTerm);
-		
-		PopupCenter("https://www.ncbi.nlm.nih.gov/pubmed/?term="+searchTerm, 'PubMed Search (endoWiki)', 800, 700);
 
-		
-		
-		
-		
-	})
+                })
 
-	$('.referencelist').on('mouseenter', function (){
 
-		$(this).css('color', 'rgb(238, 194, 120)');
-		$(this).css('cursor', 'pointer');
+            })
 
-	})
+            $(document).on('click', '#yearly', function() {
 
-	$('.referencelist').on('mouseleave', function (){
+                //find find pricing
+                //find has attribute data-pricing-value-month
+                //store this value
+                //set pricing find price to that value
+                // set pricing find unit to / month
 
-		$(this).css('color', 'white');
-		$(this).css('cursor', 'default');
+                $(document).find('.card-pricing').each(function() {
 
-	})
+                    var yearPrice = $(this).children().find("[data-pricing-value-year]").attr(
+                        'data-pricing-value-year')
+
+                    $(this).children().find(".price").text(yearPrice);
+
+                    $(this).children().find(".unit").text('/ per year');
+
+
+
+
+                })
+
+
+            })
+
+            $('.referencelist').on('click', function() {
+
+
+                //get the tag name
+
+                var searchTerm = $(this).attr('data');
+
+                //console.log("https://www.ncbi.nlm.nih.gov/pubmed/?term="+searchTerm);
+
+                PopupCenter("https://www.ncbi.nlm.nih.gov/pubmed/?term=" + searchTerm,
+                    'PubMed Search (endoWiki)', 800, 700);
+
+
+
+
+
+            })
+
+            $('.referencelist').on('mouseenter', function() {
+
+                $(this).css('color', 'rgb(238, 194, 120)');
+                $(this).css('cursor', 'pointer');
+
+            })
+
+            $('.referencelist').on('mouseleave', function() {
+
+                $(this).css('color', 'white');
+                $(this).css('cursor', 'default');
+
+            })
 
 
         })
-    </script>
-</body>
+        </script>
+    </body>
 
 </html>
