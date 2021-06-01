@@ -100,7 +100,7 @@ Class formGenerator {
 	public function generateSelectCustom ($label, $id, $class, $options, $tooltip){
 		
 		//echo "<div id='".$id."row' class='row'>";
-		echo "<label for='$id' id='".$id."label' title='$tooltip'>$label&nbsp&nbsp</label>";
+		echo "<label for='$id' id='".$id."label' title='$tooltip' data-toggle='tooltip' data-placement='right' class='cursor-pointer'>$label&nbsp&nbsp</label>";
 		echo '<div class="input-group mb-3">';
 		echo "<select name='$id' id='$id' class='$class formInputs form-control'>";
 		echo "<option hidden disabled selected>please select</option>";
