@@ -387,24 +387,24 @@ background-color: rgb(238, 194, 120);
 
     function noDemarcatedArea(){
 
-        var labels = $('#size, #location, #morphology, #paris').parent().prev();
+       /*  var labels = $('#size, #location, #morphology, #paris').parent().prev();
         var arrayToHide = $('#size, #location, #morphology, #paris').parent();
 
         $(labels).show();
         $(arrayToHide).show();
-        $('#demarcation_imaging').hide();
+        $('#demarcation_imaging').hide(); */
 
 
     }
 
     function demarcatedArea(){
 
-        var labels = $('#size, #location, #morphology, #paris').parent().prev();
+        /* var labels = $('#size, #location, #morphology, #paris').parent().prev();
         var arrayToHide = $('#size, #location, #morphology, #paris').parent();
 
         $(labels).hide();
         $(arrayToHide).hide();
-        $('#demarcation_imaging').show();
+        $('#demarcation_imaging').show(); */
 
         /* $('#size, #location, #morphology, #paris').parent().hide(); */
 
@@ -713,29 +713,96 @@ background-color: rgb(238, 194, 120);
                 $formv1->generateSelectCustom ('Stable positon with lesion at 6 \'o clock OR transformed to 6 \'o clock:', 'snare_position', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
                 echo '<br/>';
 
+                $formv1->generateSelectCustom ('Snare precisely visualised during placement and closure (V of the snare):', 'snare_visualised', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+                echo '<br/>';
+
+                $formv1->generateSelectCustom ('Residual tissue islands avoided if piecemeal resection:', 'piecemeal', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+                echo '<br/>';
+
+                $formv1->generateSelectCustom ('Macroscopically complete if en-bloc resection attempted:', 'en-bloc', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+                echo '<br/>';
+
+
+
+                ?><h2 class="mt-4">Safety Checks Prior to Resection (with or without diathermy)</h2>
+
+                <?php
+
+
+$formv1->generateSelectCustom ('Takes the snare and closes to 1cm, uses tactile feedback OR assistant closes snare to mark:', 'snare_closed', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+echo '<br/>';
+
+$formv1->generateSelectCustom ('Moves the closed snare to confirm independent movement from deeper structures:', 'independent_movement', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+echo '<br/>';
+
+
+?><h2 class="mt-4">Defect Assessment After Resection</h2>
+
+                <?php
+
+$formv1->generateSelectCustom ('MUCOSA - Looks for, detects and removes residual at margin and within defect:', 'mucosa', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'Including residual muscularis mucosae');
+echo '<br/>';
+
+$formv1->generateSelectCustom ('SUBMUCOSA - Looks for, detects and treats any bleeding vessels within the defect::', 'submucosa', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'Does not treat non-bleeding herniating vessels. Does not treat other appearances of the submucosa detailed in Desomer et al. 2018 GIE');
+echo '<br/>';
+
+$formv1->generateSelectCustom ('MUSCULARIS - Looks for, detects and treats Deep Mural Injury &ge; 2 (Sydney Classification) :', 'muscularis', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+echo '<br/>';
 
 
 
 
+?><h2 class="mt-4">Accessory Techniques in Polypectomy</h2>
+
+                <?php
+
+$formv1->generateSelectCustom ('Placement of Through the Scope CLIPS:', 'clip_placement', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+echo '<br/>';
 
 
+$formv1->generateSelectCustom ('Placement of Polyp Retrieval Device:', 'retrieval_device', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+echo '<br/>';
+
+$formv1->generateSelectCustom ('Thermal ablation of the POST EMR Margin:', 'thermal_ablation', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+echo '<br/>';
+
+$formv1->generateSelectCustom ('Use of Coagulation grasper', 'coag_grasper', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+echo '<br/>';
 
 
+?><h2 class="mt-4">Difficulty Score (SMSA - EMR, SMSA +)
+</h2>
 
+                <?php
 
+$formv1->generateSelectCustom ('Site:', 'site', 'site', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+echo '<br/>';
 			
-                $formv1->generateSelectCustom ('Highest classification of the demarcation area :', 'demarcation_imaging', 'factor', array('1' => '1 - NICE I / JNET 1 / Kudo II ', '2' => '2 - NICE II / JNET 2A / Kudo III or IV', '3' => '3 - NICE II / JNET 2B / Kudo Vi', '4' => '4 - NICE III / JNET 3 / Kudo Vn',), 'Highest Imaging Grade of the Demarcation Area?');
-				echo '<br/>';
+$formv1->generateSelectCustom ('Size:', 'size', 'site', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+echo '<br/>';
 
-                //say that the polyp is regular
-				$formv1->generateSelectCustom ('Size of lesion :', 'size', 'factor', array('1' => '1 - &ge; 20mm', '2' => '2 - &ge; 30mm', '3' => '3 - &ge; 40mm', '4' => '4 - &ge; 50mm', '5' => '5 - &ge; 60mm', '6' => '6 - &ge; 70mm', '7' => '7 - &ge; 80mm', '8' => '8 - &ge; 90mm',  '9' => '9 - &ge; 100mm'), 'Depression?');
-				echo '<br/>';
-				$formv1->generateSelectCustom ('Location of lesion :', 'location', 'factor', array('1' => '1 - rectosigmoid', '2' => '2 - other location', ), 'Location of lesion');
-				echo '<br/>';
-				$formv1->generateSelectCustom ('Morphology :', 'morphology', 'factor', array('1' => '1 - Granular', '2' => '2 - any Non-granular component', '3' => '3 - serrated or other'), 'Morphology of lesion');
-				echo '<br/>';
-				$formv1->generateSelectCustom ('Paris classification :', 'paris', 'factor', array('1' => '1 - 0-IIa', '2' => '2 - 0-Is', '3' => '3 - 0-IIa/Is'), 'Paris classification of lesion');
-				echo '<br/>';
+$formv1->generateSelectCustom ('Morphology:', 'morphology', 'site', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+echo '<br/>';
+
+$formv1->generateSelectCustom ('Access:', 'access', 'site', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+echo '<br/>';
+
+$formv1->generateSelectCustom ('Non-lifting:', 'non-lifting', 'site', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+echo '<br/>';
+               
+$formv1->generateSelectCustom ('Previous attempt:', 'PANL', 'site', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+echo '<br/>';
+
+               
+$formv1->generateSelectCustom ('Direct ileocaecal valve, diverticular or appendiceal involvement:', 'location_difficult', 'site', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+echo '<br/>';
+
+
+$formv1->generateSelectCustom ('Lesions with a regular-irregular demarcation zone:', 'demarcation', 'site', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+echo '<br/>';
+
+
+
 
 				?>
 
