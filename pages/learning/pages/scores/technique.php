@@ -716,11 +716,10 @@ background-color: rgb(238, 194, 120);
                 $formv1->generateSelectCustom ('Snare precisely visualised during placement and closure (V of the snare):', 'snare_visualised', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
                 echo '<br/>';
 
-                $formv1->generateSelectCustom ('Residual tissue islands avoided if piecemeal resection:', 'piecemeal', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+                $formv1->generateSelectCustom ('Residual tissue islands avoided if piecemeal resection OR Macroscopically complete if en-bloc resection attempted:', 'residual', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
                 echo '<br/>';
 
-                $formv1->generateSelectCustom ('Macroscopically complete if en-bloc resection attempted:', 'en-bloc', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
-                echo '<br/>';
+    
 
 
 
