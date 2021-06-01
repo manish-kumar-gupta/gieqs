@@ -34,6 +34,12 @@ $subscription = new subscriptions;
 //echo'hello';
 
 //echo $users->getendoscopistType();
+$data = json_decode(file_get_contents('php://input'), true);
+
+
+$subscriptionType = $data['subscriptionType'];
+
+if ($subscriptionType != ''){
 
 $endoscopistType = [];
 
@@ -71,15 +77,39 @@ if ($users->getendoscopistType() == ''){
 
 if ($endoscopistType['endoscopistType'] == '1' && $endoscopistType['trainee'] == '1'){
 
+    if ($subscriptionType == 1){
+
     $endoscopistType['asset'] = 5;
+
+    }elseif ($subscriptionType == 2){
+
+        $endoscopistType['asset'] = 19;
+    
+        }
 
 }elseif ($endoscopistType['endoscopistType'] == '1' && $endoscopistType['trainee'] != '1'){
 
-    $endoscopistType['asset'] = 4;
+    if ($subscriptionType == 1){
+
+        $endoscopistType['asset'] = 4;
+    
+        }elseif ($subscriptionType == 2){
+    
+            $endoscopistType['asset'] = 18;
+        
+            }
 
 }elseif ($endoscopistType['typeFilled'] === true && $endoscopistType['traineeFilled'] === true){
 
-    $endoscopistType['asset'] = 6;
+    if ($subscriptionType == 1){
+
+        $endoscopistType['asset'] = 6;
+    
+        }elseif ($subscriptionType == 2){
+    
+            $endoscopistType['asset'] = 20;
+        
+            }
 
 }else{
 
@@ -89,6 +119,13 @@ if ($endoscopistType['endoscopistType'] == '1' && $endoscopistType['trainee'] ==
 
 
 echo json_encode($endoscopistType);
+
+}else{
+
+
+    echo 'Error, no subscription type provided';
+
+}
 
 
 

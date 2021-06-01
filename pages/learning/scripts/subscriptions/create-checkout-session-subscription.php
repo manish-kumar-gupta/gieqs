@@ -327,7 +327,9 @@ if (isset($subscription_id)){
 
         $asset_numbers_premium_subscriptions = [
 
-
+            1 => 18,
+            2 => 19,
+            3 => 20,
 
         ];
 
@@ -392,6 +394,9 @@ if (isset($subscription_id)){
             4 => 'price_1ItzuxEBnLMnXjogxXUcffRY',
             5 => 'price_1ItzxQEBnLMnXjogeyFdtHsd', 
             6 => 'price_1ItzxwEBnLMnXjogd1xjYkn0',
+            18 => '',
+            19 => '',
+            20 => '',
 
         ];
 
