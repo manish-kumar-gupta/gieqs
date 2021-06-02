@@ -570,8 +570,126 @@ background-color: rgb(238, 194, 120);
 			
 			
 		}
+
+
+        function calculateDifficultyScore() {
+
+            var site = $('#site').val();
+            var size = $('#size').val();
+            
+            var morphology = $('#morphology').val();
+            var access = $('#access').val();
+            //var paris = $('#paris').val();
+
+            if ((size == null) || (access == null) || (morphology == null) || (site == null)) {
+
+                return 'Missing Variables - please enter all 4 further characteristics';
+
+
+            }
+
+            var sizeInt = +size;
+            var accessInt = +access;
+            var morphologyInt = +morphology;
+            var siteInt = +site;
+
+            if (isNaN(sizeInt) || isNaN(accessInt) || isNaN(morphologyInt) || isNaN(siteInt)) {
+
+                return 'Issue with variables supplied, please check they are numbers';
+
+            } else {
+
+                var SMSA_total = sizeInt + accessInt + morphologyInt + siteInt;
+
+                if (SMSA_total < 6){
+
+                    SMSA_group = 1;
+
+                }else if (SMSA_total < 9){
+
+                    SMSA_group = 2;
+
+                }else if (SMSA_total < 13){
+
+                    SMSA_group = 3;
+
+                }else if (SMSA_total > 12 ){
+
+                    SMSA_group = 4;
+
+                }
+
+                return {
+
+                    "size": sizeInt,
+                    "access": accessInt,
+                    "morphology": morphologyInt,
+                    "site": siteInt,
+                    "SMSA_total": SMSA_total,
+                    "SMSA_group": SMSA_group,
+
+
+                }
+            }
+
+
+
+        }
+
+        function calculatePlusDifficultyScore() {
+
+            var non_lifting = $('#non_lifting').val();
+            var PANL = $('#PANL').val();
+            
+            var location_difficult = $('#location_difficult').val();
+            var demarcation = $('#demarcation').val();
+            //var paris = $('#paris').val();
+
+            if ((non_lifting == null) || (PANL == null) || (location_difficult == null) || (demarcation == null)) {
+
+                return 'Missing Variables - please enter all 4 further characteristics';
+
+
+            }
+
+            var non_liftingInt = +non_lifting;
+            var PANLInt = +PANL;
+            var location_difficultInt = +location_difficult;
+            var demarcationInt = +demarcation;
+
+            if (isNaN(non_liftingInt) || isNaN(PANLInt) || isNaN(location_difficultInt) || isNaN(demarcationInt)) {
+
+                return 'Issue with variables supplied, please check they are numbers';
+
+            } else {
+
+                var SMSA_plus_total = non_liftingInt + PANLInt + location_difficultInt + demarcationInt;
+
+                
+
+                return {
+
+                    "non_lifting": non_liftingInt,
+                    "PANL": PANLInt,
+                    "location_difficult": location_difficultInt,
+                    "demarcation": demarcationInt,
+                    "SMSA_plus_total": SMSA_plus_total,
+                    
+
+
+                }
+            }
+
+
+        }
+
+
 	
 		$(document).ready(function() {
+
+            //difficulty score
+
+            //standard score
 
             demarcatedArea();
 
@@ -654,6 +772,8 @@ background-color: rgb(238, 194, 120);
 	
 	
     <div class='content'>
+        <div class="row">
+            <div class="col-9">
         
 
 <?php
@@ -681,7 +801,7 @@ background-color: rgb(238, 194, 120);
             <fieldset>
 				<?php
 
-                ?><h2 class="mt-4">Global Competencies</h2>
+                ?><h2 id="global" class="mt-4">Global Competencies</h2>
 
                 <?php
 				$formv1->generateSelectCustom ('Tip control:', 'tip-control', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'How good is the tip control demonstrated throughout the video?');
@@ -690,7 +810,7 @@ background-color: rgb(238, 194, 120);
                 $formv1->generateSelectCustom ('Positioning with respect to the polyp:', 'positioning', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'How good is the position achieved by the endoscopist with respect to accessing the polyp?');
 				echo '<br/>';
 
-                ?><h2 class="mt-4">Injection Technique</h2>
+                ?><h2 id="injection" class="mt-4">Injection Technique</h2>
 
                 <?php
 
@@ -706,7 +826,7 @@ background-color: rgb(238, 194, 120);
 
 
 
-                ?><h2 class="mt-4">Snare Placement Technique</h2>
+                ?><h2 id="snare" class="mt-4">Snare Placement Technique</h2>
 
                 <?php
 
@@ -723,7 +843,7 @@ background-color: rgb(238, 194, 120);
 
 
 
-                ?><h2 class="mt-4">Safety Checks Prior to Resection (with or without diathermy)</h2>
+                ?><h2 id="safety" class="mt-4">Safety Checks Prior to Resection (with or without diathermy)</h2>
 
                 <?php
 
@@ -735,7 +855,7 @@ $formv1->generateSelectCustom ('Moves the closed snare to confirm independent mo
 echo '<br/>';
 
 
-?><h2 class="mt-4">Defect Assessment After Resection</h2>
+?><h2 id="defect" class="mt-4">Defect Assessment After Resection</h2>
 
                 <?php
 
@@ -751,7 +871,7 @@ echo '<br/>';
 
 
 
-?><h2 class="mt-4">Accessory Techniques in Polypectomy</h2>
+?><h2 id="accessory" class="mt-4">Accessory Techniques in Polypectomy</h2>
 
                 <?php
 
@@ -769,35 +889,37 @@ $formv1->generateSelectCustom ('Use of Coagulation grasper', 'coag_grasper', 'fa
 echo '<br/>';
 
 
-?><h2 class="mt-4">Difficulty Score (SMSA - EMR, SMSA +)
+?><h2 id="difficulty" class="mt-4">Difficulty Score (SMSA - EMR, SMSA +)
 </h2>
 
                 <?php
 
-$formv1->generateSelectCustom ('Site:', 'site', 'site', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+
+$formv1->generateSelectCustom ('Size:', 'size', 'SMSA', array('1' => '< 1cm', '3' => '1 - 1.9cm', '5' => '2 - 2.9cm', '7' => '3 - 3.9cm', '9' => '> 4cm'), '');
+echo '<br/>';
+
+$formv1->generateSelectCustom ('Morphology:', 'morphology', 'SMSA', array('1' => 'Pedunculated', '2' => 'Sessile', '3' => 'Flat',), '');
+echo '<br/>';
+
+$formv1->generateSelectCustom ('Site:', 'site', 'SMSA', array('1' => 'Left', '2' => 'Rght',), '');
 echo '<br/>';
 			
-$formv1->generateSelectCustom ('Size:', 'size', 'site', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+
+$formv1->generateSelectCustom ('Access:', 'access', 'SMSA', array('1' => 'Easy', '3' => 'Difficult',), '');
 echo '<br/>';
 
-$formv1->generateSelectCustom ('Morphology:', 'morphology', 'site', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
-echo '<br/>';
-
-$formv1->generateSelectCustom ('Access:', 'access', 'site', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
-echo '<br/>';
-
-$formv1->generateSelectCustom ('Non-lifting:', 'non-lifting', 'site', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+$formv1->generateSelectCustom ('Non-lifting:', 'non_lifting', 'SMSAplus', array('0' => 'No', '1' => 'Yes', ), '');
 echo '<br/>';
                
-$formv1->generateSelectCustom ('Previous attempt:', 'PANL', 'site', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+$formv1->generateSelectCustom ('Previous attempt:', 'PANL', 'SMSAplus', array('0' => 'No', '1' => 'Yes', ), '');
 echo '<br/>';
 
                
-$formv1->generateSelectCustom ('Direct ileocaecal valve, diverticular or appendiceal involvement:', 'location_difficult', 'site', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+$formv1->generateSelectCustom ('Direct ileocaecal valve, diverticular or appendiceal involvement:', 'location_difficult', 'SMSAplus', array('0' => 'No', '1' => 'Yes', ), '');
 echo '<br/>';
 
 
-$formv1->generateSelectCustom ('Lesions with a regular-irregular demarcation zone:', 'demarcation', 'site', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+$formv1->generateSelectCustom ('Lesions with a regular-irregular demarcation zone:', 'demarcation', 'SMSAplus', array('0' => 'No', '1' => 'Yes', ), '');
 echo '<br/>';
 
 
@@ -833,10 +955,124 @@ echo '<br/>';
         <P>Score Adapted for GIEQs.com by David Tate:</P>
         <P>With thanks to Nick Burgess for supplying the original study data</P>
 		<P>Unauthorised distribution of the code prohibited.  Copyright 2020.  All rights reserved </P>
-    </div>
+    
+    
+    </div> <!--end col-9-->
+
+
+    <div id="right" class="col-lg-3 col-xl-3 border-left">
+        	<div class="h-100 p-4">
+        		<div id="sticky" data-toggle="sticky" data-sticky-offset="100" class="is_stuck pr-3 mr-3 pl-2 pt-2"
+        			style="position: fixed; top: 200px;">
+        			<div id="messageBox" class='text-left text-white pb-2 pl-2 pt-2'></div>
+						<div
+                                                class="d-flex flex-nowrap text-small text-muted text-right px-3 mt-1 mb-3 ">
+                                                
+                                                
+                                               <!--  <div>
+                                                    <i class="fas fa-scroll cursor-pointer mr-4" data-toggle="modal" data-target="#modal-POEM-ENG" id="showPOEMReport"></i>
+                                                </div>
+                                                <div>
+                                                    <i id="hideNotRequired" onclick="hideNotRequired();" class="mr-4 fas fa-search-minus cursor-pointer"></i>
+											  </div>
+											  <div>
+												<i id="saveesdLesion" class="fas fa-save cursor-pointer mr-4" onclick="saveesdLesionForm();"></i>
+											</div>
+                                                <div>
+                                                <i id='video-forward' class="fas fa-trash cursor-pointer mr-4"></i>
+                                                </div> -->
+                                                
+                                            
+                                                
+                                                
+                                                
+                                            </div>
+
+
+        			<div id="errorWrapper"
+        				class="error alert alert-warning alert-flush alert-dismissible collapse bg-gieqsGold"
+        				role="alert">
+        				<strong>Check the form!</strong> <span id="error"></span><button type="button" class="close"
+        					data-hide="alert" aria-label="Close">
+        					<span aria-hidden="true">&times;</span>
+        				</button>
+        			</div>
+        			<div id="successWrapper" class="success alert alert-success alert-flush alert-dismissible collapse"
+        				role="alert">
+        				<strong>Success!</strong> <span id="success"></span><button type="button" class="close"
+        					data-hide="alert" aria-label="Close">
+        					<span aria-hidden="true">&times;</span>
+        				</button>
+					</div>
+					
+					<div id="warningWrapper" class="warning alert alert-warning alert-flush alert-dismissible collapse"
+        				role="alert">
+        				<strong>Warning!</strong> <span id="warning"></span><button type="button" class="close"
+        					data-hide="alert" aria-label="Close">
+        					<span aria-hidden="true">&times;</span>
+        				</button>
+        			</div>
+                        <!-- <div class="error text-warning  text-left pb-2">
+                
+                </div> -->
+              <h6 class="mt-3 mb-3 pl-2">Navigation</h6>
+              
+              <ul class="section-nav">
+              
+                <!-- <li class="toc-entry toc-h2"><a href="#examples">Sections</a> -->
+                  <!-- <ul> -->
+                  <?php
+
+                   
+                        echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#global">Global</a></li>';
+                        echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#injection">Injection Technique</a></li>';
+                        echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#snare">Snare Placement Technique</a></li>';
+                        echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#safety">Safety Checks prior to Reseection</a></li>';
+                        echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#accessory">Accessory Techniques</a></li>';
+                        echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#difficulty">Difficulty</a></li>';
+                        
+
+                        //echo "<button type=\"button\" class=\"btn ".$sectionTitle[$x]. "\">".$sectionTitle[$x]."</button>";
+
+                    
+
+                            ?>
+                             <!-- </ul> -->
+                <!-- </li> -->
+                </ul>
+             
+                <ul class="section-nav">
+
+                <div class="d-none d-sm-inline-block align-items-center mt-4">
+				<h4 style="text-align:center;" class="strong">Overall Score<br/><span id="numeratorSum"></span>&nbsp;/&nbsp;<span id="denominatorSum"></span></h4>
+
+				<h4 style="text-align:center; mt-3" class="strong">SMSA<br/><span id="SMSA_total"></span></h4>
+
+                <h4 style="text-align:center;" class="strong">SMSA Group<br/><span id="SMSA_group"></span></h4>
+
+                <h4 style="text-align:center;" class="strong">SMSA+<br/><span id="numeratorSMSAplus"></span>&nbsp;/&nbsp;<span id="denominatorSMSAplus"></span></h4>
+
+                
+                <!-- <p>Polypectomy Score </p>
+                <p>Complexity Score </p>
+                <p>Overall Score </p> -->
+
+                </div>
+                </ul>
+            
+            </div> <!--close sticky nav-->  
+                                
+            
+        </div> <!--close right h-100 div-->
+        </div> <!--close right column div-->
+
+
+    </div> <!--end row-->
+    
+    </div><!--end content-->
 
             
-    </div>
+    </div> <!--end content-->
 
 
 
@@ -845,7 +1081,7 @@ echo '<br/>';
     
 
        
-    </div>
+    </div> <!--end overall-->
 
 
 
@@ -1228,6 +1464,41 @@ echo '<br/>';
                 activeStatus = active;
 
                 refreshNavAndTags();
+
+            })
+
+            $('body').on('change', '.SMSA', function(){
+
+            var SMSA = calculateDifficultyScore();
+            //remove the check from the tag removed
+
+            if (isNaN(SMSA.SMSA_total) === false){
+
+                $('#SMSA_total').text(SMSA.SMSA_total);
+                $('#SMSA_group').text(SMSA.SMSA_group);
+
+            };
+
+            
+
+            })
+
+            $('body').on('change', '.SMSAplus', function(){
+
+                
+
+                //alert('hello');
+            var SMSAplus = calculatePlusDifficultyScore();
+            //remove the check from the tag removed
+
+            if (isNaN(SMSAplus.SMSA_plus_total) === false){
+
+                $('#numeratorSMSAplus').text(SMSAplus.SMSA_plus_total);
+                $('#denominatorSMSAplus').text(4);
+
+            };
+
+
 
             })
 
