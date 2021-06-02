@@ -442,7 +442,7 @@ border-bottom-width: 1px;
                                     <td class="col-2 text-center text-muted">x</td>
                                     <td class="col-2 text-center text-muted">x</td>
                                     <td class="col-2 text-center text-muted">x</td>
-                                    <td class="col-2 text-center text-muted">&#10003;<br> (after 3 months membership)</td>
+                                    <td class="col-2 text-center text-muted">&#10003;<br> (discount after 3 months membership)</td>
                                 </tr>
                             </tbody>
                         </table>
