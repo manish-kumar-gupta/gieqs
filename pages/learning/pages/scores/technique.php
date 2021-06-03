@@ -683,6 +683,78 @@ background-color: rgb(238, 194, 120);
 
         }
 
+        function calculateScore() {
+
+
+            var scores = new Object;
+
+            $('.score').each(function(){
+
+               var name = $(this).attr('id');
+
+                scores[name] = $(this).val();
+
+                
+            })
+
+            console.dir(scores);
+
+
+            /* $(scores).each(function(k,v){
+
+                if (k == null){
+
+                    return;
+                }
+
+
+            }) */
+
+            var score_total = 0;
+
+            var iterator = 0;
+
+            var numberFilled = 0;
+
+            $.each(scores, function(k,v){
+
+                console.log(k + 'is k');
+                console.log(v+ 'is v');
+
+                if (v == null){
+
+                    iterator = iterator + 1;
+                return true;
+
+                }
+
+                var vInt = null;
+                var vInt = +v;
+
+                score_total = score_total + vInt;
+                iterator = iterator + 1;
+
+
+                numberFilled = numberFilled + 1;
+
+
+            })
+
+            return {
+
+            
+            "score_total": score_total,
+            "score_denominator": numberFilled * 5,
+
+
+            }
+
+
+
+
+
+}
+
 
 	
 		$(document).ready(function() {
@@ -695,72 +767,32 @@ background-color: rgb(238, 194, 120);
 
 			$('.content').on('click', '#calculate', function(){
 
-				var demarcation = $('#demarcation').val();
-				var size = $('#size').val();
-				var location = $('#location').val();
-				var morphology = $('#morphology').val();
-				var paris = $('#paris').val();
+				var score = calculateScore();
+				var difficulty = calculateDifficultyScore();
+				var difficulty_plus = calculatePlusDifficultyScore();
+				
 
-				var COVERT = determineSMIC(demarcation, size, location, morphology, paris);
+                var overall_score = {
 
-                if (typeof COVERT === 'object' && COVERT !== null){
-
-                    $('#result').html('<h3 class="gieqsGold"> ' + COVERT.risk_text + '</h3>');
-                $('#result').append('<h4>' + COVERT.risk + '% </h4>');
-                $('#result').append('<p>The data was copied to your clipboard to paste back into the survey</p>');
-
-                $('#result').append('(or ' + COVERT.odds + 'x the risk of a granular 0-IIa 20-29mm LSL in the colon proximal to the sigmoid without a demarcated area or depression, risk 1.1%)<br>');
-                $('#result').addClass('gieqsGold');
-
-                generateScore();
-
-
-                }else{
-
-                    $('#result').html('<h3 class="gieqsGold"> ' + COVERT + '</h3>').addClass('gieqsGold');
-                   
-
-                }
-
-
-                
-                
-                $('html, body').animate({
-                    scrollTop: eval($('#result').offset().top - 200)
-                }, 150);
-			})
-
-            $('.content').on('change', '.formInputs', function(){
-
-
-                $('#result').html('');
-
-
-            })
-
-            $('.content').on('change', '#demarcation', function(){
-
-                var demarcation = $('#demarcation').val();
-
-                if (demarcation == 0){
-
-
-                    noDemarcatedArea();
-
-
-                }else if (demarcation == 1){
-
-                    demarcatedArea();
-
-                    $('#demarcation_imaging').parent().show();
-
+            
+                "score": score,
+                "difficulty": difficulty,
+                "difficulty_plus": difficulty_plus,
 
 
                 }
 
-                })
+                copyToClipboard(JSON.stringify(overall_score));
+
+                alert('Data copied to clipboard');
+
+                return overall_score;
+
+				
 
 		})
+
+    })
 	
 	</script>
 	
@@ -804,24 +836,24 @@ background-color: rgb(238, 194, 120);
                 ?><h2 id="global" class="mt-4">Global Competencies</h2>
 
                 <?php
-				$formv1->generateSelectCustom ('Tip control:', 'tip-control', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'How good is the tip control demonstrated throughout the video?');
+				$formv1->generateSelectCustom ('Tip control:', 'tip-control', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'How good is the tip control demonstrated throughout the video?');
 				echo '<br/>';
 
-                $formv1->generateSelectCustom ('Positioning with respect to the polyp:', 'positioning', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'How good is the position achieved by the endoscopist with respect to accessing the polyp?');
+                $formv1->generateSelectCustom ('Positioning with respect to the polyp:', 'positioning', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'How good is the position achieved by the endoscopist with respect to accessing the polyp?');
 				echo '<br/>';
 
                 ?><h2 id="injection" class="mt-4">Injection Technique</h2>
 
                 <?php
 
-                $formv1->generateSelectCustom ('Injection is performed in the correct plane:', 'injection_plane', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'Does the endoscopist quickly find the correct plane when injectiing or is there repeated injection too superficial or deep?');
+                $formv1->generateSelectCustom ('Injection is performed in the correct plane:', 'injection_plane', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'Does the endoscopist quickly find the correct plane when injectiing or is there repeated injection too superficial or deep?');
                 echo '<br/>';
 
-                $formv1->generateSelectCustom ('Injection is performed dynamically:', 'injection_dynamic', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'Once the correct plane hass been found does the endoscopist move the needle while injecting to adequately raise the lesion?');
+                $formv1->generateSelectCustom ('Injection is performed dynamically:', 'injection_dynamic', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'Once the correct plane hass been found does the endoscopist move the needle while injecting to adequately raise the lesion?');
                 echo '<br/>';
 
 
-                $formv1->generateSelectCustom ('Injection is used to improve lesion access:', 'injection_access', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'Injection is used to improve lesion access');
+                $formv1->generateSelectCustom ('Injection is used to improve lesion access:', 'injection_access', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'Injection is used to improve lesion access');
                 echo '<br/>';
 
 
@@ -830,13 +862,13 @@ background-color: rgb(238, 194, 120);
 
                 <?php
 
-                $formv1->generateSelectCustom ('Stable positon with lesion at 6 \'o clock OR transformed to 6 \'o clock:', 'snare_position', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+                $formv1->generateSelectCustom ('Stable positon with lesion at 6 \'o clock OR transformed to 6 \'o clock:', 'snare_position', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
                 echo '<br/>';
 
-                $formv1->generateSelectCustom ('Snare precisely visualised during placement and closure (V of the snare):', 'snare_visualised', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+                $formv1->generateSelectCustom ('Snare precisely visualised during placement and closure (V of the snare):', 'snare_visualised', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
                 echo '<br/>';
 
-                $formv1->generateSelectCustom ('Residual tissue islands avoided if piecemeal resection OR Macroscopically complete if en-bloc resection attempted:', 'residual', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+                $formv1->generateSelectCustom ('Residual tissue islands avoided if piecemeal resection OR Macroscopically complete if en-bloc resection attempted:', 'residual', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
                 echo '<br/>';
 
     
@@ -848,10 +880,10 @@ background-color: rgb(238, 194, 120);
                 <?php
 
 
-$formv1->generateSelectCustom ('Takes the snare and closes to 1cm, uses tactile feedback OR assistant closes snare to mark:', 'snare_closed', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+$formv1->generateSelectCustom ('Takes the snare and closes to 1cm, uses tactile feedback OR assistant closes snare to mark:', 'snare_closed', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
 echo '<br/>';
 
-$formv1->generateSelectCustom ('Moves the closed snare to confirm independent movement from deeper structures:', 'independent_movement', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+$formv1->generateSelectCustom ('Moves the closed snare to confirm independent movement from deeper structures:', 'independent_movement', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
 echo '<br/>';
 
 
@@ -859,13 +891,13 @@ echo '<br/>';
 
                 <?php
 
-$formv1->generateSelectCustom ('MUCOSA - Looks for, detects and removes residual at margin and within defect:', 'mucosa', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'Including residual muscularis mucosae');
+$formv1->generateSelectCustom ('MUCOSA - Looks for, detects and removes residual at margin and within defect:', 'mucosa', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'Including residual muscularis mucosae');
 echo '<br/>';
 
-$formv1->generateSelectCustom ('SUBMUCOSA - Looks for, detects and treats any bleeding vessels within the defect::', 'submucosa', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'Does not treat non-bleeding herniating vessels. Does not treat other appearances of the submucosa detailed in Desomer et al. 2018 GIE');
+$formv1->generateSelectCustom ('SUBMUCOSA - Looks for, detects and treats any bleeding vessels within the defect::', 'submucosa', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'Does not treat non-bleeding herniating vessels. Does not treat other appearances of the submucosa detailed in Desomer et al. 2018 GIE');
 echo '<br/>';
 
-$formv1->generateSelectCustom ('MUSCULARIS - Looks for, detects and treats Deep Mural Injury &ge; 2 (Sydney Classification) :', 'muscularis', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+$formv1->generateSelectCustom ('MUSCULARIS - Looks for, detects and treats Deep Mural Injury &ge; 2 (Sydney Classification) :', 'muscularis', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
 echo '<br/>';
 
 
@@ -875,17 +907,17 @@ echo '<br/>';
 
                 <?php
 
-$formv1->generateSelectCustom ('Placement of Through the Scope CLIPS:', 'clip_placement', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+$formv1->generateSelectCustom ('Placement of Through the Scope CLIPS:', 'clip_placement', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
 echo '<br/>';
 
 
-$formv1->generateSelectCustom ('Placement of Polyp Retrieval Device:', 'retrieval_device', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+$formv1->generateSelectCustom ('Placement of Polyp Retrieval Device:', 'retrieval_device', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
 echo '<br/>';
 
-$formv1->generateSelectCustom ('Thermal ablation of the POST EMR Margin:', 'thermal_ablation', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+$formv1->generateSelectCustom ('Thermal ablation of the POST EMR Margin:', 'thermal_ablation', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
 echo '<br/>';
 
-$formv1->generateSelectCustom ('Use of Coagulation grasper', 'coag_grasper', 'factor', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+$formv1->generateSelectCustom ('Use of Coagulation grasper', 'coag_grasper', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
 echo '<br/>';
 
 
@@ -1501,6 +1533,25 @@ echo '<br/>';
 
 
             })
+
+            $('body').on('change', '.score', function(){
+
+                
+
+//alert('hello');
+var score = calculateScore();
+//remove the check from the tag removed
+
+if (isNaN(score.score_total) === false){
+
+$('#numeratorSum').text(score.score_total);
+$('#denominatorSum').text(score.score_denominator);
+
+};
+
+
+
+})
 
             
 
