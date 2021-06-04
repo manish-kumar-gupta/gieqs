@@ -28,7 +28,7 @@
       ?>
 
     <!--Page title-->
-    <title>GIEQs Online Endoscopy Trainer - Scores - SMIC calculator</title>
+    <title>GIEQs Online Endoscopy Trainer - Scores - Polypectomy Technique Scorer</title>
 
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
 
@@ -688,7 +688,7 @@ background-color: rgb(238, 194, 120);
 
             var scores = new Object;
 
-            $('.score').each(function(){
+            $(".score:not(:disabled)").each(function(){
 
                var name = $(this).attr('id');
 
@@ -753,7 +753,86 @@ background-color: rgb(238, 194, 120);
 
 
 
-}
+        }
+
+        function hideHotSnareFields(){
+
+            $('.hot').each(function(){
+                
+                var label = null;
+                var label = $(this).parent().prev();
+                $(this).hide().attr('disabled', true);
+                $(label).hide().attr('disabled', true);
+
+                //if section length = 0 hide heading
+
+
+            })
+
+             /* var labels = $('#size, #location, #morphology, #paris').parent().prev();
+        var arrayToHide = $('#size, #location, #morphology, #paris').parent();
+
+        $(labels).hide();
+        $(arrayToHide).hide();
+        $('#demarcation_imaging').show(); */
+
+        /* $('#size, #location, #morphology, #paris').parent().hide(); */
+
+        }
+
+        function fullScoreUpdate(){
+
+            var SMSA = calculateDifficultyScore();
+            //remove the check from the tag removed
+
+            if (isNaN(SMSA.SMSA_total) === false){
+
+                $('#SMSA_total').text(SMSA.SMSA_total);
+                $('#SMSA_group').text(SMSA.SMSA_group);
+
+            };
+
+            var SMSAplus = calculatePlusDifficultyScore();
+            //remove the check from the tag removed
+
+            if (isNaN(SMSAplus.SMSA_plus_total) === false){
+
+                $('#numeratorSMSAplus').text(SMSAplus.SMSA_plus_total);
+                $('#denominatorSMSAplus').text(4);
+
+            };
+
+            var score = calculateScore();
+            //remove the check from the tag removed
+
+            if (isNaN(score.score_total) === false){
+
+            $('#numeratorSum').text(score.score_total);
+            $('#denominatorSum').text(score.score_denominator);
+
+            };
+
+
+
+
+        }
+
+        function showHotSnareFields(){
+
+
+            $('.hot').each(function(){
+                
+                var label = null;
+                var label = $(this).parent().prev();
+                $(this).show().attr('disabled', false);
+                $(label).show().attr('disabled', false);
+
+                //if section length = 0 hide heading
+
+
+            })
+
+        }
 
 
 	
@@ -833,6 +912,9 @@ background-color: rgb(238, 194, 120);
             <fieldset>
 				<?php
 
+                $formv1->generateSelectCustom ('Type of Polypectomy', 'type_polypectomy', 'branch_point', array('1' => 'Hot Snare', '2' => 'Cold Snare',), 'Select the Type of Polypectomy');
+                echo '<br/>';
+
                 ?><h2 id="global" class="mt-4">Global Competencies</h2>
 
                 <?php
@@ -875,15 +957,15 @@ background-color: rgb(238, 194, 120);
 
 
 
-                ?><h2 id="safety" class="mt-4">Safety Checks Prior to Resection (with or without diathermy)</h2>
+                ?><h2 id="safety" class="mt-4">Safety Checks Prior to Resection (HOT snare only)</h2>
 
                 <?php
 
 
-$formv1->generateSelectCustom ('Takes the snare and closes to 1cm, uses tactile feedback OR assistant closes snare to mark:', 'snare_closed', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+$formv1->generateSelectCustom ('Takes the snare and closes to 1cm, uses tactile feedback OR assistant closes snare to mark:', 'snare_closed', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
 echo '<br/>';
 
-$formv1->generateSelectCustom ('Moves the closed snare to confirm independent movement from deeper structures:', 'independent_movement', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+$formv1->generateSelectCustom ('Moves the closed snare to confirm independent movement from deeper structures:', 'independent_movement', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
 echo '<br/>';
 
 
@@ -894,10 +976,10 @@ echo '<br/>';
 $formv1->generateSelectCustom ('MUCOSA - Looks for, detects and removes residual at margin and within defect:', 'mucosa', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'Including residual muscularis mucosae');
 echo '<br/>';
 
-$formv1->generateSelectCustom ('SUBMUCOSA - Looks for, detects and treats any bleeding vessels within the defect::', 'submucosa', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'Does not treat non-bleeding herniating vessels. Does not treat other appearances of the submucosa detailed in Desomer et al. 2018 GIE');
+$formv1->generateSelectCustom ('SUBMUCOSA - Looks for, detects and treats any bleeding vessels within the defect::', 'submucosa', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'Does not treat non-bleeding herniating vessels. Does not treat other appearances of the submucosa detailed in Desomer et al. 2018 GIE');
 echo '<br/>';
 
-$formv1->generateSelectCustom ('MUSCULARIS - Looks for, detects and treats Deep Mural Injury &ge; 2 (Sydney Classification) :', 'muscularis', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+$formv1->generateSelectCustom ('MUSCULARIS - Looks for, detects and treats Deep Mural Injury &ge; 2 (Sydney Classification) :', 'muscularis', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
 echo '<br/>';
 
 
@@ -907,17 +989,17 @@ echo '<br/>';
 
                 <?php
 
-$formv1->generateSelectCustom ('Placement of Through the Scope CLIPS:', 'clip_placement', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+$formv1->generateSelectCustom ('Placement of Through the Scope CLIPS:', 'clip_placement', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
 echo '<br/>';
 
 
-$formv1->generateSelectCustom ('Placement of Polyp Retrieval Device:', 'retrieval_device', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+$formv1->generateSelectCustom ('Placement of Polyp Retrieval Device:', 'retrieval_device', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
 echo '<br/>';
 
-$formv1->generateSelectCustom ('Thermal ablation of the POST EMR Margin:', 'thermal_ablation', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+$formv1->generateSelectCustom ('Thermal ablation of the POST EMR Margin:', 'thermal_ablation', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
 echo '<br/>';
 
-$formv1->generateSelectCustom ('Use of Coagulation grasper', 'coag_grasper', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+$formv1->generateSelectCustom ('Use of Coagulation grasper', 'coag_grasper', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
 echo '<br/>';
 
 
@@ -940,18 +1022,18 @@ echo '<br/>';
 $formv1->generateSelectCustom ('Access:', 'access', 'SMSA', array('1' => 'Easy', '3' => 'Difficult',), '');
 echo '<br/>';
 
-$formv1->generateSelectCustom ('Non-lifting:', 'non_lifting', 'SMSAplus', array('0' => 'No', '1' => 'Yes', ), '');
+$formv1->generateSelectCustom ('Non-lifting:', 'non_lifting', 'SMSAplus hot', array('0' => 'No', '1' => 'Yes', ), '');
 echo '<br/>';
                
-$formv1->generateSelectCustom ('Previous attempt:', 'PANL', 'SMSAplus', array('0' => 'No', '1' => 'Yes', ), '');
+$formv1->generateSelectCustom ('Previous attempt:', 'PANL', 'SMSAplus hot', array('0' => 'No', '1' => 'Yes', ), '');
 echo '<br/>';
 
                
-$formv1->generateSelectCustom ('Direct ileocaecal valve, diverticular or appendiceal involvement:', 'location_difficult', 'SMSAplus', array('0' => 'No', '1' => 'Yes', ), '');
+$formv1->generateSelectCustom ('Direct ileocaecal valve, diverticular or appendiceal involvement:', 'location_difficult', 'SMSAplus hot', array('0' => 'No', '1' => 'Yes', ), '');
 echo '<br/>';
 
 
-$formv1->generateSelectCustom ('Lesions with a regular-irregular demarcation zone:', 'demarcation', 'SMSAplus', array('0' => 'No', '1' => 'Yes', ), '');
+$formv1->generateSelectCustom ('Lesions with a regular-irregular demarcation zone:', 'demarcation', 'SMSAplus hot', array('0' => 'No', '1' => 'Yes', ), '');
 echo '<br/>';
 
 
@@ -975,18 +1057,20 @@ echo '<br/>';
 
 		<p class="mt-6">Definitions:</p>
         <ul>
-        <li>Demarcation Area - Area within a colorectal polyp where a regular pit/vascular pattern becomes disordered. e.g. NICE II to NICE III, Kudo III/IV to Kudo V, JNET 2A to JNET 2B/3</li>
-        <li>Granularity - </li>
+        <li>Hot Snare - colon polyp removed using a snare with use of electrosurgical energy</li>
+        <li>Diathermy - electrosurgical energy</li>
         
 
 
         </ul>
         
         <P>Reference:</P>
-		<P>1.	Burgess NG, Hourigan LF, Zanati SA, Brown GJ, Singh R, Williams SJ, et al. Risk Stratification for Covert Invasive Cancer Among Patients Referred for Colonic Endoscopic Mucosal Resection: A Large Multicenter Cohort. Gastroenterology. 2017 Sep;153(3):732–742.e1. </P>
+		<P>Sidhu M, Tate DJ, Desomer L, Brown G, Hourigan LF, Lee EYT, Moss A, Raftopoulos S, Singh R, Williams SJ, Zanati S, Burgess N, Bourke MJ. The size, morphology, site, and access score predicts critical outcomes of endoscopic mucosal resection in the colon. Endoscopy. 2018 Jul;50(7):684-692. doi: 10.1055/s-0043-124081. Epub 2018 Jan 25. Erratum in: Endoscopy. 2018 Jul;50(7):C7. PMID: 29370584. </P>
+		<P><a href="https://www.giejournal.org/article/S0016-5107(18)32295-8/pdf">SMSA-EMR SCORE IS A NOVEL ENDOSCOPIC RISK ASSESSMENT TOOL FOR PREDICTING CRITICAL
+ENDOSCOPIC MUCOSAL RESECTION OUTCOMES</a> </P>
         <P>Score Adapted for GIEQs.com by David Tate:</P>
-        <P>With thanks to Nick Burgess for supplying the original study data</P>
-		<P>Unauthorised distribution of the code prohibited.  Copyright 2020.  All rights reserved </P>
+        
+		<P>Unauthorised distribution of the code prohibited.  Copyright 2021 by the GIEQs Foundation.  All rights reserved </P>
     
     
     </div> <!--end col-9-->
@@ -1536,18 +1620,40 @@ echo '<br/>';
 
             $('body').on('change', '.score', function(){
 
-                
+                            
 
-//alert('hello');
-var score = calculateScore();
-//remove the check from the tag removed
+            //alert('hello');
+            var score = calculateScore();
+            //remove the check from the tag removed
 
-if (isNaN(score.score_total) === false){
+            if (isNaN(score.score_total) === false){
 
-$('#numeratorSum').text(score.score_total);
-$('#denominatorSum').text(score.score_denominator);
+            $('#numeratorSum').text(score.score_total);
+            $('#denominatorSum').text(score.score_denominator);
 
-};
+            };
+
+
+
+            })
+
+$('body').on('change', '#type_polypectomy', function(){
+
+                    
+    //hide the cold snare
+    //alert('change');
+
+   if ($(this).val() == 1){
+
+    showHotSnareFields();
+
+   }else if ($(this).val() == 2){
+
+    hideHotSnareFields();
+
+   }
+
+   fullScoreUpdate();
 
 
 
