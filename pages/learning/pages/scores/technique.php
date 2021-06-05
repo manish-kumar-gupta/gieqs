@@ -117,6 +117,13 @@ background-color: rgb(238, 194, 120);
 }
 
 
+#sticky {
+position: absolute !important;
+top: 0px;
+} 
+
+
+
 }
 
 @media (min-width: 1200px) {
@@ -745,6 +752,7 @@ background-color: rgb(238, 194, 120);
             
             "score_total": score_total,
             "score_denominator": numberFilled * 5,
+            "elements": scores,
 
 
             }
@@ -761,13 +769,16 @@ background-color: rgb(238, 194, 120);
                 
                 var label = null;
                 var label = $(this).parent().prev();
-                $(this).hide().attr('disabled', true);
+                $(this).attr('disabled', true);
+                $(this).parent().hide();
                 $(label).hide().attr('disabled', true);
 
                 //if section length = 0 hide heading
 
 
             })
+
+            headingsHider();
 
              /* var labels = $('#size, #location, #morphology, #paris').parent().prev();
         var arrayToHide = $('#size, #location, #morphology, #paris').parent();
@@ -824,13 +835,35 @@ background-color: rgb(238, 194, 120);
                 
                 var label = null;
                 var label = $(this).parent().prev();
-                $(this).show().attr('disabled', false);
+                $(this).attr('disabled', false);
+                $(this).parent().show();
                 $(label).show().attr('disabled', false);
 
                 //if section length = 0 hide heading
 
 
             })
+
+            headingsHider();
+
+        }
+
+        function headingsHider(){
+
+
+            $('.divider').each(function(){
+
+                if ($(this).find('select:not(:disabled)').length == 0){
+
+                    $(this).hide();
+                }else{
+
+                    $(this).show();
+                }
+
+
+            })
+
 
         }
 
@@ -901,145 +934,206 @@ background-color: rgb(238, 194, 120);
        
                 <!-- <p><h3><b>Risk for Submucosal Invasion within a given LSL </h3>[algorithm ala Burgess 2018 Gastroenterology]</b></p>
  -->
-                <p>Pre-requisites:</p>
+
+ 
+                <p><button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Show info
+  </button></p>
+  <div class="collapse" id="collapseExample">
+
+                <div class="card card-body">
+
+                <p class="h5">Pre-requisites:</p>
                 <p><ul>Colon Polyp  &ge; 10mm in size</ul><ul>Cold or Hot Snare</ul></p>
-                <p>This tool asks for your subjective opinion on multiple domains of deconstructed polypectomy where 1 is poor and 5 very good</p>
+
+                <p>This tool asks for your subjective assessment of multiple domains of deconstructed polypectomy where 1 is poor and 5 very good</p>
+                <p>Fill hot or cold first since different questions are asked for each.  The difficulty score consists of SMSA questions (4).  The difficulty+ score consists of SMSA+ questions (4) and applies only to hot snare.</p>
+                <p>Once completed press copy and a machine readable version will be copied to the clipboard.</p>
+
+
+                <p>Hover over questions for more information</p>
+                </div>
+</div>
+
 		<br>
 		<div id='result' class='yellow'></div>
 		<br>
 		
 		<form action="adminGenerateUserEmail.php" method="post">
             <fieldset>
+
+            <h2 id="hot-or-cold" class="mt-1">Hot / Cold?</h2>
 				<?php
 
-                $formv1->generateSelectCustom ('Type of Polypectomy', 'type_polypectomy', 'branch_point', array('1' => 'Hot Snare', '2' => 'Cold Snare',), 'Select the Type of Polypectomy');
+                
+
+                $formv1->generateSelectCustomCancel ('Type of Polypectomy', 'type_polypectomy', 'branch_point', array('1' => 'Hot Snare', '2' => 'Cold Snare',), 'Select the Type of Polypectomy');
                 echo '<br/>';
 
-                ?><h2 id="global" class="mt-4">Global Competencies</h2>
+                ?>
+                
+                <div class="divider">
+
+                <h2 id="global" class="mt-4">Global Competencies</h2>
 
                 <?php
-				$formv1->generateSelectCustom ('Tip control:', 'tip-control', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'How good is the tip control demonstrated throughout the video?');
+				$formv1->generateSelectCustomCancel ('Tip control:', 'tip-control', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'How good is the tip control demonstrated throughout the video?');
 				echo '<br/>';
 
-                $formv1->generateSelectCustom ('Positioning with respect to the polyp:', 'positioning', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'How good is the position achieved by the endoscopist with respect to accessing the polyp?');
+                $formv1->generateSelectCustomCancel ('Positioning with respect to the polyp:', 'positioning', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'How good is the position achieved by the endoscopist with respect to accessing the polyp?');
 				echo '<br/>';
 
-                ?><h2 id="injection" class="mt-4">Injection Technique</h2>
+                
+
+                ?>
+                </div>
+
+                <div class="divider">
+                
+                <h2 id="injection" class="mt-4">Injection Technique</h2>
 
                 <?php
 
-                $formv1->generateSelectCustom ('Injection is performed in the correct plane:', 'injection_plane', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'Does the endoscopist quickly find the correct plane when injectiing or is there repeated injection too superficial or deep?');
+                $formv1->generateSelectCustomCancel ('Injection is performed in the correct plane:', 'injection_plane', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'Does the endoscopist quickly find the correct plane when injectiing or is there repeated injection too superficial or deep?');
                 echo '<br/>';
 
-                $formv1->generateSelectCustom ('Injection is performed dynamically:', 'injection_dynamic', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'Once the correct plane hass been found does the endoscopist move the needle while injecting to adequately raise the lesion?');
-                echo '<br/>';
-
-
-                $formv1->generateSelectCustom ('Injection is used to improve lesion access:', 'injection_access', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'Injection is used to improve lesion access');
+                $formv1->generateSelectCustomCancel ('Injection is performed dynamically:', 'injection_dynamic', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'Once the correct plane hass been found does the endoscopist move the needle while injecting to adequately raise the lesion?');
                 echo '<br/>';
 
 
+                $formv1->generateSelectCustomCancel ('Injection is used to improve lesion access:', 'injection_access', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'Injection is used to improve lesion access');
+                echo '<br/>';
 
-                ?><h2 id="snare" class="mt-4">Snare Placement Technique</h2>
+
+
+
+
+                ?>
+                </div>
+                
+                <div class="divider">
+
+                <h2 id="snare" class="mt-4">Snare Placement Technique</h2>
 
                 <?php
 
-                $formv1->generateSelectCustom ('Stable positon with lesion at 6 \'o clock OR transformed to 6 \'o clock:', 'snare_position', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+                $formv1->generateSelectCustomCancel ('Stable positon with lesion at 6 \'o clock OR transformed to 6 \'o clock:', 'snare_position', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
                 echo '<br/>';
 
-                $formv1->generateSelectCustom ('Snare precisely visualised during placement and closure (V of the snare):', 'snare_visualised', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+                $formv1->generateSelectCustomCancel ('Snare precisely visualised during placement and closure (V of the snare):', 'snare_visualised', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
                 echo '<br/>';
 
-                $formv1->generateSelectCustom ('Residual tissue islands avoided if piecemeal resection OR Macroscopically complete if en-bloc resection attempted:', 'residual', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+                $formv1->generateSelectCustomCancel ('Residual tissue islands avoided if piecemeal resection OR Macroscopically complete if en-bloc resection attempted:', 'residual', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
                 echo '<br/>';
 
     
 
 
 
-                ?><h2 id="safety" class="mt-4">Safety Checks Prior to Resection (HOT snare only)</h2>
+                ?>
+                </div>
+                
+                <div class="divider">
+
+                <h2 id="safety" class="mt-4">Safety Checks Prior to Resection (HOT snare only)</h2>
 
                 <?php
 
 
-$formv1->generateSelectCustom ('Takes the snare and closes to 1cm, uses tactile feedback OR assistant closes snare to mark:', 'snare_closed', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+$formv1->generateSelectCustomCancel ('Takes the snare and closes to 1cm, uses tactile feedback OR assistant closes snare to mark:', 'snare_closed', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
 echo '<br/>';
 
-$formv1->generateSelectCustom ('Moves the closed snare to confirm independent movement from deeper structures:', 'independent_movement', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+$formv1->generateSelectCustomCancel ('Moves the closed snare to confirm independent movement from deeper structures:', 'independent_movement', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
 echo '<br/>';
 
 
-?><h2 id="defect" class="mt-4">Defect Assessment After Resection</h2>
+?>
+                </div>
+
+<div class="divider">
+
+<h2 id="defect" class="mt-4">Defect Assessment After Resection</h2>
 
                 <?php
 
-$formv1->generateSelectCustom ('MUCOSA - Looks for, detects and removes residual at margin and within defect:', 'mucosa', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'Including residual muscularis mucosae');
+$formv1->generateSelectCustomCancel ('MUCOSA - Looks for, detects and removes residual at margin and within defect:', 'mucosa', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'Including residual muscularis mucosae');
 echo '<br/>';
 
-$formv1->generateSelectCustom ('SUBMUCOSA - Looks for, detects and treats any bleeding vessels within the defect::', 'submucosa', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'Does not treat non-bleeding herniating vessels. Does not treat other appearances of the submucosa detailed in Desomer et al. 2018 GIE');
+$formv1->generateSelectCustomCancel ('SUBMUCOSA - Looks for, detects and treats any bleeding vessels within the defect::', 'submucosa', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'Does not treat non-bleeding herniating vessels. Does not treat other appearances of the submucosa detailed in Desomer et al. 2018 GIE');
 echo '<br/>';
 
-$formv1->generateSelectCustom ('MUSCULARIS - Looks for, detects and treats Deep Mural Injury &ge; 2 (Sydney Classification) :', 'muscularis', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+$formv1->generateSelectCustomCancel ('MUSCULARIS - Looks for, detects and treats Deep Mural Injury &ge; 2 (Sydney Classification) :', 'muscularis', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
 echo '<br/>';
 
 
 
 
-?><h2 id="accessory" class="mt-4">Accessory Techniques in Polypectomy</h2>
+?>
+                </div>
+
+<div class="divider">
+
+<h2 id="accessory" class="mt-4">Accessory Techniques in Polypectomy</h2>
 
                 <?php
 
-$formv1->generateSelectCustom ('Placement of Through the Scope CLIPS:', 'clip_placement', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+$formv1->generateSelectCustomCancel ('Placement of Through the Scope CLIPS:', 'clip_placement', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
 echo '<br/>';
 
 
-$formv1->generateSelectCustom ('Placement of Polyp Retrieval Device:', 'retrieval_device', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+$formv1->generateSelectCustomCancel ('Placement of Polyp Retrieval Device:', 'retrieval_device', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
 echo '<br/>';
 
-$formv1->generateSelectCustom ('Thermal ablation of the POST EMR Margin:', 'thermal_ablation', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+$formv1->generateSelectCustomCancel ('Thermal ablation of the POST EMR Margin:', 'thermal_ablation', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
 echo '<br/>';
 
-$formv1->generateSelectCustom ('Use of Coagulation grasper', 'coag_grasper', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+$formv1->generateSelectCustomCancel ('Use of Coagulation grasper', 'coag_grasper', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
 echo '<br/>';
 
 
-?><h2 id="difficulty" class="mt-4">Difficulty Score (SMSA - EMR, SMSA +)
+?>
+                </div>
+<div class="divider">
+
+
+<h2 id="difficulty" class="mt-4">Difficulty Score (SMSA - EMR, SMSA +)
 </h2>
 
                 <?php
 
 
-$formv1->generateSelectCustom ('Size:', 'size', 'SMSA', array('1' => '< 1cm', '3' => '1 - 1.9cm', '5' => '2 - 2.9cm', '7' => '3 - 3.9cm', '9' => '> 4cm'), '');
+$formv1->generateSelectCustomCancel ('Size:', 'size', 'SMSA', array('1' => '< 1cm', '3' => '1 - 1.9cm', '5' => '2 - 2.9cm', '7' => '3 - 3.9cm', '9' => '> 4cm'), '');
 echo '<br/>';
 
-$formv1->generateSelectCustom ('Morphology:', 'morphology', 'SMSA', array('1' => 'Pedunculated', '2' => 'Sessile', '3' => 'Flat',), '');
+$formv1->generateSelectCustomCancel ('Morphology:', 'morphology', 'SMSA', array('1' => 'Pedunculated', '2' => 'Sessile', '3' => 'Flat',), '');
 echo '<br/>';
 
-$formv1->generateSelectCustom ('Site:', 'site', 'SMSA', array('1' => 'Left', '2' => 'Rght',), '');
+$formv1->generateSelectCustomCancel ('Site:', 'site', 'SMSA', array('1' => 'Left', '2' => 'Rght',), '');
 echo '<br/>';
 			
 
-$formv1->generateSelectCustom ('Access:', 'access', 'SMSA', array('1' => 'Easy', '3' => 'Difficult',), '');
+$formv1->generateSelectCustomCancel ('Access:', 'access', 'SMSA', array('1' => 'Easy', '3' => 'Difficult',), '');
 echo '<br/>';
 
-$formv1->generateSelectCustom ('Non-lifting:', 'non_lifting', 'SMSAplus hot', array('0' => 'No', '1' => 'Yes', ), '');
+$formv1->generateSelectCustomCancel ('Non-lifting:', 'non_lifting', 'SMSAplus hot', array('0' => 'No', '1' => 'Yes', ), '');
 echo '<br/>';
                
-$formv1->generateSelectCustom ('Previous attempt:', 'PANL', 'SMSAplus hot', array('0' => 'No', '1' => 'Yes', ), '');
+$formv1->generateSelectCustomCancel ('Previous attempt:', 'PANL', 'SMSAplus hot', array('0' => 'No', '1' => 'Yes', ), '');
 echo '<br/>';
 
                
-$formv1->generateSelectCustom ('Direct ileocaecal valve, diverticular or appendiceal involvement:', 'location_difficult', 'SMSAplus hot', array('0' => 'No', '1' => 'Yes', ), '');
+$formv1->generateSelectCustomCancel ('Direct ileocaecal valve, diverticular or appendiceal involvement:', 'location_difficult', 'SMSAplus hot', array('0' => 'No', '1' => 'Yes', ), '');
 echo '<br/>';
 
 
-$formv1->generateSelectCustom ('Lesions with a regular-irregular demarcation zone:', 'demarcation', 'SMSAplus hot', array('0' => 'No', '1' => 'Yes', ), '');
+$formv1->generateSelectCustomCancel ('Lesions with a regular-irregular demarcation zone:', 'demarcation', 'SMSAplus hot', array('0' => 'No', '1' => 'Yes', ), '');
 echo '<br/>';
 
 
 
 
-				?>
+?>
+</div>
 
                 
 				
@@ -1093,10 +1187,10 @@ ENDOSCOPIC MUCOSAL RESECTION OUTCOMES</a> </P>
 											  </div>
 											  <div>
 												<i id="saveesdLesion" class="fas fa-save cursor-pointer mr-4" onclick="saveesdLesionForm();"></i>
-											</div>
+											</div>-->
                                                 <div>
-                                                <i id='video-forward' class="fas fa-trash cursor-pointer mr-4"></i>
-                                                </div> -->
+                                                <i id='reset-form' class="fas fa-undo cursor-pointer mr-4" title='Reset Form' data-toggle='tooltip' data-placement='right' >&nbsp;Reset Form</i>
+                                                </div> 
                                                 
                                             
                                                 
@@ -1139,7 +1233,8 @@ ENDOSCOPIC MUCOSAL RESECTION OUTCOMES</a> </P>
                   <!-- <ul> -->
                   <?php
 
-                   
+echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#hot-or-cold">Type - Hot/Cold</a></li>';
+
                         echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#global">Global</a></li>';
                         echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#injection">Injection Technique</a></li>';
                         echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#snare">Snare Placement Technique</a></li>';
@@ -1659,6 +1754,32 @@ $('body').on('change', '#type_polypectomy', function(){
 
 })
 
+
+$('body').on('click', '#reset-form', function(){
+
+                    
+//hide the cold snare
+//alert('change');
+
+location.reload();
+
+
+
+})
+
+$('body').on('click', '.cancel', function(event){
+
+                    
+//hide the cold snare
+//alert('change');
+
+event.preventDefault();
+
+$(this).parent().find('select').val('please select');
+fullScoreUpdate();
+
+
+})
             
 
 
