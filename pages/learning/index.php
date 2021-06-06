@@ -413,6 +413,55 @@
                                             </div>
                                         </div>
                                     </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div
+                                    class="card card-stats bg-gradient-primary border-0 hover-shadow-lg hover-translate-y-n3 mb-0 ml-lg-0">
+                                    <div class="actions actions-dark">
+                                        <a href="#" class="action-item">
+                                            <i class="fas fa-sync-alt"></i>
+                                        </a>
+
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div>
+                                                <div class="icon text-white icon-sm">
+                                                    <i class="fas fa-video"></i>
+                                                </div>
+                                            </div>
+                                            <div class="pl-4">
+                                            <i class="fas fa-medal" style="font-size:4rem;"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div
+                                    class="card card-stats bg-gradient-primary border-0 hover-shadow-lg hover-translate-y-n3 mb-0 ml-lg-0">
+                                    <div class="actions actions-dark">
+                                        <a href="#" class="action-item">
+                                            <i class="fas fa-sync-alt"></i>
+                                        </a>
+
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div>
+                                                <div class="icon text-white icon-sm">
+                                                    <i class="fas fa-video"></i>
+                                                </div>
+                                            </div>
+                                            <div class="pl-4">
+                                            <i class="fas fa-medal" style="font-size:4rem;"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                             </div>
 
