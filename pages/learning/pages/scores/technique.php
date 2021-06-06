@@ -140,12 +140,7 @@ top: 0px;
                 margin-top:-20px;
 
         }
-        #collapseExample {
-
-            position: absolute; 
-            max-width: 50vh; 
-            z-index: 25;
-        }
+    
 
         
 
@@ -936,7 +931,7 @@ top: 0px;
  -->
 
  
-                <p><button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                <p><button id="show-info" class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
     Show info
   </button></p>
   <div class="collapse" id="collapseExample">
@@ -1777,6 +1772,20 @@ event.preventDefault();
 
 $(this).parent().find('select').val('please select');
 fullScoreUpdate();
+
+
+})
+
+$('body').on('click', '#show-info', function(event){
+
+                    
+//hide the cold snare
+//alert('change');
+
+event.preventDefault();
+
+$('#collapseExample').collapse('toggle');
+//fullScoreUpdate();
 
 
 })
