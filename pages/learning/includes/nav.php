@@ -383,6 +383,8 @@ if ($menus) {
 
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/smic"><i class="fas fa-graduation-cap"></i>Risk of Polyp Submucosal Invasion</a>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/scores/cecum.php"><i class="fas fa-graduation-cap"></i>Caecum Visualisation Score</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/scores/technique.php"><i class="fas fa-graduation-cap"></i>Technique Scorer for Polypectomy</a>
+
                     </div>
 
                 </li>

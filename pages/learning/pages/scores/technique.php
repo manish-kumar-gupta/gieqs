@@ -936,8 +936,8 @@ top: 0px;
  -->
 
  
-                <p><button id="show-info" class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    Click me if using for the first time
+                <p><button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Show info
   </button></p>
   <div class="collapse" id="collapseExample">
 
@@ -977,10 +977,10 @@ top: 0px;
                 <h2 id="global" class="mt-4">Global Competencies</h2>
 
                 <?php
-				$formv1->generateSelectCustomCancel ('Tip control:', 'tip-control', 'score', array('1' => '1 - Very Poor - shaky, unstable, prevents achieving procedural goals', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - stable, steady, allows achievement of procedural goals'), 'How good is the control of the endoscope tip that the endoscopist demonstrates throughout the video?');
+				$formv1->generateSelectCustomCancel ('Tip control:', 'tip-control', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'How good is the tip control demonstrated throughout the video?');
 				echo '<br/>';
 
-                $formv1->generateSelectCustomCancel ('Positioning with respect to the polyp:', 'positioning', 'score', array('1' => '1 - Very Poor - far from the endoscope, not in orientation of working channel', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - close to the endoscope, in orientation of working channel'), 'How well does the endoscopist optimise the position of the endoscope with respect to the polyp?');
+                $formv1->generateSelectCustomCancel ('Positioning with respect to the polyp:', 'positioning', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'How good is the position achieved by the endoscopist with respect to accessing the polyp?');
 				echo '<br/>';
 
                 
@@ -1098,7 +1098,7 @@ echo '<br/>';
 
 <h2 id="difficulty" class="mt-4">Difficulty Score (SMSA - EMR, SMSA +)
 </h2>
-<h5>SMSA</h3>
+
                 <?php
 
 
@@ -1114,14 +1114,6 @@ echo '<br/>';
 
 $formv1->generateSelectCustomCancel ('Access:', 'access', 'SMSA', array('1' => 'Easy', '3' => 'Difficult',), '');
 echo '<br/>';
-
-?>
-
-<h5>SMSA+</h3>
-
-
-
-<?php
 
 $formv1->generateSelectCustomCancel ('Non-lifting:', 'non_lifting', 'SMSAplus hot', array('0' => 'No', '1' => 'Yes', ), '');
 echo '<br/>';
@@ -1170,7 +1162,7 @@ echo '<br/>';
 		<P>Sidhu M, Tate DJ, Desomer L, Brown G, Hourigan LF, Lee EYT, Moss A, Raftopoulos S, Singh R, Williams SJ, Zanati S, Burgess N, Bourke MJ. The size, morphology, site, and access score predicts critical outcomes of endoscopic mucosal resection in the colon. Endoscopy. 2018 Jul;50(7):684-692. doi: 10.1055/s-0043-124081. Epub 2018 Jan 25. Erratum in: Endoscopy. 2018 Jul;50(7):C7. PMID: 29370584. </P>
 		<P><a href="https://www.giejournal.org/article/S0016-5107(18)32295-8/pdf">SMSA-EMR SCORE IS A NOVEL ENDOSCOPIC RISK ASSESSMENT TOOL FOR PREDICTING CRITICAL
 ENDOSCOPIC MUCOSAL RESECTION OUTCOMES</a> </P>
-        <P>Score Cretaed for the GIEQs Foundation by David Tate:</P>
+        <P>Score Adapted for GIEQs.com by David Tate:</P>
         
 		<P>Unauthorised distribution of the code prohibited.  Copyright 2021 by the GIEQs Foundation.  All rights reserved </P>
     
@@ -1788,14 +1780,7 @@ fullScoreUpdate();
 
 
 })
-
-
-$('body').on('click', '#show-info', function(event){
-
-    $('#collapseExample').collapse('toggle');
-
-    
-})
+            
 
 
            
