@@ -117,10 +117,10 @@ background-color: rgb(238, 194, 120);
 }
 
 
-#sticky {
+/* #sticky {
 position: absolute !important;
 top: 0px;
-} 
+}  */
 
 
 
@@ -862,6 +862,31 @@ top: 0px;
 
         }
 
+        function copyFormClipboard(){
+
+            var score = calculateScore();
+				var difficulty = calculateDifficultyScore();
+				var difficulty_plus = calculatePlusDifficultyScore();
+				
+
+                var overall_score = {
+
+            
+                "score": score,
+                "difficulty": difficulty,
+                "difficulty_plus": difficulty_plus,
+
+
+                }
+
+                copyToClipboard(JSON.stringify(overall_score));
+
+                alert('Data copied to clipboard');
+
+                return overall_score;
+
+        }
+
 
 	
 		$(document).ready(function() {
@@ -870,9 +895,9 @@ top: 0px;
 
             //standard score
 
-            demarcatedArea();
+           // demarcatedArea();
 
-			$('.content').on('click', '#calculate', function(){
+			/* $('.content').on('click', '#calculate', function(){
 
 				var score = calculateScore();
 				var difficulty = calculateDifficultyScore();
@@ -897,7 +922,7 @@ top: 0px;
 
 				
 
-		})
+		}) */
 
     })
 	
@@ -954,7 +979,7 @@ top: 0px;
 		<div id='result' class='yellow'></div>
 		<br>
 		
-		<form action="adminGenerateUserEmail.php" method="post">
+		<form id="polypectomy-form" action="adminGenerateUserEmail.php" method="post">
             <fieldset>
 
             <h2 id="hot-or-cold" class="mt-1">Hot / Cold?</h2>
@@ -1136,7 +1161,7 @@ echo '<br/>';
 									   
 				
 
-                <p><button id='calculate' type="button" name="calculate">Calculate and Copy Result to Clipboard</button></p>
+                
 
                 <!--conversion to newlines $(this).val().replace(/\r\n|\r|\n/g,"<br />")-->
 
@@ -1144,21 +1169,26 @@ echo '<br/>';
             </fieldset>
         </form>
 
-		<p class="mt-6">Definitions:</p>
+		<p class="h5 mt-5">Definitions:</p>
         <ul>
         <li>Hot Snare - colon polyp removed using a snare with use of electrosurgical energy</li>
         <li>Diathermy - electrosurgical energy</li>
+        <li>Cold Snare - colon polyp removed using a snare without electrosurgical energy</li>
         
 
 
         </ul>
         
-        <P>Reference:</P>
-		<P>Sidhu M, Tate DJ, Desomer L, Brown G, Hourigan LF, Lee EYT, Moss A, Raftopoulos S, Singh R, Williams SJ, Zanati S, Burgess N, Bourke MJ. The size, morphology, site, and access score predicts critical outcomes of endoscopic mucosal resection in the colon. Endoscopy. 2018 Jul;50(7):684-692. doi: 10.1055/s-0043-124081. Epub 2018 Jan 25. Erratum in: Endoscopy. 2018 Jul;50(7):C7. PMID: 29370584. </P>
-		<P><a href="https://www.giejournal.org/article/S0016-5107(18)32295-8/pdf">SMSA-EMR SCORE IS A NOVEL ENDOSCOPIC RISK ASSESSMENT TOOL FOR PREDICTING CRITICAL
+        <P class="h5">References:</P>
+		<P>SMSA-EMR score -- Sidhu M, Tate DJ, Desomer L, Brown G, Hourigan LF, Lee EYT, Moss A, Raftopoulos S, Singh R, Williams SJ, Zanati S, Burgess N, Bourke MJ. The size, morphology, site, and access score predicts critical outcomes of endoscopic mucosal resection in the colon. Endoscopy. 2018 Jul;50(7):684-692. doi: 10.1055/s-0043-124081. Epub 2018 Jan 25. Erratum in: Endoscopy. 2018 Jul;50(7):C7. PMID: 29370584. </P>
+        <P>SMSA+ score -- Anderson J, Lockett M. Training in therapeutic endoscopy: meeting present and future challenges. Frontline Gastroenterol. 2019;10(2):135-140. doi:10.1136/flgastro-2018-101086</P>
+   
+
+		<P>SMSA score -- <a href="https://www.giejournal.org/article/S0016-5107(18)32295-8/pdf">SMSA-EMR SCORE IS A NOVEL ENDOSCOPIC RISK ASSESSMENT TOOL FOR PREDICTING CRITICAL
 ENDOSCOPIC MUCOSAL RESECTION OUTCOMES</a> </P>
         <P>Score Adapted for GIEQs.com by David Tate:</P>
-        
+
+             
 		<P>Unauthorised distribution of the code prohibited.  Copyright 2021 by the GIEQs Foundation.  All rights reserved </P>
     
     
@@ -1166,9 +1196,9 @@ ENDOSCOPIC MUCOSAL RESECTION OUTCOMES</a> </P>
 
 
     <div id="right" class="col-lg-3 col-xl-3 border-left">
-        	<div class="h-100 p-4">
-        		<div id="sticky" data-toggle="sticky" data-sticky-offset="100" class="is_stuck pr-3 mr-3 pl-2 pt-2"
-        			style="position: fixed; top: 200px;">
+<!--         	<div class="h-100 p-4"> -->
+        		<div id="sticky" data-toggle="sticky"  class="is_stuck pr-3 mr-3 pl-2 pt-2"
+        			>
         			<div id="messageBox" class='text-left text-white pb-2 pl-2 pt-2'></div>
 						<div
                                                 class="d-flex flex-nowrap text-small text-muted text-right px-3 mt-1 mb-3 ">
@@ -1220,7 +1250,7 @@ ENDOSCOPIC MUCOSAL RESECTION OUTCOMES</a> </P>
                         <!-- <div class="error text-warning  text-left pb-2">
                 
                 </div> -->
-              <h6 class="mt-3 mb-3 pl-2">Navigation</h6>
+              <h6 class="mt-3 mb-3 pl-2 h5">Navigation</h6>
               
               <ul class="section-nav">
               
@@ -1233,7 +1263,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                         echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#global">Global</a></li>';
                         echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#injection">Injection Technique</a></li>';
                         echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#snare">Snare Placement Technique</a></li>';
-                        echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#safety">Safety Checks prior to Reseection</a></li>';
+                        echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#safety">Safety Checks prior to Resection</a></li>';
                         echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#accessory">Accessory Techniques</a></li>';
                         echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#difficulty">Difficulty</a></li>';
                         
@@ -1247,16 +1277,24 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                 <!-- </li> -->
                 </ul>
              
-                <ul class="section-nav">
 
                 <div class="d-none d-sm-inline-block align-items-center mt-4">
-				<h4 style="text-align:center;" class="strong">Overall Score<br/><span id="numeratorSum"></span>&nbsp;/&nbsp;<span id="denominatorSum"></span></h4>
+                    <div class="card p-3 py-3 pr-6">
 
-				<h4 style="text-align:center; mt-3" class="strong">SMSA<br/><span id="SMSA_total"></span></h4>
+                    <p class="h5">Scores</p>
+				<P style="text-align:left;" class="strong h6">Overall: <span id="numeratorSum"></span>&nbsp;/&nbsp;<span id="denominatorSum"></span></P>
 
-                <h4 style="text-align:center;" class="strong">SMSA Group<br/><span id="SMSA_group"></span></h4>
+				<p style="text-align:left; mt-3" class="strong h6">SMSA: <span id="SMSA_total"></span></p>
 
-                <h4 style="text-align:center;" class="strong">SMSA+<br/><span id="numeratorSMSAplus"></span>&nbsp;/&nbsp;<span id="denominatorSMSAplus"></span></h4>
+                <p style="text-align:left;" class="strong h6">SMSA Group : <span id="SMSA_group"></span></p>
+
+                <p style="text-align:left;" class="strong h6">SMSA+: <span id="numeratorSMSAplus"></span>&nbsp;/&nbsp;<span id="denominatorSMSAplus"></span></p>
+
+
+</div>
+
+<p><button id='calculate' type="button" class="btn btn-sm text-white btn-dark" name="calculate">Calculate and Copy Result to Clipboard</button></p>
+
 
                 
                 <!-- <p>Polypectomy Score </p>
@@ -1264,12 +1302,11 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                 <p>Overall Score </p> -->
 
                 </div>
-                </ul>
             
             </div> <!--close sticky nav-->  
                                 
             
-        </div> <!--close right h-100 div-->
+        <!-- </div> --> <!--close right h-100 div-->
         </div> <!--close right column div-->
 
 
@@ -1789,6 +1826,130 @@ $('#collapseExample').collapse('toggle');
 
 
 })
+
+$(document).on('click', '#calculate', function(event) {
+
+event.preventDefault();
+$('#polypectomy-form').submit();
+
+})
+
+$("#polypectomy-form").validate({
+
+invalidHandler: function(event, validator) {
+var errors = validator.numberOfInvalids();
+console.log("there were " + errors + " errors");
+if (errors) {
+var message = errors == 1 ?
+"1 field has been missed. It has been highlighted" :
++errors + " fields have been missed. They have been highlighted";
+
+
+$('#error').text(message);
+//$('div.error span').addClass('form-text text-danger');
+//$('#errorWrapper').show();
+
+$("#errorWrapper").fadeTo(4000, 500).slideUp(500, function() {
+$("#errorWrapper").slideUp(500);
+});
+} else {
+$('#errorWrapper').hide();
+}
+},
+rules: {
+    type_polypectomy: {
+required: true,
+
+},
+
+
+
+surname: {
+required: true,
+
+},
+
+gender: {
+required: true,
+
+},
+
+
+email: {
+required: true,
+email: true,
+
+},
+
+password: {
+required: true,
+minlength: 6,
+
+},
+
+passwordAgain: {
+equalTo: "#password",
+
+
+},
+
+
+centreCountry: {
+
+required: true,
+
+},
+endoscopistType: {
+
+required: true
+},
+
+checkterms: {
+
+required: true,
+
+},
+checkprivacy: {
+
+required: true
+}
+
+
+
+},
+messages: {
+
+    type_polypectomy : {
+
+        required: 'You must enter whether the polypectomy was performed hot or cold.  This will alter the available fields below.',
+
+    }, 
+
+password: {
+required: 'Please enter a password',
+minlength: 'Please use at least 6 characters'
+
+
+},
+passwordAgain: {
+
+equalTo: "The new passwords should match",
+
+
+
+},
+},
+submitHandler: function(form) {
+
+
+    copyFormClipboard();
+//console.log("submitted form");
+
+
+
+}
+
+});
             
 
 

@@ -122,7 +122,7 @@ Class formGenerator {
 		foreach ($options as $key=>$value){
 			echo "<option value='$key'>$value</option>";	
 		}
-		echo "</select><button class='input-group-btn cancel text-dark' aria-hidden=\"true\">&times;</button><br>";
+		echo "</select><button class='input-group-btn cancel text-dark ml-3' aria-hidden=\"true\">&times;</button><br>";
 		echo "</div>";	
 	}
 	
