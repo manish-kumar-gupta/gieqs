@@ -230,10 +230,11 @@ top: 0px;
 
     <div class="d-flex align-items-end container">
         <p class="h1 mt-10">Polypectomy Technique Scorer</p>
+      
 
     </div>
     <div class="d-flex align-items-end container">
-        <p class="text-muted pl-4 mt-2"></p>
+        <p class="text-muted pl-4 mt-2">Towards careful, meticulous polypectomy practice</p>
 
     </div>
 
@@ -867,12 +868,14 @@ top: 0px;
             var score = calculateScore();
 				var difficulty = calculateDifficultyScore();
 				var difficulty_plus = calculatePlusDifficultyScore();
+                var type_polypectomy = $('#type_polypectomy').val();
 				
 
                 var overall_score = {
 
-            
+                    "type_polypectomy" : type_polypectomy,
                 "score": score,
+                
                 "difficulty": difficulty,
                 "difficulty_plus": difficulty_plus,
 
@@ -881,7 +884,15 @@ top: 0px;
 
                 copyToClipboard(JSON.stringify(overall_score));
 
-                alert('Data copied to clipboard');
+                //alert('Data copied to clipboard');
+
+                $('#success').text('Data Copied to Clipboard.');
+                    //$('div.error span').addClass('form-text text-danger');
+                    //$('#errorWrapper').show();
+
+                    $("#successWrapper").fadeTo(4000, 500).slideUp(500, function () {
+                        $("#successWrapper").slideUp(500);
+                    });
 
                 return overall_score;
 
@@ -967,11 +978,15 @@ top: 0px;
                 <p><ul>Colon Polyp  &ge; 10mm in size</ul><ul>Cold or Hot Snare</ul></p>
 
                 <p>This tool asks for your subjective assessment of multiple domains of deconstructed polypectomy where 1 is poor and 5 very good</p>
-                <p>Fill hot or cold first since different questions are asked for each.  The difficulty score consists of SMSA questions (4).  The difficulty+ score consists of SMSA+ questions (4) and applies only to hot snare.</p>
+                <p>Fill hot or cold first since different questions are asked for each.  <br/>The difficulty score consists of SMSA questions (4).  <br/>The difficulty+ score consists of SMSA+ questions (4) and applies only to hot snare.</p>
                 <p>Once completed press copy and a machine readable version will be copied to the clipboard.</p>
 
 
                 <p>Hover over questions for more information</p>
+
+                <p><i class="fas fa-play gieqsGold "></i> indicates availability of a video demonstration for that statement.  click to view.</p>
+
+
                 </div>
 </div>
 
@@ -991,24 +1006,24 @@ top: 0px;
                 echo '<br/>';
 
                 ?>
-                
-                <div class="divider">
+                </fieldset>
+                <fieldset class="divider">
 
                 <h2 id="global" class="mt-4">Global Competencies</h2>
 
                 <?php
-				$formv1->generateSelectCustomCancel ('Tip control:', 'tip-control', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'How good is the tip control demonstrated throughout the video?');
+				$formv1->generateSelectCustomCancel ('Tip control:', 'tip_control', 'score', array('1' => '1 - Very Poor - Uncontrolled, shaky and undirected', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - Controlled, stable and purposeful'), 'How good is the tip control demonstrated throughout the video?');
 				echo '<br/>';
 
-                $formv1->generateSelectCustomCancel ('Positioning with respect to the polyp:', 'positioning', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'How good is the position achieved by the endoscopist with respect to accessing the polyp?');
+                $formv1->generateSelectCustomCancel ('Positioning with respect to the polyp:', 'positioning', 'score', array('1' => '1 - Very Poor - Not at 6 \'o clock, far from the colonoscope, fluid covering lesion (poor use of gravity)', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - Lesion at or near 6 \'o clock, close to the colonoscope, fluid away from lesion (good use of gravity)'), 'How good is the position achieved by the endoscopist with respect to accessing the polyp?');
 				echo '<br/>';
 
                 
 
                 ?>
-                </div>
+                </fieldset>
 
-                <div class="divider">
+                <fieldset class="divider">
                 
                 <h2 id="injection" class="mt-4">Injection Technique</h2>
 
@@ -1029,9 +1044,9 @@ top: 0px;
 
 
                 ?>
-                </div>
+                </fieldset>
                 
-                <div class="divider">
+                <fieldset class="divider">
 
                 <h2 id="snare" class="mt-4">Snare Placement Technique</h2>
 
@@ -1051,9 +1066,9 @@ top: 0px;
 
 
                 ?>
-                </div>
+                </fieldset>
                 
-                <div class="divider">
+                <fieldset class="divider">
 
                 <h2 id="safety" class="mt-4">Safety Checks Prior to Resection (HOT snare only)</h2>
 
@@ -1068,9 +1083,9 @@ echo '<br/>';
 
 
 ?>
-                </div>
+                </fieldset>
 
-<div class="divider">
+<fieldset class="divider">
 
 <h2 id="defect" class="mt-4">Defect Assessment After Resection</h2>
 
@@ -1089,9 +1104,9 @@ echo '<br/>';
 
 
 ?>
-                </div>
+                </fieldset>
 
-<div class="divider">
+<fieldset class="divider">
 
 <h2 id="accessory" class="mt-4">Accessory Techniques in Polypectomy</h2>
 
@@ -1112,8 +1127,8 @@ echo '<br/>';
 
 
 ?>
-                </div>
-<div class="divider">
+                </fieldset>
+<fieldset class="divider">
 
 
 <h2 id="difficulty" class="mt-4">Difficulty Score (SMSA - EMR, SMSA +)
@@ -1153,7 +1168,7 @@ echo '<br/>';
 
 
 ?>
-</div>
+</fieldset>
 
                 
 				
@@ -1166,7 +1181,7 @@ echo '<br/>';
                 <!--conversion to newlines $(this).val().replace(/\r\n|\r|\n/g,"<br />")-->
 
                 <p></p>
-            </fieldset>
+           
         </form>
 
 		<p class="h5 mt-5">Definitions:</p>
@@ -1180,12 +1195,14 @@ echo '<br/>';
         </ul>
         
         <P class="h5">References:</P>
-		<P>SMSA-EMR score -- Sidhu M, Tate DJ, Desomer L, Brown G, Hourigan LF, Lee EYT, Moss A, Raftopoulos S, Singh R, Williams SJ, Zanati S, Burgess N, Bourke MJ. The size, morphology, site, and access score predicts critical outcomes of endoscopic mucosal resection in the colon. Endoscopy. 2018 Jul;50(7):684-692. doi: 10.1055/s-0043-124081. Epub 2018 Jan 25. Erratum in: Endoscopy. 2018 Jul;50(7):C7. PMID: 29370584. </P>
+        <P>Original SMSA Score -- Gupta S, Miskovic D, Bhandari P, Dolwani S, McKaig B, Pullan R, Rembacken B, Riley S, Rutter MD, Suzuki N, Tsiamoulos Z, Valori R, Vance ME, Faiz OD, Saunders BP, Thomas-Gibson S. A novel method for determining the difficulty of colonoscopic polypectomy. Frontline Gastroenterol. 2013 Oct;4(4):244-248. doi: 10.1136/flgastro-2013-100331. Epub 2013 Jun 1. PMID: 28839733; PMCID: PMC5369843. </P>
+
+		<P>SMSA in Larger &ge; 20mm LNPCPs  -- Sidhu M, Tate DJ, Desomer L, Brown G, Hourigan LF, Lee EYT, Moss A, Raftopoulos S, Singh R, Williams SJ, Zanati S, Burgess N, Bourke MJ. The size, morphology, site, and access score predicts critical outcomes of endoscopic mucosal resection in the colon. Endoscopy. 2018 Jul;50(7):684-692. doi: 10.1055/s-0043-124081. Epub 2018 Jan 25. Erratum in: Endoscopy. 2018 Jul;50(7):C7. PMID: 29370584. </P>
         <P>SMSA+ score -- Anderson J, Lockett M. Training in therapeutic endoscopy: meeting present and future challenges. Frontline Gastroenterol. 2019;10(2):135-140. doi:10.1136/flgastro-2018-101086</P>
    
 
-		<P>SMSA score -- <a href="https://www.giejournal.org/article/S0016-5107(18)32295-8/pdf">SMSA-EMR SCORE IS A NOVEL ENDOSCOPIC RISK ASSESSMENT TOOL FOR PREDICTING CRITICAL
-ENDOSCOPIC MUCOSAL RESECTION OUTCOMES</a> </P>
+		<P>SMSA-EMR score -- <a href="https://www.giejournal.org/article/S0016-5107(18)32295-8/pdf">SMSA-EMR SCORE IS A NOVEL ENDOSCOPIC RISK ASSESSMENT TOOL FOR PREDICTING CRITICAL
+ENDOSCOPIC MUCOSAL RESECTION OUTCOMES</a> - Volume 87, No. 6S : 2018 GASTROINTESTINAL ENDOSCOPY AB467 </P>
         <P>Score Adapted for GIEQs.com by David Tate:</P>
 
              
@@ -1836,83 +1853,166 @@ $('#polypectomy-form').submit();
 
 $("#polypectomy-form").validate({
 
-invalidHandler: function(event, validator) {
-var errors = validator.numberOfInvalids();
-console.log("there were " + errors + " errors");
-if (errors) {
-var message = errors == 1 ?
-"1 field has been missed. It has been highlighted" :
-+errors + " fields have been missed. They have been highlighted";
+            invalidHandler: function (event, validator) {
+                var errors = validator.numberOfInvalids();
+                console.log("there were " + errors + " errors");
+                if (errors) {
+                    var message = errors == 1 ?
+                        "1 field has been missed. It has been highlighted.\n Score not copied to clipboard." :
+                        +errors + " fields have been missed. They have been highlighted.  Score not copied to clipboard.";
 
 
-$('#error').text(message);
-//$('div.error span').addClass('form-text text-danger');
-//$('#errorWrapper').show();
+                    $('#error').text(message);
+                    //$('div.error span').addClass('form-text text-danger');
+                    //$('#errorWrapper').show();
 
-$("#errorWrapper").fadeTo(4000, 500).slideUp(500, function() {
-$("#errorWrapper").slideUp(500);
-});
-} else {
-$('#errorWrapper').hide();
-}
+                    $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function () {
+                        $("#errorWrapper").slideUp(500);
+                    });
+                } else {
+                    $('#errorWrapper').hide();
+                }
+            },
+            rules: {
+                type_polypectomy: {
+                    required: true,
+
+                },
+
+
+
+                tip_control: {
+                    required: true,
+
+                },
+
+                positioning: {
+                    required: true,
+
+                },
+
+
+                injection_plane: {
+
+                    required: function (element) {
+                        return $("#type_polypectomy").val() == "1";
+
+                    }
+
+                },
+
+                injection_dynamic: {
+
+                    required: function (element) {
+                        return $("#type_polypectomy").val() == "1";
+
+                    }
+
+                },
+
+                injection_access: {
+
+                    required: function (element) {
+                        return $("#type_polypectomy").val() == "1";
+
+                    }
+
+                },
+
+
+                snare_position: {
+
+                    required: true,
+
+                },
+                snare_visualised: {
+
+                    required: true
+                },
+
+                residual: {
+
+                    required: true,
+
+                },
+                independent_movement: {
+
+                    required: function (element) {
+                        return $("#type_polypectomy").val() == "1";
+
+                    }
+                },
+
+                snare_closed: {
+
+                    required: function (element) {
+                        return $("#type_polypectomy").val() == "1";
+
+                    }
+                },
+                mucosa: {
+
+                    required: true
+                },
+                submucosa: {
+
+                    required: function (element) {
+                        return $("#type_polypectomy").val() == "1";
+
+                    }
+                },
+                muscularis: {
+
+                    required: function (element) {
+                        return $("#type_polypectomy").val() == "1";
+
+                    }
+                },
+                size: {
+
+                    required: true
+                },
+                morphology: {
+
+                    required: true
+                },
+                site: {
+
+                    required: true
+                },
+                access: {
+
+                    required: true
+                },
+
+                non_lifting: {
+
+                    required: function (element) {
+                        return $("#type_polypectomy").val() == "1";
+
+                    }
 },
-rules: {
-    type_polypectomy: {
-required: true,
+PANL: {
 
+    required: function (element) {
+                        return $("#type_polypectomy").val() == "1";
+
+                    }
+},
+location_difficult: {
+
+    required: function (element) {
+                        return $("#type_polypectomy").val() == "1";
+
+                    }
+},
+demarcation: {
+    required: function (element) {
+                        return $("#type_polypectomy").val() == "1";
+
+                    }
 },
 
-
-
-surname: {
-required: true,
-
-},
-
-gender: {
-required: true,
-
-},
-
-
-email: {
-required: true,
-email: true,
-
-},
-
-password: {
-required: true,
-minlength: 6,
-
-},
-
-passwordAgain: {
-equalTo: "#password",
-
-
-},
-
-
-centreCountry: {
-
-required: true,
-
-},
-endoscopistType: {
-
-required: true
-},
-
-checkterms: {
-
-required: true,
-
-},
-checkprivacy: {
-
-required: true
-}
 
 
 
@@ -1925,19 +2025,7 @@ messages: {
 
     }, 
 
-password: {
-required: 'Please enter a password',
-minlength: 'Please use at least 6 characters'
 
-
-},
-passwordAgain: {
-
-equalTo: "The new passwords should match",
-
-
-
-},
 },
 submitHandler: function(form) {
 
@@ -1951,6 +2039,21 @@ submitHandler: function(form) {
 
 });
             
+
+$(window).scroll(function () {
+					var scrollDistance = $(window).scrollTop();
+
+
+					// Assign active class to nav links while scolling
+					$('fieldset').each(function (i) {
+						if ($(this).position().top <= scrollDistance) {
+							$('.section-nav a.text-gieqsGold').removeClass('text-gieqsGold').addClass(
+								'text-muted');
+							$('.section-nav a').eq(i).addClass('text-gieqsGold').removeClass(
+								'text-muted');
+						}
+					});
+				}).scroll();
 
 
            
