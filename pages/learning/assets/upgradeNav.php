@@ -34,8 +34,8 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                    
                     <a class="nav-link nav-link-icon">
                        
-                        <span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2">LEVEL 6</span>
-                        <span class="nav-link-inner--text ">GIEQs Basic Member</span></a>
+                        
+                        <span class="nav-link-inner--text ">GIEQs <span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2">FREE</span> Member</span></a>
                       
                     
                     
@@ -62,8 +62,8 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                    
                    <a class="nav-link nav-link-icon" 
                        >
-                       <span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2" style="z-index: -1 !important;">LEVEL 5</span>
-                       <span class="nav-link-inner--text ">GIEQs Standard Member</span></a>
+                       
+                       <span class="nav-link-inner--text ">GIEQs <span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2" style="z-index: -1 !important;">Standard</span> Member</span></a>
                      
                    
                    
@@ -91,8 +91,8 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                    
                    <a class="nav-link nav-link-icon"
                        >
-                       <span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2" style="z-index: -1 !important;">LEVEL 4</span>
-                       <span class="nav-link-inner--text ">GIEQs Pro Member</span></a>
+                       
+                       <span class="nav-link-inner--text ">GIEQs&nbsp;<span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2" style="z-index: -1 !important;">PRO</span>Member</span></a>
                      
                    
                    

@@ -381,18 +381,18 @@
                 <div class="container pt-0 pt-lg-0">
 
                     <div class="actions-toolbar py-2">
-                        <h5 class="mb-1">Your GIEQs Stats</h5>
-                        <p class="text-sm text-muted mb-0">How GIEQy are you <?php echo $_SESSION['firstname'];?>?</p>
+                       <!--  <h5 class="mb-1">Your GIEQs Stats</h5>
+                        <p class="text-sm text-muted mb-0">How GIEQy are you <?php //echo $_SESSION['firstname'];?>?</p> -->
                     </div>
 
                     <div class="mb-5">
                         <div class="row">
-                            <div class="col-lg-4">
+                            <!-- <div class="col-lg-4">
                                 <div
-                                    class="card card-stats bg-gradient-primary border-0 hover-shadow-lg hover-translate-y-n3 mb-0 ml-lg-0">
+                                    class="card card-stats bg-gradient-dark border-0 hover-shadow-lg hover-translate-y-n3 mb-0 ml-lg-0">
                                     <div class="actions actions-dark">
                                         <a href="#" class="action-item">
-                                            <i class="fas fa-sync-alt"></i>
+                                         
                                         </a>
 
                                     </div>
@@ -404,60 +404,88 @@
                                                 </div>
                                             </div>
                                             <div class="pl-4">
-                                                <?php $completionArray = $usersMetricsManager->userCompletionVideos($userid, false);?>
+                                                <?php //$completionArray = $usersMetricsManager->userCompletionVideos($userid, false);?>
                                                 <span
-                                                    class="d-block h5 text-white mr-2 mb-1"><?php echo $completionArray['numerator'];?>
-                                                    / <?php echo $completionArray['denominator'];?>
-                                                    (<?php echo round($completionArray['completion'], 2);?>%)</span>
+                                                    class="d-block h5 text-white mr-2 mb-1"><?php //echo $completionArray['numerator'];?>
+                                                    / <?php //echo $completionArray['denominator'];?>
+                                                    (<?php //echo round($completionArray['completion'], 2);?>%)</span>
                                                 <span class="text-white">Videos Completed</span>
                                             </div>
                                         </div>
                                     </div>
                                     
                                 </div>
-                            </div>
-                            <div class="col-lg-4">
+                            </div> -->
+                            <div class="col-lg-6">
                                 <div
-                                    class="card card-stats bg-gradient-primary border-0 hover-shadow-lg hover-translate-y-n3 mb-0 ml-lg-0">
+                                    class="card card-stats bg-gradient-dark border-0 hover-shadow-lg hover-translate-y-n3 mb-0 ml-lg-0">
                                     <div class="actions actions-dark">
                                         <a href="#" class="action-item">
-                                            <i class="fas fa-sync-alt"></i>
+                                            <!-- <i class="fas fa-sync-alt"></i> -->
                                         </a>
 
                                     </div>
                                     <div class="card-body">
                                         <div class="d-flex">
                                             <div>
-                                                <div class="icon text-white icon-sm">
-                                                    <i class="fas fa-video"></i>
+                                                <div class="icon text-white icon-lg">
+                                                <i class="fas fa-medal gieqsGold"></i>
+                                              
                                                 </div>
                                             </div>
                                             <div class="pl-4">
-                                            <i class="fas fa-medal" style="font-size:4rem;"></i>
+                                            <span
+                                                    class="d-block h5 text-white mr-2 mb-1">GIEQs Online Completion</span>
+                                                    <span
+                                                    class="d-block h6 text-white mr-2 mb-1">Gold Status</span>
+                                                    <p>x/y courses</p>
+                                                    <p> premium content packs</p>
+                                                    <?php $completionArray = $usersMetricsManager->userCompletionVideos($userid, false);?>
+                                                <span
+                                                    class="d-block h6 text-white mr-2 mb-1"><?php echo $completionArray['numerator'];?>
+                                                    / <?php echo $completionArray['denominator'];?>
+                                                    (<?php echo round($completionArray['completion'], 1);?>%) Learning Tools Completed</span>
+
+                                                    <p>yy learning tools until next status</p>
                                             </div>
                                         </div>
                                     </div>
                                     
                                 </div>
                             </div>
-                            <div class="col-lg-4">
+                            <div class="col-lg-1">
+    </div>
+                            <div class="col-lg-5 mt-2">
                                 <div
-                                    class="card card-stats bg-gradient-primary border-0 hover-shadow-lg hover-translate-y-n3 mb-0 ml-lg-0">
+                                    class="card card-stats bg-gradient-dark border-0 hover-shadow-lg hover-translate-y-n3 mb-0 ml-lg-0">
                                     <div class="actions actions-dark">
                                         <a href="#" class="action-item">
-                                            <i class="fas fa-sync-alt"></i>
+                                           <!--  <i class="fas fa-sync-alt"></i> -->
                                         </a>
 
                                     </div>
                                     <div class="card-body">
                                         <div class="d-flex">
                                             <div>
-                                                <div class="icon text-white icon-sm">
-                                                    <i class="fas fa-video"></i>
+                                                <div class="icon text-white icon-lg">
+                                                <img
+    src="<?php echo BASE_URL . "/assets/img/icons/coin.svg"?>"
+    alt="GIEQs Coin"
+    />
                                                 </div>
                                             </div>
                                             <div class="pl-4">
-                                            <i class="fas fa-medal" style="font-size:4rem;"></i>
+                                            <span
+                                                    class="d-block h5 text-white mr-2 mb-1">GIEQs Coins</span>
+                                                    <span
+                                                    class="d-block h6 text-white mr-2 mb-1">Spend on your next GIEQs Experience</span>
+                                                    <p>You have xxx <img
+    src="<?php echo BASE_URL . "/assets/img/icons/coin.svg"?>"
+    alt="GIEQs Coin" height="24" width="24"
+    /></p>
+    <p>Get More Coins</p>
+                                                    
+                                           
                                             </div>
                                         </div>
                                     </div>
@@ -490,6 +518,8 @@
                 </div>
 
             </section>
+
+           
 
             <!-- Finish watching videos -->
 
