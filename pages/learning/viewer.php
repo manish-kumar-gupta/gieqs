@@ -1053,7 +1053,7 @@ $current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s');
 
                 $usersViewsVideo->setrecentView($current_date_sqltimestamp);
 
-                echo $usersViewsVideo->prepareStatementPDOUpdate();
+                $usersViewsVideo->prepareStatementPDOUpdate();
 
 
 
