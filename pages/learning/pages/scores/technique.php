@@ -229,7 +229,7 @@ top: 0px;
         <!--Header CHANGEME-->
 
     <div class="d-flex align-items-end container">
-        <p class="h1 mt-10">Polypectomy Technique Scorer</p>
+        <p class="h1 mt-10">Polypectomy Technique Scorer - Video Assessment Version</p>
       
 
     </div>
@@ -948,271 +948,10 @@ top: 0px;
 	
     <div class='content'>
         <div class="row">
-            <div class="col-9">
-        
+          
 
-<?php
 
-//$requiredValues = array("Location","Morphology","Paris");
-
-//$values = array();
-//$values = $lesion->GetValuesSpecific($requiredValues);
-
-//print_r($values);
-
-?>
-
-       
-                <!-- <p><h3><b>Risk for Submucosal Invasion within a given LSL </h3>[algorithm ala Burgess 2018 Gastroenterology]</b></p>
- -->
-
- 
-                <p><button id="show-info" class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    Show info
-  </button></p>
-  <div class="collapse" id="collapseExample">
-
-                <div class="card card-body">
-
-                <p class="h5">Pre-requisites:</p>
-                <p><ul>Colon Polyp  &ge; 10mm in size</ul><ul>Cold or Hot Snare</ul></p>
-
-                <p>This tool asks for your subjective assessment of multiple domains of deconstructed polypectomy where 1 is poor and 5 very good</p>
-                <p>Fill hot or cold first since different questions are asked for each.  <br/>The difficulty score consists of SMSA questions (4).  <br/>The difficulty+ score consists of SMSA+ questions (4) and applies only to hot snare.</p>
-                <p>Once completed press copy and a machine readable version will be copied to the clipboard.</p>
-
-
-                <p>Hover over questions for more information</p>
-
-                <p><i class="fas fa-play gieqsGold "></i> indicates availability of a video demonstration for that statement.  click to view.</p>
-
-
-                </div>
-</div>
-
-		<br>
-		<div id='result' class='yellow'></div>
-		<br>
-		
-		<form id="polypectomy-form" action="adminGenerateUserEmail.php" method="post">
-            <fieldset>
-
-            <h2 id="hot-or-cold" class="mt-1">Hot / Cold?</h2>
-				<?php
-
-                
-
-                $formv1->generateSelectCustomCancel ('Type of Polypectomy', 'type_polypectomy', 'branch_point', array('1' => 'Hot Snare', '2' => 'Cold Snare',), 'Select the Type of Polypectomy');
-                echo '<br/>';
-
-                ?>
-                </fieldset>
-                <fieldset class="divider">
-
-                <h2 id="global" class="mt-4">Global Competencies</h2>
-
-                <?php
-				$formv1->generateSelectCustomCancel ('Tip control:', 'tip_control', 'score', array('1' => '1 - Very Poor - Uncontrolled, shaky and undirected', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - Controlled, stable and purposeful'), 'How good is the tip control demonstrated throughout the video?');
-				echo '<br/>';
-
-                $formv1->generateSelectCustomCancel ('Positioning with respect to the polyp:', 'positioning', 'score', array('1' => '1 - Very Poor - Not at 6 \'o clock, far from the colonoscope, fluid covering lesion (poor use of gravity)', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - Lesion at or near 6 \'o clock, close to the colonoscope, fluid away from lesion (good use of gravity)'), 'How good is the position achieved by the endoscopist with respect to accessing the polyp?');
-				echo '<br/>';
-
-                
-
-                ?>
-                </fieldset>
-
-                <fieldset class="divider">
-                
-                <h2 id="injection" class="mt-4">Injection Technique</h2>
-
-                <?php
-
-                $formv1->generateSelectCustomCancel ('Injection is performed in the correct plane:', 'injection_plane', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'Does the endoscopist quickly find the correct plane when injectiing or is there repeated injection too superficial or deep?');
-                echo '<br/>';
-
-                $formv1->generateSelectCustomCancel ('Injection is performed dynamically:', 'injection_dynamic', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'Once the correct plane hass been found does the endoscopist move the needle while injecting to adequately raise the lesion?');
-                echo '<br/>';
-
-
-                $formv1->generateSelectCustomCancel ('Injection is used to improve lesion access:', 'injection_access', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'Injection is used to improve lesion access');
-                echo '<br/>';
-
-
-
-
-
-                ?>
-                </fieldset>
-                
-                <fieldset class="divider">
-
-                <h2 id="snare" class="mt-4">Snare Placement Technique</h2>
-
-                <?php
-
-                $formv1->generateSelectCustomCancel ('Stable positon with lesion at 6 \'o clock OR transformed to 6 \'o clock:', 'snare_position', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
-                echo '<br/>';
-
-                $formv1->generateSelectCustomCancel ('Snare precisely visualised during placement and closure (V of the snare):', 'snare_visualised', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
-                echo '<br/>';
-
-                $formv1->generateSelectCustomCancel ('Residual tissue islands avoided if piecemeal resection OR Macroscopically complete if en-bloc resection attempted:', 'residual', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
-                echo '<br/>';
-
-    
-
-
-
-                ?>
-                </fieldset>
-                
-                <fieldset class="divider">
-
-                <h2 id="safety" class="mt-4">Safety Checks Prior to Resection (HOT snare only)</h2>
-
-                <?php
-
-
-$formv1->generateSelectCustomCancel ('Takes the snare and closes to 1cm, uses tactile feedback OR assistant closes snare to mark:', 'snare_closed', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
-echo '<br/>';
-
-$formv1->generateSelectCustomCancel ('Moves the closed snare to confirm independent movement from deeper structures:', 'independent_movement', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
-echo '<br/>';
-
-
-?>
-                </fieldset>
-
-<fieldset class="divider">
-
-<h2 id="defect" class="mt-4">Defect Assessment After Resection</h2>
-
-                <?php
-
-$formv1->generateSelectCustomCancel ('MUCOSA - Looks for, detects and removes residual at margin and within defect:', 'mucosa', 'score', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'Including residual muscularis mucosae');
-echo '<br/>';
-
-$formv1->generateSelectCustomCancel ('SUBMUCOSA - Looks for, detects and treats any bleeding vessels within the defect::', 'submucosa', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), 'Does not treat non-bleeding herniating vessels. Does not treat other appearances of the submucosa detailed in Desomer et al. 2018 GIE');
-echo '<br/>';
-
-$formv1->generateSelectCustomCancel ('MUSCULARIS - Looks for, detects and treats Deep Mural Injury &ge; 2 (Sydney Classification) :', 'muscularis', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
-echo '<br/>';
-
-
-
-
-?>
-                </fieldset>
-
-<fieldset class="divider">
-
-<h2 id="accessory" class="mt-4">Accessory Techniques in Polypectomy</h2>
-
-                <?php
-
-$formv1->generateSelectCustomCancel ('Placement of Through the Scope CLIPS:', 'clip_placement', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
-echo '<br/>';
-
-
-$formv1->generateSelectCustomCancel ('Placement of Polyp Retrieval Device:', 'retrieval_device', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
-echo '<br/>';
-
-$formv1->generateSelectCustomCancel ('Thermal ablation of the POST EMR Margin:', 'thermal_ablation', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
-echo '<br/>';
-
-$formv1->generateSelectCustomCancel ('Use of Coagulation grasper', 'coag_grasper', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
-echo '<br/>';
-
-
-?>
-                </fieldset>
-<fieldset class="divider">
-
-
-<h2 id="difficulty" class="mt-4">Difficulty Score (SMSA - EMR, SMSA +)
-</h2>
-
-                <?php
-
-
-$formv1->generateSelectCustomCancel ('Size:', 'size', 'SMSA', array('1' => '< 1cm', '3' => '1 - 1.9cm', '5' => '2 - 2.9cm', '7' => '3 - 3.9cm', '9' => '> 4cm'), '');
-echo '<br/>';
-
-$formv1->generateSelectCustomCancel ('Morphology:', 'morphology', 'SMSA', array('1' => 'Pedunculated', '2' => 'Sessile', '3' => 'Flat',), '');
-echo '<br/>';
-
-$formv1->generateSelectCustomCancel ('Site:', 'site', 'SMSA', array('1' => 'Left', '2' => 'Rght',), '');
-echo '<br/>';
-			
-
-$formv1->generateSelectCustomCancel ('Access:', 'access', 'SMSA', array('1' => 'Easy', '3' => 'Difficult',), '');
-echo '<br/>';
-
-$formv1->generateSelectCustomCancel ('Non-lifting:', 'non_lifting', 'SMSAplus hot', array('0' => 'No', '1' => 'Yes', ), '');
-echo '<br/>';
-               
-$formv1->generateSelectCustomCancel ('Previous attempt:', 'PANL', 'SMSAplus hot', array('0' => 'No', '1' => 'Yes', ), '');
-echo '<br/>';
-
-               
-$formv1->generateSelectCustomCancel ('Direct ileocaecal valve, diverticular or appendiceal involvement:', 'location_difficult', 'SMSAplus hot', array('0' => 'No', '1' => 'Yes', ), '');
-echo '<br/>';
-
-
-$formv1->generateSelectCustomCancel ('Lesions with a regular-irregular demarcation zone:', 'demarcation', 'SMSAplus hot', array('0' => 'No', '1' => 'Yes', ), '');
-echo '<br/>';
-
-
-
-
-?>
-</fieldset>
-
-                
-				
-			
-									   
-				
-
-                
-
-                <!--conversion to newlines $(this).val().replace(/\r\n|\r|\n/g,"<br />")-->
-
-                <p></p>
-           
-        </form>
-
-		<p class="h5 mt-5">Definitions:</p>
-        <ul>
-        <li>Hot Snare - colon polyp removed using a snare with use of electrosurgical energy</li>
-        <li>Diathermy - electrosurgical energy</li>
-        <li>Cold Snare - colon polyp removed using a snare without electrosurgical energy</li>
-        
-
-
-        </ul>
-        
-        <P class="h5">References:</P>
-        <P>Original SMSA Score -- Gupta S, Miskovic D, Bhandari P, Dolwani S, McKaig B, Pullan R, Rembacken B, Riley S, Rutter MD, Suzuki N, Tsiamoulos Z, Valori R, Vance ME, Faiz OD, Saunders BP, Thomas-Gibson S. A novel method for determining the difficulty of colonoscopic polypectomy. Frontline Gastroenterol. 2013 Oct;4(4):244-248. doi: 10.1136/flgastro-2013-100331. Epub 2013 Jun 1. PMID: 28839733; PMCID: PMC5369843. </P>
-
-		<P>SMSA in Larger &ge; 20mm LNPCPs  -- Sidhu M, Tate DJ, Desomer L, Brown G, Hourigan LF, Lee EYT, Moss A, Raftopoulos S, Singh R, Williams SJ, Zanati S, Burgess N, Bourke MJ. The size, morphology, site, and access score predicts critical outcomes of endoscopic mucosal resection in the colon. Endoscopy. 2018 Jul;50(7):684-692. doi: 10.1055/s-0043-124081. Epub 2018 Jan 25. Erratum in: Endoscopy. 2018 Jul;50(7):C7. PMID: 29370584. </P>
-        <P>SMSA+ score -- Anderson J, Lockett M. Training in therapeutic endoscopy: meeting present and future challenges. Frontline Gastroenterol. 2019;10(2):135-140. doi:10.1136/flgastro-2018-101086</P>
-   
-
-		<P>SMSA-EMR score -- <a href="https://www.giejournal.org/article/S0016-5107(18)32295-8/pdf">SMSA-EMR SCORE IS A NOVEL ENDOSCOPIC RISK ASSESSMENT TOOL FOR PREDICTING CRITICAL
-ENDOSCOPIC MUCOSAL RESECTION OUTCOMES</a> - Volume 87, No. 6S : 2018 GASTROINTESTINAL ENDOSCOPY AB467 </P>
-        <P>Score Adapted for GIEQs.com by David Tate:</P>
-
-             
-		<P>Unauthorised distribution of the code prohibited.  Copyright 2021 by the GIEQs Foundation.  All rights reserved </P>
-    
-    
-    </div> <!--end col-9-->
-
-
-    <div id="right" class="col-lg-3 col-xl-3 border-left">
+    <div id="right" class="col-lg-3 col-xl-3 border-right">
 <!--         	<div class="h-100 p-4"> -->
         		<div id="sticky" data-toggle="sticky"  class="is_stuck pr-3 mr-3 pl-2 pt-2"
         			>
@@ -1325,6 +1064,269 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
             
         <!-- </div> --> <!--close right h-100 div-->
         </div> <!--close right column div-->
+
+        <div class="col-lg-9">
+        
+
+            <?php
+            
+            //$requiredValues = array("Location","Morphology","Paris");
+            
+            //$values = array();
+            //$values = $lesion->GetValuesSpecific($requiredValues);
+            
+            //print_r($values);
+            
+            ?>
+            
+                   
+                            <!-- <p><h3><b>Risk for Submucosal Invasion within a given LSL </h3>[algorithm ala Burgess 2018 Gastroenterology]</b></p>
+             -->
+            
+             
+                            <p><button id="show-info" class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                Show info
+              </button></p>
+              <div class="collapse" id="collapseExample">
+            
+                            <div class="card card-body">
+            
+                            <p class="h5">Pre-requisites:</p>
+                            <p><ul>Colon Polyp  &ge; 10mm in size</ul><ul>Cold or Hot Snare</ul></p>
+            
+                            <p>This tool asks for your subjective assessment of multiple domains of deconstructed polypectomy where 1 is poor and 5 very good</p>
+                            <p>Fill hot or cold first since different questions are asked for each.  <br/>The difficulty score consists of SMSA questions (4).  <br/>The difficulty+ score consists of SMSA+ questions (4) and applies only to hot snare.</p>
+                            <p>Once completed press copy and a machine readable version will be copied to the clipboard.</p>
+            
+            
+                            <p>Hover over questions for more information</p>
+            
+                            <p><i class="fas fa-play gieqsGold "></i> indicates availability of a video demonstration for that statement.  click to view.</p>
+            
+            
+                            </div>
+            </div>
+            
+                    <br>
+                    <div id='result' class='yellow'></div>
+                    <br>
+                    
+                    <form id="polypectomy-form" action="adminGenerateUserEmail.php" method="post">
+                        <fieldset>
+            
+                        <h2 id="hot-or-cold" class="mt-1">Hot / Cold?</h2>
+                            <?php
+            
+                            
+            
+                            $formv1->generateSelectCustomCancel ('Type of Polypectomy', 'type_polypectomy', 'branch_point', array('1' => 'Hot Snare', '2' => 'Cold Snare',), 'Select the Type of Polypectomy');
+                            echo '<br/>';
+            
+                            ?>
+                            </fieldset>
+                            <fieldset class="divider">
+            
+                            <h2 id="global" class="mt-4">Global Competencies</h2>
+            
+                            <?php
+                            $formv1->generateSelectCustomCancel ('Tip control:', 'tip_control', 'score', array('1' => '1 - Very Poor - Uncontrolled, shaky and undirected', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - Controlled, stable and purposeful'), 'How good is the tip control demonstrated throughout the video?');
+                            echo '<br/>';
+            
+                            $formv1->generateSelectCustomCancel ('Positioning with respect to the polyp:', 'positioning', 'score', array('1' => '1 - Very Poor - Not at 6 \'o clock, far from the colonoscope, fluid covering lesion (poor use of gravity)', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - Lesion at or near 6 \'o clock, close to the colonoscope, fluid away from lesion (good use of gravity)'), 'How good is the position achieved by the endoscopist with respect to accessing the polyp?');
+                            echo '<br/>';
+            
+                            
+            
+                            ?>
+                            </fieldset>
+            
+                            <fieldset class="divider">
+                            
+                            <h2 id="injection" class="mt-4">Injection Technique</h2>
+            
+                            <?php
+            
+                            $formv1->generateSelectCustomCancel ('Injection is performed in the correct plane:', 'injection_plane', 'score', array('1' => '1 - Very Poor - Injection infrequently results in sustained submucosal lifting (transmural / intramucosal injection)', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - injection rapidly results inn sustained mucosal lifting (needle in submucosa)'), 'Does the endoscopist quickly find the correct plane when injectiing or is there repeated injection too superficial or deep?');
+                            echo '<br/>';
+            
+                            $formv1->generateSelectCustomCancel ('Injection is performed dynamically:', 'injection_dynamic', 'score', array('1' => '1 - Very Poor - once the needle is situated in the submucosa there is no movement of the needle away from the muscularis', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - once the needle is in the submucosa there is graduated movement of the needle away from the muscularis'), 'Once the correct plane has been found does the endoscopist move the needle while injecting to adequately raise the lesion?');
+                            echo '<br/>';
+            
+            
+                            $formv1->generateSelectCustomCancel ('Injection is used to improve lesion access:', 'injection_access', 'score', array('1' => '1 - Very Poor - dynamic injection is either not used, or does not facilitate access', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - dynamic injection is used to facilitate access'), 'Injection is used to improve lesion access');
+                            echo '<br/>';
+            
+            
+            
+            
+            
+                            ?>
+                            </fieldset>
+                            
+                            <fieldset class="divider">
+            
+                            <h2 id="snare" class="mt-4">Snare Placement Technique</h2>
+            
+                            <?php
+            
+                            $formv1->generateSelectCustomCancel ('Stable positon with lesion at 6 \'o clock OR transformed to 6 \'o clock:', 'snare_position', 'score', array('1' => '1 - Very Poor - snare position is not consistently maintained at 6 \'o clock resulting in poor snare capture', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - snare position is consistently maintained at 6 \'o clock'), '');
+                            echo '<br/>';
+            
+                            $formv1->generateSelectCustomCancel ('Snare precisely visualised during placement and closure (V of the snare):', 'snare_visualised', 'score', array('1' => '1 - Very Poor - snare V at intersection with snare catheter not visualised during closure and far from the colonoscope', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - snare V visualised consistently during closure and near to the colonoscope'), '');
+                            echo '<br/>';
+            
+                            $formv1->generateSelectCustomCancel ('Residual tissue islands avoided if piecemeal resection OR Macroscopically complete if en-bloc resection attempted:', 'residual', 'score', array('1' => '1 - Very Poor - snare placement does not include normal margin (at edge) and does not use transected tissue edge (within lesion) as a guide', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - snare placement includes > 1mm normal margin (at edge) of tissue and uses transected tissue edge as a guide (within defect)'), '');
+                            echo '<br/>';
+            
+                
+            
+            
+            
+                            ?>
+                            </fieldset>
+                            
+                            <fieldset class="divider">
+            
+                            <h2 id="safety" class="mt-4">Safety Checks Prior to Resection (HOT snare only)</h2>
+            
+                            <?php
+            
+            
+            /* $formv1->generateSelectCustomCancel ('Takes the snare and closes to 1cm, uses tactile feedback OR assistant closes snare to mark:', 'snare_closed', 'score hot', array('1' => '1 - Very Poor - does not take snare and close to 1cm after taking from assistant (or ask assistant to close to mark)', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - takes snare and closes to 1cm after taking from assistant (or asks assistant to close to mark)'), '');
+            echo '<br/>';   not asessable on video */
+            
+            $formv1->generateSelectCustomCancel ('Moves the closed snare to confirm independent movement from deeper structures:', 'independent_movement', 'score hot', array('1' => '1 - Very Poor - does not check tissue mobility prior to transection with respeect to deeper structures', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - checks mobility prior to transection with respect to deeper structures'), '');
+            echo '<br/>';
+            
+            
+            ?>
+                            </fieldset>
+            
+            <fieldset class="divider">
+            
+            <h2 id="defect" class="mt-4">Defect Assessment After Resection</h2>
+            
+                            <?php
+            
+            $formv1->generateSelectCustomCancel ('MUCOSA - Looks for, detects and removes residual at margin and within defect:', 'mucosa', 'score', array('1' => '1 - Very Poor - does not ostensibly and systematically check for residual adenomatous tissue at margin or within defect', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - ostensibly and systematically checks for residual adenomatous tissue within defect and at margin'), 'Including residual muscularis mucosae');
+            echo '<br/>';
+            
+            $formv1->generateSelectCustomCancel ('SUBMUCOSA - Looks for, detects and treats any bleeding vessels within the defect::', 'submucosa', 'score hot', array('1' => '1 - Very Poor - neither detects nor treats bleeding vessels in submucosa. treats benign submucosal appearances', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - detects and treats bleeding vessels in submucosa.  does not treat other submucosal appearances including herniating vessels.'), 'Does not treat non-bleeding herniating vessels. Does not treat other appearances of the submucosa detailed in Desomer et al. 2018 GIE');
+            echo '<br/>';
+            
+            $formv1->generateSelectCustomCancel ('MUSCULARIS - Looks for, detects and treats Deep Mural Injury &ge; 2 (Sydney Classification) :', 'muscularis', 'score hot', array('1' => '1 - Very Poor - misses signs of deep mural injury (types II-V) which require clip placement', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - detects and treats types II-V deep mural injury or confirms they are not present'), '');
+            echo '<br/>';
+            
+            
+            
+            
+            ?>
+                            </fieldset>
+            
+            <fieldset class="divider">
+            
+            <h2 id="accessory" class="mt-4">Accessory Techniques in Polypectomy</h2>
+            
+                            <?php
+            
+            $formv1->generateSelectCustomCancel ('Placement of Through the Scope CLIPS:', 'clip_placement', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+            echo '<br/>';
+            
+            
+            $formv1->generateSelectCustomCancel ('Placement of Polyp Retrieval Device:', 'retrieval_device', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+            echo '<br/>';
+            
+            $formv1->generateSelectCustomCancel ('Thermal ablation of the POST EMR Margin:', 'thermal_ablation', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+            echo '<br/>';
+            
+            $formv1->generateSelectCustomCancel ('Use of Coagulation grasper', 'coag_grasper', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+            echo '<br/>';
+            
+            
+            ?>
+                            </fieldset>
+            <fieldset class="divider">
+            
+            
+            <h2 id="difficulty" class="mt-4">Difficulty Score (SMSA - EMR, SMSA +)
+            </h2>
+            
+                            <?php
+            
+            
+            $formv1->generateSelectCustomCancel ('Size:', 'size', 'SMSA', array('1' => '< 1cm', '3' => '1 - 1.9cm', '5' => '2 - 2.9cm', '7' => '3 - 3.9cm', '9' => '> 4cm'), '');
+            echo '<br/>';
+            
+            $formv1->generateSelectCustomCancel ('Morphology:', 'morphology', 'SMSA', array('1' => 'Pedunculated', '2' => 'Sessile', '3' => 'Flat',), '');
+            echo '<br/>';
+            
+            $formv1->generateSelectCustomCancel ('Site:', 'site', 'SMSA', array('1' => 'Left', '2' => 'Rght',), '');
+            echo '<br/>';
+                        
+            
+            $formv1->generateSelectCustomCancel ('Access:', 'access', 'SMSA', array('1' => 'Easy', '3' => 'Difficult',), '');
+            echo '<br/>';
+            
+            $formv1->generateSelectCustomCancel ('Non-lifting:', 'non_lifting', 'SMSAplus hot', array('0' => 'No', '1' => 'Yes', ), '');
+            echo '<br/>';
+                           
+            $formv1->generateSelectCustomCancel ('Previous attempt:', 'PANL', 'SMSAplus hot', array('0' => 'No', '1' => 'Yes', ), '');
+            echo '<br/>';
+            
+                           
+            $formv1->generateSelectCustomCancel ('Direct ileocaecal valve, diverticular or appendiceal involvement:', 'location_difficult', 'SMSAplus hot', array('0' => 'No', '1' => 'Yes', ), '');
+            echo '<br/>';
+            
+            
+            $formv1->generateSelectCustomCancel ('Lesions with a regular-irregular demarcation zone:', 'demarcation', 'SMSAplus hot', array('0' => 'No', '1' => 'Yes', ), '');
+            echo '<br/>';
+            
+            
+            
+            
+            ?>
+            </fieldset>
+            
+                            
+                            
+                        
+                                                   
+                            
+            
+                            
+            
+                            <!--conversion to newlines $(this).val().replace(/\r\n|\r|\n/g,"<br />")-->
+            
+                            <p></p>
+                       
+                    </form>
+            
+                    <p class="h5 mt-5">Definitions:</p>
+                    <ul>
+                    <li>Hot Snare - colon polyp removed using a snare with use of electrosurgical energy</li>
+                    <li>Diathermy - electrosurgical energy</li>
+                    <li>Cold Snare - colon polyp removed using a snare without electrosurgical energy</li>
+                    
+            
+            
+                    </ul>
+                    
+                    <P class="h5">References:</P>
+                    <P>Original SMSA Score -- Gupta S, Miskovic D, Bhandari P, Dolwani S, McKaig B, Pullan R, Rembacken B, Riley S, Rutter MD, Suzuki N, Tsiamoulos Z, Valori R, Vance ME, Faiz OD, Saunders BP, Thomas-Gibson S. A novel method for determining the difficulty of colonoscopic polypectomy. Frontline Gastroenterol. 2013 Oct;4(4):244-248. doi: 10.1136/flgastro-2013-100331. Epub 2013 Jun 1. PMID: 28839733; PMCID: PMC5369843. </P>
+            
+                    <P>SMSA in Larger &ge; 20mm LNPCPs  -- Sidhu M, Tate DJ, Desomer L, Brown G, Hourigan LF, Lee EYT, Moss A, Raftopoulos S, Singh R, Williams SJ, Zanati S, Burgess N, Bourke MJ. The size, morphology, site, and access score predicts critical outcomes of endoscopic mucosal resection in the colon. Endoscopy. 2018 Jul;50(7):684-692. doi: 10.1055/s-0043-124081. Epub 2018 Jan 25. Erratum in: Endoscopy. 2018 Jul;50(7):C7. PMID: 29370584. </P>
+                    <P>SMSA+ score -- Anderson J, Lockett M. Training in therapeutic endoscopy: meeting present and future challenges. Frontline Gastroenterol. 2019;10(2):135-140. doi:10.1136/flgastro-2018-101086</P>
+               
+            
+                    <P>SMSA-EMR score -- <a href="https://www.giejournal.org/article/S0016-5107(18)32295-8/pdf">SMSA-EMR SCORE IS A NOVEL ENDOSCOPIC RISK ASSESSMENT TOOL FOR PREDICTING CRITICAL
+            ENDOSCOPIC MUCOSAL RESECTION OUTCOMES</a> - Volume 87, No. 6S : 2018 GASTROINTESTINAL ENDOSCOPY AB467 </P>
+                    <P>Score Adapted for GIEQs.com by David Tate:</P>
+            
+                         
+                    <P>Unauthorised distribution of the code prohibited.  Copyright 2021 by the GIEQs Foundation.  All rights reserved </P>
+                
+                
+                </div> <!--end col-9-->
 
 
     </div> <!--end row-->
