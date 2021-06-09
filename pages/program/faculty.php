@@ -21,18 +21,22 @@ require BASE_URI . '/headNoPurposeCore.php';
     <title>GIEQs faculty</title>
   
     <style>
-    .logo {
 
-        width: 100%;
+        .header, .navbar, .navbar-top {
+            transition: none !important;
+        }
 
+        .bg-dark{
+            background-color: #162e4d !important; 
+        }
 
-    }
+        .logo {
+            width: 100%;
+        }
 
-    .gieqsGold {
-
-        color: rgb(238, 194, 120);
-
-    }
+        .gieqsGold {
+            color: rgb(238, 194, 120);
+        }
 
     @media screen and (max-width: 400px) {
 
