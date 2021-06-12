@@ -19,6 +19,14 @@ require BASE_URI . '/headNoPurposeCore.php';
    
     <style>
 
+        .header, .navbar, .navbar-top {
+            transition: none !important;
+        }
+
+        .bg-dark{
+            background-color: #162e4d !important; 
+        }
+
 .logo { 
 
 width: 100%;
@@ -69,10 +77,9 @@ width: 100%;
         <?php require BASE_URI . '/nav.php';?>
 
     </header>
-    <!-- Omnisearch -->
+    <!-- Omnisearch 
     <div id="omnisearch" class="omnisearch">
         <div class="container">
-            <!-- Search form -->
             <form class="omnisearch-form">
                 <div class="form-group">
                     <div class="input-group input-group-merge input-group-flush">
@@ -91,31 +98,31 @@ width: 100%;
                             <li>
                                 <a class="list-link" href="#">
                                     <i class="fas fa-search"></i>
-                                    <span>macbook pro</span> in Laptops
+                                    
                                 </a>
                             </li>
                             <li>
                                 <a class="list-link" href="#">
                                     <i class="fas fa-search"></i>
-                                    <span>iphone 8</span> in Smartphones
+                                    
                                 </a>
                             </li>
                             <li>
                                 <a class="list-link" href="#">
                                     <i class="fas fa-search"></i>
-                                    <span>macbook pro</span> in Laptops
+                                    
+                                </a>
+                            </li>
+                            <li>
+                                <a class="list-link" href="#">
+                                    <i class="fas fa-search"></i> 
+
                                 </a>
                             </li>
                             <li>
                                 <a class="list-link" href="#">
                                     <i class="fas fa-search"></i>
-                                    <span>beats pro solo 3</span> in Headphones
-                                </a>
-                            </li>
-                            <li>
-                                <a class="list-link" href="#">
-                                    <i class="fas fa-search"></i>
-                                    <span>smasung galaxy 10</span> in Phones
+                                    
                                 </a>
                             </li>
                         </ul>
@@ -124,6 +131,8 @@ width: 100%;
             </div>
         </div>
     </div>
+    -->
+
     <div class="main-content">
 
         <!-- Header (v1) -->
@@ -150,14 +159,15 @@ width: 100%;
 
         <div id="clients-clients-1">
           <section class="clients">
-            <div class="container mb-4 bg-white">
+            <div class="container mb-5 p-5 bg-white">
                 
-            <!--Platinum Sponsor-->
+            <!--Platinum Sponsor
             <div class="row text-left">
                     <div class="col-12 p-3 pb-2">
                         <span class="h2" style="color: black;">Platinum Sponsor</span><br />
                     </div>
                 </div>
+            -->
 
                 <!-- <div class="client-group row justify-content-center mb-4">
                     <div class="col-lg-6 col-md-6 col-12 py-3">
@@ -170,12 +180,13 @@ width: 100%;
 
                 </div>     -->
             
-            <!--Gold Sponsors-->
+            <!--Gold Sponsors
                 <div class="row text-left">
                     <div class="col-12 p-3 pb-2">
                         <span class="h2" style="color: black;">Gold Sponsors</span><br />
                     </div>
                 </div>
+                
 
                 <!-- <div class="client-group row justify-content-center mb-4">
                     <div class="col-lg-4 col-md-6 col-12 py-3">
@@ -191,7 +202,7 @@ width: 100%;
 
                 </div> -->
 
-                <!--Silver Sponsors-->
+                <!--Silver Sponsors
                 <div class="row text-left">
                     <div class="col-12 p-3 pb-2">
                         <span class="h2" style="color: black;">Silver Sponsors</span><br />
@@ -199,13 +210,13 @@ width: 100%;
                 </div>
 
                 <div class="client-group row justify-content-center mb-4">
-                    <!-- <div class="col-lg-3 col-md-4 col-6 py-3">
+                     <div class="col-lg-3 col-md-4 col-6 py-3">
                     <img class="logo" alt="Olympus" src="<?php //echo BASE_URL . '/assets/img/icons/olympus.png';?>">
                     </div>
                     <div class="col-lg-3 col-md-4 col-6 py-3">
                     <img class="logo" alt="Medtronic" src="<?php //echo BASE_URL . '/assets/img/icons/medtronic.png';?>">
 
-                    </div> -->
+                    </div> 
                     <div class="col-lg-3 col-md-4 col-6 py-3">
                     </div>
                     <div class="col-lg-3 col-md-4 col-6 py-3">
@@ -216,56 +227,76 @@ width: 100%;
                     </div>
 
                 </div>
+                -->
     
                 <!--Bronze Sponsors-->
-                <div class="row text-left">
-                    <div class="col-12 p-3 pb-2">
-                        <span class="h2" style="color: black;">Bronze Sponsors</span><br />
-                    </div>
-                    
+                <div class="row my-4">
+                    <h2 class="mx-auto" style="color: #12263f;">Bronze Sponsors</h2>
                 </div>
 
-                <div class="client-group row justify-content-center mb-4">
-                    <!-- <div class="col-lg-2 col-md-4 col-4 py-1">
+                <div class="client-group row justify-content-center align-items-center mb-4">
+
+                    <div class="col-lg-2 col-md-3 col-4 p-3">
+                        <img class="logo" alt="Ambu" src="<?php echo BASE_URL . '/assets/img/sponsors/Ambu logo Red RGB.png';?>">
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-4 p-3">
+                        <img class="logo" alt="Dr Falk" src="<?php echo BASE_URL . '/assets/img/sponsors/drfalk.png';?>">
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-4 p-3">
+                        <img class="logo" alt="Erbe" src="<?php echo BASE_URL . '/assets/img/sponsors/Erbe_Logo_RGB.png';?>">
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-4 p-3">
+                        <img class="logo" alt="Ferring" src="<?php echo BASE_URL . '/assets/img/sponsors/Ferring logo blue - high res (JPG - RGB - 89[1].3KB).png';?>">
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-4 p-3">
+                        <img class="logo" alt="Fides Medical" src="<?php echo BASE_URL . '/assets/img/sponsors/Logo Fides Medical.png';?>">
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-4 p-3">
+                        <img class="logo" alt="Norgine" src="<?php echo BASE_URL . '/assets/img/sponsors/Norgine - Because patients inspire us.png';?>">
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-4 p-3">
+                        <img class="logo" alt="Pfizer" src="<?php echo BASE_URL . '/assets/img/sponsors/Pfizer_Logo_Color_RGB.png';?>">
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-4 p-3">
+                        <img class="logo" alt="Prion Medical" src="<?php echo BASE_URL . '/assets/img/sponsors/Prion Medical.png';?>">
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-4 p-3">
+                        <img class="logo" alt="RMS" src="<?php echo BASE_URL . '/assets/img/sponsors/RMS_LOGO_PMS.png';?>">
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-4 p-3">
+                        <img class="logo" alt="Viatris" src="<?php echo BASE_URL . '/assets/img/sponsors/Viatris.png';?>">
+                    </div>
+
+                    <!-- <div class="col-lg-2 col-md-3 col-4 p-3">
                         <img class="logo" alt="Mundipharma" src="<?php //echo BASE_URL . '/assets/img/brand/mundipharma.jpg';?>">
                     </div> -->
-                    <div class="col-lg-2 col-md-4 col-4 py-1">
-                        <img class="logo" alt="Norgine" src="<?php echo BASE_URL . '/assets/img/brand/norgine.jpg';?>">
-                    </div>
-                    <div class="col-lg-2 col-md-4 col-4 py-1">
-                     <img class="logo" alt="Dr Falk" src="<?php echo BASE_URL . '/assets/img/icons/drfalk.png';?>">
 
-                    </div>
-                    <div class="col-lg-2 col-md-4 col-4 py-1">
-                     <img class="logo" alt="Ambu" src="<?php echo BASE_URL . '/assets/img/brand/ambu.png';?>">
-
-                    </div>
-                    <div class="col-lg-2 col-md-4 col-4 py-1">
-                     <img class="logo" alt="Viatris" src="<?php echo BASE_URL . '/assets/img/brand/viatris.jpg';?>">
-
-                    </div>
-                    <div class="col-lg-2 col-md-4 col-4 py-1">
-
-                    </div>
-                    <div class="col-lg-2 col-md-4 col-4 py-1">
-
-</div>
-                    <!-- <div class="col-lg-2 col-md-4 col-4 py-1">
+                    <!-- <div class="col-lg-2 col-md-3 col-4 p-3">
                     <img class="logo" alt="Prion Medical" src="<?php //echo BASE_URL . '/assets/img/brand/prion.jpg';?>">
 
                     </div>
-                    <div class="col-lg-2 col-md-4 col-4 py-1">
+                    <div class="col-lg-2 col-md-3 col-4 p-3">
                     <img class="logo" alt="Cook Medical" src="<?php //echo BASE_URL . '/assets/img/brand/cook.jpg';?>">
 
                     </div>
-                    <div class="col-lg-2 col-md-4 col-4 py-1">
+                    <div class="col-lg-2 col-md-3 col-4 p-3">
                     <img class="logo" alt="Boucart Medical" src="<?php //echo BASE_URL . '/assets/img/brand/boucart.jpg';?>">
 
                     </div> -->
 
                 </div>
+                <!-- 
                 <div class="client-group row justify-content-center mb-4">
-                    <!-- <div class="col-lg-2 col-md-4 col-4 py-1">
+                    <div class="col-lg-2 col-md-4 col-4 py-1">
                         <img class="logo" alt="ovesco" src="<?php //echo BASE_URL . '/assets/img/icons/ovesco.png';?>">
                     </div>
                     <div class="col-lg-2 col-md-4 col-4 py-1">
@@ -285,9 +316,10 @@ width: 100%;
                     </div>
                     <div class="col-lg-2 col-md-4 col-4 py-1">
 
-                    </div> -->
+                    </div>
 
                 </div>
+                -->
 
                 <!--Other Sponsors-->
            <!--      <div class="row text-left">
@@ -296,65 +328,60 @@ width: 100%;
                     </div>
                 </div> -->
 
+                <!--
                 <div class="client-group row justify-content-left">
                     <div class="col-lg-1 col-md-4 col-4 py-1">
-<!--                         <img class="logo" alt="Prion Medical" src="<?php //echo BASE_URL . '/assets/img/brand/prion.jpg';?>">
- -->                    </div>
-                    <div class="col-lg-1 col-md-4 col-4 py-1">
-                    
-<!--                     <img class="logo" alt="Cook Medical" src="<?php //echo BASE_URL . '/assets/img/brand/cook.jpg';?>">
- -->
+                        <img class="logo" alt="Prion Medical" src="<?php //echo BASE_URL . '/assets/img/brand/prion.jpg';?>">
                     </div>
+
+                    <div class="col-lg-1 col-md-4 col-4 py-1">
+                        <img class="logo" alt="Cook Medical" src="<?php //echo BASE_URL . '/assets/img/brand/cook.jpg';?>">
+                    </div>
+
                     <div class="col-lg-2 col-md-4 col-4 py-1">
-                    
-<!--                     <img class="logo" alt="Boucart Medical" src="<?php //echo BASE_URL . '/assets/img/brand/boucart.jpg';?>">
- -->
+                        <img class="logo" alt="Boucart Medical" src="<?php //echo BASE_URL . '/assets/img/brand/boucart.jpg';?>">
                     </div>
-                    <div class="col-lg-1 col-md-4 col-4 py-1">
 
+                    <div class="col-lg-1 col-md-4 col-4 py-1">
                     </div>
-                    <div class="col-lg-1 col-md-4 col-4 py-1">
 
+                    <div class="col-lg-1 col-md-4 col-4 py-1">
                     </div>
-                    <div class="col-lg-1 col-md-4 col-4 py-1">
 
+                    <div class="col-lg-1 col-md-4 col-4 py-1">
                     </div>
 
                 </div>
+                -->
 
                 <!--Society Endorsements-->
-                <div class="row text-left mt-4">
-                    <div class="col-12 p-3 pb-2 mb-1">
-                        <span class="h2" style="color: black;">Endorsing societies</span><br />
-                    </div>
+                <div class="row my-4 pt-4">
+                    <h2 class="mx-auto" style="color: #12263f;">Endorsing Societies</h2>
                 </div>
 
-                <div class="client-group row justify-content-left">
-                <div class="col-lg-2 col-md-4 col-4 py-1">
+                <div class="client-group row justify-content-center align-items-center">
+
+                    <div class="col-lg-2 col-md-3 col-4 p-3">
+                        <img class="logo" alt="asge" src="<?php echo BASE_URL . '/assets/img/icons/asge.png';?>">
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-4 p-3">
+                        <img class="logo" alt="ESGE" src="<?php echo BASE_URL . '/assets/img/brand/bsgie.png';?>">
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-4 p-3">
                         <img class="logo" alt="ESGE" src="<?php echo BASE_URL . '/assets/img/icons/esge.png';?>">
                     </div>
-                    <div class="col-lg-3 col-md-4 col-6 py-3">
-                    
-                    <img class="logo" alt="ESGE" src="<?php echo BASE_URL . '/assets/img/brand/bsgie.png';?>">
 
-                    </div>
-                    <!-- <div class="col-lg-3 col-md-4 col-4 py-1">
-                    
+                    <!-- <div class="col-lg-2 col-md-3 col-4 p-3">
                     <a href="https://www.sfed.org/professionnels/actualites-pro/programme-du-congres-e-video-digest-reservez-votre-vendredi-13" target="_blank"><img class="logo" alt="SFED" src="<?php echo BASE_URL . '/assets/img/brand/sfed.png';?>"></a>
-
                     </div> -->
+
+                    <!--
                     <div class="col-lg-2 col-md-4 col-4 py-1">
-                    <img class="logo" alt="bsg" src="<?php echo BASE_URL . '/assets/img/brand/bsg.png';?>">
-
+                        <img class="logo" alt="bsg" src="<?php echo BASE_URL . '/assets/img/brand/bsg.png';?>">
                     </div>
-                    <div class="col-lg-2 col-md-4 col-4 py-1">
-
-                    <img class="logo" alt="asge" src="<?php echo BASE_URL . '/assets/img/icons/asge.png';?>">
-
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-4 py-1">
-
-                    </div>
+                    -->
 
                 </div>
 
