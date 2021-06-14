@@ -179,28 +179,21 @@ width: 100%;
                     
 
                 </div>     -->
-            
-            <!--Gold Sponsors
-                <div class="row text-left">
-                    <div class="col-12 p-3 pb-2">
-                        <span class="h2" style="color: black;">Gold Sponsors</span><br />
-                    </div>
+
+                <!--Gold Sponsors -->
+
+                <div class="row my-4">
+                    <h2 class="mx-auto" style="color: #12263f;">Gold Sponsors</h2>
                 </div>
-                
 
-                <!-- <div class="client-group row justify-content-center mb-4">
-                    <div class="col-lg-4 col-md-6 col-12 py-3">
-                    <img class="logo" alt="Fujinon" src="<?php //echo BASE_URL . '/assets/img/icons/fujifilm.png';?>">
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-12 py-3">
-                    <img class="logo" alt="Onis" src="<?php //echo BASE_URL . '/assets/img/icons/onis.png';?>">
+                <div class="client-group row justify-content-center align-items-center mb-4">
 
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-12 py-3">
-
+                    <div class="col-lg-2 col-md-3 col-4 p-3">
+                        <img class="logo" alt="Boston Scientific Logo" src="<?php echo BASE_URL . '/assets/img/sponsors/Boston Scientific.jpg';?>">
                     </div>
 
-                </div> -->
+                </div>
+            
 
                 <!--Silver Sponsors
                 <div class="row text-left">
@@ -386,18 +379,8 @@ width: 100%;
                 </div>
 
 
-
-
-
-
-
-
-            
-
-
-
-</div>
-          </section>
+            </div>
+        </section>
         
 
     </div>
