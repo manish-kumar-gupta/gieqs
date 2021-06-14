@@ -80,17 +80,6 @@ background-color: rgb(238, 194, 120);
 
         
 
-        iframe {
-  box-sizing: border-box;
-    height: 25.25vw;
-    left: 50%;
-    min-height: 100%;
-    min-width: 100%;
-    transform: translate(-50%, -50%);
-    position: absolute;
-    top: 50%;
-    width: 100.77777778vh;
-}
 .cursor-pointer {
 
     cursor: pointer;
@@ -251,8 +240,11 @@ top: 0px;
 
 
     <div class="container mt-3">
+
+
             
 <script>
+
 
 	function round(value, precision) {
 		var multiplier = Math.pow(10, precision || 0);
@@ -1121,9 +1113,11 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
             
                             $formv1->generateSelectCustomCancel ('Type of Polypectomy', 'type_polypectomy', 'branch_point', array('1' => 'Hot Snare', '2' => 'Cold Snare',), 'Select the Type of Polypectomy');
                             echo '<br/>';
+
             
                             ?>
-                            </fieldset>
+                            
+                        </fieldset>
                             <fieldset class="divider">
             
                             <h2 id="global" class="mt-4">Global Competencies</h2>
@@ -1146,7 +1140,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
             
                             <?php
             
-                            $formv1->generateSelectCustomCancel ('Injection is performed in the correct plane:', 'injection_plane', 'score', array('1' => '1 - Very Poor - Injection infrequently results in sustained submucosal lifting (transmural / intramucosal injection)', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - injection rapidly results inn sustained mucosal lifting (needle in submucosa)'), 'Does the endoscopist quickly find the correct plane when injectiing or is there repeated injection too superficial or deep?');
+                            $formv1->generateSelectCustomCancel ('Injection is performed in the correct plane:', 'injection_plane', 'score', array('1' => '1 - Very Poor - Injection infrequently results in sustained submucosal lifting (transmural / intramucosal injection)', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - injection rapidly results inn sustained mucosal lifting (needle in submucosa)'), 'Does the endoscopist quickly find the correct plane when injectiing or is there repeated injection too superficial or deep?', '561527824');
                             echo '<br/>';
             
                             $formv1->generateSelectCustomCancel ('Injection is performed dynamically:', 'injection_dynamic', 'score', array('1' => '1 - Very Poor - once the needle is situated in the submucosa there is no movement of the needle away from the muscularis', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - once the needle is in the submucosa there is graduated movement of the needle away from the muscularis'), 'Once the correct plane has been found does the endoscopist move the needle while injecting to adequately raise the lesion?');
@@ -1366,6 +1360,8 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                     </script>
 
     <script src=<?php echo BASE_URL . "/pages/learning/includes/social.js"?>></script>
+    <script src="<?php echo BASE_URL;?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+
 
     <script>
         
