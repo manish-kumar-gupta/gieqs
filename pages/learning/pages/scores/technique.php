@@ -1115,12 +1115,12 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                     <form id="polypectomy-form" action="adminGenerateUserEmail.php" method="post">
                         <fieldset>
             
-                        <h2 id="hot-or-cold" class="mt-1">Hot / Cold?</h2>
+                        <h2 id="hot-or-cold" class="mt-1">Hot / Cold Snare Polypectomy?</h2>
                             <?php
             
                             
             
-                            $formv1->generateSelectCustomCancel ('Type of Polypectomy', 'type_polypectomy', 'branch_point', array('1' => 'Hot Snare', '2' => 'Cold Snare',), 'Select the Type of Polypectomy');
+                            $formv1->generateSelectCustomCancel ('Type of Polypectomy', 'type_polypectomy', 'branch_point', array('1' => 'Hot Snare - using diathermy', '2' => 'Cold Snare - without diathermy',), 'Select the Type of Polypectomy');
                             echo '<br/>';
 
             
