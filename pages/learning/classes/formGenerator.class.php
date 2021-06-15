@@ -112,10 +112,25 @@ Class formGenerator {
 	}
 
 	//does not use the values table, uses array passed in the $options value
-	public function generateSelectCustomCancel ($label, $id, $class, $options, $tooltip){
+	public function generateSelectCustomCancel ($label, $id, $class, $options, $tooltip, $video=null){
 		
 		//echo "<div id='".$id."row' class='row'>";
-		echo "<label for='$id' id='".$id."label' title='$tooltip' data-toggle='tooltip' data-placement='right' class='cursor-pointer'>$label&nbsp&nbsp</label>";
+		echo "<label for='$id' id='".$id."label' title='$tooltip' data-toggle='tooltip' data-placement='right' class='cursor-pointer'>$label&nbsp&nbsp";
+		
+		
+		echo "</label>";
+		if ($video != null){
+
+			echo "<a href=\"https://vimeo.com/{$video}\" data-fancybox=\"\" data-toggle=\"tooltip\"
+			data-placement=\"bottom\" title=\"\"
+			class=\"\"
+			data-original-title=\"Watch Explainer Video\">
+			
+				<i class=\"fas fa-play gieqsGold\"></i>
+		
+		</a>";
+		}
+		
 		echo '<div class="input-group mb-3">';
 		echo "<select name='$id' id='$id' class='$class formInputs form-control'>";
 		echo "<option hidden disabled selected>please select</option>";
