@@ -355,7 +355,7 @@ width: 100%;
                 <div class="client-group row justify-content-center align-items-center">
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
-                        <img class="logo" alt="asge" src="<?php echo BASE_URL . '/assets/img/icons/asge.png';?>">
+                        <img class="logo" alt="asge" src="<?php echo BASE_URL . '/assets/img/sponsors/ASGE.png';?>">
                     </div>
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
