@@ -389,14 +389,16 @@ if (isset($subscription_id)){
 
         //define price ids
 
+        //CHANGE_TEST_TO_LIVE_STRIPE
+
         $price_ids = [
 
-            4 => 'price_1ItzuxEBnLMnXjogxXUcffRY',
-            5 => 'price_1ItzxQEBnLMnXjogeyFdtHsd', 
-            6 => 'price_1ItzxwEBnLMnXjogd1xjYkn0',
-            18 => '',
-            19 => '',
-            20 => '',
+            4 => 'price_1J4L5VEBnLMnXjogxxBLou9m',
+            5 => 'price_1J4L6OEBnLMnXjoggMg7Ymsy', 
+            6 => 'price_1J4L6mEBnLMnXjogBjucbv2D',
+            18 => 'price_1J4L7sEBnLMnXjogh6swTZC0',
+            19 => 'price_1J4L8MEBnLMnXjogcOAEH9mA',
+            20 => 'price_1J4L8lEBnLMnXjogp3NBfYTD',
 
         ];
 

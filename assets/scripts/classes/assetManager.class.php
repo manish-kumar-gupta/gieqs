@@ -735,7 +735,7 @@ public function returnProgrammesAsset($assetid)
             $x = 0;
             $nRows = $result->rowCount();
 
-            if ($nRows == 1) {
+            if ($nRows == 1) {  //should have only one sitewide at a time
 
                 while($row = $result->fetch(PDO::FETCH_ASSOC)){
 
@@ -4870,6 +4870,23 @@ if ($debug){
         }
 
     
+
+    }
+
+    public function getMembershipStatusAssetid($assetid){
+
+
+        if ($assetid == '4' || $assetid == '5' || $assetid == '6'){
+
+            return 1;
+        }elseif ($assetid == '18' || $assetid == '19' || $assetid == '20'){
+
+            return 2;
+        }else{
+
+            return 99;
+        }
+
 
     }
     

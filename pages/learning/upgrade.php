@@ -38,9 +38,7 @@
         word-wrap: break-word;
     }
 
-    table {
-        table-layout: fixed;
-    }
+    
 
     .header-row {
 
@@ -105,6 +103,10 @@ padding-bottom: .75rem; */
 
 
         }
+
+        table {
+        table-layout: fixed;
+    }
     }
 
     @media (min-width: 1200px) {
@@ -252,7 +254,7 @@ padding-bottom: .75rem; */
                                 <div class="py-lg-5 text-center">
                                     <h2 class="h2 text-white mb-3">Upgrade your experience with a GIEQs Online
                                         Subscription</h2>
-                                    <p class="lead lh-180 text-white">Premium, curated content. Quickly searchable for
+                                    <p class="lead lh-180 text-white">Premium, curated content. Linked to published evidence.  Quickly searchable for
                                         an unparalleled educational experience.</p>
                                     <a href="#options-text"
                                         class="btn bg-gieqsGold btn-icon rounded-pill hover-translate-y-n3 mt-5">
@@ -352,148 +354,175 @@ padding-bottom: .75rem; */
                                 Consult our terms and conditions before subscribing.</caption>
                             <thead>
                                 <tr class="d-flex ">
-                                    <th class="col-6 gieqsGold" scope="col"> </th>
+                                    <th class="col-4 gieqsGold" scope="col"> </th>
                                     <th class="col-2 gieqsGold text-center " scope="col">
                                         <h3 class="my-auto">Free</h3>
                                     </th>
-                                    <th class="col-2 gieqsGold text-center" scope="col">
+                                    <th class="col-3 gieqsGold text-center" scope="col">
                                         <h3 class="my-auto">Standard</h3>billed monthly
                                     </th>
-                                    <th class="col-2 gieqsGold text-center" scope="col">
+                                    <th class="col-3 gieqsGold text-center" scope="col">
                                         <h3 class="my-auto">Pro</h3>billed monthly
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <!-- <tr class="d-flex header-row">
-                                    <th class="col-6" scope="row">Cost</th>
-                                    <td class="col-2 text-center text-muted"> </td>
-                                    <td class="col-2 text-center text-muted"> </td>
+                                    <th class="col-4" scope="row">Cost</th>
+                                    <td class="col-3 text-center text-muted"> </td>
+                                    <td class="col-3 text-center text-muted"> </td>
                                     <td class="col-2 text-center text-muted"> </td>
                                     <td class="col-2 text-center text-muted"> </td>
                                 </tr> -->
                                 <tr class="d-flex text-white">
-                                    <td class="col-6">Medical Endoscopist</td>
-                                    <td class="col-2 text-center text-muted">FREE</td>
-
-                                    <td class="col-2 text-center text-muted">€ 7</td>
-                                    <td class="col-2 text-center text-muted">€ 15</td>
-                                </tr>
-                                <tr class="d-flex text-white">
-                                    <td class="col-6"></td>
+                                    <td class="col-4"></td>
                                     <td class="col-2 text-center text-muted"></td>
 
-                                    <td class="col-2 text-center text-muted"><a href="#options-text"
-                                            class="btn-sm bg-gieqsGold btn-icon rounded-pill hover-translate-y-n3 mt-5">
-                                            <span class="btn-inner--icon">
-                                                <i class="fas fa-fire text-dark"></i>
-                                            </span>
-                                            <span class="btn-inner--text text-dark">Get STANDARD</span>
+                                    <td class="col-3 text-center text-muted"><a 
+                                            class="btn-sm bg-gieqsGold p-1 mt-5 cursor-pointer" onclick="launchSubscriptionDialog(1);">
+                                            
+                                            <span class="btn-inner--text text-dark text-sm">Get STANDARD</span>
                                         </a></td>
-                                    <td class="col-2 text-center text-muted"><a href="#options-text"
-                                            class="btn-sm bg-gieqsGold btn-icon rounded-pill hover-translate-y-n3 mt-5">
-                                            <span class="btn-inner--icon">
-                                                <i class="fas fa-fire text-dark"></i>
-                                            </span>
-                                            <span class="btn-inner--text text-dark">Get PRO</span>
+                                    <td class="col-3 text-center text-muted"><a 
+                                    class="btn-sm bg-gieqsGold p-1 mt-5 cursor-pointer" onclick="launchSubscriptionDialog(2);">
+                                            
+                                            <span class="btn-inner--text text-dark text-sm">Get PRO</span>
                                         </a></td>
                                 </tr>
                                 <tr class="d-flex text-white">
-                                    <td class="col-6">Trainee endoscopist</td>
+                                    <td class="col-4">Medical Endoscopist</td>
                                     <td class="col-2 text-center text-muted">FREE</td>
-                                    <td class="col-2 text-center text-muted">€ 5</td>
-                                    <td class="col-2 text-center text-muted">€ 10</td>
+
+                                    <td class="col-3 text-center text-muted">€ 7</td>
+                                    <td class="col-3 text-center text-muted">€ 15</td>
+                                </tr>
+                                
+                                <tr class="d-flex text-white">
+                                    <td class="col-4">Trainee endoscopist</td>
+                                    <td class="col-2 text-center text-muted">FREE</td>
+                                    <td class="col-3 text-center text-muted">€ 5</td>
+                                    <td class="col-3 text-center text-muted">€ 10</td>
                                 </tr>
                                 <tr class="d-flex text-white">
-                                    <td class="col-6">Nursing endoscopist / Medical Student / Nursing assistant</td>
+                                    <td class="col-4">Nursing endoscopist / Medical Student / Nursing assistant</td>
                                     <td class="col-2 text-center text-muted">FREE</td>
-                                    <td class="col-2 text-center text-muted">€ 3</td>
-                                    <td class="col-2 text-center text-muted">€ 5</td>
+                                    <td class="col-3 text-center text-muted">€ 3</td>
+                                    <td class="col-3 text-center text-muted">€ 5</td>
                                 </tr>
                                 <tr class="d-flex header-row">
-                                    <th class="col-6" scope="row">Site Functionality</th>
+                                    <th class="col-4" scope="row">Site Functionality</th>
                                     <td class="col-2 text-center text-muted"> </td>
-                                    <td class="col-2 text-center text-muted"> </td>
-                                    <td class="col-2 text-center text-muted"> </td>
+                                    <td class="col-3 text-center text-muted"> </td>
+                                    <td class="col-3 text-center text-muted"> </td>
                                 </tr>
                                 <tr class="d-flex text-white">
-                                    <td class="col-6">Browse and enjoy free content</td>
+                                    <td class="col-4">Browse and enjoy free content</td>
                                     <td class="col-2 text-center text-muted">&#10003;</td>
-                                    <td class="col-2 text-center text-muted">&#10003;</td>
-                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                    <td class="col-3 text-center text-muted">&#10003;</td>
+                                    <td class="col-3 text-center text-muted">&#10003;</td>
                                 </tr>
                                 <tr class="d-flex text-white">
-                                    <td class="col-6">Patented tag-based browsing for faster learning</td>
+                                    <td class="col-4">Patented tag-based browsing for faster learning</td>
                                     <td class="col-2 text-center text-muted">x</td>
-                                    <td class="col-2 text-center text-muted">&#10003;</td>
-                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                    <td class="col-3 text-center text-muted">&#10003;</td>
+                                    <td class="col-3 text-center text-muted">&#10003;</td>
                                 </tr>
                                 <tr class="d-flex text-white">
-                                    <td class="col-6">Direct link to published evidence</td>
+                                    <td class="col-4">Direct link to published evidence</td>
                                     <td class="col-2 text-center text-muted">x</td>
-                                    <td class="col-2 text-center text-muted">&#10003;</td>
-                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                    <td class="col-3 text-center text-muted">&#10003;</td>
+                                    <td class="col-3 text-center text-muted">&#10003;</td>
                                 </tr>
                                 <tr class="d-flex text-white">
-                                    <td class="col-6">Commenting</td>
+                                    <td class="col-4">Commenting</td>
                                     <td class="col-2 text-center text-muted">x</td>
-                                    <td class="col-2 text-center text-muted">&#10003;</td>
-                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                    <td class="col-3 text-center text-muted">&#10003;</td>
+                                    <td class="col-3 text-center text-muted">&#10003;</td>
                                 </tr>
                                 <tr class="d-flex text-white">
-                                    <td class="col-6">Store my favourite content for faster access later</td>
+                                    <td class="col-4">Store my favourite content for faster access later</td>
                                     <td class="col-2 text-center text-muted">x</td>
-                                    <td class="col-2 text-center text-muted">&#10003;</td>
-                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                    <td class="col-3 text-center text-muted">&#10003;</td>
+                                    <td class="col-3 text-center text-muted">&#10003;</td>
                                 </tr>
                                 <tr class="d-flex text-white">
-                                    <td class="col-6">Online clinical scoring systems</td>
+                                    <td class="col-4">Online clinical scoring systems</td>
                                     <td class="col-2 text-center text-muted">&#10003;</td>
-                                    <td class="col-2 text-center text-muted">&#10003;</td>
-                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                    <td class="col-3 text-center text-muted">&#10003;</td>
+                                    <td class="col-3 text-center text-muted">&#10003;</td>
+                                </tr>
+                                <tr class="d-flex header-row">
+                                    <th class="col-4 gieqsGold" scope="col"> </th>
+                                    <th class="col-2 gieqsGold text-center " scope="col">
+                                        <h3 class="my-auto">FREE</h3>
+                                    </th>
+                                    <th class="col-3 gieqsGold text-center" scope="col">
+                                        <h3 class="my-auto">STANDARD</h3>billed monthly
+                                    </th>
+                                    <th class="col-3 gieqsGold text-center" scope="col">
+                                        <h3 class="my-auto">PRO</h3>billed monthly
+                                    </th>
                                 </tr>
                                 <tr class="d-flex header-row">
                                     <th scope="row">Content</th>
-                                    <td class="col-6"> </td>
+                                    <td class="col-4"> </td>
                                     <td class="col-2 text-center text-muted"> </td>
-                                    <td class="col-2 text-center text-muted"> </td>
+                                    <td class="col-3 text-center text-muted"> </td>
+                                    <td class="col-3 text-center text-muted"> </td>
+
                                 </tr>
+                                
                                 <tr class="d-flex text-white">
-                                    <td class="col-6">Selection of freely available everyday endoscopy content</td>
+                                    <td class="col-4">Selection of freely available everyday endoscopy content</td>
                                     <td class="col-2 text-center text-muted">&#10003;</td>
-                                    <td class="col-2 text-center text-muted">&#10003;</td>
-                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                    <td class="col-3 text-center text-muted">&#10003;</td>
+                                    <td class="col-3 text-center text-muted">&#10003;</td>
                                 </tr>
                                 <tr class="d-flex text-white">
-                                    <td class="col-6">Online Courses<br>(catch-up)</td>
+                                    <td class="col-4">Online Courses<br>(catch-up)</td>
                                     <td class="col-2 text-center text-muted">x</td>
-                                    <td class="col-2 text-center text-muted">&#10003;<br>(2 / year)</td>
-                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                    <td class="col-3 text-center text-muted">&#10003;<br>(2 / year)</td>
+                                    <td class="col-3 text-center text-muted">&#10003;</td>
                                 </tr>
                                 <tr class="d-flex text-white">
-                                    <td class="col-6">Online Courses<br>(live)</td>
+                                    <td class="col-4">Online Courses<br>(live)</td>
                                     <td class="col-2 text-center text-muted">x</td>
-                                    <td class="col-2 text-center text-muted">x</td>
-                                    <td class="col-2 text-center text-muted">All*<br> (+ 5-6 new per year)</td>
+                                    <td class="col-3 text-center text-muted">x</td>
+                                    <td class="col-3 text-center text-muted">All*<br> (+ 5-6 new per year)</td>
                                 </tr>
                                 <tr class="d-flex text-white">
-                                    <td class="col-6">Premium Curated Content Packages</td>
+                                    <td class="col-4">Premium Curated Content Packages</td>
                                     <td class="col-2 text-center text-muted">x</td>
-                                    <td class="col-2 text-center text-muted">&#10003;<br> (selection)</td>
-                                    <td class="col-2 text-center text-muted">&#10003;<br> (all)</td>
+                                    <td class="col-3 text-center text-muted">&#10003;<br> (selection)</td>
+                                    <td class="col-3 text-center text-muted">&#10003;<br> (all)</td>
                                 </tr>
                                 <tr class="d-flex text-white">
-                                    <td class="col-6">Symposium (catch-up) access</td>
+                                    <td class="col-4">Symposium (catch-up) access</td>
                                     <td class="col-2 text-center text-muted">x</td>
-                                    <td class="col-2 text-center text-muted">x</td>
-                                    <td class="col-2 text-center text-muted">&#10003;<br> (after 2 months)</td>
+                                    <td class="col-3 text-center text-muted">x</td>
+                                    <td class="col-3 text-center text-muted">&#10003;<br> (after 2 months)</td>
                                 </tr>
                                 <tr class="d-flex text-white">
-                                    <td class="col-6">Live symposium access</td>
+                                    <td class="col-4">Live symposium access</td>
                                     <td class="col-2 text-center text-muted">x</td>
-                                    <td class="col-2 text-center text-muted">x</td>
-                                    <td class="col-2 text-center text-muted">&#10003;<br> (discount after 3 months
+                                    <td class="col-3 text-center text-muted">x</td>
+                                    <td class="col-3 text-center text-muted">&#10003;<br> (discount after 3 months
                                         membership)</td>
+                                </tr>
+                                <tr class="d-flex text-white">
+                                    <td class="col-4"></td>
+                                    <td class="col-2 text-center text-muted"></td>
+
+                                    <td class="col-3 text-center text-muted"><a 
+                                    class="btn-sm bg-gieqsGold p-1 mt-5 cursor-pointer" onclick="launchSubscriptionDialog(1);">
+                                            
+                                            <span class="btn-inner--text text-dark text-sm">Get STANDARD</span>
+                                        </a></td>
+                                    <td class="col-3 text-center text-muted"><a 
+                                    class="btn-sm bg-gieqsGold p-1 mt-5 cursor-pointer" onclick="launchSubscriptionDialog(2);">
+                                            
+                                            <span class="btn-inner--text text-dark text-sm">Get PRO</span>
+                                        </a></td>
                                 </tr>
                             </tbody>
                         </table>

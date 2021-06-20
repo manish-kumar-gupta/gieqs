@@ -56,14 +56,16 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                     </a>
                 </li>
                 <?php
-            }else if ($currentUserLevel == 5){
+            }else if ($currentUserLevel == '4'){
+
+                if ($sitewide_status == 1){
                 ?>
                                            <li class="nav-item">
                    
                    <a class="nav-link nav-link-icon" 
                        >
                        
-                       <span class="nav-link-inner--text ">GIEQs <span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2" style="z-index: -1 !important;">Standard</span> Member</span></a>
+                       <span class="nav-link-inner--text ">GIEQs <span class="subscribe-now badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2" style="z-index: -1 !important;">Standard</span> Member</span></a>
                      
                    
                    
@@ -78,13 +80,45 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                </li>
 
                <li class="nav-item">
-                   <a class="nav-link nav-link-icon" href="<?php echo BASE_URL;?>/pages/learning/upgrade.php" class="nav-link-inner--text"
+                   <a class="nav-link nav-link-icon" class="nav-link-inner--text"
                        >
 
-                       <span class="nav-link-inner--text">You are missing out on key features.  <span class="subscribe-now gieqsGold cursor-pointer" data-assetid="5">Upgrade Now!</span>
+                       <span class="nav-link-inner--text mr-2">Want access to ALL content and more?  <span class="subscribe-now gieqsGold cursor-pointer">Upgrade Now!</span>
                    </a>
                </li>
                 <?php
+
+                }elseif ($sitewide_status == 2){
+                    ?>
+                                               <li class="nav-item">
+                       
+                       <a class="nav-link nav-link-icon" 
+                           >
+                           
+                           <span class="nav-link-inner--text ">GIEQs <span class="subscribe-now badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2" style="z-index: -1 !important;">PRO</span> Member</span></a>
+                         
+                       
+                       
+                       
+    
+    
+                              
+    
+    
+                                   <!-- <span class="nav-link-inner--text ">Complex</span> -->
+                               
+                   </li>
+    
+                   <li class="nav-item">
+                       <a class="nav-link nav-link-icon" class="nav-link-inner--text"
+                           >
+    
+                           <span class="nav-link-inner--text ">Thanks for your support!</span>                       </a>
+                   </li>
+                    <?php
+    
+                    }
+
                     }else {
                 ?>
                                            <li class="nav-item">

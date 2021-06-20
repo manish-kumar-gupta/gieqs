@@ -1,5 +1,7 @@
 <!-- Modals NEW GENERIC -->
 
+<div id="subscription_level"><?php echo $sitewide_status;?></div>
+
 
 
 <div class="modal modal-new" id="modal_success" tabindex="-1" role="dialog" aria-labelledby="modal-new"
@@ -162,13 +164,18 @@ if ($userid){
                 </button>
             </div>
             <div class="modal-body">
-                Would you like to upgrade to GIEQs <strong>PRO</strong> or <strong>PREMIUM?</strong><br>Show Key
-                Features
+                <p>Would you like to upgrade to GIEQs <strong>STANDARD</strong> or <strong>PRO?</strong></p><p><a 
+                                            class="key-features cursor-pointer btn-sm bg-gieqsGold btn-icon rounded-pill hover-translate-y-n3 mt-5">
+                                            <span class="btn-inner--icon">
+                                                <i class="fas fa-fire text-dark"></i>
+                                            </span>
+                                            <span class="btn-inner--text text-dark">Show Key Features</span>
+                                        </a></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-dark" onclick="launchSubscriptionDialog(1);">get PRO</button>
-                <button type="button" class="btn btn-dark gieqsGold" onclick="launchSubscriptionDialog(2);">get PREMIUM</button>
+                <button type="button" class="btn btn-dark" onclick="launchSubscriptionDialog(1);">get STANDARD</button>
+                <button type="button" class="btn btn-dark gieqsGold" onclick="launchSubscriptionDialog(2);">get PRO</button>
 
             </div>
         </div>
@@ -630,6 +637,15 @@ $(document).ready(function() {
 
     })
 
+    $(document).on('click', '.key-features', function() {
+       // alert('hello');
+        $('.modal-pro-premium').modal('hide');
+        window.location.href = siteRoot + 'upgrade.php#options-table';
+
+
+
+    })
+
 
     $(document).on('submit', '#confirm-new-subscription', function(evt) {
 
@@ -893,7 +909,23 @@ $(document).ready(function() {
 
     $('.subscribe-now').click(function(event) {
 
+
+        //check the current subscription status
+
+        var subscription_status = $('#subscription_level').text();
+
+        //write to the page above
+
+        if (subscription_status == '99'){
+
         $('#propremium').modal('show');
+
+        }else if(subscription_status == '1'){
+
+        
+            launchSubscriptionDialog(2);
+
+        }
 
 
 

@@ -75,7 +75,7 @@ if ($users->getendoscopistType() == ''){
 
 //determine which asset
 
-if ($endoscopistType['endoscopistType'] == '1' && $endoscopistType['trainee'] == '1'){
+if (($endoscopistType['endoscopistType'] == '1' || $endoscopistType['endoscopistType'] == '2') && $endoscopistType['trainee'] == '1'){
 
     if ($subscriptionType == 1){
 
@@ -87,7 +87,7 @@ if ($endoscopistType['endoscopistType'] == '1' && $endoscopistType['trainee'] ==
     
         }
 
-}elseif ($endoscopistType['endoscopistType'] == '1' && $endoscopistType['trainee'] != '1'){
+}elseif (($endoscopistType['endoscopistType'] == '1' || $endoscopistType['endoscopistType'] == '2') && $endoscopistType['trainee'] != '1'){
 
     if ($subscriptionType == 1){
 
@@ -99,7 +99,7 @@ if ($endoscopistType['endoscopistType'] == '1' && $endoscopistType['trainee'] ==
         
             }
 
-}elseif ($endoscopistType['typeFilled'] === true && $endoscopistType['traineeFilled'] === true){
+}elseif ($endoscopistType['typeFilled'] === true /* && $endoscopistType['traineeFilled'] === true */){
 
     if ($subscriptionType == 1){
 

@@ -556,19 +556,41 @@ if ($assetManager->getSiteWideSubscription($userid, $debug)){
       $siteWide = true;
       $siteWideSubscriptionid = $assetManager->getSiteWideSubscription($userid, $debugUserAccess);
 
+      if ($debugUserAccess){
+        echo 'SUBSCRIPTION ID IS ' . $siteWideSubscriptionid;
+        }
+
       //find out which asset
+
+      $assetid_subscription = $assetManager->getAssetid($siteWideSubscriptionid);
+
+      if ($debugUserAccess){
+        echo 'ASSET ID IS ' . $assetid_subscription;
+        }
+
       //allocate umber based on 6 FREE, 5 STANDARD, 4 PRO
 
+      $sitewide_status = $assetManager->getMembershipStatusAssetid($assetid_subscription);
 
-      if ($currentUserLevel == '6'){
+      if ($debugUserAccess){
+        echo 'SITE WIDE STATUS IS ' . $sitewide_status;
+        }
+      //which asset?
 
-        $currentUserLevel = '4';
+      //standard or pro?
 
-    }elseif($currentUserLevel == '5'){
+      if ($sitewide_status == 1){
 
-        $currentUserLevel = '4';
+        $currentUserLevel = 4;        
 
-    }
+      }elseif ($sitewide_status == 2){
+
+        $currentUserLevel = 4;        
+
+      }
+
+
+      
 
     //check if expiring Soon
 
