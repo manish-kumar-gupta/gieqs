@@ -555,6 +555,11 @@ if ($assetManager->getSiteWideSubscription($userid, $debug)){
 
       $siteWide = true;
       $siteWideSubscriptionid = $assetManager->getSiteWideSubscription($userid, $debugUserAccess);
+
+      //find out which asset
+      //allocate umber based on 6 FREE, 5 STANDARD, 4 PRO
+
+
       if ($currentUserLevel == '6'){
 
         $currentUserLevel = '4';
