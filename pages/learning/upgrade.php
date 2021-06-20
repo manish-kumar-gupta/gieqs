@@ -38,7 +38,7 @@
         word-wrap: break-word;
     }
 
-    
+
 
     .header-row {
 
@@ -105,8 +105,8 @@ padding-bottom: .75rem; */
         }
 
         table {
-        table-layout: fixed;
-    }
+            table-layout: fixed;
+        }
     }
 
     @media (min-width: 1200px) {
@@ -254,7 +254,8 @@ padding-bottom: .75rem; */
                                 <div class="py-lg-5 text-center">
                                     <h2 class="h2 text-white mb-3">Upgrade your experience with a GIEQs Online
                                         Subscription</h2>
-                                    <p class="lead lh-180 text-white">Premium, curated content. Linked to published evidence.  Quickly searchable for
+                                    <p class="lead lh-180 text-white">Premium, curated content. Linked to published
+                                        evidence. Quickly searchable for
                                         an unparalleled educational experience.</p>
                                     <a href="#options-text"
                                         class="btn bg-gieqsGold btn-icon rounded-pill hover-translate-y-n3 mt-5">
@@ -378,16 +379,37 @@ padding-bottom: .75rem; */
                                     <td class="col-4"></td>
                                     <td class="col-2 text-center text-muted"></td>
 
-                                    <td class="col-3 text-center text-muted"><a 
-                                            class="btn-sm bg-gieqsGold p-1 mt-5 cursor-pointer" onclick="launchSubscriptionDialog(1);">
-                                            
+                                    <?php if ($sitewide_status == 1 || $sitewide_status == 2){?>
+
+                                    <td class="col-3 text-center text-muted"></td>
+
+                                    <?php }else{?>
+
+                                    <td class="col-3 text-center text-muted"><a
+                                            class="btn-sm bg-gieqsGold p-1 mt-5 cursor-pointer"
+                                            onclick="launchSubscriptionDialog(1);">
+
                                             <span class="btn-inner--text text-dark text-sm">Get STANDARD</span>
                                         </a></td>
-                                    <td class="col-3 text-center text-muted"><a 
-                                    class="btn-sm bg-gieqsGold p-1 mt-5 cursor-pointer" onclick="launchSubscriptionDialog(2);">
-                                            
+
+                                    <?php }?>
+
+
+                                    <?php if ($sitewide_status == 2){?>
+
+                                    <td class="col-3 text-center text-muted"></td>
+
+                                    <?php }else{?>
+
+                                    <td class="col-3 text-center text-muted"><a
+                                            class="btn-sm bg-gieqsGold p-1 mt-5 cursor-pointer"
+                                            onclick="launchSubscriptionDialog(2);">
+
                                             <span class="btn-inner--text text-dark text-sm">Get PRO</span>
                                         </a></td>
+
+                                    <?php }?>
+
                                 </tr>
                                 <tr class="d-flex text-white">
                                     <td class="col-4">Medical Endoscopist</td>
@@ -396,7 +418,7 @@ padding-bottom: .75rem; */
                                     <td class="col-3 text-center text-muted">€ 7</td>
                                     <td class="col-3 text-center text-muted">€ 15</td>
                                 </tr>
-                                
+
                                 <tr class="d-flex text-white">
                                     <td class="col-4">Trainee endoscopist</td>
                                     <td class="col-2 text-center text-muted">FREE</td>
@@ -471,7 +493,7 @@ padding-bottom: .75rem; */
                                     <td class="col-3 text-center text-muted"> </td>
 
                                 </tr>
-                                
+
                                 <tr class="d-flex text-white">
                                     <td class="col-4">Selection of freely available everyday endoscopy content</td>
                                     <td class="col-2 text-center text-muted">&#10003;</td>
@@ -513,16 +535,37 @@ padding-bottom: .75rem; */
                                     <td class="col-4"></td>
                                     <td class="col-2 text-center text-muted"></td>
 
-                                    <td class="col-3 text-center text-muted"><a 
-                                    class="btn-sm bg-gieqsGold p-1 mt-5 cursor-pointer" onclick="launchSubscriptionDialog(1);">
-                                            
+                                    <?php if ($sitewide_status == 1 || $sitewide_status == 2){?>
+
+                                    <td class="col-3 text-center text-muted"></td>
+
+                                    <?php }else{?>
+
+                                    <td class="col-3 text-center text-muted"><a
+                                            class="btn-sm bg-gieqsGold p-1 mt-5 cursor-pointer"
+                                            onclick="launchSubscriptionDialog(1);">
+
                                             <span class="btn-inner--text text-dark text-sm">Get STANDARD</span>
                                         </a></td>
-                                    <td class="col-3 text-center text-muted"><a 
-                                    class="btn-sm bg-gieqsGold p-1 mt-5 cursor-pointer" onclick="launchSubscriptionDialog(2);">
-                                            
+
+                                    <?php }?>
+
+
+                                    <?php if ($sitewide_status == 2){?>
+
+                                    <td class="col-3 text-center text-muted"></td>
+
+                                    <?php }else{?>
+
+                                    <td class="col-3 text-center text-muted"><a
+                                            class="btn-sm bg-gieqsGold p-1 mt-5 cursor-pointer"
+                                            onclick="launchSubscriptionDialog(2);">
+
                                             <span class="btn-inner--text text-dark text-sm">Get PRO</span>
                                         </a></td>
+
+                                    <?php }?>
+
                                 </tr>
                             </tbody>
                         </table>
@@ -1358,7 +1401,7 @@ padding-bottom: .75rem; */
 
                 alert(
                     'Thanks for your interest.  We will be activating our subscription service shortly.'
-                    )
+                )
 
 
             })

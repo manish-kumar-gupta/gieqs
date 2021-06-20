@@ -1,6 +1,6 @@
 <!-- Modals NEW GENERIC -->
 
-<div id="subscription_level"><?php echo $sitewide_status;?></div>
+<div id="subscription_level" style="display:none;"><?php echo $sitewide_status;?></div>
 
 
 
