@@ -630,6 +630,8 @@ if ($assetManager->getSiteWideSubscription($userid, $debug)){
         if ($debugUserAccess){
           echo 'allow gieqs pro due to user level';
           }
+
+          $sitewide_status = 2;
           
     
       }
@@ -656,6 +658,9 @@ if ($assetManager->getSiteWideSubscription($userid, $debug)){
       echo 'allow gieqs pro due to user level';
       }
 
+      $sitewide_status = 2;
+
+
       $siteWide = false;  //unless it starts a subscription if not found this should be false
 
   }else{
@@ -668,6 +673,9 @@ if ($assetManager->getSiteWideSubscription($userid, $debug)){
       }
 
       $siteWide = false;
+      $sitewide_status = 99;
+
+
 
   }
 

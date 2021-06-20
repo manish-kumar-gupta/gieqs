@@ -60,7 +60,13 @@ error_reporting(E_ALL);
 
 use Stripe\Stripe;
 
+//CHANGE_TEST_TO_LIVE_STRIPE
+
+
 \Stripe\Stripe::setApiKey('sk_test_51IsKqwEBnLMnXjoguHzjHquozIjRT1Wt5OuLAQqxJvkUvX6DwMebWAPwgXsWaW35r5WXk1m6CuxtkY72I6QNLpH200No1l1SwU');
+$stripe = new \Stripe\StripeClient(
+    'sk_test_51IsKqwEBnLMnXjoguHzjHquozIjRT1Wt5OuLAQqxJvkUvX6DwMebWAPwgXsWaW35r5WXk1m6CuxtkY72I6QNLpH200No1l1SwU'
+  );
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -103,6 +109,62 @@ if ($session['mode'] == 'payment'){
         print_r($session['metadata']);
         print_r($session);
         
+
+    }
+
+    //die();
+
+    if ($session['metadata']['alreadyHasSiteWide'] == 'true'){
+
+        //handle old subscription
+
+                //get the subscription object of the sitewide subscription
+
+                $sitewidesubscriptonid = $session['metadata']['oldSubscriptionid'];
+
+                if ($subscription->Return_row($sitewidesubscriptonid)){
+            
+                    $subscription->Load_from_key($sitewidesubscriptonid);
+                    $stripe_subscription_id = $subscription->getgateway_transactionId();
+        
+        
+                    $old_subscription = \Stripe\Subscription::retrieve($stripe_subscription_id);
+        
+                    $old_subscription_status = $stripe->subscriptions->cancel(
+                        $stripe_subscription_id,
+                        ['prorate' => true,]
+                      );
+                    
+            
+                      if ($debug){
+                      print_r($old_subscription_status);
+                      //die();
+                    }
+            
+                    
+            
+                        if ($old_subscription_status->status == 'canceled'){
+            
+                            //$old_subscription->cancel();
+            
+                        
+                            $subscription->setauto_renew('0');
+            
+                            $subscription->setactive('0');
+            
+                            echo $subscription->prepareStatementPDOUpdate();
+
+                            if ($debug){
+                            echo 'Old subscription cancelled';
+
+                            }
+
+
+                        }
+
+                    }
+        
+
 
     }
 

@@ -303,63 +303,24 @@ if (isset($subscription_id)){
         }
 
         $alreadyHasSiteWide = true;
-
-    
-
-        //get the subscription object of the sitewide subscription
+                //get the subscription object of the sitewide subscription
 
         $sitewidesubscriptonid = $assetManager->getSiteWideSubscription($userid, false);
 
-        if ($subscription->Return_row($sitewidesubscriptonid)){
-    
-            $subscription->Load_from_key($sitewidesubscriptonid);
-            $stripe_subscription_id = $subscription->getgateway_transactionId();
-
-
-            $old_subscription = \Stripe\Subscription::retrieve($stripe_subscription_id);
-
-            $old_subscription_status = $stripe->subscriptions->cancel(
-                'sub_JXR7xuUA82LCt5',
-                ['prorate' => true,]
-              );
-            
-    
-    
-              print_r($old_subscription_status);
-              //die();
-    
-            
-    
-                if ($old_subscription_status->status == 'canceled'){
-    
-                    //$old_subscription->cancel();
-    
                 
-                    $subscription->setauto_renew('0');
+        
+
     
-                    $subscription->setactive('0');
-    
-                    echo $subscription->prepareStatementPDOUpdate();
-                }else{
+    }else{
 
-                    echo 'failed to cancel old subscription';
-                }
+        $alreadyHasSiteWide = false;
 
-
-        }else{
-
-            echo 'Failed to cancel old subscription';
-        }
-
-        
-        
-        
-        //die();
+        $sitewidesubscriptonid = null;
 
 
 
+    }        
 
-    }
     
     //make a new subscription
     
@@ -513,6 +474,9 @@ if (isset($subscription_id)){
                     'subscription_id' => $newSubscriptionid,
                     'subscription_type' => $subscription_type,
                     'free_trial' => false,
+                    'alreadyHasSiteWide' => $alreadyHasSiteWide,
+                    'oldSubscriptionid' => $sitewidesubscriptonid,
+
     
                 ],
                 'mode' => 'subscription',
@@ -545,6 +509,9 @@ if (isset($subscription_id)){
                     'subscription_id' => $newSubscriptionid,
                     'subscription_type' => $subscription_type,
                     'free_trial' => true,
+                    'alreadyHasSiteWide' => $alreadyHasSiteWide,
+                    'oldSubscriptionid' => $sitewidesubscriptonid,
+
     
                 ],
                 'mode' => 'subscription',
