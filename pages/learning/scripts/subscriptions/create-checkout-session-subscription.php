@@ -46,6 +46,9 @@ error_reporting(E_ALL);
 use Stripe\Stripe;
 
 \Stripe\Stripe::setApiKey('sk_test_51IsKqwEBnLMnXjoguHzjHquozIjRT1Wt5OuLAQqxJvkUvX6DwMebWAPwgXsWaW35r5WXk1m6CuxtkY72I6QNLpH200No1l1SwU');
+$stripe = new \Stripe\StripeClient(
+    'sk_test_51IsKqwEBnLMnXjoguHzjHquozIjRT1Wt5OuLAQqxJvkUvX6DwMebWAPwgXsWaW35r5WXk1m6CuxtkY72I6QNLpH200No1l1SwU'
+  );
 error_reporting(E_ALL);
 
 header('Content-Type: application/json');
@@ -56,6 +59,21 @@ $debug = false;
 
 $data = json_decode(file_get_contents('php://input'), true);
 //print_r($data);
+
+function prorate(\Stripe\Subscription $subscription, $proration_time)
+{
+    $period_start = $subscription->current_period_start;
+    $period_end = $subscription->current_period_end;
+    $amount = $subscription->plan->amount;
+
+    $period_length = $period_end - $period_start;
+
+    $elapsed_since_start = $proration_time - $period_start;
+
+    $refund = $amount - floor(($elapsed_since_start / $period_length) * $amount);
+
+    return $refund > 0 ? (int) $refund : 0;
+}
 
 if (isset($data['subscription_id'])){
 
@@ -269,6 +287,79 @@ if (isset($subscription_id)){
     $subscription_to_return['renew_frequency'] = $assets_paid->getrenew_frequency();
     
     $subscription_to_return['user_id'] = $userid;
+
+    //print_r($data);
+    //die();
+
+    //deal with any previous subscription
+
+    if ($data['alreadyHasSiteWide'] == 'true'){
+
+
+        if ($debug){
+
+            echo 'Detected already having site wide';
+
+        }
+
+        $alreadyHasSiteWide = true;
+
+    
+
+        //get the subscription object of the sitewide subscription
+
+        $sitewidesubscriptonid = $assetManager->getSiteWideSubscription($userid, false);
+
+        if ($subscription->Return_row($sitewidesubscriptonid)){
+    
+            $subscription->Load_from_key($sitewidesubscriptonid);
+            $stripe_subscription_id = $subscription->getgateway_transactionId();
+
+
+            $old_subscription = \Stripe\Subscription::retrieve($stripe_subscription_id);
+
+            $old_subscription_status = $stripe->subscriptions->cancel(
+                'sub_JXR7xuUA82LCt5',
+                ['prorate' => true,]
+              );
+            
+    
+    
+              print_r($old_subscription_status);
+              //die();
+    
+            
+    
+                if ($old_subscription_status->status == 'canceled'){
+    
+                    //$old_subscription->cancel();
+    
+                
+                    $subscription->setauto_renew('0');
+    
+                    $subscription->setactive('0');
+    
+                    echo $subscription->prepareStatementPDOUpdate();
+                }else{
+
+                    echo 'failed to cancel old subscription';
+                }
+
+
+        }else{
+
+            echo 'Failed to cancel old subscription';
+        }
+
+        
+        
+        
+        //die();
+
+
+
+
+    }
     
     //make a new subscription
     
@@ -337,13 +428,13 @@ if (isset($subscription_id)){
         if (in_array($asset_id, $asset_numbers_pro_subscriptions)){
 
             $freeTrial = $userFunctions->hadFreeTrial($userid, 1);
-            $subscription_type = 1; //pro
+            $subscription_type = 1; //standard
 
 
         }elseif (in_array($asset_id, $asset_numbers_premium_subscriptions)){
 
             $freeTrial = $userFunctions->hadFreeTrial($userid, 2);
-            $subscription_type = 2; //premium
+            $subscription_type = 2; //pro
 
 
 

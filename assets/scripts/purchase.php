@@ -275,8 +275,8 @@ if ($userid){
                 confirmation email.
                 This subscription will automatically renew after the expiry term. This can easily be
                 switched off your account settings.
-                All new GIEQs Pro subscriptions come with a free trial. If you cancel within the trial period you will
-                not ever be charged.
+                All new GIEQs Pro subscriptions come with a free trial [if subscribing for the first time]. If you cancel within the trial period you will
+                never be charged.
                 We do not store any payment details whatsoever on GIEQs.com. We believe this is best handled by
                 Stripe who have a
                 track record in industry standard procedures in this regard.
@@ -321,6 +321,8 @@ if ($userid){
         <button type="button" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</button>
         <form id="confirm-new-subscription" action="<?php echo $form_action_path;?>" method="POST">
             <input type="hidden" id="asset_id_hidden" name="asset_id" value="">
+            <input type="hidden" id="alreadyHasSiteWide" name="alreadyHasSiteWide" value="">
+
             <input type="hidden" id="course_date" name="course_date"
                 value="<?php echo date_format($programmeDate, "Y-m-d H:i:s");?>">
             <!-- CHANGE ME UPDATE TODO MAKE THIS COME FROM THE PROGRAM -->
@@ -511,6 +513,14 @@ request3.done(function(data) {
 
                     }
 
+                    if (externalTest.alreadyHasSiteWide == true){
+
+                        var upgrade = true;
+
+                        alert('You already have a GIEQs Online Subscription.\n\nIf you choose to upgrade, your existing subscription will be cancelled and replaced with the new subscription.\n\nYou will be credited for the outstanding month and charged immediately for the new subscription.');
+
+                    }
+
 
 
 
@@ -522,6 +532,9 @@ request3.done(function(data) {
                         .description);
                     $('.modal-subscribe-new #asset_id_hidden').val(externalTest
                         .asset_id);
+
+                        $('.modal-subscribe-new #alreadyHasSiteWide').val(externalTest
+                        .alreadyHasSiteWide);
                     $('.modal-subscribe-new #cost').text(externalTest.cost + ' euro');
                     //fill trainee here 
 
@@ -863,6 +876,8 @@ $(document).ready(function() {
 
 
                     }
+
+                    
 
 
 
