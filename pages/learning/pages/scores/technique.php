@@ -1012,8 +1012,10 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                         echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#injection">Injection Technique</a></li>';
                         echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#snare">Snare Placement Technique</a></li>';
                         echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#safety">Safety Checks prior to Resection</a></li>';
+                        echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#defect">Defect Assessment</a></li>';
+
                         echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#accessory">Accessory Techniques</a></li>';
-                        echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#difficulty">Difficulty</a></li>';
+                        echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#difficulty">Difficulty Scores</a></li>';
                         
 
                         //echo "<button type=\"button\" class=\"btn ".$sectionTitle[$x]. "\">".$sectionTitle[$x]."</button>";
@@ -1120,8 +1122,10 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
             
                             
             
-                            $formv1->generateSelectCustomCancel ('Type of Polypectomy', 'type_polypectomy', 'branch_point', array('1' => 'Hot Snare - using diathermy', '2' => 'Cold Snare - without diathermy',), 'Select the Type of Polypectomy');
+                            $formv1->generateSelectCustomCancel ('Type of Polypectomy', 'type_polypectomy', 'branch_point', array('1' => 'Hot Snare - using diathermy', '2' => 'Cold Snare - without diathermy',), 'Select the Type of Polypectomy, cold without diathermy, hot with diathermy');
                             echo '<br/>';
+
+                            
 
             
                             ?>
@@ -1134,8 +1138,14 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                             <?php
                             $formv1->generateSelectCustomCancel ('Tip control:', 'tip_control', 'score', array('1' => '1 - Very Poor - Uncontrolled, shaky and undirected', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - Controlled, stable and purposeful'), 'How good is the tip control demonstrated throughout the video?');
                             echo '<br/>';
+
+                            $formv1->generateSelectCustomCancel ('Fully appreciates / demonstrates extent of the polyp to be resected:', 'extent', 'score', array('1' => '1 - Very Poor - Focusses on one area, does not demonstrate appreciation of polyp margins', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - Clearly appreciates entire extent of polyp and approach and resection reflect this'), '');
+                            echo '<br/>';
             
                             $formv1->generateSelectCustomCancel ('Positioning with respect to the polyp:', 'positioning', 'score', array('1' => '1 - Very Poor - Not at 6 \'o clock, far from the colonoscope, fluid covering lesion (poor use of gravity)', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - Lesion at or near 6 \'o clock, close to the colonoscope, fluid away from lesion (good use of gravity)'), 'How good is the position achieved by the endoscopist with respect to accessing the polyp?');
+                            echo '<br/>';
+
+                            $formv1->generateSelectCustomCancel ('Technique selected is appropriate for the polyp resected?', 'appropriate_technique', 'score', array('1' => '1 - Very Poor - No clear need for en-bloc if selected, lesion unsuitable for cold snare, hot snare for polyp smaller than 10mm', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - En-bloc versus piecemeal, hot versus cold appropriate for the polyp'), 'In terms of en-bloc versus piecemeal, hot versus cold');
                             echo '<br/>';
             
                             
@@ -1171,6 +1181,9 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                             <h2 id="snare" class="mt-4">Snare Placement Technique</h2>
             
                             <?php
+
+                            $formv1->generateSelectCustomCancel ('Appropriate Snare Size Selected:', 'snare_size', 'score', array('1' => '1 - Very Poor - snare clearly too large / small and of incorrect type (thin wire vs thick wire) for polyp', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - snare appropriate size and type for the polyp'), '', '');
+                            echo '<br/>';
             
                             $formv1->generateSelectCustomCancel ('Stable positon with lesion at 6 \'o clock OR transformed to 6 \'o clock:', 'snare_position', 'score', array('1' => '1 - Very Poor - snare position is not consistently maintained at 6 \'o clock resulting in poor snare capture', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - snare position is consistently maintained at 6 \'o clock'), '', '561526772');
                             echo '<br/>';
@@ -1200,6 +1213,9 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
             
             $formv1->generateSelectCustomCancel ('Moves the closed snare to confirm independent movement from deeper structures:', 'independent_movement', 'score hot', array('1' => '1 - Very Poor - does not check tissue mobility prior to transection with respeect to deeper structures', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - checks mobility prior to transection with respect to deeper structures'), '', '561529195');
             echo '<br/>';
+
+            $formv1->generateSelectCustomCancel ('Lifts the snare away from the muscularis propria prior to application of diathermy:', 'lift_movement', 'score hot', array('1' => '1 - Very Poor - does not lift the snare prior to applying diathermy', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - lifts the snare away from the muscularis prior to the application of diathermy'), '', '');
+            echo '<br/>';
             
             
             ?>
@@ -1213,6 +1229,10 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
             
             $formv1->generateSelectCustomCancel ('MUCOSA - Looks for, detects and removes residual at margin and within defect:', 'mucosa', 'score', array('1' => '1 - Very Poor - does not ostensibly and systematically check for residual adenomatous tissue at margin or within defect', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - ostensibly and systematically checks for residual adenomatous tissue within defect and at margin'), 'Including residual muscularis mucosae');
             echo '<br/>';
+            
+            $formv1->generateSelectCustomCancel ('Thermal ablation of the POST EMR Margin:', 'thermal_ablation', 'score hot', array('1' => '1 - Very Poor - unsteady, areas of incomplete ablation, messy result', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - steady, systematic application, complete ablation of the entire margin achieved'), '');
+            echo '<br/>';
+
             
             $formv1->generateSelectCustomCancel ('SUBMUCOSA - Looks for, detects and treats any bleeding vessels within the defect::', 'submucosa', 'score hot', array('1' => '1 - Very Poor - neither detects nor treats bleeding vessels in submucosa. treats benign submucosal appearances', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - detects and treats bleeding vessels in submucosa.  does not treat other submucosal appearances including herniating vessels.'), 'Does not treat non-bleeding herniating vessels. Does not treat other appearances of the submucosa detailed in Desomer et al. 2018 GIE', '561531789');
             echo '<br/>';
@@ -1232,17 +1252,15 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
             
                             <?php
             
-            $formv1->generateSelectCustomCancel ('Placement of Through the Scope CLIPS:', 'clip_placement', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+            $formv1->generateSelectCustomCancel ('Placement of Through the Scope CLIPS:', 'clip_placement', 'score hot', array('1' => '1 - Very Poor - poor tissue capture, poor use of suction and positioning to maximise orientation and amount of tissue capture', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - good use of suction, positioning and rotation to capture required tissue'), '');
             echo '<br/>';
             
             
-            $formv1->generateSelectCustomCancel ('Use of Polyp Retrieval Device:', 'retrieval_device', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '', '561522933');
+            $formv1->generateSelectCustomCancel ('Use of Polyp Retrieval Device:', 'retrieval_device', 'score hot', array('1' => '1 - Very Poor - poor positioning, does not capture all pieces, does not use sequential place and retrieve', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - 6 \'o clock position, sequential place and retrieve, captures all pieces'), '', '561522933');
             echo '<br/>';
             
-            $formv1->generateSelectCustomCancel ('Thermal ablation of the POST EMR Margin:', 'thermal_ablation', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
-            echo '<br/>';
             
-            $formv1->generateSelectCustomCancel ('Use of Coagulation grasper', 'coag_grasper', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good'), '');
+            $formv1->generateSelectCustomCancel ('Use of Coagulation grasper', 'coag_grasper', 'score hot', array('1' => '1 - Very Poor', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - uses water to identify vessel, confirms correct placement with cessation of bleeding, tents away to apply diathermy'), '');
             echo '<br/>';
             
             
@@ -1263,7 +1281,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
             $formv1->generateSelectCustomCancel ('Morphology:', 'morphology', 'SMSA', array('1' => 'Pedunculated', '2' => 'Sessile', '3' => 'Flat',), '');
             echo '<br/>';
             
-            $formv1->generateSelectCustomCancel ('Site:', 'site', 'SMSA', array('1' => 'Left', '2' => 'Rght',), '');
+            $formv1->generateSelectCustomCancel ('Site:', 'site', 'SMSA', array('1' => 'Left', '2' => 'Right',), '');
             echo '<br/>';
                         
             
@@ -1323,6 +1341,8 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
             
                     <P>SMSA-EMR score -- <a href="https://www.giejournal.org/article/S0016-5107(18)32295-8/pdf">SMSA-EMR SCORE IS A NOVEL ENDOSCOPIC RISK ASSESSMENT TOOL FOR PREDICTING CRITICAL
             ENDOSCOPIC MUCOSAL RESECTION OUTCOMES</a> - Volume 87, No. 6S : 2018 GASTROINTESTINAL ENDOSCOPY AB467 </P>
+
+            <p>Deep Mural Injury Score -- <a href="https://pubmed.ncbi.nlm.nih.gov/27464708/">Burgess NG, Bassan MS, McLeod D, Williams SJ, Byth K, Bourke MJ. Deep mural injury and perforation after colonic endoscopic mucosal resection: a new classification and analysis of risk factors. Gut. 2017 Oct;66(10):1779-1789. doi: 10.1136/gutjnl-2015-309848. Epub 2016 Jul 27. PMID: 27464708.</a></p>
                     <P>Score Adapted for GIEQs.com by David Tate:</P>
             
                          
@@ -1893,7 +1913,17 @@ $("#polypectomy-form").validate({
 
                 },
 
+                extent: {
+                    required: true,
+
+                },
+
                 positioning: {
+                    required: true,
+
+                },
+
+                appropriate_technique: {
                     required: true,
 
                 },
@@ -1927,6 +1957,12 @@ $("#polypectomy-form").validate({
                 },
 
 
+                snare_size: {
+
+                    required: true,
+
+                },
+                
                 snare_position: {
 
                     required: true,
@@ -1943,6 +1979,14 @@ $("#polypectomy-form").validate({
 
                 },
                 independent_movement: {
+
+                    required: function (element) {
+                        return $("#type_polypectomy").val() == "1";
+
+                    }
+                },
+                
+                lift_movement: {
 
                     required: function (element) {
                         return $("#type_polypectomy").val() == "1";
