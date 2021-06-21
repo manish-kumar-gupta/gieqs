@@ -429,24 +429,31 @@
                                         <div class="d-flex">
                                             <div>
                                                 <div class="icon text-white icon-lg">
-                                                <i class="fas fa-medal gieqsGold"></i>
+                                                <i class="fas fa-medal platinum"></i>
                                               
                                                 </div>
                                             </div>
                                             <div class="pl-4">
+                                                
                                             <span
-                                                    class="d-block h5 text-white mr-2 mb-1">GIEQs Online Completion</span>
+                                                    class="d-block h5 text-white mr-2 mb-1">GIEQs Online Status</span>
                                                     <span
-                                                    class="d-block h6 text-white mr-2 mb-1">Gold Status</span>
-                                                    <p>x/y courses</p>
-                                                    <p> premium content packs</p>
-                                                    <?php $completionArray = $usersMetricsManager->userCompletionVideos($userid, false);?>
-                                                <span
-                                                    class="d-block h6 text-white mr-2 mb-1"><?php echo $completionArray['numerator'];?>
-                                                    / <?php echo $completionArray['denominator'];?>
-                                                    (<?php echo round($completionArray['completion'], 1);?>%) Learning Tools Completed</span>
+                                                    class="d-block h6 text-white mr-2 mb-1 mt-2">Gold Status</span>
 
-                                                    <p>yy learning tools until next status</p>
+                                                    <?php $completionArray = $usersMetricsManager->userCompletionVideos($userid, false);?>
+
+
+                                                    <span
+                                                    class="d-block h6 text-white mr-2 mb-1 mt-4">Overall Completion 
+                                                    <?php echo round($completionArray['completion'], 1);?>%</span>
+
+
+                                                    <p>x / <?php echo $assetManager->countCourses();?> courses<br/>
+                                                     x / <?php echo $assetManager->countPremiumPacks();?> premium content packs<br/>
+                                                     <?php echo $completionArray['numerator'];?> / <?php echo $completionArray['denominator'];?> total learning experiences</p>
+                                               
+
+                                                    <p>yy learning experiences until next status</p>
                                             </div>
                                         </div>
                                     </div>

@@ -3555,6 +3555,54 @@ public function returnVideoDenominatorSelect2()
 
 
         }
+
+        public function countCourses($debug=false){
+
+
+            $q = "Select 
+            COUNT(b.`id`) as `count`
+            FROM `assets_paid` as b
+            WHERE (b.`asset_type` = '3')";
+
+            $result = $this->connection->RunQuery($q);
+
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+        
+                $count = $row['count'];
+
+        
+        
+            }
+
+            return $count;
+
+
+        }
+
+        public function countPremiumPacks($debug=false){
+
+
+            $q = "Select 
+            COUNT(b.`id`) as `count`
+            FROM `assets_paid` as b
+            WHERE (b.`asset_type` = '4')";
+
+            $result = $this->connection->RunQuery($q);
+
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+        
+                $count = $row['count'];
+
+        
+        
+            }
+
+            return $count;
+
+
+        }
         
         public function getCourses($debug=false){
 
@@ -3563,7 +3611,7 @@ public function returnVideoDenominatorSelect2()
             FROM `assets_paid` as b
             WHERE (b.`asset_type` = '3')";
         
-        echo $q . '<br><br>';
+        //echo $q . '<br><br>';
         
         
         
