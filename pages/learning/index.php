@@ -442,13 +442,20 @@
 
                                                     <?php $completionArray = $usersMetricsManager->userCompletionVideos($userid, false);?>
 
+                                                    <?php error_reporting(E_ALL); $completionArrayAsset = $usersMetricsManager->userCompletionAsset($userid, 7, false);?>
+
+                                                    
+                                                   
+
+
 
                                                     <span
                                                     class="d-block h6 text-white mr-2 mb-1 mt-4">Overall Completion 
                                                     <?php echo round($completionArray['completion'], 1);?>%</span>
 
 
-                                                    <p>x / <?php echo $assetManager->countCourses();?> courses<br/>
+                                                    <p>                                                    <?php echo $assetManager->countCoursesUser($userid, false);?>
+ / <?php echo $assetManager->countCourses();?> courses<br/>
                                                      x / <?php echo $assetManager->countPremiumPacks();?> premium content packs<br/>
                                                      <?php echo $completionArray['numerator'];?> / <?php echo $completionArray['denominator'];?> total learning experiences</p>
                                                

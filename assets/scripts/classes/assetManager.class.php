@@ -3580,6 +3580,41 @@ public function returnVideoDenominatorSelect2()
 
         }
 
+        public function countCoursesUser($userid, $debug=false){
+
+
+            $q = "Select 
+            COUNT(b.`id`) as `count`
+            FROM `assets_paid` as b
+            WHERE (b.`asset_type` = '3') AND b.`id` IN (SELECT b.`id`
+            FROM `subscriptions` as a
+            INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
+            WHERE b.`asset_type` = '3' 
+            AND a.`user_id` = '$userid'
+            AND a.`active` = '1'
+            AND a.`expiry_date` > NOW() ) ";
+
+            if ($debug){
+
+                echo $q;
+            }
+
+            $result = $this->connection->RunQuery($q);
+
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+        
+                $count = $row['count'];
+
+        
+        
+            }
+
+            return $count;
+
+
+        }
+
         public function countPremiumPacks($debug=false){
 
 

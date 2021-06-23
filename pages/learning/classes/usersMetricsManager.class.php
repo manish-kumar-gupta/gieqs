@@ -301,6 +301,68 @@ class usersMetricsManager
 
     }
 
+    public function userCompletionAsset($userid, $assetid, $debug = false)
+    {
+
+        //get all chapters for selected video
+
+        $q = "SELECT b.`id`
+        FROM `video` as a
+        INNER JOIN `chapter` as b ON a.`id` = b.`video_id`
+        WHERE a.`id` IN (Select a.`video_id`
+            FROM `sub_asset_paid` as a
+            WHERE (a.`asset_id` = '$assetid') 
+            AND (a.`video_id` IS NOT NULL))
+        ORDER BY b.`number` ASC";
+
+        if ($debug) {
+
+            echo $q . '<br><br>';
+
+        }
+
+        $x = 0; // completed counter
+        $y = 0; // chapter total counter
+
+        //thus completion = x / y x 100%
+
+        //$rowReturn = [];
+
+        $result = $this->connection->RunQuery($q);
+
+        $x = 0;
+        $nRows = $result->rowCount();
+
+        if ($nRows > 0) {
+
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                if ($this->checkChapterUser($userid, $row['id']) === true) {
+
+                    $x++;
+
+                }
+
+                $y++;
+
+            }
+
+            $completion = (intval($x) / intval($y)) * 100;
+
+            return $completion;
+
+        } else {
+
+            return false;
+
+            if ($debug) {
+
+                echo 'Video has no chapters';
+            }
+        }
+
+    }
+
     public function setSQLTimezoneUTC(){
 
         $q = "SET @@session.time_zone='+00:00'";
