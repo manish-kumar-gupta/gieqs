@@ -197,12 +197,20 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
     
     <div class="main-content">
 
-    <section class="header-1 section-rotate bg-section-dark mt-5" data-offset-top="#header-main">
+    <?php
+        $imageArray = ['assets/img/backgrounds/gieqs2ii.png', 'assets/img/backgrounds/ChromoPolypTransBack.png', 'assets/img/covers/bleeding/heaterNonLive.png', 'assets/img/covers/ovesco.png', 'assets/img/polyps/smi_demarcation.png']
+
+
+    ?>
+    
+    
+        <section class="header-1 section-rotate bg-section-dark mt-5" data-offset-top="#header-main">
             <div class="section-inner bg-gradient-dark"></div>
             <!-- SVG illustration -->
             <div class="pt-7 position-absolute middle right-0 col-lg-7 col-xl-6 d-none d-lg-block">
                 <figure class="w-75" style="max-width: 1000px;">
-                    <img alt="Image placeholder" src="https://www.gieqs.com/assets/img/backgrounds/gieqs2ii.png"
+                    <img alt="Image placeholder" src="<?php echo $imageArray[array_rand($imageArray)];?>"
+                    
                         class="svg-inject img-fluid">
                         <!-- <figcaption class="small figure-caption text-right">Non-granular transverse colon large non-pedunculated colorectal polyp.  <br/>Suspicious for submucosal invasive cancer. </figcaption> -->
                 </figure>

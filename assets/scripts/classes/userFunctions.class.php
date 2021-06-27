@@ -1611,6 +1611,111 @@ public function returnEmails($users)
 	
 	
 		}
+
+		public function currentStatus($userid, $statusStatement){
+
+			//if superuser return ok
+
+			//modified for PREMIUM vs PRO
+
+			
+	
+			
+	
+			//if the user has had activity within 15 minutes deny second attempt
+			//unless logged out (logout in sessionid)
+	
+			
+			//15 mins ago
+	
+	
+			//$q = "SELECT count(`id`) as `count` FROM `userActivity` WHERE `user_id` = '$userid' AND `activity_time` > '$sqltimestamp' AND `session_id` <> '99'";
+			$q = "SELECT `id` FROM `userActivity` WHERE `user_id` = '$userid' AND `session_id` LIKE 'STATUS%%%'";
+	
+			//echo $q;
+	
+			$result = $this->connection->RunQuery($q);
+	
+							
+				$nRows = $result->rowCount();
+	
+				while($row = $result->fetch(PDO::FETCH_ASSOC)){
+	
+					//$count = $row['count'];
+					$id = $row['id'];
+	
+	
+				}
+	
+				//echo $count;
+				
+				if ($nRows > 0){
+	
+					return $id;
+	
+					
+				}else{
+	
+					return false; // allow login
+				}
+	
+	
+		}
+
+		public function returnCurrentStatusUser($userid, $debug=false){
+
+			//if superuser return ok
+
+			//modified for PREMIUM vs PRO
+
+			
+	
+			
+	
+			//if the user has had activity within 15 minutes deny second attempt
+			//unless logged out (logout in sessionid)
+	
+			
+			//15 mins ago
+	
+	
+			//$q = "SELECT count(`id`) as `count` FROM `userActivity` WHERE `user_id` = '$userid' AND `activity_time` > '$sqltimestamp' AND `session_id` <> '99'";
+			$q = "SELECT `session_id` FROM `userActivity` WHERE `user_id` = '$userid' AND `session_id` LIKE 'STATUS%%%'";
+	
+
+			if ($debug == true){
+			echo $q;
+			}
+	
+			$result = $this->connection->RunQuery($q);
+	
+							
+				$nRows = $result->rowCount();
+	
+				while($row = $result->fetch(PDO::FETCH_ASSOC)){
+	
+					//$count = $row['count'];
+					$status = $row['session_id'];
+	
+	
+				}
+	
+				//echo $count;
+				
+				if ($nRows > 0){
+	
+					$status = preg_replace('/[^0-9]/', '', $status);
+
+					return $status;
+	
+					
+				}else{
+	
+					return false; // allow login
+				}
+	
+	
+		}
 	
 
 	

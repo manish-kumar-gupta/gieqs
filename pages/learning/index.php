@@ -33,6 +33,10 @@
 
       //require_once(BASE_URI . '/assets/scripts/classes/users.class.php');
       $users = new users;
+      $userActivity = new userActivity;
+      $userFunctions = new userFunctions;
+
+
       $navigator = new navigator;
 
       function time_elapsed_string($datetime, $full = false) {
@@ -425,11 +429,182 @@
                                         </a>
 
                                     </div>
+                                    <?php $completionArray = $usersMetricsManager->userCompletionVideos($userid, false);?>
+
+<?php error_reporting(E_ALL); $completionArrayAsset = $usersMetricsManager->userCompletionAsset($userid, 7, false);?>
+
+                                    <?php
+
+                                    //eventually break out
+
+//define status levels
+
+$status = [
+
+    0 => ['color' => 'bronze', 'threshold' => 25,],
+    1 => ['color' => 'silver', 'threshold' => 50,],
+
+    2 => ['color' => 'gold', 'threshold' => 75,],
+
+    3 => ['color' => 'platinum', 'threshold' => 100,],
+
+
+
+
+
+];
+
+$userCurrentCompletion = round($completionArray['completion'], 1);
+
+//test
+$userCurrentCompletion = 73.7;
+
+
+$x = null;
+$y = 0;
+foreach ($status as $key=>$value)
+{
+
+    if ($debug){
+    echo $y . ' /$y is';
+    echo '/$userCurrentCompletion is ' . $userCurrentCompletion;
+    echo '/$threshold is '. $value['threshold'];
+    echo '/$status[$y-1][threshold] is '. $status[$y-1]['threshold'];
+    }
+    
+
+if ($y == 0){
+
+    if ($userCurrentCompletion < $value['threshold'] ){
+
+        $currentUserStatus = $value['color'];
+        $currentUserStatusArrayKey = $y;
+
+        $userPercentToNextThreshold = $value['threshold'] - $userCurrentCompletion;
+
+
+
+    }
+
+    //echo 'enter y == 0 loop';
+
+
+}else{
+
+    if ($userCurrentCompletion < $value['threshold'] && $userCurrentCompletion > $status[$y-1]['threshold'] ){
+
+        $currentUserStatus = $value['color'];
+        $currentUserStatusArrayKey = $y;
+
+        $userPercentToNextThreshold = $value['threshold'] - $userCurrentCompletion;
+
+
+
+
+
+    }
+
+}
+
+$y++;
+
+
+if ($debug){
+echo '<br/>';
+}
+
+}
+
+$number_of_experiences_to_next_threshold = (($userPercentToNextThreshold / 100) * $completionArray['denominator']);
+$number_of_experiences_to_next_threshold = round($number_of_experiences_to_next_threshold, 0);
+
+//getcurrent UTC time
+$date = new DateTime('now', new DateTimeZone('UTC'));
+$sqltimestamp = date_format($date, 'Y-m-d H:i:s');
+
+//construct status statement
+$statusStatement = 'STATUS[' . $currentUserStatusArrayKey . ']';
+
+
+//if  current status
+
+$debug = false;
+
+if ($userFunctions->currentStatus($userid, $statusStatement) != FALSE){
+
+    //update
+
+    $id_userActivity = $userFunctions->currentStatus($userid, $statusStatement);
+
+    $userActivity->Load_from_key($id_userActivity);
+
+    //get the current status
+
+    $currentStatusDB = preg_replace('/[^0-9]/', '', $userActivity->getsession_id());
+
+    if ($debug){
+
+        echo 'currentStatus ' . 'is ' . $currentStatusDB;
+        echo 'currentStatusArray key  ' . 'is ' . $currentUserStatusArrayKey;
+
+        echo '$id_userActivity key  ' . 'is ' . $id_userActivity;
+        ECHO '$userActivity->getsession_id() is' . $userActivity->getsession_id();
+
+    }
+
+    if ($currentStatusDB == $currentUserStatusArrayKey){
+
+        if ($debug){
+
+            echo 'no update status unchanged';
+        }
+
+        //no update if status the same
+    }else if (intval($currentStatusDB) > intval($currentUserStatusArrayKey)){
+
+        //do not update status if the status in db higher than the currently detected status
+        if ($debug){
+
+            echo 'no update status calculated lower than current db status -> user keeps status';
+        }
+
+    }
+    else if (intval($currentStatusDB) < intval($currentUserStatusArrayKey)){
+
+        //update status if the status in db lower than the currently detected status
+        if ($debug){
+
+            echo 'update status calculated higher than current db status -> user gains new status';
+        }
+    $userActivity->setsession_id($statusStatement);
+    $userActivity->setactivity_time($sqltimestamp);
+    $userActivity->prepareStatementPDOUpdate();
+
+    }
+
+
+}else{
+
+    $userActivity->New_userActivity($userid, $statusStatement, $sqltimestamp, null);
+    $userActivity->prepareStatementPDO();
+
+}
+
+//add a STATUS event to the database
+
+//$userActivity->New_userActivity($data['user_id'], null, $sqltimestamp, null);
+//$userActivity->prepareStatementPDO();
+
+
+
+//now based on db status
+
+?>
                                     <div class="card-body">
                                         <div class="d-flex">
                                             <div>
                                                 <div class="icon text-white icon-lg">
-                                                <i class="fas fa-medal platinum"></i>
+                                                <i class="fas fa-medal <?php echo $status[$userFunctions->returnCurrentStatusUser($userid, false)]['color'];?>"></i>
                                               
                                                 </div>
                                             </div>
@@ -438,14 +613,15 @@
                                             <span
                                                     class="d-block h5 text-white mr-2 mb-1">GIEQs Online Status</span>
                                                     <span
-                                                    class="d-block h6 text-white mr-2 mb-1 mt-2">Gold Status</span>
+                                                    class="d-block h6 text-white mr-2 mb-1 mt-2"><?php echo ucfirst($status[$userFunctions->returnCurrentStatusUser($userid, false)]['color']);?> Status</span>
 
-                                                    <?php $completionArray = $usersMetricsManager->userCompletionVideos($userid, false);?>
-
-                                                    <?php error_reporting(E_ALL); $completionArrayAsset = $usersMetricsManager->userCompletionAsset($userid, 7, false);?>
 
                                                     
                                                    
+                                           
+
+
+
 
 
 
@@ -455,12 +631,24 @@
 
 
                                                     <p>                                                    <?php echo $assetManager->countCoursesUser($userid, false);?>
- / <?php echo $assetManager->countCourses();?> courses<br/>
-                                                     x / <?php echo $assetManager->countPremiumPacks();?> premium content packs<br/>
-                                                     <?php echo $completionArray['numerator'];?> / <?php echo $completionArray['denominator'];?> total learning experiences</p>
+ / <?php echo $assetManager->countCourses();?> Courses<br/>
+ <?php echo $assetManager->countPremiumPacksUser($userid, false);?> / <?php echo $assetManager->countPremiumPacks();?> Premium Content Packs<br/>
+                                                     <?php echo $completionArray['numerator'];?> / <?php echo $completionArray['denominator'];?> Total Learning Experiences</p>
                                                
+                                               <?php //fix for platinum
+                                               
+                                               if ($userFunctions->returnCurrentStatusUser($userid, false) < 3){
+                                               ?>
 
-                                                    <p>yy learning experiences until next status</p>
+                                                    <p>Complete <?php echo $number_of_experiences_to_next_threshold;?> more individual Learning Experiences to reach GIEQs <?php echo ucfirst($status[$userFunctions->returnCurrentStatusUser($userid, false)+1]['color']);?> Status</p>
+
+
+                                                <?php }else{ ?>
+
+                                                    <p>Congratulations on achieving the Premier Tier of GIEQs Online Status</p>
+
+
+                                               <?php } ?>
                                             </div>
                                         </div>
                                     </div>
