@@ -654,8 +654,8 @@ if ($userFunctions->currentStatus($userid, $statusStatement) != FALSE){
                                                <?php } ?>
 
                                                <a
-                                            class="btn-sm bg-gieqsGold p-1 mt-5 cursor-pointer"
-                                            onclick="">
+                                            class="btn-sm bg-<?php echo $status[$userFunctions->returnCurrentStatusUser($userid, false)]['color'];?> p-1 mt-5 cursor-pointer"
+                                            onclick="window.location.href = siteRoot + 'gieqs-status.php';">
 
                                             <span class="btn-inner--text text-dark text-sm">Find Out More</span>
                                         </a>

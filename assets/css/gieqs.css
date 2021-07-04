@@ -51,6 +51,29 @@
         color: rgb(238, 195, 120) !important;
     }
 
+    .bg-platinum {
+
+        background-color: #e5e4e2 !important;
+
+    }
+
+    .bg-bronze {
+
+        background-color: rgb( 128,74,0) !important;
+
+       
+    }
+
+    .bg-silver{
+
+        background-color: #C0C0C0 !important;
+    }
+
+    .bg-gold{
+
+        background-color: rgb(238, 195, 120) !important;
+    }
+
     .opacity-0 {
         opacity:0!important;
       }
