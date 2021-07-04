@@ -42,18 +42,7 @@ Class coin {
     }  
     
     
-    public function allocate_coin($amount, $userid, $debug=false){
 
-
-
-
-    }
-
-    public function spend_coin($amount, $userid, $debug=false){
-
-
-
-    }
 
     public function current_balance($userid, $debug=false){
 
@@ -84,13 +73,57 @@ Class coin {
 
 			    	    }
 
-				        return $x;
+				 
 
             } else {
                 
 
-                return 0;
+                $x = 0;
             }
+
+
+            $q = "Select a.`amount`
+            FROM `coin_spend` as a
+            WHERE a.`user_id` = '$userid'
+            ";
+
+            if ($debug){
+
+            echo $q . '<br><br>';
+
+            }
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $y = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					      $y = $y + intval($row['amount']);
+
+
+			    	    }
+
+				 
+
+            } else {
+                
+
+                $y = 0;
+            }
+
+            //balance
+
+            $balance = $x - $y;
+
+            return $balance;
+
+
 
     }
 
@@ -99,6 +132,25 @@ Class coin {
 
 
     }
+
+    public function user_has_coins ($userid, $debug=false){
+
+      $balance = $this->current_balance($userid, $debug);
+
+      if ($balance > 0){
+
+        return true;
+
+      }else{
+
+
+        return false;
+      }
+
+
+
+    }
+
 
     
 

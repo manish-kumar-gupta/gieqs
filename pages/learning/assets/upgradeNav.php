@@ -2,6 +2,9 @@
 
 //require '../../includes/config.inc.php';	
 
+require_once BASE_URI . '/assets/scripts/classes/coin.class.php';
+$coin = new coin;
+
 $url =  "{$_SERVER['REQUEST_URI']}";
                     $highlightComplex = preg_match (  '/complex/' ,  $url);
                     $highlightProgram = preg_match (  '/program/' ,  $url);
@@ -26,7 +29,7 @@ $url =  "{$_SERVER['REQUEST_URI']}";
             <ul class="navbar-nav align-items-lg-center ml-lg-auto">
 
 
-
+            
             <?php  if ($currentUserLevel == '6'){
                         ?>
                 
@@ -150,6 +153,20 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                 <?php
                     }
                 ?>
+
+<li class="nav-item">
+
+<a class="nav-link nav-link-icon"><?php echo $coin->current_balance($userid) . '&nbsp;';
+?>
+<img
+src="<?php echo BASE_URL . "/assets/img/icons/coin.svg"?>"
+alt="GIEQs Coin" 
+/>
+</a>
+
+
+</li>
+
                
             </ul>
 

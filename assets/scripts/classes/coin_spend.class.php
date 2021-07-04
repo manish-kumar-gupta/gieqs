@@ -37,6 +37,8 @@ Class coin_spend {
 	private $spend_date; //timestamp
 	private $amount; //int(11)
 	private $user_id; //int(11)
+	private $asset_id; //varchar(200)
+
 	private $connection;
 
     public function __construct(){
@@ -48,10 +50,12 @@ Class coin_spend {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_coin_spend($spend_date,$amount,$user_id){
+	public function New_coin_spend($spend_date,$amount,$user_id,$asset_id){
 		$this->spend_date = $spend_date;
 		$this->amount = $amount;
 		$this->user_id = $user_id;
+		$this->asset_id = $asset_id;
+
 	}
 
     /**
@@ -67,6 +71,8 @@ Class coin_spend {
 			$this->spend_date = $row["spend_date"];
 			$this->amount = $row["amount"];
 			$this->user_id = $row["user_id"];
+			$this->asset_id = $row["asset_id"];
+
 		}
 	}
     /**
@@ -88,6 +94,8 @@ $q = "Select * from `coin_spend` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["spend_date"] = $row["spend_date"];
 			$rowReturn[$x]["amount"] = $row["amount"];
 			$rowReturn[$x]["user_id"] = $row["user_id"];
+			$rowReturn[$x]["asset_id"] = $row["asset_id"];
+
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -113,6 +121,8 @@ $q = "Select * from `coin_spend` WHERE `id` = $key";
 			$rowReturn[$x]["spend_date"] = $row["spend_date"];
 			$rowReturn[$x]["amount"] = $row["amount"];
 			$rowReturn[$x]["user_id"] = $row["user_id"];
+			$rowReturn[$x]["asset_id"] = $row["asset_id"];
+
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -394,6 +404,14 @@ $q = "UPDATE `coin_spend` SET $implodeArray WHERE `id` = '$this->id'";
 		return $this->user_id;
 	}
 
+	
+	/**
+	 * @return asset_id - varchar(200)
+	 */
+	public function getasset_id(){
+		return $this->asset_id;
+	}
+
 	/**
 	 * @param Type: int(11)
 	 */
@@ -420,6 +438,13 @@ $q = "UPDATE `coin_spend` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function setuser_id($user_id){
 		$this->user_id = $user_id;
+	}
+
+	/**
+	 * @param Type: varchar(200)
+	 */
+	public function setasset_id($asset_id){
+		$this->asset_id = $asset_id;
 	}
 
     /**

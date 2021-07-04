@@ -307,6 +307,9 @@
         require_once(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
         $assetManager = new assetManager;
 
+        require_once BASE_URI . '/assets/scripts/classes/coin.class.php';
+$coin = new coin;
+
         $video_PDO = new video_PDO;
 
 
@@ -649,6 +652,13 @@ if ($userFunctions->currentStatus($userid, $statusStatement) != FALSE){
 
 
                                                <?php } ?>
+
+                                               <a
+                                            class="btn-sm bg-gieqsGold p-1 mt-5 cursor-pointer"
+                                            onclick="">
+
+                                            <span class="btn-inner--text text-dark text-sm">Find Out More</span>
+                                        </a>
                                             </div>
                                         </div>
                                     </div>
@@ -678,14 +688,21 @@ if ($userFunctions->currentStatus($userid, $statusStatement) != FALSE){
                                             </div>
                                             <div class="pl-4">
                                             <span
-                                                    class="d-block h5 text-white mr-2 mb-1">GIEQs Coins</span>
+                                                    class="d-block h5 text-white mr-2 mb-1">GIEQs Coin</span>
                                                     <span
                                                     class="d-block h6 text-white mr-2 mb-1">Spend on your next GIEQs Experience</span>
-                                                    <p>You have xxx <img
+                                                    <p>Current balance : <?php echo $coin->current_balance($userid);
+ ?> <img
     src="<?php echo BASE_URL . "/assets/img/icons/coin.svg"?>"
     alt="GIEQs Coin" height="24" width="24"
     /></p>
-    <p>Get More Coins</p>
+    <p>                                            <a
+                                            class="btn-sm bg-gieqsGold p-1 mt-5 cursor-pointer"
+                                            onclick="window.location.href = siteRoot + 'gieqs-coins.php';">
+
+                                            <span class="btn-inner--text text-dark text-sm">Find Out More</span>
+                                        </a>
+</p>
                                                     
                                            
                                             </div>

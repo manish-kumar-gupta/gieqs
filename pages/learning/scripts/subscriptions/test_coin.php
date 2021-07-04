@@ -79,15 +79,64 @@ $sqltimestamp = date_format($date, 'Y-m-d H:i:s');
 //check logged in done already in interpret user access
 //with secure session id
 
-/* $amount = 37;
-$coin_grant->New_coin_grant($sqltimestamp, $amount, $userid);
-echo $coin_grant->prepareStatementPDO(); */
+$amount_grant = 11;
+$coin_grant->New_coin_grant($sqltimestamp, $amount_grant, $userid);
+$coin_grant->prepareStatementPDO();
 
 
+
+//get mysql date UTC
+$date = new DateTime('now', new DateTimeZone('UTC'));
+$sqltimestamp = date_format($date, 'Y-m-d H:i:s');
+
+//SPEND COINS
+
+$amount_spend = 32;
+$asset_id = 6;
+
+//check balance first
+//if balance < amount_spend do not execute
+
+$balance = $coin->current_balance($userid);
+
+if ($balance >= $amount_spend){
+
+
+$coin_spend->New_coin_spend($sqltimestamp, $amount_spend, $userid, $asset_id);
+$coin_spend->prepareStatementPDO();
+
+}else{
+
+    echo 'Insufficient coins to make this transaction';
+    echo '<br/>';
+    echo "Requested amount was $amount_spend but userid $userid has only $balance remaining";
+
+}
+
+
+echo '<br/><br/><br/>';
+echo '<br/><br/><br/>';
 
 
 //check user number of coins
+
+echo 'user with id ' . $userid . ' has ';
 echo $coin->current_balance($userid);
+echo ' coins';
+//user  has coins
+echo '<br/><br/><br/>';
+echo '<br/><br/><br/>';
+
+$balance = $coin->user_has_coins($userid);
+if ($balance){
+
+    $text = ' some ';
+}else{
+
+    $text = ' no ';
+}
+
+echo 'user has ' . $text . ' coins';
 
 
 
