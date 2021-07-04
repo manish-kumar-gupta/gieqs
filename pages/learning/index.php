@@ -457,7 +457,7 @@ $status = [
 $userCurrentCompletion = round($completionArray['completion'], 1);
 
 //test
-$userCurrentCompletion = 73.7;
+//$userCurrentCompletion = 73.7;
 
 
 $x = null;
