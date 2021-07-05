@@ -19,7 +19,7 @@ $url =  "{$_SERVER['REQUEST_URI']}";
 
 <nav class="mt-2 navbar navbar-horizontal navbar-expand-lg navbar-dark gieqsGold"  style="z-index: 1 !important;">
     <div class="container">
-        <a class="navbar-brand"><?php echo 'GIEQs Online';?>
+        <a class="navbar-brand" href="<?php echo BASE_URL; ?>/pages/learning/index.php"><?php echo 'GIEQs Online';?>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-warning"
             aria-controls="navbar-warning" aria-expanded="false" aria-label="Toggle navigation">
