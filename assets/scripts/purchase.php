@@ -1,5 +1,11 @@
 <!-- Modals NEW GENERIC -->
 
+<?php
+require_once BASE_URI . '/assets/scripts/classes/coin.class.php';
+$coin = new coin;
+
+?>
+
 <div id="subscription_level" style="display:none;"><?php echo $sitewide_status;?></div>
 
 
@@ -21,7 +27,7 @@
                 <div class="py-3 text-left">
                     <!-- <i class="fas fa-exclamation-circle fa-4x"></i> -->
                     <hr />
-                    <h5 class="heading h4 mt-4">New GIEQs Online Course Subscription</h5>
+                    <h5 class="heading h4 mt-4">New GIEQs Online Course Purchase</h5>
                     <p class="heading h5 mt-4">Course : <span class="text-white" id="asset-name"></span></p>
 
                     <p class="text-white"><span class="text-muted" id="asset-type"></span></p>
@@ -36,10 +42,27 @@
                             }else{?>
 
                         <span class="text-muted" id="cost">&euro;</span>
+
+
+                        <?php }?>
+
+                        <?php $has_coins = $coin->user_has_coins($userid);
+
+                                if ($has_coins){
+
+?>
+
+                        <a class="btn btn-sm cursor-pointer bg-dark btn-icon rounded-pill hover-translate-y-n3 use-coin">
+                            <span class="btn-inner--icon">
+                                <img src="<?php echo BASE_URL . "/assets/img/icons/coin.svg"?>"
+                                    alt="use GIEQs Coin for this purcahse" height="24" width="24" />
+                            </span>
+                            <span class="btn-inner--text gieqsGold">Use GIEQs Coin</span>
+                        </a>
+
+                        <?php } ?>
+
                     </p>
-
-                    <?php }?>
-
 
                     <p class="text-white text-justify mt-4">
                         Description : <span class="text-muted" id="asset-description"></span>
@@ -164,18 +187,20 @@ if ($userid){
                 </button>
             </div>
             <div class="modal-body">
-                <p>Would you like to upgrade to GIEQs <strong>STANDARD</strong> or <strong>PRO?</strong></p><p><a 
-                                            class="key-features cursor-pointer btn-sm bg-gieqsGold btn-icon rounded-pill hover-translate-y-n3 mt-5">
-                                            <span class="btn-inner--icon">
-                                                <i class="fas fa-fire text-dark"></i>
-                                            </span>
-                                            <span class="btn-inner--text text-dark">Show Key Features</span>
-                                        </a></p>
+                <p>Would you like to upgrade to GIEQs <strong>STANDARD</strong> or <strong>PRO?</strong></p>
+                <p><a
+                        class="key-features cursor-pointer btn-sm bg-gieqsGold btn-icon rounded-pill hover-translate-y-n3 mt-5">
+                        <span class="btn-inner--icon">
+                            <i class="fas fa-fire text-dark"></i>
+                        </span>
+                        <span class="btn-inner--text text-dark">Show Key Features</span>
+                    </a></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-dark" onclick="launchSubscriptionDialog(1);">get STANDARD</button>
-                <button type="button" class="btn btn-dark gieqsGold" onclick="launchSubscriptionDialog(2);">get PRO</button>
+                <button type="button" class="btn btn-dark gieqsGold" onclick="launchSubscriptionDialog(2);">get
+                    PRO</button>
 
             </div>
         </div>
@@ -275,7 +300,8 @@ if ($userid){
                 confirmation email.
                 This subscription will automatically renew after the expiry term. This can easily be
                 switched off your account settings.
-                All new GIEQs Pro subscriptions come with a free trial [if subscribing for the first time]. If you cancel within the trial period you will
+                All new GIEQs Pro subscriptions come with a free trial [if subscribing for the first time]. If you
+                cancel within the trial period you will
                 never be charged.
                 We do not store any payment details whatsoever on GIEQs.com. We believe this is best handled by
                 Stripe who have a
@@ -406,177 +432,207 @@ var waitForFinalEvent = (function() {
 var stripe = Stripe(
     "pk_test_51IsKqwEBnLMnXjogDG3ebg9q8KEVEbKtvHai719tJNPGsr9i77V4OdSYtPiBS1Y8bd4rknYYyAUkJ1sDweS2ubdF00GDL2mLNn");
 
-    function launchSubscriptionDialog(subscriptionType) {
 
-var button = $(document).find('.subscribe-now');
 
-$(button).append('<i class="fas fa-circle-notch fa-spin ml-2"></i>');
-$(button).attr('disabled', true);
 
-//here pass the variable subscriptionType to get the correct asset back
+function useGIEQsCoin(){
 
-const dataToSend2 = {
+    //when clicking on use GIEQs coin $('.use-coin').click()
 
-subscriptionType: subscriptionType,
+    //check using database that user has GIEQs coin remaining easy, hasCoin function
+
+    //chain by returning the ajax object and then()
+
+    //popup asking how many they want to use, same as pro premium popup
+
+    //check the entered amount against the database checkAmount function in coin TODO
+
+    //if successful write a separate variable to the ajax command for stripe which is reduction
+
+    //also include the coin spend id
+
+    //in the stripe payment system pass the coin spend id and check the amount to take away, if can't find it abort
+
+    //once the transaction is complete nothing else to do
+
+    //if stripe payment fails refund the coin balance
+
 
 }
 
-//first check that user type is filled
+function launchSubscriptionDialog(subscriptionType) {
 
-const jsonString2 = JSON.stringify(dataToSend2);
+    var button = $(document).find('.subscribe-now');
 
-var request3 = $.ajax({
-    url: rootFolder2 +
-        "pages/learning/scripts/subscriptions/check_user_type_filled.php",
-    type: "POST",
-    contentType: "application/json",
-    data: jsonString2,
+    $(button).append('<i class="fas fa-circle-notch fa-spin ml-2"></i>');
+    $(button).attr('disabled', true);
 
-    timeout: 5000,
-    fail: function(xhr, textStatus, errorThrown) {
-        alert(
-            'Something went wrong. Please try that again.'
-        );
-        $(button).find('i').remove();
-        $(button).attr('disabled', false);
+    //here pass the variable subscriptionType to get the correct asset back
+
+    const dataToSend2 = {
+
+        subscriptionType: subscriptionType,
+
     }
-});
 
-request3.done(function(data) {
+    //first check that user type is filled
 
+    const jsonString2 = JSON.stringify(dataToSend2);
 
-    data = data.trim();
-    var result = JSON.parse(data);
-    console.dir(result);
+    var request3 = $.ajax({
+        url: rootFolder2 +
+            "pages/learning/scripts/subscriptions/check_user_type_filled.php",
+        type: "POST",
+        contentType: "application/json",
+        data: jsonString2,
 
-    if (result.typeFilled === true) {
-
-
-        var asset_id = result.asset;
-
-        console.log(asset_id);
-        $('.subscribe-footer #button-confirm-new').attr('data-assetid', '' + asset_id);
-
-        //get the modal data
-        const dataToSend = {
-
-            asset_id: asset_id,
-
+        timeout: 5000,
+        fail: function(xhr, textStatus, errorThrown) {
+            alert(
+                'Something went wrong. Please try that again.'
+            );
+            $(button).find('i').remove();
+            $(button).attr('disabled', false);
         }
+    });
 
-        //first check that user type is filled
+    request3.done(function(data) {
 
-        const jsonString = JSON.stringify(dataToSend);
 
-        //alert('true');
+        data = data.trim();
+        var result = JSON.parse(data);
+        console.dir(result);
 
-        var request = $.ajax({
-            url: siteRoot2 +
-                "pages/learning/scripts/subscriptions/get_new_subscription_data.php",
-            type: "POST",
-            contentType: "application/json",
-            data: jsonString,
-            timeout: 5000,
-            fail: function(xhr, textStatus, errorThrown) {
-                alert(
-                    'Something went wrong. We could not load the subscription data.'
-                );
-                $(button).find('i').remove();
-                $(button).attr('disabled', false);
+        if (result.typeFilled === true) {
+
+
+            var asset_id = result.asset;
+
+            console.log(asset_id);
+            $('.subscribe-footer #button-confirm-new').attr('data-assetid', '' + asset_id);
+
+            //get the modal data
+            const dataToSend = {
+
+                asset_id: asset_id,
+
             }
-        });
 
-        request.done(function(data) {
+            //first check that user type is filled
+
+            const jsonString = JSON.stringify(dataToSend);
+
+            //alert('true');
+
+            var request = $.ajax({
+                url: siteRoot2 +
+                    "pages/learning/scripts/subscriptions/get_new_subscription_data.php",
+                type: "POST",
+                contentType: "application/json",
+                data: jsonString,
+                timeout: 5000,
+                fail: function(xhr, textStatus, errorThrown) {
+                    alert(
+                        'Something went wrong. We could not load the subscription data.'
+                    );
+                    $(button).find('i').remove();
+                    $(button).attr('disabled', false);
+                }
+            });
+
+            request.done(function(data) {
 
 
-            data = data.trim();
-            console.log(data);
+                data = data.trim();
+                console.log(data);
 
-            try {
+                try {
 
-                externalTest = $.parseJSON(data);
-                console.dir(externalTest);
-                if (data) {
+                    externalTest = $.parseJSON(data);
+                    console.dir(externalTest);
+                    if (data) {
 
 
-                    try {
+                        try {
 
-                        if (externalTest.location_jump) {
+                            if (externalTest.location_jump) {
 
-                            window.location.href = externalTest.location_jump;
+                                window.location.href = externalTest.location_jump;
+
+                            }
+
+                        } catch (error) {
+
+
 
                         }
 
-                    } catch (error) {
+                        if (externalTest.alreadyHasSiteWide == true) {
 
+                            var upgrade = true;
 
+                            alert(
+                                'You already have a GIEQs Online Subscription.\n\nIf you choose to upgrade, your existing subscription will be cancelled and replaced with the new subscription.\n\nYou will be credited for the outstanding month and charged immediately for the new subscription.');
 
-                    }
-
-                    if (externalTest.alreadyHasSiteWide == true){
-
-                        var upgrade = true;
-
-                        alert('You already have a GIEQs Online Subscription.\n\nIf you choose to upgrade, your existing subscription will be cancelled and replaced with the new subscription.\n\nYou will be credited for the outstanding month and charged immediately for the new subscription.');
-
-                    }
+                        }
 
 
 
 
-                    $('.modal-subscribe-new #asset-name').text(externalTest.asset_name);
-                    $('.modal-subscribe-new #asset-type').text(externalTest.asset_type);
-                    $('.modal-subscribe-new #renew-frequency').text(externalTest
-                        .renew_frequency);
-                    $('.modal-subscribe-new #asset-description').text(externalTest
-                        .description);
-                    $('.modal-subscribe-new #asset_id_hidden').val(externalTest
-                        .asset_id);
+                        $('.modal-subscribe-new #asset-name').text(externalTest.asset_name);
+                        $('.modal-subscribe-new #asset-type').text(externalTest.asset_type);
+                        $('.modal-subscribe-new #renew-frequency').text(externalTest
+                            .renew_frequency);
+                        $('.modal-subscribe-new #asset-description').text(externalTest
+                            .description);
+                        $('.modal-subscribe-new #asset_id_hidden').val(externalTest
+                            .asset_id);
 
                         $('.modal-subscribe-new #alreadyHasSiteWide').val(externalTest
-                        .alreadyHasSiteWide);
-                    $('.modal-subscribe-new #cost').text(externalTest.cost + ' euro');
-                    //fill trainee here 
+                            .alreadyHasSiteWide);
+                        $('.modal-subscribe-new #cost').text(externalTest.cost + ' euro');
+                        //fill trainee here 
 
 
-                    $('.modal-subscribe-new').modal('show');
+                        $('.modal-subscribe-new').modal('show');
+                        $(button).find('i').remove();
+                        $(button).attr('disabled', false);
+
+                    } else {
+
+                        alert(
+                            'Something went wrong. We could not load the subscription data.');
+                        $(button).find('i').remove();
+                        $(button).attr('disabled', false);
+
+
+                    }
+
+                } catch (error) {
+
+                    alert(data);
                     $(button).find('i').remove();
                     $(button).attr('disabled', false);
-
-                } else {
-
-                    alert(
-                        'Something went wrong. We could not load the subscription data.');
-                    $(button).find('i').remove();
-                    $(button).attr('disabled', false);
-
 
                 }
 
-            } catch (error) {
 
-                alert(data);
-                $(button).find('i').remove();
-                $(button).attr('disabled', false);
+            });
 
-            }
+        } else {
 
-
-        });
-
-    } else {
-
-        alert(
-            'We need to check your user type first.  Please update your profile with your status, either Endoscopist, Medical Student or Nurse, and ensure you specify trainee or not.  Then try this again.');
-        PopupCenter(siteRoot2 + '/pages/learning/pages/account/profile.php',
-            'Update your profile', 600, 400);
+            alert(
+                'We need to check your user type first.  Please update your profile with your status, either Endoscopist, Medical Student or Nurse, and ensure you specify trainee or not.  Then try this again.'
+                );
+            PopupCenter(siteRoot2 + '/pages/learning/pages/account/profile.php',
+                'Update your profile', 600, 400);
 
 
-    }
+        }
 
 
 
-})
+    })
 
 }
 
@@ -651,7 +707,7 @@ $(document).ready(function() {
     })
 
     $(document).on('click', '.key-features', function() {
-       // alert('hello');
+        // alert('hello');
         $('.modal-pro-premium').modal('hide');
         window.location.href = siteRoot + 'upgrade.php#options-table';
 
@@ -877,7 +933,7 @@ $(document).ready(function() {
 
                     }
 
-                    
+
 
 
 
@@ -917,7 +973,7 @@ $(document).ready(function() {
 
     });
 
-    
+
 
 
 
@@ -931,13 +987,13 @@ $(document).ready(function() {
 
         //write to the page above
 
-        if (subscription_status == '99'){
+        if (subscription_status == '99') {
 
-        $('#propremium').modal('show');
+            $('#propremium').modal('show');
 
-        }else if(subscription_status == '1'){
+        } else if (subscription_status == '1') {
 
-        
+
             launchSubscriptionDialog(2);
 
         }
