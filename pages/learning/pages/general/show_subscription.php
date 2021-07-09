@@ -75,137 +75,12 @@
     <!--Page title-->
 
 
-    <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
 
-
-    <style>
-    .gieqsGold {
-
-        color: rgb(238, 194, 120);
-
-
-    }
-
-    .navbar-brand small {
-        display: block;
-        font-size: 10px;
-    }
-
-    .card-placeholder {
-
-        width: 344px;
-
-    }
-
-    .break {
-        flex-basis: 100%;
-        height: 0;
-    }
-
-    .flex-even {
-        flex: 0 0 30%;
-
-        /*
-        
-        flex: 1;
-         */
-    }
-
-    .flex-nav {
-        flex: 0 0 18%;
-    }
-
-
-
-    .gieqsGoldBackground {
-
-        background-color: rgb(238, 194, 120);
-
-
-    }
-
-    .tagButton {
-
-        cursor: pointer;
-
-    }
-
-
-
-
-
-    /* iframe {
-        box-sizing: border-box;
-        height: 25.25vw;
-        left: 50%;
-        min-height: 100%;
-        min-width: 100%;
-        transform: translate(-50%, -50%);
-        position: absolute;
-        top: 50%;
-        width: 100.77777778vh;
-    } */
-
-    .cursor-pointer {
-
-        cursor: pointer;
-
-    }
-
-    @media (max-width: 768px) {
-
-        .flex-even {
-            flex-basis: 100%;
-        }
-    }
-
-    @media (max-width: 768px) {
-
-        .card-header {
-            height: 250px;
-        }
-
-        .card-placeholder {
-
-            width: 204px;
-
-        }
-
-
-    }
-
-    @media (min-width: 1200px) {
-        #chapterSelectorDiv {
-
-
-
-            top: -3vh;
-
-
-        }
-
-        /* #playerContainer {
-
-            margin-top: -20px;
-
-        } */
-
-        #collapseExample {
-
-            position: absolute;
-            max-width: 50vh;
-            z-index: 25;
-        }
-
-
-
-    }
-    </style>
 
     <?php
 
 
-        $debug = false;
+        $debug = FALSE;
 
         if ($debug){
           error_reporting(E_ALL);
@@ -243,7 +118,13 @@
         /* exit if no assetid provided */
 
         if ((!isset($assetid)) && (!isset($pageid))){
+
+            setcookie("browsing", "", time() - 3600);
+            setcookie("browsing_id", "", time() - 3600);
+
             ?>
+
+
     <div class="main-content container mt-10">
 
         <?php            
@@ -251,8 +132,6 @@
             echo '<br/><br/>Return <a href="' . BASE_URL .  '/pages/learning/">home</a>';
             //redirect_user(BASE_URL . '/pages/learning/');
 
-            setcookie("browsing", "", time() - 3600);
-            setcookie("browsing_id", "", time() - 3600);
             die();
         }
 
@@ -276,6 +155,10 @@
 
         if (!$access){
 
+            setcookie("browsing", "", time() - 3600);
+            setcookie("browsing_id", "", time() - 3600);
+
+
             ?>
         <div class="main-content container mt-10">
 
@@ -284,8 +167,6 @@
             echo '<br/><br/>Return <a href="' . BASE_URL .  '/pages/learning/">home</a>';
             //redirect_user(BASE_URL . '/pages/learning/');
 
-            setcookie("browsing", "", time() - 3600);
-            setcookie("browsing_id", "", time() - 3600);
             die();
 
 
@@ -310,6 +191,10 @@
 
                 $log[] =  'issue loading the asset';
             }
+
+            setcookie("browsing", "", time() - 3600);
+            setcookie("browsing_id", "", time() - 3600);
+
             ?>
             <div class="main-content container mt-10">
 
@@ -318,8 +203,6 @@
             echo '<br/><br/>Return <a href="' . BASE_URL .  '/pages/learning/">home</a>';
             //redirect_user(BASE_URL . '/pages/learning/');
 
-            setcookie("browsing", "", time() - 3600);
-            setcookie("browsing_id", "", time() - 3600);
             die();
 
 
@@ -333,7 +216,6 @@
 
         $page_title = $assets_paid->getname();?>
 
-                <title>GIEQs Online Endoscopy Trainer - <?php echo $page_title;?></title>
 
 
                 <?php
@@ -791,6 +673,133 @@
                         
 		
         ?>
+            <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
+
+
+<style>
+.gieqsGold {
+
+    color: rgb(238, 194, 120);
+
+
+}
+
+.navbar-brand small {
+    display: block;
+    font-size: 10px;
+}
+
+.card-placeholder {
+
+    width: 344px;
+
+}
+
+.break {
+    flex-basis: 100%;
+    height: 0;
+}
+
+.flex-even {
+    flex: 0 0 30%;
+
+    /*
+    
+    flex: 1;
+     */
+}
+
+.flex-nav {
+    flex: 0 0 18%;
+}
+
+
+
+.gieqsGoldBackground {
+
+    background-color: rgb(238, 194, 120);
+
+
+}
+
+.tagButton {
+
+    cursor: pointer;
+
+}
+
+
+
+
+
+/* iframe {
+    box-sizing: border-box;
+    height: 25.25vw;
+    left: 50%;
+    min-height: 100%;
+    min-width: 100%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    width: 100.77777778vh;
+} */
+
+.cursor-pointer {
+
+    cursor: pointer;
+
+}
+
+@media (max-width: 768px) {
+
+    .flex-even {
+        flex-basis: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .card-header {
+        height: 250px;
+    }
+
+    .card-placeholder {
+
+        width: 204px;
+
+    }
+
+
+}
+
+@media (min-width: 1200px) {
+    #chapterSelectorDiv {
+
+
+
+        top: -3vh;
+
+
+    }
+
+    /* #playerContainer {
+
+        margin-top: -20px;
+
+    } */
+
+    #collapseExample {
+
+        position: absolute;
+        max-width: 50vh;
+        z-index: 25;
+    }
+
+
+
+}
+</style>
+                <title>GIEQs Online Endoscopy Trainer - <?php echo $page_title;?></title>
 
 </head>
 
