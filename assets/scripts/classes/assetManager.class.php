@@ -4052,7 +4052,7 @@ public function returnVideoDenominatorSelect2()
             
             //determine what is in the two array inputs from getVideos and getNavv2, if same fields ok if not make same
 
-            //if $browsing is an asset
+            //if $ is an asset
 
             //then easy to check access to the whole asset
 
