@@ -957,7 +957,7 @@ if ($assetManager->determineVideoAccessSingleVideo($id, $isSuperuser, $userid, f
                             </a>
   
 
-<a data-assetid="<?php echo $value2; ?>"
+<a href="<?php echo BASE_URL . '/pages/program/program_generic.php?id=' . $value2;?>" data-assetid="<?php echo $value2; ?>"
                                 class="more-info btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon px-2">
                                 <span class="btn-inner--text text-dark">More info</span>
                                 <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->

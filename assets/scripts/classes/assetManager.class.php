@@ -1971,6 +1971,13 @@ public function video_owned_by_user ($videoid, $userid, $debug){
 
     $asset_array = $this->which_assets_contain_video($videoid);
 
+    if ($debug){
+
+        echo 'The following assets contain this video with id ' . $videoid;
+        echo '<br/>';
+        var_dump($asset_array);
+    }
+
     if ($asset_array != false){
 
 
@@ -2041,7 +2048,11 @@ public function which_assets_contain_video ($videoid, $debug=false){
     INNER JOIN `sub_asset_paid` as c ON b.`id` = c.`asset_id`
     WHERE c.`video_id` = '$videoid'";
 
-//echo $q . '<br><br>';
+    if ($debug){
+        echo $q . '<br><br>';
+    }
+
+    //echo $q . '<br><br>';
 
 
 
@@ -4108,7 +4119,7 @@ public function returnVideoDenominatorSelect2()
 
                             if ($debug){
                     
-                                echo 'is an asset and user has access, so access granted';
+                                echo 'is contained within an asset and user has access, so access granted';
                                 echo '<br/><br/>';
                               
         
@@ -4122,13 +4133,20 @@ public function returnVideoDenominatorSelect2()
 
                             if ($debug){
                     
-                                echo 'is an asset and user has NO access, therefore access denied';
+                                echo 'is contained within an asset and user has NO access to those assets, therefore access denied on asset basis';
                                 echo '<br/><br/>';
                             
-        
+                            //WHAT ABOUT IF THE USER ALSO OWNS A PROGRAMME WHICH GIVES ACCESS BUT DOES NOT OWN THIS ASSET
                     
                            }
+
+                           $access3check = $this->checkVideoProgrammeAspect($id, $userid, $debug);
+
+                           if ($access3check === false){  //make sure that the user gets access via programme if available
+
                            return false;
+
+                           }
 
                         }elseif ($access4 === null){
 
@@ -4193,7 +4211,7 @@ public function returnVideoDenominatorSelect2()
                                 if ($debug){
                     
                                     echo 'video id ' . $id . ' requires a programme subscription and is not covered by a videoset';
-                                    echo 'video id ' . $id . ' removed from array';
+                                    echo 'video id ' . $id . ' access denied';
                     
                                 }
                     
@@ -4344,7 +4362,15 @@ public function returnVideoDenominatorSelect2()
 
             $asset_array = $this->which_assets_contain_video($id);
 
-            if ($asset_array === false){
+            $programmesArray = $this->programmeView->getProgrammeVideo($id);
+
+            $assetArray = array();
+
+            $x = 0;
+
+
+
+            if ($programmesArray != false){
 
                 //must be a programme
 
@@ -4357,12 +4383,12 @@ public function returnVideoDenominatorSelect2()
 
                 $programmesArray = $this->programmeView->getProgrammeVideo($id);
 
-                $assetArray = array();
-                $x = 0;
 
                 foreach ($programmesArray as $key=>$value){
 
                     $assetArray[$x] = $this->returnAssetIDProgrammev2($value);
+
+                    $x++;
 
 
                 }
@@ -4377,13 +4403,16 @@ public function returnVideoDenominatorSelect2()
 
                 }
 
-                return $assetArray;
+               //return $assetArray;
         
                 //return false;
         
                 
         
-            }else{
+            }
+            
+                if ($asset_array != false){
+
         
                 if ($debug){
         
@@ -4391,19 +4420,24 @@ public function returnVideoDenominatorSelect2()
                     print_r($asset_array);
                 }
 
-                $higherArray = array();
-                $y = 0;
+                //$higherArray = array();
 
                 foreach ($asset_array as $key2=>$value2){
 
-                    $higherArray[$x] = [$x => $value2];
+                    $assetArray[$x] = [$x => $value2];
+
+                    $x++;
+
 
                 }
 
-                return $higherArray;
         
                 //return true;
             }
+
+            //before returning check that these are advertised
+            return $assetArray;
+
 
 
 
