@@ -26,19 +26,13 @@
           }
 
 
-Class assets_paid {
+Class partner {
 
 	private $id; //int(11)
-	private $name; //varchar(200)
-	private $description; //varchar(800)
-	private $asset_type; //varchar(20)
-	private $superCategory; //varchar(11)
-	private $linked_blog; //varchar(11)
-	private $cost; //varchar(20)
-	private $renew_frequency; //varchar(11)
-	private $partner; //int(11)
-	private $sponsor; //int(11)
-	private $advertise_for_purchase; //varchar(11)
+	private $name; //varchar(100)
+	private $long_name; //varchar(300)
+	private $logo_src; //varchar(400)
+	private $created; //timestamp
 	private $connection;
 
 	public function __construct(){
@@ -51,17 +45,11 @@ Class assets_paid {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_assets_paid($name,$description,$asset_type,$superCategory,$linked_blog,$cost,$renew_frequency,$partner,$sponsor,$advertise_for_purchase){
+	public function New_partner($name,$long_name,$logo_src,$created){
 		$this->name = $name;
-		$this->description = $description;
-		$this->asset_type = $asset_type;
-		$this->superCategory = $superCategory;
-		$this->linked_blog = $linked_blog;
-		$this->cost = $cost;
-		$this->renew_frequency = $renew_frequency;
-		$this->partner = $partner;
-		$this->sponsor = $sponsor;
-		$this->advertise_for_purchase = $advertise_for_purchase;
+		$this->long_name = $long_name;
+		$this->logo_src = $logo_src;
+		$this->created = $created;
 	}
 
     /**
@@ -71,19 +59,13 @@ Class assets_paid {
      *
      */
 	public function Load_from_key($key_row){
-		$result = $this->connection->RunQuery("Select * from assets_paid where id = \"$key_row\" ");
+		$result = $this->connection->RunQuery("Select * from partner where id = \"$key_row\" ");
 		while($row = $result->fetch(PDO::FETCH_ASSOC)){
 			$this->id = $row["id"];
 			$this->name = $row["name"];
-			$this->description = $row["description"];
-			$this->asset_type = $row["asset_type"];
-			$this->superCategory = $row["superCategory"];
-			$this->linked_blog = $row["linked_blog"];
-			$this->cost = $row["cost"];
-			$this->renew_frequency = $row["renew_frequency"];
-			$this->partner = $row["partner"];
-			$this->sponsor = $row["sponsor"];
-			$this->advertise_for_purchase = $row["advertise_for_purchase"];
+			$this->long_name = $row["long_name"];
+			$this->logo_src = $row["logo_src"];
+			$this->created = $row["created"];
 		}
 	}
     /**
@@ -93,7 +75,7 @@ Class assets_paid {
  *
  */
 	public function Load_records_limit_json($y, $x=0){
-$q = "Select * from `assets_paid` LIMIT " . $x . ", " . $y;
+$q = "Select * from `partner` LIMIT " . $x . ", " . $y;
 		$result = $this->connection->RunQuery($q);
 							$rowReturn = array();
 						$x = 0;
@@ -103,15 +85,9 @@ $q = "Select * from `assets_paid` LIMIT " . $x . ", " . $y;
 					while($row = $result->fetch(PDO::FETCH_ASSOC)){
 			$rowReturn[$x]["id"] = $row["id"];
 			$rowReturn[$x]["name"] = $row["name"];
-			$rowReturn[$x]["description"] = $row["description"];
-			$rowReturn[$x]["asset_type"] = $row["asset_type"];
-			$rowReturn[$x]["superCategory"] = $row["superCategory"];
-			$rowReturn[$x]["linked_blog"] = $row["linked_blog"];
-			$rowReturn[$x]["cost"] = $row["cost"];
-			$rowReturn[$x]["renew_frequency"] = $row["renew_frequency"];
-			$rowReturn[$x]["partner"] = $row["partner"];
-			$rowReturn[$x]["sponsor"] = $row["sponsor"];
-			$rowReturn[$x]["advertise_for_purchase"] = $row["advertise_for_purchase"];
+			$rowReturn[$x]["long_name"] = $row["long_name"];
+			$rowReturn[$x]["logo_src"] = $row["logo_src"];
+			$rowReturn[$x]["created"] = $row["created"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -125,7 +101,7 @@ $q = "Select * from `assets_paid` LIMIT " . $x . ", " . $y;
  *
  */
 	public function Return_row($key){
-$q = "Select * from `assets_paid` WHERE `id` = $key";
+$q = "Select * from `partner` WHERE `id` = $key";
 		$result = $this->connection->RunQuery($q);
 							$rowReturn = array();
 						$x = 0;
@@ -135,15 +111,9 @@ $q = "Select * from `assets_paid` WHERE `id` = $key";
 					while($row = $result->fetch(PDO::FETCH_ASSOC)){
 			$rowReturn[$x]["id"] = $row["id"];
 			$rowReturn[$x]["name"] = $row["name"];
-			$rowReturn[$x]["description"] = $row["description"];
-			$rowReturn[$x]["asset_type"] = $row["asset_type"];
-			$rowReturn[$x]["superCategory"] = $row["superCategory"];
-			$rowReturn[$x]["linked_blog"] = $row["linked_blog"];
-			$rowReturn[$x]["cost"] = $row["cost"];
-			$rowReturn[$x]["renew_frequency"] = $row["renew_frequency"];
-			$rowReturn[$x]["partner"] = $row["partner"];
-			$rowReturn[$x]["sponsor"] = $row["sponsor"];
-			$rowReturn[$x]["advertise_for_purchase"] = $row["advertise_for_purchase"];
+			$rowReturn[$x]["long_name"] = $row["long_name"];
+			$rowReturn[$x]["logo_src"] = $row["logo_src"];
+			$rowReturn[$x]["created"] = $row["created"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -154,7 +124,7 @@ $q = "Select * from `assets_paid` WHERE `id` = $key";
 
         public function Load_records_limit_json_datatables($y, $x = 0)
             {
-            $q = "Select * from `assets_paid` LIMIT $x, $y";
+            $q = "Select * from `partner` LIMIT $x, $y";
             $result = $this->connection->RunQuery($q);
             $rowReturn = array();
             $x = 0;
@@ -186,7 +156,7 @@ $q = "Select * from `assets_paid` WHERE `id` = $key";
      *
      */
 	public function matchRecord($key_row){
-		$result = $this->connection->RunQuery("Select * from `assets_paid` where `id` = '$key_row' ");
+		$result = $this->connection->RunQuery("Select * from `partner` where `id` = '$key_row' ");
 		$nRows = $result->rowCount();
 			if ($nRows == 1){
 				return TRUE;
@@ -199,7 +169,7 @@ $q = "Select * from `assets_paid` WHERE `id` = $key";
 		* Return the number of rows
 		*/
 	public function numberOfRows(){
-		return $this->connection->TotalOfRows('assets_paid');
+		return $this->connection->TotalOfRows('partner');
 	}
 
     /**
@@ -277,7 +247,7 @@ $x=0;
 			$x++;
 
 		} 
-$q = "INSERT INTO `assets_paid` ($keys) VALUES ($keys2)";
+$q = "INSERT INTO `partner` ($keys) VALUES ($keys2)";
 		
  $stmt = $this->connection->prepare($q); 
 $stmt->execute($ovMod3); 
@@ -362,7 +332,7 @@ $x=0;
 			$x++;
 
 		} 
-$q = "UPDATE `assets_paid` SET $implodeArray WHERE `id` = '$this->id'";
+$q = "UPDATE `partner` SET $implodeArray WHERE `id` = '$this->id'";
 
 		
  $stmt = $this->connection->RunQuery($q); 
@@ -377,7 +347,7 @@ $q = "UPDATE `assets_paid` SET $implodeArray WHERE `id` = '$this->id'";
      *
      */
 	public function Delete_row_from_key($key_row){
-		$result = $this->connection->RunQuery("DELETE FROM `assets_paid` WHERE `id` = $key_row");
+		$result = $this->connection->RunQuery("DELETE FROM `partner` WHERE `id` = $key_row");
 		return $result->rowCount();
 	}
 
@@ -389,7 +359,7 @@ $q = "UPDATE `assets_paid` SET $implodeArray WHERE `id` = '$this->id'";
      */
 	public function GetKeysOrderBy($column, $order){
 		$keys = array(); $i = 0;
-		$result = $this->connection->RunQuery("SELECT id from assets_paid order by $column $order");
+		$result = $this->connection->RunQuery("SELECT id from partner order by $column $order");
 			while($row = $result->fetch_array(MYSQLI_ASSOC)){
 				$keys[$i] = $row["id"];
 				$i++;
@@ -405,73 +375,31 @@ $q = "UPDATE `assets_paid` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
-	 * @return name - varchar(200)
+	 * @return name - varchar(100)
 	 */
 	public function getname(){
 		return $this->name;
 	}
 
 	/**
-	 * @return description - varchar(800)
+	 * @return long_name - varchar(300)
 	 */
-	public function getdescription(){
-		return $this->description;
+	public function getlong_name(){
+		return $this->long_name;
 	}
 
 	/**
-	 * @return asset_type - varchar(20)
+	 * @return logo_src - varchar(400)
 	 */
-	public function getasset_type(){
-		return $this->asset_type;
+	public function getlogo_src(){
+		return $this->logo_src;
 	}
 
 	/**
-	 * @return superCategory - varchar(11)
+	 * @return created - timestamp
 	 */
-	public function getsuperCategory(){
-		return $this->superCategory;
-	}
-
-	/**
-	 * @return linked_blog - varchar(11)
-	 */
-	public function getlinked_blog(){
-		return $this->linked_blog;
-	}
-
-	/**
-	 * @return cost - varchar(20)
-	 */
-	public function getcost(){
-		return $this->cost;
-	}
-
-	/**
-	 * @return renew_frequency - varchar(11)
-	 */
-	public function getrenew_frequency(){
-		return $this->renew_frequency;
-	}
-
-	/**
-	 * @return partner - int(11)
-	 */
-	public function getpartner(){
-		return $this->partner;
-	}
-
-	/**
-	 * @return sponsor - int(11)
-	 */
-	public function getsponsor(){
-		return $this->sponsor;
-	}
-
-	/**
-	 * @return advertise_for_purchase - varchar(11)
-	 */
-	public function getadvertise_for_purchase(){
-		return $this->advertise_for_purchase;
+	public function getcreated(){
+		return $this->created;
 	}
 
 	/**
@@ -482,79 +410,37 @@ $q = "UPDATE `assets_paid` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
-	 * @param Type: varchar(200)
+	 * @param Type: varchar(100)
 	 */
 	public function setname($name){
 		$this->name = $name;
 	}
 
 	/**
-	 * @param Type: varchar(800)
+	 * @param Type: varchar(300)
 	 */
-	public function setdescription($description){
-		$this->description = $description;
+	public function setlong_name($long_name){
+		$this->long_name = $long_name;
 	}
 
 	/**
-	 * @param Type: varchar(20)
+	 * @param Type: varchar(400)
 	 */
-	public function setasset_type($asset_type){
-		$this->asset_type = $asset_type;
+	public function setlogo_src($logo_src){
+		$this->logo_src = $logo_src;
 	}
 
 	/**
-	 * @param Type: varchar(11)
+	 * @param Type: timestamp
 	 */
-	public function setsuperCategory($superCategory){
-		$this->superCategory = $superCategory;
-	}
-
-	/**
-	 * @param Type: varchar(11)
-	 */
-	public function setlinked_blog($linked_blog){
-		$this->linked_blog = $linked_blog;
-	}
-
-	/**
-	 * @param Type: varchar(20)
-	 */
-	public function setcost($cost){
-		$this->cost = $cost;
-	}
-
-	/**
-	 * @param Type: varchar(11)
-	 */
-	public function setrenew_frequency($renew_frequency){
-		$this->renew_frequency = $renew_frequency;
-	}
-
-	/**
-	 * @param Type: int(11)
-	 */
-	public function setpartner($partner){
-		$this->partner = $partner;
-	}
-
-	/**
-	 * @param Type: int(11)
-	 */
-	public function setsponsor($sponsor){
-		$this->sponsor = $sponsor;
-	}
-
-	/**
-	 * @param Type: varchar(11)
-	 */
-	public function setadvertise_for_purchase($advertise_for_purchase){
-		$this->advertise_for_purchase = $advertise_for_purchase;
+	public function setcreated($created){
+		$this->created = $created;
 	}
 
     /**
      * Close mysql connection
      */
-	public function endassets_paid(){
+	public function endpartner(){
 		$this->connection->CloseMysql();
 	}
 
