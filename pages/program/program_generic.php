@@ -679,7 +679,7 @@ function refreshProgrammeView() {
 
 const dataToSend = {
 
-    programmeid: <?php echo $programme_defined;?>,
+    programmeid: <?php if(isset($programme_defined)){echo $programme_defined;} else{echo null;};?>,
 
 }
 
