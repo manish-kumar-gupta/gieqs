@@ -4906,6 +4906,139 @@ if ($debug){
     
 
     }
+
+    public function checkAssetToken($asset_id, $token, $debug=false){
+
+
+        //does the token exist and match this asset
+
+        $q = "SELECT `id` FROM `token` WHERE `asset_id` LIKE '$asset_id' AND `cipher` LIKE '$token' AND CAST(`remaining` AS UNSIGNED) > 0";
+
+        
+        if ($debug){
+
+            echo 'query for checkAssetToken was <br/>';
+            echo $q . '<br><br>';
+
+        }
+
+
+
+        $result = $this->connection->RunQuery($q);
+        
+        $x = 0;
+        $nRows = $result->rowCount();
+
+        if ($nRows > 0) {
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                $rowReturn[$x] = $row['id'];
+                $x++;
+
+            }
+
+            //return $rowReturn;
+            return true;
+
+        } else {
+            
+
+            return false;
+        }
+
+
+
+    }
+
+    public function checkTokensRemainingAsset($asset_id, $debug=false){
+
+
+        //does the token exist and match this asset
+
+        $q = "SELECT `id` FROM `token` WHERE `asset_id` LIKE '$asset_id' AND CAST(`remaining` AS UNSIGNED) > 0";
+
+        
+        if ($debug){
+
+            echo 'query for checkTokensRemainingAsset was <br/>';
+            echo $q . '<br><br>';
+
+        }
+
+
+
+        $result = $this->connection->RunQuery($q);
+        
+        $x = 0;
+        $nRows = $result->rowCount();
+
+        if ($nRows > 0) {
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                $rowReturn[$x] = $row['id'];
+                $x++;
+
+            }
+
+            //return $rowReturn;
+            return true;
+
+        } else {
+            
+
+            return false;
+        }
+
+
+    }
+
+    public function getTokenid($asset_id, $debug=false){
+
+
+        //does the token exist and match this asset
+
+        $q = "SELECT `id` FROM `token` WHERE `asset_id` LIKE '$asset_id'";
+
+        
+        if ($debug){
+
+            echo 'query for getTokenid was <br/>';
+            echo $q . '<br><br>';
+
+        }
+
+
+
+        $result = $this->connection->RunQuery($q);
+        
+        $x = 0;
+        $nRows = $result->rowCount();
+
+        if ($nRows == 1) {
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                $rowReturn = $row['id'];
+                //$x++;
+
+            }
+
+            //return $rowReturn;
+            return $rowReturn;
+
+        } else {
+            
+
+            return false;
+        }
+
+
+
+    }
+
+
     
 
         
