@@ -627,13 +627,21 @@ $(document).on('ready', function(){
                                    console.log(obj);
                                    console.log(data);
 
-                                   if (data.action == 'edit'){
+                                   if (data.action == 'edit' || data.action == 'add'){
 
                                        //alert('got it');
                                        $(document).find('#cipher-generate').removeClass('d-none');
-                                       console.log(generateCipher(10));
+                                       //console.log(generateCipher(10));
 
                                    }
+
+                                   if (data.action == 'back'){
+
+                                    //alert('got it');
+                                    $(document).find('#cipher-generate').addClass('d-none');
+                                   // console.log(generateCipher(10));
+
+                                    }
 
                                    //show a predefined buttonn in the header TODO
 
