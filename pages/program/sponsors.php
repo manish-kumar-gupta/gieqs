@@ -234,6 +234,10 @@ width: 100%;
                     </div>
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
+                        <img class="logo" alt="BOUCART" src="<?php echo BASE_URL . '/assets/img/sponsors/BOUCART.jpg';?>">
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-4 p-3">
                         <img class="logo" alt="Dr Falk" src="<?php echo BASE_URL . '/assets/img/sponsors/drfalk.png';?>">
                     </div>
 
