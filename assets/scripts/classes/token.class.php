@@ -2,7 +2,7 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 18-07-2021
+ * Create Date: 21-07-2021
  *
  * DJT 2019
  *
@@ -33,6 +33,8 @@ Class token {
 	private $cipher; //varchar(20)
 	private $created; //timestamp
 	private $remaining; //varchar(20)
+	private $partner; //int(11)
+	private $sponsor; //int(11)
 	private $connection;
 
 	public function __construct(){
@@ -45,11 +47,13 @@ Class token {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_token($asset_id,$cipher,$created,$remaining){
+	public function New_token($asset_id,$cipher,$created,$remaining,$partner,$sponsor){
 		$this->asset_id = $asset_id;
 		$this->cipher = $cipher;
 		$this->created = $created;
 		$this->remaining = $remaining;
+		$this->partner = $partner;
+		$this->sponsor = $sponsor;
 	}
 
     /**
@@ -66,6 +70,8 @@ Class token {
 			$this->cipher = $row["cipher"];
 			$this->created = $row["created"];
 			$this->remaining = $row["remaining"];
+			$this->partner = $row["partner"];
+			$this->sponsor = $row["sponsor"];
 		}
 	}
     /**
@@ -88,6 +94,8 @@ $q = "Select * from `token` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["cipher"] = $row["cipher"];
 			$rowReturn[$x]["created"] = $row["created"];
 			$rowReturn[$x]["remaining"] = $row["remaining"];
+			$rowReturn[$x]["partner"] = $row["partner"];
+			$rowReturn[$x]["sponsor"] = $row["sponsor"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -114,6 +122,8 @@ $q = "Select * from `token` WHERE `id` = $key";
 			$rowReturn[$x]["cipher"] = $row["cipher"];
 			$rowReturn[$x]["created"] = $row["created"];
 			$rowReturn[$x]["remaining"] = $row["remaining"];
+			$rowReturn[$x]["partner"] = $row["partner"];
+			$rowReturn[$x]["sponsor"] = $row["sponsor"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -403,6 +413,20 @@ $q = "UPDATE `token` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return partner - int(11)
+	 */
+	public function getpartner(){
+		return $this->partner;
+	}
+
+	/**
+	 * @return sponsor - int(11)
+	 */
+	public function getsponsor(){
+		return $this->sponsor;
+	}
+
+	/**
 	 * @param Type: int(11)
 	 */
 	public function setid($id){
@@ -435,6 +459,20 @@ $q = "UPDATE `token` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function setremaining($remaining){
 		$this->remaining = $remaining;
+	}
+
+	/**
+	 * @param Type: int(11)
+	 */
+	public function setpartner($partner){
+		$this->partner = $partner;
+	}
+
+	/**
+	 * @param Type: int(11)
+	 */
+	public function setsponsor($sponsor){
+		$this->sponsor = $sponsor;
 	}
 
     /**

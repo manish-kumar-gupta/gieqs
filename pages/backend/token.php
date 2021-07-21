@@ -247,6 +247,9 @@ $pdocrud->relatedData('asset_id','assets_paid','id','name');
         //$pdocrud->setFilterSource("superCategoryFilter", "values", "superCategory", "superCategory_t", "db");
         //$pdocrud->setAdvSearchParam('superCategory', 'Super Category');
 $pdocrud->fieldTypes("created", "date");
+$pdocrud->fieldNotMandatory('partner');
+$pdocrud->fieldNotMandatory('sponsor');
+
 /*         $pdocrud->crudAddAction('generate_cipher', 'cipher', $displayVal = array(), $applyVal = array());
  */
 $pdocrud->checkDuplicateRecord(array("cipher"));
