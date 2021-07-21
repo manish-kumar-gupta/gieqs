@@ -574,7 +574,7 @@ font-weight: 300 !important;
                         <?php if ($access_validated){
 
                             ?>
-                        <input type="hidden" name="access_token" value="true">
+                        <input type="hidden" name="access_token" value="<?php echo $access_token;?>">
 
                         <?php
                         }

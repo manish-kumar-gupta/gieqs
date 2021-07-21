@@ -106,7 +106,13 @@ echo date('Y/m/d H:i:s'); */
             $email = $data['email'];
             $emailVaryarray['key'] = $key;
 
-            if (isset($data['signup_redirect'])){
+            if (isset($data['access_token'])){
+
+                $filename = '/assets/email/emailNewAccountHook.php';
+                $emailVaryarray['signup_redirect'] = $data['signup_redirect'] . '&access_token=' . $data['access_token'];
+
+
+            }elseif (isset($data['signup_redirect'])){
 
                 if (is_numeric($data['signup_redirect']) === true){
 
@@ -161,6 +167,13 @@ echo date('Y/m/d H:i:s'); */
             $mail->preSend();
             $mime = $mail->getSentMIMEMessage();
             $mime = rtrim(strtr(base64_encode($mime), '+/', '-_'), '=');
+
+            if ($debug){
+
+                var_dump($mail);
+                die();
+
+            }
 
             require BASE_URI . '/assets/scripts/individualMailerGmailAPIPHPMailer.php';
 

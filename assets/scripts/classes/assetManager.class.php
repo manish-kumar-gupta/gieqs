@@ -435,7 +435,7 @@ public function returnProgrammesAsset($assetid)
 
         }
         
-        public function returnCombinationUserSubscription($userid)
+        public function returnCombinationUserSubscription($userid, $debug=false)
             {
             
 
@@ -445,6 +445,11 @@ public function returnProgrammesAsset($assetid)
             ORDER BY a.`start_date` DESC
             ";
 
+            if ($debug){
+
+                echo 'Query was ' . $q; 
+
+            }
             //echo $q . '<br><br>';
 
 
@@ -473,7 +478,7 @@ public function returnProgrammesAsset($assetid)
 
         }
 
-        public function returnCombinationUserSubscriptionList($userid)
+        public function returnCombinationUserSubscriptionList($userid, $debug=false)
             {
             
 
@@ -484,6 +489,11 @@ public function returnProgrammesAsset($assetid)
             ORDER BY a.`start_date` DESC, b.`asset_type` 
             ";
 
+            if ($debug){
+
+                echo 'Query was '. $q;
+
+            }
             //echo $q . '<br><br>';
 
 

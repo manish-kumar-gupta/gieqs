@@ -362,8 +362,8 @@ get whether expiring soon su
                             <!--Get Subscription Data-->
 
                             <?php
-$subscriptionsList = $assetManager->returnCombinationUserSubscriptionList($userid);
-$subscriptions = $assetManager->returnCombinationUserSubscription($userid);
+$subscriptionsList = $assetManager->returnCombinationUserSubscriptionList($userid, false);
+$subscriptions = $assetManager->returnCombinationUserSubscription($userid, true);
 
 
             $current_date = new DateTime('now', new DateTimeZone('UTC'));
@@ -402,7 +402,13 @@ $subscriptions = $assetManager->returnCombinationUserSubscription($userid);
 
 foreach ($subscriptionsList as $key=>$value){
 
+$timezone = $users->gettimezone();
 
+if (!isset($timezone)){
+
+$timezone =  'UTC';
+
+}
   $start_date = null;
 
   $start_date_display = null;
@@ -411,7 +417,7 @@ foreach ($subscriptionsList as $key=>$value){
 
   $start_date_display = $start_date;
 
-  $start_date_display->setTimezone(new DateTimeZone($users->gettimezone()));
+  $start_date_display->setTimezone(new DateTimeZone($timezone));
 
   $expiry_date = null;
 
@@ -422,7 +428,7 @@ foreach ($subscriptionsList as $key=>$value){
   $expiry_date_display = $expiry_date;
 
 
-  $expiry_date->setTimezone(new DateTimeZone($users->gettimezone()));
+  $expiry_date->setTimezone(new DateTimeZone($timezone));
 
   $assetManager->subscription_state($value['id'], $debug);
 
