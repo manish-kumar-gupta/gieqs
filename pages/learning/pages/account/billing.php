@@ -363,7 +363,7 @@ get whether expiring soon su
 
                             <?php
 $subscriptionsList = $assetManager->returnCombinationUserSubscriptionList($userid, false);
-$subscriptions = $assetManager->returnCombinationUserSubscription($userid, true);
+$subscriptions = $assetManager->returnCombinationUserSubscription($userid, false);
 
 
             $current_date = new DateTime('now', new DateTimeZone('UTC'));
