@@ -21,7 +21,7 @@ function ne($v) {
 
 
 
-//$debug = true;
+$debug = false;
 //error_reporting(E_ALL);
 
 //echo 'hello';
@@ -278,9 +278,11 @@ if (count($data) > 0){
 			unset($data['identifier']);
 			unset($data['table']);
 
-            $data = array_filter($data, 'rempty'); //change
+            $data = array_filter($data, 'rempty'); //change CONSIDER IMPACT TODO
             
             $log = array();
+
+			$log[] = $data;
 
             //load the original record from key
 
@@ -318,6 +320,12 @@ if (count($data) > 0){
 		}
 
 		//print_r($log);
+		if ($debug){
+
+			print_r($log);
+
+		}
+
 		
 		
 	}else if ($update == 2){
@@ -401,6 +409,12 @@ if (count($data) > 0){
 
 $general->endGeneral();
 eval('$esdLesion->end' . $table . '();');
+
+if ($debug){
+
+
+	var_dump($log);
+}
 
 
 

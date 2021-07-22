@@ -946,11 +946,109 @@
     <div class="main-content bg-gradient-dark">
 
 
+    <?php 
+    
+    //if an asset
+
+    //$debug = true;
+
+
+    
+    $partnerAsset = $assets_paid->getpartner();
+
+    if ($debug){
+
+
+        echo '<br/><br/><br/><br/>';
+        var_dump($assets_paid);
+
+        echo $partnerAsset . ' is partnerAsset';
+    }
+
+    $sponsorAsset = $assets_paid->getsponsor();
+
+    if ($partnerAsset != ''){
+
+        require_once(BASE_URI . '/assets/scripts/classes/partner.class.php');
+        $partner = new partner;
+        //get the logo from partner
+
+        $partner->Load_from_key($partnerAsset);
+
+        $partner_logo_check = $partner->getlogo_src();
+
+        if ($partner_logo_check != ''){
+
+            $partner_src = $partner_logo_check;
+        }else{
+
+            $partner_src = FALSE;
+            
+        }
+
+        if ($debug){
+
+
+            echo '<br/><br/><br/><br/>';
+            var_dump($partner);
+    
+            echo $partner_logo_check . ' is partner_logo_check';
+            echo $partner_src . ' is partner_src';
+        }
+
+        //store the src
+
+        //echo below
+
+    }
+
+    if ($sponsorAsset != ''){
+
+        require_once(BASE_URI . '/assets/scripts/classes/sponsor.class.php');
+        $sponsor = new sponsor;
+        //get the logo from partner
+
+        $sponsor->Load_from_key($sponsorAsset);
+
+
+        $sponsor_logo_check = $sponsor->getlogo_src();
+
+        if ($sponsor_logo_check != ''){
+
+            $sponsor_src = $sponsor_logo_check;
+        }else{
+
+            $sponsor_src = FALSE;
+            
+        }
+
+        //store the src
+
+        //echo below
+
+    }
+    
+   // $debug = false;
+    
+    
+    ?>
 
         <!--Header CHANGEME-->
 
         <div class="d-flex flex-wrap container pt-9 mt-3">
-            <div class="h1 mr-auto pt-3"><?php echo $page_title;?></div>
+            <div class="h1 w-100 pt-3"><?php echo $page_title;?></div>
+            <div class="d-flex flex-column m-2">
+
+            <?php if ($partner_src){?>
+            <div class="h4 p-3">In partnership with</div><img height="75px" src='<?php echo $partner_src;?>'>
+            <?php }?>
+            </div>
+            <div class="d-flex flex-column m-2">
+
+            <?php if ($sponsor_src){?>
+            <div class="h4 p-3">Proudly supported by</div><img height="75px" src='<?php echo $sponsor_src;?>'>
+            <?php }?>
+            </div>
             <nav aria-label="breadcrumb" class="align-self-center">
                 <ol class="breadcrumb breadcrumb-links p-0 m-0">
                     <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/index.php'?>">GIEQs
