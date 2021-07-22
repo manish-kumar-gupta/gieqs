@@ -374,13 +374,13 @@ font-weight: 300 !important;
             <div class="d-flex flex-column m-2">
 
             <?php if ($partner_src){?>
-            <div class="h4 p-3">In partnership with</div><img height="75px" src='<?php echo $partner_src;?>'>
+            <div class="h4 p-3">In partnership with</div><img class="bg-white p-2" height="75px" src='<?php echo $partner_src;?>'>
             <?php }?>
             </div>
             <div class="d-flex flex-column m-2">
 
             <?php if ($sponsor_src){?>
-            <div class="h4 p-3">Proudly supported by</div><img height="75px" src='<?php echo $sponsor_src;?>'>
+            <div class="h4 p-3">Proudly supported by</div><img class="bg-white p-2" height="75px" src='<?php echo $sponsor_src;?>'>
             <?php }?>
             </div>
             </div>

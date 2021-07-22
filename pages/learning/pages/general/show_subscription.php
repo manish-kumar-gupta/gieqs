@@ -1040,16 +1040,16 @@
             <div class="d-flex flex-column m-2">
 
             <?php if ($partner_src){?>
-            <div class="h4 p-3">In partnership with</div><img height="75px" src='<?php echo $partner_src;?>'>
+            <div class="h4 p-3">In partnership with</div><img class="bg-white p-2" height="75px" src='<?php echo $partner_src;?>'>
             <?php }?>
             </div>
             <div class="d-flex flex-column m-2">
 
             <?php if ($sponsor_src){?>
-            <div class="h4 p-3">Proudly supported by</div><img height="75px" src='<?php echo $sponsor_src;?>'>
+            <div class="h4 p-3">Proudly supported by</div><img class="bg-white p-2" height="75px" src='<?php echo $sponsor_src;?>'>
             <?php }?>
             </div>
-            <nav aria-label="breadcrumb" class="align-self-center">
+            <nav aria-label="breadcrumb" class="ml-auto align-self-center">
                 <ol class="breadcrumb breadcrumb-links p-0 m-0">
                     <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/index.php'?>">GIEQs
                             online</a></li>
