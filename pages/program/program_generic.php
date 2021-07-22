@@ -265,6 +265,93 @@ font-weight: 300 !important;
 
     <div class="main-content">
 
+    <?php 
+    
+    //if an asset
+
+    //$debug = true;
+
+
+    
+    $partnerAsset = $assets_paid->getpartner();
+
+    if ($debug){
+
+
+        echo '<br/><br/><br/><br/>';
+        var_dump($assets_paid);
+
+        echo $partnerAsset . ' is partnerAsset';
+    }
+
+    $sponsorAsset = $assets_paid->getsponsor();
+
+    if ($partnerAsset != ''){
+
+        require_once(BASE_URI . '/assets/scripts/classes/partner.class.php');
+        $partner = new partner;
+        //get the logo from partner
+
+        $partner->Load_from_key($partnerAsset);
+
+        $partner_logo_check = $partner->getlogo_src();
+
+        if ($partner_logo_check != ''){
+
+            $partner_src = $partner_logo_check;
+        }else{
+
+            $partner_src = FALSE;
+            
+        }
+
+        if ($debug){
+
+
+            echo '<br/><br/><br/><br/>';
+            var_dump($partner);
+    
+            echo $partner_logo_check . ' is partner_logo_check';
+            echo $partner_src . ' is partner_src';
+        }
+
+        //store the src
+
+        //echo below
+
+    }
+
+    if ($sponsorAsset != ''){
+
+        require_once(BASE_URI . '/assets/scripts/classes/sponsor.class.php');
+        $sponsor = new sponsor;
+        //get the logo from partner
+
+        $sponsor->Load_from_key($sponsorAsset);
+
+
+        $sponsor_logo_check = $sponsor->getlogo_src();
+
+        if ($sponsor_logo_check != ''){
+
+            $sponsor_src = $sponsor_logo_check;
+        }else{
+
+            $sponsor_src = FALSE;
+            
+        }
+
+        //store the src
+
+        //echo below
+
+    }
+    
+   // $debug = false;
+    
+    
+    ?>
+
         <!-- Header (v1) -->
         <section class="header-1 bg-gradient-dark" data-offset-top="#header-main">
 
@@ -282,6 +369,21 @@ font-weight: 300 !important;
                         <span class="h3 mt-4" style="color: rgb(238, 194, 120);"><?php echo 'Live :  ' . $humanReadableProgrammeDate;?></span>
                         <span class="h3" style="color: rgb(238, 194, 120);"><?php echo ', ' . $humanStartTime . ' - ' . $humanEndTime;?> <br/>on Demand
                             thereafter<br /></span>
+
+                            <div class="d-flex justify-content-center container pt-2">
+            <div class="d-flex flex-column m-2">
+
+            <?php if ($partner_src){?>
+            <div class="h4 p-3">In partnership with</div><img height="75px" src='<?php echo $partner_src;?>'>
+            <?php }?>
+            </div>
+            <div class="d-flex flex-column m-2">
+
+            <?php if ($sponsor_src){?>
+            <div class="h4 p-3">Proudly supported by</div><img height="75px" src='<?php echo $sponsor_src;?>'>
+            <?php }?>
+            </div>
+            </div>
                         <a href="#targetScrollProgramme" id="wednesdayTop"
                             class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 scroll-me">
                             <span class="btn-inner--text text-dark">View Programme</span>
