@@ -656,6 +656,8 @@ if ($identifierValue) {
                                 <th>renew_frequency</th>
                                 <th>partner</th>
                                 <th>sponsor</th>
+                                <th>advertise_for_purchase</th>
+
                                 
                                 <th></th>
 
@@ -846,6 +848,16 @@ if ($identifierValue) {
                                             
                                             //echo $assetManager->getSuperCategories();?>
                                             
+                                            </select>
+                                        </div>
+
+                                        <label for="advertise_for_purchase">advertise_for_purchase</label>
+                                        <div class="input-group mb-3">
+                                            <select id="advertise_for_purchase" type="text" data-toggle="select" class="form-control" name="advertise_for_purchase">
+                                            <option value="" selected disabled hidden>please select an option</option>
+                                            <option value="0">No</option>
+                                            <option value="1">Yes</option>
+                                       
                                             </select>
                                         </div>
 
@@ -1791,6 +1803,7 @@ processResults: function(data) {
        {data: 'partner' },
 
        {data: 'sponsor' },
+       {data: 'advertise_for_purchase' },
 
 
        

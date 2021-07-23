@@ -41,7 +41,7 @@ $test = false;
     <div class="container px-lg-0">
         <!-- Logo -->
         <a class="navbar-brand mr-lg-5" href="<?php echo BASE_URL;?>/index.php">
-            <img alt="Image placeholder" src="<?php echo BASE_URL;?>/assets/img/brand/gieqs_digital.png" id="navbar-logo"
+            <img alt="Image placeholder" src="<?php echo BASE_URL;?>/assets/img/brand/gieqs_foundation_logo.png" id="navbar-logo"
                 style="height: 50px;">
         </a>
         <!-- Navbar collapse trigger -->
