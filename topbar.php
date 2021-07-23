@@ -10,7 +10,7 @@
       <div class="container px-0">
         <div class="navbar-nav align-items-center">
           <div class="d-none d-lg-inline-block">
-            <span class="navbar-text mr-3">Ghent International Endoscopy Quality Symposium</span>
+            <span class="navbar-text mr-3">The GIEQs Foundation</span>
           </div>
           <div>
             <ul class="nav">
@@ -47,7 +47,7 @@
 
             
             <li class="nav-item">
-                <a class="nav-link mr-4" href="<?php echo BASE_URL;?>/pages/support/support_gieqs_digital.php">GIEQs Digital Help</a>
+                <a class="nav-link mr-4" href="<?php echo BASE_URL;?>/pages/support/support_gieqs_digital.php">Support</a>
               </li>
             <li class="nav-item">
               <a class="nav-link" title="Login" href="<?php echo BASE_URL . '/pages/authentication/login.php'?>"><i class="fas fa-user-plus mr-2"></i>Login</a>

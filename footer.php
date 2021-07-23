@@ -6,9 +6,9 @@
       <div class="row pt-md">
         <div class="col-lg-4 mb-5 mb-lg-0">
           <a href="index.html">
-            <img src="<?php echo BASE_URL;?>/assets/img/brand/gieqs.svg" alt="Footer logo" style="height: 70px;">
+            <img src="<?php echo BASE_URL;?>/assets/img/brand/gieqs_foundation_logo.png" alt="Footer logo" style="height: 70px;">
           </a>
-          <p>At GIEQS we believe we can do everyday endoscopy better.  <br/>Together, using an emerging evidence base we can increase the quality of everyday endoscopic interventions. </p><p>GIEQs is a not for profit organisation dedicated to improving endoscopic practice.</p>
+          <p>At GIEQs we believe we can do everyday endoscopy better.  <br/>Together, using an emerging evidence base we can increase the quality of everyday endoscopic interventions. </p><p>The GIEQs Foundation is a not-for-profit organisation dedicated to promoting Safety and Quality in Everyday Endoscopic Practice.</p>
         </div>
         <!--
         <div class="col-lg-2 col-6 col-sm-4 ml-lg-auto mb-5 mb-lg-0">
@@ -42,7 +42,7 @@
       <div class="row align-items-center justify-content-md-between py-4 mt-4 delimiter-top">
         <div class="col-md-6">
           <div class="copyright text-sm font-weight-bold text-center text-md-left">
-            &copy; 2020 <a href="https://www.gieqs.com" class="font-weight-bold" target="_blank">GIEQS Organising Committee</a>. All rights reserved. <br/><span class="text-secondary">No personal data is collected by this site without your explicit consent.</span>
+            &copy; 2021 <a href="https://www.gieqs.com" class="font-weight-bold" target="_blank">the GIEQs Foundation</a>. All rights reserved. <br/><span class="text-secondary">No personal data is collected by this site without your explicit consent.</span>
           </div>
         </div>
         <div class="col-md-6">
