@@ -435,7 +435,7 @@ public function returnProgrammesAsset($assetid)
 
         }
         
-        public function returnCombinationUserSubscription($userid)
+        public function returnCombinationUserSubscription($userid, $debug=false)
             {
             
 
@@ -445,6 +445,11 @@ public function returnProgrammesAsset($assetid)
             ORDER BY a.`start_date` DESC
             ";
 
+            if ($debug){
+
+                echo 'Query was ' . $q; 
+
+            }
             //echo $q . '<br><br>';
 
 
@@ -473,7 +478,7 @@ public function returnProgrammesAsset($assetid)
 
         }
 
-        public function returnCombinationUserSubscriptionList($userid)
+        public function returnCombinationUserSubscriptionList($userid, $debug=false)
             {
             
 
@@ -484,6 +489,11 @@ public function returnProgrammesAsset($assetid)
             ORDER BY a.`start_date` DESC, b.`asset_type` 
             ";
 
+            if ($debug){
+
+                echo 'Query was '. $q;
+
+            }
             //echo $q . '<br><br>';
 
 
@@ -559,6 +569,43 @@ public function returnProgrammesAsset($assetid)
                 FROM `subscriptions` as a
                 INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
                 WHERE a.`id` = '$subscription_id'";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows == 1) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn = $row['asset_type'];
+
+
+				}
+
+				return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
+
+        public function getAssetTypeAsset($asset_id)
+            {
+            
+
+                $q = "Select 
+                `asset_type`
+                FROM `assets_paid`
+                WHERE `id` = '$asset_id'";
 
             //echo $q . '<br><br>';
 
@@ -1971,6 +2018,13 @@ public function video_owned_by_user ($videoid, $userid, $debug){
 
     $asset_array = $this->which_assets_contain_video($videoid);
 
+    if ($debug){
+
+        echo 'The following assets contain this video with id ' . $videoid;
+        echo '<br/>';
+        var_dump($asset_array);
+    }
+
     if ($asset_array != false){
 
 
@@ -2041,7 +2095,11 @@ public function which_assets_contain_video ($videoid, $debug=false){
     INNER JOIN `sub_asset_paid` as c ON b.`id` = c.`asset_id`
     WHERE c.`video_id` = '$videoid'";
 
-//echo $q . '<br><br>';
+    if ($debug){
+        echo $q . '<br><br>';
+    }
+
+    //echo $q . '<br><br>';
 
 
 
@@ -3517,6 +3575,88 @@ public function returnVideoDenominatorSelect2()
 
         }
 
+        public function getPartners(){
+
+			
+			$q = "SELECT `id`, `name` from `partner` ORDER BY `id` ASC";
+				//$q = "SELECT `superCategory` FROM `tagCategories` WHERE `id` = $id";
+		
+                //echo $q;
+                
+                $x = 0;
+                $tagCategoryName = array();
+		
+                $result = $this->connection->RunQuery($q);
+
+                $nRows = $result->rowCount();
+
+                
+                if ($nRows > 0){
+		
+					
+                    while($row = $result->fetch(PDO::FETCH_ASSOC)){
+						
+						$tagCategoryName[$x]['id'] = $row['id'];
+                        $tagCategoryName[$x]['name'] = $row['name'];
+                        $x++;
+						
+						
+						
+						
+					}
+				
+					return $tagCategoryName;
+				}else{
+					
+					return null;
+				}
+			
+
+
+
+        }
+
+        public function getSponsors(){
+
+			
+			$q = "SELECT `id`, `name` from `sponsor` ORDER BY `id` ASC";
+				//$q = "SELECT `superCategory` FROM `tagCategories` WHERE `id` = $id";
+		
+                //echo $q;
+                
+                $x = 0;
+                $tagCategoryName = array();
+		
+                $result = $this->connection->RunQuery($q);
+
+                $nRows = $result->rowCount();
+
+                
+                if ($nRows > 0){
+		
+					
+                    while($row = $result->fetch(PDO::FETCH_ASSOC)){
+						
+						$tagCategoryName[$x]['id'] = $row['id'];
+                        $tagCategoryName[$x]['name'] = $row['name'];
+                        $x++;
+						
+						
+						
+						
+					}
+				
+					return $tagCategoryName;
+				}else{
+					
+					return null;
+				}
+			
+
+
+
+        }
+
         public function getSuperCategoryName($supercategory){
 
 			
@@ -4170,7 +4310,7 @@ public function returnVideoDenominatorSelect2()
             
             //determine what is in the two array inputs from getVideos and getNavv2, if same fields ok if not make same
 
-            //if $browsing is an asset
+            //if $ is an asset
 
             //then easy to check access to the whole asset
 
@@ -4226,7 +4366,7 @@ public function returnVideoDenominatorSelect2()
 
                             if ($debug){
                     
-                                echo 'is an asset and user has access, so access granted';
+                                echo 'is contained within an asset and user has access, so access granted';
                                 echo '<br/><br/>';
                               
         
@@ -4240,13 +4380,20 @@ public function returnVideoDenominatorSelect2()
 
                             if ($debug){
                     
-                                echo 'is an asset and user has NO access, therefore access denied';
+                                echo 'is contained within an asset and user has NO access to those assets, therefore access denied on asset basis';
                                 echo '<br/><br/>';
                             
-        
+                            //WHAT ABOUT IF THE USER ALSO OWNS A PROGRAMME WHICH GIVES ACCESS BUT DOES NOT OWN THIS ASSET
                     
                            }
+
+                           $access3check = $this->checkVideoProgrammeAspect($id, $userid, $debug);
+
+                           if ($access3check === false){  //make sure that the user gets access via programme if available
+
                            return false;
+
+                           }
 
                         }elseif ($access4 === null){
 
@@ -4311,7 +4458,7 @@ public function returnVideoDenominatorSelect2()
                                 if ($debug){
                     
                                     echo 'video id ' . $id . ' requires a programme subscription and is not covered by a videoset';
-                                    echo 'video id ' . $id . ' removed from array';
+                                    echo 'video id ' . $id . ' access denied';
                     
                                 }
                     
@@ -4462,7 +4609,15 @@ public function returnVideoDenominatorSelect2()
 
             $asset_array = $this->which_assets_contain_video($id);
 
-            if ($asset_array === false){
+            $programmesArray = $this->programmeView->getProgrammeVideo($id);
+
+            $assetArray = array();
+
+            $x = 0;
+
+
+
+            if ($programmesArray != false){
 
                 //must be a programme
 
@@ -4475,12 +4630,12 @@ public function returnVideoDenominatorSelect2()
 
                 $programmesArray = $this->programmeView->getProgrammeVideo($id);
 
-                $assetArray = array();
-                $x = 0;
 
                 foreach ($programmesArray as $key=>$value){
 
                     $assetArray[$x] = $this->returnAssetIDProgrammev2($value);
+
+                    $x++;
 
 
                 }
@@ -4495,13 +4650,16 @@ public function returnVideoDenominatorSelect2()
 
                 }
 
-                return $assetArray;
+               //return $assetArray;
         
                 //return false;
         
                 
         
-            }else{
+            }
+            
+                if ($asset_array != false){
+
         
                 if ($debug){
         
@@ -4509,19 +4667,24 @@ public function returnVideoDenominatorSelect2()
                     print_r($asset_array);
                 }
 
-                $higherArray = array();
-                $y = 0;
+                //$higherArray = array();
 
                 foreach ($asset_array as $key2=>$value2){
 
-                    $higherArray[$x] = [$x => $value2];
+                    $assetArray[$x] = [$x => $value2];
+
+                    $x++;
+
 
                 }
 
-                return $higherArray;
         
                 //return true;
             }
+
+            //before returning check that these are advertised
+            return $assetArray;
+
 
 
 
@@ -5007,6 +5170,191 @@ if ($debug){
 
 
     }
+    public function checkAssetToken($asset_id, $token, $debug=false){
+
+
+        //does the token exist and match this asset
+
+        $q = "SELECT `id` FROM `token` WHERE `asset_id` LIKE '$asset_id' AND `cipher` LIKE '$token' AND CAST(`remaining` AS UNSIGNED) > 0";
+
+        
+        if ($debug){
+
+            echo 'query for checkAssetToken was <br/>';
+            echo $q . '<br><br>';
+
+        }
+
+
+
+        $result = $this->connection->RunQuery($q);
+        
+        $x = 0;
+        $nRows = $result->rowCount();
+
+        if ($nRows > 0) {
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                $rowReturn[$x] = $row['id'];
+                $x++;
+
+            }
+
+            //return $rowReturn;
+            return true;
+
+        } else {
+            
+
+            return false;
+        }
+
+
+
+    }
+
+    public function checkTokensRemainingAsset($asset_id, $debug=false){
+
+
+        //does the token exist and match this asset
+
+        $q = "SELECT `id` FROM `token` WHERE `asset_id` LIKE '$asset_id' AND CAST(`remaining` AS UNSIGNED) > 0";
+
+        
+        if ($debug){
+
+            echo 'query for checkTokensRemainingAsset was <br/>';
+            echo $q . '<br><br>';
+
+        }
+
+
+
+        $result = $this->connection->RunQuery($q);
+        
+        $x = 0;
+        $nRows = $result->rowCount();
+
+        if ($nRows > 0) {
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                $rowReturn[$x] = $row['id'];
+                $x++;
+
+            }
+
+            //return $rowReturn;
+            return true;
+
+        } else {
+            
+
+            return false;
+        }
+
+
+    }
+
+    public function getTokenid($asset_id, $debug=false){
+
+
+        //does the token exist and match this asset
+
+        $q = "SELECT `id` FROM `token` WHERE `asset_id` LIKE '$asset_id'";
+
+        
+        if ($debug){
+
+            echo 'query for getTokenid was <br/>';
+            echo $q . '<br><br>';
+
+        }
+
+
+
+        $result = $this->connection->RunQuery($q);
+        
+        $x = 0;
+        $nRows = $result->rowCount();
+
+        if ($nRows == 1) {
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                $rowReturn = $row['id'];
+                //$x++;
+
+            }
+
+            //return $rowReturn;
+            return $rowReturn;
+
+        } else {
+            
+
+            return false;
+        }
+
+
+
+    }
+
+    
+
+
+    public function returnAdvertisedAssets($asset_type, $debug=false){
+
+
+        $q = "Select `id`, `name` FROM `assets_paid` WHERE (`asset_type` = '$asset_type') AND (`advertise_for_purchase` IS NULL OR `advertise_for_purchase` = '1')";
+
+        
+    
+    
+    if ($debug){
+        echo $q . '<br><br>';
+    
+    }
+    
+    $result = $this->connection->RunQuery($q);
+    
+    $x = 0;
+    $nRows = $result->rowCount();
+    
+    if ($nRows > 0) {
+    
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+    
+            $rowReturn[$x] = ['id'=>$row['id'], 'name'=>$row['name']];
+            $x++;
+    
+    
+        }
+    
+        if ($debug){
+    
+            print_r($rowReturn);
+        }
+    
+        return $rowReturn;
+    
+    } else {
+        
+    
+        if ($debug){
+    
+            echo 'no advertised courses in this ('. $asset_type.  ') category are subscribable';
+        }
+    
+        return false;
+    
+        
+    }
+    
+    }
+
+
     
 
         

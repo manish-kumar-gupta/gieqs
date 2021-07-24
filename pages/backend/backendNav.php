@@ -91,6 +91,11 @@
                   <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/test_backend.php?table=pages">Edit Site Structure</a>
                   <span class="dropdown-header">Blog</span>
                   <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/blogs.php">Edit Blogs</a>
+                  <span class="dropdown-header">Asset Token Access</span>
+                  <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/token.php">Edit Token</a>
+                  <span class="dropdown-header">GIEQs Online Partners</span>
+                  <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/sponsor.php">Edit Sponsors</a>
+                  <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/partner.php">Edit Partners</a>
   
                   </div>
                 </div>

@@ -15,7 +15,6 @@ $location = BASE_URL . '/index.php';
 
 require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
 
-$debug = false;
 
 
 
@@ -40,6 +39,14 @@ $assets_paid = new assets_paid;
 
 require_once(BASE_URI . '/assets/scripts/classes/subscriptions.class.php');
 $subscription = new subscriptions;
+
+require_once(BASE_URI . '/assets/scripts/classes/token.class.php');
+$token = new token;
+
+require_once(BASE_URI .'/assets/scripts/classes/userActivity.class.php');
+
+$userActivity = new userActivity;
+
 
 error_reporting(E_ALL);
 require_once BASE_URI .'/../scripts/config.php';
@@ -200,13 +207,61 @@ $subscription_to_return['user_id'] = $userid;
     
     $end_date_sqltimestamp = date_format($end_start_calculate_date, 'Y-m-d H:i:s');
 
+    //check there are tokens remaining for this asset
 
-    $subscription->New_subscriptions($userid, $subscription_to_return['asset_id'], $current_date_sqltimestamp, $end_date_sqltimestamp, '1', '0', 'TOKEN SUBSCRIPTION NO PAYMENT');
+    if ($assetManager->checkTokensRemainingAsset($asset_id, false) == true){
+
+        $subscription->New_subscriptions($userid, $subscription_to_return['asset_id'], $current_date_sqltimestamp, $end_date_sqltimestamp, '1', '0', 'TOKEN SUBSCRIPTION NO PAYMENT');
+
+
+    }else{
+
+        echo 'Error, no tokens remaining for this asset.  Please contact us and quote this error';
+        die();
+
+    }
+
+
+
+    //record which user is doing this in user activity
+
+    //error if no tokens remaining
 
     $newSubscriptionid = $subscription->prepareStatementPDO();
 
+    
+
+
 
     if ($newSubscriptionid > 0){
+
+        //decrease by 1 the number of tokens remaining for this assset which was freely generated
+
+        //get the token id
+
+        $tokenid = $assetManager->getTokenid($asset_id);
+
+        $date = new DateTime('now', new DateTimeZone('UTC'));
+		$sqltimestamp = date_format($date, 'Y-m-d H:i:s');
+
+
+        //New_userActivity($user_id,$session_id,$login_time,$activity_time)
+        $userActivity->New_userActivity($userid, 'TOKEN_PURCHASE TOKEN_ID='. $tokenid, null, $sqltimestamp);
+        
+		$userActivity->prepareStatementPDO();
+
+        //decrease tokens by 1
+
+        $token->Load_from_key($tokenid);
+        $remaining = $token->getremaining();
+
+        $new_remaining = intval($remaining) - 1;
+
+        $token->setremaining($new_remaining);
+        $token->prepareStatementPDOUpdate();
+
+
+
 
         //inserted from success.php , modified here does not modify there
 

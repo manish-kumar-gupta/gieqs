@@ -2,31 +2,29 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 20-10-2020
+ * Create Date: 18-07-2021
  *
  * DJT 2019
  *
  * License: LGPL
  *
- */
+ */if (session_status() == PHP_SESSION_NONE) { //if there's no session_start yet...
+            session_start(); //do this
+          }
+          
+          if ($_SESSION){
+          
+          if ($_SESSION['debug'] == true){
+          
+          error_reporting(E_ALL);
+          
+          }else{
+          
+          error_reporting(0);
+          
+          }
+          }
 
-
-if (session_status() == PHP_SESSION_NONE) { //if there's no session_start yet...
-    session_start(); //do this
-}
-
-if ($_SESSION['debug'] == true){
-
-error_reporting(E_ALL);
-
-}else{
-
-error_reporting(0);
-	
-}
-
-
-require_once 'DataBaseMysqlPDO.class.php';
 
 Class assets_paid {
 
@@ -38,10 +36,14 @@ Class assets_paid {
 	private $linked_blog; //varchar(11)
 	private $cost; //varchar(20)
 	private $renew_frequency; //varchar(11)
+	private $partner; //int(11)
+	private $sponsor; //int(11)
+	private $advertise_for_purchase; //varchar(11)
 	private $connection;
 
 	public function __construct(){
-        require_once 'DatabaseMyssqlPDOLearning.class.php';
+            require_once 'DatabaseMyssqlPDOLearning.class.php';
+
 		$this->connection = new DataBaseMysqlPDOLearning();
 	}
 
@@ -49,7 +51,7 @@ Class assets_paid {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_assets_paid($name,$description,$asset_type,$superCategory,$linked_blog,$cost,$renew_frequency){
+	public function New_assets_paid($name,$description,$asset_type,$superCategory,$linked_blog,$cost,$renew_frequency,$partner,$sponsor,$advertise_for_purchase){
 		$this->name = $name;
 		$this->description = $description;
 		$this->asset_type = $asset_type;
@@ -57,6 +59,9 @@ Class assets_paid {
 		$this->linked_blog = $linked_blog;
 		$this->cost = $cost;
 		$this->renew_frequency = $renew_frequency;
+		$this->partner = $partner;
+		$this->sponsor = $sponsor;
+		$this->advertise_for_purchase = $advertise_for_purchase;
 	}
 
     /**
@@ -76,6 +81,9 @@ Class assets_paid {
 			$this->linked_blog = $row["linked_blog"];
 			$this->cost = $row["cost"];
 			$this->renew_frequency = $row["renew_frequency"];
+			$this->partner = $row["partner"];
+			$this->sponsor = $row["sponsor"];
+			$this->advertise_for_purchase = $row["advertise_for_purchase"];
 		}
 	}
     /**
@@ -101,6 +109,9 @@ $q = "Select * from `assets_paid` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["linked_blog"] = $row["linked_blog"];
 			$rowReturn[$x]["cost"] = $row["cost"];
 			$rowReturn[$x]["renew_frequency"] = $row["renew_frequency"];
+			$rowReturn[$x]["partner"] = $row["partner"];
+			$rowReturn[$x]["sponsor"] = $row["sponsor"];
+			$rowReturn[$x]["advertise_for_purchase"] = $row["advertise_for_purchase"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -130,6 +141,9 @@ $q = "Select * from `assets_paid` WHERE `id` = $key";
 			$rowReturn[$x]["linked_blog"] = $row["linked_blog"];
 			$rowReturn[$x]["cost"] = $row["cost"];
 			$rowReturn[$x]["renew_frequency"] = $row["renew_frequency"];
+			$rowReturn[$x]["partner"] = $row["partner"];
+			$rowReturn[$x]["sponsor"] = $row["sponsor"];
+			$rowReturn[$x]["advertise_for_purchase"] = $row["advertise_for_purchase"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -418,7 +432,7 @@ $q = "UPDATE `assets_paid` SET $implodeArray WHERE `id` = '$this->id'";
 		return $this->superCategory;
 	}
 
-		/**
+	/**
 	 * @return linked_blog - varchar(11)
 	 */
 	public function getlinked_blog(){
@@ -437,6 +451,27 @@ $q = "UPDATE `assets_paid` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function getrenew_frequency(){
 		return $this->renew_frequency;
+	}
+
+	/**
+	 * @return partner - int(11)
+	 */
+	public function getpartner(){
+		return $this->partner;
+	}
+
+	/**
+	 * @return sponsor - int(11)
+	 */
+	public function getsponsor(){
+		return $this->sponsor;
+	}
+
+	/**
+	 * @return advertise_for_purchase - varchar(11)
+	 */
+	public function getadvertise_for_purchase(){
+		return $this->advertise_for_purchase;
 	}
 
 	/**
@@ -493,6 +528,27 @@ $q = "UPDATE `assets_paid` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function setrenew_frequency($renew_frequency){
 		$this->renew_frequency = $renew_frequency;
+	}
+
+	/**
+	 * @param Type: int(11)
+	 */
+	public function setpartner($partner){
+		$this->partner = $partner;
+	}
+
+	/**
+	 * @param Type: int(11)
+	 */
+	public function setsponsor($sponsor){
+		$this->sponsor = $sponsor;
+	}
+
+	/**
+	 * @param Type: varchar(11)
+	 */
+	public function setadvertise_for_purchase($advertise_for_purchase){
+		$this->advertise_for_purchase = $advertise_for_purchase;
 	}
 
     /**

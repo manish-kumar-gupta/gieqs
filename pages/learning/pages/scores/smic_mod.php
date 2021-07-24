@@ -377,7 +377,7 @@ background-color: rgb(238, 194, 120);
 				}
 			
 			}
-			
+            
 			//surely there should be a version involving size...
 
             
@@ -392,7 +392,11 @@ background-color: rgb(238, 194, 120);
 
         $(labels).show();
         $(arrayToHide).show();
+        $('#demarcation_imaging').val('Please select...');
+
         $('#demarcation_imaging').hide();
+        $('#demarcation_imaging').parent().prev().hide();
+
 
 
     }
@@ -405,6 +409,8 @@ background-color: rgb(238, 194, 120);
         $(labels).hide();
         $(arrayToHide).hide();
         $('#demarcation_imaging').show();
+        $('#demarcation_imaging').parent().prev().show();
+
 
         /* $('#size, #location, #morphology, #paris').parent().hide(); */
 
@@ -803,11 +809,12 @@ background-color: rgb(238, 194, 120);
 
         function generateScore(){
 
-            var demarcation = $('#demarcation').val();
+                var demarcation = $('#demarcation').val();
 				var size = $('#size').val();
 				var location = $('#location').val();
 				var morphology = $('#morphology').val();
 				var paris = $('#paris').val();
+                var demarcation_imaging = $('#demarcation_imaging').val();
 
                 var COVERT = determineSMIC(demarcation, size, location, morphology, paris);
 
@@ -816,6 +823,7 @@ background-color: rgb(238, 194, 120);
 
                             var score =  {
                     "demarcation": demarcation,
+                    "demarcation_imaging": demarcation_imaging,
                     "size": size,
                     "location": location,
                     "morphology": morphology,

@@ -21,18 +21,22 @@ require BASE_URI . '/headNoPurposeCore.php';
     <title>GIEQs faculty</title>
   
     <style>
-    .logo {
 
-        width: 100%;
+        .header, .navbar, .navbar-top {
+            transition: none !important;
+        }
 
+        .bg-dark{
+            background-color: #162e4d !important; 
+        }
 
-    }
+        .logo {
+            width: 100%;
+        }
 
-    .gieqsGold {
-
-        color: rgb(238, 194, 120);
-
-    }
+        .gieqsGold {
+            color: rgb(238, 194, 120);
+        }
 
     @media screen and (max-width: 400px) {
 
@@ -78,7 +82,6 @@ require BASE_URI . '/headNoPurposeCore.php';
     <!-- Omnisearch -->
     <div id="omnisearch" class="omnisearch">
         <div class="container">
-            <!-- Search form -->
             <form class="omnisearch-form">
                 <div class="form-group">
                     <div class="input-group input-group-merge input-group-flush">
@@ -174,7 +177,7 @@ require BASE_URI . '/headNoPurposeCore.php';
                                 </div>
                             </div>
                         </div> -->
-                        <div class="col-lg-3">
+                        <div class="col-lg-3 py-3">
                             <div data-animate-hover="2">
                                 <div class="animate-this">
                                     <a href="#">
@@ -190,7 +193,7 @@ require BASE_URI . '/headNoPurposeCore.php';
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-3 py-3">
                             <div data-animate-hover="2">
                                 <div class="animate-this">
                                     <a href="#">
@@ -206,7 +209,7 @@ require BASE_URI . '/headNoPurposeCore.php';
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-3 py-3">
                             <div data-animate-hover="2">
                                 <div class="animate-this">
                                     <a href="#">
@@ -222,6 +225,38 @@ require BASE_URI . '/headNoPurposeCore.php';
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="#">
+                                        <img alt="Michael Bourke" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/Cameron John Bell.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr Cameron John Bell</h5>
+                                    <p class="text-muted mb-0">Director of Endoscopy</p>
+                                    <p class="text-muted mb-0">Royal North Shore Hospital, Sydney</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="#">
+                                        <img alt="Michael Bourke" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/Donald MacIntosh.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Prof. Donald Macintosh</h5>
+                                    <p class="text-muted mb-0">Professor of Medecine</p>
+                                    <p class="text-muted mb-0">Dalhousie University in Halifax, Canada</p>
+                                </div>
+                            </div>
+                        </div>
                         
                     </div>
                     <!-- <div class="row row-grid"> -->
@@ -232,7 +267,7 @@ require BASE_URI . '/headNoPurposeCore.php';
 
                     <!-- </div> -->
                     <div class="row row-grid">
-                        <div class="col-lg-3">
+                        <div class="col-lg-3 py-3">
                             <div data-animate-hover="2">
                                 <div class="animate-this">
                                     <a href="#">
@@ -248,6 +283,103 @@ require BASE_URI . '/headNoPurposeCore.php';
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="#">
+                                        <img alt="Raf Bisschops" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/Arnaud Lemmers.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Prof. Arnaud Lemmers </h5>
+                                    <p class="text-muted mb-0">Head of Clinic, Endoscopy Unit </p>
+                                    <p class="text-muted mb-0">Erasme Hospital, Belgium </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="#">
+                                        <img alt="Raf Bisschops" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/Evelien Christiaens.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr. Evelien Christiaens </h5>
+                                    <p class="text-muted mb-0">Gastroenterologist </p>
+                                    <p class="text-muted mb-0">OLV hospital Aalst, Belgium </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="#">
+                                        <img alt="Raf Bisschops" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/Christophe Snauwaert.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr. Christophe Snauwaert </h5>
+                                    <p class="text-muted mb-0">Therapeutic Endoscopist </p>
+                                    <p class="text-muted mb-0">AZ Sint-Jan Brugge-Oostende, Belgium </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="#">
+                                        <img alt="Raf Bisschops" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/Peter Bossuyt.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr. Peter Bossuyt </h5>
+                                    <p class="text-muted mb-0">Gastroenterologist, IBD clinic </p>
+                                    <p class="text-muted mb-0">Imelda General Hospital, Bonheiden, Belgium</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="#">
+                                        <img alt="Raf Bisschops" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/Tim Vanuytsel.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Prof. Dr. Tim Vanuytsel</h5>
+                                    <p class="text-muted mb-0">Consultant gastroenterologist</p>
+                                    <p class="text-muted mb-0">Leuven University Hospital, Belgium</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="#">
+                                        <img alt="Raf Bisschops" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/Frederik de Clerck.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr. Frederik de Clerk</h5>
+                                    <p class="text-muted mb-0">Gastroenterologist </p>
+                                    <p class="text-muted mb-0">AZ Sint Lucas Gent, Belgium </p>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- <div class="col-lg-3">
                             <div data-animate-hover="2">
                                 <div class="animate-this">
@@ -352,7 +484,7 @@ require BASE_URI . '/headNoPurposeCore.php';
                         </div>
 
                         <div class="row row-grid">
-                        <div class="col-lg-3">
+                        <div class="col-lg-3 py-3">
                             <div data-animate-hover="2">
                                 <div class="animate-this">
                                     <a href="#">
@@ -368,7 +500,7 @@ require BASE_URI . '/headNoPurposeCore.php';
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-3 py-3">
                             <div data-animate-hover="2">
                                 <div class="animate-this">
                                     <a href="#">
@@ -384,12 +516,12 @@ require BASE_URI . '/headNoPurposeCore.php';
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-3 py-3">
                             <div data-animate-hover="2">
                                 <div class="animate-this">
                                     <a href="#">
                                         <img alt="Hans Van Vlierberghe" class="img-fluid rounded shadow"
-                                            src="../../assets/img/faculty/HVV.png">
+                                            src="../../assets/img/faculty/Hans Van Vlierberghe.png">
                                     </a>
                                 </div>
                                 <div class="mt-3">
@@ -400,7 +532,7 @@ require BASE_URI . '/headNoPurposeCore.php';
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-3 py-3">
                             <div data-animate-hover="2">
                                 <div class="animate-this">
                                     <a href="#">
@@ -416,7 +548,7 @@ require BASE_URI . '/headNoPurposeCore.php';
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-3 py-3">
                             <div data-animate-hover="2">
                                 <div class="animate-this">
                                     <a href="#">
@@ -432,7 +564,7 @@ require BASE_URI . '/headNoPurposeCore.php';
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-3 py-3">
                             <div data-animate-hover="2">
                                 <div class="animate-this">
                                     <a href="#">
@@ -448,7 +580,7 @@ require BASE_URI . '/headNoPurposeCore.php';
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-3 py-3">
                             <div data-animate-hover="2">
                                 <div class="animate-this">
                                     <a href="#">
@@ -464,7 +596,7 @@ require BASE_URI . '/headNoPurposeCore.php';
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-3 py-3">
                             <div data-animate-hover="2">
                                 <div class="animate-this">
                                     <a href="#">

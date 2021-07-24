@@ -691,4 +691,10 @@ if ($assetManager->getSiteWideSubscription($userid, $debug)){
 if ($debugUserAccess){
 print_r($info);
 
+//also optionally debug cookies
+echo '<br/>';
+print_r($_COOKIE);
+echo '<br/>';
+echo '<div id="localStorageDebug"></div>';
+
 }

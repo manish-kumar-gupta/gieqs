@@ -654,6 +654,11 @@ if ($identifierValue) {
                                 <th>superCategory</th>
                                 <th>cost</th>
                                 <th>renew_frequency</th>
+                                <th>partner</th>
+                                <th>sponsor</th>
+                                <th>advertise_for_purchase</th>
+
+                                
                                 <th></th>
 
                             </tr>
@@ -807,6 +812,56 @@ if ($identifierValue) {
                                         <div class="input-group mb-3">
                                             <input id="renew_frequency" type="text" class="form-control" name="renew_frequency">
                                         </div>
+
+                                        <label for="partner">partner organisation</label>
+                                        <div class="input-group mb-3">
+                                            <select id="partner" type="text" data-toggle="select" class="form-control" name="partner">
+                                            <option value="" selected>please select an option</option>
+                                            <?php 
+                                            
+                                            $partners = $assetManager->getPartners();
+
+                                            foreach ($partners as $key=>$value){
+
+                                                echo "<option value='{$value['id']}'>{$value['name']}<option>";
+
+                                            }
+                                            
+                                            //echo $assetManager->getSuperCategories();?>
+                                            
+                                            </select>
+                                        </div>
+
+                                        <label for="sponsor">content sponsor</label>
+                                        <div class="input-group mb-3">
+                                            <select id="sponsor" type="text" data-toggle="select" class="form-control" name="sponsor">
+                                            <option value="" selected>please select an option</option>
+                                            <?php 
+                                            
+                                            $sponsors = $assetManager->getSponsors();
+
+                                            foreach ($sponsors as $key=>$value){
+
+                                                echo "<option value='{$value['id']}'>{$value['name']}<option>";
+
+                                            }
+                                            
+                                            //echo $assetManager->getSuperCategories();?>
+                                            
+                                            </select>
+                                        </div>
+
+                                        <label for="advertise_for_purchase">advertise_for_purchase</label>
+                                        <div class="input-group mb-3">
+                                            <select id="advertise_for_purchase" type="text" data-toggle="select" class="form-control" name="advertise_for_purchase">
+                                            <option value="" selected disabled hidden>please select an option</option>
+                                            <option value="0">No</option>
+                                            <option value="1">Yes</option>
+                                       
+                                            </select>
+                                        </div>
+
+                                        
 
                                 <!-- <label for="firstname">First Name</label>
                                         <div class="input-group mb-3">
@@ -1745,6 +1800,10 @@ processResults: function(data) {
 
        {data: 'cost' },
        {data: 'renew_frequency' },
+       {data: 'partner' },
+
+       {data: 'sponsor' },
+       {data: 'advertise_for_purchase' },
 
 
        

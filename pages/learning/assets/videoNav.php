@@ -41,7 +41,11 @@ require_once(BASE_URI . '/assets/scripts/classes/pages.class.php');
 $pages = new pages;
 
 
-$debug = false;
+$debug = FALSE;
+
+if ($debug){
+    var_dump($_COOKIE);
+}
 
 if(isset($_COOKIE['browsing'])) {
 
@@ -455,6 +459,16 @@ if (isset($browsing) && isset($browsing_id) && is_array($browsing_array)){
     //delete the others?
 }
 
+if ($debug){
+
+    echo 'selectedTag is ' . var_dump($selectedTag);
+
+    echo '<br/>';
+
+    echo 'restricted is ' . $restricted;
+
+}
+
 
 
 
@@ -496,7 +510,7 @@ Useful for PHP to JS transfer
             </ul> -->
             <ul class="navbar-nav justify-content-sm-center ml-sm-auto">
 
-                <?php if (($selectedTag == 'null') || (is_numeric(intval($selectedTag)) && $restricted == 'true')){?>
+                <?php if (($selectedTag == 'null') || ($selectedTag == NULL) || (is_numeric(intval($selectedTag)) && $restricted == 'true')){?>
 
                 <li class="nav-item">
 
@@ -596,7 +610,7 @@ $first_part = implode(" ", array_splice($pieces, 0, 4));
     
                         }else{
                         $pieces = explode(" ", $assets_paid->getname());
-    $first_part = implode(" ", array_splice($pieces, 0, 4));
+                        $first_part = implode(" ", array_splice($pieces, 0, 4));
                         }
                         
                         ?>

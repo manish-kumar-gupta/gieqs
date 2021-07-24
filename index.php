@@ -677,7 +677,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
           </section>
                    
 
-        <section class="slice slice-lg mt-8 mb-4"><!-- 
+        <section class="slice slice-lg mt-8 pb-0"><!-- 
             <div class="container">
               <div class="row row-grid align-items-center justify-content-around">
                 <div class="col-lg-5 order-lg-2">
