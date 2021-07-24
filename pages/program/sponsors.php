@@ -234,7 +234,7 @@ width: 100%;
                     </div>
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
-                        <img class="logo" alt="BOUCART" src="<?php echo BASE_URL . '/assets/img/sponsors/BOUCART.jpg';?>">
+                        <img class="logo" alt="BOUCART" src="<?php echo BASE_URL . '/assets/img/sponsors/boucart.jpg';?>">
                     </div>
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
