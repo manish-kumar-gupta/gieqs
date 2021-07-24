@@ -5,7 +5,7 @@
     <div class="container">
       <div class="row pt-md">
         <div class="col-lg-4 mb-5 mb-lg-0">
-          <a href="index.html">
+          <a href="<?php echo BASE_URL;?>/index.php">
             <img src="<?php echo BASE_URL;?>/assets/img/brand/gieqs_foundation_logo.png" alt="Footer logo" style="height: 70px;">
           </a>
           <p>At GIEQs we believe we can do everyday endoscopy better.  <br/>Together, using an emerging evidence base we can increase the quality of everyday endoscopic interventions. </p><p>The GIEQs Foundation is a not-for-profit organisation dedicated to promoting Safety and Quality in Everyday Endoscopic Practice.</p>
