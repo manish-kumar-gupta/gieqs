@@ -598,6 +598,43 @@ public function returnProgrammesAsset($assetid)
 
         }
 
+        public function getAssetTypeAsset($asset_id)
+            {
+            
+
+                $q = "Select 
+                `asset_type`
+                FROM `assets_paid`
+                WHERE `id` = '$asset_id'";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows == 1) {
+
+                while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+					$rowReturn = $row['asset_type'];
+
+
+				}
+
+				return $rowReturn;
+
+            } else {
+                
+
+                return false;
+            }
+
+        }
+
         public function getAssetid($subscription_id)
             {
             
@@ -5128,6 +5165,59 @@ if ($debug){
 
 
 
+    }
+
+    
+
+
+    public function returnAdvertisedAssets($asset_type, $debug=false){
+
+
+        $q = "Select `id`, `name` FROM `assets_paid` WHERE (`asset_type` = '$asset_type') AND (`advertise_for_purchase` IS NULL OR `advertise_for_purchase` = '1')";
+
+        
+    
+    
+    if ($debug){
+        echo $q . '<br><br>';
+    
+    }
+    
+    $result = $this->connection->RunQuery($q);
+    
+    $x = 0;
+    $nRows = $result->rowCount();
+    
+    if ($nRows > 0) {
+    
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+    
+            $rowReturn[$x] = ['id'=>$row['id'], 'name'=>$row['name']];
+            $x++;
+    
+    
+        }
+    
+        if ($debug){
+    
+            print_r($rowReturn);
+        }
+    
+        return $rowReturn;
+    
+    } else {
+        
+    
+        if ($debug){
+    
+            echo 'no advertised courses in this ('. $asset_type.  ') category are subscribable';
+        }
+    
+        return false;
+    
+        
+    }
+    
     }
 
 

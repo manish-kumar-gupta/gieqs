@@ -366,9 +366,20 @@ font-weight: 300 !important;
 
                     <div class="col-12 p-3 pb-1">
                         <span class="h1" style="color: rgb(238, 194, 120);"><?php echo $assets_paid->getName(); ?><br /></span>
+
+                        <?php if ($assetManager->getAssetTypeAsset($assets_paid->getid()) == '2' || $assetManager->getAssetTypeAsset($assets_paid->getid()) == '3'){?>
                         <span class="h3 mt-4" style="color: rgb(238, 194, 120);"><?php echo 'Live :  ' . $humanReadableProgrammeDate;?></span>
                         <span class="h3" style="color: rgb(238, 194, 120);"><?php echo ', ' . $humanStartTime . ' - ' . $humanEndTime;?> <br/>on Demand
                             thereafter<br /></span>
+
+
+                        <?php }else if ($assetManager->getAssetTypeAsset($assets_paid->getid()) == '4'){ ?>
+
+
+                            <span class="h3 mt-4" style="color: rgb(238, 194, 120);">Premium Content Pack</span>
+
+
+                        <?php } ?>
 
                             <div class="d-flex justify-content-center container pt-2">
             <div class="d-flex flex-column m-2">
@@ -384,11 +395,16 @@ font-weight: 300 !important;
             <?php }?>
             </div>
             </div>
-                        <a href="#targetScrollProgramme" id="wednesdayTop"
+
+            <?php if ($assetManager->getAssetTypeAsset($assets_paid->getid()) == '2' || $assetManager->getAssetTypeAsset($assets_paid->getid()) == '3'){?>
+                <a href="#targetScrollProgramme" id="wednesdayTop"
                             class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 scroll-me">
                             <span class="btn-inner--text text-dark">View Programme</span>
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         </a>
+
+                        <?php } ?>
+                        
 
                         <?php 
                         
