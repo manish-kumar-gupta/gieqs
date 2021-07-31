@@ -1716,6 +1716,166 @@ public function returnEmails($users)
 	
 	
 		}
+
+		public function returnRecentCoinTransactionUser($userid, $debug=false){
+
+			//if superuser return ok
+
+			//modified for PREMIUM vs PRO
+
+			
+	
+			
+	
+			//if the user has had activity within 15 minutes deny second attempt
+			//unless logged out (logout in sessionid)
+	
+			
+			//15 mins ago
+	
+	
+			//$q = "SELECT count(`id`) as `count` FROM `userActivity` WHERE `user_id` = '$userid' AND `activity_time` > '$sqltimestamp' AND `session_id` <> '99'";
+			$q = "SELECT `id`, `session_id` FROM `userActivity` WHERE `user_id` = '$userid' AND `session_id` LIKE 'TEMP_COIN%%%'";
+	
+
+			if ($debug == true){
+			echo $q;
+			}
+	
+			$result = $this->connection->RunQuery($q);
+	
+							
+				$nRows = $result->rowCount();
+	
+				while($row = $result->fetch(PDO::FETCH_ASSOC)){
+	
+					//$count = $row['count'];
+					$id = $row['id'];
+					$transaction_id = $row['session_id'];
+	
+	
+				}
+	
+				//echo $count;
+				
+				if ($nRows > 0){
+	
+					$transaction_id = preg_replace('/[^0-9]/', '', $transaction_id);
+
+					$returnArray = ['transaction_id' => $transaction_id, 'id' => $id];
+
+					
+					
+					return $returnArray;
+	
+					
+				}else{
+	
+					return false; // allow login
+				}
+	
+	
+		}
+
+		public function  generatePeekUserAsset ($asset_id, $userid, $utc_time, $debug=false) {
+
+			$date = new DateTime('now', new DateTimeZone('UTC'));
+			$sqltimestamp = date_format($date, 'Y-m-d H:i:s');
+
+			//New_userActivity($user_id,$session_id,$login_time,$activity_time)
+			$userActivity->New_userActivity($userid, 'PEEK ASSET_ID='. $asset_id, null, $sqltimestamp);
+			$userActivity->prepareStatementPDO();
+
+
+
+		}
+	
+		public function  didUserAlreadyPreviewAsset($assetid, $userid, $debug=false, $utc_time) {
+
+
+			//check it has happened
+	
+			$q = "SELECT `session_id` FROM `userActivity` WHERE `user_id` = '$userid' AND `session_id` LIKE 'PEEK ASSET_ID=&assetid'";
+	
+
+			if ($debug == true){
+			echo $q;
+			}
+	
+			$result = $this->connection->RunQuery($q);
+	
+							
+				$nRows = $result->rowCount();
+	
+				while($row = $result->fetch(PDO::FETCH_ASSOC)){
+	
+					//$count = $row['count'];
+					$status = $row['session_id'];
+	
+	
+				}
+	
+				//echo $count;
+				
+				if ($nRows > 0){
+	
+					$status = preg_replace('/[^0-9]/', '', $status);
+
+					return $status;
+	
+					
+				}else{
+	
+					return false; // allow login
+				}
+	
+			
+		}
+	
+		public function  valid_current_peek($assetid, $userid, $utc_time, $debug=false) {
+
+			//check it is registered and is currently valid
+	
+			$q = "SELECT `session_id` FROM `userActivity` WHERE `user_id` = '$userid' AND `session_id` LIKE 'PEEK ASSET_ID=&assetid'";
+	
+
+			if ($debug == true){
+			echo $q;
+			}
+	
+			$result = $this->connection->RunQuery($q);
+	
+							
+				$nRows = $result->rowCount();
+	
+				while($row = $result->fetch(PDO::FETCH_ASSOC)){
+	
+					//$count = $row['count'];
+					$status = $row['session_id'];
+	
+	
+				}
+	
+				//echo $count;
+				
+				if ($nRows > 0){
+	
+					$status = preg_replace('/[^0-9]/', '', $status);
+
+					return $status;
+	
+					
+				}else{
+	
+					return false; // allow login
+				}
+	
+			
+		}
+	
+	
+		
+	
 	
 
 	
