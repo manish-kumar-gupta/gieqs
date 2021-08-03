@@ -74,7 +74,7 @@ error_reporting(E_ALL);
 echo 'hello';
 
 
-
+/* 
 //GIVE COINS TO USER
 
 //get mysql date UTC
@@ -156,7 +156,7 @@ echo '<br/><br/><br/>';
 
 
 
-
+ */
 
 
 
@@ -181,6 +181,10 @@ echo '<br/><br/><br/>';
 
 $userid = 1;
 
+echo 'user with id ' . $userid . ' has ';
+echo $coin->current_balance($userid);
+echo ' coins <br/><br/>';
+
 //$amount_grant = 22;
 /* $coin_grant->New_coin_grant($sqltimestamp, $amount_grant, $userid);
 $coin_grant->prepareStatementPDO(); */
@@ -198,7 +202,89 @@ $asset_id = 6;
 
 $balance = $coin->current_balance($userid);
 
-if (($userFunctions->returnRecentCoinTransactionUser($userid, false)) === false){  ;//check if user already has an outstandng temp spend
+
+//returnRecentCoinTransactionUserAll
+//returns false if no recent transactions
+//returns an array of all transactions starting at 1 if were recent transactions
+//array[0]['count'] is number of recent transactions, we don't need this can count the array
+
+//returnRecentCoinTransactionUserSingle
+//returns false if none or more than 1
+//if one returns the transaction_id
+
+echo 'Debug >>>>>';
+/* print_r($userFunctions->returnRecentCoinTransactionUserSingle($userid, false));
+$singleArray = $userFunctions->returnRecentCoinTransactionUserAll($userid, false);
+var_dump($singleArray); */
+echo '<br/><br/>';
+echo 'Checking before any transaction';
+
+
+print_r($userFunctions->returnRecentCoinTransactionUserAll($userid, false));
+$totalArray = $userFunctions->returnRecentCoinTransactionUserAll($userid, false);
+var_dump($totalArray);
+
+if ($totalArray[0]['count'] > 0){
+
+    echo 'Detected ' .    $totalArray[0]['count']. ' unfulfilled coin transactions';
+    echo 'These should be deleted first';
+
+    foreach ($totalArray as $key=>$value){
+
+        if ($key > 0){
+
+
+            if (is_array($value)){
+
+                //use id
+                //then delete the required useractivity
+
+                echo 'we detected a recent transaction with id ' . $value['transaction_id'];
+
+                //TODO
+                //could check here if wqs previously reversed
+
+                $userActivity->Load_from_key($value['id']);
+                $userActivity->setsession_id('CANCELLED_COIN_FROM_TEMP ' . $value['transaction_id']);
+                echo $userActivity->prepareStatementPDOUpdate();
+                echo ' this record in useractivity was renamed';
+                echo 'the coin transaction was reversed and credits applied to the user account';
+
+                //get the transaction
+                $coin_spend->Load_from_key($value['transaction_id']);
+                
+                
+                //get the amount
+                $transaction_amount = $coin_spend->getamount();
+
+                //make a new transaction crediting this amount
+                $coin_grant->New_coin_grant($sqltimestamp, $transaction_amount, $userid);
+                $new_grant_id = $coin_grant->prepareStatementPDO();
+                $userActivity->New_userActivity($userid, 'REFUND_COIN ' . $new_grant_id , '', $sqltimestamp);
+                $userActivity->prepareStatementPDO();
+
+
+            }else{
+
+                echo 'no array  passed';
+            }
+        }
+
+
+    }
+
+
+}else{
+
+    echo '<br/><br/>No outstanding coin transactions detected';
+}
+echo '<br/><br/>';
+echo 'Debug >>>>>';
+
+
+
+
+if (($userFunctions->returnRecentCoinTransactionUserSingle($userid, false)) === false){  ;//check if user already has an outstandng temp spend
 
 
 echo 'User '. $userid . ' currently has ' . $balance . ' coins remaining';
@@ -228,11 +314,35 @@ if ($balance >= $amount_spend){
     $userActivity->New_userActivity($userid, 'TEMP_COIN ' . $transaction_id , '', $sqltimestamp);
     $userActivity->prepareStatementPDO();
 
-    //get back that there has been a temporary transaction
+    if ($debug){
+
+        echo 'Spend recorded in useractivity';
+    }
+
+   //die();
+
+}else{
+    
+    echo 'Recent temporary transaction detected that has not been finalised.  Should no longer occur.  Check with info@gieqs.com if you are seeing this message and we will make it right?';
+
+}
+
 
     
 
-    $transaction_id_check = $userFunctions->returnRecentCoinTransactionUser($userid, false);
+    //get back that there has been a temporary transaction
+
+
+    //TO MAKE DEFINNITIVE OR CANCEL
+    
+
+    $transaction_id_check = $userFunctions->returnRecentCoinTransactionUserSingle($userid, false);
+
+    echo 'check for recent transactions finds <br/>';
+    var_dump($transaction_id_check);
+    echo '<br/><br/>';
+    //the one most recent
+    //if more than one?
 
 
  /*    //to MAKE DEFINITIVE
@@ -254,7 +364,7 @@ if ($balance >= $amount_spend){
             }
  */
 
-//TO CANCEL
+        //TO CANCEL
 
             if ($transaction_id_check){
 
@@ -291,11 +401,7 @@ if ($balance >= $amount_spend){
 
 
 
-    }else{
     
-        echo 'Recent temporary transaction detected that has not been finalised.  How will we clear this up?';
-
-    }
 
 
 
