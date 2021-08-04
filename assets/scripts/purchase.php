@@ -52,10 +52,10 @@ $coin = new coin;
 
 ?>
 
-                        <a class="btn btn-sm cursor-pointer bg-dark btn-icon rounded-pill hover-translate-y-n3 use-coin">
+                        <a class="btn btn-sm cursor-pointer bg-dark btn-icon rounded-pill hover-translate-y-n3 use-coin" id="asset_id_coin_button">
                             <span class="btn-inner--icon">
                                 <img src="<?php echo BASE_URL . "/assets/img/icons/coin.svg"?>"
-                                    alt="use GIEQs Coin for this purcahse" height="24" width="24" />
+                                    alt="use GIEQs Coin for this purchase" height="24" width="24" />
                             </span>
                             <span class="btn-inner--text gieqsGold">Use GIEQs Coin</span>
                         </a>
@@ -141,9 +141,13 @@ $coin = new coin;
 
         ?>
     <div class="modal-footer">
-        <button type="button" class="btn btn-sm btn-white" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-sm btn-white cancel-button" data-dismiss="modal">Cancel</button>
         <form id="confirm-new" action="<?php echo $form_action_path;?>" method="POST">
             <input type="hidden" id="asset_id_hidden" name="asset_id" value="">
+            <input type="hidden" id="gieqs_coin_used" name="gieqs_coin_used" value="false">
+            <input type="hidden" id="gieqs_coin_used_amount" name="gieqs_coin_used_amount" value="0">
+
+
             <!-- <input type="hidden" id="course_date" name="course_date"
                 value="<?php //echo date_format($programmeDate, "Y-m-d H:i:s");?>"> -->
             <!-- CHANGE ME UPDATE TODO MAKE THIS COME FROM THE PROGRAM -->
@@ -173,6 +177,49 @@ if ($userid){
 }
 
 ?>
+
+<!--new modal for entering amount of GIEQs Coin to use-->
+
+<div class="modal modal-specify-gieqscoin fade" id="specify-gieqscoin" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Use GIEQs Coin to Pay for this Content.</h5>
+                
+                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            <h6> You have <?php echo $coin->current_balance($userid);?> coins remaining</h6>
+            <div class="d-none" id="coins_remaining"><?php echo $coin->current_balance($userid);?></div>
+            <h6> Item Cost : &euro;&nbsp;<span id="asset_cost"></span></h6>
+
+            <form id="coins-spend">
+            <div class="form-group">
+    <input id="number_coins" name="number_coins" type="text" class="form-control" placeholder="Enter the number of coins to use for this item (whole number)">
+</div>
+</form>
+               <!--  <p>Would you like to upgrade to GIEQs <strong>STANDARD</strong> or <strong>PRO?</strong></p>
+                <p><a
+                        class="key-features cursor-pointer btn-sm bg-gieqsGold btn-icon rounded-pill hover-translate-y-n3 mt-5">
+                        <span class="btn-inner--icon">
+                            <i class="fas fa-fire text-dark"></i>
+                        </span>
+                        <span class="btn-inner--text text-dark">Show Key Features</span>
+                    </a></p> -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+                <!-- <button type="button" class="btn btn-dark" onclick="launchSubscriptionDialog(1);">get STANDARD</button> -->
+                <button type="button" id="spend-coins" class="btn btn-dark gieqsGold"><span id="coin-spinner" class="spinner-border mr-2" style="display:none;" role="status" aria-hidden="true"></span>Spend Coins</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!--new modal for pro, premium-->
 <!-- Modal -->
@@ -381,7 +428,7 @@ switch (true) {
         break;
 }
 
-
+var max_cost = 0;
 
 var siteRoot2 = rootFolder2;
 
@@ -433,9 +480,20 @@ var stripe = Stripe(
     "pk_test_51IsKqwEBnLMnXjogDG3ebg9q8KEVEbKtvHai719tJNPGsr9i77V4OdSYtPiBS1Y8bd4rknYYyAUkJ1sDweS2ubdF00GDL2mLNn");
 
 
+    function isInt(value) {
+  return !isNaN(value) && (function(x) { return (x | 0) === x; })(parseFloat(value))
+}
+
+function useGIEQsCoin(asset_id_specific){
+
+    //alert('click');
+    $('.modal-new').modal('hide');
+    
+    $('.modal-specify-gieqscoin').modal('show');
+    $('.modal-specify-gieqscoin #asset_cost').text(asset_id_specific);
 
 
-function useGIEQsCoin(){
+    console.log(asset_id_specific);
 
     //when clicking on use GIEQs coin $('.use-coin').click()
 
@@ -459,6 +517,106 @@ function useGIEQsCoin(){
 
 
 }
+
+function performCoinTransaction(){
+
+
+    //get the object from  the validated form
+
+    var amount = $('#number_coins').val();
+
+    const dataToSend2 = {
+
+    amount: amount,
+    asset_id: asset_id,
+
+    }
+
+    $('#spend-coins').attr('disabled', true);
+    $('#coin-spinner').show();
+
+
+    //first check that user type is filled
+
+    const jsonString2 = JSON.stringify(dataToSend2);
+
+    var request3 = $.ajax({
+    url: rootFolder2 +
+        "pages/learning/scripts/coin/coin_transact.php",
+    type: "POST",
+    contentType: "application/json",
+    data: jsonString2,
+
+    timeout: 5000,
+    fail: function(xhr, textStatus, errorThrown) {
+        alert(
+            'Something went wrong. Please try that again.'
+        );
+        $(button).find('i').remove();
+        $(button).attr('disabled', false);
+    }
+    });
+
+    request3.done(function(data) {
+
+
+        data = data.trim();
+        var result = JSON.parse(data);
+        console.dir(result);
+
+        //var originalCost = $('.modal-new #cost').text();
+        originalCost = parseInt(result.cost);
+        paidInCoin = parseInt(result.spend);
+
+
+        $('.modal-specify-gieqscoin').modal('hide');
+
+        $('.modal-new #cost').text(originalCost - paidInCoin  + ' euro remaining after GIEQs Coin Use');
+        $('.modal-new .cancel-button').removeAttr('data-dismiss');
+
+        $('.modal-new .cancel-button').addClass('cancel-coin');
+
+        if (paidInCoin > 0){
+
+        $('.modal-new #gieqs_coin_used_amount').val(result.spend);
+        $('.modal-new #gieqs_coin_used').val(true);
+
+        }
+
+
+
+
+        
+        //disable use GIEQs Coin button
+
+        $('.modal-new .use-coin').hide();
+
+
+        //add a hidden field for spend
+
+
+
+        //add a hidden field that GIEQs Coin Used
+        //prevent cancel without roll-back
+        //if press cancel refresh but ask first
+
+
+        $('.modal-new').modal('show');
+
+
+
+
+        //need to edit the amount in the other dialog
+        //and record that there was a coin transaction so that it was reduced
+
+
+    })
+
+    return request3;
+
+    //must return response
+}
+ 
 
 function launchSubscriptionDialog(subscriptionType) {
 
@@ -954,6 +1112,11 @@ $(document).ready(function() {
                     $('.modal-new #renew-frequency').text(externalTest.renew_frequency);
                     $('.modal-new #asset-description').text(externalTest.description);
                     $('.modal-new #asset_id_hidden').val(externalTest.asset_id);
+                    $('.modal-new #asset_id_coin_button').attr('asset-id', externalTest.cost);
+
+                    //var a global max cost asset for the coin use
+                    max_cost = externalTest.cost;
+
                     $('.modal-new #cost').text(externalTest.cost + ' euro');
 
 
@@ -1140,11 +1303,181 @@ $(document).ready(function() {
 
     });
 
+    $(document).on('click', '#spend-coins', function(event) {
+
+event.preventDefault();
+$('#coins-spend').submit();
+
+})
+
+$.validator.addMethod("maximum", function (value, element, desired) {
+
+    console.log(value);
+    console.log(desired);
+    console.log(parseInt(max_cost));
+    var coins_remaining = parseInt($('#coins_remaining').text());
+    console.log(coins_remaining);
+
+
+if (value <= parseInt(coins_remaining) && value <= parseInt(max_cost) && value > 0 && isInt(value)) {
+    console.log('true returned');
+
+    return true;
+} else {
+    console.log('false returned');
+
+    return false;
+}
+
+});
+/* 
+$.validator.addMethod("coins_remaining", function (value, element, desired) {
+
+console.log(value);
+console.log(desired);
+var coins_remaining = parseInt($('#coins_remaining').text());
+console.log(coins_remaining);
+
+if (value <= parseInt(coins_remaining) && value >= 0 && isInt(value)) {
+console.log('true returned');
+
+return true;
+} else {
+console.log('false returned');
+
+return false;
+}
+
+}); */
+
+$("#coins-spend").validate({
+
+invalidHandler: function(event, validator) {
+    var errors = validator.numberOfInvalids();
+    console.log("there were " + errors + " errors");
+    if (errors) {
+        var message = errors == 1 ?
+            "1 field contains errors. It has been highlighted" :
+            +errors + " fields contain errors. They have been highlighted";
+
+
+        $('#error').text(message);
+        //$('div.error span').addClass('form-text text-danger');
+        //$('#errorWrapper').show();
+
+        $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function() {
+            $("#errorWrapper").slideUp(500);
+        });
+    } else {
+        $('#errorWrapper').hide();
+    }
+},
+rules: {
+    
+
+    number_coins: {
+        required: true,
+        maximum: true,
+
+
+    },
+
+    
+
+
+
+},
+messages: {
+
+
+
+    number_coins: {
+        required: 'Please enter an amount of coins',
+        maximum: 'Please enter a valid amount of GIEQs Coin to spend on this product.  The amount of GIEQs Coin must be a whole number and be available in your account.',
+
+
+    },
+    
+},
+submitHandler: function(form) {
+
+    
+
+    console.log("submitted coin form");
+    performCoinTransaction();
+
+
+
+}
+
+});
+
     $(document).on('click', '.editSessionFromPlan', function(event) {
 
         event.preventDefault();
         var sessionid = $(this).attr('data');
         window.open(siteRoot2 + "/pages/backend/sessionview.php?identifier=" + sessionid, '_blank');
+
+
+    })
+    
+    $(document).on('click', '.use-coin', function(event) {
+
+        var asset_id_specific = $(this).attr('asset-id');
+        event.preventDefault();
+        useGIEQsCoin(asset_id_specific);
+
+
+    })
+
+    $(document).on('click', '.cancel-coin', function(event) {
+
+    event.preventDefault();
+    
+        $(this).attr('disabled', true);
+    if (confirm("Are you sure?  You already committed GIEQs Coin to this product.  If you cancel that transation will be reversed and the coins returned to your account.")) {
+
+
+        var request3 = $.ajax({
+    url: rootFolder2 +
+        "pages/learning/scripts/coin/coin_transact_reverse.php",
+    type: "POST",
+    contentType: "application/json",
+    data: '',
+
+    timeout: 5000,
+    fail: function(xhr, textStatus, errorThrown) {
+        alert(
+            'Something went wrong. Please try that again.'
+        );
+        
+    }
+    });
+
+    request3.done(function(data) {
+
+        data = data.trim();
+        var result = JSON.parse(data);
+        console.dir(result);
+
+        if (result.outcome == true){
+
+            location.reload();
+
+
+        }
+    
+
+    })
+
+
+
+    }else{
+
+
+
+
+    }
 
 
     })

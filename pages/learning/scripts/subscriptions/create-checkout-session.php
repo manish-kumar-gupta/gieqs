@@ -31,6 +31,9 @@ $assets_paid = new assets_paid;
 require_once(BASE_URI . '/assets/scripts/classes/subscriptions.class.php');
 $subscription = new subscriptions;
 
+require_once BASE_URI . '/assets/scripts/classes/userFunctions.class.php';
+$userFunctions = new userFunctions;
+
 
 require_once BASE_URI . "/vendor/autoload.php";
 error_reporting(E_ALL);
@@ -50,7 +53,14 @@ error_reporting(E_ALL);
 $debug = false;
 
 $data = json_decode(file_get_contents('php://input'), true);
-//print_r($data);
+
+if ($debug){
+
+print_r($data);
+die();
+
+
+}
 
 if (isset($data['subscription_id'])){
 
@@ -67,6 +77,29 @@ if (isset($data['asset_id'])){
 
         echo 'asset id set';
     }
+
+
+}
+
+if (isset($data['gieqs_coin_used'])){
+
+    $coin_used = $data['gieqs_coin_used'];
+
+
+}else{
+
+    $coin_used = false;
+
+}
+
+if (isset($data['gieqs_coin_used_amount'])){
+
+    $coin_amount = $data['gieqs_coin_used_amount'];
+
+
+}else{
+
+    $coin_amount = 0;
 
 
 }
@@ -204,7 +237,36 @@ if (isset($subscription_id)){
         //need to check that it is ending soon
         //need to set renewal date for new subscription the number of days remaining +
 
-        $stripe_cost = intval($subscription_to_return['cost']) * 100;
+
+        if ($coin_used == true){
+
+            $totalArray = $userFunctions->returnRecentCoinTransactionUserAll($userid, false);
+            if ($totalArray[0]['count'] > 0){
+    
+                //there is a pending transact
+                $stripe_cost = (intval($subscription_to_return['cost']) - intval($coin_amount)) * 100;
+    
+    
+    
+            }else{
+    
+                if ($debug){
+    
+                    echo 'No pending transaction so aborted, error to report';
+                    die();
+                }
+            }
+    
+            }else{
+    
+                //not using coin
+                $stripe_cost = intval($subscription_to_return['cost']) * 100;
+
+                //deal with the issue of zero
+    
+    
+            }
+
 
         $checkout_session = \Stripe\Checkout\Session::create([
             'payment_method_types' => ['card'],
@@ -221,6 +283,9 @@ if (isset($subscription_id)){
             ]],
             'metadata' => [
                 'subscription_id' => $newSubscriptionid,
+                'coin_used' => $coin_used,
+                'coin_amount' => $coin_amount,
+
 
             ],
             'mode' => 'payment',
@@ -229,6 +294,8 @@ if (isset($subscription_id)){
           ]);
           
           //print_r($checkout_session);
+
+         //TODO change cancel url to delete coin transaction first 
           
           echo json_encode(['id' => $checkout_session->id]);
     
@@ -325,8 +392,36 @@ if (isset($subscription_id)){
     
         $newSubscriptionid = $subscription->prepareStatementPDO();
 
+        //modify for coin
+        //check an outstanding transact
 
-        $stripe_cost = intval($subscription_to_return['cost']) * 100;
+        if ($coin_used == true){
+
+        $totalArray = $userFunctions->returnRecentCoinTransactionUserAll($userid, false);
+        if ($totalArray[0]['count'] > 0){
+
+            //there is a pending transact
+            $stripe_cost = (intval($subscription_to_return['cost']) - intval($coin_amount)) * 100;
+
+
+
+        }else{
+
+            if ($debug){
+
+                echo 'No pending transaction so aborted, error to report';
+                die();
+            }
+        }
+
+        }else{
+
+            //not using coin
+            $stripe_cost = intval($subscription_to_return['cost']) * 100;
+
+
+        }
+
 
     
     
@@ -345,6 +440,8 @@ if (isset($subscription_id)){
             ]],
             'metadata' => [
                 'subscription_id' => $newSubscriptionid,
+                'coin_used' => $coin_used,
+                'coin_amount' => $coin_amount,
 
             ],
             'mode' => 'payment',

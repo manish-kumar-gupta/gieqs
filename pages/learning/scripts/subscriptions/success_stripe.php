@@ -35,6 +35,21 @@ $subscription = new subscriptions;
 require_once(BASE_URI . '/assets/scripts/classes/userActivity.class.php');
 $userActivity = new userActivity;
 
+require_once BASE_URI . '/assets/scripts/classes/userFunctions.class.php';
+$userFunctions = new userFunctions;
+
+
+require_once BASE_URI . '/assets/scripts/classes/coin.class.php';
+$coin = new coin;
+
+
+require_once BASE_URI . '/assets/scripts/classes/coin_grant.class.php';
+$coin_grant = new coin_grant;
+
+
+require_once BASE_URI . '/assets/scripts/classes/coin_spend.class.php';
+$coin_spend = new coin_spend;
+
 
 if ($debug){
 
@@ -439,6 +454,49 @@ if ($debug){
 
     echo PHP_EOL;
     print_r($emailVaryarray);
+
+}
+
+//PRIOR TO MAIL SEND UPDATE THE COIN STATUS IF PRESENT
+//MAKE DEFINITIVE
+
+if ($session['metadata']['coin_used'] == true){
+
+    $transaction_id_check = $userFunctions->returnRecentCoinTransactionUserSingle($userid, false);
+
+    echo 'check for recent transactions finds <br/>';
+    var_dump($transaction_id_check);
+    echo '<br/><br/>';
+   
+
+    //to MAKE DEFINITIVE
+            if ($transaction_id_check){
+
+                //use id
+                //then delete the required useractivity
+
+                if ($debug){
+                echo 'we detected a recent transaction with id ' . $transaction_id_check['transaction_id'];
+                }
+                $userActivity->Load_from_key($transaction_id_check['id']);
+                $userActivity->setsession_id('DEFINITIVE_COIN_FROM_TEMP ' . $transaction_id_check['transaction_id']);
+                $userActivity->prepareStatementPDOUpdate();
+                
+                if ($debug){
+                echo ' this record in useractivity was renamed';
+
+                }
+
+            }else{
+
+                if ($debug){
+
+                echo 'no recent transaction to make definitive.  This is a problem!';
+
+                }
+            }
+
+
 
 }
 
