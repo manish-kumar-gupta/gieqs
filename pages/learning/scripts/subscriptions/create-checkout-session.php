@@ -57,7 +57,7 @@ $data = json_decode(file_get_contents('php://input'), true);
 if ($debug){
 
 print_r($data);
-die();
+//die();
 
 
 }
@@ -84,6 +84,12 @@ if (isset($data['asset_id'])){
 if (isset($data['gieqs_coin_used'])){
 
     $coin_used = $data['gieqs_coin_used'];
+
+    if ($debug){
+
+        var_dump($coin_used);
+        //die();
+    }
 
 
 }else{
@@ -153,6 +159,11 @@ $YOUR_DOMAIN = BASE_URL;
 error_reporting(E_ALL);
 
 
+//get cost of asset
+//and if gieqs coin used //redirect to the free script without stripe
+
+
+
 
 
 if (isset($subscription_id)){
@@ -190,6 +201,78 @@ if (isset($subscription_id)){
         $assets_paid->Load_from_key($subscription_to_return['asset_id']);
     
         $subscription_to_return['cost'] = $assets_paid->getcost();
+
+        //if coin used
+
+        //$debug = true;
+
+        if ($coin_used == 'true'){
+
+            $totalArray = $userFunctions->returnRecentCoinTransactionUserAll($userid, false);
+            if ($totalArray[0]['count'] > 0){
+
+                //and there is a pending transaction
+
+                //get cost of asset
+
+                $cost = $assets_paid->getcost();
+                
+
+                if (intval($cost) == intval($coin_amount)){
+
+                    //total payment with coin
+                    //redirect to free version
+
+                    if ($debug){
+
+                        echo 'Total amount paid in coin is the same as asset so redirecting to free version';
+                    }
+
+                    require(BASE_URI . '/pages/learning/scripts/subscriptions/generate_free_subscription.php');
+                    die();
+
+                }else{
+
+                    if ($debug){
+
+                        echo 'Total amount paid in coin is not the same as asset';
+                    }
+
+                }
+
+    
+                //there is a pending transact
+               // $stripe_cost = (intval($subscription_to_return['cost']) - intval($coin_amount)) * 100;
+    
+    
+    
+            }else{
+    
+                if ($debug){
+    
+                    echo 'No pending transaction so paid version used';
+                    //die();
+                }
+            }
+    
+        }else{
+    
+                //not using coin
+               // $stripe_cost = intval($subscription_to_return['cost']) * 100;
+    
+    
+        }
+
+        if ($debug){
+
+            //die();
+        }
+    
+
+
+
+
+
         $subscription_to_return['description'] = $assets_paid->getdescription();
         $subscription_to_return['renew_frequency'] = $assets_paid->getrenew_frequency();
     
@@ -257,7 +340,7 @@ if (isset($subscription_id)){
         //need to set renewal date for new subscription the number of days remaining +
 
 
-        if ($coin_used == true){
+        if ($coin_used == 'true'){
 
             $totalArray = $userFunctions->returnRecentCoinTransactionUserAll($userid, false);
             if ($totalArray[0]['count'] > 0){
@@ -350,6 +433,65 @@ if (isset($subscription_id)){
     $subscription_to_return['renew_frequency'] = $assets_paid->getrenew_frequency();
     
     $subscription_to_return['user_id'] = $userid;
+
+    if ($coin_used == 'true'){
+
+        $totalArray = $userFunctions->returnRecentCoinTransactionUserAll($userid, false);
+        if ($totalArray[0]['count'] > 0){
+
+            //and there is a pending transaction
+
+            //get cost of asset
+
+            $cost = $assets_paid->getcost();
+            
+
+            if (intval($cost) == intval($coin_amount)){
+
+                //total payment with coin
+                //redirect to free version
+
+                if ($debug){
+
+                    echo 'Total amount paid in coin is the same as asset so redirecting to free version';
+                }
+
+                error_reporting(E_ALL);
+                
+                require(BASE_URI . '/pages/learning/scripts/subscriptions/generate_free_subscription.php');
+                die();
+
+            }else{
+
+                if ($debug){
+
+                    echo 'Total amount paid in coin is not the same as asset';
+                }
+
+            }
+
+
+            //there is a pending transact
+           // $stripe_cost = (intval($subscription_to_return['cost']) - intval($coin_amount)) * 100;
+
+
+
+        }else{
+
+            if ($debug){
+
+                echo 'No pending transaction so paid version used';
+                //die();
+            }
+        }
+
+    }else{
+
+            //not using coin
+           // $stripe_cost = intval($subscription_to_return['cost']) * 100;
+
+
+    }
     
     //make a new subscription
     
@@ -414,7 +556,7 @@ if (isset($subscription_id)){
         //modify for coin
         //check an outstanding transact
 
-        if ($coin_used == true){
+        if ($coin_used == 'true'){
 
         $totalArray = $userFunctions->returnRecentCoinTransactionUserAll($userid, false);
         if ($totalArray[0]['count'] > 0){

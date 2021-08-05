@@ -64,7 +64,7 @@ $mail = new PHPMailer;
 
 
 
-$debug = false;
+$debug = true;
 
 if ($debug){
 
@@ -119,6 +119,15 @@ if (!isset($subscription_id) && !isset($asset_id)){
     }
 
     die();
+}
+
+if (isset($coin_used)){
+
+
+
+}else{
+
+    $coin_used = false;
 }
 
 
@@ -209,7 +218,39 @@ $subscription_to_return['user_id'] = $userid;
 
     //check there are tokens remaining for this asset
 
+    if ($coin_used){
 
+        if ($debug){
+
+            echo 'detected gieqs coin used so no need to check tokens';
+        }
+
+    
+    
+
+    }else{
+
+
+        if ($debug){
+
+            echo 'did not detect gieqs coin used so check tokens';
+        }
+
+        if ($assetManager->checkTokensRemainingAsset($asset_id, false) == true){
+
+            $subscription->New_subscriptions($userid, $subscription_to_return['asset_id'], $current_date_sqltimestamp, $end_date_sqltimestamp, '1', '0', 'TOKEN SUBSCRIPTION NO PAYMENT');
+    
+    
+        }else{
+    
+            echo 'Error, no tokens remaining for this asset.  Please contact us and quote this error';
+            die();
+    
+
+        
+        }
+
+    }
 
 
 
