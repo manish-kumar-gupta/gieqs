@@ -92,6 +92,25 @@ if (isset($data['gieqs_coin_used'])){
 
 }
 
+if (isset($data['currentPage'])){
+
+    $current_page = base64_encode($data['currentPage']);
+
+    
+
+    if ($debug){
+
+        echo $current_page;
+        //die();
+    }
+
+
+}else{
+
+    $current_page = false;
+
+}
+
 if (isset($data['gieqs_coin_used_amount'])){
 
     $coin_amount = $data['gieqs_coin_used_amount'];
@@ -290,7 +309,7 @@ if (isset($subscription_id)){
             ],
             'mode' => 'payment',
             'success_url' => $YOUR_DOMAIN . '/pages/learning/scripts/subscriptions/success_stripe.php?session_id={CHECKOUT_SESSION_ID}',
-            'cancel_url' => $YOUR_DOMAIN . $data['currentPage'] . '&action=register',
+            'cancel_url' => $YOUR_DOMAIN . '/pages/learning/scripts/subscriptions/cancel_stripe.php?url=' . $current_page,
           ]);
           
           //print_r($checkout_session);
@@ -446,10 +465,13 @@ if (isset($subscription_id)){
             ],
             'mode' => 'payment',
             'success_url' => $YOUR_DOMAIN . '/pages/learning/scripts/subscriptions/success_stripe.php?session_id={CHECKOUT_SESSION_ID}',
-            'cancel_url' => $YOUR_DOMAIN . $data['currentPage'] . '&action=register',
+            'cancel_url' => $YOUR_DOMAIN . '/pages/learning/scripts/subscriptions/cancel_stripe.php?url=' . $current_page,
+
           ]);
           
           //print_r($checkout_session);
+          //            'cancel_url' => $YOUR_DOMAIN . $data['currentPage'] . '&action=register',
+
           
           echo json_encode(['id' => $checkout_session->id]);
 
