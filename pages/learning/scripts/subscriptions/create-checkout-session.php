@@ -1,4 +1,5 @@
 <?php
+ob_start();
 $openaccess = 1;
 
 //$requiredUserLevel = 6;
@@ -222,14 +223,22 @@ if (isset($subscription_id)){
 
                     //total payment with coin
                     //redirect to free version
+                    //should not be in this script
 
                     if ($debug){
 
                         echo 'Total amount paid in coin is the same as asset so redirecting to free version';
+                        echo 'Now in a separate script, if here error, so abort';
+                        
                     }
 
-                    require(BASE_URI . '/pages/learning/scripts/subscriptions/generate_free_subscription.php');
                     die();
+                    /* require(BASE_URI . '/pages/learning/scripts/subscriptions/generate_free_subscription_coin.php');
+                    require(BASE_URI . '/assets/scripts/individualMailerGmailAPIPHPMailer.php');
+
+                    header("Location: $page");
+
+                    die(); */
 
                 }else{
 
@@ -454,11 +463,10 @@ if (isset($subscription_id)){
                 if ($debug){
 
                     echo 'Total amount paid in coin is the same as asset so redirecting to free version';
+                    echo 'Now in a separate script, if here error, so abort';
+                    
                 }
 
-                error_reporting(E_ALL);
-                
-                require(BASE_URI . '/pages/learning/scripts/subscriptions/generate_free_subscription.php');
                 die();
 
             }else{

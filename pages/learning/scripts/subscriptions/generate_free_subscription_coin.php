@@ -36,7 +36,6 @@ require_once(BASE_URI . '/assets/scripts/classes/assets_paid.class.php');
 $assets_paid = new assets_paid;
 
 
-
 require_once(BASE_URI . '/assets/scripts/classes/subscriptions.class.php');
 $subscription = new subscriptions;
 
@@ -64,12 +63,14 @@ $mail = new PHPMailer;
 
 
 
-$debug = true;
+$debug = false;
 
 if ($debug){
 
     error_reporting(E_ALL);
+    //var_dump($GLOBALS);
 }
+
 
 function get_include_contents($filename, $variablesToMakeLocal) {
     extract($variablesToMakeLocal);
@@ -81,18 +82,24 @@ function get_include_contents($filename, $variablesToMakeLocal) {
     return false;
 }
 
-print_r($_POST);
+$data = json_decode(file_get_contents('php://input'), true);
 
-if (isset($_POST['subscription_id'])){
+if ($debug){
 
-    $subscription_id = $_POST['subscription_id'];
+print_r($data);
+
+}
+
+if (isset($data['subscription_id'])){
+
+    $subscription_id = $data['subscription_id'];
 
 
 }
 
-if (isset($_POST['asset_id'])){
+if (isset($data['asset_id'])){
 
-    $asset_id = $_POST['asset_id'];
+    $asset_id = $data['asset_id'];
 
 
 }
@@ -121,14 +128,7 @@ if (!isset($subscription_id) && !isset($asset_id)){
     die();
 }
 
-if (isset($coin_used)){
-
-
-
-}else{
-
-    $coin_used = false;
-}
+$coin_used = true;
 
 
 
@@ -143,14 +143,19 @@ $subscription_to_return = array();
 
 if ($assetManager->doesUserHaveSameAssetAlready($asset_id, $userid, false)){ //if a subscription to this asset already exists
 
-    echo 'You already own this asset and it is active, so you can\'t purchase it again';
+    echo 'You already own this asset and it is active, so you can\'t purchase it again. <br/>';
     echo 'Return <a href="www.gieqs.com">home</a>';
+    $returnArray['error'] = 1;    
+    echo json_encode($returnArray);
+
+    die();
 
 }
 
 
 
 $assets_paid->Load_from_key($asset_id);
+
 
 
 $subscription_to_return['asset_name'] = $assets_paid->getname();
@@ -185,11 +190,11 @@ $subscription_to_return['user_id'] = $userid;
         $timezone = 'UTC';
     }
 
-    if (isset($_POST['course_date'])){
+    if (isset($data['course_date'])){
 
-        $course_date = new DateTime($_POST['course_date'], new DateTimeZone('UTC'));
+        $course_date = new DateTime($data['course_date'], new DateTimeZone('UTC'));
 
-        //$end_start_calculate_date = new DateTime($_POST['course_date'], new DateTimeZone('UTC'));
+        //$end_start_calculate_date = new DateTime($data['course_date'], new DateTimeZone('UTC'));
 
         if ($current_date >= $course_date){
 
@@ -225,8 +230,16 @@ $subscription_to_return['user_id'] = $userid;
             echo 'detected gieqs coin used so no need to check tokens';
         }
 
-    
-    
+        $subscription->New_subscriptions($userid, $subscription_to_return['asset_id'], $current_date_sqltimestamp, $end_date_sqltimestamp, '1', '0', 'FULL COIN PAYMENT SUBSCRIPTION NO EURO PAYMENT');
+
+        if ($debug){
+        var_dump($subscription);
+
+        }
+
+        $newSubscriptionid = $subscription->prepareStatementPDO();
+
+
 
     }else{
 
@@ -239,6 +252,9 @@ $subscription_to_return['user_id'] = $userid;
         if ($assetManager->checkTokensRemainingAsset($asset_id, false) == true){
 
             $subscription->New_subscriptions($userid, $subscription_to_return['asset_id'], $current_date_sqltimestamp, $end_date_sqltimestamp, '1', '0', 'TOKEN SUBSCRIPTION NO PAYMENT');
+
+            $newSubscriptionid = $subscription->prepareStatementPDO();
+
     
     
         }else{
@@ -254,14 +270,14 @@ $subscription_to_return['user_id'] = $userid;
 
 
 
+
     //record which user is doing this in user activity
 
     //error if no tokens remaining
 
-    $newSubscriptionid = $subscription->prepareStatementPDO();
 
-    
-
+//working but sort out the interaction   
+//die();
 
 
     if ($newSubscriptionid > 0){
@@ -270,26 +286,29 @@ $subscription_to_return['user_id'] = $userid;
 
         //get the token id
 
-        $tokenid = $assetManager->getTokenid($asset_id);
+        //$tokenid = $assetManager->getTokenid($asset_id);
 
         $date = new DateTime('now', new DateTimeZone('UTC'));
 		$sqltimestamp = date_format($date, 'Y-m-d H:i:s');
 
 
         //New_userActivity($user_id,$session_id,$login_time,$activity_time)
-        $userActivity->New_userActivity($userid, 'TOKEN_PURCHASE TOKEN_ID='. $tokenid, null, $sqltimestamp);
+        $userActivity->New_userActivity($userid, 'GIEQS_COIN_PURCHASE_FULL ('. $subscription_to_return['cost'] . ' GIEQS COIN PAID) SUBSCRIPTION_ID_' . $newSubscriptionid, null, $sqltimestamp);
         
 		$userActivity->prepareStatementPDO();
 
+
+
+
         //decrease tokens by 1
 
-        $token->Load_from_key($tokenid);
-        $remaining = $token->getremaining();
+        //$token->Load_from_key($tokenid);
+        //$remaining = $token->getremaining();
 
-        $new_remaining = intval($remaining) - 1;
+        //$new_remaining = intval($remaining) - 1;
 
-        $token->setremaining($new_remaining);
-        $token->prepareStatementPDOUpdate();
+        //$token->setremaining($new_remaining);
+        //$token->prepareStatementPDOUpdate();
 
 
 
@@ -454,9 +473,9 @@ $subscription_to_return['user_id'] = $userid;
         $emailVaryarray['asset_type'] = $assetManager->getAssetTypeText($assetManager->getAssetType($subscription_id));
         $emailVaryarray['renew_frequency'] = $assets_paid->getrenew_frequency();
         $emailVaryarray['expiry_date'] = $end_date_user_readable;
-        $emailVaryarray['cost'] = '&euro; 0 via FREE CODE';
+        $emailVaryarray['cost'] = '&euro; 0 via GIEQS COIN ('. $subscription_to_return['cost'] . ' GIEQS COIN PAID)';
         $emailVaryarray['key'] = $users->getkey();
-        $emailVaryarray['gateway_transactionId'] = 'TOKEN SUBSCRIPTION NO PAYMENT';
+        $emailVaryarray['gateway_transactionId'] = 'FULL GIEQS COIN PAYMENT ('. $subscription_to_return['cost'] . ' GIEQS COIN PAID) SUBSCRIPTION NO EURO PAYMENT';
         $emailVaryarray['preheader'] = $preheader;
     
 
@@ -467,6 +486,9 @@ $subscription_to_return['user_id'] = $userid;
             print_r($emailVaryarray);
 
         }
+
+        //die();
+
 
         //$filename = '/assets/email/subscriptions/renewSubscriptionMail.php';
  
@@ -485,6 +507,8 @@ $subscription_to_return['user_id'] = $userid;
         $mime = rtrim(strtr(base64_encode($mime), '+/', '-_'), '=');
 
 
+
+        
         require(BASE_URI . '/assets/scripts/individualMailerGmailAPIPHPMailer.php');
 
         
@@ -496,9 +520,14 @@ $subscription_to_return['user_id'] = $userid;
         //redirect to page with positive outcome
 
         //$page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $subscription_id;
-        header("Location: $page");
-        die();
         
+        $returnArray['redirect'] = $page;
+        $returnArray['complete'] = true;
+
+        echo json_encode($returnArray);
+        
+        //header("Location: $page");
+        //die();
 
 
 
