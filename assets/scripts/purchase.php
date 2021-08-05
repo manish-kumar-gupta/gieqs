@@ -572,7 +572,7 @@ function performCoinTransaction(){
         $('.modal-specify-gieqscoin').modal('hide');
 
         $('.modal-new #cost').text(originalCost - paidInCoin  + ' euro remaining after GIEQs Coin Use');
-        $('.modal-new .cancel-button').removeAttr('data-dismiss');
+        $('.modal-new .cancel-button').addClass('cancel-coin');
         $('.modal-new .cancel-button').removeAttr('data-dismiss');
 
         //coin-only

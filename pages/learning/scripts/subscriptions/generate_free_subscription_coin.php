@@ -7,7 +7,7 @@ $requiredUserLevel = 6;
 
 
 
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 require_once '../../../../assets/includes/config.inc.php';
 
 
@@ -23,7 +23,7 @@ $users = new users;
 $users->Load_from_key($userid);
 
 
-error_reporting(E_ALL);
+error_reporting(0);
 
 require_once(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
 $assetManager = new assetManager;
@@ -46,8 +46,11 @@ require_once(BASE_URI .'/assets/scripts/classes/userActivity.class.php');
 
 $userActivity = new userActivity;
 
+require_once BASE_URI . '/assets/scripts/classes/userFunctions.class.php';
+$userFunctions = new userFunctions;
 
-error_reporting(E_ALL);
+
+//error_reporting(E_ALL);
 require_once BASE_URI .'/../scripts/config.php';
 //check the user is logged in
 //check the correct user
@@ -459,6 +462,45 @@ $subscription_to_return['user_id'] = $userid;
         $end_date = new DateTime($subscription->getexpiry_date(), new DateTimeZone($timezone));
 
         $end_date_user_readable = date_format($end_date, 'd/m/Y');
+
+        //make coin transaction definitive
+
+        $transaction_id_check = $userFunctions->returnRecentCoinTransactionUserSingle($userid, false);
+
+    if ($debug){
+        echo 'check for recent transactions finds <br/>';
+    var_dump($transaction_id_check);
+    echo '<br/><br/>';
+
+    }
+   
+
+    //to MAKE DEFINITIVE
+            if ($transaction_id_check){
+
+                //use id
+                //then delete the required useractivity
+
+                if ($debug){
+                echo 'we detected a recent transaction with id ' . $transaction_id_check['transaction_id'];
+                }
+                $userActivity->Load_from_key($transaction_id_check['id']);
+                $userActivity->setsession_id('DEFINITIVE_COIN_FROM_TEMP ' . $transaction_id_check['transaction_id']);
+                $userActivity->prepareStatementPDOUpdate();
+                
+                if ($debug){
+                echo ' this record in useractivity was renamed';
+
+                }
+
+            }else{
+
+                if ($debug){
+
+                echo 'no recent transaction to make definitive.  This is a problem!';
+
+                }
+            }
     
     
 

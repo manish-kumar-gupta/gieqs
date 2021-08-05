@@ -251,7 +251,7 @@ if ($ov['connection'] != ''){
 if ($ov['id'] != ''){
 			unset($ov['id']);
 		} 
-if ($ov['updated'] != ''){
+if (isset($ov['updated']) && $ov['updated'] != ''){
 			unset($ov['updated']);
 		} 
 $ovMod = array(); 
