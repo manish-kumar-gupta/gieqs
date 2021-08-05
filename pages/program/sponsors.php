@@ -161,26 +161,25 @@ width: 100%;
           <section class="clients">
             <div class="container mb-5 p-5 bg-white">
                 
-            <!--Platinum Sponsor
-            <div class="row text-left">
-                    <div class="col-12 p-3 pb-2">
-                        <span class="h2" style="color: black;">Platinum Sponsor</span><br />
-                    </div>
+                <!--Platinum Sponsor-->
+
+                <div class="row my-4">
+                    <h2 class="mx-auto" style="color: #12263f;">Platinum Sponsors</h2>
                 </div>
-            -->
 
-                <!-- <div class="client-group row justify-content-center mb-4">
-                    <div class="col-lg-6 col-md-6 col-12 py-3">
-                        <img class="logo" alt="Boston Scientific" src="<?php //echo BASE_URL . '/assets/img/brand/boston_new.png';?>">
+                <div class="client-group row justify-content-center align-items-center mb-4">
+
+                    <div class="col-lg-2 col-md-3 col-4 p-3">
+                        <img class="logo" alt="Boston Scientific Logo" src="<?php echo BASE_URL . '/assets/img/sponsors/Boston Scientific.jpg';?>">
                     </div>
-                    <div class="col-lg-6 col-md-6 col-12 py-3">
 
+                    <div class="col-lg-2 col-md-3 col-4 p-3">
+                        <img class="logo" alt="Olympus Logo" src="<?php echo BASE_URL . '/assets/img/sponsors/OLYMPUS.jpg';?>">
                     </div>
-                    
 
-                </div>     -->
+                </div>
 
-                <!--Gold Sponsors -->
+                <!--Gold Sponsors 
 
                 <div class="row my-4">
                     <h2 class="mx-auto" style="color: #12263f;">Gold Sponsors</h2>
@@ -193,6 +192,7 @@ width: 100%;
                     </div>
 
                 </div>
+                -->
             
 
                 <!--Silver Sponsors
@@ -234,7 +234,7 @@ width: 100%;
                     </div>
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
-                        <img class="logo" alt="BOUCART" src="<?php echo BASE_URL . '/assets/img/brand/boucart.jpg';?>">
+                        <img class="logo" alt="BOUCART" src="<?php echo BASE_URL . '/assets/img/sponsors/BOUCART.jpg';?>">
                     </div>
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
@@ -251,6 +251,10 @@ width: 100%;
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
                         <img class="logo" alt="Fides Medical" src="<?php echo BASE_URL . '/assets/img/sponsors/Logo Fides Medical.png';?>">
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-4 p-3">
+                        <img class="logo" alt="Medtronic" src="<?php echo BASE_URL . '/assets/img/sponsors/MEDTRONIC.jpg';?>">
                     </div>
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
@@ -368,6 +372,10 @@ width: 100%;
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
                         <img class="logo" alt="ESGE" src="<?php echo BASE_URL . '/assets/img/icons/esge.png';?>">
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-4 p-3">
+                        <img class="logo" alt="WEO" src="<?php echo BASE_URL . '/assets/img/icons/WEO.png';?>">
                     </div>
 
                     <!-- <div class="col-lg-2 col-md-3 col-4 p-3">
