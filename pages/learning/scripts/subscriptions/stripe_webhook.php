@@ -169,6 +169,11 @@ switch ($event->type) {
             $subscriptions->setauto_renew('1');
             $subscriptions->prepareStatementPDOUpdate();
 
+            //TODO SOON TODO
+            //length (months) of subscription
+            //if first or 6 months grant coins if it is a STANDARD
+            //pro gives everything
+
             //could send mail thanks for updating payment information
 
 

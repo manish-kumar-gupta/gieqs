@@ -918,7 +918,25 @@
 
         //check access
 
-if ($assetManager->determineVideoAccessSingleVideo($id, $isSuperuser, $userid, false) === false){
+        //set superuser if there is a pro subscription
+        //fix here
+
+        
+
+        if ($isSuperuser){
+
+            $fullAccess = true;
+
+        }elseif ($sitewide_status == 2){ //PRO subscription
+
+            $fullAccess = true;
+
+        }else{
+
+            $fullAccess = false;
+        }
+
+if ($assetManager->determineVideoAccessSingleVideo($id, $fullAccess, $userid, false) === false){
 
     require_once(BASE_URI . '/assets/scripts/classes/assets_paid.class.php');
     $assets_paid = new assets_paid;

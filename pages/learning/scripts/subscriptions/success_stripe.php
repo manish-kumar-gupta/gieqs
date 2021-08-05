@@ -158,7 +158,7 @@ if ($session['mode'] == 'payment'){
             
                     
             
-                        if ($old_subscription_status->status == 'canceled'){
+                        if ($old_subscription_status->status == 'cancelled'){
             
                             //$old_subscription->cancel();
             
@@ -191,6 +191,14 @@ if ($session['mode'] == 'payment'){
     $payment_intent = $session['subscription']; //check is set
     $subscription_id = $session['metadata']['subscription_id'];  //check is set
     $currency = strtoupper($session['currency']);
+
+
+
+
+
+
+
+
     if ($session['metadata']['free_trial'] == true){
 
         if ($session['metadata']['subscription_type'] == 1){
@@ -223,6 +231,26 @@ if ($session['mode'] == 'payment'){
 
     }else{
 
+        //not a free trial
+        //record some coins here
+        //also in webhooks on the first renewal
+
+        //get mysql date UTC
+        if ($session['metadata']['subscription_type'] == 1){        //only if a subscription type 1, type 2 has full acccess
+
+
+        $date = new DateTime('now', new DateTimeZone('UTC'));
+        $sqltimestamp = date_format($date, 'Y-m-d H:i:s');
+
+        $amount_grant = 50;
+        $coin_grant->New_coin_grant($sqltimestamp, $amount_grant, $userid);
+        $coin_grant->prepareStatementPDO();
+
+        }
+
+
+
+
         $amount = $session['amount_total'];
         $amount = intval($amount) / 100;
 
@@ -230,7 +258,10 @@ if ($session['mode'] == 'payment'){
 
             echo 'else recorded';
      
-         }
+        }
+
+
+
     
     }
 
@@ -247,7 +278,7 @@ if ($session['mode'] == 'payment'){
 
 
 
-if ($subscription->Return_row($subscription_id)){ //if the subscription already exist
+if ($subscription->Return_row($subscription_id)){ //if the subscription already exists
 
     //we created a new subscription for the renewal
     //with the required term
