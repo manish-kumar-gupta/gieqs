@@ -1899,11 +1899,20 @@ public function which_assets_contain_programme ($programmeid, $debug=false){
 
 }
 
-public function is_assetid_covered_by_user_subscription($asset_id, $userid, $debug=false){
+public function is_assetid_covered_by_user_subscription($asset_id, $userid, $debug=false, $superuser=false){
 
 
-        
+        if ($superuser){
             
+            $q = "Select 
+            a.`id`
+            FROM `subscriptions` as a
+            INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
+            WHERE b.`id` = '$asset_id' 
+            GROUP BY b.`id`
+            ";
+    
+        }else{
             $q = "Select 
             a.`id`
             FROM `subscriptions` as a
@@ -1913,7 +1922,9 @@ public function is_assetid_covered_by_user_subscription($asset_id, $userid, $deb
             AND a.`active` = '1'
             AND a.`expiry_date` > NOW()
             ";
-    
+
+
+        }
         //echo $q . '<br><br>';
     
     
@@ -2808,12 +2819,24 @@ public function doesUserHaveSubscriptionMenu($user_id, $debug)
 
         }
         
-public function getHeadersNavSubscriptions($user_id, $debug){
+public function getHeadersNavSubscriptions($user_id, $debug, $superuser=false){ //add superuserfix and same for pro subscription
 
     {
-            
+        
+        if ($superuser){
 
-        $q = "Select 
+            $q = "Select 
+        b.`asset_type`
+        FROM `subscriptions` as a
+        INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
+        WHERE (b.`asset_type` = '2' OR b.`asset_type` = '3' OR b.`asset_type` = '4') AND (b.`advertise_for_purchase` IS NULL OR b.`advertise_for_purchase` = '1')
+        GROUP BY b.`asset_type`
+        ORDER BY b.`asset_type` ASC
+        ";
+
+        }else{
+        
+            $q = "Select 
         b.`asset_type`
         FROM `subscriptions` as a
         INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
@@ -2825,6 +2848,7 @@ public function getHeadersNavSubscriptions($user_id, $debug){
         ORDER BY b.`asset_type` ASC
         ";
 
+        }
     
     if ($debug){
 
@@ -2881,21 +2905,35 @@ public function getHeadersNavSubscriptions($user_id, $debug){
 }
 
 
-public function getMenuItems($user_id, $asset_type, $debug){
+public function getMenuItems($user_id, $asset_type, $debug, $superuser=false){
 
     {
             
+        if ($superuser){
 
         $q = "Select 
         b.`id`, b.`name`
         FROM `subscriptions` as a
         INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
-        WHERE (b.`asset_type` = '$asset_type') 
-        AND (a.`user_id` = '$user_id')
-        AND (a.`active` = '1')
-        AND (a.`expiry_date` > NOW())
+        WHERE (b.`asset_type` = '$asset_type') AND (b.`advertise_for_purchase` IS NULL OR b.`advertise_for_purchase` = '1')
+        GROUP BY b.`id`
         ORDER BY b.`name` ASC
         ";
+
+        }else{
+
+            $q = "Select 
+            b.`id`, b.`name`
+            FROM `subscriptions` as a
+            INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
+            WHERE (b.`asset_type` = '$asset_type') 
+            AND (a.`user_id` = '$user_id')
+            AND (a.`active` = '1')
+            AND (a.`expiry_date` > NOW())
+            ORDER BY b.`name` ASC
+            ";
+
+        }
 
     
     if ($debug){

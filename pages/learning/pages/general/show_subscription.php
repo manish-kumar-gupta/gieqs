@@ -151,7 +151,20 @@
 
         $access = null;
 
-        $access = $assetManager->is_assetid_covered_by_user_subscription($assetid, $userid, $debug);
+        if ($isSuperuser){
+
+            $fullAccess = true;
+        
+        }elseif ($sitewide_status == 2){ //PRO subscription
+        
+            $fullAccess = true;
+        
+        }else{
+        
+            $fullAccess = false;
+        }
+
+        $access = $assetManager->is_assetid_covered_by_user_subscription($assetid, $userid, $debug, $fullAccess);
 
         if (!$access){
 

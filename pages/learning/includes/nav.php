@@ -313,7 +313,20 @@ if ($menus) {
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
                         <?php
 
-    $headers = $assetManager->getHeadersNavSubscriptions($userid, false);
+if ($isSuperuser){
+
+    $fullAccess = true;
+
+}elseif ($sitewide_status == 2){ //PRO subscription
+
+    $fullAccess = true;
+
+}else{
+
+    $fullAccess = false;
+}
+
+    $headers = $assetManager->getHeadersNavSubscriptions($userid, false, $fullAccess);
 
     foreach ($headers as $key => $value) {
         ?>
@@ -326,7 +339,7 @@ if ($menus) {
 
                         <?php
 
-        $courses = $assetManager->getMenuItems($userid, $value['id'], false);
+        $courses = $assetManager->getMenuItems($userid, $value['id'], false, $fullAccess);
 
         foreach ($courses as $key2 => $value2) {
 
