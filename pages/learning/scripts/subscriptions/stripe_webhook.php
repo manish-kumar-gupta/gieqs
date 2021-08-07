@@ -171,6 +171,12 @@ switch ($event->type) {
 
             //TODO SOON TODO
             //length (months) of subscription
+
+            $lengthSubscription = $assetManager->getLengthSubscription($subscription_id, false);
+
+            //write a useractivity 6 month coin grant
+
+            //detect the previous useractivity if >6, 2 if over 12 etc
             //if first or 6 months grant coins if it is a STANDARD
             //pro gives everything
 

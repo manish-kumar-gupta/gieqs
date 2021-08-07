@@ -239,7 +239,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                 <span class="badge gieqsGold badge-pill">
                                     New
                                     </span>
-                                <span class="alert-content">Live / Virtual Hybrid Courses</span>
+                                <span class="alert-content">Live / Virtual Hybrid Premium Content</span>
                              </div></a>
                         
                              <a class="ml-3 pointer" data-toggle="modal" data-target="#accreditation">
@@ -249,6 +249,16 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                     </span>
                                
                                 <span class="alert-content">CME accreditation</span>
+                             </div></a>
+
+                             <a class="ml-3 pointer" data-toggle="modal" data-target="#teaser-videos">
+                            <div class="alert alert-modern alert-dark">
+                                <span class="badge gieqsGold badge-pill">
+                                <i class="fas fa-notes-medical"></i>
+                                    </span>
+                               
+                                <span class="alert-content">Teaser Videos GIEQs II
+                                </span>
                              </div></a>
                             
 <!--                              <div class="countdown" data-countdown-date="10/07/2020" data-countdown-label="hide"></div>
@@ -908,6 +918,47 @@ for Continuing Medical Education (EACCME)">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn-small btn-secondary" data-dismiss="modal">Close</button>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <!-- Modal Teaser-->
+ <div class="modal fade" id="teaser-videos" tabindex="-1" role="dialog" aria-labelledby="teaser-videos"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dark" role="document">
+            <div class="modal-content p-3">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="accreditationLabel" style="color: rgb(238, 194, 120);">GIEQs II Teaser Videos</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="text-white" aria-hidden="false">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                
+            <div id="videoDisplay mb-3" class="">
+                    
+            <div class="row">
+                <p class="h5 mt-2">Released prior to the early bird deadline, these 4 snippets demonstrate the attention to detail, deconstructed approach and rock solid evidence base of the GIEQs Approach. <br /> <br/></p>
+                    <p class="text-white">Join us in September 2021 for GIEQs II for much more of this approach...</p>
+                    
+                        <div class="d-flex">
+                        <a href="https://vimeo.com/554318938/c7ca7d7344" data-fancybox>
+                      <img alt="video image" src="https://i.vimeocdn.com/video/1019061981_1280x720?r=pad" class="img-fluid mt-2">
+                  </a>
+                  <p class="ml-3"><span class="h4">1 - Early Gastric Cancer</span> - Can you identify this early gastric cancer?  And describe the endoscopic imagig findings associated with it?  Is it Endoscopically Resectable?  Find out here...
+                  </p>
+                            
+                            </div>
+                            </div>
+
+                    
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-small rounded-pill bg-gieqsGold text-dark" data-dismiss="modal">Close</button>
                    
                 </div>
             </div>

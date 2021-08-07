@@ -1304,6 +1304,81 @@ public function doesUserHaveSameAssetClassSubscription ($subscription_id, $user_
 
 }
 
+public function getLengthSubscription ($subscription_id, $debug=false){
+
+
+    $q = "Select 
+    a.`id`, a.`start_date`
+    FROM `subscriptions` as a
+    WHERE a.`id` = '$subscription_id' 
+    AND a.`active` = '1'
+    AND a.`expiry_date` > NOW()
+    ";
+
+if ($debug){
+    echo $q . '<br><br>';
+
+}
+
+
+
+$result = $this->connection->RunQuery($q);
+
+$x = 0;
+$nRows = $result->rowCount();
+
+if ($nRows == 1) {
+
+    while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+        $start_date = $row['start_date'];
+    
+
+
+    }
+
+    if ($debug){
+
+        echo 'subscription found';
+        echo 'start date is '. $start_date;
+    }
+
+    $d1 = new DateTime($start_date);
+    $d2 = new DateTime('now');
+    
+    // @link http://www.php.net/manual/en/class.dateinterval.php
+    $interval = $d2->diff($d1);
+
+    var_dump($interval);
+    
+    //$interval->format('%m months');
+    
+    $intervalFinal = $interval->m + 12*$interval->y;
+    
+    if ($debug){
+    var_dump($intervalFinal);
+    }
+    
+    return $intervalFinal;
+
+} else {
+    
+
+    if ($debug){
+
+        echo 'no active subscription with this id';
+    }
+
+    return false;
+
+    
+}
+
+
+   
+
+}
+
 public function doesUserHaveSameAssetClassAssetType ($asset_type, $user_id, $debug){
 
     {

@@ -181,6 +181,9 @@ echo '<br/><br/><br/>';
 
 $userid = 1;
 
+$lengthSubscription = $assetManager->getLengthSubscription(1050, true);
+echo $lengthSubscription;
+
 echo 'user with id ' . $userid . ' has ';
 echo $coin->current_balance($userid);
 echo ' coins <br/><br/>';
