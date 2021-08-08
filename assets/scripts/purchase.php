@@ -52,7 +52,8 @@ $coin = new coin;
 
 ?>
 
-                        <a class="btn btn-sm cursor-pointer bg-dark btn-icon rounded-pill hover-translate-y-n3 use-coin" id="asset_id_coin_button">
+                        <a class="btn btn-sm cursor-pointer bg-dark btn-icon rounded-pill hover-translate-y-n3 use-coin"
+                            id="asset_id_coin_button">
                             <span class="btn-inner--icon">
                                 <img src="<?php echo BASE_URL . "/assets/img/icons/coin.svg"?>"
                                     alt="use GIEQs Coin for this purchase" height="24" width="24" />
@@ -186,22 +187,23 @@ if ($userid){
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Use GIEQs Coin to Pay for this Content.</h5>
-                
+
                 <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-            <h6> You have <?php echo $coin->current_balance($userid);?> coins remaining</h6>
-            <div class="d-none" id="coins_remaining"><?php echo $coin->current_balance($userid);?></div>
-            <h6> Item Cost : &euro;&nbsp;<span id="asset_cost"></span></h6>
+                <h6> You have <?php echo $coin->current_balance($userid);?> coins remaining</h6>
+                <div class="d-none" id="coins_remaining"><?php echo $coin->current_balance($userid);?></div>
+                <h6> Item Cost : &euro;&nbsp;<span id="asset_cost"></span></h6>
 
-            <form id="coins-spend">
-            <div class="form-group">
-    <input id="number_coins" name="number_coins" type="text" class="form-control" placeholder="Enter the number of coins to use for this item (whole number)">
-</div>
-</form>
-               <!--  <p>Would you like to upgrade to GIEQs <strong>STANDARD</strong> or <strong>PRO?</strong></p>
+                <form id="coins-spend">
+                    <div class="form-group">
+                        <input id="number_coins" name="number_coins" type="text" class="form-control"
+                            placeholder="Enter the number of coins to use for this item (whole number)">
+                    </div>
+                </form>
+                <!--  <p>Would you like to upgrade to GIEQs <strong>STANDARD</strong> or <strong>PRO?</strong></p>
                 <p><a
                         class="key-features cursor-pointer btn-sm bg-gieqsGold btn-icon rounded-pill hover-translate-y-n3 mt-5">
                         <span class="btn-inner--icon">
@@ -213,7 +215,9 @@ if ($userid){
             <div class="modal-footer">
                 <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
                 <!-- <button type="button" class="btn btn-dark" onclick="launchSubscriptionDialog(1);">get STANDARD</button> -->
-                <button type="button" id="spend-coins" class="btn btn-dark gieqsGold"><span id="coin-spinner" class="spinner-border mr-2" style="display:none;" role="status" aria-hidden="true"></span>Spend Coins</button>
+                <button type="button" id="spend-coins" class="btn btn-dark gieqsGold"><span id="coin-spinner"
+                        class="spinner-border mr-2" style="display:none;" role="status" aria-hidden="true"></span>Spend
+                    Coins</button>
 
             </div>
         </div>
@@ -480,15 +484,17 @@ var stripe = Stripe(
     "pk_test_51IsKqwEBnLMnXjogDG3ebg9q8KEVEbKtvHai719tJNPGsr9i77V4OdSYtPiBS1Y8bd4rknYYyAUkJ1sDweS2ubdF00GDL2mLNn");
 
 
-    function isInt(value) {
-  return !isNaN(value) && (function(x) { return (x | 0) === x; })(parseFloat(value))
+function isInt(value) {
+    return !isNaN(value) && (function(x) {
+        return (x | 0) === x;
+    })(parseFloat(value))
 }
 
-function useGIEQsCoin(asset_id_specific){
+function useGIEQsCoin(asset_id_specific) {
 
     //alert('click');
     $('.modal-new').modal('hide');
-    
+
     $('.modal-specify-gieqscoin').modal('show');
     $('.modal-specify-gieqscoin #asset_cost').text(asset_id_specific);
 
@@ -518,7 +524,7 @@ function useGIEQsCoin(asset_id_specific){
 
 }
 
-function performCoinTransaction(){
+function performCoinTransaction() {
 
 
     //get the object from  the validated form
@@ -527,8 +533,8 @@ function performCoinTransaction(){
 
     const dataToSend2 = {
 
-    amount: amount,
-    asset_id: asset_id,
+        amount: amount,
+        asset_id: asset_id,
 
     }
 
@@ -541,20 +547,20 @@ function performCoinTransaction(){
     const jsonString2 = JSON.stringify(dataToSend2);
 
     var request3 = $.ajax({
-    url: rootFolder2 +
-        "pages/learning/scripts/coin/coin_transact.php",
-    type: "POST",
-    contentType: "application/json",
-    data: jsonString2,
+        url: rootFolder2 +
+            "pages/learning/scripts/coin/coin_transact.php",
+        type: "POST",
+        contentType: "application/json",
+        data: jsonString2,
 
-    timeout: 5000,
-    fail: function(xhr, textStatus, errorThrown) {
-        alert(
-            'Something went wrong. Please try that again.'
-        );
-        $(button).find('i').remove();
-        $(button).attr('disabled', false);
-    }
+        timeout: 5000,
+        fail: function(xhr, textStatus, errorThrown) {
+            alert(
+                'Something went wrong. Please try that again.'
+            );
+            $(button).find('i').remove();
+            $(button).attr('disabled', false);
+        }
     });
 
     request3.done(function(data) {
@@ -571,32 +577,32 @@ function performCoinTransaction(){
 
         $('.modal-specify-gieqscoin').modal('hide');
 
-        $('.modal-new #cost').text(originalCost - paidInCoin  + ' euro remaining after GIEQs Coin Use');
+        $('.modal-new #cost').text(originalCost - paidInCoin + ' euro remaining after GIEQs Coin Use');
         $('.modal-new .cancel-button').addClass('cancel-coin');
         $('.modal-new .cancel-button').removeAttr('data-dismiss');
 
         //coin-only
 
-        if ((originalCost - paidInCoin) == 0){
+        if ((originalCost - paidInCoin) == 0) {
 
-        $('.modal-new .button-confirm-new').removeClass('button-confirm-new');
-        $('.modal-new #button-confirm-new').addClass('coin-only');
+            $('.modal-new .button-confirm-new').removeClass('button-confirm-new');
+            $('.modal-new #button-confirm-new').addClass('coin-only');
 
-        $('.modal-new #button-confirm-new').removeAttr('id');
-
-        }
-
-        if (paidInCoin > 0){
-
-        $('.modal-new #gieqs_coin_used_amount').val(result.spend);
-        $('.modal-new #gieqs_coin_used').val(true);
+            $('.modal-new #button-confirm-new').removeAttr('id');
 
         }
 
+        if (paidInCoin > 0) {
+
+            $('.modal-new #gieqs_coin_used_amount').val(result.spend);
+            $('.modal-new #gieqs_coin_used').val(true);
+
+        }
 
 
 
-        
+
+
         //disable use GIEQs Coin button
 
         $('.modal-new .use-coin').hide();
@@ -626,7 +632,7 @@ function performCoinTransaction(){
 
     //must return response
 }
- 
+
 
 function launchSubscriptionDialog(subscriptionType) {
 
@@ -722,17 +728,17 @@ function launchSubscriptionDialog(subscriptionType) {
 
 
                         try {
-        document.querySelectorAll('form').forEach(form => {
-	form.addEventListener('submit', (e) => {
-		// Prevent if already submitting
-		if (form.classList.contains('is-submitting')) {
-			e.preventDefault();
-		}
-		
-		// Add class to hook our visual indicator on
-		form.classList.add('is-submitting');
-	});
-});
+                            document.querySelectorAll('form').forEach(form => {
+                                form.addEventListener('submit', (e) => {
+                                    // Prevent if already submitting
+                                    if (form.classList.contains('is-submitting')) {
+                                        e.preventDefault();
+                                    }
+
+                                    // Add class to hook our visual indicator on
+                                    form.classList.add('is-submitting');
+                                });
+                            });
 
                             if (externalTest.location_jump) {
 
@@ -753,7 +759,8 @@ function launchSubscriptionDialog(subscriptionType) {
                             var upgrade = true;
 
                             alert(
-                                'You already have a GIEQs Online Subscription.\n\nIf you choose to upgrade, your existing subscription will be cancelled and replaced with the new subscription.\n\nYou will be credited for the outstanding month and charged immediately for the new subscription.');
+                                'You already have a GIEQs Online Subscription.\n\nIf you choose to upgrade, your existing subscription will be cancelled and replaced with the new subscription.\n\nYou will be credited for the outstanding month and charged immediately for the new subscription.'
+                                );
 
                         }
 
@@ -804,7 +811,7 @@ function launchSubscriptionDialog(subscriptionType) {
 
             alert(
                 'We need to check your user type first.  Please update your profile with your status, either Endoscopist, Medical Student or Nurse, and ensure you specify trainee or not.  Then try this again.'
-                );
+            );
             PopupCenter(siteRoot2 + '/pages/learning/pages/account/profile.php',
                 'Update your profile', 600, 400);
 
@@ -999,130 +1006,130 @@ $(document).ready(function() {
 
     $('.coin-only').click(function(event) {
 
-var button = $(this);
+        var button = $(this);
 
-$(this).append('<i class="fas fa-circle-notch fa-spin ml-2"></i>');
-$(this).attr('disabled', true);
-//var asset_type = $(this).data('assettype');
-var asset_id = $(this).data('assetid');
+        $(this).append('<i class="fas fa-circle-notch fa-spin ml-2"></i>');
+        $(this).attr('disabled', true);
+        //var asset_type = $(this).data('assettype');
+        var asset_id = $(this).data('assetid');
 
-console.log(asset_id);
-$('.modal-footer #button-confirm-new').attr('data-assetid', '' + asset_id);
-
-
+        console.log(asset_id);
+        $('.modal-footer #button-confirm-new').attr('data-assetid', '' + asset_id);
 
 
 
-//get the modal data
-const dataToSend = {
-
-    asset_id: asset_id,
-
-}
-
-const jsonString = JSON.stringify(dataToSend);
-
-if (userid) {
-
-    //closed version
-    var url = siteRoot2 +
-        "pages/learning/scripts/subscriptions/get_new_subscription_data.php";
-
-} else {
-
-    //open version
-
-    var url = siteRoot2 +
-        "pages/learning/scripts/subscriptions/get_new_subscription_data_open.php";
-
-}
-
-var request = $.ajax({
-    url: url,
-    type: "POST",
-    contentType: "application/json",
-    data: jsonString,
-    timeout: 5000,
-    fail: function(xhr, textStatus, errorThrown) {
-        alert(
-            'Something went wrong. We could not load the subscription data.'
-        );
-        $(this).find('i').remove();
-        $(this).attr('disabled', false);
-    }
-});
-
-request.done(function(data) {
 
 
-    data = data.trim();
-    console.log(data);
+        //get the modal data
+        const dataToSend = {
 
-    try {
+            asset_id: asset_id,
 
-        externalTest = $.parseJSON(data);
-        console.dir(externalTest);
-        if (data) {
+        }
 
+        const jsonString = JSON.stringify(dataToSend);
+
+        if (userid) {
+
+            //closed version
+            var url = siteRoot2 +
+                "pages/learning/scripts/subscriptions/get_new_subscription_data.php";
+
+        } else {
+
+            //open version
+
+            var url = siteRoot2 +
+                "pages/learning/scripts/subscriptions/get_new_subscription_data_open.php";
+
+        }
+
+        var request = $.ajax({
+            url: url,
+            type: "POST",
+            contentType: "application/json",
+            data: jsonString,
+            timeout: 5000,
+            fail: function(xhr, textStatus, errorThrown) {
+                alert(
+                    'Something went wrong. We could not load the subscription data.'
+                );
+                $(this).find('i').remove();
+                $(this).attr('disabled', false);
+            }
+        });
+
+        request.done(function(data) {
+
+
+            data = data.trim();
+            console.log(data);
 
             try {
 
-                if (externalTest.location_jump) {
+                externalTest = $.parseJSON(data);
+                console.dir(externalTest);
+                if (data) {
 
-                    window.location.href = externalTest.location_jump;
+
+                    try {
+
+                        if (externalTest.location_jump) {
+
+                            window.location.href = externalTest.location_jump;
+
+                        }
+
+                    } catch (error) {
+
+
+
+                    }
+
+
+
+
+
+
+                    $('.modal-new #asset-name').text(externalTest.asset_name);
+                    $('.modal-new #asset-type').text(externalTest.asset_type);
+                    $('.modal-new #renew-frequency').text(externalTest.renew_frequency);
+                    $('.modal-new #asset-description').text(externalTest.description);
+                    $('.modal-new #asset_id_hidden').val(externalTest.asset_id);
+                    $('.modal-new #asset_id_coin_button').attr('asset-id', externalTest.cost);
+
+                    //var a global max cost asset for the coin use
+                    max_cost = externalTest.cost;
+
+                    $('.modal-new #cost').text(externalTest.cost + ' euro');
+
+
+                    $('.modal-new').modal('show');
+                    $(button).find('i').remove();
+                    $(button).attr('disabled', false);
+
+                } else {
+
+                    alert('Something went wrong. We could not load the subscription data.');
+                    $(this).find('i').remove();
+                    $(this).attr('disabled', false);
+
 
                 }
 
             } catch (error) {
 
-
+                alert(data);
+                $(button).find('i').remove();
+                $(button).attr('disabled', false);
 
             }
 
 
+        });
 
 
-
-
-            $('.modal-new #asset-name').text(externalTest.asset_name);
-            $('.modal-new #asset-type').text(externalTest.asset_type);
-            $('.modal-new #renew-frequency').text(externalTest.renew_frequency);
-            $('.modal-new #asset-description').text(externalTest.description);
-            $('.modal-new #asset_id_hidden').val(externalTest.asset_id);
-            $('.modal-new #asset_id_coin_button').attr('asset-id', externalTest.cost);
-
-            //var a global max cost asset for the coin use
-            max_cost = externalTest.cost;
-
-            $('.modal-new #cost').text(externalTest.cost + ' euro');
-
-
-            $('.modal-new').modal('show');
-            $(button).find('i').remove();
-            $(button).attr('disabled', false);
-
-        } else {
-
-            alert('Something went wrong. We could not load the subscription data.');
-            $(this).find('i').remove();
-            $(this).attr('disabled', false);
-
-
-        }
-
-    } catch (error) {
-
-        alert(data);
-        $(button).find('i').remove();
-        $(button).attr('disabled', false);
-
-    }
-
-
-});
-
-
-});
+    });
 
 
 
@@ -1444,112 +1451,113 @@ request.done(function(data) {
 
     $(document).on('click', '#spend-coins', function(event) {
 
-event.preventDefault();
-$('#coins-spend').submit();
+        event.preventDefault();
+        $('#coins-spend').submit();
 
-})
+    })
 
-$.validator.addMethod("maximum", function (value, element, desired) {
+    $.validator.addMethod("maximum", function(value, element, desired) {
+
+        console.log(value);
+        console.log(desired);
+        console.log(parseInt(max_cost));
+        var coins_remaining = parseInt($('#coins_remaining').text());
+        console.log(coins_remaining);
+
+
+        if (value <= parseInt(coins_remaining) && value <= parseInt(max_cost) && value > 0 && isInt(
+                value)) {
+            console.log('true returned');
+
+            return true;
+        } else {
+            console.log('false returned');
+
+            return false;
+        }
+
+    });
+    /* 
+    $.validator.addMethod("coins_remaining", function (value, element, desired) {
 
     console.log(value);
     console.log(desired);
-    console.log(parseInt(max_cost));
     var coins_remaining = parseInt($('#coins_remaining').text());
     console.log(coins_remaining);
 
-
-if (value <= parseInt(coins_remaining) && value <= parseInt(max_cost) && value > 0 && isInt(value)) {
+    if (value <= parseInt(coins_remaining) && value >= 0 && isInt(value)) {
     console.log('true returned');
 
     return true;
-} else {
+    } else {
     console.log('false returned');
 
     return false;
-}
-
-});
-/* 
-$.validator.addMethod("coins_remaining", function (value, element, desired) {
-
-console.log(value);
-console.log(desired);
-var coins_remaining = parseInt($('#coins_remaining').text());
-console.log(coins_remaining);
-
-if (value <= parseInt(coins_remaining) && value >= 0 && isInt(value)) {
-console.log('true returned');
-
-return true;
-} else {
-console.log('false returned');
-
-return false;
-}
-
-}); */
-
-$("#coins-spend").validate({
-
-invalidHandler: function(event, validator) {
-    var errors = validator.numberOfInvalids();
-    console.log("there were " + errors + " errors");
-    if (errors) {
-        var message = errors == 1 ?
-            "1 field contains errors. It has been highlighted" :
-            +errors + " fields contain errors. They have been highlighted";
-
-
-        $('#error').text(message);
-        //$('div.error span').addClass('form-text text-danger');
-        //$('#errorWrapper').show();
-
-        $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function() {
-            $("#errorWrapper").slideUp(500);
-        });
-    } else {
-        $('#errorWrapper').hide();
     }
-},
-rules: {
-    
 
-    number_coins: {
-        required: true,
-        maximum: true,
+    }); */
 
+    $("#coins-spend").validate({
 
-    },
-
-    
-
-
-
-},
-messages: {
+        invalidHandler: function(event, validator) {
+            var errors = validator.numberOfInvalids();
+            console.log("there were " + errors + " errors");
+            if (errors) {
+                var message = errors == 1 ?
+                    "1 field contains errors. It has been highlighted" :
+                    +errors + " fields contain errors. They have been highlighted";
 
 
+                $('#error').text(message);
+                //$('div.error span').addClass('form-text text-danger');
+                //$('#errorWrapper').show();
 
-    number_coins: {
-        required: 'Please enter an amount of coins',
-        maximum: 'Please enter a valid amount of GIEQs Coin to spend on this product.  The amount of GIEQs Coin must be a whole number and be available in your account.',
-
-
-    },
-    
-},
-submitHandler: function(form) {
-
-    
-
-    console.log("submitted coin form");
-    performCoinTransaction();
+                $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function() {
+                    $("#errorWrapper").slideUp(500);
+                });
+            } else {
+                $('#errorWrapper').hide();
+            }
+        },
+        rules: {
 
 
+            number_coins: {
+                required: true,
+                maximum: true,
 
-}
 
-});
+            },
+
+
+
+
+
+        },
+        messages: {
+
+
+
+            number_coins: {
+                required: 'Please enter an amount of coins',
+                maximum: 'Please enter a valid amount of GIEQs Coin to spend on this product.  The amount of GIEQs Coin must be a whole number and be available in your account.',
+
+
+            },
+
+        },
+        submitHandler: function(form) {
+
+
+
+            console.log("submitted coin form");
+            performCoinTransaction();
+
+
+
+        }
+
+    });
 
     $(document).on('click', '.editSessionFromPlan', function(event) {
 
@@ -1559,7 +1567,7 @@ submitHandler: function(form) {
 
 
     })
-    
+
     $(document).on('click', '.use-coin', function(event) {
 
         var asset_id_specific = $(this).attr('asset-id');
@@ -1578,108 +1586,113 @@ submitHandler: function(form) {
         $(this).val('Please wait...');
         $('.modal-new .cancel-button').attr('disabled', true);
 
-        alert('This purchase is using GIEQs Coin Only.  No payment is required.  Please click close and wait for the transaction to complete.');
+        alert(
+            'This purchase is using GIEQs Coin Only.  No payment is required.  Please click close and wait for the transaction to complete.');
         //ajax just up to the 
 
         const dataToSend2 = {
 
-asset_id: asset_id_specific,
-//coin_amount: $(this).attr('coin-amount');
+            asset_id: asset_id_specific,
+            //coin_amount: $(this).attr('coin-amount');
 
-}
+        }
 
-//first check that user type is filled
+        //first check that user type is filled
 
-const jsonString2 = JSON.stringify(dataToSend2);
+        const jsonString2 = JSON.stringify(dataToSend2);
 
-var request3 = $.ajax({
-url: rootFolder2 +
-    "pages/learning/scripts/subscriptions/generate_free_subscription_coin.php",
-type: "POST",
-contentType: "application/json",
-data: jsonString2,
+        var request3 = $.ajax({
+            url: rootFolder2 +
+                "pages/learning/scripts/subscriptions/generate_free_subscription_coin.php",
+            type: "POST",
+            contentType: "application/json",
+            data: jsonString2,
 
-timeout: 50000,
-fail: function(xhr, textStatus, errorThrown) {
-    alert(
-        'Something went wrong. Please try that again.'
-    );
-    $(button).find('i').remove();
-    $(button).attr('disabled', false);
-}
-});
+            timeout: 50000,
+            fail: function(xhr, textStatus, errorThrown) {
+                alert(
+                    'Something went wrong. Please try that again.'
+                );
+                $(button).find('i').remove();
+                $(button).attr('disabled', false);
+            }
+        });
 
-request3.done(function(data) {
-
-
-data = data.trim();
-var result = JSON.parse(data);
-console.dir(result);
-
-if (result.complete === true){
-
-    window.location.replace(result.redirect);
-
-}else if (result.error == 1)
-
-    alert('You already own this you cannot purchase it again.  Please cancel the transaction.');
-    $(this).attr('disabled', false);
-    $('.modal-new .cancel-button').attr('disabled', false);
-    $(this).val('Cannot Purchase');
+        request3.done(function(data) {
 
 
+            data = data.trim();
+            var result = JSON.parse(data);
+            console.dir(result);
 
-})
+            if (result.complete === true) {
+
+                window.location.replace(result.redirect);
+
+            } else if (result.error == 1)
+
+                alert(
+                    'You already own this you cannot purchase it again.  Please cancel the transaction.'
+                    );
+            $(this).attr('disabled', false);
+            $('.modal-new .cancel-button').attr('disabled', false);
+            $(this).val('Cannot Purchase');
+
+
+
         })
+    })
 
     $(document).on('click', '.cancel-coin', function(event) {
 
-    event.preventDefault();
-    
+        event.preventDefault();
+
         $(this).attr('disabled', true);
-    if (confirm("Are you sure?  You already committed GIEQs Coin to this product.  If you cancel that transation will be reversed and the coins returned to your account.")) {
+        if (confirm(
+                "Are you sure?  You already committed GIEQs Coin to this product.  If you cancel that transation will be reversed and the coins returned to your account."
+                )) {
 
 
-        var request3 = $.ajax({
-    url: rootFolder2 +
-        "pages/learning/scripts/coin/coin_transact_reverse.php",
-    type: "POST",
-    contentType: "application/json",
-    data: '',
+            var request3 = $.ajax({
+                url: rootFolder2 +
+                    "pages/learning/scripts/coin/coin_transact_reverse.php",
+                type: "POST",
+                contentType: "application/json",
+                data: '',
 
-    timeout: 5000,
-    fail: function(xhr, textStatus, errorThrown) {
-        alert(
-            'Something went wrong. Please try that again.'
-        );
-        
-    }
-    });
+                timeout: 5000,
+                fail: function(xhr, textStatus, errorThrown) {
+                    alert(
+                        'Something went wrong. Please try that again.'
+                    );
 
-    request3.done(function(data) {
+                }
+            });
 
-        data = data.trim();
-        var result = JSON.parse(data);
-        console.dir(result);
+            request3.done(function(data) {
 
-        if (result.outcome == true){
+                data = data.trim();
+                var result = JSON.parse(data);
+                console.dir(result);
 
-            location.reload();
+                if (result.outcome == true) {
+
+                    location.reload();
+
+
+                }
+
+
+            })
+
+
+
+        } else {
+
+
 
 
         }
-    
-
-    })
-
-
-
-    }else{
-
-
-
-
-    }
 
 
     })
