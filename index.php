@@ -118,7 +118,7 @@
 
         <?php require 'nav.php';?>
 
-        <?php
+       <?php
 //set the variable to launch the registration pop-up
 
 //print_r($_GET);
@@ -248,14 +248,14 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                     <span class="alert-content">GIEQs II Registration Open</span>
                                 </div>
                             </a>
-                            <a href="https://www.gieqs.com/pages/program/program_imaging.php">
+                            <!-- <a href="https://www.gieqs.com/pages/program/program_imaging.php">
                                 <div class="alert alert-modern alert-dark">
                                     <span class="badge gieqsGold badge-pill">
                                         New
                                     </span>
                                     <span class="alert-content">Live / Virtual Hybrid Premium Content</span>
                                 </div>
-                            </a>
+                            </a> -->
 
                             <a class="ml-3 pointer" data-toggle="modal" data-target="#accreditation">
                                 <div class="alert alert-modern alert-dark">

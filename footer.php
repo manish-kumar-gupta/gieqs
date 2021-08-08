@@ -31,7 +31,7 @@
           <h6 class="heading mb-3">Foundation</h6>
           <ul class="list-unstyled">
             <li><a href="<?php echo BASE_URL;?>/pages/program/mission.php">Mission</a></li>
-            <li><a href="#">Charitable</a></li>
+            <li><a href="<?php echo BASE_URL;?>/pages/foundation/charitable.php">Charitable</a></li>
           </ul>
         </div>
         
