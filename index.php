@@ -726,7 +726,8 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                 aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0"
                                 role="button" aria-label="Go to slide 2"></span><span
                                 class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0"
-                                role="button" aria-label="Go to slide 3"></span></div>
+                                role="button" aria-label="Go to slide 3"></span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -894,7 +895,8 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 
 
                         <p class="h6 mt-5">Things have changed drastically since we started planning GIEQs. <br />
-                            <br /></p>
+                            <br />
+                        </p>
                         <p class="text-muted">COVID-19 restrictions mean we cannot plan a face-to-face event in 2020. We
                             have therefore decided to stream the entire congress right here on GIEQs.com. &nbsp;
                             <br /><br />We remain committed to the face-to-face event and will reschedule this in 2021
@@ -929,7 +931,8 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 
                             <div class="row">
                                 <p class="h5 mt-5">At GIEQs we are serious about accrediting our educational events.
-                                    <br /> <br /></p>
+                                    <br /> <br />
+                                </p>
                                 <p class="text-white">We have applied for and received EACCME accreditation (number of
                                     CME points pending) and have received RIZIV [Belgium] accreditation for 8 hours
                                     (Wednesday) and 7.5 hours (Thursday) CME points. &nbsp;
@@ -1014,249 +1017,254 @@ for Continuing Medical Education (EACCME)">
                         <div id="videoDisplay mb-3" class="">
 
                             <div class="row">
-                                <p class="h5 mt-2">Released prior to the early bird deadline, these 6, 1-2 minute video snippets
+                                <p class="h5 mt-2">Released prior to the early bird deadline, these 6, 1-2 minute video
+                                    snippets
                                     demonstrate the attention to detail, deconstructed approach and rock solid evidence
                                     base of the GIEQs Approach. <br /> <br /></p>
                                 <p class="text-white">Join us in September 2021 for GIEQs II for much more of this
                                     approach...</p>
 
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                    <a href="https://vimeo.com/544320202" data-fancybox>
-                                        <img alt="video image"
-                                            src="https://i.vimeocdn.com/video/1126934937_1280x720?r=pad"
-                                            class="img-fluid mt-2">
-                                    </a>
-                    </div>
-                    <div class="col-sm-6">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <a href="https://vimeo.com/544320202" data-fancybox>
+                                            <img alt="video image"
+                                                src="https://i.vimeocdn.com/video/1126934937_1280x720?r=pad"
+                                                class="img-fluid mt-2">
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6">
 
-                                    <p class="ml-3"><span class="h4">1 - Over the Scope Clip for Upper Gastrointestinal Bleeding</span>
-                                    </p>
+                                        <p class="ml-3"><span class="h4">1 - Over the Scope Clip for Upper
+                                                Gastrointestinal Bleeding</span>
+                                        </p>
 
-                    </div>
+                                    </div>
                                 </div>
 
                                 <div class="row mt-3">
-                                            <div class="col-sm-6">
-                                    <a href="https://vimeo.com/554318938/c7ca7d7344" data-fancybox>
-                                        <img alt="video image"
-                                            src="https://i.vimeocdn.com/video/1148126009_1280x720?r=pad"
-                                            class="img-fluid mt-2">
-                                    </a>
+                                    <div class="col-sm-6">
+                                        <a href="https://vimeo.com/554318938/c7ca7d7344" data-fancybox>
+                                            <img alt="video image"
+                                                src="https://i.vimeocdn.com/video/1148126009_1280x720?r=pad"
+                                                class="img-fluid mt-2">
+                                        </a>
                                     </div>
-                    <div class="col-sm-6">
+                                    <div class="col-sm-6">
 
-                                    <p class="ml-3"><span class="h4">2 - Early Gastric Cancer</span> - Can you identify
-                                        this early gastric cancer? And describe the endoscopic imagig findings
-                                        associated with it? Is it Endoscopically Resectable? Find out here...
-                                    </p>
+                                        <p class="ml-3"><span class="h4">2 - Early Gastric Cancer</span> - Can you
+                                            identify
+                                            this early gastric cancer? And describe the endoscopic imagig findings
+                                            associated with it? Is it Endoscopically Resectable? Find out here...
+                                        </p>
+
+                                    </div>
 
                                 </div>
 
-                    </div>
-                                
 
                                 <div class="row mt-3">
-                                            <div class="col-sm-6">
-                                    <a href="https://vimeo.com/558060403/60a0e3b128" data-fancybox>
-                                        <img alt="video image"
-                                            src="https://i.vimeocdn.com/video/1153413538_1280x720?r=pad"
-                                            class="img-fluid mt-2">
-                                    </a>
+                                    <div class="col-sm-6">
+                                        <a href="https://vimeo.com/558060403/60a0e3b128" data-fancybox>
+                                            <img alt="video image"
+                                                src="https://i.vimeocdn.com/video/1153413538_1280x720?r=pad"
+                                                class="img-fluid mt-2">
+                                        </a>
                                     </div>
-                    <div class="col-sm-6">
-                                    <p class="ml-3"><span class="h4">3 - Demarcated Area as a Predictor of Submucosal Invasion in Colon Polyps</span>
-                                    </p>
+                                    <div class="col-sm-6">
+                                        <p class="ml-3"><span class="h4">3 - Demarcated Area as a Predictor of
+                                                Submucosal Invasion in Colon Polyps</span>
+                                        </p>
 
+                                    </div>
                                 </div>
+
+
+
+
+
                             </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn-small rounded-pill bg-gieqsGold text-dark"
+                                    data-dismiss="modal">Close</button>
 
-                            
-
-
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn-small rounded-pill bg-gieqsGold text-dark"
-                                data-dismiss="modal">Close</button>
-
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
 
 
-        <?php require(BASE_URI . '/footer.php');?>
+            <?php require(BASE_URI . '/footer.php');?>
 
-        <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
-        <!-- <script src="assets/js/purpose.core.js"></script> -->
-        <!-- Page JS -->
-        <script src="assets/libs/swiper/dist/js/swiper.min.js"></script>
-        <script src="assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
-        <script src="assets/libs/typed.js/lib/typed.min.js"></script>
-        <script src="assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script>
-        <script src="assets/libs/jquery-countdown/dist/jquery.countdown.min.js"></script>
-        <!-- Google maps -->
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBuyKngB9VC3zgY_uEB-DKL9BKYMekbeY"></script>
-        <!-- Purpose JS -->
-        <script src="assets/js/purpose.js"></script>
-        <!-- <script src="assets/js/generaljs.js"></script> -->
-        <script src="assets/js/demo.js"></script>
+            <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
+            <!-- <script src="assets/js/purpose.core.js"></script> -->
+            <!-- Page JS -->
+            <script src="assets/libs/swiper/dist/js/swiper.min.js"></script>
+            <script src="assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+            <script src="assets/libs/typed.js/lib/typed.min.js"></script>
+            <script src="assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script>
+            <script src="assets/libs/jquery-countdown/dist/jquery.countdown.min.js"></script>
+            <!-- Google maps -->
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBuyKngB9VC3zgY_uEB-DKL9BKYMekbeY"></script>
+            <!-- Purpose JS -->
+            <script src="assets/js/purpose.js"></script>
+            <!-- <script src="assets/js/generaljs.js"></script> -->
+            <script src="assets/js/demo.js"></script>
 
 
-        <script>
-        var signup = $('#signup').text();
+            <script>
+            var signup = $('#signup').text();
 
-        function submitPreRegisterForm() {
+            function submitPreRegisterForm() {
 
-            var esdLesionObject = pushDataFromFormAJAX("pre-register", "preRegister", "id", null,
-            "0"); //insert new object
+                var esdLesionObject = pushDataFromFormAJAX("pre-register", "preRegister", "id", null,
+                    "0"); //insert new object
 
-            esdLesionObject.done(function(data) {
+                esdLesionObject.done(function(data) {
 
-                console.log(data);
+                    console.log(data);
 
-                var dataTrim = data.trim();
+                    var dataTrim = data.trim();
 
-                console.log(dataTrim);
+                    console.log(dataTrim);
 
-                if (dataTrim) {
+                    if (dataTrim) {
 
-                    try {
+                        try {
 
-                        dataTrim = parseInt(dataTrim);
+                            dataTrim = parseInt(dataTrim);
 
-                        if (dataTrim > 0) {
+                            if (dataTrim > 0) {
 
-                            alert("Thank you for your details.  We will keep you updated on everything GIEQs.");
+                                alert(
+                                    "Thank you for your details.  We will keep you updated on everything GIEQs.");
+                                $("[data-dismiss=modal]").trigger({
+                                    type: "click"
+                                });
+
+                            }
+
+                        } catch (error) {
+
+                            //data not entered
+                            console.log('error parsing integer');
                             $("[data-dismiss=modal]").trigger({
                                 type: "click"
                             });
 
+
                         }
 
-                    } catch (error) {
-
-                        //data not entered
-                        console.log('error parsing integer');
-                        $("[data-dismiss=modal]").trigger({
-                            type: "click"
+                        //$('#success').text("New esdLesion no "+data+" created");
+                        //$('#successWrapper').show();
+                        /* $("#successWrapper").fadeTo(4000, 500).slideUp(500, function() {
+                          $("#successWrapper").slideUp(500);
                         });
+                        edit = 1;
+                        $("#id").text(data);
+                        esdLesionPassed = data;
+                        fillForm(data); */
 
+
+
+
+                    } else {
+
+                        alert("No data inserted, try again");
 
                     }
 
-                    //$('#success').text("New esdLesion no "+data+" created");
-                    //$('#successWrapper').show();
-                    /* $("#successWrapper").fadeTo(4000, 500).slideUp(500, function() {
-                      $("#successWrapper").slideUp(500);
-                    });
-                    edit = 1;
-                    $("#id").text(data);
-                    esdLesionPassed = data;
-                    fillForm(data); */
 
-
-
-
-                } else {
-
-                    alert("No data inserted, try again");
-
-                }
-
-
-            });
-        }
-
-        function stopVideo() {
-            var $frame = $('iframe#videoChapter');
-
-            // saves the current iframe source
-            var vidsrc = $frame.attr('src');
-
-            // sets the source to nothing, stopping the video
-            $frame.attr('src', '');
-
-            // sets it back to the correct link so that it reloads immediately on the next window open
-            $frame.attr('src', vidsrc);
-        }
-
-
-
-        $(document).ready(function() {
-
-            if (signup == '2456') {
-
-                $('#registerInterest').modal('show');
-
+                });
             }
 
-            $('#registerInterest').on('hidden.bs.modal', function(e) {
-                stopVideo();
-            })
+            function stopVideo() {
+                var $frame = $('iframe#videoChapter');
+
+                // saves the current iframe source
+                var vidsrc = $frame.attr('src');
+
+                // sets the source to nothing, stopping the video
+                $frame.attr('src', '');
+
+                // sets it back to the correct link so that it reloads immediately on the next window open
+                $frame.attr('src', vidsrc);
+            }
 
 
 
-            $(document).on('click', '#submitPreRegister', function() {
+            $(document).ready(function() {
 
-                event.preventDefault();
-                $('#pre-register').submit();
+                if (signup == '2456') {
 
-            })
-
-            $("#pre-register").validate({
-
-                invalidHandler: function(event, validator) {
-                    var errors = validator.numberOfInvalids();
-                    console.log("there were " + errors + " errors");
-                    if (errors) {
-                        var message = errors == 1 ?
-                            "1 field contains errors. It has been highlighted" :
-                            +errors + " fields contain errors. They have been highlighted";
-
-
-                        $('#error').text(message);
-                        //$('div.error span').addClass('form-text text-danger');
-                        //$('#errorWrapper').show();
-
-                        $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function() {
-                            $("#errorWrapper").slideUp(500);
-                        });
-                    } else {
-                        $('#errorWrapper').hide();
-                    }
-                },
-                rules: {
-                    name: {
-                        required: true,
-                    },
-                    email: {
-                        required: true,
-                        email: true,
-                    },
-
-                },
-                submitHandler: function(form) {
-
-                    submitPreRegisterForm();
-
-                    //console.log("submitted form");
-
-
+                    $('#registerInterest').modal('show');
 
                 }
 
+                $('#registerInterest').on('hidden.bs.modal', function(e) {
+                    stopVideo();
+                })
 
 
 
-            });
+                $(document).on('click', '#submitPreRegister', function() {
+
+                    event.preventDefault();
+                    $('#pre-register').submit();
+
+                })
+
+                $("#pre-register").validate({
+
+                    invalidHandler: function(event, validator) {
+                        var errors = validator.numberOfInvalids();
+                        console.log("there were " + errors + " errors");
+                        if (errors) {
+                            var message = errors == 1 ?
+                                "1 field contains errors. It has been highlighted" :
+                                +errors + " fields contain errors. They have been highlighted";
 
 
-        })
-        </script>
+                            $('#error').text(message);
+                            //$('div.error span').addClass('form-text text-danger');
+                            //$('#errorWrapper').show();
+
+                            $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function() {
+                                $("#errorWrapper").slideUp(500);
+                            });
+                        } else {
+                            $('#errorWrapper').hide();
+                        }
+                    },
+                    rules: {
+                        name: {
+                            required: true,
+                        },
+                        email: {
+                            required: true,
+                            email: true,
+                        },
+
+                    },
+                    submitHandler: function(form) {
+
+                        submitPreRegisterForm();
+
+                        //console.log("submitted form");
+
+
+
+                    }
+
+
+
+
+                });
+
+
+            })
+            </script>
 </body>
 
 </html>
