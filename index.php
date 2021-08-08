@@ -1014,25 +1014,64 @@ for Continuing Medical Education (EACCME)">
                         <div id="videoDisplay mb-3" class="">
 
                             <div class="row">
-                                <p class="h5 mt-2">Released prior to the early bird deadline, these 4 snippets
+                                <p class="h5 mt-2">Released prior to the early bird deadline, these 6, 1-2 minute video snippets
                                     demonstrate the attention to detail, deconstructed approach and rock solid evidence
                                     base of the GIEQs Approach. <br /> <br /></p>
                                 <p class="text-white">Join us in September 2021 for GIEQs II for much more of this
                                     approach...</p>
 
-                                <div class="d-flex">
-                                    <a href="https://vimeo.com/554318938/c7ca7d7344" data-fancybox>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                    <a href="https://vimeo.com/544320202" data-fancybox>
                                         <img alt="video image"
-                                            src="https://i.vimeocdn.com/video/1019061981_1280x720?r=pad"
+                                            src="https://i.vimeocdn.com/video/1126934937_1280x720?r=pad"
                                             class="img-fluid mt-2">
                                     </a>
-                                    <p class="ml-3"><span class="h4">1 - Early Gastric Cancer</span> - Can you identify
+                    </div>
+                    <div class="col-sm-6">
+
+                                    <p class="ml-3"><span class="h4">1 - Over the Scope Clip for Upper Gastrointestinal Bleeding</span>
+                                    </p>
+
+                    </div>
+                                </div>
+
+                                <div class="row mt-3">
+                                            <div class="col-sm-6">
+                                    <a href="https://vimeo.com/554318938/c7ca7d7344" data-fancybox>
+                                        <img alt="video image"
+                                            src="https://i.vimeocdn.com/video/1148126009_1280x720?r=pad"
+                                            class="img-fluid mt-2">
+                                    </a>
+                                    </div>
+                    <div class="col-sm-6">
+
+                                    <p class="ml-3"><span class="h4">2 - Early Gastric Cancer</span> - Can you identify
                                         this early gastric cancer? And describe the endoscopic imagig findings
                                         associated with it? Is it Endoscopically Resectable? Find out here...
                                     </p>
 
                                 </div>
+
+                    </div>
+                                
+
+                                <div class="row mt-3">
+                                            <div class="col-sm-6">
+                                    <a href="https://vimeo.com/558060403/60a0e3b128" data-fancybox>
+                                        <img alt="video image"
+                                            src="https://i.vimeocdn.com/video/1153413538_1280x720?r=pad"
+                                            class="img-fluid mt-2">
+                                    </a>
+                                    </div>
+                    <div class="col-sm-6">
+                                    <p class="ml-3"><span class="h4">3 - Demarcated Area as a Predictor of Submucosal Invasion in Colon Polyps</span>
+                                    </p>
+
+                                </div>
                             </div>
+
+                            
 
 
 
