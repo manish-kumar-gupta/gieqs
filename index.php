@@ -229,6 +229,17 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                 <div class="col">
                     <div class="row">
                         <div class="col-lg-10 col-xl-10 text-center text-lg-left">
+
+                        <a class="ml-3 pointer" data-toggle="modal" data-target="#teaser-videos">
+                                <div class="alert alert-modern alert-dark">
+                                <span class="badge gieqsGold badge-pill">
+                                        New
+                                    </span>
+                                    <span class="alert-content">View GIEQs II Teaser Videos
+                                    </span>
+                                </div>
+                            </a>
+
                             <a href="https://www.gieqs.com/pages/program/gieqs_ii.php">
                                 <div class="alert alert-modern alert-dark">
                                     <span class="badge gieqsGold badge-pill">
@@ -256,16 +267,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                 </div>
                             </a>
 
-                            <a class="ml-3 pointer" data-toggle="modal" data-target="#teaser-videos">
-                                <div class="alert alert-modern alert-dark">
-                                    <span class="badge gieqsGold badge-pill">
-                                        <i class="fas fa-notes-medical"></i>
-                                    </span>
-
-                                    <span class="alert-content">Teaser Videos GIEQs II
-                                    </span>
-                                </div>
-                            </a>
+                            
 
                             <!--                              <div class="countdown" data-countdown-date="10/07/2020" data-countdown-label="hide"></div>
  -->
@@ -296,6 +298,14 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                     style="background-color: rgb(238, 194, 120);">
                                     <span class="btn-inner--text">Find Out More + Register for GIEQs
                                         II<sup></sup></span>
+                                    <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
+
+                                </a>
+
+                                <a href=""
+                                    class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me m-2 teaser-popup"
+                                    style="background-color: rgb(238, 194, 120);">
+                                    <span class="btn-inner--text">Watch Teaser Videos<sup></sup></span>
                                     <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
 
                                 </a>
@@ -1004,9 +1014,9 @@ for Continuing Medical Education (EACCME)">
         <div class="modal fade" id="teaser-videos" tabindex="-1" role="dialog" aria-labelledby="teaser-videos"
             aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered modal-dark" role="document">
-                <div class="modal-content p-3">
+                <div class="modal-content p-1">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="accreditationLabel" style="color: rgb(238, 194, 120);">GIEQs II
+                        <h5 class="display-4 modal-title" id="accreditationLabel" style="color: rgb(238, 194, 120);">GIEQs II
                             Teaser Videos</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span class="text-white" aria-hidden="false">&times;</span>
@@ -1017,25 +1027,26 @@ for Continuing Medical Education (EACCME)">
                         <div id="videoDisplay mb-3" class="">
 
                             <div class="row">
-                                <p class="h5 mt-2">Released prior to the early bird deadline, these 6, 1-2 minute video
+                                <p class="h5 mt-2">Released prior to the early bird deadline for our <span style="text-decoration:underline;"><a href="https://www.gieqs.com/ii">flagship symposium</a></span> in Everyday Endoscopy, these 6, 1-2 minute video
                                     snippets
                                     demonstrate the attention to detail, deconstructed approach and rock solid evidence
                                     base of the GIEQs Approach. <br /> <br /></p>
-                                <p class="text-white">Join us in September 2021 for GIEQs II for much more of this
+                                <p class="text-white">Please enjoy them and <span class="gieqsGold"><a href="https://www.gieqs.com/ii">join us in September 2021</a> </span>for GIEQs II for much more of this
                                     approach...</p>
 
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <a href="https://vimeo.com/544320202" data-fancybox>
                                             <img alt="video image"
-                                                src="https://i.vimeocdn.com/video/1126934937_1280x720?r=pad"
+                                                src="https://i.vimeocdn.com/video/1126626828_1280x720?r=pad"
                                                 class="img-fluid mt-2">
                                         </a>
                                     </div>
                                     <div class="col-sm-6">
 
                                         <p class="ml-3"><span class="h4">1 - Over the Scope Clip for Upper
-                                                Gastrointestinal Bleeding</span>
+                                                Gastrointestinal Bleeding</span><br/><span class="text-muted">Use of OTSC as first-line for life 
+                                                threatening upper gastrointestinal haemorrhage.</span>
                                         </p>
 
                                     </div>
@@ -1051,10 +1062,9 @@ for Continuing Medical Education (EACCME)">
                                     </div>
                                     <div class="col-sm-6">
 
-                                        <p class="ml-3"><span class="h4">2 - Early Gastric Cancer</span> - Can you
-                                            identify
-                                            this early gastric cancer? And describe the endoscopic imagig findings
-                                            associated with it? Is it Endoscopically Resectable? Find out here...
+                                        <p class="ml-3"><span class="h4">2 - Early Gastric Cancer</span><br/><span class="text-muted">Can you
+                                            identify and characterise 
+                                            this early gastric cancer? Watch the video for more information including endoscopic resectability</span>
                                         </p>
 
                                     </div>
@@ -1066,13 +1076,59 @@ for Continuing Medical Education (EACCME)">
                                     <div class="col-sm-6">
                                         <a href="https://vimeo.com/558060403/60a0e3b128" data-fancybox>
                                             <img alt="video image"
-                                                src="https://i.vimeocdn.com/video/1153413538_1280x720?r=pad"
+                                                src="https://i.vimeocdn.com/video/1209723683_1280x720?r=pad"
                                                 class="img-fluid mt-2">
                                         </a>
                                     </div>
                                     <div class="col-sm-6">
-                                        <p class="ml-3"><span class="h4">3 - Demarcated Area as a Predictor of
-                                                Submucosal Invasion in Colon Polyps</span>
+                                        <p class="ml-3"><span class="h4">3 - The Demarcated Area as a Predictor of
+                                                Submucosal Invasion in Colon Polyps</span><br/> <span class="text-muted">the Demarcated Area has emerged as a stable predictor of submucosal invasive cancer.  Find out more here.</span>
+                                        </p>
+
+                                    </div>
+                                </div>
+
+                                <div class="row mt-3">
+                                    <div class="col-sm-6">
+                                        <a href="https://vimeo.com/566734386/dab5d063ba" data-fancybox>
+                                            <img alt="video image"
+                                                src="https://i.vimeocdn.com/video/1209716933_1280x720?r=pad"
+                                                class="img-fluid mt-2">
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="ml-3"><span class="h4">4 - Dealing with Adverse Events at Colonic Polypectomy</span><br/><span class="text-muted">
+                                        To be able to competently perform colonic polypectomy you must be able to deal with adverse events.   A deconstructed example is shown here.</span>
+                                        </p>
+
+                                    </div>
+                                </div>
+                                
+                                <div class="row mt-3">
+                                    <div class="col-sm-6">
+                                        <a href="https://vimeo.com/569339891/d436733eba" data-fancybox>
+                                            <img alt="video image"
+                                                src="https://i.vimeocdn.com/video/1177464087_1280x720?r=pad"
+                                                class="img-fluid mt-2">
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="ml-3"><span class="h4">5 - Complex EUS applications to make Everyday ERCP easier</span><br/><span class="text-muted">Endoscopic Ultrasound is radically changing the way we approach biliary intervention and can make a difference to everyday endoscopic problems.</span>
+                                        </p>
+
+                                    </div>
+                                </div>
+
+                                <div class="row mt-3">
+                                    <div class="col-sm-6">
+                                        <a href="https://vimeo.com/570805121/11be30d98a" data-fancybox>
+                                            <img alt="video image"
+                                                src="https://i.vimeocdn.com/video/1180469446_1280x720?r=pad"
+                                                class="img-fluid mt-2">
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="ml-3"><span class="h4">6 - Decision Making after Large perforation and life threatening Bleeding during Polypectomy</span><br/><span class="text-muted">Many of the GIEQs faculty spend their normal working lives on complex endoscopy.  Learning the lessons and approach from these procedures, deconstructing them and bringing them to the everyday is a crucial part of the GIEQs approach.</span>
                                         </p>
 
                                     </div>
@@ -1092,6 +1148,7 @@ for Continuing Medical Education (EACCME)">
                     </div>
                 </div>
             </div>
+                    </div>
 
 
 
@@ -1196,6 +1253,15 @@ for Continuing Medical Education (EACCME)">
 
             $(document).ready(function() {
 
+                var isshow = localStorage.getItem('isshow');
+                if (isshow== null) {
+                    localStorage.setItem('isshow', 1);
+
+                    // Show popup here
+                    $('#teaser-videos').modal('show');
+                }
+
+
                 if (signup == '2456') {
 
                     $('#registerInterest').modal('show');
@@ -1214,6 +1280,13 @@ for Continuing Medical Education (EACCME)">
                     $('#pre-register').submit();
 
                 })
+
+                $(document).on('click', '.teaser-popup', function() {
+
+event.preventDefault();
+$('#teaser-videos').modal('show');
+
+})
 
                 $("#pre-register").validate({
 

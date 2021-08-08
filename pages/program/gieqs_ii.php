@@ -361,39 +361,120 @@ var_dump($currentTime);
                             treatment
                             decision for your patient. </p>
 
+                            <hr class="divider divider-fade" />
 
+                            <section class="slice bg-dark">
+                            <h3 class="display-3 mt-2 text-gieqsGold">Teaser Videos</h3>
 
-                        <section
-                            class="bg-dark slice-video slice-xl d-flex align-items-center bg-cover bg-size--cover p-0 mt-6"
-                            style="background-image: url(https://www.gieqs.com/assets/img/covers/ovesco.png);">
-                            <span class="mask bg-gradient-dark opacity-2"></span>
-                            <div class="container">
-                                <div class="col">
-                                    <div class="row justify-content-center">
-                                        <div class="col-md-10 text-center">
-                                            <h2 class="display-4 text-white">
-                                                
-                                            </h2>
-                                            <!-- <h4 class="text-white mt-3">This example footage of our presentation style may help convince
-                                you!</h4> -->
-                                            <a href="https://vimeo.com/544320202" data-fancybox="" data-toggle="tooltip"
-                                                data-placement="bottom" title=""
-                                                class="btn btn-white btn-icon-only rounded-circle hover-scale-110 mt-4"
-                                                data-original-title="Watch video">
-                                                <span class="btn-inner--icon">
-                                                    <i class="fas fa-play"></i>
-                                                </span>
-                                            </a>
-                                        </div>
+                            <div class="row">
+                                <p class="h5 mt-2">Released prior to the early bird deadline these 6, 1-2 minute video
+                                    snippets
+                                    demonstrate the attention to detail, deconstructed approach and rock solid evidence
+                                    base of the GIEQs Approach. <br /> <br /></p>
+                               
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <a href="https://vimeo.com/544320202" data-fancybox>
+                                            <img alt="video image"
+                                                src="https://i.vimeocdn.com/video/1126626828_1280x720?r=pad"
+                                                class="img-fluid mt-2">
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6">
+
+                                        <p class="ml-3"><span class="h4">1 - Over the Scope Clip for Upper
+                                                Gastrointestinal Bleeding</span><br/><span class="text-muted">Use of OTSC as first-line for life 
+                                                threatening upper gastrointestinal haemorrhage.</span>
+                                        </p>
+
                                     </div>
                                 </div>
-                            </div>
+                                <div class="row mt-3">
+                                    <div class="col-sm-6">
+                                        <a href="https://vimeo.com/554318938/c7ca7d7344" data-fancybox>
+                                            <img alt="video image"
+                                                src="https://i.vimeocdn.com/video/1148126009_1280x720?r=pad"
+                                                class="img-fluid mt-2">
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6">
+
+                                        <p class="ml-3"><span class="h4">2 - Early Gastric Cancer</span><br/><span class="text-muted">Can you
+                                            identify and characterise 
+                                            this early gastric cancer? Watch the video for more information including endoscopic resectability</span>
+                                        </p>
+
+                                    </div>
+
+                                </div>
 
 
+                                <div class="row mt-3">
+                                    <div class="col-sm-6">
+                                        <a href="https://vimeo.com/558060403/60a0e3b128" data-fancybox>
+                                            <img alt="video image"
+                                                src="https://i.vimeocdn.com/video/1209723683_1280x720?r=pad"
+                                                class="img-fluid mt-2">
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="ml-3"><span class="h4">3 - The Demarcated Area as a Predictor of
+                                                Submucosal Invasion in Colon Polyps</span><br/> <span class="text-muted">the Demarcated Area has emerged as a stable predictor of submucosal invasive cancer.  Find out more here.</span>
+                                        </p>
 
-                        </section>
-                        <p class="mx-6 my-4">This video will give you a flavour of what GIEQs is about.  It is shown using our custom viewer on <a href="https://www.gieqs.com/online">GIEQs Online</a>.  The application of <b>excellent technique</b> and the <b>latest evidence</b> to bring <b>safe and effective diagnostic and therapeutic interventions</b> to patient care</p>
+                                    </div>
+                                </div>
 
+                                <div class="row mt-3">
+                                    <div class="col-sm-6">
+                                        <a href="https://vimeo.com/566734386/dab5d063ba" data-fancybox>
+                                            <img alt="video image"
+                                                src="https://i.vimeocdn.com/video/1209716933_1280x720?r=pad"
+                                                class="img-fluid mt-2">
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="ml-3"><span class="h4">4 - Dealing with Adverse Events at Colonic Polypectomy</span><br/><span class="text-muted">
+                                        To be able to competently perform colonic polypectomy you must be able to deal with adverse events.   A deconstructed example is shown here.</span>
+                                        </p>
+
+                                    </div>
+                                </div>
+                                
+                                <div class="row mt-3">
+                                    <div class="col-sm-6">
+                                        <a href="https://vimeo.com/569339891/d436733eba" data-fancybox>
+                                            <img alt="video image"
+                                                src="https://i.vimeocdn.com/video/1177464087_1280x720?r=pad"
+                                                class="img-fluid mt-2">
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="ml-3"><span class="h4">5 - Complex EUS applications to make Everyday ERCP easier</span><br/><span class="text-muted">Endoscopic Ultrasound is radically changing the way we approach biliary intervention and can make a difference to everyday endoscopic problems.</span>
+                                        </p>
+
+                                    </div>
+                                </div>
+
+                                <div class="row mt-3">
+                                    <div class="col-sm-6">
+                                        <a href="https://vimeo.com/570805121/11be30d98a" data-fancybox>
+                                            <img alt="video image"
+                                                src="https://i.vimeocdn.com/video/1180469446_1280x720?r=pad"
+                                                class="img-fluid mt-2">
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="ml-3"><span class="h4">6 - Decision Making after Large perforation and life threatening Bleeding during Polypectomy</span><br/><span class="text-muted">Many of the GIEQs faculty spend their normal working lives on complex endoscopy.  Learning the lessons and approach from these procedures, deconstructing them and bringing them to the everyday is a crucial part of the GIEQs approach.</span>
+                                        </p>
+
+                                    </div>
+                                </div>
+                                </div>
+                    </section>
+
+                       
                     </div>
 
                 </div>
@@ -1096,6 +1177,145 @@ var_dump($currentTime);
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="teaser-videos" tabindex="-1" role="dialog" aria-labelledby="teaser-videos"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dark" role="document">
+                <div class="modal-content p-1">
+                    <div class="modal-header">
+                        <h5 class="display-4 modal-title" id="accreditationLabel" style="color: rgb(238, 194, 120);">GIEQs II
+                            Teaser Videos</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span class="text-white" aria-hidden="false">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div id="videoDisplay mb-3" class="">
+
+                            <div class="row">
+                                <p class="h5 mt-2">Released prior to the early bird deadline for our <span style="text-decoration:underline;"><a href="https://www.gieqs.com/ii">flagship symposium</a></span> in Everyday Endoscopy, these 6, 1-2 minute video
+                                    snippets
+                                    demonstrate the attention to detail, deconstructed approach and rock solid evidence
+                                    base of the GIEQs Approach. <br /> <br /></p>
+                                <p class="text-white">Please enjoy them and <span class="gieqsGold"><a href="https://www.gieqs.com/ii">join us in September 2021</a> </span>for GIEQs II for much more of this
+                                    approach...</p>
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <a href="https://vimeo.com/544320202" data-fancybox>
+                                            <img alt="video image"
+                                                src="https://i.vimeocdn.com/video/1126626828_1280x720?r=pad"
+                                                class="img-fluid mt-2">
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6">
+
+                                        <p class="ml-3"><span class="h4">1 - Over the Scope Clip for Upper
+                                                Gastrointestinal Bleeding</span><br/><span class="text-muted">Use of OTSC as first-line for life 
+                                                threatening upper gastrointestinal haemorrhage.</span>
+                                        </p>
+
+                                    </div>
+                                </div>
+
+                                <div class="row mt-3">
+                                    <div class="col-sm-6">
+                                        <a href="https://vimeo.com/554318938/c7ca7d7344" data-fancybox>
+                                            <img alt="video image"
+                                                src="https://i.vimeocdn.com/video/1148126009_1280x720?r=pad"
+                                                class="img-fluid mt-2">
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6">
+
+                                        <p class="ml-3"><span class="h4">2 - Early Gastric Cancer</span><br/><span class="text-muted">Can you
+                                            identify and characterise 
+                                            this early gastric cancer? Watch the video for more information including endoscopic resectability</span>
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="row mt-3">
+                                    <div class="col-sm-6">
+                                        <a href="https://vimeo.com/558060403/60a0e3b128" data-fancybox>
+                                            <img alt="video image"
+                                                src="https://i.vimeocdn.com/video/1209723683_1280x720?r=pad"
+                                                class="img-fluid mt-2">
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="ml-3"><span class="h4">3 - The Demarcated Area as a Predictor of
+                                                Submucosal Invasion in Colon Polyps</span><br/> <span class="text-muted">the Demarcated Area has emerged as a stable predictor of submucosal invasive cancer.  Find out more here.</span>
+                                        </p>
+
+                                    </div>
+                                </div>
+
+                                <div class="row mt-3">
+                                    <div class="col-sm-6">
+                                        <a href="https://vimeo.com/566734386/dab5d063ba" data-fancybox>
+                                            <img alt="video image"
+                                                src="https://i.vimeocdn.com/video/1209716933_1280x720?r=pad"
+                                                class="img-fluid mt-2">
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="ml-3"><span class="h4">4 - Dealing with Adverse Events at Colonic Polypectomy</span><br/><span class="text-muted">
+                                        To be able to competently perform colonic polypectomy you must be able to deal with adverse events.   A deconstructed example is shown here.</span>
+                                        </p>
+
+                                    </div>
+                                </div>
+                                
+                                <div class="row mt-3">
+                                    <div class="col-sm-6">
+                                        <a href="https://vimeo.com/569339891/d436733eba" data-fancybox>
+                                            <img alt="video image"
+                                                src="https://i.vimeocdn.com/video/1177464087_1280x720?r=pad"
+                                                class="img-fluid mt-2">
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="ml-3"><span class="h4">5 - Complex EUS applications to make Everyday ERCP easier</span><br/><span class="text-muted">Endoscopic Ultrasound is radically changing the way we approach biliary intervention and can make a difference to everyday endoscopic problems.</span>
+                                        </p>
+
+                                    </div>
+                                </div>
+
+                                <div class="row mt-3">
+                                    <div class="col-sm-6">
+                                        <a href="https://vimeo.com/570805121/11be30d98a" data-fancybox>
+                                            <img alt="video image"
+                                                src="https://i.vimeocdn.com/video/1180469446_1280x720?r=pad"
+                                                class="img-fluid mt-2">
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="ml-3"><span class="h4">6 - Decision Making after Large perforation and life threatening Bleeding during Polypectomy</span><br/><span class="text-muted">Many of the GIEQs faculty spend their normal working lives on complex endoscopy.  Learning the lessons and approach from these procedures, deconstructing them and bringing them to the everyday is a crucial part of the GIEQs approach.</span>
+                                        </p>
+
+                                    </div>
+                                </div>
+
+
+
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn-small rounded-pill bg-gieqsGold text-dark"
+                                    data-dismiss="modal">Close</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                    </div>
 
     <?php require BASE_URI . '/footer.php';?>
 

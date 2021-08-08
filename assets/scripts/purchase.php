@@ -736,7 +736,9 @@ function launchSubscriptionDialog(subscriptionType) {
 
                             if (externalTest.location_jump) {
 
+                                $('.modal-subscribe-new').modal('hide');
                                 window.location.href = externalTest.location_jump;
+                                return;
 
                             }
 

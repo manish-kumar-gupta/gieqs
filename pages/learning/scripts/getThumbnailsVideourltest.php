@@ -288,7 +288,7 @@ $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
 
 			    <div id='imageDisplay'>
 
-                <?php $response = $client->request('/videos/' . '558060403');
+                <?php $response = $client->request('/videos/' . '544188060');
 
                 //print_r($response);
 
