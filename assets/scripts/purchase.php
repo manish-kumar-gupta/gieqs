@@ -1239,6 +1239,10 @@ $(document).ready(function() {
                         if (externalTest.location_jump) {
 
                             window.location.href = externalTest.location_jump;
+                            $('.modal-new').modal('hide');
+                            $(button).find('i').remove();
+                            $(button).attr('disabled', false);
+                            return;
 
                         }
 
