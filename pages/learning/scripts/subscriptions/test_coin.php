@@ -157,7 +157,7 @@ if ($debug){
 
                 //check how many already given
 
-                $count = $userFunctions->returnRecentCoinGrantStandardSubscription(user_id_subscription, false);
+                $count = $userFunctions->returnRecentCoinGrantStandardSubscription($user_id_subscription, false);
 
                
                 $numberOfTimes = $count[0];
@@ -216,7 +216,15 @@ if ($debug){
 
             }else{
 
-                echo 'Subscription  is not active';
+                
+            //subscription is inactive but should be active
+            //should autorenew since this is a subscription
+
+            $subscription->setactive('1');
+            $subscription->setauto_renew('1');
+            $subscription->prepareStatementPDOUpdate();
+
+
             }
 
 
@@ -231,13 +239,10 @@ if ($debug){
 
         }else{
 
-            //subscription is inactive but should be active
-            //should autorenew since this is a subscription
 
-            $subscription->setactive('1');
-            $subscription->setauto_renew('1');
-            $subscription->prepareStatementPDOUpdate();
+          //cannot find subscription or is not active  
 
+          echo 'Cannot find subscription';
 
 
         }
