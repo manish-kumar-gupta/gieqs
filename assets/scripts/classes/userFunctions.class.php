@@ -1768,12 +1768,59 @@ public function returnEmails($users)
 	
 		}
 
+		
+
 		public function returnRecentCoinTransactionUserAll($userid, $debug=false){
 
 			//returns only the most recent
 	
 			//$q = "SELECT count(`id`) as `count` FROM `userActivity` WHERE `user_id` = '$userid' AND `activity_time` > '$sqltimestamp' AND `session_id` <> '99'";
 			$q = "SELECT `id`, `session_id` FROM `userActivity` WHERE `user_id` = '$userid' AND `session_id` LIKE 'TEMP_COIN%%%' ORDER BY `activity_time` DESC";
+	
+
+			if ($debug == true){
+			echo $q;
+			}
+	
+			$result = $this->connection->RunQuery($q);
+	
+				$returnArray = [];
+				$x=1;
+				$nRows = $result->rowCount();
+	
+				while($row = $result->fetch(PDO::FETCH_ASSOC)){
+	
+					//$count = $row['count'];
+					$returnArray[$x]['id'] = $row['id'];
+					$returnArray[$x]['transaction_id'] = preg_replace('/[^0-9]/', '', $row['session_id']);
+					$x++;
+	
+				}
+	
+				//echo $count;
+				
+				if ($nRows > 0){
+	
+
+					$returnArray[0]['count'] = $nRows;
+					
+					return $returnArray;
+	
+					
+				}else{
+	
+					return false; // allow login
+				}
+	
+	
+		}
+
+		public function returnRecentCoinGrantStandardSubscription($userid, $debug=false){
+
+			//returns only the most recent
+	
+			//$q = "SELECT count(`id`) as `count` FROM `userActivity` WHERE `user_id` = '$userid' AND `activity_time` > '$sqltimestamp' AND `session_id` <> '99'";
+			$q = "SELECT `id`, `session_id` FROM `userActivity` WHERE `user_id` = '$userid' AND `session_id` LIKE 'COIN_GRANT_STANDARD%%%' ORDER BY `activity_time` DESC";
 	
 
 			if ($debug == true){

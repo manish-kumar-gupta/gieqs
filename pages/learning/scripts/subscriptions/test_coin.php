@@ -73,8 +73,187 @@ error_reporting(E_ALL);
 
 echo 'hello';
 
+/*TEST SUB LENGTH*/
+
+
+$subscription_id = '1024';
+
+if ($debug){
+
+    echo 'Looking for subscription ' . $subscription_id;
+    echo '<br/';
+
+}
+
+        if ($subscription->Return_row($subscription_id)){
+
+
+
+if ($debug){
+
+    echo 'Found subscription ' . $subscription_id;
+    echo '<br/';
+
+}
+
+        
+        $subscription->Load_from_key($subscription_id);
+
+        if ($subscription->getactive() == '1'){
+
+            if ($debug){
+
+                echo 'subscription ' . $subscription_id . ' is active';
+                echo '<br/';
+            
+            }
+
+            //subscription already active
+            //give subcription make sure autorenew is 1
+            $subscription->setauto_renew('1');
+            $subscription->prepareStatementPDOUpdate();
+
+            //get the user id 
+
+            $user_id_subscription = $subscription->getuser_id();
+
+            if ($debug){
+
+                echo 'user id is  ' . $user_id_subscription . '';
+                echo '<br/';
+            
+            }
+
+            //TODO SOON TODO
+            //length (months) of subscription
+
+            $lengthSubscription = $assetManager->getLengthSubscription($subscription_id, false);
+
+            
+            if ($debug){
+
+                echo 'length of subscriptionn is  ' . $lengthSubscription . '';
+                echo '<br/';
+            
+            }
+            //write a useractivity 6 month coin grant
+
+            //if > 6 months
+
+            //GRANT AMOUNT
+            //CHANGE ME
+
+            $coin_grant_amount = 50; //the amount credited every 6 months
+
+            if ($debug){
+
+                echo 'amount to grant  is  ' . $coin_grant_amount . '';
+                echo '<br/';
+            
+            }
+
+
+            if ($lengthSubscription >= 6){
+
+                //check how many already given
+
+                $count = $userFunctions->returnRecentCoinGrantStandardSubscription(user_id_subscription, false);
+
+               
+                $numberOfTimes = $count[0];
+
+                if ($debug){
+
+                    echo 'already given ($numberOfTimes) is' . $count . '';
+                    echo '<br/';
+                
+                }
+
+
+                //if multiples work out
+
+                //number should be
+
+                $numberShouldBe = $lengthSubscription / 6;
+
+                if ($debug){
+
+                    echo 'number should be  ($numberShouldBe) is' . $numberShouldBe . '';
+                    echo '<br/';
+                
+                }
+
+                if (($numberOfTimes > 0) && ($numberOfTimes < $numberShouldBe)){
+
+                    if ($debug){
+
+                        echo 'Time to record another subscription and give coins';
+
+                    }
+
+                    $date = new DateTime('now', new DateTimeZone('UTC'));
+                    $sqltimestamp = date_format($date, 'Y-m-d H:i:s');
+
+                    $userActivity->New_userActivity($user_id_subscription, 'COIN_GRANT_STANDARD_SUBSCRIPTION_' . $lengthSubscription . 'MONTHS '. $coin_grant_amount , '', $sqltimestamp);
+                    $userActivity->prepareStatementPDO();
+
+                    $coin_grant->New_coin_grant($sqltimestamp, $coin_grant_amount, $userid);
+                    $new_grant_id = $coin_grant->prepareStatementPDO();
+        
+    
+
+                }
+
+                }else{
+
+                    if ($debug){
+
+                        echo 'NOT TIME to record another subscription and give coins OR ALREADY DONE';
+
+                    }
+
+                }
+
+            }else{
+
+                echo 'Subscription  is not active';
+            }
+
+
+
+            //detect the previous useractivity if >6, 2 if over 12 etc
+            //if first or 6 months grant coins if it is a STANDARD
+            //pro gives everything
+
+            //could send mail thanks for updating payment information
+
+
+
+        }else{
+
+            //subscription is inactive but should be active
+            //should autorenew since this is a subscription
+
+            $subscription->setactive('1');
+            $subscription->setauto_renew('1');
+            $subscription->prepareStatementPDOUpdate();
+
+
+
+        }
+
+
+    
+
+
+
+
+die();
 
 /* 
+
+
+
 //GIVE COINS TO USER
 
 //get mysql date UTC

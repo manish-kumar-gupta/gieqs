@@ -248,7 +248,7 @@ padding-bottom: .75rem; */
                 <div class="container">
                     <div class="row row-grid align-items-center justify-content-around">
 
-                        <div class="col-lg-5 order-lg-1">
+                        <div class="col-lg-7 order-lg-1">
                             <div class="pr-md-4">
                                 <h5 class="h3">3 Charitable Goals.</h5>
                                 <p class="text-muted lead my-4">We have committed to 3 charitable aims as part of the missin of the GIEQs Foundation:
@@ -299,8 +299,8 @@ padding-bottom: .75rem; */
 
                             </div>
                         </div>
-                        <div class="col-lg-6 order-lg-1">
-                            <div class="position-relative" style="z-index: 10;">
+                        <div class="col-lg-5 order-lg-1">
+                            <div class="text-center position-relative" style="z-index: 10;">
                             
 <svg attribution-text="Charity by Made by Made from the Noun Project" style="width: 55% !important;" viewBox="0 0 54 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(1,0,0,1,-23.1847,-13.8)">
