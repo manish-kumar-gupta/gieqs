@@ -887,7 +887,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                             <div class="col-lg-10 col-xl-10 text-center">
                                 <div class="icon-xl icon-shape bg-white mr-3 p-2">
                                     <a href="https://www.riziv.fgov.be/" target="_blank">
-                                        <img src="<?php echo BASE_URL;?>/assets/img/icons/riziv.png" alt="RIZIV" data-toggle="tooltip" data-placement="bottom" title="Rijksinstituut voor ziekte- en invaliditeitsverzekering">
+                                        <img src="<?php echo BASE_URL;?>/assets/img/icons/INAMI LOGO.png" alt="RIZIV INAMI" data-toggle="tooltip" data-placement="bottom" title="RIZIV INAMI">
                                     </a>
                                 </div>
                             </div>
