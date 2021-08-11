@@ -844,63 +844,100 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
         aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered modal-dark" role="document">
             <div class="modal-content">
+
                 <div class="modal-header">
                     <h5 class="modal-title" id="accreditationLabel" style="color: rgb(238, 194, 120);">GIEQs Accreditation Statement</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span class="text-white" aria-hidden="false">&times;</span>
                     </button>
                 </div>
+
                 <div class="modal-body">
-                
-            <div id="videoDisplay mb-3" class="">
-                    
-            <div class="row">
-                <p class="h5 mt-5">At GIEQs we are serious about accrediting our educational events. <br /> <br/></p>
-                    <p class="text-white">We have applied for and received EACCME accreditation (number of CME points pending) and have received RIZIV [Belgium] accreditation for 8 hours (Wednesday) and 7.5 hours (Thursday) CME points. &nbsp;
-                    <br/><br/>We have received ESGE (European Society of Gastrointestinal Endoscopy), BSGIE (Belgian Society of Gastrointestinal Endoscopy), ASGE (American Society of GI Endoscopy) and BSG (British Society of Gastroenterology) accreditation!</p>
-                    
-                        <div class="col-lg-10 col-xl-10 text-center">
-                            <div class="icon-xl icon-shape bg-white mr-3 p-2">
-                            <a href="https://eaccme.uems.eu/" target="_blank" data-toggle="tooltip" data-placement="bottom" title="European Accreditation Council
-for Continuing Medical Education (EACCME)">
-                            <img src="<?php echo BASE_URL;?>/assets/img/icons/eaccme.png" alt="EACCME">
-                            </a>
-                            </div>
-                            <div class="icon-xl icon-shape bg-white mr-3 p-2">
-                            <a href="https://www.esge.com" target="_blank" data-toggle="tooltip" data-placement="bottom" title="European Society for Gastrointestinal Endoscopy">
-                            <img src="<?php echo BASE_URL;?>/assets/img/icons/esge.png" alt="ESGE">
-                            </a>
-                            </div>
-                            <div class="icon-xl icon-shape bg-white mr-3 p-2">
-                                <a href="https://www.asge.com" target="_blank" data-toggle="tooltip" data-placement="bottom" title="American Society for Gastrointestinal Endoscopy">
-                                <img src="<?php echo BASE_URL;?>/assets/img/icons/asge.png" alt="ASGE">
-                                </a>
-                                </div>
-                            <div class="icon-xl icon-shape bg-white mr-3 p-2">
-                            <a href="https://www.riziv.fgov.be/" target="_blank">
-                            <img src="<?php echo BASE_URL;?>/assets/img/icons/riziv.png" alt="RIZIV" data-toggle="tooltip" data-placement="bottom" title="Rijksinstituut voor ziekte- en invaliditeitsverzekering">
-                            </a>
-                            </div>
-                            <div class="icon-xl icon-shape bg-white p-2">
-                                <a href="https://www.riziv.fgov.be/" target="_blank">
-                                <img src="<?php echo BASE_URL;?>/assets/img/brand/bsgie.png" alt="BSGIE" data-toggle="tooltip" data-placement="bottom" title="Belgian Society for Gastrointestinal Endoscopy">
-                                </a>
-                                </div>
-                                <div class="icon-xl icon-shape bg-white p-2 m-2">
-                                    <a href="https://www.bsg.org.uk/" target="_blank">
-                                    <img src="<?php echo BASE_URL;?>/assets/img/brand/bsg.png" alt="BSG" data-toggle="tooltip" data-placement="bottom" title="British Society for Gastrointestinal Endoscopy">
+                    <div id="videoDisplay mb-3" class="">  
+                        <div class="row">
+                            <p class="h5 mt-5">
+                                The 2nd Ghent International Endoscopy Quality Symposium (GIEQs), Gent, Belgium, 30/09/2021 - 01/10/2021 has been accredited by the European Accreditation Council for Continuing Medical Education (EACCME®) with 16 European CME credits (ECMEC®s). Each medical specialist should claim only those hours of credit that he/she actually spent in the educational activity. Through an agreement between the Union Européenne des Médecins Spécialistes and the American Medical Association, physicians may convert EACCME® credits to an equivalent number of AMA PRA Category 1 CreditsTM. Information on the process to convert EACCME® credit to AMA credit can be found at <a target="_blank" href="www.ama-assn.org/education/earn-credit-participation-international-activities">www.ama-assn.org/education/earn-credit-participation-international-activities</a>
+                                <br /> <br/>
+                            </p>
+                            <p class="text-white">
+                                Live educational activities, occurring outside of Canada, recognised by the UEMS-EACCME® for ECMEC®s are deemed to be Accredited Group Learning Activities (Section 1) as defined by the Maintenance of Certification Program of the Royal College of Physicians and Surgeons of Canada. EACCME® credits.
+                                <br/><br/>Each participant can only receive the number of credits he/she is entitled to according to his/her actual participation at the event once he/she has completed the feedback form. Cf. criteria 9 and 23 of UEMS 2016.20.
+                            </p>
+
+                            <div class="col-lg-10 col-xl-10 text-center">
+                                <div class="icon-xl icon-shape bg-white mr-3 p-2">
+                                    <a href="https://eaccme.uems.eu/" target="_blank" data-toggle="tooltip" data-placement="bottom" title="European Accreditation Council for Continuing Medical Education (EACCME)">
+                                        <img src="<?php echo BASE_URL;?>/assets/img/icons/eaccme.png" alt="EACCME">
                                     </a>
-                                    </div>
-                            
-                            </div>
+                                </div>
                             </div>
 
+                            <p class="text-white">
+                                CMEC®s per day: 
+                                <br>
+                                30.09.2021 - 8.00 
+                                <br>
+                                01.10.2021 - 8.00 
+                            </p>
+
+                            <p class="text-white">
+                                The EACCME® awards ECMEC®s on the basis of 1 ECMEC® for one hour of CME with a maximum of 8 ECMEC®s per day. Cf. Chapter X of UEMS 2016.20. 
+                            </p>
+                            
+                            <div class="col-lg-10 col-xl-10 text-center">
+                                <div class="icon-xl icon-shape bg-white mr-3 p-2">
+                                    <a href="https://www.riziv.fgov.be/" target="_blank">
+                                        <img src="<?php echo BASE_URL;?>/assets/img/icons/riziv.png" alt="RIZIV" data-toggle="tooltip" data-placement="bottom" title="Rijksinstituut voor ziekte- en invaliditeitsverzekering">
+                                    </a>
+                                </div>
+                            </div>
+                            <p class="text-white">
+                                30 Sept 2021 = CP 8.5 
+                                <br>
+                                01 Oct 2021 = CP 8.5
+                            </p>
+                                
+                            <!--
+                                <div class="col-lg-10 col-xl-10 text-center">
+                                    <div class="icon-xl icon-shape bg-white mr-3 p-2">
+                                        <a href="https://eaccme.uems.eu/" target="_blank" data-toggle="tooltip" data-placement="bottom" title="European Accreditation Council for Continuing Medical Education (EACCME)">
+                                            <img src="<?php echo BASE_URL;?>/assets/img/icons/eaccme.png" alt="EACCME">
+                                        </a>
+                                    </div>
+                                    <div class="icon-xl icon-shape bg-white mr-3 p-2">
+                                        <a href="https://www.esge.com" target="_blank" data-toggle="tooltip" data-placement="bottom" title="European Society for Gastrointestinal Endoscopy">
+                                            <img src="<?php echo BASE_URL;?>/assets/img/icons/esge.png" alt="ESGE">
+                                        </a>
+                                    </div>
+                                    <div class="icon-xl icon-shape bg-white mr-3 p-2">
+                                        <a href="https://www.asge.com" target="_blank" data-toggle="tooltip" data-placement="bottom" title="American Society for Gastrointestinal Endoscopy">
+                                            <img src="<?php echo BASE_URL;?>/assets/img/icons/asge.png" alt="ASGE">
+                                        </a>
+                                    </div>
+                                    <div class="icon-xl icon-shape bg-white mr-3 p-2">
+                                        <a href="https://www.riziv.fgov.be/" target="_blank">
+                                            <img src="<?php echo BASE_URL;?>/assets/img/icons/riziv.png" alt="RIZIV" data-toggle="tooltip" data-placement="bottom" title="Rijksinstituut voor ziekte- en invaliditeitsverzekering">
+                                        </a>
+                                    </div>
+                                    <div class="icon-xl icon-shape bg-white p-2">
+                                        <a href="https://www.riziv.fgov.be/" target="_blank">
+                                            <img src="<?php echo BASE_URL;?>/assets/img/brand/bsgie.png" alt="BSGIE" data-toggle="tooltip" data-placement="bottom" title="Belgian Society for Gastrointestinal Endoscopy">
+                                        </a>
+                                    </div>
+                                    <div class="icon-xl icon-shape bg-white p-2 m-2">
+                                        <a href="https://www.bsg.org.uk/" target="_blank">
+                                        <img src="<?php echo BASE_URL;?>/assets/img/brand/bsg.png" alt="BSG" data-toggle="tooltip" data-placement="bottom" title="British Society for Gastrointestinal Endoscopy">
+                                        </a>
+                                    </div>
+                                    
+                                </div>
+                            -->
+                        </div>
+                
                     
-                    
-                </div>
+                    </div>
                 <div class="modal-footer">
                     <button type="button" class="btn-small btn-secondary" data-dismiss="modal">Close</button>
-                   
                 </div>
             </div>
         </div>
