@@ -1084,7 +1084,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                     </button>
                 </div>
 
-                <div class="modal-body">
+                <div class="modal-body p-5 text-center">
                     <div id="videoDisplay mb-3" class="">  
                         <div class="row">
                             <p class="h5 mt-5">
@@ -1096,15 +1096,15 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                 <br/><br/>Each participant can only receive the number of credits he/she is entitled to according to his/her actual participation at the event once he/she has completed the feedback form. Cf. criteria 9 and 23 of UEMS 2016.20.
                             </p>
 
-                            <div class="col-lg-10 col-xl-10 text-center">
-                                <div class="icon-xl icon-shape bg-white mr-3 p-2">
+                            <div class="col-lg-12 text-center">
+                                <div class="icon-xl icon-shape bg-white">
                                     <a href="https://eaccme.uems.eu/" target="_blank" data-toggle="tooltip" data-placement="bottom" title="European Accreditation Council for Continuing Medical Education (EACCME)">
                                         <img src="<?php echo BASE_URL;?>/assets/img/icons/eaccme.png" alt="EACCME">
                                     </a>
                                 </div>
                             </div>
 
-                            <p class="text-white">
+                            <p class="col-12 text-white">
                                 CMEC®s per day: 
                                 <br>
                                 30.09.2021 - 8.00 
@@ -1116,14 +1116,14 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                 The EACCME® awards ECMEC®s on the basis of 1 ECMEC® for one hour of CME with a maximum of 8 ECMEC®s per day. Cf. Chapter X of UEMS 2016.20. 
                             </p>
                             
-                            <div class="col-lg-10 col-xl-10 text-center">
-                                <div class="icon-xl icon-shape bg-white mr-3 p-2">
+                            <div class="col-lg-12 text-center">
+                                <div class="icon-xl icon-shape bg-white">
                                     <a href="https://www.riziv.fgov.be/" target="_blank">
                                         <img src="<?php echo BASE_URL;?>/assets/img/icons/riziv.png" alt="RIZIV" data-toggle="tooltip" data-placement="bottom" title="Rijksinstituut voor ziekte- en invaliditeitsverzekering">
                                     </a>
                                 </div>
                             </div>
-                            <p class="text-white">
+                            <p class="col-12 text-white">
                                 30 Sept 2021 = CP 8.5 
                                 <br>
                                 01 Oct 2021 = CP 8.5
