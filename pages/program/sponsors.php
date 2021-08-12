@@ -234,7 +234,7 @@ width: 100%;
                     </div>
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
-                        <img class="logo" alt="BOUCART" src="<?php echo BASE_URL . '/assets/img/brand/boucart.jpg';?>">
+                        <img class="logo" alt="BOUCART" src="<?php echo BASE_URL . '/assets/img/sponsors/BOUCART.jpg';?>">
                     </div>
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
@@ -375,7 +375,7 @@ width: 100%;
                     </div>
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
-                        <img class="logo" alt="WEO" src="<?php echo BASE_URL . '/assets/img/sponsors/WEO.png';?>">
+                        <img class="logo" alt="WEO" src="<?php echo BASE_URL . '/assets/img/icons/WEO.png';?>">
                     </div>
 
                     <!-- <div class="col-lg-2 col-md-3 col-4 p-3">
