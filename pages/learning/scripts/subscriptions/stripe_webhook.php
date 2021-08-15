@@ -235,7 +235,7 @@ switch ($event->type) {
         
                 //echo 'hello';
         
-                $coin_grant_amount = 30; //the amount credited every 6 months
+                $coin_grant_amount = 30; //the amount credited every 6 months  //to all subscription types
         
               if ($debug) {
         
