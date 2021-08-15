@@ -27,6 +27,8 @@ error_reporting(0);
 	
 }
 
+error_reporting(E_ALL);
+
 
 require_once 'DataBaseMysqlPDO.class.php';
 
@@ -1818,12 +1820,15 @@ public function returnEmails($users)
 		public function returnRecentCoinGrantStandardSubscription($userid, $debug=false){
 
 			//returns only the most recent
+
+			//echo 'hello';
 	
 			//$q = "SELECT count(`id`) as `count` FROM `userActivity` WHERE `user_id` = '$userid' AND `activity_time` > '$sqltimestamp' AND `session_id` <> '99'";
 			$q = "SELECT `id`, `session_id` FROM `userActivity` WHERE `user_id` = '$userid' AND `session_id` LIKE 'COIN_GRANT_STANDARD%%%' ORDER BY `activity_time` DESC";
 	
+			//echo $q;
 
-			if ($debug == true){
+			if ($debug){
 			echo $q;
 			}
 	

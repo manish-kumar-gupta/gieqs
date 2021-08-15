@@ -1312,11 +1312,12 @@ public function getLengthSubscription ($subscription_id, $debug=false){
     FROM `subscriptions` as a
     WHERE a.`id` = '$subscription_id' 
     AND a.`active` = '1'
-    AND a.`expiry_date` > NOW()
-    ";
+    AND a.`expiry_date` > NOW()";
+
+   // echo $q;
 
 if ($debug){
-    echo $q . '<br><br>';
+    echo $q;
 
 }
 
@@ -1349,15 +1350,17 @@ if ($nRows == 1) {
     // @link http://www.php.net/manual/en/class.dateinterval.php
     $interval = $d2->diff($d1);
 
-    var_dump($interval);
+    //var_dump($interval);
     
     //$interval->format('%m months');
     
     $intervalFinal = $interval->m + 12*$interval->y;
+
+    //$intervalFinal = $interval->format('%m');
     
-    if ($debug){
-    var_dump($intervalFinal);
-    }
+   //echo '<br/><br/><br/><br/><br/>';
+    //var_dump($intervalFinal);
+    
     
     return $intervalFinal;
 

@@ -9,7 +9,10 @@
  * License: LGPL
  *
  */
+//error_reporting(E_ALL);
+
 require_once 'DataBaseMysqlPDO.class.php';
+
 
 Class subscriptions {
 
