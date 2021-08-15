@@ -105,7 +105,7 @@ error_reporting(E_ALL);
 
 use Stripe\Stripe;
 
-\Stripe\Stripe::setApiKey('sk_test_51IsKqwEBnLMnXjoguHzjHquozIjRT1Wt5OuLAQqxJvkUvX6DwMebWAPwgXsWaW35r5WXk1m6CuxtkY72I6QNLpH200No1l1SwU');
+require(BASE_URI . '/../scripts/stripe_api.php');
 
 $dataToLog = array();
 
