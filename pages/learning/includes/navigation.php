@@ -19,6 +19,7 @@
         <div class="container mt-4 p-2 bg-dark text-white" style="border: 1px solid #1b385d;">
         <div class="d-flex">
             <span class='mr-auto p-2'>Navigator</span>
+            
             <!-- <form class="d-flex">
                                                     
                                                     <div class="form-group mr-2 mt-1 ml-auto">
@@ -70,6 +71,8 @@
                     data-toggle="collapse" data-target="#navigatorCollapse"></i></span>
 
         </div>
+        <div id="shown-tags" class="d-flex flex-wrap justify-content-start mt-4 mb-4 pt-0 bg-dark text-white">
+            </div>
         <div id="navigatorCollapse" class="collapse show">
             <div class="d-flex flex-wrap justify-content-start mt-1 pt-0 bg-dark text-white">
 
@@ -131,8 +134,7 @@
 
         ?>
             </div>
-            <div id="shown-tags" class="d-flex flex-wrap justify-content-start mt-4 mb-4 pt-0 bg-dark text-white">
-            </div>
+           
 
         </div>
     </div>
