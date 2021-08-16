@@ -441,7 +441,7 @@ if (isset($subscription_id)){
 
         //CHANGE_TEST_TO_LIVE_STRIPE
 
-        $price_ids = [
+        $price_ids_test = [
 
             4 => 'price_1J4L5VEBnLMnXjogxxBLou9m',
             5 => 'price_1J4L6OEBnLMnXjoggMg7Ymsy', 
@@ -449,6 +449,17 @@ if (isset($subscription_id)){
             18 => 'price_1J4L7sEBnLMnXjogh6swTZC0',
             19 => 'price_1J4L8MEBnLMnXjogcOAEH9mA',
             20 => 'price_1J4L8lEBnLMnXjogp3NBfYTD',
+
+        ];
+
+        $price_ids = [
+
+            4 => 'price_1JOoydEBnLMnXjogS1fT7ER3', //standard physician
+            5 => 'price_1JOoyXEBnLMnXjogdHnORQax', //stadard trainee
+            6 => 'price_1JOoyREBnLMnXjogrMaWao2s', //standard med student
+            18 => 'price_1JOoyLEBnLMnXjogM0ioYe7v', //pro physician
+            19 => 'price_1JOoyFEBnLMnXjogRi3Jrar5', //pro trainee
+            20 => 'price_1JOoy7EBnLMnXjogJ9SlsNXR', //pro nursing / med student
 
         ];
 
