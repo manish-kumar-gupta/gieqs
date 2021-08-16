@@ -202,12 +202,32 @@ if ($menus) {
 
                                       $pages->Load_from_key($value3);
 
+                                      //insert fix for search all
+
+                                      if ($pages-getid() == '95'){
+
+                                        ?>
+
+                                    <a class="dropdown-item" href="<?php echo BASE_URL; ?>/pages/learning/pages/general/show_subscription_all.php?page_id=<?php echo $pages->getid(); ?>"><?php echo $pages->gettitle(); ?></a>
+
+
+
+<?php
+
+
+
+                                      }else{
+
 ?>
                                     <a class="dropdown-item"
                                         href="<?php echo BASE_URL; ?>/pages/learning/pages/general/show_subscription.php?page_id=<?php echo $pages->getid(); ?>"><?php echo $pages->gettitle(); ?></a>
                             
 
+<?php
 
+                                      }
+
+?>
 
                                     <?php
 
