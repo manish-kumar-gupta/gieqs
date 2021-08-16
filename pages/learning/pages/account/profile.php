@@ -564,7 +564,7 @@ top: -20vh;
             }
 
 
-          }).then((result) => {
+          })/* .then((result) => {
 
             const dataToSend = {
 
@@ -606,7 +606,7 @@ top: -20vh;
 
 
 
-          });
+          }); */
 
         }
 

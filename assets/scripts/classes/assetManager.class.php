@@ -782,7 +782,7 @@ public function returnProgrammesAsset($assetid)
             $x = 0;
             $nRows = $result->rowCount();
 
-            if ($nRows == 1) {
+            if ($nRows == 1) {  //should have only one sitewide at a time
 
                 while($row = $result->fetch(PDO::FETCH_ASSOC)){
 
@@ -1301,6 +1301,84 @@ public function doesUserHaveSameAssetClassSubscription ($subscription_id, $user_
     }
 
 }
+
+}
+
+public function getLengthSubscription ($subscription_id, $debug=false){
+
+
+    $q = "Select 
+    a.`id`, a.`start_date`
+    FROM `subscriptions` as a
+    WHERE a.`id` = '$subscription_id' 
+    AND a.`active` = '1'
+    AND a.`expiry_date` > NOW()";
+
+   // echo $q;
+
+if ($debug){
+    echo $q;
+
+}
+
+
+
+$result = $this->connection->RunQuery($q);
+
+$x = 0;
+$nRows = $result->rowCount();
+
+if ($nRows == 1) {
+
+    while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+        $start_date = $row['start_date'];
+    
+
+
+    }
+
+    if ($debug){
+
+        echo 'subscription found';
+        echo 'start date is '. $start_date;
+    }
+
+    $d1 = new DateTime($start_date);
+    $d2 = new DateTime('now');
+    
+    // @link http://www.php.net/manual/en/class.dateinterval.php
+    $interval = $d2->diff($d1);
+
+    //var_dump($interval);
+    
+    //$interval->format('%m months');
+    
+    $intervalFinal = $interval->m + 12*$interval->y;
+
+    //$intervalFinal = $interval->format('%m');
+    
+   //echo '<br/><br/><br/><br/><br/>';
+    //var_dump($intervalFinal);
+    
+    
+    return $intervalFinal;
+
+} else {
+    
+
+    if ($debug){
+
+        echo 'no active subscription with this id';
+    }
+
+    return false;
+
+    
+}
+
+
+   
 
 }
 
@@ -1899,11 +1977,20 @@ public function which_assets_contain_programme ($programmeid, $debug=false){
 
 }
 
-public function is_assetid_covered_by_user_subscription($asset_id, $userid, $debug=false){
+public function is_assetid_covered_by_user_subscription($asset_id, $userid, $debug=false, $superuser=false){
 
 
-        
+        if ($superuser){
             
+            $q = "Select 
+            a.`id`
+            FROM `subscriptions` as a
+            INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
+            WHERE b.`id` = '$asset_id' 
+            GROUP BY b.`id`
+            ";
+    
+        }else{
             $q = "Select 
             a.`id`
             FROM `subscriptions` as a
@@ -1913,7 +2000,9 @@ public function is_assetid_covered_by_user_subscription($asset_id, $userid, $deb
             AND a.`active` = '1'
             AND a.`expiry_date` > NOW()
             ";
-    
+
+
+        }
         //echo $q . '<br><br>';
     
     
@@ -2808,12 +2897,24 @@ public function doesUserHaveSubscriptionMenu($user_id, $debug)
 
         }
         
-public function getHeadersNavSubscriptions($user_id, $debug){
+public function getHeadersNavSubscriptions($user_id, $debug, $superuser=false){ //add superuserfix and same for pro subscription
 
     {
-            
+        
+        if ($superuser){
 
-        $q = "Select 
+            $q = "Select 
+        b.`asset_type`
+        FROM `subscriptions` as a
+        INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
+        WHERE (b.`asset_type` = '2' OR b.`asset_type` = '3' OR b.`asset_type` = '4') AND (b.`advertise_for_purchase` IS NULL OR b.`advertise_for_purchase` = '1')
+        GROUP BY b.`asset_type`
+        ORDER BY b.`asset_type` ASC
+        ";
+
+        }else{
+        
+            $q = "Select 
         b.`asset_type`
         FROM `subscriptions` as a
         INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
@@ -2825,6 +2926,7 @@ public function getHeadersNavSubscriptions($user_id, $debug){
         ORDER BY b.`asset_type` ASC
         ";
 
+        }
     
     if ($debug){
 
@@ -2881,21 +2983,35 @@ public function getHeadersNavSubscriptions($user_id, $debug){
 }
 
 
-public function getMenuItems($user_id, $asset_type, $debug){
+public function getMenuItems($user_id, $asset_type, $debug, $superuser=false){
 
     {
             
+        if ($superuser){
 
         $q = "Select 
         b.`id`, b.`name`
         FROM `subscriptions` as a
         INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
-        WHERE (b.`asset_type` = '$asset_type') 
-        AND (a.`user_id` = '$user_id')
-        AND (a.`active` = '1')
-        AND (a.`expiry_date` > NOW())
+        WHERE (b.`asset_type` = '$asset_type') AND (b.`advertise_for_purchase` IS NULL OR b.`advertise_for_purchase` = '1')
+        GROUP BY b.`id`
         ORDER BY b.`name` ASC
         ";
+
+        }else{
+
+            $q = "Select 
+            b.`id`, b.`name`
+            FROM `subscriptions` as a
+            INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
+            WHERE (b.`asset_type` = '$asset_type') 
+            AND (a.`user_id` = '$user_id')
+            AND (a.`active` = '1')
+            AND (a.`expiry_date` > NOW())
+            ORDER BY b.`name` ASC
+            ";
+
+        }
 
     
     if ($debug){
@@ -3695,6 +3811,124 @@ public function returnVideoDenominatorSelect2()
 
 
         }
+
+        public function countCourses($debug=false){
+
+
+            $q = "Select 
+            COUNT(b.`id`) as `count`
+            FROM `assets_paid` as b
+            WHERE (b.`asset_type` = '3')";
+
+            $result = $this->connection->RunQuery($q);
+
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+        
+                $count = $row['count'];
+
+        
+        
+            }
+
+            return $count;
+
+
+        }
+
+        public function countCoursesUser($userid, $debug=false){
+
+
+            $q = "Select 
+            COUNT(b.`id`) as `count`
+            FROM `assets_paid` as b
+            WHERE (b.`asset_type` = '3') AND b.`id` IN (SELECT b.`id`
+            FROM `subscriptions` as a
+            INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
+            WHERE b.`asset_type` = '3' 
+            AND a.`user_id` = '$userid'
+            AND a.`active` = '1'
+            AND a.`expiry_date` > NOW() ) ";
+
+            if ($debug){
+
+                echo $q;
+            }
+
+            $result = $this->connection->RunQuery($q);
+
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+        
+                $count = $row['count'];
+
+        
+        
+            }
+
+            return $count;
+
+
+        }
+
+        public function countPremiumPacksUser($userid, $debug=false){
+
+
+            $q = "Select 
+            COUNT(b.`id`) as `count`
+            FROM `assets_paid` as b
+            WHERE (b.`asset_type` = '4') AND b.`id` IN (SELECT b.`id`
+            FROM `subscriptions` as a
+            INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
+            WHERE b.`asset_type` = '4' 
+            AND a.`user_id` = '$userid'
+            AND a.`active` = '1'
+            AND a.`expiry_date` > NOW() ) ";
+
+            if ($debug){
+
+                echo $q;
+            }
+
+            $result = $this->connection->RunQuery($q);
+
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+        
+                $count = $row['count'];
+
+        
+        
+            }
+
+            return $count;
+
+
+        }
+
+        public function countPremiumPacks($debug=false){
+
+
+            $q = "Select 
+            COUNT(b.`id`) as `count`
+            FROM `assets_paid` as b
+            WHERE (b.`asset_type` = '4')";
+
+            $result = $this->connection->RunQuery($q);
+
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+        
+                $count = $row['count'];
+
+        
+        
+            }
+
+            return $count;
+
+
+        }
         
         public function getCourses($debug=false){
 
@@ -3703,7 +3937,7 @@ public function returnVideoDenominatorSelect2()
             FROM `assets_paid` as b
             WHERE (b.`asset_type` = '3')";
         
-        echo $q . '<br><br>';
+        //echo $q . '<br><br>';
         
         
         
@@ -5036,6 +5270,22 @@ if ($debug){
 
     }
 
+    public function getMembershipStatusAssetid($assetid){
+
+
+        if ($assetid == '4' || $assetid == '5' || $assetid == '6'){
+
+            return 1;
+        }elseif ($assetid == '18' || $assetid == '19' || $assetid == '20'){
+
+            return 2;
+        }else{
+
+            return 99;
+        }
+
+
+    }
     public function checkAssetToken($asset_id, $token, $debug=false){
 
 
@@ -5220,6 +5470,9 @@ if ($debug){
     
     }
 
+    
+
+  
 
     
 

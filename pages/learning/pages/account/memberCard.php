@@ -22,16 +22,16 @@
                       }elseif ($accesslevel == 3){
                 
                         $accessLevelText = 'GIEQs.com Staff, no creator priveledge';
-                      }elseif ($accesslevel == 4){
+                      }elseif ($accesslevel == 4 && $sitewide_status == 2){
                 
                         $accessLevelText = 'GIEQs Pro Member';
-                      }elseif ($accesslevel == 5){
+                      }elseif ($accesslevel == 4 && $sitewide_status == 1){
                         
                         $accessLevelText = 'GIEQS Standard Member';
                         
                       }elseif ($accesslevel == 6){
                         
-                        $accessLevelText = 'GIEQS Basic Member';
+                        $accessLevelText = 'GIEQS Free Member';
                         
                       }
                       
@@ -51,7 +51,7 @@
                       </div>
                     </div>
                   </div>
-                  <?php if ($currentUserLevel == 5){?>
+                  <?php if ($sitewide_status == 1){?>
 
                   <!--TODO Implement this upgrade functionality-->
                   <div class="col-auto flex-fill mt-4 mt-sm-0 text-sm-right">
@@ -61,15 +61,15 @@
                     </a>
                   </div>
                   <?php }?>
-                  <?php if ($currentUserLevel == 6){?>
+                  <?php if ($currentUserLevel == 6 && ($sitewide_status != 1 && $sitewide_status != 2)){?>
 
 <!--TODO Implement this upgrade functionality-->
 <div class="col-auto flex-fill mt-4 mt-sm-0 text-sm-right">
-<a id="upgradeStandard" data-toggle="modal" data-target="#modal_1" class="btn btn-sm btn-white rounded-pill btn-icon shadow bg-gieqsGold text-dark mt-2">
+<a id="upgradeStandard" href="<?php echo BASE_URL;?>/pages/learning/upgrade.php" class="btn btn-sm btn-white rounded-pill btn-icon shadow bg-gieqsGold text-dark mt-2">
     <span class="btn-inner--icon"><i class="fas fa-fire"></i></span>
     <span class="btn-inner--text">Upgrade to GIEQs Standard</span>
   </a>  
-<a id="upgradePro"href="<?php echo BASE_URL;?>/pages/learning/upgrade.php" class="btn btn-sm btn-white rounded-pill btn-icon shadow bg-gieqsGold text-dark mt-2">
+<a id="upgradePro" href="<?php echo BASE_URL;?>/pages/learning/upgrade.php" class="btn btn-sm btn-white rounded-pill btn-icon shadow bg-gieqsGold text-dark mt-2">
     <span class="btn-inner--icon"><i class="fas fa-fire"></i></span>
     <span class="btn-inner--text">Upgrade to GIEQs Pro</span>
   </a>

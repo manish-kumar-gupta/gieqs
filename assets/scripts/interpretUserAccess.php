@@ -555,15 +555,42 @@ if ($assetManager->getSiteWideSubscription($userid, $debug)){
 
       $siteWide = true;
       $siteWideSubscriptionid = $assetManager->getSiteWideSubscription($userid, $debugUserAccess);
-      if ($currentUserLevel == '6'){
 
-        $currentUserLevel = '4';
+      if ($debugUserAccess){
+        echo 'SUBSCRIPTION ID IS ' . $siteWideSubscriptionid;
+        }
 
-    }elseif($currentUserLevel == '5'){
+      //find out which asset
 
-        $currentUserLevel = '4';
+      $assetid_subscription = $assetManager->getAssetid($siteWideSubscriptionid);
 
-    }
+      if ($debugUserAccess){
+        echo 'ASSET ID IS ' . $assetid_subscription;
+        }
+
+      //allocate umber based on 6 FREE, 5 STANDARD, 4 PRO
+
+      $sitewide_status = $assetManager->getMembershipStatusAssetid($assetid_subscription);
+
+      if ($debugUserAccess){
+        echo 'SITE WIDE STATUS IS ' . $sitewide_status;
+        }
+      //which asset?
+
+      //standard or pro?
+
+      if ($sitewide_status == 1){
+
+        $currentUserLevel = 4;        
+
+      }elseif ($sitewide_status == 2){
+
+        $currentUserLevel = 4;        
+
+      }
+
+
+      
 
     //check if expiring Soon
 
@@ -603,6 +630,8 @@ if ($assetManager->getSiteWideSubscription($userid, $debug)){
         if ($debugUserAccess){
           echo 'allow gieqs pro due to user level';
           }
+
+          $sitewide_status = 2;
           
     
       }
@@ -629,6 +658,9 @@ if ($assetManager->getSiteWideSubscription($userid, $debug)){
       echo 'allow gieqs pro due to user level';
       }
 
+      $sitewide_status = 2;
+
+
       $siteWide = false;  //unless it starts a subscription if not found this should be false
 
   }else{
@@ -641,6 +673,9 @@ if ($assetManager->getSiteWideSubscription($userid, $debug)){
       }
 
       $siteWide = false;
+      $sitewide_status = 99;
+
+
 
   }
 

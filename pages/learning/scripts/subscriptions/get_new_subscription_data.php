@@ -83,12 +83,15 @@ if ($asset_type == '1') { //can only have one site-wide subscription
     if ($assetManager->doesUserHaveSameAssetClassAssetType($asset_type, $userid, $debug)) {
 
         //don't allow further editing
+        //check it is not the same asset
 
-        if ($verbose) {
+        
+
+       /*  if ($verbose) {
 
             //print_r($review);
             echo 'You have already purchased a site-wide subscription!  If you believe we are mistaken please contact us.';
-        }
+        } */
 
         if ($debug) {
 
@@ -96,7 +99,13 @@ if ($asset_type == '1') { //can only have one site-wide subscription
             echo '$userid ' . $userid . ' already has a subscription of type ' . $asset_type;
         }
 
-        die();
+        //die();
+
+        $alreadyHasSiteWide = true;
+
+    }else{
+        $alreadyHasSiteWide = false;
+
 
     }
 
@@ -164,6 +173,9 @@ $subscription_to_return['description'] = $assets_paid->getdescription();
 $subscription_to_return['renew_frequency'] = $assets_paid->getrenew_frequency();
 
 $subscription_to_return['user_id'] = $userid;
+
+$subscription_to_return['alreadyHasSiteWide'] = $alreadyHasSiteWide;
+
 
 echo json_encode($subscription_to_return);
 //echo $subscription->getexpiry_date();

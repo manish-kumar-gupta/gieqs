@@ -13,7 +13,7 @@ require_once '../../../../assets/includes/config.inc.php';
 
 $location = BASE_URL . '/index.php';
 
-require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
+require_once(BASE_URI . '/assets/scripts/interpretUserAccess.php');
 
 
 
@@ -64,7 +64,7 @@ $mail = new PHPMailer;
 
 
 
-$debug = FALSE;
+$debug = false;
 
 if ($debug){
 
@@ -209,17 +209,7 @@ $subscription_to_return['user_id'] = $userid;
 
     //check there are tokens remaining for this asset
 
-    if ($assetManager->checkTokensRemainingAsset($asset_id, false) == true){
 
-        $subscription->New_subscriptions($userid, $subscription_to_return['asset_id'], $current_date_sqltimestamp, $end_date_sqltimestamp, '1', '0', 'TOKEN SUBSCRIPTION NO PAYMENT');
-
-
-    }else{
-
-        echo 'Error, no tokens remaining for this asset.  Please contact us and quote this error';
-        die();
-
-    }
 
 
 

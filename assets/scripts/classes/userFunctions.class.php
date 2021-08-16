@@ -27,6 +27,8 @@ error_reporting(0);
 	
 }
 
+error_reporting(E_ALL);
+
 
 require_once 'DataBaseMysqlPDO.class.php';
 
@@ -1553,6 +1555,416 @@ public function returnEmails($users)
 		}
 
 
+	
+
+		public function hadFreeTrial($userid, $subscription_type){
+
+			//if superuser return ok
+
+			//modified for PREMIUM vs PRO
+
+			if ($subscription_type == 1){
+
+				$subscription_search = 'FREE_TRIAL_PRO';
+			}elseif ($subscription_type == 2){
+
+				$subscription_search = 'FREE_TRIAL_PREMIUM';
+
+
+			}
+	
+			
+	
+			//if the user has had activity within 15 minutes deny second attempt
+			//unless logged out (logout in sessionid)
+	
+			
+			//15 mins ago
+	
+	
+			//$q = "SELECT count(`id`) as `count` FROM `userActivity` WHERE `user_id` = '$userid' AND `activity_time` > '$sqltimestamp' AND `session_id` <> '99'";
+			$q = "SELECT count(`id`) as `count` FROM `userActivity` WHERE `user_id` = '$userid' AND `session_id` LIKE '$subscription_search'";
+	
+			//echo $q;
+	
+			$result = $this->connection->RunQuery($q);
+	
+							
+				$nRows = $result->rowCount();
+	
+				while($row = $result->fetch(PDO::FETCH_ASSOC)){
+	
+					$count = $row['count'];
+	
+	
+				}
+	
+				//echo $count;
+				
+				if ($count > 0){
+	
+					return true;
+	
+					
+				}else{
+	
+					return false; // allow login
+				}
+	
+	
+		}
+
+		public function currentStatus($userid, $statusStatement){
+
+			//if superuser return ok
+
+			//modified for PREMIUM vs PRO
+
+			
+	
+			
+	
+			//if the user has had activity within 15 minutes deny second attempt
+			//unless logged out (logout in sessionid)
+	
+			
+			//15 mins ago
+	
+	
+			//$q = "SELECT count(`id`) as `count` FROM `userActivity` WHERE `user_id` = '$userid' AND `activity_time` > '$sqltimestamp' AND `session_id` <> '99'";
+			$q = "SELECT `id` FROM `userActivity` WHERE `user_id` = '$userid' AND `session_id` LIKE 'STATUS%%%'";
+	
+			//echo $q;
+	
+			$result = $this->connection->RunQuery($q);
+	
+							
+				$nRows = $result->rowCount();
+	
+				while($row = $result->fetch(PDO::FETCH_ASSOC)){
+	
+					//$count = $row['count'];
+					$id = $row['id'];
+	
+	
+				}
+	
+				//echo $count;
+				
+				if ($nRows > 0){
+	
+					return $id;
+	
+					
+				}else{
+	
+					return false; // allow login
+				}
+	
+	
+		}
+
+		public function returnCurrentStatusUser($userid, $debug=false){
+
+			//if superuser return ok
+
+			//modified for PREMIUM vs PRO
+
+			
+	
+			
+	
+			//if the user has had activity within 15 minutes deny second attempt
+			//unless logged out (logout in sessionid)
+	
+			
+			//15 mins ago
+	
+	
+			//$q = "SELECT count(`id`) as `count` FROM `userActivity` WHERE `user_id` = '$userid' AND `activity_time` > '$sqltimestamp' AND `session_id` <> '99'";
+			$q = "SELECT `session_id` FROM `userActivity` WHERE `user_id` = '$userid' AND `session_id` LIKE 'STATUS%%%'";
+	
+
+			if ($debug == true){
+			echo $q;
+			}
+	
+			$result = $this->connection->RunQuery($q);
+	
+							
+				$nRows = $result->rowCount();
+	
+				while($row = $result->fetch(PDO::FETCH_ASSOC)){
+	
+					//$count = $row['count'];
+					$status = $row['session_id'];
+	
+	
+				}
+	
+				//echo $count;
+				
+				if ($nRows > 0){
+	
+					$status = preg_replace('/[^0-9]/', '', $status);
+
+					return $status;
+	
+					
+				}else{
+	
+					return false; // allow login
+				}
+	
+	
+		}
+
+		public function returnRecentCoinTransactionUserSingle($userid, $debug=false){
+
+			//returns only the most recent
+	
+			//$q = "SELECT count(`id`) as `count` FROM `userActivity` WHERE `user_id` = '$userid' AND `activity_time` > '$sqltimestamp' AND `session_id` <> '99'";
+			$q = "SELECT `id`, `session_id` FROM `userActivity` WHERE `user_id` = '$userid' AND `session_id` LIKE 'TEMP_COIN%%%' ORDER BY `activity_time` DESC LIMIT 1";
+	
+
+			if ($debug == true){
+			echo $q;
+			}
+	
+			$result = $this->connection->RunQuery($q);
+	
+							
+				$nRows = $result->rowCount();
+
+				if ($debug == true){
+					echo 'number of rows returned = ' . $nRows;
+					}
+	
+				while($row = $result->fetch(PDO::FETCH_ASSOC)){
+	
+					//$count = $row['count'];
+					$id = $row['id'];
+					$transaction_id = $row['session_id'];
+	
+	
+				}
+	
+				//echo $count;
+				
+				if ($nRows > 0){
+	
+					$transaction_id = preg_replace('/[^0-9]/', '', $transaction_id);
+
+					$returnArray = ['transaction_id' => $transaction_id, 'id' => $id];
+
+					
+					
+					return $returnArray;
+	
+					
+				}else{
+	
+					return false; // allow login
+				}
+	
+	
+		}
+
+		
+
+		public function returnRecentCoinTransactionUserAll($userid, $debug=false){
+
+			//returns only the most recent
+	
+			//$q = "SELECT count(`id`) as `count` FROM `userActivity` WHERE `user_id` = '$userid' AND `activity_time` > '$sqltimestamp' AND `session_id` <> '99'";
+			$q = "SELECT `id`, `session_id` FROM `userActivity` WHERE `user_id` = '$userid' AND `session_id` LIKE 'TEMP_COIN%%%' ORDER BY `activity_time` DESC";
+	
+
+			if ($debug == true){
+			echo $q;
+			}
+	
+			$result = $this->connection->RunQuery($q);
+	
+				$returnArray = [];
+				$x=1;
+				$nRows = $result->rowCount();
+	
+				while($row = $result->fetch(PDO::FETCH_ASSOC)){
+	
+					//$count = $row['count'];
+					$returnArray[$x]['id'] = $row['id'];
+					$returnArray[$x]['transaction_id'] = preg_replace('/[^0-9]/', '', $row['session_id']);
+					$x++;
+	
+				}
+	
+				//echo $count;
+				
+				if ($nRows > 0){
+	
+
+					$returnArray[0]['count'] = $nRows;
+					
+					return $returnArray;
+	
+					
+				}else{
+	
+					return false; // allow login
+				}
+	
+	
+		}
+
+		public function returnRecentCoinGrantStandardSubscription($userid, $debug=false){
+
+			//returns only the most recent
+
+			//echo 'hello';
+	
+			//$q = "SELECT count(`id`) as `count` FROM `userActivity` WHERE `user_id` = '$userid' AND `activity_time` > '$sqltimestamp' AND `session_id` <> '99'";
+			$q = "SELECT `id`, `session_id` FROM `userActivity` WHERE `user_id` = '$userid' AND `session_id` LIKE 'COIN_GRANT_STANDARD%%%' ORDER BY `activity_time` DESC";
+	
+			//echo $q;
+
+			if ($debug){
+			echo $q;
+			}
+	
+			$result = $this->connection->RunQuery($q);
+	
+				$returnArray = [];
+				$x=1;
+				$nRows = $result->rowCount();
+	
+				while($row = $result->fetch(PDO::FETCH_ASSOC)){
+	
+					//$count = $row['count'];
+					$returnArray[$x]['id'] = $row['id'];
+					$returnArray[$x]['transaction_id'] = preg_replace('/[^0-9]/', '', $row['session_id']);
+					$x++;
+	
+				}
+	
+				//echo $count;
+				
+				if ($nRows > 0){
+	
+
+					$returnArray[0]['count'] = $nRows;
+					
+					return $returnArray;
+	
+					
+				}else{
+	
+					return false; // allow login
+				}
+	
+	
+		}
+
+		public function  generatePeekUserAsset ($asset_id, $userid, $utc_time, $debug=false) {
+
+			$date = new DateTime('now', new DateTimeZone('UTC'));
+			$sqltimestamp = date_format($date, 'Y-m-d H:i:s');
+
+			//New_userActivity($user_id,$session_id,$login_time,$activity_time)
+			$userActivity->New_userActivity($userid, 'PEEK ASSET_ID='. $asset_id, null, $sqltimestamp);
+			$userActivity->prepareStatementPDO();
+
+
+
+		}
+	
+		public function  didUserAlreadyPreviewAsset($assetid, $userid, $debug=false, $utc_time) {
+
+
+			//check it has happened
+	
+			$q = "SELECT `session_id` FROM `userActivity` WHERE `user_id` = '$userid' AND `session_id` LIKE 'PEEK ASSET_ID=&assetid'";
+	
+
+			if ($debug == true){
+			echo $q;
+			}
+	
+			$result = $this->connection->RunQuery($q);
+	
+							
+				$nRows = $result->rowCount();
+	
+				while($row = $result->fetch(PDO::FETCH_ASSOC)){
+	
+					//$count = $row['count'];
+					$status = $row['session_id'];
+	
+	
+				}
+	
+				//echo $count;
+				
+				if ($nRows > 0){
+	
+					$status = preg_replace('/[^0-9]/', '', $status);
+
+					return $status;
+	
+					
+				}else{
+	
+					return false; // allow login
+				}
+	
+			
+		}
+	
+		public function  valid_current_peek($assetid, $userid, $utc_time, $debug=false) {
+
+			//check it is registered and is currently valid
+	
+			$q = "SELECT `session_id` FROM `userActivity` WHERE `user_id` = '$userid' AND `session_id` LIKE 'PEEK ASSET_ID=&assetid'";
+	
+
+			if ($debug == true){
+			echo $q;
+			}
+	
+			$result = $this->connection->RunQuery($q);
+	
+							
+				$nRows = $result->rowCount();
+	
+				while($row = $result->fetch(PDO::FETCH_ASSOC)){
+	
+					//$count = $row['count'];
+					$status = $row['session_id'];
+	
+	
+				}
+	
+				//echo $count;
+				
+				if ($nRows > 0){
+	
+					$status = preg_replace('/[^0-9]/', '', $status);
+
+					return $status;
+	
+					
+				}else{
+	
+					return false; // allow login
+				}
+	
+			
+		}
+	
+	
+		
+	
+	
 
 	
 

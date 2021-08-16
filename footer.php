@@ -10,33 +10,31 @@
           </a>
           <p>At GIEQs we believe we can do everyday endoscopy better.  <br/>Together, using an emerging evidence base we can increase the quality of everyday endoscopic interventions. </p><p>The GIEQs Foundation is a not-for-profit organisation dedicated to promoting Safety and Quality in Everyday Endoscopic Practice.</p>
         </div>
-        <!--
+   
         <div class="col-lg-2 col-6 col-sm-4 ml-lg-auto mb-5 mb-lg-0">
-          <h6 class="heading mb-3">Account</h6>j
+          <h6 class="heading mb-3">Symposium</h6>
           <ul class="list-unstyled">
-            <li><a href="pages/account-profile.html">Profile</a></li>
-            <li><a href="pages/account-settings.html">Settings</a></li>
-            <li><a href="pages/account-billing.html">Billing</a></li>
-            <li><a href="pages/account-notifications.html">Notifications</a></li>
+            <li><a href="<?php echo BASE_URL;?>/pages/program/gieqs_ii.php">Register</a></li>
+            <li><a href="<?php echo BASE_URL;?>/pages/program/faculty.php">Faculty</a></li>
+            <li><a href="<?php echo BASE_URL;?>/pages/program/sponsors.php">Sponsors</a></li>
           </ul>
         </div>
         <div class="col-lg-2 col-6 col-sm-4 mb-5 mb-lg-0">
-          <h6 class="heading mb-3">About</h6>
+          <h6 class="heading mb-3">Online Learnig</h6>
           <ul class="list-unstyled text-small">
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Careers</a></li>
+            <li><a href="<?php echo BASE_URL;?>/pages/learning/blog.php">Blog</a></li>
+            <li><a href="<?php echo BASE_URL;?>/pages/learning/index.php">Dashboard</a></li>
+            <li><a href="#">Premium Content</a></li>
           </ul>
         </div>
         <div class="col-lg-2 col-sm-4 mb-5 mb-lg-0">
-          <h6 class="heading mb-3">Company</h6>
+          <h6 class="heading mb-3">Foundation</h6>
           <ul class="list-unstyled">
-            <li><a href="#">Terms</a></li>
-            <li><a href="#">Privacy</a></li>
-            <li><a href="#">Support</a></li>
+            <li><a href="<?php echo BASE_URL;?>/pages/program/mission.php">Mission</a></li>
+            <li><a href="<?php echo BASE_URL;?>/pages/foundation/charitable.php">Charitable</a></li>
           </ul>
         </div>
-        -->
+        
       </div>
     
       <div class="row align-items-center justify-content-md-between py-4 mt-4 delimiter-top">

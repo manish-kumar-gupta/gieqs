@@ -9,7 +9,10 @@
  * License: LGPL
  *
  */
+//error_reporting(E_ALL);
+
 require_once 'DataBaseMysqlPDO.class.php';
+
 
 Class subscriptions {
 
@@ -154,10 +157,25 @@ $q = "Select * from `subscriptions` WHERE `id` = $key";
      * @param key_table_type $key_row
      *
      */
-	public function matchRecord($key_row){
-		$result = $this->connection->RunQuery("Select * from `subscriptions` where `id` = '$key_row' ");
+	public function matchRecord($key_row, $debug=false){
+		
+		
+		$q = "Select * from `subscriptions` where `id` = '$key_row' ";
+		$result = $this->connection->RunQuery($q);
+		if ($debug){
+		
+		echo $q;
+
+		}
 		$nRows = $result->rowCount();
+
+		
 			if ($nRows == 1){
+				if ($debug){
+
+				echo 'result is true';
+
+				}
 				return TRUE;
 			}else{
 				return FALSE;

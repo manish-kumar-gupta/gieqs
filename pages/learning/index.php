@@ -33,6 +33,10 @@
 
       //require_once(BASE_URI . '/assets/scripts/classes/users.class.php');
       $users = new users;
+      $userActivity = new userActivity;
+      $userFunctions = new userFunctions;
+
+
       $navigator = new navigator;
 
       function time_elapsed_string($datetime, $full = false) {
@@ -303,6 +307,9 @@
         require_once(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
         $assetManager = new assetManager;
 
+        require_once BASE_URI . '/assets/scripts/classes/coin.class.php';
+$coin = new coin;
+
         $video_PDO = new video_PDO;
 
 
@@ -381,18 +388,18 @@
                 <div class="container pt-0 pt-lg-0">
 
                     <div class="actions-toolbar py-2">
-                        <h5 class="mb-1">Your GIEQs Stats</h5>
-                        <p class="text-sm text-muted mb-0">How GIEQy are you <?php echo $_SESSION['firstname'];?>?</p>
+                       <!--  <h5 class="mb-1">Your GIEQs Stats</h5>
+                        <p class="text-sm text-muted mb-0">How GIEQy are you <?php //echo $_SESSION['firstname'];?>?</p> -->
                     </div>
 
                     <div class="mb-5">
                         <div class="row">
-                            <div class="col-lg-4">
+                            <!-- <div class="col-lg-4">
                                 <div
-                                    class="card card-stats bg-gradient-primary border-0 hover-shadow-lg hover-translate-y-n3 mb-0 ml-lg-0">
+                                    class="card card-stats bg-gradient-dark border-0 hover-shadow-lg hover-translate-y-n3 mb-0 ml-lg-0">
                                     <div class="actions actions-dark">
                                         <a href="#" class="action-item">
-                                            <i class="fas fa-sync-alt"></i>
+                                         
                                         </a>
 
                                     </div>
@@ -404,15 +411,304 @@
                                                 </div>
                                             </div>
                                             <div class="pl-4">
-                                                <?php $completionArray = $usersMetricsManager->userCompletionVideos($userid, false);?>
+                                                <?php //$completionArray = $usersMetricsManager->userCompletionVideos($userid, false);?>
                                                 <span
-                                                    class="d-block h5 text-white mr-2 mb-1"><?php echo $completionArray['numerator'];?>
-                                                    / <?php echo $completionArray['denominator'];?>
-                                                    (<?php echo round($completionArray['completion'], 2);?>%)</span>
+                                                    class="d-block h5 text-white mr-2 mb-1"><?php //echo $completionArray['numerator'];?>
+                                                    / <?php //echo $completionArray['denominator'];?>
+                                                    (<?php //echo round($completionArray['completion'], 2);?>%)</span>
                                                 <span class="text-white">Videos Completed</span>
                                             </div>
                                         </div>
                                     </div>
+                                    
+                                </div>
+                            </div> -->
+                            <div class="col-lg-6">
+                                <div
+                                    class="card card-stats bg-gradient-dark border-0 hover-shadow-lg hover-translate-y-n3 mb-0 ml-lg-0">
+                                    <div class="actions actions-dark">
+                                        <a href="#" class="action-item">
+                                            <!-- <i class="fas fa-sync-alt"></i> -->
+                                        </a>
+
+                                    </div>
+                                    <?php $completionArray = $usersMetricsManager->userCompletionVideos($userid, false);?>
+
+<?php error_reporting(E_ALL); $completionArrayAsset = $usersMetricsManager->userCompletionAsset($userid, 7, false);?>
+
+                                    <?php
+
+                                    //eventually break out
+
+//define status levels
+
+$status = [
+
+    0 => ['color' => 'bronze', 'threshold' => 25,],
+    1 => ['color' => 'silver', 'threshold' => 50,],
+
+    2 => ['color' => 'gold', 'threshold' => 75,],
+
+    3 => ['color' => 'platinum', 'threshold' => 100,],
+
+
+
+
+
+];
+
+$userCurrentCompletion = round($completionArray['completion'], 1);
+
+//test
+//$userCurrentCompletion = 73.7;
+
+
+$x = null;
+$y = 0;
+foreach ($status as $key=>$value)
+{
+
+    if ($debug){
+    echo $y . ' /$y is';
+    echo '/$userCurrentCompletion is ' . $userCurrentCompletion;
+    echo '/$threshold is '. $value['threshold'];
+    echo '/$status[$y-1][threshold] is '. $status[$y-1]['threshold'];
+    }
+    
+
+if ($y == 0){
+
+    if ($userCurrentCompletion < $value['threshold'] ){
+
+        $currentUserStatus = $value['color'];
+        $currentUserStatusArrayKey = $y;
+
+        $userPercentToNextThreshold = $value['threshold'] - $userCurrentCompletion;
+
+
+
+    }
+
+    //echo 'enter y == 0 loop';
+
+
+}else{
+
+    if ($userCurrentCompletion < $value['threshold'] && $userCurrentCompletion > $status[$y-1]['threshold'] ){
+
+        $currentUserStatus = $value['color'];
+        $currentUserStatusArrayKey = $y;
+
+        $userPercentToNextThreshold = $value['threshold'] - $userCurrentCompletion;
+
+
+
+
+
+    }
+
+}
+
+$y++;
+
+
+if ($debug){
+echo '<br/>';
+}
+
+}
+
+$number_of_experiences_to_next_threshold = (($userPercentToNextThreshold / 100) * $completionArray['denominator']);
+$number_of_experiences_to_next_threshold = round($number_of_experiences_to_next_threshold, 0);
+
+//getcurrent UTC time
+$date = new DateTime('now', new DateTimeZone('UTC'));
+$sqltimestamp = date_format($date, 'Y-m-d H:i:s');
+
+//construct status statement
+$statusStatement = 'STATUS[' . $currentUserStatusArrayKey . ']';
+
+
+//if  current status
+
+$debug = false;
+
+if ($userFunctions->currentStatus($userid, $statusStatement) != FALSE){
+
+    //update
+
+    $id_userActivity = $userFunctions->currentStatus($userid, $statusStatement);
+
+    $userActivity->Load_from_key($id_userActivity);
+
+    //get the current status
+
+    $currentStatusDB = preg_replace('/[^0-9]/', '', $userActivity->getsession_id());
+
+    if ($debug){
+
+        echo 'currentStatus ' . 'is ' . $currentStatusDB;
+        echo 'currentStatusArray key  ' . 'is ' . $currentUserStatusArrayKey;
+
+        echo '$id_userActivity key  ' . 'is ' . $id_userActivity;
+        ECHO '$userActivity->getsession_id() is' . $userActivity->getsession_id();
+
+    }
+
+    if ($currentStatusDB == $currentUserStatusArrayKey){
+
+        if ($debug){
+
+            echo 'no update status unchanged';
+        }
+
+        //no update if status the same
+    }else if (intval($currentStatusDB) > intval($currentUserStatusArrayKey)){
+
+        //do not update status if the status in db higher than the currently detected status
+        if ($debug){
+
+            echo 'no update status calculated lower than current db status -> user keeps status';
+        }
+
+    }
+    else if (intval($currentStatusDB) < intval($currentUserStatusArrayKey)){
+
+        //update status if the status in db lower than the currently detected status
+        if ($debug){
+
+            echo 'update status calculated higher than current db status -> user gains new status';
+        }
+    $userActivity->setsession_id($statusStatement);
+    $userActivity->setactivity_time($sqltimestamp);
+    $userActivity->prepareStatementPDOUpdate();
+
+    }
+
+
+}else{
+
+    $userActivity->New_userActivity($userid, $statusStatement, $sqltimestamp, null);
+    $userActivity->prepareStatementPDO();
+
+}
+
+//add a STATUS event to the database
+
+//$userActivity->New_userActivity($data['user_id'], null, $sqltimestamp, null);
+//$userActivity->prepareStatementPDO();
+
+
+
+//now based on db status
+
+?>
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div>
+                                                <div class="icon text-white icon-lg">
+                                                <i class="fas fa-medal <?php echo $status[$userFunctions->returnCurrentStatusUser($userid, false)]['color'];?>"></i>
+                                              
+                                                </div>
+                                            </div>
+                                            <div class="pl-4">
+                                                
+                                            <span
+                                                    class="d-block h5 text-white mr-2 mb-1">GIEQs Online Status</span>
+                                                    <span
+                                                    class="d-block h6 text-white mr-2 mb-1 mt-2"><?php echo ucfirst($status[$userFunctions->returnCurrentStatusUser($userid, false)]['color']);?> Status</span>
+
+
+                                                    
+                                                   
+                                           
+
+
+
+
+
+
+                                                    <span
+                                                    class="d-block h6 text-white mr-2 mb-1 mt-4">Overall Completion 
+                                                    <?php echo round($completionArray['completion'], 1);?>%</span>
+
+
+                                                    <p>                                                    <?php echo $assetManager->countCoursesUser($userid, false);?>
+ / <?php echo $assetManager->countCourses();?> Courses<br/>
+ <?php echo $assetManager->countPremiumPacksUser($userid, false);?> / <?php echo $assetManager->countPremiumPacks();?> Premium Content Packs<br/>
+                                                     <?php echo $completionArray['numerator'];?> / <?php echo $completionArray['denominator'];?> Total Learning Experiences</p>
+                                               
+                                               <?php //fix for platinum
+                                               
+                                               if ($userFunctions->returnCurrentStatusUser($userid, false) < 3){
+                                               ?>
+
+                                                    <p>Complete <?php echo $number_of_experiences_to_next_threshold;?> more individual Learning Experiences to reach GIEQs <?php echo ucfirst($status[$userFunctions->returnCurrentStatusUser($userid, false)+1]['color']);?> Status</p>
+
+
+                                                <?php }else{ ?>
+
+                                                    <p>Congratulations on achieving the Premier Tier of GIEQs Online Status</p>
+
+
+                                               <?php } ?>
+
+                                               <a
+                                            class="btn-sm bg-<?php echo $status[$userFunctions->returnCurrentStatusUser($userid, false)]['color'];?> p-1 mt-5 cursor-pointer"
+                                            onclick="window.location.href = siteRoot + 'gieqs-status.php';">
+
+                                            <span class="btn-inner--text text-dark text-sm">Find Out More</span>
+                                        </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-lg-1">
+    </div>
+                            <div class="col-lg-5 mt-2">
+                                <div
+                                    class="card card-stats bg-gradient-dark border-0 hover-shadow-lg hover-translate-y-n3 mb-0 ml-lg-0">
+                                    <div class="actions actions-dark">
+                                        <a href="#" class="action-item">
+                                           <!--  <i class="fas fa-sync-alt"></i> -->
+                                        </a>
+
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="d-flex">
+                                            <div>
+                                                <div class="icon text-white icon-lg">
+                                                <img
+    src="<?php echo BASE_URL . "/assets/img/icons/coin.svg"?>"
+    alt="GIEQs Coin"
+    />
+                                                </div>
+                                            </div>
+                                            <div class="pl-4">
+                                            <span
+                                                    class="d-block h5 text-white mr-2 mb-1">GIEQs Coin</span>
+                                                    <span
+                                                    class="d-block h6 text-white mr-2 mb-1">Spend on your next GIEQs Experience</span>
+                                                    <p>Current balance : <?php echo $coin->current_balance($userid);
+ ?> <img
+    src="<?php echo BASE_URL . "/assets/img/icons/coin.svg"?>"
+    alt="GIEQs Coin" height="24" width="24"
+    /></p>
+    <p>                                            <a
+                                            class="btn-sm bg-gieqsGold p-1 mt-5 cursor-pointer"
+                                            onclick="window.location.href = siteRoot + 'gieqs-coins.php';">
+
+                                            <span class="btn-inner--text text-dark text-sm">Find Out More</span>
+                                        </a>
+</p>
+                                                    
+                                           
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
                                 </div>
                             </div>
 
@@ -441,6 +737,8 @@
                 </div>
 
             </section>
+
+           
 
             <!-- Finish watching videos -->
 
@@ -531,7 +829,6 @@
         <!-- Purpose JS -->
         <script src="../../assets/js/purpose.js"></script>
         <script src="<?php echo BASE_URL;?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
-        <!-- <script src="assets/js/generaljs.js"></script> -->
         <script>
         var videoPassed = $("#id").text();
         </script>

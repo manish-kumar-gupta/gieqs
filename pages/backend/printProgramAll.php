@@ -66,7 +66,7 @@ $openaccess =1;
 
                 //get session data    
 
-                $response =  $programmeReports->generateReport($facultyid);
+                $response =  $programmeReports->generateReportv2($facultyid, [0=>36, 1=>37, 2=>38, 3=>39]);
                 //TODO this gets only the sessionItems
 
                 //TODO get moderator roles too and list amongst

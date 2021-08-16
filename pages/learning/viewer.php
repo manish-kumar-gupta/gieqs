@@ -918,7 +918,25 @@
 
         //check access
 
-if ($assetManager->determineVideoAccessSingleVideo($id, $isSuperuser, $userid, false) === false){
+        //set superuser if there is a pro subscription
+        //fix here
+
+        
+
+        if ($isSuperuser){
+
+            $fullAccess = true;
+
+        }elseif ($sitewide_status == 2){ //PRO subscription
+
+            $fullAccess = true;
+
+        }else{
+
+            $fullAccess = false;
+        }
+
+if ($assetManager->determineVideoAccessSingleVideo($id, $fullAccess, $userid, false) === false){
 
     require_once(BASE_URI . '/assets/scripts/classes/assets_paid.class.php');
     $assets_paid = new assets_paid;
@@ -1001,6 +1019,8 @@ if ($assetManager->determineVideoAccessSingleVideo($id, $isSuperuser, $userid, f
   
 
 //echo $userid; echo $id; echo 'hello';
+$debug = false;
+
 
 $current_date = new DateTime('now', new DateTimeZone('UTC'));
 
@@ -1034,7 +1054,6 @@ $current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s');
 
                 $key = $usersMetricsManager->getKeyUserViewsVideoMatch($userid, $id);
 
-                //$debug = true;
 
                 if ($debug){
 
@@ -1100,6 +1119,10 @@ $current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s');
                                             data-toggle="tooltip" data-placement="bottom"
                                             title="click to favourite"></i> <span
                                             id="favouritesNumber"><?php echo $usersSocial->countFavourites($id);?></span></a>
+
+                                            <a class="action-item action-stars p-0 m-0 pr-4 stars" data="<?php echo $id;?>">
+                                            <i class="fas fa-star star1" mr-1 pr-1 <?php if ($usersFavouriteVideo->matchRecord2way($userid, $id) === true){echo 'gieqsGold';}else{echo 'text-muted';}?>"
+                                            ></i><i class="fas fa-star star2"></i><i class="fas fa-star star3"></i><i class="fas fa-star star4"></i><i class="fas fa-star star5"></i></a>
 
                                     <a class="action-item action-like p-0 m-0 pr-4 views" data="<?php echo $id;?>">
                                         <i class="fas fa-thumbs-up mr-1 <?php if ($usersLikeVideo->matchRecord2way($userid, $id) === true){echo 'gieqsGold';}else{echo 'text-muted';}?>"

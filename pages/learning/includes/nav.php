@@ -33,6 +33,12 @@ $pages = new pages;
 require_once BASE_URI . '/assets/scripts/classes/navigationManager.class.php';
 $navigationManager = new navigationManager;
 
+require_once BASE_URI . '/assets/scripts/classes/programme.class.php';
+$programme = new programme;
+//$sessionView = new sessionView;
+require_once BASE_URI . '/assets/scripts/classes/sessionView.class.php';
+$sessionView = new sessionView;
+
 //new class navigationManager
 
 //query to get menus [if active]
@@ -307,7 +313,20 @@ if ($menus) {
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
                         <?php
 
-    $headers = $assetManager->getHeadersNavSubscriptions($userid, false);
+if ($isSuperuser){
+
+    $fullAccess = true;
+
+}elseif ($sitewide_status == 2){ //PRO subscription
+
+    $fullAccess = true;
+
+}else{
+
+    $fullAccess = false;
+}
+
+    $headers = $assetManager->getHeadersNavSubscriptions($userid, false, $fullAccess);
 
     foreach ($headers as $key => $value) {
         ?>
@@ -320,7 +339,7 @@ if ($menus) {
 
                         <?php
 
-        $courses = $assetManager->getMenuItems($userid, $value['id'], false);
+        $courses = $assetManager->getMenuItems($userid, $value['id'], false, $fullAccess);
 
         foreach ($courses as $key2 => $value2) {
 
@@ -340,33 +359,31 @@ if ($menus) {
 
                     </div>
                 </li>
-                <?php }?>
-
-                <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
-                    <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">Discover New Courses</a>
-                    
-                    <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Subscribable Courses</span>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=7" disabled><i class="fas fa-columns"></i>Basic Colonoscopy Skills</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=8"><i class="fas fa-columns"></i>Train the Colonoscopy Trainers</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=11"><i class="fas fa-columns"></i>Polypectomy Upskilling Course</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_imaging.php"><i class="fas fa-columns"></i>Colorectal Polyp Imaging Webinar</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_small_polypectomy.php"><i class="fas fa-columns"></i>Small and Intermediate Polypectomy Course</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=3"><i class="fas fa-columns"></i>GIEQs Edition I - Catch Up<span class="badge gieqsGold">
+                <?php }
 
 
-                                    New
-                                    </span></a> 
+$symposiaAdvertised = $assetManager->returnAdvertisedAssets(2, false);
+$coursesAdvertised = $assetManager->returnAdvertisedAssets(3, false);
+$learningPacksAdvertised = $assetManager->returnAdvertisedAssets(4, false);
+  
 
-                    
-                    <!-- <div class="dropdown-divider"></div>
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">GIEQs Faculty</span>
-                    <a class="dropdown-item" href="<?php //echo BASE_URL;?>/pages/program/faculty_stable.php"><i class="fas fa-user"></i>Faculty</a>
-                     -->
-                    
-                  </div>
-                </li>
+
+if ($debug){
+
+  var_dump($symposiaAdvertised);
+  var_dump($coursesAdvertised);
+
+  var_dump($learningPacksAdvertised);
+
+
+}
+                
+                require(BASE_URI . '/pages/learning/includes/premium_content.php');
+
+                
+                ?>
+
+              
 
                 <li class="nav-item">
                     <a class="nav-link"

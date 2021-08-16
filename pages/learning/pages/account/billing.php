@@ -20,7 +20,6 @@
 
       require BASE_URI . '/head.php';
 
-      $debug = false;
       //error_reporting(E_ALL);
       
       $general = new general;
@@ -158,7 +157,8 @@
 		
 		}
 				        
-                        
+        $debug = false;
+             
                         
 		
         ?>
@@ -236,6 +236,7 @@ know the user level
                                     <?php
 
 
+//$debug = true;
 
 
 ?>
@@ -262,12 +263,18 @@ get whether expiring soon su
 
                     //use $siteWideSubscriptionid to get data from subscriptions
 
+
                     if ($debug){
 
                       echo $siteWideSubscriptionid . ' is $siteWideSubscriptionid';
                     }
 
+                  //  error_reporting(E_ALL);
+
+//                    echo 'hello';
+
                     $subscription->Load_from_key($siteWideSubscriptionid);
+
 
                     $expiry_date = null;
 
@@ -277,7 +284,11 @@ get whether expiring soon su
 
                     $expiry_date_display = new DateTime($subscription->getexpiry_date(), new DateTimeZone('UTC'));
 
+                    if ($users->gettimezone() != ''){
+
                     $expiry_date_display->setTimezone(new DateTimeZone($users->gettimezone()));
+
+                    }
 
 
                     ?>
@@ -398,6 +409,8 @@ $subscriptions = $assetManager->returnCombinationUserSubscription($userid, false
 
                                         <?php
 
+                                        error_reporting(E_ALL);
+
                                         if ($subscriptionsList){
 
 foreach ($subscriptionsList as $key=>$value){
@@ -417,7 +430,14 @@ $timezone =  'UTC';
 
   $start_date_display = $start_date;
 
-  $start_date_display->setTimezone(new DateTimeZone($timezone));
+  if ($users->gettimezone() != ''){
+
+    $start_date_display->setTimezone(new DateTimeZone($users->gettimezone()));
+
+
+  }
+
+  //$start_date_display->setTimezone(new DateTimeZone($timezone));
 
   $expiry_date = null;
 
@@ -426,9 +446,13 @@ $timezone =  'UTC';
   $expiry_date = new DateTime($value['expiry_date'], new DateTimeZone('UTC'));
 
   $expiry_date_display = $expiry_date;
+  
+  if ($users->gettimezone() != ''){
 
 
   $expiry_date->setTimezone(new DateTimeZone($timezone));
+
+  }
 
   $assetManager->subscription_state($value['id'], $debug);
 

@@ -28,4 +28,68 @@
     
     }
 
+    .platinum {
+
+        color: #e5e4e2 !important;
+
+    }
+
+    .bronze {
+
+        color: rgb( 128,74,0) !important;
+
+       
+    }
+
+    .silver{
+
+        color: #C0C0C0 !important;
+    }
+
+    .gold{
+
+        color: rgb(238, 195, 120) !important;
+    }
+
+    .bg-platinum {
+
+        background-color: #e5e4e2 !important;
+
+    }
+
+    .bg-bronze {
+
+        background-color: rgb( 128,74,0) !important;
+
+       
+    }
+
+    .bg-silver{
+
+        background-color: #C0C0C0 !important;
+    }
+
+    .bg-gold{
+
+        background-color: rgb(238, 195, 120) !important;
+    }
+
+    .opacity-0 {
+        opacity:0!important;
+      }
+      .opacity-1 {
+        opacity:0.2!important;
+      }
+      .opacity-2 {
+        opacity:0.4!important;
+      }
+      .opacity-3 {
+        opacity:0.6!important;
+      }
+      .opacity-4 {
+        opacity:.8!important;
+      }
+      .opacity-5 {
+        opacity:1!important;
+      }
    
