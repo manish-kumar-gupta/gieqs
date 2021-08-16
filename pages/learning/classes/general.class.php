@@ -4382,7 +4382,7 @@ return $arr;
 
 		//if count $tags = 0
 
-		$noresults = "<option disabled hidden selected value>Search is not available here</option>";
+		$noresults = "<option disabled hidden selected value>Search is not available here<\/option>";
 
 
 		$where = 'WHERE ';
