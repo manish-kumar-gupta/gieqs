@@ -204,7 +204,7 @@ if ($menus) {
 
                                       //insert fix for search all
 
-                                      if ($pages-getid() == '95'){
+                                      if ($pages->getid() == '95'){
 
                                         ?>
 
