@@ -912,10 +912,10 @@
 
     <div id="id" style="display:none;"><?php if ($id){echo $id;}?></div>
 
-    <!--- specifiy the tag Categories required for display  CHANGEME-->
+    <!--- specifiy the tag Categories required for display  CHANGEME AND CHANGED HERE FOR ALL SHOWING-->
 
     <?php
-        $requiredTagCategories = $tagCategories;
+        $requiredTagCategories = $general->getAllTagCategoriesUsedOnSite(); //GET ALL SHOWABLE TAG CATEGORIES IE >47
         $requiredVideos = $videos;
 
         ?>
