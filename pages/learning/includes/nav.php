@@ -101,7 +101,7 @@ if ($menus) {
 
 
                         <div class="dropdown-menu dropdown-menu-arrow" aria-labelledby="btn-group-settings">
-                        <span style="color: rgb(238, 194, 120);" class="h4 dropdown-header">Choose a <?php //echo $menu->gettitle(); ?> Category</span>
+                        <span style="color: rgb(238, 194, 120);" class="h4 dropdown-header">Search or choose a <?php //echo $menu->gettitle(); ?> Category</span>
 
 
           <?php
@@ -120,13 +120,36 @@ if ($menus) {
 
               $navigation->Load_from_key($value1);
 
+              if ($navigation->getid() == '11'){
+
+?>
+
+<a class="dropdown-item cursor-pointer py-3 px-2" href="<?php echo BASE_URL; ?>/pages/learning/pages/general/show_subscription_all.php?page_id=95" role="button"><i class="fas fa-search"></i><?php echo $navigation->gettitle(); ?></a>
+
+
+
+<?php
+
+              }else{
+
+
+
+                ?>
+
+<a class="dropdown-item dropdown-toggle cursor-pointer py-3 px-2" role="button" data-toggle="dropdown"
+                            data-target="#dropdown<?php echo $navigation->getid();?>"><i class="fas fa-file-alt"></i><?php echo $navigation->gettitle(); ?></a>
+
+
+        <?php
+
+              }
+
               ?>
 
 
                         
                         <!-- <span style="color: rgb(238, 194, 120);" class="dropdown-header"><?php //echo $navigation->gettitle(); ?></span> -->
-                        <a class="dropdown-item dropdown-toggle cursor-pointer py-3 px-2" role="button" data-toggle="dropdown"
-                            data-target="#dropdown<?php echo $navigation->getid();?>"><i class="fas fa-file-alt"></i><?php echo $navigation->gettitle(); ?></a>
+                      
 
                             <div id="dropdown<?php echo $navigation->getid();?>"
                             class="dropdown-menu dropdown-menu-xl delimiter-top p-4 bg-dark-light">
