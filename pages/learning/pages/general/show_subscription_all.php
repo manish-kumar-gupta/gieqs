@@ -876,7 +876,7 @@
                 </div>
             </form>
             <div class="omnisearch-suggestions">
-                <h6 class="heading">Search Everything on GIEQs Online</h6>
+                <h6 class="heading">Search Everything on GIEQs Online.  Just click above and start typing.</h6>
                 <div class="row">
                     <div class="col-sm-12">
                         <ul class="list-unstyled mb-0">
@@ -1345,8 +1345,10 @@
 $('[data-action="search-open"]').addClass('active');
 $('#omnisearch').addClass('show');
 $('#omnisearch').find('.form-control').focus();
+$('#omnisearch').closest(".select2-container").siblings('select:enabled').select2('open');
 $('body').addClass('omnisearch-open').append('<div class="mask-body mask-body-dark" data-action="omnisearch-close" data-target="#omnisearch" />');
-                
+//$('#tags').select2('open');
+                //what is required
 
 
 }
@@ -1734,6 +1736,18 @@ $('body').addClass('omnisearch-open').append('<div class="mask-body mask-body-da
         open_omnisearch();
 
         checkTagFiltering();
+
+        // on first focus (bubbles up to document), open the menu
+/* $(document).on('focus', '.select2-selection.select2-selection--single', function (e) {
+  $(this).closest(".select2-container").siblings('select:enabled').select2('open');
+}); */
+
+/* // steal focus during close - only capture once and stop propogation
+$('select.select2').on('select2:closing', function (e) {
+  $(e.target).data("select2").$selection.one('focus focusin', function (e) {
+    e.stopPropagation();
+  });
+}); */
 
 
         $('[data-toggle="select"]').select2({
