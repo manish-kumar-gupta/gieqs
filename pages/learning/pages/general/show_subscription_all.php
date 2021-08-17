@@ -1711,7 +1711,7 @@ $('body').addClass('omnisearch-open').append('<div class="mask-body mask-body-da
 
                     $(this).click();
 
-                    $('#navigatorCollapse').collapse('show');
+                    //$('#navigatorCollapse').collapse('show');  //change here to prevent the dropdown
 
                 }
 
