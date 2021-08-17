@@ -876,11 +876,11 @@
                 </div>
             </form>
             <div class="omnisearch-suggestions">
-                <h6 class="heading">Search Everything on GIEQs Online. Search again to search within your search!</h6>
+                <h6 class="heading">Search Everything on GIEQs Online</h6>
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-12">
                         <ul class="list-unstyled mb-0">
-                            <li>
+                            <!-- <li>
                                 <a class="list-link">
                                     <i class="fas fa-search"></i>
                                     <span>try searching</span> training, loops etc
@@ -892,12 +892,12 @@
                                     <span>or try searching a specific phrase</span> e.g. performance enhancing
                                     feedback
                                 </a>
-                            </li>
+                            </li> -->
                             <li>
                                 <a class="list-link" id="refreshNavSearch">
                                     <i class="fas fa-search"></i>
-                                    <span>to reset the search click here</span> search is otherwise within the
-                                    search results from any previous search or filter
+                                    <span>to reset the search click here</span> (search is otherwise within the
+                                    search results from any previous search or filter)
                                 </a>
                             </li>
 
