@@ -21,8 +21,10 @@ RewriteRule ^colonoscopy$ pages/learning/viewer_free.php?id=56
 RewriteRule ^polypectomy$ pages/learning/viewer_free.php?id=113
 RewriteRule ^malignant-polyp$ pages/learning/viewer_free.php?id=157
 RewriteRule ^ercp$ pages/learning/viewer_free.php?id=153
-RewriteRule ^smic$ pages/learning/pages/scores/smic.php
+RewriteRule ^smic$ pages/learning/pages/scores/smic_mod.php
 RewriteRule ^smic-new$ pages/learning/pages/scores/smic_mod.php
+RewriteRule ^smi$ pages/learning/pages/scores/smic_mod.php
+
 
 RewriteRule ^smsa$ pages/learning/pages/scores/smsa.php
 RewriteRule ^caecal-score$ pages/learning/pages/scores/cecum.php
@@ -41,6 +43,7 @@ RewriteRule ^second_edition$ pages/program/gieqs_ii.php
 RewriteRule ^the_next_step$ pages/program/gieqs_ii.php
 RewriteRule ^blog$ /pages/learning/blog.php
 RewriteRule ^technique-score$ pages/learning/pages/scores/technique.php
+RewriteRule ^gpat$ pages/learning/pages/scores/technique.php
 
 
 
