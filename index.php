@@ -1071,6 +1071,9 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                             </div>
                         </div>
                     </div>
+                                </div> 
+                                </div>
+                                </div>
     <!-- Modal Accreditation-->
     <div class="modal fade" id="accreditation" tabindex="-1" role="dialog" aria-labelledby="accreditationLabel"
         aria-hidden="true">
@@ -1078,57 +1081,76 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h5 class="modal-title" id="accreditationLabel" style="color: rgb(238, 194, 120);">GIEQs Accreditation Statement</h5>
+                    <h5 class="modal-title" id="accreditationLabel" style="color: rgb(238, 194, 120);">GIEQs
+                        Accreditation Statement</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span class="text-white" aria-hidden="false">&times;</span>
                     </button>
                 </div>
 
                 <div class="modal-body p-5 text-center">
-                    <div id="videoDisplay mb-3" class="">  
+                    <div id="videoDisplay mb-3" class="">
                         <div class="row">
                             <p class="h5 mt-5">
-                                The 2nd Ghent International Endoscopy Quality Symposium (GIEQs), Gent, Belgium, 30/09/2021 - 01/10/2021 has been accredited by the European Accreditation Council for Continuing Medical Education (EACCME®) with 16 European CME credits (ECMEC®s). Each medical specialist should claim only those hours of credit that he/she actually spent in the educational activity. Through an agreement between the Union Européenne des Médecins Spécialistes and the American Medical Association, physicians may convert EACCME® credits to an equivalent number of AMA PRA Category 1 CreditsTM. Information on the process to convert EACCME® credit to AMA credit can be found at <a target="_blank" href="www.ama-assn.org/education/earn-credit-participation-international-activities">www.ama-assn.org/education/earn-credit-participation-international-activities</a>
-                                <br /> <br/>
+                                The 2nd Ghent International Endoscopy Quality Symposium (GIEQs), Gent, Belgium,
+                                30/09/2021 - 01/10/2021 has been accredited by the European Accreditation Council for
+                                Continuing Medical Education (EACCME®) with 16 European CME credits (ECMEC®s). Each
+                                medical specialist should claim only those hours of credit that he/she actually spent in
+                                the educational activity. Through an agreement between the Union Européenne des Médecins
+                                Spécialistes and the American Medical Association, physicians may convert EACCME®
+                                credits to an equivalent number of AMA PRA Category 1 CreditsTM. Information on the
+                                process to convert EACCME® credit to AMA credit can be found at <a target="_blank"
+                                    href="www.ama-assn.org/education/earn-credit-participation-international-activities">www.ama-assn.org/education/earn-credit-participation-international-activities</a>
+                                <br /> <br />
                             </p>
                             <p class="text-white">
-                                Live educational activities, occurring outside of Canada, recognised by the UEMS-EACCME® for ECMEC®s are deemed to be Accredited Group Learning Activities (Section 1) as defined by the Maintenance of Certification Program of the Royal College of Physicians and Surgeons of Canada. EACCME® credits.
-                                <br/><br/>Each participant can only receive the number of credits he/she is entitled to according to his/her actual participation at the event once he/she has completed the feedback form. Cf. criteria 9 and 23 of UEMS 2016.20.
+                                Live educational activities, occurring outside of Canada, recognised by the UEMS-EACCME®
+                                for ECMEC®s are deemed to be Accredited Group Learning Activities (Section 1) as defined
+                                by the Maintenance of Certification Program of the Royal College of Physicians and
+                                Surgeons of Canada. EACCME® credits.
+                                <br /><br />Each participant can only receive the number of credits he/she is entitled
+                                to according to his/her actual participation at the event once he/she has completed the
+                                feedback form. Cf. criteria 9 and 23 of UEMS 2016.20.
                             </p>
 
                             <div class="col-lg-12 text-center">
                                 <div class="icon-xl icon-shape bg-white">
-                                    <a href="https://eaccme.uems.eu/" target="_blank" data-toggle="tooltip" data-placement="bottom" title="European Accreditation Council for Continuing Medical Education (EACCME)">
+                                    <a href="https://eaccme.uems.eu/" target="_blank" data-toggle="tooltip"
+                                        data-placement="bottom"
+                                        title="European Accreditation Council for Continuing Medical Education (EACCME)">
                                         <img src="<?php echo BASE_URL;?>/assets/img/icons/eaccme.png" alt="EACCME">
                                     </a>
                                 </div>
                             </div>
 
                             <p class="col-12 text-white">
-                                CMEC®s per day: 
+                                CMEC®s per day:
                                 <br>
-                                30.09.2021 - 8.00 
+                                30.09.2021 - 8.00
                                 <br>
-                                01.10.2021 - 8.00 
+                                01.10.2021 - 8.00
                             </p>
 
                             <p class="text-white">
-                                The EACCME® awards ECMEC®s on the basis of 1 ECMEC® for one hour of CME with a maximum of 8 ECMEC®s per day. Cf. Chapter X of UEMS 2016.20. 
+                                The EACCME® awards ECMEC®s on the basis of 1 ECMEC® for one hour of CME with a maximum
+                                of 8 ECMEC®s per day. Cf. Chapter X of UEMS 2016.20.
                             </p>
-                            
+
                             <div class="col-lg-12 text-center">
                                 <div class="icon-xl icon-shape bg-white">
                                     <a href="https://www.riziv.fgov.be/" target="_blank">
-                                        <img src="<?php echo BASE_URL;?>/assets/img/icons/riziv.png" alt="RIZIV" data-toggle="tooltip" data-placement="bottom" title="Rijksinstituut voor ziekte- en invaliditeitsverzekering">
+                                        <img src="<?php echo BASE_URL;?>/assets/img/icons/riziv.png" alt="RIZIV"
+                                            data-toggle="tooltip" data-placement="bottom"
+                                            title="Rijksinstituut voor ziekte- en invaliditeitsverzekering">
                                     </a>
                                 </div>
                             </div>
                             <p class="col-12 text-white">
-                                30 Sept 2021 = CP 8.5 
+                                30 Sept 2021 = CP 8.5
                                 <br>
                                 01 Oct 2021 = CP 8.5
                             </p>
-                                
+
                             <!--
                                 <div class="col-lg-10 col-xl-10 text-center">
                                     <div class="icon-xl icon-shape bg-white mr-3 p-2">
@@ -1165,14 +1187,16 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                 </div>
                             -->
                         </div>
-                
-                    
+
+
                     </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn-small btn-secondary" data-dismiss="modal">Close</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn-small btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
-                    </div>
+                                </div>
+                                </div>
 
 
 
