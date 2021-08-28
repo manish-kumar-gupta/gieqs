@@ -832,6 +832,51 @@ $(document).ready(function() {
 
     $(document).on('submit', '#confirm-new', function(evt) {
 
+        <?php         if ($access_validated){  ?>
+
+            //allow free register
+
+            //check this here v important for the free
+            alert('hhere');
+
+            evt.preventDefault();
+
+            $form = $(this).find('input, select, textarea').filter(function() {
+                if ($(this).attr('data-disabled') == "true") return false;
+
+                if ($(this).hasClass('select2-searchField') === true) return false;
+
+                return true;
+            });
+
+            var formObject = $form.serializeObject();
+
+            formObject['currentPage'] = '/pages/program/program_generic.php?id=' + asset_id;
+
+        console.dir(formObject);
+
+
+        /*  fetch(siteRoot + "pages/learning/scripts/subscriptions/create-checkout-session.php" + new URLSearchParams({
+    foo: 'value',
+    bar: 2,
+})), {
+        method: "POST",
+      }) */
+
+        fetch(siteRoot + "/pages/learning/scripts/subscriptions/generate_free_subscription.php", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formObject),
+            })
+            .then(function(response) {
+                return response.json();
+            })
+            
+
+<?php }else{?>
+
         evt.preventDefault();
 
         $form = $(this).find('input, select, textarea').filter(function() {
@@ -883,6 +928,8 @@ $(document).ready(function() {
             .catch(function(error) {
                 console.error("Error:", error);
             });
+
+            <?php } ?>
 
 
 

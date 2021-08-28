@@ -25,7 +25,16 @@
       ?>
 
     <!--Page title-->
+    <!--META DATA-->
+ <meta charset="utf-8">
+ <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>GIEQs Foundation - Charitable Mission</title>
+    <meta name="description"
+        content="Find out more about the charitable mission of the GIEQs Foundation.">
+    <meta name="author" content="David Tate">
+    <meta name="keywords" content="colonoscopy, gastroscopy, ERCP, quality, polyp, colon cancer, polypectomy, EMR, endoscopic imaging, colorectal cancer, endoscopy, gieqs, GIEQS, training, digital endoscopy event, digital symposium, ghent, gent, endoscopy quality, quality in endoscopy">
+ 
 
     <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">

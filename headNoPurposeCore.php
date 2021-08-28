@@ -1,11 +1,4 @@
- <!--META DATA-->
- <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description"
-        content="The Ghent International Endoscopy Symposium (GIEQs) is a digital endoscopy event and symposium focussed on promoting quality in endoscopy.  The content is focussed on simple endoscopic techniques that many practitioners are performing everyday">
-    <meta name="author" content="David Tate">
-    <meta name="keywords" content="colonoscopy, gastroscopy, ERCP, quality, polyp, colon cancer, polypectomy, EMR, endoscopic imaging, colorectal cancer, endoscopy, gieqs, GIEQS, training, digital endoscopy event, digital symposium, ghent, gent, endoscopy quality, quality in endoscopy">
- 
+
 <?php
 	
     //error_reporting;

@@ -141,7 +141,15 @@ var_dump($currentTime);
 
 
 ?>
-    <title>GIEQs Course - <?php echo $assets_paid->getname(); ?></title>
+    <title>GIEQs II - The Second Edition of the Ghent International Endoscopy Quality Symposium</title>
+    <meta charset="utf-8">
+ <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description"
+        content="GIEQs II will build upon our first edition to deliver high definition, high impact endoscopy education in the virtual space.">
+    <meta name="author" content="David Tate">
+    <meta name="keywords" content="colonoscopy, gastroscopy, ERCP, quality, polyp, colon cancer, polypectomy, EMR, endoscopic imaging, colorectal cancer, endoscopy, gieqs, GIEQS, training, digital endoscopy event, digital symposium, ghent, gent, endoscopy quality, quality in endoscopy">
+ 
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.css">
     <script src="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.js"></script>
 

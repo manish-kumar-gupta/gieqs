@@ -15,8 +15,18 @@
 
       ?>
 
+
+ <!--META DATA-->
+ <meta charset="utf-8">
+ <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>The Gastrointestinal Quality and Safety (GIEQs) Foundation</title>
+    <meta name="description"
+        content="The Gastrointestinal Quality and Safety (GIEQs) Foundation is a not-for profit organisation dedicated to improving quality and safety in everyday endoscopic practice.">
+    <meta name="author" content="David Tate">
+    <meta name="keywords" content="colonoscopy, gastroscopy, ERCP, quality, polyp, colon cancer, polypectomy, EMR, endoscopic imaging, colorectal cancer, endoscopy, gieqs, GIEQS, training, digital endoscopy event, digital symposium, ghent, gent, endoscopy quality, quality in endoscopy">
+ 
     <!--Page title-->
-    <title>Ghent International Endoscopy Quality Symposium</title>
 
     <style>
     .gieqsGold {
@@ -1017,8 +1027,7 @@ for Continuing Medical Education (EACCME)">
             <div class="modal-dialog modal-lg modal-dialog-centered modal-dark" role="document">
                 <div class="modal-content p-1">
                     <div class="modal-header">
-                        <h5 class="display-4 modal-title" id="accreditationLabel" style="color: rgb(238, 194, 120);">GIEQs II
-                            Teaser Videos</h5>
+                        <h5 class="display-4 modal-title" id="accreditationLabel" style="color: rgb(238, 194, 120);">Join us for GIEQs II</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span class="text-white" aria-hidden="false">&times;</span>
                         </button>
@@ -1259,7 +1268,8 @@ for Continuing Medical Education (EACCME)">
                     localStorage.setItem('isshow', 1);
 
                     // Show popup here
-                    $('#teaser-videos').modal('show');
+                    setTimeout(function() { $('#teaser-videos').modal('show'); }, 5000);
+                    
                 }
 
 
