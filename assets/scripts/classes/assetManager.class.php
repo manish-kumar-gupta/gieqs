@@ -5503,47 +5503,6 @@ if ($debug){
     }
 
 
-    public function hasAccessGIEQsIIDay1($user_id, $debug=false){
-
-
-        //day 1 programme ids 36,37
-
-        //day 2 programme ids 38,39
-
-
-        if (($this->programme_owned_by_user('36', $user_id, false) == true && $this->programme_owned_by_user('37', $user_id, false) == true)){
-
-
-            return true;
-
-        }else{
-
-            return false;
-        }
-
-
-    }
-
-    public function hasAccessGIEQsIIDay2($user_id, $debug=false){
-
-
-        //day 1 programme ids 36,37
-
-        //day 2 programme ids 38,39
-
-
-        if (($this->programme_owned_by_user('38', $user_id, false) == true && $this->programme_owned_by_user('39', $user_id, false) == true)){
-
-
-            return true;
-
-        }else{
-
-            return false;
-        }
-
-
-    }
 
     public function hasAccessGIEQsII($day, $user_id, $debug=false){
 
@@ -5649,22 +5608,22 @@ if ($debug){
 
             if ($plenary == true){
 
-                return 22; //day 1 plenary
+                return 24; //day 1 plenary
 
             }else{
 
-                return 23;  //day 1 complex
+                return 25;  //day 1 complex
             }
 
         }elseif ($day == 2){
 
             if ($plenary == true){
 
-                return 24; //day 2 plenary
+                return 26; //day 2 plenary
 
             }else{
 
-                return 25; //day 2 complex
+                return 27; //day 2 complex
             }
         }
 
