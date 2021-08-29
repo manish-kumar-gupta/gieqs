@@ -357,7 +357,7 @@ background-color: rgb(238, 194, 120);
             <div class="col-lg-5 order-lg-1 d-none d-lg-block">
               <blockquote>
                 <h3 class="h2 mb-4">"We can do everyday endoscopy better"</h3>
-                <footer>— <cite class="text-lg">GIEQs 2020</cite></footer>
+                <footer>— <cite class="text-lg">the GIEQs Foundation 2021</cite></footer>
               </blockquote>
             </div>
           </div>
