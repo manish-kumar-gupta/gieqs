@@ -94,11 +94,11 @@ foreach ($csv as $key=>$value){
     //$value[2] is day 2 yes no
 
     $email = null;
-    $email = $value[0];
+    $email = trim($value[0]);
     $day1 = null;
-    $day1 = $value[1];
+    $day1 = trim($value[1]);
     $day2 = null;
-    $day2 = $value[2];
+    $day2 = trim($value[2]);
 
     if ($debug){
 
