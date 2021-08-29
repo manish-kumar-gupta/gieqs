@@ -108,6 +108,8 @@ foreach ($csv as $key=>$value){
 
     }
 
+    $detectedUser = null;
+
     $detectedUser = $userFunctions->getUserFromEmail($email);
 
     if ($debug){
@@ -208,7 +210,7 @@ foreach ($csv as $key=>$value){
         
             $end_date_sqltimestamp = date_format($end_date, 'Y-m-d H:i:s');
     
-            if ($assetManager->doesUserHaveSameAssetAlready('24', $detectedUser, false) === true){
+            if ($assetManager->doesUserHaveSameAssetAlready('24', $detectedUser, false) === false){
 
                 $subscription->New_subscriptions($detectedUser, '24', $current_date_sqltimestamp, $end_date_sqltimestamp, '1', '0', 'gii subscription, payment via Seauton');
                 $newSubscriptionid1 = $subscription->prepareStatementPDO();
@@ -223,7 +225,7 @@ foreach ($csv as $key=>$value){
     
     
 
-            if ($assetManager->doesUserHaveSameAssetAlready('25', $detectedUser, false) === true){
+            if ($assetManager->doesUserHaveSameAssetAlready('25', $detectedUser, false) === false){
 
                 $subscription->New_subscriptions($detectedUser, '25', $current_date_sqltimestamp, $end_date_sqltimestamp, '1', '0', 'gii subscription, payment via Seauton');
     
@@ -261,7 +263,7 @@ foreach ($csv as $key=>$value){
             $end_date_sqltimestamp = date_format($end_date, 'Y-m-d H:i:s');
     
     
-            if ($assetManager->doesUserHaveSameAssetAlready('26', $detectedUser, false) === true){
+            if ($assetManager->doesUserHaveSameAssetAlready('26', $detectedUser, false) === false){
 
                 $subscription->New_subscriptions($detectedUser, '26', $current_date_sqltimestamp, $end_date_sqltimestamp, '1', '0', 'gii subscription, payment via Seauton');
     
@@ -276,7 +278,7 @@ foreach ($csv as $key=>$value){
 
 
 
-            if ($assetManager->doesUserHaveSameAssetAlready('27', $detectedUser, false) === true){
+            if ($assetManager->doesUserHaveSameAssetAlready('27', $detectedUser, false) === false){
 
                 
 
