@@ -20,6 +20,11 @@
 
       require BASE_URI . '/headNoPurposeCore.php';
 
+if ($userid){
+  header('Location : '. BASE_URL . '/pages/learning/index.php'); 
+}
+
+
       $general = new general;
 
       ?>

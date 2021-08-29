@@ -80,7 +80,7 @@
     <?php
 
 
-        $debug = FALSE;
+        $debug = false;
 
         if ($debug){
           error_reporting(E_ALL);
@@ -686,66 +686,76 @@
                         
 		
         ?>
-            <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
+                    <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
 
 
-<style>
-.gieqsGold {
+                    <style>
+                    .gieqsGold {
 
-    color: rgb(238, 194, 120);
+                        color: rgb(238, 194, 120);
 
 
-}
+                    }
 
-.navbar-brand small {
-    display: block;
-    font-size: 10px;
-}
+                    .navbar-brand small {
+                        display: block;
+                        font-size: 10px;
+                    }
 
-.card-placeholder {
+                    .card-placeholder {
 
-    width: 344px;
+                        width: 344px;
 
-}
+                    }
 
-.break {
-    flex-basis: 100%;
-    height: 0;
-}
+                    .break {
+                        flex-basis: 100%;
+                        height: 0;
+                    }
 
-.flex-even {
-    flex: 0 0 30%;
+                    .flex-even {
+                        flex: 0 0 30%;
 
-    /*
+                        /*
     
     flex: 1;
      */
-}
+                    }
 
-.flex-nav {
-    flex: 0 0 18%;
-}
-
-
-
-.gieqsGoldBackground {
-
-    background-color: rgb(238, 194, 120);
-
-
-}
-
-.tagButton {
-
-    cursor: pointer;
-
-}
+                    .flex-nav {
+                        flex: 0 0 18%;
+                    }
 
 
 
+                    .gieqsGoldBackground {
+
+                        background-color: rgb(238, 194, 120);
 
 
-/* iframe {
+                    }
+
+                    .tagButton {
+
+                        cursor: pointer;
+
+                    }
+
+                    @supports ((position: -webkit-sticky) or (position: sticky)) {
+
+                        .sticky-top {
+                            position: -webkit-sticky !important;
+                            position: sticky !important;
+                            z-index: 1020;
+                            top: 0;
+                        }
+                    }
+
+
+
+
+
+                    /* iframe {
     box-sizing: border-box;
     height: 25.25vw;
     left: 50%;
@@ -757,62 +767,62 @@
     width: 100.77777778vh;
 } */
 
-.cursor-pointer {
+                    .cursor-pointer {
 
-    cursor: pointer;
+                        cursor: pointer;
 
-}
+                    }
 
-@media (max-width: 768px) {
+                    @media (max-width: 768px) {
 
-    .flex-even {
-        flex-basis: 100%;
-    }
-}
+                        .flex-even {
+                            flex-basis: 100%;
+                        }
+                    }
 
-@media (max-width: 768px) {
+                    @media (max-width: 768px) {
 
-    .card-header {
-        height: 250px;
-    }
+                        .card-header {
+                            height: 250px;
+                        }
 
-    .card-placeholder {
+                        .card-placeholder {
 
-        width: 204px;
+                            width: 204px;
 
-    }
-
-
-}
-
-@media (min-width: 1200px) {
-    #chapterSelectorDiv {
+                        }
 
 
+                    }
 
-        top: -3vh;
+                    @media (min-width: 1200px) {
+                        #chapterSelectorDiv {
 
 
-    }
 
-    /* #playerContainer {
+                            top: -3vh;
+
+
+                        }
+
+                        /* #playerContainer {
 
         margin-top: -20px;
 
     } */
 
-    #collapseExample {
+                        #collapseExample {
 
-        position: absolute;
-        max-width: 50vh;
-        z-index: 25;
-    }
+                            position: absolute;
+                            max-width: 50vh;
+                            z-index: 25;
+                        }
 
 
 
-}
-</style>
-                <title>GIEQs Online Endoscopy Trainer - <?php echo $page_title;?></title>
+                    }
+                    </style>
+                    <title>GIEQs Online Endoscopy Trainer - <?php echo $page_title;?></title>
 
 </head>
 
@@ -956,10 +966,11 @@
 
     <!-- Omnisearch -->
 
+
     <div class="main-content bg-gradient-dark">
 
 
-    <?php 
+        <?php 
     
     //if an asset
 
@@ -1048,19 +1059,29 @@
 
         <!--Header CHANGEME-->
 
+
+
+
+
+
         <div class="d-flex flex-wrap container pt-9 mt-3">
             <div class="h1 w-100 pt-3"><?php echo $page_title;?></div>
+
+            <?php  if ($videoset != 2){?>
+
             <div class="d-flex flex-column m-2">
 
-            <?php if ($partner_src){?>
-            <div class="h4 p-3">In partnership with</div><img class="bg-white p-2" height="75px" src='<?php echo $partner_src;?>'>
-            <?php }?>
+                <?php if ($partner_src){?>
+                <div class="h4 p-3">In partnership with</div><img class="bg-white p-2" height="75px"
+                    src='<?php echo $partner_src;?>'>
+                <?php }?>
             </div>
             <div class="d-flex flex-column m-2">
 
-            <?php if ($sponsor_src){?>
-            <div class="h4 p-3">Proudly supported by</div><img class="bg-white p-2" height="75px" src='<?php echo $sponsor_src;?>'>
-            <?php }?>
+                <?php if ($sponsor_src){?>
+                <div class="h4 p-3">Proudly supported by</div><img class="bg-white p-2" height="75px"
+                    src='<?php echo $sponsor_src;?>'>
+                <?php }?>
             </div>
             <nav aria-label="breadcrumb" class="ml-auto align-self-center">
                 <ol class="breadcrumb breadcrumb-links p-0 m-0">
@@ -1083,13 +1104,17 @@
                 </ol>
             </nav>
 
+            <?php     } ?>
+
         </div>
+
+
 
         <?php
     
     //on the day of a course
 
-    if ($videoset == 3){
+    if ($videoset == 3 || $videoset  == 2){
 
         //echo the same as for the GIEQs conference
 
@@ -1100,7 +1125,20 @@
                 $serverTimeZoneNav = new DateTimeZone('Europe/Brussels'); //because this is where course is held
 
 
-                $currentNavTime = new DateTime('now', $serverTimeZoneNav);
+                $currentNavTime = new DateTime('now', $serverTimeZoneNav);  //test for gieqs ii
+
+                //if the programme array is gieqs ii day 1 or 2
+                //and if the user is a superuser
+                //show the live view anyway, unless we are after the date of GII
+
+                if ($programme_id == '36' || $programme_id == '37'|| $programme_id == '38' || $programme_id == '39'){
+
+                    if ($isSuperuser == 1){
+
+                        $courseTest = true;
+                    }
+
+                }
 
 
                 if ($courseTest == true){
@@ -1124,45 +1162,283 @@
 
         ?>
 
+
+
+
+        <!-- <li class="nav-item">
+                    <a id="chapterNavTour" class="nav-link nav-link-icon" data-toggle="collapse" href="#selectDropdown">
+
+                        <span class="nav-link-inner--text ">Show Chapters</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a id="tourTagNav" class="nav-link nav-link-icon" data-toggle="collapse" href="#collapseExample">
+
+                        <span class="nav-link-inner--text ">Show Tags</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a id="jumpTimeLine" class="nav-link nav-link-icon cursor-pointer">
+
+                        <span class="nav-link-inner--text ">Timeline</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a id="jumpComments" class="nav-link nav-link-icon cursor-pointer">
+
+
+                        <span class="nav-link-inner--text ">Comments</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a id="jumpReferences" class="nav-link nav-link-icon" data-toggle="collapse"
+                        href="#collapseExample2">
+
+                        <span class="nav-link-inner--text">References</span>
+                    </a>
+                </li> -->
+
+
+        <!-- <li class="nav-item">
+                   
+                   <a class="nav-link nav-link-icon"
+                       >
+                       <span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2" style="z-index: -1 !important;">LEVEL 4</span>
+                       <span class="nav-link-inner--text ">GIEQs Pro Member</span></a>
+                     
+                   
+                   
+                   
+
+
+                          
+
+
+                                <span class="nav-link-inner--text ">Complex</span>
+                           
+               </li> -->
+        <!-- <li class="nav-item">
+                    <a class="nav-link nav-link-icon"
+                        href="/pages/learning/pages/live/nursing.php">
+
+                        <span class="nav-link-inner--text ">Nursing</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-icon" target="_blank"
+                        href="/pages/learning/pages/live/programLive.php">
+
+                        <span class="nav-link-inner--text ">Live Programme</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-icon" target="_blank" href="https://facebook.com/gieqs">
+                        <i class="fab fa-facebook-square"></i>
+                        <span class="nav-link-inner--text d-lg-none">Share</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-icon" target="_blank" href="https://twitter.com/gieqs_symposium">
+                        <i class="fab fa-twitter"></i>
+                        <span class="nav-link-inner--text d-lg-none">Tweet</span>
+                    </a>
+                </li> -->
+
+
+
         <div class="container-fluid ">
-            <div class="row d-flex flex-wrap py-1 px-6">
+            <nav class="mt-4 navbar navbar-expand-lg navbar-dark bg-dark sticky-top" id="videoBar"
+                style="margin-top: 20px; z-index: 2 !important;">
+                <div class="container">
+                    <a class="navbar-brand cursor-pointer" id="start_tour">
+                        <!-- <small class="m-0 p-0"><br/> --><?php if ($videoset == 3){?>
 
 
-                <h5 class="text-gieqsGold mr-auto ml-8">GIEQs Live Course View</h5>
+                        <h5 class="text-gieqsGold mr-auto">Live Course Viewer</h5>
+
+                        <?php }elseif ($videoset == 2){ ?>
+
+                        <h5 class="text-gieqsGold mr-auto">Live Conference Viewer</h5>
+
+
+                        <?php } ?>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-warning"
+                        aria-controls="navbar-warning" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <!--
+
+Useful for PHP to JS transfer
+
+-->
+
+
+
+                    <div class="collapse navbar-collapse" id="navbar-warning">
+                        <!-- <ul class="navbar-nav align-items-lg-left ml-lg-auto">
+
+                
+            </ul> -->
+                        <ul class="navbar-nav justify-content-sm-center ml-sm-auto">
+                            <li class="nav-item dropdown-animate dropdown-submenu bg-dark" data-toggle="hover">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Take a Tour
+                                </a>
+                                <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                                    <a id="chapterNavTour" class="dropdown-item" href="#statistics">
+
+                                        Conference Viewer
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item cursor-pointer" href="#whats-new">GIEQs Online
+                                    </a>
+
+
+
+                                </div>
+                            </li>
+
+                            <li class="nav-item dropdown-animate dropdown-submenu bg-dark" data-toggle="hover">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Change Room
+                                </a>
+                                <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                                    <a id="chapterNavTour" class="dropdown-item" href="#statistics">
+
+                                        Plenary
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item cursor-pointer" href="#whats-new">Complex
+                                    </a>
+
+
+
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown-animate dropdown-submenu bg-dark" data-toggle="hover">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Sponsors
+                                </a>
+
+                                <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
+                                    <a id="chapterNavTour" class="dropdown-item" href="#statistics">
+
+                                        Platinum
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+
+                                    <a class="dropdown-item cursor-pointer" href="#whats-new">Gold
+                                    </a>
+
+                                    <div class="dropdown-divider"></div>
+                                    <a id="tourTagNav" class="dropdown-item cursor-pointer" href="#catchup">
+
+                                        Silver
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a id="jumpComments" class="dropdown-item cursor-pointer" href="#suggested">
+
+
+                                        <span class="nav-link-inner--text ">Bronze</span>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+
+
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link nav-link-icon"
+                                    href="<?php //echo BASE_URL;?>/pages/learning/pages/live/nursing.php">
+
+                                    <span class="nav-link-inner--text ">Support</span>
+                                </a>
+                            </li>
+
+
+
+                        </ul>
+                        <a class="navbar-brand" href="#">
+                            <img src="<?php echo BASE_URL;?>/assets/img/icons/twitter.png" width="30" height="30"
+                                alt="">
+                        </a>
+                        <a class="navbar-brand" href="#">
+                            <img src="<?php echo BASE_URL;?>/assets/img/icons/fb.png" width="30" height="30" alt="">
+                        </a>
+                        <a class="navbar-brand" href="#">
+                            <img src="<?php echo BASE_URL;?>/assets/img/icons/linkedin-in.png" width="30" height="30"
+                                alt="">
+                        </a>
+
+                    </div>
+                </div>
+            </nav>
+
+
+            <?php if ($videoset == 3){//only show this if a course ?>
+            <div class="row d-flex flex-row-reverse flex-wrap py-1 px-6">
 
 
 
 
-                <a class="btn btn-sm text-dark gieqsGoldBackground" role="button"
+
+                <a class="btn btn-sm text-dark gieqsGoldBackground mr-3" role="button"
                     href="<?php echo $programme->geturl_zoom();?>" target="_blank">LIVE - Access Zoom Meeting</a>
-                <a class="btn btn-sm text-dark gieqsGoldBackground" role="button" href="#programme-display">View
+                <a class="btn btn-sm text-dark gieqsGoldBackground mr-3" role="button" href="#programme-display">View
                     Programme</a>
 
 
             </div>
+
+            <?php } ?>
+
+
             <div class="row d-flex flex-wrap align-items-lg-stretch py-4 px-6">
 
-            <?php //fix for chat window 
+                <?php //fix for chat window 
 
             
             
             if ($programme->geturl_slido() != ''){?>
 
-<?php
+                <?php
                 echo '<div class="col-lg-9">';
                 ?>
-                <div style="padding:56.25% 0 0 0;position:relative;"><iframe
-        src="<?php echo $programmeReports->getVimeoURLProgramme($programme_id); ?>" frameborder="0"
-        allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
-        style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe></div>
-</div>
-<div class="col-lg-3 p-0 m-0">
-<iframe src="<?php echo $programme->geturl_slido();?>" width="100%" height="100%"
-    frameborder="0"></iframe>
-</div>
+                <div style="padding:56.25% 0 0 0;position:relative;">
 
 
-<?php
+
+
+
+
+                    <iframe src="<?php echo $programmeReports->getVimeoURLProgramme($programme_id); ?>" frameborder="0"
+                        allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
+                        style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+
+
+
+
+                </div>
+            </div>
+            <div class="col-lg-3 p-0 m-0">
+                <iframe src="<?php echo $programme->geturl_slido();?>" height="100%" width="100%" frameBorder="0"
+                    title="Slido"></iframe>
+
+
+
+            </div>
+
+
+            <?php
 
             }else{
 
@@ -1170,11 +1446,11 @@
 
                 echo '<div class="col-lg-12">';xw
                ?> <div style="padding:56.25% 0 0 0;position:relative;"><iframe
-        src="<?php echo $programmeReports->getVimeoURLProgramme($programme_id); ?>" frameborder="0"
-        allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
-        style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe></div>
-</div>
-<?php
+                    src="<?php echo $programmeReports->getVimeoURLProgramme($programme_id); ?>" frameborder="0"
+                    allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
+                    style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe></div>
+        </div>
+        <?php
             }
             
             ?>
@@ -1182,8 +1458,8 @@
 
 
 
-            
-         <!--    <div class="col-lg-9">
+
+        <!--    <div class="col-lg-9">
 
 <div style="padding:56.25% 0 0 0;position:relative;"><iframe
         src="https://vimeo.com/event/910289/embed/8a7dee8af0" frameborder="0"
@@ -1196,8 +1472,8 @@
     frameborder="0"></iframe>
 </div>
  -->
-            </div>
-        </div>
+    </div>
+    </div>
     </div>
 
 
@@ -1252,9 +1528,9 @@
     </div>
 
 
-    <!--Programme Display, Cuurently Courses only-->
+    <!--Programme Display, Cuurently Courses only, now also Conferences day by day-->
 
-    <?php if ($videoset == 3){?>
+    <?php if ($videoset == 2 || $videoeset == 3){?>
     <hr>
     <div class="container mt-3">
         <!-- <div class="text-justify m-4">

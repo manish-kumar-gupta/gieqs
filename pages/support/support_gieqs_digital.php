@@ -194,7 +194,7 @@ top: -20vh;
               <!-- Topic body -->
               <article class="mt-5">
               <h2>
-    Ghent International Endoscopy Quality Symposium, digital edition
+    Ghent International Endoscopy Quality Symposium, 2nd edition
 </h2>
 <h4>
     Navigating the congress
@@ -202,7 +202,7 @@ top: -20vh;
 
 <p>
     -       Use a MODERN BROWSER (such as Google Chrome or Safari).  You will not be able to access onm Internet Explorer<br/>
-    –       Click the gieqs digital logo on the top left of the screen<br/>
+    –       Go to gieqs.com and click GIEQs Online on the menu bar or navigate to gieqs.com/online<br/>
     –       if you are registered for the congress there is a menu entitled GIEQs Live Stream visible.<br/>
     –       Hover over this to reveal the live menu including streams, programme and sponsor pages.<br/>
 
@@ -223,9 +223,8 @@ top: -20vh;
     Having your say
 </h4>
 <p>
-    –       The attached app sli.do will allow you to interact with us live<br/>
-    –       On your smartphone scan the QR code below, or click on the code to jump to the page in a new window<br/>
-    <a href="https://app.sli.do/event/wxcyu5bh/live/questions?w=wFYcu" target="_blank"><img src="<?php echo BASE_URL;?>/assets/img/brand/qrslido_white.png" style="width: 200px;"></a>
+    –       You can ask questions and interact with competitions live using the pre-embedded Sli-do console.<br/>
+    -       We will post links to surveys which you can fill during the symposium
 
 
 </p>

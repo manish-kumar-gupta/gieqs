@@ -10,7 +10,7 @@
       <div class="container px-0">
         <div class="navbar-nav align-items-center">
           <div class="d-none d-lg-inline-block">
-            <span class="navbar-text mr-3">The GIEQs Foundation</span>
+            <span class="navbar-text mr-3">The Gastrointestinal Endoscopy Quality and Safety (GIEQs) Foundation</span>
           </div>
           <div>
             <ul class="nav">
