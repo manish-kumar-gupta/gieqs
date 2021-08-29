@@ -25,7 +25,7 @@
 
       $navigator = new navigator;
 
-      $courseTest = false;
+      //$courseTest = false;
 
       //$navigation = new navigation;
 
@@ -687,6 +687,11 @@
 		
         ?>
                     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
+            <link href="<?php echo BASE_URL;?>/node_modules/bootstrap-tour/build/css/bootstrap-tour-standalone-gieqs.css" rel="stylesheet">
+
+            <script src="<?php echo BASE_URL;?>/assets/js/purpose.core.js"></script>
+
+<script src="<?php echo BASE_URL; ?>/node_modules/bootstrap-tour/build/js/bootstrap-tour-standalone.min.js"></script>
 
 
                     <style>
@@ -753,7 +758,41 @@
 
 
 
+/* For Tour*/
 
+.popover-title {
+
+background-color: rgb(238, 194, 120);
+color: #162e4d;
+font-size: 1rem;
+}
+
+.popover {
+
+background-color: #193659;
+
+}
+
+.popover.right>.arrow::after {
+
+border-right-color: rgb(238, 194, 120);
+;
+}
+
+.btn {
+
+padding: 2px 6px;
+
+
+}
+
+.tour-backdrop {
+
+opacity: .3;
+filter: alpha(opacity=30);
+
+
+}
 
                     /* iframe {
     box-sizing: border-box;
@@ -772,6 +811,42 @@
                         cursor: pointer;
 
                     }
+
+                    @keyframes fade-in-up {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fade-in-up {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .video.stuck {
+            z-index: 25;
+            position: fixed;
+            bottom: -320px;
+            right: 20px;
+            -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+            width: 300px !important;
+
+            -webkit-animation: fade-in-up .25s ease forwards;
+            animation: fade-in-up .25s ease forwards;
+        }
 
                     @media (max-width: 768px) {
 
@@ -1136,6 +1211,10 @@
                     if ($isSuperuser == 1){
 
                         $courseTest = true;
+                    }else{
+
+                        $courseTest = false;
+                        
                     }
 
                 }
@@ -1250,138 +1329,12 @@
 
 
 
-        <div class="container-fluid ">
-            <nav class="mt-4 navbar navbar-expand-lg navbar-dark bg-dark sticky-top" id="videoBar"
-                style="margin-top: 20px; z-index: 2 !important;">
-                <div class="container">
-                    <a class="navbar-brand cursor-pointer" id="start_tour">
-                        <!-- <small class="m-0 p-0"><br/> --><?php if ($videoset == 3){?>
-
-
-                        <h5 class="text-gieqsGold mr-auto">Live Course Viewer</h5>
-
-                        <?php }elseif ($videoset == 2){ ?>
-
-                        <h5 class="text-gieqsGold mr-auto">Live Conference Viewer</h5>
-
-
-                        <?php } ?>
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-warning"
-                        aria-controls="navbar-warning" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                    <!--
-
-Useful for PHP to JS transfer
-
--->
-
-
-
-                    <div class="collapse navbar-collapse" id="navbar-warning">
-                        <!-- <ul class="navbar-nav align-items-lg-left ml-lg-auto">
-
-                
-            </ul> -->
-                        <ul class="navbar-nav justify-content-sm-center ml-sm-auto">
-                            <li class="nav-item dropdown-animate dropdown-submenu bg-dark" data-toggle="hover">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Take a Tour
-                                </a>
-                                <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                                    <a id="chapterNavTour" class="dropdown-item" href="#statistics">
-
-                                        Conference Viewer
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item cursor-pointer" href="#whats-new">GIEQs Online
-                                    </a>
-
-
-
-                                </div>
-                            </li>
-
-                            <li class="nav-item dropdown-animate dropdown-submenu bg-dark" data-toggle="hover">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Change Room
-                                </a>
-                                <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                                    <a id="chapterNavTour" class="dropdown-item" href="#statistics">
-
-                                        Plenary
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item cursor-pointer" href="#whats-new">Complex
-                                    </a>
-
-
-
-                                </div>
-                            </li>
-                            <li class="nav-item dropdown-animate dropdown-submenu bg-dark" data-toggle="hover">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Sponsors
-                                </a>
-
-                                <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                                    <a id="chapterNavTour" class="dropdown-item" href="#statistics">
-
-                                        Platinum
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-
-                                    <a class="dropdown-item cursor-pointer" href="#whats-new">Gold
-                                    </a>
-
-                                    <div class="dropdown-divider"></div>
-                                    <a id="tourTagNav" class="dropdown-item cursor-pointer" href="#catchup">
-
-                                        Silver
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a id="jumpComments" class="dropdown-item cursor-pointer" href="#suggested">
-
-
-                                        <span class="nav-link-inner--text ">Bronze</span>
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-
-
-                                </div>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link nav-link-icon"
-                                    href="<?php //echo BASE_URL;?>/pages/learning/pages/live/nursing.php">
-
-                                    <span class="nav-link-inner--text ">Support</span>
-                                </a>
-                            </li>
-
-
-
-                        </ul>
-                        <a class="navbar-brand" href="#">
-                            <img src="<?php echo BASE_URL;?>/assets/img/icons/twitter.png" width="30" height="30"
-                                alt="">
-                        </a>
-                        <a class="navbar-brand" href="#">
-                            <img src="<?php echo BASE_URL;?>/assets/img/icons/fb.png" width="30" height="30" alt="">
-                        </a>
-                        <a class="navbar-brand" href="#">
-                            <img src="<?php echo BASE_URL;?>/assets/img/icons/linkedin-in.png" width="30" height="30"
-                                alt="">
-                        </a>
-
-                    </div>
-                </div>
-            </nav>
+        <div id="live-player-container" class="container-fluid ">
+        
+        <?php 
+        
+        //error_reporting(E_ALL);
+        require(BASE_URI . '/pages/learning/pages/general/live_nav.php'); ?>
 
 
             <?php if ($videoset == 3){//only show this if a course ?>
@@ -1413,14 +1366,14 @@ Useful for PHP to JS transfer
                 <?php
                 echo '<div class="col-lg-9">';
                 ?>
-                <div style="padding:56.25% 0 0 0;position:relative;">
+                <div  style="padding:56.25% 0 0 0;position:relative;">
 
 
 
 
 
 
-                    <iframe src="<?php echo $programmeReports->getVimeoURLProgramme($programme_id); ?>" frameborder="0"
+                    <iframe class="video" src="<?php echo $programmeReports->getVimeoURLProgramme($programme_id); ?>" frameborder="0"
                         allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
                         style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
 
@@ -1504,7 +1457,6 @@ Useful for PHP to JS transfer
 
     <!--Video Display-->
 
-
     <div class="container mt-3">
         <div class="text-justify m-4">
             <p class="lead lh-180 pb-3"><?php echo $page_description;?></p>
@@ -1530,16 +1482,25 @@ Useful for PHP to JS transfer
 
     <!--Programme Display, Cuurently Courses only, now also Conferences day by day-->
 
-    <?php if ($videoset == 2 || $videoeset == 3){?>
+
+
     <hr>
     <div class="container mt-3">
+    <?php if ((($firstDate == $secondDate)) && ($videoset == 2 || $videoset == 3)){?>
+
+        <div class="row d-flex flex-row-reverse flex-wrap py-1 px-6">
+
+        <a class="btn btn-sm text-dark gieqsGoldBackground mr-3" role="button"
+                    href="#live-player-container">Back to Live View</a>
+    </div>
+        <?php } ?>
         <!-- <div class="text-justify m-4">
             <p class="h3"><?php //echo 'Course Programme'?></p>  
 
 
 
             </div> -->
-        <div id="programme-display" class="p-6 flex-wrap">
+        <div id="programme-display" class="p-2 px-6 flex-wrap">
 
 
 
@@ -1548,9 +1509,16 @@ Useful for PHP to JS transfer
 
 
         </div>
+        <?php if ((($firstDate == $secondDate)) && ($videoset == 2 || $videoset == 3)){?>
+
+<div class="row d-flex flex-row-reverse flex-wrap pb-5 px-6">
+
+<a class="btn btn-sm text-dark gieqsGoldBackground mr-3" role="button"
+            href="#live-player-container">Back to Live View</a>
+</div>
+<?php } ?>
 
     </div>
-    <?php } ?>
 
 
 
@@ -1572,10 +1540,10 @@ Useful for PHP to JS transfer
     <!-- Google maps -->
 
     <!-- Purpose JS -->
-    <script src="<?php echo BASE_URL;?>/assets/js/purpose.core.js"></script>
     <script src="<?php echo BASE_URL;?>/assets/js/purpose.js"></script>
     <script src="<?php echo BASE_URL . "/assets/js/generaljs.js"?>"></script>
     <script src="<?php echo BASE_URL;?>/assets/libs/select2/dist/js/select2.min.js"></script>
+
 
 
     <script>
@@ -1992,6 +1960,93 @@ Useful for PHP to JS transfer
 
     }
 
+    var tourShort = new Tour({
+        name: "tourShort",
+        steps: [
+
+            {
+                element: ".showMeAround",
+                title: "Welcome to GIEQs II",
+                content: "<p>Lets show you around...</p>",
+            },
+
+
+            {
+                element: ".video",
+                title: "Main Conference Player",
+                content: "<p>Here you can view the conference in high definition.  Pause and restart as you wish.</p>",
+            },
+            {
+                onShow: function(tour) {
+
+                    $('#selectDropdown').collapse('show');
+                    $('#selectDropdown').find('select').attr('size', 6);
+
+
+                },
+
+                element: "#selectDropdown",
+                placement: "auto left",
+                title: "Chapter Selection",
+                content: "<p>This dropdown shows all the chapters in the video.</p>  <p>Video chapters indicate steps in a procedure or ideas in a lecture.</p><p>Quickly jump to a chapter by clicking on it.</p>",
+
+                onHidden: function(tour) {
+                    $('#selectDropdown').collapse('hide');
+                    $('#selectDropdown').find('select').attr('size', 1);
+
+
+
+                }
+
+            },
+
+
+
+
+            
+
+
+
+
+
+        ],
+
+        animation: false,
+        container: "#bootstrapTour",
+        smartPlacement: true,
+        keyboard: true,
+        storage: window.localStorage,
+        debug: true,
+        backdrop: true,
+        backdropContainer: 'body',
+        backdropPadding: 10,
+        redirect: true,
+        orphan: true,
+        duration: false,
+        delay: false,
+        template: "<div class='popover tour'><div class='arrow'></div><h3 class='popover-title'></h3><div class='popover-content'></div><div class='popover-navigation'><button class='btn btn-default' data-role='prev'>« Prev</button><button class='btn btn-default' data-role='next'>Next »</button><button class='btn btn-default' data-role='end'>End tour</button></div></div>",
+        afterGetState: function(key, value) {},
+        afterSetState: function(key, value) {},
+        afterRemoveState: function(key, value) {},
+        onStart: function(tour) {},
+        onEnd: function(tour) {
+
+            //tour.restart();
+
+        },
+        onShow: function(tour) {},
+        onShown: function(tour) {},
+        onHide: function(tour) {},
+        onHidden: function(tour) {},
+        onNext: function(tour) {},
+        onPrev: function(tour) {},
+        onPause: function(tour, duration) {},
+        onResume: function(tour, duration) {},
+        onRedirectError: function(tour) {}
+
+
+    });
+
     $(document).ready(function() {
 
 
@@ -2095,6 +2150,20 @@ Useful for PHP to JS transfer
 
 
         })
+
+
+        $(document).on('click', '.showMeAround', function() {
+
+// Initialize the tour
+tourShort.init();
+
+tourShort.start();
+
+// Start the tour
+tourShort.restart();
+
+})
+
 
 
 

@@ -1822,6 +1822,12 @@ public function programme_owned_by_user ($programmeid, $userid, $debug){
 
     $asset_array = $this->which_assets_contain_programme($programmeid);
 
+    if ($debug){
+
+
+        var_dump($asset_array);
+    }
+
     if ($asset_array != false){
 
 
@@ -1938,7 +1944,11 @@ public function which_assets_contain_programme ($programmeid, $debug=false){
             INNER JOIN `sub_asset_paid` as c ON b.`id` = c.`asset_id`
             WHERE c.`programme_id` = '$programmeid'";
 
-        //echo $q . '<br><br>';
+        
+            if ($debug){
+            echo $q . '<br><br>';
+
+            }
 
 
 
@@ -1952,7 +1962,7 @@ public function which_assets_contain_programme ($programmeid, $debug=false){
             while($row = $result->fetch(PDO::FETCH_ASSOC)){
 
                 $rowReturn[$x] = $row['id'];
-
+                $x++;
 
             }
 
@@ -5470,6 +5480,203 @@ if ($debug){
     
     }
 
+
+    //determine subscription to congress
+
+    //determine current page via asset id
+
+    //is plenary
+
+    //is complex
+
+    public function isPlenaryGIEQsII($asset_id){
+
+        if ($asset_id == '' || $asset_id == ''){
+
+            return true;
+
+        }else{
+
+            return false;
+        }
+
+    }
+
+
+    public function hasAccessGIEQsIIDay1($user_id, $debug=false){
+
+
+        //day 1 programme ids 36,37
+
+        //day 2 programme ids 38,39
+
+
+        if (($this->programme_owned_by_user('36', $user_id, false) == true && $this->programme_owned_by_user('37', $user_id, false) == true)){
+
+
+            return true;
+
+        }else{
+
+            return false;
+        }
+
+
+    }
+
+    public function hasAccessGIEQsIIDay2($user_id, $debug=false){
+
+
+        //day 1 programme ids 36,37
+
+        //day 2 programme ids 38,39
+
+
+        if (($this->programme_owned_by_user('38', $user_id, false) == true && $this->programme_owned_by_user('39', $user_id, false) == true)){
+
+
+            return true;
+
+        }else{
+
+            return false;
+        }
+
+
+    }
+
+    public function hasAccessGIEQsII($day, $user_id, $debug=false){
+
+
+        //day 1 programme ids 36,37
+
+        //day 2 programme ids 38,39
+
+
+        if ($day == 1){
+        
+            if (($this->programme_owned_by_user('36', $user_id, $debug) == true && $this->programme_owned_by_user('37', $user_id, $debug) == true)){
+
+
+                return true;
+    
+            }else{
+    
+                return false;
+            }
+    }elseif ($day == 2){
+
+
+        if (($this->programme_owned_by_user('38', $user_id, $debug) == true && $this->programme_owned_by_user('39', $user_id, $debug) == true)){
+
+
+            return true;
+
+        }else{
+
+            return false;
+        }
+
+    }
+
+
+    }
+
+
+    public function whichDay($test, $debug=false){
+
+        //check the CURRENTdate against the course date
+
+        //if a testing user ensure random selection between first and second day
+
+        //seconddate comes from programme->getdate()
+
+        //
+
+        $serverTimeZoneNav = new DateTimeZone('Europe/Brussels'); //because this is where course is held
+
+        $currentNavTime = new DateTime('now', $serverTimeZoneNav);  
+
+        $firstDate = $currentNavTime->format('Y-m-d');
+
+       
+
+
+        if ($firstDate == '2021-09-30'){
+
+            return 1;
+        }elseif ($firstDate == '2021-10-01'){
+
+            return 2;
+        }else{
+
+            if ($test){
+
+                return rand(1,2);
+    
+            }else{
+
+            return false;
+
+            }
+        }
+
+        
+
+
+
+    }
+
+    function gieqsIILive ($day){
+
+
+        //$day from $this->whichDay
+
+        if ($day == 1 || $day == 2){
+
+            return true;
+        }else{
+
+            return false;
+        }
+
+    }
+
+    function requiredAssetGIEQsII($day, $plenary){
+
+
+        if ($day == 1){
+
+            if ($plenary == true){
+
+                return 22; //day 1 plenary
+
+            }else{
+
+                return 23;  //day 1 complex
+            }
+
+        }elseif ($day == 2){
+
+            if ($plenary == true){
+
+                return 24; //day 2 plenary
+
+            }else{
+
+                return 25; //day 2 complex
+            }
+        }
+
+
+    }
+
+
+
+
+
+
+    
     
 
   

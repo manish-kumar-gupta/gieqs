@@ -131,14 +131,14 @@ top: -20vh;
 
 <body>
     <header class="header header-transparent" id="header-main">
+<!-- Topbar -->
 
-        <!-- Topbar -->
+<?php require BASE_URI . '/pages/learning/includes/topbar.php';?>
 
-        <?php require BASE_URI . '/topbar.php';?>
+<!-- Main navbar -->
 
-        <!-- Main navbar -->
+<?php require BASE_URI . '/pages/learning/includes/nav.php';?>
 
-        <?php require BASE_URI . '/nav.php';?>
 
         
 
@@ -167,7 +167,14 @@ top: -20vh;
             <?php $livepage = 'Boston Scientific.  Proud PLATINUM sponsor of GIEQs';?>
 
 <div id="id" style="display:none;"><?php if ($id){echo $id;}?></div>
-<?php require (BASE_URI . '/pages/learning/pages/live/liveNav.php');?>
+
+
+<div class="mt-10"></div>
+<?php         
+
+
+$videoset = 2;
+require(BASE_URI . '/pages/learning/pages/general/live_nav.php'); ?>
 <div class="main-content">
     <!-- Navbar warning -->
     <?php if ($liveAccess){

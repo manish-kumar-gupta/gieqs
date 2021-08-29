@@ -41,6 +41,32 @@ $sessionView = new sessionView;
 
 //new class navigationManager
 
+
+
+
+//gieqs ii parameters
+
+if ($isSuperuser == 1){
+
+    $courseTest = true;
+}else{
+
+
+    $courseTest = false;
+}
+
+
+$gieqs_ii_day = $assetManager->whichDay($courseTest,false);
+
+$gieqs_ii_is_live = $assetManager->gieqsIILive($gieqs_ii_day);
+
+
+$gieqs_ii_has_access_to_today = $assetManager->hasAccessGIEQsII($gieqs_ii_day, $userid, false);
+
+$gieqs_ii_plenary_link = $assetManager->requiredAssetGIEQsII($gieqs_ii_day,true);
+
+$gieqs_ii_complex_link = $assetManager->requiredAssetGIEQsII($gieqs_ii_day,false);
+
 //query to get menus [if active]
 
 $menus = $navigationManager->getActiveMenus();
@@ -71,7 +97,21 @@ if ($menus) {
         <div class="collapse navbar-collapse" id="navbar-main-collapse">
             <ul class="navbar-nav align-items-lg-center">
 
+        <?php 
+        
+      
+
+        
+        if (($gieqs_ii_is_live === true) && ($gieqs_ii_has_access_to_today)){?>
+
             <li class="nav-item">
+                    <a class="nav-link"
+                        href="<?php echo BASE_URL;?>/pages/learning/pages/general/show_subscription.php?assetid=<?php echo $assetManager->requiredAssetGIEQsII($assetManager->whichDay($courseTest,false),true);?>"><span class="gieqsGold">GIEQs II Live</span></a>
+                </li>
+
+        <?php } ?>
+
+        <li class="nav-item">
                     <a class="nav-link"
                         href="<?php echo BASE_URL; ?>/pages/learning/blog.php">Blog</a>
                 </li>
