@@ -260,7 +260,7 @@ padding-bottom: .75rem; */
                         <div class="col-lg-7 order-lg-1">
                             <div class="pr-md-4">
                                 <h5 class="h3">3 Charitable Goals.</h5>
-                                <p class="text-muted lead my-4">We have committed to 3 charitable aims as part of the missin of the GIEQs Foundation:
+                                <p class="text-muted lead my-4">We have committed to 3 charitable aims as part of the mission of the GIEQs Foundation:
 
                                 <ul>
 
@@ -281,17 +281,27 @@ padding-bottom: .75rem; */
                                 </li>
                                     
 
-                                    <li class="mt-2 my-1">
+                                    <li class="mt-4 my-1">
 
 
 
-                                        <p><span class="gieqsGold">Funding Endoscopy Fellowships</span> </p>
+                                        <p><span class="gieqsGold">Funding Endoscopy Fellowships</span> 
+                                      
+                                       Fellowships are another great way to make an impact on less fortunate institutions.  By setting up trainees with a competent
+                                       basic endoscopy practices can be greatly improved. 
+                                      
+                                      
+                                      </p>
                                     </li>
                                     <li class="my-1">
 
 
 
-                                        <p><span class="gieqsGold">Funding Endoscopy Materials</span> </p>
+                                        <p><span class="gieqsGold">Funding Endoscopy Materials</span> 
+                                        Part of our mission is to set up endoscopy units in less fortunate countries with new materials.  This can make a huge impact on  
+                                        the local healthcare environment.
+                                      
+                                      </p>
                                     </li>
 
                                 </ul>
