@@ -856,14 +856,7 @@ $(document).ready(function() {
         console.dir(formObject);
 
 
-        /*  fetch(siteRoot + "pages/learning/scripts/subscriptions/create-checkout-session.php" + new URLSearchParams({
-    foo: 'value',
-    bar: 2,
-})), {
-        method: "POST",
-      }) */
-
-        fetch(siteRoot + "/pages/learning/scripts/subscriptions/generate_free_subscription.php", {
+        fetch(siteRoot + "/pages/learning/scripts/subscriptions/generate_free_subscription_ajax.php", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
