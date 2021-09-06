@@ -176,7 +176,7 @@ top: -20vh;
                 </a>
                 <div class="media-body">
                   <span class="h6 mb-0">David Tate</span>
-                  <span class="text-sm text-muted">31st August 2020</span>
+                  <span class="text-sm text-muted">31st August 2020, Updated 6/9/2021</span>
                 </div>
               </div>
               <!-- <div class="d-flex align-items-center mt-4">
@@ -208,6 +208,12 @@ top: -20vh;
                 <h5>Why can I not add tag categories or new tags?</h5>
                 <p>The tags and tag categories govern the running of the site.  Therefore we ask that you don't modify them but discuss them with the managing users</p>
 
+                <h5>Why does my work on tagging not save?</h5>
+                <p>As per the video above you need to avoid using special characters like ' and " and / which will break the page.  You can always tell if your tagging
+                  has saved by checking the bar at the top just underneath the video which says Saved at e.g. 21:40.  If that is not showing then check you do not have any of these
+                  characters in your input.
+                </p>
+
                 
               </article>
             </div>
@@ -221,7 +227,7 @@ top: -20vh;
                   </button>
                 </div>
                 <div>
-                  <a href="#" class="btn btn-sm btn-primary">Contact Support</a>
+                  <a href="mailto:admin@gieqs.com" class="btn btn-sm btn-primary">Contact Support</a>
                 </div>
               </form>
             </div>
