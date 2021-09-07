@@ -179,8 +179,7 @@ width: 100%;
 
                 </div>
 
-                <!--Gold Sponsors 
-
+                
                 <div class="row my-4">
                     <h2 class="mx-auto" style="color: #12263f;">Gold Sponsors</h2>
                 </div>
@@ -188,39 +187,23 @@ width: 100%;
                 <div class="client-group row justify-content-center align-items-center mb-4">
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
-                        <img class="logo" alt="Boston Scientific Logo" src="<?php echo BASE_URL . '/assets/img/sponsors/Boston Scientific.jpg';?>">
+                        <img class="logo" alt="ACERTYS" src="<?php echo BASE_URL . '/assets/img/sponsors/ACERTYS.jpg';?>">
                     </div>
 
                 </div>
-                -->
             
 
-                <!--Silver Sponsors
-                <div class="row text-left">
-                    <div class="col-12 p-3 pb-2">
-                        <span class="h2" style="color: black;">Silver Sponsors</span><br />
-                    </div>
+                <div class="row my-4">
+                    <h2 class="mx-auto" style="color: #12263f;">Silver Sponsors</h2>
                 </div>
 
-                <div class="client-group row justify-content-center mb-4">
-                     <div class="col-lg-3 col-md-4 col-6 py-3">
-                    <img class="logo" alt="Olympus" src="<?php //echo BASE_URL . '/assets/img/icons/olympus.png';?>">
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-6 py-3">
-                    <img class="logo" alt="Medtronic" src="<?php //echo BASE_URL . '/assets/img/icons/medtronic.png';?>">
+                <div class="client-group row justify-content-center align-items-center mb-4">
 
-                    </div> 
-                    <div class="col-lg-3 col-md-4 col-6 py-3">
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-6 py-3">
-
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-6 py-3">
-
+                    <div class="col-lg-2 col-md-3 col-4 p-3">
+                        <img class="logo" alt="JANSSEN" src="<?php echo BASE_URL . '/assets/img/sponsors/JANSSEN.jpg';?>">
                     </div>
 
                 </div>
-                -->
     
                 <!--Bronze Sponsors-->
                 <div class="row my-4">
