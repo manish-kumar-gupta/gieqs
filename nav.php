@@ -34,6 +34,27 @@ spl_autoload_register ('class_loader');
 
 $test = false;
 
+if ($isSuperuser == 1){
+
+  $courseTest = true;
+}else{
+
+
+  $courseTest = false;
+}
+
+
+$gieqs_ii_day = $assetManager->whichDay($courseTest,false);
+
+$gieqs_ii_is_live = $assetManager->gieqsIILive($gieqs_ii_day);
+
+
+$gieqs_ii_has_access_to_today = $assetManager->hasAccessGIEQsII($gieqs_ii_day, $userid, false);
+
+$gieqs_ii_plenary_link = $assetManager->requiredAssetGIEQsII($gieqs_ii_day,true);
+
+$gieqs_ii_complex_link = $assetManager->requiredAssetGIEQsII($gieqs_ii_day,false);
+
 
 ?>
 
