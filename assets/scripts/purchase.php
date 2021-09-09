@@ -828,6 +828,7 @@ function launchSubscriptionDialog(subscriptionType) {
 }
 
 
+
 $(document).ready(function() {
 
     $(document).on('submit', '#confirm-new', function(evt) {
@@ -837,9 +838,11 @@ $(document).ready(function() {
             //allow free register
 
             //check this here v important for the free
-            alert('hhere');
+            //alert('hhere');
 
             evt.preventDefault();
+
+            $(this).attr('disabled', true);
 
             $form = $(this).find('input, select, textarea').filter(function() {
                 if ($(this).attr('data-disabled') == "true") return false;
@@ -856,8 +859,9 @@ $(document).ready(function() {
         console.dir(formObject);
 
 
-        fetch(siteRoot + "/pages/learning/scripts/subscriptions/generate_free_subscription_ajax.php", {
+        /* fetch(siteRoot + "/pages/learning/scripts/subscriptions/generate_free_subscription_ajax.php", {
                 method: 'POST',
+                timeout: 10000,
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -865,7 +869,120 @@ $(document).ready(function() {
             })
             .then(function(response) {
                 return response.json();
-            })
+            }) */
+
+
+            var request = $.ajax({
+            url: siteRoot + "/pages/learning/scripts/subscriptions/generate_free_subscription_ajax.php",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(formObject),
+            timeout: 30000,
+            fail: function(xhr, textStatus, errorThrown) {
+                alert(
+                    'Something went wrong. We could not load the subscription data.'
+                );
+                $(this).find('i').remove();
+                $(this).attr('disabled', false);
+            }
+        });
+
+        request.done(function(data) {
+
+
+            data = data.trim();
+            console.log(data);
+
+            externalTest = $.parseJSON(data);
+            console.dir(externalTest);
+
+            try {
+
+                if (externalTest.page) {
+
+                    alert('Free Registration Successful.  Taking you to your purchase');
+
+                    window.location.href = externalTest.page_url;
+
+                }else{
+
+                    $(this).attr('disabled', false);
+
+                    alert('There was a problem with this registration.  Please try again.');
+
+
+                }
+
+            } catch (error) {
+
+
+
+            }
+
+            
+
+            /* try {
+
+                externalTest = $.parseJSON(data);
+                console.dir(externalTest);
+                if (data) {
+
+
+                    try {
+
+                        if (externalTest.location_jump) {
+
+                            window.location.href = externalTest.location_jump;
+
+                        }
+
+                    } catch (error) {
+
+
+
+                    }
+
+
+
+
+
+
+                    $('.modal-new #asset-name').text(externalTest.asset_name);
+                    $('.modal-new #asset-type').text(externalTest.asset_type);
+                    $('.modal-new #renew-frequency').text(externalTest.renew_frequency);
+                    $('.modal-new #asset-description').text(externalTest.description);
+                    $('.modal-new #asset_id_hidden').val(externalTest.asset_id);
+                    $('.modal-new #asset_id_coin_button').attr('asset-id', externalTest.cost);
+
+                    //var a global max cost asset for the coin use
+                    max_cost = externalTest.cost;
+
+                    $('.modal-new #cost').text(externalTest.cost + ' euro');
+
+
+                    $('.modal-new').modal('show');
+                    $(button).find('i').remove();
+                    $(button).attr('disabled', false);
+
+                } else {
+
+                    alert('Something went wrong. We could not load the subscription data.');
+                    $(this).find('i').remove();
+                    $(this).attr('disabled', false);
+
+
+                }
+
+            } catch (error) {
+
+                alert(data);
+                $(button).find('i').remove();
+                $(button).attr('disabled', false);
+
+            } */
+
+
+        });
             
 
 <?php }else{?>

@@ -7,7 +7,7 @@ $requiredUserLevel = 6;
 
 
 
-error_reporting(E_ALL);
+
 require_once '../../../../assets/includes/config.inc.php';
 
 
@@ -23,7 +23,6 @@ $users = new users;
 $users->Load_from_key($userid);
 
 
-error_reporting(E_ALL);
 
 require_once(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
 $assetManager = new assetManager;
@@ -48,7 +47,7 @@ require_once(BASE_URI .'/assets/scripts/classes/userActivity.class.php');
 $userActivity = new userActivity;
 
 
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 require_once BASE_URI .'/../scripts/config.php';
 //check the user is logged in
 //check the correct user
@@ -70,6 +69,10 @@ $debug = false;
 if ($debug){
 
     error_reporting(E_ALL);
+    print_r($data);
+}else{
+    error_reporting(0);
+
 }
 
 function get_include_contents($filename, $variablesToMakeLocal) {
@@ -82,7 +85,7 @@ function get_include_contents($filename, $variablesToMakeLocal) {
     return false;
 }
 
-print_r($data);
+
 
 if (isset($data['subscription_id'])){
 
@@ -95,6 +98,10 @@ if (isset($data['asset_id'])){
 
     $asset_id = $data['asset_id'];
 
+    if ($debug){
+
+        echo 'asset id set';
+    }
 
 }
 
@@ -137,6 +144,7 @@ if ($assetManager->doesUserHaveSameAssetAlready($asset_id, $userid, false)){ //i
 
     echo 'You already own this asset and it is active, so you can\'t purchase it again';
     echo 'Return <a href="www.gieqs.com">home</a>';
+    die();
 
 }
 
@@ -210,7 +218,9 @@ $subscription_to_return['user_id'] = $userid;
 
     //check there are tokens remaining for this asset
 
+    $tokenid = $assetManager->getTokenid($asset_id);
 
+    $subscription->New_subscriptions($userid, $subscription_to_return['asset_id'], $current_date_sqltimestamp, $end_date_sqltimestamp, '1', '0', 'FREE SUBSCRIPTION WITH TOKEN ID ' . $tokenid);
 
 
 
@@ -230,7 +240,6 @@ $subscription_to_return['user_id'] = $userid;
 
         //get the token id
 
-        $tokenid = $assetManager->getTokenid($asset_id);
 
         $date = new DateTime('now', new DateTimeZone('UTC'));
 		$sqltimestamp = date_format($date, 'Y-m-d H:i:s');
@@ -456,7 +465,9 @@ $subscription_to_return['user_id'] = $userid;
         //redirect to page with positive outcome
 
         //$page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $subscription_id;
-        header("Location: $page");
+        
+        $return_array = ['page'=>true, 'page_url'=>$page];
+        echo json_encode($return_array);
         die();
         
 
