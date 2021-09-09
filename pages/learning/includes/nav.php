@@ -424,6 +424,12 @@ if ($isSuperuser){
 
         $courses = $assetManager->getMenuItems($userid, $value['id'], false, $fullAccess);
 
+        if ($debug){
+
+            print_r($courses);
+
+        }
+
         foreach ($courses as $key2 => $value2) {
 
             ?>
