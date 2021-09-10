@@ -1355,7 +1355,7 @@ filter: alpha(opacity=30);
             <?php } ?>
 
 
-            <div class="row d-flex flex-wrap align-items-lg-stretch py-4 px-6">
+            <div class="row d-flex flex-wrap align-items-lg-stretch py-sm-4 px-sm-6">
 
                 <?php //fix for chat window 
 

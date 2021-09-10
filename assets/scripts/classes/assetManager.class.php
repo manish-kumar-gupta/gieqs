@@ -5328,6 +5328,13 @@ if ($debug){
             }
 
             //return $rowReturn;
+
+            if ($debug){
+
+                echo 'query for checkAssetToken GIVES <br/>';
+                echo 'TRUE<br><br>';
+    
+            }
             return true;
 
         } else {

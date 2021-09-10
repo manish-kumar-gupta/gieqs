@@ -223,7 +223,14 @@ font-weight: 300 !important;
                                 $access_validated = false;
                             
 
-                             }?>
+                             }
+                             
+                             if ($debug){
+                             var_dump($access_validated);
+                             }
+
+                             
+                             ?>
 
         <div id="action" style="display:none;"><?php if ($action){echo $action;}?></div>
         <div id="access_token" style="display:none;"><?php if ($access_validated){echo $access_token;}?></div>
