@@ -1507,7 +1507,7 @@ filter: alpha(opacity=30);
 
 
             </div> -->
-        <div id="programme-display" class="p-2 px-6 flex-wrap">
+        <div id="programme-display" class="p-lg-2 px-lg-6 flex-wrap">
 
 
 
