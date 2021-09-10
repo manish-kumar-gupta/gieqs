@@ -870,6 +870,7 @@ filter: alpha(opacity=30);
                         #slido {
 
                             min-height: 500px;
+                            padding-top: 1rem;
 
                         }
 
@@ -1361,7 +1362,7 @@ filter: alpha(opacity=30);
             <?php } ?>
 
 
-            <div class="row d-flex flex-wrap align-items-lg-stretch py-sm-4 px-sm-6" id="slido">
+            <div class="row d-flex flex-wrap align-items-lg-stretch py-sm-4 px-sm-6">
 
                 <?php //fix for chat window 
 
@@ -1388,7 +1389,7 @@ filter: alpha(opacity=30);
 
                 </div>
             </div>
-            <div class="col-lg-3 py-lg-2 m-0">
+            <div class="col-lg-3 py-lg-2 m-0" id="slido">
                 <iframe src="<?php echo $programme->geturl_slido();?>" height="100%" width="100%" frameBorder="0"
                     title="Slido"></iframe>
 
