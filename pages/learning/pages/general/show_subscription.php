@@ -1364,7 +1364,7 @@ filter: alpha(opacity=30);
             if ($programme->geturl_slido() != ''){?>
 
                 <?php
-                echo '<div class="col-lg-9">';
+                echo '<div class="col-lg-9 my-0">';
                 ?>
                 <div  style="padding:56.25% 0 0 0;position:relative;">
 
