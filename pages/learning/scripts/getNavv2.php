@@ -1,8 +1,8 @@
 <?php
 
-            $openaccess = 1;
+            $openaccess = 0;
 
-			//$requiredUserLevel = 4;
+			$requiredUserLevel = 6;
 			
             require ('../includes/config.inc.php');		
             

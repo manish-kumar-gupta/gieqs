@@ -53,7 +53,7 @@ spl_autoload_register ('class_loader');
 
 ?>
 
-    <title>Ghent International Endoscopy Symposium - Backend - Token Editor</title>
+    <title>Ghent International Endoscopy Symposium - Backend - User Activity  Manager</title>
 
     <!-- Page CSS -->
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/flatpickr/dist/flatpickr.min.css">
@@ -129,17 +129,14 @@ spl_autoload_register ('class_loader');
                         <!-- Salute + Small stats -->
                         <div class="row align-items-center mb-4">
                             <div class="col-md-5 mb-4 mb-md-0">
-                                <span class="h2 mb-0 text-white d-block">Partner Token Manager</span>
+                                <span class="h2 mb-0 text-white d-block">User Activity Manager</span>
 
                                 <!-- <span class="text-white">Have a nice day!</span> -->
                             </div>
                             <div class="col-auto flex-fill d-xl-block">
                 <ul class="list-inline row justify-content-lg-end mb-0">
                   <li id="cipher-generate" class="list-inline-item col-sm-4 col-md-auto px-3 my-2 mx-0 d-none">
-                    <a href="<?php echo BASE_URL;?>/pages/backend/test_backend.php?table=menu"><button class="btn btn-sm">Generate Cipher</button></a>
-                  </li>
-                  <li id="link-generate" class="list-inline-item col-sm-4 col-md-auto px-3 my-2 mx-0 d-none">
-                    <a href="<?php echo BASE_URL;?>/pages/backend/test_backend.php?table=menu"><button class="btn btn-sm">Generate Link</button></a>
+                    <a href="<?php echo BASE_URL;?>/pages/backend/test_backend.php?table=menu"><button class="btn btn-sm">Insert Standard Path</button></a>
                   </li>
                   <li class="list-inline-item col-sm-4 col-md-auto px-3 my-2 mx-0">
 <!--                   <a href="<?php echo BASE_URL;?>/pages/backend/test_backend.php?table=navigation"><button class="btn btn-sm">Navigation</button></a>
@@ -242,41 +239,22 @@ if ($identifierValue) {
 
 <?php 
 
-//$pdocrud->setSettings("inlineEditbtn", true);
 
+/* 
 $pdocrud->relatedData('asset_id','assets_paid','id','name');
-//$pdocrud->relatedData('superCategory','values','superCategory','superCategory_t');
-        //$pdocrud->addFilter("superCategoryFilter", "Super Category", "superCategory", "dropdown");
-        //$pdocrud->setFilterSource("superCategoryFilter", "values", "superCategory", "superCategory_t", "db");
-        //$pdocrud->setAdvSearchParam('superCategory', 'Super Category');
-$pdocrud->fieldTypes("created", "date");
-$pdocrud->fieldNotMandatory('partner');
-$pdocrud->relatedData('sponsor','sponsor','id','name');
-$pdocrud->relatedData('partner','partner','id','name');
 
+
+$pdocrud->fieldNotMandatory('partner');
 $pdocrud->fieldNotMandatory('sponsor');
 
-/*         $pdocrud->crudAddAction('generate_cipher', 'cipher', $displayVal = array(), $applyVal = array());
- */
-$pdocrud->checkDuplicateRecord(array("cipher"));
+
+$pdocrud->checkDuplicateRecord(array("cipher")); */
+
+//$pdocrud->setSettings("uploadURL", BASE_URI. "/assets/img/icons/");
 
 
-
-
-        /* $action = array("1"=>"0","0"=>"1");//action to be performed, like when value is 1 set it to 0
-$text = array("1" => '<i class="fa fa-arrow-down" aria-hidden="true"></i>',"0"=>'<i class="fa fa-arrow-up" aria-hidden="true"></i>');
-$attr = array("title"=>"Generate Cipher");
-$pdocrud->enqueueBtnActions("btnswitch", $action, "btnswitch",$text,"cipher", $attr); */
-
-$pdocrud->addPlugin('select2');
-echo $pdocrud->dbTable("token")->render();
-
-
-echo $pdocrud->loadPluginJsCode("select2",".select2-element-identifier");//to add plugin call on select elements
-
-
-
-
+    
+echo $pdocrud->dbTable("userActivity")->render();
 
 
 
@@ -648,7 +626,7 @@ $(document).on('ready', function(){
                                    if (data.action == 'edit' || data.action == 'add'){
 
                                        //alert('got it');
-                                       $(document).find('#cipher-generate, #link-generate').removeClass('d-none');
+                                       $(document).find('#cipher-generate').removeClass('d-none');
                                        //console.log(generateCipher(10));
 
                                    }
@@ -656,7 +634,7 @@ $(document).on('ready', function(){
                                    if (data.action == 'back'){
 
                                     //alert('got it');
-                                    $(document).find('#cipher-generate, #link-generate').addClass('d-none');
+                                    $(document).find('#cipher-generate').addClass('d-none');
                                    // console.log(generateCipher(10));
 
                                     }
@@ -669,26 +647,12 @@ $(document).on('ready', function(){
                                 });
                             });
 
-            
-
     $(document).on('click', '#cipher-generate', function(event){
 
         event.preventDefault();
         var cipher = null;
-        var cipher = generateCipher(15);
-        $(document).find('label:contains(\'Cipher\')').siblings().filter('input').val(cipher);
-
-        //console.log($(document).find('label:contains(\'Cipher\')'));
-
-    })
-    
-    $(document).on('click', '#link-generate', function(event){
-
-        event.preventDefault();
-        var cipher = null;
-        var cipher = $(document).find('label:contains(\'Cipher\')').siblings().filter('input').val();
-        var assetid = $(document).find('label:contains(\'Asset\')').siblings().filter('select').val();
-        alert('URL to copy is https://www.gieqs.com/pages/program/program_generic.php?id='+assetid+'&access_token='+cipher);
+        var cipher = 'https://www.gieqs.com/assets/img/icons/';
+        $(document).find('label:contains(\'Logo src\')').siblings().filter('input').val(cipher);
 
         //console.log($(document).find('label:contains(\'Cipher\')'));
 

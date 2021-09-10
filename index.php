@@ -253,7 +253,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
         </div>
     </div>
 </section>
-<section class="header-1 section-rotate bg-section-dark">
+<section class="header-1 bg-section-dark">
 
 
 <?php }else{?>

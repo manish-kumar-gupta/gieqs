@@ -96,6 +96,9 @@
                   <span class="dropdown-header">GIEQs Online Partners</span>
                   <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/sponsor.php">Edit Sponsors</a>
                   <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/partner.php">Edit Partners</a>
+                  <span class="dropdown-header">GIEQs Coin</span>
+                  <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/coin_grant.php">Edit Coin Grant</a>
+                  <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/coin_spend.php">Edit Coin Spend</a>
   
                   </div>
                 </div>

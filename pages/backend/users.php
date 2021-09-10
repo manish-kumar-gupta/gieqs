@@ -800,7 +800,9 @@ if ($identifierValue) {
                                         <input id="email" type="text" class="form-control" name="email">
                                     </div>
 
-                                    <button class="btn bg-warning text-white p-2 m-2 send-welcome-mail">Send GIEQs digital welcome mail</button>
+                                    <button class="btn bg-warning text-white p-2 m-2 send-welcome-mail">Send GIEQs II welcome mail</button>
+                                    <button class="btn bg-success text-white p-2 m-2 grant-10-coin">Grain 10 coin gift</button>
+
 
                                     <button class="btn bg-warning text-white p-2 m-2 send-mail">Send Password Reset Mail   </button>
                                     <button class="btn bg-warning text-white p-2 m-2 reset-activity">Fix user login issue   </button>
@@ -1301,6 +1303,69 @@ passwordChange.done(function (data) {
 
 }
 
+function gift10coin() {
+
+
+//userid is lesionUnderEdit
+
+//console.log('updatePassword chunk');
+//go to php script with an object from the form
+
+
+//TODO add identifier and identifierKey
+
+const dataToSend = {
+
+    passedUserid: lesionUnderEdit,
+
+}
+
+const jsonString = JSON.stringify(dataToSend);
+console.log(jsonString);
+
+$('.grant-10-coin').prop('disabled', true);
+$('.grant-10-coin').append('&nbsp&nbsp<i class="fas fa-circle-notch fa-spin"></i>');
+
+
+var passwordChange = $.ajax({
+    url: siteRoot + "assets/scripts/10coingift.php",
+    type: "POST",
+    contentType: "application/json",
+    data: jsonString,
+});
+
+
+
+passwordChange.done(function (data) {
+
+    if (data) {
+        Swal.fire({
+            type: 'info',
+            title: '10 Coin Gift',
+            text: data,
+            background: '#162e4d',
+            confirmButtonText: 'ok',
+            confirmButtonColor: 'rgb(238, 194, 120)',
+
+
+        }).then((result) => {
+
+            $('.grant-10-coin').prop('disabled', false);
+            $('.grant-10-coin').find('.fa-spin').remove();
+
+            /* window.location.href = siteRoot;
+            resetFormElements('NewUserForm');
+            enableFormInputs('NewUserForm'); */
+            //$('#registerInterest').modal('hide');
+
+        })
+
+    }
+
+})
+
+}
+
     function fixUserLogin() {
 
 
@@ -1687,6 +1752,8 @@ processResults: function(data) {
         $(document).find('#<?php echo $databaseName;?>-form').find('select').val('').trigger('change');  //TODO ADD TO ALL PAGES WHERE SELECT2
         $(document).find('#<?php echo $databaseName;?>-form').find('.send-mail').prop('disabled', true);
         $(document).find('#<?php echo $databaseName;?>-form').find('.send-welcome-mail').prop('disabled', true);
+        $(document).find('#<?php echo $databaseName;?>-form').find('.grant-10-coin').prop('disabled', true);
+
         $(document).find('#<?php echo $databaseName;?>-form').find('.reset-activity').prop('disabled', true);
         $(document).find('#<?php echo $databaseName;?>-form').find('#registrations').prop('disabled', true);
 
@@ -1743,6 +1810,13 @@ processResults: function(data) {
     sendUserWelcomeEmail();
 
     })
+
+    $(document).on('click', '.grant-10-coin', function() {
+
+event.preventDefault();
+gift10coin();
+
+})
 
     $(document).on('click', '.reset-activity', function() {
 
