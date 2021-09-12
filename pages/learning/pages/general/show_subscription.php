@@ -1224,6 +1224,9 @@ filter: alpha(opacity=30);
                         
                     }
 
+                }else{
+
+                    $courseTest = false;
                 }
 
 
