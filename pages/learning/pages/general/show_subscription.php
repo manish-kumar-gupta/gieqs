@@ -869,7 +869,7 @@ filter: alpha(opacity=30);
 
                         #slido {
 
-                            min-height: 500px;
+                            min-height: 500px !important;
                             padding-top: 1rem;
 
                         }
@@ -1351,9 +1351,9 @@ filter: alpha(opacity=30);
 
 
 
-                <a class="btn btn-sm text-dark gieqsGoldBackground mr-3" role="button"
+                <a class="btn btn-sm text-dark gieqsGoldBackground mr-lg-3 m-1" role="button"
                     href="<?php echo $programme->geturl_zoom();?>" target="_blank">LIVE - Access Zoom Meeting</a>
-                <a class="btn btn-sm text-dark gieqsGoldBackground mr-3" role="button" href="#programme-display">View
+                <a class="btn btn-sm text-dark gieqsGoldBackground mr-lg-3 m-1" role="button" href="#programme-display">View
                     Programme</a>
 
 
@@ -1497,7 +1497,7 @@ filter: alpha(opacity=30);
 
         <div class="row d-flex flex-row-reverse flex-wrap py-1 px-6">
 
-        <a class="btn btn-sm text-dark gieqsGoldBackground mr-3" role="button"
+        <a class="btn btn-sm text-dark gieqsGoldBackground mr-3 py-1 px-2" role="button"
                     href="#live-player-container">Back to Live View</a>
     </div>
         <?php } ?>
@@ -1520,7 +1520,7 @@ filter: alpha(opacity=30);
 
 <div class="row d-flex flex-row-reverse flex-wrap pb-5 px-6">
 
-<a class="btn btn-sm text-dark gieqsGoldBackground mr-3" role="button"
+<a class="btn btn-sm text-dark gieqsGoldBackground mr-3 mr-3 py-1 px-2" role="button"
             href="#live-player-container">Back to Live View</a>
 </div>
 <?php } ?>
