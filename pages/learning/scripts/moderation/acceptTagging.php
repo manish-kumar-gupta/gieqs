@@ -10,8 +10,11 @@ require ('../../includes/config.inc.php');
 
 require BASE_URI . '/head.php';
 
+//error_reporting(E_ALL);
 
 $debug = false;
+
+$_SESSION['debug'] == false;
 
 
 $users = new users;
@@ -21,6 +24,10 @@ $general = new general;
 $usersTagging = new usersTagging;
 $video_moderation = new video_moderation;
 $video = new video;
+//$userFunctions = new userFunctions;
+require_once(BASE_URI .'/assets/scripts/classes/userFunctions.class.php');
+
+$userFunctions = new userFunctions;
 
 require(BASE_URI.'/vendor/autoload.php');    
      
@@ -71,6 +78,8 @@ if (isset($_GET['key'])) {
   <?php    
 
 //load user from token
+
+//var_dump($userFunctions);
 
 if ($userFunctions->getUserFromKey($key)){
 
