@@ -221,6 +221,18 @@ font-weight: 300 !important;
                             }else{
                             
                                 $access_validated = false;
+
+                                
+
+                             }
+
+                             if (!($access_validated) && isset($access_token)){
+
+                                echo '<div class="container mt-10 mb-10">';
+                                echo "There is an issue with your access code.  Please check with us or your referring institution/partner.";
+								echo '</div>';
+								include(BASE_URI . "/footer.php");
+								exit();
                             
 
                              }

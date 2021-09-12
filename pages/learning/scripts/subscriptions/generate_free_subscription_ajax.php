@@ -220,9 +220,14 @@ $subscription_to_return['user_id'] = $userid;
 
     $tokenid = $assetManager->getTokenid($asset_id);
 
+    if ($debug){
+
+
+    }else{
+    
     $subscription->New_subscriptions($userid, $subscription_to_return['asset_id'], $current_date_sqltimestamp, $end_date_sqltimestamp, '1', '0', 'FREE SUBSCRIPTION WITH TOKEN ID ' . $tokenid);
 
-
+    }
 
     //record which user is doing this in user activity
 
@@ -257,7 +262,16 @@ $subscription_to_return['user_id'] = $userid;
 
         $new_remaining = intval($remaining) - 1;
 
+        if ($debug){
+
+            echo '<br/>Token id was '. $tokenid;
+            echo '<br/>remaining was ' . $remaining . 'and is now ' . $new_remaining;
+
+        }
+
         $token->setremaining($new_remaining);
+
+        //var_dump($token);
         $token->prepareStatementPDOUpdate();
 
 

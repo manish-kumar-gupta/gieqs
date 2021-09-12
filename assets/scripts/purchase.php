@@ -842,7 +842,7 @@ $(document).ready(function() {
 
             evt.preventDefault();
 
-            $(this).attr('disabled', true);
+            $(document).find('#button-confirm-new').attr('disabled', true);
 
             $form = $(this).find('input, select, textarea').filter(function() {
                 if ($(this).attr('data-disabled') == "true") return false;
@@ -906,7 +906,7 @@ $(document).ready(function() {
 
                 }else{
 
-                    $(this).attr('disabled', false);
+                    $(document).find('#button-confirm-new').attr('disabled', false);
 
                     alert('There was a problem with this registration.  Please try again.');
 

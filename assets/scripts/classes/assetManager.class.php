@@ -5301,7 +5301,7 @@ if ($debug){
 
         //does the token exist and match this asset
 
-        $q = "SELECT `id` FROM `token` WHERE `asset_id` LIKE '$asset_id' AND `cipher` LIKE '$token' AND CAST(`remaining` AS UNSIGNED) > 0";
+        $q = "SELECT `id` FROM `token` WHERE `asset_id` LIKE '$asset_id' AND `cipher` LIKE '$token' AND (`remaining` + 0) > 0";
 
         
         if ($debug){
@@ -5395,7 +5395,7 @@ if ($debug){
 
         //does the token exist and match this asset
 
-        $q = "SELECT `id` FROM `token` WHERE `asset_id` LIKE '$asset_id'";
+        $q = "SELECT `id` FROM `token` WHERE `asset_id` LIKE '$asset_id' LIMIT 1";
 
         
         if ($debug){

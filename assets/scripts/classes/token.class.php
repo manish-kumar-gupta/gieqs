@@ -25,7 +25,7 @@
           }
           }
 
-
+		  //error_reporting(E_ALL);
 Class token {
 
 	private $id; //int(11)
@@ -270,6 +270,8 @@ return $this->connection->conn->lastInsertId();
  public function prepareStatementPDOUpdate (){ 
  //need to only update those which are set 
  $ov = get_object_vars($this); 
+ //print_r($ov);
+
 if ($ov['connection'] != ''){
 			unset($ov['connection']);
 		} 
@@ -282,7 +284,7 @@ if ($ov['updated'] != ''){
 $ovMod = array(); 
 foreach ($ov as $key=>$value){
 
-			if ($value != ''){
+			if (isset($value) && strlen("".$value)){
 
 				$key = '`' . $key . '`';
 
@@ -290,10 +292,12 @@ foreach ($ov as $key=>$value){
 			}
 
 			}
+
+			//print_r($ovMod);
 $ovMod2 = array(); 
 foreach ($ov as $key=>$value){
 
-			if ($value != ''){
+			if (isset($value) && strlen("".$value)){
 
 				$key = '' . $key . '';
 
@@ -304,7 +308,7 @@ foreach ($ov as $key=>$value){
 $ovMod3 = array(); 
 foreach ($ov as $key=>$value){
 
-			if ($value != ''){
+			if (isset($value) && strlen("".$value)){
 
 				$key = ':' . $key;
 
@@ -343,6 +347,9 @@ $x=0;
 
 		} 
 $q = "UPDATE `token` SET $implodeArray WHERE `id` = '$this->id'";
+
+
+//echo $q;
 
 		
  $stmt = $this->connection->RunQuery($q); 
