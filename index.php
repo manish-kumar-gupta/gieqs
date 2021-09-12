@@ -112,6 +112,17 @@
         top: 30px;
         transform: rotate(45deg);
     }
+
+    @media (min-width: 768px) {
+
+        #twitter {
+    
+    max-width: 40%;
+
+    }
+}
+    
+
     </style>
 
 
@@ -629,7 +640,15 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
          //text for past and not live
 ?>
 
-    <section class="header-1 section-rotate bg-section-dark" data-offset-top="#header-main">
+<hr />
+        <section class="slice slice-lg pt-4">
+            <div id="twitter" class="container d-flex align-items-center position-relative zindex-100" style="">
+    
+<a class="twitter-timeline"  data-theme="dark" href="https://twitter.com/gieqs_symposium?ref_src=twsrc%5Etfw">Tweets by gieqs_symposium</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+    </section>
+
+<section class="header-1 section-rotate bg-section-dark" data-offset-top="#header-main">
         <div class="section-inner bg-gradient-dark"></div>
         <!-- SVG illustration -->
         <div class="pt-7 position-absolute middle right-0 col-lg-7 col-xl-6 d-none d-lg-block">
