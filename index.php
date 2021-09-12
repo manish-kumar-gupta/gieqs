@@ -264,7 +264,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
         <?php
 
 }
-        $imageArray = ['assets/img/backgrounds/gieqs2ii.png', 'assets/img/backgrounds/ChromoPolypTransBack.png', 'assets/img/covers/bleeding/heaterNonLive.png', 'assets/img/covers/ovesco.png', 'assets/img/polyps/smi_demarcation.png']
+        $imageArray = ['assets/img/icons/gieqs_2.png', 'assets/img/backgrounds/gieqs2ii.png', 'assets/img/backgrounds/ChromoPolypTransBack.png', 'assets/img/covers/bleeding/heaterNonLive.png', 'assets/img/covers/ovesco.png', 'assets/img/polyps/smi_demarcation.png']
 
 
     ?>
