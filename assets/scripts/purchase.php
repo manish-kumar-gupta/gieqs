@@ -1294,10 +1294,32 @@ $(document).ready(function() {
 
 
     $(document).on('click', '#login', function() {
-
         event.preventDefault();
-        window.location.href = siteRoot2 +
-            '/pages/authentication/login.php?destination=signup&assetid=' + asset_id;
+
+        <?php 
+            if ($access_validated){
+                ?>
+
+        window.location = siteRoot2 +
+            "pages/authentication/login.php?destination=signup&assetid=" + asset_id + "&access_token=" +
+            access_token;
+
+        <?php 
+            }else{
+                ?>
+
+        window.location = siteRoot2 +
+            "pages/authentication/login.php?destination=signup&assetid=" + asset_id;
+
+        <?php
+            }
+            ?>
+
+
+
+
+      /*   window.location.href = siteRoot2 +
+            '/pages/authentication/login.php?destination=signup&assetid=' + asset_id; */
 
 
     })
