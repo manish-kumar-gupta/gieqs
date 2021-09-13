@@ -558,7 +558,7 @@
                                                                             style="box-sizing:border-box;text-decoration:none;color:#eec278;background-color:transparent;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;font-weight:normal;">
 
                                                                             <img class="mx-auto mt-4 mb-0" width="150"
-                                                                                src="https://www.gieqs.com/assets/img/brand/gieqs.png"
+                                                                                src="https://www.gieqs.com/assets/img/icons/gieqs_foundation_logo.png"
                                                                                 style="box-sizing:border-box;vertical-align:middle;border-style:none;margin-bottom:0;margin-top:1.5rem;border:0;height:auto !important;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;">
                                                                         </a>
                                                                         <p class="h6 text-center mb-0"
