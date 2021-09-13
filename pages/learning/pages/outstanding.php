@@ -828,6 +828,7 @@ if (data){
 
 
             //EDIT
+            order: [],
             columns: [{
                     data: 'id'
                 },
