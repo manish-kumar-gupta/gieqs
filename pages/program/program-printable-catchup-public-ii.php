@@ -177,7 +177,10 @@ background-color: rgb(238, 194, 120);
 
                     <div class="col-12 p-3 pb-5">
                         <span class="h1" style="color: rgb(238, 194, 120);">Ghent International Endoscopy Quality
-                            Symposium <br /> Edition I. <br/>Watch Sessions Again</span>
+                            Symposium <br /> Edition II. <br/>Watch Sessions Again</span>
+                    </div>
+                    <div class="col-12 p-3 pb-5">
+                        <img style="max-width:250px;" src="<?php echo BASE_URL;?>/assets/img/icons/gieqs_2.png">
                     </div>
                     <div class="col-12 p-3 pb-5">
                         <span class="h6" style="color: rgb(238, 194, 120);">Sessions with a <i class="fas fa-play"></i> icon are available for catch-up viewing. <br/>The <i class="fas fa-play"></i> next to the title of the session will play the whole session.  Some sessions have videos for individual item catch up.</span>
@@ -193,11 +196,11 @@ background-color: rgb(238, 194, 120);
                         <!-- </a> -->
                         <a href="#targetScrollProgramme" id="wednesday"
                             class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
-                            <span class="btn-inner--text text-dark">Wed 7 Oct</span>
+                            <span class="btn-inner--text text-dark">Thurs 30 Sept</span>
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         </a>
                         <a href="#targetScrollProgramme" id="thursday" class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
-                            <span class="btn-inner--text text-dark">Thurs 8 Oct</span>
+                            <span class="btn-inner--text text-dark">Friday 1 Oct</span>
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         </a>
                     </div>
@@ -253,7 +256,7 @@ background-color: rgb(238, 194, 120);
     request2.done(function (data) {
         // alert( "success" );
         $('#ajaxWed').html(data);
-        $(document).find('.Thursday').hide();
+        $(document).find('.Friday').hide();
     })
     }
 
@@ -265,15 +268,15 @@ background-color: rgb(238, 194, 120);
 
         $(document).on('click', '#wednesday', function() {
 
-            $(document).find('.Wednesday').show();
-            $(document).find('.Thursday').hide();
+            $(document).find('.Thursday').show();
+            $(document).find('.Friday').hide();
 
         })
 
         $(document).on('click', '#thursday', function() {
 
-            $(document).find('.Thursday').show();
-            $(document).find('.Wednesday').hide();
+            $(document).find('.Friday').show();
+            $(document).find('.Thursday').hide();
 
         })
 

@@ -21,8 +21,8 @@
             $programmeReports = new programmeReports;
             $videosAccess = new videosAccess;
 
-            $debug = false;
 
+            error_reporting(0);
             //$print_r()
 
             if ($liveTest){
@@ -63,9 +63,12 @@
 
             //$edit ability; display icons next to editable segments.
 
-            $edit = FALSE;
+            $edit = false;
 
             $debug = FALSE;
+
+          
+
             
             if ($debug){
                 echo '<br/><br/>Data Array contains </br></br>';
@@ -1249,7 +1252,7 @@
 
                         //rigid time structure
 
-                        $times = array(1=>'07:30:00', 2=>'07:35:00', 3=>'08:40:00', 4=>'09:50:00', 6=>'11:00:00', 7=>'11:30:00', 8=>'12:50:00', 9=>'13:45:00', 10=>'14:20:00', 11=>'15:30:00', 12=>'16:00:00', 13=>'17:05:00', 14=>'18:00:00' );
+                        $times = array(1=>'08:00', 2=>'09:00', 3=>'10:15', 4=>'11:15', 5=>'10:30:00', 6=>'13:00', 7=>'14:00', 8=>'12:50:00', 9=>'15:15', 10=>'16:15', 11=>'17:15', );
                         if ($debug){
                             echo '<br/><br/>times Array contains </br></br>';
                             print_r($times);}
