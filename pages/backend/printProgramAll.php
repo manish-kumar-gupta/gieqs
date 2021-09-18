@@ -15,6 +15,8 @@ $openaccess =1;
             $sessionView = new sessionView;
             $programmeReports = new programmeReports;
 
+
+            $debug = false;
             if ( ! function_exists( 'array_key_last' ) ) {
                 /**
                  * Polyfill for array_key_last() function added in PHP 7.3.
@@ -71,9 +73,11 @@ $openaccess =1;
 
                 //TODO get moderator roles too and list amongst
 
-                //print_r($response);
+                if ($debug){
 
-                
+                ?><pre><?php print_r($response); ?></pre><?php
+
+                }
 
                 $programmeDate = new DateTime($response[0]['date']);
 
@@ -119,11 +123,37 @@ $openaccess =1;
     <div class="modal-body">
 
         <div class="programme-body">
-            <?php foreach ($response as $key=>$value){
+            <?php 
+            $x = 0;
+            
+            foreach ($response as $key=>$value){
+                
+                if ($debug){
+                echo $key;
+                echo $x . '<br/>';     
+                }
+                        //$last
+                      
+                            
+                        $lastsessionid = $response[$key-1]['sessionid'];
                         
-                        
-                       
+                        if ($debug){
+                                                echo $lastsessionid .' is lastsession id <br/>';
+                        echo $value['sessionid'] . 'is session id this time';
+                        echo $value['facultyid'] . 'is value faculty id';
+                        echo $facultyid . 'is the value of $facultyid';
+                        }
 
+                        if (($lastsessionid == $value['sessionid']) && ($value['facultyid'] == $facultyid)){
+
+                            //stop printing loads of moderation lines
+
+                            $x++;
+
+                            continue;
+                        }
+
+                       
                         
                         ?>
 
@@ -133,6 +163,8 @@ $openaccess =1;
                 <div class="pl-2 pr-1 pb-0 pt-1 time">
 
                 <?php if ($checkDate != $value['date']){?>
+
+                    
 
                     <h3><p><?php $checkDate = $value['date']; $programmeDate = new DateTime($value['date']);?>
                     <span><?php echo $programmeDate->format('D d M Y');?></span>
@@ -199,13 +231,18 @@ $openaccess =1;
 
                     }
 
+                    
+
                     ?>
                     </p>
                 </div>
             </div>
             
 
-            <?php }?>
+            <?php 
+           $x++;
+        
+        }?>
 
         </div>
         <hr>

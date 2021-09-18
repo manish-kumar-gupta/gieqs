@@ -147,8 +147,8 @@ class programmeReports
 
             //report card per faculty
             $q = "Select a.`id` as `programmeid`, a.`date`, 
-            c.`timeFrom`, c.`timeTo`, c.`title` as `sessionTitle`, c.`description` as `sessionDescription`,
-            e.`title` as `sessionItemTitle`, e.`description` as `sessionItemDescription`, e.`timeFrom` as `sessiontimeFrom`, e.`timeTo` as `sessiontimeTo`, e.`live`, f.`facultyid` 
+            c.`id` as `sessionid`, c.`timeFrom`, c.`timeTo`, c.`title` as `sessionTitle`, c.`description` as `sessionDescription`,
+            e.`id` as `sessionitemid`, e.`title` as `sessionItemTitle`, e.`description` as `sessionItemDescription`, e.`timeFrom` as `sessiontimeFrom`, e.`timeTo` as `sessiontimeTo`, e.`live`, f.`facultyid` 
             from `programme` as a 
             INNER JOIN `programmeOrder` as b on a.`id` = b.`programmeid` 
             INNER JOIN `session` as c on b.`sessionid` = c.`id` 
@@ -158,10 +158,10 @@ class programmeReports
             WHERE 
             (a.`id` = '$programmestring')
             AND ((e.`faculty` = $facultyid) OR (f.`facultyid` = $facultyid))
-            GROUP BY c.`id` 
-            ORDER BY a.`date` ASC, c.`timeFrom` ASC";
+            GROUP BY e.`id`
+            ORDER BY a.`date` ASC, e.`timeFrom` ASC";
 
-        echo $q . '<br><br>';
+        //echo $q . '<br><br>';
 
 
 
