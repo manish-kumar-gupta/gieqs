@@ -607,6 +607,7 @@
                                                                                         We can do everyday endoscopy
                                                                                         better.
                                                                                     </h4>
+                                                                                    <p style="text-align:center;color:#949494;font-family:Georgia;font-size:12px;">Email doesn't look right? <a href="https://www.gieqs.com/assets/scripts/courses/generateEmail.php?emailid=<?php echo $emailid;?>">Display in a web browser</a></p>
 
 
                                                                                     <!-- get array emailContent

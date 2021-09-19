@@ -1,7 +1,7 @@
 <?php
 
-            $openaccess = 0;
-			$requiredUserLevel = 3;
+            $openaccess = 1;
+			//$requiredUserLevel = 3;
 			require_once ('../../../assets/includes/config.inc.php');		
 			
 			require_once (BASE_URI.'/assets/scripts/headerScript.php');
@@ -630,6 +630,8 @@
                                                                                         We can do everyday endoscopy
                                                                                         better.
                                                                                     </h4>
+
+                                                                                    <p style="text-align:center;color:#949494;font-family:Georgia;font-size:12px;">Email doesn't look right? <a href="https://www.gieqs.com/assets/scripts/courses/generateEmail.php?emailid=<?php echo $emailid;?>">Display in a web browser</a></p>
 
 
                                                                                     <!-- get array emailContent
