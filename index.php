@@ -313,14 +313,14 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                 </div>
                             </a>
 
-                            <a href="https://www.gieqs.com/pages/program/gieqs_ii.php">
+                            <!-- <a href="https://www.gieqs.com/pages/program/gieqs_ii.php">
                                 <div class="alert alert-modern alert-dark">
                                     <span class="badge gieqsGold badge-pill">
                                         New
                                     </span>
                                     <span class="alert-content">GIEQs II Registration Open</span>
                                 </div>
-                            </a>
+                            </a> -->
                             <!-- <a href="https://www.gieqs.com/pages/program/program_imaging.php">
                                 <div class="alert alert-modern alert-dark">
                                     <span class="badge gieqsGold badge-pill">
@@ -339,6 +339,21 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                     <span class="alert-content">CME accreditation</span>
                                 </div>
                             </a>
+
+                            <a class="ml-3 pointer" href="https://twitter.com/gieqs_symposium?ref_src=twsrc%5Etfw" target="_blank">
+                                <div class="alert alert-modern alert-dark">
+                                    <span class="badge gieqsGold badge-pill">
+                                        
+                                    <i class="fab fa-twitter"></i>
+                                        </span>
+                                        <span class="alert-content">Follow GIEQs on Twitter</span>
+                                    
+
+                                   
+
+                                </div>
+                            </a>
+
 
                             
 
