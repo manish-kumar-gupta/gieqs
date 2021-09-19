@@ -624,6 +624,7 @@
 
                                                                                 <td valign="top" class="mcnTextContent"
                                                                                     style="padding-top:0;padding-right:18px;padding-bottom:30px;padding-left:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;word-break:break-word;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
+                                                                                    <p style="text-align:center;color:#949494;font-family:Georgia;font-size:12px;">Email doesn't look right? <a href="https://www.gieqs.com/assets/scripts/courses/generateEmail.php?emailid=<?php echo $emailid;?>">Display in a web browser</a></p>
 
                                                                                     <h4
                                                                                         style="display:block;margin:0;padding: 0;color:#949494;font-family:Georgia;font-size:20px;font-style:italic;font-weight:normal;line-height:125%;letter-spacing:normal;text-align:center;">
@@ -631,7 +632,6 @@
                                                                                         better.
                                                                                     </h4>
 
-                                                                                    <p style="text-align:center;color:#949494;font-family:Georgia;font-size:12px;">Email doesn't look right? <a href="https://www.gieqs.com/assets/scripts/courses/generateEmail.php?emailid=<?php echo $emailid;?>">Display in a web browser</a></p>
 
 
                                                                                     <!-- get array emailContent
