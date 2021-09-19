@@ -2172,6 +2172,8 @@ if (confirm('Are you sure you wish to create a new email duplicating email id ' 
 
         datatable = $('#dataTable').DataTable({
 
+            "ordering": false,
+
             language: {
                 infoEmpty: "There are currently no active <?php echo $databaseName;?>s.",
                 emptyTable: "There are currently no active <?php echo $databaseName;?>s.",

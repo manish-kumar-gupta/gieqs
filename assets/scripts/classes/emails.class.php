@@ -149,7 +149,7 @@ $q = "Select * from `emails` WHERE `id` = $key";
 
         public function Load_records_limit_json_datatables($y, $x = 0)
             {
-            $q = "Select * from `emails` LIMIT $x, $y";
+            $q = "Select * from `emails` ORDER BY `id` desc LIMIT $x, $y ";
             $result = $this->connection->RunQuery($q);
             $rowReturn = array();
             $x = 0;
