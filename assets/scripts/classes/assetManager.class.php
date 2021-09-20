@@ -1992,13 +1992,7 @@ public function is_assetid_covered_by_user_subscription($asset_id, $userid, $deb
 
         if ($superuser){
             
-            $q = "Select 
-            a.`id`
-            FROM `subscriptions` as a
-            INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
-            WHERE b.`id` = '$asset_id' 
-            GROUP BY b.`id`
-            ";
+            return true;
     
         }else{
             $q = "Select 
