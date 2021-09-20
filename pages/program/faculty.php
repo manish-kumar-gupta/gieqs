@@ -513,7 +513,7 @@ require BASE_URI . '/headNoPurposeCore.php';
                                 <div class="animate-this">
                                     <a href="#">
                                         <img alt="Prof Ivan Borbath" class="img-fluid rounded shadow"
-                                            src="../../assets/img/faculty/Jan-Werner Poley.jpg">
+                                            src="../../assets/img/faculty/Ivan Borbath.jpg">
                                     </a>
                                 </div>
                                 <div class="mt-3">
