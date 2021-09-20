@@ -151,7 +151,7 @@
 
         $access = null;
 
-        if ($isSuperuser){
+        if ($isSuperuser == 1){
 
             $fullAccess = true;
         

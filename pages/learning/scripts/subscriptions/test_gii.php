@@ -84,6 +84,18 @@ $debug = true;
 //third day 2 yes 1 no 0 
 
 
+//some new
+//generate a sql command to make an asset for all program items for a certain session
+
+
+//get sessions
+
+$assets_paid->New_assets_paid($name,$description,$asset_type,$superCategory,$linked_blog,$cost,$renew_frequency,$partner,$sponsor,$advertise_for_purchase);
+
+
+
+
+
 //then
 
 foreach ($csv as $key=>$value){
