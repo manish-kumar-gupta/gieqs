@@ -601,7 +601,8 @@ if ($identifierValue) {
 }
 
 ?>
-
+<div id="identifier" style="display:none;"><?php echo $identifierValue;?>
+</div>
                 <div id="data" style="display:none;">
                     <?php
 
@@ -991,7 +992,8 @@ if ($identifierValue) {
     <script src="<?php echo BASE_URL; ?>/assets/libs/flatpickr/dist/flatpickr.min.js"></script>
 
     <script>
-    //var data = $('#data').text();
+    var identifier = $('#identifier').text();
+
     //var dataSet = $.parseJSON($('#data').text());
     var datatable;
     var edit = 0;
@@ -1645,6 +1647,17 @@ if ($identifierValue) {
             allowInput: true
         };
 
+        if (identifier != ''){
+
+            var targettd = identifier;
+            //console.log(targettd);
+            lesionUnderEdit = targettd;
+            $('#modalMessageArea').text('Editing <?php echo $databaseName;?> ' + lesionUnderEdit);
+            $('#modal-row-1').modal('show');
+            fillForm(targettd);
+            edit = 1;
+
+        }
 
         $('[data-toggle="date"]').flatpickr(options);
 
