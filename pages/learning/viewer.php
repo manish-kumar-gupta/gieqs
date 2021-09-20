@@ -181,6 +181,8 @@
         -ms-overflow-style: none;
     }
 
+    
+
     @media (min-width: 992px) {
         .tagCard {
 
@@ -1335,7 +1337,7 @@ $current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s');
     padding-left: 0.2em;
     padding-bottom: 0.2em;
   
-    padding-top: 0.5em; max-height: 40vh; overflow-y: scroll;">
+    padding-top: 0.5em; max-height: 40vh; overflow-y: hidden;">
                             <span id="chapterDescription" class="mt-2 p-2 d-block text-left">
                                 <table class="w-100 text-sm">
                                     <tr>
