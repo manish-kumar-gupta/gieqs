@@ -262,6 +262,7 @@ public function returnProgrammesAsset($assetid)
             $q = "Select a.`video_id`
             FROM `sub_asset_paid` as a
 			WHERE a.`asset_id` = '$assetid'
+            ORDER BY a.`id` ASC
             ";
 
             //echo $q . '<br><br>';
