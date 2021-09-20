@@ -361,6 +361,10 @@ width: 100%;
                         <img class="logo" alt="WEO" src="<?php echo BASE_URL . '/assets/img/sponsors/WEO.png';?>">
                     </div>
 
+                    <div class="col-lg-2 col-md-3 col-4 p-3">
+                        <img class="logo" alt="WGO" src="<?php echo BASE_URL . '/assets/img/sponsors/WGO.png';?>">
+                    </div>
+
                     <!-- <div class="col-lg-2 col-md-3 col-4 p-3">
                     <a href="https://www.sfed.org/professionnels/actualites-pro/programme-du-congres-e-video-digest-reservez-votre-vendredi-13" target="_blank"><img class="logo" alt="SFED" src="<?php echo BASE_URL . '/assets/img/brand/sfed.png';?>"></a>
                     </div> -->
