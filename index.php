@@ -1037,19 +1037,18 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 
                         <div id="videoDisplay mb-3" class="">
 
-                            <div class="row">
-                                <p class="h5 mt-2">Released prior to the early bird deadline for our <span style="text-decoration:underline;"><a href="https://www.gieqs.com/ii">flagship symposium</a></span> in Everyday Endoscopy, these 6, 1-2 minute video
+                        <div class="row">
+                                <p class="h5 mt-2">Released prior to the early bird deadline these 6, 1-2 minute video
                                     snippets
                                     demonstrate the attention to detail, deconstructed approach and rock solid evidence
                                     base of the GIEQs Approach. <br /> <br /></p>
-                                <p class="text-white">Please enjoy them and <span class="gieqsGold"><a href="https://www.gieqs.com/ii">join us in September 2021</a> </span>for GIEQs II for much more of this
-                                    approach...</p>
+                               
 
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <a href="https://vimeo.com/544320202" data-fancybox>
                                             <img alt="video image"
-                                                src="https://i.vimeocdn.com/video/1126626828_1280x720?r=pad"
+                                                src="https://i.vimeocdn.com/video/1126934937-431df118afeb15456f5df6bfc5408fef149204256f9eca13e74093f4052b4151-d_1280x720?r=pad"
                                                 class="img-fluid mt-2">
                                         </a>
                                     </div>
@@ -1062,12 +1061,11 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 
                                     </div>
                                 </div>
-
                                 <div class="row mt-3">
                                     <div class="col-sm-6">
                                         <a href="https://vimeo.com/554318938/c7ca7d7344" data-fancybox>
                                             <img alt="video image"
-                                                src="https://i.vimeocdn.com/video/1148126009_1280x720?r=pad"
+                                                src="https://i.vimeocdn.com/video/1148126009-af8e7fba76a227c1fb6fd5e68c06f45bafb260b84d72ed86914cfee72fc65c28-d_1280x720?r=pad"
                                                 class="img-fluid mt-2">
                                         </a>
                                     </div>
@@ -1087,7 +1085,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                     <div class="col-sm-6">
                                         <a href="https://vimeo.com/558060403/60a0e3b128" data-fancybox>
                                             <img alt="video image"
-                                                src="https://i.vimeocdn.com/video/1209723683_1280x720?r=pad"
+                                                src="https://i.vimeocdn.com/video/1209723683-ed47dceb6a8abdb974cca06274a57fcb9c0acd68cd422407c137d22e8b074aed-d_1280x720?r=pad"
                                                 class="img-fluid mt-2">
                                         </a>
                                     </div>
@@ -1103,7 +1101,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                     <div class="col-sm-6">
                                         <a href="https://vimeo.com/566734386/dab5d063ba" data-fancybox>
                                             <img alt="video image"
-                                                src="https://i.vimeocdn.com/video/1209716933_1280x720?r=pad"
+                                                src="https://i.vimeocdn.com/video/1209716933-d150591044edd917d12667056cb66eeedd88f42eab3c12a5a5adcca7715201fc-d_1280x720?r=pad"
                                                 class="img-fluid mt-2">
                                         </a>
                                     </div>
@@ -1119,7 +1117,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                     <div class="col-sm-6">
                                         <a href="https://vimeo.com/569339891/d436733eba" data-fancybox>
                                             <img alt="video image"
-                                                src="https://i.vimeocdn.com/video/1177464087_1280x720?r=pad"
+                                                src="https://i.vimeocdn.com/video/1177464087-059ac4984d142abe0951667787fa04cdc8cb1c18089f4f7d823334eaba70ed0a-d_1280x720?r=pad"
                                                 class="img-fluid mt-2">
                                         </a>
                                     </div>
@@ -1134,7 +1132,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                     <div class="col-sm-6">
                                         <a href="https://vimeo.com/570805121/11be30d98a" data-fancybox>
                                             <img alt="video image"
-                                                src="https://i.vimeocdn.com/video/1180469446_1280x720?r=pad"
+                                                src="https://i.vimeocdn.com/video/1180469446-bd411e0544f5de5035f20ff63e77f17323f63a5eefefa432e43c3d75e1bf32af-d_1280x720?r=pad"
                                                 class="img-fluid mt-2">
                                         </a>
                                     </div>

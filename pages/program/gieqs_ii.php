@@ -385,7 +385,7 @@ var_dump($currentTime);
                                     <div class="col-sm-6">
                                         <a href="https://vimeo.com/544320202" data-fancybox>
                                             <img alt="video image"
-                                                src="https://i.vimeocdn.com/video/1126626828_1280x720?r=pad"
+                                                src="https://i.vimeocdn.com/video/1126934937-431df118afeb15456f5df6bfc5408fef149204256f9eca13e74093f4052b4151-d_1280x720?r=pad"
                                                 class="img-fluid mt-2">
                                         </a>
                                     </div>
@@ -402,7 +402,7 @@ var_dump($currentTime);
                                     <div class="col-sm-6">
                                         <a href="https://vimeo.com/554318938/c7ca7d7344" data-fancybox>
                                             <img alt="video image"
-                                                src="https://i.vimeocdn.com/video/1148126009_1280x720?r=pad"
+                                                src="https://i.vimeocdn.com/video/1148126009-af8e7fba76a227c1fb6fd5e68c06f45bafb260b84d72ed86914cfee72fc65c28-d_1280x720?r=pad"
                                                 class="img-fluid mt-2">
                                         </a>
                                     </div>
@@ -422,7 +422,7 @@ var_dump($currentTime);
                                     <div class="col-sm-6">
                                         <a href="https://vimeo.com/558060403/60a0e3b128" data-fancybox>
                                             <img alt="video image"
-                                                src="https://i.vimeocdn.com/video/1209723683_1280x720?r=pad"
+                                                src="https://i.vimeocdn.com/video/1209723683-ed47dceb6a8abdb974cca06274a57fcb9c0acd68cd422407c137d22e8b074aed-d_1280x720?r=pad"
                                                 class="img-fluid mt-2">
                                         </a>
                                     </div>
@@ -438,7 +438,7 @@ var_dump($currentTime);
                                     <div class="col-sm-6">
                                         <a href="https://vimeo.com/566734386/dab5d063ba" data-fancybox>
                                             <img alt="video image"
-                                                src="https://i.vimeocdn.com/video/1209716933_1280x720?r=pad"
+                                                src="https://i.vimeocdn.com/video/1209716933-d150591044edd917d12667056cb66eeedd88f42eab3c12a5a5adcca7715201fc-d_1280x720?r=pad"
                                                 class="img-fluid mt-2">
                                         </a>
                                     </div>
@@ -454,7 +454,7 @@ var_dump($currentTime);
                                     <div class="col-sm-6">
                                         <a href="https://vimeo.com/569339891/d436733eba" data-fancybox>
                                             <img alt="video image"
-                                                src="https://i.vimeocdn.com/video/1177464087_1280x720?r=pad"
+                                                src="https://i.vimeocdn.com/video/1177464087-059ac4984d142abe0951667787fa04cdc8cb1c18089f4f7d823334eaba70ed0a-d_1280x720?r=pad"
                                                 class="img-fluid mt-2">
                                         </a>
                                     </div>
@@ -469,7 +469,7 @@ var_dump($currentTime);
                                     <div class="col-sm-6">
                                         <a href="https://vimeo.com/570805121/11be30d98a" data-fancybox>
                                             <img alt="video image"
-                                                src="https://i.vimeocdn.com/video/1180469446_1280x720?r=pad"
+                                                src="https://i.vimeocdn.com/video/1180469446-bd411e0544f5de5035f20ff63e77f17323f63a5eefefa432e43c3d75e1bf32af-d_1280x720?r=pad"
                                                 class="img-fluid mt-2">
                                         </a>
                                     </div>
