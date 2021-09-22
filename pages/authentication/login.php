@@ -140,6 +140,22 @@ if (isset($_GET['destination'])) {
 
     }
 
+  }else if ($destination == 'gieqs2'){
+
+    //define other constant
+
+    if (($gieqs_ii_is_live) && ($gieqs_ii_has_access_to_today)){
+
+
+      
+      $target = '/pages/learning/pages/general/show_subscription.php?assetid='. $gieqs_ii_plenary_link;
+      
+    }else{
+
+      $destination = null;
+
+    }
+
   }else {
 
     $destination = null;
