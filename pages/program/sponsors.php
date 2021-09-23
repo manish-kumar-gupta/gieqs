@@ -170,11 +170,15 @@ width: 100%;
                 <div class="client-group row justify-content-center align-items-center mb-4">
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
-                        <img class="logo" alt="Boston Scientific Logo" src="<?php echo BASE_URL . '/assets/img/sponsors/Boston Scientific.jpg';?>">
+                        <a href="https://www.bostonscientific.com/en-EU/medical-specialties/gastroenterology.html" target="_Blank">
+                            <img class="logo" alt="Boston Scientific Logo" src="<?php echo BASE_URL . '/assets/img/sponsors/Boston Scientific.jpg';?>">
+                        </a>
                     </div>
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
-                        <img class="logo" alt="Olympus Logo" src="<?php echo BASE_URL . '/assets/img/sponsors/OLYMPUS.jpg';?>">
+                        <a href="https://www.olympus.be/medical/en/Home/" target="_Blank">
+                            <img class="logo" alt="Olympus Logo" src="<?php echo BASE_URL . '/assets/img/sponsors/OLYMPUS.jpg';?>">
+                        </a>
                     </div>
 
                 </div>
@@ -187,7 +191,15 @@ width: 100%;
                 <div class="client-group row justify-content-center align-items-center mb-4">
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
-                        <img class="logo" alt="ACERTYS" src="<?php echo BASE_URL . '/assets/img/sponsors/ACERTYS.jpg';?>">
+                        <a href="www.acertys.com" target="_Blank">
+                            <img class="logo" alt="ACERTYS" src="<?php echo BASE_URL . '/assets/img/sponsors/ACERTYS.jpg';?>">
+                        </a>
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-4 p-3">
+                        <a href="www.acertys.com" target="_Blank">
+                            <img class="logo" alt="ACERTYS" src="<?php echo BASE_URL . '/assets/img/sponsors/Fuji Logo.jpg';?>">
+                        </a>
                     </div>
 
                 </div>
@@ -200,7 +212,9 @@ width: 100%;
                 <div class="client-group row justify-content-center align-items-center mb-4">
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
-                        <img class="logo" alt="JANSSEN" src="<?php echo BASE_URL . '/assets/img/sponsors/JANSSEN.jpg';?>">
+                        <a href="https://www.janssen.com/immunology/gastroenterology" target="_Blank">
+                            <img class="logo" alt="JANSSEN" src="<?php echo BASE_URL . '/assets/img/sponsors/JANSSEN.jpg';?>">
+                        </a>
                     </div>
 
                 </div>
@@ -213,51 +227,75 @@ width: 100%;
                 <div class="client-group row justify-content-center align-items-center mb-4">
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
-                        <img class="logo" alt="Ambu" src="<?php echo BASE_URL . '/assets/img/sponsors/Ambu logo Red RGB.png';?>">
+                        <a href="https://www.ambu.com/" target="_Blank">
+                            <img class="logo" alt="Ambu" src="<?php echo BASE_URL . '/assets/img/sponsors/Ambu logo Red RGB.png';?>">
+                        </a>
                     </div>
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
-                        <img class="logo" alt="BOUCART" src="<?php echo BASE_URL . '/assets/img/brand/boucart.jpg';?>">
+                        <a href="http://boucartmedical.com/en/" target="_Blank">
+                            <img class="logo" alt="BOUCART" src="<?php echo BASE_URL . '/assets/img/brand/boucart.jpg';?>">
+                        </a>
                     </div>
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
-                        <img class="logo" alt="Dr Falk" src="<?php echo BASE_URL . '/assets/img/sponsors/drfalk.png';?>">
+                        <a href="https://www.drfalkpharma-benelux.eu/" target="_Blank">
+                            <img class="logo" alt="Dr Falk" src="<?php echo BASE_URL . '/assets/img/sponsors/drfalk.png';?>">
+                        </a>
                     </div>
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
-                        <img class="logo" alt="Erbe" src="<?php echo BASE_URL . '/assets/img/sponsors/Erbe_Logo_RGB.png';?>">
+                        <a href="https://www.erbe-med.com/de-en/global-home/" target="_Blank">
+                            <img class="logo" alt="Erbe" src="<?php echo BASE_URL . '/assets/img/sponsors/Erbe_Logo_RGB.png';?>">
+                        </a>
                     </div>
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
-                        <img class="logo" alt="Ferring" src="<?php echo BASE_URL . '/assets/img/sponsors/Ferring logo blue - high res (JPG - RGB - 89[1].3KB).png';?>">
+                        <a href="https://ferring.be/" target="_Blank">
+                            <img class="logo" alt="Ferring" src="<?php echo BASE_URL . '/assets/img/sponsors/Ferring logo blue - high res (JPG - RGB - 89[1].3KB).png';?>">
+                        </a>
                     </div>
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
-                        <img class="logo" alt="Fides Medical" src="<?php echo BASE_URL . '/assets/img/sponsors/Logo Fides Medical.png';?>">
+                        <a href="http://www.fidesmedical.com/dyn/home.php?lang=3" target="_Blank">
+                            <img class="logo" alt="Fides Medical" src="<?php echo BASE_URL . '/assets/img/sponsors/Logo Fides Medical.png';?>">
+                        </a>
                     </div>
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
-                        <img class="logo" alt="Medtronic" src="<?php echo BASE_URL . '/assets/img/sponsors/MEDTRONIC.jpg';?>">
+                        <a href="https://www.medtronic.com/me-en/index.html?intcmp=mdt_com_country_selector_dropdown_atlasr22017" target="_Blank">
+                            <img class="logo" alt="Medtronic" src="<?php echo BASE_URL . '/assets/img/sponsors/MEDTRONIC.jpg';?>">
+                        </a>
                     </div>
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
-                        <img class="logo" alt="Norgine" src="<?php echo BASE_URL . '/assets/img/sponsors/Norgine - Because patients inspire us.png';?>">
+                        <a href="https://norgine.com/" target="_Blank">
+                            <img class="logo" alt="Norgine" src="<?php echo BASE_URL . '/assets/img/sponsors/Norgine - Because patients inspire us.png';?>">
+                        </a>
                     </div>
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
-                        <img class="logo" alt="Pfizer" src="<?php echo BASE_URL . '/assets/img/sponsors/Pfizer_Logo_Color_RGB.png';?>">
+                        <a href="" target="_Blank">
+                            <img class="logo" alt="Pfizer" src="<?php echo BASE_URL . '/assets/img/sponsors/Pfizer_Logo_Color_RGB.png';?>">
+                        </a>
                     </div>
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
-                        <img class="logo" alt="Prion Medical" src="<?php echo BASE_URL . '/assets/img/sponsors/Prion Medical.png';?>">
+                        <a href="http://prionmedical.be/" target="_Blank">
+                            <img class="logo" alt="Prion Medical" src="<?php echo BASE_URL . '/assets/img/sponsors/Prion Medical.png';?>">
+                        </a>
                     </div>
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
-                        <img class="logo" alt="RMS" src="<?php echo BASE_URL . '/assets/img/sponsors/RMS_LOGO_PMS.png';?>">
+                        <a href="http://www.rmsmedicaldevices.com/en/home" target="_Blank">
+                            <img class="logo" alt="RMS" src="<?php echo BASE_URL . '/assets/img/sponsors/RMS_LOGO_PMS.png';?>">
+                        </a>
                     </div>
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
-                        <img class="logo" alt="Viatris" src="<?php echo BASE_URL . '/assets/img/sponsors/Viatris.png';?>">
+                        <a href="https://www.viatris.com/en" target="_Blank">
+                            <img class="logo" alt="Viatris" src="<?php echo BASE_URL . '/assets/img/sponsors/Viatris.png';?>">
+                        </a>
                     </div>
 
                     <!-- <div class="col-lg-2 col-md-3 col-4 p-3">
