@@ -188,191 +188,130 @@ top: -20vh;
         
      
      
-     ?><div class="main-content">
-  <!-- Navbar warning -->
-    <div class="main-content">
-  <!-- Header (v13) -->
-  <section class="slice slice-xl bg-cover bg-size--cover pb-300" data-offset-top="#header-main" style="background-image: url(&quot;../../assets/img/backgrounds/img-12.jpg&quot;); padding-top: 147.188px;">
-    <span class="mask bg-dark opacity-8"></span>
-    <div class="container pt-7">
+     ?>
+     
 
-    <div class="row mb-3">
-        <div class="col-lg-12 text-center justify-content-center mb-3">
+     <div class="main-content">
+    <!-- Navbar warning -->
+  
+  <div class="main-content">
+    <!-- Header (v13) -->
+    <section class="slice slice-xl bg-cover bg-size--cover mb-5" data-offset-top="#header-main" style="background-image: url('../../assets/img/backgrounds/img-12.jpg');">
+      <span class="mask bg-dark opacity-8"></span>
+      <div class="container pt-7">
 
-            <div class="text-center d-flex justify-content-center">
-                <img alt="Boston Scientific" src="./assets/onis.png" style="max-width:100%;max-height:20vh">
-            </div>
+      <div class="row mb-3">
+          <div class="col-lg-12 text-center justify-content-center mb-3">
 
-        </div>
-    </div>
-      <div class="row mt-4">
-        <div class="col-lg-12 text-center">
-        
-          <div class="text-center">
-            <h2 class="display-4 text-white mb-2"></h2>
-            
-
-            <div class="row justify-content-center">
-              <div class="col-lg-6">
-                <p class="lead text-white lh-180">Bringing high quality products, services & innovations to the healthcare community.</p>
-                <p class="lead text-white lh-180">Proud Gold Sponsor of GIEQs.</p>
-                <a href="https://vimeo.com/465122663" class="btn btn-lg btn-white btn-icon-only rounded-circle hover-scale-110 mt-4" data-fancybox="">
-                  <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
+              <div class="text-center d-flex justify-content-center">
+                <a href="www.acertys.com" target="_blank" class="p-4 bg-white">
+                  <img alt="Onis Acertys" src="https://www.gieqs.com/assets/img/sponsors-pages/Onis_Acertys/Onis Acertys logo.jpg"
+                      style="max-width:100%;max-height:20vh">
+                </a>
+                <a href="www.acertys.com" target="_blank" class="p-4 bg-white">
+                  <img alt="Fuji" src="https://www.gieqs.com/assets/img/sponsors-pages/Onis_Acertys/Fuji Logo.jpg"
+                      style="max-width:100%;max-height:20vh">
                 </a>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Features (v35) -->
 
-  <!-- Milestone (v1) -->
-  <section class="slice slice-lg">
-    <div class="container">
-      <div class="mb-5 text-center">
-      <div class="alert alert-modern alert-dark">
-                              <span class="badge gieqsGold badge-pill">
-                                  New
-                                  </span>
-                              <span class="alert-content">Exclusive GIEQs promo: place your next order mentioning ‘GIEQs’ and the first 3 orders will receive 3 free samples of Purastat: the easy-to-use haemostat. </span>
-                           </div>
-        <h3 class=" mt-4">About us</h3>
-        <div class="fluid-paragraph mt-3">
-          <p class="lead lh-180">Onis Medical brings an experience in flexible endoscopy of over more than 40 years, covering Belgium and the Grand Duchy of Luxembourg. Founded in 1976, we’re still very proud that the first Fujifilm endoscope sold outside of Japan, was realized in Belgium.</p>
-        </div>
+          </div>
       </div>
-      <!-- Milestones -->
-      
-    </div>
-  </section>
-  <!-- Blog (v3) -->
-  <section class="slice slice-lg">
-    <div class="container">
-      <div class="row row-grid">
-        <div class="col-lg-4">
-          <h4 class="mt-3">CAD EYE - Artificial Intelligence for Fujifilm Eluxeo</h4>
-          <p class="lead mt-4"> in collaboration with ACERTYS & 3-D Matrix EMEA, are proudly partnering up with GIEQs for their digital endoscopy symposium focused on promoting quality in the endoscopic interventions you perform everydayCAD EYE has been developed utilising AI deep learning technology and is compatible with Fujifilm’s ELUXEO™ endoscopy series to support endoscopic lesion detection and characterisation in the colon. 
-Based on AI deep learning technology, CAD EYE allows to support real-time detection and characterisation of polyps and is aimed to improve the adenoma detection rate to expert level.
-. </p>
-          <a href="https://bit.ly/GIEQs-CAD-EYE" class="btn btn-primary btn-icon rounded-pill hover-scale-110 mt-4">
-            <span class="btn-inner--icon">
-              <i class="fas fa-angle-right"></i>
-            </span>
-            <span class="btn-inner--text">Read more</span>
-          </a>
-        </div>
-        <div class="col-lg-7">
-          <div class="px-4">
-            <img alt="Image placeholder" src="./assets/Onis_Cadeye.jpg" class="img-fluid rounded shadow-lg hover-scale-110">
-          </div>
-        </div>
-        <div class="col-lg-1 d-lg-flex flex-lg-column">
-          <div class="mt-lg-auto">
-            <p class="lead"> </p>
-          </div>
-          <div class="mt-lg-auto">
-            <p class="lead mb-0"></p>
-            <div class="row align-items-center mt-5">
-              <div class="col-xl-4">
-                <small class="d-block text-uppercase text-muted ls-1 font-weight-600"></small>
-              </div>
-              <div class="col-xl-8">
-                <ul class="nav ml-lg-auto mb-0">
-                  <li class="nav-item">
-                    <a class="nav-link pl-0 disabled" href="https://www.gieqs.com/pages/learning/pages/live/sponsor-boston.php#"><i class="fab fa-instagram"></i></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link disabled" href="https://www.gieqs.com/pages/learning/pages/live/sponsor-boston.php#"><i class="fab fa-facebook"></i></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link disabled" href="https://www.gieqs.com/pages/learning/pages/live/sponsor-boston.php#"><i class="fab fa-twitter"></i></a>
-                  </li>
-                </ul>
+        <div class="row mt-4">
+          <div class="col-lg-12 text-center">
+          
+            <div class="text-center">
+              <h2 class="display-4 text-white mb-2"></h2>
+              
+
+              <div class="row justify-content-center">
+                <div class="col">
+                  <p class="lead text-white lh-180">Proud Gold Sponsor of GIEQs.</p>
+                  <div class="embed-responsive embed-responsive-16by9 rounded">
+                    <iframe width="1268" height="713" src="https://www.youtube.com/embed/U3cgJlOlHTs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  <!-- Features (v25) -->
-  <section class="slice slice-lg">
-    <div class="container no-padding">
-      <div class="mb-5 text-center">
-        <h3 class=" mt-4">NEWS & EVENTS</h3>
-        <div class="fluid-paragraph mt-3">
-          <p class="lead lh-180">What’s new at Onis Medical</p>
-        </div>
-      </div>
-      <div class="card-deck">
-        <div class="card hover-shadow-lg">
-          <div class="card-body">
-            <div class="delimiter-bottom pb-3 mb-4">
-              <center><img alt="Image placeholder" src="./assets/Onis_Cadeye2.jpg" class="svg-inject" style="height: 150px; width: auto"></center>
-              <h5 class="mt-4">CAD EYE - Artificial Intelligence for Fujifilm Eluxeo</h5>
-            </div>
-            <p class="">CAD EYE has been developed utilising AI deep learning technology and is compatible with Fujifilm’s ELUXEO™ endoscopy series to support endoscopic lesion detection and characterisation in the colon.</p>
-          </div>
-          <div class="card-footer px-0 py-0 border-0 overflow-hidden">
-            <a href="http://bit.ly/GIEQs-CAD-EYE" class="btn btn-block btn-primary rounded-0">Learn more</a>
-          </div>
-        </div>
-        <div class="card hover-shadow-lg">
-          <div class="card-body">
-            <div class="delimiter-bottom pb-3 mb-4">
-              <center><img alt="Image placeholder" src="./assets/Onis_Purastat.jpg" class="svg-inject" style="height: 150px; width: auto"></center>
-              <h5 class="mt-4">PuraStat: the easy-to-use haemostat</h5>
-            </div>
-            <p class="">PuraStat, is a slightly viscous solution of synthetic peptides. When in contact with blood, the synthetic peptide self-assembles into a 3-dimensional matrix which rapidly coats the bleeding point leading to haemostasis.</p>
-          </div>
-          <div class="card-footer px-0 py-0 border-0 overflow-hidden">
-            <a href="http://bit.ly/GIEQS-Purastat" class="btn btn-block btn-primary rounded-0">Learn more</a>
-          </div>
-        </div>
-        <div class="card hover-shadow-lg">
-          <div class="card-body">
-            <div class="delimiter-bottom pb-3 mb-4">
-              <center><img alt="Image placeholder" src="./assets/Onis_Medwork.jpg" class="svg-inject" style="height: 150px; width: auto"></center>
-              <h5 class="mt-4">Medwork</h5>
-            </div>
-            <p class="">Medwork develops and manufactures instruments for therapeutic endoscopy since 1998. Their products are used for gastroscopy and colonoscopy.
-</p> 
-          </div>
-          <div class="card-footer px-0 py-0 border-0 overflow-hidden">
-            <a href="mailto:info@onis.com" class="btn btn-block btn-primary rounded-0">Contact us for more info</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Subscribe (v3) -->
-  <section class="slice slice-lg">
-    <div class="container">
-      <div class="mb-5 text-center">
-        <h3 class=" mt-4">Part of the Duomed Group</h3>
-        <div class="fluid-paragraph mt-3">
-          <p class="lead lh-180">The <a href="https://www.duomed.com">Duomed Group </a> is a dynamic organization with a well-established reputation and is active in consultancy, sales, integration, training and technical support of medical technology and devices for hospitals and medical practices. Our group is in full growth and currently consists of Acertys, Duomed, .be Medical, FMH Medical, Onis, Braun Scandinavia, Life Partners Europe and Treier Endoscopie.</p>
-        </div>
-      </div>
-      <div class="row justify-content-center">
-        <div class="col-lg-5 col-md-7">
-          <form class="mt-4">
-            <div class="form-group mb-0">
-              <div class="input-group input-group-lg input-group-merge rounded-pill bg-dark">
+    </section>
+    <!-- Features (v35) -->
+    <section class="slice slice-lg pt-lg-0">
+      <div class="container pt-5">
+        <div class="card-group flex-column flex-lg-row">
+          <div class="card bg-gradient-dark border-0 p-5 mt--150">
+            <div class="card-body">
+              <h5 class="h4 text-white">Acertys & Fujifilm</h5>
+              <p class="mt-4 mb-0 text-white">
+                Acertys & Fujifilm, in collaboration with 3D Matrix, are proudly partnering up with GIEQs for their highly anticipated Second Edition of the Ghent International Endoscopy Quality Symposium, focused on promoting quality in the endoscopic interventions you perform everyday. 
+                <br><br>Acertys, part of the Duomed Group and formerly known as Onis Medical, is exclusively distributing Fujifilm endoscopes since 1976 in Belgium. Over the years we’ve expanded our product portfolio by collaborating with various high-quality manufacturers to fulfill our ambition of being a thrusted partner in the medical field. 
+                <br><br>Our divisions are supported by their own technical department. With our presence of local service engineers in the field and a full ESD-proof workshop within our office near Brussels, we strive to deliver excellent service in the most optimal and efficient way. Customers can rely on our teams not only for repair and maintenance, but also for technical / user trainings and various hands-on workshops.
+                <br><br>
+              </p>
+              <a href="https://www.gieqs.com/assets/img/sponsors-pages/Onis_Acertys/PDF Acertys 3.pdf" target="_blank">
+                <img src="https://www.gieqs.com/assets/img/sponsors-pages/Onis_Acertys/PDF Acertys 3-min.png" alt="PDF Acertys" style="max-width:100%;max-height:200px">
+              </a>
+              <ul class="nav mt-4">
+                <!--
+                <li class="nav-item">
+                  <a class="nav-link pl-0" href="#"><i class="fab fa-instagram" target="_blank"></i></a>
+                </li>
+              -->
+                <li class="nav-item">
+                  <a class="nav-link pl-0" href="https://www.youtube.com/watch?v=qiTC_7szw-s"><i class="fab fa-youtube" target="_blank"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://www.linkedin.com/company/olympus-europa-se-&-co-kg/mycompany/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                </li>
+
                 
-            
-              </div>
+              </ul>
             </div>
-          </form>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+    <!-- Blog (v3) -->
+    <section class="slice slice-lg">
+      <div class="container">
+        <div class="row row-grid">
+          <div class="col-lg-3">
+            <div class="p-3">
+              <a href="https://www.acertys.com/en/endoscopy" target="_blank">
+                <img alt="Image" src="https://www.gieqs.com/assets/img/sponsors-pages/Onis_Acertys/Acertys 1.JPG" class="img-fluid rounded shadow-lg hover-scale-110">
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="p-3">
+              <a href="https://www.acertys.com/en/fujifilm-cad-eye-ai" target="_blank">
+                <img alt="Image" src="https://www.gieqs.com/assets/img/sponsors-pages/Onis_Acertys/Acertys 2.JPG" class="img-fluid rounded shadow-lg hover-scale-110">
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="p-3">
+              <a href="https://www.acertys.com/en/haemostasis-and-perforation-management/purastat" target="_blank">
+                <img alt="Image" src="https://www.gieqs.com/assets/img/sponsors-pages/Onis_Acertys/Acertys 3.JPG" class="img-fluid rounded shadow-lg hover-scale-110">
+              </a>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="p-3">
+              <a href="www.acertys.com" target="_blank">
+                <img alt="Image" src="https://www.gieqs.com/assets/img/sponsors-pages/Onis_Acertys/Acertys 4.JPG" class="img-fluid rounded shadow-lg hover-scale-110">
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+  </div>
 </div>
-</div>
+
+
 <?php  
 
     }else{
