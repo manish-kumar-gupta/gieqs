@@ -226,7 +226,9 @@ top: -20vh;
               <div class="row justify-content-center">
                 <div class="col">
                   <p class="lead text-white lh-180">Proud Platinum Sponsor of GIEQs.</p>
-                  <!--<iframe src="https://player.vimeo.com/video/612432353?h=281e96f882" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>-->
+                  <div class="embed-responsive embed-responsive-16by9 rounded">
+                    <iframe src="https://player.vimeo.com/video/612520804?h=a26252f441" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                  </div>
                 </div>
               </div>
             </div>
