@@ -14,6 +14,23 @@ require BASE_URI . '/head.php';
 
 
 
+
+require_once BASE_URI . '/assets/scripts/classes/assetManager.class.php';
+$assetManager = new assetManager;
+
+$courseTest = true;
+
+$gieqs_ii_day = $assetManager->whichDay($courseTest,true);
+
+$gieqs_ii_is_live = $assetManager->gieqsIILive($gieqs_ii_day);
+
+$gieqs_ii_plenary_link = $assetManager->requiredAssetGIEQsII($gieqs_ii_day,false);
+
+
+
+
+
+
 //if $userid is logged in
 
 if (isset($_GET['destination'])) {
