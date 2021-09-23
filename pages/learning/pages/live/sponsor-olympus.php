@@ -194,216 +194,116 @@ top: -20vh;
      ?>
      
    
+     
      <div class="main-content">
-        <!-- Navbar warning -->
-          <div class="main-content">
-        <!-- Header (v13) -->
-        <section class="slice slice-xl bg-cover bg-size--cover pb-300" data-offset-top="#header-main" style="background-image: url(&quot;../../assets/img/backgrounds/img-12.jpg&quot;); padding-top: 147.188px;">
-          <span class="mask bg-dark opacity-8"></span>
-          <div class="container pt-7">
-    
-          <div class="row mb-3">
-              <div class="col-lg-12 text-center justify-content-center mb-3">
-    
-                  <div class="text-center d-flex justify-content-center">
-                      <img alt="Olympus" src="./assets/olympus.jpg" style="max-width:100%;max-height:20vh">
-                  </div>
-    
-              </div>
-          </div>
-            <div class="row mt-4">
-              <div class="col-lg-12 text-center">
-              
-                <div class="text-center">
-                  <h2 class="display-4 text-white mb-2"></h2>
-                  
-    
-                  <div class="row justify-content-center">
-                    <div class="col-lg-6">
-                      <p class="lead text-white lh-180">Proud Silver Sponsor of GIEQs.</p>
-                      <a href="https://youtu.be/yOs94OEL7CA" class="btn btn-lg btn-white btn-icon-only rounded-circle hover-scale-110 mt-4" data-fancybox="">
-                        <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- Features (v35) -->
-        <section class="slice slice-lg pt-lg-0">
-          <div class="container">
-            <div class="card-group flex-column flex-lg-row">
-              <div class="card bg-gradient-primary border-0 px-4 py-5 mt--150">
-                <div class="card-body">
-                  <h5 class="h4 text-white">TXI - The New White Light</h5>
-                  <p class="mt-4 mb-0 text-white">
-                    Explore Texture and Color Enhancement Imaging.
-                  </p>
-                </div>
-              </div>
-              <div class="card bg-gradient-dark border-0 px-4 py-5 mt--150">
-                <div class="card-body">
-                  <h5 class="h4 text-white">RDI - The Safeguard for Endoscopic Therapy</h5>
-                  <p class="mt-4 mb-0 text-white">
-                  Experience Red Dichromatic Imaging
-                  </p>
-                </div>
-              </div>
-              <div class="card bg-gradient-primary border-0 px-4 py-5 mt--150">
-                <div class="card-body">
-                  <h5 class="h4 text-white">EDOF - The Phenomenon of Full Focus</h5>
-                  <p class="mt-4 mb-0 text-white">
-                  Discover Extended Depth of Field.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- Milestone (v1) -->
-        <section class="slice slice-lg">
-          <div class="container">
-            <div class="mb-5 text-center">
-            <div class="alert alert-modern alert-dark">
-                                    <span class="badge gieqsGold badge-pill">
-                                        New
-                                        </span>
-                                    <span class="alert-content">EVIS X1</span>
-                                 </div>
-              <h3 class=" mt-4">Our most Advanced Endoscopy System</h3>
-              <div class="fluid-paragraph mt-3">
-                <p class="lead lh-180">EVIS X1 represents a range of new, easy-to-use technologies that aim to revolutionize the way gastrointestinal disorders can be detected, characterized and treated.</p>
-              </div>
-            </div>
-            <!-- Milestones -->
-            
-          </div>
-        </section>
-        <!-- Blog (v3) -->
-        <section class="slice slice-lg">
-          <div class="container">
-            <div class="row row-grid">
-              <div class="col-lg-3">
-                <h4 class="mt-3">EVIS X1 — Our Most Advanced Endoscopy System</h4>
-                <p class="lead mt-4"> We want to support every endoscopist. In every procedure. Every day.</p>
-                <a href="https://www.olympus-europa.com/medical/en/Products-and-Solutions/Products/Product/EVIS-X1.html" class="btn btn-primary btn-icon rounded-pill hover-scale-110 mt-4">
-                  <span class="btn-inner--icon">
-                    <i class="fas fa-angle-right"></i>
-                  </span>
-                  <span class="btn-inner--text">Read more</span>
+    <!-- Navbar warning -->
+  
+  <div class="main-content">
+    <!-- Header (v13) -->
+    <section class="slice slice-xl bg-cover bg-size--cover mb-5" data-offset-top="#header-main" style="background-image: url('../../assets/img/backgrounds/img-12.jpg');">
+      <span class="mask bg-dark opacity-8"></span>
+      <div class="container pt-7">
+
+      <div class="row mb-3">
+          <div class="col-lg-12 text-center justify-content-center mb-3">
+
+              <div class="text-center d-flex justify-content-center">
+                <a href="https://www.olympus.be/medical/en/Home/" target="_blank" class="p-4 bg-white rounded">
+                  <img alt="Olympus" src="https://www.gieqs.com/assets/img/sponsors-pages/Olympus/Olympus logo.jpg"
+                      style="max-width:100%;max-height:20vh">
                 </a>
               </div>
-              <div class="col-lg-6">
-                <div class="px-4">
-                  <img alt="Image placeholder" src="./assets/Olympus_evis_X1.png" class="img-fluid rounded shadow-lg hover-scale-110">
-                </div>
-              </div>
-              <div class="col-lg-3 d-lg-flex flex-lg-column">
-                <div class="mt-lg-auto">
-                  <p class="lead">EVIS X1 represents a range of new, easy-to-use technologies that aim to revolutionize the way gastrointestinal disorders can be detected, characterized and treated.</p>
-                </div>
-                <div class="mt-lg-auto">
-                  <p class="lead mb-0"></p>
-                  <div class="row align-items-center mt-5">
-                    <div class="col-xl-4">
-                      <small class="d-block text-uppercase text-muted ls-1 font-weight-600"></small>
-                    </div>
-                    <div class="col-xl-8">
-                      <ul class="nav ml-lg-auto mb-0">
-                        <li class="nav-item">
-                          <a class="nav-link pl-0 disabled" href=""><i class="fab fa-instagram"></i></a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link disabled" href=""><i class="fab fa-facebook"></i></a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link disabled" href=""><i class="fab fa-twitter"></i></a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
           </div>
-        </section>
-        <!-- Features (v25) -->
-        <section class="slice slice-lg">
-          <div class="container no-padding">
-            <div class="mb-5 text-center">
-              <h3 class=" mt-4">The main features of the sponsor</h3>
-              <div class="fluid-paragraph mt-3">
-                <p class="lead lh-180">Advancing science for life.</p>
-              </div>
-            </div>
-            <div class="card-deck">
-              <div class="card hover-shadow-lg">
-                <div class="card-body">
-                  <div class="delimiter-bottom pb-3 mb-4">
-                    <img alt="Image placeholder" src="./assets/Olympus_TXI.jpg" class="svg-inject" style="height: 60px; width: auto">
-                    <h5 class="mt-4">TXI: The New White Light</h5>
-                  </div>
-                  <p class="">TXI (Texture and Color Enhancement Imaging) aims to enhance the visibility of suspicious tissue by improving the color, structure and brightness of the endoscopic image.</p>
-                </div>
-                <div class="card-footer px-0 py-0 border-0 overflow-hidden">
-                  <a href="https://www.olympus-europa.com/medical/en/Products-and-Solutions/Products/Product/EVIS-X1.html" class="btn btn-block btn-primary rounded-0">Learn more</a>
-                </div>
-              </div>
-              <div class="card hover-shadow-lg">
-                <div class="card-body">
-                  <div class="delimiter-bottom pb-3 mb-4">
-                    <img alt="Image placeholder" src="./assets/Olympus_RDI.jpg" class="svg-inject" style="height: 60px; width: auto">
-                    <h5 class="mt-4">RDI: The Safeguard for Endoscopic Therapy</h5>
-                  </div>
-                  <p class="">RDI (Red Dichromatic Imaging) is designed to enhance the visibility of deep blood vessels and bleeding sources.</p>
-                </div>
-                <div class="card-footer px-0 py-0 border-0 overflow-hidden">
-                  <a href="https://www.olympus-europa.com/medical/en/Products-and-Solutions/Products/Product/EVIS-X1.html" class="btn btn-block btn-primary rounded-0">Learn more</a>
-                </div>
-              </div>
-              <div class="card hover-shadow-lg">
-                <div class="card-body">
-                  <div class="delimiter-bottom pb-3 mb-4">
-                    <img alt="Image placeholder" src="./assets/Olympus_EDOF.jpg" class="svg-inject" style="height: 60px; width: auto">
-                    <h5 class="mt-4">EDOF: The Phenomenon of Full Focus</h5>
-                  </div>
-                  <p class="">EDOF (Extended Depth of Field) allows precise endoscopic observations through continuous broad focus and seamless magnification. The established Dual Focus function provides high magnification.
-    </p>
-                </div>
-                <div class="card-footer px-0 py-0 border-0 overflow-hidden">
-                  <a href="https://www.olympus-europa.com/medical/en/Products-and-Solutions/Products/Product/EVIS-X1.html" class="btn btn-block btn-primary rounded-0">Learn more</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        
-        <!-- Subscribe (v3) -->
-        <section class="slice slice-lg">
-          <div class="container">
-            <div class="mb-5 text-center">
-              <h3 class=" mt-4">Find out more</h3>
-              <div class="fluid-paragraph mt-3">
-                <p class="lead lh-180">Come and <a href="https://www.olympus.be/index_nl.html">visit our homepage</a> for more about sponsor name.</p>
-              </div>
-            </div>
-            <div class="row justify-content-center">
-              <div class="col-lg-5 col-md-7">
-                <form class="mt-4">
-                  <div class="form-group mb-0">
-                    <div class="input-group input-group-lg input-group-merge rounded-pill bg-dark">
-                      
-                  
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </section>
       </div>
-    </div>
+        <div class="row mt-4">
+          <div class="col-lg-12 text-center">
+          
+            <div class="text-center">
+              <h2 class="display-4 text-white mb-2"></h2>
+              
+
+              <div class="row justify-content-center">
+                <div class="col">
+                  <p class="lead text-white lh-180">Proud Platinum Sponsor of GIEQs.</p>
+                  <!--<iframe src="https://player.vimeo.com/video/612432353?h=281e96f882" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Features (v35) -->
+    <section class="slice slice-lg pt-lg-0">
+      <div class="container pt-5">
+        <div class="card-group flex-column flex-lg-row">
+          <div class="card bg-gradient-dark border-0 p-5 mt--150">
+            <div class="card-body">
+              <h5 class="h4 text-white">Welkom bij Olympus Belgium.</h5>
+              <p class="mt-4 mb-0 text-white">
+                We zijn fier u ons meest geavanceerde endoscopiesysteem te kunnen presenteren:
+                <br><br><b>EVIS X1</b><br><br>
+                Hiermee introduceert Olympus een reeks nieuwe, eenvoudig te gebruiken technologieën die een revolutie teweegbrengen in de manier waarop maag- en darmaandoeningen kunnen worden opgespoord, gekarakteriseerd en bemonsterd. Neem uw tijd om de verschillende video’s te bekijken. Het volstaat op de beelden te klikken.
+                Bienvenu chez Olympus Belgium 
+                <br><br><br>
+                Nous sommes fiers de vous présenter notre système d'endoscopie le plus avancé : 
+                <br><br><b>EVIS X1</b><br><br>
+                Olympus introduit une série de nouvelles technologies faciles à utiliser qui visent à révolutionner la manière dont les troubles gastro-entérologiques peuvent être détectés, caractérisés et échantillonnés. 
+                Prenez votre temps pour regarder les différentes vidéos. Il vous suffit de cliquer sur les images.
+              </p>
+              <ul class="nav mt-4">
+                <!--
+                <li class="nav-item">
+                  <a class="nav-link pl-0" href="#"><i class="fab fa-instagram" target="_blank"></i></a>
+                </li>
+              -->
+                <li class="nav-item">
+                  <a class="nav-link pl-0" href="https://www.youtube.com/watch?v=qiTC_7szw-s"><i class="fab fa-youtube" target="_blank"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://www.linkedin.com/company/olympus-europa-se-&-co-kg/mycompany/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                </li>
+
+                
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Blog (v3) -->
+    <section class="slice slice-lg">
+      <div class="container">
+        <div class="row row-grid">
+          <div class="col-lg-3">
+            <div class="p-3">
+              <img alt="Image" src="https://www.gieqs.com/assets/img/sponsors-pages/Olympus/Olympus 1.jpg" class="img-fluid rounded shadow-lg hover-scale-110">
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="p-3">
+              <img alt="Image" src="https://www.gieqs.com/assets/img/sponsors-pages/Olympus/Olympus 2.jpg" class="img-fluid rounded shadow-lg hover-scale-110">
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="p-3">
+              <img alt="Image" src="https://www.gieqs.com/assets/img/sponsors-pages/Olympus/Olympus 3.jpg" class="img-fluid rounded shadow-lg hover-scale-110">
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="p-3">
+              <img alt="Image" src="https://www.gieqs.com/assets/img/sponsors-pages/Olympus/Olympus 4.jpg" class="img-fluid rounded shadow-lg hover-scale-110">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+  </div>
+</div>
+
+
 
 
 <?php  
