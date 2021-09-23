@@ -18,7 +18,7 @@ require BASE_URI . '/head.php';
 require_once BASE_URI . '/assets/scripts/classes/assetManager.class.php';
 $assetManager = new assetManager;
 
-$courseTest = true;
+$courseTest = false;
 
 $gieqs_ii_day = $assetManager->whichDay($courseTest,true);
 
