@@ -66,7 +66,8 @@ $requiredUserLevel = 3;
 
     .tagCard {
 
-        background-color: #1b385d75;
+        /*background-color: #1b385d75;*/
+        background-color: black;
 
 
 
@@ -79,7 +80,9 @@ $requiredUserLevel = 3;
 
     .tagCardHeader {
 
-        background-color: #162e4d;
+        /*background-color: #162e4d;*/
+
+        background-color: black;
 
     }
 

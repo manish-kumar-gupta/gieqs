@@ -69,22 +69,26 @@ $requiredUserLevel = 3;
 
     .tagCard {
 
-        background-color: #1b385d75;
+/*background-color: #1b385d75;*/
+background-color: black;
+.tagCardHeader {
 
+/*background-color: #162e4d;*/
 
+background-color: black;
 
-    }
+}
 
     #live-chat-app {
         background-color: #1b385d75 !important;
 
     }
 
-    .tagCardHeader {
+   /*  .tagCardHeader {
 
         background-color: #162e4d;
 
-    }
+    } */
 
     .even-larger-badge{
     font-size: 1.2em;
