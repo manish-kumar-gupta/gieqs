@@ -12,6 +12,8 @@ $openaccess = 1;
 
 require BASE_URI . '/head.php';
 
+
+
 //if $userid is logged in
 
 if (isset($_GET['destination'])) {
@@ -144,7 +146,7 @@ if (isset($_GET['destination'])) {
 
     //define other constant
 
-    if (($gieqs_ii_is_live) && ($gieqs_ii_has_access_to_today)){
+    if (($gieqs_ii_is_live)){
 
 
       
