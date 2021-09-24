@@ -229,7 +229,7 @@ foreach ($csv as $key=>$value){
 
             $end_date_pro->add(new DateInterval($interval2));
         
-            $end_date_pro_sqltimestamp = date_format($end_date, 'Y-m-d H:i:s');
+            $end_date_pro_sqltimestamp = date_format($end_date_pro, 'Y-m-d H:i:s');
     
             if ($assetManager->doesUserHaveSameAssetAlready('24', $detectedUser, false) === false){
 
