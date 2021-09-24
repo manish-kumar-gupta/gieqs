@@ -579,6 +579,8 @@ if ($assetManager->getSiteWideSubscription($userid, $debug)){
 
       //standard or pro?
 
+        if ($currentUserLevel > 3){
+
       if ($sitewide_status == 1){
 
         $currentUserLevel = 4;        
@@ -588,6 +590,8 @@ if ($assetManager->getSiteWideSubscription($userid, $debug)){
         $currentUserLevel = 4;        
 
       }
+
+    }
 
 
       
