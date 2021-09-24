@@ -201,6 +201,9 @@ foreach ($csv as $key=>$value){
         $newSubscriptionid2 = null;
         $newSubscriptionid3 = null;
         $newSubscriptionid4 = null;
+        $newSubscriptionid5 = null;
+        $newSubscriptionid6 = null;
+        $ranProGrant = false;
 
         if ($day1 == '1'){
 
@@ -214,13 +217,19 @@ foreach ($csv as $key=>$value){
         
     
             $end_date = new DateTime('2021-09-30 21:00:00', new DateTimeZone('UTC')); //end of GIEQs II Day I
-    
+            $end_date_pro = new DateTime('2021-09-30 21:00:00', new DateTimeZone('UTC')); //end of GIEQs II Day I
+
     
             $interval = 'P3M';
+            $interval2 = 'P1M'; //pro subscription
     
             $end_date->add(new DateInterval($interval));
         
             $end_date_sqltimestamp = date_format($end_date, 'Y-m-d H:i:s');
+
+            $end_date_pro->add(new DateInterval($interval));
+        
+            $end_date_pro_sqltimestamp = date_format($end_date, 'Y-m-d H:i:s');
     
             if ($assetManager->doesUserHaveSameAssetAlready('24', $detectedUser, false) === false){
 
@@ -248,8 +257,23 @@ foreach ($csv as $key=>$value){
                 echo '<br/>';
                 echo 'User has an active subscription to asset 25 already';
             }
-    
 
+            
+            if ($assetManager->doesUserHaveSameAssetAlready('18', $detectedUser, false) === false){
+
+                $subscription->New_subscriptions($detectedUser, '18', $current_date_sqltimestamp, $end_date_pro_sqltimestamp, '1', '0', 'gii subscription, 1 mo trial, payment via Seauton');
+    
+                $newSubscriptionid5 = $subscription->prepareStatementPDO();
+
+                
+
+            }else{
+
+                echo '<br/>';
+                echo 'User has an active subscription to asset 18 already (pro)';
+            }
+    
+            $ranProGrant = true;
           
 
 
@@ -303,7 +327,25 @@ foreach ($csv as $key=>$value){
 
                 echo '<br/>';
                 echo 'User has an active subscription to asset 27 already';
+
+
             }
+
+            if ($ranProGrant === false){
+
+            if ($assetManager->doesUserHaveSameAssetAlready('18', $detectedUser, false) === false){
+
+                $subscription->New_subscriptions($detectedUser, '18', $current_date_sqltimestamp, $end_date_pro_sqltimestamp, '1', '0', 'gii subscription, 1 mo trial, payment via Seauton');
+    
+                $newSubscriptionid6 = $subscription->prepareStatementPDO();
+
+            }else{
+
+                echo '<br/>';
+                echo 'User has an active subscription to asset 18 already (pro)';
+            }
+
+        }
             
 
 
@@ -313,7 +355,7 @@ foreach ($csv as $key=>$value){
         if ($debug){
 
             echo '<br/>';
-            echo 'Result of subscriptions for user ' . $detectedUser . ' is : Day 1 ' .$newSubscriptionid1 . ' Day 2 ' .$newSubscriptionid2 . ' Day 3 ' .$newSubscriptionid3 . ' Day 4 ' .$newSubscriptionid4 . '';
+            echo 'Result of subscriptions for user ' . $detectedUser . ' is : Day 1 ' .$newSubscriptionid1 . ' Day 2 ' .$newSubscriptionid2 . ' Day 3 ' .$newSubscriptionid3 . ' Day 4 ' .$newSubscriptionid4 . ' Pro Subscription ' . $newSubscriptionid5 . ' OR ' . $newSubscriptionid6;
         }
 
 
