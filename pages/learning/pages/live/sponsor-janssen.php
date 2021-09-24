@@ -223,7 +223,7 @@ top: -20vh;
                 <div class="col">
                   <p class="lead text-white lh-180">Proud Silver Sponsor of GIEQs.</p>
                   <div class="embed-responsive embed-responsive-16by9 rounded">
-                    <iframe width="1268" height="713" src="https://www.youtube.com/embed/kGILazQ99XQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://player.vimeo.com/video/613428790?h=a6f180d756" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
                   </div>
                 </div>
               </div>
@@ -232,7 +232,7 @@ top: -20vh;
         </div>
       </div>
     </section>
-    <!-- Features (v35) 
+
     <section class="slice slice-lg pt-lg-0">
       <div class="container pt-5">
         <div class="card-group flex-column flex-lg-row">
@@ -240,53 +240,42 @@ top: -20vh;
             <div class="card-body">
               <h5 class="h4 text-white">Janssen</h5>
               <p class="mt-4 mb-0 text-white">
-                Acertys & Fujifilm, in collaboration with 3D Matrix, are proudly partnering up with GIEQs for their highly anticipated Second Edition of the Ghent International Endoscopy Quality Symposium, focused on promoting quality in the endoscopic interventions you perform everyday. 
-                <br><br>Acertys, part of the Duomed Group and formerly known as Onis Medical, is exclusively distributing Fujifilm endoscopes since 1976 in Belgium. Over the years we’ve expanded our product portfolio by collaborating with various high-quality manufacturers to fulfill our ambition of being a thrusted partner in the medical field. 
-                <br><br>Our divisions are supported by their own technical department. With our presence of local service engineers in the field and a full ESD-proof workshop within our office near Brussels, we strive to deliver excellent service in the most optimal and efficient way. Customers can rely on our teams not only for repair and maintenance, but also for technical / user trainings and various hands-on workshops.
+                Janssen Pharmaceutical Companies of Johnson & Johnson is a global leader in healthcare.
                 <br><br>
+                The group has more than 265 operational companies in 60 countries and over 128.000 employees worldwide. Over 5.000 employees are working at Janssen in Belgium. The activities on our 7 Belgian sites encompass the entire pharmaceutical cycle: from early research & development, via production and distribution to patient access.
+                <br><br>At Janssen, we never stop creating a future where disease is a thing of the past. We aim to transform lives by finding new and better ways to prevent, intercept, treat and cure disease. To do this, we bring together the best minds and pursue the most promising science. Janssen regards the whole world as its laboratory.
+                <br><br>Together with external partners, our researchers strive for new medical breakthroughs and develop treatments and vaccines for some of the most devastating disorders and complex medical challenges. We focus on areas of medicine where we can make the biggest difference: Cardiovascular & Metabolism, Immunology, Infectious Diseases & Vaccines, Neuroscience, Oncology and Pulmonary Hypertension. While we put the patient at the center of everything we do, innovation and sustainable entrepreneurship are at the center of how we do it. 
+                <a href="https://www.gieqs.com/assets/img/sponsors-pages/Janssen/PDF Janssens.pdf" target="_blank">
+                  <img src="https://www.gieqs.com/assets/img/sponsors-pages/Janssen/PDF Janssens.png" alt="PDF Acertys" style="max-width:100%;max-height:200px">
+                </a>
               </p>
             </div>
           </div>
         </div>
       </div>
     </section>
-    -->
-    <!-- Blog (v3) 
+    
+    
     <section class="slice slice-lg">
       <div class="container">
         <div class="row row-grid">
           <div class="col-lg-3">
             <div class="p-3">
               <a href="https://www.acertys.com/en/endoscopy" target="_blank">
-                <img alt="Image" src="https://www.gieqs.com/assets/img/sponsors-pages/Onis_Acertys/Acertys 1.JPG" class="img-fluid rounded shadow-lg hover-scale-110">
+                <img alt="Image" src="https://www.gieqs.com/assets/img/sponsors-pages/Janssen/Image 1.jpg" class="img-fluid rounded shadow-lg hover-scale-110">
               </a>
             </div>
           </div>
           <div class="col-lg-3">
             <div class="p-3">
               <a href="https://www.acertys.com/en/fujifilm-cad-eye-ai" target="_blank">
-                <img alt="Image" src="https://www.gieqs.com/assets/img/sponsors-pages/Onis_Acertys/Acertys 2.JPG" class="img-fluid rounded shadow-lg hover-scale-110">
-              </a>
-            </div>
-          </div>
-          <div class="col-lg-3">
-            <div class="p-3">
-              <a href="https://www.acertys.com/en/haemostasis-and-perforation-management/purastat" target="_blank">
-                <img alt="Image" src="https://www.gieqs.com/assets/img/sponsors-pages/Onis_Acertys/Acertys 3.JPG" class="img-fluid rounded shadow-lg hover-scale-110">
-              </a>
-            </div>
-          </div>
-          <div class="col-lg-3">
-            <div class="p-3">
-              <a href="www.acertys.com" target="_blank">
-                <img alt="Image" src="https://www.gieqs.com/assets/img/sponsors-pages/Onis_Acertys/Acertys 4.JPG" class="img-fluid rounded shadow-lg hover-scale-110">
+                <img alt="Image" src="https://www.gieqs.com/assets/img/sponsors-pages/Janssen/Image 2.jpg" class="img-fluid rounded shadow-lg hover-scale-110">
               </a>
             </div>
           </div>
         </div>
       </div>
     </section>
-    -->
     
   </div>
 </div>
