@@ -240,10 +240,10 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                             </span>
 
                             <?php if (($gieqs_ii_is_live) && ($gieqs_ii_has_access_to_today)){?>
-                                <span class="text-dark">Sit Back and Enjoy. <a href="<?php echo BASE_URL;?>/pages/learning/pages/general/show_subscription.php?assetid=<?php echo $gieqs_ii_plenary_link;?>">Start watching now</a></span>
+                                <span class="text-dark">Thank-you for Registering! Sit Back and Enjoy.<br/> <a href="<?php echo BASE_URL;?>/pages/learning/pages/general/show_subscription.php?assetid=<?php echo $gieqs_ii_plenary_link;?>">Start watching now</a></span>
                                 <?php if ($courseTest){?> <br/><span class="text-dark">TEST VIEW</span><?php }?>
                                 <?php }else{ ?>
-                        <span class="text-dark"><a href="<?php echo BASE_URL;?>/pages/program/gieqs_ii.php">Register Now</a></span>
+                        <span class="text-dark"><a href="<?php echo BASE_URL;?>/pages/program/gieqs_ii.php">Register Now for Immediate Access</a></span>
                         <?php if ($courseTest){?> <br/><span class="text-dark">TEST VIEW</span><?php }?>
 
                                     <?php } ?>

@@ -47,8 +47,10 @@ $sessionView = new sessionView;
 //gieqs ii parameters
 //TESTIING
 
-$test = true;
-$testDate = '2021-10-01 00:00:00';
+$debugAccess = false;
+
+$test = false;
+$testDate = '2021-09-30 00:00:00';
 
 
 if (!$test){
@@ -66,20 +68,52 @@ if ($test){
 
 $gieqs_ii_day = $assetManager->whichDay($courseTest,false, $test, $testDate);
 
+
+
 }else{
 
   $gieqs_ii_day = $assetManager->whichDay($courseTest,false);
 
 }
 
+if ($debugAccess){
+
+  echo '<br/><br/>value of gieqs_ii_day = ' . $gieqs_ii_day;
+
+} 
+
 $gieqs_ii_is_live = $assetManager->gieqsIILive($gieqs_ii_day);
+
+if ($debugAccess){
+
+  echo '<br/><br/>value of gieqs_ii_is_live = ' . $gieqs_ii_is_live;
+
+} 
 
 
 $gieqs_ii_has_access_to_today = $assetManager->hasAccessGIEQsII($gieqs_ii_day, $userid, false);
 
+if ($debugAccess){
+
+  echo '<br/><br/>value of gieqs_ii_has_access_to_today = ' . $gieqs_ii_has_access_to_today;
+
+} 
+
 $gieqs_ii_plenary_link = $assetManager->requiredAssetGIEQsII($gieqs_ii_day,true);
 
+if ($debugAccess){
+
+  echo '<br/><br/>value of gieqs_ii_plenary_link = ' . $gieqs_ii_plenary_link;
+
+} 
+
 $gieqs_ii_complex_link = $assetManager->requiredAssetGIEQsII($gieqs_ii_day,false);
+
+if ($debugAccess){
+
+  echo '<br/><br/>value of gieqs_ii_complex_link = ' . $gieqs_ii_complex_link;
+
+} 
 
 //query to get menus [if active]
 
@@ -120,7 +154,7 @@ if ($menus) {
 
             <li class="nav-item">
                     <a class="nav-link"
-                        href="<?php echo BASE_URL;?>/pages/learning/pages/general/show_subscription.php?assetid=<?php echo $assetManager->requiredAssetGIEQsII($assetManager->whichDay($courseTest,false),true);?>"><span class="gieqsGold">GIEQs II Live</span></a>
+                        href="<?php echo BASE_URL;?>/pages/learning/pages/general/show_subscription.php?assetid=<?php echo $gieqs_ii_plenary_link;?>"><span class="gieqsGold">GIEQs II Live</span></a>
                 </li>
 
         <?php } ?>

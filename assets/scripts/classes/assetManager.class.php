@@ -5511,6 +5511,17 @@ if ($debug){
 
         //day 1 programme ids 36,37
 
+        if ($debug){
+
+            echo '<br/>value of programme_owned_by_user 36 user ' . $user_id . ' is ' . $this->programme_owned_by_user('36', $user_id, $debug);
+            echo '<br/>value of programme_owned_by_user 37 user ' . $user_id . ' is ' . $this->programme_owned_by_user('37', $user_id, $debug);
+
+            echo '<br/>value of programme_owned_by_user 38 user ' . $user_id . ' is ' . $this->programme_owned_by_user('38', $user_id, $debug);
+
+            echo '<br/>value of programme_owned_by_user 39 user ' . $user_id . ' is ' . $this->programme_owned_by_user('39', $user_id, $debug);
+
+        }
+
         //day 2 programme ids 38,39
 
 

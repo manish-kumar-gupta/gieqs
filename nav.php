@@ -32,8 +32,12 @@ spl_autoload_register ('class_loader');
 
 //TESTIING
 
-$test = true;
-$testDate = '2021-10-01 00:00:00';
+//access planning
+
+$debugAccess = false;
+
+$test = false;
+$testDate = '2021-09-30 00:00:00';
 
 
 if (!$test){
@@ -51,21 +55,52 @@ if ($test){
 
 $gieqs_ii_day = $assetManager->whichDay($courseTest,false, $test, $testDate);
 
+
+
 }else{
 
   $gieqs_ii_day = $assetManager->whichDay($courseTest,false);
 
 }
 
+if ($debugAccess){
+
+  echo '<br/><br/>value of gieqs_ii_day = ' . $gieqs_ii_day;
+
+} 
+
 $gieqs_ii_is_live = $assetManager->gieqsIILive($gieqs_ii_day);
+
+if ($debugAccess){
+
+  echo '<br/><br/>value of gieqs_ii_is_live = ' . $gieqs_ii_is_live;
+
+} 
 
 
 $gieqs_ii_has_access_to_today = $assetManager->hasAccessGIEQsII($gieqs_ii_day, $userid, false);
 
+if ($debugAccess){
+
+  echo '<br/><br/>value of gieqs_ii_has_access_to_today = ' . $gieqs_ii_has_access_to_today;
+
+} 
+
 $gieqs_ii_plenary_link = $assetManager->requiredAssetGIEQsII($gieqs_ii_day,true);
+
+if ($debugAccess){
+
+  echo '<br/><br/>value of gieqs_ii_plenary_link = ' . $gieqs_ii_plenary_link;
+
+} 
 
 $gieqs_ii_complex_link = $assetManager->requiredAssetGIEQsII($gieqs_ii_day,false);
 
+if ($debugAccess){
+
+  echo '<br/><br/>value of gieqs_ii_complex_link = ' . $gieqs_ii_complex_link;
+
+} 
 
 ?>
 
