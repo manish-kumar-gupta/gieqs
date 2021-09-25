@@ -312,6 +312,11 @@ background-color: rgb(238, 194, 120);
 
     $embedCode = $response['body']['embed']['html'];
 
+    $titleVimeoVideo = $response['body']['name'];
+
+    $descriptionVimeoVideo = $response['body']['description'];
+
+
     //var_dump($embedCode);
 
     $scriptTagPattern = '/src\s*=\s*"(.+?)"/'; 
@@ -334,6 +339,12 @@ background-color: rgb(238, 194, 120);
 ?>
 
 <div id="requiredVimeoURL" style="display:none;"><?php echo $requiredVimeoURL;?></div>
+
+<div id="titleVimeoVideo" style="display:none;"><?php echo $titleVimeoVideo;?></div>
+
+
+<div id="descriptionVimeoVideo" style="display:none;"><?php echo $descriptionVimeoVideo;?></div>
+
 		
 		    <div id='content' class='content mt-10'>
 		
@@ -453,6 +464,13 @@ background-color: rgb(238, 194, 120);
 
 
                                             <a href="https://vimeo.com/manage/<?php echo $general->getVimeoID($id);?>/interaction-tools#chapters" target="_blank" class="action-item"><i class="fab fa-vimeo" data-toggle="tooltip" data-placement="bottom" title="open vimeo chapter page"></i> Edit Chapter Data</a>
+
+                                            <a href="" class="action-item importChapters"><i class="fab fa-vimeo" data-toggle="tooltip" data-placement="bottom" title="copy chapters from vimeo"></i>Import Chapters from Vimeo </a>
+
+
+                                            <a href="" class="action-item getTitle"><i class="fab fa-vimeo" data-toggle="tooltip" data-placement="bottom" title="open vimeo chapter page"></i>Copy Title from Vimeo </a>
+
+
 
 
                                             
@@ -1635,6 +1653,42 @@ chapters: chaptersVimeo,
 
 }
 
+var titleVimeoVideo = $('#titleVimeoVideo').text();
+var descriptionVimeoVideo = $('#descriptionVimeoVideo').text();
+
+function copyVimeoTitleAndDescription () {
+
+
+const dataToSend = {
+
+videoid: videoPassed,
+title: titleVimeoVideo,
+description: descriptionVimeoVideo,
+
+}
+      
+
+    const jsonString = JSON.stringify(dataToSend);
+    console.log(jsonString);
+
+    var request2 = $.ajax({
+    url: siteRoot + "../../assets/scripts/classes/generateTitleVimeo.php",
+    type: "POST",
+    contentType: "application/json",
+    data: jsonString,
+    });
+
+
+
+    request2.done(function(data) {
+    // alert( "success" );
+    console.dir(data);
+    //$(document).find('.Thursday').hide();
+    })
+
+
+}
+
 
 //delete behaviour
 
@@ -2610,7 +2664,76 @@ dt.order( [ 2, 'asc' ]).draw();
 			 
 			 
          }
+
+         $('.content').on('click', '.getTitle', function () {
+
+event.preventDefault();
+
+    $(this).attr('disabled', true);
+
+    if(confirm('Are you sure you want to import Vimeo title and description data? This will overwrite the existing title and description'))
+{
+
+    copyVimeoTitleAndDescription();
+
+         waitForFinalEvent(function () {
+
+           location.reload();
+
+
+         }, 200, 'Wrapper Video 755422');
+
+
+   
+
+     
+
+     
+
+}
+
+$(this).attr('disabled', false);
+
+})
          
+         $('.content').on('click', '.importChapters', function () {
+
+            event.preventDefault();
+
+                $(this).attr('disabled', true);
+
+                if(confirm('Are you sure you want to import Vimeo chapters? This will insert new chapters and potentially disrupt the existing chapter structure.  Only continue if no chapters currently exist'))
+{
+    
+                     getChaptersFromVimeoAPI();
+
+                     waitForFinalEvent(function () {
+
+                         copyVimeoChaptersDatabase();
+
+                         waitForFinalEvent(function () {
+
+                         location.reload();
+
+                        }, 200, 'Wrapper Video 74');
+
+
+                     }, 200, 'Wrapper Video 7554');
+
+
+               
+
+                 
+
+                 
+    
+}
+
+$(this).attr('disabled', false);
+
+})
+                     
+
          $('.content').on('click', '.exportChapterSummary', function () {
 
 
