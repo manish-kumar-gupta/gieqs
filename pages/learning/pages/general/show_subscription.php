@@ -1215,6 +1215,8 @@ filter: alpha(opacity=30);
 
                 if ($programme_id == '36' || $programme_id == '37'|| $programme_id == '38' || $programme_id == '39'){
 
+                    $isGIEQs2 = true;
+
                     if ($isSuperuser == 1){
 
                         $courseTest = true;
@@ -1227,6 +1229,8 @@ filter: alpha(opacity=30);
                 }else{
 
                     $courseTest = false;
+
+                    $isGIEQs2 = false;
                 }
 
 
@@ -1567,6 +1571,23 @@ filter: alpha(opacity=30);
     <script>
     //the number that are actually loaded
     var loaded = 1;
+
+    <?php
+    
+    if ($isGIEQs2 === true){
+
+       
+        ?>
+         var GIEQs2 = true;
+        <?php
+    }else{
+?>
+ var GIEQs2 = false;
+
+<?php
+
+    }
+    ?>
 
     //the number the user wants
     var loadedRequired = 1;
@@ -2218,11 +2239,12 @@ filter: alpha(opacity=30);
 
     $(document).ready(function() {
 
-
+if (GIEQs2){
         tourShort.init();
 
         // Start the tour
         tourShort.start();
+}
 
         checkTagFiltering();
 
