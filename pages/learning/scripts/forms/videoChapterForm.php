@@ -34,6 +34,19 @@
 
       //if an open invite deny unless that user
 
+      require(BASE_URI . '/vendor/autoload.php');
+      use Vimeo\Vimeo;
+      // Get this from your account
+      $vimeo_client_id = '47b9e04f8014da6dc06bbd4b5879d2f3dff2fc1c';
+      $vimeo_client_secret = '+7btjhyrrfEaZpAfLX81+pPrxOYlIS9A2d5Jj27GU7JyprVjwBGHK0+LE/XS0++3Ai060tT4msKZa4LbOQFOwOANa8JWqvz6D4k7XXFi4g8vEoBrH6Oh3RwQlaZUZCuP';
+      
+      // This has to be generated on your site, plugin or theme
+      $vimeo_token = 'cc33c4732d5f31ff9b681b23591bd95d';
+      error_reporting(-1);
+      
+      $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
+      
+
       ?>
 
     <!--Page title-->
@@ -291,7 +304,36 @@ background-color: rgb(238, 194, 120);
 		
 			<div id="id" style="display:none;"><?php if ($id){echo $id;}?></div>
 			
-			
+            <?php
+    
+    $response = $client->request('/videos/' . $general->getVimeoID($id));
+
+    //print_r($response);
+
+    $embedCode = $response['body']['embed']['html'];
+
+    //var_dump($embedCode);
+
+    $scriptTagPattern = '/src\s*=\s*"(.+?)"/'; 
+
+    preg_match($scriptTagPattern, $embedCode, $matches);
+    
+//print_r($matches);
+
+    $requiredVimeoURL = $matches[1];
+
+    $requiredVimeoURL = trim($requiredVimeoURL);
+
+    //echo $requiredVimeoURL;
+
+
+    
+
+
+
+?>
+
+<div id="requiredVimeoURL" style="display:none;"><?php echo $requiredVimeoURL;?></div>
 		
 		    <div id='content' class='content mt-10'>
 		
@@ -529,6 +571,10 @@ var vimeoID;
 
 vimeoID = $("#vimeoid").text();
 
+correctVimeoURL = $("#requiredVimeoURL").text();
+
+encodedcorrectVimeoURL = encodeURI(correctVimeoURL);
+
 videoPassed = $("#id").text();
 
 if (videoPassed == "") {
@@ -581,7 +627,7 @@ function videoDisplay (url){
         if (isNormalInteger(url) === true){
         
 	        //$('#videoDisplay').html("<div class='videoWrapper' style='text-align: centre'><iframe id='videoChapter' src='https://player.vimeo.com/video/"+url+"' width='400' height='288' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>");
-            $('#videoDisplay').html(" <div id=\"videoWrapper\" class=\"embed-responsive video embed-responsive-16by9\"><iframe id='videoChapter' class=\"embed-responsive-item\" style=\"left:50%; top:50%;\" src='https://player.vimeo.com/video/"+url+"' allow='autoplay' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>");
+            $('#videoDisplay').html(" <div id=\"videoWrapper\" class=\"embed-responsive video embed-responsive-16by9\"><iframe id='videoChapter' class=\"embed-responsive-item\" style=\"left:50%; top:50%;\" src='"+encodedcorrectVimeoURL+"' allow='autoplay' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>");
 
                 
 			$('#submitimagefiles').prop('disabled', true);
