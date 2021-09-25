@@ -780,36 +780,7 @@ $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
 
     <div id="vimeoid" style="display:none;"><?php echo $general->getVimeoID($id);?></div>
 
-    <?php
-    
-            $response = $client->request('/videos/' . $general->getVimeoID($id));
-
-            //print_r($response);
-
-            $embedCode = $response['body']['embed']['html'];
-
-            //var_dump($embedCode);
-
-            $scriptTagPattern = '/src\s*=\s*"(.+?)"/'; 
-
-            preg_match($scriptTagPattern, $embedCode, $matches);
-            
-        //print_r($matches);
-
-            $requiredVimeoURL = $matches[1];
-
-            $requiredVimeoURL = trim($requiredVimeoURL);
-
-            //echo $requiredVimeoURL;
-
-
-            
-
-    
-
-    ?>
-
-<div id="requiredVimeoURL" style="display:none;"><?php echo $requiredVimeoURL;?></div>
+   
 
 
     <div id="videoChapterData" style="display:none;">
@@ -1130,6 +1101,8 @@ $current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s');
                 
 
 ?>
+
+
 
 
         <div class="d-flex align-items-end">
@@ -1597,7 +1570,36 @@ $current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s');
 
 
 
+        <?php
+    
+    $response = $client->request('/videos/' . $general->getVimeoID($id));
 
+    //print_r($response);
+
+    $embedCode = $response['body']['embed']['html'];
+
+    //var_dump($embedCode);
+
+    $scriptTagPattern = '/src\s*=\s*"(.+?)"/'; 
+
+    preg_match($scriptTagPattern, $embedCode, $matches);
+    
+//print_r($matches);
+
+    $requiredVimeoURL = $matches[1];
+
+    $requiredVimeoURL = trim($requiredVimeoURL);
+
+    //echo $requiredVimeoURL;
+
+
+    
+
+
+
+?>
+
+<div id="requiredVimeoURL" style="display:none;"><?php echo $requiredVimeoURL;?></div>
 
 
         <!--
