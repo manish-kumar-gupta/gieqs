@@ -228,7 +228,8 @@ $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
 			
 ?>
 
-		
+<script src="<?php echo BASE_URL . "/node_modules/@vimeo/player/dist/player.js"?>"></script>
+
 
 		<div class="darkClass">
 
@@ -288,13 +289,17 @@ $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
 
 			    <div id='imageDisplay'>
 
-                <?php $response = $client->request('/videos/' . '570805121');
+                <pre><?php $response = $client->request('/videos/' . '570805121');
 
-                //print_r($response);
+                //print_r($response);?></pre>
 
-$urlThumbnail = $response['body']['pictures']['sizes'][5]['link'];
+               <!--  <div data-vimeo-id="570805121" data-vimeo-defer data-vimeo-width="500" id="handstick"></div> -->
 
-echo $urlThumbnail; //gets data for tagCategories and imageids?>
+<?php //$urlThumbnail = $response['body']['pictures']['sizes'][5]['link'];
+
+echo $urlThumbnail = $response['body']['embed']['html'];
+
+//echo $urlThumbnail; //gets data for tagCategories and imageids?>
 
 
 				</div>
@@ -834,6 +839,15 @@ function submitimagesForm() {
 
 $(document).ready(function() {
 
+
+    var options = {
+        width: 640,
+        loop: true
+    };
+
+    // Will create inside the made-in-ny div:
+    // <iframe src="https://player.vimeo.com/video/59777392?loop=1" width="640" height="360" frameborder="0" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+        var handstick = new Vimeo.Player(document.getElementById('handstick'), options);
 
 
    // insertProcedureTags();

@@ -151,6 +151,11 @@ var inChapter = 0;
 
 vimeoID = $("#vimeoid").text();
 
+correctVimeoURL = $("#requiredVimeoURL").text();
+
+encodedcorrectVimeoURL = encodeURI(correctVimeoURL);
+
+
 
 
 if (videoPassed == "") {
@@ -280,7 +285,7 @@ function videoDisplay(url) {
 
 		//can use ?muted=1 here if required
 
-		$('#videoDisplay').html("<iframe id='videoChapter' class='video' src='https://player.vimeo.com/video/" + url + "' frameborder='0' allow='autoplay' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>");
+		$('#videoDisplay').html('<iframe id=\'videoChapter\' class=\'video\' src=\'' + encodedcorrectVimeoURL + '\' frameborder=\'0\' allow=\'autoplay\' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>');
 
 		$('#submitimagefiles').prop('disabled', true);
 		$('#video').prop('disabled', true);
