@@ -179,8 +179,8 @@ top: -20vh;
             <!-- Salute + Small stats -->
             <div class="row align-items-center mb-4">
               <div class="col-auto mb-4 mb-md-0">
-                <span class="h2 mb-0 text-white text-bold d-block">Welcome to GIEQs Online <span class="badge text-dark bg-gieqsGold">
-    Free BETA!
+                <span class="h2 mb-0 text-white text-bold d-block">Welcome to GIEQs Online <span onclick="$('#registerInterest').modal('show');" class="cursor-pointer badge text-dark bg-gieqsGold">
+    Sign up for FREE!
 </span>. <?php //echo $_SESSION['firstname'] . ' ' . $_SESSION['surname']?></span>
                 <span class="text-white">Your home for evidence-based endoscopy education.</span>
               </div>
@@ -219,17 +219,52 @@ top: -20vh;
             
         </div>
       </section>
-      <section class="slice slice-lg">
+      <section class="slice slice-lg bg-cover bg-size--cover" style="background-image: url('<?php echo BASE_URL;?>/assets/img/covers/learning/roomview1.png'); background-position: center bottom;">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="card py-5 px-4 box-shadow-3">
+                <div class="card-body">
+                  <h6 class="h2">
+                    <strong>What is GIEQs Online?</strong>
+                  </h6>
+                  <p class="lead lh-180 mt-4">A paradigm shift in Endoscopy Education.</p>
+                  <p class="lead lh-180 mt-4">Based around <strong>full length cases</strong>, you can jump between cases containing the same idea.</p>
+                  <p class="lead lh-180 mt-4"><strong>Courses</strong> and <strong>Premium Topic-focussed Content Packs</strong> make up the core learning.</p>
+                  <p class="lead lh-180 mt-4">We cover Colonoscopy, Polypectomy, Gastroscopy, Endoscopic Imaging, ERCP, EUS and more.</p>
+
+                  <div class="btn-container mt-5">
+                  <a href="#start-findout"
+                                        class="btn bg-gieqsGold btn-icon rounded-pill hover-translate-y-n3 mt-5 mb-5">
+                                        <span class="btn-inner--icon">
+                                            <i class="fas fa-arrow-down text-dark"></i>
+                                        </span>
+                                        <span class="btn-inner--text text-dark">Find Out More</span>
+                                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+<hr/>
+      <section id="start-findout" class="slice slice-lg pb-250">
         <div class="container">
           <div class="row row-grid align-items-center justify-content-around">
             <div class="col-lg-5 order-lg-2">
               <div class="pr-md-4">
-                <h5 class="h3">Change the way you think about Endoscopy training. Forever.</h5>
+              <h5 class="h3">GIEQs Online is...</h5>
+                <h5 class="h3">Endoscopy Education. Evolved.</h5>
                 <p class="text-muted lead my-4">GIEQs Online uses our original tagged based approach throughout to connect you with cases relevant to what you want to discover, fast.</p>
-                <a href="https://vimeo.com/422871506" class="btn bg-gieqsGold text-dark rounded-pill btn-icon mt-4" data-fancybox>
-                  <span class="btn-inner--icon"><i class="fas fa-binoculars"></i></span>
-                  <span class="btn-inner--text">Discover</span>
-                </a>
+                <a href="#findout-2"
+                                        class="btn bg-gieqsGold btn-icon rounded-pill hover-translate-y-n3 mt-5 mb-5">
+                                        <span class="btn-inner--icon">
+                                            <i class="fas fa-arrow-down text-dark"></i>
+                                        </span>
+                                        <span class="btn-inner--text text-dark">More</span>
+                                    </a>
               </div>
             </div>
             <div class="col-lg-6 order-lg-1">
@@ -240,37 +275,22 @@ top: -20vh;
           </div>
         </div>
       </section>
-      <section class="slice slice-lg bg-cover bg-size--cover" style="background-image: url('<?php echo BASE_URL;?>/assets/img/covers/learning/roomview1.png'); background-position: center bottom;">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="card py-5 px-4 box-shadow-3">
-                <div class="card-body">
-                  <h6 class="h2">
-                    <strong>Privacy Respecting in-room view</strong> allows rapid visual learning.
-                  </h6>
-                  <p class="lead lh-180 mt-4">Our videos combine in-room audio and visuals with the endoscopic image, respecting the privacy of the patient at all times.</p>
-                  <p class="lead lh-180 mt-4">Feel like you're in the room 1:1 with the endoscopist teaching you the technique.</p>
-
-                  <div class="btn-container mt-5">
-                  <a href="https://vimeo.com/422871506" class="btn bg-gieqsGold text-dark rounded-pill btn-icon mt-4" data-fancybox>Sneak Preview</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section class="slice slice-lg">
+      <hr/>
+      <section id="findout-2" class="slice slice-lg pb-250">
         <div class="container">
           <div class="row row-grid align-items-center justify-content-around">
             <div class="col-lg-5 order-lg-2">
               <div class="pr-md-4">
-                <h5 class="h3">Use tags to see multiple examples of complex ideas. Fast.  And back to back.</h5>
+              <h5 class="h3">GIEQs Online is...</h5>
+                <h5 class="h3">Using tags to see multiple examples of complex ideas. Fast.  And back to back.</h5>
                 <p class="text-muted lead my-4">Real life training is ad hoc and dependent on luck and opportunity.  Why wait when all the experiences are collected on GIEQs online, and categorised for your convenience.</p>
-                <a href="https://vimeo.com/422871506" class="btn bg-gieqsGold text-dark rounded-pill btn-icon mt-4" data-fancybox>
-                  <span class="btn-inner--text">Discover</span>
-                </a>
+                <a href="#intro-upgrade-text"
+                                        class="btn bg-gieqsGold btn-icon rounded-pill hover-translate-y-n3 mt-5 mb-5">
+                                        <span class="btn-inner--icon">
+                                            <i class="fas fa-arrow-down text-dark"></i>
+                                        </span>
+                                        <span class="btn-inner--text text-dark">How to Join</span>
+                                    </a>
               </div>
             </div>
             <div class="col-lg-6 order-lg-1">
@@ -281,6 +301,336 @@ top: -20vh;
           </div>
         </div>
       </section>
+      <section id="intro-upgrade-text" class="slice bg-dark pb-250">
+                <div class="d-flex align-items-center">
+                    <div class="container py-6">
+                        <div class="row row-grid align-items-center justify-content-center">
+                            <div class="col-lg-6">
+                                <div class="py-lg-5 text-center">
+                                    <h2 class="h2 text-white mb-3">GIEQs Online is FREE to join.<br/><br/> You can then upgrade your experience with a GIEQs Online
+                                        Subscription</h2>
+                                    <p class="lead lh-180 text-white">Premium, curated content. Linked to published
+                                        evidence. Quickly searchable for
+                                        an unparalleled educational experience.</p>
+                                    <a href="#options-text"
+                                        class="btn bg-gieqsGold btn-icon rounded-pill hover-translate-y-n3 mt-5 mb-5">
+                                        <span class="btn-inner--icon">
+                                            <i class="fas fa-arrow-down text-dark"></i>
+                                        </span>
+                                        <span class="btn-inner--text text-dark">See the options</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="shape-container" data-shape-position="bottom" style="height: 342px;">
+                    <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1437.24 372.58"
+                        class="ie-shape-clouds">
+                        <path class="fill-section-primary"
+                            d="M1.35,97.76.5-189l16,8.88s28.43-111.93,145.68-53.3c0,0,42.13-28.11,63.71,9.81,0,0,30.73-57.54,90.88-11.11,0,0,136-132.07,196.8,86.3,0,0,86.3-171.3,234.72,5.23,0,0,39.23-102.65,143.19-22.23,0,0,5.88-113.11,149.07-61.46,0,0,68.65-100,189-11.11,0,0,126.84-28.11,151.69,87,0,0,34.65-34.65,56.23-18.31l.33,267.1Z"
+                            transform="translate(-0.5 400)"></path>
+                        <path class="fill-section-primary opacity-5"
+                            d="M.56-113.82,1.35,97.76H1437.74l-.55-207.55s-62.35-102.82-192-23.19c0,0-50.05-64.84-110.35-5.69,0,0-22.75-37.54-52.33-13.65,0,0-18.2-75.08-87.59-30.71,0,0-29.58-18.2-36.4,8,0,0-101.25-122.86-167.23,18.2,0,0-78.49-60.29-137.65,12.51,0,0-35.27-26.16-52.33-1.14,0,0-2.28-27.3-36.4-11.38,0,0-31.85-52.33-91-21.61,0,0-48.92-64.84-111.48-6.83,0,0-62.88-21.69-72.81,29.58,0,0-44.91-23.4-43.23,19.34,0,0-39.82-51.19-81.91,4.55,0,0-54.6-44.37-94.42,9.1C70-122.74,17.56-154.95.56-113.82Z"
+                            transform="translate(-0.5 274.83)"></path>
+                    </svg>
+                </div>
+            </section>
+            <section id="options-text" class="slice slice-lg">
+                <div class="container">
+                    <div class="row row-grid align-items-center justify-content-around">
+
+                        <div class="col-lg-5 order-lg-1">
+                            <div class="pr-md-4">
+                                <h5 class="h3">GIEQs Online Subscriptions.</h5>
+                                <p class="text-muted lead my-4">There are 3 levels of GIEQs online membership. Here's
+                                    how it works:
+
+                                <ul>
+
+                                    <li class="my-1">You can sign-up for free. GIEQs<span class="gieqsGold"> FREE
+                                        </span> membership contains a limited number of cases and does not give
+                                        access to comments, tagging or access to published evidence.</li>
+
+                                    <li class="mt-2 my-1">
+
+
+
+                                        <p>GIEQs <span class="gieqsGold"> STANDARD </span> gives access to the full tag
+                                            functionality of GIEQs online, 1-click
+                                            access to published evidence and commenting. Your favourite videos are
+                                            tracked for easy access. More PREMIUM content packages are available and you
+                                            get (non-live) access to 2 ONLINE COURSES of your choice per year</p>
+                                    </li>
+                                    <li class="my-1">
+
+
+
+                                        <p>GIEQs <span class="gieqsGold"> PRO </span> gives all the advantages of
+                                            STANDARD plus access to ALL courses and PREMIUM CONTENT packages on the
+                                            site. You also get discounted access to the yearly symposium if you are a
+                                            member for > 3 months and catch-up access to last years symposium. </p>
+                                    </li>
+
+                                </ul>
+
+                                </p>
+
+                                <a href="#options-table"
+                                    class="btn bg-gieqsGold btn-icon rounded-pill hover-translate-y-n3 mt-5">
+                                    <span class="btn-inner--icon">
+                                        <i class="fas fa-arrow-down text-dark"></i>
+                                    </span>
+                                    <span class="btn-inner--text text-dark">More details</span>
+                                </a>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6 order-lg-1">
+                            <div class="position-relative" style="z-index: 10;">
+                                <img alt="Image placeholder"
+                                    src="<?php echo BASE_URL;?>/assets/img/learning/advertising/tagsv2.png"
+                                    class="img-center img-fluid">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <hr>
+            <section id="options-table" class="slice slice-lg">
+                <div class="container">
+                    <p>
+                    <h1 class="display-5">GIEQs Online Subscription Options</h1>
+                    </p>
+                    <div class="row table-responsive-md">
+                        <table class="table table-dark">
+                            <caption>1 free trial of Standard / Pro per user is available for 14 days. You can peek at
+                                any paid content for 15 minutes once per user. Prices subject to change without notice.
+                                Consult our terms and conditions before subscribing.</caption>
+                            <thead>
+                                <tr class="d-flex ">
+                                    <th class="col-4 gieqsGold" scope="col"> </th>
+                                    <th class="col-2 gieqsGold text-center " scope="col">
+                                        <h3 class="my-auto">Free</h3>
+                                    </th>
+                                    <th class="col-3 gieqsGold text-center" scope="col">
+                                        <h3 class="my-auto">Standard</h3>billed monthly
+                                    </th>
+                                    <th class="col-3 gieqsGold text-center" scope="col">
+                                        <h3 class="my-auto">Pro</h3>billed monthly
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- <tr class="d-flex header-row">
+                                    <th class="col-4" scope="row">Cost</th>
+                                    <td class="col-3 text-center text-muted"> </td>
+                                    <td class="col-3 text-center text-muted"> </td>
+                                    <td class="col-2 text-center text-muted"> </td>
+                                    <td class="col-2 text-center text-muted"> </td>
+                                </tr> -->
+                                <tr class="d-flex text-white">
+                                    <td class="col-4"></td>
+                                    <td class="col-2 text-center text-muted"></td>
+
+                                    <?php if ($sitewide_status == 1 || $sitewide_status == 2){?>
+
+                                    <td class="col-3 text-center text-muted"></td>
+
+                                    <?php }else{?>
+
+                                    <td class="col-3 text-center text-muted"><a
+                                            class="btn-sm bg-gieqsGold p-1 mt-5 cursor-pointer"
+                                            onclick="$('#registerInterest').modal('show');">
+
+                                            <span class="btn-inner--text text-dark text-sm">Get STANDARD</span>
+                                        </a></td>
+
+                                    <?php }?>
+
+
+                                    <?php if ($sitewide_status == 2){?>
+
+                                    <td class="col-3 text-center text-muted"></td>
+
+                                    <?php }else{?>
+
+                                    <td class="col-3 text-center text-muted"><a
+                                            class="btn-sm bg-gieqsGold p-1 mt-5 cursor-pointer"
+                                            onclick="$('#registerInterest').modal('show');">
+
+                                            <span class="btn-inner--text text-dark text-sm">Get PRO</span>
+                                        </a></td>
+
+                                    <?php }?>
+
+                                </tr>
+                                <tr class="d-flex text-white">
+                                    <td class="col-4">Medical Endoscopist</td>
+                                    <td class="col-2 text-center text-muted">FREE</td>
+
+                                    <td class="col-3 text-center text-muted">€ 7</td>
+                                    <td class="col-3 text-center text-muted">€ 15</td>
+                                </tr>
+
+                                <tr class="d-flex text-white">
+                                    <td class="col-4">Trainee endoscopist</td>
+                                    <td class="col-2 text-center text-muted">FREE</td>
+                                    <td class="col-3 text-center text-muted">€ 5</td>
+                                    <td class="col-3 text-center text-muted">€ 10</td>
+                                </tr>
+                                <tr class="d-flex text-white">
+                                    <td class="col-4">Nursing endoscopist / Medical Student / Nursing assistant</td>
+                                    <td class="col-2 text-center text-muted">FREE</td>
+                                    <td class="col-3 text-center text-muted">€ 3</td>
+                                    <td class="col-3 text-center text-muted">€ 5</td>
+                                </tr>
+                                <tr class="d-flex header-row">
+                                    <th class="col-4" scope="row">Site Functionality</th>
+                                    <td class="col-2 text-center text-muted"> </td>
+                                    <td class="col-3 text-center text-muted"> </td>
+                                    <td class="col-3 text-center text-muted"> </td>
+                                </tr>
+                                <tr class="d-flex text-white">
+                                    <td class="col-4">Browse and enjoy free content</td>
+                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                    <td class="col-3 text-center text-muted">&#10003;</td>
+                                    <td class="col-3 text-center text-muted">&#10003;</td>
+                                </tr>
+                                <tr class="d-flex text-white">
+                                    <td class="col-4">Patented tag-based browsing for faster learning</td>
+                                    <td class="col-2 text-center text-muted">x</td>
+                                    <td class="col-3 text-center text-muted">&#10003;</td>
+                                    <td class="col-3 text-center text-muted">&#10003;</td>
+                                </tr>
+                                <tr class="d-flex text-white">
+                                    <td class="col-4">Direct link to published evidence</td>
+                                    <td class="col-2 text-center text-muted">x</td>
+                                    <td class="col-3 text-center text-muted">&#10003;</td>
+                                    <td class="col-3 text-center text-muted">&#10003;</td>
+                                </tr>
+                                <tr class="d-flex text-white">
+                                    <td class="col-4">Commenting</td>
+                                    <td class="col-2 text-center text-muted">x</td>
+                                    <td class="col-3 text-center text-muted">&#10003;</td>
+                                    <td class="col-3 text-center text-muted">&#10003;</td>
+                                </tr>
+                                <tr class="d-flex text-white">
+                                    <td class="col-4">Store my favourite content for faster access later</td>
+                                    <td class="col-2 text-center text-muted">x</td>
+                                    <td class="col-3 text-center text-muted">&#10003;</td>
+                                    <td class="col-3 text-center text-muted">&#10003;</td>
+                                </tr>
+                                <tr class="d-flex text-white">
+                                    <td class="col-4">Online clinical scoring systems</td>
+                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                    <td class="col-3 text-center text-muted">&#10003;</td>
+                                    <td class="col-3 text-center text-muted">&#10003;</td>
+                                </tr>
+                                <tr class="d-flex header-row">
+                                    <th class="col-4 gieqsGold" scope="col"> </th>
+                                    <th class="col-2 gieqsGold text-center " scope="col">
+                                        <h3 class="my-auto">FREE</h3>
+                                    </th>
+                                    <th class="col-3 gieqsGold text-center" scope="col">
+                                        <h3 class="my-auto">STANDARD</h3>billed monthly
+                                    </th>
+                                    <th class="col-3 gieqsGold text-center" scope="col">
+                                        <h3 class="my-auto">PRO</h3>billed monthly
+                                    </th>
+                                </tr>
+                                <tr class="d-flex header-row">
+                                    <th scope="row">Content</th>
+                                    <td class="col-4"> </td>
+                                    <td class="col-2 text-center text-muted"> </td>
+                                    <td class="col-3 text-center text-muted"> </td>
+                                    <td class="col-3 text-center text-muted"> </td>
+
+                                </tr>
+
+                                <tr class="d-flex text-white">
+                                    <td class="col-4">Selection of freely available everyday endoscopy content</td>
+                                    <td class="col-2 text-center text-muted">&#10003;</td>
+                                    <td class="col-3 text-center text-muted">&#10003;</td>
+                                    <td class="col-3 text-center text-muted">&#10003;</td>
+                                </tr>
+                                <tr class="d-flex text-white">
+                                    <td class="col-4">Online Courses<br>(catch-up)</td>
+                                    <td class="col-2 text-center text-muted">x</td>
+                                    <td class="col-3 text-center text-muted">&#10003;<br>(2 / year)</td>
+                                    <td class="col-3 text-center text-muted">&#10003;</td>
+                                </tr>
+                                <tr class="d-flex text-white">
+                                    <td class="col-4">Online Courses<br>(live)</td>
+                                    <td class="col-2 text-center text-muted">x</td>
+                                    <td class="col-3 text-center text-muted">x</td>
+                                    <td class="col-3 text-center text-muted">All*<br> (+ 5-6 new per year)</td>
+                                </tr>
+                                <tr class="d-flex text-white">
+                                    <td class="col-4">Premium Curated Content Packages</td>
+                                    <td class="col-2 text-center text-muted">x</td>
+                                    <td class="col-3 text-center text-muted">&#10003;<br> (selection)</td>
+                                    <td class="col-3 text-center text-muted">&#10003;<br> (all)</td>
+                                </tr>
+                                <tr class="d-flex text-white">
+                                    <td class="col-4">Symposium (catch-up) access</td>
+                                    <td class="col-2 text-center text-muted">x</td>
+                                    <td class="col-3 text-center text-muted">x</td>
+                                    <td class="col-3 text-center text-muted">&#10003;<br> (after 2 months)</td>
+                                </tr>
+                                <tr class="d-flex text-white">
+                                    <td class="col-4">Live symposium access</td>
+                                    <td class="col-2 text-center text-muted">x</td>
+                                    <td class="col-3 text-center text-muted">x</td>
+                                    <td class="col-3 text-center text-muted">&#10003;<br> (discount after 3 months
+                                        membership)</td>
+                                </tr>
+                                <tr class="d-flex text-white">
+                                    <td class="col-4"></td>
+                                    <td class="col-2 text-center text-muted"></td>
+
+                                    <?php if ($sitewide_status == 1 || $sitewide_status == 2){?>
+
+                                    <td class="col-3 text-center text-muted"></td>
+
+                                    <?php }else{?>
+
+                                    <td class="col-3 text-center text-muted"><a
+                                            class="btn-sm bg-gieqsGold p-1 mt-5 cursor-pointer"
+                                            onclick="$('#registerInterest').modal('show');">
+
+                                            <span class="btn-inner--text text-dark text-sm">Get STANDARD</span>
+                                        </a></td>
+
+                                    <?php }?>
+
+
+                                    <?php if ($sitewide_status == 2){?>
+
+                                    <td class="col-3 text-center text-muted"></td>
+
+                                    <?php }else{?>
+
+                                    <td class="col-3 text-center text-muted"><a
+                                            class="btn-sm bg-gieqsGold p-1 mt-5 cursor-pointer"
+                                            onclick="$('#registerInterest').modal('show');">
+
+                                            <span class="btn-inner--text text-dark text-sm">Get PRO</span>
+                                        </a></td>
+
+                                    <?php }?>
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </section>
+     
+      
+    
       <section class="slice slice-lg bg-gradient-dark">
         <div class="container">
           <div class="mb-5 text-center">
