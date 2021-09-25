@@ -32,8 +32,11 @@ spl_autoload_register ('class_loader');
 
 //TESTIING
 
-$test = false;
+$test = true;
+$testDate = '2021-10-01 00:00:00';
 
+
+if (!$test){
 if ($isSuperuser == 1){
 
   $courseTest = true;
@@ -42,9 +45,17 @@ if ($isSuperuser == 1){
 
   $courseTest = false;
 }
+}
 
+if ($test){
 
-$gieqs_ii_day = $assetManager->whichDay($courseTest,false);
+$gieqs_ii_day = $assetManager->whichDay($courseTest,false, $test, $testDate);
+
+}else{
+
+  $gieqs_ii_day = $assetManager->whichDay($courseTest,false);
+
+}
 
 $gieqs_ii_is_live = $assetManager->gieqsIILive($gieqs_ii_day);
 

@@ -5544,7 +5544,7 @@ if ($debug){
     }
 
 
-    public function whichDay($test, $debug=false){
+    public function whichDay($test, $debug=false, $checkDate=false, $dateToCheck=null){
 
         //check the CURRENTdate against the course date
 
@@ -5554,11 +5554,24 @@ if ($debug){
 
         //
 
+        if ($checkDate){
+
+            $serverTimeZoneNav = new DateTimeZone('Europe/Brussels'); //because this is where course is held
+
+            $currentNavTime = new DateTime($dateToCheck, $serverTimeZoneNav);  
+    
+            $firstDate = $currentNavTime->format('Y-m-d');
+
+        }else{
+
+
         $serverTimeZoneNav = new DateTimeZone('Europe/Brussels'); //because this is where course is held
 
         $currentNavTime = new DateTime('now', $serverTimeZoneNav);  
 
         $firstDate = $currentNavTime->format('Y-m-d');
+
+        }
 
        
 
