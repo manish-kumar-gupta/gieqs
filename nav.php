@@ -36,7 +36,7 @@ spl_autoload_register ('class_loader');
 
 $debugAccess = false;
 
-$test = false;
+$test = true;
 $testDate = '2021-09-30 00:00:00';
 
 

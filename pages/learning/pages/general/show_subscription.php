@@ -1495,7 +1495,7 @@ filter: alpha(opacity=30);
 
 
     <hr>
-    <div class="container mt-3">
+    <div id="program-tour" class="container mt-3">
     <?php if ((($firstDate == $secondDate)) && ($videoset == 2 || $videoset == 3)){?>
 
         <div class="row d-flex flex-row-reverse flex-wrap py-1 px-6">
@@ -1535,6 +1535,8 @@ filter: alpha(opacity=30);
 
 
     </div>
+
+    <div id="bootstrapTour"></div>
 
 
 
@@ -1975,9 +1977,9 @@ filter: alpha(opacity=30);
         steps: [
 
             {
-                element: ".showMeAround",
-                title: "Welcome to GIEQs II",
-                content: "<p>Lets show you around...</p>",
+                
+                title: "Welcome to GIEQs II.  Thanks for registering.  Its great to have you with us.  ",
+                content: "<p>Let us take a few minutes to show you around.</p><p>For best viewing results we recommend using Chrome / Safari and a Desktop computer</p>",
             },
 
 
@@ -1986,23 +1988,180 @@ filter: alpha(opacity=30);
                 title: "Main Conference Player",
                 content: "<p>Here you can view the conference in high definition.  Pause and restart as you wish.</p>",
             },
+
+            {
+                element: "#slido",
+                title: "Ask the Expert",
+                content: "<p>Here you can pose questions live to the experts.  You can also participate in polls / competitions.</p>",
+                placement: "auto left",
+            },
+
+            {
+                element: "#videoBar",
+                title: "Navigation",
+                content: "<p>This navigation bar lets you navigate around the conference</p><p>There are 2 rooms running simultaneously. </p> <p><strong>Plenary</strong> and <strong>Complex</strong></p>",
+                placement: "auto bottom",
+            },
             {
                 onShow: function(tour) {
 
-                    $('#selectDropdown').collapse('show');
-                    $('#selectDropdown').find('select').attr('size', 6);
+                    $('#navbarDropdown').collapse('show');
+                    //$('#selectDropdown').find('select').attr('size', 6);
 
 
                 },
 
-                element: "#selectDropdown",
+                element: "#programMenu",
                 placement: "auto left",
-                title: "Chapter Selection",
-                content: "<p>This dropdown shows all the chapters in the video.</p>  <p>Video chapters indicate steps in a procedure or ideas in a lecture.</p><p>Quickly jump to a chapter by clicking on it.</p>",
+                title: "View the Program",
+                content: "<p>Here you can view the program for the conference.</p>",
 
                 onHidden: function(tour) {
-                    $('#selectDropdown').collapse('hide');
-                    $('#selectDropdown').find('select').attr('size', 1);
+                    $('#navbarDropdown').collapse('hide');
+                    //$('#selectDropdown').find('select').attr('size', 1);
+
+
+
+                }
+
+            },
+            {
+                onShow: function(tour) {
+
+                    $('#navbarDropdown2').collapse('show');
+                    //$('#selectDropdown').find('select').attr('size', 6);
+
+
+                },
+
+                element: "#changeRoom",
+                placement: "auto left",
+                title: "Change Room",
+                content: "<p>Here you can switch between the plenary and complex room / stream.</p>",
+
+                onHidden: function(tour) {
+                    $('#navbarDropdown2').collapse('hide');
+                    //$('#selectDropdown').find('select').attr('size', 1);
+
+
+
+                }
+
+            },
+
+            {
+                onShow: function(tour) {
+
+                   // $('#navbarDropdown2').collapse('show');
+                    //$('#selectDropdown').find('select').attr('size', 6);
+
+
+                },
+
+                element: "#sponsors",
+                placement: "auto left",
+                title: "View Sponsor Pages",
+                content: "<p>Here you can view information from our valued Sponsors.</p>",
+
+                onHidden: function(tour) {
+                    //$('#navbarDropdown2').collapse('hide');
+                    //$('#selectDropdown').find('select').attr('size', 1);
+
+
+
+                }
+
+            },
+
+            {
+                onShow: function(tour) {
+
+                   // $('#navbarDropdown2').collapse('show');
+                    //$('#selectDropdown').find('select').attr('size', 6);
+
+
+                },
+
+                element: "#twitter-tour",
+                placement: "auto left",
+                title: "Like us on Social Media",
+                content: "<p>Visit our Twitter Page to keep up with the Latest Throughout the conference.</p><p>Like what you see? Like us on Twitter!</p>",
+
+                onHidden: function(tour) {
+                    //$('#navbarDropdown2').collapse('hide');
+                    //$('#selectDropdown').find('select').attr('size', 1);
+
+
+
+                }
+
+            },
+
+            {
+                onShow: function(tour) {
+
+                   // $('#navbarDropdown2').collapse('show');
+                    //$('#selectDropdown').find('select').attr('size', 6);
+
+
+                },
+
+                element: "#support-tour",
+                placement: "auto left",
+                title: "Having Problems?",
+                content: "<p>Connect with us in real-time here</p>",
+
+                onHidden: function(tour) {
+                    //$('#navbarDropdown2').collapse('hide');
+                    //$('#selectDropdown').find('select').attr('size', 1);
+
+
+
+                }
+
+            },
+
+            {
+                onShow: function(tour) {
+
+                    $([document.documentElement, document.body]).animate({
+                        scrollTop: $("#videoCards").offset().top
+                    }, 1000);
+
+                },
+
+                element: "#videoCards",
+                placement: "auto top",
+                title: "Catch-up",
+                content: "<p>As soon as they are ready, catch-up materials will appear here.  Give us a week or two and these will be fully tagged and linked to our other content.</p>",
+
+                onHidden: function(tour) {
+                    //$('#navbarDropdown2').collapse('hide');
+                    //$('#selectDropdown').find('select').attr('size', 1);
+
+
+
+                }
+
+            },{
+                onShow: function(tour) {
+
+                   // $('#navbarDropdown2').collapse('show');
+                    //$('#selectDropdown').find('select').attr('size', 6);
+                    $([document.documentElement, document.body]).animate({
+                        scrollTop: $("#program-tour").offset().top
+                    }, 1000);
+
+                },
+
+                element: "#programme-display",
+                placement: "auto top",
+                title: "Program Live",
+                content: "<p>Here you can view a live version of the program updated in real-time.</p>",
+
+                onHidden: function(tour) {
+                    //$('#navbarDropdown2').collapse('hide');
+                    //$('#selectDropdown').find('select').attr('size', 1);
 
 
 
@@ -2021,7 +2180,7 @@ filter: alpha(opacity=30);
 
         ],
 
-        animation: false,
+        animation: true,
         container: "#bootstrapTour",
         smartPlacement: true,
         keyboard: true,
@@ -2059,6 +2218,11 @@ filter: alpha(opacity=30);
 
     $(document).ready(function() {
 
+
+        tourShort.init();
+
+        // Start the tour
+        tourShort.start();
 
         checkTagFiltering();
 

@@ -58,9 +58,9 @@ Useful for PHP to JS transfer
 
 
                             <li class="nav-item dropdown-animate dropdown-submenu bg-dark" data-toggle="hover">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                <a id="programMenu" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Programme
+                                    Program
                                 </a>
                                 <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
 
@@ -81,7 +81,7 @@ Useful for PHP to JS transfer
                             </li>
 
                             <li class="nav-item dropdown-animate dropdown-submenu bg-dark" data-toggle="hover">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                <a id="changeRoom" class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <?php if (isset($assetid)){?>
 
@@ -106,7 +106,7 @@ Useful for PHP to JS transfer
                                 </div>
                             </li>
                             <li class="nav-item dropdown-animate dropdown-submenu bg-dark" data-toggle="hover">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                <a id="sponsors" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Sponsors
                                 </a>
@@ -150,7 +150,7 @@ Useful for PHP to JS transfer
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon" target="_blank" href="https://twitter.com/gieqs_symposium">
+                    <a id="twitter-tour" class="nav-link nav-link-icon" target="_blank" href="https://twitter.com/gieqs_symposium">
                         <i class="fab fa-twitter"></i>
                         <span class="nav-link-inner--text d-lg-none">Tweet</span>
                     </a>
@@ -162,7 +162,7 @@ Useful for PHP to JS transfer
                     </a>
                 </li>
                 <li class="nav-item mr-auto">
-                                <a class="nav-link nav-link-icon"
+                                <a id="support-tour" class="nav-link nav-link-icon"
                                     href="<?php echo BASE_URL;?>/pages/support/support.php" target="_blank">
 
                                     <span class="nav-link-inner--text ">Support</span>
