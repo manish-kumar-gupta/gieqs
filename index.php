@@ -370,7 +370,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                             </div>
 
                             <h2 class="text-white mb-4 mt-4 mt-lg-0">
-                                <span class="display-4 font-weight-light">GIEQs II. Registration Now Open!</span>
+                                <span class="display-4 font-weight-light">GIEQs II. Less than a week to go!</span>
 
                                 <span class="d-block" style="color: rgb(238, 194, 120);"><strong
                                         class="font-weight-light">Endoscopy in HD. Virtual Edition.<br /> Join us for
