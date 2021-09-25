@@ -444,7 +444,7 @@ if ($menus) {
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
                         <?php
 
-if ($isSuperuser){
+if ($isSuperuser == 1){
 
     $fullAccess = true;
 

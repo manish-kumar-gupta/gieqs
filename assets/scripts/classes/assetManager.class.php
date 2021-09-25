@@ -2998,7 +2998,7 @@ public function getMenuItems($user_id, $asset_type, $debug, $superuser=false){
         b.`id`, b.`name`
         FROM `subscriptions` as a
         INNER JOIN `assets_paid` as b ON a.`asset_id` = b.`id`
-        WHERE (b.`asset_type` = '$asset_type')
+        WHERE (b.`asset_type` = '$asset_type') AND (b.`advertise_for_purchase` IS NULL OR b.`advertise_for_purchase` = '1')
         GROUP BY b.`id`
         ORDER BY b.`name` ASC
         ";
@@ -3013,6 +3013,7 @@ public function getMenuItems($user_id, $asset_type, $debug, $superuser=false){
             AND (a.`user_id` = '$user_id')
             AND (a.`active` = '1')
             AND (a.`expiry_date` > NOW())
+            AND (b.`advertise_for_purchase` IS NULL OR b.`advertise_for_purchase` = '1')
             ORDER BY b.`name` ASC
             ";
 
