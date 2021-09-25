@@ -16,17 +16,17 @@
             $sessionView = new sessionView;
             $programmeView = new programmeView;
 
-            require_once BASE_URI . '/assets/scripts/classes/courseManager.class.php';
-$courseManager = new courseManager;
+                    require_once BASE_URI . '/assets/scripts/classes/courseManager.class.php';
+        $courseManager = new courseManager;
 
-require_once BASE_URI . '/assets/scripts/classes/sessionView.class.php';
-$sessionView = new sessionView;
+        require_once BASE_URI . '/assets/scripts/classes/sessionView.class.php';
+        $sessionView = new sessionView;
 
-require_once BASE_URI . '/assets/scripts/classes/assetManager.class.php';
-$assetManager = new assetManager;
+        require_once BASE_URI . '/assets/scripts/classes/assetManager.class.php';
+        $assetManager = new assetManager;
 
-require_once BASE_URI . '/pages/learning/classes/chapter.class.php';
-$chapter = new chapter;
+        require_once BASE_URI . '/pages/learning/classes/chapter.class.php';
+        $chapter = new chapter;
 
 
             //set the variables
@@ -110,8 +110,8 @@ $chapter = new chapter;
 
                 //$endTime = null;
 
-                $chapter->New_chapter($index, $title, $startTime, $timeTo, $videoid);
-                $chapter->Save_Active_Row_as_New();
+                $chapter->New_chapter($index, $title, $startTime, $timeTo, $videoid, null);
+                $chapter->prepareStatementPDO();
                 $x++;
 
 
