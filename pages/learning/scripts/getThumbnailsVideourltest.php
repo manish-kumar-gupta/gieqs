@@ -289,15 +289,15 @@ $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
 
 			    <div id='imageDisplay'>
 
-                <pre><?php $response = $client->request('/videos/' . '570805121');
+                <pre><?php $response = $client->request('/videos/' . '613446122');
 
-                //print_r($response);?></pre>
+                print_r($response);?></pre>
 
                <!--  <div data-vimeo-id="570805121" data-vimeo-defer data-vimeo-width="500" id="handstick"></div> -->
 
 <?php //$urlThumbnail = $response['body']['pictures']['sizes'][5]['link'];
 
-echo $urlThumbnail = $response['body']['embed']['html'];
+//echo $urlThumbnail = $response['body']['embed']['html'];
 
 //echo $urlThumbnail; //gets data for tagCategories and imageids?>
 

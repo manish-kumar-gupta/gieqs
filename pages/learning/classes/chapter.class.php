@@ -11,6 +11,8 @@
  */
 require_once 'DataBaseMysql.class.php';
 
+error_reporting(E_ALL);
+
 Class chapter {
 
 	private $id; //int(10)
@@ -18,10 +20,10 @@ Class chapter {
 	private $name; //varchar(200)
 	private $timeFrom; //varchar(10)
 	private $timeTo; //varchar(10)
-	private $videoid; //int(10)
+	private $video_id; //int(10)
 	private $connection;
 
-	public function chapter(){
+	public function __construct(){
 		$this->connection = new DataBaseMysql();
 	}
 
@@ -29,12 +31,12 @@ Class chapter {
      * New object to the class. Don¥t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New(); 
      *
      */
-	public function New_chapter($number,$name,$timeFrom,$timeTo,$videoid){
+	public function New_chapter($number,$name,$timeFrom,$timeTo,$video_id){
 		$this->number = $number;
 		$this->name = $name;
 		$this->timeFrom = $timeFrom;
 		$this->timeTo = $timeTo;
-		$this->videoid = $videoid;
+		$this->video_id = $video_id;
 	}
 
     /**
@@ -51,7 +53,7 @@ Class chapter {
 			$this->name = $row["name"];
 			$this->timeFrom = $row["timeFrom"];
 			$this->timeTo = $row["timeTo"];
-			$this->videoid = $row["videoid"];
+			$this->video_id = $row["video_id"];
 		}return $result; 
 	}
 
@@ -112,7 +114,7 @@ return $result; 	}
      * Update the active row table on table
      */
 	public function Save_Active_RowNulls(){
-		$result = $this->connection->RunQuery("UPDATE chapter set number = \"$this->number\", name = \"$this->name\", timeFrom = \"$this->timeFrom\", timeTo = \"$this->timeTo\", videoid = \"$this->videoid\" where id = \"$this->id\"");
+		$result = $this->connection->RunQuery("UPDATE chapter set number = \"$this->number\", name = \"$this->name\", timeFrom = \"$this->timeFrom\", timeTo = \"$this->timeTo\", video_id = \"$this->video_id\" where id = \"$this->id\"");
 	return $result; 
 	}
 
@@ -134,7 +136,7 @@ return $result; 	}
 		$ovMod = array();
 				foreach ($ov as $key=>$value){
 
-					if ($value != ''){
+			if ($value != ''){
 
 						$ovMod[$key] = $value;
 					}
@@ -153,9 +155,12 @@ return $result; 	}
         $keys = array_keys($updates);
         $keys_string = implode(', ', $keys);
         $q = "INSERT INTO chapter ($keys_string) VALUES ('$implodeArray')";
+		echo $q;
 		
 		$result = $this->connection->RunQuery($q);
-		$last_id = $this->connection->insertID();
+
+		var_dump($result);
+		$last_id = $this->connection->insertID;
 		
 		if ($result == 1){
 			
@@ -173,7 +178,7 @@ return $result; 	}
      * Save the active var class as a new row on table
      */
 	public function Save_Active_Row_as_New_OLD(){
-	$result = $this->connection->RunQuery("Insert into chapter (number, name, timeFrom, timeTo, videoid) values (\"$this->number\", \"$this->name\", \"$this->timeFrom\", \"$this->timeTo\", \"$this->videoid\")");
+	$result = $this->connection->RunQuery("Insert into chapter (number, name, timeFrom, timeTo, video_id) values (\"$this->number\", \"$this->name\", \"$this->timeFrom\", \"$this->timeTo\", \"$this->video_id\")");
 return $result; 	}
 
     /**
@@ -228,10 +233,10 @@ return $result; 	}
 	}
 
 	/**
-	 * @return videoid - int(10)
+	 * @return video_id - int(10)
 	 */
-	public function getvideoid(){
-		return $this->videoid;
+	public function getvideo_id(){
+		return $this->video_id;
 	}
 
 	/**
@@ -272,8 +277,8 @@ return $result; 	}
 	/**
 	 * @param Type: int(10)
 	 */
-	public function setvideoid($videoid){
-		$this->videoid = $videoid;
+	public function setvideo_id($video_id){
+		$this->video_id = $video_id;
 	}
 
     /**

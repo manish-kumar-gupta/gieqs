@@ -544,6 +544,8 @@ background-color: rgb(238, 194, 120);
             <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
     <!-- <script src="assets/js/purpose.core.js"></script> -->
     <!-- Page JS -->
+    <script src="<?php echo BASE_URL . "/node_modules/@vimeo/player/dist/player.js"?>"></script>
+
     <script src=<?php echo BASE_URL . "/assets/libs/swiper/dist/js/swiper.min.js"?>></script>
     <script src=<?php echo BASE_URL . "/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"?>></script>
     <script src=<?php echo BASE_URL . "/assets/libs/typed.js/lib/typed.min.js"?>></script>
@@ -618,6 +620,9 @@ var selects2 = new Object();
 
 var selects3 = new Object();
 
+var player = null;
+
+
 
 
 function videoDisplay (url){
@@ -657,6 +662,16 @@ function videoDisplay (url){
                     $video.removeClass('stuck');
                 }
                 });
+
+                var iframe = document.querySelector('#videoChapter');
+				
+				player = new Vimeo.Player(iframe);
+
+				player.on('loaded', function(data) {
+					addCuePoints();
+			
+				
+				});
 
             }, 100, 'Wrapper Video');
             
@@ -1588,6 +1603,38 @@ function fillForm(idPassed) {
 
 }
 
+function copyVimeoChaptersDatabase () {
+
+
+    const dataToSend = {
+
+videoid: videoPassed,
+chapters: chaptersVimeo,
+
+}
+          
+
+        const jsonString = JSON.stringify(dataToSend);
+        console.log(jsonString);
+
+        var request2 = $.ajax({
+        url: siteRoot + "../../assets/scripts/classes/generateChaptersVimeo.php",
+        type: "POST",
+        contentType: "application/json",
+        data: jsonString,
+        });
+
+
+
+        request2.done(function(data) {
+        // alert( "success" );
+        console.dir(data);
+        //$(document).find('.Thursday').hide();
+        })
+
+
+}
+
 
 //delete behaviour
 
@@ -1813,6 +1860,21 @@ function jumpToTime (time){
 
 }
 
+var chaptersVimeo = new Object;
+
+function getChaptersFromVimeoAPI (){
+
+    player.getChapters().then(function(chapters) {
+     chaptersVimeo = chapters;
+     return true;
+}).catch(function(error) {
+    // an error occurred
+    return false;
+});
+
+
+}
+
 $(document).ready(function() {
 
     if (edit == 1) {
@@ -1825,6 +1887,7 @@ $(document).ready(function() {
         $("#messageBox").text("New Video Entry");
 
     }
+
     
     //!modify navbar to include page specific links
     
