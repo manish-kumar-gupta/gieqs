@@ -134,11 +134,11 @@ top: -20vh;
 
         <!-- Topbar -->
 
-        <?php require BASE_URI . '/topbar.php';?>
+        <?php require BASE_URI . '/pages/learning/includes/topbar.php';?>
 
-        <!-- Main navbar -->
+<!-- Main navbar -->
 
-        <?php require BASE_URI . '/nav.php';?>
+<?php require BASE_URI . '/pages/learning/includes/nav.php';?>
 
         
 
@@ -167,8 +167,9 @@ top: -20vh;
             <?php $livepage = 'Janssen.  Proud Silver sponsor of GIEQs';?>
 
 <div id="id" style="display:none;"><?php if ($id){echo $id;}?></div>
-<?php require (BASE_URI . '/pages/learning/pages/live/liveNav.php');?>
-</nav><div class="main-content">
+<div class="mt-10"></div>
+<?php $videoset = 2;
+require(BASE_URI . '/pages/learning/pages/general/live_nav.php'); ?></nav><div class="main-content">
     <!-- Navbar warning -->
     <?php if ($liveAccess){
 

@@ -131,7 +131,7 @@ Useful for PHP to JS transfer
                         <div class="col-sm-3">
                           <a href="#" class="dropdown-item" style="color: rgb(238, 194, 120);">Silver</a>
 
-                          <a href="<?php echo BASE_URL;?>/pages/learning/pages/live/sponsor-medtronic.php" class="dropdown-item">Medtronic</a>
+                          <a href="<?php echo BASE_URL;?>/pages/learning/pages/live/sponsor-janssen.php" class="dropdown-item">Janssen</a>
                         
                         </div>
                        
