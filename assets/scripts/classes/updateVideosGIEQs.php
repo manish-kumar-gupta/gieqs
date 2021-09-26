@@ -26,6 +26,8 @@ echo 'Working Classes' . PHP_EOL;
 
 //exit(); //unable to execute again unless this removed
 
+exit();
+
 $arrayToProcess = ['36', '37', '38', '39'];
 
 foreach ($arrayToProcess as $key5=>$value5){
