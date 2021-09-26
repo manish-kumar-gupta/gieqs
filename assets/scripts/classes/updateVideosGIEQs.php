@@ -26,8 +26,11 @@ echo 'Working Classes' . PHP_EOL;
 
 //exit(); //unable to execute again unless this removed
 
+$arrayToProcess = ['36', '37', '38', '39'];
 
-$sessionItemArray = $general->copyRecords_SessionItem_video_specific('34');
+foreach ($arrayToProcess as $key5=>$value5){
+
+$sessionItemArray = $general->copyRecords_Session_video_specific($value5);
 
 //var_dump($sessionItemArray);
 
@@ -47,9 +50,9 @@ foreach ($sessionItemArray as $key=>$value){
     $faculty = null;
 
 
-    $name = addslashes($value['sessionItemTitle']);
+    $name = addslashes($value['sessionTitle']);
     //echo $name . PHP_EOL;
-    $description = addslashes($value['sessionItemDescription']);
+    $description = addslashes($value['sessionDescription']);
     //echo $description . PHP_EOL;
     $sessionItemid = $value['sessionItemid'];
     //echo $sessionItemid . PHP_EOL;
@@ -70,12 +73,12 @@ foreach ($sessionItemArray as $key=>$value){
 
     }else{
 
-        $user_id = 0;
+        $user_id = 1;
     }
 
     //echo '<br/><br/>';
 
-    $supercategory = '1'; // colonoscopy tutor
+    $supercategory = '5'; // colonoscopy tutor
 
 
 
@@ -103,7 +106,7 @@ if (isset($live)){
     }
 }else{
 
-    $tagid = '258';
+    $tagid = '257';
 
 }
 
@@ -111,12 +114,14 @@ echo $tagid;
 
 
 
-//$videosAccess->linkTags($chapterid, '569'); link any required tags
+$videosAccess->linkTags($chapterid, '797');
 
 $videosAccess->linkTags($chapterid, $tagid);
 
 
 
+
+}
 
 }
 
