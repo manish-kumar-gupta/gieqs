@@ -240,7 +240,7 @@ require(BASE_URI . '/pages/learning/pages/general/live_nav.php'); ?>
                 </li>
               -->
                 <li class="nav-item">
-                  <a class="nav-link pl-0" href="https://www.youtube.com/watch?v=qiTC_7szw-s"><i class="fab fa-youtube" target="_blank"></i></a>
+                  <a class="nav-link pl-0" href="https://www.youtube.com/watch?v=U3cgJlOlHTs" target="_blank"><i class="fab fa-youtube"></i></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="https://www.linkedin.com/company/olympus-europa-se-&-co-kg/mycompany/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
