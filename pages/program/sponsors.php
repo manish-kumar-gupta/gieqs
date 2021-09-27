@@ -191,13 +191,13 @@ width: 100%;
                 <div class="client-group row justify-content-center align-items-center mb-4">
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
-                        <a href="www.acertys.com" target="_Blank">
+                        <a href="https://www.acertys.com" target="_Blank">
                             <img class="logo" alt="ACERTYS" src="<?php echo BASE_URL . '/assets/img/sponsors/ACERTYS.jpg';?>">
                         </a>
                     </div>
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
-                        <a href="www.acertys.com" target="_Blank">
+                        <a href="https://www.acertys.com" target="_Blank">
                             <img class="logo" alt="ACERTYS" src="<?php echo BASE_URL . '/assets/img/sponsors/Fuji Logo.jpg';?>">
                         </a>
                     </div>
@@ -263,7 +263,7 @@ width: 100%;
                     </div>
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
-                        <a href="europe.medtronic.com/gi" target="_Blank">
+                        <a href="https://europe.medtronic.com/gi" target="_Blank">
                             <img class="logo" alt="Medtronic" src="<?php echo BASE_URL . '/assets/img/sponsors/MEDTRONIC.jpg';?>">
                         </a>
                     </div>
@@ -275,7 +275,7 @@ width: 100%;
                     </div>
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
-                        <a href="www.pfizer.be" target="_Blank">
+                        <a href="https://www.pfizer.be" target="_Blank">
                             <img class="logo" alt="Pfizer" src="<?php echo BASE_URL . '/assets/img/sponsors/Pfizer_Logo_Color_RGB.png';?>">
                         </a>
                     </div>
