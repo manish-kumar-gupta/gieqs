@@ -185,11 +185,11 @@ require(BASE_URI . '/pages/learning/pages/general/live_nav.php'); ?>
           <div class="col-lg-12 text-center justify-content-center mb-3">
 
               <div class="text-center d-flex justify-content-center">
-                <a href="www.acertys.com" target="_blank" class="p-4 bg-white">
+                <a href="https://www.acertys.com" target="_blank" class="p-4 bg-white">
                   <img alt="Onis Acertys" src="https://www.gieqs.com/assets/img/sponsors-pages/Onis_Acertys/Onis Acertys logo.jpg"
                       style="max-width:100%;max-height:20vh">
                 </a>
-                <a href="www.acertys.com" target="_blank" class="p-4 bg-white">
+                <a href="https://www.acertys.com" target="_blank" class="p-4 bg-white">
                   <img alt="Fuji" src="https://www.gieqs.com/assets/img/sponsors-pages/Onis_Acertys/Fuji Logo.jpg"
                       style="max-width:100%;max-height:20vh">
                 </a>
@@ -280,7 +280,7 @@ require(BASE_URI . '/pages/learning/pages/general/live_nav.php'); ?>
           </div>
           <div class="col-lg-3">
             <div class="p-3">
-              <a href="www.acertys.com" target="_blank">
+              <a href="https://www.acertys.com" target="_blank">
                 <img alt="Image" src="https://www.gieqs.com/assets/img/sponsors-pages/Onis_Acertys/Acertys 4.JPG" class="img-fluid rounded shadow-lg hover-scale-110">
               </a>
             </div>
