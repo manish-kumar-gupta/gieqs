@@ -228,7 +228,8 @@ require(BASE_URI . '/pages/learning/pages/general/live_nav.php'); ?></nav><div c
                 The group has more than 265 operational companies in 60 countries and over 128.000 employees worldwide. Over 5.000 employees are working at Janssen in Belgium. The activities on our 7 Belgian sites encompass the entire pharmaceutical cycle: from early research & development, via production and distribution to patient access.
                 <br><br>At Janssen, we never stop creating a future where disease is a thing of the past. We aim to transform lives by finding new and better ways to prevent, intercept, treat and cure disease. To do this, we bring together the best minds and pursue the most promising science. Janssen regards the whole world as its laboratory.
                 <br><br>Together with external partners, our researchers strive for new medical breakthroughs and develop treatments and vaccines for some of the most devastating disorders and complex medical challenges. We focus on areas of medicine where we can make the biggest difference: Cardiovascular & Metabolism, Immunology, Infectious Diseases & Vaccines, Neuroscience, Oncology and Pulmonary Hypertension. While we put the patient at the center of everything we do, innovation and sustainable entrepreneurship are at the center of how we do it. 
-                <a href="https://www.gieqs.com/assets/img/sponsors-pages/Janssen/PDF Janssens.pdf" target="_blank">
+                <br>
+	      	<a href="https://www.gieqs.com/assets/img/sponsors-pages/Janssen/PDF Janssens.pdf" target="_blank">
                   <img src="https://www.gieqs.com/assets/img/sponsors-pages/Janssen/PDF Janssens.png" alt="PDF Acertys" style="max-width:100%;max-height:200px">
                 </a>
               </p>
