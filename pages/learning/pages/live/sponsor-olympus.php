@@ -263,22 +263,22 @@ require(BASE_URI . '/pages/learning/pages/general/live_nav.php'); ?>
         <div class="row row-grid">
           <div class="col-lg-3">
             <div class="p-3">
-              <img alt="Image" src="https://www.gieqs.com/assets/img/sponsors-pages/Olympus/Olympus 1.jpg" class="img-fluid rounded shadow-lg hover-scale-110">
+              <img alt="Image" src="https://www.gieqs.com/assets/img/sponsors-pages/Olympus/Olympus 1.png" class="img-fluid rounded shadow-lg hover-scale-110">
             </div>
           </div>
           <div class="col-lg-3">
             <div class="p-3">
-              <img alt="Image" src="https://www.gieqs.com/assets/img/sponsors-pages/Olympus/Olympus 2.jpg" class="img-fluid rounded shadow-lg hover-scale-110">
+              <img alt="Image" src="https://www.gieqs.com/assets/img/sponsors-pages/Olympus/Olympus 2.png" class="img-fluid rounded shadow-lg hover-scale-110">
             </div>
           </div>
           <div class="col-lg-3">
             <div class="p-3">
-              <img alt="Image" src="https://www.gieqs.com/assets/img/sponsors-pages/Olympus/Olympus 3.jpg" class="img-fluid rounded shadow-lg hover-scale-110">
+              <img alt="Image" src="https://www.gieqs.com/assets/img/sponsors-pages/Olympus/Olympus 3.png" class="img-fluid rounded shadow-lg hover-scale-110">
             </div>
           </div>
           <div class="col-lg-3">
             <div class="p-3">
-              <img alt="Image" src="https://www.gieqs.com/assets/img/sponsors-pages/Olympus/Olympus 4.jpg" class="img-fluid rounded shadow-lg hover-scale-110">
+              <img alt="Image" src="https://www.gieqs.com/assets/img/sponsors-pages/Olympus/Olympus 4.png" class="img-fluid rounded shadow-lg hover-scale-110">
             </div>
           </div>
         </div>
