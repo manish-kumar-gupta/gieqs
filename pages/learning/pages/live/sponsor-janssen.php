@@ -171,25 +171,7 @@ top: -20vh;
 <?php $videoset = 2;
 require(BASE_URI . '/pages/learning/pages/general/live_nav.php'); ?></nav><div class="main-content">
     <!-- Navbar warning -->
-    <?php if ($liveAccess){
-
-        $requiredArray = ['23', '29', '25', '30', '31'];
-
-        //print_r($requiredArray);
-
-        //print_r($liveAccess);
-
-        
-        $bFound = (count(array_intersect($liveAccess, $requiredArray))) ? true : false;
-
-        //if (in_array($liveAccess, 25)){
-        if ($bFound){
-
-
-        
-     
-     
-     ?>
+   
      
      
      <div class="main-content">
@@ -282,24 +264,7 @@ require(BASE_URI . '/pages/learning/pages/general/live_nav.php'); ?></nav><div c
 </div>
 
 
-<?php  
 
-    }else{
-
-        echo "<div class=\"container d-flex flex-wrap align-items-lg-stretch p-2 p-lg-5\">";
-        echo '<p class="h6">You do not have access to the current plenary stream.  Please contact us if you believe this is a mistake</p>';
-        echo '</div>';
-    }
-
-
-}else{
-
-    echo "<div class=\"container d-flex flex-wrap align-items-lg-stretch p-2 p-lg-5\">";
-        echo '<p class="h6">You currently do not have access to the live streams.  Please contact us if you believe this is a mistake.  You can get access <a href="' . BASE_URL . '/pages/program/registration.php">here.</a></p>';
-        echo '</div>';
-}
-
-?>
       
 
     <?php require BASE_URI . '/footer.php';?>
