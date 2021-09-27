@@ -245,16 +245,12 @@ require(BASE_URI . '/pages/learning/pages/general/live_nav.php'); ?></nav><div c
         <div class="row row-grid">
           <div class="col-lg-3">
             <div class="p-3">
-              <a href="https://www.acertys.com/en/endoscopy" target="_blank">
                 <img alt="Image" src="https://www.gieqs.com/assets/img/sponsors-pages/Janssen/Image 1.jpg" class="img-fluid rounded shadow-lg hover-scale-110">
-              </a>
             </div>
           </div>
           <div class="col-lg-3">
             <div class="p-3">
-              <a href="https://www.acertys.com/en/fujifilm-cad-eye-ai" target="_blank">
                 <img alt="Image" src="https://www.gieqs.com/assets/img/sponsors-pages/Janssen/Image 2.jpg" class="img-fluid rounded shadow-lg hover-scale-110">
-              </a>
             </div>
           </div>
         </div>
