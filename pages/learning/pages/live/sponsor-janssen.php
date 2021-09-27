@@ -187,7 +187,7 @@ require(BASE_URI . '/pages/learning/pages/general/live_nav.php'); ?></nav><div c
           <div class="col-lg-12 text-center justify-content-center mb-3">
 
               <div class="text-center d-flex justify-content-center">
-                <a href="https://www.janssen.com/immunology/gastroenterology" target="_blank" class="p-4 bg-white">
+                <a href="https://www.janssen.com/immunology/gastroenterology" target="_blank" class="p-4">
                   <img alt="Janssen" src="https://www.gieqs.com/assets/img/sponsors-pages/Janssen/jsn_ta_imm_jj_rev_rgb.png"
                       style="max-width:100%;max-height:20vh">
                 </a>
