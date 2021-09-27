@@ -182,14 +182,14 @@ require(BASE_URI . '/pages/learning/pages/general/live_nav.php'); ?>
       <div class="container pt-7">
 
       <div class="row mb-3">
-          <div class="col-lg-12 text-center justify-content-center mb-3">
+          <div class="col-lg-12 text-center justify-content-center mb-3 bg-white">
 
               <div class="text-center d-flex justify-content-center">
-                <a href="https://www.acertys.com" target="_blank" class="p-4 bg-white">
+                <a href="https://www.acertys.com" target="_blank" class="p-4">
                   <img alt="Onis Acertys" src="https://www.gieqs.com/assets/img/sponsors-pages/Onis_Acertys/Onis Acertys logo.jpg"
                       style="max-width:100%;max-height:20vh">
                 </a>
-                <a href="https://www.acertys.com" target="_blank" class="p-4 bg-white">
+                <a href="https://www.acertys.com" target="_blank" class="p-4">
                   <img alt="Fuji" src="https://www.gieqs.com/assets/img/sponsors-pages/Onis_Acertys/Fuji Logo.jpg"
                       style="max-width:100%;max-height:20vh">
                 </a>
