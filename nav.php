@@ -409,6 +409,29 @@ if ($debugAccess){
                 <li class="nav-item active">
                     <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/mission.php">Mission</a>
                 </li>
+
+                <!-- <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+                    <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
+                        <span style="color: 
+                        rgb(238, 194, 120);" class="dropdown-header">Registration</span>
+                        <a class="dropdown-item" href="https://eu.eventscloud.com/ereg/index.php?eventid=200200203&" target="_blank"><i class="fas fa-registered"></i>Register now!</a>
+                        <a class="dropdown-item" href="<?php //echo BASE_URL;?>/pages/program/registration.php"><i class="fas fa-shapes"></i>Registration options</a>
+                        
+                        <div class="dropdown-divider"></div>
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Practical</span>
+                        <a class="dropdown-item" href="<?php //echo BASE_URL;?>/pages/practical/accommodation.php"><i class="fas fa-igloo"></i>Accommodation</a>
+                        <a class="dropdown-item" href="https://visit.gent.be/en/good-know/practical-information/how-get-ghent" target="_blank"><i class="fas fa-train"></i></i>Getting here</a>
+                        <div class="dropdown-divider"></div>
+                        <span style="color: rgb(238, 194, 120);" class="dropdown-header">Why Ghent?</span>
+                        <a class="dropdown-item" href="https://visit.gent.be/en"><i class="fas fa-city" target="_blank"></i>Because it's the most beautiful<br/> medieval city in Europe</a>
+                        <a class="dropdown-item" href="https://goo.gl/maps/PLsJXm86oGUPjQ7i7" target="_blank"><i class="fas fa-search-location"></i>Where is Ghent?</a>
+                        <a class="dropdown-item" href="http://www.flickr.com/photos/visit_gent/albums" target="_blank"><i class="fas fa-images"></i>Ghent in pictures</a>
+                        <a class="dropdown-item" href="https://visit.gent.be/en/top-10-tips" target="_blank"><i class="fas fa-university"></i>Top 10 Ghent</a>
+                        
+                      </div>
+                </li> -->
+
+
                 <!-- Program-basic, later to add dropdown with options -->
                 
 

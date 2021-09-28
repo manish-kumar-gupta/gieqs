@@ -336,6 +336,30 @@ padding-bottom: .75rem; */
                     </div>
                 </div>
             </section>
+            <hr/>
+            <section class="slice slice-lg">
+              <div class="container">
+              <div class="row row-grid align-items-center justify-content-around">
+
+<div class="col-lg-7 order-lg-1">
+    <div class="pr-md-4">
+        <h5 class="h3 mb-5">Current Projects.</h5>
+
+           
+              <figure class="figure" >
+              <!-- <div class="video-thumbnail">   -->
+              <a href="https://vimeo.com/603389414" data-fancybox>     
+                <img alt="Image placeholder" src="../../assets/img/covers/ngaliema.png" class="img-fluid rounded">
+                </a>
+  <!-- </div> -->
+                <figcaption class="mt-3 text-muted">Current collaboration with Clinique Ngaliema in DRC.  Support of a fellowship in Belgium and setup of a new Endoscopy Unit. <strong>Click to play the video</strong></figcaption>
+              </figure>
+                </div>
+                </div>
+                </div>
+                </div>
+</section>
+            
             
             <!-- <section class="slice slice-lg bg-gradient-dark">
                 <div class="container">
