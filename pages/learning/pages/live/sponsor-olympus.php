@@ -185,7 +185,7 @@ require(BASE_URI . '/pages/learning/pages/general/live_nav.php'); ?>
     <!-- Header (v13) -->
     <section class="slice slice-xl bg-cover bg-size--cover mb-5" data-offset-top="#header-main" style="background-image: url('../../assets/img/backgrounds/img-12.jpg');">
       <span class="mask bg-dark opacity-8"></span>
-      <div class="container pt-7">
+      <div class="container">
 
       <div class="row mb-3">
           <div class="col-lg-12 text-center justify-content-center mb-3">
