@@ -801,7 +801,7 @@ if ($identifierValue) {
                                     </div>
 
                                     <button class="btn bg-warning text-white p-2 m-2 send-welcome-mail">Send GIEQs II welcome mail</button>
-                                    <button class="btn bg-success text-white p-2 m-2 grant-10-coin">Grain 10 coin gift</button>
+                                    <button class="btn bg-success text-white p-2 m-2 grant-10-coin">Grant 10 coin gift</button>
 
 
                                     <button class="btn bg-warning text-white p-2 m-2 send-mail">Send Password Reset Mail   </button>
