@@ -376,6 +376,21 @@ require BASE_URI . '/headNoPurposeCore.php';
                             </div>
                         </div>
                         
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="#">
+                                        <img alt="Prof Ryan Stidham" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/Ryan Stidham.jpg">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Prof Ryan Stidham</h5>
+                                    <p class="text-muted mb-0">Associate Professor of Medicine, University of Michigan Medical School, USA</p>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
                     <!-- <div class="row row-grid"> -->
 
@@ -772,6 +787,21 @@ require BASE_URI . '/headNoPurposeCore.php';
                                 </div>
                             </div>
                         </div>
+                        
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="#">
+                                        <img alt="Dr Thomas Botelberge" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/Thomas Botelberge.jpg">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr Thomas Botelberge</h5>
+                                    <p class="text-muted mb-0"> Gastroenterologist, GZA hospitals, Belgium</p>
+                                </div>
+                            </div>
+                        </div>
 
                         <!-- <div class="col-lg-3">
                             <div data-animate-hover="2">
@@ -1081,6 +1111,21 @@ require BASE_URI . '/headNoPurposeCore.php';
                                     <h5 class="gieqsGold card-title mb-0">Prof Dr Karen Geboes</h5>
                                     <p class="text-muted mb-0">Head of Clinic of Gastrointestinal and Intestinal Diseases, UZ Ghent 
                                         <br>Professor of Medicine, Ghent University, Belgium</p>
+                                </div>
+                            </div>
+                        </div>
+                            
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="#">
+                                        <img alt="Dr Christophe Schoonjans" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/Christophe Schoonjans.jpg">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr Christophe Schoonjans</h5>
+                                    <p class="text-muted mb-0">Gastroenterologist, University Hospital of Ghent, Belgium</p>
                                 </div>
                             </div>
                         </div>
