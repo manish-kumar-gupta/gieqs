@@ -34,10 +34,10 @@ spl_autoload_register ('class_loader');
 
 //access planning
 
-$debugAccess = true;
+$debugAccess = false;
 
 $test = false;
-$testDate = '2021-09-29 00:00:00';
+$testDate = '2021-09-01 00:00:00';
 
 
 if (!$test){
