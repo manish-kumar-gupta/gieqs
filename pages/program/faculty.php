@@ -391,6 +391,21 @@ require BASE_URI . '/headNoPurposeCore.php';
                             </div>
                         </div>
                         
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a href="#">
+                                        <img alt="Dr Steven Heitman" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/Steven Heitman.jpg">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr Steven Heitman</h5>
+                                    <p class="text-muted mb-0">Associate Professor<br>Gastroenterologist and Hepatologyist, University of Calgary, Canada. </p>
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
                     <!-- <div class="row row-grid"> -->
 
