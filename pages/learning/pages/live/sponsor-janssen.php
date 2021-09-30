@@ -250,7 +250,7 @@ require(BASE_URI . '/pages/learning/pages/general/live_nav.php'); ?></nav><div c
           </div>
           <div class="col-lg-3">
             <div class="p-3">
-                <img alt="Image" src="https://www.gieqs.com/assets/img/sponsors-pages/Janssen/Image 2.jpg" class="img-fluid rounded shadow-lg hover-scale-110">
+                <img alt="Image" src="https://www.gieqs.com/assets/img/sponsors-pages/Janssen/Image 2b.jpg" class="img-fluid rounded shadow-lg hover-scale-110">
             </div>
           </div>
         </div>
