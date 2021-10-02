@@ -37,13 +37,13 @@ spl_autoload_register ('class_loader');
 $debugAccess = false;
 
 $test = false;
-$testDate = '2021-10-301 00:00:00';
+$testDate = '2021-10-02 00:00:00';
 
 
 if (!$test){
 if ($isSuperuser == 1){
 
-  $courseTest = true;
+  $courseTest = false;
 }else{
 
 

@@ -370,22 +370,20 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                             </div>
 
                             <h2 class="text-white mb-4 mt-4 mt-lg-0">
-                                <span class="display-4 font-weight-light">GIEQs II. Less than a week to go!</span>
+                                <span class="display-4 font-weight-light">GIEQs II - now On Demand!</span>
 
                                 <span class="d-block" style="color: rgb(238, 194, 120);"><strong
-                                        class="font-weight-light">Endoscopy in HD. Virtual Edition.<br /> Join us for
+                                        class="font-weight-light">Thanks to everyone who supported<br />
                                         step 2 of the Everyday Endoscopy Revolution.</span>
                             </h2>
-                            <p class="lead text-white">The highly anticipated Second Edition of the Ghent International
-                                Endoscopy Quality Symposium will be held 30 September / 1 October 2021.</p>
+                            <p class="lead text-white">Click below to access the whole Event.  16 hours of content, accessible immediately.</p>
                             <div class="mt-5">
 
 
                                 <a href="https://www.gieqs.com/pages/program/gieqs_ii.php"
                                     class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
                                     style="background-color: rgb(238, 194, 120);">
-                                    <span class="btn-inner--text">Find Out More + Register for GIEQs
-                                        II<sup></sup></span>
+                                    <span class="btn-inner--text">Access GIEQs II<sup></sup></span>
                                     <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
 
                                 </a>
@@ -393,7 +391,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                 <a href=""
                                     class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me m-2 teaser-popup"
                                     style="background-color: rgb(238, 194, 120);">
-                                    <span class="btn-inner--text">Watch Teaser Videos<sup></sup></span>
+                                    <span class="btn-inner--text">Watch GIEQs II Teaser Videos<sup></sup></span>
                                     <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
 
                                 </a>

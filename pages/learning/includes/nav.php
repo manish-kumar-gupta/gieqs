@@ -50,13 +50,13 @@ $sessionView = new sessionView;
 $debugAccess = false;
 
 $test = true;
-$testDate = '2021-10-01 00:00:00';
+$testDate = '2021-10-02 00:00:00';
 
 
 if (!$test){
 if ($isSuperuser == 1){
 
-  $courseTest = true;
+  $courseTest = false;
 }else{
 
 
