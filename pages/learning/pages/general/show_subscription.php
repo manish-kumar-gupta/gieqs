@@ -1219,7 +1219,7 @@ filter: alpha(opacity=30);
 
                     if ($isSuperuser == 1){
 
-                        $courseTest = true;
+                        $courseTest = false; //CHANGE THIS FOR TESTING SYMPOSIA
                     }else{
 
                         $courseTest = false;

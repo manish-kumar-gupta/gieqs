@@ -380,7 +380,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                             <div class="mt-5">
 
 
-                                <a href="https://www.gieqs.com/pages/program/gieqs_ii.php"
+                                <a href="https://WWW.gieqs.com/login?destination=viewasset&assetid=24"
                                     class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
                                     style="background-color: rgb(238, 194, 120);">
                                     <span class="btn-inner--text">Access GIEQs II<sup></sup></span>
@@ -388,13 +388,21 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 
                                 </a>
 
-                                <a href=""
+                                <a href="https://www.gieqs.com/pages/program/gieqs_ii.php"
+                                    class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
+                                    style="background-color: rgb(238, 194, 120);">
+                                    <span class="btn-inner--text">Register for GIEQs II<sup></sup></span>
+                                    <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
+
+                                </a>
+
+                              <!--   <a href=""
                                     class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me m-2 teaser-popup"
                                     style="background-color: rgb(238, 194, 120);">
                                     <span class="btn-inner--text">Watch GIEQs II Teaser Videos<sup></sup></span>
                                     <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
 
-                                </a>
+                                </a> -->
 
 
 
