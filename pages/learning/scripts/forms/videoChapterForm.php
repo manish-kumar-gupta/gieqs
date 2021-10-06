@@ -554,6 +554,42 @@ background-color: rgb(238, 194, 120);
 				</div>
 		
 		        </div>
+
+                <div class="modal fade" id="newTagModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Tag (search method)</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <label for="tags" class="mb-3 mt-1">Tags (search)</label>
+                    <div class="input-group ">
+                        <select id="tags" type="text" data-toggle="select" class="form-control" name="tags">
+                            <?php
+
+                                            
+
+
+                                        echo $general->generateTagStructure();
+
+
+                                            
+
+
+?>
+                        </select>
+                    </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
                 
 
 <?php require BASE_URI . '/footer.php';	?>
@@ -820,7 +856,9 @@ function constructEditTable(idPassed){
 			
 			html += "<td class='chapterDesc' style='width:50%'><textarea id='chapterdescription"+chapterid+"' class='name form-control form-control-sm w-100 px-1 py-0' rows='3' cols='70' data-toggle='autosize'></textarea></td>";
 			
-			html += "<td><button class='addTag m-2 py-0 my-2 btn btn-small bg-dark'>Add Tag</button></td>";
+			html += "<td><button class='addTag m-2 py-0 my-2 btn btn-small bg-dark'>Add Tag</button><br/>";
+            html += "<button class='addTagSearch m-2 py-0 my-2 btn btn-small bg-dark'>Add Tag (Search)</button></td>";
+
 			html += "<td class='chapterTag' id='tag"+chapterid+"'></td>";
 
 			//html += "<td><select name='imageorder"+image_id+"' id='imageorder"+image_id+"' class='order'><option hidden selected>";
@@ -3015,6 +3053,33 @@ $(this).attr('disabled', false);
 
 
          })
+
+         $('#tags').select2({
+        dropdownParent: $('#newTagModal')
+    });
+
+    $(document).on('click', '.addTagSearch', function(){
+
+        event.preventDefault();
+
+var cellClicked = $(this);
+
+imageID = $(cellClicked).closest('tr').find('td:eq(0)').attr('id');
+
+console.log('Chapter id is' + imageID);
+
+singleTag = 1;
+
+
+$('#newTagModal').modal('show');
+
+waitForFinalEvent(function() {
+    $('#tags').select2('open');
+
+
+            }, 100, 'Wrapper Video 3');
+
+    })
 
 
 
