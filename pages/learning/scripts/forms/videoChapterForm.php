@@ -586,11 +586,18 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Add Tag (search method)</h5>
+                        
+
+
+
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
+                        
                     </div>
-                    <div class="modal-body">
+                    <p class="px-4 py-2" style="height:25px;">Press a to search.  Enter to save when selected.</p>
+                    <p class="gieqsGold px-4 py-2 m-0" style="height:25px;" id="messageArea"></p>
+                    <div class="modal-body pt-0">
                         <label for="tags" class="mb-3 mt-1">Tags (search)</label>
                         <div class="input-group ">
                             <select id="tags" type="text" data-toggle="select" class="form-control" name="tags">
@@ -610,9 +617,18 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+                        <button id="saveTagChapter" type="button" class="btn btn-sm btn-secondary">Save and Close</button>
+
+                        <button id="saveTagChapterNoClose" type="button" class="btn btn-sm btn-primary">Save and Add More</button>
+
                     </div>
+                    <hr>
+                    <button type="button" id="openTagManager" class="btn btn-sm btn-secondary mx-6 my-2">Tag Manager</button>
+                        <button type="button" id="openNewTag" class="btn btn-sm btn-secondary mx-6 my-2">New Tag</button>
+                        <button type="button" id="openNewCategory" class="btn btn-sm btn-secondary mx-6 my-2">New Category</button>
+                        <button type="button" id="openCategorySelect" class="btn btn-sm btn-secondary mx-6 my-2 mb-5">Open Category Selection</button>
+
                 </div>
             </div>
         </div>
@@ -645,6 +661,8 @@
     var videoDataDefined;
 
     var vimeoID;
+
+    var chapteridstored;
 
     vimeoID = $("#vimeoid").text();
 
@@ -812,7 +830,7 @@
 
                 $("#images").html(
                     '<p>No chapter yet defined for this video</p><br><button class="py-0 my-2 btn btn-small bg-dark" id="newChapter" type="button" onclick="newChapterRow();"	>New Chapter</button>'
-                    );
+                );
                 return;
 
             }
@@ -1104,7 +1122,8 @@
                 } else {
 
                     alert(
-                        'Chapter not deleted.  Perhaps there are still tags attached.  You cannot delete a chapter until all tags are removed.  Click on tags to remove them.');
+                        'Chapter not deleted.  Perhaps there are still tags attached.  You cannot delete a chapter until all tags are removed.  Click on tags to remove them.'
+                    );
 
                 }
 
@@ -1172,7 +1191,7 @@
 
             $('#categoryModal').find('.modalContent').append(
                 '<button class="btn btn-sm bg-primary py-0" id="newTagCategory">Add new tag category</button>'
-                );
+            );
 
 
             var $table = $('#categoryModal').find('#dataTable2');
@@ -2178,7 +2197,7 @@
 
                 $('#categoryModal').find('.modalContent').append(
                     '<button class="btn btn-sm bg-primary py-0" id="newTagCategory">Add new tag category</button></div>'
-                    );
+                );
 
 
                 var $table = $('#categoryModal').find('#dataTable2');
@@ -2463,7 +2482,7 @@
                 //imageTag = {0 = Object {images_id : id, tags_id : tagID
 
                 var selectorObject = JSONDataQuery('chapterTag', tagImages,
-                4); //check these don't already exist
+                    4); //check these don't already exist
 
                 //console.log(selectorObject);
                 var alreadyExists;
@@ -2479,7 +2498,8 @@
                         if (data == 1) {
 
                             alert(
-                                'One of these chapters is already tagged with this tag, select individually');
+                                'One of these chapters is already tagged with this tag, select individually'
+                            );
                             alreadyExists = 1;
                             $('#categoryModal').modal('hide');
 
@@ -2495,7 +2515,7 @@
                     if (alreadyExists == 0) {
 
                         var tagsImagesObject = JSONDataQuery('chapterTag', tagImages,
-                        5); //insert new object
+                            5); //insert new object
 
                         tagsImagesObject.done(function(data) {
 
@@ -2621,7 +2641,7 @@
 
                 $('#categoryModal').find('.modalContent').append(
                     '<button class="py-0 my-2 btn btn-small bg-dark" id="newTagCategory">Add new tag category</button>'
-                    );
+                );
 
                 return;
 
@@ -2662,7 +2682,7 @@
                 //disableFormInputs("images");
 
                 var imagesObject = pushDataAJAX('chapterTag', 'id', tagImageid, 2,
-                ''); //delete images
+                    ''); //delete images
 
                 imagesObject.done(function(data) {
 
@@ -2852,7 +2872,7 @@
 
             if (confirm(
                     'Are you sure you want to import Vimeo title and description data? This will overwrite the existing title and description'
-                    )) {
+                )) {
 
                 copyVimeoTitleAndDescription();
 
@@ -2884,7 +2904,7 @@
 
             if (confirm(
                     'Are you sure you want to import Vimeo chapters? This will insert new chapters and potentially disrupt the existing chapter structure.  Only continue if no chapters currently exist'
-                    )) {
+                )) {
 
                 getChaptersFromVimeoAPI();
 
@@ -2932,7 +2952,7 @@
             $('#content').find('.file').each(function() {
 
                 var chapterNumber = $(this).find('td:eq(1)').find('.order option:selected')
-                .val();
+                    .val();
                 var chapterTimeFrom = $(this).find('td:eq(2)').find('input').val();
                 var chapterName = $(this).find('td:eq(4)').find('input').val();
 
@@ -3081,7 +3101,7 @@
 
                 var r = confirm(
                     "Are you sure? This will submit for moderation and lock the video for further editing!"
-                    );
+                );
                 if (r == true) {
 
                     var dataToSend = {
@@ -3220,21 +3240,334 @@
 
             singleTag = 1;
 
+            chapteridstored = null;
+
+            chapteridstored = imageID;
+
+            //define chapter under edit
+
 
             $('#newTagModal').modal('show');
 
-            waitForFinalEvent(function() {
+            /* waitForFinalEvent(function() {
                 $('#tags').select2('open');
 
 
-            }, 100, 'Wrapper Video 3');
+            }, 100, 'Wrapper Video 3'); */
 
         })
 
+        $(document).on('click', '#saveTagChapter', function() {
+
+            event.preventDefault();
+
+
+            var button = $(this);
+            $(this).prop('disabled', true);
+
+            //we have chapter id
+
+            //now also need tagid
+
+            var currentTagid = $(document).find('#newTagModal').children().find('#tags').val();
+            var currentTagtext = $(document).find('#newTagModal').children().find('#tags option:selected').text();
 
 
 
 
+
+
+            //pass chapter under edit and tag id to ajax
+
+            var dataToSend = {
+
+                chapterid: chapteridstored,
+                videoid: videoPassed,
+                tagid: currentTagid,
+
+
+            }
+
+            //const jsonString2 = JSON.stringify(dataToSend);
+
+            const jsonString = JSON.stringify(dataToSend);
+            console.log(jsonString);
+            //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
+
+            var request2 = $.ajax({
+                beforeSend: function() {
+
+                    //$('#active').removeClass('is-valid');
+
+                },
+                url: siteRoot + "scripts/saveTagChapter.php",
+                type: "POST",
+                contentType: "application/json",
+                data: jsonString,
+            });
+
+
+
+            request2.done(function(data) {
+                // alert( "success" );
+                try {
+
+                    var formData = $.parseJSON(data);
+                    
+                } catch (error) {
+                    
+                }
+                console.dir(formData);
+                if (formData.success == true) {
+                    //show green tick
+                    //alert('working')
+                    
+
+
+                    $('.file').find('td[id=' + chapteridstored + ']').closest(
+                                        'tr').find('td:eq(7)').append(
+                                        '<button class="tagButton py-0 my-2 btn btn-small bg-dark" id="' +
+                                        data.chaptertagid + '">' + currentTagtext + '</button>');
+
+
+                                    alert('Added tag '+ currentTagtext);
+                                    $('#newTagModal').modal('hide');
+
+                                    //$('.darkClass').hide();
+                                    //$('#saveTagChapter').prop('disabled', false);
+
+                                    //return;
+                                    
+
+
+
+                }else{
+
+                    $('#messageArea').css('visibility','visible');
+
+
+                    $('#newTagModal').find('#messageArea').text(formData.error);
+
+                    setTimeout(function() {
+                        $('#messageArea').css('visibility','hidden');
+
+                    }, 2000);
+
+                    
+
+                   
+
+
+                }
+                //$(document).find('.Thursday').hide();
+                $('#saveTagChapter').prop('disabled', false);
+
+
+            })
+
+            
+           
+
+
+        })
+
+        $(document).on('click', '#saveTagChapterNoClose', function() {
+
+event.preventDefault();
+
+
+var button = $(this);
+$(this).prop('disabled', true);
+
+//we have chapter id
+
+//now also need tagid
+
+var currentTagid = $(document).find('#newTagModal').children().find('#tags').val();
+var currentTagtext = $(document).find('#newTagModal').children().find('#tags option:selected').text();
+
+
+
+
+
+
+//pass chapter under edit and tag id to ajax
+
+var dataToSend = {
+
+    chapterid: chapteridstored,
+    videoid: videoPassed,
+    tagid: currentTagid,
+
+
+}
+
+//const jsonString2 = JSON.stringify(dataToSend);
+
+const jsonString = JSON.stringify(dataToSend);
+console.log(jsonString);
+//console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
+
+var request2 = $.ajax({
+    beforeSend: function() {
+
+        //$('#active').removeClass('is-valid');
+
+    },
+    url: siteRoot + "scripts/saveTagChapter.php",
+    type: "POST",
+    contentType: "application/json",
+    data: jsonString,
+});
+
+
+
+request2.done(function(data) {
+    // alert( "success" );
+    try {
+
+        var formData = $.parseJSON(data);
+        
+    } catch (error) {
+        
+    }
+    console.dir(formData);
+    if (formData.success == true) {
+        //show green tick
+        //alert('working')
+        
+
+
+        $('.file').find('td[id=' + chapteridstored + ']').closest(
+                            'tr').find('td:eq(7)').append(
+                            '<button class="tagButton py-0 my-2 btn btn-small bg-dark" id="' +
+                            data.chaptertagid + '">' + currentTagtext + '</button>');
+
+                            $('#messageArea').css('visibility','visible');
+
+
+
+                        $('#newTagModal').find('#messageArea').text('Added tag '+ currentTagtext);
+
+                        
+                        setTimeout(function() {
+                            $('#messageArea').css('visibility','hidden');
+
+                        }, 2000);
+
+                        //$('#newTagModal').modal('hide');
+
+                        //$('.darkClass').hide();
+                        //$('#saveTagChapter').prop('disabled', false);
+
+                        //return;
+
+
+
+
+
+    }else{
+        $('#messageArea').css('visibility','visible');
+
+        $('#newTagModal').find('#messageArea').text(formData.error);
+        
+        setTimeout(function() {
+                            $('#messageArea').css('visibility','hidden');
+
+                        }, 2000);
+
+    }
+    //$(document).find('.Thursday').hide();
+    $('#saveTagChapterNoClose').prop('disabled', false);
+
+
+})
+
+
+
+
+
+})
+
+document.addEventListener('keydown', logKey);
+
+function logKey(e) {
+
+    
+ 
+    if ((e.code == 'KeyA')){
+        
+
+        if (!($('#tags').data('select2').isOpen())){
+            e.preventDefault();
+
+        console.log('a pressed');
+        $('#tags').select2('open');
+        }
+
+        
+
+    }
+    //console.log(e.code);
+
+    if ((e.code == 'Enter')){
+        
+
+        if (!($('#tags').data('select2').isOpen())){
+            e.preventDefault();
+
+            //now save
+
+            console.log('enter pressed');
+            $('#saveTagChapterNoClose').trigger('click');
+        }
+
+    }
+
+    if ((e.code == 'KeyC')){
+        
+
+        if (!($('#tags').data('select2').isOpen())){
+            e.preventDefault();
+
+            //now save
+
+            console.log('c pressed');
+            //$('#saveTagChapterNoClose').trigger('click');
+            $('#newTagModal').modal('hide');
+        }
+
+    }
+ 
+    //log.textContent += ` ${e.code}`;
+}
+
+
+
+$(document).on('click', '#openTagManager', function() {
+
+    PopupCenter(siteRoot+'scripts/forms/tagsTable.php', 'TagManager', 1000,800);
+    
+})
+
+$(document).on('click', '#openNewTag', function() {
+
+PopupCenter(siteRoot+'scripts/forms/tagsForm.php', 'New Tag', 1000,800);
+
+})
+
+$(document).on('click', '#openNewCategory', function() {
+
+PopupCenter(siteRoot+'scripts/forms/tagCategoriesForm.php', 'New Tag Categories', 1000,800);
+
+})
+
+$(document).on('click', '#openCategorySelect', function() {
+
+    $('#newTagModal').modal('hide');
+
+
+})
 
 
     })
