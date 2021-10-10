@@ -376,7 +376,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                         class="font-weight-light">Thanks to everyone who supported<br />
                                         step 2 of the Everyday Endoscopy Revolution.</span>
                             </h2>
-                            <p class="lead text-white">Click below to access the whole Event.  16 hours of content, accessible immediately.</p>
+                            <p class="lead text-white">Click below to access the whole Event.  32 hours of content, accessible immediately.</p>
                             <div class="mt-5">
 
 
