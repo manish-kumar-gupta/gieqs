@@ -523,7 +523,7 @@ var_dump($currentTime);
 
                         <a href="#targetScrollProgramme" id="wednesdayTop"
                             class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-2 scroll-me">
-                            <span class="btn-inner--text text-dark">View Draft Scientific Programme</span>
+                            <span class="btn-inner--text text-dark">View Scientific Programme</span>
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         </a>
 
@@ -661,7 +661,7 @@ var_dump($currentTime);
                                 'early-bird' period</strong>  Register now to lock-in a top quality Endoscopy experience at a very low price. Medical
                             students and trainee registrations will always remain at the same low level. </p>
 
-                        <!-- <p class="lead mb-3"><strong class="h4">Sign up for GIEQS II from mid-April</strong>, draft
+                        <!-- <p class="lead mb-3"><strong class="h4">Sign up for GIEQS II from mid-April</strong>, 
                             programme below, full programme to follow.</p>
  -->
                             <h6 class="mt-6">Registration Fees</h6>
@@ -810,7 +810,7 @@ var_dump($currentTime);
             </div>
 
             <hr id="targetScrollProgramme" class="divider divider-fade" />
-            <h3 class="display-3 mt-2 text-gieqsGold">Draft Scientific Programme</h3>
+            <h3 class="display-3 mt-2 text-gieqsGold"> Scientific Programme</h3>
 
 
             <div id="ajaxWed">
@@ -1185,6 +1185,43 @@ var_dump($currentTime);
             </div>
         </div>
     </div>
+
+    <!--new modal for decision re which day to purchase, premium-->
+<!-- Modal -->
+<div class="modal modal-pro-premium fade" id="propremium" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Get Immediate Access to GIEQs II</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Select the day you wish to purchase...</p>
+                <p><a
+                        class="key-features cursor-pointer btn-sm bg-gieqsGold btn-icon rounded-pill hover-translate-y-n3 mt-5">
+                        <span class="btn-inner--icon">
+                            <i class="fas fa-fire text-dark"></i>
+                        </span>
+                        <span class="btn-inner--text text-dark">Show Programme</span>
+                    </a></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-dark" onclick="launchSubscriptionDialog(1);">get Day 1 Plenary</button>
+                <button type="button" class="btn btn-dark gieqsGold" onclick="launchSubscriptionDialog(2);">get
+                    Day 2 Plenary</button>
+                    <button type="button" class="btn btn-dark gieqsGold" onclick="launchSubscriptionDialog(2);">get
+                    Day 1 Complex</button>
+                    <button type="button" class="btn btn-dark gieqsGold" onclick="launchSubscriptionDialog(2);">get
+                    Day 2 Complex</button>
+                    <button type="button" class="btn btn-dark gieqsGold" onclick="launchSubscriptionDialog(2);">Full Access</button>
+            </div>
+        </div>
+    </div>
+</div>
 
     <div class="modal fade" id="teaser-videos" tabindex="-1" role="dialog" aria-labelledby="teaser-videos"
             aria-hidden="true">
