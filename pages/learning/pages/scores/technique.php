@@ -944,16 +944,149 @@ top: 0px;
 
                 });
 
+                $('.result').each(function() {
+
+                    var name = null;
+
+                    var value = null;
+
+                    name = $(this).attr("id");
+
+                    value = $(this).text();
+
+
+                    names[name] = value;
+
+
+
+                });
+
                 return names;
 
 
             }
 
-            //function to push the user into the array or do on the server side, do on the server  side.
+            //function to push the user into the array or do on the server side, do on the server side.
 
             //push this to a script php
 
+            function updateDatabase(fields) {
 
+
+                const jsonString = JSON.stringify(fields);
+                console.log(jsonString);
+
+                /*         const jsonString = JSON.stringify(dataToSend);
+                        console.log(jsonString); */
+
+                var request = $.ajax({
+                    beforeSend: function() {
+
+                    },
+                    url: siteRoot + "assets/scripts/scores/updatePolypectomyTable.php",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: jsonString,
+
+                });
+
+
+
+                request.done(function(data) {
+
+
+
+                    console.log(data);
+
+                    if (data) {
+
+
+
+
+
+
+
+                        //refreshModalEmailText();
+                        //$(document).find('#modal-row-1').modal('show');
+
+
+                    }
+
+
+
+
+
+
+
+                })
+
+                return request;
+
+            }
+
+            function saveScoreUser(fields) {
+
+                /*  const dataToSend = {
+
+
+
+                 fields
+                 //options: myOpts,
+
+                 } */
+
+                const jsonString = JSON.stringify(fields);
+                console.log(jsonString);
+
+
+
+                var request = $.ajax({
+                    beforeSend: function() {
+
+                    },
+                    url: siteRoot + "assets/scripts/scores/saveScoreUser.php",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: jsonString,
+
+                });
+
+
+
+                request.done(function(data) {
+
+
+
+                    console.log(data);
+
+                    if (data) {
+
+
+
+
+
+
+
+                        //refreshModalEmailText();
+                        //$(document).find('#modal-row-1').modal('show');
+
+
+                    }
+
+
+
+
+
+
+
+                })
+
+                return request;
+
+
+
+
+            }
 
 
 
@@ -1191,21 +1324,22 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                                     <div class="card p-3 py-3 pr-6">
 
                                         <p class="h5">Scores</p>
-                                        <P style="text-align:left;" class="strong h6">Overall: <span
-                                                id="numeratorSum"></span>&nbsp;/&nbsp;<span id="denominatorSum"></span>
+                                        <P style="text-align:left;" class="strong h6">Overall: <span id="numeratorSum"
+                                                class="result"></span>&nbsp;/&nbsp;<span id="denominatorSum"
+                                                class="result"></span>
                                         </P>
-                                        <P style="text-align:left;" class="strong h6">Fraction: <span
-                                                id="fraction"></span></P>
+                                        <P style="text-align:left;" class="strong h6">Fraction: <span id="fraction"
+                                                class="result"></span></P>
 
-                                        <p style="text-align:left; mt-3" class="strong h6">SMSA: <span
-                                                id="SMSA_total"></span></p>
+                                        <p style="text-align:left; mt-3" class="strong h6">SMSA: <span id="SMSA_total"
+                                                class="result"></span></p>
 
-                                        <p style="text-align:left;" class="strong h6">SMSA Group : <span
-                                                id="SMSA_group"></span></p>
+                                        <p style="text-align:left;" class="strong h6">SMSA Group : <span id="SMSA_group"
+                                                class="result"></span></p>
 
                                         <p style="text-align:left;" class="strong h6">SMSA+: <span
-                                                id="numeratorSMSAplus"></span>&nbsp;/&nbsp;<span
-                                                id="denominatorSMSAplus"></span></p>
+                                                id="numeratorSMSAplus" class="result"></span>&nbsp;/&nbsp;<span
+                                                id="denominatorSMSAplus" class="result"></span></p>
 
 
                                     </div>
@@ -1736,7 +1870,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
                 $('#videoCards').html(
                     "<div class=\"d-flex align-items-center\"><strong>Loading...</strong><div class=\"spinner-border ml-auto\" role=\"status\" aria-hidden=\"true\"></div></div>"
-                    );
+                );
                 //for each tags array push the badges to the tags shown area
                 var html = '';
                 $.each(tags, function(k, v) {

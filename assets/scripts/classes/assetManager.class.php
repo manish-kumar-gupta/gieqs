@@ -24,6 +24,8 @@ error_reporting(0);
 	
 }
 
+//error_reporting(E_ALL);
+
 //require_once(BASE_URI . '/assets/scripts/classes/programmeView.class.php');
 
 
@@ -5653,6 +5655,105 @@ if ($debug){
                 return 27; //day 2 complex
             }
         }
+
+
+    }
+
+    function checkStructure($table, $column){
+
+        $q = "SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='learningToolv1' AND TABLE_NAME='$table' AND column_name='$column'";
+       
+        echo $q;
+        $result = $this->connection->RunQuery($q);
+        $rowReturn = array();
+        $x = 0;
+        $nRows = $result->rowCount();
+
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+            $rowReturn = $row['COUNT(*)'];
+            //$x++;
+
+        }
+
+        //return $rowReturn;
+        
+        
+        if ($rowReturn > 0) {
+
+            return true;
+
+        } else {
+            
+
+            return false;
+        }
+
+    }
+
+    
+
+    function updateDatabase($table, $newColumn){
+
+        $q = "ALTER TABLE `$table` ADD `$newColumn` VARCHAR(255) NULL DEFAULT NULL";
+
+        //$q = "ALTER TABLE '$table' ADD COLUMN IF NOT EXISTS '' VARCHAR(255) DEFAULT NULL;";
+
+      echo $q;
+
+      $result = $this->connection->RunQuery($q);
+
+      var_dump($result);
+      
+
+      if ($result) {
+
+       
+        return true;
+        //return $this->connection->conn->lastInsertId(); 
+
+        
+
+      } else {
+          
+
+          
+          return false;
+      }
+
+
+    }
+
+    function addStandardDBFields($table){
+
+        $q = "ALTER TABLE `$table` ADD `user_id` INT(11) NULL DEFAULT NULL;
+        ALTER TABLE `$table` ADD `created` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP;
+        ALTER TABLE `$table` ADD `updated` TIMESTAMP on update CURRENT_TIMESTAMP NULL DEFAULT NULL;
+        ";
+
+        //$q = "ALTER TABLE '$table' ADD COLUMN IF NOT EXISTS '' VARCHAR(255) DEFAULT NULL;";
+
+      echo $q;
+
+      $result = $this->connection->RunQuery($q);
+
+      var_dump($result);
+      
+
+      if ($result) {
+
+       
+        return true;
+        //return $this->connection->conn->lastInsertId(); 
+
+        
+
+      } else {
+          
+
+          
+          return false;
+      }
 
 
     }
