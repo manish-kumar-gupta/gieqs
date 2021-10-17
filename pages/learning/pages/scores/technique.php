@@ -13,8 +13,8 @@
 
       //define user access level
 
-      $openaccess = 1;
-      /* $requiredUserLevel = 5; */
+      $openaccess = 0;
+      $requiredUserLevel = 6;
 
 
       require BASE_URI . '/head.php';
@@ -638,13 +638,16 @@ top: 0px;
             function calculatePlusDifficultyScore() {
 
                 var non_lifting = $('#non_lifting').val();
-                var PANL = $('#PANL').val();
+                //var PANL = $('#PANL').val();
 
                 var location_difficult = $('#location_difficult').val();
-                var demarcation = $('#demarcation').val();
+                //var demarcation = $('#demarcation').val();
                 //var paris = $('#paris').val();
 
-                if ((non_lifting == null) || (PANL == null) || (location_difficult == null) || (demarcation == null)) {
+                var size_40_smsaplus = $('#size_40_smsaplus').val();
+                var nongranular_smsaplus = $('#nongranular_smsaplus').val();
+
+                if ((non_lifting == null) || (location_difficult == null) || (size_40_smsaplus == null) || (nongranular_smsaplus == null)) {
 
                     return 'Missing Variables - please enter all 4 further characteristics';
 
@@ -652,26 +655,26 @@ top: 0px;
                 }
 
                 var non_liftingInt = +non_lifting;
-                var PANLInt = +PANL;
+                var size_40_smsaplusInt = +size_40_smsaplus;
                 var location_difficultInt = +location_difficult;
-                var demarcationInt = +demarcation;
+                var nongranular_smsaplusInt = +nongranular_smsaplus;
 
-                if (isNaN(non_liftingInt) || isNaN(PANLInt) || isNaN(location_difficultInt) || isNaN(demarcationInt)) {
+                if (isNaN(non_liftingInt) || isNaN(size_40_smsaplusInt) || isNaN(location_difficultInt) || isNaN(nongranular_smsaplusInt)) {
 
                     return 'Issue with variables supplied, please check they are numbers';
 
                 } else {
 
-                    var SMSA_plus_total = non_liftingInt + PANLInt + location_difficultInt + demarcationInt;
+                    var SMSA_plus_total = non_liftingInt + size_40_smsaplusInt + location_difficultInt + nongranular_smsaplusInt;
 
 
 
                     return {
 
                         "non_lifting": non_liftingInt,
-                        "PANL": PANLInt,
+                        "size_40": size_40_smsaplusInt,
                         "location_difficult": location_difficultInt,
-                        "demarcation": demarcationInt,
+                        "nongranular": nongranular_smsaplusInt,
                         "SMSA_plus_total": SMSA_plus_total,
 
 
@@ -1501,6 +1504,10 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
             
                             $formv1->generateSelectCustomCancel ('Stable positon with lesion at 6 \'o clock OR transformed to 6 \'o clock:', 'snare_position', 'score', array('1' => '1 - Very Poor - snare position is not consistently maintained at 6 \'o clock resulting in poor snare capture', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - snare position is consistently maintained at 6 \'o clock'), '', '561526772');
                             echo '<br/>';
+
+                            $formv1->generateSelectCustomCancel ('Maximises Tissue Capture:', 'snare_capture', 'score', array('1' => '1 - Very Poor - poor capture of tissue/scrapes the surface of the polyp/ no use of downward pressure/no use of gas aspiration 
+                            results in incomplete mucosal layer excision', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - good capture of polyp tissue within snare/ use of downward pressure/use of gas aspiration resulting in compete excision of captured tissue'), '', '561526772');
+                            echo '<br/>';
             
                             $formv1->generateSelectCustomCancel ('Snare precisely visualised during placement and closure (V of the snare):', 'snare_visualised', 'score', array('1' => '1 - Very Poor - snare V at intersection with snare catheter not visualised during closure and far from the colonoscope', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - snare V visualised consistently during closure and near to the colonoscope'), '', '561525603');
                             echo '<br/>';
@@ -1544,7 +1551,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
             $formv1->generateSelectCustomCancel ('MUCOSA - Looks for, detects and removes residual at margin and within defect:', 'mucosa', 'score', array('1' => '1 - Very Poor - does not ostensibly and systematically check for residual adenomatous tissue at margin or within defect', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - ostensibly and systematically checks for residual adenomatous tissue within defect and at margin'), 'Including residual muscularis mucosae');
             echo '<br/>';
             
-            $formv1->generateSelectCustomCancel ('Thermal ablation of the POST EMR Margin:', 'thermal_ablation', 'score hot', array('1' => '1 - Very Poor - unsteady, areas of incomplete ablation, messy result', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - steady, systematic application, complete ablation of the entire margin achieved'), '');
+            $formv1->generateSelectCustomCancel ('Thermal ablation of the POST EMR Margin:', 'thermal_ablation', 'score hot', array('1' => '1 - Very Poor - unsteady, ablates visible polyp tissue, areas of incomplete ablation, messy result', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - steady, systematic application, does not ablate visible polyp tissue, complete ablation of the entire margin achieved'), '');
             echo '<br/>';
 
             
@@ -1610,7 +1617,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                                     <h3 class="mt-4">SMSA +</h3>
 
                                     <?php 
-            $formv1->generateSelectCustomCancel ('Size &ge; 40mm:', 'size_40_smsaplus', 'SMSAplus hot', array('0' => 'No', '1' => 'Yes', ), '');
+            $formv1->generateSelectCustomCancel ('Size &ge; 40mm:', 'size_40_smsaplus', 'SMSAplus', array('0' => 'No', '1' => 'Yes', ), '');
             echo '<br/>';
 
             $formv1->generateSelectCustomCancel ('Non-granular morphology:', 'nongranular_smsaplus', 'SMSAplus hot', array('0' => 'No', '1' => 'Yes', ), '');
@@ -2420,14 +2427,11 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
                     }
                 },
-                location_difficult: {
+                size_40_smsaplus: {
 
-                    required: function(element) {
-                        return $("#type_polypectomy").val() == "1";
-
-                    }
+                    required: true,
                 },
-                demarcation: {
+                nongranular_smsaplus: {
                     required: function(element) {
                         return $("#type_polypectomy").val() == "1";
 
