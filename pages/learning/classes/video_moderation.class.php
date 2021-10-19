@@ -193,7 +193,7 @@ public function getMyTaggingTable($userid)
 
 					}else if ($row['review_tag'] != null){
 
-						if ($row['active'] == 2){
+						if ($row['active'] == 1 || $row['active'] == 2 || $row['active'] == 3){
 
 							$action = 'Tagging Reviewed.  Changes required';
 							$date = $row['review_tag'];
@@ -212,7 +212,7 @@ public function getMyTaggingTable($userid)
 					
 					}else if ($row['accept_tag'] != null){
 
-						if ($row['active'] == 2){
+						if ($row['active'] == 1 || $row['active'] == 2 || $row['active'] == 3){
 
 							$action = 'Accepted Tagging';
 							$date = $row['accept_tag'];
