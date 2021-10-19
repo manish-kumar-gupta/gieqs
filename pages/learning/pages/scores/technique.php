@@ -969,13 +969,13 @@ top: 0px;
 
                 names['edit'] = edit;
 
-                if (edit == 1){
+                if (edit == 1) {
 
                     names['id'] = esdLesionPassed;
 
 
                 }
-                
+
 
                 return names;
 
@@ -1071,27 +1071,27 @@ top: 0px;
                     if (data) {
 
 
-var parsedData  = $.parseJSON(data);
-console.dir(parsedData);
+                        var parsedData = $.parseJSON(data);
+                        console.dir(parsedData);
 
-if (parsedData.updated == 1){
+                        if (parsedData.updated == 1) {
 
-    alert('Data Updated');
+                            alert('Data Updated');
 
-}else if (parsedData.updated == 1){
+                        } else if (parsedData.updated == 1) {
 
-alert('Data Updated');
+                            alert('Data Updated');
 
-}else if (parsedData.newid){
+                        } else if (parsedData.newid) {
 
-alert('New Report Card Created');
-edit = 1;
-esdLesionPassed = parsedData.newid;
+                            alert('New Report Card Created');
+                            edit = 1;
+                            esdLesionPassed = parsedData.newid;
 
-} 
+                        }
 
 
-}
+                    }
 
 
 
@@ -1364,7 +1364,8 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
                                     </div>
 
-                                    <p><button id='saveScore' type="button" class="btn btn-sm text-white btn-dark">Save</button></p>
+                                    <p><button id='saveScore' type="button"
+                                            class="btn btn-sm text-white btn-dark">Save</button></p>
 
 
                                     <p><button id='calculate' type="button" class="btn btn-sm text-white btn-dark"
@@ -1791,18 +1792,18 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
     var siteRoot = rootFolder;
 
-			esdLesionPassed = $("#id").text();
+    esdLesionPassed = $("#id").text();
 
-			if (esdLesionPassed == "") {
+    if (esdLesionPassed == "") {
 
-				var edit = 0;
+        var edit = 0;
 
-			} else {
+    } else {
 
-				var edit = 1;
+        var edit = 1;
 
-			}
-            
+    }
+
     var loaded = 1;
 
     //the number the user wants
