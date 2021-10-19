@@ -1108,6 +1108,165 @@ top: 0px;
 
             }
 
+            function fillForm(id) {
+
+                const dataToSend = {
+
+
+
+                 
+                 id: id,
+
+                 }
+
+                const jsonString = JSON.stringify(dataToSend);
+                console.log(jsonString);
+
+
+
+                var request = $.ajax({
+                    beforeSend: function() {
+
+                    },
+                    url: siteRoot + "assets/scripts/scores/getScoreDataSpecific.php",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: jsonString,
+
+                });
+
+
+
+                request.done(function(data) {
+
+
+
+                    console.log(data);
+
+                    if (data) {
+
+
+                        var parsedData = $.parseJSON(data);
+                        console.dir(parsedData);
+
+                        $(parsedData).each(function (i, val) {
+						$.each(val, function (k, v) {
+
+							if ($("#" + k).is(':checkbox')) {
+
+								if (v == 1) {
+
+									$("#" + k).prop("checked", true);
+									checkedInputs.push("#" + k);
+
+								} else {
+
+									$("#" + k).prop("checked", false);
+
+								}
+
+
+							} else if ($("#" + k).attr('id') == 'validated') {
+								
+								$("#" + k).val(v);
+
+								console.log('found a validate and v is ' + v);
+
+								//disable the save button if validated
+
+								if (v == '1'){
+
+								$("#saveesdLesion").hide();
+
+								}
+
+								
+							} else {
+
+
+								$("#" + k).val(v);
+
+							}
+							//console.log(k+' : '+ v);
+						});
+
+					});
+
+                    var score = calculateScore();
+            //remove the check from the tag removed
+
+            if (isNaN(score.score_total) === false) {
+
+                $('#numeratorSum').text(score.score_total);
+                $('#denominatorSum').text(score.score_denominator);
+                $('#fraction').text(+score.fraction.toFixed(2));
+
+                //numb = +numb.toFixed(2);
+
+            };
+
+            var SMSA = calculateDifficultyScore();
+            //remove the check from the tag removed
+
+            if (isNaN(SMSA.SMSA_total) === false) {
+
+                $('#SMSA_total').text(SMSA.SMSA_total);
+                $('#SMSA_group').text(SMSA.SMSA_group);
+
+            };
+var SMSAplus = calculatePlusDifficultyScore();
+            //remove the check from the tag removed
+
+            if (isNaN(SMSAplus.SMSA_plus_total) === false) {
+
+                $('#numeratorSMSAplus').text(SMSAplus.SMSA_plus_total);
+                $('#denominatorSMSAplus').text(4);
+
+            };
+
+                    esdLesionPassed = id;
+                    
+                    edit = 1;
+
+                        //put the data in the right place
+
+                        //if it matches the name of an element do things for input
+                        //if it matches id do things for id  
+
+                        /* if (parsedData.updated == 1) {
+
+                            alert('Data Updated');
+
+                        } else if (parsedData.updated == 1) {
+
+                            alert('Data Updated');
+
+                        } else if (parsedData.newid) {
+
+                            alert('New Report Card Created');
+                            edit = 1;
+                            esdLesionPassed = parsedData.newid;
+
+                        } */
+
+
+                    }
+
+
+
+
+
+
+
+                })
+
+                return request;
+
+
+
+
+            }
+
 
 
             //more required methods
@@ -1364,12 +1523,13 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
                                     </div>
 
+                                    <?php if ($isSuperuser == 1){?>
                                     <p><button id='saveScore' type="button"
                                             class="btn btn-sm text-white btn-dark">Save</button></p>
-
+                                            <?php } ?>
 
                                     <p><button id='calculate' type="button" class="btn btn-sm text-white btn-dark"
-                                            name="calculate">Calculate and Copy Result to Clipboard</button></p>
+                                            name="calculate">Validate and Save</button></p>
 
                                     <?php if ($isSuperuser == 1){?>
 
@@ -2104,6 +2264,11 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
         //refreshNavAndTags();
 
+        if (edit == 1){
+
+            fillForm(esdLesionPassed);
+        }
+
         $('#refreshNavigation').click(function() {
 
 
@@ -2334,9 +2499,9 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                 console.log("there were " + errors + " errors");
                 if (errors) {
                     var message = errors == 1 ?
-                        "1 field has been missed. It has been highlighted.\n Score not copied to clipboard." :
+                        "1 field has been missed. It has been highlighted.\n Score not saved." :
                         +errors +
-                        " fields have been missed. They have been highlighted.  Score not copied to clipboard.";
+                        " fields have been missed. They have been highlighted.  Score not saved.";
 
 
                     $('#error').text(message);
@@ -2538,7 +2703,10 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
             submitHandler: function(form) {
 
 
-                copyFormClipboard();
+                //copyFormClipboard();
+                var fields = getFieldsToSavePlusSMSA();
+                saveScoreUser(fields);
+                
                 //console.log("submitted form");
 
 

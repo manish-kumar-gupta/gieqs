@@ -147,10 +147,17 @@ public function getManagementTable()
 
 public function getMyTaggingTable($userid)
 	{
-	$q = "Select a.`id`, a.`name`, a.`author`, a.`active`, b.`invite_tag`, b.`accept_tag`, b.`review_tag`, b.`done_tag`, b.`decline_tag` from `video` as a 
+	/* $q = "Select a.`id`, a.`name`, a.`author`, a.`active`, b.`invite_tag`, b.`accept_tag`, b.`review_tag`, b.`done_tag`, b.`decline_tag` from `video` as a 
 	INNER JOIN `usersTagging` as b 
 	on b.`video_id` = a.`id` 
 	WHERE (a.`active` = '2' OR a.`active` = '4') AND  
+	(b.`user_id` = '$userid') AND ((b.`invite_tag` IS NOT NULL) AND (b.`decline_tag` IS NULL AND b.`done_tag` IS NULL)) 
+	GROUP BY a.`id` ORDER BY b.`invite_tag` DESC"; */
+
+	$q = "Select a.`id`, a.`name`, a.`author`, a.`active`, b.`invite_tag`, b.`accept_tag`, b.`review_tag`, b.`done_tag`, b.`decline_tag` from `video` as a 
+	INNER JOIN `usersTagging` as b 
+	on b.`video_id` = a.`id` 
+	WHERE 
 	(b.`user_id` = '$userid') AND ((b.`invite_tag` IS NOT NULL) AND (b.`decline_tag` IS NULL AND b.`done_tag` IS NULL)) 
 	GROUP BY a.`id` ORDER BY b.`invite_tag` DESC";
 
