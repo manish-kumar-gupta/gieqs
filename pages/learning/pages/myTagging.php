@@ -819,6 +819,7 @@ if (data){
                 zeroRecords: "There are currently no active <?php echo $databaseName; ?>s.",
             },
             autowidth: false,
+            order: [],
             //scrollX: false;
 
 
