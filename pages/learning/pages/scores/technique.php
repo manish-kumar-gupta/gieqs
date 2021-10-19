@@ -647,7 +647,8 @@ top: 0px;
                 var size_40_smsaplus = $('#size_40_smsaplus').val();
                 var nongranular_smsaplus = $('#nongranular_smsaplus').val();
 
-                if ((non_lifting == null) || (location_difficult == null) || (size_40_smsaplus == null) || (nongranular_smsaplus == null)) {
+                if ((non_lifting == null) || (location_difficult == null) || (size_40_smsaplus == null) || (
+                        nongranular_smsaplus == null)) {
 
                     return 'Missing Variables - please enter all 4 further characteristics';
 
@@ -659,13 +660,15 @@ top: 0px;
                 var location_difficultInt = +location_difficult;
                 var nongranular_smsaplusInt = +nongranular_smsaplus;
 
-                if (isNaN(non_liftingInt) || isNaN(size_40_smsaplusInt) || isNaN(location_difficultInt) || isNaN(nongranular_smsaplusInt)) {
+                if (isNaN(non_liftingInt) || isNaN(size_40_smsaplusInt) || isNaN(location_difficultInt) || isNaN(
+                        nongranular_smsaplusInt)) {
 
                     return 'Issue with variables supplied, please check they are numbers';
 
                 } else {
 
-                    var SMSA_plus_total = non_liftingInt + size_40_smsaplusInt + location_difficultInt + nongranular_smsaplusInt;
+                    var SMSA_plus_total = non_liftingInt + size_40_smsaplusInt + location_difficultInt +
+                        nongranular_smsaplusInt;
 
 
 
@@ -964,6 +967,16 @@ top: 0px;
 
                 });
 
+                names['edit'] = edit;
+
+                if (edit == 1){
+
+                    names['id'] = esdLesionPassed;
+
+
+                }
+                
+
                 return names;
 
 
@@ -1003,14 +1016,7 @@ top: 0px;
 
                     if (data) {
 
-
-
-
-
-
-
-                        //refreshModalEmailText();
-                        //$(document).find('#modal-row-1').modal('show');
+                        alert('Updated');
 
 
                     }
@@ -1065,16 +1071,27 @@ top: 0px;
                     if (data) {
 
 
+var parsedData  = $.parseJSON(data);
+console.dir(parsedData);
+
+if (parsedData.updated == 1){
+
+    alert('Data Updated');
+
+}else if (parsedData.updated == 1){
+
+alert('Data Updated');
+
+}else if (parsedData.newid){
+
+alert('New Report Card Created');
+edit = 1;
+esdLesionPassed = parsedData.newid;
+
+} 
 
 
-
-
-
-                        //refreshModalEmailText();
-                        //$(document).find('#modal-row-1').modal('show');
-
-
-                    }
+}
 
 
 
@@ -1347,8 +1364,19 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
                                     </div>
 
+                                    <p><button id='saveScore' type="button" class="btn btn-sm text-white btn-dark">Save</button></p>
+
+
                                     <p><button id='calculate' type="button" class="btn btn-sm text-white btn-dark"
                                             name="calculate">Calculate and Copy Result to Clipboard</button></p>
+
+                                    <?php if ($isSuperuser == 1){?>
+
+                                    <p><button id='updateDatabase' type="button"
+                                            class="btn btn-sm text-white btn-dark">Update Database Fields</button></p>
+
+
+                                    <?php } ?>
 
 
 
@@ -1532,7 +1560,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
             /* $formv1->generateSelectCustomCancel ('Takes the snare and closes to 1cm, uses tactile feedback OR assistant closes snare to mark:', 'snare_closed', 'score hot', array('1' => '1 - Very Poor - does not take snare and close to 1cm after taking from assistant (or ask assistant to close to mark)', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - takes snare and closes to 1cm after taking from assistant (or asks assistant to close to mark)'), '');
             echo '<br/>';   not asessable on video */
             
-            $formv1->generateSelectCustomCancel ('Moves the closed snare to confirm independent movement from deeper structures:', 'independent_movement', 'score hot', array('1' => '1 - Very Poor - does not check tissue mobility prior to transection with respeect to deeper structures', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - checks mobility prior to transection with respect to deeper structures'), '', '561529195');
+            $formv1->generateSelectCustomCancel ('Moves the closed snare to confirm independent movement from deeper structures:', 'independent_movement', 'score hot', array('1' => '1 - Very Poor - does not check tissue mobility prior to transection with respect to deeper structures', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - checks mobility prior to transection with respect to deeper structures'), '', '561529195');
             echo '<br/>';
 
             $formv1->generateSelectCustomCancel ('Lifts the snare away from the muscularis propria prior to application of diathermy:', 'lift_movement', 'score hot', array('1' => '1 - Very Poor - does not lift the snare prior to applying diathermy', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - lifts the snare away from the muscularis prior to the application of diathermy'), '', '');
@@ -1760,6 +1788,21 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
     <script>
     //the number that are actually loaded
+
+    var siteRoot = rootFolder;
+
+			esdLesionPassed = $("#id").text();
+
+			if (esdLesionPassed == "") {
+
+				var edit = 0;
+
+			} else {
+
+				var edit = 1;
+
+			}
+            
     var loaded = 1;
 
     //the number the user wants
@@ -2247,6 +2290,35 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
         })
 
+        $('body').on('click', '#updateDatabase', function(event) {
+
+
+            //hide the cold snare
+            //alert('change');
+
+            event.preventDefault();
+            var fields = getFieldsToSavePlusSMSA();
+            updateDatabase(fields);
+
+
+
+        })
+
+        $('body').on('click', '#saveScore', function(event) {
+
+
+            //hide the cold snare
+            //alert('change');
+
+            event.preventDefault();
+            var fields = getFieldsToSavePlusSMSA();
+            saveScoreUser(fields);
+
+
+
+
+        })
+
         $(document).on('click', '#calculate', function(event) {
 
             event.preventDefault();
@@ -2350,6 +2422,12 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                     required: true
                 },
 
+                snare_capture: {
+
+                    required: true,
+
+                },
+
                 residual: {
 
                     required: true,
@@ -2371,16 +2449,20 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                     }
                 },
 
-                snare_closed: {
+                /* snare_closed: {
 
                     required: function(element) {
                         return $("#type_polypectomy").val() == "1";
 
                     }
-                },
+                }, */
                 mucosa: {
 
                     required: true
+                },
+                thermal_ablation: {
+
+                    /* currently not required as not done all the time*/
                 },
                 submucosa: {
 
