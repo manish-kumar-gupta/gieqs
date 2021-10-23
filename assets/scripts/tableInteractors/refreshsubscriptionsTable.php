@@ -38,8 +38,12 @@ $userFunctions = new userFunctions;
                             $username = null;
                             $username = $userFunctions->getUserName($value[$x]['user_id']);
                             //echo $username;
-                            $response['data'][$x]['user_id'] = $username;
+                            $response['data'][$x]['user_name'] = $username;
                             
+                        }else{
+
+                            $response['data'][$x]['user_name'] = '';
+
                         };
 
                         $x++;

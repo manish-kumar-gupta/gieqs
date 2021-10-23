@@ -710,6 +710,7 @@ if ($identifierValue) {
                                 <!-- EDIT -->
                                 <th>id</th>
                                 <th>user_id</th>
+                                <th>user_name</th>
                                 <th>asset_id</th>
                                 <th>start_date</th>
                                 <th>expiry_date</th>
@@ -1749,6 +1750,9 @@ if ($identifierValue) {
                 },
                 {
                     data: 'user_id'
+                },
+                {
+                    data: 'user_name'
                 },
                 {
                     data: 'asset_id'
