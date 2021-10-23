@@ -42,13 +42,13 @@ $data = json_decode(file_get_contents('php://input'), true);
 
 $subscription_id = $data['subscription_id']; */
 //$review = $data['review'];
-/* define('BASE_URI', '/home/u8l2e829uoi9/public_html');
+ define('BASE_URI', '/home/u8l2e829uoi9/public_html');
 
-define('BASE_URL', 'https://www.gieqs.com'); */
+define('BASE_URL', 'https://www.gieqs.com');
 
-define('BASE_URI', '/Applications/XAMPP/xamppfiles/htdocs/dashboard/gieqs');
+//define('BASE_URI', '/Applications/XAMPP/xamppfiles/htdocs/dashboard/gieqs');
 
-define('BASE_URL', 'http://localhost:90/dashboard/gieqs');
+//define('BASE_URL', 'http://localhost:90/dashboard/gieqs');
 
 
 $location = BASE_URL . '/index.php';
