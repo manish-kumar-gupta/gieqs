@@ -5758,6 +5758,33 @@ if ($debug){
 
     }
 
+    public function Load_records_limit_json_datatables($y, $x = 0)
+            {
+            $q = "Select * from `subscriptions` LIMIT $x, $y";
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+            if ($nRows > 0) {
+
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                    $rowReturn['data'][] = array_map('utf8_encode', $row);
+                }
+            
+                return $rowReturn;
+
+            } else {
+                
+
+                //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+                $rowReturn['data'] = [];
+                
+                return $rowReturn;
+            }
+
+        }
+
 
 
 
