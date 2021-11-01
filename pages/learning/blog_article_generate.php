@@ -8,7 +8,7 @@
                     <div class="row justify-content-center">
                         <div class="col-md-12 text-center">
                             <h1 class="lh-150 mb-3 display-3 text-center"><?php echo $blogs->getname();?></h1>
-                            <p class="lead text-muted mb-0 text-center"><?php echo $blogs->getpreheader();?></p>
+                            <p class="lead text-muted mb-0 text-center gieqsGold"><?php echo $blogs->getpreheader();?></p>
                             
                         </div>
                     </div>
