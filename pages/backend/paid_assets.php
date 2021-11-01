@@ -2184,7 +2184,7 @@ lesionUnderEdit = targettd;
 
 //load edit form in new window
 
-openInNewTab(siteRoot + 'pages/backend/course_dashboard.php?identifier='+targettd);
+openInNewTab(siteRoot + 'pages/learning/pages/general/show_subscription.php?assetid='+targettd);
 
 
 })
