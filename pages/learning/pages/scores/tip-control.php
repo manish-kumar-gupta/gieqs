@@ -314,8 +314,6 @@
     <script src="<?php echo BASE_URL . "/assets/js/purpose.js";?>"></script>
     <!-- <script src=<?php echo BASE_URL . "/assets/js/generaljs.js";?>></script> -->
 
-    <script src="<?php echo BASE_URL. "/node_modules/image-map-resizer/js/imageMapResizer.min.js";?>"></script>
-    <script src="<?php echo BASE_URL. "/node_modules/maphilight/jquery.maphilight.min.js";?>"></script>
 
     <script>
     var incorrect = 0;
@@ -331,24 +329,7 @@
         return +(Math.round(num + "e+2") + "e-2");
     }
 
-    var OQ1 = 0;
-    var OQ2 = 0;
-    var OQ3 = 0;
-    var OQ4 = 0;
-    var TF1 = 0;
-    var TF2 = 0;
-    var TF3 = 0;
-    var AO = 0;
-
-    var OQ1visualised = false;
-    var OQ2visualised = false;
-    var OQ3visualised = false;
-    var OQ4visualised = false;
-    var TF1visualised = false;
-    var TF2visualised = false;
-    var TF3visualised = false;
-    var AOvisualised = false;
-
+    
 
     //var totalScore = 0;
 
@@ -605,214 +586,14 @@
 
 
 
-        $('map').imageMapResize();
-
-        $('.map').maphilight({
-            fillColor: 'f1cd8e',
-            strokeColor: "eec278",
-            strokeWidth: 3,
-        });
-
-        $('.cecum-area').click(function(e) {
-
-            //alert('clicked an area');
-            e.preventDefault();
-            var data = $(this).mouseout().data('maphilight') || {};
-            data.alwaysOn = !data.alwaysOn;
-            $(this).data('maphilight', data).trigger('alwaysOn.maphilight');
-
-            if ($(this).attr('title') == 'AO') {
-
-                if (AO == 0) {
-
-                    AO = 1;
-                    AOvisualised = 1;
-                    updateScore();
-
-                } else if (AO == 1) {
-
-
-                    AO = 0;
-                    AOvisualised = 0;
-                    updateScore();
-
-                }
-
-            } else if ($(this).attr('title') == 'OQ1') {
-
-                if (OQ1 == 0) {
-                    OQ1 = 1;
-                    OQ1visualised = 1;
-                    updateScore();
-                } else if (OQ1 == 1) {
-
-
-                    OQ1 = 0;
-                    OQ1visualised = 0;
-                    updateScore();
-
-                }
-
-            } else if ($(this).attr('title') == 'OQ2') {
-
-                if (OQ2 == 0) {
-                    OQ2 = 1;
-                    OQ2visualised = 1;
-                    updateScore();
-                } else if (OQ2 == 1) {
-
-
-                    OQ2 = 0;
-                    OQ2visualised = 0;
-                    updateScore();
-
-                }
-            } else if ($(this).attr('title') == 'OQ3') {
-
-                if (OQ3 == 0) {
-                    OQ3 = 1;
-                    OQ3visualised = 1;
-                    updateScore();
-                } else if (OQ3 == 1) {
-
-
-                    OQ3 = 0;
-                    OQ3visualised = 0;
-                    updateScore();
-
-                }
-            } else if ($(this).attr('title') == 'OQ4') {
-
-                if (OQ4 == 0) {
-                    OQ4 = 1;
-                    OQ4visualised = 1;
-                    updateScore();
-                } else if (OQ4 == 1) {
-
-
-                    OQ4 = 0;
-                    OQ4visualised = 0;
-                    updateScore();
-
-                }
-            } else if ($(this).attr('title') == 'TF1') {
-
-                if (TF1 == 0) {
-                    TF1 = 1;
-                    TF1visualised = 1;
-                    updateScore();
-                } else if (TF1 == 1) {
-
-
-                    TF1 = 0;
-                    TF1visualised = 0;
-                    updateScore();
-
-                }
-            } else if ($(this).attr('title') == 'TF2') {
-
-                if (TF2 == 0) {
-                    TF2 = 1;
-                    TF2visualised = 1;
-                    updateScore();
-                } else if (TF2 == 1) {
-
-
-                    TF2 = 0;
-                    TF2visualised = 0;
-                    updateScore();
-
-                }
-            } else if ($(this).attr('title') == 'TF3') {
-
-                if (TF3 == 0) {
-                    TF3 = 1;
-                    TF3visualised = 1;
-                    updateScore();
-                } else if (TF3 == 1) {
-
-
-                    TF3 = 0;
-                    TF3visualised = 0;
-                    updateScore();
-
-                }
-            }
-
-        })
+       
 
 
 
 
         //refreshNavAndTags();
 
-        $('#refreshNavigation').click(function() {
-
-
-            firstTime = 1;
-            //the number that are actually loaded
-            loaded = 1;
-
-            //the number the user wants
-            loadedRequired = 1;
-
-            $('.tag').each(function() {
-
-                if ($(this).is(":checked")) {
-
-                    $(this).prop('checked', false);
-                }
-
-
-            })
-
-            refreshNavAndTags();
-
-        })
-
-        //on load check if any are checked, if so load the videos
-
-        //if none are checked load 10 most recent videos for these categories
-
-        $('.tag').click(function() {
-
-            refreshNavAndTags();
-
-        })
-
-        $('body').on('click', '.removeTag', function() {
-
-            var tagToRemove = $(this).attr('data');
-            //remove the check from the tag removed
-
-            $('.tag').each(function() {
-
-                if ($(this).attr("data") == tagToRemove) {
-
-                    $(this).prop('checked', false);
-
-                }
-
-
-            })
-
-
-            refreshNavAndTags();
-
-        })
-        //active behaviour
-
-        $('body').on('change', '#active', function() {
-
-            var active = $(this).children("option:selected").val();
-            //remove the check from the tag removed
-
-            activeStatus = active;
-
-            refreshNavAndTags();
-
-        })
-
+       
 
 
 
