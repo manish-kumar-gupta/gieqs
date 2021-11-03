@@ -1,5 +1,3 @@
-const browserSync = require("browser-sync");
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,7 +33,119 @@ const browserSync = require("browser-sync");
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
 
 
-    
+    <style>
+    .gieqsGold {
+
+        color: rgb(238, 194, 120);
+
+
+    }
+
+    .card-placeholder {
+
+        width: 344px;
+
+    }
+
+    .break {
+        flex-basis: 100%;
+        height: 0;
+    }
+
+    .flex-even {
+        flex: 1;
+    }
+
+    .flex-nav {
+        flex: 0 0 18%;
+    }
+
+
+
+    .gieqsGoldBackground {
+
+        background-color: rgb(238, 194, 120);
+
+
+    }
+
+    .tagButton {
+
+        cursor: pointer;
+
+    }
+
+
+
+
+
+    iframe {
+        box-sizing: border-box;
+        height: 25.25vw;
+        left: 50%;
+        min-height: 100%;
+        min-width: 100%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        top: 50%;
+        width: 100.77777778vh;
+    }
+
+    .cursor-pointer {
+
+        cursor: pointer;
+
+    }
+
+    @media (max-width: 768px) {
+
+        .flex-even {
+            flex-basis: 100%;
+        }
+    }
+
+    @media (max-width: 768px) {
+
+        .card-header {
+            height: 250px;
+        }
+
+        .card-placeholder {
+
+            width: 204px;
+
+        }
+
+
+    }
+
+    @media (min-width: 1200px) {
+        #chapterSelectorDiv {
+
+
+
+            top: -3vh;
+
+
+        }
+
+        #playerContainer {
+
+            margin-top: -20px;
+
+        }
+
+        #collapseExample {
+
+            position: absolute;
+            max-width: 50vh;
+            z-index: 25;
+        }
+
+
+
+    }
+    </style>
 
 
 </head>
@@ -119,6 +229,7 @@ const browserSync = require("browser-sync");
 
 
 
+        <div class="container">
 
             <div class="row">
 
@@ -173,6 +284,7 @@ const browserSync = require("browser-sync");
             <div class="row">
             <small>Text to help fill in</small>
             </div>
+        </div>
     </div>
     <!-- Omnisearch -->
 
