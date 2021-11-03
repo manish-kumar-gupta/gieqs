@@ -232,7 +232,7 @@
 
 
 
-        <div class="container">
+        <div class="container p-4">
 
             <div class="row">
 
@@ -247,13 +247,13 @@
                     <div class="row">
 
                         <div class="p-3">
-                            <button id="startButton" class="btn btn-lg btn-primary">Start</button>
-                            <button id="stopButton" class="btn btn-lg btn-danger">Stop</button>
+                            <button id="startButton" class="btn btn-lg btn-primary m-1">Start</button>
+                            <button id="stopButton" class="btn btn-lg btn-danger m-1">Stop</button>
                         </div>
                         <br /><br />
                         <div class="p-3">
-                            <button id="correctButton" class="btn btn-lg btn-success">Correct</button>
-                            <button id="incorrectButton" class="btn btn-lg btn-warning">Incorrect</button>
+                            <button id="correctButton" class="btn btn-lg btn-success m-1">Correct</button>
+                            <button id="incorrectButton" class="btn btn-lg btn-warning m-1">Incorrect</button>
                         </div>
                     </div>
 
