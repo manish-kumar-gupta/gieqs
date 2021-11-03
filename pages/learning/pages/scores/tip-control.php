@@ -247,8 +247,8 @@
                     <div class="row">
 
                         <div class="p-3">
-                            <button id="startButton" class="btn btn-lg btn-primary m-1">Start</button>
-                            <button id="stopButton" class="btn btn-lg btn-danger m-1">Stop</button>
+                            <button id="startButton" class="btn btn-sm btn-primary m-1">Start</button>
+                            <button id="stopButton" class="btn btn-sm btn-danger m-1">Stop</button>
                         </div>
                         <br /><br />
                         <div class="p-3">
@@ -257,14 +257,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
-
-                        <p class="py-4" id="reportCard"></p>
-
-                    </div>
-
-
-
+                  
 
                 </div>
                 <div class="col-sm-6">
@@ -287,6 +280,12 @@
 
                 </div>
             </div>
+            <div class="row">
+
+<p class="py-4" id="reportCard"></p>
+
+</div>
+
             <div class="row">
                 <small>Click Start. Each time a correct application is made on the margin click correct. If an
                     application is made outside the margin click incorrect. When finished click stop.</small>
