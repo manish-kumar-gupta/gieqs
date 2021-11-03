@@ -505,6 +505,8 @@
 
             if (TTimer.started === false) {
 
+                TTimer.clearSession();
+
                 TTimer.start();
 
 
@@ -537,6 +539,8 @@
         $('#startButton').click(function() {
 
             if (TTimer.started === false && stop === false) {
+
+                TTimer.clearSession();
 
                 TTimer.start();
 
