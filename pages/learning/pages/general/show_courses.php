@@ -279,7 +279,7 @@
 
         /* define the page variables */
 
-        $page_title = 'Endoscopy Courses';?>
+        $page_title = 'Curated Virtual/Live Experiences';?>
 
             <title>GIEQs Online - <?php echo $page_title;?></title>
 
@@ -670,9 +670,9 @@
 
                 <!--Navigation-->
 
-                <div id="navigationZone" class="pt-3">
-                    <?php require(BASE_URI . '/pages/learning/includes/navigation.php'); ?>
-                </div>
+               <!--  <div id="navigationZone" class="pt-3">
+                    <?php //require(BASE_URI . '/pages/learning/includes/navigation.php'); ?>
+                </div> -->
 
 
 
@@ -699,7 +699,15 @@
 
                     </div>
 
-                </div>
+
+               
+
+<p class="display-2 my-3">Colonoscopy</p>
+<p class="pl-4">Unpacking the Black Box of Colonoscopy Training</p>
+<p class="display-2 my-3">Polypectomy</p>
+<p class="display-2 my-3">Endoscopic Imaging</p>
+<p class="display-2 my-3">Polypectomy</p>
+     </div>
 
 
                 <!--Programme Display, Cuurently Courses only-->
@@ -729,8 +737,8 @@
 
 
 
-
             </div>
+            
 
 
 

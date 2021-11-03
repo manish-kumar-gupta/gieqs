@@ -172,7 +172,9 @@ if ($debug) {
 
 <div class="d-flex flex-row flex-wrap justify-content-center mt-1 pt-0 px-0 text-white">
     <span class=" mt-3 mb-6 h6"><?php echo $emptyText;?></span>
+    
 </div>
+
 <?php
                 }
 
@@ -187,7 +189,8 @@ if ($debug) {
                     if ($a == 1){
 
                         ?>
-
+<p class="display-2 my-3">Colonoscopy</p>
+<p class="pl-4 mb-5">Unpacking the Black Box of Colonoscopy Training</p>
 <div class="d-flex flex-row flex-wrap justify-content-center mt-1 pt-0 px-0 text-white video-card">
     <?php }
                     if ($a < $loadedRequiredProduct){
@@ -253,7 +256,7 @@ if ($debug) {
                         
                         if (!$videoIsGIEQsDigital){?>
                 <div class="col-6">
-                    <a href="<?php echo BASE_URL . '/pages/program/view_course.php?id=' . $value['id']; ?>"
+                    <a href="<?php echo BASE_URL . '/pages/program/program_generic.php?id=' . $value['id']; ?>"
                         class="btn btn-sm text-dark gieqsGoldBackground">Discover</a>
                 </div>
                 <div class="col-6 text-right">
@@ -338,5 +341,8 @@ if ($debug) {
     <?php
 
                 }
+
+
+
 
 ?>
