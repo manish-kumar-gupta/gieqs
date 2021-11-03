@@ -30,7 +30,6 @@
     <!--Page title-->
     <title>GIEQs Online Endoscopy Trainer - Tip-Control</title>
 
-    <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
 
 
     <style>
@@ -191,6 +190,9 @@
         $requiredTagCategories = ['66', '105'];
 
         ?>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
     <div id="requiredTagCategories" style="display:none;"><?php echo json_encode($requiredTagCategories);?></div>
 
