@@ -119,7 +119,6 @@ const browserSync = require("browser-sync");
 
 
 
-        <div class="container">
 
             <div class="row">
 
@@ -174,7 +173,6 @@ const browserSync = require("browser-sync");
             <div class="row">
             <small>Text to help fill in</small>
             </div>
-        </div>
     </div>
     <!-- Omnisearch -->
 
