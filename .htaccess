@@ -30,6 +30,7 @@ RewriteRule ^smsa$ pages/learning/pages/scores/smsa.php
 RewriteRule ^caecal-score$ pages/learning/pages/scores/cecum.php
 RewriteRule ^cecal-score$ pages/learning/pages/scores/cecum.php
 RewriteRule ^cecum$ pages/learning/pages/scores/cecum.php
+RewriteRule ^tip-control$ pages/learning/pages/scores/tip-control.php
 RewriteRule ^privacy-policy$ pages/support/support_gieqs_privacy_policy.php
 RewriteRule ^basic-colonoscopy$ pages/program/program_basic_colon.php
 RewriteRule ^train-the-trainers$ pages/program/program_trainer_colon.php
