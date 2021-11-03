@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 <?php require '../../includes/config.inc.php';?>
 
@@ -191,7 +193,6 @@
 
         ?>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
     <div id="requiredTagCategories" style="display:none;"><?php echo json_encode($requiredTagCategories);?></div>
@@ -235,56 +236,60 @@
 
             <div class="row">
 
-                    <p class="h1 mt-10">Tip Control Study</p>
-                    <p class="h6"></p>
+                <p class="h1 mt-10">Tip Control Study</p>
+                <p class="h6"></p>
 
             </div>
             <div class="row">
 
-                    <div class="col-sm-6">
+                <div class="col-sm-6">
 
                     <div class="row">
 
-                    <div class="p-3">
-                    <button id="startButton" class="btn btn-primary">Start</button>
-                    <button id="stopButton" class="btn btn-danger">Stop</button>
-                    </div>
-                    <br/><br/>
-                    <div class="p-3">
-                    <button id="correctButton" class="btn btn-success">Correct</button>
-                    <button id="incorrectButton" class="btn btn-warning">Incorrect</button>
-                     </div>
+                        <div class="p-3">
+                            <button id="startButton" class="btn btn-lg btn-primary">Start</button>
+                            <button id="stopButton" class="btn btn-lg btn-danger">Stop</button>
+                        </div>
+                        <br /><br />
+                        <div class="p-3">
+                            <button id="correctButton" class="btn btn-lg btn-success">Correct</button>
+                            <button id="incorrectButton" class="btn btn-lg btn-warning">Incorrect</button>
+                        </div>
                     </div>
 
                     <div class="row">
 
-                    <p class="py-4" id="reportCard"></p>
+                        <p class="py-4" id="reportCard"></p>
 
                     </div>
 
-                    
-                    
+
+
 
                 </div>
                 <div class="col-sm-6">
 
                     <p class="h2 score">Accuracy is <span id="scoreResult"></span></p>
-                    <p class="text-white segments mt-3">Timer&nbsp;<span id="timer-minutes"></span>&nbsp;<span id="timer-seconds"></span></p>
+                    <p class="text-white segments mt-3">Timer&nbsp;<span id="timer-minutes"></span>&nbsp;<span
+                            id="timer-seconds"></span></p>
 
                     <p class="text-white segments mt-3">Correct Hits <span id="correct"></span></p>
                     <p class="text-white segments mt-3">Incorrect Hits <span id="incorrect"></span></p>
 
-                    <p class="text-white segments mt-3">Correct Hits / Second <span id="correctHitsPerSecond"></span></p>
+                    <p class="text-white segments mt-3">Correct Hits / Second <span id="correctHitsPerSecond"></span>
+                    </p>
 
 
                     <p class="text-white mt-3">This data is automatically copied to the clipboard</p>
-                    <button class="btn btn-sm btn-dark mt-3" onclick="TTimer.clearSession();location.reload(); ">Reset</button>
+                    <button class="btn btn-sm btn-dark mt-3"
+                        onclick="TTimer.clearSession();location.reload(); ">Reset</button>
 
 
                 </div>
             </div>
             <div class="row">
-            <small>Text to help fill in</small>
+                <small>Click Start. Each time a correct application is made on the margin click correct. If an
+                    application is made outside the margin click incorrect. When finished click stop.</small>
             </div>
         </div>
     </div>
@@ -313,7 +318,6 @@
     <script src="<?php echo BASE_URL. "/node_modules/maphilight/jquery.maphilight.min.js";?>"></script>
 
     <script>
-    
     var incorrect = 0;
     var correct = 0;
 
@@ -324,8 +328,8 @@
 
 
     function roundToTwo(num) {
-    return +(Math.round(num + "e+2")  + "e-2");
-}
+        return +(Math.round(num + "e+2") + "e-2");
+    }
 
     var OQ1 = 0;
     var OQ2 = 0;
@@ -349,93 +353,90 @@
     //var totalScore = 0;
 
     function copyToClipboard(text) {
-    if (window.clipboardData && window.clipboardData.setData) {
-        // Internet Explorer-specific code path to prevent textarea being shown while dialog is visible.
-        return window.clipboardData.setData("Text", text);
+        if (window.clipboardData && window.clipboardData.setData) {
+            // Internet Explorer-specific code path to prevent textarea being shown while dialog is visible.
+            return window.clipboardData.setData("Text", text);
 
-    }
-    else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
-        var textarea = document.createElement("textarea");
-        textarea.textContent = text;
-        textarea.style.position = "fixed";  // Prevent scrolling to bottom of page in Microsoft Edge.
-        document.body.appendChild(textarea);
-        textarea.select();
-        try {
-            return document.execCommand("copy");  // Security exception may be thrown by some browsers.
-        }
-        catch (ex) {
-            console.warn("Copy to clipboard failed.", ex);
-            return false;
-        }
-        finally {
-            document.body.removeChild(textarea);
+        } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+            var textarea = document.createElement("textarea");
+            textarea.textContent = text;
+            textarea.style.position = "fixed"; // Prevent scrolling to bottom of page in Microsoft Edge.
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                return document.execCommand("copy"); // Security exception may be thrown by some browsers.
+            } catch (ex) {
+                console.warn("Copy to clipboard failed.", ex);
+                return false;
+            } finally {
+                document.body.removeChild(textarea);
+            }
         }
     }
-}
 
-  var TTimer = {
-    startedTime: new Date(),
-    restoredFromSession: false,
-    started: false,
-    minutes: 0,
-    seconds: 0,
-    tick: function tick() {
-      // Since setInterval is not reliable in inactive windows/tabs we are using date diff.
-      var diffInSeconds = Math.floor((new Date() - this.startedTime) / 1000);
-      this.minutes = Math.floor(diffInSeconds / 60);
-      this.seconds = diffInSeconds - this.minutes * 60;
-      this.render();
-      this.updateSession();
-    },
-    utilities: {
-      pad: function pad(number) {
-        return number < 10 ? "0" + number : number;
-      }
-    },
-    container: function container() {
-      return $(document);
-    },
-    render: function render() {
-      this.container()
-        .find("#timer-minutes")
-        .text(this.utilities.pad(this.minutes));
-      this.container()
-        .find("#timer-seconds")
-        .text(this.utilities.pad(this.seconds));
-    },
-    updateSession: function updateSession() {
-      sessionStorage.setItem("timerStartedTime", this.startedTime);
-    },
-    clearSession: function clearSession() {
-      sessionStorage.removeItem("timerStartedTime");
-    },
-    restoreFromSession: function restoreFromSession() {
-      // Using sessionsStorage to make the timer persistent
-      if (typeof Storage == "undefined") {
-        console.log("No sessionStorage Support");
-        return;
-      }
+    var TTimer = {
+        startedTime: new Date(),
+        restoredFromSession: false,
+        started: false,
+        minutes: 0,
+        seconds: 0,
+        tick: function tick() {
+            // Since setInterval is not reliable in inactive windows/tabs we are using date diff.
+            var diffInSeconds = Math.floor((new Date() - this.startedTime) / 1000);
+            this.minutes = Math.floor(diffInSeconds / 60);
+            this.seconds = diffInSeconds - this.minutes * 60;
+            this.render();
+            this.updateSession();
+        },
+        utilities: {
+            pad: function pad(number) {
+                return number < 10 ? "0" + number : number;
+            }
+        },
+        container: function container() {
+            return $(document);
+        },
+        render: function render() {
+            this.container()
+                .find("#timer-minutes")
+                .text(this.utilities.pad(this.minutes));
+            this.container()
+                .find("#timer-seconds")
+                .text(this.utilities.pad(this.seconds));
+        },
+        updateSession: function updateSession() {
+            sessionStorage.setItem("timerStartedTime", this.startedTime);
+        },
+        clearSession: function clearSession() {
+            sessionStorage.removeItem("timerStartedTime");
+        },
+        restoreFromSession: function restoreFromSession() {
+            // Using sessionsStorage to make the timer persistent
+            if (typeof Storage == "undefined") {
+                console.log("No sessionStorage Support");
+                return;
+            }
 
-      if (sessionStorage.getItem("timerStartedTime") !== null) {
-        this.restoredFromSession = true;
-        this.startedTime = new Date(sessionStorage.getItem("timerStartedTime"));
-      }
-    },
-    start: function start() {
-      this.restoreFromSession();
-      this.stop();
-      this.started = true;
-      this.tick();
-      this.timerId = setInterval(this.tick.bind(this), 1000);
-    },
-    stop: function stop() {
-      this.started = false;
-      clearInterval(this.timerId);
-      this.render();
-    }
-  };
+            if (sessionStorage.getItem("timerStartedTime") !== null) {
+                this.restoredFromSession = true;
+                this.startedTime = new Date(sessionStorage.getItem("timerStartedTime"));
+            }
+        },
+        start: function start() {
+            this.restoreFromSession();
+            this.stop();
+            this.started = true;
+            this.tick();
+            this.timerId = setInterval(this.tick.bind(this), 1000);
+        },
+        stop: function stop() {
+            this.started = false;
+            clearInterval(this.timerId);
+            this.render();
+        }
+    };
 
-  
+
 
 
 
@@ -444,22 +445,22 @@
 
         //var totalScore = OQ1 + OQ2 + OQ3 + OQ4 + TF1 + TF2 + TF3 + AO;
 
-        var fractionScore = correct/scoreResult;
+        var fractionScore = correct / scoreResult;
         fractionScore = roundToTwo(fractionScore);
 
-        $('#scoreResult').text(fractionScore*100 + '%');
+        $('#scoreResult').text(fractionScore * 100 + '%');
         $('#correct').text(correct);
         $('#incorrect').text(incorrect);
 
         timeMinutes = TTimer.minutes;
         timeSeconds = TTimer.seconds;
 
-        var hitsPerSecond = correct / ((timeMinutes*60)+timeSeconds);
+        var hitsPerSecond = correct / ((timeMinutes * 60) + timeSeconds);
         hitsPerSecond = roundToTwo(hitsPerSecond);
 
         $('#correctHitsPerSecond').text(hitsPerSecond);
 
-        
+
 
 
         /* var visualisedSegments = OQ1visualised ? 'OQ1, ' : '';
@@ -475,297 +476,55 @@
 
         var scoreObject = {
 
-            "Accuracy" : fractionScore,
-            "Total Time" : ((timeMinutes*60)+timeSeconds),
-            "Correct Hits Per Second" : hitsPerSecond,
-            "Correct" : correct,
-            "Incorrect" : incorrect,
-            "Total" : correct + incorrect,
+            "Accuracy": fractionScore,
+            "Total Time": ((timeMinutes * 60) + timeSeconds),
+            "Correct Hits Per Second": hitsPerSecond,
+            "Correct": correct,
+            "Incorrect": incorrect,
+            "Total": correct + incorrect,
 
 
 
 
         }
 
-        var report = "Tip Control Report: <br/> Accuracy was " + (fractionScore * 100) + " %.<br/>  Total time elapsed was " + ((timeMinutes*60)+timeSeconds) + " seconds. <br/>" + correct + " of " + (correct + incorrect) + " (" + (fractionScore * 100) + " %) of hits were on target.<br/>  There were " + hitsPerSecond + " on-target hits per second.";
+        var report = "Tip Control Report: <br/> Accuracy was " + (fractionScore * 100) +
+            " %.<br/>  Total time elapsed was " + ((timeMinutes * 60) + timeSeconds) + " seconds. <br/>" + correct +
+            " of " + (correct + incorrect) + " (" + (fractionScore * 100) +
+            " %) of hits were on target.<br/>  There were " + hitsPerSecond + " on-target hits per second.";
 
         //console.log(report);
 
         $('#reportCard').html(report);
 
-        
+
         console.log(JSON.stringify(scoreObject));
 
         copyToClipboard(JSON.stringify(scoreObject));
 
 
 
-/*         OQ3visualised ? 'OQ3' : '' + OQ4visualised ? 'OQ4' : '' + TF1visualised ? 'TF1' : '' + TF2visualised ? 'TF2' : '' + TF3visualised ? 'TF3' : '' + AOvisualised ? 'AO' : '';
- */        //$('#segments').text(visualisedSegments);
+        /*         OQ3visualised ? 'OQ3' : '' + OQ4visualised ? 'OQ4' : '' + TF1visualised ? 'TF1' : '' + TF2visualised ? 'TF2' : '' + TF3visualised ? 'TF3' : '' + AOvisualised ? 'AO' : '';
+         */ //$('#segments').text(visualisedSegments);
 
 
     }
-
-
-
-
-
-
-    var videoPassed = $("#id").text();
     </script>
 
-    <script src=<?php echo BASE_URL . "/pages/learning/includes/social.js"?>></script>
 
     <script>
     //the number that are actually loaded
-    var loaded = 1;
 
-    //the number the user wants
-    var loadedRequired = 1;
-
-    var firstTime = 1;
-    var activeStatus = 1;
-
-    var requiredTagCategoriesText = $("#requiredTagCategories").text();
-
-    var requiredTagCategories = JSON.parse(requiredTagCategoriesText);
-
-
-    function refreshNavAndTags() {
-
-        var screenTop = $(document).scrollTop();
-
-        //console.log(top);
-
-        var tags = [];
-
-        $('.tag').each(function() {
-
-            if ($(this).is(":checked")) {
-                tags.push($(this).attr('data'));
-            }
-
-
-        })
-
-
-
-        //push how many loaded, use loaded variable
-
-        console.dir(tags);
-
-        /*var key = $(this).attr('data');
-
-				const dataToSend = {
-
-					key: key,
-
-				}*/
-        var dataToSend = {
-
-            tags: tags,
-            requiredTagCategories: requiredTagCategories,
-            active: activeStatus,
-
-        }
-
-        //const jsonString2 = JSON.stringify(dataToSend);
-
-        const jsonString = JSON.stringify(dataToSend);
-        ////console.log(jsonString);
-        //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
-
-        var request2 = $.ajax({
-            beforeSend: function() {
-
-                $('#videoCards').html(
-                    "<div class=\"d-flex align-items-center\"><strong>Loading...</strong><div class=\"spinner-border ml-auto\" role=\"status\" aria-hidden=\"true\"></div></div>"
-                    );
-                //for each tags array push the badges to the tags shown area
-                var html = '';
-                $.each(tags, function(k, v) {
-
-                    //HERE WE HAVE THE TAGID
-
-                    var tagid = v;
-
-                    //get the name and category
-
-                    var tagName = $('body').find('#navigationZone').find('#tag' + v).siblings()
-                        .text();
-
-                    var tagCategory = $('body').find('#navigationZone').find('#tag' + v).parent()
-                        .parent().parent().parent().find('span').text();
-
-                    html +=
-                        '<span class="badge bg-gieqsGold text-dark mx-2 my-2 tagButton" data="' +
-                        v + '">' + tagCategory + ' / ' + tagName +
-                        ' <i style="float:right;" class="fas fa-times removeTag cursor-pointer ml-1" data="' +
-                        v + '"></i></span>';
-
-                });
-                $('body').find('#navigationZone').find('#shown-tags').html(html);
-
-            },
-            url: siteRoot + "/pages/learning/scripts/getNavv2.php",
-            type: "POST",
-            contentType: "application/json",
-            data: jsonString,
-        });
-
-
-
-        request2.done(function(data) {
-            // alert( "success" );
-            if (data != '[]') {
-                var toKeep = $.parseJSON(data.trim());
-                //alert(data.trim());
-                console.dir(toKeep);
-
-
-                $('.tag').each(function() {
-
-                    var tagid = $(this).attr('data');
-
-                    if (toKeep.indexOf(tagid) > -1) {
-
-                        $(this).attr('disabled', false);
-
-                    } else {
-
-                        $(this).attr('disabled', true);
-                    }
-
-                })
-
-
-            }
-            //$(document).find('.Thursday').hide();
-        })
-
-        request2.then(function(data) {
-            var tags = [];
-
-            $('.tag').each(function() {
-
-                if ($(this).is(":checked")) {
-                    tags.push($(this).attr('data'));
-                }
-
-
-            })
-
-            //TODO ADD ABILITY TO PASS A PARAMETER HERE INDICATING NUMBER LOADED
-            //THEN MODIFY LAYOUT AND NUMBER LOADED
-
-            console.dir(tags);
-
-            var dataToSend = {
-
-                tags: tags,
-                loaded: loaded,
-                loadedRequired: loadedRequired,
-                requiredTagCategories: requiredTagCategories,
-                referringUrl: $('#escaped_url').text(),
-                active: activeStatus,
-
-
-            }
-
-            const jsonString2 = JSON.stringify(dataToSend);
-
-
-
-
-            const jsonString = JSON.stringify(tags);
-
-            console.dir(jsonString2);
-
-
-            var request3 = $.ajax({
-                beforeSend: function() {
-
-
-                },
-                url: siteRoot + "/pages/learning/scripts/getVideos.php",
-                type: "POST",
-                contentType: "application/json",
-                data: jsonString2,
-            });
-            request3.done(function(data) {
-                // alert( "success" );
-                if (data) {
-                    //var toKeep = $.parseJSON(data.trim());
-                    //alert(data.trim());
-                    //console.dir(toKeep);
-
-                    $('#videoCards').html(data);
-                    $('body').find('#itemCount').each(function() {
-
-                        var count = $('body').find('.individualVideo').length;
-                        $(this).text(count);
-
-
-                    })
-
-
-                    if (firstTime == 1) {
-                        $('body').on('click', '#loadMore', function() {
-
-                            loadedRequired = loadedRequired + 1;
-
-
-                            refreshNavAndTags();
-
-                        })
-                    }
-
-
-
-                    if (firstTime > 1 && loadedRequired > 1) {
-
-                        var loadedRequiredMultiple = ((loadedRequired - 1) * 10) - 3;
-
-                        //console.log(loadedRequiredMultiple);
-
-                        //scroll to current level
-
-
-                        $("body,html").animate({
-                                scrollTop: $('body').find('.individualVideo:eq(' +
-                                    loadedRequiredMultiple + ')').offset().top
-                            },
-                            2 //speed
-                        );
-                    }
-
-
-                    firstTime = firstTime + 1;
-                    //$('body').find('.individualVideo:eq('+loadedRequiredMultiple +')').scrollTop(300);
-
-
-
-
-
-                }
-                //$(document).find('.Thursday').hide();
-            })
-
-
-        })
-
-
-    }
 
     $(document).ready(function() {
 
 
         TTimer.clearSession();
 
-        $('#correctButton').click(function(){
+        $('#correctButton').click(function() {
 
-            if (TTimer.started === false){
-               
+            if (TTimer.started === false) {
+
                 TTimer.start();
 
 
@@ -779,15 +538,15 @@
 
         })
 
-        $('#incorrectButton').click(function(){
+        $('#incorrectButton').click(function() {
 
-            if (TTimer.started === false){
-               
-               TTimer.start();
+            if (TTimer.started === false) {
+
+                TTimer.start();
 
 
 
-           };
+            };
             incorrect = incorrect + 1;
             scoreResult = correct + incorrect;
             updateScore();
@@ -795,54 +554,54 @@
 
         })
 
-        $('#startButton').click(function(){
+        $('#startButton').click(function() {
 
-if (TTimer.started === false && stop === false){
-   
-   TTimer.start();
+            if (TTimer.started === false && stop === false) {
 
-   start = true;
+                TTimer.start();
 
-   $('#startButton').attr('disabled', true);
+                start = true;
 
-
-
-
-};
+                $('#startButton').attr('disabled', true);
 
 
 
-})
 
-$('#stopButton').click(function(){
-
-if (TTimer.started === true){
-   
-   TTimer.stop();
-
-   updateScore();
-
-   TTimer.clearSession();
-
-   stop = true;
-
-   $('#startButton').attr('disabled', true);
-
-   $('#correctButton').attr('disabled', true);
-
-
-   $('#incorrectButton').attr('disabled', true);
-
-
-   $(this).attr('disabled', true);
+            };
 
 
 
-};
+        })
+
+        $('#stopButton').click(function() {
+
+            if (TTimer.started === true) {
+
+                TTimer.stop();
+
+                updateScore();
+
+                TTimer.clearSession();
+
+                stop = true;
+
+                $('#startButton').attr('disabled', true);
+
+                $('#correctButton').attr('disabled', true);
+
+
+                $('#incorrectButton').attr('disabled', true);
+
+
+                $(this).attr('disabled', true);
 
 
 
-})
+            };
+
+
+
+        })
 
 
 
@@ -850,11 +609,11 @@ if (TTimer.started === true){
 
         $('.map').maphilight({
             fillColor: 'f1cd8e',
-            strokeColor:"eec278",
-            strokeWidth:3,
+            strokeColor: "eec278",
+            strokeWidth: 3,
         });
 
-        $('.cecum-area').click(function(e){
+        $('.cecum-area').click(function(e) {
 
             //alert('clicked an area');
             e.preventDefault();
@@ -862,15 +621,15 @@ if (TTimer.started === true){
             data.alwaysOn = !data.alwaysOn;
             $(this).data('maphilight', data).trigger('alwaysOn.maphilight');
 
-            if ($(this).attr('title') == 'AO'){
+            if ($(this).attr('title') == 'AO') {
 
-                if (AO == 0){
+                if (AO == 0) {
 
                     AO = 1;
                     AOvisualised = 1;
                     updateScore();
-            
-                }else if (AO == 1){
+
+                } else if (AO == 1) {
 
 
                     AO = 0;
@@ -879,13 +638,13 @@ if (TTimer.started === true){
 
                 }
 
-            }else if ($(this).attr('title') == 'OQ1'){
+            } else if ($(this).attr('title') == 'OQ1') {
 
-                if (OQ1 == 0){
+                if (OQ1 == 0) {
                     OQ1 = 1;
                     OQ1visualised = 1;
                     updateScore();
-                }else if (OQ1 == 1){
+                } else if (OQ1 == 1) {
 
 
                     OQ1 = 0;
@@ -893,14 +652,14 @@ if (TTimer.started === true){
                     updateScore();
 
                 }
-            
-            }else if ($(this).attr('title') == 'OQ2'){
 
-                if (OQ2 == 0){
+            } else if ($(this).attr('title') == 'OQ2') {
+
+                if (OQ2 == 0) {
                     OQ2 = 1;
                     OQ2visualised = 1;
                     updateScore();
-                }else if (OQ2 == 1){
+                } else if (OQ2 == 1) {
 
 
                     OQ2 = 0;
@@ -908,13 +667,13 @@ if (TTimer.started === true){
                     updateScore();
 
                 }
-            }else if ($(this).attr('title') == 'OQ3'){
+            } else if ($(this).attr('title') == 'OQ3') {
 
-                if (OQ3 == 0){
+                if (OQ3 == 0) {
                     OQ3 = 1;
                     OQ3visualised = 1;
                     updateScore();
-                }else if (OQ3 == 1){
+                } else if (OQ3 == 1) {
 
 
                     OQ3 = 0;
@@ -922,13 +681,13 @@ if (TTimer.started === true){
                     updateScore();
 
                 }
-            }else if ($(this).attr('title') == 'OQ4'){
+            } else if ($(this).attr('title') == 'OQ4') {
 
-                if (OQ4 == 0){
+                if (OQ4 == 0) {
                     OQ4 = 1;
                     OQ4visualised = 1;
                     updateScore();
-                }else if (OQ4 == 1){
+                } else if (OQ4 == 1) {
 
 
                     OQ4 = 0;
@@ -936,13 +695,13 @@ if (TTimer.started === true){
                     updateScore();
 
                 }
-            }else if ($(this).attr('title') == 'TF1'){
+            } else if ($(this).attr('title') == 'TF1') {
 
-                if (TF1 == 0){
+                if (TF1 == 0) {
                     TF1 = 1;
                     TF1visualised = 1;
                     updateScore();
-                }else if (TF1 == 1){
+                } else if (TF1 == 1) {
 
 
                     TF1 = 0;
@@ -950,13 +709,13 @@ if (TTimer.started === true){
                     updateScore();
 
                 }
-            }else if ($(this).attr('title') == 'TF2'){
+            } else if ($(this).attr('title') == 'TF2') {
 
-                if (TF2 == 0){
+                if (TF2 == 0) {
                     TF2 = 1;
                     TF2visualised = 1;
                     updateScore();
-                }else if (TF2 == 1){
+                } else if (TF2 == 1) {
 
 
                     TF2 = 0;
@@ -964,13 +723,13 @@ if (TTimer.started === true){
                     updateScore();
 
                 }
-            }else if ($(this).attr('title') == 'TF3'){
+            } else if ($(this).attr('title') == 'TF3') {
 
-                if (TF3 == 0){
+                if (TF3 == 0) {
                     TF3 = 1;
                     TF3visualised = 1;
                     updateScore();
-                }else if (TF3 == 1){
+                } else if (TF3 == 1) {
 
 
                     TF3 = 0;
@@ -979,12 +738,12 @@ if (TTimer.started === true){
 
                 }
             }
-            
+
         })
 
 
 
-      
+
         //refreshNavAndTags();
 
         $('#refreshNavigation').click(function() {
