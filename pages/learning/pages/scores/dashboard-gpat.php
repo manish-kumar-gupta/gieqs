@@ -25,6 +25,13 @@
 
       $formv1 = new formGenerator;
 
+      require_once(BASE_URI . '/assets/scripts/classes/gpat_score.class.php'); 
+      $gpat_score = new gpat_score();
+
+      require_once(BASE_URI . '/assets/scripts/classes/gpat_glue.class.php'); 
+      $gpat_glue = new gpat_glue();
+      
+
       $dataPoints = array( 
         array("label"=>"Industrial", "y"=>51.7),
         array("label"=>"Transportation", "y"=>26.6),
@@ -220,7 +227,7 @@ top: 0px;
     <!-- Omnisearch -->
     
     <?php 
-    error_reporting(E_ALL);
+    //error_reporting(E_ALL);
     include(BASE_URI . '/pages/learning/assets/gpatNav.php');
 
     ?>
@@ -235,7 +242,7 @@ top: 0px;
 
         </div>
         <div class="d-flex align-items-end container">
-            <p class="text-muted pl-4 mt-2">Towards careful, meticulous polypectomy practice</p>
+            <p class="text-muted pl-4 mt-2">Chart Your Progress with GPAT</p>
 
         </div>
 
@@ -1483,16 +1490,11 @@ chart.render();
                                     <!-- <ul> -->
                                     <?php
 
-echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#hot-or-cold">Type - Hot/Cold</a></li>';
+echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#progress">Progress</a></li>';
 
-                        echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#global">Global</a></li>';
-                        echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#injection">Injection Technique</a></li>';
-                        echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#snare">Snare Placement Technique</a></li>';
-                        echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#safety">Safety Checks prior to Resection</a></li>';
-                        echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#defect">Defect Assessment</a></li>';
-
-                        echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#accessory">Accessory Techniques</a></li>';
-                        echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#difficulty">Difficulty Scores</a></li>';
+                        echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#domains">Domains</a></li>';
+                        echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#certification">Certification</a></li>';
+                       
                         
 
                         //echo "<button type=\"button\" class=\"btn ".$sectionTitle[$x]. "\">".$sectionTitle[$x]."</button>";
@@ -1625,6 +1627,13 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                             <br>
                             <div id='result' class='yellow'></div>
                             <br>
+
+                            <p id="progress" class="section display-3">Progress</p>
+
+                            <p id="domains" class="section display-3">Domains</p>
+
+                            <p id="certification" class="section display-3">Certification</p>
+
                             <div id="chartContainer" class="mb-4" style="height: 370px; width: 100%;"></div>
                            
 

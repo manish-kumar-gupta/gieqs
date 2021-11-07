@@ -36,7 +36,6 @@
     <!--Page title-->
     <title>Global Online Endoscopy Trainer - Scores - Global Polypectomy Assessment Tool</title>
 
-    <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
 
 
     <style>
@@ -219,12 +218,18 @@ top: 0px;
 
     <!-- Omnisearch -->
 
+    <?php
+
+    include(BASE_URI . '/pages/learning/assets/gpatNav.php');
+
+    ?>
+
     <div class="main-content bg-gradient-dark">
 
         <!--Header CHANGEME-->
 
         <div class="d-flex align-items-end container">
-            <p class="h1 mt-10">Polypectomy Technique Scorer - Video Assessment Version</p>
+            <p class="h1 mt-5">Polypectomy Technique Scorer - Video Assessment Version</p>
 
 
         </div>
@@ -1619,8 +1624,8 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                             <br>
                             <div id='result' class='yellow'></div>
                             <br>
-                            <div id="chartContainer" class="mb-4" style="height: 370px; width: 100%;"></div>
-                            <form id="polypectomy-form" action="adminGenerateUserEmail.php" method="post">
+<!--                             <div id="chartContainer" class="mb-4" style="height: 370px; width: 100%;"></div>
+ -->                            <form id="polypectomy-form" action="adminGenerateUserEmail.php" method="post">
                                 <fieldset>
 
                                     <h2 id="hot-or-cold" class="mt-1">Hot / Cold Snare Polypectomy?</h2>

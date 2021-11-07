@@ -15,9 +15,10 @@ $url =  "{$_SERVER['REQUEST_URI']}";
 ?>
 
 
-<nav class="mt-10 navbar navbar-horizontal navbar-expand-lg navbar-dark gieqsGold"  style="z-index: 1 !important;">
+<nav class="mt-10 navbar navbar-horizontal navbar-expand-lg navbar-dark gieqsGold" style="z-index: 1 !important;">
     <div class="container">
-        <a class="navbar-brand" href="<?php echo BASE_URL; ?>/pages/learning/index.php"><?php echo 'Global Polypectomy Assessment Tool';?>
+        <a class="navbar-brand"
+            href="<?php echo BASE_URL; ?>/pages/learning/index.php"><?php echo 'Global Polypectomy Assessment Tool';?>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-warning"
             aria-controls="navbar-warning" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,145 +28,38 @@ $url =  "{$_SERVER['REQUEST_URI']}";
             <ul class="navbar-nav align-items-lg-center ml-lg-auto">
 
 
-            
-            <?php  if ($currentUserLevel == '6'){
-                        ?>
+
                 
-                <li class="nav-item">
-                   
-                    <a class="nav-link nav-link-icon">
-                       
-                        
-                        <span class="nav-link-inner--text ">GIEQs <span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2">FREE</span> Member</span></a>
-                      
-                    
-                    
-                    
-
-
-                           
-
-
-                                <!-- <span class="nav-link-inner--text ">Complex</span> -->
-                            
-                </li>
 
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon">
+                    <a class="nav-link nav-link-icon" href="<?php echo BASE_URL;?>/pages/learning/pages/scores/dashboard-gpat.php">
 
-                        <span class="nav-link-inner--text ">You are missing out on key features.   <span class="subscribe-now gieqsGold cursor-pointer" data-assetid="5">Upgrade now!</span></span>
+                        <span class="nav-link-inner--text ">Dashboard</span>
                     </a>
                 </li>
-                <?php
-            }else if ($currentUserLevel == '4'){
 
-                if ($sitewide_status == 1){
-                ?>
-                                           <li class="nav-item">
-                   
-                   <a class="nav-link nav-link-icon" 
-                       >
-                       
-                       <span class="nav-link-inner--text ">GIEQs <span class="subscribe-now badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2" style="z-index: -1 !important;">Standard</span> Member</span></a>
-                     
-                   
-                   
-                   
+                <li class="nav-item">
+                    <a class="nav-link nav-link-icon">
 
+                        <span class="nav-link-inner--text ">Logbook</span>
+                    </a>
+                </li>
 
-                          
+                <li class="nav-item">
+                    <a class="nav-link nav-link-icon" href="<?php echo BASE_URL;?>/pages/learning/pages/scores/technique.php">
 
+                        <span class="nav-link-inner--text ">Enter New Assessment</span>
+                    </a>
+                </li>
 
-                               <!-- <span class="nav-link-inner--text ">Complex</span> -->
-                           
-               </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-link-icon">
 
-               <li class="nav-item">
-                   <a class="nav-link nav-link-icon" class="nav-link-inner--text"
-                       >
-
-                       <span class="nav-link-inner--text mr-2">Want access to ALL content and more?  <span class="subscribe-now gieqsGold cursor-pointer">Upgrade Now!</span>
-                   </a>
-               </li>
-                <?php
-
-                }elseif ($sitewide_status == 2){
-                    ?>
-                                               <li class="nav-item">
-                       
-                       <a class="nav-link nav-link-icon" 
-                           >
-                           
-                           <span class="nav-link-inner--text ">GIEQs <span class="subscribe-now badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2" style="z-index: -1 !important;">PRO</span> Member</span></a>
-                         
-                       
-                       
-                       
-    
-    
-                              
-    
-    
-                                   <!-- <span class="nav-link-inner--text ">Complex</span> -->
-                               
-                   </li>
-    
-                   <li class="nav-item">
-                       <a class="nav-link nav-link-icon" class="nav-link-inner--text"
-                           >
-    
-                           <span class="nav-link-inner--text ">Thanks for your support!</span>                       </a>
-                   </li>
-                    <?php
-    
-                    }
-
-                    }else {
-                ?>
-                                           <li class="nav-item">
-                   
-                   <a class="nav-link nav-link-icon"
-                       >
-                       
-                       <span class="nav-link-inner--text ">GIEQs&nbsp;<span class="badge badge-pill bg-gieqsGold text-dark badge-floating border-dark mr-2" style="z-index: -1 !important;">PRO</span>Member</span></a>
-                     
-                   
-                   
-                   
+                        <span class="nav-link-inner--text ">Request New Assessment</span>
+                    </a>
+                </li>
 
 
-                          
-
-
-                               <!-- <span class="nav-link-inner--text ">Complex</span> -->
-                           
-               </li>
-
-               <li class="nav-item">
-                   <a class="nav-link nav-link-icon"
-                       >
-
-                       <span class="nav-link-inner--text ">Thanks for your support!</span>
-                   </a>
-               </li>
-                <?php
-                    }
-                ?>
-
-<li class="nav-item">
-
-<a class="nav-link nav-link-icon"><?php //echo $coin->current_balance($userid) . '&nbsp;';
-?>
-<img
-src="<?php echo BASE_URL . "/assets/img/icons/coin.svg"?>"
-alt="GIEQs Coin" 
-/>
-</a>
-
-
-</li>
-
-               
             </ul>
 
         </div>

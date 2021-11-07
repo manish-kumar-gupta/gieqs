@@ -308,7 +308,7 @@
         $assetManager = new assetManager;
 
         require_once BASE_URI . '/assets/scripts/classes/coin.class.php';
-$coin = new coin;
+        $coin = new coin;
 
         $video_PDO = new video_PDO;
 
