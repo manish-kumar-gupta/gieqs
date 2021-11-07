@@ -750,12 +750,17 @@ top: 0px;
 
                 })
 
+                var fraction = (score_total) / (numberFilled * 5);
+
+                var fraction_weighted = weight_fraction_score(fraction);
+
                 return {
 
 
                     "score_total": score_total,
                     "score_denominator": numberFilled * 5,
-                    "fraction": (score_total) / (numberFilled * 5),
+                    "weighted_fraction": fraction_weighted,
+                    "fraction": fraction,
                     "elements": scores,
 
 
@@ -820,12 +825,18 @@ top: 0px;
                 var score = calculateScore();
                 //remove the check from the tag removed
 
+                console.dir(score);
+
                 if (isNaN(score.score_total) === false) {
 
                     $('#numeratorSum').text(score.score_total);
                     $('#denominatorSum').text(score.score_denominator);
                     $('#fraction').text(score.fraction.toFixed(2));
 
+                    if (isNaN(SMSA.SMSA_total) === false && isNaN(SMSAplus.SMSA_plus_total) === false){
+                    $('#weighted-fraction').text(+score.weighted_fraction.toFixed(2));
+                    }
+                    
 
                 };
 
@@ -1206,6 +1217,7 @@ top: 0px;
                             $('#denominatorSum').text(score.score_denominator);
                             $('#fraction').text(+score.fraction.toFixed(2));
 
+
                             //numb = +numb.toFixed(2);
 
                         };
@@ -1268,6 +1280,60 @@ top: 0px;
                 return request;
 
 
+
+
+            }
+
+            function weight_fraction_score(fraction) {
+
+                var SMSAscore = calculateDifficultyScore();
+                var SMSAplus = calculatePlusDifficultyScore();
+
+                if (isNaN(SMSAscore.SMSA_total) === false && isNaN(SMSAplus.SMSA_plus_total) === false){
+
+                    if (SMSAplus.SMSA_plus_total > 0){
+
+                        SMSA = 5;
+                        
+                    }else if (SMSAscore.SMSA_group > 1 && SMSAscore.SMSA_group < 5){
+
+                        SMSA = SMSAscore.SMSA_group;
+                    
+                    }else{
+
+                        return false;
+                    }
+
+                if (SMSA == 1) {
+
+                    return false;
+                } else if (SMSA == 2) {
+
+                    weightedFraction = fraction / 4;
+
+                } else if (SMSA == 3) {
+
+                    weightedFraction = fraction / 3;
+
+                } else if (SMSA == 4) {
+
+                    weightedFraction = fraction / 2;
+
+                } else if (SMSA == 5) {
+
+                    weightedFraction = fraction;
+
+                } else {
+
+                    return false;
+                }
+
+                return weightedFraction;
+
+                }else{
+
+                    return false;
+                }
 
 
             }
@@ -1514,6 +1580,8 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                                         </P>
                                         <P style="text-align:left;" class="strong h6">Fraction: <span id="fraction"
                                                 class="result"></span></P>
+                                        
+                                                
 
                                         <p style="text-align:left; mt-3" class="strong h6">SMSA: <span id="SMSA_total"
                                                 class="result"></span></p>
@@ -1525,6 +1593,8 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                                                 id="numeratorSMSAplus" class="result"></span>&nbsp;/&nbsp;<span
                                                 id="denominatorSMSAplus" class="result"></span></p>
 
+                                                <P style="text-align:left;" class="strong h6">Weighted Fraction: <span id="weighted-fraction"
+                                                class="result"></span></P>
 
                                     </div>
 
@@ -2344,7 +2414,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
         $('body').on('change', '.SMSA', function() {
 
-            var SMSA = calculateDifficultyScore();
+           /*  var SMSA = calculateDifficultyScore();
             //remove the check from the tag removed
 
             if (isNaN(SMSA.SMSA_total) === false) {
@@ -2352,7 +2422,9 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                 $('#SMSA_total').text(SMSA.SMSA_total);
                 $('#SMSA_group').text(SMSA.SMSA_group);
 
-            };
+            }; */
+
+            fullScoreUpdate();
 
 
 
@@ -2362,7 +2434,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
 
 
-            //alert('hello');
+            /* //alert('hello');
             var SMSAplus = calculatePlusDifficultyScore();
             //remove the check from the tag removed
 
@@ -2371,7 +2443,10 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                 $('#numeratorSMSAplus').text(SMSAplus.SMSA_plus_total);
                 $('#denominatorSMSAplus').text(4);
 
-            };
+            }; */
+
+            fullScoreUpdate();
+
 
 
 
@@ -2381,7 +2456,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
 
 
-            //alert('hello');
+           /*  //alert('hello');
             var score = calculateScore();
             //remove the check from the tag removed
 
@@ -2393,7 +2468,9 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
                 //numb = +numb.toFixed(2);
 
-            };
+            }; */
+
+            fullScoreUpdate();
 
 
 
