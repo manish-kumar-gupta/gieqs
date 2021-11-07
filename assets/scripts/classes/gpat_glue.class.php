@@ -48,12 +48,71 @@ class gpat_glue extends gpat_score
 
     /*
 
+    use the SMSA to weight the fraction score 
+
+    
+
     */
 
+    public function weight_fraction_score($fraction, $SMSA){
 
+        //options SMSA 2, 3, 4, 5 (plus)
+
+        if ($SMSA == 1){
+
+            return false;
+        }else if ($SMSA == 2){
+
+            $weightedFraction = $fraction / 4;
+
+        }else if ($SMSA == 3){
+
+            $weightedFraction = $fraction / 3;
+
+        }else if ($SMSA == 4){
+
+            $weightedFraction = $fraction / 2;
+
+        }else if ($SMSA == 5){
+
+            $weightedFraction = $fraction;
+
+        }else{
+
+            return false;
+        }
+
+        return $weightedFraction;
+
+
+    }
 
 
     //per domain scoring
+
+    /*
+
+    //define domains
+        global, injection, snare placement, safety checks, defect assessment, accessory techniques
+
+
+
+
+
+
+
+    */
+
+    public function returnDomainSpecificScore($gpatid, $domain){
+
+        //global = 1, injection = 2, snare placement = 3, safety checks = 4, defect assessment = 5, accessory techniques = 6
+
+        //write into java and save
+
+
+
+
+    }
 
     //data split last 3 versus current 3
 

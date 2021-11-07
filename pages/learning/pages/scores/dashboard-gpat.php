@@ -1629,6 +1629,14 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                             <br>
 
                             <p id="progress" class="section display-3">Progress</p>
+                            <p><?php
+                            
+                            echo 'Testing';
+                            echo '<br/><br/>';
+                            echo $gpat_glue->weight_fraction_score(0.2, 2);
+                            
+                            
+                            ?></p>
 
                             <p id="domains" class="section display-3">Domains</p>
 

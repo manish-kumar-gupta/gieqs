@@ -1119,10 +1119,10 @@ top: 0px;
 
 
 
-                 
-                 id: id,
 
-                 }
+                    id: id,
+
+                }
 
                 const jsonString = JSON.stringify(dataToSend);
                 console.log(jsonString);
@@ -1154,84 +1154,84 @@ top: 0px;
                         var parsedData = $.parseJSON(data);
                         console.dir(parsedData);
 
-                        $(parsedData).each(function (i, val) {
-						$.each(val, function (k, v) {
+                        $(parsedData).each(function(i, val) {
+                            $.each(val, function(k, v) {
 
-							if ($("#" + k).is(':checkbox')) {
+                                if ($("#" + k).is(':checkbox')) {
 
-								if (v == 1) {
+                                    if (v == 1) {
 
-									$("#" + k).prop("checked", true);
-									checkedInputs.push("#" + k);
+                                        $("#" + k).prop("checked", true);
+                                        checkedInputs.push("#" + k);
 
-								} else {
+                                    } else {
 
-									$("#" + k).prop("checked", false);
+                                        $("#" + k).prop("checked", false);
 
-								}
-
-
-							} else if ($("#" + k).attr('id') == 'validated') {
-								
-								$("#" + k).val(v);
-
-								console.log('found a validate and v is ' + v);
-
-								//disable the save button if validated
-
-								if (v == '1'){
-
-								$("#saveesdLesion").hide();
-
-								}
-
-								
-							} else {
+                                    }
 
 
-								$("#" + k).val(v);
+                                } else if ($("#" + k).attr('id') == 'validated') {
 
-							}
-							//console.log(k+' : '+ v);
-						});
+                                    $("#" + k).val(v);
 
-					});
+                                    console.log('found a validate and v is ' + v);
 
-                    var score = calculateScore();
-            //remove the check from the tag removed
+                                    //disable the save button if validated
 
-            if (isNaN(score.score_total) === false) {
+                                    if (v == '1') {
 
-                $('#numeratorSum').text(score.score_total);
-                $('#denominatorSum').text(score.score_denominator);
-                $('#fraction').text(+score.fraction.toFixed(2));
+                                        $("#saveesdLesion").hide();
 
-                //numb = +numb.toFixed(2);
+                                    }
 
-            };
 
-            var SMSA = calculateDifficultyScore();
-            //remove the check from the tag removed
+                                } else {
 
-            if (isNaN(SMSA.SMSA_total) === false) {
 
-                $('#SMSA_total').text(SMSA.SMSA_total);
-                $('#SMSA_group').text(SMSA.SMSA_group);
+                                    $("#" + k).val(v);
 
-            };
-var SMSAplus = calculatePlusDifficultyScore();
-            //remove the check from the tag removed
+                                }
+                                //console.log(k+' : '+ v);
+                            });
 
-            if (isNaN(SMSAplus.SMSA_plus_total) === false) {
+                        });
 
-                $('#numeratorSMSAplus').text(SMSAplus.SMSA_plus_total);
-                $('#denominatorSMSAplus').text(4);
+                        var score = calculateScore();
+                        //remove the check from the tag removed
 
-            };
+                        if (isNaN(score.score_total) === false) {
 
-                    esdLesionPassed = id;
-                    
-                    edit = 1;
+                            $('#numeratorSum').text(score.score_total);
+                            $('#denominatorSum').text(score.score_denominator);
+                            $('#fraction').text(+score.fraction.toFixed(2));
+
+                            //numb = +numb.toFixed(2);
+
+                        };
+
+                        var SMSA = calculateDifficultyScore();
+                        //remove the check from the tag removed
+
+                        if (isNaN(SMSA.SMSA_total) === false) {
+
+                            $('#SMSA_total').text(SMSA.SMSA_total);
+                            $('#SMSA_group').text(SMSA.SMSA_group);
+
+                        };
+                        var SMSAplus = calculatePlusDifficultyScore();
+                        //remove the check from the tag removed
+
+                        if (isNaN(SMSAplus.SMSA_plus_total) === false) {
+
+                            $('#numeratorSMSAplus').text(SMSAplus.SMSA_plus_total);
+                            $('#denominatorSMSAplus').text(4);
+
+                        };
+
+                        esdLesionPassed = id;
+
+                        edit = 1;
 
                         //put the data in the right place
 
@@ -1531,7 +1531,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                                     <?php if ($isSuperuser == 1){?>
                                     <p><button id='saveScore' type="button"
                                             class="btn btn-sm text-white btn-dark">Save</button></p>
-                                            <?php } ?>
+                                    <?php } ?>
 
                                     <p><button id='calculate' type="button" class="btn btn-sm text-white btn-dark"
                                             name="calculate">Validate and Save</button></p>
@@ -1624,8 +1624,9 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                             <br>
                             <div id='result' class='yellow'></div>
                             <br>
-<!--                             <div id="chartContainer" class="mb-4" style="height: 370px; width: 100%;"></div>
- -->                            <form id="polypectomy-form" action="adminGenerateUserEmail.php" method="post">
+                            <!--                             <div id="chartContainer" class="mb-4" style="height: 370px; width: 100%;"></div>
+ -->
+                            <form id="polypectomy-form" action="adminGenerateUserEmail.php" method="post">
                                 <fieldset>
 
                                     <h2 id="hot-or-cold" class="mt-1">Hot / Cold Snare Polypectomy?</h2>
@@ -2269,7 +2270,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
         //refreshNavAndTags();
 
-        if (edit == 1){
+        if (edit == 1) {
 
             fillForm(esdLesionPassed);
         }
@@ -2711,7 +2712,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                 //copyFormClipboard();
                 var fields = getFieldsToSavePlusSMSA();
                 saveScoreUser(fields);
-                
+
                 //console.log("submitted form");
 
 
