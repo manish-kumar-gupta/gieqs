@@ -728,8 +728,7 @@ top: 0px;
 
                 $.each(scores, function(k, v) {
 
-                    console.log(k + 'is k');
-                    console.log(v + 'is v');
+                    
 
                     if (v == null) {
 
@@ -753,6 +752,72 @@ top: 0px;
                 var fraction = (score_total) / (numberFilled * 5);
 
                 var fraction_weighted = weight_fraction_score(fraction);
+
+                //to get individual component scores
+                var sections = ['global', 'injection', 'snare', 'safety', 'defect', 'accessory'];
+
+                var section_map = new Object;
+
+                $.each(sections, function(k, v) {
+
+                    var section_array = null;
+                    var section_array = new Object;
+                    section_map[v] = new Object;
+                    console.log(k + 'is k');
+                    console.log(v + 'is v');
+                    $('#'+v+'').parent().find('.score:not(:disabled)').each(function() {
+
+                        console.log(this);
+                        var name = $(this).attr('id');
+
+                //scores[name] = $(this).val();
+                        section_array[name] = $(this).val();
+                     })
+
+                     //for each section array determine the score and fraction
+
+                            var score_total_section = 0;
+
+                            var iterator_section = 0;
+
+                            var numberFilled_section = 0;
+
+                            $.each(section_array, function(k, v) {
+
+                                
+
+                                if (v == null) {
+
+                                    iterator_section = iterator_section + 1;
+                                    return true;
+
+                                }
+
+                                var vInt = null;
+                                var vInt = +v;
+
+                                score_total_section = score_total_section + vInt;
+                                iterator_section = iterator_section + 1;
+
+
+                                numberFilled_section = numberFilled_section + 1;
+
+
+                            })
+
+                            section_array['score_total_section'] = score_total_section;
+                            section_array['iterator_section'] = iterator_section;
+                            section_array['numberFilled_section'] = numberFilled_section;
+
+
+                     section_map[v] = section_array;
+                    
+
+
+                })
+
+                console.dir(section_map);
+                
 
                 return {
 
@@ -835,6 +900,9 @@ top: 0px;
 
                     if (isNaN(SMSA.SMSA_total) === false && isNaN(SMSAplus.SMSA_plus_total) === false){
                     $('#weighted-fraction').text(+score.weighted_fraction.toFixed(2));
+                    }else{
+                        $('#weighted-fraction').text('*fill SMSA first*');
+
                     }
                     
 
