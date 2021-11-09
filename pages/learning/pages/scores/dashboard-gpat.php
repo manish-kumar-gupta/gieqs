@@ -1633,8 +1633,18 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                             
                             echo 'Testing';
                             echo '<br/><br/>';
-                            echo $gpat_glue->weight_fraction_score(0.2, 2);
-                            
+                            var_dump($gpat_glue->getUserFractionNonWeighted($userid, 3, false));
+                            echo '<br/><br/>';
+                            var_dump($gpat_glue->getUserFractionWeighted($userid, 3, false));
+                            echo '<br/><br/>';
+
+                            $array = [0=>'0.25', 1=>'0.3'];
+
+                            echo $gpat_glue->averageArray($gpat_glue->getUserFractionNonWeighted($userid, 3, false), true);
+                            echo '<br/><br/>';
+                            echo $gpat_glue->averageArray($gpat_glue->getUserFractionWeighted($userid, 3, false), true);
+
+
                             
                             ?></p>
 

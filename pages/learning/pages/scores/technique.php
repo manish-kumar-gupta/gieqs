@@ -1193,7 +1193,7 @@ top: 0px;
 
                     var value = null;
 
-                    name = $(this).attr("name");
+                    name = $(this).attr("id");
 
                     value = $(this).val();
 
@@ -2207,7 +2207,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                                 </fieldset>
 
 
-
+                                <!-- <input type="hidden" id="user_id" class="details" value="<?php //echo $userid;?>"> -->
 
 
 
