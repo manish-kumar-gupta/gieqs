@@ -193,11 +193,13 @@ Class formGenerator {
 	}
 	
 	public function generateDate ($label, $id, $class, $tooltip){
-		
-		echo "<div id='".$id."row' class='row'>";
-		echo "<label for='$id' id='".$id."label' title='$tooltip'>$label&nbsp&nbsp</label>";
-		echo "<input name='$id' id='$id' class='$class' type='date'>";
+		echo "<label for='$id' id='".$id."label' title='$tooltip' data-toggle='tooltip' data-placement='right' class='cursor-pointer'>$label&nbsp&nbsp</label>";
+		echo '<div class="input-group mb-3">';
+		echo "<input name='$id' id='$id' class='$class formInputs form-control' type='date'>";
+
 		echo "</div>";	
+
+			
 		
 	}
 	

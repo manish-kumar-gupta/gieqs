@@ -2,7 +2,7 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 17-10-2021
+ * Create Date: 9-11-2021
  *
  * DJT 2019
  *
@@ -25,7 +25,6 @@
           }
           }
 
-          error_reporting(E_ALL);
 
 Class gpat_score {
 
@@ -69,6 +68,9 @@ Class gpat_score {
 	private $numeratorSMSAplus; //varchar(255)
 	private $denominatorSMSAplus; //varchar(255)
 	private $snare_capture; //varchar(255)
+	private $edit; //varchar(255)
+	private $date_procedure; //date
+	private $weighted_fraction; //varchar(255)
 	private $connection;
 
 	public function __construct(){
@@ -81,7 +83,7 @@ Class gpat_score {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_gpat_score($tip_control,$extent,$positioning,$appropriate_technique,$injection_plane,$injection_dynamic,$injection_access,$snare_size,$snare_position,$snare_visualised,$residual,$independent_movement,$lift_movement,$mucosa,$thermal_ablation,$submucosa,$muscularis,$clip_placement,$retrieval_device,$coag_grasper,$size,$morphology,$site,$access,$size_40_smsaplus,$nongranular_smsaplus,$non_lifting,$location_difficult,$user_id,$created,$updated,$numeratorSum,$denominatorSum,$fraction,$SMSA_total,$SMSA_group,$numeratorSMSAplus,$denominatorSMSAplus,$snare_capture){
+	public function New_gpat_score($tip_control,$extent,$positioning,$appropriate_technique,$injection_plane,$injection_dynamic,$injection_access,$snare_size,$snare_position,$snare_visualised,$residual,$independent_movement,$lift_movement,$mucosa,$thermal_ablation,$submucosa,$muscularis,$clip_placement,$retrieval_device,$coag_grasper,$size,$morphology,$site,$access,$size_40_smsaplus,$nongranular_smsaplus,$non_lifting,$location_difficult,$user_id,$created,$updated,$numeratorSum,$denominatorSum,$fraction,$SMSA_total,$SMSA_group,$numeratorSMSAplus,$denominatorSMSAplus,$snare_capture,$edit,$date_procedure,$weighted_fraction){
 		$this->tip_control = $tip_control;
 		$this->extent = $extent;
 		$this->positioning = $positioning;
@@ -121,6 +123,9 @@ Class gpat_score {
 		$this->numeratorSMSAplus = $numeratorSMSAplus;
 		$this->denominatorSMSAplus = $denominatorSMSAplus;
 		$this->snare_capture = $snare_capture;
+		$this->edit = $edit;
+		$this->date_procedure = $date_procedure;
+		$this->weighted_fraction = $weighted_fraction;
 	}
 
     /**
@@ -172,6 +177,9 @@ Class gpat_score {
 			$this->numeratorSMSAplus = $row["numeratorSMSAplus"];
 			$this->denominatorSMSAplus = $row["denominatorSMSAplus"];
 			$this->snare_capture = $row["snare_capture"];
+			$this->edit = $row["edit"];
+			$this->date_procedure = $row["date_procedure"];
+			$this->weighted_fraction = $row["weighted_fraction"];
 		}
 	}
     /**
@@ -229,6 +237,9 @@ $q = "Select * from `gpat_score` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["numeratorSMSAplus"] = $row["numeratorSMSAplus"];
 			$rowReturn[$x]["denominatorSMSAplus"] = $row["denominatorSMSAplus"];
 			$rowReturn[$x]["snare_capture"] = $row["snare_capture"];
+			$rowReturn[$x]["edit"] = $row["edit"];
+			$rowReturn[$x]["date_procedure"] = $row["date_procedure"];
+			$rowReturn[$x]["weighted_fraction"] = $row["weighted_fraction"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -290,6 +301,9 @@ $q = "Select * from `gpat_score` WHERE `id` = $key";
 			$rowReturn[$x]["numeratorSMSAplus"] = $row["numeratorSMSAplus"];
 			$rowReturn[$x]["denominatorSMSAplus"] = $row["denominatorSMSAplus"];
 			$rowReturn[$x]["snare_capture"] = $row["snare_capture"];
+			$rowReturn[$x]["edit"] = $row["edit"];
+			$rowReturn[$x]["date_procedure"] = $row["date_procedure"];
+			$rowReturn[$x]["weighted_fraction"] = $row["weighted_fraction"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -824,6 +838,27 @@ $q = "UPDATE `gpat_score` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return edit - varchar(255)
+	 */
+	public function getedit(){
+		return $this->edit;
+	}
+
+	/**
+	 * @return date_procedure - date
+	 */
+	public function getdate_procedure(){
+		return $this->date_procedure;
+	}
+
+	/**
+	 * @return weighted_fraction - varchar(255)
+	 */
+	public function getweighted_fraction(){
+		return $this->weighted_fraction;
+	}
+
+	/**
 	 * @param Type: int(11)
 	 */
 	public function setid($id){
@@ -1101,6 +1136,27 @@ $q = "UPDATE `gpat_score` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function setsnare_capture($snare_capture){
 		$this->snare_capture = $snare_capture;
+	}
+
+	/**
+	 * @param Type: varchar(255)
+	 */
+	public function setedit($edit){
+		$this->edit = $edit;
+	}
+
+	/**
+	 * @param Type: date
+	 */
+	public function setdate_procedure($date_procedure){
+		$this->date_procedure = $date_procedure;
+	}
+
+	/**
+	 * @param Type: varchar(255)
+	 */
+	public function setweighted_fraction($weighted_fraction){
+		$this->weighted_fraction = $weighted_fraction;
 	}
 
     /**

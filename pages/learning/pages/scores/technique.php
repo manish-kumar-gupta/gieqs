@@ -6,6 +6,30 @@
 
 <head>
 
+<!--
+
+Readme
+
+All fields required for hot snare
+
+Limited required for cold snare
+
+SMSA always required
+
+SMSA plus determined upon whether hot or cold
+if hot, =/4
+if cold, =/2
+
+
+
+
+
+
+
+
+
+-->
+
     <?php
 
 //error_reporting(E_ALL);
@@ -37,6 +61,7 @@
     <title>Global Online Endoscopy Trainer - Scores - Global Polypectomy Assessment Tool</title>
 
 
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/flatpickr/dist/flatpickr.min.css">
 
     <style>
     .gieqsGold {
@@ -642,15 +667,82 @@ top: 0px;
 
             function calculatePlusDifficultyScore() {
 
-                var non_lifting = $('#non_lifting').val();
-                //var PANL = $('#PANL').val();
+                if ($('#non_lifting').prop('disabled') === false) {
+                    var non_lifting = $('#non_lifting').val();
+                } else {
+                    var non_lifting = null;
+                }
 
-                var location_difficult = $('#location_difficult').val();
+
+                if ($('#location_difficult').prop('disabled') === false) {
+                    var location_difficult = $('#location_difficult').val();
+                } else {
+                    var location_difficult = null;
+                }
+                //var location_difficult = $('#location_difficult').val();
                 //var demarcation = $('#demarcation').val();
                 //var paris = $('#paris').val();
 
-                var size_40_smsaplus = $('#size_40_smsaplus').val();
-                var nongranular_smsaplus = $('#nongranular_smsaplus').val();
+
+                if ($('#size_40_smsaplus').prop('disabled') === false) {
+                    var size_40_smsaplus = $('#size_40_smsaplus').val();
+                } else {
+                    var size_40_smsaplus = null;
+                }
+
+                //var size_40_smsaplus = $('#size_40_smsaplus').val();
+
+                if ($('#nongranular_smsaplus').prop('disabled') === false) {
+                    var nongranular_smsaplus = $('#nongranular_smsaplus').val();
+                } else {
+                    var nongranular_smsaplus = null;
+                }
+
+
+                
+
+                //extra for hot versus cold
+
+                if (hotOrCold == 0) {
+
+                    if ((size_40_smsaplus == null) || (
+                        nongranular_smsaplus == null)) {
+
+                    return 'Missing Variables - please enter all 2 characteristics';
+
+
+                }
+
+               
+                var size_40_smsaplusInt = +size_40_smsaplus;
+               
+                var nongranular_smsaplusInt = +nongranular_smsaplus;
+
+                    if (isNaN(size_40_smsaplusInt) || isNaN(nongranular_smsaplusInt)) {
+
+                        return 'Issue with variables supplied, please check they are numbers';
+
+                    } else {
+
+                        var SMSA_plus_total = size_40_smsaplusInt + nongranular_smsaplusInt;
+
+
+
+                        return {
+
+
+                            "size_40": size_40_smsaplusInt,
+                            "nongranular": nongranular_smsaplusInt,
+                            "SMSA_plus_total": SMSA_plus_total,
+
+
+
+                        }
+                    }
+
+                } else {
+
+                    //var nongranular_smsaplus = $('#nongranular_smsaplus').val();
 
                 if ((non_lifting == null) || (location_difficult == null) || (size_40_smsaplus == null) || (
                         nongranular_smsaplus == null)) {
@@ -665,29 +757,31 @@ top: 0px;
                 var location_difficultInt = +location_difficult;
                 var nongranular_smsaplusInt = +nongranular_smsaplus;
 
-                if (isNaN(non_liftingInt) || isNaN(size_40_smsaplusInt) || isNaN(location_difficultInt) || isNaN(
-                        nongranular_smsaplusInt)) {
+                    if (isNaN(non_liftingInt) || isNaN(size_40_smsaplusInt) || isNaN(location_difficultInt) || isNaN(
+                            nongranular_smsaplusInt)) {
 
-                    return 'Issue with variables supplied, please check they are numbers';
+                        return 'Issue with variables supplied, please check they are numbers';
 
-                } else {
+                    } else {
 
-                    var SMSA_plus_total = non_liftingInt + size_40_smsaplusInt + location_difficultInt +
-                        nongranular_smsaplusInt;
-
-
-
-                    return {
-
-                        "non_lifting": non_liftingInt,
-                        "size_40": size_40_smsaplusInt,
-                        "location_difficult": location_difficultInt,
-                        "nongranular": nongranular_smsaplusInt,
-                        "SMSA_plus_total": SMSA_plus_total,
+                        var SMSA_plus_total = non_liftingInt + size_40_smsaplusInt + location_difficultInt +
+                            nongranular_smsaplusInt;
 
 
 
+                        return {
+
+                            "non_lifting": non_liftingInt,
+                            "size_40": size_40_smsaplusInt,
+                            "location_difficult": location_difficultInt,
+                            "nongranular": nongranular_smsaplusInt,
+                            "SMSA_plus_total": SMSA_plus_total,
+
+
+
+                        }
                     }
+
                 }
 
 
@@ -753,6 +847,26 @@ top: 0px;
 
                 var fraction_weighted = weight_fraction_score(fraction);
 
+
+                var outputObject = new Object;
+
+                outputObject = {
+
+
+                    "score_total": score_total,
+                    "score_denominator": numberFilled * 5,
+                    "weighted_fraction": fraction_weighted,
+                    "fraction": fraction,
+                    "elements": scores,
+                    "sections": {
+
+                        
+
+                    },
+
+
+                }
+
                 //to get individual component scores
                 var sections = ['global', 'injection', 'snare', 'safety', 'defect', 'accessory'];
 
@@ -763,11 +877,11 @@ top: 0px;
                     var section_array = null;
                     var section_array = new Object;
                     section_map[v] = new Object;
-                    console.log(k + 'is k');
-                    console.log(v + 'is v');
-                    $('#'+v+'').parent().find('.score:not(:disabled)').each(function() {
+                    //console.log(k + 'is k');
+                    //console.log(v + 'is v');
+                    $('#'+v+'').parent().parent().find('.score:not(:disabled)').each(function() {
 
-                        console.log(this);
+                        //console.log(this);
                         var name = $(this).attr('id');
 
                 //scores[name] = $(this).val();
@@ -807,19 +921,35 @@ top: 0px;
 
                             section_array['score_total_section'] = score_total_section;
                             section_array['iterator_section'] = iterator_section;
-                            section_array['numberFilled_section'] = numberFilled_section;
-
+                            section_array['numberFilled_section'] = numberFilled_section * 5;
+                            //*5 because the score is /5 and here we count only the number
 
                      section_map[v] = section_array;
+
+                     outputObject["sections"][v] = new Object;
+
+                     outputObject["sections"][v] = {
+
+                   
+
+                        "numerator" : section_array.score_total_section, 
+                        "denominator" : section_array.numberFilled_section,
+
+
+
+
+                     };
+                     
                     
 
 
                 })
 
-                console.dir(section_map);
+                console.dir(outputObject);
                 
+                return outputObject;
 
-                return {
+                /* return {
 
 
                     "score_total": score_total,
@@ -827,9 +957,19 @@ top: 0px;
                     "weighted_fraction": fraction_weighted,
                     "fraction": fraction,
                     "elements": scores,
+                    "sections": {
+
+                        "global" : { 
+
+                            "numerator" : section_map.global.score_total_section, 
+                            "denominator" : section_map.global.numberFilled_section,
+
+                        },
+
+                    },
 
 
-                }
+                } */
 
 
 
@@ -851,6 +991,8 @@ top: 0px;
 
 
                 })
+
+                hotOrCold = 0; // hot = 1, cold = 0
 
                 headingsHider();
 
@@ -875,7 +1017,12 @@ top: 0px;
                     $('#SMSA_total').text(SMSA.SMSA_total);
                     $('#SMSA_group').text(SMSA.SMSA_group);
 
-                };
+                }else{
+
+                    $('#SMSA_total').text('');
+                    $('#SMSA_group').text('');
+
+                }
 
                 var SMSAplus = calculatePlusDifficultyScore();
                 //remove the check from the tag removed
@@ -883,9 +1030,20 @@ top: 0px;
                 if (isNaN(SMSAplus.SMSA_plus_total) === false) {
 
                     $('#numeratorSMSAplus').text(SMSAplus.SMSA_plus_total);
-                    $('#denominatorSMSAplus').text(4);
+                    if (hotOrCold == 0){
+                    $('#denominatorSMSAplus').text(2);
+                    }else{
+                        $('#denominatorSMSAplus').text(4);
 
-                };
+                    }
+
+                }else{
+
+                    $('#numeratorSMSAplus').text('');
+                    $('#denominatorSMSAplus').text('');
+
+                    //special case cold snare there is only one
+                }
 
                 var score = calculateScore();
                 //remove the check from the tag removed
@@ -898,10 +1056,20 @@ top: 0px;
                     $('#denominatorSum').text(score.score_denominator);
                     $('#fraction').text(score.fraction.toFixed(2));
 
+                    $.each(score.sections, function(k, v) {
+
+                        var section = k;
+
+                        $('#'+k).parent().find('.section-numerator').text(v.numerator);
+                        $('#'+k).parent().find('.section-denominator').text(v.denominator);
+
+                    });
+                    
+
                     if (isNaN(SMSA.SMSA_total) === false && isNaN(SMSAplus.SMSA_plus_total) === false){
-                    $('#weighted-fraction').text(+score.weighted_fraction.toFixed(2));
+                    $('#weighted_fraction').text(+score.weighted_fraction.toFixed(2));
                     }else{
-                        $('#weighted-fraction').text('*fill SMSA first*');
+                        $('#weighted_fraction').text('*fill SMSA first*');
 
                     }
                     
@@ -928,6 +1096,8 @@ top: 0px;
 
 
                 })
+
+                hotOrCold = 1; //cold = 0, hot = 1;
 
                 headingsHider();
 
@@ -1017,7 +1187,7 @@ top: 0px;
 
                 var names = {};
 
-                $('.score, .SMSA, .SMSAplus').each(function() {
+                $('.details, .score, .SMSA, .SMSAplus').each(function() {
 
                     var name = null;
 
@@ -1661,7 +1831,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                                                 id="numeratorSMSAplus" class="result"></span>&nbsp;/&nbsp;<span
                                                 id="denominatorSMSAplus" class="result"></span></p>
 
-                                                <P style="text-align:left;" class="strong h6">Weighted Fraction: <span id="weighted-fraction"
+                                                <P style="text-align:left;" class="strong h6">Weighted Fraction: <span id="weighted_fraction"
                                                 class="result"></span></P>
 
                                     </div>
@@ -1764,8 +1934,10 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                             <br>
                             <!--                             <div id="chartContainer" class="mb-4" style="height: 370px; width: 100%;"></div>
  -->
-                            <form id="polypectomy-form" action="adminGenerateUserEmail.php" method="post">
+                            <form id="polypectomy-form" method="post">
                                 <fieldset>
+                               <?php $formv1->generateDate ('Date of Procedure', 'date_procedure', 'details', 'Enter the date of the procedure');
+                            echo '<br/>'; ?>
 
                                     <h2 id="hot-or-cold" class="mt-1">Hot / Cold Snare Polypectomy?</h2>
                                     <?php
@@ -1774,6 +1946,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
             
                             $formv1->generateSelectCustomCancel ('Type of Polypectomy', 'type_polypectomy', 'branch_point', array('1' => 'Hot Snare - using diathermy', '2' => 'Cold Snare - without diathermy',), 'Select the Type of Polypectomy, cold without diathermy, hot with diathermy');
                             echo '<br/>';
+                           
 
                             
 
@@ -1782,8 +1955,12 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
                                 </fieldset>
                                 <fieldset class="divider">
-
-                                    <h2 id="global" class="mt-4">Global Competencies</h2>
+                                <div class="d-flex flex-row mt-4">
+                                    <h2 id="global" class="mr-auto">Global Competencies</h2>
+<p>Score: <span class="section-numerator"></span>/<span class="section-denominator"></span></p>
+                                    </div>
+                                  
+                                    
 
                                     <?php
                             $formv1->generateSelectCustomCancel ('Tip control:', 'tip_control', 'score', array('1' => '1 - Very Poor - Uncontrolled, shaky and undirected', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - Controlled, stable and purposeful'), 'How good is the tip control demonstrated throughout the video?');
@@ -1804,8 +1981,11 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                                 </fieldset>
 
                                 <fieldset class="divider">
-
-                                    <h2 id="injection" class="mt-4">Injection Technique</h2>
+                                <div class="d-flex flex-row mt-4">
+                                    <h2 id="injection" class="mr-auto">Injection Technique</h2>
+<p>Score: <span class="section-numerator"></span>/<span class="section-denominator"></span></p>
+                                    </div>
+                                   
 
                                     <?php
             
@@ -1828,7 +2008,11 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
                                 <fieldset class="divider">
 
-                                    <h2 id="snare" class="mt-4">Snare Placement Technique</h2>
+                                <div class="d-flex flex-row mt-4">
+                                    <h2 id="snare" class="mr-auto">Snare Placement Technique</h2>
+<p>Score: <span class="section-numerator"></span>/<span class="section-denominator"></span></p>
+                                    </div>
+                                    
 
                                     <?php
 
@@ -1857,7 +2041,10 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
                                 <fieldset class="divider">
 
-                                    <h2 id="safety" class="mt-4">Safety Checks Prior to Resection (HOT snare only)</h2>
+                                    <div class="d-flex flex-row mt-4">
+                                    <h2 id="safety" class="mr-auto">Safety Checks Prior to Resection (HOT snare only)</h2>
+<p>Score: <span class="section-numerator"></span>/<span class="section-denominator"></span></p>
+                                    </div>
 
                                     <?php
             
@@ -1877,8 +2064,10 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
                                 <fieldset class="divider">
 
-                                    <h2 id="defect" class="mt-4">Defect Assessment After Resection</h2>
-
+                                <div class="d-flex flex-row mt-4">
+                                    <h2 id="defect" class="mr-auto">Defect Assessment After Resection</h2>
+<p>Score: <span class="section-numerator"></span>/<span class="section-denominator"></span></p>
+                                    </div>
                                     <?php
             
             $formv1->generateSelectCustomCancel ('MUCOSA - Looks for, detects and removes residual at margin and within defect:', 'mucosa', 'score', array('1' => '1 - Very Poor - does not ostensibly and systematically check for residual adenomatous tissue at margin or within defect', '2' => '2 - Poor', '3' => '3 - Average', '4' => '4 - Good', '5' => '5- Very Good - ostensibly and systematically checks for residual adenomatous tissue within defect and at margin'), 'Including residual muscularis mucosae');
@@ -1901,8 +2090,10 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                                 </fieldset>
 
                                 <fieldset class="divider">
-
-                                    <h2 id="accessory" class="mt-4">Accessory Techniques in Polypectomy</h2>
+                                <div class="d-flex flex-row mt-4">
+                                    <h2 id="accessory" class="mr-auto">Accessory Techniques in Polypectomy</h2>
+<p>Score: <span class="section-numerator"></span>/<span class="section-denominator"></span></p>
+                                    </div>
 
                                     <?php
             
@@ -1932,7 +2123,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
             
             
-            $formv1->generateSelectCustomCancel ('Size:', 'size', 'SMSA', array('1' => '< 1cm', '3' => '1 - 1.9cm', '5' => '2 - 2.9cm', '7' => '3 - 3.9cm', '9' => '> 4cm'), '');
+            $formv1->generateSelectCustomCancel ('Size:', 'size', 'SMSA', array('1' => '< 1cm', '3' => '1 - 1.9cm', '5' => '2 - 2.9cm', '7' => '3 - 3.9cm', '9' => '&ge; 4cm'), '');
             echo '<br/>';
             
             $formv1->generateSelectCustomCancel ('Morphology:', 'morphology', 'SMSA', array('1' => 'Pedunculated', '2' => 'Sessile', '3' => 'Flat',), '');
@@ -1953,7 +2144,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
             $formv1->generateSelectCustomCancel ('Size &ge; 40mm:', 'size_40_smsaplus', 'SMSAplus', array('0' => 'No', '1' => 'Yes', ), '');
             echo '<br/>';
 
-            $formv1->generateSelectCustomCancel ('Non-granular morphology:', 'nongranular_smsaplus', 'SMSAplus hot', array('0' => 'No', '1' => 'Yes', ), '');
+            $formv1->generateSelectCustomCancel ('Non-granular morphology:', 'nongranular_smsaplus', 'SMSAplus', array('0' => 'No', '1' => 'Yes', ), '');
             echo '<br/>';
             
             
@@ -2077,6 +2268,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
     <!-- Purpose JS -->
     <script src=<?php echo BASE_URL . "/assets/js/purpose.js"?>></script>
+
     <!-- <script src=<?php echo BASE_URL . "/assets/js/generaljs.js"?>></script> -->
     <script>
     var videoPassed = $("#id").text();
@@ -2086,6 +2278,8 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
     <script src="<?php echo BASE_URL;?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
     <script src="<?php echo BASE_URL;?>/assets/js/canvasjs.min.js"></script>
     <script src="<?php echo BASE_URL;?>/assets/js/jquery.canvasjs.min.js"></script>
+    <script src="<?php echo BASE_URL; ?>/assets/libs/flatpickr/dist/flatpickr.min.js"></script>
+
 
 
 
@@ -2115,6 +2309,8 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
     var firstTime = 1;
     var activeStatus = 1;
+
+    var hotOrCold = null;
 
     var requiredTagCategoriesText = $("#requiredTagCategories").text();
 
@@ -2413,6 +2609,12 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
             fillForm(esdLesionPassed);
         }
 
+        var options = {
+			enableTime: false,
+			allowInput: true
+		};
+    $("#date_procedure").flatpickr(options);
+
         $('#refreshNavigation').click(function() {
 
 
@@ -2492,6 +2694,27 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
             }; */
 
+            //check that 40 is equal
+
+            var SMSA40 = $('#size').val();
+            var SMSAplus40 = $('#size_40_smsaplus').val();
+
+            //if smsa plus is 1 then make sure smsa size = 9 and vice versa
+
+            if (SMSA40 == 9){
+
+                $('#size_40_smsaplus').val('1');
+
+            }else if (SMSA40 > 1 && SMSA40 < 9){
+
+                if ($('#size_40_smsaplus').val() == 1){
+
+                    $('#size_40_smsaplus').val('0');
+
+                }
+
+            }
+
             fullScoreUpdate();
 
 
@@ -2512,6 +2735,27 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                 $('#denominatorSMSAplus').text(4);
 
             }; */
+
+            //check that 40 is equal
+
+            var SMSA40 = $('#size').val();
+            var SMSAplus40 = $('#size_40_smsaplus').val();
+
+            //if smsa plus is 1 then make sure smsa size = 9 and vice versa
+
+            if (SMSAplus40 == 1){
+
+                $('#size').val('9');
+
+            }else if (SMSAplus40 == 0){
+
+                if ($('#size').val() == 9){
+
+                    $('#size').val('');
+
+                }
+
+            }
 
             fullScoreUpdate();
 
@@ -2667,6 +2911,12 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                 }
             },
             rules: {
+                date_procedure : {
+
+                    required: true,
+
+                },
+                
                 type_polypectomy: {
                     required: true,
 
@@ -2829,6 +3079,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                 size_40_smsaplus: {
 
                     required: true,
+                    
                 },
                 nongranular_smsaplus: {
                     required: function(element) {
