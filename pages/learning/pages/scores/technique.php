@@ -1221,6 +1221,44 @@ top: 0px;
 
                 });
 
+                $('.section-numerator').each(function() {
+
+                    var name = null;
+
+                    var value = null;
+
+                    name = $(this).parent().parent().find('h2').attr("id");
+
+                    name += '_numerator';
+
+                    value = $(this).text();
+
+
+                    names[name] = value;
+
+
+
+                });
+
+                $('.section-denominator').each(function() {
+
+                    var name = null;
+
+                    var value = null;
+
+                    name = $(this).parent().parent().find('h2').attr("id");
+
+                    name += '_denominator';
+
+                    value = $(this).text();
+
+
+                    names[name] = value;
+
+
+
+                });
+
                 names['edit'] = edit;
 
                 if (edit == 1) {

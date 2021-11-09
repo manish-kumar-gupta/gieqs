@@ -71,6 +71,18 @@ Class gpat_score {
 	private $edit; //varchar(255)
 	private $date_procedure; //date
 	private $weighted_fraction; //varchar(255)
+	private $global_numerator; //varchar(255)
+	private $injection_numerator; //varchar(255)
+	private $snare_numerator; //varchar(255)
+	private $safety_numerator; //varchar(255)
+	private $defect_numerator; //varchar(255)
+	private $accessory_numerator; //varchar(255)
+	private $global_denominator; //varchar(255)
+	private $injection_denominator; //varchar(255)
+	private $snare_denominator; //varchar(255)
+	private $safety_denominator; //varchar(255)
+	private $defect_denominator; //varchar(255)
+	private $accessory_denominator; //varchar(255)
 	private $connection;
 
 	public function __construct(){
@@ -83,7 +95,7 @@ Class gpat_score {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_gpat_score($tip_control,$extent,$positioning,$appropriate_technique,$injection_plane,$injection_dynamic,$injection_access,$snare_size,$snare_position,$snare_visualised,$residual,$independent_movement,$lift_movement,$mucosa,$thermal_ablation,$submucosa,$muscularis,$clip_placement,$retrieval_device,$coag_grasper,$size,$morphology,$site,$access,$size_40_smsaplus,$nongranular_smsaplus,$non_lifting,$location_difficult,$user_id,$created,$updated,$numeratorSum,$denominatorSum,$fraction,$SMSA_total,$SMSA_group,$numeratorSMSAplus,$denominatorSMSAplus,$snare_capture,$edit,$date_procedure,$weighted_fraction){
+	public function New_gpat_score($tip_control,$extent,$positioning,$appropriate_technique,$injection_plane,$injection_dynamic,$injection_access,$snare_size,$snare_position,$snare_visualised,$residual,$independent_movement,$lift_movement,$mucosa,$thermal_ablation,$submucosa,$muscularis,$clip_placement,$retrieval_device,$coag_grasper,$size,$morphology,$site,$access,$size_40_smsaplus,$nongranular_smsaplus,$non_lifting,$location_difficult,$user_id,$created,$updated,$numeratorSum,$denominatorSum,$fraction,$SMSA_total,$SMSA_group,$numeratorSMSAplus,$denominatorSMSAplus,$snare_capture,$edit,$date_procedure,$weighted_fraction,$global_numerator,$injection_numerator,$snare_numerator,$safety_numerator,$defect_numerator,$accessory_numerator,$global_denominator,$injection_denominator,$snare_denominator,$safety_denominator,$defect_denominator,$accessory_denominator){
 		$this->tip_control = $tip_control;
 		$this->extent = $extent;
 		$this->positioning = $positioning;
@@ -126,6 +138,18 @@ Class gpat_score {
 		$this->edit = $edit;
 		$this->date_procedure = $date_procedure;
 		$this->weighted_fraction = $weighted_fraction;
+		$this->global_numerator = $global_numerator;
+		$this->injection_numerator = $injection_numerator;
+		$this->snare_numerator = $snare_numerator;
+		$this->safety_numerator = $safety_numerator;
+		$this->defect_numerator = $defect_numerator;
+		$this->accessory_numerator = $accessory_numerator;
+		$this->global_denominator = $global_denominator;
+		$this->injection_denominator = $injection_denominator;
+		$this->snare_denominator = $snare_denominator;
+		$this->safety_denominator = $safety_denominator;
+		$this->defect_denominator = $defect_denominator;
+		$this->accessory_denominator = $accessory_denominator;
 	}
 
     /**
@@ -180,6 +204,18 @@ Class gpat_score {
 			$this->edit = $row["edit"];
 			$this->date_procedure = $row["date_procedure"];
 			$this->weighted_fraction = $row["weighted_fraction"];
+			$this->global_numerator = $row["global_numerator"];
+			$this->injection_numerator = $row["injection_numerator"];
+			$this->snare_numerator = $row["snare_numerator"];
+			$this->safety_numerator = $row["safety_numerator"];
+			$this->defect_numerator = $row["defect_numerator"];
+			$this->accessory_numerator = $row["accessory_numerator"];
+			$this->global_denominator = $row["global_denominator"];
+			$this->injection_denominator = $row["injection_denominator"];
+			$this->snare_denominator = $row["snare_denominator"];
+			$this->safety_denominator = $row["safety_denominator"];
+			$this->defect_denominator = $row["defect_denominator"];
+			$this->accessory_denominator = $row["accessory_denominator"];
 		}
 	}
     /**
@@ -240,6 +276,18 @@ $q = "Select * from `gpat_score` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["edit"] = $row["edit"];
 			$rowReturn[$x]["date_procedure"] = $row["date_procedure"];
 			$rowReturn[$x]["weighted_fraction"] = $row["weighted_fraction"];
+			$rowReturn[$x]["global_numerator"] = $row["global_numerator"];
+			$rowReturn[$x]["injection_numerator"] = $row["injection_numerator"];
+			$rowReturn[$x]["snare_numerator"] = $row["snare_numerator"];
+			$rowReturn[$x]["safety_numerator"] = $row["safety_numerator"];
+			$rowReturn[$x]["defect_numerator"] = $row["defect_numerator"];
+			$rowReturn[$x]["accessory_numerator"] = $row["accessory_numerator"];
+			$rowReturn[$x]["global_denominator"] = $row["global_denominator"];
+			$rowReturn[$x]["injection_denominator"] = $row["injection_denominator"];
+			$rowReturn[$x]["snare_denominator"] = $row["snare_denominator"];
+			$rowReturn[$x]["safety_denominator"] = $row["safety_denominator"];
+			$rowReturn[$x]["defect_denominator"] = $row["defect_denominator"];
+			$rowReturn[$x]["accessory_denominator"] = $row["accessory_denominator"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -304,6 +352,18 @@ $q = "Select * from `gpat_score` WHERE `id` = $key";
 			$rowReturn[$x]["edit"] = $row["edit"];
 			$rowReturn[$x]["date_procedure"] = $row["date_procedure"];
 			$rowReturn[$x]["weighted_fraction"] = $row["weighted_fraction"];
+			$rowReturn[$x]["global_numerator"] = $row["global_numerator"];
+			$rowReturn[$x]["injection_numerator"] = $row["injection_numerator"];
+			$rowReturn[$x]["snare_numerator"] = $row["snare_numerator"];
+			$rowReturn[$x]["safety_numerator"] = $row["safety_numerator"];
+			$rowReturn[$x]["defect_numerator"] = $row["defect_numerator"];
+			$rowReturn[$x]["accessory_numerator"] = $row["accessory_numerator"];
+			$rowReturn[$x]["global_denominator"] = $row["global_denominator"];
+			$rowReturn[$x]["injection_denominator"] = $row["injection_denominator"];
+			$rowReturn[$x]["snare_denominator"] = $row["snare_denominator"];
+			$rowReturn[$x]["safety_denominator"] = $row["safety_denominator"];
+			$rowReturn[$x]["defect_denominator"] = $row["defect_denominator"];
+			$rowReturn[$x]["accessory_denominator"] = $row["accessory_denominator"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -859,6 +919,90 @@ $q = "UPDATE `gpat_score` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return global_numerator - varchar(255)
+	 */
+	public function getglobal_numerator(){
+		return $this->global_numerator;
+	}
+
+	/**
+	 * @return injection_numerator - varchar(255)
+	 */
+	public function getinjection_numerator(){
+		return $this->injection_numerator;
+	}
+
+	/**
+	 * @return snare_numerator - varchar(255)
+	 */
+	public function getsnare_numerator(){
+		return $this->snare_numerator;
+	}
+
+	/**
+	 * @return safety_numerator - varchar(255)
+	 */
+	public function getsafety_numerator(){
+		return $this->safety_numerator;
+	}
+
+	/**
+	 * @return defect_numerator - varchar(255)
+	 */
+	public function getdefect_numerator(){
+		return $this->defect_numerator;
+	}
+
+	/**
+	 * @return accessory_numerator - varchar(255)
+	 */
+	public function getaccessory_numerator(){
+		return $this->accessory_numerator;
+	}
+
+	/**
+	 * @return global_denominator - varchar(255)
+	 */
+	public function getglobal_denominator(){
+		return $this->global_denominator;
+	}
+
+	/**
+	 * @return injection_denominator - varchar(255)
+	 */
+	public function getinjection_denominator(){
+		return $this->injection_denominator;
+	}
+
+	/**
+	 * @return snare_denominator - varchar(255)
+	 */
+	public function getsnare_denominator(){
+		return $this->snare_denominator;
+	}
+
+	/**
+	 * @return safety_denominator - varchar(255)
+	 */
+	public function getsafety_denominator(){
+		return $this->safety_denominator;
+	}
+
+	/**
+	 * @return defect_denominator - varchar(255)
+	 */
+	public function getdefect_denominator(){
+		return $this->defect_denominator;
+	}
+
+	/**
+	 * @return accessory_denominator - varchar(255)
+	 */
+	public function getaccessory_denominator(){
+		return $this->accessory_denominator;
+	}
+
+	/**
 	 * @param Type: int(11)
 	 */
 	public function setid($id){
@@ -1157,6 +1301,90 @@ $q = "UPDATE `gpat_score` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function setweighted_fraction($weighted_fraction){
 		$this->weighted_fraction = $weighted_fraction;
+	}
+
+	/**
+	 * @param Type: varchar(255)
+	 */
+	public function setglobal_numerator($global_numerator){
+		$this->global_numerator = $global_numerator;
+	}
+
+	/**
+	 * @param Type: varchar(255)
+	 */
+	public function setinjection_numerator($injection_numerator){
+		$this->injection_numerator = $injection_numerator;
+	}
+
+	/**
+	 * @param Type: varchar(255)
+	 */
+	public function setsnare_numerator($snare_numerator){
+		$this->snare_numerator = $snare_numerator;
+	}
+
+	/**
+	 * @param Type: varchar(255)
+	 */
+	public function setsafety_numerator($safety_numerator){
+		$this->safety_numerator = $safety_numerator;
+	}
+
+	/**
+	 * @param Type: varchar(255)
+	 */
+	public function setdefect_numerator($defect_numerator){
+		$this->defect_numerator = $defect_numerator;
+	}
+
+	/**
+	 * @param Type: varchar(255)
+	 */
+	public function setaccessory_numerator($accessory_numerator){
+		$this->accessory_numerator = $accessory_numerator;
+	}
+
+	/**
+	 * @param Type: varchar(255)
+	 */
+	public function setglobal_denominator($global_denominator){
+		$this->global_denominator = $global_denominator;
+	}
+
+	/**
+	 * @param Type: varchar(255)
+	 */
+	public function setinjection_denominator($injection_denominator){
+		$this->injection_denominator = $injection_denominator;
+	}
+
+	/**
+	 * @param Type: varchar(255)
+	 */
+	public function setsnare_denominator($snare_denominator){
+		$this->snare_denominator = $snare_denominator;
+	}
+
+	/**
+	 * @param Type: varchar(255)
+	 */
+	public function setsafety_denominator($safety_denominator){
+		$this->safety_denominator = $safety_denominator;
+	}
+
+	/**
+	 * @param Type: varchar(255)
+	 */
+	public function setdefect_denominator($defect_denominator){
+		$this->defect_denominator = $defect_denominator;
+	}
+
+	/**
+	 * @param Type: varchar(255)
+	 */
+	public function setaccessory_denominator($accessory_denominator){
+		$this->accessory_denominator = $accessory_denominator;
 	}
 
     /**
