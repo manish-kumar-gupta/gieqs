@@ -13,6 +13,8 @@
             $users = new users;
             $assetManager = new assetManager();
             $gpat_score = new gpat_score();
+            require_once(BASE_URI . '/assets/scripts/classes/gpat_glue.class.php'); 
+      $gpat_glue = new gpat_glue();
 
             error_reporting(-1);
            
@@ -126,9 +128,9 @@
 
                     $newId = $gpat_score->prepareStatementPDO();
 
-                    $returnArray = ['newid'=>$newId];
+                    $returnArray = ['newid'=>$newId, 'user_report_card_id'=>$gpat_glue->determineReportCardNumber($newId, $userid), 'denominator'=>$gpat_glue->determineNumberofReportCards($userid)];
 
-                    //echo $newId;
+                    //echo $newId'user_report_card_id'=>$gpat_glue=>determineReportCardNumber($userid)];
 
                 }
 

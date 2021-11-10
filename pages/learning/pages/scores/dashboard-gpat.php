@@ -1623,10 +1623,113 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
                                 </div>
                             </div> -->
+                            <span class="d-block h1 text-white mr-2 mb-1">Status</span>
 
-                            <br>
-                            <div id='result' class='yellow'></div>
-                            <br>
+                            <div class="d-flex justify-content-between">
+                                       
+
+                           
+
+
+                                <div class="card-body">
+                                    <div class="d-flex">
+                                        
+                                        <div class="pl-4">
+
+                                            <span class="d-block h3 text-white mr-2 mb-1 mt-2"><?php echo $userFunctions->getUserName($userid);?></span>
+
+                                            <span class="d-block h4 text-white mr-2 mb-1 mt-4">Procedures :
+                                            <?php echo $gpat_glue->determineNumberofCompleteReportCards($userid);?></span>
+
+                                            <span class="d-block h6 text-muted mr-2 mb-1 mt-0">Incomplete Reports :
+                                            <?php echo $gpat_glue->determineNumberofIncompleteReportCards($userid);?></span>
+
+
+                                            <!-- <p> 1 / 6 Courses<br />
+                                                1 / 4 Premium Content Packs<br />
+                                                27 / 171 Total Learning Experiences</p>
+
+
+                                            <p>Complete 16 more individual Learning Experiences to reach GIEQs Silver
+                                                Status</p> -->
+
+
+
+                                           <!--  <a class="btn-sm bg-bronze p-1 mt-5 cursor-pointer"
+                                                onclick="window.location.href = siteRoot + 'gieqs-status.php';">
+
+                                                <span class="btn-inner--text text-dark text-sm">Find Out More</span>
+                                            </a> -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                            
+
+                            <div class="card-body ml-5">
+                                    <div class="d-flex">
+                                       <!--  <div>
+                                            <div class="icon text-white icon-lg">
+                                                <i class="fas fa-medal silver"></i>
+
+                                            </div>
+                                        </div> -->
+                                        <div class="pl-4">
+                                            <table>
+                                                <tr>
+                                           <td> <span class="d-block h1 text-white mr-2 mb-1">GPAT<sub>unweighted</sub></span></td><td><span id="gpat_weighted" class="ml-2 d-block h1 text-white mr-2 mb-1"><?php echo $gpat_glue->averageArray($gpat_glue->getUserFractionNonWeighted($userid, 3, false), false);?></span></td>
+                                    </tr>
+                                    <tr>
+                                           <td> <span class="d-block h1 text-white mr-2 mb-1 mt-2">GPAT<sub>weighted</sub></span></td><td><span id="gpat_weighted" class="ml-2 d-block h1 text-white mr-2 mb-1 mt-2"><?php echo $gpat_glue->averageArray($gpat_glue->getUserFractionWeighted($userid, 3, false), false);?></span></td>
+                                    </tr>
+                                    </table>    
+                                           <!--  <span class="d-block h6 text-white mr-2 mb-1 mt-4">Overall Completion
+                                                15.8%</span>
+
+
+                                            <p> 1 / 6 Courses<br />
+                                                1 / 4 Premium Content Packs<br />
+                                                27 / 171 Total Learning Experiences</p>
+
+
+                                            <p>Complete 16 more individual Learning Experiences to reach GIEQs Silver
+                                                Status</p>
+
+
+
+                                            <a class="btn-sm bg-bronze p-1 mt-5 cursor-pointer"
+                                                onclick="window.location.href = siteRoot + 'gieqs-status.php';">
+
+                                                <span class="btn-inner--text text-dark text-sm">Find Out More</span>
+                                            </a> -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="d-block h1 text-dark mr-2 mt-3 mb-1 p-3 bg-gieqsGold">
+                                
+                            <p class="text-center mb-0"><?php echo $gpat_glue->statusText($userid); ?></p>
+                            </div>
+           
+<?php
+                            $dataPoints = $gpat_glue->getSMSAUserReportCards($userid, 3, false);
+
+?>
+                            <div id="chartContainer2" class="mb-4 mt-8" style="min-height: 370px; width: 100%;"></div>
+
+                            <?php
+                            $dataPoints3 = $gpat_glue->getSMSAUserReportCards($userid, 3, false);
+
+?>
+
+                            <div id="chartContainer3" class="mb-4 mt-8" style="min-height: 370px; width: 100%;"></div>
+
+
+
+
 
                             <p id="progress" class="section display-3">Progress</p>
                             <p><?php
@@ -1725,6 +1828,134 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
         var edit = 1;
 
     }
+
+   /*  CanvasJS.addColorSet("gieqsGold",
+                [//colorSet Array
+
+                "#2F4F4F",
+                "#008080",
+                "#2E8B57",
+                "#3CB371",
+                "#90EE90"                
+                ]); */
+
+                CanvasJS.addColorSet("gieqsGold",
+                [//colorSet Array
+
+                "#893101",
+                "#CC5801",
+                "#ED820E",
+                "#DD571C",
+                            
+                ]);
+
+    var chart2 = new CanvasJS.Chart("chartContainer2", {
+	animationEnabled: true,
+	colorSet: "gieqsGold",
+    backgroundColor: null,
+
+
+	title: {
+                        text: "SMSA of Complete Report Cards",
+                        fontColor: "#eec378",
+                        fontFamily: "arial",
+
+
+                    },
+                    axisY: {
+                        title: "Complete Report Cards (n)",
+                        suffix: "",
+                        gridColor: "gray",
+                        fontColor: "white",
+                        tickColor: "white",
+                        lineThickness: 1,
+                        lineColor: "white",
+                        titleFontColor: "white",
+                        labelFontColor: "white",
+                        
+
+
+
+
+                    },
+                    axisX: {
+                        title: "SMSA",
+                        gridColor: "gray",
+                        fontColor: "white",
+                        tickColor: "white",
+                        lineThickness: 1,
+                        lineColor: "white",
+                        titleFontColor: "white",
+                        labelFontColor: "white",
+                        
+
+
+
+
+
+                    },
+	data: [{
+		type: "column",
+		
+		dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+	}]
+});
+chart2.render();
+
+
+//chart for domains
+var chart3 = new CanvasJS.Chart("chartContainer3", {
+	animationEnabled: true,
+	colorSet: "gieqsGold",
+    backgroundColor: null,
+
+
+	title: {
+                        text: "Domain Specific GPAT Scores",
+                        fontColor: "#eec378",
+                        fontFamily: "arial",
+
+
+                    },
+                    axisY: {
+                        title: "Domain Specific GPAT",
+                        suffix: "",
+                        gridColor: "gray",
+                        fontColor: "white",
+                        tickColor: "white",
+                        lineThickness: 1,
+                        lineColor: "white",
+                        titleFontColor: "white",
+                        labelFontColor: "white",
+                        
+
+
+
+
+                    },
+                    axisX: {
+                        title: "Domains",
+                        gridColor: "gray",
+                        fontColor: "white",
+                        tickColor: "white",
+                        lineThickness: 1,
+                        lineColor: "white",
+                        titleFontColor: "white",
+                        labelFontColor: "white",
+                        
+
+
+
+
+
+                    },
+	data: [{
+		type: "column",
+		
+		dataPoints: <?php echo json_encode($dataPoints3, JSON_NUMERIC_CHECK); ?>
+	}]
+});
+chart3.render();
 
     var loaded = 1;
 

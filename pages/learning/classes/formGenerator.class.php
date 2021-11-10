@@ -169,13 +169,26 @@ Class formGenerator {
 		
 	}
 	
-	public function generateText ($label, $id, $class, $tooltip){
+	public function generateText ($label, $id, $class, $tooltip, $value=null){
 		
 		//echo "<div id='".$id."row' class='row'>";
 		
 		echo "<label for='$id' id='".$id."label' title='$tooltip'>$label&nbsp&nbsp</label>";
 		echo '<div class="input-group mb-3">';
-		echo "<input name='$id' id='$id' class='$class formInputs form-control' type='text' size ='55'>";
+		echo "<input name='$id' id='$id' class='$class formInputs form-control' type='text' size ='55' value='$value' disabled>";
+		echo '</div>';
+	
+		//echo "</div>";	
+		
+	}
+
+	public function generateTextDisabled ($label, $id, $class, $tooltip, $value=null){
+		
+		//echo "<div id='".$id."row' class='row'>";
+		
+		echo "<label for='$id' id='".$id."label' title='$tooltip'>$label&nbsp&nbsp</label>";
+		echo '<div class="input-group mb-3">';
+		echo "<input name='$id' id='$id' class='$class formInputs form-control' type='text' size ='55' value='$value'>";
 		echo '</div>';
 	
 		//echo "</div>";	

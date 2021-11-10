@@ -59,6 +59,13 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link nav-link-icon">
+
+                        <span class="nav-link-inner--text ">Help</span>
+                    </a>
+                </li>
+
 
             </ul>
 

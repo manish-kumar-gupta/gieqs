@@ -254,12 +254,14 @@ top: 0px;
         <!--Header CHANGEME-->
 
         <div class="d-flex align-items-end container">
-            <p class="h1 mt-5">Polypectomy Technique Scorer - Video Assessment Version</p>
+            <p class="h1 mt-5 mr-auto">Polypectomy Report Card</p>
+            <p class="h3 gieqsGold complete"></p>
+            
 
 
         </div>
         <div class="d-flex align-items-end container">
-            <p class="text-muted pl-4 mt-2">Towards careful, meticulous polypectomy practice</p>
+            <p class="text-muted pl-4 mt-2">Video Assessment Version</p>
 
         </div>
 
@@ -1076,6 +1078,16 @@ top: 0px;
 
                 };
 
+                if (complete == 1){
+
+                    $('.complete').text('Complete');
+                }else if (complete == 0){
+
+                    $('.complete').text('Incomplete');
+
+
+                }
+
 
 
 
@@ -1260,6 +1272,7 @@ top: 0px;
                 });
 
                 names['edit'] = edit;
+                names['complete'] = complete;
 
                 if (edit == 1) {
 
@@ -1344,6 +1357,14 @@ top: 0px;
                 var request = $.ajax({
                     beforeSend: function() {
 
+                        disableFormInputs('polypectomy-form');
+                        $('.submit-buttons').each(function(){
+
+                            $(this).prop('disabled', true);
+
+                        })
+
+
                     },
                     url: siteRoot + "assets/scripts/scores/saveScoreUser.php",
                     type: "POST",
@@ -1368,22 +1389,41 @@ top: 0px;
 
                         if (parsedData.updated == 1) {
 
-                            alert('Data Updated');
+                            alert('Report Card Updated');
 
                         } else if (parsedData.updated == 1) {
 
-                            alert('Data Updated');
+                            alert('Report Card Updated');
 
                         } else if (parsedData.newid) {
 
                             alert('New Report Card Created');
                             edit = 1;
                             esdLesionPassed = parsedData.newid;
+                            userReportCardid = parsedData.user_report_card_id;
+                            denominator = parsedData.denominator;
+                            $('#user_report_card_numerator').text(userReportCardid);
+                            $('#user_report_card_denominator').text(denominator);
+
+                            $('#successWrapper').collapse('toggle');
+
 
                         }
 
 
                     }
+
+                    enableFormInputs('polypectomy-form');
+                    //the edoscopist field needs to stay disabled
+                    $('#endoscopist').prop('disabled', true);
+                    $('.submit-buttons').each(function(){
+
+                    $(this).prop('disabled', false);
+
+                    fullScoreUpdate();
+
+                    })
+
 
 
 
@@ -1439,6 +1479,7 @@ top: 0px;
 
 
                         var parsedData = $.parseJSON(data);
+                        console.log('Data Parse Follows');
                         console.dir(parsedData);
 
                         $(parsedData).each(function(i, val) {
@@ -1475,8 +1516,17 @@ top: 0px;
 
                                 } else {
 
+                                    if (v == 'null'){
+
+                                        //do nothing 
+
+
+                                    }else{
+
 
                                     $("#" + k).val(v);
+
+                                    }
 
                                 }
                                 //console.log(k+' : '+ v);
@@ -1484,42 +1534,23 @@ top: 0px;
 
                         });
 
-                        var score = calculateScore();
-                        //remove the check from the tag removed
-
-                        if (isNaN(score.score_total) === false) {
-
-                            $('#numeratorSum').text(score.score_total);
-                            $('#denominatorSum').text(score.score_denominator);
-                            $('#fraction').text(+score.fraction.toFixed(2));
-
-
-                            //numb = +numb.toFixed(2);
-
-                        };
-
-                        var SMSA = calculateDifficultyScore();
-                        //remove the check from the tag removed
-
-                        if (isNaN(SMSA.SMSA_total) === false) {
-
-                            $('#SMSA_total').text(SMSA.SMSA_total);
-                            $('#SMSA_group').text(SMSA.SMSA_group);
-
-                        };
-                        var SMSAplus = calculatePlusDifficultyScore();
-                        //remove the check from the tag removed
-
-                        if (isNaN(SMSAplus.SMSA_plus_total) === false) {
-
-                            $('#numeratorSMSAplus').text(SMSAplus.SMSA_plus_total);
-                            $('#denominatorSMSAplus').text(4);
-
-                        };
 
                         esdLesionPassed = id;
 
                         edit = 1;
+
+                        complete = parsedData.complete;
+
+                        //esdLesionPassed = parsedData.newid;
+                            userReportCardid = parsedData.user_gpat_score_id;
+                            denominator = parsedData.user_number_records;
+                            $('#user_report_card_numerator').text(userReportCardid);
+                            $('#user_report_card_denominator').text(denominator);
+
+                            $('#successWrapper').collapse('toggle');
+
+                            fullScoreUpdate()
+
 
                         //put the data in the right place
 
@@ -1777,8 +1808,10 @@ chart.render();
 												<i id="saveesdLesion" class="fas fa-save cursor-pointer mr-4" onclick="saveesdLesionForm();"></i>
 											</div>-->
                                     <div>
-                                        <i id='reset-form' class="fas fa-undo cursor-pointer mr-4" title='Reset Form'
+                                        <i id='reset-form' class="fas fa-undo cursor-pointer mt-2" title='Reset Form (enter new report)'
                                             data-toggle='tooltip' data-placement='right'>&nbsp;Reset Form</i>
+                                            <i id='reload-form' class="fas fa-undo cursor-pointer mt-2" title='Reload Saved Data'
+                                            data-toggle='tooltip' data-placement='right'>&nbsp;Reload Saved Form</i>
                                     </div>
 
 
@@ -1797,12 +1830,13 @@ chart.render();
                                     </button>
                                 </div>
                                 <div id="successWrapper"
-                                    class="success alert alert-success alert-flush alert-dismissible collapse"
+                                    class="success alert alert-success alert-flush alert-dismissible collapse gieqsGold bg-dark"
                                     role="alert">
-                                    <strong>Success!</strong> <span id="success"></span><button type="button"
+                                    <!-- <strong>Saved!</strong> --> <span id="success"></span><!-- <button type="button"
                                         class="close" data-hide="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
-                                    </button>
+                                    </button> -->
+                                    <p>Report Card <span id="user_report_card_numerator">1</span> / <span id="user_report_card_denominator">1</span></p>
                                 </div>
 
                                 <div id="warningWrapper"
@@ -1876,10 +1910,10 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
                                     <?php if ($isSuperuser == 1){?>
                                     <p><button id='saveScore' type="button"
-                                            class="btn btn-sm text-white btn-dark">Save</button></p>
+                                            class="btn btn-sm text-white btn-dark submit-buttons">Save</button></p>
                                     <?php } ?>
 
-                                    <p><button id='calculate' type="button" class="btn btn-sm text-white btn-dark"
+                                    <p><button id='calculate' type="button" class="btn btn-sm text-white btn-dark submit-buttons"
                                             name="calculate">Validate and Save</button></p>
 
                                     <?php if ($isSuperuser == 1){?>
@@ -1974,6 +2008,9 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
  -->
                             <form id="polypectomy-form" method="post">
                                 <fieldset>
+                                <h2 id="details" class="mr-auto">Demographic Details</h2>
+                                <?php $formv1->generateText ('Endoscopist', 'endoscopist', '', 'Not modifiable.  To change details  use my account', $userFunctions->getUserName($userid));
+                            echo '<br/>'; ?>
                                <?php $formv1->generateDate ('Date of Procedure', 'date_procedure', 'details', 'Enter the date of the procedure');
                             echo '<br/>'; ?>
 
@@ -1982,7 +2019,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
             
           
             
-                            $formv1->generateSelectCustomCancel ('Type of Polypectomy', 'type_polypectomy', 'branch_point', array('1' => 'Hot Snare - using diathermy', '2' => 'Cold Snare - without diathermy',), 'Select the Type of Polypectomy, cold without diathermy, hot with diathermy');
+                            $formv1->generateSelectCustomCancel ('Type of Polypectomy', 'type_polypectomy', 'branch_point details', array('1' => 'Hot Snare - using diathermy', '2' => 'Cold Snare - without diathermy',), 'Select the Type of Polypectomy, cold without diathermy, hot with diathermy');
                             echo '<br/>';
                            
 
@@ -2326,6 +2363,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
     <script>
     //the number that are actually loaded
 
+    var complete = 0;
     var siteRoot = rootFolder;
 
     esdLesionPassed = $("#id").text();
@@ -2855,7 +2893,25 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
             //hide the cold snare
             //alert('change');
 
-            location.reload();
+            if (confirm("Are you sure?  This will lose unnsaved data!") == true) {
+                window.location.href = siteRoot + '/pages/learning/pages/scores/technique.php';
+
+  } else {
+    return false;
+  }
+
+
+
+
+        })
+
+        $('body').on('click', '#reload-form', function() {
+
+
+        //hide the cold snare
+        //alert('change');
+
+        location.reload();
 
 
 
@@ -3144,6 +3200,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
 
                 //copyFormClipboard();
+                complete = 1;
                 var fields = getFieldsToSavePlusSMSA();
                 saveScoreUser(fields);
 

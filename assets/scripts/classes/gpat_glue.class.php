@@ -43,6 +43,173 @@ class gpat_glue extends gpat_score
         $this->connection = new DataBaseMysqlPDOLearning();
     }
 
+    /*housekeeping */
+
+    //determine report card number
+
+    public function determineReportCardNumber ($id, $userid)
+    {
+        //little boy
+        //output number of report card in sequential order via created field
+        //false if no report card for this user
+
+
+        $q = "SELECT `id`, `created` FROM `gpat_score` WHERE `user_id` = '$userid' ORDER BY `created` ASC";
+
+        //echo $q . '<br><br>';
+
+        $rowReturn = [];
+
+        $result = $this->connection->RunQuery($q);
+        
+        $x = 0;
+        $nRows = $result->rowCount();
+
+        if ($nRows > 0) {
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                $x++;
+
+                if ($row['id'] == $id){
+
+                    return $x;
+                }
+
+                //$rowReturn[] = $row['fraction'];
+                
+
+
+            }
+
+            //return $x;
+
+        } else {
+            
+
+            return false;
+        }
+
+
+    }
+
+    public function determineNumberofReportCards ($userid)
+    {
+        //little boy
+        //output number of report card in sequential order via created field
+        //false if no report card for this user
+
+
+        $q = "SELECT `created` FROM `gpat_score` WHERE `user_id` = '$userid' ORDER BY `created` ASC";
+
+        //echo $q . '<br><br>';
+
+        $rowReturn = [];
+
+        $result = $this->connection->RunQuery($q);
+        
+        $x = 0;
+        $nRows = $result->rowCount();
+
+        if ($nRows > 0) {
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                //$rowReturn[] = $row['fraction'];
+                $x++;
+
+
+            }
+
+            return $x;
+
+        } else {
+            
+
+            return false;
+        }
+
+
+    }
+
+    public function determineNumberofCompleteReportCards ($userid)
+    {
+        //little boy
+        //output number of report card in sequential order via created field
+        //false if no report card for this user
+
+
+        $q = "SELECT `created` FROM `gpat_score` WHERE `user_id` = '$userid' AND `complete` =  '1' ORDER BY `created` ASC";
+
+        //echo $q . '<br><br>';
+
+        $rowReturn = [];
+
+        $result = $this->connection->RunQuery($q);
+        
+        $x = 0;
+        $nRows = $result->rowCount();
+
+        if ($nRows > 0) {
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                //$rowReturn[] = $row['fraction'];
+                $x++;
+
+
+            }
+
+            return $x;
+
+        } else {
+            
+
+            return false;
+        }
+
+
+    }
+
+    public function determineNumberofIncompleteReportCards ($userid)
+    {
+        //little boy
+        //output number of report card in sequential order via created field
+        //false if no report card for this user
+
+
+        $q = "SELECT `created` FROM `gpat_score` WHERE `user_id` = '$userid' AND `complete` =  '0' OR `complete` IS NULL ORDER BY `created` ASC";
+
+        //echo $q . '<br><br>';
+
+        $rowReturn = [];
+
+        $result = $this->connection->RunQuery($q);
+        
+        $x = 0;
+        $nRows = $result->rowCount();
+
+        if ($nRows > 0) {
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                //$rowReturn[] = $row['fraction'];
+                $x++;
+
+
+            }
+
+            return $x;
+
+        } else {
+            
+
+            return false;
+        }
+
+
+    }
+
 
     //individual score SMSA weighting (probably should be saved and done when saving or will be extensive processing here)
 
@@ -124,9 +291,9 @@ class gpat_glue extends gpat_score
             $last3text = '';
         }
 
-        $q = "SELECT `fraction` FROM `gpat_score` WHERE `user_id` = '$userid' $last3text";
+        $q = "SELECT `fraction` FROM `gpat_score` WHERE `user_id` = '$userid' AND `complete` = '1' $last3text";
 
-        echo $q . '<br><br>';
+        //echo $q . '<br><br>';
 
         $rowReturn = [];
 
@@ -164,6 +331,7 @@ class gpat_glue extends gpat_score
     public function getUserFractionWeighted($userid, $last3, $debug){
 
         // $last3  1 = last 3 moths, 2 = before last 3 , 3 = all data
+        // only complete procedures
 
         //define today
         $date_today = new DateTime();
@@ -192,9 +360,9 @@ class gpat_glue extends gpat_score
             $last3text = '';
         }
 
-        $q = "SELECT `weighted_fraction` FROM `gpat_score` WHERE `user_id` = '$userid' $last3text";
+        $q = "SELECT `weighted_fraction` FROM `gpat_score` WHERE `user_id` = '$userid' AND `complete` = '1' $last3text";
 
-        echo $q . '<br><br>';
+        //echo $q . '<br><br>';
 
         $rowReturn = [];
 
@@ -260,9 +428,177 @@ class gpat_glue extends gpat_score
         }
 
 
-        return $sum / $x;
+        return round($sum / $x, 2);
 
     }
+
+    public function doesUserHave30CompleteProcedures($userid, $debug=false){
+
+        if ($this->determineNumberofCompleteReportCards($userid) >= 30){
+
+            return true;
+
+        }else{
+
+            return false;
+        }
+
+    }
+
+    public function statusText ($userid){
+
+        if ($this->doesUserHave30CompleteProcedures($userid) === true){
+
+            $proceduresRequired = 30 - $this->determineNumberofCompleteReportCards($userid);
+
+            $statement = $proceduresRequired . ' more Procedures to Start Certification';
+
+        }
+
+        if ($this->doesUserHave30CompleteProcedures($userid) === false){
+
+            
+            $weighted_gpat = $this->averageArray($this->getUserFractionWeighted($userid, 3, false), false);
+
+            //testing
+
+            $weighted_gpat = 0.87;
+
+            if ($weighted_gpat >= 0 && $weighted_gpat < 0.13){
+
+                $statement = 'Score Insufficient to Credential';
+
+            }else if ($weighted_gpat >= 0.13 && $weighted_gpat < 0.38){
+
+                $statement = 'SMSA 2 Credentialled';
+
+            }else if ($weighted_gpat >= 0.38 && $weighted_gpat < 0.63){
+
+                $statement = 'SMSA 3 Credentialled';
+
+            }else if ($weighted_gpat >= 0.63 && $weighted_gpat < 0.88){
+
+                $statement = 'SMSA 4 Credentialled';
+
+            }else if ($weighted_gpat >= 0.88){
+
+                $statement = 'SMSA + Credentialled';
+
+            }
+
+
+        }
+
+
+
+        return $statement;
+
+    }
+
+    public function getSMSAUserReportCards($userid, $last3, $debug=false){
+
+        // $last3  1 = last 3 moths, 2 = before last 3 , 3 = all data
+
+        //define today
+        $date_today = new DateTime();
+        $interval = new DateInterval('P3M');
+        $date_today->sub($interval);
+        $sql_date = $date_today->format('Y-m-d');
+
+
+
+        //-3m
+        //convert to mysql string
+
+        if ($last3 == 1){
+
+            $last3text = 'AND `date_procedure` >= \'' . $sql_date . '\'';
+
+        }elseif ($last3 == 2){
+
+            $last3text = 'AND `date_procedure` < \'' . $sql_date . '\'';
+
+        }elseif ($last3 == 3) {
+
+            $last3text = '';
+        } else {
+
+            $last3text = '';
+        }
+
+        $q = "SELECT `SMSA_group`, `numeratorSMSAplus` FROM `gpat_score` WHERE `user_id` = '$userid' AND `complete` = '1' $last3text";
+
+        //echo $q . '<br><br>';
+
+        $rowReturn = [];
+
+        $result = $this->connection->RunQuery($q);
+        
+        $x = 0;
+        $nRows = $result->rowCount();
+
+        $SMSA2 = 0;
+        $SMSA3 = 0;
+        $SMSA4 = 0;
+        $SMSAplus = 0;
+
+
+        if ($nRows > 0) {
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+
+                if ($row['numeratorSMSAplus'] > 0){
+
+                    $SMSAplus = $SMSAplus + 1;
+                    
+                }else{
+
+                if ($row['SMSA_group'] == 2){
+
+                    $SMSA2 = $SMSA2 + 1;
+
+                }
+
+                if ($row['SMSA_group'] == 3){
+
+                    $SMSA3 = $SMSA3 + 1;
+                    
+                }
+
+                if ($row['SMSA_group'] == 4){
+
+                    $SMSA4 = $SMSA4 + 1;
+                    
+                }
+
+            }
+
+                
+
+
+            }
+
+            $dataPoints = array( 
+                array("y" => $SMSA2, "label" => "SMSA 2" ),
+                array("y" => $SMSA3, "label" => "SMSA 3" ),
+                array("y" => $SMSA4, "label" => "SMSA 4" ),
+                array("y" => $SMSAplus, "label" => "SMSA +" ),
+                
+            );
+
+            return $dataPoints;
+
+        } else {
+            
+
+            return false;
+        }
+
+
+
+    }
+    
 
 
     //per domain scoring

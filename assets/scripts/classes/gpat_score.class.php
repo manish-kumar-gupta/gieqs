@@ -2,7 +2,7 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 9-11-2021
+ * Create Date: 10-11-2021
  *
  * DJT 2019
  *
@@ -83,6 +83,8 @@ Class gpat_score {
 	private $safety_denominator; //varchar(255)
 	private $defect_denominator; //varchar(255)
 	private $accessory_denominator; //varchar(255)
+	private $type_polypectomy; //varchar(255)
+	private $complete; //varchar(255)
 	private $connection;
 
 	public function __construct(){
@@ -95,7 +97,7 @@ Class gpat_score {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_gpat_score($tip_control,$extent,$positioning,$appropriate_technique,$injection_plane,$injection_dynamic,$injection_access,$snare_size,$snare_position,$snare_visualised,$residual,$independent_movement,$lift_movement,$mucosa,$thermal_ablation,$submucosa,$muscularis,$clip_placement,$retrieval_device,$coag_grasper,$size,$morphology,$site,$access,$size_40_smsaplus,$nongranular_smsaplus,$non_lifting,$location_difficult,$user_id,$created,$updated,$numeratorSum,$denominatorSum,$fraction,$SMSA_total,$SMSA_group,$numeratorSMSAplus,$denominatorSMSAplus,$snare_capture,$edit,$date_procedure,$weighted_fraction,$global_numerator,$injection_numerator,$snare_numerator,$safety_numerator,$defect_numerator,$accessory_numerator,$global_denominator,$injection_denominator,$snare_denominator,$safety_denominator,$defect_denominator,$accessory_denominator){
+	public function New_gpat_score($tip_control,$extent,$positioning,$appropriate_technique,$injection_plane,$injection_dynamic,$injection_access,$snare_size,$snare_position,$snare_visualised,$residual,$independent_movement,$lift_movement,$mucosa,$thermal_ablation,$submucosa,$muscularis,$clip_placement,$retrieval_device,$coag_grasper,$size,$morphology,$site,$access,$size_40_smsaplus,$nongranular_smsaplus,$non_lifting,$location_difficult,$user_id,$created,$updated,$numeratorSum,$denominatorSum,$fraction,$SMSA_total,$SMSA_group,$numeratorSMSAplus,$denominatorSMSAplus,$snare_capture,$edit,$date_procedure,$weighted_fraction,$global_numerator,$injection_numerator,$snare_numerator,$safety_numerator,$defect_numerator,$accessory_numerator,$global_denominator,$injection_denominator,$snare_denominator,$safety_denominator,$defect_denominator,$accessory_denominator,$type_polypectomy,$complete){
 		$this->tip_control = $tip_control;
 		$this->extent = $extent;
 		$this->positioning = $positioning;
@@ -150,6 +152,8 @@ Class gpat_score {
 		$this->safety_denominator = $safety_denominator;
 		$this->defect_denominator = $defect_denominator;
 		$this->accessory_denominator = $accessory_denominator;
+		$this->type_polypectomy = $type_polypectomy;
+		$this->complete = $complete;
 	}
 
     /**
@@ -216,6 +220,8 @@ Class gpat_score {
 			$this->safety_denominator = $row["safety_denominator"];
 			$this->defect_denominator = $row["defect_denominator"];
 			$this->accessory_denominator = $row["accessory_denominator"];
+			$this->type_polypectomy = $row["type_polypectomy"];
+			$this->complete = $row["complete"];
 		}
 	}
     /**
@@ -288,6 +294,8 @@ $q = "Select * from `gpat_score` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["safety_denominator"] = $row["safety_denominator"];
 			$rowReturn[$x]["defect_denominator"] = $row["defect_denominator"];
 			$rowReturn[$x]["accessory_denominator"] = $row["accessory_denominator"];
+			$rowReturn[$x]["type_polypectomy"] = $row["type_polypectomy"];
+			$rowReturn[$x]["complete"] = $row["complete"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -364,6 +372,8 @@ $q = "Select * from `gpat_score` WHERE `id` = $key";
 			$rowReturn[$x]["safety_denominator"] = $row["safety_denominator"];
 			$rowReturn[$x]["defect_denominator"] = $row["defect_denominator"];
 			$rowReturn[$x]["accessory_denominator"] = $row["accessory_denominator"];
+			$rowReturn[$x]["type_polypectomy"] = $row["type_polypectomy"];
+			$rowReturn[$x]["complete"] = $row["complete"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -1003,6 +1013,20 @@ $q = "UPDATE `gpat_score` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return type_polypectomy - varchar(255)
+	 */
+	public function gettype_polypectomy(){
+		return $this->type_polypectomy;
+	}
+
+	/**
+	 * @return complete - varchar(255)
+	 */
+	public function getcomplete(){
+		return $this->complete;
+	}
+
+	/**
 	 * @param Type: int(11)
 	 */
 	public function setid($id){
@@ -1385,6 +1409,20 @@ $q = "UPDATE `gpat_score` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function setaccessory_denominator($accessory_denominator){
 		$this->accessory_denominator = $accessory_denominator;
+	}
+
+	/**
+	 * @param Type: varchar(255)
+	 */
+	public function settype_polypectomy($type_polypectomy){
+		$this->type_polypectomy = $type_polypectomy;
+	}
+
+	/**
+	 * @param Type: varchar(255)
+	 */
+	public function setcomplete($complete){
+		$this->complete = $complete;
 	}
 
     /**
