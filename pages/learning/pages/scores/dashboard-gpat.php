@@ -1630,8 +1630,8 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
                             <span id="summary"
                                 class="d-block h1 text-white mr-2 mb-1"><?php echo $userFunctions->getUserName($userid);?></span>
-                                <span id="statusText"
-                                class="d-block gieqsGold mr-2 mb-1" style="font-size:1.5rem;"><?php echo $statement['currentcertificationstatus'];?></span>
+                            <span id="statusText" class="d-block gieqsGold mr-2 mb-1"
+                                style="font-size:1.5rem;"><?php echo $statement['currentcertificationstatus'];?></span>
 
                             <div class="d-flex justify-content-between">
 
@@ -1649,7 +1649,8 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                                             <span class="d-block h3 text-white mr-2 mb-1 mt-4">Procedures :
                                                 <?php echo $gpat_glue->determineNumberofCompleteReportCards($userid);?></span>
 
-                                            <span class="d-block text-muted mr-2 mb-1 mt-0" style="font-size:1.5rem;">Incomplete GPATs :
+                                            <span class="d-block text-muted mr-2 mb-1 mt-0"
+                                                style="font-size:1.5rem;">Incomplete GPATs :
                                                 <?php echo $gpat_glue->determineNumberofIncompleteReportCards($userid);?></span>
 
 
@@ -1744,7 +1745,8 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
 
                             <hr class="divider divider-icon my-8" />
-                            <p id="difficulty" class="section d-block h1 gieqsGold mr-2 mb-1 mt-0">Procedures Stratified by Difficulty
+                            <p id="difficulty" class="section d-block h1 gieqsGold mr-2 mb-1 mt-0">Procedures Stratified
+                                by Difficulty
                             </p>
 
                             <?php
@@ -1754,42 +1756,43 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
                             <div class="d-flex justify-content-end">
 
-                            <p><?php $SMSAscores = $gpat_glue->getSMSAUserReportCards($userid, 3, 1); //print_r($SMSAscores);?></p>
+                                <p><?php $SMSAscores = $gpat_glue->getSMSAUserReportCards($userid, 3, 1); //print_r($SMSAscores);?>
+                                </p>
                                 <table>
                                     <tr>
-                                        <td> <span
-                                                class="d-block h2 text-white mr-2 mb-1">SMSA<sub>2</sub> GPAT<sub>unweighted</sub></span>
+                                        <td> <span class="d-block h2 text-white mr-2 mb-1">SMSA<sub>2</sub>
+                                                GPAT<sub>unweighted</sub></span>
                                         </td>
                                         <td><span id="gpat_unweighted"
                                                 class="ml-2 d-block h1 text-white mr-2 mb-1"><?php echo $SMSAscores['SMSA2weightedgpat'];?></span>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td> <span
-                                                class="d-block h2 text-white mr-2 mb-1 mt-2">SMSA<sub>3</sub> GPAT<sub>unweighted</sub></span>
+                                        <td> <span class="d-block h2 text-white mr-2 mb-1 mt-2">SMSA<sub>3</sub>
+                                                GPAT<sub>unweighted</sub></span>
                                         </td>
                                         <td><span id="gpat_weighted"
                                                 class="ml-2 d-block h1 text-white mr-2 mb-1 mt-2"><?php echo $SMSAscores['SMSA3weightedgpat'];?></span>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td> <span
-                                                class="d-block h2 text-white mr-2 mb-1 mt-2">SMSA<sub>4</sub> GPAT<sub>unweighted</sub></span>
+                                        <td> <span class="d-block h2 text-white mr-2 mb-1 mt-2">SMSA<sub>4</sub>
+                                                GPAT<sub>unweighted</sub></span>
                                         </td>
                                         <td><span id="gpat_weighted"
                                                 class="ml-2 d-block h1 text-white mr-2 mb-1 mt-2"><?php echo $SMSAscores['SMSA4weightedgpat']?></span>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td> <span
-                                                class="d-block h2 text-white mr-2 mb-1 mt-2">SMSA<sub>+</sub> GPAT<sub>unweighted</sub></span>
+                                        <td> <span class="d-block h2 text-white mr-2 mb-1 mt-2">SMSA<sub>+</sub>
+                                                GPAT<sub>unweighted</sub></span>
                                         </td>
                                         <td><span id="gpat_weighted"
                                                 class="ml-2 d-block h1 text-white mr-2 mb-1 mt-2"><?php echo $SMSAscores['SMSAplusweightedgpat'];?></span>
                                         </td>
                                     </tr>
 
-                                   
+
                                 </table>
                             </div>
                             <div id="chartContainer2" class="mb-4 mt-5" style="min-height: 370px; width: 100%;"></div>
@@ -1848,28 +1851,29 @@ add min max GPAT
 
 
 
-<div class="card-body">
-    <div class="d-flex">
+                                <div class="card-body">
+                                    <div class="d-flex">
 
-        <div class="pl-4">
-
-
-            <span class="d-block h3 text-white mr-2 mb-1 mt-2"></span>
-
-            <span class="d-block h3 text-white mr-2 mb-1 mt-4">Current Status
-              </span>
-
-            <span class="d-block gieqsGold mr-2 mb-1 mt-0" style="font-size:1.5rem;">
-            <?php echo $statement['currentcertificationstatus'];?></span>
-
-            <span class="d-block h3 text-white mr-2 mb-1 mt-4">How do I become eligible for the next step in certification?
-              </span>
-
-              <span class="d-block gieqsGold mr-2 mb-1 mt-0" style="font-size:1.5rem;">
-            <?php  echo $statement['howdoi'];?></span>
+                                        <div class="pl-4">
 
 
-            <!-- <p> 1 / 6 Courses<br />
+                                            <span class="d-block h3 text-white mr-2 mb-1 mt-2"></span>
+
+                                            <span class="d-block h3 text-white mr-2 mb-1 mt-4">Current Status
+                                            </span>
+
+                                            <span class="d-block gieqsGold mr-2 mb-1 mt-0" style="font-size:1.5rem;">
+                                                <?php echo $statement['currentcertificationstatus'];?></span>
+
+                                            <span class="d-block h3 text-white mr-2 mb-1 mt-4">How do I become eligible
+                                                for the next step in certification?
+                                            </span>
+
+                                            <span class="d-block gieqsGold mr-2 mb-1 mt-0" style="font-size:1.5rem;">
+                                                <?php  echo $statement['howdoi'];?></span>
+
+
+                                            <!-- <p> 1 / 6 Courses<br />
                 1 / 4 Premium Content Packs<br />
                 27 / 171 Total Learning Experiences</p>
 
@@ -1879,44 +1883,45 @@ add min max GPAT
 
 
 
-            <!--  <a class="btn-sm bg-bronze p-1 mt-5 cursor-pointer"
+                                            <!--  <a class="btn-sm bg-bronze p-1 mt-5 cursor-pointer"
                 onclick="window.location.href = siteRoot + 'gieqs-status.php';">
 
                 <span class="btn-inner--text text-dark text-sm">Find Out More</span>
             </a> -->
-        </div>
-    </div>
-</div>
+                                        </div>
+                                    </div>
+                                </div>
 
 
 
-<div class="card-body ml-5">
-    <div class="d-flex">
-        <!--  <div>
+                                <div class="card-body ml-5">
+                                    <div class="d-flex">
+                                        <!--  <div>
             <div class="icon text-white icon-lg">
                 <i class="fas fa-medal silver"></i>
 
             </div>
         </div> -->
-        <div class="pl-4">
-            <table>
-                <tr>
-                    <td> <span
-                            class="d-block h1 text-white mr-2 mb-1 mt-2">GPAT<sub>weighted</sub></span>
-                    </td>
-                    <td><span id="gpat_weighted"
-                            class="ml-2 d-block h1 text-white mr-2 mb-1 mt-2"><?php echo $gpat_glue->averageArray($gpat_glue->getUserFractionWeighted($userid, 3, false), false);?></span>
-                    </td>
-                </tr>
-                <tr>
-                    <td> <span class="d-block h1 text-white mr-2 mb-1 mt-2">required delta
-                            GPAT</sub></span></td>
-                    <td><span id="gpat_delta"
-                            class="ml-2 d-block h1 text-white mr-2 mb-1 mt-2"><?php echo $statement['deltagpat'];?></span>
-                    </td>
-                </tr>
-            </table>
-            <!--  <span class="d-block h6 text-white mr-2 mb-1 mt-4">Overall Completion
+                                        <div class="pl-4">
+                                            <table>
+                                                <tr>
+                                                    <td> <span
+                                                            class="d-block h1 text-white mr-2 mb-1 mt-2">GPAT<sub>weighted</sub></span>
+                                                    </td>
+                                                    <td><span id="gpat_weighted"
+                                                            class="ml-2 d-block h1 text-white mr-2 mb-1 mt-2"><?php echo $gpat_glue->averageArray($gpat_glue->getUserFractionWeighted($userid, 3, false), false);?></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td> <span class="d-block h1 text-white mr-2 mb-1 mt-2">required
+                                                            delta
+                                                            GPAT</sub></span></td>
+                                                    <td><span id="gpat_delta"
+                                                            class="ml-2 d-block h1 text-white mr-2 mb-1 mt-2"><?php echo $statement['deltagpat'];?></span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <!--  <span class="d-block h6 text-white mr-2 mb-1 mt-4">Overall Completion
                 15.8%</span>
 
 
@@ -1935,11 +1940,11 @@ add min max GPAT
 
                 <span class="btn-inner--text text-dark text-sm">Find Out More</span>
             </a> -->
-        </div>
-    </div>
-</div>
+                                        </div>
+                                    </div>
+                                </div>
 
-</div>
+                            </div>
 
 
 
