@@ -225,7 +225,7 @@ top: 0px;
 
 
     <!-- Omnisearch -->
-    
+
     <?php 
     //error_reporting(E_ALL);
     include(BASE_URI . '/pages/learning/assets/gpatNav.php');
@@ -1127,10 +1127,10 @@ top: 0px;
 
 
 
-                 
-                 id: id,
 
-                 }
+                    id: id,
+
+                }
 
                 const jsonString = JSON.stringify(dataToSend);
                 console.log(jsonString);
@@ -1162,84 +1162,84 @@ top: 0px;
                         var parsedData = $.parseJSON(data);
                         console.dir(parsedData);
 
-                        $(parsedData).each(function (i, val) {
-						$.each(val, function (k, v) {
+                        $(parsedData).each(function(i, val) {
+                            $.each(val, function(k, v) {
 
-							if ($("#" + k).is(':checkbox')) {
+                                if ($("#" + k).is(':checkbox')) {
 
-								if (v == 1) {
+                                    if (v == 1) {
 
-									$("#" + k).prop("checked", true);
-									checkedInputs.push("#" + k);
+                                        $("#" + k).prop("checked", true);
+                                        checkedInputs.push("#" + k);
 
-								} else {
+                                    } else {
 
-									$("#" + k).prop("checked", false);
+                                        $("#" + k).prop("checked", false);
 
-								}
-
-
-							} else if ($("#" + k).attr('id') == 'validated') {
-								
-								$("#" + k).val(v);
-
-								console.log('found a validate and v is ' + v);
-
-								//disable the save button if validated
-
-								if (v == '1'){
-
-								$("#saveesdLesion").hide();
-
-								}
-
-								
-							} else {
+                                    }
 
 
-								$("#" + k).val(v);
+                                } else if ($("#" + k).attr('id') == 'validated') {
 
-							}
-							//console.log(k+' : '+ v);
-						});
+                                    $("#" + k).val(v);
 
-					});
+                                    console.log('found a validate and v is ' + v);
 
-                    var score = calculateScore();
-            //remove the check from the tag removed
+                                    //disable the save button if validated
 
-            if (isNaN(score.score_total) === false) {
+                                    if (v == '1') {
 
-                $('#numeratorSum').text(score.score_total);
-                $('#denominatorSum').text(score.score_denominator);
-                $('#fraction').text(+score.fraction.toFixed(2));
+                                        $("#saveesdLesion").hide();
 
-                //numb = +numb.toFixed(2);
+                                    }
 
-            };
 
-            var SMSA = calculateDifficultyScore();
-            //remove the check from the tag removed
+                                } else {
 
-            if (isNaN(SMSA.SMSA_total) === false) {
 
-                $('#SMSA_total').text(SMSA.SMSA_total);
-                $('#SMSA_group').text(SMSA.SMSA_group);
+                                    $("#" + k).val(v);
 
-            };
-var SMSAplus = calculatePlusDifficultyScore();
-            //remove the check from the tag removed
+                                }
+                                //console.log(k+' : '+ v);
+                            });
 
-            if (isNaN(SMSAplus.SMSA_plus_total) === false) {
+                        });
 
-                $('#numeratorSMSAplus').text(SMSAplus.SMSA_plus_total);
-                $('#denominatorSMSAplus').text(4);
+                        var score = calculateScore();
+                        //remove the check from the tag removed
 
-            };
+                        if (isNaN(score.score_total) === false) {
 
-                    esdLesionPassed = id;
-                    
-                    edit = 1;
+                            $('#numeratorSum').text(score.score_total);
+                            $('#denominatorSum').text(score.score_denominator);
+                            $('#fraction').text(+score.fraction.toFixed(2));
+
+                            //numb = +numb.toFixed(2);
+
+                        };
+
+                        var SMSA = calculateDifficultyScore();
+                        //remove the check from the tag removed
+
+                        if (isNaN(SMSA.SMSA_total) === false) {
+
+                            $('#SMSA_total').text(SMSA.SMSA_total);
+                            $('#SMSA_group').text(SMSA.SMSA_group);
+
+                        };
+                        var SMSAplus = calculatePlusDifficultyScore();
+                        //remove the check from the tag removed
+
+                        if (isNaN(SMSAplus.SMSA_plus_total) === false) {
+
+                            $('#numeratorSMSAplus').text(SMSAplus.SMSA_plus_total);
+                            $('#denominatorSMSAplus').text(4);
+
+                        };
+
+                        esdLesionPassed = id;
+
+                        edit = 1;
 
                         //put the data in the right place
 
@@ -1442,7 +1442,7 @@ chart.render();
 											  <div>
 												<i id="saveesdLesion" class="fas fa-save cursor-pointer mr-4" onclick="saveesdLesionForm();"></i>
 											</div>-->
-                                  <!--   <div>
+                                    <!--   <div>
                                         <i id='reset-form' class="fas fa-undo cursor-pointer mr-4" title='Reset Form'
                                             data-toggle='tooltip' data-placement='right'>&nbsp;Reset Form</i>
                                     </div> -->
@@ -1551,11 +1551,11 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
 
 
-                                    <!-- <p>Polypectomy Score </p>
+                                <!-- <p>Polypectomy Score </p>
                 <p>Complexity Score </p>
                 <p>Overall Score </p> -->
 
-                               <!--  </div> -->
+                                <!--  </div> -->
 
                             </div>
                             <!--close sticky nav-->
@@ -1625,26 +1625,27 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
                                 </div>
                             </div> -->
-                             <span id="summary" class="d-block h1 text-white mr-2 mb-1"><?php echo $userFunctions->getUserName($userid);?></span>
- 
-                            <div class="d-flex justify-content-between">
-                                       
+                            <span id="summary"
+                                class="d-block h1 text-white mr-2 mb-1"><?php echo $userFunctions->getUserName($userid);?></span>
 
-                           
+                            <div class="d-flex justify-content-between">
+
+
+
 
 
                                 <div class="card-body">
                                     <div class="d-flex">
-                                        
+
                                         <div class="pl-4">
 
                                             <span class="d-block h3 text-white mr-2 mb-1 mt-2"></span>
 
                                             <span class="d-block h3 text-white mr-2 mb-1 mt-4">Procedures :
-                                            <?php echo $gpat_glue->determineNumberofCompleteReportCards($userid);?></span>
+                                                <?php echo $gpat_glue->determineNumberofCompleteReportCards($userid);?></span>
 
                                             <span class="d-block h6 text-muted mr-2 mb-1 mt-0">Incomplete Reports :
-                                            <?php echo $gpat_glue->determineNumberofIncompleteReportCards($userid);?></span>
+                                                <?php echo $gpat_glue->determineNumberofIncompleteReportCards($userid);?></span>
 
 
                                             <!-- <p> 1 / 6 Courses<br />
@@ -1657,7 +1658,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
 
 
-                                           <!--  <a class="btn-sm bg-bronze p-1 mt-5 cursor-pointer"
+                                            <!--  <a class="btn-sm bg-bronze p-1 mt-5 cursor-pointer"
                                                 onclick="window.location.href = siteRoot + 'gieqs-status.php';">
 
                                                 <span class="btn-inner--text text-dark text-sm">Find Out More</span>
@@ -1666,11 +1667,11 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                                     </div>
                                 </div>
 
-                            
 
-                            <div class="card-body ml-5">
+
+                                <div class="card-body ml-5">
                                     <div class="d-flex">
-                                       <!--  <div>
+                                        <!--  <div>
                                             <div class="icon text-white icon-lg">
                                                 <i class="fas fa-medal silver"></i>
 
@@ -1679,16 +1680,30 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                                         <div class="pl-4">
                                             <table>
                                                 <tr>
-                                           <td> <span class="d-block h1 text-white mr-2 mb-1">GPAT<sub>unweighted</sub></span></td><td><span id="gpat_unweighted" class="ml-2 d-block h1 text-white mr-2 mb-1"><?php echo $gpat_glue->averageArray($gpat_glue->getUserFractionNonWeighted($userid, 3, false), false);?></span></td>
-                                    </tr>
-                                    <tr>
-                                           <td> <span class="d-block h1 text-white mr-2 mb-1 mt-2">GPAT<sub>weighted</sub></span></td><td><span id="gpat_weighted" class="ml-2 d-block h1 text-white mr-2 mb-1 mt-2"><?php echo $gpat_glue->averageArray($gpat_glue->getUserFractionWeighted($userid, 3, false), false);?></span></td>
-                                    </tr>
-                                    <tr>
-                                           <td> <span class="d-block h1 text-white mr-2 mb-1 mt-2">delta GPAT<sub>1-month</sub></span></td><td><span id="gpat_delta" class="ml-2 d-block h1 text-white mr-2 mb-1 mt-2"><?php echo $gpat_glue->getDeltaWeightedFraction($userid, 2, false);?></span></td>
-                                    </tr>
-                                    </table>    
-                                           <!--  <span class="d-block h6 text-white mr-2 mb-1 mt-4">Overall Completion
+                                                    <td> <span
+                                                            class="d-block h1 text-white mr-2 mb-1">GPAT<sub>unweighted</sub></span>
+                                                    </td>
+                                                    <td><span id="gpat_unweighted"
+                                                            class="ml-2 d-block h1 text-white mr-2 mb-1"><?php echo $gpat_glue->averageArray($gpat_glue->getUserFractionNonWeighted($userid, 3, false), false);?></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td> <span
+                                                            class="d-block h1 text-white mr-2 mb-1 mt-2">GPAT<sub>weighted</sub></span>
+                                                    </td>
+                                                    <td><span id="gpat_weighted"
+                                                            class="ml-2 d-block h1 text-white mr-2 mb-1 mt-2"><?php echo $gpat_glue->averageArray($gpat_glue->getUserFractionWeighted($userid, 3, false), false);?></span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td> <span class="d-block h1 text-white mr-2 mb-1 mt-2">delta
+                                                            GPAT<sub>1-month</sub></span></td>
+                                                    <td><span id="gpat_delta"
+                                                            class="ml-2 d-block h1 text-white mr-2 mb-1 mt-2"><?php echo $gpat_glue->getDeltaWeightedFraction($userid, 2, false);?></span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <!--  <span class="d-block h6 text-white mr-2 mb-1 mt-4">Overall Completion
                                                 15.8%</span>
 
 
@@ -1715,8 +1730,8 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
 
                             <div class="d-block h1 text-dark mr-2 mt-3 mb-0 p-3 bg-gieqsGold">
-                                
-                            <p class="text-center mb-0"><?php echo $gpat_glue->statusText($userid); ?></p>
+
+                                <p class="text-center mb-0"><?php echo $gpat_glue->statusText($userid); ?></p>
                             </div>
 
 
@@ -1724,27 +1739,42 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
 
                             <hr class="divider divider-icon my-8" />
-                            <p id="difficulty" class="section d-block h1 gieqsGold mr-2 mb-1 mt-0">Procedure Difficulty</p>
+                            <p id="difficulty" class="section d-block h1 gieqsGold mr-2 mb-1 mt-0">Procedure Difficulty
+                            </p>
 
-<?php
+                            <?php
                             $dataPoints = $gpat_glue->getSMSAUserReportCards($userid, 3, false);
 
 ?>
 
-<div class="d-flex justify-content-end">
+                            <div class="d-flex justify-content-end">
 
-<table>
-                                                <tr>
-                                           <td> <span class="d-block h2 text-white mr-2 mb-1">GPAT<sub>unweighted</sub></span></td><td><span id="gpat_unweighted" class="ml-2 d-block h1 text-white mr-2 mb-1"><?php echo $gpat_glue->averageArray($gpat_glue->getUserFractionNonWeighted($userid, 3, false), false);?></span></td>
+                                <table>
+                                    <tr>
+                                        <td> <span
+                                                class="d-block h2 text-white mr-2 mb-1">GPAT<sub>unweighted</sub></span>
+                                        </td>
+                                        <td><span id="gpat_unweighted"
+                                                class="ml-2 d-block h1 text-white mr-2 mb-1"><?php echo $gpat_glue->averageArray($gpat_glue->getUserFractionNonWeighted($userid, 3, false), false);?></span>
+                                        </td>
                                     </tr>
                                     <tr>
-                                           <td> <span class="d-block h2 text-white mr-2 mb-1 mt-2">GPAT<sub>weighted</sub></span></td><td><span id="gpat_weighted" class="ml-2 d-block h1 text-white mr-2 mb-1 mt-2"><?php echo $gpat_glue->averageArray($gpat_glue->getUserFractionWeighted($userid, 3, false), false);?></span></td>
+                                        <td> <span
+                                                class="d-block h2 text-white mr-2 mb-1 mt-2">GPAT<sub>weighted</sub></span>
+                                        </td>
+                                        <td><span id="gpat_weighted"
+                                                class="ml-2 d-block h1 text-white mr-2 mb-1 mt-2"><?php echo $gpat_glue->averageArray($gpat_glue->getUserFractionWeighted($userid, 3, false), false);?></span>
+                                        </td>
                                     </tr>
                                     <tr>
-                                           <td> <span class="d-block h3 text-white mr-2 mb-1 mt-2">delta GPAT<sub>1-month</sub></span></td><td><span id="gpat_delta" class="ml-2 d-block h1 text-white mr-2 mb-1 mt-2"><?php echo $gpat_glue->getDeltaWeightedFraction($userid, 2, false);?></span></td>
+                                        <td> <span class="d-block h3 text-white mr-2 mb-1 mt-2">delta
+                                                GPAT<sub>1-month</sub></span></td>
+                                        <td><span id="gpat_delta"
+                                                class="ml-2 d-block h1 text-white mr-2 mb-1 mt-2"><?php echo $gpat_glue->getDeltaWeightedFraction($userid, 2, false);?></span>
+                                        </td>
                                     </tr>
-                                    </table>    
-                                    </div>
+                                </table>
+                            </div>
                             <div id="chartContainer2" class="mb-4 mt-5" style="min-height: 370px; width: 100%;"></div>
 
                             <?php
@@ -1774,8 +1804,8 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                             //$dataPoints4 = $gpat_glue->getDomainSpecificsReportCards($userid, 1, false); //array specifics last 3
 
 
-?>                           
-<hr class="divider divider-icon my-8" />
+?>
+                            <hr class="divider divider-icon my-8" />
 
                             <p id="domains" class="section d-block h1 text-white mr-2 mb-1">Domain Specific Progress</p>
 
@@ -1783,23 +1813,23 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                             <div id="chartContainer3" class="mb-4 mt-5" style="min-height: 370px; width: 100%;"></div>
 
 
-<!--
+                            <!--
 split into pre and post last 3 as long as last 3 has data
 add delta GPAT last 3
 add min max GPAT
 
 
                                     -->
-                            
-                                    <hr class="divider divider-icon my-8" />
 
-<p id="certification" class="section d-block h1 text-white mr-2 mb-1">Certification</p>
+                            <hr class="divider divider-icon my-8" />
+
+                            <p id="certification" class="section d-block h1 text-white mr-2 mb-1">Certification</p>
 
 
 
-<div id="testing" class="d-none">
-<p id="progress" class="section display-3">Progress</p>
-                            <p><?php
+                            <div id="testing" class="d-none">
+                                <p id="progress" class="section display-3">Progress</p>
+                                <p><?php
                             
                             echo 'Testing';
                             echo '<br/><br/>';
@@ -1823,11 +1853,11 @@ add min max GPAT
                             ?></p>
 
 
-                           
 
-                            <div id="chartContainer" class="mb-4" style="height: 370px; width: 100%;"></div>
-                           
-                        </div>
+
+                                <div id="chartContainer" class="mb-4" style="height: 370px; width: 100%;"></div>
+
+                            </div>
 
                         </div>
                         <!--end col-9-->
@@ -1899,143 +1929,143 @@ add min max GPAT
 
     }
 
-   /*  CanvasJS.addColorSet("gieqsGold",
-                [//colorSet Array
+    /*  CanvasJS.addColorSet("gieqsGold",
+                 [//colorSet Array
 
-                "#2F4F4F",
-                "#008080",
-                "#2E8B57",
-                "#3CB371",
-                "#90EE90"                
-                ]); */
+                 "#2F4F4F",
+                 "#008080",
+                 "#2E8B57",
+                 "#3CB371",
+                 "#90EE90"                
+                 ]); */
 
-                CanvasJS.addColorSet("gieqsGold",
-                [//colorSet Array
+    CanvasJS.addColorSet("gieqsGold",
+        [ //colorSet Array
 
-                "#893101",
-                "#CC5801",
-                "#ED820E",
-                "#DD571C",
-                            
-                ]);
+            "#893101",
+            "#CC5801",
+            "#ED820E",
+            "#DD571C",
+
+        ]);
 
     //chart of SMSA
 
     var chart2 = new CanvasJS.Chart("chartContainer2", {
-	animationEnabled: true,
-	colorSet: "gieqsGold",
-    backgroundColor: null,
-    dataPointWidth: 40,
+        animationEnabled: true,
+        colorSet: "gieqsGold",
+        backgroundColor: null,
+        dataPointWidth: 40,
 
 
 
-	title: {
-                        text: "SMSA of Complete Report Cards",
-                        fontColor: "#eec378",
-                        fontFamily: "arial",
+        title: {
+            text: "SMSA of Complete Report Cards",
+            fontColor: "#eec378",
+            fontFamily: "arial",
 
 
-                    },
-                    axisY: {
-                        title: "Complete Report Cards (n)",
-                        suffix: "",
-                        gridColor: "gray",
-                        fontColor: "white",
-                        tickColor: "white",
-                        lineThickness: 1,
-                        lineColor: "white",
-                        titleFontColor: "white",
-                        labelFontColor: "white",
-                        
-
-
-
-
-                    },
-                    axisX: {
-                        title: "SMSA",
-                        gridColor: "gray",
-                        fontColor: "white",
-                        tickColor: "white",
-                        lineThickness: 1,
-                        lineColor: "white",
-                        titleFontColor: "white",
-                        labelFontColor: "white",
-                        
+        },
+        axisY: {
+            title: "Complete Report Cards (n)",
+            suffix: "",
+            gridColor: "gray",
+            fontColor: "white",
+            tickColor: "white",
+            lineThickness: 1,
+            lineColor: "white",
+            titleFontColor: "white",
+            labelFontColor: "white",
 
 
 
 
 
-                    },
-	data: [{
-		type: "column",
-		
-		dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
-	}]
-});
-chart2.render();
-
-
-//chart for domains
-
-var chart3 = new CanvasJS.Chart("chartContainer3", {
-	animationEnabled: true,
-	colorSet: "gieqsGold",
-    backgroundColor: null,
-    dataPointWidth: 40,
-
-
-	title: {
-                        text: "Domain Specific GPAT Scores",
-                        fontColor: "#eec378",
-                        fontFamily: "arial",
-
-
-                    },
-                    axisY: {
-                        title: "Domain Specific GPAT",
-                        suffix: "",
-                        gridColor: "gray",
-                        fontColor: "white",
-                        tickColor: "white",
-                        lineThickness: 1,
-                        lineColor: "white",
-                        titleFontColor: "white",
-                        labelFontColor: "white",
-                        
-
-
-
-
-                    },
-                    axisX: {
-                        title: "Domains",
-                        gridColor: "gray",
-                        fontColor: "white",
-                        tickColor: "white",
-                        lineThickness: 1,
-                        lineColor: "white",
-                        titleFontColor: "white",
-                        labelFontColor: "white",
-                        
+        },
+        axisX: {
+            title: "SMSA",
+            gridColor: "gray",
+            fontColor: "white",
+            tickColor: "white",
+            lineThickness: 1,
+            lineColor: "white",
+            titleFontColor: "white",
+            labelFontColor: "white",
 
 
 
 
 
-                    },
-	data: [{
-		type: "column",
-		
-		dataPoints: <?php echo json_encode($dataPoints3, JSON_NUMERIC_CHECK); ?>
-	}]
-});
+
+        },
+        data: [{
+            type: "column",
+
+            dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+        }]
+    });
+    chart2.render();
+
+
+    //chart for domains
+
+    var chart3 = new CanvasJS.Chart("chartContainer3", {
+        animationEnabled: true,
+        colorSet: "gieqsGold",
+        backgroundColor: null,
+        dataPointWidth: 40,
+
+
+        title: {
+            text: "Domain Specific GPAT Scores",
+            fontColor: "#eec378",
+            fontFamily: "arial",
+
+
+        },
+        axisY: {
+            title: "Domain Specific GPAT",
+            suffix: "",
+            gridColor: "gray",
+            fontColor: "white",
+            tickColor: "white",
+            lineThickness: 1,
+            lineColor: "white",
+            titleFontColor: "white",
+            labelFontColor: "white",
 
 
 
 
-chart3.render();
+
+        },
+        axisX: {
+            title: "Domains",
+            gridColor: "gray",
+            fontColor: "white",
+            tickColor: "white",
+            lineThickness: 1,
+            lineColor: "white",
+            titleFontColor: "white",
+            labelFontColor: "white",
+
+
+
+
+
+
+        },
+        data: [{
+            type: "column",
+
+            dataPoints: <?php echo json_encode($dataPoints3, JSON_NUMERIC_CHECK); ?>
+        }]
+    });
+
+
+
+
+    chart3.render();
 
     var loaded = 1;
 
@@ -2337,7 +2367,7 @@ chart3.render();
 
         //refreshNavAndTags();
 
-        if (edit == 1){
+        if (edit == 1) {
 
             fillForm(esdLesionPassed);
         }
@@ -2779,7 +2809,7 @@ chart3.render();
                 //copyFormClipboard();
                 var fields = getFieldsToSavePlusSMSA();
                 saveScoreUser(fields);
-                
+
                 //console.log("submitted form");
 
 
