@@ -397,6 +397,160 @@ class gpat_glue extends gpat_score
 
     }
 
+    public function getDeltaWeightedFraction($userid, $last3, $debug){
+
+        // $last3  1 = last 3 months, 2 = LAST MONTH , 3 = LAST YEAR
+        // only complete procedures
+
+        //define today
+        $date_today = new DateTime();
+        $interval = new DateInterval('P3M');
+        $date_today->sub($interval);
+        
+        
+        $sql_date_3_months_ago = $date_today->format('Y-m-d');
+
+        $date_today = new DateTime();
+        $interval = new DateInterval('P1M');
+        $date_today->sub($interval);
+
+
+        $sql_date_1_month_ago = $date_today->format('Y-m-d');
+
+
+        $date_today = new DateTime();
+        $interval = new DateInterval('P1Y');
+        $date_today->sub($interval);
+
+
+        $sql_date_1_year_ago = $date_today->format('Y-m-d');
+
+        //-3m
+        //convert to mysql string
+
+        if ($last3 == 1){
+
+            $last3text = 'AND `date_procedure` < \'' . $sql_date_3_months_ago . '\'';
+            $last3textcomparator = 'AND `date_procedure` >= \'' . $sql_date_3_months_ago . '\'';
+            $last3debugtext = 'Last 3 month change GPAT';
+
+        }elseif ($last3 == 2){
+
+            $last3text = 'AND `date_procedure` < \'' . $sql_date_1_month_ago . '\'';
+            $last3textcomparator = 'AND `date_procedure` >= \'' . $sql_date_1_month_ago . '\'';
+            $last3debugtext = 'Last 1 month change GPAT';
+
+
+        }elseif ($last3 == 3) {
+
+            $last3text = 'AND `date_procedure` < \'' . $sql_date_1_year_ago . '\'';
+            $last3textcomparator = 'AND `date_procedure` >= \'' . $sql_date_1_year_ago . '\'';
+            $last3debugtext = 'Last 1 year change GPAT';
+
+
+        } else {
+
+            $last3text = '';
+        }
+
+        if ($debug){
+
+            echo 'Runing Query to determine' . $last3debugtext;
+
+        }
+
+        $q = "SELECT `weighted_fraction` FROM `gpat_score` WHERE `user_id` = '$userid' AND `complete` = '1' $last3text";
+        $q2 = "SELECT `weighted_fraction` FROM `gpat_score` WHERE `user_id` = '$userid' AND `complete` = '1' $last3textcomparator";
+
+        //echo $q . '<br><br>';
+
+        $rowReturn = [];
+
+        $result = $this->connection->RunQuery($q);
+        
+        $x = 0;
+        $nRows = $result->rowCount();
+
+        if ($debug){
+
+            echo 'to subtract query was';
+            echo ' ' . $q; 
+
+        }
+
+        if ($nRows > 0) {
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                $rowReturn[] = $row['weighted_fraction'];
+
+
+            }
+
+            $tosubtract = $this->averageArray($rowReturn, $debug); 
+
+        } else {
+            
+            if ($debug){
+
+                echo 'There was no data to subtract';
+                echo '<br/>' . $last3debugtext;
+
+                echo 'Query was ' . $q;
+
+            }
+            return false;
+        }
+
+        $rowReturn = [];
+
+        $result2 = $this->connection->RunQuery($q2);
+        
+        $x = 0;
+        $nRows = $result2->rowCount();
+
+        if ($debug){
+
+            echo 'to start query was';
+            echo ' ' . $q2; 
+
+        }
+
+        if ($nRows > 0) {
+
+            while($row = $result2->fetch(PDO::FETCH_ASSOC)){
+
+                $rowReturn[] = $row['weighted_fraction'];
+
+
+            }
+
+            if ($debug){
+
+                print_r($rowReturn);
+            }
+            $tostart = $this->averageArray($rowReturn, $debug); 
+
+        } else {
+            
+            if ($debug){
+
+                echo 'There was no data to start';
+                echo '<br/>' . $last3debugtext;
+                echo 'Query was ' . $q2;
+
+            }
+
+            return false;
+        }    
+
+
+
+        return floatval($tostart - $tosubtract); //need to get a - or + sign here TODO
+
+
+    }
+
     public function averageArray($array, $debug=false){
 
         error_reporting(E_ALL);
@@ -447,22 +601,22 @@ class gpat_glue extends gpat_score
 
     public function statusText ($userid){
 
-        if ($this->doesUserHave30CompleteProcedures($userid) === true){
+        if ($this->doesUserHave30CompleteProcedures($userid) === false){
 
             $proceduresRequired = 30 - $this->determineNumberofCompleteReportCards($userid);
 
-            $statement = $proceduresRequired . ' more Procedures to Start Certification';
+            $statement = 'You require ' . $proceduresRequired . ' more procedures to start Certification';
 
         }
 
-        if ($this->doesUserHave30CompleteProcedures($userid) === false){
+        if ($this->doesUserHave30CompleteProcedures($userid) === true){
 
             
             $weighted_gpat = $this->averageArray($this->getUserFractionWeighted($userid, 3, false), false);
 
             //testing
 
-            $weighted_gpat = 0.87;
+            //$weighted_gpat = 0.87;
 
             if ($weighted_gpat >= 0 && $weighted_gpat < 0.13){
 
@@ -599,6 +753,147 @@ class gpat_glue extends gpat_score
 
     }
     
+    public function getDomainSpecificsReportCards($userid, $last3, $debug=false){
+
+        // $last3  1 = last 3 moths, 2 = before last 3 , 3 = all data
+
+        //define today
+        $date_today = new DateTime();
+        $interval = new DateInterval('P3M');
+        $date_today->sub($interval);
+        $sql_date = $date_today->format('Y-m-d');
+
+
+
+        //-3m
+        //convert to mysql string
+
+        if ($last3 == 1){
+
+            $last3text = 'AND `date_procedure` >= \'' . $sql_date . '\'';
+
+        }elseif ($last3 == 2){
+
+            $last3text = 'AND `date_procedure` < \'' . $sql_date . '\'';
+
+        }elseif ($last3 == 3) {
+
+            $last3text = '';
+        } else {
+
+            $last3text = '';
+        }
+
+        $q = "SELECT `global_numerator`, `injection_numerator`, `snare_numerator`, `safety_numerator`, `defect_numerator`, `accessory_numerator`, `global_denominator`, `injection_denominator`, `snare_denominator`, `safety_denominator`, `defect_denominator`, `accessory_denominator` FROM `gpat_score` WHERE `user_id` = '$userid' AND `complete` = '1' $last3text";
+
+        //echo $q . '<br><br>';
+
+        $rowReturn = [];
+
+        $result = $this->connection->RunQuery($q);
+        
+        $x = 0;
+        $nRows = $result->rowCount();
+
+        $global = 0;
+        $injection = 0;
+        $snare = 0;
+        $safety = 0;
+        $defect = 0;
+        $accessory = 0;
+
+        $globalGPAT = [];
+        $injectionGPAT = [];
+        $snareGPAT = [];
+        $safetyGPAT = [];
+        $defectGPAT = [];
+        $accessoryGPAT = [];
+
+
+
+        if ($nRows > 0) {
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                //print_r($row);
+
+                //check if denominator 0
+                //if 0 do not include it and do not inc x
+
+                if ($row['global_denominator'] > 0){
+
+                $globalGPAT[] = $row['global_numerator'] / $row['global_denominator'];
+
+                }
+
+                if ($row['injection_denominator'] > 0){
+
+                $injectionGPAT[] = $row['injection_numerator'] / $row['injection_denominator'];
+
+                }
+                
+                if ($row['snare_denominator'] > 0){
+
+                $snareGPAT[] = $row['snare_numerator'] / $row['snare_denominator'];
+
+                }
+                
+                if ($row['safety_denominator'] > 0){
+
+                $safetyGPAT[] = $row['safety_numerator'] / $row['safety_denominator'];
+
+                }
+                
+                if ($row['defect_denominator'] > 0){
+
+                $defectGPAT[] = $row['defect_numerator'] / $row['defect_denominator'];
+
+                }
+                
+                if ($row['accessory_denominator'] > 0){
+
+                $accessoryGPAT[] = $row['accessory_numerator'] / $row['accessory_denominator'];
+
+                }
+                
+                $x++;
+
+            }
+
+            //work out averages
+
+            $average_global = $this->averageArray($globalGPAT);
+            $average_injection = $this->averageArray($injectionGPAT);
+            $average_snare = $this->averageArray($snareGPAT);
+            $average_safety = $this->averageArray($safetyGPAT);
+            $average_defect = $this->averageArray($defectGPAT);
+            $average_accessory = $this->averageArray($accessoryGPAT);
+
+
+
+            //write array
+
+            $dataPoints = array( 
+                array("y" => $average_global, "label" => "Global" ),
+                array("y" => $average_injection, "label" => "Injection" ),
+                array("y" => $average_snare, "label" => "Snare Placement" ),
+                array("y" => $average_safety, "label" => "Safety" ),
+                array("y" => $average_defect, "label" => "Defect Assessment" ),
+                array("y" => $average_accessory, "label" => "Accessory Use" ),
+                
+            );
+
+            return $dataPoints;
+
+        } else {
+            
+
+            return false;
+        }
+
+
+
+    }
 
 
     //per domain scoring

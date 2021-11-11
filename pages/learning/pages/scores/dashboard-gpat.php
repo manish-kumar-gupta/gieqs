@@ -1490,7 +1490,9 @@ chart.render();
                                     <!-- <ul> -->
                                     <?php
 
-echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#progress">Progress</a></li>';
+echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#summary">Summary</a></li>';
+
+echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#difficulty">Procedure Difficulty</a></li>';
 
                         echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#domains">Domains</a></li>';
                         echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#certification">Certification</a></li>';
@@ -1623,8 +1625,8 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
                                 </div>
                             </div> -->
-                            <span class="d-block h1 text-white mr-2 mb-1">Status</span>
-
+                             <span id="summary" class="d-block h1 text-white mr-2 mb-1"><?php echo $userFunctions->getUserName($userid);?></span>
+ 
                             <div class="d-flex justify-content-between">
                                        
 
@@ -1636,9 +1638,9 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                                         
                                         <div class="pl-4">
 
-                                            <span class="d-block h3 text-white mr-2 mb-1 mt-2"><?php echo $userFunctions->getUserName($userid);?></span>
+                                            <span class="d-block h3 text-white mr-2 mb-1 mt-2"></span>
 
-                                            <span class="d-block h4 text-white mr-2 mb-1 mt-4">Procedures :
+                                            <span class="d-block h3 text-white mr-2 mb-1 mt-4">Procedures :
                                             <?php echo $gpat_glue->determineNumberofCompleteReportCards($userid);?></span>
 
                                             <span class="d-block h6 text-muted mr-2 mb-1 mt-0">Incomplete Reports :
@@ -1677,10 +1679,13 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                                         <div class="pl-4">
                                             <table>
                                                 <tr>
-                                           <td> <span class="d-block h1 text-white mr-2 mb-1">GPAT<sub>unweighted</sub></span></td><td><span id="gpat_weighted" class="ml-2 d-block h1 text-white mr-2 mb-1"><?php echo $gpat_glue->averageArray($gpat_glue->getUserFractionNonWeighted($userid, 3, false), false);?></span></td>
+                                           <td> <span class="d-block h1 text-white mr-2 mb-1">GPAT<sub>unweighted</sub></span></td><td><span id="gpat_unweighted" class="ml-2 d-block h1 text-white mr-2 mb-1"><?php echo $gpat_glue->averageArray($gpat_glue->getUserFractionNonWeighted($userid, 3, false), false);?></span></td>
                                     </tr>
                                     <tr>
                                            <td> <span class="d-block h1 text-white mr-2 mb-1 mt-2">GPAT<sub>weighted</sub></span></td><td><span id="gpat_weighted" class="ml-2 d-block h1 text-white mr-2 mb-1 mt-2"><?php echo $gpat_glue->averageArray($gpat_glue->getUserFractionWeighted($userid, 3, false), false);?></span></td>
+                                    </tr>
+                                    <tr>
+                                           <td> <span class="d-block h1 text-white mr-2 mb-1 mt-2">delta GPAT<sub>1-month</sub></span></td><td><span id="gpat_delta" class="ml-2 d-block h1 text-white mr-2 mb-1 mt-2"><?php echo $gpat_glue->getDeltaWeightedFraction($userid, 2, false);?></span></td>
                                     </tr>
                                     </table>    
                                            <!--  <span class="d-block h6 text-white mr-2 mb-1 mt-4">Overall Completion
@@ -1709,29 +1714,91 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                             </div>
 
 
-                            <div class="d-block h1 text-dark mr-2 mt-3 mb-1 p-3 bg-gieqsGold">
+                            <div class="d-block h1 text-dark mr-2 mt-3 mb-0 p-3 bg-gieqsGold">
                                 
                             <p class="text-center mb-0"><?php echo $gpat_glue->statusText($userid); ?></p>
                             </div>
-           
+
+
+
+
+
+                            <hr class="divider divider-icon my-8" />
+                            <p id="difficulty" class="section d-block h1 gieqsGold mr-2 mb-1 mt-0">Procedure Difficulty</p>
+
 <?php
                             $dataPoints = $gpat_glue->getSMSAUserReportCards($userid, 3, false);
 
 ?>
-                            <div id="chartContainer2" class="mb-4 mt-8" style="min-height: 370px; width: 100%;"></div>
+
+<div class="d-flex justify-content-end">
+
+<table>
+                                                <tr>
+                                           <td> <span class="d-block h2 text-white mr-2 mb-1">GPAT<sub>unweighted</sub></span></td><td><span id="gpat_unweighted" class="ml-2 d-block h1 text-white mr-2 mb-1"><?php echo $gpat_glue->averageArray($gpat_glue->getUserFractionNonWeighted($userid, 3, false), false);?></span></td>
+                                    </tr>
+                                    <tr>
+                                           <td> <span class="d-block h2 text-white mr-2 mb-1 mt-2">GPAT<sub>weighted</sub></span></td><td><span id="gpat_weighted" class="ml-2 d-block h1 text-white mr-2 mb-1 mt-2"><?php echo $gpat_glue->averageArray($gpat_glue->getUserFractionWeighted($userid, 3, false), false);?></span></td>
+                                    </tr>
+                                    <tr>
+                                           <td> <span class="d-block h3 text-white mr-2 mb-1 mt-2">delta GPAT<sub>1-month</sub></span></td><td><span id="gpat_delta" class="ml-2 d-block h1 text-white mr-2 mb-1 mt-2"><?php echo $gpat_glue->getDeltaWeightedFraction($userid, 2, false);?></span></td>
+                                    </tr>
+                                    </table>    
+                                    </div>
+                            <div id="chartContainer2" class="mb-4 mt-5" style="min-height: 370px; width: 100%;"></div>
 
                             <?php
-                            $dataPoints3 = $gpat_glue->getSMSAUserReportCards($userid, 3, false);
 
-?>
+                            //get the last 3 month data ONLY IF the data for 3 months previous is available
 
-                            <div id="chartContainer3" class="mb-4 mt-8" style="min-height: 370px; width: 100%;"></div>
+                            //so check is there any data for 3 months ago?
+
+                            $check3months = $gpat_glue->getDomainSpecificsReportCards($userid, 2, false);
+
+                            if ($check3months){
+
+                                //unless false
+
+                                $dataPoints3 = $gpat_glue->getDomainSpecificsReportCards($userid, 1, false); //array specifics last 3
+                                $dataPoints4 = $gpat_glue->getDomainSpecificsReportCards($userid, 2, false); //array specifics before last 3
+                                //chart to compare
+                                //set the chart type here, probably a switch
+    
+                            }else{
+
+                                //if false
+                                $dataPoints3 = $gpat_glue->getDomainSpecificsReportCards($userid, 3, false); //array specifics all time
+
+                            }
+
+                            //$dataPoints4 = $gpat_glue->getDomainSpecificsReportCards($userid, 1, false); //array specifics last 3
+
+
+?>                           
+<hr class="divider divider-icon my-8" />
+
+                            <p id="domains" class="section d-block h1 text-white mr-2 mb-1">Domain Specific Progress</p>
+
+
+                            <div id="chartContainer3" class="mb-4 mt-5" style="min-height: 370px; width: 100%;"></div>
+
+
+<!--
+split into pre and post last 3 as long as last 3 has data
+add delta GPAT last 3
+add min max GPAT
+
+
+                                    -->
+                            
+                                    <hr class="divider divider-icon my-8" />
+
+<p id="certification" class="section d-block h1 text-white mr-2 mb-1">Certification</p>
 
 
 
-
-
-                            <p id="progress" class="section display-3">Progress</p>
+<div id="testing" class="d-none">
+<p id="progress" class="section display-3">Progress</p>
                             <p><?php
                             
                             echo 'Testing';
@@ -1747,17 +1814,20 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                             echo '<br/><br/>';
                             echo $gpat_glue->averageArray($gpat_glue->getUserFractionWeighted($userid, 3, false), true);
 
+                            echo '<br/><br/>';
+                            echo '<br/><br/>';
+
+                            echo $gpat_glue->getDeltaWeightedFraction($userid, 2, true);
 
                             
                             ?></p>
 
-                            <p id="domains" class="section display-3">Domains</p>
 
-                            <p id="certification" class="section display-3">Certification</p>
+                           
 
                             <div id="chartContainer" class="mb-4" style="height: 370px; width: 100%;"></div>
                            
-
+                        </div>
 
                         </div>
                         <!--end col-9-->
@@ -1849,10 +1919,14 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                             
                 ]);
 
+    //chart of SMSA
+
     var chart2 = new CanvasJS.Chart("chartContainer2", {
 	animationEnabled: true,
 	colorSet: "gieqsGold",
     backgroundColor: null,
+    dataPointWidth: 40,
+
 
 
 	title: {
@@ -1904,10 +1978,12 @@ chart2.render();
 
 
 //chart for domains
+
 var chart3 = new CanvasJS.Chart("chartContainer3", {
 	animationEnabled: true,
 	colorSet: "gieqsGold",
     backgroundColor: null,
+    dataPointWidth: 40,
 
 
 	title: {
@@ -1955,6 +2031,10 @@ var chart3 = new CanvasJS.Chart("chartContainer3", {
 		dataPoints: <?php echo json_encode($dataPoints3, JSON_NUMERIC_CHECK); ?>
 	}]
 });
+
+
+
+
 chart3.render();
 
     var loaded = 1;
