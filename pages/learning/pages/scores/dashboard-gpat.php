@@ -32,12 +32,7 @@
       $gpat_glue = new gpat_glue();
       
 
-      $dataPoints = array( 
-        array("label"=>"Industrial", "y"=>51.7),
-        array("label"=>"Transportation", "y"=>26.6),
-        array("label"=>"Residential", "y"=>13.9),
-        array("label"=>"Commercial", "y"=>7.8)
-    );
+   
       ?>
 
     <!--Page title-->
@@ -251,7 +246,7 @@ top: 0px;
 
 
 
-        <!--Video Display-->
+    
 
 
         <div class="container mt-3">
@@ -275,67 +270,7 @@ top: 0px;
 
                
 
-                var options = {
-                    animationEnabled: true,
-                    backgroundColor: null,
-                    title: {
-                        text: "GPAT",
-                        fontColor: "#eec378",
-                        fontFamily: "arial",
-
-
-                    },
-                    axisY: {
-                        title: "GPAT",
-                        suffix: "",
-                        gridColor: "gray",
-                        fontColor: "white",
-                        tickColor: "white",
-                        lineThickness: 1,
-                        lineColor: "white",
-                        titleFontColor: "white",
-                        labelFontColor: "white",
-
-
-
-
-                    },
-                    axisX: {
-                        title: "Scores",
-                        gridColor: "gray",
-                        fontColor: "white",
-                        tickColor: "white",
-                        lineThickness: 1,
-                        lineColor: "white",
-                        titleFontColor: "white",
-                        labelFontColor: "white",
-
-
-
-
-
-                    },
-                    data: [{
-                        type: "column",
-                        yValueFormatString: "#,##0.0#" % "",
-                        dataPoints: [{
-                                label: "Proficiency",
-                                y: 10.09
-                            },
-                            {
-                                label: "Difficulty",
-                                y: 9.40
-                            },
-                            {
-                                label: "Fraction",
-                                y: 8.50
-                            },
-
-
-                        ]
-                    }]
-                };
-                $("#chartContainer").CanvasJSChart(options);
+               
 
                 
 
@@ -469,21 +404,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                                                 <?php echo $gpat_glue->determineNumberofIncompleteReportCards($userid);?></span>
 
 
-                                            <!-- <p> 1 / 6 Courses<br />
-                                                1 / 4 Premium Content Packs<br />
-                                                27 / 171 Total Learning Experiences</p>
-
-
-                                            <p>Complete 16 more individual Learning Experiences to reach GIEQs Silver
-                                                Status</p> -->
-
-
-
-                                            <!--  <a class="btn-sm bg-bronze p-1 mt-5 cursor-pointer"
-                                                onclick="window.location.href = siteRoot + 'gieqs-status.php';">
-
-                                                <span class="btn-inner--text text-dark text-sm">Find Out More</span>
-                                            </a> -->
+                                           
                                         </div>
                                     </div>
                                 </div>
@@ -492,12 +413,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
                                 <div class="card-body ml-5">
                                     <div class="d-flex">
-                                        <!--  <div>
-                                            <div class="icon text-white icon-lg">
-                                                <i class="fas fa-medal silver"></i>
-
-                                            </div>
-                                        </div> -->
+                                      
                                         <div class="pl-4">
                                             <table>
                                                 <tr>
@@ -524,25 +440,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                                                     </td>
                                                 </tr>
                                             </table>
-                                            <!--  <span class="d-block h6 text-white mr-2 mb-1 mt-4">Overall Completion
-                                                15.8%</span>
-
-
-                                            <p> 1 / 6 Courses<br />
-                                                1 / 4 Premium Content Packs<br />
-                                                27 / 171 Total Learning Experiences</p>
-
-
-                                            <p>Complete 16 more individual Learning Experiences to reach GIEQs Silver
-                                                Status</p>
-
-
-
-                                            <a class="btn-sm bg-bronze p-1 mt-5 cursor-pointer"
-                                                onclick="window.location.href = siteRoot + 'gieqs-status.php';">
-
-                                                <span class="btn-inner--text text-dark text-sm">Find Out More</span>
-                                            </a> -->
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -648,13 +546,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                             <div id="chartContainer3" class="mb-4 mt-5" style="min-height: 370px; width: 100%;"></div>
 
 
-                            <!--
-split into pre and post last 3 as long as last 3 has data
-add delta GPAT last 3
-add min max GPAT
-
-
-                                    -->
+                            
 
                             <hr class="divider divider-icon my-8" />
 
@@ -688,21 +580,7 @@ add min max GPAT
                                                 <?php  echo $statement['howdoi'];?></span>
 
 
-                                            <!-- <p> 1 / 6 Courses<br />
-                1 / 4 Premium Content Packs<br />
-                27 / 171 Total Learning Experiences</p>
-
-
-            <p>Complete 16 more individual Learning Experiences to reach GIEQs Silver
-                Status</p> -->
-
-
-
-                                            <!--  <a class="btn-sm bg-bronze p-1 mt-5 cursor-pointer"
-                onclick="window.location.href = siteRoot + 'gieqs-status.php';">
-
-                <span class="btn-inner--text text-dark text-sm">Find Out More</span>
-            </a> -->
+                                          
                                         </div>
                                     </div>
                                 </div>
@@ -711,12 +589,7 @@ add min max GPAT
 
                                 <div class="card-body ml-5">
                                     <div class="d-flex">
-                                        <!--  <div>
-            <div class="icon text-white icon-lg">
-                <i class="fas fa-medal silver"></i>
-
-            </div>
-        </div> -->
+                                        
                                         <div class="pl-4">
                                             <table>
                                                 <tr>
@@ -736,25 +609,7 @@ add min max GPAT
                                                     </td>
                                                 </tr>
                                             </table>
-                                            <!--  <span class="d-block h6 text-white mr-2 mb-1 mt-4">Overall Completion
-                15.8%</span>
-
-
-            <p> 1 / 6 Courses<br />
-                1 / 4 Premium Content Packs<br />
-                27 / 171 Total Learning Experiences</p>
-
-
-            <p>Complete 16 more individual Learning Experiences to reach GIEQs Silver
-                Status</p>
-
-
-
-            <a class="btn-sm bg-bronze p-1 mt-5 cursor-pointer"
-                onclick="window.location.href = siteRoot + 'gieqs-status.php';">
-
-                <span class="btn-inner--text text-dark text-sm">Find Out More</span>
-            </a> -->
+                                          
                                         </div>
                                     </div>
                                 </div>
@@ -831,10 +686,7 @@ add min max GPAT
 
     <?php require BASE_URI . '/footer.php';?>
 
-    <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
-    <!-- <script src="assets/js/purpose.core.js"></script> -->
-    <!-- Page JS -->
-    <!-- Google maps -->
+    
 
     <!-- Purpose JS -->
     <script src=<?php echo BASE_URL . "/assets/js/purpose.js"?>></script>
@@ -879,7 +731,9 @@ add min max GPAT
                  "#90EE90"                
                  ]); */
 
-    CanvasJS.addColorSet("gieqsGold",
+//chart colour scheme
+
+                 CanvasJS.addColorSet("gieqsGold",
         [ //colorSet Array
 
             "#893101",
@@ -889,15 +743,13 @@ add min max GPAT
 
         ]);
 
-    //chart of SMSA
+    
 
-    var chart2 = new CanvasJS.Chart("chartContainer2", {
+    var chart2 = new CanvasJS.Chart("chartContainer2", { //chart of SMSA
         animationEnabled: true,
         colorSet: "gieqsGold",
         backgroundColor: null,
         dataPointWidth: 40,
-
-
 
         title: {
             text: "SMSA of Complete Report Cards",
@@ -917,10 +769,6 @@ add min max GPAT
             titleFontColor: "white",
             labelFontColor: "white",
 
-
-
-
-
         },
         axisX: {
             title: "SMSA",
@@ -933,10 +781,6 @@ add min max GPAT
             labelFontColor: "white",
 
 
-
-
-
-
         },
         data: [{
             type: "column",
@@ -947,9 +791,9 @@ add min max GPAT
     chart2.render();
 
 
-    //chart for domains
+   
 
-    var chart3 = new CanvasJS.Chart("chartContainer3", {
+    var chart3 = new CanvasJS.Chart("chartContainer3", {  //chart for domains
         animationEnabled: true,
         colorSet: "gieqsGold",
         backgroundColor: null,
@@ -1007,17 +851,7 @@ add min max GPAT
 
     chart3.render();
 
-    var loaded = 1;
-
-    //the number the user wants
-    var loadedRequired = 1;
-
-    var firstTime = 1;
-    var activeStatus = 1;
-
-    var requiredTagCategoriesText = $("#requiredTagCategories").text();
-
-    var requiredTagCategories = JSON.parse(requiredTagCategoriesText);
+    ;
 
     function copyToClipboard(text) {
         if (window.clipboardData && window.clipboardData.setData) {
@@ -1041,265 +875,7 @@ add min max GPAT
         }
     }
 
-    function generateScore() {
-
-        var demarcation = $('#demarcation').val();
-        var size = $('#size').val();
-        var location = $('#location').val();
-        var morphology = $('#morphology').val();
-        var paris = $('#paris').val();
-
-        var COVERT = determineSMIC(demarcation, size, location, morphology, paris);
-
-
-
-
-        var score = {
-            "demarcation": demarcation,
-            "size": size,
-            "location": location,
-            "morphology": morphology,
-            "paris": paris,
-            "risk": COVERT.risk,
-            "odds": COVERT.odds,
-            "text": COVERT.risk_text,
-        };
-
-        console.log(score);
-        console.log(JSON.stringify(score));
-
-        //copy to  clipboard
-
-        copyToClipboard(JSON.stringify(score));
-
-    }
-
-
-    function refreshNavAndTags() {
-
-        var screenTop = $(document).scrollTop();
-
-        //console.log(top);
-
-        var tags = [];
-
-        $('.tag').each(function() {
-
-            if ($(this).is(":checked")) {
-                tags.push($(this).attr('data'));
-            }
-
-
-        })
-
-
-
-        //push how many loaded, use loaded variable
-
-        console.dir(tags);
-
-        /*var key = $(this).attr('data');
-
-				const dataToSend = {
-
-					key: key,
-
-				}*/
-        var dataToSend = {
-
-            tags: tags,
-            requiredTagCategories: requiredTagCategories,
-            active: activeStatus,
-
-        }
-
-        //const jsonString2 = JSON.stringify(dataToSend);
-
-        const jsonString = JSON.stringify(dataToSend);
-        ////console.log(jsonString);
-        //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
-
-        var request2 = $.ajax({
-            beforeSend: function() {
-
-                $('#videoCards').html(
-                    "<div class=\"d-flex align-items-center\"><strong>Loading...</strong><div class=\"spinner-border ml-auto\" role=\"status\" aria-hidden=\"true\"></div></div>"
-                );
-                //for each tags array push the badges to the tags shown area
-                var html = '';
-                $.each(tags, function(k, v) {
-
-                    //HERE WE HAVE THE TAGID
-
-                    var tagid = v;
-
-                    //get the name and category
-
-                    var tagName = $('body').find('#navigationZone').find('#tag' + v).siblings()
-                        .text();
-
-                    var tagCategory = $('body').find('#navigationZone').find('#tag' + v).parent()
-                        .parent().parent().parent().find('span').text();
-
-                    html +=
-                        '<span class="badge bg-gieqsGold text-dark mx-2 my-2 tagButton" data="' +
-                        v + '">' + tagCategory + ' / ' + tagName +
-                        ' <i style="float:right;" class="fas fa-times removeTag cursor-pointer ml-1" data="' +
-                        v + '"></i></span>';
-
-                });
-                $('body').find('#navigationZone').find('#shown-tags').html(html);
-
-            },
-            url: siteRoot + "/pages/learning/scripts/getNavv2.php",
-            type: "POST",
-            contentType: "application/json",
-            data: jsonString,
-        });
-
-
-
-        request2.done(function(data) {
-            // alert( "success" );
-            if (data != '[]') {
-                var toKeep = $.parseJSON(data.trim());
-                //alert(data.trim());
-                console.dir(toKeep);
-
-
-                $('.tag').each(function() {
-
-                    var tagid = $(this).attr('data');
-
-                    if (toKeep.indexOf(tagid) > -1) {
-
-                        $(this).attr('disabled', false);
-
-                    } else {
-
-                        $(this).attr('disabled', true);
-                    }
-
-                })
-
-
-            }
-            //$(document).find('.Thursday').hide();
-        })
-
-        request2.then(function(data) {
-            var tags = [];
-
-            $('.tag').each(function() {
-
-                if ($(this).is(":checked")) {
-                    tags.push($(this).attr('data'));
-                }
-
-
-            })
-
-            //TODO ADD ABILITY TO PASS A PARAMETER HERE INDICATING NUMBER LOADED
-            //THEN MODIFY LAYOUT AND NUMBER LOADED
-
-            console.dir(tags);
-
-            var dataToSend = {
-
-                tags: tags,
-                loaded: loaded,
-                loadedRequired: loadedRequired,
-                requiredTagCategories: requiredTagCategories,
-                referringUrl: $('#escaped_url').text(),
-                active: activeStatus,
-
-
-            }
-
-            const jsonString2 = JSON.stringify(dataToSend);
-
-
-
-
-            const jsonString = JSON.stringify(tags);
-
-            console.dir(jsonString2);
-
-
-            var request3 = $.ajax({
-                beforeSend: function() {
-
-
-                },
-                url: siteRoot + "/pages/learning/scripts/getVideos.php",
-                type: "POST",
-                contentType: "application/json",
-                data: jsonString2,
-            });
-            request3.done(function(data) {
-                // alert( "success" );
-                if (data) {
-                    //var toKeep = $.parseJSON(data.trim());
-                    //alert(data.trim());
-                    //console.dir(toKeep);
-
-                    $('#videoCards').html(data);
-                    $('body').find('#itemCount').each(function() {
-
-                        var count = $('body').find('.individualVideo').length;
-                        $(this).text(count);
-
-
-                    })
-
-
-                    if (firstTime == 1) {
-                        $('body').on('click', '#loadMore', function() {
-
-                            loadedRequired = loadedRequired + 1;
-
-
-                            refreshNavAndTags();
-
-                        })
-                    }
-
-
-
-                    if (firstTime > 1 && loadedRequired > 1) {
-
-                        var loadedRequiredMultiple = ((loadedRequired - 1) * 10) - 3;
-
-                        //console.log(loadedRequiredMultiple);
-
-                        //scroll to current level
-
-
-                        $("body,html").animate({
-                                scrollTop: $('body').find('.individualVideo:eq(' +
-                                    loadedRequiredMultiple + ')').offset().top
-                            },
-                            2 //speed
-                        );
-                    }
-
-
-                    firstTime = firstTime + 1;
-                    //$('body').find('.individualVideo:eq('+loadedRequiredMultiple +')').scrollTop(300);
-
-
-
-
-
-                }
-                //$(document).find('.Thursday').hide();
-            })
-
-
-        })
-
-
-    }
+  
 
     $(document).ready(function() {
 
@@ -1340,424 +916,7 @@ add min max GPAT
 
         //if none are checked load 10 most recent videos for these categories
 
-        $('.tag').click(function() {
-
-            refreshNavAndTags();
-
-        })
-
-        $('body').on('click', '.removeTag', function() {
-
-            var tagToRemove = $(this).attr('data');
-            //remove the check from the tag removed
-
-            $('.tag').each(function() {
-
-                if ($(this).attr("data") == tagToRemove) {
-
-                    $(this).prop('checked', false);
-
-                }
-
-
-            })
-
-
-            refreshNavAndTags();
-
-        })
-        //active behaviour
-
-        $('body').on('change', '#active', function() {
-
-            var active = $(this).children("option:selected").val();
-            //remove the check from the tag removed
-
-            activeStatus = active;
-
-            refreshNavAndTags();
-
-        })
-
-        $('body').on('change', '.SMSA', function() {
-
-            var SMSA = calculateDifficultyScore();
-            //remove the check from the tag removed
-
-            if (isNaN(SMSA.SMSA_total) === false) {
-
-                $('#SMSA_total').text(SMSA.SMSA_total);
-                $('#SMSA_group').text(SMSA.SMSA_group);
-
-            };
-
-
-
-        })
-
-        $('body').on('change', '.SMSAplus', function() {
-
-
-
-            //alert('hello');
-            var SMSAplus = calculatePlusDifficultyScore();
-            //remove the check from the tag removed
-
-            if (isNaN(SMSAplus.SMSA_plus_total) === false) {
-
-                $('#numeratorSMSAplus').text(SMSAplus.SMSA_plus_total);
-                $('#denominatorSMSAplus').text(4);
-
-            };
-
-
-
-        })
-
-        $('body').on('change', '.score', function() {
-
-
-
-            //alert('hello');
-            var score = calculateScore();
-            //remove the check from the tag removed
-
-            if (isNaN(score.score_total) === false) {
-
-                $('#numeratorSum').text(score.score_total);
-                $('#denominatorSum').text(score.score_denominator);
-                $('#fraction').text(+score.fraction.toFixed(2));
-
-                //numb = +numb.toFixed(2);
-
-            };
-
-
-
-        })
-
-        $('body').on('change', '#type_polypectomy', function() {
-
-
-            //hide the cold snare
-            //alert('change');
-
-            if ($(this).val() == 1) {
-
-                showHotSnareFields();
-
-            } else if ($(this).val() == 2) {
-
-                hideHotSnareFields();
-
-            }
-
-            fullScoreUpdate();
-
-
-
-        })
-
-
-        $('body').on('click', '#reset-form', function() {
-
-
-            //hide the cold snare
-            //alert('change');
-
-            location.reload();
-
-
-
-        })
-
-        $('body').on('click', '.cancel', function(event) {
-
-
-            //hide the cold snare
-            //alert('change');
-
-            event.preventDefault();
-
-            $(this).parent().find('select').val('please select');
-            fullScoreUpdate();
-
-
-        })
-
-        $('body').on('click', '#show-info', function(event) {
-
-
-            //hide the cold snare
-            //alert('change');
-
-            event.preventDefault();
-
-            $('#collapseExample').collapse('toggle');
-            //fullScoreUpdate();
-
-
-        })
-
-        $('body').on('click', '#updateDatabase', function(event) {
-
-
-            //hide the cold snare
-            //alert('change');
-
-            event.preventDefault();
-            var fields = getFieldsToSavePlusSMSA();
-            updateDatabase(fields);
-
-
-
-        })
-
-        $('body').on('click', '#saveScore', function(event) {
-
-
-            //hide the cold snare
-            //alert('change');
-
-            event.preventDefault();
-            var fields = getFieldsToSavePlusSMSA();
-            saveScoreUser(fields);
-
-
-
-
-        })
-
-        $(document).on('click', '#calculate', function(event) {
-
-            event.preventDefault();
-            $('#polypectomy-form').submit();
-
-        })
-
-        $("#polypectomy-form").validate({
-
-            invalidHandler: function(event, validator) {
-                var errors = validator.numberOfInvalids();
-                console.log("there were " + errors + " errors");
-                if (errors) {
-                    var message = errors == 1 ?
-                        "1 field has been missed. It has been highlighted.\n Score not saved." :
-                        +errors +
-                        " fields have been missed. They have been highlighted.  Score not saved.";
-
-
-                    $('#error').text(message);
-                    //$('div.error span').addClass('form-text text-danger');
-                    //$('#errorWrapper').show();
-
-                    $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function() {
-                        $("#errorWrapper").slideUp(500);
-                    });
-                } else {
-                    $('#errorWrapper').hide();
-                }
-            },
-            rules: {
-                type_polypectomy: {
-                    required: true,
-
-                },
-
-
-
-                tip_control: {
-                    required: true,
-
-                },
-
-                extent: {
-                    required: true,
-
-                },
-
-                positioning: {
-                    required: true,
-
-                },
-
-                appropriate_technique: {
-                    required: true,
-
-                },
-
-
-                injection_plane: {
-
-                    required: function(element) {
-                        return $("#type_polypectomy").val() == "1";
-
-                    }
-
-                },
-
-                injection_dynamic: {
-
-                    required: function(element) {
-                        return $("#type_polypectomy").val() == "1";
-
-                    }
-
-                },
-
-                injection_access: {
-
-                    required: function(element) {
-                        return $("#type_polypectomy").val() == "1";
-
-                    }
-
-                },
-
-
-                snare_size: {
-
-                    required: true,
-
-                },
-
-                snare_position: {
-
-                    required: true,
-
-                },
-                snare_visualised: {
-
-                    required: true
-                },
-
-                snare_capture: {
-
-                    required: true,
-
-                },
-
-                residual: {
-
-                    required: true,
-
-                },
-                independent_movement: {
-
-                    required: function(element) {
-                        return $("#type_polypectomy").val() == "1";
-
-                    }
-                },
-
-                lift_movement: {
-
-                    required: function(element) {
-                        return $("#type_polypectomy").val() == "1";
-
-                    }
-                },
-
-                /* snare_closed: {
-
-                    required: function(element) {
-                        return $("#type_polypectomy").val() == "1";
-
-                    }
-                }, */
-                mucosa: {
-
-                    required: true
-                },
-                thermal_ablation: {
-
-                    /* currently not required as not done all the time*/
-                },
-                submucosa: {
-
-                    required: function(element) {
-                        return $("#type_polypectomy").val() == "1";
-
-                    }
-                },
-                muscularis: {
-
-                    required: function(element) {
-                        return $("#type_polypectomy").val() == "1";
-
-                    }
-                },
-                size: {
-
-                    required: true
-                },
-                morphology: {
-
-                    required: true
-                },
-                site: {
-
-                    required: true
-                },
-                access: {
-
-                    required: true
-                },
-
-                non_lifting: {
-
-                    required: function(element) {
-                        return $("#type_polypectomy").val() == "1";
-
-                    }
-                },
-                PANL: {
-
-                    required: function(element) {
-                        return $("#type_polypectomy").val() == "1";
-
-                    }
-                },
-                size_40_smsaplus: {
-
-                    required: true,
-                },
-                nongranular_smsaplus: {
-                    required: function(element) {
-                        return $("#type_polypectomy").val() == "1";
-
-                    }
-                },
-
-
-
-
-            },
-            messages: {
-
-                type_polypectomy: {
-
-                    required: 'You must enter whether the polypectomy was performed hot or cold.  This will alter the available fields below.',
-
-                },
-
-
-            },
-            submitHandler: function(form) {
-
-
-                //copyFormClipboard();
-                var fields = getFieldsToSavePlusSMSA();
-                saveScoreUser(fields);
-
-                //console.log("submitted form");
-
-
-
-            }
-
-        });
-
+        
 
         $(window).scroll(function() {
             var scrollDistance = $(window).scrollTop();
