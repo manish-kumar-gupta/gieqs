@@ -649,9 +649,131 @@ class gpat_glue extends gpat_score
 
     }
 
-    public function getSMSAUserReportCards($userid, $last3, $debug=false){
+    public function certificationText ($userid){
 
-        // $last3  1 = last 3 moths, 2 = before last 3 , 3 = all data
+        //obsolete
+
+        if ($this->doesUserHave30CompleteProcedures($userid) === false){
+
+            $proceduresRequired = 30 - $this->determineNumberofCompleteReportCards($userid);
+
+            $statement = 'Uncertified in Polypectomy.  Ineligible to start Certification';
+
+        }
+
+        if ($this->doesUserHave30CompleteProcedures($userid) === true){
+
+            
+            $weighted_gpat = $this->averageArray($this->getUserFractionWeighted($userid, 3, false), false);
+
+            //testing
+
+            //$weighted_gpat = 0.87;
+
+            if ($weighted_gpat >= 0 && $weighted_gpat < 0.13){
+
+                $statement = 'GPAT Insufficient to start SMSA 2 Certification';
+
+            }else if ($weighted_gpat >= 0.13 && $weighted_gpat < 0.38){
+
+                $statement = 'SMSA 2 Certification Eligible';
+
+            }else if ($weighted_gpat >= 0.38 && $weighted_gpat < 0.63){
+
+                $statement = 'SMSA 3 Certification Eligible';
+
+            }else if ($weighted_gpat >= 0.63 && $weighted_gpat < 0.88){
+
+                $statement = 'SMSA 4 Certification Eligible';
+
+            }else if ($weighted_gpat >= 0.88){
+
+                $statement = 'SMSA + Certification Eligible';
+
+            }
+
+
+        }
+
+
+
+        return $statement;
+
+    }
+
+    public function howDoICertify ($userid){
+
+        $statement = [];
+
+        if ($this->doesUserHave30CompleteProcedures($userid) === false){
+
+            $proceduresRequired = 30 - $this->determineNumberofCompleteReportCards($userid);
+
+            $statement['currentcertificationstatus'] = 'Uncertified in Polypectomy.  <br/>Ineligible to start Certification';
+            $statement['howdoi'] = 'Complete 30 GPAT Assessments';
+            $statement['deltagpat'] = 'n/a';
+
+        }
+
+        if ($this->doesUserHave30CompleteProcedures($userid) === true){
+
+            
+            $weighted_gpat = $this->averageArray($this->getUserFractionWeighted($userid, 3, false), false);
+
+            //testing
+
+            //$weighted_gpat = 0.87;
+
+            if ($weighted_gpat >= 0 && $weighted_gpat < 0.13){
+
+                $statement['currentcertificationstatus'] = 'GPAT Insufficient to start SMSA 2 Certification';
+                $statement['howdoi'] = 'Attain a Weighted GPAT &ge; to 0.13 to become eligible for SMSA 2';
+                $statement['deltagpat'] = 0.13 - $weighted_gpat;
+
+
+            }else if ($weighted_gpat >= 0.13 && $weighted_gpat < 0.38){
+
+                $statement['currentcertificationstatus'] = 'SMSA 2 Certification Eligible';
+                $statement['howdoi'] = 'Attain a Weighted GPAT &ge; to 0.38 to become eligible for SMSA 3';
+                $statement['deltagpat'] = 0.38 - $weighted_gpat;
+
+
+            }else if ($weighted_gpat >= 0.38 && $weighted_gpat < 0.63){
+
+                $statement['currentcertificationstatus'] = 'SMSA 3 Certification Eligible';
+                $statement['howdoi'] = 'Attain a Weighted GPAT &ge; to 0.63 to become eligible for SMSA 4';
+                $statement['deltagpat'] = 0.63 - $weighted_gpat;
+
+
+            }else if ($weighted_gpat >= 0.63 && $weighted_gpat < 0.88){
+
+                $statement['currentcertificationstatus'] = 'SMSA 4 Certification Eligible';
+                $statement['howdoi'] = 'Attain a Weighted GPAT &ge; to 0.88 to become eligible for SMSA +';
+                $statement['deltagpat'] = 0.88 - $weighted_gpat;
+
+
+            }else if ($weighted_gpat >= 0.88){
+
+                $statement['currentcertificationstatus'] = 'SMSA + Certification Eligible';
+                $statement['howdoi'] = 'You are eligible for SMSA+ certification';
+                $statement['deltagpat'] = 'n/a';
+
+
+            }
+
+
+        }
+
+
+
+        return $statement;
+
+    }
+
+    public function getSMSAUserReportCards($userid, $last3, $returnType, $debug=false){
+
+        // $last3  1 = last 3 months, 2 = before last 3 , 3 = all data
+        // $returnType 1 = standard array , 2 = datapoints for chart
 
         //define today
         $date_today = new DateTime();
@@ -680,7 +802,7 @@ class gpat_glue extends gpat_score
             $last3text = '';
         }
 
-        $q = "SELECT `SMSA_group`, `numeratorSMSAplus` FROM `gpat_score` WHERE `user_id` = '$userid' AND `complete` = '1' $last3text";
+        $q = "SELECT `SMSA_group`, `numeratorSMSAplus`, `fraction` FROM `gpat_score` WHERE `user_id` = '$userid' AND `complete` = '1' $last3text";
 
         //echo $q . '<br><br>';
 
@@ -696,6 +818,13 @@ class gpat_glue extends gpat_score
         $SMSA4 = 0;
         $SMSAplus = 0;
 
+        //of course  these  are actually unweighted
+
+        $SMSA2weightedgpat = [];
+        $SMSA3weightedgpat = [];
+        $SMSA4weightedgpat = [];
+        $SMSAplusweightedgpat = [];
+
 
         if ($nRows > 0) {
 
@@ -705,43 +834,98 @@ class gpat_glue extends gpat_score
                 if ($row['numeratorSMSAplus'] > 0){
 
                     $SMSAplus = $SMSAplus + 1;
+                    $SMSAplusweightedgpat[] = $row['fraction'];
                     
                 }else{
 
                 if ($row['SMSA_group'] == 2){
 
                     $SMSA2 = $SMSA2 + 1;
+                    $SMSA2weightedgpat[] = $row['fraction'];
+
 
                 }
 
                 if ($row['SMSA_group'] == 3){
 
                     $SMSA3 = $SMSA3 + 1;
+                    $SMSA3weightedgpat[] = $row['fraction'];
+
                     
                 }
 
                 if ($row['SMSA_group'] == 4){
 
                     $SMSA4 = $SMSA4 + 1;
+                    $SMSA4weightedgpat[] = $row['fraction'];
+
                     
                 }
 
             }
 
+            if (count($SMSA2weightedgpat) > 0){            
+                $average_SMSA2weightedgpat = $this->averageArray($SMSA2weightedgpat);
+            }else{
+
+                $average_SMSA2weightedgpat = 'no data';
+            }
+            if (count($SMSA3weightedgpat) > 0){            
+
+            $average_SMSA3weightedgpat = $this->averageArray($SMSA3weightedgpat);
+            }else{
+
+                $average_SMSA3weightedgpat = 'no data';
+            }
+            if (count($SMSA4weightedgpat) > 0){            
+
+            $average_SMSA4weightedgpat = $this->averageArray($SMSA4weightedgpat);
+            }else{
+
+                $average_SMSA4weightedgpat = 'no data';
+            }
+            if (count($SMSAplusweightedgpat) > 0){            
+
+            $average_SMSAplusweightedgpat = $this->averageArray($SMSAplusweightedgpat);
+            }else{
+
+                $average_SMSAplusweightedgpat = 'no data';
+            }
+
+
                 
 
 
             }
 
-            $dataPoints = array( 
-                array("y" => $SMSA2, "label" => "SMSA 2" ),
-                array("y" => $SMSA3, "label" => "SMSA 3" ),
-                array("y" => $SMSA4, "label" => "SMSA 4" ),
-                array("y" => $SMSAplus, "label" => "SMSA +" ),
-                
-            );
+            if ($returnType == 1){
 
-            return $dataPoints;
+                $dataPoints = [
+                    
+                    
+                    'SMSA2weightedgpat'=>$average_SMSA2weightedgpat,
+                    'SMSA3weightedgpat'=>$average_SMSA3weightedgpat,
+                    'SMSA4weightedgpat'=>$average_SMSA4weightedgpat,
+                    'SMSAplusweightedgpat'=>$average_SMSAplusweightedgpat,
+            
+            
+            ];
+
+                return $dataPoints;
+
+            }elseif ($returnType == 2){
+
+                    $dataPoints = array( 
+                        array("y" => $SMSA2, "label" => "SMSA 2" ),
+                        array("y" => $SMSA3, "label" => "SMSA 3" ),
+                        array("y" => $SMSA4, "label" => "SMSA 4" ),
+                        array("y" => $SMSAplus, "label" => "SMSA +" ),
+                        
+                    );
+
+                    return $dataPoints;
+
+             }
 
         } else {
             
