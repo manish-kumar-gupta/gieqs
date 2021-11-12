@@ -184,14 +184,7 @@ top: 0px;
 
     <!--- specifiy the tag Categories required for display  CHANGEME-->
 
-    <?php
-        $requiredTagCategories = ['66', '105'];
-
-        ?>
-
-    <div id="requiredTagCategories" style="display:none;"><?php echo json_encode($requiredTagCategories);?></div>
-
-
+    
 
     <!--CONSTRUCT TAG DISPLAY-->
 
@@ -225,7 +218,12 @@ top: 0px;
     //error_reporting(E_ALL);
     include(BASE_URI . '/pages/learning/assets/gpatNav.php');
 
+    
+    $debug = false;
+
     ?>
+
+
 
     <div class="main-content bg-gradient-dark">
 
@@ -433,7 +431,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td> <span class="d-block h1 text-white mr-2 mb-1 mt-2">delta
+                                                    <td> <span class="d-block h1 text-white mr-2 mb-1 mt-2">&Delta; 
                                                             GPAT<sub>1-month</sub></span></td>
                                                     <td><span id="gpat_delta"
                                                             class="ml-2 d-block h1 text-white mr-2 mb-1 mt-2"><?php echo $gpat_glue->getDeltaWeightedFraction($userid, 2, false);?></span>
@@ -463,13 +461,13 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                             </p>
 
                             <?php
-                            $dataPoints = $gpat_glue->getSMSAUserReportCards($userid, 3, 2, false);
+                            $dataPoints = $gpat_glue->getSMSAUserReportCards($userid, 3, 1, 2, false);
 
 ?>
 
                             <div class="d-flex justify-content-end">
 
-                                <p><?php $SMSAscores = $gpat_glue->getSMSAUserReportCards($userid, 3, 1); //print_r($SMSAscores);?>
+                                <p><?php $SMSAscores = $gpat_glue->getSMSAUserReportCards($userid, 3, 2, 1); //print_r($SMSAscores);?>
                                 </p>
                                 <table>
                                     <tr>
@@ -511,21 +509,85 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                             <div id="chartContainer2" class="mb-4 mt-5" style="min-height: 370px; width: 100%;"></div>
 
                             <?php
+                            $check3monthsSMSA = $gpat_glue->getSMSAUserReportCards($userid, 2, 2, 2, false);
+
+                            if ($debug){
+
+                                echo 'check3monthsSMSA is ';
+                                var_dump($check3monthsSMSA);
+                            }
+
+
+                            if ($check3monthsSMSA){
+
+
+                                $dataPoints5 = $gpat_glue->getSMSAUserReportCards($userid, 2, 2, 2, false);
+                                $dataPoints6 = $gpat_glue->getSMSAUserReportCards($userid, 1, 2, 2, false);
+
+
+                            }else{
+                             $dataPoints5 = $gpat_glue->getSMSAUserReportCards($userid, 3, 2, 2, false);
+                            
+                            }
+                             
+                             
+                             
+                             
+                             
+                             
+                             
+                             
+                             
+                             
+                             ?>
+
+
+
+
+
+                            <div id="chartContainer4" class="mb-4 mt-5" style="min-height: 370px; width: 100%;"></div>
+
+                            <?php
 
                             //get the last 3 month data ONLY IF the data for 3 months previous is available
 
                             //so check is there any data for 3 months ago?
 
+                          
+
                             $check3months = $gpat_glue->getDomainSpecificsReportCards($userid, 2, false);
+
+                            if ($debug){
+
+                                echo 'check3months is ';
+                                var_dump($check3months);
+                            }
 
                             if ($check3months){
 
                                 //unless false
 
-                                $dataPoints3 = $gpat_glue->getDomainSpecificsReportCards($userid, 1, false); //array specifics last 3
-                                $dataPoints4 = $gpat_glue->getDomainSpecificsReportCards($userid, 2, false); //array specifics before last 3
+                                
+
+                                $dataPoints3 = $gpat_glue->getDomainSpecificsReportCards($userid, 2, false); //array specifics before last 3
+                                $dataPoints4 = $gpat_glue->getDomainSpecificsReportCards($userid, 1, false); //array specifics last 3
+                                
                                 //chart to compare
                                 //set the chart type here, probably a switch
+
+                                if ($debug){
+
+                                    echo 'both arrays shown <br/><br/>';
+                                    echo '<pre>';
+                                    var_dump($dataPoints3);
+                                    echo '</pre>';
+                                    echo '<br/><br/>';
+                                    echo '<pre>';
+                                    var_dump($dataPoints4);
+                                    echo '</pre>';
+
+
+                                }
     
                             }else{
 
@@ -546,13 +608,15 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                             <div id="chartContainer3" class="mb-4 mt-5" style="min-height: 370px; width: 100%;"></div>
 
 
+
+
                             
 
                             <hr class="divider divider-icon my-8" />
 
                             <p id="certification" class="section d-block h1 text-white mr-2 mb-1">Certification</p>
 
-                            <div class="d-flex justify-content-between">
+                            <div class="d-flex justify-content-between mb-8">
 
 
 
@@ -601,8 +665,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td> <span class="d-block h1 text-white mr-2 mb-1 mt-2">required
-                                                            delta
+                                                    <td> <span class="d-block h1 text-white mr-2 mb-1 mt-2">required &Delta;
                                                             GPAT</sub></span></td>
                                                     <td><span id="gpat_delta"
                                                             class="ml-2 d-block h1 text-white mr-2 mb-1 mt-2"><?php echo $statement['deltagpat'];?></span>
@@ -650,7 +713,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
 
 
-                                <div id="chartContainer" class="mb-4" style="height: 370px; width: 100%;"></div>
+                              
 
                             </div>
 
@@ -790,7 +853,16 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
     });
     chart2.render();
 
-
+    function toggleDataSeriesChart3(e){
+	
+        if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+		e.dataSeries.visible = false;
+	}
+	else{
+		e.dataSeries.visible = true;
+	}
+	chart3.render();
+    }
    
 
     var chart3 = new CanvasJS.Chart("chartContainer3", {  //chart for domains
@@ -801,12 +873,19 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
 
         title: {
-            text: "Domain Specific GPAT Scores",
+            text: "Domain Specific unweighted GPAT Scores",
             fontColor: "#eec378",
             fontFamily: "arial",
 
 
         },
+        legend:{
+		cursor: "pointer",
+        fontColor: "white",
+/* 		verticalAlign: "center",
+		horizontalAlign: "right", */
+		itemclick: toggleDataSeriesChart3
+	},
         axisY: {
             title: "Domain Specific GPAT",
             suffix: "",
@@ -839,19 +918,143 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
 
         },
-        data: [{
+        data: [
+        {
+            showInLegend: true,
             type: "column",
+            <?php if ($check3months){
+                
+                echo 'name: "Results > 3 months old",';
+
+            }else{
+
+
+                echo 'name: "All Time",';
+
+
+            }
+                
+                ?>
 
             dataPoints: <?php echo json_encode($dataPoints3, JSON_NUMERIC_CHECK); ?>
-        }]
+        },
+        <?php if ($check3months){?>
+            {
+            
+            showInLegend: true,
+            type: "column",
+            name: "Recent results",
+
+            dataPoints: <?php echo json_encode($dataPoints4, JSON_NUMERIC_CHECK); ?>
+             },
+
+        <?php } ?>
+
+    
+    ]
     });
-
-
-
 
     chart3.render();
 
-    ;
+    function toggleDataSeriesChart4(e){
+	
+    if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+    e.dataSeries.visible = false;
+}
+else{
+    e.dataSeries.visible = true;
+}
+chart4.render();
+}
+
+    var chart4 = new CanvasJS.Chart("chartContainer4", {  //chart for SMSA stratified non-weighted GPAT
+        animationEnabled: true,
+        colorSet: "gieqsGold",
+        backgroundColor: null,
+        dataPointWidth: 40,
+
+
+        title: {
+            text: "SMSA stratified unweighted GPAT Scores",
+            fontColor: "#eec378",
+            fontFamily: "arial",
+
+
+        },
+        legend:{
+		cursor: "pointer",
+        fontColor: "white",
+/* 		verticalAlign: "center",
+		horizontalAlign: "right", */
+		itemclick: toggleDataSeriesChart4
+	},
+        axisY: {
+            title: "unweighted GPAT",
+            suffix: "",
+            gridColor: "gray",
+            fontColor: "white",
+            tickColor: "white",
+            lineThickness: 1,
+            lineColor: "white",
+            titleFontColor: "white",
+            labelFontColor: "white",
+
+
+
+
+
+        },
+        axisX: {
+            title: "SMSA score",
+            gridColor: "gray",
+            fontColor: "white",
+            tickColor: "white",
+            lineThickness: 1,
+            lineColor: "white",
+            titleFontColor: "white",
+            labelFontColor: "white",
+
+
+
+
+
+
+        },
+        data: [{
+            showInLegend: true,
+            type: "column",
+            <?php if ($check3monthsSMSA){
+                
+                echo 'name: "Results > 3 months old",';
+
+            }else{
+
+
+                echo 'name: "All Time",';
+
+
+            }
+                
+                ?>
+
+            dataPoints: <?php echo json_encode($dataPoints5, JSON_NUMERIC_CHECK); ?>
+        },
+        <?php if ($check3monthsSMSA){?>
+            {
+            
+            showInLegend: true,
+            type: "column",
+            name: "Recent results",
+
+            dataPoints: <?php echo json_encode($dataPoints6, JSON_NUMERIC_CHECK); ?>
+             },
+
+        <?php } ?>]
+    });
+
+    chart4.render();
+
+    
 
     function copyToClipboard(text) {
         if (window.clipboardData && window.clipboardData.setData) {

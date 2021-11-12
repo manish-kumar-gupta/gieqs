@@ -770,10 +770,12 @@ class gpat_glue extends gpat_score
 
     }
 
-    public function getSMSAUserReportCards($userid, $last3, $returnType, $debug=false){
+    public function getSMSAUserReportCards($userid, $last3, $numberOrWeight, $returnType, $debug=false){
 
         // $last3  1 = last 3 months, 2 = before last 3 , 3 = all data
+        // $numberOrWeight 1 = numbers, 2 = weights
         // $returnType 1 = standard array , 2 = datapoints for chart
+
 
         //define today
         $date_today = new DateTime();
@@ -898,34 +900,70 @@ class gpat_glue extends gpat_score
 
             }
 
-            if ($returnType == 1){
+            if ($numberOrWeight == 1){
 
-                $dataPoints = [
-                    
-                    
-                    'SMSA2weightedgpat'=>$average_SMSA2weightedgpat,
-                    'SMSA3weightedgpat'=>$average_SMSA3weightedgpat,
-                    'SMSA4weightedgpat'=>$average_SMSA4weightedgpat,
-                    'SMSAplusweightedgpat'=>$average_SMSAplusweightedgpat,
-            
-            
-            ];
 
-                return $dataPoints;
+                if ($returnType == 1){
 
-            }elseif ($returnType == 2){
-
-                    $dataPoints = array( 
-                        array("y" => $SMSA2, "label" => "SMSA 2" ),
-                        array("y" => $SMSA3, "label" => "SMSA 3" ),
-                        array("y" => $SMSA4, "label" => "SMSA 4" ),
-                        array("y" => $SMSAplus, "label" => "SMSA +" ),
+                    $dataPoints = [
                         
-                    );
+                        
+                        'SMSA2'=>$SMSA2,
+                        'SMSA3'=>$SMSA3,
+                        'SMSA4'=>$SMSA4,
+                        'SMSAplus'=>$SMSAplus,
+                
+                
+                ];
 
                     return $dataPoints;
 
-             }
+                }elseif ($returnType == 2){
+
+                        $dataPoints = array( 
+                            array("y" => $SMSA2, "label" => "SMSA 2" ),
+                            array("y" => $SMSA3, "label" => "SMSA 3" ),
+                            array("y" => $SMSA4, "label" => "SMSA 4" ),
+                            array("y" => $SMSAplus, "label" => "SMSA +" ),
+                            
+                        );
+
+                        return $dataPoints;
+
+                }
+
+            }elseif ($numberOrWeight == 2){
+
+                if ($returnType == 1){
+
+                    $dataPoints = [
+                        
+                        
+                        'SMSA2weightedgpat'=>$average_SMSA2weightedgpat,
+                        'SMSA3weightedgpat'=>$average_SMSA3weightedgpat,
+                        'SMSA4weightedgpat'=>$average_SMSA4weightedgpat,
+                        'SMSAplusweightedgpat'=>$average_SMSAplusweightedgpat,
+                
+                
+                    ];
+
+                    return $dataPoints;
+
+                }elseif ($returnType == 2){
+
+                        $dataPoints = array( 
+                            array("y" => $average_SMSA2weightedgpat, "label" => "SMSA 2" ),
+                            array("y" => $average_SMSA3weightedgpat, "label" => "SMSA 3" ),
+                            array("y" => $average_SMSA4weightedgpat, "label" => "SMSA 4" ),
+                            array("y" => $average_SMSAplusweightedgpat, "label" => "SMSA +" ),
+                            
+                        );
+
+                        return $dataPoints;
+
+                }
+
+            }
 
         } else {
             
