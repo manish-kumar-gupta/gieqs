@@ -597,6 +597,67 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
         });
 
+        $("#dataTable").on('click', '.delete-row', function(e) {
+
+            //to jump to record 
+            e.preventDefault();
+
+            var currentRow = $(this).closest("tr");
+
+            var data = $('#dataTable').DataTable().row(currentRow).data();
+            //console.log(data['id']);
+
+            const dataToSend = {
+
+                id: data['id'],
+
+            }
+
+            const jsonString = JSON.stringify(dataToSend);
+
+
+            if (confirm('Are you sure you wish to permanently delete this GPAT?')){
+
+            var request = $.ajax({
+                beforeSend: function() {
+
+                },
+                url: siteRoot + "assets/scripts/scores/delete_gpat.php",
+                type: "POST",
+                contentType: "application/json",
+                data: jsonString,
+
+            });
+
+            request.done(function(data) {
+
+                console.log(data);
+
+                if (data) {
+
+                    alert('GPAT deleted');
+                    datatable.search('').columns().search('').draw();
+
+
+
+                }else{
+
+                    alert('Something went wrong.  Please try again');
+                }
+
+            })
+
+            return request;
+
+            }
+
+            /* window.location.href = siteRoot + 'pages/learning/pages/scores/technique.php?id=' + data[
+                'id']; */
+
+
+
+        });
+
         $(document).on('click', '#reset-table', function(e) {
 
             //to jump to record 
