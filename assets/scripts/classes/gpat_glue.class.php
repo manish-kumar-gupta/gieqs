@@ -132,6 +132,45 @@ class gpat_glue extends gpat_score
 
     }
 
+    public function checkUserOwnsGPAT ($userid, $id, $debug=false)
+    {
+        //little boy
+        //output number of report card in sequential order via created field
+        //false if no report card for this user
+
+
+        $q = "SELECT `id` FROM `gpat_score` WHERE `user_id` = '$userid' AND `id` =  '$id' ORDER BY `created` ASC";
+
+        echo $q . '<br><br>';
+
+        $rowReturn = [];
+
+        $result = $this->connection->RunQuery($q);
+        
+        $x = 0;
+        $nRows = $result->rowCount();
+
+        if ($nRows > 0) {
+
+            if ($debug){
+
+                echo '1+ records match this user id combination';
+            }
+            return true;
+
+        } else {
+            
+            if ($debug){
+
+                echo 'No records match this id user combination';
+            }
+
+            return false;
+        }
+
+
+    }
+
     public function determineNumberofCompleteReportCards ($userid)
     {
         //little boy
@@ -165,7 +204,7 @@ class gpat_glue extends gpat_score
         } else {
             
 
-            return false;
+            return 0;
         }
 
 
@@ -178,7 +217,7 @@ class gpat_glue extends gpat_score
         //false if no report card for this user
 
 
-        $q = "SELECT `created` FROM `gpat_score` WHERE `user_id` = '$userid' AND `complete` =  '0' OR `complete` IS NULL ORDER BY `created` ASC";
+        $q = "SELECT `created` FROM `gpat_score` WHERE (`user_id` = '$userid') AND (`complete` =  '0' OR `complete` IS NULL) ORDER BY `created` ASC";
 
         //echo $q . '<br><br>';
 
@@ -560,7 +599,7 @@ class gpat_glue extends gpat_score
         $sum = 0;
 
         //echo 'hello';
-
+        if (is_array($array)){
 
         foreach ($array as $key=>$value){
 
@@ -583,6 +622,11 @@ class gpat_glue extends gpat_score
 
 
         return round($sum / $x, 2);
+
+        }else{
+
+            return 'no data';
+        }
 
     }
 

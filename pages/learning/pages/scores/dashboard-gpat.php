@@ -25,6 +25,9 @@
 
       $formv1 = new formGenerator;
 
+      $users = new users;
+
+
       require_once(BASE_URI . '/assets/scripts/classes/gpat_score.class.php'); 
       $gpat_score = new gpat_score();
 
@@ -172,6 +175,14 @@ top: 0px;
 			$id = null;
 		
 		}
+
+        if (isset($userid)){
+        $users->Load_from_key($userid);
+
+        }else{
+
+            die();
+        }
 				    
                         
                         
@@ -220,6 +231,7 @@ top: 0px;
 
     
     $debug = false;
+    $_SESSION['debug'] = false;
 
     ?>
 
@@ -378,6 +390,52 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
                             <span id="summary"
                                 class="d-block h1 text-white mr-2 mb-1"><?php echo $userFunctions->getUserName($userid);?></span>
+                               
+                                    
+                                    
+                                    <?php 
+                                    
+                                    $string = '';
+
+                                    if ($users->gettrainee() == 1){
+                        
+                                        $string .= " Trainee";
+                                    
+                                    }else{
+            
+                                        $string .= ' Independent';
+                                    }
+                                    
+                                    
+                                    if ($users->getendoscopistType() == 1){$string .= " Medical Endoscopist";}
+                        if ($users->getendoscopistType() == 2){$string .= " Surgical Endoscopist";}
+                        if ($users->getendoscopistType() == 3){$string .= " Nurse Endoscopist";}
+                        if ($users->getendoscopistType() == 4){$string .= " Endoscopy Nurse (assistant)";}
+                        if ($users->getendoscopistType() == 5){$string .= " Medical Student";}
+                        if ($users->getendoscopistType() == 6){$string .= " Nursing Student";}
+                        
+                                                
+                       
+
+                        if ($users->getyearsEndoscopy() != ''){
+                        
+                            $string .= ' with ' . $users->getyearsEndoscopy() . ' years experience.';
+                        
+                        }
+
+                        if ($debug)
+                        {
+
+                            echo 'string = ' . $string;
+                            print_r($users);
+                        }
+                        
+                        ?>
+                        
+                    
+                    
+                        <span class="d-block text-white mb-3"><?php echo $string;?>
+                    </span>
                             <span id="statusText" class="d-block gieqsGold mr-2 mb-1"
                                 style="font-size:1.5rem;"><?php echo $statement['currentcertificationstatus'];?></span>
 

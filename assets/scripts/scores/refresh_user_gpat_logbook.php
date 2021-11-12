@@ -66,7 +66,7 @@
 
             }          
 
-
+            if ($userGPATarray){
 
             foreach ($userGPATarray as $key=>$value){
 
@@ -164,6 +164,18 @@
 
 
             echo json_encode($returnArray);
+
+        }else{
+
+            $returnArray = [];
+
+            $returnArray['data'] = [];
+
+            echo json_encode($returnArray);
+
+
+
+        }
 
             
 

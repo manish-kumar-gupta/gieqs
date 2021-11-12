@@ -49,12 +49,12 @@ if cold, =/2
 
       $formv1 = new formGenerator;
 
-      $dataPoints = array( 
-        array("label"=>"Industrial", "y"=>51.7),
-        array("label"=>"Transportation", "y"=>26.6),
-        array("label"=>"Residential", "y"=>13.9),
-        array("label"=>"Commercial", "y"=>7.8)
-    );
+      require_once(BASE_URI . '/assets/scripts/classes/gpat_score.class.php'); 
+      $gpat_score = new gpat_score();
+
+      require_once(BASE_URI . '/assets/scripts/classes/gpat_glue.class.php'); 
+      $gpat_glue = new gpat_glue();
+
       ?>
 
     <!--Page title-->
@@ -186,8 +186,51 @@ top: 0px;
     </header>
 
     <?php
+
+    $debug = false;
+
+    if ($debug){
+
+        echo 'here';
+    }
+
 		if (isset($_GET["id"]) && is_numeric($_GET["id"])){
-			$id = $_GET["id"];
+			
+            $id = $_GET["id"];
+
+            if ($debug){
+
+                echo 'id is ' . $id;
+            }
+
+            error_reporting(E_ALL);
+            $_SESSION['debug'] = true;
+
+            //check this id belongs to the logged in user unless it is a superuser
+
+            if ($isSuperuser != 1){
+
+                if ($debug){
+
+                    echo 'superuser is not equal to 1';
+                    echo 'userid is ' . $userid;
+                }
+
+                 if (!$gpat_glue->checkUserOwnsGPAT($userid, $id, $debug)){
+
+                    echo '<div class="container main-content mt-8 bg-gradient-dark">';
+                    echo 'This GPAT does not belong to the logged in user.  Return to your Logbook <a href="' . BASE_URL . '/pages/learning/pages/scores/logbook-gpat.php">here</a>';
+                    echo '</div>';
+                    die();
+
+                 }else{
+
+
+                 }
+
+            }
+
+
 		
 		}else{
 		
@@ -1908,10 +1951,8 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
                                     </div>
 
-                                    <?php if ($isSuperuser == 1){?>
                                     <p><button id='saveScore' type="button"
                                             class="btn btn-sm text-white btn-dark submit-buttons">Save</button></p>
-                                    <?php } ?>
 
                                     <p><button id='calculate' type="button" class="btn btn-sm text-white btn-dark submit-buttons"
                                             name="calculate">Validate and Save</button></p>
