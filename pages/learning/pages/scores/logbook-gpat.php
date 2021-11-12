@@ -184,7 +184,7 @@ top: 0px;
 
     <!--- specifiy the tag Categories required for display  CHANGEME-->
 
-    
+
 
     <!--CONSTRUCT TAG DISPLAY-->
 
@@ -244,7 +244,7 @@ top: 0px;
 
 
 
-    
+
 
 
         <div class="container mt-3">
@@ -257,20 +257,20 @@ top: 0px;
                 return Math.round(value * multiplier) / multiplier;
             }
 
-            
 
 
-        
+
+
 
 
 
             $(document).ready(function() {
 
-               
 
-               
 
-                
+
+
+
 
             })
             </script>
@@ -294,7 +294,7 @@ top: 0px;
                                 <div class="d-flex flex-nowrap text-small text-muted text-right px-3 mt-1 mb-3 ">
 
 
-                                   
+
 
 
 
@@ -327,12 +327,12 @@ top: 0px;
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                              
+
                                 <h6 class="mt-3 mb-3 pl-2 h5">Navigation</h6>
 
                                 <ul class="section-nav">
 
-                                 
+
                                     <?php
 
 echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#summary">Summary</a></li>';
@@ -347,22 +347,22 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                        
 
                             ?>
-                                   
+
                                 </ul>
 
 
-                           
 
 
 
-                            
 
-                             
+
+
+
 
                             </div>
-                        
+
                         </div>
-                  
+
                         <div class="col-lg-9">
 
 
@@ -372,28 +372,28 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
             ?>
 
 
-<div class="table-responsive">
-                    <table id="dataTable" class="table text-center table-cards align-items-center">
-                    <thead>
-                    <tr>
-                    <!-- EDIT -->
-                        <th>programme id</th>
-                        <th>session id</th>
-                        <th>timeFrom</th>
-                        <th>timeTo</th>
-                        <th>title</th>
-                       
-                        <th>break</th>	
+                            <div class="table-responsive">
+                                <table id="dataTable" class="table text-center table-cards align-items-center">
+                                    <thead>
+                                        <tr>
+                                            <!-- EDIT -->
+                                            <th>programme id</th>
+                                            <th>session id</th>
+                                            <th>timeFrom</th>
+                                            <th>timeTo</th>
+                                            <th>title</th>
 
-                        <th></th>
+                                            <th>break</th>
 
-                    </tr>
-                    </thead>
+                                            <th></th>
 
-                        </table>
-                </div>
+                                        </tr>
+                                    </thead>
 
-                            
+                                </table>
+                            </div>
+
+
 
                         </div>
                         <!--end col-9-->
@@ -427,7 +427,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
     <?php require BASE_URI . '/footer.php';?>
 
-    
+
 
     <!-- Purpose JS -->
     <script src=<?php echo BASE_URL . "/assets/js/purpose.js"?>></script>
@@ -441,7 +441,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
     <script src="<?php echo BASE_URL;?>/assets/js/canvasjs.min.js"></script>
     <script src="<?php echo BASE_URL;?>/assets/js/jquery.canvasjs.min.js"></script>
     <script src="<?php echo BASE_URL; ?>/node_modules/datatables.net/js/jquery.datatables.min.js"></script>
-<script src="<?php echo BASE_URL; ?>/assets/libs/datatables/datatables.min.js"></script>
+    <script src="<?php echo BASE_URL; ?>/assets/libs/datatables/datatables.min.js"></script>
 
 
 
@@ -467,9 +467,9 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
     }
 
-  
 
-    
+
+
 
     function copyToClipboard(text) {
         if (window.clipboardData && window.clipboardData.setData) {
@@ -493,7 +493,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
         }
     }
 
-  
+
 
     $(document).ready(function() {
 
@@ -534,7 +534,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
         //if none are checked load 10 most recent videos for these categories
 
-        
+
 
         $(window).scroll(function() {
             var scrollDistance = $(window).scrollTop();
@@ -551,56 +551,69 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
             });
         }).scroll();
 
-       //datatables
-       
-       datatable = $('#dataTable').DataTable( {
+        //datatables
 
-language: { infoEmpty: "There are currently no active <?php echo $databaseName;?>s.",
-        emptyTable: "There are currently no active <?php echo $databaseName;?>s.",
-        zeroRecords: "There are currently no active <?php echo $databaseName;?>s.",
-},
-autowidth : true,
-//"oSearch": {"sSearch": "1" }, //TODO implement filter on page load
+        datatable = $('#dataTable').DataTable({
 
-
-ajax: siteRoot + 'assets/scripts/tableInteractors/refresh<?php echo $databaseName;?>Table.php',
-//TODO all classes need this function
+            language: {
+                infoEmpty: "There are currently no active <?php echo $databaseName;?>s.",
+                emptyTable: "There are currently no active <?php echo $databaseName;?>s.",
+                zeroRecords: "There are currently no active <?php echo $databaseName;?>s.",
+            },
+            autowidth: true,
+            //"oSearch": {"sSearch": "1" }, //TODO implement filter on page load
 
 
-//EDIT
-columns: [
-{data: 'programmeid' },
-{data: 'id' },
-{data: 'timeFrom' },
-{data: 'timeTo' },
-{data: 'title' },
-
-{data: 'break' },
-
-   {
-   data: null,
-   render: function ( data, type, row ) {
-       return '<div class="d-flex align-items-center justify-content-end"><div class="actions ml-3"><a class="fill-modal action-item mr-2"  data-toggle="tooltip" title="edit this row" data-original-title="Edit"> <i class="fas fa-pencil-alt"></i> </a> <a class="edit-session-view action-item mr-2" data-toggle="tooltip" title="" data-original-title="see enclosed items"> <i class="fas fa-level-down-alt"></i> </a> <div class="dropdown"> <a href="#" class="action-item" role="button" data-toggle="dropdown" aria-haspopup="true" data-expanded="false"> <i class="fas fa-ellipsis-v"></i> </a> <div class="dropdown-menu dropdown-menu-right"> <a class="delete-row dropdown-item"> Delete </a> </div> </div> </div> </div>';
-   }
-   }
-],
-
-"drawCallback": function( settings ) {
-   /*  var currentProgrammeID = localStorage.getItem('session-programmeID');
-
-    if (currentProgrammeID != ''){
-
-        datatable.columns([0]).search(currentProgrammeID).draw();
+            ajax: siteRoot +
+                'assets/scripts/tableInteractors/refresh<?php echo $databaseName;?>Table.php',
+            //TODO all classes need this function
 
 
-    } */
-}
+            //EDIT
+            columns: [{
+                    data: 'programmeid'
+                },
+                {
+                    data: 'id'
+                },
+                {
+                    data: 'timeFrom'
+                },
+                {
+                    data: 'timeTo'
+                },
+                {
+                    data: 'title'
+                },
+
+                {
+                    data: 'break'
+                },
+
+                {
+                    data: null,
+                    render: function(data, type, row) {
+                        return '<div class="d-flex align-items-center justify-content-end"><div class="actions ml-3"><a class="fill-modal action-item mr-2"  data-toggle="tooltip" title="edit this row" data-original-title="Edit"> <i class="fas fa-pencil-alt"></i> </a> <a class="edit-session-view action-item mr-2" data-toggle="tooltip" title="" data-original-title="see enclosed items"> <i class="fas fa-level-down-alt"></i> </a> <div class="dropdown"> <a href="#" class="action-item" role="button" data-toggle="dropdown" aria-haspopup="true" data-expanded="false"> <i class="fas fa-ellipsis-v"></i> </a> <div class="dropdown-menu dropdown-menu-right"> <a class="delete-row dropdown-item"> Delete </a> </div> </div> </div> </div>';
+                    }
+                }
+            ],
+
+            "drawCallback": function(settings) {
+                /*  var currentProgrammeID = localStorage.getItem('session-programmeID');
+
+                 if (currentProgrammeID != ''){
+
+                     datatable.columns([0]).search(currentProgrammeID).draw();
+
+
+                 } */
+            }
 
 
 
 
 
-} );
+        });
 
 
 
