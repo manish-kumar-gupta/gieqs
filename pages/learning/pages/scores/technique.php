@@ -297,7 +297,7 @@ top: 0px;
         <!--Header CHANGEME-->
 
         <div class="d-flex align-items-end container">
-            <p class="h1 mt-5 mr-auto">Polypectomy Report Card</p>
+            <p class="h1 mt-5 mr-auto">Polypectomy Report Card (GPAT)</p>
             <p class="h3 gieqsGold complete"></p>
             
 

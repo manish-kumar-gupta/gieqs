@@ -49,6 +49,23 @@
 
     }
 
+    .buttons-html5 {
+
+        padding : .5rem .5rem !important;
+        margin : .5rem, .5rem !important;
+
+    }
+
+    .buttons-datatable {
+
+        text-align: right !important;
+    }
+
+    #dataTable_filter {
+
+text-align: right !important;
+}
+
     .card-placeholder {
 
         width: 344px;
@@ -446,6 +463,8 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
     <script src="<?php echo BASE_URL;?>/assets/js/jquery.canvasjs.min.js"></script>
     <script src="<?php echo BASE_URL; ?>/node_modules/datatables.net/js/jquery.datatables.min.js"></script>
     <script src="<?php echo BASE_URL; ?>/assets/libs/datatables/datatables.min.js"></script>
+    <script src="<?php echo BASE_URL; ?>/assets/datatables/Buttons-1.6.1/js/dataTables.buttons.min.js"></script>
+    <script src="<?php echo BASE_URL; ?>/assets/datatables/Buttons-1.6.1/js/buttons.html5.min.js"></script>
 
 
 
@@ -553,6 +572,16 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                 }
             }
         ],
+
+            dom: 'frtip<"buttons-datatable"B><"clear">',
+
+            buttons: [
+            
+                'excelHtml5',
+                'copyHtml5',
+                'csvHtml5',
+            
+            ],
 
         "drawCallback": function(settings) {
             /*  var currentProgrammeID = localStorage.getItem('session-programmeID');
