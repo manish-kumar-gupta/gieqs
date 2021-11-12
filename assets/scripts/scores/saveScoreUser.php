@@ -14,7 +14,7 @@
             $assetManager = new assetManager();
             $gpat_score = new gpat_score();
             require_once(BASE_URI . '/assets/scripts/classes/gpat_glue.class.php'); 
-      $gpat_glue = new gpat_glue();
+            $gpat_glue = new gpat_glue();
 
             error_reporting(-1);
            

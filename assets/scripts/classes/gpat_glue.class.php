@@ -840,31 +840,31 @@ class gpat_glue extends gpat_score
                     
                 }else{
 
-                if ($row['SMSA_group'] == 2){
+                    if ($row['SMSA_group'] == 2){
 
-                    $SMSA2 = $SMSA2 + 1;
-                    $SMSA2weightedgpat[] = $row['fraction'];
+                        $SMSA2 = $SMSA2 + 1;
+                        $SMSA2weightedgpat[] = $row['fraction'];
 
 
-                }
+                    }
 
-                if ($row['SMSA_group'] == 3){
+                    if ($row['SMSA_group'] == 3){
 
-                    $SMSA3 = $SMSA3 + 1;
-                    $SMSA3weightedgpat[] = $row['fraction'];
+                        $SMSA3 = $SMSA3 + 1;
+                        $SMSA3weightedgpat[] = $row['fraction'];
 
-                    
-                }
+                        
+                    }
 
-                if ($row['SMSA_group'] == 4){
+                    if ($row['SMSA_group'] == 4){
 
-                    $SMSA4 = $SMSA4 + 1;
-                    $SMSA4weightedgpat[] = $row['fraction'];
+                        $SMSA4 = $SMSA4 + 1;
+                        $SMSA4weightedgpat[] = $row['fraction'];
 
-                    
-                }
+                        
+                    }
 
-            }
+                 }
 
             if (count($SMSA2weightedgpat) > 0){            
                 $average_SMSA2weightedgpat = $this->averageArray($SMSA2weightedgpat);
@@ -1147,6 +1147,52 @@ class gpat_glue extends gpat_score
     //overall score
 
     //overall score weighted
+
+
+
+
+
+    //datatables
+
+
+    public function getUserLogbook ($userid, $debug=false)
+    {
+        //little boy
+        //output number of report card in sequential order via created field
+        //false if no report card for this user
+
+
+        $q = "SELECT `id`, `date_procedure`, `fraction`, `weighted_fraction`, `SMSA_group`, `numeratorSMSAplus`, `complete` FROM `gpat_score` WHERE `user_id` = '$userid' /* AND `complete` =  '1' */ ORDER BY `date_procedure` DESC";
+
+        //echo $q . '<br><br>';
+
+        $rowReturn = [];
+
+        $result = $this->connection->RunQuery($q);
+        
+        $x = 0;
+        $nRows = $result->rowCount();
+
+        if ($nRows > 0) {
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                $rowReturn[] = $row;
+                $x++;
+
+
+            }
+
+            return $rowReturn;
+
+        } else {
+            
+
+            return false;
+        }
+
+
+    }
 
 
     

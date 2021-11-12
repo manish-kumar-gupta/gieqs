@@ -291,9 +291,14 @@ top: 0px;
                             <!--         	<div class="h-100 p-4"> -->
                             <div id="sticky" data-toggle="sticky" class="is_stuck pr-3 mr-3 pl-2 pt-2">
                                 <div id="messageBox" class='text-left text-white pb-2 pl-2 pt-2'></div>
-                                <div class="d-flex flex-nowrap text-small text-muted text-right px-3 mt-1 mb-3 ">
+                                <div class="d-flex flex-nowrap text-small text-muted text-left px-3 mt-1 mb-3 ">
 
-
+                                <div>
+                                        <i id='reset-table' class="fas fa-undo cursor-pointer mt-2" title='Remove All Filters'
+                                            data-toggle='tooltip' data-placement='right'>&nbsp;Reset Table</i>
+                                            <i id='complete-filter' class="fas fa-filter cursor-pointer mt-2" title='Show Complete GPAT'
+                                            data-toggle='tooltip' data-placement='right' onclick=''>&nbsp;Show Complete GPAT Only</i>
+                                    </div>
 
 
 
@@ -335,12 +340,8 @@ top: 0px;
 
                                     <?php
 
-echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#summary">Summary</a></li>';
+echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#dataTable">Procedure Log</a></li>';
 
-echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#difficulty">Procedures Stratified by Difficulty</a></li>';
-
-                        echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#domains">Domains</a></li>';
-                        echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#certification">Certification</a></li>';
                        
                         
 
@@ -377,13 +378,14 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                                     <thead>
                                         <tr>
                                             <!-- EDIT -->
-                                            <th>programme id</th>
-                                            <th>session id</th>
-                                            <th>timeFrom</th>
-                                            <th>timeTo</th>
-                                            <th>title</th>
+                                            <th>id</th>
+                                            <th>gpat id</th>
+                                            <th>date</th>
+                                            <th>GPAT(unw)</th>
+                                            <th>GPAT(w)</th>
+                                            <th>SMSA</th>
 
-                                            <th>break</th>
+                                            <th>complete</th>
 
                                             <th></th>
 
@@ -501,34 +503,38 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
         //refreshNavAndTags();
 
-        if (edit == 1) {
+        
+        $("#dataTable").on('click', '.fill-modal', function (e) {
 
-            fillForm(esdLesionPassed);
-        }
+            //to jump to record 
+            e.preventDefault();  
 
-        $('#refreshNavigation').click(function() {
+            var currentRow = $(this).closest("tr");
 
+            var data = $('#dataTable').DataTable().row(currentRow).data();
+            //console.log(data['id']);
 
-            firstTime = 1;
-            //the number that are actually loaded
-            loaded = 1;
+            window.location.href = siteRoot + 'pages/learning/pages/scores/technique.php?id=' + data['id'];
 
-            //the number the user wants
-            loadedRequired = 1;
+           
 
-            $('.tag').each(function() {
+        });
 
-                if ($(this).is(":checked")) {
+        $(document).on('click', '#reset-table', function (e) {
 
-                    $(this).prop('checked', false);
-                }
+            //to jump to record 
+            e.preventDefault();
+            alert('clicked');  
 
+           var dt = $('#dataTable').DataTable();
+           dt.draw();
+           dt.column(6).search('complete');
+           dt.draw();
 
-            })
+           
 
-            refreshNavAndTags();
-
-        })
+        });
+        
 
         //on load check if any are checked, if so load the videos
 
@@ -553,47 +559,59 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
         //datatables
 
-        datatable = $('#dataTable').DataTable({
+        var datatable = $('#dataTable').DataTable({
 
             language: {
-                infoEmpty: "There are currently no active <?php echo $databaseName;?>s.",
-                emptyTable: "There are currently no active <?php echo $databaseName;?>s.",
-                zeroRecords: "There are currently no active <?php echo $databaseName;?>s.",
+                infoEmpty: "",
+                emptyTable: "There are currently no GPAT assessments recorded for <?php echo $userFunctions->getUserName($userid);?>.",
+                zeroRecords: "There are currently no GPAT assessments recorded for <?php echo $userFunctions->getUserName($userid);?>.",
             },
             autowidth: true,
             //"oSearch": {"sSearch": "1" }, //TODO implement filter on page load
 
 
-            ajax: siteRoot +
-                'assets/scripts/tableInteractors/refresh<?php echo $databaseName;?>Table.php',
+            ajax: siteRoot + 'assets/scripts/scores/refresh_user_gpat_logbook.php',
             //TODO all classes need this function
 
 
             //EDIT
+            order : [[ 1, 'desc' ]],
+
+            columnDefs: [
+            {
+                "targets": [ 0 ],
+                "visible": false,
+                "searchable": false
+            },
+            ],
+
             columns: [{
-                    data: 'programmeid'
-                },
-                {
                     data: 'id'
                 },
                 {
-                    data: 'timeFrom'
+                    data: 'gpat_id'
                 },
                 {
-                    data: 'timeTo'
+                    data: 'date_procedure'
                 },
                 {
-                    data: 'title'
+                    data: 'fraction'
+                },
+                {
+                    data: 'weighted_fraction'
+                },
+                {
+                    data: 'SMSA'
                 },
 
                 {
-                    data: 'break'
+                    data: 'complete'
                 },
 
                 {
                     data: null,
                     render: function(data, type, row) {
-                        return '<div class="d-flex align-items-center justify-content-end"><div class="actions ml-3"><a class="fill-modal action-item mr-2"  data-toggle="tooltip" title="edit this row" data-original-title="Edit"> <i class="fas fa-pencil-alt"></i> </a> <a class="edit-session-view action-item mr-2" data-toggle="tooltip" title="" data-original-title="see enclosed items"> <i class="fas fa-level-down-alt"></i> </a> <div class="dropdown"> <a href="#" class="action-item" role="button" data-toggle="dropdown" aria-haspopup="true" data-expanded="false"> <i class="fas fa-ellipsis-v"></i> </a> <div class="dropdown-menu dropdown-menu-right"> <a class="delete-row dropdown-item"> Delete </a> </div> </div> </div> </div>';
+                        return '<div class="d-flex align-items-center justify-content-end"><div class="actions ml-3"><a class="fill-modal action-item mr-2"  data-toggle="tooltip" title="edit this GPAT" data-original-title="Edit"> <i class="fas fa-pencil-alt"></i> </a> <div class="dropdown"> <a href="#" class="action-item" role="button" data-toggle="dropdown" aria-haspopup="true" data-expanded="false"> <i class="fas fa-ellipsis-v"></i> </a> <div class="dropdown-menu dropdown-menu-right"> <a class="delete-row dropdown-item"> Delete </a> </div> </div> </div> </div>';
                     }
                 }
             ],
