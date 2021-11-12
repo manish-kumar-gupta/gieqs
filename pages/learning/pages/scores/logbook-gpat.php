@@ -293,11 +293,13 @@ top: 0px;
                                 <div id="messageBox" class='text-left text-white pb-2 pl-2 pt-2'></div>
                                 <div class="d-flex flex-nowrap text-small text-muted text-left px-3 mt-1 mb-3 ">
 
-                                <div class="gieqsGold">
-                                        <i id='reset-table' class="fas fa-undo cursor-pointer mt-2" title='Remove All Filters'
-                                            data-toggle='tooltip' data-placement='right'>&nbsp;Reset Table</i>
-                                            <i id='complete-filter' class="fas fa-filter cursor-pointer mt-2" title='Show Complete GPAT'
-                                            data-toggle='tooltip' data-placement='right' onclick=''>&nbsp;Show Complete GPAT Only</i>
+                                    <div class="gieqsGold">
+                                        <i id='reset-table' class="fas fa-undo cursor-pointer mt-2"
+                                            title='Remove All Filters' data-toggle='tooltip'
+                                            data-placement='right'>&nbsp;Reset Table</i>
+                                        <i id='complete-filter' class="fas fa-filter cursor-pointer mt-2"
+                                            title='Show Complete GPAT' data-toggle='tooltip' data-placement='right'
+                                            onclick=''>&nbsp;Show Complete GPAT Only</i>
                                     </div>
 
 
@@ -497,77 +499,77 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
     var datatable = $('#dataTable').DataTable({
 
-language: {
-    infoEmpty: "",
-    emptyTable: "There are currently no GPAT assessments recorded for <?php echo $userFunctions->getUserName($userid);?>.",
-    zeroRecords: "There are currently no GPAT assessments recorded for <?php echo $userFunctions->getUserName($userid);?>.",
-},
-autowidth: true,
-//"oSearch": {"sSearch": "1" }, //TODO implement filter on page load
+        language: {
+            infoEmpty: "",
+            emptyTable: "There are currently no GPAT assessments recorded for <?php echo $userFunctions->getUserName($userid);?>.",
+            zeroRecords: "There are currently no GPAT assessments recorded for <?php echo $userFunctions->getUserName($userid);?>.",
+        },
+        autowidth: true,
+        //"oSearch": {"sSearch": "1" }, //TODO implement filter on page load
 
 
-ajax: siteRoot + 'assets/scripts/scores/refresh_user_gpat_logbook.php',
-//TODO all classes need this function
+        ajax: siteRoot + 'assets/scripts/scores/refresh_user_gpat_logbook.php',
+        //TODO all classes need this function
 
 
-//EDIT
-order : [[ 1, 'desc' ]],
+        //EDIT
+        order: [
+            [1, 'desc']
+        ],
 
-columnDefs: [
-{
-    "targets": [ 0 ],
-    "visible": false,
-    "searchable": false
-},
-],
+        columnDefs: [{
+            "targets": [0],
+            "visible": false,
+            "searchable": false
+        }, ],
 
-columns: [{
-        data: 'id'
-    },
-    {
-        data: 'gpat_id'
-    },
-    {
-        data: 'date_procedure'
-    },
-    {
-        data: 'fraction'
-    },
-    {
-        data: 'weighted_fraction'
-    },
-    {
-        data: 'SMSA'
-    },
+        columns: [{
+                data: 'id'
+            },
+            {
+                data: 'gpat_id'
+            },
+            {
+                data: 'date_procedure'
+            },
+            {
+                data: 'fraction'
+            },
+            {
+                data: 'weighted_fraction'
+            },
+            {
+                data: 'SMSA'
+            },
 
-    {
-        data: 'complete'
-    },
+            {
+                data: 'complete'
+            },
 
-    {
-        data: null,
-        render: function(data, type, row) {
-            return '<div class="d-flex align-items-center justify-content-end"><div class="actions ml-3"><a class="fill-modal action-item mr-2"  data-toggle="tooltip" title="edit this GPAT" data-original-title="Edit"> <i class="fas fa-pencil-alt"></i> </a> <div class="dropdown"> <a href="#" class="action-item" role="button" data-toggle="dropdown" aria-haspopup="true" data-expanded="false"> <i class="fas fa-ellipsis-v"></i> </a> <div class="dropdown-menu dropdown-menu-right"> <a class="delete-row dropdown-item"> Delete </a> </div> </div> </div> </div>';
+            {
+                data: null,
+                render: function(data, type, row) {
+                    return '<div class="d-flex align-items-center justify-content-end"><div class="actions ml-3"><a class="fill-modal action-item mr-2"  data-toggle="tooltip" title="edit this GPAT" data-original-title="Edit"> <i class="fas fa-pencil-alt"></i> </a> <div class="dropdown"> <a href="#" class="action-item" role="button" data-toggle="dropdown" aria-haspopup="true" data-expanded="false"> <i class="fas fa-ellipsis-v"></i> </a> <div class="dropdown-menu dropdown-menu-right"> <a class="delete-row dropdown-item"> Delete </a> </div> </div> </div> </div>';
+                }
+            }
+        ],
+
+        "drawCallback": function(settings) {
+            /*  var currentProgrammeID = localStorage.getItem('session-programmeID');
+
+             if (currentProgrammeID != ''){
+
+                 datatable.columns([0]).search(currentProgrammeID).draw();
+
+
+             } */
         }
-    }
-],
-
-"drawCallback": function(settings) {
-    /*  var currentProgrammeID = localStorage.getItem('session-programmeID');
-
-     if (currentProgrammeID != ''){
-
-         datatable.columns([0]).search(currentProgrammeID).draw();
-
-
-     } */
-}
 
 
 
 
 
-});
+    });
 
 
 
@@ -577,24 +579,25 @@ columns: [{
 
         //refreshNavAndTags();
 
-        
-        $("#dataTable").on('click', '.fill-modal', function (e) {
+
+        $("#dataTable").on('click', '.fill-modal', function(e) {
 
             //to jump to record 
-            e.preventDefault();  
+            e.preventDefault();
 
             var currentRow = $(this).closest("tr");
 
             var data = $('#dataTable').DataTable().row(currentRow).data();
             //console.log(data['id']);
 
-            window.location.href = siteRoot + 'pages/learning/pages/scores/technique.php?id=' + data['id'];
+            window.location.href = siteRoot + 'pages/learning/pages/scores/technique.php?id=' + data[
+                'id'];
 
-           
+
 
         });
 
-        $(document).on('click', '#reset-table', function (e) {
+        $(document).on('click', '#reset-table', function(e) {
 
             //to jump to record 
             e.preventDefault();
@@ -607,21 +610,21 @@ columns: [{
             //works
 
 
-           
+
 
         });
 
-        $(document).on('click', '#complete-filter', function (e) {
+        $(document).on('click', '#complete-filter', function(e) {
 
             //to jump to record 
-            
+
 
             datatable.column(6).search("^" + 'Complete' + "$", true, false, true).draw();
 
 
 
-            });
-        
+        });
+
 
         //on load check if any are checked, if so load the videos
 
@@ -646,7 +649,7 @@ columns: [{
 
         //datatables
 
-      
+
 
 
 
