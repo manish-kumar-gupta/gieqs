@@ -60,7 +60,7 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                 </li> -->
 
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon">
+                <a class="nav-link nav-link-icon" href="<?php echo BASE_URL;?>/pages/learning/pages/scores/help-gpat.php">
 
                         <span class="nav-link-inner--text ">Help</span>
                     </a>
