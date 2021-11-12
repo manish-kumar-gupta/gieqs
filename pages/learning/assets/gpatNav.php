@@ -39,7 +39,7 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon">
+                    <a class="nav-link nav-link-icon" href="<?php echo BASE_URL;?>/pages/learning/pages/scores/logbook-gpat.php">
 
                         <span class="nav-link-inner--text ">Logbook</span>
                     </a>
@@ -52,12 +52,12 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                     </a>
                 </li>
 
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link nav-link-icon">
 
                         <span class="nav-link-inner--text ">Request New Assessment</span>
                     </a>
-                </li>
+                </li> -->
 
                 <li class="nav-item">
                     <a class="nav-link nav-link-icon">
