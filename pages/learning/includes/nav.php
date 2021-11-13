@@ -529,6 +529,11 @@ if ($debug){
                         href="<?php echo BASE_URL; ?>/index.php">Symposium</a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link"
+                        href="<?php echo BASE_URL; ?>/pages/learning/pages/scores/dashboard-gpat.php">GPAT</a>
+                </li>
+
                 <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
                     <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Online Scores</a>

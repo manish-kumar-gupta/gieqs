@@ -408,7 +408,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.3rem;"><a class="text-mute
                             <span id="whatisgpat toc-item" class="d-block h1 text-white mr-2 mb-3">What is GPAT?</span>
 
                             <p>GPAT (or Global Polypectomy Assessment Tool) is an online scoring system to determine
-                                proficiency at, and the difficulty of colorectal polypectomy.</p>
+                                proficiency at, and the difficulty of, colorectal polypectomy.</p>
 
 
                             <hr class="divider divider-icon my-6 text-muted" />
@@ -418,24 +418,28 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.3rem;"><a class="text-mute
                             <span id="underlyingidea toc-item" class="d-block h1 text-white mr-2 mb-3">What is the
                                 underlying idea?</span>
 
-                            <p>We’re constantly looking for ways to improve the Dropbox
-                                experience and to ensure that our policies explain how our services work. So we’re
-                                letting you know about a few updates to our Terms of Service and Privacy Policy. Here’s
-                                a summary of the key changes:</p>
+                            <p>GPAT provides multiple outputs to give insight into proficiency at polypectomy, whilst
+                                respecting the fact that competency and training are very dependent upon the difficulty
+                                of the polyp being attempted.</p>
 
-                            <blockquote class="blockquote">
-                                <p class="display-5">Hello what is this</p>
-                            </blockquote>
+                            <p>To this end all GPAT outputs are stratified by validated instruments to determine the
+                                difficulty of polypetomy (namely the SMSA score <sup>(1,2)</sup> and the SMSA + score
+                                <sup>(3,4)</sup>).</p>
 
+                            <p>Unlike other scoring systems the GPAT is specifically designed to be applicable to all
+                                types of colorectal polyp. Whilst we develop GPAT outputs for cold snare (diminutive)
+                                are limited as are those for pedunculated polypectomy. Development of these will occur
+                                over time.</p>
 
                             <!--Gold Block -->
                             <div class="d-block h1 text-dark mr-2 my-5 p-3 bg-gieqsGold">
-                                <p class="text-center mb-0"><?php echo $gpat_glue->statusText($userid); ?></p>
+                                <p class="text-center mb-0">GPAT outputs a weighted and unweighted fraction score
+                                    (GPAT<sub>w</sub> and GPAT<sub>unw</sub>)</p>
                             </div>
 
 
-                            <span id="summary" class="d-block h1 text-white mr-2 mb-3 toc-item">What is the underlying
-                                idea?</span>
+                            <span id="summary" class="d-block h1 text-white mr-2 mb-3 toc-item">What do the main outputs
+                                of GPAT mean?</span>
 
                             <p style="font-size:1.3rem;">We’re constantly looking for ways to improve the Dropbox
                                 experience and to ensure that our policies explain how our services work. So we’re
@@ -446,35 +450,38 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.3rem;"><a class="text-mute
 
                             <span id="summary" class="d-block h1 text-white mr-2 mb-3 toc-item">References</span>
 
-                            <P>Original SMSA Score -- Gupta S, Miskovic D, Bhandari P, Dolwani S, McKaig B, Pullan R,
+                            <P><sup>1</sup> SMSA Score -- Gupta S, Miskovic D, Bhandari P, Dolwani S, McKaig B, Pullan
+                                R,
                                 Rembacken B, Riley S, Rutter MD, Suzuki N, Tsiamoulos Z, Valori R, Vance ME, Faiz OD,
                                 Saunders BP, Thomas-Gibson S. A novel method for determining the difficulty of
                                 colonoscopic polypectomy. Frontline Gastroenterol. 2013 Oct;4(4):244-248. doi:
                                 10.1136/flgastro-2013-100331. Epub 2013 Jun 1. PMID: 28839733; PMCID: PMC5369843. </P>
 
-                            <P>SMSA in Larger &ge; 20mm LNPCPs -- Sidhu M, Tate DJ, Desomer L, Brown G, Hourigan LF, Lee
+                            <P><sup>2</sup> SMSA in Larger &ge; 20mm LNPCPs -- Sidhu M, Tate DJ, Desomer L, Brown G,
+                                Hourigan LF, Lee
                                 EYT, Moss A, Raftopoulos S, Singh R, Williams SJ, Zanati S, Burgess N, Bourke MJ. The
                                 size, morphology, site, and access score predicts critical outcomes of endoscopic
                                 mucosal resection in the colon. Endoscopy. 2018 Jul;50(7):684-692. doi:
                                 10.1055/s-0043-124081. Epub 2018 Jan 25. Erratum in: Endoscopy. 2018 Jul;50(7):C7. PMID:
                                 29370584. </P>
-                            <P>SMSA+ score -- Anderson J, Lockett M. Training in therapeutic endoscopy: meeting present
+                            <P><sup>3</sup> SMSA+ score (expert opinion) -- Anderson J, Lockett M. Training in
+                                therapeutic endoscopy: meeting present
                                 and future challenges. Frontline Gastroenterol. 2019;10(2):135-140.
                                 doi:10.1136/flgastro-2018-101086</P>
 
 
-                            <P>SMSA-EMR score -- <a
+                            <P><sup>4</sup>SMSA-EMR score (data driven, abstract only) -- <a
                                     href="https://www.giejournal.org/article/S0016-5107(18)32295-8/pdf">SMSA-EMR SCORE
                                     IS A NOVEL ENDOSCOPIC RISK ASSESSMENT TOOL FOR PREDICTING CRITICAL
                                     ENDOSCOPIC MUCOSAL RESECTION OUTCOMES</a> - Volume 87, No. 6S : 2018
                                 GASTROINTESTINAL ENDOSCOPY AB467 </P>
 
-                            <p>Deep Mural Injury Score -- <a href="https://pubmed.ncbi.nlm.nih.gov/27464708/">Burgess
+                            <!--  <p>Deep Mural Injury Score -- <a href="https://pubmed.ncbi.nlm.nih.gov/27464708/">Burgess
                                     NG, Bassan MS, McLeod D, Williams SJ, Byth K, Bourke MJ. Deep mural injury and
                                     perforation after colonic endoscopic mucosal resection: a new classification and
                                     analysis of risk factors. Gut. 2017 Oct;66(10):1779-1789. doi:
                                     10.1136/gutjnl-2015-309848. Epub 2016 Jul 27. PMID: 27464708.</a></p>
-
+ -->
 
                         </div>
                         <!--end col-9-->
@@ -540,6 +547,27 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.3rem;"><a class="text-mute
     } else {
 
         var edit = 1;
+
+    }
+
+
+    function generateTOC() {
+
+        var statement = '';
+
+        $('.toc-item').each(function() {
+
+            var id = null;
+            id = $(this).attr('id');
+            statement +=
+                '<li class="toc-entry toc-h4" style="font-size:1.3rem;"><a class="text-muted" href="#' + id +
+                '">' + id + '</a></li>';
+
+        })
+
+        $('.section-nav').html(statement);
+
+
 
     }
 
@@ -890,6 +918,10 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.3rem;"><a class="text-mute
                 }
             });
         }).scroll();
+
+
+
+
 
 
 
