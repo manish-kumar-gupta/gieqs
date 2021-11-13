@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 <?php require '../../includes/config.inc.php';?>
 
@@ -64,106 +66,7 @@ if cold, =/2
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/flatpickr/dist/flatpickr.min.css">
 
     <style>
-    .gieqsGold {
-
-        color: rgb(238, 194, 120);
-
-
-    }
-
-    .card-placeholder {
-
-        width: 344px;
-
-    }
-
-    .break {
-        flex-basis: 100%;
-        height: 0;
-    }
-
-    .flex-even {
-        flex: 1;
-    }
-
-    .flex-nav {
-        flex: 0 0 18%;
-    }
-
-
-
-    .gieqsGoldBackground {
-
-        background-color: rgb(238, 194, 120);
-
-
-    }
-
-    .tagButton {
-
-        cursor: pointer;
-
-    }
-
-
-
-
-
-    .cursor-pointer {
-
-        cursor: pointer;
-
-    }
-
-    @media (max-width: 768px) {
-
-        .flex-even {
-            flex-basis: 100%;
-        }
-    }
-
-    @media (max-width: 768px) {
-
-        .card-header {
-            height: 250px;
-        }
-
-        .card-placeholder {
-
-            width: 204px;
-
-        }
-
-
-        /* #sticky {
-position: absolute !important;
-top: 0px;
-}  */
-
-
-
-    }
-
-    @media (min-width: 1200px) {
-        #chapterSelectorDiv {
-
-
-
-            top: -3vh;
-
-
-        }
-
-        #playerContainer {
-
-            margin-top: -20px;
-
-        }
-
-
-
-
-    }
+    
     </style>
 
 
@@ -2309,35 +2212,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
 
                             </ul>
 
-                            <P class="h5">References:</P>
-                            <P>Original SMSA Score -- Gupta S, Miskovic D, Bhandari P, Dolwani S, McKaig B, Pullan R,
-                                Rembacken B, Riley S, Rutter MD, Suzuki N, Tsiamoulos Z, Valori R, Vance ME, Faiz OD,
-                                Saunders BP, Thomas-Gibson S. A novel method for determining the difficulty of
-                                colonoscopic polypectomy. Frontline Gastroenterol. 2013 Oct;4(4):244-248. doi:
-                                10.1136/flgastro-2013-100331. Epub 2013 Jun 1. PMID: 28839733; PMCID: PMC5369843. </P>
-
-                            <P>SMSA in Larger &ge; 20mm LNPCPs -- Sidhu M, Tate DJ, Desomer L, Brown G, Hourigan LF, Lee
-                                EYT, Moss A, Raftopoulos S, Singh R, Williams SJ, Zanati S, Burgess N, Bourke MJ. The
-                                size, morphology, site, and access score predicts critical outcomes of endoscopic
-                                mucosal resection in the colon. Endoscopy. 2018 Jul;50(7):684-692. doi:
-                                10.1055/s-0043-124081. Epub 2018 Jan 25. Erratum in: Endoscopy. 2018 Jul;50(7):C7. PMID:
-                                29370584. </P>
-                            <P>SMSA+ score -- Anderson J, Lockett M. Training in therapeutic endoscopy: meeting present
-                                and future challenges. Frontline Gastroenterol. 2019;10(2):135-140.
-                                doi:10.1136/flgastro-2018-101086</P>
-
-
-                            <P>SMSA-EMR score -- <a
-                                    href="https://www.giejournal.org/article/S0016-5107(18)32295-8/pdf">SMSA-EMR SCORE
-                                    IS A NOVEL ENDOSCOPIC RISK ASSESSMENT TOOL FOR PREDICTING CRITICAL
-                                    ENDOSCOPIC MUCOSAL RESECTION OUTCOMES</a> - Volume 87, No. 6S : 2018
-                                GASTROINTESTINAL ENDOSCOPY AB467 </P>
-
-                            <p>Deep Mural Injury Score -- <a href="https://pubmed.ncbi.nlm.nih.gov/27464708/">Burgess
-                                    NG, Bassan MS, McLeod D, Williams SJ, Byth K, Bourke MJ. Deep mural injury and
-                                    perforation after colonic endoscopic mucosal resection: a new classification and
-                                    analysis of risk factors. Gut. 2017 Oct;66(10):1779-1789. doi:
-                                    10.1136/gutjnl-2015-309848. Epub 2016 Jul 27. PMID: 27464708.</a></p>
+                            
                             <P>Score Adapted for GIEQs.com by David Tate:</P>
 
 
