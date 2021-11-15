@@ -67,6 +67,11 @@
         font-size: 1.3rem !important;
     }
 
+    .text-container p strong {
+
+        color: rgb(238, 194, 120);
+    }
+
     .card-placeholder {
 
         width: 344px;
@@ -361,21 +366,7 @@ top: 0px;
                                 <ul class="section-nav">
 
 
-                                    <?php
-
-echo '<li class="toc-entry toc-h4" style="font-size:1.3rem;"><a class="text-muted" href="#summary">Summary</a></li>';
-
-echo '<li class="toc-entry toc-h4" style="font-size:1.3rem;"><a class="text-muted" href="#difficulty">Procedures Stratified by Difficulty</a></li>';
-
-                        echo '<li class="toc-entry toc-h4" style="font-size:1.3rem;"><a class="text-muted" href="#domains">Domains</a></li>';
-                        echo '<li class="toc-entry toc-h4" style="font-size:1.3rem;"><a class="text-muted" href="#certification">Certification</a></li>';
-                       
-                        
-
-                       
-
-                            ?>
-
+                                   
                                 </ul>
 
 
@@ -405,7 +396,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.3rem;"><a class="text-mute
                             <?php $statement=$gpat_glue->howDoICertify($userid);?>
 
                             <!--Heading -->
-                            <span id="whatisgpat toc-item" class="d-block h1 text-white mr-2 mb-3">What is GPAT?</span>
+                            <span id="whatisgpat" data-toc="What is GPAT?" class="d-block h1 text-white mr-2 mb-3 toc-item">What is GPAT?</span>
 
                             <p>GPAT (or Global Polypectomy Assessment Tool) is an online scoring system to determine
                                 proficiency at, and the difficulty of, colorectal polypectomy.</p>
@@ -415,16 +406,18 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.3rem;"><a class="text-mute
 
 
                             <!--Heading -->
-                            <span id="underlyingidea toc-item" class="d-block h1 text-white mr-2 mb-3">What is the
+                            <span id="underlyingidea" data-toc="The Underlying Idea" class="d-block h1 text-white mr-2 mb-3 toc-item">What is the
                                 underlying idea?</span>
 
                             <p>GPAT provides multiple outputs to give insight into proficiency at polypectomy, whilst
                                 respecting the fact that competency and training are very dependent upon the difficulty
                                 of the polyp being attempted.</p>
 
-                            <p>To this end all GPAT outputs are stratified by validated instruments to determine the
+                            <p>To this end all GPAT outp
+                                ts are stratified by validated instruments to determine the
                                 difficulty of polypetomy (namely the SMSA score <sup>(1,2)</sup> and the SMSA + score
-                                <sup>(3,4)</sup>).</p>
+                                <sup>(3,4)</sup>).
+                            </p>
 
                             <p>Unlike other scoring systems the GPAT is specifically designed to be applicable to all
                                 types of colorectal polyp. Whilst we develop GPAT outputs for cold snare (diminutive)
@@ -438,17 +431,17 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.3rem;"><a class="text-mute
                             </div>
 
 
-                            <span id="summary" class="d-block h1 text-white mr-2 mb-3 toc-item">What do the main outputs
+                            <span id="main_outputs" data-toc="What do the Outputs Mean?" class="d-block h1 text-white mr-2 mb-3 toc-item">What do the main outputs
                                 of GPAT mean?</span>
 
-                            <p style="font-size:1.3rem;">We’re constantly looking for ways to improve the Dropbox
-                                experience and to ensure that our policies explain how our services work. So we’re
-                                letting you know about a few updates to our Terms of Service and Privacy Policy. Here’s
-                                a summary of the key changes:</p>
+                            <p style="font-size:1.3rem;">The unweighted GPAT (GPAT<sub>unw</sub>) recognises proficiency
+                                in the <strong>same way across all difficulties
+                                    of polypectomy</strong>. It is useful to track progress over time within domains and
+                                within different categories of difficulty.</p>
 
                             <hr class="divider divider-icon my-6 text-muted" />
 
-                            <span id="summary" class="d-block h1 text-white mr-2 mb-3 toc-item">References</span>
+                            <span id="references" data-toc="References" class="d-block h1 text-white mr-2 mb-3 toc-item">References</span>
 
                             <P><sup>1</sup> SMSA Score -- Gupta S, Miskovic D, Bhandari P, Dolwani S, McKaig B, Pullan
                                 R,
@@ -559,9 +552,10 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.3rem;"><a class="text-mute
 
             var id = null;
             id = $(this).attr('id');
+            text = $(this).attr('data-toc');
             statement +=
                 '<li class="toc-entry toc-h4" style="font-size:1.3rem;"><a class="text-muted" href="#' + id +
-                '">' + id + '</a></li>';
+                '">' + text + '</a></li>';
 
         })
 
@@ -866,8 +860,14 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.3rem;"><a class="text-mute
     $(document).ready(function() {
 
 
-
+       // generateTOC();
         //refreshNavAndTags();
+
+        waitForFinalEvent(function(){
+            generateTOC();
+
+			
+	    }, 1000, "Resize header");
 
         if (edit == 1) {
 
