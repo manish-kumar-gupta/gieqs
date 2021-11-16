@@ -158,14 +158,14 @@ $blogLink = new blogLink;
 
 article p {
 
-    font-size: 1.125rem !important; 
+    font-size: 1.3rem !important; 
 font-weight: 300 !important;
 
 }
 
 article li {
 
-font-size: 1.125rem !important; 
+font-size: 1.3rem !important; 
 font-weight: 300 !important;
 
 }
