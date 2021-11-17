@@ -20,7 +20,8 @@
      $registrationURL = BASE_URL . '/pages/program/registration.php';
      //$registrationURL = 'https://eu.eventscloud.com/200200203';
  ?>
-
+<!--iphone fix -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
  <!-- Favicon -->
  <link rel="icon" href="<?php echo BASE_URL;?>/assets/img/brand/favicongieqs.png" type="image/png">
