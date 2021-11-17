@@ -36,7 +36,7 @@
       ?>
 
     <!--Page title-->
-    <title>Dashboard</title>
+    <title>GPAT Dashboard</title>
 
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
 

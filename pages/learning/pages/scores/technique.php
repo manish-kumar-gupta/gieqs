@@ -60,7 +60,15 @@ if cold, =/2
       ?>
 
     <!--Page title-->
+    <meta charset="utf-8">
+ <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Global Online Endoscopy Trainer - Scores - Global Polypectomy Assessment Tool</title>
+    <meta name="description"
+        content="The first global training score for colorectal polypectomy.">
+    <meta name="author" content="David Tate">
+    <meta name="keywords" content="colonoscopy, gastroscopy, ERCP, quality, polyp, colon cancer, polypectomy, EMR, endoscopic imaging, colorectal cancer, endoscopy, gieqs, GIEQS, training, digital endoscopy event, digital symposium, ghent, gent, endoscopy quality, quality in endoscopy">
+ 
 
 
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/flatpickr/dist/flatpickr.min.css">

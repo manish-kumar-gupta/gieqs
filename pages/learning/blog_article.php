@@ -32,13 +32,13 @@
 
       //require_once(BASE_URI . '/assets/scripts/classes/users.class.php');
       require_once BASE_URI . '/assets/scripts/classes/blogs.class.php';
-$blogs = new blogs;
+        $blogs = new blogs;
 
-require_once BASE_URI . '/assets/scripts/classes/blogContent.class.php';
-$blogContent = new blogContent;
+        require_once BASE_URI . '/assets/scripts/classes/blogContent.class.php';
+        $blogContent = new blogContent;
 
-require_once BASE_URI . '/assets/scripts/classes/blogLink.class.php';
-$blogLink = new blogLink;
+        require_once BASE_URI . '/assets/scripts/classes/blogLink.class.php';
+        $blogLink = new blogLink;
 
       $users = new users;
       $navigator = new navigator;
@@ -156,19 +156,21 @@ $blogLink = new blogLink;
             }
 
 
-article p {
+            .article p {
 
-    font-size: 1.3rem !important; 
-font-weight: 300 !important;
+                font-size: 1.3rem !important; 
+                font-weight: 300 !important;
 
-}
+            }
 
-article li {
 
-font-size: 1.3rem !important; 
-font-weight: 300 !important;
 
-}
+            .article li {
+
+                font-size: 1.3rem !important; 
+                font-weight: 300 !important;
+
+            }
 
 
 
@@ -204,10 +206,7 @@ font-weight: 300 !important;
             @media (min-width: 1200px) {
                 #chapterSelectorDiv {
 
-
-
                     top: -3vh;
-
 
                 }
 
