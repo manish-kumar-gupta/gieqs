@@ -439,6 +439,16 @@ top: 0px;
                                     of polypectomy</strong>. It is useful to track progress over time within domains and
                                 within different categories of difficulty.</p>
 
+                                <p>The weighted GPAT (GPAT<sub>w</sub>) recognises proficiency <strong>in the context of difficulty</strong>.  One of the
+                            major problems in comparing proficiency across a broad range of polyp resections is accounting for difficulty.  
+                        The weighted GPAT makes this possible by decreasing the proficiency score over a range of easier SMSA scores.  For example
+                    scores for SMSA 2 are multiplied by 0.25, SMSA 3 by 0.5 etc.</p>
+
+                    <p>Of course your GPAT will not be reliable after 1 procedure.  This is why we have set a threshold of 30 procedures to determine
+                        the GPAT for certification purposes.  All of these endpoints are subject to ongoing research and by using this platform
+                        you <strong>explicitly consent to the use of your anonymised data for research</strong> to make the score and platform better
+                    </p>
+
                             <hr class="divider divider-icon my-6 text-muted" />
 
                             <span id="references" data-toc="References" class="d-block h1 text-white mr-2 mb-3 toc-item">References</span>
