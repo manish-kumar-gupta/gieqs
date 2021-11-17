@@ -27,6 +27,8 @@ $gieqs_ii_is_live = $assetManager->gieqsIILive($gieqs_ii_day);
 
 $gieqs_ii_plenary_link = $assetManager->requiredAssetGIEQsII($gieqs_ii_day,false);
 
+$target = false;
+
 
 
 
@@ -45,6 +47,10 @@ if (isset($_GET['destination'])) {
   }else if ($destination == 'catchup'){
 
     $target = 'pages/program/program-printable-catchup-public.php';
+
+  }else if ($destination == 'gpat'){
+
+    $target = 'pages/learning/pages/scores/dashboard-gpat.php';
 
   }else if ($destination == 'catchupstaff'){
 
@@ -185,7 +191,7 @@ if (isset($_GET['destination'])) {
 
 }
 
-if ($userid && $target){
+if ($userid && ($target != false)){
 
 //just go to location
 
