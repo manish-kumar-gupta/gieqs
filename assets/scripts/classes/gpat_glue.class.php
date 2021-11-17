@@ -269,15 +269,15 @@ class gpat_glue extends gpat_score
             return false;
         }else if ($SMSA == 2){
 
-            $weightedFraction = $fraction / 4;
+            $weightedFraction = $fraction * 0.25;
 
         }else if ($SMSA == 3){
 
-            $weightedFraction = $fraction / 3;
+            $weightedFraction = $fraction * 0.5;
 
         }else if ($SMSA == 4){
 
-            $weightedFraction = $fraction / 2;
+            $weightedFraction = $fraction * 0.75;
 
         }else if ($SMSA == 5){
 
