@@ -72,7 +72,10 @@
 
 
                 //transform the id to the user id for GPAT
-                $userGPATarray[$key]['gpat_id'] = $gpat_glue->determineReportCardNumber($value['id'], $userid);
+                //$userGPATarray[$key]['gpat_id'] = $gpat_glue->determineReportCardNumber($value['id'], $userid); //old method
+
+                $userGPATarray[$key]['gpat_id'] = $value['user_gpat_id'];
+
 
                 $dateReportCard = null;
                 $sqlDateFunction = null;

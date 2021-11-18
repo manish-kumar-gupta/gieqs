@@ -1206,7 +1206,7 @@ class gpat_glue extends gpat_score
         //false if no report card for this user
 
 
-        $q = "SELECT `id`, `date_procedure`, `fraction`, `weighted_fraction`, `SMSA_group`, `numeratorSMSAplus`, `complete` FROM `gpat_score` WHERE `user_id` = '$userid' /* AND `complete` =  '1' */ ORDER BY `date_procedure` DESC";
+        $q = "SELECT `id`, `user_gpat_id`, `date_procedure`, `fraction`, `weighted_fraction`, `SMSA_group`, `numeratorSMSAplus`, `complete` FROM `gpat_score` WHERE `user_id` = '$userid' /* AND `complete` =  '1' */ ORDER BY `date_procedure` DESC";
 
         //echo $q . '<br><br>';
 
