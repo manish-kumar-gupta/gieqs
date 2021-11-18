@@ -53,7 +53,7 @@
                 $user_number_records = $gpat_glue->determineNumberofReportCards($userid);
                 //get the user specific id with this
                 //ADD TO ARRAY
-                $data_mod['user_gpat_score_id'] = $user_gpat_score_id;
+                $data_mod['user_gpat_score_id'] = $data_mod['user_gpat_id'];
                 $data_mod['user_number_records'] = $user_number_records;
                 echo json_encode($data_mod);
 

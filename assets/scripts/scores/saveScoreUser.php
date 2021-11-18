@@ -98,6 +98,10 @@
 
             }
 
+            //also determine which score this is for the user , and write it to the database, in field gpat_id
+
+            
+
             if ($debug){
             var_dump($gpat_score);
             }
@@ -128,11 +132,32 @@
 
                     $newId = $gpat_score->prepareStatementPDO();
 
+                    //set the user specific gpat id
+                    $user_gpat_score_id = $gpat_glue->determineReportCardNumber($newId, $userid);
+
+                    if ($debug){
+
+                        echo 'User GPAT id is ' . $user_gpat_score_id;
+
+                    }
+
+
+                    if ($debug){
+                        var_dump($gpat_score);
+                        }
+
+                    $gpat_score->Load_from_key($newId);
+                    $gpat_score->setuser_gpat_id($user_gpat_score_id);
+                    $gpat_score->prepareStatementPDOUpdate();
+
                     $returnArray = ['newid'=>$newId, 'user_report_card_id'=>$gpat_glue->determineReportCardNumber($newId, $userid), 'denominator'=>$gpat_glue->determineNumberofReportCards($userid)];
 
-                    //echo $newId'user_report_card_id'=>$gpat_glue=>determineReportCardNumber($userid)];
+                    
+
 
                 }
+
+
 
 
 

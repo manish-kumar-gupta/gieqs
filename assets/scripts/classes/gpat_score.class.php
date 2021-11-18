@@ -2,7 +2,7 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 10-11-2021
+ * Create Date: 18-11-2021
  *
  * DJT 2019
  *
@@ -29,6 +29,7 @@
 Class gpat_score {
 
 	private $id; //int(11)
+	private $user_gpat_id; //varchar(11)
 	private $tip_control; //varchar(255)
 	private $extent; //varchar(255)
 	private $positioning; //varchar(255)
@@ -97,7 +98,8 @@ Class gpat_score {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_gpat_score($tip_control,$extent,$positioning,$appropriate_technique,$injection_plane,$injection_dynamic,$injection_access,$snare_size,$snare_position,$snare_visualised,$residual,$independent_movement,$lift_movement,$mucosa,$thermal_ablation,$submucosa,$muscularis,$clip_placement,$retrieval_device,$coag_grasper,$size,$morphology,$site,$access,$size_40_smsaplus,$nongranular_smsaplus,$non_lifting,$location_difficult,$user_id,$created,$updated,$numeratorSum,$denominatorSum,$fraction,$SMSA_total,$SMSA_group,$numeratorSMSAplus,$denominatorSMSAplus,$snare_capture,$edit,$date_procedure,$weighted_fraction,$global_numerator,$injection_numerator,$snare_numerator,$safety_numerator,$defect_numerator,$accessory_numerator,$global_denominator,$injection_denominator,$snare_denominator,$safety_denominator,$defect_denominator,$accessory_denominator,$type_polypectomy,$complete){
+	public function New_gpat_score($user_gpat_id,$tip_control,$extent,$positioning,$appropriate_technique,$injection_plane,$injection_dynamic,$injection_access,$snare_size,$snare_position,$snare_visualised,$residual,$independent_movement,$lift_movement,$mucosa,$thermal_ablation,$submucosa,$muscularis,$clip_placement,$retrieval_device,$coag_grasper,$size,$morphology,$site,$access,$size_40_smsaplus,$nongranular_smsaplus,$non_lifting,$location_difficult,$user_id,$created,$updated,$numeratorSum,$denominatorSum,$fraction,$SMSA_total,$SMSA_group,$numeratorSMSAplus,$denominatorSMSAplus,$snare_capture,$edit,$date_procedure,$weighted_fraction,$global_numerator,$injection_numerator,$snare_numerator,$safety_numerator,$defect_numerator,$accessory_numerator,$global_denominator,$injection_denominator,$snare_denominator,$safety_denominator,$defect_denominator,$accessory_denominator,$type_polypectomy,$complete){
+		$this->user_gpat_id = $user_gpat_id;
 		$this->tip_control = $tip_control;
 		$this->extent = $extent;
 		$this->positioning = $positioning;
@@ -166,6 +168,7 @@ Class gpat_score {
 		$result = $this->connection->RunQuery("Select * from gpat_score where id = \"$key_row\" ");
 		while($row = $result->fetch(PDO::FETCH_ASSOC)){
 			$this->id = $row["id"];
+			$this->user_gpat_id = $row["user_gpat_id"];
 			$this->tip_control = $row["tip_control"];
 			$this->extent = $row["extent"];
 			$this->positioning = $row["positioning"];
@@ -240,6 +243,7 @@ $q = "Select * from `gpat_score` LIMIT " . $x . ", " . $y;
 
 					while($row = $result->fetch(PDO::FETCH_ASSOC)){
 			$rowReturn[$x]["id"] = $row["id"];
+			$rowReturn[$x]["user_gpat_id"] = $row["user_gpat_id"];
 			$rowReturn[$x]["tip_control"] = $row["tip_control"];
 			$rowReturn[$x]["extent"] = $row["extent"];
 			$rowReturn[$x]["positioning"] = $row["positioning"];
@@ -318,6 +322,7 @@ $q = "Select * from `gpat_score` WHERE `id` = $key";
 
 					while($row = $result->fetch(PDO::FETCH_ASSOC)){
 			$rowReturn[$x]["id"] = $row["id"];
+			$rowReturn[$x]["user_gpat_id"] = $row["user_gpat_id"];
 			$rowReturn[$x]["tip_control"] = $row["tip_control"];
 			$rowReturn[$x]["extent"] = $row["extent"];
 			$rowReturn[$x]["positioning"] = $row["positioning"];
@@ -632,6 +637,13 @@ $q = "UPDATE `gpat_score` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function getid(){
 		return $this->id;
+	}
+
+	/**
+	 * @return user_gpat_id - varchar(11)
+	 */
+	public function getuser_gpat_id(){
+		return $this->user_gpat_id;
 	}
 
 	/**
@@ -1031,6 +1043,13 @@ $q = "UPDATE `gpat_score` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function setid($id){
 		$this->id = $id;
+	}
+
+	/**
+	 * @param Type: varchar(11)
+	 */
+	public function setuser_gpat_id($user_gpat_id){
+		$this->user_gpat_id = $user_gpat_id;
 	}
 
 	/**
