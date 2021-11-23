@@ -67,7 +67,7 @@ if cold, =/2
     <meta name="description"
         content="The first global training score for colorectal polypectomy.">
     <meta name="author" content="David Tate">
-    <meta name="keywords" content="colonoscopy, gastroscopy, ERCP, quality, polyp, colon cancer, polypectomy, EMR, endoscopic imaging, colorectal cancer, endoscopy, gieqs, GIEQS, training, digital endoscopy event, digital symposium, ghent, gent, endoscopy quality, quality in endoscopy">
+    <meta name="keywords" content="colonoscopy, gastroscopy, ERCP, quality, polyp, colon cancer, polypectomy, EMR, endoscopic imaging, colorectal cancer, endoscopy, gieqs, GIEQS, training, digital endoscopy event, digital symposium, ghent, gent, endoscopy quality, quality in endoscopy, training, polyp assessment, polypectomy, certification, credentialling, credentialling in polypectomy">
  
 
 
