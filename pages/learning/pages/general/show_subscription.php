@@ -1233,6 +1233,8 @@ filter: alpha(opacity=30);
                     $isGIEQs2 = false;
                 }
 
+                $courseTest = false;
+
 
                 if ($courseTest == true){
 
