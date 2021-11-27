@@ -240,10 +240,7 @@ if (isset($subscription_id)){
               ],
               'quantity' => 1,
             ]],
-            'metadata' => [
-                'subscription_id' => $newSubscriptionid,
-
-            ],
+            'payment_intent_data'=>['metadata' => ["subscription_id" => $newSubscriptionid],
             'mode' => 'payment',
             'success_url' => $YOUR_DOMAIN . '/pages/learning/scripts/subscriptions/success_stripe.php?session_id={CHECKOUT_SESSION_ID}',
             'cancel_url' => $YOUR_DOMAIN . $data['currentPage'] . '&action=register',

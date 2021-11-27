@@ -1233,7 +1233,7 @@ filter: alpha(opacity=30);
                     $isGIEQs2 = false;
                 }
 
-                $courseTest = true;
+                //$courseTest = false; change this if issues
 
 
                 if ($courseTest == true){

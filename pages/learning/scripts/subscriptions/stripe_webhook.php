@@ -154,7 +154,10 @@ switch ($event->type) {
 
         //check the subscription is active using the id
 
-        $subscription_id = $paymentMethod['metadata']['subscription_id'];
+        //$subscription_id = $paymentMethod['metadata']['subscription_id']; OLD
+
+        $subscription_id = $paymentMethod['payment_intent_data']['metadata']['subscription_id'];
+
 
 
         if ($debug) {
