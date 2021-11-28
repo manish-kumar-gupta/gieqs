@@ -57,9 +57,9 @@ $location = BASE_URL . '/index.php';
 
 $_SESSION['debug'] = FALSE;
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
+error_reporting(E_NONE);
 
 require_once(BASE_URI . '/assets/scripts/classes/general.class.php');
 $general = new general;
@@ -132,6 +132,12 @@ try {
 //the implode function
 
 
+//log the events
+$debug = true;
+$debugPrint = false;
+
+
+
 // Handle the event
 switch ($event->type) {
     case 'payment_intent.succeeded':
@@ -145,29 +151,18 @@ switch ($event->type) {
 
         $dataToLog[] = 'payment intent detected';
 
-        break;
-    case 'invoice.paid':
-        $paymentMethod = $event->data->object; // contains a \Stripe\PaymentMethod
-        // Then define and call a method to handle the successful attachment of a PaymentMethod.
-        // handlePaymentMethodAttached($paymentMethod);
-        $dataToLog[] = 'invoice paid method attached detected';
-
-        //check the subscription is active using the id
-
-        //$subscription_id = $paymentMethod['metadata']['subscription_id']; OLD
-
-        $subscription_id = $paymentMethod['payment_intent_data']['metadata']['subscription_id'];
+        $subscription_id = $paymentIntent['metadata']['subscription_id'];
 
 
 
         if ($debug) {
 
-            echo 'Looking for subscription ' . $subscription_id;
-            echo '<br/';
+            $dataToLog[] = 'Looking for subscription ' . $subscription_id;
+            //echo '<br/';
         
         }
         
-        $debug = false;
+        
         
         //error_reporting(E_ALL);
         
@@ -184,8 +179,8 @@ switch ($event->type) {
         
             if ($debug) {
         
-                echo 'Found subscription ' . $subscription_id;
-                echo '<br/';
+                $dataToLog[] =  'Found subscription ' . $subscription_id;
+                //echo '<br/';
         
             }
         
@@ -198,8 +193,8 @@ switch ($event->type) {
         
                 if ($debug) {
         
-                    echo 'subscription ' . $subscription_id . ' is active';
-                    echo '<br/';
+                    $dataToLog[] =  'subscription ' . $subscription_id . ' is active';
+                    //echo '<br/';
         
                 }
         
@@ -214,8 +209,8 @@ switch ($event->type) {
         
                 if ($debug) {
         
-                    echo 'user id is  ' . $user_id_subscription . '';
-                    echo '<br/';
+                    $dataToLog[] =  'user id is  ' . $user_id_subscription . '';
+                    //echo '<br/';
         
                 }
         
@@ -229,8 +224,8 @@ switch ($event->type) {
         
                 if ($debug) {
         
-                    echo 'length of subscriptionn s  ' . $subscription_length . ' months';
-                    echo '<br/';
+                    $dataToLog[] = 'length of subscriptionn s  ' . $subscription_length . ' months';
+                    //echo '<br/';
         
                 } 
         
@@ -242,8 +237,8 @@ switch ($event->type) {
         
               if ($debug) {
         
-                    echo 'amount to grant  is  ' . $coin_grant_amount . '';
-                    echo '<br/';
+                    $dataToLog[] =  'amount of coin to grant  is  ' . $coin_grant_amount . '';
+                    //echo '<br/';
         
                 }
         
@@ -255,7 +250,7 @@ switch ($event->type) {
                     
                     if ($debug){
         
-                        echo 'in the length subscription loop';
+                        $dataToLog[] =  'in the length subscription loop';
                         //check how many already given
                            
                     }
@@ -278,8 +273,8 @@ switch ($event->type) {
         
                     if ($debug) {
         
-                        echo 'already given ($numberOfTimes) is' . $numberOfTimes . '';
-                        echo '<br/';
+                        $dataToLog[] =  'already given ($numberOfTimes) is' . $numberOfTimes . '';
+                        //echo '<br/';
         
                     }
         
@@ -294,8 +289,8 @@ switch ($event->type) {
         
                     if ($debug) {
         
-                        echo 'number should be  ($numberShouldBe) is' . $numberShouldBe . '';
-                        echo '<br/';
+                        $dataToLog[] =  'number should be  ($numberShouldBe) is' . $numberShouldBe . '';
+                        //echo '<br/';
         
                     }
         
@@ -306,7 +301,7 @@ switch ($event->type) {
         
                         if ($debug) {
         
-                            echo 'Time to record another subscription and give coins';
+                            $dataToLog[] =  'Time to record another subscription and give coins';
         
                         }
         
@@ -321,8 +316,8 @@ switch ($event->type) {
         
                         if ($debug) {
         
-                            echo 'coins granted';
-                            echo '<br/>';
+                            $dataToLog[] =  'coins granted';
+                            //echo '<br/>';
             
                         }
         
@@ -330,7 +325,7 @@ switch ($event->type) {
         
                         if ($debug) {
         
-                            echo 'NOT TIME to record another subscription or give coins OR ALREADY DONE';
+                            $dataToLog[] =  'NOT TIME to record another subscription or give coins OR ALREADY DONE';
             
                         }
         
@@ -342,7 +337,7 @@ switch ($event->type) {
         
                     if ($debug) {
         
-                        echo 'NOT TIME to record another subscription and give coins OR ALREADY DONE';
+                        $dataToLog[] =  'NOT TIME to record another subscription and give coins OR ALREADY DONE';
         
                     }
         
@@ -356,6 +351,13 @@ switch ($event->type) {
                 $subscription->setactive('1');
                 $subscription->setauto_renew('1');
                 $subscription->prepareStatementPDOUpdate();
+
+                if ($debug) {
+        
+                    $dataToLog[] =  'subscription is inactive but should be active so set as active';
+    
+                }
+    
         
             }
         
@@ -369,9 +371,22 @@ switch ($event->type) {
         
             //cannot find subscription or is not active
         
-            echo 'Cannot find subscription';
+            $dataToLog[] = 'Cannot find subscription';
         
         }
+
+        break;
+    case 'invoice.paid':
+        $paymentMethod = $event->data->object; // contains a \Stripe\PaymentMethod
+        // Then define and call a method to handle the successful attachment of a PaymentMethod.
+        // handlePaymentMethodAttached($paymentMethod);
+        $dataToLog[] = 'invoice paid method attached detected';
+
+        //check the subscription is active using the id
+
+        //$subscription_id = $paymentMethod['metadata']['subscription_id']; OLD
+
+        
 
 
 
@@ -394,6 +409,8 @@ switch ($event->type) {
 
         //send a mail to the user saying that subscription will not renew unless purchased again.
 
+        $dataToLog[] = 'invoice failed for number ' . $subscription_id . ' therefore set as inactive';
+
 
 
 
@@ -401,12 +418,12 @@ switch ($event->type) {
 
             if ($debug){
 
-                echo 'could not load subscription data';
+                $dataToLog 'could not load subscription data';
             }
         }
 
     default:
-        echo 'Received unknown event type ' . $event->type;
+    $dataToLog = 'Received unknown event type ' . $event->type;
 
 }
 
@@ -417,6 +434,11 @@ $data = implode(" - ", $dataToLog);
 
 //Add a newline onto the end.
 $data .= PHP_EOL;
+
+if ($debugPrint){
+
+    var_dump($dataToLog);
+}
 
 //The name of your log file.
 //Modify this and add a full path if you want to log it in 
