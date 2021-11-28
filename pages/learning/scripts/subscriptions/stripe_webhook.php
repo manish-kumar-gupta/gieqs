@@ -418,12 +418,18 @@ switch ($event->type) {
 
             if ($debug){
 
-                $dataToLog 'could not load subscription data';
+                $dataToLog[] = 'could not load subscription data';
             }
         }
 
     default:
     $dataToLog = 'Received unknown event type ' . $event->type;
+    $event = $event->data->object; // contains a \Stripe\PaymentMethod
+    if ($debug){
+
+        $dataToLog[] = $event;
+    }
+
 
 }
 
