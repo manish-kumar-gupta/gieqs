@@ -609,7 +609,7 @@ if (isset($subscription_id)){
             ]],
             'payment_intent_data'=>[
                 'metadata' => [
-                    "subscription_id" => $newSubscriptionid, 
+                    'subscription_id' => $newSubscriptionid, 
                     'coin_used' => $coin_used,
                     'coin_amount' => $coin_amount
                 ],
