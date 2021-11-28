@@ -16,16 +16,17 @@
       ?>
 
 
- <!--META DATA-->
- <meta charset="utf-8">
- <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <!--META DATA-->
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>The Gastrointestinal Quality and Safety (GIEQs) Foundation</title>
     <meta name="description"
         content="The Gastrointestinal Quality and Safety (GIEQs) Foundation is a not-for profit organisation dedicated to improving quality and safety in everyday endoscopic practice.">
     <meta name="author" content="David Tate">
-    <meta name="keywords" content="colonoscopy, gastroscopy, ERCP, quality, polyp, colon cancer, polypectomy, EMR, endoscopic imaging, colorectal cancer, endoscopy, gieqs, GIEQS, training, digital endoscopy event, digital symposium, ghent, gent, endoscopy quality, quality in endoscopy">
- 
+    <meta name="keywords"
+        content="colonoscopy, gastroscopy, ERCP, quality, polyp, colon cancer, polypectomy, EMR, endoscopic imaging, colorectal cancer, endoscopy, gieqs, GIEQS, training, digital endoscopy event, digital symposium, ghent, gent, endoscopy quality, quality in endoscopy">
+
     <!--Page title-->
 
     <style>
@@ -116,13 +117,11 @@
     @media (min-width: 768px) {
 
         #twitter {
-    
-    max-width: 40%;
 
+            max-width: 40%;
+
+        }
     }
-}
-    
-
     </style>
 
 
@@ -139,9 +138,9 @@
 
         <?php require 'nav.php';?>
 
-        
 
-       <?php
+
+        <?php
 //set the variable to launch the registration pop-up
 
 //print_r($_GET);
@@ -222,57 +221,61 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 
 
     <div class="main-content">
-<!-- GIEQs II Filler -->
+        <!-- GIEQs II Filler -->
 
-<?php         if (($gieqs_ii_is_live === true)){?>
+        <?php         if (($gieqs_ii_is_live === true)){?>
 
-<section class="page-header text-dark bg-gieqsGold d-flex align-items-end pt-2 mt-10" >
+        <section class="page-header text-dark bg-gieqsGold d-flex align-items-end pt-2 mt-10">
 
 
-    <!-- Header container -->
-    <div class="container pt-0 pt-lg-0">
-        <div class="row">
-            <div class=" col-lg-12">
-                <!-- Salute + Small stats -->
-                <div class="row align-items-center mb-4">
-                    <div class="col-auto mb-4 mb-md-0">
-                        <span class="h2 mb-0 text-dark text-bold d-block">GIEQs II is LIVE.
-                            </span>
+            <!-- Header container -->
+            <div class="container pt-0 pt-lg-0">
+                <div class="row">
+                    <div class=" col-lg-12">
+                        <!-- Salute + Small stats -->
+                        <div class="row align-items-center mb-4">
+                            <div class="col-auto mb-4 mb-md-0">
+                                <span class="h2 mb-0 text-dark text-bold d-block">GIEQs II is LIVE.
+                                </span>
 
-                            <?php if (($gieqs_ii_is_live) && ($gieqs_ii_has_access_to_today)){?>
-                                <span class="text-dark">Thank-you for Registering! Sit Back and Enjoy.<br/> <a href="<?php echo BASE_URL;?>/pages/learning/pages/general/show_subscription.php?assetid=<?php echo $gieqs_ii_plenary_link;?>">Start watching now</a></span>
-                                <?php if ($courseTest){?> <br/><span class="text-dark">TEST VIEW</span><?php }?>
+                                <?php if (($gieqs_ii_is_live) && ($gieqs_ii_has_access_to_today)){?>
+                                <span class="text-dark">Thank-you for Registering! Sit Back and Enjoy.<br /> <a
+                                        href="<?php echo BASE_URL;?>/pages/learning/pages/general/show_subscription.php?assetid=<?php echo $gieqs_ii_plenary_link;?>">Start
+                                        watching now</a></span>
+                                <?php if ($courseTest){?> <br /><span class="text-dark">TEST VIEW</span><?php }?>
                                 <?php }else{ ?>
-                        <span class="text-dark"><a href="<?php echo BASE_URL;?>/pages/program/gieqs_ii.php">Register Now for Immediate Access</a></span>
-                        <?php if ($courseTest){?> <br/><span class="text-dark">TEST VIEW</span><?php }?>
+                                <span class="text-dark"><a
+                                        href="<?php echo BASE_URL;?>/pages/program/gieqs_ii.php">Register Now for
+                                        Immediate Access</a></span>
+                                <?php if ($courseTest){?> <br /><span class="text-dark">TEST VIEW</span><?php }?>
 
-                                    <?php } ?>
-                    </div>
-                    <!-- video -->
-                    <div class="col-auto flex-fill d-none d-xl-block">
-                        <!-- <div id="videoDisplay" class="embed-responsive embed-responsive-16by9">
+                                <?php } ?>
+                            </div>
+                            <!-- video -->
+                            <div class="col-auto flex-fill d-none d-xl-block">
+                                <!-- <div id="videoDisplay" class="embed-responsive embed-responsive-16by9">
     <iframe  id='videoChapter' class="embed-responsive-item"
         src='https://player.vimeo.com/video/398791515' allow='autoplay'
         webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
         </div> -->
+                            </div>
+                        </div>
+                        <!-- Account navigation -->
+
+
                     </div>
                 </div>
-                <!-- Account navigation -->
-
-
             </div>
-        </div>
-    </div>
-</section>
-<section class="header-1 bg-section-dark">
+        </section>
+        <section class="header-1 bg-section-dark">
 
 
-<?php }else{?>
+            <?php }else{?>
 
-    <section class="header-1 section-rotate bg-section-dark mt-5" data-offset-top="#header-main">
+            <section class="header-1 section-rotate bg-section-dark mt-5" data-offset-top="#header-main">
 
 
-        <?php
+                <?php
 
 }
         $imageArray = ['assets/img/polyps/transverse_lci.png', 'assets/img/icons/gieqs_2.png', 'assets/img/backgrounds/ChromoPolypTransBack.png', 'assets/img/covers/bleeding/heaterNonLive.png', 'assets/img/covers/ovesco.png', 'assets/img/polyps/smi_demarcation.png']
@@ -281,39 +284,39 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
     ?>
 
 
-            <div class="section-inner bg-gradient-dark"></div>
-            <!-- SVG illustration -->
-            <div class="pt-7 position-absolute middle right-0 col-lg-7 col-xl-6 d-none d-lg-block">
-                <figure class="w-75" style="max-width: 1000px;">
-                    <img alt="Image placeholder" src="<?php echo $imageArray[array_rand($imageArray)];?>"
-                        class="svg-inject img-fluid">
-                    <!-- <figcaption class="small figure-caption text-right">Non-granular transverse colon large non-pedunculated colorectal polyp.  <br/>Suspicious for submucosal invasive cancer. </figcaption> -->
-                </figure>
-            </div>
-            <!-- SVG background -->
-            <!--<div class="bg-absolute-cover bg-size--contain d-flex align-items-center">
+                <div class="section-inner bg-gradient-dark"></div>
+                <!-- SVG illustration -->
+                <div class="pt-7 position-absolute middle right-0 col-lg-7 col-xl-6 d-none d-lg-block">
+                    <figure class="w-75" style="max-width: 1000px;">
+                        <img alt="Image placeholder" src="<?php echo $imageArray[array_rand($imageArray)];?>"
+                            class="svg-inject img-fluid">
+                        <!-- <figcaption class="small figure-caption text-right">Non-granular transverse colon large non-pedunculated colorectal polyp.  <br/>Suspicious for submucosal invasive cancer. </figcaption> -->
+                    </figure>
+                </div>
+                <!-- SVG background -->
+                <!--<div class="bg-absolute-cover bg-size--contain d-flex align-items-center">
         <figure class="w-100 d-none d-lg-block">
           <img alt="Image placeholder" src="assets/img/svg/backgrounds/bg-4.svg" class="svg-inject" style="height: 1000px;">
         </figure>
       </div>-->
-            <!-- Hero container -->
-            <div class="container  d-flex align-items-center position-relative zindex-100">
+                <!-- Hero container -->
+                <div class="container  d-flex align-items-center position-relative zindex-100">
 
-                <div class="col">
-                    <div class="row">
-                        <div class="col-lg-10 col-xl-10 text-center text-lg-left">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-lg-10 col-xl-10 text-center text-lg-left">
 
-                        <a class="ml-3 pointer" data-toggle="modal" data-target="#teaser-videos">
-                                <div class="alert alert-modern alert-dark">
-                                <span class="badge gieqsGold badge-pill">
-                                        New
-                                    </span>
-                                    <span class="alert-content">View GIEQs II Teaser Videos
-                                    </span>
-                                </div>
-                            </a>
+                                <a class="ml-3 pointer" data-toggle="modal" data-target="#teaser-videos">
+                                    <div class="alert alert-modern alert-dark">
+                                        <span class="badge gieqsGold badge-pill">
+                                            New
+                                        </span>
+                                        <span class="alert-content">View GIEQs II Teaser Videos
+                                        </span>
+                                    </div>
+                                </a>
 
-                            <!-- <a href="https://www.gieqs.com/pages/program/gieqs_ii.php">
+                                <!-- <a href="https://www.gieqs.com/pages/program/gieqs_ii.php">
                                 <div class="alert alert-modern alert-dark">
                                     <span class="badge gieqsGold badge-pill">
                                         New
@@ -321,7 +324,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                     <span class="alert-content">GIEQs II Registration Open</span>
                                 </div>
                             </a> -->
-                            <!-- <a href="https://www.gieqs.com/pages/program/program_imaging.php">
+                                <!-- <a href="https://www.gieqs.com/pages/program/program_imaging.php">
                                 <div class="alert alert-modern alert-dark">
                                     <span class="badge gieqsGold badge-pill">
                                         New
@@ -330,73 +333,75 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                 </div>
                             </a> -->
 
-                            <a class="ml-3 pointer" data-toggle="modal" data-target="#accreditation">
-                                <div class="alert alert-modern alert-dark">
-                                    <span class="badge gieqsGold badge-pill">
-                                        <i class="fas fa-notes-medical"></i>
-                                    </span>
+                                <a class="ml-3 pointer" data-toggle="modal" data-target="#accreditation">
+                                    <div class="alert alert-modern alert-dark">
+                                        <span class="badge gieqsGold badge-pill">
+                                            <i class="fas fa-notes-medical"></i>
+                                        </span>
 
-                                    <span class="alert-content">CME accreditation</span>
-                                </div>
-                            </a>
+                                        <span class="alert-content">CME accreditation</span>
+                                    </div>
+                                </a>
 
-                            <a class="ml-3 pointer" href="https://twitter.com/gieqs_symposium?ref_src=twsrc%5Etfw" target="_blank">
-                                <div class="alert alert-modern alert-dark">
-                                    <span class="badge gieqsGold badge-pill">
-                                        
-                                    <i class="fab fa-twitter"></i>
+                                <a class="ml-3 pointer" href="https://twitter.com/gieqs_symposium?ref_src=twsrc%5Etfw"
+                                    target="_blank">
+                                    <div class="alert alert-modern alert-dark">
+                                        <span class="badge gieqsGold badge-pill">
+
+                                            <i class="fab fa-twitter"></i>
                                         </span>
                                         <span class="alert-content">Follow GIEQs on Twitter</span>
-                                    
 
-                                   
+
+
+
+                                    </div>
+                                </a>
+
+
+
+
+                                <!--                              <div class="countdown" data-countdown-date="10/07/2020" data-countdown-label="hide"></div>
+ -->
+                                <!--                              <div class="countdown countdown-blocks" data-countdown-date="10/07/2020"></div>
+ -->
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-5 col-xl-6 text-center text-lg-left">
+                                <div class="d-none d-lg-block mb-4">
 
                                 </div>
-                            </a>
+
+                                <h2 class="text-white mb-4 mt-4 mt-lg-0">
+                                    <span class="display-4 font-weight-light">GIEQs II - now On Demand!</span>
+
+                                    <span class="d-block" style="color: rgb(238, 194, 120);"><strong
+                                            class="font-weight-light">Thanks to everyone who supported<br />
+                                            step 2 of the Everyday Endoscopy Revolution.</span>
+                                </h2>
+                                <p class="lead text-white">Click below to access the whole Event. 32 hours of content,
+                                    accessible immediately.</p>
+                                <div class="mt-5">
 
 
-                            
+                                    <a href="https://WWW.gieqs.com/login?destination=viewasset&assetid=24"
+                                        class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
+                                        style="background-color: rgb(238, 194, 120);">
+                                        <span class="btn-inner--text">Access GIEQs II<sup></sup></span>
+                                        <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
 
-                            <!--                              <div class="countdown" data-countdown-date="10/07/2020" data-countdown-label="hide"></div>
- -->
-                            <!--                              <div class="countdown countdown-blocks" data-countdown-date="10/07/2020"></div>
- -->
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-5 col-xl-6 text-center text-lg-left">
-                            <div class="d-none d-lg-block mb-4">
+                                    </a>
 
-                            </div>
+                                    <a href="https://www.gieqs.com/pages/program/gieqs_ii.php"
+                                        class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
+                                        style="background-color: rgb(238, 194, 120);">
+                                        <span class="btn-inner--text">Register for GIEQs II<sup></sup></span>
+                                        <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
 
-                            <h2 class="text-white mb-4 mt-4 mt-lg-0">
-                                <span class="display-4 font-weight-light">GIEQs II - now On Demand!</span>
+                                    </a>
 
-                                <span class="d-block" style="color: rgb(238, 194, 120);"><strong
-                                        class="font-weight-light">Thanks to everyone who supported<br />
-                                        step 2 of the Everyday Endoscopy Revolution.</span>
-                            </h2>
-                            <p class="lead text-white">Click below to access the whole Event.  32 hours of content, accessible immediately.</p>
-                            <div class="mt-5">
-
-
-                                <a href="https://WWW.gieqs.com/login?destination=viewasset&assetid=24"
-                                    class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
-                                    style="background-color: rgb(238, 194, 120);">
-                                    <span class="btn-inner--text">Access GIEQs II<sup></sup></span>
-                                    <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
-
-                                </a>
-
-                                <a href="https://www.gieqs.com/pages/program/gieqs_ii.php"
-                                    class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
-                                    style="background-color: rgb(238, 194, 120);">
-                                    <span class="btn-inner--text">Register for GIEQs II<sup></sup></span>
-                                    <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
-
-                                </a>
-
-                              <!--   <a href=""
+                                    <!--   <a href=""
                                     class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me m-2 teaser-popup"
                                     style="background-color: rgb(238, 194, 120);">
                                     <span class="btn-inner--text">Watch GIEQs II Teaser Videos<sup></sup></span>
@@ -407,7 +412,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 
 
 
-                                <!-- <a href="https://www.youtube.com/watch?v=zRy1xwGsagc"
+                                    <!-- <a href="https://www.youtube.com/watch?v=zRy1xwGsagc"
                                         class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mt-2 mr-sm-4 scroll-me"
                                         style="background-color: rgb(238, 194, 120);" data-fancybox>
                                         <span class="badge bg-dark gieqsGold badge-pill">
@@ -418,12 +423,12 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 
                                     </a> -->
 
-                            </div>
+                                </div>
 
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
     </div>
     </section>
 
@@ -661,15 +666,17 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
          //text for past and not live
 ?>
 
-<hr />
-        <section class="slice slice-lg pt-4">
-            <div id="twitter" class="container d-flex align-items-center position-relative zindex-100" style="">
-    
-<a class="twitter-timeline"  data-theme="dark" href="https://twitter.com/gieqs_symposium?ref_src=twsrc%5Etfw">Tweets by gieqs_symposium</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    </div>
+    <hr />
+    <section class="slice slice-lg pt-4">
+        <div id="twitter" class="container d-flex align-items-center position-relative zindex-100" style="">
+
+            <a class="twitter-timeline" data-theme="dark"
+                href="https://twitter.com/gieqs_symposium?ref_src=twsrc%5Etfw">Tweets by gieqs_symposium</a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
     </section>
 
-<section class="header-1 section-rotate bg-section-dark" data-offset-top="#header-main">
+    <section class="header-1 section-rotate bg-section-dark" data-offset-top="#header-main">
         <div class="section-inner bg-gradient-dark"></div>
         <!-- SVG illustration -->
         <div class="pt-7 position-absolute middle right-0 col-lg-7 col-xl-6 d-none d-lg-block">
@@ -1025,8 +1032,8 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
             </div>
         </div>
 
-    
-       
+
+
 
         <!-- Modal Teaser-->
         <div class="modal fade" id="teaser-videos" tabindex="-1" role="dialog" aria-labelledby="teaser-videos"
@@ -1034,7 +1041,8 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
             <div class="modal-dialog modal-lg modal-dialog-centered modal-dark" role="document">
                 <div class="modal-content p-1">
                     <div class="modal-header">
-                        <h5 class="display-4 modal-title" id="accreditationLabel" style="color: rgb(238, 194, 120);">Join us for GIEQs II</h5>
+                        <h5 class="display-4 modal-title" id="accreditationLabel" style="color: rgb(238, 194, 120);">
+                            Join us for GIEQs II</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span class="text-white" aria-hidden="false">&times;</span>
                         </button>
@@ -1043,12 +1051,12 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 
                         <div id="videoDisplay mb-3" class="">
 
-                        <div class="row">
+                            <div class="row">
                                 <p class="h5 mt-2">Released prior to the early bird deadline these 6, 1-2 minute video
                                     snippets
                                     demonstrate the attention to detail, deconstructed approach and rock solid evidence
                                     base of the GIEQs Approach. <br /> <br /></p>
-                               
+
 
                                 <div class="row">
                                     <div class="col-sm-6">
@@ -1061,7 +1069,8 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                     <div class="col-sm-6">
 
                                         <p class="ml-3"><span class="h4">1 - Over the Scope Clip for Upper
-                                                Gastrointestinal Bleeding</span><br/><span class="text-muted">Use of OTSC as first-line for life 
+                                                Gastrointestinal Bleeding</span><br /><span class="text-muted">Use of
+                                                OTSC as first-line for life
                                                 threatening upper gastrointestinal haemorrhage.</span>
                                         </p>
 
@@ -1077,9 +1086,11 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                     </div>
                                     <div class="col-sm-6">
 
-                                        <p class="ml-3"><span class="h4">2 - Early Gastric Cancer</span><br/><span class="text-muted">Can you
-                                            identify and characterise 
-                                            this early gastric cancer? Watch the video for more information including endoscopic resectability</span>
+                                        <p class="ml-3"><span class="h4">2 - Early Gastric Cancer</span><br /><span
+                                                class="text-muted">Can you
+                                                identify and characterise
+                                                this early gastric cancer? Watch the video for more information
+                                                including endoscopic resectability</span>
                                         </p>
 
                                     </div>
@@ -1097,7 +1108,9 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                     </div>
                                     <div class="col-sm-6">
                                         <p class="ml-3"><span class="h4">3 - The Demarcated Area as a Predictor of
-                                                Submucosal Invasion in Colon Polyps</span><br/> <span class="text-muted">the Demarcated Area has emerged as a stable predictor of submucosal invasive cancer.  Find out more here.</span>
+                                                Submucosal Invasion in Colon Polyps</span><br /> <span
+                                                class="text-muted">the Demarcated Area has emerged as a stable predictor
+                                                of submucosal invasive cancer. Find out more here.</span>
                                         </p>
 
                                     </div>
@@ -1112,13 +1125,16 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                         </a>
                                     </div>
                                     <div class="col-sm-6">
-                                        <p class="ml-3"><span class="h4">4 - Dealing with Adverse Events at Colonic Polypectomy</span><br/><span class="text-muted">
-                                        To be able to competently perform colonic polypectomy you must be able to deal with adverse events.   A deconstructed example is shown here.</span>
+                                        <p class="ml-3"><span class="h4">4 - Dealing with Adverse Events at Colonic
+                                                Polypectomy</span><br /><span class="text-muted">
+                                                To be able to competently perform colonic polypectomy you must be able
+                                                to deal with adverse events. A deconstructed example is shown
+                                                here.</span>
                                         </p>
 
                                     </div>
                                 </div>
-                                
+
                                 <div class="row mt-3">
                                     <div class="col-sm-6">
                                         <a href="https://vimeo.com/569339891/d436733eba" data-fancybox>
@@ -1128,7 +1144,10 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                         </a>
                                     </div>
                                     <div class="col-sm-6">
-                                        <p class="ml-3"><span class="h4">5 - Complex EUS applications to make Everyday ERCP easier</span><br/><span class="text-muted">Endoscopic Ultrasound is radically changing the way we approach biliary intervention and can make a difference to everyday endoscopic problems.</span>
+                                        <p class="ml-3"><span class="h4">5 - Complex EUS applications to make Everyday
+                                                ERCP easier</span><br /><span class="text-muted">Endoscopic Ultrasound
+                                                is radically changing the way we approach biliary intervention and can
+                                                make a difference to everyday endoscopic problems.</span>
                                         </p>
 
                                     </div>
@@ -1143,7 +1162,12 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                         </a>
                                     </div>
                                     <div class="col-sm-6">
-                                        <p class="ml-3"><span class="h4">6 - Decision Making after Large perforation and life threatening Bleeding during Polypectomy</span><br/><span class="text-muted">Many of the GIEQs faculty spend their normal working lives on complex endoscopy.  Learning the lessons and approach from these procedures, deconstructing them and bringing them to the everyday is a crucial part of the GIEQs approach.</span>
+                                        <p class="ml-3"><span class="h4">6 - Decision Making after Large perforation and
+                                                life threatening Bleeding during Polypectomy</span><br /><span
+                                                class="text-muted">Many of the GIEQs faculty spend their normal working
+                                                lives on complex endoscopy. Learning the lessons and approach from these
+                                                procedures, deconstructing them and bringing them to the everyday is a
+                                                crucial part of the GIEQs approach.</span>
                                         </p>
 
                                     </div>
@@ -1161,87 +1185,95 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                             </div>
                         </div>
                     </div>
-                                </div> 
-                                </div>
-                                </div>
-    <!-- Modal Accreditation-->
-    <div class="modal fade" id="accreditation" tabindex="-1" role="dialog" aria-labelledby="accreditationLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered modal-dark" role="document">
-            <div class="modal-content">
-
-                <div class="modal-header">
-                    <h5 class="modal-title" id="accreditationLabel" style="color: rgb(238, 194, 120);">GIEQs
-                        Accreditation Statement</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span class="text-white" aria-hidden="false">&times;</span>
-                    </button>
                 </div>
+            </div>
+        </div>
+        <!-- Modal Accreditation-->
+        <div class="modal fade" id="accreditation" tabindex="-1" role="dialog" aria-labelledby="accreditationLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dark" role="document">
+                <div class="modal-content">
 
-                <div class="modal-body p-5 text-center">
-                    <div id="videoDisplay mb-3" class="">
-                        <div class="row">
-                            <p class="h5 mt-5">
-                                The 2nd Ghent International Endoscopy Quality Symposium (GIEQs), Gent, Belgium,
-                                30/09/2021 - 01/10/2021 has been accredited by the European Accreditation Council for
-                                Continuing Medical Education (EACCME®) with 16 European CME credits (ECMEC®s). Each
-                                medical specialist should claim only those hours of credit that he/she actually spent in
-                                the educational activity. Through an agreement between the Union Européenne des Médecins
-                                Spécialistes and the American Medical Association, physicians may convert EACCME®
-                                credits to an equivalent number of AMA PRA Category 1 CreditsTM. Information on the
-                                process to convert EACCME® credit to AMA credit can be found at <a target="_blank"
-                                    href="www.ama-assn.org/education/earn-credit-participation-international-activities">www.ama-assn.org/education/earn-credit-participation-international-activities</a>
-                                <br /> <br />
-                            </p>
-                            <p class="text-white">
-                                Live educational activities, occurring outside of Canada, recognised by the UEMS-EACCME®
-                                for ECMEC®s are deemed to be Accredited Group Learning Activities (Section 1) as defined
-                                by the Maintenance of Certification Program of the Royal College of Physicians and
-                                Surgeons of Canada. EACCME® credits.
-                                <br /><br />Each participant can only receive the number of credits he/she is entitled
-                                to according to his/her actual participation at the event once he/she has completed the
-                                feedback form. Cf. criteria 9 and 23 of UEMS 2016.20.
-                            </p>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="accreditationLabel" style="color: rgb(238, 194, 120);">GIEQs
+                            Accreditation Statement</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span class="text-white" aria-hidden="false">&times;</span>
+                        </button>
+                    </div>
 
-                            <div class="col-lg-12 text-center">
-                                <div class="icon-xl icon-shape bg-white">
-                                    <a href="https://eaccme.uems.eu/" target="_blank" data-toggle="tooltip"
-                                        data-placement="bottom"
-                                        title="European Accreditation Council for Continuing Medical Education (EACCME)">
-                                        <img src="<?php echo BASE_URL;?>/assets/img/icons/eaccme.png" alt="EACCME">
-                                    </a>
+                    <div class="modal-body p-5 text-center">
+                        <div id="videoDisplay mb-3" class="">
+                            <div class="row">
+                                <p class="h5 mt-5">
+                                    The 2nd Ghent International Endoscopy Quality Symposium (GIEQs), Gent, Belgium,
+                                    30/09/2021 - 01/10/2021 has been accredited by the European Accreditation Council
+                                    for
+                                    Continuing Medical Education (EACCME®) with 16 European CME credits (ECMEC®s). Each
+                                    medical specialist should claim only those hours of credit that he/she actually
+                                    spent in
+                                    the educational activity. Through an agreement between the Union Européenne des
+                                    Médecins
+                                    Spécialistes and the American Medical Association, physicians may convert EACCME®
+                                    credits to an equivalent number of AMA PRA Category 1 CreditsTM. Information on the
+                                    process to convert EACCME® credit to AMA credit can be found at <a target="_blank"
+                                        href="www.ama-assn.org/education/earn-credit-participation-international-activities">www.ama-assn.org/education/earn-credit-participation-international-activities</a>
+                                    <br /> <br />
+                                </p>
+                                <p class="text-white">
+                                    Live educational activities, occurring outside of Canada, recognised by the
+                                    UEMS-EACCME®
+                                    for ECMEC®s are deemed to be Accredited Group Learning Activities (Section 1) as
+                                    defined
+                                    by the Maintenance of Certification Program of the Royal College of Physicians and
+                                    Surgeons of Canada. EACCME® credits.
+                                    <br /><br />Each participant can only receive the number of credits he/she is
+                                    entitled
+                                    to according to his/her actual participation at the event once he/she has completed
+                                    the
+                                    feedback form. Cf. criteria 9 and 23 of UEMS 2016.20.
+                                </p>
+
+                                <div class="col-lg-12 text-center">
+                                    <div class="icon-xl icon-shape bg-white">
+                                        <a href="https://eaccme.uems.eu/" target="_blank" data-toggle="tooltip"
+                                            data-placement="bottom"
+                                            title="European Accreditation Council for Continuing Medical Education (EACCME)">
+                                            <img src="<?php echo BASE_URL;?>/assets/img/icons/eaccme.png" alt="EACCME">
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <p class="col-12 text-white">
-                                CMEC®s per day:
-                                <br>
-                                30.09.2021 - 8.00
-                                <br>
-                                01.10.2021 - 8.00
-                            </p>
+                                <p class="col-12 text-white">
+                                    CMEC®s per day:
+                                    <br>
+                                    30.09.2021 - 8.00
+                                    <br>
+                                    01.10.2021 - 8.00
+                                </p>
 
-                            <p class="text-white">
-                                The EACCME® awards ECMEC®s on the basis of 1 ECMEC® for one hour of CME with a maximum
-                                of 8 ECMEC®s per day. Cf. Chapter X of UEMS 2016.20.
-                            </p>
+                                <p class="text-white">
+                                    The EACCME® awards ECMEC®s on the basis of 1 ECMEC® for one hour of CME with a
+                                    maximum
+                                    of 8 ECMEC®s per day. Cf. Chapter X of UEMS 2016.20.
+                                </p>
 
-                            <div class="col-lg-12 text-center">
-                                <div class="icon-xl icon-shape bg-white">
-                                    <a href="https://www.riziv.fgov.be/" target="_blank">
-                                        <img src="<?php echo BASE_URL;?>/assets/img/icons/riziv.png" alt="RIZIV"
-                                            data-toggle="tooltip" data-placement="bottom"
-                                            title="Rijksinstituut voor ziekte- en invaliditeitsverzekering">
-                                    </a>
+                                <div class="col-lg-12 text-center">
+                                    <div class="icon-xl icon-shape bg-white">
+                                        <a href="https://www.riziv.fgov.be/" target="_blank">
+                                            <img src="<?php echo BASE_URL;?>/assets/img/icons/riziv.png" alt="RIZIV"
+                                                data-toggle="tooltip" data-placement="bottom"
+                                                title="Rijksinstituut voor ziekte- en invaliditeitsverzekering">
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <p class="col-12 text-white">
-                                30 Sept 2021 = CP 8.5
-                                <br>
-                                01 Oct 2021 = CP 8.5
-                            </p>
+                                <p class="col-12 text-white">
+                                    30 Sept 2021 = CP 8.5
+                                    <br>
+                                    01 Oct 2021 = CP 8.5
+                                </p>
 
-                            <!--
+                                <!--
                                 <div class="col-lg-10 col-xl-10 text-center">
                                     <div class="icon-xl icon-shape bg-white mr-3 p-2">
                                         <a href="https://eaccme.uems.eu/" target="_blank" data-toggle="tooltip" data-placement="bottom" title="European Accreditation Council for Continuing Medical Education (EACCME)">
@@ -1276,207 +1308,210 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                     
                                 </div>
                             -->
+                            </div>
+
+
                         </div>
-
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn-small btn-secondary" data-dismiss="modal">Close</button>
+                        <div class="modal-footer">
+                            <button type="button" class="btn-small btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
                     </div>
                 </div>
             </div>
-                                </div>
-                                </div>
+        </div>
 
 
 
-            <?php require(BASE_URI . '/footer.php');?>
+        <?php require(BASE_URI . '/footer.php');?>
 
-            <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
-            <!-- <script src="assets/js/purpose.core.js"></script> -->
-            <!-- Page JS -->
-            <script src="assets/libs/swiper/dist/js/swiper.min.js"></script>
-            <script src="assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
-            <script src="assets/libs/typed.js/lib/typed.min.js"></script>
-            <script src="assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script>
-            <script src="assets/libs/jquery-countdown/dist/jquery.countdown.min.js"></script>
-            <!-- Google maps -->
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBuyKngB9VC3zgY_uEB-DKL9BKYMekbeY"></script>
-            <!-- Purpose JS -->
-            <script src="assets/js/purpose.js"></script>
-            <!-- <script src="assets/js/generaljs.js"></script> -->
-            <script src="assets/js/demo.js"></script>
+        <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
+        <!-- <script src="assets/js/purpose.core.js"></script> -->
+        <!-- Page JS -->
+        <script src="assets/libs/swiper/dist/js/swiper.min.js"></script>
+        <script src="assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+        <script src="assets/libs/typed.js/lib/typed.min.js"></script>
+        <script src="assets/libs/isotope-layout/dist/isotope.pkgd.min.js"></script>
+        <script src="assets/libs/jquery-countdown/dist/jquery.countdown.min.js"></script>
+        <!-- Google maps -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBuyKngB9VC3zgY_uEB-DKL9BKYMekbeY"></script>
+        <!-- Purpose JS -->
+        <script src="assets/js/purpose.js"></script>
+        <!-- <script src="assets/js/generaljs.js"></script> -->
+        <script src="assets/js/demo.js"></script>
 
 
-            <script>
-            var signup = $('#signup').text();
+        <script>
+        var signup = $('#signup').text();
 
-            function submitPreRegisterForm() {
+        function submitPreRegisterForm() {
 
-                var esdLesionObject = pushDataFromFormAJAX("pre-register", "preRegister", "id", null,
-                    "0"); //insert new object
+            var esdLesionObject = pushDataFromFormAJAX("pre-register", "preRegister", "id", null,
+                "0"); //insert new object
 
-                esdLesionObject.done(function(data) {
+            esdLesionObject.done(function(data) {
 
-                    console.log(data);
+                console.log(data);
 
-                    var dataTrim = data.trim();
+                var dataTrim = data.trim();
 
-                    console.log(dataTrim);
+                console.log(dataTrim);
 
-                    if (dataTrim) {
+                if (dataTrim) {
 
-                        try {
+                    try {
 
-                            dataTrim = parseInt(dataTrim);
+                        dataTrim = parseInt(dataTrim);
 
-                            if (dataTrim > 0) {
+                        if (dataTrim > 0) {
 
-                                alert(
-                                    "Thank you for your details.  We will keep you updated on everything GIEQs.");
-                                $("[data-dismiss=modal]").trigger({
-                                    type: "click"
-                                });
-
-                            }
-
-                        } catch (error) {
-
-                            //data not entered
-                            console.log('error parsing integer');
+                            alert(
+                                "Thank you for your details.  We will keep you updated on everything GIEQs."
+                                );
                             $("[data-dismiss=modal]").trigger({
                                 type: "click"
                             });
 
-
                         }
 
-                        //$('#success').text("New esdLesion no "+data+" created");
-                        //$('#successWrapper').show();
-                        /* $("#successWrapper").fadeTo(4000, 500).slideUp(500, function() {
-                          $("#successWrapper").slideUp(500);
+                    } catch (error) {
+
+                        //data not entered
+                        console.log('error parsing integer');
+                        $("[data-dismiss=modal]").trigger({
+                            type: "click"
                         });
-                        edit = 1;
-                        $("#id").text(data);
-                        esdLesionPassed = data;
-                        fillForm(data); */
-
-
-
-
-                    } else {
-
-                        alert("No data inserted, try again");
-
-                    }
-
-
-                });
-            }
-
-            function stopVideo() {
-                var $frame = $('iframe#videoChapter');
-
-                // saves the current iframe source
-                var vidsrc = $frame.attr('src');
-
-                // sets the source to nothing, stopping the video
-                $frame.attr('src', '');
-
-                // sets it back to the correct link so that it reloads immediately on the next window open
-                $frame.attr('src', vidsrc);
-            }
-
-
-
-            $(document).ready(function() {
-
-                var isshow = localStorage.getItem('isshow');
-                if (isshow== null) {
-                    localStorage.setItem('isshow', 1);
-
-                    // Show popup here
-                    setTimeout(function() { $('#teaser-videos').modal('show'); }, 5000);
-                    
-                }
-
-
-                if (signup == '2456') {
-
-                    $('#registerInterest').modal('show');
-
-                }
-
-                $('#registerInterest').on('hidden.bs.modal', function(e) {
-                    stopVideo();
-                })
-
-
-
-                $(document).on('click', '#submitPreRegister', function() {
-
-                    event.preventDefault();
-                    $('#pre-register').submit();
-
-                })
-
-                $(document).on('click', '.teaser-popup', function() {
-
-event.preventDefault();
-$('#teaser-videos').modal('show');
-
-})
-
-                $("#pre-register").validate({
-
-                    invalidHandler: function(event, validator) {
-                        var errors = validator.numberOfInvalids();
-                        console.log("there were " + errors + " errors");
-                        if (errors) {
-                            var message = errors == 1 ?
-                                "1 field contains errors. It has been highlighted" :
-                                +errors + " fields contain errors. They have been highlighted";
-
-
-                            $('#error').text(message);
-                            //$('div.error span').addClass('form-text text-danger');
-                            //$('#errorWrapper').show();
-
-                            $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function() {
-                                $("#errorWrapper").slideUp(500);
-                            });
-                        } else {
-                            $('#errorWrapper').hide();
-                        }
-                    },
-                    rules: {
-                        name: {
-                            required: true,
-                        },
-                        email: {
-                            required: true,
-                            email: true,
-                        },
-
-                    },
-                    submitHandler: function(form) {
-
-                        submitPreRegisterForm();
-
-                        //console.log("submitted form");
-
 
 
                     }
 
+                    //$('#success').text("New esdLesion no "+data+" created");
+                    //$('#successWrapper').show();
+                    /* $("#successWrapper").fadeTo(4000, 500).slideUp(500, function() {
+                      $("#successWrapper").slideUp(500);
+                    });
+                    edit = 1;
+                    $("#id").text(data);
+                    esdLesionPassed = data;
+                    fillForm(data); */
 
 
 
-                });
 
+                } else {
+
+                    alert("No data inserted, try again");
+
+                }
+
+
+            });
+        }
+
+        function stopVideo() {
+            var $frame = $('iframe#videoChapter');
+
+            // saves the current iframe source
+            var vidsrc = $frame.attr('src');
+
+            // sets the source to nothing, stopping the video
+            $frame.attr('src', '');
+
+            // sets it back to the correct link so that it reloads immediately on the next window open
+            $frame.attr('src', vidsrc);
+        }
+
+
+
+        $(document).ready(function() {
+
+            var isshow = localStorage.getItem('isshow');
+            if (isshow == null) {
+                localStorage.setItem('isshow', 1);
+
+                // Show popup here
+                setTimeout(function() {
+                    $('#teaser-videos').modal('show');
+                }, 5000);
+
+            }
+
+
+            if (signup == '2456') {
+
+                $('#registerInterest').modal('show');
+
+            }
+
+            $('#registerInterest').on('hidden.bs.modal', function(e) {
+                stopVideo();
+            })
+
+
+
+            $(document).on('click', '#submitPreRegister', function() {
+
+                event.preventDefault();
+                $('#pre-register').submit();
 
             })
-            </script>
+
+            $(document).on('click', '.teaser-popup', function() {
+
+                event.preventDefault();
+                $('#teaser-videos').modal('show');
+
+            })
+
+            $("#pre-register").validate({
+
+                invalidHandler: function(event, validator) {
+                    var errors = validator.numberOfInvalids();
+                    console.log("there were " + errors + " errors");
+                    if (errors) {
+                        var message = errors == 1 ?
+                            "1 field contains errors. It has been highlighted" :
+                            +errors + " fields contain errors. They have been highlighted";
+
+
+                        $('#error').text(message);
+                        //$('div.error span').addClass('form-text text-danger');
+                        //$('#errorWrapper').show();
+
+                        $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function() {
+                            $("#errorWrapper").slideUp(500);
+                        });
+                    } else {
+                        $('#errorWrapper').hide();
+                    }
+                },
+                rules: {
+                    name: {
+                        required: true,
+                    },
+                    email: {
+                        required: true,
+                        email: true,
+                    },
+
+                },
+                submitHandler: function(form) {
+
+                    submitPreRegisterForm();
+
+                    //console.log("submitted form");
+
+
+
+                }
+
+
+
+
+            });
+
+
+        })
+        </script>
 </body>
 
 </html>
