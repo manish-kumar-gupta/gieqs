@@ -52,6 +52,10 @@ if (isset($_GET['destination'])) {
 
     $target = 'pages/learning/pages/scores/dashboard-gpat.php';
 
+  }else if ($destination == 'gpat_form'){
+
+    $target = 'pages/learning/pages/scores/technique.php';
+
   }else if ($destination == 'catchupstaff'){
 
     $target = 'pages/program/program-printable-catchup.php';
