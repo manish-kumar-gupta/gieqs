@@ -1424,7 +1424,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 
         $(document).ready(function() {
 
-            var isshow = localStorage.getItem('isshow');
+            /* var isshow = localStorage.getItem('isshow');
             if (isshow == null) {
                 localStorage.setItem('isshow', 1);
 
@@ -1433,7 +1433,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                     $('#teaser-videos').modal('show');
                 }, 5000);
 
-            }
+            } */
 
 
             if (signup == '2456') {
