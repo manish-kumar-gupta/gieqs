@@ -2274,6 +2274,8 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
     </script>
 
     <script src=<?php echo BASE_URL . "/pages/learning/includes/social.js"?>></script>
+    <script src="<?php echo BASE_URL;?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+
     <script src="<?php echo BASE_URL; ?>/assets/libs/flatpickr/dist/flatpickr.min.js"></script>
 
 
