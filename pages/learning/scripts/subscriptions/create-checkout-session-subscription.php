@@ -482,14 +482,15 @@ if (isset($subscription_id)){
                   'price' => $price_ids[$asset_id],
                   'quantity' => 1,
                 ]],
-                'metadata' => [
-                    'subscription_id' => $newSubscriptionid,
-                    'subscription_type' => $subscription_type,
-                    'free_trial' => false,
-                    'alreadyHasSiteWide' => $alreadyHasSiteWide,
-                    'oldSubscriptionid' => $sitewidesubscriptonid,
-
-    
+                'payment_intent_data'=>[
+                    'metadata' => [
+                        'subscription_id' => $newSubscriptionid,
+                        'subscription_type' => $subscription_type,
+                        'free_trial' => false,
+                        'alreadyHasSiteWide' => $alreadyHasSiteWide,
+                        'oldSubscriptionid' => $sitewidesubscriptonid,
+                        
+                    ],
                 ],
                 'mode' => 'subscription',
                 'success_url' => $YOUR_DOMAIN . '/pages/learning/scripts/subscriptions/success_stripe.php?session_id={CHECKOUT_SESSION_ID}',
@@ -517,14 +518,15 @@ if (isset($subscription_id)){
                   'price' => $price_ids[$asset_id],
                   'quantity' => 1,
                 ]],
-                'metadata' => [
-                    'subscription_id' => $newSubscriptionid,
-                    'subscription_type' => $subscription_type,
-                    'free_trial' => true,
-                    'alreadyHasSiteWide' => $alreadyHasSiteWide,
-                    'oldSubscriptionid' => $sitewidesubscriptonid,
-
-    
+                'payment_intent_data'=>[
+                    'metadata' => [
+                        'subscription_id' => $newSubscriptionid,
+                        'subscription_type' => $subscription_type,
+                        'free_trial' => true,
+                        'alreadyHasSiteWide' => $alreadyHasSiteWide,
+                        'oldSubscriptionid' => $sitewidesubscriptonid,
+                        
+                    ],
                 ],
                 'mode' => 'subscription',
                 'success_url' => $YOUR_DOMAIN . '/pages/learning/scripts/subscriptions/success_stripe.php?session_id={CHECKOUT_SESSION_ID}',
