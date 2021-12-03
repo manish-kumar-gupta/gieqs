@@ -482,7 +482,7 @@ if (isset($subscription_id)){
                   'price' => $price_ids[$asset_id],
                   'quantity' => 1,
                 ]],
-                'payment_intent_data'=>[
+                /* 'payment_intent_data'=>[
                     'metadata' => [
                         'subscription_id' => $newSubscriptionid,
                         'subscription_type' => $subscription_type,
@@ -491,7 +491,7 @@ if (isset($subscription_id)){
                         'oldSubscriptionid' => $sitewidesubscriptonid,
                         
                     ],
-                ],
+                ], */
                 'mode' => 'subscription',
                 'success_url' => $YOUR_DOMAIN . '/pages/learning/scripts/subscriptions/success_stripe.php?session_id={CHECKOUT_SESSION_ID}',
                 'cancel_url' => $YOUR_DOMAIN . $data['currentPage'],
@@ -518,7 +518,7 @@ if (isset($subscription_id)){
                   'price' => $price_ids[$asset_id],
                   'quantity' => 1,
                 ]],
-                'payment_intent_data'=>[
+                /* 'payment_intent_data'=>[
                     'metadata' => [
                         'subscription_id' => $newSubscriptionid,
                         'subscription_type' => $subscription_type,
@@ -527,7 +527,7 @@ if (isset($subscription_id)){
                         'oldSubscriptionid' => $sitewidesubscriptonid,
                         
                     ],
-                ],
+                ], */
                 'mode' => 'subscription',
                 'success_url' => $YOUR_DOMAIN . '/pages/learning/scripts/subscriptions/success_stripe.php?session_id={CHECKOUT_SESSION_ID}',
                 'cancel_url' => $YOUR_DOMAIN . $data['currentPage'],
