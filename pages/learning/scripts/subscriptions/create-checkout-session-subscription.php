@@ -486,7 +486,7 @@ if (isset($subscription_id)){
                     'metadata' => [
                         'subscription_id' => $newSubscriptionid,
                         'subscription_type' => $subscription_type,
-                        'free_trial' => false,
+                        'free_trial' => 'false',
                         'alreadyHasSiteWide' => $alreadyHasSiteWide,
                         'oldSubscriptionid' => $sitewidesubscriptonid,
                         
@@ -522,7 +522,7 @@ if (isset($subscription_id)){
                     'metadata' => [
                         'subscription_id' => $newSubscriptionid,
                         'subscription_type' => $subscription_type,
-                        'free_trial' => true,
+                        'free_trial' => 'true',
                         'alreadyHasSiteWide' => $alreadyHasSiteWide,
                         'oldSubscriptionid' => $sitewidesubscriptonid,
                         
