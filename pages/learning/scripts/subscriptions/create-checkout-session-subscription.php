@@ -482,15 +482,15 @@ if (isset($subscription_id)){
                   'price' => $price_ids[$asset_id],
                   'quantity' => 1,
                 ]],
-                'payment_intent_data'=>[
-                    'metadata' => [[
+                'subscription_data' => [
+                    'metadata' => [
                         'subscription_id' => $newSubscriptionid,
-                        /* 'subscription_type' => $subscription_type,
-                        'free_trial' => 'false',
+                        'subscription_type' => $subscription_type,
+                        'free_trial' => 'true',
                         'alreadyHasSiteWide' => $alreadyHasSiteWide,
-                        'oldSubscriptionid' => $sitewidesubscriptonid, */
-                        
-                    ]],
+                        'oldSubscriptionid' => $sitewidesubscriptonid,
+                    ]
+                
                 ],
                 'mode' => 'subscription',
                 'success_url' => $YOUR_DOMAIN . '/pages/learning/scripts/subscriptions/success_stripe.php?session_id={CHECKOUT_SESSION_ID}',
@@ -518,20 +518,20 @@ if (isset($subscription_id)){
                   'price' => $price_ids[$asset_id],
                   'quantity' => 1,
                 ]],
-                'payment_intent_data'=>[
-                    'metadata' => [[
-                        'subscription_id' => $newSubscriptionid,
-                        /* 'subscription_type' => $subscription_type,
-                        'free_trial' => 'true',
-                        'alreadyHasSiteWide' => $alreadyHasSiteWide,
-                        'oldSubscriptionid' => $sitewidesubscriptonid, */
-                        
-                    ]],
-                ],
                 'mode' => 'subscription',
                 'success_url' => $YOUR_DOMAIN . '/pages/learning/scripts/subscriptions/success_stripe.php?session_id={CHECKOUT_SESSION_ID}',
                 'cancel_url' => $YOUR_DOMAIN . $data['currentPage'],
-                'subscription_data' => ['trial_end' => date_format($trial_start_calculate_date, 'U')],
+                'subscription_data' => [
+                    'trial_end' => date_format($trial_start_calculate_date, 'U'),
+                    'metadata' => [
+                        'subscription_id' => $newSubscriptionid,
+                        'subscription_type' => $subscription_type,
+                        'free_trial' => 'true',
+                        'alreadyHasSiteWide' => $alreadyHasSiteWide,
+                        'oldSubscriptionid' => $sitewidesubscriptonid,
+                    ]
+                
+                ],
               ]);
 
 
