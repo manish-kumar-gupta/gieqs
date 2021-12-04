@@ -168,7 +168,7 @@ switch ($event->type) {
 
      
 
-        $subscription_data = $event->data->object->lines->data;
+        $subscription_data = $event->data->object->lines->data->metadata;
 
 
 
@@ -176,7 +176,7 @@ switch ($event->type) {
 
         //$subscription_id = $subscription_data['metadata']['subscription_id'];
 
-        $subscription_id = $event->data->object->lines->data->metadata->subscription_id;
+        $subscription_id = $subscription_data['subscription_id'];
 
         
         if ($debug){
@@ -253,7 +253,9 @@ switch ($event->type) {
 
                     //$timestamp = $paymentIntent['lines']['data']['period']['end'];
 
-                    $timestamp = $event->data->object->lines->data->period->end;
+                    $period = $event->data->object->lines->data->period;
+
+                    $timestamp = $period['end'];
 
 
                     $currentTime = DateTime::createFromFormat( 'U', $timestamp );
@@ -431,7 +433,9 @@ switch ($event->type) {
 
                     //sync end date with stripe
 
-                    $timestamp = $event->data->object->lines->data->period->end;
+                    $period = $event->data->object->lines->data->period;
+
+                    $timestamp = $period['end'];
 
                     $currentTime = DateTime::createFromFormat( 'U', $timestamp );
 
