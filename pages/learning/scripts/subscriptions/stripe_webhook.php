@@ -134,7 +134,7 @@ try {
 
 //log the events
 $debug = true;
-$debugPrint = false;
+$debugPrint = true;
 
 
 
@@ -154,6 +154,22 @@ switch ($event->type) {
         $subscription_id = $paymentIntent['metadata']['subscription_id'];
 
 
+
+        
+
+        break;
+    case 'invoice.paid':
+        $paymentMethod = $event->data->object; // contains a \Stripe\PaymentMethod
+        // Then define and call a method to handle the successful attachment of a PaymentMethod.
+        // handlePaymentMethodAttached($paymentMethod);
+        $dataToLog[] = 'invoice paid method attached detected';
+
+        //check the subscription is active using the id
+
+        $subscription_id = $paymentIntent['lines']['data']['metadata']['subscription_id'];
+
+
+        //$subscription_id = $paymentMethod['metadata']['subscription_id']; OLD
 
         if ($debug) {
 
@@ -374,19 +390,6 @@ switch ($event->type) {
             $dataToLog[] = 'Cannot find subscription';
         
         }
-
-        break;
-    case 'invoice.paid':
-        $paymentMethod = $event->data->object; // contains a \Stripe\PaymentMethod
-        // Then define and call a method to handle the successful attachment of a PaymentMethod.
-        // handlePaymentMethodAttached($paymentMethod);
-        $dataToLog[] = 'invoice paid method attached detected';
-
-        //check the subscription is active using the id
-
-        //$subscription_id = $paymentMethod['metadata']['subscription_id']; OLD
-
-        
 
 
 
