@@ -166,7 +166,29 @@ switch ($event->type) {
 
         //check the subscription is active using the id
 
-        $subscription_id = $paymentIntent['lines']['data']['metadata']['subscription_id'];
+     
+
+        $subscription_data = $event->data->object->lines->data;
+
+
+
+        //$subscription_id = $paymentIntent['lines']['data']['metadata']['subscription_id'];
+
+        $subscription_id = $subscription_data['metadata']['subscription_id'];
+        
+        if ($debug){
+
+
+            $paymentMethodContents = var_dump($paymentMethod);
+            $subscription_data_contents = var_dump($subscription_data);
+
+            $dataToLog[] = 'paymentMethod contains ' . $paymentMethodContents;
+            $dataToLog[] = 'Looking for subscription ' . $subscription_data_contents;
+
+
+
+
+        }
 
 
         //$subscription_id = $paymentMethod['metadata']['subscription_id']; OLD
