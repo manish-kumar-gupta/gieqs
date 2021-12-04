@@ -215,6 +215,36 @@ switch ($event->type) {
                 }
         
                 //subscription already active
+                //check end date
+
+                    //get date today
+
+                    $currentTime = new DateTime();
+
+
+                    //check versus end date
+
+                    //sync end date with stripe
+
+                    $timestamp = $paymentIntent['lines']['data']['period']['end'];
+
+                    $currentTime = DateTime::createFromFormat( 'U', $timestamp );
+
+                    $formattedString = $currentTime->format( 'Y-m-d H:i:s' ); //as mysql date_format($date, 'Y-m-d H:i:s')
+
+                    if ($debug) {
+        
+                        $dataToLog[] =  'end date of the subscription with id' . $subscription_id . ' is set to ' . $formattedString;
+                        //echo '<br/';
+            
+                    }
+
+                    //set end date TO = stripe
+
+                    $subscription->setexpiry_date($formattedString);
+        
+
+
                 //give subcription make sure autorenew is 1
                 $subscription->setauto_renew('1');
                 echo $subscription->prepareStatementPDOUpdate();
@@ -366,6 +396,29 @@ switch ($event->type) {
         
                 $subscription->setactive('1');
                 $subscription->setauto_renew('1');
+                $currentTime = new DateTime();
+
+
+                    //check versus end date
+
+                    //sync end date with stripe
+
+                    $timestamp = $paymentIntent['lines']['data']['period']['end'];
+
+                    $currentTime = DateTime::createFromFormat( 'U', $timestamp );
+
+                    $formattedString = $currentTime->format( 'Y-m-d H:i:s' ); //as mysql date_format($date, 'Y-m-d H:i:s')
+
+                    if ($debug) {
+        
+                        $dataToLog[] =  'end date of the subscription with id' . $subscription_id . ' is set to ' . $formattedString;
+                        //echo '<br/';
+            
+                    }
+
+                    //set end date TO = stripe
+
+                $subscription->setexpiry_date($formattedString);
                 $subscription->prepareStatementPDOUpdate();
 
                 if ($debug) {
