@@ -116,6 +116,18 @@ try {
     $event = \Stripe\Event::constructFrom(
         json_decode($payload, true)
     );
+
+    //other ideas
+
+    /*
+    
+    $session = \Stripe\Checkout\Session::retrieve($session_id);
+$customer = \Stripe\Customer::retrieve($session->customer);
+
+    */
+
+
+
 } catch(\UnexpectedValueException $e) {
     // Invalid payload
     if ($debug){

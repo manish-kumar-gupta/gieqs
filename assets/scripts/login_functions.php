@@ -8,8 +8,9 @@
     
     require(DB);    
 
-    function redirect_user ($page='/pages/authentication/login.php') {
-        header ("Location: $page");
+    function redirect_user ($page='/pages/authentication/login.php', $location=null) {
+        header ("Location: $page?destination=$location");
+        //eg  header("Location: dashboard.php?name_=$FullName&subject_=$Subject&phone_=$Phone&email_=$Email&message_=$Message"); 
         exit ();
     }
     

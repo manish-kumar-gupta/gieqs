@@ -31,7 +31,9 @@ $target = false;
 
 
 
+//from redirect_login pass here the parameter
 
+//then use it to see where the user wants to go
 
 
 //if $userid is logged in
