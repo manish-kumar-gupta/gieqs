@@ -16,8 +16,14 @@
     
      
 	
-	 function redirect_login ($location) {
-        header ("Location: $location");
+	 function redirect_login ($location, $url=null) {
+         //if url not null add ?destination= to front
+        if ($url != null){
+
+            $url = '?destination' . $url;
+
+        }
+        header ("Location: $location$url");
         exit ();
     }
 	

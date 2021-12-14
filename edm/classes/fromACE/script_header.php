@@ -13,7 +13,7 @@
 	
 	    // Need the functions:
 		     require($_SERVER['DOCUMENT_ROOT'].'/studyserver/PROSPER/login_functions.php');
-		     redirect_user( );
+		     redirect_user('/pages/authentication/login.php', $_SERVER["REQUEST_URI"]);
 	     }
 	     
 		function class_loader($class) {
