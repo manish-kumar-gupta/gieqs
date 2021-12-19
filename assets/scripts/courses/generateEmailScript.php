@@ -187,7 +187,13 @@
                 font-weight: normal;
                 line-height: 125%;
                 letter-spacing: normal;
-                text-align: center;
+                text-align: left;
+            }
+
+            li {
+
+                margin-bottom:1.15rem;
+
             }
 
             #templateHeader {

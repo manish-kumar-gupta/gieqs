@@ -65,7 +65,26 @@
     .text-container p {
 
         font-size: 1.3rem !important;
+        padding-left: 1.5rem;
     }
+
+    .text-container h2 {
+
+        margin-top: 4rem;
+        color: rgb(238, 194, 120);
+       
+    }
+
+    .text-container h3 {
+
+        display: list-item;          /* This has to be "list-item"                                               */
+    list-style-type: disc;       /* See https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type     */
+    list-style-position: inside; /* See https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-position */
+
+margin-top: 2rem;
+
+padding-left: 1rem;
+}
 
     .text-container p strong {
 
@@ -247,7 +266,7 @@ top: 0px;
 
     <?php 
     //error_reporting(E_ALL);
-    include(BASE_URI . '/pages/learning/assets/gpatNav.php');
+    //include(BASE_URI . '/pages/learning/assets/gpatNav.php');
 
     
     $debug = false;
@@ -257,18 +276,17 @@ top: 0px;
 
 
 
-    <div class="main-content bg-gradient-dark">
+    <div class="main-content bg-gradient-dark mt-10">
 
         <!--Header CHANGEME-->
 
         <div class="d-flex align-items-end container">
-            <p class="h1 mt-5">GPAT Explainer</p>
+            <p class="h1 mt-5">GIEQs Online User Guide</p>
 
 
         </div>
         <div class="d-flex align-items-end container">
-            <p class="text-muted pl-4 mt-2">All the information you need to progress in your Polypectomy Practice with
-                GPAT</p>
+            <p class="text-muted pl-4 mt-2">User Reference for GIEQs Online</p>
 
         </div>
 
@@ -393,23 +411,148 @@ top: 0px;
 
 
 
-                            <?php $statement=$gpat_glue->howDoICertify($userid);?>
-
-                            <!--Heading -->
-                            <span id="whatisgpat" data-toc="What is GPAT?" class="d-block h1 text-white mr-2 mb-3 toc-item">What is GPAT?</span>
-
-                            <p>GPAT (or Global Polypectomy Assessment Tool) is an online scoring system to determine
-                                proficiency at, and the difficulty of, colorectal polypectomy.</p>
+                           
 
 
-                            <hr class="divider divider-icon my-6 text-muted" />
-
-
-                            <!--Heading -->
-                            <span id="underlyingidea" data-toc="The Underlying Idea" class="d-block h1 text-white mr-2 mb-3 toc-item">What is the
-                                underlying idea?</span>
-
-                            <p>GPAT provides multiple outputs to give insight into proficiency at polypectomy, whilst
+                            
+                                <h1>Using the GIEQS online administration system</h1>
+<h2>Users</h2>
+<h3>Where to find?</h3>
+<p>Go to Programme and there you&rsquo;ll find Users (access).</p>
+<h3>Content</h3>
+<p>You can edit the users accounts for people who have signed up to the site (edit the users demographics and the access level).</p>
+<p>You can create a new user and send him a password.</p>
+<p>All of the other functions of the usermenu are legacy of GIEQS I, including the assets which they can sign up (for example all the programmes).</p>
+<h3>Access list</h3>
+<table>
+<tbody>
+<tr>
+<td width="41">
+<p>1</p>
+</td>
+<td width="510">
+<p>Superuser: This should only be reserved for people managing the website.</p>
+</td>
+</tr>
+<tr>
+<td width="41">
+<p>2</p>
+</td>
+<td width="510">
+<p>Creator: They can create menus in the GIEQS online. They can bring in new videos, edit videos and edit options to show videos on the website.</p>
+</td>
+</tr>
+<tr>
+<td width="41">
+<p>3</p>
+</td>
+<td width="510">
+<p>Staff member: they can access the administration menu and can access full content</p>
+</td>
+</tr>
+<tr>
+<td width="41">
+<p>4</p>
+</td>
+<td width="510">
+<p>previous pro level</p>
+</td>
+</tr>
+<tr>
+<td width="41">
+<p>5</p>
+</td>
+<td width="510">
+<p>previous standard level</p>
+</td>
+</tr>
+<tr>
+<td width="41">
+<p>6</p>
+</td>
+<td width="510">
+<p>previous basic level</p>
+</td>
+</tr>
+<tr>
+<td width="41">
+<p>7</p>
+</td>
+<td width="510">
+<p>Basic user: the user cannot login</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Four, five and six are historical ways to access the website and can now be used indiscriminately.</p>
+<p>All the users receive a six when they sign up and this is replaced by a subscription, which will cover later and give access to the site globally.</p>
+<h3>Subscriptions</h3>
+<h3>Where to find?</h3>
+<p>You can find it all the way on the right. You have subscriptions and subscribable items</p>
+<h3>Subscriptions menu</h3>
+<p>With this menu, you can edit users access tot he site. You can change whether people have global access. In GIEQS online we have now pro, standard and free. Free is automatically granted&nbsp; when they sign up. They need to do nothing for that to get it. For standard or pro access payment is required. The payment is by the Stripe payment platform which is automatically linked to the generation of payments. Three subsciptions can be generated and managing this is covered later in this document. You should not create subscriptions from this menu, because they will not be tracked and they will not be able to be linked to the user account easily.</p>
+<p>This menu should really be reserved for modifying user subscriptions. So for example, you may receive mails from users which say my subscription is not working, I cannot access the site. So it depends on what they&rsquo;re saying that they cannot access. If it&rsquo;s a course, you need to have the ID number of the course, which can be found in the paid assets menu (=in the same menu that you find subscriptions on). Then you can search for the title and find the ID number. After that, you need to search for the user ID, in combination with the ID number of the asset or the users name in combination with the asset. So you can find which subscription is relevant.</p>
+<p>Subscriptions are either active or inactive. That means that there&rsquo;s a one or a zero in the active column. If there&rsquo;s a zero in the active column, this will not be working for the user. If there&rsquo;s is a date beyond today&rsquo;s date and there&rsquo;s a one in the active column, then the subscription end date beyond today&rsquo;s date and a one in the active column, then the subscription should be active and should be able to access.</p>
+<h3>Possible problems with subscriptions</h3>
+<p>If there is a problem with their ability to use the site, then this is very likely they&rsquo;re not using Google Chrome/Safari/Microsoft Edge (but Internet Explorer).</p>
+<p>If the end date is before the date today, then they will not have access to that product and there&rsquo;s some problem with their payment. This needs manually reviewing by looking at Stripe and seeing how their payment system is.</p>
+<p>The set up, whether they have paid or not have paid and however this will work, that will go into further later.</p>
+<p>The next issue of their subsciption is not being active. That will also need sorting out by checking Stripe to see whether they do have an active subscription. So these are true for pro or standard subscription. This is not true of single one of payments because those two things that are described above are recurring payments, handled by Stripe. All of the other assets (including all of the courses, GIEQS I, GIEQS II, ..) is one of payments. And the one of payments is handled by Stripe, but it&rsquo;s for a determined period of time. That can be tree months or six months. It depends which is advertised on the website. So the likely thing is if the user is saying that they can&rsquo;t access it and they have gone beyond the time of the subscription. They need to buy it again and that needs to be communicated back to the user who is asking the question.</p>
+<p>The end and start dates of the subscriptions can be edited, the active states (yes or no) can be edited.</p>
+<p>Auto renew refers to whether the subscription be build at the end of the billing circle. This actually doesn&rsquo;t change anything in GIEQS online, is only changed in Stripe (and it&rsquo;s only applicable to those things which are subscriptions (not those things which are handled by single one of payments)</p>
+<h3>Paid assets (subscribable items)</h3>
+<p>This is used to add features to the site, including packs or videos, courses, other subscriptionables. This should only be modified by the superusers and should only be used as reference by other users when not creating new material for the site. We are also creating in this section hidden assets to make our textbooks of endoscopy, which can then be later accessed as reference or presentation or for courses.</p>
+<h2>Course enrolments</h2>
+<h3>Where to find?</h3>
+<p>Go to subscriptions, Course enrolments</p>
+<h3>Course enrolments</h3>
+<p>This menu will list everybody who is enrolled in the particular courses that we are running and you can use this for making lists to submit to quality assurance agencies (like RIZIV, EACCME).</p>
+<h2>Edit token</h2>
+<h3>Where to find?</h3>
+<p>Go to Site Settings, drop down the menu and select Edit token</p>
+<h3>Edit token</h3>
+<p>Tokens are part of the site which allow users to access content for free. You can also use it for access for institutions. If you&rsquo;re asked to add an institutional access, this is the place to go.</p>
+<p>You can press plus to add a new token. You need to select the asset for which is relevant. This cannot be used to give access to subscriptions. This can only be used to give access to standard courses, video sets etc.</p>
+<h2>Sponsors and partners</h2>
+<h3>Where to find?</h3>
+<p>Go to Site Settings, drop down the menu and select &lsquo;Edit Sponsors/Edit Partners.</p>
+<h3>Sponsors and partners</h3>
+<p>A partner is an academic organisation, a sponsor is a company. You can add here names and upload images for the partner or sponsor as well.</p>
+<p>This is something which will increase in future when all our courses are sponsored and partnered with other organizations (like ESGE).</p>
+<p>We can add a number of registrations for institutions. Some rules apply to the section. You can add a number per organisation, but each token represents an agreement with an external organisation to provide a certain number of licenses to the site. If that token is shared by members of that organisation, it will still work and therefor they need to know that and keep the distribution of that link (which is essentially a password to get free access to the course that we have created for them) safe. Don&rsquo;t&nbsp; allow the members to distribute their password.</p>
+<p>There will be a certain number agreed with the organisation for a certain price. The pricing and the invoicing here can be performed on Stripe or done in accordance or discussion with Seauton.</p>
+<p>The institutional licence is indefinite untill the number has been used up or we desable it.</p>
+<p>You can add a number in the edit token screen and that number is then decreased every time somebody signs up, using one of those tokens . When the tokens run out, the link will stop working and the partner organisation, in the future, will receive a mail saying that the tokens are exhausted and that they need to contact us. So they can get more or do nothing if they think that&rsquo;s fine in the context of their agreement with us. Someone from Seauton and someone from the GIEQs foundation should receive an alert at this point.</p>
+<p>&nbsp;</p>
+<h1>Using the GIEQS online creation system</h1>
+<h2>Tagging</h2>
+<h3>Where to find?</h3>
+<p>Go to Gieqs Online, Creator, pop up the menu and click on &lsquo;View my tagging Tasks&rsquo;.</p>
+<h3>Content</h3>
+<p>This is for people who are running the site, could invite you to look to videos and add tags to them. If you scroll to the list, then you can accept the tagging, do the climate tagging. With a click on the cross, you can add a tag.</p>
+<p>You can also go directly tot he video edit page.</p>
+<h3>New tag</h3>
+<p>This you can find when you pop out the creator menu. Here you can add a new tag, if you have access to this.</p>
+<h3>New category</h3>
+<p>You can also find this in the creator menu. You can make a new tagcategory.</p>
+<p>If you want to make new tags or new categories, please discuss this with the Superusers of the website.</p>
+<h3>Edit chapters</h3>
+<h3>Where to find?</h3>
+<p>Go to Gieqs Online, Creator, pop up the menu, Video Table. Select a video and click on &lsquo;Edit chapters&rsquo;.</p>
+<h3>Content</h3>
+<p>When you go to the editing page, you can see the video displayed. Down below you will see either a blank screen, if the video has no chapters. But increasingly we&rsquo;re trying to add this for you. All that you need to do, is add tags to the videos. Tags describe ideas that run the structure of the website and can be searched for.</p>
+<p>For example: users can search for videos that contain Kudo V, endoscopic imaging of a colorectal polyp, a demarcated area in an upper GI lesion, ... They can also search for combinations, so they can very quickly find what they want.</p>
+<p>To add a new chapter: go to the bottom of the screen and press &lsquo;new chapter&rsquo;.</p>
+<p>This will add a new chapter with a number after the chapter that is already there. If you want to add more then 1 chapter, you have to press and wait untill every chapter is there. Then you have a couple of options. If it&rsquo;s the first chapter, you can fill in 0 in the box &lsquo;time from&rsquo;. Then select from te video where you want the chapter to end and press &lsquo;+video time&rsquo; (underneath the &lsquo;time to&rsquo; box). Give your chapter a name and a description. If you&rsquo;ll finding it difficult to see the name box, you can refresh te page. The next chapter that you add, could have a time directly after the chapter before. To achieve that: once you add another chapter, press &lsquo;+ previous chapter end time&rsquo;. This will insert a time which is just after the chapter time in the &lsquo;time to&rsquo; of the previous chapter. So you can go on untill the last chapter. In the last chapter all you have to do, is press the same thing as the previous chapter end time. In the last box, you just drag the video to the very end, press pause and press &lsquo;+video time&rsquo;. Sometimes you have to press &lsquo;+video time&rsquo; button a few times to get the correct time, but once it becames correct, it will not change anymore.</p>
+<p>Now you see the video displayed, you can add headings and tags.</p>
+<p>To add a tag, there are a couple of ways.</p>
+<ul>
+<li>Structured way: Press &lsquo;add tag&rsquo;. Then you have all the tags that are available on the website. You can click on the blue buttons (on the top). You can click trough them, dive into the categories (by clicking on the category) and then assigne them.</li>
+<li>Faster way: Press &lsquo;add tag (Search)&rsquo;. Here you can simply typ into the box to find your tag. Press enter on the keybord and it&rsquo;s automatically added. You can just keep doing it.</li>
+</ul>
+<p>After that, you have links to the tag manager. This is where you can see the structure of the site, with all the tags and the linked references, which you can also update. This is an important concept with tags, that they are also linked to academical references (PubMed).</p>
+                            
+                                <p>GPAT provides multiple outputs to give insight into proficiency at polypectomy, whilst
                                 respecting the fact that competency and training are very dependent upon the difficulty
                                 of the polyp being attempted.</p>
 
@@ -557,14 +700,22 @@ top: 0px;
 
         var statement = '';
 
-        $('.toc-item').each(function() {
+        //get all h1s
+        //get all h2s before the next h1 -> second line
+        //get all h3s before the next h2 -> 3rd line
+
+        var x=15;
+        $('h2').each(function() {
 
             var id = null;
+            
+            $(this).attr('id', x);
             id = $(this).attr('id');
-            text = $(this).attr('data-toc');
+            text = $(this).text();
             statement +=
                 '<li class="toc-entry toc-h4" style="font-size:1.1rem;"><a class="text-muted" href="#' + id +
                 '">' + text + '</a></li>';
+            x++;
 
         })
 
@@ -573,6 +724,27 @@ top: 0px;
 
 
     }
+
+    function generateTOCold() {
+
+var statement = '';
+
+$('.toc-item').each(function() {
+
+    var id = null;
+    id = $(this).attr('id');
+    text = $(this).attr('data-toc');
+    statement +=
+        '<li class="toc-entry toc-h4" style="font-size:1.1rem;"><a class="text-muted" href="#' + id +
+        '">' + text + '</a></li>';
+
+})
+
+$('.section-nav').html(statement);
+
+
+
+}
 
 
 
