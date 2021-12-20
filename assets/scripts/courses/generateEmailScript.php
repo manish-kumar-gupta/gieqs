@@ -176,7 +176,7 @@
             }
 
             h2 {
-                color: #e3ebf6;
+                color: rgb(238, 195, 120);
                 font-family: Helvetica;
                 font-size: 30px;
                 font-style: normal;
