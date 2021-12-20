@@ -160,7 +160,7 @@
                 font-family: Helvetica;
                 font-size: 30px;
                 font-style: normal;
-                font-weight: bold;
+                font-weight: normal;
                 line-height: 125%;
                 letter-spacing: normal;
                 text-align: left;
