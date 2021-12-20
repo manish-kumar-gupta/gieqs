@@ -66,6 +66,24 @@
             p {
                 margin: 10px 0;
                 padding: 0;
+                color: #6e84a3;
+                font-size: 1.1rem;
+            }
+
+            p strong {
+
+                color: #e3ebf6;
+                font-weight: 1.2;
+
+            }
+
+            li strong {
+
+                color: #e3ebf6;
+                font-weight: 1.2;
+
+
+
             }
 
             table {
@@ -170,7 +188,7 @@
             }
 
             h1 {
-                color: #222222;
+                color: rgb(238, 195, 120);
                 font-family: Helvetica;
                 font-size: 40px;
                 font-style: normal;
@@ -181,18 +199,18 @@
             }
 
             h2 {
-                color: #222222;
+                color: #e3ebf6;
                 font-family: Helvetica;
-                font-size: 34px;
+                font-size: 30px;
                 font-style: normal;
                 font-weight: bold;
-                line-height: 150%;
+                line-height: 125%;
                 letter-spacing: normal;
                 text-align: left;
             }
 
             h3 {
-                color: #444444;
+                color: rgb(238, 195, 120);
                 font-family: Helvetica;
                 font-size: 22px;
                 font-style: normal;
@@ -215,6 +233,7 @@
 
             li {
 
+                color: #6e84a3;
                 margin-bottom:1.15rem;
 
             }
@@ -258,7 +277,7 @@
             }
 
             #templateBody {
-                background-color: #FFFFFF;
+                background-color: #102239;
                 background-image: none;
                 background-repeat: no-repeat;
                 background-position: center;
@@ -591,7 +610,7 @@
                                 </tr>
                                 <tr>
                                     <td align="center" valign="top" id="templateBody" data-template-container=""
-                                        style="background:#FFFFFF none no-repeat center/cover;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;background-color:#FFFFFF;background-image:none;background-repeat:no-repeat;background-position:center;background-size:cover;border-top:0;border-bottom:0;padding-top:36px;padding-bottom:54px;">
+                                        style="background:#FFFFFF none no-repeat center/cover;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;background-color:#102239;background-image:none;background-repeat:no-repeat;background-position:center;background-size:cover;border-top:0;border-bottom:0;padding-top:36px;padding-bottom:54px;">
                                         <!--[if (gte mso 9)|(IE)]>
                                     <table align="center" border="0" cellspacing="0" cellpadding="0" width="600" style="width:600px;">
                                     <tr>
@@ -630,10 +649,10 @@
 
                                                                                 <td valign="top" class="mcnTextContent"
                                                                                     style="padding-top:0;padding-right:18px;padding-bottom:30px;padding-left:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;word-break:break-word;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                    <p style="text-align:center;color:#949494;font-family:Georgia;font-size:12px;">Email doesn't look right? <a href="https://www.gieqs.com/assets/scripts/courses/generateEmail.php?emailid=<?php echo $emailid;?>">Display in a web browser</a></p>
+                                                                                    <p style="text-align:center;color:#e3ebf6;font-family:Georgia;font-size:12px;">Email doesn't look right? <a href="https://www.gieqs.com/assets/scripts/courses/generateEmail.php?emailid=<?php echo $emailid;?>">Display in a web browser</a></p>
 
                                                                                     <h4
-                                                                                        style="display:block;margin:0;padding: 0;color:#949494;font-family:Georgia;font-size:20px;font-style:italic;font-weight:normal;line-height:125%;letter-spacing:normal;text-align:center;">
+                                                                                        style="display:block;margin:0;padding: 0;color:#e3ebf6;font-family:Georgia;font-size:20px;font-style:italic;font-weight:normal;line-height:125%;letter-spacing:normal;text-align:center;">
                                                                                         We can do everyday endoscopy
                                                                                         better.
                                                                                     </h4>
@@ -769,7 +788,7 @@ if ($value['img'] != NULL){
     ?>
 
                                                                                     <p
-                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
+                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#6e84a3;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
                                                                                         <?php echo $value['text'];?>
                                                                                     </p>
 

@@ -1,24 +1,47 @@
 <?php
 
-            $openaccess = 0;
-			$requiredUserLevel = 3;
-			//require_once ('../../../assets/includes/config.inc.php');		
+            $openaccess = 1;
+			//$requiredUserLevel = 3;
+			require_once ('../../../assets/includes/config.inc.php');		
 			
-			//require_once (BASE_URI.'/assets/scripts/headerScript.php');
+			require_once (BASE_URI.'/assets/scripts/headerScript.php');
 
             //$general = new general;
             //$programme = new programme;
-            //$emailLink = new emailLink;
-            //$emails = new emails;
-            //$emailContent = new emailContent;
+            $emailLink = new emailLink;
+            $emails = new emails;
+            $emailContent = new emailContent;
 
             
-            //error_reporting(E_ALL);
-            //$debug = FALSE; 
+            error_reporting(E_ALL);
+            $debug = FALSE; 
 
-            //emails from file including
+            //$print_r()
 
-        
+            if (isset($_GET['emailid'])) {
+
+                $emailid = $_GET['emailid'];
+            
+            }
+
+            $data = json_decode(file_get_contents('php://input'), true);
+
+            
+            if ($debug){
+            print_r($data);
+            }
+
+            if ($data){
+            $emailid = $data['emailid'];
+            //$databaseName = $data['databaseName'];
+            }
+
+            if ($emails->Return_row($emailid)){
+
+                $emails->Load_from_key($emailid);
+                
+                
+                }
                 
             ?>
 
@@ -43,24 +66,6 @@
             p {
                 margin: 10px 0;
                 padding: 0;
-                color: #6e84a3;
-                font-size: 1.1rem;
-            }
-
-            p strong {
-
-                color: #e3ebf6;
-                font-weight: 1.2;
-
-            }
-
-            li strong {
-
-                color: #e3ebf6;
-                font-weight: 1.2;
-
-
-
             }
 
             table {
@@ -165,7 +170,7 @@
             }
 
             h1 {
-                color: rgb(238, 195, 120);
+                color: #222222;
                 font-family: Helvetica;
                 font-size: 40px;
                 font-style: normal;
@@ -176,18 +181,18 @@
             }
 
             h2 {
-                color: #e3ebf6;
+                color: #222222;
                 font-family: Helvetica;
-                font-size: 30px;
+                font-size: 34px;
                 font-style: normal;
                 font-weight: bold;
-                line-height: 125%;
+                line-height: 150%;
                 letter-spacing: normal;
                 text-align: left;
             }
 
             h3 {
-                color: rgb(238, 195, 120);
+                color: #444444;
                 font-family: Helvetica;
                 font-size: 22px;
                 font-style: normal;
@@ -209,7 +214,6 @@
             }
 
             li {
-                  color: #6e84a3;
 
                 margin-bottom:1.15rem;
 
@@ -254,7 +258,7 @@
             }
 
             #templateBody {
-                background-color: #102239;
+                background-color: #FFFFFF;
                 background-image: none;
                 background-repeat: no-repeat;
                 background-position: center;
@@ -563,7 +567,7 @@
                                                                                 src="https://www.gieqs.com/assets/img/icons/gieqs_foundation_logo.png"
                                                                                 style="box-sizing:border-box;vertical-align:middle;border-style:none;margin-bottom:0;margin-top:1.5rem;border:0;height:auto !important;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;">
                                                                         </a>
-                                                                       
+                                                                     
                                                                         <p class="text-muted text-center mb-0"
                                                                             style="font-weight:500;box-sizing:border-box;margin-top:0;margin-bottom:0;text-align:center;color:#6e84a3;margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;font-family:Helvetica;font-size:18px;line-height:150%;">
                                                                             Promoting Quality and Safety in Gastrointestinal Endoscopy</p>
@@ -587,7 +591,7 @@
                                 </tr>
                                 <tr>
                                     <td align="center" valign="top" id="templateBody" data-template-container=""
-                                    style="background:#FFFFFF none no-repeat center/cover;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;background-color:#102239;background-image:none;background-repeat:no-repeat;background-position:center;background-size:cover;border-top:0;border-bottom:0;padding-top:36px;padding-bottom:54px;">
+                                        style="background:#FFFFFF none no-repeat center/cover;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;background-color:#FFFFFF;background-image:none;background-repeat:no-repeat;background-position:center;background-size:cover;border-top:0;border-bottom:0;padding-top:36px;padding-bottom:54px;">
                                         <!--[if (gte mso 9)|(IE)]>
                                     <table align="center" border="0" cellspacing="0" cellpadding="0" width="600" style="width:600px;">
                                     <tr>
@@ -626,13 +630,14 @@
 
                                                                                 <td valign="top" class="mcnTextContent"
                                                                                     style="padding-top:0;padding-right:18px;padding-bottom:30px;padding-left:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;word-break:break-word;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                    <p style="text-align:center;color:#e3ebf6;font-family:Georgia;font-size:12px;">Email doesn't look right? <a href="https://www.gieqs.com/assets/scripts/courses/generateEmail.php?emailid=<?php echo $emailid;?>">Display in a web browser</a></p>
+                                                                                    <p style="text-align:center;color:#949494;font-family:Georgia;font-size:12px;">Email doesn't look right? <a href="https://www.gieqs.com/assets/scripts/courses/generateEmail.php?emailid=<?php echo $emailid;?>">Display in a web browser</a></p>
+
                                                                                     <h4
-                                                                                        style="display:block;margin:0;padding: 0;color:#e3ebf6;font-family:Georgia;font-size:20px;font-style:italic;font-weight:normal;line-height:125%;letter-spacing:normal;text-align:center;">
+                                                                                        style="display:block;margin:0;padding: 0;color:#949494;font-family:Georgia;font-size:20px;font-style:italic;font-weight:normal;line-height:125%;letter-spacing:normal;text-align:center;">
                                                                                         We can do everyday endoscopy
                                                                                         better.
                                                                                     </h4>
-                                                                                   
+
 
 
                                                                                     <!-- get array emailContent
@@ -650,6 +655,7 @@ $x = 0;
 foreach ($emailContents as $key=>$value){
 
    
+
 
 
 
@@ -763,7 +769,7 @@ if ($value['img'] != NULL){
     ?>
 
                                                                                     <p
-                                                                                    style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#6e84a3;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
+                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
                                                                                         <?php echo $value['text'];?>
                                                                                     </p>
 
@@ -1454,6 +1460,7 @@ $x++;
                                                                                     <br>
 
                                                                                     GIEQs is a not for profit organisation dedicated to the improvement of Quality and Safety in Endoscopy
+
                                                                                     <br>
                                                                                     <br>
 

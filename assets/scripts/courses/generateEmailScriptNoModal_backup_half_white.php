@@ -145,7 +145,7 @@
             }
 
             h1 {
-                color: rgb(238, 195, 120);
+                color: #222222;
                 font-family: Helvetica;
                 font-size: 40px;
                 font-style: normal;
@@ -156,7 +156,7 @@
             }
 
             h2 {
-                color: #e3ebf6;
+                color: #5C8DCB;
                 font-family: Helvetica;
                 font-size: 30px;
                 font-style: normal;
@@ -167,7 +167,7 @@
             }
 
             h3 {
-                color: rgb(238, 195, 120);
+                color: #444444;
                 font-family: Helvetica;
                 font-size: 22px;
                 font-style: normal;
@@ -189,7 +189,6 @@
             }
 
             li {
-                color: #6e84a3;
 
                 margin-bottom:1.15rem;
 
@@ -556,14 +555,7 @@
                                                                                 <td valign="top" class="mcnTextContent"
                                                                                     style="padding-top:0;padding-right:18px;padding-bottom:30px;padding-left:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;word-break:break-word;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
 
-                                                                                    <p style="text-align:center;color:#e3ebf6;font-family:Georgia;font-size:12px;">Email doesn't look right? <a href="https://www.gieqs.com/assets/scripts/courses/generateEmail.php?emailid=<?php echo $emailid;?>">Display in a web browser</a></p>
-
-<h4
-    style="display:block;margin:0;padding: 0;color:#e3ebf6;font-family:Georgia;font-size:20px;font-style:italic;font-weight:normal;line-height:125%;letter-spacing:normal;text-align:center;">
-    We can do everyday endoscopy
-    better.
-</h4>
-
+                                                                                    
 
 
                                                                                     <!-- get array emailContent
@@ -711,7 +703,7 @@ if ($value['img'] != NULL){
     ?>
 
                                                                                     <p
-                                                                                    style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#6e84a3;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
+                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
                                                                                         <?php echo $value['text'];?>
                                                                                     </p>
 
