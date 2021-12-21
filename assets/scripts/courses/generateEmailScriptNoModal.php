@@ -43,6 +43,12 @@
                 padding: 0;
             }
 
+            a {
+
+                color: white;
+
+            }
+
             table {
                 border-collapse: collapse;
             }

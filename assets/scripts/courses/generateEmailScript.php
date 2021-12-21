@@ -63,6 +63,12 @@
 
             }
 
+            a {
+
+color: white;
+
+}
+
             table {
                 border-collapse: collapse;
             }
