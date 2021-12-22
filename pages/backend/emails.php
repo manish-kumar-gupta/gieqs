@@ -277,13 +277,13 @@ if ($identifierValue) {
                     <td style="padding-top:25px;padding-right:18px;padding-bottom:18px;padding-left:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;"
                         valign="top" align="center" class="mcnButtonBlockInner">
                         <table border="0" cellpadding="0" cellspacing="0" class="mcnButtonContentContainer"
-                            style="border-collapse:separate !important;border-radius:3px;background-color:#1b385d;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust: 100%;">
+                            style="border-collapse:separate !important;border-radius:3px;background-color:rgb(238, 195, 120);mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust: 100%;">
                             <tbody>
                                 <tr>
                                     <td align="center" valign="middle" class="mcnButtonContent"
                                         style="font-family:Helvetica;font-size:18px;padding:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
                                         <a class="mcnButton " title="" href="" target="_blank"
-                                            style="font-weight:bold;letter-spacing:-0.5px;line-height:100%;text-align:center;text-decoration:none;color:#e3ebf6;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;display:block;">button
+                                            style="font-weight:normal;letter-spacing:-0.5px;line-height:100%;text-align:center;text-decoration:none;color:#162e4d;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;display:block;">button
                                             text
                                         </a>
                                     </td>
