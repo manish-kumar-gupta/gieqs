@@ -691,8 +691,8 @@ if ($value['img'] != NULL){
                                                                                                             target="_blank"><img
                                                                                                                 alt=""
                                                                                                                 src="<?php echo 'https://www.gieqs.com' . $value['img'];?>"
-                                                                                                                width="300"
-                                                                                                                style="max-width:300px;padding-bottom:0;border:0;height:auto;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;vertical-align:bottom;text-align:center;"
+                                                                                                                width="450"
+                                                                                                                style="max-width:450px;padding-bottom:0;border:0;height:auto;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;vertical-align:bottom;text-align:center;"
                                                                                                                 class="mcnImage"></a>
                                                                                                     </center>
 
