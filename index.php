@@ -385,7 +385,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                 <div class="mt-5">
 
 
-                                    <a href="https://WWW.gieqs.com/login?destination=viewasset&assetid=24"
+                                    <a href="https://www.gieqs.com/login?destination=viewasset&assetid=24"
                                         class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
                                         style="background-color: rgb(238, 194, 120);">
                                         <span class="btn-inner--text">Access GIEQs II<sup></sup></span>
