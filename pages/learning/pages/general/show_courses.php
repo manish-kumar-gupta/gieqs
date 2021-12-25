@@ -76,7 +76,7 @@
     }
 
     .flex-even {
-        flex: 0 0 30%;
+        flex: 0 0 40%;
         
         /*
         
@@ -653,7 +653,9 @@
                 <!--Header CHANGEME-->
 
                 <div class="d-flex flex-wrap container pt-9 mt-3">
-                    <div class="h1 mr-auto pt-3"><?php echo $page_title;?></div>
+                <p class="display-4 my-3">Premium Content</p>
+                    <p class="lead lh-180 pb-3" style="font-size:1.25rem;">The best content on GIEQs Online.  Sorted by specialist area.  High definition, curated experiences that you can access immediately</p>
+
                     <nav aria-label="breadcrumb" class="align-self-center">
                        <!--  <ol class="breadcrumb breadcrumb-links p-0 m-0">
                             <li class="breadcrumb-item"><a
@@ -681,12 +683,80 @@
 
                 <div class="container mt-3">
                     <div class="text-justify m-4">
+
                         <p class="lead lh-180 pb-3"><?php echo $page_description;?></p>
 
 
 
                     </div>
-                    <div id="videoCards" class="flex-wrap">
+                    <div class="row">
+
+
+
+<div id="right" class="col-lg-3 col-xl-3 border-right">
+    <!--         	<div class="h-100 p-4"> -->
+    <div id="sticky" data-toggle="sticky" class="is_stuck pr-3 mr-3 pl-2 pt-2">
+        <div id="messageBox" class='text-left text-white pb-2 pl-2 pt-2'></div>
+        <div class="d-flex flex-nowrap text-small text-muted text-right px-3 mt-1 mb-3 ">
+
+
+
+
+
+
+
+        </div>
+
+
+        <div id="errorWrapper"
+            class="error alert alert-warning alert-flush alert-dismissible collapse bg-gieqsGold"
+            role="alert">
+            <strong>Check the form!</strong> <span id="error"></span><button type="button"
+                class="close" data-hide="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div id="successWrapper"
+            class="success alert alert-success alert-flush alert-dismissible collapse"
+            role="alert">
+            <strong>Success!</strong> <span id="success"></span><button type="button"
+                class="close" data-hide="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div id="warningWrapper"
+            class="warning alert alert-warning alert-flush alert-dismissible collapse"
+            role="alert">
+            <strong>Warning!</strong> <span id="warning"></span><button type="button"
+                class="close" data-hide="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <h6 class="mt-3 mb-3 pl-2 h5">Navigation</h6>
+
+        <ul class="section-nav">
+
+
+           
+        </ul>
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+</div>
+
+<div class="col-lg-9 text-container">
+<div id="videoCards" class="flex-wrap">
 
 
                         <div class="d-flex align-items-center">
@@ -698,15 +768,19 @@
 
 
                     </div>
+    </div>
+
+    </div>
+                    
 
 
                
-
+<!-- 
 <p class="display-2 my-3">Colonoscopy</p>
 <p class="pl-4">Unpacking the Black Box of Colonoscopy Training</p>
 <p class="display-2 my-3">Polypectomy</p>
 <p class="display-2 my-3">Endoscopic Imaging</p>
-<p class="display-2 my-3">Polypectomy</p>
+<p class="display-2 my-3">Polypectomy</p> -->
      </div>
 
 

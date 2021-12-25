@@ -55,9 +55,12 @@ Class courseManager {
         $q = "Select 
       `id`, `name`, `description`, `cost`
       FROM `assets_paid`
-      WHERE `asset_type` = '$type'";
+      WHERE `asset_type` = '$type'
+      AND `advertise_for_purchase` IS NULL OR `advertise_for_purchase` = '1'";
 
-      //echo $q;
+      if ($debug){
+      echo $q;
+      }
 
       $result = $this->connection->RunQuery($q);
       $rowReturn = array();

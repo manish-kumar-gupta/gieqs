@@ -138,7 +138,7 @@ $requiredTagCategories = $data['requiredTagCategories'];
 $videos = [];
 $x = 0;
 
-$data2 = $courseManager->returnAllCourses('3', false);
+$data2 = $courseManager->returnAllCourses('3', $debug);
 
 
 $videos = $data2;
@@ -170,6 +170,8 @@ if ($debug) {
 
                     ?>
 
+
+
 <div class="d-flex flex-row flex-wrap justify-content-center mt-1 pt-0 px-0 text-white">
     <span class=" mt-3 mb-6 h6"><?php echo $emptyText;?></span>
     
@@ -189,8 +191,8 @@ if ($debug) {
                     if ($a == 1){
 
                         ?>
-<p class="display-2 my-3">Colonoscopy</p>
-<p class="pl-4 mb-5">Unpacking the Black Box of Colonoscopy Training</p>
+<p class="display-4 my-3">Virtual Live Courses</p>
+<p class="pl-4 mb-5">Experiences focussed on a single aspect of Everyday Endoscopy</p>
 <div class="d-flex flex-row flex-wrap justify-content-center mt-1 pt-0 px-0 text-white video-card">
     <?php }
                     if ($a < $loadedRequiredProduct){
@@ -296,7 +298,7 @@ if ($debug) {
     <?php
                     }
 
-                    if ($a % 3 == 0){
+                    if ($a % 2 == 0){
                         ?>
 </div>
 <div class="d-flex flex-row flex-wrap justify-content-center mt-1 pt-0 px-0 text-white">
