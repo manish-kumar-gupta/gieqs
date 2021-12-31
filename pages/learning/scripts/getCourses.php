@@ -138,7 +138,25 @@ $requiredTagCategories = $data['requiredTagCategories'];
 $videos = [];
 $x = 0;
 
-$data2 = $courseManager->returnAllCourses('3', $debug);
+$data2 = $courseManager->returnAllCourses('2', $debug); //congress
+$data2['description'] = 'Past GIEQs Symposia.  The flagship yearly event hosted by the GIEQs Foundation';
+$data3 = $courseManager->returnAllCourses('3', $debug); //course vl
+$data3['description'] = 'Online Courses focussed on specific aspects of everyday Endoscopy';
+$data4 = $courseManager->returnAllCourses('4', $debug); //content pack
+$data4['description'] = 'Premium Content Packages, focussed on a specific aspect of Everyday Endoscopy';
+
+
+$data = [
+
+'Past GIEQs Symposia' => $data2,
+'Virtual/Live Courses' => $data3,
+'Content Packs' => $data4,
+
+];
+
+if ($debug){
+print_r($data);
+}
 
 
 $videos = $data2;
@@ -158,13 +176,15 @@ if ($debug) {
 
 <?php
 
+foreach ($data as $datakey=>$datavalue){
+
                 //new script
 
                 //using data2
 
                 $a = 1;
 
-                $b = count($videos);
+                $b = count($datavalue);
 
                 if ($b == 0){
 
@@ -174,7 +194,7 @@ if ($debug) {
 
 <div class="d-flex flex-row flex-wrap justify-content-center mt-1 pt-0 px-0 text-white">
     <span class=" mt-3 mb-6 h6"><?php echo $emptyText;?></span>
-    
+
 </div>
 
 <?php
@@ -182,7 +202,7 @@ if ($debug) {
 
                 
 
-                foreach ($videos as $key=>$value){
+                foreach ($datavalue as $key=>$value){
 
                     
 
@@ -191,8 +211,8 @@ if ($debug) {
                     if ($a == 1){
 
                         ?>
-<p class="display-4 my-3">Virtual Live Courses</p>
-<p class="pl-4 mb-5">Experiences focussed on a single aspect of Everyday Endoscopy</p>
+<p class="display-4 my-3 toc-item"><?php echo $datakey;?></p>
+<p class="pl-4 mb-5"><?php echo $datavalue['description'];?></p>
 <div class="d-flex flex-row flex-wrap justify-content-center mt-1 pt-0 px-0 text-white video-card">
     <?php }
                     if ($a < $loadedRequiredProduct){
@@ -343,6 +363,11 @@ if ($debug) {
     <?php
 
                 }
+
+
+echo '</div>';
+
+            }
 
 
 

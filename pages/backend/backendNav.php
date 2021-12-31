@@ -89,6 +89,8 @@
                   <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow" aria-labelledby="btn-group-boards">
                   <span class="dropdown-header">GIEQs Online Structure</span>
                   <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/test_backend.php?table=pages">Edit Site Structure</a>
+                  <span class="dropdown-header">Image Management</span>
+                  <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/images.php">Edit Images</a>
                   <span class="dropdown-header">Blog</span>
                   <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/blogs.php">Edit Blogs</a>
                   <span class="dropdown-header">Asset Token Access</span>

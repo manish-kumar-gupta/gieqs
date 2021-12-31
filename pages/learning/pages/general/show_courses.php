@@ -867,6 +867,19 @@
 
             }
 
+            var waitForFinalEvent = (function () {
+	  var timers = {};
+	  return function (callback, ms, uniqueId) {
+	    if (!uniqueId) {
+	      uniqueId = "Don't call this twice without a uniqueId";
+	    }
+	    if (timers[uniqueId]) {
+	      clearTimeout (timers[uniqueId]);
+	    }
+	    timers[uniqueId] = setTimeout(callback, ms);
+	  };
+	})();
+
             function resetNavigation() {
 
                 firstTime = 1;
@@ -889,6 +902,35 @@
                 refreshNavAndTags();
 
             }
+
+            function generateTOC() {
+
+var statement = '';
+
+//get all h1s
+//get all h2s before the next h1 -> second line
+//get all h3s before the next h2 -> 3rd line
+
+var x=15;
+$('.toc-item').each(function() {
+
+    var id = null;
+    
+    $(this).attr('id', x);
+    id = $(this).attr('id');
+    text = $(this).text();
+    statement +=
+        '<li class="toc-entry toc-h4" style="font-size:1.1rem;"><a class="text-muted" href="#' + id +
+        '">' + text + '</a></li>';
+    x++;
+
+})
+
+$('.section-nav').html(statement);
+
+
+
+}
 
             /* function refreshProgrammeView() {
 
@@ -1203,6 +1245,14 @@
 
             $(document).ready(function() {
 
+                //generateTOC();
+
+                waitForFinalEvent(function(){
+            generateTOC();
+
+			
+	    }, 1000, "Resize header");
+
                 $('[data-toggle="select"]').select2({
 
                     //dropdownParent: $(".modal-content"),
@@ -1298,6 +1348,8 @@
 
 
                 })
+
+                
 
 
 
