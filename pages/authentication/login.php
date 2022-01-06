@@ -124,6 +124,11 @@ if (isset($_GET['destination'])) {
     $target = '/pages/learning/index.php';
 
 
+  }else if ($destination == 'subscriptionoptions'){
+
+    $target = '/pages/learning/upgrade.php#options-table';
+
+
   } else if ($destination == 'tagvideo'){
 
     //define other constant
