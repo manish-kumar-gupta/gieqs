@@ -175,7 +175,7 @@ Class formGenerator {
 		
 		echo "<label for='$id' id='".$id."label' title='$tooltip'>$label&nbsp&nbsp</label>";
 		echo '<div class="input-group mb-3">';
-		echo "<input name='$id' id='$id' class='$class formInputs form-control' type='text' size ='55' value='$value' disabled>";
+		echo "<input name='$id' id='$id' class='$class formInputs form-control' type='text' size ='55' value='$value'>";
 		echo '</div>';
 	
 		//echo "</div>";	
@@ -188,7 +188,7 @@ Class formGenerator {
 		
 		echo "<label for='$id' id='".$id."label' title='$tooltip'>$label&nbsp&nbsp</label>";
 		echo '<div class="input-group mb-3">';
-		echo "<input name='$id' id='$id' class='$class formInputs form-control' type='text' size ='55' value='$value'>";
+		echo "<input name='$id' id='$id' class='$class formInputs form-control' type='text' size ='55' value='$value' disabled>";
 		echo '</div>';
 	
 		//echo "</div>";	

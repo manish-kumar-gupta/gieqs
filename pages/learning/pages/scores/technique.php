@@ -1961,7 +1961,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                             <form id="polypectomy-form" method="post">
                                 <fieldset>
                                 <h2 id="details" class="mr-auto">Demographic Details</h2>
-                                <?php $formv1->generateText ('Endoscopist', 'endoscopist', '', 'Not modifiable.  To change details  use my account', $userFunctions->getUserName($userid));
+                                <?php $formv1->generateTextDisabled ('Endoscopist', 'endoscopist', '', 'Not modifiable.  To change details  use my account', $userFunctions->getUserName($userid));
                             echo '<br/>'; ?>
                                <?php $formv1->generateDate ('Date of Procedure', 'date_procedure', 'details', 'Enter the date of the procedure');
                             echo '<br/>'; ?>
