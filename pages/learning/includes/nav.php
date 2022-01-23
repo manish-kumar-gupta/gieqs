@@ -169,6 +169,12 @@ if ($menus) {
             <li class="nav-item">
                     <a class="nav-link"
                         href="<?php echo BASE_URL; ?>/pages/learning/index.php">Dashboard</a>
+                </li> 
+                
+                
+                <li class="nav-item">
+                    <a class="nav-link"
+                        href="<?php echo BASE_URL; ?>/pages/learning/pages/general/show_subscription_all.php?page_id=95">Search</a>
                 </li>
 
 
