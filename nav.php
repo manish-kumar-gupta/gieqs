@@ -173,7 +173,7 @@ if ($debugAccess){
 
                 //just use the first programme that day.  modify later if others required
 
-                if ($programmes){
+                if ($programmes345){   //if $programmes previously so now disabled
 
                   $access3 = $assetManager->programme_owned_by_user($programmes[0]['programmeid'], $userid, $debug);
 

@@ -39,7 +39,7 @@ $programme = new programme;
 require_once BASE_URI . '/assets/scripts/classes/sessionView.class.php';
 $sessionView = new sessionView;
 
-//new class navigationManager
+//new class navigationManagerlogin
 
 
 
