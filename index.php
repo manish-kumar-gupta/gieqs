@@ -388,15 +388,15 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                                     <a href="https://www.gieqs.com/login?destination=viewasset&assetid=24"
                                         class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
                                         style="background-color: rgb(238, 194, 120);">
-                                        <span class="btn-inner--text">Access GIEQs II<sup></sup></span>
+                                        <span class="btn-inner--text">Access GIEQs II <sub>already registered</sub></span>
                                         <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
 
                                     </a>
 
-                                    <a href="https://www.gieqs.com/pages/program/gieqs_ii.php"
-                                        class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
+                                    <a href="https://www.gieqs.com/pages/program/program_generic.php?id=15"
+                                        class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 mt-2 scroll-me"
                                         style="background-color: rgb(238, 194, 120);">
-                                        <span class="btn-inner--text">Register for GIEQs II<sup></sup></span>
+                                        <span class="btn-inner--text">Register for GIEQs II <sub>immediate access</sub></span>
                                         <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
 
                                     </a>
@@ -667,14 +667,14 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 ?>
 
     <hr />
-    <section class="slice slice-lg pt-4">
+   <!--  <section class="slice slice-lg pt-4">
         <div id="twitter" class="container d-flex align-items-center position-relative zindex-100" style="">
 
             <a class="twitter-timeline" data-theme="dark"
                 href="https://twitter.com/gieqs_symposium?ref_src=twsrc%5Etfw">Tweets by gieqs_symposium</a>
             <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
-    </section>
+    </section> -->
 
     <section class="header-1 section-rotate bg-section-dark" data-offset-top="#header-main">
         <div class="section-inner bg-gradient-dark"></div>
