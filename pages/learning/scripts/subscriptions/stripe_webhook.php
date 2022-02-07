@@ -318,7 +318,7 @@ switch ($event->type) {
         
                // var_dump($assetManager);
         
-                $subscription_length = $assetManager->getLengthSubscription($subscription_id, false);
+                $subscription_length = $assetManager->getLengthSubscription($subscription_id, true);
         
                 if ($debug) {
         

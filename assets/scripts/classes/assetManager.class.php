@@ -1341,19 +1341,27 @@ if ($nRows == 1) {
 
     }
 
+
+    $d1 = new DateTime($start_date);
+    $d2 = new DateTime('now');
+
+
     if ($debug){
 
         echo 'subscription found';
         echo 'start date is '. $start_date;
+        var_dump($d1);
+        var_dump($d2);
     }
-
-    $d1 = new DateTime($start_date);
-    $d2 = new DateTime('now');
     
     // @link http://www.php.net/manual/en/class.dateinterval.php
     $interval = $d2->diff($d1);
 
-    var_dump($interval);
+    if ($debug){
+
+        var_dump($interval);
+    }
+    
     
     //$interval->format('%m months');
     
