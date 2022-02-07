@@ -194,7 +194,7 @@ switch ($event->type) {
         if ($debug){
 
 
-            $paymentMethodContents = var_dump($paymentMethod);
+            //$paymentMethodContents = var_dump($paymentMethod);
             $subscription_data_contents = var_dump($subscription_data);
 
             $dataToLog[] = 'paymentMethod contains ' . $paymentMethodContents;
