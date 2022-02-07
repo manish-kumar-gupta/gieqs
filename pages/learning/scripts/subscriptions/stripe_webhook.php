@@ -180,22 +180,12 @@ switch ($event->type) {
 
      
 
-        //$subscription_data = $event->data->object->lines->data->metadata; OLD
+        $subscription_data = $event->data->object->lines->data[0];  //gives the max array
 
-        $subscription_data = $event->data->object->lines->data[0];
-
-
-
-        //$subscription_id = $paymentIntent['lines']['data']['metadata']['subscription_id'];
-
-        //$subscription_id = $subscription_data['metadata']['subscription_id'];
-
-        $subscription_gieqs_array = $subscription_data->metadata;
+        $subscription_gieqs_array = $subscription_data->metadata;  //gives all our data including free trial
         $subscription_stripe_array = $subscription_data->plan;
         $subscription_period = $subscription_data->period;
-        //$subscription_gieqs_array = json_decode($subscription_as_json);
-
-        //var_dump($subscription_gieqs_array);
+        
 
         $subscription_id = $subscription_gieqs_array['subscription_id'];
 
@@ -318,7 +308,7 @@ switch ($event->type) {
         
                // var_dump($assetManager);
         
-                $subscription_length = $assetManager->getLengthSubscription($subscription_id, true);
+                $subscription_length = $assetManager->getLengthSubscription($subscription_id, false);
         
                 if ($debug) {
         
@@ -507,7 +497,14 @@ switch ($event->type) {
         // ... handle other event types
         $dataToLog[] = 'invoice failed detected';
         $dataToLog[] = $paymentMethod;
-        $subscription_id = $paymentMethod['metadata']['subscription_id'];
+
+        $subscription_data = $event->data->object->lines->data[0];  //gives the max array
+
+        $subscription_gieqs_array = $subscription_data->metadata;  //gives all our data including free trial
+
+        $subscription_id = $subscription_gieqs_array['subscription_id'];
+
+        //$subscription_id = $paymentMethod['metadata']['subscription_id'];
 
 
         if ($subscription->Return_row($subscription_id)){
