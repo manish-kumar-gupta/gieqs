@@ -51,6 +51,10 @@ RewriteRule ^GPAT$ pages/learning/pages/scores/technique.php
 RewriteRule ^charitable$ pages/foundation/charitable.php
 RewriteRule ^polypectomy-upskilling2$ pages/program/program_generic.php?id=55
 RewriteRule ^technique$ pages/program/program_generic.php?id=55
+RewriteRule ^colonoscopy-technique-theory$ pages/program/program_generic.php?id=84
+RewriteRule ^colonoscopy-upskilling$ pages/program/program_generic.php?id=83
+
+
 
 
 
