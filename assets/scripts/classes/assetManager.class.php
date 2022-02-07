@@ -1353,7 +1353,7 @@ if ($nRows == 1) {
     // @link http://www.php.net/manual/en/class.dateinterval.php
     $interval = $d2->diff($d1);
 
-    //var_dump($interval);
+    var_dump($interval);
     
     //$interval->format('%m months');
     

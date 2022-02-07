@@ -322,7 +322,7 @@ switch ($event->type) {
         
                 if ($debug) {
         
-                    $dataToLog[] = 'length of subscriptionn s  ' . $subscription_length . ' months';
+                    $dataToLog[] = 'length of subscription is  ' . $subscription_length . ' months';
                     //echo '<br/';
         
                 } 
