@@ -495,6 +495,7 @@ switch ($event->type) {
     case 'invoice.payment_failed';
         $paymentMethod = $event->data->object;
         // ... handle other event types
+        echo 'detected failed invoice';
         $dataToLog[] = 'invoice failed detected';
         $dataToLog[] = $paymentMethod;
 
