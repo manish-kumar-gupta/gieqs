@@ -190,7 +190,7 @@ switch ($event->type) {
 
         //$subscription_id = $subscription_data['metadata']['subscription_id'];
 
-        $subscription_id = $subscription_data->metadata->subscription_id;
+        $subscription_id = $subscription_data->metadata['subscription_id'];
 
         
         if ($debug){
