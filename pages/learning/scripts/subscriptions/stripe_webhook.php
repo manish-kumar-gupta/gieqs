@@ -190,7 +190,10 @@ switch ($event->type) {
 
         //$subscription_id = $subscription_data['metadata']['subscription_id'];
 
-        $subscription_id = $subscription_data->metadata;
+        $subscription_as_json = $subscription_data->metadata;
+        $subscription_gieqs_array = json_decode($subscription_as_json);
+
+        $subscription_id = $subscription_gieqs_array['subscription_id'];
 
         
         if ($debug){
