@@ -272,16 +272,163 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 
             <?php }else{?>
 
+                
+                <section class="header-1 section-rotate bg-section-dark mt-5" data-offset-top="#header-main">
+
+
+<?php
+
+}
+$imageArray = ['assets/img/advert/gieqs_advert_1.jpeg']
+
+
+?>
+
+
+<div class="section-inner bg-gradient-dark"></div>
+<!-- SVG illustration -->
+<div class="pt-4 position-absolute middle right-0 col-lg-7 col-xl-6 d-none d-lg-block">
+    <figure class="w-75" style="max-width: 1000px;">
+        <img alt="Image placeholder" src="<?php echo $imageArray[array_rand($imageArray)];?>"
+            class="svg-inject img-fluid">
+        <!-- <figcaption class="small figure-caption text-right">Non-granular transverse colon large non-pedunculated colorectal polyp.  <br/>Suspicious for submucosal invasive cancer. </figcaption> -->
+    </figure>
+</div>
+<!-- SVG background -->
+<!--<div class="bg-absolute-cover bg-size--contain d-flex align-items-center">
+<figure class="w-100 d-none d-lg-block">
+<img alt="Image placeholder" src="assets/img/svg/backgrounds/bg-4.svg" class="svg-inject" style="height: 1000px;">
+</figure>
+</div>-->
+<!-- Hero container -->
+<div class="container  d-flex align-items-center position-relative zindex-100">
+
+    <div class="col">
+        <div class="row">
+            <div class="col-lg-10 col-xl-10 text-center text-lg-left">
+
+                <a class="ml-3 pointer" href="https://www.gieqs.com/pages/program/program_generic.php?id=15">
+                    <div class="alert alert-modern alert-dark">
+                        <span class="badge gieqsGold badge-pill">
+                            New
+                        </span>
+                        <span class="alert-content">GIEQs II - On DEMAND
+                        </span>
+                    </div>
+                </a>
+
+                <!-- <a href="https://www.gieqs.com/pages/program/gieqs_ii.php">
+                <div class="alert alert-modern alert-dark">
+                    <span class="badge gieqsGold badge-pill">
+                        New
+                    </span>
+                    <span class="alert-content">GIEQs II Registration Open</span>
+                </div>
+            </a> -->
+                <!-- <a href="https://www.gieqs.com/pages/program/program_imaging.php">
+                <div class="alert alert-modern alert-dark">
+                    <span class="badge gieqsGold badge-pill">
+                        New
+                    </span>
+                    <span class="alert-content">Live / Virtual Hybrid Premium Content</span>
+                </div>
+            </a> -->
+
+                <a class="ml-3 pointer" data-toggle="modal" data-target="#accreditation">
+                    <div class="alert alert-modern alert-dark">
+                        <span class="badge gieqsGold badge-pill">
+                            <i class="fas fa-notes-medical"></i>
+                        </span>
+
+                        <span class="alert-content">CME accreditation</span>
+                    </div>
+                </a>
+
+                <a class="ml-3 pointer" href="https://twitter.com/gieqs_symposium?ref_src=twsrc%5Etfw"
+                    target="_blank">
+                    <div class="alert alert-modern alert-dark">
+                        <span class="badge gieqsGold badge-pill">
+
+                            <i class="fab fa-twitter"></i>
+                        </span>
+                        <span class="alert-content">Follow GIEQs on Twitter</span>
+
+
+
+
+                    </div>
+                </a>
+
+
+
+
+                <!--                              <div class="countdown" data-countdown-date="10/07/2020" data-countdown-label="hide"></div>
+-->
+                <!--                              <div class="countdown countdown-blocks" data-countdown-date="10/07/2020"></div>
+-->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-5 col-xl-6 text-center text-lg-left">
+                <div class="d-none d-lg-block mb-4">
+
+                </div>
+
+                <h2 class="text-white mb-4 mt-4 mt-lg-0">
+                    <span class="display-4 font-weight-light">We're planning GIEQs III!</span>
+
+                    <span class="d-block" style="color: rgb(238, 194, 120);"><strong
+                            class="font-weight-light">Join us for our next major step.  <br/>29 - 30 September 2022.</span>
+                </h2>
+                <p class="lead text-white">Decision making, common controversies, bring your problems, complex to everyday, training and more!</p>
+                <p class="lead text-white">Same laser focus on the everyday, high definition streaming.  With a LIVE venue that you have all been waiting for!  </p>
+
+                <div class="mt-5">
+
+
+                  
+                </a>
+                <h2 class="text-white mb-4 mt-4 mt-lg-0">
+
+                <span class="d-block" style="color: rgb(238, 194, 120);"><strong
+                            class="font-weight-light">More details soon...</span>
+</h2>
+
+                    <!-- <a href="https://www.youtube.com/watch?v=zRy1xwGsagc"
+                        class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mt-2 mr-sm-4 scroll-me"
+                        style="background-color: rgb(238, 194, 120);" data-fancybox>
+                        <span class="badge bg-dark gieqsGold badge-pill">
+                    New
+                    </span>
+                        <span class="btn-inner--text">Watch the latest teaser video</span>
+                        <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
+
+                    </a> -->
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</section>
+
+<section class="header-1 section-rotate bg-section-dark mt-5" data-offset-top="#header-main">
+    
+</section>
+
+
+
             <section class="header-1 section-rotate bg-section-dark mt-5" data-offset-top="#header-main">
 
 
-                <?php
+              
+<?php
+$imageArray = ['assets/img/polyps/transverse_lci.png', 'assets/img/icons/gieqs_2.png', 'assets/img/backgrounds/ChromoPolypTransBack.png', 'assets/img/covers/bleeding/heaterNonLive.png', 'assets/img/covers/ovesco.png', 'assets/img/polyps/smi_demarcation.png']
 
-}
-        $imageArray = ['assets/img/polyps/transverse_lci.png', 'assets/img/icons/gieqs_2.png', 'assets/img/backgrounds/ChromoPolypTransBack.png', 'assets/img/covers/bleeding/heaterNonLive.png', 'assets/img/covers/ovesco.png', 'assets/img/polyps/smi_demarcation.png']
+?>
 
-
-    ?>
 
 
                 <div class="section-inner bg-gradient-dark"></div>
@@ -306,12 +453,12 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                         <div class="row">
                             <div class="col-lg-10 col-xl-10 text-center text-lg-left">
 
-                                <a class="ml-3 pointer" data-toggle="modal" data-target="#teaser-videos">
+                                <a class="ml-3 pointer" href="https://www.gieqs.com/pages/program/program_generic.php?id=15">
                                     <div class="alert alert-modern alert-dark">
                                         <span class="badge gieqsGold badge-pill">
                                             New
                                         </span>
-                                        <span class="alert-content">View GIEQs II Teaser Videos
+                                        <span class="alert-content">GIEQs II - On DEMAND
                                         </span>
                                     </div>
                                 </a>
