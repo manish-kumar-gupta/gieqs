@@ -191,6 +191,8 @@ switch ($event->type) {
         //$subscription_id = $subscription_data['metadata']['subscription_id'];
 
         $subscription_gieqs_array = $subscription_data->metadata;
+        $subscription_stripe_array = $subscription_data->plan;
+        $subscription_period = $subscription_data->period;
         //$subscription_gieqs_array = json_decode($subscription_as_json);
 
         //var_dump($subscription_gieqs_array);
@@ -273,7 +275,7 @@ switch ($event->type) {
 
                     //$timestamp = $paymentIntent['lines']['data']['period']['end'];
 
-                    $period = $event->data->object->lines->data->period;
+                    $period = $subscription_data->period;
 
                     $timestamp = $period['end'];
 
