@@ -193,10 +193,11 @@ switch ($event->type) {
         $subscription_gieqs_array = $subscription_data->metadata;
         //$subscription_gieqs_array = json_decode($subscription_as_json);
 
-        var_dump($subscription_gieqs_array);
+        //var_dump($subscription_gieqs_array);
 
         $subscription_id = $subscription_gieqs_array['subscription_id'];
 
+        echo '<br/><br/>subscription id is ' . $subscription_id;
         
         if ($debug){
 
