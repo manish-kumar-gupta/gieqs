@@ -193,6 +193,8 @@ switch ($event->type) {
         $subscription_as_json = $subscription_data->metadata;
         $subscription_gieqs_array = json_decode($subscription_as_json);
 
+        var_dump($subscription_gieqs_array);
+
         $subscription_id = $subscription_gieqs_array['subscription_id'];
 
         
