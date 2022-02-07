@@ -190,7 +190,7 @@ switch ($event->type) {
 
         //$subscription_id = $subscription_data['metadata']['subscription_id'];
 
-        $subscription_id = $subscription_data['subscription_id'];
+        $subscription_id = $subscription_data->metadata->subscription_id;
 
         
         if ($debug){
@@ -199,8 +199,8 @@ switch ($event->type) {
             //$paymentMethodContents = var_dump($paymentMethod);
             $subscription_data_contents = var_dump($subscription_data);
 
-            $dataToLog[] = 'paymentMethod contains ' . $paymentMethodContents;
-            $dataToLog[] = 'Looking for subscription ' . $subscription_data_contents;
+            //$dataToLog[] = 'paymentMethod contains ' . $paymentMethodContents;
+            $dataToLog[] = 'Looking for subscription ' . $subscription_data;
 
 
 
