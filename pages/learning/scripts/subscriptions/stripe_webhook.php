@@ -180,7 +180,9 @@ switch ($event->type) {
 
      
 
-        $subscription_data = $event->data->object->lines->data->metadata;
+        //$subscription_data = $event->data->object->lines->data->metadata; OLD
+
+        $subscription_data = $event->data->object->lines;
 
 
 
