@@ -193,7 +193,7 @@ switch ($event->type) {
         $subscription_as_json = $subscription_data->metadata;
         $subscription_gieqs_array = json_decode($subscription_as_json);
 
-        var_dump($subscription_gieqs_array);
+        var_dump($subscription_as_json);
 
         $subscription_id = $subscription_gieqs_array['subscription_id'];
 
@@ -202,7 +202,7 @@ switch ($event->type) {
 
 
             //$paymentMethodContents = var_dump($paymentMethod);
-            $subscription_data_contents = var_dump($subscription_data);
+            //$subscription_data_contents = var_dump($subscription_data);
 
             //$dataToLog[] = 'paymentMethod contains ' . $paymentMethodContents;
             $dataToLog[] = 'Looking for subscription ' . $subscription_data_contents;
