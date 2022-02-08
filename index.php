@@ -414,13 +414,98 @@ $imageArray = ['assets/img/advert/gieqs_advert_1.jpeg']
 </div>
 </section>
 
-<section class="header-1 section-rotate bg-section-dark mt-5" data-offset-top="#header-main">
+<section class="header-1 section-rotate bg-section-dark" data-offset-top="#header-main">
     
+<div class="section-inner bg-gradient-dark"></div>
+                <!-- SVG illustration -->
+                <div class="pt-1 position-absolute middle right-0 col-lg-7 col-xl-6 d-none d-lg-block">
+                    <figure class="w-75" style="max-width: 1000px;">
+                        <img alt="Image placeholder" src="assets/img/advert/online.png"
+                            class="svg-inject img-fluid">
+                    </figure>
+                </div>
+                <!-- SVG background -->
+                <!--<div class="bg-absolute-cover bg-size--contain d-flex align-items-center">
+        <figure class="w-100 d-none d-lg-block">
+          <img alt="Image placeholder" src="assets/img/svg/backgrounds/bg-4.svg" class="svg-inject" style="height: 1000px;">
+        </figure>
+      </div>-->
+                <!-- Hero container -->
+                <div class="container d-flex align-items-center position-relative zindex-100">
+
+                    <div class="col">
+                        
+                        <div class="row">
+                            <div class="col-lg-5 col-xl-6 text-center text-lg-left">
+                                <div class="d-none d-lg-block mb-4">
+
+                                </div>
+
+                                <h2 class="text-white mb-4 mt-4 mt-lg-0">
+                                    <span class="display-4 font-weight-light">GIEQs Online</span>
+
+                                    <span class="d-block" style="color: rgb(238, 194, 120);"><strong
+                                            class="font-weight-light">The expert on your shoulder.  Deconstructed Endoscopy Education on demand.</span>
+                                </h2>
+                                <p class="lead text-white">Imagine you want to know about Cold Snare Polypectomy.  You can quickly find it using Search.  Then watch 10 examples back to back.  All amongst curated online cases in HD.  Then maybe something else takes your interest.  And so on.  </p>
+                                <p class="lead text-white">Thats GIEQs Online.</p>
+                                <p class="lead text-white">Don't believe us... check out the Testimonials below.  Now containing complete GIEQs I and II access for PRO subscribers.</p>
+                                <div class="mt-5">
+
+
+                                <a href="https://www.gieqs.com/pages/program/program_generic.php?id=15"
+                                        class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 mt-2 scroll-me"
+                                        style="background-color: rgb(238, 194, 120);">
+                                        <span class="btn-inner--text">Watch Testimonials</span>
+                                        <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
+
+                                    </a>
+                                    <a href="https://www.gieqs.com/login?destination=viewasset&assetid=24"
+                                        class="mt-3 btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
+                                        style="background-color: rgb(238, 194, 120);">
+                                        <span class="btn-inner--text">Access GIEQs Online</span>
+                                        <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
+
+                                    </a>
+
+                                 
+
+                                    <!--   <a href=""
+                                    class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me m-2 teaser-popup"
+                                    style="background-color: rgb(238, 194, 120);">
+                                    <span class="btn-inner--text">Watch GIEQs II Teaser Videos<sup></sup></span>
+                                    <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
+
+                                </a> -->
+
+
+
+
+                                    <!-- <a href="https://www.youtube.com/watch?v=zRy1xwGsagc"
+                                        class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mt-2 mr-sm-4 scroll-me"
+                                        style="background-color: rgb(238, 194, 120);" data-fancybox>
+                                        <span class="badge bg-dark gieqsGold badge-pill">
+                                    New
+                                    </span>
+                                        <span class="btn-inner--text">Watch the latest teaser video</span>
+                                        <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
+
+                                    </a> -->
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
+
+
 </section>
 
 
 
-            <section class="header-1 section-rotate bg-section-dark mt-5" data-offset-top="#header-main">
+<section class="header-1 section-rotate bg-section-dark mt-5" data-offset-top="#header-main">
 
 
               
@@ -437,7 +522,6 @@ $imageArray = ['assets/img/polyps/transverse_lci.png', 'assets/img/icons/gieqs_2
                     <figure class="w-75" style="max-width: 1000px;">
                         <img alt="Image placeholder" src="<?php echo $imageArray[array_rand($imageArray)];?>"
                             class="svg-inject img-fluid">
-                        <!-- <figcaption class="small figure-caption text-right">Non-granular transverse colon large non-pedunculated colorectal polyp.  <br/>Suspicious for submucosal invasive cancer. </figcaption> -->
                     </figure>
                 </div>
                 <!-- SVG background -->
