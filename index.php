@@ -420,8 +420,49 @@ $imageArray = ['assets/img/advert/gieqs_advert_1.jpeg']
                 <!-- SVG illustration -->
                 <div class="pt-1 position-absolute middle right-0 col-lg-7 col-xl-6 d-none d-lg-block">
                     <figure class="w-75" style="max-width: 1000px;">
-                        <img alt="Image placeholder" src="assets/img/advert/online.png"
+                    <div class="bd-example">
+  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+      <img alt="Image placeholder" src="assets/img/advert/online.png"
                             class="svg-inject img-fluid">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Deconstructed Cases</h5>
+          <p>All presented in HD, tagged to quickly skip between ideas and academically referenced.</p>
+        </div>
+      </div>
+      <!-- <div class="carousel-item">
+      <img alt="Image placeholder" src="<?php echo $imageArray[array_rand($imageArray)];?>"
+                            class="svg-inject img-fluid">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Second slide label</h5>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+      <img alt="Image placeholder" src="<?php echo $imageArray[array_rand($imageArray)];?>"
+                            class="svg-inject img-fluid">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Third slide label</h5>
+          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+        </div>
+      </div> -->
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
                     </figure>
                 </div>
                 <!-- SVG background -->
@@ -453,17 +494,17 @@ $imageArray = ['assets/img/advert/gieqs_advert_1.jpeg']
                                 <div class="mt-5">
 
 
-                                <a href="https://www.gieqs.com/pages/program/program_generic.php?id=15"
+                                <a href="https://vimeo.com/674712013"
                                         class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 mt-2 scroll-me"
-                                        style="background-color: rgb(238, 194, 120);">
+                                        style="background-color: rgb(238, 194, 120);" data-fancybox>
                                         <span class="btn-inner--text">Watch Testimonials</span>
                                         <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
 
                                     </a>
-                                    <a href="https://www.gieqs.com/login?destination=viewasset&assetid=24"
+                                    <a href="<?php echo BASE_URL;?>/pages/program/online.php"
                                         class="mt-3 btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
                                         style="background-color: rgb(238, 194, 120);">
-                                        <span class="btn-inner--text">Access GIEQs Online</span>
+                                        <span class="btn-inner--text">Discover GIEQs Online</span>
                                         <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
 
                                     </a>
