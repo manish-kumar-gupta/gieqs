@@ -418,50 +418,59 @@ $imageArray = ['assets/img/advert/gieqs_advert_1.jpeg']
     
 <div class="section-inner bg-gradient-dark"></div>
                 <!-- SVG illustration -->
-                <div class="pt-1 position-absolute middle right-0 col-lg-7 col-xl-6 d-none d-lg-block">
+                <div class="pt-1 position-absolute middle right-0 col-lg-7 col-xl-6 d-none d-lg-block" style="z-index:1090;">
                     <figure class="w-75" style="max-width: 1000px;">
-                    <div class="bd-example">
-  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-      <img alt="Image placeholder" src="assets/img/advert/online.png"
-                            class="svg-inject img-fluid">
-        <div class="carousel-caption d-none d-md-block">
-          <!-- <h5>Deconstructed Cases</h5>
-          <p>All presented in HD, tagged to quickly skip between ideas and academically referenced.</p> -->
-        </div>
-      </div>
-      <div class="carousel-item">
-      <img alt="Image placeholder" src="assets/img/advert/anderson.png"
-                            class="svg-inject img-fluid">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Dr John Anderson</h5>
-          <p>"This is the best, most comprehensive Endoscopy Learning Platform you're ever likely to find."</p>
-        </div>
-      </div>
-      <div class="carousel-item">
-      <img alt="Image placeholder" src="assets/img/advert/tate.png"
-                            class="svg-inject img-fluid">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Third slide label</h5>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-        </div>
-      </div>
+                    <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-interval="2500">
+    <a href="<?php echo BASE_URL;?>/online"><img src="assets/img/advert/Slide35.png" class="d-block w-100" alt="..."></a>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
+    <div class="carousel-item" data-interval="2500">
+      <a href="<?php echo BASE_URL;?>/online"><img src="assets/img/advert/Slide36.png" class="d-block w-100" alt="..."></a>
+    </div>
+    <div class="carousel-item" data-interval="2500">
+      <a href="<?php echo BASE_URL;?>/online"><img src="assets/img/advert/Slide37.png" class="d-block w-100" alt="..."></a>
+    </div>
+    <div class="carousel-item" data-interval="2500">
+      <a href="<?php echo BASE_URL;?>/online"><img src="assets/img/advert/Slide38.png" class="d-block w-100" alt="..."></a>
+    </div>
+    <div class="carousel-item" data-interval="2500">
+      <a href="<?php echo BASE_URL;?>/online"><img src="assets/img/advert/Slide39.png" class="d-block w-100" alt="..."></a>
+    </div>
+    <div class="carousel-item" data-interval="2500">
+      <a href="<?php echo BASE_URL;?>/online"><img src="assets/img/advert/Slide40.png" class="d-block w-100" alt="..."></a>
+    </div>
+    <div class="carousel-item" data-interval="2500">
+      <a href="<?php echo BASE_URL;?>/online"><img src="assets/img/advert/Slide41.png" class="d-block w-100" alt="..."></a>
+    </div>
+    <div class="carousel-item" data-interval="2500">
+      <a href="<?php echo BASE_URL;?>/online"><img src="assets/img/advert/Slide42.png" class="d-block w-100" alt="..."></a>
+    </div>
+    <div class="carousel-item" data-interval="2500">
+      <a href="<?php echo BASE_URL;?>/online"><img src="assets/img/advert/Slide43.png" class="d-block w-100" alt="..."></a>
+    </div>
+    <div class="carousel-item" data-interval="2500">
+      <a href="<?php echo BASE_URL;?>/online"><img src="assets/img/advert/Slide44.png" class="d-block w-100" alt="..."></a>
+    </div>
+    <div class="carousel-item" data-interval="2500">
+      <a href="<?php echo BASE_URL;?>/online"><img src="assets/img/advert/Slide45.png" class="d-block w-100" alt="..."></a>
+    </div>
+    <div class="carousel-item" data-interval="2500">
+      <a href="<?php echo BASE_URL;?>/online"><img src="assets/img/advert/Slide46.png" class="d-block w-100" alt="..."></a>
+    </div>
+    <div class="carousel-item" data-interval="2500">
+      <a href="<?php echo BASE_URL;?>/online"><img src="assets/img/advert/Slide47.png" class="d-block w-100" alt="..."></a>
+    </div>
+
   </div>
+  <a class="carousel-control-prev z-index-master" href="#carouselExampleInterval" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>
                     </figure>
                 </div>
