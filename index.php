@@ -432,26 +432,26 @@ $imageArray = ['assets/img/advert/gieqs_advert_1.jpeg']
       <img alt="Image placeholder" src="assets/img/advert/online.png"
                             class="svg-inject img-fluid">
         <div class="carousel-caption d-none d-md-block">
-          <h5>Deconstructed Cases</h5>
-          <p>All presented in HD, tagged to quickly skip between ideas and academically referenced.</p>
-        </div>
-      </div>
-      <!-- <div class="carousel-item">
-      <img alt="Image placeholder" src="<?php echo $imageArray[array_rand($imageArray)];?>"
-                            class="svg-inject img-fluid">
-        <div class="carousel-caption d-none d-md-block">
-          <h5>Second slide label</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <!-- <h5>Deconstructed Cases</h5>
+          <p>All presented in HD, tagged to quickly skip between ideas and academically referenced.</p> -->
         </div>
       </div>
       <div class="carousel-item">
-      <img alt="Image placeholder" src="<?php echo $imageArray[array_rand($imageArray)];?>"
+      <img alt="Image placeholder" src="assets/img/advert/anderson.png"
+                            class="svg-inject img-fluid">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Dr John Anderson</h5>
+          <p>"This is the best, most comprehensive Endoscopy Learning Platform you're ever likely to find."</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+      <img alt="Image placeholder" src="assets/img/advert/tate.png"
                             class="svg-inject img-fluid">
         <div class="carousel-caption d-none d-md-block">
           <h5>Third slide label</h5>
           <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
         </div>
-      </div> -->
+      </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
