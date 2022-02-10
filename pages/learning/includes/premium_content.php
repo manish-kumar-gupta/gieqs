@@ -1,6 +1,6 @@
 <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
                     <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">Get Pro Content</a>
+                        aria-haspopup="true" aria-expanded="false">BUY Pro Content</a>
 
 
                     
