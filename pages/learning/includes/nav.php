@@ -449,6 +449,7 @@ if ($menus) {
 }elseif ($sitewide_status == 2){ //PRO subscription
 
     $fullAccess = true;
+    $proMember = true;
 
 }else{
 
@@ -470,6 +471,13 @@ if ($menus) {
 
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
                         <?php
+
+                        if ($proMember){?>
+
+                            <span style="color: rgb(238, 194, 120);"
+                            class="dropdown-header">You have full access to all courses as a benefit of your GIEQs Pro Membership</span>
+<?php
+                        }
 
 
 
