@@ -437,7 +437,26 @@ if ($menus) {
            
 
    <!-- Subscriptions Menu -->
-   <?php if ($assetManager->doesUserHaveSubscriptionMenu($userid, false)) { //if user has a subscription to assets type 2 3 or 4?>
+   
+   <?php 
+   
+   
+   
+   if ($isSuperuser == 1){
+
+    $fullAccess = true;
+
+}elseif ($sitewide_status == 2){ //PRO subscription
+
+    $fullAccess = true;
+
+}else{
+
+    $fullAccess = false;
+}
+   
+   
+   if ($assetManager->doesUserHaveSubscriptionMenu($userid, false) || $fullAccess === true) { //if user has a subscription to assets type 2 3 or 4?>
                 <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
                     <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">My Pro Content</a>
@@ -452,18 +471,7 @@ if ($menus) {
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
                         <?php
 
-if ($isSuperuser == 1){
 
-    $fullAccess = true;
-
-}elseif ($sitewide_status == 2){ //PRO subscription
-
-    $fullAccess = true;
-
-}else{
-
-    $fullAccess = false;
-}
 
     $headers = $assetManager->getHeadersNavSubscriptions($userid, false, $fullAccess);
 

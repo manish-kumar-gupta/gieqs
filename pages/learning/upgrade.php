@@ -258,7 +258,7 @@ padding-bottom: .75rem; */
                                         evidence. Quickly searchable for
                                         an unparalleled educational experience.</p>
                                     <a href="#options-text"
-                                        class="btn bg-gieqsGold btn-icon rounded-pill hover-translate-y-n3 mt-5 mb-5">
+                                        class="btn bg-gieqsGold btn-icon rounded-pill hover-translate-y-n3 mt-5 mb-5" style="z-index:10;">
                                         <span class="btn-inner--icon">
                                             <i class="fas fa-arrow-down text-dark"></i>
                                         </span>

@@ -232,27 +232,33 @@ if ($userid){
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Get the most out of GIEQs...</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Get the most out of GIEQs Online with a Monthly Subscription</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <p>Would you like to upgrade to GIEQs <strong>STANDARD</strong> or <strong>PRO?</strong></p>
-                <p><a
-                        class="key-features cursor-pointer btn-sm bg-gieqsGold btn-icon rounded-pill hover-translate-y-n3 mt-5">
-                        <span class="btn-inner--icon">
-                            <i class="fas fa-fire text-dark"></i>
-                        </span>
-                        <span class="btn-inner--text text-dark">Show Key Features</span>
-                    </a></p>
+                <p>Would you like to upgrade to a GIEQs <strong>STANDARD</strong> or <strong>PRO Monthly Plan?</strong></p>
+               
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+               
                 <button type="button" class="btn btn-dark" onclick="launchSubscriptionDialog(1);">get STANDARD</button>
                 <button type="button" class="btn btn-dark gieqsGold" onclick="launchSubscriptionDialog(2);">get
                     PRO</button>
 
+            </div>
+            <div class="modal-footer">
+            <p><a
+                        class="key-features cursor-pointer btn-sm bg-gieqsGold btn-icon rounded-pill hover-translate-y-n3 mt-5">
+                        <span class="btn-inner--icon">
+                            <i class="fas fa-fire text-dark"></i>
+                        </span>
+                        <span class="btn-inner--text text-dark">Show Key Features of each Plan</span>
+                    </a></p>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>

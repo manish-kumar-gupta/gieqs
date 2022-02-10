@@ -2875,6 +2875,8 @@ public function doesUserHaveSubscriptionMenu($user_id, $debug)
                 ORDER BY a.`start_date` DESC
                 ";
 
+                //or user is owning a subscription of the pro type
+                //or user is superuser
             
             if ($debug){
 

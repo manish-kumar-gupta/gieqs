@@ -208,9 +208,9 @@ top: -20vh;
               <span class="btn-inner--text d-none d-md-inline-block">My Learning Profile</span>
             </a> -->
             
-            <a href="https://vimeo.com/422871506" class="btn btn-icon btn-group-nav bg-gieqsGold shadow btn-neutral mx-2" data-fancybox>
+            <a href="https://vimeo.com/674712013" class="btn btn-icon btn-group-nav bg-gieqsGold shadow btn-neutral mx-2" data-fancybox>
                 <span class="btn-inner--icon text-dark"><i class="fas fa-eye"></i></span>
-                <span class="animated bounce delay-2s btn-inner--text text-dark d-none d-inline-block">Sneak Preview!</span>
+                <span class="animated bounce delay-2s btn-inner--text text-dark d-none d-inline-block">Testimonials</span>
               </a>
                <a data-toggle="modal" data-target="#registerInterest" class="btn btn-icon btn-group-nav pointer bg-gieqsGold shadow btn-neutral mx-2" data-fancybox>
                 <span class="btn-inner--icon text-dark"><i class="fas fa-eye"></i></span>
@@ -313,7 +313,7 @@ top: -20vh;
                                         evidence. Quickly searchable for
                                         an unparalleled educational experience.</p>
                                     <a href="#options-text"
-                                        class="btn bg-gieqsGold btn-icon rounded-pill hover-translate-y-n3 mt-5 mb-5" style="z-index:2;">
+                                        class="btn bg-gieqsGold btn-icon rounded-pill hover-translate-y-n3 mt-5 mb-5" style="z-index:10;">
                                         <span class="btn-inner--icon">
                                             <i class="fas fa-arrow-down text-dark"></i>
                                         </span>
@@ -1368,7 +1368,7 @@ top: -20vh;
     <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
     <!-- <script src="assets/js/purpose.core.js"></script> -->
     <!-- Page JS -->
-    <script src="../../assets/js/purpose.core.js"></script> 
+    <script src="<?php echo BASE_URL;?>/assets/js/purpose.core.js"></script> 
     <script src="<?php echo BASE_URL;?>/assets/js/purpose.js"></script>   
     <script src="<?php echo BASE_URL;?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
     <script src=<?php echo BASE_URL . "/assets/js/generaljs.js"?>></script>
