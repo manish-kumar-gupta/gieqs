@@ -459,7 +459,7 @@ if ($menus) {
 }
    
    
-   if ($assetManager->doesUserHaveSubscriptionMenu($userid, false) || ($fullAccess === true && $proMember === false)) { //if user has a subscription to assets type 2 3 or 4?>
+   if ($assetManager->doesUserHaveSubscriptionMenu($userid, false) || ($fullAccess === true)) { //if user has a subscription to assets type 2 3 or 4?>
                 <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
                     <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">My Pro Content</a>
@@ -540,8 +540,12 @@ if ($debug){
 
 
 }
+
+ if ($proMember != true){
                 
                 require(BASE_URI . '/pages/learning/includes/premium_content.php');
+
+ }
 
                 
                 ?>
