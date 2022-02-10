@@ -161,6 +161,8 @@ if ($menus) {
 
         <?php } ?>
 
+        
+
         <li class="nav-item">
                     <a class="nav-link"
                         href="<?php echo BASE_URL; ?>/pages/learning/blog.php">Blog</a>
@@ -481,6 +483,7 @@ if ($menus) {
 <?php
                         }
 
+                       
 
 
     $headers = $assetManager->getHeadersNavSubscriptions($userid, false, $fullAccess);

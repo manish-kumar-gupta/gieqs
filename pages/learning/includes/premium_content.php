@@ -1,10 +1,64 @@
+<?php 
+
+if ($userid){
+if ($isSuperuser == 1){
+
+  $fullAccess = true;
+  $proMember = false;
+
+}elseif ($sitewide_status == 2){ //PRO subscription
+
+  $fullAccess = true;
+  $proMember = true;
+
+}else{
+
+  $fullAccess = false;
+  $proMember = false;
+}
+}else{
+
+  $fullAccess = false;
+  $proMember = false;
+}
+
+?>
+
+
 <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
                     <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">BUY Pro Content</a>
+                        aria-haspopup="true" aria-expanded="false">Buy Pro Content</a>
 
 
                     
                     <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
+               <?php     
+               
+               //define upgrade url
+
+               if ($userid) {
+
+                $upgradeURL = BASE_URL . '/pages/learning/upgrade.php';
+
+               }else{
+
+                $upgradeURL = BASE_URL . '/login?destination=subscriptionoptions';
+
+
+               }
+
+            
+               
+               if (($proMember === false) && ($fullAccess === false)){?>
+
+<span style="background-color:rgb(238, 194, 120);"
+class="dropdown-header text-dark">You could gain access to ALL of these courses with a GIEQs Pro subscription.  <a href="<?php echo $upgradeURL;?>">Find out more.</a></span>                
+
+
+<?php                   } ?>
+
+
+
                     <span style="color: rgb(238, 194, 120);" class="dropdown-header">Upcoming Courses (Register Now)</span>
                     <?php foreach($coursesAdvertised as $key=>$value){ 
                       
