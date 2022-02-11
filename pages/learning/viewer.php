@@ -211,8 +211,8 @@ $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
             height: 25.25vw;
             /* min-height: 100%;
     min-width: 100%; */
-            transform: translate(-50%, -50%);
-            position: absolute;
+/*             transform: translate(-50%, -50%);
+ */            position: absolute;
             left: 50%;
             top: 50%;
             width: 100.77777778vh;
@@ -3132,7 +3132,30 @@ chapterData
 
     }
 
+    function checkResize(){
+        if (
+            document.fullscreenElement ||
+            document.webkitFullscreenElement ||
+            document.mozFullScreenElement ||
+            document.msFullscreenElement
+        ){
+            // action for fullscreen enable set the css to translate
+            //console.log('fullscreen');
+            //$(".video").css({ 'transform' : ''});
+            $("#videoChapter").removeClass('video');
+
+        }else{
+            // action for fullscreen disable set the css to translate
+            //console.log('not fullscreen');
+            $("#videoChapter").addClass('video');
+
+        }
+    }
+
     $(document).ready(function() {
+
+        $(window).resize(checkResize);
+
 
         $(document).on('click', '.expandSearch', function() {
 
