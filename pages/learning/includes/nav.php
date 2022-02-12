@@ -222,7 +222,7 @@ if ($menus) {
 
 ?>
 
-<a class="dropdown-item cursor-pointer py-3 px-2" href="<?php echo BASE_URL; ?>/pages/learning/pages/general/show_subscription_all.php?page_id=95" role="button"><i class="fas fa-search"></i><?php echo $navigation->gettitle(); ?></a>
+<a class="dropdown-item dropright cursor-pointer py-3 px-2" href="<?php echo BASE_URL; ?>/pages/learning/pages/general/show_subscription_all.php?page_id=95" role="button"><i class="fas fa-search"></i><?php echo $navigation->gettitle(); ?></a>
 
 
 
@@ -234,7 +234,7 @@ if ($menus) {
 
                 ?>
 
-<a class="dropdown-item dropdown-toggle cursor-pointer py-3 px-2" role="button" data-toggle="dropdown"
+<a class="dropdown-item dropdown-toggle dropright cursor-pointer py-3 px-2" role="button" data-toggle="dropdown"
                             data-target="#dropdown<?php echo $navigation->getid();?>"><i class="fas fa-file-alt"></i><?php echo $navigation->gettitle(); ?></a>
 
 

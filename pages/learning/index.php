@@ -769,6 +769,38 @@ if ($userFunctions->currentStatus($userid, $statusStatement) != FALSE){
 
                 </div>
             </section>
+
+            <!-- Top 6 videos -->
+            <section id="top6" class="slice slice-lg bg-section-secondary delimiter-top m-0 p-2">
+                <div class="container pt-0 pt-lg-0">
+                    <div class="actions-toolbar py-2 mb-4 ">
+
+
+                        <h4 class="mb-1  mt-2">Our best PRO content.</h4>
+                        <p class="text-sm text-muted mb-0">Chosen by GIEQs Online moderators.  You can purchase individual courses or access everything with a GIEQs PRO subscription.</p>
+                    </div>
+                    <div class="placeholder">
+                        <div class="card-deck flex-column flex-lg-row mb-5">
+                            <div class="card card-skeleton"></div>
+                            <div class="card card-skeleton"></div>
+                            <div class="card card-skeleton"></div>
+                        </div>
+                        <div class="card-deck flex-column flex-lg-row mb-5">
+                            <div class="card card-skeleton"></div>
+                            <div class="card card-skeleton"></div>
+                            <div class="card card-skeleton"></div>
+                        </div>
+                    </div>
+
+                    
+
+                    </div> <!-- end new material div-->
+                </div> <!-- end container div-->
+
+            </section>
+
+                        <!-- Whats new  -->
+
             <section class="slice delimiter-bottom m-0 p-2" id="whats-new">
 
                 <div class="container pt-0 pt-lg-0">
@@ -848,7 +880,7 @@ if ($userFunctions->currentStatus($userid, $statusStatement) != FALSE){
 
 
                         <h4 class="mb-1  mt-2">Popular Videos</h4>
-                        <p class="text-sm text-muted mb-0">What others are watching right ow.</p>
+                        <p class="text-sm text-muted mb-0">Popular videos amongst other users.</p>
                     </div>
                     <div class="placeholder">
                         <div class="card-deck flex-column flex-lg-row mb-5">
@@ -860,10 +892,38 @@ if ($userFunctions->currentStatus($userid, $statusStatement) != FALSE){
 
                     
 
-                </div> <!-- end new material div-->
-        </div> <!-- end container div-->
+                    </div> <!-- end new material div-->
+                </div> <!-- end container div-->
 
-        </section>
+            </section>
+
+            <!-- Favourites videos -->
+
+
+            <section id="favourites" class="slice slice-lg bg-section-secondary delimiter-top m-0 p-2">
+                <div class="container pt-0 pt-lg-0">
+                    <div class="actions-toolbar py-2 mb-4 ">
+
+
+                        <h4 class="mb-1  mt-2">Your Favourited Videos</h4>
+                        <p class="text-sm text-muted mb-0">Videos you previously favourited.</p>
+                    </div>
+                    <div class="placeholder">
+                        <div class="card-deck flex-column flex-lg-row mb-5">
+                            <div class="card card-skeleton"></div>
+                            <div class="card card-skeleton"></div>
+                            <div class="card card-skeleton"></div>
+                        </div>
+                    </div>
+
+                    
+
+                    </div> <!-- end new material div-->
+                </div> <!-- end container div-->
+
+            </section>
+
+             
 
 
         </div>

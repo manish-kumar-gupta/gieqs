@@ -55,7 +55,7 @@ spl_autoload_register ('class_loader');
 
 ?>
 
-    <title>Ghent International Endoscopy Symposium - Backend - Image Editor</title>
+    <title>Ghent International Endoscopy Symposium - Backend - Top Asset/Video Editor</title>
 
     <!-- Page CSS -->
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/flatpickr/dist/flatpickr.min.css">
@@ -134,9 +134,9 @@ spl_autoload_register ('class_loader');
                         <!-- Salute + Small stats -->
                         <div class="row align-items-center mb-4">
                             <div class="col-md-5 mb-4 mb-md-0">
-                                <span class="h2 mb-0 text-white d-block">Image Manager</span>
+                                <span class="h2 mb-0 text-white d-block">Top Asset Manager</span>
 
-                                <!-- <span class="text-white">Have a nice day!</span> -->
+                                <span class="text-white">Select the top assets and videos to display as promotional material!</span>
                             </div>
                             <div class="col-auto flex-fill d-xl-block">
                 <ul class="list-inline row justify-content-lg-end mb-0">
@@ -257,15 +257,32 @@ $pdocrud->checkDuplicateRecord(array("cipher")); */
 
 //$pdocrud->setSettings("uploadURL", BASE_URL. "/assets/img/icons/");
 
-$pdocrud->fieldTypes("src", "IMAGE");//change type to image
+//$pdocrud->fieldTypes("src", "IMAGE");//change type to image
 
-$pdocrud->viewColFormatting("src", "image");
+//$pdocrud->viewColFormatting("src", "image");
 
 
 
-$pdocrud->fieldTypes("created", "date");
-    
-echo $pdocrud->dbTable("images_backend")->render();
+//$pdocrud->fieldTypes("created", "date");
+$pdocrud->addPlugin('select2');
+$pdocrud->relatedData('asset_id','assets_paid','id', 'name');
+$pdocrud->fieldCssClass("asset_id", array("select2-element-identifier"));// add css classes
+$pdocrud->fieldTypes("active", "radio");//change gender to radio button
+$pdocrud->fieldDataBinding("active", array(0 => "No", 1=> "Yes"), "", "","array");//add data for radio button
+
+echo $pdocrud->dbTable("topAssets")->render();
+$pdocrud->loadPluginJsCode("select2",".select2-element-identifier");//to add plugin call on select elements
+
+$pPages = new PDOCrud();
+$pPages->addPlugin('select2');
+$pPages->relatedData('video_id','video','id','name');
+$pPages->fieldCssClass("video_id", array("select2-element-identifier"));// add css classes
+$pPages->fieldTypes("active", "radio");//change gender to radio button
+$pPages->fieldDataBinding("active", array(0 => "No", 1=> "Yes"), "", "","array");//add data for radio button
+
+
+echo $pPages->dbTable("topVideos")->render();
+
 
 
 
@@ -629,15 +646,43 @@ break;
 
 $(document).on('ready', function(){
 
+    //$('.pdocrud-table-container').isvisible(function(){
+
+        $('.select2-element-identifier').select2();
+
+
+
+    //})
+
+    $(function() {
+  $('#show').click(function() {
+    $('.pdocrud-table-container').show();
+  });
+
+  var observer = new MutationObserver(function(mutations) {
+    alert('Attributes changed!');
+  });
+  var target = document.querySelector('.pdocrud-table-container');
+  observer.observe(target, {
+    attributes: true
+  });
+
+});
+
+  
+
+
     jQuery(document).ready(function () {
                                jQuery(document).on("pdocrud_before_ajax_action",function(event,obj,data){
-                                   console.log(obj);
-                                   console.log(data);
+                                   //console.log(obj);
+                                   //console.log(data);
 
                                    if (data.action == 'edit' || data.action == 'add'){
 
                                        //alert('got it');
                                        $(document).find('#cipher-generate').removeClass('d-none');
+                                       $('.select2-element-identifier').select2();
+
                                        //console.log(generateCipher(10));
 
                                    }
@@ -657,6 +702,13 @@ $(document).on('ready', function(){
 
                                 });
                             });
+
+                            jQuery(document).on("pdocrud_after_ajax_action",function(event,obj,data){
+                                   console.log(obj);
+                                   console.log(data);
+                                   $('.select2-element-identifier').select2();
+
+                            })
 
     $(document).on('click', '#cipher-generate', function(event){
 
