@@ -101,6 +101,9 @@
                   <span class="dropdown-header">GIEQs Coin</span>
                   <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/coin_grant.php">Edit Coin Grant</a>
                   <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/coin_spend.php">Edit Coin Spend</a>
+
+                  <span class="dropdown-header">Top Assets</span>
+                  <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/top_assets.php">Edit Top Assets and Videos</a>
   
                   </div>
                 </div>
