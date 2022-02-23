@@ -68,6 +68,9 @@ $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
     <script src="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.js"></script>
     <script src="<?php echo BASE_URL; ?>/assets/libs/autosize/dist/autosize.min.js"></script>
     <script src="<?php echo BASE_URL; ?>/node_modules/bootstrap-tour/build/js/bootstrap-tour-standalone.min.js">
+
+<?php require BASE_URI . '/assets/scripts/purchase.php';?>
+
     </script>
 
 
