@@ -1508,6 +1508,10 @@ $(document).ready(function() {
 
             launchSubscriptionDialog(2);
 
+        } else {
+
+            alert ('You already own a subscription!  Please contact us if there are issues with your access.');
+
         }
 
 

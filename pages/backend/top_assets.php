@@ -271,9 +271,8 @@ $pdocrud->fieldTypes("active", "radio");//change gender to radio button
 $pdocrud->fieldDataBinding("active", array(0 => "No", 1=> "Yes"), "", "","array");//add data for radio button
 
 echo $pdocrud->dbTable("topAssets")->render();
-$pdocrud->loadPluginJsCode("select2",".select2-element-identifier");//to add plugin call on select elements
 
-$pPages = new PDOCrud();
+$pPages = new PDOCrud(true);
 $pPages->addPlugin('select2');
 $pPages->relatedData('video_id','video','id','name');
 $pPages->fieldCssClass("video_id", array("select2-element-identifier"));// add css classes
@@ -283,6 +282,7 @@ $pPages->fieldDataBinding("active", array(0 => "No", 1=> "Yes"), "", "","array")
 
 echo $pPages->dbTable("topVideos")->render();
 
+$pdocrud->loadPluginJsCode("select2",".select2-element-identifier");//to add plugin call on select elements
 
 
 
@@ -660,7 +660,7 @@ $(document).on('ready', function(){
   });
 
   var observer = new MutationObserver(function(mutations) {
-    alert('Attributes changed!');
+    //alert('Attributes changed!');
   });
   var target = document.querySelector('.pdocrud-table-container');
   observer.observe(target, {

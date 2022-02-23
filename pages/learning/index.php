@@ -777,7 +777,7 @@ if ($userFunctions->currentStatus($userid, $statusStatement) != FALSE){
 
 
                         <h4 class="mb-1  mt-2">Our best PRO content.</h4>
-                        <p class="text-sm text-muted mb-0">Chosen by GIEQs Online moderators.  You can purchase individual courses or access everything with a GIEQs PRO subscription.</p>
+                        <p class="text-sm text-muted mb-0">Chosen by GIEQs Online moderators and regularly updated.  These videos may require purchase of additional course content.  You can purchase individual courses or access everything with a <span class="gieqsGold subscribe-now cursor-pointer">GIEQs PRO subscription.</span></p>
                     </div>
                     <div class="placeholder">
                         <div class="card-deck flex-column flex-lg-row mb-5">
@@ -897,10 +897,10 @@ if ($userFunctions->currentStatus($userid, $statusStatement) != FALSE){
 
             </section>
 
-            <!-- Favourites videos -->
+            <!-- Favourites videos **NOT YET IMPLEMENTED*** -->
 
 
-            <section id="favourites" class="slice slice-lg bg-section-secondary delimiter-top m-0 p-2">
+            <!-- <section id="favourites" class="slice slice-lg bg-section-secondary delimiter-top m-0 p-2">
                 <div class="container pt-0 pt-lg-0">
                     <div class="actions-toolbar py-2 mb-4 ">
 
@@ -918,11 +918,11 @@ if ($userFunctions->currentStatus($userid, $statusStatement) != FALSE){
 
                     
 
-                    </div> <!-- end new material div-->
-                </div> <!-- end container div-->
+                    </div> 
+                </div> 
 
             </section>
-
+ --> 
              
 
 
@@ -1001,6 +1001,33 @@ if ($userFunctions->currentStatus($userid, $statusStatement) != FALSE){
 
 
         }
+
+        function getTopVideos() {
+
+const dataToSend = {
+
+}
+
+const jsonString = JSON.stringify(dataToSend);
+console.log(jsonString);
+
+var request2 = $.ajax({
+    url: siteRoot + "scripts/getTopVideos.php",
+    type: "POST",
+    contentType: "application/json",
+    data: jsonString,
+});
+
+
+
+request2.done(function(data) {
+    // alert( "success" );
+    $('#top6').find('.placeholder').html(data);
+    //$(document).find('.Thursday').hide();
+})
+
+
+}
 
         function getNextSteps() {
 
@@ -1125,6 +1152,7 @@ if ($userFunctions->currentStatus($userid, $statusStatement) != FALSE){
             getRecentViewed();
             getNextSteps();
             getPopular();
+            getTopVideos();
 
             /* $(document).click(function(event) { 
                 $target = $(event.target);

@@ -462,6 +462,144 @@ class usersMetricsManager
 
     }
 
+    public function getTopAssets($debug=false)
+    {
+
+        $q = "SELECT `asset_id` FROM `topAssets`
+            WHERE `active` = 1
+            ORDER BY CAST(`order` AS unsigned) ASC
+            LIMIT 20";
+
+        if ($debug){
+
+            echo $q;
+
+        }
+
+        $result = $this->connection->RunQuery($q);
+
+        $x = 0;
+        $y=0;
+        $rowReturn = array();
+        $nRows = $result->rowCount();
+
+        if ($nRows > 0) {
+
+            
+
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                $rowReturn[$x] = $row['asset_id'];
+                $x++;
+
+            }
+
+            if ($debug){
+
+                print_r($rowReturn);
+    
+            }
+
+            //now rowReturn is an array of 10 newest videos
+
+
+
+            //check access
+
+            //make 3
+
+            //return
+
+            
+
+            return $rowReturn;
+
+
+        } else {
+
+
+            if ($debug){
+
+                echo 'no assets matched';
+
+            }
+
+            return false;
+
+            
+        }
+
+    }
+
+    public function getTopVideos($debug=false)
+    {
+
+        $q = "SELECT `video_id` FROM `topVideos`
+            WHERE `active` = 1
+            ORDER BY CAST(`order` AS unsigned) ASC
+            LIMIT 20";
+
+        if ($debug){
+
+            echo $q;
+
+        }
+
+        $result = $this->connection->RunQuery($q);
+
+        $x = 0;
+        $y=0;
+        $rowReturn = array();
+        $nRows = $result->rowCount();
+
+        if ($nRows > 0) {
+
+            
+
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                $rowReturn[$x] = $row['video_id'];
+                $x++;
+
+            }
+
+            if ($debug){
+
+                print_r($rowReturn);
+    
+            }
+
+            //now rowReturn is an array of 10 newest videos
+
+
+
+            //check access
+
+            //make 3
+
+            //return
+
+            
+
+            return $rowReturn;
+
+
+        } else {
+
+
+            if ($debug){
+
+                echo 'no videos matched';
+
+            }
+
+            return false;
+
+            
+        }
+
+    }
+
     public function getNewVideos($debug=false)
     {
 
