@@ -1,3 +1,15 @@
+.btn-outline-gieqsGold {
+
+    color: rgb(238, 194, 120);
+    border-color: rgb(238, 194, 120);
+}
+
+.btn-outline-gieqsGold :hover {
+
+    color: white;
+    
+}
+
 .text-gieqsGold {
 
     color: rgb(238, 194, 120);
