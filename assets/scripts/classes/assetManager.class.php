@@ -4739,7 +4739,7 @@ public function returnVideoDenominatorSelect2()
         public function getAccessVideo ($id, $debug=false){
 
 
-            //check prior that user does not have access and that acess is required to access this video
+            //check prior that user does not have access and that access is required to access this video
 
             $asset_array = $this->which_assets_contain_video($id);
 
@@ -4817,6 +4817,9 @@ public function returnVideoDenominatorSelect2()
             }
 
             //before returning check that these are advertised
+
+            $assetArray = $this->removeNonAdvertisedAssets($assetArray, false);
+
             return $assetArray;
 
 
@@ -5438,6 +5441,118 @@ if ($debug){
             return false;
         }
 
+
+
+    }
+
+    public function removeNonAdvertisedAssets ($asset_array, $debug=false){
+        //looks through an asset array from getAccessVideo and removes those which are not advertised for sale
+
+        foreach ($asset_array as $key=>$value){
+
+            foreach ($value as $key2=>$value2){
+                //now have asset id
+
+
+                $q = null; 
+
+                $q = "Select `advertise_for_purchase` FROM `assets_paid` WHERE (`id` = '$value2')";
+
+                if ($debug){
+                    echo $q . '<br><br>';
+                
+                }
+
+                $result = $this->connection->RunQuery($q);
+
+                $x = 0;
+                $nRows = $result->rowCount();
+                
+                if ($nRows > 0) {
+                
+                    while($row = $result->fetch(PDO::FETCH_ASSOC)){
+                
+                        if ($row['advertise_for_purchase'] == '1'){
+
+                            if ($debug){
+
+                                echo 'asset ' . $value2 . ' advertised for purchase and so retained';
+
+                            }
+
+                        }else if ($row['advertise_for_purchase'] == '0'){
+
+                            unset($asset_array[$key][$key2]);
+
+
+                            if ($debug){
+
+                                echo 'asset ' . $value2 . ' NOT advertised for purchase and so removed';
+
+                            }
+
+                        }else if ($row['advertise_for_purchase'] == null){
+
+                            //unset($asset_array[$key][$key2]);
+
+
+                            if ($debug){
+
+                                echo 'asset ' . $value2 . ' NOT marked for removal so retained';
+
+                            }
+
+                        }else {
+
+                            //remove from array
+
+                            unset($asset_array[$key][$key2]);
+
+
+                            if ($debug){
+
+                                echo 'asset ' . $value2 . ' NOT advertised for purchase and so removed';
+
+                            }
+
+                        }
+                
+                
+                    }
+                
+                   
+                
+                    //return $rowReturn;
+                
+                } else {
+                    
+                
+                    if ($debug){
+                
+                        echo 'no match for asset id ' . $value2;
+                    }
+                
+                    //return false;
+                
+                    
+                }
+
+
+
+
+
+            }
+
+
+        }
+
+        if ($debug){
+
+            echo '<br/>remaining asset array is ';
+            var_dump($asset_array);
+        }
+
+        return $asset_array;
 
 
     }

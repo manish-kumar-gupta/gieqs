@@ -975,7 +975,7 @@ if ($assetManager->determineVideoAccessSingleVideo($id, $fullAccess, $userid, fa
 
 
 
-<div class="card m-2">
+<div class="card m-4">
 <div class="card-header">
     <h5 class="card-title mb-0"><?php echo $assets_paid->getname();?></h5>
     <span class="text-muted text-sm">Access is immediate after concluding registration</span>
