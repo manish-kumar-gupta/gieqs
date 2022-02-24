@@ -101,9 +101,9 @@ $newVideosUnfiltered = $usersMetricsManager->getTopVideos(false);
 
 $newVideosFiltered = $assetManager->determineVideoAccess($newVideosUnfiltered, true, $userid, false);
 
-//shuffle($newVideosFiltered);
+shuffle($newVideosFiltered);
 
-$newVideos = array_slice($newVideosFiltered, 0, 3);  //TODO make 6 possible
+$newVideos = array_slice($newVideosFiltered, 0, 6);  //TODO make 6 possible
 
 
 if ($debug){
@@ -121,6 +121,8 @@ if ($debug){
 
 }
 
+$x = 0;
+
 
 
 ?>
@@ -136,6 +138,14 @@ if ($debug){
                                     }
 
               foreach ($newVideos as $key=>$value){
+
+                $x++;
+                if ($debug){
+
+                    echo 'x is ' . $x;
+
+                }
+
             $video_PDO->Load_from_key($value);
             $key = $usersMetricsManager->getKeyUserViewsVideoMatch($userid, $value);
             if ($debug){
@@ -202,14 +212,19 @@ if ($debug){
                   </div>
               </div>
 
+                        <?php   if ($x == 3){ ?>
+
+            </div><div class="card-deck flex-column flex-lg-row mb-5">
+            <?php } ?>
+
               <?php }
               
-              if ($a == 1){
+              if ($a == 1 || $a == 4){
 
                 echo '<div class="card"></div>
               <div class="card"></div>';
 
-              }elseif ($a == 2){
+              }elseif ($a == 2 || $a == 5){
 
                 echo '<div class="card"></div>';
 
@@ -219,6 +234,8 @@ if ($debug){
               <div class="card"></div><div class="card"></div>';
 
               }
+
+             
               
               ?>
 
@@ -226,5 +243,5 @@ if ($debug){
 
 
 
-          </div> <!-- end new material div-->
+          </div> <!-- end card deck div-->
                 </div> <!-- end container div-->
