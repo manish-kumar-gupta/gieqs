@@ -1039,8 +1039,17 @@ if ($assetManager->determineVideoAccessSingleVideo($id, $fullAccess, $userid, fa
   
 
 //echo $userid; echo $id; echo 'hello';
-$debug = false;
+$debug = true;
 
+if ($debug){
+
+    echo '<br/>Debug Cookie Information</br>';
+    echo '<pre style="color:white">';
+    var_dump($_COOKIE);
+    echo '</pre>';
+    echo '<div id="cookiedebug"></div>';
+    echo '<br/>Debug Cookie Information</br>';
+}
 
 $current_date = new DateTime('now', new DateTimeZone('UTC'));
 
@@ -1752,6 +1761,7 @@ chapterData
 
     var browsing_idBeforeExpand = readCookie('browsing_id');
     var browsing_arrayBeforeExpand = $('#browsing_array').text();
+
 
     function submitPreRegisterForm() {
 
