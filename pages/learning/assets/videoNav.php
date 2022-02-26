@@ -4,6 +4,8 @@
 //for the ajax version
 $data = json_decode(file_get_contents('php://input'), true);
 
+
+
 if ($data){
 
     if ($data['identifier'] == 'refresh'){
@@ -39,6 +41,10 @@ $assets_paid = new assets_paid;
 
 require_once(BASE_URI . '/assets/scripts/classes/pages.class.php');
 $pages = new pages;
+
+require_once(BASE_URI . '/pages/learning/classes/usersMetricsManager.class.php');
+$usersMetricsManager = new usersMetricsManager;
+
 
 
 $debug = false;
@@ -560,17 +566,19 @@ Useful for PHP to JS transfer
 
                 ?>
 
-                        <a href="<?php echo BASE_URL . '/pages/learning/index.php';?>"
-                            class="nav-link nav-link-icon gieqsGold">
+<a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $browsing_id;?>"
+                                class="nav-link nav-link-icon gieqsGold">
 
                             <?php
             }else {
 
                 ?>
 
-                            <a href="<?php echo BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=' . $browsing_id;?>"
-                                class="nav-link nav-link-icon gieqsGold">
+                            <!-- <a href="<?php //echo BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=' . $browsing_id;?>"
+                                class="nav-link nav-link-icon gieqsGold"> -->
 
+                                <a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $browsing_id;?>"
+                                class="nav-link nav-link-icon gieqsGold">
 
                                 <?php 
 
@@ -587,7 +595,7 @@ Useful for PHP to JS transfer
                         
                     } else{
                     $pieces = explode(" ", $assets_paid->getname());
-$first_part = implode(" ", array_splice($pieces, 0, 4));
+$first_part = implode(" ", array_splice($pieces, 0, 6));
                     }
                     
                     ?>
@@ -637,7 +645,8 @@ $first_part = implode(" ", array_splice($pieces, 0, 4));
 
 
                         <?php
-                }elseif ($browsing == '99' || $browsing == 'false' || $browsing == ''){
+                }elseif (($browsing == '99' || $browsing == 'false' || $browsing == '') && ($browsing_last == 'false' || $browsing_last == '')){
+
 
                     
 ?>
@@ -650,17 +659,25 @@ $first_part = implode(" ", array_splice($pieces, 0, 4));
                             <?php
                 }else {
     
+
+                    //need to get the last video the user watched from this asset, then add the restrict and all other relevant things (set the cookie )
+                    $videoidlast = $usersMetricsManager->getLastVideoViewedInAsset($userid, $browsing_array, false);
                     ?>
 
-                            <a href="<?php echo BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=' . $browsing_id;?>"
+                    
+
+<a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $videoidlast;?>"
                                 class="nav-link nav-link-icon text-muted">
+
+                            <!-- <a href="<?php //echo BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=' . $browsing_id;?>"
+                                class="nav-link nav-link-icon text-muted"> -->
 
 
                                 <?php 
     
             }
                         
-                        if ($browsing == '99' || $browsing == 'false' || $browsing == ''){
+                        if (($browsing == '99' || $browsing == 'false' || $browsing == '') && ($browsing_last == 'false' || $browsing_last == '')){
 
                             $first_part = ' Dashboard';
 

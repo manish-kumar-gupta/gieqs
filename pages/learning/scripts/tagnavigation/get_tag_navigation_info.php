@@ -137,7 +137,11 @@ if (isset($browsing) && isset($browsing_id) && isset($videoid)){
 
         //determine the asset access ? assume since on page // no check for now
 
-        $access = $assetManager->is_assetid_covered_by_user_subscription($browsing_id, $userid);
+        //removed this line as access determined by player
+        
+        //$access = $assetManager->is_assetid_covered_by_user_subscription($browsing_id, $userid);
+
+        $access=true;
 
         if ($access){
 

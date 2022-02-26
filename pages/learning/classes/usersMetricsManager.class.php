@@ -104,6 +104,53 @@ class usersMetricsManager
 
     }
 
+    public function getLastVideoViewedInAsset($userid, $asset_array, $debug = false)
+    {
+
+        //uses assetManager returnVideosAsset to provide the array
+
+        if ($debug) {
+
+            echo PHP_EOL;
+            echo 'asset array was';
+            print_r($asset_array);
+        }
+
+        $detected = false;
+
+        $videos = $this->getAllVideosWatchedUser($userid);
+
+        if ($debug) {
+
+            echo PHP_EOL;
+            echo 'user has watched array ';
+            print_r($videos);
+        }
+
+        foreach ($videos as $key => $value) {
+
+            //if in asset array then return the first video id.
+
+            
+            if (in_array($value, $asset_array) === true) {
+
+                $detected = $value;
+                break;
+
+            }
+
+        }
+
+        if ($debug){
+
+            echo 'user last watched video id ' . $detected . 'from this asset group';
+        }
+        return $detected;
+
+    }
+
+    
+
     public function getLastViewedVideoPage($userid, $page_id)
     {
 
