@@ -47,7 +47,7 @@ $usersMetricsManager = new usersMetricsManager;
 
 
 
-$debug = false;
+$debug = true;
 
 if ($debug){
     echo '<span style="color:white;">';
@@ -171,7 +171,48 @@ if(isset($_COOKIE['restricted'])) {
 
 //currently shows all live videos and non tagged videos (TODO)
 
-if (isset($browsing) && isset($browsing_id) && is_array($browsing_array)){
+
+//determine parameters here since loaded
+
+
+//determine cases  VERY IMPORTANT
+
+        //CASE 1 browsing 5 simple page or // CASE 2 browsing just a video or //CASE 3 browsing an asset or was browsing an asset
+
+        if ($browsing == '5'){
+
+            //simple page
+
+            $case = 1;
+
+        }elseif (($browsing == '99' || $browsing == 'false' || $browsing == '') && ($browsing_last == 'false' || $browsing_last == '' || $browsing_last == 'null')){
+
+
+            //just a  video
+            $case = 2;
+
+        }elseif ($browsing == '2' || $browsing == '3' || $browsing == '4' || $browsing_last == '2' || $browsing_last == '3' || $browsing_last == '4') {
+
+            //asset currently or was being browsed
+
+            $case = 3;
+
+
+        }else {
+
+            $case = 4;
+
+
+        }
+
+        if ($debug){
+
+            echo PHP_EOL;
+            echo 'Case is ' . $case;
+        }
+
+
+if (isset($browsing) && isset($browsing_id)){
 
 
     //is an asset
@@ -183,7 +224,7 @@ if (isset($browsing) && isset($browsing_id) && is_array($browsing_array)){
 
     
 
-    if ($browsing == '2' || $browsing == '3' || $browsing == '4'){
+    if ($case == 3){
 
         //load asset
         if ($assets_paid->Return_row($browsing_id)){
@@ -312,9 +353,9 @@ if (isset($browsing) && isset($browsing_id) && is_array($browsing_array)){
 
     }
     
-}elseif ($browsing == '5'){
+}elseif ($case == 1){
 
-    //browsing not a course or asset
+    //browsing not a course or asset but from a simple page
 
 
     if(isset($id)) {
@@ -427,7 +468,7 @@ if (isset($browsing) && isset($browsing_id) && is_array($browsing_array)){
 
 
 
-}elseif ($browsing = '99'){
+}elseif ($case == 2){
 
     if ($debug){
 
@@ -455,9 +496,17 @@ if (isset($browsing) && isset($browsing_id) && is_array($browsing_array)){
 
     }
 
+        //set browsing = 99
+
+    setcookie("browsing", "99", time() - 3600);
+
+
 
 
 }else{
+
+
+
 
 
 
@@ -472,6 +521,8 @@ if (isset($browsing) && isset($browsing_id) && is_array($browsing_array)){
     if ($debug){
 
         echo 'one of required parameters $browsing and / or $browsing_id not set in cookies';
+
+        //actually these are always set
 
     }
 
@@ -506,6 +557,13 @@ if ($debug){
     echo 'restricted is ' . $restricted;
 
 }
+
+
+//determine first page
+
+
+
+//determine destination
 
 
 
@@ -548,12 +606,23 @@ Useful for PHP to JS transfer
             </ul> -->
             <ul class="navbar-nav justify-content-sm-center ml-sm-auto">
 
-                <?php if (($selectedTag == 'null') || ($selectedTag == NULL) || (is_numeric(intval($selectedTag)) && $restricted == 'true')){?>
+
+            <?php 
+
+
+
+
+            ?>
+
+    <?php if (($selectedTag == 'null') || ($selectedTag == NULL) || (is_numeric(intval($selectedTag)) && $restricted == 'true')){?>
 
                 <li class="nav-item">
 
                     <?php
-            if ($browsing == '5'){
+
+
+
+            if ($case == 1){
 
                 ?>
 
@@ -562,14 +631,20 @@ Useful for PHP to JS transfer
 
 
                         <?php
-            }elseif ($browsing == '99') {
+
+
+
+            }elseif ($case == 2){
 
                 ?>
 
-<a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $browsing_id;?>"
-                                class="nav-link nav-link-icon gieqsGold">
+<a href="<?php echo BASE_URL . '/pages/learning/index.php';?>"
+                            class="nav-link nav-link-icon text-muted">
 
                             <?php
+
+
+
             }else {
 
                 ?>
@@ -577,31 +652,35 @@ Useful for PHP to JS transfer
                             <!-- <a href="<?php //echo BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=' . $browsing_id;?>"
                                 class="nav-link nav-link-icon gieqsGold"> -->
 
-                                <a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $browsing_id;?>"
+                    <a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $browsing_id;?>"
                                 class="nav-link nav-link-icon gieqsGold">
 
                                 <?php 
 
-        }
+            }
                     
-                    if ($browsing == '5'){
-                        $pages->Load_from_key($browsing_id);
-                        $first_part = $pages->gettitle();
+            if ($case == 1){
+                        
+                
+                $pages->Load_from_key($browsing_id);
+                $first_part = $pages->gettitle();
 
-                    }elseif ($browsing == '99') {
+            }elseif ($case == 2){
                         
 
-                        $first_part = 'Return to Dashboard';
+                $first_part = ' Dashboard';
                         
-                    } else{
-                    $pieces = explode(" ", $assets_paid->getname());
-$first_part = implode(" ", array_splice($pieces, 0, 6));
-                    }
+            } elseif ($case == 3){
+                
+                $pieces = explode(" ", $assets_paid->getname());
+                $first_part = implode(" ", array_splice($pieces, 0, 6));
+            
+            }
                     
                     ?>
 
 
-                                <span class="nav-link-inner--text "><?php echo $first_part;?></span>
+                                <span class="nav-link-inner--text "><?php echo 'Go to ' . $first_part;?></span>
 
                                 <!-- unless rge selectedTag is not null and restricted is false then no numbers and expanded tag viewing -->
 
@@ -631,12 +710,19 @@ $first_part = implode(" ", array_splice($pieces, 0, 6));
                     </a>
                 </li>
 
+
+
+
+
+
+
+
                 <?php } elseif (is_numeric(intval($selectedTag)) && $restricted == 'false'){ ?>
 
                 <li class="nav-item">
 
                     <?php
-                if ($browsing_last == '5'){
+                if ($case == 1){
     
                     ?>
 
@@ -645,7 +731,7 @@ $first_part = implode(" ", array_splice($pieces, 0, 6));
 
 
                         <?php
-                }elseif (($browsing == '99' || $browsing == 'false' || $browsing == '') && ($browsing_last == 'false' || $browsing_last == '')){
+                }elseif ($case == 2){
 
 
                     
@@ -657,7 +743,7 @@ $first_part = implode(" ", array_splice($pieces, 0, 6));
 
 
                             <?php
-                }else {
+                }elseif ($case == 3) {
     
 
                     //need to get the last video the user watched from this asset, then add the restrict and all other relevant things (set the cookie )
@@ -677,18 +763,18 @@ $first_part = implode(" ", array_splice($pieces, 0, 6));
     
             }
                         
-                        if (($browsing == '99' || $browsing == 'false' || $browsing == '') && ($browsing_last == 'false' || $browsing_last == '')){
+                        if ($case == 2){
 
                             $first_part = ' Dashboard';
 
 
-                        }elseif($browsing_last == '5' && $browsing == '99'){
+                        }elseif($case == 1){
                             $pages->Load_from_key($browsing_id);
                             $first_part = $pages->gettitle();
     
-                        }else{
+                        }elseif ($case == 3){
                         $pieces = explode(" ", $assets_paid->getname());
-                        $first_part = implode(" ", array_splice($pieces, 0, 4));
+                        $first_part = implode(" ", array_splice($pieces, 0, 6));
                         }
                         
                         ?>

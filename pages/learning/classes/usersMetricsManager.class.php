@@ -118,16 +118,16 @@ class usersMetricsManager
 
         $detected = false;
 
-        $videos = $this->getAllVideosWatchedUser($userid);
+        $videosArray = $this->getAllVideosWatchedUser($userid);
 
         if ($debug) {
 
             echo PHP_EOL;
             echo 'user has watched array ';
-            print_r($videos);
+            print_r($videosArray);
         }
 
-        foreach ($videos as $key => $value) {
+        foreach ($videosArray as $key => $value) {
 
             //if in asset array then return the first video id.
 
