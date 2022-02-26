@@ -3060,8 +3060,17 @@ var t=setInterval(writeDebugInfo,1000);
     function restrictTagStatusBar() {
 
         var restricted = getCookie('restricted');
+        var browsing = getCookie('browsing');
 
-        if (restricted == 'false') {
+        if (browsing == '' || browsing == '99' || browsing == 'false'){
+
+            //alert('browsing false');
+            $('.expandSearch').text('');
+        
+
+        }else{
+
+            if (restricted == 'false') {
 
             var browsing_last = getCookie('browsing_last');
             createCookie('browsing', browsing_last, '2');
@@ -3082,6 +3091,8 @@ var t=setInterval(writeDebugInfo,1000);
 
             showTagBar();
 
+            }
+            
         }
 
 
@@ -3090,6 +3101,20 @@ var t=setInterval(writeDebugInfo,1000);
 
     function checkExpandedStatusTagBar() {
 
+        //if 99 or no browsing then this should just remove expand search
+
+        var browsing = getCookie('browsing');
+
+        if (browsing == '' || browsing == '99' || browsing == 'false'){
+
+            //alert('browsing false');
+            $('.expandSearch').text('');
+            window.localStorage.setItem('restricted', false);
+			createCookie('restricted', false, '2');
+
+        
+
+        }else{
 
         var restricted = window.localStorage.getItem('restricted');
         console.log('restricted is ' + restricted);
@@ -3116,6 +3141,8 @@ var t=setInterval(writeDebugInfo,1000);
 
 
         }
+
+    }
 
         // showTagBar(selectedTag);
 

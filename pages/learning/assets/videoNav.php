@@ -637,7 +637,9 @@ $first_part = implode(" ", array_splice($pieces, 0, 4));
 
 
                         <?php
-                }elseif ($browsing = '99'){
+                }elseif ($browsing == '99' || $browsing == 'false' || $browsing == ''){
+
+                    
 ?>
 
                     <a href="<?php echo BASE_URL . '/pages/learning/index.php';?>"
@@ -658,7 +660,12 @@ $first_part = implode(" ", array_splice($pieces, 0, 4));
     
             }
                         
-                        if ($browsing_last == '5' && $browsing == '99'){
+                        if ($browsing == '99' || $browsing == 'false' || $browsing == ''){
+
+                            $first_part = ' Dashboard';
+
+
+                        }elseif($browsing_last == '5' && $browsing == '99'){
                             $pages->Load_from_key($browsing_id);
                             $first_part = $pages->gettitle();
     
@@ -670,7 +677,7 @@ $first_part = implode(" ", array_splice($pieces, 0, 4));
                         ?>
 
 
-                            <span class="nav-link-inner--text ">Return to Restricted Browsing of
+                            <span class="nav-link-inner--text ">Return to 
                                 <?php echo $first_part;?></span>
 
 

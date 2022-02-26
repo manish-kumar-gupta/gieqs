@@ -2061,11 +2061,14 @@ $(document).ready(function () {
 			window.localStorage.setItem('restricted', true);
 			createCookie('restricted', true, '2');
 
-				$('.expandSearch').text('Expand Search');
+				//$('.expandSearch').text('Expand Search');
 
 				//WRITE THE SELECTED TAG TO LOCAL STORAGE
 
 			showTagBar(selectedTag);
+
+			checkExpandedStatusTagBar();
+
 
 			//make the selected button green and all others blue
 
