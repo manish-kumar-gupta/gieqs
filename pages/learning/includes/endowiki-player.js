@@ -2059,6 +2059,8 @@ $(document).ready(function () {
 			//console.log(selectedTag);
 
 			window.localStorage.setItem('restricted', true);
+			createCookie('restricted', true, '2');
+
 				$('.expandSearch').text('Expand Search');
 
 				//WRITE THE SELECTED TAG TO LOCAL STORAGE

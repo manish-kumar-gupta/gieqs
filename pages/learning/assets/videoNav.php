@@ -41,10 +41,41 @@ require_once(BASE_URI . '/assets/scripts/classes/pages.class.php');
 $pages = new pages;
 
 
-$debug = FALSE;
+$debug = false;
 
 if ($debug){
-    var_dump($_COOKIE);
+    echo '<span style="color:white;">';
+    echo '<br/>';
+
+    echo 'Cookie [selectedTag] = ' . $_COOKIE['selectedTag'];
+    echo '<br/>';
+    echo 'Cookie [browsing] = ' . $_COOKIE['browsing'];
+    echo '<br/>';
+    echo 'Cookie [browsing_last] = ' . $_COOKIE['browsing_last'];
+    echo '<br/>';
+    echo 'Cookie [browsing_array] = ' . $_COOKIE['browsing_array'];
+    echo '<br/>';
+
+    echo 'Cookie [browsing_id] = ' . $_COOKIE['browsing_id'];
+    echo '<br/>';
+
+    echo 'Cookie [restricted] = ' . $_COOKIE['restricted'];
+    echo '<br/>';
+
+    echo 'localStorage [restricted] = ' . $data['localrestricted'];
+    echo '<br/>';
+
+        echo 'localStorage [selectedTag] = ' . $data['localselectedTag'];
+        echo '<br/>';
+
+
+ 
+//var_dump($data);
+
+    
+
+
+    echo '</span>';
 }
 
 if(isset($_COOKIE['browsing'])) {
@@ -395,6 +426,7 @@ if (isset($browsing) && isset($browsing_id) && is_array($browsing_array)){
     if ($debug){
 
         echo '99 loop entered';
+        //need here to have dashboard as the page back
 
     }
 
@@ -524,6 +556,14 @@ Useful for PHP to JS transfer
 
 
                         <?php
+            }elseif ($browsing == '99') {
+
+                ?>
+
+                <a href="<?php echo BASE_URL . '/pages/learning/index.php';?>"
+                class="nav-link nav-link-icon gieqsGold">
+
+<?php
             }else {
 
                 ?>
@@ -540,7 +580,12 @@ Useful for PHP to JS transfer
                         $pages->Load_from_key($browsing_id);
                         $first_part = $pages->gettitle();
 
-                    }else{
+                    }elseif ($browsing == '99') {
+                        
+
+                        $first_part = 'Return to Dashboard';
+                        
+                    } else{
                     $pieces = explode(" ", $assets_paid->getname());
 $first_part = implode(" ", array_splice($pieces, 0, 4));
                     }
@@ -592,6 +637,15 @@ $first_part = implode(" ", array_splice($pieces, 0, 4));
 
 
                         <?php
+                }elseif ($browsing = '99'){
+?>
+
+                    <a href="<?php echo BASE_URL . '/pages/learning/index.php';?>"
+                        class="nav-link nav-link-icon text-muted">
+
+
+
+<?php
                 }else {
     
                     ?>

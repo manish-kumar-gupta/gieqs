@@ -73,6 +73,29 @@ print_r($browsing_array);
 }
 
 
+if ($debug){
+$hello = isset($browsing);
+
+if (isset($browsing) && $browsing == ''){
+
+    $hello = false;
+
+}elseif (isset($browsing) && is_numeric($browsing)){
+
+
+    $hello = true;
+
+
+}else{
+
+    $hello = false;
+
+}
+var_dump($hello);
+
+}
+
+
 if (isset($browsing) && isset($browsing_id) && isset($videoid)){
 
     if ($debug){
@@ -625,7 +648,7 @@ if (isset($browsing) && isset($browsing_id) && isset($videoid)){
             echo json_encode($returnArray);
 
 
-}elseif ($browsing == '99'){
+}elseif ($browsing == '99' || $browsing == ''){
 
     //user opens up to all available videos
 
@@ -659,6 +682,8 @@ if (isset($browsing) && isset($browsing_id) && isset($videoid)){
 
     }
 
+  
+
     $position = array_search($videoid, $accessibleVideos);
 
             if ($debug){
@@ -666,6 +691,7 @@ if (isset($browsing) && isset($browsing_id) && isset($videoid)){
                 print_r($position);
 
             }
+
                 //count of videos
 
                 if ($position > -1){
@@ -727,9 +753,11 @@ if (isset($browsing) && isset($browsing_id) && isset($videoid)){
                         echo "This video is number $position of $numberOfVideos";
                     }
 
-                    //check if video is in original browsing array
+                    //check if video is in original browsing array, but here there is no browsing array so remove this following code and tell outside
 
-                    $original_asset = array_search($videoid, $browsing_array);
+                    $outside_asset = true;
+
+                    /* $original_asset = array_search($videoid, $browsing_array);
 
                     if ($original_asset > -1){
 
@@ -741,7 +769,7 @@ if (isset($browsing) && isset($browsing_id) && isset($videoid)){
 
                         $outside_asset = true;
 
-                    }
+                    } */
 
 
 

@@ -771,9 +771,40 @@ $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
                             $referid = null;
                         
                         }
-                  
+      
+                        $debug=true;
+                        if ($debug){
+
+                            ?>
                         
-        ?>
+                            <div class="p-4" style='font-size: 0.75rem; position: fixed; top: 0; left: 0; z-index:999; color: black; background-color: white;'>
+                            <span id="debug" class='d-none'>true</span>
+                            <p>Debug info: (what JS currently knows)</p>
+                            <p>Cookie [selectedTag] <span id='debugCookieselectedTag'></span></p>
+                            <p>localStorage [selectedTag] <span id='debugLocalselectedTag'></span></p>
+                        <br/>
+                            <p>Cookie [restricted] <span id='debugCookierestricted'></span></p>
+                            <p>localStorage [restricted] <span id='debugLocalrestricted'></span></p>
+                        <br/>
+                            <p>Cookie [browsing] <span id='debugCookiebrowsing'></span></p>
+                            <p>Cookie [browsing_last] <span id='debugCookiebrowsing_last'></span></p>
+                            <p>Cookie [browsing_array] <span id='debugCookiebrowsing_array'></span></p>
+                            <p>Cookie [browsing_id] <span id='debugCookiebrowsing_id'></span></p>
+                        
+                        
+                            
+                            </div>
+                            
+                        
+                        <?php
+                        
+                        
+                        }
+                        
+                        $debug=false;
+                        ?>
+                        
+    
 
     <!-- load all video data -->
 
@@ -1039,7 +1070,7 @@ if ($assetManager->determineVideoAccessSingleVideo($id, $fullAccess, $userid, fa
   
 
 //echo $userid; echo $id; echo 'hello';
-$debug = true;
+$debug = false;
 
 if ($debug){
 
@@ -1748,6 +1779,12 @@ chapterData
     return error;
   }
 };
+
+if ($('#debug').text() == 'true'){
+var t=setInterval(writeDebugInfo,1000);
+}
+
+
     
     
     
@@ -1762,6 +1799,21 @@ chapterData
     var browsing_idBeforeExpand = readCookie('browsing_id');
     var browsing_arrayBeforeExpand = $('#browsing_array').text();
 
+
+    function writeDebugInfo () {
+
+        //what js currently knows
+
+        $('#debugCookieselectedTag').text(getCookie('selectedTag'));
+        $('#debugLocalselectedTag').text(localStorage.selectedTag);
+        $('#debugCookierestricted').text(getCookie('restricted'));
+        $('#debugLocalrestricted').text(localStorage.restricted);
+        $('#debugCookiebrowsing').text(getCookie('browsing'));
+        $('#debugCookiebrowsing_last').text(getCookie('browsing_last'));
+        $('#debugCookiebrowsing_array').text(getCookie('browsing_array'));
+        $('#debugCookiebrowsing_id').text(getCookie('browsing_id'));
+
+    }
 
     function submitPreRegisterForm() {
 
@@ -2569,6 +2621,12 @@ chapterData
 
         createCookie('selectedTag', selectedTag, '2');
 
+        //set the cookie to the same as local storage since this follows js here
+
+        var localStoragerestrictedvalue = localStorage.restricted;
+        createCookie('restricted', localStoragerestrictedvalue , '2');
+
+
 
         //get tags to parse data
 
@@ -2762,10 +2820,15 @@ chapterData
 
         //gets video bar again from AJAX to reflect most recent changes
 
+        //added passing localstorage
+
         var dataToSend = {
 
             identifier: 'refresh',
             videoid: videoPassed,
+            localrestricted: localStorage.restricted,
+            localselectedTag: localStorage.selectedTag,
+
 
 
         }
@@ -3179,91 +3242,7 @@ chapterData
 
             $('.expandSearch').addClass('heartBeat');
 
-            /* var restricted = window.localStorage.getItem('restricted');
-        console.log('restricted is ' + restricted);
-
-        $(this).removeClass('heartBeat');
-        //set the cookie 99
-
-        if (restricted == "false"){
-
-            console.log('Entered restricted = false loop');
-
-
-            //put original values back
-
-            createCookie('browsing', browsingBeforeExpand, '2');
-            createCookie('browsing_id', browsing_idBeforeExpand, '2');
-            createCookie('browsing_array', browsing_arrayBeforeExpand, '2');
-
-            //put original page values back
-
-            $('#browsing').attr('data-browsing', browsingBeforeExpand);
-            $('#browsing_id').attr('data-browsing-id', browsing_idBeforeExpand); //need to blank these?
-            $('#browsing_array').text(browsing_arrayBeforeExpand);
-
-            $(this).attr('restricted', 1);
-            $(this).text('Expand Search');
-
-            //put here
-
-            window.localStorage.setItem('restricted', "true");
-            createCookie('restricted', 'true', '2');
-
-
-        }else if (restricted == "true"){
-
-            createCookie('browsing', '99', '2');
-
-            $('#browsing').attr('data-browsing', '99');
-
-            //$('#browsing_id').attr('data-browsing-id', ''); //need to blank these?
-
-            //$('#browsing_array').text('');
-
-
-            $(this).attr('restricted', 0);
-             $(this).text('Restrict Search');
-
-             window.localStorage.setItem('restricted', "false");
-             createCookie('restricted', 'false', '2');
-
-
-        }else{
-
-            //first click
-
-            $(this).removeClass('heartBeat');
-            //set the cookie 99
-
-            createCookie('browsing', '99', '2');
-
-            //update the page references
-
-            $('#browsing').attr('data-browsing', '99');
-            //$('#browsing_id').attr('data-browsing-id', ''); //need to blank these?
-            //$('#browsing_array').text('');
-
-
-            $(this).attr('restricted', 0);
-            $(this).text('Restrict Search');
-            window.localStorage.setItem('restricted', "false");
-            createCookie('restricted', 'false', '2');
-
-
-
-        }
-
-        showTagBar(selectedTag);
-
-
-$(this).addClass('heartBeat'); */
-
-
-
-
-
-            //get the tag bar again
+            
 
 
         })

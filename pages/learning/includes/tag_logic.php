@@ -13,15 +13,17 @@ var browsingBeforeExpand = readCookie('browsing');
 
 if (browsingBeforeExpand != '99') {
     createCookie('browsing_last', browsingBeforeExpand, '2');
+}else{
+    createCookie('browsing', '99', '2');
+
+
 }
 
 
 //or create 99
 
 var browsing_idBeforeExpand = readCookie('browsing_id');
-var browsing_arrayBeforeExpand = $('#browsing_array').text();
-
-
+var browsing_arrayBeforeExpand = $('#browsing_array').text(); //this is written to the page so can't be updated unless AJAX or refresh
 
 
 
@@ -54,7 +56,6 @@ function readCookie(name) {
         }
         return null;
 }
-
 function eraseCookie(name) {
         createCookie(name, "", -1);
 }
@@ -68,18 +69,18 @@ function updateVideoBar() {
 
 var restricted = window.localStorage.getItem('restricted');
 
-if (restricted == 'false' || restricted === null) {
+    if (restricted == 'false' || restricted === null) {
 
-    //alter the video bar
+        //alter the video bar
 
-    refreshVideoBar();
-
-
-} else if (restricted == 'true') {
+        refreshVideoBar();
 
 
+    } else if (restricted == 'true') {
 
-}
+
+
+    }
 
 }
 

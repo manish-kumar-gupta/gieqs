@@ -8,10 +8,55 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                     $highlightPlenary = preg_match (  '/plenary/' ,  $url);
                     $highlightNursing = preg_match (  '/nursing/' ,  $url);
                   
+                    $debug = true;
          
+
+                    /* $debug = true;
+
+                    if ($debug){
+                        echo '<span style="color:white;">';
+                        echo '<br/>';
+                    
+                        echo 'Cookie [selectedTag] = ' . $_COOKIE['selectedTag'];
+                        echo '<br/>';
+                        echo 'Cookie [browsing] = ' . $_COOKIE['browsing'];
+                        echo '<br/>';
+                        echo 'Cookie [browsing_last] = ' . $_COOKIE['browsing_last'];
+                        echo '<br/>';
+                        echo 'Cookie [browsing_array] = ' . $_COOKIE['browsing_array'];
+                        echo '<br/>';
+                    
+                        echo 'Cookie [browsing_id] = ' . $_COOKIE['browsing_id'];
+                        echo '<br/>';
+                    
+                        echo 'Cookie [restricted] = ' . $_COOKIE['restricted'];
+                        echo '<br/>';
+                    
+                        echo 'localStorage [restricted] = ' . $data['localrestricted'];
+                        echo '<br/>';
+                    
+                            echo 'localStorage [selectedTag] = ' . $data['localselectedTag'];
+                            echo '<br/>';
+                    
+                    
+                     
+                    //var_dump($data);
+                    
+                        
+                    
+                    
+                        echo '</span>';
+
+
+
+
+
+                    } */
 
 
 ?>
+
+
 
 
 <nav id="tagBar" class="mt-2 navbar navbar-horizontal navbar-expand-lg d-none"  style="padding: 0;margin-top: 0 !important; z-index: 1 !important; ">
