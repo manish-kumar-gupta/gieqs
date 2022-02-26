@@ -560,19 +560,19 @@ Useful for PHP to JS transfer
 
                 ?>
 
-                <a href="<?php echo BASE_URL . '/pages/learning/index.php';?>"
-                class="nav-link nav-link-icon gieqsGold">
+                        <a href="<?php echo BASE_URL . '/pages/learning/index.php';?>"
+                            class="nav-link nav-link-icon gieqsGold">
 
-<?php
+                            <?php
             }else {
 
                 ?>
 
-                        <a href="<?php echo BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=' . $browsing_id;?>"
-                            class="nav-link nav-link-icon gieqsGold">
+                            <a href="<?php echo BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=' . $browsing_id;?>"
+                                class="nav-link nav-link-icon gieqsGold">
 
 
-                            <?php 
+                                <?php 
 
         }
                     
@@ -593,11 +593,11 @@ $first_part = implode(" ", array_splice($pieces, 0, 4));
                     ?>
 
 
-                            <span class="nav-link-inner--text "><?php echo $first_part;?></span>
+                                <span class="nav-link-inner--text "><?php echo $first_part;?></span>
 
-                            <!-- unless rge selectedTag is not null and restricted is false then no numbers and expanded tag viewing -->
+                                <!-- unless rge selectedTag is not null and restricted is false then no numbers and expanded tag viewing -->
 
-                        </a>
+                            </a>
                 </li>
                 <li class="nav-item">
                     <a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $previousVideo;?>"
@@ -642,21 +642,21 @@ $first_part = implode(" ", array_splice($pieces, 0, 4));
                     
 ?>
 
-                    <a href="<?php echo BASE_URL . '/pages/learning/index.php';?>"
-                        class="nav-link nav-link-icon text-muted">
+                        <a href="<?php echo BASE_URL . '/pages/learning/index.php';?>"
+                            class="nav-link nav-link-icon text-muted">
 
 
 
-<?php
+                            <?php
                 }else {
     
                     ?>
 
-                        <a href="<?php echo BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=' . $browsing_id;?>"
-                            class="nav-link nav-link-icon text-muted">
+                            <a href="<?php echo BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=' . $browsing_id;?>"
+                                class="nav-link nav-link-icon text-muted">
 
 
-                            <?php 
+                                <?php 
     
             }
                         
@@ -677,14 +677,14 @@ $first_part = implode(" ", array_splice($pieces, 0, 4));
                         ?>
 
 
-                            <span class="nav-link-inner--text ">Return to 
-                                <?php echo $first_part;?></span>
+                                <span class="nav-link-inner--text ">Return to
+                                    <?php echo $first_part;?></span>
 
 
 
-                            <!-- unless rge selectedTag is not null and restricted is false then no numbers and expanded tag viewing -->
+                                <!-- unless rge selectedTag is not null and restricted is false then no numbers and expanded tag viewing -->
 
-                        </a>
+                            </a>
                 </li>
 
 
