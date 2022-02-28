@@ -76,7 +76,7 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                 <?php
                     
                 ?>
-                <li class="nav-item">
+                <li class="nav-item text-nowrap">
                    <a class="nav-link nav-link-icon exitTagNav"
                        >
 
@@ -85,9 +85,9 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                </li>
 
                
-                                           <li class="nav-item">
+                                           <li class="nav-item text-nowrap">
                    
-                   <a class="nav-link nav-link-icon"
+                   <a class="nav-link nav-link-icon text-nowrap"
                        >
 <!--                        <span class="badge badge-pill text-dark badge-floating border-dark mr-2" style="z-index: -1 !important;">LEVEL 4</span>
  -->                       <span id="tagNameBar" class="nav-link-inner--text text-bold"></span></a>
@@ -104,7 +104,7 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                            
                </li>
 
-               <li class="nav-item">
+               <li class="nav-item text-nowrap">
                    <a class="nav-link nav-link-icon exitTagNav"
                        >
 
@@ -112,28 +112,28 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                    </a>
                </li>
 
-               <li class="nav-item">
+               <li class="nav-item text-nowrap">
                    <a class="nav-link nav-link-icon previousTagNav"
                        >
 
                        <span class="nav-link-inner--text "><i class="fas fa-arrow-left mr-2"></i> Previous</span>
                    </a>
                </li>
-               <li class="nav-item">
+               <li class="nav-item text-nowrap">
                    <a class="nav-link nav-link-icon nextTagNav"
                        >
 
                        <span class="nav-link-inner--text ">Next<i class="fas fa-arrow-right ml-2"></i></span>
                    </a>
                </li>
-               <li class="nav-item">
+               <li class="nav-item text-nowrap">
                    <a class="nav-link nav-link-icon expandSearch cursor-pointer text-primary"
                        >
 
                        <span class="nav-link-inner--text ">Expand Search</span>
                    </a>
                </li>
-               <li class="nav-item">
+               <li class="nav-item text-nowrap">
                    <a class="nav-link nav-link-icon exitTagNav"
                        >
 
@@ -143,27 +143,27 @@ $url =  "{$_SERVER['REQUEST_URI']}";
                 <?php
                     
                 ?>
-                <!-- <li class="nav-item">
+                <!-- <li class="nav-item text-nowrap">
                     <a class="nav-link nav-link-icon"
                         href="<?php //echo BASE_URL;?>/pages/learning/pages/live/nursing.php">
 
                         <span class="nav-link-inner--text ">Nursing</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item text-nowrap">
                     <a class="nav-link nav-link-icon" target="_blank"
                         href="<?php //echo BASE_URL;?>/pages/learning/pages/live/programLive.php">
 
                         <span class="nav-link-inner--text ">Live Programme</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item text-nowrap">
                     <a class="nav-link nav-link-icon" target="_blank" href="https://facebook.com/gieqs">
                         <i class="fab fa-facebook-square"></i>
                         <span class="nav-link-inner--text d-lg-none">Share</span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item text-nowrap">
                     <a class="nav-link nav-link-icon" target="_blank" href="https://twitter.com/gieqs_symposium">
                         <i class="fab fa-twitter"></i>
                         <span class="nav-link-inner--text d-lg-none">Tweet</span>

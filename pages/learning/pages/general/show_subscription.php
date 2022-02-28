@@ -1836,7 +1836,7 @@ filter: alpha(opacity=30);
 
                 if (tags.length > 0) {
 
-                    window.localStorage.setItem('selectedTag', tagid);
+                    //window.localStorage.setItem('selectedTag', tagid);
 
                 }
 
@@ -1992,6 +1992,7 @@ filter: alpha(opacity=30);
 
 
         }
+
 
     }
 
@@ -2289,6 +2290,8 @@ if (GIEQs2){
         $('.tag').click(function() {
 
             var tagClicked = $(this).attr('data');
+
+            window.localStorage.setItem('selectedTag', tagClicked);
 
             refreshNavAndTags(tagClicked);
 

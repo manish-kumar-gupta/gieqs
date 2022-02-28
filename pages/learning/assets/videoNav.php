@@ -202,7 +202,6 @@ if(isset($_COOKIE['restricted'])) {
 
             $case = 4;
 
-
         }
 
         if ($debug){
@@ -616,7 +615,7 @@ Useful for PHP to JS transfer
 
     <?php if (($selectedTag == 'null') || ($selectedTag == NULL) || (is_numeric(intval($selectedTag)) && $restricted == 'true')){?>
 
-                <li class="nav-item">
+                <li class="nav-item text-nowrap">
 
                     <?php
 
@@ -645,15 +644,14 @@ Useful for PHP to JS transfer
 
 
 
-            }else {
+            }elseif ($case == 3) {
 
                 ?>
 
-                            <!-- <a href="<?php //echo BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=' . $browsing_id;?>"
-                                class="nav-link nav-link-icon gieqsGold"> -->
-
-                    <a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $browsing_id;?>"
+                            <a href="<?php echo BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=' . $browsing_id;?>"
                                 class="nav-link nav-link-icon gieqsGold">
+
+                   
 
                                 <?php 
 
@@ -671,22 +669,24 @@ Useful for PHP to JS transfer
                 $first_part = ' Dashboard';
                         
             } elseif ($case == 3){
+
+                $first_part = $assets_paid->getname();
                 
-                $pieces = explode(" ", $assets_paid->getname());
-                $first_part = implode(" ", array_splice($pieces, 0, 6));
+                //$pieces = explode(" ", $assets_paid->getname());
+                //$first_part = implode(" ", array_splice($pieces, 0, 4));
             
             }
                     
                     ?>
 
 
-                                <span class="nav-link-inner--text "><?php echo 'Go to ' . $first_part;?></span>
+                                <span class="nav-link-inner--text "><i class="fas fa-undo"></i><?php echo 'Back to ' . $first_part;?></span>
 
                                 <!-- unless rge selectedTag is not null and restricted is false then no numbers and expanded tag viewing -->
 
                             </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item text-nowrap">
                     <a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $previousVideo;?>"
                         class="nav-link nav-link-icon <?php if ($firstVideo === true){echo 'disabled';}?>">
 
@@ -695,14 +695,14 @@ Useful for PHP to JS transfer
                     </a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item text-nowrap">
                     <a class="nav-link nav-link-icon">
 
                         <span
                             class="nav-link-inner--text "><?php echo intval($position) + 1 . ' / ' .  $numberOfVideos;?></span>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item text-nowrap">
                     <a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $nextVideo;?>"
                         class="nav-link nav-link-icon <?php if ($lastVideo === true){echo 'disabled';}?>">
 
@@ -719,7 +719,7 @@ Useful for PHP to JS transfer
 
                 <?php } elseif (is_numeric(intval($selectedTag)) && $restricted == 'false'){ ?>
 
-                <li class="nav-item">
+                <li class="nav-item text-nowrap">
 
                     <?php
                 if ($case == 1){
@@ -747,13 +747,18 @@ Useful for PHP to JS transfer
     
 
                     //need to get the last video the user watched from this asset, then add the restrict and all other relevant things (set the cookie )
-                    $videoidlast = $usersMetricsManager->getLastVideoViewedInAsset($userid, $browsing_array, false);
+                    //$videoidlast = $usersMetricsManager->getLastVideoViewedInAsset($userid, $browsing_array, true); //for now not working TODO
+
+                    //echo $videoidlast;
+
+                    //then set here the restricted and browsing cookies? no beacuse this isn't the click
                     ?>
 
-                    
-
-<a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $videoidlast;?>"
+<a href="<?php echo BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=' . $browsing_id;?>"
                                 class="nav-link nav-link-icon text-muted">
+
+<!-- <a href="<?php //echo BASE_URL . '/pages/learning/viewer.php?id=' . $videoidlast;?>"
+                                class="nav-link nav-link-icon text-muted"> -->
 
                             <!-- <a href="<?php //echo BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=' . $browsing_id;?>"
                                 class="nav-link nav-link-icon text-muted"> -->
@@ -773,14 +778,16 @@ Useful for PHP to JS transfer
                             $first_part = $pages->gettitle();
     
                         }elseif ($case == 3){
-                        $pieces = explode(" ", $assets_paid->getname());
-                        $first_part = implode(" ", array_splice($pieces, 0, 6));
+
+                            $first_part = $assets_paid->getname();
+                        //$pieces = explode(" ", $assets_paid->getname());
+                        //$first_part = implode(" ", array_splice($pieces, 0, 6));
                         }
                         
                         ?>
 
 
-                                <span class="nav-link-inner--text ">Return to
+                                <span class="nav-link-inner--text "><i class="fas fa-undo"></i>Back to
                                     <?php echo $first_part;?></span>
 
 
