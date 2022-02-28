@@ -47,7 +47,7 @@ $usersMetricsManager = new usersMetricsManager;
 
 
 
-$debug = true;
+$debug = false;
 
 if ($debug){
     echo '<span style="color:white;">';
