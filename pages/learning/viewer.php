@@ -1044,6 +1044,45 @@ if ($assetManager->determineVideoAccessSingleVideo($id, $fullAccess, $userid, fa
 <?php
                         }
                     }
+                    ?>
+                    <div class="card m-4">
+<div class="card-header">
+    <h5 class="card-title mb-0">Get a better GIEQs Online Experience</h5>
+    <span class="text-muted text-sm">Sign up fro GIEQs Pro and never be interrupted by these screens again.</span>
+</div>
+<div class="card-body">
+
+    <p class="mb-0 text-white">
+        When browsing on GIEQs Online if you own a GIEQs Pro Subscription you have access to all content and will never be interrupted by this screen again.  This means you can seamlessly browse all our best content by tag without having to navigate around these messages.  The endoscopic learning you want.  When you want it.
+
+    </p>
+    
+</div>
+<div class="card-footer">
+<!-- <a data-assetid="<?php //echo $value2; ?>"
+                                class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon px-2">
+                                <span class="btn-inner--text text-dark">Buy Now for &euro;<?php echo $assets_paid->getcost();?></span>
+                                <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+                            </a> -->
+  
+
+<a href="<?php echo BASE_URL . '/pages/learning/upgrade.php';?>" data-assetid="<?php echo $value2; ?>"
+                                class="more-info btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon px-2">
+                                <span class="btn-inner--text text-dark">Find our More about GIEQs Pro</span>
+                                <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+                            </a>
+  
+
+<!-- <a href="mailto:admin@gieqs.com"
+                                class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon px-2">
+                                <span class="btn-inner--text text-dark">Help with an Issue</span>
+                                
+                            </a>
+   -->
+</div>
+
+</div>
+<?php
                     echo '</div>';
                     echo '</div>';
                     ?>
