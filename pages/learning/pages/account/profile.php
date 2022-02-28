@@ -710,8 +710,7 @@ top: -20vh;
           },
 
           bio: {
-            required: true,
-            minlength: 100,
+            
 
           },
 
