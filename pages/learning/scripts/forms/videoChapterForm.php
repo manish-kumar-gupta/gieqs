@@ -506,6 +506,7 @@
             <div class='row'>
                 <div class='col-12'>
                     <h2 style="text-align:left;">Video Chapter, Tag Form</h2>
+                    <button class="btn btn-sm btn-outline-gieqsGold mr-5" type="button" onclick='window.open("https://vimeo.com/682997986/e71fb93bc0");'>HOW TO TAG Explainer Video (opens in new window)</button>
                 </div>
 
 
