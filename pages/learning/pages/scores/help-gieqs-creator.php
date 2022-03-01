@@ -413,117 +413,120 @@ top: 0px;
 
                            
 
-
-                            
-<h1>Using the GIEQS online administration system</h1>
-<h2>Users</h2>
+<h1>Using the GIEQS online creation system</h1>
+<h2>Tagging</h2>
 <p><u>Where to</u><u> find?</u></p>
-<p>Go to Programme and there you&rsquo;ll find &lsquo;Users (access)&rsquo;.</p>
+<p>Go to Gieqs Online, Creator, pop up the menu and click on &lsquo;View my tagging Tasks&rsquo;.</p>
+<p>Content:</p>
+<p>This is for people who are running the site, could invite you to look to videos and add tags to them. If you scroll to the list, then you can accept the tagging, do the climate tagging. With a click on the cross, you can add a tag.</p>
+<p>You can also go directly tot he video edit page.</p>
+<p><u>New tag:</u></p>
+<p>This you can find when you pop out the creator menu. Here you can add a new tag, if you have access to this.</p>
+<p><u>New category:</u></p>
+<p>You can also find this in the creator menu. You can make a new tagcategory.</p>
+<p>If you want to make new tags or new categories, please discuss this with the Supermoderators of the website. Only if you are selected for this, you&rsquo;ll have access.</p>
+<p>&nbsp;</p>
+<p>You can also consult the video guide to tagging below</p>
+<div class = "embed-responsive embed-16by9">
+<div style="padding:64.67% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/682997986?h=e71fb93bc0&title=0&byline=0&portrait=0&speed=0&badge=0&autopause=0&player_id=0&app_id=58479/embed" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen frameborder="0" style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe></div>
+        </div>
+<h2>Chapters</h2>
+<p><u>Where to find?</u></p>
+<p>Go to Gieqs Online, Creator, pop up the menu, Video Table. Select a video and click on &lsquo;Edit chapters&rsquo;.</p>
 <p><u>Content:</u></p>
-<p>You can edit the users accounts for people who have signed up to the site (edit the users demographics and the access level).</p>
-<p>You can create a new user and send him a password.</p>
-<p>All of the other functions of the usermenu are legacy of GIEQS I, including the assets which they can sign up (for example all the programmes).</p>
-<p>Access list</p>
+<p>When you go to the editing page, you can see the video displayed. Down below you will see either a blank screen, if the video has no chapters. But increasingly we&rsquo;re trying to add this for you. All that you need to do, is add tags to the videos. Tags describe ideas that run the structure of the website and can be searched for.</p>
+<p>For example: users can search for videos that contain Kudo V, endoscopic imaging of a colorectal polyp, a demarcated area in an upper GI lesion, &hellip; They can also search for combinations, so they can very quickly find what they want.</p>
+<p>To add a new chapter: go the bottom of the screen and press &lsquo;new chapter&rsquo;.</p>
+<p>This will add a new chapter with a number after the chapter that is already there. If you want to add more then 1 chapter, you have to press and wait untill every chapter is there. Then you have a couple of options. If you go to the first chapter, you can fill in 0 in the box &lsquo;time from&rsquo;. Then select from te video where you want the chapter to end and press &lsquo;+video time&rsquo; (underneath the &lsquo;time to&rsquo; box). Give your chapter a name and a description. If you&rsquo;ll finding it difficult to see the name box, you can refresh te page. The next chapter that you add, could have a time directly after the chapter before. To achieve that: once you add another chapter, press &lsquo;+ previous chapter end time&rsquo;. This will insert a time which is just after the chapter time in the &lsquo;time to&rsquo; of the previous chapter. So you can go on untill the last chapter. In the last chapter all you have to do, is press the same thing as the previous chapter end time. In the last box, you just drag the video to the very end, press pause and press &lsquo;+video time&rsquo;. Sometimes you have to press &lsquo;+video time&rsquo; button a few times to get the correct time, but once it becames correct, this will not change anymore.</p>
+<p>Now you see the video displayed, you can add headings and tags.</p>
+<p>To add a tag, there are a couple of ways.</p>
+<ul>
+<li>Structured way: Press &lsquo;add tag&rsquo;. Then you have all the tags that are available on the website. You can click on the blue buttons (on the top). You can click trough them, dive into the categories (by clicking on the category) and then assigne them.</li>
+<li>Faster way: Press &lsquo;add tag (Search)&rsquo;. Here you can simply typ into the box to find your tag. Press enter on the keybord and it&rsquo;s automatically added. You can just keep doing it.</li>
+</ul>
+<p>After that, you have links to the tag manager. This is where you can see the structure of the site, all the tags and the linked references, which you can also update. This is an important concept with tags, that they are also linked to academical references (PubMed), which can quickly pulled in.</p>
+<h2>Status of the learning tool</h2>
+<p><u>Where to find?</u></p>
+<p>Go to the Creator menu. There you can find &lsquo;Video Table&rsquo;. Click on &lsquo;Edit chapters&rsquo; of the movie that you want to edit. In the right upper corner, you can find &lsquo;Video Status&rsquo;. It depends on your level of access if this will work or not work.</p>
+<p><u>Content:</u></p>
+<p>You can change the video between status:</p>
 <table>
 <tbody>
 <tr>
-<td width="41">
-<p>1</p>
+<td width="274">
+<p>Not shown, not tagged Inactive video</p>
 </td>
-<td width="510">
-<p>Superuser: This should only be reserved for people managing the website.</p>
-</td>
-</tr>
-<tr>
-<td width="41">
-<p>2</p>
-</td>
-<td width="510">
-<p>Creator: They can create menus in the GIEQS online. They can bring in new videos, edit videos and edit options to show videos on the website.</p>
+<td width="278">
+<p>on the background; is never shown when users are looking around the site</p>
 </td>
 </tr>
 <tr>
-<td width="41">
-<p>3</p>
+<td width="274">
+<p>Needs tagging</p>
 </td>
-<td width="510">
-<p>Staff member: they can access the administration menu and can access full content</p>
-</td>
-</tr>
-<tr>
-<td width="41">
-<p>4</p>
-</td>
-<td width="510">
-<p>previous pro level</p>
+<td width="278">
+<p>the video fits in a list for tagging, but is never shown on the live website</p>
 </td>
 </tr>
 <tr>
-<td width="41">
-<p>5</p>
+<td width="274">
+<p>Shown on live site</p>
 </td>
-<td width="510">
-<p>previous standard level</p>
-</td>
-</tr>
-<tr>
-<td width="41">
-<p>6</p>
-</td>
-<td width="510">
-<p>previous basic level</p>
+<td width="278">
+<p>shows the movie immediately on the website</p>
 </td>
 </tr>
 <tr>
-<td width="41">
-<p>7</p>
+<td width="274">
+<p>Shown on live site and avaibable FREE</p>
 </td>
-<td width="510">
-<p>Basic user: the user cannot login</p>
+<td width="278">
+<p>the freeplay link will also work</p>
+</td>
+</tr>
+<tr>
+<td width="274">
+<p>Submit for moderation prior to LIVE site</p>
+</td>
+<td width="278">
+<p>Your access is too low to change the live site status and therefore you can submit it supermoderation before moderation is shown on live site (minute 7:00)</p>
+<p>&nbsp;</p>
+<p>Your changes will not be lost, but you will loose access to tagging the video once you&rsquo;ve selected that to make sure that it&rsquo;s referred.</p>
 </td>
 </tr>
 </tbody>
 </table>
-<p>Four, five and six are historical ways to access the website and can now be used indiscriminately.</p>
-<p>All the users receive a six when they sign up and this is replaced by a subscription, which will cover later and give access to the site globally.</p>
-<h2>Subscription</h2>
+<p>&nbsp;</p>
+<p><u>View in player:</u></p>
+<p>This shows you the video in his nature form on the site, so you can see what it will look like.</p>
+<p><u>View/edit video data:</u></p>
+<p>Here you can edit the title and other important information about the movie. You should also have a look on that before you submit your video.</p>
+<p><u>Display chapter data:</u></p>
+<p>This shows in an easy form to all the chapters, with times in seconds.</p>
+<p><u>Vimeo profile:</u></p>
+<p>Only if you have access, you can go to Vimeo to see and edit the movie.</p>
+<p><u>Edit Chapter data:</u></p>
+<p>If you have access, you can go to the Vimeo profile and edit the chapter data.</p>
+<p>If the video is titled and chaptered already, then you can import those from Vimeo. This is actually the way to do it.</p>
+<h2>New video</h2>
 <p><u>Where to find?</u></p>
-<p>You can find it all the way on the right. You have subscriptions and subscribable items</p>
-<p><u>Subscriptions menu:</u></p>
-<p>With this menu, you can edit users access tot he site. You can change whether people have global access. In GIEQS online we have now pro, standard and free. Free is automatically granted&nbsp; when they sign up. They need to do nothing for that to get it. For standard or pro access payment is required. The payment is by the Stripe payment platform which is automatically linked to the generation of payments. Three subsciptions can be generated and managing this is covered later in this document. You should not create subscriptions from this menu, because they will not be tracked and they will not be able to be linked to the user account easily.</p>
-<p>This menu should really be reserved for modifying user subscriptions. So for example, you may receive mails from users which say my subscription is not working, I cannot access the site. So it depends on what they&rsquo;re saying that they cannot access. If it&rsquo;s a course, you need to have the ID number of the course, which can be found in the paid assets menu (=in the same menu that you find subscriptions on). Then you can search for the title and find the ID number. After that, you need to search for the user ID, in combination with the ID number of the asset or the users name in combination with the asset. So you can find which subscription is relevant.</p>
-<p>Subscriptions are either active or inactive. That means that there&rsquo;s a one or a zero in the active column. If there&rsquo;s a zero in the active column, this will not be working for the user. If there&rsquo;s is a date beyond today&rsquo;s date and there&rsquo;s a one in the active column, then the subscription end date beyond today&rsquo;s date and a one in the active column, then the subscription should be active and should be able to access.</p>
-<p><u>Possible problems with subscriptions:</u></p>
-<p>If there is a problem with their ability to use the site, then this is very likely they&rsquo;re not using Google Chrome/Safari/Microsoft Edge (but Internet Explorer).</p>
-<p>If the end date is before the date today, then they will not have access to that product and there&rsquo;s some problem with their payment. This needs manually reviewing by looking at Stripe and seeing how their payment system is.</p>
-<p>The set up, whether they have paid or not have paid and however this will work, that will go into further later.</p>
-<p>The next issue of their subsciption is not being active. That will also need sorting out by checking Stripe to see whether they do have an active subscription. So these are true for pro or standard subscription. This is not true of single one of payments because those two things that are described above are recurring payments, handled by Stripe. All of the other assets (including all of the courses, GIEQS I, GIEQS II, ..) is one of payments. And the one of payments is handled by Stripe, but it&rsquo;s for a determined period of time. That can be tree months or six months. It depends which is advertised on the website. So the likely thing is if the user is saying that they can&rsquo;t access it and they have gone beyond the time of the subscription. They need to buy it again and that needs to be communicated back to the user who is asking the question.</p>
-<p>The end and start dates of the subscriptions can be edited, the active states (yes or no) can be edited.</p>
-<p>Auto renew refers to whether the subscription be build at the end of the billing circle. This actually doesn&rsquo;t change anything in GIEQS online, is only changed in Stripe (and it&rsquo;s only applicable to those things which are subscriptions (not those things which are handled by single one of payments)</p>
-<p>Paid assets (subscribable items):</p>
-<p>This is used to add features to the site, including packs or videos, courses, other subscriptionables. This should only be modified by the superusers and should only be used as reference by other users when not creating new material for the site. We are also creating in this section hidden assets to make our textbooks of endoscopy, which can then be later accessed as reference or presentation or for courses.</p>
-<h2>Course enrolments</h2>
+<p>Go to the creator menu, drop the menu down and click on &lsquo;new video&rsquo;</p>
+<p><u>Content:</u></p>
+<p>&lsquo;New video&rsquo; is a way to add a new video on the website. If you have a video on Vimeo (it needs to be on Vimeo on the GIEQS team account) and you want to add it on the website, you just have to enter&nbsp; the numerical value of the Vimeo URL. So when you play video on Vimeo, you get a link. If you have a Vimeo URL, you only need the long number in the URL.</p>
+<p>When you insert the number, it probably will say that the movie cannot be shown, but don&rsquo;t worry about that, just continue. Edit the data and then it will be added to the video table.</p>
+<p>You can&rsquo;t edit the status of an important video until you have reloaded it on the video table. Once you&rsquo;ve done everything and saved, you go to the video table (it will be the top video on the list). If you want to edit the details, just click on the name. If you want to edit the chapters, just click on it (on the right).</p>
+<p>The video table, allows you to search all the videos added on the site.</p>
+<h2>References</h2>
 <p><u>Where to find?</u></p>
-<p>Go to subscriptions, Course enrolments</p>
-<p><u>Course enrolments:</u></p>
-<p>This menu will list everybody who is enrolled in the particular courses that we are running and you can use this for making lists to submit to quality assurance agencies (like RIZIV, EACCME).</p>
-<h2>Edit token</h2>
-<p><u>Where to find?</u></p>
-<p>Go to Site Settings, drop down the menu and select Edit token</p>
-<p><u>Edit token:</u></p>
-<p>Tokens are part of the site which allow users to access content for free. You can also use it for access for institutions. If you&rsquo;re asked to add an institutional access, this is the place to go.</p>
-<p>You can press plus to add a new token. You need to select the asset for which is relevant. This cannot be used to give access to subscriptions. This can only be used to give access to standard courses, video sets etc.</p>
-<h2>Sponsors and partners</h2>
-<p><u>Where to find?</u></p>
-<p>Go to Site Settings, drop down the menu and select &lsquo;Edit Sponsors/Edit Partners.</p>
-<p><u>Sponsors and partners</u></p>
-<p>A partner is an academic organisation, a sponsor is a company. You can add here names and upload images for the partner or sponsor as well.</p>
-<p>This is something which will increase in future when all our courses are sponsored and partnered with other organizations (like ESGE).</p>
-<p>We can add a number of registrations for institutions. Some rules apply to the section. You can add a number per organisation, but each token represents an agreement with an external organisation to provide a certain number of licenses to the site. If that token is shared by members of that organisation, it will still work and therefor they need to know that and keep the distribution of that link (which is essentially a password to get free access to the course that we have created for them) safe. Don&rsquo;t&nbsp; allow the members to distribute their password.</p>
-<p>There will be a certain number agreed with the organisation for a certain price. The pricing and the invoicing here can be performed on Stripe or done in accordance or discussion with Seauton.</p>
-<p>The institutional licence is indefinite untill the number has been used up or we desable it.</p>
-<p>You can add a number in the edit token screen and that number is then decreased every time somebody signs up, using one of those tokens . When the tokens run out, the link will stop working and the partner organisation, in the future, will receive a mail saying that the tokens are exhausted and that they need to contact us. So they can get more or do nothing if they think that&rsquo;s fine in the context of their agreement with us. Someone from Seauton and someone from the GIEQs foundation should receive an alert at this point.</p>
-
+<p>Go to the Creator menu. There you can find references.</p>
+<p><u>Content:</u></p>
+<p>That&rsquo;s where you can edit a new references. Go to view references (in the upper right corner) and have a look to the table of references.</p>
+<h2>Supermoderation</h2>
+<p>If you want to send out invitations for tagging: all the videos which are available on the website, are listed in the manage videos. The creator can send out invitations if you click on the pensil and invite new tagger (at the bottom), by selecting a user. Once you have invited a user, you have a load of options. The user will get emails and be entered in the management system. Be aware that the user has the correct permission (needs to be user level 2).</p>
+<p>If you want to check to user access, you have to go into the administration menu. Drop down the menu by pressing the programme button and select users (access). Adding a user level is only possible to add your own user level or less.</p>
+<p>If you want to see what&rsquo;s going on in tagging, you can put on moderate tagging in process and you can see what&rsquo;s going on. These are all videos that people have moderated and if there&rsquo;s a tag which says tagging reviewed, changes required, &hellip; You can all manage this from here. By clicking, you can send a message, send a review mail, approve the video if you want to show it on the live site and remove it from this table. Moderate completed tagging which is videos which have been completed and which people have submitted. You can check that and approve it or send a message to the user from here.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
                             
 
 

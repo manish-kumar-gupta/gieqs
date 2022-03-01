@@ -253,9 +253,11 @@ top: -20vh;
               <a href="#!">
                 <img alt="Image placeholder" src="<?php echo BASE_URL;?>/assets/img/svg/illustrations/following.svg" class="img-fluid img-center" style="height:90px;">
               </a>
-              <h5 class="mt-5 mb-0"><a href="#">Administration (GIEQs digital)</a></h5>
+              <h5 class="mt-5 mb-0"><a href="#">Administration (GIEQs Online)</a></h5>
             </div>
             <div class="list-group list-group-sm list-group-flush">
+            <a href="<?php echo BASE_URL;?>/pages/learning/pages/scores/help-gieqs-administration.php"  class="list-group-item list-group-item-action">GIEQs Online Administration User Guide</a>
+
               <a href="<?php echo BASE_URL;?>/pages/support/support_admin_user_add_permissions.php" class="list-group-item list-group-item-action">Add user permissions (GIEQs digital)</a>
               <a href="#" class="list-group-item list-group-item-action disabled">Reset user account</a>
               <a href="#" class="list-group-item list-group-item-action disabled">Reset user password</a>
@@ -286,7 +288,7 @@ top: -20vh;
               <h5 class="mt-5 mb-0"><a href="#">Creator Tools (GIEQs Online)</a></h5>
             </div>
             <div class="list-group list-group-sm list-group-flush">
-              <a href="#" class="list-group-item list-group-item-action disabled">Add new video</a>
+            <a href="<?php echo BASE_URL;?>/pages/learning/pages/scores/help-gieqs-creator.php"  class="list-group-item list-group-item-action">GIEQs Online Creator Tools User Guide</a>
               <a href="<?php echo BASE_URL;?>/pages/support/support_creator_edit_video_chapters.php" class="list-group-item list-group-item-action">Edit video chapters</a>
               <a href="#" class="list-group-item list-group-item-action disabled">Tag a video</a>
             </div>
