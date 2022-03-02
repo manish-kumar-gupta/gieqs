@@ -20,9 +20,21 @@
 
       require BASE_URI . '/headNoPurposeCore.php';
 
-if ($userid){
+    /*  
+      echo 'user id is ' . $userid;
+
+      echo 'BASE_URL us '. BASE_URL;
+
+      echo 'Location : '. BASE_URL . '/pages/learning/index.php';
+
+      die();
+
+if (isset($userid)){
   header('Location : '. BASE_URL . '/pages/learning/index.php'); 
+  exit();
 }
+ */
+ 
 
 
       $general = new general;
@@ -218,6 +230,10 @@ top: -20vh;
               </a> <!-- ENABLE FOR SIGN UP -->
             
         </div>
+        <div class="d-flex flex-row-reverse mt-1 align-items-end">
+        <p class="lead lh-180 m-0">Already have an account? <a class="gieqsGold" href="<?php echo BASE_URL;?>/login">Login</p>
+
+  </div>
       </section>
       <section class="slice slice-lg bg-cover bg-size--cover" style="background-image: url('<?php echo BASE_URL;?>/assets/img/covers/learning/roomview1.png'); background-position: center bottom;">
         <div class="container">

@@ -27,7 +27,7 @@ spl_autoload_register ('class_loader');
 
 
 
-$debugUserAccess = FALSE;
+$debugUserAccess = false;
 //$debug = FALSE;
 
 $info = [];
@@ -445,252 +445,256 @@ c:{
 
 }
 
-if ($userid){
 
-//live
 
-$info[] = '\$livetestingusers contains (' . $liveTestingUsers . ')';
-
-if (in_array($userid, $liveTestingUsers)) {
-    $live = 1;
-    $liveTest = 1;
-    $info[] = 'Live testing activated for (' . $userid . ')';
 
 }
 
-if ($liveTest){
-    $currentTime = new DateTime('2020-10-08 12:45:20', $serverTimeZone);
-    }
+if ($userid){
 
-$currentTime = new DateTime('now', $serverTimeZone); //ADD in for Live  CHANGE FOR LIVE
-
-//$currentTime = new DateTime('2020-10-09 12:45:20', $serverTimeZone);
-
-
-//further info re live
-
-//generates array of the live sessions that a user has access to
-
-spl_autoload_unregister ('class_loader');
-
-require(BASE_URI .'/assets/scripts/classes/userFunctions.class.php');
-
-$userFunctions = new userFunctions;
-
-spl_autoload_register ('class_loader');
-
-//$userFunctions = new userFunctions;
-
-$liveAccess = $userFunctions->enrolmentPatternLive($userid);
-
-$info[] = 'page determines live access to the following live events for (' . $userid . ')';
-$info[] = $liveAccess;
-//print_r($liveAccess);
-
-
-
-
-
- # ******************** #
-    # ***** USER TRACKING ***** #
-
-    //ensure users activity logged
-
-    spl_autoload_unregister ('class_loader');
-
-    require(BASE_URI .'/assets/scripts/classes/userActivity.class.php');
-
-    $userActivity = new userActivity;
-
-    spl_autoload_register ('class_loader');
-
-    if ($userid){
-
-        //getcurrent UTC time
-		$date = new DateTime('now', new DateTimeZone('UTC'));
-		$sqltimestamp = date_format($date, 'Y-m-d H:i:s');
-		
-        //add a user activity event to the database
-        
-        //TODO add which page they visited
-
-        //TODO Cron clean up userActivity
-
-        $userActivity->New_userActivity($userid, null, null, $sqltimestamp);
-        
-		$userActivity->prepareStatementPDO();
-
-        
-    }  
-
-
-    # ******************** #
-    # ***** USER ACCESS SUBSCRIPTIONS ***** #
-
-
-
+    //live
     
-    //site wide access
-
-   //comment here
-
-if ($assetManager->getSiteWideSubscription($userid, $debug)){
-
-  //there is a site wide subscription
-  if ($debugUserAccess){
-    echo 'there is a site wide subscription';
+    $info[] = '\$livetestingusers contains (' . $liveTestingUsers . ')';
+    
+    if (in_array($userid, $liveTestingUsers)) {
+        $live = 1;
+        $liveTest = 1;
+        $info[] = 'Live testing activated for (' . $userid . ')';
+    
     }
-  
-  
-  //check if active 
-
-  $datetime_utc = new DateTime('now', new DateTimeZone('UTC'));
-
-  if ($assetManager->isSubscriptionActive($assetManager->getSiteWideSubscription($userid, $debugUserAccess), $datetime_utc, $debugUserAccess)){
-
-    //is active
-    if ($debugUserAccess){
-      echo 'it is active';
-      }
-
-      $siteWide = true;
-      $siteWideSubscriptionid = $assetManager->getSiteWideSubscription($userid, $debugUserAccess);
-
-      if ($debugUserAccess){
-        echo 'SUBSCRIPTION ID IS ' . $siteWideSubscriptionid;
+    
+    if ($liveTest){
+        $currentTime = new DateTime('2020-10-08 12:45:20', $serverTimeZone);
         }
-
-      //find out which asset
-
-      $assetid_subscription = $assetManager->getAssetid($siteWideSubscriptionid);
-
+    
+    $currentTime = new DateTime('now', $serverTimeZone); //ADD in for Live  CHANGE FOR LIVE
+    
+    //$currentTime = new DateTime('2020-10-09 12:45:20', $serverTimeZone);
+    
+    
+    //further info re live
+    
+    //generates array of the live sessions that a user has access to
+    
+    spl_autoload_unregister ('class_loader');
+    
+    require(BASE_URI .'/assets/scripts/classes/userFunctions.class.php');
+    
+    $userFunctions = new userFunctions;
+    
+    spl_autoload_register ('class_loader');
+    
+    //$userFunctions = new userFunctions;
+    
+    $liveAccess = $userFunctions->enrolmentPatternLive($userid);
+    
+    $info[] = 'page determines live access to the following live events for (' . $userid . ')';
+    $info[] = $liveAccess;
+    //print_r($liveAccess);
+    
+    
+    
+    
+    
+     # ******************** #
+        # ***** USER TRACKING ***** #
+    
+        //ensure users activity logged
+    
+        spl_autoload_unregister ('class_loader');
+    
+        require(BASE_URI .'/assets/scripts/classes/userActivity.class.php');
+    
+        $userActivity = new userActivity;
+    
+        spl_autoload_register ('class_loader');
+    
+        if ($userid){
+    
+            //getcurrent UTC time
+            $date = new DateTime('now', new DateTimeZone('UTC'));
+            $sqltimestamp = date_format($date, 'Y-m-d H:i:s');
+            
+            //add a user activity event to the database
+            
+            //TODO add which page they visited
+    
+            //TODO Cron clean up userActivity
+    
+            $userActivity->New_userActivity($userid, null, null, $sqltimestamp);
+            
+            $userActivity->prepareStatementPDO();
+    
+            
+        }  
+    
+    
+        # ******************** #
+        # ***** USER ACCESS SUBSCRIPTIONS ***** #
+    
+    
+    
+        
+        //site wide access
+    
+       //comment here
+    
+    if ($assetManager->getSiteWideSubscription($userid, $debug)){
+    
+      //there is a site wide subscription
       if ($debugUserAccess){
-        echo 'ASSET ID IS ' . $assetid_subscription;
+        echo 'there is a site wide subscription';
         }
-
-      //allocate umber based on 6 FREE, 5 STANDARD, 4 PRO
-
-      $sitewide_status = $assetManager->getMembershipStatusAssetid($assetid_subscription);
-
-      if ($debugUserAccess){
-        echo 'SITE WIDE STATUS IS ' . $sitewide_status;
-        }
-      //which asset?
-
-      //standard or pro?
-
-        if ($currentUserLevel > 3){
-
-      if ($sitewide_status == 1){
-
-        $currentUserLevel = 4;        
-
-      }elseif ($sitewide_status == 2){
-
-        $currentUserLevel = 4;        
-
-      }
-
-    }
-
-
       
-
-    //check if expiring Soon
-
-    if ($assetManager->subscription_expires_soon($assetManager->getSiteWideSubscription($userid, $debugUserAccess), $debugUserAccess)){
-
-      //expiring soon
-
-      if ($debugUserAccess){
-        echo 'it is expiring soon';
+      
+      //check if active 
+    
+      $datetime_utc = new DateTime('now', new DateTimeZone('UTC'));
+    
+      if ($assetManager->isSubscriptionActive($assetManager->getSiteWideSubscription($userid, $debugUserAccess), $datetime_utc, $debugUserAccess)){
+    
+        //is active
+        if ($debugUserAccess){
+          echo 'it is active';
+          }
+    
+          $siteWide = true;
+          $siteWideSubscriptionid = $assetManager->getSiteWideSubscription($userid, $debugUserAccess);
+    
+          if ($debugUserAccess){
+            echo 'SUBSCRIPTION ID IS ' . $siteWideSubscriptionid;
+            }
+    
+          //find out which asset
+    
+          $assetid_subscription = $assetManager->getAssetid($siteWideSubscriptionid);
+    
+          if ($debugUserAccess){
+            echo 'ASSET ID IS ' . $assetid_subscription;
+            }
+    
+          //allocate umber based on 6 FREE, 5 STANDARD, 4 PRO
+    
+          $sitewide_status = $assetManager->getMembershipStatusAssetid($assetid_subscription);
+    
+          if ($debugUserAccess){
+            echo 'SITE WIDE STATUS IS ' . $sitewide_status;
+            }
+          //which asset?
+    
+          //standard or pro?
+    
+            if ($currentUserLevel > 3){
+    
+          if ($sitewide_status == 1){
+    
+            $currentUserLevel = 4;        
+    
+          }elseif ($sitewide_status == 2){
+    
+            $currentUserLevel = 4;        
+    
+          }
+    
         }
-
-        $siteWideExpiring = true;
-
-
-    }else{
-
-      //not expiring soon
-
-      if ($debugUserAccess){
-        echo 'it is not expiring soon';
+    
+    
+          
+    
+        //check if expiring Soon
+    
+        if ($assetManager->subscription_expires_soon($assetManager->getSiteWideSubscription($userid, $debugUserAccess), $debugUserAccess)){
+    
+          //expiring soon
+    
+          if ($debugUserAccess){
+            echo 'it is expiring soon';
+            }
+    
+            $siteWideExpiring = true;
+    
+    
+        }else{
+    
+          //not expiring soon
+    
+          if ($debugUserAccess){
+            echo 'it is not expiring soon';
+            }
+    
+            $siteWideExpiring = false;
         }
-
-        $siteWideExpiring = false;
-    }
-
-
-  }else{
-
-    //subscription inactive
-    if ($debugUserAccess){
-      echo 'the subscription is inactive';
+    
+    
+      }else{
+    
+        //subscription inactive
+        if ($debugUserAccess){
+          echo 'the subscription is inactive';
+          }
+    
+          if ($currentUserLevel < 4){
+    
+            //allow GIEQs Pro
+            if ($debugUserAccess){
+              echo 'allow gieqs pro due to user level';
+              }
+    
+              $sitewide_status = 2;
+              
+        
+          }
+    
       }
-
+    
+    }else{
+    
+      //there is no site wide subscription
+    
+      if ($debugUserAccess){
+        echo 'there is no site-wide subscription';
+        }
+    
+        
+    
+      //go by currentUserLevel
+      // if < 4 then ok and permanent
+    
       if ($currentUserLevel < 4){
-
+    
         //allow GIEQs Pro
         if ($debugUserAccess){
           echo 'allow gieqs pro due to user level';
           }
-
+    
           $sitewide_status = 2;
-          
+    
+    
+          $siteWide = false;  //unless it starts a subscription if not found this should be false
+    
+      }else{
+    
+        //no subscription and no user level access
+        //therefore no access
+        if ($debugUserAccess){
+          echo 'no subscription and no user level access
+          therefore no access';
+          }
+    
+          $siteWide = false;
+          $sitewide_status = 99;
+    
+    
     
       }
-
-  }
-
-}else{
-
-  //there is no site wide subscription
-
-  if ($debugUserAccess){
-    echo 'there is no site-wide subscription';
+    
+      
+    
+    }  //comment here
+    
+    //end if userid
+    
     }
-
-    
-
-  //go by currentUserLevel
-  // if < 4 then ok and permanent
-
-  if ($currentUserLevel < 4){
-
-    //allow GIEQs Pro
-    if ($debugUserAccess){
-      echo 'allow gieqs pro due to user level';
-      }
-
-      $sitewide_status = 2;
-
-
-      $siteWide = false;  //unless it starts a subscription if not found this should be false
-
-  }else{
-
-    //no subscription and no user level access
-    //therefore no access
-    if ($debugUserAccess){
-      echo 'no subscription and no user level access
-      therefore no access';
-      }
-
-      $siteWide = false;
-      $sitewide_status = 99;
-
-
-
-  }
-
-  
-
-}  //comment here
-
-}
-
-
-}
 
 if ($debugUserAccess){
 print_r($info);

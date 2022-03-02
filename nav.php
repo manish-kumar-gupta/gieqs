@@ -489,7 +489,7 @@ if ($debugAccess){
                 <?php }?>
                 
                 <?php
-                if (isset($_SESSION['user_id']) && ($_SESSION['siteKey'] == 'TxsvAb6KDYpmdNk') && ($_SESSION['access_level'] > 0 && $_SESSION['access_level'] < 7)){
+                if (isset($_SESSION['user_id']) && ($_SESSION['siteKey'] == 'TxsvAb6KDYpmdNk')){
                 ?>
 
 <li class="nav-item">
@@ -533,8 +533,62 @@ if ($debug){
 }
 
 
+if ($userid){
+if ($isSuperuser == 1){
+
+  $fullAccess = true;
+  $proMember = false;
+
+  if ($debug){
+
+    echo 'is superuser';
+
+  }
+
+}elseif ($sitewide_status == 2){ //PRO subscription
+
+  $fullAccess = true;
+  $proMember = true;
+
+  if ($debug){
+
+    echo 'full access not superuser so pro user';
+
+  }
+
+}else{
+
+  $fullAccess = false;
+  $proMember = false;
+
+  if ($debug){
+
+    echo 'not full access not pro member but logged in';
+
+  }
+
+}
+}else{
+
+  $fullAccess = false;
+  $proMember = false;
+
+  if ($debug){
+
+    echo 'not  logged in';
+
+  }
+}
+
+
+
+               if (($proMember === false)){
+
+
 
 require(BASE_URI . '/pages/learning/includes/premium_content.php');
+
+               }
 
 ?>
 
