@@ -57,7 +57,7 @@ $general = new general;
 
 //assetid
 
-$debug = true;
+$debug = false;
 
 //$assetid = 13;
 $asset_id_pagewrite = '95';
