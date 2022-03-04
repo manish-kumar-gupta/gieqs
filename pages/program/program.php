@@ -61,7 +61,7 @@ $debug = false;
 
 //$assetid = 13;
 $asset_id_pagewrite = '95';
-$asset_id_pagewrite2 = '16';
+$asset_id_pagewrite2 = '96';
 $email_to_use_as_basis = '1';
 
 /*$asset_id_pagewrite = '3';
