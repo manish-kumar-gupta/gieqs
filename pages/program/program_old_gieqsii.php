@@ -60,7 +60,7 @@ $general = new general;
 $debug = false;
 
 //$assetid = 13;
-$asset_id_pagewrite = '95';
+$asset_id_pagewrite = '15';
 $asset_id_pagewrite2 = '16';
 $email_to_use_as_basis = '1';
 
@@ -141,7 +141,7 @@ var_dump($currentTime);
 
 
 ?>
-    <title>GIEQs III Scientific Program</title>
+    <title>GIEQs II Scientific Program</title>
     <meta charset="utf-8">
  <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -247,12 +247,12 @@ var_dump($currentTime);
 
                     <div class="col-12 p-3 pb-1">
                         <span class="h1 display-2"
-                            style="color: rgb(238, 194, 120);">GIEQs III Preliminary Scientific Program<br /></span>
+                            style="color: rgb(238, 194, 120);">GIEQs II Scientific Program<br /></span>
                         <span
                             class="h3 display-5 mt-4 text-white"><?php echo 'Live :  ' . $humanReadableProgrammeDate;?></span>
                         <span
                             class="h3 display-5 text-white"><?php echo ', ' . $humanStartTime . ' - ' . $humanEndTime;?>
-                            <br /> and Friday 30th September 2022, 08:00 - 17:30 CEST
+                            <br /> and Friday 1st October 2021, 08:00 - 17:30 CEST
 
                             <br /><br />on Demand
                             thereafter<br /></span>
