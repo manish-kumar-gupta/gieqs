@@ -583,24 +583,24 @@ background-color: rgb(238, 194, 120);
 
 			$('.content').on('click', '#calculate', function(){
 
-				var demarcation = $('#demarcation').val();
-				var size = $('#size').val();
-				var location = $('#location').val();
-				var morphology = $('#morphology').val();
-				var paris = $('#paris').val();
+                    var demarcation = $('#demarcation').val();
+                    var size = $('#size').val();
+                    var location = $('#location').val();
+                    var morphology = $('#morphology').val();
+                    var paris = $('#paris').val();
 
-				var COVERT = determineSMIC(demarcation, size, location, morphology, paris);
+                    var COVERT = determineSMIC(demarcation, size, location, morphology, paris);
 
                 if (typeof COVERT === 'object' && COVERT !== null){
 
                     $('#result').html('<h3 class="gieqsGold"> ' + COVERT.risk_text + '</h3>');
-                $('#result').append('<h4>' + COVERT.risk + '% </h4>');
-                $('#result').append('<p>The data was copied to your clipboard to paste back into the survey</p>');
+                    $('#result').append('<h4>' + COVERT.risk + '% </h4>');
+                    $('#result').append('<p>The data was copied to your clipboard to paste back into the survey</p>');
 
-                $('#result').append('(or ' + COVERT.odds + 'x the risk of a granular 0-IIa 20-29mm LSL in the colon proximal to the sigmoid without a demarcated area or depression, risk 1.1%)<br>');
-                $('#result').addClass('gieqsGold');
+                    $('#result').append('(or ' + COVERT.odds + 'x the risk of a granular 0-IIa 20-29mm LSL in the colon proximal to the sigmoid without a demarcated area or depression, risk 1.1%)<br>');
+                    $('#result').addClass('gieqsGold');
 
-                generateScore();
+                    generateScore();
 
 
                 }else{
@@ -626,14 +626,60 @@ background-color: rgb(238, 194, 120);
 
             })
 
-            $('.content').on('change', '#demarcation', function(){
+            $('.content').on('change', '#demarcation, #demarcation_imaging', function(){
 
-                var demarcation = $('#demarcation').val();
+                
+
+                var demarcation = null;
+                var demarcation_field = $('#demarcation').val();
+                var true_demarcation = null;
+                var showImagingWithoutDemarcation = false;
+
+
+                if ($('#demarcation_imaging').val() == '1' || $('#demarcation_imaging').val() == '2'){
+
+                    true_demarcation = false;
+
+                }else if ($('#demarcation_imaging').val() == '3' || $('#demarcation_imaging').val() == '4'){
+
+                    true_demarcation = true;
+
+                }
+
+                console.log('Demarcation field is ' + demarcation_field + ' true_demarcation = ' + true_demarcation);
+
+                if (demarcation_field == 0){
+
+                    demarcation = 0;
+
+                }else if (demarcation_field == 1 && true_demarcation == false){
+
+                    demarcation = 0;
+                    showImagingWithoutDemarcation = true;
+
+                }else if (demarcation_field == 1 && true_demarcation == true){
+
+                    demarcation = 1;
+
+                }else if (demarcation_field == 1 && true_demarcation == null){
+
+                    demarcation = 1;
+                
+                }
+
 
                 if (demarcation == 0){
 
 
                     noDemarcatedArea();
+
+                    if (showImagingWithoutDemarcation == true){
+
+
+                        $('#demarcation_imaging').show();
+                         $('#demarcation_imaging').parent().prev().show();
+
+                    }
 
 
                 }else if (demarcation == 1){
@@ -642,6 +688,7 @@ background-color: rgb(238, 194, 120);
 
                     $('#demarcation_imaging').parent().show();
 
+                    
 
 
                 }

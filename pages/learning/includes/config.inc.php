@@ -1,9 +1,9 @@
 <?php 
-// server should keep session data for AT LEAST 2 hours
-ini_set('session.gc_maxlifetime', 7200);
+// server should keep session data for AT LEAST 24 hours
+ini_set('session.gc_maxlifetime', 43200);
 
-// each client should remember their session id for EXACTLY 2 hours
-session_set_cookie_params(7200);
+// each client should remember their session id for EXACTLY 24 hours
+session_set_cookie_params(43200);
 session_start();
 
 /* 
