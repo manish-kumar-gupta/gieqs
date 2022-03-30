@@ -219,6 +219,9 @@ $date = $currentNavTime->format('Y-m-d');
 $currentTimeBrusselsOnCourseDate = DateTime::createFromFormat('Y-m-d', $date) ?: new DateTime; //time now on course date
 $currentTimeBrusselsOnCourseDate->setTimezone($serverTimeZoneNav);
 
+//add one day
+//then do
+
 //$desiredMailSendTime = new DateTime('2020-10-15 07:00:00', $serverTimeZoneNav);
 $desiredMailSendTimeOnCourseDate = new DateTime($date . ' 18:00:00', $serverTimeZoneNav);
 //$desiredMailSendTimeOnCourseDate = DateTime::createFromFormat('H:i:s', $desiredMailSendTime) ?: new DateTime; //time now on course date

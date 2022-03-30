@@ -8,6 +8,21 @@ $coin = new coin;
 
 <div id="subscription_level" style="display:none;"><?php echo $sitewide_status;?></div>
 
+<?php
+
+/*
+
+if a pro member
+and its a course, free
+
+if a pro member and its a symposium, check if more than 2 months ago then free
+
+derive some varibles
+allow them to determine access validated
+
+*/
+
+?>
 
 
 <div class="modal modal-new" id="modal_success" tabindex="-1" role="dialog" aria-labelledby="modal-new"

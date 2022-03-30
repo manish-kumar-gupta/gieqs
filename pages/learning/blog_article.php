@@ -128,6 +128,16 @@
 
 
             <style>
+
+            body {
+
+                font-family: 'nunito', sans-serif;
+font-size: 1.3rem;
+font-weight: 400;
+line-height: 1.7;
+text-align: left;
+color: #95aac9;
+            }
             .gieqsGold {
 
                 color: rgb(238, 195, 120);
