@@ -132,10 +132,10 @@
             .blog-container {
 
                 font-family: 'nunito', sans-serif;
-font-size: 1.3rem;
+font-size: 1.2rem;
 font-weight: 400;
 line-height: 1.7;
-text-align: left;
+text-align: justify !important;
 color: #95aac9;
             }
             .gieqsGold {
