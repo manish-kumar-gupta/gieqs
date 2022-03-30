@@ -463,7 +463,7 @@ color: #95aac9;
             <section class="">
                 <?php $users->Load_from_key($blogs->getauthor());?>
 
-                <div class="blog-container container pt-6">
+                <div class="container pt-6">
                     <div class="row justify-content-center">
                         <div class="col-md-9">
                             <h1 class="lh-150 mb-3"><?php echo $blogs->getname();?></h1>
@@ -536,7 +536,7 @@ color: #95aac9;
 
 <?php }?> 
 
-            <section class="slice">
+            <section class="blog-container slice">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-9">
