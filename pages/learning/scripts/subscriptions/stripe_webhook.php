@@ -241,7 +241,14 @@ switch ($event->type) {
         
             $subscription->Load_from_key($subscription_id);
         
+            if ($debug) {
         
+                //echo 'Found subscription ' . $subscription_id;
+                var_dump($subscription);
+
+                //echo '<br/';
+        
+            }
         
             if ($subscription->getactive() == '1') {
         
