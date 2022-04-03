@@ -55,11 +55,11 @@ $location = BASE_URL . '/index.php';
 
 //require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
 
-$_SESSION['debug'] = FALSE;
+$_SESSION['debug'] = TRUE;
 
 //ini_set('display_errors', 1);
 //ini_set('display_startup_errors', 1);
-error_reporting(E_NONE);
+//error_reporting(E_NONE);
 
 require_once(BASE_URI . '/assets/scripts/classes/general.class.php');
 $general = new general;
