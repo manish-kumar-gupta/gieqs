@@ -138,7 +138,7 @@ $customer = \Stripe\Customer::retrieve($session->customer);
 }
 
 //print_r($event);
-//echo$event;
+//$dataToLog[] = $event;
 
 //Turn array into a delimited string using
 //the implode function
@@ -158,10 +158,10 @@ switch ($event->type) {
         // handlePaymentIntentSucceeded($paymentIntent);
 
         //echo '<pre>';
-        //echo$paymentIntent;
+        //$dataToLog[] = $paymentIntent;
         //echo '</pre>';
 
-        echo'payment intent detected';
+        $dataToLog[] = 'payment intent detected';
 
         $subscription_id = $paymentIntent['metadata']['subscription_id'];
 
@@ -174,7 +174,7 @@ switch ($event->type) {
         $paymentMethod = $event->data->object; // contains a \Stripe\PaymentMethod
         // Then define and call a method to handle the successful attachment of a PaymentMethod.
         // handlePaymentMethodAttached($paymentMethod);
-        echo'invoice paid method attached detected';
+        $dataToLog[] = 'invoice paid method attached detected';
 
         //check the subscription is active using the id
 
@@ -197,8 +197,8 @@ switch ($event->type) {
             //$paymentMethodContents = var_dump($paymentMethod);
             //$subscription_data_contents = var_dump($subscription_data);
 
-            //echo'paymentMethod contains ' . $paymentMethodContents;
-            echo'Looking for subscription ' . $subscription_data_contents;
+            //$dataToLog[] = 'paymentMethod contains ' . $paymentMethodContents;
+            $dataToLog[] = 'Looking for subscription ' . $subscription_data_contents;
 
 
 
@@ -210,7 +210,7 @@ switch ($event->type) {
 
         if ($debug) {
 
-            echo'Looking for subscription ' . $subscription_id;
+            $dataToLog[] = 'Looking for subscription ' . $subscription_id;
             //echo '<br/';
         
         }
@@ -232,7 +232,7 @@ switch ($event->type) {
         
             if ($debug) {
         
-                echo 'Found subscription ' . $subscription_id;
+                $dataToLog[] =  'Found subscription ' . $subscription_id;
                 //echo '<br/';
         
             }
@@ -246,7 +246,7 @@ switch ($event->type) {
         
                 if ($debug) {
         
-                    echo 'subscription ' . $subscription_id . ' is active';
+                    $dataToLog[] =  'subscription ' . $subscription_id . ' is active';
                     //echo '<br/';
         
                 }
@@ -276,7 +276,7 @@ switch ($event->type) {
 
                     if ($debug) {
         
-                        echo 'end date of the subscription with id' . $subscription_id . ' is set to ' . $formattedString;
+                        $dataToLog[] =  'end date of the subscription with id' . $subscription_id . ' is set to ' . $formattedString;
                         //echo '<br/';
             
                     }
@@ -297,7 +297,7 @@ switch ($event->type) {
         
                 if ($debug) {
         
-                    echo 'user id is  ' . $user_id_subscription . '';
+                    $dataToLog[] =  'user id is  ' . $user_id_subscription . '';
                     //echo '<br/';
         
                 }
@@ -312,7 +312,7 @@ switch ($event->type) {
         
                 if ($debug) {
         
-                    echo'length of subscription is  ' . $subscription_length . ' months';
+                    $dataToLog[] = 'length of subscription is  ' . $subscription_length . ' months';
                     //echo '<br/';
         
                 } 
@@ -325,7 +325,7 @@ switch ($event->type) {
         
               if ($debug) {
         
-                    echo 'amount of coin to grant  is  ' . $coin_grant_amount . '';
+                    $dataToLog[] =  'amount of coin to grant  is  ' . $coin_grant_amount . '';
                     //echo '<br/';
         
                 }
@@ -338,7 +338,7 @@ switch ($event->type) {
                     
                     if ($debug){
         
-                        echo 'in the length subscription loop';
+                        $dataToLog[] =  'in the length subscription loop';
                         //check how many already given
                            
                     }
@@ -361,7 +361,7 @@ switch ($event->type) {
         
                     if ($debug) {
         
-                        echo 'already given ($numberOfTimes) is' . $numberOfTimes . '';
+                        $dataToLog[] =  'already given ($numberOfTimes) is' . $numberOfTimes . '';
                         //echo '<br/';
         
                     }
@@ -377,7 +377,7 @@ switch ($event->type) {
         
                     if ($debug) {
         
-                        echo 'number should be  ($numberShouldBe) is' . $numberShouldBe . '';
+                        $dataToLog[] =  'number should be  ($numberShouldBe) is' . $numberShouldBe . '';
                         //echo '<br/';
         
                     }
@@ -389,7 +389,7 @@ switch ($event->type) {
         
                         if ($debug) {
         
-                            echo 'Time to record another subscription and give coins';
+                            $dataToLog[] =  'Time to record another subscription and give coins';
         
                         }
         
@@ -404,7 +404,7 @@ switch ($event->type) {
         
                         if ($debug) {
         
-                            echo 'coins granted';
+                            $dataToLog[] =  'coins granted';
                             //echo '<br/>';
             
                         }
@@ -413,7 +413,7 @@ switch ($event->type) {
         
                         if ($debug) {
         
-                            echo 'NOT TIME to record another subscription or give coins OR ALREADY DONE';
+                            $dataToLog[] =  'NOT TIME to record another subscription or give coins OR ALREADY DONE';
             
                         }
         
@@ -425,7 +425,7 @@ switch ($event->type) {
         
                     if ($debug) {
         
-                        echo 'NOT TIME to record another subscription and give coins OR ALREADY DONE';
+                        $dataToLog[] =  'NOT TIME to record another subscription and give coins OR ALREADY DONE';
         
                     }
         
@@ -455,7 +455,7 @@ switch ($event->type) {
 
                     if ($debug) {
         
-                        echo 'end date of the subscription with id' . $subscription_id . ' is set to ' . $formattedString;
+                        $dataToLog[] =  'end date of the subscription with id' . $subscription_id . ' is set to ' . $formattedString;
                         //echo '<br/';
             
                     }
@@ -467,7 +467,7 @@ switch ($event->type) {
 
                 if ($debug) {
         
-                    echo 'subscription is inactive but should be active so set as active';
+                    $dataToLog[] =  'subscription is inactive but should be active so set as active';
     
                 }
     
@@ -484,7 +484,7 @@ switch ($event->type) {
         
             //cannot find subscription or is not active
         
-            echo'Cannot find subscription';
+            $dataToLog[] = 'Cannot find subscription';
         
         }
 
@@ -496,8 +496,8 @@ switch ($event->type) {
         $paymentMethod = $event->data->object;
         // ... handle other event types
         echo 'detected failed invoice';
-        echo'invoice failed detected';
-        echo$paymentMethod;
+        $dataToLog[] = 'invoice failed detected';
+        $dataToLog[] = $paymentMethod;
 
         $subscription_data = $event->data->object->lines->data[0];  //gives the max array
 
@@ -517,7 +517,7 @@ switch ($event->type) {
 
         //send a mail to the user saying that subscription will not renew unless purchased again.
 
-        echo'invoice failed for number ' . $subscription_id . ' therefore set as inactive';
+        $dataToLog[] = 'invoice failed for number ' . $subscription_id . ' therefore set as inactive';
 
 
 
@@ -526,7 +526,7 @@ switch ($event->type) {
 
             if ($debug){
 
-                echo'could not load subscription data';
+                $dataToLog[] = 'could not load subscription data';
             }
         }
 
@@ -535,7 +535,7 @@ switch ($event->type) {
     $event = $event->data->object; // contains a \Stripe\PaymentMethod
     if ($debug){
 
-        echo$event;
+        $dataToLog[] = $event;
     }
 
 
