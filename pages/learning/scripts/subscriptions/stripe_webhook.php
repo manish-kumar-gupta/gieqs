@@ -543,7 +543,7 @@ switch ($event->type) {
                            
                     }
         
-                    $count = $userFunctions->returnRecentCoinGrantStandardSubscription($user_id_subscription, false);
+                    $count = $userFunctions->returnRecentCoinGrantStandardSubscription($user_id_subscription, true);
         
                     //var_dump($count);
         
