@@ -413,7 +413,7 @@ switch ($event->type) {
                         $userActivity->New_userActivity($user_id_subscription, 'COIN_GRANT_STANDARD_SUBSCRIPTION_' . $subscription_length . 'MONTHS ' . $coin_grant_amount, '', $sqltimestamp);
                         $userActivity->prepareStatementPDO();
         
-                        $coin_grant->New_coin_grant($sqltimestamp, $coin_grant_amount, $userid);
+                        $coin_grant->New_coin_grant($sqltimestamp, $coin_grant_amount, $user_id_subscription);
                         $new_grant_id = $coin_grant->prepareStatementPDO();
         
                         if ($debug) {
@@ -599,7 +599,7 @@ switch ($event->type) {
                         $userActivity->New_userActivity($user_id_subscription, 'COIN_GRANT_STANDARD_SUBSCRIPTION_' . $subscription_length . 'MONTHS ' . $coin_grant_amount, '', $sqltimestamp);
                         $userActivity->prepareStatementPDO();
         
-                        $coin_grant->New_coin_grant($sqltimestamp, $coin_grant_amount, $userid);
+                        $coin_grant->New_coin_grant($sqltimestamp, $coin_grant_amount, $user_id_subscription);
                         $new_grant_id = $coin_grant->prepareStatementPDO();
         
                         if ($debug) {
