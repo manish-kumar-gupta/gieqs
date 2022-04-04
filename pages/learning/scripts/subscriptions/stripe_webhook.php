@@ -487,7 +487,7 @@ switch ($event->type) {
                 }
     
         
-            }
+            
         
             //detect the previous useractivity if >6, 2 if over 12 etc
             //if first or 6 months grant coins if it is a STANDARD
@@ -632,6 +632,8 @@ switch ($event->type) {
                 }
         
             //could send mail thanks for updating payment information
+
+        }
         
         } else {
         
