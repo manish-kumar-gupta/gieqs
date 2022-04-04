@@ -442,6 +442,7 @@ switch ($event->type) {
             } else {
         
                 //subscription is inactive but should be active
+                //should be the same as the above
                 //should autorenew since this is a subscription
         
                 $subscription->setactive('1');
