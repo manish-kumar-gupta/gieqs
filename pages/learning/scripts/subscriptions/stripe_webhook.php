@@ -454,7 +454,7 @@ switch ($event->type) {
 
                     //sync end date with stripe
 
-                    $period = $event->data->object->lines->data->period;
+                    $period = $subscription_data->period;
 
                     $timestamp = $period['end'];
 
@@ -486,6 +486,144 @@ switch ($event->type) {
             //detect the previous useractivity if >6, 2 if over 12 etc
             //if first or 6 months grant coins if it is a STANDARD
             //pro gives everything
+
+            $user_id_subscription = $subscription->getuser_id();
+        
+                if ($debug) {
+        
+                    echo 'user id is  ' . $user_id_subscription . '';
+                    //echo '<br/';
+        
+                }
+        
+                //TODO SOON TODO
+                //length (months) of subscription
+                //error_reporting(E_ALL);
+        
+               // var_dump($assetManager);
+        
+                $subscription_length = $assetManager->getLengthSubscription($subscription_id, false);
+        
+                if ($debug) {
+        
+                    echo'length of subscription is  ' . $subscription_length . ' months';
+                    //echo '<br/';
+        
+                } 
+        
+            
+        
+                //echo 'hello';
+        
+                $coin_grant_amount = 30; //the amount credited every 6 months  //to all subscription types
+        
+              if ($debug) {
+        
+                    echo 'amount of coin to grant  is  ' . $coin_grant_amount . '';
+                    //echo '<br/';
+        
+                }
+        
+                //var_dump(lengthSubscription);
+        
+                if ($subscription_length > 5) {
+        
+        
+                    
+                    if ($debug){
+        
+                        echo 'in the length subscription loop';
+                        //check how many already given
+                           
+                    }
+        
+                    $count = $userFunctions->returnRecentCoinGrantStandardSubscription($user_id_subscription, false);
+        
+                    //var_dump($count);
+        
+                    if (is_array($count)){
+        
+                        $numberOfTimes = $count[0]['count'];
+        
+        
+                    }else if ($count === false) {
+        
+                        $numberOfTimes = 0;
+        
+                    }
+        
+        
+                    if ($debug) {
+        
+                        echo 'already given ($numberOfTimes) is' . $numberOfTimes . '';
+                        //echo '<br/';
+        
+                    }
+        
+                    //var_dump(lengthSubscription);
+        
+        
+                    //if multiples work out
+        
+                    //number should be
+        
+                    $numberShouldBe = $subscription_length / 6;
+        
+                    if ($debug) {
+        
+                        echo 'number should be  ($numberShouldBe) is' . $numberShouldBe . '';
+                        //echo '<br/';
+        
+                    }
+        
+                    var_dump(lengthSubscription);
+        
+        
+                    if (($numberOfTimes == 0) || (($numberOfTimes > 0) && ($numberOfTimes < $numberShouldBe))) {
+        
+                        if ($debug) {
+        
+                            echo 'Time to record another subscription and give coins';
+        
+                        }
+        
+                        $date = new DateTime('now', new DateTimeZone('UTC'));
+                        $sqltimestamp = date_format($date, 'Y-m-d H:i:s');
+        
+                        $userActivity->New_userActivity($user_id_subscription, 'COIN_GRANT_STANDARD_SUBSCRIPTION_' . $subscription_length . 'MONTHS ' . $coin_grant_amount, '', $sqltimestamp);
+                        $userActivity->prepareStatementPDO();
+        
+                        $coin_grant->New_coin_grant($sqltimestamp, $coin_grant_amount, $userid);
+                        $new_grant_id = $coin_grant->prepareStatementPDO();
+        
+                        if ($debug) {
+        
+                            echo 'coins granted';
+                            //echo '<br/>';
+            
+                        }
+        
+                    } else {
+        
+                        if ($debug) {
+        
+                            echo 'NOT TIME to record another subscription or give coins OR ALREADY DONE';
+            
+                        }
+        
+        
+        
+                    }
+        
+                } else {
+        
+                    if ($debug) {
+        
+                        echo 'NOT TIME to record another subscription and give coins OR ALREADY DONE';
+        
+                    }
+        
+                }
         
             //could send mail thanks for updating payment information
         
@@ -496,6 +634,8 @@ switch ($event->type) {
             echo'Cannot find subscription';
         
         }
+
+        //this should be sending update mails.  thanks for your loyalty, have you checked out the latest content on GIEQs online?
 
 
 
