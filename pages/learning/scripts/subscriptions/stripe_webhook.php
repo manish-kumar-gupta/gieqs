@@ -92,6 +92,8 @@ $subscription = new subscriptions; */
 require_once(BASE_URI . '/assets/scripts/classes/user_email.class.php');
 $user_email = new user_email;
 
+require_once(BASE_URI . '/assets/scripts/classes/userActivity.class.php');
+$userActivity = new userActivity;
 
 //require_once BASE_URI .'/../scripts/config.php'; // KEY CODE TO REPLICATE
 
