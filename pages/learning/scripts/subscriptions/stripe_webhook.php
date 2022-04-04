@@ -95,6 +95,10 @@ $user_email = new user_email;
 require_once(BASE_URI . '/assets/scripts/classes/userActivity.class.php');
 $userActivity = new userActivity;
 
+require_once BASE_URI . '/assets/scripts/classes/coin_grant.class.php';
+$coin_grant = new coin_grant;
+
+
 //require_once BASE_URI .'/../scripts/config.php'; // KEY CODE TO REPLICATE
 
 require_once BASE_URI . "/vendor/autoload.php";
