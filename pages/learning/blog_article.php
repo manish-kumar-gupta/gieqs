@@ -493,11 +493,11 @@ color: #95aac9;
                 2 => [0 => '/assets/img/blog/covers/polypectomy_1920x600.png', ], //Polyp Tutor
                 3 => [0 => '/assets/img/blog/covers/imaging_1920x600.png', ], //Imaging Tutor
                 4 => [0 => '/assets/img/blog/covers/gastroscopy_1920x600.png', ], //Gastroscopy Tutor
-                5 => '', //GIEQs Topics Tutor
+               /*  5 => '', //GIEQs Topics Tutor
                 6 => '', //Nursing Tutor
                 7 => '', //ERCP Tutor
                 8 => '', //EUS Tutor
-                9 => '', //Therapeutic EUS Tutor
+                9 => '', //Therapeutic EUS Tutor */
                 10 => [0 => '/assets/img/blog/covers/complex_polypectomy_1920x600.png', ], //Complex Resection Tutor
                 11 => [0 => '/assets/img/blog/covers/submucosal_1920x600.png', ], //Submucosal Endoscopy Tutor
                 0 => '', //Video Nav
