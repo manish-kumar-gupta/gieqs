@@ -101,7 +101,7 @@ Class blogLink {
 
         
 
-        $q .= " ORDER BY a.`created` DESC";
+        $q .= " ORDER BY a.`updated` DESC";
 
         if ($featuredFirst){
 
