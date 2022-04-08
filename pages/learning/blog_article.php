@@ -527,9 +527,11 @@ color: #95aac9;
  if (array_key_exists($blogs->getsubject(),$imagesCovers)) {
 
   $countImagesArray = count($imagesCovers[$blogs->getsubject()]) - 1;
+  $countImagesArray2 = count($imagesCovers[$blogs->getsubject()]);
+
   $random_number = mt_rand(0, $countImagesArray);
 
-  if ($countImagesArray > 0){
+  if ($countImagesArray2 > 0){
 
    ?>
             <section class="bg-cover mt-5"
