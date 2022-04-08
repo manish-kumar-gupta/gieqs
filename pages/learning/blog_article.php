@@ -467,7 +467,7 @@ color: #95aac9;
                     <div class="row justify-content-center">
                         <div class="col-md-9">
                             <h1 class="lh-150 mb-3"><?php echo $blogs->getname();?></h1>
-                            <p class="lead text-muted mb-0"><?php echo $blogs->getpreheader();?></p>
+                            <p class="lead text-muted mb-0" style="font-size:1.5rem !important;"><?php echo $blogs->getpreheader();?></p>
                             <div class="media align-items-center mt-5">
                                 <div>
                                     <a href="#" class="avatar rounded-circle mr-3">
@@ -529,12 +529,17 @@ color: #95aac9;
   $countImagesArray = count($imagesCovers[$blogs->getsubject()]) - 1;
   $random_number = mt_rand(0, $countImagesArray);
 
+  if ($countImagesArray > 0){
+
    ?>
             <section class="bg-cover mt-5"
                 style="height: 250px; background-image: url('<?php echo BASE_URL . $imagesCovers[$blogs->getsubject()][$random_number];?>'); background-position: top center; background-size: contain;">
             </section>
 
-<?php }?> 
+<?php 
+  }
+
+}?> 
 
             <section class="blog-container slice">
                 <div class="container">
