@@ -467,7 +467,7 @@ color: #95aac9;
                     <div class="row justify-content-center">
                         <div class="col-md-9">
                             <h1 class="lh-150 mb-3"><?php echo $blogs->getname();?></h1>
-                            <p class="lead text-muted mb-0" style="font-size:1.5rem !important;"><?php echo $blogs->getpreheader();?></p>
+                            <p class="lead text-muted mb-0" style="font-size:1.4rem !important;"><?php echo $blogs->getpreheader();?></p>
                             <div class="media align-items-center mt-5">
                                 <div>
                                     <a href="#" class="avatar rounded-circle mr-3">
@@ -608,7 +608,7 @@ if ($value['img'] != NULL){
 }else{
 
     ?>
-                                <p class="lead"> <?php echo $value['text'];?></p>
+                                <p class=""> <?php echo $value['text'];?></p>
 
                                 <?
     
