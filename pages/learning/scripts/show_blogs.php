@@ -22,7 +22,7 @@ $images = [
     2 => [0 => '/assets/img/blog/cards/polypectomy_800x600.png', 1 => '/assets/img/blog/cards/polypectomy2_800x600.png'],//Polyp Tutor
     3 => [0 => '/assets/img/blog/cards/imaging_800x600.png', ], //Imaging Tutor
     4 => [0 => '/assets/img/blog/cards/gastroscopy_800x600.png' ], //Gastroscopy Tutor
-    5 => '', //GIEQs Topics Tutor
+    5 => [0 => '/assets/img/blog/cards/gieqs_foundation_icon.png'], //GIEQs Topics Tutor
     6 => '', //Nursing Tutor
     7 => '', //ERCP Tutor
     8 => '', //EUS Tutor
