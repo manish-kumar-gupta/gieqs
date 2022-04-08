@@ -133,7 +133,7 @@
 
                 font-family: 'nunito', sans-serif;
 font-size: 1.3rem !important;
-font-weight: 400;
+font-weight: 300;
 line-height: 1.7 !important;
 text-align: justify !important;
 color: #95aac9;
