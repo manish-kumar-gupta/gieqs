@@ -132,9 +132,9 @@
             .blog-container {
 
                 font-family: 'nunito', sans-serif;
-font-size: 1.2rem;
+font-size: 1.3rem !important;
 font-weight: 400;
-line-height: 1.7;
+line-height: 1.7 !important;
 text-align: justify !important;
 color: #95aac9;
             }
@@ -168,7 +168,7 @@ color: #95aac9;
 
             .article p {
 
-                font-size: 1.3rem !important; 
+                /* font-size: 1.3rem !important;  */
                 font-weight: 300 !important;
 
             }
