@@ -257,6 +257,8 @@ $pdocrud->relatedData('institutional_id','institutional','id','name');
 
 
 $pdocrud->fieldNotMandatory('sponsor');
+$pdocrud->fieldNotMandatory('institutional_id');
+
 
 /*         $pdocrud->crudAddAction('generate_cipher', 'cipher', $displayVal = array(), $applyVal = array());
  */
