@@ -1474,7 +1474,7 @@ $('#NewUserForm').submit();
 $(document).on('click', '#login', function() {
 
 event.preventDefault();
-window.location.href = siteRoot + '/pages/authentication/login.php';
+window.location.href = siteRoot + '/pages/authentication/login.php?destination=subscribe';
 
 
 })
