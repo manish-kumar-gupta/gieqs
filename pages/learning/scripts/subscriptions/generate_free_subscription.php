@@ -64,7 +64,7 @@ $mail = new PHPMailer;
 
 
 
-$debug = false;
+$debug = true;
 
 if ($debug){
 
@@ -97,6 +97,20 @@ if (isset($_POST['asset_id'])){
 
 }
 
+if (isset($_POST['cipher_hidden'])){
+
+    $cipher_hidden = $_POST['cipher_hidden'];
+
+
+    if ($debug){
+
+        echo '<br/><br/> Cipher Hidden is ' . $cipher_hidden;
+
+    }
+
+
+}
+
 //TODO add security check of token here
 
 //if both are set reject
@@ -120,6 +134,11 @@ if (!isset($subscription_id) && !isset($asset_id)){
 
     die();
 }
+
+
+
+
+   
 
 
 

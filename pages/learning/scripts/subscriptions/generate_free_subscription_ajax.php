@@ -105,6 +105,77 @@ if (isset($data['asset_id'])){
 
 }
 
+if (isset($data['cipher_hidden'])){
+
+    $cipher_hidden = $data['cipher_hidden'];
+
+
+    if ($debug){
+
+        echo '<br/><br/> Cipher Hidden is ' . $cipher_hidden;
+
+    }
+
+    //do the token math
+
+    $token_from_cipher = $assetManager->getTokenidfromCipher($cipher_hidden, false);
+
+                                if (is_numeric($token_from_cipher)){
+
+                               $token->Load_from_key($token_from_cipher);
+
+                               // get if institutional
+
+                               $institutional_id = $token->getinstitutional_id();
+
+                               //get length 
+
+                               $token_length = $token->getlength();
+
+                               //make some booleans
+
+                               if ((!isset($institutional_id)) || $institutional_id === NULL || $institutional_id == 0){
+
+                                $is_institutional = false;
+
+                               }elseif (isset($institutional_id) && is_numeric($institutional_id)) {
+
+                                $is_institutional = true;
+
+                               }else{
+
+                                $is_institutional = false;
+
+                               }
+
+                               
+
+                               if ($debug){
+
+                                echo 'We detected a valid access code ' . $cipher_hidden;
+                                echo '<br><br>';
+                                var_dump($is_institutional);
+                                echo 'Is_Institutional = : ' . $is_institutional;
+                                echo '<br><br>';
+                                echo 'Institutional id was  : ' . $institutional_id;
+                                echo '<br><br>';
+                                echo 'Token length id was  : ' . $token_length;
+
+
+                               }
+                            }else{
+
+                                if ($debug){
+
+                                    echo 'Issue with the token loading';
+                                }
+
+                            }
+
+
+
+}
+
 //TODO add security check of token here
 
 //if both are set reject
@@ -131,6 +202,10 @@ if (!isset($subscription_id) && !isset($asset_id)){
 
 
 
+//die();
+
+
+
 if (isset($asset_id)){
 
 //get the required asset data
@@ -151,6 +226,13 @@ if ($assetManager->doesUserHaveSameAssetAlready($asset_id, $userid, false)){ //i
 
 
 $assets_paid->Load_from_key($asset_id);
+
+if ($debug){
+
+    echo 'asset dump is ';
+    var_dump($assets_paid);
+
+}
 
 
 $subscription_to_return['asset_name'] = $assets_paid->getname();
@@ -212,20 +294,42 @@ $subscription_to_return['user_id'] = $userid;
 
     $interval = 'P' . $subscription_to_return['renew_frequency'] . 'M';
 
+    if ($is_institutional){
+
+        if (isset($token_length) && is_numeric($token_length)){
+
+         $interval = 'P' . $token_length . 'M';
+
+        }
+
+    }
+
     $end_start_calculate_date->add(new DateInterval($interval));
     
     $end_date_sqltimestamp = date_format($end_start_calculate_date, 'Y-m-d H:i:s');
 
     //check there are tokens remaining for this asset
 
-    $tokenid = $assetManager->getTokenid($asset_id);
+    //$tokenid = $assetManager->getTokenid($asset_id); OLD LINE
+
+    $tokenid = $token->getid();
+
+    if ($is_institutional){
+
+        $text = 'TOKEN_PURCHASE TOKEN_ID='. $tokenid . ' INSTITUTIONAL_ID='. $institutional_id;
+    }else{
+
+        $text = 'TOKEN_PURCHASE TOKEN_ID='. $tokenid;
+
+
+    }
 
     if ($debug){
 
 
     }else{
     
-    $subscription->New_subscriptions($userid, $subscription_to_return['asset_id'], $current_date_sqltimestamp, $end_date_sqltimestamp, '1', '0', 'FREE SUBSCRIPTION WITH TOKEN ID ' . $tokenid);
+    $subscription->New_subscriptions($userid, $subscription_to_return['asset_id'], $current_date_sqltimestamp, $end_date_sqltimestamp, '1', '0', $text);
 
     }
 
@@ -251,7 +355,9 @@ $subscription_to_return['user_id'] = $userid;
 
 
         //New_userActivity($user_id,$session_id,$login_time,$activity_time)
-        $userActivity->New_userActivity($userid, 'TOKEN_PURCHASE TOKEN_ID='. $tokenid, null, $sqltimestamp);
+        
+
+        $userActivity->New_userActivity($userid, $text, null, $sqltimestamp);
         
 		$userActivity->prepareStatementPDO();
 
@@ -439,7 +545,7 @@ $subscription_to_return['user_id'] = $userid;
         $emailVaryarray['expiry_date'] = $end_date_user_readable;
         $emailVaryarray['cost'] = '&euro; 0 via FREE CODE';
         $emailVaryarray['key'] = $users->getkey();
-        $emailVaryarray['gateway_transactionId'] = 'TOKEN SUBSCRIPTION NO PAYMENT';
+        $emailVaryarray['gateway_transactionId'] = $text;
         $emailVaryarray['preheader'] = $preheader;
     
 

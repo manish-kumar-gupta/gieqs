@@ -160,6 +160,8 @@ allow them to determine access validated
         <button type="button" class="btn btn-sm btn-white cancel-button" data-dismiss="modal">Cancel</button>
         <form id="confirm-new" action="<?php echo $form_action_path;?>" method="POST">
             <input type="hidden" id="asset_id_hidden" name="asset_id" value="">
+            <input type="hidden" id="cipher_hidden" name="cipher_hidden" value="<?php echo $access_token;?>">
+
             <input type="hidden" id="gieqs_coin_used" name="gieqs_coin_used" value="false">
             <input type="hidden" id="gieqs_coin_used_amount" name="gieqs_coin_used_amount" value="0">
 

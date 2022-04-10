@@ -2,7 +2,7 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 21-07-2021
+ * Create Date: 10-04-2022
  *
  * DJT 2019
  *
@@ -25,7 +25,7 @@
           }
           }
 
-		  //error_reporting(E_ALL);
+
 Class token {
 
 	private $id; //int(11)
@@ -35,6 +35,8 @@ Class token {
 	private $remaining; //varchar(20)
 	private $partner; //int(11)
 	private $sponsor; //int(11)
+	private $institutional_id; //int(11)
+	private $length; //int(11)
 	private $connection;
 
 	public function __construct(){
@@ -47,13 +49,15 @@ Class token {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_token($asset_id,$cipher,$created,$remaining,$partner,$sponsor){
+	public function New_token($asset_id,$cipher,$created,$remaining,$partner,$sponsor,$institutional_id,$length){
 		$this->asset_id = $asset_id;
 		$this->cipher = $cipher;
 		$this->created = $created;
 		$this->remaining = $remaining;
 		$this->partner = $partner;
 		$this->sponsor = $sponsor;
+		$this->institutional_id = $institutional_id;
+		$this->length = $length;
 	}
 
     /**
@@ -72,6 +76,8 @@ Class token {
 			$this->remaining = $row["remaining"];
 			$this->partner = $row["partner"];
 			$this->sponsor = $row["sponsor"];
+			$this->institutional_id = $row["institutional_id"];
+			$this->length = $row["length"];
 		}
 	}
     /**
@@ -96,6 +102,8 @@ $q = "Select * from `token` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["remaining"] = $row["remaining"];
 			$rowReturn[$x]["partner"] = $row["partner"];
 			$rowReturn[$x]["sponsor"] = $row["sponsor"];
+			$rowReturn[$x]["institutional_id"] = $row["institutional_id"];
+			$rowReturn[$x]["length"] = $row["length"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -124,6 +132,8 @@ $q = "Select * from `token` WHERE `id` = $key";
 			$rowReturn[$x]["remaining"] = $row["remaining"];
 			$rowReturn[$x]["partner"] = $row["partner"];
 			$rowReturn[$x]["sponsor"] = $row["sponsor"];
+			$rowReturn[$x]["institutional_id"] = $row["institutional_id"];
+			$rowReturn[$x]["length"] = $row["length"];
 		$x++;		}return json_encode($rowReturn);}
 
 			else{return FALSE;
@@ -270,8 +280,6 @@ return $this->connection->conn->lastInsertId();
  public function prepareStatementPDOUpdate (){ 
  //need to only update those which are set 
  $ov = get_object_vars($this); 
- //print_r($ov);
-
 if ($ov['connection'] != ''){
 			unset($ov['connection']);
 		} 
@@ -284,7 +292,7 @@ if ($ov['updated'] != ''){
 $ovMod = array(); 
 foreach ($ov as $key=>$value){
 
-			if (isset($value) && strlen("".$value)){
+			if ($value != ''){
 
 				$key = '`' . $key . '`';
 
@@ -292,12 +300,10 @@ foreach ($ov as $key=>$value){
 			}
 
 			}
-
-			//print_r($ovMod);
 $ovMod2 = array(); 
 foreach ($ov as $key=>$value){
 
-			if (isset($value) && strlen("".$value)){
+			if ($value != ''){
 
 				$key = '' . $key . '';
 
@@ -308,7 +314,7 @@ foreach ($ov as $key=>$value){
 $ovMod3 = array(); 
 foreach ($ov as $key=>$value){
 
-			if (isset($value) && strlen("".$value)){
+			if ($value != ''){
 
 				$key = ':' . $key;
 
@@ -347,9 +353,6 @@ $x=0;
 
 		} 
 $q = "UPDATE `token` SET $implodeArray WHERE `id` = '$this->id'";
-
-
-//echo $q;
 
 		
  $stmt = $this->connection->RunQuery($q); 
@@ -434,6 +437,20 @@ $q = "UPDATE `token` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return institutional_id - int(11)
+	 */
+	public function getinstitutional_id(){
+		return $this->institutional_id;
+	}
+
+	/**
+	 * @return length - int(11)
+	 */
+	public function getlength(){
+		return $this->length;
+	}
+
+	/**
 	 * @param Type: int(11)
 	 */
 	public function setid($id){
@@ -480,6 +497,20 @@ $q = "UPDATE `token` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function setsponsor($sponsor){
 		$this->sponsor = $sponsor;
+	}
+
+	/**
+	 * @param Type: int(11)
+	 */
+	public function setinstitutional_id($institutional_id){
+		$this->institutional_id = $institutional_id;
+	}
+
+	/**
+	 * @param Type: int(11)
+	 */
+	public function setlength($length){
+		$this->length = $length;
 	}
 
     /**

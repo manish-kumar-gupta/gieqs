@@ -26,6 +26,9 @@ $sessionView = new sessionView;
 require_once BASE_URI . '/assets/scripts/classes/programme.class.php';
 $programme = new programme;
 
+require_once(BASE_URI . '/assets/scripts/classes/token.class.php');
+$token = new token;
+
 $blogLink = new blogLink;
 $blogs = new blogs;
 $blogContent = new blogContent;
@@ -218,9 +221,65 @@ font-weight: 300 !important;
 
                                $access_validated = true;
 
+                               //now load the token class
+
+                               $token_from_cipher = $assetManager->getTokenidfromCipher($access_token, false);
+
+                               $token->Load_from_key($token_from_cipher);
+
+                               // get if institutional
+
+                               $institutional_id = $token->getinstitutional_id();
+
+                               //get length 
+
+                               $token_length = $token->getlength();
+
+                               //make some booleans
+
+                               if ((!isset($institutional_id)) || $institutional_id === NULL || $institutional_id == 0){
+
+                                $is_institutional = false;
+
+                               }elseif (isset($institutional_id) && is_numeric($institutional_id)) {
+
+                                $is_institutional = true;
+
+                               }else{
+
+                                $is_institutional = false;
+
+                               }
+
+                               //$debug = true;
+
+                               if ($debug){
+
+                                echo 'We detected a valid access code ' . $access_token;
+                                echo '<br><br>';
+                                var_dump($is_institutional);
+                                echo 'Is_Institutional = : ' . $is_institutional;
+                                echo '<br><br>';
+                                echo 'Institutional id was  : ' . $institutional_id;
+                                echo '<br><br>';
+                                echo 'Token length id was  : ' . $token_length;
+
+
+                               }
+
                             }else{
                             
                                 $access_validated = false;
+
+                                if ($assets_paid->getasset_type() == '1'){
+
+                                    echo '<div class="container mt-10 mb-10">';
+                                    echo "Error Code 1. There is an issue with your access to this page.  Please check with us or your referring institution/partner.";
+                                    echo '</div>';
+                                    include(BASE_URI . "/footer.php");
+                                    exit();
+
+                                }
 
                                 
 
@@ -229,7 +288,7 @@ font-weight: 300 !important;
                              if (!($access_validated) && isset($access_token)){
 
                                 echo '<div class="container mt-10 mb-10">';
-                                echo "There is an issue with your access code.  Please check with us or your referring institution/partner.";
+                                echo "Error Code 2. There is an issue with your access code.  Please check with us or your referring institution/partner.";
 								echo '</div>';
 								include(BASE_URI . "/footer.php");
 								exit();
@@ -239,6 +298,7 @@ font-weight: 300 !important;
                              
                              if ($debug){
                              var_dump($access_validated);
+                             var_dump($token);
                              }
 
                              
@@ -367,6 +427,11 @@ font-weight: 300 !important;
     }
     
    // $debug = false;
+
+   //TODOTODAY use token class to get the data for instutitonal
+   //TODOTODAY use token class to get the length of the subscription if institutional
+
+   //TODOTODAY disable access here without institutional if asset type is subscription (1)
     
     
     ?>
@@ -398,7 +463,15 @@ font-weight: 300 !important;
                             <span class="h3 mt-4" style="color: rgb(238, 194, 120);">Premium Content Pack</span>
 
 
-                        <?php } ?>
+                    
+
+                        <?php }else if ($assetManager->getAssetTypeAsset($assets_paid->getid()) == '1'){ ?>
+
+
+<span class="h3 mt-4" style="color: rgb(238, 194, 120);"><?php if ($is_institutional){echo 'Institutional';}?> Subscription Package</span>
+
+
+<?php } ?>
 
                             <div class="d-flex justify-content-center container pt-2">
             <div class="d-flex flex-column m-2">
@@ -434,6 +507,12 @@ font-weight: 300 !important;
 
                             if ($assetManager->doesUserHaveSameAssetAlready($asset_id_pagewrite, $userid, false)){
                                 //user owns This
+
+                                if ($assetManager->getAssetTypeAsset($assets_paid->getid()) == '1'){
+
+                                    echo '<p>You Cannot Subscribe since you already own this Subscription.  Please end your current subscription first to take advantage of this offer or contact us.</p>';
+
+                                }else{
                                 ?>
 
                                 <a data-assetid="<?php echo $asset_id_pagewrite; ?>"
@@ -450,7 +529,29 @@ font-weight: 300 !important;
 
                         
 
-                        <?php }else{ ?>
+                        <?php 
+                                }//close make sure not a subscription
+                            }else{ 
+                                
+                                if ($assetManager->getAssetTypeAsset($assets_paid->getid()) == '1'){
+
+                                    ?>
+
+                            
+
+                            <a data-assetid="<?php echo $asset_id_pagewrite; ?>"
+                                class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
+                                <span class="btn-inner--text text-dark">Subscribe Now!</span>
+                                <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+                            </a>
+
+                        <?php
+
+                                }else{
+                                
+                                ?>
+
+                            
 
                             <a data-assetid="<?php echo $asset_id_pagewrite; ?>"
                                 class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
@@ -460,7 +561,8 @@ font-weight: 300 !important;
 
                         <?php
                       
-                        }//close if owns this
+                                }
+                            }//close if owns this
 
                     }else{//close if user id
                         
@@ -501,7 +603,23 @@ font-weight: 300 !important;
                         <p class=""><span class="text-white">What to expect:</span> We will demonstrate the essentials of how to control the instrument effectively, and how to diagnose and overcome failure to progress.  The goal will be to provide participants with a clear understanding of the essential components of high quality colonoscopy and practical advice of how to improve when they get back into the endoscopy room.</span></p>
                         <p class=""><span class="text-white">Format of the course:</span> The course is suitable for anyone who wants to improve their colonoscopy skills and ideal for trainees learning colonoscopy. The format of the course will be a mixture of short presentations, discussion groups and in depth analysis of colonoscopy technique. Delegates will be invited to participate at various junctures of the course and everyone will be able to pose questions at any time.</p> -->
                         <?php 
+
+                        if ($debug){
+
+                            echo 'assets_paid = ';
+                            var_dump($assets_paid);
+                            echo '<br/>';
+                            echo 'from assetmanager type is ' . $assetManager->getAssetTypeAsset($assets_paid->getid()); 
+
+                        }
                         
+                        //if it is type 1 don't do this
+
+                        if ($assetManager->getAssetTypeAsset($assets_paid->getid()) == '1'){
+
+                            //do nothing
+
+                        }else{
 
                         if ($userid){
 
@@ -525,7 +643,10 @@ font-weight: 300 !important;
 
                         
 
-                        <?php }else{ ?>
+                        <?php }else{ 
+                            
+                            //user does not own this
+                            ?>
 
                             <a data-assetid="<?php echo $asset_id_pagewrite; ?>"
                                 class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
@@ -538,6 +659,8 @@ font-weight: 300 !important;
                         }//close if owns this
 
                     }else{//close if user id
+
+                        //no user logged in
                         
                         ?>
 
@@ -549,7 +672,10 @@ font-weight: 300 !important;
 
 
 
-<?php }?>
+<?php }//close if user id
+
+                    }//close if type 1
+?>
                         <!-- <a href="#targetScrollProgramme" id="thursday" class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
                             <span class="btn-inner--text text-dark">Tues 17 Nov</span>
                         </a> -->

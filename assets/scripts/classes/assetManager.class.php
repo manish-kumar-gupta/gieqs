@@ -5358,6 +5358,52 @@ if ($debug){
 
     }
 
+    public function getTokenidfromCipher ($cipher, $debug=false){
+
+        $q = "SELECT `id` FROM `token` WHERE `cipher` LIKE '$cipher'";
+
+        
+        if ($debug){
+
+            echo 'query for checkAssetToken was <br/>';
+            echo $q . '<br><br>';
+
+        }
+
+
+
+        $result = $this->connection->RunQuery($q);
+        
+        $x = 0;
+        $nRows = $result->rowCount();
+
+        if ($nRows === 1) {
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                $rowReturn = $row['id'];
+                
+
+            }
+
+            //return $rowReturn;
+
+            if ($debug){
+
+                echo 'query for checkAssetToken GIVES <br/>';
+                echo $rowReturn . '<br><br>';
+    
+            }
+            return $rowReturn;
+
+        } else {
+            
+
+            return false;
+        }
+
+    }
+
     public function checkTokensRemainingAsset($asset_id, $debug=false){
 
 
