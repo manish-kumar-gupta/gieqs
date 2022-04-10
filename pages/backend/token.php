@@ -253,6 +253,8 @@ $pdocrud->fieldTypes("created", "date");
 $pdocrud->fieldNotMandatory('partner');
 $pdocrud->relatedData('sponsor','sponsor','id','name');
 $pdocrud->relatedData('partner','partner','id','name');
+$pdocrud->relatedData('institutional_id','institutional','id','name');
+
 
 $pdocrud->fieldNotMandatory('sponsor');
 
