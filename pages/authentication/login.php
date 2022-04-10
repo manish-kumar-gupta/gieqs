@@ -159,6 +159,15 @@ if (isset($_GET['destination'])) {
 
     }
 
+  }else if ($destination == 'subscribe'){
+
+    //define other constant
+
+    
+      $target = 'pages/learning/index.php?id=2345';
+
+    
+
   }else if ($destination == 'viewasset'){
 
     //define other constant

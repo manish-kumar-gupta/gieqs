@@ -332,6 +332,8 @@
 			$id = null;
 		
 		}
+
+        
 				        
                         
                         
@@ -1153,6 +1155,13 @@ request2.done(function(data) {
             getNextSteps();
             getPopular();
             getTopVideos();
+
+            if (videoPassed == 2345){
+
+                $('.subscribe-now').click();
+
+
+            }
 
             /* $(document).click(function(event) { 
                 $target = $(event.target);
