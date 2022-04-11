@@ -142,7 +142,7 @@ color: #95aac9;
             .blog-container strong{
 
 
-color: white;
+color: #e3ebf6;
 }
 
             .gieqsGold {
