@@ -141,7 +141,7 @@ color: #95aac9;
 
             .blog-container strong{
 
-
+                font-weight: 500;
 color: #e3ebf6;
 }
 
