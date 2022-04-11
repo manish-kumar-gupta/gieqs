@@ -138,6 +138,13 @@ line-height: 1.7 !important;
 text-align: justify !important;
 color: #95aac9;
             }
+
+            .blog-container strong{
+
+
+color: white;
+}
+
             .gieqsGold {
 
                 color: rgb(238, 195, 120);
