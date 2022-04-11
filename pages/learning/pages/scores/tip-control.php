@@ -501,6 +501,8 @@
 
         TTimer.clearSession();
 
+        TTimer.stop();
+
         $('#correctButton').click(function() {
 
             if (TTimer.started === false) {
