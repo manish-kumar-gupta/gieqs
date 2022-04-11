@@ -54,6 +54,7 @@ RewriteRule ^technique$ pages/program/program_generic.php?id=55
 RewriteRule ^colonoscopy-technique-theory$ pages/program/program_generic.php?id=84
 RewriteRule ^colonoscopy-upskilling$ pages/program/program_generic.php?id=83
 RewriteRule ^train-trainers-polypectomy$ pages/learning/blog_article.php?id=53
+RewriteRule ^polyp-cancer$ pages/program/program_generic.php?id=86&access_token=sfTEyfcJxJmDt4X
 
 
 
