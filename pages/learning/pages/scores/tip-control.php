@@ -403,7 +403,8 @@
             }
         },
         start: function start() {
-            this.restoreFromSession();
+            /* this.restoreFromSession(); */
+            this.startedTime = new Date();
             this.stop();
             this.started = true;
             this.tick();
@@ -499,9 +500,10 @@
     $(document).ready(function() {
 
 
-        TTimer.clearSession();
 
         TTimer.stop();
+        TTimer.clearSession();
+
 
         $('#correctButton').click(function() {
 
