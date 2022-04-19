@@ -455,9 +455,9 @@ if ($debugAccess){
                 <!-- Sponsors -->
                 
                 
-                <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/sponsors.php">Sponsors</a>
-                </li>
+             <!--    <li class="nav-item active">
+                    <a class="nav-link" href="<?php //echo BASE_URL;?>/pages/program/sponsors.php">Sponsors</a>
+                </li> -->
                
 
                 <!-- Registration-basic -->
