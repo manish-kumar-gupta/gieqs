@@ -390,8 +390,17 @@ $imageArray = ['assets/img/advert/gieqs_advert_1.jpeg']
                 </a>
                 <h2 class="text-white mb-4 mt-4 mt-lg-0">
 
-                <span class="d-block" style="color: rgb(238, 194, 120);"><strong
-                            class="font-weight-light">More details soon...</span>
+                <!-- <span class="d-block" style="color: rgb(238, 194, 120);"><strong
+                            class="font-weight-light">More details soon...</span> -->
+
+                            <a href="https://www.gieqs.com/blog-view?id=55">
+                <div class="alert alert-modern alert-dark">
+                    <span class="badge gieqsGold badge-pill">
+                        New
+                    </span>
+                    <span class="alert-content">GIEQs III Registration Open</span>
+                </div>
+            </a> 
 </h2>
 
                     <!-- <a href="https://www.youtube.com/watch?v=zRy1xwGsagc"
