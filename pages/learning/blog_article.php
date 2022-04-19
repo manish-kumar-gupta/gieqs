@@ -218,6 +218,14 @@ color: #e3ebf6;
 
 
                 }
+
+                .blog-container {
+
+                
+                text-align: left !important;
+                
+
+                }
             }
 
             @media (min-width: 1200px) {
