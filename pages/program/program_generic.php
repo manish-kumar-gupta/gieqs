@@ -177,12 +177,12 @@ color: #e3ebf6;
 }
 
 
-article p {
+/* article p {
 
     font-size: 1.125rem !important; 
 font-weight: 300 !important;
 
-}
+} */
 
 
     .modal {
