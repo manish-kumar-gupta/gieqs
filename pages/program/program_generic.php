@@ -135,6 +135,21 @@ var_dump($currentTime);
     <script src="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.js"></script>
 
     <style>
+         .blog-container {
+
+font-family: 'nunito', sans-serif;
+font-size: 1.3rem !important;
+font-weight: 300;
+line-height: 1.7 !important;
+text-align: left !important;
+color: #95aac9;
+}
+
+.blog-container strong{
+
+font-weight: 500;
+color: #e3ebf6;
+}
     .text-gieqsGold {
 
         color: rgb(238, 194, 120);
@@ -584,7 +599,7 @@ font-weight: 300 !important;
 
         </section>
 
-        <section class="">
+        <section class="blog-container">
         <?php         include(BASE_URI . '/pages/learning/blog_article_generate.php');?>
         </section>
         <section class="">
