@@ -135,7 +135,7 @@
 font-size: 1.3rem !important;
 font-weight: 300;
 line-height: 1.7 !important;
-text-align: justify !important;
+text-align: left !important;
 color: #95aac9;
             }
 
@@ -219,13 +219,7 @@ color: #e3ebf6;
 
                 }
 
-                .blog-container {
-
-                
-                text-align: left !important;
-                
-
-                }
+               
             }
 
             @media (min-width: 1200px) {
