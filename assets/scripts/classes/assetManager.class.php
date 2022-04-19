@@ -5609,7 +5609,7 @@ if ($debug){
     public function returnAdvertisedAssets($asset_type, $debug=false){
 
 
-        $q = "Select `id`, `name` FROM `assets_paid` WHERE (`asset_type` = '$asset_type') AND (`advertise_for_purchase` IS NULL OR `advertise_for_purchase` = '1')";
+        $q = "Select `id`, `name` FROM `assets_paid` WHERE (`asset_type` = '$asset_type') AND (`advertise_for_purchase` IS NULL OR `advertise_for_purchase` = '1') ORDER BY `id` DESC";
 
         
     

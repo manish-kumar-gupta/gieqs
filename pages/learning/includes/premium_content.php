@@ -22,6 +22,9 @@ if ($isSuperuser == 1){
   $proMember = false;
 }
 
+require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
+        $assets_paid = new assets_paid;
+
 ?>
 
 
@@ -37,7 +40,7 @@ if ($isSuperuser == 1){
               
 <div class="row">
 <div class="col-md-6 col-xl-3 sub-menu mb-xl-0 mb-4">
-                  <h6 class="sub-title text-uppercase font-weight-bold white-text">Upcoming Courses</h6>
+                  <h6 class="sub-title text-uppercase font-weight-bold white-text">Upcoming Courses <br/>(Register Now)</h6>
                   <?php //var_dump($coursesAdvertised);?>
                   <ul class="list-unstyled">
 
@@ -80,7 +83,7 @@ if ($isSuperuser == 1){
 
                           <li>
 
-                          <a class="menu-item" href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=<?php echo $value['id'] ?>"><i class="fas fa-caret-right pl-1 pr-3"></i><?php echo $value['name']; ?></a><span class="text-white small"><?php echo $humanReadableProgrammeDate . ' ' . $humanReadableStartTime . ' CET'; ?></span>
+                          <a class="menu-item mt-2" href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=<?php echo $value['id'] ?>"><i class="fas fa-caret-right pl-1 pr-3"></i><?php echo $value['name']; ?></a><br/><span class="text-muted small"><?php echo $humanReadableProgrammeDate . ' ' . $humanReadableStartTime . ' CET'; ?></span>
 
                         </li>
 
@@ -97,35 +100,109 @@ if ($isSuperuser == 1){
                   </ul>
                 </div>
                 <div class="col-md-6 col-xl-3 sub-menu mb-xl-0 mb-4">
-                  <h6 class="sub-title text-uppercase font-weight-bold white-text">Colonoscopy</h6>
+                  <h6 class="sub-title text-uppercase font-weight-bold white-text">Past Courses <br/>(Immediate Access)</h6>
+                  <?php //var_dump($coursesAdvertised);?>
                   <ul class="list-unstyled">
-                    <li>
-                      <a class="menu-item pl-0 waves-effect waves-light" href="#!">
-                        <i class="fas fa-caret-right pl-1 pr-3"></i>Quis nostrud exercitation
-                      </a>
-                    </li>
-                    <li>
-                      <a class="menu-item pl-0 waves-effect waves-light" href="#!">
-                        <i class="fas fa-caret-right pl-1 pr-3"></i>Duis aute irure dolor in
-                      </a>
-                    </li>
-                    <li>
-                      <a class="menu-item pl-0 waves-effect waves-light" href="#!">
-                        <i class="fas fa-caret-right pl-1 pr-3"></i>Laboris nisi ut aliquip ex ea commodo consequat
-                      </a>
-                    </li>
-                    <li>
-                      <a class="menu-item pl-0 waves-effect waves-light" href="#!">
-                        <i class="fas fa-caret-right pl-1 pr-3"></i>Reprehenderit in voluptate
-                      </a>
-                    </li>
-                    <li>
-                      <a class="menu-item pl-0 waves-effect waves-light" href="#!">
-                        <i class="fas fa-caret-right pl-1 pr-3"></i>Esse cillum dolore eu fugiat nulla pariatur
-                      </a>
-                    </li>
+
+                    <?php foreach($coursesAdvertised as $key=>$value){ 
+                      
+                      //get the asset category
+
+                      $assets_paid->Load_from_key($value['id]']);
+                      $supercategory = null;
+                      $supercategory = $assets_paid->getsupercategory();
+                      
+                      $programme_array = $assetManager->returnProgrammesAsset($value['id']);
+
+                      $programme_defined = $programme_array[0];
+                      //echo $programme_defined;
+
+                      $access = [0=>['id'=>$programme_defined],];
+
+                      
+
+                      $access1 = $sessionView->getStartAndEndProgrammes($access, $debug);
+
+                      $access2 = $sessionView->getStartEndProgrammes($access1, $debug);
+
+
+                  
+                        $programme->Load_from_key($programme_defined);
+                        $serverTimeZone = new DateTimeZone('Europe/Brussels');
+                        $programmeDate = new DateTime($programme->getdate(), $serverTimeZone);
+
+                        $humanReadableProgrammeDate = date_format($programmeDate, "jS F Y");
+
+                        //echo $humanReadableProgrammeDate;
+
+                        $startTime = new DateTime($programme->getdate() . ' ' . $access2[0]['startTime'], $serverTimeZone);
+
+                        $humanReadableStartTime = date_format($startTime, "H:i"); 
+
+                        //var_dump($startTime);
+
+
+                        if ($startTime < new DateTime('now')){
+
+                          ?>
+
+                          <li class="mt-2">
+
+                          <a class="menu-item" href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=<?php echo $value['id'] ?>"><i class="fas fa-caret-right pl-1 pr-3"></i><?php echo $value['name']; ?></a><br/><span class="text-muted small"><?php echo $humanReadableProgrammeDate; ?></span>
+
+                        </li>
+
+                          <?php 
+                        }
+                      
+                      
+                      
+                      ?>
+
+
+                    <?php } ?>
+                
                   </ul>
                 </div>
+                <div class="col-md-6 col-xl-3 sub-menu mb-xl-0 mb-4">
+                <h6 class="sub-title text-uppercase font-weight-bold white-text">Pro Content Packs <br/>(Immediate Access)</h6>
+                  <?php //var_dump($coursesAdvertised);?>
+                  <ul class="list-unstyled">
+
+                  <?php foreach($learningPacksAdvertised as $key=>$value){   ?>
+
+                    <li class="mt-2">
+
+<a class="menu-item" href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=<?php echo $value['id'] ?>"><i class="fas fa-caret-right pl-1 pr-3"></i><?php echo $value['name']; ?></a>
+
+</li>
+
+                  <?php } ?>
+
+                      </ul>
+                      </div>
+
+                      <div class="col-md-6 col-xl-3 sub-menu mb-xl-0 mb-4">
+                <h6 class="sub-title text-uppercase font-weight-bold white-text">Past Symposia <br/>(Immediate Access)</h6>
+                  <?php //var_dump($coursesAdvertised);?>
+                  <ul class="list-unstyled">
+
+                  <?php foreach($symposiaAdvertised as $key=>$value){   ?>
+
+                    <li class="mt-2">
+
+<a class="menu-item" href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=<?php echo $value['id'] ?>"><i class="fas fa-caret-right pl-1 pr-3"></i><?php echo $value['name']; ?></a>
+
+</li>
+
+                  <?php } ?>
+
+                      </ul>
+                      </div>
+                  </div>
+                  <div class="row my-3">
+
+                
                 <div class="col-md-6 col-xl-3 sub-menu mb-md-0 mb-xl-0 mb-4">
                   <h6 class="sub-title text-uppercase font-weight-bold white-text">Design</h6>
                   <ul class="list-unstyled">
