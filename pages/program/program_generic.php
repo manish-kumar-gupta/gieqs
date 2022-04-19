@@ -86,43 +86,7 @@ echo $programme_defined;
 
 $assets_paid->Load_from_key($asset_id_pagewrite);
 
-$blog_to_use_as_basis = $assets_paid->getlinked_blog();
-$blogs->Load_from_key($blog_to_use_as_basis);
-$blogid = $blog_to_use_as_basis;
 
-
-
-$access = [0=>['id'=>$programme_defined],];
-
-$access1 = null;
-
-    
-$access1 = $sessionView->getStartAndEndProgrammes($access, $debug);
-
-    //var_dump($access1);
-
-    //echo '<br/><br/>now get the start and end times in a single array<br/><br/>';
-
-    $access2 = null;
-
-    $access2 = $sessionView->getStartEndProgrammes($access1, $debug);
-
-    //var_dump($access2);
-
-$programme->Load_from_key($programme_defined);
-$serverTimeZone = new DateTimeZone('Europe/Brussels');
-$programmeDate = new DateTime($programme->getdate(), $serverTimeZone);
-
-$humanReadableProgrammeDate = date_format($programmeDate, "l jS F Y");
-
-$startTime = new DateTime($programme->getdate() . ' ' . $access2[0]['startTime'], $serverTimeZone);
-$endTime = new DateTime($programme->getdate() . ' ' . $access2[0]['endTime'], $serverTimeZone);
-$humanStartTime = date_format($startTime, "H:i");
-$humanEndTime = date_format($endTime, "H:i T");
-
-if ($debug){
-var_dump($currentTime);
-}
 
 //rest should come from this
 
@@ -228,6 +192,59 @@ font-weight: 300 !important;
         <?php require BASE_URI . '/nav.php';?>
 
         <?php 
+
+$programme_array = $assetManager->returnProgrammesAsset($asset_id_pagewrite);
+$programme_defined = $programme_array[0];
+
+if ($debug){
+
+print_r($programme_array);
+echo $programme_defined;
+
+}
+
+
+
+$assets_paid->Load_from_key($asset_id_pagewrite);
+
+$blog_to_use_as_basis = $assets_paid->getlinked_blog();
+$blogs->Load_from_key($blog_to_use_as_basis);
+$blogid = $blog_to_use_as_basis;
+
+
+
+$access = [0=>['id'=>$programme_defined],];
+
+$access1 = null;
+
+    
+$access1 = $sessionView->getStartAndEndProgrammes($access, $debug);
+
+    //var_dump($access1);
+
+    //echo '<br/><br/>now get the start and end times in a single array<br/><br/>';
+
+    $access2 = null;
+
+    $access2 = $sessionView->getStartEndProgrammes($access1, $debug);
+
+    //var_dump($access2);
+
+$programme->Load_from_key($programme_defined);
+$serverTimeZone = new DateTimeZone('Europe/Brussels');
+$programmeDate = new DateTime($programme->getdate(), $serverTimeZone);
+
+$humanReadableProgrammeDate = date_format($programmeDate, "l jS F Y");
+
+$startTime = new DateTime($programme->getdate() . ' ' . $access2[0]['startTime'], $serverTimeZone);
+$endTime = new DateTime($programme->getdate() . ' ' . $access2[0]['endTime'], $serverTimeZone);
+$humanStartTime = date_format($startTime, "H:i");
+$humanEndTime = date_format($endTime, "H:i T");
+
+if ($debug){
+var_dump($currentTime);
+}
+
                             if (isset($access_token) && ($assetManager->checkAssetToken($asset_id_pagewrite, $access_token, false) === true)){  //is set and is valid for this course and there are tokens remaining
 
                                 //we know the asset_id
