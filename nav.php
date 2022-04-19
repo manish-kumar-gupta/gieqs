@@ -440,7 +440,7 @@ if ($debugAccess){
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/gieqs_ii.php">Symposium</a>
+                    <a class="nav-link" href="https://eu.eventscloud.com/website/7797/home/">Symposium</a>
                 </li>
 
               
