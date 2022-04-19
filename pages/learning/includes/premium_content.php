@@ -25,71 +25,64 @@ if ($isSuperuser == 1){
 ?>
 
 
-<li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+<li class="nav-item dropdown mega-dropdown dropdown-animate" data-toggle="hover" style="position:static; font-size:1.0rem;">
                     <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">Buy Pro Content</a>
-
-
-                    
-                    <div class="dropdown-menu  dropdown-menu-arrow" aria-labelledby="btn-group-settings">
-               <?php     
-               
-               //define upgrade url
-
-               if ($userid) {
-
-                $upgradeURL = BASE_URL . '/pages/learning/upgrade.php';
-
-               }else{
-
-                $upgradeURL = BASE_URL . '/login?destination=subscriptionoptions';
-
-
-               }
-
-            
-               
-               if (($proMember === false) && ($fullAccess === false)){?>
-
-<span style="background-color:rgb(238, 194, 120);"
-class="dropdown-header text-dark">You could gain access to ALL of these courses with a GIEQs Pro subscription.  <a href="<?php echo $upgradeURL;?>">Find out more.</a></span>                
-
-
-<?php                   } ?>
+                        aria-haspopup="true" aria-expanded="false">Courses & Pro Content</a>
 
 
 
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Upcoming Courses (Register Now)</span>
+
+
+                        <div class="dropdown-menu mega-menu v-2 z-depth-1 pink darken-4 py-4 px-3 show" style="font-size:1.0rem;" aria-labelledby="navbarDropdownMenuLink2">
+              
+<div class="row">
+<div class="col-md-6 col-xl-3 sub-menu mb-xl-0 mb-4">
+                  <h6 class="sub-title text-uppercase font-weight-bold white-text">Upcoming Courses</h6>
+                  <?php //var_dump($coursesAdvertised);?>
+                  <ul class="list-unstyled">
+
                     <?php foreach($coursesAdvertised as $key=>$value){ 
                       
                       
-                      $programme_array = $assetManager->returnProgrammesAsset($asset_id_pagewrite);
+                      $programme_array = $assetManager->returnProgrammesAsset($value['id']);
 
                       $programme_defined = $programme_array[0];
+                      //echo $programme_defined;
 
-                        $access = [0=>['id'=>$programme_defined],];
+                      $access = [0=>['id'=>$programme_defined],];
 
-                        $access1 = null;
-                            
-                        $access1 = $sessionView->getStartAndEndProgrammes($access, $debug);
+                      
 
-                        $access2 = null;
+                      $access1 = $sessionView->getStartAndEndProgrammes($access, $debug);
 
-                        $access2 = $sessionView->getStartEndProgrammes($access1, $debug);
+                      $access2 = $sessionView->getStartEndProgrammes($access1, $debug);
 
+
+                  
                         $programme->Load_from_key($programme_defined);
                         $serverTimeZone = new DateTimeZone('Europe/Brussels');
                         $programmeDate = new DateTime($programme->getdate(), $serverTimeZone);
 
                         $humanReadableProgrammeDate = date_format($programmeDate, "l jS F Y");
 
+                        //echo $humanReadableProgrammeDate;
+
                         $startTime = new DateTime($programme->getdate() . ' ' . $access2[0]['startTime'], $serverTimeZone);
+
+                        $humanReadableStartTime = date_format($startTime, "H:i"); 
+
+                        //var_dump($startTime);
+
 
                         if ($startTime > new DateTime('now')){
 
                           ?>
 
-                          <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=<?php echo $value['id'] ?>"><i class="fas fa-columns"></i><?php echo $value['name']; ?></a>
+                          <li>
+
+                          <a class="menu-item" href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=<?php echo $value['id'] ?>"><i class="fas fa-caret-right pl-1 pr-3"></i><?php echo $value['name']; ?></a><span class="text-white small"><?php echo $humanReadableProgrammeDate . ' ' . $humanReadableStartTime . ' CET'; ?></span>
+
+                        </li>
 
                           <?php 
                         }
@@ -100,78 +93,123 @@ class="dropdown-header text-dark">You could gain access to ALL of these courses 
 
 
                     <?php } ?>
+                
+                  </ul>
+                </div>
+                <div class="col-md-6 col-xl-3 sub-menu mb-xl-0 mb-4">
+                  <h6 class="sub-title text-uppercase font-weight-bold white-text">Colonoscopy</h6>
+                  <ul class="list-unstyled">
+                    <li>
+                      <a class="menu-item pl-0 waves-effect waves-light" href="#!">
+                        <i class="fas fa-caret-right pl-1 pr-3"></i>Quis nostrud exercitation
+                      </a>
+                    </li>
+                    <li>
+                      <a class="menu-item pl-0 waves-effect waves-light" href="#!">
+                        <i class="fas fa-caret-right pl-1 pr-3"></i>Duis aute irure dolor in
+                      </a>
+                    </li>
+                    <li>
+                      <a class="menu-item pl-0 waves-effect waves-light" href="#!">
+                        <i class="fas fa-caret-right pl-1 pr-3"></i>Laboris nisi ut aliquip ex ea commodo consequat
+                      </a>
+                    </li>
+                    <li>
+                      <a class="menu-item pl-0 waves-effect waves-light" href="#!">
+                        <i class="fas fa-caret-right pl-1 pr-3"></i>Reprehenderit in voluptate
+                      </a>
+                    </li>
+                    <li>
+                      <a class="menu-item pl-0 waves-effect waves-light" href="#!">
+                        <i class="fas fa-caret-right pl-1 pr-3"></i>Esse cillum dolore eu fugiat nulla pariatur
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-md-6 col-xl-3 sub-menu mb-md-0 mb-xl-0 mb-4">
+                  <h6 class="sub-title text-uppercase font-weight-bold white-text">Design</h6>
+                  <ul class="list-unstyled">
+                    <li>
+                      <a class="menu-item pl-0 waves-effect waves-light" href="#!">
+                        <i class="fas fa-caret-right pl-1 pr-3"></i>Excepteur sint occaecat
+                      </a>
+                    </li>
+                    <li>
+                      <a class="menu-item pl-0 waves-effect waves-light" href="#!">
+                        <i class="fas fa-caret-right pl-1 pr-3"></i>Sunt in culpa qui officia
+                      </a>
+                    </li>
+                    <li>
+                      <a class="menu-item pl-0 waves-effect waves-light" href="#!">
+                        <i class="fas fa-caret-right pl-1 pr-3"></i>Sed ut perspiciatis unde omnis iste natus error
+                      </a>
+                    </li>
+                    <li>
+                      <a class="menu-item pl-0 waves-effect waves-light" href="#!">
+                        <i class="fas fa-caret-right pl-1 pr-3"></i>Mollit anim id est laborum
+                      </a>
+                    </li>
+                    <li>
+                      <a class="menu-item pl-0 waves-effect waves-light" href="#!">
+                        <i class="fas fa-caret-right pl-1 pr-3"></i>Accusantium doloremque laudantium
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-md-6 col-xl-3 sub-menu mb-0">
+                  <h6 class="sub-title text-uppercase font-weight-bold white-text">Symposia</h6>
+                  <ul class="list-unstyled">
+                    <li>
+                      <a class="menu-item pl-0 waves-effect waves-light" href="#!">
+                        <i class="fas fa-caret-right pl-1 pr-3"></i>Totam rem aperiam eaque
+                      </a>
+                    </li>
+                    <li>
+                      <a class="menu-item pl-0 waves-effect waves-light" href="#!">
+                        <i class="fas fa-caret-right pl-1 pr-3"></i>Beatae vitae dicta sun
+                      </a>
+                    </li>
+                    <li>
+                      <a class="menu-item pl-0 waves-effect waves-light" href="#!">
+                        <i class="fas fa-caret-right pl-1 pr-3"></i>Quae ab illo inventore veritatis et quasi
+                        architecto
+                      </a>
+                    </li>
+                    <li>
+                      <a class="menu-item pl-0 waves-effect waves-light" href="#!">
+                        <i class="fas fa-caret-right pl-1 pr-3"></i>Nemo enim ipsam voluptatem
+                      </a>
+                    </li>
+                    <li>
+                      <a class="menu-item pl-0 waves-effect waves-light" href="#!">
+                        <i class="fas fa-caret-right pl-1 pr-3"></i>Neque porro quisquam est
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="row text-right py-2">
+            <?php   if ($userid) {
 
-                    
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Past Virtual-Live Courses (Available Immediately)</span>
-                    <?php foreach($coursesAdvertised as $key=>$value){ 
-                      
-                      
-                      $programme_array = $assetManager->returnProgrammesAsset($asset_id_pagewrite);
+$upgradeURL = BASE_URL . '/pages/learning/upgrade.php';
 
-                      $programme_defined = $programme_array[0];
+}else{
 
-                        $access = [0=>['id'=>$programme_defined],];
-
-                        $access1 = null;
-                            
-                        $access1 = $sessionView->getStartAndEndProgrammes($access, $debug);
-
-                        $access2 = null;
-
-                        $access2 = $sessionView->getStartEndProgrammes($access1, $debug);
-
-                        $programme->Load_from_key($programme_defined);
-                        $serverTimeZone = new DateTimeZone('Europe/Brussels');
-                        $programmeDate = new DateTime($programme->getdate(), $serverTimeZone);
-
-                        $humanReadableProgrammeDate = date_format($programmeDate, "l jS F Y");
-
-                        $startTime = new DateTime($programme->getdate() . ' ' . $access2[0]['startTime'], $serverTimeZone);
-
-                        if ($startTime < new DateTime('now')){
-
-                          ?>
-
-                          <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=<?php echo $value['id'] ?>"><i class="fas fa-columns"></i><?php echo $value['name']; ?></a>
-
-                          <?php 
-                        }?>
+$upgradeURL = BASE_URL . '/login?destination=subscriptionoptions';
 
 
-                    <?php } ?>
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Premium Content Packs (Available Immediately)</span>
-                    <?php foreach($learningPacksAdvertised as $key=>$value){?>
-                      <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=<?php echo $value['id'] ?>"><i class="fas fa-columns"></i><?php echo $value['name']; ?></a>
-
-
-                    <?php } ?>
-
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">Past Symposia (Available Immediately)</span>
-                    <?php
-                    
-                    foreach($symposiaAdvertised as $key=>$value){ ?>
-                      <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=<?php echo $value['id'] ?>"><i class="fas fa-columns"></i><?php echo $value['name']; ?></a>
-
-
-                    <?php } ?>
+}
 
 
 
+if (($proMember === false) && ($fullAccess === false)){?>
 
-<!--                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=7" disabled><i class="fas fa-columns"></i>Basic Colonoscopy Skills</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=8"><i class="fas fa-columns"></i>Train the Colonoscopy Trainers</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=11"><i class="fas fa-columns"></i>Polypectomy Upskilling Course</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_imaging.php"><i class="fas fa-columns"></i>Colorectal Polyp Imaging<span class="badge gieqsGold">
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_small_polypectomy.php"><i class="fas fa-columns"></i>Small and Intermediate Polypectomy Course</a>
-                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=3"><i class="fas fa-columns"></i>GIEQs Edition I - Catch Up<span class="badge gieqsGold">
+<span style="background-color:rgb(238, 194, 120);"
+class="dropdown-header text-dark">You could gain access to ALL of these courses with a GIEQs Pro subscription.  <a href="<?php echo $upgradeURL;?>">Find out more.</a></span>                
 
- -->
-                                    <!-- New
-                                    </span></a>      -->                
-                    <!-- <div class="dropdown-divider"></div>
-                    <span style="color: rgb(238, 194, 120);" class="dropdown-header">GIEQs Faculty</span>
-                    <a class="dropdown-item" href="<?php //echo BASE_URL;?>/pages/program/faculty_stable.php"><i class="fas fa-user"></i>Faculty</a>
-                     -->
-                    
-                  </div>
+
+<?php                   } ?>
+</div>
+            </div>
+            
                 </li>
