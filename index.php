@@ -375,7 +375,7 @@ $imageArray = ['assets/img/advert/gieqs_advert_1.jpeg']
                 </div>
 
                 <h2 class="text-white mb-4 mt-4 mt-lg-0">
-                    <span class="display-4 font-weight-light">We're planning GIEQs III!</span>
+                    <span class="display-4 font-weight-light">GIEQs III Registration is Open!</span>
 
                     <span class="d-block" style="color: rgb(238, 194, 120);"><strong
                             class="font-weight-light">Join us for our next major step.  <br/>29 - 30 September 2022.</span>
@@ -392,14 +392,14 @@ $imageArray = ['assets/img/advert/gieqs_advert_1.jpeg']
 
                 <!-- <span class="d-block" style="color: rgb(238, 194, 120);"><strong
                             class="font-weight-light">More details soon...</span> -->
+                            <a href="https://www.gieqs.com/blog-view?id=55"
+                                class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
+                                style="background-color: rgb(238, 194, 120);">
+                                <span class="btn-inner--text">GIEQs III Registration Open</span>
+                                <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
 
-                            <a href="https://www.gieqs.com/blog-view?id=55">
-                <div class="alert alert-modern alert-dark">
-                    <span class="badge gieqsGold badge-pill">
-                        New
-                    </span>
-                    <span class="alert-content">GIEQs III Registration Open</span>
-                </div>
+                            </a>
+                            
             </a> 
 </h2>
 
