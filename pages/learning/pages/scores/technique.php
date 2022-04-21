@@ -1358,6 +1358,7 @@ if cold, =/2
                             denominator = parsedData.denominator;
                             $('#user_report_card_numerator').text(userReportCardid);
                             $('#user_report_card_denominator').text(denominator);
+                            $('#gpat_id').text(parsedData.id);
 
                             $('#successWrapper').collapse('toggle');
 
@@ -1500,6 +1501,8 @@ if cold, =/2
                             denominator = parsedData.user_number_records;
                             $('#user_report_card_numerator').text(userReportCardid);
                             $('#user_report_card_denominator').text(denominator);
+                            $('#gpat_id').text(parsedData.id);
+
 
                             $('#successWrapper').collapse('toggle');
 
@@ -1791,6 +1794,12 @@ chart.render();
                                         <span aria-hidden="true">&times;</span>
                                     </button> -->
                                     <p>Report Card <span id="user_report_card_numerator">1</span> / <span id="user_report_card_denominator">1</span></p>
+                                    <?php if ($isSuperuser = 1){?>
+
+                                        <p>GPAT id <span id="gpat_id"></span></p>
+
+
+                                    <?php }?>
                                 </div>
 
                                 <div id="warningWrapper"
