@@ -1,5 +1,13 @@
 <!--Main Navbar-->
+<style>
 
+  .navbar-nav {
+
+    overflow-y:scroll;
+
+  }
+
+</style>
 
 <?php 
 
