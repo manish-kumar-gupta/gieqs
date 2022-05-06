@@ -3499,11 +3499,16 @@ function logKey(e) {
     if ((e.code == 'KeyA')){
         
 
-        if (!($('#tags').data('select2').isOpen())){
-            e.preventDefault();
+        if (($('#tags').data('select2').isOpen())){
+           //e.preventDefault();
 
-        console.log('a pressed');
-        $('#tags').select2('open');
+        
+       
+        }else{
+
+            $('#tags').select2('open');
+            console.log('a pressed');
+
         }
 
         
@@ -3514,13 +3519,18 @@ function logKey(e) {
     if ((e.code == 'Enter')){
         
 
-        if (!($('#tags').data('select2').isOpen())){
-            e.preventDefault();
+        if (($('#tags').data('select2').isOpen())){
+            //e.preventDefault();
 
             //now save
-
-            console.log('enter pressed');
             $('#saveTagChapterNoClose').trigger('click');
+            console.log('enter pressed, tags open');
+
+           
+        }else{
+            console.log('enter pressed, tags not open');
+
+
         }
 
     }
@@ -3528,8 +3538,8 @@ function logKey(e) {
     if ((e.code == 'KeyC')){
         
 
-        if (!($('#tags').data('select2').isOpen())){
-            e.preventDefault();
+        if (($('#newTagModal').hasClass('show'))){
+           // e.preventDefault();
 
             //now save
 
