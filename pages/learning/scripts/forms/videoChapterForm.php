@@ -400,8 +400,9 @@
                         }
     
                         //if the video is live requires a supeuser to edit
+                        // this is currently disabled
     
-                        if ($video_moderation->isVideoLive($id)){
+                        /* if ($video_moderation->isVideoLive($id)){
     
                             echo 'This video is locked for tagging as it has been designated live on the site<br/>';
                             echo '<a href="mailto:admin@gieqs.com?subject=please unlock video ' . $id . ' for editing">Contact a Superuser</a> to unlock if you need to edit further<br/>';
@@ -409,7 +410,7 @@
                             exit();
     
     
-                        }
+                        } */
     
             
             

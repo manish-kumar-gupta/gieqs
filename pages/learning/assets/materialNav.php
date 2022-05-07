@@ -25,8 +25,11 @@ Useful for PHP to JS transfer
 
            
             <form class="form-inline mr-auto">
- 
-    <button class="btn btn-sm btn-outline-gieqsGold" type="button">How to Use GIEQs Online</button>
+            <a href="" class="btn btn-sm btn-outline-gieqsGold" data-fancybox>How to Use GIEQs Online</a>
+
+<!--             <a href="https://vimeo.com/450743797" class="btn btn-sm btn-outline-gieqsGold" data-fancybox>How to Use GIEQs Online</a>
+ -->                
+  
     <button class="btn btn-sm btn-outline-gieqsGold mr-5" type="button">Find my next Experience</button>
   </form>
 
