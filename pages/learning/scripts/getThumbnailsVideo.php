@@ -211,7 +211,7 @@ $vimeo_client_secret = '+7btjhyrrfEaZpAfLX81+pPrxOYlIS9A2d5Jj27GU7JyprVjwBGHK0+L
 
 // This has to be generated on your site, plugin or theme
 $vimeo_token = 'cc33c4732d5f31ff9b681b23591bd95d';
-error_reporting(-1);
+error_reporting(E_ALL);
 
 $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
 
