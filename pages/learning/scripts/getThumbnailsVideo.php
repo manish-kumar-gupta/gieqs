@@ -383,11 +383,11 @@ function getAllMissingVideos ($tagCategoriesid) {
                     echo 'Video id ' . $lesionid . ' thumbnail updated <br/><br/>';
 				
                 
-            }
+                }
 			
 			//thumbnail link = $urlThumbnail
 
-			
+            }
 
 
 
