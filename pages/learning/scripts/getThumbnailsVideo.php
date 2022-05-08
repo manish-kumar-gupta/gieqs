@@ -308,6 +308,98 @@ function getAllVideos ($tagCategoriesid) {
 
 }
 
+function getAllMissingVideos ($tagCategoriesid) {
+
+	global $db;
+	global $client;
+	global $user;
+
+	//shows all videos in the tagCategory
+
+	//$client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
+
+	$q = "SELECT `id`, `url`, `name`, `author`, `description`, DATE_FORMAT(`created`, '%M %d %Y') as created FROM `video`";
+
+	//echo $q;
+
+	//shows highest rated (1) images from each tag category
+
+	//$q = "SELECT a.`id` as `imageSetid`, b.`image_id` as `imageid`, c.`url`, c.`name`, c.`order`, c.`type`, e.`tagName`, d.`tags_id` FROM `imageSet` as a INNER JOIN `imageImageSet` as b ON a.`id` = b.`imageSet_id` INNER JOIN `images` as c on b.`image_id` = c.`id` INNER JOIN `imagesTag` as d ON c.`id` = d.`images_id` INNER JOIN `tags` as e ON d.`tags_id` = e.`id` INNER JOIN `tagCategories` as f on f.`id` = e.`tagCategories_id` WHERE f.`id` = $tagCategoriesid AND c.`type` = 1 ORDER BY e.`tagName` ASC, `imageSetid` ASC, c.`order` ASC";
+	//var_dump($db->connection->RunQuery("hello"));
+
+	$result = $db->RunQueryDebug($q);
+
+	if ($result->num_rows > 0){
+
+		
+
+
+		while($row = $result->fetch_array(MYSQLI_ASSOC)){
+
+
+			$filename = $row['url'];
+			//$position = $row['position'];
+			$lesionid = $row['id'];
+			 //implement later for videoset
+			$name = $row['name'];
+            $thumbnail = $row['thumbnail'];
+			
+			$description = $row['description'];
+			$author = $row['author'];
+			$created = $row['created'];
+
+			//get all the tags for this tag with their category
+			//does this show all tags for a specific image
+
+
+			//echo "<div class='col-2' data='$x'><div class='description'>$name";
+			//echo "</div>";
+
+			//echo "</div>";
+
+            if ($thumbnail = ''){
+			
+
+                $response = $client->request('/videos/' . $filename);
+
+                $urlThumbnail = $response['body']['pictures']['sizes'][4]['link'];
+                
+                echo $urlThumbnail;
+                
+                $q1 = "UPDATE `video` SET `thumbnail` = '$urlThumbnail' WHERE `id` = '$lesionid'";
+                
+                $q1 = trim($q1);
+                
+            // echo PHP_EOL . $q1 . PHP_EOL;
+
+                
+                
+                $result1 = $db->RunQueryDebug($q1);
+                
+                //print_r($result1);
+                
+                if ($result1 == 1){
+                    
+                    echo 'Video id ' . $lesionid . ' thumbnail updated <br/><br/>';
+				
+                
+            }
+			
+			//thumbnail link = $urlThumbnail
+
+			
+
+
+
+
+
+
+		}
+
+	}
+
+}
+
 $uri = '/videos/259042119';
 
 $video_id = '259042119';
@@ -426,7 +518,7 @@ $video_id = '259042119';
 
 			    <div id='imageDisplay'>
 
-				<?php echo getAllVideos('40');?>
+				<?php echo getAllMissingVideos('40');?>
 
 
 				</div>
@@ -968,13 +1060,6 @@ $(document).ready(function() {
 
 
 
-   // insertProcedureTags();
-
-
-    //$('#searchBox').attr("placeholder","Loading options...");
-
-
-    //$('input[type=file]').on('change', prepareUpload);
 
     $('#loading').bind('ajaxStart', function() {
         $(this).show();
