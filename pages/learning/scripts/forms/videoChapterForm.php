@@ -3539,7 +3539,7 @@ function logKey(e) {
     if ((e.code == 'KeyC')){
         
 
-        if (($('#newTagModal').hasClass('show'))){
+        if (($('#newTagModal').hasClass('show')) && !($('#tags').data('select2').isOpen())){
            // e.preventDefault();
 
             //now save
