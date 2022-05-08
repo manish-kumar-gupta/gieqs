@@ -357,7 +357,7 @@ function getAllMissingVideos ($tagCategoriesid) {
 
 			//echo "</div>";
 
-            if ($thumbnail = ''){
+            if ($thumbnail == ''){
 			
 
                 $response = $client->request('/videos/' . $filename);
