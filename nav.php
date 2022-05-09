@@ -1,11 +1,11 @@
 <!--Main Navbar-->
 <style>
 
-  .navbar-nav {
+  /* .navbar-nav {
 
     overflow-y:scroll;
 
-  }
+  } */
 
 </style>
 

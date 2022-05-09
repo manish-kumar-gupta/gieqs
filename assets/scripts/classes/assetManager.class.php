@@ -1452,6 +1452,8 @@ public function doesUserHaveSameAssetClassAssetType ($asset_type, $user_id, $deb
 
 public function doesUserHaveSameAssetAlready ($asset_id, $user_id, $debug){
 
+    //user owns asset similar
+
     {
         
         $q = "Select 

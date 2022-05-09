@@ -25,7 +25,38 @@ if ($isSuperuser == 1){
 require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
         $assets_paid = new assets_paid;
 
+
+        
+
 ?>
+
+<!-- define some styles here -->
+
+<style>
+
+ .promember {
+
+    color : rgb(238, 194, 120) !important;
+
+
+ }
+
+ .non-promember-does-not-own {
+
+    color : #95aac9 !important;
+
+
+ }
+
+ .non-promember-owned {
+
+    color : rgb(238, 194, 120) !important;
+
+
+
+ }
+
+</style>
 
 
 <li class="nav-item dropdown mega-dropdown dropdown-animate" data-toggle="hover"
@@ -40,9 +71,10 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
     <div class="dropdown-menu cursor-pointer mega-menu v-2 z-depth-1 pink darken-4 py-4 px-3" style="font-size:1.0rem;"
         aria-labelledby="navbarDropdownMenuLink2">
 
+        
         <div class="row">
             <div class="col-md-6 col-xl-3 sub-menu mb-xl-0 mb-4">
-                <h6 class="sub-title text-uppercase font-weight-bold white-text">Upcoming Courses <br />(Register Now)
+                <h6 class="sub-title text-uppercase font-weight-bold white-text">Upcoming Courses <br /><small>(Register Now)</small>
                 </h6>
                 <?php //var_dump($coursesAdvertised);?>
                 <ul class="list-unstyled">
@@ -82,13 +114,42 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
                         if ($startTime > new DateTime('now')){
 
+                            if (($proMember === false) && ($fullAccess === false)){
+
+                                //no proaccess
+                                if ($assetManager->doesUserHaveSameAssetAlready($value['id'], $userid, false) == true){
+
+                                    $color_item = 'non-promember-owned';
+                                    $start_link = BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=';
+                                    $advert_text = '';
+
+                                }else{
+                                  
+                                    $color_item = 'non-promember-does-not-own';
+                                    $start_link = BASE_URL . '/pages/program/program_generic.php?id=';
+                                    $advert_text = ' discover now';
+
+
+                                }
+
+
+                            }elseif (($proMember === true) || ($fullAccess === true)) {
+
+                                $color_item = 'promember';
+                                $start_link = BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=';
+                                $advert_text = '';
+
+
+
+                            }
+
                           ?>
 
                     <li>
 
-                        <a class="menu-item mt-2"
-                            href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=<?php echo $value['id'] ?>"><i
-                                class="fas fa-caret-right pl-1 pr-3"></i><?php echo $value['name']; ?></a><br /><span
+                    <a class="menu-item <?php echo $color_item;?>"
+                            href="<?php echo $start_link . $value['id'] ?>"><i
+             class="fas fa-caret-right pl-1 pr-3"></i><?php echo $value['name']; ?></a><br /><span
                             class="text-muted small"><?php echo $humanReadableProgrammeDate . ' ' . $humanReadableStartTime . ' CET'; ?></span>
 
                     </li>
@@ -106,7 +167,7 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
                 </ul>
             </div>
             <div class="col-md-6 col-xl-3 sub-menu mb-xl-0 mb-4">
-                <h6 class="sub-title text-uppercase font-weight-bold white-text">Colonoscopy Courses <br />(Immediate Access)
+                <h6 class="sub-title text-uppercase font-weight-bold white-text">Colonoscopy Courses <br /><small>(Immediate Access)</small>
                 </h6>
                 <?php //var_dump($coursesAdvertised);?>
                 <ul class="list-unstyled">
@@ -154,14 +215,45 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
                         if ($startTime < new DateTime('now')){
 
+                            //determine if it is owned and determine start of link
+
+                            if (($proMember === false) && ($fullAccess === false)){
+
+                                //no proaccess
+                                if ($assetManager->doesUserHaveSameAssetAlready($value['id'], $userid, false) == true){
+
+                                    $color_item = 'non-promember-owned';
+                                    $start_link = BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=';
+                                    $advert_text = '';
+
+                                }else{
+                                  
+                                    $color_item = 'non-promember-does-not-own';
+                                    $start_link = BASE_URL . '/pages/program/program_generic.php?id=';
+                                    $advert_text = ' discover now';
+
+
+                                }
+
+
+                            }elseif (($proMember === true) || ($fullAccess === true)) {
+
+                                $color_item = 'promember';
+                                $start_link = BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=';
+                                $advert_text = '';
+
+
+
+                            }
+
                           ?>
 
                     <li class="mt-2">
 
-                        <a class="menu-item"
-                            href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=<?php echo $value['id'] ?>"><i
+                        <a class="menu-item <?php echo $color_item;?>"
+                            href="<?php echo $start_link . $value['id'] ?>"><i
                                 class="fas fa-caret-right pl-1 pr-3"></i><?php echo $value['name']; ?></a><br /><span
-                            class="text-muted small"><?php echo $humanReadableProgrammeDate; ?></span>
+                            class="text-muted small"><?php echo $humanReadableProgrammeDate . $advert_text; ?></span>
 
                     </li>
 
@@ -178,7 +270,7 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
                 </ul>
             </div>
             <div class="col-md-6 col-xl-3 sub-menu mb-xl-0 mb-4">
-                <h6 class="sub-title text-uppercase font-weight-bold white-text">Polypectomy Courses <br />(Immediate Access)
+                <h6 class="sub-title text-uppercase font-weight-bold white-text">Polypectomy Courses <br /><small>(Immediate Access)</small>
                 </h6>
                 <?php //var_dump($coursesAdvertised);?>
                 <ul class="list-unstyled">
@@ -226,13 +318,43 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
                         if ($startTime < new DateTime('now')){
 
+                            if (($proMember === false) && ($fullAccess === false)){
+
+                                //no proaccess
+                                if ($assetManager->doesUserHaveSameAssetAlready($value['id'], $userid, false) == true){
+
+                                    $color_item = 'non-promember-owned';
+                                    $start_link = BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=';
+                                    $advert_text = '<i class="fas fa-unlock-alt small"></i>';
+
+
+                                }else{
+                                  
+                                    $color_item = 'non-promember-does-not-own';
+                                    $start_link = BASE_URL . '/pages/program/program_generic.php?id=';
+                                    $advert_text = '<i class="fas fa-lock small" title="You do not own this content.  Click to Purchase"></i><i class="fas fa-shopping-basket small ml-1"></i>';
+
+
+                                }
+
+
+                            }elseif (($proMember === true) || ($fullAccess === true)) {
+
+                                $color_item = 'promember';
+                                $start_link = BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=';
+                                $advert_text = '<i class="fas fa-unlock-alt small"></i>';
+
+
+
+                            }
+
                           ?>
 
                     <li class="mt-2">
 
-                        <a class="menu-item"
-                            href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=<?php echo $value['id'] ?>"><i
-                                class="fas fa-caret-right pl-1 pr-3"></i><?php echo $value['name']; ?></a><br /><span
+                    <a class="menu-item <?php echo $color_item;?>"
+                            href="<?php echo $start_link . $value['id'] ?>"><i
+                                class="fas fa-caret-right pl-1 pr-3"></i><?php echo $value['name'] . ' ' . $advert_text; ?></a><br /><span
                             class="text-muted small"><?php echo $humanReadableProgrammeDate; ?></span>
 
                     </li>
@@ -250,17 +372,48 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
                 </ul>
             </div>
             <div class="col-md-6 col-xl-3 sub-menu mb-xl-0 mb-4">
-                <h6 class="sub-title text-uppercase font-weight-bold white-text">Pro Content Packs <br />(Immediate
-                    Access)</h6>
+                <h6 class="sub-title text-uppercase font-weight-bold white-text">Pro Content Packs <br /><small>(Immediate
+                    Access)</small></h6>
                 <?php //var_dump($coursesAdvertised);?>
                 <ul class="list-unstyled">
 
-                    <?php foreach($learningPacksAdvertised as $key=>$value){   ?>
+                    <?php foreach($learningPacksAdvertised as $key=>$value){   
+                        
+                        if (($proMember === false) && ($fullAccess === false)){
+
+                            //no proaccess
+                            if ($assetManager->doesUserHaveSameAssetAlready($value['id'], $userid, false) == true){
+
+                                $color_item = 'non-promember-owned';
+                                $start_link = BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=';
+                                $advert_text = '';
+
+                            }else{
+                              
+                                $color_item = 'non-promember-does-not-own';
+                                $start_link = BASE_URL . '/pages/program/program_generic.php?id=';
+                                $advert_text = ' discover now';
+
+
+                            }
+
+
+                        }elseif (($proMember === true) || ($fullAccess === true)) {
+
+                            $color_item = 'promember';
+                            $start_link = BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=';
+                            $advert_text = '';
+
+
+
+                        }
+                        
+                        ?>
 
                     <li class="mt-2">
 
-                        <a class="menu-item"
-                            href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=<?php echo $value['id'] ?>"><i
+                    <a class="menu-item <?php echo $color_item;?>"
+                            href="<?php echo $start_link . $value['id'] ?>"><i
                                 class="fas fa-caret-right pl-1 pr-3"></i><?php echo $value['name']; ?></a>
 
                     </li>
@@ -274,7 +427,7 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
         <div class="row my-3">
 
         <div class="col-md-6 col-xl-3 sub-menu mb-xl-0 mb-4">
-                <h6 class="sub-title text-uppercase font-weight-bold white-text">Other Courses <br />(Immediate Access)
+                <h6 class="sub-title text-uppercase font-weight-bold white-text">Other Courses <br /><small>(Immediate Access)</small>
                 </h6>
                 <?php //var_dump($coursesAdvertised);?>
                 <ul class="list-unstyled">
@@ -322,12 +475,41 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
                         if ($startTime < new DateTime('now')){
 
+                            if (($proMember === false) && ($fullAccess === false)){
+
+                                //no proaccess
+                                if ($assetManager->doesUserHaveSameAssetAlready($value['id'], $userid, false) == true){
+
+                                    $color_item = 'non-promember-owned';
+                                    $start_link = BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=';
+                                    $advert_text = '';
+
+                                }else{
+                                  
+                                    $color_item = 'non-promember-does-not-own';
+                                    $start_link = BASE_URL . '/pages/program/program_generic.php?id=';
+                                    $advert_text = ' discover now';
+
+
+                                }
+
+
+                            }elseif (($proMember === true) || ($fullAccess === true)) {
+
+                                $color_item = 'promember';
+                                $start_link = BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=';
+                                $advert_text = '';
+
+
+
+                            }
+
                           ?>
 
                     <li class="mt-2">
 
-                        <a class="menu-item"
-                            href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=<?php echo $value['id'] ?>"><i
+                    <a class="menu-item <?php echo $color_item;?>"
+                            href="<?php echo $start_link . $value['id'] ?>"><i
                                 class="fas fa-caret-right pl-1 pr-3"></i><?php echo $value['name']; ?></a><br /><span
                             class="text-muted small"><?php echo $humanReadableProgrammeDate; ?></span>
 
@@ -346,17 +528,39 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
                 </ul>
             </div>
             <div class="col-md-6 col-xl-3 sub-menu mb-xl-0 mb-4">
-                <h6 class="sub-title text-uppercase font-weight-bold white-text">Past Symposia <br />(Immediate Access)
+                <h6 class="sub-title text-uppercase font-weight-bold white-text">Past Symposia <br /><small>(Immediate Access)</small>
                 </h6>
                 <?php //var_dump($coursesAdvertised);?>
                 <ul class="list-unstyled">
 
-                    <?php foreach($symposiaAdvertised as $key=>$value){   ?>
+                    <?php foreach($symposiaAdvertised as $key=>$value){  
+                        
+                        
+
+                            //no proaccess
+                            if ($assetManager->doesUserHaveSameAssetAlready($value['id'], $userid, false) == true){
+
+                                $color_item = 'non-promember-owned';
+                                $start_link = BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=';
+                                $advert_text = '';
+
+                            }else{
+                              
+                                $color_item = 'non-promember-does-not-own';
+                                $start_link = BASE_URL . '/pages/program/program_generic.php?id=';
+                                $advert_text = ' discover now';
+
+
+                            }
+
+
+                        
+                        ?>
 
                     <li class="mt-2">
 
-                        <a class="menu-item"
-                            href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=<?php echo $value['id'] ?>"><i
+                    <a class="menu-item <?php echo $color_item;?>"
+                            href="<?php echo $start_link . $value['id'] ?>"><i
                                 class="fas fa-caret-right pl-1 pr-3"></i><?php echo $value['name']; ?></a>
 
                     </li>
@@ -370,6 +574,9 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
            
         </div>
+        <!-- <div class="row">
+        <span style="flex:auto; justify-content: end;" class="dropdown-header text-white">Legend <span class="gieqsGold"> you own this</span> <span class="text-muted"> available for purchase </span>
+</div> -->
         <div class="row text-right pt-2 px-2">
             <?php   if ($userid) {
 
@@ -388,10 +595,16 @@ if (($proMember === false) && ($fullAccess === false)){?>
 
             <span style="background-color:rgb(238, 194, 120); flex:auto;" class="dropdown-header text-dark">You could gain access
                 to ALL of these courses with a GIEQs Pro subscription. <a href="<?php echo $upgradeURL;?>">Find out
-                    more.</a></span>
+                    more and get a FREE 14 day trial.</a></span>
 
 
-            <?php                   } ?>
+            <?php                                               }elseif (($proMember === true) || ($fullAccess === true)) {?>
+
+                <span style="background-color:rgb(238, 194, 120); flex:auto;" class="dropdown-header text-dark">You have access to ALL content as a benefit of your GIEQs Pro Subscription.  You must register for individual courses via this menu.</a></span>
+
+
+<?php }
+?>
         </div>
     </div>
 

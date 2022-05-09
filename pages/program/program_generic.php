@@ -333,6 +333,44 @@ var_dump($currentTime);
                              var_dump($token);
                              }
 
+
+                             //pass a fake access validated if a pro subscription
+
+
+   //DETERMINE IF THE USER HAS A SUBSCRIPTION
+
+   if ($userid){
+    if ($isSuperuser == 1){
+    
+      $fullAccess = true;
+      $proMember = false;
+    
+    }elseif ($sitewide_status == 2){ //PRO subscription
+    
+      $fullAccess = true;
+      $proMember = true;
+    
+    }else{
+    
+      $fullAccess = false;
+      $proMember = false;
+    }
+    }else{
+    
+      $fullAccess = false;
+      $proMember = false;
+    }
+
+    if ($fullAccess === true || $proMember === true){
+
+        //should not be applicable to anything other than symposia, courses and advanced packs
+
+        if ($assetManager->getAssetTypeAsset($assets_paid->getid()) == '2' || $assetManager->getAssetTypeAsset($assets_paid->getid()) == '3' || $assetManager->getAssetTypeAsset($assets_paid->getid()) == '4'){
+        $access_validated = true;
+        }
+
+    }
+
                              
                              ?>
 
@@ -464,6 +502,8 @@ var_dump($currentTime);
    //TODOTODAY use token class to get the length of the subscription if institutional
 
    //TODOTODAY disable access here without institutional if asset type is subscription (1)
+
+    
     
     
     ?>
