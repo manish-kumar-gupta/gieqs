@@ -120,6 +120,50 @@ if (isset($data['cipher_hidden'])){
 
     $token_from_cipher = $assetManager->getTokenidfromCipher($cipher_hidden, false);
 
+    $is_pro_subscriber = false;
+
+    if ($token_from_cipher === false){
+
+        //options this is an invalid token
+
+        //or it is a pro subscriber
+
+        if ($userid){
+            if ($isSuperuser == 1){
+            
+              $fullAccess = true;
+              $proMember = false;
+            
+            }elseif ($sitewide_status == 2){ //PRO subscription
+            
+              $fullAccess = true;
+              $proMember = true;
+            
+            }else{
+            
+              $fullAccess = false;
+              $proMember = false;
+            }
+            }else{
+            
+              $fullAccess = false;
+              $proMember = false;
+            }
+        
+            if ($fullAccess === true || $proMember === true){
+
+
+                $is_pro_subscriber = true;
+
+
+            }else{
+
+                $is_pro_subscriber = false;
+            }
+
+
+    }
+
                                 if (is_numeric($token_from_cipher)){
 
                                $token->Load_from_key($token_from_cipher);
@@ -317,6 +361,10 @@ $subscription_to_return['user_id'] = $userid;
     if ($is_institutional){
 
         $text = 'TOKEN_PURCHASE TOKEN_ID='. $tokenid . ' INSTITUTIONAL_ID='. $institutional_id;
+    }elseif ($is_pro_subscriber === true){
+
+        $text = 'TOKEN_PURCHASE TOKEN_ID=PRO_SUBSCRIPTION';
+
     }else{
 
         $text = 'TOKEN_PURCHASE TOKEN_ID='. $tokenid;

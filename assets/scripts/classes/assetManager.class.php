@@ -5963,8 +5963,260 @@ if ($debug){
 
 
 
+
+        //new 11 05 20222
+
+        //return user owned pro assets
+
+        public function returnProPurchasedAssetsUser($userid, $debug=false){
+
+
+            $q = "SELECT * FROM `subscriptions` WHERE (`gateway_transactionId` LIKE '%TOKEN_ID=PRO_SUBSCRIPTION%' AND `user_id` = '$userid' AND `active` = '1')";
     
+            
+        
+        
+        if ($debug){
+            echo $q . '<br><br>';
+        
+        }
+        
+        $result = $this->connection->RunQuery($q);
+        
+        $x = 0;
+        $nRows = $result->rowCount();
+        
+        if ($nRows > 0) {
+        
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+        
+                $rowReturn[$x] = $row['asset_id'];
+                $x++;
+        
+        
+            }
+        
+            if ($debug){
+        
+                print_r($rowReturn);
+            }
+        
+            return $rowReturn;
+        
+        } else {
+            
+        
+            if ($debug){
+        
+                echo 'user does not own any pro assets';
+            }
+        
+            return false;
+        
+            
+        }
+        
+        }
     
+        //inactivate all pro assets
+
+        public function inactivateAllProAssetsUser($userid, $debug=false){
+
+
+            $q = "UPDATE `subscriptions` SET `active`='0' WHERE (`gateway_transactionId` LIKE '%TOKEN_ID=PRO_SUBSCRIPTION%' AND `user_id` = '$userid')";
+    
+            
+        
+        
+        if ($debug){
+            echo $q . '<br><br>';
+        
+        }
+        
+        $result = $this->connection->RunQuery($q);
+        
+        $x = 0;
+        $nRows = $result->rowCount();
+        
+        if ($nRows > 0) {
+        
+            return true;
+        
+        } else {
+            
+        
+            if ($debug){
+        
+                echo 'no pro assets to inactivate';
+            }
+        
+            return false;
+        
+            
+        }
+        
+        }
+
+        public function reactivateProAssetsUser($userid, $debug=false){
+
+
+            $q = "UPDATE `subscriptions` SET `active`='1' WHERE (`gateway_transactionId` LIKE '%TOKEN_ID=PRO_SUBSCRIPTION%' AND `user_id` = '$userid')";
+        
+            if ($debug){
+                echo $q . '<br><br>';
+            
+            }
+            
+            $result = $this->connection->RunQuery($q);
+            
+            $x = 0;
+            $nRows = $result->rowCount();
+            
+            if ($nRows > 0) {
+            
+                return true;
+            
+            } else {
+                
+            
+                if ($debug){
+            
+                    echo 'no pro assets to activate';
+                }
+            
+                return false;
+            
+                
+            }
+        
+        }
+
+       
+        public function getDateNowSQL (){
+
+            $date = new DateTime('now', new DateTimeZone('UTC'));
+            $sqltimestamp = date_format($date, 'Y-m-d H:i:s');
+            return $sqltimestamp;
+
+        }
+
+     //ensure all pro assets are active and have at least 3 months remaining
+
+        public function extendProAssetsUser($userid, $debug=false){
+
+            //used at subscription update for a pro user
+
+            $date = new DateTime('now', new DateTimeZone('UTC'));
+            $interval = 'P3M';
+            $todayplus3 = date_add($date, new DateInterval($interval));
+
+
+            $sqltimestamp = date_format($todayplus3, 'Y-m-d H:i:s');
+            //return $sqltimestamp;
+
+            $q = "UPDATE `subscriptions` SET `active`='1', `expiry_date`='$sqltimestamp' WHERE (`gateway_transactionId` LIKE '%TOKEN_ID=PRO_SUBSCRIPTION%' AND `user_id` = '$userid')";
+    
+            
+        
+        
+        if ($debug){
+            echo $q . '<br><br>';
+        
+        }
+        
+        $result = $this->connection->RunQuery($q);
+        
+        $x = 0;
+        $nRows = $result->rowCount();
+        
+        if ($nRows > 0) {
+        
+            
+
+              
+        if ($debug){
+            echo 'pro assets updated to '. $sqltimestamp .' for user ' . $userid . '<br><br>';
+        
+        }
+
+        return true;
+        
+        } else {
+            
+        
+            if ($debug){
+        
+                echo 'no pro assets to activate and update dates';
+            }
+        
+            return false;
+        
+            
+        }
+        
+        }
+
+        public function provideInstitutionalData($token_id, $debug=false){
+
+
+            //is it an institutional thing, if not exit -- outside this function
+
+
+            //if it is, provide the name, date of subscription, remaining months of subscription, logins last month, logins ever, learning tools accessed, %completion
+            //so this is difficult and therefore just return the user ids
+
+
+            $q = "SELECT `id`, `user_id` FROM `subscriptions` WHERE `gateway_transactionId` LIKE '%TOKEN_ID=$token_id%'";
+        
+            if ($debug){
+                echo $q . '<br><br>';
+            
+            }
+            
+            $result = $this->connection->RunQuery($q);
+            
+            $x = 0;
+            $nRows = $result->rowCount();
+            
+            if ($nRows > 0) {
+            
+                
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+        
+                $rowReturn[$x] = $row['id'];  //give back subscription id
+                $x++;
+        
+        
+            }
+        
+            if ($debug){
+        
+                print_r($rowReturn);
+            }
+        
+            return $rowReturn;
+                
+               
+            
+            } else {
+                
+            
+                if ($debug){
+            
+                    echo 'no pro assets to activate';
+                }
+            
+                return false;
+            
+                
+            }
+
+
+
+
+        }
+
+
 
   
 

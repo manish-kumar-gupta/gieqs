@@ -59,6 +59,20 @@ $general = new general;
 
 $debug = false;
 
+//reset the codes after previous nav bar
+
+$asset_id_pagewrite = null;
+$asset_id_pagewrite2 = null;
+$email_to_use_as_basis = null;
+
+$programme_array = null;
+$programme_defined = null;
+
+$access = null;
+$access1 = null;
+$access2 = null;
+
+
 //$assetid = 13;
 $asset_id_pagewrite = '95';
 $asset_id_pagewrite2 = '96';

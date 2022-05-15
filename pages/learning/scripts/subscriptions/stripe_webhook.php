@@ -633,6 +633,9 @@ switch ($event->type) {
         
             //could send mail thanks for updating payment information
 
+            $assetManager->extendProAssetsUser($user_id_subscription, $debug=false);
+
+
         }
         
         } else {
@@ -669,8 +672,12 @@ switch ($event->type) {
 
         
         $subscription->Load_from_key($subscription_id);
+        $user_id_subscription = $subscription->getuser_id();
         $subscription->setactive('0');
         $subscription->prepareStatementPDOUpdate();
+
+        $assetManager->inactivateAllProAssetsUser($user_id_subscription, $debug=false);
+
 
         //send a mail to the user saying that subscription will not renew unless purchased again.
 

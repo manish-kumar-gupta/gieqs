@@ -114,34 +114,25 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
                         if ($startTime > new DateTime('now')){
 
-                            if (($proMember === false) && ($fullAccess === false)){
 
                                 //no proaccess
                                 if ($assetManager->doesUserHaveSameAssetAlready($value['id'], $userid, false) == true){
 
                                     $color_item = 'non-promember-owned';
                                     $start_link = BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=';
-                                    $advert_text = '';
+                                    $advert_text = '<i class="fas fa-unlock-alt small"></i>';
 
                                 }else{
                                   
                                     $color_item = 'non-promember-does-not-own';
                                     $start_link = BASE_URL . '/pages/program/program_generic.php?id=';
-                                    $advert_text = ' discover now';
+                                    $advert_text = '<i class="fas fa-lock small" title="You do not own this content.  Click to Purchase"></i><i class="fas fa-shopping-basket small ml-1"></i>';
 
 
                                 }
 
 
-                            }elseif (($proMember === true) || ($fullAccess === true)) {
-
-                                $color_item = 'promember';
-                                $start_link = BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=';
-                                $advert_text = '';
-
-
-
-                            }
+                            
 
                           ?>
 
@@ -149,7 +140,7 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
                     <a class="menu-item <?php echo $color_item;?>"
                             href="<?php echo $start_link . $value['id'] ?>"><i
-             class="fas fa-caret-right pl-1 pr-3"></i><?php echo $value['name']; ?></a><br /><span
+             class="fas fa-caret-right pl-1 pr-3"></i><?php echo $value['name'] . ' ' . $advert_text; ?></a><br /><span
                             class="text-muted small"><?php echo $humanReadableProgrammeDate . ' ' . $humanReadableStartTime . ' CET'; ?></span>
 
                     </li>
@@ -217,34 +208,24 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
                             //determine if it is owned and determine start of link
 
-                            if (($proMember === false) && ($fullAccess === false)){
 
                                 //no proaccess
                                 if ($assetManager->doesUserHaveSameAssetAlready($value['id'], $userid, false) == true){
 
                                     $color_item = 'non-promember-owned';
                                     $start_link = BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=';
-                                    $advert_text = '';
+                                    $advert_text = '<i class="fas fa-unlock-alt small"></i>';
 
                                 }else{
                                   
                                     $color_item = 'non-promember-does-not-own';
                                     $start_link = BASE_URL . '/pages/program/program_generic.php?id=';
-                                    $advert_text = ' discover now';
+                                    $advert_text = '<i class="fas fa-lock small" title="You do not own this content.  Click to Purchase"></i><i class="fas fa-shopping-basket small ml-1"></i>';
 
 
                                 }
 
 
-                            }elseif (($proMember === true) || ($fullAccess === true)) {
-
-                                $color_item = 'promember';
-                                $start_link = BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=';
-                                $advert_text = '';
-
-
-
-                            }
 
                           ?>
 
@@ -252,8 +233,8 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
                         <a class="menu-item <?php echo $color_item;?>"
                             href="<?php echo $start_link . $value['id'] ?>"><i
-                                class="fas fa-caret-right pl-1 pr-3"></i><?php echo $value['name']; ?></a><br /><span
-                            class="text-muted small"><?php echo $humanReadableProgrammeDate . $advert_text; ?></span>
+                                class="fas fa-caret-right pl-1 pr-3"></i><?php echo $value['name'] . ' ' . $advert_text; ?></a><br /><span
+                            class="text-muted small"><?php echo $humanReadableProgrammeDate;?></span>
 
                     </li>
 
@@ -318,7 +299,6 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
                         if ($startTime < new DateTime('now')){
 
-                            if (($proMember === false) && ($fullAccess === false)){
 
                                 //no proaccess
                                 if ($assetManager->doesUserHaveSameAssetAlready($value['id'], $userid, false) == true){
@@ -332,25 +312,15 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
                                   
                                     $color_item = 'non-promember-does-not-own';
                                     $start_link = BASE_URL . '/pages/program/program_generic.php?id=';
-                                    $advert_text = '<i class="fas fa-lock small" title="You do not own this content.  Click to Purchase"></i><i class="fas fa-shopping-basket small ml-1"></i>';
-
+                                    $advert_text = '<i class="fas fa-lock small" title="You do not own this content.  Click to Purchase"></i><span class="badge badge-pill bg-secondary text-dark badge-floating border-dark ml-2 p-1" style="font-size:20%">Register</span>';
 
                                 }
 
 
-                            }elseif (($proMember === true) || ($fullAccess === true)) {
-
-                                $color_item = 'promember';
-                                $start_link = BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=';
-                                $advert_text = '<i class="fas fa-unlock-alt small"></i>';
-
-
-
-                            }
 
                           ?>
 
-                    <li class="mt-2">
+                    <li class="mt-2" style="line-height:1.4;">
 
                     <a class="menu-item <?php echo $color_item;?>"
                             href="<?php echo $start_link . $value['id'] ?>"><i
@@ -379,34 +349,22 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
                     <?php foreach($learningPacksAdvertised as $key=>$value){   
                         
-                        if (($proMember === false) && ($fullAccess === false)){
 
                             //no proaccess
                             if ($assetManager->doesUserHaveSameAssetAlready($value['id'], $userid, false) == true){
 
                                 $color_item = 'non-promember-owned';
                                 $start_link = BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=';
-                                $advert_text = '';
-
+                                $advert_text = '<i class="fas fa-unlock-alt small"></i>';
                             }else{
                               
                                 $color_item = 'non-promember-does-not-own';
                                 $start_link = BASE_URL . '/pages/program/program_generic.php?id=';
-                                $advert_text = ' discover now';
-
+                                $advert_text = '<i class="fas fa-lock small" title="You do not own this content.  Click to Purchase"></i><i class="fas fa-shopping-basket small ml-1"></i>';
 
                             }
 
 
-                        }elseif (($proMember === true) || ($fullAccess === true)) {
-
-                            $color_item = 'promember';
-                            $start_link = BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=';
-                            $advert_text = '';
-
-
-
-                        }
                         
                         ?>
 
@@ -414,7 +372,7 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
                     <a class="menu-item <?php echo $color_item;?>"
                             href="<?php echo $start_link . $value['id'] ?>"><i
-                                class="fas fa-caret-right pl-1 pr-3"></i><?php echo $value['name']; ?></a>
+                                class="fas fa-caret-right pl-1 pr-3"></i><?php echo $value['name'] . ' ' . $advert_text; ?></a>
 
                     </li>
 
@@ -475,34 +433,24 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
                         if ($startTime < new DateTime('now')){
 
-                            if (($proMember === false) && ($fullAccess === false)){
 
                                 //no proaccess
                                 if ($assetManager->doesUserHaveSameAssetAlready($value['id'], $userid, false) == true){
 
                                     $color_item = 'non-promember-owned';
                                     $start_link = BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=';
-                                    $advert_text = '';
+                                    $advert_text = '<i class="fas fa-unlock-alt small"></i>';
 
                                 }else{
                                   
                                     $color_item = 'non-promember-does-not-own';
                                     $start_link = BASE_URL . '/pages/program/program_generic.php?id=';
-                                    $advert_text = ' discover now';
+                                     $advert_text = '<i class="fas fa-lock small" title="You do not own this content.  Click to Purchase"></i><i class="fas fa-shopping-basket small ml-1"></i>';
 
 
                                 }
 
 
-                            }elseif (($proMember === true) || ($fullAccess === true)) {
-
-                                $color_item = 'promember';
-                                $start_link = BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=';
-                                $advert_text = '';
-
-
-
-                            }
 
                           ?>
 
@@ -510,7 +458,7 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
                     <a class="menu-item <?php echo $color_item;?>"
                             href="<?php echo $start_link . $value['id'] ?>"><i
-                                class="fas fa-caret-right pl-1 pr-3"></i><?php echo $value['name']; ?></a><br /><span
+                                class="fas fa-caret-right pl-1 pr-3"></i><?php echo $value['name'] . ' ' . $advert_text; ?></a><br /><span
                             class="text-muted small"><?php echo $humanReadableProgrammeDate; ?></span>
 
                     </li>
@@ -542,13 +490,14 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
                                 $color_item = 'non-promember-owned';
                                 $start_link = BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=';
-                                $advert_text = '';
+                                $advert_text = '<i class="fas fa-unlock-alt small"></i>';
 
                             }else{
                               
                                 $color_item = 'non-promember-does-not-own';
                                 $start_link = BASE_URL . '/pages/program/program_generic.php?id=';
-                                $advert_text = ' discover now';
+                                $advert_text = '<i class="fas fa-lock small" title="You do not own this content.  Click to Purchase"></i><i class="fas fa-shopping-basket small ml-1"></i>';
+
 
 
                             }
@@ -561,7 +510,7 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
                     <a class="menu-item <?php echo $color_item;?>"
                             href="<?php echo $start_link . $value['id'] ?>"><i
-                                class="fas fa-caret-right pl-1 pr-3"></i><?php echo $value['name']; ?></a>
+                                class="fas fa-caret-right pl-1 pr-3"></i><?php echo $value['name'] . ' ' . $advert_text; ?></a>
 
                     </li>
 
@@ -600,7 +549,7 @@ if (($proMember === false) && ($fullAccess === false)){?>
 
             <?php                                               }elseif (($proMember === true) || ($fullAccess === true)) {?>
 
-                <span style="background-color:rgb(238, 194, 120); flex:auto;" class="dropdown-header text-dark">You have access to ALL content as a benefit of your GIEQs Pro Subscription.  You must register for individual courses via this menu.</a></span>
+                <span style="background-color:rgb(238, 194, 120); flex:auto;" class="dropdown-header text-dark">You have access to ALL content as a benefit of your GIEQs Pro Subscription.  You must register for individual courses via this menu prior to access.</a></span>
 
 
 <?php }
