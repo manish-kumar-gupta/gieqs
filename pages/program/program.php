@@ -59,95 +59,7 @@ $general = new general;
 
 $debug = false;
 
-//reset the codes after previous nav bar
 
-$asset_id_pagewrite = null;
-$asset_id_pagewrite2 = null;
-$email_to_use_as_basis = null;
-
-$programme_array = null;
-$programme_defined = null;
-
-$access = null;
-$access1 = null;
-$access2 = null;
-
-
-//$assetid = 13;
-$asset_id_pagewrite = '95';
-$asset_id_pagewrite2 = '96';
-$email_to_use_as_basis = '1';
-
-/*$asset_id_pagewrite = '3';
-$asset_id_pagewrite2 = '3';
-$email_to_use_as_basis = '1';*/
-
-$emails->Load_from_key($email_to_use_as_basis);
-$emailid = $email_to_use_as_basis;
-
-$programme_array = $assetManager->returnProgrammesAsset($asset_id_pagewrite);
-$programme_defined = $programme_array[0];
-if ($programme_array[1] != ''){
-
-    $programme2 = $programme_array[1];
-}else{
-
-    $programme2 = null;
-}
-
-$programme_array = $assetManager->returnProgrammesAsset($asset_id_pagewrite2);
-$programme_defined3 = $programme_array[0];
-if ($programme_array[1] != ''){
-
-    $programme4 = $programme_array[1];
-}else{
-
-    $programme4 = null;
-}
-
-if ($debug){
-
-print_r($programme_defined);
-print_r($programme2);
-
-
-}
-
-
-
-$assets_paid->Load_from_key($asset_id_pagewrite);
-
-$access = [0=>['id'=>$programme_defined],];
-
-$access1 = null;
-
-    
-$access1 = $sessionView->getStartAndEndProgrammes($access, $debug);
-
-    //var_dump($access1);
-
-    //echo '<br/><br/>now get the start and end times in a single array<br/><br/>';
-
-    $access2 = null;
-
-    $access2 = $sessionView->getStartEndProgrammes($access1, $debug);
-
-    //var_dump($access2);
-
-$programme->Load_from_key($programme_defined);
-$serverTimeZone = new DateTimeZone('Europe/Brussels');
-$programmeDate = new DateTime($programme->getdate(), $serverTimeZone);
-
-$humanReadableProgrammeDate = date_format($programmeDate, "l jS F Y");
-
-$startTime = new DateTime($programme->getdate() . ' ' . $access2[0]['startTime'], $serverTimeZone);
-$endTime = new DateTime($programme->getdate() . ' ' . $access2[0]['endTime'], $serverTimeZone);
-$humanStartTime = date_format($startTime, "H:i");
-$humanEndTime = date_format($endTime, "H:i T");
-
-if ($debug){
-var_dump($currentTime);
-}
 
 //rest should come from this
 
@@ -237,6 +149,112 @@ var_dump($currentTime);
         <!-- Main navbar -->
 
         <?php require BASE_URI . '/nav.php';?>
+
+        <?php
+
+//reset the codes after previous nav bar
+
+$asset_id_pagewrite = null;
+$asset_id_pagewrite2 = null;
+$email_to_use_as_basis = null;
+
+$programme_array = null;
+$programme_defined = null;
+
+$access = null;
+$access1 = null;
+$access2 = null;
+
+$programme2 = null;
+
+
+//$assetid = 13;
+$asset_id_pagewrite = '95';
+$asset_id_pagewrite2 = '96';
+$email_to_use_as_basis = '1';
+
+/*$asset_id_pagewrite = '3';
+$asset_id_pagewrite2 = '3';
+$email_to_use_as_basis = '1';*/
+
+$emails->Load_from_key($email_to_use_as_basis);
+$emailid = $email_to_use_as_basis;
+
+$programme_array = $assetManager->returnProgrammesAsset($asset_id_pagewrite);
+
+//var_dump($programme_array);
+
+
+$programme_defined = $programme_array[0];
+if ($programme_array[1] != ''){
+
+    $programme2 = $programme_array[1];
+}else{
+
+    $programme2 = null;
+}
+
+$programme_array2 = $assetManager->returnProgrammesAsset($asset_id_pagewrite2);
+$programme_defined3 = $programme_array2[0];
+if ($programme_array2[1] != ''){
+
+    $programme4 = $programme_array2[1];
+}else{
+
+    $programme4 = null;
+}
+
+if ($debug){
+
+print_r($programme_defined);
+print_r($programme2);
+print_r($programme_defined3);
+
+print_r($programme4);
+
+
+
+}
+
+//exit();
+
+
+
+
+$assets_paid->Load_from_key($asset_id_pagewrite);
+
+$access = [0=>['id'=>$programme_defined],];
+
+$access1 = null;
+
+    
+$access1 = $sessionView->getStartAndEndProgrammes($access, $debug);
+
+    //var_dump($access1);
+
+    //echo '<br/><br/>now get the start and end times in a single array<br/><br/>';
+
+    $access2 = null;
+
+    $access2 = $sessionView->getStartEndProgrammes($access1, $debug);
+
+    //var_dump($access2);
+
+$programme->Load_from_key($programme_defined);
+$serverTimeZone = new DateTimeZone('Europe/Brussels');
+$programmeDate = new DateTime($programme->getdate(), $serverTimeZone);
+
+$humanReadableProgrammeDate = date_format($programmeDate, "l jS F Y");
+
+$startTime = new DateTime($programme->getdate() . ' ' . $access2[0]['startTime'], $serverTimeZone);
+$endTime = new DateTime($programme->getdate() . ' ' . $access2[0]['endTime'], $serverTimeZone);
+$humanStartTime = date_format($startTime, "H:i");
+$humanEndTime = date_format($endTime, "H:i T");
+
+if ($debug){
+var_dump($currentTime);
+}
+?>
 
         <div id="action" style="display:none;"><?php if ($action){echo $action;}?></div>
         <div id="access_token" style="display:none;"><?php if ($access_token){echo $access_token;}?></div>

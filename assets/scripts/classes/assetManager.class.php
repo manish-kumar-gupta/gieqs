@@ -5295,6 +5295,7 @@ if ($debug){
 
     public function getMembershipStatusAssetid($assetid){
 
+        // 1 = standard , 2 = pro
 
         if ($assetid == '4' || $assetid == '5' || $assetid == '6'){
 
@@ -6203,7 +6204,67 @@ if ($debug){
             
                 if ($debug){
             
-                    echo 'no pro assets to activate';
+                    echo 'no subscriptions exist using this token (' . $token_id;
+                }
+            
+                return false;
+            
+                
+            }
+
+
+
+
+        }
+
+        public function createHistoricalAssetsPro($debug=false){
+
+
+            //is it an institutional thing, if not exit -- outside this function
+
+
+            //if it is, provide the name, date of subscription, remaining months of subscription, logins last month, logins ever, learning tools accessed, %completion
+            //so this is difficult and therefore just return the user ids
+
+
+            $q = "SELECT `id`, `user_id` FROM `subscriptions` WHERE `gateway_transactionId` LIKE '%TOKEN_ID=$token_id%'";
+        
+            if ($debug){
+                echo $q . '<br><br>';
+            
+            }
+            
+            $result = $this->connection->RunQuery($q);
+            
+            $x = 0;
+            $nRows = $result->rowCount();
+            
+            if ($nRows > 0) {
+            
+                
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+        
+                $rowReturn[$x] = $row['id'];  //give back subscription id
+                $x++;
+        
+        
+            }
+        
+            if ($debug){
+        
+                print_r($rowReturn);
+            }
+        
+            return $rowReturn;
+                
+               
+            
+            } else {
+                
+            
+                if ($debug){
+            
+                    echo 'no subscriptions exist using this token (' . $token_id;
                 }
             
                 return false;
@@ -6223,7 +6284,12 @@ if ($debug){
     
 
         
-
+//write userdata to a database file then delete useractivity af
+//id
+//user_id
+//logins
+//status -- figure out how this is calculated
+//tokens
 
 
 

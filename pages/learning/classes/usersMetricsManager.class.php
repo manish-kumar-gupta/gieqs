@@ -164,11 +164,11 @@ class usersMetricsManager
         $q = "SELECT `id` FROM `usersVideoChapterProgress`
             WHERE `user_id` = '$userid' AND chapter_id = '$chapter_id'";
 
-        if ($debug) {
+        /* if ($debug) {
 
             echo $q . '<br><br>';
 
-        }
+        } */
 
         //$rowReturn = [];
 

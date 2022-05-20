@@ -1960,6 +1960,51 @@ public function returnEmails($users)
 	
 			
 		}
+
+		//logins
+
+
+		public function  defineLastLogin($userid, $debug=false) {
+
+
+			//check it has happened
+	
+			$q = "SELECT `session_id`, `activity_time` FROM `userActivity` WHERE `user_id` = '$userid' ORDER BY `activity_time` DESC LIMIT 1";
+	
+
+			if ($debug == true){
+			echo $q;
+			}
+	
+			$result = $this->connection->RunQuery($q);
+	
+							
+				$nRows = $result->rowCount();
+	
+				
+				//echo $count;
+				
+				if ($nRows > 0){
+	
+					while($row = $result->fetch(PDO::FETCH_ASSOC)){
+	
+						//$count = $row['count'];
+						$activity_time = $row['activity_time'];
+		
+		
+					}
+
+					return $activity_time;
+		
+	
+					
+				}else{
+	
+					return false; // allow login
+				}
+	
+			
+		}
 	
 	
 		
