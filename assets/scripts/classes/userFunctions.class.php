@@ -149,6 +149,39 @@ Class userFunctions {
 
 	}
 
+	public function getAllUsers(){
+
+		$users = [];
+		$x=0;
+
+		
+		
+			$q = "SELECT `user_id` FROM `users`";
+		//echo $q;
+
+		$result = $this->connection->RunQuery($q);
+		$nRows = $result->rowCount();
+			if ($nRows > 0){
+
+				while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+					$users[] = $row['user_id'];
+					
+				}
+
+				
+			}else{
+				$users[] = null;
+			}
+
+		
+
+		return $users;
+
+
+
+	}
+
 	public function getUserKey($userid){
 
         $q = "SELECT `key` FROM `users` WHERE `user_id` = '$userid'";

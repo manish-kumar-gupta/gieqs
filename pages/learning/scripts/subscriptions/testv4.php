@@ -155,7 +155,7 @@ function getProgrammeStartTime($assetid, $assetManager, $sessionView, $programme
 
 }
 
-function getStatusUser($userid, $assetManager, $debug=false){
+function getStatusUser($userid, $assetManager, $userFunctions, $debug=false){
 
     $siteWideSubscriptionid = $assetManager->getSiteWideSubscription($userid, $debugUserAccess);
     
@@ -172,12 +172,20 @@ function getStatusUser($userid, $assetManager, $debug=false){
             }
     
           //allocate umber based on 6 FREE, 5 STANDARD, 4 PRO
+
+          if ($userFunctions->isSuperuser($userid) === true){
+
+            $sitewide_status = '2';
+
+
+          }else{
     
           $sitewide_status = $assetManager->getMembershipStatusAssetid($assetid_subscription);
     
           if ($debug){
             echo 'SITE WIDE STATUS IS ' . $sitewide_status;
             }
+        }
 
 
         return $sitewide_status;
@@ -263,7 +271,180 @@ echo '</pre>';
 
 echo '<br/>';
 echo '<br/>';
-echo getStatusUser('1', $assetManager, true);
+
+//******************** */
+//START SCRIPT TO ADD ALL CURRENT PRO USER ASSETS
+/* $log=[];
+$debug = true;
+
+//iterate all users
+
+$users = $userFunctions->getAllUsers();
+
+
+//if user pro add assets
+
+$assets = getPastAdvertisedAssets($assetManager, $sessionView, $programme);
+
+
+//DEFINE DATES
+//today
+$current_date = new DateTime('now', new DateTimeZone('UTC'));
+$current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s');
+
+//after 1 year
+$interval = 'P12M';
+
+//add interval to today
+$end_start_calculate_date = new DateTime('now', new DateTimeZone('UTC'));
+$end_start_calculate_date->add(new DateInterval($interval));
+$end_date_sqltimestamp = date_format($end_start_calculate_date, 'Y-m-d H:i:s');
+
+
+
+foreach ($users as $key=>$value){
+
+    if (getStatusUser($value, $assetManager, $userFunctions, false) == '2'){
+        //if a pro user
+        $log[] = 'User no ' . $value . ' is a PRO user with current status';
+
+        //give access to all assets which does not expire, or which expires
+
+        foreach ($assets as $assetkey=>$assetvalue){
+            //iterate through advertised assets
+
+
+            //check if user already owns
+
+            //if not give a 1 year  access 
+
+            //$value is userid
+
+            //$assetvalue is assetid
+
+            if ($assetManager->doesUserHaveSameAssetAlready($assetvalue, $value, false) === false){
+
+                $log[] = 'User no ' . $value . ' does not currently own asset ' . $assetvalue;
+
+
+              //$subscription->New_subscriptions($value, $assetvalue, $current_date_sqltimestamp, $end_date_sqltimestamp, '1', '0', 'TOKEN_ID=PRO_SUBSCRIPTION');
+
+              //$newSubscriptionid = $subscription->prepareStatementPDO();
+
+              $newSubscriptionid = ' fake subscription id';
+
+
+              $log[] = 'User no ' . $value . ' granted access to assetid ' . $assetvalue . '. New subscription no = ' . $newSubscriptionid;
+
+
+            }else{
+                
+                $log[] = 'User no ' . $value . ' already owns asset ' . $assetvalue;
+
+
+            }
+
+
+
+
+        }
+
+
+
+    }else{
+
+        $log[] = 'User no ' . $value . ' is not a pro user';
+
+
+    }
+
+
+}
+
+echo '<pre>';
+var_dump($log);
+echo '</pre>'; */
+
+//*****END SCRIPT FOR ALL USERS */
+
+//******************** */
+//START SCRIPT TO UPDATE A NEW PRO USER
+
+$log = [];
+
+//DEFINE USER ID 
+$defined_userid = '1';
+//define assets future
+$assets = getPastAdvertisedAssets($assetManager, $sessionView, $programme);
+
+//DEFINE DATES
+//today
+$current_date = new DateTime('now', new DateTimeZone('UTC'));
+$current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s');
+
+//after 1 year
+$interval = 'P12M';
+
+//add interval to today
+$end_start_calculate_date = new DateTime('now', new DateTimeZone('UTC'));
+$end_start_calculate_date->add(new DateInterval($interval));
+$end_date_sqltimestamp = date_format($end_start_calculate_date, 'Y-m-d H:i:s');
+
+
+
+foreach ($assets as $assetkey=>$assetvalue){
+    //iterate through advertised assets
+
+
+    //check if user already owns
+
+    //if not give a 1 year  access 
+
+    //$value is userid
+
+    //$assetvalue is assetid
+
+    if ($assetManager->doesUserHaveSameAssetAlready($assetvalue, $defined_userid, false) === false){
+
+        $log[] = 'User no ' . $defined_userid . ' does not currently own asset ' . $assetvalue;
+
+
+      $subscription->New_subscriptions($defined_userid, $assetvalue, $current_date_sqltimestamp, $end_date_sqltimestamp, '1', '0', 'TOKEN_ID=PRO_SUBSCRIPTION');
+
+      $newSubscriptionid = $subscription->prepareStatementPDO();
+
+      //$newSubscriptionid = ' fake subscription id';
+
+
+      $log[] = 'User no ' . $defined_userid . ' granted access to assetid ' . $assetvalue . '. New subscription no = ' . $newSubscriptionid;
+
+
+    }else{
+        
+        $log[] = 'User no ' . $defined_userid . ' already owns asset ' . $assetvalue;
+
+
+    }
+
+
+
+
+}
+
+
+echo '<pre>';
+var_dump($log);
+echo '</pre>';
+
+
+
+
+
+
+
+
+
+
 
 //var_dump($assets3);
 
