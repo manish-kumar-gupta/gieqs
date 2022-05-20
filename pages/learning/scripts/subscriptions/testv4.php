@@ -188,142 +188,71 @@ function getPastAdvertisedAssets ($assetManager, $sessionView, $programme) {
     $assets = [];
 
 
-$assets2 = $assetManager->returnAdvertisedAssets(2, false);
-$assets3 = $assetManager->returnAdvertisedAssets(3, false);
-$assets4 = $assetManager->returnAdvertisedAssets(4, false);
+    $assets2 = $assetManager->returnAdvertisedAssets(2, false);
+    $assets3 = $assetManager->returnAdvertisedAssets(3, false);
+    $assets4 = $assetManager->returnAdvertisedAssets(4, false);
 
 
-//define date today
-$today = new DateTime('now');
+    //define date today
+    $today = new DateTime('now');
 
-//add them all to an array
+    //add them all to an array
 
-foreach ($assets2 as $key=>$value){
-    
-    foreach ($value as $key2=>$value2){
+    foreach ($assets2 as $key=>$value){
+        
+        foreach ($value as $key2=>$value2){
 
-        //add the id to the array ONLY if the start time is not in the future
-        if (getProgrammeStartTime($value['id'], $assetManager, $sessionView, $programme) < $today){
+            //add the id to the array ONLY if the start time is not in the future
+            if (getProgrammeStartTime($value['id'], $assetManager, $sessionView, $programme) < $today){
+                    $assets[] = $value['id']; 
+                    break;
+            }
+
+        }
+        
+
+
+    }
+
+    foreach ($assets3 as $key=>$value){
+
+        foreach ($value as $key2=>$value2){
+            //var_dump($value['id']);
+
+            //add the id to the array ONLY if the start time is not in the future
+
+            if (getProgrammeStartTime($value['id'], $assetManager, $sessionView, $programme) < $today){
                 $assets[] = $value['id']; 
                 break;
+
+            }
+
         }
 
+
     }
-    
 
+    foreach ($assets4 as $key=>$value){
 
-}
+        //no dates in these assets
 
-foreach ($assets3 as $key=>$value){
+        foreach ($value as $key2=>$value2){
+            //var_dump($value['id']);
 
-    foreach ($value as $key2=>$value2){
-        //var_dump($value['id']);
-
-        //add the id to the array ONLY if the start time is not in the future
-
-        if (getProgrammeStartTime($value['id'], $assetManager, $sessionView, $programme) < $today){
-            $assets[] = $value['id']; 
+            $assets[] = $value['id'];
             break;
 
-        }
-
-    }
-
-
-}
-
-foreach ($assets4 as $key=>$value){
-
-    //no dates in these assets
-
-    foreach ($value as $key2=>$value2){
-        //var_dump($value['id']);
-
-        $assets[] = $value['id'];
-        break;
-
-
-    }
-
-
-}
-
-return $assets;
-
-
-}
-
-$assets = [];
-
-//get all advertised assets
-
-$assets2 = $assetManager->returnAdvertisedAssets(2, false);
-$assets3 = $assetManager->returnAdvertisedAssets(3, false);
-$assets4 = $assetManager->returnAdvertisedAssets(4, false);
-
-
-//define date today
-$today = new DateTime('now');
-
-//add them all to an array
-
-foreach ($assets2 as $key=>$value){
-    
-    foreach ($value as $key2=>$value2){
-
-        //add the id to the array ONLY if the start time is not in the future
-        if (getProgrammeStartTime($value['id'], $assetManager, $sessionView, $programme) < $today){
-                $assets[] = $value['id']; 
-                break;
-        }
-
-    }
-    
-
-
-}
-
-foreach ($assets3 as $key=>$value){
-
-    foreach ($value as $key2=>$value2){
-        //var_dump($value['id']);
-
-        //add the id to the array ONLY if the start time is not in the future
-
-        if (getProgrammeStartTime($value['id'], $assetManager, $sessionView, $programme) < $today){
-            $assets[] = $value['id']; 
-            break;
 
         }
 
+
     }
+
+    return $assets;
 
 
 }
 
-foreach ($assets4 as $key=>$value){
-
-    //no dates in these assets
-
-    foreach ($value as $key2=>$value2){
-        //var_dump($value['id']);
-
-        $assets[] = $value['id'];
-        break;
-
-
-    }
-
-
-}
-
-/* echo '<br/><br/><br/>';
-echo '<pre>';
-var_dump($assets);
-echo '</pre>';
-echo $assets[0];
- */
-$assets = null;
 
 $assets = getPastAdvertisedAssets($assetManager, $sessionView, $programme);
 echo '<br/><br/><br/>';
