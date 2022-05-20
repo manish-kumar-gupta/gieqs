@@ -759,6 +759,21 @@ public function returnProgrammesAsset($assetid)
             }
 
         }
+
+        public function isSitewidePRO($assetid){
+
+            if ($assetid == '18' || $assetid == '19' || $assetid == '20'){
+
+                return true;
+
+            }else{
+
+                return false;
+
+            }
+
+
+        }
         
         public function getSiteWideSubscription($user_id, $debug)
             {

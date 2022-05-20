@@ -46,6 +46,12 @@ require_once(BASE_URI .'/assets/scripts/classes/userActivity.class.php');
 
 $userActivity = new userActivity;
 
+require_once BASE_URI . '/assets/scripts/classes/programme.class.php';
+$programme = new programme;
+
+require_once BASE_URI . '/assets/scripts/classes/userFunctions.class.php';
+$userFunctions = new userFunctions;
+
 
 //error_reporting(E_ALL);
 require_once BASE_URI .'/../scripts/config.php';
@@ -383,6 +389,8 @@ $subscription_to_return['user_id'] = $userid;
 
     //record which user is doing this in user activity
 
+    
+
     //error if no tokens remaining
 
     $newSubscriptionid = $subscription->prepareStatementPDO();
@@ -427,6 +435,10 @@ $subscription_to_return['user_id'] = $userid;
 
         //var_dump($token);
         $token->prepareStatementPDOUpdate();
+        
+        //check if a pro subscription
+        //if so make sure they have access to the pro assets
+
 
 
 
@@ -439,6 +451,144 @@ $subscription_to_return['user_id'] = $userid;
 
         $assets_paid->Load_from_key($asset_id);
 
+        if ($assetManager->isSitewidePRO($asset_id) === true){
+
+            //do stuff to give the assets, //check this
+
+            function getPastAdvertisedAssets ($assetManager, $sessionView, $programme) {
+
+                $assets = [];
+            
+            
+                $assets2 = $assetManager->returnAdvertisedAssets(2, false);
+                $assets3 = $assetManager->returnAdvertisedAssets(3, false);
+                $assets4 = $assetManager->returnAdvertisedAssets(4, false);
+            
+            
+                //define date today
+                $today = new DateTime('now');
+            
+                //add them all to an array
+            
+                foreach ($assets2 as $key=>$value){
+                    
+                    foreach ($value as $key2=>$value2){
+            
+                        //add the id to the array ONLY if the start time is not in the future
+                        if (getProgrammeStartTime($value['id'], $assetManager, $sessionView, $programme) < $today){
+                                $assets[] = $value['id']; 
+                                break;
+                        }
+            
+                    }
+                    
+            
+            
+                }
+            
+                foreach ($assets3 as $key=>$value){
+            
+                    foreach ($value as $key2=>$value2){
+                        //var_dump($value['id']);
+            
+                        //add the id to the array ONLY if the start time is not in the future
+            
+                        if (getProgrammeStartTime($value['id'], $assetManager, $sessionView, $programme) < $today){
+                            $assets[] = $value['id']; 
+                            break;
+            
+                        }
+            
+                    }
+            
+            
+                }
+            
+                foreach ($assets4 as $key=>$value){
+            
+                    //no dates in these assets
+            
+                    foreach ($value as $key2=>$value2){
+                        //var_dump($value['id']);
+            
+                        $assets[] = $value['id'];
+                        break;
+            
+            
+                    }
+            
+            
+                }
+            
+                return $assets;
+            
+            
+            }
+
+            $log = [];
+
+            //DEFINE USER ID 
+            $defined_userid = $userid;
+            //define assets future
+            $assets = getPastAdvertisedAssets($assetManager, $sessionView, $programme);
+
+            //DEFINE DATES
+            //today
+            $current_date = new DateTime('now', new DateTimeZone('UTC'));
+            $current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s');
+
+            //after 1 year
+            $interval = 'P12M';
+
+            //add interval to today
+            $end_start_calculate_date = new DateTime('now', new DateTimeZone('UTC'));
+            $end_start_calculate_date->add(new DateInterval($interval));
+            $end_date_sqltimestamp = date_format($end_start_calculate_date, 'Y-m-d H:i:s');
+
+
+
+            foreach ($assets as $assetkey=>$assetvalue){
+                //iterate through advertised assets
+
+
+                //check if user already owns
+
+                //if not give a 1 year  access 
+
+                //$value is userid
+
+                //$assetvalue is assetid
+
+                if ($assetManager->doesUserHaveSameAssetAlready($assetvalue, $defined_userid, false) === false){
+
+                    $log[] = 'User no ' . $defined_userid . ' does not currently own asset ' . $assetvalue;
+
+
+                $subscription->New_subscriptions($defined_userid, $assetvalue, $current_date_sqltimestamp, $end_date_sqltimestamp, '1', '0', 'TOKEN_ID=PRO_SUBSCRIPTION');
+
+                $newSubscriptionid = $subscription->prepareStatementPDO();
+
+                //$newSubscriptionid = ' fake subscription id';
+
+
+                $log[] = 'User no ' . $defined_userid . ' granted access to assetid ' . $assetvalue . '. New subscription no = ' . $newSubscriptionid;
+
+
+                }else{
+                    
+                    $log[] = 'User no ' . $defined_userid . ' already owns asset ' . $assetvalue;
+
+
+                }
+
+
+
+
+            }
+
+
+
+        }
 
 
         //figure out

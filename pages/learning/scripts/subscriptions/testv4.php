@@ -45,7 +45,7 @@ $subscription = new subscriptions;
 
 require_once BASE_URI . '/assets/scripts/classes/userFunctions.class.php';
 $userFunctions = new userFunctions;
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 
 require_once BASE_URI . '/pages/learning/classes/navigator.class.php';
 $navigator = new navigator;
