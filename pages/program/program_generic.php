@@ -1072,7 +1072,7 @@ var_dump($currentTime);
         <div class="modal-lg modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <p class="modal-title h3" id="costCalculatorLabel" style="color: rgb(238, 194, 120);">Fine Tune your Registration Options for GIEQs III!</p>
+                    <p class="modal-title h3" id="costCalculatorLabel" style="color: rgb(238, 194, 120);">Fine Tune your Virtual Registration Options for GIEQs III!</p>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span class="text-white" aria-hidden="false">&times;</span>
                     </button>
@@ -1126,7 +1126,7 @@ var_dump($currentTime);
                     </div>
                     <div class="card-body">
                                 <p class="text-white mt-0">Symposium : &euro;<span id="cost-symposium"></span></p>
-                                <p class="text-white mt-0">GIEQs PRO 1-year : &euro;<s><span id="normal-cost-online"></span></s> <span id="cost-online" class="gieqsGold"></span></p>
+                                <p class="text-white mt-0"><span class="cursor-pointer" onclick="alert('to the stars');" title="GIEQs PRO is the premier tier of GIEQs Online Membership.  Click to find out more." data-toggle="tooltip" data-placement="bottom">GIEQs PRO 1-year</span> : &euro;<s><span id="normal-cost-online"></span></s> <span id="cost-online" class="gieqsGold"></span></p>
                                 <p class="gieqsGold" id="costSaving"></p>
                     </div>
                    
@@ -1144,6 +1144,7 @@ var_dump($currentTime);
                    
                 </div>
                 <div class="modal-footer">
+                    <p class="small">These options are for virtual registration.  There are a small number (first come first served) of registrations available in Ghent (details in your confirmation email).  We <strong>strongly</strong> encourage participants to register in groups and create their own live experiences.  This not only facilitates networking but saves the Planet.</p>
                     <button id="continueRegistration" type="button" class="btn btn-small text-dark bg-gieqsGold">Continue Registration</button>
                    
 
@@ -1154,6 +1155,299 @@ var_dump($currentTime);
         </div>
     </div>
                     </div>
+
+                    <div class="modal fade" id="step2" tabindex="-1" role="dialog" aria-labelledby="step2Label"
+        aria-hidden="true">
+        <div class="modal-lg modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="step2Label" style="color: rgb(238, 194, 120);">Complete your Registration Details!</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="text-white" aria-hidden="false">&times;</span>
+                    </button>
+                    
+                </div>
+               
+                <div class="modal-body">
+                    <card class="card bg-dark-light">
+                        <div class="card-body">
+                <p class="text-white">Selected Registration Type : <span id="regType1"></span>, <span id="gieqsOnlineAdded"></span> <button type="button" id="changeRegistration" class="btn btn-small text-dark bg-gieqsGold p-1 m-2">Change</button></p>
+                    </div>
+                    </card>
+                    <span class="h6">This will only take a minute.</span><span><br />We need these details to finalise your registration.  We have prefilled data already associated with your account.</span>
+                    <form id="step2Form" class="mt-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">First name</label>
+                                    <input id="firstname" name="firstname" class="form-control" type="text"
+                                        placeholder="Enter your first name" value="">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Last name</label>
+                                    <input id="surname" name="surname" class="form-control" type="text"
+                                        placeholder="Also your last name" value="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center">
+
+                            <div class="col-md-6">
+                                <div class="form-group focused">
+                                    <label class="form-control-label">Title</label>
+                                    <select id="title" name="title" class="form-control" aria-hidden="true">
+                                        <option hidden>select title
+                                        </option>
+                                        <option value="1">Mr</option>
+                                        <option value="2">Mrs</option>
+                                        <option value="3">Ms</option>
+                                        <option value="4">Dr</option>
+                                        <option value="5">Professor</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Mobile Telephone Number</label>
+                                    <input name="contactPhone" class="form-control" id="contactPhone" placeholder="including country code"
+                                        value="">
+                                    <!--                     <small class="form-text text-muted mt-2">This is the main email address that we'll send notifications to. <a href="account-notifications.html">Manage your notifications</a> in order to control what we send.</small>
+         -->
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="row align-items-center">
+
+                        <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Name of Employing Institution</label>
+                                    <input name="centreName" class="form-control" id="centreName" placeholder="some hospital"
+                                        value="">
+                                    <!--                     <small class="form-text text-muted mt-2">This is the main email address that we'll send notifications to. <a href="account-notifications.html">Manage your notifications</a> in order to control what we send.</small>
+         -->
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                            <div class="form-group">
+                                    <label class="form-control-label">City of Employing Institution</label>
+                                    <input name="centreCity" class="form-control" id="centreCity" placeholder="some city"
+                                        value="">
+                                    <!--                     <small class="form-text text-muted mt-2">This is the main email address that we'll send notifications to. <a href="account-notifications.html">Manage your notifications</a> in order to control what we send.</small>
+         -->
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+
+
+                        <div class="row align-items-center">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                        <label class="form-control-label">Country of Employing Institution</label>
+                                        <select id="centreCountry1" name="centreCountry1" class="form-control" tabindex="-1"
+                                            aria-hidden="true">
+                                            <option hidden disabled selected>select a country...</option>
+                                            <?php $countries = $general->getCountries();
+                            
+                            foreach ($countries as $key=>$value){
+                            
+                            ?>
+
+                                            <option value="<?php echo $key;?>"><?php echo $value;?></option>
+
+
+
+
+                                            <?php }?>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        <hr/>
+                        <div class="row align-items-center">
+
+                            <div class="col-md-6">
+                                <div class="form-group focused">
+                                    <label class="form-control-label">I am a...</label>
+                                    <select name="endoscopistType" id="endoscopistType" class="form-control" aria-hidden="true">
+                                        <option hidden selected disabled>Select the option which best describes you
+                                        </option>
+                                        <option value="1">Medical Endoscopist</option>
+                                        <option value="2">Surgical Endoscopist</option>
+                                        <option value="3">Nurse Endoscopist</option>
+                                        <option value="4">Endoscopy Nurse (assistant)</option>
+                                        <option value="5">Medical Student</option>
+                                        <option value="6">Nursing Student</option>
+                                        <option value="7">Not a healthcare professional</option>
+
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Are you a trainee?</label>
+                                    <select id="trainee1" name="trainee1" class="form-control" tabindex="-1"
+                                        aria-hidden="true">
+                                        <option hidden disabled selected>select a training status...</option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                   
+                                </div>
+                            </div>
+                            <p class="pl-4">[trainee status will require a letter from the current Head of Department as confirmation. you will be contacted and charged the difference if a letter is not provided]</p>
+
+                        </div>
+                        <hr/>
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                 <div class="form-group">
+                            
+                                    <label class="form-control-label">My main interest in GIEQs is...</label>
+                                    <select id="interestReason" name="interestReason" class="form-control" tabindex="-1"
+                                        aria-hidden="true">
+                                        <option hidden disabled selected>select a main interest...</option>
+                                        <option value="1">Quality in general endoscopy</option>
+                                        <option value="2">Quality in colonoscopy technique</option>
+                                        <option value="3">Quality in ERCP</option>
+                                        <option value="4">Quality in endoscopic ultrasound</option>
+                                        <option value="5">Quality in endoscopic polypectomy</option>
+                                        <option value="6">Quality in endoscopic imaging of gastrointestinal lesions</option>
+                                        <option value="7">Quality in endoscopic unit design</option>
+                                        <option value="8">Quality in gastrointestinal bleeding</option>
+                                        <option value="9">Quality in inflammatory bowel disease endoscopy</option>
+                                        <option value="10">Quality in hepatologic endoscopy</option>
+                                        <option value="11">Quality in therapeutic endoscopy</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            
+                        </div>
+                        <hr/>
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                 <div class="form-group">
+                            
+                                    <label class="form-control-label">I am a member of the following professional organisation (select only one)</label>
+                                    <select id="professionalMember" name="professionalMember" class="form-control" tabindex="-1"
+                                        aria-hidden="true">
+                                        <option hidden disabled selected>select a main interest...</option>
+                                        <option value="0">Not a member of any of the following</option>
+                                        <option value="1">ESGE</option>
+                                        <option value="2">BSG</option>
+                                        <option value="3">ASGE</option>
+
+                                    
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-6">
+
+                                 <div class="form-group">
+                            
+                                  
+                                    <label class="form-control-label">If membership selected please enter your member number for verification</label>
+                                    <input name="professionalMemberNumber" class="form-control" id="professionalMemberNumber" placeholder="membership number"
+                                        value="">
+                                    
+                                </div>
+
+                            </div>
+                            <p class="pl-4">[no membership number = no discounted registration.  you will be contacted and charged the difference if a membership number is not provided]</p>
+
+                            
+                        </div>
+
+                        <hr/>
+
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                 <div class="form-group">
+                            
+                                    <label class="form-control-label">How and where were you informed of the Symposium (select only one)</label>
+                                    <select id="informedHow" name="informedHow" class="form-control" tabindex="-1"
+                                        aria-hidden="true">
+                                        <option hidden disabled selected>select how you were informed...</option>
+                                        <option value="0">None of the below</option>
+                                        <option value="1">GIEQs Online</option>
+                                        <option value="2">GIEQs Mailing List</option>
+                                        <option value="3">Professional Contact</option>
+                                        <option value="4">Google</option>
+                                        <option value="5">Social Media</option>
+
+                                    
+                                    </select>
+                                </div>
+
+                            </div>
+
+                           
+                            
+                        </div>
+
+                        <hr/>
+
+                        
+
+
+                        
+                        <div class="my-4">
+                            <div class="custom-control custom-checkbox mb-2">
+                                <input type="checkbox" name="checkterms2" class="custom-control-input" id="checkterms2">
+                                <label class="custom-control-label" for="checkterms2">I agree to the <a
+                                        href="<?php echo BASE_URL;?>/pages/support/support_gieqs_terms_and_conditions.php"
+                                        target="_blank">terms and conditions</a></label>
+                            </div>
+                            <div class="custom-control custom-checkbox mb-2">
+                                <input type="checkbox" name="checkprivacy2" class="custom-control-input"
+                                    id="checkprivacy2">
+                                <label class="custom-control-label" for="checkprivacy2">I agree to the <a
+                                        href="<?php echo BASE_URL;?>/pages/support/support_gieqs_privacy_policy.php"
+                                        target="_blank">privacy policy</a></label>
+                            </div>
+                          
+                        </div>
+
+                        <input type="hidden" id="signup_redirect1" name="signup_redirect" value="<?php echo $asset_id_pagewrite;?>">
+
+                        <?php if ($access_validated){
+
+                            ?>
+                        <input type="hidden" name="access_token1" value="<?php echo $access_token;?>">
+
+                        <?php
+                        }
+                       
+
+                        ?>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                   
+                <button id="continueRegistration2" type="button" class="btn btn-small text-dark bg-gieqsGold">Continue Registration</button>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
 
  
     <?php require BASE_URI . '/footer.php';?>
@@ -1407,11 +1701,14 @@ if (earlyBird === true){
             normalCostGIEQsOnline : normalCostGIEQsOnline,
             saving : saving,
             group : group,
+            earlyBird : earlyBird,
+            registrationType : registrationType,
+            includeGIEQsPro : includeGIEQsPRO,
 
 
         };
 
-    }else if (registrationType == 2 || registrationType == 3 || registrationType == 5){
+    }else if (registrationType == 2 || registrationType == 3){
 
 
         cost += 50;
@@ -1439,11 +1736,14 @@ if (earlyBird === true){
             normalCostGIEQsOnline : normalCostGIEQsOnline,
             saving : saving,
             group : group,
+            earlyBird : earlyBird,
+            registrationType : registrationType,
+            includeGIEQsPro : includeGIEQsPRO,
 
 
         };
 
-    }else if (registrationType == 4){
+    }else if (registrationType == 4 || registrationType == 5){
 
 
         cost += 30;
@@ -1471,6 +1771,9 @@ if (earlyBird === true){
             normalCostGIEQsOnline : normalCostGIEQsOnline,
             saving : saving,
             group : group,
+            earlyBird : earlyBird,
+            registrationType : registrationType,
+            includeGIEQsPro : includeGIEQsPRO,
 
 
         };
@@ -1510,11 +1813,14 @@ if (earlyBird === true){
             normalCostGIEQsOnline : normalCostGIEQsOnline,
             saving : saving,
             group : group,
+            earlyBird : earlyBird,
+            registrationType : registrationType,
+            includeGIEQsPro : includeGIEQsPRO,
 
 
         };
 
-    }else if (registrationType == 2 || registrationType == 3 || registrationType == 5){
+    }else if (registrationType == 2 || registrationType == 3){
 
 
         cost += 75;
@@ -1544,11 +1850,14 @@ if (earlyBird === true){
             normalCostGIEQsOnline : normalCostGIEQsOnline,
             saving : saving,
             group : group,
+            earlyBird : earlyBird,
+            registrationType : registrationType,
+            includeGIEQsPro : includeGIEQsPRO,
 
 
         };
 
-    }else if (registrationType == 4){
+    }else if (registrationType == 4 || registrationType == 5){
 
 
         cost += 45;
@@ -1569,13 +1878,15 @@ if (earlyBird === true){
 
         }
 
-      
         return {
             
             cost : cost,
             normalCostGIEQsOnline : normalCostGIEQsOnline,
             saving : saving,
             group : group,
+            earlyBird : earlyBird,
+            registrationType : registrationType,
+            includeGIEQsPro : includeGIEQsPRO,
 
 
         };
@@ -1593,6 +1904,9 @@ $(document).ready(function() {
 
 //if a symposium
 $('#costCalculator').modal('show');
+//$('#step2').modal('show');
+
+
 
 if (isSymposium == 'true'){
 
@@ -1631,7 +1945,7 @@ $(document).ready(function() {
 
             if (updatedCostObject.group === true){
                 $('#updatedCost').text('Up to 50% Off');
-                $('#costSaving').html('<p>You could save ++ for yourself and a group of colleagues if you organise a group registration.</p>  <p> Experiencing GIEQs III in a group could contribute to upskilling in your department.  </p><p>Click here for more information.</p>');
+                $('#costSaving').html('<p>You could save ++ for yourself and a group of colleagues if you organise a group registration.</p>  <p> Experiencing GIEQs III in a group could contribute to upskilling in your department.  </p><button id="more-group-info" class="btn btn-small text-dark bg-gieqsGold p-1">More Information on Group Registration</button>');
                 $('#continueRegistration').attr('disabled', true);
                 $('#cost-symposium').text('up to 50% off');
                 $('#cost-online').text('included with all group registrations');
@@ -1750,12 +2064,259 @@ $(document).on('click', '#continueRegistration', function(){
 
         createCookie('step1', JSON.stringify(updatedCostObject), 3);
 
+        //disable the button
+        $('#continueRegistration').attr('disabled', true);
+
+        //populate the new modal
+
+        
+
+            const dataToSend = {
+
+           
+            
+
+            }
+
+            const jsonString = JSON.stringify(dataToSend);
+            console.log(jsonString);
+
+            var request2 = $.ajax({
+            url: siteRoot + "assets/scripts/populateSymposiumRegistrationModal.php",
+            type: "POST",
+            contentType: "application/json",
+            data: jsonString,
+            });
+
+
+
+            request2.done(function(data) {
+
+                if (data){
+           
+                    
+                    var result = JSON.parse(data);
+                    console.dir(result);
+                    console.log(result[0].access_level);
+                    $('#firstname').val(result[0].firstname);
+                    $('#surname').val(result[0].surname);
+                    $('#contactPhone').val(result[0].contactPhone);
+                    $('#centreName').val(result[0].centreName);
+                    $('#centreCity').val(result[0].centreCity);
+                    $('#centreCountry1').val(result[0].centreCountry);
+                    $('#endoscopistType').val(result[0].endoscopistType);
+                    $('#trainee1').val(result[0].trainee);
+
+                    //also set from the cookie selected reg
+
+                    var costUpdate = JSON.parse(readCookie('step1'));
+                    console.dir(costUpdate);
+
+                    if (costUpdate.registrationType == '1'){
+
+                        $('#regType1').text('Doctor Registration ');
+
+
+                    }else if (costUpdate.registrationType == '2' || costUpdate.registrationType == '3'){
+
+                        $('#regType1').text('Trainee or Nurse Endoscopist Registration ');
+
+                    }else if (costUpdate.registrationType == '4' || costUpdate.registrationType == '5'){
+
+                        $('#regType1').text('Nurse or Medical Student Registration ');
+
+                    }
+
+                    if (costUpdate.includeGIEQsPro == '1'){
+                        //including 1 year GIEQs Online
+                        $('#gieqsOnlineAdded').text('plus 1 year discounted access to GIEQs Online');
+
+                    }else{
+
+                        $('#gieqsOnlineAdded').html('<span class=\'gieqsGold\'>missing out on discount on 1 year of GIEQs Online - are you sure? (offer not available separately or after purchase)<span>');
+
+                        //without GIEQs PRO 1 year (are you sure you want to miss out on this discount)
+                    }
+                    
+
+
+
+
+
+                $('#step2').modal('show');
+                $('#costCalculator').modal('hide');
+
+                }
+
+
+           
+            })
+
+        //show the new modal and hide this one
+        $('#continueRegistration').attr('disabled', false);
+
+
+    }else{
+
+
+        alert('Please Let us know whether you would like to add discounted GIEQs Pro Access for 1 year');
+
     }
 
 
 
 
 })
+
+$(document).on('click', '#changeRegistration', function(){
+
+    $('#step2').modal('hide');
+    $('#costCalculator').modal('show');
+
+})
+
+$(document).on('click', '#continueRegistration2', function(event){
+
+event.preventDefault();
+$("#step2Form").submit();
+
+})
+
+//validation form
+$.validator.addMethod('checkProfessional', function(value, element) {
+        return (value === '' | value == '0');
+    }, "This field must either be empty or 0!");
+
+$("#step2Form").validate({
+
+invalidHandler: function(event, validator) {
+    var errors = validator.numberOfInvalids();
+    console.log("there were " + errors + " errors");
+    if (errors) {
+        var message = errors == 1 ?
+            "1 field contains errors. It has been highlighted" :
+            +errors + " fields contain errors. They have been highlighted";
+
+
+        $('#error').text(message);
+        //$('div.error span').addClass('form-text text-danger');
+        //$('#errorWrapper').show();
+
+        $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function() {
+            $("#errorWrapper").slideUp(500);
+        });
+    } else {
+        $('#errorWrapper').hide();
+    }
+},
+rules: {
+            firstname: {
+                required: true,
+
+            },
+
+
+
+            surname: {
+                required: true,
+
+            },
+
+            title: {
+                required: true,
+
+            },
+
+            contactPhone: {
+                required: true,
+                minlength:8,
+
+            },
+
+            centreName: {
+                required: true,
+
+            },
+
+            centreCity: {
+                required: true,
+
+            },
+            centreCountry1: {
+                required: true,
+
+            },
+            endoscopistType: {
+                required: true,
+
+            },
+            trainee1: {
+                required: true,
+
+            },
+            interestReason: {
+                required: true,
+
+            },
+            professionalMember: {
+                
+                required: true,
+
+            },
+
+
+            professionalMemberNumber: {
+
+                /* required: {
+                    depends: function (element) {
+                        //return $("#professionalMember").is(":filled");
+                        return $("#professionalMember").val() != '0' || $("#professionalMember").val() != '';
+                    }
+                },
+ */
+                
+
+            },
+
+            
+
+            checkterm2s: {
+
+                required: true,
+
+            },
+            checkprivacy2: {
+
+                required: true
+            },
+
+
+
+},messages: {
+
+
+
+
+},
+submitHandler: function(form) {
+
+    alert('Validation passed');
+
+    //console.log("submitted form");
+
+
+
+}
+
+
+
+
+});
+
+
+
+
+
 
 
 });
