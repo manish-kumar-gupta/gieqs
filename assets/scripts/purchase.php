@@ -1589,6 +1589,11 @@ $(document).ready(function() {
 
             },
 
+            trainee: {
+                required: true,
+
+            },
+
 
             email: {
                 required: true,

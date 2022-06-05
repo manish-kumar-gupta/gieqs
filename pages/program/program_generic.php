@@ -902,9 +902,8 @@ var_dump($currentTime);
                 </div>
 
                 <div class="modal-body">
-                    <span class="h6">This will only take 2 seconds.</span><span><br />We need your email address and a
-                        password to keep track of your learning aims and objectives. Thereafter you can choose what
-                        further information you share with us</span>
+                    <span class="h6">This will only take a minute.</span><span><br />We need your email address and a
+                        password to keep track of your learning aims and objectives. The rest of the information we request here is to track your learning outcomes and suggest relevant content.  You can update your information in My Account once you have registered.</span>
                     <form id="NewUserForm" class="mt-3">
                         <div class="row">
                             <div class="col-md-6">
@@ -927,7 +926,7 @@ var_dump($currentTime);
                             <div class="col-md-6">
                                 <div class="form-group focused">
                                     <label class="form-control-label">Gender</label>
-                                    <select name="gender" class="form-control" aria-hidden="true">
+                                    <select id="gender" name="gender" class="form-control" aria-hidden="true">
                                         <option hidden>select gender
                                         </option>
                                         <option value="1">Female</option>
@@ -968,26 +967,40 @@ var_dump($currentTime);
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-control-label">Institution country</label>
-                                    <select id="centreCountry" name="centreCountry" class="form-control" tabindex="-1"
+                                    <label class="form-control-label">Are you a trainee?</label>
+                                    <select id="trainee" name="trainee" class="form-control" tabindex="-1"
                                         aria-hidden="true">
-                                        <option hidden disabled selected>select a country...</option>
-                                        <?php $countries = $general->getCountries();
-                        
-                        foreach ($countries as $key=>$value){
-                        
-                        ?>
-
-                                        <option value="<?php echo $key;?>"><?php echo $value;?></option>
-
-
-
-
-                                        <?php }?>
+                                        <option hidden disabled selected>select a training status...</option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Institution country</label>
+                                        <select id="centreCountry" name="centreCountry" class="form-control" tabindex="-1"
+                                            aria-hidden="true">
+                                            <option hidden disabled selected>select a country...</option>
+                                            <?php $countries = $general->getCountries();
+                            
+                            foreach ($countries as $key=>$value){
+                            
+                            ?>
+
+                                            <option value="<?php echo $key;?>"><?php echo $value;?></option>
+
+
+
+
+                                            <?php }?>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -1005,18 +1018,23 @@ var_dump($currentTime);
                             </div>
                         </div>
                         <div class="my-4">
-                            <div class="custom-control custom-checkbox mb-3">
+                            <div class="custom-control custom-checkbox mb-2">
                                 <input type="checkbox" name="checkterms" class="custom-control-input" id="checkterms">
                                 <label class="custom-control-label" for="checkterms">I agree to the <a
                                         href="<?php echo BASE_URL;?>/pages/support/support_gieqs_terms_and_conditions.php"
                                         target="_blank">terms and conditions</a></label>
                             </div>
-                            <div class="custom-control custom-checkbox">
+                            <div class="custom-control custom-checkbox mb-2">
                                 <input type="checkbox" name="checkprivacy" class="custom-control-input"
                                     id="checkprivacy">
                                 <label class="custom-control-label" for="checkprivacy">I agree to the <a
                                         href="<?php echo BASE_URL;?>/pages/support/support_gieqs_privacy_policy.php"
                                         target="_blank">privacy policy</a></label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" name="checkMail" class="custom-control-input"
+                                    id="checkMail">
+                                <label class="custom-control-label" for="checkMail">I agree to receive mails from GIEQs.com related to my account</label>
                             </div>
                         </div>
 
