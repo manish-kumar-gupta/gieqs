@@ -75,7 +75,6 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
 
 
 ?>
-    <title>GIEQs Course - <?php echo $assets_paid->getname(); ?></title>
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.css">
     <script src="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.js"></script>
 
@@ -246,8 +245,8 @@ $blogid = $blog_to_use_as_basis;
 
 
 $access = [0=>['id'=>$programme_defined],];
-
 $access1 = null;
+
 
     
 $access1 = $sessionView->getStartAndEndProgrammes($access, $debug);
@@ -272,6 +271,39 @@ $startTime = new DateTime($programme->getdate() . ' ' . $access2[0]['startTime']
 $endTime = new DateTime($programme->getdate() . ' ' . $access2[0]['endTime'], $serverTimeZone);
 $humanStartTime = date_format($startTime, "H:i");
 $humanEndTime = date_format($endTime, "H:i T");
+
+if (isset($asset_id_pagewrite2)){
+
+    $accessv1 = [0=>['id'=>$programme_defined3],];
+
+    $accessv11 = null;
+
+    $accessv11 = $sessionView->getStartAndEndProgrammes($accessv1, $debug);
+
+    //var_dump($access1);
+
+    //echo '<br/><br/>now get the start and end times in a single array<br/><br/>';
+
+    $accessv12 = null;
+
+    $accessv12 = $sessionView->getStartEndProgrammes($accessv11, $debug);
+
+    //var_dump($access2);
+
+$programme->Load_from_key($programme_defined3);
+//$serverTimeZonev1 = new DateTimeZone('Europe/Brussels');
+$programmeDatev1 = new DateTime($programme->getdate(), $serverTimeZone);
+
+$humanReadableProgrammeDatev1 = date_format($programmeDate, "l jS F Y");
+
+$startTimev1 = new DateTime($programme->getdate() . ' ' . $accessv12[0]['startTime'], $serverTimeZone);
+$endTimev1 = new DateTime($programme->getdate() . ' ' . $accessv12[0]['endTime'], $serverTimeZone);
+$humanStartTimev1 = date_format($startTimev1, "H:i");
+$humanEndTimev1 = date_format($endTimev1, "H:i T");
+
+
+}
+
 
 if ($debug){
 var_dump($currentTime);
@@ -393,18 +425,34 @@ var_dump($currentTime);
       $proMember = false;
     }
 
-    if ($fullAccess === true || $proMember === true){
+    if ($access_validated === false){
+        if ($fullAccess === true || $proMember === true){
 
-        //should not be applicable to anything other than symposia, courses and advanced packs
+            //should not be applicable to anything other than symposia, courses and advanced packs
 
-        if ($assetManager->getAssetTypeAsset($assets_paid->getid()) == '2' || $assetManager->getAssetTypeAsset($assets_paid->getid()) == '3' || $assetManager->getAssetTypeAsset($assets_paid->getid()) == '4'){
-        $access_validated = true;
+            if ($assetManager->getAssetTypeAsset($assets_paid->getid()) == '2' || $assetManager->getAssetTypeAsset($assets_paid->getid()) == '3' || $assetManager->getAssetTypeAsset($assets_paid->getid()) == '4'){
+            
+                //fix for upcoming symposium (gieqs iii)
+
+                if ($assets_paid->getid() == '95'){
+                    
+                    $access_validated = false;
+
+
+                }else{
+            
+                    $access_validated = true;
+                }
+            }
+
+
         }
 
     }
 
                              
                              ?>
+    <title>GIEQs Course - <?php echo $assets_paid->getname(); ?></title>
 
         <div id="action" style="display:none;"><?php if ($action){echo $action;}?></div>
         <div id="access_token" style="display:none;"><?php if ($access_validated){echo $access_token;}?></div>
@@ -558,11 +606,36 @@ var_dump($currentTime);
                 <div class="row text-center">
 
                     <div class="col-12 p-3 pb-1">
-                        <span class="h1" style="color: rgb(238, 194, 120);"><?php echo $assets_paid->getName(); ?><br /></span>
+
+                        <?php /**gieqs 3 specific**/ if ($asset_id_url == '95'){?>
+
+                            <figure class="figure mb-3">
+                 <a href="https://eu.eventscloud.com/website/7797/home/" target="_blank"><img alt="Image placeholder" src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1650342788_gieqs_1200x300_final_5.png" class="img-fluid"></a>
+                
+              </figure>
+                            
+                        <?php }else{?>
+
+                            <span class="h1" style="color: rgb(238, 194, 120);"><?php echo $assets_paid->getName(); ?><br /></span>
+
+
+                        <?php }?>
+
+
+
 
                         <?php if ($assetManager->getAssetTypeAsset($assets_paid->getid()) == '2' || $assetManager->getAssetTypeAsset($assets_paid->getid()) == '3'){?>
-                        <span class="h3 mt-4" style="color: rgb(238, 194, 120);"><?php echo 'Live :  ' . $humanReadableProgrammeDate;?></span>
-                        <span class="h3" style="color: rgb(238, 194, 120);"><?php echo ', ' . $humanStartTime . ' - ' . $humanEndTime;?> <br/>on Demand
+                        <span class="h3 mt-4" style="color: rgb(238, 194, 120);"><?php echo 'Live and Online :  ' . $humanReadableProgrammeDate;?></span>
+                        <span class="h3" style="color: rgb(238, 194, 120);"><?php echo ', ' . $humanStartTime . ' - ' . $humanEndTime;?> 
+                        <?php if (isset($asset_id_pagewrite2)){?>
+                            <br/>
+                            <span class="h3 mt-4" style="color: rgb(238, 194, 120);"><?php echo 'and :  ' . $humanReadableProgrammeDatev1;?></span>
+                        <span class="h3" style="color: rgb(238, 194, 120);"><?php echo ', ' . $humanStartTimev1 . ' - ' . $humanEndTimev1;?> 
+
+                        <?php }?>
+                        
+                        
+                        <br/>on Demand
                             thereafter<br /></span>
 
 
