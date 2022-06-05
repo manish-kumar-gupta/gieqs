@@ -181,13 +181,52 @@ font-weight: 300 !important;
 //$assetid = 13;
 $asset_id_pagewrite = $asset_id_url;
 
+//fix GIEQs III
+if ($asset_id_url == '95'){
+
+    $asset_id_pagewrite = '95';
+    $asset_id_pagewrite2 = '96';
+    $is_symposium = true;
+    
+}else{
+
+    $is_symposium = false;
+}
+
 $programme_array = $assetManager->returnProgrammesAsset($asset_id_pagewrite);
+
 $programme_defined = $programme_array[0];
+if ($programme_array[1] != ''){
+
+    $programme2 = $programme_array[1];
+}else{
+
+    $programme2 = null;
+}
+
+if (isset($asset_id_pagewrite2)){
+
+$programme_array2 = $assetManager->returnProgrammesAsset($asset_id_pagewrite2);
+$programme_defined3 = $programme_array2[0];
+if ($programme_array2[1] != ''){
+
+    $programme4 = $programme_array2[1];
+}else{
+
+    $programme4 = null;
+}
+
+}
 
 if ($debug){
 
-print_r($programme_array);
-echo $programme_defined;
+print_r($programme_defined);
+print_r($programme2);
+print_r($programme_defined3);
+
+print_r($programme4);
+
+
 
 }
 
@@ -195,15 +234,6 @@ echo $programme_defined;
 
 $assets_paid->Load_from_key($asset_id_pagewrite);
 
-$programme_array = $assetManager->returnProgrammesAsset($asset_id_pagewrite);
-$programme_defined = $programme_array[0];
-
-if ($debug){
-
-print_r($programme_array);
-echo $programme_defined;
-
-}
 
 
 
@@ -379,6 +409,11 @@ var_dump($currentTime);
         <div id="action" style="display:none;"><?php if ($action){echo $action;}?></div>
         <div id="access_token" style="display:none;"><?php if ($access_validated){echo $access_token;}?></div>
         <div id="asset_id" style="display:none;"><?php if ($asset_id_url){echo $asset_id_url;}?></div>
+        <div id="programme_defined" style="display:none;"><?php if (isset($programme_defined)){echo $programme_defined;}else{echo 'false';}?></div>
+        <div id="programme2" style="display:none;"><?php if ($programme2!=null){echo $programme2;}else{echo 'false';}?></div>
+        <div id="programme_defined3" style="display:none;"><?php if (isset($programme_defined3)){echo $programme_defined3;}else{echo 'false';}?></div>
+        <div id="programme4" style="display:none;"><?php if ($programme4!=null){echo $programme4;}else{echo 'false';}?></div>
+        <div id="isSymposium" style="display:none;"><?php if ($is_symposium){echo 'true';}else{echo 'false';}?></div>
 
     </header>
 
@@ -762,7 +797,13 @@ var_dump($currentTime);
 
                 <div id="ajaxWed">
 
-                </div>
+            </div>
+
+            <hr>
+
+            <div id="ajaxThurs">
+
+            </div>
 
 
 
@@ -951,6 +992,15 @@ var_dump($currentTime);
     
     <script>
 
+        var isSymposium = $('#isSymposium').text();
+
+        //define programes
+
+        var programmeDefined = $('#programme_defined').text();
+        var programme2 = $('#programme2').text();
+        var programme_defined3 = $('#programme_defined3').text();
+        var programme4 = $('#programme4').text();
+
 function submitPreRegisterForm() {
 
 
@@ -1039,12 +1089,89 @@ request2.done(function(data) {
 })
 }
 
+
+
+
+
+
+function refreshProgrammeViewv1() {
+
+
+
+const dataToSend = {
+
+    programmeid: programmeDefined,
+    programme2: programme2,
+
+}
+
+const jsonString = JSON.stringify(dataToSend);
+console.log(jsonString);
+
+var request2 = $.ajax({
+    url: siteRoot + "assets/scripts/classes/generateProgrammeCurrent.php",
+    type: "POST",
+    contentType: "application/json",
+    data: jsonString,
+});
+
+
+
+request2.done(function(data) {
+    // alert( "success" );
+    $('#ajaxWed').html(data);
+    //$(document).find('.Thursday').hide();
+})
+}
+
+function refreshProgrammeViewv2() {
+
+
+
+const dataToSend = {
+
+    programmeid: programme_defined3,
+    programme2: programme4,
+
+}
+
+const jsonString = JSON.stringify(dataToSend);
+console.log(jsonString);
+
+var request2 = $.ajax({
+    url: siteRoot + "assets/scripts/classes/generateProgrammeCurrent.php",
+    type: "POST",
+    contentType: "application/json",
+    data: jsonString,
+});
+
+
+
+request2.done(function(data) {
+    // alert( "success" );
+    $('#ajaxThurs').html(data);
+    //$(document).find('.Thursday').hide();
+})
+}
+
 $(document).ready(function() {
 
 
+//if a symposium
+
+if (isSymposium == 'true'){
+
+refreshProgrammeViewv1();
+refreshProgrammeViewv2();
+}else{
+
+    refreshProgrammeView();
+}
 
 
-refreshProgrammeView();
+
+//if not
+
 
 });
 
