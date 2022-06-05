@@ -1065,6 +1065,96 @@ var_dump($currentTime);
         </div>
     </div>
 
+    <!-- $('#costCalculator').modal('show') -->
+
+    <div class="modal fade" id="costCalculator" tabindex="-1" role="dialog" aria-labelledby="costCalculatorLabel"
+        aria-hidden="true">
+        <div class="modal-lg modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p class="modal-title h3" id="costCalculatorLabel" style="color: rgb(238, 194, 120);">Fine Tune your Registration Options for GIEQs III!</p>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="text-white" aria-hidden="false">&times;</span>
+                    </button>
+                </div>
+
+                
+
+                <div class="modal-body">
+                     <span class="h4">Select from the options below to determine your registration options and cost.</span>
+                     <div class="row mt-3">
+                            <div class="col-md-6">
+                                <p class="text-white">Early Bird Rates Currently Apply until 1st September 2022.</p>
+                            <div class="form-group">
+                                    <label class="form-control-label text-muted">Type of Registration</label>
+                                    <select id="registrationType" name="registrationType" class="form-control determineCost" aria-hidden="true">
+                                        <option hidden value="9">select registration type
+                                        </option>
+                                        <option value="1">Doctor</option>
+                                        <option value="2">Doctor in Training</option>
+                                        <option value="3">Nurse Endoscopist (includes Nursing Symposium in Dutch)</option>
+                                        <option value="4">Endoscopy Nurse (includes Nursing Symposium in Dutch)</option>
+                                        <option value="5">Medical Student</option>
+                                    </select>
+                                </div>
+                                <div class="form-group d-none">
+                                    <label class="form-control-label text-muted">Do you intend to make a Group Reservation?</label>
+                                    <select id="groupRegistration" name="groupRegistration" class="form-control determineCost" aria-hidden="true">
+                                        <option hidden value="9">group reservation?
+                                        </option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                </div>
+                                <div class="form-group d-none">
+                                    <label class="form-control-label gieqsGold">Do you wish to include a 1-year GIEQs Online PRO Membership at significantly reduced cost?</label>
+                                    <select id="includeGIEQsPRO" name="includeGIEQsPRO" class="form-control determineCost" aria-hidden="true">
+                                        <option hidden value="9">include GIEQs Online PRO Membership?
+                                        </option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                
+                                <div class="card bg-dark-light p-3">
+                                    <div class"card-header">
+                                <p class="h3 text-white mt-2">Cost Breakdown</p>
+                    </div>
+                    <div class="card-body">
+                                <p class="text-white mt-0">Symposium : &euro;<span id="cost-symposium"></span></p>
+                                <p class="text-white mt-0">GIEQs PRO 1-year : &euro;<s><span id="normal-cost-online"></span></s> <span id="cost-online" class="gieqsGold"></span></p>
+                                <p class="gieqsGold" id="costSaving"></p>
+                    </div>
+                   
+                                <!-- <p class="h5">Make a choice of your registration type to view cost and savings</p> -->
+
+                          
+                    <div class="card-footer">
+                    <p class="h3">Total : &euro; <span id="updatedCost"></span></p>
+                    </div>
+
+                    </div>
+
+                    </div>
+                    
+                   
+                </div>
+                <div class="modal-footer">
+                    <button id="continueRegistration" type="button" class="btn btn-small text-dark bg-gieqsGold">Continue Registration</button>
+                   
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+                    </div>
+
  
     <?php require BASE_URI . '/footer.php';?>
 
@@ -1091,6 +1181,10 @@ var_dump($currentTime);
         var programme2 = $('#programme2').text();
         var programme_defined3 = $('#programme_defined3').text();
         var programme4 = $('#programme4').text();
+
+
+            //define early bird tag, change on 1 sept 2022
+            var earlyBird = true;
 
 function submitPreRegisterForm() {
 
@@ -1245,10 +1339,260 @@ request2.done(function(data) {
 })
 }
 
+function createCookie(name, value, days) {
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            var expires = "; expires=" + date.toGMTString();
+        } else {
+            var expires = "";
+        }
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1, c.length);
+            }
+            if (c.indexOf(nameEQ) == 0) {
+                return c.substring(nameEQ.length, c.length);
+            }
+        }
+        return null;
+    }
+
+    function eraseCookie(name) {
+        createCookie(name, "", -1);
+    }
+
+function calculateCost(earlyBird, registrationType, groupRegistration, includeGIEQsPRO, debug = false){
+
+    var cost = 0;
+    var normalCostGIEQsOnline = null;
+    var saving = null;
+    var group = null;
+
+if (earlyBird === true){
+
+    //early bird rates
+
+    if (registrationType == 1){ // doctor
+
+        cost += 100;
+
+        if (groupRegistration == 1){ //return a marker
+
+            group = true;
+
+        }
+
+        if (includeGIEQsPRO == 1){
+
+            normalCostGIEQsOnline = 180;
+            saving = 80;
+            
+            cost+=(normalCostGIEQsOnline-saving);
+            
+
+
+        }
+
+        return {
+            
+            cost : cost,
+            normalCostGIEQsOnline : normalCostGIEQsOnline,
+            saving : saving,
+            group : group,
+
+
+        };
+
+    }else if (registrationType == 2 || registrationType == 3 || registrationType == 5){
+
+
+        cost += 50;
+
+        if (groupRegistration == 1){ //return a marker
+
+            group = true;
+
+        }
+
+        if (includeGIEQsPRO == 1){
+
+            normalCostGIEQsOnline = 120;
+            saving = 30;
+            
+            cost+=(normalCostGIEQsOnline-saving);
+
+
+        }
+
+        
+        return {
+            
+            cost : cost,
+            normalCostGIEQsOnline : normalCostGIEQsOnline,
+            saving : saving,
+            group : group,
+
+
+        };
+
+    }else if (registrationType == 4){
+
+
+        cost += 30;
+
+        if (groupRegistration == 1){ //return a marker
+
+            group = true;
+
+        }
+
+        if (includeGIEQsPRO == 1){
+
+            normalCostGIEQsOnline = 60;
+            saving = 10;
+            
+            cost+=(normalCostGIEQsOnline-saving);
+
+
+
+        }
+
+        return {
+            
+            cost : cost,
+            normalCostGIEQsOnline : normalCostGIEQsOnline,
+            saving : saving,
+            group : group,
+
+
+        };
+
+    }
+
+
+}else{
+
+    //non-early bird rates
+   
+
+    if (registrationType == 1){ // doctor
+
+        cost += 150;
+
+        if (groupRegistration == 1){ //return a marker
+
+                group = true;
+
+        }
+
+        if (includeGIEQsPRO == 1){
+
+            normalCostGIEQsOnline = 180;
+            saving = 80;
+            
+            cost+=(normalCostGIEQsOnline-saving);
+
+
+
+        }
+
+        return {
+            
+            cost : cost,
+            normalCostGIEQsOnline : normalCostGIEQsOnline,
+            saving : saving,
+            group : group,
+
+
+        };
+
+    }else if (registrationType == 2 || registrationType == 3 || registrationType == 5){
+
+
+        cost += 75;
+
+        if (groupRegistration == 1){ //return a marker
+
+            group = true;
+        }
+
+        if (includeGIEQsPRO == 1){
+
+            normalCostGIEQsOnline = 120;
+            saving = 30;
+            
+            cost+=(normalCostGIEQsOnline-saving);
+
+
+
+
+
+        }
+
+       
+        return {
+            
+            cost : cost,
+            normalCostGIEQsOnline : normalCostGIEQsOnline,
+            saving : saving,
+            group : group,
+
+
+        };
+
+    }else if (registrationType == 4){
+
+
+        cost += 45;
+
+        if (groupRegistration == 1){ //return a marker
+
+            group = true;
+
+        }
+
+        if (includeGIEQsPRO == 1){
+
+            normalCostGIEQsOnline = 60;
+            saving = 10;
+            
+            cost+=(normalCostGIEQsOnline-saving);
+
+
+        }
+
+      
+        return {
+            
+            cost : cost,
+            normalCostGIEQsOnline : normalCostGIEQsOnline,
+            saving : saving,
+            group : group,
+
+
+        };
+    }
+
+
+}
+
+
+}
+
+
 $(document).ready(function() {
 
 
 //if a symposium
+$('#costCalculator').modal('show');
 
 if (isSymposium == 'true'){
 
@@ -1262,6 +1606,156 @@ refreshProgrammeViewv2();
 
 
 //if not
+
+
+});
+
+
+
+
+
+//logic for drop downs of the registration checker GIEQs III
+
+$(document).ready(function() {
+
+    $(document).on('change', '.determineCost', function(){
+
+        if ($('#registrationType').val() != '9'){
+
+            $('#continueRegistration').attr('disabled', false);
+
+
+
+            var updatedCostObject = calculateCost(earlyBird, $('#registrationType').val(), $('#groupRegistration').val(), $('#includeGIEQsPRO').val(), false);
+            console.dir(updatedCostObject);
+
+            if (updatedCostObject.group === true){
+                $('#updatedCost').text('Up to 50% Off');
+                $('#costSaving').html('<p>You could save ++ for yourself and a group of colleagues if you organise a group registration.</p>  <p> Experiencing GIEQs III in a group could contribute to upskilling in your department.  </p><p>Click here for more information.</p>');
+                $('#continueRegistration').attr('disabled', true);
+                $('#cost-symposium').text('up to 50% off');
+                $('#cost-online').text('included with all group registrations');
+                $('#normal-cost-online').text('');
+
+
+
+            }else{
+                $('#updatedCost').text(updatedCostObject.cost);
+                $('#continueRegistration').attr('disabled', false);
+
+                            if (updatedCostObject.saving === null){ //didn't select GIEQs Online
+
+                $('#costSaving').html('You could make a significant saving by purchasing a year worth of GIEQs Online PRO with your Symposium Registration (offer not available separately)');
+                $('#cost-symposium').text(updatedCostObject.cost);
+                $('#cost-online').text('');
+                $('#normal-cost-online').text('');
+
+
+                }else{
+
+                $('#costSaving').html('You are saving &euro;' + updatedCostObject.saving + ' versus the price of a pay-monthly GIEQs Online PRO Subscription for a year');
+                $('#cost-symposium').text(updatedCostObject.cost - (updatedCostObject.normalCostGIEQsOnline - updatedCostObject.saving));
+                $('#normal-cost-online').text(updatedCostObject.normalCostGIEQsOnline);
+                $('#cost-online').text(updatedCostObject.normalCostGIEQsOnline-updatedCostObject.saving);
+
+
+                }
+            }
+
+            
+
+        }else{
+
+            $('#continueRegistration').attr('disabled', true);
+
+
+
+        }
+
+
+
+
+    })
+
+
+//if a symposium
+$(document).on('change', '#registrationType', function(){
+
+    console.log('triggered');
+    console.log();
+
+    if ($('#registrationType').val() == '1' || $('#registrationType').val() == '2'){
+
+
+        $('#groupRegistration').parent().removeClass('d-none');
+
+    }else{
+
+        $('#groupRegistration').parent().addClass('d-none');
+        $('#groupRegistration').val('0');
+        $('#groupRegistration').trigger('change');
+
+
+    }
+
+
+
+
+})
+
+$(document).on('change', '#groupRegistration', function(){
+
+if ($('#groupRegistration').val() == '0'){
+
+    $('#includeGIEQsPRO').parent().removeClass('d-none');
+
+
+}else{
+
+    $('#includeGIEQsPRO').parent().addClass('d-none');
+
+    
+}
+
+
+
+
+})
+
+$(document).on('change', '#includeGIEQsPRO', function(){
+
+if ($('#includeGIEQsPRO').val() == '1'){
+
+
+
+
+}else{
+
+
+    
+}
+
+
+
+
+})
+
+// move on to second stage
+
+$(document).on('click', '#continueRegistration', function(){
+
+    if ($('#registrationType').val() != '9' && $('#includeGIEQsPRO').val() != '9'){
+
+        var updatedCostObject = calculateCost(earlyBird, $('#registrationType').val(), $('#groupRegistration').val(), $('#includeGIEQsPRO').val(), false);
+
+        createCookie('step1', JSON.stringify(updatedCostObject), 3);
+
+    }
+
+
+
+
+})
 
 
 });
