@@ -65,26 +65,7 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
 
 }
 
-//definitions
 
-//assetid
-
-//$assetid = 13;
-$asset_id_pagewrite = $asset_id_url;
-
-$programme_array = $assetManager->returnProgrammesAsset($asset_id_pagewrite);
-$programme_defined = $programme_array[0];
-
-if ($debug){
-
-print_r($programme_array);
-echo $programme_defined;
-
-}
-
-
-
-$assets_paid->Load_from_key($asset_id_pagewrite);
 
 
 
@@ -192,6 +173,27 @@ font-weight: 300 !important;
         <?php require BASE_URI . '/nav.php';?>
 
         <?php 
+
+//definitions
+
+//assetid
+
+//$assetid = 13;
+$asset_id_pagewrite = $asset_id_url;
+
+$programme_array = $assetManager->returnProgrammesAsset($asset_id_pagewrite);
+$programme_defined = $programme_array[0];
+
+if ($debug){
+
+print_r($programme_array);
+echo $programme_defined;
+
+}
+
+
+
+$assets_paid->Load_from_key($asset_id_pagewrite);
 
 $programme_array = $assetManager->returnProgrammesAsset($asset_id_pagewrite);
 $programme_defined = $programme_array[0];
