@@ -633,7 +633,7 @@ switch ($event->type) {
         
             //could send mail thanks for updating payment information
 
-            $assetManager->extendProAssetsUser($user_id_subscription, $debug=$debug);
+            echo $assetManager->extendProAssetsUser($user_id_subscription, $debug=$debug);
 
 
         }
