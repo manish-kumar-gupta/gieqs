@@ -1460,11 +1460,6 @@ $(document).ready(function() {
 
                     }
 
-
-
-
-
-
                     $('.modal-new #asset-name').text(externalTest.asset_name);
                     $('.modal-new #asset-type').text(externalTest.asset_type);
                     $('.modal-new #renew-frequency').text(externalTest.renew_frequency);

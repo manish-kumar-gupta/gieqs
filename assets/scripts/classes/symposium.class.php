@@ -2,7 +2,7 @@
 /*
  * Author: David Tate  - www.gieqs.com
  *
- * Create Date: 5-06-2022
+ * Create Date: 6-06-2022
  *
  * DJT 2019
  *
@@ -40,6 +40,7 @@ Class symposium {
 	private $full_registration_date; //timestamp
 	private $title; //varchar(11)
 	private $interestReason; //varchar(11)
+	private $professionalMember; //varchar(11)
 	private $professionalMemberDiscount; //varchar(11)
 	private $professionalMemberNumber; //varchar(11)
 	private $informedHow; //varchar(11)
@@ -56,7 +57,7 @@ Class symposium {
      * New object to the class. Don�t forget to save this new object "as new" by using the function $class->Save_Active_Row_as_New();
      *
      */
-	public function New_symposium($user_id,$asset_id,$partial_registration,$early_bird,$group_registration,$registrationType,$includeGIEQsPro,$longTermProMemberDiscount,$full_registration_date,$title,$interestReason,$professionalMemberDiscount,$professionalMemberNumber,$informedHow,$notes){
+	public function New_symposium($user_id,$asset_id,$partial_registration,$early_bird,$group_registration,$registrationType,$includeGIEQsPro,$longTermProMemberDiscount,$full_registration_date,$title,$interestReason,$professionalMember,$professionalMemberDiscount,$professionalMemberNumber,$informedHow,$notes){
 		$this->user_id = $user_id;
 		$this->asset_id = $asset_id;
 		$this->partial_registration = $partial_registration;
@@ -68,6 +69,7 @@ Class symposium {
 		$this->full_registration_date = $full_registration_date;
 		$this->title = $title;
 		$this->interestReason = $interestReason;
+		$this->professionalMember = $professionalMember;
 		$this->professionalMemberDiscount = $professionalMemberDiscount;
 		$this->professionalMemberNumber = $professionalMemberNumber;
 		$this->informedHow = $informedHow;
@@ -95,6 +97,7 @@ Class symposium {
 			$this->full_registration_date = $row["full_registration_date"];
 			$this->title = $row["title"];
 			$this->interestReason = $row["interestReason"];
+			$this->professionalMember = $row["professionalMember"];
 			$this->professionalMemberDiscount = $row["professionalMemberDiscount"];
 			$this->professionalMemberNumber = $row["professionalMemberNumber"];
 			$this->informedHow = $row["informedHow"];
@@ -128,6 +131,7 @@ $q = "Select * from `symposium` LIMIT " . $x . ", " . $y;
 			$rowReturn[$x]["full_registration_date"] = $row["full_registration_date"];
 			$rowReturn[$x]["title"] = $row["title"];
 			$rowReturn[$x]["interestReason"] = $row["interestReason"];
+			$rowReturn[$x]["professionalMember"] = $row["professionalMember"];
 			$rowReturn[$x]["professionalMemberDiscount"] = $row["professionalMemberDiscount"];
 			$rowReturn[$x]["professionalMemberNumber"] = $row["professionalMemberNumber"];
 			$rowReturn[$x]["informedHow"] = $row["informedHow"];
@@ -165,6 +169,7 @@ $q = "Select * from `symposium` WHERE `id` = $key";
 			$rowReturn[$x]["full_registration_date"] = $row["full_registration_date"];
 			$rowReturn[$x]["title"] = $row["title"];
 			$rowReturn[$x]["interestReason"] = $row["interestReason"];
+			$rowReturn[$x]["professionalMember"] = $row["professionalMember"];
 			$rowReturn[$x]["professionalMemberDiscount"] = $row["professionalMemberDiscount"];
 			$rowReturn[$x]["professionalMemberNumber"] = $row["professionalMemberNumber"];
 			$rowReturn[$x]["informedHow"] = $row["informedHow"];
@@ -507,6 +512,13 @@ $q = "UPDATE `symposium` SET $implodeArray WHERE `id` = '$this->id'";
 	}
 
 	/**
+	 * @return professionalMember - varchar(11)
+	 */
+	public function getprofessionalMember(){
+		return $this->professionalMember;
+	}
+
+	/**
 	 * @return professionalMemberDiscount - varchar(11)
 	 */
 	public function getprofessionalMemberDiscount(){
@@ -616,6 +628,13 @@ $q = "UPDATE `symposium` SET $implodeArray WHERE `id` = '$this->id'";
 	 */
 	public function setinterestReason($interestReason){
 		$this->interestReason = $interestReason;
+	}
+
+	/**
+	 * @param Type: varchar(11)
+	 */
+	public function setprofessionalMember($professionalMember){
+		$this->professionalMember = $professionalMember;
 	}
 
 	/**

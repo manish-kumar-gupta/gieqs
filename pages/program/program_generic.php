@@ -1989,6 +1989,38 @@ $('#costCalculator').modal('show');
 //$('#step2').modal('show');
 
 
+//when showing costCalculator modal
+
+//check for the cookie
+
+$(document).on('shown.bs.modal', '#costCalculator', function(){
+
+    var costUpdate = JSON.parse(readCookie('step1'));
+    
+    if (costUpdate != undefined){
+
+        if (costUpdate.group == null){
+
+            var group = 0;
+        }
+
+        $('#groupRegistration').val(group);
+        $('#registrationType').val(costUpdate.registrationType);
+        $('#includeGIEQsPRO').val(costUpdate.includeGIEQsPro);
+        $('#registrationType').trigger('change');
+        $('#groupRegistration').trigger('change');
+        $('#includeGIEQsPRO').trigger('change');
+
+
+    }
+    
+    
+
+})
+
+
+
+
 
 if (isSymposium == 'true'){
 

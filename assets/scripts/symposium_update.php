@@ -92,11 +92,11 @@ if (count($data) > 0) {
 
         if ($subscription_length > 3){
 
-            $longTermProMemberDiscount = 1;
+            $longTermProMemberDiscount = '1';
 
         }else{
 
-            $longTermProMemberDiscount = 0;
+            $longTermProMemberDiscount = '0';
 
         }
 
@@ -147,6 +147,7 @@ if (count($data) > 0) {
             $symposium->settitle($data['title']);
             $symposium->setinterestReason($data['interestReason']);
             $symposium->setprofessionalMemberDiscount($data['professionalMemberDiscount']);
+            $symposium->setprofessionalMember($data['professionalMember']);
             $symposium->setprofessionalMemberNumber($data['professionalMemberNumber']);
             $symposium->setinformedHow($data['informedHow']);
             //$symposium->setnotes($data['notes']);
