@@ -184,7 +184,7 @@ $asset_id_pagewrite = $asset_id_url;
 if ($asset_id_url == '95'){
 
     $asset_id_pagewrite = '95';
-    $asset_id_pagewrite2 = '96';
+    $asset_id_pagewrite2 = '96'; //this will actually be 95 and need to get second part of the array
     $is_symposium = true;
     
 }else{
@@ -1899,6 +1899,70 @@ if (earlyBird === true){
 }
 
 
+function submitSymposiumForm(){
+
+    $('#continueRegistration2').append('<i class="fas fa-circle-notch fa-spin ml-2"></i>');
+
+
+    var data = getFormDatav2($('#step2Form'), 'users', 'user_id', null, 1);
+
+    var costUpdate = JSON.parse(readCookie('step1'));
+
+    //TODO add identifier and identifierKey
+
+    //add assetid
+    //add all cost data
+
+    data.costUpdate = costUpdate;
+
+    data.assetid = asset_id;
+
+
+    //console.log(data);
+
+    data = JSON.stringify(data);
+
+    //console.log(data);
+
+    disableFormInputs('step2Form');
+
+    var passwordChange = $.ajax({
+        url: siteRoot + "/assets/scripts/symposium_update.php",
+        type: "POST",
+        contentType: "application/json",
+        data: data,
+    });
+
+    passwordChange.done(function (data) {
+
+
+        Swal.fire({
+            type: 'info',
+            title: 'Create Account',
+            text: data,
+            background: '#162e4d',
+            confirmButtonText: 'ok',
+            confirmButtonColor: 'rgb(238, 194, 120)',
+
+        }).then((result) => {
+
+            //resetFormElements('step2Form');
+            $(document).find('#signup_redirect').val(asset_id);
+            enableFormInputs('step2Form');
+            $('#registerInterest').modal('hide');
+            $('#continueRegistration2').find('i').remove();
+
+
+        })
+
+
+
+    })
+
+
+}
+
+
 $(document).ready(function() {
 
 
@@ -2106,6 +2170,12 @@ $(document).on('click', '#continueRegistration', function(){
                     $('#centreCountry1').val(result[0].centreCountry);
                     $('#endoscopistType').val(result[0].endoscopistType);
                     $('#trainee1').val(result[0].trainee);
+                    $('#title').val(result[0].title);
+                    $('#interestReason').val(result[0].interestReason);
+                    $('#professionalMember').val(result[0].professionalMember);
+                    $('#informedHow').val(result[0].informedHow);
+
+
 
                     //also set from the cookie selected reg
 
@@ -2301,6 +2371,7 @@ rules: {
 submitHandler: function(form) {
 
     alert('Validation passed');
+    submitSymposiumForm();
 
     //console.log("submitted form");
 

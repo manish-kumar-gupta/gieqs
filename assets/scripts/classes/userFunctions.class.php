@@ -2038,6 +2038,48 @@ public function returnEmails($users)
 	
 			
 		}
+
+		public function  getSymposiumidUserid($userid, $debug=false) {
+
+
+			//check it has happened
+	
+			$q = "SELECT `id` FROM `symposium` WHERE `user_id` = '$userid'";
+	
+
+			if ($debug == true){
+			echo $q;
+			}
+	
+			$result = $this->connection->RunQuery($q);
+	
+							
+				$nRows = $result->rowCount();
+	
+				
+				//echo $count;
+				
+				if ($nRows > 0){
+	
+					while($row = $result->fetch(PDO::FETCH_ASSOC)){
+	
+						//$count = $row['count'];
+						$activity_time = $row['id'];
+		
+		
+					}
+
+					return $activity_time;
+		
+	
+					
+				}else{
+	
+					return false; // allow login
+				}
+	
+			
+		}
 	
 	
 		
