@@ -44,7 +44,21 @@ error_reporting(E_ALL);
 
 use Stripe\Stripe;
 
-require(BASE_URI . '/../scripts/stripe_api.php');
+
+//CHANGE FOR STRIPE TEST
+
+
+//require(BASE_URI . '/../scripts/stripe_api.php'); //turn back on for live
+
+//test
+
+\Stripe\Stripe::setApiKey('sk_test_51IsKqwEBnLMnXjoguHzjHquozIjRT1Wt5OuLAQqxJvkUvX6DwMebWAPwgXsWaW35r5WXk1m6CuxtkY72I6QNLpH200No1l1SwU');
+$stripe = new \Stripe\StripeClient(
+    'sk_test_51IsKqwEBnLMnXjoguHzjHquozIjRT1Wt5OuLAQqxJvkUvX6DwMebWAPwgXsWaW35r5WXk1m6CuxtkY72I6QNLpH200No1l1SwU'
+  ); 
+
+
+
 error_reporting(E_ALL);
 
 header('Content-Type: application/json');
@@ -458,6 +472,9 @@ if (isset($subscription_id)){
 
 
             $subscription_to_return['cost'] = $data['cost_symposium'];
+            $subscription_to_return['symposium'] = true;
+            $subscription_to_return['cost_symposium'] = $data['cost_symposium'];
+
 
             if ($debug){
             echo $data['cost_symposium'] . 'is the cost associated';
@@ -548,7 +565,10 @@ if (isset($subscription_id)){
     //new subscription
         //ADD THE RENEW FREQUENCY TO THE DATE TODAY PLUS COURSE DATE
     
-    
+        if ($debug){
+
+            echo 'to after coin';
+        }
     
         //START DATE NOW
     
@@ -565,9 +585,14 @@ if (isset($subscription_id)){
             $timezone = 'UTC';
         }
     
-        if (isset($_POST['course_date'])){
+        if (isset($data['course_date'])){
+
+            if ($debug){
+
+                echo 'detected course date set as ' . $data['course_date'];
+            }
     
-            $course_date = new DateTime($_POST['course_date'], new DateTimeZone('UTC'));
+            $course_date = new DateTime($data['course_date'], new DateTimeZone('UTC'));
     
             //$end_start_calculate_date = new DateTime($_POST['course_date'], new DateTimeZone('UTC'));
     
@@ -653,7 +678,13 @@ if (isset($subscription_id)){
                 'metadata' => [
                     'subscription_id' => $newSubscriptionid, 
                     'coin_used' => $coin_used,
-                    'coin_amount' => $coin_amount
+                    'coin_amount' => $coin_amount,
+                    'name' => $subscription_to_return['asset_name'],
+                    'symposium' => $subscription_to_return['symposium'],
+                    'cost_symposium' => $subscription_to_return['cost_symposium'],
+
+
+
                 ],
             ],
 
@@ -661,6 +692,12 @@ if (isset($subscription_id)){
                 'subscription_id' => $newSubscriptionid,
                 'coin_used' => $coin_used,
                 'coin_amount' => $coin_amount,
+                'name' => $subscription_to_return['asset_name'],
+                'symposium' => $subscription_to_return['symposium'],
+                'cost_symposium' => $subscription_to_return['cost_symposium'],
+
+
+
 
             ],
             'mode' => 'payment',

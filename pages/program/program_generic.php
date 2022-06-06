@@ -717,6 +717,8 @@ var_dump($currentTime);
                                 
                                 if ($assetManager->getAssetTypeAsset($assets_paid->getid()) == '1'){
 
+
+
                                     ?>
 
                             
@@ -729,17 +731,45 @@ var_dump($currentTime);
 
                         <?php
 
-                                }else{
+                                }else{ ?>
+
+                                   
+
+                                 <?php   if ($is_symposium === true){  //if is a symposium //new behaviour, hide button, new button?>
+
+                                        
+
+
+                                        <a data-assetid="<?php echo $asset_id_pagewrite; ?>"
+                                class="symposium-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
+                                <span class="btn-inner--text text-dark">Register Now!</span>
+                                <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+                            </a>
+
+                                        <a data-assetid="<?php echo $asset_id_pagewrite; ?>"
+                                class="d-none register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
+                                <span class="btn-inner--text text-dark">Register Now!</span>
+                                <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+                            </a>
+
+
+                                   <?php }else{   //current behaviour?>
+
+                                      
+
+                                        <a data-assetid="<?php echo $asset_id_pagewrite; ?>"
+                                class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
+                                <span class="btn-inner--text text-dark">Register Now!</span>
+                                <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+                            </a>
+
+                                   <?php }
                                 
                                 ?>
 
                             
 
-                            <a data-assetid="<?php echo $asset_id_pagewrite; ?>"
-                                class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
-                                <span class="btn-inner--text text-dark">Register Now!</span>
-                                <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
-                            </a>
+                            
 
                         <?php
                       
@@ -830,31 +860,46 @@ var_dump($currentTime);
                             //user does not own this
                             ?>
 
-                            <a data-assetid="<?php echo $asset_id_pagewrite; ?>"
-                                class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
-                                <span class="btn-inner--text text-dark">Register Now!</span>
-                                <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
-                            </a>
+<?php   if ($is_symposium === true){  //if is a symposium //new behaviour, hide button, new button?>
 
-                        <?php
-                      
-                        }//close if owns this
+                                        
 
-                    }else{//close if user id
-
-                        //no user logged in
-                        
-                        ?>
 
 <a data-assetid="<?php echo $asset_id_pagewrite; ?>"
-                                class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
-                                <span class="btn-inner--text text-dark">Register Now!</span>
-                                <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
-                            </a>
+class="symposium-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
+<span class="btn-inner--text text-dark">Register Now!</span>
+<!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+</a>
+
+<a data-assetid="<?php echo $asset_id_pagewrite; ?>"
+class="d-none register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
+<span class="btn-inner--text text-dark">Register Now!</span>
+<!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+</a>
+
+
+<?php }else{   //current behaviour?>
 
 
 
-<?php }//close if user id
+<a data-assetid="<?php echo $asset_id_pagewrite; ?>"
+class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
+<span class="btn-inner--text text-dark">Register Now!</span>
+<!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+</a>
+
+<?php }
+
+?>
+
+
+
+
+
+<?php
+
+}
+}//close if owns this
 
                     }//close if type 1
 ?>
@@ -1985,7 +2030,7 @@ $(document).ready(function() {
 
 
 //if a symposium
-$('#costCalculator').modal('show');
+//$('#costCalculator').modal('show');
 //$('#step2').modal('show');
 
 
@@ -2018,6 +2063,13 @@ $(document).on('shown.bs.modal', '#costCalculator', function(){
 
 })
 
+
+$(document).on('click', '.symposium-now', function(){
+
+    $('#costCalculator').modal('show');
+
+
+})
 
 
 
@@ -2400,7 +2452,7 @@ rules: {
 
             
 
-            checkterm2s: {
+            checkterms2: {
 
                 required: true,
 
@@ -2414,6 +2466,15 @@ rules: {
 
 },messages: {
 
+    checkterms2: {
+
+required: 'You must agree to the Terms and Conditions',
+
+},
+checkprivacy2: {
+
+    required: 'You must agree to the Privacy Policy',
+},
 
 
 

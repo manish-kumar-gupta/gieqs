@@ -22,7 +22,7 @@ function ne($v)
     return $v != '';
 }
 
-$debug = false;
+$debug = FALSE;
 //$_SESSION['debug'] = true;
 $explicit = true;
 //echo 'hello';
@@ -80,23 +80,32 @@ if (count($data) > 0) {
 //need to add others to the push anyway
 
         $subscription_id_sitewide = $assetManager->getSiteWideSubscription($userid, false);
-        $subscription_length = $assetManager->getLengthSubscription($subscription_id_sitewide, false);
 
-        if ($debug){
+        if ($subscription_id_sitewide != false){
+            $subscription_length = $assetManager->getLengthSubscription($subscription_id_sitewide, false);
 
-            echo ' subscription_id_sitewide update was ' . $subscription_id_sitewide;
-            echo '<br/>';
-            echo 'subscription_length update was ' . $subscription_length;
+            if ($debug){
 
-        }
+                echo ' subscription_id_sitewide update was ' . $subscription_id_sitewide;
+                echo '<br/>';
+                echo 'subscription_length update was ' . $subscription_length;
 
-        if ($subscription_length > 3){
+            }
 
-            $longTermProMemberDiscount = '1';
+            if ($subscription_length > 3){
+
+                $longTermProMemberDiscount = '1';
+
+            }else{
+
+                $longTermProMemberDiscount = '0';
+
+            }
 
         }else{
 
             $longTermProMemberDiscount = '0';
+
 
         }
 
@@ -116,9 +125,27 @@ if (count($data) > 0) {
 
         }
 
+        //error_reporting(E_ALL);
+
         if (!($symposium_id)){//no id exists, ie no existing record
 
-            $symposium->New_symposium($userid, $data['assetid'],'1',$data['costUpdate']['earlyBird'],$data['costUpdate']['group'],$data['costUpdate']['registrationType'],$data['costUpdate']['includeGIEQsPro'],$longTermProMemberDiscount,null,$data['title'],$data['interestReason'],$data['professionalMemberDiscount'],$data['professionalMemberNumber'],$data['informedHow'],null);
+            if ($debug){
+
+                echo $userid;
+                echo $data['assetid'];
+                echo $data['costUpdate']['earlyBird'];
+                echo $data['costUpdate']['group'];
+                echo $data['costUpdate']['registrationType'];
+                echo $data['costUpdate']['includeGIEQsPro'];
+                echo $longTermProMemberDiscount;
+                echo $data['title'];
+                echo $data['interestReason'];
+                echo $data['professionalMemberDiscount'];
+                echo $data['professionalMemberNumber'];
+                echo $data['informedHow'];
+            }
+
+            $symposium->New_symposium($userid, $data['assetid'],'1',$data['costUpdate']['earlyBird'],$data['costUpdate']['group'],$data['costUpdate']['registrationType'],$data['costUpdate']['includeGIEQsPro'],$longTermProMemberDiscount,null,$data['title'],$data['interestReason'],$data['professionalMember'], $data['professionalMemberDiscount'],$data['professionalMemberNumber'],$data['informedHow'],null);
             $symposiumUpdate = $symposium->prepareStatementPDO();
 
 

@@ -168,6 +168,9 @@ allow them to determine access validated
             <input type="hidden" id="symposium" name="symposium" value="0">
             <input type="hidden" id="cost_symposium" name="cost_symposium" value="0">
 
+            <input type="hidden" id="course_date" name="course_date"
+                value="<?php echo date_format($programmeDate, "Y-m-d H:i:s");?>">
+
 
             <!-- <input type="hidden" id="course_date" name="course_date"
                 value="<?php //echo date_format($programmeDate, "Y-m-d H:i:s");?>"> -->
@@ -506,11 +509,14 @@ var waitForFinalEvent = (function() {
     };
 })();
 
-/* var stripe = Stripe(
-    "pk_test_51IsKqwEBnLMnXjogDG3ebg9q8KEVEbKtvHai719tJNPGsr9i77V4OdSYtPiBS1Y8bd4rknYYyAUkJ1sDweS2ubdF00GDL2mLNn"); test keys publishable*/
+
+//CHANGE FOR STRIPE TEST
+
+var stripe = Stripe(
+    "pk_test_51IsKqwEBnLMnXjogDG3ebg9q8KEVEbKtvHai719tJNPGsr9i77V4OdSYtPiBS1Y8bd4rknYYyAUkJ1sDweS2ubdF00GDL2mLNn"); //test keys publishable
     
-    var stripe = Stripe(
-    "pk_live_51IsKqwEBnLMnXjogQz5j1PCrt1qBSBOE8K3Uqdy8qCviiijTFG5ROoD6M0Uqze22rd31Af3cniEaIppFtLeFYBMZ00bwAzjNcf");
+/*var stripe = Stripe(
+    "pk_live_51IsKqwEBnLMnXjogQz5j1PCrt1qBSBOE8K3Uqdy8qCviiijTFG5ROoD6M0Uqze22rd31Af3cniEaIppFtLeFYBMZ00bwAzjNcf");*/
 
 
 function isInt(value) {
@@ -1367,7 +1373,16 @@ $(document).ready(function() {
 
         waitForFinalEvent(function() {
 
+            if (isSymposium){
+
+                $('.symposium-now').trigger('click');
+
+
+            }else{
+
             $('.register-now').trigger('click');
+
+            }
 
 
         }, 500, "hello header");

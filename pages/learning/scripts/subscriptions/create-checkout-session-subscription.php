@@ -45,7 +45,19 @@ error_reporting(E_ALL);
 
 use Stripe\Stripe;
 
-require(BASE_URI . '/../scripts/stripe_api.php');
+//CHANGE FOR STRIPE TEST
+
+
+//require(BASE_URI . '/../scripts/stripe_api.php'); //turn back on for live
+
+//test
+
+\Stripe\Stripe::setApiKey('sk_test_51IsKqwEBnLMnXjoguHzjHquozIjRT1Wt5OuLAQqxJvkUvX6DwMebWAPwgXsWaW35r5WXk1m6CuxtkY72I6QNLpH200No1l1SwU');
+$stripe = new \Stripe\StripeClient(
+    'sk_test_51IsKqwEBnLMnXjoguHzjHquozIjRT1Wt5OuLAQqxJvkUvX6DwMebWAPwgXsWaW35r5WXk1m6CuxtkY72I6QNLpH200No1l1SwU'
+  ); 
+
+//require(BASE_URI . '/../scripts/stripe_api.php');
 
 error_reporting(E_ALL);
 
@@ -442,9 +454,11 @@ if (isset($subscription_id)){
 
         //define price ids
 
+         //CHANGE FOR STRIPE TEST
+
         //CHANGE_TEST_TO_LIVE_STRIPE
 
-        $price_ids_test = [
+        $price_ids = [ //TEST IDS
 
             4 => 'price_1J4L5VEBnLMnXjogxxBLou9m',
             5 => 'price_1J4L6OEBnLMnXjoggMg7Ymsy', 
@@ -455,7 +469,7 @@ if (isset($subscription_id)){
 
         ];
 
-        $price_ids = [
+        $price_ids_RESETLIVELATER = [ //LIVE IDS
 
             4 => 'price_1JOoydEBnLMnXjogS1fT7ER3', //standard physician
             5 => 'price_1JOoyXEBnLMnXjogdHnORQax', //stadard trainee

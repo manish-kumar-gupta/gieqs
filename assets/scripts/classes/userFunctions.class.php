@@ -2080,6 +2080,51 @@ public function returnEmails($users)
 	
 			
 		}
+
+		//worker functions useractivity
+
+
+		public function cleanUserActivity(){
+
+			//STAFF FUNCTION TO RESET USER ACCESS
+			
+			//unless logged out (logout in sessionid)
+	
+			$date = new DateTime('now', new DateTimeZone('UTC'));
+	
+			//15 mins ago
+	
+			$date->sub(new DateInterval('P1M'));
+	
+	
+			$sqltimestamp = date_format($date, 'Y-m-d H:i:s');
+			//1 month ago
+	
+			//$q = "DELETE FROM `userActivity` WHERE `session_id` IS NULL AND `login_time` < '$sqltimestamp'";  //leave this one for now
+	
+			//echo $q;
+	
+			//$result = $this->connection->RunQuery($q);
+	
+				
+			/* if ($result){
+	
+				echo 'There were ' . $result->rowCount() . ' entries deleted for clean up.';
+			} */
+
+			DELETE FROM `userActivity` WHERE `session_id` IS NULL AND `login_time` IS NULL AND `activity_time` < '$sqltimestamp' 	
+			//echo $q;
+	
+			$result = $this->connection->RunQuery($q);
+	
+				
+			if ($result){
+	
+				echo 'There were a further' . $result->rowCount() . ' entries deleted for clean up.';
+			}
+				
+	
+		}
 	
 	
 		
