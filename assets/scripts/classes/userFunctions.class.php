@@ -2112,7 +2112,7 @@ public function returnEmails($users)
 				echo 'There were ' . $result->rowCount() . ' entries deleted for clean up.';
 			} */
 
-			DELETE FROM `userActivity` WHERE `session_id` IS NULL AND `login_time` IS NULL AND `activity_time` < '$sqltimestamp' 	
+			$q = "DELETE FROM `userActivity` WHERE `session_id` IS NULL AND `login_time` IS NULL AND `activity_time` < '$sqltimestamp'"; 	
 			//echo $q;
 	
 			$result = $this->connection->RunQuery($q);

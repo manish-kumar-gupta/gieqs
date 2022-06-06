@@ -524,6 +524,13 @@ $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $su
 
             $symposium->Load_from_key($symposium_id);
 
+            //update the final registration date
+
+            $symposium->setfull_registration_date($current_date_sqltimestamp);
+            $symposium->setpartial_registration('0');
+
+            $symposium->prepareStatementPDOUpdate();
+
             if ($symposium->getincludeGIEQsPro() == '1'){ 
                 
                 $debug = true;
