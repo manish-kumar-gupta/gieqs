@@ -165,6 +165,9 @@ allow them to determine access validated
             <input type="hidden" id="gieqs_coin_used" name="gieqs_coin_used" value="false">
             <input type="hidden" id="gieqs_coin_used_amount" name="gieqs_coin_used_amount" value="0">
 
+            <input type="hidden" id="symposium" name="symposium" value="0">
+            <input type="hidden" id="cost_symposium" name="cost_symposium" value="0">
+
 
             <!-- <input type="hidden" id="course_date" name="course_date"
                 value="<?php //echo date_format($programmeDate, "Y-m-d H:i:s");?>"> -->
@@ -1469,10 +1472,56 @@ $(document).ready(function() {
                     $('.modal-new #asset_id_hidden').val(externalTest.asset_id);
                     $('.modal-new #asset_id_coin_button').attr('asset-id', externalTest.cost);
 
+
+                    //workaround for symposium cost
+
+                    if (isSymposium == 'true'){
+
+                        console.log('symposium is true from prgram generic');
+
+                        if (externalTest.symposium === true){
+
+                            console.log('symposium is true from ajax');
+
+                            console.log('externalTest follows');
+                            console.dir(externalTest);
+
+
+
+                            if (externalTest.early_bird == 1){var earlyBirdReturn = true}else{var earlyBirdReturn = false};
+                            if (externalTest.group == null || externalTest.group == '' || externalTest.group == 0){var groupReturn = 0}else{var groupReturn = 1};
+
+
+                            var updatedCostObject = calculateCost(earlyBirdReturn, externalTest.registrationType, groupReturn, externalTest.includeGIEQsPro, false);
+
+                            console.log('updatedCostObject follows');
+
+                            console.dir(updatedCostObject);
+
+
+                            max_cost = updatedCostObject.cost;
+
+                            $('.modal-new #cost').text(updatedCostObject.cost + ' euro');
+
+                        
+
+                            $('.modal-new #symposium').val(1);
+                            $('.modal-new #cost_symposium').val(updatedCostObject.cost);
+
+                          
+                        }
+
+                        //need to get the cost from the symposium database
+
+
+
+                    }else{
                     //var a global max cost asset for the coin use
                     max_cost = externalTest.cost;
 
                     $('.modal-new #cost').text(externalTest.cost + ' euro');
+
+                    }
 
 
                     $('.modal-new').modal('show');

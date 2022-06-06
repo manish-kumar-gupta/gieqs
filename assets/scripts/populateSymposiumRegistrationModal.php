@@ -127,7 +127,8 @@ if ($userid){
 
         if (!($symposium_id)){//no id exists, ie no existing record
 
-            
+            echo json_encode($array);
+
 
         }else{
 

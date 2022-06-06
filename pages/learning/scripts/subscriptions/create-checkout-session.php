@@ -200,8 +200,12 @@ if (isset($subscription_id)){
         $subscription_to_return['asset_id'] = $assetManager->getAssetid($subscription_id);
     
         $assets_paid->Load_from_key($subscription_to_return['asset_id']);
+
+        
+
+
     
-        $subscription_to_return['cost'] = $assets_paid->getcost();
+        //$subscription_to_return['cost'] = $assets_paid->getcost();
 
         //if coin used
 
@@ -216,7 +220,7 @@ if (isset($subscription_id)){
 
                 //get cost of asset
 
-                $cost = $assets_paid->getcost();
+                $cost = $subscription_to_return['cost'];   //changed for symposium if coin issue
                 
 
                 if (intval($cost) == intval($coin_amount)){
@@ -436,8 +440,46 @@ if (isset($subscription_id)){
     $subscription_to_return['asset_name'] = $assets_paid->getname();
     $subscription_to_return['asset_type'] = $assetManager->getAssetTypeText($assets_paid->getasset_type());
     $subscription_to_return['asset_id'] = $assets_paid->getid();
+
+    //if is a symposium
+        //and there is a symposium record
+        //use the passed cost (could change to db cost here)
+
+    if (isset($data['symposium'])){
+
+        if ($debug){
+
+        echo 'symposium detected';
+
+        }
+
+        if ($data['symposium'] == 1){
+
+
+
+            $subscription_to_return['cost'] = $data['cost_symposium'];
+
+            if ($debug){
+            echo $data['cost_symposium'] . 'is the cost associated';
+            }
+
+        }else{
+
+            $subscription_to_return['cost'] = $assets_paid->getcost();
+
+
+        }
+
+    }else{
+
+
+        $subscription_to_return['cost'] = $assets_paid->getcost();
+
+    }
+
+        //die();
     
-    $subscription_to_return['cost'] = $assets_paid->getcost();
+    //$subscription_to_return['cost'] = $assets_paid->getcost();
     $subscription_to_return['description'] = $assets_paid->getdescription();
     $subscription_to_return['renew_frequency'] = $assets_paid->getrenew_frequency();
     
@@ -452,7 +494,7 @@ if (isset($subscription_id)){
 
             //get cost of asset
 
-            $cost = $assets_paid->getcost();
+            $cost = $subscription_to_return['cost'];
             
 
             if (intval($cost) == intval($coin_amount)){

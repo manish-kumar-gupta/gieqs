@@ -22,7 +22,7 @@ function ne($v)
     return $v != '';
 }
 
-$debug = true;
+$debug = false;
 //$_SESSION['debug'] = true;
 $explicit = true;
 //echo 'hello';
@@ -105,7 +105,7 @@ if (count($data) > 0) {
         //check there is a symposium record for this user, if so get id
         //if not create new
 
-        $symposium_id = $userFunctions->getSymposiumidUserid($userid, true);
+        $symposium_id = $userFunctions->getSymposiumidUserid($userid, false);
 
         if ($debug){
 

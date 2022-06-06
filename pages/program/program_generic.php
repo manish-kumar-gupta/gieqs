@@ -1936,24 +1936,42 @@ function submitSymposiumForm(){
     passwordChange.done(function (data) {
 
 
-        Swal.fire({
-            type: 'info',
-            title: 'Create Account',
-            text: data,
-            background: '#162e4d',
-            confirmButtonText: 'ok',
-            confirmButtonColor: 'rgb(238, 194, 120)',
+        if (data){
 
-        }).then((result) => {
+            var result = JSON.parse(data);
+            console.dir(result);
 
-            //resetFormElements('step2Form');
-            $(document).find('#signup_redirect').val(asset_id);
-            enableFormInputs('step2Form');
-            $('#registerInterest').modal('hide');
-            $('#continueRegistration2').find('i').remove();
+            var users = parseInt(result.users);
+            var symposium = parseInt(result.symposium);
+
+            if (users > -1 || symposium > -1){
+
+                Swal.fire({
+                type: 'info',
+                title: 'Registration Data Saved',
+                text: 'We Saved your Registration Data.  Proceeding to Payment.',
+                background: '#162e4d',
+                confirmButtonText: 'ok',
+                confirmButtonColor: 'rgb(238, 194, 120)',
+
+            }).then((result) => {
+
+                //resetFormElements('step2Form');
+                $(document).find('#signup_redirect').val(asset_id);
+                enableFormInputs('step2Form');
+                $('#step2').modal('hide');
+                $('#continueRegistration2').find('i').remove();
+                $('.register-now').trigger('click');
 
 
-        })
+            })
+
+            }
+
+
+            
+
+        }
 
 
 
@@ -2370,7 +2388,7 @@ rules: {
 },
 submitHandler: function(form) {
 
-    alert('Validation passed');
+    //alert('Validation passed');
     submitSymposiumForm();
 
     //console.log("submitted form");
