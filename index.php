@@ -381,7 +381,7 @@ $imageArray = ['assets/img/advert/gieqs_advert_1.jpeg']
                             class="font-weight-light">Join us for our next major step.  <br/>29 - 30 September 2022.</span>
                 </h2>
                 <p class="lead text-white">Decision making, common controversies, bring your problems, complex to everyday, training and more!</p>
-                <p class="lead text-white">Same laser focus on the everyday, high definition streaming.  With a LIVE venue that you have all been waiting for!  </p>
+                <p class="lead text-white">Same laser focus on the everyday, high definition streaming.  Hubs to watch with your colleagues!  </p>
 
                 <div class="mt-5">
 
@@ -392,7 +392,7 @@ $imageArray = ['assets/img/advert/gieqs_advert_1.jpeg']
 
                 <!-- <span class="d-block" style="color: rgb(238, 194, 120);"><strong
                             class="font-weight-light">More details soon...</span> -->
-                            <a href="https://www.gieqs.com/blog-view?id=55"
+                            <a href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=95"
                                 class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
                                 style="background-color: rgb(238, 194, 120);">
                                 <span class="btn-inner--text">GIEQs III Registration Open</span>

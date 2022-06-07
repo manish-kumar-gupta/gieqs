@@ -415,7 +415,7 @@ if ($debugAccess){
             <?php }?>
                 <!-- Mission -->
                 <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/mission.php">Mission</a>
+                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/mission.php">Foundation</a>
                 </li>
 
                 <!-- <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
@@ -443,12 +443,10 @@ if ($debugAccess){
                 <!-- Program-basic, later to add dropdown with options -->
                 
 
-                <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/learning/blog.php">Blog</a>
-                </li>
+               
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="https://eu.eventscloud.com/website/7797/home/">Symposium</a>
+                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=95">Symposium</a>
                 </li>
 
               
@@ -502,7 +500,7 @@ if ($debugAccess){
 
 <li class="nav-item">
                     <a class="nav-link"
-                        href="<?php echo BASE_URL; ?>/pages/learning/index.php">GIEQs Online</a>
+                        href="<?php echo BASE_URL; ?>/pages/learning/index.php">Online Education</a>
                 </li>
 
                 
@@ -511,13 +509,20 @@ if ($debugAccess){
                 <?php }else{ ?>
 
                   <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/online.php">GIEQs Online<!-- <span class="badge bg-gieqsGold text-dark badge-pill badge-floating ml-1 p-1">
+                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/online.php">Online Education<!-- <span class="badge bg-gieqsGold text-dark badge-pill badge-floating ml-1 p-1">
                                     New
                                     </span> --></a>
                 </li>
+              
 
 
-                <?php }?>
+                <?php }
+                
+                ?>
+
+<li class="nav-item active">
+                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/learning/blog.php">Blog</a>
+                </li>
 <!-- Get all courses, the ones which are advertised, list by 
 
 get array id, name-->

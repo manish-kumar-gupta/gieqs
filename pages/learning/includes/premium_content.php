@@ -59,7 +59,7 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 </style>
 
 
-<li class="nav-item dropdown mega-dropdown dropdown-animate" data-toggle="hover"
+<li class="nav-item dropdown mega-dropdown dropdown-animate cursor-pointer" data-toggle="hover"
     style="position:static; font-size:1.0rem;">
     <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false">Courses & Pro Content</a>

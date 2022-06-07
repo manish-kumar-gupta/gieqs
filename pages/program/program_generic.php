@@ -171,6 +171,8 @@ font-weight: 300 !important;
 
         <?php require BASE_URI . '/nav.php';?>
 
+
+
         <?php 
 
 //definitions
@@ -186,6 +188,22 @@ if ($asset_id_url == '95'){
     $asset_id_pagewrite = '95';
     $asset_id_pagewrite2 = '96'; //this will actually be 95 and need to get second part of the array
     $is_symposium = true;
+
+    $symposium_nav_active = [
+
+        0 => '', //news
+        1 => 'gieqsGold', //individual reg
+        2 => '', //group reg
+        3 => '', //program
+        4 => '', //faculty
+        5 => '', //register now
+        
+        
+        
+        ];
+
+     require BASE_URI . '/pages/learning/includes/nav_symposium.php';
+
     
 }else{
 
@@ -610,7 +628,7 @@ var_dump($currentTime);
                         <?php /**gieqs 3 specific**/ if ($asset_id_url == '95'){?>
 
                             <figure class="figure mb-3">
-                 <a href="https://eu.eventscloud.com/website/7797/home/" target="_blank"><img alt="Image placeholder" src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1650342788_gieqs_1200x300_final_5.png" class="img-fluid"></a>
+                 <a href="https://www.gieqs.com/iii" target="_blank"><img alt="Image placeholder" src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1650342788_gieqs_1200x300_final_5.png" class="w-50 mb-4"></a>
                 
               </figure>
                             
@@ -629,9 +647,14 @@ var_dump($currentTime);
                         <span class="h3" style="color: rgb(238, 194, 120);"><?php echo ', ' . $humanStartTime . ' - ' . $humanEndTime;?> 
                         <?php if (isset($asset_id_pagewrite2)){?>
                             <br/>
-                            <span class="h3 mt-4" style="color: rgb(238, 194, 120);"><?php echo 'and :  ' . $humanReadableProgrammeDatev1;?></span>
-                        <span class="h3" style="color: rgb(238, 194, 120);"><?php echo ', ' . $humanStartTimev1 . ' - ' . $humanEndTimev1;?> 
+<!-- fix -->
+<span class="h3 mt-4" style="color: rgb(238, 194, 120);"><?php echo 'and :  Friday 30th September , 08:00 - 17:30 CET'?></span> 
 
+<!-- later replace -->
+
+                          <!--   <span class="h3 mt-4" style="color: rgb(238, 194, 120);"><?php echo 'and :  ' . $humanReadableProgrammeDatev1;?></span>
+                        <span class="h3" style="color: rgb(238, 194, 120);"><?php echo ', ' . $humanStartTimev1 . ' - ' . $humanEndTimev1;?> 
+ -->
                         <?php }?>
                         
                         
