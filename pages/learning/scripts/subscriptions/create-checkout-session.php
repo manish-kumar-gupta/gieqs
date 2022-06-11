@@ -47,15 +47,25 @@ use Stripe\Stripe;
 
 //CHANGE FOR STRIPE TEST
 
+if ($stripe_status_live === true){
 
-//require(BASE_URI . '/../scripts/stripe_api.php'); //turn back on for live
+    require(BASE_URI . '/../scripts/stripe_api.php'); 
+
+}else{
+
+    \Stripe\Stripe::setApiKey('sk_test_51IsKqwEBnLMnXjoguHzjHquozIjRT1Wt5OuLAQqxJvkUvX6DwMebWAPwgXsWaW35r5WXk1m6CuxtkY72I6QNLpH200No1l1SwU');
+    $stripe = new \Stripe\StripeClient(
+        'sk_test_51IsKqwEBnLMnXjoguHzjHquozIjRT1Wt5OuLAQqxJvkUvX6DwMebWAPwgXsWaW35r5WXk1m6CuxtkY72I6QNLpH200No1l1SwU'
+      ); 
+    
+
+}
+
+
+//
 
 //test
 
-\Stripe\Stripe::setApiKey('sk_test_51IsKqwEBnLMnXjoguHzjHquozIjRT1Wt5OuLAQqxJvkUvX6DwMebWAPwgXsWaW35r5WXk1m6CuxtkY72I6QNLpH200No1l1SwU');
-$stripe = new \Stripe\StripeClient(
-    'sk_test_51IsKqwEBnLMnXjoguHzjHquozIjRT1Wt5OuLAQqxJvkUvX6DwMebWAPwgXsWaW35r5WXk1m6CuxtkY72I6QNLpH200No1l1SwU'
-  ); 
 
 
 

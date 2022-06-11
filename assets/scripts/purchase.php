@@ -516,11 +516,20 @@ var waitForFinalEvent = (function() {
 
 //CHANGE FOR STRIPE TEST
 
-var stripe = Stripe(
+if ($('stripe-status-live').text() == 'true'){
+
+    var stripe = Stripe(
+    "pk_live_51IsKqwEBnLMnXjogQz5j1PCrt1qBSBOE8K3Uqdy8qCviiijTFG5ROoD6M0Uqze22rd31Af3cniEaIppFtLeFYBMZ00bwAzjNcf"); //live keys
+
+
+}else{
+
+    var stripe = Stripe(
     "pk_test_51IsKqwEBnLMnXjogDG3ebg9q8KEVEbKtvHai719tJNPGsr9i77V4OdSYtPiBS1Y8bd4rknYYyAUkJ1sDweS2ubdF00GDL2mLNn"); //test keys publishable
+
+}
+
     
-/*var stripe = Stripe(
-    "pk_live_51IsKqwEBnLMnXjogQz5j1PCrt1qBSBOE8K3Uqdy8qCviiijTFG5ROoD6M0Uqze22rd31Af3cniEaIppFtLeFYBMZ00bwAzjNcf");*/
 
 
 function isInt(value) {

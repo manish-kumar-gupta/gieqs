@@ -111,6 +111,12 @@ $roothttp = BASE_URL . '/';
 //echo redirect_location;
 
 # ******************** #
+# ***** PURCHASING ***** #
+
+$stripe_status_live = false;  //true is live keys, false is testing
+
+
+# ******************** #
 # ***** LIVE EVENT ***** #
 
 //make GIEQs conference live
