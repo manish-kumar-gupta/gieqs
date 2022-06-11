@@ -186,6 +186,10 @@ if ($symposium_id != false){
     $subscription_to_return['group_registration'] = $symposium->getgroup_registration();
     $subscription_to_return['registrationType'] = $symposium->getregistrationType();
     $subscription_to_return['includeGIEQsPro'] = $symposium->getincludeGIEQsPro();
+    $subscription_to_return['professionalMember'] = $symposium->getprofessionalMember();
+    $subscription_to_return['longTermProMemberDiscount'] = $symposium->getlongTermProMemberDiscount();
+
+
 }
 
 

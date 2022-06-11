@@ -1737,6 +1737,7 @@ function calculateCost(earlyBird, registrationType, groupRegistration, includeGI
     var normalCostGIEQsOnline = null;
     var saving = null;
     var group = null;
+    var symposiumcost = null;
 
 if (earlyBird === true){
 
@@ -1744,6 +1745,7 @@ if (earlyBird === true){
 
     if (registrationType == 1){ // doctor
 
+        symposiumcost = 100;
         cost += 100;
 
         if (groupRegistration == 1){ //return a marker
@@ -1772,12 +1774,16 @@ if (earlyBird === true){
             earlyBird : earlyBird,
             registrationType : registrationType,
             includeGIEQsPro : includeGIEQsPRO,
+            symposiumcost : symposiumcost,
+
 
 
         };
 
     }else if (registrationType == 2 || registrationType == 3){
 
+
+        symposiumcost = 50;
 
         cost += 50;
 
@@ -1807,12 +1813,16 @@ if (earlyBird === true){
             earlyBird : earlyBird,
             registrationType : registrationType,
             includeGIEQsPro : includeGIEQsPRO,
+            symposiumcost : symposiumcost,
+
 
 
         };
 
     }else if (registrationType == 4 || registrationType == 5){
 
+
+        symposiumcost = 30;
 
         cost += 30;
 
@@ -1842,6 +1852,8 @@ if (earlyBird === true){
             earlyBird : earlyBird,
             registrationType : registrationType,
             includeGIEQsPro : includeGIEQsPRO,
+            symposiumcost : symposiumcost,
+
 
 
         };
@@ -1855,6 +1867,8 @@ if (earlyBird === true){
    
 
     if (registrationType == 1){ // doctor
+
+        symposiumcost = 150;
 
         cost += 150;
 
@@ -1884,12 +1898,15 @@ if (earlyBird === true){
             earlyBird : earlyBird,
             registrationType : registrationType,
             includeGIEQsPro : includeGIEQsPRO,
+            symposiumcost : symposiumcost,
 
 
         };
 
     }else if (registrationType == 2 || registrationType == 3){
 
+
+        symposiumcost = 75;
 
         cost += 75;
 
@@ -1921,12 +1938,15 @@ if (earlyBird === true){
             earlyBird : earlyBird,
             registrationType : registrationType,
             includeGIEQsPro : includeGIEQsPRO,
+            symposiumcost : symposiumcost,
 
 
         };
 
     }else if (registrationType == 4 || registrationType == 5){
 
+
+        symposiumcost = 45;
 
         cost += 45;
 
@@ -1955,6 +1975,7 @@ if (earlyBird === true){
             earlyBird : earlyBird,
             registrationType : registrationType,
             includeGIEQsPro : includeGIEQsPRO,
+            symposiumcost : symposiumcost,
 
 
         };
@@ -2517,6 +2538,15 @@ submitHandler: function(form) {
 
 
 });
+
+$(document).on('click', '#more-group-info', function(){
+
+$('#step2').modal('hide');
+window.location.href = siteRoot2 + '/pages/program/symposium-group-registration.php';
+
+})
+
+
 
 
 

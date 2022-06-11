@@ -18,7 +18,7 @@ require (BASE_URI . '/assets/scripts/login_functions.php');
      
      require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
 
-$debug = false;
+$debug = FALSE;
 
 if ($debug == true){
 error_reporting(E_ALL);
@@ -45,11 +45,14 @@ $data = json_decode(file_get_contents('php://input'), true);
 
 $asset_id = $data['asset_id'];
 //$review = $data['review'];
+$isSymposium = $data['isSymposium'];
 
 
 
 if ($debug){
 print_r($asset_id);
+print_r($isSymposium);
+
 //print_r($review);
 echo '$userid is ' . $userid;
 }
@@ -90,7 +93,20 @@ if ($assets_paid->Return_row($asset_id)){
     $subscription_to_return['asset_type'] = $assetManager->getAssetTypeText($assets_paid->getasset_type());
     $subscription_to_return['asset_id'] = $assets_paid->getid();
 
-    $subscription_to_return['cost'] = $assets_paid->getcost();
+    if ($isSymposium == 'true'){
+
+        $subscription_to_return['cost'] = '';
+        $subscription_to_return['symposium'] = true;
+
+
+
+    }else{
+
+        $subscription_to_return['cost'] = $assets_paid->getcost();
+
+    }
+
+    //$subscription_to_return['cost'] = $assets_paid->getcost();
     $subscription_to_return['description'] = $assets_paid->getdescription();
     $subscription_to_return['renew_frequency'] = $assets_paid->getrenew_frequency();
 

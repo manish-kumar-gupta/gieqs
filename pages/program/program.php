@@ -337,8 +337,8 @@ var_dump($currentTime);
 
                         <?php }else{ ?>
 
-                        <a data-assetid="<?php echo $asset_id_pagewrite; ?>"
-                            class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
+                        <a href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=95&action=register"
+                            class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
                             <span class="btn-inner--text text-dark">Register Now!</span>
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         </a>
@@ -351,8 +351,8 @@ var_dump($currentTime);
                         
                         ?>
 
-                        <a data-assetid="<?php echo $asset_id_pagewrite; ?>"
-                            class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
+                        <a href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=95&action=register"
+                            class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
                             <span class="btn-inner--text text-dark">Register Now!</span>
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         </a>
@@ -433,8 +433,8 @@ var_dump($currentTime);
 
                     <?php }else{ ?>
 
-                    <a data-assetid="<?php echo $asset_id_pagewrite; ?>"
-                        class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
+                    <a href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=95&action=register"
+                        class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
                         <span class="btn-inner--text text-dark">Register Now!</span>
                         <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                     </a>
@@ -447,8 +447,8 @@ var_dump($currentTime);
                         
                         ?>
 
-                    <a data-assetid="<?php echo $asset_id_pagewrite; ?>"
-                        class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
+                    <a href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=95&action=register"
+                        class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
                         <span class="btn-inner--text text-dark">Register Now!</span>
                         <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                     </a>

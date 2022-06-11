@@ -57,8 +57,16 @@ RewriteRule ^colonoscopy-technique-theory$ pages/program/program_generic.php?id=
 RewriteRule ^colonoscopy-upskilling$ pages/program/program_generic.php?id=83
 RewriteRule ^train-trainers-polypectomy$ pages/learning/blog_article.php?id=53
 RewriteRule ^polyp-cancer$ pages/program/program_generic.php?id=86&access_token=sfTEyfcJxJmDt4X
-RewriteRule ^iii$ pages/learning/blog_article.php?id=55
-RewriteRule ^3$ pages/learning/blog_article.php?id=55
+
+
+RewriteRule ^iii$ pages/program/program_generic.php?id=95
+RewriteRule ^3$ pages/program/program_generic.php?id=95
+RewriteRule ^symposium/group-registration$ pages/program/symposium-group-registration.php
+RewriteRule ^symposium/programme$ pages/program/program.php
+RewriteRule ^symposium/program$ pages/program/program.php
+RewriteRule ^symposium/faculty$ pages/program/faculty.php
+
+
 RewriteRule ^polypectomy-curriculum-theory$ pages/program/program_generic.php?id=94
 
 
