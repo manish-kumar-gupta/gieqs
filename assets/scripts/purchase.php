@@ -539,6 +539,76 @@ function isInt(value) {
     })(parseFloat(value))
 }
 
+var loggedin;
+
+
+function isUserLoggedin(){
+    //to fix the issue that logged out prevents the form loading
+
+    const dataToSend2 = {
+
+        userid: userid,
+
+    }
+
+    
+
+    const jsonString2 = JSON.stringify(dataToSend2);
+
+    var request3 = $.ajax({
+        url: rootFolder2 +
+            "pages/learning/scripts/loggedin.php",
+        type: "POST",
+        contentType: "application/json",
+        data: jsonString2,
+
+        timeout: 5000,
+        fail: function(xhr, textStatus, errorThrown) {
+            alert(
+                'Something went wrong. Please try that again.'
+            );
+            $(button).find('i').remove();
+            $(button).attr('disabled', false);
+        }
+    });
+
+    request3.done(function(data) {
+
+        
+            data = data.trim();
+           
+            //if data is 0 reload page
+
+            if (data == '0'){
+
+                if (loggedin == 1){
+                 window.location.reload();
+                }
+
+                loggedin = 0;
+
+            }else{
+
+                loggedin = 1;
+
+            }
+
+        
+            //return loggedin;
+        
+
+
+    })
+
+    return loggedin;
+
+
+}
+
+isUserLoggedin();
+
+setInterval(isUserLoggedin, 60*1000);
+
 function useGIEQsCoin(asset_id_specific) {
 
     //alert('click');
@@ -1237,9 +1307,20 @@ $(document).ready(function() {
 
         if (userid) {
 
-            //closed version
-            var url = siteRoot2 +
+            if (loggedin == '1'){
+
+                var url = siteRoot2 +
                 "pages/learning/scripts/subscriptions/get_new_subscription_data.php";
+
+            }else{
+
+                var url = siteRoot2 +
+                "pages/learning/scripts/subscriptions/get_new_subscription_data_open.php";
+
+            }
+
+            //closed version
+           
 
         } else {
 
@@ -1389,7 +1470,11 @@ $(document).ready(function() {
 
             if (isSymposium){
 
+                if (loggedin == '1'){
+
                 $('.symposium-now').trigger('click');
+
+                }
 
 
             }else{
