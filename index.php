@@ -279,7 +279,10 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 <?php
 
 }
-$imageArray = ['assets/img/advert/gieqs_advert_1.jpeg']
+$imageArray = ['assets/img/advert/gieqs_advert_1.jpeg', 'assets/img/covers/gieqsii/background-studio-2.jpg', 'assets/img/covers/gieqsii/background-studio-3.jpg', 'assets/img/covers/gieqsii/background-studio-4.jpg', 'assets/img/covers/gieqsii/background-studio-5.jpg', 'assets/img/covers/gieqsii/background-studio-6.jpg', 'assets/img/covers/gieqsii/background-studio-1.jpg', 
+'assets/img/covers/gieqsii/background-room-1.jpg', 'assets/img/covers/gieqsii/background-room-2.jpg', 'assets/img/covers/gieqsii/background-room-3.jpg', 'assets/img/covers/gieqsii/background-room-4.jpg', 
+'assets/img/covers/gieqsii/background-tech-1.jpg', 'assets/img/covers/gieqsii/background-tech-2.jpg', 
+'assets/img/covers/gieqsii/background-group-1.jpg', 'assets/img/covers/gieqsii/background-group-2.jpg', 'assets/img/covers/gieqsii/background-group-3.jpg'];
 
 
 ?>
@@ -375,7 +378,7 @@ $imageArray = ['assets/img/advert/gieqs_advert_1.jpeg']
                 </div>
 
                 <h2 class="text-white mb-4 mt-4 mt-lg-0">
-                    <span class="display-4 font-weight-light">GIEQs III Registration is Open!</span>
+                    <span class="display-4 font-weight-light">GIEQs III - Early Bird Registration Open!</span>
 
                     <span class="d-block" style="color: rgb(238, 194, 120);"><strong
                             class="font-weight-light">Join us for our next major step.  <br/>29 - 30 September 2022.</span>
