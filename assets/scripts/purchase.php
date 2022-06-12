@@ -517,7 +517,7 @@ var waitForFinalEvent = (function() {
 //CHANGE FOR STRIPE TEST
 //should be getting this from somewhere where it can't be read
 
-if ($('stripe-status-live').text() == 'true'){
+if ($('#stripe-status-live').text() == 'true'){
 
     var stripe = Stripe(
     "pk_live_51IsKqwEBnLMnXjogQz5j1PCrt1qBSBOE8K3Uqdy8qCviiijTFG5ROoD6M0Uqze22rd31Af3cniEaIppFtLeFYBMZ00bwAzjNcf"); //live keys
