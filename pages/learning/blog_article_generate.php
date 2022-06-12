@@ -6,10 +6,9 @@
 
                 <div class="container pt-6">
                     <div class="row justify-content-center">
-                        <div class="col-md-12 text-center">
-                            <h1 class="lh-150 mb-3 display-5 text-center gieqsGold"><?php echo $blogs->getname();?></h1>
-                            <h4 class="text-white mb-0 text-center"><?php echo $blogs->getpreheader();?></h4>
-                            
+                        <div class="col-md-9 text-left">
+                        <h1 class="lh-150 mb-3"><?php echo $blogs->getname();?></h1>
+                            <p class="lead text-muted mb-0" style="font-size:1.4rem !important;"><?php echo $blogs->getpreheader();?></p>
                         </div>
                     </div>
                 </div>

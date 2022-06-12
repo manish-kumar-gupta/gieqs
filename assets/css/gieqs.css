@@ -2,11 +2,26 @@
 
     color: rgb(238, 194, 120);
     border-color: rgb(238, 194, 120);
+
 }
 
-.btn-outline-gieqsGold :hover {
 
-    color: white;
+.btn-fill-gieqsGold {
+
+    color: #162e4d !important;
+    border-color: rgb(238, 194, 120) !important;
+    background-color: rgb(238, 194, 120) !important;
+}
+
+.btn-fill-gieqsGold:hover {
+
+    color: white !important;
+    border-color: white !important;
+
+    border-color: rgb(238, 194, 120) !important;
+    background-color: #162e4d !important;
+    color: rgb(238, 194, 120) !important;
+    
     
 }
 

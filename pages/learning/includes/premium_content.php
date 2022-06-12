@@ -307,7 +307,7 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
                           ?>
 
-                    <li class="mt-2">
+                    <li class="mt-2" style="line-height:1.2;">
 
                         <a class="menu-item <?php echo $color_item;?>"
                             href="<?php echo $start_link . $value['id'] ?>"><i
@@ -398,7 +398,7 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
                           ?>
 
-                    <li class="mt-2" style="line-height:1.4;">
+                    <li class="mt-2" style="line-height:1.2;">
 
                     <a class="menu-item <?php echo $color_item;?>"
                             href="<?php echo $start_link . $value['id'] ?>"><i
@@ -446,7 +446,7 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
                         
                         ?>
 
-                    <li class="mt-2">
+                    <li class="mt-2" style="line-height:1.2;">
 
                     <a class="menu-item <?php echo $color_item;?>"
                             href="<?php echo $start_link . $value['id'] ?>"><i
@@ -532,7 +532,7 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
                           ?>
 
-                    <li class="mt-2">
+                    <li class="mt-2" style="line-height:1.2;">
 
                     <a class="menu-item <?php echo $color_item;?>"
                             href="<?php echo $start_link . $value['id'] ?>"><i
@@ -584,7 +584,7 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
                         
                         ?>
 
-                    <li class="mt-2">
+                    <li class="mt-2" style="line-height:1.2;">
 
                     <a class="menu-item <?php echo $color_item;?>"
                             href="<?php echo $start_link . $value['id'] ?>"><i

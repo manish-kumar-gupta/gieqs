@@ -1214,7 +1214,7 @@ class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon 
                 </div>
                 <div class="modal-footer">
                     <p class="small">These options are for virtual registration.  There are a small number (first come first served) of registrations available in Ghent (details in your confirmation email).  We <strong>strongly</strong> encourage participants to register in groups and create their own live experiences.  This not only facilitates networking but saves the Planet.</p>
-                    <button id="continueRegistration" type="button" class="btn btn-small text-dark bg-gieqsGold">Continue Registration</button>
+                    <button id="continueRegistration" type="button" class="btn btn-small text-dark btn-fill-gieqsGold">Continue Registration</button>
                    
 
 

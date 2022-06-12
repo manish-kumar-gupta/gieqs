@@ -515,6 +515,7 @@ var waitForFinalEvent = (function() {
 
 
 //CHANGE FOR STRIPE TEST
+//should be getting this from somewhere where it can't be read
 
 if ($('stripe-status-live').text() == 'true'){
 

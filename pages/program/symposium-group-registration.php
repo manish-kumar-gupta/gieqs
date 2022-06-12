@@ -135,7 +135,7 @@ require BASE_URI . '/headNoPurposeCore.php';
                             <h1 class="lh-150 mb-3">Group Symposium Registrations <br/>(the larger the group the > the discount)</h1>
                             <p class="lead">Put together a group of colleagues and achieve up to 50% discount on your
                                 symposium registration.</p>
-                                <p>  <a class="btn btn-primary btn-lg my-2" href="#plan-group" role="button">Start your Group Registration</a></p>
+                                <p>  <a class="btn btn-fill-gieqsGold btn-lg my-2" href="#plan-group" role="button">Start your Group Registration</a></p>
         </section>
         <section>
             <div class="container">
@@ -329,7 +329,7 @@ require BASE_URI . '/headNoPurposeCore.php';
 
   <hr class="my-2">
   <p class="lead">Once you're done sit back and enjoy GIEQs 3 in September (29-30th) in your local environment and access for 12 months afterwards (with included GIEQs online PRO access).  Feel good as a group that you are upskilling your endoscopy practice with the latest evidence based information and saving the planet at the same time.</p>
-  <a class="btn btn-primary btn-lg my-2" href="#" role="button">Get Started - Download the Registration Form</a>
+  <a class="btn btn-fill-gieqsGold btn-lg my-2" href="#" role="button">Get Started - Download the Registration Form</a>
 </div>
 
 
