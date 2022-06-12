@@ -113,7 +113,7 @@ $roothttp = BASE_URL . '/';
 # ******************** #
 # ***** PURCHASING ***** #
 
-$stripe_status_live = false;  //true is live keys, false is testing
+$stripe_status_live = true;  //true is live keys, false is testing
 
 
 # ******************** #
