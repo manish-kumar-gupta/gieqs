@@ -15,12 +15,28 @@
 
 .btn-fill-gieqsGold:hover {
 
-    color: white !important;
-    border-color: white !important;
+    
 
     border-color: rgb(238, 194, 120) !important;
     background-color: #162e4d !important;
     color: rgb(238, 194, 120) !important;
+    
+    
+}
+
+.btn-fill-gieqsGold-dark {
+
+    background-color: #162e4d !important;
+    border-color: rgb(238, 194, 120) !important;
+    color: rgb(238, 194, 120) !important;
+}
+
+.btn-fill-gieqsGold-dark:hover {
+
+
+    border-color: rgb(238, 194, 120) !important;
+    background-color: rgb(238, 194, 120) !important;
+    color: #162e4d !important;
     
     
 }

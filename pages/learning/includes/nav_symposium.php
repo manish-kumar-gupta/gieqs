@@ -61,7 +61,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=95&action=register" class="nav-link nav-link-icon cursor-pointer">
+                <a href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=95&action=register" class="btn btn-fill-gieqsGold btn-sm mx-2" role="button">
                         <span class="nav-link-inner--text <?php echo $symposium_nav_active[5];?> ">Register Now!</span>
                     </a>
                 </li>

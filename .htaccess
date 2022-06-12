@@ -65,6 +65,7 @@ RewriteRule ^symposium/group-registration$ pages/program/symposium-group-registr
 RewriteRule ^symposium/programme$ pages/program/program.php
 RewriteRule ^symposium/program$ pages/program/program.php
 RewriteRule ^symposium/faculty$ pages/program/faculty.php
+RewriteRule ^iii/register-now$ pages/program/program_generic.php?id=95&action=register-now
 
 
 RewriteRule ^polypectomy-curriculum-theory$ pages/program/program_generic.php?id=94

@@ -224,6 +224,7 @@ require BASE_URI . '/headNoPurposeCore.php';
                                     </ul>
                                 </div>
                                 <div class="btn-container mt-5 text-center">
+                                <a href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=95&action=register" class="btn btn-fill-gieqsGold btn-lg my-2" role="button">Register Now!</a>
 
 
                                 </div>
@@ -261,21 +262,24 @@ require BASE_URI . '/headNoPurposeCore.php';
                                             Deconstructed Approach</a></p>
                                 </div>
                                 <hr>
-                                <h1>GIEQs III – a Live meeting with High-Definition Streaming</h1>
+                                <h1>GIEQs III – a Virtual-Live meeting with High-Definition Streaming</h1>
                                 <p>Our next meeting will be bigger, improving on our previous experience and delivery.
-                                    It will be a <strong>LIVE </strong>event simultaneously streamed directly in high
-                                    definition to our Virtual Audience. The same production standards that defined the
+                                    It will be a <strong>VIRTUAL </strong>event streamed directly in high
+                                    definition to our custom online learning platform. The same production standards that defined the
                                     first two editions will be maintained.</p>
-                                <p>So, you can choose:</p>
+                                <p>You can choose your format:</p>
                                 <ul>
-                                    <li>Attend <strong>LIVE</strong> in Ghent, Belgium for a true face-to-face
-                                        experience</li>
+                                   
                                     <li>Attend <strong>VIRTUALLY</strong> on our custom-made platform for an in-room
                                         experience right up close to the action and like no other</li>
+                                        <li>Setup a <strong>LIVE</strong> experience dependent on your local situation for a true face-to-face
+                                        experience with group interaction and upskilling</li>
                                     <li>Attend <strong>VIRTUALLY</strong> after the event.</li>
                                 </ul>
                                 <p>LIVE participants gain all of the above in their registration package.</p>
-                                <div class="btn-container mt-5 text-center">
+                                <div class="btn-container mt-5 mb-5 text-center">
+                                <a href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=95&action=register" class="btn btn-fill-gieqsGold btn-lg my-2" role="button">Register Now!</a>
+                                <a href="<?php echo BASE_URL;?>/pages/program/symposium-group-registration.php" class="btn btn-fill-gieqsGold btn-lg my-2" role="button">Explore Group Registration</a>
 
 
                                 </div>
@@ -458,13 +462,17 @@ require BASE_URI . '/headNoPurposeCore.php';
                                     register as soon as possible, certainly before the <strong>early bird deadline of
                                         1<sup>st</sup> July 2022.</strong></p>
                                 <div class="btn-container mt-5 text-center">
+                                <a href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=95&action=register" class="btn btn-fill-gieqsGold btn-lg my-2" role="button">Register Now!</a>
 
 
                                 </div>
                                 <hr>
-                                <h1>Join us in Ghent or Virtually, 29 and 30<sup>th</sup> September 2022</h1>
-                                <p>We very much look forward to seeing you there!</p>
+                                <h1>Join us Virtually, 29 and 30<sup>th</sup> September 2022</h1>
+                                <p>Or organise your own group experience!</p>
+                                <p class="mb-6">We very much look forward to seeing you there!</p>
                                 </p>
+
+                                
 
 
 

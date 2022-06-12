@@ -113,11 +113,14 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
             <section class="slice bg-gradient-dark slice-lg">
                 <div class="container">
                     <div class="mb-5 text-center">
-                        <h2 class="mt-4" style="color: rgb(238, 194, 120);">The GIEQs faculty</h2>
+                        <h1 class="mt-7">The GIEQs faculty</h1>
                         <div class="fluid-paragraph mt-3">
-                            <p class="lead lh-180">With a stellar international faculty the second edition of GIEQs
+                            <p class="lead lh-150">With a stellar international faculty the third edition of GIEQs
                                 promises to be a launch-pad for innovative thinking in everyday endoscopic practice.</p>
                         </div>
+                        <a href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=95&action=register" class="btn btn-fill-gieqsGold btn-lg my-2" role="button">Register Now!</a>
+
+
                     </div>
                     <div class="mb-5 text-left">
                         <h3 class=" mt-4" style="color: rgb(238, 194, 120);">International Faculty</h3>
