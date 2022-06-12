@@ -777,8 +777,8 @@ $timezone =  'UTC';
                             <h5 class="heading h4 mt-4">Thank you for your payment!<br /> Subscription ID #<span
                                     id="modal-subscription-success-id"></span> is now active</h5>
                             <p>
-                                Please check your email for details. We very much appreciate your support of GIEQs Online! </p>
-                            <p>You can access your purchase from the 'My Courses' menu in GIEQs Online</p>
+                                Please check your email for details. We very much appreciate your support of GIEQs Online and the GIEQs Foundation! </p>
+                            <p>You can access your purchase from the 'Courses and Pro Content' menu in GIEQs Online</p>
 
                                 <p class="small">
                                 Didn't receive a mail? Check your spam and don't worry.  If there is an ongoing issue please contact us!</p>

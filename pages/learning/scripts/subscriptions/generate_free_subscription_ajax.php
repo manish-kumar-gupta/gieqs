@@ -53,6 +53,8 @@ require_once BASE_URI . '/assets/scripts/classes/userFunctions.class.php';
 $userFunctions = new userFunctions;
 
 
+
+
 //error_reporting(E_ALL);
 require_once BASE_URI .'/../scripts/config.php';
 //check the user is logged in
@@ -455,75 +457,8 @@ $subscription_to_return['user_id'] = $userid;
 
             //do stuff to give the assets, //check this
 
-            function getPastAdvertisedAssets ($assetManager, $sessionView, $programme) {
+            require_once BASE_URI . '/pages/learning/includes/give_asset_functions.inc.php';
 
-                $assets = [];
-            
-            
-                $assets2 = $assetManager->returnAdvertisedAssets(2, false);
-                $assets3 = $assetManager->returnAdvertisedAssets(3, false);
-                $assets4 = $assetManager->returnAdvertisedAssets(4, false);
-            
-            
-                //define date today
-                $today = new DateTime('now');
-            
-                //add them all to an array
-            
-                foreach ($assets2 as $key=>$value){
-                    
-                    foreach ($value as $key2=>$value2){
-            
-                        //add the id to the array ONLY if the start time is not in the future
-                        if (getProgrammeStartTime($value['id'], $assetManager, $sessionView, $programme) < $today){
-                                $assets[] = $value['id']; 
-                                break;
-                        }
-            
-                    }
-                    
-            
-            
-                }
-            
-                foreach ($assets3 as $key=>$value){
-            
-                    foreach ($value as $key2=>$value2){
-                        //var_dump($value['id']);
-            
-                        //add the id to the array ONLY if the start time is not in the future
-            
-                        if (getProgrammeStartTime($value['id'], $assetManager, $sessionView, $programme) < $today){
-                            $assets[] = $value['id']; 
-                            break;
-            
-                        }
-            
-                    }
-            
-            
-                }
-            
-                foreach ($assets4 as $key=>$value){
-            
-                    //no dates in these assets
-            
-                    foreach ($value as $key2=>$value2){
-                        //var_dump($value['id']);
-            
-                        $assets[] = $value['id'];
-                        break;
-            
-            
-                    }
-            
-            
-                }
-            
-                return $assets;
-            
-            
-            }
 
             $log = [];
 

@@ -1293,91 +1293,180 @@ top: -20vh;
   </div>
   <div class="modal fade" id="registerInterest" tabindex="-1" role="dialog" aria-labelledby="registerInterestLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-lg modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="registerInterestLabel" style="color: rgb(238, 194, 120);">Sign-up for GIEQs Online!</h5>
+                    <h5 class="modal-title" id="registerInterestLabel" style="color: rgb(238, 194, 120);">Sign-up for
+                        GIEQs Online!</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span class="text-white" aria-hidden="false">&times;</span>
                     </button>
                 </div>
- 
+
                 <div class="modal-body">
-                    <span class="h6">This will only take 2 seconds.</span><span><br/>We need your email address and a password to keep track of your learning aims and objectives.  Thereafter you can choose what further information you share with us</span>
+                    <span class="h6">This will only take a minute.</span><span><br />We need your email address and a
+                        password to keep track of your learning aims and objectives. The rest of the information we request here is to track your learning outcomes and suggest relevant content.  You can update your information in My Account once you have registered.</span>
                     <form id="NewUserForm" class="mt-3">
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <label class="form-control-label">First name</label>
-                            <input name="firstname" class="form-control" type="text" placeholder="Enter your first name" value="">
-                          </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">First name</label>
+                                    <input name="firstname" class="form-control" type="text"
+                                        placeholder="Enter your first name" value="">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Last name</label>
+                                    <input name="surname" class="form-control" type="text"
+                                        placeholder="Also your last name" value="">
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <label class="form-control-label">Last name</label>
-                            <input name="surname" class="form-control" type="text" placeholder="Also your last name" value="">
-                          </div>
+                        <div class="row align-items-center">
+
+                            <div class="col-md-6">
+                                <div class="form-group focused">
+                                    <label class="form-control-label">Gender</label>
+                                    <select id="gender" name="gender" class="form-control" aria-hidden="true">
+                                        <option hidden>select gender
+                                        </option>
+                                        <option value="1">Female</option>
+                                        <option value="2"> Male</option>
+                                        <option value="3">Rather not say</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Email (will be your user id)</label>
+                                    <input name="email" class="form-control" type="email" placeholder="name@example.com"
+                                        value="">
+                                    <!--                     <small class="form-text text-muted mt-2">This is the main email address that we'll send notifications to. <a href="account-notifications.html">Manage your notifications</a> in order to control what we send.</small>
+         -->
+                                </div>
+                            </div>
                         </div>
-                      </div>
-                      <div class="row align-items-center">
-                        
-                        <div class="col-md-6">
-                          <div class="form-group focused">
-                            <label class="form-control-label">Gender</label>
-                            <select name="gender" class="form-control"  aria-hidden="true">
-                            <option hidden>select gender
-                            </option>  
-                            <option value="1" >Female</option>
-                              <option value="2"> Male</option>
-                              <option value="3">Rather not say</option>
-                            </select>
-                          </div>
+                        <div class="row align-items-center">
+
+                            <div class="col-md-6">
+                                <div class="form-group focused">
+                                    <label class="form-control-label">I am a...</label>
+                                    <select name="endoscopistType" class="form-control" aria-hidden="true">
+                                        <option hidden selected disabled>Select the option which best describes you
+                                        </option>
+                                        <option value="1">Medical Endoscopist</option>
+                                        <option value="2">Surgical Endoscopist</option>
+                                        <option value="3">Nurse Endoscopist</option>
+                                        <option value="4">Endoscopy Nurse (assistant)</option>
+                                        <option value="5">Medical Student</option>
+                                        <option value="6">Nursing Student</option>
+                                        <option value="7">Not a healthcare professional</option>
+
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Are you a trainee?</label>
+                                    <select id="trainee" name="trainee" class="form-control" tabindex="-1"
+                                        aria-hidden="true">
+                                        <option hidden disabled selected>select a training status...</option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <label class="form-control-label">Email (will be your user id)</label>
-                            <input name="email" class="form-control" type="email" placeholder="name@example.com" value="">
-        <!--                     <small class="form-text text-muted mt-2">This is the main email address that we'll send notifications to. <a href="account-notifications.html">Manage your notifications</a> in order to control what we send.</small>
-         -->                  </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Institution country</label>
+                                        <select id="centreCountry" name="centreCountry" class="form-control" tabindex="-1"
+                                            aria-hidden="true">
+                                            <option hidden disabled selected>select a country...</option>
+                                            <?php $countries = $general->getCountries();
+                            
+                            foreach ($countries as $key=>$value){
+                            
+                            ?>
+
+                                            <option value="<?php echo $key;?>"><?php echo $value;?></option>
+
+
+
+
+                                            <?php }?>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Password</label>
+                                    <input id="password" name="password" class="form-control" type="password"
+                                        placeholder="Enter your password" value="">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Password again</label>
+                                    <input name="passwordAgain" class="form-control" type="password"
+                                        placeholder="password again" value="">
+                                </div>
+                            </div>
                         </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <label class="form-control-label">Password</label>
-                            <input id="password" name="password" class="form-control" type="password" placeholder="Enter your password" value="">
-                          </div>
+                        <div class="my-4">
+                            <div class="custom-control custom-checkbox mb-2">
+                                <input type="checkbox" name="checkterms" class="custom-control-input" id="checkterms">
+                                <label class="custom-control-label" for="checkterms">I agree to the <a
+                                        href="<?php echo BASE_URL;?>/pages/support/support_gieqs_terms_and_conditions.php"
+                                        target="_blank">terms and conditions</a></label>
+                            </div>
+                            <div class="custom-control custom-checkbox mb-2">
+                                <input type="checkbox" name="checkprivacy" class="custom-control-input"
+                                    id="checkprivacy">
+                                <label class="custom-control-label" for="checkprivacy">I agree to the <a
+                                        href="<?php echo BASE_URL;?>/pages/support/support_gieqs_privacy_policy.php"
+                                        target="_blank">privacy policy</a></label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" name="checkMail" class="custom-control-input"
+                                    id="checkMail">
+                                <label class="custom-control-label" for="checkMail">I agree to receive mails from GIEQs.com related to my account</label>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                          <div class="form-group">
-                            <label class="form-control-label">Password again</label>
-                            <input name="passwordAgain" class="form-control" type="password" placeholder="password again" value="">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="my-4">
-                        <div class="custom-control custom-checkbox mb-3">
-                          <input type="checkbox" name="checkterms" class="custom-control-input" id="checkterms">
-                          <label class="custom-control-label" for="checkterms">I agree to the <a href="<?php echo BASE_URL;?>/pages/support/support_gieqs_terms_and_conditions.php" target="_blank">terms and conditions</a></label>
-                        </div>
-                        <div class="custom-control custom-checkbox">
-                          <input type="checkbox" name="checkprivacy" class="custom-control-input" id="checkprivacy">
-                          <label class="custom-control-label" for="checkprivacy">I agree to the <a href="<?php echo BASE_URL;?>/pages/support/support_gieqs_privacy_policy.php" target="_blank">privacy policy</a></label>
-                        </div>
-                      </div>
-                      
-          </form>
+
+                        <input type="hidden" id="signup_redirect" name="signup_redirect" value="<?php echo $asset_id_pagewrite;?>">
+
+                        <?php if ($access_validated){
+
+                            ?>
+                        <input type="hidden" name="access_token" value="<?php echo $access_token;?>">
+
+                        <?php
+                        }
+                       
+
+                        ?>
+
+                    </form>
                 </div>
                 <div class="modal-footer">
-                  <button id="submitPreRegister" type="button" class="btn-small text-dark bg-gieqsGold">Sign up</button>
-                  <button id="login" type="button" class="btn-small btn-secondary">I already have a login</button>
+                    <button id="submitPreRegister" type="button" class="btn btn-small text-dark bg-gieqsGold">Sign
+                        up</button>
+                    <button id="login" type="button" class="btn btn-small btn-secondary">I already have a login</button>
 
 
-                   
+
                 </div>
             </div>
         </div>
     </div>
+
 
     <?php require BASE_URI . '/footer.php';?>
 
@@ -1503,50 +1592,66 @@ invalidHandler: function(event, validator) {
 },
 rules: {
   firstname: {
-            required: true,
+                required: true,
 
-          },
-
-
-
-          surname: {
-            required: true,
-
-          },
-
-          gender: {
-            required: true,
-
-          },
+            },
 
 
-          email: {
-            required: true,
-            email: true,
 
-          },
+            surname: {
+                required: true,
 
-          password: {
-            required: true,
-            minlength: 6,
+            },
 
-          },
+            gender: {
+                required: true,
 
-          passwordAgain: {
-            equalTo: "#password",
-            
+            },
 
-          },
+            trainee: {
+                required: true,
 
-          checkterms:{
+            },
 
-            required: true,
 
-          }, 
-          checkprivacy:{
+            email: {
+                required: true,
+                email: true,
 
-            required:true
-          }
+            },
+
+            password: {
+                required: true,
+                minlength: 6,
+
+            },
+
+            passwordAgain: {
+                equalTo: "#password",
+
+
+            },
+
+
+            centreCountry: {
+
+                required: true,
+
+            },
+            endoscopistType: {
+
+                required: true
+            },
+
+            checkterms: {
+
+                required: true,
+
+            },
+            checkprivacy: {
+
+                required: true
+            },
 
 
 

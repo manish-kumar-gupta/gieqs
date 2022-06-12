@@ -59,7 +59,7 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 </style>
 
 
-<li class="nav-item dropdown mega-dropdown dropdown-animate" data-toggle="hover"
+<li class="nav-item dropdown mega-dropdown dropdown-animate cursor-pointer" data-toggle="hover"
     style="position:static; font-size:1.0rem;">
     <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
         aria-expanded="false">Courses & Pro Content</a>
@@ -74,12 +74,90 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
         
         <div class="row">
             <div class="col-md-6 col-xl-3 sub-menu mb-xl-0 mb-4">
-                <h6 class="sub-title text-uppercase font-weight-bold white-text">Upcoming Courses <br /><small>(Register Now)</small>
+                <h6 class="sub-title text-uppercase font-weight-bold white-text">Upcoming Symposia & Courses <br /><small>(Register)</small>
                 </h6>
                 <?php //var_dump($coursesAdvertised);?>
                 <ul class="list-unstyled">
 
-                    <?php foreach($coursesAdvertised as $key=>$value){ 
+                    <?php 
+                    
+                    foreach($symposiaAdvertised as $key=>$value){ 
+                      
+                      
+                        $programme_array = $assetManager->returnProgrammesAsset($value['id']);
+  
+                        $programme_defined = $programme_array[0];
+                        //echo $programme_defined;
+  
+                        $access = [0=>['id'=>$programme_defined],];
+  
+                        
+  
+                        $access1 = $sessionView->getStartAndEndProgrammes($access, $debug);
+  
+                        $access2 = $sessionView->getStartEndProgrammes($access1, $debug);
+  
+  
+                    
+                          $programme->Load_from_key($programme_defined);
+                          $serverTimeZone = new DateTimeZone('Europe/Brussels');
+                          $programmeDate = new DateTime($programme->getdate(), $serverTimeZone);
+  
+                          $humanReadableProgrammeDate = date_format($programmeDate, "l jS F Y");
+  
+                          //echo $humanReadableProgrammeDate;
+  
+                          $startTime = new DateTime($programme->getdate() . ' ' . $access2[0]['startTime'], $serverTimeZone);
+  
+                          $humanReadableStartTime = date_format($startTime, "H:i"); 
+  
+                          //var_dump($startTime);
+  
+  
+                          if ($startTime > new DateTime('now')){
+  
+  
+                                  //no proaccess
+                                  if ($assetManager->doesUserHaveSameAssetAlready($value['id'], $userid, false) == true){
+  
+                                      $color_item = 'non-promember-owned';
+                                      $start_link = BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=';
+                                      $advert_text = '<i class="fas fa-unlock-alt small"></i>';
+  
+                                  }else{
+                                    
+                                      $color_item = 'non-promember-does-not-own';
+                                      $start_link = BASE_URL . '/pages/program/program_generic.php?id=';
+                                      $advert_text = '<i class="fas fa-lock small" title="You do not own this content.  Click to Purchase"></i><i class="fas fa-shopping-basket small ml-1"></i>';
+  
+  
+                                  }
+  
+  
+                              
+  
+                            ?>
+  
+                      <li>
+  
+                      <a class="menu-item <?php echo $color_item;?>"
+                              href="<?php echo $start_link . $value['id'] ?>"><i
+               class="fas fa-caret-right pl-1 pr-3"></i><?php echo $value['name'] . ' ' . $advert_text; ?></a><br /><span
+                              class="text-muted small"><?php echo $humanReadableProgrammeDate . ' ' . $humanReadableStartTime . ' CET'; ?></span>
+  
+                      </li>
+  
+                      <?php 
+                          }
+                        
+                        
+                        
+                        ?>
+  
+  
+                      <?php } 
+
+                    foreach($coursesAdvertised as $key=>$value){ 
                       
                       
                       $programme_array = $assetManager->returnProgrammesAsset($value['id']);
@@ -229,7 +307,7 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
                           ?>
 
-                    <li class="mt-2">
+                    <li class="mt-2" style="line-height:1.2;">
 
                         <a class="menu-item <?php echo $color_item;?>"
                             href="<?php echo $start_link . $value['id'] ?>"><i
@@ -312,7 +390,7 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
                                   
                                     $color_item = 'non-promember-does-not-own';
                                     $start_link = BASE_URL . '/pages/program/program_generic.php?id=';
-                                    $advert_text = '<i class="fas fa-lock small" title="You do not own this content.  Click to Purchase"></i><span class="badge badge-pill bg-secondary text-dark badge-floating border-dark ml-2 p-1" style="font-size:20%">Register</span>';
+                                    $advert_text = '<i class="fas fa-lock small" title="You do not own this content.  Click to Purchase"></i><i class="fas fa-shopping-basket small ml-1"></i>';
 
                                 }
 
@@ -320,7 +398,7 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
                           ?>
 
-                    <li class="mt-2" style="line-height:1.4;">
+                    <li class="mt-2" style="line-height:1.2;">
 
                     <a class="menu-item <?php echo $color_item;?>"
                             href="<?php echo $start_link . $value['id'] ?>"><i
@@ -368,7 +446,7 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
                         
                         ?>
 
-                    <li class="mt-2">
+                    <li class="mt-2" style="line-height:1.2;">
 
                     <a class="menu-item <?php echo $color_item;?>"
                             href="<?php echo $start_link . $value['id'] ?>"><i
@@ -454,7 +532,7 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
                           ?>
 
-                    <li class="mt-2">
+                    <li class="mt-2" style="line-height:1.2;">
 
                     <a class="menu-item <?php echo $color_item;?>"
                             href="<?php echo $start_link . $value['id'] ?>"><i
@@ -506,7 +584,7 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
                         
                         ?>
 
-                    <li class="mt-2">
+                    <li class="mt-2" style="line-height:1.2;">
 
                     <a class="menu-item <?php echo $color_item;?>"
                             href="<?php echo $start_link . $value['id'] ?>"><i

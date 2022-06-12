@@ -44,6 +44,9 @@ $programme = new programme;
 require_once BASE_URI . '/assets/scripts/classes/coin.class.php';
 $coin = new coin;
 
+require_once BASE_URI . '/assets/scripts/classes/symposium.class.php';
+$symposium = new symposium;
+
 
 require_once BASE_URI . '/assets/scripts/classes/coin_grant.class.php';
 $coin_grant = new coin_grant;
@@ -52,6 +55,9 @@ $coin_grant = new coin_grant;
 require_once BASE_URI . '/assets/scripts/classes/coin_spend.class.php';
 $coin_spend = new coin_spend;
 
+require_once BASE_URI . '/pages/learning/includes/give_asset_functions.inc.php';
+
+$debug = false;
 
 if ($debug){
 
@@ -70,7 +76,7 @@ function get_include_contents($filename, $variablesToMakeLocal) {
 
 
 require_once BASE_URI . "/vendor/autoload.php";
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 
 spl_autoload_unregister ('class_loader');
 error_reporting(E_ALL);
@@ -79,13 +85,24 @@ use Stripe\Stripe;
 
 //CHANGE_TEST_TO_LIVE_STRIPE
 
-require(BASE_URI . '/../scripts/stripe_api.php');
+//require(BASE_URI . '/../scripts/stripe_api.php');
+//CHANGE FOR STRIPE TEST
+
+if ($stripe_status_live === true){
+
+    require(BASE_URI . '/../scripts/stripe_api.php'); 
+
+}else{
+
+    \Stripe\Stripe::setApiKey('sk_test_51IsKqwEBnLMnXjoguHzjHquozIjRT1Wt5OuLAQqxJvkUvX6DwMebWAPwgXsWaW35r5WXk1m6CuxtkY72I6QNLpH200No1l1SwU');
+    $stripe = new \Stripe\StripeClient(
+        'sk_test_51IsKqwEBnLMnXjoguHzjHquozIjRT1Wt5OuLAQqxJvkUvX6DwMebWAPwgXsWaW35r5WXk1m6CuxtkY72I6QNLpH200No1l1SwU'
+      ); 
+    
+
+}
 
 
-/* \Stripe\Stripe::setApiKey('sk_test_51IsKqwEBnLMnXjoguHzjHquozIjRT1Wt5OuLAQqxJvkUvX6DwMebWAPwgXsWaW35r5WXk1m6CuxtkY72I6QNLpH200No1l1SwU');
-$stripe = new \Stripe\StripeClient(
-    'sk_test_51IsKqwEBnLMnXjoguHzjHquozIjRT1Wt5OuLAQqxJvkUvX6DwMebWAPwgXsWaW35r5WXk1m6CuxtkY72I6QNLpH200No1l1SwU'
-  ); */
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -93,20 +110,23 @@ $mail = new PHPMailer;
 
 error_reporting(E_ALL);
 
-print_r($_GET);
+//print_r($_GET);
 
 $session_id = $_GET['session_id'];
 
 $session = \Stripe\Checkout\Session::retrieve($session_id);
 $customer = \Stripe\Customer::retrieve($session->customer);
+//$invoice = \Stripe\Invoice::retrieve($session->invoice);
 
 
-print "<pre>";
+
+/* print "<pre>";
 print_r($session);
 print "</pre>";
 print "<pre>";
 print_r($customer);
 print "</pre>";
+ */
 
 //check if this is a subscription or a fixed price
 
@@ -121,7 +141,6 @@ if ($session['mode'] == 'payment'){
 
 }elseif ($session['mode'] == 'subscription'){
 
-    //$debug = true;
 
     if ($debug){
 
@@ -135,7 +154,7 @@ if ($session['mode'] == 'payment'){
 
     if ($session['metadata']['alreadyHasSiteWide'] == 'true'){
 
-        //handle old subscription
+        //handle old subscription (for if this is a subscription, for congress see below)
 
                 //get the subscription object of the sitewide subscription
 
@@ -200,7 +219,7 @@ if ($session['mode'] == 'payment'){
 
 
 
-
+$debug = false;
 
 
     if ($session['metadata']['free_trial'] == true){
@@ -327,79 +346,27 @@ $asset_id = $assetManager->getAssetid($subscription_id);
 
 $assets_paid->Load_from_key($asset_id);
 
+if ($users->gettimezone()){
+
+    $timezone = $users->gettimezone();
+}else{
+
+    $timezone = 'UTC';
+}
+
+$end_date = new DateTime($subscription->getexpiry_date(), new DateTimeZone($timezone));
+
+$end_date_user_readable = date_format($end_date, 'd/m/Y');
+
+$start_date = new DateTime($subscription->getstart_date(), new DateTimeZone($timezone));
+
+$start_date_user_readable = date_format($start_date, 'd/m/Y');
+
 if ($assetManager->isSitewidePRO($asset_id) === true){
 
     //do stuff to give the assets, //check this
 
-    function getPastAdvertisedAssets ($assetManager, $sessionView, $programme) {
-
-        $assets = [];
-    
-    
-        $assets2 = $assetManager->returnAdvertisedAssets(2, false);
-        $assets3 = $assetManager->returnAdvertisedAssets(3, false);
-        $assets4 = $assetManager->returnAdvertisedAssets(4, false);
-    
-    
-        //define date today
-        $today = new DateTime('now');
-    
-        //add them all to an array
-    
-        foreach ($assets2 as $key=>$value){
-            
-            foreach ($value as $key2=>$value2){
-    
-                //add the id to the array ONLY if the start time is not in the future
-                if (getProgrammeStartTime($value['id'], $assetManager, $sessionView, $programme) < $today){
-                        $assets[] = $value['id']; 
-                        break;
-                }
-    
-            }
-            
-    
-    
-        }
-    
-        foreach ($assets3 as $key=>$value){
-    
-            foreach ($value as $key2=>$value2){
-                //var_dump($value['id']);
-    
-                //add the id to the array ONLY if the start time is not in the future
-    
-                if (getProgrammeStartTime($value['id'], $assetManager, $sessionView, $programme) < $today){
-                    $assets[] = $value['id']; 
-                    break;
-    
-                }
-    
-            }
-    
-    
-        }
-    
-        foreach ($assets4 as $key=>$value){
-    
-            //no dates in these assets
-    
-            foreach ($value as $key2=>$value2){
-                //var_dump($value['id']);
-    
-                $assets[] = $value['id'];
-                break;
-    
-    
-            }
-    
-    
-        }
-    
-        return $assets;
-    
-    
-    }
+   
 
     $log = [];
 
@@ -542,6 +509,8 @@ $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $su
 
     if ($asset_type == '1'){ //site wide
 
+        //GIVE THE SITE WIDE SUBSCRIPTIONS HERE
+
         $filename = '/assets/email/subscriptions/renewSubscriptionMail.php';  //to change
         $subject = 'Thank-you for Your Subscription on GIEQS Online';
         $preheader = 'Your new subscription awaits!  Thank you for your support of GIEQs Online';
@@ -550,10 +519,317 @@ $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $su
 
     }else if ($asset_type == '2'){ //GIEQs Congress Subscription
         
-        $filename = '/assets/email/subscriptions/renewSubscriptionMail.php';
-        $subject = 'Thank-you for Your Subscription on GIEQS Online';
-        $preheader = 'Your new subscription awaits!  Thank you for your support of GIEQs Online';
+        $filename = '/assets/email/subscriptions/gieqs_iii_onboarding.php';
+        $subject = 'Thank-you for Your GIEQs III Registration';
+        $preheader = 'Your congress subscription was successful!  Thank you for your support of GIEQs';
         $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $subscription_id;
+
+        $symposium_id = $userFunctions->getSymposiumidUserid($userid, false);
+
+        $debug = false;
+
+        $sitewide_cancellation_string = null;
+
+        if ($symposium_id != false){
+
+            $symposium->Load_from_key($symposium_id);
+
+            //update the final registration date
+
+            $symposium->setfull_registration_date($current_date_sqltimestamp);
+            $symposium->setpartial_registration('0');
+
+            $symposium->prepareStatementPDOUpdate();
+
+            if ($symposium->getincludeGIEQsPro() == '1'){ 
+                
+                $debug = true;
+                
+                if ($debug){
+                    
+                    //purchased a Pro subscription alongside
+
+                    echo 'purchased a Pro subscription alongside';
+
+                }
+
+                //cancel any old
+
+                if ($assetManager->getSiteWideSubscription($userid, false) != false){
+
+
+                    //handle old subscription (for if this is a subscription, for congress see below)
+            
+                            //get the subscription object of the sitewide subscription
+            
+                            $sitewidesubscriptonid = $assetManager->getSiteWideSubscription($userid, false);
+
+                            if ($debug){
+
+
+                                echo 'detected a sitewide subscription with id ' . $sitewidesubscriptonid;
+
+                            }
+            
+                            if ($subscription->Return_row($sitewidesubscriptonid)){
+                        
+                                $subscription->Load_from_key($sitewidesubscriptonid);
+                                $stripe_subscription_id = $subscription->getgateway_transactionId();
+                    
+                                if ($debug){
+
+
+                                    echo 'and with gateway transaction id ' . $stripe_subscription_id;
+    
+                                }
+
+                                try {
+                                   
+                                    $old_subscription = \Stripe\Subscription::retrieve($stripe_subscription_id);
+
+                                    $old_subscription_status = $stripe->subscriptions->cancel(
+                                        $stripe_subscription_id,
+                                        ['prorate' => true,]
+                                      );
+                                    
+                            
+                                      if ($debug){
+                                      //print_r($old_subscription_status);
+                                      //die();
+                                    }
+
+                                } catch (\Throwable $th) {
+                                
+                                    //stripe doesn't recognise this id, simply inactivate the subscription since we already matched it and are planning to create a new one from now
+                                    $subscription->setauto_renew('0');
+                        
+                                        $subscription->setactive('0');
+                        
+                                        echo $subscription->prepareStatementPDOUpdate();
+            
+                                        if ($debug){
+                                        echo 'Old subscription cancelled';
+            
+                                        }
+
+                                        $userActivity->New_userActivity($userid, 'CANCEL_SUB_SYMPOSIUM ID ' . $sitewidesubscriptonid, null, $current_date_sqltimestamp);
+                                        echo $userActivity->prepareStatementPDO();
+
+                                        $sitewide_cancellation_string = 'Old GIEQs Online subscription ID #' . $sitewidesubscriptonid . ' was cancelled and prorata refund requested via Stripe.  Please verify you have received a refund.';
+
+                                        //track this change
+
+                                }
+                    
+                                
+                        
+                                
+                        
+                                    if ($old_subscription_status->status == 'cancelled'){
+                        
+                                        //$old_subscription->cancel();
+                        
+                                    
+                                        $subscription->setauto_renew('0');
+                        
+                                        $subscription->setactive('0');
+                        
+                                        echo $subscription->prepareStatementPDOUpdate();
+            
+                                        if ($debug){
+                                        echo 'Old subscription cancelled';
+            
+                                        }
+
+                                        $userActivity->New_userActivity($userid, 'CANCEL_SUB_SYMPOSIUM ID ' . $sitewidesubscriptonid, null, $current_date_sqltimestamp);
+                                        echo $userActivity->prepareStatementPDO();
+
+                                        $sitewide_cancellation_string = 'Old GIEQs Online subscription ID #' . $sitewidesubscriptonid . ' was cancelled and prorata refund requested via Stripe.  Please verify you have received a refund.';
+
+            
+            
+                                    }
+            
+                                }
+                    
+            
+            
+                }
+
+
+                //setup the subscription
+
+                //start now
+                //end 12 m
+
+                //DEFINE DATES
+                //today
+                $current_date = new DateTime('now', new DateTimeZone('UTC'));
+                $current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s');
+
+                //after 1 year
+                $interval = 'P12M';
+
+                //add interval to today
+                $end_start_calculate_date = new DateTime('now', new DateTimeZone('UTC'));
+                $end_start_calculate_date->add(new DateInterval($interval));
+                $end_date_sqltimestamp = date_format($end_start_calculate_date, 'Y-m-d H:i:s');
+
+                $start_date_gieqs_online = date_format($current_date, 'd-m-Y');
+                $end_date_gieqs_online = date_format($end_start_calculate_date, 'd-m-Y');
+                
+                //asset id 
+                $registrationTypeConverter = [ //array to convert registration type from the symposium table to sitewide asset id
+
+                    1 => 18,
+                    2 => 19,
+                    3 => 19,
+                    4 => 20,
+                    5 => 20,
+                
+                
+                ];
+
+
+                $subscription->New_subscriptions($userid, $registrationTypeConverter[$symposium->getregistrationType()], $current_date_sqltimestamp, $end_date_sqltimestamp, '1', '0', $payment_intent);
+
+                $newsitewideSubscriptionid = $subscription->prepareStatementPDO();
+
+                if ($newsitewideSubscriptionid > 0){
+
+                    if ($debug){
+
+                        echo 'New subscription (sitewide) setup with id ' . $newsitewideSubscriptionid;
+
+                    }
+
+                    $log=[];
+
+                    if ($assetManager->isSitewidePRO($registrationTypeConverter[$symposium->getregistrationType()]) === true){
+
+                        //do stuff to give the assets, //check this
+                    
+                       
+                    
+                        $log = [];
+                    
+                        //DEFINE USER ID 
+                        $defined_userid = $userid;
+                        //define assets future
+                        $assets = getPastAdvertisedAssets($assetManager, $sessionView, $programme);
+                    
+                        //DEFINE DATES
+                        //today
+                        $current_date = new DateTime('now', new DateTimeZone('UTC'));
+                        $current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s');
+                    
+                        //after 1 year
+                        $interval = 'P12M';
+                    
+                        //add interval to today
+                        $end_start_calculate_date = new DateTime('now', new DateTimeZone('UTC'));
+                        $end_start_calculate_date->add(new DateInterval($interval));
+                        $end_date_sqltimestamp = date_format($end_start_calculate_date, 'Y-m-d H:i:s');
+                    
+                    
+                    
+                        foreach ($assets as $assetkey=>$assetvalue){
+                            //iterate through advertised assets
+                    
+                    
+                            //check if user already owns
+                    
+                            //if not give a 1 year  access 
+                    
+                            //$value is userid
+                    
+                            //$assetvalue is assetid
+                    
+                            if ($assetManager->doesUserHaveSameAssetAlready($assetvalue, $defined_userid, false) === false){
+                    
+                                $log[] = 'User no ' . $defined_userid . ' does not currently own asset ' . $assetvalue;
+                    
+                    
+                            $subscription->New_subscriptions($defined_userid, $assetvalue, $current_date_sqltimestamp, $end_date_sqltimestamp, '1', '0', 'TOKEN_ID=PRO_SUBSCRIPTION');
+                    
+                            $newSubscriptionid = $subscription->prepareStatementPDO();
+                    
+                            //$newSubscriptionid = ' fake subscription id';
+                    
+                    
+                            $log[] = 'User no ' . $defined_userid . ' granted access to assetid ' . $assetvalue . '. New subscription no = ' . $newSubscriptionid;
+                    
+                    
+                            }else{
+                                
+                                $log[] = 'User no ' . $defined_userid . ' already owns asset ' . $assetvalue;
+                    
+                    
+                            }
+                    
+                    
+                    
+                    
+                        }
+
+                        if ($debug){
+
+                            print_r($log);
+
+                        }
+                    
+                    
+                    
+                    }
+
+                }else{
+                    
+                    if ($debug){
+
+                        echo 'Failed in setup of new sitewide subscription';
+
+                    }
+
+                }
+
+
+
+                //it will end after without continued billing
+                //maybe an email reminder before timeout (autorenew 0)
+
+                //using registration type choose which one
+
+
+
+                //then setup
+
+
+                
+
+
+
+
+
+            }
+
+            
+            
+        }else{
+         
+            if ($debug){
+
+                echo 'Error. No symposium record detected for user and purchasing a symposium';
+
+            }
+
+        }
+        
+        //too late for discount
+        //here we need to handle GIEQs Pro giving
+
+        //check if user already has sitewide
+
+
 
 
 
@@ -590,17 +866,8 @@ $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $su
 
 
 
-if ($users->gettimezone()){
 
-    $timezone = $users->gettimezone();
-}else{
 
-    $timezone = 'UTC';
-}
-
-$end_date = new DateTime($subscription->getexpiry_date(), new DateTimeZone($timezone));
-
-$end_date_user_readable = date_format($end_date, 'd/m/Y');
 
 
 
@@ -620,7 +887,38 @@ $emailVaryarray['key'] = $users->getkey();
 $emailVaryarray['gateway_transactionId'] = $payment_intent;
 $emailVaryarray['preheader'] = $preheader;
 
+//symposium specific
 
+$registrationType = [
+
+    1 => 'Doctor',
+    2 => 'Doctor in Training',
+    3 => 'Nurse Endoscopist',
+    4 => 'Endoscopy Nurse',
+    5 => 'Medical Student',
+
+
+];
+
+//$start_date_gieqs_online = 'start date';
+//$end_date_gieqs_online = 'end date';
+
+$includeGIEQsPro = [
+
+    0 => 'Not included',
+    1 => 'Included.  Subscription id # ' . $newsitewideSubscriptionid . '. Starts ' . $start_date_gieqs_online . ' Ends ' . $end_date_gieqs_online . '. ' . $sitewide_cancellation_string,
+
+
+
+];
+
+
+$emailVaryarray['registrationType'] = $registrationType[$symposium->getregistrationType()];
+$emailVaryarray['includeGIEQsPro'] = $includeGIEQsPro[$symposium->getincludeGIEQsPro()];
+
+$emailVaryarray['start_date'] = $start_date_user_readable;
+
+$debug = false;
 
 if ($debug){
 
@@ -632,7 +930,13 @@ if ($debug){
 //PRIOR TO MAIL SEND UPDATE THE COIN STATUS IF PRESENT
 //MAKE DEFINITIVE
 
-if ($session['metadata']['coin_used'] == true){
+
+if ($debug){
+
+    echo '<br/><br/>coin used in session meta was ' . $session['metadata']['coin_used'];
+}
+
+if ($session['metadata']['coin_used'] === true){
 
     $transaction_id_check = $userFunctions->returnRecentCoinTransactionUserSingle($userid, false);
 
@@ -680,7 +984,7 @@ if ($session['metadata']['coin_used'] == true){
 $mail->CharSet = "UTF-8";
 $mail->Encoding = "base64";
 $mail->Subject = $subject;
-$mail->setFrom('admin@gieqs.com', 'GIEQs Online');
+$mail->setFrom('admin@gieqs.com', 'the GIEQs Foundation');
 $mail->addAddress($emailVaryarray['email']);
 $mail->msgHTML(get_include_contents(BASE_URI . $filename, $emailVaryarray));
 $mail->AltBody = strip_tags((get_include_contents(BASE_URI . $filename, $emailVaryarray)));

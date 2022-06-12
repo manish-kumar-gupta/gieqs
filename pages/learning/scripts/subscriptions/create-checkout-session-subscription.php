@@ -45,7 +45,28 @@ error_reporting(E_ALL);
 
 use Stripe\Stripe;
 
-require(BASE_URI . '/../scripts/stripe_api.php');
+//CHANGE FOR STRIPE TEST
+
+if ($stripe_status_live === true){
+
+    require(BASE_URI . '/../scripts/stripe_api.php'); 
+
+}else{
+
+    \Stripe\Stripe::setApiKey('sk_test_51IsKqwEBnLMnXjoguHzjHquozIjRT1Wt5OuLAQqxJvkUvX6DwMebWAPwgXsWaW35r5WXk1m6CuxtkY72I6QNLpH200No1l1SwU');
+    $stripe = new \Stripe\StripeClient(
+        'sk_test_51IsKqwEBnLMnXjoguHzjHquozIjRT1Wt5OuLAQqxJvkUvX6DwMebWAPwgXsWaW35r5WXk1m6CuxtkY72I6QNLpH200No1l1SwU'
+      ); 
+    
+
+}
+
+
+//require(BASE_URI . '/../scripts/stripe_api.php'); //turn back on for live
+
+//test
+
+//require(BASE_URI . '/../scripts/stripe_api.php');
 
 error_reporting(E_ALL);
 
@@ -442,9 +463,25 @@ if (isset($subscription_id)){
 
         //define price ids
 
-        //CHANGE_TEST_TO_LIVE_STRIPE
+         //CHANGE FOR STRIPE TEST
 
-        $price_ids_test = [
+         if ($stripe_status_live === true){
+
+            $price_ids = [ //LIVE IDS
+
+                4 => 'price_1JOoydEBnLMnXjogS1fT7ER3', //standard physician
+                5 => 'price_1JOoyXEBnLMnXjogdHnORQax', //stadard trainee
+                6 => 'price_1JOoyREBnLMnXjogrMaWao2s', //standard med student
+                18 => 'price_1JOoyLEBnLMnXjogM0ioYe7v', //pro physician
+                19 => 'price_1JOoyFEBnLMnXjogRi3Jrar5', //pro trainee
+                20 => 'price_1JOoy7EBnLMnXjogJ9SlsNXR', //pro nursing / med student
+    
+            ];
+        
+        }else{
+        
+            
+        $price_ids = [ //TEST IDS
 
             4 => 'price_1J4L5VEBnLMnXjogxxBLou9m',
             5 => 'price_1J4L6OEBnLMnXjoggMg7Ymsy', 
@@ -454,17 +491,14 @@ if (isset($subscription_id)){
             20 => 'price_1J4L8lEBnLMnXjogp3NBfYTD',
 
         ];
+            
+        
+        }
 
-        $price_ids = [
+        //CHANGE_TEST_TO_LIVE_STRIPE
 
-            4 => 'price_1JOoydEBnLMnXjogS1fT7ER3', //standard physician
-            5 => 'price_1JOoyXEBnLMnXjogdHnORQax', //stadard trainee
-            6 => 'price_1JOoyREBnLMnXjogrMaWao2s', //standard med student
-            18 => 'price_1JOoyLEBnLMnXjogM0ioYe7v', //pro physician
-            19 => 'price_1JOoyFEBnLMnXjogRi3Jrar5', //pro trainee
-            20 => 'price_1JOoy7EBnLMnXjogJ9SlsNXR', //pro nursing / med student
 
-        ];
+       
 
         //had a free trial previously?
 

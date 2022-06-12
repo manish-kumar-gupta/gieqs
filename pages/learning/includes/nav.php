@@ -134,7 +134,7 @@ if ($menus) {
 <nav class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-dark bg-dark" id="navbar-main">
     <div class="container px-lg-0">
         <!-- Logo -->
-        <a class="navbar-brand mr-lg-5" href="<?php echo BASE_URL; ?>/pages/learning/index.php">
+        <a class="navbar-brand mr-lg-5" href="<?php echo BASE_URL; ?>/index.php">
             <img alt="Image placeholder" src="<?php echo BASE_URL; ?>/assets/img/brand/gieqs-online-logo.png"
                 id="navbar-logo" style="height: 50px;">
         </a>

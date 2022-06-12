@@ -78,65 +78,29 @@ require BASE_URI . '/headNoPurposeCore.php';
 
         <?php require BASE_URI . '/nav.php';?>
 
+       <?php $symposium_nav_active = [
+
+0 => '', //news
+1 => '', //individual reg
+2 => '', //group reg
+3 => '', //program
+4 => 'gieqsGold', //faculty
+5 => '', //register now
+
+
+
+];
+
+
+require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
+
     </header>
     <!-- Omnisearch -->
-    <div id="omnisearch" class="omnisearch">
-        <div class="container">
-            <form class="omnisearch-form">
-                <div class="form-group">
-                    <div class="input-group input-group-merge input-group-flush">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-search"></i></span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Type and hit enter ...">
-                    </div>
-                </div>
-            </form>
-            <div class="omnisearch-suggestions">
-                <h6 class="heading">Search Suggestions</h6>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <ul class="list-unstyled mb-0">
-                            <li>
-                                <a class="list-link" href="#">
-                                    <i class="fas fa-search"></i>
-                                    <span>macbook pro</span> in Laptops
-                                </a>
-                            </li>
-                            <li>
-                                <a class="list-link" href="#">
-                                    <i class="fas fa-search"></i>
-                                    <span>iphone 8</span> in Smartphones
-                                </a>
-                            </li>
-                            <li>
-                                <a class="list-link" href="#">
-                                    <i class="fas fa-search"></i>
-                                    <span>macbook pro</span> in Laptops
-                                </a>
-                            </li>
-                            <li>
-                                <a class="list-link" href="#">
-                                    <i class="fas fa-search"></i>
-                                    <span>beats pro solo 3</span> in Headphones
-                                </a>
-                            </li>
-                            <li>
-                                <a class="list-link" href="#">
-                                    <i class="fas fa-search"></i>
-                                    <span>smasung galaxy 10</span> in Phones
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+   
     <div class="main-content">
 
         <!-- Header (v1) -->
-        <section class="header-1 bg-section-dark" data-offset-top="#header-main">
+        <section class="pt-8">
         </section>
 
 
@@ -149,11 +113,14 @@ require BASE_URI . '/headNoPurposeCore.php';
             <section class="slice bg-gradient-dark slice-lg">
                 <div class="container">
                     <div class="mb-5 text-center">
-                        <h2 class="mt-4" style="color: rgb(238, 194, 120);">The GIEQs faculty</h2>
+                        <h1 class="mt-7">The GIEQs faculty</h1>
                         <div class="fluid-paragraph mt-3">
-                            <p class="lead lh-180">With a stellar international faculty the second edition of GIEQs
+                            <p class="lead lh-150">With a stellar international faculty the third edition of GIEQs
                                 promises to be a launch-pad for innovative thinking in everyday endoscopic practice.</p>
                         </div>
+                        <a href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=95&action=register" class="btn btn-fill-gieqsGold btn-lg my-2" role="button">Register Now!</a>
+
+
                     </div>
                     <div class="mb-5 text-left">
                         <h3 class=" mt-4" style="color: rgb(238, 194, 120);">International Faculty</h3>

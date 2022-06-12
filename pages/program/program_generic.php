@@ -65,26 +65,7 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
 
 }
 
-//definitions
 
-//assetid
-
-//$assetid = 13;
-$asset_id_pagewrite = $asset_id_url;
-
-$programme_array = $assetManager->returnProgrammesAsset($asset_id_pagewrite);
-$programme_defined = $programme_array[0];
-
-if ($debug){
-
-print_r($programme_array);
-echo $programme_defined;
-
-}
-
-
-
-$assets_paid->Load_from_key($asset_id_pagewrite);
 
 
 
@@ -94,7 +75,6 @@ $assets_paid->Load_from_key($asset_id_pagewrite);
 
 
 ?>
-    <title>GIEQs Course - <?php echo $assets_paid->getname(); ?></title>
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.css">
     <script src="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.js"></script>
 
@@ -191,17 +171,86 @@ font-weight: 300 !important;
 
         <?php require BASE_URI . '/nav.php';?>
 
+
+
         <?php 
 
+//definitions
+
+//assetid
+
+//$assetid = 13;
+$asset_id_pagewrite = $asset_id_url;
+
+//fix GIEQs III
+if ($asset_id_url == '95'){
+
+    $asset_id_pagewrite = '95';
+    $asset_id_pagewrite2 = '96'; //this will actually be 95 and need to get second part of the array
+    $is_symposium = true;
+
+    $symposium_nav_active = [
+
+        0 => '', //news
+        1 => 'gieqsGold', //individual reg
+        2 => '', //group reg
+        3 => '', //program
+        4 => '', //faculty
+        5 => '', //register now
+        
+        
+        
+        ];
+
+     require BASE_URI . '/pages/learning/includes/nav_symposium.php';
+
+    
+}else{
+
+    $is_symposium = false;
+}
+
 $programme_array = $assetManager->returnProgrammesAsset($asset_id_pagewrite);
+
 $programme_defined = $programme_array[0];
+if ($programme_array[1] != ''){
+
+    $programme2 = $programme_array[1];
+}else{
+
+    $programme2 = null;
+}
+
+if (isset($asset_id_pagewrite2)){
+
+$programme_array2 = $assetManager->returnProgrammesAsset($asset_id_pagewrite2);
+$programme_defined3 = $programme_array2[0];
+if ($programme_array2[1] != ''){
+
+    $programme4 = $programme_array2[1];
+}else{
+
+    $programme4 = null;
+}
+
+}
 
 if ($debug){
 
-print_r($programme_array);
-echo $programme_defined;
+print_r($programme_defined);
+print_r($programme2);
+print_r($programme_defined3);
+
+print_r($programme4);
+
+
 
 }
+
+
+
+$assets_paid->Load_from_key($asset_id_pagewrite);
+
 
 
 
@@ -214,8 +263,8 @@ $blogid = $blog_to_use_as_basis;
 
 
 $access = [0=>['id'=>$programme_defined],];
-
 $access1 = null;
+
 
     
 $access1 = $sessionView->getStartAndEndProgrammes($access, $debug);
@@ -240,6 +289,39 @@ $startTime = new DateTime($programme->getdate() . ' ' . $access2[0]['startTime']
 $endTime = new DateTime($programme->getdate() . ' ' . $access2[0]['endTime'], $serverTimeZone);
 $humanStartTime = date_format($startTime, "H:i");
 $humanEndTime = date_format($endTime, "H:i T");
+
+if (isset($asset_id_pagewrite2)){
+
+    $accessv1 = [0=>['id'=>$programme_defined3],];
+
+    $accessv11 = null;
+
+    $accessv11 = $sessionView->getStartAndEndProgrammes($accessv1, $debug);
+
+    //var_dump($access1);
+
+    //echo '<br/><br/>now get the start and end times in a single array<br/><br/>';
+
+    $accessv12 = null;
+
+    $accessv12 = $sessionView->getStartEndProgrammes($accessv11, $debug);
+
+    //var_dump($access2);
+
+$programme->Load_from_key($programme_defined3);
+//$serverTimeZonev1 = new DateTimeZone('Europe/Brussels');
+$programmeDatev1 = new DateTime($programme->getdate(), $serverTimeZone);
+
+$humanReadableProgrammeDatev1 = date_format($programmeDate, "l jS F Y");
+
+$startTimev1 = new DateTime($programme->getdate() . ' ' . $accessv12[0]['startTime'], $serverTimeZone);
+$endTimev1 = new DateTime($programme->getdate() . ' ' . $accessv12[0]['endTime'], $serverTimeZone);
+$humanStartTimev1 = date_format($startTimev1, "H:i");
+$humanEndTimev1 = date_format($endTimev1, "H:i T");
+
+
+}
+
 
 if ($debug){
 var_dump($currentTime);
@@ -361,22 +443,44 @@ var_dump($currentTime);
       $proMember = false;
     }
 
-    if ($fullAccess === true || $proMember === true){
+    if ($access_validated === false){
+        if ($fullAccess === true || $proMember === true){
 
-        //should not be applicable to anything other than symposia, courses and advanced packs
+            //should not be applicable to anything other than symposia, courses and advanced packs
 
-        if ($assetManager->getAssetTypeAsset($assets_paid->getid()) == '2' || $assetManager->getAssetTypeAsset($assets_paid->getid()) == '3' || $assetManager->getAssetTypeAsset($assets_paid->getid()) == '4'){
-        $access_validated = true;
+            if ($assetManager->getAssetTypeAsset($assets_paid->getid()) == '2' || $assetManager->getAssetTypeAsset($assets_paid->getid()) == '3' || $assetManager->getAssetTypeAsset($assets_paid->getid()) == '4'){
+            
+                //fix for upcoming symposium (gieqs iii)
+
+                if ($assets_paid->getid() == '95'){
+                    
+                    $access_validated = false;
+
+
+                }else{
+            
+                    $access_validated = true;
+                }
+            }
+
+
         }
 
     }
 
                              
                              ?>
+    <title>GIEQs Course - <?php echo $assets_paid->getname(); ?></title>
 
         <div id="action" style="display:none;"><?php if ($action){echo $action;}?></div>
         <div id="access_token" style="display:none;"><?php if ($access_validated){echo $access_token;}?></div>
         <div id="asset_id" style="display:none;"><?php if ($asset_id_url){echo $asset_id_url;}?></div>
+        <div id="programme_defined" style="display:none;"><?php if (isset($programme_defined)){echo $programme_defined;}else{echo 'false';}?></div>
+        <div id="programme2" style="display:none;"><?php if ($programme2!=null){echo $programme2;}else{echo 'false';}?></div>
+        <div id="programme_defined3" style="display:none;"><?php if (isset($programme_defined3)){echo $programme_defined3;}else{echo 'false';}?></div>
+        <div id="programme4" style="display:none;"><?php if ($programme4!=null){echo $programme4;}else{echo 'false';}?></div>
+        <div id="isSymposium" style="display:none;"><?php if ($is_symposium){echo 'true';}else{echo 'false';}?></div>
+        <div id="stripe-status-live" style="display:none;"><?php if ($stripe_status_live){echo 'true';}else{echo 'false';}?></div>
 
     </header>
 
@@ -521,11 +625,41 @@ var_dump($currentTime);
                 <div class="row text-center">
 
                     <div class="col-12 p-3 pb-1">
-                        <span class="h1" style="color: rgb(238, 194, 120);"><?php echo $assets_paid->getName(); ?><br /></span>
+
+                        <?php /**gieqs 3 specific**/ if ($asset_id_url == '95'){?>
+
+                            <figure class="figure mb-3">
+                 <a href="https://www.gieqs.com/iii" target="_blank"><img alt="Image placeholder" src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1650342788_gieqs_1200x300_final_5.png" class="w-50 mb-4"></a>
+                
+              </figure>
+                            
+                        <?php }else{?>
+
+                            <span class="h1" style="color: rgb(238, 194, 120);"><?php echo $assets_paid->getName(); ?><br /></span>
+
+
+                        <?php }?>
+
+
+
 
                         <?php if ($assetManager->getAssetTypeAsset($assets_paid->getid()) == '2' || $assetManager->getAssetTypeAsset($assets_paid->getid()) == '3'){?>
-                        <span class="h3 mt-4" style="color: rgb(238, 194, 120);"><?php echo 'Live :  ' . $humanReadableProgrammeDate;?></span>
-                        <span class="h3" style="color: rgb(238, 194, 120);"><?php echo ', ' . $humanStartTime . ' - ' . $humanEndTime;?> <br/>on Demand
+                        <span class="h3 mt-4" style="color: rgb(238, 194, 120);"><?php echo 'Live and Online :  ' . $humanReadableProgrammeDate;?></span>
+                        <span class="h3" style="color: rgb(238, 194, 120);"><?php echo ', ' . $humanStartTime . ' - ' . $humanEndTime;?> 
+                        <?php if (isset($asset_id_pagewrite2)){?>
+                            <br/>
+<!-- fix -->
+<span class="h3 mt-4" style="color: rgb(238, 194, 120);"><?php echo 'and :  Friday 30th September , 08:00 - 17:30 CET'?></span> 
+
+<!-- later replace -->
+
+                          <!--   <span class="h3 mt-4" style="color: rgb(238, 194, 120);"><?php echo 'and :  ' . $humanReadableProgrammeDatev1;?></span>
+                        <span class="h3" style="color: rgb(238, 194, 120);"><?php echo ', ' . $humanStartTimev1 . ' - ' . $humanEndTimev1;?> 
+ -->
+                        <?php }?>
+                        
+                        
+                        <br/>on Demand
                             thereafter<br /></span>
 
 
@@ -607,6 +741,8 @@ var_dump($currentTime);
                                 
                                 if ($assetManager->getAssetTypeAsset($assets_paid->getid()) == '1'){
 
+
+
                                     ?>
 
                             
@@ -619,17 +755,45 @@ var_dump($currentTime);
 
                         <?php
 
-                                }else{
+                                }else{ ?>
+
+                                   
+
+                                 <?php   if ($is_symposium === true){  //if is a symposium //new behaviour, hide button, new button?>
+
+                                        
+
+
+                                        <a data-assetid="<?php echo $asset_id_pagewrite; ?>"
+                                class="symposium-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
+                                <span class="btn-inner--text text-dark">Register Now!</span>
+                                <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+                            </a>
+
+                                        <a data-assetid="<?php echo $asset_id_pagewrite; ?>"
+                                class="d-none register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
+                                <span class="btn-inner--text text-dark">Register Now!</span>
+                                <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+                            </a>
+
+
+                                   <?php }else{   //current behaviour?>
+
+                                      
+
+                                        <a data-assetid="<?php echo $asset_id_pagewrite; ?>"
+                                class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
+                                <span class="btn-inner--text text-dark">Register Now!</span>
+                                <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+                            </a>
+
+                                   <?php }
                                 
                                 ?>
 
                             
 
-                            <a data-assetid="<?php echo $asset_id_pagewrite; ?>"
-                                class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
-                                <span class="btn-inner--text text-dark">Register Now!</span>
-                                <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
-                            </a>
+                            
 
                         <?php
                       
@@ -720,31 +884,46 @@ var_dump($currentTime);
                             //user does not own this
                             ?>
 
-                            <a data-assetid="<?php echo $asset_id_pagewrite; ?>"
-                                class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
-                                <span class="btn-inner--text text-dark">Register Now!</span>
-                                <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
-                            </a>
+<?php   if ($is_symposium === true){  //if is a symposium //new behaviour, hide button, new button?>
 
-                        <?php
-                      
-                        }//close if owns this
+                                        
 
-                    }else{//close if user id
-
-                        //no user logged in
-                        
-                        ?>
 
 <a data-assetid="<?php echo $asset_id_pagewrite; ?>"
-                                class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
-                                <span class="btn-inner--text text-dark">Register Now!</span>
-                                <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
-                            </a>
+class="symposium-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
+<span class="btn-inner--text text-dark">Register Now!</span>
+<!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+</a>
+
+<a data-assetid="<?php echo $asset_id_pagewrite; ?>"
+class="d-none register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
+<span class="btn-inner--text text-dark">Register Now!</span>
+<!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+</a>
+
+
+<?php }else{   //current behaviour?>
 
 
 
-<?php }//close if user id
+<a data-assetid="<?php echo $asset_id_pagewrite; ?>"
+class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
+<span class="btn-inner--text text-dark">Register Now!</span>
+<!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
+</a>
+
+<?php }
+
+?>
+
+
+
+
+
+<?php
+
+}
+}//close if owns this
 
                     }//close if type 1
 ?>
@@ -760,7 +939,13 @@ var_dump($currentTime);
 
                 <div id="ajaxWed">
 
-                </div>
+            </div>
+
+            <hr>
+
+            <div id="ajaxThurs">
+
+            </div>
 
 
 
@@ -786,9 +971,8 @@ var_dump($currentTime);
                 </div>
 
                 <div class="modal-body">
-                    <span class="h6">This will only take 2 seconds.</span><span><br />We need your email address and a
-                        password to keep track of your learning aims and objectives. Thereafter you can choose what
-                        further information you share with us</span>
+                    <span class="h6">This will only take a minute.</span><span><br />We need your email address and a
+                        password to keep track of your learning aims and objectives. The rest of the information we request here is to track your learning outcomes and suggest relevant content.  You can update your information in My Account once you have registered.</span>
                     <form id="NewUserForm" class="mt-3">
                         <div class="row">
                             <div class="col-md-6">
@@ -811,7 +995,7 @@ var_dump($currentTime);
                             <div class="col-md-6">
                                 <div class="form-group focused">
                                     <label class="form-control-label">Gender</label>
-                                    <select name="gender" class="form-control" aria-hidden="true">
+                                    <select id="gender" name="gender" class="form-control" aria-hidden="true">
                                         <option hidden>select gender
                                         </option>
                                         <option value="1">Female</option>
@@ -852,26 +1036,40 @@ var_dump($currentTime);
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-control-label">Institution country</label>
-                                    <select id="centreCountry" name="centreCountry" class="form-control" tabindex="-1"
+                                    <label class="form-control-label">Are you a trainee?</label>
+                                    <select id="trainee" name="trainee" class="form-control" tabindex="-1"
                                         aria-hidden="true">
-                                        <option hidden disabled selected>select a country...</option>
-                                        <?php $countries = $general->getCountries();
-                        
-                        foreach ($countries as $key=>$value){
-                        
-                        ?>
-
-                                        <option value="<?php echo $key;?>"><?php echo $value;?></option>
-
-
-
-
-                                        <?php }?>
+                                        <option hidden disabled selected>select a training status...</option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Institution country</label>
+                                        <select id="centreCountry" name="centreCountry" class="form-control" tabindex="-1"
+                                            aria-hidden="true">
+                                            <option hidden disabled selected>select a country...</option>
+                                            <?php $countries = $general->getCountries();
+                            
+                            foreach ($countries as $key=>$value){
+                            
+                            ?>
+
+                                            <option value="<?php echo $key;?>"><?php echo $value;?></option>
+
+
+
+
+                                            <?php }?>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -889,18 +1087,23 @@ var_dump($currentTime);
                             </div>
                         </div>
                         <div class="my-4">
-                            <div class="custom-control custom-checkbox mb-3">
+                            <div class="custom-control custom-checkbox mb-2">
                                 <input type="checkbox" name="checkterms" class="custom-control-input" id="checkterms">
                                 <label class="custom-control-label" for="checkterms">I agree to the <a
                                         href="<?php echo BASE_URL;?>/pages/support/support_gieqs_terms_and_conditions.php"
                                         target="_blank">terms and conditions</a></label>
                             </div>
-                            <div class="custom-control custom-checkbox">
+                            <div class="custom-control custom-checkbox mb-2">
                                 <input type="checkbox" name="checkprivacy" class="custom-control-input"
                                     id="checkprivacy">
                                 <label class="custom-control-label" for="checkprivacy">I agree to the <a
                                         href="<?php echo BASE_URL;?>/pages/support/support_gieqs_privacy_policy.php"
                                         target="_blank">privacy policy</a></label>
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" name="checkMail" class="custom-control-input"
+                                    id="checkMail">
+                                <label class="custom-control-label" for="checkMail">I agree to receive mails from GIEQs.com related to my account</label>
                             </div>
                         </div>
 
@@ -931,6 +1134,390 @@ var_dump($currentTime);
         </div>
     </div>
 
+    <!-- $('#costCalculator').modal('show') -->
+
+    <div class="modal fade" id="costCalculator" tabindex="-1" role="dialog" aria-labelledby="costCalculatorLabel"
+        aria-hidden="true">
+        <div class="modal-lg modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <p class="modal-title h3" id="costCalculatorLabel" style="color: rgb(238, 194, 120);">Fine Tune your Virtual Registration Options for GIEQs III!</p>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="text-white" aria-hidden="false">&times;</span>
+                    </button>
+                </div>
+
+                
+
+                <div class="modal-body">
+                     <span class="h4">Select from the options below to determine your registration options and cost.</span>
+                     <div class="row mt-3">
+                            <div class="col-md-6">
+                                <p class="text-white">Early Bird Rates Currently Apply until 1st September 2022.</p>
+                            <div class="form-group">
+                                    <label class="form-control-label text-muted">Type of Registration</label>
+                                    <select id="registrationType" name="registrationType" class="form-control determineCost" aria-hidden="true">
+                                        <option hidden value="9">select registration type
+                                        </option>
+                                        <option value="1">Doctor</option>
+                                        <option value="2">Doctor in Training</option>
+                                        <option value="3">Nurse Endoscopist (includes Nursing Symposium in Dutch)</option>
+                                        <option value="4">Endoscopy Nurse (includes Nursing Symposium in Dutch)</option>
+                                        <option value="5">Medical Student</option>
+                                    </select>
+                                </div>
+                                <div class="form-group d-none">
+                                    <label class="form-control-label text-muted">Do you intend to make a Group Reservation?</label>
+                                    <select id="groupRegistration" name="groupRegistration" class="form-control determineCost" aria-hidden="true">
+                                        <option hidden value="9">group reservation?
+                                        </option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                </div>
+                                <div class="form-group d-none">
+                                    <label class="form-control-label gieqsGold">Do you wish to include a 1-year GIEQs Online PRO Membership at significantly reduced cost?</label>
+                                    <select id="includeGIEQsPRO" name="includeGIEQsPRO" class="form-control determineCost" aria-hidden="true">
+                                        <option hidden value="9">include GIEQs Online PRO Membership?
+                                        </option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                
+                                <div class="card bg-dark-light p-3">
+                                    <div class"card-header">
+                                <p class="h3 text-white mt-2">Cost Breakdown</p>
+                    </div>
+                    <div class="card-body">
+                                <p class="text-white mt-0">Symposium : &euro;<span id="cost-symposium"></span></p>
+                                <p class="text-white mt-0"><span class="cursor-pointer" onclick="alert('to the stars');" title="GIEQs PRO is the premier tier of GIEQs Online Membership.  Click to find out more." data-toggle="tooltip" data-placement="bottom">GIEQs PRO 1-year</span> : &euro;<s><span id="normal-cost-online"></span></s> <span id="cost-online" class="gieqsGold"></span></p>
+                                <p class="gieqsGold" id="costSaving"></p>
+                    </div>
+                   
+                                <!-- <p class="h5">Make a choice of your registration type to view cost and savings</p> -->
+
+                          
+                    <div class="card-footer">
+                    <p class="h3">Total : &euro; <span id="updatedCost"></span></p>
+                    </div>
+
+                    </div>
+
+                    </div>
+                    
+                   
+                </div>
+                <div class="modal-footer">
+                    <p class="small">These options are for virtual registration.  There are a small number (first come first served) of registrations available in Ghent (details in your confirmation email).  We <strong>strongly</strong> encourage participants to register in groups and create their own live experiences.  This not only facilitates networking but saves the Planet.</p>
+                    <button id="continueRegistration" type="button" class="btn btn-small text-dark btn-fill-gieqsGold">Continue Registration</button>
+                   
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+                    </div>
+
+                    <div class="modal fade" id="step2" tabindex="-1" role="dialog" aria-labelledby="step2Label"
+        aria-hidden="true">
+        <div class="modal-lg modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="step2Label" style="color: rgb(238, 194, 120);">Complete your Registration Details!</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="text-white" aria-hidden="false">&times;</span>
+                    </button>
+                    
+                </div>
+               
+                <div class="modal-body">
+                    <card class="card bg-dark-light">
+                        <div class="card-body">
+                <p class="text-white">Selected Registration Type : <span id="regType1"></span>, <span id="gieqsOnlineAdded"></span> <button type="button" id="changeRegistration" class="btn btn-small text-dark bg-gieqsGold p-1 m-2">Change</button></p>
+                    </div>
+                    </card>
+                    <span class="h6">This will only take a minute.</span><span><br />We need these details to finalise your registration.  We have prefilled data already associated with your account.</span>
+                    <form id="step2Form" class="mt-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">First name</label>
+                                    <input id="firstname" name="firstname" class="form-control" type="text"
+                                        placeholder="Enter your first name" value="">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Last name</label>
+                                    <input id="surname" name="surname" class="form-control" type="text"
+                                        placeholder="Also your last name" value="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center">
+
+                            <div class="col-md-6">
+                                <div class="form-group focused">
+                                    <label class="form-control-label">Title</label>
+                                    <select id="title" name="title" class="form-control" aria-hidden="true">
+                                        <option hidden>select title
+                                        </option>
+                                        <option value="1">Mr</option>
+                                        <option value="2">Mrs</option>
+                                        <option value="3">Ms</option>
+                                        <option value="4">Dr</option>
+                                        <option value="5">Professor</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Mobile Telephone Number</label>
+                                    <input name="contactPhone" class="form-control" id="contactPhone" placeholder="including country code"
+                                        value="">
+                                    <!--                     <small class="form-text text-muted mt-2">This is the main email address that we'll send notifications to. <a href="account-notifications.html">Manage your notifications</a> in order to control what we send.</small>
+         -->
+                                </div>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="row align-items-center">
+
+                        <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Name of Employing Institution</label>
+                                    <input name="centreName" class="form-control" id="centreName" placeholder="some hospital"
+                                        value="">
+                                    <!--                     <small class="form-text text-muted mt-2">This is the main email address that we'll send notifications to. <a href="account-notifications.html">Manage your notifications</a> in order to control what we send.</small>
+         -->
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                            <div class="form-group">
+                                    <label class="form-control-label">City of Employing Institution</label>
+                                    <input name="centreCity" class="form-control" id="centreCity" placeholder="some city"
+                                        value="">
+                                    <!--                     <small class="form-text text-muted mt-2">This is the main email address that we'll send notifications to. <a href="account-notifications.html">Manage your notifications</a> in order to control what we send.</small>
+         -->
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+
+
+                        <div class="row align-items-center">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                        <label class="form-control-label">Country of Employing Institution</label>
+                                        <select id="centreCountry1" name="centreCountry1" class="form-control" tabindex="-1"
+                                            aria-hidden="true">
+                                            <option hidden disabled selected>select a country...</option>
+                                            <?php $countries = $general->getCountries();
+                            
+                            foreach ($countries as $key=>$value){
+                            
+                            ?>
+
+                                            <option value="<?php echo $key;?>"><?php echo $value;?></option>
+
+
+
+
+                                            <?php }?>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        <hr/>
+                        <div class="row align-items-center">
+
+                            <div class="col-md-6">
+                                <div class="form-group focused">
+                                    <label class="form-control-label">I am a...</label>
+                                    <select name="endoscopistType" id="endoscopistType" class="form-control" aria-hidden="true">
+                                        <option hidden selected disabled>Select the option which best describes you
+                                        </option>
+                                        <option value="1">Medical Endoscopist</option>
+                                        <option value="2">Surgical Endoscopist</option>
+                                        <option value="3">Nurse Endoscopist</option>
+                                        <option value="4">Endoscopy Nurse (assistant)</option>
+                                        <option value="5">Medical Student</option>
+                                        <option value="6">Nursing Student</option>
+                                        <option value="7">Not a healthcare professional</option>
+
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Are you a trainee?</label>
+                                    <select id="trainee1" name="trainee1" class="form-control" tabindex="-1"
+                                        aria-hidden="true">
+                                        <option hidden disabled selected>select a training status...</option>
+                                        <option value="0">No</option>
+                                        <option value="1">Yes</option>
+                                    </select>
+                                   
+                                </div>
+                            </div>
+                            <p class="pl-4">[trainee status will require a letter from the current Head of Department as confirmation. you will be contacted and charged the difference if a letter is not provided]</p>
+
+                        </div>
+                        <hr/>
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                 <div class="form-group">
+                            
+                                    <label class="form-control-label">My main interest in GIEQs is...</label>
+                                    <select id="interestReason" name="interestReason" class="form-control" tabindex="-1"
+                                        aria-hidden="true">
+                                        <option hidden disabled selected>select a main interest...</option>
+                                        <option value="1">Quality in general endoscopy</option>
+                                        <option value="2">Quality in colonoscopy technique</option>
+                                        <option value="3">Quality in ERCP</option>
+                                        <option value="4">Quality in endoscopic ultrasound</option>
+                                        <option value="5">Quality in endoscopic polypectomy</option>
+                                        <option value="6">Quality in endoscopic imaging of gastrointestinal lesions</option>
+                                        <option value="7">Quality in endoscopic unit design</option>
+                                        <option value="8">Quality in gastrointestinal bleeding</option>
+                                        <option value="9">Quality in inflammatory bowel disease endoscopy</option>
+                                        <option value="10">Quality in hepatologic endoscopy</option>
+                                        <option value="11">Quality in therapeutic endoscopy</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            
+                        </div>
+                        <hr/>
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                 <div class="form-group">
+                            
+                                    <label class="form-control-label">I am a member of the following professional organisation (select only one)</label>
+                                    <select id="professionalMember" name="professionalMember" class="form-control" tabindex="-1"
+                                        aria-hidden="true">
+                                        <option hidden disabled selected>select a main interest...</option>
+                                        <option value="0">Not a member of any of the following</option>
+                                        <option value="1">ESGE</option>
+                                        <option value="2">BSG</option>
+                                        <option value="3">ASGE</option>
+
+                                    
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-6">
+
+                                 <div class="form-group">
+                            
+                                  
+                                    <label class="form-control-label">If membership selected please enter your member number for verification</label>
+                                    <input name="professionalMemberNumber" class="form-control" id="professionalMemberNumber" placeholder="membership number"
+                                        value="">
+                                    
+                                </div>
+
+                            </div>
+                            <p class="pl-4">[no membership number = no discounted registration.  you will be contacted and charged the difference if a membership number is not provided]</p>
+
+                            
+                        </div>
+
+                        <hr/>
+
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                 <div class="form-group">
+                            
+                                    <label class="form-control-label">How and where were you informed of the Symposium (select only one)</label>
+                                    <select id="informedHow" name="informedHow" class="form-control" tabindex="-1"
+                                        aria-hidden="true">
+                                        <option hidden disabled selected>select how you were informed...</option>
+                                        <option value="0">None of the below</option>
+                                        <option value="1">GIEQs Online</option>
+                                        <option value="2">GIEQs Mailing List</option>
+                                        <option value="3">Professional Contact</option>
+                                        <option value="4">Google</option>
+                                        <option value="5">Social Media</option>
+
+                                    
+                                    </select>
+                                </div>
+
+                            </div>
+
+                           
+                            
+                        </div>
+
+                        <hr/>
+
+                        
+
+
+                        
+                        <div class="my-4">
+                            <div class="custom-control custom-checkbox mb-2">
+                                <input type="checkbox" name="checkterms2" class="custom-control-input" id="checkterms2">
+                                <label class="custom-control-label" for="checkterms2">I agree to the <a
+                                        href="<?php echo BASE_URL;?>/pages/support/support_gieqs_terms_and_conditions.php"
+                                        target="_blank">terms and conditions</a></label>
+                            </div>
+                            <div class="custom-control custom-checkbox mb-2">
+                                <input type="checkbox" name="checkprivacy2" class="custom-control-input"
+                                    id="checkprivacy2">
+                                <label class="custom-control-label" for="checkprivacy2">I agree to the <a
+                                        href="<?php echo BASE_URL;?>/pages/support/support_gieqs_privacy_policy.php"
+                                        target="_blank">privacy policy</a></label>
+                            </div>
+                          
+                        </div>
+
+                        <input type="hidden" id="signup_redirect1" name="signup_redirect" value="<?php echo $asset_id_pagewrite;?>">
+
+                        <?php if ($access_validated){
+
+                            ?>
+                        <input type="hidden" name="access_token1" value="<?php echo $access_token;?>">
+
+                        <?php
+                        }
+                       
+
+                        ?>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                   
+                <button id="continueRegistration2" type="button" class="btn btn-small text-dark bg-gieqsGold">Continue Registration</button>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
  
     <?php require BASE_URI . '/footer.php';?>
 
@@ -948,6 +1535,21 @@ var_dump($currentTime);
 
     
     <script>
+
+        var isSymposium = $('#isSymposium').text();
+
+        var stripestatuslive = $('#stripe-status-live').text();
+
+        //define programes
+
+        var programmeDefined = $('#programme_defined').text();
+        var programme2 = $('#programme2').text();
+        var programme_defined3 = $('#programme_defined3').text();
+        var programme4 = $('#programme4').text();
+
+
+            //define early bird tag, change on 1 sept 2022
+            var earlyBird = true;
 
 function submitPreRegisterForm() {
 
@@ -1037,12 +1639,923 @@ request2.done(function(data) {
 })
 }
 
+
+
+
+
+
+function refreshProgrammeViewv1() {
+
+
+
+const dataToSend = {
+
+    programmeid: programmeDefined,
+    programme2: programme2,
+
+}
+
+const jsonString = JSON.stringify(dataToSend);
+console.log(jsonString);
+
+var request2 = $.ajax({
+    url: siteRoot + "assets/scripts/classes/generateProgrammeCurrent.php",
+    type: "POST",
+    contentType: "application/json",
+    data: jsonString,
+});
+
+
+
+request2.done(function(data) {
+    // alert( "success" );
+    $('#ajaxWed').html(data);
+    //$(document).find('.Thursday').hide();
+})
+}
+
+function refreshProgrammeViewv2() {
+
+
+
+const dataToSend = {
+
+    programmeid: programme_defined3,
+    programme2: programme4,
+
+}
+
+const jsonString = JSON.stringify(dataToSend);
+console.log(jsonString);
+
+var request2 = $.ajax({
+    url: siteRoot + "assets/scripts/classes/generateProgrammeCurrent.php",
+    type: "POST",
+    contentType: "application/json",
+    data: jsonString,
+});
+
+
+
+request2.done(function(data) {
+    // alert( "success" );
+    $('#ajaxThurs').html(data);
+    //$(document).find('.Thursday').hide();
+})
+}
+
+function createCookie(name, value, days) {
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            var expires = "; expires=" + date.toGMTString();
+        } else {
+            var expires = "";
+        }
+        document.cookie = name + "=" + value + expires + "; path=/";
+    }
+
+    function readCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1, c.length);
+            }
+            if (c.indexOf(nameEQ) == 0) {
+                return c.substring(nameEQ.length, c.length);
+            }
+        }
+        return null;
+    }
+
+    function eraseCookie(name) {
+        createCookie(name, "", -1);
+    }
+
+function calculateCost(earlyBird, registrationType, groupRegistration, includeGIEQsPRO, debug = false){
+
+    var cost = 0;
+    var normalCostGIEQsOnline = null;
+    var saving = null;
+    var group = null;
+    var symposiumcost = null;
+
+if (earlyBird === true){
+
+    //early bird rates
+
+    if (registrationType == 1){ // doctor
+
+        symposiumcost = 100;
+        cost += 100;
+
+        if (groupRegistration == 1){ //return a marker
+
+            group = true;
+
+        }
+
+        if (includeGIEQsPRO == 1){
+
+            normalCostGIEQsOnline = 180;
+            saving = 80;
+            
+            cost+=(normalCostGIEQsOnline-saving);
+            
+
+
+        }
+
+        return {
+            
+            cost : cost,
+            normalCostGIEQsOnline : normalCostGIEQsOnline,
+            saving : saving,
+            group : group,
+            earlyBird : earlyBird,
+            registrationType : registrationType,
+            includeGIEQsPro : includeGIEQsPRO,
+            symposiumcost : symposiumcost,
+
+
+
+        };
+
+    }else if (registrationType == 2 || registrationType == 3){
+
+
+        symposiumcost = 50;
+
+        cost += 50;
+
+        if (groupRegistration == 1){ //return a marker
+
+            group = true;
+
+        }
+
+        if (includeGIEQsPRO == 1){
+
+            normalCostGIEQsOnline = 120;
+            saving = 30;
+            
+            cost+=(normalCostGIEQsOnline-saving);
+
+
+        }
+
+        
+        return {
+            
+            cost : cost,
+            normalCostGIEQsOnline : normalCostGIEQsOnline,
+            saving : saving,
+            group : group,
+            earlyBird : earlyBird,
+            registrationType : registrationType,
+            includeGIEQsPro : includeGIEQsPRO,
+            symposiumcost : symposiumcost,
+
+
+
+        };
+
+    }else if (registrationType == 4 || registrationType == 5){
+
+
+        symposiumcost = 30;
+
+        cost += 30;
+
+        if (groupRegistration == 1){ //return a marker
+
+            group = true;
+
+        }
+
+        if (includeGIEQsPRO == 1){
+
+            normalCostGIEQsOnline = 60;
+            saving = 10;
+            
+            cost+=(normalCostGIEQsOnline-saving);
+
+
+
+        }
+
+        return {
+            
+            cost : cost,
+            normalCostGIEQsOnline : normalCostGIEQsOnline,
+            saving : saving,
+            group : group,
+            earlyBird : earlyBird,
+            registrationType : registrationType,
+            includeGIEQsPro : includeGIEQsPRO,
+            symposiumcost : symposiumcost,
+
+
+
+        };
+
+    }
+
+
+}else{
+
+    //non-early bird rates
+   
+
+    if (registrationType == 1){ // doctor
+
+        symposiumcost = 150;
+
+        cost += 150;
+
+        if (groupRegistration == 1){ //return a marker
+
+                group = true;
+
+        }
+
+        if (includeGIEQsPRO == 1){
+
+            normalCostGIEQsOnline = 180;
+            saving = 80;
+            
+            cost+=(normalCostGIEQsOnline-saving);
+
+
+
+        }
+
+        return {
+            
+            cost : cost,
+            normalCostGIEQsOnline : normalCostGIEQsOnline,
+            saving : saving,
+            group : group,
+            earlyBird : earlyBird,
+            registrationType : registrationType,
+            includeGIEQsPro : includeGIEQsPRO,
+            symposiumcost : symposiumcost,
+
+
+        };
+
+    }else if (registrationType == 2 || registrationType == 3){
+
+
+        symposiumcost = 75;
+
+        cost += 75;
+
+        if (groupRegistration == 1){ //return a marker
+
+            group = true;
+        }
+
+        if (includeGIEQsPRO == 1){
+
+            normalCostGIEQsOnline = 120;
+            saving = 30;
+            
+            cost+=(normalCostGIEQsOnline-saving);
+
+
+
+
+
+        }
+
+       
+        return {
+            
+            cost : cost,
+            normalCostGIEQsOnline : normalCostGIEQsOnline,
+            saving : saving,
+            group : group,
+            earlyBird : earlyBird,
+            registrationType : registrationType,
+            includeGIEQsPro : includeGIEQsPRO,
+            symposiumcost : symposiumcost,
+
+
+        };
+
+    }else if (registrationType == 4 || registrationType == 5){
+
+
+        symposiumcost = 45;
+
+        cost += 45;
+
+        if (groupRegistration == 1){ //return a marker
+
+            group = true;
+
+        }
+
+        if (includeGIEQsPRO == 1){
+
+            normalCostGIEQsOnline = 60;
+            saving = 10;
+            
+            cost+=(normalCostGIEQsOnline-saving);
+
+
+        }
+
+        return {
+            
+            cost : cost,
+            normalCostGIEQsOnline : normalCostGIEQsOnline,
+            saving : saving,
+            group : group,
+            earlyBird : earlyBird,
+            registrationType : registrationType,
+            includeGIEQsPro : includeGIEQsPRO,
+            symposiumcost : symposiumcost,
+
+
+        };
+    }
+
+
+}
+
+
+}
+
+
+function submitSymposiumForm(){
+
+    $('#continueRegistration2').append('<i class="fas fa-circle-notch fa-spin ml-2"></i>');
+
+
+    var data = getFormDatav2($('#step2Form'), 'users', 'user_id', null, 1);
+
+    var costUpdate = JSON.parse(readCookie('step1'));
+
+    //TODO add identifier and identifierKey
+
+    //add assetid
+    //add all cost data
+
+    data.costUpdate = costUpdate;
+
+    data.assetid = asset_id;
+
+
+    //console.log(data);
+
+    data = JSON.stringify(data);
+
+    //console.log(data);
+
+    disableFormInputs('step2Form');
+
+    var passwordChange = $.ajax({
+        url: siteRoot + "/assets/scripts/symposium_update.php",
+        type: "POST",
+        contentType: "application/json",
+        data: data,
+    });
+
+    passwordChange.done(function (data) {
+
+
+        if (data){
+
+            var result = JSON.parse(data);
+            console.dir(result);
+
+            var users = parseInt(result.users);
+            var symposium = parseInt(result.symposium);
+
+            if (users > -1 || symposium > -1){
+
+                Swal.fire({
+                type: 'info',
+                title: 'Registration Data Saved',
+                text: 'We Saved your Registration Data.  Proceeding to Payment.',
+                background: '#162e4d',
+                confirmButtonText: 'ok',
+                confirmButtonColor: 'rgb(238, 194, 120)',
+
+            }).then((result) => {
+
+                //resetFormElements('step2Form');
+                $(document).find('#signup_redirect').val(asset_id);
+                enableFormInputs('step2Form');
+                $('#step2').modal('hide');
+                $('#continueRegistration2').find('i').remove();
+                $('.register-now').trigger('click');
+
+
+            })
+
+            }
+
+
+            
+
+        }
+
+
+
+    })
+
+
+}
+
+
 $(document).ready(function() {
 
 
+//if a symposium
+//$('#costCalculator').modal('show');
+//$('#step2').modal('show');
 
 
-refreshProgrammeView();
+//when showing costCalculator modal
+
+//check for the cookie
+
+$(document).on('shown.bs.modal', '#costCalculator', function(){
+
+    var costUpdate = JSON.parse(readCookie('step1'));
+    
+    if (costUpdate != undefined){
+
+        if (costUpdate.group == null){
+
+            var group = 0;
+        }
+
+        $('#groupRegistration').val(group);
+        $('#registrationType').val(costUpdate.registrationType);
+        $('#includeGIEQsPRO').val(costUpdate.includeGIEQsPro);
+        $('#registrationType').trigger('change');
+        $('#groupRegistration').trigger('change');
+        $('#includeGIEQsPRO').trigger('change');
+
+
+    }
+    
+    
+
+})
+
+
+$(document).on('click', '.symposium-now', function(){
+
+    $('#costCalculator').modal('show');
+
+
+})
+
+
+
+
+if (isSymposium == 'true'){
+
+refreshProgrammeViewv1();
+refreshProgrammeViewv2();
+}else{
+
+    refreshProgrammeView();
+}
+
+
+
+//if not
+
+
+});
+
+
+
+
+
+//logic for drop downs of the registration checker GIEQs III
+
+$(document).ready(function() {
+
+    $(document).on('change', '.determineCost', function(){
+
+        if ($('#registrationType').val() != '9'){
+
+            $('#continueRegistration').attr('disabled', false);
+
+
+
+            var updatedCostObject = calculateCost(earlyBird, $('#registrationType').val(), $('#groupRegistration').val(), $('#includeGIEQsPRO').val(), false);
+            console.dir(updatedCostObject);
+
+            if (updatedCostObject.group === true){
+                $('#updatedCost').text('Up to 50% Off');
+                $('#costSaving').html('<p>You could save ++ for yourself and a group of colleagues if you organise a group registration.</p>  <p> Experiencing GIEQs III in a group could contribute to upskilling in your department.  </p><button id="more-group-info" class="btn btn-small text-dark bg-gieqsGold p-1">More Information on Group Registration</button>');
+                $('#continueRegistration').attr('disabled', true);
+                $('#cost-symposium').text('up to 50% off');
+                $('#cost-online').text('included with all group registrations');
+                $('#normal-cost-online').text('');
+
+
+
+            }else{
+                $('#updatedCost').text(updatedCostObject.cost);
+                $('#continueRegistration').attr('disabled', false);
+
+                            if (updatedCostObject.saving === null){ //didn't select GIEQs Online
+
+                $('#costSaving').html('You could make a significant saving by purchasing a year worth of GIEQs Online PRO with your Symposium Registration (offer not available separately)');
+                $('#cost-symposium').text(updatedCostObject.cost);
+                $('#cost-online').text('');
+                $('#normal-cost-online').text('');
+
+
+                }else{
+
+                $('#costSaving').html('You are saving &euro;' + updatedCostObject.saving + ' versus the price of a pay-monthly GIEQs Online PRO Subscription for a year');
+                $('#cost-symposium').text(updatedCostObject.cost - (updatedCostObject.normalCostGIEQsOnline - updatedCostObject.saving));
+                $('#normal-cost-online').text(updatedCostObject.normalCostGIEQsOnline);
+                $('#cost-online').text(updatedCostObject.normalCostGIEQsOnline-updatedCostObject.saving);
+
+
+                }
+            }
+
+            
+
+        }else{
+
+            $('#continueRegistration').attr('disabled', true);
+
+
+
+        }
+
+
+
+
+    })
+
+
+//if a symposium
+$(document).on('change', '#registrationType', function(){
+
+    console.log('triggered');
+    console.log();
+
+    if ($('#registrationType').val() == '1' || $('#registrationType').val() == '2'){
+
+
+        $('#groupRegistration').parent().removeClass('d-none');
+
+    }else{
+
+        $('#groupRegistration').parent().addClass('d-none');
+        $('#groupRegistration').val('0');
+        $('#groupRegistration').trigger('change');
+
+
+    }
+
+
+
+
+})
+
+$(document).on('change', '#groupRegistration', function(){
+
+if ($('#groupRegistration').val() == '0'){
+
+    $('#includeGIEQsPRO').parent().removeClass('d-none');
+
+
+}else{
+
+    $('#includeGIEQsPRO').parent().addClass('d-none');
+
+    
+}
+
+
+
+
+})
+
+$(document).on('change', '#includeGIEQsPRO', function(){
+
+if ($('#includeGIEQsPRO').val() == '1'){
+
+
+
+
+}else{
+
+
+    
+}
+
+
+
+
+})
+
+// move on to second stage
+
+$(document).on('click', '#continueRegistration', function(){
+
+    if ($('#registrationType').val() != '9' && $('#includeGIEQsPRO').val() != '9'){
+
+        var updatedCostObject = calculateCost(earlyBird, $('#registrationType').val(), $('#groupRegistration').val(), $('#includeGIEQsPRO').val(), false);
+
+        createCookie('step1', JSON.stringify(updatedCostObject), 3);
+
+        //disable the button
+        $('#continueRegistration').attr('disabled', true);
+
+        //populate the new modal
+
+        
+
+            const dataToSend = {
+
+           
+            
+
+            }
+
+            const jsonString = JSON.stringify(dataToSend);
+            console.log(jsonString);
+
+            var request2 = $.ajax({
+            url: siteRoot + "assets/scripts/populateSymposiumRegistrationModal.php",
+            type: "POST",
+            contentType: "application/json",
+            data: jsonString,
+            });
+
+
+
+            request2.done(function(data) {
+
+                if (data){
+           
+                    
+                    var result = JSON.parse(data);
+                    console.dir(result);
+                    console.log(result[0].access_level);
+                    $('#firstname').val(result[0].firstname);
+                    $('#surname').val(result[0].surname);
+                    $('#contactPhone').val(result[0].contactPhone);
+                    $('#centreName').val(result[0].centreName);
+                    $('#centreCity').val(result[0].centreCity);
+                    $('#centreCountry1').val(result[0].centreCountry);
+                    $('#endoscopistType').val(result[0].endoscopistType);
+                    $('#trainee1').val(result[0].trainee);
+                    $('#title').val(result[0].title);
+                    $('#interestReason').val(result[0].interestReason);
+                    $('#professionalMember').val(result[0].professionalMember);
+                    $('#informedHow').val(result[0].informedHow);
+
+
+
+                    //also set from the cookie selected reg
+
+                    var costUpdate = JSON.parse(readCookie('step1'));
+                    console.dir(costUpdate);
+
+                    if (costUpdate.registrationType == '1'){
+
+                        $('#regType1').text('Doctor Registration ');
+
+
+                    }else if (costUpdate.registrationType == '2' || costUpdate.registrationType == '3'){
+
+                        $('#regType1').text('Trainee or Nurse Endoscopist Registration ');
+
+                    }else if (costUpdate.registrationType == '4' || costUpdate.registrationType == '5'){
+
+                        $('#regType1').text('Nurse or Medical Student Registration ');
+
+                    }
+
+                    if (costUpdate.includeGIEQsPro == '1'){
+                        //including 1 year GIEQs Online
+                        $('#gieqsOnlineAdded').text('plus 1 year discounted access to GIEQs Online');
+
+                    }else{
+
+                        $('#gieqsOnlineAdded').html('<span class=\'gieqsGold\'>missing out on discount on 1 year of GIEQs Online - are you sure? (offer not available separately or after purchase)<span>');
+
+                        //without GIEQs PRO 1 year (are you sure you want to miss out on this discount)
+                    }
+                    
+
+
+
+
+
+                $('#step2').modal('show');
+                $('#costCalculator').modal('hide');
+
+                }
+
+
+           
+            })
+
+        //show the new modal and hide this one
+        $('#continueRegistration').attr('disabled', false);
+
+
+    }else{
+
+
+        alert('Please Let us know whether you would like to add discounted GIEQs Pro Access for 1 year');
+
+    }
+
+
+
+
+})
+
+$(document).on('click', '#changeRegistration', function(){
+
+    $('#step2').modal('hide');
+    $('#costCalculator').modal('show');
+
+})
+
+$(document).on('click', '#continueRegistration2', function(event){
+
+event.preventDefault();
+$("#step2Form").submit();
+
+})
+
+//validation form
+$.validator.addMethod('checkProfessional', function(value, element) {
+        return (value === '' | value == '0');
+    }, "This field must either be empty or 0!");
+
+$("#step2Form").validate({
+
+invalidHandler: function(event, validator) {
+    var errors = validator.numberOfInvalids();
+    console.log("there were " + errors + " errors");
+    if (errors) {
+        var message = errors == 1 ?
+            "1 field contains errors. It has been highlighted" :
+            +errors + " fields contain errors. They have been highlighted";
+
+
+        $('#error').text(message);
+        //$('div.error span').addClass('form-text text-danger');
+        //$('#errorWrapper').show();
+
+        $("#errorWrapper").fadeTo(4000, 500).slideUp(500, function() {
+            $("#errorWrapper").slideUp(500);
+        });
+    } else {
+        $('#errorWrapper').hide();
+    }
+},
+rules: {
+            firstname: {
+                required: true,
+
+            },
+
+
+
+            surname: {
+                required: true,
+
+            },
+
+            title: {
+                required: true,
+
+            },
+
+            contactPhone: {
+                required: true,
+                minlength:8,
+
+            },
+
+            centreName: {
+                required: true,
+
+            },
+
+            centreCity: {
+                required: true,
+
+            },
+            centreCountry1: {
+                required: true,
+
+            },
+            endoscopistType: {
+                required: true,
+
+            },
+            trainee1: {
+                required: true,
+
+            },
+            interestReason: {
+                required: true,
+
+            },
+            professionalMember: {
+                
+                required: true,
+
+            },
+
+
+            professionalMemberNumber: {
+
+                /* required: {
+                    depends: function (element) {
+                        //return $("#professionalMember").is(":filled");
+                        return $("#professionalMember").val() != '0' || $("#professionalMember").val() != '';
+                    }
+                },
+ */
+                
+
+            },
+
+            
+
+            checkterms2: {
+
+                required: true,
+
+            },
+            checkprivacy2: {
+
+                required: true
+            },
+
+
+
+},messages: {
+
+    checkterms2: {
+
+required: 'You must agree to the Terms and Conditions',
+
+},
+checkprivacy2: {
+
+    required: 'You must agree to the Privacy Policy',
+},
+
+
+
+},
+submitHandler: function(form) {
+
+    //alert('Validation passed');
+    submitSymposiumForm();
+
+    //console.log("submitted form");
+
+
+
+}
+
+
+
+
+});
+
+$(document).on('click', '#more-group-info', function(){
+
+$('#step2').modal('hide');
+window.location.href = siteRoot2 + '/pages/program/symposium-group-registration.php';
+
+})
+
+
+
+
+
+
+
+
 
 });
 

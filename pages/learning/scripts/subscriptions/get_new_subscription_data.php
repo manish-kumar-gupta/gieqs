@@ -37,8 +37,14 @@ $assetManager = new assetManager;
 require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 $assets_paid = new assets_paid;
 
+require_once BASE_URI . '/assets/scripts/classes/userFunctions.class.php';
+$userFunctions = new userFunctions;
+
 require_once BASE_URI . '/assets/scripts/classes/subscriptions.class.php';
 $subscription = new subscriptions;
+
+require_once BASE_URI . '/assets/scripts/classes/symposium.class.php';
+$symposium = new symposium;
 
 $data = json_decode(file_get_contents('php://input'), true);
 
@@ -167,6 +173,26 @@ $subscription_to_return = array();
 $subscription_to_return['asset_name'] = $assets_paid->getname();
 $subscription_to_return['asset_type'] = $assetManager->getAssetTypeText($assets_paid->getasset_type());
 $subscription_to_return['asset_id'] = $assets_paid->getid();
+
+//check there is no symposium subscription associated with this user
+
+$symposium_id = $userFunctions->getSymposiumidUserid($userid, false);
+
+if ($symposium_id != false){
+
+    $symposium->Load_from_key($symposium_id);
+    $subscription_to_return['symposium'] = true;
+    $subscription_to_return['early_bird'] = $symposium->getearly_bird();
+    $subscription_to_return['group_registration'] = $symposium->getgroup_registration();
+    $subscription_to_return['registrationType'] = $symposium->getregistrationType();
+    $subscription_to_return['includeGIEQsPro'] = $symposium->getincludeGIEQsPro();
+    $subscription_to_return['professionalMember'] = $symposium->getprofessionalMember();
+    $subscription_to_return['longTermProMemberDiscount'] = $symposium->getlongTermProMemberDiscount();
+
+
+}
+
+
 
 $subscription_to_return['cost'] = $assets_paid->getcost();
 $subscription_to_return['description'] = $assets_paid->getdescription();

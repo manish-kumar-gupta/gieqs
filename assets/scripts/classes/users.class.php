@@ -20,6 +20,8 @@ error_reporting(E_ALL);
 
 }
 
+//error_reporting(E_ALL);
+
 //require_once '../../../assets/includes/config.inc.php';
 
 

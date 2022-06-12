@@ -116,7 +116,11 @@ $live = 1;
 
 
 
- 
+ # ******************** #
+# ***** PURCHASING ***** #
+
+$stripe_status_live = false;  //true is live keys, false is testing
+
 
 
 

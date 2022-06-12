@@ -19,7 +19,8 @@ function ne($v)
     return $v != '';
 }
 
-$debug = false;
+//$debug = true;
+//$_SESSION['debug'] = true;
 $explicit = true;
 //echo 'hello';
 
@@ -83,6 +84,33 @@ echo date('Y/m/d H:i:s'); */
         $users->settimezone($timezone);
         $users->setcentreCountry($data['centreCountry']);
         $users->setendoscopistType($data['endoscopistType']);
+        //var_dump($data);
+        $users->settrainee('1');
+        //echo 'hello';
+
+
+        
+
+        if (isset($data['checkMail'])){
+            
+
+                $users->setemailPreferences('1');
+                $users->setemailAccount('1');
+                $users->setemailServices('1');
+
+
+            
+
+         }else{
+
+            $users->setemailPreferences('0');
+            $users->setemailAccount('0');
+            $users->setemailServices('0');
+
+
+        } 
+
+
 
         $key = $userFunctions->generateRandomString('10');
         $users->setkey($key);
