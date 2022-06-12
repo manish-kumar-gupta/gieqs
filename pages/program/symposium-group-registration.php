@@ -329,7 +329,7 @@ require BASE_URI . '/headNoPurposeCore.php';
 
   <hr class="my-2">
   <p class="lead">Once you're done sit back and enjoy GIEQs 3 in September (29-30th) in your local environment and access for 12 months afterwards (with included GIEQs online PRO access).  Feel good as a group that you are upskilling your endoscopy practice with the latest evidence based information and saving the planet at the same time.</p>
-  <a class="btn btn-fill-gieqsGold btn-lg my-2" href="#" role="button">Get Started - Download the Registration Form</a>
+  <a class="btn btn-fill-gieqsGold btn-lg my-2" href="<?php echo BASE_URL; ?>/assets/includes/letter-groups-gieqsiii.docx" role="button">Get Started - Download the Registration Form</a>
 </div>
 
 
