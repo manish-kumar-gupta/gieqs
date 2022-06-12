@@ -493,6 +493,8 @@ if (isset($subscription_id)){
         }else{
 
             $subscription_to_return['cost'] = $assets_paid->getcost();
+            $subscription_to_return['symposium'] = false;
+            $subscription_to_return['cost_symposium'] = '';
 
 
         }
