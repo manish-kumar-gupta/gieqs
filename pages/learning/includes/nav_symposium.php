@@ -20,7 +20,7 @@
 
 <nav class="mt-2 navbar navbar-horizontal navbar-expand-lg navbar-dark gieqsGold sticky-top" style="z-index: 1 !important;">
     <div class="container">
-        <a class="navbar-brand" href="<?php echo BASE_URL; ?>/pages/learning/index.php"><?php echo 'Symposium.  Edition III';?>
+        <a class="navbar-brand" href="<?php echo BASE_URL; ?>/pages/program/program_generic.php?id=95"><?php echo 'Symposium.  Edition III';?>
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-warning"
             aria-controls="navbar-warning" aria-expanded="false" aria-label="Toggle navigation">
