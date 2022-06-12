@@ -79,6 +79,51 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
     <script src="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.js"></script>
 
     <style>
+
+.btn-outline-gieqsGold {
+
+color: rgb(238, 194, 120);
+border-color: rgb(238, 194, 120);
+
+}
+
+
+.btn-fill-gieqsGold {
+
+color: #162e4d !important;
+border-color: rgb(238, 194, 120) !important;
+background-color: rgb(238, 194, 120) !important;
+}
+
+.btn-fill-gieqsGold:hover {
+
+
+
+border-color: rgb(238, 194, 120) !important;
+background-color: #162e4d !important;
+color: rgb(238, 194, 120) !important;
+
+
+}
+
+.btn-fill-gieqsGold-dark {
+
+background-color: #162e4d !important;
+border-color: rgb(238, 194, 120) !important;
+color: rgb(238, 194, 120) !important;
+}
+
+.btn-fill-gieqsGold-dark:hover {
+
+
+border-color: rgb(238, 194, 120) !important;
+background-color: rgb(238, 194, 120) !important;
+color: #162e4d !important;
+
+
+}
+
+
          .blog-container {
 
 font-family: 'nunito', sans-serif;
