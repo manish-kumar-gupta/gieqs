@@ -60,6 +60,9 @@ RewriteRule ^polyp-cancer$ pages/program/program_generic.php?id=86&access_token=
 
 
 RewriteRule ^iii$ pages/program/program_generic.php?id=95
+RewriteRule ^iii/programme$ pages/program/program.php
+RewriteRule ^iii/program$ pages/program/program.php
+
 RewriteRule ^3$ pages/program/program_generic.php?id=95
 RewriteRule ^symposium/group-registration$ pages/program/symposium-group-registration.php
 RewriteRule ^symposium/programme$ pages/program/program.php
