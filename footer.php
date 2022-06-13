@@ -14,7 +14,7 @@
         <div class="col-lg-2 col-6 col-sm-4 ml-lg-auto mb-5 mb-lg-0">
           <h6 class="heading mb-3">Symposium</h6>
           <ul class="list-unstyled">
-            <li><a href="<?php echo BASE_URL;?>/pages/program/gieqs_ii.php">Register</a></li>
+            <li><a href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=95">Register</a></li>
             <li><a href="<?php echo BASE_URL;?>/pages/program/faculty.php">Faculty</a></li>
             <li><a href="<?php echo BASE_URL;?>/pages/program/sponsors.php">Sponsors</a></li>
           </ul>

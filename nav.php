@@ -452,11 +452,7 @@ if ($debugAccess){
               
                 <!-- Venue -->
                 <!--currently not active-->
-                <?php if (!$liveAndLoggedIn){?>
-                <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/faculty.php">Faculty</a>
-                </li>
-                <?php }?>
+               
 
                 <!-- Sponsors -->
                 
