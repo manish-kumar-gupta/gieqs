@@ -525,8 +525,8 @@ var_dump($currentTime);
         <div id="programme_defined3" style="display:none;"><?php if (isset($programme_defined3)){echo $programme_defined3;}else{echo 'false';}?></div>
         <div id="programme4" style="display:none;"><?php if ($programme4!=null){echo $programme4;}else{echo 'false';}?></div>
         <div id="isSymposium" style="display:none;"><?php if ($is_symposium){echo 'true';}else{echo 'false';}?></div>
-        <div id="stripe-status-live" style="display:none;"><?php if ($stripe_status_live){echo 'true';}else{echo 'false';}?></div>
-
+<!--         <div id="stripe-status-live" style="display:none;"><?php //if ($stripe_status_live){echo 'true';}else{echo 'false';}?></div>
+ -->
     </header>
 
 
@@ -1583,8 +1583,8 @@ class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon 
 
         var isSymposium = $('#isSymposium').text();
 
-        var stripestatuslive = $('#stripe-status-live').text();
-
+/*         var stripestatuslive = $('#stripe-status-live').text();
+ */
         //define programes
 
         var programmeDefined = $('#programme_defined').text();

@@ -7,6 +7,8 @@ $coin = new coin;
 ?>
 
 <div id="subscription_level" style="display:none;"><?php echo $sitewide_status;?></div>
+<div id="stripe-status-live" style="display:none;"><?php if ($stripe_status_live){echo 'true';}else{echo 'false';}?></div>
+
 
 <?php
 
@@ -499,6 +501,9 @@ if (userid == '') {
     userid = false;
 
 }
+
+var stripestatuslive = $('#stripe-status-live').text();
+
 
 var waitForFinalEvent = (function() {
     var timers = {};

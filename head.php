@@ -47,3 +47,6 @@
 <!-- <script src="<?php //echo BASE_URL;?>/assets/js/purpose.js"></script>
  --><script src="<?php echo BASE_URL;?>/assets/js/generaljs.js"></script>
 <script src="<?php echo BASE_URL;?>/node_modules/jquery-validation/dist/jquery.validate.js"></script>
+
+<!-- Global divs -->
+
