@@ -182,7 +182,7 @@ spl_autoload_register ('class_loader');
         </section>
 
         <section class="slice bg-section-secondary">
-            <div class="container-fluid px-lg-8">
+            <div class="container">
 
                 <!-- id check-->
                 <?php
@@ -314,7 +314,21 @@ $pSymposium->addDateRangeReport("Last 30 days", "month", "full_registration_date
 
 echo $pSymposium->dbTable("symposium")->render(); */
 
+
 $xcrud = Xcrud::get_instance(); //instantiate xCRUD
+
+if ($local){
+
+    $xcrud->connection('root','nevira1pine','gieqs','localhost');
+
+
+}else{
+
+    $xcrud->connection('djt35','nevira1pine','gieqs','localhost');
+
+
+}
+
 $xcrud->table('symposium'); //employees - MySQL table name
 $xcrud->relation('user_id','users','user_id',array('user_id','firstname', 'surname'));
 $userstable = $xcrud->nested_table('userstable', 'user_id', 'users','user_id'); // nested table
