@@ -314,6 +314,12 @@ $pSymposium->addDateRangeReport("Last 30 days", "month", "full_registration_date
 
 echo $pSymposium->dbTable("symposium")->render(); */
 
+$host = substr($_SERVER['HTTP_HOST'], 0, 5);
+if (in_array($host, array('local', '127.0', '192.1'))) {
+    $local = TRUE;
+} else {
+    $local = FALSE;
+}
 
 $xcrud = Xcrud::get_instance(); //instantiate xCRUD
 
