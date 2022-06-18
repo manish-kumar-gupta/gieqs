@@ -10,8 +10,6 @@
 
 //database name
 
-$debug = false;
-
 $databaseName = 'symposium';
 
 //identifier
@@ -47,11 +45,8 @@ require BASE_URI . '/head.php';
 $formv1 = new formGenerator;
 
 spl_autoload_unregister ('class_loader');
-//require BASE_URI . '/assets/scripts/pdocrud/script/pdocrud_gieqs.php';
-require BASE_URI . '/assets/scripts/xcrud/xcrud/xcrud.php';
-
-//$pdocrud = new PDOCrud();
-
+require BASE_URI . '/assets/scripts/pdocrud/script/pdocrud_gieqs.php';
+$pdocrud = new PDOCrud();
 spl_autoload_register ('class_loader');
 
 
@@ -67,13 +62,6 @@ spl_autoload_register ('class_loader');
     <script src="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.js"></script>
     <!-- Purpose CSS -->
     <!-- <link rel="stylesheet" href="<?php //echo BASE_URL; ?>/assets/css/purpose.css" id="stylesheet"> -->
-
-
-    <link href="<?php echo BASE_URL;?>/assets/scripts/xcrud/xcrud/plugins/select2-develop/dist/css/select2.min.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<?php echo BASE_URL;?>/assets/scripts/xcrud/xcrud/plugins/select2-develop/dist/js/select2.full.js"></script>
-<script type="text/javascript">
-
-</script>
 
     <style>
     .modal-backdrop {
@@ -192,6 +180,7 @@ $formv1 = new formGenerator;
 $general = new general;
 $userFunctions = new userFunctions;
 
+//error_reporting(E_ALL);
 
 ${$databaseName} = new $databaseName;
 
@@ -276,7 +265,7 @@ $pdocrud->checkDuplicateRecord(array("cipher"));
 
 $pdocrud->addPlugin('select2');
  */
-/* 
+
  $pSymposium = new PDOCrud();
  $pSymposium->setSettings("viewFormTabs", true);
  $pSymposium->multiTableRelationDisplay("tab", "Symposium Registration Data");
@@ -312,43 +301,7 @@ $pSymposium->addDateRangeReport("Last 30 days", "month", "full_registration_date
  $pUserSymposium->multiTableRelationDisplay("tab", "Associated User Data");
 
 
-echo $pSymposium->dbTable("symposium")->render(); */
-
-$xcrud = Xcrud::get_instance(); //instantiate xCRUD
-$xcrud->table('symposium'); //employees - MySQL table name
-$xcrud->relation('user_id','users','user_id',array('user_id','firstname', 'surname'));
-$userstable = $xcrud->nested_table('userstable', 'user_id', 'users','user_id'); // nested table
-$userstable->unset_add(); // nested table instance access
-$xcrud->parsley_active(true);
-$xcrud->set_attr('user_id',array('required'=>'required'));
-$xcrud->set_attr('partial_registration',array('required'=>'required'));
-$xcrud->change_type('partial_registration','select',0,array(0=>'No', 1=>'Yes'),);
-$xcrud->change_type('early_bird','select',0,array(0=>'No', 1=>'Yes'),);
-$xcrud->change_type('group_registration','select',0,array(0=>'No', 1=>'Yes'),);
-$xcrud->change_type('includeGIEQsPro','select','',array(0=>'No', 1=>'Yes'),);
-$xcrud->change_type('registrationType','select','',array(1=>'Doctor', 2=>'Doctor in Training', 3=>'Nurse Endoscopist (includes Nursing Symposium in Dutch)', 4=>'Endoscopy Nurse (includes Nursing Symposium in Dutch)', 5=>'Medical Student'),);
-$xcrud->change_type('longTermProMemberDiscount','select',0,array(0=>'No', 1=>'Yes'),);
-$xcrud->change_type('professionalMemberDiscount','select',0,array(0=>'No', 1=>'Yes'),);
-$xcrud->change_type('professionalMember','select',0,array(0=>'No', 1=>'Yes'),);
-$xcrud->change_type('title','select','',array(1=>'Mr', 2=>'Mrs', 3=>'Ms', 4=>'Dr', 5=>'Professor'),);
-$xcrud->change_type('interestReason','select','',array(1=>'Doctor', 2=>'Doctor in Training', 3=>'Nurse Endoscopist (includes Nursing Symposium in Dutch)', 4=>'Endoscopy Nurse (includes Nursing Symposium in Dutch)', 5=>'Medical Student'),);
-$xcrud->change_type('informedHow','select','',array(0=>'None of the below<', 1=>'GIEQs Online', 2=>'GIEQs Mailing List', 3=>'Professional Contact', 4=>'Google', 5=>'Social Media'),);
-
-
-
-
-
-
-//$xcrud->is_edit_modal(true);>
-
-?>
-
-<button class="btn btn-fill-gieqsGold btn-sm mx-2 my-3" onclick="search_xcrud('0','symposium.partial_registration')">Show Partial Registrations</button>
-<button class="btn btn-fill-gieqsGold btn-sm mx-2 my-3" onclick="search_xcrud('1','symposium.partial_registration')">Show Completed Registrations</button>
-
-
-<?php
-echo $xcrud->render(); //magic
+echo $pSymposium->dbTable("symposium")->render();
 
 
 //echo $pdocrud->loadPluginJsCode("select2",".select2-element-identifier");//to add plugin call on select elements
@@ -359,7 +312,87 @@ echo $xcrud->render(); //magic
 
 
 
+switch ($table) {
+    case "menu":
+        echo $pdocrud->dbTable("menu")->render();
+        break;
+    case "navigation":
+        $pdocrud->relatedData('menu_id','menu','id','title');
+        $pdocrud->relatedData('superCategory','values','superCategory','superCategory_t');
+        //$pdocrud->addFilter("superCategoryFilter", "Super Category", "superCategory", "dropdown");
+        //$pdocrud->setFilterSource("superCategoryFilter", "values", "superCategory", "superCategory_t", "db");
+        //$pdocrud->setAdvSearchParam('superCategory', 'Super Category');
+        echo $pdocrud->dbTable("navigation")->render();
+        break;
+    case "headings":
+        $pdocrud->relatedData('navigation_id','navigation','id','title');
+        echo $pdocrud->dbTable("headings")->render();
+        break;
+    case "pages":
 
+        //pages table
+        $pPages = new PDOCrud();
+
+        $pPages->relatedData('headings_id','headings','id','name');
+        $pPages->fieldTypes("simple", "radio");//change gender to radio button
+        $pPages->fieldDataBinding("simple", array(0 => "No (displays tag categories)", 1=> "Yes (displays list of individual videos)"), "", "","array");//add data for radio button
+
+        $pPages->tableHeading("Pages");
+        $pPages->tableSubHeading("<br><span class=\"text-muted\">Here you can edit individual pages on the site.</span>");
+
+        //add button to view page
+        $action = BASE_URL . "/pages/learning/pages/general/show_subscription.php?page_id={pk}";//pk will be replaced by primary key value
+        $text = '<i class="fa fa-external-link" aria-hidden="true"></i>';
+        $attr = array("title"=>"Show Page");
+        $pPages->enqueueBtnActions("url", $action, "url",$text,"id", $attr);   
+
+
+        echo $pPages->dbTable("pages")->render();
+
+        //tag Category pages table;
+        $ppagesTagCategory = new PDOCrud(true);
+        $ppagesTagCategory->addPlugin('select2');
+        $ppagesTagCategory->tableHeading("Page Tag Categories");
+        $ppagesTagCategory->tableSubHeading("<br><span class=\"text-muted\">Add tag categories to the page.  Dependent upon the simple variable on the page.  If simple is 0 these will work.  If simple is 1 these will have no effect.</span>");
+        $ppagesTagCategory->relatedData('pages_id','pages','id','title');
+        $ppagesTagCategory->relatedData('tagCategories_id','tagCategories','id','tagCategoryName');
+        $ppagesTagCategory->fieldCssClass("pages_id", array("select2-element-identifier"));// add css classes
+        $ppagesTagCategory->fieldCssClass("tagCategories_id", array("select2-element-identifier"));// add css classes
+
+/*         $ppagesTagCategory->fieldTypes('pages_id', 'multiselect');
+ *//*         $ppagesTagCategory->fieldTypes('tagCategories_id', 'multiselect');
+ */        
+        $ppagesTagCategory->dbTable("pagesTagCategory");
+        echo $ppagesTagCategory->render();
+        echo $ppagesTagCategory->loadPluginJsCode("select2",".select2-element-identifier");//to add plugin call on select elements
+
+
+        //video pages table
+
+        $ppagesVideo = new PDOCrud(true);
+        $ppagesVideo->dbTable("pagesVideo");
+        $ppagesVideo->tableHeading("Page Videos");
+        $ppagesVideo->tableSubHeading("<br><span class=\"text-muted\">Add individual videos to the page.  Dependent upon the simple variable on the page.  If simple is 1 these will be added.  If simple is 0 these will have no effect.</span>");
+
+        $ppagesVideo->relatedData('pages_id','pages','id','title');
+        $ppagesVideo->relatedData('video_id','video','id','name');
+        $ppagesVideo->fieldCssClass("pages_id", array("select2-element-identifier"));// add css classes
+
+        $ppagesVideo->fieldCssClass("video_id", array("select2-element-identifier"));// add css classes
+
+
+        echo $ppagesVideo->render();
+        
+//first paramater is first table(object) columnn name and 2nd parameter is 2nd object column name
+
+
+
+            break;
+            case "blog":
+                $pdocrud->relatedData('video_id','video','id','name');
+echo $pdocrud->dbTable("blog_v2")->render();
+break;
+}
 
 
 //$pdocrud->setSkin("dark");
@@ -372,8 +405,7 @@ echo $xcrud->render(); //magic
  //
 
 
-//navigation    $xcrud->set_attr('extension',array('required'=>'required'));
-
+//navigation
 
 
 //headings
@@ -613,7 +645,6 @@ echo $xcrud->render(); //magic
     <!-- <script src="../../assets/js/purpose.core.js"></script> -->
 
     <script src="<?php echo BASE_URL; ?>/assets/libs/autosize/dist/autosize.min.js"></script>
-    <?php //echo Xcrud::load_js() ?>
 
     <!-- Datatables -->
   <!-- Purpose JS -->
@@ -624,42 +655,6 @@ echo $xcrud->render(); //magic
      -->
 
      <script>
-
-
-function search_xcrud(phrase, col=''){
-
-console.log('Xcrud Search Started: ' + phrase+ ' Col: ' + col);
-$('input[name ="phrase"]').val(phrase);
-$('select[name ="column"]').val(col);
-$( '.search-go' ).trigger( "click" );
-
-}
-
-/* You then connect your button/link with a simple onclick or like this: search_xcrud('phrase','colname');
-
-Here the function:
-
-function search_xcrud(phrase, col=''){
-
-  console.log('Xcrud Search Started: ' + phrase+ ' Col: ' + col);
-  $('input[name ="phrase"]').val(phrase);
-  $('select[name ="column"]').val(col);
-  $( '.search-go' ).trigger( "click" );
-
-}
-You can use the function without "col" and than the function searches in all columns. If you search for a specific column you need to enter the name of the table with the exact label as used in $xcrud->columns!
-
-Example: If you use for example table "clients" with the columns id,name,age.
-
-$xcrud->table('Clients');
-$xcrud->columns('id, name, age');
-You would call the function like this:
-
-search_xcrud('myphrase','Clients.name'); // incl. tablename and colname! 
-If you have doubts about the right column check your source code and look for the select box with the name "column" for all your options in this situation. This depends on the use of relations etc. and might change in this cases.
-
-I hope this helps others since I was looking since quite some time for a easy solution without somehow touching the original Xcrud code. PS: Xcrud is fantastic! */
-
 
          function generateCipher(length){
 
@@ -677,41 +672,35 @@ I hope this helps others since I was looking since quite some time for a easy so
 
 $(document).on('ready', function(){
 
-   
-    $(document).on("xcrudbeforerequest", function(event, container) {
-    if (container) {
-        $(container).find("select").select2('destroy');
-    } else {
-        $(".xcrud").find("select").select2('destroy');
-    }
-});
-$(document).on("ready xcrudafterrequest", function(event, container)
- {
-    if (container) {
-        $(container).find("select").select2();
-    } else {
-        $(".xcrud").find("select").select2();
-    }
-});
-$(document).on("xcrudbeforedepend", function(event, container, data) {
-    console.log(data.name);
-    //if (container) {
-        console.log(!$.isEmptyObject($(container).find('select[name="' + data.name + '"]')));
-        console.log(data.name);
-        //if(!$.isEmptyObject($(container).find('select[name="' + data.name + '"]'))){
-             if ($(container).find('select[name="' + data.name + '"]').data('select2')) {
-                  console.log("select2 item");
-                  $(container).find('select[name="' + data.name + '"]').select2('destroy');
-             }  else {
-                  console.log("Not a select2 ");
-             }              
-        //}
-   // }
-    
-});
-$(document).on("xcrudafterdepend", function(event, container, data) {
-    jQuery(container).find('select[name="' + data.name + '"]').select2();
-});
+    jQuery(document).ready(function () {
+                               jQuery(document).on("pdocrud_before_ajax_action",function(event,obj,data){
+                                   console.log(obj);
+                                   console.log(data);
+
+                                   if (data.action == 'edit' || data.action == 'add'){
+
+                                       //alert('got it');
+                                       $(document).find('#cipher-generate, #link-generate').removeClass('d-none');
+                                       //console.log(generateCipher(10));
+
+                                   }
+
+                                   if (data.action == 'back'){
+
+                                    //alert('got it');
+                                    $(document).find('#cipher-generate, #link-generate').addClass('d-none');
+                                   // console.log(generateCipher(10));
+
+                                    }
+
+                                   //show a predefined buttonn in the header TODO
+
+                                   //this generates a random cipher
+
+
+                                });
+                            });
+
             
 
     $(document).on('click', '#cipher-generate', function(event){
