@@ -8,7 +8,7 @@ class Xcrud_config
 
 
     public static $dbname = 'gieqs'; // Your database name
-    public static $dbuser = 'root'; // Your database username
+    public static $dbuser = 'djt35'; // Your database username
     public static $dbpass = 'nevira1pine'; // // Your database password
     public static $dbhost = 'localhost'; // Your database host, 'localhost' is default. 
 

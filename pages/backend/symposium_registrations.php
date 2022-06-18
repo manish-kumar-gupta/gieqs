@@ -335,6 +335,8 @@ if ($local){
 
 }
 
+$xcrud = Xcrud::get_instance(); //instantiate xCRUD
+
 $xcrud->table('symposium'); //employees - MySQL table name
 $xcrud->relation('user_id','users','user_id',array('user_id','firstname', 'surname'));
 $userstable = $xcrud->nested_table('userstable', 'user_id', 'users','user_id'); // nested table
