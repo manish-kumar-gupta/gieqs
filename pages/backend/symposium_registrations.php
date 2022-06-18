@@ -320,6 +320,8 @@ $xcrud->relation('user_id','users','user_id',array('user_id','firstname', 'surna
 $userstable = $xcrud->nested_table('userstable', 'user_id', 'users','user_id'); // nested table
 $userstable->unset_add(); // nested table instance access
 $xcrud->parsley_active(true);
+$xcrud->set_logging(true);
+
 $xcrud->set_attr('user_id',array('required'=>'required'));
 $xcrud->set_attr('partial_registration',array('required'=>'required'));
 $xcrud->change_type('partial_registration','select',0,array(0=>'No', 1=>'Yes'),);
