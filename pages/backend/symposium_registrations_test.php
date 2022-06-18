@@ -10,6 +10,8 @@
 
 //database name
 
+$debug = false;
+
 $databaseName = 'symposium';
 
 //identifier
@@ -190,7 +192,6 @@ $formv1 = new formGenerator;
 $general = new general;
 $userFunctions = new userFunctions;
 
-//error_reporting(E_ALL);
 
 ${$databaseName} = new $databaseName;
 
@@ -318,13 +319,35 @@ $xcrud->table('symposium'); //employees - MySQL table name
 $xcrud->relation('user_id','users','user_id',array('user_id','firstname', 'surname'));
 $userstable = $xcrud->nested_table('userstable', 'user_id', 'users','user_id'); // nested table
 $userstable->unset_add(); // nested table instance access
-$userstable = $xcrud->nested_table('userstable', 'user_id', 'users','user_id'); // nested table
-$userstable->unset_add(); // nested table instance access
+$xcrud->parsley_active(true);
+$xcrud->set_attr('user_id',array('required'=>'required'));
+$xcrud->set_attr('partial_registration',array('required'=>'required'));
+$xcrud->change_type('partial_registration','select',0,array(0=>'No', 1=>'Yes'),);
+$xcrud->change_type('early_bird','select',0,array(0=>'No', 1=>'Yes'),);
+$xcrud->change_type('group_registration','select',0,array(0=>'No', 1=>'Yes'),);
+$xcrud->change_type('includeGIEQsPro','select','',array(0=>'No', 1=>'Yes'),);
+$xcrud->change_type('registrationType','select','',array(1=>'Doctor', 2=>'Doctor in Training', 3=>'Nurse Endoscopist (includes Nursing Symposium in Dutch)', 4=>'Endoscopy Nurse (includes Nursing Symposium in Dutch)', 5=>'Medical Student'),);
+$xcrud->change_type('longTermProMemberDiscount','select',0,array(0=>'No', 1=>'Yes'),);
+$xcrud->change_type('professionalMemberDiscount','select',0,array(0=>'No', 1=>'Yes'),);
+$xcrud->change_type('professionalMember','select',0,array(0=>'No', 1=>'Yes'),);
+$xcrud->change_type('title','select','',array(1=>'Mr', 2=>'Mrs', 3=>'Ms', 4=>'Dr', 5=>'Professor'),);
+$xcrud->change_type('interestReason','select','',array(1=>'Doctor', 2=>'Doctor in Training', 3=>'Nurse Endoscopist (includes Nursing Symposium in Dutch)', 4=>'Endoscopy Nurse (includes Nursing Symposium in Dutch)', 5=>'Medical Student'),);
+$xcrud->change_type('informedHow','select','',array(0=>'None of the below<', 1=>'GIEQs Online', 2=>'GIEQs Mailing List', 3=>'Professional Contact', 4=>'Google', 5=>'Social Media'),);
 
 
-//$xcrud->is_edit_modal(true);
 
 
+
+
+//$xcrud->is_edit_modal(true);>
+
+?>
+
+<button class="btn btn-fill-gieqsGold btn-sm mx-2 my-3" onclick="search_xcrud('0','symposium.partial_registration')">Show Partial Registrations</button>
+<button class="btn btn-fill-gieqsGold btn-sm mx-2 my-3" onclick="search_xcrud('1','symposium.partial_registration')">Show Completed Registrations</button>
+
+
+<?php
 echo $xcrud->render(); //magic
 
 
@@ -349,7 +372,8 @@ echo $xcrud->render(); //magic
  //
 
 
-//navigation
+//navigation    $xcrud->set_attr('extension',array('required'=>'required'));
+
 
 
 //headings
@@ -589,7 +613,7 @@ echo $xcrud->render(); //magic
     <!-- <script src="../../assets/js/purpose.core.js"></script> -->
 
     <script src="<?php echo BASE_URL; ?>/assets/libs/autosize/dist/autosize.min.js"></script>
-    <?php echo Xcrud::load_js() ?>
+    <?php //echo Xcrud::load_js() ?>
 
     <!-- Datatables -->
   <!-- Purpose JS -->
@@ -600,6 +624,42 @@ echo $xcrud->render(); //magic
      -->
 
      <script>
+
+
+function search_xcrud(phrase, col=''){
+
+console.log('Xcrud Search Started: ' + phrase+ ' Col: ' + col);
+$('input[name ="phrase"]').val(phrase);
+$('select[name ="column"]').val(col);
+$( '.search-go' ).trigger( "click" );
+
+}
+
+/* You then connect your button/link with a simple onclick or like this: search_xcrud('phrase','colname');
+
+Here the function:
+
+function search_xcrud(phrase, col=''){
+
+  console.log('Xcrud Search Started: ' + phrase+ ' Col: ' + col);
+  $('input[name ="phrase"]').val(phrase);
+  $('select[name ="column"]').val(col);
+  $( '.search-go' ).trigger( "click" );
+
+}
+You can use the function without "col" and than the function searches in all columns. If you search for a specific column you need to enter the name of the table with the exact label as used in $xcrud->columns!
+
+Example: If you use for example table "clients" with the columns id,name,age.
+
+$xcrud->table('Clients');
+$xcrud->columns('id, name, age');
+You would call the function like this:
+
+search_xcrud('myphrase','Clients.name'); // incl. tablename and colname! 
+If you have doubts about the right column check your source code and look for the select box with the name "column" for all your options in this situation. This depends on the use of relations etc. and might change in this cases.
+
+I hope this helps others since I was looking since quite some time for a easy solution without somehow touching the original Xcrud code. PS: Xcrud is fantastic! */
+
 
          function generateCipher(length){
 

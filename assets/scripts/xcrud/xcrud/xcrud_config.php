@@ -58,7 +58,7 @@ class Xcrud_config
     public static $load_tabulator = true; 
     
     // editor
-    public static $editor_url = 'xcrud/editors/tinymce/tinymce.min.js'; // URL path to editor script, if you want to use the visual editor.
+    public static $editor_url = 'xcrud/xcrud/editors/tinymce/tinymce.min.js'; // URL path to editor script, if you want to use the visual editor.
     //public static $editor_url = 'editors/ckeditor/ckeditor.js';
     public static $editor_init_url = ''; //  URL path to your custom initialization file for editor.
     public static $force_editor = false; // Forced initialization of editor, even if the path is not specified. Check this if you're already using editor on your page.
