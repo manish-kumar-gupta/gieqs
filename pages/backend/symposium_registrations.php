@@ -367,8 +367,8 @@ $xcrud->change_type('informedHow','select','',array(0=>'None of the below<', 1=>
 
 ?>
 
-<button class="btn btn-fill-gieqsGold btn-sm mx-2 my-3" onclick="search_xcrud('0','symposium.partial_registration')">Show Partial Registrations</button>
-<button class="btn btn-fill-gieqsGold btn-sm mx-2 my-3" onclick="search_xcrud('1','symposium.partial_registration')">Show Completed Registrations</button>
+<button class="btn btn-fill-gieqsGold btn-sm mx-2 my-3" onclick="search_xcrud('1','symposium.partial_registration')">Show Partial Registrations</button>
+<button class="btn btn-fill-gieqsGold btn-sm mx-2 my-3" onclick="search_xcrud('0','symposium.partial_registration')">Show Completed Registrations</button>
 
 
 <?php
