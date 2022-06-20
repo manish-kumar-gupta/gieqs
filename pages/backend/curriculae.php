@@ -354,32 +354,36 @@ $xcrud->connection($username,$password,$dbname,$host);
 $xcrud->table('curriculae'); //employees - MySQL table name
 $xcrud->fields('created, updated', true);
 $xcrud->default_tab('Curriculae');
+$xcrud->set_logging(true);
+$xcrud->fields_inline('long_name');
+$xcrud->inline_edit_click('double_click');
+
+
+
 
     //nest 1
 
     //$curriculaesectiontable_nest = Xcrud::get_instance(); //instantiate xCRUD
 
-    $curriculaesectiontable_nest = $xcrud->nested_table('curriculaesectiontable_nest', 'id', 'curriculum_sections','curriculum_id');
+    $curriculaesectiontable_nest = $xcrud->nested_table('Sections', 'id', 'curriculum_sections','curriculum_id');
     $curriculaesectiontable_nest->connection($username,$password,$dbname,$host);
     //$curriculaesectiontable_nest->table('curriculum_sections');
     $curriculaesectiontable_nest->relation('curriculum_id','curriculae','id',array('long_name'));
-    $curriculaesectiontable_nest->fields('curriculum_id','created, updated', true);
+    $curriculaesectiontable_nest->columns('curriculum_id, created, updated', true);
+
+    $curriculaesectiontable_nest->fields('curriculum_id, created, updated', true);
     $curriculaesectiontable_nest->unset_add;
     $curriculaesectiontable_nest->default_tab('Sections');
+    $curriculaesectiontable_nest->set_logging(true);
+    $curriculaesectiontable_nest->fields_inline('section_order');
+    $curriculaesectiontable_nest->inline_edit_click('double_click');
 
 
-//$curriculaesectiontable = $xcrud->nested_table('curriculaesectiontable', 'id', 'curriculum_sections','id'); // ADD LATER
 
 
-$curriculaesectiontable = Xcrud::get_instance(); //instantiate xCRUD
+    //third nest, items
 
-$curriculaesectiontable->connection($username,$password,$dbname,$host);
-$curriculaesectiontable->table('curriculum_sections');
-$curriculaesectiontable->relation('curriculum_id','curriculae','id',array('long_name'));
-$curriculaesectiontable->fields('created, updated', true);
-
-
-    $curriculaeitemstable_nest = $xcrud->nested_table('curriculaeitemstable_nest', 'id', 'curriculum_items','curriculum_id');
+    $curriculaeitemstable_nest = $curriculaesectiontable_nest->nested_table('Items', 'id', 'curriculum_items','section_id');
     $curriculaeitemstable_nest->connection($username,$password,$dbname,$host);
     //$curriculaeitemstable_nest->table('curriculum_sections');
     $curriculaeitemstable_nest->relation('curriculum_id','curriculae','id',array('long_name'));
@@ -387,27 +391,43 @@ $curriculaesectiontable->fields('created, updated', true);
 
     $curriculaeitemstable_nest->change_type('type','select','',array(1=>'text', 2=>'table', 3=>'figure', 4=>'video', 5=>'gieqs online asset'),);
     $curriculaeitemstable_nest->change_type('evidence_level','select','',array(1=>'A', 2=>'B', 3=>'C', 4=>'D'),);
-    $curriculaeitemstable_nest->fields('created, updated', true);
+    $curriculaeitemstable_nest->columns('curriculum_id, section_id, created, updated', true);
+
+    $curriculaeitemstable_nest->fields('curriculum_id, section_id, created, updated', true);
     $curriculaeitemstable_nest->unset_add;
     $curriculaeitemstable_nest->default_tab('Items');
+    $curriculaeitemstable_nest->set_logging(true);
+
 
     //fourth nest, refs
 
-    $curriculumreferencestable_nest = $xcrud->nested_table('curriculumreferencestable_nest', 'id', 'curriculum_references','curriculum_item_id');
+    $curriculumreferencestable_nest = $curriculaeitemstable_nest->nested_table('References', 'id', 'curriculum_references','curriculum_item_id');
     $curriculumreferencestable_nest->connection($username,$password,$dbname,$host);
 
     $curriculumreferencestable_nest->relation('curriculum_item_id','curriculum_items','id',array('id', 'item_order', 'statement'));
     $curriculumreferencestable_nest->relation('reference_id','references','id',array('id', 'formatted', 'authors'));
+    $curriculumreferencestable_nest->columns('curriculum_item_id, created, updated', true);
+
     $curriculumreferencestable_nest->fields('curriculum_item_id, created, updated', true);
+    $curriculumreferencestable_nest->set_logging(true);
+    //$curriculumreferencestable_nest->unique('reference_id'); [needed but unique for curriculum id]
+
+
 
     //fifth nest, tags
 
-    $curriculumtagstable_nest = $xcrud->nested_table('curriculumtagstable_nest', 'id', 'curriculum_tags','curriculum_item_id');
+    $curriculumtagstable_nest = $curriculaeitemstable_nest->nested_table('Tags', 'id', 'curriculum_tags','curriculum_item_id');
     $curriculumtagstable_nest->connection($username,$password,$dbname,$host);
 
     $curriculumtagstable_nest->relation('curriculum_item_id','curriculum_items','id',array('id', 'item_order', 'statement'));
     $curriculumtagstable_nest->relation('tag_id','tags','id',array('id', 'tagName'));
+    $curriculumtagstable_nest->columns('curriculum_item_id, created, updated', true);
+
         $curriculumtagstable_nest->fields('curriculum_item_id, created, updated', true);
+        $curriculumtagstable_nest->set_logging(true);
+       // $curriculumtagstable_nest->unique('tag_id');
+
+
 
 
 
