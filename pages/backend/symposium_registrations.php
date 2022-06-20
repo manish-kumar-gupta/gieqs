@@ -313,34 +313,47 @@ $pSymposium->addDateRangeReport("Last 30 days", "month", "full_registration_date
 
 
 echo $pSymposium->dbTable("symposium")->render(); */
-
 $host = substr($_SERVER['HTTP_HOST'], 0, 5);
 if (in_array($host, array('local', '127.0', '192.1'))) {
     $local = TRUE;
 } else {
     $local = FALSE;
 }
-
 $xcrud = Xcrud::get_instance(); //instantiate xCRUD
+
+//$xcrud->connection('root','nevira1pine','learningToolv1','localhost');
+
 
 if ($local){
 
-    $xcrud->connection('root','nevira1pine','gieqs','localhost');
+    $username = 'root';
+    $password = 'nevira1pine';
+    $dbname = 'gieqs';
+    $host = 'localhost';
+
 
 
 }else{
 
-    $xcrud->connection('djt35','nevira1pine','gieqs','localhost');
+    $username = 'djt35';
+    $password = 'nevira1pine';
+    $dbname = 'gieqs';
+    $host = 'localhost';
+
+
+    //$xcrud->connection('djt35','nevira1pine','learnToolv1','localhost');
 
 
 }
 
-$xcrud = Xcrud::get_instance(); //instantiate xCRUD
+$xcrud->connection($username,$password,$dbname,$host);
 
 $xcrud->table('symposium'); //employees - MySQL table name
 $xcrud->relation('user_id','users','user_id',array('user_id','firstname', 'surname'));
 $userstable = $xcrud->nested_table('userstable', 'user_id', 'users','user_id'); // nested table
-$userstable->unset_add(); // nested table instance access
+$userstable = $xcrud->nested_table('userstable', 'user_id', 'users','user_id'); // nested table
+
+$userstable->connection($username,$password,$dbname,$host); // nested table instance access
 $xcrud->parsley_active(true);
 $xcrud->set_logging(true);
 
