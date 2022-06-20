@@ -58,7 +58,7 @@ spl_autoload_register ('class_loader');
 
 ?>
 
-    <title>Ghent International Endoscopy Symposium - Backend - Symposium Registration Editor</title>
+    <title>GIEQs Online - Backend - Curriculum Editor</title>
 
     <!-- Page CSS -->
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/flatpickr/dist/flatpickr.min.css">
@@ -146,7 +146,7 @@ spl_autoload_register ('class_loader');
                         <!-- Salute + Small stats -->
                         <div class="row align-items-center mb-4">
                             <div class="col-md-5 mb-4 mb-md-0">
-                                <span class="h2 mb-0 text-white d-block">Symposium Registration Manager</span>
+                                <span class="h2 mb-0 text-white d-block">Living Curriculum Manager</span>
 
                                 <!-- <span class="text-white">Have a nice day!</span> -->
                             </div>
@@ -320,25 +320,140 @@ if (in_array($host, array('local', '127.0', '192.1'))) {
 } else {
     $local = FALSE;
 }
-
 $xcrud = Xcrud::get_instance(); //instantiate xCRUD
+
+//$xcrud->connection('root','nevira1pine','learningToolv1','localhost');
+
 
 if ($local){
 
-    $xcrud->connection('root','nevira1pine','gieqs','localhost');
+    $username = 'root';
+    $password = 'nevira1pine';
+    $dbname = 'learningToolv1';
+    $host = 'localhost';
+
 
 
 }else{
 
-    $xcrud->connection('djt35','nevira1pine','gieqs','localhost');
+    $username = 'djt35';
+    $password = 'nevira1pine';
+    $dbname = 'learnToolv1';
+    $host = 'localhost';
+
+
+    //$xcrud->connection('djt35','nevira1pine','learnToolv1','localhost');
 
 
 }
 
-$xcrud = Xcrud::get_instance(); //instantiate xCRUD
+$xcrud->connection($username,$password,$dbname,$host);
 
-$xcrud->table('symposium'); //employees - MySQL table name
-$xcrud->relation('user_id','users','user_id',array('user_id','firstname', 'surname'));
+
+
+$xcrud->table('curriculae'); //employees - MySQL table name
+$xcrud->fields('created, updated', true);
+$xcrud->default_tab('Curriculae');
+
+    //nest 1
+
+    //$curriculaesectiontable_nest = Xcrud::get_instance(); //instantiate xCRUD
+
+    $curriculaesectiontable_nest = $xcrud->nested_table('curriculaesectiontable_nest', 'id', 'curriculum_sections','curriculum_id');
+    $curriculaesectiontable_nest->connection($username,$password,$dbname,$host);
+    //$curriculaesectiontable_nest->table('curriculum_sections');
+    $curriculaesectiontable_nest->relation('curriculum_id','curriculae','id',array('long_name'));
+    $curriculaesectiontable_nest->fields('curriculum_id','created, updated', true);
+    $curriculaesectiontable_nest->unset_add;
+    $curriculaesectiontable_nest->default_tab('Sections');
+
+
+//$curriculaesectiontable = $xcrud->nested_table('curriculaesectiontable', 'id', 'curriculum_sections','id'); // ADD LATER
+
+
+$curriculaesectiontable = Xcrud::get_instance(); //instantiate xCRUD
+
+$curriculaesectiontable->connection($username,$password,$dbname,$host);
+$curriculaesectiontable->table('curriculum_sections');
+$curriculaesectiontable->relation('curriculum_id','curriculae','id',array('long_name'));
+$curriculaesectiontable->fields('created, updated', true);
+
+
+    $curriculaeitemstable_nest = $xcrud->nested_table('curriculaeitemstable_nest', 'id', 'curriculum_items','curriculum_id');
+    $curriculaeitemstable_nest->connection($username,$password,$dbname,$host);
+    //$curriculaeitemstable_nest->table('curriculum_sections');
+    $curriculaeitemstable_nest->relation('curriculum_id','curriculae','id',array('long_name'));
+    $curriculaeitemstable_nest->relation('section_id','curriculum_sections','id',array('long_name'));
+
+    $curriculaeitemstable_nest->change_type('type','select','',array(1=>'text', 2=>'table', 3=>'figure', 4=>'video', 5=>'gieqs online asset'),);
+    $curriculaeitemstable_nest->change_type('evidence_level','select','',array(1=>'A', 2=>'B', 3=>'C', 4=>'D'),);
+    $curriculaeitemstable_nest->fields('created, updated', true);
+    $curriculaeitemstable_nest->unset_add;
+    $curriculaeitemstable_nest->default_tab('Items');
+
+    //fourth nest, refs
+
+    $curriculumreferencestable_nest = $xcrud->nested_table('curriculumreferencestable_nest', 'id', 'curriculum_references','curriculum_item_id');
+    $curriculumreferencestable_nest->connection($username,$password,$dbname,$host);
+
+    $curriculumreferencestable_nest->relation('curriculum_item_id','curriculum_items','id',array('id', 'item_order', 'statement'));
+    $curriculumreferencestable_nest->relation('reference_id','references','id',array('id', 'formatted', 'authors'));
+    $curriculumreferencestable_nest->fields('curriculum_item_id, created, updated', true);
+
+    //fifth nest, tags
+
+    $curriculumtagstable_nest = $xcrud->nested_table('curriculumtagstable_nest', 'id', 'curriculum_tags','curriculum_item_id');
+    $curriculumtagstable_nest->connection($username,$password,$dbname,$host);
+
+    $curriculumtagstable_nest->relation('curriculum_item_id','curriculum_items','id',array('id', 'item_order', 'statement'));
+    $curriculumtagstable_nest->relation('tag_id','tags','id',array('id', 'tagName'));
+        $curriculumtagstable_nest->fields('curriculum_item_id, created, updated', true);
+
+
+
+//$curriculaesectiontable->unique('section_order');
+
+//$curriculaesectiontable->unset_add(); // nested table instance access allow add but prevent editing of curriculum field
+
+/* 
+$curriculaeitemstable = Xcrud::get_instance(); //instantiate xCRUD
+
+$curriculaeitemstable->connection($username,$password,$dbname,$host);
+$curriculaeitemstable->table('curriculum_items');
+$curriculaeitemstable->relation('curriculum_id','curriculae','id',array('long_name'));
+$curriculaeitemstable->relation('section_id','curriculum_sections','id',array('long_name'));
+
+$curriculaeitemstable->change_type('type','select','',array(1=>'text', 2=>'table', 3=>'figure', 4=>'video', 5=>'gieqs online asset'),);
+$curriculaeitemstable->change_type('evidence_level','select','',array(1=>'A', 2=>'B', 3=>'C', 4=>'D'),);
+$curriculaeitemstable->fields('created, updated', true);
+
+
+
+$curriculumtagstable = Xcrud::get_instance();
+$curriculumtagstable->connection($username,$password,$dbname,$host);
+
+$curriculumtagstable->table('curriculum_tags');
+$curriculumtagstable->relation('curriculum_item_id','curriculum_items','id',array('id', 'item_order', 'statement'));
+$curriculumtagstable->relation('tag_id','tags','id',array('id', 'tagName'));
+$curriculumtagstable->fields('created, updated', true);
+
+
+
+$curriculumreferencestable = Xcrud::get_instance();
+$curriculumreferencestable->connection($username,$password,$dbname,$host);
+
+$curriculumreferencestable->table('curriculum_references');
+$curriculumreferencestable->relation('curriculum_item_id','curriculum_items','id',array('id', 'item_order', 'statement'));
+$curriculumreferencestable->relation('reference_id','references','id',array('id', 'formatted', 'authors'));
+$curriculumreferencestable->fields('created, updated', true); */
+
+
+
+//$curriculaeitemstable->relation('category','tagCategories','id',array('id', 'tagCategoryName'));
+//$curriculaeitemstable->relation('item','tags','id',array('id', 'tagName'));
+
+
+/* $xcrud->relation('user_id','users','user_id',array('user_id','firstname', 'surname'));
 $userstable = $xcrud->nested_table('userstable', 'user_id', 'users','user_id'); // nested table
 $userstable->unset_add(); // nested table instance access
 $xcrud->parsley_active(true);
@@ -358,7 +473,7 @@ $xcrud->change_type('title','select','',array(1=>'Mr', 2=>'Mrs', 3=>'Ms', 4=>'Dr
 $xcrud->change_type('interestReason','select','',array(1=>'Doctor', 2=>'Doctor in Training', 3=>'Nurse Endoscopist (includes Nursing Symposium in Dutch)', 4=>'Endoscopy Nurse (includes Nursing Symposium in Dutch)', 5=>'Medical Student'),);
 $xcrud->change_type('informedHow','select','',array(0=>'None of the below<', 1=>'GIEQs Online', 2=>'GIEQs Mailing List', 3=>'Professional Contact', 4=>'Google', 5=>'Social Media'),);
 
-
+ */
 
 
 
@@ -373,6 +488,10 @@ $xcrud->change_type('informedHow','select','',array(0=>'None of the below<', 1=>
 
 <?php
 echo $xcrud->render(); //magic
+/* echo $curriculaesectiontable->render(); //magic
+echo $curriculaeitemstable->render();
+echo $curriculumtagstable->render();
+echo $curriculumreferencestable->render(); */
 
 
 //echo $pdocrud->loadPluginJsCode("select2",".select2-element-identifier");//to add plugin call on select elements
@@ -701,12 +820,30 @@ I hope this helps others since I was looking since quite some time for a easy so
 
 
          //progresss select 2; this works     $('.xcrud-container').find('select').select2(); but is not being triggered below
+         MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
 
+var observer = new MutationObserver(function(mutations, observer) {
+    // fired when a mutation occurs
+    console.log(mutations, observer);
+    // ...
+});
+
+// define what element should be observed by the observer
+// and what types of mutations trigger the callback
+observer.observe('.xcrud-ajax', {
+  subtree: true,
+  attributes: true
+  //...
+});
 
 $(document).on('ready', function(){
 
    
+    
+
+
     $(document).on("xcrudbeforerequest", function(event, container) {
+        alert('fired');
         $('.xcrud-container').find('select').select2('destroy');
 });
 $(document).on("ready xcrudafterrequest", function(event, container)
