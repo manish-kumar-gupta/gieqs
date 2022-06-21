@@ -60,6 +60,25 @@ $programmeView = new programmeView;
 require_once BASE_URI . '/pages/learning/classes/usersMetricsManager.class.php';
 $usersMetricsManager = new usersMetricsManager;
 
+
+require_once BASE_URI . '/assets/scripts/classes/curriculae.class.php';
+$curriculae = new curriculae;
+
+require_once BASE_URI . '/assets/scripts/classes/curriculum_items.class.php';
+$curriculum_items = new curriculum_items;
+
+require_once BASE_URI . '/assets/scripts/classes/curriculum_references.class.php';
+$curriculum_references = new curriculum_references;
+
+require_once BASE_URI . '/assets/scripts/classes/curriculum_sections.class.php';
+$curriculum_sections = new curriculum_sections;
+
+require_once BASE_URI . '/assets/scripts/classes/curriculum_tags.class.php';
+$curriculum_tags = new curriculum_tags;
+
+require_once BASE_URI . '/assets/scripts/classes/curriculum_manager.class.php';
+$curriculum_manager = new curriculum_manager;
+
 error_reporting(E_ALL);
 
 echo 'hello';
@@ -75,16 +94,93 @@ spl_autoload_unregister ('class_loader');
 
 <?php
 
+$id = 1;
+
 //get the required curriculum
 
+$curriculae->Load_from_key($id);
+
 //echo the title
+
+echo '<h1>' . $curriculae->getlong_name() . '</h1>';
 //change <<title>> tag
 
 //description
+echo $curriculae->getdescription();
+
+
+$sections = $curriculum_manager->getsectionscurriculum($id);
+
+var_dump($sections);
+
+foreach ($sections as $section_key=>$section_value){
+
+    $curriculum_sections->Load_from_key($section_value);
+
+    echo '<h2>' . $curriculum_sections->getlong_name() . '</h2>';  //section
+
+    //foreach section echo the blocks
+
+    $items = $curriculum_manager->getitemssection($section_value);
+
+    var_dump($items);
+
+    foreach ($items as $items_key=>$items_value){
+
+
+        $curriculum_items->Load_from_key($items_value);
+
+        if ($curriculum_items->gettype() == '1'){
+
+        echo $curriculum_items->getstatement();
+
+        }elseif ($curriculum_items->gettype() == '3'){
+
+            echo '<img src="' . BASE_URL . '/assets/img/uploads/' . $curriculum_items->getimage_url() . '">';
+    
+        }elseif ($curriculum_items->gettype() == '4'){
+
+            //code for embedded video with popup
+    
+        }elseif ($curriculum_items->gettype() == '3'){
+
+            //code for link to GIEQS ONLINE VID
+    
+        }
+
+        //get references item
+
+        echo '<div class="references" data-id="' . $items_value . '">';
+
+        $references = $curriculum_manager->getreferences($curriculum_manager->getreferencescurriculumitem($items_value));
+        
+        var_dump($references);
+
+
+        echo '</div>';
+
+        echo '<div class="tags" data-id="' . $items_value . '">';
+
+        
+        $tags = $curriculum_manager->gettags($curriculum_manager->gettagscurriculumitem($items_value));
+
+        var_dump($tags);
+
+        echo '</div>';
+
+
+        //get tags item
+
+
+    }
+
+
+}
 
 /* 
 
 get sections
+$curriculum_manager->getsectionscurriculum($id);
 
 for each section
     echo each block dependent on whether text or
