@@ -361,6 +361,8 @@ $xcrud->inline_edit_click('double_click');
 
 
 
+
+
     //nest 1
 
     //$curriculaesectiontable_nest = Xcrud::get_instance(); //instantiate xCRUD
@@ -389,14 +391,22 @@ $xcrud->inline_edit_click('double_click');
     $curriculaeitemstable_nest->relation('curriculum_id','curriculae','id',array('long_name'));
     $curriculaeitemstable_nest->relation('section_id','curriculum_sections','id',array('long_name'));
 
-    $curriculaeitemstable_nest->change_type('type','select','',array(1=>'text', 2=>'table', 3=>'figure', 4=>'video', 5=>'gieqs online asset'),);
-    $curriculaeitemstable_nest->change_type('evidence_level','select','',array(1=>'A', 2=>'B', 3=>'C', 4=>'D'),);
+    $curriculaeitemstable_nest->change_type('type','select','',array(1=>'text', 3=>'figure', 4=>'video', 5=>'gieqs online asset'),);  //2 table removed
+    $curriculaeitemstable_nest->change_type('evidence_level','select','',array(0=>'n/a', 1=>'A', 2=>'B', 3=>'C', 4=>'D'),);
     $curriculaeitemstable_nest->columns('curriculum_id, section_id, created, updated', true);
 
     $curriculaeitemstable_nest->fields('curriculum_id, section_id, created, updated', true);
     $curriculaeitemstable_nest->unset_add;
     $curriculaeitemstable_nest->default_tab('Items');
     $curriculaeitemstable_nest->set_logging(true);
+   $curriculaeitemstable_nest->change_type('image_url','image','',array(
+        'thumbs'=>array(
+            array('width'=> 50, 'marker'=>'_small'),
+            array('width'=> 100, 'marker'=>'_middle'),
+            array('width' => 150, 'folder' => 'thumbs'),
+        ) // using 'thumbs' subfolder
+    )); 
+    //working just jumps out on return
 
 
     //fourth nest, refs
