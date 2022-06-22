@@ -35,6 +35,24 @@
       $gpat_glue = new gpat_glue();
       
 
+      require_once BASE_URI . '/assets/scripts/classes/curriculae.class.php';
+      $curriculae = new curriculae;
+      
+      require_once BASE_URI . '/assets/scripts/classes/curriculum_items.class.php';
+      $curriculum_items = new curriculum_items;
+      
+      require_once BASE_URI . '/assets/scripts/classes/curriculum_references.class.php';
+      $curriculum_references = new curriculum_references;
+      
+      require_once BASE_URI . '/assets/scripts/classes/curriculum_sections.class.php';
+      $curriculum_sections = new curriculum_sections;
+      
+      require_once BASE_URI . '/assets/scripts/classes/curriculum_tags.class.php';
+      $curriculum_tags = new curriculum_tags;
+      
+      require_once BASE_URI . '/assets/scripts/classes/curriculum_manager.class.php';
+      $curriculum_manager = new curriculum_manager;
+      
    
       ?>
 
@@ -92,6 +110,13 @@
     .text-container p strong {
 
         color: rgb(238, 194, 120);
+    }
+
+    .text-container ul {
+
+        font-size: 1.3rem !important;
+        padding-left: 5rem;
+
     }
 
     .card-placeholder {
@@ -218,11 +243,12 @@ top: 0px;
 		
 		}
 
-        if (isset($userid)){
-        $users->Load_from_key($userid);
+        if (isset($id)){
+        $curriculae->Load_from_key($id);
 
         }else{
 
+            echo 'No id passed to display curriculum';
             die();
         }
 				    
@@ -284,12 +310,14 @@ top: 0px;
         <!--Header CHANGEME-->
 
         <div class="d-flex align-items-end container">
-            <p class="h1 mt-5">Curriculum Title</p>
+
+
+            <p class="h1 mt-5"><?php echo $curriculae->getlong_name();?></p>
 
 
         </div>
         <div class="d-flex align-items-end container">
-            <p class="text-muted pl-4 mt-2">Curriculum Introduction Statement</p>
+            <p class="text-muted pl-4 mt-2"><?php echo $curriculae->getdescription(); ?></p>
 
         </div>
 
@@ -408,6 +436,206 @@ top: 0px;
 
                             <?php
           
+          //$id = 1;
+
+//get the required curriculum
+
+//$curriculae->Load_from_key($id);
+
+//echo the title
+
+//echo '<h1>' . $curriculae->getlong_name() . '</h1>';
+//change <<title>> tag
+
+//description
+//echo $curriculae->getdescription();
+
+
+$sections = $curriculum_manager->getsectionscurriculum($id);
+
+if ($debug){
+
+var_dump($sections);
+
+}
+
+$x=1;
+
+foreach ($sections as $section_key=>$section_value){
+
+    $curriculum_sections->Load_from_key($section_value);
+
+    echo '<h2>' . $curriculum_sections->getlong_name() . '</h2>';  //section
+
+    //foreach section echo the blocks
+
+    $items = $curriculum_manager->getitemssection($section_value);
+
+    if ($debug){
+
+        var_dump($items);
+        
+        }
+
+    foreach ($items as $items_key=>$items_value){
+
+        echo '<div class="card my-3">';
+        echo '<div class="card-body my-3">';
+
+
+        $curriculum_items->Load_from_key($items_value);
+
+        if ($curriculum_items->gettype() == '1'){
+
+        echo $curriculum_items->getstatement();
+
+        }elseif ($curriculum_items->gettype() == '3'){
+
+            echo '<figure>';
+            echo '<img class="w-75 img-responsive" src="' . BASE_URL . '/assets/img/uploads/' . $curriculum_items->getimage_url() . '">';
+            echo '<figcaption>' . $curriculum_items->getstatement() . '</figcaption>';
+            echo '</figure>';
+    
+        }elseif ($curriculum_items->gettype() == '4'){?>
+
+            //code for embedded video with popup
+            <div class="embed-responsive embed-16by9">
+                                <div style="padding:64.67% 0 0 0;position:relative;"><iframe
+                                        src="<?php echo $curriculum_items->getlink_to_content();?>"
+                                        allow="autoplay; fullscreen; picture-in-picture" allowfullscreen frameborder="0"
+                                        style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe></div>
+                            </div>
+            <?php
+        }elseif ($curriculum_items->gettype() == '3'){
+
+            //code for link to GIEQS ONLINE VID
+    
+        }
+
+        echo '</div>';
+
+        echo '</div>';
+
+
+        ?>
+
+        <div id="accordion-<?php echo $x;?>" class="accordion accordion-stacked my-3">
+            
+            <!-- Accordion card 1 -->
+            <div class="card">
+                <div class="card-header py-4" id="heading-1-1" data-toggle="collapse" role="button" data-target="#collapse-1-1" aria-expanded="false" aria-controls="collapse-1-1">
+                    <h6 class="mb-0"><i class="fas fa-file-pdf mr-3"></i>Tags</h6>
+                </div>
+                <div id="collapse-1-1" class="collapse" aria-labelledby="heading-1-1" data-parent="#accordion-<?php echo $x;?>">
+                    <div class="card-body">
+                        <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Accordion card 2 -->
+            <div class="card">
+                <div class="card-header py-4" id="heading-1-2" data-toggle="collapse" role="button" data-target="#collapse-1-2" aria-expanded="false" aria-controls="collapse-1-2">
+                    <h6 class="mb-0"><i class="fas fa-lock mr-3"></i>References</h6>
+                </div>
+                <div id="collapse-1-2" class="collapse" aria-labelledby="heading-1-2" data-parent="#accordion-<?php echo $x;?>">
+                    <div class="card-body">
+                        <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+        </div>
+
+<?php
+        //get references item
+
+        $x++;
+
+        echo '<div class="references" data-id="' . $items_value . '">';
+
+        $references = $curriculum_manager->getreferences($curriculum_manager->getreferencescurriculumitem($items_value));
+        
+        if ($debug){
+
+            var_dump($references);
+            
+            }
+        
+
+
+        echo '</div>';
+
+        echo '<div class="tags" data-id="' . $items_value . '">';
+
+        
+        $tags = $curriculum_manager->gettags($curriculum_manager->gettagscurriculumitem($items_value));
+
+        if ($debug){
+
+            var_dump($tags);
+            
+            }
+        
+
+        echo '</div>';
+
+
+        //get tags item
+
+
+    }
+
+
+}
+
+/* 
+
+get sections
+$curriculum_manager->getsectionscurriculum($id);
+
+for each section
+    echo each block dependent on whether text or
+    table is a table
+
+    depending on what 'type' is
+
+    <option value="1" selected="">text</option>
+<option value="2">table</option>
+<option value="3">figure</option>
+<option value="4">video</option>
+<option value="5">gieqs online asset</option>
+
+    video is vimeo link like blog link_to_content
+
+    photo is photo like blog [this is ok, now there is link_to_content]  image_url
+
+    [add image upload field]
+
+    gieqs ref is id number link_to_content
+
+*/
+
+
+
+
+
+
+//var_dump($assets3);
+
+
+//do they occur in the past? that is type 2 and 3 only
+
+//then create a new subscription for the user for them with the tag PRO_ASSET
+
+//GET AN ARRAY OF PRO USERS
+
+
+
+//WHERE (`gateway_transactionId` LIKE '%TOKEN_ID=PRO_SUBSCRIPTION%
+
             
             ?>
 
@@ -416,208 +644,7 @@ top: 0px;
 
 
 
-                            <h1>Curriculum Name</h1>
-                            <h2>Curriculum Section 1</h2>
-                            <h3>Curriculum SubSection</h3>
-                            <p>Text block 1</p>
-                            <p>Text block 1</p>
-                            <p>Text block 1</p>
-
-                            <h2>Curriculum Section 2</h2>
-
-                            <h3>Curriculum SubSection</h3>
-                            <p>Text block 1</p>
-                            <p>Text block 1</p>
-                            <p>Text block 1</p>
-
-
-
-                            <p><u>Where to</u><u> find?</u></p>
-                            <p>Go to Gieqs Online, Creator, pop up the menu and click on &lsquo;View my tagging
-                                Tasks&rsquo;.</p>
-                            <p>Content:</p>
-                            <p>This is for people who are running the site, could invite you to look to videos and add
-                                tags to them. If you scroll to the list, then you can accept the tagging, do the climate
-                                tagging. With a click on the cross, you can add a tag.</p>
-                            <p>You can also go directly tot he video edit page.</p>
-                            <p><u>New tag:</u></p>
-                            <p>This you can find when you pop out the creator menu. Here you can add a new tag, if you
-                                have access to this.</p>
-                            <p><u>New category:</u></p>
-                            <p>You can also find this in the creator menu. You can make a new tagcategory.</p>
-                            <p>If you want to make new tags or new categories, please discuss this with the
-                                Supermoderators of the website. Only if you are selected for this, you&rsquo;ll have
-                                access.</p>
-                            <p>&nbsp;</p>
-                            <p>You can also consult the video guide to tagging below</p>
-                            <div class="embed-responsive embed-16by9">
-                                <div style="padding:64.67% 0 0 0;position:relative;"><iframe
-                                        src="https://player.vimeo.com/video/682997986?h=e71fb93bc0&title=0&byline=0&portrait=0&speed=0&badge=0&autopause=0&player_id=0&app_id=58479/embed"
-                                        allow="autoplay; fullscreen; picture-in-picture" allowfullscreen frameborder="0"
-                                        style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe></div>
-                            </div>
-                            <h2>Chapters</h2>
-                            <p><u>Where to find?</u></p>
-                            <p>Go to Gieqs Online, Creator, pop up the menu, Video Table. Select a video and click on
-                                &lsquo;Edit chapters&rsquo;.</p>
-                            <p><u>Content:</u></p>
-                            <p>When you go to the editing page, you can see the video displayed. Down below you will see
-                                either a blank screen, if the video has no chapters. But increasingly we&rsquo;re trying
-                                to add this for you. All that you need to do, is add tags to the videos. Tags describe
-                                ideas that run the structure of the website and can be searched for.</p>
-                            <p>For example: users can search for videos that contain Kudo V, endoscopic imaging of a
-                                colorectal polyp, a demarcated area in an upper GI lesion, &hellip; They can also search
-                                for combinations, so they can very quickly find what they want.</p>
-                            <p>To add a new chapter: go the bottom of the screen and press &lsquo;new chapter&rsquo;.
-                            </p>
-                            <p>This will add a new chapter with a number after the chapter that is already there. If you
-                                want to add more then 1 chapter, you have to press and wait untill every chapter is
-                                there. Then you have a couple of options. If you go to the first chapter, you can fill
-                                in 0 in the box &lsquo;time from&rsquo;. Then select from te video where you want the
-                                chapter to end and press &lsquo;+video time&rsquo; (underneath the &lsquo;time to&rsquo;
-                                box). Give your chapter a name and a description. If you&rsquo;ll finding it difficult
-                                to see the name box, you can refresh te page. The next chapter that you add, could have
-                                a time directly after the chapter before. To achieve that: once you add another chapter,
-                                press &lsquo;+ previous chapter end time&rsquo;. This will insert a time which is just
-                                after the chapter time in the &lsquo;time to&rsquo; of the previous chapter. So you can
-                                go on untill the last chapter. In the last chapter all you have to do, is press the same
-                                thing as the previous chapter end time. In the last box, you just drag the video to the
-                                very end, press pause and press &lsquo;+video time&rsquo;. Sometimes you have to press
-                                &lsquo;+video time&rsquo; button a few times to get the correct time, but once it
-                                becames correct, this will not change anymore.</p>
-                            <p>Now you see the video displayed, you can add headings and tags.</p>
-                            <p>To add a tag, there are a couple of ways.</p>
-                            <ul>
-                                <li>Structured way: Press &lsquo;add tag&rsquo;. Then you have all the tags that are
-                                    available on the website. You can click on the blue buttons (on the top). You can
-                                    click trough them, dive into the categories (by clicking on the category) and then
-                                    assigne them.</li>
-                                <li>Faster way: Press &lsquo;add tag (Search)&rsquo;. Here you can simply typ into the
-                                    box to find your tag. Press enter on the keybord and it&rsquo;s automatically added.
-                                    You can just keep doing it.</li>
-                            </ul>
-                            <p>After that, you have links to the tag manager. This is where you can see the structure of
-                                the site, all the tags and the linked references, which you can also update. This is an
-                                important concept with tags, that they are also linked to academical references
-                                (PubMed), which can quickly pulled in.</p>
-                            <h2>Status of the learning tool</h2>
-                            <p><u>Where to find?</u></p>
-                            <p>Go to the Creator menu. There you can find &lsquo;Video Table&rsquo;. Click on
-                                &lsquo;Edit chapters&rsquo; of the movie that you want to edit. In the right upper
-                                corner, you can find &lsquo;Video Status&rsquo;. It depends on your level of access if
-                                this will work or not work.</p>
-                            <p><u>Content:</u></p>
-                            <p>You can change the video between status:</p>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td width="274">
-                                            <p>Not shown, not tagged Inactive video</p>
-                                        </td>
-                                        <td width="278">
-                                            <p>on the background; is never shown when users are looking around the site
-                                            </p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td width="274">
-                                            <p>Needs tagging</p>
-                                        </td>
-                                        <td width="278">
-                                            <p>the video fits in a list for tagging, but is never shown on the live
-                                                website</p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td width="274">
-                                            <p>Shown on live site</p>
-                                        </td>
-                                        <td width="278">
-                                            <p>shows the movie immediately on the website</p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td width="274">
-                                            <p>Shown on live site and avaibable FREE</p>
-                                        </td>
-                                        <td width="278">
-                                            <p>the freeplay link will also work</p>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td width="274">
-                                            <p>Submit for moderation prior to LIVE site</p>
-                                        </td>
-                                        <td width="278">
-                                            <p>Your access is too low to change the live site status and therefore you
-                                                can submit it supermoderation before moderation is shown on live site
-                                                (minute 7:00)</p>
-                                            <p>&nbsp;</p>
-                                            <p>Your changes will not be lost, but you will loose access to tagging the
-                                                video once you&rsquo;ve selected that to make sure that it&rsquo;s
-                                                referred.</p>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <p>&nbsp;</p>
-                            <p><u>View in player:</u></p>
-                            <p>This shows you the video in his nature form on the site, so you can see what it will look
-                                like.</p>
-                            <p><u>View/edit video data:</u></p>
-                            <p>Here you can edit the title and other important information about the movie. You should
-                                also have a look on that before you submit your video.</p>
-                            <p><u>Display chapter data:</u></p>
-                            <p>This shows in an easy form to all the chapters, with times in seconds.</p>
-                            <p><u>Vimeo profile:</u></p>
-                            <p>Only if you have access, you can go to Vimeo to see and edit the movie.</p>
-                            <p><u>Edit Chapter data:</u></p>
-                            <p>If you have access, you can go to the Vimeo profile and edit the chapter data.</p>
-                            <p>If the video is titled and chaptered already, then you can import those from Vimeo. This
-                                is actually the way to do it.</p>
-                            <h2>New video</h2>
-                            <p><u>Where to find?</u></p>
-                            <p>Go to the creator menu, drop the menu down and click on &lsquo;new video&rsquo;</p>
-                            <p><u>Content:</u></p>
-                            <p>&lsquo;New video&rsquo; is a way to add a new video on the website. If you have a video
-                                on Vimeo (it needs to be on Vimeo on the GIEQS team account) and you want to add it on
-                                the website, you just have to enter&nbsp; the numerical value of the Vimeo URL. So when
-                                you play video on Vimeo, you get a link. If you have a Vimeo URL, you only need the long
-                                number in the URL.</p>
-                            <p>When you insert the number, it probably will say that the movie cannot be shown, but
-                                don&rsquo;t worry about that, just continue. Edit the data and then it will be added to
-                                the video table.</p>
-                            <p>You can&rsquo;t edit the status of an important video until you have reloaded it on the
-                                video table. Once you&rsquo;ve done everything and saved, you go to the video table (it
-                                will be the top video on the list). If you want to edit the details, just click on the
-                                name. If you want to edit the chapters, just click on it (on the right).</p>
-                            <p>The video table, allows you to search all the videos added on the site.</p>
-                            <h2>References</h2>
-                            <p><u>Where to find?</u></p>
-                            <p>Go to the Creator menu. There you can find references.</p>
-                            <p><u>Content:</u></p>
-                            <p>That&rsquo;s where you can edit a new references. Go to view references (in the upper
-                                right corner) and have a look to the table of references.</p>
-                            <h2>Supermoderation</h2>
-                            <p>If you want to send out invitations for tagging: all the videos which are available on
-                                the website, are listed in the manage videos. The creator can send out invitations if
-                                you click on the pensil and invite new tagger (at the bottom), by selecting a user. Once
-                                you have invited a user, you have a load of options. The user will get emails and be
-                                entered in the management system. Be aware that the user has the correct permission
-                                (needs to be user level 2).</p>
-                            <p>If you want to check to user access, you have to go into the administration menu. Drop
-                                down the menu by pressing the programme button and select users (access). Adding a user
-                                level is only possible to add your own user level or less.</p>
-                            <p>If you want to see what&rsquo;s going on in tagging, you can put on moderate tagging in
-                                process and you can see what&rsquo;s going on. These are all videos that people have
-                                moderated and if there&rsquo;s a tag which says tagging reviewed, changes required,
-                                &hellip; You can all manage this from here. By clicking, you can send a message, send a
-                                review mail, approve the video if you want to show it on the live site and remove it
-                                from this table. Moderate completed tagging which is videos which have been completed
-                                and which people have submitted. You can check that and approve it or send a message to
-                                the user from here.</p>
-                            <p>&nbsp;</p>
-                            <p>&nbsp;</p>
+                            
 
 
 
