@@ -1808,6 +1808,21 @@ function updatePlayer(data, debug=true){
 
 }
 
+function skipToChapter (chapternumber){
+
+
+	//var targetChapterKey = getKeyForChapterid(option);
+
+	var nextChapterStartTime = videoChapterData[chapternumber - 1].timeFrom;
+
+	player.setCurrentTime(nextChapterStartTime);
+
+	player.play();
+
+
+
+}
+
 function showAlert(text){
 
 
@@ -2574,17 +2589,12 @@ $(document).ready(function () {
 
     $('body').on("change", ".chapterSelector", (function (event) {
 
-		//event.preventDefault();
-
-		////console.log('changed');
-
 		var option = $(this).val();
 
 		undoFilterByTag();
 
 		if (option != '(not in a chapter)') {
 
-			//console.log('changed chapter selected value to ' + $(this).val());
 			chapterSelected = $(this).val();
 
 			var targetChapterKey = getKeyForChapterid(option);
@@ -2596,44 +2606,6 @@ $(document).ready(function () {
 			player.play();
 
 		}
-
-		
-
-		/*
-		//get the video start time for this option
-
-		var imagesObject = JSONStraightDataQuery(option, 'getTime', 9);
-
-		imagesObject.done(function (data) {
-
-			////console.log(data);
-
-			if (data) {
-
-				if (data) {
-
-					jumpToTime(data);
-
-				} else {
-
-					alert("Error, try again");
-
-					//enableFormInputs("images");
-
-				}
-
-
-
-			}
-
-
-		});
-
-
-
-		//////console.log(tagRow);
-
-		*/
 
 
 	}));

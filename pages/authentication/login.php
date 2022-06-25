@@ -148,7 +148,15 @@ if (isset($_GET['destination'])) {
 
     //define other constant
 
-    if (isset($_GET['videoid']) & is_numeric($_GET['videoid'])){
+    if ((isset($_GET['videoid']) & is_numeric($_GET['videoid'])) && (isset($_GET['chapternumber']) & is_numeric($_GET['chapternumber']))){
+
+      $videoid = $_GET['videoid'];
+      $chapternumber = $_GET['chapternumber'];
+
+      $target = 'pages/learning/viewer.php?id=' . $videoid . '&chapternumber=' . $chapternumber;
+
+
+    }elseif(isset($_GET['videoid']) & is_numeric($_GET['videoid'])){
 
       $videoid = $_GET['videoid'];
       $target = 'pages/learning/viewer.php?id=' . $videoid;

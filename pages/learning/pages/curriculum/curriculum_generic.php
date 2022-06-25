@@ -37,6 +37,9 @@
 
       require_once BASE_URI . '/assets/scripts/classes/curriculae.class.php';
       $curriculae = new curriculae;
+
+      require_once BASE_URI . '/pages/learning/classes/general.class.php';
+      $general = new general;
       
       require_once BASE_URI . '/assets/scripts/classes/curriculum_items.class.php';
       $curriculum_items = new curriculum_items;
@@ -57,9 +60,9 @@
       ?>
 
     <!--Page title-->
-    <title>GPAT Help</title>
 
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
+    <script src="<?php echo BASE_URL;?>/pages/learning/includes/generaljs.js"></script>
 
 
     <style>
@@ -80,11 +83,29 @@
 
     }
 
-    .text-container p {
+  
 
-        font-size: 1.3rem !important;
-        padding-left: 1.5rem;
-    }
+    .text-container {
+
+font-family: 'nunito', sans-serif;
+font-size: 1.3rem !important;
+font-weight: 300;
+line-height: 1.7 !important;
+text-align: left !important;
+color: #95aac9;
+}
+
+.text-container strong{
+
+font-weight: 500;
+color: #e3ebf6;
+}
+
+   /*  .text-container p {
+
+        font-size: 1.2rem !important;
+        padding-left: 1.1rem;
+    } */
 
     .text-container h2 {
 
@@ -107,10 +128,10 @@
         padding-left: 1rem;
     }
 
-    .text-container p strong {
+    /* .text-container p strong {
 
         color: rgb(238, 194, 120);
-    }
+    } */
 
     .text-container ul {
 
@@ -305,19 +326,34 @@ top: 0px;
 
 
 
-    <div class="main-content bg-gradient-dark mt-10">
+    <div class="main-content bg-dark mt-10">
 
         <!--Header CHANGEME-->
 
-        <div class="d-flex align-items-end container">
+        <div class="container pt-4">
 
+        <nav aria-label="breadcrumb" class="mb-3">
+                    <ol class="breadcrumb breadcrumb-links p-0 m-0">
+                        <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/index.php'?>">GIEQs
+                                Online</a></li>
+                        <li class="breadcrumb-item"><a
+                                href=""">Curriculae</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><?php echo $curriculae->getlong_name();?></li>
+                    </ol>
+                    <div class="alert alert-dark d-none sticky-top" role="alert" style="position:absolute !important;">
+                    </div>
+                </nav>
 
-            <p class="h1 mt-5"><?php echo $curriculae->getlong_name();?></p>
+            <p class="h1 mt-2"><?php echo $curriculae->getlong_name();?></p>
+
+           
+
+            <title><?php echo $curriculae->getlong_name();?> - GIEQs Curriculum</title>
 
 
         </div>
-        <div class="d-flex align-items-end container">
-            <p class="text-muted pl-4 mt-2"><?php echo $curriculae->getdescription(); ?></p>
+        <div class="container text-container">
+            <p class="pl-4 mt-2"><?php echo $curriculae->getdescription(); ?></p>
 
         </div>
 
@@ -450,6 +486,19 @@ top: 0px;
 //description
 //echo $curriculae->getdescription();
 
+//get all tag categories
+
+$y = 1;
+        $z = 2;
+
+$allCategories = $general->getAllTagCategories();
+
+if ($debug){
+
+    print_r($allCategories);
+
+}
+
 
 $sections = $curriculum_manager->getsectionscurriculum($id);
 
@@ -477,9 +526,16 @@ foreach ($sections as $section_key=>$section_value){
         
         }
 
+        
+
     foreach ($items as $items_key=>$items_value){
 
-        echo '<div class="card my-3">';
+        echo '<div class="card bg-dark-light">';
+        echo '<div class="actions" style="position:absolute; right:20px; top:20px;">';
+        echo '<i  class="cursor-pointer fas fa-tag mx-3" data-toggle="collapse"
+        href="#multiCollapseExample' . $y. '"></i><i class="fas fa-graduation-cap mx-3 cursor-pointer" data-toggle="collapse"
+        href="#multiCollapseExample' . $z. '"></i>';
+        echo '</div>';
         echo '<div class="card-body my-3">';
 
 
@@ -491,37 +547,32 @@ foreach ($sections as $section_key=>$section_value){
 
         }elseif ($curriculum_items->gettype() == '3'){
 
-            echo '<figure>';
-            echo '<img class="w-75 img-responsive" src="' . BASE_URL . '/assets/img/uploads/' . $curriculum_items->getimage_url() . '">';
+            echo '<figure class="img-responsive text-center my-3">';
+            echo '<img class="w-75" src="' . BASE_URL . '/assets/img/uploads/' . $curriculum_items->getimage_url() . '">';
             echo '<figcaption>' . $curriculum_items->getstatement() . '</figcaption>';
             echo '</figure>';
     
         }elseif ($curriculum_items->gettype() == '4'){?>
 
-            //code for embedded video with popup
-            <div class="embed-responsive embed-16by9">
+                            //code for embedded video with popup
+                            <div class="embed-responsive embed-16by9">
                                 <div style="padding:64.67% 0 0 0;position:relative;"><iframe
                                         src="<?php echo $curriculum_items->getlink_to_content();?>"
                                         allow="autoplay; fullscreen; picture-in-picture" allowfullscreen frameborder="0"
                                         style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe></div>
                             </div>
-            <?php
+                            <?php
         }elseif ($curriculum_items->gettype() == '3'){
 
             //code for link to GIEQS ONLINE VID
     
         }
 
-        echo '</div>';
-
-        echo '</div>';
-
 
         ?>
 
-        <div id="accordion-<?php echo $x;?>" class="accordion accordion-stacked my-3">
+                            <!-- <div id="accordion-<?php ///echo $x;?>" class="accordion accordion-stacked my-3">
             
-            <!-- Accordion card 1 -->
             <div class="card">
                 <div class="card-header py-4" id="heading-1-1" data-toggle="collapse" role="button" data-target="#collapse-1-1" aria-expanded="false" aria-controls="collapse-1-1">
                     <h6 class="mb-0"><i class="fas fa-file-pdf mr-3"></i>Tags</h6>
@@ -533,7 +584,6 @@ foreach ($sections as $section_key=>$section_value){
                 </div>
             </div>
             
-            <!-- Accordion card 2 -->
             <div class="card">
                 <div class="card-header py-4" id="heading-1-2" data-toggle="collapse" role="button" data-target="#collapse-1-2" aria-expanded="false" aria-controls="collapse-1-2">
                     <h6 class="mb-0"><i class="fas fa-lock mr-3"></i>References</h6>
@@ -547,9 +597,9 @@ foreach ($sections as $section_key=>$section_value){
             
             
             
-        </div>
+        </div> -->
 
-<?php
+                            <?php
         //get references item
 
         $x++;
@@ -571,14 +621,140 @@ foreach ($sections as $section_key=>$section_value){
         echo '<div class="tags" data-id="' . $items_value . '">';
 
         
-        $tags = $curriculum_manager->gettags($curriculum_manager->gettagscurriculumitem($items_value));
+        $tags = $curriculum_manager->gettagscurriculumitem($items_value);
 
         if ($debug){
+
+            echo '<br/><br/>Tags Are</br>';
 
             var_dump($tags);
             
             }
+
+        foreach ($allCategories as $key=>$value){
+
+            //check category (we have the id as value)
+
+            //get all the matching tags 
+
+            $tags_this_category = null;
+
+            $tags_this_category = [];
+            $x = 0;
+           
+            foreach ($tags as $key2=>$value2){
+
+                //echo '<br/><br/>' . $general->getCategoryforTagNumeric($value2) . '</br></br>';
+
+                if ($general->getCategoryforTagNumeric($value2) == $value['id']){
+
+                    $tags_this_category[$x] = $value2;
+
+                             
+
+
+                    $x++;
+
+                }
+
+            }
+
+            //if the array is empty skip this loop
+
+            if (count($tags_this_category) > 0){
+
+         
+                //now have all the tags which match this category
+
+                //echo category name
+
+                $tagBox .= '<div class="row align-items-left">';
+                                        
+                $tagBox .= '<span class="h6 mt-1"> ' . $value['tagCategoryName'] . '</span>';
+    
+                $tagBox .=  '</div>';
+
+                $tagBox .= '<div class="row align-items-left">';
+
+                foreach ($tags_this_category as $key3=>$value3){
+
+                    $tagBox .= '<span class="badge bg-dark mx-2 mb-1 tagButton tagTagsboxButton" data-tag-id="' . $value3 . '" id="tag' . $value3 . '">' . $general->getTagName($value3) . '</span>'; 
+
+                    $tagBox .=  '</div>';
+
+
+                }
+
+            }else{
+
+                //echo 'Never makes the tag cat > 0';
+            }
+
+            //echo the category name and tags underneath
+
+
+
+
+        }
         
+?>
+
+
+
+                            <div class="d-flex">
+
+                                <a class="dropdown-item" style="font-size:1rem !important;" data-toggle="collapse"
+                                    href="#multiCollapseExample<?php echo $y;?>" role="button" aria-expanded="false"
+                                    aria-controls="multiCollapseExample<?php echo $y;?>"><i
+                                        class="fas fa-chevron-circle-up"></i>&nbsp;Show Tags</a>
+                                <a class="dropdown-item" style="font-size:1rem !important;" data-toggle="collapse" href="javascript;"
+                                    data-target="#multiCollapseExample<?php echo $z;?>" aria-expanded="false"
+                                    aria-controls="multiCollapseExample<?php echo $z;?>"><i
+                                        class="fas fa-chevron-circle-up"></i>&nbsp;Show References</a>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="collapse multi-collapse" id="multiCollapseExample<?php echo $y;?>">
+
+
+                                        <div class="card card-body bg-dark">
+                                           <!--  <span class="h5 mb-4">Tags</span> -->
+
+                                            <div class="py-2 px-2 flex-row flex-wrap">
+                                                <?php         echo $tagBox;
+                        ?>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="collapse multi-collapse" id="multiCollapseExample<?php echo $z;?>">
+                                        <div class="card card-body bg-dark">
+                                         <!--    <span class="h5 mb-4">References</span> -->
+                                         <div class="flex-row flex-wrap">
+                                                <?php         echo $curriculum_manager->getFullReferenceListCurriculumItem($curriculum_items->getid());
+                        ?>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <?php
+
+        $z++;
+        $z++;
+        $y++;
+        $y++;
+        echo '</div>';
+
+
+        echo '</div>';
 
         echo '</div>';
 
@@ -644,7 +820,7 @@ for each section
 
 
 
-                            
+
 
 
 
@@ -807,6 +983,38 @@ for each section
 
             fillForm(esdLesionPassed);
         }
+
+        $('.referencelist').on('click', function() {
+
+
+//get the tag name
+
+var searchTerm = $(this).attr('data');
+
+//console.log("https://www.ncbi.nlm.nih.gov/pubmed/?term="+searchTerm);
+
+PopupCenter("https://www.ncbi.nlm.nih.gov/pubmed/?term=" + searchTerm,
+    'PubMed Search (endoWiki)', 800, 700);
+
+
+
+
+
+})
+
+$('.referencelist').on('mouseenter', function() {
+
+$(this).css('color', 'rgb(238, 194, 120)');
+//$(this).css('cursor', 'pointer');
+
+})
+
+$('.referencelist').on('mouseleave', function() {
+
+$(this).css('color', '#95aac9');
+//$(this).css('cursor', 'default');
+
+})
 
         $('#refreshNavigation').click(function() {
 

@@ -742,6 +742,18 @@ $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
 			$id = null;
 		
 		}
+
+
+        if (isset($_GET["chapternumber"]) && is_numeric($_GET["chapternumber"])){
+			$chapternumber = $_GET["chapternumber"];
+		
+		}else{
+		
+			$chapternumber = null;
+		
+		}
+
+
 				        if ($id){
 		
 							$q = "SELECT  `id`  FROM  `video`  WHERE  `id`  = $id";
@@ -809,6 +821,9 @@ $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
 
     <div id="id" style="display:none;"><?php if ($id){echo $id;}?></div>
 
+    <div id="chapternumber" style="display:none;"><?php if ($chapternumber){echo $chapternumber;}?></div>
+
+
 
 
     <div id="vimeoid" style="display:none;"><?php echo $general->getVimeoID($id);?></div>
@@ -875,7 +890,7 @@ $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
     <div id="tagsData" style="display:none;"><?php echo $general->getTagsVideo($id);?></div>
 
     <div id="tagCategories" style="display:none;">
-        <?php $allCategories = $general->getAllTagCategories(); print_r($allCategories);?></div>
+        <?php $allCategories = $general->getAllTagCategories(); //print_r($allCategories);?></div>
 
 
     
@@ -1803,6 +1818,9 @@ chapterData
     <!-- <script src="assets/js/generaljs.js"></script> -->
     <script>
     var videoPassed = $("#id").text();
+
+    var chapternumber = $("#chapternumber").text();
+
 
     
     </script>
@@ -2976,12 +2994,28 @@ var t=setInterval(writeDebugInfo,1000);
 
 
             waitForFinalEvent(function() {
-                //alert('Resize...');
-                viewedVideoRecentChapter();
 
-                showAlert(
-                    'Started from where you finished last time. To <a href=\"javascript:jumpToTime(0);\">restart click here</a>.'
-                )
+                //if there is no chapter set in the url
+
+                if (chapternumber != ''){
+
+                    console.log('chapternumber is set and is ' + chapternumber);
+                    skipToChapter(chapternumber);
+
+
+                }else{
+
+                    console.log('chapternumber is not set');
+
+
+                    //alert('Resize...');
+                    viewedVideoRecentChapter();
+
+                    showAlert(
+                        'Started from where you finished last time. To <a href=\"javascript:jumpToTime(0);\">restart click here</a>.'
+                    );
+
+                }
 
             }, 200, "wait for most recent Video");
 
@@ -3340,6 +3374,8 @@ var t=setInterval(writeDebugInfo,1000);
 
         // Start the tour
         tourShort.start();
+
+      
 
         /* $(document).click(function(event) { 
             $target = $(event.target);
