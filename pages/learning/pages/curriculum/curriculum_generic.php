@@ -446,7 +446,7 @@ top: 0px;
                                     </button>
                                 </div>
 
-                                <h6 class="mt-3 mb-3 pl-2 h5">Jump to a Curriculum Item</h6>
+                                <h6 class="mt-3 mb-3 pl-2 h5">Jump to Section</h6>
 
                                 <ul class="section-nav">
 

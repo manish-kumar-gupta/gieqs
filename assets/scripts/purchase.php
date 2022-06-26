@@ -1633,7 +1633,7 @@ $(document).ready(function() {
 
                                 console.dir(updatedCostObject);
 
-                                        if (externalTest.professionalMember == '1' || externalTest.longTermProMemberDiscount == '1'){
+                                        if (externalTest.professionalMember == '1' || externalTest.professionalMember == '2' || externalTest.professionalMember == '3' ||externalTest.longTermProMemberDiscount == '1'){
 
                                             var cost_symposium = updatedCostObject.symposiumcost;
                                             cost_symposium = parseInt(cost_symposium);

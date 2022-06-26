@@ -357,6 +357,7 @@ $xcrud->default_tab('Curriculae');
 $xcrud->set_logging(true);
 $xcrud->fields_inline('long_name');
 $xcrud->inline_edit_click('double_click');
+$xcrud->button(BASE_URL . '/pages/learning/pages/curriculum/curriculum_generic.php?id={id}', 'Open Curriculum');
 
 
 

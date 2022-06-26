@@ -57,6 +57,12 @@
     left: 2px!important;
 }
 
+.xcrud-list-container .btn-default {
+
+    background-color: #EEC378 !important;
+
+}
+
 .parsley-custom-error-message,
 .parsley-errors-list {
     color: #FF0000;
