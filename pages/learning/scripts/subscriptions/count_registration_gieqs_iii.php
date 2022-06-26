@@ -48,13 +48,14 @@ SELECT COUNT(`id`) FROM `symposium` WHERE `partial_registration` = '1'; // INCOM
 
  -->
 <style>
- th, td {
+ #registrations th, td {
   padding: 15px;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
 </style>
 
+<div id="registrations">
  <p>Early-bird GIEQs III Registrations (not including group registrations)</p>
 
 <table>
@@ -362,71 +363,6 @@ SELECT COUNT(`id`) FROM `symposium` WHERE `partial_registration` = '1'; // INCOM
     </tbody>
 </table>
 
-
-<?php
-
-//registration manager
-
-//->countAllRegistrations
-
-//->countTraineeReg , Nurse Reg, Doctor Reg, NE Reg
-
-//->countincomplete reg
+</div>
 
 
-
-
-
-
-/* 
-
-get sections
-$curriculum_manager->getsectionscurriculum($id);
-
-for each section
-    echo each block dependent on whether text or
-    table is a table
-
-    depending on what 'type' is
-
-    <option value="1" selected="">text</option>
-<option value="2">table</option>
-<option value="3">figure</option>
-<option value="4">video</option>
-<option value="5">gieqs online asset</option>
-
-    video is vimeo link like blog link_to_content
-
-    photo is photo like blog [this is ok, now there is link_to_content]  image_url
-
-    [add image upload field]
-
-    gieqs ref is id number link_to_content
-
-*/
-
-
-
-
-
-
-//var_dump($assets3);
-
-
-//do they occur in the past? that is type 2 and 3 only
-
-//then create a new subscription for the user for them with the tag PRO_ASSET
-
-//GET AN ARRAY OF PRO USERS
-
-
-
-//WHERE (`gateway_transactionId` LIKE '%TOKEN_ID=PRO_SUBSCRIPTION%
-
-
-
-echo '<br/><br/><br/>';
-echo '<br/><br/><br/>';
-echo '<br/><br/><br/>';
-echo '<br/><br/><br/>';
-echo '<br/><br/><br/>';
