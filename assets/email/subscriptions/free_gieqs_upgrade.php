@@ -604,42 +604,7 @@
 
 
 
-                                                                            <!--GIEQS BUTTON -->
-
-                                                                            <table border="0" cellpadding="0"
-                                                                                cellspacing="0" width="100%"
-                                                                                class="mcnButtonBlock"
-                                                                                style="min-width:100%;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                                                <tbody class="mcnButtonBlockOuter">
-                                                                                    <tr>
-                                                                                        <td style="padding-top:25px;padding-right:18px;padding-bottom:18px;padding-left:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;"
-                                                                                            valign="top" align="center"
-                                                                                            class="mcnButtonBlockInner">
-                                                                                            <table border="0"
-                                                                                                cellpadding="0"
-                                                                                                cellspacing="0"
-                                                                                                class="mcnButtonContentContainer"
-                                                                                                style="border-collapse:separate !important;border-radius:3px;background-color:#1b385d;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust: 100%;">
-                                                                                                <tbody>
-                                                                                                    <tr>
-                                                                                                        <td align="center"
-                                                                                                            valign="middle"
-                                                                                                            class="mcnButtonContent"
-                                                                                                            style="font-family:Helvetica;font-size:18px;padding:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                                                                            <a class="mcnButton "
-                                                                                                                title="Sign Up Now"
-                                                                                                                href="https://www.gieqs.com/pages/authentication/login.php?destination=gieqsonline"
-                                                                                                                target="_blank"
-                                                                                                                style="font-weight:bold;letter-spacing:-0.5px;line-height:100%;text-align:center;text-decoration:none;color:#e3ebf6;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;display:block;">Go to GIEQs Online
-                                                                                                            </a>
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                </tbody>
-                                                                                            </table>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
+                                                                           
 
 
 
@@ -672,76 +637,7 @@
 
 <hr/>
 
-                                                                                <p                                                                                 style="margin:10px 0;padding-top:10px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#444444;font-weight:bold;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                    Ps. Don&rsquo;t forget about our focussed virtual / live <strong>hybrid</strong> colonoscopy and colonoscopy trainers courses next Monday and Tuesday. Link here.</p>
-                                                                                <table border="0" cellpadding="0"
-                                                                                cellspacing="0" width="100%"
-                                                                                class="mcnButtonBlock"
-                                                                                style="min-width:100%;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                                                <tbody class="mcnButtonBlockOuter">
-                                                                                    <tr>
-                                                                                        <td style="padding-top:25px;padding-right:18px;padding-bottom:18px;padding-left:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;"
-                                                                                            valign="top" align="center"
-                                                                                            class="mcnButtonBlockInner">
-                                                                                            <table border="0"
-                                                                                                cellpadding="0"
-                                                                                                cellspacing="0"
-                                                                                                class="mcnButtonContentContainer"
-                                                                                                style="border-collapse:separate !important;border-radius:3px;background-color:#1b385d;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust: 100%;">
-                                                                                                <tbody>
-                                                                                                    <tr>
-                                                                                                        <td align="center"
-                                                                                                            valign="middle"
-                                                                                                            class="mcnButtonContent"
-                                                                                                            style="font-family:Helvetica;font-size:18px;padding:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                                                                            <a class="mcnButton "
-                                                                                                                title="Sign Up Now"
-                                                                                                                href="https://www.gieqs.com/pages/program/program_basic_colon.php"
-                                                                                                                target="_blank"
-                                                                                                                style="font-weight:bold;letter-spacing:-0.5px;line-height:100%;text-align:center;text-decoration:none;color:#e3ebf6;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;display:block;">Basic Colonoscopy Course
-                                                                                                            </a>
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                </tbody>
-                                                                                            </table>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
-                                                                            <table border="0" cellpadding="0"
-                                                                                cellspacing="0" width="100%"
-                                                                                class="mcnButtonBlock"
-                                                                                style="min-width:100%;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                                                <tbody class="mcnButtonBlockOuter">
-                                                                                    <tr>
-                                                                                        <td style="padding-top:25px;padding-right:18px;padding-bottom:18px;padding-left:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;"
-                                                                                            valign="top" align="center"
-                                                                                            class="mcnButtonBlockInner">
-                                                                                            <table border="0"
-                                                                                                cellpadding="0"
-                                                                                                cellspacing="0"
-                                                                                                class="mcnButtonContentContainer"
-                                                                                                style="border-collapse:separate !important;border-radius:3px;background-color:#1b385d;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust: 100%;">
-                                                                                                <tbody>
-                                                                                                    <tr>
-                                                                                                        <td align="center"
-                                                                                                            valign="middle"
-                                                                                                            class="mcnButtonContent"
-                                                                                                            style="font-family:Helvetica;font-size:18px;padding:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                                                                            <a class="mcnButton "
-                                                                                                                title="Sign Up Now"
-                                                                                                                href="https://www.gieqs.com/pages/program/program_trainer_colon.php"
-                                                                                                                target="_blank"
-                                                                                                                style="font-weight:bold;letter-spacing:-0.5px;line-height:100%;text-align:center;text-decoration:none;color:#e3ebf6;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;display:block;">Train the Colonoscopy Trainers Course
-                                                                                                            </a>
-                                                                                                        </td>
-                                                                                                    </tr>
-                                                                                                </tbody>
-                                                                                            </table>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
+                                                                               
 
                                                                         </td>
                                                                     </tr>
