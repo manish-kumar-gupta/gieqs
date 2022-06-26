@@ -1,10 +1,11 @@
 <?php
-$openaccess = 1;
+//$openaccess = 1;
 
-//$requiredUserLevel = 6;
+$requiredUserLevel = 3;
 
 error_reporting(E_ALL);
 require_once '../../../../assets/includes/config.inc.php';
+require (BASE_URI.'/assets/scripts/headerScript.php');
 
 $location = BASE_URL . '/index.php';
 
@@ -90,7 +91,7 @@ $symposium = new symposium;
 
 //$_SESSION['debug'] == true;
 
-echo 'hello';
+//echo 'hello';
 
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
