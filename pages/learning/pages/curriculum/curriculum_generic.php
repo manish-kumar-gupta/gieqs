@@ -533,14 +533,16 @@ foreach ($sections as $section_key=>$section_value){
 
     $items = $curriculum_manager->getitemssection($section_value);
 
+    echo '<div class="curriculum-section">';
+
     if (!is_array($items)){
 
-        echo '<h1 class="mt-5" data="' . $curriculum_sections->getname() . '">' . $curriculum_sections->getlong_name() . '</h1>';  //section
+        echo '<h1 class="mt-5 super-section" data="' . $curriculum_sections->getname() . '">' . $curriculum_sections->getlong_name() . '</h1>';  //section
 
 
     }else{
 
-        echo '<h2 class="ml-3" data="' . $curriculum_sections->getname() . '">' . $curriculum_sections->getlong_name() . '</h2>';  //section
+        echo '<h2 class="ml-3 minor-section" data="' . $curriculum_sections->getname() . '">' . $curriculum_sections->getlong_name() . '</h2>';  //section
 
 
     }
@@ -809,6 +811,8 @@ foreach ($sections as $section_key=>$section_value){
 
     }
 
+    echo '</div>';
+
 
 }
 
@@ -946,7 +950,10 @@ for each section
 
         var x = 15;
         var y = 1;
-        $('h2').each(function() {
+
+
+
+        $('.super-section').each(function() {
 
             var id = null;
 
@@ -956,8 +963,33 @@ for each section
             statement +=
                 '<li class="toc-entry toc-h4" style="font-size:1.1rem;"><a class="text-muted" href="#' + id +
                 '">' + text + '</a></li>';
+            
+            
+            statement += '<ul>';  
+            console.log($(this).parent().children());  
+            $(this).parent().children().find('.minor-section').each(function(){
+
+
+                var id = null;
+                var text = null;
+                $(this).attr('id', y);
+                  id = $(this).attr('id');
+                  text = $(this).attr('data');
+                 statement +=
+                '<li class="toc-entry toc-h4" style="font-size:1.1rem;"><a class="text-muted" href="#' + id +
+                '">' + text + '</a></li>';
+
+
+                y++;
+
+
+            })
+            statement += '</ul>';    
+
+            
+            
+            
             x++;
-            //y++;
 
         })
 
@@ -1027,10 +1059,7 @@ for each section
 
         }, 1000, "Resize header");
 
-        if (edit == 1) {
-
-            fillForm(esdLesionPassed);
-        }
+     
 
         $('.referencelist').on('click', function() {
 
