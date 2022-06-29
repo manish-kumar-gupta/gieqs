@@ -319,7 +319,7 @@ top: 0px;
     //include(BASE_URI . '/pages/learning/assets/gpatNav.php');
 
     
-    $debug = true;
+    $debug = false;
     $_SESSION['debug'] = false;
 
     ?>
@@ -462,11 +462,11 @@ top: 0px;
 
                                 <h6 class="mt-3 mb-3 pl-2 h5">Jump to Section</h6>
 
-                                <ol class="section-nav">
+                                <ul class="section-nav">
 
 
 
-                                </ol>
+                                </ul>
 
 
 
@@ -524,7 +524,11 @@ var_dump($sections);
 
 $x=1;
 
+$section_heading = true;
+
+
 foreach ($sections as $section_key=>$section_value){
+
 
     $curriculum_sections->Load_from_key($section_value);
 
@@ -533,16 +537,31 @@ foreach ($sections as $section_key=>$section_value){
 
     $items = $curriculum_manager->getitemssection($section_value);
 
-    echo '<div class="curriculum-section">';
 
     if (!is_array($items)){
 
-        echo '<h1 class="mt-5 super-section" data="' . $curriculum_sections->getname() . '">' . $curriculum_sections->getlong_name() . '</h1>';  //section
+        if ($section_heading === false){
+        echo '</div>';
+        $section_heading = true;
+
+        }
+
+        echo '<div class="curriculum-section">'; //section heading do this
+
+        echo '<h1 class="mt-3 toc-marker super-section" tocid="' . $curriculum_sections->getid() . '" data="' . $curriculum_sections->getname() . '">' . $curriculum_sections->getlong_name() . '</h1>';  //section
 
 
     }else{
 
-        echo '<h2 class="ml-3 minor-section" data="' . $curriculum_sections->getname() . '">' . $curriculum_sections->getlong_name() . '</h2>';  //section
+        $section_heading = false;
+
+           /*  echo '<div class="curriculum-section">'; //section heading do this
+            $section_heading = true;
+ */
+
+        
+
+        echo '<h2 class="ml-3 toc-marker minor-section" tocid="' . $curriculum_sections->getid() . '" data="' . $curriculum_sections->getname() . '">' . $curriculum_sections->getlong_name() . '</h2>';  //section
 
 
     }
@@ -811,7 +830,7 @@ foreach ($sections as $section_key=>$section_value){
 
     }
 
-    echo '</div>';
+
 
 
 }
@@ -957,34 +976,38 @@ for each section
 
             var id = null;
 
-            $(this).attr('id', x);
-            id = $(this).attr('id');
+            
+            id = $(this).attr('tocid');
+            $(this).attr('id', id);
+            console.log(id);
             text = $(this).attr('data');
             statement +=
-                '<li class="toc-entry toc-h4" style="font-size:1.1rem;"><a class="text-muted" href="#' + id +
+                '<li tocid="' + id + '" class="toc-entry toc-h4" style="font-size:1.1rem;"><a class="text-muted" href="#' + id +
                 '">' + text + '</a></li>';
             
             
-            statement += '<ul>';  
-            console.log($(this).parent().children());  
-            $(this).parent().children().find('.minor-section').each(function(){
+            statement += '<ol>';  
+            //console.log($(this).parent().find('.minor-section'));  
+            $(this).parent().find('.minor-section').each(function(){
+                x++;
 
 
                 var id = null;
                 var text = null;
-                $(this).attr('id', y);
-                  id = $(this).attr('id');
+                //$(this).attr('id', x);
+                  id = $(this).attr('tocid');
+                  $(this).attr('id', id);
+
                   text = $(this).attr('data');
                  statement +=
-                '<li class="toc-entry toc-h4" style="font-size:1.1rem;"><a class="text-muted" href="#' + id +
+                '<li tocid="' + id + '" class="toc-entry toc-h4" style="font-size:1.1rem;"><a class="text-muted" href="#' + id +
                 '">' + text + '</a></li>';
 
 
-                y++;
 
 
             })
-            statement += '</ul>';    
+            statement += '</ol>';    
 
             
             
@@ -1125,14 +1148,17 @@ $(this).css('color', '#95aac9');
 
         $(window).scroll(function() {
             var scrollDistance = $(window).scrollTop();
-
-
+            scrollDistance = scrollDistance - 500;
             // Assign active class to nav links while scolling
-            $('fieldset').each(function(i) {
+            $('.toc-marker').each(function(i) {
+
+                //define which one triggered
+
+                var idElement = $(this).attr('tocid');
                 if ($(this).position().top <= scrollDistance) {
                     $('.section-nav li.text-gieqsGold').removeClass('text-gieqsGold').addClass(
                         'text-muted');
-                    $('.section-nav li').eq(i).addClass('text-gieqsGold').removeClass(
+                    $('.section-nav li [tocid=' + idElement + ']').addClass('text-gieqsGold').removeClass(
                         'text-muted');
                 }
             });
