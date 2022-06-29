@@ -386,6 +386,20 @@ top: 0px;
 
 
 
+                $(window).scroll(function() {
+                    var scrollDistance = $(window).scrollTop();
+
+
+                    // Assign active class to nav links while scolling
+                    $('h2').each(function(i) {
+                        if ($(this).position().top <= scrollDistance) {
+                            $('.section-nav a.text-gieqsGold').removeClass('text-gieqsGold').addClass(
+                                'text-muted');
+                            $('.section-nav a').eq(i).addClass('text-gieqsGold').removeClass(
+                                'text-muted');
+                        }
+                    });
+                }).scroll();
 
 
 
