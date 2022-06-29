@@ -319,7 +319,7 @@ top: 0px;
     //include(BASE_URI . '/pages/learning/assets/gpatNav.php');
 
     
-    $debug = false;
+    $debug = true;
     $_SESSION['debug'] = false;
 
     ?>
@@ -533,14 +533,14 @@ foreach ($sections as $section_key=>$section_value){
 
     $items = $curriculum_manager->getitemssection($section_value);
 
-    if (count($items)==0){
+    if (!is_array($items)){
 
-        echo '<h1 data="' . $curriculum_sections->getname() . '">' . $curriculum_sections->getlong_name() . '</h1>';  //section
+        echo '<h1 class="mt-5" data="' . $curriculum_sections->getname() . '">' . $curriculum_sections->getlong_name() . '</h1>';  //section
 
 
     }else{
 
-        echo '<h2 data="' . $curriculum_sections->getname() . '">' . $curriculum_sections->getlong_name() . '</h2>';  //section
+        echo '<h2 class="ml-3" data="' . $curriculum_sections->getname() . '">' . $curriculum_sections->getlong_name() . '</h2>';  //section
 
 
     }
@@ -552,6 +552,7 @@ foreach ($sections as $section_key=>$section_value){
 
         var_dump($items);
         echo '<br/><br/>This item has ' . count($items) . ' sections';
+        echo '<br/>$items is array ' . var_dump(is_array($items));
         
         }
 
