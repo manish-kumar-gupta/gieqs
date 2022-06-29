@@ -530,13 +530,13 @@ foreach ($sections as $section_key=>$section_value){
 
     foreach ($items as $items_key=>$items_value){
 
-        echo '<div class="card bg-dark-light">';
+        echo '<div class="card bg-dark">';
         echo '<div class="actions" style="position:absolute; right:20px; top:20px;">';
         echo '<i  class="cursor-pointer fas fa-tag mx-3" data-toggle="collapse"
         href="#multiCollapseExample' . $y. '"></i><i class="fas fa-graduation-cap mx-3 cursor-pointer" data-toggle="collapse"
         href="#multiCollapseExample' . $z. '"></i>';
         echo '</div>';
-        echo '<div class="card-body my-3">';
+        echo '<div class="card-body mb-3 mt-5">';
 
 
         $curriculum_items->Load_from_key($items_value);
@@ -701,7 +701,7 @@ foreach ($sections as $section_key=>$section_value){
 
 
 
-                            <div class="d-flex">
+                           <!--  <div class="d-flex">
 
                                 <a class="dropdown-item" style="font-size:1rem !important;" data-toggle="collapse"
                                     href="#multiCollapseExample<?php echo $y;?>" role="button" aria-expanded="false"
@@ -711,8 +711,8 @@ foreach ($sections as $section_key=>$section_value){
                                     data-target="#multiCollapseExample<?php echo $z;?>" aria-expanded="false"
                                     aria-controls="multiCollapseExample<?php echo $z;?>"><i
                                         class="fas fa-chevron-circle-up"></i>&nbsp;Show References</a>
-                            </div>
-                            <div class="row">
+                            </div> -->
+                            <div class="row mt-2">
                                 <div class="col">
                                     <div class="collapse multi-collapse" id="multiCollapseExample<?php echo $y;?>">
 
