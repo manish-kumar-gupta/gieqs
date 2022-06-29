@@ -40,7 +40,7 @@ $identifier = 'id';
 //define user access level
 
 $openaccess = 0;
-$requiredUserLevel = 1;
+$requiredUserLevel = 2;
 
 require BASE_URI . '/head.php';
 
