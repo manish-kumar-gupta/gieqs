@@ -462,11 +462,11 @@ top: 0px;
 
                                 <h6 class="mt-3 mb-3 pl-2 h5">Jump to Section</h6>
 
-                                <ul class="section-nav">
+                                <ol class="section-nav">
 
 
 
-                                </ul>
+                                </ol>
 
 
 
@@ -914,6 +914,7 @@ for each section
         //get all h3s before the next h2 -> 3rd line
 
         var x = 15;
+        var y = 1;
         $('h2').each(function() {
 
             var id = null;
@@ -925,6 +926,7 @@ for each section
                 '<li class="toc-entry toc-h4" style="font-size:1.1rem;"><a class="text-muted" href="#' + id +
                 '">' + text + '</a></li>';
             x++;
+            //y++;
 
         })
 
@@ -948,6 +950,7 @@ for each section
                 '">' + text + '</a></li>';
 
         })
+
 
         $('.section-nav').html(statement);
 
@@ -1067,9 +1070,9 @@ $(this).css('color', '#95aac9');
             // Assign active class to nav links while scolling
             $('fieldset').each(function(i) {
                 if ($(this).position().top <= scrollDistance) {
-                    $('.section-nav a.text-gieqsGold').removeClass('text-gieqsGold').addClass(
+                    $('.section-nav li.text-gieqsGold').removeClass('text-gieqsGold').addClass(
                         'text-muted');
-                    $('.section-nav a').eq(i).addClass('text-gieqsGold').removeClass(
+                    $('.section-nav li').eq(i).addClass('text-gieqsGold').removeClass(
                         'text-muted');
                 }
             });
