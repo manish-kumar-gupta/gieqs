@@ -536,7 +536,7 @@ foreach ($sections as $section_key=>$section_value){
         href="#multiCollapseExample' . $y. '"></i><i class="fas fa-graduation-cap mx-3 cursor-pointer" data-toggle="collapse"
         href="#multiCollapseExample' . $z. '"></i>';
         echo '</div>';
-        echo '<div class="card-body mb-3 mt-5">';
+        echo '<div class="card-body mb-0 pb-0 mt-5">';
 
 
         $curriculum_items->Load_from_key($items_value);
