@@ -528,15 +528,30 @@ foreach ($sections as $section_key=>$section_value){
 
     $curriculum_sections->Load_from_key($section_value);
 
-    echo '<h2 data="' . $curriculum_sections->getname() . '">' . $curriculum_sections->getlong_name() . '</h2>';  //section
 
     //foreach section echo the blocks
 
     $items = $curriculum_manager->getitemssection($section_value);
 
+    if (count($items)==0){
+
+        echo '<h1 data="' . $curriculum_sections->getname() . '">' . $curriculum_sections->getlong_name() . '</h1>';  //section
+
+
+    }else{
+
+        echo '<h2 data="' . $curriculum_sections->getname() . '">' . $curriculum_sections->getlong_name() . '</h2>';  //section
+
+
+    }
+
+
+
+
     if ($debug){
 
         var_dump($items);
+        echo '<br/><br/>This item has ' . count($items) . ' sections';
         
         }
 
@@ -645,8 +660,12 @@ foreach ($sections as $section_key=>$section_value){
             
             }
 
-        foreach ($allCategories as $key=>$value){
+            
+            $a = 0;
+            $tagBox = null;
 
+
+        foreach ($allCategories as $key=>$value){
             //check category (we have the id as value)
 
             //get all the matching tags 
@@ -668,12 +687,14 @@ foreach ($sections as $section_key=>$section_value){
 
 
                     $x++;
+                    $a++;
 
                 }
 
             }
 
             //if the array is empty skip this loop
+
 
             if (count($tags_this_category) > 0){
 
@@ -707,9 +728,18 @@ foreach ($sections as $section_key=>$section_value){
             //echo the category name and tags underneath
 
 
-
+            
 
         }
+
+        if ($a == 0){
+
+            $tagBox = '<p style="font-size:1.0rem;">No Tags Yet</p>';
+
+
+        } 
+       
+       
         
 ?>
 
