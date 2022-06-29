@@ -528,7 +528,7 @@ foreach ($sections as $section_key=>$section_value){
 
     $curriculum_sections->Load_from_key($section_value);
 
-    echo '<h2>' . $curriculum_sections->getlong_name() . '</h2>';  //section
+    echo '<h2 data="' . $curriculum_sections->getname() . '">' . $curriculum_sections->getlong_name() . '</h2>';  //section
 
     //foreach section echo the blocks
 
@@ -920,7 +920,7 @@ for each section
 
             $(this).attr('id', x);
             id = $(this).attr('id');
-            text = $(this).text();
+            text = $(this).attr('data');
             statement +=
                 '<li class="toc-entry toc-h4" style="font-size:1.1rem;"><a class="text-muted" href="#' + id +
                 '">' + text + '</a></li>';
