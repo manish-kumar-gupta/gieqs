@@ -95,6 +95,7 @@ $assetid = $data['assetid'];
 $gieqsDigitalv1 = $data['gieqsDigital'];
 
 $debug = false;
+$_SESSION['debug'] = false;
 
 
 $loadedRequiredProduct = 10 * $loadedRequired;

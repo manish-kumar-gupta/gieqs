@@ -466,7 +466,7 @@ $timezones = array('Pacific/Midway' => '(UTC-11:00) Midway',
 'Pacific/Tongatapu' => '(UTC+13:00) Tongatapu',
 'Pacific/Kiritimati' => '(UTC+14:00) Kiritimati',);
 
-$_SESSION['debug'] = true;
+//$_SESSION['debug'] = true;
 
 ?>
 

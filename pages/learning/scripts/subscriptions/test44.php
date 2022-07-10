@@ -20,7 +20,7 @@ $location = BASE_URL . '/index.php';
 
 //require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
 
-$_SESSION['debug'] = TRUE;
+//$_SESSION['debug'] = TRUE;
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);

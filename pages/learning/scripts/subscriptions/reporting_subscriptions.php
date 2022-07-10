@@ -17,7 +17,7 @@ spl_autoload_register('class_loader');
 require_once BASE_URI . '/assets/scripts/classes/sessionView.class.php';
 
 $debug = true;
-$_SESSION['debug'] = true;
+//$_SESSION['debug'] = true;
 
 $general = new general;
 $users = new users;

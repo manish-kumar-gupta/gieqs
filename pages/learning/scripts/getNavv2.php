@@ -3,6 +3,9 @@
             $openaccess = 0;
 
 			$requiredUserLevel = 6;
+
+            $debug = false;
+            $_SESSION['debug'] = false;
 			
             require ('../includes/config.inc.php');		
             
