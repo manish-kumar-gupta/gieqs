@@ -326,11 +326,11 @@ top: 0px;
 
 
 
-    <div class="main-content bg-dark mt-10">
+    <div class="main-content container-fluid bg-dark mt-10">
 
         <!--Header CHANGEME-->
 
-        <div class="container pt-4">
+        <div class="container-fluid pt-4">
 
         <nav aria-label="breadcrumb" class="mb-3">
                     <ol class="breadcrumb breadcrumb-links p-0 m-0">
@@ -352,7 +352,7 @@ top: 0px;
 
 
         </div>
-        <div class="container text-container">
+        <div class="container-fluid text-container">
             <p class="pl-4 mt-2"><?php echo $curriculae->getdescription(); ?></p>
 
         </div>
@@ -365,7 +365,7 @@ top: 0px;
 
 
 
-        <div class="container mt-3">
+        <div class="container-fluid mt-3">
 
 
 
@@ -982,7 +982,7 @@ for each section
             console.log(id);
             text = $(this).attr('data');
             statement +=
-                '<li tocid="' + id + '" class="toc-entry toc-h4" style="font-size:1.1rem;"><a class="text-muted" href="#' + id +
+                '<li tocid="' + id + '" class="toc-entry toc-h4" style="font-size:0.7rem;"><a class="text-muted" href="#' + id +
                 '">' + text + '</a></li>';
             
             
@@ -1000,7 +1000,7 @@ for each section
 
                   text = $(this).attr('data');
                  statement +=
-                '<li tocid="' + id + '" class="toc-entry toc-h4" style="font-size:1.1rem;"><a class="text-muted" href="#' + id +
+                '<li tocid="' + id + '" class="toc-entry toc-h4" style="font-size:0.7rem;"><a class="text-muted" href="#' + id +
                 '">' + text + '</a></li>';
 
 
@@ -1154,7 +1154,13 @@ $(this).css('color', '#95aac9');
 
                 //define which one triggered
 
+                console.log('i is ' + i);
+                
+
                 var idElement = $(this).attr('tocid');
+                console.log('element id is ' + idElement);
+                console.log('scroll distance is ' + scrollDistance);
+
                 if ($(this).position().top <= scrollDistance) {
                     $('.section-nav li.text-gieqsGold').removeClass('text-gieqsGold').addClass(
                         'text-muted');

@@ -27,7 +27,6 @@
 
       $usersViewsVideo = new usersViewsVideo;
 
-      $usersMetricsManager = new usersMetricsManager;
 
       $usersSocial = new usersSocial;
 

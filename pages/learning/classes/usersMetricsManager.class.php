@@ -10,7 +10,9 @@
  *
  */
 
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 if ($_SESSION['debug'] == true) {
 
     error_reporting(E_ALL);

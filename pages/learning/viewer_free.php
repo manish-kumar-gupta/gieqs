@@ -30,6 +30,18 @@ error_reporting(E_NONE);
       $usersLikeVideo = new usersLikeVideo;
         
         $usersFavouriteVideo = new usersFavouriteVideo;
+        require(BASE_URI . '/vendor/autoload.php');
+use Vimeo\Vimeo;
+// Get this from your account
+$vimeo_client_id = '47b9e04f8014da6dc06bbd4b5879d2f3dff2fc1c';
+$vimeo_client_secret = '+7btjhyrrfEaZpAfLX81+pPrxOYlIS9A2d5Jj27GU7JyprVjwBGHK0+LE/XS0++3Ai060tT4msKZa4LbOQFOwOANa8JWqvz6D4k7XXFi4g8vEoBrH6Oh3RwQlaZUZCuP';
+
+// This has to be generated on your site, plugin or theme
+$vimeo_token = 'cc33c4732d5f31ff9b681b23591bd95d';
+error_reporting(-1);
+
+$client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
+
 
       ?>
 
@@ -37,6 +49,7 @@ error_reporting(E_NONE);
     <title>GIEQs Online Endoscopy Trainer</title>
 
     <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
+    <script src="<?php echo BASE_URL . "/node_modules/@vimeo/player/dist/player.js"?>"></script>
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.css">
     <script src="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.js"></script>
@@ -825,6 +838,39 @@ error_reporting(E_NONE);
             </div>
         </div>
     </div>
+
+    <?php
+    
+    $response = $client->request('/videos/' . $general->getVimeoID($id));
+
+    //print_r($response);
+
+    $embedCode = $response['body']['embed']['html'];
+
+    //var_dump($embedCode);
+
+    $scriptTagPattern = '/src\s*=\s*"(.+?)"/'; 
+
+    preg_match($scriptTagPattern, $embedCode, $matches);
+    
+//print_r($matches);
+
+    $requiredVimeoURL = $matches[1];
+
+    $requiredVimeoURL = trim($requiredVimeoURL);
+
+    //echo $requiredVimeoURL;
+
+
+    
+
+
+
+?>
+
+<div id="requiredVimeoURL" style="display:none;"><?php echo $requiredVimeoURL;?></div>
+
+
 
     <?php require BASE_URI . '/footer.php';?>
 
