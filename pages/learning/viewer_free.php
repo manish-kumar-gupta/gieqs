@@ -517,9 +517,9 @@ $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
     <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@gieqs_symposium">
 <meta name="twitter:creator" content="@djtate35">
-<meta name="twitter:title" content="<?php echo $general->getVideoTitle($id)?>">
-<meta name="twitter:description" content="NEWARK - The guest list and parade of limousines with celebrities emerging from them seemed more suited to a red carpet event in Hollywood or New York than than a gritty stretch of Sussex Avenue near the former site of the James M. Baxter Terrace public housing project here.">
-<meta name="twitter:image" content="http://graphics8.nytimes.com/images/2012/02/19/us/19whitney-span/19whitney-span-articleLarge.jpg">
+<meta name="twitter:title" content="<?php echo $general->getVideoTitle($id);?>">
+<meta name="twitter:description" content="<?php echo $general->getVideoSubTitle($id);?>">
+<meta name="twitter:image" content="<?php echo $general->getVimeoThumb($id);?>">
 
 
     <div class="main-content bg-gradient-dark">
