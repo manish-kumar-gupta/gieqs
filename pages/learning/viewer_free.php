@@ -514,12 +514,7 @@ $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
         </div>
     </div>
 
-    <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@gieqs_symposium">
-<meta name="twitter:creator" content="@djtate35">
-<meta name="twitter:title" content="<?php echo $general->getVideoTitle($id);?>">
-<meta name="twitter:description" content="<?php echo $general->getVideoSubTitle($id);?>">
-<meta name="twitter:image" content="<?php echo $general->getVimeoThumb($general->getVimeoID($id));?>">
+
 
 
     <div class="main-content bg-gradient-dark">
@@ -1009,11 +1004,13 @@ $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
     ?>
     <pre>
     <?php
-    print_r($response);
+    //print_r($response);
     ?>
     </pre>
 
     $embedCode = $response['body']['embed']['html'];
+
+    $playimg = $response['body']['pictures']['sizes'][5]['link_with_play_button'];
 
     //var_dump($embedCode);
 
@@ -1035,6 +1032,13 @@ $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
 
 
 ?>
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@gieqs_symposium">
+<meta name="twitter:creator" content="@djtate35">
+<meta name="twitter:title" content="<?php echo $general->getVideoTitle($id);?>">
+<meta name="twitter:description" content="<?php echo $general->getVideoSubTitle($id);?>">
+<meta name="twitter:image" content="<?php echo $playimg;?>">
 
 <div id="requiredVimeoURL" style="display:none;"><?php echo $requiredVimeoURL;?></div>
 
