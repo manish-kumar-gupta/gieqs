@@ -113,7 +113,7 @@ class general {
 		return  $vimeoid;
 
 	}
-	
+
 
 	public function getChapterSelector ($id) {
 
@@ -3567,7 +3567,7 @@ return $arr;
 	public function getVimeoThumb($id)
 	{
 	$vimeo = unserialize(file_get_contents("http://vimeo.com/api/v2/video/$id.php"));
-	print_r($vimeo);
+	//print_r($vimeo);
 	//echo $small = $vimeo[0]['thumbnail_small'];
 	//echo $medium = $vimeo[0]['thumbnail_medium'];
 	return $vimeo[0]['thumbnail_large'];
