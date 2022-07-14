@@ -1006,7 +1006,7 @@ $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
     
     $response = $client->request('/videos/' . $general->getVimeoID($id));
 
-    //print_r($response);
+    print_r($response);
 
     $embedCode = $response['body']['embed']['html'];
 
