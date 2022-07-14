@@ -92,6 +92,28 @@ class general {
 		return  $vimeoid;
 
 	}
+	public function getVideoSubTitle ($id) {
+
+		$q = "SELECT  `id`, `description`  FROM  `video`  WHERE  `id`  = $id";
+
+		$result = $this->connection->RunQuery($q);
+
+		if ($result){
+
+			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+
+				$vimeoid = $row['description'];
+
+
+			}
+
+		}
+
+
+		return  $vimeoid;
+
+	}
+	
 
 	public function getChapterSelector ($id) {
 
