@@ -1002,12 +1002,6 @@ $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
     $response = $client->request('/videos/' . $general->getVimeoID($id));
 
    
-    <pre>
-   
-    //print_r($response);
-  
-    </pre>
-
     $embedCode = $response['body']['embed']['html'];
 
     $playimg = $response['body']['pictures']['sizes'][5]['link_with_play_button'];
