@@ -326,11 +326,11 @@ top: 0px;
 
 
 
-    <div class="main-content container-fluid bg-dark mt-10">
+    <div class="main-content container bg-dark mt-10">
 
         <!--Header CHANGEME-->
 
-        <div class="container-fluid pt-4">
+        <div class="container pt-4">
 
         <nav aria-label="breadcrumb" class="mb-3">
                     <ol class="breadcrumb breadcrumb-links p-0 m-0">

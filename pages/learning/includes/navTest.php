@@ -41,18 +41,19 @@ function endsWith($haystack, $needle)
                     <a class="nav-link text-white">GIEQs Demonstration Viewer</a>
                 </li>
                 <li class="nav-item active">
+                <a href="<?php echo BASE_URL;?>/iii" class="btn btn-sm btn-icon btn-group-nav bg-dark text-white shadow btn-neutral mx-2 my-2">
+                <span class="btn-inner--icon text-white"><i class="fas fa-user-plus"></i></span>
+                <span class="btn-inner--text text-white">Sign up for GIEQs III</span>
+              </a>
+                </li>
+                <li class="nav-item active">
                 <a href="https://vimeo.com/450743797" class="btn btn-sm btn-icon btn-group-nav bg-gieqsGold shadow btn-neutral mx-2" data-fancybox>
                 <span class="btn-inner--icon text-dark"><i class="fas fa-directions"></i></span>
-                <span class="animated bounce delay-2s btn-inner--text text-dark">Show me the basics!</span>
+                <span class="animated bounce delay-2s btn-inner--text text-dark">Show me the basics of GIEQs Online!</span>
               </a>
                 </li>
 
-                <li class="nav-item active">
-                <a href="<?php echo BASE_URL;?>/basic-colonoscopy" class="btn btn-sm btn-icon btn-group-nav bg-dark text-white shadow btn-neutral mx-2 my-2">
-                <span class="btn-inner--icon text-white"><i class="fas fa-user-plus"></i></span>
-                <span class="btn-inner--text text-white">Sign up for GIEQs Courses</span>
-              </a>
-                </li>
+                
                 <!-- Program-basic, later to add dropdown with options -->
                <!--  <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
                     <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
