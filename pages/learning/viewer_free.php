@@ -839,6 +839,159 @@ $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
         </div>
     </div>
 
+    <div class="modal fade" id="teaser-videos" tabindex="-1" role="dialog" aria-labelledby="teaser-videos"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dark" role="document">
+                <div class="modal-content p-1">
+                    <div class="modal-header">
+                        <h5 class="display-4 modal-title" id="accreditationLabel" style="color: rgb(238, 194, 120);">
+                            Join us for GIEQs II</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span class="text-white" aria-hidden="false">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div id="videoDisplay mb-3" class="">
+
+                            <div class="row">
+                                <p class="h5 mt-2">Released prior to the early bird deadline these 6, 1-2 minute video
+                                    snippets
+                                    demonstrate the attention to detail, deconstructed approach and rock solid evidence
+                                    base of the GIEQs Approach. <br /> <br /></p>
+
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <a href="https://vimeo.com/544320202" data-fancybox>
+                                            <img alt="video image"
+                                                src="https://i.vimeocdn.com/video/1126934937-431df118afeb15456f5df6bfc5408fef149204256f9eca13e74093f4052b4151-d_1280x720?r=pad"
+                                                class="img-fluid mt-2">
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6">
+
+                                        <p class="ml-3"><span class="h4">1 - Over the Scope Clip for Upper
+                                                Gastrointestinal Bleeding</span><br /><span class="text-muted">Use of
+                                                OTSC as first-line for life
+                                                threatening upper gastrointestinal haemorrhage.</span>
+                                        </p>
+
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col-sm-6">
+                                        <a href="https://vimeo.com/554318938/c7ca7d7344" data-fancybox>
+                                            <img alt="video image"
+                                                src="https://i.vimeocdn.com/video/1148126009-af8e7fba76a227c1fb6fd5e68c06f45bafb260b84d72ed86914cfee72fc65c28-d_1280x720?r=pad"
+                                                class="img-fluid mt-2">
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6">
+
+                                        <p class="ml-3"><span class="h4">2 - Early Gastric Cancer</span><br /><span
+                                                class="text-muted">Can you
+                                                identify and characterise
+                                                this early gastric cancer? Watch the video for more information
+                                                including endoscopic resectability</span>
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="row mt-3">
+                                    <div class="col-sm-6">
+                                        <a href="https://vimeo.com/558060403/60a0e3b128" data-fancybox>
+                                            <img alt="video image"
+                                                src="https://i.vimeocdn.com/video/1209723683-ed47dceb6a8abdb974cca06274a57fcb9c0acd68cd422407c137d22e8b074aed-d_1280x720?r=pad"
+                                                class="img-fluid mt-2">
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="ml-3"><span class="h4">3 - The Demarcated Area as a Predictor of
+                                                Submucosal Invasion in Colon Polyps</span><br /> <span
+                                                class="text-muted">the Demarcated Area has emerged as a stable predictor
+                                                of submucosal invasive cancer. Find out more here.</span>
+                                        </p>
+
+                                    </div>
+                                </div>
+
+                                <div class="row mt-3">
+                                    <div class="col-sm-6">
+                                        <a href="https://vimeo.com/566734386/dab5d063ba" data-fancybox>
+                                            <img alt="video image"
+                                                src="https://i.vimeocdn.com/video/1209716933-d150591044edd917d12667056cb66eeedd88f42eab3c12a5a5adcca7715201fc-d_1280x720?r=pad"
+                                                class="img-fluid mt-2">
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="ml-3"><span class="h4">4 - Dealing with Adverse Events at Colonic
+                                                Polypectomy</span><br /><span class="text-muted">
+                                                To be able to competently perform colonic polypectomy you must be able
+                                                to deal with adverse events. A deconstructed example is shown
+                                                here.</span>
+                                        </p>
+
+                                    </div>
+                                </div>
+
+                                <div class="row mt-3">
+                                    <div class="col-sm-6">
+                                        <a href="https://vimeo.com/569339891/d436733eba" data-fancybox>
+                                            <img alt="video image"
+                                                src="https://i.vimeocdn.com/video/1177464087-059ac4984d142abe0951667787fa04cdc8cb1c18089f4f7d823334eaba70ed0a-d_1280x720?r=pad"
+                                                class="img-fluid mt-2">
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="ml-3"><span class="h4">5 - Complex EUS applications to make Everyday
+                                                ERCP easier</span><br /><span class="text-muted">Endoscopic Ultrasound
+                                                is radically changing the way we approach biliary intervention and can
+                                                make a difference to everyday endoscopic problems.</span>
+                                        </p>
+
+                                    </div>
+                                </div>
+
+                                <div class="row mt-3">
+                                    <div class="col-sm-6">
+                                        <a href="https://vimeo.com/570805121/11be30d98a" data-fancybox>
+                                            <img alt="video image"
+                                                src="https://i.vimeocdn.com/video/1180469446-bd411e0544f5de5035f20ff63e77f17323f63a5eefefa432e43c3d75e1bf32af-d_1280x720?r=pad"
+                                                class="img-fluid mt-2">
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="ml-3"><span class="h4">6 - Decision Making after Large perforation and
+                                                life threatening Bleeding during Polypectomy</span><br /><span
+                                                class="text-muted">Many of the GIEQs faculty spend their normal working
+                                                lives on complex endoscopy. Learning the lessons and approach from these
+                                                procedures, deconstructing them and bringing them to the everyday is a
+                                                crucial part of the GIEQs approach.</span>
+                                        </p>
+
+                                    </div>
+                                </div>
+
+
+
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn-small rounded-pill bg-gieqsGold text-dark"
+                                    data-dismiss="modal">Close</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     <?php
     
     $response = $client->request('/videos/' . $general->getVimeoID($id));
@@ -1132,6 +1285,17 @@ $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
 
             
             //getComments();
+
+            /* var isshow = localStorage.getItem('isshow');
+            if (isshow == null) {
+                localStorage.setItem('isshow', 1);
+
+                // Show popup here
+                setTimeout(function() {
+                    $('#teaser-videos').modal('show');
+                }, 5000);
+
+            } */
 
             
 
