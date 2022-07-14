@@ -519,7 +519,7 @@ $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
 <meta name="twitter:creator" content="@djtate35">
 <meta name="twitter:title" content="<?php echo $general->getVideoTitle($id);?>">
 <meta name="twitter:description" content="<?php echo $general->getVideoSubTitle($id);?>">
-<meta name="twitter:image" content="<?php echo $general->getVimeoThumb($id);?>">
+<meta name="twitter:image" content="<?php echo $general->getVimeoThumb($general->getVimeoID($id));?>">
 
 
     <div class="main-content bg-gradient-dark">
