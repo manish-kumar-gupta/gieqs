@@ -1004,7 +1004,7 @@ $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
    
     $embedCode = $response['body']['embed']['html'];
 
-    $playimg = $response['body']['pictures']['sizes'][3]['link_with_play_button'] . '?' . uniqid();
+    $playimg = $response['body']['pictures']['sizes'][5]['link_with_play_button'] . '?' . uniqid();
 
     //var_dump($embedCode);
 
