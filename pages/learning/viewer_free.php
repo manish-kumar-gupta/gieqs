@@ -1034,10 +1034,15 @@ $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
 <meta name="twitter:description" content="<?php echo $general->getVideoSubTitle($id);?>">
 <meta name="twitter:image" content="<?php echo $playimg;?>">
 
-<meta property="og:url" content="www.gieqs.com">
+<meta property="og:title" content="The Rock" />
+<meta property="og:type" content="video.movie" />
+<meta property="og:url" content="https://www.imdb.com/title/tt0117500/" />
+<meta property="og:image" content="https://ia.media-imdb.com/images/rock.jpg" />
+
+<!-- <meta property="og:url" content="www.gieqs.com">
 <meta property="og:title" content="<?php echo $general->getVideoTitle($id);?>">
 <meta property="og:description" content="<?php echo $general->getVideoSubTitle($id);?>">
-<meta property="og:image" content="<?php echo $playimg;?>">
+<meta property="og:image" content="<?php echo $playimg;?>"> -->
 
 <div id="requiredVimeoURL" style="display:none;"><?php echo $requiredVimeoURL;?></div>
 
