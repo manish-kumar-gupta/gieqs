@@ -95,6 +95,9 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
 <meta name="twitter:description" content="<?php echo $general->getVideoSubTitle($id);?>">
 <meta name="twitter:image" content="<?php echo $playimg;?>">
 
+<meta property="og:type" content="website" />
+<meta property="fb:app_id" content="493045018280075" />
+
 <meta property="og:url" content="https://www.gieqs.com/pages/learning/viewer_free.php?id=<?php echo $id;?>">
 <meta property="og:title" content="<?php echo $general->getVideoTitle($id);?>">
 <meta property="og:description" content="<?php echo $general->getVideoSubTitle($id);?>">
