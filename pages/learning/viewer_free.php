@@ -49,6 +49,57 @@ $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
     <!--Page title-->
     <title>GIEQs Online Endoscopy Trainer</title>
 
+    <?php
+
+if (isset($_GET["id"]) && is_numeric($_GET["id"])){
+    $id = $_GET["id"];
+
+}else{
+
+    $id = null;
+
+}
+    
+    $response = $client->request('/videos/' . $general->getVimeoID($id));
+
+   
+    $embedCode = $response['body']['embed']['html'];
+
+    $playimg = $response['body']['pictures']['sizes'][5]['link_with_play_button'] . '?' . uniqid();
+
+    //var_dump($embedCode);
+
+    $scriptTagPattern = '/src\s*=\s*"(.+?)"/'; 
+
+    preg_match($scriptTagPattern, $embedCode, $matches);
+    
+//print_r($matches);
+
+    $requiredVimeoURL = $matches[1];
+
+    $requiredVimeoURL = trim($requiredVimeoURL);
+
+    //echo $requiredVimeoURL;
+
+
+    
+
+
+
+?>
+
+    <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@gieqs_symposium">
+<meta name="twitter:creator" content="@djtate35">
+<meta name="twitter:title" content="<?php echo $general->getVideoTitle($id);?>">
+<meta name="twitter:description" content="<?php echo $general->getVideoSubTitle($id);?>">
+<meta name="twitter:image" content="<?php echo $playimg;?>">
+
+<meta property="og:url" content="https://www.gieqs.com/pages/learning/viewer_free.php?id=<?php echo $id;?>">
+<meta property="og:title" content="<?php echo $general->getVideoTitle($id);?>">
+<meta property="og:description" content="<?php echo $general->getVideoSubTitle($id);?>">
+<meta property="og:image" content="<?php echo $playimg;?>">
+
     <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
     <script src="<?php echo BASE_URL . "/node_modules/@vimeo/player/dist/player.js"?>"></script>
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
@@ -270,14 +321,7 @@ $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
     </header>
 
     <?php
-		if (isset($_GET["id"]) && is_numeric($_GET["id"])){
-			$id = $_GET["id"];
 		
-		}else{
-		
-			$id = null;
-		
-		}
 				        if ($id){
 		
 							$q = "SELECT  `id`  FROM  `video`  WHERE  `id`  = $id";
@@ -997,47 +1041,9 @@ $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
             </div>
         </div>
 
-    <?php
-    
-    $response = $client->request('/videos/' . $general->getVimeoID($id));
-
    
-    $embedCode = $response['body']['embed']['html'];
-
-    $playimg = $response['body']['pictures']['sizes'][5]['link_with_play_button'] . '?' . uniqid();
-
-    //var_dump($embedCode);
-
-    $scriptTagPattern = '/src\s*=\s*"(.+?)"/'; 
-
-    preg_match($scriptTagPattern, $embedCode, $matches);
-    
-//print_r($matches);
-
-    $requiredVimeoURL = $matches[1];
-
-    $requiredVimeoURL = trim($requiredVimeoURL);
-
-    //echo $requiredVimeoURL;
 
 
-    
-
-
-
-?>
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@gieqs_symposium">
-<meta name="twitter:creator" content="@djtate35">
-<meta name="twitter:title" content="<?php echo $general->getVideoTitle($id);?>">
-<meta name="twitter:description" content="<?php echo $general->getVideoSubTitle($id);?>">
-<meta name="twitter:image" content="<?php echo $playimg;?>">
-
-<meta property="og:url" content="https://www.gieqs.com/pages/learning/viewer_free.php?id=<?php echo $id;?>">
-<meta property="og:title" content="<?php echo $general->getVideoTitle($id);?>">
-<meta property="og:description" content="<?php echo $general->getVideoSubTitle($id);?>">
-<meta property="og:image" content="<?php echo $playimg;?>">
 
 <div id="requiredVimeoURL" style="display:none;"><?php echo $requiredVimeoURL;?></div>
 
