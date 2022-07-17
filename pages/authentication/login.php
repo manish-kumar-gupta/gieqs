@@ -426,8 +426,12 @@ background-color: rgb(238, 194, 120);
             </div>
             <div class="col-lg-5 order-lg-1 d-none d-lg-block">
               <blockquote>
-                <h3 class="h2 mb-4">GIEQs is FREE to Join with stacks of FREE content.</h3>
-                <footer>— <cite class="text-lg"><a href="' . BASE_URL . '/pages/program/online.php?id=2456" class="text-lg">Sign up now!</a></cite></footer>
+                <h3 class="h2 mb-4">GIEQs Online is a modern Endoscopy Education Platform.  Its free to join with stacks of free content.</h3>
+                <div class="mt-4"><a id="signupbutton" type="button" class="btn btn-sm btn-primary btn-icon rounded-pill" href="<?php echo BASE_URL . '/pages/program/online.php?id=2456';?>">
+                        <span class="btn-inner--text">Sign Up Now!</span>
+                        <span class="btn-inner--icon"><i class="fas fa-long-arrow-alt-right"></i></span>
+                      </a></div>
+                <footer>— <cite class="text-lg"><a href="' . BASE_URL . '/pages/program/online.php?id=2456" class="text-lg">Sign up here!</a></cite></footer>
               </blockquote>
             </div>
           </div>
