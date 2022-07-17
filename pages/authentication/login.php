@@ -426,8 +426,8 @@ background-color: rgb(238, 194, 120);
             </div>
             <div class="col-lg-5 order-lg-1 d-none d-lg-block">
               <blockquote>
-                <h3 class="h2 mb-4">"We can do everyday endoscopy better"</h3>
-                <footer>— <cite class="text-lg">the GIEQs Foundation 2021</cite></footer>
+                <h3 class="h2 mb-4">GIEQs is FREE to Join with stacks of FREE content.</h3>
+                <footer>— <cite class="text-lg"><a href="' . BASE_URL . '/pages/program/online.php?id=2456" class="text-lg">Sign up now!</a></cite></footer>
               </blockquote>
             </div>
           </div>
