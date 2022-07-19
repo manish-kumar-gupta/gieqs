@@ -11,7 +11,7 @@
                 $users = new users;
 
                 
-                $response =  $users->Load_records_limit_json_datatables(2000);
+                $response =  $users->Load_records_limit_json_datatables(20000);
 
                 echo $response;
 
