@@ -61,8 +61,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=132" class="nav-link nav-link-icon cursor-pointer">
+                        <span class="nav-link-inner--text <?php echo $symposium_nav_active[5];?> ">VPK</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                 <a href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=95&action=register" class="btn btn-fill-gieqsGold btn-sm mx-2" role="button">
-                        <span class="nav-link-inner--text <?php echo $symposium_nav_active[5];?> ">Register Now!</span>
+                        <span class="nav-link-inner--text <?php echo $symposium_nav_active[6];?> ">Register Now!</span>
                     </a>
                 </li>
 
