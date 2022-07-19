@@ -66,6 +66,13 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
 }
 
 
+$asset_id_pagewrite = $asset_id_url;
+$assets_paid->Load_from_key($asset_id_pagewrite);
+
+
+
+
+
 
 
 
@@ -77,6 +84,22 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
 ?>
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.css">
     <script src="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.js"></script>
+
+
+    <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@gieqs_symposium">
+<meta name="twitter:creator" content="@djtate35">
+<meta name="twitter:title" content="<?php echo $assets_paid->getName(); ?>">
+<meta name="twitter:description" content="<?php echo $assets_paid->getdescription(); ?>">
+<meta name="twitter:image" content="<?php echo 'https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1650342788_gieqs_1200x300_final_5.png';?>">
+
+<meta property="og:type" content="website" />
+<meta property="fb:app_id" content="493045018280075" />
+<meta property="og:url" content="https://www.gieqs.com/pages/program/program_generic.php?id=<?php echo $id;?>">
+<meta property="og:title" content="<?php echo $assets_paid->getName(); ?>">
+<meta property="og:description" content="<?php echo $assets_paid->getdescription(); ?>">
+<meta property="og:image" content="<?php echo 'https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1650342788_gieqs_1200x300_final_5.png';?>">
+
 
     <style>
 
@@ -225,7 +248,6 @@ font-weight: 300 !important;
 //assetid
 
 //$assetid = 13;
-$asset_id_pagewrite = $asset_id_url;
 
 //fix GIEQs III
 if ($asset_id_url == '95'){
@@ -294,12 +316,6 @@ print_r($programme4);
 
 
 
-$assets_paid->Load_from_key($asset_id_pagewrite);
-
-
-
-
-$assets_paid->Load_from_key($asset_id_pagewrite);
 
 $blog_to_use_as_basis = $assets_paid->getlinked_blog();
 $blogs->Load_from_key($blog_to_use_as_basis);
