@@ -25,7 +25,7 @@ function ne($v) {
 
 
 
-$debug = true;
+$debug = false;
 $explicit = true;
 //echo 'hello';
 
@@ -107,7 +107,7 @@ if (count($_GET) > 0){
 
         }else{
 
-            //failed to update user account
+            //failed to update user account 
             //show error
 
         }
@@ -116,7 +116,7 @@ if (count($_GET) > 0){
     }else{
         
         if ($debug){
-            echo 'Invalid Key.  Please go to login and request a new account reset or contact us';
+            echo 'Invalid Key.  You probably clicked the linked twice.  Please go to <a href="' . BASE_URL . '/login">login</a> and click forgot password.  Enter your email address for a password reset link.  You can always contact us if you are still having trouble.';
             }
 
 
