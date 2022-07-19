@@ -95,7 +95,7 @@ $assets_paid->Load_from_key($asset_id_pagewrite);
 
 <meta property="og:type" content="website" />
 <meta property="fb:app_id" content="493045018280075" />
-<meta property="og:url" content="https://www.gieqs.com/pages/program/program_generic.php?id=<?php echo $id;?>">
+<meta property="og:url" content="https://www.gieqs.com/pages/program/program_generic.php?id=<?php echo $asset_id_url;?>">
 <meta property="og:title" content="<?php echo $assets_paid->getName(); ?>">
 <meta property="og:description" content="<?php echo $assets_paid->getdescription(); ?>">
 <meta property="og:image" content="<?php echo 'https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1650342788_gieqs_1200x300_final_5.png';?>">
