@@ -1,8 +1,10 @@
 <?php
 	
-    //error_reporting;
+    //error_reporting(E_ALL);
  
-    //print_r($_SESSION);\
+    //print_r($_SESSION);
+
+
 
      require (BASE_URI . '/assets/scripts/login_functions.php');
      

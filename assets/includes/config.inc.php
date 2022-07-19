@@ -1,4 +1,8 @@
 <?php 
+
+//error_reporting(E_ALL);
+
+
 // server should keep session data for AT LEAST 12 hours
 ini_set('session.gc_maxlifetime', 43200);
 
@@ -161,7 +165,8 @@ $debug = TRUE;
  *  before this next conditional.
  */
 
-$debug = false;
+//$debug = true;
+//$_SESSION['debug'] = true;
 
 // Assume debugging is off. 
 if (!isset($debug)) {

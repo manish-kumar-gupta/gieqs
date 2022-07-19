@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php require 'assets/includes/config.inc.php';?>
+<?php 
+
+require 'assets/includes/config.inc.php';?>
 
 <head>
 
