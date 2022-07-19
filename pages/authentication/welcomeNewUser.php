@@ -143,6 +143,15 @@ background-color: rgb(238, 194, 120);
                      ?>
 
                       <a href="<?php echo $link;?>"><button type="button" class="btn btn-block text-dark bg-gieqsGold"><?php echo $link_text;?></button></a>
+
+                      <?php 
+                      
+                      $key = $userFunctions->generateRandomString('10');
+                      $users->setkey($key);
+                      $users->prepareStatementPDOUpdate();
+
+                      
+                      ?>
                     </div>
                   
               </div>

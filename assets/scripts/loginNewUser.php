@@ -70,12 +70,10 @@ if (count($_GET) > 0){
     
         //get a new key
 
-        $key = $userFunctions->generateRandomString('10');
-        $users->setkey($key);
+       
 
         //commit changes to DB
 
-        if ($users->prepareStatementPDOUpdate() > 0){
 
             //login
 
@@ -106,12 +104,6 @@ if (count($_GET) > 0){
 
 
 
-        }else{
-
-            //failed to update user account
-            //show error
-
-        }
 
 
     }else{
