@@ -115,7 +115,7 @@ if (count($_GET) > 0){
 
     }else{
         
-        if ($debug){
+        if ($explicit){
             echo 'Invalid Key.  You probably clicked the linked twice.  Please go to <a href="' . BASE_URL . '/login">login</a> and click forgot password.  Enter your email address for a password reset link.  You can always contact us if you are still having trouble.';
             }
 
