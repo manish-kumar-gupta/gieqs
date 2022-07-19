@@ -16,7 +16,7 @@ $openaccess =1;
             $programmeReports = new programmeReports;
 
 
-            $debug = false;
+            $debug = true;
             if ( ! function_exists( 'array_key_last' ) ) {
                 /**
                  * Polyfill for array_key_last() function added in PHP 7.3.
