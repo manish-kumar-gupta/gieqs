@@ -161,7 +161,7 @@ class programmeReports
             GROUP BY e.`id`
             ORDER BY a.`date` ASC, e.`timeFrom` ASC";
 
-        //echo $q . '<br><br>';
+        echo $q . '<br><br>';
 
 
 
