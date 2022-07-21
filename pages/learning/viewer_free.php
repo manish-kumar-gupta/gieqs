@@ -849,6 +849,35 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
 
     </div>
     </div>
+     <!-- Modal Flyer-->
+ <div class="modal fade" id="modal-flyer" tabindex="-1" role="dialog" aria-labelledby="modal-flyer"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dark" role="document">
+                <div class="modal-content p-1">
+                <div class="modal-header">
+                        <h5 class="modal-title" id="accreditationLabel" style="color: rgb(238, 194, 120);">Want more like this? Then join us for GIEQs III</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span class="text-white" aria-hidden="false">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body p-5 text-center">
+                    <a href="<?php echo BASE_URL;?>/iii"><img class="w-100" src="<?php echo BASE_URL;?>/assets/img/flyer/gieqs_iii_flyer.png" /></a>
+
+
+
+ </div>
+ <div class="modal-footer">
+                                <button type="button" class="btn-small rounded-pill bg-gieqsGold text-dark"
+                                    data-dismiss="modal">Close</button>
+
+                            </div>
+
+                    </div>
+
+                    
+            </div>
+        </div>
     <!-- Modal -->
     <div class="modal fade" id="registerInterest" tabindex="-1" role="dialog" aria-labelledby="registerInterestLabel"
         aria-hidden="true">
@@ -1315,15 +1344,19 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
 
             /* var isshow = localStorage.getItem('isshow');
             if (isshow == null) {
-                localStorage.setItem('isshow', 1);
+                localStorage.setItem('isshow', 1);  //to make it show once
 
                 // Show popup here
                 setTimeout(function() {
-                    $('#teaser-videos').modal('show');
+                    $('#modal-flyer').modal('show');
                 }, 5000);
 
             } */
 
+            // Show popup here
+            setTimeout(function() {
+                    $('#modal-flyer').modal('show');
+                }, 5000);
             
 
             $(document).click(function(event) { 

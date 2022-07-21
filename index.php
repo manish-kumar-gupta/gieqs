@@ -1328,7 +1328,35 @@ $imageArray = ['assets/img/polyps/transverse_lci.png', 'assets/img/icons/gieqs_2
         </div>
 
 
+ <!-- Modal Flyer-->
+ <div class="modal fade" id="modal-flyer" tabindex="-1" role="dialog" aria-labelledby="modal-flyer"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dark" role="document">
+                <div class="modal-content p-1">
+                <div class="modal-header">
+                        <h5 class="modal-title" id="accreditationLabel" style="color: rgb(238, 194, 120);">Join us for GIEQs III</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span class="text-white" aria-hidden="false">&times;</span>
+                        </button>
+                    </div>
 
+                    <div class="modal-body p-5 text-center">
+                    <a href="<?php echo BASE_URL;?>/iii"><img class="w-100" src="<?php echo BASE_URL;?>/assets/img/flyer/gieqs_iii_flyer.png" /></a>
+
+
+
+ </div>
+ <div class="modal-footer">
+                                <button type="button" class="btn-small rounded-pill bg-gieqsGold text-dark"
+                                    data-dismiss="modal">Close</button>
+
+                            </div>
+
+                    </div>
+
+                    
+            </div>
+        </div>
 
         <!-- Modal Teaser-->
         <div class="modal fade" id="teaser-videos" tabindex="-1" role="dialog" aria-labelledby="teaser-videos"
