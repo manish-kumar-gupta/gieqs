@@ -1473,12 +1473,20 @@ $(document).ready(function() {
 
         waitForFinalEvent(function() {
 
-            if (isSymposium){
+            if (isSymposium === 'true'){
 
                 if (loggedin == '1'){
 
+                    if (alreadyRegistered == 'false'){
+
                 $('.symposium-now').trigger('click');
 
+                    }
+
+                }else{
+
+                    $('.register-now').trigger('click');
+ 
                 }
 
 

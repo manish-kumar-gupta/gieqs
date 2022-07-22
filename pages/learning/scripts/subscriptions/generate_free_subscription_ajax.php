@@ -437,10 +437,20 @@ $subscription_to_return['user_id'] = $userid;
 
         }
 
+        if ($new_remaining == 0){
+
+            $assetManager->zero_token($tokenid);
+            //workaround since 0 does not update the class
+
+        }else{
+
         $token->setremaining($new_remaining);
 
         //var_dump($token);
         $token->prepareStatementPDOUpdate();
+
+
+        }
         
         //check if a pro subscription
         //if so make sure they have access to the pro assets
@@ -621,7 +631,7 @@ $subscription_to_return['user_id'] = $userid;
 
                 $symposium_id = $userFunctions->getSymposiumidUserid($userid, false);
 
-                $debug = true;
+                //$debug = true;
 
                 $sitewide_cancellation_string = null;
 
@@ -642,7 +652,7 @@ $subscription_to_return['user_id'] = $userid;
         
                     if ($symposium->getincludeGIEQsPro() == '1'){ 
                         
-                        $debug = true;
+                        //$debug = true;
                         
                         if ($debug){
                             
@@ -790,7 +800,7 @@ $subscription_to_return['user_id'] = $userid;
                         ];
         
         
-                        $subscription->New_subscriptions($userid, $registrationTypeConverter[$symposium->getregistrationType()], $current_date_sqltimestamp, $end_date_sqltimestamp, '1', '0', $payment_intent);
+                        $subscription->New_subscriptions($userid, $registrationTypeConverter[$symposium->getregistrationType()], $current_date_sqltimestamp, $end_date_sqltimestamp, '1', '0', $text);
         
                         $newsitewideSubscriptionid = $subscription->prepareStatementPDO();
         
@@ -987,7 +997,38 @@ $subscription_to_return['user_id'] = $userid;
         $emailVaryarray['gateway_transactionId'] = $text;
         $emailVaryarray['preheader'] = $preheader;
     
+        //symposium specific
 
+$registrationType = [
+
+    1 => 'Doctor',
+    2 => 'Doctor in Training',
+    3 => 'Nurse Endoscopist',
+    4 => 'Endoscopy Nurse',
+    5 => 'Medical Student',
+
+
+];
+
+//$start_date_gieqs_online = 'start date';
+//$end_date_gieqs_online = 'end date';
+
+$includeGIEQsPro = [
+
+    0 => 'Not included',
+    1 => 'Included.  Subscription id # ' . $newsitewideSubscriptionid . '. Starts ' . $start_date_gieqs_online . ' Ends ' . $end_date_gieqs_online . '. ' . $sitewide_cancellation_string,
+
+
+
+];
+
+
+$emailVaryarray['registrationType'] = $registrationType[$symposium->getregistrationType()];
+$emailVaryarray['includeGIEQsPro'] = $includeGIEQsPro[$symposium->getincludeGIEQsPro()];
+
+$emailVaryarray['start_date'] = $start_date_user_readable;
+
+$debug = false;
         
         if ($debug){
 

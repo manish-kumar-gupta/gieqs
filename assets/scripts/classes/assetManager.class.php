@@ -6292,6 +6292,43 @@ if ($debug){
 
         }
 
+        public function zero_token ($tokenid){
+
+
+            $q = "UPDATE `token` SET `remaining`='0' WHERE `id` = '$tokenid'";
+    
+            
+        
+        
+        if ($debug){
+            echo $q . '<br><br>';
+        
+        }
+        
+        $result = $this->connection->RunQuery($q);
+        
+        $x = 0;
+        $nRows = $result->rowCount();
+        
+        if ($nRows > 0) {
+        
+            return true;
+        
+        } else {
+            
+        
+            if ($debug){
+        
+                echo 'cannot inactivate token';
+            }
+        
+            return false;
+        
+            
+        }
+
+        }
+
 
 
   
