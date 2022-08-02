@@ -83,6 +83,21 @@
 
     }
 
+    #left {
+  float: left;
+  width: 75%;
+  height: 100vh;
+  overflow-y: scroll;
+  text-align: center;
+}
+
+#right {
+  float: left;
+  overflow-y: scroll;
+  height: 100%;
+  width: 25%;
+  text-align: center;
+}
   
 
     .text-container {
@@ -90,7 +105,7 @@
 font-family: 'nunito', sans-serif;
 font-size: 1.3rem !important;
 font-weight: 300;
-line-height: 1.7 !important;
+line-height: 1.5 !important;
 text-align: left !important;
 color: #95aac9;
 }
@@ -344,7 +359,7 @@ top: 0px;
                     </div>
                 </nav>
 
-            <p class="h1 mt-2"><?php echo $curriculae->getlong_name();?></p>
+            <p class="h1 my-4"><?php echo $curriculae->getlong_name();?></p>
 
            
 
@@ -419,48 +434,12 @@ top: 0px;
 
 
 
-                        <div id="right" class="col-lg-3 col-xl-3 border-right">
+                        <div id="left" class="col-lg-3 col-xl-3 border-right">
                             <!--         	<div class="h-100 p-4"> -->
-                            <div id="sticky" data-toggle="sticky" class="is_stuck pr-3 mr-3 pl-2 pt-2">
-                                <div id="messageBox" class='text-left text-white pb-2 pl-2 pt-2'></div>
-                                <div class="d-flex flex-nowrap text-small text-muted text-right px-3 mt-1 mb-3 ">
+                            <div id="sticky" class="pr-3 mr-3 pl-2 pt-2">
+                                
 
-
-
-
-
-
-
-                                </div>
-
-
-                                <div id="errorWrapper"
-                                    class="error alert alert-warning alert-flush alert-dismissible collapse bg-gieqsGold"
-                                    role="alert">
-                                    <strong>Check the form!</strong> <span id="error"></span><button type="button"
-                                        class="close" data-hide="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div id="successWrapper"
-                                    class="success alert alert-success alert-flush alert-dismissible collapse"
-                                    role="alert">
-                                    <strong>Success!</strong> <span id="success"></span><button type="button"
-                                        class="close" data-hide="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-
-                                <div id="warningWrapper"
-                                    class="warning alert alert-warning alert-flush alert-dismissible collapse"
-                                    role="alert">
-                                    <strong>Warning!</strong> <span id="warning"></span><button type="button"
-                                        class="close" data-hide="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-
-                                <h6 class="mt-3 mb-3 pl-2 h5">Jump to Section</h6>
+                                <h6 class="mt-0 mb-3 pl-2 h5">Jump to Section</h6>
 
                                 <ul class="section-nav">
 
@@ -481,7 +460,7 @@ top: 0px;
 
                         </div>
 
-                        <div class="col-lg-9 text-container">
+                        <div id="right" class="right col-lg-9 text-container">
 
 
                             <?php
@@ -908,7 +887,7 @@ for each section
 
 
 
-
+</div>
 
 
 
@@ -982,7 +961,7 @@ for each section
             console.log(id);
             text = $(this).attr('data');
             statement +=
-                '<li tocid="' + id + '" class="toc-entry toc-h4" style="font-size:0.7rem;"><a class="text-muted" href="#' + id +
+                '<li tocid="' + id + '" class="toc-entry toc-h4" style="font-size:1.5rem;"><a class="text-muted" href="#' + id +
                 '">' + text + '</a></li>';
             
             
@@ -1000,7 +979,7 @@ for each section
 
                   text = $(this).attr('data');
                  statement +=
-                '<li tocid="' + id + '" class="toc-entry toc-h4" style="font-size:0.7rem;"><a class="text-muted" href="#' + id +
+                '<li tocid="' + id + '" class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#' + id +
                 '">' + text + '</a></li>';
 
 
