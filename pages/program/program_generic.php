@@ -564,14 +564,10 @@ var_dump($currentTime);
         <div id="action" style="display:none;"><?php if ($action){echo $action;}?></div>
         <div id="access_token" style="display:none;"><?php if ($access_validated){echo $access_token;}?></div>
         <div id="asset_id" style="display:none;"><?php if ($asset_id_url){echo $asset_id_url;}?></div>
-        <div id="programme_defined" style="display:none;">
-            <?php if (isset($programme_defined)){echo $programme_defined;}else{echo 'false';}?></div>
-        <div id="programme2" style="display:none;"><?php if ($programme2!=null){echo $programme2;}else{echo 'false';}?>
-        </div>
-        <div id="programme_defined3" style="display:none;">
-            <?php if (isset($programme_defined3)){echo $programme_defined3;}else{echo 'false';}?></div>
-        <div id="programme4" style="display:none;"><?php if ($programme4!=null){echo $programme4;}else{echo 'false';}?>
-        </div>
+        <div id="programme_defined" style="display:none;"><?php if (isset($programme_defined)){echo $programme_defined;}else{echo 'false';}?></div>
+        <div id="programme2" style="display:none;"><?php if ($programme2!=null){echo $programme2;}else{echo 'false';}?></div>
+        <div id="programme_defined3" style="display:none;"><?php if (isset($programme_defined3)){echo $programme_defined3;}else{echo 'false';}?></div>
+        <div id="programme4" style="display:none;"><?php if ($programme4!=null){echo $programme4;}else{echo 'false';}?></div>
         <div id="isSymposium" style="display:none;"><?php if ($is_symposium){echo 'true';}else{echo 'false';}?></div>
         <!--         <div id="stripe-status-live" style="display:none;"><?php //if ($stripe_status_live){echo 'true';}else{echo 'false';}?></div>
  -->
