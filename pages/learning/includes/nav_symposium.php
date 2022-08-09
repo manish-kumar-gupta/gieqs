@@ -16,7 +16,25 @@
 }
 }
 
+
 </style>
+
+<?php
+
+//setup token access
+
+if (isset($access_token) && ($assetManager->checkAssetToken($asset_id_pagewrite, $access_token, false) === true)){  //is set and is valid for this course and there are tokens remaining
+
+    $access_token_present = true;
+    $link_yellow_button_token = BASE_URL . "/pages/program/program_generic.php?id=95&access_token=" . $access_token . "&action=register";
+
+}else{
+    $access_token_present = false;
+    $link_yellow_button_no_token = BASE_URL . "/pages/program/program_generic.php?id=95&action=register";
+}
+
+?>
+
 
 <nav class="mt-2 navbar navbar-horizontal navbar-expand-lg navbar-dark gieqsGold sticky-top" style="z-index: 1 !important;">
     <div class="container">
@@ -66,7 +84,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                <a href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=95&action=register" class="btn btn-fill-gieqsGold btn-sm mx-2" role="button">
+                <a href="<?php echo ($access_token_present) ? $link_yellow_button_token : $link_yellow_button_no_token;?>" class="btn btn-fill-gieqsGold btn-sm mx-2" role="button">
                         <span class="nav-link-inner--text <?php echo $symposium_nav_active[6];?> ">Register Now!</span>
                     </a>
                 </li>
