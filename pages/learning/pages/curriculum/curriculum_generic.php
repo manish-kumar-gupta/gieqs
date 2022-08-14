@@ -94,7 +94,7 @@
 #right {
   float: left;
   overflow-y: scroll;
-  height: 100%;
+  height: 100vh;
   width: 25%;
   text-align: center;
 }
@@ -367,7 +367,7 @@ top: 0px;
 
 
         </div>
-        <div class="container-fluid text-container">
+        <div class="container-fluid text-container my-4">
             <p class="pl-4 mt-2"><?php echo $curriculae->getdescription(); ?></p>
 
         </div>
@@ -429,7 +429,7 @@ top: 0px;
 
 
 
-                <div class='content'>
+                <div class='content mt-5'>
                     <div class="row">
 
 
@@ -439,9 +439,9 @@ top: 0px;
                             <div id="sticky" class="pr-3 mr-3 pl-2 pt-2">
                                 
 
-                                <h6 class="mt-0 mb-3 pl-2 h5">Jump to Section</h6>
+                                <h6 class="mt-0 mb-3 pl-0 h5 text-left">Jump to Section</h6>
 
-                                <ul class="section-nav">
+                                <ul class="section-nav ml-0 pl-0">
 
 
 
@@ -716,10 +716,11 @@ foreach ($sections as $section_key=>$section_value){
 
                     $tagBox .= '<span class="badge bg-dark mx-2 mb-1 tagButton tagTagsboxButton" data-tag-id="' . $value3 . '" id="tag' . $value3 . '">' . $general->getTagName($value3) . '</span>'; 
 
-                    $tagBox .=  '</div>';
+                    
 
 
                 }
+                $tagBox .=  '</div>';
 
             }else{
 
@@ -961,7 +962,7 @@ for each section
             console.log(id);
             text = $(this).attr('data');
             statement +=
-                '<li tocid="' + id + '" class="toc-entry toc-h4" style="font-size:1.5rem;"><a class="text-muted" href="#' + id +
+                '<li tocid="' + id + '" class="toc-entry toc-h4 mt-4" style="font-size:1.3rem; list-style-type:none;"><a class="text-muted" href="#' + id +
                 '">' + text + '</a></li>';
             
             
@@ -979,7 +980,7 @@ for each section
 
                   text = $(this).attr('data');
                  statement +=
-                '<li tocid="' + id + '" class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-muted" href="#' + id +
+                '<li tocid="' + id + '" class="toc-entry toc-h4" style="font-size:1.0rem; list-style-type:square; text-align:left;"><a class="text-muted" href="#' + id +
                 '">' + text + '</a></li>';
 
 

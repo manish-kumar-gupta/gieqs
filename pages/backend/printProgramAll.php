@@ -54,9 +54,17 @@ $openaccess =1;
 
             //print_r($facultyMembers);
 
+            $response =  $programmeReports->generateReportv3([0=>47, 1=>48, 2=>49, 3=>50]);  //gieqs iii
+
+
     foreach ($facultyMembers as $key3=>$value3){
 
             $facultyid = $value3;
+
+            //search this array for only those faculty which we are import
+
+            
+
 
             //$edit ability; display icons next to editable segments.
 
@@ -70,7 +78,6 @@ $openaccess =1;
 
                 //$response =  $programmeReports->generateReportv2($facultyid, [0=>36, 1=>37, 2=>38, 3=>39]);  //gieqs ii
 
-                $response =  $programmeReports->generateReportv2($facultyid, [0=>47, 1=>48, 2=>49, 3=>50]);  //gieqs iii
 
 
 
@@ -80,7 +87,7 @@ $openaccess =1;
 
                 if ($debug){
 
-                ?><pre><?php print_r($response); ?></pre><?php
+                ?><pre><?php //print_r($response); ?></pre><?php
 
                 }
 
@@ -132,21 +139,33 @@ $openaccess =1;
             $x = 0;
             
             foreach ($response as $key=>$value){
+
+                //some issue with multiples here
                 
                 if ($debug){
-                echo $key;
-                echo $x . '<br/>';     
+                //echo $key;
+                //echo $x . '<br/>';    
+                print_r($value); 
                 }
+
+
+                if ($value['facultyid'] == $facultyid){
+
+                    //echo 'matched faculty id ' . $facultyid;
+
+                
+
+                //continue;
                         //$last
                       
                             
-                        $lastsessionid = $response[$key-1]['sessionid'];
+                        /* $lastsessionid = $response[$key-1]['sessionid'];
                         
                         if ($debug){
                                                 echo $lastsessionid .' is lastsession id <br/>';
-                        echo $value['sessionid'] . 'is session id this time';
-                        echo $value['facultyid'] . 'is value faculty id';
-                        echo $facultyid . 'is the value of $facultyid';
+                                                echo $value['sessionid'] . 'is session id this time';
+                                                echo $value['facultyid'] . 'is value faculty id';
+                                                echo $facultyid . 'is the value of $facultyid';
                         }
 
                         if (($lastsessionid == $value['sessionid']) && ($value['facultyid'] == $facultyid)){
@@ -156,7 +175,7 @@ $openaccess =1;
                             $x++;
 
                             continue;
-                        }
+                        } */
 
                        
                         
@@ -246,6 +265,8 @@ $openaccess =1;
 
             <?php 
            $x++;
+
+        }
         
         }?>
 
