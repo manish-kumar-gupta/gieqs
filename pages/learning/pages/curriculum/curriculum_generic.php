@@ -938,6 +938,39 @@ for each section
 
     }
 
+    function isScrolledIntoView(elem)
+{
+    var docViewTop = $(window).scrollTop();
+    var docViewBottom = docViewTop + $(window).height();
+
+    var elemTop = $(elem).offset().top;
+    var elemBottom = elemTop + $(elem).height();
+
+    return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+}
+
+function Utils() {
+
+}
+
+Utils.prototype = {
+    constructor: Utils,
+    isElementInView: function (element, fullyInView) {
+        var pageTop = $(window).scrollTop();
+        var pageBottom = pageTop + $(window).height();
+        var elementTop = $(element).offset().top;
+        var elementBottom = elementTop + $(element).height();
+
+        if (fullyInView === true) {
+            return ((pageTop < elementTop) && (pageBottom > elementBottom));
+        } else {
+            return ((elementTop <= pageBottom) && (elementBottom >= pageTop));
+        }
+    }
+};
+
+var Utils = new Utils();
+
 
     function generateTOC() {
 
@@ -1126,28 +1159,50 @@ $(this).css('color', '#95aac9');
 
 
 
-        $(window).scroll(function() {
-            var scrollDistance = $(window).scrollTop();
-            scrollDistance = scrollDistance - 500;
+        $('#right').scroll(function() {
+            var scrollDistance = $('#right').scrollTop();
+            //scrollDistance = scrollDistance - 500;
+            
             // Assign active class to nav links while scolling
             $('.toc-marker').each(function(i) {
 
                 //define which one triggered
 
                 console.log('i is ' + i);
+
+                //is this in view?
+
+                var idElement = $(this).attr('id');
+                var isElementInView = Utils.isElementInView($('#'+idElement), false);
+
+                if (isElementInView){
+
+                    console.log('element id is ' + idElement);
+                    console.log('element name is ' + $(this).text());
+
+                    console.log('scroll distance is ' + scrollDistance);
+                    console.log('top of this element is ' + $(this).position().top);
+                    console.log('is it in view is ' + isElementInView);
+                    console.log('.section-nav li [tocid=' + idElement + ']');
+
+                    $('.section-nav li a.text-gieqsGold').removeClass('text-gieqsGold').addClass(
+                        'text-muted');
+                    $('.section-nav li[tocid=' + idElement + ']').find('a').addClass('text-gieqsGold').removeClass(
+                        'text-muted');
+
+                }else{
+
+                   
+                }
+
                 
 
-                var idElement = $(this).attr('tocid');
-                console.log('element id is ' + idElement);
-                console.log('scroll distance is ' + scrollDistance);
+                /* if ($(this).position().top <= scrollDistance) {
+                   
+                } */
 
-                if ($(this).position().top <= scrollDistance) {
-                    $('.section-nav li.text-gieqsGold').removeClass('text-gieqsGold').addClass(
-                        'text-muted');
-                    $('.section-nav li [tocid=' + idElement + ']').addClass('text-gieqsGold').removeClass(
-                        'text-muted');
-                }
             });
+
         }).scroll();
 
 
