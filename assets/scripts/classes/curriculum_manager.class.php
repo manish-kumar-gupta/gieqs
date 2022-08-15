@@ -281,6 +281,36 @@ if ($nRows > 0) {
 
 }
 
+
+public function counttagscurriculumitem($id, $debug=false){
+
+
+
+    $q = "SELECT `tag_id` FROM `curriculum_tags` WHERE `curriculum_item_id` = '$id'";
+
+    if ($debug){
+echo $q . '<br><br>';
+
+    }
+
+
+
+$result = $this->connection->RunQuery($q);
+
+$x = 0;
+$nRows = $result->rowCount();
+
+return $nRows;
+
+
+
+
+
+
+
+
+}
+
 public function gettags($tag_id_array, $debug=false){
 
 
@@ -392,7 +422,38 @@ public function getFullReferenceListCurriculumItem ($curriculum_item_id){
 
 
 }
-	
+
+public function countReferences ($curriculum_item_id){
+
+    //this for imageset then another for video, merge same and return
+
+    $q = "SELECT a.`id` as curriculumitemid, c.`authors`, c.`formatted`, c.`DOI`, c.`journal`, c.`PMID` 
+    from `curriculum_items` as a 
+    INNER JOIN `curriculum_references` as b on a.`id` = b.`curriculum_item_id` 
+    INNER JOIN `references` as c on c.`id` = b.`reference_id`
+    
+    WHERE a.`id` = $curriculum_item_id
+    
+    ORDER BY c.`formatted` ASC";
+
+    //echo $q;
+
+    $references = '';
+    $x = 1;
+    $result = $this->connection->RunQuery($q);
+    $nRows = $result->rowCount();
+
+    return $nRows;
+
+
+    
+
+    
+
+
+
+
+}
 
      
 

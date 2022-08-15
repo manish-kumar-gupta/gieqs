@@ -560,16 +560,17 @@ foreach ($sections as $section_key=>$section_value){
 
     foreach ($items as $items_key=>$items_value){
 
+        $curriculum_items->Load_from_key($items_value);
+
         echo '<div class="card bg-dark">';
-        echo '<div class="actions" style="position:absolute; right:20px; top:20px;">';
-        echo '<i  class="cursor-pointer fas fa-tag mx-3" data-toggle="collapse"
-        href="#multiCollapseExample' . $y. '"></i><i class="fas fa-graduation-cap mx-3 cursor-pointer" data-toggle="collapse"
-        href="#multiCollapseExample' . $z. '"></i>';
+        echo '<div class="actions" style="position:absolute; right:20px; top:20px; font-size:1rem;">';
+        echo '<i  class="cursor-pointer fas fa-tag mx-3 tag-icon" data-toggle="collapse"
+        href="#multiCollapseExample' . $y. '"></i>' . $curriculum_manager->counttagscurriculumitem($curriculum_items->getid()) . '<i class="fas fa-graduation-cap mx-3 cursor-pointer reference-icon" data-toggle="collapse"
+        href="#multiCollapseExample' . $z. '"></i>' . $curriculum_manager->countReferences($curriculum_items->getid());
         echo '</div>';
         echo '<div class="card-body mb-0 pb-0 mt-5">';
 
 
-        $curriculum_items->Load_from_key($items_value);
 
         if ($curriculum_items->gettype() == '1'){
 
@@ -1204,6 +1205,39 @@ $(this).css('color', '#95aac9');
             });
 
         }).scroll();
+
+        $(document).on('click', '.tag-icon', function () {
+
+            //alert('clicked tag icon');
+
+            $(this).addClass('text-gieqsGold').removeClass('text-muted');
+
+            $('.tag-icon').not(this).each(function(){
+
+                $(this).removeClass('text-gieqsGold').addClass('text-muted');
+
+
+            })
+
+        // do something…
+        })
+
+
+        $(document).on('click', '.reference-icon', function () {
+
+        //alert('clicked reference icon');
+
+         $(this).addClass('text-gieqsGold').removeClass('text-muted');
+
+         $('.reference-icon').not(this).each(function(){
+
+            $(this).removeClass('text-gieqsGold').addClass('text-muted');
+
+
+            })
+
+        // do something…
+        })
 
 
 
