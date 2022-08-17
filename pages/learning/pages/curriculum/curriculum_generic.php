@@ -83,7 +83,7 @@
 
     }
 
-    #left {
+  /*   #left {
   float: left;
   width: 75%;
   height: 100vh;
@@ -97,7 +97,7 @@
   height: 100vh;
   width: 25%;
   text-align: center;
-}
+} */
 
 
 
