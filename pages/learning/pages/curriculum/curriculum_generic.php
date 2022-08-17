@@ -98,7 +98,8 @@
   width: 25%;
   text-align: center;
 }
-  
+
+
 
     .text-container {
 
@@ -436,7 +437,7 @@ top: 0px;
 
                         <div id="left" class="col-lg-3 col-xl-3 border-right">
                             <!--         	<div class="h-100 p-4"> -->
-                            <div id="sticky" class="pr-3 mr-3 pl-2 pt-2">
+                            <div id="sticky" data-toggle="sticky" class="is_stuck pr-3 mr-3 pl-2 pt-2">
                                 
 
                                 <h6 class="mt-0 mb-3 pl-0 h5 text-left">Jump to Section</h6>
@@ -1058,7 +1059,7 @@ var Utils = new Utils();
 
     }
 
-
+    
 
     function copyToClipboard(text) {
         if (window.clipboardData && window.clipboardData.setData) {
@@ -1210,7 +1211,15 @@ $(this).css('color', '#95aac9');
 
             //alert('clicked tag icon');
 
-            $(this).addClass('text-gieqsGold').removeClass('text-muted');
+            if ($(this).hasClass('text-gieqsGold') === true){
+
+$(this).removeClass('text-gieqsGold').addClass('text-muted');
+
+}else{
+$(this).addClass('text-gieqsGold').removeClass('text-muted');
+
+
+}
 
             $('.tag-icon').not(this).each(function(){
 
@@ -1227,20 +1236,34 @@ $(this).css('color', '#95aac9');
 
         //alert('clicked reference icon');
 
-         $(this).addClass('text-gieqsGold').removeClass('text-muted');
+        if ($(this).hasClass('text-gieqsGold') === true){
+
+            $(this).removeClass('text-gieqsGold').addClass('text-muted');
+
+        }else{
+            $(this).addClass('text-gieqsGold').removeClass('text-muted');
+
+
+        }
+
 
          $('.reference-icon').not(this).each(function(){
 
             $(this).removeClass('text-gieqsGold').addClass('text-muted');
 
 
-            })
+        })
 
         // do something…
         })
 
+        $(document).on('click', '.tagTagsboxButton', function () {
 
 
+            //writer cookies
+
+
+        })
 
 
 

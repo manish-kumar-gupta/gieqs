@@ -413,7 +413,7 @@ public function getFullReferenceListCurriculumItem ($curriculum_item_id){
         echo $references;
     }else{
 
-        echo '<p style="text-align:left;">No references yet</p>';
+        echo '<p style="text-align:left; font-size:1.0 !important;">No references yet</p>';
     }
 
     
