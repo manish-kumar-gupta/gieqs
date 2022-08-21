@@ -35,6 +35,13 @@
 
 
     <style>
+
+    body {
+
+        touch-action: pan-x pan-y;
+        touch-action: none;        
+    }
+
     .gieqsGold {
 
         color: rgb(238, 194, 120);

@@ -1257,7 +1257,23 @@ $(this).addClass('text-gieqsGold').removeClass('text-muted');
         // do something…
         })
 
-        $(document).on('click', '.tagTagsboxButton', function () {
+        $(document).on('click', '.tagButton', function () {
+
+            var idElement = $(this).attr('data-tag-id');
+
+            alert(idElement);
+            
+            setcookie("selectedTag", idElement, time() - 3600);
+
+            setcookie("restricted", false, time() - 3600);
+
+
+            window.localStorage.setItem('selectedTag', idElement);
+
+            window.localStorage.setItem('restricted', false);
+
+
+//redirect to viewer page
 
 
             //writer cookies
@@ -1266,6 +1282,26 @@ $(this).addClass('text-gieqsGold').removeClass('text-muted');
         })
 
 
+        $(document).on('click', '.toc-entry', function(event){
+
+            //jump to yhe correct section
+
+            //event.preventDefault();
+
+            //highlight that item
+            var idElement = $(this).attr('tocid');
+
+            $('.section-nav li[tocid=' + idElement + ']').find('a').addClass('text-gieqsGold').removeClass('text-muted');
+
+            $('.section-nav li').find('a').not('.section-nav li[tocid=' + idElement + ']').removeClass('text-gieqsGold').addClass('text-muted');
+
+
+ 
+
+            })
+
+
+       
 
 
 
