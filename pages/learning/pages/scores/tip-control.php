@@ -39,7 +39,7 @@
     body {
 
         touch-action: pan-x pan-y;
-        touch-action: none;        
+             
     }
 
     .gieqsGold {
