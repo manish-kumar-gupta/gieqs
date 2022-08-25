@@ -122,6 +122,221 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
 
 
                     </div>
+
+
+                    <div class="mb-5 text-left">
+                        <h3 class=" mt-4" style="color: rgb(238, 194, 120);">Organising Committee</h3>
+                    
+                        <div class="row row-grid">
+
+                    
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a >
+                                        <img alt="John Anderson" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/JA.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr John Anderson</h5>
+                                    <p class="text-muted mb-0">Consultant Gastroenterologist</p>
+                                    <p class="text-muted mb-0">Cheltenham General Hospital, UK</p>
+                                    <p class="text mb-0">Focus: polypectomy, colonoscopy training</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a >
+                                        <img alt="Helena Degroote" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/TL.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Prof. Dr Triana Lobaton</h5>
+                                    <p class="text-muted mb-0">Gastroenterologist</p>
+                                    <p class="text-muted mb-0">UZ Gent</p>
+                                    <p class="text mb-0">Focus: quality in IBD and endoscopy</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a >
+                                        <img alt="Danny Delooze" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/DDL.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Prof. Danny De Looze</h5>
+                                    <p class="text-muted mb-0">Interventional Endoscopist</p>
+                                    <p class="text-muted mb-0">University Hospital of Ghent</p>
+                                    <p class="text mb-0">Focus: Barrett's, proctology, general gastroenterology</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a >
+                                        <img alt="Pieter Hindryckx" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/PH.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Prof. Dr. Pieter Hindryckx</h5>
+                                    <p class="text-muted mb-0">Interventional Endoscopist</p>
+                                    <p class="text-muted mb-0">University Hospital of Ghent</p>
+                                    <p class="text mb-0">Focus: ERCP, interventional EUS</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a >
+                                        <img alt="Helena Degroote" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/TL.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Prof. Dr Triana Lobaton</h5>
+                                    <p class="text-muted mb-0">Gastroenterologist</p>
+                                    <p class="text-muted mb-0">UZ Gent</p>
+                                    <p class="text mb-0">Focus: quality in IBD and endoscopy</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a >
+                                        <img alt="Lobke Desomer" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/LD.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr Lobke Desomer</h5>
+                                    <p class="text-muted mb-0">Interventional Endoscopist</p>
+                                    <p class="text-muted mb-0">AZ Delta Hospital, Roeselare</p>
+                                    <p class="text mb-0">Focus: endoscopy quality, polypectomy, training</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a >
+                                        <img alt="Suzane Ribeiro" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/SR.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr Suzane Moura Ribeiro</h5>
+                                    <p class="text-muted mb-0">Oncologist and Echo-Endoscopist</p>
+                                    <p class="text-muted mb-0">UZ Gent</p>
+                                    <p class="text mb-0">Focus: quality in EUS and digestive oncology</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a >
+                                        <img alt="David Tate" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/DT.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr David Tate</h5>
+                                    <p class="text-muted mb-0">Interventional Endoscopist</p>
+                                    <p class="text-muted mb-0">University Hospital of Ghent</p>
+                                    <p class="text mb-0">Focus: endoscopy quality, tissue resection, training</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a >
+                                        <img alt="Hans Van Vlierberghe" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/Hans Van Vlierberghe.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Prof. Hans Van Vlierberghe</h5>
+                                    <p class="text-muted mb-0">Hepatologist</p>
+                                    <p class="text-muted mb-0">University Hospital of Ghent</p>
+                                    <p class="text mb-0">Focus: hepatology and endoscopy</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a >
+                                        <img alt="Roland Valori" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/RMV.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr Roland Valori</h5>
+                                    <p class="text-muted mb-0">Consultant Gastroenterologist</p>
+                                    <p class="text-muted mb-0">Gloucestershire Royal Hospital, UK</p>
+                                    <p class="text mb-0">Focus: quality, colonoscopy training</p>
+                                </div>
+                            </div>
+                        </div>
+
+                       <!--  <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a >
+                                        <img alt="Tania Helleputte" class="img-fluid rounded shadow"
+                                            src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1661401243_Awaiting Photo.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Mrs Tania Helleputte</h5>
+                                    <p class="text-muted mb-0">Head Nurse</p>
+                                    <p class="text-muted mb-0">Gastroenterology, Ghent University Hospital, Belgium</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a >
+                                        <img alt="Karolien Haenebalcke" class="img-fluid rounded shadow"
+                                            src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1661401243_Awaiting Photo.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Mrs Karolien Haenebalcke</h5>
+                                    <p class="text-muted mb-0">Endoscopy Nurse</p>
+                                    <p class="text-muted mb-0">Endoscopy Unit, Ghent University Hospital, Belgium</p>
+                                </div>
+                            </div>
+                        </div> -->
+
+
+
+
+
+
+                    </div>
+
+</div>
                     <div class="mb-5 text-left">
                         <h3 class=" mt-4" style="color: rgb(238, 194, 120);">International Faculty</h3>
 
@@ -331,6 +546,128 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a >
+                                        <img alt="Dr Amir Klein" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/Amir Klein.jpg">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr Amir Klein</h5>
+                                    <p class="text-muted mb-0">Acting Director</p>
+                                    <p class="text-muted mb-0">Gastroenterology department, Rambam Healthcare Campus, Tel Aviv, Israel</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a >
+                                        <img alt="Vikash Lala" class="img-fluid rounded shadow"
+                                            src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1661401243_Awaiting Photo.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr Vikash Lala</h5>
+                                    <p class="text-muted mb-0">Consultant Gastroenterologist, Fellow in Training (Advanced Endoscopy)</p>
+                                    <p class="text-muted mb-0">Johannesburg, South Africa</p>
+                                    <p class="text mb-0">Focus: quality, colonoscopy training, polypectomy</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a >
+                                        <img alt="Arnaud Lemmers" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/Arnaud Lemmers.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Prof. Arnaud Lemmers </h5>
+                                    <p class="text-muted mb-0">Head of Clinic, Endoscopy Unit </p>
+                                    <p class="text-muted mb-0">Erasme Hospital, Belgium </p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a >
+                                        <img alt="Carme Loras" class="img-fluid rounded shadow"
+                                            src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1660738844_Carme Loras.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Prof. Dr Carme Loras</h5>
+                                    <p class="text-muted mb-0">Head of Digestive Endoscopy</p>
+                                    <p class="text-muted mb-0">Hospital Universitari Mútua De Terrassa, Barcelona, Spain
+</p>
+                                    <p class="text mb-0">Focus: Imaging and Stricture Management in IBD</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                   
+                       
+
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a >
+                                        <img alt="Donald Macintosh" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/Donald MacIntosh.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Prof. Donald Macintosh</h5>
+                                    <p class="text-muted mb-0">Professor of Medecine</p>
+                                    <p class="text-muted mb-0">Dalhousie University in Halifax, Canada</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a >
+                                        <img alt="Manmeet Matharoo" class="img-fluid rounded shadow"
+                                            src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1660739112_Manmeet Matharoo.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr Manmeet Matharoo</h5>
+                                    <p class="text-muted mb-0">Consultant Gastroenterologist</p>
+                                    <p class="text-muted mb-0">St Marks Hospital, London, UK
+</p>
+                                    <p class="text mb-0">Focus: Patient Safety</p>
+                                </div>
+                            </div>
+                        </div>
+
+                       
+                        
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a >
+                                        <img alt="Dr Mayenaaz Sidhu" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/Mayenaaz Sidhu.jpg">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr Mayenaaz Sidhu</h5>
+                                    <p class="text-muted mb-0">Gastroenterologist and Hepatologist, Westmead Hospital (Sydney), University of Sydney, Concord Hospital (Sydney)</p>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="col-lg-3 py-3">
                             <div data-animate-hover="2">
@@ -348,56 +685,8 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                                 </div>
                             </div>
                         </div>
-                   
                        
 
-                        <div class="col-lg-3 py-3">
-                            <div data-animate-hover="2">
-                                <div class="animate-this">
-                                    <a >
-                                        <img alt="Michael Bourke" class="img-fluid rounded shadow"
-                                            src="../../assets/img/faculty/Donald MacIntosh.png">
-                                    </a>
-                                </div>
-                                <div class="mt-3">
-                                    <h5 class="gieqsGold card-title mb-0">Prof. Donald Macintosh</h5>
-                                    <p class="text-muted mb-0">Professor of Medecine</p>
-                                    <p class="text-muted mb-0">Dalhousie University in Halifax, Canada</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 py-3">
-                            <div data-animate-hover="2">
-                                <div class="animate-this">
-                                    <a >
-                                        <img alt="Dr Amir Klein" class="img-fluid rounded shadow"
-                                            src="../../assets/img/faculty/Amir Klein.jpg">
-                                    </a>
-                                </div>
-                                <div class="mt-3">
-                                    <h5 class="gieqsGold card-title mb-0">Dr Amir Klein</h5>
-                                    <p class="text-muted mb-0">Acting Director</p>
-                                    <p class="text-muted mb-0">Gastroenterology department, Rambam Health care campus, Tel Aviv, Israel</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-lg-3 py-3">
-                            <div data-animate-hover="2">
-                                <div class="animate-this">
-                                    <a >
-                                        <img alt="Dr Mayenaaz Sidhu" class="img-fluid rounded shadow"
-                                            src="../../assets/img/faculty/Mayenaaz Sidhu.jpg">
-                                    </a>
-                                </div>
-                                <div class="mt-3">
-                                    <h5 class="gieqsGold card-title mb-0">Dr Mayenaaz Sidhu</h5>
-                                    <p class="text-muted mb-0">Gastroenterologist and Hepatologist, Westmead Hospital (Sydney), University of Sydney, Concord Hospital (Sydney)</p>
-                                </div>
-                            </div>
-                        </div>
-                       
                         
 
                     
@@ -530,7 +819,7 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                                 <div class="animate-this">
                                     <a >
                                         <img alt="Dr Eduard Callebout" class="img-fluid rounded shadow"
-                                            src="../../assets/img/icons/people/white-male.png">
+                                            src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1661401243_Awaiting Photo.png">
                                     </a>
                                 </div>
                                 <div class="mt-3">
@@ -606,21 +895,7 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                         </div>
 
 
-                        <div class="col-lg-3 py-3">
-                            <div data-animate-hover="2">
-                                <div class="animate-this">
-                                    <a >
-                                        <img alt="Raf Bisschops" class="img-fluid rounded shadow"
-                                            src="../../assets/img/faculty/Arnaud Lemmers.png">
-                                    </a>
-                                </div>
-                                <div class="mt-3">
-                                    <h5 class="gieqsGold card-title mb-0">Prof. Arnaud Lemmers </h5>
-                                    <p class="text-muted mb-0">Head of Clinic, Endoscopy Unit </p>
-                                    <p class="text-muted mb-0">Erasme Hospital, Belgium </p>
-                                </div>
-                            </div>
-                        </div>
+                        
 
                        
                         <div class="col-lg-3 py-3">
@@ -829,6 +1104,25 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                             </div>
                         </div>
 
+                                    
+
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a >
+                                        <img alt="Dr Isabelle De Kock " class="img-fluid rounded shadow"
+                                            src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1661401243_Awaiting Photo.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr Isabelle De Kock</h5>
+                                    <p class="text-muted mb-0">Consultant Radiologist, Ghent University Hospital, Belgium</p>
+                                </div>
+                            </div>
+                        </div>
+
+                  
+
                         <div class="col-lg-3 py-3">
                             <div data-animate-hover="2">
                                 <div class="animate-this">
@@ -927,7 +1221,56 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                             </div>
                         </div>
                
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a >
+                                        <img alt="Helena Degroote" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/TL.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Prof. Dr Triana Lobaton</h5>
+                                    <p class="text-muted mb-0">Gastroenterologist</p>
+                                    <p class="text-muted mb-0">UZ Gent</p>
+                                    <p class="text mb-0">Focus: quality in IBD and endoscopy</p>
+                                </div>
+                            </div>
+                        </div>
                         
+
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a >
+                                        <img alt="Suzane Ribeiro" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/SR.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr Suzane Moura Ribeiro</h5>
+                                    <p class="text-muted mb-0">Oncologist and Echo-Endoscopist</p>
+                                    <p class="text-muted mb-0">UZ Gent</p>
+                                    <p class="text mb-0">Focus: quality in EUS and digestive oncology</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                          
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a >
+                                        <img alt="Dr Christophe Schoonjans" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/Christophe Schoonjans.jpg">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr Christophe Schoonjans</h5>
+                                    <p class="text-muted mb-0">Gastroenterologist, AZ Sint Jan Hospital, Bruges</p>
+                                </div>
+                            </div>
+                        </div>
                             
 
 
@@ -947,6 +1290,23 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a >
+                                        <img alt="Dr Elke Van Daele" class="img-fluid rounded shadow"
+                                            src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1660738908_Elke Van Daele.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr Elke Van Daele</h5>
+                                    <p class="text-muted mb-0">Consultant Surgeon (Upper GI Focus), Ghent University Hospital, Belgium</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    
                        
                         <div class="col-lg-3 py-3">
                             <div data-animate-hover="2">
@@ -964,56 +1324,7 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                                 </div>
                             </div>
                         </div>
-                       
-                       
-                        <div class="col-lg-3 py-3">
-                            <div data-animate-hover="2">
-                                <div class="animate-this">
-                                    <a >
-                                        <img alt="Suzane Ribeiro" class="img-fluid rounded shadow"
-                                            src="../../assets/img/faculty/SR.png">
-                                    </a>
-                                </div>
-                                <div class="mt-3">
-                                    <h5 class="gieqsGold card-title mb-0">Dr Suzane Moura Ribeiro</h5>
-                                    <p class="text-muted mb-0">Oncologist and Echo-Endoscopist</p>
-                                    <p class="text-muted mb-0">UZ Gent</p>
-                                    <p class="text mb-0">Focus: quality in EUS and digestive oncology</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 py-3">
-                            <div data-animate-hover="2">
-                                <div class="animate-this">
-                                    <a >
-                                        <img alt="Helena Degroote" class="img-fluid rounded shadow"
-                                            src="../../assets/img/faculty/TL.png">
-                                    </a>
-                                </div>
-                                <div class="mt-3">
-                                    <h5 class="gieqsGold card-title mb-0">Prof. Dr Triana Lobaton</h5>
-                                    <p class="text-muted mb-0">Gastroenterologist</p>
-                                    <p class="text-muted mb-0">UZ Gent</p>
-                                    <p class="text mb-0">Focus: quality in IBD and endoscopy</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- <div class="col-lg-3">
-                            <div data-animate-hover="2">
-                                <div class="animate-this">
-                                    <a >
-                                        <img alt="John Anderson" class="img-fluid rounded shadow"
-                                            src="../../assets/img/faculty/JA.png">
-                                    </a>
-                                </div>
-                                <div class="mt-3">
-                                    <h5 class="gieqsGold card-title mb-0">Dr John Anderson</h5>
-                                    <p class="text-muted mb-0">Consultant Gastroenterologist</p>
-                                    <p class="text-muted mb-0">Cheltenham General Hospital, UK</p>
-                                    <p class="text mb-0">Focus: polypectomy, colonoscopy training</p>
-                                </div>
-                            </div>
-                        </div> -->
+
 
                         <div class="col-lg-3 py-3">
                             <div data-animate-hover="2">
@@ -1031,29 +1342,13 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                             </div>
                         </div>
 
-                      
-                        <div class="col-lg-3 py-3">
-                            <div data-animate-hover="2">
-                                <div class="animate-this">
-                                    <a >
-                                        <img alt="Dr Christophe Schoonjans" class="img-fluid rounded shadow"
-                                            src="../../assets/img/faculty/Christophe Schoonjans.jpg">
-                                    </a>
-                                </div>
-                                <div class="mt-3">
-                                    <h5 class="gieqsGold card-title mb-0">Dr Christophe Schoonjans</h5>
-                                    <p class="text-muted mb-0">Gastroenterologist, AZ Sint Jan Hospital, Bruges</p>
-                                </div>
-                            </div>
-                        </div>
 
-                             
                         <div class="col-lg-3 py-3">
                             <div data-animate-hover="2">
                                 <div class="animate-this">
                                     <a >
                                         <img alt="Dr Lynn Debels" class="img-fluid rounded shadow"
-                                            src="../../assets/img/icons/people/white-female.png">
+                                            src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1661401243_Awaiting Photo.png">
                                     </a>
                                 </div>
                                 <div class="mt-3">
@@ -1062,23 +1357,31 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-lg-3 py-3">
+                       
+                        </div>
+                       
+                        <!-- <div class="col-lg-3">
                             <div data-animate-hover="2">
                                 <div class="animate-this">
                                     <a >
-                                        <img alt="Dr Isabelle De Kock " class="img-fluid rounded shadow"
-                                            src="../../assets/img/icons/people/white-female.png">
+                                        <img alt="John Anderson" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/JA.png">
                                     </a>
                                 </div>
                                 <div class="mt-3">
-                                    <h5 class="gieqsGold card-title mb-0">Dr Isabelle De Kock</h5>
-                                    <p class="text-muted mb-0">Consultant Radiologist, Ghent University Hospital, Belgium</p>
+                                    <h5 class="gieqsGold card-title mb-0">Dr John Anderson</h5>
+                                    <p class="text-muted mb-0">Consultant Gastroenterologist</p>
+                                    <p class="text-muted mb-0">Cheltenham General Hospital, UK</p>
+                                    <p class="text mb-0">Focus: polypectomy, colonoscopy training</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
-                    </div>
+
+                    
+
+                             
+           
 
                     <!-- </div> -->
                 </div>
