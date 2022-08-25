@@ -488,6 +488,16 @@ $subscription_to_return['user_id'] = $userid;
 
             //after 1 year
             $interval = 'P12M';
+            //again set the interval from token if present
+            if ($is_institutional){
+
+                if (isset($token_length) && is_numeric($token_length)){
+        
+                 $interval = 'P' . $token_length . 'M';
+        
+                }
+        
+            }
 
             //add interval to today
             $end_start_calculate_date = new DateTime('now', new DateTimeZone('UTC'));
