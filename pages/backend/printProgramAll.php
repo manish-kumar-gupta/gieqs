@@ -151,7 +151,13 @@ $openaccess =1;
 
                 if ($value['facultyid'] == $facultyid){
 
-                    //echo 'matched faculty id ' . $facultyid;
+                    if ($debug){
+                        //echo $key;
+                        //echo $x . '<br/>';    
+                    echo 'matched faculty id ' . $facultyid;
+                    exit();
+                }
+
 
                 
 

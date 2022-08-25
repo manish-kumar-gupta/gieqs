@@ -312,7 +312,7 @@ $imageArray = ['assets/img/advert/gieqs_advert_1.jpeg', 'assets/img/covers/gieqs
         <div class="row">
             <div class="col-lg-10 col-xl-10 text-center text-lg-left">
 
-                <a class="ml-3 pointer" href="https://www.gieqs.com/pages/program/program_generic.php?id=15">
+              <!--   <a class="ml-3 pointer" href="https://www.gieqs.com/pages/program/program_generic.php?id=15">
                     <div class="alert alert-modern alert-dark">
                         <span class="badge gieqsGold badge-pill">
                             New
@@ -320,16 +320,16 @@ $imageArray = ['assets/img/advert/gieqs_advert_1.jpeg', 'assets/img/covers/gieqs
                         <span class="alert-content">GIEQs II - On DEMAND
                         </span>
                     </div>
-                </a>
+                </a> -->
 
-                <!-- <a href="https://www.gieqs.com/pages/program/gieqs_ii.php">
+                <a href="https://www.gieqs.com/iii">
                 <div class="alert alert-modern alert-dark">
                     <span class="badge gieqsGold badge-pill">
                         New
                     </span>
-                    <span class="alert-content">GIEQs II Registration Open</span>
+                    <span class="alert-content">GIEQs III Early Bird Ends 6th Sept</span>
                 </div>
-            </a> -->
+            </a>
                 <!-- <a href="https://www.gieqs.com/pages/program/program_imaging.php">
                 <div class="alert alert-modern alert-dark">
                     <span class="badge gieqsGold badge-pill">

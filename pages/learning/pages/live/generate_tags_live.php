@@ -69,14 +69,14 @@ $requiredUserLevel = 3;
 
     .tagCard {
 
-/*background-color: #1b385d75;*/
-background-color: black;
-.tagCardHeader {
+background-color: #1b385d75;
+/* background-color: black;
+ */.tagCardHeader {
 
-/*background-color: #162e4d;*/
+background-color: #162e4d;
 
-background-color: black;
-
+/* background-color: black;
+ */
 }
 
     #live-chat-app {
@@ -188,7 +188,6 @@ background-color: black;
             <!-- Navbar warning -->
             <?php 
      
-     if ($liveAccess){
 
         
      
@@ -270,16 +269,7 @@ background-color: black;
     
 
 
-}else{
 
-    
-
-    echo "<div class=\"container d-flex flex-wrap align-items-lg-stretch p-2 p-lg-5\">";
-    echo '<p class="h6">You currently do not have access to the live streams.  Please contact us if you believe this is a mistake.  You can get access <a href="' . BASE_URL . '/pages/program/registration.php">here.</a></p>';
-    echo '</div>';
-
-    
-}
  
 
 ?>
