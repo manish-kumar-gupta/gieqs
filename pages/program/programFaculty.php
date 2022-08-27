@@ -143,7 +143,7 @@ background-color: rgb(238, 194, 120);
 
                     <div class="col-12 p-3 pb-5">
                         <span class="h1" style="color: rgb(238, 194, 120);">Ghent International Endoscopy Quality
-                            Symposium <br /> Edition I. <br/>Draft Programme</span>
+                            Symposium <br /> Edition III. <br/>Scientific Programme</span>
                     </div>
 
                 </div>
@@ -156,11 +156,11 @@ background-color: rgb(238, 194, 120);
                         <!-- </a> -->
                         <a href="#targetScrollProgramme" id="wednesday"
                             class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
-                            <span class="btn-inner--text text-dark">Wed 7 Oct</span>
+                            <span class="btn-inner--text text-dark">Thurs 29 Sept</span>
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         </a>
                         <a href="#targetScrollProgramme" id="thursday" class="btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mr-3 scroll-me">
-                            <span class="btn-inner--text text-dark">Thurs 8 Oct</span>
+                            <span class="btn-inner--text text-dark">Fri 30 Sept</span>
                             <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
                         </a>
                     </div>
@@ -201,7 +201,7 @@ background-color: rgb(238, 194, 120);
 
     const dataToSend = {
 
-        programmeid: '24' ,
+        programmeid: '47' ,
 
     }
 
@@ -220,7 +220,7 @@ background-color: rgb(238, 194, 120);
     request2.done(function (data) {
         // alert( "success" );
         $('#ajaxWed').html(data);
-        $(document).find('.Thursday').hide();
+        $(document).find('.Friday').hide();
     })
     }
 
@@ -232,15 +232,15 @@ background-color: rgb(238, 194, 120);
 
         $(document).on('click', '#wednesday', function() {
 
-            $(document).find('.Wednesday').show();
-            $(document).find('.Thursday').hide();
+            $(document).find('.Thursday').show();
+            $(document).find('.Friday').hide();
 
         })
 
         $(document).on('click', '#thursday', function() {
 
-            $(document).find('.Thursday').show();
-            $(document).find('.Wednesday').hide();
+            $(document).find('.Friday').show();
+            $(document).find('.Thursday').hide();
 
         })
 

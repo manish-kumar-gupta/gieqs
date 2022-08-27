@@ -579,6 +579,8 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                             </div>
                         </div>
 
+                        
+
                         <div class="col-lg-3 py-3">
                             <div data-animate-hover="2">
                                 <div class="animate-this">

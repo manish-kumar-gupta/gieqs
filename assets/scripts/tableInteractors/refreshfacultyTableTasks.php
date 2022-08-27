@@ -11,7 +11,7 @@
                 $programmeReports = new programmeReports;
 
                 
-                $response =  $programmeReports->Load_records_faculty_tasks_limit_json_datatables(200);
+                $response =  $programmeReports->Load_records_faculty_tasks_limit_json_datatables(4000);
 
                 echo $response;
 

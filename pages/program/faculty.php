@@ -582,6 +582,21 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                         <div class="col-lg-3 py-3">
                             <div data-animate-hover="2">
                                 <div class="animate-this">
+                                    <a href="#">
+                                        <img alt="Dr Ralph Lee" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/Ralph Lee.jpg">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr Ralph Lee</h5>
+                                    <p class="text-muted mb-0">Gastroenterologist and assistant professor, University of Ottawa, Ontario, Canada</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
                                     <a >
                                         <img alt="Arnaud Lemmers" class="img-fluid rounded shadow"
                                             src="../../assets/img/faculty/Arnaud Lemmers.png">
@@ -938,7 +953,7 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                        
                   
                       
-            
+            <!-- 
                         <div class="col-lg-3 py-3">
                             <div data-animate-hover="2">
                                 <div class="animate-this">
@@ -952,7 +967,7 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                                     <p class="text-muted mb-0">Gastroenterologist, St Lucas Hospital, Belgium</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     
              
 

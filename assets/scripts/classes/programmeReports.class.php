@@ -94,11 +94,71 @@ class programmeReports
 
         }
 
+        public function returnModeration ($facultyid, $programmeids)
+        {
+            $programmestring = implode("' OR g.`programmeid` = '", $programmeids);
+
+
+
+            $q = "SELECT
+            h.`id` AS `programmeid`,
+            h.`date`,
+            c.`id`,
+            c.`timeFrom`,
+            c.`timeTo`,
+            c.`title` AS `sessionTitle`,
+            c.`description` AS `sessionDescription`,
+            e.`facultyid`
+        FROM
+            `session` AS c
+        INNER JOIN `sessionModerator` AS e
+        ON
+            c.`id` = e.`sessionid`
+        INNER JOIN `programmeOrder` AS g
+        ON
+            c.`id` = g.`sessionid`
+        INNER JOIN `programme` AS h
+        ON
+            g.`programmeid` = h.`id`
+        WHERE
+            (e.`facultyid` = '3') AND
+                (g.`programmeid` = '$programmestring') 
+            
+        ORDER BY
+            h.`date` ASC,
+            c.`timeFrom` ASC";
+
+$result = $this->connection->RunQuery($q);
+$rowReturn = array();
+$x = 0;
+$nRows = $result->rowCount();
+
+if ($nRows > 0) {
+
+    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+        $rowReturn[] = array_map('utf8_encode', $row);
+    }
+
+    return $rowReturn;
+
+} else {
+    
+
+    //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+    $rowReturn = [];
+    
+    return $rowReturn;
+}
+
+
+        }
+
         public function generateReport($facultyid)
             {
             
                 //report card per faculty
-                $q = "Select a.`id` as `programmeid`, a.`date`, 
+                /* $q = "Select a.`id` as `programmeid`, a.`date`, 
                 c.`timeFrom`, c.`timeTo`, c.`title` as `sessionTitle`, c.`description` as `sessionDescription`,
                 e.`title` as `sessionItemTitle`, e.`description` as `sessionItemDescription`, e.`timeFrom` as `sessiontimeFrom`, e.`timeTo` as `sessiontimeTo`, e.`live`, f.`facultyid` 
                 from `programme` as a 
@@ -110,6 +170,31 @@ class programmeReports
                 WHERE ((e.`faculty` = $facultyid) OR (f.`facultyid` = $facultyid))
                 GROUP BY c.`id` 
                 ORDER BY a.`date` ASC, c.`timeFrom` ASC";
+ */
+
+$q = "Select h.`id` as `programmeid`, h.`date`, c.`timeFrom`, c.`timeTo`, c.`title` as `sessionTitle`, c.`description`
+as `sessionDescription`, e.`title` as `sessionItemTitle`, e.`description` as `sessionItemDescription`, e.`timeFrom` as
+`sessiontimeFrom`, e.`timeTo` as `sessiontimeTo`, e.`live`, e.`faculty` FROM `session` as c INNER JOIN `sessionOrder` as
+d on c.`id` = d.`sessionid` INNER JOIN `sessionItem` as e on d.`sessionItemid` = e.`id` INNER JOIN `programmeOrder` as g
+on c.`id` = g.`sessionid` INNER JOIN `programme` as h on g.`programmeid` = h.`id` WHERE (e.`faculty` = $facultyid) AND
+(g.`programmeid` = '47' OR g.`programmeid` = '48' OR g.`programmeid` = '49' OR g.`programmeid` = '50') ORDER BY h.`date`
+ASC, c.`timeFrom` ASC";
+
+
+
+/* $q = "Select h.`id` as `programmeid`, h.`date`, 
+                c.`timeFrom`, c.`timeTo`, c.`title` as `sessionTitle`, c.`description` as `sessionDescription`,
+                e.`title` as `sessionItemTitle`, e.`description` as `sessionItemDescription`, e.`timeFrom` as `sessiontimeFrom`, e.`timeTo` as `sessiontimeTo`, e.`live`, f.`facultyid` 
+                FROM `session` as c 
+                INNER JOIN `sessionOrder` as d on c.`id` = d.`sessionid` 
+                INNER JOIN `sessionItem` as e on d.`sessionItemid` = e.`id` 
+                INNER JOIN `sessionModerator` as f on c.`id` = f.`sessionid` 
+                INNER JOIN `programmeOrder` as g on c.`id` = g.`programmeid`
+                INNER JOIN `programme` as h on g.`programmeid` = h.`id`
+                WHERE ((e.`faculty` = $facultyid) OR (f.`facultyid` = $facultyid))
+                AND (g.`programmeid` = '47' OR g.`programmeid` = '48' OR g.`programmeid` = '49' OR g.`programmeid` = '50')
+                GROUP BY f.`id` 
+                ORDER BY h.`date` ASC, c.`timeFrom` ASC"; */
 
             //echo $q . '<br><br>';
 
@@ -143,10 +228,19 @@ class programmeReports
         public function generateReportv2($facultyid, $programmeids)
         {
         
-            $programmestring = implode("' OR a.`id` = '", $programmeids);
+            $programmestring = implode("' OR g.`programmeid` = '", $programmeids);
 
             //report card per faculty
-            $q = "Select a.`id` as `programmeid`, a.`date`, 
+
+            $q = "Select h.`id` as `programmeid`, h.`date`, c.`timeFrom`, c.`timeTo`, c.`title` as `sessionTitle`, c.`description`
+            as `sessionDescription`, e.`title` as `sessionItemTitle`, e.`description` as `sessionItemDescription`, e.`timeFrom` as
+            `sessiontimeFrom`, e.`timeTo` as `sessiontimeTo`, e.`live`, e.`faculty` FROM `session` as c INNER JOIN `sessionOrder` as
+            d on c.`id` = d.`sessionid` INNER JOIN `sessionItem` as e on d.`sessionItemid` = e.`id` INNER JOIN `programmeOrder` as g
+            on c.`id` = g.`sessionid` INNER JOIN `programme` as h on g.`programmeid` = h.`id` WHERE (e.`faculty` = $facultyid) AND
+            (g.`programmeid` = '$programmestring') ORDER BY h.`date`
+            ASC, c.`timeFrom` ASC";
+
+            /* $q = "Select a.`id` as `programmeid`, a.`date`, 
             c.`id` as `sessionid`, c.`timeFrom`, c.`timeTo`, c.`title` as `sessionTitle`, c.`description` as `sessionDescription`,
             e.`id` as `sessionitemid`, e.`title` as `sessionItemTitle`, e.`description` as `sessionItemDescription`, e.`timeFrom` as `sessiontimeFrom`, e.`timeTo` as `sessiontimeTo`, e.`live`, f.`facultyid` 
             from `programme` as a 
@@ -160,8 +254,8 @@ class programmeReports
             AND ((e.`faculty` = $facultyid) OR (f.`facultyid` = $facultyid))
             GROUP BY e.`id`
             ORDER BY a.`date` ASC, e.`timeFrom` ASC";
-
-        echo $q . '<br><br>';
+ */
+        //echo $q . '<br><br>';
 
 
 
@@ -413,7 +507,8 @@ class programmeReports
                 INNER JOIN `sessionOrder` as b on a.`id` = b.`sessionid` 
                 INNER JOIN `sessionItem` as c on b.`sessionItemid` = c.`id` 
                 INNER JOIN `faculty` as d on c.`faculty` = d.`id`
-                WHERE d.`id` = $facultyid AND c.`live` <> 1
+                INNER JOIN `programmeOrder` as e on a.`id` = e.`sessionid`
+                WHERE d.`id` = $facultyid AND c.`live` <> 1 AND (e.`programmeid` = '47' OR e.`programmeid` = '48' OR e.`programmeid` = '49' OR e.`programmeid` = '50')
             ";
 
             //echo $q . '<br><br>';
@@ -454,7 +549,8 @@ class programmeReports
                 INNER JOIN `sessionOrder` as b on a.`id` = b.`sessionid` 
                 INNER JOIN `sessionItem` as c on b.`sessionItemid` = c.`id` 
                 INNER JOIN `faculty` as d on c.`faculty` = d.`id`
-                WHERE d.`id` = $facultyid AND c.`live` = 1
+                INNER JOIN `programmeOrder` as e on a.`id` = e.`sessionid`
+                WHERE d.`id` = $facultyid AND c.`live` = 1 AND (e.`programmeid` = '47' OR e.`programmeid` = '48' OR e.`programmeid` = '49' OR e.`programmeid` = '50')
             ";
 
             //echo $q . '<br><br>';
@@ -494,7 +590,8 @@ class programmeReports
             from `session` as a 
             INNER JOIN `sessionModerator` as b on a.`id` = b.`sessionid` 
             INNER JOIN `faculty` as c on b.`facultyid` = c.`id`
-            WHERE c.`id` = $facultyid 
+            INNER JOIN `programmeOrder` as d on a.`id` = d.`sessionid`
+            WHERE c.`id` = $facultyid AND (d.`programmeid` = '47' OR d.`programmeid` = '48' OR d.`programmeid` = '49' OR d.`programmeid` = '50')
             ";
 
             //echo $q . '<br><br>';
