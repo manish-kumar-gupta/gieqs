@@ -54,6 +54,20 @@ $openaccess =1;
     return false;
 }
 
+if (isset($_GET["id"]) && is_numeric($_GET["id"])){
+	$id = $_GET["id"];
+    $id_set = true;
+
+}else{
+
+	$id = null;
+    $id_set = false;
+
+}
+
+
+
+
             //error_reporting(E_ALL);
             //$print_r()
 
@@ -63,7 +77,14 @@ $openaccess =1;
 
             //get all faculty
 
-            $facultyMembers = $programmeReports->LoadAllFaculty();
+            if ($id_set){
+
+            $facultyMembers = array(0=>$id);
+
+            }else{
+
+                $facultyMembers = $programmeReports->LoadAllFaculty();
+            }
 
             //print_r($facultyMembers);
 
@@ -131,7 +152,7 @@ $openaccess =1;
                 </div>
             </div>
             <div class="text-left">
-                <h2><span class="h5 mb-0">GIEQs Conference plan for <?php echo $sessionView->getFacultyNamePrint($facultyid)?></span></h2>
+                <h2><span class="h5 mb-0">GIEQs III Conference plan for <?php echo $sessionView->getFacultyNamePrint($facultyid)?></span></h2>
                 <?php
                     if ($edit == 1){
                         echo '<span class="ml-3 editSession" data="' . $response3[0]['sessionid'] . '"><i class="fas fa-edit"></i></span>';
@@ -165,6 +186,16 @@ $openaccess =1;
                 //print_r($value);
                 $moderation_item = null;
                 $moderation_item = multi_array_key_exists('sessionItemDescription', $value);
+
+
+                //do dates
+
+                $timefrom = $value['timeFrom'];
+                $timeto = $value['timeTo'];
+
+                //echo date ('H:i',strtotime($date));
+
+
                 //var_dump($moderation_item);
                 //echo '<br/><br/>';
                 //continue;
@@ -202,19 +233,19 @@ $openaccess =1;
 
                     
 
-                    <h3><p><?php $checkDate = $value['date']; $programmeDate = new DateTime($value['date']);?>
+                    <h2><p><?php $checkDate = $value['date']; $programmeDate = new DateTime($value['date']);?>
                     <span><?php echo $programmeDate->format('D d M Y');?></span>
-                    </p></h3>
+                    </p></h2>
 
                 <?php }?>
-                    <p><span style="font-weight:bold;">Session</span><span> : <?php echo $value['sessionTitle'];?></span> (<span><?php echo $value['timeFrom'] . ' - ' . $value['timeTo']; ?></span>)
+                    <p style="font-size:1.1rem; padding-left:2rem;"><span><span><?php echo date ('H:i',strtotime($timefrom)) . ' - ' . date ('H:i',strtotime($timeto)); ?></span></span><span style="font-weight:bold;"> : <?php echo $value['sessionTitle'];?></span> 
                     <span><br/><?php echo $value['sessionDescription'];?></span></span>
                     
                 
                 </p>
-                    <p>Role : <span style="font-weight: bold;"><?php if ($moderation_item === FALSE){echo 'Moderator '; continue;} elseif($value['live'] == 1){echo 'Live Case';}else{echo 'Lecture   ';}?></span></p>
-                    <span class="timeFrom"><?php echo $value['sessiontimeFrom'];?></span> - <span class="timeTo"><?php echo $value['sessiontimeTo'];?></span>
-                    : <span style="font-weight: bold;" class="h6 sessionTitle"> <?php echo $value['sessionItemTitle'];?></span>
+                    <p class="" style="padding-left:3rem;">Role : <span style="font-weight: bold;"><?php if ($moderation_item === FALSE){echo 'Moderator '; continue;} elseif($value['live'] == 1){echo 'Live Case';}else{echo 'Lecture   ';}?></span></p>
+                    <p style="padding-left:3rem;"><span class="timeFrom"><?php echo $value['sessiontimeFrom'];?></span> - <span class="timeTo"><?php echo $value['sessiontimeTo'];?></span>
+                    : <span style="font-weight: bold;" class="h6 sessionTitle"> <?php echo $value['sessionItemTitle'];?></span></p>
 
                 </div>
                 
@@ -222,9 +253,9 @@ $openaccess =1;
             </div>
             <div class="row d-flex align-items-left text-left align-middle">
                 <div class="pl-3 pr-1 pb-0 pt-0 time">
-                    <span class="sessionDescription"><?php echo $value['sessionItemDescription'];?></span>
+                    <p style="padding-left:3rem;"><span class="sessionDescription"><?php echo $value['sessionItemDescription'];?></span></p>
 
-                    <p class="pt-2 h6 faculty"><?php 
+                    <p style="padding-left:3rem;" class="pt-2 h6 faculty"><?php 
                     
                     $faculty = $sessionView->getFacultyName($value['faculty']);
 
