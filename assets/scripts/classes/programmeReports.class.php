@@ -121,12 +121,14 @@ class programmeReports
         ON
             g.`programmeid` = h.`id`
         WHERE
-            (e.`facultyid` = '3') AND
+            (e.`facultyid` = '$facultyid') AND
                 (g.`programmeid` = '$programmestring') 
             
         ORDER BY
             h.`date` ASC,
             c.`timeFrom` ASC";
+
+            //echo $q;
 
 $result = $this->connection->RunQuery($q);
 $rowReturn = array();

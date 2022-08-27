@@ -41,6 +41,19 @@ $openaccess =1;
                 }
             }
 
+            function multi_array_key_exists($key, array $array): bool
+{
+    if (array_key_exists($key, $array)) {
+        return true;
+    } else {
+        foreach ($array as $nested) {
+            if (is_array($nested) && multi_array_key_exists($key, $nested))
+                return true;
+        }
+    }
+    return false;
+}
+
             //error_reporting(E_ALL);
             //$print_r()
 
@@ -70,26 +83,32 @@ $openaccess =1;
 
                 $response =  $programmeReports->generateReportv2($facultyid, [0=>47, 1=>48, 2=>49, 3=>50]);
                 $response2 = $programmeReports->returnModeration($facultyid, [0=>47, 1=>48, 2=>49, 3=>50]);
+                $response3 = array_merge($response, $response2);
+                //usort($response3, function ($a, $b) {     return strcmp($a["date"], $b["date"]); });
 
+                array_multisort(array_column($response3, 'date'),  SORT_ASC,
+                array_column($response3, 'timeFrom'), SORT_ASC,
+                $response3);
                 
                 //TODO this gets only the sessionItems
 
-                if (empty($response)){
+                if (empty($response3)){
 
                     continue;
 
                 }
+                //print_r($response3);
 
-                print_r($response2);
+                //print_r($response2);
                 //TODO get moderator roles too and list amongst
 
                 if ($debug){
 
-                ?><pre><?php print_r($response); ?></pre><?php
+                ?><pre><?php print_r($response3); ?></pre><?php
 
                 }
 
-                $programmeDate = new DateTime($response[0]['date']);
+                $programmeDate = new DateTime($response3[0]['date']);
 
                 //echo $programmeDate->format('D d M Y');
 
@@ -115,7 +134,7 @@ $openaccess =1;
                 <h2><span class="h5 mb-0">GIEQs Conference plan for <?php echo $sessionView->getFacultyNamePrint($facultyid)?></span></h2>
                 <?php
                     if ($edit == 1){
-                        echo '<span class="ml-3 editSession" data="' . $response[0]['sessionid'] . '"><i class="fas fa-edit"></i></span>';
+                        echo '<span class="ml-3 editSession" data="' . $response3[0]['sessionid'] . '"><i class="fas fa-edit"></i></span>';
 
                     }
 
@@ -136,16 +155,23 @@ $openaccess =1;
             <?php 
             $x = 0;
             
-            foreach ($response as $key=>$value){
+            foreach ($response3 as $key=>$value){
                 
                 if ($debug){
                 echo $key;
                 echo $x . '<br/>';     
                 }
+
+                //print_r($value);
+                $moderation_item = null;
+                $moderation_item = multi_array_key_exists('sessionItemDescription', $value);
+                //var_dump($moderation_item);
+                //echo '<br/><br/>';
+                //continue;
                         //$last
                       
                             
-                        $lastsessionid = $response[$key-1]['sessionid'];
+                      /*   $lastsessionid = $response[$key-1]['sessionid'];
                         
                         if ($debug){
                                                 echo $lastsessionid .' is lastsession id <br/>';
@@ -161,7 +187,7 @@ $openaccess =1;
                             $x++;
 
                             continue;
-                        }
+                        } */
 
                        
                         
@@ -186,7 +212,7 @@ $openaccess =1;
                     
                 
                 </p>
-                    <p>Role : <span style="font-weight: bold;"><?php if ($value['facultyid'] == $facultyid){echo 'Moderator '; continue;} elseif($value['live'] == 1){echo 'Live Case';}else{echo 'Lecture   ';}?></span></p>
+                    <p>Role : <span style="font-weight: bold;"><?php if ($moderation_item === FALSE){echo 'Moderator '; continue;} elseif($value['live'] == 1){echo 'Live Case';}else{echo 'Lecture   ';}?></span></p>
                     <span class="timeFrom"><?php echo $value['sessiontimeFrom'];?></span> - <span class="timeTo"><?php echo $value['sessiontimeTo'];?></span>
                     : <span style="font-weight: bold;" class="h6 sessionTitle"> <?php echo $value['sessionItemTitle'];?></span>
 
