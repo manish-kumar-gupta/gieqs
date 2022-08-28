@@ -2,7 +2,7 @@
 	
    //error_reporting;
 
-    require (BASE_URI . '/assets/scripts/login_functions.php');
+    require_once (BASE_URI . '/assets/scripts/login_functions.php');
     
     //place to redirect the user if not allowed access
     $location = BASE_URL . '/index.php';

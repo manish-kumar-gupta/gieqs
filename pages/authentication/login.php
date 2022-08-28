@@ -29,11 +29,46 @@ $gieqs_ii_plenary_link = $assetManager->requiredAssetGIEQsII($gieqs_ii_day,false
 
 $target = false;
 
+$debug = false;
+
 
 
 //from redirect_login pass here the parameter
 
 //then use it to see where the user wants to go
+
+//$url = $_SERVER['REQUEST_URI'];
+$url = $_SERVER['HTTP_REFERER'];
+$url_components = parse_url($url);
+print_r($url_components);
+$url_to_attach = $url_components['path'];
+if (empty($url_components)){
+
+  //url component set
+  $url_path_set = false;
+
+
+}else{
+
+  //url component set
+  $url_path_set = true;
+
+}
+
+if ($debug){
+
+  print_r($_SERVER);
+  print_r($url);
+
+  print_r($url_components);
+  var_dump($url_path_set);
+  print_r($url_to_attach);
+
+
+
+}
+
+
 
 
 //if $userid is logged in
@@ -212,12 +247,37 @@ if (isset($_GET['destination'])) {
 
   }else {
 
-    $destination = null;
+    $target = urldecode($destination);
+
+
+    if ($local){
+
+      //splice local start off
+
+      $string_to_remove = '/dashboard/gieqs/';
+      $target = str_replace($string_to_remove ,'',$target);
+
+    }else{
+
+      //splice other start off
+      $string_to_remove = 'www.gieqs.com/';
+      $target = str_replace($string_to_remove ,'',$target);
+
+
+    }
+
+
+
 
   }
 
 
 }
+
+//var_dump($local);
+//print_r($target);
+
+//exit();
 
 if ($userid && ($target != false)){
 
@@ -543,7 +603,7 @@ function login(){
             if (target){  
               window.location.href = siteRoot + target;  
             }else{
-              window.location.href = siteRoot + "/pages/learning/index.php";  
+              window.location.href = siteRoot + "pages/learning/index.php";  
 
             }
           

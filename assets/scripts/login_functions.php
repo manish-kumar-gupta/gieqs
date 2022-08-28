@@ -5,7 +5,10 @@
 //$openaccess = 1;		
 
 //require (BASE_URI . '/scripts/headerScript.php');
-    
+
+//error_reporting(E_ALL);
+
+
     require(DB);    
 
     function redirect_user ($page='/pages/authentication/login.php', $location=null) {
@@ -25,16 +28,28 @@
         //eg  header("Location: dashboard.php?name_=$FullName&subject_=$Subject&phone_=$Phone&email_=$Email&message_=$Message"); 
         exit ();
     }
-    
-     
-	
-	 function redirect_login ($location, $url=null) {
+   
+	 function redirect_login ($location, $url=null, $debug=false) {
          //if url not null add ?destination= to front
+
+         //echo $location;
+         //echo $url;
+        
+
         if ($url != null){
 
-            $url = '?destination' . $url;
+            $url = '?destination=' . $url;
 
         }
+
+        if ($debug){
+            echo $location;
+            echo $url;
+            var_dump($debug);
+            exit();
+
+        }
+
         header ("Location: $location$url");
         exit ();
     }

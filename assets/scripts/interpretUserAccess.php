@@ -21,9 +21,26 @@ spl_autoload_unregister ('class_loader');
 $assetManager = new assetManager;
 spl_autoload_register ('class_loader');
 
+$url = $_SERVER['REQUEST_URI'];
+$url_components = parse_url($url);
+$url_requested = $url_components['path'];
+
+
+if (isset($url_requested)){
+
+    $use_url = true;
+    $url_requested = urlencode($url_requested);
+    $location = BASE_URL . '/pages/authentication/login.php?destination=' . $url_requested;
+
+}else{
+
+    $use_url = false;
+}
 
 
 
+
+//define the request
 
 
 
