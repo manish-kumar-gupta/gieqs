@@ -42,80 +42,12 @@ $sessionView = new sessionView;
 //new class navigationManagerlogin
 
 
-
-
 //gieqs ii parameters
 //TESTIING
 
-$debugAccess = false;
-
-$test = true;
-$testDate = '2021-10-02 00:00:00';
+require_once BASE_URI . '/pages/learning/includes/gieqs_iii_settings.php';
 
 
-if (!$test){
-if ($isSuperuser == 1){
-
-  $courseTest = false;
-}else{
-
-
-  $courseTest = false;
-}
-}
-
-if ($test){
-
-$gieqs_ii_day = $assetManager->whichDay($courseTest,false, $test, $testDate);
-
-
-
-}else{
-
-  $gieqs_ii_day = $assetManager->whichDay($courseTest,false);
-
-}
-
-if ($debugAccess){
-
-  echo '<br/><br/>value of gieqs_ii_day = ' . $gieqs_ii_day;
-
-} 
-
-$gieqs_ii_is_live = $assetManager->gieqsIILive($gieqs_ii_day);
-
-
-
-if ($debugAccess){
-
-  echo '<br/><br/>value of gieqs_ii_is_live = ' . $gieqs_ii_is_live;
-
-} 
-
-
-$gieqs_ii_has_access_to_today = $assetManager->hasAccessGIEQsII($gieqs_ii_day, $userid, false);
-
-if ($debugAccess){
-
-  echo '<br/><br/>value of gieqs_ii_has_access_to_today = ' . $gieqs_ii_has_access_to_today;
-
-} 
-
-$gieqs_ii_plenary_link = $assetManager->requiredAssetGIEQsII($gieqs_ii_day,true);
-
-if ($debugAccess){
-
-  echo '<br/><br/>value of gieqs_ii_plenary_link = ' . $gieqs_ii_plenary_link;
-
-} 
-
-$gieqs_ii_complex_link = $assetManager->requiredAssetGIEQsII($gieqs_ii_day,false);
-
-if ($debugAccess){
-
-  echo '<br/><br/>value of gieqs_ii_complex_link = ' . $gieqs_ii_complex_link;
-
-} 
 
 //query to get menus [if active]
 

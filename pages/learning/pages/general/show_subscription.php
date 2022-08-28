@@ -13,7 +13,7 @@ error_reporting(-1);
 
       //define user access level
 
-      //$openaccess = 1;
+    //$openaccess = 1;
       $requiredUserLevel = 6;
 
       
@@ -1213,13 +1213,13 @@ filter: alpha(opacity=30);
                 //and if the user is a superuser
                 //show the live view anyway, unless we are after the date of GII
 
-                if ($programme_id == '36' || $programme_id == '37'|| $programme_id == '38' || $programme_id == '39'){
+                if ($programme_id == '47' || $programme_id == '48'|| $programme_id == '49' || $programme_id == '50'){
 
                     $isGIEQs2 = true;
 
                     if ($isSuperuser == 1){
 
-                        $courseTest = false; //CHANGE THIS FOR TESTING SYMPOSIA
+                        $courseTest = true; //CHANGE THIS FOR TESTING SYMPOSIA
                     }else{
 
                         $courseTest = false;

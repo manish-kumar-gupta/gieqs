@@ -5848,6 +5848,175 @@ if ($debug){
 
     }
 
+    //gieqs III
+
+    public function isPlenaryGIEQsIII($asset_id){
+
+        if ($asset_id == '' || $asset_id == ''){
+
+            return true;
+
+        }else{
+
+            return false;
+        }
+
+    }
+
+
+
+    public function hasAccessGIEQsIII($day, $user_id, $debug=false){
+
+
+        //day 1 programme ids 47,48
+
+        if ($debug){
+
+            echo '<br/>value of programme_owned_by_user 47 user ' . $user_id . ' is ' . $this->programme_owned_by_user('47', $user_id, $debug);
+            echo '<br/>value of programme_owned_by_user 48 user ' . $user_id . ' is ' . $this->programme_owned_by_user('48', $user_id, $debug);
+
+            echo '<br/>value of programme_owned_by_user 49 user ' . $user_id . ' is ' . $this->programme_owned_by_user('49', $user_id, $debug);
+
+            echo '<br/>value of programme_owned_by_user 50 user ' . $user_id . ' is ' . $this->programme_owned_by_user('50', $user_id, $debug);
+
+        }
+
+        //day 2 programme ids 49,50
+
+
+        if ($day == 1){
+        
+            if (($this->programme_owned_by_user('47', $user_id, $debug) == true && $this->programme_owned_by_user('48', $user_id, $debug) == true)){
+
+
+                return true;
+    
+            }else{
+    
+                return false;
+            }
+    }elseif ($day == 2){
+
+
+        if (($this->programme_owned_by_user('49', $user_id, $debug) == true && $this->programme_owned_by_user('50', $user_id, $debug) == true)){
+
+
+            return true;
+
+        }else{
+
+            return false;
+        }
+
+    }
+
+
+    }
+
+
+    public function whichDayGIII($test, $debug=false, $checkDate=false, $dateToCheck=null){
+
+        //check the CURRENTdate against the course date
+
+        //if a testing user ensure random selection between first and second day
+
+        //seconddate comes from programme->getdate()
+
+        //
+
+        if ($checkDate){
+
+            $serverTimeZoneNav = new DateTimeZone('Europe/Brussels'); //because this is where course is held
+
+            $currentNavTime = new DateTime($dateToCheck, $serverTimeZoneNav);  
+    
+            $firstDate = $currentNavTime->format('Y-m-d');
+
+        }else{
+
+
+        $serverTimeZoneNav = new DateTimeZone('Europe/Brussels'); //because this is where course is held
+
+        $currentNavTime = new DateTime('now', $serverTimeZoneNav);  
+
+        $firstDate = $currentNavTime->format('Y-m-d');
+
+        }
+
+       
+
+
+        if ($firstDate == '2022-09-29'){
+
+            return 1;
+        }elseif ($firstDate == '2022-09-30'){
+
+            return 2;
+        }else{
+
+            if ($test){
+
+                return rand(1,2);
+    
+            }else{
+
+            return false;
+
+            }
+        }
+
+        
+
+
+
+    }
+
+    function gieqsIIILive ($day){
+
+
+        //$day from $this->whichDay
+
+        if ($day == 1 || $day == 2){
+
+            return true;
+        }else{
+
+            return false;
+        }
+
+    }
+
+
+
+    function requiredAssetGIEQsIII($day, $plenary){
+
+
+        if ($day == 1){
+
+            if ($plenary == true){
+
+                return 137; //day 1 plenary
+
+            }else{
+
+                return 138;  //day 1 complex
+            }
+
+        }elseif ($day == 2){
+
+            if ($plenary == true){
+
+                return 139; //day 2 plenary
+
+            }else{
+
+                return 140; //day 2 complex
+            }
+        }
+
+
+    }
+
     function checkStructure($table, $column){
 
         $q = "SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='learningToolv1' AND TABLE_NAME='$table' AND column_name='$column'";

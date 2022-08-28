@@ -59,90 +59,7 @@ $general = new general;
 
 $debug = false;
 
-//$assetid = 13;
-$asset_id_pagewrite = '15';
-$asset_id_pagewrite2 = '16';
-$email_to_use_as_basis = '1';
 
-/*$asset_id_pagewrite = '3';
-$asset_id_pagewrite2 = '3';
-$email_to_use_as_basis = '1';*/
-
-$emails->Load_from_key($email_to_use_as_basis);
-$emailid = $email_to_use_as_basis;
-
-$programme_array = $assetManager->returnProgrammesAsset($asset_id_pagewrite);
-if ($debug){
-
-    var_dump($programme_array);
-}
-
-$programme_defined = $programme_array[0];
-if ($programme_array[1] != ''){
-
-    $programme2 = $programme_array[1];
-}else{
-
-    $programme2 = null;
-}
-
-$programme_array = $assetManager->returnProgrammesAsset($asset_id_pagewrite2);
-if ($debug){
-
-    var_dump($programme_array);
-}
-$programme_defined3 = $programme_array[0];
-if ($programme_array[1] != ''){
-
-    $programme4 = $programme_array[1];
-}else{
-
-    $programme4 = null;
-}
-
-if ($debug){
-
-print_r($programme_defined);
-print_r($programme2);
-
-
-}
-
-
-
-$assets_paid->Load_from_key($asset_id_pagewrite);
-
-$access = [0=>['id'=>$programme_defined],];
-
-$access1 = null;
-
-    
-$access1 = $sessionView->getStartAndEndProgrammes($access, $debug);
-
-    //var_dump($access1);
-
-    //echo '<br/><br/>now get the start and end times in a single array<br/><br/>';
-
-    $access2 = null;
-
-    $access2 = $sessionView->getStartEndProgrammes($access1, $debug);
-
-    //var_dump($access2);
-
-$programme->Load_from_key($programme_defined);
-$serverTimeZone = new DateTimeZone('Europe/Brussels');
-$programmeDate = new DateTime($programme->getdate(), $serverTimeZone);
-
-$humanReadableProgrammeDate = date_format($programmeDate, "l jS F Y");
-
-$startTime = new DateTime($programme->getdate() . ' ' . $access2[0]['startTime'], $serverTimeZone);
-$endTime = new DateTime($programme->getdate() . ' ' . $access2[0]['endTime'], $serverTimeZone);
-$humanStartTime = date_format($startTime, "H:i");
-$humanEndTime = date_format($endTime, "H:i T");
-
-if ($debug){
-var_dump($currentTime);
-}
 
 //rest should come from this
 
@@ -150,7 +67,7 @@ var_dump($currentTime);
 
 
 ?>
-    <title>GIEQs II Scientific Program</title>
+    <title>GIEQs III Scientific Program</title>
     <meta charset="utf-8">
  <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -241,6 +158,91 @@ var_dump($currentTime);
 
 <div class="mt-10"></div>
 <?php
+//$assetid = 13;
+$asset_id_pagewrite = '95';
+$asset_id_pagewrite2 = '96';
+$email_to_use_as_basis = '1';
+
+/*$asset_id_pagewrite = '3';
+$asset_id_pagewrite2 = '3';
+$email_to_use_as_basis = '1';*/
+
+$emails->Load_from_key($email_to_use_as_basis);
+$emailid = $email_to_use_as_basis;
+
+$programme_array = $assetManager->returnProgrammesAsset($asset_id_pagewrite);
+if ($debug){
+
+    var_dump($programme_array);
+}
+
+$programme_defined = $programme_array[0];
+if ($programme_array[1] != ''){
+
+    $programme2 = $programme_array[1];
+}else{
+
+    $programme2 = null;
+}
+
+$programme_array = $assetManager->returnProgrammesAsset($asset_id_pagewrite2);
+if ($debug){
+
+    var_dump($programme_array);
+}
+$programme_defined3 = $programme_array[0];
+if ($programme_array[1] != ''){
+
+    $programme4 = $programme_array[1];
+}else{
+
+    $programme4 = null;
+}
+
+if ($debug){
+
+print_r($programme_defined);
+print_r($programme2);
+
+
+}
+
+
+
+$assets_paid->Load_from_key($asset_id_pagewrite);
+
+$access = [0=>['id'=>$programme_defined],];
+
+$access1 = null;
+
+    
+$access1 = $sessionView->getStartAndEndProgrammes($access, $debug);
+
+    //var_dump($access1);
+
+    //echo '<br/><br/>now get the start and end times in a single array<br/><br/>';
+
+    $access2 = null;
+
+    $access2 = $sessionView->getStartEndProgrammes($access1, $debug);
+
+    //var_dump($access2);
+
+$programme->Load_from_key($programme_defined);
+$serverTimeZone = new DateTimeZone('Europe/Brussels');
+$programmeDate = new DateTime($programme->getdate(), $serverTimeZone);
+
+$humanReadableProgrammeDate = date_format($programmeDate, "l jS F Y");
+
+$startTime = new DateTime($programme->getdate() . ' ' . $access2[0]['startTime'], $serverTimeZone);
+$endTime = new DateTime($programme->getdate() . ' ' . $access2[0]['endTime'], $serverTimeZone);
+$humanStartTime = date_format($startTime, "H:i");
+$humanEndTime = date_format($endTime, "H:i T");
+
+if ($debug){
+var_dump($currentTime);
+}
+
     $videoset = 2;
     
 require(BASE_URI . '/pages/learning/pages/general/live_nav.php'); ?>
@@ -260,7 +262,7 @@ require(BASE_URI . '/pages/learning/pages/general/live_nav.php'); ?>
 
                     <div class="col-12 p-3 pb-1">
                         <span class="h1 display-2"
-                            style="color: rgb(238, 194, 120);">GIEQs II Scientific Program<br /></span>
+                            style="color: rgb(238, 194, 120);">GIEQs III Scientific Program<br /></span>
                         <span
                             class="h3 display-5 mt-4 text-white"><?php echo 'Live :  ' . $humanReadableProgrammeDate;?></span>
                         <span
@@ -286,11 +288,7 @@ require(BASE_URI . '/pages/learning/pages/general/live_nav.php'); ?>
                                 //user owns This
                                 ?>
 
-                        <a data-assetid="<?php echo $asset_id_pagewrite; ?>"
-                            class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
-                            <span class="btn-inner--text text-dark">View My Course!</span>
-                            <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
-                        </a>
+                      
 
 
 
@@ -382,13 +380,7 @@ require(BASE_URI . '/pages/learning/pages/general/live_nav.php'); ?>
                                 //user owns This
                                 ?>
 
-                    <a data-assetid="<?php echo $asset_id_pagewrite; ?>"
-                        class="register-now btn bg-gieqsGold rounded-pill hover-translate-y-n3 btn-icon mt-6 ml-3">
-                        <span class="btn-inner--text text-dark">View My Course!</span>
-                        <!-- <span class="btn-inner--icon"><i class="fas fa-filter"></i></span> -->
-                    </a>
-
-
+                    
 
 
 

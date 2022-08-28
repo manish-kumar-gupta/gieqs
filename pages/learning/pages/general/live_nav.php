@@ -93,12 +93,12 @@ Useful for PHP to JS transfer
 
                                 </a>
                                 <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
-                                    <a id="chapterNavTour" class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/general/show_subscription.php?assetid=<?php echo $gieqs_ii_plenary_link;?>">
+                                    <a id="chapterNavTour" class="dropdown-item" href="<?php echo BASE_URL;?>/pages/learning/pages/general/show_subscription.php?assetid=<?php echo $gieqs_iii_plenary_link;?>">
 
                                         Plenary
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item cursor-pointer" href="<?php echo BASE_URL;?>/pages/learning/pages/general/show_subscription.php?assetid=<?php echo $gieqs_ii_complex_link;?>">Complex
+                                    <a class="dropdown-item cursor-pointer" href="<?php echo BASE_URL;?>/pages/learning/pages/general/show_subscription.php?assetid=<?php echo $gieqs_iii_complex_link;?>">Complex
                                     </a>
 
 
