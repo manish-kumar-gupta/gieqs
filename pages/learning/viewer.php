@@ -1512,6 +1512,10 @@ $current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s');
                             aria-controls="collapseExample2">
                             <i class="fas fa-chevron-circle-up"></i> show histopathology result
                         </a> -->
+
+
+                                            <!-- Add text track box here -->
+
                             <?php if ($currentUserLevel< 5){ // message to upgrade if standard?>
 
                             <a class="dropdown-item" id="referencesTour" data-toggle="collapse" href="#collapseExample2"

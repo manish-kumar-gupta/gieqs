@@ -430,9 +430,47 @@
                 </div>
             </section>
 
-<?php }?>
+<?php }
 
 
+if ($assetManager->doesUserHaveSameAssetAlready('95', $userid, false) === false){
+
+
+?>
+
+
+<section class="slice delimiter-bottom m-0 p-2" id="GIII">
+    <div class="container pt-0 pt-lg-0">
+
+        <div class="actions-toolbar py-2">
+            <!--  <h5 class="mb-1">Your GIEQs Stats</h5>
+                        <p class="text-sm text-muted mb-0">How GIEQy are you <?php //echo $_SESSION['firstname'];?>?</p> -->
+        </div>
+
+        <div class="">
+            <div class="row p-3">
+
+                <p class="h4">You are not yet registered for GIEQs III</p>
+                <p style="font-size:1.25rem;"><a href="https://twitter.com/search/?q=%23GIEQs_III"
+                        target="_blank">#GIEQs_III</a> is the the Only Endoscopy Symposium focussed on Everyday
+                    Endoscopy Techniques.
+                    29/30 Sept '22. Join Michael Bourke, @JTA_Endo, @RolandValori, @RafBisschopsBE, @djtate.
+                </p>
+                <p style="font-size:1.25rem;">Early 🐦 rate ends 6th September.</p>
+           
+                <p><a href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=95&action=register" id="register" type="button"
+                    class="btn btn-small text-dark btn-fill-gieqsGold m-1 ml-4 py-1">Register Here</a></p>
+                
+
+            </div>
+        </div>
+    </div>
+</section>
+<?php
+
+}
+
+?>
 
             <!-- New material -->
 

@@ -76,7 +76,7 @@ $mail = new PHPMailer;
 $data = json_decode(file_get_contents('php://input'), true);
 
 
-$debug = true;
+$debug = false;
 
 if ($debug){
 
@@ -384,14 +384,11 @@ $subscription_to_return['user_id'] = $userid;
 
     }
 
-    if ($debug){
-
-
-    }else{
+  
     
     $subscription->New_subscriptions($userid, $subscription_to_return['asset_id'], $current_date_sqltimestamp, $end_date_sqltimestamp, '1', '0', $text);
 
-    }
+    
 
     //record which user is doing this in user activity
 
@@ -662,7 +659,7 @@ $subscription_to_return['user_id'] = $userid;
         
                     if ($symposium->getincludeGIEQsPro() == '1'){ 
                         
-                        //$debug = true;
+                        $debug = false;
                         
                         if ($debug){
                             
@@ -724,7 +721,7 @@ $subscription_to_return['user_id'] = $userid;
                                 
                                                 $subscription->setactive('0');
                                 
-                                                echo $subscription->prepareStatementPDOUpdate();
+                                                $subscription->prepareStatementPDOUpdate();
                     
                                                 if ($debug){
                                                 echo 'Old subscription cancelled';
@@ -732,7 +729,7 @@ $subscription_to_return['user_id'] = $userid;
                                                 }
         
                                                 $userActivity->New_userActivity($userid, 'CANCEL_SUB_SYMPOSIUM ID ' . $sitewidesubscriptonid, null, $current_date_sqltimestamp);
-                                                echo $userActivity->prepareStatementPDO();
+                                                $userActivity->prepareStatementPDO();
         
                                                 $sitewide_cancellation_string = 'Old GIEQs Online subscription ID #' . $sitewidesubscriptonid . ' was cancelled and prorata refund requested via Stripe.  Please verify you have received a refund.';
         
@@ -882,6 +879,15 @@ $subscription_to_return['user_id'] = $userid;
                                     }else{
                                         
                                         $log[] = 'User no ' . $defined_userid . ' already owns asset ' . $assetvalue;
+                                        
+                                        //get the asset
+                                        //update the end date to the end date of this subscription
+                                        $subscription_to_update = $assetManager->get_subscription_id_asset($assetvalue, $defined_userid, false);
+                                        $log[] = 'The subscription id is ' . $subscription_to_update;
+                                        $subscription->Load_from_key($subscription_to_update);
+                                        $subscription->setexpiry_date($end_date_sqltimestamp);
+                                        $log[] = 'Updated end date to ' . $end_date_sqltimestamp;
+                                        $subscription->prepareStatementPDOUpdate();
                             
                             
                                     }
@@ -1038,7 +1044,6 @@ $emailVaryarray['includeGIEQsPro'] = $includeGIEQsPro[$symposium->getincludeGIEQ
 
 $emailVaryarray['start_date'] = $start_date_user_readable;
 
-$debug = false;
         
         if ($debug){
 

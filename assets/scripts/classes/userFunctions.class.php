@@ -430,7 +430,7 @@ Class userFunctions {
 		
 					}
 
-					if ($access_level < 4){
+					if ($access_level < 5){
 
 						return true;
 					}else{
