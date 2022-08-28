@@ -1217,7 +1217,7 @@ filter: alpha(opacity=30);
 
                     $isGIEQs3 = true;
 
-                    if ($isSuperuser == 1){
+                    if ($isSuperuser == 1 || $currentUserLevel == 2){
 
                         $courseTest = true; //CHANGE THIS FOR TESTING SYMPOSIA
                     }else{
