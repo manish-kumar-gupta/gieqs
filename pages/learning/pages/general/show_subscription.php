@@ -1215,7 +1215,7 @@ filter: alpha(opacity=30);
 
                 if ($programme_id == '47' || $programme_id == '48'|| $programme_id == '49' || $programme_id == '50'){
 
-                    $isGIEQs2 = true;
+                    $isGIEQs3 = true;
 
                     if ($isSuperuser == 1){
 
@@ -1230,7 +1230,7 @@ filter: alpha(opacity=30);
 
                     $courseTest = false;
 
-                    $isGIEQs2 = false;
+                    $isGIEQs3 = false;
                 }
 
                 //$courseTest = false; change this if issues
@@ -1411,15 +1411,38 @@ filter: alpha(opacity=30);
 
             }else{
 
+
+                //not using slido
+                //fix for GIEQs III
+
+                /* <iframe src="https://eau2022.live-events.live/live/5NgxE3arqSmfQ8rEb" scrolling="no" width="1280" height="720" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe> */
+               
+
+                if ($isGIEQs3){
+
+                    echo '<div class="col-lg-12">';
+                    ?> <div style="padding:56.25% 0 0 0;position:relative;"><iframe
+                         src="<?php echo $programmeReports->getVimeoURLProgramme($programme_id); ?>" scrolling="no" frameborder="0"
+                         allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
+                         style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe></div>
+            
+                        </div>
+             <?php
+
+                }else{
+
+
+                
                 
 
-                echo '<div class="col-lg-12">';xw
+                echo '<div class="col-lg-12">';
                ?> <div style="padding:56.25% 0 0 0;position:relative;"><iframe
                     src="<?php echo $programmeReports->getVimeoURLProgramme($programme_id); ?>" frameborder="0"
                     allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
                     style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe></div>
         </div>
         <?php
+                }
             }
             
             ?>
@@ -1576,15 +1599,15 @@ filter: alpha(opacity=30);
 
     <?php
     
-    if ($isGIEQs2 === true){
+    if ($isGIEQs3 === true){
 
        
         ?>
-         var GIEQs2 = true;
+         var GIEQs3 = true;
         <?php
     }else{
 ?>
- var GIEQs2 = false;
+ var GIEQs3 = false;
 
 <?php
 
@@ -2242,7 +2265,7 @@ filter: alpha(opacity=30);
 
     $(document).ready(function() {
 
-if (GIEQs2){
+if (GIEQs3){
         tourShort.init();
 
         // Start the tour
