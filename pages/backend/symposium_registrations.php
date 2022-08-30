@@ -366,7 +366,7 @@ $xcrud->change_type('includeGIEQsPro','select','',array(0=>'No', 1=>'Yes'),);
 $xcrud->change_type('registrationType','select','',array(1=>'Doctor', 2=>'Doctor in Training', 3=>'Nurse Endoscopist (includes Nursing Symposium in Dutch)', 4=>'Endoscopy Nurse (includes Nursing Symposium in Dutch)', 5=>'Medical Student'),);
 $xcrud->change_type('longTermProMemberDiscount','select',0,array(0=>'No', 1=>'Yes'),);
 $xcrud->change_type('professionalMemberDiscount','select',0,array(0=>'No', 1=>'Yes'),);
-$xcrud->change_type('professionalMember','select',0,array(0=>'No', 1=>'Yes'),);
+$xcrud->change_type('professionalMember','select',0,array(0=>'Not a member of any', 1=>'ESGE', 2=>'BSG', 3='ASGE',),);
 $xcrud->change_type('title','select','',array(1=>'Mr', 2=>'Mrs', 3=>'Ms', 4=>'Dr', 5=>'Professor'),);
 $xcrud->change_type('interestReason','select','',array(1=>'Quality in general endoscopy', 2=>'Quality in colonoscopy technique', 3=>'Quality in ERCP', 4=>'Quality in endoscopic ultrasound', 5=>'Quality in endoscopic polypectomy', 6=>'Quality in endoscopic imaging of gastrointestinal lesions', 7=>'Quality in endoscopic unit design', 8=>'Quality in gastrointestinal bleeding', 9=>'Quality in inflammatory bowel disease endoscopy', 10=>'Quality in hepatologic endoscopy', 11=>'Quality in therapeutic endoscopy'),);
 $xcrud->change_type('informedHow','select','',array(0=>'None of the below<', 1=>'GIEQs Online', 2=>'GIEQs Mailing List', 3=>'Professional Contact', 4=>'Google', 5=>'Social Media'),);
