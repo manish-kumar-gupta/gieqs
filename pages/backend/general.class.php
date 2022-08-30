@@ -4207,6 +4207,39 @@ return $arr;
 		}
 	}
 
+	public function getCountryArray (){
+		
+		$q = "SELECT `id`, `CountryName`
+		FROM `countries` ORDER BY `id` ASC";
+
+		//echo $q;
+
+		$result = $this->connection->RunQuery($q);
+
+		$string = 'array(';
+
+		if ($result->num_rows > 0){
+
+			
+			while($row = $result->fetch_array(MYSQLI_ASSOC)){
+				
+				$countryName = $row['CountryName'];
+				$id = $row['id'];
+
+				$string .= $row['id'] . '=>"' . $row['CountryName'] . '"';
+				
+				
+			}
+		
+			$string .= ');';
+
+
+		}else{
+			
+			return null;
+		}
+	}
+
 	public function checkVideoFree ($id){
 		
 		$q = "SELECT `active`

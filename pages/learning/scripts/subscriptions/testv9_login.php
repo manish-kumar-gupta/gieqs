@@ -13,8 +13,8 @@ $location = BASE_URL . '/index.php';
 $debug = false;
 $_SESSION['debug'] == false;
 
-$general = new general;
 $users = new users;
+$general = new general;
 
 $users->Load_from_key($userid);
 
@@ -113,6 +113,11 @@ spl_autoload_unregister ('class_loader');
 //->countTraineeReg , Nurse Reg, Doctor Reg, NE Reg
 
 //->countincomplete reg
+//error_reporting(E_ALL);
+
+
+//echo $general->getCountryArray();
+
 
 $url = $_SERVER['REQUEST_URI'];
 $url_components = parse_url($url);
