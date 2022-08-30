@@ -1345,7 +1345,7 @@ filter: alpha(opacity=30);
 
 
 
-        <div id="live-player-container" class="container-fluid ">
+        <div id="live-player-container" class="container">
         
         <?php 
         
@@ -1371,7 +1371,7 @@ filter: alpha(opacity=30);
             <?php } ?>
 
 
-            <div class="row d-flex flex-wrap align-items-lg-stretch py-lg-4 px-lg-6">
+            <div class="row d-flex flex-wrap align-items-lg-stretch py-lg-4">
 
                 <?php //fix for chat window 
 
