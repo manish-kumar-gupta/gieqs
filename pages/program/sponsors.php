@@ -76,6 +76,24 @@ width: 100%;
 
         <?php require BASE_URI . '/nav.php';?>
 
+        <?php $symposium_nav_active = [
+
+0 => '', //news
+1 => '', //individual reg
+2 => '', //group reg
+3 => '', //program
+4 => '', //faculty
+5 => '', //register now
+6 => '',
+7 => 'gieqsGold',
+
+
+
+];
+
+
+require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
+
     </header>
     <!-- Omnisearch 
     <div id="omnisearch" class="omnisearch">
@@ -169,13 +187,13 @@ width: 100%;
 
                 <div class="client-group row justify-content-center align-items-center mb-4">
 
-                    <div class="col-lg-2 col-md-3 col-4 p-3">
+                    <div class="col-lg-5 col-md-5 col-5 p-3">
                         <a href="https://www.bostonscientific.com/en-EU/medical-specialties/gastroenterology.html" target="_Blank">
                             <img class="logo" alt="Boston Scientific Logo" src="<?php echo BASE_URL . '/assets/img/sponsors/Boston Scientific.jpg';?>">
                         </a>
                     </div>
 
-                    <div class="col-lg-2 col-md-3 col-4 p-3">
+                    <div class="col-lg-5 col-md-5 col-5 p-3">
                         <a href="https://www.olympus.be/medical/en/Home/" target="_Blank">
                             <img class="logo" alt="Olympus Logo" src="<?php echo BASE_URL . '/assets/img/sponsors/OLYMPUS.jpg';?>">
                         </a>
@@ -190,13 +208,13 @@ width: 100%;
 
                 <div class="client-group row justify-content-center align-items-center mb-4">
 
-                    <div class="col-lg-2 col-md-3 col-4 p-3">
+                    <div class="col-lg-4 col-md-4 col-4 p-3">
                         <a href="https://www.acertys.com" target="_Blank">
                             <img class="logo" alt="ACERTYS" src="<?php echo BASE_URL . '/assets/img/sponsors/ACERTYS.jpg';?>">
                         </a>
                     </div>
 
-                    <div class="col-lg-2 col-md-3 col-4 p-3">
+                    <div class="col-lg-4 col-md-4 col-4 p-3">
                         <a href="https://www.acertys.com" target="_Blank">
                             <img class="logo" alt="ACERTYS" src="<?php echo BASE_URL . '/assets/img/sponsors/Fuji Logo.jpg';?>">
                         </a>
@@ -211,11 +229,12 @@ width: 100%;
 
                 <div class="client-group row justify-content-center align-items-center mb-4">
 
-                    <div class="col-lg-2 col-md-3 col-4 p-3">
+                    <div class="col-lg-4 col-md-4 col-4 p-3">
                         <a href="https://www.janssen.com/immunology/gastroenterology" target="_Blank">
                             <img class="logo" alt="JANSSEN" src="<?php echo BASE_URL . '/assets/img/sponsors/JANSSEN.jpg';?>">
                         </a>
                     </div>
+                   
 
                 </div>
     
@@ -262,11 +281,11 @@ width: 100%;
                         </a>
                     </div>
 
-                    <div class="col-lg-2 col-md-3 col-4 p-3">
+                  <!--   <div class="col-lg-2 col-md-3 col-4 p-3">
                         <a href="https://europe.medtronic.com/gi" target="_Blank">
                             <img class="logo" alt="Medtronic" src="<?php echo BASE_URL . '/assets/img/sponsors/MEDTRONIC.jpg';?>">
                         </a>
-                    </div>
+                    </div> -->
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
                         <a href="https://norgine.com/" target="_Blank">
@@ -295,6 +314,12 @@ width: 100%;
                     <div class="col-lg-2 col-md-3 col-4 p-3">
                         <a href="https://www.viatris.com/en" target="_Blank">
                             <img class="logo" alt="Viatris" src="<?php echo BASE_URL . '/assets/img/sponsors/Viatris.png';?>">
+                        </a>
+                    </div>
+
+                    <div class="col-lg-2 col-md-3 col-4 p-3">
+                        <a href="https://www.cookmedical.eu/" target="_Blank">
+                            <img class="logo" alt="COOK" src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1662389484_CookMedical-Logo-Signage_A4.jpg">
                         </a>
                     </div>
 

@@ -58,14 +58,14 @@ if (isset($access_token) && ($assetManager->checkAssetToken($asset_id_pagewrite,
                 
                 <li class="nav-item">
                     <a <a href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=95" class="nav-link nav-link-icon cursor-pointer">
-                        <span class="nav-link-inner--text <?php echo $symposium_nav_active[1];?> ">Individual Registration</span>
+                        <span class="nav-link-inner--text <?php echo $symposium_nav_active[1];?> ">Individual</span>
                     </a>
                 </li>
 
                 
                 <li class="nav-item">
                     <a href="<?php echo BASE_URL;?>/pages/program/symposium-group-registration.php" class="nav-link nav-link-icon cursor-pointer">
-                        <span class="nav-link-inner--text <?php echo $symposium_nav_active[2];?> ">Group Registration</span>
+                        <span class="nav-link-inner--text <?php echo $symposium_nav_active[2];?> ">Group</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -76,6 +76,12 @@ if (isset($access_token) && ($assetManager->checkAssetToken($asset_id_pagewrite,
                 <li class="nav-item">
                     <a href="<?php echo BASE_URL;?>/pages/program/faculty.php" class="nav-link nav-link-icon cursor-pointer">
                         <span class="nav-link-inner--text <?php echo $symposium_nav_active[4];?> ">Faculty</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="<?php echo BASE_URL;?>/pages/program/sponsors.php" class="nav-link nav-link-icon cursor-pointer">
+                        <span class="nav-link-inner--text <?php echo $symposium_nav_active[7];?> ">Sponsors</span>
                     </a>
                 </li>
                 <li class="nav-item">

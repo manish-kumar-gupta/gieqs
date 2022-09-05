@@ -1732,8 +1732,17 @@ var_dump($currentTime);
     var alreadyRegistered = $("#alreadyRegistered").text();
 
 
+    function isBefore(date1, date2) {
+        return date1 < date2;
+    }
+
+    const d1 = new Date('2022-09-07 00:00:00');
+    const d2 = new Date();
+
+    console.log(isBefore(d2, d1)); 
+
     //define early bird tag, change on 1 sept 2022
-    var earlyBird = true;
+    var earlyBird = isBefore(d2, d1);
 
     function submitPreRegisterForm() {
 
