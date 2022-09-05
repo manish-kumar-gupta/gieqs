@@ -318,9 +318,9 @@ function getAllMissingVideos ($tagCategoriesid) {
 
 	//$client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
 
-	$q = "SELECT `id`, `url`, `name`, `author`, `description`, DATE_FORMAT(`created`, '%M %d %Y') as created FROM `video`";
+	$q = "SELECT `id`, `url`, `name`, `author`, `description`, DATE_FORMAT(`created`, '%M %d %Y') as created FROM `video` WHERE `thumbnail` = ''";
 
-	//echo $q;
+	echo $q;
 
 	//shows highest rated (1) images from each tag category
 
@@ -357,7 +357,7 @@ function getAllMissingVideos ($tagCategoriesid) {
 
 			//echo "</div>";
 
-            if ($thumbnail == ''){
+            
 			
 
                 $response = $client->request('/videos/' . $filename);
@@ -387,7 +387,7 @@ function getAllMissingVideos ($tagCategoriesid) {
 			
 			//thumbnail link = $urlThumbnail
 
-            }
+            
 
 
 

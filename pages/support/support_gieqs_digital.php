@@ -168,7 +168,7 @@ top: -20vh;
           <div class="card">
             <div class="card-body p-5">
               <!-- Topic header -->
-              <h2 class="mb-2">Support for GIEQs digital</h2>
+              <h2 class="mb-2">Support for GIEQs III</h2>
               <p class="lead mb-0"></p>
               <div class="media align-items-center mt-4">
                 <a href="#!" class="avatar avatar-sm rounded-circle mr-3">
@@ -176,7 +176,7 @@ top: -20vh;
                 </a>
                 <div class="media-body">
                   <span class="h6 mb-0">The GIEQs organising committee</span>
-                  <span class="text-sm text-muted">27th September 2020</span>
+                  <span class="text-sm text-muted">27th September 2022</span>
                 </div>
               </div>
               <!-- <div class="d-flex align-items-center mt-4">
@@ -194,7 +194,7 @@ top: -20vh;
               <!-- Topic body -->
               <article class="mt-5">
               <h2>
-    Ghent International Endoscopy Quality Symposium, 2nd edition
+    Ghent International Endoscopy Quality Symposium, 3rd edition
 </h2>
 <h4>
     Navigating the congress
@@ -202,9 +202,9 @@ top: -20vh;
 
 <p>
     -       Use a MODERN BROWSER (such as Google Chrome or Safari).  You will not be able to access onm Internet Explorer<br/>
-    –       Go to gieqs.com and click GIEQs Online on the menu bar or navigate to gieqs.com/online<br/>
-    –       if you are registered for the congress there is a menu entitled GIEQs Live Stream visible.<br/>
-    –       Hover over this to reveal the live menu including streams, programme and sponsor pages.<br/>
+    –       Go to gieqs.com and select GIEQs III from the Courses and Pro Content menu on the menu bar or navigate to the link in your confirmation email<br/>
+    –       if you are registered for the congress you will access our custom Symposium Viewer.  You can take a tour to learn more about the features of GIEQs' custom viewer.<br/>
+<br/>
 
 </p>
  
@@ -213,7 +213,7 @@ top: -20vh;
 </h4>
 <p>
     –       If you cannot access the page for the streams or receive an error suggesting you do not have access please contact us (details below)<br/>
-    –       Live support is available via email or telephone during GIEQs digital<br/><br/>
+    –       Live support is available via email or telephone during GIEQs III<br/>
     –       If the stream will not load first try reloading the page<br/>
     –       For any other issues please contact us (details below)<br/>
 
@@ -223,7 +223,8 @@ top: -20vh;
     Having your say
 </h4>
 <p>
-    –       You can ask questions and interact with competitions live using the pre-embedded Sli-do console.<br/>
+    –       You can ask questions and interact with competitions live using the embedded chat window.  You must use a name to win prizes<br/>
+    -       To win prizes you must mail the session, your name (same as one used in chat) and your email to gieqs@seauton-international.com<br/>
     -       We will post links to surveys which you can fill during the symposium
 
 
@@ -233,7 +234,7 @@ top: -20vh;
     Contact us
 </h4>
 <p>
-    –       Email : <a href="mailto:gieqs-helpdesk@seauton-international.com">gieqs-helpdesk@seauton-international.com</a> (rapid response during GIEQs digital, slower at other times)<br/>
+    –       Email : <a href="mailto:gieqs-helpdesk@seauton-international.com">gieqs-helpdesk@seauton-international.com</a> (rapid response during GIEQs III, slower at other times)<br/>
    
    
 

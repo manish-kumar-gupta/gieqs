@@ -812,12 +812,10 @@
                                                                             style="margin:30px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;font-weight:bold">
                                                                            Staying Up-to-Date</p>
                 
-                                                                           <p
-                                                                            style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;font-weight:bold">
-                                                                           GIEQs.com</p>
+                                                    
                 
                                                                             <p
-                                                                            style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">You can follow all the latest updates at <a href="https://www.gieqs.com/symposium/updates">gieqs.com/symposium/updates</a></p>
+                                                                            style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">You can find all the information you need about the symposium <a href="https://www.gieqs.com/iii">here</a>.</p>
                 
                                                                             <p
                                                                             style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;font-weight:bold">
@@ -825,7 +823,7 @@
                 
                                                                             <p
                                                                             style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                            The best place to catch up on the latest is Twitter, Linkedin or Facebook.  Use the links at the bottom of this mail.</p>
+                                                                            The best place to catch up on the latest is <a href="https://twitter.com/gieqs_symposium">Twitter</a>.  You can also follow us on Linkedin or Facebook.  Use the links at the bottom of this mail.</p>
                 
                                                                             <hr/>
                 
