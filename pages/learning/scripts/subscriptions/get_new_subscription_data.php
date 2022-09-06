@@ -178,11 +178,23 @@ $subscription_to_return['asset_id'] = $assets_paid->getid();
 
 $symposium_id = $userFunctions->getSymposiumidUserid($userid, false);
 
+function isBefore($date1, $date2) {
+    return $date1 < $date2;
+}
+
+$d1 = new DateTime('2022-09-07 00:00:00');
+$d2 = new DateTime();
+
+//define early bird tag, change on 1 sept 2022
+$earlyBird = isBefore($d2, $d1);
+//var_dump($earlyBird);
+//exit();
+
 if ($symposium_id != false){
 
     $symposium->Load_from_key($symposium_id);
     $subscription_to_return['symposium'] = true;
-    $subscription_to_return['early_bird'] = $symposium->getearly_bird();   //logic here to change early bird to current date
+    $subscription_to_return['early_bird'] = $earlyBird;   //logic here to change early bird to current date
     $subscription_to_return['group_registration'] = $symposium->getgroup_registration();
     $subscription_to_return['registrationType'] = $symposium->getregistrationType();
     $subscription_to_return['includeGIEQsPro'] = $symposium->getincludeGIEQsPro();
