@@ -456,7 +456,7 @@ if ($assetManager->doesUserHaveSameAssetAlready('95', $userid, false) === false)
                     Endoscopy Techniques.
                     29/30 Sept '22. Join Michael Bourke, @JTA_Endo, @RolandValori, @RafBisschopsBE, @djtate.
                 </p>
-                <p style="font-size:1.25rem;">Early 🐦 rate ends 6th September.</p>
+                <p style="font-size:1.25rem;">Early 🐦 rate ended 6th September.</p>
            
                 <p><a href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=95&action=register" id="register" type="button"
                     class="btn btn-small text-dark btn-fill-gieqsGold m-1 ml-4 py-1">Register Here</a></p>

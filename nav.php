@@ -452,6 +452,11 @@ require_once BASE_URI . '/pages/learning/includes/gieqs_iii_settings.php';
                 
                 ?>
 
+
+<li class="nav-item active">
+                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/testimonials.php">Testimonials</a>
+                </li>
+
 <li class="nav-item active">
                     <a class="nav-link" href="<?php echo BASE_URL;?>/pages/learning/blog.php">Blog</a>
                 </li>

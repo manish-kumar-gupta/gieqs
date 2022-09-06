@@ -182,7 +182,7 @@ if ($symposium_id != false){
 
     $symposium->Load_from_key($symposium_id);
     $subscription_to_return['symposium'] = true;
-    $subscription_to_return['early_bird'] = $symposium->getearly_bird();
+    $subscription_to_return['early_bird'] = $symposium->getearly_bird();   //logic here to change early bird to current date
     $subscription_to_return['group_registration'] = $symposium->getgroup_registration();
     $subscription_to_return['registrationType'] = $symposium->getregistrationType();
     $subscription_to_return['includeGIEQsPro'] = $symposium->getincludeGIEQsPro();

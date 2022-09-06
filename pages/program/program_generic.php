@@ -1593,7 +1593,7 @@ var_dump($currentTime);
                                         <option hidden disabled selected>select a main interest...</option>
                                         <option value="0">Not a member of any of the following</option>
                                         <option value="1">ESGE</option>
-                                        <option value="2">BSG</option>
+                                        <option value="2" disabled>BSG - we asked, sadly no cooperation, please select not a member</option>
                                         <option value="3">ASGE</option>
 
 
