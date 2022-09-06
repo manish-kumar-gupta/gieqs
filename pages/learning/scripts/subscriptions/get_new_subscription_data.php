@@ -182,8 +182,13 @@ function isBefore($date1, $date2) {
     return $date1 < $date2;
 }
 
-$d1 = new DateTime('2022-09-07 00:00:00');
+$serverTimeZoneNav = new DateTimeZone('Europe/Brussels'); //because this is where course is held
+$currentNavTime = new DateTime('now', $serverTimeZoneNav);
+
+
+$d1 = new DateTime('2022-09-07 00:00:00', $serverTimeZoneNav);
 $d2 = new DateTime();
+$d2->setTimezone($serverTimeZoneNav);
 
 //define early bird tag, change on 1 sept 2022
 $earlyBird = isBefore($d2, $d1);
