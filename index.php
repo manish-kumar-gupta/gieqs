@@ -1557,8 +1557,8 @@ $imageArray = ['assets/img/polyps/transverse_lci.png', 'assets/img/icons/gieqs_2
                         <div id="videoDisplay mb-3" class="">
                             <div class="row">
                                 <p class="h5 mt-5">
-                                    The 2nd Ghent International Endoscopy Quality Symposium (GIEQs), Gent, Belgium,
-                                    30/09/2021 - 01/10/2021 has been accredited by the European Accreditation Council
+                                    The 3rd Ghent International Endoscopy Quality Symposium (GIEQs), Gent, Belgium,
+                                    29/09/2021 - 30/09/2022 has been accredited by the European Accreditation Council
                                     for
                                     Continuing Medical Education (EACCME®) with 16 European CME credits (ECMEC®s). Each
                                     medical specialist should claim only those hours of credit that he/she actually
@@ -1598,9 +1598,9 @@ $imageArray = ['assets/img/polyps/transverse_lci.png', 'assets/img/icons/gieqs_2
                                 <p class="col-12 text-white">
                                     CMEC®s per day:
                                     <br>
-                                    30.09.2021 - 8.00
+                                    29.09.2022 - 8.00
                                     <br>
-                                    01.10.2021 - 8.00
+                                    30.09.2022 - 8.00
                                 </p>
 
                                 <p class="text-white">
@@ -1619,13 +1619,13 @@ $imageArray = ['assets/img/polyps/transverse_lci.png', 'assets/img/icons/gieqs_2
                                     </div>
                                 </div>
                                 <p class="col-12 text-white">
-                                    30 Sept 2021 = CP 8.5
+                                    29 Sept 2022 = accreditation requested
                                     <br>
-                                    01 Oct 2021 = CP 8.5
+                                    30 Sept 2022 = accreditation requested
                                 </p>
 
                                 <!--
-                                <div class="col-lg-10 col-xl-10 text-center">
+                                <div class="col-xpplg-10 col-xl-10 text-center">
                                     <div class="icon-xl icon-shape bg-white mr-3 p-2">
                                         <a href="https://eaccme.uems.eu/" target="_blank" data-toggle="tooltip" data-placement="bottom" title="European Accreditation Council for Continuing Medical Education (EACCME)">
                                             <img src="<?php echo BASE_URL;?>/assets/img/icons/eaccme.png" alt="EACCME">

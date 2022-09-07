@@ -318,7 +318,7 @@ function getAllMissingVideos ($tagCategoriesid) {
 
 	//$client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
 
-	$q = "SELECT `id`, `url`, `name`, `author`, `description`, DATE_FORMAT(`created`, '%M %d %Y') as created FROM `video` WHERE `thumbnail` = ''";
+	$q = "SELECT `id`, `url`, `name`, `author`, `description`, `thumbnail`, DATE_FORMAT(`created`, '%M %d %Y') as created FROM `video` WHERE `thumbnail` = '' OR `thumbnail` IS NULL";
 
 	echo $q;
 
