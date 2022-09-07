@@ -240,7 +240,10 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                     Endoscopy Techniques.
                     29/30 Sept '22. Join Michael Bourke, @JTA_Endo, @RolandValori, @RafBisschopsBE, @djtate, @PieterHindryckx.
                 </p>
-                <p style="font-size:1.25rem;">Early 🐦 rate ended 6th September.</p>
+
+                <p style="font-size:1.25rem;"><a href="https://twitter.com/search/?q=%23GIEQs_III"
+                        target="_blank">#GIEQs_III</a> has been awarded <strong>16 CME Points</strong> by EACCME and is endorsed by the European Society of Gastrointestinal Endoscopy (ESGE) and the American Society of Gastrointestinal Endoscopy (ASGE).</p>
+                
            
                 <p><a href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=95&action=register" id="register" type="button"
                     class="btn btn-small text-dark btn-fill-gieqsGold m-1 ml-4 py-1">Register Here</a></p>
@@ -408,7 +411,7 @@ $imageArray = ['assets/img/advert/gieqs_advert_1.jpeg', 'assets/img/covers/gieqs
                 </div>
 
                 <h2 class="text-white mb-4 mt-4 mt-lg-0">
-                    <span class="display-4 font-weight-light">GIEQs III - Early Bird Registration Open!</span>
+                    <span class="display-4 font-weight-light">GIEQs III Registration Open!</span>
 
                     <span class="d-block" style="color: rgb(238, 194, 120);"><strong
                             class="font-weight-light">Join us for our next major step.  <br/>29 - 30 September 2022.</span>
