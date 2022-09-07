@@ -31,9 +31,11 @@ $openaccess =1;
             $queries = new queries;
             $sessionView = new sessionView;
             $programmeReports = new programmeReports;
+            $assetManager = new assetManager;
 
 
-            $debug = false;
+
+            //$debug = false;
             if ( ! function_exists( 'array_key_last' ) ) {
                 /**
                  * Polyfill for array_key_last() function added in PHP 7.3.
@@ -79,11 +81,12 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
 
 	$id = null;
     $id_set = false;
+    $id = null;
+    $id_set = false;
     echo '<div class="container">';
-    echo '<p>Please set the session id in the url, e.g. ?id=[sessionid]</p>';
+    echo '<p>Please set the Course (Asset) id in the url, e.g. ?id=[assetid]</p>';
     echo '</div>';
     exit();
-
 }
 
 
@@ -111,6 +114,71 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
             }else{
 
             }
+
+            echo '<div class="container p-3 mt-5">';
+
+
+            $programme_id = $assetManager->getProgrammeidAsset($id);
+
+            if ($debug){
+                echo '<br/><br/>programme is </br></br>';
+                print_r($programme_id);
+
+            }
+
+
+
+
+            //foreach programme get sessions
+
+            foreach ($programme_id as $key=>$value){
+
+                //echo the date and title
+
+                $programme->Load_from_key($value);
+                echo '<h2 class="mt-5">' . $programme->gettitle() . '</h2>';
+                $programmeDate = new DateTime($programme->getdate());
+                echo '<p><strong>' . $programmeDate->format('l d M Y') . '</strong><p>';
+
+
+
+
+
+
+
+                //get sessions data
+
+                $sessionData = null;
+                $sessionData = $programmeReports->getSessionsProgramme($value);
+
+                if ($debug){
+
+                    print_r($sessionData);
+
+                }
+
+                foreach ($sessionData as $key2=>$value2){
+
+                    
+                    $session->Load_from_key($value2);
+                    echo '<p><a href="' . BASE_URL . '/pages/backend/printProgramAllv3.php?id=' . $session->getid() . '">' . $session->gettimefrom(). ' - ' . $session->gettimeto() . ' ' .  $session->gettitle() . '</a></p>';
+
+
+
+
+
+                }
+
+
+                //use to generate a clickable list
+
+
+            }
+
+            exit();
+
+            echo '</div>';
+
 
             //print_r($facultyMembers);
 

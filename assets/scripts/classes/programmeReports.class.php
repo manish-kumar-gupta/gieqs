@@ -717,6 +717,49 @@ ASC, c.`timeFrom` ASC";
             }
 
         }
+
+
+        public function getSessionsProgramme($programmeid)
+            {
+            
+
+                
+                $q = "Select c.`id` 
+                from `programme` as a 
+                INNER JOIN `programmeOrder` as b on a.`id` = b.`programmeid` 
+                INNER JOIN `session` as c on b.`sessionid` = c.`id` 
+                WHERE a.`id` = '$programmeid' 
+                ORDER BY c.`timeFrom` ASC
+            ";
+
+            //echo $q . '<br><br>';
+
+
+
+            $result = $this->connection->RunQuery($q);
+            $rowReturn = array();
+            $x = 0;
+            $nRows = $result->rowCount();
+
+            if ($nRows > 0) {
+
+                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                    $rowReturn[] = $row['id'];
+                }
+            
+                return $rowReturn;
+
+            } else {
+                
+
+                //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+                $rowReturn = [];
+                
+                return $rowReturn;
+            }
+
+        }
         
         
         
