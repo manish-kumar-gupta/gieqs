@@ -32,12 +32,14 @@ if (isset($url_requested)){
     $url_requested = urlencode($url_requested);
     $location = BASE_URL . '/pages/authentication/login.php?destination=' . $url_requested;
 
+    //print_r($location);
+
 }else{
 
     $use_url = false;
 }
 
-
+//exit();
 
 
 //define the request
