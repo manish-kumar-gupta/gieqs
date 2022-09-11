@@ -174,7 +174,35 @@ SELECT COUNT(`id`) FROM `symposium` WHERE `partial_registration` = '1'; // INCOM
                 <p>Total Registrations</p>
             </td>
             <td>
-                <?php echo $symposium_manager->count_all_registrations(); ?>
+                <?php echo $total_registrations = $symposium_manager->count_all_registrations(); ?>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Early Bird Registrations</p>
+            </td>
+            <td>
+                <?php echo $symposium_manager->count_all_registrations_early_bird(); ?>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>Non Early Bird Registrations</p>
+            </td>
+            <td>
+                <?php echo $symposium_manager->count_all_registrations_non_early_bird(); ?>
             </td>
             <td>
             </td>
@@ -460,8 +488,74 @@ SELECT COUNT(`id`) FROM `symposium` WHERE `partial_registration` = '1'; // INCOM
     </tbody>
 </table>
 
+<br/>
+<br/>
+<br/>
+<br/>
+<?php 
+$countries = $general->getCountries();
+//print_r($countries);
+
+$symposium_user_countries = $symposium_manager->countries_users();
+$array_count_countries = [];
+                        
+                        foreach ($symposium_user_countries as $key=>$value){
+
+                            $array_count_countries[$value] = $array_count_countries[$value] + 1;
+
+                        }
+
+                        foreach ($array_count_countries as $key=>$value){
+
+
+                            unset($array_count_countries[$key]);
+                            $array_count_countries[$countries[$key]] = $value;
+                            //$array_count_countries[$key] = $array_count_countries[$value] + 1;
+
+
+                        }
+
+
+                        //print_r($array_count_countries);
+
+
+
+
+
+?>
+
+<table>
+    <thead>
+        <tr>
+            <th>Country</th>
+            <th>Registrations</th>
+            <th>%</th>
+
+                    </tr>
+ </thead>
+ <tbody>
+    <?php
+    
+     foreach ($array_count_countries as $key=>$value){
+
+
+   
+    ?>
+    <tr>
+        <td><?php echo $key;?></td>
+        <td><?php echo $value;?></td>
+        <td><?php echo '(' . round(((intval($value)/$total_registrations)*100),1) . '%)';?></td>
+   
+                    </tr>
+
+                    <?php }  ?>
+                    </tbody>
+                    </table>
+
 
 <?php
+
+
 
 //registration manager
 

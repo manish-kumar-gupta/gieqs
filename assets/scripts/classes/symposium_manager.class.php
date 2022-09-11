@@ -334,6 +334,50 @@ Class symposium_manager {
 
     }    
 
+    public function count_all_registrations_early_bird(){
+
+        $q = "SELECT COUNT(`id`) as `count` FROM `symposium` WHERE `partial_registration` = '0' AND `early_bird` = '1'";
+
+        //echo $q;
+
+        $result = $this->connection->RunQuery($q);
+
+
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+    
+            $count = $row['count'];
+
+    
+    
+        }
+
+        return $count;
+
+
+    }  
+
+    public function count_all_registrations_non_early_bird(){
+
+        $q = "SELECT COUNT(`id`) as `count` FROM `symposium` WHERE `partial_registration` = '0' AND `early_bird` = '0'";
+
+        //echo $q;
+
+        $result = $this->connection->RunQuery($q);
+
+
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+    
+            $count = $row['count'];
+
+    
+    
+        }
+
+        return $count;
+
+
+    }  
+
     public function count_all_incomplete_registrations(){
 
         $q = "SELECT COUNT(`id`) as `count` FROM `symposium` WHERE `partial_registration` = '1'";
@@ -440,6 +484,32 @@ Class symposium_manager {
         }
 
         return $count;
+
+
+    } 
+
+    public function countries_users(){
+
+        $q = "SELECT b.`centreCountry` 
+        FROM `symposium` as a
+        INNER JOIN `users` AS b on a.`user_id` = b.`user_id` 
+        WHERE a.`partial_registration` = '0'";
+
+        //echo $q;
+
+        $result = $this->connection->RunQuery($q);
+
+        $returnArray = [];
+
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+    
+            $returnArray[] = $row['centreCountry'];
+
+    
+    
+        }
+
+        return $returnArray;
 
 
     } 
