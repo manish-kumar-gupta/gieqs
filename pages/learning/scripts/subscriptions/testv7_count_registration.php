@@ -515,6 +515,8 @@ $array_count_countries = [];
 
                         }
 
+                        arsort($array_count_countries);
+
 
                         //print_r($array_count_countries);
 
