@@ -358,7 +358,7 @@ Class symposium_manager {
 
     public function count_all_registrations_non_early_bird(){
 
-        $q = "SELECT COUNT(`id`) as `count` FROM `symposium` WHERE `partial_registration` = '0' AND `early_bird` = '0'";
+        $q = "SELECT COUNT(`id`) as `count` FROM `symposium` WHERE `partial_registration` = '0' AND `early_bird` IS NULL";
 
         //echo $q;
 
