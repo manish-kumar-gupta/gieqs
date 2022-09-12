@@ -262,18 +262,18 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                             <img class="logo" alt="Dr Falk" src="<?php echo BASE_URL . '/assets/img/sponsors/drfalk.png';?>">
                         </a>
                     </div>
-
+<!-- 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
                         <a href="https://www.erbe-med.com/de-en/global-home/" target="_Blank">
-                            <img class="logo" alt="Erbe" src="<?php echo BASE_URL . '/assets/img/sponsors/Erbe_Logo_RGB.png';?>">
+                            <img class="logo" alt="Erbe" src="<?php //echo BASE_URL . '/assets/img/sponsors/Erbe_Logo_RGB.png';?>">
                         </a>
-                    </div>
+                    </div> -->
 
-                    <div class="col-lg-2 col-md-3 col-4 p-3">
+                 <!--    <div class="col-lg-2 col-md-3 col-4 p-3">
                         <a href="https://ferring.be/" target="_Blank">
-                            <img class="logo" alt="Ferring" src="<?php echo BASE_URL . '/assets/img/sponsors/Ferring logo blue - high res (JPG - RGB - 89[1].3KB).png';?>">
+                            <img class="logo" alt="Ferring" src="<?php //echo BASE_URL . '/assets/img/sponsors/Ferring logo blue - high res (JPG - RGB - 89[1].3KB).png';?>">
                         </a>
-                    </div>
+                    </div> -->
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
                         <a href="http://www.fidesmedical.com/dyn/home.php?lang=3" target="_Blank">
@@ -293,11 +293,11 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                         </a>
                     </div>
 
-                    <div class="col-lg-2 col-md-3 col-4 p-3">
+                    <!-- <div class="col-lg-2 col-md-3 col-4 p-3">
                         <a href="https://www.pfizer.be" target="_Blank">
-                            <img class="logo" alt="Pfizer" src="<?php echo BASE_URL . '/assets/img/sponsors/Pfizer_Logo_Color_RGB.png';?>">
+                            <img class="logo" alt="Pfizer" src="<?php //echo BASE_URL . '/assets/img/sponsors/Pfizer_Logo_Color_RGB.png';?>">
                         </a>
-                    </div>
+                    </div> -->
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
                         <a href="http://prionmedical.be/" target="_Blank">
@@ -320,6 +320,12 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                     <div class="col-lg-2 col-md-3 col-4 p-3">
                         <a href="https://www.cookmedical.eu/" target="_Blank">
                             <img class="logo" alt="COOK" src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1662389484_CookMedical-Logo-Signage_A4.jpg">
+                        </a>
+                    </div>
+                    
+                    <div class="col-lg-2 col-md-3 col-4 p-3">
+                        <a href="https://www.astellas.com/en/" target="_Blank">
+                            <img class="logo" alt="Astellas" src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1662979004_astellas.png">
                         </a>
                     </div>
 
