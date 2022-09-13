@@ -1275,7 +1275,7 @@ var_dump($currentTime);
                                     <option value="2">Doctor in Training</option>
                                     <option value="3">Nurse Endoscopist (includes Nursing Symposium in Dutch)</option>
                                     <option value="4">Endoscopy Nurse (includes Nursing Symposium in Dutch)</option>
-                                    <option value="5">Medical Student</option>
+                                    <option value="5">Medical Student / Company Representative</option>
                                 </select>
                             </div>
 
@@ -2548,7 +2548,7 @@ var_dump($currentTime);
                         } else if (costUpdate.registrationType == '4' || costUpdate
                             .registrationType == '5') {
 
-                            $('#regType1').text('Nurse or Medical Student Registration ');
+                            $('#regType1').text('Nurse or Medical Student Registration (if free link also Company Representative)');
 
                         }
 
