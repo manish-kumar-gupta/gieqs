@@ -522,7 +522,11 @@ var waitForFinalEvent = (function() {
 //CHANGE FOR STRIPE TEST
 //should be getting this from somewhere where it can't be read
 
-if ($('#stripe-status-live').text() == 'true'){
+var stripe = Stripe(
+    "pk_live_51IsKqwEBnLMnXjogQz5j1PCrt1qBSBOE8K3Uqdy8qCviiijTFG5ROoD6M0Uqze22rd31Af3cniEaIppFtLeFYBMZ00bwAzjNcf"); //live keys
+
+
+/* if ($('#stripe-status-live').text() == 'true'){
 
     var stripe = Stripe(
     "pk_live_51IsKqwEBnLMnXjogQz5j1PCrt1qBSBOE8K3Uqdy8qCviiijTFG5ROoD6M0Uqze22rd31Af3cniEaIppFtLeFYBMZ00bwAzjNcf"); //live keys
@@ -534,7 +538,7 @@ if ($('#stripe-status-live').text() == 'true'){
     "pk_test_51IsKqwEBnLMnXjogDG3ebg9q8KEVEbKtvHai719tJNPGsr9i77V4OdSYtPiBS1Y8bd4rknYYyAUkJ1sDweS2ubdF00GDL2mLNn"); //test keys publishable
 
 }
-
+ */
     
 
 
