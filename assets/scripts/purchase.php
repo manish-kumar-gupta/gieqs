@@ -1473,26 +1473,36 @@ $(document).ready(function() {
 
         waitForFinalEvent(function() {
 
-            if (isSymposium === 'true'){
+            if (typeof isSymposium !== 'undefined'){
 
-                if (loggedin == '1'){
 
-                    if (alreadyRegistered == 'false'){
+                if (isSymposium === 'true'){
 
-                $('.symposium-now').trigger('click');
+                    if (loggedin == '1'){
 
+                        if (alreadyRegistered == 'false'){
+
+                    $('.symposium-now').trigger('click');
+
+                        }
+
+                    }else{
+
+                        $('.register-now').trigger('click');
+    
                     }
+
 
                 }else{
 
-                    $('.register-now').trigger('click');
- 
-                }
+                $('.register-now').trigger('click');
 
+                }
 
             }else{
 
-            $('.register-now').trigger('click');
+                $('.register-now').trigger('click');
+
 
             }
 
@@ -1513,6 +1523,16 @@ $(document).ready(function() {
         console.log(asset_id);
         $('.modal-footer #button-confirm-new').attr('data-assetid', '' + asset_id);
 
+        
+
+        if (typeof isSymposium !== 'undefined'){
+
+
+
+        }else{
+
+            isSymposium = false;
+        }
 
 
 
@@ -1599,107 +1619,119 @@ $(document).ready(function() {
                     //workaround for symposium cost
 
                     //also needs to include 20% discount for those with long service or 
+                    if (typeof isSymposium !== 'undefined'){
 
-                    if (isSymposium == 'true'){
+                        if (isSymposium == 'true'){
 
-                        console.log('symposium is true from prgram generic');
+                            console.log('symposium is true from prgram generic');
 
-                            if (externalTest.symposium === true){
+                                if (externalTest.symposium === true){
 
-                                console.log('symposium is true from ajax');
+                                    console.log('symposium is true from ajax');
 
-                                console.log('externalTest follows');
-                                console.dir(externalTest);
-
-
-
-                                //    $subscription_to_return['professionalMember'] = $symposium->getprofessionalMember();
-                                //    $subscription_to_return['longTermProMemberDiscount'] = $symposium->getlongTermProMemberDiscount();
-
-
-                                
-
-                                    if (externalTest.cost == ''){ //open version
-
-                                        $('.modal-new #cost').parent().addClass('d-none');
-
-                                        $('.modal-new #cost').addClass('d-none');
-                                        $('.modal-new #symposium-discount').parent().addClass('d-none');
-
-                                    }else{ //closed logged in so determine cost will work
-
-
-                                    //if there is a professional membership reduce 20% on the symposium cost
-
-                                    if (externalTest.early_bird == 1){var earlyBirdReturn = true}else{var earlyBirdReturn = false};
-                                if (externalTest.group == null || externalTest.group == '' || externalTest.group == 0){var groupReturn = 0}else{var groupReturn = 1};
-
-
-                                var updatedCostObject = calculateCost(earlyBirdReturn, externalTest.registrationType, groupReturn, externalTest.includeGIEQsPro, false);
-
-                                console.log('updatedCostObject follows');
-
-                                console.dir(updatedCostObject);
-
-                                        if (externalTest.professionalMember == '1' || externalTest.professionalMember == '2' || externalTest.professionalMember == '3' ||externalTest.longTermProMemberDiscount == '1'){
-
-                                            var cost_symposium = updatedCostObject.symposiumcost;
-                                            cost_symposium = parseInt(cost_symposium);
-                                            cost_symposium = cost_symposium * 0.8;
-
-                                            var finalcost = cost_symposium + updatedCostObject.normalCostGIEQsOnline - updatedCostObject.saving;
-
-                                            max_cost = finalcost;
-
-                                            $('.modal-new #cost').text(finalcost + ' euro');
-
-                                            $('.modal-new #symposium').val(1);
-                                            $('.modal-new #cost_symposium').val(finalcost);
-                                            $('.modal-new #symposium-discount').text(' 20%');
-                                            $('.modal-new #symposium-discount').removeClass('d-none');
-                                            $('.modal-new #symposium-discount').parent().removeClass('d-none');
+                                    console.log('externalTest follows');
+                                    console.dir(externalTest);
 
 
 
-                                        }else{
-
-                                            max_cost = updatedCostObject.cost;
-
-                                            $('.modal-new #cost').text(updatedCostObject.cost + ' euro');
+                                    //    $subscription_to_return['professionalMember'] = $symposium->getprofessionalMember();
+                                    //    $subscription_to_return['longTermProMemberDiscount'] = $symposium->getlongTermProMemberDiscount();
 
 
+                                    
 
-                                            $('.modal-new #symposium').val(1);
-                                            $('.modal-new #cost_symposium').val(updatedCostObject.cost);
-                                            $('.modal-new #symposium-discount').text('None');
-                                            $('.modal-new #symposium-discount').addClass('d-none');
+                                        if (externalTest.cost == ''){ //open version
+
+                                            $('.modal-new #cost').parent().addClass('d-none');
+
+                                            $('.modal-new #cost').addClass('d-none');
                                             $('.modal-new #symposium-discount').parent().addClass('d-none');
 
+                                        }else{ //closed logged in so determine cost will work
 
-                                        }
+
+                                        //if there is a professional membership reduce 20% on the symposium cost
+
+                                        if (externalTest.early_bird == 1){var earlyBirdReturn = true}else{var earlyBirdReturn = false};
+                                    if (externalTest.group == null || externalTest.group == '' || externalTest.group == 0){var groupReturn = 0}else{var groupReturn = 1};
 
 
-                                
-                                
-                                }
+                                    var updatedCostObject = calculateCost(earlyBirdReturn, externalTest.registrationType, groupReturn, externalTest.includeGIEQsPro, false);
+
+                                    console.log('updatedCostObject follows');
+
+                                    console.dir(updatedCostObject);
+
+                                            if (externalTest.professionalMember == '1' || externalTest.professionalMember == '2' || externalTest.professionalMember == '3' ||externalTest.longTermProMemberDiscount == '1'){
+
+                                                var cost_symposium = updatedCostObject.symposiumcost;
+                                                cost_symposium = parseInt(cost_symposium);
+                                                cost_symposium = cost_symposium * 0.8;
+
+                                                var finalcost = cost_symposium + updatedCostObject.normalCostGIEQsOnline - updatedCostObject.saving;
+
+                                                max_cost = finalcost;
+
+                                                $('.modal-new #cost').text(finalcost + ' euro');
+
+                                                $('.modal-new #symposium').val(1);
+                                                $('.modal-new #cost_symposium').val(finalcost);
+                                                $('.modal-new #symposium-discount').text(' 20%');
+                                                $('.modal-new #symposium-discount').removeClass('d-none');
+                                                $('.modal-new #symposium-discount').parent().removeClass('d-none');
+
+
+
+                                            }else{
+
+                                                max_cost = updatedCostObject.cost;
+
+                                                $('.modal-new #cost').text(updatedCostObject.cost + ' euro');
+
+
+
+                                                $('.modal-new #symposium').val(1);
+                                                $('.modal-new #cost_symposium').val(updatedCostObject.cost);
+                                                $('.modal-new #symposium-discount').text('None');
+                                                $('.modal-new #symposium-discount').addClass('d-none');
+                                                $('.modal-new #symposium-discount').parent().addClass('d-none');
+
+
+                                            }
+
+
+                                    
+                                    
+                                    }
+
+                            }else{
+
+
+                                console.log('no symposium received from program generic');
+
+
+                            }
+
+                            //need to get the cost from the symposium database
+
+
 
                         }else{
+                            //var a global max cost asset for the coin use
+                            max_cost = externalTest.cost;
 
-
-                            console.log('no symposium received from program generic');
-
+                            $('.modal-new #cost').text(externalTest.cost + ' euro');
 
                         }
 
-                        //need to get the cost from the symposium database
-
-
-
                     }else{
-                        //var a global max cost asset for the coin use
-                        max_cost = externalTest.cost;
+
+                         //var a global max cost asset for the coin use
+                         max_cost = externalTest.cost;
 
                         $('.modal-new #cost').text(externalTest.cost + ' euro');
+
+
 
                     }
 
