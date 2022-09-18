@@ -6523,7 +6523,7 @@ if ($debug){
 
             while($row = $result->fetch(PDO::FETCH_ASSOC)){
 
-                $rowReturn[$x] = $row['id'] . ' - ' . $row['name'];
+                $rowReturn[$row['id']] = $row['id'] . ' - ' . $row['name'];
                 $x++;
 
             }
