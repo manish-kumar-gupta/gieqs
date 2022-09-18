@@ -368,8 +368,8 @@ $xcrud->order_by(array('programme.date', 'session.timeFrom'));
 
 $xcrud->columns('programme.id, programme.date, programme.title, session.id, session.timeFrom, session.timeTo, session.title, sessionItemAsset.assetid', false);
 $xcrud->fields('sessionItemid, assetid', false);
-$xcrud->button(BASE_URL . '/login?destination=viewasset&assetid={sessionItemAsset.assetid}', 'Open Asset', '', 'bg-primary');
-$xcrud->button(BASE_URL . '/pages/backend/paid_assets.php?identifier={assetid}', 'Edit Asset Videos', 'fas fa-edit', 'bg-secondary');
+$xcrud->button(BASE_URL . '/login?destination=viewasset&assetid={sessionItemAsset.assetid}', 'Open Asset', '', 'bg-primary', array('target'=>'_blank'));
+$xcrud->button(BASE_URL . '/pages/backend/paid_assets.php?identifier={assetid}', 'Edit Asset Videos', 'fas fa-edit', 'bg-secondary', array('target'=>'_blank'));
 
 $xcrud->change_type('assetid','select',0,$assetManager->get_all_assets(),);
 
