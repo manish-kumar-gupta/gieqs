@@ -2075,6 +2075,8 @@ public function is_assetid_covered_by_user_subscription($asset_id, $userid, $deb
     
     }
 
+
+
     public function get_subscription_id_asset($asset_id, $userid, $debug=false){
 
 
@@ -6497,6 +6499,51 @@ if ($debug){
         }
 
         }
+
+        public function get_all_assets ($debug=false){
+
+            $q = "Select 
+            b.`id`, b.`name`
+            FROM `assets_paid` as b";
+
+        
+            if ($debug){
+            echo $q . '<br><br>';
+
+            }
+
+
+
+        $result = $this->connection->RunQuery($q);
+
+        $x = 0;
+        $nRows = $result->rowCount();
+
+        if ($nRows > 0) {
+
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+                $rowReturn[$x] = $row['id'] . ' - ' . $row['name'];
+                $x++;
+
+            }
+
+
+            return $rowReturn;
+
+        } else {
+            
+
+           
+            return false;
+
+            
+        }
+
+
+
+
+}
 
 
 

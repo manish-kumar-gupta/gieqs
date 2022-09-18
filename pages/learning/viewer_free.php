@@ -369,6 +369,12 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
                             $referid = null;
                         
                         }
+
+                        if (!isset($currentUserLevel)){
+
+                            $currentUserLevel = 1;
+
+                        }
                         
                         
 		
@@ -1237,6 +1243,12 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
                 
                 //$(this).('.fa-thumbs-up').first().addClass("gieqsGold");
                 //remove the check from the tag removed
+
+
+        }
+
+        function hideTagBar(){
+
 
 
         }

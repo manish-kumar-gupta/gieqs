@@ -61,6 +61,13 @@
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/delegate.php">Delegates</a>
                     <?php if ($currentUserLevel < 4){?>
                     <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/users.php">Users (Access)</a>
+                    <div class="dropdown-divider"></div>
+
+                    <h6 class="dropdown-header">GIEQs III Beta</h6>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/view_assets_gieqs_iii.php">View Assets GIII</a>
+                    <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/assets_program.php">Edit Asset Structure GIII</a>
+
+
                     <?php }?>
                   </div>
                 </div>
