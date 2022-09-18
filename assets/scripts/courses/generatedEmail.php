@@ -20,7 +20,31 @@
             p {
                 margin: 10px 0;
                 padding: 0;
+                color: #6e84a3;
+                font-size: 1.1rem;
             }
+
+            p strong {
+
+                color: #e3ebf6;
+                font-weight: 1.2;
+
+            }
+
+            li strong {
+
+                color: #e3ebf6;
+                font-weight: 1.2;
+
+
+
+            }
+
+            a {
+
+color: white;
+
+}
 
             table {
                 border-collapse: collapse;
@@ -124,7 +148,7 @@
             }
 
             h1 {
-                color: #222222;
+                color: rgb(238, 195, 120);
                 font-family: Helvetica;
                 font-size: 40px;
                 font-style: normal;
@@ -135,18 +159,18 @@
             }
 
             h2 {
-                color: #222222;
+                color: rgb(238, 195, 120);
                 font-family: Helvetica;
-                font-size: 34px;
+                font-size: 30px;
                 font-style: normal;
-                font-weight: bold;
-                line-height: 150%;
+                font-weight: normal;
+                line-height: 125%;
                 letter-spacing: normal;
                 text-align: left;
             }
 
             h3 {
-                color: #444444;
+                color: rgb(238, 195, 120);
                 font-family: Helvetica;
                 font-size: 22px;
                 font-style: normal;
@@ -164,7 +188,14 @@
                 font-weight: normal;
                 line-height: 125%;
                 letter-spacing: normal;
-                text-align: center;
+                text-align: left;
+            }
+
+            li {
+                  color: #6e84a3;
+
+                margin-bottom:1.15rem;
+
             }
 
             #templateHeader {
@@ -206,7 +237,7 @@
             }
 
             #templateBody {
-                background-color: #FFFFFF;
+                background-color: #102239;
                 background-image: none;
                 background-repeat: no-repeat;
                 background-position: center;
@@ -475,7 +506,7 @@
             }
             </style>
             <div class="preheader" style="font-size: 1px; display: none !important;">
-                Want to improve your skills at colonic polypectomy - imaging and high quality piecemeal EMR?</div>
+                GIEQs III News and Learning Updates weekly from GIEQs.  Today a case example of post Colonoscopy colorectal cancer.</div>
             <center>
                 <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%"
                     id="bodyTable"
@@ -512,15 +543,13 @@
                                                                             style="box-sizing:border-box;text-decoration:none;color:#eec278;background-color:transparent;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;font-weight:normal;">
 
                                                                             <img class="mx-auto mt-4 mb-0" width="150"
-                                                                                src="https://www.gieqs.com/assets/img/brand/gieqs.png"
+                                                                                src="https://www.gieqs.com/assets/img/icons/gieqs_foundation_logo.png"
                                                                                 style="box-sizing:border-box;vertical-align:middle;border-style:none;margin-bottom:0;margin-top:1.5rem;border:0;height:auto !important;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;">
                                                                         </a>
-                                                                        <p class="h6 text-center mb-0"
-                                                                            style="box-sizing:border-box;margin-top:0;font-family:inherit;font-weight:500;line-height:1.3;color: #e3ebf6;font-size:1.25rem;margin-bottom:0;text-align:center;margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                                                            GIEQs Online</p>
+                                                                       
                                                                         <p class="text-muted text-center mb-0"
                                                                             style="font-weight:500;box-sizing:border-box;margin-top:0;margin-bottom:0;text-align:center;color:#6e84a3;margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;font-family:Helvetica;font-size:18px;line-height:150%;">
-                                                                            A paradigm shift in Endoscopy Education</p>
+                                                                            Promoting Quality and Safety in Gastrointestinal Endoscopy</p>
                                                                         <p class="text-muted text-center"
                                                                             style="box-sizing:border-box;margin-top:0;margin-bottom:1rem;text-align:center;color:#6e84a3;margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust:100%;font-family:Helvetica;font-size:18px;line-height:150%;">
                                                                         </p>
@@ -541,7 +570,7 @@
                                 </tr>
                                 <tr>
                                     <td align="center" valign="top" id="templateBody" data-template-container=""
-                                        style="background:#FFFFFF none no-repeat center/cover;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;background-color:#FFFFFF;background-image:none;background-repeat:no-repeat;background-position:center;background-size:cover;border-top:0;border-bottom:0;padding-top:36px;padding-bottom:54px;">
+                                    style="background:#FFFFFF none no-repeat center/cover;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;background-color:#102239;background-image:none;background-repeat:no-repeat;background-position:center;background-size:cover;border-top:0;border-bottom:0;padding-top:36px;padding-bottom:54px;">
                                         <!--[if (gte mso 9)|(IE)]>
                                     <table align="center" border="0" cellspacing="0" cellpadding="0" width="600" style="width:600px;">
                                     <tr>
@@ -580,12 +609,13 @@
 
                                                                                 <td valign="top" class="mcnTextContent"
                                                                                     style="padding-top:0;padding-right:18px;padding-bottom:30px;padding-left:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;word-break:break-word;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-
+                                                                                    <p style="text-align:center;color:#e3ebf6;font-family:Georgia;font-size:12px;">Email doesn't look right? <a href="https://www.gieqs.com/assets/scripts/courses/generateEmail.php?emailid=71">Display in a web browser</a></p>
                                                                                     <h4
-                                                                                        style="display:block;margin:0;padding: 0;color:#949494;font-family:Georgia;font-size:20px;font-style:italic;font-weight:normal;line-height:125%;letter-spacing:normal;text-align:center;">
+                                                                                        style="display:block;margin:0;padding: 0;color:#e3ebf6;font-family:Georgia;font-size:20px;font-style:italic;font-weight:normal;line-height:125%;letter-spacing:normal;text-align:center;">
                                                                                         We can do everyday endoscopy
                                                                                         better.
                                                                                     </h4>
+                                                                                   
 
 
                                                                                     <!-- get array emailContent
@@ -593,21 +623,11 @@
                                             -->
 
                                                                                     
-                                                                                    <h3
-                                                                                        style="display:block;margin:0;padding-top:30px;color:#222222;font-family:Helvetica;font-size:40px;font-style:normal;font-weight:bold;line-height:150%;letter-spacing:normal;text-align:center;">
-                                                                                        Polypectomy Upskilling Afternoon                                                                                    </h3>
-
-                                                                                    
-
-
-
-
-
-                                                                                    
                                                                                     <p
-                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                        <h4>Thursday 17th December, 1400-1800 CET<br/>Online at www.gieqs.com</h4>
-<h4>Interaction possible using Zoom</h4>                                                                                    </p>
+                                                                                    style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#6e84a3;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
+                                                                                        <h1 style="text-align:center; color:white;">5-minute GIEQs Endoscopy Update</h1><h2 style="text-align:center; ">Avoiding Post Colonoscopy Colorectal Cancer</h2>
+
+                                                                                    </p>
 
                                                                                     
 
@@ -639,12 +659,12 @@
                                                                                                     style="padding-left:9px;padding-top:0;padding-bottom:0px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;text-align:center;">
 
                                                                                                     <center>
-                                                                                                        <a href="https://www.gieqs.com/pages/program/program_polypectomy_upskilling.php"
+                                                                                                        <a href="https://www.gieqs.com/pages/learning/viewer_free.php?id=728"
                                                                                                             target="_blank"><img
                                                                                                                 alt=""
-                                                                                                                src="https://www.gieqs.com/assets/img/polyps/defect_scar.png"
-                                                                                                                width="300"
-                                                                                                                style="max-width:300px;padding-bottom:0;border:0;height:auto;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;vertical-align:bottom;text-align:center;"
+                                                                                                                src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1657831438_overlay.jpg"
+                                                                                                                width="450"
+                                                                                                                style="max-width:450px;padding-bottom:0;border:0;height:auto;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;vertical-align:bottom;text-align:center;"
                                                                                                                 class="mcnImage"></a>
                                                                                                     </center>
 
@@ -670,134 +690,18 @@
 
                                                                                     
                                                                                     <p
-                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                        <br><br><b>Dear <?php echo $firstname . ' ' . $surname;?></b>                                                                                    </p>
-
-                                                                                    
-
-
-
-
-
-                                                                                    
-                                                                                    <p
-                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                        Mastery of colorectal polypectomy can be difficult.  With many different types and sizes of polyps <b>technique selection</b> is the first hurdle.  An understanding of the principles of endoscopic imaging can help significantly with this.                                                                                    </p>
-
-                                                                                    
-
-
-
-
-
-                                                                                    
-                                                                                    <p
-                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                        In over 70% of colorectal polyps ≥ 20mm in size (and therefore the majority of larger polyps seen in everyday practice) [piecemeal] EMR is the technique of choice.  It is <b>safe, effective in over 90% and prevents the morbitity associated with colorectal surgery</b>.                                                                                    </p>
-
-                                                                                    
-
-
-
-
-
-                                                                                    
-                                                                                    <p
-                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                        Want to take your next steps in colorectal polypectomy of larger polyps.  We have you covered.  Suitable for anyone performing or interesting in performing endoscopic mucosal resection of larger colorectal polyps.                                                                                    </p>
-
-                                                                                    
-
-
-
-
-
-                                                                                    
-                                                                                    <p
-                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                        <hr>                                                                                    </p>
-
-                                                                                    
-
-
-
-
-
-                                                                                    
-                                                                                    <p
-                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                        <h4 style="text-align:left;">Faculty</h4>
+                                                                                    style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#6e84a3;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
+                                                                                        <p><strong>Avoiding Post Colonoscopy Colorectal Cancer</strong> is the ultimate marker of quality in Colonoscopy.  It has 3 main causes:</p>
 <ul>
-<li>Dr David Tate, UZ Gent, Belgium</li>
-<li>Dr John Anderson, Interventional Endoscopist, UK</li>
-<li>Dr Roland Valori, Interventional Endoscopist, UK</li>
-<li>Dr Lobke Desomer, Interventional Endoscopist, Roeselare, Belgium</li>
-<li>Dr Pieter Hindryckx, UZ Gent, Belgium</li>
-<li>Dr Christophe Schoonjans, Endoscopy Fellow, Bruges, Belgium</li>
+<li><strong>Missed Polyps</strong> (not detected)</li>
+<li><strong>Incomplete Polypectomy</strong></li>
+<li><strong>Missed Surveillance after Polypectomy</strong></li>
 </ul>
-                                                                                    </p>
-
-                                                                                    
-
-
-
-
-
-                                                                                    
-                                                                                    <p
-                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                        <hr>                                                                                    </p>
-
-                                                                                    
-
-
-
-
-
-                                                                                    
-                                                                                    <p
-                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                        <h4 style="text-align:left;">Course Structure</h4>                                                                                    </p>
-
-                                                                                    
-
-
-
-
-
-                                                                                    
-                                                                                    <p
-                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                        <ul>
-<li>High Definition stream from UZ Gent</li>
-<li>2 Live Cases, focussed on piecemeal endoscopic mucosal resection cold and hot</li>
-<li>Interactive discussion throughout between faculty members</li>
-<li>Ability for audience interaction via Zoom or Slido app on smartphone</li>
-<li>Demonstration of 'Virtual Coaching' for remote attaining of skills required for mastery of polypectomy</li>
-</ul>
-                                                                                    </p>
-
-                                                                                    
-
-
-
-
-
-                                                                                    
-                                                                                    <p
-                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                        <hr>                                                                                    </p>
-
-                                                                                    
-
-
-
-
-
-                                                                                    
-                                                                                    <p
-                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                        <h4 style="text-align:left;">Cost</h4>
+<p>See the Video above for a case example</p>
+<br/>
+<hr/>
+<br/>
+<h1 style="text-align:center; color:white;">GIEQs III</h1><h3 style="text-align:center; color:white;">September 29th and 30th 2022</h3><h2 style="text-align:center;">The <i>Only</i> Endoscopy Symposium Focussed on  Everyday Endoscopy</h2>
 
                                                                                     </p>
 
@@ -808,9 +712,62 @@
 
 
                                                                                     
+    <table border="0" cellpadding="0" cellspacing="0"
+                                                                        width="100%" class="mcnImageGroupBlock"
+                                                                        style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
+                                                                        <tbody class="mcnImageGroupBlockOuter">
+
+                                                                            <tr>
+                                                                                <td valign="top"
+                                                                                    style="padding:9px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;"
+                                                                                    class="mcnImageGroupBlockInner">
+
+                                                                                    <table align="left"
+                                                                                        width="563.9999389648438"
+                                                                                        border="0" cellpadding="0"
+                                                                                        cellspacing="0"
+                                                                                        class="mcnImageGroupContentContainer"
+                                                                                        style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
+                                                                                        <tbody>
+                                                                                            <tr>
+                                                                                                <td class="mcnImageGroupContent"
+                                                                                                    valign="top"
+                                                                                                    style="padding-left:9px;padding-top:0;padding-bottom:0px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;text-align:center;">
+
+                                                                                                    <center>
+                                                                                                        <a href="https://www.gieqs.com/iii"
+                                                                                                            target="_blank"><img
+                                                                                                                alt=""
+                                                                                                                src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1656561259_1656477189_GIEQs III Flyer 1_1-min.png"
+                                                                                                                width="450"
+                                                                                                                style="max-width:450px;padding-bottom:0;border:0;height:auto;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;vertical-align:bottom;text-align:center;"
+                                                                                                                class="mcnImage"></a>
+                                                                                                    </center>
+
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+
+                                                                                </td>
+                                                                            </tr>
+
+
+
+                                                                        </tbody>
+                                                                    </table>
+                                                                   
+
+
+
+
+
+
+
+                                                                                    
                                                                                     <p
-                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                        Joining costs €30.  You will have access to the live stream, be able to interact with the faculty live on Zoom and have access to the whole afternoon for 3 months.                                                                                    </p>
+                                                                                    style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#6e84a3;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
+                                                                                        <p class="text-center" style="text-align:center;">Click to download the <a href="https://www.gieqs.com/assets/img/flyer/gieqs_iii_flyer.pdf">Full Flyer PDF! </a></p>                                                                                    </p>
 
                                                                                     
 
@@ -820,27 +777,17 @@
 
                                                                                     
                                                                                     <p
-                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                        GIEQs is a not-for-profit Educational Foundation dedicated to the promotion of quality in endoscopy.                                                                                    </p>
-
-                                                                                    
-
-
-
-
-
-                                                                                    
-                                                                                    <p
-                                                                                        style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#757575;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
+                                                                                    style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#6e84a3;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
                                                                                         <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnButtonBlock" style="min-width:100%;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
     <tbody class="mcnButtonBlockOuter">
         <tr>
             <td style="padding-top:25px;padding-right:18px;padding-bottom:18px;padding-left:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;" valign="top" align="center" class="mcnButtonBlockInner">
-                <table border="0" cellpadding="0" cellspacing="0" class="mcnButtonContentContainer" style="border-collapse:separate !important;border-radius:3px;background-color:#1b385d;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust: 100%;">
+                <table border="0" cellpadding="0" cellspacing="0" class="mcnButtonContentContainer" style="border-collapse:separate !important;border-radius:3px;background-color:#95AAC9;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust: 100%;">
                     <tbody>
                         <tr>
                             <td align="center" valign="middle" class="mcnButtonContent" style="font-family:Helvetica;font-size:18px;padding:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
-                                <a class="mcnButton " title="Register Now!" href="https://www.gieqs.com/pages/program/program_polypectomy_upskilling.php" target="_blank" style="font-weight:bold;letter-spacing:-0.5px;line-height:100%;text-align:center;text-decoration:none;color:#e3ebf6;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;display:block;">Register Now!
+                                <a class="mcnButton " title="find out more" href="https://www.gieqs.com/iii"
+target="_blank" style="font-weight:normal;letter-spacing:-0.5px;line-height:100%;text-align:center;text-decoration:none;color:#162e4d;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;display:block;">Register Now for GIEQs III!
                                 </a>
                             </td>
                         </tr>
@@ -851,9 +798,113 @@
     </tbody>
 </table>
 
-                                                                                        </p>
+                                                                                    </p>
 
                                                                                     
+
+
+
+
+
+                                                                                    
+                                                                                    <p
+                                                                                    style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#6e84a3;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
+                                                                                        <h2> </h2>
+<p><strong>Dear Friends of GIEQs,</strong></p>
+<p><strong>There are just under 3 months to go until GIEQs III.  Much more about all the topics in our 5-minute Endoscopy updates can be found in the programme. </strong></p><p>Features include:</p>
+<ul>
+<li>World Class <a href="https://www.gieqs.com/pages/program/faculty.php">Faculty</a></li>
+<li>Latest evidence in Everyday Endoscopy</li>
+<li>Revised registration pricing structure</li>
+<li><strong>Discounts (up to 50%!)</strong> for <a href="https://www.gieqs.com/pages/program/symposium-group-registration.php">groups of local individuals</a> (e.g. Endoscopy Units, Local Gastroenterology Organisations) who register together</li>
+<li>Option for significant discount on yearly subscription to <a href="https://www.gieqs.com/online">GIEQs Online PRO</a> - our online Everyday Endoscopy Library - at the time of registering</li>
+
+<li>No large meeting in Ghent (keeping costs down & saving the planet) but we will support anyone who wishes to set up their own local meetings to view the stream</li>
+
+
+</ul>
+
+<p>Click the link below to explore everything GIEQs III and register now!</p>
+<ul>
+<li>Discounted Early Bird Registration until 6th September 2022</li>
+</ul>
+
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnButtonBlock" style="min-width:100%;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
+    <tbody class="mcnButtonBlockOuter">
+        <tr>
+            <td style="padding-top:25px;padding-right:18px;padding-bottom:18px;padding-left:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;" valign="top" align="center" class="mcnButtonBlockInner">
+                <table border="0" cellpadding="0" cellspacing="0" class="mcnButtonContentContainer" style="border-collapse:separate !important;border-radius:3px;background-color:#95AAC9;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust: 100%;">
+                    <tbody>
+                        <tr>
+                            <td align="center" valign="middle" class="mcnButtonContent" style="font-family:Helvetica;font-size:18px;padding:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
+                                <a class="mcnButton " title="find out more" href="https://www.gieqs.com/iii"
+target="_blank" style="font-weight:normal;letter-spacing:-0.5px;line-height:100%;text-align:center;text-decoration:none;color:#162e4d;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;display:block;">Register Now for GIEQs III!
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+                                                                                    </p>
+
+                                                                                    
+
+
+
+
+
+                                                                                    
+    <table border="0" cellpadding="0" cellspacing="0"
+                                                                        width="100%" class="mcnImageGroupBlock"
+                                                                        style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
+                                                                        <tbody class="mcnImageGroupBlockOuter">
+
+                                                                            <tr>
+                                                                                <td valign="top"
+                                                                                    style="padding:9px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;"
+                                                                                    class="mcnImageGroupBlockInner">
+
+                                                                                    <table align="left"
+                                                                                        width="563.9999389648438"
+                                                                                        border="0" cellpadding="0"
+                                                                                        cellspacing="0"
+                                                                                        class="mcnImageGroupContentContainer"
+                                                                                        style="border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;">
+                                                                                        <tbody>
+                                                                                            <tr>
+                                                                                                <td class="mcnImageGroupContent"
+                                                                                                    valign="top"
+                                                                                                    style="padding-left:9px;padding-top:0;padding-bottom:0px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;text-align:center;">
+
+                                                                                                    <center>
+                                                                                                        <a href="https://www.gieqs.com/iii"
+                                                                                                            target="_blank"><img
+                                                                                                                alt=""
+                                                                                                                src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1656560586_image002-1.png"
+                                                                                                                width="450"
+                                                                                                                style="max-width:450px;padding-bottom:0;border:0;height:auto;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;vertical-align:bottom;text-align:center;"
+                                                                                                                class="mcnImage"></a>
+                                                                                                    </center>
+
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+
+                                                                                </td>
+                                                                            </tr>
+
+
+
+                                                                        </tbody>
+                                                                    </table>
+                                                                   
+
+
 
 
 
@@ -885,7 +936,7 @@
                                                                                         With kind regards,</p>
                                                                                     <p
                                                                                         style="margin:10px 0;padding:0;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#444444;font-weight:bold;font-family:Helvetica;font-size:16px;line-height:150%;text-align:left;">
-                                                                                        GIEQs Online.</p>
+                                                                                        the GIEQs Team.</p>
 
 
                                                                                 </td>
@@ -1519,16 +1570,15 @@
                                                                                 <td valign="top" class="mcnTextContent"
                                                                                     style="padding-top:0;padding-right:18px;padding-bottom:9px;padding-left:18px;mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;word-break:break-word;color:#FFFFFF;font-family:Helvetica;font-size:12px;line-height:150%;text-align:center;">
 
-                                                                                    <em>&#169; GIEQs Online
-                                                                                        2020.</em>
+                                                                                    <em>&#169; The GIEQs Foundation
+                                                                                        2021.</em>
                                                                                     <br>
                                                                                     Our privacy policy is available on
                                                                                     request.
                                                                                     <br>
                                                                                     <br>
 
-                                                                                    GIEQs is a not for profit organisation dedicated to the improvement of Quality in Endoscopy
-
+                                                                                    GIEQs is a not for profit organisation dedicated to the improvement of Quality and Safety in Endoscopy
                                                                                     <br>
                                                                                     <br>
 
@@ -1541,7 +1591,7 @@
                                                                                     <br>
                                                                                     <br>
                                                                                     To unsubscribe, please click
-                                                                                    <a href="https://www.gieqs.com/assets/scripts/unsubscribeUser.php?key=<?php echo $key;?>"
+                                                                                    <a href="https://www.gieqs.com/assets/scripts/unsubscribeUserEmail.php?key=<?php echo $key;?>"
                                                                                         style="mso-line-height-rule:exactly;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#FFFFFF;font-weight:normal;text-decoration:underline;">here
                                                                                     </a>
                                                                                     <br>

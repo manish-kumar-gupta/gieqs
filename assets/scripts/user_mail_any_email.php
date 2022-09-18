@@ -13,7 +13,10 @@ require (BASE_URI.'/assets/scripts/headerScript.php');
 $general = new general;
 $users = new users;
 $userFunctions = new userFunctions;
+require_once(BASE_URI . '/assets/scripts/classes/emails.class.php');
 $emails = new emails;
+require_once(BASE_URI . '/assets/scripts/classes/emailLink.class.php');
+$emailLink = new emailLink;
 
 //echo 'hello4';
 
@@ -40,6 +43,9 @@ function ne($v) {
     return $v != '';
 }
 
+$data = json_decode(file_get_contents('php://input'), true);
+
+
 
 
 $debug = false;
@@ -48,7 +54,7 @@ $explicit = false;
 
 //specify the email
 
-/* $emailid = '33';
+ $emailid = '71';
 
 $emails->Load_from_key($emailid);
 
@@ -81,11 +87,10 @@ if ($debug){
 
 
 //set some basics FOR THE EMAIL
-$filename = $file; */
+$filename = $file;
 
 
 
-$data = json_decode(file_get_contents('php://input'), true);
 
 if ($debug){
 
@@ -142,7 +147,7 @@ if (count($data) > 0){
             $email = $users->getemail();
             $emailVaryarray['key'] = $users->getkey();
 
-            $filename = '/assets/email/subscriptions/gieqs_iii_onboarding.php';
+        $filename = $file;
 
             $subject = 'Welcome to GIEQs III.  Joining Information Enclosed.';
 
@@ -158,7 +163,7 @@ if (count($data) > 0){
             $mime = $mail->getSentMIMEMessage();
             $mime = rtrim(strtr(base64_encode($mime), '+/', '-_'), '=');
 
-            //print_r($emailVaryarray);
+            print_r($mail);
 
             //require(BASE_URI . '/assets/scripts/individualMailerGmailAPI.php');  //TEST MAIL
             require(BASE_URI . '/assets/scripts/individualMailerGmailAPIPHPMailer.php');

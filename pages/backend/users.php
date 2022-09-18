@@ -800,12 +800,12 @@ if ($identifierValue) {
                                         <input id="email" type="text" class="form-control" name="email">
                                     </div>
 
-                                    <button class="btn bg-warning text-white p-2 m-2 send-welcome-mail">Resend GIEQs III update mail</button>
+                                    <button class="btn bg-warning text-white p-2 m-2 send-welcome-mail">Resend GIEQs III practicalities mail</button>
                                     <button class="btn bg-warning text-white p-2 m-2 update-user-assets">Grant this User PRO assets (if they have active pro subscription)</button>
                                     <button class="btn bg-success text-white p-2 m-2 grant-10-coin">Competition winners - Grant 10 coin gift</button>
 
 
-                                    <button class="btn bg-warning text-white p-2 m-2 send-mail" disabled>Send Password Reset Mail (now go to login screen, forgot password)   </button>
+                                    <button class="btn bg-warning text-white p-2 m-2 send-mail disabled">Send Password Reset Mail (now go to login screen, forgot password)   </button>
                                     <button class="btn bg-warning text-white p-2 m-2 reset-activity">Fix user login issue   </button>
 
 
@@ -1864,7 +1864,8 @@ processResults: function(data) {
     $(document).on('click', '.send-mail', function() {
 
     event.preventDefault();
-    sendUserEmail();
+    alert('Behaviour disabled.  Please ask user to navigate to gieqs.com/login and click reset my password');
+    //sendUserEmail();
 
     })
     
