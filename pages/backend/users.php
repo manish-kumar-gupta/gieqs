@@ -800,11 +800,12 @@ if ($identifierValue) {
                                         <input id="email" type="text" class="form-control" name="email">
                                     </div>
 
-                                    <button class="btn bg-warning text-white p-2 m-2 send-welcome-mail">Send GIEQs II welcome mail</button>
-                                    <button class="btn bg-success text-white p-2 m-2 grant-10-coin">Grant 10 coin gift</button>
+                                    <button class="btn bg-warning text-white p-2 m-2 send-welcome-mail">Resend GIEQs III update mail</button>
+                                    <button class="btn bg-warning text-white p-2 m-2 update-user-assets">Grant this User PRO assets (if they have active pro subscription)</button>
+                                    <button class="btn bg-success text-white p-2 m-2 grant-10-coin">Competition winners - Grant 10 coin gift</button>
 
 
-                                    <button class="btn bg-warning text-white p-2 m-2 send-mail">Send Password Reset Mail   </button>
+                                    <button class="btn bg-warning text-white p-2 m-2 send-mail" disabled>Send Password Reset Mail (now go to login screen, forgot password)   </button>
                                     <button class="btn bg-warning text-white p-2 m-2 reset-activity">Fix user login issue   </button>
 
 
@@ -1289,6 +1290,69 @@ passwordChange.done(function (data) {
 
             $('.send-welcome-mail').prop('disabled', false);
             $('.send-welcome-mail').find('.fa-spin').remove();
+
+            /* window.location.href = siteRoot;
+            resetFormElements('NewUserForm');
+            enableFormInputs('NewUserForm'); */
+            //$('#registerInterest').modal('hide');
+
+        })
+
+    }
+
+})
+
+}
+
+function updatePROAssets() {
+
+
+//userid is lesionUnderEdit
+
+//console.log('updatePassword chunk');
+//go to php script with an object from the form
+
+
+//TODO add identifier and identifierKey
+
+const dataToSend = {
+
+    passedUserid: lesionUnderEdit,
+
+}
+
+const jsonString = JSON.stringify(dataToSend);
+console.log(jsonString);
+
+$('.update-user-assets').prop('disabled', true);
+$('.update-user-assets').append('&nbsp&nbsp<i class="fas fa-circle-notch fa-spin"></i>');
+
+
+var passwordChange = $.ajax({
+    url: siteRoot + "assets/scripts/updateUserAssetsPRO.php",
+    type: "POST",
+    contentType: "application/json",
+    data: jsonString,
+});
+
+
+
+passwordChange.done(function (data) {
+
+    if (data) {
+        Swal.fire({
+            type: 'info',
+            title: 'Updating PRO Assets',
+            text: data,
+            background: '#162e4d',
+            confirmButtonText: 'ok',
+            confirmButtonColor: 'rgb(238, 194, 120)',
+
+
+        }).then((result) => {
+
+            $('.update-user-assets').prop('disabled', false);
+            $('.update-user-assets').find('.fa-spin').remove();
 
             /* window.location.href = siteRoot;
             resetFormElements('NewUserForm');
@@ -1810,6 +1874,13 @@ processResults: function(data) {
     sendUserWelcomeEmail();
 
     })
+
+    $(document).on('click', '.update-user-assets', function() {
+
+event.preventDefault();
+updatePROAssets();
+
+})
 
     $(document).on('click', '.grant-10-coin', function() {
 
