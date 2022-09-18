@@ -360,6 +360,8 @@ $xcrud->join('programmeOrder.programmeid','programme','id');
 //$xcrud->join('sessionOrder.sessionItemid', 'sessionItem', 'id');
 
 $xcrud->columns('programme.id, programme.date, programme.title, session.id, session.timeFrom, session.timeTo, session.title', false);
+$xcrud->order_by(array('programme.date', 'session.timeFrom'));
+
 
 $sessionItemNest = $xcrud->nested_table('Session Items', 'id', 'sessionOrder','sessionid');
 $sessionItemNest->connection($username,$password,$dbname,$host);
@@ -368,6 +370,8 @@ $sessionItemNest->table('sessionOrder');
 $sessionItemNest->join('sessionItemid', 'sessionItem', 'id');
 $sessionItemNest->relation('sessionItem.faculty','faculty','id', array('id', 'title', 'firstname', 'surname'));
 $sessionItemNest->change_type('sessionItem.live','select',0,array(0=>'No', 1=>'Yes'),);
+$sessionItemNest->order_by(array('sessionItem.timeFrom'));
+
 
 
 
