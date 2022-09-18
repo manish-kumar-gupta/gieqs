@@ -363,6 +363,7 @@ $xcrud->relation('sessionItemid','sessionItem','id', array('id', 'title', 'descr
 $xcrud->unset_view();
 $xcrud->unset_remove();
 $xcrud->limit(50);
+$xcrud->order_by(array('programme.date', 'session.timeFrom'));
 
 
 $xcrud->columns('programme.id, programme.date, programme.title, session.id, session.timeFrom, session.timeTo, session.title, sessionItemAsset.assetid', false);
