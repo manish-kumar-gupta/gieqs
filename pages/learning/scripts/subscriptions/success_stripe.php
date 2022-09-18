@@ -113,6 +113,8 @@ error_reporting(E_ALL);
 //print_r($_GET);
 
 $session_id = $_GET['session_id'];
+$log[] = 'Session id is (from Stripe)' . $session_id . PHP_EOL;
+
 
 $session = \Stripe\Checkout\Session::retrieve($session_id);
 $customer = \Stripe\Customer::retrieve($session->customer);
@@ -131,6 +133,10 @@ print "</pre>";
 //check if this is a subscription or a fixed price
 
 if ($session['mode'] == 'payment'){
+
+    $log[] = 'New Payment Detected' . PHP_EOL;
+
+
     $payment_intent = $session['payment_intent']; //check is set
     //print $payment_intent;
     $subscription_id = $session['metadata']['subscription_id'];  //check is set
@@ -138,9 +144,12 @@ if ($session['mode'] == 'payment'){
     $amount = intval($amount) / 100;
     $currency = strtoupper($session['currency']);
 
+    $log[] = 'Current action involves subscription id '. $subscription_id . ' and ' . $amount . ' ' . $currency . PHP_EOL;
+
 
 }elseif ($session['mode'] == 'subscription'){
 
+    $log[] = 'New Subscription Mode Detected' . PHP_EOL;
 
     if ($debug){
 
@@ -158,7 +167,13 @@ if ($session['mode'] == 'payment'){
 
                 //get the subscription object of the sitewide subscription
 
+                $log[] = 'User already has Subscription for SiteWide' . PHP_EOL;
+
+
+
                 $sitewidesubscriptonid = $session['metadata']['oldSubscriptionid'];
+
+                $log[] = 'SiteWide id is currently ' . $session['metadata']['oldSubscriptionid'] . PHP_EOL;
 
                 if ($subscription->Return_row($sitewidesubscriptonid)){
             
@@ -179,7 +194,7 @@ if ($session['mode'] == 'payment'){
                       //die();
                     }
             
-                    
+                    $log[] = 'Result of old subscription status is ' . $old_subscription_status . PHP_EOL;
             
                         if ($old_subscription_status->status == 'cancelled'){
             
@@ -194,6 +209,7 @@ if ($session['mode'] == 'payment'){
 
                             if ($debug){
                             echo 'Old subscription cancelled';
+                            $log[] = 'Old subscription cancelled';
 
                             }
 
@@ -204,6 +220,10 @@ if ($session['mode'] == 'payment'){
         
 
 
+    }else{
+
+
+        $log[] = 'No sitewide subscription detected already for the user who is purchasing subscription ' . PHP_EOL; 
     }
 
     $current_date = new DateTime('now', new DateTimeZone('UTC'));
@@ -224,12 +244,15 @@ $debug = false;
 
     if ($session['metadata']['free_trial'] == true){
 
+        $log[] = 'Free trial recorded' . PHP_EOL;
+
         if ($session['metadata']['subscription_type'] == 1){
 
             $userActivity->New_userActivity($userid, 'FREE_TRIAL_PRO', null, $current_date_sqltimestamp);
             echo $userActivity->prepareStatementPDO();
             $amount = 'FREE TRIAL';
 
+            $log[] = 'Free trial recorded for STANDARD' . PHP_EOL;
             if ($debug){
 
             echo 'free trial recorded';
@@ -241,6 +264,7 @@ $debug = false;
             $userActivity->New_userActivity($userid, 'FREE_TRIAL_PREMIUM', null, $current_date_sqltimestamp);
             echo $userActivity->prepareStatementPDO();
             $amount = 'FREE TRIAL';
+            $log[] = 'Free trial recorded for PRO' . PHP_EOL;
     
             if ($debug){
     
@@ -258,15 +282,19 @@ $debug = false;
         //record some coins here
         //also in webhooks on the first renewal
 
+        $log[] = 'NOT a free Trial' . PHP_EOL;
         //get mysql date UTC
         if ($session['metadata']['subscription_type'] == 1){        //only if a subscription type 1, type 2 has full acccess
-
+            //not clear to me why we are coin granting here
 
         $date = new DateTime('now', new DateTimeZone('UTC'));
         $sqltimestamp = date_format($date, 'Y-m-d H:i:s');
 
         $amount_grant = 50;
         $coin_grant->New_coin_grant($sqltimestamp, $amount_grant, $userid);
+
+            $log[] = 'COIN GRANT 50 coins performed here, need to understand reasons why';
+
         $coin_grant->prepareStatementPDO();
 
         }
@@ -304,6 +332,8 @@ $debug = false;
 if ($subscription->Return_row($subscription_id)){ //if the subscription already exists
 
     //we created a new subscription for the renewal
+    $log[] = 'Subscription ' . $subscription_id . ' opened for editing' . PHP_EOL;
+
     //with the required term
     //store the paypal ref only, no personal details stored
 
@@ -321,11 +351,15 @@ if ($subscription->Return_row($subscription_id)){ //if the subscription already 
 
         echo 'Subscription activated';
 
+        $log[] = 'Subscription activated ' . $subscription_id . PHP_EOL;
+
 
     }else{
 
         //updating the subscription went wrong
         echo 'error in subscription updating';
+        $log[] = 'Error activating the following subscription id ' . $subscription_id . PHP_EOL;
+
 
     }
     
@@ -334,13 +368,18 @@ if ($subscription->Return_row($subscription_id)){ //if the subscription already 
 
 
 
+
+$log[] = 'Proceeding to determine user and assets for sub id ' . $subscription_id . PHP_EOL;
+
 /* $isPaymentExist = $db->query("SELECT * FROM payments WHERE payment_id = '".$payment_id."'");
 
 if($isPaymentExist->num_rows == 0) { 
     $insert = $db->query("INSERT INTO payments(payment_id, payer_id, payer_email, amount, currency, payment_status) VALUES('". $payment_id ."', '". $payer_id ."', '". $payer_email ."', '". $amount ."', '". $currency ."', '". $payment_status ."')");
 } */
 
-echo "Payment is successful. Your transaction id is: ". $payment_id;
+echo "Payment is successful. Your transaction id is: ". $payment_intent;
+$log[] = "Payment is successful. Your transaction id is: ". $payment_intent . PHP_EOL;
+
 
 $asset_id = $assetManager->getAssetid($subscription_id);
 
@@ -364,6 +403,9 @@ $start_date_user_readable = date_format($start_date, 'd/m/Y');
 
 if ($assetManager->isSitewidePRO($asset_id) === true){
 
+    $log[] = "The asset with id $asset_id is a sitewide PRO asset and so we proceed to give other assets " . PHP_EOL;
+
+
     //do stuff to give the assets, //check this
 
    
@@ -372,6 +414,9 @@ if ($assetManager->isSitewidePRO($asset_id) === true){
 
     //DEFINE USER ID 
     $defined_userid = $userid;
+
+    $log[] = "Userid determined as $defined_userid " . PHP_EOL;
+
     //define assets future
     $assets = getPastAdvertisedAssets($assetManager, $sessionView, $programme);
 
@@ -469,6 +514,9 @@ $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $su
 
 if ($isRenewal){
 
+    $log[] = "Asset is being renewed" . PHP_EOL;
+
+
     if ($asset_type == '1'){ //site wide
 
         $filename = '/assets/email/subscriptions/renewSubscriptionMail.php';
@@ -507,6 +555,8 @@ $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $su
 
 }else if ($isRenewal === false){
 
+    $log[] = "Asset is NOT being renewed" . PHP_EOL;
+
     if ($asset_type == '1'){ //site wide
 
         //GIVE THE SITE WIDE SUBSCRIPTIONS HERE
@@ -530,7 +580,14 @@ $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $su
 
         $sitewide_cancellation_string = null;
 
+        $log[] = "Asset is a symposium registration" . PHP_EOL;
+        
+
+
         if ($symposium_id != false){
+
+            $log[] = "Symposium id recognised for user $userid as $symposium_id" . PHP_EOL;
+
 
             $symposium->Load_from_key($symposium_id);
 
@@ -543,9 +600,16 @@ $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $su
             $symposium->setfull_registration_date($current_date_sqltimestamp);
             $symposium->setpartial_registration('0');
 
+            $log[] = "Updated symposium as full registration" . PHP_EOL;
+
+
+
             $symposium->prepareStatementPDOUpdate();
 
             if ($symposium->getincludeGIEQsPro() == '1'){ 
+
+                $log[] = "Detected that the user included GIEQs PRO " . PHP_EOL;
+
                 
                 $debug = true;
                 
@@ -568,10 +632,13 @@ $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $su
             
                             $sitewidesubscriptonid = $assetManager->getSiteWideSubscription($userid, false);
 
+                            $log[] = 'detected a sitewide subscription with id ' . $sitewidesubscriptonid . PHP_EOL;
+
                             if ($debug){
 
 
                                 echo 'detected a sitewide subscription with id ' . $sitewidesubscriptonid;
+
 
                             }
             
@@ -596,6 +663,8 @@ $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $su
                                         ['prorate' => true,]
                                       );
                                     
+                                      $log[] = 'Cancelled this subscription with Stripe' . PHP_EOL;
+
                             
                                       if ($debug){
                                       //print_r($old_subscription_status);
@@ -620,6 +689,9 @@ $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $su
                                         echo $userActivity->prepareStatementPDO();
 
                                         $sitewide_cancellation_string = 'Old GIEQs Online subscription ID #' . $sitewidesubscriptonid . ' was cancelled and prorata refund requested via Stripe.  Please verify you have received a refund.';
+
+                                        $log[] = $sitewide_cancellation_string . PHP_EOL;
+
 
                                         //track this change
 
@@ -650,7 +722,8 @@ $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $su
 
                                         $sitewide_cancellation_string = 'Old GIEQs Online subscription ID #' . $sitewidesubscriptonid . ' was cancelled and prorata refund requested via Stripe.  Please verify you have received a refund.';
 
-            
+                                        $log[] = $sitewide_cancellation_string . PHP_EOL;
+
             
                                     }
             
@@ -705,17 +778,23 @@ $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $su
 
                         echo 'New subscription (sitewide) setup with id ' . $newsitewideSubscriptionid;
 
+
+
                     }
 
-                    $log=[];
+                    $log[] = 'New subscription (sitewide) setup with id ' . $newsitewideSubscriptionid . PHP_EOL;
+
+
+                
 
                     if ($assetManager->isSitewidePRO($registrationTypeConverter[$symposium->getregistrationType()]) === true){
 
                         //do stuff to give the assets, //check this
                     
-                       
-                    
-                        $log = [];
+                        $log[] = 'Giving pro assets in symposium context' . PHP_EOL;
+
+
+                        //$log = [];
                     
                         //DEFINE USER ID 
                         $defined_userid = $userid;
@@ -751,7 +830,7 @@ $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $su
                     
                             if ($assetManager->doesUserHaveSameAssetAlready($assetvalue, $defined_userid, false) === false){
                     
-                                $log[] = 'User no ' . $defined_userid . ' does not currently own asset ' . $assetvalue;
+                                $log[] = 'User no ' . $defined_userid . ' does not currently own asset ' . $assetvalue . PHP_EOL;
                     
                     
                             $subscription->New_subscriptions($defined_userid, $assetvalue, $current_date_sqltimestamp, $end_date_sqltimestamp, '1', '0', 'TOKEN_ID=PRO_SUBSCRIPTION');
@@ -761,12 +840,12 @@ $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $su
                             //$newSubscriptionid = ' fake subscription id';
                     
                     
-                            $log[] = 'User no ' . $defined_userid . ' granted access to assetid ' . $assetvalue . '. New subscription no = ' . $newSubscriptionid;
+                            $log[] = 'User no ' . $defined_userid . ' granted access to assetid ' . $assetvalue . '. New subscription no = ' . $newSubscriptionid . PHP_EOL;
                     
                     
                             }else{
                                 
-                                $log[] = 'User no ' . $defined_userid . ' already owns asset ' . $assetvalue;
+                                $log[] = 'User no ' . $defined_userid . ' already owns asset ' . $assetvalue . PHP_EOL;
                     
                     
                             }
@@ -793,6 +872,8 @@ $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $su
                         echo 'Failed in setup of new sitewide subscription';
 
                     }
+
+                    $log[] = 'Failed in setup of new sitewide subscription';
 
                 }
 
@@ -826,6 +907,9 @@ $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $su
 
             }
 
+            $log[] = 'Error. No symposium record detected for user ' . $userid . ' and purchasing a symposium';
+
+
         }
         
         //too late for discount
@@ -839,6 +923,9 @@ $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $su
 
 
     }else if ($asset_type == '3'){ //GIEQs Virtual / Live Course
+
+        $log[] = 'Asset type 3 detected' . PHP_EOL;
+
 
         //$filename = '/assets/email/subscriptions/newSubscriptionCourse.php'; REINSTATE IF VIRTUAL, TODO DETERMINE THIS
         $filename = '/assets/email/subscriptions/onboarding_course_Zoom.php';
@@ -860,6 +947,7 @@ $page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $su
     }else if ($asset_type == '4'){ //video set / area of site
 
 
+        $log[] = 'Asset type 4 detected' . PHP_EOL;
 
     }
 
@@ -930,6 +1018,14 @@ if ($debug){
     print_r($emailVaryarray);
 
 }
+
+foreach ($emailVaryarray as $key=>$value){
+
+    $log[] = $key . ' - ' . $value . PHP_EOL;
+
+
+}
+
 
 //PRIOR TO MAIL SEND UPDATE THE COIN STATUS IF PRESENT
 //MAKE DEFINITIVE
@@ -1008,6 +1104,31 @@ if ($debug){
 //redirect to page with positive outcome
 
 //$page = BASE_URL . '/pages/learning/pages/account/billing.php?showresult=' . $subscription_id;
+
+
+//new log file writing
+
+
+$dataLogFile = implode(" - ", $log);
+
+//Add a newline onto the end.
+$dataLogFile .= PHP_EOL;
+
+if ($debugPrint){
+
+    var_dump($dataLogFile);
+}
+
+
+//Log the data to your file using file_put_contents.
+$myfile = fopen(BASE_URI . '/pages/learning/scripts/subscriptions/paid_subscription_setup_log.log', "a");
+fwrite($myfile, "\n New Log, at " . $current_date_sqltimestamp . "\n");
+fwrite($myfile, $dataLogFile);
+fclose($myfile);
+
+
+//file_put_contents(BASE_URI . '/pages/learning/scripts/subscriptions/paid_subscription_setup_log.log', $dataLogFile, FILE_APPEND);
+
 
 
 header("Location: $page");
