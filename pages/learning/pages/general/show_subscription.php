@@ -1165,6 +1165,8 @@ filter: alpha(opacity=30);
                     src='<?php echo $sponsor_src;?>'>
                 <?php }?>
             </div>
+
+
             <nav aria-label="breadcrumb" class="ml-auto align-self-center">
                 <ol class="breadcrumb breadcrumb-links p-0 m-0">
                     <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/index.php'?>">GIEQs
@@ -1187,9 +1189,11 @@ filter: alpha(opacity=30);
             </nav>
 
             <?php     } ?>
+            
 
         </div>
 
+      
 
 
         <?php
@@ -1492,6 +1496,8 @@ filter: alpha(opacity=30);
 
     <?php }?>
 
+   
+
 
 
     <!--Video Display-->
@@ -1499,6 +1505,9 @@ filter: alpha(opacity=30);
     <div class="container mt-3">
         <div class="text-justify m-4">
             <p class="lead lh-180 pb-3"><?php echo $page_description;?></p>
+            <div class="text-right">
+<!--             <a class="btn btn-fill-gieqsGold btn-lg mx-2 my-3" href="">Give Feedback on this Course</a>  //FEEDBACK LINK SUBSCRIPTION $assetid
+ -->    </div>
 
 
 

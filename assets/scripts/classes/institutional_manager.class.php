@@ -91,7 +91,7 @@ Class institutional_manager {
 
     public function getUsersToken($tokenid, $debug=false){
 
-        $q = "SELECT * FROM `subscriptions` WHERE (`gateway_transactionId` LIKE '%TOKEN_ID=$tokenid%')";
+        $q = "SELECT * FROM `subscriptions` WHERE (`gateway_transactionId` LIKE '%TOKEN_ID=$tokenid%') ORDER BY `start_date` ASC";
         //echo $q;
         $result = $this->connection->RunQuery($q);
         $rowReturn = array();

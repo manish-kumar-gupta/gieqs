@@ -6403,6 +6403,66 @@ if ($debug){
 
         }
 
+        public function provideInstitutionalDatav2($token_id, $debug=false){
+
+
+            //is it an institutional thing, if not exit -- outside this function
+
+
+            //if it is, provide the name, date of subscription, remaining months of subscription, logins last month, logins ever, learning tools accessed, %completion
+            //so this is difficult and therefore just return the user ids
+
+
+            $q = "SELECT `id`, `user_id` FROM `subscriptions` WHERE `gateway_transactionId` LIKE '%TOKEN_ID=$token_id%'";
+        
+            if ($debug){
+                echo $q . '<br><br>';
+            
+            }
+            
+            $result = $this->connection->RunQuery($q);
+            
+            $x = 0;
+            $nRows = $result->rowCount();
+            
+            if ($nRows > 0) {
+            
+                
+            while($row = $result->fetch(PDO::FETCH_ASSOC)){
+        
+                $rowReturn[$row['user_id']] = $row['id'];  //give back subscription id
+                $x++;
+        
+        
+            }
+        
+            if ($debug){
+        
+                print_r($rowReturn);
+            }
+        
+            return $rowReturn;
+                
+               
+            
+            } else {
+                
+            
+                if ($debug){
+            
+                    echo 'no subscriptions exist using this token (' . $token_id;
+                }
+            
+                return false;
+            
+                
+            }
+
+
+
+
+        }
+
         public function createHistoricalAssetsPro($debug=false){
 
 

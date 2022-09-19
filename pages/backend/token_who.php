@@ -33,6 +33,8 @@ $openaccess =1;
             $programmeReports = new programmeReports;
             $institutional_manager = new institutional_manager;
             $users = new users;
+            $token = new token;
+            $subscription = new subscriptions;
 
 
             $debug = false;
@@ -131,13 +133,57 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
 
             echo '<h2>Registrants for Token id ' . $id . '</h2>';
 
+            $token->Load_from_key($id);
+
+            echo '<p>Token Used , Remaining = ' . $token->getremaining() . '</p>';
+
+            echo '<p>Institution: ' . $token->getinstitutional_id() . ' </p>';
+
+            echo '<p>Sponsor: ' . $token->getsponsor() . ' </p>';
+
+            echo '<table class="table">';
+            echo '<thead>';
+            echo '<tr>';
+            echo '<th>Name</th>';
+            echo '<th>Email</th>';
+                        echo '<th>Subscription id</th>';
+
+            echo '<th>Registered date</th>';
+            echo '<th>Subscription Expiry Date</th>';
+            echo '</tr>';
+            echo '</thead>';
+            echo '<tbody>';
+
             foreach ($users_token as $key=>$value){
 
                 $users->Load_from_key($value);
 
-                echo '<p>' . $users->getfirstname() . ' ' . $users->getsurname() . ' ' .  $users->getemail() . '</p>';
+                echo '<tr>';
+
+                echo '<td>'  . $users->getfirstname() . ' ' . $users->getsurname() . '</td>';
+
+                echo '<td>'  . $users->getemail() . '</td>';
+
+                echo '<td>'  . $subscriptionid = $assetManager->provideInstitutionalDatav2($id, false)[$value] . '</td>';  //needs new function get user_subscription_token, define subscription id
+
+                $subscription->Load_from_key($subscriptionid);
+
+                echo '<td>'  . $subscription->getstart_date() . '</td>';  //needs new function get user_subscription_token, define subscription id
+
+                echo '<td>'  . $subscription->getexpiry_date() . '</td>';  //needs new function get user_subscription_token, define subscription id
+
+
+                echo '</tr>';
+
+
+                //echo '<p>' . $users->getfirstname() . ' ' . $users->getsurname() . ' ' .  $users->getemail() . '</p>';
+
+                //echo '<p></p>';
 
             }
+
+            echo '</tbody>';
+            echo '</table>';
 
             echo '</div>';
 
