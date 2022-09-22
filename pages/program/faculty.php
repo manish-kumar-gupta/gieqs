@@ -201,6 +201,20 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                             <div data-animate-hover="2">
                                 <div class="animate-this">
                                     <a >
+                                        <img alt="Dr Jeroen Geldof" class="img-fluid rounded shadow"
+                                            src="../../assets/img/faculty/Jeroen Geldof.jpg">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr Jeroen Geldof</h5>
+                                    <p class="text-muted mb-0">Gastroenterologist, UZ Ghent, Belgium</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a >
                                         <img alt="Pieter Hindryckx" class="img-fluid rounded shadow"
                                             src="../../assets/img/faculty/PH.png">
                                     </a>
@@ -569,7 +583,7 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                                 <div class="animate-this">
                                     <a >
                                         <img alt="Dr Amir Klein" class="img-fluid rounded shadow"
-                                            src="../../assets/img/faculty/Amir Klein.jpg">
+                                            src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1663750921_Dr Amir Klein.png">
                                     </a>
                                 </div>
                                 <div class="mt-3">
@@ -916,7 +930,7 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                                 <div class="animate-this">
                                     <a >
                                         <img alt="Dr Eduard Callebout" class="img-fluid rounded shadow"
-                                            src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1661401243_Awaiting Photo.png">
+                                            src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1663758691_Dr Eduard Callebout.png">
                                     </a>
                                 </div>
                                 <div class="mt-3">
@@ -1066,7 +1080,7 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                     
              
 
-                        <div class="col-lg-3 py-3">
+                       <!--  <div class="col-lg-3 py-3">
                             <div data-animate-hover="2">
                                 <div class="animate-this">
                                     <a >
@@ -1079,7 +1093,7 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                                     <p class="text-muted mb-0">Gastroenterologist, AZ Delta Roeselare, Belgium</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                    
 
@@ -1221,7 +1235,7 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                                 <div class="animate-this">
                                     <a >
                                         <img alt="Dr Isabelle De Kock " class="img-fluid rounded shadow"
-                                            src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1661401243_Awaiting Photo.png">
+                                            src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1663160586_Dr Isabelle De Kock.png">
                                     </a>
                                 </div>
                                 <div class="mt-3">
@@ -1310,7 +1324,7 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                                 </div>
                                 <div class="mt-3">
                                     <h5 class="gieqsGold card-title mb-0">Dr Jeroen Geldof</h5>
-                                    <p class="text-muted mb-0">Gastroenterologist & Hepatologist, UZ Ghent, Belgium</p>
+                                    <p class="text-muted mb-0">Gastroenterologist, UZ Ghent, Belgium</p>
                                 </div>
                             </div>
                         </div>
@@ -1445,7 +1459,7 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                                 <div class="animate-this">
                                     <a >
                                         <img alt="Dr Lynn Debels" class="img-fluid rounded shadow"
-                                            src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1661401243_Awaiting Photo.png">
+                                            src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1662539356_Dr Lynn Debels.png">
                                     </a>
                                 </div>
                                 <div class="mt-3">

@@ -45,8 +45,8 @@ $requiredUserLevel = 3;
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.css">
     <script src="<?php echo BASE_URL;?>/assets/libs/sweetalert2/dist/sweetalert2.min.js"></script>
     <script src="<?php echo BASE_URL; ?>/assets/libs/datatables/datatables.min.js"></script>
-    
-<link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/datatables/datatables.min.css">
+
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/assets/libs/datatables/datatables.min.css">
 
 
 
@@ -59,7 +59,17 @@ $requiredUserLevel = 3;
         z-index: 9999;
     }
 
-    
+    body {
+
+touch-action: pan-x pan-y;
+
+height: 100%;
+
+overflow: hidden;
+     
+}
+
+
 
     .tagButton {
 
@@ -67,75 +77,82 @@ $requiredUserLevel = 3;
 
     }
 
-    .tagCard {
+    .bg-gieqsBlue {
 
-background-color: #1b385d75;
-/* background-color: black;
- */.tagCardHeader {
-
-background-color: #162e4d;
-
-/* background-color: black;
- */
-}
-
-    #live-chat-app {
-        background-color: #1b385d75 !important;
-
+        background-color: #7CA8EA !important;
     }
 
-   /*  .tagCardHeader {
+    .tagCard {
+
+        background-color: #1b385d75;
+
+        /* background-color: black;
+ */
+        .tagCardHeader {
+
+            background-color: #162e4d;
+
+            /* background-color: black;
+ */
+        }
+
+        #live-chat-app {
+            background-color: #1b385d75 !important;
+
+        }
+
+        /*  .tagCardHeader {
 
         background-color: #162e4d;
 
     } */
 
-    .even-larger-badge{
-    font-size: 1.2em;
-}
-
-
-
-    .cursor-pointer {
-
-        cursor: pointer;
-
-    }
-
-
-
-    @media (min-width: 1200px) {
-        #chapterSelectorDiv {
-
-
-
-            top: -3vh;
-
-
-        }
-
-        #playerContainer {
-
-            margin-top: -20px;
-
-        }
-
-        #collapseExample {
-
-            position: absolute;
-            max-width: 50vh;
-            z-index: 25;
-        }
-
-        #selectDropdown {
-
-
-            z-index: 25;
+        .even-larger-badge {
+            font-size: 1.2em;
         }
 
 
 
-    }
+        .cursor-pointer {
+
+            cursor: pointer;
+
+        }
+
+
+
+        @media (min-width: 1200px) {
+            #chapterSelectorDiv {
+
+
+
+                top: -3vh;
+
+
+            }
+
+            #playerContainer {
+
+                margin-top: -20px;
+
+            }
+
+            #collapseExample {
+
+                position: absolute;
+                max-width: 50vh;
+                z-index: 25;
+            }
+
+            #selectDropdown {
+
+
+                z-index: 25;
+            }
+
+
+
+        }
     </style>
 
 
@@ -192,21 +209,22 @@ background-color: #162e4d;
         
      
      ?>
-             <div class="container-fluid d-flex flex-wrap align-items-lg-stretch p-2 p-lg-5" style="max-height:60vh;">
+            <div class="container-fluid d-flex flex-wrap align-items-lg-stretch p-2 p-lg-5" style="max-height:60vh;">
                 <div class="col-lg-5 ml-4" style="cursor:none;">
-                   <!--  <h2 class="mb-5">LIVE area</h2> -->
-                                        <div class="card mb-0 p-2 mx-6 tagCard" style="height:30vh; overflow:hidden; cursor:none; margin-top: -1.25rem !important;">
-                        <div class="card-header tagCardHeader mb-0">
+                    <!--  <h2 class="mb-5">LIVE area</h2> -->
+                    <div class="card mb-0 p-2 mx-6 tagCard"
+                        style="height:10vh; width:100%; overflow:hidden; cursor:none; margin-top: -1.25rem !important;">
+                       <!--  <div class="card-header tagCardHeader mb-0">
 
                             <span class="h6">Tags <br /></span><span class="text-sm"></span><span
                                 class="text-sm text-right"></span>
-                        </div>
+                        </div> -->
                         <div id="cardBodyMirror" class="card-body mt-0 p-2">
 
                             <div id="tagsDisplayMirror" class="p-2 d-flex flex-wrap tagsDisplay">
 
 
-                               
+
                             </div>
 
 
@@ -215,15 +233,18 @@ background-color: #162e4d;
 
 
                 </div>
-              
-                <div class="col-lg-5 ml-6">
-                <h2 class="mb-0">EDIT area</h2>
-                <p class="text-muted text-sm">Use this area to edit.  Dropdown and search for tags / materials.  Delete tags by clicking them in the box below.
-                Edits here are mirrored in the box to the left.  The left box only is used for the live feed. AVOID vertical scrolling the page, reloading or resizing the browser window.</p>
 
-                <div>
-<!--                 <a id="showStructureButton" class="action-item"><i class="fas fa-table" title="show tag structure"></i> Show Tags Structure</a>
- -->     </div>
+                <div class="col-lg-5 ml-6">
+                    <h2 class="mb-0">EDIT area</h2>
+                    <p class="text-muted text-sm">Use this area to edit. Dropdown and search for tags / materials.
+                        Delete tags by clicking them in the box below.
+                        Edits here are mirrored in the box to the left. The left box only is used for the live feed.
+                        AVOID vertical scrolling the page, reloading or resizing the browser window.</p>
+
+                    <div>
+                        <!--                 <a id="showStructureButton" class="action-item"><i class="fas fa-table" title="show tag structure"></i> Show Tags Structure</a>
+ -->
+                    </div>
                     <label for="tags" class="mb-3 mt-1">Tags (search)</label>
                     <div class="input-group ">
                         <select id="tags" type="text" data-toggle="select" class="form-control" name="tags">
@@ -241,28 +262,28 @@ background-color: #162e4d;
 ?>
                         </select>
                     </div>
-                    <div class="card mt-5 mb-0 p-2 mx-6 tagCard" style="height:30vh; overflow:hidden;">
-                        <div class="card-header tagCardHeader mb-0">
+                    <div class="card mt-5 mb-0 p-2 mx-6 tagCard" style="height:10vh; width:100%; overflow:hidden;">
+                        <!-- <div class="card-header tagCardHeader mb-0">
 
                             <span class="h6">Tags <br /></span><span class="text-sm"></span><span
                                 class="text-sm text-right"></span>
-                        </div>
+                        </div> -->
                         <div id="cardBody" class="card-body mt-0 p-2">
 
                             <div id="tagsDisplay" class="p-2 d-flex flex-wrap tagsDisplay">
 
 
-                               
+
                             </div>
 
 
                         </div>
                     </div>
-                <!--     <div id="table" class="mt-4" style="height: 40vh; width: 30vw; overflow-x:scroll;overflow-y:scroll;"></div> -->
+                    <!--     <div id="table" class="mt-4" style="height: 40vh; width: 30vw; overflow-x:scroll;overflow-y:scroll;"></div> -->
 
 
                 </div>
-                
+
 
                 <?php  
 
@@ -357,7 +378,7 @@ background-color: #162e4d;
 
             $(document).ready(function() {
 
-                
+
                 /* $(document).click(function(event) { 
                     $target = $(event.target);
                     
@@ -374,9 +395,9 @@ background-color: #162e4d;
 
                 });
 
-                
-                
-                $(document).on('change', '#tags', function () {
+
+
+                $(document).on('change', '#tags', function() {
 
                     //get selected id
                     //get selected data 
@@ -390,121 +411,146 @@ background-color: #162e4d;
 
                     //var el = $(this);
 
-//for the editable box
+                    //for the editable box
 
-(function () {
-                        setTimeout(function () {
-                            $('#tagsDisplayMirror').find('span').filter('#tag' + x).remove();
-                            const element = $('#tagsDisplayMirror').find('span').filter('#tag' + x);
+                    (function() {
+                        setTimeout(function() {
+                            $('#tagsDisplayMirror').find('span').filter('#tag' + x)
+                        .remove();
+                            const element = $('#tagsDisplayMirror').find('span').filter(
+                                '#tag' + x);
                             console.log(element);
 
                         }, 5000);
-                    }($('#tagsDisplayMirror').prepend('<span class="animated rubberBand badge even-larger-badge bg-gieqsGold text-dark mx-2 my-2" data="tag' + x + '" id="tag' + x + '" style="max-width:100%; text-align:justify; white-space:normal;">' + tagName + '</span>')));
+                    }($('#tagsDisplayMirror').prepend(
+                        '<span class="animated rubberBand badge even-larger-badge bg-gieqsBlue text-dark mx-2 my-2" data="tag' +
+                        x + '" id="tag' + x +
+                        '" style="max-width:100%; text-align:justify; white-space:normal;">' +
+                        tagName + '</span>')));
 
 
 
-                    $('#tagsDisplayMirror').find('span').not('#tag' + x).removeClass('bg-gieqsGold').removeClass('text-dark').removeClass('even-larger-badge').addClass('bg-secondary-dark').addClass('text-white');
-                    $('#tagsDisplayMirror').find('span').not('#tag' + x).each(function(){
+                    $('#tagsDisplayMirror').find('span').not('#tag' + x).removeClass('bg-gieqsBlue')
+                        .removeClass('text-dark').removeClass('even-larger-badge').addClass(
+                            'bg-secondary-dark').addClass('text-white');
+                    $('#tagsDisplayMirror').find('span').not('#tag' + x).each(function() {
 
-                        $(this).removeClass('bg-gieqsGold').removeClass('text-dark').removeClass('even-larger-badge').addClass('bg-secondary-dark').addClass('text-white');
-                        var hider= $("#cardBodyMirror"); 
-                        var height= $(hider).height(); //the height of the box
-                        var offset = $("#cardBodyMirror").offset(); // the offset of the top of the box
+                        $(this).removeClass('bg-gieqsBlue').removeClass('text-dark')
+                            .removeClass('even-larger-badge').addClass('bg-secondary-dark')
+                            .addClass('text-white');
+                        var hider = $("#cardBodyMirror");
+                        var height = $(hider).height(); //the height of the box
+                        var offset = $("#cardBodyMirror")
+                    .offset(); // the offset of the top of the box
                         var offset2 = $(this).offset(); //the offset of the top of the tag
 
-                        var bottomPosition = height + offset.top; //the position of the bottom of the box
+                        var bottomPosition = height + offset
+                        .top; //the position of the bottom of the box
 
-                        console.log( height );
-                        console.log( offset2.top );
-                        console.log( bottomPosition);
+                        console.log(height);
+                        console.log(offset2.top);
+                        console.log(bottomPosition);
 
-                        
+
                         //alert($(this).attr('class'));
-                        if( offset2.top > bottomPosition){
+                        if (offset2.top > bottomPosition) {
 
                             $(this).hide();
 
                         }
-                            
+
 
                     })
-                    
+
 
 
                     x++;
 
                     //for the mirror (display box)
 
-                    (function () {
-                        setTimeout(function () {
+                    (function() {
+                        setTimeout(function() {
                             $('#tagsDisplay').find('span').filter('#tag' + y).remove();
-                            const element = $('#tagsDisplay').find('span').filter('#tag' + y);
+                            const element = $('#tagsDisplay').find('span').filter('#tag' +
+                                y);
                             console.log(element);
 
                         }, 5000);
-                    }($('#tagsDisplay').prepend('<span class="animated rubberBand badge even-larger-badge bg-gieqsGold text-dark mx-2 my-2" data="tag' + y + '" id="tag' + y + '" style="max-width:100%; text-align:justify; white-space:normal;">' + tagName + '</span>')));
+                    }($('#tagsDisplay').prepend(
+                        '<span class="animated rubberBand badge even-larger-badge bg-gieqsBlue text-dark mx-2 my-2" data="tag' +
+                        y + '" id="tag' + y +
+                        '" style="max-width:100%; text-align:justify; white-space:normal;">' +
+                        tagName + '</span>')));
 
 
 
-                    $('#tagsDisplay').find('span').not('#tag' + y).removeClass('bg-gieqsGold').removeClass('text-dark').removeClass('even-larger-badge').addClass('bg-secondary-dark').addClass('text-white');
-                    $('#tagsDisplay').find('span').not('#tag' + y).each(function(){
+                    $('#tagsDisplay').find('span').not('#tag' + y).removeClass('bg-gieqsBlue')
+                        .removeClass('text-dark').removeClass('even-larger-badge').addClass(
+                            'bg-secondary-dark').addClass('text-white');
+                    $('#tagsDisplay').find('span').not('#tag' + y).each(function() {
 
-                        $(this).removeClass('bg-gieqsGold').removeClass('text-dark').removeClass('even-larger-badge').addClass('bg-secondary-dark').addClass('text-white');
-                        var hider= $("#cardBody"); 
-                        var height= $(hider).height(); //the height of the box
-                        var offset = $("#cardBody").offset(); // the offset of the top of the box
+                        $(this).removeClass('bg-gieqsBlue').removeClass('text-dark')
+                            .removeClass('even-larger-badge').addClass('bg-secondary-dark')
+                            .addClass('text-white');
+                        var hider = $("#cardBody");
+                        var height = $(hider).height(); //the height of the box
+                        var offset = $("#cardBody")
+                    .offset(); // the offset of the top of the box
                         var offset2 = $(this).offset(); //the offset of the top of the tag
 
-                        var bottomPosition = height + offset.top; //the position of the bottom of the box
+                        var bottomPosition = height + offset
+                        .top; //the position of the bottom of the box
 
-                        console.log( height );
-                        console.log( offset2.top );
-                        console.log( bottomPosition);
+                        console.log(height);
+                        console.log(offset2.top);
+                        console.log(bottomPosition);
 
-                        
+
                         //alert($(this).attr('class'));
-                        if( offset2.top > bottomPosition){
+                        if (offset2.top > bottomPosition) {
 
                             $(this).hide();
 
                         }
-                            
+
 
                     })
-                    
+
 
 
                     y++;
 
                 })
 
-                $(document).on('click', '.badge', function () {
+                $(document).on('click', '.badge', function() {
 
                     //alert('detect');
 
-                   //get the id
+                    //get the id
 
-                   var id = $(this).attr('data');
+                    var id = $(this).attr('data');
 
-//alert(id);
+                    //alert(id);
 
-//remove both this and the mirror
+                    //remove both this and the mirror
 
-/*                     $(this).remove();
-*/                    $(this).addClass('bounceOutLeft').remove();
+                    /*                     $(this).remove();
+                     */
+                    $(this).addClass('bounceOutLeft').remove();
 
 
-//remove mirror
-/* $("#tagsDisplayMirror").find("[data='" + id + "']").remove();  */
-$("#tagsDisplayMirror").find("[data='" + id + "']").addClass('bounceOutLeft').remove(); 
-//$('#tagsDisplay').find('span').not('#tag' + y);
+                    //remove mirror
+                    /* $("#tagsDisplayMirror").find("[data='" + id + "']").remove();  */
+                    $("#tagsDisplayMirror").find("[data='" + id + "']").addClass('bounceOutLeft')
+                        .remove();
+                    //$('#tagsDisplay').find('span').not('#tag' + y);
 
 
 
 
                 })
 
-                $('.referencelist').on('click', function () {
+                $('.referencelist').on('click', function() {
 
 
                     //get the tag name
@@ -522,92 +568,93 @@ $("#tagsDisplayMirror").find("[data='" + id + "']").addClass('bounceOutLeft').re
 
                 })
 
-                $('.referencelist').on('mouseenter', function () {
+                $('.referencelist').on('mouseenter', function() {
 
                     $(this).css('color', 'rgb(238, 194, 120)');
                     $(this).css('cursor', 'pointer');
 
                 })
 
-                $('.referencelist').on('mouseleave', function () {
+                $('.referencelist').on('mouseleave', function() {
 
                     $(this).css('color', 'white');
                     $(this).css('cursor', 'default');
 
                 })
 
-                $(document).on('click', '#showStructureButton', function () {
+                $(document).on('click', '#showStructureButton', function() {
 
 
-var dataToSend = {
+                    var dataToSend = {
 
-    requiredTagCategories: null
+                        requiredTagCategories: null
 
-}
+                    }
 
-const jsonString = JSON.stringify(dataToSend);
-
-
-
-var request2 = $.ajax({
-    beforeSend: function () {
-
-        //$('#videoCards').html("<div class=\"d-flex align-items-center\"><strong>Loading...</strong><div class=\"spinner-border ml-auto\" role=\"status\" aria-hidden=\"true\"></div></div>");
-
-    },
-    url: siteRoot + "pages/learning/scripts/getTagStructurev2.php",
-    type: "POST",
-    contentType: "application/json",
-    data: jsonString,
-});
+                    const jsonString = JSON.stringify(dataToSend);
 
 
 
-request2.done(function (data) {
-    // alert( "success" );
-    if (data) {
-        //var toKeep = $.parseJSON(data.trim());
-        //alert(data.trim());
-        //console.dir(toKeep);
+                    var request2 = $.ajax({
+                        beforeSend: function() {
 
+                            //$('#videoCards').html("<div class=\"d-flex align-items-center\"><strong>Loading...</strong><div class=\"spinner-border ml-auto\" role=\"status\" aria-hidden=\"true\"></div></div>");
 
-        //console.log(data);
-
-       
-
-        //$('.modal').show();
-        /* $('.modal').css('max-height', 800);
-        $('.modal').css('max-width', 800);
-        $('.modal').css('overflow', 'scroll'); */
+                        },
+                        url: siteRoot + "pages/learning/scripts/getTagStructurev2.php",
+                        type: "POST",
+                        contentType: "application/json",
+                        data: jsonString,
+                    });
 
 
 
-        $(document).find('#table').html('<h3>Data Structure</h3>');
-
-        $(document).find('#table').append('<div class="modalMessageBox"></div>');
-
-        $(document).find('#table').append('<p>' + data + '</p>');
-
-        //$(document).find('#table').append('<button id="newReference">Add new reference</button>');
-
-        $(document).find('#table').find('#dataTable2').DataTable();
-
-        //makeSearchBoxModal();
-
-        return;
+                    request2.done(function(data) {
+                        // alert( "success" );
+                        if (data) {
+                            //var toKeep = $.parseJSON(data.trim());
+                            //alert(data.trim());
+                            //console.dir(toKeep);
 
 
-    }
-    //$(document).find('.Thursday').hide();
-})
+                            //console.log(data);
 
 
 
+                            //$('.modal').show();
+                            /* $('.modal').css('max-height', 800);
+                            $('.modal').css('max-width', 800);
+                            $('.modal').css('overflow', 'scroll'); */
+
+
+
+                            $(document).find('#table').html('<h3>Data Structure</h3>');
+
+                            $(document).find('#table').append(
+                                '<div class="modalMessageBox"></div>');
+
+                            $(document).find('#table').append('<p>' + data + '</p>');
+
+                            //$(document).find('#table').append('<button id="newReference">Add new reference</button>');
+
+                            $(document).find('#table').find('#dataTable2').DataTable();
+
+                            //makeSearchBoxModal();
+
+                            return;
+
+
+                        }
+                        //$(document).find('.Thursday').hide();
+                    })
 
 
 
 
-})
+
+
+
+                })
 
 
             })

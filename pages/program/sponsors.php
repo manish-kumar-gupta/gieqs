@@ -220,6 +220,12 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                         </a>
                     </div>
 
+                    <div class="col-lg-4 col-md-4 col-4 p-3">
+                        <a href="https://www.pentax-medical.com" target="_Blank">
+                            <img class="logo" alt="PENTAX" src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1663877490_pentaxlogo-rgb.png">
+                        </a>
+                    </div>
+
                 </div>
             
 
@@ -247,7 +253,7 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
                         <a href="https://www.ambu.com/" target="_Blank">
-                            <img class="logo" alt="Ambu" src="<?php echo BASE_URL . '/assets/img/sponsors/Ambu logo Red RGB.png';?>">
+                            <img class="logo" alt="Ambu" src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1663663492_Ambu logo.jpg">
                         </a>
                     </div>
 
@@ -374,20 +380,18 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                 </div>
                 -->
 
-                <!--Other Sponsors-->
-           <!--      <div class="row text-left">
-                    <div class="col-12 p-3 pb-2 mb-4">
-                        <span class="h2" style="color: black;">Additional Sponsors</span><br />
-                    </div>
-                </div> -->
+<!--                 Other Sponsors
+ -->           <div class="row my-4">
+                        <span class="h2 mx-auto" style="color: black;">Additional Sponsors</span><br />
+                </div>
 
-                <!--
-                <div class="client-group row justify-content-left">
-                    <div class="col-lg-1 col-md-4 col-4 py-1">
-                        <img class="logo" alt="Prion Medical" src="<?php //echo BASE_URL . '/assets/img/brand/prion.jpg';?>">
+                
+                <div class="client-group row justify-content-center align-items-center mb-4">
+                    <div class="col-lg-2 col-md-4 col-4 py-1">
+                        <img class="logo" alt="Biogen" src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1663663578_biogen logo.jpg">
                     </div>
 
-                    <div class="col-lg-1 col-md-4 col-4 py-1">
+                    <!-- <div class="col-lg-2 col-md-4 col-4 py-1">
                         <img class="logo" alt="Cook Medical" src="<?php //echo BASE_URL . '/assets/img/brand/cook.jpg';?>">
                     </div>
 
@@ -395,17 +399,17 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                         <img class="logo" alt="Boucart Medical" src="<?php //echo BASE_URL . '/assets/img/brand/boucart.jpg';?>">
                     </div>
 
-                    <div class="col-lg-1 col-md-4 col-4 py-1">
+                    <div class="col-lg-2 col-md-4 col-4 py-1">
                     </div>
 
-                    <div class="col-lg-1 col-md-4 col-4 py-1">
+                    <div class="col-lg-2 col-md-4 col-4 py-1">
                     </div>
 
-                    <div class="col-lg-1 col-md-4 col-4 py-1">
-                    </div>
+                    <div class="col-lg-2 col-md-4 col-4 py-1">
+                    </div> -->
 
                 </div>
-                -->
+           
 
                 <!--Society Endorsements-->
                 <div class="row my-4 pt-4">
