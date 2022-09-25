@@ -201,7 +201,7 @@ top: -20vh;
 </h4>
 
 <p>
-    -       Use a MODERN BROWSER (such as Google Chrome or Safari).  You will not be able to access onm Internet Explorer<br/>
+    -       Use a MODERN BROWSER (such as Google Chrome or Safari).  You will not be able to access on Internet Explorer<br/>
     –       Go to gieqs.com and select GIEQs III from the Courses and Pro Content menu on the menu bar or navigate to the link in your confirmation email<br/>
     –       if you are registered for the congress you will access our custom Symposium Viewer.  You can take a tour to learn more about the features of GIEQs' custom viewer.<br/>
 <br/>
@@ -229,16 +229,49 @@ top: -20vh;
 
 
 </p>
-
-<h4>
-    Contact us
-</h4>
-<p>
-    –       Email : <a href="mailto:gieqs-helpdesk@seauton-international.com">gieqs-helpdesk@seauton-international.com</a> (rapid response during GIEQs III, slower at other times)<br/>
-   
-   
-
-</p>
+<hr />
+<h2>Information about the Symposium.</h2>
+<p>GIEQs III will be held from 7:45am until 5pm Central European Time on&nbsp;<strong>29th and 30th September 2022.</strong>&nbsp;There may be satellite symposia outside of these times (see program for details).</p>
+<p><strong>This GIEQs III registration is for the Virtual Experience only.</strong></p>
+<hr />
+<h2>Accessing the Congress</h2>
+<p>You can access the congress directly using the button above. This will also work for catch-up after the congress. You will be prompted to log in first.</p>
+<p>If you have issues logging in you can reset your password from the&nbsp;<a href="https://www.gieqs.com/login">login screen</a>&nbsp;or&nbsp;<a>contact us</a>. For urgent issues you can call or WhatsApp us on +32471117844</p>
+<p>You can also use the button above to access catch up after the symposium (delay of 48 hours until videos available). There will be no video visible on the page until the first day of the symposium.</p>
+<p>During each session there will be a quiz. GIEQs Coin can be won during these sessions which can be used to pay for items on GIEQs.com. You must register using your name which exactly matches your GIEQs account to be eligible to win. The decision of the judges is final as to the winner. The winner will be randomly chosen from those who answer the poll question correctly.</p>
+<hr />
+<h2>Thanks to our Sponsors</h2>
+<p>We would like to thank our&nbsp;<a href="https://www.gieqs.com/sponsors">Sponsors</a>&nbsp;without whom this Symposium would not be possible.</p>
+<p>Please catch up with them electronically using the links available on the symposium viewer.</p>
+<hr />
+<h2>Staying Up-to-Date</h2>
+<p>You can find all the information you need about the symposium&nbsp;<a href="https://www.gieqs.com/iii">here</a>.</p>
+<p>The best place to catch up on the latest is&nbsp;<a href="https://twitter.com/gieqs_symposium">Twitter</a>&nbsp;or&nbsp;<a href="https://www.facebook.com/gieqs">Facebook</a>. You can also follow us on Linkedin. Use the links at the bottom of this mail.</p>
+<p>Use the hashtag&nbsp;<strong>#GIEQs_III</strong>&nbsp;to reference the meeting!</p>
+<hr />
+<h2>Accreditation and CME</h2>
+<p>Both European (EACCME) and Belgian (RIZIV/INAMI) accreditation have been requested for the live event.</p>
+<p>Accreditation will only be claimable by those who login during the live congress (not currently available for catch-up).</p>
+<p>EACCME: 8 / 7 CME points (per day) RIZIV: 8.5 points (per day)</p>
+<hr />
+<h2>Thank-you</h2>
+<p>Thanks again for your registration. We are really looking forward to you joining us tomorrow.</p>
+<p><strong>Together we can make the safety and quality of everyday Endoscopy better.</strong></p>
+<table border="0" width="100%" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td>
+<table border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td><a title="find out more" href="https://www.gieqs.com/login?destination=viewasset&amp;assetid=95" target="_blank">Access GIEQs III</a></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
 
 
               </article>
