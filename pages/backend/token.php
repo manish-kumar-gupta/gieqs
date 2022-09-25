@@ -264,6 +264,12 @@ $pdocrud->fieldNotMandatory('institutional_id');
  */
 $pdocrud->checkDuplicateRecord(array("cipher"));
 
+//add button to view page
+$action = BASE_URL . "/pages/backend/token_who.php?id={pk}";//pk will be replaced by primary key value
+$text = '<i class="fa fa-external-link" aria-hidden="true"></i>';
+$attr = array("title"=>"Show Token Registrants Page");
+$pdocrud->enqueueBtnActions("url", $action, "url",$text,"id", $attr);
+
 
 
 

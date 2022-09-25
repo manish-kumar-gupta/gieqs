@@ -295,7 +295,7 @@ var_dump($currentTime);
 
                     <div class="col-12 p-3 pb-1">
                         <span class="h1"
-                            style="color: rgb(238, 194, 120);">GIEQs III Preliminary Scientific Program<br /></span>
+                            style="color: rgb(238, 194, 120);">GIEQs III Scientific Program<br /></span>
                         <span
                             class="h3 display-5 mt-4 text-white"><?php echo 'Live :  ' . $humanReadableProgrammeDate;?></span>
                         <span
