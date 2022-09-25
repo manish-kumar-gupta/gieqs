@@ -92,7 +92,7 @@ $assets_paid->Load_from_key($asset_id_pagewrite);
     <meta name="twitter:title" content="<?php echo $assets_paid->getName(); ?>">
     <meta name="twitter:description" content="<?php echo $assets_paid->getdescription(); ?>">
     <meta name="twitter:image"
-        content="<?php echo 'https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1658235957_gieqs_iii_social_ii.png';?>">
+        content="<?php echo 'https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1664138672_gieqs_iii_image.png';?>">
 
     <meta property="og:type" content="website" />
     <meta property="fb:app_id" content="493045018280075" />
@@ -101,7 +101,7 @@ $assets_paid->Load_from_key($asset_id_pagewrite);
     <meta property="og:title" content="<?php echo $assets_paid->getName(); ?>">
     <meta property="og:description" content="<?php echo $assets_paid->getdescription(); ?>">
     <meta property="og:image"
-        content="<?php echo 'https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1658235957_gieqs_iii_social_ii.png';?>">
+        content="<?php echo 'https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1664138672_gieqs_iii_image.png';?>">
 
 
     <style>
