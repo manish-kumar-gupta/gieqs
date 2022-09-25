@@ -258,8 +258,8 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                     </div>
 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
-                        <a href="http://boucartmedical.com/en/" target="_Blank">
-                            <img class="logo" alt="BOUCART" src="<?php echo BASE_URL . '/assets/img/brand/boucart.jpg';?>">
+                        <a href="http://creomedical.com/en/" target="_Blank">
+                            <img class="logo" alt="creo" src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1663908233_Creo Medical primary logo full-colour RGB low-res with clearance.jpg">
                         </a>
                     </div>
 
