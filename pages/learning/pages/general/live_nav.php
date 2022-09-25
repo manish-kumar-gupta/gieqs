@@ -163,7 +163,7 @@ Useful for PHP to JS transfer
                 </li>
                 <li class="nav-item mr-auto">
                                 <a id="support-tour" class="nav-link nav-link-icon"
-                                    href="<?php echo BASE_URL;?>/pages/support/support.php" target="_blank">
+                                    href="<?php echo BASE_URL;?>/pages/support/support_gieqs_digital.php" target="_blank">
 
                                     <span class="nav-link-inner--text ">Support</span>
                                 </a>
