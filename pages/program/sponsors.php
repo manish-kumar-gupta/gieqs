@@ -209,14 +209,14 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                 <div class="client-group row justify-content-center align-items-center mb-4">
 
                     <div class="col-lg-4 col-md-4 col-4 p-3">
-                        <a href="https://www.acertys.com" target="_Blank">
-                            <img class="logo" alt="ACERTYS" src="<?php echo BASE_URL . '/assets/img/sponsors/ACERTYS.jpg';?>">
+                        <a href="https://www.duodmed.com" target="_Blank">
+                            <img class="logo" alt="DUODMED" src=" https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1663918022_Duomed.png">
                         </a>
                     </div>
 
                     <div class="col-lg-4 col-md-4 col-4 p-3">
-                        <a href="https://www.acertys.com" target="_Blank">
-                            <img class="logo" alt="ACERTYS" src="<?php echo BASE_URL . '/assets/img/sponsors/Fuji Logo.jpg';?>">
+                        <a href="https://www.fujifilm-endoscopy.com/" target="_Blank">
+                            <img class="logo" alt="fujifilm" src="<?php echo BASE_URL . '/assets/img/sponsors/Fuji Logo.jpg';?>">
                         </a>
                     </div>
 
@@ -390,6 +390,23 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                     <div class="col-lg-2 col-md-4 col-4 py-1">
                         <img class="logo" alt="Biogen" src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1663663578_biogen logo.jpg">
                     </div>
+                    <div class="col-lg-2 col-md-4 col-4 py-1">
+                        <img class="logo" alt="Celltrion" src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1663918122_Celltrion.jpg">
+                    </div> 
+                    
+                    <div class="col-lg-2 col-md-4 col-4 py-1">
+                        <img class="logo" alt="Takeda" src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1663918305_Takeda Logo.jpg">
+                    </div> 
+                    
+                    <div class="col-lg-2 col-md-4 col-4 py-1">
+                        <img class="logo" alt="Ferring" src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1663918337_Ferring logo blue - high res (JPG - RGB - 89[1].3KB).jpg">
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-4 py-1">
+                        <img class="logo" alt="Galapagos" src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1663918087_GLPG_2C_Simpl_Normal.png">
+                    </div>
+
+                    
 
                     <!-- <div class="col-lg-2 col-md-4 col-4 py-1">
                         <img class="logo" alt="Cook Medical" src="<?php //echo BASE_URL . '/assets/img/brand/cook.jpg';?>">

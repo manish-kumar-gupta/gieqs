@@ -1361,6 +1361,23 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="col-lg-3 py-3">
+                            <div data-animate-hover="2">
+                                <div class="animate-this">
+                                    <a >
+                                        <img alt="Sarah Raevens" class="img-fluid rounded shadow"
+                                            src="https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1663767766_Sarah Raevens.png">
+                                    </a>
+                                </div>
+                                <div class="mt-3">
+                                    <h5 class="gieqsGold card-title mb-0">Dr Sarah Raevens</h5>
+                                    <p class="text-muted mb-0">Hepatologist</p>
+                                    <p class="text-muted mb-0">UZ Gent</p>
+                                    <p class="text mb-0">Focus: quality in Hepatology and Endoscopy</p>
+                                </div>
+                            </div>
+                        </div>
                         
 
                         <div class="col-lg-3 py-3">

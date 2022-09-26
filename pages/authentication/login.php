@@ -587,7 +587,7 @@ function login(){
          
          if (data == 3){
 
-          $('#loginError').show().html('Please use the code sent by email to login');
+          $('#loginError').show().html('Please use the link sent by email to verify your email prior to login');
 				   setTimeout(
 				   function() 
 				   {  $('#loginError').hide();  }, 8000);

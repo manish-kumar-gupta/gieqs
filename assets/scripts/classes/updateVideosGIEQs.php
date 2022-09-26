@@ -28,7 +28,7 @@ echo 'Working Classes' . PHP_EOL;
 
 exit();
 
-$arrayToProcess = ['36', '37', '38', '39'];
+$arrayToProcess = ['47', '48', '49', '50'];
 
 foreach ($arrayToProcess as $key5=>$value5){
 
