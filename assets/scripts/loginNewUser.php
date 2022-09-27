@@ -175,10 +175,22 @@ fclose($myfile);
 
     }else{
         
-        if ($explicit){
-            echo 'Invalid Key.  This may be because of multiple clicks on the link.<br/><br/> No problem, we will get you logged in.<br/> 
+        if ($explicit){?>
+
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <div class="container">
+    <?php
+
+            echo '<p>Invalid Key.  This may be because of multiple clicks on the link.</p><br/><br/> <p>No problem, we will get you logged in.</p><br/> 
             Please go to <a href="' . BASE_URL . '/login">login</a> and click forgot password.  Enter your email address for a password reset link.<br/><br/>If you were in the middle of activating a free link <b>you must click the link again from your email</b> once you have reset your password to receive the free course.  <br/><br/>You can always contact us if you are still having trouble (admin@gieqs.com).  <br/><br/>Remember Internet Explorer is not supported on our site.';
             $log[] = "Invalid Key.  Please go to login and request a new account reset or contact us.  Can't open user account for $userid using key $key";
+
+
+?>
+</div>
+<?php
 
             }
 
