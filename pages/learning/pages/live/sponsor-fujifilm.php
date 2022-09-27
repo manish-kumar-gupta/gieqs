@@ -186,7 +186,7 @@ require(BASE_URI . '/pages/learning/pages/general/live_nav.php'); ?>
 
               <div class="text-center d-flex justify-content-center">
                 <a href="https://www.acertys.com" target="_blank" class="p-4">
-                  <img alt="Onis Acertys" src="https://www.gieqs.com/assets/img/sponsors-pages/Onis_Acertys/Onis Acertys logo.jpg"
+                  <img alt="Onis Acertys" src=" https://www.gieqs.com/assets/scripts/pdocrud/script/uploads/1663918022_Duomed.png"
                       style="max-width:100%;max-height:20vh">
                 </a>
                 <a href="https://www.acertys.com" target="_blank" class="p-4">
@@ -223,15 +223,21 @@ require(BASE_URI . '/pages/learning/pages/general/live_nav.php'); ?>
         <div class="card-group flex-column flex-lg-row">
           <div class="card bg-gradient-dark border-0 p-5 mt--150">
             <div class="card-body">
-              <h5 class="h4 text-white">Acertys & Fujifilm</h5>
-              <p class="mt-4 mb-0 text-white">
-                Acertys & Fujifilm, in collaboration with 3D Matrix, are proudly partnering up with GIEQs for their highly anticipated Second Edition of the Ghent International Endoscopy Quality Symposium, focused on promoting quality in the endoscopic interventions you perform everyday. 
-                <br><br>Acertys, part of the Duomed Group and formerly known as Onis Medical, is exclusively distributing Fujifilm endoscopes since 1976 in Belgium. Over the years we’ve expanded our product portfolio by collaborating with various high-quality manufacturers to fulfill our ambition of being a thrusted partner in the medical field. 
-                <br><br>Our divisions are supported by their own technical department. With our presence of local service engineers in the field and a full ESD-proof workshop within our office near Brussels, we strive to deliver excellent service in the most optimal and efficient way. Customers can rely on our teams not only for repair and maintenance, but also for technical / user trainings and various hands-on workshops.
+              <h5 class="h4 text-white">Duomed & Fujifilm</h5>
+              <p class="mt-4 text-white">
+              Duomed Belgium & Fujifilm are proudly partnering up with GIEQs for their highly anticipated Third Edition of GIEQs (Ghent International Endoscopy Quality Symposium), focussed on theory and demonstrating the safe, deconstructed technique of procedures that all Endoscopists perform everyday.</p>              
+                
+              <p class="text-muted">As a total solution provider, Duomed has the passion to deliver best-fit solutions and value-added services for their partners within the healthcare sector. Together with the partners, Duomed strives for optimal patient care and continuity and therefore they provide products and services that comply to the highest quality standards in medical care.</p>
+ 
+              <p class="text-muted">Duomed is exclusively distributing FujiFilm endoscopes since 1978. In 2010, the company became part of the Duomed Group and expanded its product portfolio within different medical domains.</p>
+ 
+              <p class="text-muted">All divisions are supported by their own technical (repair and maintenance) department and customers can rely on the expertise of the different product & service teams for technical / user trainings and various hands-on workshops.</p>
+              
+              <p class="text-muted">Our divisions are supported by their own technical department. With our presence of local service engineers in the field and a full ESD-proof workshop within our office near Brussels, we strive to deliver excellent service in the most optimal and efficient way. Customers can rely on our teams not only for repair and maintenance, but also for technical / user trainings and various hands-on workshops.</p>
                 <br><br>
               </p>
               <a href="https://www.gieqs.com/assets/img/sponsors-pages/Onis_Acertys/PDF Acertys 3.pdf" target="_blank">
-                <img src="https://www.gieqs.com/assets/img/sponsors-pages/Onis_Acertys/PDF Acertys 3-min.png" alt="PDF Acertys" style="max-width:100%;max-height:200px">
+                <img src="https://www.gieqs.com/assets/img/sponsors-pages/Onis_Acertys/PDF Acertys 3-min.png" alt="PDF Acertys" style="max-width:200%;max-height:200px">
               </a>
               <ul class="nav mt-4">
                 <!--
@@ -243,7 +249,7 @@ require(BASE_URI . '/pages/learning/pages/general/live_nav.php'); ?>
                   <a class="nav-link pl-0" href="https://www.youtube.com/watch?v=U3cgJlOlHTs" target="_blank"><i class="fab fa-youtube"></i></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="https://www.linkedin.com/company/olympus-europa-se-&-co-kg/mycompany/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                  <a class="nav-link" href="https://www.linkedin.com/company/duomed-belgium" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                 </li>
 
                 
