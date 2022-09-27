@@ -54,8 +54,10 @@ if (count($_GET) > 0){
 
     //look up the user
 
+    $log=null;
+
     
-    $log = "New user script run with key {$data['key']}";
+    $log = "New user script run with key" . $data['key'];
 
 
     if ($userFunctions->getUserFromKey($data['key'])){
@@ -63,7 +65,7 @@ if (count($_GET) > 0){
     $userid = $userFunctions->getUserFromKey($data['key']);
     echo $userid;
 
-    $log .= "User id $userid with key {$data['key']} attempting to register as new user";
+    $log .= "User id $userid with key" . $data['key'] .  "attempting to register as new user";
 
 
     //switch the userLevel to 6
