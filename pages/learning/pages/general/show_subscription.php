@@ -170,9 +170,29 @@ error_reporting(-1);
         }else{
         
             $fullAccess = false;
+
+
+        
         }
 
-        $access = $assetManager->is_assetid_covered_by_user_subscription($assetid, $userid, $debug, $fullAccess);
+
+        //check access needs faking for assetid 137, 138, 139, 140 to check 95
+
+        $fakeArray = ['137', '138', '139', '140'];
+
+        if (in_array($assetid, $fakeArray)){
+
+            $access = $assetManager->is_assetid_covered_by_user_subscription('95', $userid, $debug, $fullAccess);
+
+
+
+        }else{
+            
+            $access = $assetManager->is_assetid_covered_by_user_subscription($assetid, $userid, $debug, $fullAccess);
+
+
+        }
+
 
         //fix for 95 **GIEQs III
 
