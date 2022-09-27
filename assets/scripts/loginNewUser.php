@@ -183,7 +183,7 @@ fclose($myfile);
     <div class="container">
     <?php
 
-            echo '<p>Oops!  You clicked an invalid Email Link.  We could not confirm your email.</p><p>This may be because of multiple clicks on the link.</p> <p>No problem, we will get you logged in.</p><br/> 
+            echo '<h4>Oops!  You clicked an invalid Email Link.  We could not confirm your user account.</h4><p>This may be because of multiple clicks on the link.</p> <h4>No problem, we will get you logged in.</h4><br/> 
             Please go to <a href="' . BASE_URL . '/login">login</a> and click Lost password.  Enter your email address for a password reset link.<br/><br/>If you were in the middle of activating a free link <b>you must click the link again from your email</b> once you have reset your password to receive the free course.  <br/><br/>You can always contact us if you are still having trouble (<a href="mailto:admin@gieqs.com">here</a>).  <br/><br/>Remember Internet Explorer is not supported on our site and you will not be able to login using this browser.';
             $log[] = "Invalid Key.  Please go to login and request a new account reset or contact us.  Can't open user account for $userid using key $key";
 
