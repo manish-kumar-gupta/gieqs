@@ -197,7 +197,7 @@ error_reporting(-1);
 
 
         }
-        
+
         if (!$access){
 
             setcookie("browsing", "", time() - 3600);
@@ -1261,7 +1261,7 @@ filter: alpha(opacity=30);
 
                     }else{
 
-                        $courseTest = false;
+                        $courseTest = true;
                         
                     }
 
