@@ -1,23 +1,33 @@
 <?php
 error_reporting(E_ALL);
-
+//;
 $openaccess = 1;
-
+//echo 'hello';
+//$requiredUserLevel = 4;
 require ('../../assets/includes/config.inc.php');		
-
+//echo 'hello2';
 require (BASE_URI.'/assets/scripts/headerScript.php');
 
+//require (BASE_URI.'/assets/scripts/login_functions.php');
 
+//echo 'hello3';sss
 $general = new general;
 $users = new users;
 $userFunctions = new userFunctions;
+//echo 'hello4';
+
+
+
 
 function ne($v) {
     return $v != '';
 }
 
+
+
 $debug = true;
 $explicit = true;
+//echo 'hello';
 
 if (count($_GET) > 0){
 
@@ -40,20 +50,36 @@ if (count($_GET) > 0){
         print_r($data);
         
         }
+
+
+    //look up the user
+
+    
+
     
 
     if ($userFunctions->getUserFromKey($data['key'])){
 
-        $userid = $userFunctions->getUserFromKey($data['key']);
-        echo $userid;
+    $userid = $userFunctions->getUserFromKey($data['key']);
+    echo $userid;
 
+    //switch the userLevel to 6
 
-        $users->Load_from_key($userid);
-        $users->setaccess_level(6);
+    $users->Load_from_key($userid);
+    $users->setaccess_level(6);
     
+        //get a new key
+
+        $key = $userFunctions->generateRandomString('10');
+        $users->setkey($key);
+
+        //commit changes to DB
 
         if ($users->prepareStatementPDOUpdate() > 0){
 
+            //login
+
+            //get from the users class
 
             $_SESSION['user_id'] = $users->getuser_id();
             $_SESSION['firstname'] = $users->getfirstname();
@@ -61,24 +87,29 @@ if (count($_GET) > 0){
             $_SESSION['access_level'] = $users->getaccess_level();
             $_SESSION['siteKey'] = 'TxsvAb6KDYpmdNk';
 
-        
-            if ($access_token){
+            //redirect gieqs.com
 
-                redirect_login(BASE_URL . '/pages/authentication/welcomeNewUser.php?signup_redirect=' . $signup_redirect . '&access_token=' . $access_token);
+           
+                if ($access_token){
+
+                    redirect_login(BASE_URL . '/pages/authentication/welcomeNewUser.php?signup_redirect=' . $signup_redirect . '&access_token=' . $access_token);
 
 
-            }else{
+                }else{
+
+                
+                redirect_login(BASE_URL . '/pages/authentication/welcomeNewUser.php?signup_redirect=' . $signup_redirect);
+
+                }
 
             
-            redirect_login(BASE_URL . '/pages/authentication/welcomeNewUser.php?signup_redirect=' . $signup_redirect);
 
-            }
 
 
         }else{
 
-
-            echo 'User updating failed.  Ensure you are using Chrome, Safari or Firefox.  If you keep receiving this error please go to <a href="' . BASE_URL . '/login">login</a> and click forgot password.'
+            //failed to update user account
+            //show error
 
         }
 
@@ -86,11 +117,15 @@ if (count($_GET) > 0){
     }else{
         
         if ($explicit){
-            echo 'Invalid Key.  You probably clicked the linked twice.  Please go to <a href="' . BASE_URL . '/login">login</a> and click forgot password.  Enter your email address for a password reset link.  You can always contact us if you are still having trouble.';
+            echo 'Invalid Key.  Please go to login and request a new account reset or contact us';
             }
 
 
     }
+
+
+    //log the user in
+
 
     
 }else{
