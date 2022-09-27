@@ -519,9 +519,10 @@ if ($assetManager->doesUserHaveSameAssetAlready('95', $userid, false) === false)
 <div class="">
     <div class="row p-3">
 
-        <p class="h4">GIEQs III is LIVE.  Click here to enter the experience.</p>
+        <p class="h4">GIEQs III is LIVE.  Click here to enter the experience. </p>
         <p style="font-size:1.25rem;"><a href="https://twitter.com/search/?q=%23GIEQs_III"
-                target="_blank">#GIEQs_III</a> is the hashtag to keep track of the event on Twitter.
+                target="_blank">#GIEQs_III</a> (Twitter) and <a href="https://www.facebook.com/hashtag/gieqs_iii"
+                target="_blank">#GIEQs_III</a> (Facebook) and  are the hashtags to keep track of the event on Twitter.
         </p>
 
         <p style="font-size:1.25rem;"><a href="https://twitter.com/search/?q=%23GIEQs_III"

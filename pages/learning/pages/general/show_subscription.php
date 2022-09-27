@@ -82,6 +82,9 @@ error_reporting(-1);
 
         $debug = false;
 
+        require_once BASE_URI . '/pages/learning/includes/gieqs_iii_settings.php';
+
+
         if ($debug){
           error_reporting(E_ALL);
           echo '<div class="main-content container mt-10">';
@@ -147,6 +150,33 @@ error_reporting(-1);
               /* load the asset */
 
               if (isset($assetid)){
+
+
+
+
+                //fix for 95 **GIEQs III
+
+                if ($assetid == '95'){
+                    //echo 'Assetid is ' . $gieqs_iii_is_live;
+
+                    //die();
+
+
+                    if ($gieqs_iii_is_live == '1'){
+
+                        
+
+                        //set the plenary asset
+
+                        $assetid = $gieqs_iii_plenary_link;
+
+                        echo 'Assetid is ' . $assetid;
+                        //die();
+
+                    }
+
+
+                }
        
 
         $access = null;

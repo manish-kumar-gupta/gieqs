@@ -1,8 +1,8 @@
 <?php 
 
-$debugAccess = FALSE;
-$test = FALSE;
-$testDate = '2022-09-30 00:00:00';
+$debugAccess = false;
+$test = true;
+$testDate = '2022-09-29 00:00:00';
 
 
 if (!$test){

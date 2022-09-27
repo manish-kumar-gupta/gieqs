@@ -231,7 +231,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
     </div>
 
        
-        <?php         if (($gieqs_iii_is_live === true)){?>
+        <?php         if (($gieqs_iii_is_live == '1')){?>
 
         <div class="">
             <div class="row p-3">
