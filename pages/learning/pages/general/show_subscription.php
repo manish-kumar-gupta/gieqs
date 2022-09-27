@@ -154,29 +154,7 @@ error_reporting(-1);
 
 
 
-                //fix for 95 **GIEQs III
-
-                if ($assetid == '95'){
-                    //echo 'Assetid is ' . $gieqs_iii_is_live;
-
-                    //die();
-
-
-                    if ($gieqs_iii_is_live == '1'){
-
-                        
-
-                        //set the plenary asset
-
-                        $assetid = $gieqs_iii_plenary_link;
-
-                        echo 'Assetid is ' . $assetid;
-                        //die();
-
-                    }
-
-
-                }
+                
        
 
         $access = null;
@@ -196,6 +174,30 @@ error_reporting(-1);
 
         $access = $assetManager->is_assetid_covered_by_user_subscription($assetid, $userid, $debug, $fullAccess);
 
+        //fix for 95 **GIEQs III
+
+        if ($assetid == '95'){
+            //echo 'Assetid is ' . $gieqs_iii_is_live;
+
+            //die();
+
+
+            if ($gieqs_iii_is_live == '1'){
+
+                
+
+                //set the plenary asset
+
+                $assetid = $gieqs_iii_plenary_link;
+
+                echo 'Assetid is ' . $assetid;
+                //die();
+
+            }
+
+
+        }
+        
         if (!$access){
 
             setcookie("browsing", "", time() - 3600);
