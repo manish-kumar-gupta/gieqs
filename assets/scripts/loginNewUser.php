@@ -55,13 +55,16 @@ if (count($_GET) > 0){
     //look up the user
 
     
+    $log = "New user script run with key {$data['key']}";
 
-    
 
     if ($userFunctions->getUserFromKey($data['key'])){
 
     $userid = $userFunctions->getUserFromKey($data['key']);
     echo $userid;
+
+    $log .= "User id $userid with key {$data['key']} attempting to register as new user";
+
 
     //switch the userLevel to 6
 
@@ -81,6 +84,9 @@ if (count($_GET) > 0){
 
             //get from the users class
 
+            $log .= "User id $userid key updated to $key";
+
+
             $_SESSION['user_id'] = $users->getuser_id();
             $_SESSION['firstname'] = $users->getfirstname();
             $_SESSION['surname'] = $users->getsurname();
@@ -92,17 +98,24 @@ if (count($_GET) > 0){
            
                 if ($access_token){
 
+                    $log .= "Redirect to " . BASE_URL . '/pages/authentication/welcomeNewUser.php?signup_redirect=' . $signup_redirect . '&access_token=' . $access_token;
+
+
                     redirect_login(BASE_URL . '/pages/authentication/welcomeNewUser.php?signup_redirect=' . $signup_redirect . '&access_token=' . $access_token);
 
 
                 }else{
 
                 
+                    $log .= "Redirect to " . BASE_URL . '/pages/authentication/welcomeNewUser.php?signup_redirect=' . $signup_redirect;
+
                 redirect_login(BASE_URL . '/pages/authentication/welcomeNewUser.php?signup_redirect=' . $signup_redirect);
+
+                
 
                 }
 
-            
+
 
 
 
@@ -110,6 +123,8 @@ if (count($_GET) > 0){
 
             //failed to update user account
             //show error
+            $log .= "Can't update user account for $userid using key $key";
+
 
         }
 
@@ -118,6 +133,8 @@ if (count($_GET) > 0){
         
         if ($explicit){
             echo 'Invalid Key.  Please go to login and request a new account reset or contact us';
+            $log .= "Invalid Key.  Please go to login and request a new account reset or contact us.  Can't open user account for $userid using key $key";
+
             }
 
 
@@ -132,6 +149,25 @@ if (count($_GET) > 0){
 
     if ($debug){
 		echo 'data array empty';
+        $log .= 'data array empty';
+
 		}
 }
+
+$dataLogFile = implode(" - ", $log);
+
+//Add a newline onto the end.
+$dataLogFile .= PHP_EOL;
+
+if ($debugPrint){
+
+    var_dump($dataLogFile);
+}
+
+
+//Log the data to your file using file_put_contents.
+$myfile = fopen(BASE_URI . '/assets/scripts/newuser_log.log', "a");
+fwrite($myfile, "\n New Log, at " . $current_date_sqltimestamp . "\n");
+fwrite($myfile, $dataLogFile);
+fclose($myfile);
 
