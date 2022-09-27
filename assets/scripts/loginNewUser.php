@@ -176,7 +176,8 @@ fclose($myfile);
     }else{
         
         if ($explicit){
-            echo 'Invalid Key.  Please go to login and request a new account reset or contact us';
+            echo 'Invalid Key.  This may be because of multiple clicks on the link.<br/> No problem, we will get you logged in.<br/> 
+            Please go to <a href="' . BASE_URL . '/login">login</a> and click forgot password.  Enter your email address for a password reset link.<br/>  You can always contact us if you are still having trouble (admin@gieqs.com).  Remember Internet Explorer is not supported on our site.';
             $log[] = "Invalid Key.  Please go to login and request a new account reset or contact us.  Can't open user account for $userid using key $key";
 
             }
