@@ -23,6 +23,10 @@ function ne($v) {
     return $v != '';
 }
 
+$current_date = new DateTime('now', new DateTimeZone('UTC'));
+$current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s');
+
+
 
 
 $debug = true;
@@ -102,6 +106,25 @@ if (count($_GET) > 0){
 
                     $log[] = "Redirect to " . BASE_URL . '/pages/authentication/welcomeNewUser.php?signup_redirect=' . $signup_redirect . '&access_token=' . $access_token;
 
+                    $dataLogFile = implode(" - ", $log);
+
+//Add a newline onto the end.
+$dataLogFile .= PHP_EOL;
+
+if ($debugPrint){
+
+    var_dump($dataLogFile);
+}
+
+
+
+//Log the data to your file using file_put_contents.
+$myfile = fopen(BASE_URI . '/assets/scripts/newuser_log.log', "a");
+fwrite($myfile, "\n New Log, at " . $current_date_sqltimestamp . "\n");
+fwrite($myfile, $dataLogFile);
+fclose($myfile);
+
+
 
                     redirect_login(BASE_URL . '/pages/authentication/welcomeNewUser.php?signup_redirect=' . $signup_redirect . '&access_token=' . $access_token);
 
@@ -110,6 +133,25 @@ if (count($_GET) > 0){
 
                 
                     $log[] = "Redirect to " . BASE_URL . '/pages/authentication/welcomeNewUser.php?signup_redirect=' . $signup_redirect;
+
+                    $dataLogFile = implode(" - ", $log);
+
+//Add a newline onto the end.
+$dataLogFile .= PHP_EOL;
+
+if ($debugPrint){
+
+    var_dump($dataLogFile);
+}
+
+
+
+//Log the data to your file using file_put_contents.
+$myfile = fopen(BASE_URI . '/assets/scripts/newuser_log.log', "a");
+fwrite($myfile, "\n New Log, at " . $current_date_sqltimestamp . "\n");
+fwrite($myfile, $dataLogFile);
+fclose($myfile);
+
 
                 redirect_login(BASE_URL . '/pages/authentication/welcomeNewUser.php?signup_redirect=' . $signup_redirect);
 
@@ -165,9 +207,6 @@ if ($debugPrint){
 
     var_dump($dataLogFile);
 }
-
-$current_date = new DateTime('now', new DateTimeZone('UTC'));
-$current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s');
 
 
 
