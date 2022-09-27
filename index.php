@@ -227,11 +227,50 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
     <div class="container pt-0 pt-lg-0">
 
         <div class="actions-toolbar py-2">
-            <!--  <h5 class="mb-1">Your GIEQs Stats</h5>
-                        <p class="text-sm text-muted mb-0">How GIEQy are you <?php //echo $_SESSION['firstname'];?>?</p> -->
-        </div>
+
+    </div>
+
+       
+        <?php         if (($gieqs_iii_is_live === true)){?>
 
         <div class="">
+            <div class="row p-3">
+
+                <p class="h4">GIEQs III is LIVE.  Login for Immediate Access.</p>
+        </div>
+        <div class="row p-3">
+
+
+                <p><a href="<?php echo BASE_URL;?>/login?destination=viewasset&assetid=95" id="register" type="button"
+                    class="btn btn-small text-dark btn-fill-gieqsGold m-1 ml-4 py-1">Access Now (registered)</a></p>
+
+        </div>
+        <div class="row p-3">
+
+
+                    <p class="h4">Not yet registered?  Get immediate access below.</p>
+
+                <p style="font-size:1.25rem;"><a href="https://twitter.com/search/?q=%23GIEQs_III"
+                        target="_blank">#GIEQs_III</a> is the the Only Endoscopy Symposium focussed on Everyday
+                    Endoscopy Techniques.
+                    29/30 Sept '22. Join Michael Bourke, @JTA_Endo, @RolandValori, @RafBisschopsBE, @djtate, @PieterHindryckx.
+                </p>
+
+                <p style="font-size:1.25rem;"><a href="https://twitter.com/search/?q=%23GIEQs_III"
+                        target="_blank">#GIEQs_III</a> has been awarded <strong>16 CME Points</strong> by EACCME and is endorsed by the European Society of Gastrointestinal Endoscopy (ESGE) and the American Society of Gastrointestinal Endoscopy (ASGE).</p>
+                
+           
+                <p><a href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=95&action=register" id="register" type="button"
+                    class="btn btn-small text-dark btn-fill-gieqsGold m-1 ml-4 py-1">Register Here</a></p>
+                
+
+            </div>
+        </div>
+
+        <?php  }else{?>
+
+
+            <div class="">
             <div class="row p-3">
 
                 <p class="h4">Not registered for GIEQs III?</p>
@@ -251,6 +290,12 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 
             </div>
         </div>
+
+
+        <?php } ?>
+
+
+
     </div>
 </section>
         <!-- GIEQs II Filler -->

@@ -404,8 +404,17 @@ if ($debug){
               
 
                 <li class="nav-item">
-                    <a class="nav-link"
-                        href="<?php echo BASE_URL; ?>/index.php">Symposium</a>
+
+                    <?php if ($gieqs_iii_is_live) {?>
+
+                        <a class="nav-link" href="<?php echo BASE_URL; ?>/login?destination=viewasset&assetid=95">GIEQs-III</a>
+
+                    <?php }else{ ?>
+
+                    <a class="nav-link" href="<?php echo BASE_URL; ?>/index.php">Symposium</a>
+
+                    <?php } ?>
+                    
                 </li>
 
                 <li class="nav-item">

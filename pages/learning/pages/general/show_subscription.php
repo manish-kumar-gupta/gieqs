@@ -1204,6 +1204,8 @@ filter: alpha(opacity=30);
 
         //echo the same as for the GIEQs conference
 
+        
+
         $programme_array = $assetManager->returnProgrammesAsset($assetid);
                 $programme_id = $programme_array[0];
                 $programme->Load_from_key($programme_id);
@@ -1224,6 +1226,7 @@ filter: alpha(opacity=30);
                     if ($isSuperuser == 1 || $currentUserLevel == 2){
 
                         $courseTest = true; //CHANGE THIS FOR TESTING SYMPOSIA
+
                     }else{
 
                         $courseTest = false;
