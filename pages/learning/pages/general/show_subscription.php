@@ -1277,11 +1277,11 @@ filter: alpha(opacity=30);
 
                     if ($isSuperuser == 1 || $currentUserLevel == 2){
 
-                        $courseTest = true; //CHANGE THIS FOR TESTING SYMPOSIA
+                        $courseTest = true; //CHANGE THIS FOR TESTING SYMPOSIA SUPERUSER TESTING
 
                     }else{
 
-                        $courseTest = true;
+                        $courseTest = false; //STANDARD USER TESTING
                         
                     }
 
