@@ -1119,6 +1119,9 @@ if ($debugPrint){
     var_dump($dataLogFile);
 }
 
+$current_date = new DateTime('now', new DateTimeZone('UTC'));
+$current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s');
+
 
 //Log the data to your file using file_put_contents.
 $myfile = fopen(BASE_URI . '/pages/learning/scripts/subscriptions/paid_subscription_setup_log.log', "a");
