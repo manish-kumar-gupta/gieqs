@@ -16,7 +16,7 @@ function ne($v) {
     return $v != '';
 }
 
-$debug = false;
+$debug = true;
 $explicit = true;
 
 if (count($_GET) > 0){
