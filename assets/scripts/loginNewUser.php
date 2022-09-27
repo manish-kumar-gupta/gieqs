@@ -29,7 +29,7 @@ $current_date_sqltimestamp = date_format($current_date, 'Y-m-d H:i:s');
 
 
 
-$debug = true;
+$debug = false;
 $explicit = true;
 //echo 'hello';
 
@@ -183,8 +183,8 @@ fclose($myfile);
     <div class="container">
     <?php
 
-            echo '<p>Invalid Key.  This may be because of multiple clicks on the link.</p><br/><br/> <p>No problem, we will get you logged in.</p><br/> 
-            Please go to <a href="' . BASE_URL . '/login">login</a> and click forgot password.  Enter your email address for a password reset link.<br/><br/>If you were in the middle of activating a free link <b>you must click the link again from your email</b> once you have reset your password to receive the free course.  <br/><br/>You can always contact us if you are still having trouble (admin@gieqs.com).  <br/><br/>Remember Internet Explorer is not supported on our site.';
+            echo '<p>Invalid Email Link.  This may be because of multiple clicks on the link.</p> <p>No problem, we will get you logged in.</p><br/> 
+            Please go to <a href="' . BASE_URL . '/login">login</a> and click forgot password.  Enter your email address for a password reset link.<br/><br/>If you were in the middle of activating a free link <b>you must click the link again from your email</b> once you have reset your password to receive the free course.  <br/><br/>You can always contact us if you are still having trouble (<a href="mailto:admin@gieqs.com">here</a>).  <br/><br/>Remember Internet Explorer is not supported on our site and you will not be able to login using this browser.';
             $log[] = "Invalid Key.  Please go to login and request a new account reset or contact us.  Can't open user account for $userid using key $key";
 
 
