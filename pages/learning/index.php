@@ -452,10 +452,12 @@ if ($assetManager->doesUserHaveSameAssetAlready('95', $userid, false) === false)
 <div class="">
     <div class="row p-3">
 
-        <p class="h4">GIEQs III is LIVE.  Login for Immediate Access.  Not yet registered?  Get immediate access below.</p>
+        <p class="h4">GIEQs III is LIVE.  Click below for Immediate Access.</p>
 
         <p><a href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=95&action=register" id="register" type="button"
-            class="btn btn-small text-dark btn-fill-gieqsGold m-1 ml-4 py-1">Access Now (registered)</a></p>
+            class="btn btn-small text-dark btn-fill-gieqsGold m-1 ml-4 py-1">Access Now (if registered)</a></p>
+
+            <p class="h4">Not yet registered?  Get immediate access below.</p>
 
         <p style="font-size:1.25rem;"><a href="https://twitter.com/search/?q=%23GIEQs_III"
                 target="_blank">#GIEQs_III</a> is the the Only Endoscopy Symposium focussed on Everyday

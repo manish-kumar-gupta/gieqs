@@ -43,11 +43,11 @@ if (count($_GET) > 0){
 	
 	$data = $general->sanitiseGET($_GET);
 	
-	foreach ($data as $key=>$value){
+	/* foreach ($data as $key=>$value){
 		
 		$GLOBALS[$key] = $value;
 		
-    }
+    } */
 
     if ($debug){
 
@@ -63,13 +63,20 @@ if (count($_GET) > 0){
     
     $log[] = "New user script run with key" . $data['key'];
 
+    if ($debug){
 
-    if ($userFunctions->getUserFromKey($data['key'])){
+        var_dump($userFunctions->getUserFromKey($data['key']));
+
+    }
+
+    if ($userFunctions->getUserFromKey($data['key']) != FALSE){
 
     $userid = $userFunctions->getUserFromKey($data['key']);
     echo $userid;
 
     $log[] = "User id $userid with key" . $data['key'] .  "attempting to register as new user";
+
+
 
 
     //switch the userLevel to 6
@@ -167,7 +174,7 @@ fclose($myfile);
 
             //failed to update user account
             //show error
-            $log[] = "Can't update user account for $userid using key $key";
+            $log[] = "Can't update user account for $userid using key" . $data[$key];
 
 
         }
@@ -177,19 +184,19 @@ fclose($myfile);
         
         if ($explicit){?>
 
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <div class="container">
-    <?php
+        <?php
 
-            echo '<h4 class="mt-5">Oops!  You clicked an invalid Email Link.  We could not confirm your user account.</h4><p>This may be because of multiple clicks on the link.</p> <h4>No problem, we will get you logged in.</h4><br/> 
-            Please go to <a href="' . BASE_URL . '/pages/authentication/recover.php">the forgot password page</a>.  Enter your email address to receieve a password reset link by mail.<br/><br/>If you were in the middle of activating a free link <b>you must click the link again from your email</b> once you have reset your password to receive the free course.  <br/><br/>You can always contact us if you are still having trouble (<a href="mailto:admin@gieqs.com">here</a>).  <br/><br/>Remember Internet Explorer is not supported on our site and you will not be able to login using this browser.';
-            $log[] = "Invalid Key.  Please go to login and request a new account reset or contact us.  Can't open user account for $userid using key $key";
+                echo '<h4 class="mt-5">Oops!  You clicked an invalid Email Link.  We could not confirm your user account.</h4><p>This may be because of multiple clicks on the link.</p> <h4>No problem, we will get you logged in.</h4><br/> 
+                Please go to <a href="' . BASE_URL . '/pages/authentication/recover.php">the forgot password page</a>.  Enter your email address to receieve a password reset link by mail.<br/><br/>If you were in the middle of activating a free link <b>you must click the link again from your email</b> once you have reset your password to receive the free course.  <br/><br/>You can always contact us if you are still having trouble (<a href="mailto:admin@gieqs.com">here</a>).  <br/><br/>Remember Internet Explorer is not supported on our site and you will not be able to login using this browser.';
+                $log[] = "Invalid Key.  Please go to login and request a new account reset or contact us.  Can't open user account for $userid using key" . $data['key'];
 
 
-?>
-</div>
+    ?>
+    </div>
 <?php
 
             }
@@ -202,30 +209,29 @@ fclose($myfile);
 
 
     
-}else{
+    }else{
+
+        if ($debug){
+            echo 'data array empty';
+            $log[] = 'data array empty';
+
+            }
+    }
+
+    $dataLogFile = implode(" - ", $log);
+
+    //Add a newline onto the end.
+    $dataLogFile .= PHP_EOL;
 
     if ($debug){
-		echo 'data array empty';
-        $log[] = 'data array empty';
 
-		}
-}
-
-$dataLogFile = implode(" - ", $log);
-
-//Add a newline onto the end.
-$dataLogFile .= PHP_EOL;
-
-if ($debugPrint){
-
-    var_dump($dataLogFile);
-}
+        var_dump($dataLogFile);
+    }
 
 
 
-//Log the data to your file using file_put_contents.
-$myfile = fopen(BASE_URI . '/assets/scripts/newuser_log.log', "a");
-fwrite($myfile, "\n New Log, at " . $current_date_sqltimestamp . "\n");
-fwrite($myfile, $dataLogFile);
-fclose($myfile);
-
+    //Log the data to your file using file_put_contents.
+    $myfile = fopen(BASE_URI . '/assets/scripts/newuser_log.log', "a");
+    fwrite($myfile, "\n New Log, at " . $current_date_sqltimestamp . "\n");
+    fwrite($myfile, $dataLogFile);
+    fclose($myfile);

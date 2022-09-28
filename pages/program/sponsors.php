@@ -263,11 +263,11 @@ require BASE_URI . '/pages/learning/includes/nav_symposium.php';?>
                         </a>
                     </div>
 
-                    <div class="col-lg-2 col-md-3 col-4 p-3">
+                   <!--  <div class="col-lg-2 col-md-3 col-4 p-3">
                         <a href="https://www.drfalkpharma-benelux.eu/" target="_Blank">
                             <img class="logo" alt="Dr Falk" src="<?php echo BASE_URL . '/assets/img/sponsors/drfalk.png';?>">
                         </a>
-                    </div>
+                    </div> -->
 <!-- 
                     <div class="col-lg-2 col-md-3 col-4 p-3">
                         <a href="https://www.erbe-med.com/de-en/global-home/" target="_Blank">
