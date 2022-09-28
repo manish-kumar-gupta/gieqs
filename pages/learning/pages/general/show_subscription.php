@@ -1281,7 +1281,7 @@ filter: alpha(opacity=30);
 
                     }else{
 
-                        $courseTest = false; //STANDARD USER TESTING
+                        $courseTest = true; //STANDARD USER TESTING
                         
                     }
 
