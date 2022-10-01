@@ -1,7 +1,7 @@
 <?php 
 
 $debugAccess = false;
-$test = true;
+$test = false;
 $testDate = '2022-09-30 00:00:00';
 
 

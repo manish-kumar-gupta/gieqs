@@ -480,25 +480,25 @@ if ($assetManager->doesUserHaveSameAssetAlready('95', $userid, false) === false)
 
 
     <div class="">
-    <div class="row p-3">
+            <div class="row p-3">
 
-        <p class="h4">Not registered for GIEQs III?</p>
-        <p style="font-size:1.25rem;"><a href="https://twitter.com/search/?q=%23GIEQs_III"
-                target="_blank">#GIEQs_III</a> is the the Only Endoscopy Symposium focussed on Everyday
-            Endoscopy Techniques.
-            29/30 Sept '22. Join Michael Bourke, @JTA_Endo, @RolandValori, @RafBisschopsBE, @djtate, @PieterHindryckx.
-        </p>
+                <p class="h4">We Streamed GIEQs III to > 500 Endoscopists and Captured it All in HD.</p>
+        </div>
+        <div class="row p-3">
+                <p class="h4">Watch it in Full from 4/10.</p>
 
-        <p style="font-size:1.25rem;"><a href="https://twitter.com/search/?q=%23GIEQs_III"
-                target="_blank">#GIEQs_III</a> has been awarded <strong>16 CME Points</strong> by EACCME and is endorsed by the European Society of Gastrointestinal Endoscopy (ESGE) and the American Society of Gastrointestinal Endoscopy (ASGE).</p>
-        
-   
-        <p><a href="<?php echo BASE_URL;?>/pages/program/program_generic.php?id=95&action=register" id="register" type="button"
-            class="btn btn-small text-dark btn-fill-gieqsGold m-1 ml-4 py-1">Register Here</a></p>
-        
+                <p style="font-size:1.25rem;"><a href="https://twitter.com/search/?q=%23GIEQs_III"
+                        target="_blank">#GIEQs_III</a> is the the Only Endoscopy Symposium focussed on Everyday
+                    Endoscopy Techniques.</p>
+                    <p style="font-size:1.25rem;">On Demand sessions from Michael Bourke, @JTA_Endo, @RolandValori, @RafBisschopsBE, @djtate, @PieterHindryckx.
+                </p>
 
-    </div>
-</div>
+                <a href="<?php echo BASE_URL;?>/login?destination=viewasset&assetid=95" id="register" type="button" class="btn btn-small text-dark btn-fill-gieqsGold m-1 ml-4 py-1">Immediate Access</a>
+            
+                
+
+            </div>
+        </div>
 
 
 <?php } ?>
