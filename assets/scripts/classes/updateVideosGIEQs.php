@@ -26,7 +26,7 @@ echo 'Working Classes' . PHP_EOL;
 
 //exit(); //unable to execute again unless this removed
 
-exit();
+//exit();
 
 $arrayToProcess = ['47', '48', '49', '50'];
 

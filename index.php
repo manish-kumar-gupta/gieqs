@@ -276,7 +276,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                 <p class="h4">We Streamed GIEQs III to > 500 Endoscopists and Captured it All in HD.</p>
         </div>
         <div class="row p-3">
-                <p class="h4">Watch it in Full from 4/10.</p>
+                <p class="h4">Watch it in Full from 5/10.</p>
 
                 <p style="font-size:1.25rem;"><a href="https://twitter.com/search/?q=%23GIEQs_III"
                         target="_blank">#GIEQs_III</a> is the the Only Endoscopy Symposium focussed on Everyday
