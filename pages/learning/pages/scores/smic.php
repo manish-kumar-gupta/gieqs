@@ -516,6 +516,148 @@ background-color: rgb(238, 194, 120);
 			
 			
 		}
+
+        function determineSMICnew (kudov, depression, size, location, morphology, paris, debug=false) {
+			
+			if ((kudov == null) || (depression == null) || (size == null) || (location == null) || (morphology == null) || (paris == null)){
+		
+				return 'Missing Variables - please enter all 6 characteristics';
+
+
+			}else{
+				
+				var kudovInt = +kudov;
+				var depressionInt = +depression;
+				var sizeInt = +size;
+				var locationInt = +location;
+				var morphologyInt = +morphology;
+				var parisInt = +paris;
+				
+				
+				if (isNaN(kudovInt) || isNaN(depressionInt) || isNaN(sizeInt) || isNaN(locationInt) || isNaN(morphologyInt) || isNaN(parisInt) ){
+
+					return 'Issue with variables supplied, please check they are numbers';
+
+				}else{
+				
+					var SMICriskOR = -4.498799;
+					var SMICriskactual = 1.1;
+
+					if (kudovInt == 1){
+
+						SMICriskOR = SMICriskOR + 2.653242;
+
+					}
+
+					if (depressionInt == 1){
+
+                        if (debug){
+
+                            console.log(SMICriskOR);
+
+                        }
+
+						SMICriskOR = SMICriskOR + 0.5877867;
+
+					}
+
+					if (sizeInt == 2){
+						//>=30mm
+						SMICriskOR = SMICriskOR + 0.1133287;
+
+					}else if (sizeInt == 3){
+						//>=40mm
+						SMICriskOR = SMICriskOR + 2*(0.1133287);
+
+					}else if (sizeInt == 4){
+						//>=-50mm
+						SMICriskOR = SMICriskOR + 3*(0.1133287);
+
+					}else if (sizeInt == 5){
+						//>=60mm
+						SMICriskOR = SMICriskOR + 4*(0.1133287);
+
+					}else if (sizeInt == 6){
+						//>=70mm
+						SMICriskOR = SMICriskOR + 5*(0.1133287);
+
+					}else if (sizeInt == 7){
+						//>=80mm
+						SMICriskOR = SMICriskOR + 6*(0.1133287);
+
+					}else if (sizeInt == 8){
+						//>=90mm
+						SMICriskOR = SMICriskOR + 7*(0.1133287);
+
+					}else if (sizeInt == 9){
+						//>=100mm
+						SMICriskOR = SMICriskOR + 8*(0.1133287);
+
+					}
+					
+					if (locationInt == 1){
+
+						SMICriskOR = SMICriskOR + 0.6471032;
+
+					}
+
+					
+					
+					if (paris == 2){
+
+					SMICriskOR = SMICriskOR + 1.004302;
+
+					}else if (paris == 3){
+
+					SMICriskOR = SMICriskOR + 0.9122827;
+
+					}
+
+					if (morphology == 2){
+
+						SMICriskOR = SMICriskOR + 1.029619;
+
+						}else if (morphology == 3){
+
+						SMICriskOR = SMICriskOR - 0.3285041;
+
+						}
+						
+					//round(SMICriskOR, 1);
+
+					/* if (SMICriskOR == 0){
+
+						SMICriskOR = 1;
+
+					}
+
+					if (SMICriskOR == -0.28){
+
+						SMICriskOR = 0.72;
+
+					} */
+
+                    //SMICOR includes b0
+                    //formula to get cnacer is exp(x)/1+(exp(x))
+
+
+                    return SMICriskOR + '%';
+
+					/* var SMICnumeric = SMICriskOR * SMICriskactual;
+
+					SMICriskOR = round(SMICriskOR, 1);
+
+					SMICnumeric = round(SMICnumeric, 1);
+
+					return SMICnumeric + '%  <br>(or ' + SMICriskOR + 'x the risk of a granular 0-IIa 20-29mm LSL in the colon proximal to the sigmoid without a demarcated area or depression, risk 1.1%)<br>';
+	 */
+					
+				}
+			
+			}
+			
+			
+		}
 	
 		$(document).ready(function() {
 
@@ -528,7 +670,7 @@ background-color: rgb(238, 194, 120);
 				var morphology = $('#morphology').val();
 				var paris = $('#paris').val();
 
-				var COVERT = determineSMIC(kudov, depression, size, location, morphology, paris);
+				var COVERT = determineSMICnew(kudov, depression, size, location, morphology, paris);
 
                 $('#result').html('Risk of SMIC: ' + COVERT);
                 $('#result').addClass('gieqsGold');
