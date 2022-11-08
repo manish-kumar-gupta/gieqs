@@ -227,7 +227,7 @@ background-color: rgb(238, 194, 120);
         <!--Header CHANGEME-->
 
     <div class="d-flex align-items-end container">
-        <p class="h1 mt-10">Scope Guide Deconstruction Generator</p>
+        <p class="h1 mt-10">Mucosal Visualisation Score</p>
 
     </div>
     <div class="d-flex align-items-end container">
@@ -771,6 +771,80 @@ return SMICnumeric + '%  <br>(or ' + SMICriskOR + 'x the risk of a granular 0-II
 
     }   
 
+
+    //NEW WINDOW TRANSMITTING CODE
+
+/*     let newWindow;
+const response = document.getElementById('response');
+window.addEventListener('message', (event) => {
+    if(event.data?.foo) {
+        response.innerText = event.data.foo;
+    }
+    if(event.data?.msg) {
+        response.innerText = event.data.msg;
+    }
+})
+
+const sendMessage = () => {
+    newWindow.postMessage({foo: 'bar'}, '*');
+}
+
+
+
+const closeWindow = (message) => {
+    window.opener.postMessage({msg: message}, '*');
+    window.close();
+} */
+
+const openNewWindow = () => {
+    const params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=800,height=600`;
+    newWindow = window.open(siteRoot + "pages/learning/pages/scores/cecum.php", 'sub', params);
+}
+
+window.addEventListener('message', function(event) {
+    if (event.data) {
+        console.dir(event.data);
+
+        try {
+        var score = JSON.parse(event.data);
+        console.log(score);
+
+
+        $.each(score, function(k, v) {
+
+
+            var a = 0;
+            var b = 0;
+
+            if (v == 'Yes'){
+
+                v = 1;
+
+
+            }else if (v == 'No') {
+
+                v = 0;
+
+
+            }
+
+                $('#' + k).val(v);
+
+            });
+
+        }catch{
+
+
+
+        }
+
+        //console.log(event.source, 'is saying hello!');
+
+
+
+
+    }
+});
         
 	
 		$(document).ready(function() {
@@ -796,6 +870,15 @@ return SMICnumeric + '%  <br>(or ' + SMICriskOR + 'x the risk of a granular 0-II
                 $('html, body').animate({
                     scrollTop: eval($('#result').offset().top - 200)
                 }, 150);
+			})
+			
+            
+            $('.content').on('click', '#launch-cecum', function(event){
+
+                event.preventDefault();
+                    
+                openNewWindow();
+
 			})
 
             $('.content').on('change', '.formInputs', function(){
@@ -910,47 +993,244 @@ return SMICnumeric + '%  <br>(or ' + SMICriskOR + 'x the risk of a granular 0-II
 		
 		<form action="adminGenerateUserEmail.php" method="post">
             <fieldset>
+
+                <h3 class="section-score">Caecum</h3>
+               
+                <?php
+                $formv1->generateSelectCustom2 ('1. Distension:', 'distention_caecum', 'factor distension', array('1'=>'Very Poor', '2'=>'Poor', '3'=>'Average','4'=>'Good','5'=>'Very Good',), 'Degree of Distension');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('2. BBPS segment:', 'bbps_caecum', 'factor bbps', array('0'=>'Inadequate', '1'=>'Poor', '2'=>'Average','3'=>'Good',), 'How good was the bowel preparation of the described segment?');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('3. Estimated Percent Visualisation?:', 'percent_visualisation_caecum', 'factor percent_visualisation', array('1'=>'100%', '2'=>'90%', '3'=>'80%','4'=>'70%','5'=>'60%', '6'=>'50%', '7'=>'40%', '8'=>'30%','9'=>'20%','10'=>'10%', '11'=>'0%'), 'How well was mucosa visualised overall?');
+				echo '<br/>';
+
+                ?>
+                         
+
+                <p>
+                <button id="launch-cecum">Launch Caecum Score</button></p>
+
+                <?php
+
+
+                $formv1->generateSelectCustom2 ('4. OQ1:', 'OQ1', 'factor cecum-score', array('0'=>'No', '1'=>'Yes',), 'OQ1 visualised');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('5. OQ2:', 'OQ2', 'factor cecum-score', array('0'=>'No', '1'=>'Yes',), 'OQ2 visualised');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('6. OQ3:', 'OQ3', 'factor cecum-score', array('0'=>'No', '1'=>'Yes',), 'OQ3 visualised');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('7. OQ4:', 'OQ4', 'factor cecum-score', array('0'=>'No', '1'=>'Yes',), 'OQ4 visualised');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('8. TF1:', 'TF1', 'factor cecum-score', array('0'=>'No', '1'=>'Yes',), 'TF1 visualised');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('9. TF2:', 'TF2', 'factor cecum-score', array('0'=>'No', '1'=>'Yes',), 'TF2 visualised');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('10. TF3:', 'TF3', 'factor cecum-score', array('0'=>'No', '1'=>'Yes',), 'TF3 visualised');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('11. AO:', 'AO', 'factor cecum-score', array('0'=>'No', '1'=>'Yes',), 'AO visualised');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('12. Score:', 'Score', 'factor cecum-score', array('0'=>'0', '1'=>'1', '2'=>'2', '3'=>'3', '4'=>'4', '5'=>'5', '6'=>'6', '7'=>'7', '8'=>'8',), 'AO visualised');
+				echo '<br/>';
+
+                ?>
+               
+      
+
+
+
+                <h3 class="section-score">Ascending Colon</h3>
 				<?php
 
-				$formv1->generateSelectCustom2 ('1. Location Scope Tip:', 'location_tip', 'factor', array('1'=>'Rectum <5cm from anal verge', '2'=>'Rectum >5cm from anal verge', '3'=>'Sigmoid','4'=>'descending colon','5'=>'splenic flexure','6'=>'Distal transverse colon', '7'=>'Mid transverse colon','8'=>'proximal transverse colon','9'=>'Hepatic flexure','10'=>'Ascending colon','11'=>'caecum','12'=>'caecum appendiceal orifice', '13'=>'caecum ileocaecal valve'), 'Location of the endoscope tip');
+				$formv1->generateSelectCustom2 ('1. Distension:', 'distention_ascending', 'factor distension', array('1'=>'Very Poor', '2'=>'Poor', '3'=>'Average','4'=>'Good','5'=>'Very Good',), 'Degree of Distension');
 				echo '<br/>';
 
-                
-				$formv1->generateSelectCustom2 ('2. Location Loop:', 'location_loop', 'factor', array('1'=>'Rectum <5cm from anal verge', '2'=>'Rectum >5cm from anal verge', '3'=>'Sigmoid','4'=>'descending colon','5'=>'splenic flexure','6'=>'Distal transverse colon', '7'=>'Mid transverse colon','8'=>'proximal transverse colon','9'=>'Hepatic flexure','10'=>'Ascending colon','11'=>'caecum','12'=>'caecum appendiceal orifice', '13'=>'caecum ileocaecal valve'), 'Location of the loop in the patients abdomen');
+                $formv1->generateSelectCustom2 ('2. BBPS segment:', 'bbps_ascending', 'factor bbps', array('0'=>'Inadequate', '1'=>'Poor', '2'=>'Average','3'=>'Good',), 'How good was the bowel preparation of the described segment?');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('3. Folds Deflected / Amount of Mucosa Visualisation behind Folds?:', 'fold_deflection_ascending', 'factor behind_folds', array('1'=>'Very Poor', '2'=>'Poor', '3'=>'Average','4'=>'Good','5'=>'Very Good',), 'How well was mucosa behind folds visualised?');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('4. Estimated Percent Visualisation?:', 'percent_visualisation_ascending', 'factor percent_visualisation', array('1'=>'100%', '2'=>'90%', '3'=>'80%','4'=>'70%','5'=>'60%', '6'=>'50%', '7'=>'40%', '8'=>'30%','9'=>'20%','10'=>'10%', '11'=>'0%'), 'How well was mucosa visualised overall?');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('5. Was retroflexion performed?:', 'retroflexion_ascending', 'factor retroflexion', array('0'=>'No', '1'=>'Yes',), 'Was retroflexion performed?');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('6. Adequacy of Retroflexion View of Ascending Colon?:', 'adequacy_retroflexion_ascending', 'factor adequacy_retroflexion', array('1'=>'Very Poor', '2'=>'Poor', '3'=>'Average','4'=>'Good','5'=>'Very Good',), 'What was the adequacy of the visualised ascending colon in retroflexion?');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('7. Was 2 pass assessment performed?:', 'two_pass_ascending', 'factor two_pass', array('0'=>'No', '1'=>'Yes',), 'Was the segement examined twice?');
+				echo '<br/>';
+
+                ?>
+
+                <h3 class="section-score">Hepatic Flexure</h3>
+				<?php
+
+				$formv1->generateSelectCustom2 ('1. Distension:', 'distention_hepatic_flexure', 'factor distension', array('1'=>'Very Poor', '2'=>'Poor', '3'=>'Average','4'=>'Good','5'=>'Very Good',), 'Degree of Distension');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('2. BBPS segment:', 'bbps_hepatic_flexure', 'factor bbps', array('0'=>'Inadequate', '1'=>'Poor', '2'=>'Average','3'=>'Good',), 'How good was the bowel preparation of the described segment?');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('3. Folds Deflected / Amount of Mucosa Visualisation behind Folds?:', 'fold_deflection_hepatic_flexure', 'factor behind_folds', array('1'=>'Very Poor', '2'=>'Poor', '3'=>'Average','4'=>'Good','5'=>'Very Good',), 'How well was mucosa behind folds visualised?');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('4. Estimated Percent Visualisation?:', 'percent_visualisation_hepatic_flexure', 'factor percent_visualisation', array('1'=>'100%', '2'=>'90%', '3'=>'80%','4'=>'70%','5'=>'60%', '6'=>'50%', '7'=>'40%', '8'=>'30%','9'=>'20%','10'=>'10%', '11'=>'0%'), 'How well was mucosa visualised overall?');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('5. Was 2 pass assessment performed?:', 'two_pass_hepatic_flexure', 'factor two_pass', array('0'=>'No', '1'=>'Yes',), 'Was the segement examined twice?');
+				echo '<br/>';
+
+                ?>
+
+
+                <h3 class="section-score">Tranvserse Colon PROXIMAL</h3>
+				<?php
+
+				$formv1->generateSelectCustom2 ('1. Distension:', 'distention_transverse_proximal', 'factor distension', array('1'=>'Very Poor', '2'=>'Poor', '3'=>'Average','4'=>'Good','5'=>'Very Good',), 'Degree of Distension');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('2. BBPS segment:', 'bbps_transverse_proximal', 'factor bbps', array('0'=>'Inadequate', '1'=>'Poor', '2'=>'Average','3'=>'Good',), 'How good was the bowel preparation of the described segment?');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('3. Folds Deflected / Amount of Mucosa Visualisation behind Folds?:', 'fold_deflection_transverse_proximal', 'factor behind_folds', array('1'=>'Very Poor', '2'=>'Poor', '3'=>'Average','4'=>'Good','5'=>'Very Good',), 'How well was mucosa behind folds visualised?');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('4. Estimated Percent Visualisation?:', 'percent_visualisation_transverse_proximal', 'factor percent_visualisation', array('1'=>'100%', '2'=>'90%', '3'=>'80%','4'=>'70%','5'=>'60%', '6'=>'50%', '7'=>'40%', '8'=>'30%','9'=>'20%','10'=>'10%', '11'=>'0%'), 'How well was mucosa visualised overall?');
 				echo '<br/>';
 
 
-                $formv1->generateSelectCustom2 ('3. Loop name:', 'loop_name', 'factor', array('1'=>'N spiral', '2'=>'Alpha', '3'=>'Reverse Alpha','4'=>'Splenic','5'=>'Gamma','6'=>'Mid Transverse Dip', '7'=>'Medial Lying Caecum','8'=>'High Riding Splenic','9'=>'Bowing Sigmoid',), 'Description of the type of loop');
+                ?>
+
+                <h3 class="section-score">Tranvserse Colon DISTAL</h3>
+				<?php
+
+				$formv1->generateSelectCustom2 ('1. Distension:', 'distention_transverse_distal', 'factor distension', array('1'=>'Very Poor', '2'=>'Poor', '3'=>'Average','4'=>'Good','5'=>'Very Good',), 'Degree of Distension');
 				echo '<br/>';
-			
-                
-                $formv1->generateSelectCustom2 ('4. Loop Lateral Deflection (predominant, relative to patient):', 'loop_lateral', 'factor', array('1'=>'right', '2'=>'neutral', '3'=>'left',), 'Loop Lateral Deflection (predominant, relative to patient');
+
+                $formv1->generateSelectCustom2 ('2. BBPS segment:', 'bbps_transverse_distal', 'factor bbps', array('0'=>'Inadequate', '1'=>'Poor', '2'=>'Average','3'=>'Good',), 'How good was the bowel preparation of the described segment?');
 				echo '<br/>';
-                
-                $formv1->generateSelectCustom2 ('5. Loop AP Deflection (predominant, relative to patient):', 'loop_ap', 'factor', array('1'=>'anterior', '2'=>'neutral', '3'=>'posterior',), 'Loop AP Deflection (predominant, relative to patient');
-				echo '<br/>';   
-                
-                $formv1->generateSelectCustom2 ('6. Position AP of distal shaft (nearest endoscopist hand, relative to loop):', 'distal_part_relative_loop', 'factor', array('1'=>'anterior', '2'=>'posterior',), 'Position AP of distal shaft (nearest endoscopist hand, relative to loop)');
+
+                $formv1->generateSelectCustom2 ('3. Folds Deflected / Amount of Mucosa Visualisation behind Folds?:', 'fold_deflection_transverse_distal', 'factor behind_folds', array('1'=>'Very Poor', '2'=>'Poor', '3'=>'Average','4'=>'Good','5'=>'Very Good',), 'How well was mucosa behind folds visualised?');
 				echo '<br/>';
-                
+
+                $formv1->generateSelectCustom2 ('4. Estimated Percent Visualisation?:', 'percent_visualisation_transverse_distal', 'factor percent_visualisation', array('1'=>'100%', '2'=>'90%', '3'=>'80%','4'=>'70%','5'=>'60%', '6'=>'50%', '7'=>'40%', '8'=>'30%','9'=>'20%','10'=>'10%', '11'=>'0%'), 'How well was mucosa visualised overall?');
+				echo '<br/>';
+
+
+                ?>
+
+                <h3 class="section-score">Splenic Flexure</h3>
+				<?php
+
+				$formv1->generateSelectCustom2 ('1. Distension:', 'distention_splenic_flexure', 'factor distension', array('1'=>'Very Poor', '2'=>'Poor', '3'=>'Average','4'=>'Good','5'=>'Very Good',), 'Degree of Distension');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('2. BBPS segment:', 'bbps_splenic_flexure', 'factor bbps', array('0'=>'Inadequate', '1'=>'Poor', '2'=>'Average','3'=>'Good',), 'How good was the bowel preparation of the described segment?');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('3. Folds Deflected / Amount of Mucosa Visualisation behind Folds?:', 'fold_deflection_splenic_flexure', 'factor behind_folds', array('1'=>'Very Poor', '2'=>'Poor', '3'=>'Average','4'=>'Good','5'=>'Very Good',), 'How well was mucosa behind folds visualised?');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('4. Estimated Percent Visualisation?:', 'percent_visualisation_splenic_flexure', 'factor percent_visualisation', array('1'=>'100%', '2'=>'90%', '3'=>'80%','4'=>'70%','5'=>'60%', '6'=>'50%', '7'=>'40%', '8'=>'30%','9'=>'20%','10'=>'10%', '11'=>'0%'), 'How well was mucosa visualised overall?');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('5. Was 2 pass assessment performed?:', 'two_pass_splenic_flexure', 'factor two_pass', array('0'=>'No', '1'=>'Yes',), 'Was the segement examined twice?');
+				echo '<br/>';
+
+                ?>
+
+                <h3 class="section-score">Descending Colon</h3>
+				<?php
+
+				$formv1->generateSelectCustom2 ('1. Distension:', 'distention_descending', 'factor distension', array('1'=>'Very Poor', '2'=>'Poor', '3'=>'Average','4'=>'Good','5'=>'Very Good',), 'Degree of Distension');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('2. BBPS segment:', 'bbps_descending', 'factor bbps', array('0'=>'Inadequate', '1'=>'Poor', '2'=>'Average','3'=>'Good',), 'How good was the bowel preparation of the described segment?');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('3. Folds Deflected / Amount of Mucosa Visualisation behind Folds?:', 'fold_deflection_descending', 'factor behind_folds', array('1'=>'Very Poor', '2'=>'Poor', '3'=>'Average','4'=>'Good','5'=>'Very Good',), 'How well was mucosa behind folds visualised?');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('4. Estimated Percent Visualisation?:', 'percent_visualisation_descending', 'factor percent_visualisation', array('1'=>'100%', '2'=>'90%', '3'=>'80%','4'=>'70%','5'=>'60%', '6'=>'50%', '7'=>'40%', '8'=>'30%','9'=>'20%','10'=>'10%', '11'=>'0%'), 'How well was mucosa visualised overall?');
+				echo '<br/>';
+
+
+                ?>
+
+                <h3 class="section-score">Sigmoid Colon</h3>
+				<?php
+
+				$formv1->generateSelectCustom2 ('1. Distension:', 'distention_sigmoid', 'factor distension', array('1'=>'Very Poor', '2'=>'Poor', '3'=>'Average','4'=>'Good','5'=>'Very Good',), 'Degree of Distension');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('2. BBPS segment:', 'bbps_sigmoid', 'factor bbps', array('0'=>'Inadequate', '1'=>'Poor', '2'=>'Average','3'=>'Good',), 'How good was the bowel preparation of the described segment?');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('3. Folds Deflected / Amount of Mucosa Visualisation behind Folds?:', 'fold_deflection_sigmoid', 'factor behind_folds', array('1'=>'Very Poor', '2'=>'Poor', '3'=>'Average','4'=>'Good','5'=>'Very Good',), 'How well was mucosa behind folds visualised?');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('4. Estimated Percent Visualisation?:', 'percent_visualisation_sigmoid', 'factor percent_visualisation', array('1'=>'100%', '2'=>'90%', '3'=>'80%','4'=>'70%','5'=>'60%', '6'=>'50%', '7'=>'40%', '8'=>'30%','9'=>'20%','10'=>'10%', '11'=>'0%'), 'How well was mucosa visualised overall?');
+				echo '<br/>';
+
+
+                ?>
+<h3 class="section-score">Rectosigmoid Junction</h3>
+				<?php
+
+				$formv1->generateSelectCustom2 ('1. Distension:', 'distention_rectosigmoid', 'factor distension', array('1'=>'Very Poor', '2'=>'Poor', '3'=>'Average','4'=>'Good','5'=>'Very Good',), 'Degree of Distension');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('2. BBPS segment:', 'bbps_rectosigmoid', 'factor bbps', array('0'=>'Inadequate', '1'=>'Poor', '2'=>'Average','3'=>'Good',), 'How good was the bowel preparation of the described segment?');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('3. Folds Deflected / Amount of Mucosa Visualisation behind Folds?:', 'fold_deflection_rectosigmoid', 'factor behind_folds', array('1'=>'Very Poor', '2'=>'Poor', '3'=>'Average','4'=>'Good','5'=>'Very Good',), 'How well was mucosa behind folds visualised?');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('4. Estimated Percent Visualisation?:', 'percent_visualisation_rectosigmoid', 'factor percent_visualisation', array('1'=>'100%', '2'=>'90%', '3'=>'80%','4'=>'70%','5'=>'60%', '6'=>'50%', '7'=>'40%', '8'=>'30%','9'=>'20%','10'=>'10%', '11'=>'0%'), 'How well was mucosa visualised overall?');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('5. Was 2 pass assessment performed?:', 'two_pass_rectosigmoid', 'factor two_pass', array('0'=>'No', '1'=>'Yes',), 'Was the segement examined twice?');
+				echo '<br/>';
+                ?>
+               
+                <h3 class="section-score">Rectum</h3>
+				<?php
+
+				$formv1->generateSelectCustom2 ('1. Distension:', 'distention_rectum', 'factor distension', array('1'=>'Very Poor', '2'=>'Poor', '3'=>'Average','4'=>'Good','5'=>'Very Good',), 'Degree of Distension');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('2. BBPS segment:', 'bbps_rectum', 'factor bbps', array('0'=>'Inadequate', '1'=>'Poor', '2'=>'Average','3'=>'Good',), 'How good was the bowel preparation of the described segment?');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('3. Folds Deflected / Amount of Mucosa Visualisation behind Folds?:', 'fold_deflection_rectum', 'factor behind_folds', array('1'=>'Very Poor', '2'=>'Poor', '3'=>'Average','4'=>'Good','5'=>'Very Good',), 'How well was mucosa behind folds visualised?');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('4. Estimated Percent Visualisation?:', 'percent_visualisation_rectum', 'factor percent_visualisation', array('1'=>'100%', '2'=>'90%', '3'=>'80%','4'=>'70%','5'=>'60%', '6'=>'50%', '7'=>'40%', '8'=>'30%','9'=>'20%','10'=>'10%', '11'=>'0%'), 'How well was mucosa visualised overall?');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('5. Was retroflexion performed?:', 'retroflexion_rectum', 'factor retroflexion', array('0'=>'No', '1'=>'Yes',), 'Was retroflexion performed?');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('6. Adequacy of Retroflexion View of Distal Rectum?:', 'adequacy_retroflexion_rectum', 'factor adequacy_retroflexion', array('1'=>'Very Poor', '2'=>'Poor', '3'=>'Average','4'=>'Good','5'=>'Very Good',), 'What was the adequacy of the visualised distal rectum in retroflexion?');
+				echo '<br/>';
+
+                ?>
                 
                
 
-               /*  //say that the polyp is regular
-				$formv1->generateSelectCustom2 ('Size of lesion :', 'size', 'factor', array('1' => '1 - &ge; 20mm', '2' => '2 - &ge; 30mm', '3' => '3 - &ge; 40mm', '4' => '4 - &ge; 50mm', '5' => '5 - &ge; 60mm', '6' => '6 - &ge; 70mm', '7' => '7 - &ge; 80mm', '8' => '8 - &ge; 90mm',  '9' => '9 - &ge; 100mm'), 'Depression?');
-				echo '<br/>';
-				$formv1->generateSelectCustom ('Location of lesion :', 'location', 'factor', array('1' => '1 - rectosigmoid', '2' => '2 - other location', ), 'Location of lesion');
-				echo '<br/>';
-				$formv1->generateSelectCustom ('Morphology :', 'morphology', 'factor', array('1' => '1 - Granular', '2' => '2 - any Non-granular component', '3' => '3 - serrated or other'), 'Morphology of lesion');
-				echo '<br/>';
-				$formv1->generateSelectCustom ('Paris classification :', 'paris', 'factor', array('1' => '1 - 0-IIa', '2' => '2 - 0-Is', '3' => '3 - 0-IIa/Is'), 'Paris classification of lesion');
-				echo '<br/>';
-                 */
-
-                //modify here nodule / no nodule, morphology any non granular component, other
-                //present the text of demarczted area classification
-
-				?>
+               
 
                 
 				
@@ -1059,16 +1339,20 @@ return SMICnumeric + '%  <br>(or ' + SMICriskOR + 'x the risk of a granular 0-II
                 //var COVERT = determineSMIC(demarcation, size, location, morphology, paris);
 
 
+                var score = new Object();
+                
+                $(document).find('.factor').each(function(){
 
+                    var id = $(this).attr('id');
+                    console.log(id);
+                    var value = $(this).val();
+                    console.log(value);
 
-                            var score =  {
-                    "location_tip": location_tip,
-                    "location_loop": location_loop,
-                    "loop_name": loop_name,
-                    "loop_lateral": loop_lateral,
-                    "loop_ap": loop_ap,
-                    "distal_part_relative_loop": distal_part_relative_loop,
-                    };
+                   score[id] = value;
+
+                })
+
+                            
 
                     console.log(score);
                     console.log(JSON.stringify(score));

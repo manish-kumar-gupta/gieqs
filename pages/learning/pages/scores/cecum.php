@@ -392,6 +392,8 @@ const browserSync = require("browser-sync");
 
         copyToClipboard(JSON.stringify(scoreObject));
 
+        window.opener.postMessage(JSON.stringify(scoreObject), '*');
+
 
 
 /*         OQ3visualised ? 'OQ3' : '' + OQ4visualised ? 'OQ4' : '' + TF1visualised ? 'TF1' : '' + TF2visualised ? 'TF2' : '' + TF3visualised ? 'TF3' : '' + AOvisualised ? 'AO' : '';
