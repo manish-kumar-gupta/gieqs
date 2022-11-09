@@ -920,7 +920,7 @@ return SMICnumeric + '%  <br>(or ' + SMICriskOR + 'x the risk of a granular 0-II
 				echo '<br/>';
 
 
-                $formv1->generateSelectCustom2 ('3. Loop name:', 'loop_name', 'factor', array('1'=>'N spiral', '2'=>'Alpha', '3'=>'Reverse Alpha','4'=>'Splenic','5'=>'Gamma','6'=>'Mid Transverse Dip', '7'=>'Medial Lying Caecum','8'=>'High Riding Splenic','9'=>'Bowing Sigmoid',), 'Description of the type of loop');
+                $formv1->generateSelectCustom2 ('3. Loop name:', 'loop_name', 'factor', array('1'=>'N spiral', '2'=>'Alpha', '3'=>'Reverse Alpha','4'=>'Splenic','5'=>'Gamma','6'=>'Mid Transverse Dip', '7'=>'Medial Lying Caecum','8'=>'High Riding Splenic','9'=>'Bowing Sigmoid', '10'=>'Medial Lying Caecum'), 'Description of the type of loop');
 				echo '<br/>';
 			
                 
