@@ -932,6 +932,9 @@ return SMICnumeric + '%  <br>(or ' + SMICriskOR + 'x the risk of a granular 0-II
                 
                 $formv1->generateSelectCustom2 ('6. Position AP of distal shaft (nearest endoscopist hand, relative to loop):', 'distal_part_relative_loop', 'factor', array('1'=>'anterior', '2'=>'posterior',), 'Position AP of distal shaft (nearest endoscopist hand, relative to loop)');
 				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('7. Position of Patient:', 'patient_position', 'factor', array('1'=>'left lateral', '2'=>'supine', '3'=>'right lateral', '4'=>'prone',), 'Position of the patient');
+				echo '<br/>';
                 
                 
                
@@ -1055,6 +1058,8 @@ return SMICnumeric + '%  <br>(or ' + SMICriskOR + 'x the risk of a granular 0-II
 				var loop_lateral = $('#loop_lateral').val();
 				var loop_ap = $('#loop_ap').val();
                 var distal_part_relative_loop = $('#distal_part_relative_loop').val();
+                var patient_position = $('#patient_position').val();
+
 
                 //var COVERT = determineSMIC(demarcation, size, location, morphology, paris);
 
@@ -1068,6 +1073,7 @@ return SMICnumeric + '%  <br>(or ' + SMICriskOR + 'x the risk of a granular 0-II
                     "loop_lateral": loop_lateral,
                     "loop_ap": loop_ap,
                     "distal_part_relative_loop": distal_part_relative_loop,
+                    "patient_position": patient_position,
                     };
 
                     console.log(score);
