@@ -783,6 +783,9 @@ return SMICnumeric + '%  <br>(or ' + SMICriskOR + 'x the risk of a granular 0-II
                     var score = generateScore();
 
                     $('#result').html('<h3 class="gieqsGold"> Score Copied to Clipboard</h3>');
+                    $('#result').append('<p class="text-muted">'+score.report_text+'</p>');
+                    $('#result').append('<p class="text-muted">'+score.report_structured+'</p>');
+
                    
                     $('#result').addClass('gieqsGold');
 
@@ -915,26 +918,34 @@ return SMICnumeric + '%  <br>(or ' + SMICriskOR + 'x the risk of a granular 0-II
 				$formv1->generateSelectCustom2 ('1. Location Scope Tip:', 'location_tip', 'factor', array('1'=>'Rectum <5cm from anal verge', '2'=>'Rectum >5cm from anal verge', '3'=>'Sigmoid','4'=>'descending colon','5'=>'splenic flexure','6'=>'Distal transverse colon', '7'=>'Mid transverse colon','8'=>'proximal transverse colon','9'=>'Hepatic flexure','10'=>'Ascending colon','11'=>'caecum','12'=>'caecum appendiceal orifice', '13'=>'caecum ileocaecal valve'), 'Location of the endoscope tip');
 				echo '<br/>';
 
+                $formv1->generateSelectCustom2 ('2. Tip Deflection Lateral:', 'tip_deflection_lateral', 'factor', array('1'=>'right', '2'=>'neutral', '3'=>'left',), 'Lateral tip deflecion of the endoscope tip');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('3. Tip Deflection AP:', 'tip_deflection_ap', 'factor', array('1'=>'anterior', '2'=>'neutral', '3'=>'posterior',), 'AP tip deflection of the endoscope tip');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('4. Position AP of distal shaft (nearest endoscopist hand, relative to described element):', 'distal_part_relative_loop', 'factor', array('1'=>'anterior', '2'=>'posterior',), 'Position AP of distal shaft (nearest endoscopist hand, relative to tip if no configuration described or configuration if configuration described)');
+				echo '<br/>';
+
+                $formv1->generateSelectCustom2 ('5. Position of Patient:', 'patient_position', 'factor', array('1'=>'left lateral', '2'=>'supine', '3'=>'right lateral', '4'=>'prone',), 'Position of the patient');
+				echo '<br/>';
+
                 
-				$formv1->generateSelectCustom2 ('2. Location Loop:', 'location_loop', 'factor', array('1'=>'Rectum <5cm from anal verge', '2'=>'Rectum >5cm from anal verge', '3'=>'Sigmoid','4'=>'descending colon','5'=>'splenic flexure','6'=>'Distal transverse colon', '7'=>'Mid transverse colon','8'=>'proximal transverse colon','9'=>'Hepatic flexure','10'=>'Ascending colon','11'=>'caecum','12'=>'caecum appendiceal orifice', '13'=>'caecum ileocaecal valve'), 'Location of the loop in the patients abdomen');
+				$formv1->generateSelectCustom2 ('6. Location Described Configuration:', 'location_loop', 'factor', array('1'=>'Rectum <5cm from anal verge', '2'=>'Rectum >5cm from anal verge', '3'=>'Sigmoid','4'=>'descending colon','5'=>'splenic flexure','6'=>'Distal transverse colon', '7'=>'Mid transverse colon','8'=>'proximal transverse colon','9'=>'Hepatic flexure','10'=>'Ascending colon','11'=>'caecum','12'=>'caecum appendiceal orifice', '13'=>'caecum ileocaecal valve'), 'Location of the loop in the patients abdomen');
 				echo '<br/>';
 
 
-                $formv1->generateSelectCustom2 ('3. Loop name:', 'loop_name', 'factor', array('1'=>'N spiral', '2'=>'Alpha', '3'=>'Reverse Alpha','4'=>'Splenic','5'=>'Gamma','6'=>'Mid Transverse Dip', '7'=>'Medial Lying Caecum','8'=>'High Riding Splenic','9'=>'Bowing Sigmoid', '10'=>'Medial Lying Caecum'), 'Description of the type of loop');
+                $formv1->generateSelectCustom2 ('7. Configuration name:', 'loop_name', 'factor', array('1'=>'N spiral', '2'=>'Alpha', '3'=>'Reverse Alpha','4'=>'Splenic','5'=>'Gamma','6'=>'Mid Transverse Dip', '7'=>'Medial Lying Caecum','8'=>'High Riding Splenic','9'=>'Bowing Sigmoid', '10'=>'Medial Lying Caecum'), 'Description of the type of loop');
 				echo '<br/>';
 			
                 
-                $formv1->generateSelectCustom2 ('4. Loop Lateral Deflection (predominant, relative to patient):', 'loop_lateral', 'factor', array('1'=>'right', '2'=>'neutral', '3'=>'left',), 'Loop Lateral Deflection (predominant, relative to patient');
+                $formv1->generateSelectCustom2 ('8. Configuration Lateral Deflection (predominant, relative to patient):', 'loop_lateral', 'factor', array('1'=>'right', '2'=>'neutral', '3'=>'left',), 'Loop Lateral Deflection (predominant, relative to patient');
 				echo '<br/>';
                 
-                $formv1->generateSelectCustom2 ('5. Loop AP Deflection (predominant, relative to patient):', 'loop_ap', 'factor', array('1'=>'anterior', '2'=>'neutral', '3'=>'posterior',), 'Loop AP Deflection (predominant, relative to patient');
+                $formv1->generateSelectCustom2 ('9. Configuration AP Deflection (predominant, relative to patient):', 'loop_ap', 'factor', array('1'=>'anterior', '2'=>'neutral', '3'=>'posterior',), 'Loop AP Deflection (predominant, relative to patient');
 				echo '<br/>';   
                 
-                $formv1->generateSelectCustom2 ('6. Position AP of distal shaft (nearest endoscopist hand, relative to loop):', 'distal_part_relative_loop', 'factor', array('1'=>'anterior', '2'=>'posterior',), 'Position AP of distal shaft (nearest endoscopist hand, relative to loop)');
-				echo '<br/>';
-
-                $formv1->generateSelectCustom2 ('7. Position of Patient:', 'patient_position', 'factor', array('1'=>'left lateral', '2'=>'supine', '3'=>'right lateral', '4'=>'prone',), 'Position of the patient');
-				echo '<br/>';
+              
                 
                 
                
@@ -1053,35 +1064,98 @@ return SMICnumeric + '%  <br>(or ' + SMICriskOR + 'x the risk of a granular 0-II
         function generateScore(){
 
                 var location_tip = $('#location_tip').val();
+                var tip_deflection_lateral = $('#tip_deflection_lateral').val();
+                var tip_deflection_ap = $('#tip_deflection_ap').val();
+                var distal_part_relative_loop = $('#distal_part_relative_loop').val();
+                var patient_position = $('#patient_position').val();
 				var location_loop = $('#location_loop').val();
 				var loop_name = $('#loop_name').val();
 				var loop_lateral = $('#loop_lateral').val();
 				var loop_ap = $('#loop_ap').val();
-                var distal_part_relative_loop = $('#distal_part_relative_loop').val();
-                var patient_position = $('#patient_position').val();
 
 
                 //var COVERT = determineSMIC(demarcation, size, location, morphology, paris);
 
+                var report_text;
+                report_text = 'The endoscope tip was located in ' + $('#location_tip option:selected').text() +  ' the with lateral deflection ' + $('#tip_deflection_lateral option:selected').text() + ' and ap deflection ' + $('#tip_deflection_ap option:selected').text() + '.';  
+                report_text += '<br/>The distal part was '+$('#distal_part_relative_loop option:selected').text()+' in the ap orientation versus the described tip / configuration.';
+                report_text += '<br/>The configuration was '+$('#loop_name option:selected').text()+' and located in the '+$('#location_loop option:selected').text()+'.';
+                report_text +=  '<br/>The configuration was predominantly '+$('#loop_lateral option:selected').text()+' (lateral) and '+$('#loop_ap option:selected').text()+' (ap).';
+
+                var report_structured;
+                report_structured = 'Tip location : ';
+                report_structured += $('#location_tip option:selected').text();
+                report_structured += '<br/>';
+
+                report_structured += ' Tip lateral deflection : ';
+                report_structured += $('#tip_deflection_lateral option:selected').text();
+                report_structured += '<br/>';
+
+                report_structured += ' Tip deflection ap : ';
+                report_structured += $('#tip_deflection_ap option:selected').text();
+                report_structured += '<br/>';
+
+                report_structured += ' Distal part position ap relative to tip or loop : ';
+                report_structured += $('#distal_part_relative_loop option:selected').text();
+                report_structured += '<br/>';
+
+                report_structured += ' Patient position : ';
+                report_structured += $('#patient_position option:selected').text();
+                report_structured += '<br/>';
+
+                report_structured += ' Location of described configuration : ';
+                report_structured += $('#location_loop option:selected').text();
+                report_structured += '<br/>';
+
+                report_structured += ' Configuration name : ';
+                report_structured += $('#loop_name option:selected').text();
+                report_structured += '<br/>';
+
+                report_structured += ' Configuration ap predominant : ';
+                report_structured += $('#loop_lateral option:selected').text();
+                report_structured += '<br/>';
+
+                report_structured += ' Configuration lateral predominant : ';
+                report_structured += $('#loop_ap option:selected').text();
+                report_structured += '<br/>';
 
 
 
-                            var score =  {
+                    var score =  {
                     "location_tip": location_tip,
+                    "tip_deflection_lateral": tip_deflection_lateral,
+                    "tip_deflection_ap": tip_deflection_ap,
+                    "distal_part_relative_loop": distal_part_relative_loop,
+                    "patient_position": patient_position,
                     "location_loop": location_loop,
                     "loop_name": loop_name,
                     "loop_lateral": loop_lateral,
                     "loop_ap": loop_ap,
+                    "report_text" : report_text,
+                    "report_structured" : report_structured,
+                    };
+
+                    var score_json = {
+
+                        "location_tip": location_tip,
+                    "tip_deflection_lateral": tip_deflection_lateral,
+                    "tip_deflection_ap": tip_deflection_ap,
                     "distal_part_relative_loop": distal_part_relative_loop,
                     "patient_position": patient_position,
-                    };
+                    "location_loop": location_loop,
+                    "loop_name": loop_name,
+                    "loop_lateral": loop_lateral,
+                    "loop_ap": loop_ap,
+
+
+                    }
 
                     console.log(score);
                     console.log(JSON.stringify(score));
 
                     //copy to  clipboard
 
-                    copyToClipboard(JSON.stringify(score));
+                    copyToClipboard(JSON.stringify(score_json));
                     return score;
             
         }
