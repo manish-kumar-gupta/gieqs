@@ -255,7 +255,11 @@ if ($openaccess == 1){
     a:{
 //echo 'made it to a';
 
+if (!$debugUserAccess){
 
+print_r($_SESSION);
+
+}
 
 if (!isset($_SESSION['user_id']) || !isset($_SESSION['access_level'])) {
     $info[] = 'ONE OF user_id and access_level are NOT set in the session.  ACCESS DENIED';
@@ -288,7 +292,7 @@ if (!isset($requiredUserLevel)){
 
 }
 
-print_r($info);
+//print_r($info);
 
 if (isset($requiredUserLevel)){
 
