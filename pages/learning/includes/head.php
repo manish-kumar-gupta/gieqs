@@ -13,7 +13,7 @@
  
     //print_r($_SESSION);
 
-    echo 'hello0';
+    //echo 'hello0';
 
      require (BASE_URI . '/assets/scripts/login_functions.php');
      
@@ -26,10 +26,12 @@
 
      $_SESSION['debug'] = true;
   
-     echo 'hello1';
     
      
      require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
+
+     echo 'hello1';
+
 
      $registrationURL = 'https://www.gieqs.com/pages/program/registration.php';
      //$registrationURL = 'https://eu.eventscloud.com/200200203';
