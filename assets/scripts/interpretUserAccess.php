@@ -182,7 +182,7 @@ if ($openaccess == 1){
        
         
     
-        print_r($info);
+        
     
     
     //dothings where open access allowed
@@ -200,7 +200,7 @@ if ($openaccess == 1){
             //why does this require login
 
             $dbc = @mysqli_connect (DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
-           // print_r($dbc);
+            print_r($dbc);
             $sql = "SELECT `user_id`, `access_level`, `firstname`, `surname` FROM `users` WHERE `key` = '$token'";
             //echo $sql;
             $result = mysqli_query ($dbc, $sql);
