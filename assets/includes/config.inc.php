@@ -30,7 +30,7 @@ $contact_email = 'djtate@gmail.com';
 
 //turn off whole site
 
-$active = 1;
+$active = 0;
 
 if ($active == 0){
 	
@@ -40,7 +40,7 @@ if ($active == 0){
 
 //active superuser only, executed in interpretuseraccess
 
-$onlySuperuser = 0;
+$onlySuperuser = 1;
 
 
 
