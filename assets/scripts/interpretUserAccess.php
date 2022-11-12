@@ -182,7 +182,7 @@ if ($openaccess == 1){
        
         
     
-        
+        print_r($info);
     
     
     //dothings where open access allowed
