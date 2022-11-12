@@ -13,7 +13,7 @@
  
     //print_r($_SESSION);
 
-    
+    echo 'hello0';
 
      require (BASE_URI . '/assets/scripts/login_functions.php');
      
@@ -25,7 +25,8 @@
      }
 
      $_SESSION['debug'] = true;
-
+  
+     echo 'hello1';
     
      
      require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
