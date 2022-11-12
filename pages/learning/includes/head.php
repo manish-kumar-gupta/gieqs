@@ -23,6 +23,9 @@
      if (!($dbc)){
      require(DB);
      }
+
+     $_SESSION['debug'] = true;
+
     
      
      require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
