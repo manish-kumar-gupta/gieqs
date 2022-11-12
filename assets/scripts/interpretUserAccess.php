@@ -46,7 +46,7 @@ if (isset($url_requested)){
 
 
 
-$debugUserAccess = false;
+$debugUserAccess = true;
 //$debug = FALSE;
 
 $info = [];
