@@ -255,7 +255,7 @@ if ($openaccess == 1){
     a:{
 //echo 'made it to a';
 
-if (!$debugUserAccess){
+if ($debugUserAccess){
 
 print_r($_SESSION);
 
