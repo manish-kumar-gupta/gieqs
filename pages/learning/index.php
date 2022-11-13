@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php require 'includes/config.inc.php';?>
+<?php require 'includes/config.inc.php';
+
+var_dump($_SESSION);
+			exit();
+
+?>
+
 
 
 <head>
 
     <?php
 
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 
 
       //define user access level

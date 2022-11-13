@@ -46,8 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$_SESSION['access_level'] = $data['access_level'];
 			$_SESSION['siteKey'] = 'TxsvAb6KDYpmdNk';
 
-			var_dump($_SESSION);
-			exit();
+			
 			
 			//getcurrent UTC time
 			$date = new DateTime('now', new DateTimeZone('UTC'));
