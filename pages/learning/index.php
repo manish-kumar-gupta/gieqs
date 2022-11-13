@@ -3,8 +3,8 @@
 
 <?php require 'includes/config.inc.php';
 
+echo 'GIEQs is currently experiencing technical difficulties.  We are migrating the site to a new home to maximise your experience.  We will be back soon.';
 var_dump($_SESSION);
-			exit();
 
 ?>
 

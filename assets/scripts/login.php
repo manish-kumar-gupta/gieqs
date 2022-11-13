@@ -59,6 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 			// Redirect:
 			echo '1';
+			exit();
 
 		}else{ // recent activity
 

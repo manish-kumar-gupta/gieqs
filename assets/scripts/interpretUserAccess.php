@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$can_i_write = is_writable("/var/cpanel/php/sessions/ea-php80");
+$can_i_write = is_writable("/home/u8l2e829uoi9/scripts/session");
 echo 'session directory writable is ';
 var_dump($can_i_write);
 
