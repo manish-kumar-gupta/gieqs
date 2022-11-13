@@ -175,7 +175,7 @@ allow them to determine access validated
             <input type="hidden" id="cost_symposium" name="cost_symposium" value="0">
 
             <input type="hidden" id="course_date" name="course_date"
-                value="<?php echo date_format($programmeDate, "Y-m-d H:i:s");?>">
+                value="<?php if (isset($programmeDate)){echo date_format($programmeDate, "Y-m-d H:i:s");}?>">
 
 
             <!-- <input type="hidden" id="course_date" name="course_date"
