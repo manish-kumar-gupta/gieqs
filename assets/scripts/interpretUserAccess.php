@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+$can_i_write = is_writable("/var/cpanel/php/sessions/ea-php80");
+echo 'session directory writable is ';
+var_dump($can_i_write);
+
+
 //user access variables
 
 //$openaccess = 1 allows the page to be viewed without login and skips the rest of the script
@@ -10,7 +16,8 @@ session_start();
 //echo 'hello';
 
 error_reporting(E_ALL);
-    require(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
+
+require(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
 
     
 
@@ -258,7 +265,7 @@ if ($openaccess == 1){
 if ($debugUserAccess){
 
 print_r($_SESSION);
-
+print_r($info);
 }
 
 if (!isset($_SESSION['user_id']) || !isset($_SESSION['access_level'])) {
