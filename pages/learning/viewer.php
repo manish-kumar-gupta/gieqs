@@ -50,7 +50,6 @@ error_reporting(E_ALL);
 
 $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
 
-echo 'hello';
 
       ?>
 
@@ -715,6 +714,8 @@ echo 'hello';
 <body class="bg-gradient-dark">
     <header class="header header-transparent" id="header-main">
 
+
+    <?php echo 'hello';?>
         <!-- Topbar -->
 
         <?php require BASE_URI . '/pages/learning/includes/topbar.php';?>
@@ -722,6 +723,7 @@ echo 'hello';
         <!-- Main navbar -->
 
         <?php require BASE_URI . '/pages/learning/includes/nav.php';?>
+
 
 
 
