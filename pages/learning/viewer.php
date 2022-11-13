@@ -37,6 +37,7 @@
         $userFunctions = new userFunctions;
 
         $assetManager = new assetManager;
+        echo 'hello';
 
         require(BASE_URI . '/vendor/autoload.php');
 use Vimeo\Vimeo;
