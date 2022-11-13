@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-$can_i_write = is_writable("/home/u8l2e829uoi9/scripts/session");
+/* $can_i_write = is_writable("/home/u8l2e829uoi9/scripts/session");
 echo 'session directory writable is ';
-var_dump($can_i_write);
+var_dump($can_i_write); */
 
 
 //user access variables
@@ -15,7 +15,7 @@ var_dump($can_i_write);
 //define token from url
 //echo 'hello';
 
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 
 require(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
 
