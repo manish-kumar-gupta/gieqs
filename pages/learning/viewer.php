@@ -68,6 +68,8 @@ $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
     <script src="<?php echo BASE_URL; ?>/assets/libs/autosize/dist/autosize.min.js"></script>
     <script src="<?php echo BASE_URL; ?>/node_modules/bootstrap-tour/build/js/bootstrap-tour-standalone.min.js">
 
+<?php echo 'hello';?>
+
 <?php require BASE_URI . '/assets/scripts/purchase.php';?>
 
     </script>
@@ -715,7 +717,6 @@ $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
     <header class="header header-transparent" id="header-main">
 
 
-    <?php echo 'hello';?>
         <!-- Topbar -->
 
         <?php require BASE_URI . '/pages/learning/includes/topbar.php';?>
