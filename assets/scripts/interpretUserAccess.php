@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 //user access variables
 
 //$openaccess = 1 allows the page to be viewed without login and skips the rest of the script
