@@ -40,7 +40,7 @@ if ($active == 0){
 
 //active superuser only, executed in interpretuseraccess
 
-$onlySuperuser = 1;
+$onlySuperuser = 0;
 
 
 
