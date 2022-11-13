@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 
 /* $can_i_write = is_writable("/home/u8l2e829uoi9/scripts/session");
 echo 'session directory writable is ';
