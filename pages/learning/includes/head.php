@@ -24,13 +24,13 @@
      require(DB);
      }
 
-     $_SESSION['debug'] = true;
+     $_SESSION['debug'] = false;
   
     
      
      require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
 
-     echo 'hello1';
+     //echo 'hello1';
 
 
      $registrationURL = 'https://www.gieqs.com/pages/program/registration.php';

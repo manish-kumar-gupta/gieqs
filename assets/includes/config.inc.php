@@ -1,6 +1,6 @@
 <?php 
 session_start();
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 
 /* 
 // server should keep session data for AT LEAST 12 hours
