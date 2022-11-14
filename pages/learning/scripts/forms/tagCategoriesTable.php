@@ -1,7 +1,6 @@
 
 		
-	<!DOCTYPE html>
-<html lang="en">
+	
 
 <?php require '../../includes/config.inc.php';?>
 

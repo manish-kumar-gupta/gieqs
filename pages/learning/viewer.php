@@ -797,7 +797,7 @@ $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
                         
                         }
 
-                        $debug=true;
+                        //$debug=true;
       
                         if ($debug){
 

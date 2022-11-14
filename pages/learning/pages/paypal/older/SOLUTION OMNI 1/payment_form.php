@@ -11,8 +11,7 @@ $payment = new Payment;
 
 // ?>
 
-<!DOCTYPE html>
-<html lang="en">
+
 
 
 <head>
