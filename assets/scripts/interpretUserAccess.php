@@ -100,7 +100,7 @@ echo '<br>DB_NAME : ' . print_r(DB_NAME);
 
 
 //script for detection of page related variables in header
-if ($openaccess == 1){
+if (isset($openaccess)){
 
     $info[] = 'page is open access';
 
