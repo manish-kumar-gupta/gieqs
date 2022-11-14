@@ -140,7 +140,7 @@ $debug = TRUE;
  *  before this next conditional.
  */
 
-$debug = false;
+$debug = true;
 
 // Assume debugging is off. 
 if (!isset($debug)) {
@@ -186,12 +186,25 @@ function my_error_handler($e_number, $e_message, $e_file, $e_line, $e_vars) {
 } // End of my_error_handler() definition.
 
 // Use my error handler:
-//set_error_handler('my_error_handler');
+set_error_handler('my_error_handler');
 
 # ***** ERROR MANAGEMENT ***** #
 # **************************** #
 
 //error_reporting(E_ERROR | E_WARNING | E_PARSE);
+
+/* 
+function errHandle($errNo, $errStr, $errFile, $errLine) {
+    $msg = "$errStr in $errFile on line $errLine";
+    if ($errNo == E_NOTICE || $errNo == E_WARNING) {
+        throw new ErrorException($msg, $errNo);
+    } else {
+        echo $msg;
+    }
+}
+
+set_error_handler('errHandle'); */
+
 if ($debug){
     
 

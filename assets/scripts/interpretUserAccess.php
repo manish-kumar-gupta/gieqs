@@ -165,7 +165,7 @@ if ($openaccess == 1){
             }
         
         
-        if ($onlySuperuser){
+        if (isset($onlySuperuser) && ($onlySuperuser == true)){
     
             $info[] = 'only super user can access the site set in config.inc.php';
     
@@ -199,7 +199,7 @@ if ($openaccess == 1){
 
     //if a token is present allowing access to the page then allow
     //else reject
-    if ($tokenaccess == 1){
+    if ((isset($tokenaccess)) && $tokenaccess == 1){
         if (isset($token)){
 
             //echo 'token set is' . $token;
@@ -486,7 +486,7 @@ if ($userid){
 
     //live
     
-    $info[] = '\$livetestingusers contains (' . $liveTestingUsers . ')';
+    //$info[] = '\$livetestingusers contains (' . $liveTestingUsers . ')';
     
     if (in_array($userid, $liveTestingUsers)) {
         $live = 1;
