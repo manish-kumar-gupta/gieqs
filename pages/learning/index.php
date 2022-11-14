@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+
 
 <?php require 'includes/config.inc.php';
 
@@ -8,7 +7,8 @@ var_dump($_SESSION);
  */
 ?>
 
-
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
 
