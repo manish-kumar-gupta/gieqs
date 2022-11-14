@@ -3,6 +3,7 @@
 <?php
 require_once BASE_URI . '/assets/scripts/classes/coin.class.php';
 $coin = new coin;
+error_reporting(E_ALL);
 
 ?>
 
