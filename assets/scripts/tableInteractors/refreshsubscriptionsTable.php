@@ -5,7 +5,7 @@
 
                 //TODO set access level here
 
-                $debug = true;
+                //$debug = true;
 
                 require ('../../../assets/includes/config.inc.php');		
 
@@ -28,7 +28,7 @@
 
 
                 //print_r($response);
-                $x=0;
+                /* $x=0;
                 foreach ($response as $key=>$value){
 
                     //print_r($value);
@@ -60,7 +60,7 @@
 
                     
 
-                }
+                } */
 
                 echo json_encode($response);
 
