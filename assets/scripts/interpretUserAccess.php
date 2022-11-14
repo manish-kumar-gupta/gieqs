@@ -482,7 +482,7 @@ c:{
 
 }
 
-if ($userid){
+if (isset($userid)){
 
     //live
     
