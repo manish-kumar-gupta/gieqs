@@ -58,6 +58,15 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
     $id = null;
 
 }
+
+if (isset($_GET["chapternumber"]) && is_numeric($_GET["chapternumber"])){
+    $chapternumber = $_GET["chapternumber"];
+
+}else{
+
+    $chapternumber = null;
+
+}
     
     $response = $client->request('/videos/' . $general->getVimeoID($id));
 
@@ -383,6 +392,7 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
 
         <div id="id" style="display:none;"><?php if ($id){echo $id;}?></div>
 
+        <div id="chapternumber" style="display:none;"><?php if ($chapternumber){echo $chapternumber;}?></div>
 
 
         <div id="vimeoid" style="display:none;"><?php echo $general->getVimeoID($id);?></div>
@@ -1104,6 +1114,9 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
     <script src="assets/js/demo.js"></script>
     <script>
     var videoPassed = $("#id").text();
+
+    var chapternumber = $("#chapternumber").text();
+
                     </script>
 
     <script src=<?php echo BASE_URL . "/pages/learning/includes/endowiki-player.js"?>></script>
@@ -1351,6 +1364,21 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
         $(document).ready(function () {
 
             
+
+
+            waitForFinalEvent(function() {
+
+//if there is no chapter set in the url
+
+if (chapternumber != ''){
+
+    console.log('chapternumber is set and is ' + chapternumber);
+    skipToChapter(chapternumber);
+
+
+}
+
+}, 200, "wait for most recent Video");
             //getComments();
 
             /* var isshow = localStorage.getItem('isshow');
