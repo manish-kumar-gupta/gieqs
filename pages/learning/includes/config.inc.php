@@ -168,8 +168,10 @@ function my_error_handler($e_number, $e_message, $e_file, $e_line, $e_vars) {
     
     if ($debug) { // Show the error.
     
+        echo '<br/><br/>';
         echo '<div class="error">' . $message . '</div>';
         debug_print_backtrace();
+        echo '<br/><br/>';
         
     } else { 
 
