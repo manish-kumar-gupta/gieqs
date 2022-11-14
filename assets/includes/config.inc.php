@@ -163,7 +163,7 @@ $debug = TRUE;
  *  before this next conditional.
  */
 
-//$debug = true;
+$debug = true;
 //$_SESSION['debug'] = true;
 
 // Assume debugging is off. 
@@ -211,7 +211,7 @@ function my_error_handler($e_number, $e_message, $e_file, $e_line, $e_vars) {
 } // End of my_error_handler() definition.
 
 // Use my error handler:
-//set_error_handler('my_error_handler');
+set_error_handler('my_error_handler');
 
 # ***** ERROR MANAGEMENT ***** #
 # **************************** #
