@@ -163,7 +163,7 @@ $debug = TRUE;
  *  before this next conditional.
  */
 
-$debug = true;
+$debug = false;
 //$_SESSION['debug'] = true;
 
 // Assume debugging is off. 

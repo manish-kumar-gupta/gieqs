@@ -140,7 +140,7 @@ $debug = TRUE;
  *  before this next conditional.
  */
 
-$debug = true;
+$debug = false;
 
 // Assume debugging is off. 
 if (!isset($debug)) {
