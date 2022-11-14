@@ -25,7 +25,9 @@
 
       $users = new users;
 
-      $usersViewsVideo = new usersViewsVideo;
+      require_once(BASE_URI . '/pages/learning/classes/usersViewsVideo.class.php');
+$usersViewsVideo = new usersViewsVideo;
+     
 
 
       $usersSocial = new usersSocial;
@@ -34,7 +36,14 @@
         
         $usersFavouriteVideo = new usersFavouriteVideo;
 
-        $userFunctions = new userFunctions;
+        require_once(BASE_URI . '/assets/scripts/classes/userFunctions.class.php');
+$userFunctions = new userFunctions;
+
+
+     
+
+        require_once(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
+$assetManager = new assetManager;
 
         $assetManager = new assetManager;
 
