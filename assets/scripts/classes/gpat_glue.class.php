@@ -10,9 +10,7 @@
  *
  */
 
-if (session_status() == PHP_SESSION_NONE) { //if there's no session_start yet...
-    session_start(); //do this
-}
+
 
 if ($_SESSION) {
 
