@@ -24,7 +24,7 @@
 
 
                 
-                $response =  $assetManager->Load_records_limit_json_datatables(400000);
+                $response = $assetManager->Load_records_limit_json_datatables(400000);
 
 
                 //print_r($response);
