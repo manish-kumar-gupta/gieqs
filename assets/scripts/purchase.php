@@ -25,6 +25,23 @@ allow them to determine access validated
 
 */
 
+
+if (!isset($access_validated)){
+
+
+    $access_validated = false;
+
+}
+
+if (!isset($access_token)){
+
+
+    $access_token = false;
+}
+
+
+
+
 ?>
 
 
@@ -82,7 +99,7 @@ allow them to determine access validated
                         <?php } ?>
 
                     </p>
-                                    
+
                     <p class="text-white text-justify mt-4">
                         Discount : <span class="text-muted d-none" id="symposium-discount"></span>
 
@@ -146,20 +163,9 @@ allow them to determine access validated
     <?php 
 
         //determine action 
+       
 
-        if ((!isset($access_validated))){
-
-            $access_validated = false;
-
-        }
-
-        if ((!isset($programmeDate))){
-
-            $programmeDate = false;
-
-        }
-
-        if (isset($access_validated)){
+        if ($access_validated){
 
             //allow free register
 
@@ -444,7 +450,7 @@ if ($userid){
             <input type="hidden" id="alreadyHasSiteWide" name="alreadyHasSiteWide" value="">
 
             <input type="hidden" id="course_date" name="course_date"
-                value="<?php echo date_format($programmeDate, "Y-m-d H:i:s");?>">
+                value="<?php if (isset($programmeDate)){echo date_format($programmeDate, "Y-m-d H:i:s");}?>">
             <!-- CHANGE ME UPDATE TODO MAKE THIS COME FROM THE PROGRAM -->
 
             <input type="submit" id="button-confirm-new-subscription" class="btn btn-sm btn-white button-confirm-new"
