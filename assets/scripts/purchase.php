@@ -82,7 +82,7 @@ allow them to determine access validated
                         <?php } ?>
 
                     </p>
-
+                                    
                     <p class="text-white text-justify mt-4">
                         Discount : <span class="text-muted d-none" id="symposium-discount"></span>
 
@@ -147,7 +147,19 @@ allow them to determine access validated
 
         //determine action 
 
-        if ($access_validated){
+        if ((!isset($access_validated))){
+
+            $access_validated = false;
+
+        }
+
+        if ((!isset($programmeDate))){
+
+            $programmeDate = false;
+
+        }
+
+        if (isset($access_validated)){
 
             //allow free register
 
@@ -177,11 +189,6 @@ allow them to determine access validated
 
             <input type="hidden" id="course_date" name="course_date"
                 value="<?php if (isset($programmeDate)){echo date_format($programmeDate, "Y-m-d H:i:s");}?>">
-
-
-            <!-- <input type="hidden" id="course_date" name="course_date"
-                value="<?php //echo date_format($programmeDate, "Y-m-d H:i:s");?>"> -->
-            <!-- CHANGE ME UPDATE TODO MAKE THIS COME FROM THE PROGRAM -->
 
             <input type="submit" id="button-confirm-new" class="btn btn-sm btn-white button-confirm-new"
                 value="<?php $result = $access_validated ? 'Register' : 'Start Payment'; echo $result;?>">
