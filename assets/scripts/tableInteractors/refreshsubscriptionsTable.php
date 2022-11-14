@@ -5,12 +5,19 @@
 
                 //TODO set access level here
 
+                $debug = true;
+
                 require ('../../../assets/includes/config.inc.php');		
 
 
+                //$subscriptions = new subscriptions;
+
+                require_once(BASE_URI . '/assets/scripts/classes/subscriptions.class.php');
                 $subscriptions = new subscriptions;
+
+
                 require_once(BASE_URI . '/assets/scripts/classes/userFunctions.class.php');
-$userFunctions = new userFunctions;
+                $userFunctions = new userFunctions;
 
                 require_once(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
                 $assetManager = new assetManager;
