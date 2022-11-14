@@ -1364,10 +1364,10 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
 
             } */
 
-            // Show popup here
-            setTimeout(function() {
+            // Show popup here // removed for now
+            /* setTimeout(function() {
                     $('#modal-flyer').modal('show');
-                }, 5000);
+                }, 5000); */
             
 
             $(document).click(function(event) { 
