@@ -18,6 +18,8 @@
     <?php
       require BASE_URI . '/pages/learning/includes/head.php';
 
+      require_once(BASE_URI . '/pages/learning/classes/general.class.php');
+
       $general = new general;
 
       $users = new users;
