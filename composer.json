@@ -10,7 +10,6 @@
         "paypal/rest-api-sdk-php": "^1.14",
         "chillerlan/php-qrcode": "^2.0",
         "stripe/stripe-php": "^7.79",
-        "slim/slim": "^4.8",
-        "guzzlehttp/guzzle": "^7.5"
+        "slim/slim": "^4.8"
     }
 }
