@@ -22,6 +22,9 @@ class File
     /** @const Append binary mode */
     public const APPEND_BINARY = 'ab';
 
+    /** @const Read and write mode */
+    public const APPEND_WRITE = 'a+';
+
     /** @var string */
     protected $key;
 
@@ -64,14 +67,14 @@ class File
     /**
      * Set file meta.
      *
-     * @param int    $offset
-     * @param int    $fileSize
-     * @param string $filePath
-     * @param string $location
+     * @param int         $offset
+     * @param int         $fileSize
+     * @param string      $filePath
+     * @param string|null $location
      *
      * @return File
      */
-    public function setMeta(int $offset, int $fileSize, string $filePath, string $location = null) : self
+    public function setMeta(int $offset, int $fileSize, string $filePath, string $location = null): self
     {
         $this->offset   = $offset;
         $this->fileSize = $fileSize;
@@ -88,7 +91,7 @@ class File
      *
      * @return File
      */
-    public function setName(string $name) : self
+    public function setName(string $name): self
     {
         $this->name = $name;
 
@@ -100,7 +103,7 @@ class File
      *
      * @return string
      */
-    public function getName() : string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -112,7 +115,7 @@ class File
      *
      * @return File
      */
-    public function setFileSize(int $size) : self
+    public function setFileSize(int $size): self
     {
         $this->fileSize = $size;
 
@@ -124,7 +127,7 @@ class File
      *
      * @return int
      */
-    public function getFileSize() : int
+    public function getFileSize(): int
     {
         return $this->fileSize;
     }
@@ -136,7 +139,7 @@ class File
      *
      * @return File
      */
-    public function setKey(string $key) : self
+    public function setKey(string $key): self
     {
         $this->key = $key;
 
@@ -148,7 +151,7 @@ class File
      *
      * @return string
      */
-    public function getKey() : string
+    public function getKey(): string
     {
         return $this->key;
     }
@@ -160,7 +163,7 @@ class File
      *
      * @return File
      */
-    public function setChecksum(string $checksum) : self
+    public function setChecksum(string $checksum): self
     {
         $this->checksum = $checksum;
 
@@ -172,7 +175,7 @@ class File
      *
      * @return string
      */
-    public function getChecksum() : string
+    public function getChecksum(): string
     {
         return $this->checksum;
     }
@@ -184,7 +187,7 @@ class File
      *
      * @return File
      */
-    public function setOffset(int $offset) : self
+    public function setOffset(int $offset): self
     {
         $this->offset = $offset;
 
@@ -196,7 +199,7 @@ class File
      *
      * @return int
      */
-    public function getOffset() : int
+    public function getOffset(): int
     {
         return $this->offset;
     }
@@ -208,7 +211,7 @@ class File
      *
      * @return File
      */
-    public function setLocation(string $location) : self
+    public function setLocation(string $location): self
     {
         $this->location = $location;
 
@@ -220,7 +223,7 @@ class File
      *
      * @return string
      */
-    public function getLocation() : string
+    public function getLocation(): string
     {
         return $this->location;
     }
@@ -232,7 +235,7 @@ class File
      *
      * @return File
      */
-    public function setFilePath(string $path) : self
+    public function setFilePath(string $path): self
     {
         $this->filePath = $path;
 
@@ -244,7 +247,7 @@ class File
      *
      * @return string
      */
-    public function getFilePath() : string
+    public function getFilePath(): string
     {
         return $this->filePath;
     }
@@ -254,7 +257,7 @@ class File
      *
      * @return File
      */
-    public function setUploadMetadata(array $metadata) : self
+    public function setUploadMetadata(array $metadata): self
     {
         $this->uploadMetadata = $metadata;
 
@@ -266,7 +269,7 @@ class File
      *
      * @return string
      */
-    public function getInputStream() : string
+    public function getInputStream(): string
     {
         return self::INPUT_STREAM;
     }
@@ -276,7 +279,7 @@ class File
      *
      * @return array
      */
-    public function details() : array
+    public function details(): array
     {
         $now = Carbon::now();
 
@@ -302,7 +305,7 @@ class File
      *
      * @return int
      */
-    public function upload(int $totalBytes) : int
+    public function upload(int $totalBytes): int
     {
         if ($this->offset === $totalBytes) {
             return $this->offset;
@@ -376,7 +379,7 @@ class File
      *
      * @return bool
      */
-    public function exists(string $filePath, string $mode = self::READ_BINARY) : bool
+    public function exists(string $filePath, string $mode = self::READ_BINARY): bool
     {
         if (self::INPUT_STREAM === $filePath) {
             return true;
@@ -400,7 +403,7 @@ class File
      *
      * @return int
      */
-    public function seek($handle, int $offset, int $whence = SEEK_SET) : int
+    public function seek($handle, int $offset, int $whence = SEEK_SET): int
     {
         $position = fseek($handle, $offset, $whence);
 
@@ -421,7 +424,7 @@ class File
      *
      * @return string
      */
-    public function read($handle, int $chunkSize) : string
+    public function read($handle, int $chunkSize): string
     {
         $data = fread($handle, $chunkSize);
 
@@ -429,7 +432,7 @@ class File
             throw new FileException('Cannot read file.');
         }
 
-        return (string) $data;
+        return $data;
     }
 
     /**
@@ -443,7 +446,7 @@ class File
      *
      * @return int
      */
-    public function write($handle, string $data, $length = null) : int
+    public function write($handle, string $data, $length = null): int
     {
         $bytesWritten = \is_int($length) ? fwrite($handle, $data, $length) : fwrite($handle, $data);
 
@@ -461,7 +464,7 @@ class File
      *
      * @return int
      */
-    public function merge(array $files) : int
+    public function merge(array $files): int
     {
         $destination = $this->getFilePath();
         $firstFile   = array_shift($files);
@@ -497,7 +500,7 @@ class File
      *
      * @return bool
      */
-    public function copy(string $source, string $destination) : bool
+    public function copy(string $source, string $destination): bool
     {
         $status = @copy($source, $destination);
 
@@ -516,7 +519,7 @@ class File
      *
      * @return bool
      */
-    public function delete(array $files, bool $folder = false) : bool
+    public function delete(array $files, bool $folder = false): bool
     {
         $status = $this->deleteFiles($files);
 
@@ -534,7 +537,7 @@ class File
      *
      * @return bool
      */
-    public function deleteFiles(array $files) : bool
+    public function deleteFiles(array $files): bool
     {
         if (empty($files)) {
             return false;
@@ -558,7 +561,7 @@ class File
      *
      * @return bool
      */
-    public function close($handle) : bool
+    public function close($handle): bool
     {
         return fclose($handle);
     }

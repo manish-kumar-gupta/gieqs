@@ -89,8 +89,9 @@ class ProcessorChain implements \ArrayAccess, ProcessorInterface
     }
 
     /**
-     * @return bool
+     * {@inheritdoc}
      */
+    #[\ReturnTypeWillChange]
     public function offsetExists($index)
     {
         return isset($this->processors[$index]);
@@ -99,6 +100,7 @@ class ProcessorChain implements \ArrayAccess, ProcessorInterface
     /**
      * {@inheritdoc}
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($index)
     {
         return $this->processors[$index];
@@ -107,12 +109,12 @@ class ProcessorChain implements \ArrayAccess, ProcessorInterface
     /**
      * {@inheritdoc}
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($index, $processor)
     {
         if (!$processor instanceof ProcessorInterface) {
             throw new \InvalidArgumentException(
-                'A processor chain accepts only instances of '.
-                "'Predis\Command\Processor\ProcessorInterface'."
+                'Processor chain accepts only instances of `Predis\Command\Processor\ProcessorInterface`'
             );
         }
 
@@ -122,6 +124,7 @@ class ProcessorChain implements \ArrayAccess, ProcessorInterface
     /**
      * {@inheritdoc}
      */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($index)
     {
         unset($this->processors[$index]);
