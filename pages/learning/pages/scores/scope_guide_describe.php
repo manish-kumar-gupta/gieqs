@@ -1068,7 +1068,7 @@ return SMICnumeric + '%  <br>(or ' + SMICriskOR + 'x the risk of a granular 0-II
                 var location_tip = $('#location_tip').val();
                 var tip_deflection_lateral = $('#tip_deflection_lateral').val();
                 var tip_deflection_ap = $('#tip_deflection_ap').val();
-                var tip_defelction_angle = $('#tip_deflection_angle').val()
+                var tip_deflection_angle = $('#tip_deflection_angle').val()
                 var distal_part_relative_loop = $('#distal_part_relative_loop').val();
                 var patient_position = $('#patient_position').val();
 				var location_loop = $('#location_loop').val();
