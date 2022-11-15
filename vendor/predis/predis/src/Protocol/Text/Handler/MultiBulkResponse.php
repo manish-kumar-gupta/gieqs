@@ -34,7 +34,7 @@ class MultiBulkResponse implements ResponseHandlerInterface
 
         if ("$length" !== $payload) {
             CommunicationException::handle(new ProtocolException(
-                $connection, "Cannot parse '$payload' as a valid length of a multi-bulk response [{$connection->getParameters()}]"
+                $connection, "Cannot parse '$payload' as a valid length of a multi-bulk response."
             ));
         }
 

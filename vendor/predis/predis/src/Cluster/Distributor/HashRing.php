@@ -239,8 +239,9 @@ class HashRing implements DistributorInterface, HashGeneratorInterface
     public function get($value)
     {
         $hash = $this->hash($value);
+        $node = $this->getByHash($hash);
 
-        return $this->getByHash($hash);
+        return $node;
     }
 
     /**

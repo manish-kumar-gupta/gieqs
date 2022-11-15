@@ -7,14 +7,16 @@ namespace Stripe\Service\Identity;
 class VerificationSessionService extends \Stripe\Service\AbstractService
 {
     /**
-     * Returns a list of VerificationSessions.
+     * List all verification sessions. Can optionally provide a status to return only
+     * VerificationSessions with that status. Can optionally specify a query filter on
+     * created timestamp.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      *
-     * @return \Stripe\Collection<\Stripe\Identity\VerificationSession>
+     * @return \Stripe\Collection
      */
     public function all($params = null, $opts = null)
     {
@@ -22,12 +24,10 @@ class VerificationSessionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * A VerificationSession object can be canceled when it is in
-     * <code>requires_input</code> <a
-     * href="/docs/identity/how-sessions-work">status</a>.
+     * Mark a VerificationSession as canceled.
      *
-     * Once canceled, future submission attempts are disabled. This cannot be undone.
-     * <a href="/docs/identity/verification-sessions#cancel">Learn more</a>.
+     * If the VerificationSession is in the <code>processing</code> state, you must
+     * wait until it finishes before cancelling it.
      *
      * @param string $id
      * @param null|array $params
@@ -43,17 +43,7 @@ class VerificationSessionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Creates a VerificationSession object.
-     *
-     * After the VerificationSession is created, display a verification modal using the
-     * session <code>client_secret</code> or send your users to the session’s
-     * <code>url</code>.
-     *
-     * If your API key is in test mode, verification checks won’t actually process,
-     * though everything else will occur as if in live mode.
-     *
-     * Related guide: <a href="/docs/identity/verify-identity-documents">Verify your
-     * users’ identity documents</a>.
+     * Create a new VerificationSession to begin the verification process.
      *
      * @param null|array $params
      * @param null|array|\Stripe\Util\RequestOptions $opts
@@ -68,21 +58,13 @@ class VerificationSessionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Redact a VerificationSession to remove all collected information from Stripe.
+     * Redact a VerificationSession to delete all collected information from Stripe.
      * This will redact the VerificationSession and all objects related to it,
-     * including VerificationReports, Events, request logs, etc.
-     *
-     * A VerificationSession object can be redacted when it is in
-     * <code>requires_input</code> or <code>verified</code> <a
-     * href="/docs/identity/how-sessions-work">status</a>. Redacting a
-     * VerificationSession in <code>requires_action</code> state will automatically
-     * cancel it.
-     *
-     * The redaction process may take up to four days. When the redaction process is in
-     * progress, the VerificationSession’s <code>redaction.status</code> field will be
-     * set to <code>processing</code>; when the process is finished, it will change to
-     * <code>redacted</code> and an <code>identity.verification_session.redacted</code>
-     * event will be emitted.
+     * including VerificationReports, Events, Files, request logs, etc. This redaction
+     * process may take up to four days. When the redaction process is in progress, the
+     * VerificationSession’s <code>redaction.status</code> field will be set to
+     * <code>processing</code>; when the process is finished, it will change to
+     * <code>redacted</code>.
      *
      * Redaction is irreversible. Redacted objects are still accessible in the Stripe
      * API, but all the fields that contain personal data will be replaced by the
@@ -90,7 +72,14 @@ class VerificationSessionService extends \Stripe\Service\AbstractService
      * <code>metadata</code> field will also be erased. Redacted objects cannot be
      * updated or used for any purpose.
      *
-     * <a href="/docs/identity/verification-sessions#redact">Learn more</a>.
+     * If the VerificationSession is in the <code>processing</code> state, you must
+     * wait until it finishes before redacting it. Redacting a VerificationSession in
+     * <code>requires_action</code> state will automatically <a
+     * href="/docs/api/verification_sessions/cancel">cancel</a> it.
+     *
+     * An <a
+     * href="/docs/api/events/types#event_types-identity.verification_session.redacted"><code>identity.verification_session.redacted</code></a>
+     * webhook will be sent when a VerificationSession is redacted.
      *
      * @param string $id
      * @param null|array $params
@@ -106,11 +95,12 @@ class VerificationSessionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves the details of a VerificationSession that was previously created.
-     *
-     * When the session status is <code>requires_input</code>, you can use this method
-     * to retrieve a valid <code>client_secret</code> or <code>url</code> to allow
-     * re-submission.
+     * Retrieves an existing VerificationSession. When the session <code>status</code>
+     * is <code>requires_input</code>, this method guarantees that the redirect
+     * <code>url</code> is fresh: if your user has previously visited this session, a
+     * new <code>url</code> will be returned. Before redirecting your user to Stripe,
+     * ensure that you have just Created or Retrieved the VerificationSession; never
+     * cache or store the <code>url</code>.
      *
      * @param string $id
      * @param null|array $params
@@ -126,10 +116,7 @@ class VerificationSessionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Updates a VerificationSession object.
-     *
-     * When the session status is <code>requires_input</code>, you can use this method
-     * to update the verification check and options.
+     * Update properties on a VerificationSession.
      *
      * @param string $id
      * @param null|array $params

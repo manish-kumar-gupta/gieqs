@@ -12,10 +12,8 @@
 namespace Predis\Configuration;
 
 /**
- * Default client options container for Predis\Client.
- *
- * Pre-defined options have their specialized handlers that can filter, convert
- * an lazily initialize values in a mini-DI container approach.
+ * Manages Predis options with filtering, conversion and lazy initialization of
+ * values using a mini-DI container approach.
  *
  * {@inheritdoc}
  *
@@ -23,30 +21,35 @@ namespace Predis\Configuration;
  */
 class Options implements OptionsInterface
 {
-    /** @var array */
-    protected $handlers = [
-        'aggregate' => Option\Aggregate::class,
-        'cluster' => Option\Cluster::class,
-        'replication' => Option\Replication::class,
-        'connections' => Option\Connections::class,
-        'commands' => Option\Commands::class,
-        'exceptions' => Option\Exceptions::class,
-        'prefix' => Option\Prefix::class,
-        'crc16' => Option\CRC16::class,
-    ];
-
-    /** @var array */
-    protected $options = [];
-
-    /** @var array */
     protected $input;
+    protected $options;
+    protected $handlers;
 
     /**
-     * @param array $options Named array of client options
+     * @param array $options Array of options with their values
      */
-    public function __construct(array $options = null)
+    public function __construct(array $options = array())
     {
-        $this->input = $options ?? [];
+        $this->input = $options;
+        $this->options = array();
+        $this->handlers = $this->getHandlers();
+    }
+
+    /**
+     * Ensures that the default options are initialized.
+     *
+     * @return array
+     */
+    protected function getHandlers()
+    {
+        return array(
+            'cluster' => 'Predis\Configuration\ClusterOption',
+            'connections' => 'Predis\Configuration\ConnectionFactoryOption',
+            'exceptions' => 'Predis\Configuration\ExceptionsOption',
+            'prefix' => 'Predis\Configuration\PrefixOption',
+            'profile' => 'Predis\Configuration\ProfileOption',
+            'replication' => 'Predis\Configuration\ReplicationOption',
+        );
     }
 
     /**
@@ -97,12 +100,14 @@ class Options implements OptionsInterface
             $value = $this->input[$option];
             unset($this->input[$option]);
 
+            if (is_object($value) && method_exists($value, '__invoke')) {
+                $value = $value($this, $option);
+            }
+
             if (isset($this->handlers[$option])) {
                 $handler = $this->handlers[$option];
                 $handler = new $handler();
                 $value = $handler->filter($this, $value);
-            } elseif (is_object($value) && method_exists($value, '__invoke')) {
-                $value = $value($this);
             }
 
             return $this->options[$option] = $value;

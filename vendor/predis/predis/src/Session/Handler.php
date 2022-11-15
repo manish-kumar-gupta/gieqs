@@ -48,13 +48,23 @@ class Handler implements \SessionHandlerInterface
      */
     public function register()
     {
-        session_set_save_handler($this, true);
+        if (PHP_VERSION_ID >= 50400) {
+            session_set_save_handler($this, true);
+        } else {
+            session_set_save_handler(
+                array($this, 'open'),
+                array($this, 'close'),
+                array($this, 'read'),
+                array($this, 'write'),
+                array($this, 'destroy'),
+                array($this, 'gc')
+            );
+        }
     }
 
     /**
      * {@inheritdoc}
      */
-    #[\ReturnTypeWillChange]
     public function open($save_path, $session_id)
     {
         // NOOP
@@ -64,7 +74,6 @@ class Handler implements \SessionHandlerInterface
     /**
      * {@inheritdoc}
      */
-    #[\ReturnTypeWillChange]
     public function close()
     {
         // NOOP
@@ -74,7 +83,6 @@ class Handler implements \SessionHandlerInterface
     /**
      * {@inheritdoc}
      */
-    #[\ReturnTypeWillChange]
     public function gc($maxlifetime)
     {
         // NOOP
@@ -84,7 +92,6 @@ class Handler implements \SessionHandlerInterface
     /**
      * {@inheritdoc}
      */
-    #[\ReturnTypeWillChange]
     public function read($session_id)
     {
         if ($data = $this->client->get($session_id)) {
@@ -96,7 +103,6 @@ class Handler implements \SessionHandlerInterface
     /**
      * {@inheritdoc}
      */
-    #[\ReturnTypeWillChange]
     public function write($session_id, $session_data)
     {
         $this->client->setex($session_id, $this->ttl, $session_data);
@@ -107,7 +113,6 @@ class Handler implements \SessionHandlerInterface
     /**
      * {@inheritdoc}
      */
-    #[\ReturnTypeWillChange]
     public function destroy($session_id)
     {
         $this->client->del($session_id);

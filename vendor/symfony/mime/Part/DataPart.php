@@ -20,9 +20,6 @@ use Symfony\Component\Mime\MimeTypes;
  */
 class DataPart extends TextPart
 {
-    /** @internal */
-    protected $_parent;
-
     private static $mimeTypes;
 
     private $filename;
@@ -35,8 +32,6 @@ class DataPart extends TextPart
      */
     public function __construct($body, string $filename = null, string $contentType = null, string $encoding = null)
     {
-        unset($this->_parent);
-
         if (null === $contentType) {
             $contentType = 'application/octet-stream';
         }
@@ -44,10 +39,8 @@ class DataPart extends TextPart
 
         parent::__construct($body, null, $subtype, $encoding);
 
-        if (null !== $filename) {
-            $this->filename = $filename;
-            $this->setName($filename);
-        }
+        $this->filename = $filename;
+        $this->setName($filename);
         $this->setDisposition('attachment');
     }
 
@@ -61,20 +54,13 @@ class DataPart extends TextPart
             $contentType = self::$mimeTypes->getMimeTypes($ext)[0] ?? 'application/octet-stream';
         }
 
-        if ((is_file($path) && !is_readable($path)) || is_dir($path)) {
+        if (false === is_readable($path)) {
             throw new InvalidArgumentException(sprintf('Path "%s" is not readable.', $path));
         }
 
         if (false === $handle = @fopen($path, 'r', false)) {
             throw new InvalidArgumentException(sprintf('Unable to open path "%s".', $path));
         }
-
-        if (!is_file($path)) {
-            $cache = fopen('php://temp', 'r+');
-            stream_copy_to_stream($handle, $cache);
-            $handle = $cache;
-        }
-
         $p = new self($handle, $name ?: basename($path), $contentType);
         $p->handle = $handle;
 
@@ -84,7 +70,7 @@ class DataPart extends TextPart
     /**
      * @return $this
      */
-    public function asInline(): static
+    public function asInline()
     {
         return $this->setDisposition('inline');
     }
@@ -129,16 +115,6 @@ class DataPart extends TextPart
         return $str;
     }
 
-    public function getFilename(): ?string
-    {
-        return $this->filename;
-    }
-
-    public function getContentType(): string
-    {
-        return implode('/', [$this->getMediaType(), $this->getMediaSubtype()]);
-    }
-
     private function generateContentId(): string
     {
         return bin2hex(random_bytes(16)).'@symfony';
@@ -151,7 +127,10 @@ class DataPart extends TextPart
         }
     }
 
-    public function __sleep(): array
+    /**
+     * @return array
+     */
+    public function __sleep()
     {
         // converts the body to a string
         parent::__sleep();
@@ -159,6 +138,7 @@ class DataPart extends TextPart
         $this->_parent = [];
         foreach (['body', 'charset', 'subtype', 'disposition', 'name', 'encoding'] as $name) {
             $r = new \ReflectionProperty(TextPart::class, $name);
+            $r->setAccessible(true);
             $this->_parent[$name] = $r->getValue($this);
         }
         $this->_headers = $this->getHeaders();
@@ -169,6 +149,7 @@ class DataPart extends TextPart
     public function __wakeup()
     {
         $r = new \ReflectionProperty(AbstractPart::class, 'headers');
+        $r->setAccessible(true);
         $r->setValue($this, $this->_headers);
         unset($this->_headers);
 
@@ -180,6 +161,7 @@ class DataPart extends TextPart
                 throw new \BadMethodCallException('Cannot unserialize '.__CLASS__);
             }
             $r = new \ReflectionProperty(TextPart::class, $name);
+            $r->setAccessible(true);
             $r->setValue($this, $this->_parent[$name]);
         }
         unset($this->_parent);

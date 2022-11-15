@@ -91,7 +91,6 @@ class ProtocolProcessor implements ProtocolProcessorInterface
 
             case ':':
                 $integer = (int) $payload;
-
                 return $integer == $payload ? $integer : $payload;
 
             case '-':
@@ -99,7 +98,7 @@ class ProtocolProcessor implements ProtocolProcessorInterface
 
             default:
                 CommunicationException::handle(new ProtocolException(
-                    $connection, "Unknown response prefix: '$prefix' [{$connection->getParameters()}]"
+                    $connection, "Unknown response prefix: '$prefix'."
                 ));
 
                 return;

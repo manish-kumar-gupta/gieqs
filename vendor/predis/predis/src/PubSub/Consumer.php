@@ -14,7 +14,7 @@ namespace Predis\PubSub;
 use Predis\ClientException;
 use Predis\ClientInterface;
 use Predis\Command\Command;
-use Predis\Connection\Cluster\ClusterInterface;
+use Predis\Connection\AggregateConnectionInterface;
 use Predis\NotSupportedException;
 
 /**
@@ -62,17 +62,17 @@ class Consumer extends AbstractConsumer
      */
     private function checkCapabilities(ClientInterface $client)
     {
-        if ($client->getConnection() instanceof ClusterInterface) {
+        if ($client->getConnection() instanceof AggregateConnectionInterface) {
             throw new NotSupportedException(
-                'Cannot initialize a PUB/SUB consumer over cluster connections.'
+                'Cannot initialize a PUB/SUB consumer over aggregate connections.'
             );
         }
 
         $commands = array('publish', 'subscribe', 'unsubscribe', 'psubscribe', 'punsubscribe');
 
-        if (!$client->getCommandFactory()->supports(...$commands)) {
+        if ($client->getProfile()->supportsCommands($commands) === false) {
             throw new NotSupportedException(
-                'PUB/SUB commands are not supported by the current command factory.'
+                'The current profile does not support PUB/SUB related commands.'
             );
         }
     }

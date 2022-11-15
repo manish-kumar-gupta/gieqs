@@ -40,8 +40,9 @@ class PredisStrategy extends ClusterStrategy
     {
         $key = $this->extractKeyTag($key);
         $hash = $this->distributor->hash($key);
+        $slot = $this->distributor->getSlot($hash);
 
-        return $this->distributor->getSlot($hash);
+        return $slot;
     }
 
     /**

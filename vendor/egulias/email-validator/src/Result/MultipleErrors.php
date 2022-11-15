@@ -2,7 +2,7 @@
 
 namespace Egulias\EmailValidator\Result;
 
-use Egulias\EmailValidator\Result\Reason\EmptyReason;
+use Egulias\EmailValidator\Result\InvalidEmail;
 use Egulias\EmailValidator\Result\Reason\Reason;
 
 /**
@@ -34,9 +34,7 @@ class MultipleErrors extends InvalidEmail
 
     public function reason() : Reason
     {
-        return 0 !== count($this->reasons)
-            ? current($this->reasons)
-            : new EmptyReason();
+        return $this->reasons[0];
     }
 
     public function description() : string

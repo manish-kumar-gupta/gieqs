@@ -15,7 +15,7 @@
 // of a test case to test a Redis command by specifying the name of the class
 // in the Predis\Command namespace (only classes in this namespace are valid).
 // For example, to generate a test case for SET (which is represented by the
-// Predis\Command\Redis\StringSet class):
+// Predis\Command\StringSet class):
 //
 //   $ ./bin/generate-command-test --class=StringSet
 //
@@ -45,11 +45,6 @@ class CommandTestCaseGenerator
         if (!isset($options['class'])) {
             throw new RuntimeException("Missing 'class' option.");
         }
-
-        if (!isset($options['realm'])) {
-            throw new RuntimeException("Missing 'realm' option.");
-        }
-
         $this->options = $options;
     }
 
@@ -97,12 +92,8 @@ class CommandTestCaseGenerator
             throw new RuntimeException("Missing 'class' option.");
         }
 
-        if (!isset($options['realm'])) {
-            throw new RuntimeException("Missing 'realm' option.");
-        }
-
-        $options['fqn'] = "Predis\\Command\\Redis\\{$options['class']}";
-        $options['path'] = "Command/Redis/{$options['class']}.php";
+        $options['fqn'] = "Predis\\Command\\{$options['class']}";
+        $options['path'] = "Command/{$options['class']}.php";
 
         $source = __DIR__.'/../src/'.$options['path'];
         if (!file_exists($source)) {
@@ -110,7 +101,7 @@ class CommandTestCaseGenerator
         }
 
         if (!isset($options['output'])) {
-            $options['output'] = sprintf("%s/%s", $options['tests'], str_replace('.php', '_Test.php', $options['path']));
+            $options['output'] = sprintf("%s/%s", $options['tests'], str_replace('.php', 'Test.php', $options['path']));
         }
 
         return new self($options);
@@ -118,11 +109,18 @@ class CommandTestCaseGenerator
 
     protected function getTestRealm()
     {
-        if (empty($this->options['realm'])) {
-            throw new RuntimeException('Invalid value for realm has been sepcified (empty).');
+        if (isset($this->options['realm'])) {
+            if (!$this->options['realm']) {
+                throw new RuntimeException('Invalid value for realm has been sepcified (empty).');
+            }
+            return $this->options['realm'];
         }
 
-        return $this->options['realm'];
+        $fqnParts = explode('\\', $this->options['fqn']);
+        $class = array_pop($fqnParts);
+        list($realm,) = preg_split('/([[:upper:]][[:lower:]]+)/', $class, 2, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
+
+        return strtolower($realm);
     }
 
     public function generate()
@@ -132,7 +130,6 @@ class CommandTestCaseGenerator
         if (!$reflection->isInstantiable()) {
             throw new RuntimeException("Class $class must be instantiable, abstract classes or interfaces are not allowed.");
         }
-
         if (!$reflection->implementsInterface('Predis\Command\CommandInterface')) {
             throw new RuntimeException("Class $class must implement Predis\Command\CommandInterface.");
         }
@@ -176,7 +173,7 @@ class CommandTestCaseGenerator
  * file that was distributed with this source code.
  */
 
-namespace Predis\Command\Redis;
+namespace Predis\Command;
 
 /**
  * @group commands
@@ -187,7 +184,7 @@ class $class extends PredisCommandTestCase
     /**
      * {@inheritdoc}
      */
-    protected function getExpectedCommand(): string
+    protected function getExpectedCommand()
     {
         return '$fqn';
     }
@@ -195,7 +192,7 @@ class $class extends PredisCommandTestCase
     /**
      * {@inheritdoc}
      */
-    protected function getExpectedId(): string
+    protected function getExpectedId()
     {
         return '$id';
     }
@@ -203,7 +200,7 @@ class $class extends PredisCommandTestCase
     /**
      * @group disconnected
      */
-    public function testFilterArguments(): void
+    public function testFilterArguments()
     {
         \$this->markTestIncomplete('This test has not been implemented yet.');
 
@@ -219,7 +216,7 @@ class $class extends PredisCommandTestCase
     /**
      * @group disconnected
      */
-    public function testParseResponse(): void
+    public function testParseResponse()
     {
         \$this->markTestIncomplete('This test has not been implemented yet.');
 
@@ -239,7 +236,7 @@ PHP;
     /**
      * @group disconnected
      */
-    public function testPrefixKeys(): void
+    public function testPrefixKeys()
     {
         \$this->markTestIncomplete('This test has not been implemented yet.');
 
@@ -255,7 +252,7 @@ PHP;
     /**
      * @group disconnected
      */
-    public function testPrefixKeysIgnoredOnEmptyArguments(): void
+    public function testPrefixKeysIgnoredOnEmptyArguments()
     {
         \$command = \$this->getCommand();
         \$command->prefixKeys('prefix:');

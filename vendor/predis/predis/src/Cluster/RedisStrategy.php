@@ -41,8 +41,9 @@ class RedisStrategy extends ClusterStrategy
     public function getSlotByKey($key)
     {
         $key = $this->extractKeyTag($key);
+        $slot = $this->hashGenerator->hash($key) & 0x3FFF;
 
-        return $this->hashGenerator->hash($key) & 0x3FFF;
+        return $slot;
     }
 
     /**
@@ -50,7 +51,8 @@ class RedisStrategy extends ClusterStrategy
      */
     public function getDistributor()
     {
-        $class = get_class($this);
-        throw new NotSupportedException("$class does not provide an external distributor");
+        throw new NotSupportedException(
+            'This cluster strategy does not provide an external distributor'
+        );
     }
 }

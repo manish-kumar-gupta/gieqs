@@ -292,10 +292,10 @@ class WebdisConnection implements NodeConnectionInterface
         curl_setopt($resource, CURLOPT_POSTFIELDS, $serializedCommand);
 
         if (curl_exec($resource) === false) {
-            $error = trim(curl_error($resource));
+            $error = curl_error($resource);
             $errno = curl_errno($resource);
 
-            throw new ConnectionException($this, "$error{$this->getParameters()}]", $errno);
+            throw new ConnectionException($this, trim($error), $errno);
         }
 
         if (phpiredis_reader_get_state($this->reader) !== PHPIREDIS_READER_STATE_COMPLETE) {

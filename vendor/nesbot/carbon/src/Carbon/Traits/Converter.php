@@ -8,7 +8,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Carbon\Traits;
 
 use Carbon\Carbon;
@@ -20,7 +19,6 @@ use Carbon\Exceptions\UnitException;
 use Closure;
 use DateTime;
 use DateTimeImmutable;
-use ReturnTypeWillChange;
 
 /**
  * Trait Converter.
@@ -34,7 +32,39 @@ use ReturnTypeWillChange;
  */
 trait Converter
 {
-    use ToStringFormat;
+    /**
+     * Format to use for __toString method when type juggling occurs.
+     *
+     * @var string|Closure|null
+     */
+    protected static $toStringFormat = null;
+
+    /**
+     * Reset the format used to the default when type juggling a Carbon instance to a string
+     *
+     * @return void
+     */
+    public static function resetToStringFormat()
+    {
+        static::setToStringFormat(null);
+    }
+
+    /**
+     * @deprecated To avoid conflict between different third-party libraries, static setters should not be used.
+     *             You should rather let Carbon object being casted to string with DEFAULT_TO_STRING_FORMAT, and
+     *             use other method or custom format passed to format() method if you need to dump an other string
+     *             format.
+     *
+     * Set the default format used when type juggling a Carbon instance to a string
+     *
+     * @param string|Closure|null $format
+     *
+     * @return void
+     */
+    public static function setToStringFormat($format)
+    {
+        static::$toStringFormat = $format;
+    }
 
     /**
      * Returns the formatted date string on success or FALSE on failure.
@@ -45,7 +75,6 @@ trait Converter
      *
      * @return string
      */
-    #[ReturnTypeWillChange]
     public function format($format)
     {
         $function = $this->localFormatFunction ?: static::$formatFunction;
@@ -78,7 +107,7 @@ trait Converter
      *
      * @example
      * ```
-     * echo Carbon::now(); // Carbon instances can be cast to string
+     * echo Carbon::now(); // Carbon instances can be casted to string
      * ```
      *
      * @return string
@@ -124,21 +153,6 @@ trait Converter
     public function toFormattedDateString()
     {
         return $this->rawFormat('M j, Y');
-    }
-
-    /**
-     * Format the instance with the day, and a readable date
-     *
-     * @example
-     * ```
-     * echo Carbon::now()->toFormattedDayDateString();
-     * ```
-     *
-     * @return string
-     */
-    public function toFormattedDayDateString(): string
-    {
-        return $this->rawFormat('D, M j, Y');
     }
 
     /**
@@ -308,9 +322,7 @@ trait Converter
      */
     public function toIso8601ZuluString($unitPrecision = 'second')
     {
-        return $this->avoidMutation()
-            ->utc()
-            ->rawFormat('Y-m-d\T'.static::getTimeFormatByPrecision($unitPrecision).'\Z');
+        return $this->copy()->utc()->rawFormat('Y-m-d\T'.static::getTimeFormatByPrecision($unitPrecision).'\Z');
     }
 
     /**
@@ -438,7 +450,7 @@ trait Converter
      */
     public function toRfc7231String()
     {
-        return $this->avoidMutation()
+        return $this->copy()
             ->setTimezone('GMT')
             ->rawFormat(\defined('static::RFC7231_FORMAT') ? static::RFC7231_FORMAT : CarbonInterface::RFC7231_FORMAT);
     }
@@ -498,7 +510,7 @@ trait Converter
      */
     public function toString()
     {
-        return $this->avoidMutation()->locale('en')->isoFormat('ddd MMM DD YYYY HH:mm:ss [GMT]ZZ');
+        return $this->copy()->locale('en')->isoFormat('ddd MMM DD YYYY HH:mm:ss [GMT]ZZ');
     }
 
     /**
@@ -523,7 +535,7 @@ trait Converter
 
         $yearFormat = $this->year < 0 || $this->year > 9999 ? 'YYYYYY' : 'YYYY';
         $tzFormat = $keepOffset ? 'Z' : '[Z]';
-        $date = $keepOffset ? $this : $this->avoidMutation()->utc();
+        $date = $keepOffset ? $this : $this->copy()->utc();
 
         return $date->isoFormat("$yearFormat-MM-DD[T]HH:mm:ss.SSSSSS$tzFormat");
     }
@@ -611,7 +623,7 @@ trait Converter
             $period->setDateInterval($interval);
         }
 
-        if (\is_int($end) || (\is_string($end) && ctype_digit($end))) {
+        if (\is_int($end) || \is_string($end) && ctype_digit($end)) {
             $period->setRecurrences($end);
         } elseif ($end) {
             $period->setEndDate($end);

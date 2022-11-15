@@ -20,40 +20,30 @@ namespace Predis\Connection;
  */
 class Parameters implements ParametersInterface
 {
-    protected static $defaults = array(
+    private $parameters;
+
+    private static $defaults = array(
         'scheme' => 'tcp',
         'host' => '127.0.0.1',
         'port' => 6379,
     );
 
     /**
-     * Set of connection paramaters already filtered
-     * for NULL or 0-length string values.
-     * 
-     * @var array
-     */
-    protected $parameters;
-
-    /**
      * @param array $parameters Named array of connection parameters.
      */
     public function __construct(array $parameters = array())
     {
-        $this->parameters = $this->filter($parameters + static::$defaults);
+        $this->parameters = $this->filter($parameters) + $this->getDefaults();
     }
 
     /**
-     * Filters parameters removing entries with NULL or 0-length string values.
-     *
-     * @params array $parameters Array of parameters to be filtered
+     * Returns some default parameters with their values.
      *
      * @return array
      */
-    protected function filter(array $parameters)
+    protected function getDefaults()
     {
-        return array_filter($parameters, function ($value) {
-            return $value !== null && $value !== '';
-        });
+        return self::$defaults;
     }
 
     /**
@@ -148,11 +138,15 @@ class Parameters implements ParametersInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Validates and converts each value of the connection parameters array.
+     *
+     * @param array $parameters Connection parameters.
+     *
+     * @return array
      */
-    public function toArray()
+    protected function filter(array $parameters)
     {
-        return $this->parameters;
+        return $parameters ?: array();
     }
 
     /**
@@ -176,17 +170,9 @@ class Parameters implements ParametersInterface
     /**
      * {@inheritdoc}
      */
-    public function __toString()
+    public function toArray()
     {
-        if ($this->scheme === 'unix') {
-            return "$this->scheme:$this->path";
-        }
-
-        if (filter_var($this->host, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
-            return "$this->scheme://[$this->host]:$this->port";
-        }
-
-        return "$this->scheme://$this->host:$this->port";
+        return $this->parameters;
     }
 
     /**

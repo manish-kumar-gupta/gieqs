@@ -128,7 +128,7 @@ class DispatcherLoop
             if ($kind !== Consumer::MESSAGE && $kind !== Consumer::PMESSAGE) {
                 if (isset($this->subscriptionCallback)) {
                     $callback = $this->subscriptionCallback;
-                    call_user_func($callback, $message, $this);
+                    call_user_func($callback, $message);
                 }
 
                 continue;
@@ -136,10 +136,10 @@ class DispatcherLoop
 
             if (isset($this->callbacks[$message->channel])) {
                 $callback = $this->callbacks[$message->channel];
-                call_user_func($callback, $message->payload, $this);
+                call_user_func($callback, $message->payload);
             } elseif (isset($this->defaultCallback)) {
                 $callback = $this->defaultCallback;
-                call_user_func($callback, $message, $this);
+                call_user_func($callback, $message);
             }
         }
     }

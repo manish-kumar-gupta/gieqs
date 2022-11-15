@@ -41,4 +41,12 @@ interface FactoryInterface
      * @return NodeConnectionInterface
      */
     public function create($parameters);
+
+    /**
+     * Aggregates single connections into an aggregate connection instance.
+     *
+     * @param AggregateConnectionInterface $aggregate  Aggregate connection instance.
+     * @param array                        $parameters List of parameters for each connection.
+     */
+    public function aggregate(AggregateConnectionInterface $aggregate, array $parameters);
 }

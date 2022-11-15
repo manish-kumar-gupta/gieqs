@@ -54,13 +54,6 @@ interface ParametersInterface
     public function __get($parameter);
 
     /**
-     * Returns basic connection parameters as a valid URI string.
-     *
-     * @return string
-     */
-    public function __toString();
-
-    /**
      * Returns an array representation of the connection parameters.
      *
      * @return array

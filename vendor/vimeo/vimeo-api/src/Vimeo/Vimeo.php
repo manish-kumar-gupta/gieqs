@@ -5,7 +5,7 @@ use Carbon\Carbon;
 use Vimeo\Exceptions\VimeoException;
 use Vimeo\Exceptions\VimeoRequestException;
 use Vimeo\Exceptions\VimeoUploadException;
-use Vimeo\Upload\TusClientFactory;
+use Vimeo\Upload\TusClient;
 
 /**
  *   Copyright 2013 Vimeo
@@ -52,18 +52,14 @@ class Vimeo
     /** @var null|string */
     private $_access_token = null;
 
-    /** @var TusClientFactory */
-    private $_tus_client_factory = null;
-
     /**
      * Creates the Vimeo library, and tracks the client and token information.
      *
      * @param string $client_id Your applications client id. Can be found on developer.vimeo.com/apps
      * @param string $client_secret Your applications client secret. Can be found on developer.vimeo.com/apps
      * @param string|null $access_token Your access token. Can be found on developer.vimeo.com/apps or generated using OAuth 2.
-     * @param TusClientFactory|null $tus_client_interface Your tus client that will be used.
      */
-    public function __construct(string $client_id, string $client_secret, string $access_token = null, TusClientFactory $tus_client_factory = null)
+    public function __construct(string $client_id, string $client_secret, string $access_token = null)
     {
         $this->_client_id = $client_id;
         $this->_client_secret = $client_secret;
@@ -76,7 +72,6 @@ class Vimeo
             //Certificate must indicate that the server is the server to which you meant to connect.
             CURLOPT_SSL_VERIFYHOST => 2,
         );
-        $this->_tus_client_factory = $tus_client_factory ?? new TusClientFactory();
     }
 
     /**
@@ -477,14 +472,13 @@ class Vimeo
 
         $upload_url = $texttrack_response['body']['link'];
 
-        $handle = fopen($file_path, 'r');
-        $texttrack_resource = fread($handle, filesize($file_path));
+        $texttrack_resource = fopen($file_path, 'r');
 
         $curl_opts = array(
             CURLOPT_TIMEOUT => 240,
+            CURLOPT_UPLOAD => true,
             CURLOPT_CUSTOMREQUEST => 'PUT',
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_POSTFIELDS => $texttrack_resource
+            CURLOPT_READDATA => $texttrack_resource
         );
 
         $curl = curl_init($upload_url);
@@ -500,8 +494,7 @@ class Vimeo
         }
 
         curl_close($curl);
-        fclose($handle);
-        
+
         if ($curl_info['http_code'] !== 200) {
             throw new VimeoUploadException($response);
         }
@@ -596,9 +589,10 @@ class Vimeo
         $failures = 0;
         $chunk_size = $this->getTusUploadChunkSize($default_chunk_size, (int)$file_size);
 
-        $client = $this->_tus_client_factory->getTusClient($base_url, $url);
+        $client = new TusClient($base_url);
         $client->setApiPath($api_path);
         $client->setKey($key)->file($file_path);
+        $client->setUrl($url);
         $client->getCache()->set($client->getKey(),[
             'location' => $url,
             'expires_at' => Carbon::now()->addSeconds($client->getCache()->getTtl())->format($client->getCache()::RFC_7231),

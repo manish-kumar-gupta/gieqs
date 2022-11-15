@@ -44,7 +44,7 @@ interface AggregateConnectionInterface extends ConnectionInterface
      *
      * @return NodeConnectionInterface
      */
-    public function getConnectionByCommand(CommandInterface $command);
+    public function getConnection(CommandInterface $command);
 
     /**
      * Returns a connection instance from the aggregate connection by its alias.

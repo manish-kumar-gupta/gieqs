@@ -17,8 +17,8 @@ use Symfony\Component\Mime\RawMessage;
 
 final class EmailHeaderSame extends Constraint
 {
-    private string $headerName;
-    private string $expectedValue;
+    private $headerName;
+    private $expectedValue;
 
     public function __construct(string $headerName, string $expectedValue)
     {
@@ -55,14 +55,12 @@ final class EmailHeaderSame extends Constraint
      */
     protected function failureDescription($message): string
     {
-        return sprintf('the Email %s (value is %s)', $this->toString(), $this->getHeaderValue($message) ?? 'null');
+        return sprintf('the Email %s (value is %s)', $this->toString(), $this->getHeaderValue($message));
     }
 
-    private function getHeaderValue($message): ?string
+    private function getHeaderValue($message): string
     {
-        if (null === $header = $message->getHeaders()->get($this->headerName)) {
-            return null;
-        }
+        $header = $message->getHeaders()->get($this->headerName);
 
         return $header instanceof UnstructuredHeader ? $header->getValue() : $header->getBodyAsString();
     }
