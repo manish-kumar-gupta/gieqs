@@ -1,5 +1,7 @@
 <?php 
 session_start();
+echo 'Apologies.  GIEQs.com has a problem.  We will be back shortly.';
+
 //error_reporting(E_ALL);
 
 /* 
