@@ -98,8 +98,10 @@ echo '<br>DB_USER : ' . print_r(DB_USER);
 echo '<br>DB_HOST : ' . print_r(DB_HOST);
 echo '<br>DB_NAME : ' . print_r(DB_NAME);
 
-
+print_r($_SESSION);
 }
+
+
 
 
 //script for detection of page related variables in header
