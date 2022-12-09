@@ -29,6 +29,8 @@ require(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
 spl_autoload_unregister ('class_loader');
 
 $assetManager = new assetManager;
+
+
 spl_autoload_register ('class_loader');
 
 $url = $_SERVER['REQUEST_URI'];
@@ -87,6 +89,7 @@ if (count($_GET) > 0){
     $info[] = 'no GET parameters detected';
 
 }
+
 
 
 if ($debugUserAccess){
