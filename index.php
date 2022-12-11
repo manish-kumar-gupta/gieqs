@@ -4,14 +4,14 @@ require 'assets/includes/config.inc.php';?>
 
 <?php 
 /* Short and sweet */
-define('WP_USE_THEMES', false);
-spl_autoload_unregister ('class_loader');
+//define('WP_USE_THEMES', false);
+//spl_autoload_unregister ('class_loader');
 
 
 
-require(BASE_URI . '/assets/wp/wp-blog-header.php');
+//require(BASE_URI . '/assets/wp/wp-blog-header.php');
 
-spl_autoload_register ('class_loader');
+//spl_autoload_register ('class_loader');
 //get_header(); 
 ?>
 
