@@ -17,7 +17,7 @@ var_dump($can_i_write); */
 
 //error_reporting(E_ALL);
 
-echo 'Apologies.  GIEQs.com has a problem.  We will be back shortly.';
+//echo 'Apologies.  GIEQs.com has a problem.  We will be back shortly.';
 
 
 require(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
@@ -58,7 +58,7 @@ if (isset($url_requested)){
 
 
 
-$debugUserAccess = false;
+$debugUserAccess = FALSE;
 //$debug = FALSE;
 
 $info = [];

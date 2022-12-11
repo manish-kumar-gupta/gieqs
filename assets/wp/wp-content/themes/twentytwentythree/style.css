@@ -13,3 +13,38 @@ License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 Text Domain: twentytwentythree
 Tags: one-column, custom-colors, custom-menu, custom-logo, editor-style, featured-images, full-site-editing, block-patterns, rtl-language-support, sticky-post, threaded-comments, translation-ready, wide-blocks, block-styles, accessibility-ready, blog, portfolio, news
 */
+
+/*Make page full width */
+@media screen and (min-width: 1200px) {
+    .wrap {
+        max-width:100%!important;
+        padding:0;
+    }
+}
+ 
+@media screen and (min-width: 1200px) {
+#primary .entry-content {
+  width: 100% !important;
+        }
+}
+ 
+.site-content {
+    margin:0!important;
+    padding:0!important;
+}
+ 
+/* Hide Menu Bar */
+ 
+.site-branding {
+    display:none;
+}
+ 
+/* Hide Page Title */
+.page .panel-content .entry-title, .page-title, body.page .entry-title {
+    display:none;
+}
+ 
+/*Hide Site Footer */
+    .site-footer {
+        display: none;
+    }

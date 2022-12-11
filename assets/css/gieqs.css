@@ -1,3 +1,57 @@
+
+ .blog-container {
+
+    font-family: 'nunito', sans-serif;
+font-size: 1.2rem !important;
+font-weight: 300;
+line-height: 1.6 !important;
+text-align: left !important;
+color: #95aac9;
+}
+
+.blog-container figcaption {
+
+    font-size: 0.9rem;
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.blog-container p {
+
+    margin-bottom: 30px;
+
+}
+
+.blog-container strong{
+
+    font-weight: 500;
+color: #e3ebf6;
+}
+
+.wp-block-image img {
+
+text-align: center;
+width: 90%;
+height: auto;
+margin: auto;    
+    display: block;
+
+}
+
+.wp-block-columns {
+
+    display: flex;
+    margin-right: -15px;
+    margin-left: -15px;
+    flex-wrap: wrap;
+
+}
+
+.wp-block-columns .wp-block-column {
+max-width: 50%;
+flex: 0 0 50%;
+}
+
 .btn-outline-gieqsGold {
 
     color: rgb(238, 194, 120);

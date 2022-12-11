@@ -1,9 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <?php 
 
 require 'assets/includes/config.inc.php';?>
+
+<?php 
+/* Short and sweet */
+define('WP_USE_THEMES', false);
+spl_autoload_unregister ('class_loader');
+
+
+
+require(BASE_URI . '/assets/wp/wp-blog-header.php');
+
+spl_autoload_register ('class_loader');
+//get_header(); 
+?>
+
 
 <head>
 
@@ -220,6 +231,47 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 
 
     </header>
+
+
+    <div class="main-content">
+    <section class="slice delimiter-bottom mb-2 p-2 mt-10" id="GIII">
+    <div class="blog-container container pt-0 pt-lg-0">
+    <?php
+$posts = get_posts('numberposts=10&order=ASC&orderby=post_title');
+foreach ($posts as $post) : setup_postdata( $post ); ?>
+<?php the_date(); echo "<br />"; ?>
+<span class="display-4 font-weight-light"><?php the_title(); ?>   </span>
+
+ 
+<?php the_content(); ?>
+<?php
+endforeach;
+?>
+
+
+
+<?php
+$mypages = get_pages( array( 'include' => '32') );
+
+foreach( $mypages as $page ) {		
+	$content = $page->post_content;
+	if ( ! $content ) // Check for empty page
+		continue;
+
+	$content = apply_filters( 'the_content', $content );
+?>
+	<h2><a href="<?php echo get_page_link( $page->ID ); ?>"><?php echo $page->post_title; ?></a></h2>
+	<div class="entry"><?php echo $content; ?></div>
+<?php
+	}	
+?>
+
+
+
+
+                                </div>
+                                </div>
+                                </div>
 
 
     <div class="main-content">
