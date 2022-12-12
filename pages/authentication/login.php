@@ -1,6 +1,7 @@
+<?php
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-<?php require '../../assets/includes/config.inc.php';?>
+require '../../assets/includes/config.inc.php';?>
 
 <head>
 <?php
