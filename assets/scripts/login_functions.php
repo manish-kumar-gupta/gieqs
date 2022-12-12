@@ -1,32 +1,23 @@
 <?php
-
-    
-//require ('config.inc.php');
-//$openaccess = 1;		
-
-//require (BASE_URI . '/scripts/headerScript.php');
-
-//error_reporting(E_ALL);
-
-
     require(DB);    
-
     function redirect_user ($page='/pages/authentication/login.php', $location=null) {
         
         if ($location != null){
 
             header ("Location:$page?destination=$location");
+            exit();
+
 
 
         }else{
 
             header ("Location:$page");
+            exit();
+
 
 
         }
         
-        //eg  header("Location: dashboard.php?name_=$FullName&subject_=$Subject&phone_=$Phone&email_=$Email&message_=$Message"); 
-        exit ();
     }
    
 	 function redirect_login ($location, $url=null, $debug=false) {
@@ -110,5 +101,3 @@
         }
     
             ?>
-
-
