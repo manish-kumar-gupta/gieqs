@@ -18,6 +18,15 @@
  * @package WordPress
  */
 
+
+ $host = substr($_SERVER['HTTP_HOST'], 0, 5);
+		if (in_array($host, array('local', '127.0', '192.1'))) {
+		    $local = TRUE;
+		} else {
+		    $local = FALSE;
+		}
+		
+		if ($local){
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define( 'DB_NAME', 'wordpress' );
@@ -36,6 +45,29 @@ define( 'DB_CHARSET', 'utf8' );
 
 /** The database collate type. Don't change this if in doubt. */
 define( 'DB_COLLATE', '' );
+
+        }else{
+
+            // ** Database settings - You can get this info from your web host ** //
+/** The name of the database for WordPress */
+define( 'DB_NAME', 'wordpress' );
+
+/** Database username */
+define( 'DB_USER', 'djt35' );
+
+/** Database password */
+define( 'DB_PASSWORD', 'nevira1pine' );
+
+/** Database hostname */
+define( 'DB_HOST', 'localhost' );
+
+/** Database charset to use in creating database tables. */
+define( 'DB_CHARSET', 'utf8' );
+
+/** The database collate type. Don't change this if in doubt. */
+define( 'DB_COLLATE', '' );
+
+        }
 
 /**#@+
  * Authentication unique keys and salts.
