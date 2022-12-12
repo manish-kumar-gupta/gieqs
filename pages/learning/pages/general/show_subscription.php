@@ -1,5 +1,6 @@
 
-
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 <?php require '../../includes/config.inc.php';?>
 
 
@@ -7,7 +8,7 @@
 
     <?php
 
-error_reporting(-1);
+$debugUserAccess = true;
 
 
       //define user access level

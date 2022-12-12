@@ -1,6 +1,5 @@
 <?php
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+
 require '../../assets/includes/config.inc.php';?>
 
 <head>
@@ -10,7 +9,6 @@ require '../../assets/includes/config.inc.php';?>
 
 $openaccess = 1;
 
-$debugUserAccess = true;
 
 require BASE_URI . '/head.php';
 
