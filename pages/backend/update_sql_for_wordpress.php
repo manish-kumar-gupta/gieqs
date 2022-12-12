@@ -53,7 +53,7 @@ echo "connected";
         if (stripos($field['Type'], "VARCHAR") !== false || stripos($field['Type'], "TEXT") !== false) {
           echo "  ".$field['Field']."\n";
           $sql = "UPDATE ".$table[0]." SET ".$field['Field']." = replace(".$field['Field'].", '$string_to_replace', '$new_string')";
-          mysql_query($con, $sql);
+          mysqli_query($con, $sql);
         }
       }
       echo "\n";
