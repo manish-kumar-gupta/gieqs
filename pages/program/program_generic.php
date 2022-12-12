@@ -711,8 +711,24 @@ var_dump($currentTime);
 
         <section class="sliice bg-gradient-dark pt-6 mb-0 pb-5">
             <div class="container">
+
+            <div class="row text-center">
+                <div class="col-12">
+            <?php 
+            
+            
+            if ($fullAccess || $proMember){?>
+
+
+
+<div class="text-center bg-gieqsGold text-dark">
+ Thanks for your PRO MEMBERSHIP.  Pro members must register for all courses.  Registration is FREE by clicking Register Now below.</div>
+<?php }?>
+            </div>
+</div>
                 <div class="row text-center">
 
+                    
                     <div class="col-12 p-3 pb-1">
 
                         <?php /**gieqs 3 specific**/ if ($asset_id_url == '95'){?>
