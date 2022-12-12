@@ -133,7 +133,7 @@ fclose($myfile);
 
 
 
-                    redirect_login(BASE_URL . '/pages/authentication/welcomeNewUser.php?signup_redirect=' . $signup_redirect . '&access_token=' . $access_token);
+                    redirect_user(BASE_URL . '/pages/authentication/welcomeNewUser.php?signup_redirect=' . $signup_redirect . '&access_token=' . $access_token);
 
 
                 }else{
@@ -160,7 +160,7 @@ fwrite($myfile, $dataLogFile);
 fclose($myfile);
 
 
-                redirect_login(BASE_URL . '/pages/authentication/welcomeNewUser.php?signup_redirect=' . $signup_redirect);
+                redirect_user(BASE_URL . '/pages/authentication/welcomeNewUser.php?signup_redirect=' . $signup_redirect);
 
                 
 

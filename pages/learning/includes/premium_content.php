@@ -73,6 +73,8 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
         
         <div class="row">
+
+
             <div class="col-md-6 col-xl-3 sub-menu mb-xl-0 mb-4">
                 <h6 class="sub-title text-uppercase font-weight-bold white-text">Upcoming Symposia & Courses <br /><small>(Register)</small>
                 </h6>
@@ -235,6 +237,51 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
                 </ul>
             </div>
+
+            <div class="col-md-6 col-xl-3 sub-menu mb-xl-0 mb-4">
+                <h6 class="sub-title text-uppercase font-weight-bold white-text">Past Symposia <br /><small>(Immediate Access)</small>
+                </h6>
+                <?php //var_dump($coursesAdvertised);?>
+                <ul class="list-unstyled">
+
+                    <?php foreach($symposiaAdvertised as $key=>$value){  
+                        
+                        
+
+                            //no proaccess
+                            if ($assetManager->doesUserHaveSameAssetAlready($value['id'], $userid, false) == true){
+
+                                $color_item = 'non-promember-owned';
+                                $start_link = BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=';
+                                $advert_text = '<i class="fas fa-unlock-alt small"></i>';
+
+                            }else{
+                              
+                                $color_item = 'non-promember-does-not-own';
+                                $start_link = BASE_URL . '/pages/program/program_generic.php?id=';
+                                $advert_text = '<i class="fas fa-lock small" title="You do not own this content.  Click to Purchase"></i><i class="fas fa-shopping-basket small ml-1"></i>';
+
+
+
+                            }
+
+
+                        
+                        ?>
+
+                    <li class="mt-2" style="line-height:1.2;">
+
+                    <a class="menu-item <?php echo $color_item;?>"
+                            href="<?php echo $start_link . $value['id'] ?>"><i
+                                class="fas fa-caret-right pl-1 pr-3"></i><?php echo $value['name'] . ' ' . $advert_text; ?></a>
+
+                    </li>
+
+                    <?php } ?>
+
+                </ul>
+            </div>
+
             <div class="col-md-6 col-xl-3 sub-menu mb-xl-0 mb-4">
                 <h6 class="sub-title text-uppercase font-weight-bold white-text">Colonoscopy Courses <br /><small>(Immediate Access)</small>
                 </h6>
@@ -328,6 +375,7 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
                 </ul>
             </div>
+
             <div class="col-md-6 col-xl-3 sub-menu mb-xl-0 mb-4">
                 <h6 class="sub-title text-uppercase font-weight-bold white-text">Polypectomy Courses <br /><small>(Immediate Access)</small>
                 </h6>
@@ -419,7 +467,16 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
                 </ul>
             </div>
-            <div class="col-md-6 col-xl-3 sub-menu mb-xl-0 mb-4">
+
+            
+
+        </div>
+        
+        <hr>
+
+        <div class="row my-3">
+
+        <div class="col-md-6 col-xl-3 sub-menu mb-xl-0 mb-4">
                 <h6 class="sub-title text-uppercase font-weight-bold white-text">Pro Content Packs <br /><small>(Immediate
                     Access)</small></h6>
                 <?php //var_dump($coursesAdvertised);?>
@@ -458,11 +515,8 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
                 </ul>
             </div>
-            </div>
-            <hr>
-        <div class="row my-3">
 
-        <div class="col-md-6 col-xl-3 sub-menu mb-xl-0 mb-4">
+            <div class="col-md-6 col-xl-3 sub-menu mb-xl-0 mb-4">
                 <h6 class="sub-title text-uppercase font-weight-bold white-text">Other Courses <br /><small>(Immediate Access)</small>
                 </h6>
                 <?php //var_dump($coursesAdvertised);?>
@@ -553,52 +607,8 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
                 </ul>
             </div>
-            <div class="col-md-6 col-xl-3 sub-menu mb-xl-0 mb-4">
-                <h6 class="sub-title text-uppercase font-weight-bold white-text">Past Symposia <br /><small>(Immediate Access)</small>
-                </h6>
-                <?php //var_dump($coursesAdvertised);?>
-                <ul class="list-unstyled">
 
-                    <?php foreach($symposiaAdvertised as $key=>$value){  
-                        
-                        
-
-                            //no proaccess
-                            if ($assetManager->doesUserHaveSameAssetAlready($value['id'], $userid, false) == true){
-
-                                $color_item = 'non-promember-owned';
-                                $start_link = BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=';
-                                $advert_text = '<i class="fas fa-unlock-alt small"></i>';
-
-                            }else{
-                              
-                                $color_item = 'non-promember-does-not-own';
-                                $start_link = BASE_URL . '/pages/program/program_generic.php?id=';
-                                $advert_text = '<i class="fas fa-lock small" title="You do not own this content.  Click to Purchase"></i><i class="fas fa-shopping-basket small ml-1"></i>';
-
-
-
-                            }
-
-
-                        
-                        ?>
-
-                    <li class="mt-2" style="line-height:1.2;">
-
-                    <a class="menu-item <?php echo $color_item;?>"
-                            href="<?php echo $start_link . $value['id'] ?>"><i
-                                class="fas fa-caret-right pl-1 pr-3"></i><?php echo $value['name'] . ' ' . $advert_text; ?></a>
-
-                    </li>
-
-                    <?php } ?>
-
-                </ul>
-            </div>
-       
-
-
+            
            
         </div>
         <!-- <div class="row">
