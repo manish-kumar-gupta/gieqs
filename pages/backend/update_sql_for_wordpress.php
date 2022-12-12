@@ -8,11 +8,23 @@
   $string_to_replace  = 'localhost:90/dashboard/gieqs/assets/wp';
   $new_string = 'https://www.gieqs.com/assets/wp';
 
+
+
+
   // Connect to database server
-  mysql_connect($host, $username, $password);
+  $con=mysqli_connect($host, $username, $password);
+
+  if(!$con)
+{
+echo "could not connect" ;
+}
+else
+{
+echo "connected";
+}
 
   // Select database
-  mysql_select_db($database);
+  mysqli_select_db($database);
 
   // List all tables in database
   $sql = "SHOW TABLES FROM ".$database;
