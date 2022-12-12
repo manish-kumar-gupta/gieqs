@@ -1,6 +1,6 @@
 <?php
     require(DB);    
-    function redirect_user ($page='/pages/authentication/login.php', $location=null) {
+    function redirect_user ($page=BASE_URL . '/pages/authentication/login.php', $location=null) {
         
         if ($location != null){
 
