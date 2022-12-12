@@ -15,12 +15,12 @@
         
         if ($location != null){
 
-            header ("Location: $page?destination=$location");
+            header ("Location:$page?destination=$location");
 
 
         }else{
 
-            header ("Location: $page");
+            header ("Location:$page");
 
 
         }
@@ -50,7 +50,7 @@
 
         }
 
-        header ("Location: $location$url");
+        header ("Location:$location$url");
         exit ();
     }
 	

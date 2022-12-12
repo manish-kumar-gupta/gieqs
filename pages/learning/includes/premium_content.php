@@ -68,7 +68,7 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
 
 
-    <div class="dropdown-menu cursor-pointer mega-menu v-2 z-depth-1 pink darken-4 py-4 px-3" style="font-size:1.0rem;"
+    <div class="dropdown-menu cursor-pointer mega-menu v-2 z-depth-1 pink darken-4 py-4 px-3" style="font-size:1.0rem; margin-top:-15px;"
         aria-labelledby="navbarDropdownMenuLink2">
 
         
