@@ -4,6 +4,7 @@
         
         if ($location != null){
 
+            flush();
             header ("Location:$page?destination=$location");
             exit();
 
@@ -11,6 +12,7 @@
 
         }else{
 
+            flush();
             header ("Location:$page");
             exit();
 
