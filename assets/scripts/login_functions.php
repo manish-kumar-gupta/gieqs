@@ -5,7 +5,8 @@
         if ($location != null){
 
             flush();
-            header ("Location:$page?destination=$location");
+            echo "<script type='text/javascript'>window.top.location='$page?destination=$location';</script>";
+            //header ("Location:$page?destination=$location");
             exit();
 
 
@@ -13,7 +14,8 @@
         }else{
 
             flush();
-            header ("Location:$page");
+            echo "<script type='text/javascript'>window.top.location='$page';</script>";
+            //header ("Location:$page");
             exit();
 
 
