@@ -10,7 +10,11 @@ error_reporting(E_ALL);
   $username = "djt35";
   $password = "nevira1pine";
   $database = "wordpress";
-  $string_to_replace  = 'localhost:90/dashboard/gieqs/assets/wp';
+
+  //$string_to_replace  = 'http://localhost:90/dashboard/gieqs/assets/wp';
+
+
+  $string_to_replace  = 'http://https://www.gieqs.com/assets/wp';
   $new_string = 'https://www.gieqs.com/assets/wp';
 
 
