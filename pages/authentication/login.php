@@ -10,6 +10,8 @@ require '../../assets/includes/config.inc.php';?>
 
 $openaccess = 1;
 
+$debugUserAccess = true;
+
 require BASE_URI . '/head.php';
 
 

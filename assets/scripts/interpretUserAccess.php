@@ -57,8 +57,9 @@ if (isset($url_requested)){
 //define the request
 
 
-
+if (!isset($debugUserAccess)){
 $debugUserAccess = FALSE;
+}
 //$debug = FALSE;
 
 $info = [];
