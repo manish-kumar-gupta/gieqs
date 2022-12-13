@@ -446,28 +446,29 @@ $imageArray = ['assets/img/advert/gieqs_advert_1.jpeg', 'assets/img/covers/gieqs
 </section>
 
    
-    <?php?>
+    <?php
 
 
-
-
-
-        
+        $posts = get_posts('numberposts=2&order=ASC&category=3');
+        foreach ($posts as $post) : setup_postdata( $post ); ?>
 
         <section class="slice section-rotate delimiter-bottom mb-0 p-2 mt-0" id="GIII">
                 <div class="section-inner bg-gradient-dark"></div>
 
             <div class="blog-container container pt-6">
 
-
+        <?php //the_date(); echo "<br />"; ?>
+        <span class="display-4 font-weight-light"><?php the_title(); ?>   </span>
 
         
-       
+        <?php the_content(); ?>
 
         </div>
                                         </div>
         </section>
-      
+        <?php
+        endforeach;
+?>
 
 
 
