@@ -227,7 +227,7 @@ Class userFunctions {
         //echo $q;
 
         $result = $this->connection->RunQuery($q);
-		$nRows = $result->rowCount();
+		$nRows = $result->rowCount(); 
 			if ($nRows == 1){
 
                 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {

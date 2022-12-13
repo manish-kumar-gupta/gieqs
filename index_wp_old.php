@@ -237,95 +237,9 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 
 
     <div class="main-content">
-    <section class="slice delimiter-bottom mb-2 p-0 mt-10" id="GIII">
-    
-        <!-- GIEQs II Filler -->
+    <section class="mb-1 pt-2 mt-10 container" id="GIII">
 
-        <?php         if (($gieqs_ii_is_live === true)){?>
-
-        <section class="page-header text-dark bg-gieqsGold d-flex align-items-end pt-2 mt-10">
-
-
-            <!-- Header container -->
-            <div class="container pt-0 pt-lg-0">
-                <div class="row">
-                    <div class=" col-lg-12">
-                        <!-- Salute + Small stats -->
-                        <div class="row align-items-center mb-4">
-                            <div class="col-auto mb-4 mb-md-0">
-                                <span class="h2 mb-0 text-dark text-bold d-block">GIEQs II is LIVE.
-                                </span>
-
-                                <?php if (($gieqs_ii_is_live) && ($gieqs_ii_has_access_to_today)){?>
-                                <span class="text-dark">Thank-you for Registering! Sit Back and Enjoy.<br /> <a
-                                        href="<?php echo BASE_URL;?>/pages/learning/pages/general/show_subscription.php?assetid=<?php echo $gieqs_ii_plenary_link;?>">Start
-                                        watching now</a></span>
-                                <?php if ($courseTest){?> <br /><span class="text-dark">TEST VIEW</span><?php }?>
-                                <?php }else{ ?>
-                                <span class="text-dark"><a
-                                        href="<?php echo BASE_URL;?>/pages/program/gieqs_ii.php">Register Now for
-                                        Immediate Access</a></span>
-                                <?php if ($courseTest){?> <br /><span class="text-dark">TEST VIEW</span><?php }?>
-
-                                <?php } ?>
-                            </div>
-                            <!-- video -->
-                            <div class="col-auto flex-fill d-none d-xl-block">
-                                <!-- <div id="videoDisplay" class="embed-responsive embed-responsive-16by9">
-    <iframe  id='videoChapter' class="embed-responsive-item"
-        src='https://player.vimeo.com/video/398791515' allow='autoplay'
-        webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-        </div> -->
-                            </div>
-                        </div>
-                        <!-- Account navigation -->
-
-
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="header-1 bg-section-dark">
-
-
-            <?php }else{?>
-
-                
-               <!--  <section class="header-1 section-rotate bg-section-dark mt-5" data-offset-top="#header-main"> -->
-               <section class="header-1 section-rotate bg-section-dark mt-5 pt-5"">
-
-<?php
-
-}
-$imageArray = ['assets/img/advert/gieqs_advert_1.jpeg', 'assets/img/covers/gieqsii/background-studio-2.jpg', 'assets/img/covers/gieqsii/background-studio-3.jpg', 'assets/img/covers/gieqsii/background-studio-4.jpg', 'assets/img/covers/gieqsii/background-studio-5.jpg', 'assets/img/covers/gieqsii/background-studio-6.jpg', 'assets/img/covers/gieqsii/background-studio-1.jpg', 
-'assets/img/covers/gieqsii/background-room-1.jpg', 'assets/img/covers/gieqsii/background-room-2.jpg', 'assets/img/covers/gieqsii/background-room-3.jpg', 'assets/img/covers/gieqsii/background-room-4.jpg', 
-'assets/img/covers/gieqsii/background-tech-1.jpg', 'assets/img/covers/gieqsii/background-tech-2.jpg', 
-'assets/img/covers/gieqsii/background-group-1.jpg', 'assets/img/covers/gieqsii/background-group-2.jpg', 'assets/img/covers/gieqsii/background-group-3.jpg'];
-
-
-?>
-
-
-<div class="section-inner bg-gradient-dark"></div>
-<!-- SVG illustration -->
-<div class="pt-4 position-absolute middle right-0 col-lg-7 col-xl-6 d-none d-lg-block">
-    <figure class="w-75" style="max-width: 1000px;">
-        <img alt="Image placeholder" src="<?php echo $imageArray[array_rand($imageArray)];?>"
-            class="svg-inject img-fluid">
-        <!-- <figcaption class="small figure-caption text-right">Non-granular transverse colon large non-pedunculated colorectal polyp.  <br/>Suspicious for submucosal invasive cancer. </figcaption> -->
-    </figure>
-</div>
-<!-- SVG background -->
-<!--<div class="bg-absolute-cover bg-size--contain d-flex align-items-center">
-<figure class="w-100 d-none d-lg-block">
-<img alt="Image placeholder" src="assets/img/svg/backgrounds/bg-4.svg" class="svg-inject" style="height: 1000px;">
-</figure>
-</div>-->
-<!-- Hero container -->
-<div class="container  d-flex align-items-center position-relative zindex-100">
-
-    <div class="col">
-        <div class="row">
+    <div class="row">
             <div class="col-lg-10 col-xl-10 text-center text-lg-left">
 
               <!--   <a class="ml-3 pointer" href="https://www.gieqs.com/pages/program/program_generic.php?id=15">
@@ -338,12 +252,12 @@ $imageArray = ['assets/img/advert/gieqs_advert_1.jpeg', 'assets/img/covers/gieqs
                     </div>
                 </a> -->
 
-                <a href="https://www.gieqs.com/iii">
+                <a href="<?php echo BASE_URL;?>/login?destination=viewasset&assetid=95">
                 <div class="alert alert-modern alert-dark">
                     <span class="badge gieqsGold badge-pill">
                         New
                     </span>
-                    <span class="alert-content">GIEQs III - Register now!</span>
+                    <span class="alert-content">GIEQs III - Watch now!</span>
                 </div>
             </a>
                 <!-- <a href="https://www.gieqs.com/pages/program/program_imaging.php">
@@ -389,73 +303,20 @@ $imageArray = ['assets/img/advert/gieqs_advert_1.jpeg', 'assets/img/covers/gieqs
 -->
             </div>
         </div>
-        
-        <div class="row">
-            <div class="col-lg-5 col-xl-6 text-center text-lg-left">
-                <div class="d-none d-lg-block mb-4">
-
-                </div>
-
-                <h2 class="text-white mb-4 mt-4 mt-lg-0">
-                    <span class="display-4 font-weight-light">Thanks to those who joined us Live for GIEQs III!</span>
-
-                    <span class="d-block" style="color: rgb(238, 194, 120);"><strong
-                            class="font-weight-light">We put Cancer after Gastroscopy in the Spotlight</span>
-                </h2>
-                <p class="lead text-white">Decision making, common controversies, bring your problems, complex to everyday, training and more!</p>
-                <p class="lead text-white">Same laser focus on the everyday, high definition streaming.</p>
-
-                <div class="mt-5">
-
-
-                  
-                </a>
-                <h2 class="text-white mb-4 mt-4 mt-lg-0">
-
-                <!-- <span class="d-block" style="color: rgb(238, 194, 120);"><strong
-                            class="font-weight-light">More details soon...</span> -->
-                            <a href="<?php echo BASE_URL;?>/login?destination=viewasset&assetid=95"
-                                class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
-                                style="background-color: rgb(238, 194, 120);">
-                                <span class="btn-inner--text">Access Now</span>
-                                <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
-
-                            </a>
-                            
-            </a> 
-</h2>
-
-                    <!-- <a href="https://www.youtube.com/watch?v=zRy1xwGsagc"
-                        class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mt-2 mr-sm-4 scroll-me"
-                        style="background-color: rgb(238, 194, 120);" data-fancybox>
-                        <span class="badge bg-dark gieqsGold badge-pill">
-                    New
-                    </span>
-                        <span class="btn-inner--text">Watch the latest teaser video</span>
-                        <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
-
-                    </a> -->
-
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-</section>
+                                </section>
+                                
 
    
     <?php
 
 
-        $posts = get_posts('numberposts=2&order=ASC&category=3');
+        $posts = get_posts('numberposts=10&order=ASC&category=3');
         foreach ($posts as $post) : setup_postdata( $post ); ?>
 
-        <section class="slice section-rotate delimiter-bottom mb-0 p-2 mt-0" id="GIII">
+        <section class="slice section-rotate delimiter-bottom mb-0 pt-0 mt-0" id="GIII">
                 <div class="section-inner bg-gradient-dark"></div>
 
-            <div class="blog-container container pt-6">
+            <div class="blog-container container pt-4">
 
         <?php //the_date(); echo "<br />"; ?>
         <span class="display-4 font-weight-light"><?php the_title(); ?>   </span>
