@@ -89,6 +89,8 @@ RewriteRule ^polypectomy-curriculum-theory$ pages/program/program_generic.php?id
 RewriteCond %{SERVER_PORT} 80
 RewriteCond %{HTTP_HOST} ^(www\.)?gieqs\.com
 RewriteRule ^(.*)$ https://www.gieqs.com/$1 [R,L]
+RewriteCond %{HTTP_HOST} ^gieqs.com [NC]
+RewriteRule ^(.*)$ https://www.gieqs.com/$1 [L,R=301]
 
 
 
