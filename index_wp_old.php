@@ -240,7 +240,18 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
     <section class="mb-1 pt-2 mt-10 container" id="GIII">
 
     <div class="row">
-            <div class="col-lg-10 col-xl-10 text-center text-lg-left">
+            <div class="col-lg-12 col-xl-12 text-center text-lg-left">
+
+
+            <a href="#">
+                <div class="alert alert-modern alert-dark">
+                    <span class="badge gieqsGold badge-pill">
+                        New
+                    </span>
+                    <span class="alert-content">GIEQs IV Announced</span>
+                </div>
+            </a>
+
 
                 <a href="<?php echo BASE_URL;?>/login?destination=viewasset&assetid=95">
                 <div class="alert alert-modern alert-dark">
@@ -293,12 +304,15 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 
 
         $posts = get_posts('numberposts=10&order=ASC&category=3');
-        foreach ($posts as $post) : setup_postdata( $post ); ?>
+        foreach ($posts as $post) : setup_postdata( $post ); 
+        
+        $post_id = get_the_ID();
+        ?>
 
-        <section class="slice section-rotate delimiter-bottom mb-0 pt-2 mt-0" id="GIII">
+        <section class="slice section-rotate delimiter-bottom mb-0 pt-2 mt-0">
                 <div class="section-inner bg-gradient-dark"></div>
 
-            <div class="blog-container container pt-6">
+            <div id="<?php echo $post_id;?>" class="blog-container container pt-6">
 
         <?php //the_date(); echo "<br />"; ?>
         <span class="display-4 font-weight-light"><?php the_title(); ?>   </span>
