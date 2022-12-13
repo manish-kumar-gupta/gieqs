@@ -242,16 +242,6 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
     <div class="row">
             <div class="col-lg-10 col-xl-10 text-center text-lg-left">
 
-              <!--   <a class="ml-3 pointer" href="https://www.gieqs.com/pages/program/program_generic.php?id=15">
-                    <div class="alert alert-modern alert-dark">
-                        <span class="badge gieqsGold badge-pill">
-                            New
-                        </span>
-                        <span class="alert-content">GIEQs II - On DEMAND
-                        </span>
-                    </div>
-                </a> -->
-
                 <a href="<?php echo BASE_URL;?>/login?destination=viewasset&assetid=95">
                 <div class="alert alert-modern alert-dark">
                     <span class="badge gieqsGold badge-pill">
@@ -260,15 +250,7 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
                     <span class="alert-content">GIEQs III - Watch now!</span>
                 </div>
             </a>
-                <!-- <a href="https://www.gieqs.com/pages/program/program_imaging.php">
-                <div class="alert alert-modern alert-dark">
-                    <span class="badge gieqsGold badge-pill">
-                        New
-                    </span>
-                    <span class="alert-content">Live / Virtual Hybrid Premium Content</span>
-                </div>
-            </a> -->
-
+        
                 <a class="ml-3 pointer" data-toggle="modal" data-target="#accreditation">
                     <div class="alert alert-modern alert-dark">
                         <span class="badge gieqsGold badge-pill">
@@ -313,10 +295,10 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
         $posts = get_posts('numberposts=10&order=ASC&category=3');
         foreach ($posts as $post) : setup_postdata( $post ); ?>
 
-        <section class="slice section-rotate delimiter-bottom mb-0 pt-0 mt-0" id="GIII">
+        <section class="slice section-rotate delimiter-bottom mb-0 pt-2 mt-0" id="GIII">
                 <div class="section-inner bg-gradient-dark"></div>
 
-            <div class="blog-container container pt-4">
+            <div class="blog-container container pt-6">
 
         <?php //the_date(); echo "<br />"; ?>
         <span class="display-4 font-weight-light"><?php the_title(); ?>   </span>
