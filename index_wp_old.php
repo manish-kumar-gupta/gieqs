@@ -243,8 +243,8 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
             <div class="col-lg-12 col-xl-12 text-center text-lg-left">
 
 
-            <a href="#">
-                <div class="alert alert-modern alert-dark">
+            <a href="#141">
+                <div class="alert alert-modern alert-dark mr-2">
                     <span class="badge gieqsGold badge-pill">
                         New
                     </span>
