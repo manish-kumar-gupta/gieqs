@@ -118,7 +118,7 @@ flex: 0 0 50%;
     background-color: #eec278;
     border-radius: 0;
     border-width: 0;
-    color: #162e4d;
+    color: #162e4d !important;
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
@@ -130,6 +130,7 @@ flex: 0 0 50%;
     border-color: rgb(238, 194, 120) !important;
     background-color: #162e4d !important;
     color: rgb(238, 194, 120) !important;
+    cursor: pointer;
 
 }
 
