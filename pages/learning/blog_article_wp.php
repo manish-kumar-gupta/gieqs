@@ -503,7 +503,7 @@ color: #e3ebf6;
 
                 <div class="container pt-6">
                     <div class="row justify-content-center">
-                        <div class="col-md-9">
+                        <div class="col-12">
                             <h1 class="lh-150 mb-3"><?php echo $title;?></h1>
                             <p class="lead text-muted mb-0" style="font-size:1.4rem !important;"><?php //echo $blogs->getpreheader();?></p>
                             <div class="media align-items-center mt-5">
