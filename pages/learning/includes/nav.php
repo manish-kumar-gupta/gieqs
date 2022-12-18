@@ -97,7 +97,7 @@ if ($menus) {
 
         <li class="nav-item">
                     <a class="nav-link"
-                        href="<?php echo BASE_URL; ?>/pages/learning/blog.php">Blog</a>
+                        href="<?php echo BASE_URL; ?>/pages/learning/blog_wp.php">Blog</a>
                 </li>
             
             <li class="nav-item">

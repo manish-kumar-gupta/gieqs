@@ -2,6 +2,18 @@
 
 <?php require 'includes/config.inc.php';?>
 
+<?php
+
+define('WP_USE_THEMES', false);
+spl_autoload_unregister ('class_loader');
+
+
+
+require(BASE_URI . '/assets/wp/wp-blog-header.php');
+
+spl_autoload_register ('class_loader');
+
+?>
 
 <head>
 
@@ -60,10 +72,13 @@
     }
 
 
+
+    
+
       ?>
 
     <!--Page title-->
-    <title>GIEQs Online Endoscopy Trainer</title>
+    <title>GIEQs Online Endoscopy Blog</title>
 
     <script src=<?php echo BASE_URL . "/assets/js/jquery.vimeo.api.min.js"?>></script>
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
@@ -435,7 +450,7 @@ $featuredFirst = true;
 
 
 
-require(BASE_URI. '/pages/learning/scripts/show_blogs.php');
+require(BASE_URI. '/pages/learning/scripts/show_blogs_wp.php');
 
 ?>
 

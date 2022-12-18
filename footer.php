@@ -22,7 +22,7 @@
         <div class="col-lg-2 col-6 col-sm-4 mb-5 mb-lg-0">
           <h6 class="heading mb-3">Online Learning</h6>
           <ul class="list-unstyled text-small">
-            <li><a href="<?php echo BASE_URL;?>/pages/learning/blog.php">Blog</a></li>
+            <li><a href="<?php echo BASE_URL;?>/pages/learning/blog_wp.php">Blog</a></li>
             <li><a href="<?php echo BASE_URL;?>/pages/learning/index.php">Dashboard</a></li>
             <li><a href="#">Premium Content</a></li>
           </ul>

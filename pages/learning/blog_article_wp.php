@@ -2,6 +2,23 @@
 
 <?php require 'includes/config.inc.php';?>
 
+<?php 
+
+/* Short and sweet */
+define('WP_USE_THEMES', false);
+spl_autoload_unregister ('class_loader');
+
+
+
+require(BASE_URI . '/assets/wp/wp-blog-header.php');
+
+spl_autoload_register ('class_loader');
+//get_header(); 
+
+?>
+
+
+
 
 <head>
 
@@ -42,14 +59,32 @@
       $users = new users;
       $navigator = new navigator;
 
-      if (isset($_GET["id"]) && is_numeric($_GET["id"])){
-          $id = $_GET["id"];
       
-      }else{
-      
-          $id = null;
-      
-      }
+    if (isset($_GET['id'])) {
+
+        $id = $_GET['id'];
+    
+    }else{
+    
+        $id = 93;   //should be generic post which tells that a post id is required
+     }
+    
+    echo '<div id="id" style="display:none;">' . $id . '</div>';
+    
+    
+    $title = get_post_field('post_title', $id);
+    $author = get_post_field('post_author', $id);
+    
+    $content = apply_filters('the_content', get_post_field('post_content', $id));
+    
+    $post_tags = get_the_tags($id);
+
+    $blog_date_wp = get_post_field('post_date', $id);
+
+
+
+
+
                
       if ((!isset($id))){
           ?>
@@ -64,26 +99,8 @@
           die();
       }
 
-      if (!($blogs->Return_row($id))){
-          ?>
-        <div class="main-content container mt-10">
-
-            <?php            
-                  echo 'Incorrect or missing blog id';
-                  echo '<br/><br/>Return <a href="' . BASE_URL .  '/pages/learning/blog_wp.php">home</a>';
-                  //redirect_user(BASE_URL . '/pages/learning/');
       
-              
-                  die();
-
-
-      }else{
-
-          $blogs->Load_from_key($id);
-
-      }
                       
-      $page_title = $blogs->getname();
      
       
 
@@ -120,7 +137,20 @@
       ?>
 
             <!--Page title-->
-            <title>GIEQs Online Endoscopy Blog - <?php echo $page_title ?></title>
+<!--META DATA-->
+<meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title><?php echo $title;?></title>
+    <meta name="description"
+        content="The Gastrointestinal Quality and Safety (GIEQs) Foundation is a not-for profit organisation dedicated to improving quality and safety in everyday endoscopic practice.">
+    <meta name="author" content="<?php echo $author;?>">
+    <meta name="keywords"
+        content="<?php if ( $post_tags ) {
+	foreach( $post_tags as $tag ) {
+    echo $tag->name . ', '; 
+	}
+}?>">
 
             <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
 
@@ -463,34 +493,34 @@ color: #e3ebf6;
 
 
 
-                        <li class="breadcrumb-item gieqsGold" aria-current="page"><?php echo $page_title;?></li>
+                        <li class="breadcrumb-item gieqsGold" aria-current="page"><?php echo $title;?></li>
                     </ol>
                 </nav>
 
             </div>
             <section class="">
-                <?php $users->Load_from_key($blogs->getauthor());?>
+                <?php //$users->Load_from_key($blogs->getauthor());?>
 
                 <div class="container pt-6">
                     <div class="row justify-content-center">
                         <div class="col-md-9">
-                            <h1 class="lh-150 mb-3"><?php echo $blogs->getname();?></h1>
-                            <p class="lead text-muted mb-0" style="font-size:1.4rem !important;"><?php echo $blogs->getpreheader();?></p>
+                            <h1 class="lh-150 mb-3"><?php echo $title;?></h1>
+                            <p class="lead text-muted mb-0" style="font-size:1.4rem !important;"><?php //echo $blogs->getpreheader();?></p>
                             <div class="media align-items-center mt-5">
                                 <div>
                                     <a href="#" class="avatar rounded-circle mr-3">
                                         <img alt="Image placeholder"
-                                            src="<?php echo BASE_URL;?><?php if ($users->getgender() == 1){echo "/assets/img/icons/people/white-female.png";}?><?php if ($users->getgender() == 2){echo "/assets/img/icons/people/white-male.png";}?>"
+                                            src="<?php echo BASE_URL;?>/assets/img/icons/people/white-male.png"
                                             class="card-img-top">
                                     </a>
                                 </div>
                                 <div class="media-body">
                                     <span
-                                        class="d-block h6 mb-0"><?php echo $users->getfirstname() . ' ' . $users->getsurname();?></span>
+                                        class="d-block h6 mb-0"><?php echo get_the_author_meta('display_name', get_post_field('post_author', $id));?></span>
                                     <?php 
                 
                //work the date
-               $blog_date = new DateTime($blogs->getcreated());
+               $blog_date = new DateTime($blog_date_wp);
                $blog_date_readable = date_format($blog_date, "l jS F Y");
 
               
@@ -551,173 +581,16 @@ color: #e3ebf6;
 
 }?> 
 
-            <section class="blog-container slice">
+<section class="blog-container slice">
                 <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-9">
-                            <!-- Article body -->
-                            <article>
 
-                                <?php
+<?php echo $content;?>
 
-$emailContents = $blogLink->getEmailContents($id);
-
-$x = 0;
-
-//var_dump($emailContents);
-
-foreach ($emailContents as $key=>$value){
-
-   
+</div>
+</div>
 
 
-
-
-
-if ($value['img'] != NULL){
-
-    ?>
-
-                                <figure class="figure">
-                                    <img alt="Image placeholder" src="<?php echo BASE_URL . $value['img'];?>"
-                                        class="img-fluid rounded">
-                                    <figcaption class="mt-3 text-muted"><?php echo $value['text'];?></figcaption>
-                                </figure>
-
-
-                                <?php
-
-}elseif ($value['video'] != NULL){
-
-    ?>
-
-                                <div class="row d-flex flex-wrap align-items-lg-stretch py-4 px-0">
-
-
-
-                                    <div class="col-lg-12 pt-0 p-4">
-
-                                        <div style="padding:56.25% 0 0 0;position:relative;"><iframe
-                                                src="<?php echo 'https://player.vimeo.com/video/' . $value['video'] . '?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479';?>"
-                                                frameborder="0" allow="autoplay; fullscreen; picture-in-picture"
-                                                allowfullscreen
-                                                style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
-                                        </div>
-                                        <figcaption class="mt-3 text-muted"><?php echo $value['text'];?></figcaption>
-
-
-                                    </div>
-
-                                </div>
-
-                                <?php
-
-    
-}else{
-
-    ?>
-                                <p class=""> <?php echo $value['text'];?></p>
-
-                                <?
-    
-  }
-  
-  
-  
-  ?>
-
-
-
-
-
-
-                                <?php 
-  
-  $x++;
-  
-  }?>
-
-                                <!-- <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              <p class="lead">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit</p>
-              <h5>First thing you need to do</h5>
-              <figure class="figure">
-                <img alt="Image placeholder" src="../../assets/img/theme/light/img-3-800x600.jpg" class="img-fluid rounded">
-                <figcaption class="mt-3 text-muted">Figure one: Type here your description</figcaption>
-              </figure>
-              <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-              <h5>Second thing you need to do</h5>
-              <figure class="figure">
-                <img alt="Image placeholder" src="../../assets/img/theme/light/img-4-800x600.jpg" class="img-fluid rounded">
-                <figcaption class="mt-3 text-muted">Figure two: Type here your description</figcaption>
-              </figure>
-              <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-             -->
-                            </article>
-                            <!-- <hr>
-            <h5 class="mb-4">Comments</h5>
-            <div class="mb-3">
-              <div class="media media-comment">
-                <img alt="Image placeholder" class="rounded-circle shadow mr-4" src="../../assets/img/theme/light/team-2-800x800.jpg" style="width: 64px;">
-                <div class="media-body">
-                  <div class="media-comment-bubble left-top">
-                    <h6 class="mt-0">Alexis Ren</h6>
-                    <p class="text-sm lh-160">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
-                    <div class="icon-actions">
-                      <a href="#" class="love active">
-                        <i class="fas fa-heart"></i>
-                        <span class="text-muted">10 likes</span>
-                      </a>
-                      <a href="#">
-                        <i class="fas fa-comment"></i>
-                        <span class="text-muted">1 reply</span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="media media-comment">
-                <img alt="Image placeholder" class="rounded-circle shadow mr-4" src="../../assets/img/theme/light/team-3-800x800.jpg" style="width: 64px;">
-                <div class="media-body">
-                  <div class="media-comment-bubble left-top">
-                    <h6 class="mt-0">Tom Cruise</h6>
-                    <p class="text-sm lh-160">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
-                    <div class="icon-actions">
-                      <a href="#" class="love active">
-                        <i class="fas fa-heart"></i>
-                        <span class="text-muted">20 likes</span>
-                      </a>
-                      <a href="#">
-                        <i class="fas fa-comment"></i>
-                        <span class="text-muted">3 replies</span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="media media-comment align-items-center">
-                <img alt="Image placeholder" class="avatar rounded-circle shadow mr-4" src="../../assets/img/theme/light/team-1-800x800.jpg">
-                <div class="media-body">
-                  <form>
-                    <div class="form-group mb-0">
-                      <div class="input-group input-group-merge border">
-                        <textarea class="form-control" data-toggle="autosize" placeholder="Write your comment" rows="1"></textarea>
-                        <div class="input-group-append">
-                          <button class="btn btn-primary" type="button">
-                            <span class="fas fa-paper-plane"></span>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div> -->
-                        </div>
-                    </div>
-                </div>
-        </div>
-        </section>
-
-        <section class="slice bg-section-secondary delimiter-top delimiter-bottom">
+<section class="slice bg-section-secondary delimiter-top delimiter-bottom">
             <div class="container">
 
                 <div class="mb-5 text-center">
@@ -734,7 +607,7 @@ if ($value['img'] != NULL){
 $maxToShow = 3;
 $featuredFirst = false;
 
-require(BASE_URI. '/pages/learning/scripts/show_blogs.php');
+require(BASE_URI. '/pages/learning/scripts/show_blogs_wp.php');
 
 ?>
 
@@ -783,8 +656,7 @@ if (isset($userid)){
 
 <? } ?>
 
-
-        </div>
+</div>
 
         <?php require BASE_URI . '/footer.php';?>
 
@@ -813,7 +685,7 @@ $(document).on('click', '.card', function() {
     event.preventDefault();
     var id = $(this).attr('data-blog-id');
 
-    window.location.href = siteRoot + "blog_article.php?id="+id;
+    window.location.href = siteRoot + "blog_article_wp.php?id="+id;
 
 
 })

@@ -2,6 +2,7 @@
 
 require 'assets/includes/config.inc.php';?>
 
+
 <?php 
 /* Short and sweet */
 define('WP_USE_THEMES', false);
@@ -15,7 +16,6 @@ spl_autoload_register ('class_loader');
 //get_header(); 
 ?>
 
-
 <head>
 
     <?php
@@ -27,6 +27,8 @@ spl_autoload_register ('class_loader');
       require BASE_URI . '/head.php';
 
       ?>
+
+
 
 
     <!--META DATA-->

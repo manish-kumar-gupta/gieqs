@@ -43,6 +43,7 @@ echo '<div id="id" style="display:none;">' . $id . '</div>';
 $title = get_post_field('post_title', $id);
 $author = get_post_field('post_author', $id);
 
+
 $content = apply_filters('the_content', get_post_field('post_content', $id));
 
 $post_tags = get_the_tags($id);

@@ -460,7 +460,7 @@ require_once BASE_URI . '/pages/learning/includes/gieqs_iii_settings.php';
                 </li>
 
 <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/learning/blog.php">Blog</a>
+                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/learning/blog_wp.php">Blog</a>
                 </li>
 <!-- Get all courses, the ones which are advertised, list by 
 
