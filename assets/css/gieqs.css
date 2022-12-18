@@ -130,7 +130,7 @@ flex: 0 0 50%;
     border-color: rgb(238, 194, 120) !important;
     background-color: #162e4d !important;
     color: rgb(238, 194, 120) !important;
-    cursor: pointer;
+    cursor: pointer !important;
 
 }
 
