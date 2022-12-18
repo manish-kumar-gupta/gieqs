@@ -113,6 +113,26 @@ max-width: 100%;
 flex: 0 0 50%;
 }
 
+
+.wp-element-button {
+    background-color: #eec278;
+    border-radius: 0;
+    border-width: 0;
+    color: #162e4d;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    padding: calc(0.667em + 2px) calc(1.333em + 2px);
+    text-decoration: none;
+
+}
+.wp-element-button:hover {
+    border-color: rgb(238, 194, 120) !important;
+    background-color: #162e4d !important;
+    color: rgb(238, 194, 120) !important;
+
+}
+
 .btn-outline-gieqsGold {
 
     color: rgb(238, 194, 120);
