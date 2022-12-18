@@ -27,7 +27,7 @@ if (!isset($maxToShow)){
 
 }
 
-$posts = get_posts('numberposts=' . $maxToShow . '&order=ASC&category=6');
+$posts = get_posts('numberposts=' . $maxToShow . '&order=ASC&category=5');
 
 //var_dump($posts);
 
