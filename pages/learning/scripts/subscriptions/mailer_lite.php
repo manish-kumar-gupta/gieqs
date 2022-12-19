@@ -113,7 +113,7 @@ $x=1;
 
 foreach ($users_list as $key => $value) {
     
-    if ($x>5){
+    if ($x>60){
 
         break;
 
