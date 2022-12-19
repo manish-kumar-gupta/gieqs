@@ -15,6 +15,15 @@ define('BASE_URI', '/Applications/XAMPP/xamppfiles/htdocs/dashboard/gieqs');
 define('BASE_URL', 'localhost:90/dashboard/gieqs');
 
 
+//LIVE KEYS
+
+
+//define('BASE_URI', $_SERVER['DOCUMENT_ROOT']);
+
+//define('BASE_URL', 'https://www.gieqs.com');
+
+
+
 $location = BASE_URL . '/index.php';
 
 //require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
@@ -104,7 +113,9 @@ $client = new \GuzzleHttp\Client(['headers' => ['X-MailerLite-ApiKey' => 'eyJ0eX
 
 $users_list = $userFunctions->getAllUsers();
 
-$users_list = array_reverse($users_list);
+shuffle($users_list);
+
+var_dump($users_list);
 
 //for each user load from key
 
