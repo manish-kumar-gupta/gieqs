@@ -35,9 +35,18 @@ color: #95aac9;
 
 .blog-container p {
 
-    margin-bottom: 30px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 
 }
+
+.blog-container ul {
+
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+}
+
 .blog-container .row {
 
     margin-top: 30px;
