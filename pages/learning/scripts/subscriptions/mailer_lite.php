@@ -21,6 +21,12 @@ $location = BASE_URL . '/index.php';
 
 $_SESSION['debug'] = TRUE;
 
+require_once(BASE_URI . '/assets/scripts/classes/userFunctions.class.php');
+$userFunctions = new userFunctions;
+
+require_once(BASE_URI . '/assets/scripts/classes/users.class.php');
+$users = new users;
+
 /* ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -29,8 +35,7 @@ require_once(BASE_URI . '/assets/scripts/classes/general.class.php');
 $general = new general;
 
 
-require_once(BASE_URI . '/assets/scripts/classes/users.class.php');
-$users = new users;
+
 require_once(BASE_URI . '/assets/scripts/classes/programme.class.php');
 $programme = new programme;
 require_once(BASE_URI . '/assets/scripts/classes/sessionView.class.php');
@@ -41,9 +46,8 @@ $subscription = new subscriptions;
 
 
 
-//$users->Load_from_key($userid);
-require_once(BASE_URI . '/assets/scripts/classes/userFunctions.class.php');
-$userFunctions = new userFunctions;
+//
+
 
 
 require_once(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
@@ -70,6 +74,13 @@ spl_autoload_unregister ('class_loader');
 require_once BASE_URI . "/vendor/autoload.php";
 
 
+//make an admin database
+//add each userid as go through
+//clean at end
+
+
+
+
 //now checking
 
 //check whether the subscribers are 
@@ -84,21 +95,194 @@ require_once BASE_URI . "/vendor/autoload.php";
 //check they are not bounced, if so remove from emailList
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 $client = new \GuzzleHttp\Client(['headers' => ['X-MailerLite-ApiKey' => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiI0IiwianRpIjoiNTE5NzY5YmU1ZjlkOGI1OTZmMTk5N2RiY2FlODU2NjhkYTQxZDVlYzhhNjUyMWU0YjU5OWM4ZDlkYTU5ZWIzZDI2NjkyMzZjNzIwODIzZmUiLCJpYXQiOjE2Njg0OTMwNDQuMjQ3NDA5LCJuYmYiOjE2Njg0OTMwNDQuMjQ3NDExLCJleHAiOjQ4MjQxNjY2NDQuMjQxODczLCJzdWIiOiIyMzkzMzIiLCJzY29wZXMiOltdfQ.OC8LqoMQ0n4kgp2xfeSbv62wwDRxBm4Mw3nL9e3cBgzVr5i49SDGzxiXNNKDaQ1oVcfxTrlnVm7wrHbcxryBx_aRl77GE3dbFoFsy4_VXtxlixIjS8GUufqZ-i0uWIXAcWSpbeYKG-IMDaeTaAYP4SfJFLdVIa8OOzjkWGTBYz0PP5Y-_sRx8iClF3BsoIZEQxsbLRLjgJh9wLeEeuO_aYxsxl8At9CATbyZMpAbLPm1BqE8vzSDMT1Rgz-2F720eGaeYl1Iao7ral1dO_Z11TnmxZp5EQVXkO48U4ToicEzhs1xhymUVmYjHHo3iRPK2vB9wfI4VafmBlzQqHKroIm-kWaXt5t0jBJRGGBUtxodijpHsUr6iM7yJAC0aNPiGt9-XDfV1yq4JEIth3nPOQv1PFe2v3X9kp8tXabeBf98YmzZLhBCnny02CnZRW2cxul3j7gl9fB6NNnUSPdmPypxmv3TTqIkPNRXYrAnjzHk7y45CL28bvUCinF5rR0mDt4uZ9mHSJXoymslQ7Wx3KeTNefsftKhbZad-IKbhtpV6phQ1llZX1MNQixM7dBThpkmsEmBC95r6Rj1Zhkv2-ThnlS9CIiE0RstiTYe5zVTA6RU6HDSjAom2IBI2ZHqwKIipxgoiDJ_35p9TFM_lZDFz3QAdJuOXFTMyyQGVv8']]);
+
+
+
+
+
+
+$users_list = $userFunctions->getAllUsers();
+
+$users_list = array_reverse($users_list);
+
+//for each user load from key
+
+$x=1;
+
+
+foreach ($users_list as $key => $value) {
+    
+    if ($x>5){
+
+        break;
+
+    }
+
+    //load them from database
+    $users->Load_from_key($value);
+
+    //check their mailing preferences
+   // $users->getemailPreferences;
+    //echo $users->getemailServices();
+
+    $email_user = $users->getemail();
+
+    //check the user exists in mailer lite
+
+    try {
+        $response = $client->request('GET', 'https://api.mailerlite.com/api/v2/subscribers/' . $email_user,);
+        //user exists
+
+        if ($response->getStatusCode() == 200){
+
+            $response_body = $response->getBody()->read(40000);
+
+            $response_array = json_decode($response_body);
+
+
+        echo 'user ' . $users->getfirstname() . ' ' . $users->getsurname() . ' found';
+
+        echo '<br/><br/>User type in Mailer lite is ' . $response_array->type;
+
+        echo '<br/><br/>User GIEQs services setting is ' .  $users->getemailServices();
+
+
+        $mailer_lite_value = null;
+        $mailer_lite_value = $response_array->type;
+        //unsubscribed //active
+
+        //if mailerlite type and 
+        if ($mailer_lite_value == 'active' && $users->getemailServices() == '1'){
+
+            //echo values match do nothing
+
+        }elseif ($mailer_lite_value == 'unsubscribed' && $users->getemailServices() == '1') {
+
+            //change gieqs value
+
+            $users->setemailServices('0');
+            if ($users->prepareStatementPDOUpdate() > 0){
+
+                echo 'user ' . $users->getfirstname() . ' ' . $users->getsurname() . ' updated in gieqs to unsubscribed';
+
+
+            }
+
+
+        }elseif ($mailer_lite_value == 'active' && $users->getemailServices() == '0') {
+
+            //change mailer lite value
+
+            $response = $client->request('PUT', 'https://api.mailerlite.com/api/v2/subscribers/' . $email_user, [
+                'form_params' => [
+                    'type' => 'unsubscribed',
+                ]
+            ]);
+            
+            if ($response->getStatusCode() == 200){
+
+                echo 'user ' . $users->getfirstname() . ' ' . $users->getsurname() . ' set as inactive in mailerlite';
+
+
+            } // 200
+
+        }elseif ($mailer_lite_value == 'unsubscribed' && $users->getemailServices() == '0') {
+
+            //do nothing
+
+        }
+
+
+
+        }
+
+        //get mailerlite value
+
+        //is mailer lite value like services?
+
+        //if so do nothing, if not change
+    
+    } catch (\Throwable $th) {
+    
+        //if subscriber not found
+        echo 'user ' . $users->getfirstname() . $users->getsurname() . ' not found';
+        echo 'proceeding to add to mailerlite';
+
+        //add to mailer lite if emailservices is positive
+        //test HOW TO UPDATE A SUBSCRIBER
+
+        $response = $client->request('POST', 'https://api.mailerlite.com/api/v2/subscribers', [
+            'form_params' => [
+                'email' => $users->getemail(),
+                'fields' => [
+
+                    'name' => $users->getfirstname(),
+                    'last_name' => $users->getsurname(),
+
+                ],
+                
+                
+            
+            ]
+        ]);
+
+        if ($response->getStatusCode() == 201){
+
+            echo 'user created';
+
+        }elseif ($response->getStatusCode() == 200){
+
+            echo 'user updated';
+        }else{
+
+            echo 'user not created';
+        }
+
+
+
+
+
+
+
+
+    
+    }
+
+    echo '<br/><br/>';
+
+
+
+    //if not add
+
+
+    //if exists
+
+    //if they agree check against their email with mailerlite
+
+    //if they don't cancel
+    
+    # code...
+
+    $x++;
+}
+
+
+//run this code every
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //get a specific user
 
@@ -196,6 +380,31 @@ echo $response->getBody(); // '{"id": 1420053, "name": "guzzle", ...}'
 
 
 
+//test HOW TO UPDATE A SUBSCRIBER
+
+$response = $client->request('POST', 'https://api.mailerlite.com/api/v2/subscribers', [
+    'form_params' => [
+        'email' => 'hello@test-mailerlite.com',
+        'fields' => [
+
+            'name' => 'Hello',
+            'last_name' => 'Mailer',
+
+        ],
+        
+        
+       
+    ]
+]);
+
+echo $response->getStatusCode(); // 200
+echo $response->getHeaderLine('content-type'); // 'application/json; charset=utf8'
+echo $response->getBody(); // '{"id": 1420053, "name": "guzzle", ...}'
+
+
+
+exit();
+
 
 //delete a specific user
 
@@ -212,7 +421,7 @@ echo $response->getBody(); // '{"id": 1420053, "name": "guzzle", ...}'
 //$promise->wait();
 
 //http_response_code(200);
-
+/* 
 
 $data = implode(" - ", $dataToLog);
 
@@ -232,3 +441,4 @@ $pathToFile = 'mylogname.log';
 //Log the data to your file using file_put_contents.
 file_put_contents(BASE_URI . '/pages/learning/scripts/subscriptions/log.log', $data, FILE_APPEND);
 
+ */
