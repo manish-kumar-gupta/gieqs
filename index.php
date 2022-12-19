@@ -2,19 +2,19 @@
 
 require 'assets/includes/config.inc.php';?>
 
-
 <?php 
 /* Short and sweet */
-define('WP_USE_THEMES', false);
-spl_autoload_unregister ('class_loader');
+//define('WP_USE_THEMES', false);
+//spl_autoload_unregister ('class_loader');
 
 
 
-require(BASE_URI . '/assets/wp/wp-blog-header.php');
+//require(BASE_URI . '/assets/wp/wp-blog-header.php');
 
-spl_autoload_register ('class_loader');
+//spl_autoload_register ('class_loader');
 //get_header(); 
 ?>
+
 
 <head>
 
@@ -27,8 +27,6 @@ spl_autoload_register ('class_loader');
       require BASE_URI . '/head.php';
 
       ?>
-
-
 
 
     <!--META DATA-->
@@ -239,31 +237,124 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 
 
     <div class="main-content">
-    <section class="mb-1 pt-2 mt-10 container" id="GIII">
+    <section class="slice delimiter-bottom mb-2 p-0 mt-10" id="GIII">
+    
+        <!-- GIEQs II Filler -->
 
-    <div class="row">
-            <div class="col-lg-12 col-xl-12 text-center text-lg-left">
+        <?php         if (($gieqs_ii_is_live === true)){?>
+
+        <section class="page-header text-dark bg-gieqsGold d-flex align-items-end pt-2 mt-10">
 
 
-            <a href="#141">
-                <div class="alert alert-modern alert-dark mr-2">
-                    <span class="badge gieqsGold badge-pill">
-                        New
-                    </span>
-                    <span class="alert-content">GIEQs IV Announced</span>
+            <!-- Header container -->
+            <div class="container pt-0 pt-lg-0">
+                <div class="row">
+                    <div class=" col-lg-12">
+                        <!-- Salute + Small stats -->
+                        <div class="row align-items-center mb-4">
+                            <div class="col-auto mb-4 mb-md-0">
+                                <span class="h2 mb-0 text-dark text-bold d-block">GIEQs II is LIVE.
+                                </span>
+
+                                <?php if (($gieqs_ii_is_live) && ($gieqs_ii_has_access_to_today)){?>
+                                <span class="text-dark">Thank-you for Registering! Sit Back and Enjoy.<br /> <a
+                                        href="<?php echo BASE_URL;?>/pages/learning/pages/general/show_subscription.php?assetid=<?php echo $gieqs_ii_plenary_link;?>">Start
+                                        watching now</a></span>
+                                <?php if ($courseTest){?> <br /><span class="text-dark">TEST VIEW</span><?php }?>
+                                <?php }else{ ?>
+                                <span class="text-dark"><a
+                                        href="<?php echo BASE_URL;?>/pages/program/gieqs_ii.php">Register Now for
+                                        Immediate Access</a></span>
+                                <?php if ($courseTest){?> <br /><span class="text-dark">TEST VIEW</span><?php }?>
+
+                                <?php } ?>
+                            </div>
+                            <!-- video -->
+                            <div class="col-auto flex-fill d-none d-xl-block">
+                                <!-- <div id="videoDisplay" class="embed-responsive embed-responsive-16by9">
+    <iframe  id='videoChapter' class="embed-responsive-item"
+        src='https://player.vimeo.com/video/398791515' allow='autoplay'
+        webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        </div> -->
+                            </div>
+                        </div>
+                        <!-- Account navigation -->
+
+
+                    </div>
                 </div>
-            </a>
+            </div>
+        </section>
+        <section class="header-1 bg-section-dark">
 
 
-                <a href="<?php echo BASE_URL;?>/login?destination=viewasset&assetid=95">
+            <?php }else{?>
+
+                
+               <!--  <section class="header-1 section-rotate bg-section-dark mt-5" data-offset-top="#header-main"> -->
+               <section class="header-1 section-rotate bg-section-dark mt-5 pt-5"">
+
+<?php
+
+}
+$imageArray = ['assets/img/advert/gieqs_advert_1.jpeg', 'assets/img/covers/gieqsii/background-studio-2.jpg', 'assets/img/covers/gieqsii/background-studio-3.jpg', 'assets/img/covers/gieqsii/background-studio-4.jpg', 'assets/img/covers/gieqsii/background-studio-5.jpg', 'assets/img/covers/gieqsii/background-studio-6.jpg', 'assets/img/covers/gieqsii/background-studio-1.jpg', 
+'assets/img/covers/gieqsii/background-room-1.jpg', 'assets/img/covers/gieqsii/background-room-2.jpg', 'assets/img/covers/gieqsii/background-room-3.jpg', 'assets/img/covers/gieqsii/background-room-4.jpg', 
+'assets/img/covers/gieqsii/background-tech-1.jpg', 'assets/img/covers/gieqsii/background-tech-2.jpg', 
+'assets/img/covers/gieqsii/background-group-1.jpg', 'assets/img/covers/gieqsii/background-group-2.jpg', 'assets/img/covers/gieqsii/background-group-3.jpg'];
+
+
+?>
+
+
+<div class="section-inner bg-gradient-dark"></div>
+<!-- SVG illustration -->
+<div class="pt-4 position-absolute middle right-0 col-lg-7 col-xl-6 d-none d-lg-block">
+    <figure class="w-75" style="max-width: 1000px;">
+        <img alt="Image placeholder" src="<?php echo $imageArray[array_rand($imageArray)];?>"
+            class="svg-inject img-fluid">
+        <!-- <figcaption class="small figure-caption text-right">Non-granular transverse colon large non-pedunculated colorectal polyp.  <br/>Suspicious for submucosal invasive cancer. </figcaption> -->
+    </figure>
+</div>
+<!-- SVG background -->
+<!--<div class="bg-absolute-cover bg-size--contain d-flex align-items-center">
+<figure class="w-100 d-none d-lg-block">
+<img alt="Image placeholder" src="assets/img/svg/backgrounds/bg-4.svg" class="svg-inject" style="height: 1000px;">
+</figure>
+</div>-->
+<!-- Hero container -->
+<div class="container  d-flex align-items-center position-relative zindex-100">
+
+    <div class="col">
+        <div class="row">
+            <div class="col-lg-10 col-xl-10 text-center text-lg-left">
+
+              <!--   <a class="ml-3 pointer" href="https://www.gieqs.com/pages/program/program_generic.php?id=15">
+                    <div class="alert alert-modern alert-dark">
+                        <span class="badge gieqsGold badge-pill">
+                            New
+                        </span>
+                        <span class="alert-content">GIEQs II - On DEMAND
+                        </span>
+                    </div>
+                </a> -->
+
+                <a href="https://www.gieqs.com/iii">
                 <div class="alert alert-modern alert-dark">
                     <span class="badge gieqsGold badge-pill">
                         New
                     </span>
-                    <span class="alert-content">GIEQs III - Watch now!</span>
+                    <span class="alert-content">GIEQs III - Register now!</span>
                 </div>
             </a>
-        
+                <!-- <a href="https://www.gieqs.com/pages/program/program_imaging.php">
+                <div class="alert alert-modern alert-dark">
+                    <span class="badge gieqsGold badge-pill">
+                        New
+                    </span>
+                    <span class="alert-content">Live / Virtual Hybrid Premium Content</span>
+                </div>
+            </a> -->
+
                 <a class="ml-3 pointer" data-toggle="modal" data-target="#accreditation">
                     <div class="alert alert-modern alert-dark">
                         <span class="badge gieqsGold badge-pill">
@@ -298,39 +389,63 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 -->
             </div>
         </div>
-                                </section>
-                                
+        
+        <div class="row">
+            <div class="col-lg-5 col-xl-6 text-center text-lg-left">
+                <div class="d-none d-lg-block mb-4">
+
+                </div>
+
+                <h2 class="text-white mb-4 mt-4 mt-lg-0">
+                    <span class="display-4 font-weight-light">Thanks to those who joined us Live for GIEQs III!</span>
+
+                    <span class="d-block" style="color: rgb(238, 194, 120);"><strong
+                            class="font-weight-light">We put Cancer after Gastroscopy in the Spotlight</span>
+                </h2>
+                <p class="lead text-white">Decision making, common controversies, bring your problems, complex to everyday, training and more!</p>
+                <p class="lead text-white">Same laser focus on the everyday, high definition streaming.</p>
+
+                <div class="mt-5">
+
+
+                  
+                </a>
+                <h2 class="text-white mb-4 mt-4 mt-lg-0">
+
+                <!-- <span class="d-block" style="color: rgb(238, 194, 120);"><strong
+                            class="font-weight-light">More details soon...</span> -->
+                            <a href="<?php echo BASE_URL;?>/login?destination=viewasset&assetid=95"
+                                class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
+                                style="background-color: rgb(238, 194, 120);">
+                                <span class="btn-inner--text">Access Now</span>
+                                <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
+
+                            </a>
+                            
+            </a> 
+</h2>
+
+                    <!-- <a href="https://www.youtube.com/watch?v=zRy1xwGsagc"
+                        class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mt-2 mr-sm-4 scroll-me"
+                        style="background-color: rgb(238, 194, 120);" data-fancybox>
+                        <span class="badge bg-dark gieqsGold badge-pill">
+                    New
+                    </span>
+                        <span class="btn-inner--text">Watch the latest teaser video</span>
+                        <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
+
+                    </a> -->
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</section>
 
    
-    <?php
-
-
-        $posts = get_posts('numberposts=10&order=ASC&category=3');
-        foreach ($posts as $post) : setup_postdata( $post ); 
-        
-        $post_id = get_the_ID();
-        ?>
-
-        <section class="slice section-rotate delimiter-bottom mb-0 pt-2 mt-0">
-                <div class="section-inner bg-gradient-dark"></div>
-
-            <div id="<?php echo $post_id;?>" class="blog-container container pt-6">
-
-        <?php //the_date(); echo "<br />"; ?>
-        <span class="display-4 font-weight-light"><?php the_title(); ?>   </span>
-
-        
-        <?php the_content(); ?>
-
-        </div>
-                                        </div>
-        </section>
-        <?php
-        endforeach;
-?>
-
-
-
 
 
 
@@ -453,10 +568,524 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
 
 
 
+<section class="header-1 section-rotate bg-section-dark mt-5" data-offset-top="#header-main">
 
 
+              
+<?php
+$imageArray = ['assets/img/polyps/transverse_lci.png', 'assets/img/icons/gieqs_2.png', 'assets/img/backgrounds/ChromoPolypTransBack.png', 'assets/img/covers/bleeding/heaterNonLive.png', 'assets/img/covers/ovesco.png', 'assets/img/polyps/smi_demarcation.png']
+
+?>
+
+
+
+                <div class="section-inner bg-gradient-dark"></div>
+                <!-- SVG illustration -->
+                <div class="pt-7 position-absolute middle right-0 col-lg-7 col-xl-6 d-none d-lg-block">
+                    <figure class="w-75" style="max-width: 1000px;">
+                        <img alt="Image placeholder" src="<?php echo $imageArray[array_rand($imageArray)];?>"
+                            class="svg-inject img-fluid">
+                    </figure>
+                </div>
+                <!-- SVG background -->
+                <!--<div class="bg-absolute-cover bg-size--contain d-flex align-items-center">
+        <figure class="w-100 d-none d-lg-block">
+          <img alt="Image placeholder" src="assets/img/svg/backgrounds/bg-4.svg" class="svg-inject" style="height: 1000px;">
+        </figure>
+      </div>-->
+                <!-- Hero container -->
+                <div class="container  d-flex align-items-center position-relative zindex-100">
+
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-lg-10 col-xl-10 text-center text-lg-left">
+
+                                <a class="ml-3 pointer" href="https://www.gieqs.com/pages/program/program_generic.php?id=15">
+                                    <div class="alert alert-modern alert-dark">
+                                        <span class="badge gieqsGold badge-pill">
+                                            New
+                                        </span>
+                                        <span class="alert-content">GIEQs II - On DEMAND
+                                        </span>
+                                    </div>
+                                </a>
+
+                                <!-- <a href="https://www.gieqs.com/pages/program/gieqs_ii.php">
+                                <div class="alert alert-modern alert-dark">
+                                    <span class="badge gieqsGold badge-pill">
+                                        New
+                                    </span>
+                                    <span class="alert-content">GIEQs II Registration Open</span>
+                                </div>
+                            </a> -->
+                                <!-- <a href="https://www.gieqs.com/pages/program/program_imaging.php">
+                                <div class="alert alert-modern alert-dark">
+                                    <span class="badge gieqsGold badge-pill">
+                                        New
+                                    </span>
+                                    <span class="alert-content">Live / Virtual Hybrid Premium Content</span>
+                                </div>
+                            </a> -->
+
+                                <a class="ml-3 pointer" data-toggle="modal" data-target="#accreditation">
+                                    <div class="alert alert-modern alert-dark">
+                                        <span class="badge gieqsGold badge-pill">
+                                            <i class="fas fa-notes-medical"></i>
+                                        </span>
+
+                                        <span class="alert-content">CME accreditation</span>
+                                    </div>
+                                </a>
+
+                                <a class="ml-3 pointer" href="https://twitter.com/gieqs_symposium?ref_src=twsrc%5Etfw"
+                                    target="_blank">
+                                    <div class="alert alert-modern alert-dark">
+                                        <span class="badge gieqsGold badge-pill">
+
+                                            <i class="fab fa-twitter"></i>
+                                        </span>
+                                        <span class="alert-content">Follow GIEQs on Twitter</span>
+
+
+
+
+                                    </div>
+                                </a>
+
+
+
+
+                                <!--                              <div class="countdown" data-countdown-date="10/07/2020" data-countdown-label="hide"></div>
+ -->
+                                <!--                              <div class="countdown countdown-blocks" data-countdown-date="10/07/2020"></div>
+ -->
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-5 col-xl-6 text-center text-lg-left">
+                                <div class="d-none d-lg-block mb-4">
+
+                                </div>
+
+                                <h2 class="text-white mb-4 mt-4 mt-lg-0">
+                                    <span class="display-4 font-weight-light">GIEQs II - now On Demand!</span>
+
+                                    <span class="d-block" style="color: rgb(238, 194, 120);"><strong
+                                            class="font-weight-light">Thanks to everyone who supported<br />
+                                            step 2 of the Everyday Endoscopy Revolution.</span>
+                                </h2>
+                                <p class="lead text-white">Click below to access the whole Event. 32 hours of content,
+                                    accessible immediately.</p>
+                                <div class="mt-5">
+
+
+                                    <a href="https://www.gieqs.com/login?destination=viewasset&assetid=24"
+                                        class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
+                                        style="background-color: rgb(238, 194, 120);">
+                                        <span class="btn-inner--text">Access GIEQs II <sub>already registered</sub></span>
+                                        <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
+
+                                    </a>
+
+                                    <a href="https://www.gieqs.com/pages/program/program_generic.php?id=15"
+                                        class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 mt-2 scroll-me"
+                                        style="background-color: rgb(238, 194, 120);">
+                                        <span class="btn-inner--text">Register for GIEQs II <sub>immediate access</sub></span>
+                                        <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
+
+                                    </a>
+
+                                    <!--   <a href=""
+                                    class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me m-2 teaser-popup"
+                                    style="background-color: rgb(238, 194, 120);">
+                                    <span class="btn-inner--text">Watch GIEQs II Teaser Videos<sup></sup></span>
+                                    <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
+
+                                </a> -->
+
+
+
+
+                                    <!-- <a href="https://www.youtube.com/watch?v=zRy1xwGsagc"
+                                        class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mt-2 mr-sm-4 scroll-me"
+                                        style="background-color: rgb(238, 194, 120);" data-fancybox>
+                                        <span class="badge bg-dark gieqsGold badge-pill">
+                                    New
+                                    </span>
+                                        <span class="btn-inner--text">Watch the latest teaser video</span>
+                                        <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
+
+                                    </a> -->
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
+    </section>
+
+    <?php
+
+        $imageArray = ['assets/img/polyps/ssp.png', 'assets/img/backgrounds/ChromoPolypTransBack.png', 'assets/img/covers/bleeding/heaterNonLive.png']
+
+        ?>
+
+    <?php if (!$past){?>
+
+    <!-- Header (v1) -->
+    <?php if (!$live){
+            
+            
+            
+            ?>
+    <section class="section-rotate bg-section-dark" data-offset-top="#header-main">
+        <div class="section-inner bg-gradient-dark"></div>
+        <!-- SVG illustration -->
+        <div class="pt-7 position-absolute middle right-0 col-lg-7 col-xl-6 d-none d-lg-block">
+            <figure class="w-75" style="max-width: 1000px;">
+                <img alt="Image placeholder" src="<?php echo $imageArray[array_rand($imageArray)];?>"
+                    class="svg-inject img-fluid">
+            </figure>
+            <p class="text-center text-muted mt-2"><br />* early bird fee EXTENDED until 24/9/2020, <br />reductions for
+                trainees, nurses and students</p>
+        </div>
+        <!-- SVG background -->
+        <!--<div class="bg-absolute-cover bg-size--contain d-flex align-items-center">
+        <figure class="w-100 d-none d-lg-block">
+          <img alt="Image placeholder" src="assets/img/svg/backgrounds/bg-4.svg" class="svg-inject" style="height: 1000px;">
+        </figure>
+      </div>-->
+        <!-- Hero container -->
+        <div class="container  d-flex align-items-center position-relative zindex-100">
+
+            <div class="col">
+                <div class="row">
+                    <div class="col-lg-10 col-xl-10 text-center text-lg-left">
+                        <a href="<?php echo $registrationURL;?>">
+                            <div class="alert alert-modern alert-dark">
+                                <span class="badge gieqsGold badge-pill">
+                                    New
+                                </span>
+                                <span class="alert-content">Register now</span>
+                            </div>
+                        </a>
+                        <a class="ml-3 pointer" data-toggle="modal" data-target="#registerInterest">
+                            <div class="alert alert-modern alert-dark">
+                                <span class="badge gieqsGold badge-pill">
+                                    <i class="fas fa-notes-medical"></i>
+                                </span>
+                                <span class="alert-content">COVID-19 statement</span>
+                            </div>
+                        </a>
+                        <a class="ml-3 pointer" data-toggle="modal" data-target="#accreditation">
+                            <div class="alert alert-modern alert-dark">
+                                <span class="badge gieqsGold badge-pill">
+                                    <i class="fas fa-certificate"></i>
+                                </span>
+                                <span class="alert-content">CME accreditation</span>
+                            </div>
+                        </a>
+
+                        <!--                              <div class="countdown" data-countdown-date="10/07/2020" data-countdown-label="hide"></div>
+ -->
+                        <!--                              <div class="countdown countdown-blocks" data-countdown-date="10/07/2020"></div>
+ -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-5 col-xl-6 text-center text-lg-left">
+                        <div class="d-none d-lg-block mb-4">
+
+                        </div>
+
+                        <h2 class="text-white mb-4 mt-4 mt-lg-0">
+                            <span class="display-4 font-weight-light">We can do everyday endoscopy
+                                better.</span>
+
+                            <span class="d-block" style="color: rgb(238, 194, 120);"><strong
+                                    class="font-weight-light">Digital Edition I<br />October 7 & 8 2020 <br />0730 -
+                                    1830 CEST
+                                </strong><br />streamed in full, live, right here, available for 1 month
+                                on-demand<br />Registration is &euro;100* for 2 days.</span>
+                        </h2>
+                        <p class="lead text-white">A digital endoscopy symposium in high definition focussed on
+                            promoting quality in the
+                            endoscopic interventions we perform everyday.&nbsp;</p>
+                        <div class="mt-5">
+
+                            <a href="https://www.youtube.com/watch?v=I9Y8gC6wtKg"
+                                class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
+                                style="background-color: rgb(238, 194, 120);" data-fancybox>
+                                <span class="btn-inner--text">Watch the concept video</span>
+                                <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
+
+                            </a>
+
+                            <!-- <a href="https://www.youtube.com/watch?v=zRy1xwGsagc"
+                                        class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mt-2 mr-sm-4 scroll-me"
+                                        style="background-color: rgb(238, 194, 120);" data-fancybox>
+                                        <span class="badge bg-dark gieqsGold badge-pill">
+                                    New
+                                    </span>
+                                        <span class="btn-inner--text">Watch the latest teaser video</span>
+                                        <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
+
+                                    </a> -->
+
+                        </div>
+                        <div class="countdown countdown-hero mt-2" data-countdown-date="10/07/2020"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <?php 
+    
+                        
+
+    }elseif ($live){?>
+
+    <!-- If Livestream-->
+    <section class="header-1 section-rotate bg-section-dark" data-offset-top="#header-main">
+
+        <div class="section-inner bg-gradient-dark"></div>
+        <!-- SVG illustration -->
+        <div class="pt-7 position-absolute middle right-0 col-lg-7 col-xl-6 d-none d-lg-block">
+            <figure class="w-75" style="max-width: 1000px;">
+                <img alt="Image placeholder" src="<?php echo BASE_URL;?>/assets/img/covers/bleeding/heaterLivev2.png"
+                    class="svg-inject img-fluid">
+            </figure>
+            <!--         <p class="text-center text-muted mt-2"><br/>* early bird fee until 1/9/2020, <br/>reductions for trainees, nurses and students</p>
+ -->
+        </div>
+        <!-- SVG background -->
+        <!--<div class="bg-absolute-cover bg-size--contain d-flex align-items-center">
+<figure class="w-100 d-none d-lg-block">
+  <img alt="Image placeholder" src="assets/img/svg/backgrounds/bg-4.svg" class="svg-inject" style="height: 1000px;">
+</figure>
+</div>-->
+        <!-- Hero container -->
+        <div class="container  d-flex align-items-center position-relative zindex-100">
+            <div class="col">
+                <div class="row">
+                    <div class="col-lg-5 col-xl-6 text-center text-lg-left">
+                        <div class="d-none d-lg-block mb-4">
+
+                        </div>
+                        <a href="<?php echo $registrationURL;?>">
+                            <div class="alert alert-modern alert-dark">
+                                <span class="badge gieqsGold badge-pill">
+                                    LIVE
+                                </span>
+                                <span class="alert-content">Not yet registered? You <strong>still can!</strong> Click
+                                    here!</span>
+                            </div>
+                        </a>
+                        <a class="ml-3 pointer" data-toggle="modal" data-target="#registerInterest">
+                            <!-- <div class="alert alert-modern alert-dark">
+                        <span class="badge gieqsGold badge-pill">
+                        <i class="fas fa-notes-medical"></i>
+                            </span>
+                        <span class="alert-content">COVID-19 statement</span>
+                     </div></a> -->
+                            <h2 class="text-white mb-4 mt-4 mt-lg-0">
+                                <span class="display-4 font-weight-light">We can do everyday endoscopy
+                                    better.</span>
+                                <span class="d-block" style="color: rgb(238, 194, 120);"><strong
+                                        class="font-weight-light">Digital Edition I<br />Streaming NOW LIVE!<br />
+                                        <!-- Registration is &euro;100* for 2 days. --></span>
+                            </h2>
+                            <p class="lead text-white">A digital endoscopy symposium in high definition focussed on
+                                promoting quality in the
+                                endoscopic interventions we perform everyday.&nbsp;</p>
+
+                            <!-- if not logged in -->
+                            <div class="mt-5">
+
+                                <?php if (!$userid){?>
+                                <a href="<?php echo BASE_URL;?>/pages/authentication/login.php"
+                                    class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
+                                    style="background-color: rgb(238, 194, 120);">
+                                    <span class="btn-inner--text">Login now to participate!</span>
+                                    <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
+
+                                </a>
+                                <?php }elseif ($userid){ //what if no access, tag set above has access to live?>
+                                <a href="<?php echo BASE_URL;?>/pages/learning/pages/live/plenary-thursday.php"
+                                    class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
+                                    style="background-color: rgb(238, 194, 120);">
+                                    <span class="btn-inner--text">Jump right into Plenary!</span>
+                                    <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
+
+                                </a>
+                                <a href="<?php echo BASE_URL;?>/pages/learning/pages/live/complex-thursday.php"
+                                    class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mt-2 mr-sm-4 scroll-me"
+                                    style="background-color: rgb(238, 194, 120);">
+                                    <span class="btn-inner--text">Jump right into Complex!</span>
+                                    <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
+
+                                </a>
+
+                                <?php }?>
+
+                                <!-- <a href="https://www.youtube.com/watch?v=zRy1xwGsagc"
+                                class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mt-2 mr-sm-4 scroll-me"
+                                style="background-color: rgb(238, 194, 120);" data-fancybox>
+                                <span class="badge bg-dark gieqsGold badge-pill">
+                            New
+                            </span>
+                                <span class="btn-inner--text">Watch the latest teaser video</span>
+                                <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
+
+                            </a> -->
+
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+
+
+    <?php }
+     
+    }else{
+
+         //text for past and not live
+?>
+
+    <hr />
+   <!--  <section class="slice slice-lg pt-4">
+        <div id="twitter" class="container d-flex align-items-center position-relative zindex-100" style="">
+
+            <a class="twitter-timeline" data-theme="dark"
+                href="https://twitter.com/gieqs_symposium?ref_src=twsrc%5Etfw">Tweets by gieqs_symposium</a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+    </section> -->
+
+    <section class="header-1 section-rotate bg-section-dark" data-offset-top="#header-main">
+        <div class="section-inner bg-gradient-dark"></div>
+        <!-- SVG illustration -->
+        <div class="pt-7 position-absolute middle right-0 col-lg-7 col-xl-6 d-none d-lg-block">
+            <figure class="w-75" style="max-width: 1000px;">
+                <img alt="Image placeholder"
+                    src="<?php echo BASE_URL;?>/assets/img/covers/learning/bedysplasia_transparent.png"
+                    class="svg-inject img-fluid">
+                <figcaption class="figure-caption text-right">Dysplasia within Barrett's Oesophagus. <br />Acetic Acid
+                    Stain + Virtual Chromoendoscopy.</figcaption>
+            </figure>
+        </div>
+        <!-- SVG background -->
+        <!--<div class="bg-absolute-cover bg-size--contain d-flex align-items-center">
+        <figure class="w-100 d-none d-lg-block">
+          <img alt="Image placeholder" src="assets/img/svg/backgrounds/bg-4.svg" class="svg-inject" style="height: 1000px;">
+        </figure>
+      </div>-->
+        <!-- Hero container -->
+        <div class="container  d-flex align-items-center position-relative zindex-100">
+
+            <div class="col">
+                <!-- <div class="row">
+                        <div class="col-lg-10 col-xl-10 text-center text-lg-left">
+                        <a href="<?php //echo BASE_URL;?>/pages/program/program_imaging.php">
+                            <div class="alert alert-modern alert-dark">
+                                <span class="badge gieqsGold badge-pill">
+                                    New
+                                    </span>
+                                <span class="alert-content">Live / Virtual Hybrid Courses</span>
+                             </div></a>
+                        <a href="<?php //echo $registrationURL;?>">
+                            <div class="alert alert-modern alert-dark">
+                            <span class="badge gieqsGold badge-pill">
+                                <i class="fas fa-notes-medical"></i>
+                                    </span>
+                                <span class="alert-content">Register for GIEQs Digital on Demand</span>
+                             </div></a>
+                             <a class="ml-3 pointer" data-toggle="modal" data-target="#accreditation">
+                            <div class="alert alert-modern alert-dark">
+                                <span class="badge gieqsGold badge-pill">
+                                <i class="fas fa-notes-medical"></i>
+                                    </span>
+                               
+                                <span class="alert-content">CME accreditation</span>
+                             </div></a>
+                            
+                    </div>
+        </div> -->
+                <div class="row">
+                    <div class="col-lg-5 col-xl-6 text-center text-lg-left">
+                        <div class="d-none d-lg-block mb-4">
+
+                        </div>
+
+                        <h2 class="text-white mb-4 mt-4 mt-lg-0">
+                            <span class="display-4 font-weight-light">NOW we will do everyday endoscopy
+                                better!</span>
+
+                            <span class="d-block" style="color: rgb(238, 194, 120);"><strong
+                                    class="font-weight-light">GIEQs Digital is over for 2020<br />It is still available,
+                                    on demand.
+                                </strong><br />NEW Virtual / Live Hybrid Courses</span>
+                        </h2>
+                        <p class="lead text-white">Catch us again, Fall 2021, live and face to face. If you can't wait
+                            until then new Live / Virtual Hybrid Courses start November 2020</p>
+                        <div class="mt-5">
+
+                            <?php
+                                        
+                                        if ($userid){
+
+                                            $catchupLink = BASE_URL . "/pages/program/program-printable-catchup-public.php";
+                                        }else{
+
+                                            $catchupLink = BASE_URL . "/pages/authentication/login.php?destination=catchup";
+
+                                        }
+
+                                        ?>
+
+                            <a href="<?php echo $catchupLink;?>"
+                                class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 scroll-me"
+                                style="background-color: rgb(238, 194, 120);">
+                                <span class="btn-inner--text">GIEQs Digital On Demand <sup>*</sup></span>
+                                <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
+
+                            </a>
+
+
+
+
+                            <!-- <a href="https://www.youtube.com/watch?v=zRy1xwGsagc"
+                                        class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mt-2 mr-sm-4 scroll-me"
+                                        style="background-color: rgb(238, 194, 120);" data-fancybox>
+                                        <span class="badge bg-dark gieqsGold badge-pill">
+                                    New
+                                    </span>
+                                        <span class="btn-inner--text">Watch the latest teaser video</span>
+                                        <span class="btn-inner--icon"><i class="fas fa-play"></i></span>
+
+                                    </a> -->
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <?php
+    }?>
     <section class="slice slice-lg">
-        <div class="container mt-6 mb-6">
+        <div class="container mt-6">
             <div class="row justify-content-center">
                 <div class="col-lg-9">
                     <div class="swiper-js-container">
@@ -519,7 +1148,82 @@ echo '<div id="signup" style="display:none;">' . $signup . '</div>';
     </section>
 
 
-    
+    <section class="slice slice-lg mt-8 pb-0">
+        <!-- 
+            <div class="container">
+              <div class="row row-grid align-items-center justify-content-around">
+                <div class="col-lg-5 order-lg-2">
+                  <div class="pr-md-4">
+                    <h5 class="h3">Change the way you think about learning in Endoscopy. Forever.</h5>
+                    <p class="text-muted lead my-4">GIEQs uses our ground-breaking tagged based approach throughout to connect you with cases relevant to what you want to discover, fast.</p>
+                    <p class="text-muted lead my-4">In the run up to GIEQs we will share a case every week so you can better understand the approach.</p>
+
+                    <a href="<?php echo BASE_URL;?>/artificial-intelligence" target="_blank" class="btn bg-gieqsGold text-dark rounded-pill btn-icon mt-4">
+                      <span class="btn-inner--icon"><i class="fas fa-binoculars"></i></span>
+                      <span class="btn-inner--text">FREE case - Artifical Intelligence</span>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                  <div class="position-relative" style="z-index: 10;">
+                    <a href="<?php echo BASE_URL;?>/artificial-intelligence" target="_blank"><img alt="Image placeholder" src="https://i.vimeocdn.com/video/951736614_1280x720.jpg?r=pad" class="img-center img-fluid"></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        <section class="slice slice-lg bg-cover bg-size--cover" style="background-image: url('<?php echo BASE_URL;?>/assets/img/covers/learning/roomview1.png'); background-position: center bottom;">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="card py-5 px-4 box-shadow-3">
+                <div class="card-body">
+                  <h6 class="h2">
+                    <strong>We are adapting to the restrictions around</strong> Coronavirus.
+                  </h6>
+                  <p class="lead lh-180 mt-4">We will stream the entire conference, in high definition, right here on GIEQs.com.  So it will be just like being here.</p>
+                  <p class="lead lh-180 mt-4">We are committed to making the experience feel like you're in the room 1:1 with the endoscopist or lecturer, and to extend live interaction to the digital experience.</p>
+                  <p class="lead lh-180 mt-4">And after the congress we will leave all the content on GIEQs online, so you can watch at your leisure, <strong>free</strong> if you register for the congress.</p>
+
+                  <div class="btn-container mt-5">
+                  <a href="https://vimeo.com/433331131" class="btn bg-gieqsGold text-dark rounded-pill btn-icon mt-4" data-fancybox>Discover more</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section> -->
+        <hr />
+        <section class="slice slice-lg mt-1">
+            <div class="container">
+                <div class="row no-gutters align-items-md-center text-center text-md-left">
+                    <div class="card hover-shadow-lg order-2 col-lg-7 ml--100">
+                        <div class="card-body p-5">
+                            <h4 class="">At GIEQs we believe in quality in endoscopy.</h4>
+                            <p class="h6 text-muted text-justify lh-150">
+                                Pronounced 'geeks' <sup>1</sup>, GIEQs is dedicated to applying technical competence and
+                                published evidence to everything from a diagnostic gastroscopy to a circumferential ESD
+                            </p>
+                            <p><small class="text-muted"><sup>1</sup> someone who is very interested in a particular
+                                    subject and knows a lot about it</small></p>
+                            <a href="pages/program/mission.php"
+                                class="btn btn-white rounded-pill hover-translate-y-n3 btn-icon mr-sm-4 mt-2 scroll-me"
+                                style="background-color: rgb(238, 194, 120);">
+                                <span class="btn-inner--text">Read our mission statement</span>
+                                <span class="btn-inner--icon"><i class="fas fa-arrow-right"></i></span>
+
+                            </a>
+                        </div>
+                    </div>
+                    <div class="order-1 col-lg-6 mb-1 mb-lg-0">
+
+                        <img alt="Image placeholder" src="assets/img/backgrounds/hyperplasticTransBack.png"
+                            class="img-fluid rounded shadow">
+                    </div>
+                </div>
+            </div>
+        </section>
         <!-- <hr class="divider divider-fade" /> -->
 
         <!-- <section class="bg-section-dark slice slice-lg mt-1" id="sct-what-we-do">
