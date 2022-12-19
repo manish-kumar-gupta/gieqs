@@ -101,6 +101,9 @@ margin: auto;
 
 }
 
+@media (min-width: 576px)
+{
+
 .wp-block-columns {
 
     display: flex;
@@ -113,6 +116,7 @@ max-width: 100%;
 flex: 0 0 50%;
 }
 
+}
 
 .wp-element-button {
     background-color: #eec278;
