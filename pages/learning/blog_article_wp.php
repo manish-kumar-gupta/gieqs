@@ -436,7 +436,7 @@ color: #e3ebf6;
 <meta property="og:type" content="website" />
 <meta property="fb:app_id" content="493045018280075" />
 
-<meta property="og:url" content="https://www.gieqs.com/blog_view?id=<?php echo $id;?>">
+<meta property="og:url" content="https://www.gieqs.com/pages/learning/blog_article_wp.php?id=<?php echo $id;?>">
 <meta property="og:title" content="<?php echo $title;?>">
 <meta property="og:description" content="<?php echo get_the_excerpt($id);?>">
 <meta property="og:image" content="<?php echo get_the_post_thumbnail_url($id);?>"
