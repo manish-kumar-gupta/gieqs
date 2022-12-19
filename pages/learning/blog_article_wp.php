@@ -143,7 +143,7 @@ spl_autoload_register ('class_loader');
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><?php echo $title;?></title>
     <meta name="description"
-        content="The Gastrointestinal Quality and Safety (GIEQs) Foundation is a not-for profit organisation dedicated to improving quality and safety in everyday endoscopic practice.">
+        content="<?php echo get_the_excerpt($id);?>">
     <meta name="author" content="<?php echo $author;?>">
     <meta name="keywords"
         content="<?php if ( $post_tags ) {
