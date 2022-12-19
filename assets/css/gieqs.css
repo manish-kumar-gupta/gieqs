@@ -127,6 +127,14 @@ margin: auto;
     flex: 0 0 50%;
     }
 
+
+    .wp-block-columns .is-vertically-aligned-center {
+
+        margin-top: auto;
+        margin-bottom: auto;
+
+    }
+
 }
 
 .wp-element-button {
