@@ -2,6 +2,20 @@
 
 <?php
 
+define('WP_USE_THEMES', false);
+spl_autoload_unregister ('class_loader');
+
+
+
+require(BASE_URI . '/assets/wp/wp-blog-header.php');
+
+spl_autoload_register ('class_loader');
+
+?>
+
+<?php
+
+
 //php general variables
 
 //form name
@@ -768,16 +782,15 @@ if ($identifierValue) {
                                             <select id="linked_blog" type="text" data-toggle="select" class="form-control" name="linked_blog">
                                             <option value="" selected disabled hidden>please select an option</option>
                                             <?php 
+
+                                            global $post;
+                                            $args = array( 'category' => 7);
+                                            $posts = get_posts($args);
+                                            foreach( $posts as $post ) : setup_postdata($post); ?>
+                                                <option value="<? echo $post->ID; ?>"><?php the_title(); ?></option>
+                                            <?php endforeach; ?>
                                             
-                                            $supercategories = $assetManager->getBlogs();
-
-                                            foreach ($supercategories as $key=>$value){
-
-                                                echo "<option value='{$value['id']}'>{$value['name']}<option>";
-
-                                            }
-                                            
-                                            //echo $assetManager->getSuperCategories();?>
+                                           
                                             
                                             </select>
                                         </div>

@@ -3,6 +3,19 @@
 
 <?php require '../../assets/includes/config.inc.php';?>
 
+<?php
+
+define('WP_USE_THEMES', false);
+spl_autoload_unregister ('class_loader');
+
+
+
+require(BASE_URI . '/assets/wp/wp-blog-header.php');
+
+spl_autoload_register ('class_loader');
+
+?>
+
 <head>
     <?php
 
@@ -344,8 +357,24 @@ $asset_id_pagewrite = $asset_id_url;
 $assets_paid->Load_from_key($asset_id_pagewrite);
 
 $blog_to_use_as_basis = $assets_paid->getlinked_blog();
-$blogs->Load_from_key($blog_to_use_as_basis);
-$blogid = $blog_to_use_as_basis;
+
+if (isset($blog_to_use_as_basis)){
+
+
+    $title = get_post_field('post_title', $blog_to_use_as_basis);
+    $author = get_post_field('post_author', $blog_to_use_as_basis);
+    
+    $content = apply_filters('the_content', get_post_field('post_content', $blog_to_use_as_basis));
+    
+    $post_tags = get_the_tags($blog_to_use_as_basis);
+
+    $blog_date_wp = get_post_field('post_date', $blog_to_use_as_basis);
+
+}
+
+
+//$blogs->Load_from_key($blog_to_use_as_basis);
+//$blogid = $blog_to_use_as_basis;
 
 
 
@@ -943,7 +972,7 @@ var_dump($currentTime);
         </section>
 
         <section class="blog-container">
-            <?php         include(BASE_URI . '/pages/learning/blog_article_generate.php');?>
+            <?php         include(BASE_URI . '/pages/learning/blog_article_generate_wp.php');?>
         </section>
         <section class="">
             <div class="container">
