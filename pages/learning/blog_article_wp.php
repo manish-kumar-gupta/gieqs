@@ -454,7 +454,7 @@ color: #e3ebf6;
 
         <div class="main-content">
             <!-- Header (account) -->
-            <section class="page-header bg-dark-dark d-flex align-items-end pt-8 mt-10"
+            <section class="page-header bg-dark-dark d-flex align-items-end pt-8 mt-8"
                 style="background-image: url('<?php echo BASE_URL;?>/assets/img/backgrounds/gent_wall_blue_v2.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;"
                 data-offset-top="#header-main">
 
