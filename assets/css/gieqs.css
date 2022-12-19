@@ -101,20 +101,31 @@ margin: auto;
 
 }
 
+@media (max-width: 576px)
+{
+    
+    .wp-block-columns .wp-block-column {
+        margin-top: 3rem;
+        }
+
+
+}
+
+
 @media (min-width: 576px)
 {
 
-.wp-block-columns {
+    .wp-block-columns {
 
-    display: flex;
-    flex-wrap: wrap;
+        display: flex;
+        flex-wrap: wrap;
 
-}
+    }
 
-.wp-block-columns .wp-block-column {
-max-width: 100%;
-flex: 0 0 50%;
-}
+    .wp-block-columns .wp-block-column {
+    max-width: 100%;
+    flex: 0 0 50%;
+    }
 
 }
 
