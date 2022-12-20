@@ -703,8 +703,8 @@ margin-right: auto;
                 <!--Header CHANGEME-->
 
                 <div class="d-flex flex-wrap container pt-9 mt-3">
-                <p class="display-4 my-3">Premium Content</p>
-                    <p class="lead lh-180 pb-3" style="font-size:1.25rem;">The best content on GIEQs Online.  Sorted by specialist area.  High definition, curated experiences that you can access immediately</p>
+                <p class="display-4 my-3">GIEQs Premium Content</p>
+                    <p class="lead lh-180 pb-3" style="font-size:1.25rem;">The best content on GIEQs Online.  Symposia, Courses and Webinars.  Sorted by specialist area.  High definition, curated experiences that you can access immediately</p>
 
                     <nav aria-label="breadcrumb" class="align-self-center">
                        <!--  <ol class="breadcrumb breadcrumb-links p-0 m-0">
@@ -745,7 +745,7 @@ margin-right: auto;
 
 <div id="right" class="col-lg-3 col-xl-3 border-right">
     <!--         	<div class="h-100 p-4"> -->
-    <div id="sticky" data-toggle="sticky" class="is_stuck pr-3 mr-3 pl-2 pt-2">
+    <div id="sticky" data-toggle="sticky" class="pr-3 mr-3 pl-2 pt-2 sticky-top">
         <div id="messageBox" class='text-left text-white pb-2 pl-2 pt-2'></div>
         <div class="d-flex flex-nowrap text-small text-muted text-right px-3 mt-1 mb-3 ">
 
