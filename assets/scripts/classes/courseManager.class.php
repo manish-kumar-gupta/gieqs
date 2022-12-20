@@ -51,10 +51,11 @@ Class courseManager {
     public function returnAllCourses($type, $debug=false){
 
         $q = "Select 
-      `id`, `name`, `description`, `cost`
+      `id`, `name`, `description`, `cost`, `linked_blog`
       FROM `assets_paid`
-      WHERE `asset_type` = '$type'
-      AND `advertise_for_purchase` IS NULL OR `advertise_for_purchase` = '1'";
+      WHERE (`asset_type` = '$type')
+      AND (`advertise_for_purchase` IS NULL OR `advertise_for_purchase` = '1')
+      ORDER BY `id` DESC";
 
       if ($debug){
       echo $q;
@@ -87,6 +88,47 @@ Class courseManager {
 
 
     }
+
+    public function returnAllCoursesThumbnails( $debug=false){
+
+      $q = "Select 
+    `linked_blog`
+    FROM `assets_paid`
+    WHERE (`advertise_for_purchase` IS NULL OR `advertise_for_purchase` = '1')
+    ORDER BY `id` DESC";
+
+    if ($debug){
+    echo $q;
+    }
+
+    $result = $this->connection->RunQuery($q);
+    $rowReturn = array();
+    $x = 0;
+    $nRows = $result->rowCount();
+    if ($nRows > 0) {
+
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+          $rowReturn[$x] = $row['linked_blog'];
+
+          //$rowReturn['results'][] = array('id' => $row['id'], 'text' => $row['video']);
+            //print_r($row);
+            $x++;
+        }
+    
+        return $rowReturn;
+
+    } else {
+        
+
+        //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+        $rowReturn = [];
+        
+        return $rowReturn;
+    }
+
+
+  }
 
 
     //add a column to assets_paid for course_category

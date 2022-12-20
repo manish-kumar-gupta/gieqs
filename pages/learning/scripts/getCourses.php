@@ -1,9 +1,13 @@
 <?php
 
+
+
+
 $openaccess = 1;
 //$requiredUserLevel = 4;
 
 require '../includes/config.inc.php';
+
 
 
 require (BASE_URI . '/assets/scripts/login_functions.php');
@@ -17,8 +21,14 @@ require (BASE_URI . '/assets/scripts/login_functions.php');
     
      
      require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
-
-
+/* 
+     define('WP_USE_THEMES', false);
+     spl_autoload_unregister ('class_loader');
+     
+     require(BASE_URI . '/assets/wp/wp-blog-header.php');
+     
+     spl_autoload_register ('class_loader'); */
+     
 //require (BASE_URI.'/scripts/headerCreatorV2.php');
 
 //(1);
@@ -79,6 +89,11 @@ require_once(BASE_URI . '/assets/scripts/classes/programmeView.class.php');
 
 $programmeView = new programmeView;
 
+require_once(BASE_URI . '/assets/scripts/classes/assets_paid.class.php');
+
+$assets_paid = new assets_paid;
+
+
 
 $data = json_decode(file_get_contents('php://input'), true);
 
@@ -96,6 +111,12 @@ $assetid = $data['assetid'];
 
 
 $gieqsDigitalv1 = $data['gieqsDigital'];
+
+$thumbnails = $data['thumbnails'][0];
+
+//then to get a particular thumbnail from wordpress is
+// $thumbnails[wp_id]
+
 
 $debug = false;
 
@@ -138,10 +159,50 @@ $requiredTagCategories = $data['requiredTagCategories'];
 $videos = [];
 $x = 0;
 
-$data2 = $courseManager->returnAllCourses('2', $debug); //congress
+
+//more data processing
+
+$data2 = $courseManager->returnAllCourses('2', false); //congress
 $data2['description'] = 'Past GIEQs Symposia.  The flagship yearly event hosted by the GIEQs Foundation';
-$data3 = $courseManager->returnAllCourses('3', $debug); //course vl
-$data3['description'] = 'Online Courses focussed on specific aspects of everyday Endoscopy';
+//ok
+
+//take courses
+
+$data3 = $courseManager->returnAllCourses('3', false); //congress
+
+$data31 = []; //colonoscopy courses
+$data32 = []; // polypectomy courses
+$data33 = []; // other courses
+
+
+foreach($data3 as $key=>$value){ 
+
+    //var_dump($value);
+                      
+    //get the asset category
+
+    $assets_paid->Load_from_key($value['id']);
+    //var_dump($assets_paid);
+    $supercategory = null;
+    $supercategory = $assets_paid->getsupercategory();
+
+    if ($supercategory == '1'){  //colonoscopy
+
+        $data31[] = $value;
+
+
+    }elseif ($supercategory == '2'){ // polypectomy
+
+        $data32[] = $value;
+
+    }else{
+
+        $data33[] = $value;
+    }
+}
+
+
+
 $data4 = $courseManager->returnAllCourses('4', $debug); //content pack
 $data4['description'] = 'Premium Content Packages, focussed on a specific aspect of Everyday Endoscopy';
 
@@ -149,8 +210,10 @@ $data4['description'] = 'Premium Content Packages, focussed on a specific aspect
 $data = [
 
 'Past GIEQs Symposia' => $data2,
-'Virtual/Live Courses' => $data3,
-'Content Packs' => $data4,
+'Pro Content Packs' => $data4,
+'Colonoscopy Virtual/Live Courses' => $data31,
+'Polypectomy Virtual/Live Courses' => $data32,
+'Other Virtual/Live Courses' => $data33,
 
 ];
 
@@ -159,7 +222,7 @@ print_r($data);
 }
 
 
-$videos = $data2;
+$videos = $data;
 
 if ($debug) {
     echo PHP_EOL . 'html build array contains:::' . PHP_EOL;
@@ -259,8 +322,8 @@ foreach ($data as $datakey=>$datavalue){
 
         </div>
         <a
-            href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $value['id'] . '&referid=' . $data['referringUrl']; ?>">
-            <img alt="video image" src="<?php echo $value['thumbnail']; ?>" class="img-fluid mt-2">
+            href="<?php echo BASE_URL . '/pages/program/program_generic.php?id=' . $value['id']; ?>">
+            <img alt="video image" src="<?php echo $thumbnails[$value['linked_blog']];?>" class="img-fluid mt-2 cursor-pointer">
         </a>
 
         <div class="card-body">

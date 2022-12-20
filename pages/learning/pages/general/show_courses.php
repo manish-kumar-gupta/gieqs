@@ -1,7 +1,15 @@
 
 
-<?php require '../../includes/config.inc.php';?>
+<?php require '../../includes/config.inc.php';
 
+define('WP_USE_THEMES', false);
+     spl_autoload_unregister ('class_loader');
+     
+     require(BASE_URI . '/assets/wp/wp-blog-header.php');
+     
+     spl_autoload_register ('class_loader');
+
+     ?>
 
 <head>
 
@@ -60,6 +68,15 @@
 
         color: rgb(238, 194, 120);
 
+
+    }
+
+    #videoCards img {
+
+        /* max-height: 20vh; */
+margin-left: auto;
+display: block;
+margin-right: auto;
 
     }
 
@@ -288,6 +305,40 @@
         $videoset = null;
 
         
+        //get all blog thumbnails
+
+        $wp_ids = $courseManager->returnAllCoursesThumbnails();
+
+        //remove nulls
+
+        foreach ($wp_ids as $key => $value) {
+            if ($value == NULL){
+
+                unset($wp_ids[$key]);
+
+            }
+        }
+
+        //create an array which has key as wp id as key and url of thumbnail as value
+
+        $wp_thumnails = [];
+
+        foreach ($wp_ids as $key => $value) {
+
+            $wp_thumnails[$value] = get_the_post_thumbnail_url($value);
+            
+
+
+        }
+
+        $wp_thumnails_j = json_encode($wp_thumnails);
+
+        //then for each number remaining get the wp id
+        
+        //echo "<br/><br/><br/>";
+        //var_dump($wp_ids);
+        //echo $wp_thumnails_j;
+        //exit();
 
         
         $gieqsDigital = false;  //?remove
@@ -683,7 +734,7 @@
                 <div class="container mt-3">
                     <div class="text-justify m-4">
 
-                        <p class="lead lh-180 pb-3"><?php echo $page_description;?></p>
+                       <!--  <p class="lead lh-180 pb-3"><?php //echo $page_description;?></p> -->
 
 
 
@@ -1151,6 +1202,7 @@ $('.section-nav').html(statement);
                         videoset: '<?php echo $videoset;?>',
                         assetid: '<?php echo $assetid;?>',
                         gieqsDigital: '<?php echo $gieqsDigital;?>',
+                        thumbnails : [<?php echo $wp_thumnails_j;?>],
 
 
                     }
