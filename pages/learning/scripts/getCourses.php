@@ -166,6 +166,11 @@ $data2 = $courseManager->returnAllCourses('2', false); //congress
 $data2['description'] = 'Past GIEQs Symposia.  The flagship yearly event hosted by the GIEQs Foundation';
 //ok
 
+//echo '<pre>';
+//var_dump($data2);
+//echo '</pre>';
+//exit();
+
 //take courses
 
 $data3 = $courseManager->returnAllCourses('3', false); //congress
@@ -268,7 +273,7 @@ foreach ($data as $datakey=>$datavalue){
                 foreach ($datavalue as $key=>$value){
 
                     
-
+if ($key == 'description'){continue;}
                     //make the html for the cards (in groups of +10)
 
                     if ($a == 1){
@@ -276,6 +281,7 @@ foreach ($data as $datakey=>$datavalue){
                         ?>
 <p class="display-4 my-3 toc-item"><?php echo $datakey;?></p>
 <p class="pl-4 mb-5"><?php echo $datavalue['description'];?></p>
+
 <div class="d-flex flex-row flex-wrap justify-content-center mt-1 pt-0 px-0 text-white video-card">
     <?php }
                     if ($a < $loadedRequiredProduct){

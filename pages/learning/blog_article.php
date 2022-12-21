@@ -144,6 +144,12 @@ color: #95aac9;
 color: #e3ebf6;
 }
 
+.blog-container figure {
+
+    text-align: center;
+
+}
+
             .gieqsGold {
 
                 color: rgb(238, 195, 120);
