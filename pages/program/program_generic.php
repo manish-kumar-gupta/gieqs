@@ -972,7 +972,7 @@ var_dump($currentTime);
         </section>
 
         <section class="blog-container">
-            <?php         include(BASE_URI . '/pages/learning/blog_article_generate_wp.php');?>
+            <?php         include(BASE_URI . '/pages/learning/blog_article_generate.php');?>
         </section>
         <section class="">
             <div class="container">
