@@ -183,7 +183,7 @@ margin-right: auto;
 
             position: absolute;
             max-width: 50vh;
-            z-index: 25;
+            z-index: 10;
         }
 
 
@@ -707,13 +707,13 @@ margin-right: auto;
                     <p class="lead lh-180 pb-3" style="font-size:1.25rem;">The best content on GIEQs Online.  Symposia, Courses and Webinars.  Sorted by specialist area.  High definition, curated experiences that you can access immediately</p>
 
                     <nav aria-label="breadcrumb" class="align-self-center">
-                       <!--  <ol class="breadcrumb breadcrumb-links p-0 m-0">
+                       <ol class="breadcrumb breadcrumb-links p-0 m-0">
                             <li class="breadcrumb-item"><a
-                                    href="<?php //echo BASE_URL . '/pages/learning/index.php'?>">GIEQs
-                                    online</a></li>
-                            <li class="breadcrumb-item">Subscribable Courses</li>
+                                    href="<?php echo BASE_URL . '/pages/learning/index.php'?>">GIEQs
+                                    Online</a></li>
+                            <li class="breadcrumb-item">Premium Content</li>
                             <li class="breadcrumb-item gieqsGold" aria-current="page"><?php echo $page_title;?></li>
-                        </ol> -->
+                        </ol>
                     </nav>
 
                 </div>

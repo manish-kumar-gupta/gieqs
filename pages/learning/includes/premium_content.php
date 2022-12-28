@@ -76,6 +76,7 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
 
             <div class="col-md-6 col-xl-3 sub-menu mb-xl-0 mb-4">
+
                 <h6 class="sub-title text-uppercase font-weight-bold white-text">Upcoming Symposia & Courses <br /><small>(Register)</small>
                 </h6>
                 <?php //var_dump($coursesAdvertised);?>
@@ -157,8 +158,12 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
                         ?>
   
   
-                      <?php } 
+                      <?php } ?>
 
+<a href="<?php echo BASE_URL;?>/pages/learning/pages/general/show_courses.php" class="btn btn-sm text-dark bg-gieqsGold my-3">Browse All Pro Content</a>
+
+
+<?php 
                     foreach($coursesAdvertised as $key=>$value){ 
                       
                       

@@ -121,7 +121,7 @@ $thumbnails = $data['thumbnails'][0];
 $debug = false;
 
 
-$loadedRequiredProduct = 10 * $loadedRequired;
+$loadedRequiredProduct = 20 * $loadedRequired;
 
 if ($debug) {
     
@@ -163,7 +163,7 @@ $x = 0;
 //more data processing
 
 $data2 = $courseManager->returnAllCourses('2', false); //congress
-$data2['description'] = 'Past GIEQs Symposia.  The flagship yearly event hosted by the GIEQs Foundation';
+//$data2['description'] = 'Past GIEQs Symposia.  The flagship yearly event hosted by the GIEQs Foundation';
 //ok
 
 //echo '<pre>';
@@ -209,21 +209,62 @@ foreach($data3 as $key=>$value){
 
 
 $data4 = $courseManager->returnAllCourses('4', $debug); //content pack
-$data4['description'] = 'Premium Content Packages, focussed on a specific aspect of Everyday Endoscopy';
+//$data4['description'] = 'Premium Content Packages, focussed on a specific aspect of Everyday Endoscopy';
 
 
 $data = [
 
-'Past GIEQs Symposia' => $data2,
-'Pro Content Packs' => $data4,
-'Colonoscopy Virtual/Live Courses' => $data31,
-'Polypectomy Virtual/Live Courses' => $data32,
-'Other Virtual/Live Courses' => $data33,
+0 => $data2,
+1 => $data4,
+2 => $data31,
+3 => $data32,
+4 => $data33,
+
+];
+
+$namesArray = [
+
+    0 => [
+
+        'name' => 'GIEQs Symposia',
+        'description' => 'Past GIEQs Symposia.  The flagship yearly event hosted by the GIEQs Foundation',
+
+    ],
+
+    1 => [
+
+        'name' => 'Pro Content Packs',
+        'description' => 'Premium Content Packages, focussed on a specific aspect of Everyday Endoscopy',
+
+    ],
+
+    2 => [
+
+        'name' => 'Colonoscopy Virtual/Live Courses',
+        'description' => 'Deconstructed Colonoscopy.  Instruction and Training.  All the information you need to optimise your technique and start training others',
+
+    ],
+
+    3 => [
+
+        'name' => 'Polypectomy Virtual/Live Courses',
+        'description' => 'Deconstructed Polypectomy Training.  All the information you need to avoid incomplete resection and adverse events.',
+
+    ],
+
+    4 => [
+
+        'name' => 'Other Virtual/Live Courses',
+        'description' => 'Premium Content Packages, focussed on a specific aspect of Everyday Endoscopy',
+
+    ],
 
 ];
 
 if ($debug){
+echo '<pre>';
 print_r($data);
+echo '</pre>';
 }
 
 
@@ -244,9 +285,12 @@ if ($debug) {
 
 <?php
 
+$x=0;
+
 foreach ($data as $datakey=>$datavalue){
 
                 //new script
+
 
                 //using data2
 
@@ -272,18 +316,30 @@ foreach ($data as $datakey=>$datavalue){
 
                 foreach ($datavalue as $key=>$value){
 
+               /*      echo '<br/><br/>';
+                    echo 'a is ' . $a;
+                    echo 'b is ' . $b;
+                    echo '<br/><br/>key is ';
+                    print_r($key);
+                    echo '<br/><br/>value is '; */
+
+                    //print_r($value);
+
+                    //if ($key == 'description'){continue;}
+
                     
-if ($key == 'description'){continue;}
                     //make the html for the cards (in groups of +10)
 
                     if ($a == 1){
 
                         ?>
-<p class="display-4 my-3 toc-item"><?php echo $datakey;?></p>
-<p class="pl-4 mb-5"><?php echo $datavalue['description'];?></p>
+<p class="display-4 my-3 toc-item"><?php echo $namesArray[$x]['name']?></p>
+<p class="pl-4 mb-5"><?php echo $namesArray[$x]['description'];?></p>
 
 <div class="d-flex flex-row flex-wrap justify-content-center mt-1 pt-0 px-0 text-white video-card">
     <?php }
+
+
                     if ($a < $loadedRequiredProduct){
 
                     
@@ -294,7 +350,9 @@ if ($key == 'description'){continue;}
         <div class="card-header" style="height:175px;">
             <div class="row align-items-right my-0">
                 <div class="col-12 my-0 pr-0">
-                    <div class="actions text-right">
+                    <div class="actions d-flex mb-3">
+                    <span class="badge bg-gieqsGold text-dark mr-auto" style="line-height:1rem;">In My Library</span>
+
                         <a class="action-item action-favorite" data-toggle="tooltip"
                             data-original-title="Mark as favorite" data="<?php echo $value['id'];?>">
                             <i
@@ -351,8 +409,7 @@ if ($key == 'description'){continue;}
                         class="btn btn-sm text-dark gieqsGoldBackground">Discover</a>
                 </div>
                 <div class="col-6 text-right">
-                    <!-- <span class="text-muted created text-sm"
-                        data-created="<?php //echo $value['created'];?>"><?php //echo time_elapsed_string($value['created']);?></span> -->
+                    <span class="text-muted created text-sm">Cost: &euro;<?php echo $value['cost'];?><br/>GIEQs Pro : Free</span>
                 </div>
                 <?php }else if ($videoIsGIEQsDigital) {?>
                 <div class="col-4">
@@ -435,6 +492,8 @@ if ($key == 'description'){continue;}
 
 
 echo '</div>';
+
+$x++;
 
             }
 
