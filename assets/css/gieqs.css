@@ -303,4 +303,17 @@ margin: auto;
       .opacity-5 {
         opacity:1!important;
       }
+
+
+      .gieqs-light-blue {
+
+        background-color: #5C8CDB; 
+
+      }
+
+      .bg-transparent {
+
+        background-color: (0 0 0 / 0%) !important
+
+      }
    

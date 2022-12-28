@@ -234,7 +234,7 @@ $namesArray = [
     1 => [
 
         'name' => 'Pro Content Packs',
-        'description' => 'Premium Content Packages, focussed on a specific aspect of Everyday Endoscopy',
+        'description' => 'Premium Content Packages, focussed on a specific aspect of Everyday or Complex Endoscopy',
 
     ],
 
@@ -291,6 +291,10 @@ foreach ($data as $datakey=>$datavalue){
 
                 //new script
 
+             
+
+
+
 
                 //using data2
 
@@ -315,6 +319,59 @@ foreach ($data as $datakey=>$datavalue){
                 
 
                 foreach ($datavalue as $key=>$value){
+
+                    $owned = false;
+                    $colour_card = null;
+                    $button_text = null;
+                    $colour_button = null;
+                    $link = null;
+                    $text = null;
+                    
+                    if ($assetManager->doesUserHaveSameAssetAlready($value['id'], $userid, false) == true){
+    
+                        $owned = true;
+                        $colour_card = 'bg-transparent';
+                        $button_text = 'Watch Now';
+                        $colour_button = 'gieqs-light-blue';
+                        $link = BASE_URL . '/pages/learning/pages/general/show_subscription.php?assetid=' . $value['id'];
+                        $text = 'text-muted';
+                        $text_heading = 'text-white';
+    
+                    }else{
+    
+                        $owned = false;
+                        $colour_card = 'null';
+                        $button_text = 'Discover';
+                        $colour_button = 'bg-gieqsGold';
+                        $link = BASE_URL . '/pages/program/program_generic.php?id=' . $value['id'];
+                        $text = 'gieqsGold';
+                        if (isset($userid)){
+                            $text_heading = 'gieqsGold';
+
+
+                        }else{
+                            $text_heading = 'text-white';
+
+
+                        }
+
+
+    
+    
+                    }
+
+                    //is there a thumbnail?
+
+                    $thumbnail = null;
+                    $thumbnail = $thumbnails[$value['linked_blog']];
+
+                    if ($thumbnail == ''){
+
+                        $thumbnail = BASE_URL . '/assets/img/backgrounds/course_no_image.png';
+
+                    }
+
+                    //course_no_image
 
                /*      echo '<br/><br/>';
                     echo 'a is ' . $a;
@@ -346,12 +403,26 @@ foreach ($data as $datakey=>$datavalue){
                     
 ?>
 
-    <div class="card mr-md-4 individualVideo flex-even">
+    <div class="card mr-md-4 individualVideo <?php echo $colour_card;?> flex-even">
         <div class="card-header" style="height:175px;">
             <div class="row align-items-right my-0">
                 <div class="col-12 my-0 pr-0">
                     <div class="actions d-flex mb-3">
-                    <span class="badge bg-gieqsGold text-dark mr-auto" style="line-height:1rem;">In My Library</span>
+
+                    <?php
+
+if ($owned == true){
+
+
+?>
+
+                    <span class="badge <?php echo $colour_button;?> text-dark mr-auto" style="line-height:1rem;">In My Library</span>
+
+                    <?php
+
+}
+
+?>
 
                         <a class="action-item action-favorite" data-toggle="tooltip"
                             data-original-title="Mark as favorite" data="<?php echo $value['id'];?>">
@@ -370,7 +441,7 @@ foreach ($data as $datakey=>$datavalue){
             </div>
             <div class="row align-items-center text-break">
                 <div class="col-12 text-break">
-                    <h5 class="card-title title mb-0 w-100"><?php echo $value['name']; ?></h5>
+                    <h5 class="card-title title <?php echo $text_heading;?> mb-0 w-100"><?php echo $value['name']; ?></h5>
                     <!-- <p class="text-muted text-sm mt-1 mb-0 align-self-baseline">Author : <a class="author text-muted"
                             data-author="<?php echo $value['author'];?>" target="_blank"
                             href="<?php echo BASE_URL;?>/pages/learning/pages/account/public-profile.php?id=<?php //echo $value['author'];?>"><?php //echo $user->getUserName($value['author']); ?></a>
@@ -386,8 +457,8 @@ foreach ($data as $datakey=>$datavalue){
 
         </div>
         <a
-            href="<?php echo BASE_URL . '/pages/program/program_generic.php?id=' . $value['id']; ?>">
-            <img alt="video image" src="<?php echo $thumbnails[$value['linked_blog']];?>" class="img-fluid mt-2 cursor-pointer">
+            href="<?php echo $link; ?>">
+            <img alt="video image" src="<?php echo $thumbnail;?>" class="img-fluid mt-2 cursor-pointer">
         </a>
 
         <div class="card-body">
@@ -395,41 +466,20 @@ foreach ($data as $datakey=>$datavalue){
         </div>
         <div class="card-footer">
             <div class="row align-items-center">
-
-                <?php 
-                        
-                        $videoIsGIEQsDigital = false;
-                        $videoIsGIEQsDigital = ($navigator->videoIsGIEQsDigitalv1($value['id']) ? true : false);
+            
+                     
 
                         
                         
-                        if (!$videoIsGIEQsDigital){?>
+                        
                 <div class="col-6">
-                    <a href="<?php echo BASE_URL . '/pages/program/program_generic.php?id=' . $value['id']; ?>"
-                        class="btn btn-sm text-dark gieqsGoldBackground">Discover</a>
+                    <a href="<?php echo $link; ?>"
+                        class="btn btn-sm text-dark <?php echo $colour_button;?>"><?php echo $button_text;?></a>
                 </div>
                 <div class="col-6 text-right">
-                    <span class="text-muted created text-sm">Cost: &euro;<?php echo $value['cost'];?><br/>GIEQs Pro : Free</span>
+                    <span class="<?php echo $text; ?> created text-sm">Cost: &euro;<?php echo $value['cost'];?><br/>GIEQs Pro : Free</span>
                 </div>
-                <?php }else if ($videoIsGIEQsDigital) {?>
-                <div class="col-4">
-                    <a href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $value['id'] . '&referid=' . $data['referringUrl']; ?>"
-                        class="btn btn-sm text-dark gieqsGoldBackground">View</a>
-                </div>
-                <div class="col-3">
-                    <img class="img-responsive" width="140%"
-                        src="<?php echo BASE_URL . '/assets/img/brand/gieqs_digital.png';?>">
-                </div>
-                <div class="col-5 text-right">
-                    <span class="text-muted created text-sm"
-                        data-created="<?php echo $value['created'];?>"><?php echo time_elapsed_string($value['created']);?></span>
-                </div>
-
-
-                <?php }else {?>
-
-
-                <?php }?>
+             
 
             </div>
         </div>
@@ -470,25 +520,17 @@ foreach ($data as $datakey=>$datavalue){
 
                 }
 
-                if ($b == 1){
+                if (!($b % 2 == 0)){
 
                     ?>
     <div class="d-flex flex-row flex-wrap card-placeholder justify-content-center mt-1 pt-0 px-0 text-white">
     </div>
-    <div class="d-flex flex-row flex-wrap card-placeholder justify-content-center mt-1 pt-0 px-0 text-white">
-    </div>
+    
     <?php
 
                 }
 
-                if ($b == 2){
-
-                    ?>
-    <div class="d-flex flex-row flex-wrap card-placeholder justify-content-center mt-1 pt-0 px-0 text-white">
-    </div>
-    <?php
-
-                }
+               
 
 
 echo '</div>';
