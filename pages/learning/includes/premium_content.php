@@ -84,6 +84,9 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
                     <?php 
                     
+                    $symposiaAdvertised = array_slice($symposiaAdvertised, 0, 5, true);
+
+
                     foreach($symposiaAdvertised as $key=>$value){ 
                       
                       
@@ -164,6 +167,9 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
 
 
 <?php 
+
+$coursesAdvertised = array_slice($coursesAdvertised, 0, 10, true);
+
                     foreach($coursesAdvertised as $key=>$value){ 
                       
                       
