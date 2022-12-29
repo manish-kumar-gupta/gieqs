@@ -100,6 +100,33 @@
 
 
 
+
+body {
+
+    background-color : #0b1625 !important
+
+
+}
+
+#loading {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0.9;
+  background-color: #162A4C;
+  z-index: 99;
+}
+
+#loading-image {
+  z-index: 100;
+}
+
+
     .text-container {
 
 font-family: 'nunito', sans-serif;
@@ -248,6 +275,12 @@ top: 0px;
 
 
     }
+
+    ol {
+
+        padding-inline-start : 20px;
+
+    }
     </style>
 
 
@@ -341,7 +374,7 @@ top: 0px;
 
 
 
-    <div class="main-content container bg-dark mt-10">
+    <div class="main-content container bg-dark-dark mt-10">
 
         <!--Header CHANGEME-->
 
@@ -349,10 +382,10 @@ top: 0px;
 
         <nav aria-label="breadcrumb" class="mb-3">
                     <ol class="breadcrumb breadcrumb-links p-0 m-0">
-                        <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/index.php'?>">GIEQs
+                        <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/index.php'?>" target="_blank">GIEQs
                                 Online</a></li>
                         <li class="breadcrumb-item"><a
-                                href=""">Curriculae</a></li>
+                                href="#"">GIEQs Curriculum Viewer</a></li>
                         <li class="breadcrumb-item active" aria-current="page"><?php echo $curriculae->getlong_name();?></li>
                     </ol>
                     <div class="alert alert-dark d-none sticky-top" role="alert" style="position:absolute !important;">
@@ -399,6 +432,16 @@ top: 0px;
 
             $(document).ready(function() {
 
+                $.fn.isInViewport = function() {
+    var elementTop = $(this).offset().top;
+    var elementBottom = elementTop + $(this).outerHeight();
+
+    var viewportTop = $(window).scrollTop();
+    var viewportBottom = viewportTop + $(window).height();
+
+    return elementBottom > viewportTop && elementTop < viewportBottom;
+};
+
 
 
                 $(window).scroll(function() {
@@ -407,7 +450,7 @@ top: 0px;
 
                     // Assign active class to nav links while scolling
                     $('h2').each(function(i) {
-                        if ($(this).position().top <= scrollDistance) {
+                        if ($(this).position().top <= scrollDistance + 2000) {
                             $('.section-nav a.text-gieqsGold').removeClass('text-gieqsGold').addClass(
                                 'text-muted');
                             $('.section-nav a').eq(i).addClass('text-gieqsGold').removeClass(
@@ -427,7 +470,20 @@ top: 0px;
 
             <body>
 
+            <div id="loading">
+                <div class="row">
+            <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+  <span class="sr-only gieqsGold">Loading...</span>
+</div>
+<div class="display-4 gieqsGold">GIEQs Living Curriculum Viewer Loading...</div>
+        </div>
+        <div class="row">
 
+<div class="display-5 text-muted">POEM Curriculum</div>
+        </div>
+
+
+</div>
 
                 <div class='content mt-5'>
                     <div class="row">
@@ -505,6 +561,10 @@ $x=1;
 
 $section_heading = true;
 
+$section_counter = 1;
+
+$minor_section_counter = 1;
+
 
 foreach ($sections as $section_key=>$section_value){
 
@@ -527,12 +587,19 @@ foreach ($sections as $section_key=>$section_value){
 
         echo '<div class="curriculum-section">'; //section heading do this
 
-        echo '<h1 class="mt-3 toc-marker super-section" tocid="' . $curriculum_sections->getid() . '" data="' . $curriculum_sections->getname() . '">' . $curriculum_sections->getlong_name() . '</h1>';  //section
+        echo '<h1 class="mt-3 toc-marker super-section" tocid="' . $curriculum_sections->getid() . '" data="' . $section_counter . '. ' . $curriculum_sections->getname() . '">' . $section_counter . '. ' . $curriculum_sections->getlong_name() . '</h1>';  //section
+
+        $section_counter++;
+
+
+        $minor_section_counter = 1;
 
 
     }else{
 
         $section_heading = false;
+
+        $minor_section_counter++;
 
            /*  echo '<div class="curriculum-section">'; //section heading do this
             $section_heading = true;
@@ -540,7 +607,7 @@ foreach ($sections as $section_key=>$section_value){
 
         
 
-        echo '<h2 class="ml-3 toc-marker minor-section" tocid="' . $curriculum_sections->getid() . '" data="' . $curriculum_sections->getname() . '">' . $curriculum_sections->getlong_name() . '</h2>';  //section
+        echo '<h2 class="ml-3 toc-marker minor-section" tocid="' . $curriculum_sections->getid() . '" data="' . ($section_counter - 1) . '.' . ($minor_section_counter - 1) . ' ' .  $curriculum_sections->getname() . '">' . ($section_counter - 1) . '.' . ($minor_section_counter - 1) . '. ' . $curriculum_sections->getlong_name() . '</h2>';  //section
 
 
     }
@@ -806,6 +873,8 @@ foreach ($sections as $section_key=>$section_value){
         echo '</div>';
 
 
+
+
         //get tags item
 
 
@@ -996,11 +1065,11 @@ var Utils = new Utils();
             console.log(id);
             text = $(this).attr('data');
             statement +=
-                '<li tocid="' + id + '" class="toc-entry toc-h4 mt-4" style="font-size:1.3rem; list-style-type:none;"><a class="text-muted" href="#' + id +
-                '">' + text + '</a></li>';
+                '<div class="toc-section"><li tocid="' + id + '" class="toc-entry toc-h4 mt-4" style="font-size:1.3rem; list-style-type:none;"><a class="text-muted" href="#' + id +
+                '">' + text + '</a><i class="fa fa-plus-circle fold-up-major-section ml-2" style="z-index: 1000;" aria-hidden="true"></i></li>';
             
             
-            statement += '<ol>';  
+            statement += '<ol class="minor-list d-none" style=\'list-style: none;\'>';  
             //console.log($(this).parent().find('.minor-section'));  
             $(this).parent().find('.minor-section').each(function(){
                 x++;
@@ -1014,14 +1083,15 @@ var Utils = new Utils();
 
                   text = $(this).attr('data');
                  statement +=
-                '<li tocid="' + id + '" class="toc-entry toc-h4" style="font-size:1.0rem; list-style-type:square; text-align:left;"><a class="text-muted" href="#' + id +
+                '<li tocid="' + id + '" class="toc-entry toc-h4" style="font-size:1.0rem; list-style-type:none; text-align:left;"><a class="text-muted" href="#' + id +
                 '">' + text + '</a></li>';
 
 
 
 
-            })
-            statement += '</ol>';    
+            });
+
+            statement += '</ol></div>';    
 
             
             
@@ -1086,12 +1156,19 @@ var Utils = new Utils();
 
     $(document).ready(function() {
 
+        $(window).on('load', function () {
+
+            
+    //$('#loading').hide();
+  })
+
 
         generateTOC();
         //refreshNavAndTags();
 
         waitForFinalEvent(function() {
             generateTOC();
+           
 
 
         }, 1000, "Resize header");
@@ -1279,6 +1356,61 @@ $(this).addClass('text-gieqsGold').removeClass('text-muted');
 
 
         })
+
+    
+
+        $(document).on('click', '.fold-up-major-section',  function(event){
+
+            //console.dir($(this).parent().parent().find('ol'));
+
+        
+
+            var check_element = $(this).parent().parent().find('ol');
+
+            console.dir(check_element);
+
+            //d-none
+
+            if ($(check_element).is(":visible") === true){
+
+                $(check_element).addClass('d-none');
+
+                //change to a plus
+
+                $(this).addClass('fa-plus-circle').removeClass('fa-minus-circle');
+
+
+
+            }else{
+
+
+                $(check_element).removeClass('d-none');
+
+                $(this).removeClass('fa-plus-circle').addClass('fa-minus-circle');
+
+
+                //change to a minus
+
+
+
+
+            }
+
+
+            
+            
+            
+        })
+
+
+
+
+       /*  $(document).find('.minor-list').each( function(){
+
+$(this).hide();
+
+
+}); */
 
 
         $(document).on('click', '.toc-entry', function(event){
