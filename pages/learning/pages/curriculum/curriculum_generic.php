@@ -281,6 +281,10 @@ top: 0px;
         padding-inline-start : 20px;
 
     }
+    .break {
+  flex-basis: 100%;
+  height: 0;
+}
     </style>
 
 
@@ -385,7 +389,7 @@ top: 0px;
                         <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/index.php'?>" target="_blank">GIEQs
                                 Online</a></li>
                         <li class="breadcrumb-item"><a
-                                href="#"">GIEQs Curriculum Viewer</a></li>
+                                href="#"">GIEQs Living Curriculum Viewer</a></li>
                         <li class="breadcrumb-item active" aria-current="page"><?php echo $curriculae->getlong_name();?></li>
                     </ol>
                     <div class="alert alert-dark d-none sticky-top" role="alert" style="position:absolute !important;">
@@ -471,16 +475,13 @@ top: 0px;
             <body>
 
             <div id="loading">
-                <div class="row">
+            
             <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
   <span class="sr-only gieqsGold">Loading...</span>
 </div>
 <div class="display-4 gieqsGold">GIEQs Living Curriculum Viewer Loading...</div>
-        </div>
-        <div class="row">
 
-<div class="display-5 text-muted">POEM Curriculum</div>
-        </div>
+        
 
 
 </div>
@@ -496,6 +497,10 @@ top: 0px;
                                 
 
                                 <h6 class="mt-0 mb-3 pl-0 h5 text-left">Jump to Section</h6>
+
+                                <a class="collapse-all hover-gold cursor-pointer">Collapse All</a>
+                                <div class="break"></div>
+                                <a class="return-top hover-goldcursor-pointer">Return to Top</a>
 
                                 <ul class="section-nav ml-0 pl-0">
 
@@ -1066,7 +1071,7 @@ var Utils = new Utils();
             text = $(this).attr('data');
             statement +=
                 '<div class="toc-section"><li tocid="' + id + '" class="toc-entry toc-h4 mt-4" style="font-size:1.3rem; list-style-type:none;"><a class="text-muted" href="#' + id +
-                '">' + text + '</a><i class="fa fa-plus-circle fold-up-major-section ml-2" style="z-index: 1000;" aria-hidden="true"></i></li>';
+                '">' + text + '</a><i class="fa fa-plus-circle cursor-pointer hover-gold fold-up-major-section ml-2" style="z-index: 1000;" aria-hidden="true"></i></li>';
             
             
             statement += '<ol class="minor-list d-none" style=\'list-style: none;\'>';  
@@ -1431,6 +1436,48 @@ $(this).hide();
 
             })
 
+            $(document).on('click', '.return-top', function(event){
+
+                window.scrollTo(0, 0);
+
+
+
+            })
+
+            $(document).on('click', '.collapse-all', function(event){
+
+            
+                $('.section-nav').find('ol').each(function(){
+
+                    if ($(this).is(":visible") === true){
+
+                    $(this).addClass('d-none');
+
+                    //change to a plus
+
+                    console.dir($(this).siblings('li').find('.fold-up-major-section'));
+
+                    $(this).siblings('li').find('.fold-up-major-section').addClass('fa-plus-circle').removeClass('fa-minus-circle');
+
+
+
+                    }else{
+
+
+                   
+
+
+                    //change to a minus
+
+
+
+
+                    }
+                })
+
+
+
+            })
 
        
 
