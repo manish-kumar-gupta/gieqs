@@ -30,7 +30,7 @@ color: #95aac9;
 
     font-size: 0.9rem;
     text-align: center;
-    margin-top: 0.5rem;
+    margin-top: 1.0rem;
 }
 
 .blog-container p, .blog-container h2, .blog-container h3, .blog-container h4, .blog-container h5, .blog-container h6, .blog-container blockquote, .blog-container figure {
@@ -42,8 +42,8 @@ color: #95aac9;
 
 .blog-container hr {
 
-    margin-top: 4rem !important;
-    margin-bottom: 4rem !important;
+    margin-top: 3rem !important;
+    margin-bottom: 3rem !important;
 
 }
 
