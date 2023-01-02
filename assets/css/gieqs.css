@@ -173,6 +173,12 @@ margin: auto;
 
 }
 
+.hover-text-gold:hover {
+
+    color: rgb(238, 194, 120) !important;
+
+}
+
 .btn-outline-gieqsGold {
 
     color: rgb(238, 194, 120);

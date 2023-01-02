@@ -498,9 +498,9 @@ top: 0px;
 
                                 <h6 class="mt-0 mb-3 pl-0 h5 text-left">Jump to Section</h6>
 
-                                <a class="collapse-all hover-gold cursor-pointer">Collapse All</a>
+                                <a class="collapse-all hover-text-gold cursor-pointer">Collapse All</a>
                                 <div class="break"></div>
-                                <a class="return-top hover-goldcursor-pointer">Return to Top</a>
+                                <a class="return-top hover-text-gold cursor-pointer">Return to Top</a>
 
                                 <ul class="section-nav ml-0 pl-0">
 
@@ -635,12 +635,12 @@ foreach ($sections as $section_key=>$section_value){
         $curriculum_items->Load_from_key($items_value);
 
         echo '<div class="card bg-dark">';
-        echo '<div class="actions" style="position:absolute; right:20px; top:20px; font-size:1rem;">';
-        echo '<i  class="cursor-pointer fas fa-tag mx-3 tag-icon" data-toggle="collapse"
-        href="#multiCollapseExample' . $y. '"></i>' . $curriculum_manager->counttagscurriculumitem($curriculum_items->getid()) . '<i class="fas fa-graduation-cap mx-3 cursor-pointer reference-icon" data-toggle="collapse"
-        href="#multiCollapseExample' . $z. '"></i>' . $curriculum_manager->countReferences($curriculum_items->getid());
+        echo '<div class="actions d-flex" style="position:absolute; right:20px; top:20px; font-size:1rem;">';
+        echo '<div class="cursor-pointer tag-icon hover-text-gold" data-toggle="collapse"
+        href="#multiCollapseExample' . $y. '"><i  class="fas fa-tag mx-2"></i>' . $curriculum_manager->counttagscurriculumitem($curriculum_items->getid()) . ' Tags</div><div class="reference-icon hover-text-gold cursor-pointer" data-toggle="collapse"
+        href="#multiCollapseExample' . $z. '""><i class="fas fa-graduation-cap mx-2"></i>' . $curriculum_manager->countReferences($curriculum_items->getid()) . ' References</div>';
         echo '</div>';
-        echo '<div class="card-body mb-0 pb-0 mt-5">';
+        echo '<div class="card-body mt-1 mb-0 pb-0 mt-5">';
 
 
 
@@ -787,7 +787,7 @@ foreach ($sections as $section_key=>$section_value){
 
                 foreach ($tags_this_category as $key3=>$value3){
 
-                    $tagBox .= '<span class="badge bg-dark mx-2 mb-1 tagButton tagTagsboxButton" data-tag-id="' . $value3 . '" id="tag' . $value3 . '">' . $general->getTagName($value3) . '</span>'; 
+                    $tagBox .= '<span class="badge bg-dark-dark hover-text-gold mx-2 mb-1 tagButton tagTagsboxButton" data-tag-id="' . $value3 . '" id="tag' . $value3 . '">' . $general->getTagName($value3) . '</span>'; 
 
                     
 
@@ -1070,8 +1070,8 @@ var Utils = new Utils();
             console.log(id);
             text = $(this).attr('data');
             statement +=
-                '<div class="toc-section"><li tocid="' + id + '" class="toc-entry toc-h4 mt-4" style="font-size:1.3rem; list-style-type:none;"><a class="text-muted" href="#' + id +
-                '">' + text + '</a><i class="fa fa-plus-circle cursor-pointer hover-gold fold-up-major-section ml-2" style="z-index: 1000;" aria-hidden="true"></i></li>';
+                '<div class="toc-section"><li tocid="' + id + '" class="toc-entry toc-h4 mt-4" style="font-size:1.3rem; list-style-type:none;"><a class="text-muted hover-text-gold" href="#' + id +
+                '">' + text + '</a><i class="fa fa-plus-circle cursor-pointer hover-text-gold fold-up-major-section ml-2" style="z-index: 1000;" aria-hidden="true"></i></li>';
             
             
             statement += '<ol class="minor-list d-none" style=\'list-style: none;\'>';  
@@ -1088,7 +1088,7 @@ var Utils = new Utils();
 
                   text = $(this).attr('data');
                  statement +=
-                '<li tocid="' + id + '" class="toc-entry toc-h4" style="font-size:1.0rem; list-style-type:none; text-align:left;"><a class="text-muted" href="#' + id +
+                '<li tocid="' + id + '" class="toc-entry toc-h4" style="font-size:1.0rem; list-style-type:none; text-align:left;"><a class="text-muted  hover-text-gold" href="#' + id +
                 '">' + text + '</a></li>';
 
 
