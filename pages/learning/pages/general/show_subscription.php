@@ -145,6 +145,42 @@
         /* determine access */
 
 
+
+        $debug = false;
+      
+        if ($debug){
+
+            ?>
+        
+            <div class="p-4" style='font-size: 0.75rem; position: fixed; top: 0; left: 0; z-index:999; color: black; background-color: white;'>
+            <span id="debug" class='d-none'>true</span>
+            <p>Debug info: (what JS currently knows)</p>
+            <p>Cookie [selectedTag] <span id='debugCookieselectedTag'></span></p>
+            <p>localStorage [selectedTag] <span id='debugLocalselectedTag'></span></p>
+        <br/>
+            <p>Cookie [restricted] <span id='debugCookierestricted'></span></p>
+            <p>localStorage [restricted] <span id='debugLocalrestricted'></span></p>
+        <br/>
+            <p>Cookie [browsing] <span id='debugCookiebrowsing'></span></p>
+            <p>Cookie [browsing_last] <span id='debugCookiebrowsing_last'></span></p>
+            <p>Cookie [browsing_array] <span id='debugCookiebrowsing_array'></span></p>
+            <p>Cookie [browsing_id] <span id='debugCookiebrowsing_id'></span></p>
+        
+        
+            
+            </div>
+            
+        
+        <?php
+        
+        
+        }
+        
+        $debug=false;
+    
+
+
+
               /* load the asset */
 
               if (isset($assetid)){
@@ -1106,7 +1142,7 @@ filter: alpha(opacity=30);
     
     //if an asset
 
-    //$debug = true;
+    $debug = false;
 
 
     
@@ -1690,7 +1726,24 @@ filter: alpha(opacity=30);
     var requiredVideosText = $("#requiredVideos").text();
 
     var requiredVideos = JSON.parse(requiredVideosText);
+    if ($('#debug').text() == 'true'){
+var t=setInterval(writeDebugInfo,1000);
+}
 
+    function writeDebugInfo () {
+
+//what js currently knows
+
+$('#debugCookieselectedTag').text(getCookie('selectedTag'));
+$('#debugLocalselectedTag').text(localStorage.selectedTag);
+$('#debugCookierestricted').text(getCookie('restricted'));
+$('#debugLocalrestricted').text(localStorage.restricted);
+$('#debugCookiebrowsing').text(getCookie('browsing'));
+$('#debugCookiebrowsing_last').text(getCookie('browsing_last'));
+$('#debugCookiebrowsing_array').text(getCookie('browsing_array'));
+$('#debugCookiebrowsing_id').text(getCookie('browsing_id'));
+
+}
 
     function close_omnisearch() {
 

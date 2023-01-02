@@ -1342,16 +1342,142 @@ $(this).addClass('text-gieqsGold').removeClass('text-muted');
 
             var idElement = $(this).attr('data-tag-id');
 
-            alert(idElement);
-            
-            setcookie("selectedTag", idElement, time() - 3600);
+            //alert(idElement);
 
-            setcookie("restricted", false, time() - 3600);
 
+            //get the first video with this tag, code from viewer.php line 2698 showTagBar(selectedTag)
+
+
+
+
+
+//use ajax to send
+
+if ($('#browsing_id').attr('data-browsing-id') != '') {
+
+    var browsing_id = $('#browsing_id').attr('data-browsing-id');
+
+} else {
+
+    var browsing_id = '';
+
+
+}
+
+if ($('#browsing').attr('data-browsing') != '') {
+
+    var browsing = $('#browsing').attr('data-browsing');
+
+} else {
+
+    var browsing = '';
+
+
+}
+
+if ($('#browsing_array').text() != '') {
+
+    var browsing_array = $('#browsing_array').text();
+
+} else {
+
+    var browsing_array = '';
+
+
+}
+
+
+var dataToSend = {
+
+    videoid: videoPassed,
+    browsing_id: browsing_id,
+    browsing: browsing,
+    tag: idElement,
+    browsing_array: browsing_array,
+
+
+}
+
+const jsonString = JSON.stringify(dataToSend);
+//console.log(jsonString);
+//console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
+
+var request2 = $.ajax({
+    beforeSend: function() {
+
+
+    },
+    url: siteRoot + "scripts/tagnavigation/get_tag_navigation_info_curriculum.php",
+    type: "POST",
+    contentType: "application/json",
+    data: jsonString,
+});
+
+
+
+request2.done(function(data) {
+    // alert( "success" );
+    if (data) {
+        //show green tick
+
+        var result = JSON.parse(data);
+
+        console.dir(result);
+
+        if (result.videos == '0'){
+
+            alert('No videos for this Tag Yet.  Submit a request?:-)');
+
+        }
+
+        if (result.videos == '1'){
 
             window.localStorage.setItem('selectedTag', idElement);
 
             window.localStorage.setItem('restricted', false);
+
+            window.open(rootFolder + '/viewer.php?id=' + result.first_video, '_blank').focus();
+
+
+        }
+
+
+
+
+
+
+
+
+    }
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            //end code port
+       
+
+
+           
+
+/* 
+            setcookie("selectedTag", idElement, time() - 3600);
+
+setcookie("restricted", false, time() - 3600); */
 
 
 //redirect to viewer page
