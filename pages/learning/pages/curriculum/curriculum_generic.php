@@ -1,5 +1,3 @@
-
-
 <?php require '../../includes/config.inc.php';?>
 
 
@@ -7,6 +5,51 @@
 <head>
 
     <?php
+
+define('WP_USE_THEMES', false);
+spl_autoload_unregister ('class_loader');
+
+
+
+require(BASE_URI . '/assets/wp/wp-blog-header.php');
+
+spl_autoload_register ('class_loader');
+//get_header(); 
+/* 
+function my_load_ajax_content () {
+
+    //echo 'hello';
+    $pid        = intval($_POST['post_id']);
+    $the_query  = new WP_Query(array('p' => $pid));
+
+    if ($the_query->have_posts()) {
+        while ( $the_query->have_posts() ) {
+            $the_query->the_post();
+
+            $data = '
+            <div class="post-container">
+                <div id="project-content">
+                    <h1 class="entry-title">'.get_the_title().'</h1>
+                    <div class="entry-content">'.get_the_content().'</div>
+                </div>
+            </div>  
+            ';
+
+        }
+    } 
+    else {
+        echo '<div id="postdata">'.__('Didnt find anything', THEME_NAME).'</div>';
+    }
+    wp_reset_postdata();
+
+
+    echo '<div id="postdata">'.$data.'</div>';
+    exit();
+}
+
+add_action ( 'wp_ajax_nopriv_load-content', 'my_load_ajax_content' );
+add_action ( 'wp_ajax_load-content', 'my_load_ajax_content' );
+ */
 
 //error_reporting(E_ALL);
 
@@ -83,7 +126,7 @@
 
     }
 
-  /*   #left {
+    /*   #left {
   float: left;
   width: 75%;
   height: 100vh;
@@ -102,50 +145,48 @@
 
 
 
-body {
+    body {
 
-    background-color : #0b1625 !important
+        background-color: #0b1625 !important
+    }
 
+    #loading {
+        position: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        opacity: 0.9;
+        background-color: #162A4C;
+        z-index: 99;
+        flex-direction: column;
+    }
 
-}
-
-#loading {
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  opacity: 0.9;
-  background-color: #162A4C;
-  z-index: 99;
-  flex-direction: column;
-}
-
-#loading-image {
-  z-index: 100;
-}
+    #loading-image {
+        z-index: 100;
+    }
 
 
     .text-container {
 
-font-family: 'nunito', sans-serif;
-font-size: 1.3rem !important;
-font-weight: 300;
-line-height: 1.5 !important;
-text-align: left !important;
-color: #95aac9;
-}
+        font-family: 'nunito', sans-serif;
+        font-size: 1.3rem !important;
+        font-weight: 300;
+        line-height: 1.5 !important;
+        text-align: left !important;
+        color: #95aac9;
+    }
 
-.text-container strong{
+    .text-container strong {
 
-font-weight: 500;
-color: #e3ebf6;
-}
+        font-weight: 500;
+        color: #e3ebf6;
+    }
 
-   /*  .text-container p {
+    /*  .text-container p {
 
         font-size: 1.2rem !important;
         padding-left: 1.1rem;
@@ -280,13 +321,14 @@ top: 0px;
 
     ol {
 
-        padding-inline-start : 20px;
+        padding-inline-start: 20px;
 
     }
+
     .break {
-  flex-basis: 100%;
-  height: 0;
-}
+        flex-basis: 100%;
+        height: 0;
+    }
     </style>
 
 
@@ -386,21 +428,22 @@ top: 0px;
 
         <div class="container pt-4">
 
-        <nav aria-label="breadcrumb" class="mb-3">
-                    <ol class="breadcrumb breadcrumb-links p-0 m-0">
-                        <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/index.php'?>" target="_blank">GIEQs
-                                Online</a></li>
-                        <li class="breadcrumb-item"><a
-                                href="#"">GIEQs Living Curriculum Viewer</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"><?php echo $curriculae->getlong_name();?></li>
-                    </ol>
-                    <div class="alert alert-dark d-none sticky-top" role="alert" style="position:absolute !important;">
-                    </div>
-                </nav>
+            <nav aria-label="breadcrumb" class="mb-3">
+                <ol class="breadcrumb breadcrumb-links p-0 m-0">
+                    <li class="breadcrumb-item"><a href="<?php echo BASE_URL . '/pages/learning/index.php'?>"
+                            target="_blank">GIEQs
+                            Online</a></li>
+                    <li class="breadcrumb-item"><a href="#"">GIEQs Living Curriculum Viewer</a></li>
+                        <li class=" breadcrumb-item active"
+                            aria-current="page"><?php echo $curriculae->getlong_name();?></li>
+                </ol>
+                <div class="alert alert-dark d-none sticky-top" role="alert" style="position:absolute !important;">
+                </div>
+            </nav>
 
             <p class="h1 my-4"><?php echo $curriculae->getlong_name();?></p>
 
-           
+
 
             <title><?php echo $curriculae->getlong_name();?> - GIEQs Curriculum</title>
 
@@ -439,14 +482,14 @@ top: 0px;
             $(document).ready(function() {
 
                 $.fn.isInViewport = function() {
-    var elementTop = $(this).offset().top;
-    var elementBottom = elementTop + $(this).outerHeight();
+                    var elementTop = $(this).offset().top;
+                    var elementBottom = elementTop + $(this).outerHeight();
 
-    var viewportTop = $(window).scrollTop();
-    var viewportBottom = viewportTop + $(window).height();
+                    var viewportTop = $(window).scrollTop();
+                    var viewportBottom = viewportTop + $(window).height();
 
-    return elementBottom > viewportTop && elementTop < viewportBottom;
-};
+                    return elementBottom > viewportTop && elementTop < viewportBottom;
+                };
 
 
 
@@ -457,8 +500,9 @@ top: 0px;
                     // Assign active class to nav links while scolling
                     $('h2').each(function(i) {
                         if ($(this).position().top <= scrollDistance + 2000) {
-                            $('.section-nav a.text-gieqsGold').removeClass('text-gieqsGold').addClass(
-                                'text-muted');
+                            $('.section-nav a.text-gieqsGold').removeClass('text-gieqsGold')
+                                .addClass(
+                                    'text-muted');
                             $('.section-nav a').eq(i).addClass('text-gieqsGold').removeClass(
                                 'text-muted');
                         }
@@ -476,26 +520,30 @@ top: 0px;
 
             <body>
 
-            <div id="loading">
-            <div class="d-flex" style="opacity: 1.0; align-items:center; margin-bottom:2rem;">
-            <div class="spinner-grow mr-3" style="width: 3rem; height: 3rem;" role="status">
-  <span class="sr-only gieqsGold">Loading...</span>
-</div>
-<div class="display-4 gieqsGold">Loading GIEQs Living Curriculum Viewer</div>
-        </div>
-        <div class="d-flex">
+                <div id="loading">
+                    <div class="d-flex" style="opacity: 1.0; align-items:center; margin-bottom:2rem;">
+                        <div class="spinner-grow mr-3" style="width: 3rem; height: 3rem;" role="status">
+                            <span class="sr-only gieqsGold">Loading...</span>
+                        </div>
+                        <div class="display-4 gieqsGold">Loading GIEQs Living Curriculum Viewer</div>
+                    </div>
+                    <div class="d-flex">
 
-<div class="col-10 container">
-<p class="text-dark bg-gieqsGold p-3" style="opacity: 1;"><i class="fa fa-info-circle mr-3" aria-hidden="true"></i>It takes a lot of processing to deliver a Live Curriculum.  Every time you reload this page a new curriculum is built.  If we added a reference or tag it will be visible once you reload.  </p>
-<p class="text-dark bg-gieqsGold p-3" style="opacity: 1;">We suggest leaving the curriculum open once it loads and using tags to browse GIEQs Online</p>
-        </div>
-        </div>
+                        <div class="col-10 container">
+                            <p class="text-dark bg-gieqsGold p-3" style="opacity: 1;"><i class="fa fa-info-circle mr-3"
+                                    aria-hidden="true"></i>It takes a lot of processing to deliver a Live Curriculum.
+                                Every time you reload this page a new curriculum is built. If we added a reference or
+                                tag it will be visible once you reload. </p>
+                            <p class="text-dark bg-gieqsGold p-3" style="opacity: 1;">We suggest leaving the curriculum
+                                open once it loads and using tags to browse GIEQs Online</p>
+                        </div>
+                    </div>
 
 
-        
 
 
-</div>
+
+                </div>
 
 
                 <div class='content mt-5'>
@@ -506,7 +554,7 @@ top: 0px;
                         <div id="left" class="col-lg-3 col-xl-3 border-right">
                             <!--         	<div class="h-100 p-4"> -->
                             <div id="sticky" data-toggle="sticky" class="is_stuck pr-3 mr-3 pl-2 pt-2">
-                                
+
 
                                 <h6 class="mt-0 mb-3 pl-0 h5 text-left">Jump to Section</h6>
 
@@ -514,19 +562,22 @@ top: 0px;
                                 <div class="break"></div>
                                 <a class="return-top hover-text-gold cursor-pointer">Return to Top</a>
 
-                                <ul class="section-nav ml-0 pl-0">
+                                <div class="section-scroller" style="overflow-y: scroll; max-height: 70vh;">
+                                    <ul class="section-nav ml-0 pl-0">
 
 
 
-                                </ul>
+                                    </ul>
+                                </div>
 
                                 <h6 class="mt-4 mb-3 pl-0 h5 text-left">How to Use</h6>
 
-                                <a class="hover-text-gold cursor-pointer">Quickstart</a>
+                                <a class="quickstart hover-text-gold cursor-pointer">Quickstart</a>
                                 <div class="break"></div>
-                                <a class="hover-text-gold cursor-pointer">What is a Living Curriculum?</a>
+                                <a class="living-curriculum hover-text-gold cursor-pointer">What is a Living
+                                    Curriculum?</a>
                                 <div class="break"></div>
-                                <a class="hover-text-gold cursor-pointer">In-Depth Guide</a>
+                                <a class="guide hover-text-gold cursor-pointer">In-Depth Guide</a>
 
 
 
@@ -840,7 +891,7 @@ foreach ($sections as $section_key=>$section_value){
 
 
 
-                           <!--  <div class="d-flex">
+                            <!--  <div class="d-flex">
 
                                 <a class="dropdown-item" style="font-size:1rem !important;" data-toggle="collapse"
                                     href="#multiCollapseExample<?php echo $y;?>" role="button" aria-expanded="false"
@@ -857,7 +908,7 @@ foreach ($sections as $section_key=>$section_value){
 
 
                                         <div class="card card-body bg-dark">
-                                           <!--  <span class="h5 mb-4">Tags</span> -->
+                                            <!--  <span class="h5 mb-4">Tags</span> -->
 
                                             <div class="py-2 px-2 flex-row flex-wrap">
                                                 <?php         echo $tagBox;
@@ -871,8 +922,8 @@ foreach ($sections as $section_key=>$section_value){
                                 <div class="col">
                                     <div class="collapse multi-collapse" id="multiCollapseExample<?php echo $z;?>">
                                         <div class="card card-body bg-dark">
-                                         <!--    <span class="h5 mb-4">References</span> -->
-                                         <div class="flex-row flex-wrap">
+                                            <!--    <span class="h5 mb-4">References</span> -->
+                                            <div class="flex-row flex-wrap">
                                                 <?php         echo $curriculum_manager->getFullReferenceListCurriculumItem($curriculum_items->getid());
                         ?>
                                             </div>
@@ -983,7 +1034,7 @@ for each section
 
 
 
-</div>
+    </div>
 
 
 
@@ -1000,14 +1051,30 @@ for each section
     <?php require BASE_URI . '/footer.php';?>
 
 
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
 
-<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content container">
-      ...
+      <div class="modal-header">
+        <h4 class="modal-title h4" id="myExtraLargeModalLabel"><?php echo $title = get_post_field('post_title', 325);?></h4>
+        <button type="button" class="close bg-gieqsGold" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div id="quickstart" class="blog-container">
+
+<?php     echo $content = apply_filters('the_content', get_post_field('post_content', 325));?>
+
+</div>
+      </div>
     </div>
   </div>
 </div>
+
+
+    
+
 
 
     <!-- Purpose JS -->
@@ -1042,38 +1109,37 @@ for each section
 
     }
 
-    function isScrolledIntoView(elem)
-{
-    var docViewTop = $(window).scrollTop();
-    var docViewBottom = docViewTop + $(window).height();
+    function isScrolledIntoView(elem) {
+        var docViewTop = $(window).scrollTop();
+        var docViewBottom = docViewTop + $(window).height();
 
-    var elemTop = $(elem).offset().top;
-    var elemBottom = elemTop + $(elem).height();
+        var elemTop = $(elem).offset().top;
+        var elemBottom = elemTop + $(elem).height();
 
-    return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
-}
-
-function Utils() {
-
-}
-
-Utils.prototype = {
-    constructor: Utils,
-    isElementInView: function (element, fullyInView) {
-        var pageTop = $(window).scrollTop();
-        var pageBottom = pageTop + $(window).height();
-        var elementTop = $(element).offset().top;
-        var elementBottom = elementTop + $(element).height();
-
-        if (fullyInView === true) {
-            return ((pageTop < elementTop) && (pageBottom > elementBottom));
-        } else {
-            return ((elementTop <= pageBottom) && (elementBottom >= pageTop));
-        }
+        return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
     }
-};
 
-var Utils = new Utils();
+    function Utils() {
+
+    }
+
+    Utils.prototype = {
+        constructor: Utils,
+        isElementInView: function(element, fullyInView) {
+            var pageTop = $(window).scrollTop();
+            var pageBottom = pageTop + $(window).height();
+            var elementTop = $(element).offset().top;
+            var elementBottom = elementTop + $(element).height();
+
+            if (fullyInView === true) {
+                return ((pageTop < elementTop) && (pageBottom > elementBottom));
+            } else {
+                return ((elementTop <= pageBottom) && (elementBottom >= pageTop));
+            }
+        }
+    };
+
+    var Utils = new Utils();
 
 
     function generateTOC() {
@@ -1093,43 +1159,48 @@ var Utils = new Utils();
 
             var id = null;
 
-            
+
             id = $(this).attr('tocid');
             $(this).attr('id', id);
             console.log(id);
             text = $(this).attr('data');
             statement +=
-                '<div class="toc-section"><li tocid="' + id + '" class="toc-entry toc-h4 mt-4" style="font-size:1.3rem; list-style-type:none;"><a class="text-muted hover-text-gold" href="#' + id +
-                '">' + text + '</a><i class="fa fa-plus-circle cursor-pointer hover-text-gold fold-up-major-section ml-2" style="z-index: 1000;" aria-hidden="true"></i></li>';
-            
-            
-            statement += '<ol class="minor-list d-none" style=\'list-style: none;\'>';  
+                '<div class="toc-section"><li tocid="' + id +
+                '" class="toc-entry toc-h4 mt-4" style="font-size:1.3rem; list-style-type:none;"><a class="text-muted hover-text-gold" href="#' +
+                id +
+                '">' + text +
+                '</a><i class="fa fa-plus-circle cursor-pointer hover-text-gold fold-up-major-section ml-2" style="z-index: 1000;" aria-hidden="true"></i></li>';
+
+
+            statement += '<ol class="minor-list d-none" style=\'list-style: none;\'>';
             //console.log($(this).parent().find('.minor-section'));  
-            $(this).parent().find('.minor-section').each(function(){
+            $(this).parent().find('.minor-section').each(function() {
                 x++;
 
 
                 var id = null;
                 var text = null;
                 //$(this).attr('id', x);
-                  id = $(this).attr('tocid');
-                  $(this).attr('id', id);
+                id = $(this).attr('tocid');
+                $(this).attr('id', id);
 
-                  text = $(this).attr('data');
-                 statement +=
-                '<li tocid="' + id + '" class="toc-entry toc-h4" style="font-size:1.0rem; list-style-type:none; text-align:left;"><a class="text-muted  hover-text-gold" href="#' + id +
-                '">' + text + '</a></li>';
+                text = $(this).attr('data');
+                statement +=
+                    '<li tocid="' + id +
+                    '" class="toc-entry toc-h4" style="font-size:1.0rem; list-style-type:none; text-align:left;"><a class="text-muted  hover-text-gold" href="#' +
+                    id +
+                    '">' + text + '</a></li>';
 
 
 
 
             });
 
-            statement += '</ol></div>';    
+            statement += '</ol></div>';
 
-            
-            
-            
+
+
+
             x++;
 
         })
@@ -1162,7 +1233,7 @@ var Utils = new Utils();
 
     }
 
-    
+
 
     function copyToClipboard(text) {
         if (window.clipboardData && window.clipboardData.setData) {
@@ -1190,11 +1261,13 @@ var Utils = new Utils();
 
     $(document).ready(function() {
 
-        $(window).on('load', function () {
+        $(window).on('load', function() {
 
-            
-    //$('#loading').hide();
-  })
+
+            //$('#loading').hide();
+        })
+
+
 
 
         generateTOC();
@@ -1202,44 +1275,44 @@ var Utils = new Utils();
 
         waitForFinalEvent(function() {
             generateTOC();
-           
+
 
 
         }, 1000, "Resize header");
 
-     
+
 
         $('.referencelist').on('click', function() {
 
 
-//get the tag name
+            //get the tag name
 
-var searchTerm = $(this).attr('data');
+            var searchTerm = $(this).attr('data');
 
-//console.log("https://www.ncbi.nlm.nih.gov/pubmed/?term="+searchTerm);
+            //console.log("https://www.ncbi.nlm.nih.gov/pubmed/?term="+searchTerm);
 
-PopupCenter("https://www.ncbi.nlm.nih.gov/pubmed/?term=" + searchTerm,
-    'PubMed Search (endoWiki)', 800, 700);
-
-
+            PopupCenter("https://www.ncbi.nlm.nih.gov/pubmed/?term=" + searchTerm,
+                'PubMed Search (endoWiki)', 800, 700);
 
 
 
-})
 
-$('.referencelist').on('mouseenter', function() {
 
-$(this).css('color', 'rgb(238, 194, 120)');
-//$(this).css('cursor', 'pointer');
+        })
 
-})
+        $('.referencelist').on('mouseenter', function() {
 
-$('.referencelist').on('mouseleave', function() {
+            $(this).css('color', 'rgb(238, 194, 120)');
+            //$(this).css('cursor', 'pointer');
 
-$(this).css('color', '#95aac9');
-//$(this).css('cursor', 'default');
+        })
 
-})
+        $('.referencelist').on('mouseleave', function() {
+
+            $(this).css('color', '#95aac9');
+            //$(this).css('cursor', 'default');
+
+        })
 
         $('#refreshNavigation').click(function() {
 
@@ -1274,7 +1347,7 @@ $(this).css('color', '#95aac9');
         $('#right').scroll(function() {
             var scrollDistance = $('#right').scrollTop();
             //scrollDistance = scrollDistance - 500;
-            
+
             // Assign active class to nav links while scolling
             $('.toc-marker').each(function(i) {
 
@@ -1285,9 +1358,9 @@ $(this).css('color', '#95aac9');
                 //is this in view?
 
                 var idElement = $(this).attr('id');
-                var isElementInView = Utils.isElementInView($('#'+idElement), false);
+                var isElementInView = Utils.isElementInView($('#' + idElement), false);
 
-                if (isElementInView){
+                if (isElementInView) {
 
                     console.log('element id is ' + idElement);
                     console.log('element name is ' + $(this).text());
@@ -1297,17 +1370,19 @@ $(this).css('color', '#95aac9');
                     console.log('is it in view is ' + isElementInView);
                     console.log('.section-nav li [tocid=' + idElement + ']');
 
-                    $('.section-nav li a.text-gieqsGold').removeClass('text-gieqsGold').addClass(
-                        'text-muted');
-                    $('.section-nav li[tocid=' + idElement + ']').find('a').addClass('text-gieqsGold').removeClass(
+                    $('.section-nav li a.text-gieqsGold').removeClass('text-gieqsGold')
+                        .addClass(
+                            'text-muted');
+                    $('.section-nav li[tocid=' + idElement + ']').find('a').addClass(
+                        'text-gieqsGold').removeClass(
                         'text-muted');
 
-                }else{
+                } else {
 
-                   
+
                 }
 
-                
+
 
                 /* if ($(this).position().top <= scrollDistance) {
                    
@@ -1317,57 +1392,57 @@ $(this).css('color', '#95aac9');
 
         }).scroll();
 
-        $(document).on('click', '.tag-icon', function () {
+        $(document).on('click', '.tag-icon', function() {
 
             //alert('clicked tag icon');
 
-            if ($(this).hasClass('text-gieqsGold') === true){
+            if ($(this).hasClass('text-gieqsGold') === true) {
 
-$(this).removeClass('text-gieqsGold').addClass('text-muted');
+                $(this).removeClass('text-gieqsGold').addClass('text-muted');
 
-}else{
-$(this).addClass('text-gieqsGold').removeClass('text-muted');
+            } else {
+                $(this).addClass('text-gieqsGold').removeClass('text-muted');
 
 
-}
+            }
 
-            $('.tag-icon').not(this).each(function(){
+            $('.tag-icon').not(this).each(function() {
 
                 $(this).removeClass('text-gieqsGold').addClass('text-muted');
 
 
             })
 
-        // do something…
+            // do something…
         })
 
 
-        $(document).on('click', '.reference-icon', function () {
+        $(document).on('click', '.reference-icon', function() {
 
-        //alert('clicked reference icon');
+            //alert('clicked reference icon');
 
-        if ($(this).hasClass('text-gieqsGold') === true){
+            if ($(this).hasClass('text-gieqsGold') === true) {
 
-            $(this).removeClass('text-gieqsGold').addClass('text-muted');
+                $(this).removeClass('text-gieqsGold').addClass('text-muted');
 
-        }else{
-            $(this).addClass('text-gieqsGold').removeClass('text-muted');
-
-
-        }
+            } else {
+                $(this).addClass('text-gieqsGold').removeClass('text-muted');
 
 
-         $('.reference-icon').not(this).each(function(){
-
-            $(this).removeClass('text-gieqsGold').addClass('text-muted');
+            }
 
 
+            $('.reference-icon').not(this).each(function() {
+
+                $(this).removeClass('text-gieqsGold').addClass('text-muted');
+
+
+            })
+
+            // do something…
         })
 
-        // do something…
-        })
-
-        $(document).on('click', '.tagButton', function () {
+        $(document).on('click', '.tagButton', function() {
 
             var idElement = $(this).attr('data-tag-id');
 
@@ -1380,106 +1455,107 @@ $(this).addClass('text-gieqsGold').removeClass('text-muted');
 
 
 
-//use ajax to send
+            //use ajax to send
 
-if ($('#browsing_id').attr('data-browsing-id') != '') {
+            if ($('#browsing_id').attr('data-browsing-id') != '') {
 
-    var browsing_id = $('#browsing_id').attr('data-browsing-id');
+                var browsing_id = $('#browsing_id').attr('data-browsing-id');
 
-} else {
+            } else {
 
-    var browsing_id = '';
-
-
-}
-
-if ($('#browsing').attr('data-browsing') != '') {
-
-    var browsing = $('#browsing').attr('data-browsing');
-
-} else {
-
-    var browsing = '';
+                var browsing_id = '';
 
 
-}
+            }
 
-if ($('#browsing_array').text() != '') {
+            if ($('#browsing').attr('data-browsing') != '') {
 
-    var browsing_array = $('#browsing_array').text();
+                var browsing = $('#browsing').attr('data-browsing');
 
-} else {
+            } else {
 
-    var browsing_array = '';
-
-
-}
+                var browsing = '';
 
 
-var dataToSend = {
+            }
 
-    videoid: videoPassed,
-    browsing_id: browsing_id,
-    browsing: browsing,
-    tag: idElement,
-    browsing_array: browsing_array,
+            if ($('#browsing_array').text() != '') {
 
+                var browsing_array = $('#browsing_array').text();
 
-}
+            } else {
 
-const jsonString = JSON.stringify(dataToSend);
-//console.log(jsonString);
-//console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
-
-var request2 = $.ajax({
-    beforeSend: function() {
+                var browsing_array = '';
 
 
-    },
-    url: siteRoot + "scripts/tagnavigation/get_tag_navigation_info_curriculum.php",
-    type: "POST",
-    contentType: "application/json",
-    data: jsonString,
-});
+            }
 
 
+            var dataToSend = {
 
-request2.done(function(data) {
-    // alert( "success" );
-    if (data) {
-        //show green tick
-
-        var result = JSON.parse(data);
-
-        console.dir(result);
-
-        if (result.videos == '0'){
-
-            alert('No videos for this Tag Yet.  Submit a request?:-)');
-
-        }
-
-        if (result.videos == '1'){
-
-            window.localStorage.setItem('selectedTag', idElement);
-
-            window.localStorage.setItem('restricted', false);
-
-            window.open(rootFolder + '/viewer.php?id=' + result.first_video, '_blank').focus();
+                videoid: videoPassed,
+                browsing_id: browsing_id,
+                browsing: browsing,
+                tag: idElement,
+                browsing_array: browsing_array,
 
 
-        }
+            }
+
+            const jsonString = JSON.stringify(dataToSend);
+            //console.log(jsonString);
+            //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
+
+            var request2 = $.ajax({
+                beforeSend: function() {
+
+
+                },
+                url: siteRoot + "scripts/tagnavigation/get_tag_navigation_info_curriculum.php",
+                type: "POST",
+                contentType: "application/json",
+                data: jsonString,
+            });
 
 
 
+            request2.done(function(data) {
+                // alert( "success" );
+                if (data) {
+                    //show green tick
+
+                    var result = JSON.parse(data);
+
+                    console.dir(result);
+
+                    if (result.videos == '0') {
+
+                        alert('No videos for this Tag Yet.  Submit a request?:-)');
+
+                    }
+
+                    if (result.videos == '1') {
+
+                        window.localStorage.setItem('selectedTag', idElement);
+
+                        window.localStorage.setItem('restricted', false);
+
+                        window.open(rootFolder + '/viewer.php?id=' + result.first_video,
+                            '_blank').focus();
+
+
+                    }
 
 
 
 
 
-    }
 
-})
+
+
+                }
+
+            })
 
 
 
@@ -1498,18 +1574,18 @@ request2.done(function(data) {
 
 
             //end code port
-       
 
 
-           
-
-/* 
-            setcookie("selectedTag", idElement, time() - 3600);
-
-setcookie("restricted", false, time() - 3600); */
 
 
-//redirect to viewer page
+
+            /* 
+                        setcookie("selectedTag", idElement, time() - 3600);
+
+            setcookie("restricted", false, time() - 3600); */
+
+
+            //redirect to viewer page
 
 
             //writer cookies
@@ -1517,13 +1593,13 @@ setcookie("restricted", false, time() - 3600); */
 
         })
 
-    
 
-        $(document).on('click', '.fold-up-major-section',  function(event){
+
+        $(document).on('click', '.fold-up-major-section', function(event) {
 
             //console.dir($(this).parent().parent().find('ol'));
 
-        
+
 
             var check_element = $(this).parent().parent().find('ol');
 
@@ -1531,7 +1607,7 @@ setcookie("restricted", false, time() - 3600); */
 
             //d-none
 
-            if ($(check_element).is(":visible") === true){
+            if ($(check_element).is(":visible") === true) {
 
                 $(check_element).addClass('d-none');
 
@@ -1541,7 +1617,7 @@ setcookie("restricted", false, time() - 3600); */
 
 
 
-            }else{
+            } else {
 
 
                 $(check_element).removeClass('d-none');
@@ -1557,15 +1633,15 @@ setcookie("restricted", false, time() - 3600); */
             }
 
 
-            
-            
-            
+
+
+
         })
 
 
 
 
-       /*  $(document).find('.minor-list').each( function(){
+        /*  $(document).find('.minor-list').each( function(){
 
 $(this).hide();
 
@@ -1573,7 +1649,7 @@ $(this).hide();
 }); */
 
 
-        $(document).on('click', '.toc-entry', function(event){
+        $(document).on('click', '.toc-entry', function(event) {
 
             //jump to yhe correct section
 
@@ -1582,29 +1658,31 @@ $(this).hide();
             //highlight that item
             var idElement = $(this).attr('tocid');
 
-            $('.section-nav li[tocid=' + idElement + ']').find('a').addClass('text-gieqsGold').removeClass('text-muted');
+            $('.section-nav li[tocid=' + idElement + ']').find('a').addClass('text-gieqsGold')
+                .removeClass('text-muted');
 
-            $('.section-nav li').find('a').not('.section-nav li[tocid=' + idElement + ']').removeClass('text-gieqsGold').addClass('text-muted');
-
-
- 
-
-            })
-
-            $(document).on('click', '.return-top', function(event){
-
-                window.scrollTo(0, 0);
+            $('.section-nav li').find('a').not('.section-nav li[tocid=' + idElement + ']').removeClass(
+                'text-gieqsGold').addClass('text-muted');
 
 
 
-            })
 
-            $(document).on('click', '.collapse-all', function(event){
+        })
 
-            
-                $('.section-nav').find('ol').each(function(){
+        $(document).on('click', '.return-top', function(event) {
 
-                    if ($(this).is(":visible") === true){
+            window.scrollTo(0, 0);
+
+
+
+        })
+
+        $(document).on('click', '.collapse-all', function(event) {
+
+
+            $('.section-nav').find('ol').each(function() {
+
+                if ($(this).is(":visible") === true) {
 
                     $(this).addClass('d-none');
 
@@ -1612,14 +1690,15 @@ $(this).hide();
 
                     console.dir($(this).siblings('li').find('.fold-up-major-section'));
 
-                    $(this).siblings('li').find('.fold-up-major-section').addClass('fa-plus-circle').removeClass('fa-minus-circle');
+                    $(this).siblings('li').find('.fold-up-major-section').addClass(
+                        'fa-plus-circle').removeClass('fa-minus-circle');
 
 
 
-                    }else{
+                } else {
 
 
-                   
+
 
 
                     //change to a minus
@@ -1627,14 +1706,43 @@ $(this).hide();
 
 
 
-                    }
-                })
-
-
-
+                }
             })
 
-       
+
+
+        })
+
+        $(document).on('click', '.quickstart', function(event) {
+
+
+
+            $('.bd-example-modal-lg').modal('show');
+
+            /* var postid = 122;
+
+            $.ajax({
+                    type: 'POST',
+                    url: '<?php //echo BASE_URL . '/assets/wp/wp-admin/admin-ajax.php';?>',
+                    dataType: "json", // add data type
+                    data: { action : 'my_load_ajax_content', post_id: postid },
+                    success: function( response ) {
+                        console.log( response );
+
+                        $( '#quickstart' ).html( response ); 
+                    }
+            }); */
+
+
+
+
+
+        })
+
+
+
+
+
 
 
 
