@@ -40,6 +40,13 @@ color: #95aac9;
 
 }
 
+.blog-container hr {
+
+    margin-top: 4rem !important;
+    margin-bottom: 4rem !important;
+
+}
+
 .blog-container h4 {
 
     color: #95aac9

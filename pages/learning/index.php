@@ -391,49 +391,7 @@ var_dump($_SESSION);
 
 
             <!-- GIEQs II Filler -->
-
-<?php         if (($gieqs_ii_is_live === true)){?>
-
-            <section class="page-header text-dark bg-gieqsGold d-flex align-items-end pt-2" >
-
-
-                <!-- Header container -->
-                <div class="container pt-0 pt-lg-0">
-                    <div class="row">
-                        <div class=" col-lg-12">
-                            <!-- Salute + Small stats -->
-                            <div class="row align-items-center mb-4">
-                                <div class="col-auto mb-4 mb-md-0">
-                                    <span class="h2 mb-0 text-dark text-bold d-block">GIEQs II is LIVE.
-                                        </span>
-
-                                        <?php if (($gieqs_ii_is_live) && ($gieqs_ii_has_access_to_today)){?>
-                                            <span class="text-dark">Thank-you for Registering! Sit Back and Enjoy.<br/><a href="<?php echo BASE_URL;?>/pages/learning/pages/general/show_subscription.php?assetid=<?php echo $gieqs_ii_plenary_link;?>">Start watching now</a></span>
-                                            <?php if ($courseTest){?> <br/><span class="text-dark">TEST VIEW</span><?php }?>
-                                            <?php }else{ ?>
-                                    <span class="text-dark"><a href="<?php echo BASE_URL;?>/pages/program/gieqs_ii.php">Register Now for Immediate Access</a></span>
-                                    <?php if ($courseTest){?> <br/><span class="text-dark">TEST VIEW</span><?php }?>
-
-                                                <?php } ?>
-                                </div>
-                                <!-- video -->
-                                <div class="col-auto flex-fill d-none d-xl-block">
-                                    <!-- <div id="videoDisplay" class="embed-responsive embed-responsive-16by9">
-                <iframe  id='videoChapter' class="embed-responsive-item"
-                    src='https://player.vimeo.com/video/398791515' allow='autoplay'
-                    webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                    </div> -->
-                                </div>
-                            </div>
-                            <!-- Account navigation -->
-
-
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-<?php }
+<?php
 
 
 if ($assetManager->doesUserHaveSameAssetAlready('95', $userid, false) === false){

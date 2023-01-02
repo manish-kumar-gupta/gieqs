@@ -10,6 +10,7 @@
  * License: LGPL 
  * 
  */
+
 		
 Class DataBaseMysqlPDOv2 {
 

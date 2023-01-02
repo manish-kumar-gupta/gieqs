@@ -183,7 +183,7 @@ function my_error_handler($e_number, $e_message, $e_file, $e_line, $e_vars) {
 } // End of my_error_handler() definition.
 
 // Use my error handler:
-set_error_handler('my_error_handler');
+//set_error_handler('my_error_handler');
 
 # ***** ERROR MANAGEMENT ***** #
 # **************************** #
@@ -212,4 +212,10 @@ if ($debug){
 
     $_SESSION['debug'] = false;
     error_reporting(0);
+    ini_set('display_errors', 0);
+
 }
+
+$_SESSION['debug'] = false;
+error_reporting(0);
+ini_set('display_errors', 0);
