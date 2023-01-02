@@ -120,6 +120,7 @@ body {
   opacity: 0.9;
   background-color: #162A4C;
   z-index: 99;
+  flex-direction: column;
 }
 
 #loading-image {
@@ -475,16 +476,26 @@ top: 0px;
             <body>
 
             <div id="loading">
-            
-            <div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status">
+            <div class="d-flex" style="opacity: 1.0; align-items:center; margin-bottom:2rem;">
+            <div class="spinner-grow mr-3" style="width: 3rem; height: 3rem;" role="status">
   <span class="sr-only gieqsGold">Loading...</span>
 </div>
-<div class="display-4 gieqsGold">GIEQs Living Curriculum Viewer Loading...</div>
+<div class="display-4 gieqsGold">Loading GIEQs Living Curriculum Viewer</div>
+        </div>
+        <div class="d-flex">
+
+<div class="col-10 container">
+<p class="text-dark bg-gieqsGold p-3" style="opacity: 1;"><i class="fa fa-info-circle mr-3" aria-hidden="true"></i>It takes a lot of processing to deliver a Live Curriculum.  Every time you reload this page a new curriculum is built.  If we added a reference or tag it will be visible once you reload.  </p>
+<p class="text-dark bg-gieqsGold p-3" style="opacity: 1;">We suggest leaving the curriculum open once it loads and using tags to browse GIEQs Online</p>
+        </div>
+        </div>
+
 
         
 
 
 </div>
+
 
                 <div class='content mt-5'>
                     <div class="row">
@@ -507,6 +518,14 @@ top: 0px;
 
 
                                 </ul>
+
+                                <h6 class="mt-4 mb-3 pl-0 h5 text-left">How to Use</h6>
+
+                                <a class="hover-text-gold cursor-pointer">Quickstart</a>
+                                <div class="break"></div>
+                                <a class="hover-text-gold cursor-pointer">What is a Living Curriculum?</a>
+                                <div class="break"></div>
+                                <a class="hover-text-gold cursor-pointer">In-Depth Guide</a>
 
 
 

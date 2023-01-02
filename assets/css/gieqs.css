@@ -33,10 +33,16 @@ color: #95aac9;
     margin-top: 0.5rem;
 }
 
-.blog-container p {
+.blog-container p, .blog-container h2, .blog-container h3, .blog-container h4, .blog-container h5, .blog-container h6, .blog-container blockquote, .blog-container figure {
 
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-top: 2rem !important;
+    margin-bottom: 2rem !important;
+
+}
+
+.blog-container h4 {
+
+    color: #95aac9
 
 }
 
