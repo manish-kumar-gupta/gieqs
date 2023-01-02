@@ -47,6 +47,14 @@ color: #95aac9;
 
 }
 
+.blog-container blockquote {
+
+    background-color: #0b1625;
+    padding: 1.5rem;
+    text-align: center;
+
+}
+
 .blog-container h4 {
 
     color: #95aac9
