@@ -311,6 +311,93 @@ return $nRows;
 
 }
 
+public function countBestPracticeVideos($id, $debug=false){
+
+
+    $q = "SELECT `video_id` FROM `curriculum_demonstrations` WHERE `curriculum_item_id` = '$id'";
+
+    if ($debug){
+echo $q . '<br><br>';
+
+    }
+
+
+
+$result = $this->connection->RunQuery($q);
+
+$x = 0;
+$nRows = $result->rowCount();
+
+return $nRows;
+
+}
+
+public function getVideoCurriculum($curriculum_item_id, $debug=false) {
+
+
+    $q = "SELECT `video_id` FROM `curriculum_demonstrations` WHERE `curriculum_item_id` = '$curriculum_item_id'";
+
+
+    $result = $this->connection->RunQuery($q);
+
+    $nRows = $result->rowCount();
+    $rowReturn = [];
+
+    if ($nRows > 0) {
+
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+            $video_id = $row['video_id'];
+
+
+        }
+
+
+        return $video_id;
+
+    }else{
+
+        return false;
+    }
+
+    
+
+
+}
+
+public function getChapterCurriculum($curriculum_item_id, $debug=false) {
+
+
+    $q = "SELECT `chapter_id` FROM `curriculum_demonstrations` WHERE `curriculum_item_id` = '$curriculum_item_id'";
+
+
+    $result = $this->connection->RunQuery($q);
+
+    $nRows = $result->rowCount();
+    $rowReturn = [];
+
+    if ($nRows > 0) {
+
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+            $chapter_id = $row['chapter_id'];
+
+
+        }
+
+
+        return $chapter_id;
+
+    }else{
+
+        return false;
+    }
+
+    
+
+
+}
+
 public function gettags($tag_id_array, $debug=false){
 
 

@@ -709,22 +709,37 @@ foreach ($sections as $section_key=>$section_value){
         $curriculum_items->Load_from_key($items_value);
         $number_tags = null;
         $number_references = null;
+        $number_videos = null;
         $number_tags = $curriculum_manager->counttagscurriculumitem($curriculum_items->getid());
         $number_references = $curriculum_manager->countReferences($curriculum_items->getid());
+        $number_videos = $curriculum_manager->countBestPracticeVideos($curriculum_items->getid());
+        $tags_binary = ($number_tags > 0) ? 1 : 0;
+        $videos_binary = ($number_videos > 0) ? 1 : 0;
+        $references_binary = ($number_references > 0) ? 1 : 0;
+
+        $number_visible = $tags_binary + $videos_binary + $references_binary;
 
 
-        echo '<div class="curriculum-top-card mb-0 mt-3 bg-dark-dark">';
-        echo '<div class="curriculum-card-body pb-0 mt-5" style="padding-bottom:0px !important;">';
+        echo '<div class="curriculum-top-card mb-2 mt-3 bg-dark-dark">';
+        echo '<div class="curriculum-card-body pb-0 mt-3" style="padding-bottom:0px !important;">';
 
-        echo '<div class="actions d-flex" style="position:absolute; right:20px; top:20px; font-size:1rem;">';
+        echo '<div class="actions d-flex justify-content-end" style="font-size:1rem;">';
 
-        echo '<div class="cursor-pointer demonstration-video hover-text-gold mx-2 ml-auto" data-statement-id="' . $curriculum_items->getid() . '"><i class="fa fa-play" aria-hidden="true"></i> Best-Practice Video</div>|';
+        echo '<div class="cursor-pointer feedback hover-text-gold mx-2 mr-auto" data-statement-id="' . $curriculum_items->getid() . '"><i class="fa fa-comment" aria-hidden="true"></i> Feedback</div>';
 
-        echo '<div class="cursor-pointer feedback hover-text-gold mx-2" data-statement-id="' . $curriculum_items->getid() . '"><i class="fa fa-comment" aria-hidden="true"></i> Feedback</div>|';
+        if ($number_videos > 0){
+        echo '<div class="cursor-pointer demonstration-video hover-text-gold mx-2" data-video-id="' . $curriculum_manager->getVideoCurriculum($curriculum_items->getid()) . '" data-chapter-id="' . $curriculum_manager->getChapterCurriculum($curriculum_items->getid()) . '"><i class="fa fa-play" aria-hidden="true"></i> Best-Practice Video</div>|';
+        }
 
         if ($number_tags > 0){
         echo '<div class="cursor-pointer tag-icon hover-text-gold mx-2" data-toggle="collapse"
-        href="#multiCollapseExample' . $y. '"><i  class="fas fa-tag mx-1"></i>' . $curriculum_manager->counttagscurriculumitem($curriculum_items->getid()) . ' Tag(s)</div>|';
+        href="#multiCollapseExample' . $y. '"><i  class="fas fa-tag mx-1"></i>' . $curriculum_manager->counttagscurriculumitem($curriculum_items->getid()) . ' Tag(s)</div>';
+        if ($references_binary == 1){
+
+            echo '|';
+
+        }
+
         }else{
             //echo '<div class="mx-2"><i  class="fas fa-tag mx-1"></i> No Tags</div>|';
 
@@ -1164,7 +1179,8 @@ for each section
                 <p>Please let us know what type of feedback you wish to leave?</strong></p>
                
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer" style="flex-direction: column;
+    align-content: center;">
                
                 <button type="button" class="btn btn-dark" onclick="giveFeedback(1);">New Tag Suggestion (for this statement)</button>
                 <button type="button" class="btn btn-dark" onclick="giveFeedback(2);">New Reference Suggestion (for this statement)</button>
@@ -1976,6 +1992,22 @@ $.ajax({
             $( '#quickstart' ).html( response ); 
         }
 }); */
+
+
+
+
+
+})
+
+$(document).on('click', '.demonstration-video', function(event){
+
+    var video_id = $(this).attr('data-video-id');
+    var chapter_id = $(this).attr('data-chapter-id');
+
+    var statement = (chapter_id == '') ? video_id : video_id + '&chapternumber=' + chapter_id;
+
+    window.open(rootFolder + '/viewer.php?id=' + statement,
+                            '_blank').focus();
 
 
 
