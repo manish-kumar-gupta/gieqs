@@ -472,6 +472,9 @@ top: 0px;
                 return Math.round(value * multiplier) / multiplier;
             }
 
+            function isInView(elem){
+   return $(elem).offset().top - $(window).scrollTop() < $(elem).height() ;
+}
 
 
 
@@ -492,9 +495,10 @@ top: 0px;
                 };
 
 
-
+/* 
                 $(window).scroll(function() {
                     var scrollDistance = $(window).scrollTop();
+                    //console.log(scrollDistance);
 
 
                     // Assign active class to nav links while scolling
@@ -507,7 +511,7 @@ top: 0px;
                                 'text-muted');
                         }
                     });
-                }).scroll();
+                }).scroll(); */
 
 
 
@@ -1526,31 +1530,35 @@ return (
 
 
 
-        $('#right').scroll(function() {
+       $(document).scroll(function() {
             var scrollDistance = $('#right').scrollTop();
             //scrollDistance = scrollDistance - 500;
 
             // Assign active class to nav links while scolling
             $('.toc-marker').each(function(i) {
 
-                //define which one triggered
-
-                console.log('i is ' + i);
+//console.log(this);
+                //console.log('i is ' + i);
 
                 //is this in view?
 
                 var idElement = $(this).attr('id');
-                var isElementInView = Utils.isElementInView($('#' + idElement), false);
+                var isElementInView = isElementInViewport($('#' + idElement));
 
                 if (isElementInView) {
 
-                    console.log('element id is ' + idElement);
+                   // console.log(idElement + ' is in view');
+
+                }
+               if (isElementInView) {
+
+                    /* console.log('element id in view is ' + idElement);
                     console.log('element name is ' + $(this).text());
 
                     console.log('scroll distance is ' + scrollDistance);
                     console.log('top of this element is ' + $(this).position().top);
                     console.log('is it in view is ' + isElementInView);
-                    console.log('.section-nav li [tocid=' + idElement + ']');
+                    console.log('.section-nav li [tocid=' + idElement + ']'); */
 
                     $('.section-nav li a.text-gieqsGold').removeClass('text-gieqsGold')
                         .addClass(
@@ -1562,13 +1570,7 @@ return (
                 } else {
 
 
-                }
-
-
-
-                /* if ($(this).position().top <= scrollDistance) {
-                   
-                } */
+                } 
 
             });
 
