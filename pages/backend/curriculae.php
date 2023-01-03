@@ -438,6 +438,20 @@ $xcrud->button(BASE_URL . '/pages/learning/pages/curriculum/curriculum_generic.p
         $curriculumtagstable_nest->set_logging(true);
        // $curriculumtagstable_nest->unique('tag_id');
 
+       //sixth nest, demonstration videos
+
+    $curriculumvideostable_nest = $curriculaeitemstable_nest->nested_table('Videos', 'id', 'curriculum_demonstrations','curriculum_item_id');
+    $curriculumvideostable_nest->connection($username,$password,$dbname,$host);
+
+    $curriculumvideostable_nest->relation('curriculum_item_id','curriculum_items','id',array('id', 'item_order', 'statement'));
+    $curriculumvideostable_nest->relation('video_id','video','id',array('id', 'name'));
+    $curriculumvideostable_nest->relation('chapter_id','chapter','id',array('id', 'name', 'video_id'));
+
+    $curriculumvideostable_nest->columns('curriculum_item_id, created, updated', true);
+
+        $curriculumvideostable_nest->fields('curriculum_item_id, created, updated', true);
+        $curriculumvideostable_nest->set_logging(true);
+
 
 
 

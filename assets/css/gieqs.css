@@ -131,6 +131,48 @@ margin: auto;
 
 }
 
+.curriculum-top-card {
+position: relative;
+    display: flex;
+flex-direction: column;
+min-width: 0;
+word-wrap: break-word;
+
+
+
+
+
+
+}
+
+.curriculum-lower-card {
+    position: relative;
+        display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    margin-top: -1.5rem;
+    border: 1px solid #1b385d;
+    border-radius: 0.375rem;
+    background-clip: border-box;
+    
+    
+    
+    
+    
+    }
+
+.curriculum-card-body {
+
+    min-height: 1px;
+    padding-left: 1.5rem;
+    padding-top: 1.5rem;
+    padding-right: 1.5rem;
+    color: #95aac9;
+    flex: 1 1 auto;
+    
+}
+
 @media (max-width: 576px)
 {
     

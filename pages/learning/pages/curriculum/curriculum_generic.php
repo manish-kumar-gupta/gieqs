@@ -713,8 +713,12 @@ foreach ($sections as $section_key=>$section_value){
         $number_references = $curriculum_manager->countReferences($curriculum_items->getid());
 
 
-        echo '<div class="card bg-dark">';
+        echo '<div class="curriculum-top-card mb-0 mt-3 bg-dark-dark">';
+        echo '<div class="curriculum-card-body pb-0 mt-5" style="padding-bottom:0px !important;">';
+
         echo '<div class="actions d-flex" style="position:absolute; right:20px; top:20px; font-size:1rem;">';
+
+        echo '<div class="cursor-pointer demonstration-video hover-text-gold mx-2 ml-auto" data-statement-id="' . $curriculum_items->getid() . '"><i class="fa fa-play" aria-hidden="true"></i> Best-Practice Video</div>|';
 
         echo '<div class="cursor-pointer feedback hover-text-gold mx-2" data-statement-id="' . $curriculum_items->getid() . '"><i class="fa fa-comment" aria-hidden="true"></i> Feedback</div>|';
 
@@ -733,7 +737,10 @@ foreach ($sections as $section_key=>$section_value){
             echo '<div class="mx-2"><i class="fas fa-graduation-cap mx-1"></i> No References</div>'; 
         }
         echo '</div>';
-        echo '<div class="card-body mt-1 mb-0 pb-0 mt-5">';
+        echo'</div>';
+        echo '</div>'; //end first card div
+        echo '<div class="curriculum-lower-card bg-dark">';
+        echo '<div class="card-body mt-1 mb-0 pb-1">';
 
 
 
