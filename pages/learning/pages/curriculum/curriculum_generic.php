@@ -577,7 +577,7 @@ top: 0px;
                                 <a class="living-curriculum hover-text-gold cursor-pointer">What is a Living
                                     Curriculum?</a>
                                 <div class="break"></div>
-                                <a class="guide hover-text-gold cursor-pointer">In-Depth Guide</a>
+                               
 
 
 
@@ -1051,26 +1051,51 @@ for each section
     <?php require BASE_URI . '/footer.php';?>
 
 
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
 
-      <div class="modal-header">
-        <h4 class="modal-title h4" id="myExtraLargeModalLabel"><?php echo $title = get_post_field('post_title', 325);?></h4>
-        <button type="button" class="close bg-gieqsGold" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <div id="quickstart" class="blog-container">
+                <div class="modal-header">
+                    <h4 class="modal-title h4" id="myExtraLargeModalLabel">
+                        <?php echo $title = get_post_field('post_title', 325);?></h4>
+                    <button type="button" class="close bg-gieqsGold" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="quickstart" class="blog-container">
 
-<?php     echo $content = apply_filters('the_content', get_post_field('post_content', 325));?>
+                        <?php     echo $content = apply_filters('the_content', get_post_field('post_content', 325));?>
 
-</div>
-      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
+    
+    <div class="modal fade living-curriculum-modal" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title h4" id="myExtraLargeModalLabel">
+                        <?php echo $title = get_post_field('post_title', 350);?></h4>
+                    <button type="button" class="close bg-gieqsGold" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="quickstart" class="blog-container">
+
+                        <?php     echo $content = apply_filters('the_content', get_post_field('post_content', 350));?>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     
@@ -1718,6 +1743,32 @@ $(this).hide();
 
 
             $('.bd-example-modal-lg').modal('show');
+
+            /* var postid = 122;
+
+            $.ajax({
+                    type: 'POST',
+                    url: '<?php //echo BASE_URL . '/assets/wp/wp-admin/admin-ajax.php';?>',
+                    dataType: "json", // add data type
+                    data: { action : 'my_load_ajax_content', post_id: postid },
+                    success: function( response ) {
+                        console.log( response );
+
+                        $( '#quickstart' ).html( response ); 
+                    }
+            }); */
+
+
+
+
+
+        })
+        
+        $(document).on('click', '.living-curriculum', function(event) {
+
+
+
+            $('.living-curriculum-modal').modal('show');
 
             /* var postid = 122;
 
