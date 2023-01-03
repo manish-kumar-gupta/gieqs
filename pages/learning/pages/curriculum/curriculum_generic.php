@@ -556,13 +556,16 @@ top: 0px;
                             <div id="sticky" data-toggle="sticky" class="is_stuck pr-3 mr-3 pl-2 pt-2">
 
 
+                            
+                                <h6 class="mt-0 mb-3 pl-0 h5 text-left"><?php echo $curriculae->getlong_name();?></h6>
+                                
                                 <h6 class="mt-0 mb-3 pl-0 h5 text-left">Jump to Section</h6>
 
                                 <a class="collapse-all hover-text-gold cursor-pointer">Collapse All</a>
                                 <div class="break"></div>
                                 <a class="return-top hover-text-gold cursor-pointer">Return to Top</a>
 
-                                <div class="section-scroller" style="overflow-y: scroll; max-height: 70vh;">
+                                <div class="section-scroller" style="overflow-y: scroll; max-height: 60vh;">
                                     <ul class="section-nav ml-0 pl-0">
 
 
@@ -1133,6 +1136,23 @@ for each section
         var edit = 1;
 
     }
+
+    function isElementInViewport (el) {
+
+// Special bonus for those using jQuery
+if (typeof jQuery === "function" && el instanceof jQuery) {
+    el = el[0];
+}
+
+var rect = el.getBoundingClientRect();
+
+return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /* or $(window).height() */
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth) /* or $(window).width() */
+);
+}
 
     function isScrolledIntoView(elem) {
         var docViewTop = $(window).scrollTop();
@@ -1789,6 +1809,16 @@ $(this).hide();
 
 
         })
+
+        $(document).on('shown.bs.collapse', function(event){
+        //console.log( "in! print e: " +event.type);
+        if (isElementInViewport(event.target) === false){
+
+            event.target.scrollIntoView(false);
+            
+        }
+        
+    });
 
 
 
