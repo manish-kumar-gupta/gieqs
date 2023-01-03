@@ -726,7 +726,7 @@ foreach ($sections as $section_key=>$section_value){
         echo '<div class="cursor-pointer tag-icon hover-text-gold mx-2" data-toggle="collapse"
         href="#multiCollapseExample' . $y. '"><i  class="fas fa-tag mx-1"></i>' . $curriculum_manager->counttagscurriculumitem($curriculum_items->getid()) . ' Tag(s)</div>|';
         }else{
-            echo '<div class="mx-2"><i  class="fas fa-tag mx-1"></i> No Tags</div>|';
+            //echo '<div class="mx-2"><i  class="fas fa-tag mx-1"></i> No Tags</div>|';
 
         }
         if ($number_references > 0){
@@ -734,7 +734,7 @@ foreach ($sections as $section_key=>$section_value){
         href="#multiCollapseExample' . $z. '""><i class="fas fa-graduation-cap mx-1"></i>' . $curriculum_manager->countReferences($curriculum_items->getid()) . ' Reference(s)</div>';
         }else{
 
-            echo '<div class="mx-2"><i class="fas fa-graduation-cap mx-1"></i> No References</div>'; 
+            //echo '<div class="mx-2"><i class="fas fa-graduation-cap mx-1"></i> No References</div>'; 
         }
         echo '</div>';
         echo'</div>';
