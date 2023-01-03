@@ -575,12 +575,12 @@ top: 0px;
 
                                 <h6 class="mt-4 mb-3 pl-0 h5 text-left">How to Use</h6>
 
-                                <a class="quickstart hover-text-gold cursor-pointer">Quickstart</a>
+                                <a class="quickstart hover-text-gold cursor-pointer mb-2">Quickstart</a>
                                 <div class="break"></div>
-                                <a class="living-curriculum hover-text-gold cursor-pointer">What is a Living
+                                <a class="living-curriculum hover-text-gold cursor-pointer mb-2">What is a Living
                                     Curriculum?</a>
                                 <div class="break"></div>
-                               
+                                <a class="methodology hover-text-gold cursor-pointer mb-2">Methodology</a>
 
 
 
@@ -707,12 +707,31 @@ foreach ($sections as $section_key=>$section_value){
     foreach ($items as $items_key=>$items_value){
 
         $curriculum_items->Load_from_key($items_value);
+        $number_tags = null;
+        $number_references = null;
+        $number_tags = $curriculum_manager->counttagscurriculumitem($curriculum_items->getid());
+        $number_references = $curriculum_manager->countReferences($curriculum_items->getid());
+
 
         echo '<div class="card bg-dark">';
         echo '<div class="actions d-flex" style="position:absolute; right:20px; top:20px; font-size:1rem;">';
-        echo '<div class="cursor-pointer tag-icon hover-text-gold" data-toggle="collapse"
-        href="#multiCollapseExample' . $y. '"><i  class="fas fa-tag mx-2"></i>' . $curriculum_manager->counttagscurriculumitem($curriculum_items->getid()) . ' Tags</div><div class="reference-icon hover-text-gold cursor-pointer" data-toggle="collapse"
-        href="#multiCollapseExample' . $z. '""><i class="fas fa-graduation-cap mx-2"></i>' . $curriculum_manager->countReferences($curriculum_items->getid()) . ' References</div>';
+
+        echo '<div class="cursor-pointer feedback hover-text-gold mx-2" data-statement-id="' . $curriculum_items->getid() . '"><i class="fa fa-comment" aria-hidden="true"></i> Feedback</div>|';
+
+        if ($number_tags > 0){
+        echo '<div class="cursor-pointer tag-icon hover-text-gold mx-2" data-toggle="collapse"
+        href="#multiCollapseExample' . $y. '"><i  class="fas fa-tag mx-1"></i>' . $curriculum_manager->counttagscurriculumitem($curriculum_items->getid()) . ' Tag(s)</div>|';
+        }else{
+            echo '<div class="mx-2"><i  class="fas fa-tag mx-1"></i> No Tags</div>|';
+
+        }
+        if ($number_references > 0){
+        echo '<div class="reference-icon hover-text-gold cursor-pointer mx-2" data-toggle="collapse"
+        href="#multiCollapseExample' . $z. '""><i class="fas fa-graduation-cap mx-1"></i>' . $curriculum_manager->countReferences($curriculum_items->getid()) . ' Reference(s)</div>';
+        }else{
+
+            echo '<div class="mx-2"><i class="fas fa-graduation-cap mx-1"></i> No References</div>'; 
+        }
         echo '</div>';
         echo '<div class="card-body mt-1 mb-0 pb-0 mt-5">';
 
@@ -1100,6 +1119,69 @@ for each section
         </div>
     </div>
 
+    <div class="modal fade methodology-modal" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title h4" id="myExtraLargeModalLabel">
+                        <?php echo $title = get_post_field('post_title', 362);?></h4>
+                    <button type="button" class="close bg-gieqsGold" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="quickstart" class="blog-container">
+
+                        <?php     echo $content = apply_filters('the_content', get_post_field('post_content', 362));?>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+<div class="modal feedback-modal fade" id="feedback_modal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">We value your feedback</h5>
+                <button type="button" class="bg-gieqsGold close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Please let us know what type of feedback you wish to leave?</strong></p>
+               
+            </div>
+            <div class="modal-footer">
+               
+                <button type="button" class="btn btn-dark" onclick="giveFeedback(1);">New Tag Suggestion (for this statement)</button>
+                <button type="button" class="btn btn-dark" onclick="giveFeedback(2);">New Reference Suggestion (for this statement)</button>
+                <button type="button" class="btn btn-dark" onclick="giveFeedback(3);">Incorrect Statement/Reference</button>
+                <button type="button" class="btn btn-dark" onclick="giveFeedback(4);">Something else?</button>
+
+
+            </div>
+            <!-- <div class="modal-footer">
+            <p><a
+                        class="key-features cursor-pointer btn-sm bg-gieqsGold btn-icon rounded-pill hover-translate-y-n3 mt-5">
+                        <span class="btn-inner--icon">
+                            <i class="fas fa-fire text-dark"></i>
+                        </span>
+                        <span class="btn-inner--text text-dark">Show Key Features of each Plan</span>
+                    </a></p>
+            </div> -->
+            <div class="modal-footer">
+            <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
     
 
@@ -1122,6 +1204,8 @@ for each section
 
     <script>
     //the number that are actually loaded
+
+    var statement_id = null;
 
     var siteRoot = rootFolder;
 
@@ -1185,6 +1269,36 @@ return (
     };
 
     var Utils = new Utils();
+
+    function giveFeedback(id){
+
+
+        if (id == 1){
+
+            window.location.href = "mailto:admin@gieqs.com?subject=new%20tag%20suggestion%20for%20Curriculum%20statement%20id%20" + statement_id + "%20from%20user%20id%20<?php echo $userid;?>&body=Please%20describe%20the%20tag%20you%20think%20we%20should%20add%20for%20this%20curriculum%20statement%20here:%0D%0A%0D%0A%0D%0A%0D%0AThank%20you%20for%20your%20feedback";
+
+        }
+
+        if (id==2){
+
+            window.location.href = "mailto:admin@gieqs.com?subject=new%20reference%20suggestion%20for%20Curriculum%20statement%20id%20" + statement_id + "%20from%20user%20id%20<?php echo $userid;?>&body=Please%20describe%20the%20reference%20you%20think%20we%20should%20add%20for%20this%20curriculum%20statement%20here%20including%20DOI:%0D%0A%0D%0A%0D%0A%0D%0AThank%20you%20for%20your%20feedback";
+
+
+        }
+
+        if (id==3){
+
+            window.location.href = "mailto:admin@gieqs.com?subject=Incorrect%20Statement%20Report%20for%20Curriculum%20statement%20id%20" + statement_id + "%20from%20user%20id%20<?php echo $userid;?>&body=Please%20describe%20the%20issue%20with%20the%20curriculum%20statement%20as%20clearly%20as%20possible%20here:%0D%0A%0D%0A%0D%0A%0D%0AThank%20you%20for%20your%20feedback";
+
+        }
+
+        if (id==4){
+
+            window.location.href = "mailto:admin@gieqs.com?subject=User%20Comment%20for%20Curriculum%20statement%20id%20" + statement_id + "%20from%20user%20id%20<?php echo $userid;?>&body=Please%20comment%20here:%0D%0A%0D%0A%0D%0A%0D%0AThank%20you%20for%20your%20feedback";
+
+            }
+
+    }
 
 
     function generateTOC() {
@@ -1810,12 +1924,64 @@ $(this).hide();
 
         })
 
+        $(document).on('click', '.methodology', function(event) {
+
+
+
+$('.methodology-modal').modal('show');
+
+/* var postid = 122;
+
+$.ajax({
+        type: 'POST',
+        url: '<?php //echo BASE_URL . '/assets/wp/wp-admin/admin-ajax.php';?>',
+        dataType: "json", // add data type
+        data: { action : 'my_load_ajax_content', post_id: postid },
+        success: function( response ) {
+            console.log( response );
+
+            $( '#quickstart' ).html( response ); 
+        }
+}); */
+
+
+
+
+
+})
+
+$(document).on('click', '.feedback', function(event) {
+
+statement_id = $(this).attr('data-statement-id');
+
+$('.feedback-modal').modal('show');
+
+/* var postid = 122;
+
+$.ajax({
+        type: 'POST',
+        url: '<?php //echo BASE_URL . '/assets/wp/wp-admin/admin-ajax.php';?>',
+        dataType: "json", // add data type
+        data: { action : 'my_load_ajax_content', post_id: postid },
+        success: function( response ) {
+            console.log( response );
+
+            $( '#quickstart' ).html( response ); 
+        }
+}); */
+
+
+
+
+
+})
+
         $(document).on('shown.bs.collapse', function(event){
         //console.log( "in! print e: " +event.type);
         if (isElementInViewport(event.target) === false){
 
             event.target.scrollIntoView(false);
-            
+
         }
         
     });

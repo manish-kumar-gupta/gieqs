@@ -395,7 +395,7 @@ public function getFullReferenceListCurriculumItem ($curriculum_item_id){
             $n = count($authors);
             $references .= $authors[0] . ', ' . $authors[1] . ', ' . $authors[$n-1];
             $references .= '. ';
-            $references .= $row['formatted'];
+            $references .= '<strong>' . $row['formatted'] . '</strong>';
             $references .= ' ';
             $references .= $row['journal'];
             $references .= ' ';
