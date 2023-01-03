@@ -728,7 +728,7 @@ foreach ($sections as $section_key=>$section_value){
         echo '<div class="cursor-pointer feedback hover-text-gold mx-2 mr-auto" data-statement-id="' . $curriculum_items->getid() . '"><i class="fa fa-comment" aria-hidden="true"></i> Feedback</div>';
 
         if ($number_videos > 0){
-        echo '<div class="cursor-pointer demonstration-video hover-text-gold mx-2" data-video-id="' . $curriculum_manager->getVideoCurriculum($curriculum_items->getid()) . '" data-chapter-id="' . $curriculum_manager->getChapterCurriculum($curriculum_items->getid()) . '"><i class="fa fa-play" aria-hidden="true"></i> Best-Practice Video</div>|';
+        echo '<div class="cursor-pointer demonstration-video hover-text-gold mx-2" data-video-id="' . $curriculum_manager->getVideoCurriculum($curriculum_items->getid()) . '" data-chapter-id="' . $curriculum_manager->getChapterNumberCurriculum($curriculum_manager->getChapterCurriculum($curriculum_items->getid())) . '"><i class="fa fa-play" aria-hidden="true"></i> Best-Practice Video</div>|';
         }
 
         if ($number_tags > 0){

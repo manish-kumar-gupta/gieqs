@@ -398,6 +398,39 @@ public function getChapterCurriculum($curriculum_item_id, $debug=false) {
 
 }
 
+public function getChapterNumberCurriculum($chapterid, $debug=false) {
+
+
+    $q = "SELECT `number` FROM `chapter` WHERE `id` = '$chapterid'";
+
+
+    $result = $this->connection->RunQuery($q);
+
+    $nRows = $result->rowCount();
+    $rowReturn = [];
+
+    if ($nRows > 0) {
+
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+            $chapter_number = $row['number'];
+
+
+        }
+
+
+        return $number;
+
+    }else{
+
+        return false;
+    }
+
+    
+
+
+}
+
 public function gettags($tag_id_array, $debug=false){
 
 
