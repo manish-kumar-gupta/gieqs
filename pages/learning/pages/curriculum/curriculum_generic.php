@@ -1352,7 +1352,7 @@ return (
             text = $(this).attr('data');
             statement +=
                 '<div class="toc-section"><li tocid="' + id +
-                '" class="toc-entry toc-h4 mt-4" style="font-size:1.3rem; list-style-type:none;"><a class="text-muted hover-text-gold" href="#' +
+                '" class="toc-entry super-section-toc toc-h4 mt-4" style="font-size:1.3rem; list-style-type:none;"><a class="text-muted hover-text-gold" href="#' +
                 id +
                 '">' + text +
                 '</a><i class="fa fa-plus-circle cursor-pointer hover-text-gold fold-up-major-section ml-2" style="z-index: 1000;" aria-hidden="true"></i></li>';
@@ -1566,6 +1566,21 @@ return (
                     $('.section-nav li[tocid=' + idElement + ']').find('a').addClass(
                         'text-gieqsGold').removeClass(
                         'text-muted');
+
+               /*          $('.section-nav').find('.super-section-toc').removeClass('text-gieqsGold')
+                        .addClass(
+                            'text-muted');
+
+                        $('.section-nav li[tocid=' + idElement + ']').parent().find('.super-section-toc').addClass('text-gieqsGold').removeClass(
+                        'text-muted');
+
+                        var element_to_scroll = $('.section-nav li[tocid=' + idElement + ']');
+
+                        if (isElementInViewport(element_to_scroll) === false){
+
+                            $(element_to_scroll)[0].scrollIntoView(false);
+
+                        } */
 
                 } else {
 
