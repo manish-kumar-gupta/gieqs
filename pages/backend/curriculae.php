@@ -445,7 +445,7 @@ $xcrud->button(BASE_URL . '/pages/learning/pages/curriculum/curriculum_generic.p
 
     $curriculumvideostable_nest->relation('curriculum_item_id','curriculum_items','id',array('id', 'item_order', 'statement'));
     $curriculumvideostable_nest->relation('video_id','video','id',array('id', 'name'));
-    $curriculumvideostable_nest->relation('chapter_id','chapter','id',array('id', 'name', 'video_id'));
+    $curriculumvideostable_nest->relation('chapter_id','chapter','id',array('video_id', 'number', 'name'));
 
     $curriculumvideostable_nest->columns('curriculum_item_id, created, updated', true);
 

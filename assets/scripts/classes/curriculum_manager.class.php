@@ -419,7 +419,7 @@ public function getChapterNumberCurriculum($chapterid, $debug=false) {
         }
 
 
-        return $number;
+        return $chapter_number;
 
     }else{
 
