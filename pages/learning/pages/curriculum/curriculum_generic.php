@@ -109,6 +109,29 @@ add_action ( 'wp_ajax_load-content', 'my_load_ajax_content' );
 
 
     <style>
+
+    ::-webkit-scrollbar {
+        width: 12px;
+    }
+    
+    /* Track */
+    ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+    }
+    
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        background: rgba(238, 194, 120, 0.8); 
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    }
+    ::-webkit-scrollbar-thumb:window-inactive {
+        background: rgba(238, 194, 120,0.4); 
+    }
+
     .divider-icon::before {
 
         border-bottom: 1px solid #6e84a3 !important;
@@ -191,6 +214,12 @@ add_action ( 'wp_ajax_load-content', 'my_load_ajax_content' );
         font-size: 1.2rem !important;
         padding-left: 1.1rem;
     } */
+
+    .text-container h1 {
+
+margin-top: 4rem !important;
+
+}
 
     .text-container h2 {
 
@@ -329,6 +358,8 @@ top: 0px;
         flex-basis: 100%;
         height: 0;
     }
+
+    
     </style>
 
 
@@ -765,7 +796,9 @@ foreach ($sections as $section_key=>$section_value){
 
         if ($curriculum_items->gettype() == '1'){
 
-        echo $curriculum_items->getstatement();
+            $statement_text = $curriculum_items->getstatement();
+            preg_replace('/<span[^>]+\>|<\/span>/i', '', $statement_text); //1. my answer
+             echo $statement_text;
 
         }elseif ($curriculum_items->gettype() == '3'){
 
