@@ -56,8 +56,8 @@ add_action ( 'wp_ajax_load-content', 'my_load_ajax_content' );
 
       //define user access level
 
-      $openaccess = 0;
-      $requiredUserLevel = 6;
+      $openaccess = 1;
+      //$requiredUserLevel = 6;
 
 
       require BASE_URI . '/head.php';

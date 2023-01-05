@@ -144,7 +144,7 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
   
                             ?>
   
-                      <li>
+                    <li class="mt-2" style="line-height:1.2;">
   
                       <a class="menu-item <?php echo $color_item;?>"
                               href="<?php echo $start_link . $value['id'] ?>"><i
@@ -163,7 +163,6 @@ require_once BASE_URI . '/assets/scripts/classes/assets_paid.class.php';
   
                       <?php } ?>
 
-<a href="<?php echo BASE_URL;?>/pages/learning/pages/general/show_courses.php" class="btn btn-sm text-dark bg-gieqsGold my-3">Browse All Pro Content</a>
 
 
 <?php 
@@ -619,6 +618,12 @@ $coursesAdvertised = array_slice($coursesAdvertised, 0, 10, true);
                 </ul>
             </div>
 
+            <div class="col-md-6 col-xl-3 sub-menu mb-xl-0 mb-4">
+             
+
+            <a href="<?php echo BASE_URL;?>/pages/learning/pages/general/show_courses.php" class="btn btn-sm text-white bg-secondary hover-gold mt-0">Browse All Pro Content</a>
+
+                    </div>
             
            
         </div>
