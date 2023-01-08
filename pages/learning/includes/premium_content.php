@@ -226,7 +226,7 @@ $coursesAdvertised = array_slice($coursesAdvertised, 0, 10, true);
 
                           ?>
 
-                    <li>
+                    <li style="line-height:1.2;">
 
                     <a class="menu-item <?php echo $color_item;?>"
                             href="<?php echo $start_link . $value['id'] ?>"><i
