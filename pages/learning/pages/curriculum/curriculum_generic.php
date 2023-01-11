@@ -571,6 +571,8 @@ top: 0px;
                                 tag it will be visible once you reload. </p>
                             <p class="text-dark bg-gieqsGold p-3" style="opacity: 1;">We suggest leaving the curriculum
                                 open once it loads and using tags to browse GIEQs Online</p>
+
+                                <p class="text-dark bg-gieqsGold p-3" style="opacity: 1;">If you are not logged into GIEQs Online you can view the curriculum, check references but major functionality (tag jumping, viewing demonstration videos) is disabled.  GIEQs Online logins can be obtained free at <a href="https://www.gieqs.com/online" target="_blank">gieqs.com/online</a></p>
                         </div>
                     </div>
 
@@ -804,7 +806,7 @@ foreach ($sections as $section_key=>$section_value){
 
             echo '<figure class="img-responsive text-center my-3">';
             echo '<img class="w-75" src="' . BASE_URL . '/assets/img/uploads/' . $curriculum_items->getimage_url() . '">';
-            echo '<figcaption>' . $curriculum_items->getstatement() . '</figcaption>';
+            echo '<figcaption class="my-2">' . $curriculum_items->getstatement() . '</figcaption>';
             echo '</figure>';
     
         }elseif ($curriculum_items->gettype() == '4'){?>
@@ -1756,7 +1758,15 @@ return (
                 if (data) {
                     //show green tick
 
-                    var result = JSON.parse(data);
+                    try {
+                        
+                        var result = JSON.parse(data);
+
+                    } catch (error) {
+                        
+                        alert('Login Required for Tag Functionality.  You can create an account at gieqs.com/online');
+                        return;
+                    }
 
                     console.dir(result);
 
@@ -1788,6 +1798,14 @@ return (
                 }
 
             })
+
+
+            
+
+            request2.fail(function(xhr, status, error) {
+                alert("Login Required for Tag Functionality");
+            })
+
 
 
 
