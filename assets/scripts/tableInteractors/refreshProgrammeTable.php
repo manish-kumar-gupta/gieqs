@@ -11,7 +11,7 @@ require ('../../../assets/includes/config.inc.php');
 
 $programme = new programme;
 
-$response =  $programme->Load_records_limit_json_datatables(50);
+$response =  $programme->Load_records_limit_json_datatables(6000);
 
 echo $response;
 

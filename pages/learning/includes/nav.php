@@ -422,7 +422,7 @@ if ($debug){
 
                 <li class="nav-item">
                     <a class="nav-link"
-                        href="<?php echo BASE_URL; ?>/pages/learning/pages/scores/dashboard-gpat.php">GPAT</a>
+                        href="<?php echo BASE_URL; ?>/pages/generic.php?id=383">GPAT</a>
                 </li>
 
                 <li class="nav-item dropdown dropdown-animate" data-toggle="hover">
