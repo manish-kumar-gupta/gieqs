@@ -103,7 +103,7 @@ $post_tags = get_the_tags($id);
 ?>
 
 
-    <div class="blog-container container mt-5 p-10">
+    <div class="blog-container container mt-5 pt-10">
     
     <?php
 
