@@ -131,6 +131,16 @@ margin: auto;
 
 }
 
+.wp-block-embed iframe {
+
+    text-align: center;
+    width: 90%;
+    height: auto;
+    margin: auto;    
+        display: block;
+    
+    }
+
 .curriculum-top-card {
 position: relative;
     display: flex;
