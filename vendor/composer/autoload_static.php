@@ -34,6 +34,10 @@ class ComposerStaticInit8eb686780e878a127cff40babf542ad7
     );
 
     public static $prefixLengthsPsr4 = array (
+        's' => 
+        array (
+            'setasign\\Fpdi\\' => 14,
+        ),
         'p' => 
         array (
             'phpseclib3\\' => 11,
@@ -148,6 +152,10 @@ class ComposerStaticInit8eb686780e878a127cff40babf542ad7
     );
 
     public static $prefixDirsPsr4 = array (
+        'setasign\\Fpdi\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/setasign/fpdi/src',
+        ),
         'phpseclib3\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib',
@@ -267,8 +275,8 @@ class ComposerStaticInit8eb686780e878a127cff40babf542ad7
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -415,6 +423,7 @@ class ComposerStaticInit8eb686780e878a127cff40babf542ad7
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'BaseFacebook' => __DIR__ . '/..' . '/facebook/php-sdk/src/base_facebook.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'FPDF' => __DIR__ . '/..' . '/setasign/fpdf/fpdf.php',
         'Facebook' => __DIR__ . '/..' . '/facebook/php-sdk/src/facebook.php',
         'FacebookApiException' => __DIR__ . '/..' . '/facebook/php-sdk/src/base_facebook.php',
         'Google_AccessToken_Revoke' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',

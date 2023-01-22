@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'ec40e7b042fcf68485de9247521bd9f54acd16b7',
+    'reference' => 'cf92b2806febbd6507b1d660c6dd17941bc53696',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'ec40e7b042fcf68485de9247521bd9f54acd16b7',
+      'reference' => 'cf92b2806febbd6507b1d660c6dd17941bc53696',
     ),
     'ankitpokhrel/tus-php' => 
     array (
@@ -517,6 +517,24 @@
       array (
         0 => '4.1.1',
       ),
+    ),
+    'setasign/fpdf' => 
+    array (
+      'pretty_version' => '1.8.5',
+      'version' => '1.8.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'f4104a04c9a3f95c4c26a0a0531abebcc980987a',
+    ),
+    'setasign/fpdi' => 
+    array (
+      'pretty_version' => 'v2.3.6',
+      'version' => '2.3.6.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '6231e315f73e4f62d72b73f3d6d78ff0eed93c31',
     ),
     'slim/slim' => 
     array (

@@ -1011,6 +1011,69 @@ if ($nRows > 0) {
     }
 
 
+    function createCertificate ($userid, $assetid, $debug){
+
+        $q = "INSERT INTO `certificates` (`user_id`, `asset_id`, `created`) VALUES ('$userid', '$assetid', current_timestamp())";
+
+        $result = $this->connection->RunQuery($q);
+
+        return $q->rowCount(); 
+
+
+
+
+        //return certificate ids
+    }
+
+    function checkCertificate ($id) {
+
+        $q = "SELECT `id` FROM `certificates` WHERE `id` = '$id'";
+
+        $result = $this->connection->RunQuery($q);
+        
+		$nRows = $result->rowCount();
+			if ($nRows == 1){
+				while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                    $rowReturn = $row['id'];
+                    //$x++;
+    
+                }
+
+                return $rowReturn;
+			}else{
+				return FALSE;
+			}
+
+        //return user name and valid or not
+
+    }
+
+    function checkCertificateUserAsset ($userid, $assetid, $debug) {
+
+        $q = "SELECT `id` FROM `certificates` WHERE `user_id` = '$userid' AND `asset_id` = '$assetid'";
+
+        //return user name and valid or not
+
+        $result = $this->connection->RunQuery($q);
+        
+		$nRows = $result->rowCount();
+			if ($nRows == 1){
+				while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                    $rowReturn = $row['id'];
+                    //$x++;
+    
+                }
+
+                return $rowReturn;
+			}else{
+				return FALSE;
+			}
+
+    }
+
+
     
 
     /**

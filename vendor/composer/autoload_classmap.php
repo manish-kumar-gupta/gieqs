@@ -9,6 +9,7 @@ return array(
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'BaseFacebook' => $vendorDir . '/facebook/php-sdk/src/base_facebook.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'FPDF' => $vendorDir . '/setasign/fpdf/fpdf.php',
     'Facebook' => $vendorDir . '/facebook/php-sdk/src/facebook.php',
     'FacebookApiException' => $vendorDir . '/facebook/php-sdk/src/base_facebook.php',
     'Google_AccessToken_Revoke' => $vendorDir . '/google/apiclient/src/aliases.php',

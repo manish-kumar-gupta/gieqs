@@ -302,6 +302,8 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
 
             echo '<th>Course</th>';
             echo '<th>Completion</th>';
+            echo '<th>Certificate</th>';
+
             echo '</tr>';
             echo '</thead>';
             echo '<tbody>';
@@ -316,13 +318,30 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
 
                 $assets_paid->Load_from_key($key);
 
+                $completion = null;
+
+                $completion = round($value, 1);
+
+                $statement = null;
+
+                if($completion == 100){
+
+                    $statement = "<button class='btn btn-sm bg-secondary text-white'>Generate</button>";
+
+                }
+
+
+
                 echo '<tr>';
 
                 echo '<td>' . $key . '</td>';
 
                 echo '<td>'  . $assets_paid->getname() . '</td>';
 
-                echo '<td>'  . round($value, 1) . '%</td>';
+                echo '<td>'  . $completion . '%</td>';
+
+                echo '<td>'  . $statement . '</td>';
+
 
               
 
