@@ -10,16 +10,21 @@
                  * 
                  * */
 
-$openaccess =1;
+$openaccess = 1;
 			//$requiredUserLevel = 4;
 			require ('../../assets/includes/config.inc.php');		
 			
 			require (BASE_URI.'/assets/scripts/headerScript.php');
 
+            ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
             ?>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 <?php
 
@@ -35,6 +40,10 @@ $openaccess =1;
             $users = new users;
             $token = new token;
             $subscription = new subscriptions;
+            require_once(BASE_URI . '/pages/learning/classes/usersMetricsManager.class.php');
+            $usersMetricsManager = new usersMetricsManager;
+            $assets_paid = new assets_paid;
+
 
 
             $debug = false;
@@ -84,7 +93,7 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
 	$id = null;
     $id_set = false;
     echo '<div class="container">';
-    echo '<p>Please set the token id in the url, e.g. ?id=[tokenid]</p>';
+    echo '<p>Please set the user id in the url, e.g. ?id=[userid]</p>';
     echo '</div>';
     exit();
 
@@ -112,11 +121,11 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
                 print_r($response);
                 } */
 
-                $users_token = $institutional_manager->getUsersToken($id, false);
+                $users->Load_from_key($id);
 
                 if ($debug){
                     
-                    print_r($users_token);
+                    print_r($users);
 
                 }
 
@@ -131,17 +140,89 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
 
             echo '<div class="container mt-5">';
 
-            echo '<h2>Registrants for Token id ' . $id . '</h2>';
+            echo '<h2>Activity for User id ' . $id . '</h2>';
+            echo '<p>User name : ' . $users->getfirstname() . ' ' .  $users->getsurname() . ' </p>';
 
-            $token->Load_from_key($id);
+            //$token->Load_from_key($id);
 
-            echo '<p>Token Used , Remaining = ' . $token->getremaining() . '</p>';
+            
 
-            echo '<p>Institution: ' . $token->getinstitutional_id() . ' </p>';
+            if ($assetManager->getSiteWideSubscription($id, $debug)){
+    
+                //there is a site wide subscription
+                if ($debug){
+                  echo 'there is a site wide subscription';
+                  }
+                
+                
+                //check if active 
+              
+                $datetime_utc = new DateTime('now', new DateTimeZone('UTC'));
+              
+                if ($assetManager->isSubscriptionActive($assetManager->getSiteWideSubscription($id, $debug), $datetime_utc, $debug)){
+              
+                  //is active
+                  if ($debug){
+                    echo 'it is active';
+                    }
+              
+                    $siteWideSubscriptionid = $assetManager->getSiteWideSubscription($id, $debug);
 
-            echo '<p>Sponsor: ' . $token->getsponsor() . ' </p>';
+                    $subscription->Load_from_key($siteWideSubscriptionid);
+              
+                    if ($debug){
+                      echo 'SUBSCRIPTION ID IS ' . $siteWideSubscriptionid;
+                      }
+              
+                    //find out which asset
 
-            echo '<table class="table">';
+                    $subscription_name = $assetManager->getAssetName($siteWideSubscriptionid);
+                            
+                    if ($debug){
+                      echo 'ASSET ID IS ' . $assetid_subscription;
+                      }
+
+                      $date=date_create($subscription->getexpiry_date()); 
+
+                      echo '<p>Active Sitewide Subscription : ' . $subscription_name . '</p>';
+                      echo '<p>Sitewide Subscription Expires : ' . date_format($date,"d/m/Y H:i:s") . '</p>';
+
+
+               }else{
+
+                echo '<p>Active Sitewide Subscription : None</p>';
+
+               }
+
+            }else{
+
+                echo '<p>Active Sitewide Subscription : None</p>';
+
+                if ($debug){
+
+
+                }
+
+           }
+
+           echo 'Total Site Completion : ' . round($usersMetricsManager->userCompletionVideos($id, $debug)['completion'], 1) . '%';
+           
+           $allAssets = $usersMetricsManager->getAllAssets();
+
+           $asset_completion_array = [];
+
+           $asset_completion_counter = 0;
+
+           foreach ($allAssets as $key=>$value){
+
+                //return completion for each asset
+
+                $asset_completion_array[$value] = $usersMetricsManager->userCompletionAsset($id, $value, $debug);
+                $asset_completion_counter++;
+
+           }
+
+           /* echo '<table class="table">';
             echo '<thead>';
             echo '<tr>';
             echo '<th>Name</th>';
@@ -153,25 +234,97 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
             echo '</tr>';
             echo '</thead>';
             echo '<tbody>';
+ */
 
-            foreach ($users_token as $key=>$value){
 
-                $users->Load_from_key($value);
+
+           if ($debug){
+            
+            var_dump($asset_completion_array);
+
+           }
+
+           /* foreach ($asset_completion_array as $key=>$value){
+
+             if ($value != false){
+
+                echo '<p>Asset ' . 'asset name' . ' is ' . round($value, 1) . '% completed</p>';
+
+             }else{
+
+                echo '<p>Asset ' . 'asset name' . ' is not yet accessed by user</p>';
+
+
+             }
+
+           } */
+
+           uasort($asset_completion_array, function($a, $b) { return $b > $a ;});
+
+
+           //get all videos
+           //return % completion
+
+           //return courses completion per asset (that has been started)
+
+           //return 'userscompletion'
+
+           //approximate hours spent
+           // exit();
+
+
+            //echo '<p>Remaining : ' . $token->getinstitutional_id() . ' </p>';
+
+
+            echo '<br/><br/>';
+
+            ?>
+
+
+
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Course Completion Status
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+       <?php
+
+      echo '<h4>Course Completion Status</h4>';
+            
+            echo '<table class="table">';
+            echo '<thead>';
+            echo '<tr>';
+            echo '<th>id</th>';
+
+            echo '<th>Course</th>';
+            echo '<th>Completion</th>';
+            echo '</tr>';
+            echo '</thead>';
+            echo '<tbody>';
+
+
+
+            
+
+         
+
+            foreach ($asset_completion_array as $key=>$value){
+
+                $assets_paid->Load_from_key($key);
 
                 echo '<tr>';
 
-                echo '<td>'  . $users->getfirstname() . ' ' . $users->getsurname() . '</td>';
+                echo '<td>' . $key . '</td>';
 
-                echo '<td>'  . $users->getemail() . '</td>';
+                echo '<td>'  . $assets_paid->getname() . '</td>';
 
-                echo '<td>'  . $subscriptionid = $assetManager->provideInstitutionalDatav2($id, false)[$value] . '</td>';  //needs new function get user_subscription_token, define subscription id
+                echo '<td>'  . round($value, 1) . '%</td>';
 
-                $subscription->Load_from_key($subscriptionid);
-
-                echo '<td>'  . $subscription->getstart_date() . '</td>';  //needs new function get user_subscription_token, define subscription id
-
-                echo '<td>'  . $subscription->getexpiry_date() . '</td>';  //needs new function get user_subscription_token, define subscription id
-
+              
 
                 echo '</tr>';
 
@@ -184,6 +337,40 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
 
             echo '</tbody>';
             echo '</table>';
+            ?>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Accordion Item #2
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Accordion Item #3
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<?php
+            
+
 
             echo '</div>';
 

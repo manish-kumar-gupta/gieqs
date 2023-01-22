@@ -350,6 +350,40 @@ class usersMetricsManager
 
     }
 
+    public function getAllAssets(){
+
+
+        $q = "SELECT `id` FROM `assets_paid` ORDER BY `id` DESC";
+
+$x=0;
+$returnArray = [];
+$result = $this->connection->RunQuery($q);
+
+$nRows = $result->rowCount();
+
+
+if ($nRows > 0) {
+
+    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+        $returnArray[$x] = $row['id'];
+        $x++;
+
+    }
+
+    return $returnArray;
+
+}else{
+
+    return FALSE;
+}
+
+
+
+
+    }
+
+
     public function userCompletionAsset($userid, $assetid, $debug = false)
     {
 
