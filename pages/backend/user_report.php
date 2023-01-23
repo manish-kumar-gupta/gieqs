@@ -365,24 +365,24 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingTwo">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Accordion Item #2
+        Total Video Completion
       </button>
     </h2>
     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        Under construction.
       </div>
     </div>
   </div>
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingThree">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Accordion Item #3
+        User Reviewing Status
       </button>
     </h2>
     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      Under construction.
       </div>
     </div>
   </div>
@@ -402,7 +402,7 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
             ?>
             <script src="<?php echo BASE_URL;?>/assets/js/purpose.core.js"></script>
 
---><script src="<?php echo BASE_URL;?>/assets/js/generaljs.js"></script>
+<script src="<?php echo BASE_URL;?>/assets/js/generaljs.js"></script>
         <script src="../../assets/js/purpose.js"></script>
         <script src="<?php echo BASE_URL;?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
 
@@ -427,7 +427,7 @@ $(document).ready(function() {
         console.log(jsonString);
 
         var request2 = $.ajax({
-            url: siteRoot + 'pages/backend/generate_pdf.php',
+            url: siteRoot + 'pages/backend/generate_pdf_certificate_course.php',
             type: "POST",
             contentType: "application/json",
             data: jsonString,
@@ -437,7 +437,16 @@ $(document).ready(function() {
 
         request2.done(function(data) {
             // alert( "success" );
-            window.open(siteRoot + 'pages/backend/temp.pdf');  
+
+            if (data.startsWith("Error")){
+
+                alert(data);
+
+            }else{
+
+            
+            window.open(siteRoot + 'pages/backend/temp-certificate.pdf');  
+            }
 
             //$(document).find('.Thursday').hide();
         })

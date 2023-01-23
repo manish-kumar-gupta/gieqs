@@ -1011,13 +1011,15 @@ if ($nRows > 0) {
     }
 
 
-    function createCertificate ($userid, $assetid, $debug){
+    function createCertificate ($userid, $assetid, $debug=false){
 
         $q = "INSERT INTO `certificates` (`user_id`, `asset_id`, `created`) VALUES ('$userid', '$assetid', current_timestamp())";
 
-        $result = $this->connection->RunQuery($q);
+        //echo $q;
 
-        return $q->rowCount(); 
+        $result = $this->connection->RunQuery($q);
+        return $this->connection->conn->lastInsertId(); 
+
 
 
 
