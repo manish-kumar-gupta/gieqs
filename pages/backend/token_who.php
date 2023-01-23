@@ -144,6 +144,7 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
             echo '<table class="table">';
             echo '<thead>';
             echo '<tr>';
+            echo '<th>User id</th>';
             echo '<th>Name</th>';
             echo '<th>Email</th>';
                         echo '<th>Subscription id</th>';
@@ -160,7 +161,9 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
 
                 echo '<tr>';
 
-                echo '<td>'  . $users->getfirstname() . ' ' . $users->getsurname() . '</td>';
+                echo '<td>' . $value . '</td>';
+
+                echo '<td><a href="user_report.php?id=' . $value . '">'  . $users->getfirstname() . ' ' . $users->getsurname() . '</a></td>';
 
                 echo '<td>'  . $users->getemail() . '</td>';
 

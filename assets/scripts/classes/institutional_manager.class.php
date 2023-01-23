@@ -116,6 +116,34 @@ Class institutional_manager {
 
     }
 
+    public function getTokensInstitution($institution_id, $debug=false){
+
+        $q = "SELECT `id` FROM `token` WHERE `institutional_id` = '$institution_id'";
+        //echo $q;
+        $result = $this->connection->RunQuery($q);
+        $rowReturn = array();
+        $x = 0;
+        $nRows = $result->rowCount();
+        if ($nRows > 0) {
+
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                $rowReturn[] = $row['id'];
+            }
+        
+            return $rowReturn;
+
+        } else {
+            
+
+            //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+            $rowReturn['data'] = [];
+            
+            return $rowReturn;
+        }
+
+    }
+
 
 
 
