@@ -72,6 +72,22 @@ $post_tags = get_the_tags($id);
 	}
 }?>">
 
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@gieqs_symposium">
+<meta name="twitter:creator" content="<?php echo get_the_author_meta('display_name', get_post_field('post_author', $id));?>">
+<meta name="twitter:title" content="<?php echo $title;?>">
+<meta name="twitter:description" content="<?php echo get_the_excerpt($id);?>">
+<meta name="twitter:image" content="<?php echo get_the_post_thumbnail_url($id);?>">
+
+<meta property="og:type" content="website" />
+<meta property="fb:app_id" content="493045018280075" />
+
+<meta property="og:url" content="https://www.gieqs.com/pages/learning/blog_article_wp.php?id=<?php echo $id;?>">
+<meta property="og:title" content="<?php echo $title;?>">
+<meta property="og:description" content="<?php echo get_the_excerpt($id);?>">
+<meta property="og:image" content="<?php echo get_the_post_thumbnail_url($id);?>"
+
     
 
 
