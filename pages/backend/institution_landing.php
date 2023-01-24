@@ -37,7 +37,8 @@ require(BASE_URI . '/pages/backend/institution_header.php');
                         <p class='m-2'><?php echo $assets_paid->getname() . '<br/>Purchased: ' .  $date_created_human . '<br/>Value: &euro;' . $token->getcost(); ?></p>
                     </div>
                     <div>
-                        <button class="btn btn-sm bg-secondary text-white manage-token" data-tokenid="<?php echo $value;?>">Manage</button>
+                        <button class="btn btn-sm bg-secondary text-white manage-token" data-tokenid="<?php echo $value;?>" data-tokencipher="<?php echo $token->getcipher();?>">Manage</button>
+                        <button class="btn btn-sm bg-secondary text-white generate-token-link" data-tokenid="<?php echo $value;?>" data-tokencipher="<?php echo $token->getcipher();?>" data-assetid="<?php echo $assets_paid->getid();?>">Generate Link</button>
 
                         <?php
                     }
@@ -76,10 +77,12 @@ require(BASE_URI . '/pages/backend/institution_header.php');
             
 
 
-            
 
 
             echo '</div>';
+
+            echo '<p class="mt-5" id="message"></p>';
+
 
 
 
@@ -99,6 +102,29 @@ $(document).ready(function() {
         window.location.href = siteRoot + 'pages/backend/institution_token_who.php?institution_id=' + institutionid + '&token_id=' + tokenid;
 
         
+
+
+
+
+    })
+
+    $(document).on('click', '.generate-token-link', function(){
+
+        var tokenid = $(this).attr('data-tokenid');
+        var cipher = $(this).attr('data-tokencipher');
+        var assetid = $(this).attr('data-assetid');
+        var institutionid = $(document).find('#institutionid').text();
+        //var userid = $(this).attr('user-id');
+
+        var link = siteRoot + '/pages/program/program_generic.php?access_token=' + cipher + '&id=' + assetid;
+
+        var link_html = '<a href="' + link + '">' + link + '</a>';
+
+        $(document).find('#message').html(link_html);
+
+        //window.location.href = siteRoot + 'pages/backend/institution_token_who.php?institution_id=' + institutionid + '&token_id=' + tokenid;
+
+
 
 
 
