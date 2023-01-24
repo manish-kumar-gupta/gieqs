@@ -27,13 +27,14 @@ require(BASE_URI . '/pages/backend/institution_header.php');
                         $token->Load_from_key($value);
                         $date_created = null;
                         $date_created = new DateTime($token->getcreated());
+                        $date_created_human = date_format($date_created, 'd/m/Y');
                         $assets_paid->Load_from_key($token->getasset_id());
 
 
                         ?>
                         
                         <h6>Token #<?php echo $token->getid();?></h6>
-                        <p class='m-2'><?php echo $assets_paid->getname() . $token->getcreated() . '&euro;' . $token->getcost(); ?>, Purchased, Value</p>
+                        <p class='m-2'><?php echo $assets_paid->getname() . '<br/>Purchased: ' .  $date_created_human . '<br/>Value: &euro;' . $token->getcost(); ?></p>
                     </div>
                     <div>
                         <button class="btn btn-sm bg-secondary text-white manage-token" data-tokenid="<?php echo $value;?>">Manage</button>
@@ -83,12 +84,7 @@ require(BASE_URI . '/pages/backend/institution_header.php');
 
 
             ?>
-            <script src="<?php echo BASE_URL;?>/assets/js/purpose.core.js"></script>
-
-<script src="<?php echo BASE_URL;?>/assets/js/generaljs.js"></script>
-        <script src="../../assets/js/purpose.js"></script>
-        <script src="<?php echo BASE_URL;?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
-
+           
 <script>
 
 $(document).ready(function() {

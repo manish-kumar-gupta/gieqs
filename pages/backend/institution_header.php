@@ -31,6 +31,11 @@ error_reporting(E_ALL); */
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="<?php echo BASE_URL;?>/assets/js/purpose.core.js"></script>
+
+<script src="<?php echo BASE_URL;?>/assets/js/generaljs.js"></script>
+        <script src="../../assets/js/purpose.js"></script>
+        <script src="<?php echo BASE_URL;?>/assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
 
 <style>
 
@@ -41,6 +46,23 @@ margin-bottom: 0 !important;
 }
 
     </style>
+
+    <script>
+
+        $(document).ready(function() {
+
+
+            $(document).on('click', '.give-feedback', function(){
+
+
+                window.location.href = "mailto:admin@gieqs.com?subject=Feedback%20on%20Institution%20Management%20Console%2C%20gieqs.com";
+
+
+            })
+
+        })
+
+</script>
 
 <?php
 
@@ -217,7 +239,7 @@ if (isset($_GET["institution_id"]) && is_numeric($_GET["institution_id"])){
             echo '<h2>GIEQs Institutional/Group Access</h2>';
             $users->Load_from_key($userid);
             echo '<p>User : ' . $users->getfirstname() . ' ' .  $users->getsurname() . ' </p>';
-            echo '<button class="btn btn-sm bg-secondary text-white manage-token ms-3">Feedback</button>';
+            echo '<button class="btn btn-sm bg-secondary text-white give-feedback ms-3">Feedback</button>';
 
             echo '</div>';
 
