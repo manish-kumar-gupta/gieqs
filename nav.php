@@ -121,7 +121,7 @@ require_once BASE_URI . '/pages/learning/includes/gieqs_iii_settings.php';
 
                 //just use the first programme that day.  modify later if others required
 
-                if ($programmes345){   //if $programmes previously so now disabled
+                if (isset($programmes345) && ($programmes345 === true)){   //if $programmes previously so now disabled
 
                   $access3 = $assetManager->programme_owned_by_user($programmes[0]['programmeid'], $userid, $debug);
 

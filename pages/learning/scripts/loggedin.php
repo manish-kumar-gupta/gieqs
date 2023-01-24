@@ -1,9 +1,5 @@
 <?php
 $openaccess = 1;
-
-//$requiredUserLevel = 6;
-
-
 error_reporting(E_ALL);
 require_once '../../../assets/includes/config.inc.php';
 

@@ -50,6 +50,9 @@ $formv1 = new formGenerator;
 require_once BASE_URI . '/assets/scripts/classes/assetManager.class.php';
 $assetManager = new assetManager;
 
+require_once BASE_URI . '/assets/scripts/classes/userFunctions.class.php';
+$userFunctions = new userFunctions;
+
 spl_autoload_unregister ('class_loader');
 //require BASE_URI . '/assets/scripts/pdocrud/script/pdocrud_gieqs.php';
 require BASE_URI . '/assets/scripts/xcrud/xcrud/xcrud.php';
@@ -127,7 +130,13 @@ spl_autoload_register ('class_loader');
 
         <!-- Main navbar -->
 
-        <?php require BASE_URI . '/nav.php';?>
+
+        <?php 
+        
+
+        $debug = false;
+        
+        require BASE_URI . '/nav.php';?>
 
     </header>
 
@@ -149,7 +158,7 @@ spl_autoload_register ('class_loader');
                     <div class=" col-lg-12">
                         <!-- Salute + Small stats -->
                         <div class="row align-items-center mb-4">
-                            <div class="col-md-5 mb-4 mb-md-0">
+                            <div class="col-md-10 mb-4 mb-md-0">
                                 <span class="h2 mb-0 text-white d-block">GIEQS Group/Institution Manager</span>
 
                                 <!-- <span class="text-white">Have a nice day!</span> -->
@@ -352,8 +361,25 @@ if ($local){
 
 }
 
-$xcrud->connection($username,$password,$dbname,$host);
+$xcrud->connection($username,$password,$dbname_learning,$host);
 
+
+$xcrud->table('institutional'); //employees - MySQL table name
+
+$curriculaesectiontable_nest = $xcrud->nested_table('Institutional Users', 'id', 'institution_user','institution_id');
+$curriculaesectiontable_nest->connection($username,$password,$dbname_learning,$host);
+$curriculaesectiontable_nest->change_type('user_type','select','',array(1=>'administrator', 2=>'viewer'),);  //2 table removed
+$curriculaesectiontable_nest->change_type('user_id','select','',$userFunctions->getAllUsersArray(),);  //2 table removed
+$curriculaesectiontable_nest->columns('institution_id', true);
+//$curriculaeitemstable_nest->relation('user_id','users','id',array('firstname'));
+
+
+//$curriculaesectiontable_nest->table('curriculum_sections');
+
+
+echo $xcrud->render(); //magic
+
+exit();
 
 $xcrud->table('sessionItemAsset'); //employees - MySQL table name
 $xcrud->join('sessionItemid','sessionItem','id');

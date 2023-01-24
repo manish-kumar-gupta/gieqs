@@ -180,6 +180,41 @@ Class userFunctions {
 
 	}
 
+	public function getAllUsersArray(){
+
+		$users = [];
+		$x=0;
+
+		
+		
+			$q = "SELECT `user_id`, `firstname`, `surname` FROM `users`";
+		//echo $q;
+
+		$result = $this->connection->RunQuery($q);
+		$nRows = $result->rowCount();
+			if ($nRows > 0){
+
+				while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+					$id=null;
+					$id = $row['user_id'];
+					$users[$id] = $row['firstname'] . ' ' . $row['surname'];
+					
+				}
+
+				
+			}else{
+				$users[] = null;
+			}
+
+		
+
+		return $users;
+
+
+
+	}
+
 	public function getUserKey($userid){
 
         $q = "SELECT `key` FROM `users` WHERE `user_id` = '$userid'";
