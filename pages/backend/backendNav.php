@@ -110,7 +110,8 @@
                   <span class="dropdown-header">Asset Token Access</span>
                   <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/token.php">Edit Token</a>
                   <span class="dropdown-header">GIEQs Online Partners</span>
-                  <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/institution.php">Edit Purchasing Institutions</a>
+                  <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/institution.php">Institutions</a>
+                  <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/institutional_new.php">Institutions NEW</a>
 
                   <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/sponsor.php">Edit Sponsors</a>
                   <a class="dropdown-item" href="<?php echo BASE_URL;?>/pages/backend/partner.php">Edit Partners</a>
