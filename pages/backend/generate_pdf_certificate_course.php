@@ -114,6 +114,9 @@ $data = json_decode(file_get_contents('php://input'), true);
 $assetid = $data['assetid'];
 $userid_set = $data['userid'];
 
+//var_dump($data);
+//exit();
+
 if (!(isset($assetid))){
 
     echo 'Error - asset id not set';
@@ -137,9 +140,9 @@ $users->Load_from_key($userid_set);
 
 $completion = $usersMetricsManager->userCompletionAsset($userid_set, $assetid);
 
-//echo $completion;
+echo $completion;
 
-//exit();
+exit();
 
 //CHECK THE DETAILS AND THAT THE USER ACTUALLY HAS THIS 100%
 

@@ -53,19 +53,19 @@ require(BASE_URI . '/pages/backend/institution_header.php');
 
                 </div>
 
-                <div class="p-4 border border-1 ms-3">
-                <div class="d-flex">
+                <!-- <div class="p-4 border border-1 ms-3">
+                    <div class="d-flex">
 
-<h4>Institution Management</h4>
+                    <h4>Institution Management</h4>
 
-</div>
-<div class="d-flex justify-content-between align-items-center">
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
 
 
-                <button class="btn btn-sm bg-secondary text-white manage-token">Manage</button>
-                </div>
+                    <button class="btn btn-sm bg-secondary text-white manage-token">Manage</button>
+                    </div>
 
-                </div>
+                </div> -->
 
                 
 
@@ -116,7 +116,7 @@ $(document).ready(function() {
         var institutionid = $(document).find('#institutionid').text();
         //var userid = $(this).attr('user-id');
 
-        var link = siteRoot + '/pages/program/program_generic.php?access_token=' + cipher + '&id=' + assetid;
+        var link = siteRoot + 'pages/program/program_generic.php?access_token=' + cipher + '&id=' + assetid;
 
         var link_html = '<a href="' + link + '">' + link + '</a>';
 
