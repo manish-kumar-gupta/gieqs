@@ -142,7 +142,7 @@ $completion = $usersMetricsManager->userCompletionAsset($userid_set, $assetid);
 
 echo $completion;
 
-exit();
+//exit();
 
 //CHECK THE DETAILS AND THAT THE USER ACTUALLY HAS THIS 100%
 
