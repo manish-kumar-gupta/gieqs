@@ -1,15 +1,5 @@
 <?php require 'includes/config.inc.php';
 
-/* echo 'GIEQs is currently experiencing technical difficulties.  We are migrating the site to a new home to maximise your experience.  We will be back soon.';
-var_dump($_SESSION);
- */
-?>
-
-
-
-<head>
-
-    <?php
 
 //error_reporting(E_ALL);
 
@@ -21,6 +11,8 @@ var_dump($_SESSION);
       $requiredUserLevel = 6;
 
       //blank previous browsing
+      require BASE_URI . '/pages/learning/includes/head.php';
+
 
       setcookie('browsing', null, time() + (365 * 24 * 60 * 60), '/');
 
@@ -30,7 +22,6 @@ var_dump($_SESSION);
 
 
 
-      require BASE_URI . '/pages/learning/includes/head.php';
 
       $general = new general;
 
