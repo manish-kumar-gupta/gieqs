@@ -1,10 +1,5 @@
 
-<?php require '../../includes/config.inc.php';?>
-
-
-<head>
-
-    <?php
+<?php require '../../includes/config.inc.php';
 
 //$debugUserAccess = true;
 
