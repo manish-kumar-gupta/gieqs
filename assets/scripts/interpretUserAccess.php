@@ -148,7 +148,7 @@ if ((isset($openaccess)) && $openaccess == 1){
                         if ($databaseUserAccessLevel != $currentUserLevel){
     
                             if (!$debugUserAccess){
-                            redirect_user();
+                            redirect_login($location);
                         }
     
                         }
@@ -181,7 +181,7 @@ if ((isset($openaccess)) && $openaccess == 1){
             if ($isSuperuser != 1){
     
                 if (!$debugUserAccess){
-                    redirect_user();
+                    redirect_login($location);
                 }
     
             }
@@ -281,7 +281,7 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['access_level'])) {
     $info[] = 'ONE OF user_id and access_level are NOT set in the session.  ACCESS DENIED';
     
     if (!$debugUserAccess){
-                        redirect_user();
+                        redirect_login($location);
 ;
                     }
 }else{
@@ -335,7 +335,7 @@ if (isset($requiredUserLevel)){
                 if ($databaseUserAccessLevel != $currentUserLevel){
 
                     if (!$debugUserAccess){
-                        redirect_user();
+                        redirect_login($location);
 ;
                     }
 
@@ -356,7 +356,7 @@ if (isset($requiredUserLevel)){
 
        
         if (!$debugUserAccess){
-                        redirect_user();
+                        redirect_login($location);
 ;
                     }
 
@@ -401,7 +401,7 @@ if (isset($requiredUserLevel)){
 
        
         if (!$debugUserAccess){
-                        redirect_user();
+                        redirect_login($location);
 ;
                     }
 

@@ -4,18 +4,18 @@
         
         if ($location != null){
 
-            flush();
-            echo "<script type='text/javascript'>window.top.location='$page?destination=$location';</script>";
-            //header ("Location:$page?destination=$location");
+            //flush();
+            //echo "<script type='text/javascript'>window.top.location='$page?destination=$location';</script>";
+            header ("Location:$page?destination=$location");
             exit();
 
 
 
         }else{
 
-            flush();
-            echo "<script type='text/javascript'>window.top.location='$page';</script>";
-            //header ("Location:$page");
+            //flush();
+            //echo "<script type='text/javascript'>window.top.location='$page';</script>";
+            header ("Location:$page");
             exit();
 
 
