@@ -1,9 +1,6 @@
 <?php
 
-require '../../assets/includes/config.inc.php';?>
-
-<head>
-<?php
+require '../../assets/includes/config.inc.php';
 
 //define user access level
 
@@ -11,8 +8,6 @@ $openaccess = 1;
 
 
 require BASE_URI . '/head.php';
-
-
 
 
 require_once BASE_URI . '/assets/scripts/classes/assetManager.class.php';

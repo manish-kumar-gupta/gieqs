@@ -1,12 +1,5 @@
 <?php
-	
-    //error_reporting(E_ALL);
- 
-    //print_r($_SESSION);
-
-
-
-     require (BASE_URI . '/assets/scripts/login_functions.php');
+	require (BASE_URI . '/assets/scripts/login_functions.php');
      
      //place to redirect the user if not allowed access
      $location = BASE_URL . '/pages/authentication/login.php';
@@ -49,6 +42,4 @@
 <!-- <script src="<?php //echo BASE_URL;?>/assets/js/purpose.js"></script>
  --><script src="<?php echo BASE_URL;?>/assets/js/generaljs.js"></script>
 <script src="<?php echo BASE_URL;?>/node_modules/jquery-validation/dist/jquery.validate.js"></script>
-
-<!-- Global divs -->
 
