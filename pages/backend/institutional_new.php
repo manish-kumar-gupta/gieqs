@@ -370,7 +370,7 @@ $xcrud->change_type('logo_src','image','',array(
         array('width'=> 50, 'marker'=>'_small'),
         array('width'=> 100, 'marker'=>'_middle'),
         array('width' => 150, 'folder' => 'thumbs'),
-    ) // using 'thumbs' subfolder
+    ) // using 'thumbs' subfolder //uploads to assets/img/uploads
 )); 
 
 $curriculaesectiontable_nest = $xcrud->nested_table('Institutional Users', 'id', 'institution_user','institution_id');
