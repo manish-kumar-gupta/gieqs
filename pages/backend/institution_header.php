@@ -2,7 +2,7 @@
 
 
 /**
-                 * Script which accepts a token id as ?id=[sessionid] in the url
+                 * Header for institution script which accepts a token id as ?id=[sessionid] in the url
                  * 
                  * function to generate a list of users that have registered with that token
                  * 
@@ -10,23 +10,21 @@
                  * 
                  * */
 
-$openaccess = 0;
+                 //if user has no login to gieqs.com redirect
+            $openaccess = 0;
 			$requiredUserLevel = 6;
-
-            //then do required institution access
-
-
-
-
-
-			
-            //require BASE_URI . '/pages/learning/includes/head.php';
 
 			require (BASE_URI.'/assets/scripts/headerScript.php');
 
-            ini_set('display_errors', 1);
+
+         
+
+
+
+
+           /*  ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+error_reporting(E_ALL); */
             ?>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -62,6 +60,7 @@ margin-bottom: 0 !important;
             $usersMetricsManager = new usersMetricsManager;
             $assets_paid = new assets_paid;
             $institutional = new institutional;
+
 
 
 
@@ -117,6 +116,45 @@ if (isset($_GET["institution_id"]) && is_numeric($_GET["institution_id"])){
     exit();
 
 }
+
+            //then do required institution access
+
+            //check the currently logged in user can access this institution
+
+
+            //get an array of the users licensed to manage this institution; if the user is a superuser or in this array then allow
+
+            $licensed_users = $institutional_manager->getUsersInstitution($institution_id);
+
+            $currently_logged_in_user = $userid;
+
+            if ($isSuperuser == 0){
+
+            if (in_array($currently_logged_in_user, $licensed_users)){
+
+                //allow access
+
+            }else{
+
+                echo '<div class="container">';
+                echo '<p class="mt-4">Currently logged in user does not have access to manage or view this institution</p>';
+                echo '<p>Please <a href="' . BASE_URL . '/login">login</a> with a user able to administrate or view this institution</p>';
+                echo '<p>If you believe this is an error please <a href="mailto:admin@gieqs.com">contact us</a> with the following information:</p>';
+                echo "<p class='ms-3'>User id $userid trying to login to manage/view institution $institution_id with failed login</p>";
+                echo '</div>';
+                exit();
+
+            }
+
+          }else{
+
+            //allow superuser access without link to institution
+
+          }
+
+
+
+
 
 
 //also check the user is linked to the institution
