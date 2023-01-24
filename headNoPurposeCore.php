@@ -1,10 +1,5 @@
-
 <?php
 	
-    //error_reporting;
- 
-    //print_r($_SESSION);
-
      require (BASE_URI . '/assets/scripts/login_functions.php');
      
      //place to redirect the user if not allowed access
