@@ -9,9 +9,7 @@ ini_set('display_errors', 0);
       $openaccess = 0;
 
       $requiredUserLevel = 6;
-      ?>
-
-    <?php
+    
       require BASE_URI . '/pages/learning/includes/head.php';
 
       require_once(BASE_URI . '/pages/learning/classes/general.class.php');
