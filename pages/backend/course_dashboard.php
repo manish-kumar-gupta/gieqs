@@ -22,18 +22,6 @@ $identifier = 'id';
 //to be passed via divs on page
 
 
-?>
-
-
-<!DOCTYPE html>
-<html lang="en">
-
-
-
-<head>
-
-    <?php
-
 //define user access level
 
 $openaccess = 0;
