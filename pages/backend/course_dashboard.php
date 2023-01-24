@@ -1,14 +1,6 @@
-<?php require '../../assets/includes/config.inc.php';?>
+<?php 
 
-<?php
-
-//php general variables
-
-//form name
-
-//$formName = 'programme-form';
-
-//database name
+require '../../assets/includes/config.inc.php';
 
 $databaseName = 'session';
 
