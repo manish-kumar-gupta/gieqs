@@ -103,16 +103,16 @@ margin-bottom: 0 !important;
     return false;
 }
 
-if (isset($_GET["id"]) && is_numeric($_GET["id"])){
-	$id = $_GET["id"];
-    $id_set = true;
+if (isset($_GET["institution_id"]) && is_numeric($_GET["institution_id"])){
+	$institution_id = $_GET["institution_id"];
+    $institution_id_set = true;
 
 }else{
 
-	$id = null;
-    $id_set = false;
+	$institution_id = null;
+    $institution_id_set = false;
     echo '<div class="container">';
-    echo '<p>Please set the institution id in the url, e.g. ?id=[institution]</p>';
+    echo '<p>Please set the institution id in the url, e.g. ?institution_id=[institution]</p>';
     echo '</div>';
     exit();
 
@@ -138,7 +138,7 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
 
             $debug = false;
 
-            if ($id_set){
+            if ($institution_id_set){
 
 
                /*  $response = $sessionView->generateView($id);
@@ -146,10 +146,10 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
                 print_r($response);
                 } */
 
-                if ($institutional->Return_row($id)){
+                if ($institutional->Return_row($institution_id)){
 
 
-                    $institutional->Load_from_key($id);
+                    $institutional->Load_from_key($institution_id);
                     if ($debug){
                         
                         print_r($institutional);

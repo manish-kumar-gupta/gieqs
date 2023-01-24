@@ -18,7 +18,7 @@ require(BASE_URI . '/pages/backend/institution_header.php');
                         <div class="">
                     <?php
                     
-                    $tokens = $institutional_manager->getTokensInstitution($id);
+                    $tokens = $institutional_manager->getTokensInstitution($institution_id);
 
                     //var_dump($tokens);
                     
