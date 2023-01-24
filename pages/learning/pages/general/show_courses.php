@@ -1,5 +1,3 @@
-
-
 <?php require '../../includes/config.inc.php';
 
 define('WP_USE_THEMES', false);
@@ -8,15 +6,6 @@ define('WP_USE_THEMES', false);
      require(BASE_URI . '/assets/wp/wp-blog-header.php');
      
      spl_autoload_register ('class_loader');
-
-     ?>
-
-<head>
-
-    <?php
-
-//error_reporting(E_ALL);
-
 
       //define user access level
 
