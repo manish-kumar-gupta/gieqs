@@ -229,7 +229,9 @@ if (isset($_GET["institution_id"]) && is_numeric($_GET["institution_id"])){
 
                 }else{
 
-                    echo 'Institution not found';
+                    echo '<div class="container">';
+                    echo '<p class="mt-4">Institution ' .$institution_id . ' not found</p>';
+                    exit();
 
                 }  
 

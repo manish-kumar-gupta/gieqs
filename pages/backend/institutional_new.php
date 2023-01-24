@@ -375,6 +375,8 @@ $xcrud->change_type('logo_src','image','',array(
         array('width' => 150, 'folder' => 'thumbs'),
     ) // using 'thumbs' subfolder //uploads to assets/img/uploads
 )); 
+$xcrud->button(BASE_URL . '/pages/backend/institution_landing.php?institution_id={id}', 'Open Institution', '', 'bg-primary', array('target'=>'_blank'));
+
 
 $curriculaesectiontable_nest = $xcrud->nested_table('Institutional Users', 'id', 'institution_user','institution_id');
 $curriculaesectiontable_nest->connection($username,$password,$dbname_learning,$host);
