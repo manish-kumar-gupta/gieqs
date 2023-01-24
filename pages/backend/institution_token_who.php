@@ -91,7 +91,7 @@ if (isset($_GET["token_id"]) && is_numeric($_GET["token_id"])){
 
                 echo '<td>' . $value . '</td>';
 
-                echo '<td><a href="user_report.php?id=' . $value . '">'  . $users->getfirstname() . ' ' . $users->getsurname() . '</a></td>';
+                echo '<td><a href="institution_user_report.php?institution_id=' . $institution_id . '&user_id=' . $value . '">'  . $users->getfirstname() . ' ' . $users->getsurname() . '</a></td>';
 
                 echo '<td>'  . $users->getemail() . '</td>';
 
