@@ -365,6 +365,13 @@ $xcrud->connection($username,$password,$dbname_learning,$host);
 
 
 $xcrud->table('institutional'); //employees - MySQL table name
+$xcrud->change_type('logo_src','image','',array(
+    'thumbs'=>array(
+        array('width'=> 50, 'marker'=>'_small'),
+        array('width'=> 100, 'marker'=>'_middle'),
+        array('width' => 150, 'folder' => 'thumbs'),
+    ) // using 'thumbs' subfolder
+)); 
 
 $curriculaesectiontable_nest = $xcrud->nested_table('Institutional Users', 'id', 'institution_user','institution_id');
 $curriculaesectiontable_nest->connection($username,$password,$dbname_learning,$host);
