@@ -28,6 +28,16 @@ error_reporting(E_ALL);
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
+<style>
+
+p {
+
+margin-bottom: 0 !important;
+
+}
+
+    </style>
+
 <?php
 
             $general = new general;
@@ -134,11 +144,11 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
 
 
                     $institutional->Load_from_key($id);
-                    //if ($debug){
+                    if ($debug){
                         
                         print_r($institutional);
 
-                   // }
+                    }
 
                 }else{
 
@@ -159,46 +169,60 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
 
             echo '<div class="container mt-5">';
 
+            echo '<div class="d-flex justify-content-between align-items-center">';
             echo '<h2>GIEQs Institutional/Group Access</h2>';
-            echo '<p>Institution/Group : ' . $institutional->getlong_name() . '</p>';
-
-            echo '<div class="d-flex m-4">';
             $users->Load_from_key($userid);
             echo '<p>User : ' . $users->getfirstname() . ' ' .  $users->getsurname() . ' </p>';
+            echo '<button class="btn btn-sm bg-secondary text-white manage-token ms-3">Feedback</button>';
 
+            echo '</div>';
+
+           
+            echo '<p>Institution/Group : ' . $institutional->getlong_name() . '</p>';
+            echo '<p>Active Users: , Average User % completion</p>';
+
+            echo '<div class="d-flex m-4 align-items-center">';
+           
 
 
             ?>
 
-<button class="btn btn-sm bg-secondary text-white manage-token ms-3">Feedback</button>
+
         </div>
 
 
-            <div class="row">
+            <!-- <div class="row">
 
-                <div class="col-3">
+                <div class="col-4">
 
                 <h4>Token Management</h4>
                 </div>
 
-                <div class="col-3">
+                <div class="col-4">
 
                 <h4>User Completion Records</h4>
                 </div>
 
-                <div class="col-3">
+                <div class="col-4">
 
                 <h4>User Live Participation
                 </h4>
                 </div>
 
-            </div>
+            </div> -->
 
-            <div class="row mt-3">
+            <div class="d-flex mt-3">
 
-                <div class="col-3">
+                <div class="p-4 border border-1">
 
                     <div class="d-flex">
+
+                        <h4>Access Management</h4>
+
+                     </div>
+
+                    <div class="ps-2 d-flex justify-content-between align-items-center">
+                        <div class="">
                     <?php
                     
                     $tokens = $institutional_manager->getTokensInstitution($id);
@@ -207,9 +231,18 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
                     
                     foreach ($tokens as $key=>$value){
 
+                        $token->Load_from_key($value);
+                        $date_created = null;
+                        $date_created = new DateTime($token->getcreated());
+                        $assets_paid->Load_from_key($token->getasset_id());
+
+
                         ?>
                         
-                        <p class='m-2'>Token Name, Purchased, Value</p>
+                        <h6>Token #<?php echo $token->getid();?></h6>
+                        <p class='m-2'><?php echo $assets_paid->getname() . $token->getcreated() . '&euro;' . $token->getcost(); ?>, Purchased, Value</p>
+                    </div>
+                    <div>
                         <button class="btn btn-sm bg-secondary text-white manage-token" data-tokenid="<?php echo $value;?>">Manage</button>
 
                         <?php
@@ -217,28 +250,29 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
                     ?>
 
 
-
-        </div>
+                </div>
+                     </div>
 
                     
 
 
                 </div>
 
-                <div class="col-3">
+                <div class="p-4 border border-1 ms-3">
+                <div class="d-flex">
 
-                <button class="btn btn-sm bg-secondary text-white manage-token">View / Certificates</button>
+<h4>Institution Management</h4>
+
+</div>
+<div class="d-flex justify-content-between align-items-center">
+
+
+                <button class="btn btn-sm bg-secondary text-white manage-token">Manage</button>
+                </div>
 
                 </div>
 
-                <div class="col-3">
-
-                <button class="btn btn-sm bg-secondary text-white manage-token">View</button>
-
-                </div>
-
-
-            </div>
+                
 
 <?php
             //exit();

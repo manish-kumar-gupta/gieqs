@@ -142,8 +142,10 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
 
             echo '<div class="container mt-5">';
 
-            echo '<h2>Activity for User id ' . $id . '</h2>';
+            echo '<h2>User Activity Report</h2>';
+            echo '<p>Last active on xxx at yyy</p>';
             echo '<p>User name : ' . $users->getfirstname() . ' ' .  $users->getsurname() . ' </p>';
+            echo '<p>User id : ' . $id;
 
             //$token->Load_from_key($id);
 
