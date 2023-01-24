@@ -60,7 +60,18 @@ margin-bottom: 0 !important;
 
             })
 
+            $(document).on('click', '.to-dashboard', function(){
+
+                var institutionid = $(document).find('#institutionid').text();
+
+              window.location.href = siteRoot + "pages/backend/institution_landing.php?institution_id=" + institutionid;
+
+
+            })
+
         })
+
+        
 
 </script>
 
@@ -232,6 +243,7 @@ if (isset($_GET["institution_id"]) && is_numeric($_GET["institution_id"])){
                 exit();
 
             }
+            echo '<div id="institutionid" class="d-none">' . $institution_id . '</div>';
 
             echo '<div class="container mt-5">';
 
@@ -239,6 +251,7 @@ if (isset($_GET["institution_id"]) && is_numeric($_GET["institution_id"])){
             echo '<h2>GIEQs Institutional/Group Access</h2>';
             $users->Load_from_key($userid);
             echo '<p>User : ' . $users->getfirstname() . ' ' .  $users->getsurname() . ' </p>';
+            echo '<button class="btn btn-sm bg-secondary text-white to-dashboard ms-3">Dashboard</button>';
             echo '<button class="btn btn-sm bg-secondary text-white give-feedback ms-3">Feedback</button>';
 
             echo '</div>';

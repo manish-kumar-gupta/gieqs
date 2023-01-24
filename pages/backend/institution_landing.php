@@ -93,9 +93,10 @@ $(document).ready(function() {
     $(document).on('click', '.manage-token', function(){
 
         var tokenid = $(this).attr('data-tokenid');
+        var institutionid = $(document).find('#institutionid').text();
         //var userid = $(this).attr('user-id');
 
-        window.open(siteRoot + 'pages/backend/token_who.php?id=' + tokenid);
+        window.location.href = siteRoot + 'pages/backend/institution_token_who.php?institution_id=' + institutionid + '&token_id=' + tokenid;
 
         
 
