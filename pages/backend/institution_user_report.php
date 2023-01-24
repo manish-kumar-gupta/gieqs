@@ -246,7 +246,7 @@ if (isset($_GET["user_id"]) && is_numeric($_GET["user_id"])){
 
                 if($completion == 100){
 
-                    $statement = "<button class='btn btn-sm bg-secondary text-white generate-certificate' asset-id='$key' user-id='$id'>Generate</button>";
+                    $statement = "<button class='btn btn-sm bg-secondary text-white generate-certificate' asset-id='$key' user-id='$user_id'>Generate</button>";
 
                 }
 

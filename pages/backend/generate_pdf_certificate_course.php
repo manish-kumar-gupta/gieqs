@@ -114,8 +114,8 @@ $data = json_decode(file_get_contents('php://input'), true);
 $assetid = $data['assetid'];
 $userid_set = $data['userid'];
 
-var_dump($data);
-exit();
+//var_dump($data);
+//exit();
 
 if (!(isset($assetid))){
 
