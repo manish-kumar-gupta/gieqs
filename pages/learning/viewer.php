@@ -1,13 +1,7 @@
-<?php require 'includes/config.inc.php';?>
-
-
-<head>
-
-    <?php
+<?php require 'includes/config.inc.php';
 
 error_reporting(E_NONE);
 ini_set('display_errors', 0);
-
 
 
       //define user access level
