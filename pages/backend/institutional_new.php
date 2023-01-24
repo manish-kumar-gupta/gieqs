@@ -365,6 +365,9 @@ $xcrud->connection($username,$password,$dbname_learning,$host);
 
 
 $xcrud->table('institutional'); //employees - MySQL table name
+
+$xcrud->columns('id, long_name, logo_src, created', false); //employees - MySQL table name
+
 $xcrud->change_type('logo_src','image','',array(
     'thumbs'=>array(
         array('width'=> 50, 'marker'=>'_small'),

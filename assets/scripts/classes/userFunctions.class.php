@@ -198,7 +198,7 @@ Class userFunctions {
 
 					$id=null;
 					$id = $row['user_id'];
-					$users[$id] = $row['firstname'] . ' ' . $row['surname'];
+					$users[$id] = $row['user_id'] . ' - ' . $row['firstname'] . ' ' . $row['surname'];
 					
 				}
 
