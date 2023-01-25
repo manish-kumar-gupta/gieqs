@@ -107,9 +107,9 @@ add_action ( 'wp_ajax_load-content', 'my_load_ajax_content' );
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
     <script src="<?php echo BASE_URL;?>/pages/learning/includes/generaljs.js"></script>
     
-    <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/css/purpose-blue-light.css" id="stylesheet">
+    <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/css/purpose_esge.css" id="stylesheet">
    
-   <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/css/gieqs.css"> -->
+   <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/css/gieqs.css">
 
 
 
@@ -130,7 +130,7 @@ add_action ( 'wp_ajax_load-content', 'my_load_ajax_content' );
     ::-webkit-scrollbar-thumb {
         -webkit-border-radius: 10px;
         border-radius: 10px;
-        background: rgba(238, 194, 120, 0.8); 
+        background: #F7941F; 
         -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
     }
     ::-webkit-scrollbar-thumb:window-inactive {
@@ -175,7 +175,7 @@ add_action ( 'wp_ajax_load-content', 'my_load_ajax_content' );
 
     body {
 
-        background-color: #0b1625 !important
+        background-color: white !important
     }
 
     #loading {
@@ -197,8 +197,22 @@ add_action ( 'wp_ajax_load-content', 'my_load_ajax_content' );
         z-index: 100;
     }
 
+    .hover-text-gold:hover{
+
+        color: #F7941F !important;
+
+    }
+
+    .hover-text-gold{
+
+    color: #004187 !important;
+
+    }
+
+
 
     .text-container {
+
 
         font-family: 'nunito', sans-serif;
         font-size: 1.3rem !important;
@@ -211,7 +225,7 @@ add_action ( 'wp_ajax_load-content', 'my_load_ajax_content' );
     .text-container strong {
 
         font-weight: 500;
-        color: #e3ebf6;
+        color: black;
     }
 
     /*  .text-container p {
@@ -229,7 +243,7 @@ margin-top: 4rem !important;
     .text-container h2 {
 
         margin-top: 4rem;
-        color: rgb(238, 194, 120);
+        color: #F7941F;
 
     }
 
@@ -463,6 +477,7 @@ top: 0px;
         <!--Header CHANGEME-->
 
         <div class="container pt-4">
+        <img class="mr-3 mb-3" src="https://esgedays.org/assets/images/logo-header-esge.png">In partnership with ESGE
 
             <nav aria-label="breadcrumb" class="mb-3">
                 <ol class="breadcrumb breadcrumb-links p-0 m-0">
