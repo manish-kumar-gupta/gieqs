@@ -98,6 +98,10 @@ add_action ( 'wp_ajax_load-content', 'my_load_ajax_content' );
       
       require_once BASE_URI . '/assets/scripts/classes/curriculum_manager.class.php';
       $curriculum_manager = new curriculum_manager;
+
+      require_once BASE_URI . '/assets/scripts/classes/userActivity.class.php';
+      $userActivity = new userActivity;
+
       
    
       ?>
@@ -481,6 +485,18 @@ top: 0px;
 
     }
 
+    //getcurrent UTC time
+			$date = new DateTime('now', new DateTimeZone('UTC'));
+			$sqltimestamp = date_format($date, 'Y-m-d H:i:s');
+			
+			//add a login event to the database
+
+            if ($userid){
+
+			$userActivity->New_userActivity($userid, 'CURRICULUM_VIEW ' . $id , '', $sqltimestamp);
+			$userActivity->prepareStatementPDO();
+
+            }
 
     ?>
 

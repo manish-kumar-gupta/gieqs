@@ -1076,6 +1076,13 @@ if ($nRows > 0) {
     }
 
 
+    function accessedCurriculum($curriculum_id, $debug){
+
+
+        
+    }
+
+
     
 
     /**
