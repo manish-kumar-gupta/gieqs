@@ -140,7 +140,7 @@ $users->Load_from_key($userid_set);
 
 $completion = $usersMetricsManager->userCompletionAsset($userid_set, $assetid);
 
-echo $completion;
+//echo $completion;
 
 //exit();
 
