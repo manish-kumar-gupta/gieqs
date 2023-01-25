@@ -109,7 +109,7 @@ add_action ( 'wp_ajax_load-content', 'my_load_ajax_content' );
     
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/css/purpose_esge.css" id="stylesheet">
    
-   <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/css/gieqs.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/css/esge.css">
 
 
 
@@ -147,12 +147,12 @@ add_action ( 'wp_ajax_load-content', 'my_load_ajax_content' );
         border-bottom: 1px solid #6e84a3 !important;
     }
 
-    .gieqsGold {
+    a.text-muted:hover
+{
+    color: #F7941F !important;
+}
 
-        color: rgb(238, 194, 120);
-
-
-    }
+   
 
     /*   #left {
   float: left;
@@ -187,14 +187,16 @@ add_action ( 'wp_ajax_load-content', 'my_load_ajax_content' );
         height: 100%;
         top: 0;
         left: 0;
-        opacity: 0.9;
-        background-color: #162A4C;
+        opacity: 0.95;
+        background-color: white;
         z-index: 99;
         flex-direction: column;
+        z-index: 102;
+
     }
 
     #loading-image {
-        z-index: 100;
+        z-index: 102;
     }
 
     .hover-text-gold:hover{
@@ -224,8 +226,8 @@ add_action ( 'wp_ajax_load-content', 'my_load_ajax_content' );
 
     .text-container strong {
 
-        font-weight: 500;
-        color: black;
+       /*  font-weight: 500;
+        color: black; */
     }
 
     /*  .text-container p {
@@ -468,6 +470,18 @@ top: 0px;
     $debug = false;
     $_SESSION['debug'] = false;
 
+    if ($userid){
+
+        echo "<div id='logged-in'>1</div>";
+
+
+    }else{
+
+        echo "<div id='logged-in'>0</div>";
+
+    }
+
+
     ?>
 
 
@@ -576,26 +590,28 @@ top: 0px;
             <body>
 
                 <div id="loading">
-                    <div class="d-flex" style="opacity: 1.0; align-items:center; margin-bottom:2rem;">
-                        <div class="spinner-grow mr-3" style="width: 3rem; height: 3rem;" role="status">
+                    <div class="d-flex border" style="opacity: 1.0; align-items:center; margin-bottom:2rem;">
+                        <div class="spinner-border mr-3 gieqsGold" style="width: 3rem; height: 3rem;" role="status">
                             <span class="sr-only gieqsGold">Loading...</span>
                         </div>
-                        <div class="display-4 gieqsGold">Loading GIEQs Living Curriculum Viewer</div>
-                    </div>
-                    <div class="d-flex">
+                        <div class="display-4 gieqsGold">Loading Living Curriculum Viewer</div>
+                      
 
-                        <div class="col-10 container">
-                            <p class="text-dark bg-gieqsGold p-3" style="opacity: 1;"><i class="fa fa-info-circle mr-3"
+                    </div>
+                    <img class="mr-3 mb-3" src="https://esgedays.org/assets/images/logo-header-esge.png">In partnership with ESGE
+                    <div class="d-flex mt-2">
+
+                        <div class="col-8 container">
+                            <p class="text-dark card-body p-3 text-center" style="opacity: 1;"><i class="fa fa-info-circle mr-3"
                                     aria-hidden="true"></i>It takes a lot of processing to deliver a Live Curriculum.
                                 Every time you reload this page a new curriculum is built. If we added a reference or
                                 tag it will be visible once you reload. </p>
-                            <p class="text-dark bg-gieqsGold p-3" style="opacity: 1;">We suggest leaving the curriculum
+                            <p class="text-dark card-body p-3 text-center" style="opacity: 1;">We suggest leaving the curriculum
                                 open once it loads and using tags to browse GIEQs Online</p>
 
-                                <p class="text-dark bg-gieqsGold p-3" style="opacity: 1;">If you are not logged into GIEQs Online you can view the curriculum, check references but major functionality (tag jumping, viewing demonstration videos) is disabled.  GIEQs Online logins can be obtained free at <a href="https://www.gieqs.com/online" target="_blank">gieqs.com/online</a></p>
+                                <p class="text-dark card-body p-3 text-center" style="opacity: 1;">If you are not logged into GIEQs Online you can view the curriculum, check references but major functionality (tag jumping, viewing demonstration videos) is disabled.  GIEQs Online logins can be obtained free at <a href="https://www.gieqs.com/online" target="_blank">gieqs.com/online</a></p>
                         </div>
                     </div>
-
 
 
 
@@ -1407,7 +1423,7 @@ return (
             text = $(this).attr('data');
             statement +=
                 '<div class="toc-section"><li tocid="' + id +
-                '" class="toc-entry super-section-toc toc-h4 mt-4" style="font-size:1.3rem; list-style-type:none;"><a class="text-muted hover-text-gold" href="#' +
+                '" class="toc-entry super-section-toc toc-h4 mt-4" style="font-size:1.2rem; list-style-type:none;"><a class="text-muted hover-text-gold" href="#' +
                 id +
                 '">' + text +
                 '</a><i class="fa fa-plus-circle cursor-pointer hover-text-gold fold-up-major-section ml-2" style="z-index: 1000;" aria-hidden="true"></i></li>';
@@ -1543,7 +1559,7 @@ return (
 
         $('.referencelist').on('mouseenter', function() {
 
-            $(this).css('color', 'rgb(238, 194, 120)');
+            $(this).css('color', '#F7941F');
             //$(this).css('cursor', 'pointer');
 
         })
@@ -1698,7 +1714,19 @@ return (
 
         $(document).on('click', '.tagButton', function() {
 
-            var idElement = $(this).attr('data-tag-id');
+            //if not logged in just alert
+
+            var loggedin = $('#logged-in').text();
+
+            if (loggedin == 0){
+
+                 
+                alert('Login Required for Tag Functionality.  You can create an account at gieqs.com/online');
+                return;
+
+            }else if (loggedin == 1){
+
+                var idElement = $(this).attr('data-tag-id');
 
             //alert(idElement);
 
@@ -1826,6 +1854,9 @@ return (
                 alert("Login Required for Tag Functionality");
             })
 
+            }
+
+            
 
 
 
@@ -1839,26 +1870,6 @@ return (
 
 
 
-
-
-
-
-            //end code port
-
-
-
-
-
-            /* 
-                        setcookie("selectedTag", idElement, time() - 3600);
-
-            setcookie("restricted", false, time() - 3600); */
-
-
-            //redirect to viewer page
-
-
-            //writer cookies
 
 
         })
@@ -1911,12 +1922,7 @@ return (
 
 
 
-        /*  $(document).find('.minor-list').each( function(){
-
-$(this).hide();
-
-
-}); */
+       
 
 
         $(document).on('click', '.toc-entry', function(event) {

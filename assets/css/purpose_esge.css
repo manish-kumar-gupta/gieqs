@@ -53,6 +53,15 @@ Copyright 2018-2019 Webpixels
     box-sizing: border-box;
 }
 
+/* Extra ESGE */
+
+bg-gieqsGold {
+
+    background-color: #F7941F; 
+
+}
+
+
 html
 {
     font-family: sans-serif;
@@ -3586,9 +3595,9 @@ fieldset:disabled a.btn
 
 .btn-dark
 {
-    color: #fff;
+    color: black;
     border-color: #273444;
-    background-color: #273444;
+    background-color: white;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, .15);
 }
 .btn-dark:hover
