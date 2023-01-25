@@ -224,6 +224,9 @@ $pdf->Output();
 
 $content = ob_get_contents();
 ob_end_clean(); //here, output is cleaned. You may want to flush it with ob_end_flush()
+$can_write = is_writable('temp-certificate.pdf');
+var_dump($can_write);
+exit();
 file_put_contents('temp-certificate.pdf', $content, FILE_APPEND);
 
 }else{
