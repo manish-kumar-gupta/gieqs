@@ -486,17 +486,17 @@ top: 0px;
     }
 
     //getcurrent UTC time
-			$date = new DateTime('now', new DateTimeZone('UTC'));
-			$sqltimestamp = date_format($date, 'Y-m-d H:i:s');
-			
-			//add a login event to the database
+    $date = new DateTime('now', new DateTimeZone('UTC'));
+    $sqltimestamp = date_format($date, 'Y-m-d H:i:s');
+    
+    //add a login event to the database
 
-            if ($userid){
+    if ($userid){
 
-			$userActivity->New_userActivity($userid, 'CURRICULUM_VIEW ' . $id , '', $sqltimestamp);
-			$userActivity->prepareStatementPDO();
+        $userActivity->New_userActivity($userid, 'CURRICULUM_VIEW ' . $id , '', $sqltimestamp);
+        $userActivity->prepareStatementPDO();
 
-            }
+    }
 
     ?>
 
