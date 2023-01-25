@@ -210,7 +210,7 @@ $pdf->SetXY(7, 23); // X start, Y start in mm
 $pdf->SetFont('Arial','U',10); // Font Name, Font Style (eg. 'B' for Bold), Font Size
 /* $link = $pdf->addLink();
 $pdf->SetLink($link); */
-$link = 'https://www.gieqs.com/checkcertificate?id=' . $certificate_id;
+$link = 'https://www.gieqs.com/pages/backend/certificate_valid.php?certificate_id=' . $certificate_id;
 
 $text_course2 = "Click to verify certificate on gieqs.com";
 //$pdf->Text($text_course2);

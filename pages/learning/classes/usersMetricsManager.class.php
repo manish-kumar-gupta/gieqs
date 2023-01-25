@@ -1029,7 +1029,7 @@ if ($nRows > 0) {
 
     function checkCertificate ($id) {
 
-        $q = "SELECT `id` FROM `certificates` WHERE `id` = '$id'";
+        $q = "SELECT `id`, `user_id`, `asset_id` FROM `certificates` WHERE `id` = '$id'";
 
         $result = $this->connection->RunQuery($q);
         
@@ -1037,7 +1037,9 @@ if ($nRows > 0) {
 			if ($nRows == 1){
 				while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 
-                    $rowReturn = $row['id'];
+                    $rowReturn['id'] = $row['id'];
+                    $rowReturn['user_id'] = $row['user_id'];
+                    $rowReturn['asset_id'] = $row['asset_id'];
                     //$x++;
     
                 }
@@ -1079,7 +1081,7 @@ if ($nRows > 0) {
     function accessedCurriculum($curriculum_id, $debug){
 
 
-        
+
     }
 
 
