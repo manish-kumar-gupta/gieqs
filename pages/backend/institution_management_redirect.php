@@ -18,8 +18,6 @@ error_reporting(E_ALL);
 
 //echo BASE_URI . '/pages/backend/institutional_new.php';
 
-$userid=151;
-$isSuperuser = 0;
 
 if (isset($userid)){//logged in
 
