@@ -353,7 +353,9 @@ class usersMetricsManager
     public function getAllAssets(){
 
 
-        $q = "SELECT `id` FROM `assets_paid` ORDER BY `id` DESC";
+        $q = "SELECT `id` FROM `assets_paid` 
+        WHERE `advertise_for_purchase` = 1        
+        ORDER BY `id` DESC";
 
 $x=0;
 $returnArray = [];
