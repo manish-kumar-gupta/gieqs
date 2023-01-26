@@ -103,5 +103,3 @@
                 return array(false, $errors);
        
         }
-    
-            ?>

@@ -172,6 +172,38 @@ Class institutional_manager {
 
     }
 
+    public function getInstitutionUser ($user_id, $debug){
+
+        //supports more than one
+
+        $q = "SELECT `institution_id` FROM `institution_user` WHERE `user_id` = '$user_id'";
+        //echo $q;
+        $result = $this->connection->RunQuery($q);
+        $rowReturn = array();
+        $x = 0;
+        $nRows = $result->rowCount();
+        if ($nRows > 0) {
+
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+
+                $rowReturn[] = $row['institution_id'];
+            }
+        
+            return $rowReturn;
+
+        } else {
+            
+/* 
+            //RETURN AN EMPTY ARRAY RATHER THAN AN ERROR
+            $rowReturn['data'] = []; */
+            
+            return false;
+        }
+
+
+
+    }
+
 
 
 
