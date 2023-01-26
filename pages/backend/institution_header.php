@@ -9,7 +9,7 @@
                  * called from a list of tokens or the tokens table
                  * 
                  * */
-
+                
                  //if user has no login to gieqs.com redirect
             $openaccess = 0;
 			$requiredUserLevel = 6;
@@ -17,7 +17,9 @@
 			require (BASE_URI.'/assets/scripts/headerScript.php');
 
 
-         
+
+           
+            
 
 
 
@@ -65,6 +67,13 @@ margin-bottom: 0 !important;
                 var institutionid = $(document).find('#institutionid').text();
 
               window.location.href = siteRoot + "pages/backend/institution_landing.php?institution_id=" + institutionid;
+
+
+            })
+
+            $(document).on('click', '.help', function(){
+
+                window.open(siteRoot + "pages/generic.php?id=562");
 
 
             })
@@ -253,8 +262,12 @@ if (isset($_GET["institution_id"]) && is_numeric($_GET["institution_id"])){
             echo '<h2>GIEQs Institutional/Group Access</h2>';
             $users->Load_from_key($userid);
             echo '<p>User : ' . $users->getfirstname() . ' ' .  $users->getsurname() . ' </p>';
+            echo '<div>';
             echo '<button class="btn btn-sm bg-secondary text-white to-dashboard ms-3">Dashboard</button>';
             echo '<button class="btn btn-sm bg-secondary text-white give-feedback ms-3">Feedback</button>';
+            echo '<button class="btn btn-sm bg-secondary text-white help ms-3">Help</button>';
+            echo '</div>';
+
 
             echo '</div>';
 
@@ -262,4 +275,5 @@ if (isset($_GET["institution_id"]) && is_numeric($_GET["institution_id"])){
             echo '<p>Institution/Group : ' . $institutional->getlong_name() . '</p>';
             echo '<p>Active Users: , Average User % completion</p>';
 
-           
+ 
+
