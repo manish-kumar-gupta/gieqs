@@ -33,7 +33,11 @@ class usersMetricsManager
     public function __construct()
     {
         $this->connection = new DataBaseMysqlPDOLearning();
+        require_once(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
+            $this->assetManager = new assetManager();
     }
+
+
 
     //views
 
@@ -389,22 +393,52 @@ if ($nRows > 0) {
     public function userCompletionAsset($userid, $assetid, $debug = false)
     {
 
-        //get all chapters for selected video
+       $videos = $this->assetManager->getVideosAnyAsset($assetid);
+
+       //var_dump($videos);
+
+       if ($debug){
+       echo 'Asset id is ' . $assetid . ' <br/><br/><br/>';
+       }
+        //var_dump($videos);
+       
+      if (count($videos) > 0){
+
+        $videos_implode = implode(',', $videos);
 
         $q = "SELECT b.`id`
         FROM `video` as a
         INNER JOIN `chapter` as b ON a.`id` = b.`video_id`
-        WHERE a.`id` IN (Select a.`video_id`
-            FROM `sub_asset_paid` as a
-            WHERE (a.`asset_id` = '$assetid') 
-            AND (a.`video_id` IS NOT NULL))
+        WHERE a.`id` IN ($videos_implode)
         ORDER BY b.`number` ASC";
+
+        //echo $q;
 
         if ($debug) {
 
             echo $q . '<br><br>';
 
         }
+
+
+      }else{
+
+        return null;
+
+      }
+        
+        
+
+       
+
+
+
+
+
+
+    //exit();
+
+       
 
         $x = 0; // completed counter
         $y = 0; // chapter total counter

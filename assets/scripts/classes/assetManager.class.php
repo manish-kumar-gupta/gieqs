@@ -6606,6 +6606,86 @@ if ($debug){
 
 }
 
+public function getVideosAnyAsset ($assetid, $debug=false){
+
+
+//NEW CODE FOR GETTING ANY ASSET VIDEOS
+
+$asset_type = $this->getAssetTypeAsset($assetid);
+
+//print_r($asset_type);
+
+$courses = ['1', '2', '3'];
+
+//var_dump($courses);
+
+$video_sets = ['4'];
+
+if (in_array($asset_type, $courses)){
+
+    $videosForSessions = array();
+
+    //get programme / session info for this asset
+
+    $programmes = $this->returnCombinationAssetProgramme($assetid);
+    
+    if ($debug){
+
+        //var_dump($programmes);
+    }
+
+    foreach ($programmes as $key=>$value){
+
+
+        $sessions = $this->programmeView->getSessions($value['programme_id']);
+
+            if ($debug){
+
+                //var_dump($sessions);
+            }
+
+            //get programmeid for asset
+            foreach ($sessions as $key2=>$value2){
+
+                if ($value2['sessionid'] != ''){
+
+                    $video_id = null;
+                    $video_id = $this->programmeView->getVideoURL($value2['sessionid']);
+
+                    if ($video_id != null){
+
+                        $videosForSessions[] = $video_id;
+
+                    }
+
+
+                }
+
+            }
+
+        }
+
+        if ($debug){
+        var_dump($videosForSessions);
+        }
+        return $videosForSessions;
+
+
+}else{ //is a videoset
+
+    $videosForSessions = $this->returnVideosAsset($assetid);
+    if ($debug){
+    var_dump($videosForSessions);
+    }
+
+    return $videosForSessions;
+
+
+
+}
+
+}
+
 
 
   

@@ -10,7 +10,9 @@ require (BASE_URI.'/assets/scripts/headerScript.php');
 $location = BASE_URL . '/index.php';
 
 
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 
 $debug = false;
@@ -103,6 +105,113 @@ $sessionItem = new sessionItem;
 require_once BASE_URI . "/vendor/autoload.php";
 
 spl_autoload_unregister ('class_loader');
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+
+$debug=true;
+
+$assetid=84;
+
+var_dump($usersMetricsManager->userCompletionAsset(1, 84, false));
+
+var_dump($assetManager->getVideosAnyAsset(84));
+
+exit();
+
+//which sort of asset is this
+
+$asset_type = $assetManager->getAssetTypeAsset($assetid);
+
+print_r($asset_type);
+
+$courses = ['1', '2', '3'];
+
+var_dump($courses);
+
+$video_sets = ['4'];
+
+if (in_array($asset_type, $courses)){
+
+    $videosForSessions = array();
+
+    //get programme / session info for this asset
+
+    $programmes = $assetManager->returnCombinationAssetProgramme($assetid);
+    
+    if ($debug){
+
+        //var_dump($programmes);
+    }
+
+    foreach ($programmes as $key=>$value){
+
+
+        $sessions = $programmeView->getSessions($value['programme_id']);
+
+            if ($debug){
+
+                //var_dump($sessions);
+            }
+
+            //get programmeid for asset
+            foreach ($sessions as $key2=>$value2){
+
+                if ($value2['sessionid'] != ''){
+
+                    $video_id = null;
+                    $video_id = $programmeView->getVideoURL($value2['sessionid']);
+
+                    if ($video_id != null){
+
+                        $videosForSessions[] = $video_id;
+
+                    }
+
+
+                }
+
+            }
+
+        }
+
+        var_dump($videosForSessions);
+        return $videosForSessions;
+
+
+}else{ //is a videoset
+
+    $videosForSessions = $assetManager->returnVideosAsset($assetid);
+
+    var_dump($videosForSessions);
+
+    return $videosForSessions;
+
+
+
+}
+
+
+
+
+//if a programme type then do this, otherwise check individual videos
+
+
+
+
+            
+
+             //if debug show the videos
+
+             if ($debug){
+
+                var_dump($videosForSessions);
+
+             }
+
+exit();
 
 ?>
 

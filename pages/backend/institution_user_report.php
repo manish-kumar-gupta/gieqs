@@ -244,7 +244,7 @@ if (isset($_GET["user_id"]) && is_numeric($_GET["user_id"])){
 
                 $statement = null;
 
-                if($completion == 100){
+                if($completion > 90){
 
                     $statement = "<button class='btn btn-sm bg-secondary text-white generate-certificate' asset-id='$key' user-id='$user_id'>Generate</button>";
 
