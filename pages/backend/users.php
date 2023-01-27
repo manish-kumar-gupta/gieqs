@@ -1895,7 +1895,17 @@ gift10coin();
         event.preventDefault();
         fixUserLogin();
     
-        })
+        })  
+        
+        
+$(document).on('click', '.fa-level-down-alt', function() {
+
+    var targettd = $(this).parent().parent().parent().parent().parent().find('td').first().text();
+
+    event.preventDefault();
+    window.open(siteRoot + 'pages/backend/user_report.php?id='+targettd);
+
+})
 
 $("#<?php echo $databaseName;?>-form").validate({
 
