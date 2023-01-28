@@ -113,8 +113,93 @@ error_reporting(E_ALL);
 
 $debug=true;
 
+//start the completion table 
+//have variable run in last 24 hours , if not run last 24 hours
+
+$user_id = 1;
+
+//foreach user
+
+$all_videos = $usersMetricsManager->getAllVideosWatchedUser($user_id);
+
+//GET AND WRITE COMPLETION FOR EACH VIDEO
+
+$video_completion_user = [];
+
+foreach ($all_videos as $key => $value){
+
+    $completion = null;
+
+    $completion = round($usersMetricsManager->userCompletionVideo($userid, $value), 1);
+
+    $video_completion_user[$value] = $completion;
+
+}
+
+//can now write to db with $key = video_id and $value = completion %
+
+var_dump($video_completion_user);
+
+$user_overall_video_completion = $usersMetricsManager->userCompletionVideos($user_id);
+
+var_dump($user_overall_video_completion);
+
+
+//CURRICULA
+
+//number of opens per curriculum
+
+//set curriculum_id
+
+$curriculum_id = 5;
+
+//sections read
+
+//references clicked [needs new db]
+
+//videos per tag, use script above replace $all_videos with the array of videos in the curriculum
+
+//best practice video define
+
+$best_practice_videos = $curriculum_manager->getAllBestPracticeCurriculumVideos($curriculum_id);
+
+var_dump($best_practice_videos);
+
+$video_completion_user = [];
+
+foreach ($best_practice_videos as $key => $value){
+
+    $completion = null;
+
+    $completion = round($usersMetricsManager->userCompletionVideo($userid, $value), 1);
+
+    $video_completion_user[$value] = $completion;
+
+}
+
+//can now write to db with $key = video_id and $value = completion %
+
+var_dump($video_completion_user);
+
+
+
+exit();
+
 $curriculum_id=4;
 $userid=1;
+
+
+//$references = $curriculum_manager->getAllCurriculumReferences($curriculum_id);
+//$tags = $curriculum_manager->getAllCurriculumTags($curriculum_id);
+$videos = $curriculum_manager->getAllCurriculumVideos($curriculum_id);
+
+
+var_dump($videos);
+
+
+exit();
+
+
 
 $curriculum = $userFunctions->accessedAnyCurriculum($userid, false);
 

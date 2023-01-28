@@ -791,7 +791,7 @@ class usersMetricsManager
     public function getAllVideosWatchedUser ($userid, $debug=false){
 
 
-        $q = "SELECT `video_id` FROM `usersViewsVideo`
+        $q = "SELECT DISTINCT `video_id` FROM `usersViewsVideo`
             WHERE `user_id` = '$userid'
             ORDER BY `recentView` DESC";
 

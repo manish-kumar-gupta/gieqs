@@ -491,9 +491,7 @@ public function getFullReferenceListCurriculumItem ($curriculum_item_id){
     from `curriculum_items` as a 
     INNER JOIN `curriculum_references` as b on a.`id` = b.`curriculum_item_id` 
     INNER JOIN `references` as c on c.`id` = b.`reference_id`
-    
     WHERE a.`id` = $curriculum_item_id
-    
     ORDER BY c.`formatted` ASC";
 
     //echo $q;
@@ -566,13 +564,6 @@ public function countReferences ($curriculum_item_id){
     return $nRows;
 
 
-    
-
-    
-
-
-
-
 }
 
 public function section_viewed_last_day ($curriculum_section_id, $user_id, $debug=false){
@@ -641,6 +632,146 @@ public function recordRecentCurriculumView ($section_array, $user_id, $debug=fal
     }
 
 
+
+}
+
+public function getAllCurriculumReferences ($curriculum_id){
+
+    $q = "SELECT c.`id` as referenceid, c.`authors`, c.`formatted`, c.`DOI`, c.`journal`, c.`PMID` from `curriculum_items` as a INNER JOIN `curriculum_references` as b on a.`id` = b.`curriculum_item_id` INNER JOIN `references` as c on c.`id` = b.`reference_id` inner join `curriculum_sections` as d on d.`id` = `a`.`section_id` inner join `curriculae` as e on `e`.`id` = `d`.`curriculum_id` WHERE e.`id` = '$curriculum_id' GROUP BY c.`id` ORDER BY c.`formatted` ASC";
+
+
+    $result = $this->connection->RunQuery($q);
+    
+    $x = 0;
+    $nRows = $result->rowCount();
+    $rowReturn = [];
+
+    if ($nRows > 0) {
+    
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+    
+            $rowReturn[$x] = $row['referenceid'];
+            $x++;
+    
+    
+        }
+    
+    
+        return $rowReturn;
+    
+    } 
+
+
+}
+
+public function getAllCurriculumTags ($curriculum_id){
+
+    $q = "SELECT a.`tag_id` FROM `curriculum_tags` as a INNER JOIN `curriculum_items` as b on a.`curriculum_item_id` = b.`id` INNER JOIN `curriculum_sections` as c on c.`id` = b.`section_id` INNER JOIN `curriculae` as d on d.`id` = c.curriculum_id WHERE d.`id` = '$curriculum_id' GROUP BY a.`tag_id`";
+
+
+    $result = $this->connection->RunQuery($q);
+    
+    $x = 0;
+    $nRows = $result->rowCount();
+    $rowReturn = [];
+
+    if ($nRows > 0) {
+    
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+    
+            $rowReturn[$x] = $row['tag_id'];
+            $x++;
+    
+    
+        }
+    
+    
+        return $rowReturn;
+    
+    } 
+
+
+
+}
+
+public function getAllCurriculumVideos ($curriculum_id){
+
+    $q = "SELECT
+    g.`id`
+        FROM
+            `curriculum_tags` AS a
+        INNER JOIN `curriculum_items` AS b
+        ON
+            a.`curriculum_item_id` = b.`id`
+        INNER JOIN `curriculum_sections` AS c
+        ON
+            c.`id` = b.`section_id`
+        INNER JOIN `curriculae` AS d
+        ON
+            d.`id` = c.curriculum_id
+        INNER JOIN `chapterTag` AS e
+        ON
+            `e`.`tags_id` = `a`.`tag_id`
+        INNER JOIN `chapter` as f 
+        ON
+            f.`id` = `e`.`chapter_id`
+        INNER JOIN `video` as g
+        ON 
+            g.`id` = `f`.`video_id`
+        WHERE d.`id`='$curriculum_id'
+        GROUP BY g.`id`";
+
+
+    $result = $this->connection->RunQuery($q);
+    
+    $x = 0;
+    $nRows = $result->rowCount();
+    $rowReturn = [];
+
+    if ($nRows > 0) {
+    
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+    
+            $rowReturn[$x] = $row['id'];
+            $x++;
+    
+    
+        }
+    
+    
+        return $rowReturn;
+    
+    } 
+
+
+
+}
+
+public function getAllBestPracticeCurriculumVideos ($curriculum_id){
+
+
+    $q = "SELECT a.`video_id` FROM `curriculum_demonstrations` as a INNER JOIN `curriculum_items` AS b ON a.`curriculum_item_id` = b.`id` INNER JOIN `curriculum_sections` AS c ON c.`id` = b.`section_id` INNER JOIN `curriculae` AS d ON d.`id` = c.curriculum_id WHERE d.`id` = '$curriculum_id'";
+
+    $result = $this->connection->RunQuery($q);
+    
+    $x = 0;
+    $nRows = $result->rowCount();
+    $rowReturn = [];
+
+    if ($nRows > 0) {
+    
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+    
+            $rowReturn[$x] = $row['video_id'];
+            $x++;
+    
+    
+        }
+    
+    
+        return $rowReturn;
+    
+    } 
 
 }
 
