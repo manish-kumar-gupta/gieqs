@@ -2158,6 +2158,84 @@ public function returnEmails($users)
 				
 	
 		}
+
+
+		/* Curriculum Functions */
+
+		function accessedCurriculumSpecific($userid, $curriculum_id, $debug){
+
+			$q = "SELECT `id`, `session_id` FROM `userActivity` WHERE `user_id` = '$userid' AND `session_id` LIKE 'CURRICULUM_VIEW $curriculum_id' ORDER BY `activity_time` DESC LIMIT 1";
+	
+			//return user name and valid or not
+	
+			$result = $this->connection->RunQuery($q);
+			
+			$nRows = $result->rowCount();
+	
+				if ($nRows > 0){
+	
+					while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+	
+						$numeric_portion = preg_replace('/[^0-9]/', '', $row['session_id']);
+	
+						$rowReturn = $numeric_portion;
+						//$x++;
+		
+					}
+	
+					return $rowReturn;
+	
+				}else{
+					
+					return FALSE;
+	
+				}
+	
+	
+	
+	
+		}
+
+		function accessedAnyCurriculum($userid, $debug){
+
+			$q = "SELECT `id`, `session_id` FROM `userActivity` WHERE `user_id` = '$userid' AND `session_id` LIKE 'CURRICULUM_VIEW%%%' ORDER BY `activity_time` DESC";
+	
+			//return user name and valid or not
+
+			$rowReturn = [];
+	
+			$result = $this->connection->RunQuery($q);
+			
+			$nRows = $result->rowCount();
+	
+				if ($nRows > 0){
+	
+					while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+	
+						$numeric_portion = preg_replace('/[^0-9]/', '', $row['session_id']);
+
+						if (!(in_array($numeric_portion, $rowReturn))){
+
+							$rowReturn[] = $numeric_portion;
+
+						}
+	
+						//$x++;
+		
+					}
+	
+					return $rowReturn;
+	
+				}else{
+					
+					return FALSE;
+	
+				}
+	
+	
+	
+	
+		}
 	
 	
 		

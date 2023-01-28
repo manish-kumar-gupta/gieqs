@@ -575,6 +575,75 @@ public function countReferences ($curriculum_item_id){
 
 }
 
+public function section_viewed_last_day ($curriculum_section_id, $user_id, $debug=false){
+
+
+    //define current datetime
+
+    $utcTimezone = new DateTimeZone('UTC');
+    $currentDate = new DateTime('now', $utcTimezone);
+    $currentDate->modify("-1 day");
+    $sqlDate = $currentDate->format('Y-m-d H:i:s');
+
+    //sql format
+
+    $q = "SELECT `id`, `recentView` FROM `usersViewsCurriculumStatement` WHERE `curriculum_section_id` = '$curriculum_section_id' AND `user_id` = '$user_id' AND `recentView` > '$sqlDate'";
+    if ($debug){
+        echo $q;
+    }
+
+    $result = $this->connection->RunQuery($q);
+
+    $nRows = $result->rowCount();
+    $rowReturn = [];
+
+    if ($nRows > 0) {
+
+        return TRUE; // was a view within last day
+
+    }else{
+
+        return false;  // no view within last day
+    }
+
+
+}
+
+public function recordRecentCurriculumView ($section_array, $user_id, $debug=false) {
+
+    $utcTimezone = new DateTimeZone('UTC');
+    $currentDate = new DateTime('now', $utcTimezone);
+    $sqlDate = $currentDate->format('Y-m-d H:i:s');
+
+    //var_dump($section_array);
+
+    foreach ($section_array as $key => $value){
+
+        //echo 'in loop';
+
+        if (!($this->section_viewed_last_day($value, $user_id, $debug))){ //no view within last day
+
+            
+            $q = "INSERT INTO `usersViewsCurriculumStatement`(`user_id`, `curriculum_section_id`, `recentView`) VALUES ('$user_id','$value','$sqlDate')";
+            echo $q;
+
+            $result2 = $this->connection->RunQuery($q);
+
+
+        }else{
+
+            //echo 'wrong';
+            //no view to record
+        }
+
+
+
+    }
+
+
+
+}
+
      
 
 

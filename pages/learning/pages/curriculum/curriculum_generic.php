@@ -449,6 +449,31 @@ top: 0px;
     $debug = false;
     $_SESSION['debug'] = false;
 
+
+    if ($userid){
+
+        echo "<div id='logged-in'>1</div>";
+
+
+    }else{
+
+        echo "<div id='logged-in'>0</div>";
+
+    }
+
+    //getcurrent UTC time
+    $date = new DateTime('now', new DateTimeZone('UTC'));
+    $sqltimestamp = date_format($date, 'Y-m-d H:i:s');
+    
+    //add a login event to the database
+
+    if ($userid){
+
+        $userActivity->New_userActivity($userid, 'CURRICULUM_VIEW ' . $id , '', $sqltimestamp);
+        $userActivity->prepareStatementPDO();
+
+    }
+
     ?>
 
 

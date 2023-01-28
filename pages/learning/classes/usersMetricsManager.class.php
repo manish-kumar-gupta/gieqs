@@ -361,28 +361,28 @@ class usersMetricsManager
         WHERE `advertise_for_purchase` = 1        
         ORDER BY `id` DESC";
 
-$x=0;
-$returnArray = [];
-$result = $this->connection->RunQuery($q);
+        $x=0;
+        $returnArray = [];
+        $result = $this->connection->RunQuery($q);
 
-$nRows = $result->rowCount();
+        $nRows = $result->rowCount();
 
 
-if ($nRows > 0) {
+        if ($nRows > 0) {
 
-    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 
-        $returnArray[$x] = $row['id'];
-        $x++;
+                $returnArray[$x] = $row['id'];
+                $x++;
 
-    }
+            }
 
-    return $returnArray;
+            return $returnArray;
 
-}else{
+        }else{
 
-    return FALSE;
-}
+            return FALSE;
+        }
 
 
 
@@ -1114,11 +1114,7 @@ if ($nRows > 0) {
     }
 
 
-    function accessedCurriculum($curriculum_id, $debug){
-
-
-
-    }
+    
 
 
     

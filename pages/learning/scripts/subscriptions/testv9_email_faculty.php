@@ -113,7 +113,21 @@ error_reporting(E_ALL);
 
 $debug=true;
 
-$assetid=84;
+$curriculum_id=4;
+$userid=1;
+
+$curriculum = $userFunctions->accessedAnyCurriculum($userid, false);
+
+
+//$curriculum = $userFunctions->accessedCurriculumSpecific($userid, $curriculum_id, false);
+
+var_dump($curriculum);
+
+
+
+
+
+exit();
 
 var_dump($usersMetricsManager->userCompletionAsset(1, 84, false));
 

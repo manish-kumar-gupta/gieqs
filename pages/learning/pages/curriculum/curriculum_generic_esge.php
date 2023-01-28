@@ -1321,6 +1321,8 @@ for each section
 
     var statement_id = null;
 
+    const viewed_statements = [];
+
     var siteRoot = rootFolder;
 
     esdLesionPassed = $("#id").text();
@@ -1537,7 +1539,7 @@ return (
         $(window).on('load', function() {
 
 
-            //$('#loading').hide();
+            $('#loading').remove();
         })
 
 
@@ -1634,6 +1636,17 @@ return (
 
                 if (isElementInView) {
 
+                    //define an array
+
+                    if (!(viewed_statements.includes(idElement))){
+
+                    //add to the array
+                        viewed_statements.push(idElement);
+
+                    }
+
+
+                    //pass the array to the server for database storage
                    // console.log(idElement + ' is in view');
 
                 }
@@ -2134,6 +2147,73 @@ $(document).on('click', '.demonstration-video', function(event){
         }
         
     });
+
+    var intervalId = window.setInterval(function () {
+
+        //call home with the viewed statements
+
+        var loggedin = $('#logged-in').text();
+
+        if (loggedin == 0) {
+
+            //can't record progress for a user who is not logged in
+            return;
+
+        } else if (loggedin == 1) {
+
+            const jsonString = JSON.stringify(viewed_statements);
+
+            //console.log(jsonString);
+
+
+            var request2 = $.ajax({
+                beforeSend: function () {
+
+
+                },
+                url: siteRoot + "scripts/curriculum/send_curriculum_viewed_statements.php",
+                type: "POST",
+                contentType: "application/json",
+                data: jsonString,
+            });
+
+
+
+            request2.done(function (data) {
+                // alert( "success" );
+                if (data) {
+                    //show green tick
+
+                    /* try {
+
+                        var result = JSON.parse(data);
+
+                    } catch (error) {
+
+                        console.log('ajax error for saving curriculum data');
+                        return;
+                    } */
+
+                    //console.dir(result);
+                    
+
+
+
+
+
+
+
+
+                }
+
+
+
+            })
+        }
+
+
+    }, 5000);
+
 
 
 
