@@ -487,7 +487,7 @@ public function getFullReferenceListCurriculumItem ($curriculum_item_id){
 
     //this for imageset then another for video, merge same and return
 
-    $q = "SELECT a.`id` as curriculumitemid, c.`authors`, c.`formatted`, c.`DOI`, c.`journal`, c.`PMID` 
+    $q = "SELECT a.`id` as curriculumitemid, c.`id` as `referenceid`, c.`authors`, c.`formatted`, c.`DOI`, c.`journal`, c.`PMID` 
     from `curriculum_items` as a 
     INNER JOIN `curriculum_references` as b on a.`id` = b.`curriculum_item_id` 
     INNER JOIN `references` as c on c.`id` = b.`reference_id`
@@ -507,7 +507,7 @@ public function getFullReferenceListCurriculumItem ($curriculum_item_id){
         while($row = $result->fetch(PDO::FETCH_ASSOC)){
             $PMID = $row['PMID'];
             
-            $references .= '<p class="referencelist cursor-pointer" style="font-size:1.0rem !important;" data="' . $PMID . '" style="text-align:left;" >' . $x . ' - ';
+            $references .= '<p class="referencelist cursor-pointer" style="font-size:1.0rem !important;" data="' . $PMID . '" data-id="' . $row['referenceid'] . '" style="text-align:left;" >' . $x . ' - ';
             
             $authors = explode( ',', $row['authors'] );
             $n = count($authors);
@@ -616,7 +616,7 @@ public function recordRecentCurriculumView ($section_array, $user_id, $debug=fal
 
             
             $q = "INSERT INTO `usersViewsCurriculumStatement`(`user_id`, `curriculum_section_id`, `recentView`) VALUES ('$user_id','$value','$sqlDate')";
-            echo $q;
+            //echo $q;
 
             $result2 = $this->connection->RunQuery($q);
 
@@ -630,6 +630,31 @@ public function recordRecentCurriculumView ($section_array, $user_id, $debug=fal
 
 
     }
+
+
+
+}
+
+public function recordRecentReferenceView ($reference_id, $user_id, $debug=false) {
+
+    $utcTimezone = new DateTimeZone('UTC');
+    $currentDate = new DateTime('now', $utcTimezone);
+    $sqlDate = $currentDate->format('Y-m-d H:i:s');
+
+
+
+
+            
+            $q = "INSERT INTO `usersViewsReferences`(`user_id`, `reference_id`, `recentView`) VALUES ('$user_id','$reference_id','$sqlDate')";
+            //echo $q;
+
+            $result2 = $this->connection->RunQuery($q);
+
+
+
+
+
+    
 
 
 

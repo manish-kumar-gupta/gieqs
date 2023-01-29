@@ -357,6 +357,11 @@ $xcrud->default_tab('Curriculae');
 $xcrud->set_logging(true);
 $xcrud->fields_inline('long_name');
 $xcrud->inline_edit_click('double_click');
+$xcrud->change_type('active','select','',array(0=>'Inactive', 1=>'Active',));
+$xcrud->relation('owner','partner','id',array('name'));
+
+
+
 $xcrud->button(BASE_URL . '/pages/learning/pages/curriculum/curriculum_generic.php?id={id}', 'Open Curriculum');
 
 

@@ -126,6 +126,8 @@ $all_videos = $usersMetricsManager->getAllVideosWatchedUser($user_id);
 
 $video_completion_user = [];
 
+$overall_video_completion = 0;
+
 foreach ($all_videos as $key => $value){
 
     $completion = null;
@@ -134,38 +136,169 @@ foreach ($all_videos as $key => $value){
 
     $video_completion_user[$value] = $completion;
 
+    $overall_video_completion += $completion;
+
+
 }
 
 //can now write to db with $key = video_id and $value = completion %
 
 var_dump($video_completion_user);
 
-$user_overall_video_completion = $usersMetricsManager->userCompletionVideos($user_id);
+//%completion of videos started
+$overall_video_completion = $overall_video_completion / count($all_videos);
 
-var_dump($user_overall_video_completion);
+//%completion of available videos
+
+$total_video_completion = $usersMetricsManager->userCompletionVideos($userid)['completion'];
+
+var_dump($overall_video_completion);
+
+var_dump($total_video_completion);
 
 
 //CURRICULA
 
 //number of opens per curriculum
 
+//get all curriculae
+
+/* SELECT `id`, `name`, `long_name`, `description` FROM `curriculae` WHERE `active` = 1 *
+
+//get all curriculae opens ever, return curriculum id, for specific user, count = number of opens
+
+/* SELECT c.`id` FROM `usersViewsCurriculumStatement` as a INNER JOIN `curriculum_sections` AS b ON b.`id` = a.`curriculum_section_id` INNER JOIN `curriculae` AS c ON c.`id` = `b`.`curriculum_id` WHERE `user_id` = '$user_id' GROUP BY c.`id` ORDER BY `recentView` DESC; */
+
+//get user opens for specfic curriculum
+
+/* SELECT
+    c.`id`
+FROM
+    `usersViewsCurriculumStatement` as a
+INNER JOIN `curriculum_sections` AS b
+        ON
+            b.`id` = a.`curriculum_section_id`
+        INNER JOIN `curriculae` AS c
+        ON
+            c.`id` = `b`.`curriculum_id`
+        WHERE `user_id` = '$user_id' AND c.`id` = '$curriculum_id'
+        GROUP BY c.`id`
+        ORDER BY `recentView` DESC; */
+
+
 //set curriculum_id
 
-$curriculum_id = 5;
+$curriculum_id = 4;
 
 //sections read
 
+//list all sections
+
+/* SELECT
+    a.`id`,
+    `curriculum_id`,
+    `section_order`,
+    a.`name`,
+    a.`long_name`
+FROM
+    `curriculum_sections` as a 
+INNER JOIN 
+	`curriculae` as b on `b`.`id` = `a`.`curriculum_id`
+WHERE
+    b.`id` = '$curriculum_id'; */
+
+//which sections has user viewed
+
+/* SELECT
+    b.`id`
+FROM
+    `usersViewsCurriculumStatement` as a
+INNER JOIN `curriculum_sections` AS b
+        ON
+            b.`id` = a.`curriculum_section_id`
+        INNER JOIN `curriculae` AS c
+        ON
+            c.`id` = `b`.`curriculum_id`
+        WHERE `user_id` = '$user_id' AND c.`id` = '$curriculum_id'
+        GROUP BY b.`id`
+        ORDER BY `recentView` DESC; */
+
+
+
+
+
+
+
+
+
+
 //references clicked [needs new db]
+
+
+
+
+
+
+
 
 //videos per tag, use script above replace $all_videos with the array of videos in the curriculum
 
-//best practice video define
+
+$userid=1;
+
+$tagged_videos = $curriculum_manager->getAllCurriculumVideos($curriculum_id);
+
+$tagged_videos_denominator = count($tagged_videos);
+
+var_dump($tagged_videos);
+
+$video_completion_user = [];
+
+$overall_video_completion = 0;
+
+
+foreach ($tagged_videos as $key => $value){
+
+    $completion = null;
+
+    $completion = round($usersMetricsManager->userCompletionVideo($userid, $value), 1);
+
+    $video_completion_user[$value] = $completion;
+
+    $overall_video_completion += $completion;
+
+}
+
+$overall_video_completion = $overall_video_completion / $tagged_videos_denominator;
+
+//can now write to db with $key = video_id and $value = completion %
+
+echo '<br/><br/>Overall Completion Tagged Videos ' . round($overall_video_completion, 1) . '<br/><br/>';
+
+var_dump($video_completion_user);
+
+
+
+
+
+
+
+
+//best practice video define and metrics
+
+
+$userid=1;
 
 $best_practice_videos = $curriculum_manager->getAllBestPracticeCurriculumVideos($curriculum_id);
+
+$best_practice_videos_denominator = count($best_practice_videos);
 
 var_dump($best_practice_videos);
 
 $video_completion_user = [];
+
+$overall_video_completion = 0;
+
 
 foreach ($best_practice_videos as $key => $value){
 
@@ -175,26 +308,33 @@ foreach ($best_practice_videos as $key => $value){
 
     $video_completion_user[$value] = $completion;
 
+    $overall_video_completion += $completion;
+
 }
 
+$overall_video_completion = $overall_video_completion / $best_practice_videos_denominator;
+
 //can now write to db with $key = video_id and $value = completion %
+
+echo '<br/><br/>Overall Completion Best Practice ' . $overall_video_completion;
 
 var_dump($video_completion_user);
 
 
 
-exit();
-
-$curriculum_id=4;
-$userid=1;
 
 
-//$references = $curriculum_manager->getAllCurriculumReferences($curriculum_id);
+
+$references = $curriculum_manager->getAllCurriculumReferences($curriculum_id);
+
+$total_references = count($references);
+
+echo '<br/><br/>Total references is ' . $total_references;
 //$tags = $curriculum_manager->getAllCurriculumTags($curriculum_id);
 $videos = $curriculum_manager->getAllCurriculumVideos($curriculum_id);
 
 
-var_dump($videos);
+//var_dump($videos);
 
 
 exit();

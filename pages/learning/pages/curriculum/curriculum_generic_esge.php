@@ -1562,12 +1562,75 @@ return (
 
             //get the tag name
 
+            var reference_id_clicked = $(this).attr('data-id');
+
             var searchTerm = $(this).attr('data');
 
             //console.log("https://www.ncbi.nlm.nih.gov/pubmed/?term="+searchTerm);
 
             PopupCenter("https://www.ncbi.nlm.nih.gov/pubmed/?term=" + searchTerm,
                 'PubMed Search (endoWiki)', 800, 700);
+
+                var loggedin = $('#logged-in').text();
+
+        if (loggedin == 0) {
+
+            //can't record progress for a user who is not logged in
+            return;
+
+        } else if (loggedin == 1) {
+
+            var reference_id = {reference_id:reference_id_clicked,};
+
+            const jsonString = JSON.stringify(reference_id);
+
+            //console.log(jsonString);
+
+
+            var request2 = $.ajax({
+                beforeSend: function () {
+
+
+                },
+                url: siteRoot + "scripts/curriculum/send_curriculum_viewed_references.php",
+                type: "POST",
+                contentType: "application/json",
+                data: jsonString,
+            });
+
+
+
+            request2.done(function (data) {
+                // alert( "success" );
+                if (data) {
+                    //show green tick
+
+                    /* try {
+
+                        var result = JSON.parse(data);
+
+                    } catch (error) {
+
+                        console.log('ajax error for saving curriculum data');
+                        return;
+                    } */
+
+                    //console.dir(result);
+                    
+
+
+
+
+
+
+
+
+                }
+
+
+
+            })
+        }
 
 
 
