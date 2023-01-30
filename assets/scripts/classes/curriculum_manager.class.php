@@ -1259,8 +1259,8 @@ public function curriculum_completion_stats_user_specific_curriculum ($user_id, 
         $returnArray['overall_completion'] = (intval($returnArray['statement_completion']['completion']) + intval($returnArray['best_practice_completion']['completion']) + intval($returnArray['all_video_completion']['completion']) + intval($returnArray['reference_completion']['completion']))/4;
     
 
-        var_dump($returnArray);
-    
+/*         var_dump($returnArray);
+ */    
 
     return $returnArray;
 

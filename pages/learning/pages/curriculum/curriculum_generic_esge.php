@@ -695,15 +695,15 @@ top: 0px;
                         <?php //set up curriculum stats
                         
                         $completion_stats = $curriculum_manager->curriculum_completion_stats_user_specific_curriculum($userid, $id);
-                        echo '<pre>';
+                        /* echo '<pre>';
                         var_dump($completion_stats);
-                        echo '</pre>';
+                        echo '</pre>'; */
 
                         
                         ?>
 
-                            <div class="curriculum-top-card mb-2 mt-3 bg-dark-dark">
-                                <div class="curriculum-card-body pb-0 mt-3" style="padding-bottom:0px !important;">
+                            <div class="curriculum-top-card mb-2 mt-0 bg-dark-dark">
+                                <div class="curriculum-card-body pb-0 mt-0" style="padding-bottom:0px !important;">
                                     <div class="actions d-flex justify-content-end" style="font-size:1rem;">
                                         <div class="cursor-pointer feedback hover-text-gold mx-0 mr-auto">Curriculum
                                             Completion Statistics</div>
@@ -712,10 +712,17 @@ top: 0px;
                             </div>
                             <div class="curriculum-lower-card bg-dark">
                                 <div class="card-body mt-1 mb-0 pb-1">
+
+                                <div class="d-flex align-items-center">
                                 <?php
-                                echo "<p>Overall : " . round($completion_stats['overall_completion'], 1). "%</p>";
+                                echo "<div class='mr-2' style='font-size:1rem;'>Overall </div>";
                                 
                                 ?>
+                                <div class="progress" style="height: 14px; flex: 1 !important;">
+                                <div class="progress-bar bg-gieqsGold" role="progressbar" style="width: <?php echo round($completion_stats['overall_completion'], 1);?>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><?php echo round($completion_stats['overall_completion'], 1);?>%</div>
+                                </div>
+                                </div>
+                                
                                 
                                 
 
@@ -2272,6 +2279,20 @@ for each section
 
         });
 
+        var intervalId2 = window.setInterval(function() {
+            //store the array of viewed statements every 3 seconds
+
+            //to implement
+
+            //get elements from a list that are on the screen (list is list of statement headers)
+
+            //of those push to array every 3 seconds
+
+
+        }, 5000);
+
+
+
         var intervalId = window.setInterval(function() {
 
             //call home with the viewed statements
@@ -2306,26 +2327,10 @@ for each section
                 request2.done(function(data) {
                     // alert( "success" );
                     if (data) {
-                        //show green tick
+                       
+                        //reset the array
 
-                        /* try {
-
-                            var result = JSON.parse(data);
-
-                        } catch (error) {
-
-                            console.log('ajax error for saving curriculum data');
-                            return;
-                        } */
-
-                        //console.dir(result);
-
-
-
-
-
-
-
+                        viewed_statements = [];
 
 
                     }
