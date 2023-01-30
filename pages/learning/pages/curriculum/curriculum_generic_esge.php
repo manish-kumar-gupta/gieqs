@@ -692,50 +692,125 @@ top: 0px;
                         <div id="right" class="right col-lg-9 text-container">
 
 
-                        <?php //set up curriculum stats
+                            <?php //set up curriculum stats
                         
                         $completion_stats = $curriculum_manager->curriculum_completion_stats_user_specific_curriculum($userid, $id);
                         /* echo '<pre>';
                         var_dump($completion_stats);
-                        echo '</pre>'; */
-
+                        echo '</pre>';
+ */
                         
                         ?>
 
                             <div class="curriculum-top-card mb-2 mt-0 bg-dark-dark">
                                 <div class="curriculum-card-body pb-0 mt-0" style="padding-bottom:0px !important;">
                                     <div class="actions d-flex justify-content-end" style="font-size:1rem;">
-                                        <div class="cursor-pointer feedback hover-text-gold mx-0 mr-auto">Curriculum
+                                        <div class="cursor-pointer feedback hover-text-gold mx-0 mr-auto text-bold"
+                                            style="font-weight: 600;">Curriculum
                                             Completion Statistics</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="curriculum-lower-card bg-dark">
-                                <div class="card-body mt-1 mb-0 pb-1">
+                                <div class="card-body mt-0 mb-0 pb-3 pt-3">
 
-                                <div class="d-flex align-items-center">
-                                <?php
-                                echo "<div class='mr-2' style='font-size:1rem;'>Overall </div>";
+                                    <div class="d-flex align-items-center overall-completion">
+                                        <div class="bar px-2" style="flex:1 !important">
+                                            <?php
+                                echo "<div class='mr-2' style='font-size:1rem; font-weight: 600;'>Overall </div>";
                                 
                                 ?>
-                                <div class="progress" style="height: 14px; flex: 1 !important;">
-                                <div class="progress-bar bg-gieqsGold" role="progressbar" style="width: <?php echo round($completion_stats['overall_completion'], 1);?>%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"><?php echo round($completion_stats['overall_completion'], 1);?>%</div>
-                                </div>
-                                </div>
-                                
-                                
-                                
+                                            <div class="progress" style="height: 14px; flex: 1 !important;">
+                                                <div class="progress-bar" role="progressbar"
+                                                    style="width: <?php echo round($completion_stats['overall_completion'], 1);?>%;"
+                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                    <?php echo round($completion_stats['overall_completion'], 1);?>%
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
 
-                                  
-                                   
+                                    <div class="d-flex align-items-center other-completion mt-2">
+                                        <div class="bar px-2" style="flex:1 !important">
+                                            <?php
+                                            echo "<div class='mr-2' style='font-size:0.8rem;'>Statements </div>";
+                                
+                                         ?>
+                                            <div class="progress" style="height: 10px; flex: 1 !important;">
+                                                <div class="progress-bar bg-gieqsGold" role="progressbar"
+                                                    style="width: <?php echo round($completion_stats['statement_completion']['completion'], 1);?>%;"
+                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                    <?php echo round($completion_stats['statement_completion']['completion'], 1);?>%
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="bar px-2" style="flex:1 !important">
+
+
+                                            <?php
+                                            echo "<div class='mr-2' style='font-size:0.8rem;'>References </div>";
+                                
+                                         ?>
+                                            <div class="progress" style="height: 10px; flex: 1 !important;">
+                                                <div class="progress-bar bg-gieqsGold" role="progressbar"
+                                                    style="width: <?php echo round($completion_stats['reference_completion']['completion'], 1);?>%;"
+                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                    <?php echo round($completion_stats['reference_completion']['completion'], 1);?>%
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="d-flex align-items-center video-completion mt-2">
+
+                                        <div class="bar px-2" style="flex:1 !important">
+
+                                            <?php
+                                            echo "<div class='mr-2' style='font-size:0.8rem;'>Best Practice Videos </div>";
+                                
+                                         ?>
+                                            <div class="progress" style="height: 10px; flex: 1 !important;">
+                                                <div class="progress-bar bg-gieqsGold" role="progressbar"
+                                                    style="width: <?php echo round($completion_stats['best_practice_completion']['completion'], 1);?>%;"
+                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                    <?php echo round($completion_stats['best_practice_completion']['completion'], 1);?>%
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="bar px-2" style="flex:1 !important">
+
+
+                                            <?php
+                                            echo "<div class='mr-2' style='font-size:0.8rem;'>All Videos </div>";
+                                
+                                         ?>
+                                            <div class="progress" style="height: 10px; flex: 1 !important;">
+                                                <div class="progress-bar bg-gieqsGold" role="progressbar"
+                                                    style="width: <?php echo round($completion_stats['all_video_completion']['completion'], 1);?>%;"
+                                                    aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                                                    <?php echo round($completion_stats['all_video_completion']['completion'], 1);?>%
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+
+
+
+
+
                                 </div>
                             </div>
 
 
 
                             <?php
-                            exit();
+                            
           
           //$id = 1;
 
@@ -1879,7 +1954,8 @@ for each section
 
 
                 alert(
-                    'Login Required for Tag Functionality.  You can create an account at gieqs.com/online');
+                    'Login Required for Tag Functionality.  You can create an account at gieqs.com/online'
+                );
                 return;
 
             } else if (loggedin == 1) {
@@ -1972,7 +2048,8 @@ for each section
                         } catch (error) {
 
                             alert(
-                                'Login Required for Tag Functionality.  You can create an account at gieqs.com/online');
+                                'Login Required for Tag Functionality.  You can create an account at gieqs.com/online'
+                            );
                             return;
                         }
 
@@ -2327,7 +2404,7 @@ for each section
                 request2.done(function(data) {
                     // alert( "success" );
                     if (data) {
-                       
+
                         //reset the array
 
                         viewed_statements = [];
