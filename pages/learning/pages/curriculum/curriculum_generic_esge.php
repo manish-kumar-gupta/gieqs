@@ -110,35 +110,35 @@ add_action ( 'wp_ajax_load-content', 'my_load_ajax_content' );
 
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
     <script src="<?php echo BASE_URL;?>/pages/learning/includes/generaljs.js"></script>
-    
+
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/css/purpose_esge.css" id="stylesheet">
-   
+
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/css/esge.css">
 
 
 
     <style>
-
     ::-webkit-scrollbar {
         width: 12px;
     }
-    
+
     /* Track */
     ::-webkit-scrollbar-track {
-        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
         -webkit-border-radius: 10px;
         border-radius: 10px;
     }
-    
+
     /* Handle */
     ::-webkit-scrollbar-thumb {
         -webkit-border-radius: 10px;
         border-radius: 10px;
-        background: #F7941F; 
-        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+        background: #F7941F;
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
     }
+
     ::-webkit-scrollbar-thumb:window-inactive {
-        background: rgba(238, 194, 120,0.4); 
+        background: rgba(238, 194, 120, 0.4);
     }
 
     .divider-icon::before {
@@ -151,12 +151,11 @@ add_action ( 'wp_ajax_load-content', 'my_load_ajax_content' );
         border-bottom: 1px solid #6e84a3 !important;
     }
 
-    a.text-muted:hover
-{
-    color: #F7941F !important;
-}
+    a.text-muted:hover {
+        color: #F7941F !important;
+    }
 
-   
+
 
     /*   #left {
   float: left;
@@ -203,15 +202,15 @@ add_action ( 'wp_ajax_load-content', 'my_load_ajax_content' );
         z-index: 102;
     }
 
-    .hover-text-gold:hover{
+    .hover-text-gold:hover {
 
         color: #F7941F !important;
 
     }
 
-    .hover-text-gold{
+    .hover-text-gold {
 
-    color: #004187 !important;
+        color: #004187 !important;
 
     }
 
@@ -230,7 +229,7 @@ add_action ( 'wp_ajax_load-content', 'my_load_ajax_content' );
 
     .text-container strong {
 
-       /*  font-weight: 500;
+        /*  font-weight: 500;
         color: black; */
     }
 
@@ -242,9 +241,9 @@ add_action ( 'wp_ajax_load-content', 'my_load_ajax_content' );
 
     .text-container h1 {
 
-margin-top: 4rem !important;
+        margin-top: 4rem !important;
 
-}
+    }
 
     .text-container h2 {
 
@@ -383,8 +382,6 @@ top: 0px;
         flex-basis: 100%;
         height: 0;
     }
-
-    
     </style>
 
 
@@ -507,7 +504,8 @@ top: 0px;
         <!--Header CHANGEME-->
 
         <div class="container pt-4">
-        <img class="mr-3 mb-3" src="https://esgedays.org/assets/images/logo-header-esge.png">In partnership with ESGE
+            <img class="mr-3 mb-3" src="https://esgedays.org/assets/images/logo-header-esge.png">In partnership with
+            ESGE
 
             <nav aria-label="breadcrumb" class="mb-3">
                 <ol class="breadcrumb breadcrumb-links p-0 m-0">
@@ -553,9 +551,9 @@ top: 0px;
                 return Math.round(value * multiplier) / multiplier;
             }
 
-            function isInView(elem){
-   return $(elem).offset().top - $(window).scrollTop() < $(elem).height() ;
-}
+            function isInView(elem) {
+                return $(elem).offset().top - $(window).scrollTop() < $(elem).height();
+            }
 
 
 
@@ -576,23 +574,23 @@ top: 0px;
                 };
 
 
-/* 
-                $(window).scroll(function() {
-                    var scrollDistance = $(window).scrollTop();
-                    //console.log(scrollDistance);
+                /* 
+                                $(window).scroll(function() {
+                                    var scrollDistance = $(window).scrollTop();
+                                    //console.log(scrollDistance);
 
 
-                    // Assign active class to nav links while scolling
-                    $('h2').each(function(i) {
-                        if ($(this).position().top <= scrollDistance + 2000) {
-                            $('.section-nav a.text-gieqsGold').removeClass('text-gieqsGold')
-                                .addClass(
-                                    'text-muted');
-                            $('.section-nav a').eq(i).addClass('text-gieqsGold').removeClass(
-                                'text-muted');
-                        }
-                    });
-                }).scroll(); */
+                                    // Assign active class to nav links while scolling
+                                    $('h2').each(function(i) {
+                                        if ($(this).position().top <= scrollDistance + 2000) {
+                                            $('.section-nav a.text-gieqsGold').removeClass('text-gieqsGold')
+                                                .addClass(
+                                                    'text-muted');
+                                            $('.section-nav a').eq(i).addClass('text-gieqsGold').removeClass(
+                                                'text-muted');
+                                        }
+                                    });
+                                }).scroll(); */
 
 
 
@@ -611,21 +609,28 @@ top: 0px;
                             <span class="sr-only gieqsGold">Loading...</span>
                         </div>
                         <div class="display-4 gieqsGold">Loading Living Curriculum Viewer</div>
-                      
+
 
                     </div>
-                    <img class="mr-3 mb-3" src="https://esgedays.org/assets/images/logo-header-esge.png">In partnership with ESGE
+                    <img class="mr-3 mb-3" src="https://esgedays.org/assets/images/logo-header-esge.png">In partnership
+                    with ESGE
                     <div class="d-flex mt-2">
 
                         <div class="col-8 container">
-                            <p class="text-dark card-body p-3 text-center" style="opacity: 1;"><i class="fa fa-info-circle mr-3"
-                                    aria-hidden="true"></i>It takes a lot of processing to deliver a Live Curriculum.
+                            <p class="text-dark card-body p-3 text-center" style="opacity: 1;"><i
+                                    class="fa fa-info-circle mr-3" aria-hidden="true"></i>It takes a lot of processing
+                                to deliver a Live Curriculum.
                                 Every time you reload this page a new curriculum is built. If we added a reference or
                                 tag it will be visible once you reload. </p>
-                            <p class="text-dark card-body p-3 text-center" style="opacity: 1;">We suggest leaving the curriculum
+                            <p class="text-dark card-body p-3 text-center" style="opacity: 1;">We suggest leaving the
+                                curriculum
                                 open once it loads and using tags to browse GIEQs Online</p>
 
-                                <p class="text-dark card-body p-3 text-center" style="opacity: 1;">If you are not logged into GIEQs Online you can view the curriculum, check references but major functionality (tag jumping, viewing demonstration videos) is disabled.  GIEQs Online logins can be obtained free at <a href="https://www.gieqs.com/online" target="_blank">gieqs.com/online</a></p>
+                            <p class="text-dark card-body p-3 text-center" style="opacity: 1;">If you are not logged
+                                into GIEQs Online you can view the curriculum, check references but major functionality
+                                (tag jumping, viewing demonstration videos) is disabled. GIEQs Online logins can be
+                                obtained free at <a href="https://www.gieqs.com/online"
+                                    target="_blank">gieqs.com/online</a></p>
                         </div>
                     </div>
 
@@ -645,10 +650,9 @@ top: 0px;
                             <div id="sticky" data-toggle="sticky" class="is_stuck pr-3 mr-3 pl-2 pt-2">
 
 
-                            
+
                                 <h6 class="mt-0 mb-3 pl-0 h5 text-left"><?php echo $curriculae->getlong_name();?></h6>
-                                
-                                <h6 class="mt-0 mb-3 pl-0 h5 text-left">Jump to Section</h6>
+
 
                                 <a class="collapse-all hover-text-gold cursor-pointer">Collapse All</a>
                                 <div class="break"></div>
@@ -661,6 +665,7 @@ top: 0px;
 
                                     </ul>
                                 </div>
+
 
                                 <h6 class="mt-4 mb-3 pl-0 h5 text-left">How to Use</h6>
 
@@ -687,7 +692,43 @@ top: 0px;
                         <div id="right" class="right col-lg-9 text-container">
 
 
+                        <?php //set up curriculum stats
+                        
+                        $completion_stats = $curriculum_manager->curriculum_completion_stats_user_specific_curriculum($userid, $id);
+                        echo '<pre>';
+                        var_dump($completion_stats);
+                        echo '</pre>';
+
+                        
+                        ?>
+
+                            <div class="curriculum-top-card mb-2 mt-3 bg-dark-dark">
+                                <div class="curriculum-card-body pb-0 mt-3" style="padding-bottom:0px !important;">
+                                    <div class="actions d-flex justify-content-end" style="font-size:1rem;">
+                                        <div class="cursor-pointer feedback hover-text-gold mx-0 mr-auto">Curriculum
+                                            Completion Statistics</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="curriculum-lower-card bg-dark">
+                                <div class="card-body mt-1 mb-0 pb-1">
+                                <?php
+                                echo "<p>Overall : " . round($completion_stats['overall_completion'], 1). "%</p>";
+                                
+                                ?>
+                                
+                                
+
+
+                                  
+                                   
+                                </div>
+                            </div>
+
+
+
                             <?php
+                            exit();
           
           //$id = 1;
 
@@ -1208,7 +1249,7 @@ for each section
             </div>
         </div>
     </div>
-    
+
     <div class="modal fade living-curriculum-modal" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -1256,31 +1297,34 @@ for each section
     </div>
 
     <!-- Modal -->
-<div class="modal feedback-modal fade" id="feedback_modal" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">We value your feedback</h5>
-                <button type="button" class="bg-gieqsGold close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Please let us know what type of feedback you wish to leave?</strong></p>
-               
-            </div>
-            <div class="modal-footer" style="flex-direction: column;
+    <div class="modal feedback-modal fade" id="feedback_modal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">We value your feedback</h5>
+                    <button type="button" class="bg-gieqsGold close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Please let us know what type of feedback you wish to leave?</strong></p>
+
+                </div>
+                <div class="modal-footer" style="flex-direction: column;
     align-content: center;">
-               
-                <button type="button" class="btn btn-dark" onclick="giveFeedback(1);">New Tag Suggestion (for this statement)</button>
-                <button type="button" class="btn btn-dark" onclick="giveFeedback(2);">New Reference Suggestion (for this statement)</button>
-                <button type="button" class="btn btn-dark" onclick="giveFeedback(3);">Incorrect Statement/Reference</button>
-                <button type="button" class="btn btn-dark" onclick="giveFeedback(4);">Something else?</button>
+
+                    <button type="button" class="btn btn-dark" onclick="giveFeedback(1);">New Tag Suggestion (for this
+                        statement)</button>
+                    <button type="button" class="btn btn-dark" onclick="giveFeedback(2);">New Reference Suggestion (for
+                        this statement)</button>
+                    <button type="button" class="btn btn-dark" onclick="giveFeedback(3);">Incorrect
+                        Statement/Reference</button>
+                    <button type="button" class="btn btn-dark" onclick="giveFeedback(4);">Something else?</button>
 
 
-            </div>
-            <!-- <div class="modal-footer">
+                </div>
+                <!-- <div class="modal-footer">
             <p><a
                         class="key-features cursor-pointer btn-sm bg-gieqsGold btn-icon rounded-pill hover-translate-y-n3 mt-5">
                         <span class="btn-inner--icon">
@@ -1289,15 +1333,15 @@ for each section
                         <span class="btn-inner--text text-dark">Show Key Features of each Plan</span>
                     </a></p>
             </div> -->
-            <div class="modal-footer">
-            <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
-    
+
 
 
 
@@ -1337,22 +1381,23 @@ for each section
 
     }
 
-    function isElementInViewport (el) {
+    function isElementInViewport(el) {
 
-// Special bonus for those using jQuery
-if (typeof jQuery === "function" && el instanceof jQuery) {
-    el = el[0];
-}
+        // Special bonus for those using jQuery
+        if (typeof jQuery === "function" && el instanceof jQuery) {
+            el = el[0];
+        }
 
-var rect = el.getBoundingClientRect();
+        var rect = el.getBoundingClientRect();
 
-return (
-    rect.top >= 0 &&
-    rect.left >= 0 &&
-    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /* or $(window).height() */
-    rect.right <= (window.innerWidth || document.documentElement.clientWidth) /* or $(window).width() */
-);
-}
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            /* or $(window).height() */
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth) /* or $(window).width() */
+        );
+    }
 
     function isScrolledIntoView(elem) {
         var docViewTop = $(window).scrollTop();
@@ -1386,33 +1431,44 @@ return (
 
     var Utils = new Utils();
 
-    function giveFeedback(id){
+    function giveFeedback(id) {
 
 
-        if (id == 1){
+        if (id == 1) {
 
-            window.location.href = "mailto:admin@gieqs.com?subject=new%20tag%20suggestion%20for%20Curriculum%20statement%20id%20" + statement_id + "%20from%20user%20id%20<?php echo $userid;?>&body=Please%20describe%20the%20tag%20you%20think%20we%20should%20add%20for%20this%20curriculum%20statement%20here:%0D%0A%0D%0A%0D%0A%0D%0AThank%20you%20for%20your%20feedback";
-
-        }
-
-        if (id==2){
-
-            window.location.href = "mailto:admin@gieqs.com?subject=new%20reference%20suggestion%20for%20Curriculum%20statement%20id%20" + statement_id + "%20from%20user%20id%20<?php echo $userid;?>&body=Please%20describe%20the%20reference%20you%20think%20we%20should%20add%20for%20this%20curriculum%20statement%20here%20including%20DOI:%0D%0A%0D%0A%0D%0A%0D%0AThank%20you%20for%20your%20feedback";
-
+            window.location.href =
+                "mailto:admin@gieqs.com?subject=new%20tag%20suggestion%20for%20Curriculum%20statement%20id%20" +
+                statement_id +
+                "%20from%20user%20id%20<?php echo $userid;?>&body=Please%20describe%20the%20tag%20you%20think%20we%20should%20add%20for%20this%20curriculum%20statement%20here:%0D%0A%0D%0A%0D%0A%0D%0AThank%20you%20for%20your%20feedback";
 
         }
 
-        if (id==3){
+        if (id == 2) {
 
-            window.location.href = "mailto:admin@gieqs.com?subject=Incorrect%20Statement%20Report%20for%20Curriculum%20statement%20id%20" + statement_id + "%20from%20user%20id%20<?php echo $userid;?>&body=Please%20describe%20the%20issue%20with%20the%20curriculum%20statement%20as%20clearly%20as%20possible%20here:%0D%0A%0D%0A%0D%0A%0D%0AThank%20you%20for%20your%20feedback";
+            window.location.href =
+                "mailto:admin@gieqs.com?subject=new%20reference%20suggestion%20for%20Curriculum%20statement%20id%20" +
+                statement_id +
+                "%20from%20user%20id%20<?php echo $userid;?>&body=Please%20describe%20the%20reference%20you%20think%20we%20should%20add%20for%20this%20curriculum%20statement%20here%20including%20DOI:%0D%0A%0D%0A%0D%0A%0D%0AThank%20you%20for%20your%20feedback";
+
 
         }
 
-        if (id==4){
+        if (id == 3) {
 
-            window.location.href = "mailto:admin@gieqs.com?subject=User%20Comment%20for%20Curriculum%20statement%20id%20" + statement_id + "%20from%20user%20id%20<?php echo $userid;?>&body=Please%20comment%20here:%0D%0A%0D%0A%0D%0A%0D%0AThank%20you%20for%20your%20feedback";
+            window.location.href =
+                "mailto:admin@gieqs.com?subject=Incorrect%20Statement%20Report%20for%20Curriculum%20statement%20id%20" +
+                statement_id +
+                "%20from%20user%20id%20<?php echo $userid;?>&body=Please%20describe%20the%20issue%20with%20the%20curriculum%20statement%20as%20clearly%20as%20possible%20here:%0D%0A%0D%0A%0D%0A%0D%0AThank%20you%20for%20your%20feedback";
 
-            }
+        }
+
+        if (id == 4) {
+
+            window.location.href =
+                "mailto:admin@gieqs.com?subject=User%20Comment%20for%20Curriculum%20statement%20id%20" + statement_id +
+                "%20from%20user%20id%20<?php echo $userid;?>&body=Please%20comment%20here:%0D%0A%0D%0A%0D%0A%0D%0AThank%20you%20for%20your%20feedback";
+
+        }
 
     }
 
@@ -1571,66 +1627,68 @@ return (
             PopupCenter("https://www.ncbi.nlm.nih.gov/pubmed/?term=" + searchTerm,
                 'PubMed Search (endoWiki)', 800, 700);
 
-                var loggedin = $('#logged-in').text();
+            var loggedin = $('#logged-in').text();
 
-        if (loggedin == 0) {
+            if (loggedin == 0) {
 
-            //can't record progress for a user who is not logged in
-            return;
+                //can't record progress for a user who is not logged in
+                return;
 
-        } else if (loggedin == 1) {
+            } else if (loggedin == 1) {
 
-            var reference_id = {reference_id:reference_id_clicked,};
+                var reference_id = {
+                    reference_id: reference_id_clicked,
+                };
 
-            const jsonString = JSON.stringify(reference_id);
+                const jsonString = JSON.stringify(reference_id);
 
-            //console.log(jsonString);
-
-
-            var request2 = $.ajax({
-                beforeSend: function () {
+                //console.log(jsonString);
 
 
-                },
-                url: siteRoot + "scripts/curriculum/send_curriculum_viewed_references.php",
-                type: "POST",
-                contentType: "application/json",
-                data: jsonString,
-            });
+                var request2 = $.ajax({
+                    beforeSend: function() {
 
 
-
-            request2.done(function (data) {
-                // alert( "success" );
-                if (data) {
-                    //show green tick
-
-                    /* try {
-
-                        var result = JSON.parse(data);
-
-                    } catch (error) {
-
-                        console.log('ajax error for saving curriculum data');
-                        return;
-                    } */
-
-                    //console.dir(result);
-                    
+                    },
+                    url: siteRoot + "scripts/curriculum/send_curriculum_viewed_references.php",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: jsonString,
+                });
 
 
 
+                request2.done(function(data) {
+                    // alert( "success" );
+                    if (data) {
+                        //show green tick
+
+                        /* try {
+
+                            var result = JSON.parse(data);
+
+                        } catch (error) {
+
+                            console.log('ajax error for saving curriculum data');
+                            return;
+                        } */
+
+                        //console.dir(result);
 
 
 
 
 
-                }
 
 
 
-            })
-        }
+
+                    }
+
+
+
+                })
+            }
 
 
 
@@ -1682,14 +1740,14 @@ return (
 
 
 
-       $(document).scroll(function() {
+        $(document).scroll(function() {
             var scrollDistance = $('#right').scrollTop();
             //scrollDistance = scrollDistance - 500;
 
             // Assign active class to nav links while scolling
             $('.toc-marker').each(function(i) {
 
-//console.log(this);
+                //console.log(this);
                 //console.log('i is ' + i);
 
                 //is this in view?
@@ -1701,19 +1759,19 @@ return (
 
                     //define an array
 
-                    if (!(viewed_statements.includes(idElement))){
+                    if (!(viewed_statements.includes(idElement))) {
 
-                    //add to the array
+                        //add to the array
                         viewed_statements.push(idElement);
 
                     }
 
 
                     //pass the array to the server for database storage
-                   // console.log(idElement + ' is in view');
+                    // console.log(idElement + ' is in view');
 
                 }
-               if (isElementInView) {
+                if (isElementInView) {
 
                     /* console.log('element id in view is ' + idElement);
                     console.log('element name is ' + $(this).text());
@@ -1730,25 +1788,25 @@ return (
                         'text-gieqsGold').removeClass(
                         'text-muted');
 
-               /*          $('.section-nav').find('.super-section-toc').removeClass('text-gieqsGold')
-                        .addClass(
-                            'text-muted');
+                    /*          $('.section-nav').find('.super-section-toc').removeClass('text-gieqsGold')
+                             .addClass(
+                                 'text-muted');
 
-                        $('.section-nav li[tocid=' + idElement + ']').parent().find('.super-section-toc').addClass('text-gieqsGold').removeClass(
-                        'text-muted');
+                             $('.section-nav li[tocid=' + idElement + ']').parent().find('.super-section-toc').addClass('text-gieqsGold').removeClass(
+                             'text-muted');
 
-                        var element_to_scroll = $('.section-nav li[tocid=' + idElement + ']');
+                             var element_to_scroll = $('.section-nav li[tocid=' + idElement + ']');
 
-                        if (isElementInViewport(element_to_scroll) === false){
+                             if (isElementInViewport(element_to_scroll) === false){
 
-                            $(element_to_scroll)[0].scrollIntoView(false);
+                                 $(element_to_scroll)[0].scrollIntoView(false);
 
-                        } */
+                             } */
 
                 } else {
 
 
-                } 
+                }
 
             });
 
@@ -1810,145 +1868,148 @@ return (
 
             var loggedin = $('#logged-in').text();
 
-            if (loggedin == 0){
+            if (loggedin == 0) {
 
-                 
-                alert('Login Required for Tag Functionality.  You can create an account at gieqs.com/online');
+
+                alert(
+                    'Login Required for Tag Functionality.  You can create an account at gieqs.com/online');
                 return;
 
-            }else if (loggedin == 1){
+            } else if (loggedin == 1) {
 
                 var idElement = $(this).attr('data-tag-id');
 
-            //alert(idElement);
+                //alert(idElement);
 
 
-            //get the first video with this tag, code from viewer.php line 2698 showTagBar(selectedTag)
-
-
-
-
-
-            //use ajax to send
-
-            if ($('#browsing_id').attr('data-browsing-id') != '') {
-
-                var browsing_id = $('#browsing_id').attr('data-browsing-id');
-
-            } else {
-
-                var browsing_id = '';
-
-
-            }
-
-            if ($('#browsing').attr('data-browsing') != '') {
-
-                var browsing = $('#browsing').attr('data-browsing');
-
-            } else {
-
-                var browsing = '';
-
-
-            }
-
-            if ($('#browsing_array').text() != '') {
-
-                var browsing_array = $('#browsing_array').text();
-
-            } else {
-
-                var browsing_array = '';
-
-
-            }
-
-
-            var dataToSend = {
-
-                videoid: videoPassed,
-                browsing_id: browsing_id,
-                browsing: browsing,
-                tag: idElement,
-                browsing_array: browsing_array,
-
-
-            }
-
-            const jsonString = JSON.stringify(dataToSend);
-            //console.log(jsonString);
-            //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
-
-            var request2 = $.ajax({
-                beforeSend: function() {
-
-
-                },
-                url: siteRoot + "scripts/tagnavigation/get_tag_navigation_info_curriculum.php",
-                type: "POST",
-                contentType: "application/json",
-                data: jsonString,
-            });
-
-
-
-            request2.done(function(data) {
-                // alert( "success" );
-                if (data) {
-                    //show green tick
-
-                    try {
-                        
-                        var result = JSON.parse(data);
-
-                    } catch (error) {
-                        
-                        alert('Login Required for Tag Functionality.  You can create an account at gieqs.com/online');
-                        return;
-                    }
-
-                    console.dir(result);
-
-                    if (result.videos == '0') {
-
-                        alert('No videos for this Tag Yet.  Submit a request?:-)');
-
-                    }
-
-                    if (result.videos == '1') {
-
-                        window.localStorage.setItem('selectedTag', idElement);
-
-                        window.localStorage.setItem('restricted', false);
-
-                        window.open(rootFolder + '/viewer.php?id=' + result.first_video,
-                            '_blank').focus();
-
-
-                    }
+                //get the first video with this tag, code from viewer.php line 2698 showTagBar(selectedTag)
 
 
 
 
 
+                //use ajax to send
 
+                if ($('#browsing_id').attr('data-browsing-id') != '') {
+
+                    var browsing_id = $('#browsing_id').attr('data-browsing-id');
+
+                } else {
+
+                    var browsing_id = '';
 
 
                 }
 
-            })
+                if ($('#browsing').attr('data-browsing') != '') {
+
+                    var browsing = $('#browsing').attr('data-browsing');
+
+                } else {
+
+                    var browsing = '';
 
 
-            
+                }
 
-            request2.fail(function(xhr, status, error) {
-                alert("Login Required for Tag Functionality");
-            })
+                if ($('#browsing_array').text() != '') {
+
+                    var browsing_array = $('#browsing_array').text();
+
+                } else {
+
+                    var browsing_array = '';
+
+
+                }
+
+
+                var dataToSend = {
+
+                    videoid: videoPassed,
+                    browsing_id: browsing_id,
+                    browsing: browsing,
+                    tag: idElement,
+                    browsing_array: browsing_array,
+
+
+                }
+
+                const jsonString = JSON.stringify(dataToSend);
+                //console.log(jsonString);
+                //console.log(siteRoot + "/pages/learning/scripts/getNavv2.php");
+
+                var request2 = $.ajax({
+                    beforeSend: function() {
+
+
+                    },
+                    url: siteRoot +
+                        "scripts/tagnavigation/get_tag_navigation_info_curriculum.php",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: jsonString,
+                });
+
+
+
+                request2.done(function(data) {
+                    // alert( "success" );
+                    if (data) {
+                        //show green tick
+
+                        try {
+
+                            var result = JSON.parse(data);
+
+                        } catch (error) {
+
+                            alert(
+                                'Login Required for Tag Functionality.  You can create an account at gieqs.com/online');
+                            return;
+                        }
+
+                        console.dir(result);
+
+                        if (result.videos == '0') {
+
+                            alert('No videos for this Tag Yet.  Submit a request?:-)');
+
+                        }
+
+                        if (result.videos == '1') {
+
+                            window.localStorage.setItem('selectedTag', idElement);
+
+                            window.localStorage.setItem('restricted', false);
+
+                            window.open(rootFolder + '/viewer.php?id=' + result.first_video,
+                                '_blank').focus();
+
+
+                        }
+
+
+
+
+
+
+
+
+                    }
+
+                })
+
+
+
+
+                request2.fail(function(xhr, status, error) {
+                    alert("Login Required for Tag Functionality");
+                })
 
             }
 
-            
+
 
 
 
@@ -2014,7 +2075,7 @@ return (
 
 
 
-       
+
 
 
         $(document).on('click', '.toc-entry', function(event) {
@@ -2106,7 +2167,7 @@ return (
 
 
         })
-        
+
         $(document).on('click', '.living-curriculum', function(event) {
 
 
@@ -2137,129 +2198,127 @@ return (
 
 
 
-$('.methodology-modal').modal('show');
+            $('.methodology-modal').modal('show');
 
-/* var postid = 122;
+            /* var postid = 122;
 
-$.ajax({
-        type: 'POST',
-        url: '<?php //echo BASE_URL . '/assets/wp/wp-admin/admin-ajax.php';?>',
-        dataType: "json", // add data type
-        data: { action : 'my_load_ajax_content', post_id: postid },
-        success: function( response ) {
-            console.log( response );
+            $.ajax({
+                    type: 'POST',
+                    url: '<?php //echo BASE_URL . '/assets/wp/wp-admin/admin-ajax.php';?>',
+                    dataType: "json", // add data type
+                    data: { action : 'my_load_ajax_content', post_id: postid },
+                    success: function( response ) {
+                        console.log( response );
 
-            $( '#quickstart' ).html( response ); 
-        }
-}); */
+                        $( '#quickstart' ).html( response ); 
+                    }
+            }); */
 
 
 
 
 
-})
+        })
 
-$(document).on('click', '.feedback', function(event) {
+        $(document).on('click', '.feedback', function(event) {
 
-statement_id = $(this).attr('data-statement-id');
+            statement_id = $(this).attr('data-statement-id');
 
-$('.feedback-modal').modal('show');
+            $('.feedback-modal').modal('show');
 
-/* var postid = 122;
+            /* var postid = 122;
 
-$.ajax({
-        type: 'POST',
-        url: '<?php //echo BASE_URL . '/assets/wp/wp-admin/admin-ajax.php';?>',
-        dataType: "json", // add data type
-        data: { action : 'my_load_ajax_content', post_id: postid },
-        success: function( response ) {
-            console.log( response );
+            $.ajax({
+                    type: 'POST',
+                    url: '<?php //echo BASE_URL . '/assets/wp/wp-admin/admin-ajax.php';?>',
+                    dataType: "json", // add data type
+                    data: { action : 'my_load_ajax_content', post_id: postid },
+                    success: function( response ) {
+                        console.log( response );
 
-            $( '#quickstart' ).html( response ); 
-        }
-}); */
+                        $( '#quickstart' ).html( response ); 
+                    }
+            }); */
 
 
 
 
 
-})
+        })
 
-$(document).on('click', '.demonstration-video', function(event){
+        $(document).on('click', '.demonstration-video', function(event) {
 
-    var video_id = $(this).attr('data-video-id');
-    var chapter_id = $(this).attr('data-chapter-id');
+            var video_id = $(this).attr('data-video-id');
+            var chapter_id = $(this).attr('data-chapter-id');
 
-    var statement = (chapter_id == '') ? video_id : video_id + '&chapternumber=' + chapter_id;
+            var statement = (chapter_id == '') ? video_id : video_id + '&chapternumber=' + chapter_id;
 
-    window.open(rootFolder + '/viewer.php?id=' + statement,
-                            '_blank').focus();
+            window.open(rootFolder + '/viewer.php?id=' + statement,
+                '_blank').focus();
 
 
 
 
 
-})
+        })
 
-        $(document).on('shown.bs.collapse', function(event){
-        //console.log( "in! print e: " +event.type);
-        if (isElementInViewport(event.target) === false){
+        $(document).on('shown.bs.collapse', function(event) {
+            //console.log( "in! print e: " +event.type);
+            if (isElementInViewport(event.target) === false) {
 
-            event.target.scrollIntoView(false);
+                event.target.scrollIntoView(false);
 
-        }
-        
-    });
+            }
 
-    var intervalId = window.setInterval(function () {
+        });
 
-        //call home with the viewed statements
+        var intervalId = window.setInterval(function() {
 
-        var loggedin = $('#logged-in').text();
+            //call home with the viewed statements
 
-        if (loggedin == 0) {
+            var loggedin = $('#logged-in').text();
 
-            //can't record progress for a user who is not logged in
-            return;
+            if (loggedin == 0) {
 
-        } else if (loggedin == 1) {
+                //can't record progress for a user who is not logged in
+                return;
 
-            const jsonString = JSON.stringify(viewed_statements);
+            } else if (loggedin == 1) {
 
-            //console.log(jsonString);
+                const jsonString = JSON.stringify(viewed_statements);
 
+                //console.log(jsonString);
 
-            var request2 = $.ajax({
-                beforeSend: function () {
 
+                var request2 = $.ajax({
+                    beforeSend: function() {
 
-                },
-                url: siteRoot + "scripts/curriculum/send_curriculum_viewed_statements.php",
-                type: "POST",
-                contentType: "application/json",
-                data: jsonString,
-            });
 
+                    },
+                    url: siteRoot + "scripts/curriculum/send_curriculum_viewed_statements.php",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: jsonString,
+                });
 
 
-            request2.done(function (data) {
-                // alert( "success" );
-                if (data) {
-                    //show green tick
 
-                    /* try {
+                request2.done(function(data) {
+                    // alert( "success" );
+                    if (data) {
+                        //show green tick
 
-                        var result = JSON.parse(data);
+                        /* try {
 
-                    } catch (error) {
+                            var result = JSON.parse(data);
 
-                        console.log('ajax error for saving curriculum data');
-                        return;
-                    } */
+                        } catch (error) {
 
-                    //console.dir(result);
-                    
+                            console.log('ajax error for saving curriculum data');
+                            return;
+                        } */
 
+                        //console.dir(result);
 
 
 
@@ -2267,15 +2326,17 @@ $(document).on('click', '.demonstration-video', function(event){
 
 
 
-                }
 
 
+                    }
 
-            })
-        }
 
 
-    }, 5000);
+                })
+            }
+
+
+        }, 5000);
 
 
 

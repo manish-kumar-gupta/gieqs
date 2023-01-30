@@ -995,8 +995,8 @@ public function count_all_sections ($curriculum_id){
 public function count_user_viewed_sections ($user_id, $curriculum_id){
 
 
-    $q = "SELECT DISTINCT
-    count(b.`id`) as `count`
+    $q = "SELECT
+    count(DISTINCT b.`id`) as `count`
         FROM
             `usersViewsCurriculumStatement` as a
         INNER JOIN `curriculum_sections` AS b
@@ -1212,6 +1212,55 @@ public function curriculum_completion_stats_user ($user_id, $debug=false){
     
 
     }
+
+    return $returnArray;
+
+
+    
+
+
+}
+
+public function curriculum_completion_stats_user_specific_curriculum ($user_id, $value, $debug=false){
+
+
+    //$value is curriculum_id 
+
+    $returnArray = [];
+
+
+
+
+        $returnArray = [
+            'curriculum_name' => $this->getCurriculumInfo($value)['name'],
+            'statement_views' => count($this->getAllCurriculumOpensEverUserSpecificCurriculum($user_id, $value)), 
+            'views_per_day' => $this->getAllCurriculumOpensEverUserSpecificCurriculum_perday($user_id, $value),
+            'statement_completion' => [
+                'numerator' => intval($this->count_user_viewed_sections($user_id, $value)),
+                'denominator' => $this->count_all_sections($value),
+                'completion' => intval($this->count_user_viewed_sections($user_id, $value)) / intval($this->count_all_sections($value)) * 100,
+
+            ],
+            'best_practice_completion' => $this->getCompletionVideos($user_id, $this->getAllBestPracticeCurriculumVideos($value)),
+            'all_video_completion' => $this->getCompletionVideos($user_id, $this->getAllCurriculumVideos($value)),
+            'reference_completion' => [
+                'numerator' => $this->user_viewed_references($user_id, $value),
+                'denominator' => count($this->getAllCurriculumReferences($value)),
+                'completion' => $this->user_viewed_references($user_id, $value) / count($this->getAllCurriculumReferences($value)) * 100,
+
+                ],
+            'overall_completion' => '',
+
+
+        ];
+
+        //overall completion weights all factors equally
+
+        $returnArray['overall_completion'] = (intval($returnArray['statement_completion']['completion']) + intval($returnArray['best_practice_completion']['completion']) + intval($returnArray['all_video_completion']['completion']) + intval($returnArray['reference_completion']['completion']))/4;
+    
+
+        var_dump($returnArray);
+    
 
     return $returnArray;
 
