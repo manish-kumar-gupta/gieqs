@@ -695,6 +695,19 @@ top: 0px;
                             <?php //set up curriculum stats
                         
                         $completion_stats = $curriculum_manager->curriculum_completion_stats_user_specific_curriculum($userid, $id);
+
+                        $overall_completion = round($completion_stats['overall_completion'], 1);
+
+                        if ($overall_completion >= 90){
+
+                            $certification = true;
+
+                        }else{
+
+                            $certification = false;
+
+
+                        }
                         /* echo '<pre>';
                         var_dump($completion_stats);
                         echo '</pre>';
@@ -708,9 +721,11 @@ top: 0px;
                                         <div class="cursor-pointer feedback hover-text-gold mx-0 mr-auto text-bold"
                                             style="font-weight: 600;">Curriculum
                                             Completion Statistics</div>
+                                            <div class="<?php echo ($certification) ? 'generate_certificate hover-text' : '';?>-gold cursor-pointer mx-2" data-toggle="collapse" title="Requires 90% completion"><i class="fa fa-certificate mx-1"></i>Generate Certificate</div>
                                     </div>
                                 </div>
                             </div>
+                            
                             <div class="curriculum-lower-card bg-dark">
                                 <div class="card-body mt-0 mb-0 pb-3 pt-3">
 
@@ -722,7 +737,7 @@ top: 0px;
                                 ?>
                                             <div class="progress" style="height: 14px; flex: 1 !important;">
                                                 <div class="progress-bar" role="progressbar"
-                                                    style="width: <?php echo round($completion_stats['overall_completion'], 1);?>%;"
+                                                    style="background-color: #004187; width: <?php echo round($completion_stats['overall_completion'], 1);?>%;"
                                                     aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
                                                     <?php echo round($completion_stats['overall_completion'], 1);?>%
                                                 </div>
