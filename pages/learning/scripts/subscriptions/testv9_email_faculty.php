@@ -117,6 +117,11 @@ $debug=true;
 //have variable run in last 24 hours , if not run last 24 hours
 
 $user_id = 1;
+echo '<pre>';
+var_dump($curriculum_manager->curriculum_completion_stats_user($user_id));
+echo '</pre>';
+exit();
+
 
 //foreach user
 
@@ -163,7 +168,7 @@ var_dump($total_video_completion);
 
 //get all curriculae
 
-/* SELECT `id`, `name`, `long_name`, `description` FROM `curriculae` WHERE `active` = 1 *
+$curriculum_manager->getAllActiveCurricula();
 
 //get all curriculae opens ever, return curriculum id, for specific user, count = number of opens
 
@@ -231,8 +236,37 @@ INNER JOIN `curriculum_sections` AS b
 
 
 
+//total references per curriculum
 
-//references clicked [needs new db]
+        $references = $curriculum_manager->getAllCurriculumReferences($curriculum_id);
+
+        $total_references = count($references);
+        
+        echo '<br/><br/>Total references is ' . $total_references;
+
+
+//references clicked [needs new db] per curriculum
+
+/* SELECT
+    a.`id`,
+    a.`user_id`,
+    a.`reference_id`
+FROM
+    `usersViewsReferences` as a 
+INNER JOIN
+	`curriculum_references` as b on `b`.`reference_id` = a.`reference_id`
+INNER JOIN
+	`references` as c on c.`id` = `b`.`reference_id`
+INNER JOIN
+	`curriculum_items` as d on `d`.`id` = `b`.`curriculum_item_id`
+INNER JOIN 
+	`curriculum_sections` as e on `e`.`id` = `d`.`section_id`
+INNER JOIN
+	`curriculae` as f on `f`.`id` = e.`curriculum_id`
+WHERE `a`.`user_id` = '$user_id' AND f.`id` = '$curriculum_id'
+GROUP BY c.`id`
+ORDER BY `a`.`recentView` DESC
+     */
 
 
 
@@ -325,16 +359,7 @@ var_dump($video_completion_user);
 
 
 
-$references = $curriculum_manager->getAllCurriculumReferences($curriculum_id);
 
-$total_references = count($references);
-
-echo '<br/><br/>Total references is ' . $total_references;
-//$tags = $curriculum_manager->getAllCurriculumTags($curriculum_id);
-$videos = $curriculum_manager->getAllCurriculumVideos($curriculum_id);
-
-
-//var_dump($videos);
 
 
 exit();

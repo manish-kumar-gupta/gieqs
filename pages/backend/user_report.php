@@ -45,6 +45,8 @@ error_reporting(E_ALL);
             require_once(BASE_URI . '/pages/learning/classes/usersMetricsManager.class.php');
             $usersMetricsManager = new usersMetricsManager;
             $assets_paid = new assets_paid;
+            $curriculum_manager = new curriculum_manager;
+
 
 
 
@@ -293,7 +295,7 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
         Course Completion Status
       </button>
     </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
       <div class="accordion-body">
        <?php
 
@@ -367,12 +369,84 @@ if (isset($_GET["id"]) && is_numeric($_GET["id"])){
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingTwo">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Total Video Completion
+        Curriculum Completion
       </button>
     </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+    <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-        Under construction.
+      <?php
+      echo '<h4>Curriculum Completion Status</h4>';
+            
+            echo '<table class="table table-striped table-hover table-bordered align-middle text-center">';
+            echo '<thead>';
+            echo '<tr>';
+            echo '<th></th>';
+            echo '<th></th>';
+            echo '<th colspan="5" class="active">Completion</th>';
+            echo '<th></th>';
+            echo '</tr>';
+            echo '<tr>';
+            echo '<th>Curriculum</th>';
+            echo '<th>Views</th>';
+            echo '<th>Overall</th>';
+            echo '<th>Statement</th>';
+            echo '<th>Best Practice Videos</th>';
+            echo '<th>Tagged Videos</th>';
+            echo '<th>References</th>';
+            echo '<th>Certificate</th>';
+
+            echo '</tr>';
+            echo '</thead>';
+            echo '<tbody>';
+
+            $completion_stats = $curriculum_manager->curriculum_completion_stats_user($id);
+
+            foreach ($completion_stats as $key => $value){
+
+              echo '<tr>';
+
+              echo "<td>{$value['curriculum_name']}</td>";
+
+              echo "<td>{$value['views_per_day']}</td>";
+
+              echo "<td>" . round($value['overall_completion'], 1). "%</td>";
+
+              echo "<td>" . round($value['statement_completion']['completion'], 1). "%</td>";
+
+              echo "<td>" . round($value['best_practice_completion']['completion'], 1). "%</td>";
+
+              echo "<td>" . round($value['all_video_completion']['completion'], 1). "%</td>";
+
+              echo "<td>" . round($value['reference_completion']['completion'], 1). "%</td>";
+
+              echo "<td>";
+
+              if(round($value['overall_completion'], 1) > 90){
+
+                echo "<button class='btn btn-sm bg-secondary text-white generate-certificate' asset-id='$key' user-id='$id'>Generate</button>";
+
+             }
+              
+              
+              echo "</td>";
+
+              echo '</tr>';
+
+            }
+
+
+
+
+
+
+
+
+            echo '</tbody>';
+            echo '</table>';
+
+
+
+          ?>
       </div>
     </div>
   </div>

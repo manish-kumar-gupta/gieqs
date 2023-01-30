@@ -35,6 +35,9 @@ Class curriculum_manager {
             require_once 'DatabaseMyssqlPDOLearning.class.php';
 
 		$this->connection = new DataBaseMysqlPDOLearning();
+        require_once(BASE_URI . '/pages/learning/classes/usersMetricsManager.class.php');
+            $this->usersMetricsManager = new usersMetricsManager();
+
 	}
 
     /**
@@ -797,6 +800,424 @@ public function getAllBestPracticeCurriculumVideos ($curriculum_id){
         return $rowReturn;
     
     } 
+
+}
+
+public function getAllActiveCurricula (){
+
+
+    $q = "SELECT `id`, `name`, `long_name`, `description` FROM `curriculae` WHERE `active` = '1'";
+
+    $result = $this->connection->RunQuery($q);
+    
+    $x = 0;
+    $nRows = $result->rowCount();
+    $rowReturn = [];
+
+    if ($nRows > 0) {
+    
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+    
+            $rowReturn[$x] = $row['id'];
+            $x++;
+    
+    
+        }
+    
+    
+        return $rowReturn;
+    
+    } 
+
+}
+
+public function getAllCurriculumOpensEverUser ($user_id){
+
+    $q = "SELECT c.`id` FROM `usersViewsCurriculumStatement` as a INNER JOIN `curriculum_sections` AS b ON b.`id` = a.`curriculum_section_id` INNER JOIN `curriculae` AS c ON c.`id` = `b`.`curriculum_id` WHERE `user_id` = '$user_id' GROUP BY c.`id` ORDER BY `recentView` DESC";
+
+    $result = $this->connection->RunQuery($q);
+    
+    $x = 0;
+    $nRows = $result->rowCount();
+    $rowReturn = [];
+
+    if ($nRows > 0) {
+    
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+    
+            $rowReturn[$x] = $row['id'];
+            $x++;
+    
+    
+        }
+    
+    
+        return $rowReturn; //returns array of curriculum ids
+    
+    }else{
+
+        return false;
+
+    }
+
+
+
+}
+
+public function getAllCurriculumOpensEverUserSpecificCurriculum ($user_id, $curriculum_id){
+
+    $q = "SELECT
+        a.`id`, a.`recentView`
+        FROM
+            `usersViewsCurriculumStatement` as a
+        INNER JOIN `curriculum_sections` AS b
+        ON
+            b.`id` = a.`curriculum_section_id`
+        INNER JOIN `curriculae` AS c
+        ON
+            c.`id` = `b`.`curriculum_id`
+        WHERE `user_id` = '$user_id' AND c.`id` = '$curriculum_id'
+        ORDER BY `recentView` DESC";
+
+    $result = $this->connection->RunQuery($q);
+    
+    $x = 0;
+    $nRows = $result->rowCount();
+    $rowReturn = [];
+
+    if ($nRows > 0) {
+    
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+    
+            $rowReturn[$x] = $row['id'];
+            $x++;
+    
+    
+        }
+    
+    
+        return $rowReturn; //returns array of curriculum ids
+    
+    }else{
+
+        return false;
+
+    }
+
+
+
+}
+
+public function getAllCurriculumOpensEverUserSpecificCurriculum_perday ($user_id, $curriculum_id){
+
+    $q = "SELECT
+        DATE_FORMAT(a.`recentView`, '%Y-%m-%d') AS date, count(a.`id`) as count
+        FROM
+            `usersViewsCurriculumStatement` as a
+        INNER JOIN `curriculum_sections` AS b
+        ON
+            b.`id` = a.`curriculum_section_id`
+        INNER JOIN `curriculae` AS c
+        ON
+            c.`id` = `b`.`curriculum_id`
+        WHERE `user_id` = '$user_id' AND c.`id` = '$curriculum_id'
+        GROUP BY `date`
+        ";
+
+    $result = $this->connection->RunQuery($q);
+    
+    $x = 0;
+    $nRows = $result->rowCount();
+
+    return $nRows;
+    /* $rowReturn = [];
+
+    if ($nRows > 0) {
+    
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+    
+            $count = $row['count'];
+            return $count;
+    
+        }
+    
+    
+        return $rowReturn; //returns array of curriculum ids
+    
+    }else{
+
+        return false;
+
+    } */
+
+
+
+}
+
+public function count_all_sections ($curriculum_id){
+
+    $q = "SELECT
+    count(a.`id`) as `count`
+    FROM
+        `curriculum_sections` as a 
+    INNER JOIN 
+        `curriculae` as b on `b`.`id` = `a`.`curriculum_id`
+    WHERE
+        b.`id` = '$curriculum_id'";
+
+    $result = $this->connection->RunQuery($q);
+
+    $x = 0;
+    $nRows = $result->rowCount();
+    $rowReturn = [];
+
+    if ($nRows > 0) {
+
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+            $count = $row['count'];
+
+
+        }
+
+
+        return $count;
+
+    }else{
+
+        return false;
+
+    }
+
+
+}
+
+public function count_user_viewed_sections ($user_id, $curriculum_id){
+
+
+    $q = "SELECT DISTINCT
+    count(b.`id`) as `count`
+        FROM
+            `usersViewsCurriculumStatement` as a
+        INNER JOIN `curriculum_sections` AS b
+        ON
+            b.`id` = a.`curriculum_section_id`
+        INNER JOIN `curriculae` AS c
+        ON
+            c.`id` = `b`.`curriculum_id`
+        WHERE `user_id` = '$user_id' AND c.`id` = '$curriculum_id'
+        ORDER BY `recentView` DESC";
+
+    $result = $this->connection->RunQuery($q);
+
+    $x = 0;
+    $nRows = $result->rowCount();
+    $rowReturn = [];
+
+    if ($nRows > 0) {
+
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+            $count = $row['count'];
+
+
+        }
+
+
+        return $count;
+
+    }else{
+
+        return false;
+
+    }
+
+}
+
+public function getCompletionVideos ($user_id, $video_array){
+
+    //takes an array of video ids
+
+    $tagged_videos_denominator = count($video_array);
+
+    //var_dump($video_array);
+
+    $video_completion_user = [];
+
+    $overall_video_completion = 0;
+
+    $completion = 0;
+
+
+    foreach ($video_array as $key => $value){
+
+        $completion = null;
+
+        $completion = round($this->usersMetricsManager->userCompletionVideo($user_id, $value), 1);
+
+        $video_completion_user[$value] = $completion;
+
+        $overall_video_completion += $completion;
+
+    }
+
+    $overall_video_completion_final = $overall_video_completion / $tagged_videos_denominator;
+
+    return [
+
+        'numerator' => $overall_video_completion,
+        'denominator' => $tagged_videos_denominator,
+        'completion' => $overall_video_completion_final,
+
+
+    ];
+
+
+}
+
+public function user_viewed_references ($user_id, $curriculum_id){
+
+    $q = "SELECT
+    count(DISTINCT
+    c.`id`) as `count`
+FROM
+    `usersViewsReferences` as a 
+INNER JOIN
+	`curriculum_references` as b on `b`.`reference_id` = a.`reference_id`
+INNER JOIN
+	`references` as c on c.`id` = `b`.`reference_id`
+INNER JOIN
+	`curriculum_items` as d on `d`.`id` = `b`.`curriculum_item_id`
+INNER JOIN 
+	`curriculum_sections` as e on `e`.`id` = `d`.`section_id`
+INNER JOIN
+	`curriculae` as f on `f`.`id` = e.`curriculum_id`
+WHERE `a`.`user_id` = '1' AND f.`id` = '5'
+ORDER BY `a`.`recentView` DESC;c.`id`) as `count`
+FROM
+    `usersViewsReferences` as a 
+INNER JOIN
+	`curriculum_references` as b on `b`.`reference_id` = a.`reference_id`
+INNER JOIN
+	`references` as c on c.`id` = `b`.`reference_id`
+INNER JOIN
+	`curriculum_items` as d on `d`.`id` = `b`.`curriculum_item_id`
+INNER JOIN 
+	`curriculum_sections` as e on `e`.`id` = `d`.`section_id`
+INNER JOIN
+	`curriculae` as f on `f`.`id` = e.`curriculum_id`
+WHERE `a`.`user_id` = '$user_id' AND f.`id` = '$curriculum_id'
+ORDER BY `a`.`recentView` DESC";
+
+    $result = $this->connection->RunQuery($q);
+
+    $x = 0;
+    $nRows = $result->rowCount();
+    $rowReturn = [];
+
+    if ($nRows > 0) {
+
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+
+            $count = $row['count'];
+
+
+        }
+
+
+        return $count;
+
+    }else{
+
+        return false;
+
+    }
+
+
+
+}
+
+public function getCurriculumInfo ($curriculum_id){
+
+    $q = "SELECT `id`, `name`, `long_name`, `description`, `active`, `owner`, `created`, `updated` FROM `curriculae` WHERE `id` = '$curriculum_id'";
+
+    $result = $this->connection->RunQuery($q);
+    
+    $x = 0;
+    $nRows = $result->rowCount();
+    $rowReturn = [];
+
+    if ($nRows > 0) {
+    
+        while($row = $result->fetch(PDO::FETCH_ASSOC)){
+    
+            $rowReturn['id'] = $row['id'];
+            $rowReturn['name'] = $row['name'];
+            $rowReturn['long_name'] = $row['long_name'];
+            $rowReturn['description'] = $row['description'];
+    
+    
+        }
+    
+    
+        return $rowReturn; //returns array of curriculum ids
+    
+    }else{
+
+        return false;
+
+    }
+
+
+}
+
+public function curriculum_completion_stats_user ($user_id, $debug=false){
+
+
+    $returnArray = [];
+
+    $user_accessed_curriculae = $this->getAllCurriculumOpensEverUser($user_id);
+
+    foreach ($user_accessed_curriculae as $key=>$value){
+
+
+
+
+        $returnArray[$value] = [
+            'curriculum_name' => $this->getCurriculumInfo($value)['name'],
+            'statement_views' => count($this->getAllCurriculumOpensEverUserSpecificCurriculum($user_id, $value)), 
+            'views_per_day' => $this->getAllCurriculumOpensEverUserSpecificCurriculum_perday($user_id, $value),
+            'statement_completion' => [
+                'numerator' => intval($this->count_user_viewed_sections($user_id, $value)),
+                'denominator' => $this->count_all_sections($value),
+                'completion' => intval($this->count_user_viewed_sections($user_id, $value)) / intval($this->count_all_sections($value)) * 100,
+
+            ],
+            'best_practice_completion' => $this->getCompletionVideos($user_id, $this->getAllBestPracticeCurriculumVideos($value)),
+            'all_video_completion' => $this->getCompletionVideos($user_id, $this->getAllCurriculumVideos($value)),
+            'reference_completion' => [
+                'numerator' => $this->user_viewed_references($user_id, $value),
+                'denominator' => count($this->getAllCurriculumReferences($value)),
+                'completion' => $this->user_viewed_references($user_id, $value) / count($this->getAllCurriculumReferences($value)) * 100,
+
+                ],
+            'overall_completion' => '',
+
+
+        ];
+
+        //overall completion weights all factors equally
+
+        $returnArray[$value]['overall_completion'] = (intval($returnArray[$value]['statement_completion']['completion']) + intval($returnArray[$value]['best_practice_completion']['completion']) + intval($returnArray[$value]['all_video_completion']['completion']) + intval($returnArray[$value]['reference_completion']['completion']))/4;
+    
+
+    }
+
+    return $returnArray;
+
+
+    
+
 
 }
 
