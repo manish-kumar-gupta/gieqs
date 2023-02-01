@@ -1875,7 +1875,7 @@ echo '<li class="toc-entry toc-h4" style="font-size:1.0rem;"><a class="text-mute
                                 
 
                                     <p><button id='calculate' type="button" class="btn btn-sm text-white btn-dark submit-buttons"
-                                            name="calculate">Validate</button></p>
+                                            name="calculate">Calculate Score (and copy to clipboard)</button></p>
 
                                     <?php if ($isSuperuser == 1){?>
 
