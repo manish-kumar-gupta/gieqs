@@ -146,7 +146,7 @@ $completion = $usersMetricsManager->userCompletionAsset($userid_set, $assetid);
 
 //CHECK THE DETAILS AND THAT THE USER ACTUALLY HAS THIS 100%
 
-if ($completion == 100){
+if ($completion > 90){
 
 
     if ($usersMetricsManager->checkCertificateUserAsset($userid_set, $assetid, false) == false){
