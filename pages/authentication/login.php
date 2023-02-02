@@ -34,7 +34,7 @@ $debug = false;
 //$url = $_SERVER['REQUEST_URI'];
 $url = $_SERVER['HTTP_REFERER'];
 $url_components = parse_url($url);
-print_r($url_components);
+//print_r($url_components);
 $url_to_attach = $url_components['path'];
 if (empty($url_components)){
 
