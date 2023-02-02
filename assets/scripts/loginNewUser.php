@@ -72,7 +72,7 @@ if (count($_GET) > 0){
     if ($userFunctions->getUserFromKey($data['key']) != FALSE){
 
     $userid = $userFunctions->getUserFromKey($data['key']);
-    echo $userid;
+    //echo $userid;
 
     $log[] = "User id $userid with key" . $data['key'] .  "attempting to register as new user";
 
