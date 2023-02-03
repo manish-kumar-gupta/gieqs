@@ -2,6 +2,8 @@
 
 require '../../assets/includes/config.inc.php';
 require (BASE_URI . '/assets/scripts/login_functions.php');
+
+$openaccess = 1;
      
      //place to redirect the user if not allowed access
      $location = BASE_URL . '/pages/authentication/login.php';
@@ -17,7 +19,7 @@ require (BASE_URI . '/assets/scripts/login_functions.php');
 
 //define user access level
 
-$openaccess = 1;
+
 
 
 
@@ -255,22 +257,30 @@ if (isset($_GET['destination'])) {
 
     $target = urldecode($destination);
 
+    //echo $target;
 
-    if ($local){
+    //exit();
 
-      //splice local start off
-
-      $string_to_remove = '/dashboard/gieqs/';
-      $target = str_replace($string_to_remove ,'',$target);
-
-    }else{
-
-      //splice other start off
-      $string_to_remove = 'www.gieqs.com/';
-      $target = str_replace($string_to_remove ,'',$target);
+    
 
 
-    }
+        if ($local){
+
+          //splice local start off
+
+          $string_to_remove = '/dashboard/gieqs/';
+          $target = str_replace($string_to_remove ,'',$target);
+
+        }else{
+
+          //splice other start off
+          $string_to_remove = 'www.gieqs.com/';
+          $target = str_replace($string_to_remove ,'',$target);
+
+
+        }
+
+    
 
 
 
@@ -280,8 +290,8 @@ if (isset($_GET['destination'])) {
 
 }
 
-//var_dump($local);
-//print_r($target);
+var_dump($local);
+var_dump($target);
 
 //exit();
 

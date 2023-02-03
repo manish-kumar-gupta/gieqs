@@ -41,8 +41,25 @@ $url_requested = $url_components['path'];
 if (isset($url_requested)){
 
     $use_url = true;
-    $url_requested = urlencode($url_requested);
-    $location = BASE_URL . '/pages/authentication/login.php?destination=' . $url_requested;
+
+    //print_r($url_requested);
+
+   // exit();
+
+   if (strpos($url_requested, '/pages/authentication/login.php')){
+
+        $location =  null;
+
+        //echo 'here contains';
+
+    }else{
+        $url_requested = urlencode($url_requested);
+
+         $location = BASE_URL . '/pages/authentication/login.php?destination=' . $url_requested;
+
+         //echo 'here';
+
+    }
 
     //print_r($location);
 
