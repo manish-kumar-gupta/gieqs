@@ -741,7 +741,7 @@ var_dump($currentTime);
 
         <!-- PROGRAM TABLE -->
 
-        <section class="sliice bg-gradient-dark pt-6 mb-0 pb-5">
+        <section class="sliice bg-gradient-dark pt-6 mb-0 pb-5" style="background-image: url('https://www.gieqs.com/assets/wp/wp-content/uploads/2023/02/harbour-01-1-2048x194.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
             <div class="container">
 
             <div class="row text-center">
@@ -754,7 +754,7 @@ var_dump($currentTime);
 
 
 <div class="text-center bg-gieqsGold text-dark">
- Thanks for your PRO MEMBERSHIP.  Pro members must register for all courses.  Registration is FREE by clicking Register Now below.</div>
+ <!-- Thanks for your PRO MEMBERSHIP.  Pro members must register for all courses.  Registration is FREE by clicking Register Now below. --></div>
 <?php }?>
             </div>
 </div>
