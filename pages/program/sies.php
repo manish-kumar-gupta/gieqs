@@ -1752,7 +1752,7 @@ var_dump($currentTime);
     </div>
 
 
-    <?php //require BASE_URI . '/footer.php';?>
+    <?php require BASE_URI . '/footer_sies.php';?>
 
     <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
 
