@@ -741,9 +741,15 @@ var_dump($currentTime);
 
         <!-- PROGRAM TABLE -->
 
-        <!-- options for colours black or #1C3C5E  -->
+        <!-- options for colours black or #1C3C5E  
+    
+        style="background-color:black;"
+    
+    style="background-image: url('<?php echo BASE_URL;?>/assets/img/brand/SIES-Footer.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;"
+    -->
 
-        <section class="sliice pt-6 mb-0 pb-5" style="background-color:black;">
+        <section class="sliice pt-6 mb-0 pb-5" style="background-image: url('<?php echo BASE_URL;?>/assets/img/brand/SIES-Footer.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;"
+>
             <div class="container">
 
             <div class="row text-center">
