@@ -274,7 +274,7 @@ if (isset($_GET['destination'])) {
         }else{
 
           //splice other start off
-          $string_to_remove = 'www.gieqs.com/';
+          $string_to_remove = 'https://www.gieqs.com/';
           $target = str_replace($string_to_remove ,'',$target);
 
 
@@ -290,8 +290,8 @@ if (isset($_GET['destination'])) {
 
 }
 
-var_dump($local);
-var_dump($target);
+//var_dump($local);
+//var_dump($target);
 
 //exit();
 
