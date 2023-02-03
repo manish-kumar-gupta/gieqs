@@ -178,7 +178,7 @@ $assets_paid->Load_from_key($asset_id_pagewrite);
     .blog-container strong {
 
         font-weight: 500;
-        color: #e3ebf6;
+        color: #1C3C5E;
     }
 
     .text-gieqsGold {
@@ -1764,7 +1764,7 @@ var_dump($currentTime);
 
     <script src=<?php echo BASE_URL . "/assets/js/generaljs.js"?>></script>
 
-    <?php require BASE_URI . '/assets/scripts/purchase.php';?>
+    <?php require BASE_URI . '/assets/scripts/purchase-light.php';?>
 
 
     <script>

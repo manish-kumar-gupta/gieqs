@@ -65,19 +65,19 @@ require_once BASE_URI . '/pages/learning/includes/gieqs_iii_settings.php';
         <div class="collapse navbar-collapse" id="navbar-main-collapse">
             <ul class="navbar-nav align-items-lg-center">
             <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/learning/blog_wp.php">Virtual-Registration</a>
+                    <a class="nav-link" href="#">Virtual-Registration</a>
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/learning/blog_wp.php">Live</a>
+                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/learning/sies_live.php">Live</a>
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/learning/blog_wp.php">Watch</a>
+                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/learning/watch_live_sies.php">Watch</a>
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/learning/blog_wp.php">Catch-up</a>
+                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/learning/catch_up_sies.php">Catch-up</a>
                 </li>
                 <!-- Home - Overview  -->
                 <!--<li class="nav-item active">
