@@ -51,7 +51,7 @@
               </li>
             <li class="nav-item">
 
-            <?php $url_sies = BASE_URL . '/pages/program/sies.php?id=171';?>
+            <?php $url_sies = '/pages/program/sies.php?id=171';?>
               <a class="nav-link" title="Login" href="<?php echo BASE_URL . '/pages/authentication/login.php?destination=' . urlencode($url_sies);?>"><i class="fas fa-user-plus mr-2"></i>Login</a>
             </li>
 
