@@ -252,7 +252,7 @@ font-weight: 300 !important;
     <header class="header header-transparent" id="header-main">
         <!-- Topbar -->
 
-        <?php require BASE_URI . '/topbar.php';?>
+        <?php require BASE_URI . '/topbar_sies.php';?>
 
         <!-- Main navbar -->
 
