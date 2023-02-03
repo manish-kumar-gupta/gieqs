@@ -11,8 +11,7 @@
 
 <?php 
 
-
-
+/* 
 require_once BASE_URI . '/assets/scripts/classes/users.class.php';
 $users = new users;
 require_once BASE_URI . '/assets/scripts/classes/programme.class.php';
@@ -20,30 +19,15 @@ $programme = new programme;
 //$sessionView = new sessionView;
 require_once BASE_URI . '/assets/scripts/classes/sessionView.class.php';
 $sessionView = new sessionView;
-//error_reporting(E_ALL);
+//error_reporting(E_ALL); */
 
 
-require_once BASE_URI . "/vendor/autoload.php";
-spl_autoload_unregister ('class_loader');
-
-use chillerlan\QRCode\QRCode;
-use chillerlan\QRCode\QROptions;
-$options = new QROptions([
-	'version'    => 7,
-	'outputType' => QRCode::OUTPUT_MARKUP_SVG,
-  'eccLevel'   => QRCode::ECC_L,
-  'cssClass' => 'gieqsGold',
-  'svgOpacity' => 50,
-  'scale' => 3,
-]);
-$qrcode = new QRCode($options);
-spl_autoload_register ('class_loader');
 
 //TESTING
 
 //access planning for GIEQs III
 
-require_once BASE_URI . '/pages/learning/includes/gieqs_iii_settings.php';
+//require_once BASE_URI . '/pages/learning/includes/gieqs_iii_settings.php';
 
 
 
@@ -73,12 +57,16 @@ require_once BASE_URI . '/pages/learning/includes/gieqs_iii_settings.php';
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/learning/pages/general/show_subscription_sies.php?assetid=171">Watch</a>
+                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/learning/pages/general/show_subscription_sies.php?assetid=171">SIES Symposium Catch-up</a>
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Catch-up</a>
+                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/learning/pages/general/show_subscription_sies.php?assetid=172">SIES Series II</a>
                 </li>
+
+               <!--  <li class="nav-item active">
+                    <a class="nav-link" href="#">Catch-up</a>
+                </li> -->
 
                 <!-- link  -->
                 <!-- Home - Overview  -->
@@ -91,3 +79,4 @@ require_once BASE_URI . '/pages/learning/includes/gieqs_iii_settings.php';
         </div>
     </div>
 </nav>
+

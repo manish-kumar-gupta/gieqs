@@ -1,8 +1,6 @@
 <?php require 'includes/config.inc.php';
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+
 
 $light_theme = true;
 
@@ -740,7 +738,8 @@ $client = new Vimeo($vimeo_client_id, $vimeo_client_secret, $vimeo_token);
 
         <!-- Main navbar -->
 
-        <?php require BASE_URI . '/pages/learning/includes/nav.php';?>
+        <?php //require BASE_URI . '/pages/learning/includes/nav.php';?>
+        <?php require BASE_URI . '/nav_sies.php';?>
 
 
 
