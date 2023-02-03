@@ -748,7 +748,7 @@ var_dump($currentTime);
     style="background-image: url('<?php echo BASE_URL;?>/assets/img/brand/SIES-Footer.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;"
     -->
 
-        <section class="sliice pt-6 mb-0 pb-5" style="background-image: url('<?php echo BASE_URL;?>/assets/img/brand/SIES-Footer.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;"
+        <section class="sliice pt-6 mb-0 pb-5" style="background-image: url('<?php echo BASE_URL;?>/assets/img/brand/SIES-Footer-fade.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;"
 >
             <div class="container">
 
