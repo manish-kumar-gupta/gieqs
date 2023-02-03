@@ -11,7 +11,7 @@
       
 
       //require BASE_URI . '/pages/learning/includes/head.php';
-      require BASE_URI . '/headNoPurposeCore.php';
+      require BASE_URI . '/head_nocss.php';
 
       $general = new general;
 
@@ -773,11 +773,15 @@
 
 <script src="<?php echo BASE_URL; ?>/node_modules/bootstrap-tour/build/js/bootstrap-tour-standalone.min.js"></script>
 
+<link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/css/purpose_sies.css" id="stylesheet">
+
+<link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/css/sies.css">
+
 
                     <style>
                     .gieqsGold {
 
-                        color: rgb(238, 194, 120);
+                        color: #BD9635;
 
 
                     }
@@ -815,7 +819,7 @@
 
                     .gieqsGoldBackground {
 
-                        background-color: rgb(238, 194, 120);
+                        background-color: #BD9635;
 
 
                     }
@@ -842,7 +846,7 @@
 
 .popover-title {
 
-background-color: rgb(238, 194, 120);
+background-color: #BD9635;
 color: #162e4d;
 font-size: 1rem;
 }
@@ -855,7 +859,7 @@ background-color: #193659;
 
 .popover.right>.arrow::after {
 
-border-right-color: rgb(238, 194, 120);
+border-right-color: #BD9635;
 ;
 }
 
@@ -993,11 +997,11 @@ filter: alpha(opacity=30);
 
     <!-- Topbar -->
 
-    <?php require BASE_URI . '/pages/learning/includes/topbar.php';?>
+    <?php require BASE_URI . '/topbar_sies.php';?>
 
     <!-- Main navbar -->
 
-    <?php require BASE_URI . '/pages/learning/includes/nav.php';?>
+    <?php require BASE_URI . '/nav_sies.php';?>
 
 
 
@@ -1129,7 +1133,7 @@ filter: alpha(opacity=30);
     <!-- Omnisearch -->
 
 
-    <div class="main-content bg-gradient-dark">
+    <div class="main-content ">
 
 
         <?php 
@@ -1665,7 +1669,7 @@ filter: alpha(opacity=30);
     <!-- Modal -->
 
 
-    <?php require BASE_URI . '/footer.php';?>
+    <?php require BASE_URI . '/footer_sies.php';?>
 
     <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
     <!-- <script src="assets/js/purpose.core.js"></script> -->
@@ -2007,7 +2011,9 @@ $('#debugCookiebrowsing_id').text(getCookie('browsing_id'));
                 videoset: '<?php echo $videoset;?>',
                 assetid: '<?php echo $assetid;?>',
                 gieqsDigital: '<?php echo $gieqsDigital;?>',
-                color: 'dark',
+                color: 'white',
+                partner: 'sies',
+
 
 
             }

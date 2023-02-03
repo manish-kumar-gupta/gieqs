@@ -52,7 +52,7 @@ require_once BASE_URI . '/pages/learning/includes/gieqs_iii_settings.php';
 <nav class="navbar navbar-main navbar-expand-lg navbar-transparent navbar" id="navbar-main">
     <div class="container px-lg-0">
         <!-- Logo -->
-        <a class="navbar-brand mr-lg-5" href="<?php echo BASE_URL;?>/index.php">
+        <a class="navbar-brand mr-lg-5" href="<?php echo BASE_URL;?>/pages/program/sies.php?id=171">
             <img alt="Image placeholder" src="<?php echo BASE_URL;?>/assets/img/brand/sies.png" id="navbar-logo"
                 style="height: 50px;">
         </a>
@@ -65,20 +65,22 @@ require_once BASE_URI . '/pages/learning/includes/gieqs_iii_settings.php';
         <div class="collapse navbar-collapse" id="navbar-main-collapse">
             <ul class="navbar-nav align-items-lg-center">
             <li class="nav-item active">
-                    <a class="nav-link" href="#">Virtual-Registration</a>
+                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/sies.php?id=171">Virtual Registration</a>
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/learning/sies_live.php">Live</a>
+                    <a class="nav-link" href="https://www.sies.org.au/14-annual-event-2023/">In-Person Registration</a>
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/learning/watch_live_sies.php">Watch</a>
+                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/learning/pages/general/show_subscription_sies.php?assetid=171">Watch</a>
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/learning/catch_up_sies.php">Catch-up</a>
+                    <a class="nav-link" href="#">Catch-up</a>
                 </li>
+
+                <!-- link  -->
                 <!-- Home - Overview  -->
                 <!--<li class="nav-item active">
               <a class="nav-link" href="<?php echo BASE_URL;?>/index.php">Overview</a>

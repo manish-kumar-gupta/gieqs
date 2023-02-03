@@ -576,7 +576,7 @@ if ($debug){
 ?>
 
 
-<nav class="mt-4 navbar navbar-expand-lg navbar-dark bg-dark sticky-top" id="videoBar"
+<nav class="mt-4 navbar navbar-expand-lg <?php if (isset($light_theme)){ echo $light_theme ?  '' : 'navbar-dark bg-dark';} ?> sticky-top" id="videoBar"
     style="margin-top: 20px; z-index: 2 !important;">
     <div class="container">
         <a class="navbar-brand cursor-pointer" id="start_tour"><?php echo 'Video Navigation';?>

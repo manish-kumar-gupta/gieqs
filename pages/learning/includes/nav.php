@@ -66,7 +66,7 @@ if ($menus) {
 
     ?>
 
-<nav class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-dark bg-dark" id="navbar-main">
+<nav class="navbar navbar-main navbar-expand-lg navbar-transparent <?php if (isset($light_theme)){ echo $light_theme ?  '' : 'navbar-dark bg-dark';} ?>" id="navbar-main">
     <div class="container px-lg-0">
         <!-- Logo -->
         <a class="navbar-brand mr-lg-5" href="<?php echo BASE_URL; ?>/index.php">

@@ -91,6 +91,14 @@ $videoset = $data['videoset'];
 
 $assetid = $data['assetid'];
 
+$color = $data['color'];
+
+if (isset($data['partner'])){
+
+    $partner = $data['partner'];
+
+}
+
 
 $gieqsDigitalv1 = $data['gieqsDigital'];
 
@@ -690,8 +698,26 @@ if (isset($videoset)){
             </div>
 
         </div>
+
+        <?php
+
+        if (isset($partner)){
+
+            if ($partner == 'sies'){
+
+                $url_video = BASE_URL . '/pages/learning/viewer_sies.php?id=' . $value['id'] . '&referid=' . $data['referringUrl'];
+
+            }else{
+
+                $url_video = BASE_URL . '/pages/learning/viewer.php?id=' . $value['id'] . '&referid=' . $data['referringUrl'];
+            }
+
+        }
+
+        ?>
+
         <a
-            href="<?php echo BASE_URL . '/pages/learning/viewer.php?id=' . $value['id'] . '&referid=' . $data['referringUrl']; ?>">
+            href="<?php echo $url_video; ?>">
             <img alt="video image" src="<?php echo $value['thumbnail']; ?>" class="img-fluid mt-2">
         </a>
 

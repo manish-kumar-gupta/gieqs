@@ -7,7 +7,7 @@
 
 define('WP_USE_THEMES', false);
 spl_autoload_unregister ('class_loader');
-
+$light_theme = true;
 
 
 require(BASE_URI . '/assets/wp/wp-blog-header.php');
