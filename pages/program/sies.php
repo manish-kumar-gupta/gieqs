@@ -734,14 +734,14 @@ var_dump($currentTime);
     ?>
 
         <!-- Header (v1) -->
-        <section class="header-1 bg-gradient-dark" data-offset-top="#header-main">
+        <section class="header-1" data-offset-top="#header-main">
 
 
         </section>
 
         <!-- PROGRAM TABLE -->
 
-        <section class="sliice bg-gradient-dark pt-6 mb-0 pb-5" style="background-image: url('https://www.gieqs.com/assets/wp/wp-content/uploads/2023/02/harbour-01-1-2048x194.png'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+        <section class="sliice pt-6 mb-0 pb-5" style="background-color:#BD9635;">
             <div class="container">
 
             <div class="row text-center">
