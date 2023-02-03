@@ -1762,8 +1762,8 @@ var_dump($currentTime);
 
     <!-- Core JS - includes jquery, bootstrap, popper, in-view and sticky-kit -->
 
-    <script src="../../assets/js/purpose.core.js"></script>
-    <script src="<?php echo BASE_URL;?>/assets/js/purpose.js"></script>
+<!--     <script src="../../assets/js/purpose.core.js"></script>
+ -->    <script src="<?php echo BASE_URL;?>/assets/js/purpose.js"></script>
     <script src="<?php echo BASE_URL;?>/node_modules/jquery-validation/dist/jquery.validate.js"></script>
     <script src="../../assets/libs/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
 
