@@ -219,7 +219,7 @@ word-wrap: break-word;
     background-color: #eec278;
     border-radius: 0;
     border-width: 0;
-    color: #162e4d !important;
+    color: #1C3C5E !important;
     font-family: inherit;
     font-size: inherit;
     line-height: inherit;
@@ -229,7 +229,7 @@ word-wrap: break-word;
 }
 .wp-element-button:hover {
     border-color: rgb(238, 194, 120) !important;
-    background-color: #162e4d !important;
+    background-color: #1C3C5E !important;
     color: rgb(238, 194, 120) !important;
     cursor: pointer !important;
 
@@ -258,7 +258,7 @@ word-wrap: break-word;
 
 .btn-fill-gieqsGold {
 
-    color: #162e4d !important;
+    color: #1C3C5E !important;
     border-color: rgb(238, 194, 120) !important;
     background-color: rgb(238, 194, 120) !important;
 }
@@ -268,7 +268,7 @@ word-wrap: break-word;
     
 
     border-color: rgb(238, 194, 120) !important;
-    background-color: #162e4d !important;
+    background-color: #1C3C5E !important;
     color: rgb(238, 194, 120) !important;
     
     
@@ -276,7 +276,7 @@ word-wrap: break-word;
 
 .btn-fill-gieqsGold-dark {
 
-    background-color: #162e4d !important;
+    background-color: #1C3C5E !important;
     border-color: rgb(238, 194, 120) !important;
     color: rgb(238, 194, 120) !important;
 }
@@ -286,7 +286,7 @@ word-wrap: break-word;
 
     border-color: rgb(238, 194, 120) !important;
     background-color: rgb(238, 194, 120) !important;
-    color: #162e4d !important;
+    color: #1C3C5E !important;
     
     
 }

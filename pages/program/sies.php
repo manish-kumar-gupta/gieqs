@@ -123,43 +123,43 @@ $assets_paid->Load_from_key($asset_id_pagewrite);
     <style>
     .btn-outline-gieqsGold {
 
-        color: rgb(238, 194, 120);
-        border-color: rgb(238, 194, 120);
+        color: #BD9635;
+        border-color: #BD9635;
 
     }
 
 
     .btn-fill-gieqsGold {
 
-        color: #162e4d !important;
-        border-color: rgb(238, 194, 120) !important;
-        background-color: rgb(238, 194, 120) !important;
+        color: #BD9635 !important;
+        border-color: #BD9635 !important;
+        background-color: #BD9635 !important;
     }
 
     .btn-fill-gieqsGold:hover {
 
 
 
-        border-color: rgb(238, 194, 120) !important;
-        background-color: #162e4d !important;
-        color: rgb(238, 194, 120) !important;
+        border-color: #BD9635 !important;
+        background-color: #BD9635 !important;
+        color: #BD9635 !important;
 
 
     }
 
     .btn-fill-gieqsGold-dark {
 
-        background-color: #162e4d !important;
-        border-color: rgb(238, 194, 120) !important;
-        color: rgb(238, 194, 120) !important;
+        background-color: #BD9635 !important;
+        border-color: #BD9635 !important;
+        color: #BD9635 !important;
     }
 
     .btn-fill-gieqsGold-dark:hover {
 
 
-        border-color: rgb(238, 194, 120) !important;
-        background-color: rgb(238, 194, 120) !important;
-        color: #162e4d !important;
+        border-color: #BD9635 !important;
+        background-color: #BD9635 !important;
+        color: #BD9635 !important;
 
 
     }
@@ -183,13 +183,13 @@ $assets_paid->Load_from_key($asset_id_pagewrite);
 
     .text-gieqsGold {
 
-        color: rgb(238, 194, 120);
+        color: #BD9635;
 
     }
 
     .bg-gieqsGold {
 
-        background-color: rgb(238, 194, 120);
+        background-color: #BD9635;
 
     }
 
@@ -741,7 +741,7 @@ var_dump($currentTime);
 
         <!-- PROGRAM TABLE -->
 
-        <section class="sliice pt-6 mb-0 pb-5" style="background-color:#BD9635;">
+        <section class="sliice pt-6 mb-0 pb-5" style="background-color:#1C3C5E;">
             <div class="container">
 
             <div class="row text-center">
@@ -775,7 +775,7 @@ var_dump($currentTime);
                         <?php }else{?>
 
                         <span class="h1"
-                            style="color: rgb(238, 194, 120);"><?php echo $assets_paid->getName(); ?><br /></span>
+                            style="color: #BD9635;"><?php echo $assets_paid->getName(); ?><br /></span>
 
 
                         <?php }?>
@@ -785,19 +785,19 @@ var_dump($currentTime);
 
                         <?php if ($assetManager->getAssetTypeAsset($assets_paid->getid()) == '2' || $assetManager->getAssetTypeAsset($assets_paid->getid()) == '3'){?>
                         <span class="h3 mt-4"
-                            style="color: rgb(238, 194, 120);"><?php echo 'Live and Online :  ' . $humanReadableProgrammeDate;?></span>
+                            style="color: #BD9635;"><?php echo 'Live and Online :  ' . $humanReadableProgrammeDate;?></span>
                         <span class="h3"
-                            style="color: rgb(238, 194, 120);"><?php echo ', ' . $humanStartTime . ' - ' . $humanEndTime;?>
+                            style="color: #BD9635;"><?php echo ', ' . $humanStartTime . ' - ' . $humanEndTime;?>
                             <?php if (isset($asset_id_pagewrite2)){?>
                             <br />
                             <!-- fix -->
                             <span class="h3 mt-4"
-                                style="color: rgb(238, 194, 120);"><?php echo 'and :  Friday 30th September , 08:00 - 17:30 CET'?></span>
+                                style="color: #BD9635;"><?php echo 'and :  Friday 30th September , 08:00 - 17:30 CET'?></span>
 
                             <!-- later replace -->
 
-                            <!--   <span class="h3 mt-4" style="color: rgb(238, 194, 120);"><?php echo 'and :  ' . $humanReadableProgrammeDatev1;?></span>
-                        <span class="h3" style="color: rgb(238, 194, 120);"><?php echo ', ' . $humanStartTimev1 . ' - ' . $humanEndTimev1;?> 
+                            <!--   <span class="h3 mt-4" style="color: #BD9635;"><?php echo 'and :  ' . $humanReadableProgrammeDatev1;?></span>
+                        <span class="h3" style="color: #BD9635;"><?php echo ', ' . $humanStartTimev1 . ' - ' . $humanEndTimev1;?> 
  -->
                             <?php }?>
 
@@ -810,7 +810,7 @@ var_dump($currentTime);
                         <?php }else if ($assetManager->getAssetTypeAsset($assets_paid->getid()) == '4'){ ?>
 
 
-                        <span class="h3 mt-4" style="color: rgb(238, 194, 120);">Premium Content Pack</span>
+                        <span class="h3 mt-4" style="color: #BD9635;">Premium Content Pack</span>
 
 
 
@@ -819,7 +819,7 @@ var_dump($currentTime);
 
 
                         <span class="h3 mt-4"
-                            style="color: rgb(238, 194, 120);"><?php if ($is_institutional){echo 'Institutional';}?>
+                            style="color: #BD9635;"><?php if ($is_institutional){echo 'Institutional';}?>
                             Subscription Package</span>
 
 
@@ -1117,7 +1117,7 @@ var_dump($currentTime);
         <div class="modal-lg modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="registerInterestLabel" style="color: rgb(238, 194, 120);">Sign-up for
+                    <h5 class="modal-title" id="registerInterestLabel" style="color: #BD9635;">Sign-up for
                         GIEQs Online!</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span class="text-white" aria-hidden="false">&times;</span>
@@ -1298,7 +1298,7 @@ var_dump($currentTime);
         <div class="modal-lg modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <p class="modal-title h3" id="costCalculatorLabel" style="color: rgb(238, 194, 120);">Fine Tune your
+                    <p class="modal-title h3" id="costCalculatorLabel" style="color: #BD9635;">Fine Tune your
                         Virtual Registration Options for GIEQs III!</p>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span class="text-white" aria-hidden="false">&times;</span>
@@ -1447,7 +1447,7 @@ var_dump($currentTime);
         <div class="modal-lg modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" id="step2Label" style="color: rgb(238, 194, 120);">Complete your
+                    <h3 class="modal-title" id="step2Label" style="color: #BD9635;">Complete your
                         Registration Details!</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span class="text-white" aria-hidden="false">&times;</span>
@@ -1829,9 +1829,9 @@ var_dump($currentTime);
                 type: 'info',
                 title: 'Create Account',
                 text: data,
-                background: '#162e4d',
+                background: '#BD9635',
                 confirmButtonText: 'ok',
-                confirmButtonColor: 'rgb(238, 194, 120)',
+                confirmButtonColor: '#BD9635',
 
             }).then((result) => {
 
@@ -2283,9 +2283,9 @@ var_dump($currentTime);
                         type: 'info',
                         title: 'Registration Data Saved',
                         text: 'We Saved your Registration Data.  Proceeding to Payment.',
-                        background: '#162e4d',
+                        background: '#BD9635',
                         confirmButtonText: 'ok',
-                        confirmButtonColor: 'rgb(238, 194, 120)',
+                        confirmButtonColor: '#BD9635',
 
                     }).then((result) => {
 
