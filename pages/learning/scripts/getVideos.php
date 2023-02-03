@@ -712,6 +712,11 @@ if (isset($videoset)){
                 $url_video = BASE_URL . '/pages/learning/viewer.php?id=' . $value['id'] . '&referid=' . $data['referringUrl'];
             }
 
+        }else{
+
+            $url_video = BASE_URL . '/pages/learning/viewer.php?id=' . $value['id'] . '&referid=' . $data['referringUrl'];
+
+
         }
 
         ?>
