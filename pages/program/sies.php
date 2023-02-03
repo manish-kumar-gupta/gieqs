@@ -734,14 +734,16 @@ var_dump($currentTime);
     ?>
 
         <!-- Header (v1) -->
-        <section class="header-1" data-offset-top="#header-main">
+        <section class="header-1" style="padding-top:150px !important;">
 
 
         </section>
 
         <!-- PROGRAM TABLE -->
 
-        <section class="sliice pt-6 mb-0 pb-5" style="background-color:#1C3C5E;">
+        <!-- options for colours black or #1C3C5E  -->
+
+        <section class="sliice pt-6 mb-0 pb-5" style="background-color:black;">
             <div class="container">
 
             <div class="row text-center">
