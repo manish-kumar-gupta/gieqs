@@ -313,7 +313,29 @@ if ($asset_id_url == '95'){
      require BASE_URI . '/pages/learning/includes/nav_symposium.php';
 
     
-}else{
+}elseif ($asset_id_url == '171'){
+
+    $asset_id_pagewrite = '171';
+    $asset_id_pagewrite2 = '174';
+    //$asset_id_pagewrite2 = '96'; //this will actually be 95 and need to get second part of the array
+    $is_symposium = false;
+
+    $symposium_nav_active = [
+
+        0 => '', //news
+        1 => '', //individual reg
+        2 => '', //group reg
+        3 => '', //program
+        4 => '', //faculty
+        5 => 'gieqsGold', //VPK
+        
+        
+        
+        ];
+
+     require BASE_URI . '/pages/learning/includes/nav_symposium.php';
+
+    }else{
 
     $is_symposium = false;
 }
