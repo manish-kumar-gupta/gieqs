@@ -318,7 +318,7 @@ if ($asset_id_url == '95'){
     $asset_id_pagewrite = '171';
     $asset_id_pagewrite2 = '174';
     //$asset_id_pagewrite2 = '96'; //this will actually be 95 and need to get second part of the array
-    $is_symposium = false;
+    $is_symposium = true;
 
     $symposium_nav_active = [
 
