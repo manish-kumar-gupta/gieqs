@@ -3,7 +3,9 @@
 <?php
 require_once BASE_URI . '/assets/scripts/classes/coin.class.php';
 $coin = new coin;
-error_reporting(E_ALL);
+require_once BASE_URI . '/assets/scripts/classes/users.class.php';
+$users = new users;
+//error_reporting(E_ALL);
 
 ?>
 
