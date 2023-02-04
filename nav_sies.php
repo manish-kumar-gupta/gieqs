@@ -11,23 +11,6 @@
 
 <?php 
 
-require_once BASE_URI . '/assets/scripts/classes/users.class.php';
-$users = new users;
-require_once BASE_URI . '/assets/scripts/classes/programme.class.php';
-$programme = new programme;
-//$sessionView = new sessionView;
-require_once BASE_URI . '/assets/scripts/classes/sessionView.class.php';
-$sessionView = new sessionView;
-/* 
-require_once BASE_URI . '/assets/scripts/classes/users.class.php';
-$users = new users;
-require_once BASE_URI . '/assets/scripts/classes/programme.class.php';
-$programme = new programme;
-//$sessionView = new sessionView;
-require_once BASE_URI . '/assets/scripts/classes/sessionView.class.php';
-$sessionView = new sessionView;
-//error_reporting(E_ALL); */
-
 
 
 //TESTING
