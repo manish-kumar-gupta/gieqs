@@ -61,15 +61,7 @@
       /* restricted only to those videos in the asset */
 
 
-      ?>
-
-    <!--Page title-->
-
-
-
-
-    <?php
-
+     
 
         $debug = false;
 
