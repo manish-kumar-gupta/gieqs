@@ -5642,8 +5642,14 @@ input[type='button'].btn-block
     flex-basis: 100%;
     flex-grow: 1;
     align-items: center;
+   
+}
+
+.header-collapse-show .navbar-collapse
+{
     background : white;
     padding: 20px;
+   
 }
 
 .navbar-toggler
