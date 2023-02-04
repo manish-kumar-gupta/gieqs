@@ -595,7 +595,7 @@ color: #e3ebf6;
 }?> 
 
 <section class="blog-container slice">
-                <div class="container">
+                <div class="container col-10">
 
 <?php echo $content;?>
 
