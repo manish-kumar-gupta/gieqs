@@ -11,7 +11,6 @@
       
 
       //require BASE_URI . '/pages/learning/includes/head.php';
-      require BASE_URI . '/headNoPurposeCore.php';
 
       $general = new general;
 
@@ -74,7 +73,6 @@
 
         $debug = false;
 
-        require_once BASE_URI . '/pages/learning/includes/gieqs_iii_settings.php';
 
 
         if ($debug){
@@ -85,6 +83,19 @@
 
 		if (isset($_GET["assetid"]) && is_numeric($_GET["assetid"])){
 			$assetid = $_GET["assetid"];
+
+            if ($assetid == '171'){
+
+                header('Location: ' . BASE_URL . '/pages/learning/pages/general/show_subscription_sies.php?assetid=171');
+                exit();
+            
+            }elseif ($assetid = '172'){
+
+                header('Location: ' . BASE_URL . '/pages/learning/pages/general/show_subscription_sies.php?assetid=172');
+                exit();
+            
+            }
+            
 		
 		}else{
 		
@@ -110,6 +121,11 @@
 		
         }
 
+        require BASE_URI . '/headNoPurposeCore.php';
+
+
+        require_once BASE_URI . '/pages/learning/includes/gieqs_iii_settings.php';
+
         /* exit if no assetid provided */
 
         if ((!isset($assetid)) && (!isset($pageid))){
@@ -117,6 +133,9 @@
             setcookie("browsing", "", time() - 3600);
             setcookie("browsing_id", "", time() - 3600);
 
+
+           
+    
             ?>
 
 
