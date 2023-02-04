@@ -81,7 +81,7 @@
                 header('Location: ' . BASE_URL . '/pages/learning/pages/general/show_subscription_sies.php?assetid=171');
                 exit();
             
-            }elseif ($assetid = '172'){
+            }elseif ($assetid == '172'){
 
                 header('Location: ' . BASE_URL . '/pages/learning/pages/general/show_subscription_sies.php?assetid=172');
                 exit();
