@@ -824,7 +824,7 @@ var_dump($currentTime);
                             <br />
                             <!-- fix -->
                             <span class="h3 mt-4"
-                                style="color: #BD9635;"><?php echo 'and :  Friday 17th September , 08:00 - 17:30 AEST'?></span>
+                                style="color: #BD9635;"><?php echo 'and :  Friday 17th March , 08:00 - 17:30 AEST'?></span>
 
                             <!-- later replace -->
 
