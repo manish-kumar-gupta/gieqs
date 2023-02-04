@@ -10,6 +10,31 @@
 
       
 
+      if (isset($_GET["assetid"]) && is_numeric($_GET["assetid"])){
+        $assetid = $_GET["assetid"];
+
+        if ($assetid == '171'){
+
+            header('Location: ' . BASE_URL . '/pages/learning/pages/general/show_subscription_sies.php?assetid=171');
+            exit();
+        
+        }elseif ($assetid == '172'){
+
+            header('Location: ' . BASE_URL . '/pages/learning/pages/general/show_subscription_sies.php?assetid=172');
+            exit();
+        
+        }else{
+
+
+        }
+        
+    
+    }else{
+    
+        //$assetid = null;
+    
+    }
+
       //require BASE_URI . '/pages/learning/includes/head.php';
 
       require BASE_URI . '/head_nocss.php';
@@ -76,30 +101,7 @@
 
         }
 
-		if (isset($_GET["assetid"]) && is_numeric($_GET["assetid"])){
-			$assetid = $_GET["assetid"];
-
-            if ($assetid == '171'){
-
-                header('Location: ' . BASE_URL . '/pages/learning/pages/general/show_subscription_sies.php?assetid=171');
-                exit();
-            
-            }elseif ($assetid == '172'){
-
-                header('Location: ' . BASE_URL . '/pages/learning/pages/general/show_subscription_sies.php?assetid=172');
-                exit();
-            
-            }else{
-
-
-            }
-            
 		
-		}else{
-		
-			//$assetid = null;
-		
-        }
 
         if (isset($_GET["page_id"]) && is_numeric($_GET["page_id"])){
             $pageid = $_GET["page_id"];
