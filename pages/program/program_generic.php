@@ -25,7 +25,6 @@ spl_autoload_register ('class_loader');
 
 $openaccess = 1;
 
-require BASE_URI . '/headNoPurposeCore.php';
 
 require_once(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
 $assetManager = new assetManager;
@@ -91,6 +90,7 @@ if ($asset_id_url == '171'){
 }
 
 
+require BASE_URI . '/headNoPurposeCore.php';
 
 
 
