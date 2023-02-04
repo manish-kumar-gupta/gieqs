@@ -83,6 +83,12 @@ $asset_id_pagewrite = $asset_id_url;
 $assets_paid->Load_from_key($asset_id_pagewrite);
 
 
+if ($asset_id_url == '171'){
+
+    header('Location: ' . BASE_URL . '/pages/program/sies.php?id=171');
+    exit();
+
+}
 
 
 
@@ -264,6 +270,7 @@ font-weight: 300 !important;
 //assetid
 
 //$assetid = 13;
+
 
 //fix GIEQs III
 if ($asset_id_url == '95'){
