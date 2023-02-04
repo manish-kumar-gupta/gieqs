@@ -1,11 +1,7 @@
-<?php require '../../assets/includes/config.inc.php';?>
-
-<?php
+<?php require '../../assets/includes/config.inc.php';
 
 define('WP_USE_THEMES', false);
 spl_autoload_unregister ('class_loader');
-
-
 
 require(BASE_URI . '/assets/wp/wp-blog-header.php');
 
