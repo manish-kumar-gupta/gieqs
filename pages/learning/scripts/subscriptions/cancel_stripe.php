@@ -42,7 +42,7 @@ include(BASE_URI . '/pages/learning/scripts/subscriptions/coin/coin_transact_rev
 
 
 
-echo $location;
+//echo $location;
 
 //require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
 
