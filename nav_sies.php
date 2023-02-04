@@ -53,12 +53,60 @@
                     <a class="nav-link" href="https://www.sies.org.au/14-annual-event-2023/">In-Person Registration</a>
                 </li>
 
-                <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/learning/pages/general/show_subscription_sies.php?assetid=171">SIES Symposium Catch-up</a>
-                </li>
+                <?php 
+                
+                if ($userid){
+
+                    $access_symposium = $assetManager->is_assetid_covered_by_user_subscription('171', $userid, $debug, $fullAccess);
+
+                }else{
+
+                    $access_symposium = false;
+
+                }
+
+                if ($access_symposium){
+
+                    $url_symposium = BASE_URL . '/pages/learning/pages/general/show_subscription_sies.php?assetid=171';
+
+                }else{
+
+                    $url_symposium = BASE_URL . '/pages/program/sies.php?id=171';
+   
+                }
+
+ ?>
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="<?php echo BASE_URL;?>/pages/learning/pages/general/show_subscription_sies.php?assetid=172">SIES Series II</a>
+                    <a class="nav-link" href="<?php echo $url_symposium;?>">SIES Symposium Catch-up</a>
+                </li>
+
+                <?php 
+                
+                if ($userid){
+
+                    $access_series = $assetManager->is_assetid_covered_by_user_subscription('172', $userid, $debug, $fullAccess);
+
+                }else{
+
+                    $access_series = false;
+
+                }
+
+                if ($access_series){
+
+                    $url_series = BASE_URL . '/pages/learning/pages/general/show_subscription_sies.php?assetid=172';
+
+                }else{
+
+                    $url_series = BASE_URL . '/pages/program/sies.php?id=172';
+   
+                }
+
+ ?>
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="<?php echo $url_series;?>">SIES Series II</a>
                 </li>
 
                <!--  <li class="nav-item active">
