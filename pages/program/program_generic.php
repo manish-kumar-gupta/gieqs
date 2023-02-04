@@ -7,6 +7,22 @@ require(BASE_URI . '/assets/wp/wp-blog-header.php');
 
 spl_autoload_register ('class_loader');
 
+if (isset($_GET["id"]) && is_numeric($_GET["id"])){
+    $asset_id_url = $_GET["id"];
+
+}else{
+
+    $asset_id_url = null;
+
+}
+if ($asset_id_url == '171'){
+
+    header('Location: ' . BASE_URL . '/pages/program/sies.php?id=171');
+    exit();
+
+}
+
+require BASE_URI . '/headNoPurposeCore.php';
 
 //define user access level
 
@@ -57,29 +73,16 @@ if (isset($_GET["access_token"])){
 $general = new general;
 
 
-if (isset($_GET["id"]) && is_numeric($_GET["id"])){
-    $asset_id_url = $_GET["id"];
 
-}else{
-
-    $asset_id_url = null;
-
-}
 
 
 $asset_id_pagewrite = $asset_id_url;
 $assets_paid->Load_from_key($asset_id_pagewrite);
 
 
-if ($asset_id_url == '171'){
-
-    header('Location: ' . BASE_URL . '/pages/program/sies.php?id=171');
-    exit();
-
-}
 
 
-require BASE_URI . '/headNoPurposeCore.php';
+
 
 
 
