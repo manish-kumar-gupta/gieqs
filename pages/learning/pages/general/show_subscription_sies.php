@@ -210,7 +210,7 @@
 
         if (in_array($assetid, $fakeArray)){
 
-            $access = $assetManager->is_assetid_covered_by_user_subscription('95', $userid, $debug, $fullAccess);
+            $access = $assetManager->is_assetid_covered_by_user_subscription('171', $userid, $debug, $fullAccess);
 
 
 
@@ -224,7 +224,7 @@
 
         //fix for 95 **GIEQs III
 
-        if ($assetid == '95'){
+        if ($assetid == '171'){
             //echo 'Assetid is ' . $gieqs_iii_is_live;
 
             //die();
