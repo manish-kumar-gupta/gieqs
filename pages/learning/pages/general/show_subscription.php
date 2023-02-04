@@ -786,8 +786,8 @@
                     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/libs/animate.css/animate.min.css">
             <link href="<?php echo BASE_URL;?>/node_modules/bootstrap-tour/build/css/bootstrap-tour-standalone-gieqs.css" rel="stylesheet">
 
-            <script src="<?php echo BASE_URL;?>/assets/js/purpose.core.js"></script>
-
+<!--             <script src="<?php //echo BASE_URL;?>/assets/js/purpose.core.js"></script>
+ -->
 <script src="<?php echo BASE_URL; ?>/node_modules/bootstrap-tour/build/js/bootstrap-tour-standalone.min.js"></script>
 
 <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/css/purpose.css" id="stylesheet">
