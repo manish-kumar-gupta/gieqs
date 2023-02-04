@@ -333,7 +333,7 @@ if ($asset_id_url == '95'){
         
         ];
 
-     require BASE_URI . '/pages/learning/includes/nav_symposium.php';
+     //require BASE_URI . '/pages/learning/includes/nav_symposium.php';
 
     }else{
 
