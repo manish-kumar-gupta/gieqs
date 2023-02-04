@@ -22,13 +22,13 @@ if ($asset_id_url == '171'){
 
 }
 
-require BASE_URI . '/headNoPurposeCore.php';
 
 //define user access level
 
 //$debug = true;
 
 $openaccess = 1;
+require BASE_URI . '/headNoPurposeCore.php';
 
 
 require_once(BASE_URI . '/assets/scripts/classes/assetManager.class.php');
