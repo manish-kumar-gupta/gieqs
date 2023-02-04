@@ -25,7 +25,7 @@
 
 
             <section>
-                <div class="container">
+                <div class="container col-10">
                     <div class="row justify-content-center">
                         <div class="">
                             <!-- Article body -->
