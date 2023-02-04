@@ -12,6 +12,9 @@
 
       //require BASE_URI . '/pages/learning/includes/head.php';
 
+      require BASE_URI . '/head_nocss.php';
+
+
       $general = new general;
 
       $navigator = new navigator;
@@ -86,6 +89,9 @@
                 header('Location: ' . BASE_URL . '/pages/learning/pages/general/show_subscription_sies.php?assetid=172');
                 exit();
             
+            }else{
+
+
             }
             
 		
@@ -113,7 +119,7 @@
 		
         }
 
-        require BASE_URI . '/headNoPurposeCore.php';
+        //require BASE_URI . '/headNoPurposeCore.php';
 
 
         require_once BASE_URI . '/pages/learning/includes/gieqs_iii_settings.php';
@@ -783,6 +789,10 @@
             <script src="<?php echo BASE_URL;?>/assets/js/purpose.core.js"></script>
 
 <script src="<?php echo BASE_URL; ?>/node_modules/bootstrap-tour/build/js/bootstrap-tour-standalone.min.js"></script>
+
+<link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/css/purpose.css" id="stylesheet">
+
+<link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/css/gieqs.css">
 
 
                     <style>
