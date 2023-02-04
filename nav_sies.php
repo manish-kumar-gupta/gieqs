@@ -57,9 +57,9 @@ $sessionView = new sessionView;
             <ul class="navbar-nav align-items-lg-center">
             
                 
-                <li class="nav-item active">
+               <!--  <li class="nav-item active">
                     <a class="nav-link" href="https://assocprof.eventsair.com/sies-2023/program">Program</a>
-                </li>
+                </li> -->
 
                 <li class="nav-item active">
                     <a class="nav-link" href="<?php echo BASE_URL;?>/pages/program/sies.php?id=171">Virtual Registration</a>
