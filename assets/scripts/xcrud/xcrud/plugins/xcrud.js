@@ -262,6 +262,9 @@ var Xcrud = {
                 Xcrud.hide_progress(container);
                 console.log("complete");
 
+                $(document).find(`[data-type='select']`).select2();
+
+
                 //$("#xcrud-modal-window").remove();
                 //$("#xcrud-overlay").remove();
                 //console.log($(".xcrud-modal-window").find("[name='key']").val());
@@ -2034,7 +2037,11 @@ $(document).on("xcrudafterrequest", function(event, container) {
 
     setTimeout(function() {
         console.log("Loaded");
+        $(document).find(`[data-type='select']`).select2();
+
         try {
+
+
 
             var
             // save a reference to the video element			  

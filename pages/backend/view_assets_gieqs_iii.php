@@ -73,11 +73,7 @@ spl_autoload_register ('class_loader');
     <!-- <link rel="stylesheet" href="<?php //echo BASE_URL; ?>/assets/css/purpose.css" id="stylesheet"> -->
 
 
-    <link href="<?php echo BASE_URL;?>/assets/scripts/xcrud/xcrud/plugins/select2-develop/dist/css/select2.min.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="<?php echo BASE_URL;?>/assets/scripts/xcrud/xcrud/plugins/select2-develop/dist/js/select2.full.js"></script>
-<script type="text/javascript">
-
-</script>
+    
 
     <style>
     .modal-backdrop {
@@ -732,7 +728,59 @@ echo $xcrud->render(); //magic
 
 
 
+<link href="<?php echo BASE_URL;?>/assets/scripts/xcrud/xcrud/plugins/select2-develop/dist/css/select2.min.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<?php echo BASE_URL;?>/assets/scripts/xcrud/xcrud/plugins/select2-develop/dist/js/select2.full.js"></script>
+<script type="text/javascript">
 
+$(document).on("xcrudbeforerequest", function(event, container) {
+    if (container) {
+        $(container).find("select").each(function(){
+          
+            if ($(this).data('select2')){
+
+                $(this).select2('destroy');
+            }
+            
+        })
+    } else {
+        $(".xcrud").find("select").each(function(){
+          
+          if ($(this).data('select2')){
+
+              $(this).select2('destroy');
+          }
+          
+      })
+    }
+});
+$(document).on("ready xcrudafterrequest", function(event, container)
+ {
+    if (container) {
+        $(container).find("select").select2();
+    } else {
+        $(".xcrud").find("select").select2();
+    }
+});
+$(document).on("xcrudbeforedepend", function(event, container, data) {
+    console.log(data.name);
+    //if (container) {
+        console.log(!$.isEmptyObject($(container).find('select[name="' + data.name + '"]')));
+        console.log(data.name);
+        //if(!$.isEmptyObject($(container).find('select[name="' + data.name + '"]'))){
+             if ($(container).find('select[name="' + data.name + '"]').data('select2')) {
+                  console.log("select2 item");
+                  $(container).find('select[name="' + data.name + '"]').select2('destroy');
+             }  else {
+                  console.log("Not a select2 ");
+             }              
+        //}
+   // }
+    
+});
+$(document).on("xcrudafterdepend", function(event, container, data) {
+    jQuery(container).find('select[name="' + data.name + '"]').select2();
+});
+</script>
 
 
 
@@ -840,47 +888,8 @@ $(document).on("xcrudafterdepend", function(event, container, data) {
     jQuery(container).find('select[name="' + data.name + '"]').select2();
 });
 
-waitForFinalEvent(function() {
+*/
 
-    $('.xcrud-container').find('select').select2();
-
-}, 1000, "hello header"); */
-
-$(document).on("xcrudbeforerequest", function(event, container) {
-    if (container) {
-        $(container).find("select").select2('destroy');
-    } else {
-        $(".xcrud").find("select").select2('destroy');
-    }
-});
-$(document).on("ready xcrudafterrequest", function(event, container)
- {
-    if (container) {
-        $(container).find("select").select2();
-    } else {
-        $(".xcrud").find("select").select2();
-    }
-});
-$(document).on("xcrudbeforedepend", function(event, container, data) {
-    console.log(data.name);
-    console.log('container is ' + container);
-    //if (container) {
-        console.log(!$.isEmptyObject($(container).find('select[name="' + data.name + '"]')));
-        console.log(data.name);
-        //if(!$.isEmptyObject($(container).find('select[name="' + data.name + '"]'))){
-             if ($(container).find('select[name="' + data.name + '"]').data('select2')) {
-                  console.log("select2 item");
-                  $(container).find('select[name="' + data.name + '"]').select2('destroy');
-             }  else {
-                  console.log("Not a select2 ");
-             }              
-        //}
-   // }
-    
-});
-$(document).on("xcrudafterdepend", function(event, container, data) {
-    jQuery(container).find('select[name="' + data.name + '"]').select2();
-});
 
             
 
