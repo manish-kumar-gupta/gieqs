@@ -142,7 +142,7 @@ spl_autoload_register ('class_loader');
                         <!-- Salute + Small stats -->
                         <div class="row align-items-center mb-4">
                             <div class="col-md-5 mb-4 mb-md-0">
-                                <span class="h2 mb-0 text-white d-block">Living Curriculum Manager</span>
+                                <span class="h2 mb-0 text-white d-block">Subscription Manager</span>
 
                                 <!-- <span class="text-white">Have a nice day!</span> -->
                             </div>
@@ -347,193 +347,37 @@ $xcrud->connection($username,$password,$dbname,$host);
 
 
 
-$xcrud->table('curriculae'); //employees - MySQL table name
-$xcrud->fields('created, updated', true);
-$xcrud->default_tab('Curriculae');
+$xcrud->table('subscriptions'); //employees - MySQL table name
+$xcrud->fields('id, user_id, asset_id, start_date, expiry_date, active, auto_renew, gateway_transactionId', false);
+//$xcrud->default_tab('Curriculae');
 $xcrud->set_logging(true);
-$xcrud->fields_inline('long_name');
+$xcrud->columns('id, user_id, asset_id, start_date, expiry_date, active, auto_renew, gateway_transactionId', false);
+$xcrud->fields_inline('active');
+$xcrud->fields_inline('auto_renew');
+
 $xcrud->inline_edit_click('double_click');
 $xcrud->change_type('active','select','',array(0=>'Inactive', 1=>'Active',));
-$xcrud->relation('owner','partner','id',array('name'));
+$xcrud->change_type('auto_renew','select','',array(0=>'No', 1=>'Yes',));
+
+$xcrud->change_type('user_id','select','',$userFunctions->getAllUsersArray(),);  //2 table removed
+$xcrud->relation('asset_id','assets_paid','id',array('id', 'name'));
 
 
-
-$xcrud->button(BASE_URL . '/pages/learning/pages/curriculum/curriculum_generic.php?id={id}', 'Open Curriculum');
-
+//$xcrud->relation('owner','partner','id',array('name'));
 
 
+echo $xcrud->render(); //magic
 
-
-
-    //nest 1
-
-    //$curriculaesectiontable_nest = Xcrud::get_instance(); //instantiate xCRUD
-
-    $curriculaesectiontable_nest = $xcrud->nested_table('Sections', 'id', 'curriculum_sections','curriculum_id');
-    $curriculaesectiontable_nest->connection($username,$password,$dbname,$host);
-    //$curriculaesectiontable_nest->table('curriculum_sections');
-    $curriculaesectiontable_nest->relation('curriculum_id','curriculae','id',array('long_name'));
-    $curriculaesectiontable_nest->columns('curriculum_id, created, updated', true);
-
-    $curriculaesectiontable_nest->fields('curriculum_id, created, updated', true);
-    $curriculaesectiontable_nest->unset_add;
-    $curriculaesectiontable_nest->default_tab('Sections');
-    $curriculaesectiontable_nest->set_logging(true);
-    $curriculaesectiontable_nest->fields_inline('section_order');
-    $curriculaesectiontable_nest->inline_edit_click('double_click');
-
-
-
-
-    //third nest, items
-
-    $curriculaeitemstable_nest = $curriculaesectiontable_nest->nested_table('Items', 'id', 'curriculum_items','section_id');
-    $curriculaeitemstable_nest->connection($username,$password,$dbname,$host);
-    //$curriculaeitemstable_nest->table('curriculum_sections');
-    $curriculaeitemstable_nest->relation('curriculum_id','curriculae','id',array('long_name'));
-    $curriculaeitemstable_nest->relation('section_id','curriculum_sections','id',array('long_name'));
-
-    $curriculaeitemstable_nest->change_type('type','select','',array(1=>'text', 3=>'figure', 4=>'video', 5=>'gieqs online asset'),);  //2 table removed
-    $curriculaeitemstable_nest->change_type('evidence_level','select','',array(0=>'n/a', 1=>'A', 2=>'B', 3=>'C', 4=>'D'),);
-    $curriculaeitemstable_nest->columns('curriculum_id, section_id, created, updated', true);
-
-    $curriculaeitemstable_nest->fields('curriculum_id, section_id, created, updated', true);
-    $curriculaeitemstable_nest->unset_add;
-    $curriculaeitemstable_nest->default_tab('Items');
-    $curriculaeitemstable_nest->set_logging(true);
-   $curriculaeitemstable_nest->change_type('image_url','image','',array(
-        'thumbs'=>array(
-            array('width'=> 50, 'marker'=>'_small'),
-            array('width'=> 100, 'marker'=>'_middle'),
-            array('width' => 150, 'folder' => 'thumbs'),
-        ) // using 'thumbs' subfolder
-    )); 
-    //working just jumps out on return
-
-
-    //fourth nest, refs
-
-    $curriculumreferencestable_nest = $curriculaeitemstable_nest->nested_table('References', 'id', 'curriculum_references','curriculum_item_id');
-    $curriculumreferencestable_nest->connection($username,$password,$dbname,$host);
-
-    $curriculumreferencestable_nest->relation('curriculum_item_id','curriculum_items','id',array('id', 'item_order', 'statement'));
-    $curriculumreferencestable_nest->relation('reference_id','references','id',array('id', 'formatted', 'authors'));
-    $curriculumreferencestable_nest->columns('curriculum_item_id, created, updated', true);
-
-    $curriculumreferencestable_nest->fields('curriculum_item_id, created, updated', true);
-    $curriculumreferencestable_nest->set_logging(true);
-    //$curriculumreferencestable_nest->unique('reference_id'); [needed but unique for curriculum id]
-
-
-
-    //fifth nest, tags
-
-    $curriculumtagstable_nest = $curriculaeitemstable_nest->nested_table('Tags', 'id', 'curriculum_tags','curriculum_item_id');
-    $curriculumtagstable_nest->connection($username,$password,$dbname,$host);
-
-    $curriculumtagstable_nest->relation('curriculum_item_id','curriculum_items','id',array('id', 'item_order', 'statement'));
-    $curriculumtagstable_nest->relation('tag_id','tags','id',array('id', 'tagName'));
-    $curriculumtagstable_nest->columns('curriculum_item_id, created, updated', true);
-
-        $curriculumtagstable_nest->fields('curriculum_item_id, created, updated', true);
-        $curriculumtagstable_nest->set_logging(true);
-       // $curriculumtagstable_nest->unique('tag_id');
-
-       //sixth nest, demonstration videos
-
-    $curriculumvideostable_nest = $curriculaeitemstable_nest->nested_table('Videos', 'id', 'curriculum_demonstrations','curriculum_item_id');
-    $curriculumvideostable_nest->connection($username,$password,$dbname,$host);
-
-    $curriculumvideostable_nest->relation('curriculum_item_id','curriculum_items','id',array('id', 'item_order', 'statement'));
-    $curriculumvideostable_nest->relation('video_id','video','id',array('id', 'name'));
-    $curriculumvideostable_nest->relation('chapter_id','chapter','id',array('video_id', 'number', 'name'));
-
-    $curriculumvideostable_nest->columns('curriculum_item_id, created, updated', true);
-
-        $curriculumvideostable_nest->fields('curriculum_item_id, created, updated', true);
-        $curriculumvideostable_nest->set_logging(true);
-
-
-
-
-
-//$curriculaesectiontable->unique('section_order');
-
-//$curriculaesectiontable->unset_add(); // nested table instance access allow add but prevent editing of curriculum field
-
-/* 
-$curriculaeitemstable = Xcrud::get_instance(); //instantiate xCRUD
-
-$curriculaeitemstable->connection($username,$password,$dbname,$host);
-$curriculaeitemstable->table('curriculum_items');
-$curriculaeitemstable->relation('curriculum_id','curriculae','id',array('long_name'));
-$curriculaeitemstable->relation('section_id','curriculum_sections','id',array('long_name'));
-
-$curriculaeitemstable->change_type('type','select','',array(1=>'text', 2=>'table', 3=>'figure', 4=>'video', 5=>'gieqs online asset'),);
-$curriculaeitemstable->change_type('evidence_level','select','',array(1=>'A', 2=>'B', 3=>'C', 4=>'D'),);
-$curriculaeitemstable->fields('created, updated', true);
-
-
-
-$curriculumtagstable = Xcrud::get_instance();
-$curriculumtagstable->connection($username,$password,$dbname,$host);
-
-$curriculumtagstable->table('curriculum_tags');
-$curriculumtagstable->relation('curriculum_item_id','curriculum_items','id',array('id', 'item_order', 'statement'));
-$curriculumtagstable->relation('tag_id','tags','id',array('id', 'tagName'));
-$curriculumtagstable->fields('created, updated', true);
-
-
-
-$curriculumreferencestable = Xcrud::get_instance();
-$curriculumreferencestable->connection($username,$password,$dbname,$host);
-
-$curriculumreferencestable->table('curriculum_references');
-$curriculumreferencestable->relation('curriculum_item_id','curriculum_items','id',array('id', 'item_order', 'statement'));
-$curriculumreferencestable->relation('reference_id','references','id',array('id', 'formatted', 'authors'));
-$curriculumreferencestable->fields('created, updated', true); */
-
-
-
-//$curriculaeitemstable->relation('category','tagCategories','id',array('id', 'tagCategoryName'));
-//$curriculaeitemstable->relation('item','tags','id',array('id', 'tagName'));
-
-
-/* $xcrud->relation('user_id','users','user_id',array('user_id','firstname', 'surname'));
-$userstable = $xcrud->nested_table('userstable', 'user_id', 'users','user_id'); // nested table
-$userstable->unset_add(); // nested table instance access
-$xcrud->parsley_active(true);
-$xcrud->set_logging(true);
-
-$xcrud->set_attr('user_id',array('required'=>'required'));
-$xcrud->set_attr('partial_registration',array('required'=>'required'));
-$xcrud->change_type('partial_registration','select',0,array(0=>'No', 1=>'Yes'),);
-$xcrud->change_type('early_bird','select',0,array(0=>'No', 1=>'Yes'),);
-$xcrud->change_type('group_registration','select',0,array(0=>'No', 1=>'Yes'),);
-$xcrud->change_type('includeGIEQsPro','select','',array(0=>'No', 1=>'Yes'),);
-$xcrud->change_type('registrationType','select','',array(1=>'Doctor', 2=>'Doctor in Training', 3=>'Nurse Endoscopist (includes Nursing Symposium in Dutch)', 4=>'Endoscopy Nurse (includes Nursing Symposium in Dutch)', 5=>'Medical Student'),);
-$xcrud->change_type('longTermProMemberDiscount','select',0,array(0=>'No', 1=>'Yes'),);
-$xcrud->change_type('professionalMemberDiscount','select',0,array(0=>'No', 1=>'Yes'),);
-$xcrud->change_type('professionalMember','select',0,array(0=>'No', 1=>'Yes'),);
-$xcrud->change_type('title','select','',array(1=>'Mr', 2=>'Mrs', 3=>'Ms', 4=>'Dr', 5=>'Professor'),);
-$xcrud->change_type('interestReason','select','',array(1=>'Doctor', 2=>'Doctor in Training', 3=>'Nurse Endoscopist (includes Nursing Symposium in Dutch)', 4=>'Endoscopy Nurse (includes Nursing Symposium in Dutch)', 5=>'Medical Student'),);
-$xcrud->change_type('informedHow','select','',array(0=>'None of the below<', 1=>'GIEQs Online', 2=>'GIEQs Mailing List', 3=>'Professional Contact', 4=>'Google', 5=>'Social Media'),);
-
- */
-
-
-
-
-//$xcrud->is_edit_modal(true);>
+//$xcrud->button(BASE_URL . '/pages/learning/pages/curriculum/curriculum_generic.php?id={id}', 'Open Curriculum');
 
 ?>
 
-<!-- <button class="btn btn-fill-gieqsGold btn-sm mx-2 my-3" onclick="search_xcrud('1','symposium.partial_registration')">Show Partial Registrations</button>
-<button class="btn btn-fill-gieqsGold btn-sm mx-2 my-3" onclick="search_xcrud('0','symposium.partial_registration')">Show Completed Registrations</button>
+<button class="btn btn-fill-gieqsGold btn-sm mx-2 my-3" onclick="search_xcrud('0','subscriptions.active')">Search Possible Clients</button>
+<!-- <button class="btn btn-fill-gieqsGold btn-sm mx-2 my-3" onclick="search_xcrud('0','symposium.partial_registration')">Show Completed Registrations</button>
  -->
 
 <?php
-echo $xcrud->render(); //magic
+//echo $xcrud->render(); //magic
 /* echo $curriculaesectiontable->render(); //magic
 echo $curriculaeitemstable->render();
 echo $curriculumtagstable->render();
