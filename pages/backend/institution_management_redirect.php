@@ -29,6 +29,8 @@ if (isset($userid)){//logged in
     }elseif ($institutional_manager->getInstitutionUser($userid, false) != false){
 
         $institution_id = $institutional_manager->getInstitutionUser($userid, false)[0]; //only supports the first user
+
+        echo 'location text is '. BASE_URL . "/pages/backend/institution_landing.php?institution_id=" . $institution_id;
         
         header("location: " . BASE_URL . "/pages/backend/institution_landing.php?institution_id=" . $institution_id);
         exit();
