@@ -2,7 +2,7 @@
 
 require ('../../assets/includes/config.inc.php');	
 $openaccess = 0;
-$requiredUserLevel = 1;
+$requiredUserLevel = 6;
 
 require_once (BASE_URI . '/assets/scripts/login_functions.php');
 require(BASE_URI . '/assets/scripts/interpretUserAccess.php');
@@ -30,7 +30,8 @@ if (isset($userid)){//logged in
 
         $institution_id = $institutional_manager->getInstitutionUser($userid, false)[0]; //only supports the first user
 
-        echo 'location text is '. BASE_URL . "/pages/backend/institution_landing.php?institution_id=" . $institution_id;
+        //echo 'location text is '. BASE_URL . "/pages/backend/institution_landing.php?institution_id=" . $institution_id;
+        //exit();
         
         header("location: " . BASE_URL . "/pages/backend/institution_landing.php?institution_id=" . $institution_id);
         exit();
