@@ -9,7 +9,6 @@ RewriteRule ^venue$ pages/program/venue.php
 RewriteRule ^ghelamco$ pages/program/venue.php
 RewriteRule ^sponsors$ pages/program/sponsors.php
 RewriteRule ^registration$ pages/program/registration.php
-RewriteRule ^register$ pages/program/registration.php
 RewriteRule ^login$ pages/authentication/login.php [QSA]
 RewriteRule ^logmein$ pages/authentication/login.php
 RewriteRule ^proposedprogram$ pages/program/programv2.php
@@ -21,9 +20,9 @@ RewriteRule ^colonoscopy$ pages/learning/viewer_free.php?id=56
 RewriteRule ^polypectomy$ pages/learning/viewer_free.php?id=113
 RewriteRule ^malignant-polyp$ pages/learning/viewer_free.php?id=157
 RewriteRule ^ercp$ pages/learning/viewer_free.php?id=153
-RewriteRule ^smic$ pages/learning/pages/scores/smic_mod.php
-RewriteRule ^smic-new$ pages/learning/pages/scores/smic_mod.php
-RewriteRule ^smi$ pages/learning/pages/scores/smic_mod.php
+RewriteRule ^smic$ pages/learning/pages/scores/smic_v2.php
+RewriteRule ^smic-new$ pages/learning/pages/scores/smic_v2.php
+RewriteRule ^smi$ pages/learning/pages/scores/smic_v2.php
 
 
 RewriteRule ^smsa$ pages/learning/pages/scores/smsa.php
@@ -47,8 +46,8 @@ RewriteRule ^blog$ pages/learning/blog_wp.php
 RewriteRule ^blog-view$ pages/learning/blog_article_wp.php
 
 RewriteRule ^technique-score$ pages/learning/pages/scores/technique.php
-RewriteRule ^gpat$ pages/learning/pages/scores/technique.php
-RewriteRule ^GPAT$ pages/learning/pages/scores/technique.php
+RewriteRule ^gpat$ pages/generic.php?id=383
+RewriteRule ^GPAT$ pages/generic.php?id=383
 
 RewriteRule ^charitable$ pages/foundation/charitable.php
 RewriteRule ^polypectomy-upskilling2$ pages/program/program_generic.php?id=55
@@ -72,6 +71,23 @@ RewriteRule ^iii/register-now$ pages/program/program_generic.php?id=95&action=re
 
 
 RewriteRule ^polypectomy-curriculum-theory$ pages/program/program_generic.php?id=94
+
+RewriteRule ^poem-curriculum$ pages/learning/pages/curriculum/curriculum_generic.php?id=5
+
+RewriteRule ^emr-curriculum$ pages/learning/pages/curriculum/curriculum_generic.php?id=4
+
+RewriteRule ^emr-curriculum-esge$ pages/learning/pages/curriculum/curriculum_generic_esge.php?id=4
+
+RewriteRule ^curriculum-editor$ pages/backend/curriculae.php
+
+RewriteRule ^register$ pages/program/online.php?id=2456
+
+RewriteRule ^manage-institution pages/backend/institution_management_redirect.php
+
+RewriteRule ^gpat-form pages/learning/pages/scores/technique_no_login.php
+
+RewriteRule ^sies pages/program/sies.php?id=171
+
 
 
 
