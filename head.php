@@ -43,3 +43,26 @@
  --><script src="<?php echo BASE_URL;?>/assets/js/generaljs.js"></script>
 <script src="<?php echo BASE_URL;?>/node_modules/jquery-validation/dist/jquery.validate.js"></script>
 
+<!-- SEO Header Tags-->
+<meta name="robots" content="noydir, noodp"/> 
+<meta name="revisit-after" content="Weekly">
+<meta name="msvalidate.01" content="5DF39F9156DBB05ED14F3B71627B967A" />
+<meta name="distribution" content="Global">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KT01N45BVS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KT01N45BVS');
+</script>
+<meta name="google-site-verification" content="iGRygJl7yRS_q1a0VkTFa0TZ-MuzZIDwZhAgVdNjuR8" />
+<meta name="Language" content="English"/>
+<meta name='rating' content='General'>
+<meta name="YahooSeeker" content="INDEX, FOLLOW">
+<meta name="msnbot" content="INDEX, FOLLOW">
+<meta name="allow-search" content="yes">
+<meta name="robots" content="Index, Follow"/>
+<meta name="author" content="Gastrointestinal Quality and Safety (GIEQs) Foundation">
+<!-- SEO Header Tags End-->
