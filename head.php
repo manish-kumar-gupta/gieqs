@@ -35,7 +35,7 @@
    
     <link rel="stylesheet" href="<?php echo BASE_URL;?>/assets/css/gieqs.css">
 
-<!-- Global JS -->
+<!-- Global JS hhh-->
 
 <script src="<?php echo BASE_URL;?>/assets/js/purpose.core.js"></script>
 <script src="<?php echo BASE_URL;?>/assets/libs/select2/dist/js/select2.min.js"></script>
